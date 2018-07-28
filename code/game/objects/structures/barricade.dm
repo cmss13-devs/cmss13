@@ -25,11 +25,15 @@
 	var/can_wire = 0
 	var/is_wired = 0
 	var/image/wired_overlay
+	flags_barrier = HANDLE_BARRIER_CHANCE
 
 	New()
 		..()
 		spawn(0)
 			update_icon()
+
+/obj/structure/barricade/handle_barrier_chance(mob/living/M)
+	return prob((100.0*health)/maxhealth)
 
 /obj/structure/barricade/examine(mob/user)
 	..()

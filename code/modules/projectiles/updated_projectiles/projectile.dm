@@ -323,13 +323,18 @@
 	if(P.ammo.flags_ammo_behavior & AMMO_SNIPER) //sniper rounds bypass cover
 		return FALSE
 
+	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank bypasses cover
+		return FALSE
+
 	if(!(flags_atom & ON_BORDER))
 		return FALSE //window frames, unflipped tables
 
-	if(!( P.dir & reverse_direction(dir) || P.dir & dir))
-		return FALSE //no effect if bullet direction is perpendicular to barricade
+	var/distance = P.distance_travelled
 
-	var/distance = P.distance_travelled - 1
+	if(P.dir & reverse_direction(dir))
+		distance-- //no bias towards "inner" side
+	else if (!(P.dir & dir))
+		return FALSE //no effect if bullet direction is perpendicular to barricade
 
 	if(distance < 1)
 		return FALSE

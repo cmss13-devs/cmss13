@@ -210,6 +210,11 @@
 		else
 			return FALSE // leave the dead alone*
 	*/ // this is disabled pending the results of the lighting change -spookydonut
+	var/atom/A = AM.handle_barriers(src)
+	if(A != AM)
+		A.attack_alien(src)
+		next_move = world.time + (10 + attack_delay)
+		return FALSE
 	return ..()
 
 /mob/living/carbon/Xenomorph/pull_response(mob/puller)

@@ -754,10 +754,10 @@
 					M.hallucination = max(50, M.hallucination)
 			if(3)
 				if(prob(1))
-					M.hallucination += max(75, M.hallucination)
+					M.hallucination = max(75, M.hallucination)
 			if(4)
 				if(prob(2))
-					M.hallucination += max(75, M.hallucination)
+					M.hallucination = max(75, M.hallucination)
 				if(prob(0.5) && ishuman(M))
 					var/mob/living/carbon/human/H = M
 					var/affected_organ = pick("heart","lungs","liver","kidneys")

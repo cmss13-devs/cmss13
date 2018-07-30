@@ -1052,7 +1052,7 @@ About the new airlock wires panel:
 		playsound(src.loc, 'sound/machines/airlock.ogg', 25, 0)
 	if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 		src.closeOther.close()
-	return ..()
+	return ..(forced)
 
 /obj/machinery/door/airlock/close(var/forced=0)
 	if(operating || welded || locked || !loc)

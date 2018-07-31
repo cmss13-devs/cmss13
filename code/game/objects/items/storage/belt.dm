@@ -485,6 +485,7 @@
 /obj/item/weapon/gun/on_exit_storage(obj/item/storage/belt/gun/gun_belt)
 	if(istype(gun_belt))
 		gun_belt.holds_guns_now--
+		fast_pulled = 1 //We fast pulled that gun, for equipped()
 		if(gun_belt.current_gun == src)
 			gun_belt.current_gun = null
 			gun_belt.update_gun_icon()

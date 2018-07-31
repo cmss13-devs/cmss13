@@ -947,6 +947,86 @@ AMMO
 *******************************************************************************/
 
 
+/datum/supply_packs/ammo_mag_box
+	name = "magazine box (M41A, 10x regular mags)"
+	contains = list(
+					/obj/item/magazine_box
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_smg_mag_box
+	name = "magazine box (M39, 12x regular mags)"
+	contains = list(
+					/obj/item/magazine_box/smg
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_box_ext
+	name = "magazine box (M41A, 8x extended mags)"
+	contains = list(
+					/obj/item/magazine_box/rifle_extended
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_smg_mag_box_ext
+	name = "magazine box (M39, 10x extended mags)"
+	contains = list(
+					/obj/item/magazine_box/smg/extended
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_mag_box_ap
+	name = "magazine box (M41A, 10x AP mags)"
+	contains = list(
+					/obj/item/magazine_box/rifle_ap
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_smg_mag_box_ap
+	name = "magazine box (M39, 12x AP mags)"
+	contains = list(
+					/obj/item/magazine_box/smg/ap
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_shell_box
+	name = "shell box (75x slug shells)"
+	contains = list(
+					/obj/item/magazine_box/shotgun
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_shell_box_buck
+	name = "shell box (75x buckshot shells)"
+	contains = list(
+					/obj/item/magazine_box/shotgun/buckshot
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_regular
 	name = "regular magazines crate (M41A x5, M4A3 x2, M44 x2, M39 x2, M37A2 x1 each)"
 	contains = list(

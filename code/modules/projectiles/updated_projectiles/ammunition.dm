@@ -61,13 +61,13 @@ They're all essentially identical when it comes to getting the job done.
 	return ..() //Do normal stuff.
 
 //We should only attack it with handfuls. Empty hand to take out, handful to put back in. Same as normal handful.
-/obj/item/ammo_magazine/attackby(obj/item/I, mob/user)
+/obj/item/ammo_magazine/attackby(obj/item/I, mob/living/user, var/bypass_hold_check = 0)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/MG = I
 		if(MG.flags_magazine & AMMUNITION_HANDFUL) //got a handful of bullets
 			if(flags_magazine & AMMUNITION_REFILLABLE) //and a refillable magazine
 				var/obj/item/ammo_magazine/handful/transfer_from = I
-				if(src == user.get_inactive_hand() ) //It has to be held.
+				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
 					if(default_ammo == transfer_from.default_ammo)
 						transfer_ammo(transfer_from,user,transfer_from.current_rounds) // This takes care of the rest.
 					else user << "Those aren't the same rounds. Better not mix them up."
@@ -95,7 +95,7 @@ They're all essentially identical when it comes to getting the job done.
 	return S // We return the number transferred if it was successful.
 
 //This will attempt to place the ammo in the user's hand if possible.
-/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount)
+/obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
 	var/R
 	if (current_rounds > 0)
 		var/obj/item/ammo_magazine/handful/new_handful = rnew(/obj/item/ammo_magazine/handful)
@@ -106,7 +106,7 @@ They're all essentially identical when it comes to getting the job done.
 
 		if(user)
 			user.put_in_hands(new_handful)
-			user << "<span class='notice'>You grab <b>[R]</b> round\s from [src].</span>"
+			user << "<span class='notice'>You grab <b>[R]</b> round\s from [obj_name].</span>"
 
 		else new_handful.loc = get_turf(src)
 		update_icon(-R) //Update the other one.
@@ -270,6 +270,225 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 
 //Big ammo boxes
+/obj/item/magazine_box
+	name = "magazine box (M41A x 10)"
+	desc = "a box for holding many magazines with a carrying handle, must be opened on the ground."
+	w_class = 5
+	icon = 'icons/obj/items/ammo.dmi'
+	icon_state = "mag_box_m41_closed"
+	var/icon_base_name = "mag_box_m41"
+	var/magazine_type = /obj/item/ammo_magazine/rifle
+	var/num_of_magazines = 10
+	var/spawn_full = 1
+	var/handfuls = 0
+
+/obj/item/magazine_box/pickup
+	spawn_full = 0
+
+/obj/item/magazine_box/New()
+	if(spawn_full)
+		if(handfuls)
+			var/obj/item/ammo_magazine/AM = new magazine_type(src)
+			AM.max_rounds = num_of_magazines
+			AM.current_rounds = num_of_magazines
+		else
+			var/i = 0
+			while(i < num_of_magazines)
+				contents += new magazine_type(src)
+				i++
+
+/obj/item/magazine_box/update_icon()
+	icon_state = "[icon_base_name]_closed"
+
+/obj/item/magazine_box/examine(mob/living/user)
+	..()
+	if(!handfuls)
+		if(contents.len < (num_of_magazines/3))
+			user << "<span class='information'>It feels almost empty.</span>"
+			return
+		if(contents.len < ((num_of_magazines*2)/3))
+			user << "<span class='information'>It feels about half full.</span>"
+			return
+		user << "<span class='information'>It feels almost full.</span>"
+	else
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		if(AM)
+			if(AM.current_rounds < (AM.max_rounds/3))
+				user << "<span class='information'>It feels almost empty.</span>"
+				return
+			if(AM.current_rounds < ((AM.max_rounds*2)/3))
+				user << "<span class='information'>It feels about half full.</span>"
+				return
+			user << "<span class='information'>It feels almost full.</span>"
+
+/obj/item/magazine_box/attack_self(mob/living/user)
+	deploy_ammo_box(user, user.loc)
+
+/obj/item/magazine_box/proc/deploy_ammo_box(mob/living/user, turf/T)
+	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
+	M.icon_base_name = icon_base_name
+	M.magazine_type = magazine_type
+	M.num_of_magazines = num_of_magazines
+	M.name = name
+	M.desc = desc
+	M.handfuls = handfuls
+	for(var/obj/item/ammo_magazine/AM in contents)
+		M.contents += AM
+		contents -= AM
+	M.update_icon()
+	user.drop_inv_item_on_ground(src)
+	cdel(src)
+
+/obj/item/magazine_box/afterattack(atom/target, mob/living/user, proximity)
+	if(!proximity)
+		return
+	if(isturf(target))
+		var/turf/T = target
+		if(!T.density)
+			deploy_ammo_box(user, T)
+
+/obj/item/magazine_box/shotgun
+	name = "shotgun shell box (slugs x 75)"
+	icon_state = "shell_box_closed"
+	icon_base_name = "shell_box"
+	magazine_type = /obj/item/ammo_magazine/shotgun
+	num_of_magazines = 75
+	handfuls = 1
+
+/obj/item/magazine_box/shotgun/buckshot
+	name = "shotgun shell box (buckshot x 75)"
+	icon_state = "shell_box_buck_closed"
+	icon_base_name = "shell_box_buck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
+
+/obj/item/magazine_box/rifle_ap
+	name = "magazine box (AP M41A x 10)"
+	icon_state = "mag_box_m41_ap_closed"
+	icon_base_name = "mag_box_m41_ap"
+	magazine_type = /obj/item/ammo_magazine/rifle/ap
+
+/obj/item/magazine_box/rifle_incen
+	name = "magazine box (Incen M41A x 10)"
+	icon_state = "mag_box_m41_incen_closed"
+	icon_base_name = "mag_box_m41_incen"
+	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
+
+/obj/item/magazine_box/rifle_extended
+	name = "magazine box (Ext M41A x 8)"
+	icon_state = "mag_box_m41_ext_closed"
+	icon_base_name = "mag_box_m41_ext"
+	num_of_magazines = 8
+	magazine_type = /obj/item/ammo_magazine/rifle/extended
+
+/obj/item/magazine_box/smg
+	name = "magazine box (M39 x 12)"
+	icon_state = "mag_box_m39_closed"
+	icon_base_name = "mag_box_m39"
+	num_of_magazines = 12
+	magazine_type = /obj/item/ammo_magazine/smg/m39
+
+/obj/item/magazine_box/smg/ap
+	name = "magazine box (AP M39 x 12)"
+	icon_state = "mag_box_m39_ap_closed"
+	icon_base_name = "mag_box_m39_ap"
+	magazine_type = /obj/item/ammo_magazine/smg/m39/ap
+
+/*/obj/item/magazine_box/smg/incen
+	name = "magazine box (Incen m39 x 12)"
+	icon_state = "mag_box_m39_incen_closed"
+	icon_base_name = "mag_box_m39_incen"
+	magazine_type = /obj/item/ammo_magazine/rifle/incendiary*/
+
+/obj/item/magazine_box/smg/extended
+	name = "magazine box (Ext m39 x 10)"
+	icon_state = "mag_box_m39_ext_closed"
+	icon_base_name = "mag_box_m39_ext"
+	num_of_magazines = 10
+	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
+
+/obj/structure/magazine_box
+	name = "magazine_box"
+	desc = "a box for holding many magazines, this one is open and needs to be closed before you can pick it up."
+	icon = 'icons/obj/items/ammo.dmi'
+	icon_state = "mag_box_m41"
+	var/icon_base_name = "mag_box_m41"
+	var/magazine_type = /obj/item/ammo_magazine/rifle
+	var/num_of_magazines = 10
+	var/handfuls = 0
+
+/obj/structure/magazine_box/MouseDrop(over_object, src_location, over_location)
+	..()
+	if(over_object == usr && Adjacent(usr))
+		if(!ishuman(usr))	return
+		visible_message("<span class='notice'>[usr] picks up [name].</span>")
+		var/obj/item/magazine_box/MB = new /obj/item/magazine_box/pickup
+		MB.icon_base_name = icon_base_name
+		MB.magazine_type = magazine_type
+		MB.num_of_magazines = num_of_magazines
+		MB.name = name
+		MB.desc = desc
+		MB.handfuls = handfuls
+		MB.update_icon()
+		for(var/obj/item/ammo_magazine/AM in contents)
+			MB.contents += AM
+			contents -= AM
+		usr.put_in_hands(MB)
+		cdel(src)
+
+/obj/structure/magazine_box/examine(mob/user)
+	..()
+	if(get_dist(src,user) > 2 && !isobserver(user))
+		return
+	if(handfuls)
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		if(AM)
+			user << "<span class='information'>It has roughly [round(AM.current_rounds/5)] handfuls remaining.</span>"
+	else
+		user << "<span class='information'>It has [contents.len] magazines out of [num_of_magazines].</span>"
+
+/obj/structure/magazine_box/update_icon()
+	if(!handfuls)
+		if(contents.len)
+			icon_state = "[icon_base_name]"
+		else
+			icon_state = "[icon_base_name]_empty"
+	else
+		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+		if(AM.current_rounds)
+			icon_state = "[icon_base_name]"
+		else
+			icon_state = "[icon_base_name]_empty"
+
+/obj/structure/magazine_box/attack_hand(mob/living/user)
+	if(contents.len)
+		if(!handfuls)
+			var/obj/item/ammo_magazine/AM = pick(contents)
+			contents -= AM
+			user.put_in_hands(AM)
+			user << "<span class='notice'>You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine.</span>"
+		else
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+			if(AM)
+				AM.create_handful(user, 5, src)
+		update_icon()
+	else
+		user << "<span class='notice'>\The [src] is empty.</span>"
+
+
+/obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
+	if(!handfuls)
+		if(istype(W,magazine_type))
+			if(contents.len < num_of_magazines)
+				user.drop_inv_item_to_loc(W, src)
+				contents += W
+				user << "<span class='notice'>You put a [W] in to \the [src]</span>"
+				update_icon()
+			else
+				user << "<span class='warning'>\The [src] is full.</span>"
+	else
+		if(istype(W,/obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
+			AM.attackby(W, user, 1)
 
 /obj/item/big_ammo_box
 	name = "big ammo box (10x24mm)"

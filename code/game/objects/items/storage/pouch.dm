@@ -137,6 +137,8 @@
 	max_w_class = 3
 	storage_slots = 2
 	draw_mode = 0
+	bypass_w_limit = list("/obj/item/ammo_magazine/rifle",
+					"/obj/item/ammo_magazine/smg/m39")
 	can_hold = list("/obj/item/ammo_magazine/rifle",
 					"/obj/item/ammo_magazine/smg",
 					"/obj/item/ammo_magazine/pistol",

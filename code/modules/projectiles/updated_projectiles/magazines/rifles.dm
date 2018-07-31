@@ -9,7 +9,7 @@
 	desc = "A 10mm assault rifle magazine."
 	caliber = "10x24mm"
 	icon_state = "m41a"
-	w_class = 3
+	w_class = 4
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/m41a
@@ -55,6 +55,7 @@
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/mar40
+	w_class = 3
 
 /obj/item/ammo_magazine/rifle/mar40/extended
 	name = "\improper MAR extended magazine (7.62x39mm)"
@@ -75,6 +76,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20 //Also comes in 30 and 100 round Beta-C mag.
 	gun_type = /obj/item/weapon/gun/rifle/m16
+	w_class = 3
 
 
 //-------------------------------------------------------
@@ -99,5 +101,4 @@
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/type71
-
-
+	w_class = 3

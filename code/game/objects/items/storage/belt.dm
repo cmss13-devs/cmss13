@@ -276,7 +276,7 @@
 	w_class = 4
 	storage_slots = 5
 	max_w_class = 3
-	max_storage_space = 15
+	max_storage_space = 20
 	can_hold = list(
 		"/obj/item/weapon/combat_knife",
 		"/obj/item/device/flashlight/flare",
@@ -292,6 +292,8 @@
 		"/obj/item/explosive/mine",
 		"/obj/item/reagent_container/food/snacks"
 		)
+	bypass_w_limit = list("/obj/item/ammo_magazine/rifle",
+					"/obj/item/ammo_magazine/smg/m39")
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
 	New()

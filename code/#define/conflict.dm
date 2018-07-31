@@ -68,7 +68,7 @@
 #define WIELD_DELAY_VERY_FAST		2
 #define WIELD_DELAY_FAST			4
 #define WIELD_DELAY_NORMAL			6
-#define WIELD_DELAY_SLOW			10
-#define WIELD_DELAY_VERY_SLOW		16
-#define WIELD_DELAY_HORRIBLE		20
+#define WIELD_DELAY_SLOW			8
+#define WIELD_DELAY_VERY_SLOW		10
+#define WIELD_DELAY_HORRIBLE		12
 //=================================================

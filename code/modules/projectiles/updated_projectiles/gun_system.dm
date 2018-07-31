@@ -178,7 +178,7 @@
 		pull_time = world.time + wield_delay
 		fast_pulled = 0
 	else
-		pull_time = world.time + (wield_delay * 2) //Delay for picking something out of your inventory before you can fire, prevents instacuckshot. Keep a weapon out in dangerous spots
+		pull_time = world.time + wield_delay //Delay for picking something out of your inventory before you can fire, prevents instacuckshot. Keep a weapon out in dangerous spots
 
 	return ..()
 

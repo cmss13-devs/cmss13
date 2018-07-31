@@ -56,6 +56,8 @@
 	var/aim_slowdown	= 0						//Self explanatory. How much does aiming (wielding the gun) slow you
 	var/wield_delay		= WIELD_DELAY_FAST		//How long between wielding and firing in tenths of seconds
 	var/wield_time		= 0						//Storing value for above
+	var/pull_time		= 0						//Storing value for how long pulling a gun takes before you can use it
+	var/fast_pulled		= 0						//If 1, next pull will be fast, this halves pulling time
 
 	//Burst fire.
 	var/burst_amount 	= 1						//How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst.
@@ -172,6 +174,11 @@
 			user.update_gun_icons()
 
 	unwield(user)
+	if(fast_pulled)
+		pull_time = world.time + wield_delay
+		fast_pulled = 0
+	else
+		pull_time = world.time + (wield_delay * 2) //Delay for picking something out of your inventory before you can fire, prevents instacuckshot. Keep a weapon out in dangerous spots
 
 	return ..()
 
@@ -211,6 +218,9 @@
 /obj/item/weapon/gun/wield(var/mob/user)
 
 	if(!(flags_item & TWOHANDED) || flags_item & WIELDED)
+		return
+
+	if(world.time < pull_time) //Need to wait until it's pulled out to aim
 		return
 
 	if(user.get_inactive_hand())
@@ -746,7 +756,7 @@ and you're good to go.
 	Consequently, predators are able to fire while cloaked.
 	*/
 	if(flags_gun_features & GUN_BURST_FIRING) return
-	if(world.time < wield_time) return //We just put the gun up. Can't do it that fast
+	if(world.time < wield_time || world.time < pull_time) return //We just put the gun up. Can't do it that fast
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())
 			user << "<span class='warning'>You don't have the dexterity to do this!</span>"

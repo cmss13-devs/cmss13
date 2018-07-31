@@ -19,7 +19,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = 1.15
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
-	wield_delay = WIELD_DELAY_FAST //Shotguns are really easy to put up to fire, since they are designed for CQC (at least compared to a rifle)
+	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky afterall
 	gun_skill_category = GUN_SKILL_SHOTGUNS
 
 /obj/item/weapon/gun/shotgun/New()

@@ -948,7 +948,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_mag_box
-	name = "magazine box (M41A, 10x regular mags)"
+	name = "magazine box (M41A, 10xregular mags)"
 	contains = list(
 					/obj/item/magazine_box
 					)
@@ -958,7 +958,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smg_mag_box
-	name = "magazine box (M39, 12x regular mags)"
+	name = "magazine box (M39, 12xregular mags)"
 	contains = list(
 					/obj/item/magazine_box/smg
 					)
@@ -968,7 +968,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mag_box_ext
-	name = "magazine box (M41A, 8x extended mags)"
+	name = "magazine box (M41A, 8xextended mags)"
 	contains = list(
 					/obj/item/magazine_box/rifle_extended
 					)
@@ -978,7 +978,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smg_mag_box_ext
-	name = "magazine box (M39, 10x extended mags)"
+	name = "magazine box (M39, 10xextended mags)"
 	contains = list(
 					/obj/item/magazine_box/smg/extended
 					)
@@ -988,7 +988,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mag_box_ap
-	name = "magazine box (M41A, 10x AP mags)"
+	name = "magazine box (M41A, 10xAP mags)"
 	contains = list(
 					/obj/item/magazine_box/rifle_ap
 					)
@@ -998,7 +998,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smg_mag_box_ap
-	name = "magazine box (M39, 12x AP mags)"
+	name = "magazine box (M39, 12xAP mags)"
 	contains = list(
 					/obj/item/magazine_box/smg/ap
 					)
@@ -1008,7 +1008,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box
-	name = "shell box (75x slug shells)"
+	name = "shell box (75xslug shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun
 					)
@@ -1018,7 +1018,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box_buck
-	name = "shell box (75x buckshot shells)"
+	name = "shell box (75xbuckshot shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun/buckshot
 					)

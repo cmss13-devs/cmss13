@@ -119,7 +119,7 @@ WEAPONS
 
 
 /datum/supply_packs/flamethrower
-	name = "M240 Flamethrower crate (M240 x3)"
+	name = "M240 Flamethrower crate (M240 x2)"
 	contains = list(
 					/obj/item/weapon/gun/flamer,
 					/obj/item/weapon/gun/flamer

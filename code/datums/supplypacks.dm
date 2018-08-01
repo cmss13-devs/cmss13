@@ -1008,7 +1008,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box
-	name = "shell box (75xslug shells)"
+	name = "shell box (100xslug shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun
 					)
@@ -1018,7 +1018,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box_buck
-	name = "shell box (75xbuckshot shells)"
+	name = "shell box (100xbuckshot shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun/buckshot
 					)

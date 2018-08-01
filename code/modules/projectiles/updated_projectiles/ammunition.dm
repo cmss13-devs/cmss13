@@ -348,15 +348,15 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			deploy_ammo_box(user, T)
 
 /obj/item/magazine_box/shotgun
-	name = "shotgun shell box (slugs x 75)"
+	name = "shotgun shell box (slugs x 100)"
 	icon_state = "shell_box_closed"
 	icon_base_name = "shell_box"
 	magazine_type = /obj/item/ammo_magazine/shotgun
-	num_of_magazines = 75
+	num_of_magazines = 100
 	handfuls = 1
 
 /obj/item/magazine_box/shotgun/buckshot
-	name = "shotgun shell box (buckshot x 75)"
+	name = "shotgun shell box (buckshot x 100)"
 	icon_state = "shell_box_buck_closed"
 	icon_base_name = "shell_box_buck"
 	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot

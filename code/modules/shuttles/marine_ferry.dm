@@ -375,9 +375,9 @@
 	var/list/with_queen = list()
 	for(var/mob/living/carbon/Xenomorph/xeno in living_xeno_list)
 		if(xeno.hivenumber != XENO_HIVE_NORMAL) continue
-		if(xeno.loc.z == hive.living_xeno_queen.loc.z) // yes loc because of vent crawling
+		if(xeno.loc && hive.living_xeno_queen && hive.living_xeno_queen.loc && xeno.loc.z == hive.living_xeno_queen.loc.z) // yes loc because of vent crawling
 			with_queen += xeno
-		else
+		else if(xeno.loc && xeno.loc.z == 1)
 			left_behind += xeno
 	if(with_queen.len > left_behind.len) // to stop solo-suiciding by queens
 		ticker.mode.stored_larva = 0
@@ -391,6 +391,7 @@
 				cdel(embryo)
 			for(var/mob/living/carbon/Xenomorph/Larva/larva in potential_host)
 				cdel(larva)
+			death()
 
 	sleep(travel_time) //Wait while we fly, but give extra time for crashing announcements etc
 

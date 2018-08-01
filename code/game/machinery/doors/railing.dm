@@ -6,6 +6,7 @@
 	flags_atom = ON_BORDER
 	opacity = 0
 	explosion_resistance = 0
+	unacidable = 1
 
 	throwpass = TRUE //You can throw objects over this, despite its density.
 	open_layer = CATWALK_LAYER

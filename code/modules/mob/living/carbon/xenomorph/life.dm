@@ -489,6 +489,6 @@ updatehealth()
 	return stunned
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()
-	if(knocked_down && client)
+	if(knocked_down)
 		knocked_down = max(knocked_down-2,0)
 	return knocked_down

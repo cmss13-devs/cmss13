@@ -346,7 +346,7 @@
 //Breaking barricades
 /obj/structure/barricade/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
-	health -= rand(M.melee_damage_lower, M.melee_damage_upper)
+	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) )
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
 	if(health <= 0)
@@ -359,7 +359,6 @@
 		M.visible_message("<span class='danger'>The barbed wire slices into [M]!</span>",
 		"<span class='danger'>The barbed wire slices into you!</span>", null, 5)
 		M.apply_damage(10)
-	update_health(TRUE)
 
 
 /obj/structure/rack/attack_alien(mob/living/carbon/Xenomorph/M)

@@ -69,8 +69,7 @@
 			return
 
 		if(crusher_resistant)
-			health -= 100
-			update_health()
+			take_damage( 100 )
 
 		else if(!C.stat)
 			visible_message("<span class='danger'>[C] smashes through [src]!</span>")
@@ -201,10 +200,9 @@
 			cdel(src)
 			return
 		if(2.0)
-			health -= rand(33, 66)
+			take_damage( rand(33, 66) )
 		if(3.0)
-			health -= rand(10, 33)
-	update_health()
+			take_damage( rand(10, 33) )
 
 /obj/structure/barricade/update_icon()
 	if(!closed)
@@ -238,8 +236,18 @@
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	if(istype(I, /obj/item/weapon/zombie_claws))
-		health -= I.force * 0.5
-	health -= I.force * 0.5
+		take_damage( I.force * 0.5 )
+	take_damage( I.force * 0.5 )
+
+obj/structure/barricade/proc/take_damage(var/damage)
+
+	health -= damage
+
+	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
+		if(B.dir == reverse_direction(dir))
+			B.health -= damage
+			B.update_health()
+
 	update_health()
 
 /obj/structure/barricade/proc/update_health(nomessage)
@@ -264,8 +272,7 @@
 
 
 /obj/structure/barricade/proc/acid_smoke_damage(var/obj/effect/particle_effect/smoke/S)
-	health -= 15
-	update_health()
+	take_damage( 15 )
 
 /obj/structure/barricade/verb/rotate()
 	set name = "Rotate Barricade Counter-Clockwise"
@@ -344,22 +351,19 @@
 /obj/structure/barricade/snow/hit_barricade(obj/item/I)
 	switch(I.damtype)
 		if("fire")
-			health -= I.force * 0.6
+			take_damage( I.force * 0.6 )
 		if("brute")
-			health -= I.force * 0.3
+			take_damage( I.force * 0.3 )
 
-	update_health()
-	update_icon()
 	return
 
 /obj/structure/barricade/snow/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	health -= round(P.damage/2) //Not that durable.
+	take_damage( round(P.damage/2) ) //Not that durable.
 
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		health -= 50
+		take_damage( 50 )
 
-	update_health()
 	return 1
 
 /*----------------------*/
@@ -405,19 +409,17 @@
 /obj/structure/barricade/wooden/hit_barricade(obj/item/I)
 	switch(I.damtype)
 		if("fire")
-			health -= I.force * 1.5
+			take_damage( I.force * 1.5 )
 		if("brute")
-			health -= I.force * 0.75
-	update_health()
+			take_damage( I.force * 0.75 )
 
 /obj/structure/barricade/wooden/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	health -= round(P.damage/2) //Not that durable.
+	take_damage( round(P.damage/2) ) //Not that durable.
 
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		health -= 50
+		take_damage( 50 )
 
-	update_health()
 	return 1
 
 /*----------------------*/
@@ -567,22 +569,19 @@
 /obj/structure/barricade/metal/ex_act(severity)
 	switch(severity)
 		if(1)
-			health -= rand(400, 600)
+			take_damage( rand(400, 600) )
 		if(2)
-			health -= rand(150, 350)
+			take_damage( rand(150, 350) )
 		if(3)
-			health -= rand(50, 100)
-
-	update_health()
+			take_damage( rand(50, 100) )
 
 /obj/structure/barricade/metal/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	health -= round(P.damage/10)
+	take_damage( round(P.damage/10) )
 
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		health -= 50
+		take_damage( 50 )
 
-	update_health()
 	return 1
 
 /*----------------------*/
@@ -766,22 +765,19 @@
 /obj/structure/barricade/plasteel/ex_act(severity)
 	switch(severity)
 		if(1)
-			health -= rand(450, 650)
+			take_damage( rand(450, 650) )
 		if(2)
-			health -= rand(200, 400)
+			take_damage( rand(200, 400) )
 		if(3)
-			health -= rand(50, 150)
-
-	update_health()
+			take_damage( rand(50, 150) )
 
 /obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	health -= round(P.damage/10)
+	take_damage( round(P.damage/10) )
 
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		health -= 50
+		take_damage( 50 )
 
-	update_health()
 	return 1
 
 /*----------------------*/
@@ -833,11 +829,9 @@
 
 /obj/structure/barricade/sandbags/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	health -= round(P.damage/10)
+	take_damage( round(P.damage/10) )
 
 	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		health -= 50
-
-	update_health()
+		take_damage( 50 )
 
 	return 1

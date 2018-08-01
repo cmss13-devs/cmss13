@@ -196,8 +196,10 @@
 							continue
 						if(isturf(loc))
 							M.forceMove(loc)
-							M.SetStunned(0)
-							M.SetKnockeddown(0)
+							if(ismob(M))
+								var/mob/mob_in_stomach = M
+								mob_in_stomach.SetStunned(0)
+								mob_in_stomach.SetKnockeddown(0)
 
 				M.acid_damage++
 				if(M.acid_damage > 300)

@@ -279,7 +279,13 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(!HP)
 			user << "There is nothing installed on the [i] hardpoint slot."
 		else
-			user << "There is a [HP.health <= 0 ? "broken" : "working"] [HP] installed on the [i] hardpoint slot."
+			var/P = HP.get_integrity_percent()
+			var/msg = "There is a [HP] installed on the [i] hardpoint slot."
+			if(P <= 0)
+				msg += " It's busted!"
+			else if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+				msg += " It's at [round(P, 1)]% integrity!"
+			user << msg
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/root/cm_armored/healthcheck()
@@ -350,51 +356,6 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/obj/vehicle/multitile/root/cm_armored/C = root
 	if(C) C.take_damage_type(1000000, "abstract")
 	..()
-
-//Tramplin' time, but other than that identical
-/obj/vehicle/multitile/hitbox/cm_armored/Bump(var/atom/A)
-	. = ..()
-	if(isliving(A))
-		if (isXenoDefender(A))
-			var/mob/living/carbon/Xenomorph/X = A
-			if (X.fortify)
-				return
-
-		var/mob/living/M = A
-		M.KnockDown(10, 1)
-		M.apply_damage(7 + rand(0, 5), BRUTE)
-		M.visible_message("<span class='danger'>[src] runs over [M]!</span>", "<span class='danger'>[src] runs you over! Get out of the way!</span>")
-		var/obj/vehicle/multitile/root/cm_armored/CA = root
-		var/list/slots = CA.get_activatable_hardpoints()
-		for(var/slot in slots)
-			var/obj/item/hardpoint/H = CA.hardpoints[slot]
-			if(!H) continue
-			H.livingmob_interact(M)
-	else if(istype(A, /obj/structure/fence))
-		var/obj/structure/fence/F = A
-		F.visible_message("<span class='danger'>[root] smashes through [F]!</span>")
-		F.health = 0
-		F.healthcheck()
-	else if(istype(A, /turf/closed/wall))
-		var/turf/closed/wall/W = A
-		W.take_damage(30)
-		var/obj/vehicle/multitile/root/cm_armored/CA = root
-		CA.take_damage_type(10, "blunt", W)
-		playsound(W, 'sound/effects/metal_crash.ogg', 35)
-	else if(istype(A, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/R = A
-		R.health = 0
-		R.healthcheck()
-	else if(istype(A, /obj/structure/table))
-		var/obj/structure/table/T = A
-		T.visible_message("<span class='danger'>[root] crushes [T]!</span>")
-		T.destroy(1)
-	else if(istype(A, /obj/structure/girder))
-		var/obj/structure/girder/G = A
-		G.dismantle()
-		var/obj/vehicle/multitile/root/cm_armored/CA = root
-		CA.take_damage_type(10, "blunt", G)
-		playsound(G, 'sound/effects/metal_crash.ogg', 35)
 
 /obj/vehicle/multitile/hitbox/cm_armored/Move(var/atom/A, var/direction)
 

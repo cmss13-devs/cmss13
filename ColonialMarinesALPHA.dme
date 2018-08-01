@@ -1413,6 +1413,7 @@
 #include "code\modules\vehicles\powerloader.dm"
 #include "code\modules\vehicles\tank.dm"
 #include "code\modules\vehicles\train.dm"
+#include "code\modules\vehicles\trample_act.dm"
 #include "code\modules\vehicles\vehicle.dm"
 #include "code\WorkInProgress\buildmode.dm"
 #include "code\WorkInProgress\periodic_news.dm"

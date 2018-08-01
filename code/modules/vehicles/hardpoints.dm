@@ -47,6 +47,10 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/proc/livingmob_interact(var/mob/living/M)
 	return
+//The integrity of the hardpoint module
+
+/obj/item/hardpoint/proc/get_integrity_percent()		// return % charge of cell
+	return 100.0*health/initial(health)
 
 //If our cooldown has elapsed
 /obj/item/hardpoint/proc/is_ready()

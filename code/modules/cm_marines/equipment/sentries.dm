@@ -2,8 +2,8 @@
 //They are built in stages, and only engineers have access to them.
 
 /obj/item/ammo_magazine/sentry
-	name = "M30 box magazine (10x28mm Caseless)"
-	desc = "A box of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	name = "M30 ammo drum (10x28mm Caseless)"
+	desc = "An ammo drum of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
 	w_class = 4
 	icon_state = "ua571c"
 	flags_magazine = NOFLAGS //can't be refilled or emptied by hand

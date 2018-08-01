@@ -52,6 +52,39 @@
 
 	del(src)
 
+
+//Tank spawner that spawns in a tank that's NOT eight kinds of awful, mostly for testing purposes
+/obj/effect/multitile_spawner/cm_armored/tank/fixed/New()
+	var/obj/vehicle/multitile/root/cm_armored/tank/R = new(src.loc)
+	R.dir = EAST
+
+	var/datum/coords/dimensions = new
+	dimensions.x_pos = width
+	dimensions.y_pos = height
+	var/datum/coords/root_pos = new
+	root_pos.x_pos = 1
+	root_pos.y_pos = 1
+
+	var/datum/coords/entr_mark = new
+	entr_mark.x_pos = -2
+	entr_mark.y_pos = 0
+
+	R.load_hitboxes(dimensions, root_pos)
+	R.load_entrance_marker(entr_mark)
+
+	//Manually adding those hardpoints
+	R.add_hardpoint(new /obj/item/hardpoint/primary/cannon, R.hardpoints[HDPT_PRIMARY])
+	R.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola, R.hardpoints[HDPT_SECDGUN])
+	R.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer, R.hardpoints[HDPT_SUPPORT])
+	R.add_hardpoint(new /obj/item/hardpoint/armor/ballistic, R.hardpoints[HDPT_ARMOR])
+	R.add_hardpoint(new /obj/item/hardpoint/treads/standard, R.hardpoints[HDPT_TREADS])
+	R.update_damage_distribs()
+
+	R.healthcheck()
+
+	del(src)
+
+
 //Pretty similar to the previous one
 //TODO: Make this code better and less repetetive
 //Spawns a tank that has a bunch of broken hardpoints

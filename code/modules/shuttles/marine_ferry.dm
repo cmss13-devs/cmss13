@@ -391,7 +391,7 @@
 				cdel(embryo)
 			for(var/mob/living/carbon/Xenomorph/Larva/larva in potential_host)
 				cdel(larva)
-			death()
+			potential_host.death()
 
 	sleep(travel_time) //Wait while we fly, but give extra time for crashing announcements etc
 

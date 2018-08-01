@@ -174,7 +174,7 @@
 	name = "pistol bullet"
 	New()
 		..()
-		damage = config.mlow_hit_damage
+		damage = config.low_hit_damage
 		accuracy = -config.low_hit_accuracy
 
 /datum/ammo/bullet/pistol/tiny
@@ -259,14 +259,14 @@
 	New()
 		..()
 		accuracy = -config.med_hit_accuracy
-		damage = config.lmed_hit_damage
-		penetration= config.min_armor_penetration
+		damage = config.med_hit_damage
+		penetration = config.min_armor_penetration
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
 	New()
 		..()
-		damage = config.low_hit_damage
+		damage = config.lmed_hit_damage
 
 /datum/ammo/bullet/revolver/marksman
 	name = "slimline revolver bullet"
@@ -277,7 +277,6 @@
 		accuracy = config.med_hit_accuracy
 		accurate_range = config.short_shell_range
 		scatter = -config.low_scatter_value
-		damage = config.low_hit_damage
 		penetration = -config.mlow_armor_penetration
 
 /datum/ammo/bullet/revolver/heavy
@@ -285,7 +284,7 @@
 	New()
 		..()
 		damage = config.med_hit_damage
-		penetration= config.min_armor_penetration
+		penetration = config.min_armor_penetration
 		accuracy = -config.med_hit_accuracy
 
 /datum/ammo/bullet/revolver/highimpact
@@ -297,7 +296,7 @@
 		damage = config.hmed_hit_damage
 		damage_var_low = config.low_proj_variance
 		damage_var_high = config.med_proj_variance
-		penetration= config.mlow_armor_penetration
+		penetration = config.mlow_armor_penetration
 
 /*
 //================================================
@@ -309,12 +308,8 @@
 	name = "submachinegun bullet"
 	New()
 		..()
-		accuracy_var_low = config.med_proj_variance
-		accuracy_var_high = config.med_proj_variance
 		damage = config.low_hit_damage
-		damage_var_low = config.med_proj_variance
-		damage_var_high = config.high_proj_variance
-		accurate_range = config.close_shell_range
+		accurate_range = config.near_shell_range
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
@@ -322,7 +317,7 @@
 		..()
 		scatter = config.min_scatter_value
 		damage = config.mlow_hit_damage
-		penetration= config.med_armor_penetration
+		penetration = config.med_armor_penetration
 
 /*
 //================================================

@@ -273,7 +273,7 @@
 		node2 = null
 
 	update_underlays()
-
+	start_processing()
 	return null
 
 /obj/machinery/atmospherics/tvalve/digital		// can be controlled by AI

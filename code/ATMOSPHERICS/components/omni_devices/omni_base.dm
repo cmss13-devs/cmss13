@@ -287,5 +287,5 @@
 			break
 
 	update_ports()
-
+	start_processing()
 	return null

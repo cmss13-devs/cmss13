@@ -118,7 +118,7 @@
 		node = null
 
 	update_underlays()
-
+	start_processing()
 	return null
 
 

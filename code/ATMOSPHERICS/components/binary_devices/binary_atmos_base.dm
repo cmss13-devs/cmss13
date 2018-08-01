@@ -126,7 +126,7 @@
 
 	update_icon()
 	update_underlays()
-
+	start_processing()
 	return null
 
 

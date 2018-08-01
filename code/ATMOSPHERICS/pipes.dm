@@ -307,7 +307,7 @@
 		node2 = null
 
 	update_icon()
-
+	start_processing()
 	return null
 
 /obj/machinery/atmospherics/pipe/simple/visible
@@ -463,7 +463,7 @@
 		if(istype(node3, /obj/machinery/atmospherics/pipe))
 			del(parent)
 		node3 = null
-
+	start_processing()
 	update_icon()
 
 	..()
@@ -709,7 +709,7 @@
 		node4 = null
 
 	update_icon()
-
+	start_processing()
 	..()
 
 /obj/machinery/atmospherics/pipe/manifold4w/change_color(var/new_color)
@@ -945,7 +945,7 @@
 		node = null
 
 	update_icon()
-
+	start_processing()
 	..()
 
 /obj/machinery/atmospherics/pipe/cap/change_color(var/new_color)
@@ -1092,7 +1092,7 @@
 		node1 = null
 
 	update_underlays()
-
+	start_processing()
 	return null
 
 /obj/machinery/atmospherics/pipe/tank/attackby(var/obj/item/W as obj, var/mob/user as mob)
@@ -1235,7 +1235,7 @@
 		node1 = null
 
 	update_icon()
-
+	start_processing()
 	return null
 
 /obj/machinery/atmospherics/pipe/vent/hide(var/i) //to make the little pipe section invisible, the icon changes.

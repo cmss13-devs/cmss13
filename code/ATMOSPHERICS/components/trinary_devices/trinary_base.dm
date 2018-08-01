@@ -159,7 +159,7 @@
 		node3 = null
 
 	update_underlays()
-
+	start_processing()
 	return null
 
 

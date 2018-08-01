@@ -189,7 +189,7 @@
 		else if(reference==node2)
 			del(network2)
 			node2 = null
-
+		start_processing()
 		return null
 
 

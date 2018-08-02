@@ -213,8 +213,12 @@ datum/game_mode/proc/initialize_special_clamps()
 		return
 
 	var/mob/living/carbon/human/new_predator
+	var/wants_elder = 0
+	if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER)
+		if(alert(pred_candidate,"Would you like to play as an Elder, or a Youngblood?","Predator Type","Elder","Youngblood") == "Elder")
+			wants_elder = 1
 
-	new_predator = new(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER ? pick(pred_elder_spawn) : pick(pred_spawn))
+	new_predator = new(wants_elder ? pick(pred_elder_spawn) : pick(pred_spawn))
 	new_predator.set_species("Yautja")
 
 	new_predator.mind_initialize()
@@ -240,7 +244,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	var/mask_number = new_predator.client.prefs.predator_mask_type
 
 	new_predator.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(new_predator, boot_number), WEAR_FEET)
-	if(RoleAuthority.roles_whitelist[new_predator.ckey] & WHITELIST_YAUTJA_ELDER)
+	if(wants_elder)
 		new_predator.real_name = "Elder [new_predator.real_name]"
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number, 1), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number, 1), WEAR_FACE)

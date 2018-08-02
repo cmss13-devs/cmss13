@@ -169,7 +169,7 @@
 				H << "<span class='warning'>Not enough points.</span>"
 				return
 
-			if(!H.assigned_squad || (squad_tag && H.assigned_squad.name != squad_tag))
+			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
 				H << "<span class='warning'>This machine isn't for you.</span>"
 				return
 
@@ -190,7 +190,14 @@
 						return
 					var/p_name = L[1]
 					if(!available_specialist_sets.Find(p_name))
-						H << "<span class='warning'>That set is already taken</span>"
+						H << "<span class='warning'>That set is already taken.</span>"
+						return
+
+				if(vendor_role == "Tank Crewman")
+					var/p_name = L[1]
+					var/obj/machinery/marine_selector/tank/t = src
+					if(!t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
+						H << "<span class='warning'>That equipment is already taken.</span>"
 						return
 
 				if(I.marine_buy_flags & bitf)
@@ -248,17 +255,30 @@
 							H << "<span class='warning'><b>Something bad occured with [src], tell a Dev.</b></span>"
 							return
 					available_specialist_sets -= p_name
-
-
-
+			if(vendor_role == "Tank Crewman")
+				if(H.mind && H.mind.assigned_role == "Tank Crewman")
+					H << "<span class='warning'>Only Tank Crewmen can take this equipment.</span>"
+					if(istype(src, /obj/machinery/marine_selector/tank))
+						var/obj/machinery/marine_selector/tank/t = src
+						var/t_name = L[1]
+						if(!t.primary_list.Find(t_name) && !t.secondary_list.Find(t_name) && !t.support_list.Find(t_name) && !t.armor_list.Find(t_name) &&!t.treads_list.Find(t_name))
+							H << "<span class='warning'>That equipment is already taken.</span>"
+							return
+						if(t.primary_list.Find(t_name))
+							t.primary_list.Cut()
+						if(t.secondary_list.Find(t_name))
+							t.secondary_list.Cut()
+						if(t.support_list.Find(t_name))
+							t.support_list.Cut()
+						if(t.armor_list.Find(t_name))
+							t.armor_list.Cut()
+						if(t.treads_list.Find(t_name))
+							t.treads_list.Cut()
 			if(use_points)
 				I.marine_points -= cost
 
 		src.add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
-
-
-
 
 
 /obj/machinery/marine_selector/clothes
@@ -872,12 +892,43 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 
 
+//Five global lists - one for each slot - so that two tankers can't each get five items
 
+/obj/machinery/marine_selector/tank
+	name = "ColMarTech Tank Equipment storage"
+	desc = "An automated weapons storage unit hooked up to the underbelly of the ship, allowing the tank crew to choose one set of free equipment for their tank. "
+	icon_state = "armory"
+	vendor_role = "Tank Crewman"
+	var/list/primary_list = list("LTB Cannon", "LTAA-AP Minigun")
+	var/list/secondary_list = list("Grenade Launcher", "M56 Cupola", "Secondary Flamer Unit", "TOW Launcher")
+	var/list/support_list = list("Artillery Module", "Integrated Weapons Sensor Array", "Overdrive Enhancer", "Smoke Launcher")
+	var/list/armor_list = list("Ballistic Armor", "Caustic Armor", "Paladin Armor", "Snowplow")
+	var/list/treads_list = list("Treads")
 
-
-
-
-
+//fuck it
+	listed_products = list(
+							list("PRIMARY WEAPON", 0, null, null, null),
+							list("LTB Cannon", 0, /obj/effect/essentials_set/ltb, MARINE_CAN_BUY_EAR, "black"),
+							list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/gatling, MARINE_CAN_BUY_EAR, "black"),
+							list("SECONDARY WEAPON", 0, null, null, null),
+							list("Grenade Launcher", 0, /obj/effect/essentials_set/tankgl, MARINE_CAN_BUY_GLOVES, "black"),
+							list("M56 Cupola", 0, /obj/effect/essentials_set/tank56, MARINE_CAN_BUY_GLOVES, "black"),
+							list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tankflamer, MARINE_CAN_BUY_GLOVES, "black"),
+							list("TOW Launcher", 0, /obj/effect/essentials_set/tow, MARINE_CAN_BUY_GLOVES, "black"),
+							list("SUPPORT MODULE", 0, null, null, null),
+							list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, MARINE_CAN_BUY_ATTACHMENT, "black"),
+							list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/support/weapons_sensor, MARINE_CAN_BUY_ATTACHMENT, "black"),
+							list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, MARINE_CAN_BUY_ATTACHMENT, "black"),
+							list("Smoke Launcher", 0, /obj/item/hardpoint/support/smoke_launcher, MARINE_CAN_BUY_ATTACHMENT, "black"),
+							list("ARMOR", 0, null, null, null),
+							list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, MARINE_CAN_BUY_ARMOR, "black"),
+							list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, MARINE_CAN_BUY_ARMOR, "black"),
+							list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, MARINE_CAN_BUY_ARMOR, "black"),
+							list("Paladin Armor", 0, /obj/item/hardpoint/armor/snowplow, MARINE_CAN_BUY_ARMOR, "black"),
+							list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, MARINE_CAN_BUY_ARMOR, "black"),
+							list("TREADS", 0, null, null, null),
+							list("Treads", 0, /obj/item/hardpoint/treads/standard, MARINE_CAN_BUY_SHOES, "black"),
+							)
 
 
 /obj/effect/essentials_set
@@ -927,8 +978,55 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 						)
 
 
+//Not essentials sets but fuck it the code's here
+/obj/effect/essentials_set/ltb
+	spawned_gear_list = list(
+	/obj/item/hardpoint/primary/cannon,
+	/obj/item/ammo_magazine/tank/ltb_cannon,
+	/obj/item/ammo_magazine/tank/ltb_cannon,
+	/obj/item/ammo_magazine/tank/ltb_cannon,
+	/obj/item/ammo_magazine/tank/ltb_cannon,
+	/obj/item/ammo_magazine/tank/ltb_cannon
+	)
 
+/obj/effect/essentials_set/gatling
+	spawned_gear_list = list(
+	/obj/item/hardpoint/primary/minigun,
+	/obj/item/ammo_magazine/tank/ltaaap_minigun,
+	/obj/item/ammo_magazine/tank/ltaaap_minigun,
+	/obj/item/ammo_magazine/tank/ltaaap_minigun
+	)
 
+/obj/effect/essentials_set/tankflamer
+	spawned_gear_list = list(
+	/obj/item/hardpoint/secondary/flamer,
+	/obj/item/ammo_magazine/tank/flamer,
+	/obj/item/ammo_magazine/tank/flamer
+	)
+
+/obj/effect/essentials_set/tow
+	spawned_gear_list = list(
+	/obj/item/hardpoint/secondary/towlauncher,
+	/obj/item/hardpoint/secondary/grenade_launcher,
+	/obj/item/ammo_magazine/tank/towlauncher,
+	/obj/item/ammo_magazine/tank/towlauncher
+	)
+
+/obj/effect/essentials_set/tank56
+	spawned_gear_list = list(
+	/obj/item/hardpoint/secondary/m56cupola,
+	/obj/item/ammo_magazine/tank/m56_cupola
+	)
+
+/obj/effect/essentials_set/tankgl
+	spawned_gear_list = list(
+	/obj/item/hardpoint/secondary/grenade_launcher,
+	/obj/item/ammo_magazine/tank/tank_glauncher,
+	/obj/item/ammo_magazine/tank/tank_glauncher,
+	/obj/item/ammo_magazine/tank/tank_glauncher,
+	/obj/item/ammo_magazine/tank/tank_glauncher,
+	/obj/item/ammo_magazine/tank/tank_glauncher
+	)
 
 #undef MARINE_CAN_BUY_UNIFORM
 #undef MARINE_CAN_BUY_SHOES

@@ -320,7 +320,7 @@
 	if(!throwpass)
 		return TRUE
 
-	if(P.ammo.flags_ammo_behavior & AMMO_SNIPER) //sniper rounds bypass cover
+	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_BARRICADES)
 		return FALSE
 
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank bypasses cover

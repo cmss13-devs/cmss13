@@ -33,7 +33,7 @@
 			update_icon()
 
 /obj/structure/barricade/handle_barrier_chance(mob/living/M)
-	return prob((100.0*health)/maxhealth)
+	return prob(max(30,(100.0*health)/maxhealth))
 
 /obj/structure/barricade/examine(mob/user)
 	..()

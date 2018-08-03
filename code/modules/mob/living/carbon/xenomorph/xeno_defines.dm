@@ -27,8 +27,8 @@
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
 	var/tacklemin = 2
-	var/tacklemax = 4
-	var/tackle_chance = 50
+	var/tacklemax = 3
+	var/tackle_chance = 35
 	var/is_intelligent = 0 //If they can use consoles, etc. Set on Queen
 	var/caste_desc = null
 

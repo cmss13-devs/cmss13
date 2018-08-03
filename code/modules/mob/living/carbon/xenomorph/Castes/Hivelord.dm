@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	max_health = 220
+	max_health = 200
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
@@ -29,7 +29,7 @@
 	armor_deflection = 10
 	tacklemin = 3
 	tacklemax = 5
-	tackle_chance = 60
+	tackle_chance = 40
 	speed = 0.3
 	aura_strength = 1.5
 
@@ -38,15 +38,15 @@
 	upgrade = 2
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	max_health = 250
+	max_health = 240
 	plasma_max = 1000
 	plasma_gain = 50
 	upgrade_threshold = 3200
 	caste_desc = "A builder of REALLY BIG hives. It looks pretty strong."
 	armor_deflection = 15
-	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 70
+	tacklemin = 3
+	tacklemax = 4
+	tackle_chance = 45
 	speed = 0.2
 	aura_strength = 2
 
@@ -55,14 +55,12 @@
 	upgrade = 3
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	max_health = 300
+	max_health = 260
 	plasma_max = 1200
 	plasma_gain = 70
 	caste_desc = "An extreme construction machine. It seems to be building walls..."
 	armor_deflection = 20
-	tacklemin = 5
-	tacklemax = 7
-	tackle_chance = 80
+	tackle_chance = 50
 	speed = 0.1
 
 /mob/living/carbon/Xenomorph/Hivelord
@@ -71,9 +69,9 @@
 	desc = "A huge ass xeno covered in weeds! Oh shit!"
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Hivelord Walking"
-	health = 220
-	maxHealth = 220
-	plasma_stored = 200
+	health = 200
+	maxHealth = 200
+	plasma_stored = 800
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

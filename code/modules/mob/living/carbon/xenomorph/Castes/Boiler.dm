@@ -3,11 +3,8 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 12
-	melee_damage_upper = 15
-	tacklemin = 2
-	tacklemax = 4
-	tackle_chance = 60
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	plasma_gain = 30
 	plasma_max = 800
 	upgrade_threshold = 800
@@ -27,15 +24,14 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 25
 	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 65
+	tacklemax = 4
+	tackle_chance = 40
 	plasma_gain = 35
 	plasma_max = 900
 	upgrade_threshold = 1600
-
 	spit_delay = 30
 	caste_desc = "Some sort of abomination. It looks a little more dangerous."
-	armor_deflection = 30
+	armor_deflection = 25
 	max_health = 200
 	speed = 0.6
 	bomb_strength = 1.5
@@ -45,18 +41,15 @@
 	upgrade_name = "Elder"
 
 	upgrade = 2
-	melee_damage_lower = 30
-	melee_damage_upper = 35
-	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 70
+	melee_damage_lower = 25
+	melee_damage_upper = 30
+	tackle_chance = 45
 	plasma_gain = 40
 	plasma_max = 1000
 	upgrade_threshold = 3200
-
 	spit_delay = 20
 	caste_desc = "Some sort of abomination. It looks pretty strong."
-	armor_deflection = 35
+	armor_deflection = 30
 	max_health = 220
 	speed = 0.5
 	bomb_strength = 2
@@ -66,19 +59,17 @@
 	upgrade_name = "Ancient"
 
 	upgrade = 3
-	melee_damage_lower = 35
-	melee_damage_upper = 45
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 80
-	plasma_gain = 50
+	tacklemax = 5
+	tackle_chance = 50
+	plasma_gain = 45
 	plasma_max = 1000
-
-
 	spit_delay = 10
 	caste_desc = "A devestating piece of alien artillery."
 	armor_deflection = 35
-	max_health = 250
+	max_health = 240
 	speed = 0.4
 	bomb_strength = 2.5
 

@@ -3,12 +3,10 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 15
-	melee_damage_upper = 25
-	tacklemin = 3
-	tacklemax = 8
-	tackle_chance = 75
-	max_health = 250
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	tackle_chance = 45
+	max_health = 225
 	plasma_gain = 25
 	plasma_max = 800
 	upgrade_threshold = 800
@@ -23,54 +21,48 @@
 /datum/caste_datum/praetorian/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	max_health = 220
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	max_health = 250
 	plasma_gain = 30
 	plasma_max = 900
 	upgrade_threshold = 1600
 	spit_delay = 15
 	caste_desc = "A giant ranged monster. It looks a little more dangerous."
 	armor_deflection = 40
-	tacklemin = 5
-	tacklemax = 8
-	tackle_chance = 75
-	speed = 0.0
+	tackle_chance = 50
+	speed = -0.6
 	aura_strength = 2.5
 
 /datum/caste_datum/praetorian/elder
 	upgrade_name = "Elder"
 	upgrade = 2
 	melee_damage_lower = 30
-	melee_damage_upper = 35
-	max_health = 250
+	melee_damage_upper = 40
+	max_health = 275
 	plasma_gain = 40
 	plasma_max = 1000
 	upgrade_threshold = 3200
 	spit_delay = 10
 	caste_desc = "A giant ranged monster. It looks pretty strong."
 	armor_deflection = 45
-	tacklemin = 6
-	tacklemax = 9
-	tackle_chance = 80
-	speed = -0.1
+	tackle_chance = 55
+	speed = -0.7
 	aura_strength = 3.5
 
 /datum/caste_datum/praetorian/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 40
-	melee_damage_upper = 50
-	max_health = 270
+	melee_damage_lower = 35
+	melee_damage_upper = 45
+	max_health = 300
 	plasma_gain = 50
 	plasma_max = 1000
-	spit_delay = 0
+	spit_delay = 5
 	caste_desc = "Its mouth looks like a minigun."
-	armor_deflection = 45
-	tacklemin = 7
-	tacklemax = 10
-	tackle_chance = 85
-	speed = -0.2
+	armor_deflection = 50
+	tackle_chance = 60
+	speed = -0.8
 	aura_strength = 4.5
 
 /mob/living/carbon/Xenomorph/Praetorian
@@ -79,9 +71,9 @@
 	desc = "A huge, looming beast of an alien."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Praetorian Walking"
-	health = 250
-	maxHealth = 250
-	plasma_stored = 200
+	health = 225
+	maxHealth = 225
+	plasma_stored = 800
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

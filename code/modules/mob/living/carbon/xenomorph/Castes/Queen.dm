@@ -4,10 +4,10 @@
 	tier = 0
 	upgrade = 0
 	melee_damage_lower = 30
-	melee_damage_upper = 46
+	melee_damage_upper = 40
 	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 80
+	tacklemax = 5
+	tackle_chance = 40
 	max_health = 300
 	plasma_max = 700
 	plasma_gain = 30
@@ -21,7 +21,7 @@
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
 	xeno_explosion_resistance = 3 //some resistance against explosion stuns.
 	spit_delay = 25
-	queen_leader_limit = 1
+	queen_leader_limit = 2
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
@@ -30,20 +30,18 @@
 	upgrade_name = "Mature"
 	upgrade = 1
 	melee_damage_lower = 40
-	melee_damage_upper = 55
-	max_health = 320
+	melee_damage_upper = 50
+	max_health = 325
 	plasma_max = 800
 	plasma_gain = 40
 	upgrade_threshold = 1600
 	spit_delay = 20
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	armor_deflection = 50
-	tacklemin = 5
-	tacklemax = 7
-	tackle_chance = 85
+	tackle_chance = 45
 	speed = 0.5
 	aura_strength = 3
-	queen_leader_limit = 2
+	queen_leader_limit = 3
 
 /datum/caste_datum/queen/elder
 	upgrade_name = "Elder"
@@ -57,30 +55,28 @@
 	spit_delay = 15
 	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	armor_deflection = 55
-	tacklemin = 6
-	tacklemax = 9
-	tackle_chance = 90
+	tacklemin = 5
+	tacklemax = 6
+	tackle_chance = 50
 	speed = 0.4
 	aura_strength = 4
-	queen_leader_limit = 3
+	queen_leader_limit = 4
 
 /datum/caste_datum/queen/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 70
-	melee_damage_upper = 90
-	max_health = 400
+	melee_damage_lower = 60
+	melee_damage_upper = 70
+	max_health = 375
 	plasma_max = 1000
-	plasma_gain = 50
+	plasma_gain = 60
 	spit_delay = 10
 	caste_desc = "The most perfect Xeno form imaginable."
 	armor_deflection = 55
-	tacklemin = 7
-	tacklemax = 10
-	tackle_chance = 95
+	tackle_chance = 55
 	speed = 0.3
 	aura_strength = 5
-	queen_leader_limit = 4
+	queen_leader_limit = 5
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:

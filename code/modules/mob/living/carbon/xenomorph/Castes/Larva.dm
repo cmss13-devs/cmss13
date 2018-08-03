@@ -1,23 +1,30 @@
-//Xenomorph - Larva - Colonial Marines - Apophis775 - Last Edit: 11JUN16
+/datum/caste_datum/larva
+	caste_name = "Bloody Larva"
+	tier = 0
+	upgrade = -1
+	plasma_gain = 1
+	melee_damage_lower = 0
+	melee_damage_upper = 0
+	max_health = 35
+	caste_desc = "D'awwwww, so cute!"
+	speed = -1.6 //Zoom!
+	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
 
+/datum/caste_datum/larva/predalien
+	caste_name = "Predalien Larva"
+	evolves_to = list("Predalien")
 
 /mob/living/carbon/Xenomorph/Larva
 	name = "Bloody Larva"
-	caste = "Bloody Larva"
+	caste_name = "Bloody Larva"
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
 	amount_grown = 0
 	max_grown = 100
 	maxHealth = 35
 	health = 35
-	plasma_gain = 1
-	melee_damage_lower = 0
-	melee_damage_upper = 0
-	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
 	see_in_dark = 8
-	caste_desc = "D'awwwww, so cute!"
 	flags_pass = PASSTABLE | PASSMOB
-	speed = -1.6 //Zoom!
 	away_timer = 300
 	tier = 0  //Larva's don't count towards Pop limits
 	upgrade = -1
@@ -34,8 +41,7 @@
 
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon_state = "Predalien Larva"
-	caste = "Predalien Larva"
-	evolves_to = list("Predalien")
+	caste_name = "Predalien Larva"
 
 /mob/living/carbon/Xenomorph/Larva/UnarmedAttack(atom/A)
 	a_intent = "help" //Forces help intent for all interactions.

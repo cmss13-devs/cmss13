@@ -115,10 +115,10 @@ proc/initialize_upgrades()
 	helptext = "Your exoskeleton becomes thicker, protecting you from projectiles."
 
 /mob/living/carbon/Xenomorph/proc/upgrade_armor()
-	if(src.armor_deflection > 0)
-		armor_deflection += 15
+	if(caste.armor_deflection > 0)
+		caste.armor_deflection += 15
 	else
-		armor_deflection = 60
+		caste.armor_deflection = 60
 	src << "<span class='xenonotice'>Your exoskeleton feels thicker.</span>"
 
 /datum/upgrade/armor2
@@ -219,10 +219,10 @@ proc/initialize_upgrades()
 	helptext = "Quicken the speed at which royal jelly metabolizes, granting you new forms faster."
 
 /mob/living/carbon/Xenomorph/proc/upgrade_jelly()
-	if(evolution_allowed)
+	if(caste.evolution_allowed)
 		evolution_stored += 50
 	else
-		evolution_allowed = 1
+		caste.evolution_allowed = 1
 		evolution_stored += 10
 
 	src << "<span class='xenonotice'>You feel royal jelly ripple through your haemolymph.</span>"

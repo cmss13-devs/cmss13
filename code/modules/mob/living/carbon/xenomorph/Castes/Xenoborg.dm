@@ -1,14 +1,8 @@
-
-/mob/living/carbon/Xenomorph/Xenoborg
-	caste = "Xenoborg"
-	name = "Xenoborg"
-	desc = "What.. what is this monstrosity? A cyborg in the shape of a xenomorph?! What hath our science wrought?"
-	icon_state = "Xenoborg Walking"
+/datum/caste_datum/xenoborg
+	caste_name = "Xenoborg"
 	melee_damage_lower = 24
 	melee_damage_upper = 24
-	health = 300
-	maxHealth = 300
-	plasma_stored = 1500
+	max_health = 300
 	plasma_gain = 0
 	plasma_max = 1500
 	caste_desc = "Oh dear god!"
@@ -16,13 +10,23 @@
 	evolution_allowed = FALSE
 	charge_type = 1 //Pounce
 	is_intelligent = 1
-	universal_speak = 1
-	universal_understand = 1
-	speak_emote = list("buzzes", "beeps")
 	armor_deflection = 90
 	fire_immune = 1
 	is_robotic = 1
 	xeno_explosion_resistance = 3 //no stuns from explosions, ignore damages except devastation range.
+	can_be_queen_healed = 0
+
+/mob/living/carbon/Xenomorph/Xenoborg
+	caste_name = "Xenoborg"
+	name = "Xenoborg"
+	desc = "What.. what is this monstrosity? A cyborg in the shape of a xenomorph?! What hath our science wrought?"
+	icon_state = "Xenoborg Walking"
+	health = 300
+	maxHealth = 300
+	plasma_stored = 1500
+	universal_speak = 1
+	universal_understand = 1
+	speak_emote = list("buzzes", "beeps")
 	var/gun_on = 0
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
@@ -102,13 +106,13 @@
 				return
 		if(istype(O, /obj/item/cell))
 			var/obj/item/cell/C = O
-			if(plasma_stored >= plasma_max)
+			if(plasma_stored >= caste.plasma_max)
 				user << "<span class='warning'>\The [src] does not need a new cell right now.</span>"
 				return
 			src.visible_message("<span class='notice'>\The [user] carefully inserts \the [C] into \the [src]'s power supply port.")
 			plasma_stored += C.charge
-			if(plasma_stored > plasma_max) plasma_stored = plasma_max
-			src << "<span class='notice'>Your power supply suddenly updates. New charge: [plasma_stored]/[plasma_max]"
+			if(plasma_stored > caste.plasma_max) plasma_stored = caste.plasma_max
+			src << "<span class='notice'>Your power supply suddenly updates. New charge: [plasma_stored]/[caste.plasma_max]"
 			cdel(O)
 			user.update_inv_l_hand(0) //Update the user sprites after the del, just to be safe.
 			user.update_inv_r_hand()

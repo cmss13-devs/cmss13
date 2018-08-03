@@ -155,8 +155,15 @@ proc/isXenoDefender(A)
 		return 1
 	return 0
 
-proc/isXenoLarva(A) //Xenomorph Larva Hud Test APOPHIS 22MAY2015
+proc/isXenoPredalien(A)
+	if(istype(A, /mob/living/carbon/Xenomorph/Predalien))
+		return 1
+	return 0
+
+proc/isXenoLarva(A, var/strict = 0)
 	if(istype(A, /mob/living/carbon/Xenomorph/Larva))
+		if(strict && istype(A, /mob/living/carbon/Xenomorph/Larva/predalien))
+			return 0
 		return 1
 	return 0
 

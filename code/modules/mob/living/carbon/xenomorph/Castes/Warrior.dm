@@ -1,24 +1,95 @@
+/datum/caste_datum/warrior
+	caste_name = "Warrior"
+	upgrade_name = "Young"
+	tier = 2
+	upgrade = 0
+	melee_damage_lower = 30
+	melee_damage_upper = 35
+	evolves_to = list("Praetorian", "Crusher")
+
+	tackle_chance = 50
+	plasma_gain = 8
+	plasma_max = 100
+	upgrade_threshold = 500
+	evolution_threshold = 500
+
+	caste_desc = "A powerful front line combatant."
+	armor_deflection = 30
+	max_health = 200
+	speed = -0.8
+	agility_speed_increase = -0.7
+
+/datum/caste_datum/warrior/mature
+
+	upgrade_name = "Mature"
+	tier = 2
+	upgrade = 1
+	melee_damage_lower = 35
+	melee_damage_upper = 40
+
+
+
+	plasma_gain = 8
+	plasma_max = 100
+	upgrade_threshold = 800
+
+
+	caste_desc = "An alien with an armored carapace. It looks a little more dangerous."
+	armor_deflection = 35
+	max_health = 225
+	speed = -0.9
+
+/datum/caste_datum/warrior/elder
+
+	upgrade_name = "Elder"
+	tier = 2
+	upgrade = 2
+	melee_damage_lower = 40
+	melee_damage_upper = 45
+
+
+
+	plasma_gain = 8
+	plasma_max = 100
+	upgrade_threshold = 1600
+
+
+	caste_desc = "An alien with an armored carapace. It looks pretty strong."
+	armor_deflection = 40
+	max_health = 250
+	speed = -1.0
+
+/datum/caste_datum/warrior/ancient
+
+	upgrade_name = "Ancient"
+	tier = 2
+	upgrade = 3
+	melee_damage_lower = 45
+	melee_damage_upper = 50
+
+
+
+	plasma_gain = 8
+	plasma_max = 100
+
+
+
+	caste_desc = "An hulking beast capable of effortlessly breaking and tearing through its enemies."
+	armor_deflection = 45
+	max_health = 275
+	speed = -1.1
+
 /mob/living/carbon/Xenomorph/Warrior
-	caste = "Warrior"
+	caste_name = "Warrior"
 	name = "Warrior"
 	desc = "A beefy, alien with an armored carapace."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Warrior Walking"
-	melee_damage_lower = 30
-	melee_damage_upper = 35
 	health = 200
 	maxHealth = 200
 	plasma_stored = 50
-	plasma_gain = 8
-	plasma_max = 100
-	evolution_threshold = 500
-	upgrade_threshold = 500
-	caste_desc = "A powerful front line combatant."
-	speed = -0.8
 	pixel_x = -16
 	old_x = -16
-	evolves_to = list("Praetorian", "Crusher")
-	armor_deflection = 30
 	tier = 2
 	upgrade = 0
 	actions = list(
@@ -78,14 +149,14 @@
 		if (!check_plasma(10))
 			return FALSE
 
-		if(!lunge)
-			used_lunge = 1
-
 	. = ..(AM, lunge, TRUE) //no_msg = true because we don't want to show the defaul pull message
 
 	if(.) //successful pull
 		if(!isXeno(AM))
 			use_plasma(10)
+
+		if(!lunge)
+			used_lunge = 1
 
 		if(!isXeno(L) && !isYautja(L))
 			round_statistics.warrior_grabs++
@@ -96,7 +167,7 @@
 			"<span class='xenowarning'>You grab [L] by the throat!</span>")
 
 	if(!lunge && !isXeno(AM))
-		spawn(lunge_cooldown)
+		spawn(caste.lunge_cooldown)
 			used_lunge = 0
 			src << "<span class='notice'>You get ready to lunge again.</span>"
 			for(var/X in actions)

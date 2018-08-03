@@ -1,30 +1,86 @@
-//Hivelord Code - Colonial Marines - Last Edit: Apophis775 - 11JUN16
-
-/mob/living/carbon/Xenomorph/Hivelord
-	caste = "Hivelord"
-	name = "Hivelord"
-	desc = "A huge ass xeno covered in weeds! Oh shit!"
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
-	icon_state = "Hivelord Walking"
+/datum/caste_datum/hivelord
+	caste_name = "Hivelord"
+	upgrade_name = "Young"
+	tier = 2
+	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	health = 220
-	maxHealth = 220
-	plasma_stored = 200
+	max_health = 220
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	plasma_gain = 35
 	caste_desc = "A builder of REALLY BIG hives."
+	speed = 0.4
+	aura_strength = 1 //Hivelord's aura is not extremely strong, but better than Drones. At the top, it's just a bit above a young Queen. Climbs by 0.5 to 2.5
+	can_hold_facehuggers = 1
+	can_hold_eggs = CAN_HOLD_TWO_HANDS
+
+/datum/caste_datum/hivelord/mature
+	upgrade_name = "Mature"
+	upgrade = 1
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+	max_health = 220
+	plasma_max = 900
+	plasma_gain = 40
+	upgrade_threshold = 1600
+	caste_desc = "A builder of REALLY BIG hives. It looks a little more dangerous."
+	armor_deflection = 10
+	tacklemin = 3
+	tacklemax = 5
+	tackle_chance = 60
+	speed = 0.3
+	aura_strength = 1.5
+
+/datum/caste_datum/hivelord/elder
+	upgrade_name = "Elder"
+	upgrade = 2
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+	max_health = 250
+	plasma_max = 1000
+	plasma_gain = 50
+	upgrade_threshold = 3200
+	caste_desc = "A builder of REALLY BIG hives. It looks pretty strong."
+	armor_deflection = 15
+	tacklemin = 4
+	tacklemax = 6
+	tackle_chance = 70
+	speed = 0.2
+	aura_strength = 2
+
+/datum/caste_datum/hivelord/ancient
+	upgrade_name = "Ancient"
+	upgrade = 3
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	max_health = 300
+	plasma_max = 1200
+	plasma_gain = 70
+	caste_desc = "An extreme construction machine. It seems to be building walls..."
+	armor_deflection = 20
+	tacklemin = 5
+	tacklemax = 7
+	tackle_chance = 80
+	speed = 0.1
+
+/mob/living/carbon/Xenomorph/Hivelord
+	caste_name = "Hivelord"
+	name = "Hivelord"
+	desc = "A huge ass xeno covered in weeds! Oh shit!"
+	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon_state = "Hivelord Walking"
+	health = 220
+	maxHealth = 220
+	plasma_stored = 200
 	pixel_x = -16
 	old_x = -16
-	speed = 0.4
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	var/speed_activated = 0
 	tier = 2
 	upgrade = 0
-	aura_strength = 1 //Hivelord's aura is not extremely strong, but better than Drones. At the top, it's just a bit above a young Queen. Climbs by 0.5 to 2.5
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,

@@ -1,37 +1,86 @@
-//Ravager Code - Colonial Marines - Last Edit: Apophis775 - 11JUN16
-
-/mob/living/carbon/Xenomorph/Ravager
-	caste = "Ravager"
-	name = "Ravager"
-	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
-	icon_state = "Ravager Walking"
+/datum/caste_datum/ravager
+	caste_name = "Ravager"
+	upgrade_name = "Young"
+	tier = 3
+	upgrade = 0
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	tacklemin = 3
 	tacklemax = 6
 	tackle_chance = 80
-	health = 200
-	maxHealth = 200
-	plasma_stored = 50
+	max_health = 200
 	plasma_gain = 8
 	plasma_max = 100
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	caste_desc = "A brutal, devastating front-line attacker."
 	speed = -0.7 //Not as fast as runners, but faster than other xenos.
+	charge_type = 3 //Claw at end of charge
+	fire_immune = 1
+	armor_deflection = 40
+	xeno_explosion_resistance = 2 //no stuns from explosions
+	attack_delay = -2
+
+/datum/caste_datum/ravager/mature
+	upgrade_name = "Mature"
+	upgrade = 1
+	melee_damage_lower = 50
+	melee_damage_upper = 70
+	max_health = 220
+	plasma_gain = 10
+	plasma_max = 150
+	upgrade_threshold = 1600
+	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
+	speed = -0.8
+	armor_deflection = 45
+	tacklemin = 4
+	tacklemax = 8
+	tackle_chance = 85
+
+/datum/caste_datum/ravager/elder
+	upgrade_name = "Elder"
+	upgrade = 2
+	melee_damage_lower = 60
+	melee_damage_upper = 80
+	max_health = 250
+	plasma_gain = 15
+	plasma_max = 200
+	upgrade_threshold = 3200
+	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
+	speed = -0.9
+	armor_deflection = 50
+	tacklemin = 5
+	tacklemax = 9
+	tackle_chance = 90
+
+/datum/caste_datum/ravager/ancient
+	upgrade_name = "Ancient"
+	upgrade = 3
+	melee_damage_lower = 80
+	melee_damage_upper = 100
+	max_health = 350
+	caste_desc = "As I walk through the valley of the shadow of death."
+	speed = -1.0
+	tacklemin = 6
+	tacklemax = 10
+	tackle_chance = 95
+
+/mob/living/carbon/Xenomorph/Ravager
+	caste_name = "Ravager"
+	name = "Ravager"
+	desc = "A huge, nasty red alien with enormous scythed claws."
+	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon_state = "Ravager Walking"
+	health = 200
+	maxHealth = 200
+	plasma_stored = 50
 	var/usedcharge = 0 //What's the deal with the all caps?? They're not constants :|
 	var/CHARGESPEED = 2
 	var/CHARGESTRENGTH = 2
 	var/CHARGEDISTANCE = 4
 	var/CHARGECOOLDOWN = 120
-	charge_type = 3 //Claw at end of charge
-	fire_immune = 1
-	armor_deflection = 40
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
-	xeno_explosion_resistance = 2 //no stuns from explosions
-	attack_delay = -2
 	tier = 3
 	upgrade = 0
 	pixel_x = -16
@@ -85,22 +134,29 @@
 
 	return 0
 
-//Super hacky firebreathing Halloween rav.
-/mob/living/carbon/Xenomorph/Ravager/ravenger
-	name = "Ravenger"
-	desc = "It's a goddamn dragon! Run! RUUUUN!"
+/datum/caste_datum/ravager/ravenger
+	caste_name = "Ravenger"
 	is_intelligent = 1
-	hardcore = 1
 	melee_damage_lower = 70
 	melee_damage_upper = 90
 	tacklemin = 3
 	tacklemax = 6
 	tackle_chance = 85
+	max_health = 600
+	plasma_gain = 15
+	plasma_max = 200
+	upgrade = 3
+	can_be_queen_healed = 0
+
+//Super hacky firebreathing Halloween rav.
+/mob/living/carbon/Xenomorph/Ravager/ravenger
+	name = "Ravenger"
+	caste_name = "Ravenger"
+	desc = "It's a goddamn dragon! Run! RUUUUN!"
+	hardcore = 1
 	health = 600
 	maxHealth = 600
 	plasma_stored = 200
-	plasma_gain = 15
-	plasma_max = 200
 	upgrade = 3
 	var/used_fire_breath = 0
 	actions = list(
@@ -159,7 +215,7 @@
 			continue
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			if(X.fire_immune)
+			if(X.caste.fire_immune)
 				continue
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -167,4 +223,4 @@
 				continue
 
 		M.adjustFireLoss(rand(20, 50)) //Fwoom!
-		M << "[isXeno(M) ? "<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!</Sspan>"
+		M << "[isXeno(M) ? "<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!</span>"

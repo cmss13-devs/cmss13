@@ -23,25 +23,25 @@
 	if(hivenumber && hivenumber <= hive_datum.len)
 		hive = hive_datum[hivenumber]
 
-		if(!evolution_allowed)
+		if(!caste.evolution_allowed)
 			stat(null, "Evolve Progress (FINISHED)")
 		else if(!hive.living_xeno_queen)
 			stat(null, "Evolve Progress (HALTED - NO QUEEN)")
 		else if(!hive.living_xeno_queen.ovipositor)
 			stat(null, "Evolve Progress (HALTED - QUEEN HAS NO OVIPOSITOR)")
 		else
-			stat(null, "Evolve Progress: [evolution_stored]/[evolution_threshold]")
+			stat(null, "Evolve Progress: [evolution_stored]/[caste.evolution_threshold]")
 
 		if(upgrade != -1 && upgrade != 3) //upgrade possible
-			stat(null, "Upgrade Progress: [upgrade_stored]/[upgrade_threshold]")
+			stat(null, "Upgrade Progress: [upgrade_stored]/[caste.upgrade_threshold]")
 		else //Upgrade process finished or impossible
 			stat(null, "Upgrade Progress (FINISHED)")
 
-		if(plasma_max > 0)
-			if(is_robotic)
-				stat(null, "Charge: [plasma_stored]/[plasma_max]")
+		if(caste.plasma_max > 0)
+			if(caste.is_robotic)
+				stat(null, "Charge: [plasma_stored]/[caste.plasma_max]")
 			else
-				stat(null, "Plasma: [plasma_stored]/[plasma_max]")
+				stat(null, "Plasma: [plasma_stored]/[caste.plasma_max]")
 
 		if(hivenumber != XENO_HIVE_CORRUPTED)
 			if(hive.slashing_allowed == 1)
@@ -104,7 +104,7 @@
 
 	if(value)
 		if(plasma_stored < value)
-			if(is_robotic)
+			if(caste.is_robotic)
 				src << "<span class='warning'>Beep. You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored.</span>"
 			else
 				src << "<span class='warning'>You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored.</span>"
@@ -118,7 +118,7 @@
 		A.update_button_icon()
 
 /mob/living/carbon/Xenomorph/proc/gain_plasma(value)
-	plasma_stored = min(plasma_stored + value, plasma_max)
+	plasma_stored = min(plasma_stored + value, caste.plasma_max)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
@@ -171,11 +171,11 @@
 		if(client && ckey) // pause for ssd/ghosted
 			var/datum/hive_status/hive = hive_datum[hivenumber]
 			if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
-				if(upgrade_stored >= upgrade_threshold)
+				if(upgrade_stored >= caste.upgrade_threshold)
 					if(health == maxHealth && !is_mob_incapacitated() && !handcuffed && !legcuffed)
 						upgrade_xeno(upgrade+1)
 				else
-					upgrade_stored = min(upgrade_stored + 1, upgrade_threshold)
+					upgrade_stored = min(upgrade_stored + 1, caste.upgrade_threshold)
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return
@@ -186,7 +186,7 @@
 /mob/living/carbon/Xenomorph/throw_impact(atom/hit_atom, speed)
 	set waitfor = 0
 
-	if(!charge_type || stat || (!throwing && usedPounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
+	if(!caste.charge_type || stat || (!throwing && usedPounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
 		..() //Do the parent instead.
 		r_FAL
 
@@ -195,7 +195,7 @@
 		if(!O.density) r_FAL//Not a dense object? Doesn't matter then, pass over it.
 		if(!O.anchored) step(O, dir) //Not anchored? Knock the object back a bit. Ie. canisters.
 
-		switch(charge_type) //Determine how to handle it depending on charge type.
+		switch(caste.charge_type) //Determine how to handle it depending on charge type.
 			if(1 to 2)
 				if(!istype(O, /obj/structure/table) && !istype(O, /obj/structure/rack))
 					O.hitby(src, speed) //This resets throwing.
@@ -210,7 +210,7 @@
 	if(ismob(hit_atom)) //Hit a mob! This overwrites normal throw code.
 		var/mob/living/carbon/M = hit_atom
 		if(!M.stat && !isXeno(M))
-			switch(charge_type)
+			switch(caste.charge_type)
 				if(1 to 2)
 					if(ishuman(M) && M.dir in reverse_nearby_direction(dir))
 						var/mob/living/carbon/human/H = M
@@ -235,12 +235,12 @@
 
 					visible_message("<span class='danger'>[src] pounces on [M]!</span>",
 									"<span class='xenodanger'>You pounce on [M]!</span>", null, 5)
-					M.KnockDown(charge_type == 1 ? 1 : 3)
+					M.KnockDown(caste.charge_type == 1 ? 1 : 3)
 					step_to(src, M)
 					canmove = FALSE
 					frozen = TRUE
-					if(!is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
-					spawn(charge_type == 1 ? 5 : 15)
+					if(!caste.is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+					spawn(caste.charge_type == 1 ? 5 : 15)
 						frozen = FALSE
 						update_canmove()
 
@@ -525,6 +525,6 @@
 		leader_current_aura = ""
 		src << "<span class='xenowarning'>Your pheromones wane. The Queen is no longer granting you her pheromones.</span>"
 	else
-		leader_aura_strength = Q.aura_strength
+		leader_aura_strength = Q.caste.aura_strength
 		leader_current_aura = Q.current_aura
 		src << "<span class='xenowarning'>Your pheromones have changed. The Queen has new plans for the Hive.</span>"

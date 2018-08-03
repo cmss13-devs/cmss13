@@ -62,12 +62,12 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
-	for(var/i in 1 to X.spit_types.len)
-		if(X.ammo == ammo_list[X.spit_types[i]])
-			if(i == X.spit_types.len)
-				X.ammo = ammo_list[X.spit_types[1]]
+	for(var/i in 1 to X.caste.spit_types.len)
+		if(X.ammo == ammo_list[X.caste.spit_types[i]])
+			if(i == X.caste.spit_types.len)
+				X.ammo = ammo_list[X.caste.spit_types[1]]
 			else
-				X.ammo = ammo_list[X.spit_types[i+1]]
+				X.ammo = ammo_list[X.caste.spit_types[i+1]]
 			break
 	X << "<span class='notice'>You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma).</span>"
 	button.overlays.Cut()
@@ -378,7 +378,7 @@
 	else
 		if(!X.check_plasma(30))
 			return
-		var/choice = input(X, "Choose a pheromone") in X.aura_allowed + "help" + "cancel"
+		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
 			X << "<span class='notice'><br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br></span>"
 			return
@@ -870,7 +870,7 @@
 		if(X.queen_ability_cooldown > world.time)
 			X << "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>"
 			return
-		if(X.queen_leader_limit <= hive.xeno_leader_list.len && !X.observed_xeno.queen_chosen_lead)
+		if(X.caste.queen_leader_limit <= hive.xeno_leader_list.len && !X.observed_xeno.queen_chosen_lead)
 			X << "<span class='xenowarning'>You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows.</span>"
 			return
 		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
@@ -915,6 +915,9 @@
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
+		if(!target.caste.can_be_queen_healed)
+			X << "<span class='xenowarning'>This caste cannot be healed!</span>"
+			return
 		if(X.loc.z != target.loc.z)
 			X << "<span class='xenowarning'>They are too far away to do this.</span>"
 			return
@@ -945,8 +948,11 @@
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
+		if(!target.caste.can_be_queen_healed)
+			X << "<span class='xenowarning'>This caste cannot be given plasma!</span>"
+			return
 		if(target.stat != DEAD)
-			if(target.plasma_stored < target.plasma_max)
+			if(target.plasma_stored < target.caste.plasma_max)
 				if(X.check_plasma(600))
 					X.use_plasma(600)
 					target.gain_plasma(100)
@@ -1113,7 +1119,7 @@
 			T.drop_inv_item_on_ground(W)
 
 		T.empty_gut()
-		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste] emerges from the husk of \the [T].</span>", \
+		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste.caste_name] emerges from the husk of \the [T].</span>", \
 		"<span class='xenodanger'>[X] makes you regress into your previous form.</span>")
 
 		if(T.queen_chosen_lead)

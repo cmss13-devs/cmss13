@@ -1,34 +1,105 @@
-//Boiler Code - Colonial Marines - Last Edit: Apophis775 - 11JUN16
-
-/mob/living/carbon/Xenomorph/Boiler
-	caste = "Boiler"
-	name = "Boiler"
-	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
-	icon = 'icons/Xeno/xenomorph_64x64.dmi'
-	icon_state = "Boiler Walking"
+/datum/caste_datum/boiler
+	caste_name = "Boiler"
+	upgrade_name = "Young"
+	tier = 3
+	upgrade = 0
 	melee_damage_lower = 12
 	melee_damage_upper = 15
 	tacklemin = 2
 	tacklemax = 4
 	tackle_chance = 60
-	health = 180
-	maxHealth = 180
-	plasma_stored = 450
 	plasma_gain = 30
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	spit_delay = 40
+	caste_desc = "Gross!"
+	armor_deflection = 20
+	max_health = 180
 	speed = 0.7
+	bomb_strength = 1
+
+/datum/caste_datum/boiler/mature
+
+	upgrade_name = "Mature"
+
+	upgrade = 1
+	melee_damage_lower = 20
+	melee_damage_upper = 25
+	tacklemin = 3
+	tacklemax = 5
+	tackle_chance = 65
+	plasma_gain = 35
+	plasma_max = 900
+	upgrade_threshold = 1600
+
+	spit_delay = 30
+	caste_desc = "Some sort of abomination. It looks a little more dangerous."
+	armor_deflection = 30
+	max_health = 200
+	speed = 0.6
+	bomb_strength = 1.5
+
+/datum/caste_datum/boiler/elder
+
+	upgrade_name = "Elder"
+
+	upgrade = 2
+	melee_damage_lower = 30
+	melee_damage_upper = 35
+	tacklemin = 3
+	tacklemax = 5
+	tackle_chance = 70
+	plasma_gain = 40
+	plasma_max = 1000
+	upgrade_threshold = 3200
+
+	spit_delay = 20
+	caste_desc = "Some sort of abomination. It looks pretty strong."
+	armor_deflection = 35
+	max_health = 220
+	speed = 0.5
+	bomb_strength = 2
+
+/datum/caste_datum/boiler/ancient
+
+	upgrade_name = "Ancient"
+
+	upgrade = 3
+	melee_damage_lower = 35
+	melee_damage_upper = 45
+	tacklemin = 4
+	tacklemax = 6
+	tackle_chance = 80
+	plasma_gain = 50
+	plasma_max = 1000
+
+
+	spit_delay = 10
+	caste_desc = "A devestating piece of alien artillery."
+	armor_deflection = 35
+	max_health = 250
+	speed = 0.4
+	bomb_strength = 2.5
+
+/mob/living/carbon/Xenomorph/Boiler
+	caste_name = "Boiler"
+	name = "Boiler"
+	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
+	icon = 'icons/Xeno/xenomorph_64x64.dmi'
+	icon_state = "Boiler Walking"
+	health = 180
+	maxHealth = 180
+	plasma_stored = 450
+
 	pixel_x = -16
 	old_x = -16
-	caste_desc = "Gross!"
 	mob_size = MOB_SIZE_BIG
 	tier = 3
 	upgrade = 0
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
-	armor_deflection = 20
+
 	var/is_bombarding = 0
 	var/obj/item/explosive/grenade/grenade_type = "/obj/item/explosive/grenade/xeno"
 	var/bomb_cooldown = 0

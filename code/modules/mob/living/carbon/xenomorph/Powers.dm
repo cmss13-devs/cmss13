@@ -46,7 +46,7 @@
 		else
 			flags_pass = 0 //Reset the passtable.
 
-	spawn(pounce_delay)
+	spawn(caste.pounce_delay)
 		usedPounce = 0
 		src << "<span class='notice'>You get ready to pounce again.</span>"
 		for(var/X in actions)
@@ -280,6 +280,7 @@
 
 	var/mob/living/carbon/human/H = A
 	if(H.stat == DEAD) return
+	if(istype(H.buckled, /obj/structure/bed/nest)) return
 	round_statistics.warrior_flings++
 
 	visible_message("<span class='xenowarning'>\The [src] effortlessly flings [H] to the side!</span>", \
@@ -303,7 +304,7 @@
 
 	H.throw_at(T, fling_distance, 1, src, 1)
 
-	spawn(fling_cooldown)
+	spawn(caste.fling_cooldown)
 		used_fling = 0
 		src << "<span class='notice'>You gather enough strength to fling something again.</span>"
 		for(var/X in actions)
@@ -330,6 +331,10 @@
 
 	var/mob/living/carbon/human/H = A
 	if(H.stat == DEAD) return
+	if(istype(H.buckled, /obj/structure/bed/nest)) return
+	if(H.status_flags & XENO_HOST)
+		src << "<span class='xenowarning'>This would harm the embryo!</span>"
+		return
 	round_statistics.warrior_punches++
 	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
 
@@ -367,7 +372,7 @@
 	shake_camera(H, 2, 1)
 	step_away(H, src, 2)
 
-	spawn(punch_cooldown)
+	spawn(caste.punch_cooldown)
 		used_punch = 0
 		src << "<span class='notice'>You gather enough strength to punch again.</span>"
 		for(var/X in actions)
@@ -406,7 +411,7 @@
 	if (Adjacent(H))
 		start_pulling(H,1)
 
-	spawn(lunge_cooldown)
+	spawn(caste.lunge_cooldown)
 		used_lunge = 0
 		src << "<span class='notice'>You get ready to lunge again.</span>"
 		for(var/X in actions)
@@ -418,6 +423,9 @@
 // Called when pulling something and attacking yourself with the pull
 /mob/living/carbon/Xenomorph/proc/pull_power(var/mob/M)
 	if (isXenoWarrior(src) && !ripping_limb && M.stat != DEAD)
+		if(M.status_flags & XENO_HOST)
+			src << "<span class='xenowarning'>This would harm the embryo!</span>"
+			return
 		ripping_limb = 1
 		if(rip_limb(M))
 			stop_pulling()
@@ -498,18 +506,18 @@
 	round_statistics.warrior_agility_toggles++
 	if (agility)
 		src << "<span class='xenowarning'>You lower yourself to all fours.</span>"
-		speed -= 0.7
+		speed = caste.speed + caste.agility_speed_increase
 		update_icons()
 		do_agility_cooldown()
 		return
 
 	src << "<span class='xenowarning'>You raise yourself to stand on two feet.</span>"
-	speed += 0.7
+	speed = caste.speed - caste.agility_speed_increase
 	update_icons()
 	do_agility_cooldown()
 
 /mob/living/carbon/Xenomorph/proc/do_agility_cooldown()
-	spawn(toggle_agility_cooldown)
+	spawn(caste.toggle_agility_cooldown)
 		used_toggle_agility = 0
 		src << "<span class='notice'>You can [agility ? "raise yourself back up" : "lower yourself back down"] again.</span>"
 		for(var/X in actions)
@@ -541,6 +549,8 @@
 		return
 
 	var/mob/living/carbon/human/H = M
+	if(H.stat == DEAD)
+		return
 
 	var/distance = get_dist(src, H)
 
@@ -616,6 +626,8 @@
 	var/list/L = orange(sweep_range)		// Not actually the fruit
 
 	for (var/mob/living/carbon/human/H in L)
+		if(H.stat == DEAD) continue
+		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, src, sweep_range, 2)
 		H.apply_damage(10)
 		round_statistics.defender_tail_sweep_hits++
@@ -656,7 +668,7 @@
 	if (crest_defense)
 		round_statistics.defender_crest_lowerings++
 		src << "<span class='xenowarning'>You lower your crest.</span>"
-		armor_deflection += 15
+		caste.armor_deflection += 15
 		speed += 0.8	// This is actually a slowdown but speed is dumb
 		update_icons()
 		do_crest_defense_cooldown()
@@ -664,7 +676,7 @@
 
 	round_statistics.defender_crest_raises++
 	src << "<span class='xenowarning'>You raise your crest.</span>"
-	armor_deflection -= 15
+	caste.armor_deflection -= 15
 	speed -= 0.8
 	update_icons()
 	do_crest_defense_cooldown()
@@ -697,8 +709,8 @@
 
 	if (fortify)
 		src << "<span class='xenowarning'>You tuck yourself into a defensive stance.</span>"
-		armor_deflection += 30
-		xeno_explosion_resistance++
+		caste.armor_deflection += 30
+		caste.xeno_explosion_resistance++
 		frozen = 1
 		anchored = 1
 		update_canmove()
@@ -723,8 +735,8 @@
 
 /mob/living/carbon/Xenomorph/proc/fortify_off()
 	src << "<span class='xenowarning'>You resume your normal stance.</span>"
-	armor_deflection -= 30
-	xeno_explosion_resistance--
+	caste.armor_deflection -= 30
+	caste.xeno_explosion_resistance--
 	frozen = 0
 	anchored = 0
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 30, 1)
@@ -926,9 +938,9 @@
 	A.permutated += src
 	A.def_zone = get_limbzone_target()
 	A.fire_at(T, src, null, ammo.max_range, ammo.shell_speed)
-	has_spat = world.time + spit_delay + ammo.added_spit_delay
+	has_spat = world.time + caste.spit_delay + ammo.added_spit_delay
 	use_plasma(ammo.spit_cost)
-	cooldown_notification(spit_delay + ammo.added_spit_delay, "spit")
+	cooldown_notification(caste.spit_delay + ammo.added_spit_delay, "spit")
 
 	return TRUE
 
@@ -951,7 +963,7 @@
 	if(!check_plasma(resin_plasma_cost))
 		return
 	var/turf/current_turf = loc
-	if (caste == "Hivelord") //hivelords can thicken existing resin structures.
+	if (isXenoHivelord(src)) //hivelords can thicken existing resin structures.
 		if(get_dist(src,A) <= 1)
 			if(istype(A, /turf/closed/wall/resin))
 				var/turf/closed/wall/resin/WR = A
@@ -1031,7 +1043,7 @@
 			return
 
 	var/wait_time = 5
-	if(caste == "Drone")
+	if(isXenoDrone(src))
 		wait_time = 10
 
 	if(!do_after(src, wait_time, TRUE, 5, BUSY_ICON_BUILD))
@@ -1084,12 +1096,12 @@
 
 	switch(selected_resin)
 		if("resin door")
-			if (caste == "Hivelord")
+			if (isXenoHivelord(src))
 				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf)
 			else
 				new_resin = new /obj/structure/mineral_door/resin(current_turf)
 		if("resin wall")
-			if (caste == "Hivelord")
+			if (isXenoHivelord(src))
 				current_turf.ChangeTurf(/turf/closed/wall/resin/thick)
 			else
 				current_turf.ChangeTurf(/turf/closed/wall/resin)
@@ -1226,7 +1238,7 @@
 		src << "<span class='warning'>There is no Queen. You are alone.</span>"
 		return
 
-	if(caste == "Queen" && anchored)
+	if(isXenoQueen(src) && anchored)
 		check_hive_status(src, anchored)
 	else
 		check_hive_status(src)
@@ -1302,7 +1314,7 @@
 		if(leader != "")
 			leader_list += xenoinfo
 
-		switch(X.caste)
+		switch(X.caste.caste_name)
 			if("Queen")
 				queen_list += xenoinfo
 			if("Boiler")

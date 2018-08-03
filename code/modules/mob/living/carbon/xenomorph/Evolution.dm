@@ -253,7 +253,7 @@
 			drop_inv_item_on_ground(W)
 
 		empty_gut()
-		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste] emerges from the husk of \the [src].</span>", \
+		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste.caste_name] emerges from the husk of \the [src].</span>", \
 		"<span class='xenodanger'>You emerge in a greater form from the husk of your old body. For the hive!</span>")
 
 		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.

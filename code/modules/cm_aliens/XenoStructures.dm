@@ -428,13 +428,12 @@
 
 	switch(status)
 		if(BURST, DESTROYED)
-			switch(M.caste)
-				if("Queen","Drone","Hivelord","Carrier")
-					M.visible_message("<span class='xenonotice'>\The [M] clears the hatched egg.</span>", \
-					"<span class='xenonotice'>You clear the hatched egg.</span>")
-					playsound(src.loc, "alien_resin_break", 25)
-					M.plasma_stored++
-					cdel(src)
+			if(M.caste.can_hold_eggs)
+				M.visible_message("<span class='xenonotice'>\The [M] clears the hatched egg.</span>", \
+				"<span class='xenonotice'>You clear the hatched egg.</span>")
+				playsound(src.loc, "alien_resin_break", 25)
+				M.plasma_stored++
+				cdel(src)
 		if(GROWING)
 			M << "<span class='xenowarning'>The child is not developed yet.</span>"
 		if(GROWN)

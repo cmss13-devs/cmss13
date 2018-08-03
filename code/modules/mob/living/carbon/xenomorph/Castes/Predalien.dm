@@ -1,5 +1,25 @@
+/datum/caste_datum/predalien
+	caste_name = "Predalien"
+	display_name = "Abomination"
+	plasma_max = 300
+	max_health = 800
+	plasma_gain = 25
+	evolution_allowed = FALSE
+	tacklemin = 6
+	tacklemax = 10
+	tackle_chance = 80
+	is_intelligent = TRUE
+	charge_type = 4
+	armor_deflection = 50
+	bite_chance = 25
+	tail_chance = 25
+	tier = 1
+	attack_delay = -2
+	speed = -2.1
+	can_be_queen_healed = 0
+
 /mob/living/carbon/Xenomorph/Predalien
-	caste = "Predalien"
+	caste_name = "Predalien"
 	name = "Abomination"
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
 	icon = 'icons/Xeno/2x2_Xenos.dmi'
@@ -9,34 +29,16 @@
 	health = 800 //A lot of health, but it doesn't regenerate.
 	maxHealth = 800
 	plasma_stored = 300
-	plasma_max = 300
 	amount_grown = 0
 	max_grown = 200
-	plasma_gain = 25
-	evolution_allowed = FALSE
-	tacklemin = 6
-	tacklemax = 10
-	tackle_chance = 80
-
 	wall_smash = TRUE
-	is_intelligent = TRUE
 	hardcore = TRUE
-
-	charge_type = 4
-	armor_deflection = 50
 	tunnel_delay = 0
-
 	pslash_delay = 0
-	bite_chance = 25
-	tail_chance = 25
 	evo_points = 0
-
 	pixel_x = -16
 	old_x = -16
-
 	mob_size = MOB_SIZE_BIG
-	attack_delay = -2
-	speed = -2.1
 	tier = 1
 	upgrade = -1 //Predaliens are already in their ultimate form, they don't get even better
 

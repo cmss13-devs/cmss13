@@ -28,9 +28,9 @@
 			if(hivenumber && hivenumber <= hive_datum.len)
 				var/datum/hive_status/hive = hive_datum[hivenumber]
 
-				if(evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
-					evolution_stored = min(evolution_stored + 1, evolution_threshold)
-					if(evolution_stored == evolution_threshold - 1)
+				if(caste.evolution_allowed && evolution_stored < caste.evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
+					evolution_stored = min(evolution_stored + 1, caste.evolution_threshold)
+					if(evolution_stored == caste.evolution_threshold - 1)
 						src << "<span class='xenodanger'>Your carapace crackles and your tendons strengthen. You are ready to evolve!</span>" //Makes this bold so the Xeno doesn't miss it
 						src << sound('sound/effects/xeno_evolveready.ogg')
 
@@ -58,7 +58,7 @@
 		if(istype(G))
 			G.Die()
 			drop_inv_item_on_ground(G)
-		if(!fire_immune)
+		if(!caste.fire_immune)
 			adjustFireLoss(fire_stacks + 3)
 
 	else
@@ -87,23 +87,23 @@
 				var/atom/phero_center = Q
 				if(Q.observed_xeno)
 					phero_center = Q.observed_xeno
-				var/pheromone_range = round(6 + aura_strength * 2)
+				var/pheromone_range = round(6 + caste.aura_strength * 2)
 				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
-					if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-						Z.frenzy_new = aura_strength
-					if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-						Z.warding_new = aura_strength
-					if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-						Z.recovery_new = aura_strength
+					if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+						Z.frenzy_new = caste.aura_strength
+					if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+						Z.warding_new = caste.aura_strength
+					if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+						Z.recovery_new = caste.aura_strength
 			else
-				var/pheromone_range = round(6 + aura_strength * 2)
+				var/pheromone_range = round(6 + caste.aura_strength * 2)
 				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-					if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-						Z.frenzy_new = aura_strength
-					if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-						Z.warding_new = aura_strength
-					if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-						Z.recovery_new = aura_strength
+					if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+						Z.frenzy_new = caste.aura_strength
+					if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+						Z.warding_new = caste.aura_strength
+					if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+						Z.recovery_new = caste.aura_strength
 
 		if(leader_current_aura && !stat)
 			var/pheromone_range = round(6 + leader_aura_strength * 2)
@@ -256,8 +256,8 @@
 
 	if(hud_used && hud_used.alien_plasma_display)
 		if(stat != DEAD)
-			if(plasma_max) //No divide by zeros please
-				switch(round(plasma_stored * 100 / plasma_max))
+			if(caste.plasma_max) //No divide by zeros please
+				switch(round(plasma_stored * 100 / caste.plasma_max))
 					if(100 to INFINITY)
 						hud_used.alien_plasma_display.icon_state = "power_display_full"
 					if(94 to 99)
@@ -340,7 +340,7 @@ updatehealth()
 	var/turf/T = loc
 
 	var/env_temperature = loc.return_temperature()
-	if(!fire_immune)
+	if(!caste.fire_immune)
 		if(env_temperature > (T0C + 66))
 			adjustFireLoss((env_temperature - (T0C + 66)) / 5) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately
@@ -360,11 +360,11 @@ updatehealth()
 	if(isXenoRunner(src) && layer != initial(layer))
 		is_runner_hiding = 1
 
-	if(!is_robotic && !hardcore) //Robot no heal
+	if(!caste.is_robotic && !hardcore) //Robot no heal
 		if(innate_healing || (locate(/obj/effect/alien/weeds) in T))
-			plasma_stored += plasma_gain
+			plasma_stored += caste.plasma_gain
 			if(recovery_aura)
-				plasma_stored += round(plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
+				plasma_stored += round(caste.plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth)
 				var/datum/hive_status/hive = hive_datum[hivenumber]
 				if(innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
@@ -397,10 +397,10 @@ updatehealth()
 			plasma_stored -= 5
 
 	//START HARDCORE //This needs to be removed.
-	else if(!is_robotic && hardcore)//Robot no heal
+	else if(!caste.is_robotic && hardcore)//Robot no heal
 		if(locate(/obj/effect/alien/weeds) in T)
 			if(health > 0)
-				plasma_stored += plasma_gain
+				plasma_stored += caste.plasma_gain
 				if(recovery_aura)
 					plasma_stored += (recovery_aura * 2)
 			if(health < 35) //Barely enough to stay near critical if saved
@@ -432,8 +432,8 @@ updatehealth()
 			plasma_stored -= 5
 		//END HARDCORE
 
-	if(plasma_stored > plasma_max)
-		plasma_stored = plasma_max
+	if(plasma_stored > caste.plasma_max)
+		plasma_stored = caste.plasma_max
 	if(plasma_stored < 0)
 		plasma_stored = 0
 		if(current_aura)
@@ -457,7 +457,7 @@ updatehealth()
 	else
 		return
 
-	if(!hive.living_xeno_queen || is_intelligent)
+	if(!hive.living_xeno_queen || caste.is_intelligent)
 		hud_used.locate_leader.icon_state = "trackoff"
 		return
 

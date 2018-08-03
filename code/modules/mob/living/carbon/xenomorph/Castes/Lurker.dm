@@ -1,29 +1,89 @@
-//Hunter Code - Colonial Marines - Last Edit: Apophis775 - 11JUN16
-
-/mob/living/carbon/Xenomorph/Lurker
-	caste = "Lurker"
-	name = "Lurker"
-	desc = "A beefy, fast alien with sharp claws."
-	icon = 'icons/Xeno/xenomorph_48x48.dmi'
-	icon_state = "Lurker Walking"
+/datum/caste_datum/lurker
+	caste_name = "Lurker"
+	upgrade_name = "Young"
+	tier = 2
+	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	health = 150
-	maxHealth = 150
-	plasma_stored = 50
+	max_health = 150
 	plasma_gain = 8
 	plasma_max = 100
 	evolution_threshold = 500
 	upgrade_threshold = 500
 	caste_desc = "A fast, powerful front line combatant."
 	speed = -1.5 //Not as fast as runners, but faster than other xenos
-	pixel_x = -12
-	old_x = -12
-	evolves_to = list("Ravager")
 	charge_type = 2 //Pounce - Hunter
 	armor_deflection = 15
 	attack_delay = -2
 	pounce_delay = 55
+	evolves_to = list("Ravager")
+
+/datum/caste_datum/lurker/mature
+	upgrade_name = "Mature"
+	upgrade = 1
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	max_health = 170
+	plasma_gain = 10
+	plasma_max = 150
+	upgrade_threshold = 800
+	caste_desc = "A fast, powerful front line combatant. It looks a little more dangerous."
+	speed = -1.6
+	armor_deflection = 20
+	pounce_delay = 50
+	tacklemin = 3
+	tacklemax = 5
+	tackle_chance = 60
+
+/datum/caste_datum/lurker/elder
+	upgrade_name = "Elder"
+	upgrade = 2
+	melee_damage_lower = 35
+	melee_damage_upper = 50
+	max_health = 200
+	plasma_max = 200
+	upgrade_threshold = 1600
+	caste_desc = "A fast, powerful front line combatant. It looks pretty strong."
+	speed = -1.7
+	armor_deflection = 25
+	tacklemin = 3
+	tacklemax = 5
+	tackle_chance = 60
+	attack_delay = -3
+	tacklemin = 4
+	tacklemax = 6
+	tackle_chance = 65
+	pounce_delay = 45
+
+/datum/caste_datum/lurker/ancient
+	upgrade_name = "Ancient"
+	upgrade = 3
+	melee_damage_lower = 50
+	melee_damage_upper = 60
+	max_health = 250
+	plasma_gain = 20
+	plasma_max = 300
+	caste_desc = "A completly unmatched hunter. No, not even the Yautja can match you."
+	speed = -1.8
+	tacklemin = 4
+	tacklemax = 6
+	tackle_chance = 65
+	tacklemin = 4
+	tacklemax = 6
+	tackle_chance = 65
+	pounce_delay = 40
+
+/mob/living/carbon/Xenomorph/Lurker
+	caste_name = "Lurker"
+	name = "Lurker"
+	desc = "A beefy, fast alien with sharp claws."
+	icon = 'icons/Xeno/xenomorph_48x48.dmi'
+	icon_state = "Lurker Walking"
+	health = 150
+	maxHealth = 150
+	plasma_stored = 50
+	pixel_x = -12
+	old_x = -12
 	tier = 2
 	upgrade = 0
 	actions = list(

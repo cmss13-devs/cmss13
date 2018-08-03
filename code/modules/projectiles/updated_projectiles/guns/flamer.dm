@@ -208,7 +208,7 @@
 
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			if(X.fire_immune) 	continue
+			if(X.caste.fire_immune) 	continue
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M //fixed :s
 
@@ -399,7 +399,7 @@
 			var/mob/living/carbon/human/H = M
 			if(isXeno(H.pulledby))
 				var/mob/living/carbon/Xenomorph/Z = H.pulledby
-				if(!Z.fire_immune)
+				if(!Z.caste.fire_immune)
 					Z.adjust_fire_stacks(burnlevel)
 					Z.IgniteMob()
 			if(istype(H.wear_suit, /obj/item/clothing/suit/fire))
@@ -408,7 +408,7 @@
 				return
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			if(X.fire_immune) 	return
+			if(X.caste.fire_immune) 	return
 		M.adjust_fire_stacks(burnlevel) //Make it possible to light them on fire later.
 		if (prob(firelevel + 2*M.fire_stacks)) //the more soaked in fire you are, the likelier to be ignited
 			M.IgniteMob()
@@ -464,7 +464,7 @@
 			if(istype(I,/mob/living/carbon/Xenomorph/Ravager))
 				if(!I.stat)
 					var/mob/living/carbon/Xenomorph/Ravager/X = I
-					X.plasma_stored = X.plasma_max
+					X.plasma_stored = X.caste.plasma_max
 					X.usedcharge = 0 //Reset charge cooldown
 					X.show_message(text("<span class='danger'>The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!</span>"),1)
 					if(rand(1,100) < 70) X.emote("roar")

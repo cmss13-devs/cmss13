@@ -10,7 +10,7 @@
 	var/f_loss = 0
 	switch(severity)
 		if(1)
-			switch(xeno_explosion_resistance)
+			switch(caste.xeno_explosion_resistance)
 				if(3)
 					apply_damage(rand(125, 175), BRUTE) //Used to be rand(200, 300) which would one-shot most things. Tanks have severity 1 explosions on direct hits...
 					updatehealth()
@@ -29,7 +29,7 @@
 			return
 
 		if(2)
-			switch(xeno_explosion_resistance)
+			switch(caste.xeno_explosion_resistance)
 				if(3)
 					b_loss += rand(21, 26)
 					f_loss += rand(21, 26)
@@ -50,7 +50,7 @@
 			f_loss += rand(60, 75)
 
 		if(3)
-			switch(xeno_explosion_resistance)
+			switch(caste.xeno_explosion_resistance)
 				if(3)
 					b_loss += rand(10, 15)
 					f_loss += rand(10, 15)

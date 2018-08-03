@@ -9,7 +9,7 @@
 		return 0
 	var/atom/S = A.handle_barriers(src)
 	S.attack_alien(src)
-	next_move = world.time + (10 + attack_delay) //Adds some lag to the 'attack'
+	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
 
 //The parent proc, will default to attack_paw behaviour unless overriden
 /atom/proc/attack_alien(mob/user as mob)
@@ -79,7 +79,7 @@
 		return 0
 
 	A.attack_larva(src)
-	next_move = world.time + (10 + attack_delay) //Adds some lag to the 'attack'
+	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
 
 //Larva attack, will default to attack_alien behaviour unless overriden
 /atom/proc/attack_larva(mob/living/carbon/Xenomorph/Larva/user)

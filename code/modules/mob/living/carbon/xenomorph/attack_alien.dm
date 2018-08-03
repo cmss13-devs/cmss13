@@ -38,7 +38,7 @@
 				hive = hive_datum[M.hivenumber]
 			else return
 
-			if(!hive.slashing_allowed && !M.is_intelligent)
+			if(!hive.slashing_allowed && !M.caste.is_intelligent)
 				M << "<span class='warning'>Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src].</span>"
 				r_FAL
 
@@ -46,7 +46,7 @@
 				M << "<span class='warning'>[src] is dead, why would you want to touch it?</span>"
 				r_FAL
 
-			if(!M.is_intelligent)
+			if(!M.caste.is_intelligent)
 				if(hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
@@ -70,7 +70,7 @@
 				r_FAL
 
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper) + dam_bonus
+			var/damage = rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper) + dam_bonus
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
@@ -79,12 +79,12 @@
 			M.animation_attack_on(src)
 
 			//Check for a special bite attack
-			if(prob(M.bite_chance))
+			if(prob(M.caste.bite_chance))
 				M.bite_attack(src, damage)
 				return 1
 
 			//Check for a special bite attack
-			if(prob(M.tail_chance))
+			if(prob(M.caste.tail_chance))
 				M.tail_attack(src, damage)
 				return 1
 
@@ -111,7 +111,7 @@
 					var/knock_chance = 1
 					if(M.frenzy_aura > 0)
 						knock_chance += 2 * M.frenzy_aura
-					if(M.is_intelligent)
+					if(M.caste.is_intelligent)
 						knock_chance += 2
 					knock_chance += min(round(damage * 0.25), 10) //Maximum of 15% chance.
 					if(prob(knock_chance))
@@ -141,7 +141,7 @@
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
 			log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")
 
-			if (M.caste == "Ravager")
+			if (isXenoRavager(M))
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
 				if (R.delimb(src, affecting))
 					return 1
@@ -172,7 +172,7 @@
 					"<span class='danger'>You try to tackle [src], but they are already down!</span>", null, 5)
 					return 1
 				playsound(loc, 'sound/weapons/pierce.ogg', 25, 1)
-				KnockDown(rand(M.tacklemin, M.tacklemax)) //Min and max tackle strenght. They are located in individual caste files.
+				KnockDown(rand(M.caste.tacklemin, M.caste.tacklemax)) //Min and max tackle strenght. They are located in individual caste files.
 				M.visible_message("<span class='danger'>\The [M] tackles down [src]!</span>", \
 				"<span class='danger'>You tackle down [src]!</span>", null, 5)
 
@@ -181,9 +181,9 @@
 				if(M.frenzy_aura > 0)
 					tackle_bonus = M.frenzy_aura * 3
 				if(isYautja(src))
-					if(prob((M.tackle_chance + tackle_bonus)*0.2))
+					if(prob((M.caste.tackle_chance + tackle_bonus)*0.2))
 						playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-						KnockDown(rand(M.tacklemin, M.tacklemax))
+						KnockDown(rand(M.caste.tacklemin, M.caste.tacklemax))
 						M.visible_message("<span class='danger'>\The [M] tackles down [src]!</span>", \
 						"<span class='danger'>You tackle down [src]!</span>", null, 5)
 						return 1
@@ -192,9 +192,9 @@
 						M.visible_message("<span class='danger'>\The [M] tries to tackle [src]</span>", \
 						"<span class='danger'>You try to tackle [src]</span>", null, 5)
 						return 1
-				else if(prob(M.tackle_chance + tackle_bonus)) //Tackle_chance is now a special var for each caste.
+				else if(prob(M.caste.tackle_chance + tackle_bonus)) //Tackle_chance is now a special var for each caste.
 					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-					KnockDown(rand(M.tacklemin, M.tacklemax))
+					KnockDown(rand(M.caste.tacklemin, M.caste.tacklemax))
 					M.visible_message("<span class='danger'>\The [M] tackles down [src]!</span>", \
 					"<span class='danger'>You tackle down [src]!</span>", null, 5)
 					return 1
@@ -234,7 +234,7 @@
 				hive = hive_datum[M.hivenumber]
 			else return
 
-			if(!M.is_intelligent)
+			if(!M.caste.is_intelligent)
 				if(hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
@@ -262,7 +262,7 @@
 
 			// copypasted from attack_alien.dm
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
+			var/damage = rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper)
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
@@ -334,7 +334,7 @@
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 		else
 			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		health -= rand(M.melee_damage_lower, M.melee_damage_upper)
+		health -= rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper)
 		if(health <= 0)
 			M.visible_message("<span class='danger'>\The [M] slices [src] apart!</span>", \
 			"<span class='danger'>You slice [src] apart!</span>", null, 5)
@@ -346,7 +346,7 @@
 //Breaking barricades
 /obj/structure/barricade/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
-	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) )
+	take_damage( rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper) )
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
 	if(health <= 0)
@@ -407,7 +407,7 @@
 		"<span class='warning'>You creepily tap on [src].</span>", \
 		"<span class='warning'>You hear a glass tapping sound.</span>", 5)
 	else
-		attack_generic(M, M.melee_damage_lower)
+		attack_generic(M, M.caste.melee_damage_lower)
 
 //Slashing bots
 /obj/machinery/bot/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -450,7 +450,7 @@
 	log_message("Attack by claw. Attacker - [M].", 1)
 
 	if(!prob(deflect_chance))
-		take_damage((rand(M.melee_damage_lower, M.melee_damage_upper)/2))
+		take_damage((rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper)/2))
 		check_for_internal_damage(list(MECHA_INT_CONTROL_LOST))
 		playsound(loc, "alien_claw_metal", 25, 1)
 		M.visible_message("<span class='danger'>[M] slashes [src]'s armor!</span>", \
@@ -679,7 +679,7 @@
 
 /obj/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-	if(M.is_intelligent)
+	if(M.caste.is_intelligent)
 		attack_hand(M)
 		if(!shuttle.iselevator)
 			shuttle.door_override(M)
@@ -689,7 +689,7 @@
 		..()
 
 /obj/machinery/door_control/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
+	if(M.caste.is_intelligent && normaldoorcontrol == CONTROL_DROPSHIP)
 		var/shuttle_tag
 		switch(id)
 			if("sh_dropship1")
@@ -746,7 +746,7 @@
 	else
 		M.animation_attack_on(src)
 		M.visible_message("[M] slashes away at [src]!","You slash and claw at the bright light!", null, null, 5)
-		health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
+		health  = max(health - rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper), 0)
 		if(!health)
 			playsound(src, "shatter", 70, 1)
 			damaged = TRUE
@@ -820,7 +820,7 @@
 		return 0
 	else
 		M.animation_attack_on(src)
-		health -= round(rand(M.melee_damage_lower, M.melee_damage_upper) / 2)
+		health -= round(rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper) / 2)
 		if(health <= 0)
 			M.visible_message("<span class='danger'>\The [M] smashes \the [src] apart!</span>", \
 			"<span class='danger'>You slice \the [src] apart!</span>", null, 5)
@@ -838,7 +838,7 @@
 
 	if(M.a_intent == "hurt")
 		M.animation_attack_on(src)
-		if(prob(M.melee_damage_lower))
+		if(prob(M.caste.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 			M.visible_message("<span class='danger'>\The [M] smashes \the [src] beyond recognition!</span>", \
 			"<span class='danger'>You enter a frenzy and smash \the [src] apart!</span>", null, 5)

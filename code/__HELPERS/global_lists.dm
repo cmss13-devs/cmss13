@@ -23,6 +23,8 @@ var/global/list/living_mob_list = list()			//List of all alive mobs, including c
 var/global/list/living_xeno_list = list()			//List of all alive mob/living/carbon/Xenomorph mobs
 var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
 
+var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
+
 var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
 var/global/list/chemical_reactions_list				//List of all /datum/chemical_reaction datums. Used during chemical reactions
 var/global/list/chemical_reagents_list				//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
@@ -181,7 +183,16 @@ var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel")
 		var/datum/ammo/A = new T
 		ammo_list[A.type] = A
 
+	//  Xeno datums
+	paths = typesof(/datum/caste_datum) - /datum/caste_datum
+	for(var/T in paths)
+		var/datum/caste_datum/CD = new T
+		if(!(CD.caste_name in xeno_datum_list))
+			xeno_datum_list[CD.caste_name] = list(1,2,3,4) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
+		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
 	return 1
+
+
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()

@@ -81,9 +81,8 @@
 		Die()
 		return
 
-	switch(user.caste)
-		if("Queen","Drone","Hivelord","Carrier")
-			attack_hand(user)//Not a carrier, or already full? Just pick it up.
+	if(user.caste.can_hold_facehuggers)
+		attack_hand(user)//Not a carrier, or already full? Just pick it up.
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
 	if(CanHug(M))

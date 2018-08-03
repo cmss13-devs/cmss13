@@ -54,23 +54,36 @@
 
 
 /mob/living/carbon/Xenomorph/New()
+	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade)])
+		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
+	else
+		world << "something went very wrong"
+		return
+
 	..()
 	//WO GAMEMODE
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
+
 	add_language("Xenomorph") //xenocommon
 	add_language("Hivemind") //hivemind
 	add_inherent_verbs()
 	add_abilities()
+
+
+
+	maxHealth = caste.max_health
+	health = maxHealth
+	speed = caste.speed
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 8
 
 
-	if(spit_types && spit_types.len)
-		ammo = ammo_list[spit_types[1]]
+	if(caste.spit_types && caste.spit_types.len)
+		ammo = ammo_list[caste.spit_types[1]]
 
 	var/datum/reagents/R = new/datum/reagents(100)
 	reagents = R
@@ -80,9 +93,9 @@
 	living_xeno_list += src
 	round_statistics.total_xenos_created++
 
-	if(adjust_size_x != 1)
+	if(caste.adjust_size_x != 1)
 		var/matrix/M = matrix()
-		M.Scale(adjust_size_x, adjust_size_y)
+		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
 		transform = M
 
 	spawn(6) //Mind has to be transferred! Hopefully this will give it enough time to do so.
@@ -111,7 +124,7 @@
 
 
 	//Larvas have their own, very weird naming conventions, let's not kick a beehive, not yet
-	if(caste == "Larva")
+	if(isXenoLarva(src))
 		return
 
 	var/name_prefix = ""
@@ -131,14 +144,14 @@
 		remove_language("English") // its hacky doing it here sort of
 
 	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
-	if(caste == "Queen")
+	if(isXenoQueen(src))
 		switch(upgrade)
 			if(0) name = "\improper [name_prefix]Queen"			 //Young
 			if(1) name = "\improper [name_prefix]Elite Queen"	 //Mature
 			if(2) name = "\improper [name_prefix]Elite Empress"	 //Elite
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
-	else if(caste == "Predalien") name = "\improper [name_prefix][name] ([nicknumber])"
-	else name = "\improper [name_prefix][upgrade_name] [caste] ([nicknumber])"
+	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([nicknumber])"
+	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([nicknumber])"
 
 	//Update linked data so they show up properly
 	real_name = name
@@ -146,8 +159,8 @@
 
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
-	if(isXeno(user) && caste_desc)
-		user << caste_desc
+	if(isXeno(user) && caste.caste_desc)
+		user << caste.caste_desc
 
 	if(stat == DEAD)
 		user << "It is DEAD. Kicked the bucket. Off to that great hive in the sky."
@@ -202,24 +215,23 @@
 		return FALSE
 	if(L.buckled)
 		return FALSE //to stop xeno from pulling marines on roller beds.
-	/*if(ishuman(L) && L.stat == DEAD)
+	if(ishuman(L) && L.stat == DEAD && !L.chestburst)
 		var/mob/living/carbon/human/H = L
 		if(H.status_flags & XENO_HOST)
 			if(world.time > H.timeofdeath + H.revive_grace_period)
 				return FALSE // they ain't gonna burst now
 		else
-			return FALSE // leave the dead alone*
-	*/ // this is disabled pending the results of the lighting change -spookydonut
+			return FALSE // leave the dead alone
 	var/atom/A = AM.handle_barriers(src)
 	if(A != AM)
 		A.attack_alien(src)
-		next_move = world.time + (10 + attack_delay)
+		next_move = world.time + (10 + caste.attack_delay)
 		return FALSE
 	return ..()
 
 /mob/living/carbon/Xenomorph/pull_response(mob/puller)
 	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
-		puller.KnockDown(rand(tacklemin,tacklemax))
+		puller.KnockDown(rand(caste.tacklemin,caste.tacklemax))
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message("<span class='warning'>[puller] tried to pull [src] but instead gets a tail swipe to the head!</span>")
 		puller.stop_pulling()
@@ -249,7 +261,7 @@
 
 /mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)
 	//xeno leader get a bit arrow and less cooldown
-	if(queen_chosen_lead || caste == "Queen")
+	if(queen_chosen_lead || isXenoQueen(src))
 		recently_pointed_to = world.time + 10
 		new /obj/effect/overlay/temp/point/big(T)
 	else

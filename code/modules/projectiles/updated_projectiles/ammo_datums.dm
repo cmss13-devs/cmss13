@@ -818,8 +818,9 @@
 		new /obj/flamer_fire(T, pick(15, 20, 25, 30))
 
 		for(var/mob/living/carbon/M in range(3, T))
-			if(istype(M,/mob/living/carbon/Xenomorph))
-				if(M:fire_immune) continue
+			if(isXeno(M))
+				var/mob/living/carbon/Xenomorph/X = M
+				if(X.caste.fire_immune) continue
 
 			if(M.stat == DEAD) continue
 			M.adjust_fire_stacks(rand(5, 25))

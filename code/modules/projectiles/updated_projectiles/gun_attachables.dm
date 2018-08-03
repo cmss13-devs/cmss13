@@ -859,7 +859,7 @@ Defined in conflicts.dm of the #defines folder.
 
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			if(X.fire_immune) 	continue
+			if(X.caste.fire_immune) 	continue
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 
@@ -1077,4 +1077,3 @@ Defined in conflicts.dm of the #defines folder.
 
 		accuracy_unwielded_mod = -config.med_hit_accuracy_mult
 		scatter_unwielded_mod = config.med_scatter_value
-

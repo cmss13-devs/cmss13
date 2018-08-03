@@ -43,7 +43,7 @@
 			src << "<span class='warning'>You are not yet fully grown. Currently at: [amount_grown] / [max_grown].</span>"
 			return
 
-	if(isnull(evolves_to))
+	if(isnull(caste.evolves_to))
 		src << "<span class='warning'>You are already the apex of form and function. Go forth and spread the hive!</span>"
 		return
 
@@ -51,7 +51,7 @@
 		src << "<span class='warning'>You must be at full health to evolve.</span>"
 		return
 
-	if(plasma_stored < plasma_max)
+	if(plasma_stored < caste.plasma_max)
 		src << "<span class='warning'>You must be at full plasma to evolve.</span>"
 		return
 
@@ -65,7 +65,7 @@
 	// world << "[tierC] Tier 3"
 	// world << "[totalXenos] Total"
 
-	var/castepick = input("You are growing into a beautiful alien! It is time to choose a caste.") as null|anything in evolves_to
+	var/castepick = input("You are growing into a beautiful alien! It is time to choose a caste.") as null|anything in caste.evolves_to
 	if(!castepick) //Changed my mind
 		return
 
@@ -114,12 +114,12 @@
 		if(hivenumber == M.hivenumber)
 			switch(M.tier)
 				if(0)
-					if(caste == "Bloody Larva")
+					if(isXenoLarva(M,1))
 						if(M.client && M.ckey)
 							potential_queens++
 					continue
 				if(1)
-					if(caste == "Drone")
+					if(isXenoDrone(M))
 						if(M.client && M.ckey)
 							potential_queens++
 				if(2)
@@ -197,9 +197,9 @@
 		usr << "<span class='warning'>[castepick] is not a valid caste! If you're seeing this message, tell a coder!</span>"
 		return
 
-	if(evolution_threshold && castepick != "Queen") //Does the caste have an evolution timer? Then check it
-		if(evolution_stored < evolution_threshold)
-			src << "<span class='warning'>You must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold].</span>"
+	if(caste.evolution_threshold && castepick != "Queen") //Does the caste have an evolution timer? Then check it
+		if(evolution_stored < caste.evolution_threshold)
+			src << "<span class='warning'>You must wait before evolving. Currently at: [evolution_stored] / [caste.evolution_threshold].</span>"
 			return
 
 	visible_message("<span class='xenonotice'>\The [src] begins to twist and contort.</span>", \

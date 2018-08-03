@@ -111,6 +111,8 @@
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>follow</a>)"
 					if(isXenoQueen(src))
 						ghostrend = "<font size='3' font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i></font>"
+					else if(src in hive.xeno_leader_list)
+						ghostrend = "<font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i></font>"
 					else
 						ghostrend = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i>"
 					S.show_message(ghostrend, 2)

@@ -147,8 +147,8 @@
 	if(isXenoQueen(src))
 		switch(upgrade)
 			if(0) name = "\improper [name_prefix]Queen"			 //Young
-			if(1) name = "\improper [name_prefix]Elite Queen"	 //Mature
-			if(2) name = "\improper [name_prefix]Elite Empress"	 //Elite
+			if(1) name = "\improper [name_prefix]Elder Queen"	 //Mature
+			if(2) name = "\improper [name_prefix]Elder Empress"	 //Elite
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
 	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([nicknumber])"
 	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([nicknumber])"

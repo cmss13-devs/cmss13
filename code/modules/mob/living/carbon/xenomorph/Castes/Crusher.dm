@@ -3,19 +3,16 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 15
+	melee_damage_lower = 20
 	melee_damage_upper = 30
-	tacklemin = 4
-	tacklemax = 7
-	tackle_chance = 60
+	tackle_chance = 15
 	plasma_gain = 10
 	plasma_max = 200
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
-
 	caste_desc = "A huge tanky xenomorph."
-	armor_deflection = 75
-	max_health = 300
+	armor_deflection = 40
+	max_health = 275
 	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
 	xeno_explosion_resistance = 3 //no stuns from explosions, ignore damages except devastation range.
@@ -23,59 +20,45 @@
 /datum/caste_datum/crusher/mature
 
 	upgrade_name = "Mature"
-
 	upgrade = 1
-	melee_damage_lower = 20
+	melee_damage_lower = 25
 	melee_damage_upper = 35
-
-
-	tackle_chance = 65
+	tackle_chance = 20
 	plasma_gain = 15
 	plasma_max = 300
 	upgrade_threshold = 1600
-
-
 	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
-	armor_deflection = 80
-	max_health = 325
+	armor_deflection = 50
+	max_health = 300
 
 /datum/caste_datum/crusher/elder
 
 	upgrade_name = "Elder"
 
 	upgrade = 2
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	tacklemin = 5
-	tacklemax = 9
-	tackle_chance = 70
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	tackle_chance = 25
 	plasma_gain = 30
 	plasma_max = 400
 	upgrade_threshold = 3200
-
-
 	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
-	armor_deflection = 85
-	max_health = 375
+	armor_deflection = 60
+	max_health = 325
 
 /datum/caste_datum/crusher/ancient
 
 	upgrade_name = "Ancient"
-
 	upgrade = 3
-
-
-
-
-	tackle_chance = 75
+	melee_damage_lower = 35
+	melee_damage_upper = 45
+	tackle_chance = 30
 	plasma_gain = 30
 	plasma_max = 400
 	upgrade_threshold = 3200
-
-
 	caste_desc = "It always has the right of way."
-	armor_deflection = 75
-	max_health = 450
+	armor_deflection = 70
+	max_health = 350
 
 /mob/living/carbon/Xenomorph/Crusher
 	caste_name = "Crusher"
@@ -83,10 +66,9 @@
 	desc = "A huge alien with an enormous armored head crest."
 	icon = 'icons/Xeno/2x2_Xenos.dmi'
 	icon_state = "Crusher Walking"
-	health = 300
-	maxHealth = 300
+	health = 275
+	maxHealth = 275
 	plasma_stored = 200
-
 	tier = 3
 	upgrade = 0
 	drag_delay = 6 //pulling a big dead xeno is hard

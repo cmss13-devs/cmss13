@@ -6,18 +6,16 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 	evolves_to = list("Praetorian", "Crusher")
-
-	tackle_chance = 50
+	tackle_chance = 40
 	plasma_gain = 8
 	plasma_max = 100
 	upgrade_threshold = 500
 	evolution_threshold = 500
-
 	caste_desc = "A powerful front line combatant."
 	armor_deflection = 30
 	max_health = 200
-	speed = -0.8
-	agility_speed_increase = -0.7
+	speed = -0.4
+	agility_speed_increase = -0.5
 
 /datum/caste_datum/warrior/mature
 
@@ -26,18 +24,11 @@
 	upgrade = 1
 	melee_damage_lower = 35
 	melee_damage_upper = 40
-
-
-
-	plasma_gain = 8
-	plasma_max = 100
 	upgrade_threshold = 800
-
-
 	caste_desc = "An alien with an armored carapace. It looks a little more dangerous."
 	armor_deflection = 35
 	max_health = 225
-	speed = -0.9
+	speed = -0.5
 
 /datum/caste_datum/warrior/elder
 
@@ -46,18 +37,11 @@
 	upgrade = 2
 	melee_damage_lower = 40
 	melee_damage_upper = 45
-
-
-
-	plasma_gain = 8
-	plasma_max = 100
 	upgrade_threshold = 1600
-
-
 	caste_desc = "An alien with an armored carapace. It looks pretty strong."
 	armor_deflection = 40
 	max_health = 250
-	speed = -1.0
+	speed = -0.6
 
 /datum/caste_datum/warrior/ancient
 
@@ -66,18 +50,10 @@
 	upgrade = 3
 	melee_damage_lower = 45
 	melee_damage_upper = 50
-
-
-
-	plasma_gain = 8
-	plasma_max = 100
-
-
-
 	caste_desc = "An hulking beast capable of effortlessly breaking and tearing through its enemies."
 	armor_deflection = 45
 	max_health = 275
-	speed = -1.1
+	speed = -0.7
 
 /mob/living/carbon/Xenomorph/Warrior
 	caste_name = "Warrior"
@@ -87,7 +63,8 @@
 	icon_state = "Warrior Walking"
 	health = 200
 	maxHealth = 200
-	plasma_stored = 50
+	plasma_stored = 100
+	mob_size = MOB_SIZE_BIG
 	pixel_x = -16
 	old_x = -16
 	tier = 2
@@ -99,9 +76,6 @@
 		/datum/action/xeno_action/activable/fling,
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/punch
-		)
-	inherent_verbs = list(
-		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()

@@ -3,8 +3,8 @@
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 12
-	melee_damage_upper = 22
+	melee_damage_lower = 15
+	melee_damage_upper = 25
 	max_health = 160
 	plasma_gain = 20
 	plasma_max = 600
@@ -30,8 +30,8 @@
 	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	armor_deflection = 20
 	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tacklemax = 4
+	tackle_chance = 40
 	speed = -0.6
 
 /datum/caste_datum/spitter/elder
@@ -47,24 +47,24 @@
 	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	armor_deflection = 25
 	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 70
+	tacklemax = 5
+	tackle_chance = 45
 	speed = -0.7
 
 /datum/caste_datum/spitter/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	max_health = 250
-	plasma_gain = 50
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	max_health = 220
+	plasma_gain = 35
 	plasma_max = 900
-	spit_delay = 5
+	spit_delay = 10
 	caste_desc = "A ranged destruction machine."
 	armor_deflection = 30
 	tacklemin = 5
-	tacklemax = 7
-	tackle_chance = 75
+	tacklemax = 6
+	tackle_chance = 50
 	speed = -0.8
 
 /mob/living/carbon/Xenomorph/Spitter
@@ -75,7 +75,7 @@
 	icon_state = "Spitter Walking"
 	health = 160
 	maxHealth = 160
-	plasma_stored = 150
+	plasma_stored = 600
 	pixel_x = -12
 	old_x = -12
 

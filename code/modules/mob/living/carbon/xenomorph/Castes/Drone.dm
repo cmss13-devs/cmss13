@@ -3,13 +3,13 @@
 	upgrade_name = "Young"
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 12
-	melee_damage_upper = 16
+	melee_damage_lower = 10
+	melee_damage_upper = 20
 	max_health = 120
 	plasma_max = 750
-	evolution_threshold = 500
-	upgrade_threshold = 500
-	plasma_gain = 18
+	evolution_threshold = 200
+	upgrade_threshold = 200
+	plasma_gain = 20
 	speed = -0.8
 	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
@@ -20,50 +20,48 @@
 /datum/caste_datum/drone/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 12
-	melee_damage_upper = 16
-	max_health = 120
+	melee_damage_lower = 15
+	melee_damage_upper = 25
+	max_health = 145
 	plasma_max = 800
-	plasma_gain = 20
-	upgrade_threshold = 1000
+	plasma_gain = 25
+	upgrade_threshold = 400
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	armor_deflection = 5
 	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tacklemax = 4
+	tackle_chance = 40
 	speed = -0.9
 	aura_strength = 1
 
 /datum/caste_datum/drone/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 12
-	melee_damage_upper = 16
-	max_health = 150
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	max_health = 170
 	plasma_max = 900
 	plasma_gain = 30
-	upgrade_threshold = 1500
+	upgrade_threshold = 800
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	armor_deflection = 10
-	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tackle_chance = 45
 	speed = -1.0
 	aura_strength = 1.5
 
 /datum/caste_datum/drone/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	max_health = 200
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	max_health = 195
 	plasma_max = 1000
-	plasma_gain = 50
+	plasma_gain = 40
 	caste_desc = "A very mean architect."
 	armor_deflection = 15
 	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 80
+	tacklemax = 5
+	tackle_chance = 50
 	speed = -1.1
 	aura_strength = 2
 
@@ -75,7 +73,7 @@
 	icon_state = "Drone Walking"
 	health = 120
 	maxHealth = 120
-	plasma_stored = 350
+	plasma_stored = 750
 	tier = 1
 	upgrade = 0
 	pixel_x = -12

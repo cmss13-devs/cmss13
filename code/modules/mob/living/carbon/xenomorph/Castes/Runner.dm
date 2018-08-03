@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 10
 	melee_damage_upper = 20
-	plasma_gain = 1
+	plasma_gain = 2
 	plasma_max = 100
 	upgrade_threshold = 200
 	evolution_threshold = 200
@@ -21,7 +21,7 @@
 	upgrade = 1
 	melee_damage_lower = 15
 	melee_damage_upper = 25
-	plasma_gain = 2
+	plasma_gain = 3
 	plasma_max = 150
 	upgrade_threshold = 400
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
@@ -36,15 +36,15 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tacklemax = 4
+	tackle_chance = 40
+	plasma_gain = 4
 	plasma_max = 200
 	upgrade_threshold = 800
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
 	armor_deflection = 10
-	max_health = 150
+	max_health = 140
 	speed = -2.0
-	attack_delay = -4
 	pounce_delay = 30
 
 /datum/caste_datum/runner/ancient
@@ -52,13 +52,12 @@
 	upgrade = 3
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	tackle_chance = 70
+	tackle_chance = 45
 	upgrade_threshold = 800
 	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."
-	armor_deflection = 10
-	max_health = 140
+	armor_deflection = 15
+	max_health = 160
 	speed = -2.1
-	attack_delay = -4
 	pounce_delay = 25
 
 /mob/living/carbon/Xenomorph/Runner
@@ -69,7 +68,7 @@
 	icon_state = "Runner Walking"
 	health = 100
 	maxHealth = 100
-	plasma_stored = 50
+	plasma_stored = 100
 	flags_pass = PASSTABLE
 	tier = 1
 	upgrade = 0

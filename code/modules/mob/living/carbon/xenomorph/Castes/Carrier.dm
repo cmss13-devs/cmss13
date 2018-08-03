@@ -5,9 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	tacklemin = 2
-	tacklemax = 3
-	tackle_chance = 60
+	tackle_chance = 40
 	plasma_gain = 8
 	plasma_max = 250
 	upgrade_threshold = 800
@@ -21,51 +19,43 @@
 	hugger_delay = 30
 	eggs_max = 3
 	can_hold_facehuggers = 1
+	armor_deflection = 10
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 
 /datum/caste_datum/carrier/mature
 
 	upgrade_name = "Mature"
-
 	upgrade = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	tacklemin = 3
 	tacklemax = 4
-	tackle_chance = 60
+	tackle_chance = 45
 	plasma_gain = 10
 	plasma_max = 300
-
-
-	armor_deflection = 10
+	armor_deflection = 15
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
-
 	max_health = 200
 	speed = -0.1
 	aura_strength = 1.5
 	huggers_max = 9
-
 	eggs_max = 4
 
 /datum/caste_datum/carrier/elder
 
 	upgrade_name = "Elder"
-
 	upgrade = 2
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	tacklemin = 4
 	tacklemax = 5
-	tackle_chance = 70
+	tackle_chance = 50
 	plasma_gain = 12
 	plasma_max = 350
-
-
-
 	caste_desc = "A portable Love transport. It looks pretty strong."
-
-	max_health = 220
+	max_health = 225
 	speed = -0.2
+	armor_deflection = 20
 	aura_strength = 2
 	huggers_max = 10
 	hugger_delay = 20
@@ -80,14 +70,11 @@
 	melee_damage_upper = 45
 	tacklemin = 5
 	tacklemax = 6
-	tackle_chance = 75
+	tackle_chance = 55
 	plasma_gain = 15
 	plasma_max = 400
-
-
-	armor_deflection = 15
+	armor_deflection = 25
 	caste_desc = "It's literally crawling with 10 huggers."
-
 	max_health = 250
 	speed = -0.3
 	aura_strength = 2.5
@@ -103,7 +90,7 @@
 	icon_state = "Carrier Walking"
 	health = 175
 	maxHealth = 175
-	plasma_stored = 50
+	plasma_stored = 250
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 

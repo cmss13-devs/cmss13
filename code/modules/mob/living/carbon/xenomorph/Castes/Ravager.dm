@@ -3,11 +3,11 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 25
-	melee_damage_upper = 35
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	tacklemin = 3
-	tacklemax = 6
-	tackle_chance = 80
+	tacklemax = 4
+	tackle_chance = 40
 	max_health = 200
 	plasma_gain = 8
 	plasma_max = 100
@@ -17,53 +17,54 @@
 	speed = -0.7 //Not as fast as runners, but faster than other xenos.
 	charge_type = 3 //Claw at end of charge
 	fire_immune = 1
-	armor_deflection = 40
+	armor_deflection = 35
 	xeno_explosion_resistance = 2 //no stuns from explosions
 	attack_delay = -2
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 50
-	melee_damage_upper = 70
-	max_health = 220
+	melee_damage_lower = 40
+	melee_damage_upper = 50
+	max_health = 225
 	plasma_gain = 10
 	plasma_max = 150
 	upgrade_threshold = 1600
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	speed = -0.8
-	armor_deflection = 45
+	armor_deflection = 40
 	tacklemin = 4
 	tacklemax = 8
-	tackle_chance = 85
+	tackle_chance = 45
 
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 60
-	melee_damage_upper = 80
+	melee_damage_lower = 50
+	melee_damage_upper = 60
 	max_health = 250
 	plasma_gain = 15
 	plasma_max = 200
 	upgrade_threshold = 3200
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	speed = -0.9
-	armor_deflection = 50
+	armor_deflection = 45
 	tacklemin = 5
 	tacklemax = 9
-	tackle_chance = 90
+	tackle_chance = 50
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 80
-	melee_damage_upper = 100
-	max_health = 350
+	melee_damage_lower = 60
+	melee_damage_upper = 70
+	max_health = 275
 	caste_desc = "As I walk through the valley of the shadow of death."
 	speed = -1.0
+	armor_deflection = 50
 	tacklemin = 6
 	tacklemax = 10
-	tackle_chance = 95
+	tackle_chance = 55
 
 /mob/living/carbon/Xenomorph/Ravager
 	caste_name = "Ravager"

@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	max_health = 150
-	plasma_gain = 8
+	plasma_gain = 10
 	plasma_max = 100
 	evolution_threshold = 500
 	upgrade_threshold = 500
@@ -24,7 +24,7 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	max_health = 170
-	plasma_gain = 10
+	plasma_gain = 15
 	plasma_max = 150
 	upgrade_threshold = 800
 	caste_desc = "A fast, powerful front line combatant. It looks a little more dangerous."
@@ -32,45 +32,39 @@
 	armor_deflection = 20
 	pounce_delay = 50
 	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tacklemax = 4
+	tackle_chance = 40
 
 /datum/caste_datum/lurker/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 35
-	melee_damage_upper = 50
-	max_health = 200
-	plasma_max = 200
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	max_health = 190
+	plasma_max = 175
+	plasma_gain = 20
 	upgrade_threshold = 1600
 	caste_desc = "A fast, powerful front line combatant. It looks pretty strong."
 	speed = -1.7
 	armor_deflection = 25
-	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tackle_chance = 45
 	attack_delay = -3
-	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 65
 	pounce_delay = 45
 
 /datum/caste_datum/lurker/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 50
-	melee_damage_upper = 60
-	max_health = 250
-	plasma_gain = 20
-	plasma_max = 300
+	melee_damage_lower = 35
+	melee_damage_upper = 45
+	max_health = 210
+	plasma_gain = 25
+	plasma_max = 200
 	caste_desc = "A completly unmatched hunter. No, not even the Yautja can match you."
 	speed = -1.8
 	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 65
-	tacklemin = 4
-	tacklemax = 6
-	tackle_chance = 65
+	tacklemax = 5
+	tackle_chance = 50
+	armor_deflection = 30
 	pounce_delay = 40
 
 /mob/living/carbon/Xenomorph/Lurker
@@ -81,7 +75,7 @@
 	icon_state = "Lurker Walking"
 	health = 150
 	maxHealth = 150
-	plasma_stored = 50
+	plasma_stored = 100
 	pixel_x = -12
 	old_x = -12
 	tier = 2

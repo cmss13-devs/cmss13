@@ -5,14 +5,14 @@
 	upgrade = 0
 	melee_damage_lower = 10
 	melee_damage_upper = 20
-	max_health = 130
+	max_health = 125
 	plasma_gain = 10
 	plasma_max = 300
 	evolution_threshold = 200
 	upgrade_threshold = 200
 	spit_delay = 30
 	caste_desc = "A weak ranged combat alien."
-	armor_deflection = 15
+	armor_deflection = 10
 	speed = -0.8
 	spit_types = list(/datum/ammo/xeno/toxin)
 	evolves_to = list("Spitter")
@@ -23,14 +23,15 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	max_health = 150
-	plasma_gain = 12
+	plasma_gain = 15
 	plasma_max = 400
 	upgrade_threshold = 400
 	spit_delay = 25
 	caste_desc = "A ranged combat alien. It looks a little more dangerous."
 	tacklemin = 3
-	tacklemax = 5
-	tackle_chance = 60
+	tacklemax = 4
+	tackle_chance = 45
+	armor_deflection = 15
 	speed = -0.9
 
 /datum/caste_datum/sentinel/elder
@@ -39,14 +40,14 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	max_health = 175
-	plasma_gain = 15
+	plasma_gain = 20
 	plasma_max = 500
 	upgrade_threshold = 800
 	spit_delay = 20
 	caste_desc = "A ranged combat alien. It looks pretty strong."
 	armor_deflection = 20
 	tacklemin = 4
-	tacklemax = 6
+	tacklemax = 5
 	speed = -1.0
 
 /datum/caste_datum/sentinel/ancient
@@ -55,10 +56,11 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	max_health = 200
-	plasma_gain = 20
+	plasma_gain = 25
 	plasma_max = 600
-	spit_delay = 10
+	spit_delay = 15
 	caste_desc = "Neurotoxin Factory, don't let it get you."
+	armor_deflection = 25
 	speed = -1.1
 
 /mob/living/carbon/Xenomorph/Sentinel
@@ -67,9 +69,9 @@
 	desc = "A slithery, spitting kind of alien."
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Sentinel Walking"
-	health = 130
-	maxHealth = 130
-	plasma_stored = 75
+	health = 125
+	maxHealth = 125
+	plasma_stored = 300
 	pixel_x = -12
 	old_x = -12
 	tier = 1

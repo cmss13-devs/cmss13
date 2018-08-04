@@ -108,6 +108,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 					add_ventcrawl(vent_found)
 
 				else
+					vent_found.start_processing()
 					src << "<span class='warning'>This vent is not connected to anything.</span>"
 
 			else

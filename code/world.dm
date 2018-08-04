@@ -155,6 +155,26 @@ var/world_topic_spam_protect_time = world.timeofday
 		return list2params(s)
 
 	else if(copytext(T,1,6) == "notes")
+		if(addr != "127.0.0.1")
+			return "Nah ah ah, you didn't say the magic word"
+		var/input[] = params2list(T)
+		var/ckey = input["ckey"]
+		var/dat = "Notes for [ckey]:<br/><br/>"
+		var/savefile/info = new("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/info.sav")
+		var/list/infos
+		info >> infos
+		if(!infos)
+			return "No information found on the given key."
+		else
+			for(var/datum/player_info/I in infos)
+				dat += "[I.content]<br/>by [I.author] ([I.rank]) on [I.timestamp]<br/><br/>"
+
+		return dat
+
+
+	/*
+	Comment out as we don't use IRC
+	else if(copytext(T,1,6) == "notes")
 		/*
 			We got a request for notes from the IRC Bot
 			expected output:
@@ -174,6 +194,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			return "Bad Key"
 
 		return player_notes_show_irc(input["notes"])
+		*/
 
 
 	//START: MAPDAEMON PROCESSING
@@ -292,7 +313,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			return next_map
 
-
+		
 
 /world/Reboot(var/reason)
 	/*spawn(0)

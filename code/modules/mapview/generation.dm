@@ -3,6 +3,7 @@
 /var/global/icon/xeno_mapview
 /var/global/icon/xeno_mapview_overlay
 /var/global/icon/xeno_almayer_mapview
+/var/global/list/map_sizes = list(list(),list(),list())
 
 /proc/overlay_xeno_mapview()
 	var/icon/newoverlay = icon(xeno_mapview)
@@ -42,6 +43,8 @@
 			newoverlay.DrawBox(rgb(0,204,255),H.x-1,H.y-1,H.x+1,H.y+1)
 		else
 			newoverlay.DrawBox(rgb(51,204,51),H.x-1,H.y-1,H.x+1,H.y+1)
+	newoverlay.Crop(1,1,map_sizes[1][1],map_sizes[1][2])
+	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
 	cdel(xeno_mapview_overlay)
 	xeno_mapview_overlay = newoverlay
 	return newoverlay
@@ -53,9 +56,9 @@
 	var/max_y = 0
 	for(var/turf/T in turfs)
 		if(T.z != 1) continue
-		if(T.x > max_x)
+		if(T.x > max_x && !istype(T,/turf/open/space))
 			max_x = T.x
-		if(T.y > max_y)
+		if(T.y > max_y && !istype(T,/turf/open/space))
 			max_y = T.y
 		//var/area/A = get_area(T)
 		if(map_tag != MAP_PRISON_STATION && istype(T,/turf/open/space))
@@ -98,6 +101,7 @@
 		if(locate(/obj/effect/alien/weeds) in T)
 			minimap.DrawBox(rgb(241,230,255),T.x,T.y)
 	minimap.Crop(1,1,max_x,max_y)
+	map_sizes[1] = list(max_x,max_y)
 	cdel(xeno_mapview)
 	xeno_mapview = minimap
 	return minimap

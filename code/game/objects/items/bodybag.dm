@@ -128,6 +128,8 @@
 		mob_to_store = pick(dead_mobs)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
+	for(var/obj/item/limb/L in loc)
+		L.forceMove(src)
 	return stored_units
 
 /obj/structure/closet/bodybag/close()

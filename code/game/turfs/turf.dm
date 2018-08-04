@@ -45,6 +45,7 @@
 
 
 /turf/Dispose()
+	stop_processing()
 	if(oldTurf != "")
 		ChangeTurf(text2path(oldTurf), TRUE)
 	else
@@ -58,8 +59,38 @@
 /turf/proc/update_icon() //Base parent. - Abby
 	return
 
+/*
+The purpose of turf processing is for turf types to override process() to do
+something to the mobs/items in that tile.
+This should be activated in the turf type's Entered() and deactivated in
+Exited()
+For example,
+/turf/toxicriver/Entered(atom/movable/AM)
+	if(ishuman(AM))
+		start_processing()
+/turf/toxicriver/Exited(atom/movable/AM)
+	if(!(locate(/mob/living/carbon/human) in contents))
+		stop_processing()
+/turf/toxicriver/process()
+	for(var/mob/living/carbon/human/H in contents)
+		H.take_damage(50)
 
+spookydonut august 2018
+*/
+/turf/proc/process()
+	return
 
+/turf/proc/start_processing()
+	if(src in processing_turfs)
+		return 0
+	processing_turfs += src
+	return 1
+
+/turf/proc/stop_processing()
+	if(src in processing_turfs)
+		processing_turfs -= src
+		return 1
+	return 0
 
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)

@@ -60,7 +60,19 @@
 			if(!A.anchored)
 				A.forceMove(src)
 		connected.loc = src
+		name = "morgue"
+		var/mob/living/L = locate(/mob/living) in contents
+		if(L)
+			name = "morgue ([L])"
+		else
+			var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
+			if(B)
+				L = locate(/mob/living) in B.contents
+				if(L)
+					name = "morgue ([L])"
+
 	else
+		name = "morgue"
 		if(step(connected, dir))
 			connected.dir = dir
 			for(var/atom/movable/A in src)

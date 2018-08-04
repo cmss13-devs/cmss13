@@ -998,6 +998,7 @@
 #include "code\modules\maps\reader.dm"
 #include "code\modules\maps\swapmaps.dm"
 #include "code\modules\maps\writer.dm"
+#include "code\modules\mapview\generation.dm"
 #include "code\modules\mining\abandonedcrates.dm"
 #include "code\modules\mining\alloys.dm"
 #include "code\modules\mining\drill.dm"

@@ -52,6 +52,27 @@
 	X << "\blue You are now [X.resting ? "resting" : "getting up"]"
 
 
+/datum/action/xeno_action/show_minimap
+	name = "Show Minimap"
+	action_icon_state = "agility_on"
+	plasma_cost = 0
+
+/datum/action/xeno_action/show_minimap/action_activate()
+	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	if(X.map_view)
+		X.map_view = 0
+		X << browse(null, "window=queenminimap")
+		return
+	X.map_view = 1
+	if(world.time > X.next_map_gen)
+		generate_xeno_mapview()
+		X.next_map_gen = world.time + 6000
+	if(world.time > X.next_overlay_gen)
+		overlay_xeno_mapview()
+		X.next_overlay_gen = world.time + 100
+	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
+	X << browse("<img src=xeno_minimap.png>","window=queenminimap;size=400x400")
+
 // Shift Spits
 /datum/action/xeno_action/shift_spits
 	name = "Toggle Spit Type"

@@ -59,6 +59,7 @@
 
 /datum/action/xeno_action/show_minimap/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
+	if(X.hivenumber != XENO_HIVE_NORMAL) return
 	if(X.map_view)
 		X.map_view = 0
 		X << browse(null, "window=queenminimap")
@@ -69,9 +70,9 @@
 		X.next_map_gen = world.time + 6000
 	if(world.time > X.next_overlay_gen)
 		overlay_xeno_mapview()
-		X.next_overlay_gen = world.time + 100
+		X.next_overlay_gen = world.time + 50
 	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-	X << browse("<img src=xeno_minimap.png>","window=queenminimap;size=400x400")
+	X << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+25]x[(map_sizes[1][2]*2)+25]")
 
 // Shift Spits
 /datum/action/xeno_action/shift_spits

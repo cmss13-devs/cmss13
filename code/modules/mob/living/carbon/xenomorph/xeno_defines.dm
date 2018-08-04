@@ -76,6 +76,8 @@
 
 	var/can_be_queen_healed = 1
 
+	var/can_vent_crawl = 1
+
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
 

@@ -15,6 +15,7 @@
 	charge_type = 2 //Pounce - Hunter
 	armor_deflection = 20
 	evolves_to = list("Warrior")
+	can_vent_crawl = 0
 
 /datum/caste_datum/defender/mature
 	upgrade_name = "Mature"
@@ -55,7 +56,6 @@
 	health = 175
 	maxHealth = 175
 	plasma_stored = 100
-	mob_size = MOB_SIZE_BIG
 	pixel_x = -16
 	old_x = -16
 	tier = 1

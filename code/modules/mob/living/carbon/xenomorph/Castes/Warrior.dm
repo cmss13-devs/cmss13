@@ -16,6 +16,7 @@
 	max_health = 200
 	speed = -0.4
 	agility_speed_increase = -0.5
+	can_vent_crawl = 0
 
 /datum/caste_datum/warrior/mature
 
@@ -64,7 +65,6 @@
 	health = 200
 	maxHealth = 200
 	plasma_stored = 100
-	mob_size = MOB_SIZE_BIG
 	pixel_x = -16
 	old_x = -16
 	tier = 2

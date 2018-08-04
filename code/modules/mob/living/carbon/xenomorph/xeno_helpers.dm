@@ -2,7 +2,7 @@
 
 
 /mob/living/carbon/Xenomorph/can_ventcrawl()
-	return (mob_size != MOB_SIZE_BIG)
+	return (mob_size != MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/Xenomorph/ventcrawl_carry()
 	return 1

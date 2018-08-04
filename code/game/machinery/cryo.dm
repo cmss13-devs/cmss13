@@ -33,7 +33,6 @@
 			break
 
 /obj/machinery/atmospherics/unary/cryo_cell/process()
-	..()
 	if(!node)
 		return
 	if(!on)

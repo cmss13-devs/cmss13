@@ -8,10 +8,10 @@
 	var/state = 0
 	var/obj/machinery/camera/cam = null
 	var/list/network = list("LEADER")
-	var/x_offset_s = 0
-	var/y_offset_s = 0
-	var/x_offset_b = 0
-	var/y_offset_b = 0
+	var/x_supply = 0
+	var/y_supply = 0
+	var/x_bomb = 0
+	var/y_bomb = 0
 	var/living_marines_sorting = FALSE
 	var/busy = 0 //The overwatch computer is busy launching an OB/SB, lock controls
 	var/dead_hidden = FALSE //whether or not we show the dead marines in the squad.
@@ -253,16 +253,8 @@
 						dat += "<font color='green'>Supply crate loaded</font><BR>"
 					else
 						dat += "Empty<BR>"
-					dat += "<B>Supply Beacon Status:</b> "
-					if(current_squad.sbeacon)
-						if(istype(current_squad.sbeacon.loc,/turf))
-							dat += "<font color='green'>Transmitting!</font><BR>"
-						else
-							dat += "Not Transmitting<BR>"
-					else
-						dat += "Not Transmitting<BR>"
-					dat += "<B>X-Coordinate Offset:</B> [x_offset_s] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
-					dat += "<B>Y-Coordinate Offset:</B> [y_offset_s] <A href='?src=\ref[src];operation=supply_y'>\[Change\]</a><BR><BR>"
+					dat += "<B>X-Coordinate:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
+					dat += "<B>Y-Coordinate:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>\[Change\]</a><BR><BR>"
 					dat += "<A href='?src=\ref[src];operation=dropsupply'>\[LAUNCH!\]</a>"
 				dat += "<BR><BR>----------------------<br>"
 				dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
@@ -280,16 +272,8 @@
 						dat += "<font color='red'>No ammo chambered in the cannon.</font><br>"
 					else
 						dat += "<font color='green'>Ready!</font><br>"
-					dat += "<B>Beacon Status:</b> "
-					if(current_squad.bbeacon)
-						if(istype(current_squad.bbeacon.loc,/turf))
-							dat += "<font color='green'>Transmitting!</font><BR>"
-						else
-							dat += "Not Transmitting<BR>"
-					else
-						dat += "Not Transmitting<BR>"
-					dat += "<B>X-Coordinate Offset:</B> [x_offset_b] <A href='?src=\ref[src];operation=bomb_x'>\[Change\]</a><BR>"
-					dat += "<B>Y-Coordinate Offset:</B> [y_offset_b] <A href='?src=\ref[src];operation=bomb_y'>\[Change\]</a><BR><BR>"
+					dat += "<B>X-Coordinate Offset:</B> [x_bomb] <A href='?src=\ref[src];operation=bomb_x'>\[Change\]</a><BR>"
+					dat += "<B>Y-Coordinate Offset:</B> [y_bomb] <A href='?src=\ref[src];operation=bomb_y'>\[Change\]</a><BR><BR>"
 					dat += "<A href='?src=\ref[src];operation=dropbomb'>\[FIRE!\]</a>"
 				dat += "<BR><BR>----------------------<br>"
 				dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
@@ -407,29 +391,21 @@
 				send_to_squad("Your secondary objective has changed. See Status pane for details.")
 				visible_message("\icon[src] <span class='boldnotice'>Secondary objective of squad '[current_squad]' set.</span>")
 		if("supply_x")
-			var/input = input(usr,"What X-coordinate offset between -5 and 5 would you like? (Positive means east)","X Offset",0) as num
-			if(input > 5) input = 5
-			if(input < -5) input = -5
-			usr << "\icon[src] <span class='notice'>X-offset is now [input].</span>"
-			src.x_offset_s = input
+			var/input = input(usr,"What X coordinate should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>X coordinate is now [input].</span>"
+			x_supply = input
 		if("supply_y")
-			var/input = input(usr,"What Y-coordinate offset between -5 and 5 would you like? (Positive means north)","Y Offset",0) as num
-			if(input > 5) input = 5
-			if(input < -5) input = -5
-			usr << "\icon[src] <span class='notice'>Y-offset is now [input].</span>"
-			y_offset_s = input
+			var/input = input(usr,"What Y coordinate should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Y coordinate is now [input].</span>"
+			y_supply = input
 		if("bomb_x")
-			var/input = input(usr,"What X-coordinate offset between -5 and 5 would you like? (Positive means east)","X Offset",0) as num
-			if(input > 5) input = 5
-			if(input < -5) input = -5
-			usr << "\icon[src] <span class='notice'>X-offset is now [input].</span>"
-			x_offset_b = input
+			var/input = input(usr,"What X coordinate should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>X coordinate is now [input].</span>"
+			x_bomb = input
 		if("bomb_y")
-			var/input = input(usr,"What X-coordinate offset between -5 and 5 would you like? (Positive means north)","Y Offset",0) as num
-			if(input > 5) input = 5
-			if(input < -5) input = -5
-			usr << "\icon[src] <span class='notice'>Y-offset is now [input].</span>"
-			y_offset_b = input
+			var/input = input(usr,"What X coordinate should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Y coordinate is now [input].</span>"
+			y_bomb = input
 		if("refresh")
 			src.attack_hand(usr)
 		if("change_sort")
@@ -534,88 +510,6 @@
 						M << sound('sound/effects/radiostatic.ogg')
 					M << "\icon[src] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>"
 					return
-
-/obj/machinery/computer/overwatch/proc/handle_bombard()
-	if(!usr) return
-
-	if(busy)
-		usr << "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>"
-		return
-
-	if(!current_squad)
-		usr << "\icon[src] <span class='warning'>No squad selected!</span>"
-		return
-
-	if(!current_squad.bbeacon)
-		usr << "\icon[src] <span class='warning'>No orbital beacon detected!</span>"
-		return
-
-	if(!almayer_orbital_cannon.chambered_tray)
-		usr << "\icon[src] <span class='warning'>The orbital cannon has no ammo chambered.</span>"
-		return
-
-	if(!isturf(current_squad.bbeacon.loc) || current_squad.bbeacon.z != 1)
-		usr << "\icon[src] <span class='warning'>The [current_squad.bbeacon.name] is not transmitting from the ground.</span>"
-		return
-
-	var/area/A = get_area(current_squad.bbeacon)
-	if(istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
-		usr << "\icon[src] <span class='warning'>The [current_squad.bbeacon.name]'s signal is too weak. It is probably underground.</span>"
-		return
-
-	var/turf/T = get_turf(current_squad.bbeacon)
-
-	if(istype(T, /turf/open/space))
-		usr << "\icon[src] <span class='warning'>The [current_squad.bbeacon.name]'s landing zone appears to be out of bounds.</span>"
-		return
-
-	var/x_offset = x_offset_b
-	var/y_offset = y_offset_b
-	x_offset = round(x_offset)
-	y_offset = round(y_offset)
-	if(x_offset < -5) x_offset = -5 //None of these should be possible, but whatever
-	if(x_offset > 5) x_offset = 5
-	if(y_offset < -5) y_offset = -5
-	if(y_offset > 5) y_offset = 5
-
-	//All set, let's do this.
-	busy = 1
-	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.</span>")
-	send_to_squad("Initializing fire coordinates.")
-	if(current_squad.bbeacon)
-		playsound(current_squad.bbeacon.loc,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	sleep(20)
-	send_to_squad("Transmitting beacon feed.")
-	sleep(20)
-	send_to_squad("Calibrating trajectory window.")
-	sleep(20)
-	for(var/mob/living/carbon/H in living_mob_list)
-		if(H.z == MAIN_SHIP_Z_LEVEL && !H.stat) //USS Almayer decks.
-			H << "<span class='warning'>The deck of the USS Almayer shudders as the orbital cannons open fire on the colony.</span>"
-			if(H.client)
-				shake_camera(H, 10, 1)
-	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!</span>")
-	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
-	spawn(6)
-		if(!current_squad.bbeacon) //May have been destroyed en route
-			send_to_squad("Critical error. Orbital beacon signal lost, shell has landed off-site.")
-			busy = 0
-			return
-		if(A)
-			message_mods("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
-			log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
-		busy = 0
-		if(current_squad.bbeacon)
-			cdel(current_squad.bbeacon) //Wipe the beacon. It's only good for one use.
-			current_squad.bbeacon = null
-		x_offset += rand(-2,2) //Little bit of randomness.
-		y_offset += rand(-2,2)
-		var/turf/target = locate(T.x + x_offset,T.y + y_offset,T.z)
-		if(target && istype(target))
-			target.ceiling_debris_check(5)
-			spawn(2)
-				almayer_orbital_cannon.fire_ob_cannon(target, usr)
-
 
 /obj/machinery/computer/overwatch/proc/change_lead()
 	if(!usr || usr != operator)
@@ -774,8 +668,63 @@
 	visible_message("\icon[src] <span class='boldnotice'>[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.</span>")
 	transfer_marine << "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>"
 
+/obj/machinery/computer/overwatch/proc/handle_bombard()
+	if(!usr) return
+
+	if(busy)
+		usr << "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>"
+		return
+
+	if(!current_squad)
+		usr << "\icon[src] <span class='warning'>No squad selected!</span>"
+		return
+
+	if(!almayer_orbital_cannon.chambered_tray)
+		usr << "\icon[src] <span class='warning'>The orbital cannon has no ammo chambered.</span>"
+		return
+
+	var/x_coord = deobfuscate_x(x_bomb)
+	var/y_coord = deobfuscate_y(y_bomb)
+
+	var/turf/T = locate(x_coord, y_coord, 1)
+
+	var/area/A = get_area(T)
+	if(istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
+		usr << "\icon[src] <span class='warning'>The target zone is deep underground. The orbital strike cannot reach here.</span>"
+		return
+
+	if(istype(T, /turf/open/space))
+		usr << "\icon[src] <span class='warning'>The target zone appears to be out of bounds. Please check coordinates.</span>"
+		return
+
+	//All set, let's do this.
+	busy = 1
+	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.</span>")
+	send_to_squad("Initializing fire coordinates.")
+	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
+	sleep(20)
+	send_to_squad("Transmitting beacon feed.")
+	sleep(20)
+	send_to_squad("Calibrating trajectory window.")
+	sleep(20)
+	for(var/mob/living/carbon/H in living_mob_list)
+		if(H.z == MAIN_SHIP_Z_LEVEL && !H.stat) //USS Almayer decks.
+			H << "<span class='warning'>The deck of the USS Almayer shudders as the orbital cannons open fire on the colony.</span>"
+			if(H.client)
+				shake_camera(H, 10, 1)
+	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!</span>")
+	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
+	spawn(6)
+		if(A)
+			message_mods("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
+			log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
+		busy = 0
+		var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)
+		if(target && istype(target))
+			almayer_orbital_cannon.fire_ob_cannon(target, usr)
 
 /obj/machinery/computer/overwatch/proc/handle_supplydrop()
+
 	if(!usr || usr != operator)
 		return
 
@@ -783,46 +732,31 @@
 		usr << "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>"
 		return
 
-	if(!current_squad.sbeacon)
-		usr << "\icon[src] <span class='warning'>No supply beacon detected!</span>"
-		return
-
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
 	if(!istype(C))
 		usr << "\icon[src] <span class='warning'>No crate was detected on the drop pad. Get Requisitions on the line!</span>"
 		return
 
-	if(!isturf(current_squad.sbeacon.loc))
-		usr << "\icon[src] <span class='warning'>The [current_squad.sbeacon.name] was not detected on the ground.</span>"
-		return
+	var/x_coord = deobfuscate_x(x_supply)
+	var/y_coord = deobfuscate_y(y_supply)
 
-	var/area/A = get_area(current_squad.bbeacon)
-	if(A && A.ceiling >= CEILING_DEEP_UNDERGROUND)
-		usr << "\icon[src] <span class='warning'>The [current_squad.sbeacon.name]'s signal is too weak. It is probably deep underground.</span>"
-		return
+	var/turf/T = locate(x_coord, y_coord, 1)
 
-	var/turf/T = get_turf(current_squad.sbeacon)
+	var/area/A = get_area(T)
+	if(A && A.ceiling >= CEILING_UNDERGROUND)
+		usr << "\icon[src] <span class='warning'>The landing zone is underground. The supply drop cannot reach here.</span>"
+		return
 
 	if(istype(T, /turf/open/space) || T.density)
-		usr << "\icon[src] <span class='warning'>The [current_squad.sbeacon.name]'s landing zone appears to be obstructed or out of bounds.</span>"
+		usr << "\icon[src] <span class='warning'>The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.</span>"
 		return
-
-	var/x_offset = x_offset_s
-	var/y_offset = y_offset_s
-	x_offset = round(x_offset)
-	y_offset = round(y_offset)
-	if(x_offset < -5 || x_offset > 5) x_offset = 0
-	if(y_offset < -5 || y_offset > 5) y_offset = 0
-	x_offset += rand(-2,2) //Randomize the drop zone a little bit.
-	y_offset += rand(-2,2)
 
 	busy = 1
 
 	visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop is now loading into the launch tube! Stand by!</span>")
 	C.visible_message("<span class='warning'>\The [C] begins to load into a launch tube. Stand clear!</span>")
-	C.anchored = TRUE //to avoid accidental pushes
-	send_to_squad("Supply Drop Incoming!")
-	current_squad.sbeacon.visible_message("\icon[src] <span class='boldnotice'>The [current_squad.sbeacon.name] begins to beep!</span>")
+	C.anchored = TRUE //To avoid accidental pushes
+	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
 	spawn(100)
 		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
@@ -831,18 +765,15 @@
 			return
 		S.supply_cooldown = world.time
 
-		if(S.sbeacon)
-			cdel(S.sbeacon) //Wipe the beacon. It's only good for one use.
-			S.sbeacon = null
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 		C.anchored = FALSE
 		C.z = T.z
-		C.x = T.x + x_offset
-		C.y = T.y + x_offset
+		C.x = T.x
+		C.y = T.y
 		var/turf/TC = get_turf(C)
 		TC.ceiling_debris_check(3)
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("\icon[C] <span class='boldnotice'>The [C.name] falls from the sky!</span>")
+		C.visible_message("\icon[C] <span class='boldnotice'>The '[C.name]' supply drop falls from the sky!</span>")
 		visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop launched! Another launch will be available in five minutes.</span>")
 		busy = 0
 
@@ -858,6 +789,7 @@
 	anchored = 1
 	density = 0
 	unacidable = 1
+	layer = 2.1 //It's the floor, man
 	var/squad = "Alpha"
 	var/sending_package = 0
 
@@ -889,128 +821,7 @@
 	icon_state = "deltadrop"
 	squad = "Delta"
 
-/obj/item/device/squad_beacon
-	name = "squad supply beacon"
-	desc = "A rugged, glorified laser pointer capable of sending a beam into space. Activate and throw this to call for a supply drop."
-	icon_state = "motion0"
-	unacidable = 1
-	w_class = 2
-	var/activated = 0
-	var/activation_time = 60
-	var/datum/squad/squad = null
-	var/icon_activated = "motion2"
-
-/obj/item/device/squad_beacon/Dispose()
-	if(squad)
-		if(squad.sbeacon == src)
-			squad.sbeacon = null
-		if(squad.bbeacon == src)
-			squad.bbeacon = null
-		squad = null
-	. = ..()
-
-/obj/item/device/squad_beacon/attack_self(mob/user)
-	if(activated)
-		user << "<span class='warning'>It's already been activated. Just leave it.</span>"
-		return
-
-	if(!ishuman(user)) return
-	var/mob/living/carbon/human/H = user
-
-	if(!user.mind)
-		user << "<span class='warning'>It doesn't seem to do anything for you.</span>"
-		return
-
-	squad = H.assigned_squad
-
-	if(!squad)
-		user << "<span class='warning'>You need to be in a squad for this to do anything.</span>"
-		return
-	if(squad.sbeacon)
-		user << "<span class='warning'>Your squad already has a beacon activated.</span>"
-		return
-	var/area/A = get_area(user)
-	if(A && istype(A) && A.ceiling >= CEILING_METAL)
-		user << "<span class='warning'>You have to be outside or under a glass ceiling to activate this.</span>"
-		return
-
-	var/delay = activation_time
-	if(user.mind.cm_skills)
-		delay = max(10, delay - 20*user.mind.cm_skills.leadership)
-
-	user.visible_message("<span class='notice'>[user] starts setting up [src] on the ground.</span>",
-	"<span class='notice'>You start setting up [src] on the ground and inputting all the data it needs.</span>")
-	if(do_after(user, delay, TRUE, 5, BUSY_ICON_FRIENDLY))
-
-		squad.sbeacon = src
-		user.drop_inv_item_to_loc(src, user.loc)
-		activated = 1
-		anchored = 1
-		w_class = 10
-		icon_state = "[icon_activated]"
-		playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-		user.visible_message("[user] activates [src]",
-		"You activate [src]")
-
-/obj/item/device/squad_beacon/bomb
-	name = "orbital beacon"
-	desc = "A bulky device that fires a beam up to an orbiting vessel to send local coordinates."
-	icon_state = "motion4"
-	w_class = 2
-	activation_time = 80
-	icon_activated = "motion1"
-
-/obj/item/device/squad_beacon/bomb/attack_self(mob/user)
-	if(activated)
-		user << "<span class='warning'>It's already been activated. Just leave it.</span>"
-		return
-	if(!ishuman(user)) return
-	var/mob/living/carbon/human/H = user
-
-	if(!user.mind)
-		user << "<span class='warning'>It doesn't seem to do anything for you.</span>"
-		return
-
-	squad = H.assigned_squad
-
-	if(!squad)
-		user << "<span class='warning'>You need to be in a squad for this to do anything.</span>"
-		return
-	if(squad.bbeacon)
-		user << "<span class='warning'>Your squad already has a beacon activated.</span>"
-		return
-
-	if(user.z != 1)
-		user << "<span class='warning'>You have to be on the planet to use this or it won't transmit.</span>"
-		return
-
-	var/area/A = get_area(user)
-	if(A && istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
-		user << "<span class='warning'>This won't work if you're standing deep underground.</span>"
-		return
-
-	var/delay = activation_time
-	if(user.mind.cm_skills)
-		delay = max(15, delay - 20*user.mind.cm_skills.leadership)
-
-	user.visible_message("<span class='notice'>[user] starts setting up [src] on the ground.</span>",
-	"<span class='notice'>You start setting up [src] on the ground and inputting all the data it needs.</span>")
-	if(do_after(user, delay, TRUE, 5, BUSY_ICON_HOSTILE))
-
-		message_admins("[user] ([user.key]) set up an orbital strike beacon.")
-		squad.bbeacon = src //Set us up the bomb~
-		user.drop_inv_item_to_loc(src, user.loc)
-		activated = 1
-		anchored = 1
-		w_class = 10
-		layer = ABOVE_FLY_LAYER
-		icon_state = "[icon_activated]"
-		playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-		user.visible_message("[user] activates [src]",
-		"You activate [src]")
-
 //This is perhaps one of the weirdest places imaginable to put it, but it's a leadership skill, so
-
 /mob/living/carbon/human/verb/issue_order()
 
 	set name = "Issue Order"

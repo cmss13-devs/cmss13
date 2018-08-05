@@ -1638,3 +1638,26 @@ var/list/WALLITEMS = list(
 			error -= deltax
 	return line
 
+//Offuscate x for coord system
+/proc/obfuscate_x(var/x)
+
+	x += obfs_x
+	return x
+
+//Offuscate y for coord system
+/proc/obfuscate_y(var/y)
+
+	y += obfs_y
+	return y
+
+//Deoffuscate x for coord system
+/proc/deobfuscate_x(var/x)
+
+	x -= obfs_x
+	return x
+
+//Deoffuscate y for coord system
+/proc/deobfuscate_y(var/y)
+
+	y -= obfs_y
+	return y

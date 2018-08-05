@@ -43,14 +43,14 @@
 		return
 	if(choice == "Target")
 		var/temp_targ_x = input("Set longitude of strike from 0 to [world.maxx].") as num
-		if(dial_x + temp_targ_x > world.maxx || dial_x + temp_targ_x < 0)
+		if(dial_x + deobfuscate_x(temp_targ_x) > world.maxx || dial_x + deobfuscate_x(temp_targ_x) < 0)
 			user << "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>"
 			return
 		var/temp_targ_y = input("Set latitude of strike from 0 to [world.maxy].") as num
-		if(dial_y + temp_targ_y > world.maxy || dial_y + temp_targ_y < 0)
+		if(dial_y + deobfuscate_y(temp_targ_y) > world.maxy || dial_y + deobfuscate_y(temp_targ_y) < 0)
 			user << "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>"
 			return
-		var/turf/T = locate(temp_targ_x + dial_x, temp_targ_y + dial_y, z)
+		var/turf/T = locate(deobfuscate_x(temp_targ_x) + dial_x, deobfuscate_y(temp_targ_y) + dial_y, z)
 		if(get_dist(loc, T) < 10)
 			user << "<span class='warning'>You cannot aim at this coordinate, it is too close to your mortar.</span>"
 			return
@@ -65,8 +65,8 @@
 			user.visible_message("<span class='notice'>[user] finishes adjusting [src]'s firing angle and distance.</span>",
 			"<span class='notice'>You finish adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
 			busy = 0
-			targ_x = temp_targ_x
-			targ_y = temp_targ_y
+			targ_x = deobfuscate_x(temp_targ_x)
+			targ_y = deobfuscate_y(temp_targ_y)
 			var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 10 tiles travelled
 			var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
 			offset_x = rand(-offset_x_max, offset_x_max)

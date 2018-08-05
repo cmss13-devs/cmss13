@@ -22,12 +22,12 @@
 #define R_MENTOR		32768
 #define R_HOST			65536
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
-// #define R_PERMISSION	131072	
-// #define R_PERMISSION	262144	
-// #define R_PERMISSION	524288	
-// #define R_PERMISSION	1048576	
-// #define R_PERMISSION	2097152	
-// #define R_PERMISSION	4194304	
+// #define R_PERMISSION	131072
+// #define R_PERMISSION	262144
+// #define R_PERMISSION	524288
+// #define R_PERMISSION	1048576
+// #define R_PERMISSION	2097152
+// #define R_PERMISSION	4194304
 //=================================================
 
 
@@ -295,3 +295,8 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 //Used for autocall procs on ERT
 //var/global/list/unanswered_distress = list()
 var/distress_cancel = 0
+
+//Coordinate obsfucator
+//Used by the tactical binoculars and linked systems to prevent coords collection/prefiring
+var/global/obfs_x = 0 //A number between -500 and 500
+var/global/obfs_y = 0 //A number between -500 and 500

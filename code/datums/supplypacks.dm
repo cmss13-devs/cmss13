@@ -61,28 +61,6 @@ OPERATIONS
 	containername = "special ops crate"
 	group = "Operations"
 
-/datum/supply_packs/beacons_supply
-	name = "supply beacons crate (x2)"
-	contains = list(
-			/obj/item/device/squad_beacon,
-			/obj/item/device/squad_beacon
-			)
-	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate
-	containername = "supply beacons crate"
-	group = "Operations"
-
-/datum/supply_packs/beacons_orbital
-	name = "orbital beacons crate (x2)"
-	contains = list(
-					/obj/item/device/squad_beacon/bomb,
-					/obj/item/device/squad_beacon/bomb
-					)
-	cost = RO_PRICE_PRICY
-	containertype = /obj/structure/closet/crate
-	containername = "orbital beacons crate"
-	group = "Operations"
-
 /datum/supply_packs/flares
 	name = "flare packs crate (x20)"
 	contains = list(

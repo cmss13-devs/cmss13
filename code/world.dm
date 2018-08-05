@@ -87,6 +87,10 @@ var/global/datum/global_init/init = new ()
 	//spawn(1)
 		//master_controller.setup()
 
+	//Scramble the coords obsfucator
+	obfs_x = rand(-500, 500) //A number between -100 and 100
+	obfs_y = rand(-500, 500) //A number between -100 and 100
+
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(config.ToRban)
 			ToRban_autoupdate()
@@ -313,7 +317,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			return next_map
 
-		
+
 
 /world/Reboot(var/reason)
 	/*spawn(0)

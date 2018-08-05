@@ -1042,7 +1042,7 @@
 
 		var/newcaste = ""
 
-		switch(T.caste)
+		switch(T.caste.caste_name)
 			if("Hivelord")
 				newcaste = "Drone"
 			if("Carrier")
@@ -1066,7 +1066,7 @@
 			X << "<span class='xenowarning'>[T] can't be deevolved.</span>"
 			return
 
-		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste] to [newcaste]?", , "Yes", "No")
+		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_name] to [newcaste]?", , "Yes", "No")
 		if(confirm == "No")
 			return
 

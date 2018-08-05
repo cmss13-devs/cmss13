@@ -38,6 +38,7 @@
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
 	desc = "A huge chunk of metal used to seperate space from the ship"
+	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = "testwall"
 	hull = 1 //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls

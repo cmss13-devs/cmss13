@@ -141,12 +141,14 @@
 				A.ex_act(severity++)
 			cdel(src)
 		if(2)
+			if(health > 999) return 1
 			if(prob(50))
 				for (var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
 					A.ex_act(severity++)
 				cdel(src)
 		if(3)
+			if(health > 999) return 1
 			if(prob(5))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc

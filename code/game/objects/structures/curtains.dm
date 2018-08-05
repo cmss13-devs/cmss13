@@ -1,15 +1,14 @@
 /obj/structure/curtain
 	icon = 'icons/obj/structures/curtain.dmi'
 	name = "curtain"
-	icon_state = "closed"
+	icon_state = "green"
 	layer = ABOVE_MOB_LAYER
 	opacity = 1
 	density = 0
 
-/obj/structure/curtain/open
-	icon_state = "open"
-	layer = OBJ_LAYER
-	opacity = 0
+/obj/structure/curtain/open/New()
+	..()
+	toggle()
 
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
 	if(P.damage)
@@ -25,10 +24,10 @@
 /obj/structure/curtain/proc/toggle()
 	opacity = !opacity
 	if(opacity)
-		icon_state = "closed"
+		icon_state = "[initial(icon_state)]"
 		layer = ABOVE_MOB_LAYER
 	else
-		icon_state = "open"
+		icon_state = "[initial(icon_state)]-o"
 		layer = OBJ_LAYER
 
 /obj/structure/curtain/shower
@@ -58,3 +57,7 @@
 	name = "plastic curtain"
 	color = "#B8F5E3"
 	alpha = 200
+
+/obj/structure/curtain/red
+	name = "red curtain"
+	icon_state = "red"

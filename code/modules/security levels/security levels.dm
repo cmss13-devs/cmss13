@@ -17,6 +17,9 @@
 			level = SEC_LEVEL_RED
 		if("delta")
 			level = SEC_LEVEL_DELTA
+	for(var/obj/structure/closet/secure_closet/guncabinet/G in gun_cabinets)
+		if(G.z == MAIN_SHIP_Z_LEVEL)
+			G.check_sec_level(level)
 
 
 	//Will not be announced if you try to set to the same level as it already is

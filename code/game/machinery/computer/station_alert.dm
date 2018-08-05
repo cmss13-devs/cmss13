@@ -2,7 +2,7 @@
 /obj/machinery/computer/station_alert
 	name = "Station Alert Computer"
 	desc = "Used to access the station's automated alert system."
-	icon_state = "atmos0"
+	icon_state = "atmos"
 	circuit = "/obj/item/circuitboard/computer/stationalert"
 	var/alarms = list("Fire"=list(), "Atmosphere"=list(), "Power"=list())
 

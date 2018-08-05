@@ -443,6 +443,23 @@
 	parts = /obj/item/frame/table/wood
 	table_prefix = "wood"
 	health = 50
+
+/obj/structure/table/woodentable/poor
+	name = "poor wooden table"
+	desc = "A semi-poorly constructed wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	icon_state = "pwoodtable"
+	parts = /obj/item/frame/table/wood/poor
+	table_prefix = "pwood"
+
+/obj/structure/table/woodentable/fancy
+	name = "fancy wooden table"
+	desc = "A nicely crafted mahogany wood surface resting on four legs. Useful to put stuff on. It's too heavy to flip over."
+	icon_state = "fwoodtable"
+	parts = /obj/item/frame/table/wood/fancy
+	table_prefix = "fwood"
+
+/obj/structure/table/woodentable/fancy/flip(var/direction)
+	return 0 //That is mahogany!
 /*
  * Gambling tables
  */

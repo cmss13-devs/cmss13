@@ -84,7 +84,9 @@
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-
+	flags_equip_slot = SLOT_FACE
+	flags_inventory = COVERMOUTH
+	flags_armor_protection = SLOT_FACE
 
 	attackby(obj/item/I as obj, mob/user as mob)
 		if(istype(I,/obj/item/stack/cable_coil))
@@ -128,6 +130,7 @@
 	name ="\improper M11 throwing knife"
 	icon='icons/obj/items/weapons.dmi'
 	icon_state = "throwing_knife"
+	item_state = "combat_knife"
 	desc="A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used effectively."
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -138,8 +141,9 @@
 	throw_range = 7
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	flags_equip_slot = SLOT_STORE
-
+	flags_equip_slot = SLOT_STORE|SLOT_FACE
+	flags_inventory = COVERMOUTH
+	flags_armor_protection = SLOT_FACE
 
 
 /obj/item/weapon/unathiknife

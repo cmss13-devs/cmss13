@@ -472,9 +472,10 @@
 		if(SMES.z == MAIN_SHIP_Z_LEVEL || SMES.z == LOW_ORBIT_Z_LEVEL)
 			SMES.ion_act()
 
-	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
-		set_security_level(SEC_LEVEL_RED, TRUE)
-
+	if(security_level < SEC_LEVEL_DELTA) //automatically set security level to red.
+		set_security_level(SEC_LEVEL_DELTA, TRUE)
+		EvacuationAuthority.initiate_evacuation()
+		EvacuationAuthority.enable_self_destruct()
 	//END: Heavy lifting backend
 
 	sleep(100)

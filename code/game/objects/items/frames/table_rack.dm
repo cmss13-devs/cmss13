@@ -6,12 +6,12 @@
  */
 
 /obj/item/frame/table
-	name = "table parts"
+	name = "tan table parts"
 	desc = "A kit for a table, including a large, flat metal surface and four legs. Some assembly required."
 	gender = PLURAL
 	icon = 'icons/obj/items/items.dmi'
-	icon_state = "table_parts"
-	item_state = "table_parts"
+	icon_state = "tan_table_parts"
+	item_state = "tan_table_parts"
 	matter = list("metal" = 7500) //A table, takes two sheets to build
 	flags_atom = FPRINT|CONDUCT
 	attack_verb = list("slammed", "bashed", "battered", "bludgeoned", "thrashed", "whacked")
@@ -94,12 +94,26 @@
 		new /obj/item/stack/sheet/wood(get_turf(src))
 		cdel(src)
 
-	if(istype(W, /obj/item/stack/tile/carpet))
+	if(istype(W, /obj/item/stack/tile/carpet) && istype(src, /obj/item/frame/table/wood))
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
 			user << "<span class='notice'>You put a layer of carpet on [src].</span>"
 			new /obj/item/frame/table/gambling(get_turf(src))
 			cdel(src)
+
+/obj/item/frame/table/wood/poor
+	name = "poor wooden table parts"
+	desc = "A kit for a poorly crafted table, including a large, flat wooden surface and four legs. Some assembly required."
+	icon_state = "pwood_tableparts"
+	flags_atom = null
+	table_type = /obj/structure/table/woodentable/poor
+
+/obj/item/frame/table/wood/fancy
+	name = "fancy wooden table parts"
+	desc = "A kit for a finely crafted mahogany table, including a large, flat wooden surface and four legs. Some assembly required."
+	icon_state = "fwood_tableparts"
+	flags_atom = null
+	table_type = /obj/structure/table/woodentable/fancy
 
 /*
  * Gambling Table Parts
@@ -125,8 +139,13 @@
 		new /obj/item/frame/table/wood(get_turf(src))
 		cdel(src)
 
-
-
+/*
+ * Almayer Tables
+ */
+/obj/item/frame/table/almayer
+	name = "gray table parts"
+	icon_state = "tableparts"
+	table_type = /obj/structure/table/almayer
 
 
 

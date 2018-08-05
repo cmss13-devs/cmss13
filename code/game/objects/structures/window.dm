@@ -482,7 +482,7 @@
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"
 	desc = "A glass window with a special rod matrice inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
-	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
+	icon_state = "alm_rwindowhull"
 	not_damageable = 1
 	not_deconstructable = 1
 	unacidable = 1

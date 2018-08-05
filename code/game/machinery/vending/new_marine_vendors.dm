@@ -257,7 +257,6 @@
 					available_specialist_sets -= p_name
 			if(vendor_role == "Tank Crewman")
 				if(H.mind && H.mind.assigned_role == "Tank Crewman")
-					H << "<span class='warning'>Only Tank Crewmen can take this equipment.</span>"
 					if(istype(src, /obj/machinery/marine_selector/tank))
 						var/obj/machinery/marine_selector/tank/t = src
 						var/t_name = L[1]
@@ -900,7 +899,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	var/list/primary_list = list("LTB Cannon", "LTAA-AP Minigun")
 	var/list/secondary_list = list("Grenade Launcher", "M56 Cupola", "Secondary Flamer Unit", "TOW Launcher")
 	var/list/support_list = list("Artillery Module", "Integrated Weapons Sensor Array", "Overdrive Enhancer", "Smoke Launcher")
-	var/list/armor_list = list("Ballistic Armor", "Caustic Armor", "Paladin Armor", "Snowplow")
+	var/list/armor_list = list("Ballistic Armor", "Caustic Armor", "Concussive Armor", "Paladin Armor")
 	var/list/treads_list = list("Treads")
 
 //fuck it
@@ -922,12 +921,16 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 							list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, MARINE_CAN_BUY_ARMOR, "black"),
 							list("Caustic Armor", 0, /obj/item/hardpoint/armor/caustic, MARINE_CAN_BUY_ARMOR, "black"),
 							list("Concussive Armor", 0, /obj/item/hardpoint/armor/concussive, MARINE_CAN_BUY_ARMOR, "black"),
-							list("Paladin Armor", 0, /obj/item/hardpoint/armor/snowplow, MARINE_CAN_BUY_ARMOR, "black"),
+							list("Paladin Armor", 0, /obj/item/hardpoint/armor/paladin, MARINE_CAN_BUY_ARMOR, "black"),
 							list("Snowplow", 0, /obj/item/hardpoint/armor/snowplow, MARINE_CAN_BUY_ARMOR, "black"),
 							list("TREADS", 0, null, null, null),
 							list("Treads", 0, /obj/item/hardpoint/treads/standard, MARINE_CAN_BUY_SHOES, "black"),
 							)
 
+/obj/machinery/marine_selector/tank/New()
+	..()
+	if(map_tag == MAP_ICE_COLONY)
+		armor_list += "Snowplow"
 
 /obj/effect/essentials_set
 	var/list/spawned_gear_list

@@ -253,8 +253,8 @@
 						dat += "<font color='green'>Supply crate loaded</font><BR>"
 					else
 						dat += "Empty<BR>"
-					dat += "<B>X-Coordinate:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
-					dat += "<B>Y-Coordinate:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>\[Change\]</a><BR><BR>"
+					dat += "<B>Longitude:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
+					dat += "<B>Latitude:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>\[Change\]</a><BR><BR>"
 					dat += "<A href='?src=\ref[src];operation=dropsupply'>\[LAUNCH!\]</a>"
 				dat += "<BR><BR>----------------------<br>"
 				dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
@@ -272,8 +272,8 @@
 						dat += "<font color='red'>No ammo chambered in the cannon.</font><br>"
 					else
 						dat += "<font color='green'>Ready!</font><br>"
-					dat += "<B>X-Coordinate Offset:</B> [x_bomb] <A href='?src=\ref[src];operation=bomb_x'>\[Change\]</a><BR>"
-					dat += "<B>Y-Coordinate Offset:</B> [y_bomb] <A href='?src=\ref[src];operation=bomb_y'>\[Change\]</a><BR><BR>"
+					dat += "<B>Longitude:</B> [x_bomb] <A href='?src=\ref[src];operation=bomb_x'>\[Change\]</a><BR>"
+					dat += "<B>Latitude:</B> [y_bomb] <A href='?src=\ref[src];operation=bomb_y'>\[Change\]</a><BR><BR>"
 					dat += "<A href='?src=\ref[src];operation=dropbomb'>\[FIRE!\]</a>"
 				dat += "<BR><BR>----------------------<br>"
 				dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
@@ -391,20 +391,20 @@
 				send_to_squad("Your secondary objective has changed. See Status pane for details.")
 				visible_message("\icon[src] <span class='boldnotice'>Secondary objective of squad '[current_squad]' set.</span>")
 		if("supply_x")
-			var/input = input(usr,"What X coordinate should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			usr << "\icon[src] <span class='notice'>X coordinate is now [input].</span>"
+			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Longitude is now [input].</span>"
 			x_supply = input
 		if("supply_y")
-			var/input = input(usr,"What Y coordinate should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			usr << "\icon[src] <span class='notice'>Y coordinate is now [input].</span>"
+			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Latitude is now [input].</span>"
 			y_supply = input
 		if("bomb_x")
-			var/input = input(usr,"What X coordinate should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			usr << "\icon[src] <span class='notice'>X coordinate is now [input].</span>"
+			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Longitude is now [input].</span>"
 			x_bomb = input
 		if("bomb_y")
-			var/input = input(usr,"What X coordinate should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			usr << "\icon[src] <span class='notice'>Y coordinate is now [input].</span>"
+			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Latitude is now [input].</span>"
 			y_bomb = input
 		if("refresh")
 			src.attack_hand(usr)

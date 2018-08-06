@@ -149,7 +149,7 @@
 			overlay_marine_mapview()
 		user << "<span class='notice'>You start looking at the map.</span>"
 		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		user << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+		user << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 		return
 	..()
 
@@ -164,7 +164,7 @@
 			continue
 
 		L << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		L << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+		L << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 //Nonpower using props
 

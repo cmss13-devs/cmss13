@@ -10,6 +10,6 @@
 	..()
 
 /mob/living/carbon/human/KnockOut(amount)
-	if(HULK in mutations)	return
+	if(HULK in mutations || isSynth(src))	return
 	if (isYautja(src)) amount *= 0.5
 	..()

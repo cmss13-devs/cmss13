@@ -411,12 +411,13 @@
 	if (Adjacent(H))
 		start_pulling(H,1)
 
-	spawn(caste.lunge_cooldown)
-		used_lunge = 0
-		src << "<span class='notice'>You get ready to lunge again.</span>"
-		for(var/X in actions)
-			var/datum/action/act = X
-			act.update_button_icon()
+	if(used_lunge == 1)
+		spawn(caste.lunge_cooldown)
+			used_lunge = 0
+			src << "<span class='notice'>You get ready to lunge again.</span>"
+			for(var/X in actions)
+				var/datum/action/act = X
+				act.update_button_icon()
 
 	return 1
 

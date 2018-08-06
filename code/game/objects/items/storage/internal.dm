@@ -52,9 +52,10 @@
 			switch(over_object.name)
 				if("r_hand")
 					if(master_item.time_to_unequip)
+						user.visible_message("<span class='notice'>[user] starts taking off \the [master_item].</span>")
 						spawn(0)
 							if(!do_after(user, master_item.time_to_unequip, TRUE, 5, BUSY_ICON_GENERIC))
-								user << "You stop taking off \the [master_item]"
+								user << "<span class='notice'>You stop taking off \the [master_item].</span>"
 							else
 								user.drop_inv_item_on_ground(master_item)
 								user.put_in_r_hand(master_item)
@@ -64,9 +65,10 @@
 						user.put_in_r_hand(master_item)
 				if("l_hand")
 					if(master_item.time_to_unequip)
+						user.visible_message("<span class='notice'>[user] starts taking off \the [master_item].</span>")
 						spawn(0)
 							if(!do_after(user, master_item.time_to_unequip, TRUE, 5, BUSY_ICON_GENERIC))
-								user << "You stop taking off \the [master_item]"
+								user << "<span class='notice'>You stop taking off \the [master_item].</span>"
 							else
 								user.drop_inv_item_on_ground(master_item)
 								user.put_in_l_hand(master_item)

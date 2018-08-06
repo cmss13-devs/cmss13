@@ -417,6 +417,7 @@ var/list/mechtoys = list(
 	return
 
 /obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
+	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!allowed(user))
 		user << "\red Access Denied."
 		return
@@ -485,6 +486,7 @@ var/list/mechtoys = list(
 	return
 
 /obj/machinery/computer/supplycomp/Topic(href, href_list)
+	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!supply_controller)
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
 		return

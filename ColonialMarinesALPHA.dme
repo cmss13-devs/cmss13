@@ -115,6 +115,7 @@
 #include "code\controllers\processes\diseases.dm"
 #include "code\controllers\processes\events.dm"
 #include "code\controllers\processes\machines.dm"
+#include "code\controllers\processes\mapview.dm"
 #include "code\controllers\processes\mobs.dm"
 #include "code\controllers\processes\nano.dm"
 #include "code\controllers\processes\power.dm"

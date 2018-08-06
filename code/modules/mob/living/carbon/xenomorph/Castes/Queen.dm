@@ -116,7 +116,6 @@
 
 	var/map_view = 0
 	var/next_map_gen = 0
-	var/next_overlay_gen = 0
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/ovipositor_cooldown = 0
@@ -184,11 +183,8 @@
 			if(world.time > next_map_gen)
 				generate_xeno_mapview()
 				next_map_gen = world.time + 6000
-			if(world.time > next_overlay_gen)
-				overlay_xeno_mapview()
-				next_overlay_gen = world.time + 50
-				src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-				src << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+25]x[(map_sizes[1][2]*2)+25]")
+			src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
+			src << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
 
 		if(++breathing_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.
 			playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)
@@ -559,6 +555,7 @@
 	if(ovipositor)
 		ovipositor = FALSE
 		map_view = 0
+		src << browse(null, "window=queenminimap")
 		update_icons()
 		new /obj/ovipositor(loc)
 

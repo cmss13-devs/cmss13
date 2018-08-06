@@ -4,6 +4,7 @@
 	icon_state = "dummy"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 
+	var/mob/living/carbon/human/current_mapviewer = null
 	var/datum/squad/current_squad = null
 	var/state = 0
 	var/obj/machinery/camera/cam = null
@@ -58,6 +59,7 @@
 				else
 					dat += "Current Squad: [current_squad.name] Squad</A>   "
 					dat += "<A href='?src=\ref[src];operation=message'>\[Message Squad\]</a><br><br>"
+					dat += "<A href='?src=\ref[src];operation=mapview'>\[Toggle Tactical Map\]</a><br><br>"
 					dat += "----------------------<BR><BR>"
 					if(current_squad.squad_leader)
 						dat += "<B>Squad Leader:</B> <A href='?src=\ref[src];operation=use_cam;cam_target=\ref[current_squad.squad_leader]'>[current_squad.squad_leader.name]</a> "
@@ -283,6 +285,34 @@
 	onclose(user, "overwatch")
 	return
 
+/obj/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
+	if(close || !current_squad || (current_mapviewer && !Adjacent(current_mapviewer)))
+		if(current_mapviewer)
+			current_mapviewer << browse(null, "window=marineminimap")
+			current_mapviewer = null
+		return
+	var/icon/O
+	switch(current_squad.color)
+		if(1)
+			if(!istype(marine_mapview_overlay_1))
+				overlay_marine_mapview(current_squad)
+			O = marine_mapview_overlay_1
+		if(2)
+			if(!istype(marine_mapview_overlay_2))
+				overlay_marine_mapview(current_squad)
+			O = marine_mapview_overlay_2
+		if(3)
+			if(!istype(marine_mapview_overlay_3))
+				overlay_marine_mapview(current_squad)
+			O = marine_mapview_overlay_3
+		if(4)
+			if(!istype(marine_mapview_overlay_4))
+				overlay_marine_mapview(current_squad)
+			O = marine_mapview_overlay_4
+	if(O)
+		current_mapviewer << browse_rsc(O, "marine_minimap.png")
+		current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+
 /obj/machinery/computer/overwatch/Topic(href, href_list)
 	if(..())
 		return
@@ -295,6 +325,13 @@
 
 	switch(href_list["operation"])
 		// main interface
+		if("mapview")
+			if(current_mapviewer)
+				update_mapview(1)
+				return
+			current_mapviewer = usr
+			update_mapview()
+			return
 		if("back")
 			state = 0
 		if("monitor")

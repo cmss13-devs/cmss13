@@ -23,6 +23,7 @@
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	circuit = "/obj/item/circuitboard/computer/communications"
+	var/mob/living/carbon/human/current_mapviewer
 	var/prints_intercept = 1
 	var/authenticated = 0
 	var/list/messagetitle = list()
@@ -52,12 +53,31 @@
 		if(state != STATE_STATUSDISPLAY)
 			updateDialog()
 
+/obj/machinery/computer/communications/proc/update_mapview(var/close = 0)
+	if(close || (current_mapviewer && !Adjacent(current_mapviewer)))
+		if(current_mapviewer)
+			current_mapviewer << browse(null, "window=marineminimap")
+			current_mapviewer = null
+		return
+	if(!istype(marine_mapview_overlay_5))
+		overlay_marine_mapview()
+	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
+	current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..()) r_FAL
 
 	usr.set_interaction(src)
 
 	switch(href_list["operation"])
+		if("mapview")
+			if(current_mapviewer)
+				update_mapview(1)
+				return
+			current_mapviewer = usr
+			update_mapview()
+			return
+
 		if("main") state = STATE_DEFAULT
 
 		if("login")
@@ -333,6 +353,7 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=changeseclevel'>Change alert level</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set status display</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message list</A> \]"
+				dat += "<BR>\[ <A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A> \]"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)

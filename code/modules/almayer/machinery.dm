@@ -124,9 +124,47 @@
 	anchored = 1
 	use_power = 1
 	idle_power_usage = 20
+	var/list/current_viewers = list()
 
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "maptable"
+
+/obj/machinery/prop/almayer/CICmap/Dispose()
+	for(var/mob/living/L in current_viewers)
+		L << "<span class='notice'>You stop looking at the map.</span>"
+		L << browse(null, "window=marineminimap")
+		current_viewers -= L
+		continue
+	..()
+
+/obj/machinery/prop/almayer/CICmap/examine(mob/living/user)
+	if(ishuman(user) && get_dist(src,user) < 3 && powered())
+		if(user in current_viewers)
+			user << "<span class='notice'>You stop looking at the map.</span>"
+			user << browse(null, "window=marineminimap")
+			current_viewers -= user
+			return
+		current_viewers += user
+		if(!istype(marine_mapview_overlay_5))
+			overlay_marine_mapview()
+		user << "<span class='notice'>You start looking at the map.</span>"
+		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
+		user << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+		return
+	..()
+
+/obj/machinery/prop/almayer/CICmap/proc/update_mapview()
+	if(!istype(marine_mapview_overlay_5))
+		overlay_marine_mapview()
+	for(var/mob/living/L in current_viewers)
+		if(!powered() || get_dist(src,L) > 2)
+			L << "<span class='notice'>You stop looking at the map.</span>"
+			L << browse(null, "window=marineminimap")
+			current_viewers -= L
+			continue
+
+		L << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
+		L << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
 
 //Nonpower using props
 

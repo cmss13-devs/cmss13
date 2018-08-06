@@ -68,8 +68,10 @@
 	if(world.time > X.next_map_gen)
 		generate_xeno_mapview()
 		X.next_map_gen = world.time + 6000
+	if(!xeno_mapview_overlay)
+		overlay_xeno_mapview()
 	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-	X << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+	X << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 // Shift Spits
 /datum/action/xeno_action/shift_spits

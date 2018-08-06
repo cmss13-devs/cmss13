@@ -183,8 +183,10 @@
 			if(world.time > next_map_gen)
 				generate_xeno_mapview()
 				next_map_gen = world.time + 6000
+			if(!xeno_mapview_overlay)
+				overlay_xeno_mapview()
 			src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-			src << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+			src << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 		if(++breathing_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.
 			playsound(loc, pick('sound/voice/alien_queen_breath1.ogg', 'sound/voice/alien_queen_breath2.ogg'), 15, 1, 4)

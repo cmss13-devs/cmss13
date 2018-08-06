@@ -4,7 +4,7 @@ datum/controller/process/mapview
 
 datum/controller/process/mapview/setup()
 	name = "Mapview"
-	schedule_interval = 50 //5 seconds
+	schedule_interval = 20 //1 seconds
 	generate_marine_mapview()
 	generate_xeno_mapview()
 

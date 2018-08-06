@@ -214,6 +214,7 @@
 			if(i != S.color)
 				colors[i] = rgb(51,204,51)
 			i++
+		colors[selected] = squad_colors[selected]
 	var/j
 	for(j=1,j<=marines_with_helmets.len,j++)
 		//world << "drawing squad [j]"
@@ -223,7 +224,7 @@
 			newoverlay.DrawBox(colors[j],L.loc.x-1,L.loc.y-1,L.loc.x+1,L.loc.y+1)
 	if(selected)
 		for(var/mob/living/carbon/human/sel in marines_with_helmets[selected])
-			newoverlay.DrawBox(rgb(51,204,51),sel.loc.x-1,sel.loc.y-1,sel.loc.x+1,sel.loc.y+1)
+			newoverlay.DrawBox(colors[selected],sel.loc.x-1,sel.loc.y-1,sel.loc.x+1,sel.loc.y+1)
 	if(vehicles.len)
 		for(var/obj/vehicle/multitile/root/cm_armored/V in vehicles)
 			newoverlay.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)

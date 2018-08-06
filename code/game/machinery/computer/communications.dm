@@ -62,7 +62,7 @@
 	if(!istype(marine_mapview_overlay_5))
 		overlay_marine_mapview()
 	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-	current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50];can_close=0")
+	current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..()) r_FAL

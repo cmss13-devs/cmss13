@@ -85,6 +85,7 @@
 /obj/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
 	if(!istype(H)) return
 	if(H == user) return
+	if(H.buckled) return
 	if(H != victim)
 		user << "<span class='warning'>Lay the patient on the table first!</span>"
 		return
@@ -93,6 +94,7 @@
 		return
 	H.visible_message("<span class='notice'>[user] begins to connect [H] to the anesthetic system.</span>")
 	if(!do_after(user, 25, FALSE, 5, BUSY_ICON_FRIENDLY))
+		if(H.buckled) return
 		if(H != victim)
 			user << "<span class='warning'>The patient must remain on the table!</span>"
 			return

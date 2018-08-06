@@ -129,18 +129,17 @@
 		if(!isXeno(AM))
 			use_plasma(10)
 
-		if(!lunge)
-			used_lunge = 1
-
 		if(!isXeno(L) && !isYautja(L))
 			round_statistics.warrior_grabs++
+			used_lunge = 1
 			grab_level = GRAB_NECK
 			L.drop_held_items()
 			L.Stun(5)
 			visible_message("<span class='xenowarning'>\The [src] grabs [L] by the throat!</span>", \
 			"<span class='xenowarning'>You grab [L] by the throat!</span>")
 
-	if(!lunge && !isXeno(AM))
+	if(used_lunge)
+		used_lunge = 2 // sanity checking
 		spawn(caste.lunge_cooldown)
 			used_lunge = 0
 			src << "<span class='notice'>You get ready to lunge again.</span>"

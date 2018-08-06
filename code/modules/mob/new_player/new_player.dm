@@ -125,7 +125,7 @@
 						observer.loc = O.loc
 					else
 						src << "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>"
-					observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
+					//observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
 
 					client.prefs.update_preview_icon()
 					observer.icon = client.prefs.preview_icon
@@ -138,6 +138,7 @@
 	//				if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 	//					observer.verbs -= /mob/dead/observer/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 					observer.key = key
+					observer.timeofdeath = 0
 					if(observer.client) observer.client.change_view(world.view)
 					cdel(src)
 

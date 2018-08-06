@@ -246,7 +246,7 @@
 			else
 				var/mob/M = usr
 				var/obj/item/I = M.get_active_hand()
-				if(I && istype(I))
+				if(I && istype(I) && !(I.flags_item & (DELONDROP|ITEM_ABSTRACT|NODROP)))
 					if(istype(I, /obj/item/evidencebag))
 						scanning = I.contents[1]
 						scanning.loc = src

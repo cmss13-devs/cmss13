@@ -59,6 +59,21 @@ var/list/department_radio_keys = list(
 		if(!istype(dongle)) return
 		if(dongle.translate_binary) return 1
 
+/mob/living/proc/show_speech_bubble(var/bubble_name)
+	var/list/hear = hearers()
+
+	var/image/speech_bubble = image('icons/mob/talk.dmi',src,"[bubble_name]")
+
+	for(var/mob/M in hear)
+		M << speech_bubble
+
+	spawn(30)
+		if(client) client.images -= speech_bubble
+		for(var/mob/M in hear)
+			if(M.client) M.client.images -= speech_bubble
+		cdel(speech_bubble)
+
+
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol)
 
 	var/turf/T = get_turf(src)

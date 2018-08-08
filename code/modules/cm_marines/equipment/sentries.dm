@@ -273,7 +273,7 @@
 	var/safety_off = 0
 	var/rounds = 500
 	var/rounds_max = 500
-	var/burst_size = 10
+	var/burst_size = 6
 	var/locked = 0
 	var/atom/target = null
 	var/manual_override = 0
@@ -288,12 +288,14 @@
 	var/fire_delay = 3
 	var/last_fired = 0
 	var/is_bursting = 0
-	var/range = 7
+	var/range = 8
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 	var/obj/item/turret_laptop/laptop = null
 	var/immobile = 0 //Used for prebuilt ones.
 	var/datum/ammo/bullet/turret/ammo = /datum/ammo/bullet/turret
 	var/obj/item/projectile/in_chamber = null
+	var/angle = 1
+	var/list/angle_list = list(180,135,90,60,30)
 
 	New()
 		spark_system = new /datum/effect_system/spark_spread
@@ -380,6 +382,7 @@
 		"burst_fire" = burst_fire,
 		"safety_toggle" = !safety_off,
 		"manual_override" = manual_override,
+		"angle" = angle_list[angle],
 	)
 
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -433,7 +436,7 @@
 				"<span class='notice'>You activate [src]'s safety lock.</span>")
 				visible_message("\icon[src] <span class='notice'>A red light on [src] blinks rapidly.</span>")
 
-		if("manual") //Alright so to clean this up, fuck that manual control pop up. Its a good idea but its not working out in practice.
+		/*if("manual") //Alright so to clean this up, fuck that manual control pop up. Its a good idea but its not working out in practice.
 			if(user.interactee != src) //Make sure if we're using a machine we can't use another one (ironically now impossible due to handle_click())
 				user << "<span class='warning'>You can't multitask like this!</span>"
 				return
@@ -457,6 +460,12 @@
 					user << "<span class='warning'>You are not currently overriding this turret.</span>" //Should be system only failure
 			if(stat == 2)
 				stat = 0 //Weird bug goin on here
+*/
+		if("angle")
+			var/angle_selected = input(user, "Please select a FoF:", "Field of Fire", null) in angle_list
+			angle = angle_list.Find(angle_selected)
+			//range = 2+angle
+			visible_message("\icon[src] <span class='notice'>The [name] beeps [angle+1] times, confirming the field of fire is set to [angle_selected] degrees.</span>")
 
 		if("power")
 			if(!on)
@@ -868,15 +877,17 @@
 
 			if (burst_fire)
 				//Apply scatter
-				var/scatter_chance = in_chamber.ammo.scatter
-				scatter_chance += (burst_size * 2)
+				//var/scatter_chance = in_chamber.ammo.scatter
+				//scatter_chance += (burst_size * 2)
 
-				if (prob(scatter_chance))
+				if (prob(get_dist(src, target) * (7-angle)))
 					var/scatter_x = rand(-1, 1)
 					var/scatter_y = rand(-1, 1)
 					var/turf/new_target = locate(targloc.x + round(scatter_x),targloc.y + round(scatter_y),targloc.z) //Locate an adjacent turf.
 					if(new_target) //Looks like we found a turf.
 						target = new_target
+
+			in_chamber.ammo.accurate_range = 1 + angle
 
 			//Setup projectile
 			in_chamber.original = target
@@ -933,11 +944,42 @@
 		var/mob/living/carbon/human/H = M
 		if(istype(H) && H.get_target_lock(iff_signal)) continue
 
-		var/angle = get_dir(src, M)
+		var/opp
+		var/adj
+
+		switch(dir)
+			if(NORTH)
+				opp = x-M.x
+				adj = M.y-y
+			if(SOUTH)
+				opp = x-M.x
+				adj = y-M.y
+			if(EAST)
+				opp = y-M.y
+				adj = M.x-x
+			if(WEST)
+				opp = y-M.y
+				adj = x-M.x
+
+		var/r = 9999
+		if(adj != 0) r = abs(opp/adj)
+		var/angledegree = arcsin(r/sqrt(1+(r*r)))
+		if(adj < 0)
+			continue
+
+		//world << "angle is [angledegree], opp [opp] adj [adj], opp/adj = [r]"
+
+		//var/angle_name = angle_list[angle]
+		if((angledegree*2) > angle_list[angle])
+			//world << "[angledegree*2] is bigger than [angle_name]"
+			continue
+
+		path = getline2(src, M)
+		/*var/angle = get_dir(src, M)
 		if(angle & dir)
 			path = getline2(src, M)
 		else
-			continue
+			continue*/
 
 		if(path.len)
 			for(T in path)

@@ -66,11 +66,11 @@
     <br><br>
         
     <div class="itemLabel">
-        Manual Override:
+        Field of Fire:
     </div>
     <div class="itemContent">
-        Manual override is currently <b>{{:data.manual_override ? '<span class="good">ON</span>' : '<span class="bad">OFF</span>'}}</b>
+        FoF is currently <b>{{:data.angle}} degrees</b>
         <br>
-        {{:helper.link(data.manual_override ? 'Turn off Manual Override' : 'Turn on Manual Override', data.manual_override ? 'close' : 'check', { '?src' : data.self_ref, 'op' : 'manual'}, data.is_on ? null : 'disabled')}}
+        {{:helper.link('Change Field of Fire', 'check', { '?src' : data.self_ref, 'op' : 'angle'}, data.is_on ? null : 'disabled')}}
     </div>
 </div>

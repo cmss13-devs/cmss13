@@ -632,8 +632,8 @@
 	icon_state 	= "bullet"
 	New()
 		..()
-		damage = config.lmed_hit_damage
-		penetration= config.low_armor_penetration
+		damage = config.low_hit_damage
+		penetration= config.mlow_armor_penetration
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"

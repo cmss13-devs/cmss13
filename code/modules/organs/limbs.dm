@@ -12,6 +12,8 @@
 	var/max_damage = 0
 	var/max_size = 0
 	var/last_dam = -1
+	var/knitting_time = -1
+	var/time_to_knit = -1 // snowflake vars for doing self-bone healing, think preds and magic research chems
 
 	var/display_name
 	var/list/wounds = list()
@@ -362,6 +364,8 @@ This function completely restores a damaged organ to perfect condition.
 		last_dam = brute_dam + burn_dam
 	if(germ_level)
 		return 1
+	if(knitting_time)
+		return 1
 	return 0
 
 /datum/limb/process()
@@ -382,6 +386,13 @@ This function completely restores a damaged organ to perfect condition.
 		fracture()
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
+	if(knitting_time)
+		if(!(status & LIMB_SPLINTED))
+			knitting_time = -1 // stop knitting
+		if(knitting_time > world.time)
+			owner << "<span class='warning'>The bones in your [display_name] feel fully knitted, you discard the splint.</span>"
+			status &= ~LIMB_SPLINTED
+			knitting_time = -1
 
 	//Infections
 	update_germs()

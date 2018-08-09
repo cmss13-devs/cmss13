@@ -92,7 +92,10 @@
 			cdel(src)
 
 		if("yautja_teleport_loc")
-			yautja_teleport_loc += loc
+			if(z == MAIN_SHIP_Z_LEVEL)
+				yautja_almayer_loc += loc
+			else
+				yautja_teleport_loc += loc
 			cdel(src)
 
 

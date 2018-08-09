@@ -22,6 +22,7 @@ var/global/list/mob_list = list()					//List of all mobs, including clientless
 var/global/list/living_mob_list = list()			//List of all alive mobs, including clientless. Excludes /mob/new_player
 var/global/list/living_xeno_list = list()			//List of all alive mob/living/carbon/Xenomorph mobs
 var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
+var/global/list/yautja_mob_list = list()
 
 var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 
@@ -52,6 +53,8 @@ var/global/list/cargo_guns_vendors = list() //Used by our gamemode code
 var/global/list/processing_objects = list()
 var/global/list/active_diseases = list()
 var/global/list/events = list()
+
+var/global/list/yautja_gear = list() // list of loose pred gear
 
 var/global/list/gun_cabinets = list()
 

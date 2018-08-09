@@ -343,6 +343,9 @@
 
 /obj/item/weapon/gun/energy/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
+	if(source)
+		forceMove(source)
+		return
 	..()
 
 /obj/item/weapon/gun/energy/plasma_caster/able_to_fire(mob/user)

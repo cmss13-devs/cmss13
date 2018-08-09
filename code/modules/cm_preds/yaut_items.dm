@@ -1,6 +1,14 @@
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
 
+/proc/add_to_missing_pred_gear(var/obj/item/W)
+	if(!(W in yautja_gear))
+		yautja_gear += W
+
+/proc/remove_from_missing_pred_gear(var/obj/item/W)
+	if(W in yautja_gear)
+		yautja_gear -= W
+
 //=================//\\=================\\
 //======================================\\
 
@@ -111,6 +119,12 @@
 				mob.update_inv_glasses()
 		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
 		H.remove_hud_from(mob)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
 	..()
 
 /obj/item/clothing/suit/armor/yautja
@@ -199,6 +213,14 @@
 /obj/item/clothing/suit/armor/yautja/full/New(location)
 	. = ..(location, 0)
 
+/obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/suit/armor/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 
 /obj/item/clothing/cape
@@ -229,6 +251,15 @@
 			name = "\improper 'Mantle of the Ambivalent Collector'"
 			icon_state = "cape_elder_n"
 
+/obj/item/clothing/cape/eldercape/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/cape/eldercape/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/clothing/shoes/yautja
 	name = "clan greaves"
 	icon_state = "y-boots1"
@@ -252,6 +283,15 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
+/obj/item/clothing/shoes/yautja/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/shoes/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
 	icon = 'icons/obj/clothing/uniforms.dmi'
@@ -264,6 +304,15 @@
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	species_restricted = null
+
+/obj/item/clothing/under/chainshirt/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/under/chainshirt/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/clothing/gloves/yautja
 	name = "clan bracers"
@@ -282,6 +331,7 @@
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 	unacidable = 1
+	var/obj/item/weapon/gun/energy/plasma_caster/caster
 	var/charge = 2000
 	var/charge_max = 2000
 	var/cloaked = 0
@@ -291,6 +341,10 @@
 	var/inject_timer = 0
 	var/cloak_timer = 0
 	var/upgrades = 0
+
+/obj/item/clothing/gloves/yautja/New()
+	..()
+	caster = new(src)
 
 /obj/item/clothing/gloves/yautja/emp_act(severity)
 	charge -= (severity * 500)
@@ -302,13 +356,17 @@
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	..()
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(slot == WEAR_HANDS && H.species && H.species.name == "Yautja")
-			processing_objects.Add(src)
+	if(slot == WEAR_HANDS && isYautja(user))
+		processing_objects.Add(src)
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	processing_objects.Remove(src)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/gloves/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
 	..()
 
 /obj/item/clothing/gloves/yautja/process()
@@ -388,6 +446,64 @@
 
 	return 1
 
+/obj/item/clothing/gloves/yautja/verb/track_gear()
+	set name = "Track Yautja Gear"
+	set desc = "Find Yauja Gear."
+	set category = "Yautja"
+
+	var/mob/living/carbon/human/M = usr
+	if(!istype(M)) return
+	if(!isYautja(M))
+		M << "<span class='warning'>You have no idea how to work these things!</span>"
+		return 0
+
+	var/dead_on_planet = 0
+	var/dead_on_almayer = 0
+	var/dead_low_orbit = 0
+	var/gear_on_planet = 0
+	var/gear_on_almayer = 0
+	var/gear_low_orbit = 0
+	var/closest = 10000
+	var/direction = -1
+	for(var/obj/item/I in yautja_gear)
+		switch(I.z)
+			if(LOW_ORBIT_Z_LEVEL)
+				gear_low_orbit++
+			if(MAIN_SHIP_Z_LEVEL)
+				gear_on_almayer++
+			if(1)
+				gear_on_planet++
+		if(M.z == I.z)
+			var/dist = get_dist(M,I)
+			if(dist < closest)
+				closest = dist
+				direction = get_dir(M,I)
+	for(var/mob/living/carbon/human/Y in yautja_mob_list)
+		if(Y.stat != DEAD) continue
+		switch(Y.z)
+			if(LOW_ORBIT_Z_LEVEL)
+				dead_low_orbit++
+			if(MAIN_SHIP_Z_LEVEL)
+				dead_on_almayer++
+			if(1)
+				dead_on_planet++
+		if(M.z == Y.z)
+			var/dist = get_dist(M,Y)
+			if(dist < closest)
+				closest = dist
+				direction = get_dir(M,Y)
+
+	var/output = 0
+	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
+		output = 1
+		M << "<span class='notice'>Your bracer shows a readout of deceased Yautja bio signatures, [dead_on_planet] in the hunting grounds, [dead_on_almayer] in orbit, [dead_low_orbit] in low orbit.</span>"
+	if(gear_on_planet || gear_on_almayer || gear_low_orbit)
+		output = 1
+		M << "<span class='notice'>Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit.</span>"
+	if(closest < 900)
+		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)].</span>"
+	if(!output)
+		M << "<span class='notice'>There are no signatures that require your attention.</span>"
 
 /obj/item/clothing/gloves/yautja/verb/cloaker()
 	set name = "Toggle Cloaking Device"
@@ -467,14 +583,14 @@
 			usr.r_hand = null
 			if(R)
 				M.temp_drop_inv_item(R)
-				cdel(R)
+				R.forceMove(src)
 			M.update_inv_r_hand()
 		if(L && istype(L))
 			found = 1
 			usr.l_hand = null
 			if(L)
 				M.temp_drop_inv_item(L)
-				cdel(L)
+				L.forceMove(src)
 			M.update_inv_l_hand()
 		if(found)
 			usr << "<span class='notice'>You deactivate your plasma caster.</span>"
@@ -487,7 +603,9 @@
 			return
 		if(!drain_power(usr,50)) return
 
-		var/obj/item/weapon/gun/energy/plasma_caster/W = new(usr)
+		var/obj/item/weapon/gun/energy/plasma_caster/W = caster
+		if(!istype(W))
+			W = new(usr)
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
@@ -650,14 +768,14 @@
 	msg = oldreplacetext(msg, "e", "3")
 	msg = oldreplacetext(msg, "i", "1")
 	msg = oldreplacetext(msg, "o", "0")
-	msg = oldreplacetext(msg, "u", "^")
-	msg = oldreplacetext(msg, "y", "7")
-	msg = oldreplacetext(msg, "r", "9")
+	//msg = oldreplacetext(msg, "u", "^")
+	//msg = oldreplacetext(msg, "y", "7")
+	//msg = oldreplacetext(msg, "r", "9")
 	msg = oldreplacetext(msg, "s", "5")
-	msg = oldreplacetext(msg, "t", "7")
+	//msg = oldreplacetext(msg, "t", "7")
 	msg = oldreplacetext(msg, "l", "1")
-	msg = oldreplacetext(msg, "n", "*")
-	   //Preds now speak in bastardized 1337speak BECAUSE.
+	//msg = oldreplacetext(msg, "n", "*")
+	   //Preds now speak in bastardized 1337speak BECAUSE. -because abby is retarded -spookydonut
 
 	spawn(10)
 		if(!drain_power(usr,50)) return //At this point they've upgraded.
@@ -686,24 +804,33 @@
 	frequency = CIV_GEN_FREQ
 	unacidable = 1
 
-	New()
-		..()
-		cdel(keyslot1)
-		keyslot1 = new /obj/item/device/encryptionkey/yautja
-		recalculateChannels()
+/obj/item/device/radio/headset/yautja/New()
+	..()
+	cdel(keyslot1)
+	keyslot1 = new /obj/item/device/encryptionkey/yautja
+	recalculateChannels()
 
-	talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
-		if(!isYautja(M)) //Nope.
-			M << "<span class='warning'>You try to talk into the headset, but just get a horrible shrieking in your ears!</span>"
-			return
-
-		for(var/mob/living/carbon/hellhound/H in player_list)
-			if(istype(H) && !H.stat)
-				H << "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."
-		..()
-
-	attackby()
+/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
+	if(!isYautja(M)) //Nope.
+		M << "<span class='warning'>You try to talk into the headset, but just get a horrible shrieking in your ears!</span>"
 		return
+
+	for(var/mob/living/carbon/hellhound/H in player_list)
+		if(istype(H) && !H.stat)
+			H << "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."
+	..()
+
+/obj/item/device/radio/headset/yautja/attackby()
+	return
+
+/obj/item/device/radio/headset/yautja/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/device/radio/headset/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
@@ -722,6 +849,14 @@
 	storage_slots = 10
 	max_storage_space = 30
 
+/obj/item/storage/backpack/yautja/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/storage/backpack/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
 	name = "unusual crysal"
@@ -750,26 +885,20 @@
 	unacidable = 1
 	var/timer = 0
 
-	attack_self(mob/user)
-		set waitfor = 0
-		if(istype(get_area(user),/area/yautja))
-			user << "Nothing happens."
-			return
-		var/mob/living/carbon/human/H = user
-		var/sure = alert("Really trigger it?","Sure?","Yes","No")
-		if(!isYautja(H))
-			user << "<span class='warning'>The screen angrily flashes three times!</span>"
-			playsound(user, 'sound/effects/EMPulse.ogg', 25, 1)
-			sleep(30)
-			explosion(loc,-1,-1,2)
-			if(loc)
-				if(ismob(loc))
-					user = loc
-					user.temp_drop_inv_item(src)
-				cdel(src)
-			return
+/obj/item/device/yautja_teleporter/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
-		if(sure == "No" || !sure) return
+/obj/item/device/yautja_teleporter/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/device/yautja_teleporter/attack_self(mob/user)
+	set waitfor = 0
+	if(istype(get_area(user),/area/yautja))
+		var/almayer = alert("Travel to the ooman ship?","Sure?","Yes","No")
+		if(almayer == "No" || !almayer) return
 		playsound(src,'sound/ambience/signal.ogg', 25, 1)
 		timer = 1
 		user.visible_message("<span class='info'>[user] starts becoming shimmery and indistinct...</span>")
@@ -784,7 +913,7 @@
 				animation_teleport_quick_out(M)
 			sleep(tele_time)
 
-			var/turf/end_turf = pick(pred_spawn)
+			var/turf/end_turf = pick(yautja_almayer_loc)
 			user.forceMove(end_turf)
 			animation_teleport_quick_in(user)
 			if(M && M.loc)
@@ -794,6 +923,46 @@
 		else
 			sleep(10)
 			if(loc) timer = 0
+		return
+	var/mob/living/carbon/human/H = user
+	var/sure = alert("Really trigger it?","Sure?","Yes","No")
+	if(!isYautja(H))
+		user << "<span class='warning'>The screen angrily flashes three times!</span>"
+		playsound(user, 'sound/effects/EMPulse.ogg', 25, 1)
+		sleep(30)
+		explosion(loc,-1,-1,2)
+		if(loc)
+			if(ismob(loc))
+				user = loc
+				user.temp_drop_inv_item(src)
+			cdel(src)
+		return
+
+	if(sure == "No" || !sure) return
+	playsound(src,'sound/ambience/signal.ogg', 25, 1)
+	timer = 1
+	user.visible_message("<span class='info'>[user] starts becoming shimmery and indistinct...</span>")
+	if(do_after(user,100, TRUE, 5, BUSY_ICON_GENERIC))
+		// Teleport self.
+		user.visible_message("<span class='warning'>\icon[user][user] disappears!</span>")
+		var/tele_time = animation_teleport_quick_out(user)
+		// Also teleport whoever you're pulling.
+		var/mob/living/M = user.pulling
+		if(istype(M))
+			M.visible_message("<span class='warning'>\icon[M][M] disappears!</span>")
+			animation_teleport_quick_out(M)
+		sleep(tele_time)
+
+		var/turf/end_turf = pick(pred_spawn)
+		user.forceMove(end_turf)
+		animation_teleport_quick_in(user)
+		if(M && M.loc)
+			M.forceMove(end_turf)
+			animation_teleport_quick_in(M)
+		timer = 0
+	else
+		sleep(10)
+		if(loc) timer = 0
 
 //Doesn't give heat or anything yet, it's just a light source.
 /obj/structure/campfire
@@ -842,6 +1011,14 @@
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_BIG
 
+/obj/item/weapon/harpoon/yautja/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/harpoon/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/wristblades
 	name = "wrist blades"
@@ -923,16 +1100,25 @@
 	edge = 0
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 
-	attack(mob/target as mob, mob/living/user as mob)
-		if(user.zone_selected == "r_leg" || user.zone_selected == "l_leg" || user.zone_selected == "l_foot" || user.zone_selected == "r_foot")
-			if(prob(35) && !target.lying)
-				if(isXeno(target))
-					if(target.mob_size == MOB_SIZE_BIG) //Can't trip the big ones.
-						return ..()
-				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
-				user.visible_message("<span class = 'danger'>[src] lashes out and [target] goes down!</span>","<span class='danger'><b>You trip [target]!</b></span>")
-				target.KnockDown(5)
-		return ..()
+/obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
+	if(user.zone_selected == "r_leg" || user.zone_selected == "l_leg" || user.zone_selected == "l_foot" || user.zone_selected == "r_foot")
+		if(prob(35) && !target.lying)
+			if(isXeno(target))
+				if(target.mob_size == MOB_SIZE_BIG) //Can't trip the big ones.
+					return ..()
+			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
+			user.visible_message("<span class = 'danger'>[src] lashes out and [target] goes down!</span>","<span class='danger'><b>You trip [target]!</b></span>")
+			target.KnockDown(5)
+	return ..()
+
+/obj/item/weapon/yautja_chain/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/yautja_chain/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/yautja_knife
 	name = "ceremonial dagger"
@@ -953,37 +1139,46 @@
 	actions_types = list(/datum/action/item_action)
 	unacidable = 1
 
-	attack_self(mob/living/carbon/human/user as mob)
-		if(!isYautja(user)) return
-		if(!hasorgans(user)) return
+/obj/item/weapon/yautja_knife/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
-		var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
+/obj/item/weapon/yautja_knife/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
-		user << "<span class='notice'>You begin using your knife to rip shrapnel out. Hold still. This will probably hurt...</span>"
+/obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
+	if(!isYautja(user)) return
+	if(!hasorgans(user)) return
 
-		if(do_after(user,50, TRUE, 5, BUSY_ICON_FRIENDLY))
-			var/obj/item/shard/shrapnel/S
-			for(var/datum/limb/O in user.limbs)
-				for(S in O.implants)
-					user << "<span class='notice'>You dig shrapnel out of your [O.name].</span>"
-					S.loc = user.loc
-					O.implants -= S
-					pain_factor++
-					O.take_damage(rand(2,5), 0, 0)
-					O.status |= LIMB_BLEEDING
+	var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
 
-			for(var/datum/internal_organ/I in user.internal_organs) //Now go in and clean out the internal ones.
-				for(var/obj/Q in I)
-					Q.loc = user.loc
-					I.take_damage(rand(1,2), 0, 0)
-					pain_factor += 3 //OWWW! No internal bleeding though.
+	user << "<span class='notice'>You begin using your knife to rip shrapnel out. Hold still. This will probably hurt...</span>"
 
-			switch(pain_factor)
-				if(0) user << "<span class='warning'>There was nothing to dig out!</span>"
-				if(1 to 4) user << "<span class='warning'>That hurt like hell!!</span>"
-				if(5 to INFINITY) user.emote("roar")
+	if(do_after(user,50, TRUE, 5, BUSY_ICON_FRIENDLY))
+		var/obj/item/shard/shrapnel/S
+		for(var/datum/limb/O in user.limbs)
+			for(S in O.implants)
+				user << "<span class='notice'>You dig shrapnel out of your [O.name].</span>"
+				S.loc = user.loc
+				O.implants -= S
+				pain_factor++
+				O.take_damage(rand(2,5), 0, 0)
+				O.status |= LIMB_BLEEDING
 
-		else user << "<span class='warning'>You were interrupted!</span>"
+		for(var/datum/internal_organ/I in user.internal_organs) //Now go in and clean out the internal ones.
+			for(var/obj/Q in I)
+				Q.loc = user.loc
+				I.take_damage(rand(1,2), 0, 0)
+				pain_factor += 3 //OWWW! No internal bleeding though.
+
+		switch(pain_factor)
+			if(0) user << "<span class='warning'>There was nothing to dig out!</span>"
+			if(1 to 4) user << "<span class='warning'>That hurt like hell!!</span>"
+			if(5 to INFINITY) user.emote("roar")
+
+	else user << "<span class='warning'>You were interrupted!</span>"
 
 /obj/item/weapon/yautja_sword
 	name = "clan sword"
@@ -1002,25 +1197,32 @@
 	attack_speed = 9
 	unacidable = 1
 
-	attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-		if(isYautja(user))
-			force = initial(force)
-			if(prob(22) && !target.lying)
-				user.visible_message("<span class='danger'>[user] slashes [target] so hard, they go flying!</span>")
-				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
-				target.KnockDown(3)
-				step_away(target,user,1)
-		else
-			user << "<span class='warning'>You aren't strong enough to swing the sword properly!</span>"
-			force = round(initial(force)/2)
-			if(prob(50)) user.make_dizzy(80)
+/obj/item/weapon/yautja_sword/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
-		return ..()
+/obj/item/weapon/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user)
+	if(isYautja(user))
+		force = initial(force)
+		if(prob(22) && !target.lying)
+			user.visible_message("<span class='danger'>[user] slashes [target] so hard, they go flying!</span>")
+			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
+			target.KnockDown(3)
+			step_away(target,user,1)
+	else
+		user << "<span class='warning'>You aren't strong enough to swing the sword properly!</span>"
+		force = round(initial(force)/2)
+		if(prob(50)) user.make_dizzy(80)
 
-	pickup(mob/living/user as mob)
-		if(!isYautja(user))
-			user << "<span class='warning'>You struggle to pick up the huge, unwieldy sword. It makes you dizzy just trying to hold it!</span>"
-			user.make_dizzy(50)
+	return ..()
+
+/obj/item/weapon/yautja_sword/pickup(mob/living/user as mob)
+	if(!isYautja(user))
+		user << "<span class='warning'>You struggle to pick up the huge, unwieldy sword. It makes you dizzy just trying to hold it!</span>"
+		user.make_dizzy(50)
+	else
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/yautja_scythe
 	name = "double war scythe"
@@ -1038,31 +1240,40 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unacidable = 1
 
-	New()
-	 icon_state = pick("predscythe","predscythe_alt")
+/obj/item/weapon/yautja_scythe/New()
+	icon_state = pick("predscythe","predscythe_alt")
 
-	attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-		if(!isYautja(user))
-			if(prob(20))
-				user.visible_message("<span class='warning'>[src] slips out of your hands!</span>")
-				user.drop_inv_item_on_ground(src)
-				return
-		..()
-		if(ishuman(target)) //Slicey dicey!
-			if(prob(14))
-				var/datum/limb/affecting
-				affecting = target:get_limb(ran_zone(user.zone_selected,60))
-				if(!affecting)
-					affecting = target:get_limb(ran_zone(user.zone_selected,90)) //No luck? Try again.
-				if(affecting)
-					if(affecting.body_part != UPPER_TORSO && affecting.body_part != LOWER_TORSO) //as hilarious as it is
-						user.visible_message("<span class='danger'>The limb is sliced clean off!</span>","<span class='danger'>You slice off a limb!</span>")
-						affecting.droplimb(1) //the second 1 is  amputation. This amputates.
-		else //Probably an alien
-			if(prob(14))
-				..() //Do it again! CRIT!
+/obj/item/weapon/yautja_scythe/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
-		return
+/obj/item/weapon/yautja_scythe/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/yautja_scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	if(!isYautja(user))
+		if(prob(20))
+			user.visible_message("<span class='warning'>[src] slips out of your hands!</span>")
+			user.drop_inv_item_on_ground(src)
+			return
+	..()
+	if(ishuman(target)) //Slicey dicey!
+		if(prob(14))
+			var/datum/limb/affecting
+			affecting = target:get_limb(ran_zone(user.zone_selected,60))
+			if(!affecting)
+				affecting = target:get_limb(ran_zone(user.zone_selected,90)) //No luck? Try again.
+			if(affecting)
+				if(affecting.body_part != UPPER_TORSO && affecting.body_part != LOWER_TORSO) //as hilarious as it is
+					user.visible_message("<span class='danger'>The limb is sliced clean off!</span>","<span class='danger'>You slice off a limb!</span>")
+					affecting.droplimb(1) //the second 1 is  amputation. This amputates.
+	else //Probably an alien
+		if(prob(14))
+			..() //Do it again! CRIT!
+
+	return
 
 //Telescopic baton
 /obj/item/weapon/combistick
@@ -1081,8 +1292,17 @@
 	var/on = 1
 	var/timer = 0
 
-	IsShield()
-		return on
+/obj/item/weapon/combistick/IsShield()
+	return on
+
+/obj/item/weapon/combistick/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/combistick/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/combistick/attack_self(mob/user as mob)
 	if(timer) return

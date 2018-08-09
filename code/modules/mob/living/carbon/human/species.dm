@@ -671,11 +671,30 @@
 	knock_down_reduction = 2
 	stun_reduction = 2
 
+/datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
+	if(gibbed)
+		yautja_mob_list -= H
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	H.dna.b_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
+	yautja_mob_list -= src
+	for(var/datum/limb/L in H.limbs)
+		switch(L.name)
+			if("groin","chest")
+				L.min_broken_damage = 40
+				L.max_damage = 200
+			if("head")
+				L.min_broken_damage = 40
+				L.max_damage = 60
+			if("l_hand","r_hand","r_foot","l_foot")
+				L.min_broken_damage = 25
+				L.max_damage = 30
+			if("r_leg","r_arm","l_leg","l_arm")
+				L.min_broken_damage = 30
+				L.max_damage = 35
+		L.time_to_knit = -1
 
 /datum/species/yautja/handle_post_spawn(var/mob/living/carbon/human/H)
 	//Spawn them some equipment
@@ -688,6 +707,26 @@
 	H.universal_understand = 1
 
 	H.dna.b_type = "Y*"
+	yautja_mob_list += src
+	for(var/datum/limb/L in H.limbs)
+		switch(L.name)
+			if("groin","chest")
+				L.min_broken_damage = 80
+				L.max_damage = 200
+				L.time_to_knit = 1200 // 10 mins
+			if("head")
+				L.min_broken_damage = 70
+				L.max_damage = 90
+				L.time_to_knit = 1200 // 10 mins
+			if("l_hand","r_hand","r_foot","l_foot")
+				L.min_broken_damage = 40
+				L.max_damage = 60
+				L.time_to_knit = 600 // 5 mins
+			if("r_leg","r_arm","l_leg","l_arm")
+				L.min_broken_damage = 60
+				L.max_damage = 80
+				L.time_to_knit = 600 // 5 mins
+
 
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)

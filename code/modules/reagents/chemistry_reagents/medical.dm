@@ -410,7 +410,15 @@
 	on_mob_life(mob/living/carbon/M,alien)
 		. = ..()
 		if(!.) return
-		if(alien != IS_YAUTJA) return
+		if(!isYautja(M)) return
+		var/mob/living/carbon/human/Y = M
+		for(var/datum/limb/L in Y.limbs)
+			if(L.time_to_knit && (L.status & LIMB_BROKEN))
+				if(L.knitting_time) break // only one knits at a time
+				if((L.status & LIMB_SPLINTED) && L.knitting_time == -1)
+					L.knitting_time = L.time_to_knit + world.time
+					Y << "<span class='notice'>You feel the bones in your [L.display_name] start to knit together.</span>"
+					break
 
 		if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(1*REM,0)
 		if(M.getFireLoss() && prob(80)) M.heal_limb_damage(0,1*REM)

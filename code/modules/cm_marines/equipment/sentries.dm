@@ -899,8 +899,8 @@
 			playsound(loc, 'sound/weapons/gun_rifle.ogg', 75, 1)
 			in_chamber.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 			if(target)
-				var/angle = round(Get_Angle(src,target))
-				muzzle_flash(angle)
+				var/target_angle = round(Get_Angle(src,target))
+				muzzle_flash(target_angle)
 			in_chamber = null
 			rounds--
 			if(rounds == 0)
@@ -909,8 +909,8 @@
 	return 1
 
 //Mostly taken from gun code.
-/obj/machinery/marine_turret/proc/muzzle_flash(var/angle)
-	if(isnull(angle)) return
+/obj/machinery/marine_turret/proc/muzzle_flash(var/target_angle)
+	if(isnull(target_angle)) return
 
 	SetLuminosity(muzzle_flash_lum)
 	spawn(10)
@@ -922,7 +922,7 @@
 		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/projectiles.dmi',src,"muzzle_flash",layer))
 		var/matrix/rotate = matrix() //Change the flash angle.
 		rotate.Translate(0, 5)
-		rotate.Turn(angle)
+		rotate.Turn(target_angle)
 		I.transform = rotate
 		I.flick_overlay(src, 3)
 
@@ -970,9 +970,10 @@
 		//world << "angle is [angledegree], opp [opp] adj [adj], opp/adj = [r]"
 
 		//var/angle_name = angle_list[angle]
-		if((angledegree*2) > angle_list[angle])
-			//world << "[angledegree*2] is bigger than [angle_name]"
-			continue
+		if(angle)
+			if((angledegree*2) > angle_list[angle])
+				//world << "[angledegree*2] is bigger than [angle_name]"
+				continue
 
 		path = getline2(src, M)
 		/*var/angle = get_dir(src, M)
@@ -1127,6 +1128,7 @@
 //the turret inside the sentry deployment system
 /obj/machinery/marine_turret/premade/dropship
 	density = 0
+	angle = -1
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 	Dispose()

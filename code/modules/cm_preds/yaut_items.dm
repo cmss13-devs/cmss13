@@ -127,6 +127,10 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
+/obj/item/clothing/mask/gas/yautja/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/clothing/suit/armor/yautja
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
@@ -222,6 +226,9 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
+/obj/item/clothing/suit/armor/yautja/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/clothing/cape
 
@@ -260,6 +267,10 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
+/obj/item/clothing/cape/eldercape/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/clothing/shoes/yautja
 	name = "clan greaves"
 	icon_state = "y-boots1"
@@ -292,6 +303,10 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
+/obj/item/clothing/shoes/yautja/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
 	icon = 'icons/obj/clothing/uniforms.dmi'
@@ -312,6 +327,10 @@
 /obj/item/clothing/under/chainshirt/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/under/chainshirt/Dispose()
+	remove_from_missing_pred_gear(src)
 	..()
 
 /obj/item/clothing/gloves/yautja
@@ -358,6 +377,11 @@
 	..()
 	if(slot == WEAR_HANDS && isYautja(user))
 		processing_objects.Add(src)
+
+/obj/item/clothing/gloves/yautja/Dispose()
+	processing_objects.Remove(src)
+	remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	processing_objects.Remove(src)
@@ -823,6 +847,10 @@
 /obj/item/device/radio/headset/yautja/attackby()
 	return
 
+/obj/item/device/radio/headset/yautja/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/device/radio/headset/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -848,6 +876,10 @@
 	max_w_class = 3
 	storage_slots = 10
 	max_storage_space = 30
+
+/obj/item/storage/backpack/yautja/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/storage/backpack/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -884,6 +916,10 @@
 	throwforce = 1
 	unacidable = 1
 	var/timer = 0
+
+/obj/item/device/yautja_teleporter/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/device/yautja_teleporter/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -1011,6 +1047,10 @@
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_BIG
 
+/obj/item/weapon/harpoon/yautja/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/harpoon/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -1111,6 +1151,10 @@
 			target.KnockDown(5)
 	return ..()
 
+/obj/item/weapon/yautja_chain/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/yautja_chain/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -1138,6 +1182,10 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action)
 	unacidable = 1
+
+/obj/item/weapon/yautja_knife/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/yautja_knife/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -1197,6 +1245,10 @@
 	attack_speed = 9
 	unacidable = 1
 
+/obj/item/weapon/yautja_sword/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/yautja_sword/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -1243,6 +1295,10 @@
 /obj/item/weapon/yautja_scythe/New()
 	icon_state = pick("predscythe","predscythe_alt")
 
+/obj/item/weapon/yautja_scythe/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/yautja_scythe/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -1284,7 +1340,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	w_class = 4
-	force = 32
+	force = 28
 	throwforce = 70
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -1295,6 +1351,10 @@
 /obj/item/weapon/combistick/IsShield()
 	return on
 
+/obj/item/weapon/combistick/Dispose()
+	remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/combistick/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
@@ -1304,7 +1364,15 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/combistick/attack_self(mob/user as mob)
+/obj/item/weapon/combistick/wield(var/mob/user)
+	..()
+	force = 35
+
+/obj/item/weapon/combistick/unwield(mob/user)
+	..()
+	force = 28
+
+/obj/item/weapon/combistick/unique_action(mob/living/user)
 	if(timer) return
 	on = !on
 	if(on)
@@ -1313,6 +1381,7 @@
 		"You hear an ominous click.")
 		icon_state = initial(icon_state)
 		flags_equip_slot = initial(flags_equip_slot)
+		flags_item |= TWOHANDED
 		w_class = 4
 		force = 28
 		throwforce = initial(throwforce)
@@ -1331,11 +1400,13 @@
 
 			overlays += blood_overlay
 	else
+		unwield(user)
 		user << "<span class='notice'>You collapse [src] for storage.</span>"
 		icon_state = initial(icon_state) + "_f"
 		flags_equip_slot = SLOT_STORE
+		flags_item &= ~TWOHANDED
 		w_class = 1
-		force = 0
+		force = 10
 		throwforce = initial(throwforce) - 50
 		attack_verb = list("thwacked", "smacked")
 		timer = 1

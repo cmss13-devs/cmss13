@@ -45,6 +45,14 @@
 	if(recently_pointed_to > world.time)
 		return 0
 
+	//Deal with cloaked preds
+	if(isYautja(A))
+		var/mob/living/carbon/human/Y = A
+		if(istype(Y.hands,/obj/item/clothing/gloves/yautja))
+			var/obj/item/clothing/gloves/yautja/bracer = Y.hands
+			if(bracer.cloaked)
+				return 0
+
 	next_move = world.time + 2
 
 	point_to_atom(A, tile)

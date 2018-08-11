@@ -140,8 +140,18 @@
 	var/last_regen
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 
+/obj/item/weapon/gun/launcher/spike/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/weapon/gun/launcher/spike/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
 /obj/item/weapon/gun/launcher/spike/Dispose()
 	. = ..()
+	remove_from_missing_pred_gear(src)
 	processing_objects.Remove(src)
 
 /obj/item/weapon/gun/launcher/spike/process()

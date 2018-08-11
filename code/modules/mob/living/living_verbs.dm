@@ -149,10 +149,16 @@
 
 		var/mob/living/carbon/human/CM = L
 		if(CM.on_fire && CM.canmove && !knocked_down)
-			CM.fire_stacks = max(CM.fire_stacks - rand(3,6), 0)
-			CM.KnockDown(4, TRUE)
-			CM.visible_message("<span class='danger'>[CM] rolls on the floor, trying to put themselves out!</span>", \
-				"<span class='notice'>You stop, drop, and roll!</span>", null, 5)
+			if(isYautja(CM))
+				CM.fire_stacks = max(CM.fire_stacks - rand(6,10), 0)
+				CM.KnockDown(1, TRUE) // actually 0.5
+				CM.visible_message("<span class='danger'>[CM] expertly rolls on the floor, greatly reducing the amount of flames!</span>", \
+					"<span class='notice'>You expertly roll to extinguish the flames!</span>", null, 5)
+			else
+				CM.fire_stacks = max(CM.fire_stacks - rand(3,6), 0)
+				CM.KnockDown(4, TRUE)
+				CM.visible_message("<span class='danger'>[CM] rolls on the floor, trying to put themselves out!</span>", \
+					"<span class='notice'>You stop, drop, and roll!</span>", null, 5)
 			if(fire_stacks <= 0)
 				CM.visible_message("<span class='danger'>[CM] has successfully extinguished themselves!</span>", \
 					"<span class='notice'>You extinguish yourself.</span>", null, 5)

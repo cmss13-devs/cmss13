@@ -1339,6 +1339,7 @@
 	icon_state = "combistick"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
+	flags_item = TWOHANDED
 	w_class = 4
 	force = 28
 	throwforce = 70

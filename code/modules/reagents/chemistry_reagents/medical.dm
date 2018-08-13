@@ -417,6 +417,7 @@
 				if(L.knitting_time) break // only one knits at a time
 				if((L.status & LIMB_SPLINTED) && L.knitting_time == -1)
 					L.knitting_time = L.time_to_knit + world.time
+					L.start_processing()
 					Y << "<span class='notice'>You feel the bones in your [L.display_name] start to knit together.</span>"
 					break
 

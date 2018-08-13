@@ -10,11 +10,11 @@
 	for(var/datum/internal_organ/I in internal_organs)
 		I.process()
 
-	for(var/datum/limb/E in limbs)
+	for(var/datum/limb/E in limbs_to_process)
 		if(!E)
 			continue
 		if(!E.need_process())
-			//bad_limbs -= E
+			E.stop_processing()
 			continue
 		else
 			E.process()

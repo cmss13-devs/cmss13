@@ -235,6 +235,7 @@
 				return
 
 	owner.updatehealth()
+	start_processing()
 
 	var/result = update_icon()
 	return result
@@ -353,7 +354,7 @@ This function completely restores a damaged organ to perfect condition.
 /datum/limb/proc/need_process()
 	if(status & LIMB_DESTROYED)	//Missing limb is missing
 		return 0
-	if(status && !(status & LIMB_ROBOT)) // Any status other than destroyed or robotic requires processing
+	if(status && !(status & LIMB_ROBOT) && !(status & LIMB_REPAIRED)) // Any status other than destroyed or robotic requires processing
 		return 1
 	if(brute_dam || burn_dam)
 		return 1
@@ -364,7 +365,7 @@ This function completely restores a damaged organ to perfect condition.
 		last_dam = brute_dam + burn_dam
 	if(germ_level)
 		return 1
-	if(knitting_time)
+	if(knitting_time > 0)
 		return 1
 	return 0
 
@@ -386,7 +387,7 @@ This function completely restores a damaged organ to perfect condition.
 		fracture()
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
-	if(knitting_time)
+	if(knitting_time > 0)
 		if(!(status & LIMB_SPLINTED))
 			knitting_time = -1 // stop knitting
 		if(knitting_time > world.time)
@@ -670,6 +671,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return limb_name
 	return null
 
+/datum/limb/proc/start_processing()
+	if(!(src in owner.limbs_to_process))
+		owner.limbs_to_process += src
+
+/datum/limb/proc/stop_processing()
+	owner.limbs_to_process -= src
+
 //Handles dismemberment
 /datum/limb/proc/droplimb(amputation, var/delete_limb = 0)
 	if(status & LIMB_DESTROYED)
@@ -677,7 +685,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	else
 		if(body_part == UPPER_TORSO)
 			return
-
+		stop_processing()
 		if(status & LIMB_ROBOT)
 			status = LIMB_DESTROYED|LIMB_ROBOT
 		else
@@ -858,6 +866,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(owner.species && !(owner.species.flags & NO_PAIN))
 		owner.emote("scream")
 
+	start_processing()
 	status |= LIMB_BROKEN
 	status &= ~LIMB_REPAIRED
 	broken_description = pick("broken","fracture","hairline fracture")
@@ -896,7 +905,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	status &= ~LIMB_MUTATED
 	status &= ~LIMB_REPAIRED
 	status |= LIMB_ROBOT
-
+	stop_processing()
 	reset_limb_surgeries()
 
 	germ_level = 0
@@ -988,6 +997,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(!silent)
 		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
 	implants += W
+	start_processing()
 	owner.embedded_flag = 1
 	owner.verbs += /mob/proc/yank_out_object
 	W.add_mob_blood(owner)

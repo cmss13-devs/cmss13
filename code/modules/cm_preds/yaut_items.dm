@@ -1367,11 +1367,26 @@
 
 /obj/item/weapon/combistick/wield(var/mob/user)
 	..()
+	icon_state = initial(icon_state)
 	force = 35
 
 /obj/item/weapon/combistick/unwield(mob/user)
 	..()
+	icon_state = initial(icon_state)
 	force = 28
+
+/obj/item/weapon/combistick/verb/use_unique_action()
+	set category = "Weapons"
+	set name = "Unique Action"
+	set desc = "Activate or deactivate the combistick."
+
+	unique_action(usr)
+
+/obj/item/weapon/combistick/attack_self(mob/user)
+	..()
+
+	if(flags_item & WIELDED) unwield(user)
+	else 				wield(user)
 
 /obj/item/weapon/combistick/unique_action(mob/living/user)
 	if(timer) return

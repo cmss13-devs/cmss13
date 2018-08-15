@@ -71,7 +71,7 @@
 	if(!xeno_mapview_overlay)
 		overlay_xeno_mapview()
 	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
-	X << browse("<img src=xeno_minimap.png>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+	X << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"xeno_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=xeno_minimap.png></body></html>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 // Shift Spits
 /datum/action/xeno_action/shift_spits

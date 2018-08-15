@@ -311,7 +311,7 @@
 			O = marine_mapview_overlay_4
 	if(O)
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		current_mapviewer << browse("<img src=marine_minimap.png>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+		current_mapviewer << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"marine_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=marine_minimap.png></body></html>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
 /obj/machinery/computer/overwatch/Topic(href, href_list)
 	if(..())

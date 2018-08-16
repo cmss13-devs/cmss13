@@ -59,6 +59,7 @@
 	max_health = 160
 	speed = -2.1
 	pounce_delay = 25
+	plasma_max = 250
 
 /mob/living/carbon/Xenomorph/Runner
 	caste_name = "Runner"

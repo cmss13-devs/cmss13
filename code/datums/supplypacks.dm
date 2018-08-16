@@ -276,6 +276,17 @@ WEAPONS
 	containername = "\improper explosive M15 grenades crate (WARNING)"
 	group = "Weapons"
 
+/datum/supply_packs/explosives_plastique
+	name = "plastique explosives crate (x2)"
+	contains = list(
+					/obj/item/explosive/plastique,
+					/obj/item/explosive/plastique
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper plastique explosives crate (WARNING)"
+	group = "Weapons"
+
 /datum/supply_packs/explosives_incendiary
 	name = "M40 HIDP incendiary grenades crate (x5)"
 	contains = list(

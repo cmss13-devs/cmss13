@@ -228,6 +228,12 @@
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
 
+/obj/item/clothing/glasses/sunglasses/aviator
+	name = "aviator shades"
+	desc = "A pair of tan tinted sunglasses. You faintly hear 80's music playing while wearing these."
+	icon_state = "aviator"
+	item_state = "aviator"
+
 /obj/item/clothing/glasses/sunglasses/sechud
 	name = "HUDSunglasses"
 	desc = "Sunglasses with a HUD."

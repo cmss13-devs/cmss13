@@ -228,6 +228,15 @@
 		..()
 		reagents.add_reagent("souto_classic", 50)
 
+/obj/item/reagent_container/food/drinks/cans/souto/blue
+	name = "\improper Blue Raspberry Souto"
+	desc = "A can of blue rasperry Souto. It tastes like the color blue. Technology really is amazing. Canned in Havana."
+	icon_state = "souto_blue"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("blueraspberry", 50)
+
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
 	desc = "Now with 0% fruit juice! Canned in Havana"

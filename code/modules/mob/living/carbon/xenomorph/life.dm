@@ -142,11 +142,17 @@
 		return
 
 	else if(health <= 0) //in crit
-		stat = UNCONSCIOUS
-		blinded = 1
-		see_in_dark = 5
-		if(isXenoRunner(src) && layer != initial(layer)) //Unhide
-			layer = MOB_LAYER
+		if(hardcore)
+			if(prob(gib_chance))
+				gib()
+			else
+				death()
+		else
+			stat = UNCONSCIOUS
+			blinded = 1
+			see_in_dark = 5
+			if(isXenoRunner(src) && layer != initial(layer)) //Unhide
+				layer = MOB_LAYER
 
 	else						//alive and not in crit! Turn on their vision.
 		if(isXenoBoiler(src))

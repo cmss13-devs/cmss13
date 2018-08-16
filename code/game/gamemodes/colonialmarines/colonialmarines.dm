@@ -80,7 +80,7 @@
 			if(MAP_ICE_COLONY) new /obj/item/map/ice_colony_map(T)
 			if(MAP_BIG_RED) new /obj/item/map/big_red_map(T)
 			if(MAP_PRISON_STATION) new /obj/item/map/FOP_map(T)
-
+			if(MAP_WHISKEY_OUTPOST) new /obj/item/map/whiskey_outpost_map(T)
 	if(monkey_amount)
 		//var/debug_tally = 0
 		switch(map_tag)

@@ -1,3 +1,4 @@
+#define DELETE_TIME	1800
 
 /mob/living/carbon/Xenomorph/death(gibbed)
 	var/msg = !caste.is_robotic ? "lets out a waning guttural screech, green blood bubbling from its maw." : "begins to shudder, and the lights go out in its eyes as it lies still."
@@ -73,7 +74,8 @@
 		A.forceMove(loc)
 
 	round_statistics.total_xeno_deaths++
-
+	if(hardcore)
+		dead_hardcore_xeno_list += src
 
 
 

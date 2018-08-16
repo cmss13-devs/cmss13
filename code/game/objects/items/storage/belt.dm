@@ -22,20 +22,6 @@
 	mouse_opacity = initial(mouse_opacity)
 	..()
 
-
-
-
-/obj/item/storage/belt/soulstone
-	name = "soul stone belt"
-	desc = "Designed for ease of access to the shards during a fight, as to not let a single enemy spirit slip away"
-	icon_state = "soulstonebelt"
-	item_state = "soulstonebelt"
-	storage_slots = 6
-	can_hold = list(
-		"/obj/item/device/soulstone"
-		)
-
-
 /obj/item/storage/belt/champion
 	name = "championship belt"
 	desc = "Proves to the world that you are the strongest!"
@@ -162,6 +148,12 @@
 		"/obj/item/reagent_container/hypospray/autoinjector",
 		"/obj/item/stack/medical"
 	)
+	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
+
+	New()
+		if(has_gamemode_skin)
+			select_gamemode_skin(type)
+		..()
 
 /obj/item/storage/belt/combatLifesaver/New()  //The belt, with all it's magic inside!
 	..()
@@ -187,6 +179,7 @@
 /obj/item/storage/belt/combatLifesaver/upp
 	icon_state = "medicalbag_u"
 	item_state = "medicbag_u"
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/combatLifesaver/upp/New()  //The belt, with all it's magic inside!
 	..()
@@ -301,6 +294,30 @@
 			select_gamemode_skin(type)
 		..()
 
+/obj/item/storage/belt/marine/m41a/New()
+	..()
+	new /obj/item/ammo_magazine/rifle (src)
+	new /obj/item/ammo_magazine/rifle (src)
+	new /obj/item/ammo_magazine/rifle (src)
+	new /obj/item/ammo_magazine/rifle (src)
+	new /obj/item/ammo_magazine/rifle (src)
+
+/obj/item/storage/belt/marine/m41amk1/New()
+	..()
+	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
+	new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
+
+/obj/item/storage/belt/marine/m39/New()
+	..()
+	new /obj/item/ammo_magazine/smg/m39 (src)
+	new /obj/item/ammo_magazine/smg/m39 (src)
+	new /obj/item/ammo_magazine/smg/m39 (src)
+	new /obj/item/ammo_magazine/smg/m39 (src)
+	new /obj/item/ammo_magazine/smg/m39 (src)
+
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
 	desc = "The Type 41 load rig is the standard-issue LBE of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
@@ -332,6 +349,13 @@
 	New()
 		select_gamemode_skin(type)
 		..()
+
+/obj/item/storage/belt/shotgun/full/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		var/obj/item/ammo_magazine/handful/H = new(src)
+		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
+	return
 
 
 /obj/item/storage/belt/knifepouch

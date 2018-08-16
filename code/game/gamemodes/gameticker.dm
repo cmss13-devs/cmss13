@@ -54,10 +54,10 @@ var/global/datum/controller/gameticker/ticker
 //	'sound/music/ColonialHalloween.ogg'
 //	'sound/music/Suspense_Explore.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
-//	'sound/music/DeadSpace_Ring_Around_the_Rosie.ogg',
-//	'sound/music/DeadSpace_Twinkle_Twinkle_Little_Star.ogg'
+	'sound/music/DeadSpace_Ring_Around_the_Rosie.ogg',
+	'sound/music/DeadSpace_Twinkle_Twinkle_Little_Star.ogg'
 	'sound/music/fortunate_son.ogg',
-//	'sound/music/buffalo_springfield.ogg',
+	'sound/music/buffalo_springfield.ogg',
 	'sound/music/warrior_song.ogg')//The Warrior Song
 //	'sound/music/NeilDiamondChanukah.ogg',
 //	'sound/music/WeirdAlGroundZeroXmas.ogg',
@@ -108,7 +108,10 @@ var/global/datum/controller/gameticker/ticker
 			var/mtype = src.mode.type
 			src.mode = new mtype
 	else
-		src.mode = config.pick_mode(master_mode)
+		if(map_tag == MAP_WHISKEY_OUTPOST)
+			src.mode = config.pick_mode("Whiskey Outpost")
+		else
+			src.mode = config.pick_mode(master_mode)
 	if (!src.mode.can_start())
 		world << "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby."
 		cdel(mode)

@@ -11,6 +11,7 @@
 	var/label_y
 	var/label_x
 	var/tag_x
+	anchored = 0
 
 	attack_hand(mob/user as mob)
 		if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0

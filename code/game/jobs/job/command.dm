@@ -30,7 +30,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 				WEAR_FEET = /obj/item/clothing/shoes/marinechief/commander,
 				WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer/commander,
 				WEAR_WAIST = /obj/item/storage/belt/gun/mateba/cmateba/full,
-				WEAR_HEAD = /obj/item/clothing/head/cmberet/tan,
+				WEAR_HEAD = /obj/item/clothing/head/beret/cm/tan,
 				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)
@@ -49,9 +49,9 @@ If you require any help, use adminhelp to talk to game staff about what you're s
 Godspeed, commander!"}
 
 	announce_entry_message(mob/living/carbon/human/H)
-		..()
 		sleep(15)
 		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
+		..()
 
 	get_access() return get_all_marine_access()
 
@@ -256,7 +256,7 @@ While you are an officer, your authority is limited to your own vehicle, where y
 				WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP,
 				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-				WEAR_HEAD = /obj/item/clothing/head/cmberet/red,
+				WEAR_HEAD = /obj/item/clothing/head/beret/cm/red,
 				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/medium
 				)
@@ -288,7 +288,7 @@ In addition, you are tasked with the security of high-ranking personnel, includi
 				WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
 				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/WO,
 				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-				WEAR_HEAD = /obj/item/clothing/head/cmberet/wo,
+				WEAR_HEAD = /obj/item/clothing/head/beret/cm/wo,
 				WEAR_BACK = /obj/item/storage/backpack/security,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)

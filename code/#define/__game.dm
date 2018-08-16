@@ -5,6 +5,7 @@
 #define r_FAL return FALSE
 
 //Game defining directives.
+#define SURFACE_Z_LEVELS list(1)
 #define MAIN_SHIP_Z_LEVEL 3 //the main ship
 #define MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS list(3,4) //the main ship and the z level where dropships transit
 #define ADMIN_Z_LEVEL 2

@@ -30,11 +30,13 @@
 		### LV624 map name (like from the file), with the option given to players on the left (also the name of the gamemode)
 		"LV-624" : "LV624",
 		### Big Red map name
-		"Big-Red" : "BigRed_v2",
+		"Solaris Ridge" : "BigRed_v2",
 		### Ice Colony map name
 		"Ice Colony" : "Ice_Colony_v2",
 		### Prison Station map name
-		"Prison Station" : "Prison_Station_FOP"
+		"Prison Station" : "Prison_Station_FOP",
+		### Whiskey Outpost map name
+		"Whiskey Outpost" : "Whiskey_Outpost_v2"
 		}
 	},
 "prefs" : {

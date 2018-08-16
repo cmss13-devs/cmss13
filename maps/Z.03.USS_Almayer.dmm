@@ -520,7 +520,7 @@
 "ajZ" = (/turf/open/floor/almayer_hull{icon_state = "outerhull_dir"},/area/space)
 "aka" = (/obj/machinery/atmospherics/pipe/simple/hidden/universal{tag = "icon-map_universal (EAST)"; icon_state = "map_universal"; dir = 4},/turf/open/floor/almayer{tag = "icon-orangecorner"; icon_state = "orangecorner"},/area/almayer/engineering/starboard_atmos)
 "akb" = (/turf/open/floor/almayer{tag = "icon-red (NORTH)"; icon_state = "red"; dir = 1},/area/almayer/shipboard/weapon_room)
-"akc" = (/obj/structure/closet,/obj/item/clothing/under/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/cmberet,/obj/item/clothing/head/cmberet,/turf/open/floor/plating/plating_catwalk,/area/almayer/hull/upper_hull)
+"akc" = (/obj/structure/closet,/obj/item/clothing/under/marine,/obj/item/clothing/suit/storage/marine,/obj/item/clothing/head/helmet/marine,/obj/item/clothing/head/beret/cm,/obj/item/clothing/head/beret/cm,/turf/open/floor/plating/plating_catwalk,/area/almayer/hull/upper_hull)
 "akd" = (/obj/structure/table/almayer,/obj/item/clipboard,/obj/item/paper,/obj/item/clothing/glasses/mgoggles,/obj/item/clothing/glasses/mgoggles,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/almayer/hull/upper_hull)
 "ake" = (/obj/structure/largecrate/random/barrel/white,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/almayer/hull/upper_hull)
 "akf" = (/turf/open/floor/almayer{tag = "icon-redcorner (NORTH)"; icon_state = "redcorner"; dir = 1},/area/almayer/shipboard/weapon_room)

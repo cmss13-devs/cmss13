@@ -108,6 +108,7 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/lime/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
@@ -119,6 +120,7 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/lime/diet = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.

@@ -123,6 +123,7 @@
 /obj/machinery/disposal/MouseDrop_T(mob/target, mob/user)
 	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || istype(user, /mob/living/silicon/ai) || target.mob_size >= MOB_SIZE_BIG)
 		return
+	if(!(ishuman(target)) || !(ishuman(user))) return
 	if(isanimal(user) && target != user) return //Animals cannot put mobs other than themselves into disposal
 	add_fingerprint(user)
 	var/target_loc = target.loc
@@ -770,6 +771,8 @@
 
 //Test health for brokenness
 /obj/structure/disposalpipe/proc/healthcheck()
+	if(Check_WO())
+		return
 	if(health < -2)
 		broken(0)
 	else if(health < 1)

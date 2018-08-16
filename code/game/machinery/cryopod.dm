@@ -223,7 +223,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			/obj/item/clothing/glasses/sunglasses, \
 			/obj/item/device/pda, \
 			/obj/item/clothing/glasses/mgoggles, \
-			/obj/item/clothing/head/cmberet/red, \
+			/obj/item/clothing/head/beret/cm/red, \
 			/obj/item/clothing/gloves/black, \
 			/obj/item/weapon/baton, \
 			/obj/item/weapon/gun/energy/taser, \

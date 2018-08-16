@@ -39,28 +39,28 @@
 	flags_inv_hide = HIDETOPHAIR
 
 
-/obj/item/clothing/head/cmberet
+/obj/item/clothing/head/beret/cm
 	name = "\improper USCM beret"
 	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
 	icon_state = "beret"
 
-/obj/item/clothing/head/cmberet/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmberet, list(MAP_ICE_COLONY = "s_beret"))
+/obj/item/clothing/head/beret/cm/New()
+	select_gamemode_skin(/obj/item/clothing/head/beret/cm, list(MAP_ICE_COLONY = "s_beret"))
 	..()
 
-/obj/item/clothing/head/cmberet/tan
+/obj/item/clothing/head/beret/cm/tan
 	icon_state = "berettan"
 
-/obj/item/clothing/head/cmberet/tan/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmberet/tan)
+/obj/item/clothing/head/beret/cm/tan/New()
+	select_gamemode_skin(/obj/item/clothing/head/beret/cm/tan)
 	..()
 
-/obj/item/clothing/head/cmberet/red
+/obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
 
-/obj/item/clothing/head/cmberet/wo
+/obj/item/clothing/head/beret/cm/wo
 	name = "\improper USCM chief MP beret"
 	desc = "A beret with the lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"

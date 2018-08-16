@@ -138,6 +138,8 @@
 		user.SetLuminosity(-brightness_on)
 		SetLuminosity(brightness_on)
 	..()
+/obj/item/device/flashlight/on
+	on = TRUE
 
 /obj/item/device/flashlight/pen
 	name = "penlight"

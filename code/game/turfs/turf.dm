@@ -374,6 +374,8 @@ spookydonut august 2018
 /turf/open/mars/is_weedable()
 	return FALSE
 
+/turf/open/jungle/is_weedable()
+	return FALSE
 
 /turf/open/floor/plating/plating_catwalk/is_weedable() //covered catwalks are unweedable
 	if(covered)

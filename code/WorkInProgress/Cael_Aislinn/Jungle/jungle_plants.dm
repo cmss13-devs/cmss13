@@ -107,14 +107,19 @@
 // Strange, fruit-bearing plants //
 //*******************************//
 
-var/list/fruit_icon_states = list("badrecipe","kudzupod","reishi","lime","grapes","boiledrorocore","chocolateegg")
-var/list/reagent_effects = list("toxin","anti_toxin","stoxin","space_drugs","mindbreaker","zombiepowder","impedrezene")
+var/list/fruit_icon_states = list("berrypile","chilipepper","eggplant","icepepper","soybeans","boiledrorocore","apple","lime","ambrosiadeus","bluespacetomato","reshi","cherry","orange","poisonberrypile","lemon","kudzupod","potato","glowberrypile","deathberrypile","cocoapod","greengrapes","grapes","tomato","mtear","shand")
+var/list/reagent_effects = list("toxin","anti_toxin","paracetamol","space_drugs","amatoxin","beer","hooch","lexorin","cyanide","minttoxin","carpotoxin","potassium_chloride","sacid","pacid","holywater","plasticide","mercury","orangejuice","inaprovaline","tramadol","oxycodone","kelotane","dermaline","dexalin","tricordrazine")
+var/list/fruits = list()
+var/list/excluded = list(/obj/item/reagent_container/food/snacks/grown/kudzupod, /obj/item/reagent_container/food/snacks/grown/killertomato,/obj/item/reagent_container/food/snacks/grown/mushroom/walkingmushroom)
 var/jungle_plants_init = 0
 
 /proc/init_jungle_plants()
 	jungle_plants_init = 1
 	fruit_icon_states = shuffle(fruit_icon_states)
 	reagent_effects = shuffle(reagent_effects)
+	var/F = typesof(/obj/item/reagent_container/food/snacks/grown) - typesof(excluded)
+	for(var/I in F)
+		fruits += I
 
 /obj/item/reagent_container/food/snacks/grown/jungle_fruit
 	name = "jungle fruit"
@@ -134,37 +139,50 @@ var/jungle_plants_init = 0
 	var/fruit_r
 	var/fruit_g
 	var/fruit_b
-
+	var/norm = FALSE
+	var/obj/item/reagent_container/food/snacks/grown/normal = null
 
 /obj/structure/jungle_plant/New()
 	if(!jungle_plants_init)
 		init_jungle_plants()
-
-	fruit_type = rand(1,7)
-	icon_state = "plant[fruit_type]"
-	fruits_left = rand(1,5)
+	if(prob(60))
+		norm = TRUE
 	fruit_overlay = icon('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"fruit[fruits_left]")
-	fruit_r = 255 - fruit_type * 36
-	fruit_g = rand(1,255)
-	fruit_b = fruit_type * 36
-	fruit_overlay.Blend(rgb(fruit_r, fruit_g, fruit_b), ICON_ADD)
+	if(norm)
+		normal = pick(fruits)
+		fruit_r = rand(1,255)
+		fruit_g = rand(1,255)
+		fruit_b = rand(1,255)
+		fruit_overlay.Blend(rgb(fruit_r, fruit_g, fruit_b), ICON_ADD)
+	else
+		fruit_type = rand(1,7)
+		icon_state = "plant[fruit_type]"
+		fruit_r = 255 - fruit_type * 36
+		fruit_g = rand(1,255)
+		fruit_b = fruit_type * 36
+		fruit_overlay.Blend(rgb(fruit_r, fruit_g, fruit_b), ICON_ADD)
+		plant_strength = rand(20,200)
+	fruits_left = rand(1,5)
 	overlays += fruit_overlay
-	plant_strength = rand(20,200)
+
 
 /obj/structure/jungle_plant/attack_hand(var/mob/user as mob)
 	if(fruits_left > 0)
 		fruits_left--
 		user << "\blue You pick a fruit off [src]."
-
-		var/obj/item/reagent_container/food/snacks/grown/jungle_fruit/J = new (src.loc)
-		J.potency = plant_strength
-		J.icon_state = fruit_icon_states[fruit_type]
-		J.reagents.add_reagent(reagent_effects[fruit_type], 1+round((plant_strength / 20), 1))
-		J.bitesize = 1+round(J.reagents.total_volume / 2, 1)
-		J.attack_hand(user)
-
 		overlays -= fruit_overlay
 		fruit_overlay = icon('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"fruit[fruits_left]")
+		if(norm)
+			new normal (src.loc)
+			normal.attack_hand(user)
+		else
+			var/obj/item/reagent_container/food/snacks/grown/jungle_fruit/J = new (src.loc)
+			J.icon = 'icons/obj/items/harvest.dmi'
+			J.potency = plant_strength
+			J.icon_state = fruit_icon_states[fruit_type]
+			J.reagents.add_reagent(reagent_effects[fruit_type], 1+round((plant_strength / 20), 1))
+			J.bitesize = 1+round(J.reagents.total_volume / 2, 1)
+			J.attack_hand(user)
 		fruit_overlay.Blend(rgb(fruit_r, fruit_g, fruit_b), ICON_ADD)
 		overlays += fruit_overlay
 	else

@@ -340,7 +340,7 @@
 
 		if("USCM Captain (CO)")
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(M), WEAR_BODY)
-			M.equip_to_slot_or_del(new /obj/item/clothing/head/cmberet/tan(M), WEAR_HEAD)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/tan(M), WEAR_HEAD)
 			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)

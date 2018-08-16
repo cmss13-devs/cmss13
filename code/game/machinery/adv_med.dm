@@ -174,14 +174,17 @@
 	icon_state = "body_scannerconsole"
 	density = 0
 	anchored = 1
-
+	dir = 2
 
 /obj/machinery/body_scanconsole/New()
 	..()
-	spawn( 5 )
-		src.connected = locate(/obj/machinery/bodyscanner, get_step(src, WEST))
-		return
-	return
+	spawn(7)
+		if(dir == EAST || dir == SOUTH)
+			connected = locate(/obj/machinery/bodyscanner,get_step(src, WEST))
+		if(dir == WEST || dir == NORTH)
+			connected = locate(/obj/machinery/bodyscanner,get_step(src, EAST))
+		if(!connected)
+			cdel(src)
 
 /*
 

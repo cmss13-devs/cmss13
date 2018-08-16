@@ -52,7 +52,11 @@
 	icon_state = "large_drop"
 	draw_mode = 0
 
-
+/obj/item/storage/pouch/general/large/m39ap/New()
+	..()
+	new /obj/item/ammo_magazine/smg/m39/ap (src)
+	new /obj/item/ammo_magazine/smg/m39/ap (src)
+	new /obj/item/ammo_magazine/smg/m39/ap (src)
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
 	desc = "A pouch for your knives."
@@ -405,6 +409,15 @@
 					"/obj/item/tool/shovel/etool",
 					"/obj/item/stack/sandbags_empty"
 					)
+
+/obj/item/storage/pouch/construction/full/New()
+	..()
+	var/obj/item/stack/sheet/plasteel/PLAS = new /obj/item/stack/sheet/plasteel(src)
+	PLAS.amount = 50
+	var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)
+	MET.amount = 50
+	var/obj/item/stack/sandbags_empty/SND1 = new /obj/item/stack/sandbags_empty(src)
+	SND1.amount = 50
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"

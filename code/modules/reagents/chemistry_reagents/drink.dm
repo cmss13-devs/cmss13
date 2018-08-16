@@ -108,6 +108,12 @@
 	description = "Now with more artificial flavors! Canned in Havanna"
 	color = "#800000"
 
+/datum/reagent/drink/suoto/blueraspberry
+	name = "Blue Raspberry Souto"
+	id = "blueraspberry"
+	description = "A blue fruit flavored soda canned in Havana"
+	color = "#005B96"
+
 /datum/reagent/drink/davenport
 	name = "Davenport Rye"
 	id = "davenport"

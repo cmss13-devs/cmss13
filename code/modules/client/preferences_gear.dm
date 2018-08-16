@@ -31,13 +31,13 @@ var/global/list/gear_datums = list()
 
 /datum/gear/cmberet
 	display_name = "USCM Beret (Green)"
-	path = /obj/item/clothing/head/cmberet
+	path = /obj/item/clothing/head/beret/cm
 	cost = 3
 	slot = WEAR_HEAD
 
 /datum/gear/cmberettan
 	display_name = "USCM Beret (Green)"
-	path = /obj/item/clothing/head/cmberet
+	path = /obj/item/clothing/head/beret/cm
 	cost = 3
 	slot = WEAR_HEAD
 
@@ -714,5 +714,11 @@ var/global/list/gear_datums = list()
 /datum/gear/cmPgoggles
 	display_name = "Prescription Goggles"
 	path = /obj/item/clothing/glasses/mgoggles/prescription
+	cost = 3
+	slot = WEAR_EYES
+
+/datum/gear/aviators
+	display_name = "Aviator Shades"
+	path = /obj/item/clothing/glasses/sunglasses/aviator
 	cost = 3
 	slot = WEAR_EYES

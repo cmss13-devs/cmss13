@@ -36,16 +36,15 @@
 
 /obj/machinery/sleep_console/New()
 	..()
-	spawn( 5 )
-		if(orient == "RIGHT")
-			icon_state = "sleeperconsole-r"
-			connected = locate(/obj/machinery/sleeper, get_step(src, EAST))
-			connected.connected = src
+	spawn(7)
+		if(dir == EAST || dir == SOUTH)
+			connected = locate(/obj/machinery/sleeper,get_step(src, WEST))
+		if(dir == WEST || dir == NORTH)
+			connected = locate(/obj/machinery/sleeper,get_step(src, EAST))
+		if(!connected)
+			cdel(src)
 		else
-			connected = locate(/obj/machinery/sleeper, get_step(src, WEST))
 			connected.connected = src
-		return
-	return
 
 /obj/machinery/sleep_console/attack_ai(mob/user as mob)
 	return src.attack_hand(user)

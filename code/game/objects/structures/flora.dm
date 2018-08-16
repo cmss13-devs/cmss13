@@ -87,6 +87,12 @@
 	icon = 'icons/obj/flora/plants.dmi'
 	icon_state = "plant-26"
 
+/obj/structure/flora/pottedplant/random
+	var/maxplants = 30 //Change this whenever you add new plants
+
+/obj/structure/flora/pottedplant/random/New()
+	..()
+	icon_state = "plant-[rand(1,maxplants)]"
 //newbushes
 
 /obj/structure/flora/ausbushes

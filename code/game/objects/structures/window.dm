@@ -609,6 +609,7 @@
 			P.dir = 2
 		else
 			P.dir = 4
+	P.density = 1
 	spawn(16)
 		P.close()
 

@@ -283,7 +283,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 			var/msg = "There is a [HP] installed on the [i] hardpoint slot."
 			if(P <= 0)
 				msg += " It's busted!"
-			else if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			else if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
 				msg += " It's at [round(P, 1)]% integrity!"
 			user << msg
 

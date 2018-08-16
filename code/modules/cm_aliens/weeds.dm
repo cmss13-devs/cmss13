@@ -32,7 +32,7 @@
 /obj/effect/alien/weeds/examine(mob/user)
 	..()
 	var/turf/T = get_turf(src)
-	if(istype(T, /turf/open/floor))
+	if(istype(T, /turf/open))
 		T.ceiling_desc(user)
 
 

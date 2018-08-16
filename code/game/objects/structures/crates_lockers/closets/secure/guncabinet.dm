@@ -44,18 +44,22 @@
 			overlays += icon(src.icon,"open")
 
 /obj/structure/closet/secure_closet/guncabinet/proc/check_sec_level(var/alert)
+	var/state_change = 0
 	if(alert != req_level && alert < req_level)
 		for(var/mob/living/L in contents)
 			L.loc = src.loc
 			L << "<span class='warning'>You are forced out of [src]!</span>"
 		if(!locked)
 			locked = 1
+			state_change = 1
 	else
 		if(locked)
 			locked = 0
-	for(var/mob/O in viewers(src, 3))
-		if((O.client && !( O.blinded )))
-			O << "<span class='notice'>[src] [locked ? "locks" : "unlocks"] itself.</span>"
+			state_change = 1
+	if(state_change)
+		for(var/mob/O in viewers(src, 3))
+			if((O.client && !( O.blinded )))
+				O << "<span class='notice'>[src] [locked ? "locks" : "unlocks"] itself.</span>"
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory

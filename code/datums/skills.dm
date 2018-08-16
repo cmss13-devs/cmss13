@@ -215,7 +215,7 @@
 	construction = SKILL_CONSTRUCTION_MASTER
 	leadership = SKILL_LEAD_MASTER
 	police = SKILL_POLICE_FLASH
-	powerloader = SKILL_POWERLOADER_TRAINED
+	powerloader = SKILL_POWERLOADER_PRO
 
 
 /datum/skills/RO

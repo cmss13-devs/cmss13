@@ -90,11 +90,9 @@
 				else
 					user << "<span class='notice'>The locker is too small to stuff [W:affecting] into!</span>"
 			return
-		if(isrobot(user))
+		if(isrobot(user) || iszombie(user))
 			return
-		user.drop_held_item()
-		if(W)
-			W.loc = src.loc
+		user.drop_inv_item_to_loc(W, loc)
 	else if(istype(W, /obj/item/card/emag))
 		if(broken) return
 		broken = 1

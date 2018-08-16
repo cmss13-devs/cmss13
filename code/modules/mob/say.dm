@@ -57,7 +57,7 @@
 	if(usr.talked == 2)
 		usr << "\red Your spam has been consumed for it's nutritional value."
 		return
-	if((usr.talked == 1) && (usr.chatWarn >= 5))
+	if(((usr.talked == 1) && (usr.chatWarn >= 5)) || length(message) > MAX_EMOTE_LEN)
 		usr.talked = 2
 		usr << "\red You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"
 		if(usr.chatWarn >= 5)
@@ -72,7 +72,7 @@
 		usr.chatWarn++
 		return
 
-	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message = trim(copytext(sanitize(message), 1, MAX_EMOTE_LEN))
 
 	set_typing_indicator(0)
 	if(use_me)

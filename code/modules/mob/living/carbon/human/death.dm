@@ -52,6 +52,7 @@
 /mob/living/carbon/human/death(gibbed)
 
 	if(stat == DEAD) return
+	living_human_list -= src
 	if(!gibbed) disable_lights()
 	if(pulledby)
 		pulledby.stop_pulling()

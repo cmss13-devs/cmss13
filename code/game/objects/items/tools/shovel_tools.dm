@@ -170,7 +170,8 @@
 		force = 30
 	..()
 
-
-
-
-
+/obj/item/tool/shovel/etool/folded
+	folded = TRUE
+	w_class = 3
+	force = 2
+	icon_state = "etool_c"

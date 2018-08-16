@@ -634,6 +634,7 @@
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
 	H.universal_understand = 1
+	living_human_list -= H
 	return ..()
 
 
@@ -704,6 +705,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 
+	living_human_list -= H
 	H.universal_understand = 1
 
 	H.dna.b_type = "Y*"

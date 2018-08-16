@@ -695,6 +695,7 @@
 	icon = 'icons/obj/machines/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/machinery/autodoc/connected = null
+	dir = 2
 	anchored = 1 //About time someone fixed this.
 	density = 0
 
@@ -703,9 +704,15 @@
 
 /obj/machinery/autodoc_console/New()
 	..()
-	spawn(5)
-		connected = locate(/obj/machinery/autodoc, get_step(src, WEST))
-		connected.connected = src
+	spawn(7)
+		if(dir == EAST || dir == SOUTH)
+			connected = locate(/obj/machinery/autodoc,get_step(src, WEST))
+		if(dir == WEST || dir == NORTH)
+			connected = locate(/obj/machinery/autodoc,get_step(src, EAST))
+		if(!connected)
+			cdel(src)
+		else
+			connected.connected = src
 
 /obj/machinery/autodoc_console/power_change(var/area/master_area = null)
 	..()

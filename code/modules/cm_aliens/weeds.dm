@@ -70,7 +70,14 @@
 			if (istype(T.loc, /area/arrival))
 				continue
 
+			for(var/obj/structure/platform/P in src.loc)
+				if(P.dir == reverse_direction(dirn))
+					continue direction_loop
+
 			for (var/obj/O in T)
+				if(istype(O, /obj/structure/platform))
+					if(O.dir == dirn)
+						continue direction_loop
 				if(istype(O, /obj/structure/window/framed))
 					new /obj/effect/alien/weeds/weedwall/window(T)
 					continue direction_loop

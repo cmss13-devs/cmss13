@@ -119,6 +119,10 @@
 
 	return 1
 
+/obj/effect/landmark/start/whiskey
+	icon = 'icons/misc/mark.dmi'
+	icon_state = "spawn_shuttle"
+
 /obj/effect/landmark/map_tag
 	name = "mapping tag"
 

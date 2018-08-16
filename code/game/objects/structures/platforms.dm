@@ -20,14 +20,16 @@
 	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
 	switch(dir)
 		if(SOUTH)
-			layer = ABOVE_MOB_LAYER
+			layer = ABOVE_MOB_LAYER+0.1
 			I.pixel_y = -16
 		if(NORTH)
 			I.pixel_y = 16
 		if(EAST)
 			I.pixel_x = 16
+			layer = ABOVE_MOB_LAYER+0.1
 		if(WEST)
 			I.pixel_x = -16
+			layer = ABOVE_MOB_LAYER+0.1
 	overlays += I
 	..()
 
@@ -52,6 +54,8 @@
 		return 0
 	else
 		return 1
+/obj/structure/platform/ex_act()
+	return
 
 obj/structure/platform_decoration
 	name = "platform"
@@ -69,11 +73,14 @@ obj/structure/platform_decoration
 /obj/structure/platform_decoration/New()
 	switch(dir)
 		if (NORTH)
-			layer = ABOVE_MOB_LAYER
+			layer = ABOVE_MOB_LAYER+0.1
 		if (SOUTH)
-			layer = ABOVE_MOB_LAYER
+			layer = ABOVE_MOB_LAYER+0.1
 		if (SOUTHEAST)
-			layer = ABOVE_MOB_LAYER
+			layer = ABOVE_MOB_LAYER+0.1
 		if (SOUTHWEST)
-			layer = ABOVE_MOB_LAYER
+			layer = ABOVE_MOB_LAYER+0.1
 	.. ()
+
+/obj/structure/platform/ex_act()
+	return

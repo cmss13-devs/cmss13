@@ -265,13 +265,23 @@ Only checks living mobs with a client attached.
 	var/num_marines = 0
 	var/num_pmcs = 0
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in living_human_list)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
 			if(ishuman(M) && !isYautja(M))
 				if(M.mind && M.mind.special_role == "PMC") 	num_pmcs++
 				else if(M.mind && !M.mind.special_role)		num_marines++
 
 	return list(num_marines,num_pmcs)
+
+/datum/game_mode/proc/count_marines(list/z_levels = GAME_PLAY_Z_LEVELS)
+	var/num_marines = 0
+
+	for(var/mob/M in living_human_list)
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space))
+			if(ishuman(M) && !isYautja(M))
+				if(M.mind && !M.mind.special_role)		num_marines++
+
+	return num_marines
 
 /*
 #undef QUEEN_DEATH_COUNTDOWN

@@ -37,7 +37,7 @@
 	if(..())  //Checks for power outages
 		return
 
-	if(user.mind.cm_skills && user.mind.cm_skills.leadership < SKILL_LEAD_EXPERT)
+	if(user.mind.cm_skills && user.mind.cm_skills.leadership < SKILL_LEAD_EXPERT && !Check_WO())
 		user << "<span class='warning'>You don't have the training to use [src].</span>"
 		return
 

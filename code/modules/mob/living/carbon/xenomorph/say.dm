@@ -85,7 +85,7 @@
 		hive = hive_datum[hivenumber]
 	else return
 
-	if(!hive.living_xeno_queen)
+	if(!hive.living_xeno_queen && !Check_WO())
 		src << "<span class='warning'>There is no Queen. You are alone.</span>"
 		return
 

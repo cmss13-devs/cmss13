@@ -40,12 +40,15 @@
 
 	if (!X || X.is_mob_incapacitated(1) || X.buckled || X.fortify || X.crest_defense)
 		return
-
 	return 1
 
 /datum/action/xeno_action/xeno_resting/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X.is_mob_incapacitated(TRUE))
+		return
+
+	if(X.hardcore)
+		X << "<span class='warning'>No time to rest, must KILL!</span>"
 		return
 
 	X.resting = !X.resting

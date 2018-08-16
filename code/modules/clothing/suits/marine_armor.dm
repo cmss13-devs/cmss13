@@ -222,7 +222,8 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/combat_knife,
 		/obj/item/storage/sparepouch,
 		/obj/item/device/hailer,
-		/obj/item/storage/belt/gun)
+		/obj/item/storage/belt/gun,
+		/obj/item/weapon/claymore/mercsword/commander)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 
 /obj/item/clothing/suit/storage/marine/MP/WO

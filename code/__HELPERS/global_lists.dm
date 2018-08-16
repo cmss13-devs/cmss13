@@ -8,7 +8,7 @@ var/list/USCMFaxes = list()							//List of all USCM faxes sent this round
 var/list/active_tracking_beacons = list()			//List of all active squad tracking beacons
 
 //Names of maps that can be compiled on
-var/list/DEFAULT_NEXT_MAP_CANDIDATES = list("LV-624", "Ice Colony", "Big-Red", "Prison Station")
+var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_ICE_COLONY, MAP_BIG_RED, MAP_PRISON_STATION, MAP_WHISKEY_OUTPOST)
 var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy()
 
 //List of player votes. Name of the map from NEXT_MAP_CANDIADATES indexed by ckey
@@ -23,6 +23,9 @@ var/global/list/living_mob_list = list()			//List of all alive mobs, including c
 var/global/list/living_xeno_list = list()			//List of all alive mob/living/carbon/Xenomorph mobs
 var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
 var/global/list/yautja_mob_list = list()
+var/global/list/living_human_list = list() // list of alive marines
+
+var/global/list/dead_hardcore_xeno_list = list() // mostly for WO clean up
 
 var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 

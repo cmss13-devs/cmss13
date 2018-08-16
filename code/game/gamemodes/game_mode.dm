@@ -360,7 +360,7 @@
 ///////////////////////////////////
 /datum/game_mode/proc/get_living_heads()
 	var/list/heads = list()
-	for(var/mob/living/carbon/human/player in mob_list)
+	for(var/mob/living/carbon/human/player in living_human_list)
 		if(player.stat!=2 && player.mind && (player.mind.assigned_role in ROLES_COMMAND ))
 			heads += player.mind
 	return heads

@@ -350,7 +350,6 @@
 			new /obj/item/ammo_magazine/rifle/m4ra/incendiary(src)
 			new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
 			new /obj/item/ammo_magazine/rifle/m4ra/impact(src)
-			new /obj/item/device/binoculars/tactical/scout(src)
 			new /obj/item/weapon/gun/pistol/vp70(src)
 			new /obj/item/ammo_magazine/pistol/vp70(src)
 			new /obj/item/ammo_magazine/pistol/vp70(src)
@@ -358,7 +357,10 @@
 			new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 			new /obj/item/explosive/plastique(src)
 			new /obj/item/explosive/plastique(src)
-
+			if(Check_WO())
+				new /obj/item/device/binoculars/designator(src)
+			else
+				new /obj/item/device/binoculars/tactical/scout(src)
 
 
 /obj/item/storage/box/spec/pyro
@@ -411,47 +413,39 @@
 			new /obj/item/clothing/head/helmet/marine/specialist(src)
 
 
+var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "Demo" = 2)
+
 /obj/item/spec_kit //For events/WO, allowing the user to choose a specalist kit
 	name = "specialist kit"
 	desc = "A paper box. Open it and get a specialist kit."
 	icon = 'icons/obj/items/storage/storage.dmi'
 	icon_state = "deliverycrate"
 
-/obj/item/spec_kit/attack_self(mob/user as mob)
+/obj/item/spec_kit/attack_self(mob/user)
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED)
 		user << "<span class='notice'>This box is not for you, give it to a specialist!</span>"
 		return
-	var/choice = input(user, "Please pick a specalist kit!","Selection") in list("Pyro","Grenadier","Sniper","Scout","Demo")
-	var/obj/item/storage/box/spec/S = null
-	switch(choice)
-		if("Pyro")
-			S = /obj/item/storage/box/spec/pyro
-		if("Grenadier")
-			S = /obj/item/storage/box/spec/heavy_grenadier
-		if("Sniper")
-			S = /obj/item/storage/box/spec/sniper
-		if("Scout")
-			S = /obj/item/storage/box/spec/scout
-		if("Demo")
-			S = /obj/item/storage/box/spec/demolitionist
-	new S(loc)
-	user.put_in_hands(S)
-	cdel()
-
-/obj/item/spec_kit/attack_self(mob/user)
-	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in list("Pyro","Grenadier","Sniper","Scout","Demo")
+	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
 	if(!selection)
+		return
+	if(!kits[selection])
+		user << "<span class='notice'>No more kits of this type may be chosen!!</span>"
 		return
 	var/turf/T = get_turf(loc)
 	switch(selection)
 		if("Pyro")
 			new /obj/item/storage/box/spec/pyro (T)
+			kits["Pyro"] --
 		if("Grenadier")
 			new /obj/item/storage/box/spec/heavy_grenadier (T)
+			kits["Genader"] --
 		if("Sniper")
 			new /obj/item/storage/box/spec/sniper (T)
+			kits["Sniper"] --
 		if("Scout")
 			new /obj/item/storage/box/spec/scout (T)
+			kits["Scout"] --
 		if("Demo")
 			new /obj/item/storage/box/spec/demolitionist (T)
+			kits["Demo"] --
 	cdel(src)

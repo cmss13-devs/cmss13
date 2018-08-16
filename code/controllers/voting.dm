@@ -344,6 +344,7 @@ var/force_mapdaemon_vote = 0
 	var/list/L = list()
 	L += "Don't care"
 	L += NEXT_MAP_CANDIDATES.Copy()
+	L -= map_tag
 	var/selection = input("Vote for the next map to play on", "Vote:", "Don't care") as null|anything in L
 
 	if(!selection || !src) return

@@ -122,7 +122,7 @@
 
 /obj/item/trash/USCMtray
 	name = "\improper USCM Tray"
-	desc = "Finished with its tour of duty"
+	desc = "Finished with its tour of duty."
 	icon_state = "MREtray"
 
 /obj/item/trash/boonie

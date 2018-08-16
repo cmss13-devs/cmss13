@@ -48,7 +48,10 @@
 			icon_state = initial(icon_state)
 
 
-
+/obj/item/clothing/shoes/marine/knife/New()
+	..()
+	knife = new /obj/item/weapon/combat_knife(src)
+	update_icon()
 
 /obj/item/clothing/shoes/marinechief
 	name = "chief officer shoes"

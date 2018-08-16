@@ -15,6 +15,8 @@
 		dna = new /datum/dna(b_type)
 		// Species name is handled by set_species()
 
+	living_human_list += src
+
 	if(!species)
 		if(new_species)
 			set_species(new_species)
@@ -59,6 +61,7 @@
 			assigned_squad.squad_leader = null
 		assigned_squad = null
 	remove_from_all_mob_huds()
+	living_human_list -= src
 	. = ..()
 
 /mob/living/carbon/human/Stat()

@@ -508,6 +508,55 @@
 
 	frequency.post_signal(src, status_signal)*/
 
+ //A simpler version that doesn't have everything the other one has
+ /obj/machinery/computer/communications/simple
+ 	circuit = null
+
+/obj/machinery/computer/communications/simple/attack_hand(var/mob/user as mob)
+	user.set_interaction(src)
+	var/dat = "<head><title>Communications Console</title></head><body>"
+
+	switch(state)
+		if(STATE_DEFAULT)
+			if(authenticated)
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>LOG OUT</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message list</A> \]"
+				dat += "<BR>\[ <A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A> \]"
+				dat += "<BR><hr>"
+
+				if(authenticated == 2)
+					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make an announcement</A> \]"
+					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=award'>Award a medal</A> \]"
+
+			else
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>LOG IN</A> \]"
+
+		if(STATE_MESSAGELIST)
+			dat += "Messages:"
+			for(var/i = 1; i<=messagetitle.len; i++)
+				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
+
+		if(STATE_VIEWMESSAGE)
+			if (currmsg)
+				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
+				if (authenticated)
+					dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Delete \]"
+			else
+				state = STATE_MESSAGELIST
+				attack_hand(user)
+				r_FAL
+
+		if(STATE_DELMESSAGE)
+			if (currmsg)
+				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
+			else
+				state = STATE_MESSAGELIST
+				attack_hand(user)
+				r_FAL
+
+	dat += "<BR>\[ [(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+	user << browse(dat, "window=communications;size=400x500")
+	onclose(user, "communications")
 #undef STATE_DEFAULT
 #undef STATE_MESSAGELIST
 #undef STATE_VIEWMESSAGE

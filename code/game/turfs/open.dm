@@ -171,16 +171,36 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 
+/turf/open/gm/attackby(var/obj/item/I, var/mob/user)
+
+	//Light Stick
+	if(istype(I, /obj/item/lightstick))
+		var/obj/item/lightstick/L = I
+		if(locate(/obj/item/lightstick) in get_turf(src))
+			user << "There's already a [L]  at this position!"
+			return
+
+		user << "Now planting \the [L]."
+		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
+			return
+
+		user.visible_message("\blue[user.name] planted \the [L] into [src].")
+		L.anchored = 1
+		L.icon_state = "lightstick_[L.s_color][L.anchored]"
+		user.drop_held_item()
+		L.x = x
+		L.y = y
+		L.pixel_x += rand(-5,5)
+		L.pixel_y += rand(-5,5)
+		L.SetLuminosity(2)
+		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
+	return
 
 /turf/open/gm/ex_act(severity) //Should make it indestructable
 	return
 
 /turf/open/gm/fire_act(exposed_temperature, exposed_volume)
 	return
-
-/turf/open/gm/attackby() //This should fix everything else. No cables, etc
-	return
-
 
 /turf/open/gm/dirt
 	name = "dirt"
@@ -216,7 +236,7 @@
 
 /turf/open/gm/river/New()
 	..()
-	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="riverwater","layer"=MOB_LAYER+0.1)
+	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="riverwater","layer"=ABOVE_MOB_LAYER)
 
 
 /turf/open/gm/river/Entered(atom/movable/AM)
@@ -530,13 +550,35 @@
 		if(P && prob(probability))
 			P.Spread(probability - prob_loss)
 
+/turf/open/jungle/attackby(var/obj/item/I, var/mob/user)
+	//Light Stick
+	if(istype(I, /obj/item/lightstick))
+		var/obj/item/lightstick/L = I
+		if(locate(/obj/item/lightstick) in get_turf(src))
+			user << "There's already a [L]  at this position!"
+			return
 
+		user << "Now planting \the [L]."
+		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
+			return
+
+		user.visible_message("\blue[user.name] planted \the [L] into [src].")
+		L.anchored = 1
+		L.icon_state = "lightstick_[L.s_color][L.anchored]"
+		user.drop_held_item()
+		L.x = x
+		L.y = y
+		L.pixel_x += rand(-5,5)
+		L.pixel_y += rand(-5,5)
+		L.SetLuminosity(2)
+		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
+	return
 
 /turf/open/jungle/clear
 	bushes_spawn = 0
 	plants_spawn = 0
 	icon_state = "grass_clear"
-	icon_spawn_state = "grass3"
+	icon_spawn_state = "grass1"
 
 /turf/open/jungle/path
 	bushes_spawn = 0

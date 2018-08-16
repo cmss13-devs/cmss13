@@ -19,8 +19,8 @@
 /datum/caste_datum/hivelord/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	max_health = 220
 	plasma_max = 900
 	plasma_gain = 40
@@ -28,7 +28,7 @@
 	caste_desc = "A builder of REALLY BIG hives. It looks a little more dangerous."
 	armor_deflection = 10
 	tacklemin = 3
-	tacklemax = 5
+	tacklemax = 4
 	tackle_chance = 40
 	speed = 0.3
 	aura_strength = 1.5
@@ -36,16 +36,16 @@
 /datum/caste_datum/hivelord/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_lower = 25
+	melee_damage_upper = 30
 	max_health = 240
 	plasma_max = 1000
 	plasma_gain = 50
 	upgrade_threshold = 3200
 	caste_desc = "A builder of REALLY BIG hives. It looks pretty strong."
 	armor_deflection = 15
-	tacklemin = 3
-	tacklemax = 4
+	tacklemin = 4
+	tacklemax = 5
 	tackle_chance = 45
 	speed = 0.2
 	aura_strength = 2
@@ -53,13 +53,15 @@
 /datum/caste_datum/hivelord/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	melee_damage_lower = 30
+	melee_damage_upper = 35
 	max_health = 260
 	plasma_max = 1200
 	plasma_gain = 70
 	caste_desc = "An extreme construction machine. It seems to be building walls..."
 	armor_deflection = 20
+	tacklemin = 4
+	tacklemax = 5
 	tackle_chance = 50
 	speed = 0.1
 

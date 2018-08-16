@@ -45,6 +45,8 @@
 	upgrade_threshold = 800
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	armor_deflection = 10
+	tacklemin = 3
+	tacklemax = 4
 	tackle_chance = 45
 	speed = -1.0
 	aura_strength = 1.5

@@ -34,7 +34,7 @@
 	speed = -0.8
 	armor_deflection = 40
 	tacklemin = 4
-	tacklemax = 8
+	tacklemax = 5
 	tackle_chance = 45
 
 /datum/caste_datum/ravager/elder
@@ -50,7 +50,7 @@
 	speed = -0.9
 	armor_deflection = 45
 	tacklemin = 5
-	tacklemax = 9
+	tacklemax = 6
 	tackle_chance = 50
 
 /datum/caste_datum/ravager/ancient
@@ -63,7 +63,7 @@
 	speed = -1.0
 	armor_deflection = 50
 	tacklemin = 6
-	tacklemax = 10
+	tacklemax = 7
 	tackle_chance = 55
 
 /mob/living/carbon/Xenomorph/Ravager

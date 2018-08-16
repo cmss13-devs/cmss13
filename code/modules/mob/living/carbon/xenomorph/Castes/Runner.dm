@@ -52,6 +52,8 @@
 	upgrade = 3
 	melee_damage_lower = 25
 	melee_damage_upper = 35
+	tacklemin = 3
+	tacklemax = 4
 	tackle_chance = 45
 	upgrade_threshold = 800
 	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."

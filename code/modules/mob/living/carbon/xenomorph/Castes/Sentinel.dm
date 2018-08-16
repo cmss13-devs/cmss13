@@ -12,6 +12,7 @@
 	upgrade_threshold = 200
 	spit_delay = 30
 	caste_desc = "A weak ranged combat alien."
+	tackle_chance = 40
 	armor_deflection = 10
 	speed = -0.8
 	spit_types = list(/datum/ammo/xeno/toxin)
@@ -48,6 +49,7 @@
 	armor_deflection = 20
 	tacklemin = 4
 	tacklemax = 5
+	tackle_chance = 50
 	speed = -1.0
 
 /datum/caste_datum/sentinel/ancient
@@ -61,6 +63,9 @@
 	spit_delay = 15
 	caste_desc = "Neurotoxin Factory, don't let it get you."
 	armor_deflection = 25
+	tacklemin = 4
+	tacklemax = 5
+	tackle_chance = 55
 	speed = -1.1
 
 /mob/living/carbon/Xenomorph/Sentinel

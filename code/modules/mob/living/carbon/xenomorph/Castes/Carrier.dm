@@ -52,10 +52,10 @@
 	tackle_chance = 50
 	plasma_gain = 12
 	plasma_max = 350
+	armor_deflection = 20
 	caste_desc = "A portable Love transport. It looks pretty strong."
 	max_health = 225
 	speed = -0.2
-	armor_deflection = 20
 	aura_strength = 2
 	huggers_max = 10
 	hugger_delay = 20

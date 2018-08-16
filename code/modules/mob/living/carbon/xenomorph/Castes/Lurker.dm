@@ -49,6 +49,8 @@
 	armor_deflection = 25
 	tackle_chance = 45
 	attack_delay = -3
+	tacklemin = 3
+	tacklemax = 4
 	pounce_delay = 45
 
 /datum/caste_datum/lurker/ancient
@@ -65,6 +67,9 @@
 	tacklemax = 5
 	tackle_chance = 50
 	armor_deflection = 30
+	attack_delay = -3
+	tacklemin = 4
+	tacklemax = 5
 	pounce_delay = 40
 
 /mob/living/carbon/Xenomorph/Lurker

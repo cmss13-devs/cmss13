@@ -43,6 +43,8 @@
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 30
+	tacklemin = 3
+	tacklemax = 4
 	tackle_chance = 45
 	plasma_gain = 40
 	plasma_max = 1000
@@ -65,7 +67,7 @@
 	tacklemax = 5
 	tackle_chance = 50
 	plasma_gain = 45
-	plasma_max = 1000
+	plasma_max = 1100
 	spit_delay = 10
 	caste_desc = "A devestating piece of alien artillery."
 	armor_deflection = 35

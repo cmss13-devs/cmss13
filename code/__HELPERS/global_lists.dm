@@ -8,7 +8,7 @@ var/list/USCMFaxes = list()							//List of all USCM faxes sent this round
 var/list/active_tracking_beacons = list()			//List of all active squad tracking beacons
 
 //Names of maps that can be compiled on
-var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_ICE_COLONY, MAP_BIG_RED, MAP_PRISON_STATION, MAP_WHISKEY_OUTPOST)
+var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_ICE_COLONY, MAP_BIG_RED, MAP_PRISON_STATION)
 var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy()
 
 //List of player votes. Name of the map from NEXT_MAP_CANDIADATES indexed by ckey

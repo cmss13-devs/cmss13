@@ -518,6 +518,8 @@ cases. Override_icon_state should be a list.*/
 		usr << "\red You can't pick that up!"
 		return
 	//All checks are done, time to pick it up!
+	if (world.time <= usr.next_move)
+		return
 	usr.next_move += 6 // stop insane pickup speed
 	usr.UnarmedAttack(src)
 	return

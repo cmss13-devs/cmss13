@@ -276,8 +276,8 @@
 		..()
 		accuracy = config.med_hit_accuracy
 		accurate_range = config.short_shell_range
-		scatter = -config.low_scatter_value
-		penetration = -config.mlow_armor_penetration
+		scatter = config.low_scatter_value
+		penetration = config.mlow_armor_penetration
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
@@ -331,7 +331,8 @@
 		..()
 		accurate_range = config.norm_shell_range
 		damage = config.lmed_hit_damage
-		accuracy = config.low_hit_accuracy
+		accuracy = config.med_hit_accuracy
+		scatter = -config.low_scatter_value
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
@@ -408,7 +409,7 @@
 	New()
 		..()
 		max_range = config.short_shell_range
-		damage = config.hmed_hit_damage
+		damage = config.high_hit_damage
 		penetration= config.low_armor_penetration
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
@@ -536,7 +537,7 @@
 		accuracy_var_high = config.high_proj_variance
 		accurate_range = config.min_shell_range
 		max_range = config.close_shell_range
-		damage = config.lmed_hit_damage
+		damage = config.med_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.extra_damage_falloff

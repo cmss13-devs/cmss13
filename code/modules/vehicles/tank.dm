@@ -246,6 +246,11 @@
 		M << "<span class='notice'>You have no idea how to operate this thing.</span>"
 		return
 
+	for(var/obj/item/clothing/glasses/night/m56_goggles/goggle in M.contents)
+		if(goggle)
+			M << "<span class='warning'>You can't use the tank with nightvision goggles.</span>"
+			return
+
 	M << "<span class='notice'>You start climbing into [src].</span>"
 	for(var/obj/item/I in M.contents)
 		if(I.zoom)
@@ -260,6 +265,11 @@
 			if(!do_after(M, 100, needhand = FALSE, show_busy_icon = TRUE))
 				M << "<span class='notice'>Something interrupted you while getting in.</span>"
 				return
+
+			for(var/obj/item/clothing/glasses/night/m56_goggles/goggle in M.contents)
+				if(goggle)
+					M << "<span class='warning'>You can't use the tank with nightvision goggles.</span>"
+					return
 
 			if(M.loc != entrance.loc)
 				M << "<span class='notice'>You stop getting in.</span>"
@@ -286,6 +296,11 @@
 			if(!do_after(M, 100, needhand = FALSE, show_busy_icon = TRUE))
 				M << "<span class='notice'>Something interrupted you while getting in.</span>"
 				return
+
+			for(var/obj/item/clothing/glasses/night/m56_goggles/goggle in M.contents)
+				if(goggle)
+					M << "<span class='warning'>You can't use the tank with nightvision goggles.</span>"
+					return
 
 			if(M.loc != entrance.loc)
 				M << "<span class='notice'>You stop getting in.</span>"

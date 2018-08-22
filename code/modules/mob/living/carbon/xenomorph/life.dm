@@ -193,19 +193,10 @@
 		//Deal with dissolving/damaging stuff in stomach.
 		if(stomach_contents.len)
 			for(var/atom/movable/M in stomach_contents)
-				if(world.time > devour_timer && ishuman(M))
-					devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
-					if(prob(50))
-						stomach_contents.Remove(M)
-						M.acid_damage = 0
-						if(M.loc != src)
-							continue
-						if(isturf(loc))
-							M.forceMove(loc)
-							if(ismob(M))
-								var/mob/mob_in_stomach = M
-								mob_in_stomach.SetStunned(0)
-								mob_in_stomach.SetKnockeddown(0)
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					if(world.time > devour_timer || H.stat == DEAD)
+						regurgitate(H, 0)
 
 				M.acid_damage++
 				if(M.acid_damage > 300)

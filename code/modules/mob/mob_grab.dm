@@ -115,6 +115,7 @@
 
 				//Then, we place the mob where it ought to be
 				X.stomach_contents.Add(pulled)
+				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
 				pulled.forceMove(X)
 				return 1
 		if(!(pulled in X.stomach_contents))

@@ -16,6 +16,7 @@
 	evolves_to = list("Queen", "Carrier", "Hivelord") //Add more here seperated by commas
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
+	can_denest_hosts = 1
 
 /datum/caste_datum/drone/mature
 	upgrade_name = "Mature"

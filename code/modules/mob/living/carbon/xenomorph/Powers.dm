@@ -381,7 +381,7 @@
 
 /mob/living/carbon/Xenomorph/proc/lunge(atom/A)
 
-	if (!A || !istype(A, /mob/living/carbon/human))
+	if (!A)
 		return
 
 	if (!isturf(loc))
@@ -396,6 +396,12 @@
 		return
 
 	if (!check_plasma(10))
+		return
+
+	if(!ishuman(A))
+		used_lunge = 1
+		spawn(15)
+			used_lunge = 0
 		return
 
 	var/mob/living/carbon/human/H = A
@@ -627,6 +633,7 @@
 	var/list/L = orange(sweep_range)		// Not actually the fruit
 
 	for (var/mob/living/carbon/human/H in L)
+		if(H != H.handle_barriers(src)) continue
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, src, sweep_range, 2)
@@ -861,7 +868,7 @@
 	set name = "Crawl through Vent"
 	set desc = "Enter an air vent and crawl through the pipe system."
 	set category = "Alien"
-	if(!check_state())
+	if(!check_state() || !can_ventcrawl())
 		return
 	var/pipe = start_ventcrawl()
 	if(pipe)

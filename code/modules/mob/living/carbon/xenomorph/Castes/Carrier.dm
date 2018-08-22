@@ -21,6 +21,7 @@
 	can_hold_facehuggers = 1
 	armor_deflection = 10
 	can_hold_eggs = CAN_HOLD_ONE_HAND
+	can_denest_hosts = 1
 
 /datum/caste_datum/carrier/mature
 

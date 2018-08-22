@@ -113,18 +113,8 @@
 		return
 
 	if(X.stomach_contents.len)
-		for(var/mob/M in X.stomach_contents)
-			X.stomach_contents.Remove(M)
-			M.acid_damage = 0 //Reset the acid damage
-			if(M.loc != X)
-				continue
-			M.forceMove(X.loc)
-
-		X.visible_message("<span class='xenowarning'>\The [X] hurls out the contents of their stomach!</span>", \
-		"<span class='xenowarning'>You hurl out the contents of your stomach!</span>", null, 5)
-	else
-		X<< "<span class='warning'>There's nothing in your belly that needs regurgitating.</span>"
-
+		for(var/mob/living/M in X.stomach_contents)
+			X.regurgitate(M)
 
 // Choose Resin
 /datum/action/xeno_action/choose_resin

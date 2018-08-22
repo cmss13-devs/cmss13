@@ -36,16 +36,22 @@
 		"<span class='warning'>You hit \the [src] with \the [W]!</span>")
 		healthcheck()
 
-/obj/structure/bed/nest/manual_unbuckle(mob/user)
+/obj/structure/bed/nest/manual_unbuckle(mob/living/user)
 	if(buckled_mob)
 		if(buckled_mob.buckled == src)
 			if(buckled_mob != user)
 				if(user.stat || user.lying || user.is_mob_restrained())
 					return
+				if(isXeno(user))
+					var/mob/living/carbon/Xenomorph/X = user
+					if(!X.caste.can_denest_hosts)
+						X << "<span class='xenowarning'>You shouldn't interfere with the nest, leave that to the drones.</span>"
+						return
 				buckled_mob.visible_message("<span class='notice'>\The [user] pulls \the [buckled_mob] free from \the [src]!</span>",\
 				"<span class='notice'>\The [user] pulls you free from \the [src].</span>",\
 				"<span class='notice'>You hear squelching.</span>")
 				playsound(loc, "alien_resin_move", 50)
+				
 				if(ishuman(buckled_mob))
 					var/mob/living/carbon/human/H = buckled_mob
 					H.start_nesting_cooldown()

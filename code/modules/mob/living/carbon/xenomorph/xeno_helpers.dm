@@ -2,6 +2,10 @@
 
 
 /mob/living/carbon/Xenomorph/can_ventcrawl()
+	if(stomach_contents.len)
+		for(var/atom/movable/AM in stomach_contents)
+			if(ishuman(AM))
+				return 0
 	return (mob_size != MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/Xenomorph/ventcrawl_carry()

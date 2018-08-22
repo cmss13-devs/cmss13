@@ -12,6 +12,7 @@
 
 	var/bite_chance = 5 //Chance of doing a special bite attack in place of a claw. Set to 0 to disable.
 	var/tail_chance = 10 //Chance of doing a special tail attack in place of a claw. Set to 0 to disable.
+	var/rng_min_interval = 70 // 7 seconds
 
 	var/speed = 1
 
@@ -77,6 +78,7 @@
 	var/can_be_queen_healed = 1
 
 	var/can_vent_crawl = 1
+	var/can_denest_hosts = 0
 
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
@@ -100,6 +102,8 @@
 	var/middle_mouse_toggle = TRUE //This toggles whether selected ability uses middle mouse clicking or shift clicking
 
 	var/devour_timer = 0
+
+	var/last_rng_attack = 0
 
 	var/obj/structure/tunnel/start_dig = null
 	var/tunnel_delay = 0

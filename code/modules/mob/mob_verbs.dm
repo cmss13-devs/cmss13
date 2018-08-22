@@ -21,9 +21,9 @@
 		next_move = world.time + 2
 	return
 
-/mob/verb/point_to(atom/A in view())
-	set name = "Point To"
-	set category = "Object"
+/mob/proc/point_to(atom/A in view())
+	//set name = "Point To"
+	//set category = "Object"
 
 	if(!isturf(src.loc) || !(A in view(src.loc)))//target is no longer visible to us
 		return 0
@@ -45,13 +45,8 @@
 	if(recently_pointed_to > world.time)
 		return 0
 
-	//Deal with cloaked preds
 	if(isYautja(A))
-		var/mob/living/carbon/human/Y = A
-		if(istype(Y.hands,/obj/item/clothing/gloves/yautja))
-			var/obj/item/clothing/gloves/yautja/bracer = Y.hands
-			if(bracer.cloaked)
-				return 0
+		return 0
 
 	next_move = world.time + 2
 

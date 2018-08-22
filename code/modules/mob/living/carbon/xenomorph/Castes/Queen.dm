@@ -25,6 +25,7 @@
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
+	can_denest_hosts = 1
 
 /datum/caste_datum/queen/mature
 	upgrade_name = "Mature"

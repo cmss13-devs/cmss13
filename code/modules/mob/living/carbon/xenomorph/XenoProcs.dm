@@ -285,6 +285,11 @@
 //Does a LOT of damage.
 /mob/living/carbon/Xenomorph/proc/bite_attack(var/mob/living/carbon/human/M, var/damage)
 
+	if(last_rng_attack + caste.rng_min_interval >= world.time) // too soon
+		return
+
+	last_rng_attack = world.time
+
 	damage += 20
 
 	if(mob_size == MOB_SIZE_BIG)
@@ -313,6 +318,11 @@
 //Toggle is in XenoPowers.dm.
 /mob/living/carbon/Xenomorph/proc/tail_attack(mob/living/carbon/human/M, var/damage)
 
+	if(last_rng_attack + caste.rng_min_interval >= world.time) // too soon
+		return
+
+	last_rng_attack = world.time
+
 	damage += 20
 
 	if(mob_size == MOB_SIZE_BIG)
@@ -335,6 +345,22 @@
 
 	M.apply_damage(damage, BRUTE, affecting, armor_block, sharp = 1, edge = 1) //This should slicey dicey
 	M.updatehealth()
+
+/mob/living/carbon/Xenomorph/proc/regurgitate(mob/living/victim, var/stunned = 1)
+	if(stomach_contents.len)
+		if(victim)
+			stomach_contents.Remove(victim)
+			victim.acid_damage = 0
+			victim.forceMove(loc)
+
+			visible_message("<span class='xenowarning'>\The [src] hurls out the contents of their stomach!</span>", \
+			"<span class='xenowarning'>You hurl out the contents of your stomach!</span>", null, 5)
+
+			if(!stunned)
+				victim.SetStunned(0)
+				victim.SetKnockeddown(0)
+	else
+		src << "<span class='warning'>There's nothing in your belly that needs regurgitating.</span>"
 
 /mob/living/carbon/Xenomorph/proc/zoom_in(var/tileoffset = 5, var/viewsize = 12)
 	if(stat || resting)

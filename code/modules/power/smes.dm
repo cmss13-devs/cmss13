@@ -193,6 +193,8 @@
 		return terminal.powernet.draw_power(amount)
 	return 0
 
+/obj/machinery/power/smes/power_change()
+	return
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_fingerprint(user)

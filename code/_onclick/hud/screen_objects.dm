@@ -490,27 +490,41 @@
 	icon_state = "running"
 	screen_loc = ui_movi
 
-/obj/screen/mov_intent/clicked(var/mob/user)
+/obj/screen/mov_intent/clicked(mob/living/user)
 	if (..())
 		return 1
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.legcuffed)
-			C << "<span class='notice'>You are legcuffed! You cannot run until you get [C.legcuffed] removed!</span>"
-			C.m_intent = MOVE_INTENT_WALK	//Just incase
-			icon_state = "walking"
-			return
-	switch(user.m_intent)
+	user.toggle_mov_intent()
+
+/mob/living/verb/mov_intent()
+	set category = "IC"
+	set name = "Toggle Move Intent"
+	toggle_mov_intent()
+
+/mob/living/proc/toggle_mov_intent()
+	switch(m_intent)
 		if(MOVE_INTENT_RUN)
-			user.m_intent = MOVE_INTENT_WALK
-			icon_state = "walking"
+			m_intent = MOVE_INTENT_WALK
+			if(hud_used && hud_used.move_intent)
+				hud_used.move_intent.icon_state = "walking"
 		if(MOVE_INTENT_WALK)
-			user.m_intent = MOVE_INTENT_RUN
-			icon_state = "running"
-	if(isXeno(user))
-		user.update_icons()
+			m_intent = MOVE_INTENT_RUN
+			if(hud_used && hud_used.move_intent)
+				hud_used.move_intent.icon_state = "running"
 	return 1
 
+/mob/living/carbon/toggle_mov_intent()
+	if(legcuffed)
+		src << "<span class='notice'>You are legcuffed! You cannot run until you get [legcuffed] removed!</span>"
+		m_intent = MOVE_INTENT_WALK	//Just incase
+		if(hud_used && hud_used.move_intent)
+			hud_used.move_intent.icon_state = "walking"
+		return 0
+	. = ..()
+
+/mob/living/carbon/Xenomorph/toggle_mov_intent()
+	if(..())
+		update_icons()
+		return 1
 
 /obj/screen/act_intent
 	name = "intent"

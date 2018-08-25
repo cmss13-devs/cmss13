@@ -177,15 +177,21 @@ cases. Override_icon_state should be a list.*/
 	if(desc)
 		user << desc
 
-/obj/item/attack_hand(mob/user as mob)
+/obj/item/attack_hand(mob/user)
 	if (!user) return
 
 	if(anchored)
 		user << "[src] is anchored to the ground."
 		return
 
-	if (istype(src.loc, /obj/item/storage))
-		var/obj/item/storage/S = src.loc
+	if(!Adjacent(user)) // needed because of alt-click
+		return
+
+	if(istype(loc, /obj/item/weapon/gun)) // more alt-click hijinx
+		return
+
+	if (istype(loc, /obj/item/storage))
+		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, user.loc)
 
 	throwing = 0

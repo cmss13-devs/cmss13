@@ -59,7 +59,10 @@ macro "macro"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent hurt"
-	elem 
+	elem
+		name = "CTRL+5"
+		command = "Toggle-Move-Intent"
+	elem
 		name = "CTRL+A+REP"
 		command = ".west"
 	elem 
@@ -199,7 +202,13 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent hurt"
-	elem 
+	elem
+		name = "5"
+		command = "Toggle-Move-Intent"
+	elem
+		name = "CTRL+5"
+		command = "Toggle-Move-Intent"
+	elem
 		name = "A+REP"
 		command = ".west"
 	elem 

@@ -107,19 +107,6 @@ WEAPONS
 	containername = "\improper M240 Incinerator crate"
 	group = "Weapons"
 
-/datum/supply_packs/pyro
-	name = "M240-T fuel crate (extended x2, type-B x1, type-X x1)"
-	contains = list(
-					/obj/item/ammo_magazine/flamer_tank/large,
-					/obj/item/ammo_magazine/flamer_tank/large,
-					/obj/item/ammo_magazine/flamer_tank/large/B,
-					/obj/item/ammo_magazine/flamer_tank/large/X
-					)
-	cost = RO_PRICE_PRICY
-	containertype = /obj/structure/closet/crate/weapon
-	containername = "\improper M240-T fuel crate"
-	group = "Weapons"
-
 /datum/supply_packs/weapons_sentry
 	name = "UA 571-C sentry crate (x1)"
 	contains = list()
@@ -1312,6 +1299,19 @@ AMMO
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "incendiary sniper ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/pyro
+	name = "M240-T fuel crate (extended x2, type-B x1, type-X x1)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/large,
+					/obj/item/ammo_magazine/flamer_tank/large,
+					/obj/item/ammo_magazine/flamer_tank/large/B,
+					/obj/item/ammo_magazine/flamer_tank/large/X
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240-T fuel crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_rpg_regular

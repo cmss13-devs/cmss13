@@ -42,18 +42,6 @@
 	new /obj/item/clothing/shoes/jackboots(src.loc)
 	cdel(src)
 
-/obj/effect/landmark/costume/nyangirl/New()
-	new /obj/item/clothing/under/schoolgirl(src.loc)
-	new /obj/item/clothing/head/kitty(src.loc)
-	cdel(src)
-
-/obj/effect/landmark/costume/maid/New()
-	new /obj/item/clothing/under/blackskirt(src.loc)
-	var/CHOICE = pick( /obj/item/clothing/head/beret , /obj/item/clothing/head/rabbitears )
-	new CHOICE(src.loc)
-	new /obj/item/clothing/glasses/sunglasses/blindfold(src.loc)
-	cdel(src)
-
 /obj/effect/landmark/costume/butler/New()
 	new /obj/item/clothing/suit/wcoat(src.loc)
 	new /obj/item/clothing/under/suit_jacket(src.loc)
@@ -94,13 +82,6 @@
 	new /obj/item/clothing/mask/gas/owl_mask(src.loc)
 	cdel(src)
 
-/obj/effect/landmark/costume/waiter/New()
-	new /obj/item/clothing/under/waiter(src.loc)
-	var/CHOICE= pick( /obj/item/clothing/head/kitty, /obj/item/clothing/head/rabbitears)
-	new CHOICE(src.loc)
-	new /obj/item/clothing/suit/apron(src.loc)
-	cdel(src)
-
 /obj/effect/landmark/costume/pirate/New()
 	new /obj/item/clothing/under/pirate(src.loc)
 	new /obj/item/clothing/suit/pirate(src.loc)
@@ -139,14 +120,4 @@
 	new /obj/item/clothing/suit/wizrobe/fake(src.loc)
 	new /obj/item/clothing/head/wizard/fake(src.loc)
 	new /obj/item/staff/(src.loc)
-	cdel(src)
-
-/obj/effect/landmark/costume/sexyclown/New()
-	new /obj/item/clothing/mask/gas/sexyclown(src.loc)
-	new /obj/item/clothing/under/sexyclown(src.loc)
-	cdel(src)
-
-/obj/effect/landmark/costume/sexymime/New()
-	new /obj/item/clothing/mask/gas/sexymime(src.loc)
-	new /obj/item/clothing/under/sexymime(src.loc)
 	cdel(src)

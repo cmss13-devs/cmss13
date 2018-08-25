@@ -176,8 +176,15 @@
 				E.activate(user)
 				return
 
-/obj/machinery/door_control/attack_hand(mob/user)
-	src.add_fingerprint(user)
+/obj/machinery/door_control/verb/push_button()
+	set name = "Push Button"
+	set category = "Object"
+	if(isliving(usr))
+		var/mob/living/L = usr
+		attack_hand(L)
+
+/obj/machinery/door_control/attack_hand(mob/living/user)
+	add_fingerprint(user)
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
 	if(stat & (NOPOWER|BROKEN))

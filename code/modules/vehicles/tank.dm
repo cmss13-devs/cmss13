@@ -246,7 +246,7 @@
 		M << "<span class='notice'>You have no idea how to operate this thing.</span>"
 		return
 
-	for(var/obj/item/clothing/glasses/night/m56_goggles/goggle in M.contents)
+	for(var/obj/item/clothing/glasses/night/goggle in M.contents)
 		if(goggle)
 			M << "<span class='warning'>You can't use the tank with nightvision goggles.</span>"
 			return
@@ -266,7 +266,7 @@
 				M << "<span class='notice'>Something interrupted you while getting in.</span>"
 				return
 
-			for(var/obj/item/clothing/glasses/night/m56_goggles/goggle in M.contents)
+			for(var/obj/item/clothing/glasses/night/goggle in M.contents)
 				if(goggle)
 					M << "<span class='warning'>You can't use the tank with nightvision goggles.</span>"
 					return
@@ -297,7 +297,7 @@
 				M << "<span class='notice'>Something interrupted you while getting in.</span>"
 				return
 
-			for(var/obj/item/clothing/glasses/night/m56_goggles/goggle in M.contents)
+			for(var/obj/item/clothing/glasses/night/goggle in M.contents)
 				if(goggle)
 					M << "<span class='warning'>You can't use the tank with nightvision goggles.</span>"
 					return

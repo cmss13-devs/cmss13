@@ -28,11 +28,8 @@
 	if(layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		layer = MOB_LAYER
 
-	if(m_intent == "walk" && isXenoHunter(src)) //Hunter that is currently using its stealth ability, need to unstealth him
-		m_intent = "run"
-		if(hud_used && hud_used.move_intent)
-			hud_used.move_intent.icon_state = "running"
-		update_icons()
+	if(m_intent == MOVE_INTENT_WALK && isXenoLurker(src)) //Hunter that is currently using its stealth ability, need to unstealth him
+		toggle_mov_intent()
 
 	visible_message("<span class='xenowarning'>\The [src] pounces at [T]!</span>", \
 	"<span class='xenowarning'>You pounce at [T]!</span>")

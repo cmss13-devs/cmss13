@@ -240,6 +240,7 @@ should be alright.
 //tactical reloads
 /obj/item/weapon/gun/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)
 	if(istype(dropping, /obj/item/ammo_magazine))
+		if(!user.Adjacent(dropping)) return
 		var/obj/item/ammo_magazine/AM = dropping
 		if(!istype(user) || user.is_mob_incapacitated(TRUE))
 			return

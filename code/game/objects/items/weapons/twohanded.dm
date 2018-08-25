@@ -27,9 +27,9 @@
 /obj/item/proc/wield(var/mob/user)
 	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
 
-	if(user.get_inactive_hand())
-		user << "<span class='warning'>You need your other hand to be empty!</span>"
-		return
+	var/obj/item/I = user.get_inactive_hand()
+	if(I)
+		user.drop_inv_item_on_ground(I)
 
 	if(ishuman(user))
 		var/check_hand = user.r_hand == src ? "l_hand" : "r_hand"

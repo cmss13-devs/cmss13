@@ -701,7 +701,7 @@
 		spawn(10)
 			if(src && loc)
 				explosion(loc, -1, -1, 2, 0)
-				new /obj/machinery/marine_turret_frame(loc)
+				//new /obj/machinery/marine_turret_frame(loc) // disabling this because why -spookydonut
 				if(!disposed)
 					cdel(src)
 		return
@@ -933,59 +933,62 @@
 	var/turf/T
 	var/mob/M
 
-	for(M in oview(range, src))
-		if(!isliving(M) || M.stat || isrobot(M)) continue //No unconscious/deads, or non living.
+	targetloop:
+		for(M in oview(range, src))
+			if(!isliving(M) || M.stat || isrobot(M)) continue //No unconscious/deads, or non living.
 
-		/*
-		I really, really need to replace this with some that isn't insane. You shouldn't have to fish for access like this.
-		This should be enough shortcircuiting, but it is possible for the code to go all over the possibilities and generally
-		slow down. It'll serve for now.
-		*/
-		var/mob/living/carbon/human/H = M
-		if(istype(H) && H.get_target_lock(iff_signal)) continue
+			/*
+			I really, really need to replace this with some that isn't insane. You shouldn't have to fish for access like this.
+			This should be enough shortcircuiting, but it is possible for the code to go all over the possibilities and generally
+			slow down. It'll serve for now.
+			*/
+			var/mob/living/carbon/human/H = M
+			if(istype(H) && H.get_target_lock(iff_signal)) continue
 
-		var/opp
-		var/adj
+			if(angle > 0)
+				var/opp
+				var/adj
 
-		switch(dir)
-			if(NORTH)
-				opp = x-M.x
-				adj = M.y-y
-			if(SOUTH)
-				opp = x-M.x
-				adj = y-M.y
-			if(EAST)
-				opp = y-M.y
-				adj = M.x-x
-			if(WEST)
-				opp = y-M.y
-				adj = x-M.x
+				switch(dir)
+					if(NORTH)
+						opp = x-M.x
+						adj = M.y-y
+					if(SOUTH)
+						opp = x-M.x
+						adj = y-M.y
+					if(EAST)
+						opp = y-M.y
+						adj = M.x-x
+					if(WEST)
+						opp = y-M.y
+						adj = x-M.x
 
-		var/r = 9999
-		if(adj != 0) r = abs(opp/adj)
-		var/angledegree = arcsin(r/sqrt(1+(r*r)))
-		if(adj < 0)
-			continue
+				var/r = 9999
+				if(adj != 0) r = abs(opp/adj)
+				var/angledegree = arcsin(r/sqrt(1+(r*r)))
+				if(adj < 0)
+					continue
 
-		//world << "angle is [angledegree], opp [opp] adj [adj], opp/adj = [r]"
+				//world << "angle is [angledegree], opp [opp] adj [adj], opp/adj = [r]"
 
-		//var/angle_name = angle_list[angle]
-		if(angle)
-			if((angledegree*2) > angle_list[angle])
-				//world << "[angledegree*2] is bigger than [angle_name]"
-				continue
+				//var/angle_name = angle_list[angle]
+				if((angledegree*2) > angle_list[angle])
+					//world << "[angledegree*2] is bigger than [angle_name]"
+					continue
 
-		path = getline2(src, M)
-		/*var/angle = get_dir(src, M)
-		if(angle & dir)
 			path = getline2(src, M)
-		else
-			continue*/
+			/*var/angle = get_dir(src, M)
+			if(angle & dir)
+				path = getline2(src, M)
+			else
+				continue*/
 
-		if(path.len)
-			for(T in path)
-				if(T.density) continue
-			targets += M
+			if(path.len)
+				for(T in path)
+					if(T.density) continue targetloop
+					for(var/obj/structure/S in T)
+						if(S.density) continue targetloop
+				targets += M
 
 	if(targets.len) . = pick(targets)
 

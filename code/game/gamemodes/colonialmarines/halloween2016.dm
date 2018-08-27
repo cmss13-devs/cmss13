@@ -813,7 +813,7 @@
 						cdel(I)
 						H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/specialist(H), WEAR_HANDS)
 						H.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/full(H), WEAR_BACK)
-						H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade(H), WEAR_WAIST)
+						H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/full(H), WEAR_WAIST)
 
 						H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_L_STORE)
 						random_primary = !random_primary
@@ -1103,7 +1103,7 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET, 1)
 					H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/gimmick/dutch(H), WEAR_JACKET, 1)
 					H.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/full(H), WEAR_BACK)
-					H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade(H), WEAR_WAIST)
+					H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/full(H), WEAR_WAIST)
 
 					H.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/rocket/m57a4(H), WEAR_J_STORE)
 

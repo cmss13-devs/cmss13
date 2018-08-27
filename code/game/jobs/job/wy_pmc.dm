@@ -272,7 +272,7 @@
 				WEAR_BODY = /obj/item/clothing/under/marine/veteran/PMC/commando,
 				WEAR_FEET = /obj/item/clothing/shoes/veteran/PMC/commando,
 				WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/PMC/commando,
-				SLOW_WAIST = /obj/item/storage/belt/grenade,
+				SLOW_WAIST = /obj/item/storage/belt/grenade/full,
 				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/veteran/PMC/commando,
 				WEAR_FACE = /obj/item/clothing/mask/gas/PMC,
 				WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/PMC/commando,

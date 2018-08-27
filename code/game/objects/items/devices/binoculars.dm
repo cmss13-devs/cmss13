@@ -126,7 +126,7 @@
 				is_outside = TRUE
 			if(CEILING_GLASS)
 				is_outside = TRUE
-	if(!is_outside)
+	if(!is_outside && !mode) //rangefinding works regardless of ceiling
 		user << "<span class='warning'>INVALID TARGET: target must be visible from high altitude.</span>"
 		return
 	if(user.action_busy)

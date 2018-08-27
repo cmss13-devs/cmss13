@@ -32,29 +32,29 @@
 #define MODE_INFECTION			32
 #define MODE_HUMAN_ANTAGS		64
 
-#define BE_ALIEN		1
-#define BE_QUEEN		2
-#define BE_SURVIVOR		4
-#define BE_RESPONDER	8
-#define BE_PREDATOR		16
+#define BE_ALIEN				1
+#define BE_ALIEN_AFTER_DEATH	2
+#define BE_QUEEN				4
+#define BE_SURVIVOR				8
+#define BE_RESPONDER			16
+#define BE_PREDATOR				32
 
 
-#define BE_REV        32
-#define BE_TRAITOR    64
-#define BE_OPERATIVE  128
-#define BE_CULTIST    256
-#define BE_MONKEY     512
-#define BE_NINJA      1024
-#define BE_RAIDER     2048
-#define BE_PLANT      4096
-#define BE_MUTINEER   8192
-#define BE_CHANGELING 16384
+#define BE_REV        			64
+#define BE_TRAITOR   			128
+#define BE_OPERATIVE 			256
+#define BE_MONKEY    			512
+#define BE_RAIDER    			1024
+#define BE_PLANT     			2048
+#define BE_MUTINEER   			4096
+#define BE_CHANGELING 			8192
 
-#define BE_WO_COM 32768
+#define BE_WO_COM 				16384
 //=================================================
 
 var/list/be_special_flags = list(
 	"Xenomorph" = BE_ALIEN,
+	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
 	"Survivor" = BE_SURVIVOR,
 	"Responder" = BE_RESPONDER,
 	"Predator" = BE_PREDATOR,

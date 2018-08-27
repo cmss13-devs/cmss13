@@ -311,8 +311,14 @@ proc/isInSight(var/atom/A, var/atom/B)
 
 	for (var/mob/dead/observer/O in player_list)
 		// Jobban check
-		if (!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN) || jobban_isbanned(O, "Alien"))
+		if (!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, "Alien"))
 			continue
+
+		//players that can still be revived are skipped
+		if(O.mind.current && istype(O.mind.current, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = O.mind.current
+			if (H.check_tod() && H.is_revivable())
+				continue
 
 		// copied from join as xeno
 		var/deathtime = world.time - O.timeofdeath

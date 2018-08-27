@@ -383,8 +383,8 @@
 /obj/item/storage/belt/grenade
 	name="\improper M276 pattern M40 HEDP rig"
 	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of M40 HEDP Grenades."
-	icon_state="grenadebelt" // temp
-	item_state="s_marine"
+	icon_state= "grenadebelt" // temp
+	item_state= "grenadebelt"
 	w_class = 4
 	storage_slots = 8
 	max_w_class = 3
@@ -392,13 +392,39 @@
 	can_hold = list("/obj/item/explosive/grenade")
 
 
-/obj/item/storage/belt/grenade/New()
+/obj/item/storage/belt/grenade/full/New()
 	..()
 	spawn(1)
 		new /obj/item/explosive/grenade/incendiary(src)
 		new /obj/item/explosive/grenade/incendiary(src)
 		new /obj/item/explosive/grenade/incendiary(src)
 		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/frag(src)
+		new /obj/item/explosive/grenade/frag(src)
+		new /obj/item/explosive/grenade/frag(src)
+		new /obj/item/explosive/grenade/frag(src)
+
+/obj/item/storage/belt/grenade/large
+	name="\improper M276 pattern M40 HEDP rig Mk. II"
+	desc="The M276 Mk. II is is an upgraded version of the M276 HEDP rig, with more storage capacity. It consists of a modular belt with various clips."
+	storage_slots = 18
+	max_storage_space = 54
+
+/obj/item/storage/belt/grenade/large/full/New()
+	..()
+	spawn(1)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/incendiary(src)
+		new /obj/item/explosive/grenade/frag(src)
+		new /obj/item/explosive/grenade/frag(src)
+		new /obj/item/explosive/grenade/frag(src)
+		new /obj/item/explosive/grenade/frag(src)
 		new /obj/item/explosive/grenade/frag(src)
 		new /obj/item/explosive/grenade/frag(src)
 		new /obj/item/explosive/grenade/frag(src)

@@ -73,6 +73,7 @@
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the back or the armor."
 	base_icon = "machete_holster"
 	icon_state = "machete_holster"
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	can_hold = list("/obj/item/weapon/claymore/mercsword/machete")
 
 /obj/item/storage/large_holster/machete/full/New()

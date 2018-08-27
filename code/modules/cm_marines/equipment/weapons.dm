@@ -230,8 +230,7 @@
 		..()
 		spawn(1)
 			new /obj/item/weapon/gun/launcher/m92(src)
-			new /obj/item/storage/belt/grenade(src)
-			new /obj/item/storage/belt/grenade(src)
+			new /obj/item/storage/belt/grenade/large/full(src)
 
 
 /obj/item/storage/box/rocket_system
@@ -415,8 +414,7 @@
 		..()
 		spawn(1)
 			new /obj/item/weapon/gun/launcher/m92(src)
-			new /obj/item/storage/belt/grenade(src)
-			new /obj/item/storage/belt/grenade(src)
+			new /obj/item/storage/belt/grenade/large/full(src)
 			new /obj/item/clothing/gloves/marine/specialist(src)
 			new /obj/item/clothing/suit/storage/marine/specialist(src)
 			new /obj/item/clothing/head/helmet/marine/specialist(src)

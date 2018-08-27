@@ -11,6 +11,7 @@
 	throw_speed = 2
 	throw_range = 10
 	force = 10.0
+	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	var/max_water = 50

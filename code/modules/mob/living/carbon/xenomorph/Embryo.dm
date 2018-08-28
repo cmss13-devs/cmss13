@@ -132,7 +132,7 @@
 	var/picked
 
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
-	if (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))
+	if (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN) && !jobban_isbanned(affected_mob, "Alien"))
 		picked = affected_mob.key
 	else
 		// Get a candidate from observers

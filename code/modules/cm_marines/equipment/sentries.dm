@@ -987,7 +987,7 @@
 				for(T in path)
 					if(T.density) continue targetloop
 					for(var/obj/structure/S in T)
-						if(S.opacity) continue targetloop
+						if(S.density) continue targetloop
 				targets += M
 
 	if(targets.len) . = pick(targets)

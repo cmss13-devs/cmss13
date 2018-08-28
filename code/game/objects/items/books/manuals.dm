@@ -738,6 +738,26 @@
 		"}
 
 
+/obj/item/book/manual/surgery
+	name = "Surgical Reference Manual"
+	desc = "A quick reference manual for surgical procedures."
+	icon_state = "bookMedical"
+	author = "Weyland Yutani Medicine Department"
+	title = "Surgical Reference Manual"
+
+	dat = {"
+
+		<html><head>
+		</head>
+
+		<body>
+		<iframe width='100%' height='97%' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
+		</body>
+
+		</html>
+
+		"}
+
 
 /obj/item/book/manual/medical_diagnostics_manual
 	name = "WY Medical Diagnostics Manual"

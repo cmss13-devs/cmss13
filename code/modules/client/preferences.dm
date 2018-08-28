@@ -4,6 +4,7 @@ var/list/preferences_datums = list()
 
 var/global/list/special_roles = list(
 	"Xenomorph" = 1,
+	"Xenomorph after<br>unrevivably dead" = 1,
 	"Xenomorph Queen" = 1,
 	"Survivor" = 1,
 	"Responder" = 1,
@@ -314,6 +315,9 @@ datum/preferences
 
 		switch (special_roles[i])
 			if ("Xenomorph")
+				ban_check_name = "Alien"
+
+			if ("Xenomorph after<br>unrevivably dead")
 				ban_check_name = "Alien"
 
 			if ("Xenomorph Queen")

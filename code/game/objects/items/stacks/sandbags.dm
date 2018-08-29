@@ -72,7 +72,7 @@
 
 	if(!istype(user.loc,/turf)) return 0
 
-	if(istype(get_area(user.loc),/area/sulaco/hangar))  //HANGAR BUILDING
+	if(istype(user.loc, /turf/open/shuttle))
 		user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
 		return
 

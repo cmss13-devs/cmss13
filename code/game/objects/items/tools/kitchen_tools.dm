@@ -259,7 +259,7 @@
 					   // w_class = 2 -- takes up 3
 					   // w_class = 3 -- takes up 5
 
-/obj/item/tool/kitchen/tray/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
 
 	// Drop all the things. All of them.
 	overlays.Cut()
@@ -274,18 +274,18 @@
 						sleep(rand(2,4))
 
 
-	if((CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
-		M << "\red You accidentally slam yourself with the [src]!"
-		M.KnockDown(1)
-		user.take_limb_damage(2)
-		if(prob(50))
-			playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
-			return
-		else
-			playsound(M, 'sound/items/trayhit2.ogg', 25, 1) //sound playin'
-			return //it always returns, but I feel like adding an extra return just for safety's sakes. EDIT; Oh well I won't :3
+	//if((CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
+	user << "<span class='warning'>You accidentally slam yourself with the [src]!</span>"
+	user.KnockDown(1)
+	user.take_limb_damage(2)
+	/*if(prob(50))
+		playsound(M, 'sound/items/trayhit1.ogg', 25, 1)
+		return
+	else*/
+	playsound(M, 'sound/items/trayhit2.ogg', 25, 1) //sound playin'
+	return //it always returns, but I feel like adding an extra return just for safety's sakes. EDIT; Oh well I won't :3
 
-	var/mob/living/carbon/human/H = M      ///////////////////////////////////// /Let's have this ready for later.
+	/*var/mob/living/carbon/human/H = M      ///////////////////////////////////// /Let's have this ready for later.
 
 
 	if(!(user.zone_selected == ("eyes" || "head"))) //////////////hitting anything else other than the eyes
@@ -373,7 +373,7 @@
 			if(prob(30))
 				M.KnockDown(2)
 				return
-			return
+			return*/
 
 /obj/item/tool/kitchen/tray/var/cooldown = 0	//shield bash cooldown. based on world.time
 

@@ -246,12 +246,19 @@
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if (S.amount >= max_amount)
+				user << "<span class='notice'>That stack is full!</span>"
 				return 1
 			var/to_transfer as num
 			if (user.get_inactive_hand()==src)
-				to_transfer = 1
+				var/desired = input(user, "How much would you like to transfer from this stack?", "How much?", 1) as null|num
+				if(!desired)
+					return
+				to_transfer = Clamp(desired, 0, min(amount, S.max_amount-S.amount))
 			else
 				to_transfer = min(src.amount, S.max_amount-S.amount)
+			if(to_transfer <= 0)
+				return
+			user << "<span class='information'>You transfer [to_transfer] between the stacks.</span>"
 			S.add(to_transfer)
 			if (S && usr.interactee==S)
 				spawn(0) S.interact(usr)

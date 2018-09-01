@@ -77,6 +77,8 @@
 			return 1
 		if(WEAR_IN_ACCESSORY)
 			return 1
+		if(WEAR_IN_HOLSTER)
+			return 1
 
 /mob/living/carbon/human/put_in_l_hand(obj/item/W)
 	var/datum/limb/O = get_limb("l_hand")
@@ -339,6 +341,11 @@
 			if(U && U.hastie)
 				var/obj/item/clothing/tie/storage/T = U.hastie
 				if(istype(T) && T.hold.storage_slots) W.loc = T.hold
+
+		if(WEAR_IN_HOLSTER)
+			if(istype(W, /obj/item/weapon))
+				var/obj/item/weapon/wep = W
+				wep.equip_to_holster(src)
 
 		else
 			src << "\red You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."

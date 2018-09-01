@@ -223,7 +223,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	G.icon_state = initial(G.icon_state)
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
-
 /obj/item/weapon/gun/shotgun/combat/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay*2
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult

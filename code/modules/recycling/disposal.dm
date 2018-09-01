@@ -95,7 +95,10 @@
 
 	var/obj/item/grab/G = I
 	if(istype(G)) //Handle grabbed mob
-		if(ismob(G.grabbed_thing) && user.grab_level >= GRAB_AGGRESSIVE)
+		if(ismob(G.grabbed_thing))
+			user << "<span class='warning'>You can't fit that in there!</span>"
+			return
+			/*&& user.grab_level >= GRAB_AGGRESSIVE)
 			var/mob/GM = G.grabbed_thing
 			user.visible_message("<span class='warning'>[user] starts putting [GM] into [src].</span>",
 			"<span class='warning'>You start putting [GM] into [src].</span>")
@@ -106,7 +109,7 @@
 				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [GM] ([GM.ckey]) in disposals.</font>")
 				GM.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
 				msg_admin_attack("[user] ([user.ckey]) placed [GM] ([GM.ckey]) in a disposals unit. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-				flush()
+				flush()*/
 		return
 
 	if(isrobot(user))
@@ -121,6 +124,8 @@
 
 //Mouse drop another mob or self
 /obj/machinery/disposal/MouseDrop_T(mob/target, mob/user)
+	return
+/*
 	if(!istype(target) || target.anchored || target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1 || user.is_mob_incapacitated(TRUE) || istype(user, /mob/living/silicon/ai) || target.mob_size >= MOB_SIZE_BIG)
 		return
 	if(!(ishuman(target)) || !(ishuman(user))) return
@@ -152,11 +157,7 @@
 
 	target.forceMove(src)
 	flush()
-	update()
-
-//Can breath normally in the disposal
-/obj/machinery/disposal/alter_health()
-	return get_turf(src)
+	update()*/
 
 //Attempt to move while inside
 /obj/machinery/disposal/relaymove(mob/user)

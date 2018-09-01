@@ -183,6 +183,7 @@
 
 //The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
 var/list/slot_equipment_priority = list( \
+		WEAR_IN_HOLSTER,\
 		WEAR_BACK,\
 		WEAR_ID,\
 		WEAR_BODY,\
@@ -743,5 +744,3 @@ mob/proc/yank_out_object()
 /mob/on_stored_atom_del(atom/movable/AM)
 	if(istype(AM, /obj/item))
 		temp_drop_inv_item(AM, TRUE) //unequip before deletion to clear possible item references on the mob.
-
-

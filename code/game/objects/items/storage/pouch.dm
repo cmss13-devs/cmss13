@@ -434,8 +434,10 @@
 					"/obj/item/device/multitool",
 					"/obj/item/tool/wrench",
 					"/obj/item/stack/cable_coil",
-					"/obj/item/tool/extinguisher/mini"
+					"/obj/item/tool/extinguisher/mini",
+					"/obj/item/tool/shovel/etool"
 					)
+	bypass_w_limit = list("/obj/item/tool/shovel/etool")
 
 /obj/item/storage/pouch/tools/full/New()
 	..()

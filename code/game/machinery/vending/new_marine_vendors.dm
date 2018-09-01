@@ -691,7 +691,7 @@
 							list("Essential Medic Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
 							list("MEDICAL SUPPLIES", 0, null, null, null),
-							list("Medical splints", 2, /obj/item/stack/medical/splint, null, "orange"),
+							list("Medical splints", 1, /obj/item/stack/medical/splint, null, "orange"),
 							list("Adv trauma kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, "orange"),
 							list("Adv burn kit", 2, /obj/item/stack/medical/advanced/ointment, null, "orange"),
 							list("Roller Bed", 4, /obj/item/roller, null, "orange"),
@@ -836,6 +836,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 							list("Recoil compensator", 0, /obj/item/attachable/compensator, MARINE_CAN_BUY_ATTACHMENT, "black"),
 							list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 							list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
+							list("Magnetic Harness", 0, /obj/item/attachable/magnetic_harness, MARINE_CAN_BUY_ATTACHMENT, "black"),
 							)
 
 

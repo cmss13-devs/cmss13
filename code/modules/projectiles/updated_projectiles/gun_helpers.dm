@@ -120,7 +120,7 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/mob_can_equip(mob/user)
 	//Cannot equip wielded items or items burst firing.
-	if(flags_gun_features & GUN_BURST_FIRING) return
+	if(flags_gun_features & GUN_BURST_FIRING) return 0
 	unwield(user)
 	return ..()
 

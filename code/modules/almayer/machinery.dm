@@ -84,18 +84,18 @@
 
 /obj/machinery/prop/almayer/computer/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
+				set_broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
 				cdel(src)
 				return
 			if (prob(50))
 				set_broken()
-		if(3.0)
-			if (prob(25))
-				set_broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 		else
 			return
 

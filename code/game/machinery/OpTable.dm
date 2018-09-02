@@ -31,18 +31,16 @@
 /obj/machinery/optable/ex_act(severity)
 
 	switch(severity)
-		if(1.0)
-			//SN src = null
-			cdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				//SN src = null
-				cdel(src)
-				return
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
 				src.density = 0
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				cdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 		else
 	return
 

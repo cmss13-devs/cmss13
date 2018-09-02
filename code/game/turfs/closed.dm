@@ -5,7 +5,8 @@
 	density = 1
 	opacity = 1
 
-
+/turf/closed/get_explosion_resistance()
+	return 1000000
 
 
 
@@ -36,7 +37,7 @@
 	//Not yet
 /turf/closed/gm/ex_act(severity)
 	switch(severity)
-		if(1)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			ChangeTurf(/turf/open/gm/grass)
 
 

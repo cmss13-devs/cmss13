@@ -55,6 +55,23 @@
 		var/mob/living/carbon/Xenomorph/Larva/L = user
 		L.chest_burst(src)
 
+/mob/living/carbon/ex_act(severity, direction)
+
+	if(severity >= 30)
+		flash_eyes()
+
+	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
+		gib()
+		return
+
+	adjustBruteLoss(severity)
+	updatehealth()
+
+	var/knock_value = min( round( severity*0.1 ,1) ,10)
+	if(knock_value > 0)
+		KnockDown(knock_value)
+		KnockOut(knock_value)
+		explosion_throw(severity, direction)
 
 /mob/living/carbon/gib()
 	if(legcuffed)

@@ -179,20 +179,20 @@
 
 	ex_act(severity)
 		switch(severity)
-			if(1.0)
-				cdel(src)
-			if(2.0)
+			if(0 to EXPLOSION_THRESHOLD_LOW)
+				if(prob(50))
+					if(toner > 0)
+						new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+						toner = 0
+			if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 				if(prob(50))
 					cdel(src)
 				else
 					if(toner > 0)
 						new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
 						toner = 0
-			else
-				if(prob(50))
-					if(toner > 0)
-						new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
-						toner = 0
+			if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+				cdel(src)
 		return
 
 /obj/machinery/photocopier/proc/copy(obj/item/paper/original)

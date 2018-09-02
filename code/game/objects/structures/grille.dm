@@ -5,6 +5,7 @@
 	icon_state = "grille"
 	density = 1
 	anchored = 1
+	debris = list(/obj/item/stack/rods)
 	flags_atom = FPRINT|CONDUCT
 	layer = OBJ_LAYER
 	explosion_resistance = 5
@@ -46,11 +47,12 @@
 	if(health <= 0)
 		density = 0
 		destroyed = 1
-		new /obj/item/stack/rods(loc)
+		handle_debris()
 		cdel(src)
 	return
 
-/obj/structure/grille/ex_act(severity)
+/obj/structure/grille/ex_act(severity,direction)
+	handle_debris(severity, direction)
 	cdel(src)
 
 /obj/structure/grille/Bumped(atom/user)
@@ -126,7 +128,7 @@
 	if(iswirecutter(W))
 		if(!shock(user, 100))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			new /obj/item/stack/rods(loc, 2)
+			handle_debris()
 			cdel(src)
 	else if(isscrewdriver(W) && istype(loc, /turf/open))
 		if(!shock(user, 90))
@@ -196,11 +198,11 @@
 			icon_state = "brokengrille"
 			density = 0
 			destroyed = 1
-			new /obj/item/stack/rods(loc)
+			handle_debris()
 
 		else
 			if(health <= -6)
-				new /obj/item/stack/rods(loc)
+				handle_debris()
 				cdel(src)
 				return
 	return

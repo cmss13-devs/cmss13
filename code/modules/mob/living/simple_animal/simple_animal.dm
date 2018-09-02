@@ -321,20 +321,23 @@
 	return 1
 
 
-/mob/living/simple_animal/ex_act(severity)
-	flash_eyes()
-	switch (severity)
-		if (1.0)
-			adjustBruteLoss(500)
-			gib()
-			return
+/mob/living/simple_animal/ex_act(severity, direction)
 
-		if (2.0)
-			adjustBruteLoss(60)
+	if(severity >= 30)
+		flash_eyes()
 
+	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
+		gib()
+		return
 
-		if(3.0)
-			adjustBruteLoss(30)
+	adjustBruteLoss(severity)
+	updatehealth()
+
+	var/knock_value = min( round( severity*0.1 ,1) ,10)
+	if(knock_value > 0)
+		KnockDown(knock_value)
+		KnockOut(knock_value)
+		explosion_throw(severity, direction)
 
 /mob/living/simple_animal/adjustBruteLoss(damage)
 	health = Clamp(health - damage, 0, maxHealth)

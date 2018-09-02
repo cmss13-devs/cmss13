@@ -53,10 +53,7 @@
 	cdel(src)
 
 /obj/ovipositor/ex_act(severity)
-	if (3)
-		health -= 25
-	else
-		health -= 75
+	health -= severity/4
 
 //Every other type of nonhuman mob
 /obj/ovipositor/attack_alien(mob/living/carbon/Xenomorph/M)

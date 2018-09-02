@@ -12,19 +12,19 @@
 
 /obj/structure/displaycase/ex_act(severity)
 	switch(severity)
-		if (1)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(50))
+				src.health -= 5
+				src.healthcheck()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				src.health -= 15
+				src.healthcheck()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			new /obj/item/shard( src.loc )
 			if (occupied)
 				occupied = 0
 			cdel(src)
-		if (2)
-			if (prob(50))
-				src.health -= 15
-				src.healthcheck()
-		if (3)
-			if (prob(50))
-				src.health -= 5
-				src.healthcheck()
 
 
 /obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)

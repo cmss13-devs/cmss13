@@ -295,28 +295,6 @@
 	if(wear_id) wear_id.emp_act(severity)
 	..()
 
-/mob/living/carbon/monkey/ex_act(severity)
-	flash_eyes()
-
-	switch(severity)
-		if(1.0)
-			if (stat != 2)
-				adjustBruteLoss(200)
-				health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
-		if(2.0)
-			if (stat != 2)
-				adjustBruteLoss(60)
-				adjustFireLoss(60)
-				health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
-		if(3.0)
-			if (stat != 2)
-				adjustBruteLoss(30)
-				health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
-			if (prob(50))
-				KnockOut(10)
-		else
-	return
-
 /mob/living/carbon/monkey/IsAdvancedToolUser()//Unless its monkey mode monkeys cant use advanced tools
 	if(universal_speak == 1)
 		return 1

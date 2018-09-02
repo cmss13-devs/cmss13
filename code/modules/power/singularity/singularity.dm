@@ -51,15 +51,15 @@ var/global/list/uneatable = list(
 
 /obj/machinery/singularity/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(0 to EXPLOSION_THRESHOLD_MEDIUM)
+			energy += round((rand(20,60)/2),1)
+			return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(prob(25))
 				cdel(src)
 				return
 			else
 				energy += 50
-		if(2.0 to 3.0)
-			energy += round((rand(20,60)/2),1)
-			return
 	return
 
 /obj/machinery/singularity/Bump(atom/A)

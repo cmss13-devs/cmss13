@@ -37,13 +37,7 @@
 	return 1
 
 /obj/effect/alien/resin/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			health -= 500
-		if(2.0)
-			health -= (rand(140, 300))
-		if(3.0)
-			health -= (rand(50, 100))
+	health -= severity
 	healthcheck()
 	return
 
@@ -353,6 +347,25 @@
 	if(src.health <= 0)
 		src.Dismantle(1)
 
+/obj/structure/mineral_door/resin/ex_act(severity)
+
+	if(!density)
+		severity *= 0.5
+
+	health -= severity
+	healthcheck()
+
+	if(src)
+		check_resin_support()
+
+	return
+
+
+/obj/structure/mineral_door/resin/get_explosion_resistance()
+	if(density)
+		return health //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
 
 //do we still have something next to us to support us?
 /obj/structure/mineral_door/resin/proc/check_resin_support()
@@ -674,16 +687,7 @@ TUNNEL
 	return 0
 
 /obj/structure/tunnel/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			health -= 200
-		if(2.0)
-			health -= 120
-		if(3.0)
-			if(prob(50))
-				health -= 50
-			else
-				health -= 25
+	health -= severity/2
 	healthcheck()
 
 /obj/structure/tunnel/attackby(obj/item/W as obj, mob/user as mob)

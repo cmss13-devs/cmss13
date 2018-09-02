@@ -193,16 +193,26 @@
 		if(stack_amt) new stack_type (loc, stack_amt)
 	cdel(src)
 
-/obj/structure/barricade/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			visible_message("<span class='danger'>[src] is blown apart!</span>")
-			cdel(src)
-			return
-		if(2.0)
-			take_damage( rand(33, 66) )
-		if(3.0)
-			take_damage( rand(10, 33) )
+
+/obj/structure/barricade/ex_act(severity, direction)
+	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
+		if(B.dir == reverse_direction(dir))
+			spawn(1)
+			if(B)
+				B.ex_act(severity, direction)
+	health -= severity
+	if(health <= 0)
+		handle_debris(severity, direction)
+		cdel(src)
+	else
+		update_health()
+
+/obj/structure/barricade/get_explosion_resistance(direction)
+	if(!density || direction == turn(dir, 90) || direction == turn(dir, -90))
+		return 0
+	else
+		return min(health, 40)
+
 
 /obj/structure/barricade/update_icon()
 	if(!closed)
@@ -313,6 +323,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	health = 75 //Actual health depends on snow layer
 	maxhealth = 75
 	stack_type = /obj/item/stack/snow
+	debris = list(/obj/item/stack/snow)
 	stack_amount = 3
 	destroyed_stack_amount = 0
 	can_wire = 0
@@ -380,6 +391,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	climbable = FALSE
 	throwpass = FALSE
 	stack_type = /obj/item/stack/sheet/wood
+	debris = list(/obj/item/stack/sheet/wood)
 	stack_amount = 5
 	destroyed_stack_amount = 3
 	barricade_hitsound = "sound/effects/woodhit.ogg"
@@ -435,6 +447,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	crusher_resistant = TRUE
 	barricade_resistance = 10
 	stack_type = /obj/item/stack/sheet/metal
+	debris = list(/obj/item/stack/sheet/metal)
 	stack_amount = 4
 	destroyed_stack_amount = 2
 	barricade_hitsound = "sound/effects/metalhit.ogg"
@@ -566,15 +579,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	. = ..()
 
-/obj/structure/barricade/metal/ex_act(severity)
-	switch(severity)
-		if(1)
-			take_damage( rand(400, 600) )
-		if(2)
-			take_damage( rand(150, 350) )
-		if(3)
-			take_damage( rand(50, 100) )
-
 /obj/structure/barricade/metal/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
 	take_damage( round(P.damage/10) )
@@ -597,6 +601,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	crusher_resistant = TRUE
 	barricade_resistance = 20
 	stack_type = /obj/item/stack/sheet/plasteel
+	debris = list(/obj/item/stack/sheet/plasteel)
 	stack_amount = 5
 	destroyed_stack_amount = 2
 	barricade_hitsound = "sound/effects/metalhit.ogg"
@@ -762,15 +767,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	update_icon()
 	update_overlay()
 
-/obj/structure/barricade/plasteel/ex_act(severity)
-	switch(severity)
-		if(1)
-			take_damage( rand(450, 650) )
-		if(2)
-			take_damage( rand(200, 400) )
-		if(3)
-			take_damage( rand(50, 150) )
-
 /obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
 	take_damage( round(P.damage/10) )
@@ -792,6 +788,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	health = 400
 	maxhealth = 400
 	stack_type = /obj/item/stack/sandbags
+	debris = list(/obj/item/stack/sandbags, /obj/item/stack/sandbags)
 	barricade_hitsound = "sound/weapons/Genhit.ogg"
 	barricade_type = "sandbag"
 	can_wire = 1

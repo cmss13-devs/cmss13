@@ -1,81 +1,36 @@
-/mob/living/carbon/Xenomorph/ex_act(severity)
+/mob/living/carbon/Xenomorph/ex_act(severity, direction)
 
-	flash_eyes()
+	if(severity >= 30)
+		flash_eyes()
 
-	if(severity < 3 && stomach_contents.len)
+	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity + 1)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 
 	var/b_loss = 0
 	var/f_loss = 0
-	switch(severity)
-		if(1)
-			switch(caste.xeno_explosion_resistance)
-				if(3)
-					apply_damage(rand(125, 175), BRUTE) //Used to be rand(200, 300) which would one-shot most things. Tanks have severity 1 explosions on direct hits...
-					updatehealth()
-				if(2)
-					KnockDown(6)
-					apply_damage(rand(125, 175), BRUTE)
-					updatehealth()
-				if(1)
-					if(prob(80))
-						KnockOut(2)
-					KnockDown(8)
-					apply_damage(rand(125, 175), BRUTE)
-					updatehealth()
-				else
-					gib()
-			return
 
-		if(2)
-			switch(caste.xeno_explosion_resistance)
-				if(3)
-					b_loss += rand(21, 26)
-					f_loss += rand(21, 26)
-					apply_damage(b_loss, BRUTE)
-					apply_damage(f_loss, BURN)
-					updatehealth()
-					return
-				if(2)
-					KnockDown(4)
-				if(1)
-					KnockDown(6)
-				if(0)
-					if(prob(80))
-						KnockOut(4)
-					KnockDown(8)
+	var/damage = severity
 
-			b_loss += rand(60, 75)
-			f_loss += rand(60, 75)
+	damage -= caste.xeno_explosion_resistance
+	//world << "damage: [damage]"
 
-		if(3)
-			switch(caste.xeno_explosion_resistance)
-				if(3)
-					b_loss += rand(10, 15)
-					f_loss += rand(10, 15)
-					apply_damage(b_loss, BRUTE)
-					apply_damage(f_loss, BURN)
-					updatehealth()
-					return
-				if(2)
-					if(!knocked_down) //so marines can't chainstun with grenades
-						KnockDown(2)
-				if(1)
-					if(!knocked_down)
-						KnockDown(3)
-				if(0)
-					if(prob(40))
-						KnockOut(2)
-					if(!knocked_down)
-						KnockDown(4)
+	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
+		gib()
+		return
+	if (damage >= 0)
+		b_loss += damage * 0.5
+		f_loss += damage * 0.5
+		apply_damage(b_loss, BRUTE)
+		apply_damage(f_loss, BURN)
+		updatehealth()
 
-			b_loss += rand(30, 45)
-			f_loss += rand(30, 45)
-
-	apply_damage(b_loss, BRUTE)
-	apply_damage(f_loss, BURN)
-	updatehealth()
+		var/knock_value = min( round( damage * 0.1 ,1) ,10) //unlike in humans, damage is used instead of severity to prevent t3 stunlocking
+		//world << "knock value: [knock_value]"
+		if(knock_value > 0)
+			KnockDown(knock_value)
+			KnockOut(knock_value)
+			explosion_throw(severity, direction)
 
 
 /mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, blocked = 0, used_weapon = null, sharp = 0, edge = 0)

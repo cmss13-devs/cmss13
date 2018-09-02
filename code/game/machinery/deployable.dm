@@ -87,15 +87,11 @@
 			..()
 
 	ex_act(severity)
-		switch(severity)
-			if(1.0)
-				src.explode()
-				return
-			if(2.0)
-				src.health -= 25
-				if (src.health <= 0)
-					src.explode()
-				return
+		src.health -= severity/2
+		if (src.health <= 0)
+			src.explode()
+		return
+		
 	emp_act(severity)
 		if(stat & (BROKEN|NOPOWER))
 			return

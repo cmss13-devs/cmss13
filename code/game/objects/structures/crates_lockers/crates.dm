@@ -115,20 +115,20 @@
 
 /obj/structure/closet/crate/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			for(var/obj/O in src.contents)
-				cdel(O)
-			cdel(src)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(50))
+				cdel(src)
 			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			for(var/obj/O in src.contents)
 				if(prob(50))
 					cdel(O)
 			cdel(src)
 			return
-		if(3.0)
-			if (prob(50))
-				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			for(var/obj/O in src.contents)
+				cdel(O)
+			cdel(src)
 			return
 		else
 	return

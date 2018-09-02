@@ -242,13 +242,13 @@
 					W.healthcheck(1, 1, 1, src)
 					sleep(5)
 				for(var/obj/structure/table/O in next_turf)
-					O.ex_act(1)
+					O.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 					sleep(5)
 				for(var/obj/structure/closet/C in next_turf)
-					C.ex_act(1)
+					C.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 					sleep(5)
 				for(var/obj/structure/grille/G in next_turf)
-					G.ex_act(1)
+					G.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 					sleep(5)
 				for(var/obj/machinery/door/D in next_turf)
 					if(D.density)
@@ -479,16 +479,8 @@
 
 //You cannot destroy us, fool!
 /mob/living/simple_animal/shyguy/ex_act(var/severity)
-	var/damage = 0
-	switch (severity)
-		if (1.0)
-			damage = 500
-		if (2.0)
-			damage = 60
-		if(3.0)
-			damage = 30
 	visible_message("<span class='danger'>[src] is staggered by the explosion!</span>")
-	adjustBruteLoss(damage)
+	adjustBruteLoss(severity)
 	return 1
 
 /mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri

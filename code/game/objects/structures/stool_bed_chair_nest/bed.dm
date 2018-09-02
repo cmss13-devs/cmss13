@@ -15,6 +15,7 @@
 	can_buckle = TRUE
 	buckle_lying = TRUE
 	throwpass = TRUE
+	debris = list(/obj/item/stack/sheet/metal)
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 1
 	var/foldabletype //To fold into an item (e.g. roller bed item)
@@ -126,21 +127,6 @@ obj/structure/bed/Dispose()
 				H.put_in_hands(I)
 				H.visible_message("<span class='warning'>[H] grabs [src] from the floor!</span>",
 				"<span class='warning'>You grab [src] from the floor!</span>")
-				cdel(src)
-
-/obj/structure/bed/ex_act(severity)
-	switch(severity)
-		if(1)
-			cdel(src)
-		if(2)
-			if(prob(50))
-				if(buildstacktype)
-					new buildstacktype (loc, buildstackamount)
-				cdel(src)
-		if(3)
-			if(prob(5))
-				if(buildstacktype)
-					new buildstacktype (loc, buildstackamount)
 				cdel(src)
 
 

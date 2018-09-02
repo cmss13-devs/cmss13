@@ -185,8 +185,10 @@
 			new /obj/item/mortar_kit(loc)
 			cdel(src)
 
-//Don't allow blowing those up, so Marine nades don't fuck them
 /obj/structure/mortar/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 	return
 
 /obj/structure/mortar/fixed
@@ -202,8 +204,10 @@
 	unacidable = 1
 	w_class = 5 //No dumping this in a backpack. Carry it, fatso
 
-//Don't allow blowing those up, so Marine nades don't fuck them
 /obj/item/mortar_kit/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 	return
 
 /obj/item/mortar_kit/attack_self(mob/user)

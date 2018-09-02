@@ -336,8 +336,8 @@
 		update_health()
 		return 1
 
-	ex_act(force)
-		health -= 100*force*2
+	ex_act(severity)
+		health -= severity
 		update_health()
 
 /obj/item/device/omega_array/proc/update_health()

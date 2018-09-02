@@ -54,18 +54,19 @@ var/list/wood_icons = list("wood", "wood-broken")
 
 /turf/open/floor/ex_act(severity)
 	if(hull_floor)
-		return
+		return 0
 	switch(severity)
-		if(1)
-			break_tile_to_plating()
-		if(2)
-			if(prob(80))
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(severity))
+				break_tile()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(severity-EXPLOSION_THRESHOLD_LOW))
 				break_tile_to_plating()
 			else
 				break_tile()
-		if(3)
-			if(prob(50))
-				break_tile()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			break_tile_to_plating()
+	return 0
 
 /turf/open/floor/fire_act(exposed_temperature, exposed_volume)
 	if(hull_floor)

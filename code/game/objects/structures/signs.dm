@@ -6,17 +6,7 @@
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
-	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
-			cdel(src)
-			return
-		if(3.0)
-			cdel(src)
-			return
-		else
+	cdel(src)
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction

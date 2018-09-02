@@ -119,17 +119,17 @@
 //Explosion act
 /turf/open/snow/ex_act(severity)
 	switch(severity)
-		if(1)
-			if(slayer)
-				slayer = 0
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(20) && slayer)
+				slayer -= 1
 				update_icon(1, 0)
-		if(2)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60) && slayer)
 				slayer = max(slayer - 2, 0)
 				update_icon(1, 0)
-		if(3)
-			if(prob(20) && slayer)
-				slayer -= 1
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if(slayer)
+				slayer = 0
 				update_icon(1, 0)
 
 //SNOW LAYERS-----------------------------------//

@@ -135,7 +135,7 @@
 						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 						s.set_up(2, 1, T)
 						s.start()
-					T.ex_act(3)
+					T.ex_act(EXPLOSION_THRESHOLD_LOW)
 
 			for(var/item in holographic_items)
 				if(!(get_turf(item) in linkedholodeck))

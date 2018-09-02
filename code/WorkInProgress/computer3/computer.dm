@@ -207,10 +207,12 @@
 
 /obj/machinery/computer3/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
+				for(var/x in verbs)
+					verbs -= x
+				set_broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
 				cdel(src)
 				return
@@ -218,11 +220,9 @@
 				for(var/x in verbs)
 					verbs -= x
 				set_broken()
-		if(3.0)
-			if (prob(25))
-				for(var/x in verbs)
-					verbs -= x
-				set_broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 		else
 	return
 

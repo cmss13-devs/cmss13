@@ -73,9 +73,13 @@
 		return TRUE
 	. = ..()
 
-//What do grenade do against candy machine?
 /obj/machinery/vending/marine/ex_act(severity)
-	return
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 
 /obj/machinery/vending/marine/cargo_guns
 	name = "\improper ColMarTech automated armaments vendor"

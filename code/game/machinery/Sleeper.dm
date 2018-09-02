@@ -22,15 +22,13 @@
 
 /obj/machinery/sleep_console/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			//SN src = null
-			cdel(src)
-			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				//SN src = null
 				cdel(src)
 				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 		else
 	return
 
@@ -260,14 +258,14 @@
 	if(filtering)
 		toggle_filter()
 	switch(severity)
-		if(1)
-			cdel(src)
-		if(2)
-			if(prob(50))
-				cdel(src)
-		if(3)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
 				cdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 
 
 /obj/machinery/sleeper/emp_act(severity)

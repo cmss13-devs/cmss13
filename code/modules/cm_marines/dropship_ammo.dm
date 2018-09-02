@@ -103,9 +103,9 @@
 			var/turf/U = pick(turf_list)
 			turf_list -= U
 			sleep(1)
-			U.ex_act(3)
+			U.ex_act(EXPLOSION_THRESHOLD_LOW)
 			for(var/atom/movable/AM in U)
-				AM.ex_act(3)
+				AM.ex_act(EXPLOSION_THRESHOLD_LOW)
 			if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 				playsound(U, get_sfx("explosion"), 40, 1, 20, falloff = 3)
 				soundplaycooldown = 3

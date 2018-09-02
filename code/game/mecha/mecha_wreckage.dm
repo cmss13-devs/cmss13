@@ -21,7 +21,7 @@
 		return
 
 /obj/effect/decal/mecha_wreckage/ex_act(severity)
-	if(severity < 2)
+	if(severity > EXPLOSION_THRESHOLD_MEDIUM)
 		spawn
 			cdel(src)
 	return

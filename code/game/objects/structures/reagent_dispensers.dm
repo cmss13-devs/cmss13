@@ -42,19 +42,19 @@
 
 /obj/structure/reagent_dispensers/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				new /obj/effect/particle_effect/water(src.loc)
-				cdel(src)
-				return
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
 				new /obj/effect/particle_effect/water(src.loc)
 				cdel(src)
 				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				new /obj/effect/particle_effect/water(src.loc)
+				cdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 		else
 	return
 

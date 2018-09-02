@@ -88,9 +88,9 @@
 	return
 
 /obj/structure/ore_box/ex_act(severity)
-	if(severity == 1.0 || (severity < 3.0 && prob(50)))
+	if(severity >= EXPLOSION_THRESHOLD_MEDIUM || (severity >= EXPLOSION_THRESHOLD_LOW && prob(50)))
 		for (var/obj/item/ore/O in contents)
 			O.loc = src.loc
-			O.ex_act(severity++)
+			O.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 		cdel(src)
 		return

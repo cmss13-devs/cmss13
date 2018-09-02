@@ -8,11 +8,11 @@
 
 /obj/structure/showcase/ex_act(severity)
 	switch(severity)
-		if(1)
-			cdel(src)
-		if(2)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 
 /obj/structure/monorail
 	name = "monorail track"

@@ -15,7 +15,7 @@
 
 
 /obj/effect/energy_field/ex_act(var/severity)
-	Stress(0.5 + severity)
+	Stress(0.5 + severity/100)
 
 /obj/effect/energy_field/bullet_act(var/obj/item/projectile/Proj)
 	Stress(Proj.damage / 10)

@@ -232,7 +232,7 @@
 	..()
 
 /obj/machinery/meteor_battery/ex_act(severity)
-	if(severity < 3)
+	if(severity >= EXPLOSION_THRESHOLD_LOW)
 		src.die()
 
 /obj/machinery/meteor_battery/proc/die()

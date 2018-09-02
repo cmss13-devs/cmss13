@@ -289,16 +289,16 @@
 //Pipe affected by explosion
 /obj/machinery/disposal/ex_act(severity)
 	switch(severity)
-		if(1)
-			cdel(src)
-			return
-		if(2)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(25))
+				cdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60))
 				cdel(src)
 			return
-		if(3)
-			if(prob(25))
-				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 
 /obj/machinery/disposal/Dispose()
 	if(contents.len)
@@ -526,6 +526,8 @@
 			break
 		sleep(1) //Was 1
 		var/obj/structure/disposalpipe/curr = loc
+		if(!curr && loc)
+			last.expel(src, loc, dir)
 		last = curr
 		curr = curr.transfer(src)
 		if(!curr && loc)
@@ -758,16 +760,16 @@
 /obj/structure/disposalpipe/ex_act(severity)
 
 	switch(severity)
-		if(1)
-			broken(0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			health -= rand(0, 15)
+			healthcheck()
 			return
-		if(2)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			health -= rand(5, 15)
 			healthcheck()
 			return
-		if(3)
-			health -= rand(0, 15)
-			healthcheck()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			broken(0)
 			return
 
 //Test health for brokenness

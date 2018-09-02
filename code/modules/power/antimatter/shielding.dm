@@ -90,12 +90,12 @@ proc/cardinalrange(var/center)
 
 /obj/machinery/am_shielding/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			stability -= 80
-		if(2.0)
-			stability -= 40
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			stability -= 20
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			stability -= 40
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			stability -= 80
 	check_stability()
 	return
 

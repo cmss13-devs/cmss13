@@ -152,20 +152,20 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 /obj/machinery/newscaster/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(50))
+				src.isbroken=1
+			src.update_icon()
 			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			src.isbroken=1
 			if(prob(50))
 				cdel(src)
 			else
 				src.update_icon() //can't place it above the return and outside the if-else. or we might get runtimes of null.update_icon() if(prob(50)) goes in.
 			return
-		else
-			if(prob(50))
-				src.isbroken=1
-			src.update_icon()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 			return
 	return
 

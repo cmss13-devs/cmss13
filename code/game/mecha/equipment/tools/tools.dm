@@ -93,7 +93,7 @@
 					occupant_message("<font color='red'>[target] is too durable to drill through.</font>")
 				else if(target.loc == C)
 					log_message("Drilled through [target].")
-					target.ex_act(1) //BRING BACK GIBS! BRING BACK GIBS!
+					target.ex_act(EXPLOSION_THRESHOLD_HIGH) //BRING BACK GIBS! BRING BACK GIBS!
 		return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill
@@ -121,10 +121,10 @@
 				if(istype(target, /turf/closed/wall/r_wall))
 					if(do_after_cooldown(target))//To slow down how fast mechs can drill through the station
 						log_message("Drilled through [target]")
-						target.ex_act(3)
+						target.ex_act(EXPLOSION_THRESHOLD_HIGH)
 				else if(target.loc == C)
 					log_message("Drilled through [target]")
-					target.ex_act(2)
+					target.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 		return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/extinguisher

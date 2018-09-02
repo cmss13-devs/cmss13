@@ -105,9 +105,8 @@ var/global/list/rad_collectors = list()
 		user << "The meter indicates that \the [src] is collecting [last_power] W."
 
 /obj/machinery/power/rad_collector/ex_act(severity)
-	switch(severity)
-		if(2, 3)
-			eject()
+	if(severity < EXPLOSION_THRESHOLD_MEDIUM)
+		eject()
 	return ..()
 
 

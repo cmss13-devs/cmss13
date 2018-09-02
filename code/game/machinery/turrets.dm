@@ -330,7 +330,7 @@
 	..()
 
 /obj/machinery/turret/ex_act(severity)
-	if(severity < 3)
+	if(severity >= 0)
 		src.die()
 
 /obj/machinery/turret/proc/die()

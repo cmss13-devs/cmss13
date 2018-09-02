@@ -101,17 +101,18 @@
 
 /obj/machinery/bot/ex_act(severity)
 	switch(severity)
-		if(1)
-			explode()
-		if(2)
-			health -= rand(5, 10)*fire_dam_coeff
-			health -= rand(10, 20)*brute_dam_coeff
-			healthcheck()
-		if(3)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(50))
 				health -= rand(1, 5)*fire_dam_coeff
 				health -= rand(1, 5)*brute_dam_coeff
 				healthcheck()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			health -= rand(5, 10)*fire_dam_coeff
+			health -= rand(10, 20)*brute_dam_coeff
+			healthcheck()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			explode()
+		
 
 /obj/machinery/bot/emp_act(severity)
 	var/was_on = on

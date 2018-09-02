@@ -551,20 +551,20 @@
 		severity++
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
 	switch(severity)
-		if(1.0)
-			src.destroy()
-		if(2.0)
-			if (prob(30))
-				src.destroy()
-			else
-				src.take_damage(initial(src.health)/2)
-				src.check_for_internal_damage(list(MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
 				src.destroy()
 			else
 				src.take_damage(initial(src.health)/5)
 				src.check_for_internal_damage(list(MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(30))
+				src.destroy()
+			else
+				src.take_damage(initial(src.health)/2)
+				src.check_for_internal_damage(list(MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			src.destroy()
 	return
 
 /obj/mecha/emp_act(severity)

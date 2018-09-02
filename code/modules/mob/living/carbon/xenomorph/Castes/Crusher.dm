@@ -15,7 +15,7 @@
 	max_health = 275
 	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
-	xeno_explosion_resistance = 3 //no stuns from explosions, ignore damages except devastation range.
+	xeno_explosion_resistance = 150
 
 /datum/caste_datum/crusher/mature
 
@@ -360,7 +360,7 @@
 			X.stop_momentum(X.charge_dir)
 			r_FAL
 		else
-			ex_act(2) //Should dismantle, or at least heavily damage it.
+			ex_act(EXPLOSION_THRESHOLD_MEDIUM) //Should dismantle, or at least heavily damage it.
 			X.stop_momentum(X.charge_dir)
 			r_TRU
 
@@ -388,14 +388,6 @@
 
 	lastturf = null //Reset this so we can properly continue with momentum.
 	r_TRU
-
-/mob/living/carbon/Xenomorph/Crusher/ex_act(severity)
-
-	flash_eyes()
-
-	if(severity == 1)
-		adjustBruteLoss(rand(200, 300))
-		updatehealth()
 
 /mob/living/carbon/Xenomorph/Crusher/update_icons()
 	if(stat == DEAD)

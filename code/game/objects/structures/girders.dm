@@ -4,6 +4,7 @@
 	density = 1
 	layer = OBJ_LAYER
 	unacidable = 0
+	debris = list(/obj/item/stack/sheet/metal,/obj/item/stack/sheet/metal)
 	var/state = 0
 	var/dismantlectr = 0
 	var/buildctr = 0
@@ -266,19 +267,13 @@
 		return
 	return ..()
 
-/obj/structure/girder/ex_act(severity)
-	switch(severity)
-		if(1)
-			health = 0
-			update_state()
-		if(2)
-			if (prob(30))
-				health = 0
-				update_state()
-		if(3)
-			if(prob(5))
-				health = 0
-				update_state()
+/obj/structure/girder/ex_act(severity, direction)
+	health -= severity
+	if(health <= 0)
+		handle_debris(severity, direction)
+		cdel(src)
+	else
+		update_state()
 
 
 

@@ -209,17 +209,17 @@
 // Explosion damage.
 /obj/effect/plantsegment/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			die()
-			return
-		if(2.0)
-			if (prob(90))
-				die()
-				return
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(50))
 				die()
 				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(90))
+				die()
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			die()
+			return
 	return
 
 // Hotspots kill vines.

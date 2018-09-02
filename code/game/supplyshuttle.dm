@@ -66,14 +66,14 @@ var/list/mechtoys = list(
 
 /obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)
-		if (1)
-			cdel(src)
-		if (2)
-			if (prob(50))
-				cdel(src)
-		if (3)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
 				cdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"

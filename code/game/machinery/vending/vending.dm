@@ -89,15 +89,15 @@
 
 /obj/machinery/vending/ex_act(severity)
 	switch(severity)
-		if(1)
-			cdel(src)
-		if(2)
-			if(prob(50))
-				cdel(src)
-		if(3)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
 				spawn(0)
 					malfunction()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 
 /obj/machinery/vending/proc/select_gamemode_equipment(gamemode)
 	return

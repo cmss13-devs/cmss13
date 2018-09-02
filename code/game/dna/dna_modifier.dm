@@ -162,24 +162,7 @@
 
 /obj/machinery/dna_scannernew/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			for(var/atom/movable/A as mob|obj in src)
-				A.loc = src.loc
-				ex_act(severity)
-				//Foreach goto(35)
-			//SN src = null
-			cdel(src)
-			return
-		if(2.0)
-			if (prob(50))
-				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
-					ex_act(severity)
-					//Foreach goto(108)
-				//SN src = null
-				cdel(src)
-				return
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
@@ -188,6 +171,23 @@
 				//SN src = null
 				cdel(src)
 				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				for(var/atom/movable/A as mob|obj in src)
+					A.loc = src.loc
+					ex_act(severity)
+					//Foreach goto(108)
+				//SN src = null
+				cdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			for(var/atom/movable/A as mob|obj in src)
+				A.loc = src.loc
+				ex_act(severity)
+				//Foreach goto(35)
+			//SN src = null
+			cdel(src)
+			return
 		else
 	return
 
@@ -233,15 +233,13 @@
 /obj/machinery/computer/scan_consolenew/ex_act(severity)
 
 	switch(severity)
-		if(1.0)
-			//SN src = null
-			cdel(src)
-			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				//SN src = null
 				cdel(src)
 				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 		else
 	return
 

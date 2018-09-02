@@ -97,16 +97,21 @@
 
 
 
-/obj/item/ex_act(severity)
+/obj/item/ex_act(severity, explosion_direction)
 	switch(severity)
-		if(1)
-			cdel(src)
-		if(2)
-			if(prob(50))
-				cdel(src)
-		if(3)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				cdel(src)
+			else
+				explosion_throw(severity, explosion_direction)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				cdel(src)
+			else
+				explosion_throw(severity, explosion_direction)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+
 
 
 //user: The mob that is suiciding

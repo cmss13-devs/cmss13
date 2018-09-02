@@ -137,20 +137,32 @@
 				new ore(get_turf(src))
 	cdel(src)
 
-/obj/structure/mineral_door/ex_act(severity = 1)
-	switch(severity)
-		if(1)
-			Dismantle(1)
-		if(2)
-			if(prob(20))
-				Dismantle(1)
+/obj/structure/mineral_door/ex_act(severity)
+	if(unacidable) return
+
+	if(density)
+		switch(severity)
+			if(0 to EXPLOSION_THRESHOLD_LOW)
+				//nothing
+			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
+				cdel(src)
+	else
+		switch(severity)
+			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
+				//nothing
 			else
-				hardness--
-				CheckHardness()
-		if(3)
-			hardness -= 0.1
-			CheckHardness()
+				cdel(src)
 	return
+
+
+/obj/structure/mineral_door/get_explosion_resistance()
+	if(unacidable)
+		return 1000000
+
+	if(density)
+		return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
 
 /obj/structure/mineral_door/iron
 	mineralType = "metal"

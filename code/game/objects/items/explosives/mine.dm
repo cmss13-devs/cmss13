@@ -121,7 +121,7 @@
 	switch(trigger_type)
 		if("explosive")
 			if(tripwire)
-				explosion(tripwire.loc, -1, -1, 2)
+				explosion(tripwire.loc, 80, 30)
 				cdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -142,9 +142,7 @@
 	trigger_explosion()
 
 /obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
-	var/turf/T = loc
-	cdel(src)
-	explosion(T, -1, -1, 2)
+	trigger_explosion()
 
 
 /obj/effect/mine_tripwire

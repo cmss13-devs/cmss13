@@ -56,7 +56,7 @@ var/global/list/all_type_pools = list()		// Associated list of lists, indexed by
 
 // A datum will be cdel()'d after it's type is pooled
 /datum/proc/pooled(var/type)
-	cdel()
+	cdel(src)
 
 /datum/proc/unpooled(var/type)
 	disposed = 0

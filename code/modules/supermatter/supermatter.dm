@@ -344,7 +344,7 @@
 					step_towards(X,src)
 				if(istype(X, /obj/structure/window)) //shatter windows
 					var/obj/structure/window/W = X
-					W.ex_act(2.0)
+					W.ex_act(EXPLOSION_THRESHOLD_LOW)
 			else if(istype(X,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = X
 				if(istype(H.shoes,/obj/item/clothing/shoes/magboots))

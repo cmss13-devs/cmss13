@@ -1262,21 +1262,21 @@
 /obj/machinery/power/apc/ex_act(severity)
 
 	switch(severity)
-		if(1)
-			if(cell)
-				cell.ex_act(1) //More lags woohoo
-			cdel(src)
-			return
-		if(2)
-			if(prob(50))
-				set_broken()
-				if(cell && prob(50))
-					cell.ex_act(2)
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
 				set_broken()
 				if(cell && prob(25))
-					cell.ex_act(3)
+					cell.ex_act(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				set_broken()
+				if(cell && prob(50))
+					cell.ex_act(severity)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if(cell)
+				cell.ex_act(severity) //More lags woohoo
+			cdel(src)
+			return
 
 /obj/machinery/power/apc/proc/set_broken()
 

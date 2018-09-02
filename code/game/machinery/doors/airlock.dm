@@ -1092,7 +1092,7 @@ About the new airlock wires panel:
 	for(var/turf/turf in locs)
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
-			killthis.ex_act(2)//Smashin windows
+			killthis.ex_act(EXPLOSION_THRESHOLD_LOW)//Smashin windows
 	..()
 	return
 

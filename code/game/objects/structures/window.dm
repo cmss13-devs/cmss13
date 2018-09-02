@@ -48,19 +48,33 @@
 	healthcheck()
 	return 1
 
-/obj/structure/window/ex_act(severity)
+/obj/structure/window/ex_act(severity, explosion_direction)
 	if(not_damageable) //Impossible to destroy
 		return
-	switch(severity)
-		if(1)
-			health -= rand(125, 250)
-			healthcheck(0, 1, 0)
-		if(2)
-			health -= rand(75, 125)
+
+	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
+
+	switch(health)
+		if(0 to INFINITY)
 			healthcheck(0, 1)
-		if(3)
-			health -= rand(25, 75)
-			healthcheck(0, 1)
+		if(-2000 to 0)
+			playsound(src, "shatter", 50, 1)
+			handle_debris(severity,explosion_direction)
+			cdel(src)
+		else
+			handle_debris(severity,explosion_direction)
+			cdel(src)
+	return
+
+/obj/structure/window/get_explosion_resistance(direction)
+	if(not_damageable)
+		return 1000000
+
+	if(flags_atom & ON_BORDER)
+		if( direction == turn(dir, 90) || direction == turn(dir, -90) )
+			return 0
+
+	return health/EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
 //TODO: Make full windows a separate type of window.
 //Once a full window, it will always be a full window, so there's no point
@@ -232,11 +246,7 @@
 
 /obj/structure/window/proc/shatter_window(create_debris)
 	if(create_debris)
-		new shardtype(loc)
-		if(is_full_window())
-			new shardtype(loc)
-		if(reinf)
-			new /obj/item/stack/rods(loc)
+		handle_debris()
 	cdel(src)
 
 
@@ -282,6 +292,12 @@
 
 	if(start_dir)
 		dir = start_dir
+
+	debris += shardtype
+	if(is_full_window())
+		debris += shardtype
+	if(reinf)
+		debris += /obj/item/stack/rods
 
 	update_nearby_icons()
 
@@ -445,6 +461,26 @@
 
 /obj/structure/window/framed/update_icon()
 	relativewall()
+
+
+
+
+/obj/structure/window/framed/ex_act(severity, explosion_direction)
+	if(not_damageable) //Impossible to destroy
+		return
+
+	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
+
+	switch(health)
+		if(0 to INFINITY)
+			healthcheck(0, 1)
+		if(-3000 to 0)
+			playsound(src, "shatter", 50, 1)
+			handle_debris(severity,explosion_direction)
+			shatter_window(0)
+		else
+			cdel(src)
+	return
 
 
 /obj/structure/window/framed/disassemble_window()

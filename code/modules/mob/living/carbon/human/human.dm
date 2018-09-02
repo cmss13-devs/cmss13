@@ -91,43 +91,43 @@
 	if(marskman_aura)
 		stat(null, "You are affected by a FOCUS order.")
 
-/mob/living/carbon/human/ex_act(severity)
-	flash_eyes()
+/mob/living/carbon/human/ex_act(severity, direction)
 
-	var/b_loss = null
-	var/f_loss = null
-	switch(severity)
-		if(1)
-			b_loss += rand(125, 175)
-			if(!prob(getarmor(null, "bomb") + 75)) //Much less likely to gib than before
-				gib()
-				return
-			else
-				var/atom/target = get_edge_target_turf(src, get_dir(src, get_step_away(src, src)))
-				throw_at(target, 200, 4)
-		if(2)
-			b_loss += rand(50, 70)
-			f_loss += rand(50, 70)
+	if(severity >= 30)
+		flash_eyes()
 
-			if(prob(getarmor(null, "bomb")))
-				b_loss = b_loss/1.5
-				f_loss = f_loss/1.5
+	var/b_loss = 0
+	var/f_loss = 0
 
-			if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 30
-				ear_deaf += 120
-			if(prob(70))
-				KnockOut(10)
+	var/damage = severity
 
-		if(3)
-			b_loss += rand(50, 70)
-			if(prob(getarmor(null, "bomb")))
-				b_loss = b_loss/2
-			if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 15
-				ear_deaf += 60
-			if(prob(50))
-				KnockOut(10)
+	damage -= getarmor(null, "bomb")
+	if (damage >= EXPLOSION_THRESHOLD_GIB)
+		gib()
+		return
+
+	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
+		ear_damage += severity * 0.15
+		ear_deaf += severity * 0.5
+
+	var/knockdown_value = min( round( severity*0.1  ,1) ,10)
+	if(knockdown_value > 0)
+		var/obj/item/Item1 = get_active_hand()
+		var/obj/item/Item2 = get_inactive_hand()
+		KnockDown(knockdown_value)
+		var/knockout_value = min( round( damage*0.1  ,1) ,10)
+		KnockOut( knockout_value )
+		explosion_throw(severity, direction)
+		if(Item1 && istype(Item1.loc, /turf))
+			Item1.explosion_throw(severity, direction)
+		if(Item2 && istype(Item2.loc, /turf))
+			Item2.explosion_throw(severity, direction)
+
+	if (damage >= 0)
+		b_loss += damage * 0.5
+		f_loss += damage * 0.5
+	else
+		return
 
 	var/update = 0
 

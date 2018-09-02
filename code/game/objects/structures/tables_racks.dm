@@ -22,6 +22,7 @@
 	climbable = 1
 	breakable = 1
 	parts = /obj/item/frame/table
+	debris = list(/obj/item/frame/table)
 
 	var/sheet_type = /obj/item/stack/sheet/metal
 	var/table_prefix = "" //used in update_icon()
@@ -68,6 +69,20 @@
 	var/tableloc = loc
 	. = ..()
 	update_adjacent(tableloc) //so neighbouring tables get updated correctly
+
+/obj/structure/table/ex_act(severity, direction)
+	health -= severity
+	if(health <= 0)
+		handle_debris(severity, direction)
+		cdel(src)
+
+/obj/structure/table/get_explosion_resistance(direction)
+	if(flags_atom & ON_BORDER)
+		if( direction == turn(dir, 90) || direction == turn(dir, -90) )
+			return 0
+		else
+			return min(health, 40)
+	return 0
 
 /obj/structure/table/update_icon()
 	if(flipped)
@@ -546,6 +561,7 @@
 	breakable = 1
 	climbable = 1
 	parts = /obj/item/frame/rack
+	debris = list(/obj/item/frame/rack)
 
 /obj/structure/rack/CanPass(atom/movable/mover, turf/target)
 	if(!density) //Because broken racks

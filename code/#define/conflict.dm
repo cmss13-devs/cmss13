@@ -72,4 +72,15 @@
 #define WIELD_DELAY_SLOW			8
 #define WIELD_DELAY_VERY_SLOW		10
 #define WIELD_DELAY_HORRIBLE		12
+
+//Explosion level thresholds. Upper bounds
+#define EXPLOSION_THRESHOLD_LOW		100
+#define EXPLOSION_THRESHOLD_MEDIUM	200
+#define EXPLOSION_THRESHOLD_HIGH	300
+
+#define EXPLOSION_THRESHOLD_GIB	200 //how much it takes to gib a mob
+
+//Explosion damage multipliers for different objects
+#define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
+#define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 //=================================================

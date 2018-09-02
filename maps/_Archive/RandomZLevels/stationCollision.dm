@@ -188,7 +188,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 		L.gib()
 	else if(istype(A,/obj/))
 		var/obj/O = A
-		O.ex_act(1.0)
+		O.ex_act(EXPLOSION_THRESHOLD_HIGH)
 		if(O) del(O)
 	else if(isturf(A))
 		var/turf/T = A

@@ -56,6 +56,7 @@
 //Chair types
 /obj/structure/bed/chair/wood
 	buildstacktype = /obj/item/stack/sheet/wood
+	debris = list(/obj/item/stack/sheet/wood)
 	hit_bed_sound = 'sound/effects/woodhit.ogg'
 
 /obj/structure/bed/chair/wood/normal
@@ -74,6 +75,7 @@
 	icon_state = "comfychair"
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
+	debris = list()
 
 /obj/structure/bed/chair/comfy/brown
 	color = rgb(255,113,0)

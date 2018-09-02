@@ -225,25 +225,6 @@
 		adjustBruteLoss(damage)
 		updatehealth()
 
-/mob/living/carbon/hellhound/ex_act(severity)
-	flash_eyes()
-	switch(severity)
-		if(1)
-			if (stat != DEAD)
-				adjustBruteLoss(500)
-				updatehealth()
-		if(2)
-			if (stat != DEAD)
-				adjustBruteLoss(rand(60,200))
-				updatehealth()
-				KnockOut(12)
-		if(3)
-			if (stat != DEAD)
-				adjustBruteLoss(rand(30,100))
-				updatehealth()
-				KnockOut(5)
-
-
 /mob/living/carbon/hellhound/IsAdvancedToolUser()
 	return 0
 

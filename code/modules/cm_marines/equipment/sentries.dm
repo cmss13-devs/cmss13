@@ -762,13 +762,7 @@
 /obj/machinery/marine_turret/ex_act(severity)
 	if(health <= 0)
 		return
-	switch(severity)
-		if(1)
-			update_health(rand(90, 150))
-		if(2)
-			update_health(rand(50, 150))
-		if(3)
-			update_health(rand(30, 100))
+	update_health(severity)
 
 
 /obj/machinery/marine_turret/attack_alien(mob/living/carbon/Xenomorph/M)

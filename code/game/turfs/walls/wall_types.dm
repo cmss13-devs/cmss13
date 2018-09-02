@@ -124,15 +124,15 @@
 
 /turf/closed/wall/sulaco/ex_act(severity)
 	switch(severity)
-		if(1)
-			ChangeTurf(/turf/open/floor/plating)
-		if(2)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			take_damage(rand(0, 250))
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(75))
 				take_damage(rand(100, 250))
 			else
 				dismantle_wall(1, 1)
-		if(3)
-			take_damage(rand(0, 250))
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			ChangeTurf(/turf/open/floor/plating)
 	return
 
 /turf/closed/wall/sulaco/hull
@@ -423,13 +423,7 @@
 	return 1
 
 /turf/closed/wall/resin/ex_act(severity)
-	switch(severity)
-		if(1)
-			take_damage(500)
-		if(2)
-			take_damage(rand(140, 300))
-		if(3)
-			take_damage(rand(50, 100))
+	take_damage(severity)
 
 
 /turf/closed/wall/resin/hitby(AM as mob|obj)

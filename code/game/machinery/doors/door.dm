@@ -171,18 +171,35 @@
 /obj/machinery/door/ex_act(severity)
 	if(unacidable) return
 
-	switch(severity)
-		if(1.0)
-			cdel(src)
-		if(2.0)
-			if(prob(25))
+	if(density)
+		switch(severity)
+			if(0 to EXPLOSION_THRESHOLD_LOW)
+				if(prob(80))
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(2, 1, src)
+					s.start()
+			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
 				cdel(src)
-		if(3.0)
-			if(prob(80))
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(2, 1, src)
-				s.start()
+	else
+		switch(severity)
+			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
+				if(prob(80))
+					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+					s.set_up(2, 1, src)
+					s.start()
+			else
+				cdel(src)
 	return
+
+
+/obj/machinery/door/get_explosion_resistance()
+	if(unacidable)
+		return 1000000
+
+	if(density)
+		return EXPLOSION_THRESHOLD_LOW //this should exactly match the amount of damage needed to destroy the door
+	else
+		return 0
 
 
 /obj/machinery/door/update_icon()

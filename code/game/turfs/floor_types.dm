@@ -75,6 +75,17 @@
 			return
 	..()
 
+/turf/open/floor/plating/plating_catwalk/break_tile()
+	if(covered)
+		covered = 0
+		update_turf_overlay()
+	..()
+
+/turf/open/floor/plating/plating_catwalk/break_tile_to_plating()
+	if(covered)
+		covered = 0
+		update_turf_overlay()
+	..()
 
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/prison.dmi'
@@ -312,11 +323,11 @@
 
 /turf/open/floor/engine/ex_act(severity)
 	switch(severity)
-		if(1)
-			break_tile_to_plating()
-		if(2)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(25))
 				break_tile_to_plating()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			break_tile_to_plating()
 
 
 /turf/open/floor/engine/nitrogen

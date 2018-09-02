@@ -533,15 +533,15 @@
 
 /obj/machinery/light/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
-			if (prob(75))
-				broken()
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(50))
 				broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(75))
+				broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 	return
 
 //timed process

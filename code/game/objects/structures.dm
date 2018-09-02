@@ -4,6 +4,7 @@
 	var/climb_delay = 50
 	var/breakable
 	var/parts
+	var/list/debris = list()
 	var/flags_barrier = 0
 	anchored = 1
 
@@ -44,17 +45,32 @@
 /obj/structure/attack_tk()
 	return
 
-/obj/structure/ex_act(severity)
+/obj/structure/ex_act(severity, direction)
 	switch(severity)
-		if(1.0)
-			cdel(src)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			return
-		if(2.0)
-			if(prob(50))
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob( severity-EXPLOSION_THRESHOLD_LOW ))
+				handle_debris(severity, direction)
 				cdel(src)
 				return
-		if(3.0)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			handle_debris(severity, direction)
+			cdel(src)
 			return
+
+/obj/structure/proc/handle_debris(severity = 0, direction = 0)
+	if(!debris.len)
+		return
+	if(severity)
+		for(var/thing in debris)
+			var/obj/item/I = new thing(loc)
+			I.explosion_throw(severity, direction)
+		return
+	else
+		for(var/thing in debris)
+			new thing(loc)
+		return
 
 /obj/structure/New()
 	..()
@@ -230,3 +246,4 @@
 		user << "<span class='notice'>You need hands for this.</span>"
 		return 0
 	return 1
+

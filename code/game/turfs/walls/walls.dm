@@ -248,16 +248,21 @@
 /turf/closed/wall/ex_act(severity)
 	if(hull)
 		return
-	switch(severity)
-		if(1)
-			dismantle_wall(0, 1)
-		if(2)
-			if(prob(75))
-				take_damage(rand(150, 250))
-			else
-				dismantle_wall(1, 1)
-		if(3)
-			take_damage(rand(0, 250))
+
+	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
+
+	if ( damage + exp_damage > damage_cap*2 )
+		cdel(src)
+	else
+		take_damage(exp_damage)
+
+	return
+
+/turf/closed/wall/get_explosion_resistance()
+	if(hull)
+		return 1000000
+
+	return (damage_cap - damage)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 /turf/closed/wall/proc/thermitemelt(mob/user)
 	if(hull)

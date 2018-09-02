@@ -18,7 +18,7 @@
 	charge_type = 3 //Claw at end of charge
 	fire_immune = 1
 	armor_deflection = 35
-	xeno_explosion_resistance = 2 //no stuns from explosions
+	xeno_explosion_resistance = 70
 	attack_delay = -2
 
 /datum/caste_datum/ravager/mature

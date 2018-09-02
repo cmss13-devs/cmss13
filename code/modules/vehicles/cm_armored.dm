@@ -442,20 +442,10 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	healthcheck()
 
-//severity 1.0 explosions never really happen so we're gonna follow everyone else's example
 /obj/vehicle/multitile/root/cm_armored/ex_act(var/severity)
 
-	switch(severity)
-		if(1.0)
-			take_damage_type(rand(100, 150), "explosive")
-			take_damage_type(rand(20, 40), "slash")
-
-		if(2.0)
-			take_damage_type(rand(60,80), "explosive")
-			take_damage_type(rand(10, 15), "slash")
-
-		if(3.0)
-			take_damage_type(rand(20, 25), "explosive")
+	take_damage_type(severity * 0.5, "explosive")
+	take_damage_type(severity * 0.1, "slash")
 
 	healthcheck()
 

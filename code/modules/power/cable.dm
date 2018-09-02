@@ -197,17 +197,16 @@
 		return
 
 	switch(severity)
-		if(1.0)
-			cdel(src)
-		if(2.0)
-			if (prob(50))
-				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-				cdel(src)
-
-		if(3.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
 				cdel(src)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
+				cdel(src)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
 	return
 
 

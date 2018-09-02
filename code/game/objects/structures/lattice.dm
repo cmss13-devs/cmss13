@@ -34,13 +34,13 @@
 
 /obj/structure/lattice/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			cdel(src)
 			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			cdel(src)
-			return
-		if(3.0)
 			return
 		else
 	return

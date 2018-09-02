@@ -49,13 +49,13 @@
 
 /obj/machinery/chem_dispenser/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				cdel(src)
 				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 
 
 /obj/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
@@ -259,13 +259,13 @@
 
 /obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			return
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				cdel(src)
 				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			cdel(src)
+			return
 
 /obj/machinery/chem_master/attackby(obj/item/B, mob/living/user)
 

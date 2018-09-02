@@ -42,11 +42,11 @@ Contains most of the procs that are called when a mob is attacked by something
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
 
 	//If you don't specify a bodypart, it checks ALL your bodyparts for protection, and averages out the values
-		for(var/X in limbs)
-			var/datum/limb/E = X
-			var/weight = organ_rel_size[E.name]
-			armorval += getarmor_organ(E, type) * weight
-			total += weight
+	for(var/X in limbs)
+		var/datum/limb/E = X
+		var/weight = organ_rel_size[E.name]
+		armorval += getarmor_organ(E, type) * weight
+		total += weight
 	return (armorval/max(total, 1))
 
 //this proc returns the Siemens coefficient of electrical resistivity for a particular external organ.

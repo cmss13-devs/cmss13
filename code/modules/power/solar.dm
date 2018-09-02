@@ -142,21 +142,21 @@ var/list/solars_list = list()
 
 /obj/machinery/power/solar/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			cdel(src)
-			if(prob(15))
-				new /obj/item/shard( src.loc )
-			return
-		if(2.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
+				broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
 				new /obj/item/shard( src.loc )
 				cdel(src)
 				return
 			if (prob(50))
 				broken()
-		if(3.0)
-			if (prob(25))
-				broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if(prob(15))
+				new /obj/item/shard( src.loc )
+			cdel(src)
+			return
 	return
 
 /obj/machinery/power/solar/fake/New(var/turf/loc, var/obj/item/frame/solar_assembly/S)
@@ -482,16 +482,16 @@ var/list/solars_list = list()
 
 /obj/machinery/power/solar_control/ex_act(severity)
 	switch(severity)
-		if(1.0)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
+				broken()
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(50))
+				broken()
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			//SN src = null
 			cdel(src)
 			return
-		if(2.0)
-			if (prob(50))
-				broken()
-		if(3.0)
-			if (prob(25))
-				broken()
 	return
 
 //

@@ -32,7 +32,7 @@
 		num ++
 	sleep(5)
 	message_admins("[num] [src]\s were spawned in at [loc.loc.name] ([loc.x],[loc.y],[loc.z]). (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
-	cdel()
+	cdel(src)
 
 /obj/effect/landmark/wo_spawners/supplydrops
 	name = "supply drop location"

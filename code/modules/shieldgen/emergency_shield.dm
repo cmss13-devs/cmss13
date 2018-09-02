@@ -56,14 +56,14 @@
 
 /obj/machinery/shield/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			if (prob(75))
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(25))
 				cdel(src)
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				cdel(src)
-		if(3.0)
-			if (prob(25))
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if (prob(75))
 				cdel(src)
 	return
 
@@ -216,16 +216,16 @@
 
 /obj/machinery/shieldgen/ex_act(severity)
 	switch(severity)
-		if(1.0)
-			src.health -= 75
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			src.health -= 10
 			src.checkhp()
-		if(2.0)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			src.health -= 30
 			if (prob(15))
 				src.malfunction = 1
 			src.checkhp()
-		if(3.0)
-			src.health -= 10
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			src.health -= 75
 			src.checkhp()
 	return
 

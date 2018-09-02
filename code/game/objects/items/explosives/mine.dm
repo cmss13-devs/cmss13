@@ -1,5 +1,4 @@
 
-
 ///***MINES***///
 //Mines have an invisible "tripwire" atom that explodes when crossed
 //Stepping directly on the mine will also blow it up
@@ -121,7 +120,7 @@
 	switch(trigger_type)
 		if("explosive")
 			if(tripwire)
-				explosion(tripwire.loc, 80, 30)
+				explosion_rec(tripwire.loc, 80, 30)
 				cdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)

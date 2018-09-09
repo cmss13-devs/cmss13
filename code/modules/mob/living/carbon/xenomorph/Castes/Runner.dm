@@ -15,6 +15,7 @@
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
+	xeno_explosion_resistance = 10
 
 /datum/caste_datum/runner/mature
 	upgrade_name = "Mature"

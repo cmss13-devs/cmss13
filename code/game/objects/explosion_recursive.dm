@@ -73,16 +73,15 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	explosion_turf_directions = list()
 	active_spread_num = 0
 
-	//overlap_number = 0
-
-
 	explosion_turfs[epicenter] = power //recording the power applied
 	explosion_turf_directions[epicenter] = 0
 
 	var/effective_falloff = falloff
+	/*
 	var/area/Ar = get_area(epicenter)
 	if(!Ar.ceiling) //open ceiling -> faster falloff
 		effective_falloff *= 1.5
+	*/
 
 	//spread to adjacent tiles
 	for(var/direction in alldirs)
@@ -127,31 +126,11 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 //direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.
 /turf/proc/explosion_spread(var/obj/effect/explosion/Controller, var/turf/epicenter, power, direction, falloff)
 
-	/*
-	sleep(2)
-	new/obj/effect/debugging/marker(src)
-	*/
-
 	var/effective_falloff = falloff
+	/*
 	var/area/Ar = get_area(src)
 	if(!Ar.ceiling) //open ceiling -> faster falloff
 		effective_falloff *= 1.5
-
-	/*
-	var/spread_power = power //This is the amount of power that will be spread to the tile in the direction of the blast
-	if(spread_power <= 0)
-		return
-	*/
-
-	//var/distance_from_epicenter = cheap_hypotenuse(src.x, src.y, epicenter.x, epicenter.y)
-
-	/*
-	var/45_degrees = turn(direction,45)
-	var/45_degrees1 = turn(direction,-45)
-	var/90_degrees = turn(direction,90)
-	var/90_degrees1 = turn(direction,180)
-	var/135_degrees = turn(direction,180)
-	var/135_degrees1 = turn(direction,180)=
 	*/
 
 	var/direction_angle = dir2angle(direction)
@@ -169,9 +148,9 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			if (0)
 				//no change
 			if (45)
-				spread_power *= 0.67
+				spread_power *= 0.75
 			if (90)
-				spread_power *= 0.33
+				spread_power *= 0.50
 			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
 				continue
 
@@ -184,32 +163,13 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		if (spread_power <= 1)
 			continue
 
-		/*
-		if(spread_direction == turn(direction,180)) //do not spread backwards
-			continue
-		else if (spread_direction == direction)
-			effective_spread_power -= effective_falloff * 2
-			if (effective_spread_power <= 0)
-				continue
-		*/
-
 		var/turf/T = get_step(src, spread_direction)
 
 		if(!T) //prevents trying to spread into "null" (edge of the map?)
 			continue
 
-		if(Controller.explosion_turfs[T] * 1.1 >= spread_power) //This turf is already slated for more damage, so no point spreading here. 1.1 multiplier to reduce lag from borderline overlaps
+		if(Controller.explosion_turfs[T] + 1 >= spread_power) //This turf is already slated for more damage, so no point spreading here. +1 to reduce lag from borderline overlaps
 			continue
-
-		/*
-		if(explosion_turfs[T])
-			world << "overlap! [explosion_turfs[T]] < [spread_power]"
-			overlap_number++
-		*/
-
-		//var/effective_spread_power = spread_power
-		//if(cheap_hypotenuse(T.x, T.y, epicenter.x, epicenter.y) <= distance_from_epicenter) //spread more weakly towards epicenter
-		//	effective_spread_power *= 0.5
 
 		var/resistance = 0
 		for(var/atom/A in T)  //add resistance
@@ -270,25 +230,6 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 		cdel(src)
 
-	//message_admins("Overlaps: [overlap_number]")
-
-	/*
-	for(var/i in 1 to spread_turfs.len)
-		var/list/Listy = spread_turfs[i]
-
-		var/modifier
-		if(Listy[3] <= 0)
-			modifier = total_resistance/num_directions_without_resistance
-		else
-			modifier = Listy[3] * -1
-
-		var/turf/T = Listy[1]
-		var/effective_spread_power = Listy[2] + modifier
-		explosion_turfs[T] = effective_spread_power
-		T.explosion_spread(epicenter, effective_spread_power, Listy[4], falloff)
-		world << "[epicenter], [effective_spread_power], [Listy[4]], [falloff]"
-	*/
-
 
 /atom/proc/get_explosion_resistance()
 	return 0
@@ -315,7 +256,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 	if(!direction)
 		direction = pick(alldirs)
-	var/range = min( round(   severity/src.w_class * 0.1   ,1) ,14)
+	var/range = min( round(   severity/src.w_class * 0.2   ,1) ,14)
 	if(!direction)
 		range = round( range/2 ,1)
 
@@ -323,7 +264,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		return
 
 
-	var/speed = round(   range/5  ,1)
+	var/speed = min( round(   range/5  ,1) ,5)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	if(range >= 3)
@@ -355,14 +296,14 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			weight = 1
 		if(MOB_SIZE_BIG)
 			weight = 4
-	var/range = min( round( severity/weight * 0.02 ,1) ,14)
+	var/range = round( severity/weight * 0.02 ,1)
 	if(!direction)
 		range = round( range/2 ,1)
 
 	if(range <= 0)
 		return
 
-	var/speed = round(   range/5  ,1)
+	var/speed = min( round(   range/5  ,1) ,5)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	var/spin = 0

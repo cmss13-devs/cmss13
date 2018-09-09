@@ -1339,7 +1339,7 @@ AMMO
 					/obj/item/ammo_magazine/rocket/ap,
 					/obj/item/ammo_magazine/rocket/ap
 					)
-	cost = RO_PRICE_NORMAL
+	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "armor piercing M5 RPG ammo crate"
 	group = "Ammo"

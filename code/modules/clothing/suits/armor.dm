@@ -22,7 +22,7 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO
-	armor = list(melee = 20, bullet = 30, laser = 25, energy = 10, bomb = 15, bio = 0, rad = 0)
+	armor = list(melee = 20, bullet = 30, laser = 25, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/armor/vest/pilot
 	name = "\improper M70 flak jacket"
@@ -34,7 +34,7 @@
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 50, bullet = 60, laser = 35, energy = 20, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 60, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
 	allowed = list(/obj/item/weapon/gun/,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -101,7 +101,7 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO
-	armor = list(melee = 20, bullet = 50, laser = 25, energy = 10, bomb = 15, bio = 0, rad = 0)
+	armor = list(melee = 20, bullet = 50, laser = 25, energy = 10, bomb = 10, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	time_to_unequip = 20
 	time_to_equip = 20
@@ -113,7 +113,7 @@
 	item_state = "swat_suit"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	slowdown = 1
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 0, rad = 0)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEJUMPSUIT
 	siemens_coefficient = 0.5
@@ -126,7 +126,7 @@
 	icon_state = "riot"
 	item_state = "swat_suit"
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
-	armor = list(melee = 70, bullet = 70, laser = 35, energy = 20, bomb = 35, bio = 10, rad = 10)
+	armor = list(melee = 70, bullet = 70, laser = 35, energy = 20, bomb = 20, bio = 10, rad = 10)
 	time_to_unequip = 20
 	time_to_equip = 20
 
@@ -141,7 +141,7 @@
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
 	slowdown = 1
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 100)
+	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 30, bio = 100, rad = 100)
 	flags_inventory = BLOCKSHARPOBJ|NOPRESSUREDMAGE
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -167,7 +167,7 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 10, bio = 0, rad = 0)
 
 
 //Reactive armor
@@ -344,7 +344,7 @@
 	icon_state = "hos"
 	item_state = "hos"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 65, bullet = 30, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	armor = list(melee = 65, bullet = 30, laser = 50, energy = 10, bomb = 10, bio = 0, rad = 0)
 	flags_inventory = NOFLAGS
 	flags_inv_hide = HIDEJUMPSUIT
 	siemens_coefficient = 0.6

@@ -86,7 +86,7 @@
 	desc = "A pair of heavily armored gloves."
 	icon_state = "black"
 	item_state = "bgloves"
-	armor = list(melee = 90, bullet = 95, laser = 75, energy = 60, bomb = 45, bio = 15, rad = 15)
+	armor = list(melee = 90, bullet = 95, laser = 75, energy = 60, bomb = 40, bio = 15, rad = 15)
 	unacidable = 1
 
 /obj/item/clothing/gloves/marine/veteran/PMC
@@ -102,5 +102,5 @@
 	desc = "A pair of heavily armored, insulated, acid-resistant gloves."
 	icon_state = "brown"
 	item_state = "browngloves"
-	armor = list(melee = 90, bullet = 120, laser = 100, energy = 90, bomb = 50, bio = 30, rad = 30)
+	armor = list(melee = 90, bullet = 120, laser = 100, energy = 90, bomb = 20, bio = 30, rad = 30)
 	unacidable = 1

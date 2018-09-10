@@ -16,7 +16,7 @@
 	armor_deflection = 20
 	evolves_to = list("Warrior")
 	can_vent_crawl = 0
-	xeno_explosion_resistance = 30
+	xeno_explosion_resistance = 40
 
 /datum/caste_datum/defender/mature
 	upgrade_name = "Mature"

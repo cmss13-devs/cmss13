@@ -15,7 +15,7 @@
 	max_health = 275
 	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
-	xeno_explosion_resistance = 150
+	xeno_explosion_resistance = 180
 
 /datum/caste_datum/crusher/mature
 

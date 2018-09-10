@@ -17,7 +17,7 @@
 	attack_delay = -2
 	pounce_delay = 55
 	evolves_to = list("Ravager")
-	xeno_explosion_resistance = 20
+	xeno_explosion_resistance = 40
 
 /datum/caste_datum/lurker/mature
 	upgrade_name = "Mature"

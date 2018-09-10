@@ -15,7 +15,7 @@
 	max_health = 180
 	speed = 0.7
 	bomb_strength = 1
-	xeno_explosion_resistance = 30
+	xeno_explosion_resistance = 60
 
 /datum/caste_datum/boiler/mature
 

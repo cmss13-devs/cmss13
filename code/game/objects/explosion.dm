@@ -5,11 +5,11 @@
 	var/power = 0
 
 	if(devastation_range > 0)
-		power = 250
+		power = 300
 	else if (heavy_impact_range > 0)
-		power = 200
+		power = 220
 	else if (light_impact_range > 0)
-		power = 100
+		power = 120
 	else
 		return
 

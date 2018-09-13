@@ -325,15 +325,43 @@
 		var/embryos = 0
 		for(var/obj/item/alien_embryo/embryo in target) // already got one, stops doubling up
 			embryos++
+
 		if(!embryos)
-			var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
-			embryo.hivenumber = hivenumber
+
+			var/embryos_to_implant = get_impregnation_amount(target)
+			for(var/i=0, i < embryos_to_implant, i++)
+				var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(target)
+				embryo.hivenumber = hivenumber
+
 			icon_state = "[initial(icon_state)]_impregnated"
+
 		target.visible_message("<span class='danger'>[src] falls limp after violating [target]'s face!</span>")
 		Die()
 
 	else
 		target.visible_message("<span class='danger'>[src] violates [target]'s face!</span>")
+
+
+/obj/item/clothing/mask/facehugger/proc/get_impregnation_amount(mob/living/carbon/target)
+
+	var/impregnation_amount
+
+	if(!ishuman(target))
+		impregnation_amount = 1
+	else
+		impregnation_amount = pick(
+			prob(50); 1,
+			prob(25); 2,
+			prob(12.5); 3,
+			prob(6.25); 4,
+			prob(3.125); 5,
+			prob(1.5625); 6,
+			prob(0.78125); 7
+		)
+
+	return impregnation_amount
+
+
 
 /obj/item/clothing/mask/facehugger/proc/check_lifecycle()
 	if(lifecycle - 50 <= 0)

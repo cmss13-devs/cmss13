@@ -378,7 +378,8 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	explosion_rec(target, 300, 20) //massive boom
+	var/reduc = min(inaccuracy_amt*3, 5)
+	explosion(target,5 - reduc,7 - reduc,10 - reduc,12 - reduc,1,0) //massive boom
 
 
 
@@ -406,10 +407,10 @@ var/list/ob_type_fuel_requirements
 	var/list/turf_list = list()
 	for(var/turf/T in range(range_num,target))
 		turf_list += T
-	var/total_amt = 8
+	var/total_amt = max(8 - inaccuracy_amt*3, 2)
 	for(var/i = 1 to total_amt)
 		var/turf/U = pick_n_take(turf_list)
-		explosion_rec(U,200, 30) //rocket barrage
+		explosion(U,1,3,5,6,1,0) //rocket barrage
 		sleep(1)
 
 

@@ -102,7 +102,6 @@
 	var/damage = severity
 
 	damage -= getarmor(null, "bomb")
-
 	if (damage >= EXPLOSION_THRESHOLD_GIB)
 		gib()
 		return
@@ -119,10 +118,9 @@
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
 		KnockOut( knockout_value )
 		explosion_throw(severity, direction)
-
-		if(Item1 && isturf(Item1.loc))
+		if(Item1 && istype(Item1.loc, /turf))
 			Item1.explosion_throw(severity, direction)
-		if(Item2 && isturf(Item2.loc))
+		if(Item2 && istype(Item2.loc, /turf))
 			Item2.explosion_throw(severity, direction)
 
 	if (damage >= 0)

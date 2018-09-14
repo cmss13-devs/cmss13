@@ -17,7 +17,6 @@
 	speed = -0.8
 	spit_types = list(/datum/ammo/xeno/toxin)
 	evolves_to = list("Spitter")
-	xeno_explosion_resistance = 20
 
 /datum/caste_datum/sentinel/mature
 	upgrade_name = "Mature"

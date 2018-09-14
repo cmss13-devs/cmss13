@@ -73,7 +73,7 @@
 		spawn(timer*10)
 			if(plant_target && !plant_target.disposed)
 				explosion(location, -1, -1, 2, 3)
-				plant_target.ex_act(1000000)
+				plant_target.ex_act(EXPLOSION_THRESHOLD_HIGH)
 				if(plant_target && !plant_target.disposed)
 					if(isobj(plant_target))
 						cdel(plant_target)

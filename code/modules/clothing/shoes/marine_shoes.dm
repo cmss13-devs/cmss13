@@ -86,6 +86,6 @@
 	desc = "A pair of heavily armored, acid-resistant boots."
 	icon_state = "commando_boots"
 	permeability_coefficient = 0.01
-	armor = list(melee = 90, bullet = 120, laser = 100, energy = 90, bomb = 20, bio = 30, rad = 30)
+	armor = list(melee = 90, bullet = 120, laser = 100, energy = 90, bomb = 50, bio = 30, rad = 30)
 	siemens_coefficient = 0.2
 	unacidable = 1

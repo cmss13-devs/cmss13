@@ -17,7 +17,6 @@
 	speed = -0.4
 	agility_speed_increase = -0.5
 	can_vent_crawl = 0
-	xeno_explosion_resistance = 40
 
 /datum/caste_datum/warrior/mature
 

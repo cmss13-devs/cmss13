@@ -50,7 +50,7 @@
 	add_fingerprint(user)
 
 	if(dirt_amt)
-		user << "<span class='notice'>You dump the dirt!</span>"
+		user << "<span class='notice'>You dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!</span>"
 		if(dirt_type == DIRT_TYPE_SNOW)
 			var/turf/T = get_turf(user.loc)
 			var/obj/item/stack/snow/S = locate() in T

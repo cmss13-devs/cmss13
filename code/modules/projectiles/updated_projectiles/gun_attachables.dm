@@ -1016,9 +1016,10 @@ Defined in conflicts.dm of the #defines folder.
 
 	activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 		if(turn_off)
-			bipod_deployed = FALSE
-			G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
-			G.wield_delay -= WIELD_DELAY_FAST
+			if(bipod_deployed)
+				bipod_deployed = FALSE
+				G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
+				G.wield_delay -= WIELD_DELAY_FAST
 		else
 			bipod_deployed = !bipod_deployed
 			if(user)

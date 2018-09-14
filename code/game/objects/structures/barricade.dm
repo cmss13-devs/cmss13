@@ -614,6 +614,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
 	var/busy = 0 //Standard busy check
 
+/obj/structure/barricade/plasteel/handle_barrier_chance(mob/living/M)
+	if(closed)
+		return ..()
+	else
+		return 0
+
 /obj/structure/barricade/plasteel/examine(mob/user)
 	..()
 

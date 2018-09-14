@@ -25,7 +25,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	locs_crash = list()
 
 	var/datum/shuttle/ferry/shuttle
-/*
+
 	// Hangar Elevator
 	shuttle = new/datum/shuttle/ferry/hangar()
 	shuttle.location = 1
@@ -71,7 +71,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	process_shuttles += shuttle
 
 	supply_controller.shuttle = shuttle
-*/
+
 
 	// Supply shuttle
 	shuttle = new/datum/shuttle/ferry/supply()

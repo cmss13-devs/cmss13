@@ -17,6 +17,7 @@
 	attack_delay = -2
 	speed = -2.1
 	can_be_queen_healed = 0
+	xeno_explosion_resistance = 100
 
 /mob/living/carbon/Xenomorph/Predalien
 	caste_name = "Predalien"

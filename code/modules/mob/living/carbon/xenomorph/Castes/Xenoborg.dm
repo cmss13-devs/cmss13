@@ -13,7 +13,7 @@
 	armor_deflection = 90
 	fire_immune = 1
 	is_robotic = 1
-	xeno_explosion_resistance = 70
+	xeno_explosion_resistance = 60
 	can_be_queen_healed = 0
 
 /mob/living/carbon/Xenomorph/Xenoborg

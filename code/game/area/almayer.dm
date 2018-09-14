@@ -52,11 +52,6 @@
 	icon_state = "cic"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/command/cichallway
-	name = "\improper Secure Command Hallway"
-	icon_state = "airoom"
-	fake_zlevel = 1 // upperdeck
-
 /area/almayer/command/airoom
 	name = "\improper AI Core"
 	icon_state = "airoom"
@@ -120,7 +115,7 @@
 /area/almayer/shipboard/navigation
 	name = "\improper Astronavigational Deck"
 	icon_state = "astronavigation"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/shipboard/starboard_missiles
 	name = "\improper Missile Tubes Starboard"
@@ -135,7 +130,7 @@
 /area/almayer/shipboard/weapon_room
 	name = "\improper Weapon Control Room"
 	icon_state = "weaponroom"
-	fake_zlevel = 2 // lowerdeck
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/shipboard/starboard_point_defense
 	name = "\improper Point Defense Starboard"
@@ -150,17 +145,17 @@
 /area/almayer/shipboard/brig
 	name = "\improper Brig"
 	icon_state = "brig"
-	fake_zlevel = 1
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/brig_cells
 	name = "\improper Brig Cells"
 	icon_state = "brigcells"
-	fake_zlevel = 1
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/chief_mp_office
 	name = "\improper Brig Chief MP Office"
 	icon_state = "chiefmpoffice"
-	fake_zlevel = 1
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/shipboard/firing_range
 	name = "\improper Firing Range"
@@ -179,17 +174,17 @@
 /area/almayer/hallways/vehiclehangar
 	name = "\improper Vehicle Storage"
 	icon_state = "exoarmor"
-	fake_zlevel = 2
+	fake_zlevel = 3
 
 /area/almayer/living/tankerbunks
 	name = "\improper Vehicle Crew Bunks"
 	icon_state = "livingspace"
-	fake_zlevel = 2
+	fake_zlevel = 3
 
 /area/almayer/squads/tankdeliveries
 	name = "\improper Vehicle ASRS"
 	icon_state = "req"
-	fake_zlevel = 2
+	fake_zlevel = 3 // lowerdeck
 
 /area/almayer/hallways/exoarmor
 	name = "\improper Vehicle Armor Storage"
@@ -329,7 +324,7 @@
 /area/almayer/living/pilotbunks
 	name = "\improper Pilot's Bunks"
 	icon_state = "livingspace"
-	fake_zlevel = 1
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/bridgebunks
 	name = "\improper Staff Officer Bunks"

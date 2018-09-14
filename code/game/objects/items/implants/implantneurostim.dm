@@ -84,7 +84,7 @@
 
 	implant_age++
 
-	if(prob(min(0.5, implant_age * 0.00005))) //becomes more likely to randomly activate over time
+	if(prob(min(0.2, implant_age * 0.00005))) //becomes more likely to randomly activate over time
 		activate(1)
 
 	else if(world.time - last_activated > 600)

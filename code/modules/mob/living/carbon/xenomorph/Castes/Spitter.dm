@@ -16,6 +16,7 @@
 	armor_deflection = 15
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	evolves_to = list("Boiler")
+	xeno_explosion_resistance = 40
 
 /datum/caste_datum/spitter/mature
 	upgrade_name = "Mature"

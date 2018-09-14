@@ -204,7 +204,7 @@
 		burstcount++
 
 		if((!L.key || !L.client) && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && L.hivenumber == XENO_HIVE_NORMAL && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
-			L.visible_message("<span class='xenodanger'>[L] quickly buries into the ground.</span>")
+			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
 			ticker.mode.stored_larva++
 			cdel(L)

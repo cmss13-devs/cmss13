@@ -17,6 +17,7 @@
 	armor_deflection = 35
 	aura_strength = 1.5 //Praetorian's aura starts strong. They are the Queen's right hand. Climbs by 1 to 4.5
 	spit_types = list(/datum/ammo/xeno/toxin/heavy, /datum/ammo/xeno/acid/heavy, /datum/ammo/xeno/sticky)
+	xeno_explosion_resistance = 60
 
 /datum/caste_datum/praetorian/mature
 	upgrade_name = "Mature"

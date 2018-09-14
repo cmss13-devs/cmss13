@@ -725,22 +725,22 @@
 		. = ..()
 
 	on_hit_mob(mob/M, obj/item/projectile/P)
-		explosion(get_turf(M), -1, 1, 4, 5)
+		explosion_rec(get_turf(M), 200, 40)
 		smoke.set_up(1, get_turf(M))
 		smoke.start()
 
 	on_hit_obj(obj/O, obj/item/projectile/P)
-		explosion(get_turf(O), -1, 1, 4, 5)
+		explosion_rec(get_turf(O), 200, 40)
 		smoke.set_up(1, get_turf(O))
 		smoke.start()
 
 	on_hit_turf(turf/T, obj/item/projectile/P)
-		explosion(T,  -1, 1, 4, 5)
+		explosion_rec(T, 200, 40)
 		smoke.set_up(1, T)
 		smoke.start()
 
 	do_at_max_range(obj/item/projectile/P)
-		explosion(get_turf(P),  -1, 1, 4, 5)
+		explosion_rec(get_turf(P), 200, 40)
 		smoke.set_up(1, get_turf(P))
 		smoke.start()
 
@@ -757,23 +757,56 @@
 		penetration= config.max_armor_penetration
 
 	on_hit_mob(mob/M, obj/item/projectile/P)
-		explosion_rec(get_turf(M), 250, 100)
-		smoke.set_up(1, get_turf(M))
+		var/turf/T = get_turf(M)
+		M.ex_act(250, P.dir)
+		explosion_rec(T, 100, 30)
+		smoke.set_up(1, T)
 		smoke.start()
 
 	on_hit_obj(obj/O, obj/item/projectile/P)
-		explosion_rec(get_turf(O), 250, 100)
-		smoke.set_up(1, get_turf(O))
+		var/turf/T = get_turf(O)
+		O.ex_act(250, P.dir)
+		explosion_rec(T, 100, 30)
+		smoke.set_up(1, T)
 		smoke.start()
 
 	on_hit_turf(turf/T, obj/item/projectile/P)
-		explosion_rec(T, 250, 100)
+
+		var/hit_something = 0
+		for(var/mob/M in T)
+			M.ex_act(250,P.dir)
+			hit_something = 1
+			continue
+		if(!hit_something)
+			for(var/obj/O in T)
+				if(O.density)
+					O.ex_act(250,P.dir)
+					hit_something = 1
+					continue
+		if(!hit_something)
+			T.ex_act(250,P.dir)
+
+		explosion_rec(T, 100, 30)
 		smoke.set_up(1, T)
 		smoke.start()
 
 	do_at_max_range(obj/item/projectile/P)
-		explosion_rec(get_turf(P), 250, 100)
-		smoke.set_up(1, get_turf(P))
+		var/turf/T = get_turf(P)
+		var/hit_something = 0
+		for(var/mob/M in T)
+			M.ex_act(250,P.dir)
+			hit_something = 1
+			continue
+		if(!hit_something)
+			for(var/obj/O in T)
+				if(O.density)
+					O.ex_act(250,P.dir)
+					hit_something = 1
+					continue
+		if(!hit_something)
+			T.ex_act(250,P.dir)
+		explosion_rec(T, 100, 30)
+		smoke.set_up(1, T)
 		smoke.start()
 
 /datum/ammo/rocket/ltb

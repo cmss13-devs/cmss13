@@ -407,17 +407,6 @@
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) r_FAL //If a nuke finished, don't land.
 
-	if(security_level < SEC_LEVEL_DELTA) //automatically set security level to red.
-		set_security_level(SEC_LEVEL_DELTA, TRUE)
-		EvacuationAuthority.initiate_evacuation(1)
-		EvacuationAuthority.enable_self_destruct(1)
-		ai_system.Announce("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
-		for(var/obj/machinery/self_destruct/console/C in machines)
-			C.active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
-		var/obj/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
-		I.activate_time = world.time
-		EvacuationAuthority.process_self_destruct()
-
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
 	for(var/obj/machinery/power/apc/A in machines) //break APCs
@@ -436,7 +425,11 @@
 	for(var/obj/structure/window/framed/almayer/requisitions/R in structure_list)
 		R.shatter_window(1) // break the reqs windows
 
-	for(var/mob/living/carbon/M in living_human_list) //knock down mobs
+	explosion(get_turf(HangarLowerElevator), 0, 3, 5, 0)
+	var/datum/shuttle/ferry/hangar/hangarelevator = shuttle_controller.shuttles["Hangar"]
+	hangarelevator.process_state = FORCE_CRASH
+
+	for(var/mob/living/carbon/M in mob_list) //knock down mobs
 		if(M.z != T_trg.z) continue
 		if(M.buckled)
 			M << "\red You are jolted against [M.buckled]!"
@@ -479,6 +472,10 @@
 		if(SMES.z == MAIN_SHIP_Z_LEVEL || SMES.z == LOW_ORBIT_Z_LEVEL)
 			SMES.ion_act()
 
+	if(security_level < SEC_LEVEL_DELTA) //automatically set security level to red.
+		set_security_level(SEC_LEVEL_DELTA, TRUE)
+		EvacuationAuthority.initiate_evacuation()
+		EvacuationAuthority.enable_self_destruct()
 	//END: Heavy lifting backend
 
 	sleep(100)

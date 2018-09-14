@@ -22,6 +22,7 @@
 	armor_deflection = 10
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	can_denest_hosts = 1
+	xeno_explosion_resistance = 60
 
 /datum/caste_datum/carrier/mature
 

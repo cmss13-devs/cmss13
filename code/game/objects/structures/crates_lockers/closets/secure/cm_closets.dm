@@ -316,19 +316,11 @@
 		new /obj/item/clothing/under/marine/officer/bridge(src)
 		new /obj/item/clothing/shoes/marine(src)
 		new /obj/item/clothing/shoes/marine(src)
+		new /obj/item/clothing/suit/storage/marine/MP/RO(src)
+		new /obj/item/clothing/suit/storage/marine/MP/RO(src)
 		new /obj/item/storage/belt/marine(src)
 		new /obj/item/storage/belt/marine(src)
 		new /obj/item/storage/backpack/marine(src)
-
-/obj/structure/closet/secure_closet/staff_officer/armory
-	New()
-		..()
-		new /obj/item/clothing/suit/storage/marine/MP/RO(src)
-		new /obj/item/clothing/suit/storage/marine/MP/RO(src)
-		new /obj/item/device/radio/headset/almayer/mcom(src)
-		new /obj/item/device/radio/headset/almayer/mcom(src)
-		new /obj/item/storage/belt/marine(src)
-		new /obj/item/storage/belt/marine(src)
 
 /obj/structure/closet/secure_closet/pilot_officer
 	name = "pilot officer's locker"

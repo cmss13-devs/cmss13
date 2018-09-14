@@ -176,8 +176,13 @@
 						upgrade_xeno(upgrade+1)
 				else
 					var/progress_amount = 1
-					if( world.time < XENO_ROUNDSTART_PROGRESS_TIME) //xenos have a progression bonus at roundstart
-						progress_amount *= XENO_ROUNDSTART_PROGRESS_MULTIPLIER
+
+					if( world.time < XENO_ROUNDSTART_PROGRESS_TIME_1 ) //xenos have a progression bonus at roundstart
+						progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
+
+					else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
+						progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT + (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
+
 					upgrade_stored = min(upgrade_stored + progress_amount, caste.upgrade_threshold)
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)

@@ -173,6 +173,7 @@
 	var/num_xenos = living_player_list[2]
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)				round_finished = MODE_GENERIC_DRAW_NUKE //Nuke went off, ending the round.
+	if(EvacuationAuthority.dest_started_at && (EvacuationAuthority.dest_started_at + SELF_DESTRUCT_ROD_STARTUP_TIME + 1200) < world.time) round_finished = MODE_INFESTATION_X_MINOR
 	if(EvacuationAuthority.dest_status < NUKE_EXPLOSION_IN_PROGRESS) //If the nuke ISN'T in progress. We do not want to end the round before it detonates.
 		if(!num_humans && num_xenos) //No humans remain alive.
 			if(EvacuationAuthority.evac_status > EVACUATION_STATUS_STANDING_BY) round_finished = MODE_INFESTATION_X_MINOR //Evacuation successfully took place. //TODO Find out if anyone made it on.

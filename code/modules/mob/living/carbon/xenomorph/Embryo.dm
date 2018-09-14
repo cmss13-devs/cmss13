@@ -189,27 +189,43 @@
 
 	if(isYautja(victim)) victim.emote("roar")
 	else victim.emote("scream")
-	forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
-	playsound(src, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
-	round_statistics.total_larva_burst++
-	var/obj/item/alien_embryo/AE = locate() in victim
-	if(AE)
-		cdel(AE)
-	if(ishuman(victim))
-		var/mob/living/carbon/human/H = victim
-		var/datum/internal_organ/O
-		var/i
-		for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
-			O = H.internal_organs_by_name[i]
-			H.internal_organs_by_name -= i
-			H.internal_organs -= O
-	victim.death() // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
-	victim.chestburst = 2
-	victim.update_burst()
 
+	var/burstcount = 0
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-	if((!key || !client) && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hivenumber == XENO_HIVE_NORMAL && hive.living_xeno_queen && hive.living_xeno_queen.z == src.loc.z)
-		visible_message("<span class='xenodanger'>[src] quickly buries into the ground.</span>")
-		round_statistics.total_xenos_created-- // keep stats sane
-		ticker.mode.stored_larva++
-		cdel(src)
+
+	for(var/mob/living/carbon/Xenomorph/Larva/L in victim)
+		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
+		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
+
+		if(burstcount)
+			step(L, pick(cardinal))
+
+		round_statistics.total_larva_burst++
+		burstcount++
+
+		if((!L.key || !L.client) && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && L.hivenumber == XENO_HIVE_NORMAL && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
+			round_statistics.total_xenos_created-- // keep stats sane
+			ticker.mode.stored_larva++
+			cdel(L)
+
+	for(var/obj/item/alien_embryo/AE in victim)
+		cdel(AE)
+
+	if(burstcount >= 4)
+		victim.gib()
+	else
+		if(ishuman(victim))
+			var/mob/living/carbon/human/H = victim
+			var/datum/internal_organ/O
+			var/i
+			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
+				O = H.internal_organs_by_name[i]
+				H.internal_organs_by_name -= i
+				H.internal_organs -= O
+		victim.death() // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
+		victim.chestburst = 2
+		victim.update_burst()
+
+
+

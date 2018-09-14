@@ -9,8 +9,6 @@ Finish the game mode announcement thing.
 Fix escape doors to work properly.
 */
 
-#define SELF_DESTRUCT_ROD_STARTUP_TIME 12000
-
 /*
 How this works:
 
@@ -57,6 +55,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/dest_cooldown //How long it takes between rods, determined by the amount of total rods present.
 	var/dest_index = 1	//What rod the thing is currently on.
 	var/dest_status = NUKE_EXPLOSION_INACTIVE
+	var/dest_started_at = 0
 
 	var/flags_scuttle = NOFLAGS
 
@@ -82,7 +81,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS && evac_status == EVACUATION_STATUS_COMPLETE) //Nuke is not in progress and evacuation finished, end the round on ship and low orbit (dropships in transit) only.
 		. = MAIN_SHIP_AND_DROPSHIPS_Z_LEVELS
 
-#undef SELF_DESTRUCT_ROD_STARTUP_TIME
 //=========================================================================================
 //=========================================================================================
 //=====================================EVACUATION==========================================
@@ -90,8 +88,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //=========================================================================================
 
 
-/datum/authority/branch/evacuation/proc/initiate_evacuation() //Begins the evacuation procedure.
-	if(evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY))
+/datum/authority/branch/evacuation/proc/initiate_evacuation(var/force=0) //Begins the evacuation procedure.
+	if(force || (evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY)))
 		enter_allowed = 0 //No joining during evac.
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
@@ -102,7 +100,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			P = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [i]"]
 			P.toggle_ready()
 		process_evacuation()
-		r_TRU
+		return TRUE
 
 /datum/authority/branch/evacuation/proc/cancel_evacuation() //Cancels the evac procedure. Useful if admins do not want the marines leaving.
 	if(evac_status == EVACUATION_STATUS_INITIATING)
@@ -156,16 +154,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 //=========================================================================================
 //=========================================================================================
 
-#define SELF_DESTRUCT_MACHINE_INACTIVE 0
-#define SELF_DESTRUCT_MACHINE_ACTIVE 1
-#define SELF_DESTRUCT_MACHINE_ARMED 2
-
-/datum/authority/branch/evacuation/proc/enable_self_destruct()
-	if(dest_status == NUKE_EXPLOSION_INACTIVE && !(flags_scuttle & FLAGS_SELF_DESTRUCT_DENY))
+/datum/authority/branch/evacuation/proc/enable_self_destruct(var/force=0)
+	if(force || (dest_status == NUKE_EXPLOSION_INACTIVE && !(flags_scuttle & FLAGS_SELF_DESTRUCT_DENY)))
 		dest_status = NUKE_EXPLOSION_ACTIVE
 		dest_master.lock_or_unlock()
+		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
-		r_TRU
+		return TRUE
 
 //Override is for admins bypassing normal player restrictions.
 /datum/authority/branch/evacuation/proc/cancel_self_destruct(override)
@@ -180,6 +175,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 		dest_status = NUKE_EXPLOSION_INACTIVE
 		dest_master.in_progress = 1
+		dest_started_at = 0
 		for(i in dest_rods)
 			I = i
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ACTIVE || (I.active_state == SELF_DESTRUCT_MACHINE_ARMED && override)) I.lock_or_unlock(1)
@@ -407,8 +403,3 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 					icon_state = "rod_3"
 					active_state = SELF_DESTRUCT_MACHINE_ACTIVE
 				else user << "<span class='warning'>The control rod is not ready.</span>"
-
-
-#undef SELF_DESTRUCT_MACHINE_INACTIVE
-#undef SELF_DESTRUCT_MACHINE_ACTIVE
-#undef SELF_DESTRUCT_MACHINE_ARMED

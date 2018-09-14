@@ -29,8 +29,11 @@
 				var/datum/hive_status/hive = hive_datum[hivenumber]
 
 				if(caste.evolution_allowed && evolution_stored < caste.evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
-					evolution_stored = min(evolution_stored + 1, caste.evolution_threshold)
-					if(evolution_stored == caste.evolution_threshold - 1)
+					var/progress_amount = 1
+					if( world.time < XENO_ROUNDSTART_PROGRESS_TIME) //xenos have a progression bonus at roundstart
+						progress_amount *= XENO_ROUNDSTART_PROGRESS_MULTIPLIER
+					evolution_stored = min(evolution_stored + progress_amount, caste.evolution_threshold)
+					if(evolution_stored >= caste.evolution_threshold - 1)
 						src << "<span class='xenodanger'>Your carapace crackles and your tendons strengthen. You are ready to evolve!</span>" //Makes this bold so the Xeno doesn't miss it
 						src << sound('sound/effects/xeno_evolveready.ogg')
 

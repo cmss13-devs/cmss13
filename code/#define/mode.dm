@@ -19,6 +19,9 @@
 
 #define FLAGS_EVACUATION_DENY 1
 #define FLAGS_SELF_DESTRUCT_DENY 2
+
+#define XENO_ROUNDSTART_PROGRESS_MULTIPLIER 	2
+#define XENO_ROUNDSTART_PROGRESS_TIME 			15000
 //=================================================
 
 

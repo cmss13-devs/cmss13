@@ -138,7 +138,7 @@
 		// Get a candidate from observers
 		var/list/candidates = get_alien_candidates()
 
-		if (candidates.len)
+		if (candidates && candidates.len)
 			picked = pick(candidates)
 
 	// Spawn the larva

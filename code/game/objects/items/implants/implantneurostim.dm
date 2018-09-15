@@ -88,12 +88,13 @@
 		activate(1)
 
 	else if(world.time - last_activated > 600)
-		if(istype(imp_in, /mob/living/carbon/))
-			var/mob/living/carbon/M = imp_in
+		if(iscarbon(imp_in))
+			var/mob/living/carbon/C = imp_in
+			if(!C.reagents)
+				return
+			var/neuraline_inject_amount = max(1-C.reagents.get_reagent_amount("neuraline"), 0)
 
-			var/neuraline_inject_amount = max(1-M.reagents.get_reagent_amount("neuraline"), 0)
-
-			M.reagents.add_reagent("neuraline", neuraline_inject_amount, null, 1)
+			C.reagents.add_reagent("neuraline", neuraline_inject_amount, null, 1)
 
 
 /obj/item/implant/neurostim/emp_act(severity)

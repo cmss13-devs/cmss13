@@ -397,7 +397,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(ticker)
 			if(master_mode)
 				s += "<br>Map: <b>[map_tag]</b>"
-				s += "<br>Mode: <b>[ticker.mode.name]</b>"
+				if(ticker.mode)
+					s += "<br>Mode: <b>[ticker.mode.name]</b>"
 				s += "<br>Round time: <b>[duration2text()]</b>"
 		else
 			s += "<br>Map: <b>[map_tag]</b>"

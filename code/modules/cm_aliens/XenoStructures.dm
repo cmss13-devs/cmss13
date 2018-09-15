@@ -372,6 +372,8 @@
 	var/turf/T
 	for(var/i in cardinal)
 		T = get_step(src, i)
+		if(!T)
+			continue
 		if(T.density)
 			. = 1
 			break

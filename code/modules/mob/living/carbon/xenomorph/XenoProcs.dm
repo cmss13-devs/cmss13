@@ -30,10 +30,10 @@
 		else if(!hive.living_xeno_queen.ovipositor)
 			stat(null, "Evolve Progress (HALTED - QUEEN HAS NO OVIPOSITOR)")
 		else
-			stat(null, "Evolve Progress: [evolution_stored]/[caste.evolution_threshold]")
+			stat(null, "Evolve Progress: [round(evolution_stored)]/[caste.evolution_threshold]")
 
 		if(upgrade != -1 && upgrade != 3) //upgrade possible
-			stat(null, "Upgrade Progress: [upgrade_stored]/[caste.upgrade_threshold]")
+			stat(null, "Upgrade Progress: [round(upgrade_stored)]/[caste.upgrade_threshold]")
 		else //Upgrade process finished or impossible
 			stat(null, "Upgrade Progress (FINISHED)")
 

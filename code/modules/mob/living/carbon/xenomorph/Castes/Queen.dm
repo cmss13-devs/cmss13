@@ -211,7 +211,7 @@
 					if((last_larva_time + 600) < world.time) // every minute
 						last_larva_time = world.time
 						var/list/players_with_xeno_pref = get_alien_candidates()
-						if(players_with_xeno_pref.len)
+						if(players_with_xeno_pref && players_with_xeno_pref.len)
 							var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
 							new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
 							"<span class='xenodanger'>You burrow out of the ground and awaken from your slumber. For the Hive!</span>")

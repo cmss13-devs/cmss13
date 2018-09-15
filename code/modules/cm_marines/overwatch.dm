@@ -778,6 +778,9 @@
 	var/y_coord = deobfuscate_y(y_supply)
 
 	var/turf/T = locate(x_coord, y_coord, 1)
+	if(!T)
+		usr << "\icon[src] <span class='warning'>Error, invalid coordinates.</span>"
+		return
 
 	var/area/A = get_area(T)
 	if(A && A.ceiling >= CEILING_UNDERGROUND)

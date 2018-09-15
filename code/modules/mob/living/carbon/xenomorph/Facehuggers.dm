@@ -346,7 +346,7 @@
 
 	var/impregnation_amount
 
-	if(!ishuman(target))
+	if(!ishuman(target) || isYautja(target))
 		impregnation_amount = 1
 	else
 		impregnation_amount = pick(

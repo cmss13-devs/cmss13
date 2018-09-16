@@ -409,14 +409,6 @@
 
 	if(security_level < SEC_LEVEL_DELTA) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_DELTA, TRUE)
-		EvacuationAuthority.initiate_evacuation(1)
-		EvacuationAuthority.enable_self_destruct(1)
-		ai_system.Announce("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
-		for(var/obj/machinery/self_destruct/console/C in machines)
-			C.active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
-		var/obj/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
-		I.activate_time = world.time
-		EvacuationAuthority.process_self_destruct()
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
@@ -430,7 +422,7 @@
 	for(var/j=0; j<10; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		explosion(sploded, 0, 5, 10, 0)
+		explosion_rec(sploded, 0, 5, 10, 0)
 		sleep(3)
 
 	for(var/obj/structure/window/framed/almayer/requisitions/R in structure_list)
@@ -484,6 +476,8 @@
 	sleep(100)
 	moving_status = SHUTTLE_CRASHED
 
+	if(ticker && ticker.mode)
+		ticker.mode.force_end_at = world.time + 12000 // 20 mins
 
 
 /datum/shuttle/ferry/marine/short_jump()

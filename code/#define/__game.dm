@@ -12,7 +12,7 @@
 #define LOW_ORBIT_Z_LEVEL 4 //where the Almayer dropships stand when in transit.
 #define GAME_PLAY_Z_LEVELS list(1,3,4)
 #define MAIN_AI_SYSTEM "ARES v3.2"
-#define MAIN_SHIP_ESCAPE_POD_NUMBER 11
+#define MAIN_SHIP_ESCAPE_POD_NUMBER 16
 
 #define MAP_ICE_COLONY "Ice Colony"
 #define MAP_LV_624 "LV-624"

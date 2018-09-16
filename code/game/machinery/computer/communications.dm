@@ -145,13 +145,13 @@
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
 
-				if(world.time < EVACUATION_TIME_LOCK) //Cannot call it early in the round.
+				if(world.time < EVACUATION_TIME_LOCK || !ticker || !ticker.mode || !ticker.mode.force_end_at) //Cannot call it early in the round.
 					usr << "<span class='warning'>USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/600)] minutes before trying again.</span>"
 					r_FAL
 
-				if(!ticker || !ticker.mode || !ticker.mode.has_called_emergency)
-					usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon must be activated prior to evacuation taking place.</span>"
-					r_FAL
+				//if(!ticker || !ticker.mode || !ticker.mode.has_called_emergency)
+					//usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon must be activated prior to evacuation taking place.</span>"
+					//r_FAL
 
 				if(security_level < SEC_LEVEL_RED)
 					usr << "<span class='warning'>The ship must be under red alert in order to enact evacuation procedures.</span>"
@@ -165,7 +165,7 @@
 					usr << "<span class='warning'>You are unable to initiate an evacuation procedure right now!</span>"
 					r_FAL
 
-				EvacuationAuthority.enable_self_destruct()
+				//EvacuationAuthority.enable_self_destruct()
 
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.", 1)
@@ -203,6 +203,9 @@
 
 				if(!ticker || !ticker.mode) r_FAL //Not a game mode?
 
+				if(!ticker.mode.force_end_at)
+					usr << "<span class='warning'>ARES has denied your request for operational security reasons.</span>"
+
 				if(ticker.mode.has_called_emergency)
 					usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting.</span>"
 					r_FAL
@@ -219,13 +222,13 @@
 				//Currently only counts aliens, but this will likely need to change with human opponents.
 				//I think this should instead count human losses, so that a distress beacon is available when a certain number of dead pile up.
 				//Comment block to test
-				var/L[] = ticker.mode.count_humans_and_xenos(list(MAIN_SHIP_Z_LEVEL))
+				/*var/L[] = ticker.mode.count_humans_and_xenos(list(MAIN_SHIP_Z_LEVEL))
 
 				if(L[2] < round(L[1] * 0.5))
 					log_game("[key_name(usr)] has attemped to call a distress beacon, but it was denied due to lack of threat on the ship.")
 					message_admins("[key_name(usr)] has attemped to call a distress beacon, but it was denied due to lack of threat on the ship.", 1)
 					usr << "<span class='warning'>The sensors aren't picking up enough of a threat on the ship to warrant a distress beacon.</span>"
-					r_FAL
+					r_FAL*/
 
 				for(var/client/C in admins)
 					if((R_ADMIN|R_MOD) & C.holder.rights)

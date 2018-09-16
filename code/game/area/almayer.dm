@@ -448,6 +448,11 @@
 /area/almayer/evacuation/pod9
 /area/almayer/evacuation/pod10
 /area/almayer/evacuation/pod11
+/area/almayer/evacuation/pod12
+/area/almayer/evacuation/pod13
+/area/almayer/evacuation/pod14
+/area/almayer/evacuation/pod15
+/area/almayer/evacuation/pod16
 
 /area/almayer/evacuation/stranded
 
@@ -463,3 +468,8 @@
 /area/almayer/evacuation/stranded/pod9
 /area/almayer/evacuation/stranded/pod10
 /area/almayer/evacuation/stranded/pod11
+/area/almayer/evacuation/stranded/pod12
+/area/almayer/evacuation/stranded/pod13
+/area/almayer/evacuation/stranded/pod14
+/area/almayer/evacuation/stranded/pod15
+/area/almayer/evacuation/stranded/pod16

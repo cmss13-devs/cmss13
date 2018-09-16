@@ -29,6 +29,7 @@
 	var/ert_disabled = 0
 	var/uplink_welcome = "Syndicate Uplink Console:"
 	var/uplink_uses = 10
+	var/force_end_at = 0
 	var/list/datum/uplink_item/uplink_items = list(
 		"Highly Visible and Dangerous Weapons" = list(
 			 new/datum/uplink_item(/obj/item/weapon/energy/sword, 4, "Energy Sword", "ES"),

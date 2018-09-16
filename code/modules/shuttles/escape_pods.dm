@@ -215,7 +215,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			"docking_status"	= evacuation_program.dock_state,
 			"door_state"		= evacuation_program.memory["door_status"]["state"],
 			"door_lock"			= evacuation_program.memory["door_status"]["lock"],
-			"can_lock"			= evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? 1:0,
+			"can_lock"			= 0, //evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? 1:0,
 			"can_force"			= evacuation_program.dock_state == (STATE_READY || STATE_DELAYED) ? 1:0,
 			"can_delay"			= launch_status[2]
 		)

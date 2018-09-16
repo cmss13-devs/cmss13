@@ -2069,6 +2069,21 @@ SUPPLIES
 					/obj/item/storage/box/MRE,
 					/obj/item/storage/box/MRE,
 					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
+					/obj/item/storage/box/MRE,
 					/obj/item/storage/box/MRE
 					)
 	cost = RO_PRICE_VERY_CHEAP

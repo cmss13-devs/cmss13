@@ -267,11 +267,11 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	var/speed = min( round(   range/5  ,1) ,5)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
-	if(range >= 3)
-		if(prob(range*10)) //scatter
-			var/scatter_x = rand(-1,1)
-			var/scatter_y = rand(-1,1)
-			target = locate(target.x + round(scatter_x),target.y + round(scatter_y),target.z) //Locate an adjacent turf.
+	if(range >= 2)
+		var/scatter = range/3
+		var/scatter_x = rand(-scatter,scatter)
+		var/scatter_y = rand(-scatter,scatter)
+		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	spawn(1) //time for the explosion to destroy windows, walls, etc which might be in the way
 		throw_at(target, range, speed, , 1)

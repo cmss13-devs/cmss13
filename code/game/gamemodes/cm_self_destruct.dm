@@ -160,6 +160,10 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_master.lock_or_unlock()
 		dest_started_at = world.time
 		set_security_level(SEC_LEVEL_DELTA) //also activate Delta alert, to open the SD shutters.
+		spawn(0)
+			for(var/obj/machinery/door/poddoor/shutters/almayer/D in machines)
+				if(D.id == "sd_lockdown")
+					D.open()
 		return TRUE
 
 //Override is for admins bypassing normal player restrictions.

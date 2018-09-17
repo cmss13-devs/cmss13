@@ -73,10 +73,6 @@
 			if(SEC_LEVEL_DELTA)
 				if(announce) ai_system.Announce("Attention! Delta security level reached! " + config.alert_desc_delta)
 				security_level = SEC_LEVEL_DELTA
-				spawn(0)
-					for(var/obj/machinery/door/poddoor/shutters/almayer/D in machines)
-						if(D.id == "sd_lockdown")
-							D.open()
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z == MAIN_SHIP_Z_LEVEL)
 						FA.overlays = list()

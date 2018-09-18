@@ -206,7 +206,7 @@
 /obj/item/clothing/mask/facehugger/proc/Attach(mob/living/M)
 	set waitfor = 0
 
-	if(attached || M.status_flags & XENO_HOST || isXeno(M) || loc == M || stat != CONSCIOUS) return
+	if(attached || M.status_flags & XENO_HOST || isXeno(M) || iszombie(M) || loc == M || stat != CONSCIOUS) return
 
 	attached++
 

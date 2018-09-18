@@ -707,7 +707,7 @@
 	ping = null //no bounce off.
 	sound_bounce	= "rocket_bounce"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_IGNORE_BARRICADES
 	var/datum/effect_system/smoke_spread/smoke
 
 	New()

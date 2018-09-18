@@ -97,7 +97,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	var/choices[] = new
 	for(var/mob/M in view(1, src)) //We are only interested in humans and predators.
-		if(Adjacent(M) && ishuman(M) && M.stat) choices += M
+		if(Adjacent(M) && ishuman(M) && !iszombie(M) && M.stat) choices += M
 
 	var/mob/living/carbon/human/H = input(src, "From which corpse will you claim your trophy?") as null|anything in choices
 

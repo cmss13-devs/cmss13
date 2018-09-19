@@ -464,9 +464,39 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				return 1
 			if(WEAR_IN_BACK)
-				if (H.back && istype(H.back, /obj/item/storage/backpack))
-					var/obj/item/storage/backpack/B = H.back
-					if(B.can_be_inserted(src))
+				if (H.back && istype(H.back, /obj/item/storage))
+					var/obj/item/storage/B = H.back
+					if(B.can_be_inserted(src, 1))
+						return 1
+				return 0
+			if(WEAR_IN_SCABBARD)
+				if (H.back && istype(H.back, /obj/item/storage/large_holster))
+					var/obj/item/storage/large_holster/B = H.back
+					if(B.can_be_inserted(src, 1))
+						return 1
+				return 0
+			if(WEAR_IN_BELT)
+				if(H.belt && istype(H.belt, /obj/item/storage))
+					var/obj/item/storage/B = H.belt
+					if(B.can_be_inserted(src, 1))
+						return 1
+				return 0
+			if(WEAR_IN_J_STORE)
+				if(H.s_store && istype(H.s_store, /obj/item/storage))
+					var/obj/item/storage/B = H.s_store
+					if(B.can_be_inserted(src, 1))
+						return 1
+				return 0
+			if(WEAR_IN_L_STORE)
+				if(H.l_store && istype(H.l_store, /obj/item/storage/pouch))
+					var/obj/item/storage/pouch/P = H.l_store
+					if(P.can_be_inserted(src, 1))
+						return 1
+				return 0
+			if(WEAR_IN_R_STORE)
+				if(H.r_store && istype(H.r_store, /obj/item/storage/pouch))
+					var/obj/item/storage/pouch/P = H.r_store
+					if(P.can_be_inserted(src, 1))
 						return 1
 				return 0
 		return 0 //Unsupported slot

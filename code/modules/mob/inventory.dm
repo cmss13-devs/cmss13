@@ -246,11 +246,42 @@
 				src.s_store = W
 				equipped = 1
 		if(WEAR_IN_BACK)
-			if (src.back && istype(src.back, /obj/item/storage/backpack))
-				var/obj/item/storage/backpack/B = src.back
+			if (src.back && istype(src.back, /obj/item/storage/))
+				var/obj/item/storage/B = src.back
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.loc = B
 					equipped = 1
+		if(WEAR_IN_SCABBARD)
+			if (src.back && istype(src.back, /obj/item/storage/large_holster))
+				var/obj/item/storage/large_holster/B = src.back
+				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+					W.loc = B
+					equipped = 1
+		if(WEAR_IN_BELT)
+			if(src.belt && istype(src.belt, /obj/item/storage))
+				var/obj/item/storage/B = src.belt
+				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+					W.loc = B
+					equipped = 1
+		if(WEAR_IN_J_STORE)
+			if(src.s_store && istype(src.s_store, /obj/item/storage/))
+				var/obj/item/storage/B = src.s_store
+				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
+					W.loc = B
+					equipped = 1
+		if(WEAR_IN_L_STORE)
+			if(src.l_store && istype(src.l_store, /obj/item/storage/pouch))
+				var/obj/item/storage/pouch/P = src.l_store
+				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
+					W.loc = P
+					equipped = 1
+		if(WEAR_IN_R_STORE)
+			if(src.r_store && istype(src.r_store, /obj/item/storage/pouch))
+				var/obj/item/storage/pouch/P = src.r_store
+				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
+					W.loc = P
+					equipped = 1
+		
 
 	if(equipped)
 		W.layer = ABOVE_HUD_LAYER

@@ -862,5 +862,19 @@
 
 	if(WEAR_BACK in equip_slots)
 		equip_slots |= WEAR_IN_BACK
+		equip_slots |= WEAR_IN_SCABBARD
 
 	equip_slots |= WEAR_LEGCUFFS
+
+	if(WEAR_WAIST in equip_slots)
+		equip_slots |= WEAR_IN_BELT
+	
+	if(WEAR_J_STORE in equip_slots)
+		equip_slots |= WEAR_IN_J_STORE
+
+	if(WEAR_L_STORE in equip_slots)
+		equip_slots |= WEAR_IN_L_STORE
+		
+	if(WEAR_R_STORE in equip_slots)
+		equip_slots |= WEAR_IN_R_STORE
+

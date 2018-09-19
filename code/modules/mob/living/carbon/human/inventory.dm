@@ -77,7 +77,15 @@
 			return 1
 		if(WEAR_IN_ACCESSORY)
 			return 1
-		if(WEAR_IN_HOLSTER)
+		if(WEAR_IN_BELT)
+			return 1
+		if(WEAR_IN_SCABBARD)
+			return 1
+		if(WEAR_IN_J_STORE)
+			return 1
+		if(WEAR_IN_L_STORE)
+			return 1
+		if(WEAR_IN_R_STORE)
 			return 1
 
 /mob/living/carbon/human/put_in_l_hand(obj/item/W)
@@ -329,23 +337,31 @@
 			W.equipped(src, slot)
 			update_inv_s_store()
 		if(WEAR_IN_BACK)
-			if(get_active_hand() == W)
-				temp_drop_inv_item(W)
-			W.forceMove(back)
+			back.attackby(W,src)
+			back.update_icon()
+		if(WEAR_IN_SCABBARD)
+			back.attackby(W,src)
+			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots) W.loc = S.pockets//Has to have some slots available.
-
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/under/U = w_uniform
 			if(U && U.hastie)
 				var/obj/item/clothing/tie/storage/T = U.hastie
 				if(istype(T) && T.hold.storage_slots) W.loc = T.hold
-
-		if(WEAR_IN_HOLSTER)
-			if(istype(W, /obj/item/weapon))
-				var/obj/item/weapon/wep = W
-				wep.equip_to_holster(src)
+		if(WEAR_IN_BELT)
+			belt.attackby(W,src)
+			belt.update_icon()
+		if(WEAR_IN_J_STORE)
+			s_store.attackby(W,src)
+			s_store.update_icon()
+		if(WEAR_IN_L_STORE)
+			l_store.attackby(W,src)
+			l_store.update_icon()
+		if(WEAR_IN_R_STORE)
+			r_store.attackby(W,src)
+			r_store.update_icon()
 
 		else
 			src << "\red You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."

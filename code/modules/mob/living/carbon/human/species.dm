@@ -877,4 +877,11 @@
 		
 	if(WEAR_R_STORE in equip_slots)
 		equip_slots |= WEAR_IN_R_STORE
+	
+	if(WEAR_BODY in equip_slots)
+		equip_slots |= WEAR_ACCESSORY
+		equip_slots |= WEAR_IN_ACCESSORY
+	
+	if(WEAR_JACKET in equip_slots)
+		equip_slots |= WEAR_IN_JACKET
 

@@ -463,6 +463,21 @@ cases. Override_icon_state should be a list.*/
 				if(!istype(src, /obj/item/legcuffs))
 					return 0
 				return 1
+			if(WEAR_IN_ACCESSORY)
+				if(H.w_uniform)
+					if(H.w_uniform.hastie)
+						var/obj/item/clothing/tie/storage/T = H.w_uniform.hastie
+						var/obj/item/storage/internal/I = T.hold
+						if(I && I.can_be_inserted(src, 1))
+							return 1
+				return 0
+			if(WEAR_IN_JACKET)
+				if(H.wear_suit)
+					var/obj/item/clothing/suit/storage/S = H.wear_suit
+					var/obj/item/storage/internal/I = S.pockets
+					if(I.can_be_inserted(src,1))
+						return 1
+				return 0
 			if(WEAR_IN_BACK)
 				if (H.back && istype(H.back, /obj/item/storage))
 					var/obj/item/storage/B = H.back

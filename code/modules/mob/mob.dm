@@ -199,6 +199,8 @@ var/list/slot_equipment_priority = list( \
 		WEAR_IN_J_STORE,\
 		WEAR_IN_L_STORE,\
 		WEAR_IN_R_STORE,\
+		WEAR_IN_ACCESSORY,\
+		WEAR_IN_JACKET,\
 		WEAR_J_STORE,\
 		WEAR_L_STORE,\
 		WEAR_R_STORE,\

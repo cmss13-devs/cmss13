@@ -344,12 +344,15 @@
 			back.update_icon()
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
-			if(istype(S) && S.pockets.storage_slots) W.loc = S.pockets//Has to have some slots available.
+			if(istype(S) && S.pockets.storage_slots)
+				wear_suit.attackby(W, src)
+				wear_suit.update_icon()
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/under/U = w_uniform
 			if(U && U.hastie)
 				var/obj/item/clothing/tie/storage/T = U.hastie
-				if(istype(T) && T.hold.storage_slots) W.loc = T.hold
+				if(T && istype(T) && T.hold.storage_slots)
+					w_uniform.attackby(W,src)
 		if(WEAR_IN_BELT)
 			belt.attackby(W,src)
 			belt.update_icon()

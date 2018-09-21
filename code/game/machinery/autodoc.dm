@@ -40,6 +40,8 @@
 		return
 
 /obj/machinery/autodoc/process()
+	set background = 1
+
 	updateUsrDialog()
 	if(occupant)
 		if(occupant.stat == DEAD)
@@ -195,6 +197,8 @@
 	return surgery_list
 
 /obj/machinery/autodoc/proc/surgery_op(mob/living/carbon/M)
+	set background = 1
+
 	if(M.stat == DEAD||!ishuman(M))
 		visible_message("\The [src] buzzes.")
 		src.go_out() //kick them out too.

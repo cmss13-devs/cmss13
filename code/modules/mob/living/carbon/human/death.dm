@@ -86,6 +86,8 @@
 	return
 
 /mob/living/carbon/human/proc/ChangeToHusk()
+	return
+	/*
 	if(HUSK in mutations)	return
 	if(isSynth(src)) return // dont husk synths
 
@@ -100,7 +102,7 @@
 	update_body(0)
 	update_mutantrace()
 	name = get_visible_name()
-	return
+	return*/
 
 /mob/living/carbon/human/proc/Drain()
 	ChangeToHusk()

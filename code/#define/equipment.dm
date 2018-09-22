@@ -152,8 +152,12 @@
 #define WEAR_IN_BACK		"in_back"
 #define WEAR_IN_JACKET		"in_jacket"
 #define WEAR_IN_ACCESSORY	"in_accessory"
+#define WEAR_IN_BELT        "in_belt"
+#define WEAR_IN_SCABBARD    "in_scabbard"
+#define WEAR_IN_J_STORE     "in_j_store"
+#define WEAR_IN_L_STORE     "in_l_store"
+#define WEAR_IN_R_STORE     "in_r_store"
 
-#define WEAR_IN_HOLSTER "holster" // this is a special thing
 //=================================================
 
 // bitflags for clothing parts

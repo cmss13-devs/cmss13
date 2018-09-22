@@ -116,7 +116,6 @@
 	upgrade = 0
 
 	var/map_view = 0
-	var/next_map_gen = 0
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/ovipositor_cooldown = 0
@@ -181,11 +180,6 @@
 
 	if(stat != DEAD)
 		if(map_view)
-			if(world.time > next_map_gen)
-				generate_xeno_mapview()
-				next_map_gen = world.time + 6000
-			if(!xeno_mapview_overlay)
-				overlay_xeno_mapview()
 			src << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
 
 		if(++breathing_counter >= rand(12, 17)) //Increase the breathing variable each tick. Play it at random intervals.

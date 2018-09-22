@@ -20,12 +20,7 @@
 
 /mob/living/silicon/New()
 	..()
-	living_misc_mobs += src
 	add_language("English")
-
-/mob/living/silicon/Dispose()
-	..()
-	living_misc_mobs -= src
 
 /mob/living/silicon/proc/show_laws()
 	return
@@ -211,10 +206,6 @@
 
 /mob/living/silicon/binarycheck()
 	return 1
-
-/mob/living/silicon/rejuvenate()
-	..()
-	living_misc_mobs += src
 
 /mob/living/silicon/ex_act(severity)
 	flash_eyes()

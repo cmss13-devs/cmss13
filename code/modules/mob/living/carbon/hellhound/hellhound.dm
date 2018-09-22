@@ -35,16 +35,13 @@
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 8
-	living_misc_mobs += src
 
 	for(var/mob/dead/observer/M in player_list)
 		M << "\red <B>A hellhound is now available to play!</b> Please be sure you can follow the rules."
 		M << "\red Click 'Join as hellhound' in the ghost panel to become one. First come first serve!"
 		M << "\red If you need help during play, click adminhelp and ask."
 
-/mob/living/carbon/hellhound/Dispose()
-	..()
-	living_misc_mobs -= src
+
 
 /mob/living/carbon/hellhound/proc/bite_human(var/mob/living/carbon/human/H)
 	if(!istype(H))
@@ -267,10 +264,6 @@
 		if(!istype(C,/mob/living/carbon/hellhound))
 			C << "\blue [src.name] [verb_used]."
 	return
-
-/mob/living/carbon/hellhound/rejuvenate()
-	..()
-	living_misc_mobs += src
 
 /mob/living/carbon/hellhound/movement_delay()
 	. = ..()

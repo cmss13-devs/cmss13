@@ -24,7 +24,6 @@ var/global/list/living_xeno_list = list()			//List of all alive mob/living/carbo
 var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
 var/global/list/yautja_mob_list = list()
 var/global/list/living_human_list = list() // list of alive marines
-var/global/list/living_misc_mobs = list() // anything that isnt a xeno or human
 
 var/global/list/dead_hardcore_xeno_list = list() // mostly for WO clean up
 

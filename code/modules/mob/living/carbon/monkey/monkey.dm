@@ -52,8 +52,6 @@
 	reagents = R
 	R.my_atom = src
 
-	living_misc_mobs += src
-
 	species = all_species[greaterform]
 	add_language(species.language)
 
@@ -90,9 +88,6 @@
 
 	..()
 
-/mob/living/carbon/monkey/Dispose()
-	..()
-	living_misc_mobs -= src
 
 /mob/living/carbon/monkey/unathi/New()
 	..()
@@ -323,9 +318,8 @@
         ..(message, speaking, verb, alt_name, italics, message_range, used_radios)
 
 
-/mob/living/carbon/monkey/rejuvenate()
-	..()
-	living_misc_mobs += src
+
+
 
 /mob/living/carbon/monkey/update_sight()
 	if (stat == DEAD || (XRAY in mutations))

@@ -8,4 +8,5 @@
 
 
 /mob/living/carbon/monkey/death(gibbed)
+	living_misc_mobs -= src
 	..(gibbed,"lets out a faint chimper as it collapses and stops moving...")

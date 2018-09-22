@@ -55,12 +55,7 @@
 
 /mob/living/simple_animal/New()
 	..()
-	living_misc_mobs += src
 	verbs -= /mob/verb/observe
-
-/mob/living/simple_animal/Dispose()
-	..()
-	living_misc_mobs -= src
 
 /mob/living/simple_animal/Login()
 	if(src && src.client)
@@ -206,12 +201,10 @@
 /mob/living/simple_animal/death()
 	. = ..()
 	if(!.)	return //was already dead
-	living_misc_mobs -= src
 	icon_state = icon_dead
 
 
 /mob/living/simple_animal/gib()
-	living_misc_mobs -= src
 	if(meat_amount && meat_type)
 		for(var/i = 0; i < meat_amount; i++)
 			new meat_type(src.loc)

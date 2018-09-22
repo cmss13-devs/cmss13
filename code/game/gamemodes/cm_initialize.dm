@@ -329,6 +329,8 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = 0)
 	var/available_xenos[] = list()
 	var/available_xenos_non_ssd[] = list()
+	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	var/mob/living/carbon/Xenomorph/Queen/queen = hive.living_xeno_queen
 
 	for(var/mob/A in living_mob_list)
 		if(A.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
@@ -336,15 +338,19 @@ datum/game_mode/proc/initialize_special_clamps()
 			if(A.away_timer >= 300) available_xenos_non_ssd += A
 			available_xenos += A
 
+	if(queen.canSpawnLarva())
+		available_xenos += "buried larva"
+
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		xeno_candidate << "<span class='warning'>There aren't any available xenomorphs. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy.</span>"
+		xeno_candidate << "<span class='warning'>There aren't any available xenomorphs or buried larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy.</span>"
 		// xeno_candidate.client.prefs.be_special |= BE_ALIEN
 		return
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
 		new_xeno = input("Available Xenomorphs") as null|anything in available_xenos
-		if (!istype(new_xeno) || !xeno_candidate) return //It could be null, it could be "cancel" or whatever that isn't a xenomorph.
+
+		if (new_xeno == "buried larva" || !istype(new_xeno) || !xeno_candidate) return //It could be null, it could be "cancel" or whatever that isn't a xenomorph.
 
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
 			xeno_candidate << "<span class='warning'>You cannot join if the xenomorph is dead.</span>"
@@ -361,6 +367,10 @@ datum/game_mode/proc/initialize_special_clamps()
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
 				deathtime = 3000 //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+				if(new_xeno == "buried larva")
+					if(queen.canSpawnLarva())
+						new_xeno = queen.spawnBuriedLarva(xeno_candidate)
+						return
 			var/deathtimeminutes = round(deathtime / 600)
 			var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 			if(deathtime < 3000 && ( !xeno_candidate.client.holder || !(xeno_candidate.client.holder.rights & R_ADMIN)) )

@@ -45,6 +45,9 @@
 				if(istype(get_area(src.loc),/area/shuttle || istype(get_area(src.loc),/area/sulaco/hangar)))
 					user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
 					return
+				if(!istype(loc, /turf/open/floor/plating))
+					user << "<span class='warning'>You can't secure that here, it needs steel plating beneath it!</span>"
+					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				user << "\blue Now securing the girder"
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))

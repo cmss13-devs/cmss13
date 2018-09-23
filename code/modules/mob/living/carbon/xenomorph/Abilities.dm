@@ -554,7 +554,7 @@
 		return
 	var/turf/T = get_turf(X)
 
-	if(!istype(T) || !T.is_weedable() || T.density)
+	if(!istype(T) || !T.is_weedable() || T.density || locate(/obj/structure/fence) in T)
 		X << "<span class='warning'>You can't do that here.</span>"
 		return
 

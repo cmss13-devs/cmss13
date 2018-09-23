@@ -133,18 +133,17 @@
 					return
 				else if( eyes_covered )	// Reduced effects if partially protected
 					victim << "\red Your [safe_thing] protect you from most of the pepperspray!"
-					victim.eye_blurry = max(M.eye_blurry, 15)
-					victim.eye_blind = max(M.eye_blind, 5)
+					victim.eye_blurry = max(M.eye_blurry, 5)
 					victim.Stun(5)
-					victim.KnockDown(5)
 					//victim.KnockOut(10)
-					//victim.drop_held_item()
 					return
 				else if( mouth_covered ) // Mouth cover is better than eye cover
 					victim << "\red Your [safe_thing] protects your face from the pepperspray!"
 					if(!(victim.species && (victim.species.flags & NO_PAIN)))
 						victim.emote("scream")
-					victim.eye_blurry = max(M.eye_blurry, 5)
+					victim.eye_blurry = max(M.eye_blurry, 25)
+					victim.eye_blind = max(M.eye_blind, 10)
+					victim.drop_held_item()
 					return
 				else // Oh dear :D
 					if(!(victim.species && (victim.species.flags & NO_PAIN)))

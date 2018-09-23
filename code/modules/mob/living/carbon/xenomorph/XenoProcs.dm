@@ -166,42 +166,6 @@
 				else
 					handle_momentum()
 
-/mob/living/carbon/Xenomorph/proc/update_progression()
-	if(upgrade != -1 && upgrade != 3) //upgrade possible
-		var/datum/hive_status/hive = hive_datum[hivenumber]
-		if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
-			if(upgrade_stored >= caste.upgrade_threshold)
-				if(health == maxHealth && !is_mob_incapacitated() && !handcuffed && !legcuffed)
-					upgrade_xeno(upgrade+1)
-			else
-				var/progress_amount = 1
-
-				if( world.time < XENO_ROUNDSTART_PROGRESS_TIME_1 ) //xenos have a progression bonus at roundstart
-					progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
-
-				else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
-					progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT + (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
-
-				upgrade_stored = min(upgrade_stored + progress_amount, caste.upgrade_threshold)
-
-/mob/living/carbon/Xenomorph/proc/update_evolution_progression()
-	if(hivenumber && hivenumber <= hive_datum.len) // TODO: rewrite hive datum to be directly references in xeno mobs
-		var/datum/hive_status/hive = hive_datum[hivenumber]
-
-		if(caste.evolution_allowed && evolution_stored < caste.evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
-			var/progress_amount = 1
-
-			if( world.time < XENO_ROUNDSTART_PROGRESS_TIME_1 ) //xenos have a progression bonus at roundstart
-				progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
-
-			else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
-				progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT + (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
-
-			evolution_stored = min(evolution_stored + progress_amount, caste.evolution_threshold)
-			if(evolution_stored >= caste.evolution_threshold - 1)
-				src << "<span class='xenodanger'>Your carapace crackles and your tendons strengthen. You are ready to evolve!</span>" //Makes this bold so the Xeno doesn't miss it
-				src << sound('sound/effects/xeno_evolveready.ogg')
-
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return
 

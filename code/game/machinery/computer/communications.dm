@@ -203,8 +203,9 @@
 
 				if(!ticker || !ticker.mode) r_FAL //Not a game mode?
 
-				if(!ticker.mode.force_end_at)
+				if(ticker.mode.force_end_at == 0)
 					usr << "<span class='warning'>ARES has denied your request for operational security reasons.</span>"
+					return FALSE
 
 				if(ticker.mode.has_called_emergency)
 					usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting.</span>"

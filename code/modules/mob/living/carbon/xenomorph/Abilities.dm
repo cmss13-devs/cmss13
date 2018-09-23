@@ -68,9 +68,9 @@
 		X << browse(null, "window=queenminimap")
 		return
 	X.map_view = 1
-	if(world.time > X.next_map_gen)
+	if(world.time > next_map_gen)
 		generate_xeno_mapview()
-		X.next_map_gen = world.time + 6000
+		next_map_gen = world.time + 6000
 	if(!xeno_mapview_overlay)
 		overlay_xeno_mapview()
 	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")

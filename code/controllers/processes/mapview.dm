@@ -1,4 +1,5 @@
 //var/global/current_squad_overlay = 1
+/var/global/next_map_gen = 0
 
 datum/controller/process/mapview
 
@@ -10,9 +11,14 @@ datum/controller/process/mapview/setup()
 
 datum/controller/process/mapview/doWork()
 
+	if(world.time > next_map_gen)
+		generate_xeno_mapview()
+		next_map_gen = world.time + 6000
+
 	for(var/mob/living/carbon/Xenomorph/Queen/Q in living_xeno_list)
 		if(Q.map_view)
 			overlay_xeno_mapview()
+			break
 
 	if(RoleAuthority)
 		//if(current_squad_overlay == 5)

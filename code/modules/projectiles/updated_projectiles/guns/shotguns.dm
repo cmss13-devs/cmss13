@@ -349,7 +349,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "sshotgun"
 	item_state = "sshotgun"
 	flags_equip_slot = SLOT_WAIST
-	attachable_allowed = list()
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
 /obj/item/weapon/gun/shotgun/double/sawn/New()

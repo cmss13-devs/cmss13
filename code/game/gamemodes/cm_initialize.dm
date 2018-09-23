@@ -348,12 +348,15 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
-		new_xeno = input("Available Xenomorphs") as null|anything in available_xenos
+		var/userInput = input("Available Xenomorphs") as null|anything in available_xenos
 
-		if(new_xeno == "buried larva")
+		if(userInput == "buried larva")
 			if(queen.canSpawnLarva()) //check again incase it hit the 1 minute mark between checks
 				new_xeno = queen.spawnBuriedLarva(xeno_candidate)
 				return
+				
+		if(isXeno(userInput))
+			new_xeno = userInput
 
 		if (!istype(new_xeno) || !xeno_candidate) return //It could be null, it could be "cancel" or whatever that isn't a xenomorph.
 

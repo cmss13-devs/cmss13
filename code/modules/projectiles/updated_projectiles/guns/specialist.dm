@@ -71,7 +71,6 @@
 	current_mag = /obj/item/ammo_magazine/sniper/elite
 	force = 17
 	zoomdevicename = "scope"
-	attachable_allowed = list()
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/rifle/sniper/elite/New()
@@ -302,7 +301,6 @@
 	origin_tech = "combat=7;materials=5"
 	current_mag = /obj/item/ammo_magazine/internal/smartgun/dirty
 	ammo_secondary = /datum/ammo/bullet/smartgun/lethal
-	attachable_allowed = list() //Cannot be upgraded.
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()
@@ -451,7 +449,6 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = GUN_SKILL_SPEC
-	attachable_allowed = list()
 	var/grenade
 	var/grenade_type_allowed = /obj/item/explosive/grenade
 	var/riot_version
@@ -699,7 +696,6 @@
 	origin_tech = "combat=7;materials=5"
 	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
-	attachable_allowed = list()
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()

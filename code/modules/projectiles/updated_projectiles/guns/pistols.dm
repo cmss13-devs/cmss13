@@ -230,7 +230,6 @@
 	item_state = "kt42"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/automatic
-	attachable_allowed = list()
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 	New()
@@ -294,7 +293,6 @@
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/highpower
 	force = 10
-	attachable_allowed = list()
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 	New()
@@ -385,7 +383,6 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	fire_sound = 'sound/weapons/gun_pistol_large.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/auto9
 	force = 15
-	attachable_allowed = list()
 
 /obj/item/weapon/gun/pistol/auto9/set_gun_config_values()
 	fire_delay = config.med_fire_delay
@@ -416,7 +413,6 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	force = 8
 	type_of_casings = null
 	gun_skill_category = GUN_SKILL_PISTOLS
-	attachable_allowed = list()
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_config_values()

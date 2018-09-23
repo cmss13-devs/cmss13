@@ -2,8 +2,7 @@
 //-------------------------------------------------------
 //ENERGY GUNS/ETC
 
-/obj/item/weapon/gun/energy
-	attachable_allowed = list()
+
 
 
 

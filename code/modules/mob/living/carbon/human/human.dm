@@ -482,8 +482,8 @@
 					count = 1
 					break
 			if(count)
-				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [usr.name] ([usr.ckey])</font>")
-				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) internals</font>")
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [usr.name] ([usr.ckey])</font>")
+				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [name]'s ([ckey]) splints</font>")
 
 				if(do_mob(usr, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 					var/can_reach_splints = 1
@@ -494,15 +494,18 @@
 							can_reach_splints = 0
 
 					if(can_reach_splints)
-						var/limbcount = 0
+						var/obj/item/stack/W = new /obj/item/stack/medical/splint(loc)
+						W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
+						W.add_fingerprint(usr)
 						for(var/organ in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
 							var/datum/limb/o = get_limb(organ)
 							if (o && o.status & LIMB_SPLINTED)
-								o.status &= ~LIMB_SPLINTED
-								limbcount++
-						if(limbcount)
-							var/obj/item/W = new /obj/item/stack/medical/splint(loc, limbcount)
-							W.add_fingerprint(usr)
+								o.status &= ~LIMB_SPLINTED			
+								if(!W.add(1))
+									W = new /obj/item/stack/medical/splint(loc)//old stack is dropped, time for new one
+									W.amount = 0
+									W.add_fingerprint(usr)
+									W.add(1)
 
 	if(href_list["tie"])
 		if(!usr.action_busy)

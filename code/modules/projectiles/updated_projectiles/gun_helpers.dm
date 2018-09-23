@@ -112,6 +112,9 @@ DEFINES in setup.dm, referenced here.
 			//						   	  \\
 //----------------------------------------------------------
 
+/obj/item/weapon/gun/
+	attachable_allowed = list()
+
 /obj/item/weapon/gun/clicked(var/mob/user, var/list/mods)
 	if (mods["alt"])
 		toggle_gun_safety()

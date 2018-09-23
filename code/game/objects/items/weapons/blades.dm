@@ -85,7 +85,6 @@
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	flags_equip_slot = SLOT_FACE
-	flags_inventory = COVERMOUTH
 	flags_armor_protection = SLOT_FACE
 
 	attackby(obj/item/I as obj, mob/user as mob)
@@ -142,7 +141,6 @@
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	flags_equip_slot = SLOT_STORE|SLOT_FACE
-	flags_inventory = COVERMOUTH
 	flags_armor_protection = SLOT_FACE
 
 

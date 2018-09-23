@@ -91,6 +91,7 @@
 	gender = NEUTER
 
 	living_xeno_list += src
+	xeno_mob_list += src
 	round_statistics.total_xenos_created++
 
 	if(caste.adjust_size_x != 1)
@@ -191,6 +192,7 @@
 	if(is_zoomed) zoom_out()
 
 	living_xeno_list -= src
+	xeno_mob_list -= src
 
 	if(hivenumber && hivenumber <= hive_datum.len)
 		var/datum/hive_status/hive = hive_datum[hivenumber]

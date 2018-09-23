@@ -1,11 +1,12 @@
 datum/controller/process/sun
 
 datum/controller/process/sun/setup()
-	name = "Sun"
-	schedule_interval = 50 //5 seconds
-
-	if(!sun)
-		sun = new /datum/sun()
+	name = "Xeno"
+	schedule_interval = 20
 
 datum/controller/process/sun/doWork()
-	sun.calc_position()
+	for(var/mob/living/carbon/Xenomorph/X in xeno_mob_list)
+		if(X)
+			X.Life()
+			continue
+		xeno_mob_list -= X

@@ -6,6 +6,7 @@
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 //We are now moving the price of RO orders to defines, try to respect it.
 
+#define RO_PRICE_WORTHLESS	10
 #define RO_PRICE_VERY_CHEAP	20
 #define RO_PRICE_CHEAP		30
 #define RO_PRICE_NORMAL		40
@@ -2089,6 +2090,40 @@ SUPPLIES
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper MRE crate"
+	group = "Supplies"
+
+/datum/supply_packs/flour
+	name = "food ingredients crate (x25)"
+	contains = list(
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/flour,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/reagent_container/food/condiment/sugar
+					)
+	cost = RO_PRICE_WORTHLESS
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper Ingredients crate"
 	group = "Supplies"
 
 /datum/supply_packs/internals

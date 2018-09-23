@@ -338,7 +338,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			if(A.away_timer >= 300) available_xenos_non_ssd += A
 			available_xenos += A
 
-	if(queen.canSpawnLarva())
+	if(queen.canSpawnLarva() && istype(xeno_candidate, /mob/new_player))
 		available_xenos += "buried larva"
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
@@ -350,7 +350,12 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!instant_join)
 		new_xeno = input("Available Xenomorphs") as null|anything in available_xenos
 
-		if (new_xeno == "buried larva" || !istype(new_xeno) || !xeno_candidate) return //It could be null, it could be "cancel" or whatever that isn't a xenomorph.
+		if(new_xeno == "buried larva")
+			if(queen.canSpawnLarva()) //check again incase it hit the 1 minute mark between checks
+				new_xeno = queen.spawnBuriedLarva(xeno_candidate)
+				return
+
+		if (!istype(new_xeno) || !xeno_candidate) return //It could be null, it could be "cancel" or whatever that isn't a xenomorph.
 
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
 			xeno_candidate << "<span class='warning'>You cannot join if the xenomorph is dead.</span>"
@@ -367,10 +372,6 @@ datum/game_mode/proc/initialize_special_clamps()
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
 				deathtime = 3000 //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-				if(new_xeno == "buried larva")
-					if(queen.canSpawnLarva())
-						new_xeno = queen.spawnBuriedLarva(xeno_candidate)
-						return
 			var/deathtimeminutes = round(deathtime / 600)
 			var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 			if(deathtime < 3000 && ( !xeno_candidate.client.holder || !(xeno_candidate.client.holder.rights & R_ADMIN)) )

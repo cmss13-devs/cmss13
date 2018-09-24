@@ -304,9 +304,5 @@
 
 /obj/structure/closet/proc/break_open()
 	if(!opened)
-		dump_contents()
-		opened = 1
-		playsound(loc, open_sound, 15, 1) //Could use a more telltale sound for "being smashed open"
-		density = 0
 		welded = 0
-		update_icon()
+		open()

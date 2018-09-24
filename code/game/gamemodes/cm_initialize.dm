@@ -355,10 +355,9 @@ datum/game_mode/proc/initialize_special_clamps()
 				new_xeno = queen.spawnBuriedLarva(xeno_candidate)
 				return
 				
-		if(isXeno(userInput))
-			new_xeno = userInput
-
-		if (!istype(new_xeno) || !xeno_candidate) return //It could be null, it could be "cancel" or whatever that isn't a xenomorph.
+		if(!isXeno(userInput) || !xeno_candidate)
+			return	
+		new_xeno = userInput
 
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
 			xeno_candidate << "<span class='warning'>You cannot join if the xenomorph is dead.</span>"

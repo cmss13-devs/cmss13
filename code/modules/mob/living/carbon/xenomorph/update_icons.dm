@@ -43,8 +43,6 @@
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()
-	if(monkeyizing)
-		return
 
 	update_inv_r_hand()
 	update_inv_l_hand()

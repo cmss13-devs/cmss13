@@ -5,8 +5,6 @@
 	set invisibility = 0
 	set background = 1
 
-	if(monkeyizing)
-		return
 	if(!loc)
 		return
 
@@ -23,10 +21,12 @@
 	if(stat != DEAD) //Stop if dead. Performance boost
 
 		update_progression()
-		update_evolution_progression()
 
 		//Status updates, death etc.
+		handle_xeno_fire()
+		handle_pheromones()
 		handle_regular_status_updates()
+		handle_stomach_contents()
 		update_canmove()
 		update_icons()
 		if(loc)
@@ -34,11 +34,34 @@
 		if(client)
 			handle_regular_hud_updates()
 
-/mob/living/carbon/Xenomorph/proc/handle_regular_status_updates()
+/mob/living/carbon/Xenomorph/proc/update_progression()
+	if(hivenumber && hivenumber <= hive_datum.len) // TODO: rewrite hive datum to be directly references in xeno mobs
+		var/datum/hive_status/hive = hive_datum[hivenumber]
 
-	if(status_flags & GODMODE)
-		return 0
+		var/progress_amount = 1
 
+		if( world.time < XENO_ROUNDSTART_PROGRESS_TIME_1 ) //xenos have a progression bonus at roundstart
+			progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
+
+		else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
+			progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT + (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
+
+		if(upgrade != -1 && upgrade != 3) //upgrade possible
+			if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
+				upgrade_stored = min(upgrade_stored + progress_amount, caste.upgrade_threshold)
+
+				if(upgrade_stored >= caste.upgrade_threshold)
+					if(!is_mob_incapacitated() && !handcuffed && !legcuffed)
+						spawn(0)
+							upgrade_xeno(upgrade+1)
+
+		if(caste.evolution_allowed && evolution_stored < caste.evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
+			evolution_stored = min(evolution_stored + progress_amount, caste.evolution_threshold)
+			if(evolution_stored >= caste.evolution_threshold - 1)
+				src << "<span class='xenodanger'>Your carapace crackles and your tendons strengthen. You are ready to evolve!</span>" //Makes this bold so the Xeno doesn't miss it
+				src << sound('sound/effects/xeno_evolveready.ogg')
+
+/mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
 	if(on_fire)
 		SetLuminosity(min(fire_stacks,5)) // light up xenos
 		var/obj/item/clothing/mask/facehugger/F = get_active_hand()
@@ -58,6 +81,62 @@
 		else
 			SetLuminosity(0)
 
+/mob/living/carbon/Xenomorph/proc/handle_pheromones()
+	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
+	//At least it's more efficient since only Xenos with an aura do this, instead of all Xenos
+	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
+	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
+	if(current_aura && !stat && plasma_stored > 5)
+		if(caste_name == "Queen" && anchored) //stationary queen's pheromone apply around the observed xeno.
+			var/mob/living/carbon/Xenomorph/Queen/Q = src
+			var/atom/phero_center = Q
+			if(Q.observed_xeno)
+				phero_center = Q.observed_xeno
+			var/pheromone_range = round(6 + caste.aura_strength * 2)
+			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
+				if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+					Z.frenzy_new = caste.aura_strength
+				if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+					Z.warding_new = caste.aura_strength
+				if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+					Z.recovery_new = caste.aura_strength
+		else
+			var/pheromone_range = round(6 + caste.aura_strength * 2)
+			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
+				if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+					Z.frenzy_new = caste.aura_strength
+				if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+					Z.warding_new = caste.aura_strength
+				if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+					Z.recovery_new = caste.aura_strength
+
+	if(leader_current_aura && !stat)
+		var/pheromone_range = round(6 + leader_aura_strength * 2)
+		for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
+			if(leader_current_aura == "frenzy" && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+				Z.frenzy_new = leader_aura_strength
+			if(leader_current_aura == "warding" && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+				Z.warding_new = leader_aura_strength
+			if(leader_current_aura == "recovery" && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+				Z.recovery_new = leader_aura_strength
+
+	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
+		frenzy_aura = frenzy_new
+		warding_aura = warding_new
+		recovery_aura = recovery_new
+		hud_set_pheromone()
+
+	frenzy_new = 0
+	warding_new = 0
+	recovery_new = 0
+
+	armor_bonus = 0
+
+	if(warding_aura > 0)
+		armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
+
+/mob/living/carbon/Xenomorph/proc/handle_regular_status_updates()
+
 	if(health <= 0) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
 		if(istype(T))
@@ -65,63 +144,6 @@
 				adjustBruteLoss(2.5 - warding_aura*0.5) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 			else
 				adjustBruteLoss(-warding_aura*0.5) //Warding pheromones provides 0.25 HP per second per step, up to 2.5 HP per tick.
-
-	//Rollercoaster of fucking stupid because Xeno life ticks aren't synchronised properly and values reset just after being applied
-	//At least it's more efficient since only Xenos with an aura do this, instead of all Xenos
-	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
-	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
-
-	if(stat != DEAD) //Dead Xenos don't emit or receive pheromones, ever
-		if(current_aura && !stat && plasma_stored > 5)
-			if(caste == "Queen" && anchored) //stationary queen's pheromone apply around the observed xeno.
-				var/mob/living/carbon/Xenomorph/Queen/Q = src
-				var/atom/phero_center = Q
-				if(Q.observed_xeno)
-					phero_center = Q.observed_xeno
-				var/pheromone_range = round(6 + caste.aura_strength * 2)
-				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
-					if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-						Z.frenzy_new = caste.aura_strength
-					if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-						Z.warding_new = caste.aura_strength
-					if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-						Z.recovery_new = caste.aura_strength
-			else
-				var/pheromone_range = round(6 + caste.aura_strength * 2)
-				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-					if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-						Z.frenzy_new = caste.aura_strength
-					if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-						Z.warding_new = caste.aura_strength
-					if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-						Z.recovery_new = caste.aura_strength
-
-		if(leader_current_aura && !stat)
-			var/pheromone_range = round(6 + leader_aura_strength * 2)
-			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-				if(leader_current_aura == "frenzy" && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-					Z.frenzy_new = leader_aura_strength
-				if(leader_current_aura == "warding" && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-					Z.warding_new = leader_aura_strength
-				if(leader_current_aura == "recovery" && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-					Z.recovery_new = leader_aura_strength
-
-		if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
-			frenzy_aura = frenzy_new
-			warding_aura = warding_new
-			recovery_aura = recovery_new
-			hud_set_pheromone()
-
-		frenzy_new = 0
-		warding_new = 0
-		recovery_new = 0
-
-		armor_bonus = 0
-
-		if(warding_aura > 0)
-			armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
-
-		update_icons()
 
 	updatehealth()
 
@@ -181,20 +203,22 @@
 
 		handle_statuses()//natural decrease of stunned, knocked_down, etc...
 
-		//Deal with dissolving/damaging stuff in stomach.
-		if(stomach_contents.len)
-			for(var/atom/movable/M in stomach_contents)
-				if(ishuman(M))
-					var/mob/living/carbon/human/H = M
-					if(world.time > devour_timer || H.stat == DEAD)
-						regurgitate(H, 0)
-
-				M.acid_damage++
-				if(M.acid_damage > 300)
-					src << "<span class='xenodanger'>\The [M] is dissolved in your gut with a gurgle.</span>"
-					stomach_contents.Remove(M)
-					cdel(M)
 	return 1
+
+/mob/living/carbon/Xenomorph/proc/handle_stomach_contents()
+	//Deal with dissolving/damaging stuff in stomach.
+	if(stomach_contents.len)
+		for(var/atom/movable/M in stomach_contents)
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				if(world.time > devour_timer || H.stat == DEAD)
+					regurgitate(H, 0)
+
+			M.acid_damage++
+			if(M.acid_damage > 300)
+				src << "<span class='xenodanger'>\The [M] is dissolved in your gut with a gurgle.</span>"
+				stomach_contents.Remove(M)
+				cdel(M)
 
 /mob/living/carbon/Xenomorph/proc/handle_regular_hud_updates()
 

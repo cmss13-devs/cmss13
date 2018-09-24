@@ -47,7 +47,7 @@
 		user << "<span class='warning'>There already is a mine at this position!</span>"
 		return
 
-	if(user.loc && user.loc.density)
+	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		user << "<span class='warning'>You can't plant a mine here.</span>"
 		return
 

@@ -237,6 +237,11 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 				if(H.mind.role_comm_title)
 					comm_title = H.mind.role_comm_title //Set up [CO] and stuff after frequency
+					if(H.assigned_squad)
+						if(freq != H.assigned_squad.radio_freq)
+							comm_title = H.assigned_squad.name + " " + comm_title
+
+
 		else if(istype(M,/mob/living/silicon/decoy/ship_ai)) command = 3
 
 	for (var/mob/R in receive)

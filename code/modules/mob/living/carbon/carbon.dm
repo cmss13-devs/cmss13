@@ -407,3 +407,6 @@
 			if(AM == X)
 				stomach_contents -= AM
 				break
+
+/mob/living/carbon/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = src.species.slot_equipment_priority)
+	return ..(W,ignore_delay,slot_equipment_priority)

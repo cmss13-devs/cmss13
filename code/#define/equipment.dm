@@ -158,6 +158,37 @@
 #define WEAR_IN_L_STORE     "in_l_store"
 #define WEAR_IN_R_STORE     "in_r_store"
 
+
+//=================================================
+
+//slot-related
+
+//The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
+#define DEFAULT_SLOT_PRIORITY  list( \
+		WEAR_BACK,\
+		WEAR_ID,\
+		WEAR_BODY,\
+		WEAR_JACKET,\
+		WEAR_FACE,\
+		WEAR_HEAD,\
+		WEAR_FEET,\
+		WEAR_HANDS,\
+		WEAR_EAR,\
+		WEAR_EYES,\
+		WEAR_IN_BELT,\
+		WEAR_IN_SCABBARD,\
+		WEAR_WAIST,\
+		WEAR_IN_J_STORE,\
+		WEAR_IN_L_STORE,\
+		WEAR_IN_R_STORE,\
+		WEAR_J_STORE,\
+		WEAR_IN_ACCESSORY,\
+		WEAR_IN_JACKET,\
+		WEAR_L_STORE,\
+		WEAR_R_STORE,\
+		WEAR_IN_BACK\
+	)
+
 //=================================================
 
 // bitflags for clothing parts

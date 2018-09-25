@@ -96,6 +96,8 @@
 	var/stun_reduction = 1 //how much the stunned effect is reduced per Life call.
 	var/knock_out_reduction = 1 //same thing
 
+	var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY
+
 /datum/species/New()
 	if(hud_type)
 		hud = new hud_type()
@@ -672,6 +674,33 @@
 	knock_down_reduction = 2
 	stun_reduction = 2
 
+		//Set their special slot priority
+
+	slot_equipment_priority= list( \
+		WEAR_BACK,\
+		WEAR_ID,\
+		WEAR_BODY,\
+		WEAR_JACKET,\
+		WEAR_FACE,\
+		WEAR_HEAD,\
+		WEAR_FEET,\
+		WEAR_HANDS,\
+		WEAR_EAR,\
+		WEAR_EYES,\
+		WEAR_IN_SCABBARD,\
+		WEAR_WAIST,\
+		WEAR_IN_J_STORE,\
+		WEAR_IN_L_STORE,\
+		WEAR_IN_R_STORE,\
+		WEAR_J_STORE,\
+		WEAR_IN_ACCESSORY,\
+		WEAR_IN_JACKET,\
+		WEAR_L_STORE,\
+		WEAR_R_STORE,\
+		WEAR_IN_BELT,\
+		WEAR_IN_BACK\
+	)
+
 /datum/species/yautja/handle_death(var/mob/living/carbon/human/H, gibbed)
 	if(gibbed)
 		yautja_mob_list -= H
@@ -698,6 +727,7 @@
 		L.time_to_knit = -1
 
 /datum/species/yautja/handle_post_spawn(var/mob/living/carbon/human/H)
+
 	//Spawn them some equipment
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)

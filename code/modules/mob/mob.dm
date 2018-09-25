@@ -181,35 +181,11 @@
 /mob/proc/equip_to_slot_or_del(obj/item/W, slot, permanent = 0)
 	return equip_to_slot_if_possible(W, slot, 1, 1, 1, 0, permanent)
 
-//The list of slots by priority. equip_to_appropriate_slot() uses this list. Doesn't matter if a mob type doesn't have a slot.
-var/list/slot_equipment_priority = list( \
-		WEAR_BACK,\
-		WEAR_ID,\
-		WEAR_BODY,\
-		WEAR_JACKET,\
-		WEAR_FACE,\
-		WEAR_HEAD,\
-		WEAR_FEET,\
-		WEAR_HANDS,\
-		WEAR_EAR,\
-		WEAR_EYES,\
-		WEAR_IN_BELT,\
-		WEAR_IN_SCABBARD,\
-		WEAR_WAIST,\
-		WEAR_IN_J_STORE,\
-		WEAR_IN_L_STORE,\
-		WEAR_IN_R_STORE,\
-		WEAR_J_STORE,\
-		WEAR_IN_ACCESSORY,\
-		WEAR_IN_JACKET,\
-		WEAR_L_STORE,\
-		WEAR_R_STORE,\
-		WEAR_IN_BACK\
-	)
+
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
-/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1)
+/mob/proc/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, var/list/slot_equipment_priority = DEFAULT_SLOT_PRIORITY)
 	if(!istype(W)) return 0
 
 	for(var/slot in slot_equipment_priority)

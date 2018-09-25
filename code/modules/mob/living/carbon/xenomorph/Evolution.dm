@@ -160,6 +160,8 @@
 			M = /mob/living/carbon/Xenomorph/Carrier
 		if("Hivelord")
 			M = /mob/living/carbon/Xenomorph/Hivelord
+		if("Burrower")
+			M = /mob/living/carbon/Xenomorph/Burrower
 		if("Praetorian")
 			M = /mob/living/carbon/Xenomorph/Praetorian
 		if("Ravager")

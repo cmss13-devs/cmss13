@@ -762,7 +762,7 @@
 	if (!check_state())
 		return
 
-	if (used_burrow)
+	if (used_burrow || tunnel)
 		return
 
 	var/turf/T = get_turf(src)
@@ -822,7 +822,7 @@
 /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown()
 	spawn(caste.burrow_cooldown)
 		used_burrow = 0
-		src << "<span class='notice'>You can now surface or tunnel.</span>"
+		src << "<span class='notice'>You can now surface.</span>"
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()

@@ -105,7 +105,7 @@
 	spawn(rand(20,30))
 		speed -= 2
 
-	spawn(acid_spray_cooldown)
+	spawn(caste.acid_spray_cooldown)
 		used_acid_spray = 0
 		src << "<span class='notice'>You have produced enough acid to spray again.</span>"
 
@@ -116,7 +116,7 @@
 	dir = facing
 
 	T = loc
-	for (var/i = 0, i < acid_spray_range, i++)
+	for (var/i = 0, i < caste.acid_spray_range, i++)
 
 		var/turf/next_T = get_step(T, facing)
 
@@ -592,7 +592,7 @@
 
 	H.throw_at(T, headbutt_distance, 1, src)
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
-	spawn(headbutt_cooldown)
+	spawn(caste.headbutt_cooldown)
 		used_headbutt = 0
 		src << "<span class='notice'>You gather enough strength to headbutt again.</span>"
 		for(var/X in actions)
@@ -646,7 +646,7 @@
 	used_tail_sweep = 1
 	use_plasma(10)
 
-	spawn(tail_sweep_cooldown)
+	spawn(caste.tail_sweep_cooldown)
 		used_tail_sweep = 0
 		src << "<span class='notice'>You gather enough strength to tail sweep again.</span>"
 		for(var/X in actions)
@@ -687,7 +687,7 @@
 	do_crest_defense_cooldown()
 
 /mob/living/carbon/Xenomorph/proc/do_crest_defense_cooldown()
-	spawn(crest_defense_cooldown)
+	spawn(caste.crest_defense_cooldown)
 		used_crest_defense = 0
 		src << "<span class='notice'>You can [crest_defense ? "raise" : "lower"] your crest.</span>"
 		for(var/X in actions)
@@ -749,7 +749,7 @@
 	update_icons()
 
 /mob/living/carbon/Xenomorph/proc/do_fortify_cooldown()
-	spawn(fortify_cooldown)
+	spawn(caste.fortify_cooldown)
 		used_fortify = 0
 		src << "<span class='notice'>You can [fortify ? "stand up" : "fortify"] again.</span>"
 		for(var/X in actions)
@@ -757,7 +757,7 @@
 			act.update_button_icon()
 
 
-/* WIP Burrower stuff
+/* WIP Burrower stuff */
 /mob/living/carbon/Xenomorph/proc/burrow()
 	if (!check_state())
 		return
@@ -765,10 +765,22 @@
 	if (used_burrow)
 		return
 
-	burrow = !burrow
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+
+	if(istype(T, /turf/open/floor/almayer/research/containment))
+		src << "<span class='xenowarning'>You can't escape this cell!</span>"
+		return
+
 	used_burrow = 1
+	burrow = !burrow
 
 	if (burrow)
+		src << "<span class='xenowarning'>You begin burrowing yourself into the ground.</span>"
+		if(!burrow && !do_after(src, 15, TRUE, 5, BUSY_ICON_HOSTILE))
+			do_burrow_cooldown()
+			return
 		// TODO Make immune to all damage here.
 		src << "<span class='xenowarning'>You burrow yourself into the ground.</span>"
 		frozen = 1
@@ -801,11 +813,14 @@
 	invisibility = 0
 	anchored = 0
 	density = 1
+	for(var/mob/living/carbon/human/H in loc)
+		H.KnockDown(2)
+
 	update_canmove()
 	update_icons()
 
 /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown()
-	spawn(burrow_cooldown)
+	spawn(caste.burrow_cooldown)
 		used_burrow = 0
 		src << "<span class='notice'>You can now surface or tunnel.</span>"
 		for(var/X in actions)
@@ -818,9 +833,28 @@
 		src << "<span class='notice'>You must be burrowed to do this.</span>"
 		return
 
-	if (used_burrow || used_tunnel)
+	if (used_tunnel)
 		src << "<span class='notice'>You must wait some time to do this.</span>"
 		return
+
+	if(T.z == MAIN_SHIP_Z_LEVEL)
+		src << "<span class='xenowarning'>The decking is too hard to tunnel through!</span>"
+		return
+
+	if(T.density)
+		src << "<span class='xenowarning'>You can't tunnel into a solid wall!</span>"
+		return
+
+	if(istype(T, /turf/open/gm/river) || istype(T, /turf/open/space) || istype(T, /turf/open/floor/almayer_hull))
+		src << "<span class='xenowarning'>You can't tunnel there!</span>"
+		return
+
+	for(var/obj/O in T.contents)
+		if(O.density)
+			if(O.flags_atom & ON_BORDER)
+				continue
+			src << "<span class='warning'>There's something solid there to stop you emerging.</span>"
+			return
 
 	if (tunnel)
 		tunnel = 0
@@ -831,8 +865,10 @@
 
 	if (!T || T.density)
 		src << "<span class='notice'>You cannot tunnel to there!</span>"
-
+	//world << "process_tunnel"
 	tunnel = 1
+	src << "<span class='notice'>You start tunneling!</span>"
+	tunnel_timer = (get_dist(src, T)*10) + world.timeofday
 	process_tunnel(T)
 
 
@@ -842,23 +878,28 @@
 	spawn while (tunnel && T)
 		if (world.timeofday > tunnel_timer)
 			tunnel = 0
-			do_tunnel()
+			//world << "spawnwhile"
+			do_tunnel(T)
 		sleep(10)	// Process every second.
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
 	src << "<span class='notice'>You tunnel to your destination.</span>"
-	M.forceMove(T)
+	anchored = 0
+	frozen = 0
+	update_canmove()
+	//world << "do_tunnel from [loc.x],[loc.y],[loc.z] to [T.x],[T.y],[T.z]"
+	forceMove(T)
 	burrow = 0
 	burrow_off()
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown()
-	spawn(tunnel_cooldown)
+	spawn(caste.tunnel_cooldown)
 		used_tunnel = 0
 		src << "<span class='notice'>You can now tunnel while burrowed.</span>"
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
-*/
+/* end burrower stuff */
 
 // Vent Crawl
 /mob/living/carbon/Xenomorph/proc/vent_crawl()
@@ -1258,6 +1299,8 @@
 	//var/exotic_count = 0
 	var/boiler_list = ""
 	var/boiler_count = 0
+	var/burrower_list = ""
+	var/burrower_count = 0
 	var/crusher_list = ""
 	var/crusher_count = 0
 	var/praetorian_list = ""
@@ -1325,6 +1368,9 @@
 			if("Boiler")
 				if(leader == "") boiler_list += xenoinfo
 				boiler_count++
+			if("Burrower")
+				if(leader == "") burrower_list += xenoinfo
+				burrower_count++
 			if("Crusher")
 				if(leader == "") crusher_list += xenoinfo
 				crusher_count++
@@ -1370,7 +1416,7 @@
 	dat += "<b>Total Living Sisters: [count]</b><BR>"
 	//if(exotic_count != 0) //Exotic Xenos in the Hive like Predalien or Xenoborg
 		//dat += "<b>Ultimate Tier:</b> [exotic_count] Sisters</b><BR>"
-	dat += "<b>Tier 3: [boiler_count + crusher_count + praetorian_count + ravager_count] Sisters</b> | Boilers: [boiler_count] | Crushers: [crusher_count] | Praetorians: [praetorian_count] | Ravagers: [ravager_count]<BR>"
+	dat += "<b>Tier 3: [boiler_count + crusher_count + praetorian_count + ravager_count] Sisters</b> | Boilers: [boiler_count] | Crushers: [crusher_count] | Praetorians: [praetorian_count] | Ravagers: [ravager_count] | Burrowers: [burrower_count]<BR>"
 	dat += "<b>Tier 2: [carrier_count + hivelord_count + hunter_count + spitter_count + warrior_count] Sisters</b> | Carriers: [carrier_count] | Hivelords: [hivelord_count] | Warriors: [warrior_count] | Lurkers: [hunter_count] | Spitters: [spitter_count]<BR>"
 	dat += "<b>Tier 1: [drone_count + runner_count + sentinel_count + defender_count] Sisters</b> | Drones: [drone_count] | Runners: [runner_count] | Sentinels: [sentinel_count] | Defenders: [defender_count]<BR>"
 	dat += "<b>Larvas: [larva_count] Sisters<BR>"
@@ -1378,7 +1424,7 @@
 		if(user.hivenumber == XENO_HIVE_NORMAL)
 			dat += "<b>Burrowed Larva: [stored_larva_count] Sisters<BR>"
 	dat += "<table cellspacing=4>"
-	dat += queen_list + leader_list + boiler_list + crusher_list + praetorian_list + ravager_list + carrier_list + hivelord_list + warrior_list + hunter_list + spitter_list + drone_list + runner_list + sentinel_list + defender_list + larva_list
+	dat += queen_list + leader_list + boiler_list + burrower_list + crusher_list + praetorian_list + ravager_list + carrier_list + hivelord_list + warrior_list + hunter_list + spitter_list + drone_list + runner_list + sentinel_list + defender_list + larva_list
 	dat += "</table></body>"
 	usr << browse(dat, "window=roundstatus;size=500x500")
 

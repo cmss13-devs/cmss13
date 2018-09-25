@@ -375,10 +375,11 @@
 				cdel(src)
 				return
 			var/obj/effect/alien/resin/trap/T = locate() in loc
-			if(T && !T.hugger)
+			if(T && T.trap_type == RESIN_TRAP_EMPTY && !T.widened)
 				visible_message("<span class='xenowarning'>[src] crawls into [T]!</span>")
-				T.hugger = TRUE
+				T.hugger_hivenumber = hivenumber
 				T.icon_state = "trap1"
+				T.trap_type = RESIN_TRAP_HUGGER
 				cdel(src)
 				return
 		Die()

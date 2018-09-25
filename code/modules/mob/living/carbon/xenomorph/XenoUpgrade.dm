@@ -43,6 +43,8 @@
 					src <<"<span class='xenoannounce'>You are the builder of walls. Ensure that the marines are the ones who pay for them.</span>"
 				if("Carrier")
 					src << "<span class='xenoannounce'>You are the master of huggers. Throw them like baseballs at the marines!</span>"
+				if("Burrower")
+					src << "<span class='xenoannounce'>You are the master of traps. You are the bane of marine pushes!</span>"
 				if("Queen")
 					src << "<span class='xenoannounce'>You are the Alpha and the Omega. The beginning and the end.</span>"
 
@@ -231,5 +233,17 @@
 	upgrade_xeno(2)
 
 /mob/living/carbon/Xenomorph/Warrior/ancient/New()
+	..()
+	upgrade_xeno(3)
+
+/mob/living/carbon/Xenomorph/Burrower/mature/New()
+	..()
+	upgrade_xeno(1)
+
+/mob/living/carbon/Xenomorph/Burrower/elite/New()
+	..()
+	upgrade_xeno(2)
+
+/mob/living/carbon/Xenomorph/Burrower/ancient/New()
 	..()
 	upgrade_xeno(3)

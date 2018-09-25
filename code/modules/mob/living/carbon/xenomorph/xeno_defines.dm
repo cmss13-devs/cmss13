@@ -80,6 +80,23 @@
 	var/can_vent_crawl = 1
 	var/can_denest_hosts = 0
 
+	var/burrow_cooldown = 50
+	var/tunnel_cooldown = 100
+	var/widen_cooldown = 100
+
+	var/acid_spray_range = 3
+	var/acid_spray_cooldown = 150
+
+	var/headbutt_cooldown = 40
+	var/tail_sweep_cooldown = 120
+	var/crest_defense_cooldown = 150
+	var/fortify_cooldown = 200
+
+	var/innate_healing = FALSE //whether the xeno slowly heals even outside weeds.
+
+	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
+	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
+
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
 
@@ -128,7 +145,10 @@
 	var/crit_health = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 
-	var/innate_healing = FALSE //whether the xeno slowly heals even outside weeds.
+	var/fortify_timer = 60
+	var/burrow_timer = 200
+	var/tunnel_timer = 20
+
 	var/emotedown = 0
 
 	var/datum/action/xeno_action/activable/selected_ability
@@ -163,15 +183,14 @@
 	var/last_charge_move = 0 //Time of the last time the Crusher moved while charging. If it's too far apart, the charge is broken
 
 	//New variables for how charges work, max speed, speed buildup, all that jazz
-	var/charge_speed = 0 //Modifier on base move delay as charge builds up
 	var/charge_speed_max = 2.1 //Can only gain this much speed before capping
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
+	var/charge_speed = 0 //Modifier on base move delay as charge builds up
 	var/charge_roar = 0 //Did we roar in our charge yet ?
 
 	//Pounce vars
 	var/usedPounce = 0
-
 
 	// Warrior vars
 	var/agility = 0		// 0 - upright, 1 - all fours
@@ -191,15 +210,14 @@
 	var/used_crest_defense = 0
 	var/used_fortify = 0
 
-	var/headbutt_cooldown = 40
-	var/tail_sweep_cooldown = 120
-	var/crest_defense_cooldown = 150
-	var/fortify_cooldown = 200
-	var/fortify_timer = 60
+	var/used_burrow = 0
+	var/used_tunnel = 0
+	var/used_widen = 0
+
+	var/tunnel = 0
+	var/burrow = 0
 
 	//Praetorian vars
-	var/acid_spray_range = 3
-	var/acid_spray_cooldown = 150
 	var/used_acid_spray = 0
 
 	//Carrier vars

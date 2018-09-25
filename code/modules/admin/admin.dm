@@ -181,6 +181,7 @@ var/global/floorIsLava = 0
 				<br>\[ Alien Tier 3: <A href='?src=\ref[src];simplemake=ravager;mob=\ref[M]'>Ravager</A> |
 				<A href='?src=\ref[src];simplemake=praetorian;mob=\ref[M]'>Praetorian</A> |
 				<A href='?src=\ref[src];simplemake=boiler;mob=\ref[M]'>Boiler</A> |
+				<A href='?src=\ref[src];simplemake=burrower;mob=\ref[M]'>Burrower</A> |
 				<A href='?src=\ref[src];simplemake=crusher;mob=\ref[M]'>Crusher</A> \]
 				<br>\[ Alien Tier 4: <A href='?src=\ref[src];simplemake=queen;mob=\ref[M]'>Queen</A> \]
 				<br>\[ Silicon: <A href='?src=\ref[src];simplemake=robot;mob=\ref[M]'>Robot</A> \]

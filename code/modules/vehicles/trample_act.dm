@@ -23,6 +23,11 @@
 					else // side hit
 						takes_damage = 0
 						is_knocked_down = 0
+			if(isXenoBurrower(X))
+				if(X.burrow)
+					takes_damage = 0
+					is_knocked_down = 0
+					blocked = 0
 			if (isXenoDefender(X))
 				if (X.fortify)
 					blocked = 1

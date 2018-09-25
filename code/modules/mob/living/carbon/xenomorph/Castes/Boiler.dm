@@ -97,10 +97,9 @@
 	var/is_bombarding = 0
 	var/obj/item/explosive/grenade/grenade_type = "/obj/item/explosive/grenade/xeno"
 	var/bomb_cooldown = 0
-	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
+
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 	var/acid_cooldown = 0
-	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
 	var/turf/bomb_turf = null
 
 	actions = list(
@@ -206,7 +205,7 @@
 			round_statistics.boiler_neuro_smokes++
 
 
-		spawn(bomb_delay) //20 seconds cooldown.
+		spawn(caste.bomb_delay) //20 seconds cooldown.
 			bomb_cooldown = 0
 			src << "<span class='notice'>You feel your toxin glands swell. You are able to bombard an area again.</span>"
 			for(var/X in actions)
@@ -260,7 +259,7 @@
 		"<span class='xenowarning'>You spew forth a spray of acid!</span>", null, 5)
 		var/turflist = getline(src, target)
 		spray_turfs(turflist)
-		spawn(acid_delay) //12 second cooldown.
+		spawn(caste.acid_delay) //12 second cooldown.
 			acid_cooldown = 0
 			src << "<span class='warning'>You feel your acid glands refill. You can spray <B>acid</b> again.</span>"
 			for(var/X in actions)

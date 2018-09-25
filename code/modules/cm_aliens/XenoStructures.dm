@@ -127,7 +127,11 @@
 	slow_amt = 4
 
 
-//Carrier trap
+#define RESIN_TRAP_EMPTY 0
+#define RESIN_TRAP_HUGGER 1
+#define RESIN_TRAP_ACID 2
+#define RESIN_TRAP_GAS 3
+
 /obj/effect/alien/resin/trap
 	desc = "It looks like a hiding hole."
 	name = "resin hole"
@@ -137,39 +141,58 @@
 	anchored = 1
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
-	var/hugger = FALSE
-	var/carrier_number //the nicknumber of the carrier that placed us.
+	var/widened = 0
+	var/list/tripwires = list()
+	var/hugger_hivenumber
+	var/trap_type = RESIN_TRAP_EMPTY
+	var/armed = 0
+	var/created_by // ckey
+	var/list/notify_list = list() // list of xeno mobs to notify on trigger
+	var/datum/effect_system/smoke_spread/smoke_system
 
-/obj/effect/alien/resin/trap/New(loc, mob/living/carbon/Xenomorph/Carrier/C)
-	if(C)
-		carrier_number = C.nicknumber
+/obj/effect/alien/resin/trap/New(loc, mob/living/carbon/Xenomorph/X)
+	if(X)
+		created_by = X.ckey
 	..()
 
 /obj/effect/alien/resin/trap/examine(mob/user)
 	if(isXeno(user))
-		user << "A hole for a little one to hide in ambush."
-		if(hugger)
-			user << "There's a little one inside."
-		else
-			user << "It's empty."
+		user << "A hole for setting a trap."
+		if(widened)
+			user << "This one has been made larger by a Burrower."
+		switch(trap_type)
+			if(RESIN_TRAP_EMPTY)
+				user << "It's empty."
+			if(RESIN_TRAP_HUGGER)
+				user << "There's a little one inside."
+			if(RESIN_TRAP_GAS)
+				user << "It's filled with pressurised gas."
+			if(RESIN_TRAP_ACID)
+				user << "It's filled with pressurised acid."
 	else
 		..()
 
+/obj/effect/alien/resin/trap/proc/facehugger_die()
+	var/obj/item/clothing/mask/facehugger/FH = new (loc)
+	FH.Die()
+	hugger_hivenumber = null
+	trap_type = RESIN_TRAP_EMPTY
+	icon_state = "trap0"
 
 /obj/effect/alien/resin/trap/flamer_fire_act()
-	if(hugger)
-		var/obj/item/clothing/mask/facehugger/FH = new (loc)
-		FH.Die()
-		hugger = FALSE
-		icon_state = "trap0"
+	switch(trap_type)
+		if(RESIN_TRAP_HUGGER)
+			facehugger_die()
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+			trigger_trap()
 	..()
 
 /obj/effect/alien/resin/trap/fire_act()
-	if(hugger)
-		var/obj/item/clothing/mask/facehugger/FH = new (loc)
-		FH.Die()
-		hugger = FALSE
-		icon_state = "trap0"
+	switch(trap_type)
+		if(RESIN_TRAP_HUGGER)
+			facehugger_die()
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+			trigger_trap()
 	..()
 
 /obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
@@ -178,55 +201,202 @@
 	. = ..()
 
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
-	if(hugger)
-		if(CanHug(AM) && !isYautja(AM) && !isSynth(AM))
-			var/mob/living/L = AM
-			L.visible_message("<span class='warning'>[L] trips on [src]!</span>",\
-							"<span class='danger'>You trip on [src]!</span>")
-			L.KnockDown(1)
-			if(carrier_number)
-				for(var/mob/living/carbon/Xenomorph/X in living_mob_list)
-					if(X.nicknumber == carrier_number)
-						if(!X.stat)
-							var/area/A = get_area(src)
-							if(A)
-								X << "<span class='xenoannounce'>You sense one of your traps at [A.name] has been triggered!</span>"
-						break
-			drop_hugger()
+	switch(trap_type)
+		if(RESIN_TRAP_HUGGER)
+			if(CanHug(AM) && !isYautja(AM) && !isSynth(AM))
+				var/mob/living/L = AM
+				L.visible_message("<span class='warning'>[L] trips on [src]!</span>",\
+								"<span class='danger'>You trip on [src]!</span>")
+				L.KnockDown(1)
+				trigger_trap()
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+			if(ishuman(AM))
+				trigger_trap()
 
-/obj/effect/alien/resin/trap/proc/drop_hugger()
+/obj/effect/alien/resin/trap/proc/trigger_trap()
 	set waitfor = 0
-	var/obj/item/clothing/mask/facehugger/FH = new (loc)
-	hugger = FALSE
-	icon_state = "trap0"
-	visible_message("<span class='warning'>[FH] gets out of [src]!</span>")
-	sleep(15)
-	if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
-		FH.leap_at_nearest_target()
+	if(notify_list && notify_list.len)
+		var/area/A = get_area(src)
+		if(A)
+			for(var/mob/living/carbon/Xenomorph/X in notify_list)
+				if(X && X.stat != DEAD)
+					X << "<span class='xenoannounce'>You sense one of your traps at [A.name] has been triggered!</span>"
+	switch(trap_type)
+		if(RESIN_TRAP_HUGGER)
+			var/obj/item/clothing/mask/facehugger/FH = new (loc)
+			FH.hivenumber = hugger_hivenumber
+			hugger_hivenumber = null
+			icon_state = "trap0"
+			visible_message("<span class='warning'>[FH] gets out of [src]!</span>")
+			sleep(15)
+			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
+				FH.leap_at_nearest_target()
+		if(RESIN_TRAP_GAS)
+			smoke_system.set_up(2, 0, src.loc)
+			smoke_system.start()
+			trap_type = RESIN_TRAP_EMPTY
+			icon_state = "trap0"
+			clear_tripwires()
+		if(RESIN_TRAP_ACID)
+			new /obj/effect/xenomorph/spray(loc)
+			for(var/turf/T in range(1,loc))
+				new /obj/effect/xenomorph/spray(T)
+			trap_type = RESIN_TRAP_EMPTY
+			icon_state = "trap0"
+			clear_tripwires()
 
-/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent != "hurt")
-		var/list/allowed_castes = list("Queen","Drone","Hivelord","Carrier")
-		if(allowed_castes.Find(M.caste))
-			if(!hugger)
-				M << "<span class='warning'>[src] is empty.</span>"
-			else
-				hugger = FALSE
-				icon_state = "trap0"
-				var/obj/item/clothing/mask/facehugger/F = new ()
-				M.put_in_active_hand(F)
-				M << "<span class='xenonotice'>You remove the facehugger from [src].</span>"
-		return
+/obj/effect/alien/resin/trap/proc/clear_tripwires()
+	for(var/obj/effect/hole_tripwire/HT in tripwires)
+		cdel(HT)
+
+/obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
+	if(X.a_intent != "hurt")
+		switch(trap_type)
+			if(RESIN_TRAP_HUGGER)
+				if(X.caste.can_hold_facehuggers)
+					icon_state = "trap0"
+					trap_type = RESIN_TRAP_EMPTY
+					var/obj/item/clothing/mask/facehugger/F = new ()
+					F.hivenumber = hugger_hivenumber
+					hugger_hivenumber = null
+					X.put_in_active_hand(F)
+					X << "<span class='xenonotice'>You remove the facehugger from [src].</span>"
+				return
+			if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+				X << "<span class='xenonotice'>Better not risk setting this off.</span>"
+				return
+			if(RESIN_TRAP_EMPTY)
+				if(isXenoCarrier(X))
+					X << "<span class='xenonotice'>You begin preparing this hole for a little one.</span>"
+					if(!do_after(X, 10, TRUE, 5, BUSY_ICON_HOSTILE))
+						return
+					widened = 0
+					X << "<span class='xenonotice'>This hole is now ready for a little one.</span>"
+					return
+				if(isXenoBurrower(X))
+					if(X.burrow)
+						return
+					if(widened)
+						X << "<span class='xenonotice'>This hole has already been made larger.</span>"
+						return
+					if(X.used_widen)
+						X << "<span class='xenowarning'>You can't widen another resin hole yet.</span>"
+						return
+					if(X.check_plasma(100))
+						X << "<span class='xenonotice'>You begin widening the resin hole.</span>"
+						if(!do_after(X, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+							return
+						X.use_plasma(100)
+						X.used_widen = 1
+						widened = 1
+						spawn(X.caste.widen_cooldown)
+							X << "<span class='xenonotice'>You can widen another resin hole now.</span>"
+							X.used_widen = 0
+						return
+				if(isXenoPraetorian(X))
+					if(!widened)
+						X << "<span class='xenonotice'>This resin hole isn't large enough to charge with acid.</span>"
+						return
+					if (X.used_acid_spray)
+						X << "<span class='xenowarning'>You must wait to produce enough acid to pressurise this trap.</span>"
+						return
+
+					if (!X.check_plasma(200))
+						X << "<span class='xenowarning'>You must produce more plasma before doing this.</span>"
+						return
+
+					X << "<span class='xenonotice'>You begin charging the resin hole with acid.</span>"
+					if(!do_after(X, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+						return
+
+					if (X.used_acid_spray)
+						return
+
+					if (!X.check_plasma(200))
+						return
+
+					X.used_acid_spray = 1
+					X.use_plasma(200)
+					setup_tripwires()
+					playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+					trap_type = RESIN_TRAP_ACID
+					icon_state = "trapacid"
+					X.visible_message("<span class='xenowarning'>\The [X] pressurises the resin hole with acid!</span>", \
+					"<span class='xenowarning'>You pressurise the resin hole with acid!</span>", null, 5)
+					X.speed += 2
+					spawn(rand(20,30))
+						X.speed -= 2
+
+					spawn(X.caste.acid_spray_cooldown)
+						X.used_acid_spray = 0
+						X << "<span class='notice'>You have produced enough acid to spray again.</span>"
+					return
+				if(isXenoBoiler(X))
+					if(!widened)
+						X << "<span class='xenonotice'>This resin hole isn't large enough to charge with acid gas.</span>"
+						return
+					var/mob/living/carbon/Xenomorph/Boiler/B = X
+
+					if (B.bomb_cooldown)
+						B << "<span class='xenowarning'>You must wait to produce enough acid to pressurise this trap.</span>"
+						return
+
+					if (!B.check_plasma(200))
+						B << "<span class='xenowarning'>You must produce more plasma before doing this.</span>"
+						return
+
+					X << "<span class='xenonotice'>You begin charging the resin hole with acid gas.</span>"
+					if(!do_after(B, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+						return
+
+					if (B.used_acid_spray)
+						return
+
+					if (!B.check_plasma(200))
+						return
+					smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
+					setup_tripwires()
+					B.bomb_cooldown = 1
+					B.use_plasma(200)
+					playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+					trap_type = RESIN_TRAP_GAS
+					icon_state = "trapgas"
+					B.visible_message("<span class='xenowarning'>\The [B] pressurises the resin hole with acid gas!</span>", \
+					"<span class='xenowarning'>You pressurise the resin hole with acid gas!</span>", null, 5)
+
+					spawn(B.caste.bomb_delay)
+						B.bomb_cooldown = 0
+						B << "<span class='notice'>You have produced enough acid to bombard again.</span>"
+					return
 	..()
+
+/obj/effect/alien/resin/trap/proc/setup_tripwires()
+	clear_tripwires()
+	for(var/turf/T in orange(1,loc))
+		if(T.density)
+			continue
+		var/obj/effect/hole_tripwire/HT = new /obj/effect/hole_tripwire(T)
+		HT.linked_trap = src
+		tripwires += HT
 
 /obj/effect/alien/resin/trap/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/clothing/mask/facehugger) && isXeno(user))
+		if(widened)
+			if(isXenoCarrier(user))
+				user << "<span class='xenonotice'>You begin preparing this hole for a little one.</span>"
+				if(!do_after(user, 10, TRUE, 5, BUSY_ICON_HOSTILE))
+					return
+				widened = 0
+			else
+				user << "<span class='xenowarning'>This hole needs a carrier to prepare it for a little one.</span>"
+				return
 		var/obj/item/clothing/mask/facehugger/FH = W
 		if(FH.stat == DEAD)
 			user << "<span class='warning'>You can't put a dead facehugger in [src].</span>"
 		else
-			hugger = TRUE
+			hugger_hivenumber = FH.hivenumber
 			icon_state = "trap1"
+			trap_type = RESIN_TRAP_HUGGER
 			user << "<span class='xenonotice'>You place a facehugger in [src].</span>"
 			cdel(FH)
 	else
@@ -237,10 +407,38 @@
 		HasProximity(A)
 
 /obj/effect/alien/resin/trap/Dispose()
-	if(hugger && loc)
-		drop_hugger()
+	if(trap_type != RESIN_TRAP_EMPTY && loc)
+		trigger_trap()
+	for(var/obj/effect/hole_tripwire/HT in tripwires)
+		cdel(HT)
 	. = ..()
 
+/obj/effect/hole_tripwire
+	name = "hole tripwire"
+	anchored = 1
+	mouse_opacity = 0
+	invisibility = 101
+	unacidable = 1 //You never know
+	var/obj/effect/alien/resin/trap/linked_trap
+
+/obj/effect/hole_tripwire/Dispose()
+	if(linked_trap)
+		linked_trap.tripwires -= src
+		linked_trap = null
+	. = ..()
+
+/obj/effect/hole_tripwire/Crossed(atom/A)
+	world << "crossed hole_tripwire"
+	if(!linked_trap)
+		cdel(src)
+		return
+
+	if(linked_trap.trap_type == RESIN_TRAP_EMPTY)
+		cdel(src)
+		return
+
+	if(ishuman(A))
+		linked_trap.trigger_trap()
 
 
 //Resin Doors

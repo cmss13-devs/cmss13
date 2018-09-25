@@ -8,6 +8,7 @@
 	max_health = 35
 	caste_desc = "D'awwwww, so cute!"
 	speed = -1.6 //Zoom!
+	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
 	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
 
 /datum/caste_datum/larva/predalien
@@ -31,7 +32,6 @@
 	crit_health = -25
 	gib_chance = 25
 	mob_size = 0
-	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/xenohide,

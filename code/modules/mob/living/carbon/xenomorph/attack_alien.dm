@@ -9,7 +9,7 @@
 
 
 /mob/living/carbon/human/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
-	if (M.fortify)
+	if (M.fortify || M.burrow)
 		return 0
 
 	//Reviewing the four primary intents
@@ -207,8 +207,8 @@
 
 //Every other type of nonhuman mob
 /mob/living/attack_alien(mob/living/carbon/Xenomorph/M)
-	if (M.fortify)
-		return 0;
+	if (M.fortify || M.burrow)
+		return 0
 
 	switch(M.a_intent)
 		if("help")

@@ -13,7 +13,7 @@
 	speed = -0.8
 	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
-	evolves_to = list("Queen", "Carrier", "Hivelord") //Add more here seperated by commas
+	evolves_to = list("Queen", "Carrier", "Hivelord", "Burrower") //Add more here seperated by commas
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	can_denest_hosts = 1

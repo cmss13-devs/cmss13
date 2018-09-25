@@ -5,7 +5,7 @@
 
 /mob/living/carbon/Xenomorph/UnarmedAttack(var/atom/A)
 
-	if(lying) //No attacks while laying down
+	if(lying || burrow) //No attacks while laying down
 		return 0
 	var/atom/S = A.handle_barriers(src)
 	S.attack_alien(src)

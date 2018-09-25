@@ -6,6 +6,7 @@
 /datum/action/xeno_action/plant_weeds/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state()) return
+	if(X.burrow) return
 
 	var/turf/T = X.loc
 
@@ -38,7 +39,7 @@
 /datum/action/xeno_action/xeno_resting/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
 
-	if (!X || X.is_mob_incapacitated(1) || X.buckled || X.fortify || X.crest_defense)
+	if (!X || X.is_mob_incapacitated(1) || X.buckled || X.fortify || X.crest_defense || X.burrow)
 		return
 	return 1
 
@@ -266,6 +267,33 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_punch
 
+// Burrower Burrow
+/datum/action/xeno_action/activable/burrow
+	name = "Burrow"
+	action_icon_state = "agility_on"
+	ability_name = "burrow"
+
+/datum/action/xeno_action/activable/burrow/use_ability()
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.burrow()
+
+/datum/action/xeno_action/activable/burrow/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_burrow
+
+// Burrower Tunnel
+/datum/action/xeno_action/activable/tunnel
+	name = "Tunnel"
+	action_icon_state = "punch"
+	ability_name = "tunnel"
+
+/datum/action/xeno_action/activable/tunnel/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.tunnel(get_turf(A))
+
+/datum/action/xeno_action/activable/tunnel/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_tunnel
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt
@@ -542,13 +570,13 @@
 	X.retrieve_egg(A)
 
 /datum/action/xeno_action/place_trap
-	name = "Place hugger trap (200)"
+	name = "Place resin hole (200)"
 	action_icon_state = "place_trap"
 	plasma_cost = 200
 
 /datum/action/xeno_action/place_trap/action_activate()
-	var/mob/living/carbon/Xenomorph/Carrier/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state() || X.burrow)
 		return
 	if(!X.check_plasma(plasma_cost))
 		return
@@ -560,7 +588,7 @@
 
 	var/area/AR = get_area(T)
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || istype(AR,/area/sulaco/hangar)) //Bandaid for atmospherics bug when Xenos build around the shuttles
-		X << "<span class='warning'>You sense this is not a suitable area for expanding the hive.</span>"
+		X << "<span class='warning'>You sense this is not a suitable area for creating a resin hole.</span>"
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
@@ -572,11 +600,19 @@
 	if(!X.check_alien_construction(T))
 		return
 
+	if(locate(/obj/effect/alien/resin/trap) in orange(1, T))
+		X << "<span class='xenowarning'>This is too close to another resin hole!</span>"
+		return
+
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
 	round_statistics.carrier_traps++
-	new /obj/effect/alien/resin/trap(X.loc, X)
-	X << "<span class='xenonotice'>You place a hugger trap on the weeds, it still needs a facehugger.</span>"
+	var/obj/effect/alien/resin/trap/newtrap = new /obj/effect/alien/resin/trap(X.loc, X)
+	if(isXenoCarrier(X))
+		X << "<span class='xenonotice'>You place a hugger trap on the weeds, it still needs a facehugger.</span>"
+	else if(isXenoBurrower(X))
+		X << "<span class='xenonotice'>You place a resin hole on the weeds, it still needs a sister to fill it with acid.</span>"
+		newtrap.widened = 1
 
 
 //Crusher abilities
@@ -1053,6 +1089,8 @@
 				newcaste = "Runner"
 			if("Warrior")
 				newcaste = "Defender"
+			if("Burrower")
+				newcaste = "Drone"
 
 		if(!newcaste)
 			X << "<span class='xenowarning'>[T] can't be deevolved.</span>"

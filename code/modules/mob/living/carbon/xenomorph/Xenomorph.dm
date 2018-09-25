@@ -259,6 +259,10 @@
 	var/datum/mob_hud/MH = huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src)
 
+/mob/living/carbon/Xenomorph/lay_down()
+	if(burrow)
+		return
+	..()
 
 
 /mob/living/carbon/Xenomorph/point_to_atom(atom/A, turf/T)

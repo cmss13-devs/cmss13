@@ -143,6 +143,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	icon = 'icons/obj/machines/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = 1
+	density = 1
 
 	var/orient_right = null //Flips the sprite.
 

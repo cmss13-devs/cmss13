@@ -202,6 +202,11 @@ proc/isXenoWarrior(A)
 		return 1
 	return 0
 
+proc/isXenoBurrower(A)
+	if(istype(A, /mob/living/carbon/Xenomorph/Burrower))
+		return 1
+	return 0
+
 proc/isYautja(A)
 	if(isHellhound(A))
 		return 1 //They are always considered Yautja.

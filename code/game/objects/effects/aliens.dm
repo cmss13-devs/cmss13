@@ -52,7 +52,7 @@
 /obj/effect/xenomorph/spray/New() //Self-deletes
 	..()
 	processing_objects.Add(src)
-	spawn(100 + rand(0, 20))
+	spawn(30 + rand(0, 20))
 		processing_objects.Remove(src)
 		cdel(src)
 		return

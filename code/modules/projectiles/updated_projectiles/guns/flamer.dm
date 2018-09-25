@@ -211,11 +211,15 @@
 			S.update_icon(1, 0)
 
 	for(var/mob/living/M in T) //Deal bonus damage if someone's caught directly in initial stream
-		if(M.stat == DEAD)		continue
+		if(M.stat == DEAD)
+			continue
 
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			if(X.caste.fire_immune) 	continue
+			if(X.caste.fire_immune)
+				continue
+			if(X.burrow)
+				continue
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M //fixed :s
 
@@ -417,7 +421,10 @@
 				return
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			if(X.caste.fire_immune) 	return
+			if(X.caste.fire_immune)
+				return
+			if(X.burrow)
+				return
 		M.adjust_fire_stacks(burnlevel) //Make it possible to light them on fire later.
 		if (prob(firelevel + 2*M.fire_stacks)) //the more soaked in fire you are, the likelier to be ignited
 			M.IgniteMob()
@@ -460,17 +467,21 @@
 		if(++j >= 11) break
 		if(isliving(i))
 			var/mob/living/I = i
-			if(istype(I,/mob/living/carbon/human))
+			if(ishuman(I))
 				var/mob/living/carbon/human/M = I
 				if(istype(M.wear_suit, /obj/item/clothing/suit/fire) || istype(M.wear_suit,/obj/item/clothing/suit/space/rig/atmos))
 					M.show_message(text("Your suit protects you from the flames."),1)
 					M.adjustFireLoss(rand(0 ,burnlevel*0.25)) //Does small burn damage to a person wearing one of the suits.
 					continue
-			if(istype(I,/mob/living/carbon/Xenomorph/Queen))
+			if(isXenoQueen(I))
 				var/mob/living/carbon/Xenomorph/Queen/X = I
 				X.show_message(text("Your extra-thick exoskeleton protects you from the flames."),1)
 				continue
-			if(istype(I,/mob/living/carbon/Xenomorph/Ravager))
+			if(isXenoBurrower(I))
+				var/mob/living/carbon/Xenomorph/Burrower/B = I
+				if(B.burrow)
+					continue
+			if(isXenoRavager(I))
 				if(!I.stat)
 					var/mob/living/carbon/Xenomorph/Ravager/X = I
 					X.plasma_stored = X.caste.plasma_max
@@ -485,7 +496,7 @@
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
 				var/mob/living/carbon/Xenomorph/X = I
 				X.updatehealth()
-		if(istype(i, /obj/))
+		if(isobj(i))
 			var/obj/O = i
 			O.flamer_fire_act()
 

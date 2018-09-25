@@ -798,7 +798,6 @@
 		return
 
 	burrow_off()
-	do_burrow_cooldown()
 
 /mob/living/carbon/Xenomorph/proc/process_burrow()
 	set background = 1
@@ -818,7 +817,7 @@
 	density = 1
 	for(var/mob/living/carbon/human/H in loc)
 		H.KnockDown(2)
-
+	do_burrow_cooldown()
 	update_canmove()
 	update_icons()
 

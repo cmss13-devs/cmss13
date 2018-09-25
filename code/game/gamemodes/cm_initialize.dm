@@ -351,8 +351,11 @@ datum/game_mode/proc/initialize_special_clamps()
 		var/userInput = input("Available Xenomorphs") as null|anything in available_xenos
 
 		if(userInput == "buried larva")
+			if(!queen.ovipositor)
+				xeno_candidate << "<span class='warning'>The queen is not on her ovipositor. Try again later.</span>"
+			
 			if(queen.canSpawnLarva()) //check again incase it hit the 1 minute mark between checks
-				new_xeno = queen.spawnBuriedLarva(xeno_candidate)
+				queen.spawnBuriedLarva(xeno_candidate) 
 				return
 				
 		if(!isXeno(userInput) || !xeno_candidate)

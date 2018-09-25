@@ -778,7 +778,10 @@
 
 	if (burrow)
 		src << "<span class='xenowarning'>You begin burrowing yourself into the ground.</span>"
-		if(!burrow && !do_after(src, 15, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(!burrow)
+			do_burrow_cooldown()
+			return
+		if(!do_after(src, 15, TRUE, 5, BUSY_ICON_HOSTILE))
 			do_burrow_cooldown()
 			return
 		// TODO Make immune to all damage here.

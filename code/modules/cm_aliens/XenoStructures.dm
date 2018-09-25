@@ -428,7 +428,6 @@
 	. = ..()
 
 /obj/effect/hole_tripwire/Crossed(atom/A)
-	world << "crossed hole_tripwire"
 	if(!linked_trap)
 		cdel(src)
 		return
@@ -943,4 +942,3 @@ TUNNEL
 			M << "<span class='warning'>\The [src] ended unexpectedly, so you return back up.</span>"
 	else
 		M << "<span class='warning'>Your crawling was interrupted!</span>"
-

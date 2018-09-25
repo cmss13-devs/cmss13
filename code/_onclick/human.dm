@@ -6,12 +6,18 @@
 	Otherwise pretty standard.
 */
 
+#define HANDLE_CLICK_PASS_THRU -1
+#define HANDLE_CLICK_UNHANDLED 0
+#define HANDLE_CLICK_HANDLED 1
+
 /mob/living/carbon/human
 	var/last_chew = 0
 
 /mob/living/carbon/human/click(var/atom/A, var/list/mods)
 	if(interactee)
-		return interactee.handle_click(src, A, mods)
+		var/result = interactee.handle_click(src, A, mods)
+		if(result != HANDLE_CLICK_PASS_THRU)
+			return result
 
 	return ..()
 
@@ -86,7 +92,7 @@
 		A.attack_tk(src)
 
 /atom/movable/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
-	return
+	return HANDLE_CLICK_PASS_THRU
 
 /atom/proc/attack_hand(mob/user)
 	return

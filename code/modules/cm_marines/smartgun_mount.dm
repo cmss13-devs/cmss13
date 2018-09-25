@@ -474,28 +474,29 @@
 
 // New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
 /obj/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
-	if(!operator) return 0
-	if(operator != user) return 0
-	if(istype(A,/obj/screen)) return 0
-	if(is_bursting) return
+	if(!operator) return HANDLE_CLICK_UNHANDLED
+	if(operator != user) return HANDLE_CLICK_UNHANDLED
+	if(istype(A,/obj/screen)) return HANDLE_CLICK_UNHANDLED
+	if(is_bursting) return HANDLE_CLICK_UNHANDLED
 	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated())
 		user.unset_interaction()
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand())
 		usr << "<span class='warning'>You need a free hand to shoot the [src].</span>"
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	target = A
 	if(!istype(target))
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	if(target.z != src.z || target.z == 0 || src.z == 0 || isnull(operator.loc) || isnull(src.loc))
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	if(get_dist(target,src.loc) > 15)
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
-	if(mods["middle"] || mods["shift"] || mods["alt"] || mods["ctrl"])	return 0
+	if(mods["middle"] || mods["shift"] || mods["alt"] || mods["ctrl"])
+		return HANDLE_CLICK_PASS_THRU
 
 	var/angle = get_dir(src,target)
 	//we can only fire in a 90 degree cone
@@ -506,9 +507,9 @@
 			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		else
 			process_shot()
-		return 1
+		return HANDLE_CLICK_HANDLED
 
-	return 0
+	return HANDLE_CLICK_UNHANDLED
 
 /obj/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle)) return

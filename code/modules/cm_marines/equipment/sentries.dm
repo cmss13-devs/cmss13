@@ -988,34 +988,35 @@
 
 //Direct replacement to new proc. Everything works.
 /obj/machinery/marine_turret/handle_click(mob/living/carbon/human/user, atom/A, params)
-	if(!operator || !istype(user)) return 0
-	if(operator != user) return 0
-	if(istype(A, /obj/screen)) return 0
-	if(!manual_override) return 0
-	if(operator.interactee != src) return 0
+	if(!operator || !istype(user)) return HANDLE_CLICK_UNHANDLED
+	if(operator != user) return HANDLE_CLICK_UNHANDLED
+	if(istype(A, /obj/screen)) return HANDLE_CLICK_UNHANDLED
+	if(!manual_override) return HANDLE_CLICK_UNHANDLED
+	if(operator.interactee != src) return HANDLE_CLICK_UNHANDLED
 	if(is_bursting) return
 	if(get_dist(user, src) > 1 || user.is_mob_incapacitated())
 		user.visible_message("<span class='notice'>[user] lets go of [src]</span>",
 		"<span class='notice'>You let go of [src]</span>")
 		visible_message("\icon[src] <span class='notice'>The [name] buzzes: AI targeting re-initialized.</span>")
 		user.unset_interaction()
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand() != null)
 		usr << "<span class='warning'>You need a free hand to shoot [src].</span>"
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	target = A
 	if(!istype(target))
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	if(target.z != z || target.z == 0 || z == 0 || isnull(operator.loc) || isnull(loc))
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	if(get_dist(target, loc) > 10)
-		return 0
+		return HANDLE_CLICK_UNHANDLED
 
 	var/list/modifiers = params2list(params) //Only single clicks.
-	if(modifiers["middle"] || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])	return 0
+	if(modifiers["middle"] || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])
+		return HANDLE_CLICK_PASS_THRU
 
 	var/dx = target.x - x
 	var/dy = target.y - y //Calculate which way we are relative to them. Should be 90 degree cone..
@@ -1030,9 +1031,9 @@
 
 	if(direct == dir && target.loc != src.loc && target.loc != operator.loc)
 		process_shot()
-		return 1
+		return HANDLE_CLICK_HANDLED
 
-	return 0
+	return HANDLE_CLICK_UNHANDLED
 /*
 /obj/item/turret_laptop
 	name = "UA 571-C Turret Control Laptop"

@@ -467,16 +467,18 @@ cases. Override_icon_state should be a list.*/
 				if(H.w_uniform)
 					if(H.w_uniform.hastie)
 						var/obj/item/clothing/tie/storage/T = H.w_uniform.hastie
-						var/obj/item/storage/internal/I = T.hold
-						if(I && I.can_be_inserted(src, 1))
-							return 1
+						if(T.hold)//it's possible to delete this from an existing storage tie, somehow, so istype() doesn't work here
+							var/obj/item/storage/internal/I = T.hold
+							if(I.can_be_inserted(src, 1))
+								return 1
 				return 0
 			if(WEAR_IN_JACKET)
 				if(H.wear_suit)
 					var/obj/item/clothing/suit/storage/S = H.wear_suit
-					var/obj/item/storage/internal/I = S.pockets
-					if(I.can_be_inserted(src,1))
-						return 1
+					if(S.pockets)//not all suits have pockits
+						var/obj/item/storage/internal/I = S.pockets
+						if(I.can_be_inserted(src,1))
+							return 1
 				return 0
 			if(WEAR_IN_BACK)
 				if (H.back && istype(H.back, /obj/item/storage))

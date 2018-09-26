@@ -353,8 +353,11 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(userInput == "buried larva")
 			if(!queen.ovipositor)
 				xeno_candidate << "<span class='warning'>The queen is not on her ovipositor. Try again later.</span>"
+				return
 			
 			if(queen.canSpawnLarva()) //check again incase it hit the 1 minute mark between checks
+				var/mob/new_player/P = xeno_candidate
+				P.close_spawn_windows()
 				queen.spawnBuriedLarva(xeno_candidate) 
 				return
 				

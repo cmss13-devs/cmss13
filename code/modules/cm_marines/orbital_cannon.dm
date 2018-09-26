@@ -146,6 +146,10 @@ var/list/ob_type_fuel_requirements
 		return
 	if(!tray)
 		return
+	if(!loaded_tray)
+		if(user)
+			user << "<span class='warning'>You need to load the tray before firing the payload.</span>"
+		return
 	if(!tray.warhead)
 		if(user)
 			user << "<span class='warning'>no warhead in the tray, cancelling chambering operation.</span>"
@@ -183,10 +187,7 @@ var/list/ob_type_fuel_requirements
 /obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, x_offset, y_offset)
 	set waitfor = 0
 
-	if(ob_cannon_busy)
-		return
-
-	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead)
+	if(!chambered_tray || !loaded_tray || !tray || !tray.warhead || ob_cannon_busy)
 		return
 
 	flick("OBC_firing",src)

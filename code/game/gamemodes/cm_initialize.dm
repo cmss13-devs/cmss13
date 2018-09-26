@@ -338,7 +338,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			if(A.away_timer >= 300) available_xenos_non_ssd += A
 			available_xenos += A
 
-	if(queen.canSpawnLarva() && istype(xeno_candidate, /mob/new_player))
+	if(queen && queen.canSpawnLarva() && istype(xeno_candidate, /mob/new_player))
 		available_xenos += "buried larva"
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))

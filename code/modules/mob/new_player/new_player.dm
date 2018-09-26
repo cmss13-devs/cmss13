@@ -166,9 +166,9 @@
 				if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
 					if(ticker.mode.check_xeno_late_join(src))
 						var/mob/new_xeno = ticker.mode.attempt_to_join_as_xeno(src, 0)
-						if(new_xeno)
-							close_spawn_windows(new_xeno)
+						if(new_xeno && !istype(new_xeno, /mob/living/carbon/Xenomorph/Larva))
 							ticker.mode.transfer_xeno(src, new_xeno)
+							close_spawn_windows(new_xeno)
 
 			if("late_join_pred")
 				if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)

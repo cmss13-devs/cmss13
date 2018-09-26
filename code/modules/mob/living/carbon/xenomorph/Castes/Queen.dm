@@ -195,7 +195,6 @@ mob/living/carbon/Xenomorph/Queen/proc/canSpawnLarva()
 
 			ticker.mode.stored_larva--
 
-			return new_xeno
 
 
 /mob/living/carbon/Xenomorph/Queen/Life()

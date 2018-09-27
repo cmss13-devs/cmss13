@@ -34,9 +34,6 @@
 	var/output_level_max = 200000
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 
-/obj/machinery/power/smes/charged
-	charge = 1e+006
-
 /obj/machinery/power/smes/New()
 	..()
 	spawn(5)

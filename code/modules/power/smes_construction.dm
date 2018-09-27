@@ -14,6 +14,9 @@
 	should_be_mapped = 1
 	unacidable = 1
 
+/obj/machinery/power/smes/buildable/charged
+	charge = 1e+006
+
 /obj/machinery/power/smes/buildable/New()
 	component_parts = list()
 	component_parts += new /obj/item/stack/cable_coil(src,30)

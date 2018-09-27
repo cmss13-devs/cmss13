@@ -2118,12 +2118,54 @@ SUPPLIES
 					/obj/item/reagent_container/food/snacks/meat/monkey,
 					/obj/item/reagent_container/food/snacks/meat/monkey,
 					/obj/item/reagent_container/food/snacks/meat/monkey,
-					/obj/item/reagent_container/food/snacks/meat/monkey,
+					/obj/item/storage/fancy/egg_box,
 					/obj/item/reagent_container/food/condiment/sugar
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "\improper Ingredients crate"
+	group = "Supplies"
+
+/datum/supply_packs/funfood
+	name = "special ingredients crate (x6)"
+	randomised_num_contained = 6
+	contraband = 1
+	contains = list(
+					/obj/item/reagent_container/food/condiment/enzyme,
+					/obj/item/reagent_container/food/condiment/saltshaker,
+					/obj/item/reagent_container/food/condiment/saltshaker,
+					/obj/item/reagent_container/food/condiment/saltshaker,
+					/obj/item/reagent_container/food/condiment/peppermill,
+					/obj/item/reagent_container/food/condiment/peppermill,
+					/obj/item/reagent_container/food/condiment/peppermill,
+					/obj/item/reagent_container/food/condiment/sugar,
+					/obj/item/reagent_container/food/condiment/sugar,
+					/obj/item/reagent_container/food/snacks/grown/potato,
+					/obj/item/reagent_container/food/snacks/grown/potato,
+					/obj/item/reagent_container/food/snacks/grown/potato,
+					/obj/item/reagent_container/food/snacks/grown/potato,
+					/obj/item/reagent_container/food/snacks/grown/potato,
+					/obj/item/reagent_container/food/snacks/mint,
+					/obj/item/reagent_container/food/snacks/grown/tomato,
+					/obj/item/reagent_container/food/snacks/grown/tomato,
+					/obj/item/reagent_container/food/snacks/grown/carrot,
+					/obj/item/reagent_container/food/snacks/grown/carrot,
+					/obj/item/reagent_container/food/snacks/grown/lemon,
+					/obj/item/reagent_container/food/snacks/grown/lemon,
+					/obj/item/reagent_container/food/snacks/grown/orange,
+					/obj/item/reagent_container/food/snacks/grown/orange,
+					/obj/item/reagent_container/food/snacks/grown/lime,
+					/obj/item/reagent_container/food/snacks/grown/lime,
+					/obj/item/reagent_container/food/drinks/bottle/whiskey,
+					/obj/item/reagent_container/food/drinks/bottle/tequilla,
+					/obj/item/reagent_container/food/drinks/bottle/rum,
+					/obj/item/reagent_container/food/drinks/bottle/wine,
+					/obj/item/reagent_container/food/drinks/bottle/wine,
+					/obj/item/reagent_container/food/drinks/bottle/wine
+					)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "\improper Special ingredients crate"
 	group = "Supplies"
 
 /datum/supply_packs/internals

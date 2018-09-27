@@ -185,10 +185,7 @@ mob/living/carbon/Xenomorph/Queen/proc/canSpawnLarva()
 			new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
 			"<span class='xenodanger'>You burrow out of the ground and awaken from your slumber. For the Hive!</span>")
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
-			new_xeno.key = xeno_candidate.key
-
-			if(new_xeno.client)
-				new_xeno.client.change_view(world.view)
+			ticker.mode.transfer_xeno(xeno_candidate, new_xeno)
 
 			new_xeno << "<span class='xenoannounce'>You are a xenomorph larva awakened from slumber!</span>"
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')

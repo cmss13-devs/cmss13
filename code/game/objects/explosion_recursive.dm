@@ -46,6 +46,11 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	var/list/explosion_turf_directions = list()
 	var/explosion_in_progress = 0
 	var/active_spread_num = 0
+	var/power = 0
+	var/reflected_power = 0 //used to amplify explosions in confined areas
+	var/reflection_multiplier = 1.5
+	var/reflection_amplification_limit = 1 //1 = 100% increase
+	var/minimum_spread_power = 0
 	//var/overlap_number = 0
 
 
@@ -54,13 +59,15 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 
 //the start of the explosion
-/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power, falloff = 20)
+/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff = 20)
 
-	if(power <= 1) return
+	if(power0 <= 1) return
+	power = power0
 	epicenter = get_turf(epicenter)
 	if(!epicenter) return
 
 	falloff = max(falloff, power/100) //prevent explosions with a range larger than 100 tiles
+	minimum_spread_power = -power * reflection_amplification_limit
 
 	message_admins("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z])")
 	log_game("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ")
@@ -94,7 +101,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			else
 				spread_power -= effective_falloff * 1.414 //diagonal spreading
 
-		if (spread_power <= 1)
+		if (spread_power <= minimum_spread_power)
 			continue
 
 		var/turf/T = get_step(epicenter, direction)
@@ -106,6 +113,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		for(var/atom/A in T)  //add resistance
 			resistance += max(0, A.get_explosion_resistance(direction) )
 		resistance += max(0, T.get_explosion_resistance(direction) )
+		reflected_power += max(0, min(resistance, spread_power))
 
 		explosion_turfs[T] = spread_power  //recording the power applied
 		explosion_turf_directions[T] = direction
@@ -148,9 +156,15 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			if (0)
 				//no change
 			if (45)
-				spread_power *= 0.75
+				if(spread_power >= 0)
+					spread_power *= 0.75
+				else
+					spread_power *= 1.25
 			if (90)
-				spread_power *= 0.50
+				if(spread_power >= 0)
+					spread_power *= 0.50
+				else
+					spread_power *= 1.5
 			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
 				continue
 
@@ -160,7 +174,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			else
 				spread_power -= effective_falloff * 1.414 //diagonal spreading
 
-		if (spread_power <= 1)
+		if (spread_power <= Controller.minimum_spread_power)
 			continue
 
 		var/turf/T = get_step(src, spread_direction)
@@ -168,13 +182,14 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		if(!T) //prevents trying to spread into "null" (edge of the map?)
 			continue
 
-		if(Controller.explosion_turfs[T] + 1 >= spread_power) //This turf is already slated for more damage, so no point spreading here. +1 to reduce lag from borderline overlaps
+		if(Controller.explosion_turfs[T] && Controller.explosion_turfs[T] + 1 >= spread_power) //This turf is already slated for more damage, so no point spreading here. +1 to reduce lag from borderline overlaps
 			continue
 
 		var/resistance = 0
 		for(var/atom/A in T)  //add resistance
 			resistance += max(0, A.get_explosion_resistance(spread_direction) )
 		resistance += max(0, T.get_explosion_resistance(spread_direction) )
+		Controller.reflected_power += max(0, min(resistance, spread_power))
 
 		Controller.explosion_turfs[T] = spread_power  //recording the power applied
 		Controller.explosion_turf_directions[T] = spread_direction
@@ -194,19 +209,29 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 	explosion_in_progress = 0
 
-	var/num_tiles_affected = explosion_turfs.len
+	var/num_tiles_affected = 0
 	var/powernet_rebuild_was_deferred_already = defer_powernet_rebuild
+
+	for(var/turf/T in explosion_turfs)
+		if(!T) continue
+		if(explosion_turfs[T] >= 0)
+			num_tiles_affected++
 
 	if(num_tiles_affected > 25) //pause lighting and powernet processing until explosion damage is finished
 		lighting_controller.processing = 0
 		if(!defer_powernet_rebuild)
 			defer_powernet_rebuild = 1
 
+	reflected_power *= reflection_multiplier
+
+	var/damage_addon = min(power * reflection_amplification_limit, reflected_power/num_tiles_affected)
+
 	for(var/turf/T in explosion_turfs)
-		if(explosion_turfs[T] <= 0) continue
 		if(!T) continue
 
-		var/severity = explosion_turfs[T]
+		var/severity = explosion_turfs[T] + damage_addon
+		if (severity <= 0)
+			continue
 		var/direction = explosion_turf_directions[T]
 
 		var/x = T.x
@@ -268,7 +293,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	if(range >= 2)
-		var/scatter = range/3
+		var/scatter = range/4
 		var/scatter_x = rand(-scatter,scatter)
 		var/scatter_y = rand(-scatter,scatter)
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
@@ -310,6 +335,12 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 
 	if(range > 1)
 		spin = 1
+
+	if(range >= 2)
+		var/scatter = range/4
+		var/scatter_x = rand(-scatter,scatter)
+		var/scatter_y = rand(-scatter,scatter)
+		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.
 
 	spawn(1) //time for the explosion to destroy windows, walls, etc which might be in the way
 		if(!buckled)

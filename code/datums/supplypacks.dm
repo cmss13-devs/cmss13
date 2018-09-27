@@ -68,6 +68,22 @@ OPERATIONS
 					/obj/item/storage/box/m94,
 					/obj/item/storage/box/m94,
 					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
+					/obj/item/storage/box/m94,
 					/obj/item/storage/box/m94
 					)
 	cost = RO_PRICE_NORMAL

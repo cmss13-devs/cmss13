@@ -329,7 +329,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 		if (O.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5 || istype(O.client.holder, /datum/admins))
 			continue
 
-		candidates += O.key
+		candidates += O.client
 
 	return candidates
 

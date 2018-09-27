@@ -586,8 +586,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(ticker.mode.check_xeno_late_join(src))
-		var/mob/new_xeno = ticker.mode.attempt_to_join_as_xeno(src)
-		if(new_xeno) ticker.mode.transfer_xeno(src, new_xeno)
+		ticker.mode.attempt_to_join_as_xeno(src)
 
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
 	set category = "Ghost"

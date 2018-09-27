@@ -90,8 +90,8 @@
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/plant_weeds,
-		/datum/action/xeno_action/activable/tunnel,
 		/datum/action/xeno_action/activable/burrow,
+		/datum/action/xeno_action/build_tunnel,
 		/datum/action/xeno_action/place_trap
 		)
 	inherent_verbs = list(
@@ -106,6 +106,16 @@
 		return canmove
 
 /mob/living/carbon/Xenomorph/Burrower/ex_act(severity)
+	if(burrow)
+		return
+	..()
+
+/mob/living/carbon/Xenomorph/Burrower/attack_hand()
+	if(burrow)
+		return
+	..()
+
+/mob/living/carbon/Xenomorph/Burrower/attackby()
 	if(burrow)
 		return
 	..()

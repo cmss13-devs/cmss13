@@ -273,11 +273,14 @@
 	action_icon_state = "agility_on"
 	ability_name = "burrow"
 
-/datum/action/xeno_action/activable/burrow/use_ability()
+/datum/action/xeno_action/activable/burrow/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	X.burrow()
+	if(X.burrow)
+		X.tunnel(get_turf(A))
+	else
+		X.burrow()
 
-/datum/action/xeno_action/activable/burrow/action_cooldown_check()
+/*/datum/action/xeno_action/activable/burrow/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_burrow
 
@@ -293,7 +296,7 @@
 
 /datum/action/xeno_action/activable/tunnel/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_tunnel
+	return !X.used_tunnel*/
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt
@@ -607,12 +610,8 @@
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
 	round_statistics.carrier_traps++
-	var/obj/effect/alien/resin/trap/newtrap = new /obj/effect/alien/resin/trap(X.loc, X)
-	if(isXenoCarrier(X))
-		X << "<span class='xenonotice'>You place a hugger trap on the weeds, it still needs a facehugger.</span>"
-	else if(isXenoBurrower(X))
-		X << "<span class='xenonotice'>You place a resin hole on the weeds, it still needs a sister to fill it with acid.</span>"
-		newtrap.widened = 1
+	new /obj/effect/alien/resin/trap(X.loc, X)
+	X << "<span class='xenonotice'>You place a resin hole on the weeds, it still needs a sister to fill it with acid.</span>"
 
 
 //Crusher abilities

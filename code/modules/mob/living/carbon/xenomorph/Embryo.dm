@@ -129,11 +129,11 @@
 	if (!affected_mob || affected_mob.z == 2)
 		return
 
-	var/picked
+	var/client/picked
 
 	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
 	if (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))
-		picked = affected_mob.key
+		picked = affected_mob.client
 	else
 		// Get a candidate from observers
 		var/list/candidates = get_alien_candidates()
@@ -154,7 +154,7 @@
 
 	// If we have a candidate, transfer it over
 	if(picked)
-		new_xeno.key = picked
+		new_xeno.key = picked.key
 
 		if(new_xeno.client)
 			new_xeno.client.change_view(world.view)
@@ -226,6 +226,3 @@
 		victim.death() // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
-
-
-

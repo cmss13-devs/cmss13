@@ -327,24 +327,23 @@ datum/game_mode/proc/initialize_special_clamps()
 	return 1
 
 /datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = 0)
-	var/available_xenos[] = list()
-	var/available_xenos_non_ssd[] = list()
+	var/list/available_xenos = list()
+	var/list/available_xenos_non_ssd = list()
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 	var/mob/living/carbon/Xenomorph/Queen/queen = hive.living_xeno_queen
 
-	for(var/mob/A in living_mob_list)
-		if(A.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
-		if(isXeno(A) && !A.client)
-			if(A.away_timer >= 300) available_xenos_non_ssd += A
-			available_xenos += A
+	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+		if(X.z == ADMIN_Z_LEVEL) continue //xenos on admin z level don't count
+		if(istype(X) && !X.client)
+			if(X.away_timer >= 300) available_xenos_non_ssd += X
+			available_xenos += X
 
-	if(queen && queen.canSpawnLarva() && istype(xeno_candidate, /mob/new_player))
+	if(queen && queen.can_spawn_larva() && isnewplayer(xeno_candidate))
 		available_xenos += "buried larva"
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		xeno_candidate << "<span class='warning'>There aren't any available xenomorphs or buried larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy.</span>"
-		// xeno_candidate.client.prefs.be_special |= BE_ALIEN
-		return
+		return 0
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
@@ -353,28 +352,28 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(userInput == "buried larva")
 			if(!queen.ovipositor)
 				xeno_candidate << "<span class='warning'>The queen is not on her ovipositor. Try again later.</span>"
-				return
-			
-			if(queen.canSpawnLarva()) //check again incase it hit the 1 minute mark between checks
+				return 0
+
+			if(queen.can_spawn_larva()) //check again incase it hit the 1 minute mark between checks
 				var/mob/new_player/P = xeno_candidate
 				P.close_spawn_windows()
-				queen.spawnBuriedLarva(xeno_candidate) 
-				return
-				
+				queen.spawn_buried_larva(xeno_candidate)
+				return 1
+
 		if(!isXeno(userInput) || !xeno_candidate)
-			return	
+			return 0
 		new_xeno = userInput
 
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
 			xeno_candidate << "<span class='warning'>You cannot join if the xenomorph is dead.</span>"
-			return
+			return 0
 
 		if(new_xeno.client)
 			xeno_candidate << "<span class='warning'>That xenomorph has been occupied.</span>"
-			return
+			return 0
 
-		if(!xeno_candidate.client) //the runtime logs say this can happen.
-			return
+		if(!xeno_candidate) // 
+			return 0
 
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
@@ -385,29 +384,36 @@ datum/game_mode/proc/initialize_special_clamps()
 			if(deathtime < 3000 && ( !xeno_candidate.client.holder || !(xeno_candidate.client.holder.rights & R_ADMIN)) )
 				xeno_candidate << "<span class='warning'>You have been dead for [deathtimeminutes >= 1 ? "[deathtimeminutes] minute\s and " : ""][deathtimeseconds] second\s.</span>"
 				xeno_candidate << "<span class='warning'>You must wait 5 minutes before rejoining the game!</span>"
-				return
+				return 0
 			if(new_xeno.away_timer < 300) //We do not want to occupy them if they've only been gone for a little bit.
 				xeno_candidate << "<span class='warning'>That player hasn't been away long enough. Please wait [300 - new_xeno.away_timer] second\s longer.</span>"
-				return
+				return 0
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
 			if(new_xeno.client || !(new_xeno in living_mob_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				xeno_candidate << "<span class='warning'>That xenomorph can no longer be controlled. Please try another.</span>"
-				return
-		else return
+				return 0
+		else return 0
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
-	return new_xeno
+	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
+		if(transfer_xeno(xeno_candidate.key, new_xeno))
+			return 1
+	xeno_candidate << "JAS01: Something went wrong, tell a coder."
 
-/datum/game_mode/proc/transfer_xeno(mob/xeno_candidate, mob/new_xeno)
+/datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
+	if(!xeno_candidate)
+		return 0
+	if(!isXeno(new_xeno))
+		return 0
 	new_xeno.ghostize(0) //Make sure they're not getting a free respawn.
-	new_xeno.key = xeno_candidate.key
+	new_xeno.key = xeno_candidate
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 	message_admins("[new_xeno.key] has joined as [new_xeno].")
 	log_admin("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
 		var/mob/living/carbon/Xenomorph/X = new_xeno
 		if(X.is_ventcrawling) X.add_ventcrawl(X.loc) //If we are in a vent, fetch a fresh vent map
-	if(xeno_candidate) xeno_candidate.loc = null
+	return 1
 
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
 	var/mob/original = ghost_mind.current

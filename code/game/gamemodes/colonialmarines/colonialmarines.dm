@@ -143,7 +143,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define FOG_DELAY_INTERVAL		27000 // 45 minutes
+#define FOG_DELAY_INTERVAL		18000 // 30 minutes
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
 	if(--round_started > 0) r_FAL //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.

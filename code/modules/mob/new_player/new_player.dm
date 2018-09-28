@@ -103,7 +103,7 @@
 
 			if("observe")
 
-				if(alert(src,"Are you sure you wish to observe? You will have to wait at least 5 minutes before being able to respawn!","Player Setup","Yes","No") == "Yes")
+				if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 					if(!client)	return 1
 					var/mob/dead/observer/observer = new()
 
@@ -189,7 +189,7 @@
 			if("SelectedJob")
 
 				if(!enter_allowed)
-					usr << "<span class='warning'>There is an administrative lock on entering the game!</span>"
+					usr << "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)</span>"
 					return
 
 				if(client.prefs.species != "Human")
@@ -316,7 +316,7 @@
 			usr << "<span class='warning'>The round is either not ready, or has already finished!<spawn>"
 			return
 		if(!enter_allowed)
-			usr << "<span class='warning'>There is an administrative lock on entering the game!<spawn>"
+			usr << "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)<spawn>"
 			return
 		if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
 			src << alert("[rank] is not available. Please try another.")

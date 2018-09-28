@@ -628,10 +628,27 @@ should be alright.
 		if(!A || A.loc != src)
 			return
 	if(A)
-		A.ui_action_click(usr, src)
+		A.activate_attachment(src, usr)
 
+/obj/item/weapon/gun/verb/activate_rail_attachment_verb()
+	set category = "Weapons"
+	set name = "Use rail attachment"
+	set desc = "Use the attachment that is mounted on your rail."
+	set src = usr.contents
 
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+	if(!G) return
+	src = G
 
+	var/obj/item/attachable/A
+	
+	if (rail && (rail.flags_attach_features & ATTACH_ACTIVATION) )
+		A = rail
+	else
+		usr << "<span class='warning'>[src] does not have any usable rail attachments!</span>"
+		return
+	if(A)
+		A.activate_attachment(src, usr)
 
 
 obj/item/weapon/gun/item_action_slot_check(mob/user, slot)

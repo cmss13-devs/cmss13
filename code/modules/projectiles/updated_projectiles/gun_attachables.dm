@@ -203,11 +203,11 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
-	if(G == user.get_active_hand() || G == user.get_inactive_hand())
+	if(G == user.get_active_hand())
 		if(activate_attachment(G, user)) //success
 			playsound(user, activation_sound, 15, 1)
 	else
-		user << "<span class='warning'>[G] must be in our hands to do this.</span>"
+		user << "<span class='warning'>[G] must be in our active hand to do this.</span>"
 
 
 

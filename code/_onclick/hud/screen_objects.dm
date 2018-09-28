@@ -373,17 +373,14 @@
 
 		if("Activate weapon attachment")
 			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G))
+			if(istype(G) && G.check_inactive_hand(user))
 				G.activate_attachment_verb()
 			return 1
 
 		if("Toggle Rail Flashlight")
 			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(!istype(G)) return
-			if(!G.get_active_firearm(usr)) return
-			var/obj/item/attachable/flashlight/F = G.rail
-			if(F && F.activate_attachment(G, user))
-				playsound(user, F.activation_sound, 15, 1)
+			if(istype(G) && G.check_inactive_hand(user))
+				G.activate_rail_attachment_verb()
 			return 1
 
 		if("Eject magazine")

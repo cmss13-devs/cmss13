@@ -31,7 +31,7 @@
 	..()
 
 /obj/item/clothing/shoes/marine/attackby(var/obj/item/I, var/mob/living/M)
-	if(istype(I, /obj/item/weapon/combat_knife) || istype(I, /obj/item/weapon/throwing_knife))
+	if(istype(I, /obj/item/weapon/combat_knife) || istype(I, /obj/item/weapon/throwing_knife) || istype(I, /obj/item/weapon/gun/pistol/holdout))
 		if(knife)	return
 		M.drop_held_item()
 		knife = I

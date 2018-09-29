@@ -632,7 +632,7 @@ should be alright.
 
 /obj/item/weapon/gun/verb/activate_rail_attachment_verb()
 	set category = "Weapons"
-	set name = "Use rail attachment"
+	set name = "Use Rail Attachment"
 	set desc = "Use the attachment that is mounted on your rail."
 	set src = usr.contents
 

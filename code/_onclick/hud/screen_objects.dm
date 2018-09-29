@@ -373,13 +373,13 @@
 
 		if("Activate weapon attachment")
 			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G) && G.check_inactive_hand(user))
+			if(istype(G))
 				G.activate_attachment_verb()
 			return 1
 
 		if("Toggle Rail Flashlight")
 			var/obj/item/weapon/gun/G = user.get_held_item()
-			if(istype(G) && G.check_inactive_hand(user))
+			if(istype(G))
 				G.activate_rail_attachment_verb()
 			return 1
 

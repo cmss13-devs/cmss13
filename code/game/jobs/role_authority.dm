@@ -341,6 +341,16 @@ roles willy nilly.
 		J.current_positions--
 		return 1
 
+/datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
+	if(!istype(J))
+		return 0
+	if(!J.allow_additional) //if job does not allow additional joins - cancel. Should be caught above
+		return 0
+	if(amount <= J.current_positions) //we should be able to slot everyone
+		return 0
+	J.spawn_positions = amount
+	return 1
+
 //I'm not entirely sure why this proc exists. //TODO Figure this out.
 /datum/authority/branch/role/proc/reset_roles()
 	var/mob/new_player/M

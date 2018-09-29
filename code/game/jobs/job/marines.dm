@@ -7,6 +7,7 @@
 	selection_color = "#ffeeee"
 	total_positions = 8
 	spawn_positions = 8
+	allow_additional = 1
 	minimal_player_age = 3
 	skills_type = /datum/skills/pfc
 	idtype = /obj/item/card/id/dogtag
@@ -53,6 +54,7 @@ You are also in charge of communicating with command and letting them know about
 	paygrade = "E4"
 	total_positions = 12
 	spawn_positions = 12
+	allow_additional = 1
 	flag = ROLE_MARINE_ENGINEER
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
@@ -85,6 +87,7 @@ Your squaddies will look to you when it comes to construction in the field of ba
 	paygrade = "E4"
 	total_positions = 16
 	spawn_positions = 16
+	allow_additional = 1
 	flag = ROLE_MARINE_MEDIC
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
@@ -118,6 +121,7 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	flag = ROLE_MARINE_SPECIALIST
 	total_positions = 4
 	spawn_positions = 4
+	allow_additional = 1
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	minimal_player_age = 7
@@ -147,6 +151,7 @@ You can serve a variety of roles, so choose carefully."}
 	flag = ROLE_MARINE_SMARTGUN
 	total_positions = 4
 	spawn_positions = 4
+	allow_additional = 1
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	minimal_player_age = 7

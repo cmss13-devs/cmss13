@@ -66,6 +66,7 @@ Make sure that the doctors and nurses are doing their jobs and keeping the marin
 	flag = ROLE_CIVILIAN_DOCTOR
 	total_positions = 6
 	spawn_positions = 6
+	allow_additional = 1	
 	scaled = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#BBFFBB"
@@ -114,6 +115,7 @@ You are also an expert when it comes to medication and treatment. If you do not 
 	flag = ROLE_CIVILIAN_RESEARCHER
 	total_positions = 2
 	spawn_positions = 2
+	allow_additional = 1
 	scaled = 1
 	supervisors = "chief medical officer"
 	selection_color = "#BBFFBB"
@@ -211,6 +213,7 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	total_positions = 1
 	spawn_positions = 1
+	allow_additional = 1
 	supervisors = "the acting commander"
 	selection_color = "#aaee55"
 	idtype = /obj/item/card/id/gold

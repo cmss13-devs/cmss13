@@ -14,6 +14,7 @@
 	var/faction 			= "Marines" //Players will be allowed to spawn in as jobs that are set to "Marines". Other factions are special game mode spawns.
 	var/total_positions 	= 0 //How many players can be this job
 	var/spawn_positions 	= 0 //How many players can spawn in as this job
+	var/allow_additional	= 0 //Can admins modify positions to it
 	var/scaled = 0
 	var/current_positions 	= 0 //How many players have this job
 	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.

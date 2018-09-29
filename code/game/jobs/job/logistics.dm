@@ -82,6 +82,7 @@ A happy ship is a well-functioning ship."}
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
+	allow_additional = 1
 	scaled = 1
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
@@ -125,6 +126,7 @@ Start with the ship's engine, and don't forget radiation equipment."}
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	total_positions = 2
 	spawn_positions = 2
+	allow_additional = 1
 	scaled = 1
 	supervisors = "the requisitions officer"
 	selection_color = "#BAAFD9"

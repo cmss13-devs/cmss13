@@ -56,7 +56,9 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/player_notes_list,
 	/datum/admins/proc/player_notes_show,
 	/client/proc/cmd_mod_say,
-	/client/proc/free_slot,			/*frees slot for chosen job*/
+	/client/proc/free_slot,				/*frees slot for chosen job*/
+	/client/proc/modify_slot,
+	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/toggleattacklogs,
@@ -785,6 +787,42 @@ var/list/admin_verbs_mentor = list(
 			return
 		var/role = input("Please select role slot to free", "Free role slot")  as null|anything in roles
 		RoleAuthority.free_role(RoleAuthority.roles_for_mode[role])
+
+/client/proc/modify_slot()
+	set name = "Job Slots - Modify"
+	set category = "Admin"
+	if(holder)
+		var/roles[] = new
+		var/i
+		var/datum/job/J
+		var/datum/job/K
+		for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
+			K = RoleAuthority.roles_for_mode[i]
+			if(K.allow_additional)
+				roles += i
+		var/role = input("Please select role slot to modify", "Modify amount of slots")  as null|anything in roles
+		if(role)
+			J = RoleAuthority.roles_for_mode[role]
+			var/tpos = J.spawn_positions
+			var/num = input("How many slots role [J.title] should have?","Number:",tpos) as num|null
+			if(num && !RoleAuthority.modify_role(J, num))
+				usr << "<span class='boldnotice'>Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first.</span>"
+				
+/client/proc/adjust_predator_round()
+	set name = "Adjust Predator Round"
+	set category = "Admin"
+	set desc = "Adjust the number of predators present in a predator round."
+	if(holder)
+		if(!ticker || !ticker.mode)
+			src << "<span class='warning'>The game hasn't started yet!</span>"
+			return
+		src << ticker.mode.pred_current_num
+		var/value = input(src,"What is the new maximum number of predators?","Input:", ticker.mode.pred_maximum_num) as num|null
+		if(value < ticker.mode.pred_current_num)
+			src << "<span class='warning'>Can't have max number of predators than there already are.</span>"
+			return
+		if(value)
+			ticker.mode.pred_maximum_num = value
 
 /client/proc/toggleattacklogs()
 	set name = "Toggle Attack Log Messages"

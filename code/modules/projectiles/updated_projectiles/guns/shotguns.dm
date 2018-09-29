@@ -258,6 +258,8 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	burst_amount = 2 
+	burst_delay = 0 //So doubleshotty can doubleshot
 
 /obj/item/weapon/gun/shotgun/double/New()
 	..()

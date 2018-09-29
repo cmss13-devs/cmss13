@@ -101,6 +101,7 @@ Make the USCM proud!"}
 	flag = ROLE_BRIDGE_OFFICER
 	total_positions = 5
 	spawn_positions = 5
+	allow_additional = 1
 	scaled = 1
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
@@ -140,6 +141,7 @@ You are in charge of logistics and the overwatch system. You are also in line to
 	flag = ROLE_PILOT_OFFICER
 	total_positions = 4
 	spawn_positions = 4
+	allow_additional = 1
 	scaled = 1
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
@@ -191,6 +193,7 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	flag = ROLE_TANK_OFFICER
 	total_positions = 0
 	spawn_positions = 0
+	allow_additional = 1
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
@@ -233,6 +236,7 @@ While you are an officer, your authority is limited to your own vehicle, where y
 	flag = ROLE_MILITARY_POLICE
 	total_positions = 5
 	spawn_positions = 5
+	allow_additional = 1
 	scaled = 1
 	selection_color = "#ffdddd"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP)

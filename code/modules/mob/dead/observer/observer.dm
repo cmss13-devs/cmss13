@@ -597,7 +597,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		src << "<span class='warning'>The game hasn't started yet!</span?>"
+		src << "<span class='warning'>The game hasn't started yet!</span>"
 		return
 
 	var/list/zombie_list = list()
@@ -760,7 +760,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		src << "<span class='warning'>The game hasn't started yet!</span?"
+		src << "<span class='warning'>The game hasn't started yet!</span>"
 		return
 
 	if(ticker.mode.check_predator_late_join(src))

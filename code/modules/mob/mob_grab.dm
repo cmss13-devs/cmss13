@@ -100,11 +100,13 @@
 		X.visible_message("<span class='danger'>[X] starts to devour [pulled]!</span>", \
 		"<span class='danger'>You start to devour [pulled]!</span>", null, 5)
 		if(do_after(X, 50, FALSE, 5, BUSY_ICON_HOSTILE))
+			if(isXeno(pulled.loc) && !X.stomach_contents.len)
+				X << "<span class='warning'>Someone already ate \the [pulled].</span>"
+				return 0
 			if(X.pulling == pulled && !pulled.buckled && pulled.stat != DEAD && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
 				X.visible_message("<span class='warning'>[X] devours [pulled]!</span>", \
 				"<span class='warning'>You devour [pulled]!</span>", null, 5)
-				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
-
+				
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
 				//So we're just going to get the lights out of here by forceMoving them to a far-away place
 				//They will be recovered when regurgitating, since this also calls forceMove

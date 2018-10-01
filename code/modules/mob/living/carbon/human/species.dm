@@ -681,9 +681,10 @@
 		WEAR_ID,\
 		WEAR_BODY,\
 		WEAR_JACKET,\
-		WEAR_FACE,\
 		WEAR_HEAD,\
 		WEAR_FEET,\
+		WEAR_IN_SHOES,\
+		WEAR_FACE,\
 		WEAR_HANDS,\
 		WEAR_EAR,\
 		WEAR_EYES,\
@@ -915,3 +916,5 @@
 	if(WEAR_JACKET in equip_slots)
 		equip_slots |= WEAR_IN_JACKET
 
+	if(WEAR_FEET in equip_slots)
+		equip_slots |= WEAR_IN_SHOES

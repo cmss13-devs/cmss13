@@ -251,6 +251,13 @@
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.loc = B
 					equipped = 1
+		if(WEAR_IN_SHOES)
+			if(src.shoes && istype(src.shoes, /obj/item/clothing/shoes/marine))
+				var/obj/item/clothing/shoes/marine/S = src.shoes
+				if(!S.stored_item)	
+					S.stored_item = W
+					W.loc = S
+					equipped = 1
 		if(WEAR_IN_SCABBARD)
 			if (src.back && istype(src.back, /obj/item/storage/large_holster))
 				var/obj/item/storage/large_holster/B = src.back

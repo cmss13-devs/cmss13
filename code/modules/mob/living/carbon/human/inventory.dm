@@ -73,6 +73,8 @@
 			return has_limb("chest")
 		if(WEAR_IN_BACK)
 			return 1
+		if(WEAR_IN_SHOES)
+			return 1
 		if(WEAR_IN_JACKET)
 			return 1
 		if(WEAR_IN_ACCESSORY)
@@ -339,6 +341,9 @@
 		if(WEAR_IN_BACK)
 			back.attackby(W,src)
 			back.update_icon()
+		if(WEAR_IN_SHOES)
+			shoes.attackby(W,src)
+			shoes.update_icon()
 		if(WEAR_IN_SCABBARD)
 			back.attackby(W,src)
 			back.update_icon()

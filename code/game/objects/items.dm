@@ -475,7 +475,7 @@ cases. Override_icon_state should be a list.*/
 			if(WEAR_IN_JACKET)
 				if(H.wear_suit)
 					var/obj/item/clothing/suit/storage/S = H.wear_suit
-					if(S.pockets)//not all suits have pockits
+					if(istype(S) && S.pockets)//not all suits have pockits
 						var/obj/item/storage/internal/I = S.pockets
 						if(I.can_be_inserted(src,1))
 							return 1
@@ -485,6 +485,14 @@ cases. Override_icon_state should be a list.*/
 					var/obj/item/storage/B = H.back
 					if(B.can_be_inserted(src, 1))
 						return 1
+				return 0
+			if(WEAR_IN_SHOES)
+				if(H.shoes && istype(H.shoes, /obj/item/clothing/shoes/marine))
+					var/obj/item/clothing/shoes/marine/S = H.shoes
+					if(!S.stored_item)
+						for (var/i in S.items_allowed)
+							if(istype(src, i))
+								return 1
 				return 0
 			if(WEAR_IN_SCABBARD)
 				if (H.back && istype(H.back, /obj/item/storage/large_holster))

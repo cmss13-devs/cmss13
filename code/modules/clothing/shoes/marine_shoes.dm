@@ -11,37 +11,40 @@
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 	siemens_coefficient = 0.7
-	var/obj/item/knife
+	var/obj/item/stored_item
 	var/armor_stage = 0
+	var/list/items_allowed = list( /obj/item/weapon/combat_knife, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout)
 
 /obj/item/clothing/shoes/marine/Dispose()
-	if(knife)
-		cdel(knife)
-		knife = null
+	if(stored_item)
+		cdel(stored_item)
+		stored_item = null
 	. = ..()
 
 /obj/item/clothing/shoes/marine/attack_hand(var/mob/living/M)
-	if(knife && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the knife if it's being worn or held. So you can pick them up off the floor
-		if(M.put_in_active_hand(knife))
-			M << "<span class='notice'>You slide [knife] out of [src].</span>"
+	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
+		if(M.put_in_active_hand(stored_item))
+			M << "<span class='notice'>You slide [stored_item] out of [src].</span>"
 			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			knife = 0
+			stored_item = 0
 			update_icon()
 		return
 	..()
 
 /obj/item/clothing/shoes/marine/attackby(var/obj/item/I, var/mob/living/M)
-	if(istype(I, /obj/item/weapon/combat_knife) || istype(I, /obj/item/weapon/throwing_knife) || istype(I, /obj/item/weapon/gun/pistol/holdout))
-		if(knife)	return
-		M.drop_held_item()
-		knife = I
-		I.loc = src
-		M << "<div class='notice'>You slide the [I] into [src].</div>"
-		playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-		update_icon()
+	for (var/i in items_allowed)
+		if(istype(I, i))
+			if(stored_item)	return
+			M.drop_held_item()
+			stored_item = I
+			I.loc = src
+			M << "<div class='notice'>You slide the [I] into [src].</div>"
+			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+			update_icon()
+			break
 
 /obj/item/clothing/shoes/marine/update_icon()
-	if(knife && !armor_stage)
+	if(stored_item && !armor_stage)
 		icon_state = "marine-1"
 	else
 		if(!armor_stage)
@@ -50,7 +53,7 @@
 
 /obj/item/clothing/shoes/marine/knife/New()
 	..()
-	knife = new /obj/item/weapon/combat_knife(src)
+	stored_item = new /obj/item/weapon/combat_knife(src)
 	update_icon()
 
 /obj/item/clothing/shoes/marinechief

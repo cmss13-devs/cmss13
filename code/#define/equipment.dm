@@ -157,6 +157,7 @@
 #define WEAR_IN_J_STORE     "in_j_store"
 #define WEAR_IN_L_STORE     "in_l_store"
 #define WEAR_IN_R_STORE     "in_r_store"
+#define WEAR_IN_SHOES		"in_shoes"
 
 
 //=================================================
@@ -169,9 +170,10 @@
 		WEAR_ID,\
 		WEAR_BODY,\
 		WEAR_JACKET,\
-		WEAR_FACE,\
 		WEAR_HEAD,\
 		WEAR_FEET,\
+		WEAR_IN_SHOES,\
+		WEAR_FACE,\
 		WEAR_HANDS,\
 		WEAR_EAR,\
 		WEAR_EYES,\

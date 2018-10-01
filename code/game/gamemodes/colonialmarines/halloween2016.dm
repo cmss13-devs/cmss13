@@ -838,7 +838,7 @@
 		//Knife
 		if(prob(65))
 			var/obj/item/weapon/combat_knife/K = new(B)
-			B.knife = K
+			B.stored_item = K
 			B.update_icon()
 
 		//Set Random Weapon and Ammo

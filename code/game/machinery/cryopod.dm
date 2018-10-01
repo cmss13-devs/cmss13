@@ -275,10 +275,10 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 					if(istype(W, /obj/item/clothing/shoes/marine))
 						var/obj/item/clothing/shoes/marine/MS = W
-						if(MS.knife)
-							strippeditems += MS.knife
-							MS.knife.loc = null
-							MS.knife = null
+						if(MS.stored_item)
+							strippeditems += MS.stored_item
+							MS.stored_item.loc = null
+							MS.stored_item = null
 
 
 

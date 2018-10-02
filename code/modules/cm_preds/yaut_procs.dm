@@ -50,6 +50,9 @@
 
 	var/mob/living/carbon/T = input(src,"What do you wish to butcher?") as null|anything in choices
 
+	var/mob/living/carbon/Xenomorph/xeno_victim
+	var/mob/living/carbon/human/victim
+
 	if(!T || !src || !T.stat)
 		src << "Nope."
 		return
@@ -67,6 +70,12 @@
 		return
 
 	if(!T) return
+
+	if(isXeno(T))
+		xeno_victim = T
+
+	if(ishuman(T))
+		victim = T
 
 	if(T.butchery_progress)
 		playsound(loc, 'sound/weapons/pierce.ogg', 25)
@@ -88,11 +97,13 @@
 	if(T.butchery_progress == 2)
 		if(do_after(src,65, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
 			visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
-			if(istype(T,/mob/living/carbon/Xenomorph) && isturf(T.loc))
-				new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-			else if(istype(T,/mob/living/carbon/human) && isturf(T.loc))
-				T.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
-				new /obj/item/reagent_container/food/snacks/meat(T.loc)
+			if(xeno_victim && isturf(xeno_victim.loc))
+				var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
+				xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] steak"
+			else if(victim && isturf(victim.loc))
+				victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
+				var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+				meat.name = "raw [victim.name] steak"
 			T.butchery_progress = 3
 			playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 		else
@@ -101,11 +112,14 @@
 	if(T.butchery_progress == 3)
 		if(do_after(src,70, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
 			visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
-			if(istype(T,/mob/living/carbon/Xenomorph) && isturf(T.loc))
-				new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-			else if(istype(T,/mob/living/carbon/human) && isturf(T.loc))
-				new /obj/item/reagent_container/food/snacks/meat(T.loc)
-			T.apply_damage(100,BRUTE,"chest",0,0,0) //Does random serious damage, so we make sure they're dead.
+			if(xeno_victim && isturf(xeno_victim.loc))
+				var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
+				xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] tenderloin"
+			else if(victim && isturf(T.loc))
+				var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+				meat.name = "raw [victim.name] tenderloin"
+//				T.apply_damage(100,BRUTE,"chest",0,0,0) //Does random serious damage, so we make sure they're dead.
+//				Why was this even in here?
 			T.butchery_progress = 4
 			playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 		else
@@ -113,18 +127,26 @@
 
 	if(T.butchery_progress == 4)
 		if(do_after(src,90, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
-			if(istype(T,/mob/living/carbon/Xenomorph) && isturf(T.loc))
-				visible_message("<b>[src] flenses the last of [T]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [T]'s exoskeleton clean off!</b>")
-				new /obj/effect/decal/remains/xeno(T.loc)
-				new /obj/item/stack/sheet/animalhide/xeno(T.loc)
-			else if(istype(T,/mob/living/carbon/human) && isturf(T.loc))
+			if(xeno_victim && isturf(T.loc))
+				visible_message("<b>[src] flenses the last of [victim]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [victim]'s exoskeleton clean off!</b>")
+				new /obj/effect/decal/remains/xeno(xeno_victim.loc)
+				var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
+				xenohide.name = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
+				xenohide.singular_name = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
+				xenohide.stack_id = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
+
+			else if(victim && isturf(T.loc))
 				visible_message("<b>[src] reaches down and rips out \the [T]'s spinal cord and skull!</b>.","<b>You firmly grip the revealed spinal column and rip [T]'s head off!</b>")
 				var/mob/living/carbon/human/H = T
 				if(H.get_limb("head"))
 					H.apply_damage(150,BRUTE,"head",0,1,1)
 				else
-					new /obj/item/reagent_container/food/snacks/meat(T.loc)
-				new /obj/item/stack/sheet/animalhide/human(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+					meat.name = "raw [victim.name] steak"
+				var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
+				hide.name = "[victim.name]-hide"
+				hide.singular_name = "[victim.name]-hide"
+				hide.stack_id = "[victim.name]-hide"
 				new /obj/effect/decal/remains/human(T.loc)
 			if(T.legcuffed)
 				T.drop_inv_item_on_ground(T.legcuffed)

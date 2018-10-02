@@ -284,10 +284,16 @@
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 	species_restricted = null
+	items_allowed = list(/obj/item/weapon/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
+	var/bootnumber = 1
 
+/obj/item/clothing/shoes/yautja/update_icon()
+	icon_state = "y-boots[bootnumber]"
+	
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,3))
 	..()
-	icon_state = "y-boots[boot_number]"
+	bootnumber = boot_number
+	update_icon()
 	if(boot_number != 1) //More overall protection, less defensive value.
 		flags_armor_protection = FEET|LEGS|LOWER_TORSO
 		armor = list(melee = 65, bullet = 75, laser = 55, energy = 45, bomb = 40, bio = 20, rad = 20)
@@ -445,7 +451,7 @@
 		user << "<span class='notice'>You retract your wrist blades.</span>"
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
-		user.drop_inv_item_to_loc(R, R.loc)
+		cdel(R)
 		return
 	else
 		if(!drain_power(user,50)) return
@@ -1070,7 +1076,7 @@
 	w_class = 5
 	edge = 1
 	sharp = 0
-	flags_item = NOSHIELD|DELONDROP
+	flags_item = NOSHIELD|NODROP
 	flags_equip_slot = NOFLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
@@ -1114,6 +1120,10 @@
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, 1)
 		if(do_after(user,30, TRUE, 5, BUSY_ICON_HOSTILE) && D.density)
 			D.open(1)
+
+/obj/item/weapon/wristblades/attack_self(mob/user)
+	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
+		Y.wristblades()
 
 /obj/item/weapon/wristblades/scimitar
 	name = "wrist scimitar"

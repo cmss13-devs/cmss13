@@ -487,9 +487,9 @@ cases. Override_icon_state should be a list.*/
 						return 1
 				return 0
 			if(WEAR_IN_SHOES)
-				if(H.shoes && istype(H.shoes, /obj/item/clothing/shoes/marine))
-					var/obj/item/clothing/shoes/marine/S = H.shoes
-					if(!S.stored_item)
+				if(H.shoes && istype(H.shoes, /obj/item/clothing/shoes))
+					var/obj/item/clothing/shoes/S = H.shoes
+					if(!S.stored_item && S.items_allowed && S.items_allowed.len)
 						for (var/i in S.items_allowed)
 							if(istype(src, i))
 								return 1

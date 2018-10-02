@@ -11,37 +11,8 @@
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 	siemens_coefficient = 0.7
-	var/obj/item/stored_item
 	var/armor_stage = 0
-	var/list/items_allowed = list( /obj/item/weapon/combat_knife, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout)
-
-/obj/item/clothing/shoes/marine/Dispose()
-	if(stored_item)
-		cdel(stored_item)
-		stored_item = null
-	. = ..()
-
-/obj/item/clothing/shoes/marine/attack_hand(var/mob/living/M)
-	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
-		if(M.put_in_active_hand(stored_item))
-			M << "<span class='notice'>You slide [stored_item] out of [src].</span>"
-			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			stored_item = 0
-			update_icon()
-		return
-	..()
-
-/obj/item/clothing/shoes/marine/attackby(var/obj/item/I, var/mob/living/M)
-	for (var/i in items_allowed)
-		if(istype(I, i))
-			if(stored_item)	return
-			M.drop_held_item()
-			stored_item = I
-			I.loc = src
-			M << "<div class='notice'>You slide the [I] into [src].</div>"
-			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			update_icon()
-			break
+	items_allowed = list( /obj/item/weapon/combat_knife, /obj/item/weapon/throwing_knife, /obj/item/weapon/gun/pistol/holdout)
 
 /obj/item/clothing/shoes/marine/update_icon()
 	if(stored_item && !armor_stage)

@@ -1,0 +1,24 @@
+"LU" = (/obj/structure/jungle/plantbot1,/turf/open/gm/grass,/area/lv624/ground/jungle1)
+"LV" = (/turf/open/gm/grass,/area/lv624/ground/jungle1)
+"LW" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle1)
+"Qz" = (/obj/structure/jungle/planttop1,/turf/open/gm/grass,/area/lv624/ground/jungle1)
+"RJ" = (/obj/effect/landmark{name = "hunter_primary"},/turf/open/gm/grass,/area/lv624/ground/jungle1)
+"VR" = (/obj/effect/landmark{name = "yautja_teleport_loc"},/turf/open/gm/grass,/area/lv624/ground/jungle1)
+"Ya" = (/obj/effect/landmark/lv624/xeno_tunnel,/turf/open/gm/grass,/area/lv624/ground/jungle1)
+
+(1,1,1) = {"
+LVLVLVLVLVLVLVLVQzLWLWLWLWLWLW
+LVLVLVLVLVLVLVLVLULVLWLWLVLWLW
+LVLVLVLVLVLVLVLVLWLVLWLWLVLWLW
+LVLVLWLWLVLVVRLVLVLVLWLWLVLWLW
+LVLVLVLWLVLWLVLWLVLVLWLWLVLWLW
+LVLVLVLVQzLVLWLWLVLVLWLWLVLWLW
+LVLVLVLVLULVLVLVLVLVLWLVLVLVLW
+LVLVLVLVLVLVLVLWLWLVLVLVLWLVLV
+LVLVLVLVLVLVLVLVLVRJLWLWLWLWLW
+LWLVLVLVLVLVLWLVLWLWLWLWLWLWLW
+LVLVLVLWLVLWLWLVLVLVLVLVLVLWLW
+LWLVLVLVYaLWLWLWLWLWLWLWLVLVLV
+LWLWLWLWLWLWLWLWLWLWLWLWLWLWLW
+LWLWLWLWLWLWLWLWLWLWLWLWLWLWLW
+"}

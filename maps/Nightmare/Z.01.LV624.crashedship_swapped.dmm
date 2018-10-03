@@ -56,7 +56,6 @@
 "bl" = (/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
 "bm" = (/turf/closed/mineral,/area/lv624/ground/caves/central1)
 "br" = (/obj/structure/mineral_door/resin,/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
-"bv" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
 "bw" = (/obj/structure/mineral_door/resin,/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
 "bT" = (/turf/closed/mineral,/area/lv624/ground/sand6)
 "cf" = (/turf/closed/mineral,/area/lv624/ground/caves/east1)
@@ -70,8 +69,8 @@
 "ea" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/dirt,/area/lv624/ground/sand6)
 
 (1,1,1) = {"
-bmbmbmbmbmbmbmbmbmbmbmbmblblblblblblblblbvblblcgcfcfcfcfcfcf
-bmbmbmbmbmbmbmbmbmbmbmbmbrbwbrbrbmbmbmbmblblblcfcfcfcfcfcfcf
+bmbmbmbmbmbmbmbmbmbmbmbmblblblblbmbmbmbmbmbmbmcfcfcfcfcfcfcf
+bmbmbmbmbmbmbmbmbmbmbmbmbrbwbrbrbmbmbmbmbmbmbmcfcfcfcfcfcfcf
 bmbmbmbmbmbmbmbmbmbmbmbmblblblblbmbmbmbmbmbmbmcfcfcfcfcfcfcf
 bmbmbmbmbmbmbmbmbmbmbmbmbmblblblblbmbmbmbmbmbmcfcfcfcfcfcfcf
 bmbmbmbmaaaaabbmbmbmbmbmbmcRcRcRcRcRcRbTbTbTbTcfcfcfcfcfcfcf

@@ -97,6 +97,9 @@
 					if(ckey(G.mind.original.ckey) == pulled.ckey)
 						src << "You start to devour [pulled] but realize \he is already dead."
 						return */
+		if(user.action_busy)
+			X << "<span class='warning'>You are already busy with something.</span>"
+			return
 		X.visible_message("<span class='danger'>[X] starts to devour [pulled]!</span>", \
 		"<span class='danger'>You start to devour [pulled]!</span>", null, 5)
 		if(do_after(X, 50, FALSE, 5, BUSY_ICON_HOSTILE))

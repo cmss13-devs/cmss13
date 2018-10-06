@@ -419,6 +419,45 @@ should be alright.
 					//				   \\
 //----------------------------------------------------------
 
+//For the holster hotkey
+/mob/living/carbon/human/verb/holster_verb()
+	set name = "Holster"
+	set category = "Object"
+	set hidden = 1
+	if(usr.stat) return
+
+	var/obj/item/weapon/W = src.get_active_hand()
+	var/obj/item/clothing/tie/holster/T = src.w_uniform.hastie
+	if(W && istype(W))
+		if(istype(T) && !T.holstered && T.can_holster(W))
+			T.holster(W, src)
+		else
+			src.quick_equip()
+	else
+		if(src.w_uniform)
+			if(src.w_uniform.hastie)
+				if(istype(T) && T.holstered)
+					src.w_uniform.attack_hand(src)
+					return
+		if(src.belt)
+			if(istype(src.belt, /obj/item/storage/belt/gun/) || istype(src.belt, /obj/item/storage/large_holster))
+				var/obj/item/storage/G = src.belt
+				for(var/obj/item/weapon/gun in G.return_inv())
+					src.belt.attack_hand(src)
+					return
+		if(src.back)
+			if(istype(src.back, /obj/item/storage/large_holster))
+				var/obj/item/storage/large_holster/B = src.back
+				if(B.return_inv().len)
+					src.back.attack_hand(src)
+					return
+		
+	
+	
+	
+	
+
+
 /obj/item/weapon/gun/verb/field_strip()
 	set category = "Weapons"
 	set name = "Field Strip Weapon"

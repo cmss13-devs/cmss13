@@ -467,7 +467,7 @@ cases. Override_icon_state should be a list.*/
 				if(H.w_uniform)
 					if(H.w_uniform.hastie)
 						var/obj/item/clothing/tie/storage/T = H.w_uniform.hastie
-						if(T.hold)//it's possible to delete this from an existing storage tie, somehow, so istype() doesn't work here
+						if(T && istype(T) && T.hold)//it's possible to delete this from an existing storage tie, somehow, so istype() doesn't work here
 							var/obj/item/storage/internal/I = T.hold
 							if(I.can_be_inserted(src, 1))
 								return 1

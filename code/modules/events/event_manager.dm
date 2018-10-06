@@ -59,7 +59,7 @@ var/scheduledEvent = null
 /client/proc/forceEvent(var/type in allEvents)
 	set name = "Trigger Event (Debug Only)"
 	set category = "Debug"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!holder)
 		return
 

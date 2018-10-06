@@ -1,6 +1,7 @@
 /client/proc/Debug2()
 	set category = "Debug"
 	set name = "Debugging Mode"
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_DEBUG))	return
 
 	if(Debug2)
@@ -349,6 +350,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
 	set name = "Generate Powernets"
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
 	log_admin("[key_name(src)] has remade the powernet. makepowernets() called.")
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
@@ -440,7 +442,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/cmd_admin_areatest()
 	set category = "Mapping"
 	set name = "Test areas"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	var/list/areas_all = list()
 	var/list/areas_with_APC = list()
 	var/list/areas_with_air_alarm = list()

@@ -439,6 +439,15 @@ should be alright.
 				if(istype(T) && T.holstered)
 					src.w_uniform.attack_hand(src)
 					return
+		if(src.s_store)
+			if(istype(src.s_store, /obj/item/storage))
+				var/obj/item/storage/S = src.s_store
+				for(var/obj/item/weapon/wep in S.return_inv())
+					src.s_store.attack_hand(src)
+					return
+			else if(istype(src.s_store, /obj/item/weapon))
+				src.s_store.attack_hand(src)
+				return
 		if(src.belt)
 			if(istype(src.belt, /obj/item/storage/belt/gun/) || istype(src.belt, /obj/item/storage/large_holster))
 				var/obj/item/storage/G = src.belt
@@ -451,6 +460,14 @@ should be alright.
 				if(B.return_inv().len)
 					src.back.attack_hand(src)
 					return
+		
+		if(src.shoes)
+			if(istype(src.shoes, /obj/item/clothing/shoes))
+				var/obj/item/clothing/shoes/S = src.shoes
+				if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
+					src.shoes.attack_hand(src)
+					return
+
 		
 	
 	

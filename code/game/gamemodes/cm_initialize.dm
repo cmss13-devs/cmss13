@@ -339,8 +339,9 @@ datum/game_mode/proc/initialize_special_clamps()
 				return 0
 
 			if(queen.can_spawn_larva()) //check again incase it hit the 1 minute mark between checks
-				var/mob/new_player/P = xeno_candidate
-				P.close_spawn_windows()
+				if(isnewplayer(xeno_candidate))
+					var/mob/new_player/N = xeno_candidate
+					N.close_spawn_windows()
 				queen.spawn_buried_larva(xeno_candidate)
 				return 1
 
@@ -380,6 +381,9 @@ datum/game_mode/proc/initialize_special_clamps()
 		else return 0
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
+		if(isnewplayer(xeno_candidate))
+			var/mob/new_player/N = xeno_candidate
+			N.close_spawn_windows()
 		if(transfer_xeno(xeno_candidate.key, new_xeno))
 			return 1
 	xeno_candidate << "JAS01: Something went wrong, tell a coder."

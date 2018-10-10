@@ -252,8 +252,8 @@
 					W.loc = B
 					equipped = 1
 		if(WEAR_IN_SHOES)
-			if(src.shoes && istype(src.shoes, /obj/item/clothing/shoes/marine))
-				var/obj/item/clothing/shoes/marine/S = src.shoes
+			if(src.shoes && istype(src.shoes, /obj/item/clothing/shoes))
+				var/obj/item/clothing/shoes/S = src.shoes
 				if(!S.stored_item)	
 					S.stored_item = W
 					W.loc = S

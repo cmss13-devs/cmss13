@@ -247,9 +247,40 @@
 	slowdown = SHOES_SLOWDOWN
 	species_restricted = list("exclude","Yautja")
 	sprite_sheets = list("Vox" = 'icons/mob/species/vox/shoes.dmi')
-
+	var/obj/item/stored_item
+	var/list/items_allowed
 
 /obj/item/clothing/shoes/update_clothing_icon()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_shoes()
+/obj/item/clothing/shoes/Dispose()
+	if(stored_item)
+		cdel(stored_item)
+		stored_item = null
+	. = ..()
+
+/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
+	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
+		if(M.put_in_active_hand(stored_item))
+			M << "<span class='notice'>You slide [stored_item] out of [src].</span>"
+			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+			stored_item = 0
+			update_icon()
+			desc = initial(desc)
+		return
+	..()
+
+/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/living/M)
+	if(items_allowed && items_allowed.len)
+		for (var/i in items_allowed)
+			if(istype(I, i))
+				if(stored_item)	return
+				M.drop_held_item()
+				stored_item = I
+				I.loc = src
+				M << "<div class='notice'>You slide the [I] into [src].</div>"
+				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+				update_icon()
+				desc = initial(desc) + "It is storing \a [stored_item]."			
+				break

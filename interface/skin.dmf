@@ -222,15 +222,6 @@ macro "hotkeymode"
 		command = ".east"
 	elem 
 		name = "E"
-		command = "quick-equip"
-	elem 
-		name = "CTRL+E"
-		command = "quick-equip"
-	elem 
-		name = "H"
-		command = "holster"
-	elem 
-		name = "CTRL+H"
 		command = "holster"
 	elem 
 		name = "Q"

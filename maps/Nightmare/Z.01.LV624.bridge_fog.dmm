@@ -1,0 +1,42 @@
+"ajq" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/river2)
+"ajr" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast,/area/lv624/ground/river2)
+"aab" = (/obj/structure/fence,/turf/open/floor/plating{dir = 9; icon_state = "warnplate"},/area/lv624/ground/river2)
+"aac" = (/turf/open/floor/plating{dir = 1; icon_state = "asteroidwarning"},/area/lv624/ground/river2)
+"aad" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 5},/area/lv624/ground/river2)
+"ajT" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/river2)
+"akm" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/river,/area/lv624/ground/river2)
+"alp" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{tag = "icon-beach (SOUTHEAST)"; icon_state = "beach"; dir = 6},/area/lv624/ground/river2)
+"aaa" = (/turf/open/space,/area/space)
+"aal" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/river,/area/space)
+"aae" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 8},/area/lv624/ground/river2)
+"ajV" = (/turf/open/floor/plating{dir = 1; icon_state = "asteroidfloor"},/area/lv624/ground/river2)
+"aaf" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 4},/area/lv624/ground/river2)
+"alW" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1},/area/lv624/ground/river2)
+"aag" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 10},/area/lv624/ground/river2)
+"alY" = (/turf/open/floor/plating{dir = 2; icon_state = "asteroidwarning"},/area/lv624/ground/river2)
+"aah" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 6},/area/lv624/ground/river2)
+"amo" = (/obj/structure/flora/ausbushes/fullgrass,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/river2)
+"aai" = (/turf/open/gm/dirt,/area/lv624/ground/river2)
+"amq" = (/obj/machinery/colony_floodlight,/turf/open/gm/dirt,/area/lv624/ground/river2)
+"amr" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/river2)
+"ams" = (/obj/structure/jungle/planttop1,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/river2)
+"amD" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle7)
+"amE" = (/obj/structure/jungle/plantbot1,/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle7)
+"aaj" = (/turf/open/gm/grass,/area/lv624/ground/jungle7)
+"aak" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle7)
+(1,1,1) = {"
+ajqajrajrajrajraabaacaacaacaadajrajTakm
+alpaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaaaaaaaaalaaeajVajVajVaafaalaaaaaa
+aaaaaaalWalWalWaagalYalYalYaahalWaaaaaa
+aaaamoaaaaaaaaaaaiaaiaaiaaiaaiamqamrams
+amDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaamE
+aaaaajaaaaajaakaaaaaaaaaaaaaaaaaaaajaak
+aaaaaaaajaaaaaaaajaakaajaajaajaajaaaaaa
+"}
+

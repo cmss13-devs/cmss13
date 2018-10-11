@@ -2,6 +2,7 @@
 /client/proc/fix_next_move()
 	set category = "Debug"
 	set name = "Unfreeze Everyone"
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	var/largest_move_time = 0
 	var/largest_click_time = 0
 	var/mob/largest_move_mob = null
@@ -59,7 +60,7 @@
 /client/proc/reload_admins()
 	set name = "Reload Admins"
 	set category = "Debug"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_SERVER))	return
 
 	message_admins("[usr.ckey] manually reloaded admins.")
@@ -69,7 +70,7 @@
 /client/proc/reload_whitelist()
 	set name = "Reload Whitelist"
 	set category = "Debug"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_SERVER) || !RoleAuthority) return
 
 	message_admins("[usr.ckey] manually reloaded the role whitelist.")

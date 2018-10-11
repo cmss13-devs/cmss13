@@ -442,7 +442,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 /client/proc/cmd_admin_areatest()
 	set category = "Mapping"
 	set name = "Test areas"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	var/list/areas_all = list()
 	var/list/areas_with_APC = list()
 	var/list/areas_with_air_alarm = list()

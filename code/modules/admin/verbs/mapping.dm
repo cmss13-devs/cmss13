@@ -46,7 +46,7 @@ var/intercom_range_display_status = 0
 /client/proc/camera_view()
 	set category = "Mapping"
 	set name = "Camera Range Display"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(camera_range_display_status)
 		camera_range_display_status = 0
 	else
@@ -103,7 +103,7 @@ var/intercom_range_display_status = 0
 /client/proc/intercom_view()
 	set category = "Mapping"
 	set name = "Intercom Range Display"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(intercom_range_display_status)
 		intercom_range_display_status = 0
 	else

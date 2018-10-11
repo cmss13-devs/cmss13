@@ -177,7 +177,7 @@ TO DO: Implement more support for /mob.
 	set category = "Debug"
 	set name = "Trash: TA Purge Toggle"
 	set desc = "This will toggle the Trash Authority's purge mode and log the results in debug. Do not use this without good reason."
-	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	TrashAuthority.purging = !TrashAuthority.purging
 	usr << "\red TA is [TrashAuthority.purging? "now purging." : "is no longer purging."]"
 	log_debug("TA: <b>[usr.key]</b> used the purge toggle.")

@@ -46,7 +46,7 @@ var/intercom_range_display_status = 0
 /client/proc/camera_view()
 	set category = "Mapping"
 	set name = "Camera Range Display"
-
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(camera_range_display_status)
 		camera_range_display_status = 0
 	else
@@ -103,7 +103,7 @@ var/intercom_range_display_status = 0
 /client/proc/intercom_view()
 	set category = "Mapping"
 	set name = "Intercom Range Display"
-
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(intercom_range_display_status)
 		intercom_range_display_status = 0
 	else
@@ -183,6 +183,7 @@ var/list/debug_verbs = list(
 /client/proc/count_objects_on_z_level()
 	set category = "Mapping"
 	set name = "Count Objects On Level"
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	var/level = input("Which z-level?","Level?") as text
 	if(!level) return
 	var/num_level = text2num(level)
@@ -226,7 +227,7 @@ var/list/debug_verbs = list(
 /client/proc/count_objects_all()
 	set category = "Mapping"
 	set name = "Count Objects All"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	var/type_text = input("Which type path?","") as text
 	if(!type_text) return
 	var/type_path = text2path(type_text)

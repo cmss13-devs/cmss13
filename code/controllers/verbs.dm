@@ -5,7 +5,7 @@
 	set category = "Debug"
 	set name = "Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!holder)	return
 	usr = null
 	src = null
@@ -24,7 +24,7 @@
 	set category = "Debug"
 	set name = "Debug Controllers"
 	set desc = "Debug the various periodic loop controllers for the game (be careful!)"
-
+	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!holder)	return
 	switch(controller)
 		if("Ticker")

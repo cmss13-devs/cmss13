@@ -132,7 +132,7 @@ You can also return the entire list of variables if you reset them manually. Not
 	set name = "Test Image Variables"
 	set category = "Debug"
 	set desc = "Test out image creation on New() and the variables as they are set."
-
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	var/directives[] = list('icons/testing/Zone.dmi',src,"assigned",10,10)
 	var/image/debug_image/I = new(arglist(directives))
 	src << "<span class='debuginfo'><b>Initial Spawn</b></span>"
@@ -197,7 +197,7 @@ overhead only applies when the image is first created.*/
 	set category = "Debug"
 	set name = "Trash: RA Diagnose"
 	set desc = "This will bring up diagnostic information about the Trash Authority and log the results in debug."
-
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	usr << "Currently processed: <b>[RecycleAuthority.recycle_count]</b> products."
 	usr << "Currently storing: <b>[RecycleAuthority.recycling.len]</b> item categories."
 	log_debug("RA: Currently processed: <b>[RecycleAuthority.recycle_count]</b> products. Currently storing: <b>[RecycleAuthority.recycling.len]</b> item categories.")
@@ -206,7 +206,7 @@ overhead only applies when the image is first created.*/
 	set category = "Debug"
 	set name = "Trash: RA Purge Toggle"
 	set desc = "This will toggle the Recycle Authority's purge mode and log the results in debug. Do not use this without good reason."
-
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	RecycleAuthority.purging = !RecycleAuthority.purging
 	usr << "\red RA is [RecycleAuthority.purging? "now purging." : "is no longer purging."]"
 	log_debug("RA: <b>[usr.key]</b> used the purge toggle.")

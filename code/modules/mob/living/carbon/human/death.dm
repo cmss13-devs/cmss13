@@ -45,11 +45,14 @@
 
 
 
+/mob/living/carbon/human/rejuvenate()
+	..()
+	callHook("clone", list(src))
 
 
 
 
-/mob/living/carbon/human/death(gibbed)
+/mob/living/carbon/human/death(var/gibbed=0)
 
 	if(stat == DEAD) return
 	living_human_list -= src
@@ -59,7 +62,7 @@
 	//Handle species-specific deaths.
 	if(species) species.handle_death(src, gibbed)
 
-	//callHook("death", list(src, gibbed))
+	callHook("death", list(src, gibbed))
 
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)

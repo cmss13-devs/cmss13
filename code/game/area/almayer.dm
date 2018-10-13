@@ -62,6 +62,16 @@
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/command/securestorage
+	name = "\improper Secure Storage"
+	icon_state = "corporatespace"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/command/computerlab
+	name = "\improper Computer Lab"
+	icon_state = "ceroom"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/command/telecomms
 	name = "\improper Telecommunications"
 	icon_state = "tcomms"
@@ -359,6 +369,11 @@
 /area/almayer/medical/upper_medical
 	name = "\improper Medical Upper"
 	icon_state = "medical"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/medical/morgue
+	name = "\improper Morgue"
+	icon_state = "operating"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/medical/operating_room_one

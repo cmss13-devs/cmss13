@@ -74,6 +74,12 @@ h1.alert, h2.alert		{color: #000000;}
 .xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 3;}
 .xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-style: italic; font-size: 3;}
 
+.objectivebig			{font-weight: bold; font-size: 3;}
+.objectivegreen			{color: #00ff00;}
+.objectivered			{color: #ff0000;}
+.objectivesuccess		{color: #00ff00;	font-weight: bold; font-size: 3;}
+.objectivefail			{color: #ff0000;	font-weight: bold; font-size: 3;}
+
 .alien					{color: #543354;}
 .newscaster				{color: #800000;}
 

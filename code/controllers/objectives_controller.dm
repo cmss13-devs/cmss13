@@ -1,0 +1,202 @@
+
+var/global/datum/objectives_controller/objectives_controller
+
+/datum/objectives_controller
+	var/list/objectives = list()
+	var/list/active_objectives = list()
+	var/list/inactive_objectives = list()
+	var/list/non_processing_objectives = list()
+	var/datum/cm_objective/communications/comms
+	var/datum/cm_objective/establish_power/power
+	var/datum/cm_objective/recover_corpses/marines/marines
+
+/datum/objectives_controller/New()
+	for(var/datum/cm_objective/C in cm_objectives)
+		if(!(C in objectives))
+			objectives += C
+		if(C.objective_flags & OBJ_PROCESS_ON_DEMAND)
+			non_processing_objectives += C
+		else
+			inactive_objectives += C
+	setup_tree()
+	for(var/datum/cm_objective/N in non_processing_objectives)
+		N.activate()
+
+/hook/roundstart/proc/setup_objectives()
+	if(objectives_controller)
+		objectives_controller.pre_round_start()
+		objectives_controller.post_round_start()
+	return 1
+
+/datum/objectives_controller/proc/pre_round_start()
+	for(var/datum/cm_objective/O in objectives)
+		O.pre_round_start()
+
+/datum/objectives_controller/proc/post_round_start()
+	for(var/datum/cm_objective/O in objectives)
+		O.post_round_start()
+
+/datum/objectives_controller/proc/get_objectives_progress()
+	var/point_total = 0
+	var/complete = 0
+	var/failed = 0
+
+	var/list/categories = list()
+	var/list/notable_objectives = list()
+
+	for(var/datum/cm_objective/C in objectives)
+		if(C.display_category)
+			if(!(C.display_category in categories))
+				categories += C.display_category
+				categories[C.display_category] = list("count" = 0, "total" = 0, "complete" = 0, "failed" = 0)
+			categories[C.display_category]["count"]++
+			categories[C.display_category]["total"] += C.total_point_value()
+			categories[C.display_category]["complete"] += C.get_point_value()
+			if(C.is_failed())
+				categories[C.display_category]["failed"] += C.total_point_value()
+
+		if(C.display_flags & OBJ_DISPLAY_AT_END)
+			notable_objectives += C
+
+		point_total += C.total_point_value()
+		complete += C.get_point_value()
+		if(C.is_failed())
+			failed += C.total_point_value()
+
+	var/dat = ""
+	if(objectives.len) // protect against divide by zero
+		dat = "<span class='objectivebig'>Total Objectives: [objectives.len]</span> <span class='objectivegreen'>[complete]pts completed ([round(100.0*complete/point_total)]%)</span>, <span class='objectivered'>[failed]pts failed ([round(100.0*failed/point_total)]%)</span> <br>"
+		if(categories.len)
+			var/count
+			var/total
+			var/compl
+			var/fail
+			for(var/cat in categories)
+				count = categories[cat]["count"]
+				total = categories[cat]["total"]
+				compl = categories[cat]["complete"]
+				fail = categories[cat]["failed"]
+				dat += "<span class='objectivebig'>[cat]: [count]</span> <span class='objectivegreen'>[compl]pts completed ([round(100.0*compl/total)]%)</span>, <span class='objectivered'>[fail]pts failed ([round(100.0*fail/total)]%)</span> <br>"
+
+		for(var/datum/cm_objective/O in notable_objectives)
+			dat += O.get_readable_progress()
+
+	return dat
+
+/datum/objectives_controller/proc/setup_tree()
+	var/list/no_value = list()
+	var/list/low_value = list()
+	var/list/med_value = list()
+	var/list/high_value = list()
+	var/list/extreme_value = list()
+	var/list/absolute_value = list()
+	for(var/datum/cm_objective/O in objectives)
+		if(O.objective_flags & OBJ_DO_NOT_TREE)
+			continue // exempt from the tree
+		switch(O.priority)
+			if(OBJECTIVE_NO_VALUE)
+				no_value += O
+			if(OBJECTIVE_LOW_VALUE)
+				low_value += O
+			if(OBJECTIVE_MEDIUM_VALUE)
+				med_value += O
+			if(OBJECTIVE_HIGH_VALUE)
+				high_value += O
+			if(OBJECTIVE_EXTREME_VALUE)
+				extreme_value += O
+			if(OBJECTIVE_ABSOLUTE_VALUE)
+				absolute_value += O
+			
+	var/datum/cm_objective/enables
+	for(var/datum/cm_objective/N in no_value)
+		if(!low_value || !low_value.len)
+			break
+		if(N.objective_flags & OBJ_DEAD_END)
+			no_value -= N // stop it being picked
+			continue
+		enables = pick(low_value)
+		if(!enables)
+			break
+		N.enables_objectives += enables
+		enables.required_objectives += N
+	for(var/datum/cm_objective/L in low_value)
+		if(!L.required_objectives.len && no_value.len)
+			L.required_objectives += pick(no_value)
+		if(!med_value || !med_value.len)
+			break
+		if(L.objective_flags & OBJ_DEAD_END)
+			low_value -= L
+			continue
+		enables = pick(med_value)
+		if(!enables)
+			break
+		L.enables_objectives += enables
+		enables.required_objectives += L
+	for(var/datum/cm_objective/M in med_value)
+		if(!M.required_objectives.len && low_value.len)
+			M.required_objectives += pick(low_value)
+		if(!high_value || !high_value.len)
+			break
+		if(M.objective_flags & OBJ_DEAD_END)
+			med_value -= M
+			continue
+		enables = pick(high_value)
+		if(!enables)
+			break
+		M.enables_objectives += enables
+		enables.required_objectives += M
+	for(var/datum/cm_objective/H in high_value)
+		if(!H.required_objectives.len && med_value.len)
+			H.required_objectives += pick(med_value)
+		if(!extreme_value || !extreme_value.len)
+			break
+		if(H.objective_flags & OBJ_DEAD_END)
+			high_value -= H
+			continue
+		enables = pick(extreme_value)
+		if(!enables)
+			break
+		H.enables_objectives += enables
+		enables.required_objectives += H
+	for(var/datum/cm_objective/E in extreme_value)
+		if(!E.required_objectives.len && high_value.len)
+			E.required_objectives += pick(high_value)
+		if(!absolute_value || !absolute_value.len)
+			break
+		if(E.objective_flags & OBJ_DEAD_END)
+			extreme_value -= E
+			continue
+		enables = pick(absolute_value)
+		if(!enables)
+			break
+		E.enables_objectives += enables
+		enables.required_objectives += E
+	for(var/datum/cm_objective/A in absolute_value)
+		if(!A.required_objectives.len && extreme_value.len)
+			A.required_objectives += pick(extreme_value)
+
+/datum/objectives_controller/proc/add_objective(var/datum/cm_objective/O)
+	if(!(O in objectives))
+		objectives += O
+	if((O.objective_flags & OBJ_PROCESS_ON_DEMAND) && !(O in non_processing_objectives))
+		non_processing_objectives += O
+	else if(!(O in inactive_objectives))
+		inactive_objectives += O
+
+/datum/objectives_controller/proc/remove_objective(var/datum/cm_objective/O)
+	objectives -= O
+	non_processing_objectives -= O
+	inactive_objectives -= O
+	active_objectives -= O
+
+/hook/startup/proc/create_objectives_controller()
+	objectives_controller = new /datum/objectives_controller
+	// Setup some global objectives
+	objectives_controller.power = new /datum/cm_objective/establish_power
+	objectives_controller.comms = new /datum/cm_objective/communications
+	objectives_controller.marines = new /datum/cm_objective/recover_corpses/marines
+	objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
+	objectives_controller.add_objective(new /datum/cm_objective/recover_corpses/colonists)
+	objectives_controller.active_objectives += objectives_controller.power
+	objectives_controller.active_objectives += objectives_controller.comms
+	return 1

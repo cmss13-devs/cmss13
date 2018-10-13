@@ -1,0 +1,42 @@
+"a" = (/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
+"b" = (/obj/item/stack/sheet/wood,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
+"c" = (/turf/open/floor{dir = 4; icon_state = "whiteyellow"},/area/lv624/lazarus/main_hall)
+"d" = (/obj/item/phone{desc = "A model of an ancient Earth communication device."; force = 8},/obj/structure/rack{layer = 2.5},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/turf/open/floor{icon_state = "wood"},/area/lv624/lazarus/main_hall)
+"e" = (/obj/structure/barricade/wooden{dir = 8},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
+"f" = (/turf/open/floor{dir = 4; icon_state = "whiteyellowcorner"},/area/lv624/lazarus/main_hall)
+"g" = (/turf/open/floor{dir = 1; icon_state = "whiteyellow"},/area/lv624/lazarus/main_hall)
+"h" = (/obj/machinery/light/small,/obj/effect/landmark{name = "crap_item"},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
+"i" = (/turf/closed/wall/r_wall,/area/lv624/lazarus/armory)
+"j" = (/turf/closed/wall/r_wall,/area/lv624/lazarus/security)
+"k" = (/obj/structure/rack{layer = 2.5},/obj/item/weapon/gun/shotgun/pump,/obj/item/ammo_magazine/shotgun,/obj/item/ammo_magazine/shotgun/flechette,/obj/item/ammo_magazine/shotgun/incendiary,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"l" = (/obj/effect/decal/cleanable/cobweb2,/obj/item/reagent_container/hypospray/autoinjector/tricord,/obj/structure/rack{layer = 2.5},/obj/item/reagent_container/hypospray/autoinjector/dexP{pixel_x = -2; pixel_y = -2},/obj/item/reagent_container/hypospray/autoinjector/quickclot{pixel_x = 3; pixel_y = 3},/obj/item/reagent_container/hypospray/autoinjector/tricord,/obj/effect/landmark{name = "crap_item"},/obj/effect/landmark{name = "crap_item"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"m" = (/obj/item/target/syndicate,/obj/structure/target_stake{layer = 2},/turf/open/floor{icon_state = "red"; dir = 5},/area/lv624/lazarus/security)
+"n" = (/obj/machinery/deployable/barrier,/obj/effect/decal/cleanable/cobweb,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"o" = (/obj/machinery/light/small{dir = 1},/obj/structure/rack{layer = 2.5},/obj/item/weapon/gun/pistol/highpower,/obj/item/ammo_magazine/pistol/highpower,/obj/item/ammo_magazine/pistol/highpower,/obj/item/ammo_magazine/pistol/highpower,/obj/item/explosive/grenade/flashbang,/obj/item/explosive/grenade/flashbang,/obj/item/ammo_magazine/shotgun/beanbag,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"p" = (/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"q" = (/obj/structure/rack{layer = 2.5},/obj/effect/landmark{name = "crap_item"},/obj/effect/landmark{name = "crap_item"},/obj/item/weapon/gun/smg/m39/elite,/obj/item/ammo_magazine/smg/m39/extended,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"r" = (/obj/machinery/light/small{dir = 8},/turf/open/floor{icon_state = "red"; dir = 5},/area/lv624/lazarus/security)
+"s" = (/obj/machinery/deployable/barrier,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"t" = (/turf/open/floor{icon_state = "red"; dir = 5},/area/lv624/lazarus/security)
+"u" = (/obj/machinery/power/apc{dir = 8; name = "Secure Vault APC"; pixel_x = -28; start_charge = 0},/obj/structure/cable/yellow{d2 = 4; icon_state = "0-4"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"v" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"w" = (/obj/item/storage/toolbox/syndicate,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/structure/rack{layer = 2.5},/obj/effect/landmark{name = "crap_item"},/obj/effect/landmark{name = "crap_item"},/obj/item/weapon/gun/smg/m39/elite,/obj/item/ammo_magazine/smg/m39/extended,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"x" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/closed/wall/r_wall,/area/lv624/lazarus/armory)
+"y" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/table,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/item/weapon/gun/revolver/cmb,/obj/item/ammo_magazine/revolver/cmb,/obj/item/ammo_magazine/revolver/cmb,/obj/item/ammo_magazine/revolver/cmb,/turf/open/floor{icon_state = "red"; dir = 5},/area/lv624/lazarus/security)
+"z" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle9)
+"A" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"B" = (/obj/machinery/door/airlock/almayer/secure{locked = 1; name = "\improper Nexus Dome Armory"; req_access_txt = "100"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"C" = (/obj/structure/rack,/obj/item/explosive/plastique,/obj/item/explosive/plastique,/obj/item/explosive/grenade/frag/PMC,/obj/item/explosive/grenade/frag/PMC,/obj/item/explosive/grenade/frag/PMC,/obj/item/explosive/grenade/frag/PMC,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+
+(1,1,1) = {"
+abaaacd
+aeaaafg
+aehaaaa
+aeiiiij
+iiiklim
+inopqir
+isppqit
+iiuvwxy
+ziCApBt
+ziiiiij
+"}

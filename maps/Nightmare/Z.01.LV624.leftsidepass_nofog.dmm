@@ -1,0 +1,136 @@
+"aa" = (/turf/closed/mineral,/area/lv624/ground/sand7)
+"ab" = (/turf/open/gm/dirt,/area/lv624/ground/sand7)
+"ac" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/sand7)
+"ad" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/river1)
+"ae" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast,/area/lv624/ground/river1)
+"af" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/river1)
+"ag" = (/turf/open/gm/river,/area/lv624/ground/river1)
+"ah" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4},/area/lv624/ground/river1)
+"ai" = (/obj/structure/flora/ausbushes/fullgrass,/turf/open/gm/river,/area/lv624/ground/river1)
+"aj" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/river,/area/lv624/ground/river1)
+"ak" = (/obj/structure/flora/ausbushes/fullgrass,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/river1)
+"al" = (/obj/structure/flora/ausbushes/palebush,/turf/open/gm/river,/area/lv624/ground/river1)
+"am" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/river1)
+"an" = (/turf/open/gm/dirt,/area/lv624/ground/river1)
+"ao" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8; icon_state = "beachcorner2"},/area/lv624/ground/river1)
+"ap" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/river1)
+"aq" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/river,/area/lv624/ground/river1)
+"ar" = (/obj/structure/flora/ausbushes/sunnybush,/turf/open/gm/river,/area/lv624/ground/river1)
+"as" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1},/area/lv624/ground/river1)
+"at" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner2"},/area/lv624/ground/river1)
+"au" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8; icon_state = "beachcorner"},/area/lv624/ground/river1)
+"av" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner"},/area/lv624/ground/river1)
+"aw" = (/obj/structure/flora/ausbushes/fullgrass,/turf/open/gm/dirt,/area/lv624/ground/river1)
+"ax" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle6)
+"ay" = (/turf/open/gm/dirt,/area/lv624/ground/jungle6)
+"az" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/dirt,/area/lv624/ground/jungle6)
+"aA" = (/turf/open/gm/dirtgrassborder{dir = 1; icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle6)
+"aB" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle6)
+"aC" = (/obj/structure/flora/ausbushes/fullgrass,/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle6)
+"aD" = (/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle6)
+"aE" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle6)
+"aF" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle6)
+"aG" = (/turf/open/gm/grass,/area/lv624/ground/jungle6)
+"aH" = (/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle6)
+"aI" = (/turf/closed/mineral,/area/lv624/ground/jungle6)
+"aJ" = (/obj/structure/jungle/vines/heavy{icon_state = "Med1"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle6)
+"aK" = (/obj/structure/jungle/vines/heavy,/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle6)
+"aL" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy3"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle6)
+"aM" = (/obj/structure/jungle/vines/heavy{icon_state = "Med2"; pixel_x = 0; pixel_y = 0},/turf/open/gm/grass,/area/lv624/ground/jungle6)
+"aN" = (/obj/effect/landmark{name = "hunter_primary"},/turf/open/gm/grass,/area/lv624/ground/jungle6)
+"aO" = (/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner"},/area/lv624/ground/jungle6)
+"aP" = (/obj/effect/landmark{name = "monkey_spawn"},/turf/open/gm/grass,/area/lv624/ground/jungle6)
+"aQ" = (/turf/open/gm/dirtgrassborder{dir = 4},/area/lv624/ground/jungle6)
+"aR" = (/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle6)
+"aS" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle6)
+"aT" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8; icon_state = "beachcorner"},/area/lv624/ground/jungle6)
+"aU" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle4)
+"aV" = (/turf/open/gm/grass,/area/lv624/ground/jungle4)
+"aW" = (/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner"},/area/lv624/ground/jungle4)
+"aX" = (/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle4)
+"aY" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1},/area/lv624/ground/jungle6)
+"aZ" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner2"},/area/lv624/ground/jungle6)
+"ba" = (/turf/open/gm/dirtgrassborder{dir = 4},/area/lv624/ground/jungle4)
+"bb" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4},/area/lv624/ground/jungle6)
+"bc" = (/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bd" = (/obj/structure/flora/ausbushes/reedbush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/jungle6)
+"be" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle4)
+"bf" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bg" = (/obj/structure/flora/ausbushes/stalkybush,/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bh" = (/obj/effect/landmark{name = "monkey_spawn"},/turf/open/gm/grass,/area/lv624/ground/jungle4)
+"bi" = (/obj/effect/landmark{name = "hunter_primary"},/turf/open/gm/grass,/area/lv624/ground/jungle4)
+"bj" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast,/area/lv624/ground/jungle6)
+"bk" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/jungle6)
+"bl" = (/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle4)
+"bm" = (/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle4)
+"bn" = (/obj/item/bananapeel,/turf/open/gm/grass,/area/lv624/ground/jungle4)
+"bo" = (/obj/structure/flora/ausbushes/ywflowers,/turf/open/gm/river,/area/lv624/ground/river1)
+"bp" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/jungle6)
+"bq" = (/obj/structure/flora/ausbushes/sparsegrass,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/jungle6)
+"br" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/jungle4)
+"bs" = (/obj/structure/flora/ausbushes/stalkybush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/jungle4)
+"bt" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle4)
+"bu" = (/obj/structure/jungle/vines/heavy{icon_state = "Med1"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle4)
+"bv" = (/obj/structure/flora/ausbushes/pointybush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/jungle4)
+"bw" = (/turf/open/gm/river,/area/lv624/ground/jungle6)
+"bx" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4},/area/lv624/ground/jungle4)
+"by" = (/obj/structure/flora/ausbushes/grassybush,/turf/open/gm/river,/area/lv624/ground/jungle6)
+"bz" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8; icon_state = "beachcorner"},/area/lv624/ground/jungle4)
+"bA" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/open/gm/river,/area/lv624/ground/jungle6)
+"bB" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/river,/area/lv624/ground/jungle6)
+"bC" = (/turf/open/gm/dirtgrassborder,/area/lv624/ground/jungle6)
+"bD" = (/obj/structure/flora/ausbushes/stalkybush,/turf/open/gm/river,/area/lv624/ground/jungle6)
+"bE" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner2"},/area/lv624/ground/jungle4)
+"bI" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/river,/area/lv624/ground/jungle6)
+"bJ" = (/obj/structure/flora/ausbushes/genericbush,/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bK" = (/obj/effect/landmark{name = "monkey_spawn"},/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bL" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bM" = (/obj/structure/flora/ausbushes/ywflowers,/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bN" = (/obj/structure/flora/ausbushes,/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bO" = (/obj/structure/flora/ausbushes/sunnybush,/turf/open/gm/river,/area/lv624/ground/jungle4)
+"bP" = (/turf/open/gm/coast{dir = 8; icon_state = "beachcorner2"},/area/lv624/ground/jungle4)
+"bQ" = (/obj/structure/flora/ausbushes/sunnybush,/turf/open/gm/coast{dir = 1},/area/lv624/ground/jungle4)
+"bR" = (/turf/open/gm/coast{dir = 1},/area/lv624/ground/jungle4)
+"bS" = (/obj/structure/flora/ausbushes/sunnybush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner"},/area/lv624/ground/jungle4)
+"bT" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/jungle4)
+"bU" = (/obj/structure/jungle/vines,/obj/effect/landmark{name = "monkey_spawn"},/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle4)
+"bV" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle4)
+
+(1,1,1) = {"
+aaabacabadaeaeaeafagagagagagagag
+aaabababahagagagagagaiagagajagag
+aaababakafagagagagalagaiagagagbo
+amananahagagagagagagagagagagagag
+amapanahagagaqaragaoasatagagajag
+amananauasasasasasavawahaqagagag
+axayazaAaBaBaCaBaBaCaDaTaYaZbwbw
+axaBaBaEaFaGaFaFaFaGaHaBaDbbbwby
+axaFaFaGaFaGaGaIaGaFaGaGaQbbbwbw
+axaJaKaIaGaGaGaIaGaGaGaGaQaTaZbA
+axaLaIaIaGaGaGaGaGaGaxaGaHaDbbbw
+axaJaMaGaGaGaNaGaGaGaGaGaGaQbbbB
+axaGaGaGaxaGaGaGaGaGaGaFaFaQbbbw
+axaGaGaGaGaGaGaxaGaGaGaObCaRbbbD
+axaGaGaGaGaGaGaGaGaFaOaRbdbjbkbw
+axaGaNaxaGaGaPaGaGaGaQbpbqbwbwbw
+axaxaxaxaxaGaGaGaGaGaQbbbwbBbIbw
+axaxaxaxaxaGaGaGaFaOaRbbbwbwbwbw
+axaxaxaxaxaGaFaGaOaSbpbkbwbwbwbI
+aUaUaUaUaVaVaVaWaXbrbsbcbJbcbcbc
+aUaUaUaUaVaVaVbabrbvbcbcbcbcbcbK
+aUaUaUaVaVaVaVbabxbcbcbcbLbcbcbc
+aUaUaVaVaVaVbebabxbcbcbLbcbcbcbc
+aUaUaVaVaVaVaVbabxbfbcbcbcbcbcbc
+aUaUaVaVaVaUbebabxbcbgbcbLbcbcbc
+aUaUbhaVbiaVaVbabxbgbcbLbcbcbcbc
+aUaUaVaVaVaVbebabzbEbcbcbcbcbcbc
+aUaUaUaVaVaUaUblbmbxbfbcbcbLbcbc
+aUaUaUaVbhaUaUbebabxbcbcbMbLbcbc
+aUaUaUaVaVaVaVbebabxbcbNbcbgbcbf
+aUaUaUaVaVaVaVaUbabxbcbcbcbcbcbc
+aUaUaUaVaVbnaVaUbabzbEbfbcbObPbQ
+aUaUaUaVaVaVaVbeblbmbzbRbRbRbSbT
+aUaUaUbuaVaVaVaVaVblbtbtbtbtbUbV
+aUaUaUbuaVaVaVaVaVbeaVaUaVaVaVaU
+aUaUaUaVaVaVaVaVaVaVaVaUaUaVaVaV
+"}

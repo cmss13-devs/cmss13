@@ -45,6 +45,15 @@ of predators), but can be added to include variant game modes (like humans vs. h
 
 //===================================================\\
 
+/datum/game_mode/proc/declare_completion_announce_objectives()
+	set waitfor = 0
+	sleep(30)
+	if(objectives_controller)
+		var/dat = "<span class='round_body'>The objective scores were:</span><br>"
+		dat += objectives_controller.get_objectives_progress()
+
+		world << dat
+
 /datum/game_mode/proc/declare_completion_announce_individual()
 	set waitfor = 0
 	sleep(45)

@@ -16,7 +16,13 @@
 	icon_state = "filingcabinet"
 	density = 1
 	anchored = 1
+	var/list/allowed_types = list(/obj/item/paper, /obj/item/folder, /obj/item/photo, /obj/item/paper_bundle, /obj/item/document_objective/paper, /obj/item/document_objective/paper/report, /obj/item/document_objective/folder)
 
+/obj/structure/filingcabinet/Dispose()
+	for(var/obj/item/W in contents)
+		if(W.unacidable)
+			W.forceMove(loc)
+	..()
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"
@@ -29,12 +35,12 @@
 
 /obj/structure/filingcabinet/initialize()
 	for(var/obj/item/I in loc)
-		if(istype(I, /obj/item/paper) || istype(I, /obj/item/folder) || istype(I, /obj/item/photo) || istype(I, /obj/item/paper_bundle))
-			I.loc = src
+		if(I.type in allowed_types)
+			I.forceMove(src)
 
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
-	if(istype(P, /obj/item/paper) || istype(P, /obj/item/folder) || istype(P, /obj/item/photo) || istype(P, /obj/item/paper_bundle))
+	if(P.type in allowed_types)
 		user << "<span class='notice'>You put [P] in [src].</span>"
 		if(user.drop_inv_item_to_loc(P, src))
 			icon_state = "[initial(icon_state)]-open"

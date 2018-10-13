@@ -614,6 +614,25 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	check_hive_status()
 
+/client/proc/show_objectives_status()
+	set name = "Show Objectives Status"
+	set desc = "Check the status of objectives."
+	set category = "Special Verbs"
+	if(!holder)
+		src << "Only administrators may use this command."
+		return
+	if(objectives_controller)
+		src << objectives_controller.get_objectives_progress()
+
+/client/proc/show_objectives_status_to_all()
+	set name = "Show Objectives Status To Everyone"
+	set desc = "Check the status of objectives."
+	set category = "Special Verbs"
+	if(!holder)
+		src << "Only administrators may use this command."
+		return
+	if(objectives_controller)
+		world << objectives_controller.get_objectives_progress()
 
 /client/proc/cmd_admin_xeno_report()
 	set category = "Special Verbs"

@@ -77,8 +77,14 @@
 	else
 		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
+/mob/verb/view_objective_memory()
+	set name = "View objectives clues"
+	set category = "IC"
 
-
+	if(mind)
+		mind.view_objective_memories(src)
+	else
+		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
 
 /mob/verb/abandon_mob()

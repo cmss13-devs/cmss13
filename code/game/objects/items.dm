@@ -621,6 +621,9 @@ cases. Override_icon_state should be a list.*/
 	if(I && !(I.flags_item & ITEM_ABSTRACT))
 		I.showoff(src)
 
+/obj/item/proc/is_damaged()
+	return 0
+
 /*
 For zooming with scope or binoculars. This is called from
 modules/mob/mob_movement.dm if you move you will be zoomed out

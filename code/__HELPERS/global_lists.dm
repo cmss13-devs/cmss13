@@ -69,6 +69,8 @@ var/global/list/yautja_gear = list() // list of loose pred gear
 
 var/global/list/gun_cabinets = list()
 
+var/global/list/cm_objectives = list()
+
 //used by binoculars for dropship bombardment
 var/list/global/active_laser_targets = list()
 
@@ -208,8 +210,6 @@ var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel")
 			xeno_datum_list[CD.caste_name] = list(1,2,3,4) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
 		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
 	return 1
-
-
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()

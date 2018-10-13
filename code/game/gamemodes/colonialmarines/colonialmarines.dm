@@ -111,7 +111,9 @@
 		T = new(t)
 		T.id = "hole[i]"
 
-	r_TRU
+	..()
+
+	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -139,6 +141,8 @@
 				command_announcement.Announce("We've lost contact with the Weyland-Yutani's research facility, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
 			if(MAP_PRISON_STATION)
 				command_announcement.Announce("An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
+	
+	..()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -229,6 +233,7 @@
 
 	world << dat
 
+	declare_completion_announce_objectives()
 	declare_completion_announce_individual()
 	declare_completion_announce_predators()
 	declare_completion_announce_xenomorphs()

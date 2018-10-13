@@ -611,6 +611,7 @@ datum/game_mode/proc/initialize_special_clamps()
 		H.equip_to_slot_or_del(W, WEAR_ID)
 
 	H.name = H.get_visible_name()
+	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 	if(map_tag != MAP_PRISON_STATION)
 		var/random_weap = rand(0,4)

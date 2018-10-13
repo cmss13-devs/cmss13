@@ -197,6 +197,7 @@
 		if(H.health > config.health_threshold_dead)
 			user.visible_message("<span class='notice'>\icon[src] \The [src] beeps: Defibrillation successful.</span>")
 			living_mob_list.Add(H)
+			callHook("clone", list(H))
 			if(!isSynth(H) && !isYautja(H))
 				living_human_list.Add(H)
 			dead_mob_list.Remove(H)

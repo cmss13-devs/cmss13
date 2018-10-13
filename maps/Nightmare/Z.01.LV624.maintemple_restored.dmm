@@ -1,0 +1,58 @@
+"a" = (/turf/open/gm/dirt,/area/lv624/ground/caves/east1)
+"b" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/dirt,/area/lv624/ground/caves/east1)
+"c" = (/turf/closed/mineral,/area/lv624/ground/caves/east1)
+"d" = (/turf/closed/wall/mineral/sandstone,/area/lv624/ground/caves/east1)
+"e" = (/obj/item/legcuffs/yautja{armed = 1; desc = "A bizarre alien device used for trapping and killing prey."; name = "Alien Mine"},/turf/open/gm/dirt,/area/lv624/ground/caves/east1)
+"f" = (/obj/item/stack/sheet/mineral/sandstone{amount = 50},/obj/structure/table,/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/caves/east1)
+"g" = (/obj/effect/decal/remains/xeno,/obj/structure/table,/obj/effect/landmark{name = "good_item"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/caves/east1)
+"h" = (/obj/structure/table,/obj/item/weapon/harpoon,/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/caves/east1)
+"i" = (/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/caves/east1)
+"j" = (/obj/machinery/door/airlock/sandstone{desc = "This strange temple is covered in runes. It looks extremely ancient."; icon_state = "door_locked"; locked = 1; name = "Strange Temple"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/caves/east1)
+"k" = (/turf/closed/mineral,/area/lv624/ground/sand6)
+"l" = (/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"m" = (/obj/item/legcuffs/yautja{armed = 1; desc = "A bizarre alien device used for trapping and killing prey."; name = "Alien Mine"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"n" = (/turf/open/gm/dirt,/area/lv624/ground/sand6)
+"o" = (/turf/closed/wall/mineral/sandstone,/area/lv624/ground/sand6)
+"p" = (/obj/structure/table,/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"q" = (/obj/structure/table,/obj/item/weapon/harpoon/yautja{name = "Alien Harpoon"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"r" = (/obj/machinery/door/airlock/sandstone,/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"s" = (/obj/structure/table,/obj/item/legcuffs/yautja{desc = "A bizarre alien device used for trapping and killing prey."; name = "Alien Mine"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"t" = (/obj/structure/table,/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"u" = (/obj/item/stack/sheet/mineral/sandstone{amount = 50},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"v" = (/obj/structure/table,/obj/item/weapon/harpoon/yautja{name = "Alien Harpoon"},/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"w" = (/turf/open/gm/dirt,/area/lv624/ground/sand3)
+"x" = (/obj/machinery/door/airlock/sandstone{desc = "This strange temple is covered in runes. It looks extremely ancient."; icon_state = "door_locked"; locked = 1; name = "Strange Temple"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand6)
+"y" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/dirt,/area/lv624/ground/sand3)
+"z" = (/obj/item/legcuffs/yautja{armed = 1; desc = "A bizarre alien device used for trapping and killing prey."; name = "Alien Mine"},/turf/open/gm/dirt,/area/lv624/ground/sand3)
+"A" = (/turf/closed/mineral,/area/lv624/ground/sand3)
+"B" = (/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/ground/sand3)
+"C" = (/turf/closed/wall/mineral/sandstone,/area/lv624/ground/sand3)
+
+(1,1,1) = {"
+abaaaaccaaaaaaaaaaaacc
+aaacccccddaeaaaaaaaaac
+aaccccfghdaaaaaaaaaaac
+cccccciiideeaaaaaaaacc
+cccccciiidjjdccccccccc
+kkkkkciiidiidddccllmlm
+knnknolllollllopkllmlm
+nnnnnolllopplloqkrrkkk
+knnnnoorooooolollllkon
+kkknnollllllolollllqon
+kkknnospllllolollllson
+kknnnoooooroolooorooon
+kknnnollllllllrlllllon
+kknnnoorooooololllllon
+kknnnollllltololllluon
+knnnnoullllpolopvpllon
+wwwwwooooooooxooooooon
+wwywwwwwwwwwwzwwwwwwww
+wwwwwwwwwwwwwwwwwwwwww
+AAwwwwwwwwwwwwwwwwwwww
+BAwwwwwwwwwwwwwwwwwwww
+AAAAwwwwwwwwwwCwwwCwww
+AAAAwwwwwCwwwwwCwCwwwA
+AAAwwwwwwwCwwwwwwwwwAA
+AAAwwwwwwwwwwwywCwwAAA
+AAwwwwwwwwwwwwwwCwwAAA
+"}

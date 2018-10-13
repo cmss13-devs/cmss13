@@ -1,0 +1,34 @@
+"a" = (/turf/open/gm/grass,/area/lv624/ground/jungle5)
+"b" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle5)
+"c" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle5)
+"d" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/grass,/area/lv624/ground/jungle5)
+"e" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirtgrassborder{dir = 4},/area/lv624/ground/jungle5)
+"f" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8; icon_state = "beachcorner"},/area/lv624/ground/river3)
+"g" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1},/area/lv624/ground/river3)
+"h" = (/obj/structure/flora/ausbushes/reedbush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1},/area/lv624/ground/river3)
+"i" = (/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle5)
+"j" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle5)
+"k" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/grass,/area/lv624/ground/jungle5)
+"l" = (/obj/machinery/colony_floodlight,/turf/open/gm/grass,/area/lv624/ground/jungle5)
+"m" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle5)
+"n" = (/turf/closed/wall,/area/lv624/lazarus/quartstorage)
+"o" = (/obj/effect/landmark{name = "monkey_spawn"},/turf/open/gm/grass,/area/lv624/ground/jungle5)
+"p" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/plating,/area/lv624/lazarus/quartstorage)
+"q" = (/obj/machinery/light/small{dir = 1},/turf/open/floor/vault,/area/lv624/lazarus/quartstorage)
+"r" = (/turf/open/floor/vault,/area/lv624/lazarus/quartstorage)
+"s" = (/obj/structure/largecrate/supply/weapons/sentries{unacidable = 1},/turf/open/floor/vault,/area/lv624/lazarus/quartstorage)
+"t" = (/obj/structure/largecrate/supply/explosives/mines{unacidable = 1},/turf/open/floor/vault,/area/lv624/lazarus/quartstorage)
+"u" = (/obj/structure/window_frame/colony,/turf/open/floor/plating,/area/lv624/lazarus/quartstorage)
+"v" = (/obj/structure/largecrate,/turf/open/floor/vault,/area/lv624/lazarus/quartstorage)
+"w" = (/obj/effect/landmark/lv624/xeno_tunnel,/turf/open/gm/grass,/area/lv624/ground/jungle5)
+
+(1,1,1) = {"
+abcdefgh
+aaaaijjj
+akalaaam
+naaaoaaa
+npppnaaa
+qrstuaab
+vrrrpaaa
+rrrrpwaa
+"}

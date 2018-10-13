@@ -1,0 +1,43 @@
+"a" = (/turf/open/gm/dirt,/area/lv624/ground/river3)
+"b" = (/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/jungle8)
+"c" = (/turf/open/gm/grass,/area/lv624/ground/jungle8)
+"d" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle8)
+"e" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle8)
+"f" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle8)
+"g" = (/turf/open/gm/dirtgrassborder,/area/lv624/ground/jungle8)
+"h" = (/turf/open/gm/dirtgrassborder{dir = 1; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle8)
+"i" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/dirt,/area/lv624/ground/river3)
+"j" = (/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/river3)
+"k" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/river3)
+"l" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8},/area/lv624/ground/river3)
+"m" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1; icon_state = "beachcorner"},/area/lv624/ground/river3)
+"n" = (/obj/structure/flora/ausbushes/reedbush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8},/area/lv624/ground/river3)
+"o" = (/obj/structure/flora/ausbushes/stalkybush,/turf/open/gm/dirt,/area/lv624/ground/river3)
+"p" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/dirt,/area/lv624/ground/river3)
+"q" = (/obj/structure/flora/ausbushes/fullgrass,/turf/open/gm/dirt,/area/lv624/ground/river3)
+"r" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle5)
+"s" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/river3)
+"v" = (/obj/structure/flora/ausbushes/reedbush,/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/river3)
+"y" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner"},/area/lv624/ground/river3)
+"A" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle5)
+"B" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle5)
+"C" = (/turf/open/gm/grass,/area/lv624/ground/jungle5)
+"D" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle5)
+
+(1,1,1) = {"
+abcde
+afghe
+aaijk
+maajv
+liajk
+naask
+laajk
+laojk
+laajk
+lapjv
+yqajk
+AAArB
+CCCBB
+CDDBB
+CCCBB
+"}

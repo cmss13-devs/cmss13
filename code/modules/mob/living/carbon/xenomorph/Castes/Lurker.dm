@@ -10,6 +10,7 @@
 	plasma_max = 100
 	evolution_threshold = 500
 	upgrade_threshold = 500
+	deevolves_to = "Runner"
 	caste_desc = "A fast, powerful front line combatant."
 	speed = -1.5 //Not as fast as runners, but faster than other xenos
 	charge_type = 2 //Pounce - Hunter

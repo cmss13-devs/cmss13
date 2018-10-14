@@ -27,6 +27,7 @@
 	var/upgrade_threshold = 0
 
 	var/list/evolves_to = list() //This is where you add castes to evolve into. "Seperated", "by", "commas"
+	var/deevolves_to // what caste to de-evolve to.
 	var/tacklemin = 2
 	var/tacklemax = 3
 	var/tackle_chance = 35

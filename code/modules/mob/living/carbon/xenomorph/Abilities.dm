@@ -1067,33 +1067,11 @@
 			X << "<span class='warning'>[T] is too weak to be deevolved.</span>"
 			return
 
-		var/newcaste = ""
-
-		switch(T.caste.caste_name)
-			if("Hivelord")
-				newcaste = "Drone"
-			if("Carrier")
-				newcaste = "Drone"
-			if("Crusher")
-				newcaste = "Warrior"
-			if("Ravager")
-				newcaste = "Lurker"
-			if("Praetorian")
-				newcaste = "Warrior"
-			if("Boiler")
-				newcaste = "Spitter"
-			if("Spitter")
-				newcaste = "Sentinel"
-			if("Lurker")
-				newcaste = "Runner"
-			if("Warrior")
-				newcaste = "Defender"
-			if("Burrower")
-				newcaste = "Drone"
-
-		if(!newcaste)
+		if(!T.caste.deevolves_to)
 			X << "<span class='xenowarning'>[T] can't be deevolved.</span>"
 			return
+
+		var/newcaste = T.caste.deevolves_to
 
 		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_name] to [newcaste]?", , "Yes", "No")
 		if(confirm == "No")
@@ -1135,6 +1113,8 @@
 				xeno_type = /mob/living/carbon/Xenomorph/Warrior
 			if("Defender")
 				xeno_type = /mob/living/carbon/Xenomorph/Defender
+			if("Burrower")
+				xeno_type = /mob/living/carbon/Xenomorph/Burrower
 
 		//From there, the new xeno exists, hopefully
 		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(T))

@@ -218,6 +218,40 @@
 				src << "<span class='warning'>There already is a Queen.</span>"
 				return
 
+		for(var/mob/living/carbon/Xenomorph/Z in living_mob_list)
+			if(hivenumber == Z.hivenumber)
+				switch(Z.tier)
+					if(0)
+						if(isXenoLarva(Z,1))
+							if(Z.client && Z.ckey)
+								potential_queens++
+						continue
+					if(1)
+						if(isXenoDrone(Z))
+							if(Z.client && Z.ckey)
+								potential_queens++
+					if(2)
+						tierB++
+					if(3)
+						tierC++
+					else
+						src <<"<span class='warning'>You shouldn't see this. If you do, bug repot it! (Error XE01).</span>"
+
+						continue
+				if(Z.client && Z.ckey)
+					totalXenos++
+
+		if(tier == 1 && ((tierB + tierC) / max(totalXenos, 1))> 0.5 && castepick != "Queen")
+			src << "<span class='warning'>The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die.</span>"
+			return
+		else if(tier == 2 && (tierC / max(totalXenos, 1))> 0.25 && castepick != "Queen")
+			src << "<span class='warning'>The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die.</span>"
+
+			return
+		else if(!hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != "Drone")
+			src << "<span class='xenonotice'>The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!</span>"
+			return
+
 		//From there, the new xeno exists, hopefully
 		var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src))
 

@@ -10,6 +10,7 @@
 	plasma_max = 200
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
+	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
 	armor_deflection = 40
 	max_health = 275

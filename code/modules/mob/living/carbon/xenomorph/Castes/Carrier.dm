@@ -1,7 +1,7 @@
 /datum/caste_datum/carrier
 	caste_name = "Carrier"
 	upgrade_name = "Young"
-	tier = 2
+	tier = 3
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
@@ -11,6 +11,7 @@
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	caste_desc = "A carrier of huggies."
+	deevolves_to = "Burrower"
 	max_health = 175
 	speed = 0.0
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
@@ -97,7 +98,7 @@
 	drag_delay = 6 //pulling a big dead xeno is hard
 
 	mob_size = MOB_SIZE_BIG
-	tier = 2
+	tier = 3
 	upgrade = 0
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
@@ -108,7 +109,8 @@
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/emit_pheromones,
 		/datum/action/xeno_action/activable/throw_hugger,
-		/datum/action/xeno_action/activable/retrieve_egg
+		/datum/action/xeno_action/activable/retrieve_egg,
+		/datum/action/xeno_action/place_trap
 		)
 
 	death(gibbed)

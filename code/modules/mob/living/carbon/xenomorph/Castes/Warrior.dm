@@ -6,6 +6,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 	evolves_to = list("Praetorian", "Crusher")
+	deevolves_to = "Defender"
 	tackle_chance = 40
 	plasma_gain = 8
 	plasma_max = 100

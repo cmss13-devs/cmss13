@@ -1,15 +1,17 @@
 /datum/caste_datum/burrower
 	caste_name = "Burrower"
 	upgrade_name = "Young"
-	tier = 3
+	tier = 2
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 40
 	plasma_gain = 8
 	plasma_max = 250
-	upgrade_threshold = 800
-	evolution_allowed = FALSE
+	upgrade_threshold = 500
+	evolution_threshold = 500
+	evolves_to = list("Carrier")
+	deevolves_to = "Drone"
 	caste_desc = "A digger and shaper."
 	max_health = 175
 	speed = 0.0
@@ -84,7 +86,7 @@
 	plasma_stored = 100
 	pixel_x = -12
 	old_x = -12
-	tier = 3
+	tier = 2
 	upgrade = 0
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,

@@ -9,6 +9,7 @@
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
+	deevolves_to = "Spitter"
 	spit_delay = 40
 	caste_desc = "Gross!"
 	armor_deflection = 20

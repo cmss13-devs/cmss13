@@ -11,6 +11,7 @@
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
+	deevolves_to = "Warrior"
 	spit_delay = 20
 	speed = -0.5
 	caste_desc = "Ptui!"

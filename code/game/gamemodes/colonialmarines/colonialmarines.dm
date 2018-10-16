@@ -33,6 +33,11 @@
 	name = "fog blocker"
 	icon_state = "spawn_event"
 
+/obj/effect/landmark/lv624/fog_time_extender
+	name = "fog time extender"
+	icon_state = "spawn_event"
+	var/time_to_extend = 9000
+
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "spawn_event"
@@ -46,6 +51,7 @@
 	var/monkey_spawns[] = new
 	var/map_items[] = new
 	var/obj/effect/blocker/fog/F
+	var/fog_timer = 0
 	for(var/obj/effect/landmark/L in landmarks_list)
 		switch(L.name)
 			if("hunter_primary")
@@ -61,6 +67,11 @@
 			if("fog blocker")
 				F = new(L.loc)
 				round_fog += F
+				cdel(L)
+			if("fog time extender")
+				var/obj/effect/landmark/lv624/fog_time_extender/fte = L
+				if(istype(fte))
+					fog_timer += fte.time_to_extend
 				cdel(L)
 			if("xeno tunnel")
 				xeno_tunnels += L.loc
@@ -100,7 +111,7 @@
 
 	if(!round_fog.len) round_fog = null //No blockers?
 	else
-		round_time_fog = rand(-2500,2500)
+		round_time_fog = fog_timer + rand(-2500,2500)
 		flags_round_type |= MODE_FOG_ACTIVATED
 	var/obj/structure/tunnel/T
 	var/i = 0

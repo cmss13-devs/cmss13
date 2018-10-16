@@ -47,29 +47,30 @@
 "aU" = (/obj/structure/barricade/metal,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
 "aV" = (/obj/structure/barricade/plasteel,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
 "aW" = (/obj/structure/barricade/metal{dir = 4},/obj/structure/barricade/metal,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
-"aX" = (/obj/structure/flora/ausbushes/fullgrass,/obj/structure/barricade/metal{dir = 4},/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
+"aX" = (/obj/item/storage/box/m94,/obj/item/storage/box/m94,/obj/item/storage/box/m94,/obj/item/storage/box/m94,/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/ground/caves/central2)
 "aY" = (/obj/structure/barricade/metal{dir = 8},/obj/structure/barricade/metal,/turf/open/gm/dirtgrassborder,/area/lv624/ground/caves/central2)
 "aZ" = (/obj/structure/barricade/metal,/obj/structure/barricade/metal{dir = 4},/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
 "ba" = (/obj/item/storage/toolbox/emergency,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
 "bb" = (/obj/item/storage/toolbox/mechanical,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
-"bc" = (/obj/item/storage/box/m94,/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/ground/caves/central2)
+"bc" = (/obj/structure/campfire,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
 "bd" = (/obj/item/storage/box/m56d_hmg,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
 "be" = (/obj/item/storage/firstaid/regular,/turf/open/gm/grass,/area/lv624/ground/caves/central2)
 "bf" = (/obj/item/storage/firstaid/adv,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
+"bg" = (/obj/item/weapon/gun/shotgun/pump/cmb,/turf/open/gm/grass,/area/lv624/ground/caves/central2)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaahahahahahahahababaaaaababababaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaabababahamanbaapaqahababauabababacabababauababababaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaabaHaHabahaoaoaoaoaoahababauabababadabababauababababababaaaa
-aaaaaaaaaaaaaaaaaaaeabaHaHabaiaoaoaoaoaoaiababauabababababababauabababababababaa
-aaaaaaaaaaaaaaaeaeaeabaHaHabahaIaJaobdbbahagaKaLagagagagagagagaLagajababacababab
-aaaaaaaaaaaaaeaeaeaeaeaHaHabahahahavahahahalalaMalalalalalalalaMalarajabadababab
-aaaaaaaaaaaeaeaeaeaeaeaHaHababbebeakbfbfasalalaMalalalalalalalaMalalaragajabafag
-aaaaaaaaaeaeaeaeaeaeaeababababafagbcalalaNalalaMalalalalalalalaMalalalalaragatal
-aaaaaaaeaeaeababababaOaPaQaRaSaTaUaVaUaUaUaUaUaWalalalalalalalaXalalalalalalalal
-aaaaaeaeababababababaOabafatalalalalalalalalalalalalalalalalalaMalalalalalalalal
-aaaaababababababafagaYaSaTaUaUaUaUaUaUaUaUaUaUaUaUaUaUaUaUaUaUaZalalalalalalalal
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaahahahahahahahababaaaaauabababaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaabababahamanbaapaqahababauabauabacababababababababaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaabaHaHabahaoaoaoaoaoahababauabauabadababababababababababaaaa
+aaaaaaaaaaaaaaaaaaaeabaHaHabaiaoaoaoaoaoaiababauabauabababababababababababababaa
+aaaaaaaaaaaaaaaeaeaeabaHaHabahaIaJaobdbbahagaKaLagaLagagagagagagagajababacababab
+aaaaaaaaaaaaaeaeaeaeaeaHaHabahahahavahahahalalaMalaMalalalalalalalarajabadababab
+aaaaaaaaaaaeaeaeaeaeaeaHaHabbgbebeakbfbfasalalaMalaMalalalalalalalalaragajabafag
+aaaaaaaaaeaeaeaeaeaeaeababababafagaXalbcaNalalaMalaMalalalalalalalalalalaragatal
+aaaaaaaeaeaeababababaOaPaQaRaSaTaUaVaUaUaUaUaUaWalaMalalalalalasalalalalalalalal
+aaaaaeaeababababababaOabafatalalalalalalalalalalalaMalalalalalalalalalalalalalal
+aaaaababababababafagaYaSaTaUaUaUaUaUaUaUaUaUaUaUaUaZalalalalalalalalalalalalalal
 aaaaababababababakalalalalalalalawaxaxaxayalalalalalalalalalalawaxaxaxayasalalal
 aaaaababababababakalalasalalalalazaAaAaAaBaxaxaxaxaxaxaxaxaxaxaCaAaAaAaBaxaxaxax
 alaDababababababakalalalawaxaxaxaEaAaAaAaAaFaAaAaAaAaGaAaAaAaAaAaAaAaAaAaAaAaAaA

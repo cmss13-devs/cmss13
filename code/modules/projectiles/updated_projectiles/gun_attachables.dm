@@ -205,7 +205,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	if(G == user.get_active_hand())
 		if(activate_attachment(G, user)) //success
-			playsound(user, activation_sound, 15, 1)
+			return
 	else
 		user << "<span class='warning'>[G] must be in our active hand to do this.</span>"
 
@@ -409,7 +409,7 @@ Defined in conflicts.dm of the #defines folder.
 		else
 			icon_state = "flashlight"
 			attach_icon = "flashlight_a"
-
+		playsound(user, activation_sound, 15, 1)
 		G.update_attachable(slot)
 
 		for(var/X in G.actions)
@@ -727,6 +727,10 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 	var/list/loaded_grenades //list of grenade types loaded in the UGL
 
+	activate_attachment(atom/target, mob/user)
+		playsound(user, activation_sound, 15, 1)
+		..()
+
 	New()
 		..()
 		attachment_firing_delay = config.max_fire_delay * 3
@@ -795,6 +799,10 @@ Defined in conflicts.dm of the #defines folder.
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
 
+	activate_attachment(atom/target, mob/user)
+		playsound(user, activation_sound, 15, 1)
+		..()
+	
 	New()
 		..()
 		attachment_firing_delay = config.max_fire_delay * 5
@@ -893,6 +901,10 @@ Defined in conflicts.dm of the #defines folder.
 	type_of_casings = "shell"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_PROJECTILE|ATTACH_RELOADABLE|ATTACH_WEAPON
 
+	activate_attachment(atom/target, mob/user)
+		playsound(user, activation_sound, 15, 1)
+		..()
+	
 	New()
 		..()
 		attachment_firing_delay = config.mhigh_fire_delay*3

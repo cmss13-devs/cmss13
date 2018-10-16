@@ -468,9 +468,9 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 
 
-//Giving the liason a role on whiskey outpost! Nothing can go wrong here. N o t h i n g.
+//Giving the liaison a role on whiskey outpost! Nothing can go wrong here. N o t h i n g.
 /*************************************
------------------LIASON---------------
+-----------------LIAISON---------------
 *************************************/
 /datum/job/civilian/liaison/whiskey
 	title = "Combat Reporter"

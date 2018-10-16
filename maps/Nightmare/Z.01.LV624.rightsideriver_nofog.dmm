@@ -17,6 +17,7 @@
 "q" = (/obj/structure/flora/ausbushes/fullgrass,/turf/open/gm/dirt,/area/lv624/ground/river3)
 "r" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle5)
 "s" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/river3)
+"t" = (/obj/effect/landmark/lv624/fog_time_extender,/turf/open/gm/dirt,/area/lv624/ground/river3)
 "v" = (/obj/structure/flora/ausbushes/reedbush,/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/river3)
 "y" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner"},/area/lv624/ground/river3)
 "A" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle5)
@@ -31,7 +32,7 @@ aaijk
 maajv
 liajk
 naask
-laajk
+latjk
 laojk
 laajk
 lapjv

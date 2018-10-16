@@ -81,6 +81,7 @@
 "bC" = (/turf/open/gm/dirtgrassborder,/area/lv624/ground/jungle6)
 "bD" = (/obj/structure/flora/ausbushes/stalkybush,/turf/open/gm/river,/area/lv624/ground/jungle6)
 "bE" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner2"},/area/lv624/ground/jungle4)
+"bF" = (/obj/effect/landmark/lv624/fog_time_extender,/turf/open/gm/grass,/area/lv624/ground/jungle6)
 "bI" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/river,/area/lv624/ground/jungle6)
 "bJ" = (/obj/structure/flora/ausbushes/genericbush,/turf/open/gm/river,/area/lv624/ground/jungle4)
 "bK" = (/obj/effect/landmark{name = "monkey_spawn"},/turf/open/gm/river,/area/lv624/ground/jungle4)
@@ -108,7 +109,7 @@ axaBaBaEaFaGaFaFaFaGaHaBaDbbbwby
 axaFaFaGaFaGaGaIaGaFaGaGaQbbbwbw
 axaJaKaIaGaGaGaIaGaGaGaGaQaTaZbA
 axaLaIaIaGaGaGaGaGaGaxaGaHaDbbbw
-axaJaMaGaGaGaNaGaGaGaGaGaGaQbbbB
+axaJaMaGaGaGaNbFaGaGaGaGaGaQbbbB
 axaGaGaGaxaGaGaGaGaGaGaFaFaQbbbw
 axaGaGaGaGaGaGaxaGaGaGaObCaRbbbD
 axaGaGaGaGaGaGaGaGaFaOaRbdbjbkbw

@@ -9,6 +9,7 @@
 "ai" = (/turf/open/gm/dirt,/area/lv624/ground/river2)
 "aj" = (/turf/open/gm/grass,/area/lv624/ground/jungle7)
 "ak" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle7)
+"al" = (/obj/effect/landmark/lv624/fog_time_extender,/turf/open/floor/plating{dir = 1; icon_state = "asteroidfloor"},/area/lv624/ground/river2)
 "jq" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/river2)
 "jr" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast,/area/lv624/ground/river2)
 "jT" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/river2)
@@ -29,7 +30,7 @@ jqjrjrjrjrabacacacadjrjTkm
 lpaaaaaakmaejVjVjVafkmaaaa
 aaaaaaaakmaejVjVjVafkmaaaa
 aaaaaaaakmaejVjVjVafkmaaaa
-aaaaaaaakmaejVjVjVafkmaaaa
+aaaaaaaakmaejValjVafkmaaaa
 aaaaaaaakmaejVjVjVafkmaaaa
 aaaaaaaakmaejVjVjVafkmaaaa
 aaaaaaaakmaejVjVjVafkmaaaa

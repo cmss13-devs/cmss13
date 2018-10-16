@@ -105,20 +105,22 @@ var/savefile/Banlist
 		bantimestamp = CMinutes + minutes
 
 	Banlist.cd = "/base"
-	if ( Banlist.dir.Find("[ckey][computerid]") )
-		usr << text("\red Ban already exists.")
-		return 0
-	else
-		Banlist.dir.Add("[ckey][computerid]")
-		Banlist.cd = "/base/[ckey][computerid]"
-		Banlist["key"] << ckey
-		Banlist["id"] << computerid
-		Banlist["ip"] << address
-		Banlist["reason"] << reason
-		Banlist["bannedby"] << bannedby
-		Banlist["temp"] << temp
-		if (temp)
-			Banlist["minutes"] << bantimestamp
+	if ( Banlist.dir.Find("[ckey][computerid]"))
+		if(alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+			return 0
+		else
+			RemoveBan("[ckey][computerid]") //have to remove dirs before processing
+
+	Banlist.dir.Add("[ckey][computerid]")
+	Banlist.cd = "/base/[ckey][computerid]"
+	Banlist["key"] << ckey
+	Banlist["id"] << computerid
+	Banlist["ip"] << address
+	Banlist["reason"] << reason
+	Banlist["bannedby"] << bannedby
+	Banlist["temp"] << temp
+	if (temp)
+		Banlist["minutes"] << bantimestamp
 	return 1
 
 /proc/RemoveBan(foldername)

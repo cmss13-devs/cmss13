@@ -829,21 +829,20 @@
 		var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
 		if(!reason)
 			return
-		AddBan(mob_key, mob_id, reason, usr.ckey, 1, mins, mob_ip)
-		ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
-		M << "\red<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"
-		M << "\red This is a temporary ban, it will be removed in [mins] minutes."
-		feedback_inc("ban_tmp",1)
-		DB_ban_record(BANTYPE_TEMP, M, mins, reason)
-		feedback_inc("ban_tmp_mins",mins)
-		if(config.banappeals)
-			M << "\red To try to resolve this matter head to [config.banappeals]"
-		else
-			M << "\red No ban appeals URL has been set."
-		log_admin("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
-		message_admins("\blue[usr.client.ckey] has banned [mob_key].\nReason: [sanitize(reason)]\nThis will be removed in [mins] minutes.")
-		notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
-
+		if (AddBan(mob_key, mob_id, reason, usr.ckey, 1, mins, mob_ip))
+			ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
+			M << "\red<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"
+			M << "\red This is a temporary ban, it will be removed in [mins] minutes."
+			feedback_inc("ban_tmp",1)
+			DB_ban_record(BANTYPE_TEMP, M, mins, reason)
+			feedback_inc("ban_tmp_mins",mins)
+			if(config.banappeals)
+				M << "\red To try to resolve this matter head to [config.banappeals]"
+			else
+				M << "\red No ban appeals URL has been set."
+			log_admin("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
+			message_admins("\blue[usr.client.ckey] has banned [mob_key].\nReason: [sanitize(reason)]\nThis will be removed in [mins] minutes.")
+			notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
 		cdel(mob_client)
 
 	else if(href_list["lazyban"])
@@ -2410,6 +2409,7 @@
 		src.viewUnheardAhelps() //This SHOULD refresh the page
 
 		ref_person.adminhelp_marked = 1 //Timer to prevent multiple clicks
+		ref_person.adminhelp_marked_admin = usr.key //To prevent others autoresponding
 		spawn(1000) //This should be <= the Adminhelp cooldown in adminhelp.dm
 			if(ref_person)	ref_person.adminhelp_marked = 0
 
@@ -2418,7 +2418,7 @@
 		if(!istype(ref_person))
 			usr << "\blue Looks like that person stopped existing!"
 			return
-		if(ref_person && ref_person.adminhelp_marked)
+		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
 			usr << "<b>This Adminhelp is already being handled.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
 			return
@@ -2441,7 +2441,7 @@
 		if(!istype(ref_person))
 			usr << "\blue Looks like that person stopped existing!"
 			return
-		if(ref_person && ref_person.adminhelp_marked)
+		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
 			usr << "<b>This Adminhelp is already being handled.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
 			return
@@ -2464,11 +2464,15 @@
 		if(!istype(ref_person))
 			usr << "\blue Looks like that person stopped existing!"
 			return
-		if(ref_person && ref_person.adminhelp_marked)
-			usr << "<b>This Adminhelp is already being handled, but continue if you wish.</b>"
+		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
+			usr << "<b>This Adminhelp is already being handled by another staff member. You can proceed but it's not recommended.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
-			if(alert(usr, "Are you sure you want to autoreply to this marked ahelp?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "Are you sure you want to autoreply to this ahelp that is handled by another staff member?", "Confirmation", "Yes", "No") != "Yes")
 				return
+
+		if(ref_person && !ref_person.adminhelp_marked)
+			usr << "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>"
+			return
 
 		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Guilty", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
 

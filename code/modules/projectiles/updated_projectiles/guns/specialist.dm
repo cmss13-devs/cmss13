@@ -317,12 +317,11 @@
 /obj/item/weapon/gun/launcher
 	var/list/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade)
 
-/obj/item/weapon/gun/launcher/attackby(obj/item/I, mob/user)
+/obj/item/weapon/gun/launcher/proc/allowed_ammo_type(obj/item/I)
 	for(var/G in disallowed_grenade_types)
 		if(istype(I, G))
 			return 0
-	..(I, user)
-	return 1
+	return 1	
 
 /obj/item/weapon/gun/launcher/m92
 	name = "\improper M92 grenade launcher"
@@ -374,7 +373,7 @@
 		user << "\blue It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades."
 
 /obj/item/weapon/gun/launcher/m92/attackby(obj/item/I, mob/user)
-	if(..(I,user))
+	if(allowed_ammo_type(I))
 		if((istype(I, /obj/item/explosive/grenade)))
 			if(grenades.len < max_grenades)
 				if(user.drop_inv_item_to_loc(I, src))
@@ -489,7 +488,7 @@
 		user << "\blue It is loaded with a grenade."
 
 /obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
-	if(..(I,user))
+	if(allowed_ammo_type(I))
 		if((istype(I, /obj/item/explosive/grenade)))
 			if((istype(I, grenade_type_allowed)))
 				if(!grenade)

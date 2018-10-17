@@ -746,7 +746,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 	reload_attachment(obj/item/explosive/grenade/G, mob/user)
-		if(!istype(G))
+		if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
 			user << "<span class='warning'>[src] doesn't accept that type of grenade.</span>"
 			return
 		if(!G.active) //can't load live grenades

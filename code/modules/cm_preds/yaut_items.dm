@@ -53,9 +53,6 @@
 			if(7128)
 				name = "\improper 'Mask of the Swamp Horror'"
 				icon_state = "pred_mask_elder_joshuu"
-			if(9867)
-				name = "\improper 'Mask of the Enforcer'"
-				icon_state = "pred_mask_elder_feweh"
 			if(4879)
 				name = "\improper 'Mask of the Ambivalent Collector'"
 				icon_state = "pred_mask_elder_n"
@@ -348,7 +345,7 @@
 	species_restricted = null
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
-	flags_item = NODROP
+	flags_item = 0
 	flags_armor_protection = HANDS
 	armor = list(melee = 80, bullet = 80, laser = 55, energy = 50, bomb = 40, bio = 10, rad = 10)
 	flags_cold_protection = HANDS
@@ -381,8 +378,13 @@
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	..()
-	if(slot == WEAR_HANDS && isYautja(user))
-		processing_objects.Add(src)
+	if(slot == WEAR_HANDS)
+		flags_item = NODROP
+		if(isYautja(user))
+			processing_objects.Add(src)
+			user << "<span class='warning'>The bracer clamps securely around your forearm and beeps in a comfortable, familiar way.</span>"
+		else
+			user << "<span class='warning'>The bracer clamps painfully around your forearm and beeps angrily. It won't come off!</span>"
 
 /obj/item/clothing/gloves/yautja/Dispose()
 	processing_objects.Remove(src)
@@ -392,6 +394,7 @@
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	processing_objects.Remove(src)
 	add_to_missing_pred_gear(src)
+	flags_item = initial(flags_item)
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
@@ -1394,11 +1397,15 @@
 
 /obj/item/weapon/combistick/attack_self(mob/user)
 	..()
-
-	if(flags_item & WIELDED) unwield(user)
-	else 				wield(user)
+	if(on)
+		if(flags_item & WIELDED) unwield(user)
+		else 				wield(user)
+	else
+		user << "<span class='warning'>You need to extend the combi-stick before you can wield it.</span>"
 
 /obj/item/weapon/combistick/unique_action(mob/living/user)
+	if(user.get_active_hand() != src)
+		return
 	if(timer) return
 	on = !on
 	if(on)

@@ -314,6 +314,14 @@
 
 //-------------------------------------------------------
 //GRENADE LAUNCHER
+/obj/item/weapon/gun/launcher
+	var/list/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade)
+
+/obj/item/weapon/gun/launcher/attackby(obj/item/I, mob/user)
+	for(var/G in disallowed_grenade_types)
+		if(istype(I, G))
+			return 0
+	return 1
 
 /obj/item/weapon/gun/launcher/m92
 	name = "\improper M92 grenade launcher"
@@ -365,17 +373,20 @@
 		user << "\blue It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades."
 
 /obj/item/weapon/gun/launcher/m92/attackby(obj/item/I, mob/user)
-	if((istype(I, /obj/item/explosive/grenade)))
-		if(grenades.len < max_grenades)
-			if(user.drop_inv_item_to_loc(I, src))
-				grenades += I
-				user << "<span class='notice'>You put [I] in the grenade launcher.</span>"
-				user << "<span class='info'>Now storing: [grenades.len] / [max_grenades] grenades.</span>"
-		else
-			user << "<span class='warning'>The grenade launcher cannot hold more grenades!</span>"
+	if(..(I,user))
+		if((istype(I, /obj/item/explosive/grenade)))
+			if(grenades.len < max_grenades)
+				if(user.drop_inv_item_to_loc(I, src))
+					grenades += I
+					user << "<span class='notice'>You put [I] in the grenade launcher.</span>"
+					user << "<span class='info'>Now storing: [grenades.len] / [max_grenades] grenades.</span>"
+			else
+				user << "<span class='warning'>The grenade launcher cannot hold more grenades!</span>"
 
-	else if(istype(I,/obj/item/attachable))
-		if(check_inactive_hand(user)) attach_to_gun(user,I)
+		else if(istype(I,/obj/item/attachable))
+			if(check_inactive_hand(user)) attach_to_gun(user,I)
+	else
+		user << "<span class='warning'>[src] can't use this type of grenade!</span>"
 
 /obj/item/weapon/gun/launcher/m92/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
@@ -477,19 +488,22 @@
 		user << "\blue It is loaded with a grenade."
 
 /obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
-	if((istype(I, /obj/item/explosive/grenade)))
-		if((istype(I, grenade_type_allowed)))
-			if(!grenade)
-				if(user.drop_inv_item_to_loc(I, src))
-					grenade = I
-					user << "<span class='notice'>You put [I] in the grenade launcher.</span>"
+	if(..(I,user))
+		if((istype(I, /obj/item/explosive/grenade)))
+			if((istype(I, grenade_type_allowed)))
+				if(!grenade)
+					if(user.drop_inv_item_to_loc(I, src))
+						grenade = I
+						user << "<span class='notice'>You put [I] in the grenade launcher.</span>"
+				else
+					user << "<span class='warning'>The grenade launcher cannot hold more grenades!</span>"
 			else
-				user << "<span class='warning'>The grenade launcher cannot hold more grenades!</span>"
-		else
-			user << "<span class='warning'>[src] can't use this type of grenade!</span>"
+				user << "<span class='warning'>[src] can't use this type of grenade!</span>"
 
-	else if(istype(I,/obj/item/attachable))
-		if(check_inactive_hand(user)) attach_to_gun(user,I)
+		else if(istype(I,/obj/item/attachable))
+			if(check_inactive_hand(user)) attach_to_gun(user,I)
+	else
+		user << "<span class='warning'>[src] can't use this type of grenade!</span>"
 
 /obj/item/weapon/gun/launcher/m81/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))

@@ -321,7 +321,7 @@
 	for(var/G in disallowed_grenade_types)
 		if(istype(I, G))
 			return 0
-	return 1
+	return ..(I, user)
 
 /obj/item/weapon/gun/launcher/m92
 	name = "\improper M92 grenade launcher"

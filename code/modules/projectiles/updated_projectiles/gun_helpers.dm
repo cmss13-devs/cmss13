@@ -427,9 +427,12 @@ should be alright.
 	if(usr.stat) return
 
 	var/obj/item/weapon/W = src.get_active_hand()
-	var/obj/item/clothing/tie/holster/T = src.w_uniform.hastie
-	if(W)
-		if(istype(T) && istype(W) && !T.holstered && T.can_holster(W))
+	var/obj/item/clothing/under/U = src.w_uniform
+	var/obj/item/clothing/tie/holster/T = 0
+	if(istype(U))
+		T = src.w_uniform.hastie
+	if(W && istype(W))
+		if(istype(T) && !T.holstered && T.can_holster(W))
 			T.holster(W, src)
 		else
 			src.quick_equip()

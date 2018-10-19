@@ -431,8 +431,8 @@ should be alright.
 	var/obj/item/clothing/tie/holster/T = 0
 	if(istype(U))
 		T = src.w_uniform.hastie
-	if(W && istype(W))
-		if(istype(T) && !T.holstered && T.can_holster(W))
+	if(W)
+		if(istype(T) && istype(W) && !T.holstered && T.can_holster(W))
 			T.holster(W, src)
 		else
 			src.quick_equip()

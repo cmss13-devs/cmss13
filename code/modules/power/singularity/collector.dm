@@ -35,7 +35,7 @@ var/global/list/rad_collectors = list()
 
 	if(P)
 		if(P.gas_type != GAS_TYPE_PHORON || P.pressure == 0)
-			investigate_log("<font color='red'>out of fuel</font>.","singulo")
+			investigate_log("<span class='caution'>out of fuel</span>.","singulo")
 			eject()
 		else
 			P.pressure -= 0.001
@@ -48,10 +48,10 @@ var/global/list/rad_collectors = list()
 			toggle_power()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
-			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.pressure)]kPa":"<font color='red'>It is empty</font>"].","singulo")
+			investigate_log("turned [active?"<font color='green'>on</font>":"<span class='caution'>off</span>"] by [user.key]. [P?"Fuel: [round(P.pressure)]kPa":"<span class='caution'>It is empty</span>"].","singulo")
 			return
 		else
-			user << "\red The controls are locked!"
+			to_chat(user, "<span class='warning'>The controls are locked!</span>")
 			return
 	..()
 
@@ -59,10 +59,10 @@ var/global/list/rad_collectors = list()
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tank/phoron))
 		if(!src.anchored)
-			user << "\red The [src] needs to be secured to the floor first."
+			to_chat(user, "<span class='warning'>The [src] needs to be secured to the floor first.</span>")
 			return 1
 		if(src.P)
-			user << "\red There's already a phoron tank loaded."
+			to_chat(user, "\red There's already a phoron tank loaded.")
 			return 1
 		if(user.drop_inv_item_to_loc(W, src))
 			P = W
@@ -74,7 +74,7 @@ var/global/list/rad_collectors = list()
 			return 1
 	else if(istype(W, /obj/item/tool/wrench))
 		if(P)
-			user << "\blue Remove the phoron tank first."
+			to_chat(user, "<span class='notice'>Remove the phoron tank first.</span>")
 			return 1
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		src.anchored = !src.anchored
@@ -90,19 +90,19 @@ var/global/list/rad_collectors = list()
 		if (src.allowed(user))
 			if(active)
 				src.locked = !src.locked
-				user << "The controls are now [src.locked ? "locked." : "unlocked."]"
+				to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 			else
 				src.locked = 0 //just in case it somehow gets locked
-				user << "\red The controls can only be locked when the [src] is active"
+				to_chat(user, "<span class='warning'>The controls can only be locked when the [src] is active</span>")
 		else
-			user << "\red Access denied!"
+			to_chat(user, "<span class='warning'>Access denied!</span>")
 		return 1
 	return ..()
 
 /obj/machinery/power/rad_collector/examine(mob/user)
 	..()
 	if (get_dist(user, src) <= 3)
-		user << "The meter indicates that \the [src] is collecting [last_power] W."
+		to_chat(user, "The meter indicates that \the [src] is collecting [last_power] W.")
 
 /obj/machinery/power/rad_collector/ex_act(severity)
 	if(severity < EXPLOSION_THRESHOLD_MEDIUM)

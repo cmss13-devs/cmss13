@@ -23,13 +23,13 @@
 			if(prob((fuel/10)-stability))
 				explosion(get_turf(src), 1, 2, 3, 5)
 				if(src)
-					cdel(src)
+					qdel(src)
 				return
 			stability -= 40
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			explosion(get_turf(src), 1, 2, 3, 5)//Should likely be larger but this works fine for now I guess
 			if(src)
-				cdel(src)
+				qdel(src)
 			return
 	//check_stability()
 	return

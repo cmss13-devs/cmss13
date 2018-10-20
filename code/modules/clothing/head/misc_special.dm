@@ -44,14 +44,14 @@
 			flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
 			icon_state = initial(icon_state)
 			eye_protection = initial(eye_protection)
-			usr << "You flip the [src] down to protect your eyes."
+			to_chat(usr, "You flip the [src] down to protect your eyes.")
 			anti_hug = hug_memory //This will reset the hugged var, but ehh. More efficient than making a new var for it.
 		else
 			flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 			flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = "[initial(icon_state)]up"
 			eye_protection = 0
-			usr << "You push the [src] up out of your face."
+			to_chat(usr, "You push the [src] up out of your face.")
 			hug_memory = anti_hug
 			anti_hug = 0
 		up = !up
@@ -119,31 +119,12 @@
 
 	attack_self(mob/user)
 		if(!isturf(user.loc))
-			user << "You cannot turn the light on while in [user.loc]" //To prevent some lighting anomalities.
+			to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
 			return
 		on = !on
 		icon_state = "hardhat[on]_pumpkin"
 
-		if(on)	user.SetLuminosity(brightness_on)
-		else	user.SetLuminosity(-brightness_on)
-
-	pickup(mob/user)
-		..()
-		if(on)
-			user.SetLuminosity(brightness_on)
-//			user.UpdateLuminosity()
-			SetLuminosity(0)
-
-	dropped(mob/user)
-		..()
-		if(on)
-			user.SetLuminosity(-brightness_on)
-//			user.UpdateLuminosity()
-			SetLuminosity(brightness_on)
-
-	Dispose()
-		if(ismob(src.loc))
-			src.loc.SetLuminosity(-brightness_on)
-		else
-			SetLuminosity(0)
-		. = ..()
+		if(on)	
+			set_light(brightness_on)
+		else	
+			set_light(-brightness_on)

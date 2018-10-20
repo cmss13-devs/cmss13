@@ -73,11 +73,6 @@
 /obj/proc/interact(mob/user)
 	return
 
-/obj/proc/update_icon()
-	return
-
-
-
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = src.loc
 	if(istype(M) && M.client && M.interactee == src)
@@ -166,10 +161,10 @@
 		return
 
 	if (M.mob_size > MOB_SIZE_HUMAN)
-		user << "<span class='warning'>[M] is too big to buckle in.</span>"
+		to_chat(user, "<span class='warning'>[M] is too big to buckle in.</span>")
 		return
 	if (isXeno(user))
-		user << "<span class='warning'>You don't have the dexterity to do that, try a nest.</span>"
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do that, try a nest.</span>")
 		return
 	if (iszombie(user))
 		return

@@ -55,7 +55,7 @@ var/intercom_range_display_status = 0
 
 
 	for(var/obj/effect/debugging/camera_range/C in effect_list)
-		cdel(C)
+		qdel(C)
 
 	if(camera_range_display_status)
 		for(var/obj/machinery/camera/C in cameranet.cameras)
@@ -110,14 +110,14 @@ var/intercom_range_display_status = 0
 		intercom_range_display_status = 1
 
 	for(var/obj/effect/debugging/marker/M in effect_list)
-		cdel(M)
+		qdel(M)
 
 	if(intercom_range_display_status)
 		for(var/obj/item/device/radio/intercom/I in item_list)
 			for(var/turf/T in orange(7,I))
 				var/obj/effect/debugging/marker/F = new/obj/effect/debugging/marker(T)
 				if (!(F in view(7,I.loc)))
-					cdel(F)
+					qdel(F)
 	feedback_add_details("admin_verb","mIRD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 var/list/debug_verbs = list(
@@ -221,7 +221,7 @@ var/list/debug_verbs = list(
 				line += " no.[i+10+j]@\[[temp_atom.x], [temp_atom.y], [temp_atom.z]\]; "
 		world << line*/
 
-	world << "There are [count] objects of type [type_path] on z-level [num_level]"
+	to_chat(world, "There are [count] objects of type [type_path] on z-level [num_level]")
 	feedback_add_details("admin_verb","mOBJZ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/count_objects_all()
@@ -248,7 +248,7 @@ var/list/debug_verbs = list(
 				line += " no.[i+10+j]@\[[temp_atom.x], [temp_atom.y], [temp_atom.z]\]; "
 		world << line*/
 
-	world << "There are [count] objects of type [type_path] in the game world"
+	to_chat(world, "There are [count] objects of type [type_path] in the game world")
 	feedback_add_details("admin_verb","mOBJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -267,7 +267,7 @@ var/global/prevent_airgroup_regroup = 0
 	set category = "Mapping"
 	set name = "Regroup All Airgroups Attempt"
 
-	usr << "\red Proc disabled."
+	to_chat(usr, "<span class='warning'>Proc disabled.</span>")
 
 	/*prevent_airgroup_regroup = 0
 	for(var/datum/air_group/AG in air_master.air_groups)
@@ -278,7 +278,7 @@ var/global/prevent_airgroup_regroup = 0
 	set category = "Mapping"
 	set name = "Kill pipe processing"
 
-	usr << "\red Proc disabled."
+	to_chat(usr, "<span class='warning'>Proc disabled.</span>")
 
 	/*pipe_processing_killed = !pipe_processing_killed
 	if(pipe_processing_killed)
@@ -290,7 +290,7 @@ var/global/prevent_airgroup_regroup = 0
 	set category = "Mapping"
 	set name = "Kill air processing"
 
-	usr << "\red Proc disabled."
+	to_chat(usr, "<span class='warning'>Proc disabled.</span>")
 
 	/*air_processing_killed = !air_processing_killed
 	if(air_processing_killed)
@@ -304,7 +304,7 @@ var/global/say_disabled = 0
 	set category = "Mapping"
 	set name = "Disable all communication verbs"
 
-	usr << "\red Proc disabled."
+	to_chat(usr, "<span class='warning'>Proc disabled.</span>")
 
 	/*say_disabled = !say_disabled
 	if(say_disabled)
@@ -319,7 +319,7 @@ var/global/movement_disabled_exception //This is the client that calls the proc,
 	set category = "Mapping"
 	set name = "Disable all movement"
 
-	usr << "\red Proc disabled."
+	to_chat(usr, "<span class='warning'>Proc disabled.</span>")
 
 	/*movement_disabled = !movement_disabled
 	if(movement_disabled)

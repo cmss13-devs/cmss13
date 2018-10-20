@@ -19,7 +19,7 @@
 			if(istype(wrapped, /obj/structure/closet))
 				var/obj/structure/closet/O = wrapped
 				O.welded = 0
-		cdel(src)
+		qdel(src)
 		return
 
 	attackby(obj/item/W as obj, mob/user as mob)
@@ -27,7 +27,7 @@
 			var/obj/item/device/destTagger/O = W
 			if(O.currTag)
 				if(src.sortTag != O.currTag)
-					user << "<span class='notice'>You have labeled the destination as [O.currTag].</span>"
+					to_chat(user, "<span class='notice'>You have labeled the destination as [O.currTag].</span>")
 					if(!src.sortTag)
 						src.sortTag = O.currTag
 						update_icon()
@@ -35,16 +35,16 @@
 						src.sortTag = O.currTag
 					playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 				else
-					user << "<span class='warning'>The package is already labeled for [O.currTag].</span>"
+					to_chat(user, "<span class='warning'>The package is already labeled for [O.currTag].</span>")
 			else
-				user << "<span class='warning'>You need to set a destination first!</span>"
+				to_chat(user, "<span class='warning'>You need to set a destination first!</span>")
 
 		else if(istype(W, /obj/item/tool/pen))
 			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 				if("Title")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_NAME_LEN))
 					if(!str || !length(str))
-						usr << "<span class='warning'> Invalid text.</span>"
+						to_chat(usr, "<span class='warning'> Invalid text.</span>")
 						return
 					user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
 					"<span class='notice'>You title \the [src]: \"[str]\"</span>",\
@@ -58,7 +58,7 @@
 				if("Description")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_MESSAGE_LEN))
 					if(!str || !length(str))
-						usr << "\red Invalid text."
+						to_chat(usr, "<span class='warning'>Invalid text.</span>")
 						return
 					if(!examtext && !nameset)
 						examtext = str
@@ -103,9 +103,9 @@
 		..()
 		if(get_dist(src, user) <= 4)
 			if(sortTag)
-				user << "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+				to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
 			if(examtext)
-				user << "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
+				to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
 		return
 
 /obj/item/smallDelivery
@@ -127,7 +127,7 @@
 			else
 				wrapped.loc = get_turf(src)
 
-		cdel(src)
+		qdel(src)
 		return
 
 	attackby(obj/item/W as obj, mob/user as mob)
@@ -135,7 +135,7 @@
 			var/obj/item/device/destTagger/O = W
 			if(O.currTag)
 				if(src.sortTag != O.currTag)
-					user << "<span class='notice'>You have labeled the destination as [O.currTag].</span>"
+					to_chat(user, "<span class='notice'>You have labeled the destination as [O.currTag].</span>")
 					if(!src.sortTag)
 						src.sortTag = O.currTag
 						update_icon()
@@ -143,16 +143,16 @@
 						src.sortTag = O.currTag
 					playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 				else
-					user << "<span class='warning'>The package is already labeled for [O.currTag].</span>"
+					to_chat(user, "<span class='warning'>The package is already labeled for [O.currTag].</span>")
 			else
-				user << "<span class='warning'>You need to set a destination first!</span>"
+				to_chat(user, "<span class='warning'>You need to set a destination first!</span>")
 
 		else if(istype(W, /obj/item/tool/pen))
 			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 				if("Title")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_NAME_LEN))
 					if(!str || !length(str))
-						usr << "<span class='warning'> Invalid text.</span>"
+						to_chat(usr, "<span class='warning'> Invalid text.</span>")
 						return
 					user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
 					"<span class='notice'>You title \the [src]: \"[str]\"</span>",\
@@ -167,7 +167,7 @@
 				if("Description")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_MESSAGE_LEN))
 					if(!str || !length(str))
-						usr << "\red Invalid text."
+						to_chat(usr, "<span class='warning'>Invalid text.</span>")
 						return
 					if(!examtext && !nameset)
 						examtext = str
@@ -208,9 +208,9 @@
 		..()
 		if(get_dist(src, user) <= 4)
 			if(sortTag)
-				user << "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+				to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
 			if(examtext)
-				user << "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
+				to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
 
 /obj/item/packageWrap
 	name = "package wrapper"
@@ -234,7 +234,7 @@
 		if(user in target) //no wrapping closets that you are inside - it's not physically possible
 			return
 
-		user.attack_log += text("\[[time_stamp()]\] <font color='blue'>Has used [src.name] on \ref[target]</font>")
+		user.attack_log += text("\[[time_stamp()]\] <span class='notice'>Has used [src.name] on \ref[target]</span>")
 
 
 		if (istype(target, /obj/item) && !(istype(target, /obj/item/storage) && !istype(target,/obj/item/storage/box)))
@@ -279,7 +279,7 @@
 				"<span class='notice'>You wrap \the [target], leaving [amount] units of paper on \the [src].</span>",\
 				"You hear someone taping paper around a large object.")
 			else if(src.amount < 3)
-				user << "<span class='warning'>You need more paper.</span>"
+				to_chat(user, "<span class='warning'>You need more paper.</span>")
 		else if (istype (target, /obj/structure/closet))
 			var/obj/structure/closet/O = target
 			if (src.amount > 3 && !O.opened)
@@ -292,19 +292,19 @@
 				"<span class='notice'>You wrap \the [target], leaving [amount] units of paper on \the [src].</span>",\
 				"You hear someone taping paper around a large object.")
 			else if(src.amount < 3)
-				user << "<span class='warning'>You need more paper.</span>"
+				to_chat(user, "<span class='warning'>You need more paper.</span>")
 		else
-			user << "\blue The object you are trying to wrap is unsuitable for the sorting machinery!"
+			to_chat(user, "<span class='notice'>The object you are trying to wrap is unsuitable for the sorting machinery!</span>")
 		if (src.amount <= 0)
 			new /obj/item/trash/c_tube( src.loc )
-			cdel(src)
+			qdel(src)
 			return
 		return
 
 	examine(mob/user)
 		..()
 		if(get_dist(src, user) < 2)
-			user << "\blue There are [amount] units of package wrap left!"
+			to_chat(user, "\blue There are [amount] units of package wrap left!")
 
 
 /obj/item/device/destTagger
@@ -413,28 +413,28 @@
 			if(c_mode==0)
 				c_mode=1
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user << "You remove the screws around the power connection."
+				to_chat(user, "You remove the screws around the power connection.")
 				return
 			else if(c_mode==1)
 				c_mode=0
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user << "You attach the screws around the power connection."
+				to_chat(user, "You attach the screws around the power connection.")
 				return
 		else if(istype(I,/obj/item/tool/weldingtool) && c_mode==1)
 			var/obj/item/tool/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-				user << "You start slicing the floorweld off the delivery chute."
+				to_chat(user, "You start slicing the floorweld off the delivery chute.")
 				if(do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 					if(!src || !W.isOn()) return
-					user << "You sliced the floorweld off the delivery chute."
+					to_chat(user, "You sliced the floorweld off the delivery chute.")
 					var/obj/structure/disposalconstruct/C = new (src.loc)
 					C.ptype = 8 // 8 =  Delivery chute
 					C.update()
 					C.anchored = 1
 					C.density = 1
-					cdel(src)
+					qdel(src)
 				return
 			else
-				user << "You need more welding fuel to complete this task."
+				to_chat(user, "You need more welding fuel to complete this task.")
 				return

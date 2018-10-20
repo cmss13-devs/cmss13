@@ -40,7 +40,7 @@
 
 		flick("[icon_state]-disolve", src)
 		sleep(5)
-		cdel(src)
+		qdel(src)
 
 
 // transfer any reagents to the floor
@@ -85,7 +85,7 @@
 		flick("[icon_state]-disolve", src)
 
 		spawn(5)
-			cdel(src)
+			qdel(src)
 
 
 /obj/effect/particle_effect/foam/Crossed(var/atom/movable/AM)
@@ -174,11 +174,11 @@
 
 
 	ex_act(severity)
-		cdel(src)
+		qdel(src)
 
 	bullet_act()
 		if(metal==1 || prob(50))
-			cdel(src)
+			qdel(src)
 		return 1
 
 	attack_paw(var/mob/user)
@@ -187,27 +187,27 @@
 
 	attack_hand(var/mob/user)
 		if ((HULK in user.mutations) || (prob(75 - metal*25)))
-			user << "\blue You smash through the metal foam wall."
+			to_chat(user, "<span class='notice'>You smash through the metal foam wall.</span>")
 			for(var/mob/O in oviewers(user))
 				if ((O.client && !( O.blinded )))
-					O << "\red [user] smashes through the foamed metal."
+					to_chat(O, "<span class='warning'>[user] smashes through the foamed metal.</span>")
 
-			cdel(src)
+			qdel(src)
 		else
-			user << "\blue You hit the metal foam but bounce off it."
+			to_chat(user, "<span class='notice'>You hit the metal foam but bounce off it.</span>")
 		return
 
 
 	attackby(var/obj/item/I, var/mob/user)
 
 		if(prob(I.force*20 - metal*25))
-			user << "\blue You smash through the foamed metal with \the [I]."
+			to_chat(user, "<span class='notice'>You smash through the foamed metal with \the [I].</span>")
 			for(var/mob/O in oviewers(user))
 				if ((O.client && !( O.blinded )))
-					O << "\red [user] smashes through the foamed metal."
-			cdel(src)
+					to_chat(O, "<span class='warning'>[user] smashes through the foamed metal.</span>")
+			qdel(src)
 		else
-			user << "\blue You hit the metal foam to no effect."
+			to_chat(user, "<span class='notice'>You hit the metal foam to no effect.</span>")
 
 	CanPass(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
 		if(air_group) return 0

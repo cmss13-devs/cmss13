@@ -21,7 +21,7 @@
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
 	..()
 	spawn(8)
-		cdel(src)
+		qdel(src)
 
 
 /obj/effect/xenomorph/splatterblob
@@ -35,7 +35,7 @@
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
 	..()
 	spawn(40)
-		cdel(src)
+		qdel(src)
 
 
 /obj/effect/xenomorph/spray
@@ -54,7 +54,7 @@
 	processing_objects.Add(src)
 	spawn(30 + rand(0, 20))
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		return
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
@@ -62,7 +62,7 @@
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(!H.lying)
-			H << "<span class='danger'>Your feet scald and burn! Argh!</span>"
+			to_chat(H, "<span class='danger'>Your feet scald and burn! Argh!</span>")
 			H.emote("pain")
 			H.KnockDown(3)
 			var/datum/limb/affecting = H.get_limb("l_foot")
@@ -74,13 +74,13 @@
 			H.updatehealth()
 		else
 			H.adjustFireLoss(rand(2, 5)) //This is ticking damage!
-			H << "<span class='danger'>You are scalded by the burning acid!</span>"
+			to_chat(H, "<span class='danger'>You are scalded by the burning acid!</span>")
 
 /obj/effect/xenomorph/spray/process()
 	var/turf/T = loc
 	if(!istype(T))
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		return
 
 	for(var/mob/living/carbon/M in loc)
@@ -126,7 +126,7 @@
 /obj/effect/xenomorph/acid/proc/tick(strength_t)
 	set waitfor = 0
 	if(!acid_t || !acid_t.loc)
-		cdel(src)
+		qdel(src)
 		return
 	if(++ticks >= strength_t)
 		visible_message("<span class='xenodanger'>[acid_t] collapses under its own weight into a puddle of goop and undigested debris!</span>")
@@ -150,10 +150,10 @@
 			if(acid_t.contents.len) //Hopefully won't auto-delete things inside melted stuff..
 				for(var/mob/M in acid_t.contents)
 					if(acid_t.loc) M.forceMove(acid_t.loc)
-			cdel(acid_t)
+			qdel(acid_t)
 			acid_t = null
 
-		cdel(src)
+		qdel(src)
 		return
 
 	switch(strength_t - ticks)

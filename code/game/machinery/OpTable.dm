@@ -36,20 +36,20 @@
 				src.density = 0
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
 
 /obj/machinery/optable/attack_paw(mob/user as mob)
 	if ((HULK in usr.mutations))
-		usr << text("\blue You destroy the operating table.")
-		visible_message("\red [usr] destroys the operating table!")
+		to_chat(usr, "<span class='notice'>You destroy the operating table.</span>")
+		visible_message("<span class='warning'>[usr] destroys the operating table!</span>")
 		src.density = 0
-		cdel(src)
+		qdel(src)
 	if (!( locate(/obj/machinery/optable, user.loc) ))
 		step(user, get_dir(user, src))
 		if (user.loc == src.loc)
@@ -62,21 +62,21 @@
 	if(get_dist(user, src) > 2 && !isobserver(user))
 		return
 	if(anes_tank)
-		user << "<span class='information'>It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.</span>"
+		to_chat(user, "<span class='information'>It has an [anes_tank] connected with the gauge showing [round(anes_tank.pressure,0.1)] kPa.</span>")
 
 /obj/machinery/optable/attack_hand(mob/living/user)
 	if (HULK in usr.mutations)
-		usr << text("\blue You destroy the table.")
-		visible_message("\red [usr] destroys the operating table!")
+		to_chat(usr, "<span class='notice'>You destroy the table.</span>")
+		visible_message("<span class='warning'>[usr] destroys the operating table!</span>")
 		src.density = 0
-		cdel(src)
+		qdel(src)
 		return
 	if(buckled_mob)
 		unbuckle(user)
 		return
 	if(anes_tank)
 		user.put_in_active_hand(anes_tank)
-		user << "<span class='notice'>You remove \the [anes_tank] from \the [src].</span>"
+		to_chat(user, "<span class='notice'>You remove \the [anes_tank] from \the [src].</span>")
 		anes_tank = null
 
 
@@ -85,33 +85,33 @@
 	if(H == user) return
 	if(H.buckled) return
 	if(H != victim)
-		user << "<span class='warning'>Lay the patient on the table first!</span>"
+		to_chat(user, "<span class='warning'>Lay the patient on the table first!</span>")
 		return
 	if(!anes_tank)
-		user << "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>"
+		to_chat(user, "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>")
 		return
 	H.visible_message("<span class='notice'>[user] begins to connect [H] to the anesthetic system.</span>")
 	if(!do_after(user, 25, FALSE, 5, BUSY_ICON_FRIENDLY))
 		if(H.buckled) return
 		if(H != victim)
-			user << "<span class='warning'>The patient must remain on the table!</span>"
+			to_chat(user, "<span class='warning'>The patient must remain on the table!</span>")
 			return
-		user << "<span class='notice'>You stop placing the mask on [H]'s face.</span>"
+		to_chat(user, "<span class='notice'>You stop placing the mask on [H]'s face.</span>")
 		return
 	if(!anes_tank)
-		user << "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>"
+		to_chat(user, "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>")
 		return
 	if(H.wear_mask && !H.drop_inv_item_on_ground(H.wear_mask))
-		user << "<span class='danger'>You can't remove their mask!</span>"
+		to_chat(user, "<span class='danger'>You can't remove their mask!</span>")
 		return
 	var/obj/item/clothing/mask/breath/medical/B = new()
 	if(!H.equip_if_possible(B, WEAR_FACE))
-		user << "<span class='danger'>You can't fit the gas mask over their face!</span>"
-		cdel(B)
+		to_chat(user, "<span class='danger'>You can't fit the gas mask over their face!</span>")
+		qdel(B)
 		return
 	H.internal = anes_tank
 	H.visible_message("<span class='notice'>[user] fits the mask over [H]'s face and turns on the anesthetic.</span>'")
-	H << "<span class='information'>You begin to feel sleepy.</span>"
+	to_chat(H, "<span class='information'>You begin to feel sleepy.</span>")
 	H.dir = SOUTH
 	..()
 
@@ -123,7 +123,7 @@
 		H.internal = null
 		var/obj/item/M = H.wear_mask
 		H.drop_inv_item_on_ground(M)
-		cdel(M)
+		qdel(M)
 		H.visible_message("<span class='notice'>[user] turns off the anesthetic and removes the mask from [H].</span>")
 		..()
 
@@ -195,18 +195,18 @@
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)
 			anes_tank = W
-			user << "<span class='notice'>You connect \the [anes_tank] to \the [src].</span>"
+			to_chat(user, "<span class='notice'>You connect \the [anes_tank] to \the [src].</span>")
 			return
 	if (istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(victim && victim != G.grabbed_thing)
-			user << "<span class='warning'>The table is already occupied!</span>"
+			to_chat(user, "<span class='warning'>The table is already occupied!</span>")
 			return
 		var/mob/living/carbon/M
 		if(iscarbon(G.grabbed_thing))
 			M = G.grabbed_thing
 			if(M.buckled)
-				user << "<span class='warning'>Unbuckle first!</span>"
+				to_chat(user, "<span class='warning'>Unbuckle first!</span>")
 				return
 		else if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
 			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing
@@ -223,11 +223,11 @@
 
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient as mob)
 	if(victim)
-		usr << "\blue <B>The table is already occupied!</B>"
+		to_chat(usr, "<span class='boldnotice'>The table is already occupied!</span>")
 		return 0
 
 	if(patient.buckled)
-		usr << "\blue <B>Unbuckle first!</B>"
+		to_chat(usr, "<span class='boldnotice'>Unbuckle first!</span>")
 		return 0
 
 	return 1

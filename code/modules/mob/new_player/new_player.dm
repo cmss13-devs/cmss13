@@ -66,21 +66,21 @@
 			return 0
 
 		stat("Map:", "[map_tag]")
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Colonial Marines")
-		else
-			if(ticker.hide_mode == 0)
+		if(ticker)
+			if(ticker.hide_mode)
+				stat("Game Mode:", "Colonial Marines")
+			else if(ticker.hide_mode == 0)
 				stat("Game Mode:", "[master_mode]") // Old setting for showing the game mode
 
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
-			totalPlayers = 0
-			totalPlayersReady = 0
-			for(var/mob/new_player/player in player_list)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
-				totalPlayers++
-				if(player.ready)totalPlayersReady++
+			if(ticker.current_state == GAME_STATE_PREGAME)
+				stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
+				stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+				totalPlayers = 0
+				totalPlayersReady = 0
+				for(var/mob/new_player/player in player_list)
+					stat("[player.key]", (player.ready)?("(Playing)"):(null))
+					totalPlayers++
+					if(player.ready)totalPlayersReady++
 
 		return 1
 
@@ -113,10 +113,10 @@
 					close_spawn_windows()
 					var/obj/O = locate("landmark*Observer-Start")
 					if(istype(O))
-						src << "<span class='notice'>Now teleporting.</span>"
+						to_chat(src, "<span class='notice'>Now teleporting.</span>")
 						observer.loc = O.loc
 					else
-						src << "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>"
+						to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
 					//observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
 
 					client.prefs.update_preview_icon()
@@ -132,18 +132,18 @@
 					observer.key = key
 					observer.timeofdeath = 0
 					if(observer.client) observer.client.change_view(world.view)
-					cdel(src)
+					qdel(src)
 
 					return 1
 
 			if("late_join")
 
 				if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-					src << "<span class='warning'>The round is either not ready, or has already finished...</span>"
+					to_chat(src, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 					return
 
 				if(ticker.mode.flags_round_type	& MODE_NO_LATEJOIN)
-					src << "<span class='warning'>Sorry, you cannot late join during [ticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible.</span>"
+					to_chat(src, "<span class='warning'>Sorry, you cannot late join during [ticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible.</span>")
 					return
 
 				if(client.prefs.species != "Human")
@@ -160,7 +160,7 @@
 
 			if("late_join_xeno")
 				if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-					src << "<span class='warning'>The round is either not ready, or has already finished...</span>"
+					to_chat(src, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 					return
 
 				if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
@@ -172,7 +172,7 @@
 
 			if("late_join_pred")
 				if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-					src << "<span class='warning'>The round is either not ready, or has already finished...</span>"
+					to_chat(src, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 					return
 
 				if(alert(src,"Are you sure you want to attempt joining as a predator?","Confirmation","Yes","No") == "Yes" )
@@ -180,7 +180,7 @@
 						close_spawn_windows()
 						ticker.mode.attempt_to_join_as_predator(src)
 					else
-						src << "<span class='warning'>You are no longer able to join as predator.</span>"
+						to_chat(src, "<span class='warning'>You are no longer able to join as predator.</span>")
 						new_player_panel()
 
 			if("manifest")
@@ -189,7 +189,7 @@
 			if("SelectedJob")
 
 				if(!enter_allowed)
-					usr << "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)</span>"
+					to_chat(usr, "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)</span>")
 					return
 
 				if(client.prefs.species != "Human")
@@ -253,7 +253,7 @@
 				var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
 				var/DBQuery/query_insert = dbcon.NewQuery(sql)
 				query_insert.Execute()
-				usr << "<b>Thank you for your vote!</b>"
+				to_chat(usr, "<b>Thank you for your vote!</b>")
 				usr << browse(null,"window=privacypoll")
 
 
@@ -282,7 +282,7 @@
 					var/id_max = text2num(href_list["maxid"])
 
 					if( (id_max - id_min) > 100 )	//Basic exploit prevention
-						usr << "The option ID difference is too big. Please contact administration or the database admin."
+						to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 						return
 
 					for(var/optionid = id_min; optionid <= id_max; optionid++)
@@ -301,7 +301,7 @@
 					var/id_max = text2num(href_list["maxoptionid"])
 
 					if( (id_max - id_min) > 100 )	//Basic exploit prevention
-						usr << "The option ID difference is too big. Please contact administration or the database admin."
+						to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 						return
 
 					for(var/optionid = id_min; optionid <= id_max; optionid++)
@@ -313,10 +313,10 @@
 		if (src != usr)
 			return
 		if(!ticker || ticker.current_state != GAME_STATE_PLAYING)
-			usr << "<span class='warning'>The round is either not ready, or has already finished!<spawn>"
+			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished!<spawn>")
 			return
 		if(!enter_allowed)
-			usr << "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)<spawn>"
+			to_chat(usr, "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)<spawn>")
 			return
 		if(!RoleAuthority.assign_role(src, RoleAuthority.roles_for_mode[rank], 1))
 			src << alert("[rank] is not available. Please try another.")
@@ -350,14 +350,14 @@
 			ticker.mode.latejoin_tally -= ticker.mode.latejoin_larva_drop
 			ticker.mode.stored_larva++
 
-		cdel(src)
+		qdel(src)
 
 	proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)
 		if (ticker.current_state == GAME_STATE_PLAYING)
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)// BS12 EDIT Arrivals Announcement Computer, rather than the AI.
 			if(character.mind.role_alt_title) rank = character.mind.role_alt_title
 			a.autosay("[character.real_name],[rank ? " [rank]," : " visitor," ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
-			cdel(a)
+			qdel(a)
 
 	proc/LateChoices()
 		var/mills = world.time // 1/10 of a second, not real milliseconds but whatever

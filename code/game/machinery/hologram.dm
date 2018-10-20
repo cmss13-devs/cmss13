@@ -22,12 +22,12 @@
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_LOW)
 				if (prob(5))
-					cdel(src)
+					qdel(src)
 			if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 				if (prob(50))
-					cdel(src)
+					qdel(src)
 			if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-				cdel(src)
+				qdel(src)
 
 	Dispose()
 		if(hologram)
@@ -36,7 +36,7 @@
 
 /obj/machinery/hologram/proc/clear_holo()
 	if(hologram)
-		cdel(hologram)
+		qdel(hologram)
 		hologram = null
 
 
@@ -82,13 +82,13 @@ var/const/HOLOPAD_MODE = 0
 	if(alert(user,"Would you like to request an AI's presence?",,"Yes","No") == "Yes")
 		if(last_request + 200 < world.time) //don't spam the AI with requests you jerk!
 			last_request = world.time
-			user << "<span class='notice'>You request an AI's presence.</span>"
+			to_chat(user, "<span class='notice'>You request an AI's presence.</span>")
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in living_mob_list)
 				if(!AI.client)	continue
-				AI << "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>"
+				to_chat(AI, "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>")
 		else
-			user << "<span class='notice'>A request for AI presence was already sent recently.</span>"
+			to_chat(user, "<span class='notice'>A request for AI presence was already sent recently.</span>")
 
 /obj/machinery/hologram/holopad/attack_ai(mob/living/silicon/ai/user)
 	if (!istype(user))
@@ -110,9 +110,9 @@ var/const/HOLOPAD_MODE = 0
 			create_holo(user)//Create one.
 			src.visible_message("A holographic image of [user] flicks to life right before your eyes!")
 		else
-			user << "\red ERROR: \black Image feed in progress."
+			to_chat(user, "<span class='warning'>ERROR: \black Image feed in progress.</span>")
 	else
-		user << "\red ERROR: \black Unable to project hologram."
+		to_chat(user, "<span class='warning'>ERROR: \black Unable to project hologram.</span>")
 	return
 
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
@@ -134,8 +134,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	hologram.layer = FLY_LAYER//Above all the other objects/mobs. Or the vast majority of them.
 	hologram.anchored = 1//So space wind cannot drag it.
 	hologram.name = "[A.name] (Hologram)"//If someone decides to right click.
-	hologram.SetLuminosity(2)	//hologram lighting
-	SetLuminosity(2)			//pad lighting
+	hologram.set_light(2)	//hologram lighting
+	set_light(2)			//pad lighting
 	icon_state = "holopad1"
 	A.holo = src
 	master = A//AI is the master.
@@ -145,12 +145,12 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/hologram/holopad/clear_holo()
 //	hologram.SetLuminosity(0)//Clear lighting.	//handled by the lighting controller when its ower is deleted
 	if(hologram)
-		cdel(hologram)//Get rid of hologram.
+		qdel(hologram)//Get rid of hologram.
 		hologram = null
 	if(master.holo == src)
 		master.holo = null
 	master = null//Null the master, since no-one is using it now.
-	SetLuminosity(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+	set_light(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
 	icon_state = "holopad0"
 	use_power = 1//Passive power usage.
 	return 1
@@ -198,7 +198,7 @@ Holographic project of everything else.
 		flat_icon.AddAlphaMask(alpha_mask)//Finally, let's mix in a distortion effect.
 		hologram.icon = flat_icon
 
-		world << "Your icon should appear now."
+		to_chat(world, "Your icon should appear now.")
 	return
 */
 

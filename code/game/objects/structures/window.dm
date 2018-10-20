@@ -60,10 +60,10 @@
 		if(-2000 to 0)
 			playsound(src, "shatter", 50, 1)
 			handle_debris(severity,explosion_direction)
-			cdel(src)
+			qdel(src)
 		else
 			handle_debris(severity,explosion_direction)
-			cdel(src)
+			qdel(src)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -207,23 +207,23 @@
 		if(reinf && state >= 1)
 			state = 3 - state
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user << (state == 1 ? "<span class='notice'>You have unfastened the window from the frame.</span>" : "<span class='notice'>You have fastened the window to the frame.</span>")
+			to_chat(user, (state == 1 ? "<span class='notice'>You have unfastened the window from the frame.</span>" : "<span class='notice'>You have fastened the window to the frame.</span>"))
 		else if(reinf && state == 0 && !static_frame)
 			anchored = !anchored
 			update_nearby_icons()
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user << (anchored ? "<span class='notice'>You have fastened the frame to the floor.</span>" : "<span class='notice'>You have unfastened the frame from the floor.</span>")
+			to_chat(user, (anchored ? "<span class='notice'>You have fastened the frame to the floor.</span>" : "<span class='notice'>You have unfastened the frame from the floor.</span>"))
 		else if(!reinf && !static_frame)
 			anchored = !anchored
 			update_nearby_icons()
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user << (anchored ? "<span class='notice'>You have fastened the window to the floor.</span>" : "<span class='notice'>You have unfastened the window.</span>")
+			to_chat(user, (anchored ? "<span class='notice'>You have fastened the window to the floor.</span>" : "<span class='notice'>You have unfastened the window.</span>"))
 		else if(static_frame && state == 0)
 			disassemble_window()
 	else if(istype(W, /obj/item/tool/crowbar) && reinf && state <= 1 && !not_deconstructable)
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-		user << (state ? "<span class='notice'>You have pried the window into the frame.</span>" : "<span class='notice'>You have pried the window out of the frame.</span>")
+		to_chat(user, (state ? "<span class='notice'>You have pried the window into the frame.</span>" : "<span class='notice'>You have pried the window out of the frame.</span>"))
 	else
 		if(!not_damageable) //Impossible to destroy
 			health -= W.force
@@ -241,13 +241,13 @@
 		new /obj/item/stack/sheet/glass/reinforced(loc, 2)
 	else
 		new /obj/item/stack/sheet/glass/reinforced(loc, 2)
-	cdel(src)
+	qdel(src)
 
 
 /obj/structure/window/proc/shatter_window(create_debris)
 	if(create_debris)
 		handle_debris()
-	cdel(src)
+	qdel(src)
 
 
 /obj/structure/window/verb/rotate()
@@ -260,7 +260,7 @@
 	if(not_deconstructable)
 		return 0
 	if(anchored)
-		usr << "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>"
+		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
 		return 0
 
 	dir = turn(dir, 90)
@@ -277,7 +277,7 @@
 	if(not_deconstructable)
 		return 0
 	if(anchored)
-		usr << "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>"
+		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
 		return 0
 
 	dir = turn(dir, 270)
@@ -449,7 +449,7 @@
 
 /obj/structure/window/framed/Dispose()
 	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
-		cdel(WW)
+		qdel(WW)
 	. = ..()
 
 
@@ -479,7 +479,7 @@
 			handle_debris(severity,explosion_direction)
 			shatter_window(0)
 		else
-			cdel(src)
+			qdel(src)
 	return
 
 
@@ -503,7 +503,7 @@
 		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
 		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
 		new_window_frame.dir = dir
-	cdel(src)
+	qdel(src)
 
 /obj/structure/window/framed/almayer
 	name = "reinforced window"

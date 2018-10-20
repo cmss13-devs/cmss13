@@ -36,7 +36,7 @@
 		H.mind.role_comm_title = newcommtitle
 
 		if(!istype(I) || I != H.wear_id)
-			usr << "The mob has no id card, unable to modify ID and chat title."
+			to_chat(usr, "The mob has no id card, unable to modify ID and chat title.")
 		else
 			var/newchattitle = input("Write the custom title appearing in chat (e.g. SGT)", "Chat title") as null|text
 			if(!newchattitle)
@@ -57,7 +57,7 @@
 			I.name = "[I.registered_name]'s ID Card ([I.assignment])"
 
 		if(!H.mind)
-			usr << "The mob has no mind, unable to modify skills."
+			to_chat(usr, "The mob has no mind, unable to modify skills.")
 		else
 			var/newskillset = input("Select a skillset", "Skill Set") as null|anything in RoleAuthority.roles_by_name
 			if(!newskillset)
@@ -128,7 +128,7 @@
 	for (var/obj/item/I in M)
 		if (istype(I, /obj/item/implant))
 			continue
-		cdel(I)
+		qdel(I)
 	M.arm_equipment(M, dresscode)
 	M.regenerate_icons()
 	log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")

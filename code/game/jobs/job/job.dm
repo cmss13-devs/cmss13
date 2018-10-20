@@ -71,7 +71,7 @@
 <span class='role_body'>|______________________|</span>
 "}
 
-		H << t
+		to_chat(H, t)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M) return //Anything special that should happen to the mob upon entering the world.
 
@@ -140,15 +140,15 @@
 
 //This proc removes overlays, then adds new ones.
 /datum/job/proc/display_overlay_equipment(atom/A, list/L = get_wearable_equipment())
-	var/image/reusable/I
+	var/image/I
 	var/obj/item/P
 	var/i
 	for(i in A.overlays) //Remove the old.
 		A.overlays -= i
-		cdel(i)
+		qdel(i)
 	for(i in L) //Add the new.
 		P = i
-		I = rnew(/image/reusable, list(initial(P.icon),A, initial(P.icon_state)))
+		I = image(initial(P.icon), A, initial(P.icon_state))
 		A.overlays += I
 
 /datum/job/proc/get_access()

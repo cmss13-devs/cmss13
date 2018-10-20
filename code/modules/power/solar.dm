@@ -73,7 +73,7 @@ var/list/solars_list = list()
 				S.give_glass()
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] takes the glass off the solar panel.</span>")
-			cdel(src)
+			qdel(src)
 		return
 	else if (W)
 		src.add_fingerprint(user)
@@ -88,7 +88,7 @@ var/list/solars_list = list()
 		else
 			new /obj/item/shard(src.loc)
 			new /obj/item/shard(src.loc)
-			cdel(src)
+			qdel(src)
 			return
 	return
 
@@ -148,14 +148,14 @@ var/list/solars_list = list()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
 				new /obj/item/shard( src.loc )
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(prob(15))
 				new /obj/item/shard( src.loc )
-			cdel(src)
+			qdel(src)
 			return
 	return
 
@@ -220,14 +220,14 @@ var/list/solars_list = list()
 				else
 					new /obj/machinery/power/solar(get_turf(src), src)
 			else
-				user << "<span class='warning'>You need two sheets of glass to put them on the solar assembly.</span>"
+				to_chat(user, "<span class='warning'>You need two sheets of glass to put them on the solar assembly.</span>")
 			return 1
 
 	if(!tracker)
 		if(istype(W, /obj/item/circuitboard/solar_tracker))
 			tracker = 1
 			if(user.temp_drop_inv_item(W))
-				cdel(W)
+				qdel(W)
 				user.visible_message("<span class='notice'>[user] inserts the electronics into the solar assembly.</span>")
 			return 1
 	else
@@ -316,7 +316,7 @@ var/list/solars_list = list()
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
 			if (src.stat & BROKEN)
-				user << "\blue The broken glass falls out."
+				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/structure/computerframe/A = new( src.loc )
 				new /obj/item/shard( src.loc )
 				var/obj/item/circuitboard/computer/solar_control/M = new( A )
@@ -326,9 +326,9 @@ var/list/solars_list = list()
 				A.state = 3
 				A.icon_state = "3"
 				A.anchored = 1
-				cdel(src)
+				qdel(src)
 			else
-				user << "\blue You disconnect the monitor."
+				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/structure/computerframe/A = new( src.loc )
 				var/obj/item/circuitboard/computer/solar_control/M = new( A )
 				for (var/obj/C in src)
@@ -337,7 +337,7 @@ var/list/solars_list = list()
 				A.state = 4
 				A.icon_state = "4"
 				A.anchored = 1
-				cdel(src)
+				qdel(src)
 	else
 		src.attack_hand(user)
 	return
@@ -490,7 +490,7 @@ var/list/solars_list = list()
 				broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			//SN src = null
-			cdel(src)
+			qdel(src)
 			return
 	return
 

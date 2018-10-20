@@ -39,7 +39,7 @@
 				return .
 			if (skip_docking_checks() || docking_controller.can_launch())
 
-				//world << "shuttle/ferry/process: area_transition=[area_transition], travel_time=[travel_time]"
+				//to_chat(world, "shuttle/ferry/process: area_transition=[area_transition], travel_time=[travel_time]")
 				if (move_time && area_transition)
 					long_jump(interim=area_transition, travel_time=move_time, direction=transit_direction)
 				else
@@ -74,7 +74,7 @@
 		return
 
 	for(var/obj/machinery/computer/shuttle_control/almayer/hangar/H in machines)
-		cdel(H)
+		qdel(H)
 	lower_railings(1)
 	if(!at_station())
 		moving_status = SHUTTLE_INTRANSIT

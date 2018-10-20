@@ -39,11 +39,11 @@
 			else return
 
 			if(!hive.slashing_allowed && !M.caste.is_intelligent)
-				M << "<span class='warning'>Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src].</span>"
+				to_chat(M, "<span class='warning'>Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src].</span>")
 				r_FAL
 
 			if(stat == DEAD)
-				M << "<span class='warning'>[src] is dead, why would you want to touch it?</span>"
+				to_chat(M, "<span class='warning'>[src] is dead, why would you want to touch it?</span>")
 				r_FAL
 
 			if(!M.caste.is_intelligent)
@@ -51,17 +51,17 @@
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
 							if(embryo.hivenumber == M.hivenumber)
-								M << "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. There is a host inside!</span>"
+								to_chat(M, "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. There is a host inside!</span>")
 								r_FAL
 
 					if(M.health > round(2 * M.maxHealth / 3)) //Note : Under 66 % health
-						M << "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. You are not yet injured enough to overcome the Queen's orders.</span>"
+						to_chat(M, "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. You are not yet injured enough to overcome the Queen's orders.</span>")
 						r_FAL
 
 				else if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(embryo.hivenumber == M.hivenumber)
-							M << "<span class='warning'>You should not harm this host! It has a sister inside.</span>"
+							to_chat(M, "<span class='warning'>You should not harm this host! It has a sister inside.</span>")
 							r_FAL
 
 			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
@@ -151,7 +151,7 @@
 
 		if("disarm")
 			if(M.legcuffed && isYautja(src))
-				M << "<span class='xenodanger'>You don't have the dexterity to tackle the headhunter with that thing on your leg!</span>"
+				to_chat(M, "<span class='xenodanger'>You don't have the dexterity to tackle the headhunter with that thing on your leg!</span>")
 				return 0
 			M.animation_attack_on(src)
 			if(check_shields(0, M.name) && prob(66)) //Bit of a bonus
@@ -239,17 +239,17 @@
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
 							if(embryo.hivenumber == M.hivenumber)
-								M << "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. There is a host inside!</span>"
+								to_chat(M, "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. There is a host inside!</span>")
 								r_FAL
 
 					if(M.health > round(2 * M.maxHealth / 3)) //Note : Under 66 % health
-						M << "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. You are not yet injured enough to overcome the Queen's orders.</span>"
+						to_chat(M, "<span class='warning'>You try to slash [src], but find you <B>cannot</B>. You are not yet injured enough to overcome the Queen's orders.</span>")
 						r_FAL
 
 				else if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(embryo.hivenumber == M.hivenumber)
-							M << "<span class='warning'>You should not harm this host! It has a sister inside.</span>"
+							to_chat(M, "<span class='warning'>You should not harm this host! It has a sister inside.</span>")
 							r_FAL
 
 			if(issilicon(src) && stat != DEAD) //A bit of visual flavor for attacking Cyborgs. Sparks!
@@ -511,7 +511,7 @@
 	if(prob(33))
 		M.visible_message("<span class='danger'>\The [M] slices [src] apart!</span>", \
 		"<span class='danger'>You slice [src] apart!</span>", null, 5)
-		cdel(src)
+		qdel(src)
 		return 1
 	else
 		M.visible_message("<span class='danger'>\The [M] tears some shreds off [src]!</span>", \
@@ -524,15 +524,15 @@
 		if(shock(M, 70))
 			return
 	if(locked)
-		M << "<span class='warning'>\The [src] is bolted down tight.</span>"
+		to_chat(M, "<span class='warning'>\The [src] is bolted down tight.</span>")
 		return 0
 	if(welded)
-		M << "<span class='warning'>\The [src] is welded shut.</span>"
+		to_chat(M, "<span class='warning'>\The [src] is welded shut.</span>")
 		return 0
 	if(!istype(cur_loc))
 		return 0 //Some basic logic here
 	if(!density)
-		M << "<span class='warning'>\The [src] is already open!</span>"
+		to_chat(M, "<span class='warning'>\The [src] is already open!</span>")
 		return 0
 
 	if(M.action_busy)
@@ -551,10 +551,10 @@
 		if(M.lying)
 			return 0
 		if(locked)
-			M << "<span class='warning'>\The [src] is bolted down tight.</span>"
+			to_chat(M, "<span class='warning'>\The [src] is bolted down tight.</span>")
 			return 0
 		if(welded)
-			M << "<span class='warning'>\The [src] is welded shut.</span>"
+			to_chat(M, "<span class='warning'>\The [src] is welded shut.</span>")
 			return 0
 		if(density) //Make sure it's still closed
 			spawn(0)
@@ -565,10 +565,10 @@
 /obj/machinery/door/airlock/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
 	for(var/atom/movable/AM in get_turf(src))
 		if(AM != src && AM.density && !AM.CanPass(M, M.loc))
-			M << "<span class='warning'>\The [AM] prevents you from squeezing under \the [src]!</span>"
+			to_chat(M, "<span class='warning'>\The [AM] prevents you from squeezing under \the [src]!</span>")
 			return
 	if(locked || welded) //Can't pass through airlocks that have been bolted down or welded
-		M << "<span class='warning'>\The [src] is locked down tight. You can't squeeze underneath!</span>"
+		to_chat(M, "<span class='warning'>\The [src] is locked down tight. You can't squeeze underneath!</span>")
 		return
 	M.visible_message("<span class='warning'>\The [M] scuttles underneath \the [src]!</span>", \
 	"<span class='warning'>You squeeze and scuttle underneath \the [src].</span>", null, 5)
@@ -578,12 +578,12 @@
 /obj/machinery/door/firedoor/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/turf/cur_loc = M.loc
 	if(blocked)
-		M << "<span class='warning'>\The [src] is welded shut.</span>"
+		to_chat(M, "<span class='warning'>\The [src] is welded shut.</span>")
 		return 0
 	if(!istype(cur_loc))
 		return 0 //Some basic logic here
 	if(!density)
-		M << "<span class='warning'>\The [src] is already open!</span>"
+		to_chat(M, "<span class='warning'>\The [src] is already open!</span>")
 		return 0
 
 	playsound(src.loc, 'sound/effects/metal_creaking.ogg', 25, 1)
@@ -594,7 +594,7 @@
 		if(M.loc != cur_loc)
 			return 0 //Make sure we're still there
 		if(blocked)
-			M << "<span class='warning'>\The [src] is welded shut.</span>"
+			to_chat(M, "<span class='warning'>\The [src] is welded shut.</span>")
 			return 0
 		if(density) //Make sure it's still closed
 			spawn(0)
@@ -634,26 +634,26 @@
 			return 0 //Make sure we're still there
 		M.visible_message("<span class='danger'>[M] rips down \the [src]!</span>", \
 		 "<span class='danger'>You rip down \the [src]!</span>", null, 5)
-		cdel(src)
+		qdel(src)
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
 /obj/machinery/attack_alien(mob/living/carbon/Xenomorph/M)
-	M << "<span class='warning'>You stare at \the [src] cluelessly.</span>"
+	to_chat(M, "<span class='warning'>You stare at \the [src] cluelessly.</span>")
 
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M)
 	if(!queen_locked) //we have not hijacked it yet
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
-			M << "<span class='xenodanger'>You can't mobilize the strength to hijack the shuttle yet. Please wait another [round((SHUTTLE_LOCK_TIME_LOCK-world.time)/600)] minutes before trying again.</span>"
+			to_chat(M, "<span class='xenodanger'>You can't mobilize the strength to hijack the shuttle yet. Please wait another [round((SHUTTLE_LOCK_TIME_LOCK-world.time)/600)] minutes before trying again.</span>")
 			return
-		M << "<span class='xenonotice'>You interact with the machine and disable remote control.</span>"
+		to_chat(M, "<span class='xenonotice'>You interact with the machine and disable remote control.</span>")
 		xeno_message("<span class='xenoannounce'>We have wrested away remote control of the metal bird! Rejoice!</span>",3,M.hivenumber)
 		last_locked = world.time
 		queen_locked = 1
 
 /datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M)
 	if(!door_override)
-		M << "<span class='xenonotice'>You override the doors.</span>"
+		to_chat(M, "<span class='xenonotice'>You override the doors.</span>")
 		xeno_message("<span class='xenoannounce'>The doors of the metal bird have been overridden! Rejoice!</span>",3,M.hivenumber)
 		last_door_override = world.time
 		door_override = 1
@@ -738,10 +738,10 @@
 
 /obj/machinery/colony_floodlight/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!is_lit)
-		M << "Why bother? It's just some weird metal thing."
+		to_chat(M, "Why bother? It's just some weird metal thing.")
 		return 0
 	else if(damaged)
-		M << "It's already damaged."
+		to_chat(M, "It's already damaged.")
 		return 0
 	else
 		M.animation_attack_on(src)
@@ -751,7 +751,7 @@
 			playsound(src, "shatter", 70, 1)
 			damaged = TRUE
 			if(is_lit)
-				SetLuminosity(0)
+				set_light(0)
 			update_icon()
 		else
 			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
@@ -766,7 +766,7 @@
 	if(M.a_intent == "grab")
 
 		if(!slayer)
-			M << "<span class='warning'>There is nothing to clear out!</span>"
+			to_chat(M, "<span class='warning'>There is nothing to clear out!</span>")
 			return 0
 
 		M.visible_message("<span class='notice'>\The [M] starts clearing out \the [src].</span>", \
@@ -776,7 +776,7 @@
 			return 0
 
 		if(!slayer)
-			M  << "<span class='warning'>There is nothing to clear out!</span>"
+			to_chat(M, "<span class='warning'>There is nothing to clear out!</span>")
 			return
 
 		M.visible_message("<span class='notice'>\The [M] clears out \the [src].</span>", \
@@ -799,7 +799,7 @@
 	M.visible_message("<span class='danger'>\The [M] smashes \the [src] apart!</span>", \
 	"<span class='danger'>You smash \the [src] apart!</span>", \
 	"<span class='danger'>You hear splitting wood!</span>", 5)
-	cdel(src)
+	qdel(src)
 
 /obj/structure/closet/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == "hurt" && !unacidable)
@@ -816,7 +816,7 @@
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.mob_size != MOB_SIZE_BIG || unacidable)
-		M << "<span class='warning'>Your claws aren't sharp enough to damage \the [src].</span>"
+		to_chat(M, "<span class='warning'>Your claws aren't sharp enough to damage \the [src].</span>")
 		return 0
 	else
 		M.animation_attack_on(src)
@@ -833,7 +833,7 @@
 
 /obj/machinery/vending/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(tipped_level)
-		M << "<span class='warning'>There's no reason to bother with that old piece of trash.</span>"
+		to_chat(M, "<span class='warning'>There's no reason to bother with that old piece of trash.</span>")
 		return 0
 
 	if(M.a_intent == "hurt")

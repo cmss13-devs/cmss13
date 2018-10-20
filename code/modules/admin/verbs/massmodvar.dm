@@ -30,7 +30,7 @@
 
 	for(var/p in forbidden_varedit_object_types)
 		if( istype(O,p) )
-			usr << "\red It is forbidden to edit this object's variables."
+			to_chat(usr, "\red It is forbidden to edit this object's variables.")
 			return
 
 	var/list/names = list()
@@ -55,43 +55,43 @@
 		if(!check_rights(R_DEBUG))	return
 
 	if(isnull(var_value))
-		usr << "Unable to determine variable type."
+		to_chat(usr, "Unable to determine variable type.")
 
 	else if(isnum(var_value))
-		usr << "Variable appears to be <b>NUM</b>."
+		to_chat(usr, "Variable appears to be <b>NUM</b>.")
 		default = "num"
 		dir = 1
 
 	else if(istext(var_value))
-		usr << "Variable appears to be <b>TEXT</b>."
+		to_chat(usr, "Variable appears to be <b>TEXT</b>.")
 		default = "text"
 
 	else if(isloc(var_value))
-		usr << "Variable appears to be <b>REFERENCE</b>."
+		to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
 		default = "reference"
 
 	else if(isicon(var_value))
-		usr << "Variable appears to be <b>ICON</b>."
+		to_chat(usr, "Variable appears to be <b>ICON</b>.")
 		var_value = "\icon[var_value]"
 		default = "icon"
 
 	else if(istype(var_value,/atom) || istype(var_value,/datum))
-		usr << "Variable appears to be <b>TYPE</b>."
+		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
 		default = "type"
 
 	else if(istype(var_value,/list))
-		usr << "Variable appears to be <b>LIST</b>."
+		to_chat(usr, "Variable appears to be <b>LIST</b>.")
 		default = "list"
 
 	else if(istype(var_value,/client))
-		usr << "Variable appears to be <b>CLIENT</b>."
+		to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
 		default = "cancel"
 
 	else
-		usr << "Variable appears to be <b>FILE</b>."
+		to_chat(usr, "Variable appears to be <b>FILE</b>.")
 		default = "file"
 
-	usr << "Variable contains: [var_value]"
+	to_chat(usr, "Variable contains: [var_value]")
 	if(dir)
 		switch(var_value)
 			if(1)
@@ -113,7 +113,7 @@
 			else
 				dir = null
 		if(dir)
-			usr << "If a direction, direction is: [dir]"
+			to_chat(usr, "If a direction, direction is: [dir]")
 
 	var/class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
 		"num","type","icon","file","edit referenced object","restore to default")
@@ -209,7 +209,7 @@
 			if(new_value == null) return
 
 			if(variable=="luminosity")
-				O.SetLuminosity(new_value)
+				O.set_light(new_value)
 			else
 				O.vars[variable] = new_value
 
@@ -218,7 +218,7 @@
 					for(var/mob/M in mob_list)
 						if ( istype(M , O.type) )
 							if(variable=="luminosity")
-								M.SetLuminosity(new_value)
+								M.set_light(new_value)
 							else
 								M.vars[variable] = O.vars[variable]
 
@@ -226,7 +226,7 @@
 					for(var/obj/A in object_list)
 						if ( istype(A , O.type) )
 							if(variable=="luminosity")
-								A.SetLuminosity(new_value)
+								A.set_light(new_value)
 							else
 								A.vars[variable] = O.vars[variable]
 
@@ -234,7 +234,7 @@
 					for(var/turf/A in turfs)
 						if ( istype(A , O.type) )
 							if(variable=="luminosity")
-								A.SetLuminosity(new_value)
+								A.set_light(new_value)
 							else
 								A.vars[variable] = O.vars[variable]
 
@@ -243,7 +243,7 @@
 					for(var/mob/M in mob_list)
 						if (M.type == O.type)
 							if(variable=="luminosity")
-								M.SetLuminosity(new_value)
+								M.set_light(new_value)
 							else
 								M.vars[variable] = O.vars[variable]
 
@@ -251,7 +251,7 @@
 					for(var/obj/A in object_list)
 						if (A.type == O.type)
 							if(variable=="luminosity")
-								A.SetLuminosity(new_value)
+								A.set_light(new_value)
 							else
 								A.vars[variable] = O.vars[variable]
 
@@ -259,7 +259,7 @@
 					for(var/turf/A in turfs)
 						if (A.type == O.type)
 							if(variable=="luminosity")
-								A.SetLuminosity(new_value)
+								A.set_light(new_value)
 							else
 								A.vars[variable] = O.vars[variable]
 

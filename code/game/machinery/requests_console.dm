@@ -157,7 +157,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				dat += text("<A href='?src=\ref[src];setScreen=0'>Continue</A><BR>")
 
 			if(7)	//unsuccessful; not sent
-				dat += text("<FONT COLOR='RED'>An error occurred. </FONT><BR><BR>")
+				dat += text("<span class='caution'>An error occurred. </span><BR><BR>")
 				dat += text("<A href='?src=\ref[src];setScreen=0'>Continue</A><BR>")
 
 			if(8)	//view messages
@@ -196,7 +196,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				screen = 0
 				reset_announce()
 				if (newmessagepriority == 1)
-					dat += text("<FONT COLOR='RED'>There are new messages</FONT><BR>")
+					dat += text("<span class='caution'>There are new messages</span><BR>")
 				if (newmessagepriority == 2)
 					dat += text("<FONT COLOR='RED'><B>NEW PRIORITY MESSAGES</B></FONT><BR>")
 				dat += text("<A href='?src=\ref[src];setScreen=8'>View Messages</A><BR><BR>")
@@ -285,7 +285,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 								if(!Console.silent)
 									playsound(Console.loc, 'sound/machines/twobeep.ogg', 25, 1)
 									for (var/mob/O in hearers(5, Console.loc))
-										O.show_message(text("\icon[Console] *The Requests Console beeps: 'PRIORITY Alert in [department]'"))
+										O.show_message(text("[bicon(Console)] *The Requests Console beeps: 'PRIORITY Alert in [department]'"))
 								Console.messages += "<B><FONT color='red'>High Priority message from <A href='?src=\ref[Console];write=[ckey(department)]'>[department]</A></FONT></B><BR>[sending]"
 
 		//					if("3")		//Not implemanted, but will be 		//Removed as it doesn't look like anybody intends on implimenting it ~Carn
@@ -295,7 +295,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		//						if(!Console.silent)
 		//							playsound(Console.loc, 'sound/machines/twobeep.ogg', 50, 1)
 		//							for (var/mob/O in hearers(7, Console.loc))
-		//								O.show_message(text("\icon[Console] *The Requests Console yells: 'EXTREME PRIORITY alert in [department]'"))
+		//								O.show_message(text("[bicon(Console)] *The Requests Console yells: 'EXTREME PRIORITY alert in [department]'"))
 		//						Console.messages += "<B><FONT color='red'>Extreme Priority message from [ckey(department)]</FONT></B><BR>[message]"
 
 							else		// Normal priority
@@ -305,7 +305,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 								if(!Console.silent)
 									playsound(Console.loc, 'sound/machines/twobeep.ogg', 25, 1)
 									for (var/mob/O in hearers(4, Console.loc))
-										O.show_message(text("\icon[Console] *The Requests Console beeps: 'Message from [department]'"))
+										O.show_message(text("[bicon(Console)] *The Requests Console beeps: 'Message from [department]'"))
 								Console.messages += "<B>Message from <A href='?src=\ref[Console];write=[ckey(department)]'>[department]</A></FONT></B><BR>[message]"
 
 						screen = 6
@@ -313,7 +313,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				messages += "<B>Message sent to [dpt]</B><BR>[message]"
 			else
 				for (var/mob/O in hearers(4, src.loc))
-					O.show_message(text("\icon[src] *The Requests Console beeps: 'NOTICE: No server detected!'"))
+					O.show_message(text("[bicon(src)] *The Requests Console beeps: 'NOTICE: No server detected!'"))
 
 
 	//Handle screen switching
@@ -379,7 +379,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				hackState = 0
 				icon_state="req_comp_open"
 		else
-			user << "You can't do much with that."*/
+			to_chat(user, "You can't do much with that.")*/
 
 	if (istype(O, /obj/item/card/id))
 		if(screen == 9)
@@ -393,7 +393,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 				announcement.announcer = ID.assignment ? "[ID.assignment] [ID.registered_name]" : ID.registered_name
 			else
 				reset_announce()
-				user << "\red You are not authorized to send announcements."
+				to_chat(user, "<span class='warning'>You are not authorized to send announcements.</span>")
 			updateUsrDialog()
 	if (istype(O, /obj/item/tool/stamp))
 		if(screen == 9)
@@ -406,7 +406,3 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	announceAuth = 0
 	message = ""
 	announcement.announcer = ""
-
-/obj/machinery/requests_console/Dispose()
-	SetLuminosity(0)
-	. = ..()

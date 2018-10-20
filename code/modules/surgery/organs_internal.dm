@@ -44,7 +44,7 @@
 		var/mob/living/carbon/Xenomorph/Larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
 			L.forceMove(target.loc)
-			cdel(A)
+			qdel(A)
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST
@@ -343,7 +343,7 @@
 		return 0
 
 	if(!target.species)
-		user << "<span class='warning'>You have no idea what species this person is. Report this on the bug tracker.</span>"
+		to_chat(user, "<span class='warning'>You have no idea what species this person is. Report this on the bug tracker.</span>")
 		return SPECIAL_SURGERY_INVALID
 
 	var/o_is = (O.gender == PLURAL) ? "are"   : "is"
@@ -353,22 +353,22 @@
 	if(target.species.has_organ[O.organ_tag])
 
 		if(!O.health)
-			user << "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be anted.</span>"
+			to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_is] in no state to be anted.</span>")
 			return SPECIAL_SURGERY_INVALID
 
 		if(!target.internal_organs_by_name[O.organ_tag])
 			organ_missing = 1
 		else
-			user << "<span class='warning'>\The [target] already has [o_a][O.organ_tag].</span>"
+			to_chat(user, "<span class='warning'>\The [target] already has [o_a][O.organ_tag].</span>")
 			return SPECIAL_SURGERY_INVALID
 
 		if(O.organ_data && affected.name == O.organ_data.parent_limb)
 			organ_compatible = 1
 		else
-			user << "<span class='warning'>\The [O.organ_tag] [o_do] normally go in \the [affected.display_name].</span>"
+			to_chat(user, "<span class='warning'>\The [O.organ_tag] [o_do] normally go in \the [affected.display_name].</span>")
 			return SPECIAL_SURGERY_INVALID
 	else
-		user << "<span class='warning'>You're pretty sure [target.species.name_plural] don't normally have [o_a][O.organ_tag].</span>"
+		to_chat(user, "<span class='warning'>You're pretty sure [target.species.name_plural] don't normally have [o_a][O.organ_tag].</span>")
 		return SPECIAL_SURGERY_INVALID
 
 	return ..() && organ_missing && organ_compatible
@@ -407,7 +407,7 @@
 		O.organ_data.cut_away = TRUE
 		O.replaced(target)
 
-	cdel(O)
+	qdel(O)
 
 /datum/surgery_step/internal/replace_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	user.visible_message("<span class='warning'>[user]'s hand slips, damaging \the [tool]!</span>", \

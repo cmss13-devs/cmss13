@@ -30,7 +30,7 @@
 
 		//some clothes can only be worn when wearing specific uniforms
 		if(uniform_restricted && (!is_type_in_list(U, uniform_restricted) || !U))
-			H << "<span class='warning'>Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name].</span>" //Note : Duplicate warning, commenting
+			to_chat(H, "<span class='warning'>Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name].</span>") //Note : Duplicate warning, commenting
 			return 0
 
 		if(species_restricted)
@@ -50,7 +50,7 @@
 						wearable = 1
 
 				if(!wearable && (slot != 15 && slot != 16)) //Pockets.
-					M << "\red Your species cannot wear [src]."
+					to_chat(M, "<span class='warning'>Your species cannot wear [src].</span>")
 					return 0
 
 	return 1
@@ -145,7 +145,7 @@
 		var/obj/item/clothing/under/U = H.w_uniform
 		//some uniforms prevent you from wearing any suits but certain types
 		if(U && U.suit_restricted && !is_type_in_list(src, U.suit_restricted))
-			H << "<span class='warning'>[src] can't be worn with [U].</span>"
+			to_chat(H, "<span class='warning'>[src] can't be worn with [U].</span>")
 			return 0
 	return 1
 
@@ -190,12 +190,12 @@
 /obj/item/clothing/gloves/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/tool/surgery/scalpel))
 		if (clipped)
-			user << "<span class='notice'>The [src] have already been clipped!</span>"
+			to_chat(user, "<span class='notice'>The [src] have already been clipped!</span>")
 			update_icon()
 			return
 
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		user.visible_message("\red [user] cuts the fingertips off of the [src].","\red You cut the fingertips off of the [src].")
+		user.visible_message("<span class='warning'>[user] cuts the fingertips off of the [src].</span>","<span class='warning'>You cut the fingertips off of the [src].</span>")
 
 		clipped = 1
 		name = "mangled [name]"
@@ -256,14 +256,14 @@
 		M.update_inv_shoes()
 /obj/item/clothing/shoes/Dispose()
 	if(stored_item)
-		cdel(stored_item)
+		qdel(stored_item)
 		stored_item = null
 	. = ..()
 
 /obj/item/clothing/shoes/attack_hand(var/mob/living/M)
 	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
 		if(M.put_in_active_hand(stored_item))
-			M << "<span class='notice'>You slide [stored_item] out of [src].</span>"
+			to_chat(M, "<span class='notice'>You slide [stored_item] out of [src].</span>")
 			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 			stored_item = 0
 			update_icon()
@@ -279,7 +279,7 @@
 				M.drop_held_item()
 				stored_item = I
 				I.loc = src
-				M << "<div class='notice'>You slide the [I] into [src].</div>"
+				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
 				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()
 				desc = initial(desc) + "It is storing \a [stored_item]."			

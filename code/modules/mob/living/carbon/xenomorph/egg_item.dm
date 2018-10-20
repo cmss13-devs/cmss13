@@ -20,9 +20,9 @@
 /obj/item/xeno_egg/examine(mob/user)
 	..()
 	if(isXeno(user))
-		user << "A queen egg, it needs to be planted on weeds to start growing."
+		to_chat(user, "A queen egg, it needs to be planted on weeds to start growing.")
 		if(hivenumber == XENO_HIVE_CORRUPTED)
-			user << "This one appears to have been laid by a corrupted Queen."
+			to_chat(user, "This one appears to have been laid by a corrupted Queen.")
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
 	if(!proximity)
@@ -36,11 +36,11 @@
 
 /obj/item/xeno_egg/proc/plant_egg_in_containment(mob/living/carbon/human/user, turf/T)
 	if(!istype(T, /turf/open/floor/almayer/research/containment))
-		user << "<span class='warning'>Best not to plant this thing outside of a containment cell.</span>"
+		to_chat(user, "<span class='warning'>Best not to plant this thing outside of a containment cell.</span>")
 		return
 	for (var/obj/O in T)
 		if (!istype(O,/obj/machinery/light/small))
-			user << "<span class='warning'>The floor needs to be clear to plant this!</span>"
+			to_chat(user, "<span class='warning'>The floor needs to be clear to plant this!</span>")
 			return
 	user.visible_message("<span class='notice'>[user] starts planting [src].</span>", \
 					"<span class='notice'>You start planting [src].</span>", null, 5)
@@ -52,7 +52,7 @@
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
 	newegg.hivenumber = hivenumber
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
-	cdel(src)
+	qdel(src)
 
 /obj/item/xeno_egg/proc/plant_egg(mob/living/carbon/Xenomorph/user, turf/T)
 	if(!user.check_alien_construction(T))
@@ -60,7 +60,7 @@
 	if(!user.check_plasma(30))
 		return
 	if(!(locate(/obj/effect/alien/weeds) in T))
-		user << "<span class='xenowarning'>[src] can only be planted on weeds.</span>"
+		to_chat(user, "<span class='xenowarning'>[src] can only be planted on weeds.</span>")
 		return
 	user.visible_message("<span class='xenonotice'>[user] starts planting [src].</span>", \
 					"<span class='xenonotice'>You start planting [src].</span>", null, 5)
@@ -78,7 +78,7 @@
 		var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
 		newegg.hivenumber = hivenumber
 		playsound(T, 'sound/effects/splat.ogg', 15, 1)
-		cdel(src)
+		qdel(src)
 
 
 /obj/item/xeno_egg/attack_self(mob/user)
@@ -99,13 +99,13 @@
 		attack_hand(user)
 	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS)
 		if(user.r_hand || user.l_hand)
-			user << "<span class='xenowarning'>You need two hands to hold [src].</span>"
+			to_chat(user, "<span class='xenowarning'>You need two hands to hold [src].</span>")
 		else
 			attack_hand(user)
 
 /obj/item/xeno_egg/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)
-		cdel(src)
+		qdel(src)
 
 /obj/item/xeno_egg/flamer_fire_act()
-	cdel(src)
+	qdel(src)

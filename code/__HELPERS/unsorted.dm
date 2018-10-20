@@ -326,7 +326,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 					break
 			if(newname)
 				break	//That's a suitable name!
-			src << "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken."
+			to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
 
 		if(!newname)	//we'll stick with the oldname then
 			return
@@ -335,7 +335,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if(isAI(src))
 				var/mob/living/silicon/ai/A = src
 				oldname = null//don't bother with the records update crap
-				//world << "<b>[newname] is the AI!</b>"
+				//to_chat(world, "<em>[newname] is the AI!</em>")
 				//world << sound('sound/AI/newAI.ogg')
 				// Set eyeobj name
 				A.SetName(newname)
@@ -733,7 +733,7 @@ proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as te
 		animation.master = target
 		flick(flick_anim, animation)
 	sleep(max(sleeptime, 15))
-	cdel(animation)
+	qdel(animation)
 
 //Will return the contents of an atom recursivly to a depth of 'searchDepth'
 /atom/proc/GetAllContents(searchDepth = 5)
@@ -1042,7 +1042,7 @@ var/global/image/busy_indicator_hostile
 					var/old_icon_state1 = T.icon_state
 					var/old_icon1 = T.icon
 
-					var/turf/X = B.ChangeTurf(T.type)
+					var/turf/X = B.ChangeTurf(T.type, 1, 1)
 					X.dir = old_dir1
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
@@ -1077,7 +1077,7 @@ var/global/image/busy_indicator_hostile
 							X.icon = 'icons/turf/shuttle.dmi'
 							X.icon_state = oldreplacetext(O.icon_state, "_f", "_s") // revert the turf to the old icon_state
 							X.name = "wall"
-							cdel(O) // prevents multiple shuttle corners from stacking
+							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
 						if(!istype(O,/obj)) continue
 						O.loc = X
@@ -1085,18 +1085,12 @@ var/global/image/busy_indicator_hostile
 						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
 						M.loc = X
 
-//					var/area/AR = X.loc
-
-//					if(AR.lighting_use_dynamic)							//TODO: rewrite this code so it's not messed by lighting ~Carn
-//						X.opacity = !X.opacity
-//						X.SetOpacity(!X.opacity)
-
 					toupdate += X
 
 					if(turftoleave)
-						fromupdate += T.ChangeTurf(turftoleave)
+						fromupdate += T.ChangeTurf(turftoleave, 1, 1)
 					else
-						T.ChangeTurf(/turf/open/space)
+						T.ChangeTurf(/turf/open/space, 1, 1)
 
 					refined_src -= T
 					refined_trg -= B
@@ -1661,3 +1655,45 @@ var/list/WALLITEMS = list(
 
 	y -= obfs_y
 	return y
+
+//Increases delay as the server gets more overloaded,
+//as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
+#define DELTA_CALC max(((max(world.tick_usage, world.cpu) / 100) * max(Master.sleep_delta,1)), 1)
+
+/proc/stoplag()
+	. = 0
+	var/i = 1
+	do
+		. += round(i*DELTA_CALC)
+		sleep(i*world.tick_lag*DELTA_CALC)
+		i *= 2
+	while (world.tick_usage > min(TICK_LIMIT_TO_RUN, CURRENT_TICKLIMIT))
+
+#undef DELTA_CALC
+
+/var/mob/dview/dview_mob = new
+
+//Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(var/range = world.view, var/center, var/invis_flags = 0)
+	if(!center)
+		return
+
+	dview_mob.loc = center
+
+	dview_mob.see_invisible = invis_flags
+
+	. = view(range, dview_mob)
+	dview_mob.loc = null
+
+/mob/dview
+	invisibility = 101
+	density = 0
+	see_in_dark = 1e6
+	anchored = 1
+	flags_atom = INVULNERABLE
+
+///mob/dview/send_to_future(var/duration)
+//	return
+
+/proc/stack_trace(message = "Getting a stack trace.")
+	CRASH(message)

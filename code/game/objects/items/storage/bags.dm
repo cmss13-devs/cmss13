@@ -122,14 +122,14 @@
 /obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(!istype(W,/obj/item/stack/sheet) || istype(W,/obj/item/stack/sheet/mineral/sandstone) || istype(W,/obj/item/stack/sheet/wood))
 		if(!stop_messages)
-			usr << "The snatcher does not accept [W]."
+			to_chat(usr, "The snatcher does not accept [W].")
 		return 0 //I don't care, but the existing code rejects them for not being "sheets" *shrug* -Sayu
 	var/current = 0
 	for(var/obj/item/stack/sheet/S in contents)
 		current += S.amount
 	if(capacity == current)//If it's full, you're done
 		if(!stop_messages)
-			usr << "\red The snatcher is full."
+			to_chat(usr, "<span class='warning'>The snatcher is full.</span>")
 		return 0
 	return 1
 
@@ -160,7 +160,7 @@
 		if(user && W.loc == user)
 			user.temp_drop_inv_item(S)
 		if(!S.amount)
-			cdel(S)
+			qdel(S)
 		else
 			S.forceMove(src)
 
@@ -206,7 +206,7 @@
 			N.amount = stacksize
 			S.amount -= stacksize
 		if(!S.amount)
-			cdel(S) // todo: there's probably something missing here
+			qdel(S) // todo: there's probably something missing here
 	orient2hud(usr)
 	if(usr.s_active)
 		usr.s_active.show_to(usr)

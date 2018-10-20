@@ -10,7 +10,7 @@
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "You cannot tackle someone in your current state."
+		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
 	var/list/choices = list()
@@ -29,7 +29,7 @@
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "You cannot tackle in your current state."
+		to_chat(src, "You cannot tackle in your current state.")
 		return
 
 	last_special = world.time + 50
@@ -47,7 +47,7 @@
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
-			O.show_message(text("\red <B>[] [failed ? "tried to tackle" : "has tackled"] down []!</B>", src, T), 1)
+			O.show_message("<span class='danger'>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</span>", 1)
 
 /mob/living/carbon/human/proc/leap()
 	set category = "Abilities"
@@ -58,7 +58,7 @@
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "You cannot leap in your current state."
+		to_chat(src, "You cannot leap in your current state.")
 		return
 
 	var/list/choices = list()
@@ -77,13 +77,13 @@
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "You cannot leap in your current state."
+		to_chat(src, "You cannot leap in your current state.")
 		return
 
 	last_special = world.time + 75
 	status_flags |= LEAPING
 
-	src.visible_message("<span class='warning'><b>\The [src]</b> leaps at [T]!</span>")
+	src.visible_message("<span class='danger'>\The [src]</b> leaps at [T]!</span>")
 	src.throw_at(get_step(get_turf(T),get_turf(src)), 5, 1, src)
 	playsound(src.loc, 'sound/voice/shriek1.ogg', 25, 1)
 
@@ -92,7 +92,7 @@
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
-		src << "\red You miss!"
+		to_chat(src, "<span class='warning'>You miss!</span>")
 		return
 
 	T.KnockDown(5)
@@ -116,21 +116,21 @@
 		return
 
 	if(is_mob_incapacitated(TRUE) || lying)
-		src << "\red You cannot do that in your current state."
+		to_chat(src, "<span class='warning'>You cannot do that in your current state.</span>")
 		return
 
 	var/obj/item/grab/G = locate() in src
 	if(!G || !istype(G))
-		src << "\red You are not grabbing anyone."
+		to_chat(src, "<span class='warning'>You are not grabbing anyone.</span>")
 		return
 
 	if(usr.grab_level < GRAB_AGGRESSIVE)
-		src << "\red You must have an aggressive grab to gut your prey!"
+		to_chat(src, "<span class='warning'>You must have an aggressive grab to gut your prey!</span>")
 		return
 
 	last_special = world.time + 50
 
-	visible_message("<span class='warning'><b>\The [src]</b> rips viciously at \the [G.grabbed_thing]'s body with its claws!</span>")
+	visible_message("<span class='danger'>\The [src]</b> rips viciously at \the [G.grabbed_thing]'s body with its claws!</span>")
 
 	if(istype(G.grabbed_thing,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = G.grabbed_thing
@@ -167,17 +167,17 @@
 	var/mob/M = targets[target]
 
 	if(istype(M, /mob/dead/observer) || M.stat == DEAD)
-		src << "Not even a [src.species.name] can speak to the dead."
+		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
 		return
 
 	log_say("[key_name(src)] communed to [key_name(M)]: [text]")
 
-	M << "\blue Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"
+	to_chat(M, "<span class='notice'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</span>")
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
-		H << "\red Your nose begins to bleed..."
+		to_chat(H, "<span class='warning'>Your nose begins to bleed...</span>")
 		H.drip(1)
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
@@ -188,6 +188,6 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
-		M << "\green You hear a strange, alien voice in your head... \italic [msg]"
-		src << "\green You said: \"[msg]\" to [M]"
+		to_chat(M, "<span class='danger'>You hear a strange, alien voice in your head... <i>[msg]</i></span>")
+		to_chat(src, "<span class='notice'>You said: \"[msg]\" to [M]</span>")
 	return

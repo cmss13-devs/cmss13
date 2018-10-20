@@ -94,21 +94,21 @@
 	else if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(rigged)
-			user << "<span class='notice'>[src] is already rigged!</span>"
+			to_chat(user, "<span class='notice'>[src] is already rigged!</span>")
 			return
 		if (C.use(1))
-			user  << "<span class='notice'>You rig [src].</span>"
+			to_chat(user, "<span class='notice'>You rig [src].</span>")
 			rigged = 1
 			return
 	else if(istype(W, /obj/item/device/radio/electropack))
 		if(rigged)
-			user  << "<span class='notice'>You attach [W] to [src].</span>"
+			to_chat(user, "<span class='notice'>You attach [W] to [src].</span>")
 			user.drop_held_item()
 			W.loc = src
 			return
 	else if(istype(W, /obj/item/tool/wirecutters))
 		if(rigged)
-			user  << "<span class='notice'>You cut away the wiring.</span>"
+			to_chat(user, "<span class='notice'>You cut away the wiring.</span>")
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			rigged = 0
 			return
@@ -118,18 +118,18 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			for(var/obj/O in src.contents)
 				if(prob(50))
-					cdel(O)
-			cdel(src)
+					qdel(O)
+			qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			for(var/obj/O in src.contents)
-				cdel(O)
-			cdel(src)
+				qdel(O)
+			qdel(src)
 			return
 		else
 	return

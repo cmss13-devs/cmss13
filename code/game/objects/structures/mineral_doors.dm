@@ -99,14 +99,14 @@
 /obj/structure/mineral_door/attackby(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/pickaxe))
 		var/obj/item/tool/pickaxe/digTool = W
-		user << "You start digging the [name]."
+		to_chat(user, "You start digging the [name].")
 		if(do_after(user,digTool.digspeed*hardness, TRUE, 5, BUSY_ICON_GENERIC) && src)
-			user << "You finished digging."
+			to_chat(user, "You finished digging.")
 			Dismantle()
 	else if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
 		hardness -= W.force/100
-		user << "You hit the [name] with your [W.name]!"
+		to_chat(user, "You hit the [name] with your [W.name]!")
 		CheckHardness()
 	else
 		attack_hand(user)
@@ -135,7 +135,7 @@
 			var/ore = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
-	cdel(src)
+	qdel(src)
 
 /obj/structure/mineral_door/ex_act(severity)
 	if(unacidable) return
@@ -145,13 +145,13 @@
 			if(0 to EXPLOSION_THRESHOLD_LOW)
 				//nothing
 			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
-				cdel(src)
+				qdel(src)
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
 				//nothing
 			else
-				cdel(src)
+				qdel(src)
 	return
 
 
@@ -179,10 +179,6 @@
 	mineralType = "uranium"
 	hardness = 3
 	luminosity = 2
-
-/obj/structure/mineral_door/uranium/Dispose()
-	SetLuminosity(0)
-	. = ..()
 
 /obj/structure/mineral_door/sandstone
 	mineralType = "sandstone"
@@ -246,7 +242,7 @@
 	if(!devastated)
 		for(var/i = 1, i <= oreAmount, i++)
 			new/obj/item/stack/sheet/wood(get_turf(src))
-	cdel(src)
+	qdel(src)
 
 //Mapping instance
 /obj/structure/mineral_door/wood/open

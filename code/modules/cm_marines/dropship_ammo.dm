@@ -38,17 +38,17 @@
 								ammo_count += transf_amt
 								SA.ammo_count -= transf_amt
 								playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-								user << "<span class='notice'>You transfer [transf_amt] [ammo_name] to [src].</span>"
+								to_chat(user, "<span class='notice'>You transfer [transf_amt] [ammo_name] to [src].</span>")
 								if(!SA.ammo_count)
 									PC.loaded = null
 									PC.update_icon()
-									cdel(SA)
+									qdel(SA)
 				else
 					forceMove(PC.linked_powerloader)
 					PC.loaded = src
 					playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 					PC.update_icon()
-					user << "<span class='notice'>You grab [PC.loaded] with [PC].</span>"
+					to_chat(user, "<span class='notice'>You grab [PC.loaded] with [PC].</span>")
 					update_icon()
 			return TRUE
 		. = ..()
@@ -56,11 +56,11 @@
 
 	examine(mob/user)
 		..()
-		user << "Moving this will require some sort of lifter."
+		to_chat(user, "Moving this will require some sort of lifter.")
 
 //what to show to the user that examines the weapon we're loaded on.
 /obj/structure/ship_ammo/proc/show_loaded_desc(mob/user)
-	user << "It's loaded with \a [src]."
+	to_chat(user, "It's loaded with \a [src].")
 	return
 
 /obj/structure/ship_ammo/proc/detonate_on(turf/impact)
@@ -84,13 +84,13 @@
 
 	examine(mob/user)
 		..()
-		user << "It has [ammo_count] round\s."
+		to_chat(user, "It has [ammo_count] round\s.")
 
 	show_loaded_desc(mob/user)
 		if(ammo_count)
-			user << "It's loaded with \a [src] containing [ammo_count] round\s."
+			to_chat(user, "It's loaded with \a [src] containing [ammo_count] round\s.")
 		else
-			user << "It's loaded with an empty [name]."
+			to_chat(user, "It's loaded with an empty [name].")
 
 	detonate_on(turf/impact)
 		set waitfor = 0
@@ -152,14 +152,14 @@
 
 /obj/structure/ship_ammo/laser_battery/examine(mob/user)
 	..()
-	user << "It's at [round(100*ammo_count/max_ammo_count)]% charge."
+	to_chat(user, "It's at [round(100*ammo_count/max_ammo_count)]% charge.")
 
 
 /obj/structure/ship_ammo/laser_battery/show_loaded_desc(mob/user)
 	if(ammo_count)
-		user << "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge."
+		to_chat(user, "It's loaded with \a [src] at [round(100*ammo_count/max_ammo_count)]% charge.")
 	else
-		user << "It's loaded with an empty [name]."
+		to_chat(user, "It's loaded with an empty [name].")
 
 
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact)
@@ -179,7 +179,7 @@
 		soundplaycooldown--
 
 	if(!ammo_count && !disposed)
-		cdel(src) //deleted after last laser beam is fired and impact the ground.
+		qdel(src) //deleted after last laser beam is fired and impact the ground.
 
 
 
@@ -210,7 +210,7 @@
 	point_cost = 0
 
 	detonate_on(turf/impact)
-		cdel(src)
+		qdel(src)
 
 
 //this one is air-to-air only
@@ -226,7 +226,7 @@
 		impact.ceiling_debris_check(3)
 		spawn(5)
 			explosion(impact,1,3,5)
-			cdel(src)
+			qdel(src)
 
 /obj/structure/ship_ammo/rocket/banshee
 	name = "\improper AGM-227 'Banshee'"
@@ -239,7 +239,7 @@
 		impact.ceiling_debris_check(3)
 		spawn(5)
 			explosion(impact,1,3,6,6,1,0,7) //more spread out, with flames
-			cdel(src)
+			qdel(src)
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
@@ -252,7 +252,7 @@
 		impact.ceiling_debris_check(3)
 		spawn(5)
 			explosion(impact,3,4,4,6) //tighter blast radius, but more devastating near center
-			cdel(src)
+			qdel(src)
 
 
 /obj/structure/ship_ammo/rocket/fatty
@@ -279,7 +279,7 @@
 			T.ceiling_debris_check(2)
 			spawn(5)
 				explosion(T,1,2,3)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper XN-99 'Napalm'"
@@ -295,7 +295,7 @@
 			for(var/turf/T in range(4,impact))
 				if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 					new/obj/flamer_fire(T, 60, 30) //cooking for a long time
-			cdel(src)
+			qdel(src)
 
 
 
@@ -326,15 +326,15 @@
 				S.set_up(1,0,impact,null)
 				S.start()
 			if(!ammo_count && loc)
-				cdel(src) //deleted after last minirocket is fired and impact the ground.
+				qdel(src) //deleted after last minirocket is fired and impact the ground.
 
 	show_loaded_desc(mob/user)
 		if(ammo_count)
-			user << "It's loaded with \a [src] containing [ammo_count] minirocket\s."
+			to_chat(user, "It's loaded with \a [src] containing [ammo_count] minirocket\s.")
 
 	examine(mob/user)
 		..()
-		user << "It has [ammo_count] minirocket\s."
+		to_chat(user, "It has [ammo_count] minirocket\s.")
 
 
 /obj/structure/ship_ammo/minirocket/incendiary

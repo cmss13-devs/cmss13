@@ -8,7 +8,7 @@
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "glowshroomf"
 	layer = ABOVE_TURF_LAYER
-	l_color = "#003300"
+	light_color = "#003300"
 
 	var/endurance = 30
 	var/potency = 30
@@ -41,12 +41,8 @@
 	else //if on the floor, glowshroom on-floor sprite
 		icon_state = "glowshroomf"
 
-	SetLuminosity(round(potency/15))
+	set_light(round(potency/15))
 	lastTick = world.timeofday
-
-/obj/effect/glowshroom/Dispose()
-	SetLuminosity(0)
-	. = ..()
 
 /obj/effect/glowshroom/proc/CalcDir(turf/location = loc)
 	set background = 1
@@ -92,14 +88,14 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -111,4 +107,4 @@
 
 /obj/effect/glowshroom/proc/CheckEndurance()
 	if(endurance <= 0)
-		cdel(src)
+		qdel(src)

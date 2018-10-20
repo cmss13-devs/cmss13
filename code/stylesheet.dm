@@ -65,6 +65,7 @@ h1.alert, h2.alert		{color: #000000;}
 .notice					{color: #000099;}
 .xenonotice				{color: #2a623d;}
 .boldnotice				{color: #000099;	font-weight: bold;}
+.caution				{color: #ff0000;}
 .warning				{color: #ff0000;	font-style: italic;}
 .xenowarning			{color: #2a623d;	font-style: italic;}
 .danger					{color: #ff0000;	font-weight: bold;}

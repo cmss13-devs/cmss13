@@ -124,7 +124,7 @@
 		return
 	src.add_fingerprint(usr)
 	if(!src.allowed(user))
-		user << "\red Access denied."
+		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 	usr.set_interaction(src)
 	ui_interact(user)
@@ -198,7 +198,7 @@
 	if(!iswrench(W))
 		return ..()
 	if(on)
-		user << "<span class='warning'>You cannot unwrench [src], turn it off first.</span>"
+		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first.</span>")
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -209,4 +209,4 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe(loc, make_from = src)
-		cdel(src)
+		qdel(src)

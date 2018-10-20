@@ -10,11 +10,11 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	if(!holder)	return
 
 	if(!gene_tag_masks)
-		usr << "Gene masks not set."
+		to_chat(usr, "Gene masks not set.")
 		return
 
 	for(var/mask in gene_tag_masks)
-		usr << "[mask]: [gene_tag_masks[mask]]"
+		to_chat(usr, "[mask]: [gene_tag_masks[mask]]")
 
 // Predefined/roundstart varieties use a string key to make it
 // easier to grab the new variety when mutating. Post-roundstart
@@ -569,9 +569,9 @@ proc/populate_seed_list()
 		got_product = 1
 
 	if(!got_product && !harvest_sample)
-		user << "\red You fail to harvest anything useful."
+		to_chat(user, "<span class='warning'>You fail to harvest anything useful.</span>")
 	else
-		user << "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name]."
+		to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
 		//This may be a new line. Update the global if it is.
 		if(name == "new line" || !(name in seed_types))
@@ -603,8 +603,8 @@ proc/populate_seed_list()
 
 			if(biolum)
 				if(biolum_colour)
-					product.l_color = biolum_colour
-				product.SetLuminosity(biolum)
+					product.light_color = biolum_colour
+				product.set_light(biolum)
 
 			//Handle spawning in living, mobile products (like dionaea).
 			if(istype(product,/mob/living))

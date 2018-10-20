@@ -56,9 +56,9 @@
 /obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.
 	..()
 	if(rounds)
-		usr << "It has [rounds] out of 700 rounds."
+		to_chat(usr, "It has [rounds] out of 700 rounds.")
 	else
-		usr << "It seems to be lacking a ammo drum."
+		to_chat(usr, "It seems to be lacking a ammo drum.")
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -77,11 +77,11 @@
 	if(istype(O,/obj/item/ammo_magazine/m56d)) //lets equip it with ammo
 		if(!rounds)
 			rounds = 700
-			cdel(O)
+			qdel(O)
 			update_icon()
 			return
 		else
-			usr << "The M56D already has a ammo drum mounted on it!"
+			to_chat(usr, "The M56D already has a ammo drum mounted on it!")
 		return
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/machinery in a box. Realized I couldn't take it out
@@ -94,9 +94,9 @@
 
 /obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
 	if(!ishuman(usr)) return
-	user << "<span class='notice'>You deploy [src].</span>"
+	to_chat(user, "<span class='notice'>You deploy [src].</span>")
 	new /obj/machinery/m56d_post(user.loc)
-	cdel(src)
+	qdel(src)
 
 
 
@@ -119,18 +119,18 @@
 	if(health <= 0)
 		if(prob(30))
 			new /obj/item/device/m56d_post (src)
-		cdel(src)
+		qdel(src)
 
 
 
 /obj/machinery/m56d_post/examine(mob/user)
 	..()
 	if(!anchored)
-		user << "It must be <B>screwed</b> to the floor."
+		to_chat(user, "It must be <B>screwed</b> to the floor.")
 	else if(!gun_mounted)
-		user << "The <b>M56D Mounted Smartgun</b> is not yet mounted."
+		to_chat(user, "The <b>M56D Mounted Smartgun</b> is not yet mounted.")
 	else
-		user << "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
+		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
 
 /obj/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
@@ -147,12 +147,12 @@
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored)
-			user << "<span class='warning'>[src] can't be folded while screwed to the floor. Unscrew it first.</span>"
+			to_chat(user, "<span class='warning'>[src] can't be folded while screwed to the floor. Unscrew it first.</span>")
 			return
-		user << "<span class='notice'>You fold [src].</span>"
+		to_chat(user, "<span class='notice'>You fold [src].</span>")
 		var/obj/item/device/m56d_post/P = new(loc)
 		user.put_in_hands(P)
-		cdel(src)
+		qdel(src)
 
 
 
@@ -177,12 +177,12 @@
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
 		if(!anchored)
-			user << "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>"
+			to_chat(user, "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>")
 			return
-		user << "You begin mounting [MG].."
+		to_chat(user, "You begin mounting [MG]..")
 		if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("\blue [user] installs [MG] into place.","\blue You install [MG] into place.")
+			user.visible_message("<span class='notice'>[user] installs [MG] into place.</span>","<span class='notice'>You install [MG] into place.</span>")
 			gun_mounted = 1
 			gun_rounds = MG.rounds
 			if(!gun_rounds)
@@ -190,14 +190,14 @@
 			else
 				icon_state = "M56D" // otherwise we're a empty gun on a mount.
 			user.temp_drop_inv_item(MG)
-			cdel(MG)
+			qdel(MG)
 		return
 
 	if(istype(O,/obj/item/tool/crowbar))
 		if(!gun_mounted)
-			user << "<span class='warning'>There is no gun mounted.</span>"
+			to_chat(user, "<span class='warning'>There is no gun mounted.</span>")
 			return
-		user << "You begin dismounting [src]'s gun.."
+		to_chat(user, "You begin dismounting [src]'s gun..")
 		if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("\blue [user] removes [src]'s gun.","\blue You remove [src]'s gun.")
@@ -209,15 +209,15 @@
 
 	if(istype(O,/obj/item/tool/screwdriver))
 		if(gun_mounted)
-			user << "You're securing the M56D into place"
+			to_chat(user, "You're securing the M56D into place")
 			if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message("\blue [user] screws the M56D into the mount.","\blue You finalize the M56D mounted smartgun system.")
 				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
+				G.visible_message("[bicon(G)] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
-				cdel(src)
+				qdel(src)
 		else
 
 			if(!anchored)
@@ -231,20 +231,20 @@
 							fail = 1
 							break
 				if(fail)
-					user << "<span class='warning'>Can't install [src] here, something is in the way.</span>"
+					to_chat(user, "<span class='warning'>Can't install [src] here, something is in the way.</span>")
 					return
 			if(anchored)
-				user << "You begin unscrewing [src] from the ground.."
+				to_chat(user, "You begin unscrewing [src] from the ground..")
 			else
-				user << "You begin screwing [src] into place.."
+				to_chat(user, "You begin screwing [src] into place..")
 			var/old_anchored = anchored
 			if(do_after(user,20, TRUE, 5, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(anchored)
-					user.visible_message("\blue [user] anchors [src] into place.","\blue You anchor [src] into place.")
+					user.visible_message("<span class='notice'>[user] anchors [src] into place.</span>","<span class='notice'>You anchor [src] into place.</span>")
 				else
-					user.visible_message("\blue [user] unanchors [src].","\blue You unanchor [src].")
+					user.visible_message("<span class='notice'>[user] unanchors [src].</span>","<span class='notice'>You unanchor [src].</span>")
 		return
 
 	return ..()
@@ -271,6 +271,7 @@
 	var/atom/target = null // required for shooting at things.
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
 	var/obj/item/projectile/in_chamber = null
+	var/muzzle_flash_lum = 3 //muzzle flash brightness
 	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
 	var/is_bursting = 0.
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
@@ -284,16 +285,15 @@
 	Dispose() //Make sure we pick up our trash.
 		if(operator)
 			operator.unset_interaction()
-		SetLuminosity(0)
 		processing_objects.Remove(src)
 		. = ..()
 
 /obj/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
 	..()
 	if(rounds)
-		user << "It has [rounds] round\s out of [rounds_max]."
+		to_chat(user, "It has [rounds] round\s out of [rounds_max].")
 	else
-		user << "It seems to be lacking ammo"
+		to_chat(user, "It seems to be lacking ammo")
 
 /obj/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -311,7 +311,7 @@
 
 	if(istype(O,/obj/item/tool/wrench)) // Let us rotate this stuff.
 		if(locked)
-			user << "This one is anchored in place and cannot be rotated."
+			to_chat(user, "This one is anchored in place and cannot be rotated.")
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -329,23 +329,23 @@
 
 	if(istype(O, /obj/item/tool/screwdriver)) // Lets take it apart.
 		if(locked)
-			user << "This one cannot be disassembled."
+			to_chat(user, "This one cannot be disassembled.")
 		else
-			user << "You begin disassembling the M56D mounted smartgun"
+			to_chat(user, "You begin disassembling the M56D mounted smartgun")
 			if(do_after(user,15, TRUE, 5, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'> [user] disassembles [src]! </span>","<span class='notice'> You disassemble [src]!</span>")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
 				new /obj/item/device/m56d_post(src.loc)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-				cdel(src) //Now we clean up the constructed gun.
+				qdel(src) //Now we clean up the constructed gun.
 				return
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
 		var/obj/item/ammo_magazine/m56d/M = O
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.heavy_weapons < SKILL_HEAVY_WEAPONS_TRAINED)
 			if(rounds)
-				user << "<span class='warning'>You only know how to swap the ammo drum when it's empty.</span>"
+				to_chat(user, "<span class='warning'>You only know how to swap the ammo drum when it's empty.</span>")
 				return
 			if(user.action_busy) return
 			if(!do_after(user, 25, TRUE, 5, BUSY_ICON_FRIENDLY))
@@ -358,7 +358,7 @@
 		rounds = min(rounds + M.current_rounds, rounds_max)
 		update_icon()
 		user.temp_drop_inv_item(O)
-		cdel(O)
+		qdel(O)
 		return
 	return ..()
 
@@ -371,7 +371,7 @@
 		else
 			var/obj/item/device/m56d_gun/HMG = new(loc)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-		cdel(src)
+		qdel(src)
 		return
 
 	if(health > health_max)
@@ -401,7 +401,7 @@
 		update_icon() //make sure the user can see the lack of ammo.
 		return 0 //Out of ammo.
 
-	in_chamber = rnew(/obj/item/projectile, loc) //New bullet!
+	in_chamber = new /obj/item/projectile(loc) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
@@ -467,7 +467,7 @@
 			in_chamber = null
 			rounds--
 			if(!rounds)
-				visible_message("<span class='notice'> \icon[src] \The M56D beeps steadily and its ammo light blinks red.</span>")
+				visible_message("<span class='notice'> [bicon(src)] \The M56D beeps steadily and its ammo light blinks red.</span>")
 				playsound(src.loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 				update_icon() //final safeguard.
 	return
@@ -482,7 +482,7 @@
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand())
-		usr << "<span class='warning'>You need a free hand to shoot the [src].</span>"
+		to_chat(usr, "<span class='warning'>You need a free hand to shoot the [src].</span>")
 		return HANDLE_CLICK_UNHANDLED
 
 	target = A
@@ -503,7 +503,7 @@
 	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
 
 		if(!rounds)
-			user << "<span class='warning'><b>*click*</b></span>"
+			to_chat(user, "<span class='danger'>*click*</span>")
 			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		else
 			process_shot()
@@ -513,18 +513,19 @@
 
 /obj/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle)) return
-
+	set_light(muzzle_flash_lum)
+	spawn(10)
+		set_light(0)
 	if(prob(65))
 		var/img_layer = layer + 0.1
 
-		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/projectiles.dmi', src, "muzzle_flash",img_layer))
+		var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",img_layer)
 		var/matrix/rotate = matrix() //Change the flash angle.
 		rotate.Translate(0,5)
 		rotate.Turn(angle)
 		I.transform = rotate
-
-		I.flick_overlay(src, 3)
-
+		flick_overlay(I, clients_in_moblist(viewers()), 3) 
+		
 /obj/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	if(!ishuman(usr)) return
 	var/mob/living/carbon/human/user = usr //this is us
@@ -533,24 +534,24 @@
 	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
 		if(user.interactee == src)
 			user.unset_interaction()
-			visible_message("\icon[src] <span class='notice'>[user] decided to let someone else have a go </span>")
-			usr << "<span class='notice'>You decided to let someone else have a go on the MG </span>"
+			visible_message("[bicon(src)] <span class='notice'>[user] decided to let someone else have a go </span>")
+			to_chat(usr, "<span class='notice'>You decided to let someone else have a go on the MG </span>")
 			return
 		if(operator) //If there is already a operator then they're manning it.
 			if(operator.interactee == null)
 				operator = null //this shouldn't happen, but just in case
 			else
-				user << "Someone's already controlling it."
+				to_chat(user, "Someone's already controlling it.")
 				return
 		else
 			if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-				user << "You're already manning something!"
+				to_chat(user, "You're already manning something!")
 				return
 			if(user.get_active_hand() != null)
-				user << "<span class='warning'>You need a free hand to man the [src].</span>"
+				to_chat(user, "<span class='warning'>You need a free hand to man the [src].</span>")
 			else
-				visible_message("\icon[src] <span class='notice'>[user] mans the M56D!</span>")
-				user << "<span class='notice'>You man the gun!</span>"
+				visible_message("[bicon(src)] <span class='notice'>[user] mans the M56D!</span>")
+				to_chat(user, "<span class='notice'>You man the gun!</span>")
 				user.set_interaction(src)
 
 
@@ -577,7 +578,7 @@
 	if (mods["ctrl"])
 		if(operator != user) return //only the operatore can toggle fire mode
 		burst_fire = !burst_fire
-		user << "<span class='notice'>You set [src] to [burst_fire ? "burst fire" : "single fire"] mode.</span>"
+		to_chat(user, "<span class='notice'>You set [src] to [burst_fire ? "burst fire" : "single fire"] mode.</span>")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		return 1
 	return ..()

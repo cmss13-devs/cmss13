@@ -119,7 +119,7 @@
 
 	if(!isXeno(AM))
 		if (used_lunge && !lunge)
-			src << "<span class='xenowarning'>You must gather your strength before neckgrabbing again.</span>"
+			to_chat(src, "<span class='xenowarning'>You must gather your strength before neckgrabbing again.</span>")
 			return FALSE
 
 		if (!check_plasma(10))
@@ -144,7 +144,7 @@
 		used_lunge = 2 // sanity checking
 		spawn(caste.lunge_cooldown)
 			used_lunge = 0
-			src << "<span class='notice'>You get ready to lunge again.</span>"
+			to_chat(src, "<span class='notice'>You get ready to lunge again.</span>")
 			for(var/X in actions)
 				var/datum/action/act = X
 				act.update_button_icon()

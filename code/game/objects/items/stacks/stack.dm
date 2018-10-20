@@ -31,7 +31,7 @@
 
 /obj/item/stack/examine(mob/user)
 	..()
-	user << "There are [amount] [singular_name]\s in the stack."
+	to_chat(user, "There are [amount] [singular_name]\s in the stack.")
 
 /obj/item/stack/attack_self(mob/user as mob)
 	list_recipes(user)
@@ -46,7 +46,7 @@
 	if(recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
-	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
+	var/t1 = "<HTML><HEAD><title>Constructions from [src]</title></HEAD><body><TT>Amount Left: [src.amount]<br>"
 	for(var/i = 1; i <= recipe_list.len, i++)
 		var/E = recipe_list[i]
 		if(isnull(E))
@@ -103,7 +103,7 @@
 		list_recipes(usr, text2num(href_list["sublist"]))
 
 	if(href_list["make"])
-		if(amount < 1) cdel(src) //Never should happen
+		if(amount < 1) qdel(src) //Never should happen
 
 		var/list/recipes_list = recipes
 		if(href_list["sublist"])
@@ -115,34 +115,34 @@
 			return
 		if(R.skill_req)
 			if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.construction < R.skill_req)
-				usr << "<span class='warning'>You are not trained to build this...</span>"
+				to_chat(usr, "<span class='warning'>You are not trained to build this...</span>")
 				return
 		if(amount < R.req_amount * multiplier)
 			if(R.req_amount * multiplier > 1)
-				usr << "<span class='warning'>You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!</span>"
+				to_chat(usr, "<span class='warning'>You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
 			else
-				usr << "<span class='warning'>You need more [name] to build \the [R.title]!</span>"
+				to_chat(usr, "<span class='warning'>You need more [name] to build \the [R.title]!</span>")
 			return
 
 		if(istype(get_area(usr.loc), /area/sulaco/hangar))  //HANGAR BUILDING
-			usr << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
+			to_chat(usr, "<span class='warning'>No. This area is needed for the dropships and personnel.</span>")
 			return
 		//1 is absolute one per tile, 2 is directional one per tile. Hacky way to get around it without adding more vars
 		if(R.one_per_turf)
 			if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
-				usr << "<span class='warning'>There is already another [R.title] here!</span>"
+				to_chat(usr, "<span class='warning'>There is already another [R.title] here!</span>")
 				return
 			for(var/obj/O in usr.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 				if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER) && R.one_per_turf == 2)) //Note: If no dense items, or if dense item, both it and result must be border tiles
-					usr << "<span class='warning'>You need a clear, open area to build \a [R.title]!</span>"
+					to_chat(usr, "<span class='warning'>You need a clear, open area to build \a [R.title]!</span>")
 					return
 				if(R.one_per_turf == 2 && (O.flags_atom & ON_BORDER) && O.dir == usr.dir) //We check overlapping dir here. Doesn't have to be the same type
-					usr << "<span class='warning'>There is already \a [O.name] in this direction!</span>"
+					to_chat(usr, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
 					return
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			if(!OT.allow_construction)
-				usr << "<span class='warning'>\The [R.title] must be constructed on a proper surface!</span>"
+				to_chat(usr, "<span class='warning'>\The [R.title] must be constructed on a proper surface!</span>")
 				return
 		if(R.time)
 			if(usr.action_busy) return
@@ -152,14 +152,14 @@
 				return
 		//We want to check this again for girder stacking
 		if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
-			usr << "<span class='warning'>There is already another [R.title] here!</span>"
+			to_chat(usr, "<span class='warning'>There is already another [R.title] here!</span>")
 			return
 		for(var/obj/O in usr.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 			if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER) && R.one_per_turf == 2))
-				usr << "<span class='warning'>You need a clear, open area to build \a [R.title]!</span>"
+				to_chat(usr, "<span class='warning'>You need a clear, open area to build \a [R.title]!</span>")
 				return
 			if(R.one_per_turf == 2 && (O.flags_atom & ON_BORDER) && O.dir == usr.dir)
-				usr << "<span class='warning'>There is already \a [O.name] in this direction!</span>"
+				to_chat(usr, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
 				return
 		if(amount < R.req_amount * multiplier)
 			return
@@ -174,16 +174,16 @@
 		amount -= R.req_amount * multiplier
 		if(amount <= 0)
 			var/oldsrc = src
-			src = null //dont kill proc after cdel()
+			src = null //dont kill proc after qdel()
 			usr.drop_inv_item_on_ground(oldsrc)
-			cdel(oldsrc)
+			qdel(oldsrc)
 			if(istype(O,/obj/item) && istype(usr,/mob/living/carbon))
 				usr.put_in_hands(O)
 		O.add_fingerprint(usr)
 		//BubbleWrap - so newly formed boxes are empty
 		if(istype(O, /obj/item/storage))
 			for (var/obj/item/I in O)
-				cdel(I)
+				qdel(I)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
 		spawn()
@@ -198,7 +198,7 @@
 	if(amount <= 0)
 		if(usr && loc == usr)
 			usr.temp_drop_inv_item(src)
-		cdel(src)
+		qdel(src)
 	return 1
 
 /obj/item/stack/proc/add(var/extra)
@@ -222,7 +222,7 @@
 		if (item.amount>=item.max_amount)
 			continue
 		oldsrc.attackby(item, user)
-		user << "You add new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."
+		to_chat(user, "You add new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.")
 		if(!oldsrc)
 			break
 
@@ -246,7 +246,7 @@
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if (S.amount >= max_amount)
-				user << "<span class='notice'>That stack is full!</span>"
+				to_chat(user, "<span class='notice'>That stack is full!</span>")
 				return 1
 			var/to_transfer as num
 			if (user.get_inactive_hand()==src)
@@ -258,7 +258,7 @@
 				to_transfer = min(src.amount, S.max_amount-S.amount)
 			if(to_transfer <= 0)
 				return
-			user << "<span class='information'>You transfer [to_transfer] between the stacks.</span>"
+			to_chat(user, "<span class='information'>You transfer [to_transfer] between the stacks.</span>")
 			S.add(to_transfer)
 			if (S && usr.interactee==S)
 				spawn(0) S.interact(usr)

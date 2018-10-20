@@ -50,11 +50,11 @@
 		update_turf_overlay()
 
 /turf/open/floor/plating/plating_catwalk/proc/update_turf_overlay()
-	var/image/reusable/I = rnew(/image/reusable, list(icon, src, "catwalk", CATWALK_LAYER))
+	var/image/I = image(icon, src, "catwalk", CATWALK_LAYER)
 	switch(covered)
 		if(0)
 			overlays -= I
-			cdel(I)
+			qdel(I)
 		if(1) overlays += I
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
@@ -133,6 +133,8 @@
 	return
 
 /turf/open/floor/almayer/empty/Entered(var/atom/movable/AM)
+	if(istype(AM, /atom/movable/lighting_overlay))  // this is hacky -spookydonut
+		return
 	..()
 	spawn(2)
 		if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
@@ -170,15 +172,15 @@
 					for(var/mob/living/M in H)
 						M.take_overall_damage(20, 0, "Blunt Trauma")
 					for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
-						cdel(C)
+						qdel(C)
 					R.expel(H)
 					return
 
-				cdel(AM)
+				qdel(AM)
 
 		else
 			for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
-				cdel(C)
+				qdel(C)
 
 
 //Others
@@ -431,9 +433,9 @@
 			recharge_console.mecha_in(mecha)
 			return
 		else if(!recharge_console)
-			mecha.occupant_message("<font color='red'>Control console not found. Terminating.</font>")
+			mecha.occupant_message("<span class='caution'>Control console not found. Terminating.</span>")
 		else if(!recharge_port)
-			mecha.occupant_message("<font color='red'>Power port not found. Terminating.</font>")
+			mecha.occupant_message("<span class='caution'>Power port not found. Terminating.</span>")
 	return
 
 /turf/open/floor/mech_bay_recharge_floor/Exited(atom)

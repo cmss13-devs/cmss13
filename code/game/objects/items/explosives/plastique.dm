@@ -17,7 +17,7 @@
 
 /obj/item/explosive/plastique/attack_self(mob/user)
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
-		user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
 		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(newtime < 10)
@@ -25,12 +25,12 @@
 	if(newtime > 60)
 		newtime = 60
 	timer = newtime
-	user << "Timer set for [timer] seconds."
+	to_chat(user, "Timer set for [timer] seconds.")
 
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
 	if(!flag) r_FAL
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
-		user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
 		return
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))
 		r_FAL
@@ -44,7 +44,7 @@
 	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target
 		if(W.not_damageable)
-			user << "<span class='warning'>[W] is much too tough for you to do anything to it with [src]</span>." //On purpose to mimic wall message
+			to_chat(user, "<span class='warning'>[W] is much too tough for you to do anything to it with [src]</span>.") //On purpose to mimic wall message
 			r_FAL
 
 	user.visible_message("<span class='warning'>[user] is trying to plant [name] on [target]!</span>",
@@ -75,11 +75,14 @@
 				explosion(location, -1, -1, 2, 3)
 				plant_target.ex_act(1000000)
 				if(plant_target && !plant_target.disposed)
-					if(isobj(plant_target))
-						cdel(plant_target)
+					if(isturf(plant_target))
+						var/turf/T = plant_target
+						T.ChangeTurf(/turf/open/floor/plating, TRUE)
+					else if(isobj(plant_target))
+						qdel(plant_target)
 					else
 						plant_target.overlays -= image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
-			cdel(src)
+			qdel(src)
 
 /obj/item/explosive/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
 	return

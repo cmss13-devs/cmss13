@@ -435,5 +435,5 @@
 
 		i++;
 
-//		world << "Added: [R.product_name]] - [R.amount] - [R.product_path]"
+//		to_chat(world, "Added: [R.product_name]] - [R.amount] - [R.product_path]")
 	return

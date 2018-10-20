@@ -21,7 +21,7 @@
 		clean_blood()
 		for(var/obj/effect/O in src)
 			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
-				cdel(O)
+				qdel(O)
 	source.reagents.reaction(src, TOUCH, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
 
@@ -30,7 +30,7 @@
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune))
 		if(reagents.total_volume < 1)
-			user << "<span class='notice'>Your mop is dry!</span>"
+			to_chat(user, "<span class='notice'>Your mop is dry!</span>")
 			return
 
 		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(A)].</span>")
@@ -39,7 +39,7 @@
 			var/turf/T = get_turf(A)
 			if(T)
 				T.clean(src)
-			user << "<span class='notice'>You have finished mopping!</span>"
+			to_chat(user, "<span class='notice'>You have finished mopping!</span>")
 
 
 /obj/effect/attackby(obj/item/I, mob/user)
@@ -103,12 +103,12 @@
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (target in user.client.screen))
-		user << "<span class='notice'>You need to take that [target.name] off before cleaning it.</span>"
+		to_chat(user, "<span class='notice'>You need to take that [target.name] off before cleaning it.</span>")
 	else if(istype(target,/obj/effect/decal/cleanable))
-		user << "<span class='notice'>You scrub \the [target.name] out.</span>"
-		cdel(target)
+		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
+		qdel(target)
 	else
-		user << "<span class='notice'>You clean \the [target.name].</span>"
+		to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
 		target.clean_blood()
 	return
 

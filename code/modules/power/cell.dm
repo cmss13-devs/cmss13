@@ -55,11 +55,11 @@
 
 /obj/item/cell/examine(mob/user)
 	if(maxcharge <= 2500)
-		user << "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%."
+		to_chat(user, "[desc]\nThe manufacturer's label states this cell has a power rating of [maxcharge], and that you should not swallow it.\nThe charge meter reads [round(src.percent() )]%.")
 	else
-		user << "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%."
+		to_chat(user, "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%.")
 	if(crit_fail)
-		user << "\red This power cell seems to be faulty."
+		to_chat(user, "<span class='warning'>This power cell seems to be faulty.</span>")
 
 /*
 /obj/item/cell/attack_self(mob/user as mob)
@@ -77,7 +77,7 @@
 	if(istype(W, /obj/item/reagent_container/syringe))
 		var/obj/item/reagent_container/syringe/S = W
 
-		user << "You inject the solution into the power cell."
+		to_chat(user, "You inject the solution into the power cell.")
 
 		if(S.reagents.has_reagent("phoron", 5))
 
@@ -115,7 +115,7 @@
 	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 
 	spawn(1)
-		cdel(src)
+		qdel(src)
 
 /obj/item/cell/proc/corrupt()
 	charge /= 2
@@ -136,18 +136,18 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(25))
 				corrupt()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				corrupt()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 	return
 

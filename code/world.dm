@@ -1,3 +1,4 @@
+#define WORLD_ICON_SIZE 32
 var/global/datum/global_init/init = new ()
 
 /*
@@ -6,7 +7,7 @@ var/global/datum/global_init/init = new ()
 /datum/global_init/New()
 	load_configuration()
 	makeDatumRefLists()
-	cdel(src)
+	qdel(src)
 
 
 /world
@@ -17,7 +18,7 @@ var/global/datum/global_init/init = new ()
 	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
 	hub = "Exadv1.spacestation13"
 
-#define RECOMMENDED_VERSION 511
+#define RECOMMENDED_VERSION 512
 
 /world/New()
 
@@ -38,8 +39,6 @@ var/global/datum/global_init/init = new ()
 
 	if(byond_version < RECOMMENDED_VERSION)
 		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
-
-	initialize_marine_armor()
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~
@@ -65,25 +64,12 @@ var/global/datum/global_init/init = new ()
 
 	if(!RoleAuthority)
 		RoleAuthority = new /datum/authority/branch/role()
-		world << "\red \b Job setup complete"
-
-	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
-	if(!EvacuationAuthority)		EvacuationAuthority = new
+		to_chat(world, "<span class='danger'>Job setup complete</span>")
 
 	world.tick_lag = config.Ticklag
 
-	// Process Scheduler
-	src << "\red \b Scheduler initialized."
-	processScheduler = new
-
-	spawn(0)
-		processScheduler.setup()
-
-	src << "\red \b Scheduler setup complete."
-
-	spawn(0)
-		processScheduler.start()
+	spawn(1)
+		Master.Setup()
 
 //	master_controller = new /datum/controller/game_controller()
 
@@ -105,14 +91,14 @@ var/global/datum/global_init/init = new ()
 	return
 
 //world/Topic(href, href_list[])
-//		world << "Received a Topic() call!"
-//		world << "[href]"
+//		to_chat(world, "Received a Topic() call!")
+//		to_chat(world, "[href]")
 //		for(var/a in href_list)
-//			world << "[a]"
+//			to_chat(world, "[a]")
 //		if(href_list["hello"])
-//			world << "Hello world!"
+//			to_chat(world, "Hello world!")
 //			return "Hello world!"
-//		world << "End of Topic() call."
+//		to_chat(world, "End of Topic() call.")
 //		..()
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
@@ -240,7 +226,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				text += "</span>"
 				text += "<hr><br>"
 
-				world << text
+				to_chat(world, text)
 				world << 'sound/voice/start_your_voting.ogg'
 
 			ticker.delay_end = 1
@@ -316,7 +302,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			text += "</font>"
 
-			world << text
+			to_chat(world, text)
 
 			return next_map
 
@@ -326,6 +312,9 @@ var/world_topic_spam_protect_time = world.timeofday
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
+
+	Master.Shutdown()
+	
 	// Notify helper daemon of reboot, regardless of reason.
 	world.Export("http://127.0.0.1:8888/?rebooting=1")
 	for(var/client/C in clients)
@@ -347,9 +336,8 @@ var/world_topic_spam_protect_time = world.timeofday
 				if(C.is_afk(INACTIVITY_KICK))
 					if(!istype(C.mob, /mob/dead))
 						log_access("AFK: [key_name(C)]")
-						C << "\red You have been inactive for more than 10 minutes and have been disconnected."
-						cdel(C)
-#undef INACTIVITY_KICK
+						to_chat(C, "<span class='warning'>You have been inactive for more than 10 minutes and have been disconnected.</span>")
+						qdel(C)
 
 
 /hook/startup/proc/loadMode()
@@ -501,7 +489,7 @@ proc/establish_old_db_connection()
 
 	if(ticker.delay_end) return
 
-	world << "\red <b>Restarting world!</b> \blue Initiated by MapDaemon.exe!"
+	to_chat(world, "<span class='danger'>Restarting world! </span><span class='notice'>Initiated by MapDaemon.exe!</span>")
 	log_admin("World/Topic() call (likely MapDaemon.exe) initiated a reboot.")
 
 	if(blackbox)

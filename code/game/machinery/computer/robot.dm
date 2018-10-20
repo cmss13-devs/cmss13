@@ -29,7 +29,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		user << "\red <b>Unable to establish a connection</b>: \black You're too far away from the station!"
+		to_chat(user, "<span class='danger'>Unable to establish a connection</span>: \black You're too far away from the station!")
 		return
 	user.set_interaction(src)
 	var/dat
@@ -121,14 +121,14 @@
 			if (istype(I))
 				if(src.check_access(I))
 					if (!status)
-						message_admins("\blue [key_name_admin(usr)] has initiated the global cyborg killswitch!")
-						log_game("\blue [key_name(usr)] has initiated the global cyborg killswitch!")
+						message_admins("<span class='notice'>[key_name_admin(usr)] has initiated the global cyborg killswitch!</span>")
+						log_game("<span class='notice'>[key_name(usr)] has initiated the global cyborg killswitch!</span>")
 						src.status = 1
 						src.start_sequence()
 						src.temp = null
 
 				else
-					usr << "\red Access Denied."
+					to_chat(usr, "<span class='warning'>Access Denied.</span>")
 
 		else if (href_list["stop"])
 			src.temp = {"
@@ -162,15 +162,15 @@
 					if(choice == "Confirm")
 						if(R && istype(R))
 							if(R.mind && R.mind.special_role && R.emagged)
-								R << "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered."
+								to_chat(R, "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered.")
 								R.ResetSecurityCodes()
 
 							else
-								message_admins("\blue [key_name_admin(usr)] detonated [R.name]!")
-								log_game("\blue [key_name_admin(usr)] detonated [R.name]!")
+								message_admins("<span class='notice'>[key_name_admin(usr)] detonated [R.name]!</span>")
+								log_game("<span class='notice'>[key_name_admin(usr)] detonated [R.name]!</span>")
 								R.self_destruct()
 			else
-				usr << "\red Access Denied."
+				to_chat(usr, "<span class='warning'>Access Denied.</span>")
 
 		else if (href_list["stopbot"])
 			if(src.allowed(usr))
@@ -179,20 +179,20 @@
 					var/choice = input("Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")
 						if(R && istype(R))
-							message_admins("\blue [key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
+							message_admins("<span class='notice'>[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!</span>")
 							log_game("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
 							R.canmove = !R.canmove
 							if (R.lockcharge)
 							//	R.cell.charge = R.lockcharge
 								R.lockcharge = !R.lockcharge
-								R << "Your lockdown has been lifted!"
+								to_chat(R, "Your lockdown has been lifted!")
 							else
 								R.lockcharge = !R.lockcharge
 						//		R.cell.charge = 0
-								R << "You have been locked down!"
+								to_chat(R, "You have been locked down!")
 
 			else
-				usr << "\red Access Denied."
+				to_chat(usr, "<span class='warning'>Access Denied.</span>")
 
 		else if (href_list["magbot"])
 			if(src.allowed(usr))
@@ -204,7 +204,7 @@
 					var/choice = input("Are you certain you wish to hack [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")
 						if(R && istype(R))
-//							message_admins("\blue [key_name_admin(usr)] emagged [R.name] using robotic console!")
+//							message_admins("<span class='notice'>[key_name_admin(usr)] emagged [R.name] using robotic console!</span>")
 							log_game("[key_name(usr)] emagged [R.name] using robotic console!")
 							R.emagged = 1
 							if(R.mind.special_role)

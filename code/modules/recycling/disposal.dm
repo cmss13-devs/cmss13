@@ -50,43 +50,43 @@
 	if(mode <= 0) //It's off
 		if(istype(I, /obj/item/tool/screwdriver))
 			if(contents.len > 0)
-				user << "<span class='warning'>Eject the contents first!</span>"
+				to_chat(user, "<span class='warning'>Eject the contents first!</span>")
 				return
 			if(mode == 0) //It's off but still not unscrewed
 				mode = -1 //Set it to doubleoff
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user << "<span class='notice'>You remove the screws around the power connection.</span>"
+				to_chat(user, "<span class='notice'>You remove the screws around the power connection.</span>")
 				return
 			else if(mode == -1)
 				mode = 0
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user << "<span class='notice'>You attach the screws around the power connection.</span>"
+				to_chat(user, "<span class='notice'>You attach the screws around the power connection.</span>")
 				return
 		else if(istype(I, /obj/item/tool/weldingtool) && mode == -1)
 			if(contents.len > 0)
-				user << "<span class='warning'>Eject the contents first!</span>"
+				to_chat(user, "<span class='warning'>Eject the contents first!</span>")
 				return
 			var/obj/item/tool/weldingtool/W = I
 			if(W.remove_fuel(0, user))
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-				user << "<span class='notice'>You start slicing the floorweld off the disposal unit.</span>"
+				to_chat(user, "<span class='notice'>You start slicing the floorweld off the disposal unit.</span>")
 				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
 					if(!src || !W.isOn()) return
-					user << "<span class='notice'>You sliced the floorweld off the disposal unit.</span>"
+					to_chat(user, "<span class='notice'>You sliced the floorweld off the disposal unit.</span>")
 					var/obj/structure/disposalconstruct/C = new(loc)
 					transfer_fingerprints_to(C)
 					C.ptype = 6 //6 = disposal unit
 					C.anchored = 1
 					C.density = 1
 					C.update()
-					cdel(src)
+					qdel(src)
 			else
-				user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return
 
 	if(istype(I, /obj/item/storage/bag/trash))
 		var/obj/item/storage/bag/trash/T = I
-		user << "<span class='notice'>You empty the bag into [src].</span>"
+		to_chat(user, "<span class='notice'>You empty the bag into [src].</span>")
 		for(var/obj/item/O in T.contents)
 			T.remove_from_storage(O, src)
 		T.update_icon()
@@ -96,7 +96,7 @@
 	var/obj/item/grab/G = I
 	if(istype(G)) //Handle grabbed mob
 		if(ismob(G.grabbed_thing))
-			user << "<span class='warning'>You can't fit that in there!</span>"
+			to_chat(user, "<span class='warning'>You can't fit that in there!</span>")
 			return
 			/*&& user.grab_level >= GRAB_AGGRESSIVE)
 			var/mob/GM = G.grabbed_thing
@@ -195,7 +195,7 @@
 //Human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
 	if(user && user.loc == src)
-		usr << "\red You cannot reach the controls from inside."
+		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
 		return
 
 	interact(user, 0)
@@ -234,11 +234,11 @@
 //Handle machine interaction
 /obj/machinery/disposal/Topic(href, href_list)
 	if(usr.loc == src)
-		usr << "<span class='warning'>You cannot reach the controls from inside.</span>"
+		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
 		return
 
 	if(mode == -1 && !href_list["eject"]) // only allow ejecting if mode is -1
-		usr << "<span class='warning'>The disposal units power is disabled.</span>"
+		to_chat(usr, "<span class='warning'>The disposal units power is disabled.</span>")
 		return
 	..()
 	add_fingerprint(usr)
@@ -291,13 +291,13 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(60))
-				cdel(src)
+				qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 
 /obj/machinery/disposal/Dispose()
@@ -423,7 +423,7 @@
 				spawn(1)
 					if(AM)
 						AM.throw_at(target, 5, 1)
-		cdel(H)
+		qdel(H)
 
 /obj/machinery/disposal/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/item) && mover.throwing)
@@ -565,7 +565,7 @@
 
 	if(other.has_fat_guy)
 		has_fat_guy = 1
-	cdel(other)
+	qdel(other)
 
 /obj/structure/disposalholder/proc/settag(var/new_tag)
 	destinationTag = new_tag
@@ -630,7 +630,7 @@
 			for(var/atom/movable/AM in H)
 				AM.loc = T
 				AM.pipe_eject(0)
-			cdel(H)
+			qdel(H)
 			..()
 			return
 
@@ -708,7 +708,7 @@
 				spawn(1)
 					if(AM)
 						AM.throw_at(target, 100, 1)
-			cdel(H)
+			qdel(H)
 
 	else //No specified direction, so throw in random direction
 
@@ -723,7 +723,7 @@
 					if(AM)
 						AM.throw_at(target, 5, 1)
 
-			cdel(H)
+			qdel(H)
 
 //Call to break the pipe, will expel any holder inside at the time then delete the pipe
 //Remains : set to leave broken pipe pieces in place
@@ -746,7 +746,7 @@
 			for(var/atom/movable/AM in H)
 				AM.loc = T
 				AM.pipe_eject(0)
-			cdel(H)
+			qdel(H)
 			return
 
 		//Otherwise, do normal expel from turf
@@ -754,7 +754,7 @@
 			expel(H, T, 0)
 
 	spawn(2) //Delete pipe after 2 ticks to ensure expel proc finished
-		cdel(src)
+		qdel(src)
 
 //Pipe affected by explosion
 /obj/structure/disposalpipe/ex_act(severity)
@@ -803,9 +803,9 @@
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
-				user << "<span class='warning'>You must stay still while welding [src].</span>"
+				to_chat(user, "<span class='warning'>You must stay still while welding [src].</span>")
 		else
-			user << "<span class='warning'>You need more welding fuel to cut [src].</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to cut [src].</span>")
 
 //Called when pipe is cut with blowtorch
 /obj/structure/disposalpipe/proc/welded()
@@ -843,7 +843,7 @@
 	C.density = 0
 	C.anchored = 1
 	C.update()
-	cdel(src)
+	qdel(src)
 
 //A straight or bent segment
 /obj/structure/disposalpipe/segment
@@ -1085,7 +1085,7 @@
 		if(O.currTag) //Tag set
 			sort_tag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			user << "<span class='notice'>Changed tag to '[sort_tag]'.</span>"
+			to_chat(user, "<span class='notice'>Changed tag to '[sort_tag]'.</span>")
 			updatename()
 			updatedesc()
 
@@ -1154,7 +1154,7 @@
 		if(O.currTag) //Tag set
 			sortType = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			user << "<span class='notice'>Changed filter to '[sortType]'.</span>"
+			to_chat(user, "<span class='notice'>Changed filter to '[sortType]'.</span>")
 			updatename()
 			updatedesc()
 
@@ -1264,9 +1264,9 @@
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
-				user << "<span class='warning'>You must stay still while welding the pipe.</span>"
+				to_chat(user, "<span class='warning'>You must stay still while welding the pipe.</span>")
 		else
-			user << "<span class='warning'>You need more welding fuel to cut the pipe.</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to cut the pipe.</span>")
 
 //Would transfer to next pipe segment, but we are in a trunk. If not entering from disposal bin, transfer to linked object (outlet or bin)
 /obj/structure/disposalpipe/trunk/transfer(var/obj/structure/disposalholder/H)
@@ -1305,7 +1305,7 @@
 
 //Called when welded, for broken pipe, remove and turn into scrap
 /obj/structure/disposalpipe/broken/welded()
-	cdel(src)
+	qdel(src)
 
 //The disposal outlet machine
 /obj/structure/disposaloutlet
@@ -1343,7 +1343,7 @@
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 				spawn(5)
 					AM.throw_at(target, 3, 1)
-		cdel(H)
+		qdel(H)
 
 /obj/structure/disposaloutlet/attackby(var/obj/item/I, var/mob/user)
 	if(!I || !user)
@@ -1353,28 +1353,28 @@
 		if(mode == 0)
 			mode = 1
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user << "<span class='notice'>You remove the screws around the power connection.</span>"
+			to_chat(user, "<span class='notice'>You remove the screws around the power connection.</span>")
 		else if(mode == 1)
 			mode = 0
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user << "<span class='notice'>You attach the screws around the power connection.</span>"
+			to_chat(user, "<span class='notice'>You attach the screws around the power connection.</span>")
 	else if(istype(I, /obj/item/tool/weldingtool) && mode == 1)
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			user << "<span class='notice'>You start slicing the floorweld off the disposal outlet.</span>"
+			to_chat(user, "<span class='notice'>You start slicing the floorweld off the disposal outlet.</span>")
 			if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
 				if(!src || !W.isOn()) return
-				user << "<span class='notice'>You sliced the floorweld off the disposal outlet.</span>"
+				to_chat(user, "<span class='notice'>You sliced the floorweld off the disposal outlet.</span>")
 				var/obj/structure/disposalconstruct/C = new(loc)
 				transfer_fingerprints_to(C)
 				C.ptype = 7 //7 =  outlet
 				C.update()
 				C.anchored = 1
 				C.density = 1
-				cdel(src)
+				qdel(src)
 		else
-			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 
 /obj/structure/disposaloutlet/retrieval
 	name = "retrieval outlet"

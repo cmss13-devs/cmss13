@@ -50,7 +50,7 @@
 		if(!interactable())
 			return
 		if (computer.z > 6)
-			to_chat(usr, "<span class='danger'>Unable to establish a connection</span>: \black You're too far away from the station!")
+			usr << "\red <b>Unable to establish a connection</b>: \black You're too far away from the station!"
 			return
 		var/dat
 
@@ -229,7 +229,7 @@
 				for(var/datum/data/record/R in data_core.medical)
 					//R = null
 					data_core.medical -= R
-					qdel(R)
+					cdel(R)
 					//Foreach goto(494)
 				src.temp = "All records deleted."
 
@@ -383,7 +383,7 @@
 			if (href_list["del_r2"])
 				if (src.active2)
 					//src.active2 = null
-					qdel(src.active2)
+					cdel(src.active2)
 					active2 = null
 
 			if (href_list["d_rec"])

@@ -47,6 +47,11 @@
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
 
+	suicide_act(mob/user)
+		viewers(user) << pick("\red <b>[user] is stabbing the [src.name] into \his temple! It looks like \he's trying to commit suicide.</b>", \
+							"\red <b>[user] is stabbing the [src.name] into \his heart! It looks like \he's trying to commit suicide.</b>")
+		return(BRUTELOSS)
+
 /obj/item/tool/screwdriver/New()
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 		if ("red")
@@ -156,12 +161,16 @@
 
 /obj/item/tool/weldingtool/Dispose()
 	if(welding)
+		if(ismob(loc))
+			loc.SetLuminosity(-2)
+		else
+			SetLuminosity(0)
 		processing_objects.Remove(src)
 	. = ..()
 
 /obj/item/tool/weldingtool/examine(mob/user)
 	..()
-	to_chat(user, "It contains [get_fuel()]/[max_fuel] units of fuel!")
+	user << "It contains [get_fuel()]/[max_fuel] units of fuel!"
 
 
 
@@ -189,7 +198,7 @@
 
 		if(H.species.flags & IS_SYNTHETIC)
 			if(M == user)
-				to_chat(user, "\red You can't repair damage to your own body - it's against OH&S.")
+				user << "\red You can't repair damage to your own body - it's against OH&S."
 				return
 
 		if(S.brute_dam && welding)
@@ -200,7 +209,7 @@
 			remove_fuel(1,user)
 			return
 		else
-			to_chat(user, "<span class='warning'>Nothing to fix!</span>")
+			user << "<span class='warning'>Nothing to fix!</span>"
 
 	else
 		return ..()
@@ -217,7 +226,7 @@
 		else
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
-			to_chat(user, "<span class='danger'>You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done.</span>")
+			user << "<span class='danger'>You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done.</span>"
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 		return
@@ -251,7 +260,7 @@
 		return 1
 	else
 		if(M)
-			to_chat(M, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			M << "<span class='notice'>You need more welding fuel to complete this task.</span>"
 		return 0
 
 //Returns whether or not the blowtorch is currently on.
@@ -276,8 +285,10 @@
 			playsound(loc, 'sound/items/weldingtool_on.ogg', 25)
 			welding = 1
 			if(M)
-				to_chat(M, "<span class='notice'>You switch [src] on.</span>")
-			set_light(2)
+				M << "<span class='notice'>You switch [src] on.</span>"
+				M.SetLuminosity(2)
+			else
+				SetLuminosity(2)
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
@@ -287,7 +298,7 @@
 			processing_objects.Add(src)
 		else
 			if(M)
-				to_chat(M, "<span class='warning'>[src] needs more fuel!</span>")
+				M << "<span class='warning'>[src] needs more fuel!</span>"
 			return
 	else
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
@@ -299,14 +310,16 @@
 		heat_source = 0
 		if(M)
 			if(!message)
-				to_chat(M, "<span class='notice'>You switch [src] off.</span>")
+				M << "<span class='notice'>You switch [src] off.</span>"
 			else
-				to_chat(M, "<span class='warning'>[src] shuts off!</span>")
+				M << "<span class='warning'>[src] shuts off!</span>"
+			M.SetLuminosity(-2)
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
 			if(M.l_hand == src)
 				M.update_inv_l_hand()
-		set_light(0)
+		else
+			SetLuminosity(0)
 		processing_objects.Remove(src)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
@@ -323,34 +336,50 @@
 			return
 		switch(safety)
 			if(1)
-				to_chat(user, "<span class='danger'>Your eyes sting a little.</span>")
+				user << "<span class='danger'>Your eyes sting a little.</span>"
 				E.damage += rand(1, 2)
 				if(E.damage > 12)
 					H.eye_blurry += rand(3,6)
 			if(0)
-				to_chat(user, "<span class='warning'>Your eyes burn.</span>")
+				user << "<span class='warning'>Your eyes burn.</span>"
 				E.damage += rand(2, 4)
 				if(E.damage > 10)
 					E.damage += rand(4,10)
 			if(-1)
-				to_chat(user, "<span class='warning'>Your thermals intensify [src]'s glow. Your eyes itch and burn severely.</span>")
+				user << "<span class='warning'>Your thermals intensify [src]'s glow. Your eyes itch and burn severely.</span>"
 				H.eye_blurry += rand(12,20)
 				E.damage += rand(12, 16)
 		if(safety<2)
 
 			if(E.damage > 10)
-				to_chat(H, "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>")
+				H << "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>"
 
 			if (E.damage >= E.min_broken_damage)
-				to_chat(H, "<span class='warning'>You go blind!</span>")
+				H << "<span class='warning'>You go blind!</span>"
 				H.sdisabilities |= BLIND
 			else if (E.damage >= E.min_bruised_damage)
-				to_chat(H, "<span class='warning'>You go blind!</span>")
+				H << "<span class='warning'>You go blind!</span>"
 				H.eye_blind = 5
 				H.eye_blurry = 5
 				H.disabilities |= NEARSIGHTED
 				spawn(100)
 					H.disabilities &= ~NEARSIGHTED
+
+
+
+
+/obj/item/tool/weldingtool/pickup(mob/user)
+	if(welding && loc != user)
+		SetLuminosity(0)
+		user.SetLuminosity(2)
+
+
+/obj/item/tool/weldingtool/dropped(mob/user)
+	if(welding && loc != user)
+		user.SetLuminosity(-2)
+		SetLuminosity(2)
+	return ..()
+
 
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
@@ -435,19 +464,19 @@
 		if(T.welding & prob(50))
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion.")
 			log_game("[key_name(user)] triggered a fueltank explosion.")
-			to_chat(user, "<span class='warning'>That was stupid of you.</span>")
+			user << "\red That was stupid of you."
 			explosion(get_turf(src),-1,0,2)
 			if(src)
-				qdel(src)
+				cdel(src)
 			return
 		else
 			if(T.welding)
-				to_chat(user, "<span class='warning'>That was close!</span>")
+				user << "\red That was close!"
 			src.reagents.trans_to(W, T.max_fuel)
-			to_chat(user, "<span class='notice'>Welder refilled!</span>")
+			user << "\blue Welder refilled!"
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
-	to_chat(user, "<span class='notice'>The tank scoffs at your insolence.  It only provides services to welders.</span>")
+	user << "\blue The tank scoffs at your insolence.  It only provides services to welders."
 	return
 
 /obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
@@ -455,13 +484,13 @@
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, "<span class='notice'>You crack the cap off the top of the pack and fill it back up again from the tank.</span>")
+		user << "\blue You crack the cap off the top of the pack and fill it back up again from the tank."
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, "<span class='notice'>The pack is already full!</span>")
+		user << "\blue The pack is already full!"
 		return
 
 /obj/item/tool/weldpack/examine(mob/user)
 	..()
-	to_chat(user, "[reagents.total_volume] units of welding fuel left!")
+	user << "[reagents.total_volume] units of welding fuel left!"

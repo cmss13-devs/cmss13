@@ -39,23 +39,23 @@
 		switch(bantype)
 			if(BANTYPE_PERMA)
 				if(!banckey || !banreason)
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
+					usr << "Not enough parameters (Requires ckey and reason)"
 					return
 				banduration = null
 				banjob = null
 			if(BANTYPE_TEMP)
 				if(!banckey || !banreason || !banduration)
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration)")
+					usr << "Not enough parameters (Requires ckey, reason and duration)"
 					return
 				banjob = null
 			if(BANTYPE_JOB_PERMA)
 				if(!banckey || !banreason || !banjob)
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
+					usr << "Not enough parameters (Requires ckey, reason and job)"
 					return
 				banduration = null
 			if(BANTYPE_JOB_TEMP)
 				if(!banckey || !banreason || !banjob || !banduration)
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
+					usr << "Not enough parameters (Requires ckey, reason and job)"
 					return
 
 		var/mob/playermob
@@ -82,14 +82,14 @@
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
 			if(!new_ckey)	return
 			if(new_ckey in admin_datums)
-				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
+				usr << "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>"
 				return
 			adm_ckey = new_ckey
 			task = "rank"
 		else if(task != "show")
 			adm_ckey = ckey(href_list["ckey"])
 			if(!adm_ckey)
-				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
+				usr << "<font color='red'>Error: Topic 'editrights': No valid ckey</font>"
 				return
 
 		var/datum/admins/D = admin_datums[adm_ckey]
@@ -121,7 +121,7 @@
 					if(config.admin_legacy_system)
 						new_rank = ckeyEx(new_rank)
 					if(!new_rank)
-						to_chat(usr, "<font color='red'>Error: Topic 'editrights': Invalid rank</font>")
+						usr << "<font color='red'>Error: Topic 'editrights': Invalid rank</font>"
 						return
 					if(config.admin_legacy_system)
 						if(admin_ranks.len)
@@ -171,14 +171,14 @@
 		switch(href_list["evac_authority"])
 			if("init_evac")
 				if(!EvacuationAuthority.initiate_evacuation())
-					to_chat(usr, "<span class='warning'>You are unable to initiate an evacuation right now!</span>")
+					usr << "<span class='warning'>You are unable to initiate an evacuation right now!</span>"
 				else
 					log_admin("[key_name(usr)] called an evacuation.")
 					message_admins("\blue [key_name_admin(usr)] called an evacuation.", 1)
 
 			if("cancel_evac")
 				if(!EvacuationAuthority.cancel_evacuation())
-					to_chat(usr, "<span class='warning'>You are unable to cancel an evacuation right now!</span>")
+					usr << "<span class='warning'>You are unable to cancel an evacuation right now!</span>"
 				else
 					log_admin("[key_name(usr)] canceled an evacuation.")
 					message_admins("\blue [key_name_admin(usr)] canceled an evacuation.", 1)
@@ -190,21 +190,21 @@
 
 			if("force_evac")
 				if(!EvacuationAuthority.begin_launch())
-					to_chat(usr, "<span class='warning'>You are unable to launch the pods directly right now!</span>")
+					usr << "<span class='warning'>You are unable to launch the pods directly right now!</span>"
 				else
 					log_admin("[key_name(usr)] force-launched the escape pods.")
 					message_admins("\blue [key_name_admin(usr)] force-launched the escape pods.", 1)
 
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
-					to_chat(usr, "<span class='warning'>You are unable to authorize the self-destruct right now!</span>")
+					usr << "<span class='warning'>You are unable to authorize the self-destruct right now!</span>"
 				else
 					log_admin("[key_name(usr)] force-enabled the self-destruct system.")
 					message_admins("\blue [key_name_admin(usr)] force-enabled the self-destruct system.", 1)
 
 			if("cancel_dest")
 				if(!EvacuationAuthority.cancel_self_destruct(1))
-					to_chat(usr, "<span class='warning'>You are unable to cancel the self-destruct right now!</span>")
+					usr << "<span class='warning'>You are unable to cancel the self-destruct right now!</span>"
 				else
 					log_admin("[key_name(usr)] canceled the self-destruct system.")
 					message_admins("\blue [key_name_admin(usr)] canceled the self-destruct system.", 1)
@@ -216,7 +216,7 @@
 					return
 
 				if(!EvacuationAuthority.initiate_self_destruct(1))
-					to_chat(usr, "<span class='warning'>You are unable to trigger the self-destruct right now!</span>")
+					usr << "<span class='warning'>You are unable to trigger the self-destruct right now!</span>"
 					return
 				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
 
@@ -248,7 +248,7 @@
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 
 		var/delmob = 0
@@ -399,14 +399,14 @@
 
 		var/mob/M = locate(href_list["jobban2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 
 		if(!M.ckey)	//sanity
-			to_chat(usr, "This mob has no ckey")
+			usr << "This mob has no ckey"
 			return
 		if(!RoleAuthority)
-			to_chat(usr, "The Role Authority is not set up!")
+			usr << "The Role Authority is not set up!"
 			return
 
 		var/dat = ""
@@ -613,7 +613,7 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 
 		if(M != usr)																//we can jobban ourselves
@@ -622,7 +622,7 @@
 				return
 
 		if(!RoleAuthority)
-			to_chat(usr, "Role Authority has not been set up!")
+			usr << "Role Authority has not been set up!"
 			return
 
 		//get jobs for department if specified, otherwise just returnt he one job in a list.
@@ -673,7 +673,7 @@
 			// 	if("Yes")
 			// 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
 			// 		if(config.ban_legacy_system)
-			// 			to_chat(usr, "\red Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban.")
+			// 			usr << "\red Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban."
 			// 			return
 			// 		var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num|null
 			// 		if(!mins)
@@ -696,9 +696,9 @@
 			// 				msg += ", [job]"
 			// 		notes_add(M.ckey, "Banned  from [msg] - [reason]")
 			// 		message_admins("\blue [key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes", 1)
-			// 		to_chat(M, "\red<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>")
-			// 		to_chat(M, "<span class='danger'>The reason is: [reason]</span>")
-			// 		to_chat(M, "<span class='warning'>This jobban will be lifted in [mins] minutes.</span>")
+			// 		M << "\red<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>"
+			// 		M << "\red <B>The reason is: [reason]</B>"
+			// 		M << "\red This jobban will be lifted in [mins] minutes."
 			// 		jobban_savebanfile()
 			// 		href_list["jobban2"] = 1 // lets it fall through and refresh
 			// 		return 1
@@ -718,9 +718,9 @@
 					else		msg += ", [job]"
 				notes_add(M.ckey, "Banned  from [msg] - [reason]")
 				message_admins("\blue [key_name_admin(usr)] banned [key_name_admin(M)] from [msg]", 1)
-				to_chat(M, "\red<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>")
-				to_chat(M, "<span class='danger'>The reason is: [reason]</span>")
-				to_chat(M, "<span class='warning'>Jobban can be lifted only upon request.</span>")
+				M << "\red<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>"
+				M << "\red <B>The reason is: [reason]</B>"
+				M << "\red Jobban can be lifted only upon request."
 				jobban_savebanfile()
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 				return 1
@@ -731,7 +731,7 @@
 		//all jobs in joblist are banned already OR we didn't give a reason (implying they shouldn't be banned)
 		if(joblist.len) //at least 1 banned job exists in joblist so we have stuff to unban.
 			if(!config.ban_legacy_system)
-				to_chat(usr, "Unfortunately, database based unbanning cannot be done through this panel")
+				usr << "Unfortunately, database based unbanning cannot be done through this panel"
 				DB_ban_panel(M.ckey)
 				return
 			var/msg
@@ -752,7 +752,7 @@
 						continue
 			if(msg)
 				message_admins("\blue [key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]", 1)
-				to_chat(M, "\red<BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG>")
+				M << "\red<BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG>"
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 			jobban_savebanfile()
 			return 1
@@ -765,13 +765,13 @@
 				return
 			var/reason = input("Please enter reason")
 			if(!reason)
-				to_chat(M, "<span class='warning'> You have been kicked from the server</span>")
+				M << "\red You have been kicked from the server"
 			else
-				to_chat(M, "<span class='warning'>You have been kicked from the server: [reason]</span>")
+				M << "\red You have been kicked from the server: [reason]"
 			log_admin("[key_name(usr)] booted [key_name(M)].")
 			message_admins("\blue [key_name_admin(usr)] booted [key_name_admin(M)].", 1)
 			//M.client = null
-			qdel(M.client)
+			cdel(M.client)
 /*
 	//Player Notes
 	else if(href_list["notes"])
@@ -816,7 +816,7 @@
 		if(M.client && M.client.holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
-			to_chat(usr, "<span class='danger'>Warning: Mob ckey for [M.name] not found.</span>")
+			usr << "\red <B>Warning: Mob ckey for [M.name] not found.</b>"
 			return
 		var/mob_key = M.ckey
 		var/mob_id = M.computer_id
@@ -831,19 +831,19 @@
 			return
 		if (AddBan(mob_key, mob_id, reason, usr.ckey, 1, mins, mob_ip))
 			ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
-			to_chat(M, "<span class='caution'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG></span>")
-			to_chat(M, "<span class='caution'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
+			M << "\red<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"
+			M << "\red This is a temporary ban, it will be removed in [mins] minutes."
 			feedback_inc("ban_tmp",1)
 			DB_ban_record(BANTYPE_TEMP, M, mins, reason)
 			feedback_inc("ban_tmp_mins",mins)
 			if(config.banappeals)
-				to_chat(M, "<span class='caution'>To try to resolve this matter head to [config.banappeals]</span>")
+				M << "\red To try to resolve this matter head to [config.banappeals]"
 			else
-				to_chat(M, "<span class='caution'>No ban appeals URL has been set.</span>")
+				M << "\red No ban appeals URL has been set."
 			log_admin("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
 			message_admins("\blue[usr.client.ckey] has banned [mob_key].\nReason: [sanitize(reason)]\nThis will be removed in [mins] minutes.")
 			notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
-		qdel(mob_client)
+		cdel(mob_client)
 
 	else if(href_list["lazyban"])
 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
@@ -854,7 +854,7 @@
 		if(M.client && M.client.holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
-			to_chat(usr, "<span class='danger'>Warning: Mob ckey for [M.name] not found.</span>")
+			usr << "\red <B>Warning: Mob ckey for [M.name] not found.</b>"
 			return
 
 		var/mins = 0
@@ -878,21 +878,21 @@
 				return
 		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
 		ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
-		to_chat(M, "\red<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>")
-		to_chat(M, "\red This is a temporary ban, it will be removed in [mins] minutes.")
-		to_chat(M, "\blue This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section.")
-		to_chat(M, "\blue If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you.")
+		M << "\red<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>"
+		M << "\red This is a temporary ban, it will be removed in [mins] minutes."
+		M << "\blue This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section."
+		M << "\blue If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you."
 		if(config.banappeals)
-			to_chat(M, "\blue The ban appeal forums are located here: [config.banappeals]")
+			M << "\blue The ban appeal forums are located here: [config.banappeals]"
 		else
-			to_chat(M, "\blue Unfortunately, no ban appeals URL has been set.")
+			M << "\blue Unfortunately, no ban appeals URL has been set."
 		feedback_inc("ban_tmp", 1)
 		DB_ban_record(BANTYPE_TEMP, M, mins, reason)
 		feedback_inc("ban_tmp_mins", mins)
 		log_admin("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
 		message_admins("\blue[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 		notes_add(M.ckey, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [reason]", usr)
-		qdel(M.client)
+		cdel(M.client)
 
 
 	else if(href_list["mute"])
@@ -943,7 +943,7 @@
 		master_mode = href_list["c_mode2"]
 		log_admin("[key_name(usr)] set the mode as [master_mode].")
 		message_admins("\blue [key_name_admin(usr)] set the mode as [master_mode].", 1)
-		to_chat(world, "<span class='boldnotice'>The mode is now: [master_mode]</span>")
+		world << "\blue <b>The mode is now: [master_mode]</b>"
 		Game() // updates the main game menu
 		world.save_mode(master_mode)
 		.(href, list("c_mode"=1))
@@ -966,7 +966,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		log_admin("[key_name(usr)] attempting to monkeyize [key_name(H)]")
@@ -978,7 +978,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["corgione"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		log_admin("[key_name(usr)] attempting to corgize [key_name(H)]")
@@ -990,7 +990,7 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "this can only be used on instances of type /mob")
+			usr << "this can only be used on instances of type /mob"
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)	return
@@ -1007,10 +1007,10 @@
 
 		var/mob/M = locate(href_list["sendtoprison"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
+			usr << "This cannot be used on instances of type /mob/living/silicon/ai"
 			return
 
 		var/turf/prison_cell = pick(prisonwarp)
@@ -1035,7 +1035,7 @@
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(prisoner), WEAR_BODY)
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), WEAR_FEET)
 
-		to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
+		M << "\red You have been sent to the prison station!"
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
 		message_admins("\blue [key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.", 1)
 
@@ -1046,11 +1046,11 @@
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
 		if(!isobserver(M))
-			to_chat(usr, "<span class='notice'>You can only send ghost players back to the Lobby.</span>")
+			usr << "<span class='notice'>You can only send ghost players back to the Lobby.</span>"
 			return
 
 		if(!M.client)
-			to_chat(usr, "<span class='warning'>[M] doesn't seem to have an active client.</span>")
+			usr << "<span class='warning'>[M] doesn't seem to have an active client.</span>"
 			return
 
 		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
@@ -1062,7 +1062,7 @@
 		var/mob/new_player/NP = new()
 		NP.ckey = M.ckey
 		if(NP.client) NP.client.change_view(world.view)
-		qdel(M)
+		cdel(M)
 
 	else if(href_list["tdome1"])
 		if(!check_rights(R_FUN))	return
@@ -1072,10 +1072,10 @@
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
+			usr << "This cannot be used on instances of type /mob/living/silicon/ai"
 			return
 
 		for(var/obj/item/I in M)
@@ -1085,7 +1085,7 @@
 		sleep(5)
 		M.loc = pick(tdome1)
 		spawn(50)
-			to_chat(M, "<span class='notice'>You have been sent to the Thunderdome.</span>")
+			M << "\blue You have been sent to the Thunderdome."
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Team 1)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
@@ -1097,10 +1097,10 @@
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
+			usr << "This cannot be used on instances of type /mob/living/silicon/ai"
 			return
 
 		for(var/obj/item/I in M)
@@ -1110,7 +1110,7 @@
 		sleep(5)
 		M.loc = pick(tdome2)
 		spawn(50)
-			to_chat(M, "<span class='notice'>You have been sent to the Thunderdome.</span>")
+			M << "\blue You have been sent to the Thunderdome."
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Team 2)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
@@ -1122,17 +1122,17 @@
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
+			usr << "This cannot be used on instances of type /mob/living/silicon/ai"
 			return
 
 		M.KnockOut(5)
 		sleep(5)
 		M.loc = pick(tdomeadmin)
 		spawn(50)
-			to_chat(M, "<span class='notice'>You have been sent to the Thunderdome.</span>")
+			M << "\blue You have been sent to the Thunderdome."
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Admin.)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
@@ -1144,10 +1144,10 @@
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
+			usr << "This cannot be used on instances of type /mob/living/silicon/ai"
 			return
 
 		for(var/obj/item/I in M)
@@ -1161,7 +1161,7 @@
 		sleep(5)
 		M.loc = pick(tdomeobserve)
 		spawn(50)
-			to_chat(M, "<span class='notice'>You have been sent to the Thunderdome.</span>")
+			M << "\blue You have been sent to the Thunderdome."
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Observer.)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
@@ -1170,7 +1170,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living")
+			usr << "This can only be used on instances of type /mob/living"
 			return
 
 		if(config.allow_admin_rev)
@@ -1178,14 +1178,14 @@
 			message_admins("\red Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!", 1)
 			log_admin("[key_name(usr)] healed / revived [key_name(L)]")
 		else
-			to_chat(usr, "Admin Rejuvinates have been disabled")
+			usr << "Admin Rejuvinates have been disabled"
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))	return
 
 		var/mob/living/carbon/human/H = locate(href_list["makeai"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		message_admins("\red Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!", 1)
@@ -1197,7 +1197,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		usr.client.cmd_admin_alienize(H)
@@ -1207,7 +1207,7 @@
 
 		var/mob/living/carbon/Xenomorph/X = locate(href_list["changehivenumber"])
 		if(!istype(X))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/Xenomorph")
+			usr << "This can only be done to instances of type /mob/living/carbon/Xenomorph"
 			return
 
 		usr.client.cmd_admin_change_hivenumber(X,href_list["newhivenumber"])
@@ -1221,21 +1221,21 @@
 		var/mob/H = locate(href_list["makeyautja"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on mobs. How did you even do this?")
+			usr << "This can only be used on mobs. How did you even do this?"
 			return
 
 		if(!usr.loc || !isturf(usr.loc))
-			to_chat(usr, "Only on turfs, please.")
+			usr << "Only on turfs, please."
 			return
 
 		var/y_name = input(usr, "What name would you like to give this new Predator?","Name", "")
 		if(!y_name)
-			to_chat(usr, "That is not a valid name.")
+			usr << "That is not a valid name."
 			return
 
 		var/y_gend = input(usr, "Gender?","Gender", "male")
 		if(!y_gend || (y_gend != "male" && y_gend != "female"))
-			to_chat(usr, "That is not a valid gender.")
+			usr << "That is not a valid gender."
 			return
 
 		var/mob/living/carbon/human/M = new(usr.loc)
@@ -1249,7 +1249,7 @@
 			if(H.mind)
 				H.mind.transfer_to(M)
 				if(M.mind.cm_skills)
-					qdel(M.mind.cm_skills)
+					cdel(M.mind.cm_skills)
 				M.mind.cm_skills = null //no skill restriction
 			else
 				M.key = H.key
@@ -1259,7 +1259,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/full(H), WEAR_JACKET)
 				H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/glaive(H), WEAR_L_HAND)
 
-			if(H) qdel(H) //May have to clear up round-end vars and such....
+			if(H) cdel(H) //May have to clear up round-end vars and such....
 
 		return
 
@@ -1268,7 +1268,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makerobot"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		usr.client.cmd_admin_robotize(H)
@@ -1278,7 +1278,7 @@
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
+			usr << "This cannot be used on instances of type /mob/new_player"
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1288,7 +1288,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["togmutate"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 		var/block=text2num(href_list["block"])
 		//testing("togmutate([href_list["block"]] -> [block])")
@@ -1384,7 +1384,7 @@
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob")
+			usr << "This can only be used on instances of type /mob"
 			return
 
 		var/location_description = ""
@@ -1424,19 +1424,19 @@
 			if(MALE,FEMALE)	gender_description = "[M.gender]"
 			else			gender_description = "<font color='red'><b>[M.gender]</b></font>"
 
-		to_chat(src.owner, "<b>Info about [M.name]:</b> ")
-		to_chat(src.owner, "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]")
-		to_chat(src.owner, "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;")
-		to_chat(src.owner, "Location = [location_description];")
-		to_chat(src.owner, "[special_role_description]")
-		to_chat(src.owner, "(<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>) (<A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) (<A HREF='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</A>) (<A HREF='?src=\ref[src];secretsadmin=check_antagonist'>CA</A>)")
+		src.owner << "<b>Info about [M.name]:</b> "
+		src.owner << "Mob type = [M.type]; Gender = [gender_description] Damage = [health_description]"
+		src.owner << "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;"
+		src.owner << "Location = [location_description];"
+		src.owner << "[special_role_description]"
+		src.owner << "(<a href='?src=\ref[usr];priv_msg=\ref[M]'>PM</a>) (<A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) (<A HREF='?src=\ref[src];adminplayerobservejump=\ref[M]'>JMP</A>) (<A HREF='?src=\ref[src];secretsadmin=check_antagonist'>CA</A>)"
 
 	else if(href_list["adminspawncookie"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		H.equip_to_slot_or_del( new /obj/item/reagent_container/food/snacks/cookie(H), WEAR_L_HAND )
@@ -1453,28 +1453,28 @@
 		log_admin("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		feedback_inc("admin_cookies_spawned",1)
-		to_chat(H, "\blue Your prayers have been answered!! You received the <b>best cookie</b>!")
+		H << "\blue Your prayers have been answered!! You received the <b>best cookie</b>!"
 
 	else if(href_list["BlueSpaceArtillery"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
 
 		var/mob/living/M = locate(href_list["BlueSpaceArtillery"])
 		if(!isliving(M))
-			to_chat(usr, "This can only be used on instances of type /mob/living")
+			usr << "This can only be used on instances of type /mob/living"
 			return
 
 		if(alert(src.owner, "Are you sure you wish to hit [key_name(M)] with Blue Space Artillery? This will severely hurt and most likely kill them.",  "Confirm Firing?" , "Yes" , "No") != "Yes")
 			return
 
 		if(BSACooldown)
-			to_chat(src.owner, "Standby!  Reload cycle in progress!  Gunnary crews ready in five seconds!")
+			src.owner << "Standby!  Reload cycle in progress!  Gunnary crews ready in five seconds!"
 			return
 
 		BSACooldown = 1
 		spawn(50)
 			BSACooldown = 0
 
-		to_chat(M, "You've been hit by bluespace artillery!")
+		M << "You've been hit by bluespace artillery!"
 		log_admin("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
 		message_admins("[key_name(M)] has been hit by Bluespace Artillery fired by [src.owner]")
 
@@ -1495,40 +1495,40 @@
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 
 		//unanswered_distress -= H
 
 		if(!istype(H.wear_ear, /obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			usr << "The person you are trying to contact is not wearing a headset"
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
 		if(!input)	return
 
-		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
+		src.owner << "You sent [input] to [H] via a secure channel."
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
 		for(var/client/X in admins)
 			if((R_ADMIN|R_MOD) & X.holder.rights)
-				to_chat(X, "<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \"[input]\"</b>")
-		to_chat(H, "\red You hear something crackle in your headset before a voice speaks, \"Please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>")
+				X << "<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \"[input]\"</b>"
+		H << "\red You hear something crackle in your headset before a voice speaks, \"Please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"
 
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
+			usr << "This can only be used on instances of type /mob/living/carbon/human"
 			return
 		if(!istype(H.wear_ear, /obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
+			usr << "The person you are trying to contact is not wearing a headset"
 			return
 
 		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
 		if(!input)	return
 
-		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
+		src.owner << "You sent [input] to [H] via a secure channel."
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
-		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
+		H << "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\""
 
 	else if(href_list["CentcommFaxView"])
 		var/info = locate(href_list["CentcommFaxView"])
@@ -1601,11 +1601,11 @@
 						P.overlays += stampoverlay
 						P.stamps += "<HR><i>This paper has been stamped by the High Command Quantum Relay.</i>"
 
-				to_chat(src.owner, "Message reply to transmitted successfully.")
+				src.owner << "Message reply to transmitted successfully."
 				log_admin("[key_name(src.owner)] replied to a fax message from [key_name(H)]: [fax_message]")
 				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
 				return
-		to_chat(src.owner, "/red Unable to locate fax!")
+		src.owner << "/red Unable to locate fax!"
 
 	else if(href_list["CLFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["CLFaxReply"])
@@ -1669,11 +1669,11 @@
 						P.overlays += stampoverlay
 						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland Yutani Quantum Relay (tm).</i>"
 
-				to_chat(src.owner, "Message reply to transmitted successfully.")
+				src.owner << "Message reply to transmitted successfully."
 				log_admin("[key_name(src.owner)] replied to a fax message from [key_name(H)]: [fax_message]")
 				message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
 				return
-		to_chat(src.owner, "/red Unable to locate fax!")
+		src.owner << "/red Unable to locate fax!"
 
 
 
@@ -1717,7 +1717,7 @@
 
 		var/mob/M = locate(href_list["traitor"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			usr << "This can only be used on instances of type /mob."
 			return
 		show_traitor_panel(M)
 
@@ -1741,7 +1741,7 @@
 		if(!check_rights(R_SPAWN))	return
 
 		if(!config.allow_admin_spawning)
-			to_chat(usr, "Spawning of items is not allowed.")
+			usr << "Spawning of items is not allowed."
 			return
 
 		var/atom/loc = usr.loc
@@ -1789,24 +1789,24 @@
 			where = "onfloor"
 
 		if( where == "inhand" )
-			to_chat(usr, "Support for inhand not available yet. Will spawn on floor.")
+			usr << "Support for inhand not available yet. Will spawn on floor."
 			where = "onfloor"
 
 		if ( where == "inhand" )	//Can only give when human or monkey
 			if ( !( ishuman(usr) || ismonkey(usr) ) )
-				to_chat(usr, "Can only spawn in hand when you're a human or a monkey.")
+				usr << "Can only spawn in hand when you're a human or a monkey."
 				where = "onfloor"
 			else if ( usr.get_active_hand() )
-				to_chat(usr, "Your active hand is full. Spawning on floor.")
+				usr << "Your active hand is full. Spawning on floor."
 				where = "onfloor"
 
 		if ( where == "inmarked" )
 			if ( !marked_datum )
-				to_chat(usr, "You don't have any object marked. Abandoning spawn.")
+				usr << "You don't have any object marked. Abandoning spawn."
 				return
 			else
 				if ( !istype(marked_datum,/atom) )
-					to_chat(usr, "The object you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
+					usr << "The object you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn."
 					return
 
 		var/atom/target //Where the object will be spawned
@@ -1859,7 +1859,7 @@
 		switch(href_list["secretsfun"])
 			if("gravity")
 				if(!(ticker && ticker.mode))
-					to_chat(usr, "Please wait until the game starts!  Not sure how it will work otherwise.")
+					usr << "Please wait until the game starts!  Not sure how it will work otherwise."
 					return
 				gravity_is_on = !gravity_is_on
 				for(var/area/A in all_areas)
@@ -2393,17 +2393,17 @@
 	if(href_list["mark"])
 		var/mob/ref_person = locate(href_list["mark"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'>Looks like that person stopped existing!</span>")
+			usr << "\blue Looks like that person stopped existing!"
 			return
 		if(ref_person && ref_person.adminhelp_marked)
-			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
+			usr << "<b>This Adminhelp is already being handled.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
 			return
 
 		message_staff("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)] and is preparing to respond...", 1)
-		var/msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</span>"
+		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>"
 
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
+		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
 		src.viewUnheardAhelps() //This SHOULD refresh the page
@@ -2416,17 +2416,17 @@
 	if(href_list["noresponse"])
 		var/mob/ref_person = locate(href_list["noresponse"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'>Looks like that person stopped existing!</span>")
+			usr << "\blue Looks like that person stopped existing!"
 			return
 		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
-			to_chat(usr, "<em>This Adminhelp is already being handled.</em>")
+			usr << "<b>This Adminhelp is already being handled.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
 			return
 
 		message_staff("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)]. The player has been notified that their issue 'is being handled, it's fixed, or it's nonsensical'.", 1)
-		var/msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></span>"
+		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>"
 
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
+		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-error.ogg')
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
@@ -2439,17 +2439,17 @@
 	if(href_list["warning"])
 		var/mob/ref_person = locate(href_list["warning"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'>Looks like that person stopped existing!</span>")
+			usr << "\blue Looks like that person stopped existing!"
 			return
 		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
-			to_chat(usr, "<em>This Adminhelp is already being handled.</em>")
+			usr << "<b>This Adminhelp is already being handled.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
 			return
 
 		message_staff("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)]. The player has been warned for abusing the Adminhelp system.", 1)
-		var/msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</span>"
+		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>"
 
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
+		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-error.ogg')
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
@@ -2462,16 +2462,16 @@
 	if(href_list["autoresponse"]) // new verb on the Ahelp.  Will tell the person their message was received, and they probably won't get a response
 		var/mob/ref_person = locate(href_list["autoresponse"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'>Looks like that person stopped existing!</span>")
+			usr << "\blue Looks like that person stopped existing!"
 			return
 		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
-			to_chat(usr, "<em>This Adminhelp is already being handled by another staff member. You can proceed but it's not recommended.</em>")
+			usr << "<b>This Adminhelp is already being handled by another staff member. You can proceed but it's not recommended.</b>"
 			usr << sound('sound/effects/adminhelp-error.ogg')
 			if(alert(usr, "Are you sure you want to autoreply to this ahelp that is handled by another staff member?", "Confirmation", "Yes", "No") != "Yes")
 				return
 
 		if(ref_person && !ref_person.adminhelp_marked)
-			to_chat(usr, "<em>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</em>")
+			usr << "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>"
 			return
 
 		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Guilty", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
@@ -2479,40 +2479,40 @@
 		var/msgplayer
 		switch(choice)
 			if("IC Issue")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://cm-ss13.com/wiki/Rank'>Chain Of Command</a> about your issue if you believe <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a> has been broken.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://cm-ss13.com/wiki/Rank'>Chain Of Command</a> about your issue if you believe <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a> has been broken.</b>"
 			if("Being Handled")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>"
 			if("Fixed")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>"
 			if("Thanks")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
 			if("Guilty")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You broke Marine Law.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You broke Marine Law.</b>"
 			if("L: Xeno Quickstart Guide")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b>"
 			if("L: Marine quickstart guide")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a></span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a></b>"
 			if("L: Current Map")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet.</b>"
 			if("A: No plasma regen")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone.</b>"
 			if("A: Devour as Xeno")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated or only have them devoured for a short time. Also, the devoured host will eventually be digested (~5 minutes), which results in you killing a viable host to grow the hive. To release your target, click 'Regurgitate' on the HUD to throw them back up.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated or only have them devoured for a short time. Also, the devoured host will eventually be digested (~5 minutes), which results in you killing a viable host to grow the hive. To release your target, click 'Regurgitate' on the HUD to throw them back up.</b>"
 			if("J: Job bans")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. All job bans, including xeno bans, are permenant until appealed. you can appeal it over on the forums at http://cm-ss13.com/viewforum.php?f=76</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. All job bans, including xeno bans, are permenant until appealed. you can appeal it over on the forums at http://cm-ss13.com/viewforum.php?f=76</b>"
 			if("E: Event in progress")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</b>"
 			if("R: Radios")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</b>"
 			if("D: Joining disabled")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b>"
 			if("M: Macros")
-				msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</span>"
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</b>"
 			else return
 		msgplayer += " <b><i>You may click on administrator's name to ask more about this response.</i></b>"
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
 
-		to_chat(ref_person, msgplayer) //send a message to the player when the Admin clicks "Mark"
+		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-reply.ogg')
 
 		unansweredAhelps.Remove(ref_person.computer_id) //It has been answered so take it off of the unanswered list
@@ -2526,27 +2526,27 @@
 	// if(href_list["retarded"]) // Their message is fucking stupid
 	// 	var/mob/ref_person = locate(href_list["retarded"])
 	// 	if(!istype(ref_person))
-	// 		to_chat(usr, "<span class='notice'>Looks like that person stopped existing!</span>")
+	// 		usr << "\blue Looks like that person stopped existing!"
 	// 		return
-	// 	var/msg = "<span class='boldnotice'>NOTICE: <font color=red>[usr.key]</font> has marked the Adminhelp from <font color=red>[ref_person.ckey]/([ref_person])</font> as 'Completely fucking retarded' - this Ahelp was written by someone whom, if they were any less intelligent, would need to be watered twice a day. The player has been nicely notified of this as 'No response necessary'.</span>"
-	// 	var/msgplayer = "<span class='boldnotice'>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your issue is being handled or it's fixed.</font></span>"
+	// 	var/msg = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has marked the Adminhelp from <font color=red>[ref_person.ckey]/([ref_person])</font> as 'Completely fucking retarded' - this Ahelp was written by someone whom, if they were any less intelligent, would need to be watered twice a day. The player has been nicely notified of this as 'No response necessary'.</b>"
+	// 	var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your issue is being handled or it's fixed.</font></b>"
 	//
 	// 	//send this msg to all admins
 	// 	for(var/client/X in admins)
 	// 		if((R_ADMIN|R_MOD|R_MENTOR) & X.holder.rights)
-	// 			to_chat(X, msg)
+	// 			X << msg
 	//
-	// 	to_chat(ref_person, msgplayer) //send a message to the player
+	// 	ref_person << msgplayer //send a message to the player
 
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.
 		var/mob/ref_person = locate(href_list["ccmark"])
-		var/msg = "<span class='boldnotice'>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[ref_person.ckey]/([ref_person])</font>.</span>"
+		var/msg = "\blue <b>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[ref_person.ckey]/([ref_person])</font>.</b>"
 
 		//send this msg to all admins
 		for(var/client/X in admins)
 			if((R_ADMIN|R_MOD) & X.holder.rights)
-				to_chat(X, msg)
+				X << msg
 
 		//unanswered_distress -= ref_person
 
@@ -2560,10 +2560,10 @@
 
 	if(href_list["distresscancel"])
 		if(distress_cancel)
-			to_chat(usr, "The distress beacon was already canceled.")
+			usr << "The distress beacon was already canceled."
 			return
 		if(ticker.mode.waiting_for_candidates)
-			to_chat(usr, "Too late! The distress beacon was launched.")
+			usr << "Too late! The distress beacon was launched."
 			return
 		log_game("[key_name_admin(usr)] has canceled the distress beacon.")
 		message_staff("[key_name_admin(usr)] has canceled the distress beacon.")

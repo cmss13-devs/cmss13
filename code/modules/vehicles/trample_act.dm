@@ -55,7 +55,7 @@
 			CA.take_damage_type(5, "blunt", O)
 			visible_message("<span class='danger'>[src] crushes [O]!</span>",
 			"<span class='xenodanger'>You crush [O]!</span>")
-			qdel(M)
+			cdel(M)
 			return
 		if(O.unacidable)
 			return
@@ -66,7 +66,7 @@
 			var/turf/L = get_turf(O)
 			for(var/atom/movable/S in O.contents) S.loc = L
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
-		qdel(O)
+		cdel(O)
 		return
 	else if(istype(A, /turf/closed/wall))
 		var/turf/closed/wall/W = A

@@ -7,13 +7,13 @@ proc/makejson()
 	if(!makejson)
 		return
 	fdel("[jsonpath]/info.json")
-		//to_chat(usr, "Error cant delete json")
+		//usr << "Error cant delete json"
 	//else
-		//to_chat(usr, "Deleted json in public html")
+		//usr << "Deleted json in public html"
 	fdel("info.json")
-		//to_chat(usr, "error cant delete local json")
+		//usr << "error cant delete local json"
 	//else
-		//to_chat(usr, "Deleted local json")
+		//usr << "Deleted local json"
 	var/F = file("info.json")
 	if(!isfile(F))
 		return
@@ -73,7 +73,7 @@ proc/makejson()
 		if(findtext(A,path,1,0))
 			lineloc = lines.Find(A,1,0)
 			lines[lineloc] = xpath
-			to_chat(world, "FOUND")*/
+			world << "FOUND"*/
 	fdel(dmepath)
 	var/file = file(dmepath)
 	file << text

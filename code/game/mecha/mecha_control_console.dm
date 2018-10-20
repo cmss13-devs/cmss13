@@ -93,11 +93,11 @@
 		return answer
 
 	emp_act()
-		qdel(src)
+		cdel(src)
 		return
 
 	ex_act()
-		qdel(src)
+		cdel(src)
 		return
 
 	proc/in_mecha()
@@ -109,7 +109,7 @@
 		var/obj/mecha/M = in_mecha()
 		if(M)
 			M.emp_act(2)
-		qdel(src)
+		cdel(src)
 
 	proc/get_mecha_log()
 		if(!src.in_mecha())

@@ -73,7 +73,7 @@ steam.start() -- spawns the effect
 					sleep(5)
 					step(steam,direction)
 				spawn(20)
-					qdel(steam)
+					cdel(steam)
 
 
 /////////////////////////////////////////////
@@ -97,7 +97,7 @@ steam.start() -- spawns the effect
 //	if (istype(T, /turf))
 //		T.hotspot_expose(1000,100)
 	spawn (100)
-		qdel(src)
+		cdel(src)
 
 
 /datum/effect_system/spark_spread
@@ -133,7 +133,7 @@ steam.start() -- spawns the effect
 					step(sparks,direction)
 				spawn(20)
 					if(sparks)
-						qdel(sparks)
+						cdel(sparks)
 					total_sparks--
 
 
@@ -175,7 +175,7 @@ steam.start() -- spawns the effect
 						flick("ion_fade", I)
 						I.icon_state = "blank"
 						spawn(20)
-							qdel(I)
+							cdel(I)
 					spawn(2)
 						if(src.on)
 							src.processing = 1
@@ -220,7 +220,7 @@ steam.start() -- spawns the effect
 					src.oldposition = get_turf(holder)
 					I.dir = src.holder.dir
 					spawn(10)
-						qdel(I)
+						cdel(I)
 						number--
 					spawn(2)
 						if(src.on)

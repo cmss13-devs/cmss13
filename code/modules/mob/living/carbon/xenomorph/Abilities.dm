@@ -11,15 +11,15 @@
 	var/turf/T = X.loc
 
 	if(!istype(T))
-		to_chat(X, "<span class='warning'>You can't do that here.</span>")
+		X << "<span class='warning'>You can't do that here.</span>"
 		return
 
 	if(!T.is_weedable())
-		to_chat(X, "<span class='warning'>Bad place for a garden!</span>")
+		X << "<span class='warning'>Bad place for a garden!</span>"
 		return
 
 	if(locate(/obj/effect/alien/weeds/node) in T)
-		to_chat(X, "<span class='warning'>There's a pod here already!</span>")
+		X << "<span class='warning'>There's a pod here already!</span>"
 		return
 
 	if(X.check_plasma(75))
@@ -49,11 +49,11 @@
 		return
 
 	if(X.hardcore)
-		to_chat(X, "<span class='warning'>No time to rest, must KILL!</span>")
+		X << "<span class='warning'>No time to rest, must KILL!</span>"
 		return
 
 	X.resting = !X.resting
-	to_chat(X, "<span class='notice'>You are now [X.resting ? "resting" : "getting up"]</span>")
+	X << "\blue You are now [X.resting ? "resting" : "getting up"]"
 
 
 /datum/action/xeno_action/show_minimap
@@ -94,7 +94,7 @@
 			else
 				X.ammo = ammo_list[X.caste.spit_types[i+1]]
 			break
-	to_chat(X, "<span class='notice'>You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma).</span>")
+	X << "<span class='notice'>You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma).</span>"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
 
@@ -110,7 +110,7 @@
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, "<span class='warning'>You cannot regurgitate here.</span>")
+		X << "<span class='warning'>You cannot regurgitate here.</span>"
 		return
 
 	if(X.stomach_contents.len)
@@ -139,7 +139,7 @@
 		else
 			return //something went wrong
 
-	to_chat(X, "<span class='notice'>You will now build <b>[X.selected_resin]\s</b> when secreting resin.</span>")
+	X << "<span class='notice'>You will now build <b>[X.selected_resin]\s</b> when secreting resin.</span>"
 	//update the button's overlay with new choice
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/actions.dmi', button, X.selected_resin)
@@ -396,10 +396,10 @@
 		return
 	if(X.layer != XENO_HIDING_LAYER)
 		X.layer = XENO_HIDING_LAYER
-		to_chat(X, "<span class='notice'>You are now hiding.</span>")
+		X << "<span class='notice'>You are now hiding.</span>"
 	else
 		X.layer = MOB_LAYER
-		to_chat(X, "<span class='notice'>You have stopped hiding.</span>")
+		X << "<span class='notice'>You have stopped hiding.</span>"
 
 /datum/action/xeno_action/emit_pheromones
 	name = "Emit Pheromones (30)"
@@ -425,7 +425,7 @@
 			return
 		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
-			to_chat(X, "<span class='notice'><br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br></span>")
+			X << "<span class='notice'><br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br></span>"
 			return
 		if(choice == "cancel") return
 		if(!X.check_state()) return
@@ -497,7 +497,7 @@
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-	to_chat(X, "<span class='notice'>You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]</span>")
+	X << "<span class='notice'>You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]</span>"
 	button.overlays.Cut()
 	if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
 		X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
@@ -522,15 +522,15 @@
 		if(X.client)
 			X.client.mouse_pointer_icon = initial(X.client.mouse_pointer_icon) //Reset the mouse pointer.
 		X.is_bombarding = 0
-		to_chat(X, "<span class='notice'>You relax your stance.</span>")
+		X << "<span class='notice'>You relax your stance.</span>"
 		return
 
 	if(X.bomb_cooldown)
-		to_chat(X, "<span class='warning'>You are still preparing another spit. Be patient!</span>")
+		X << "<span class='warning'>You are still preparing another spit. Be patient!</span>"
 		return
 
 	if(!isturf(X.loc))
-		to_chat(X, "<span class='warning'>You can't do that from there.</span>")
+		X << "<span class='warning'>You can't do that from there.</span>"
 		return
 
 	X.visible_message("<span class='notice'>\The [X] begins digging their claws into the ground.</span>", \
@@ -586,32 +586,32 @@
 	var/turf/T = get_turf(X)
 
 	if(!istype(T) || !T.is_weedable() || T.density || locate(/obj/structure/fence) in T)
-		to_chat(X, "<span class='warning'>You can't do that here.</span>")
+		X << "<span class='warning'>You can't do that here.</span>"
 		return
 
 	var/area/AR = get_area(T)
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || istype(AR,/area/sulaco/hangar)) //Bandaid for atmospherics bug when Xenos build around the shuttles
-		to_chat(X, "<span class='warning'>You sense this is not a suitable area for creating a resin hole.</span>")
+		X << "<span class='warning'>You sense this is not a suitable area for creating a resin hole.</span>"
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in T
 
 	if(!alien_weeds)
-		to_chat(X, "<span class='warning'>You can only shape on weeds. Find some resin before you start building!</span>")
+		X << "<span class='warning'>You can only shape on weeds. Find some resin before you start building!</span>"
 		return
 
 	if(!X.check_alien_construction(T))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in orange(1, T))
-		to_chat(X, "<span class='xenowarning'>This is too close to another resin hole!</span>")
+		X << "<span class='xenowarning'>This is too close to another resin hole!</span>"
 		return
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, "alien_resin_build", 25)
 	round_statistics.carrier_traps++
 	new /obj/effect/alien/resin/trap(X.loc, X)
-	to_chat(X, "<span class='xenonotice'>You place a resin hole on the weeds, it still needs a sister to fill it with acid.</span>")
+	X << "<span class='xenonotice'>You place a resin hole on the weeds, it still needs a sister to fill it with acid.</span>"
 
 
 //Crusher abilities
@@ -638,11 +638,11 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state()) r_FAL
 	if(X.legcuffed)
-		to_chat(X, "<span class='xenodanger'>You can't charge with that thing on your leg!</span>")
+		src << "<span class='xenodanger'>You can't charge with that thing on your leg!</span>"
 		X.is_charging = 0
 	else
 		X.is_charging = !X.is_charging
-		to_chat(X, "<span class='xenonotice'>You will [X.is_charging ? "now" : "no longer"] charge when moving.</span>")
+		X << "<span class='xenonotice'>You will [X.is_charging ? "now" : "no longer"] charge when moving.</span>"
 
 //Hivelord Abilities
 
@@ -662,7 +662,7 @@
 		return
 
 	if(X.speed_activated)
-		to_chat(X, "<span class='warning'>You feel less in tune with the resin.</span>")
+		X << "<span class='warning'>You feel less in tune with the resin.</span>"
 		X.speed_activated = 0
 		return
 
@@ -670,7 +670,7 @@
 		return
 	X.speed_activated = 1
 	X.use_plasma(50)
-	to_chat(X, "<span class='notice'>You become one with the resin. You feel the urge to run!</span>")
+	X << "<span class='notice'>You become one with the resin. You feel the urge to run!</span>"
 
 /datum/action/xeno_action/build_tunnel
 	name = "Dig Tunnel (200)"
@@ -688,28 +688,28 @@
 		return
 
 	if(X.action_busy)
-		to_chat(X, "<span class='warning'>You should finish up what you're doing before digging.</span>")
+		X << "<span class='warning'>You should finish up what you're doing before digging.</span>"
 		return
 
 	var/turf/T = X.loc
 	if(!istype(T)) //logic
-		to_chat(X, "<span class='warning'>You can't do that from there.</span>")
+		X << "<span class='warning'>You can't do that from there.</span>"
 		return
 
 	if(!T.can_dig_xeno_tunnel())
-		to_chat(X, "<span class='warning'>You scrape around, but you can't seem to dig through that kind of floor.</span>")
+		X << "<span class='warning'>You scrape around, but you can't seem to dig through that kind of floor.</span>"
 		return
 
 	if(locate(/obj/structure/tunnel) in X.loc)
-		to_chat(X, "<span class='warning'>There already is a tunnel here.</span>")
+		X << "<span class='warning'>There already is a tunnel here.</span>"
 		return
 
 	if(X.tunnel_delay)
-		to_chat(X, "<span class='warning'>You are not ready to dig a tunnel again.</span>")
+		X << "<span class='warning'>You are not ready to dig a tunnel again.</span>"
 		return
 
 	if(X.get_active_hand())
-		to_chat(X, "<span class='xenowarning'>You need an empty claw for this!</span>")
+		X << "<span class='xenowarning'>You need an empty claw for this!</span>"
 		return
 
 	if(!X.check_plasma(200))
@@ -718,7 +718,7 @@
 	X.visible_message("<span class='xenonotice'>[X] begins digging out a tunnel entrance.</span>", \
 	"<span class='xenonotice'>You begin digging out a tunnel entrance.</span>", null, 5)
 	if(!do_after(X, 100, TRUE, 5, BUSY_ICON_BUILD))
-		to_chat(X, "<span class='warning'>Your tunnel caves in as you stop digging it.</span>")
+		X << "<span class='warning'>Your tunnel caves in as you stop digging it.</span>"
 		return
 	if(!X.check_plasma(200))
 		return
@@ -727,14 +727,14 @@
 		"<span class='xenonotice'>You dig out the first entrance to your tunnel.</span>", null, 5)
 		X.start_dig = new /obj/structure/tunnel(T)
 	else
-		to_chat(X, "<span class='xenonotice'>You dig your tunnel all the way to the original entrance, connecting both entrances!</span>")
+		X << "<span class='xenonotice'>You dig your tunnel all the way to the original entrance, connecting both entrances!</span>"
 		var/obj/structure/tunnel/newt = new /obj/structure/tunnel(T)
 		newt.other = X.start_dig
 		X.start_dig.other = newt //Link the two together
 		X.start_dig = null //Now clear it
 		X.tunnel_delay = 1
 		spawn(2400)
-			to_chat(X, "<span class='xenonotice'>You are ready to dig a tunnel again.</span>")
+			X << "<span class='notice'>You are ready to dig a tunnel again.</span>"
 			X.tunnel_delay = 0
 		var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
 		if(msg)
@@ -762,13 +762,13 @@
 		return
 
 	if(X.ovipositor_cooldown > world.time)
-		to_chat(X, "<span class='xenowarning'>You're still recovering from detaching your old ovipositor. Wait [round((X.ovipositor_cooldown-world.time)*0.1)] seconds</span>")
+		X << "<span class='xenowarning'>You're still recovering from detaching your old ovipositor. Wait [round((X.ovipositor_cooldown-world.time)*0.1)] seconds</span>"
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
 
 	if(!alien_weeds)
-		to_chat(X, "<span class='xenowarning'>You need to be on resin to grow an ovipositor.</span>")
+		X << "<span class='xenowarning'>You need to be on resin to grow an ovipositor.</span>"
 		return
 
 	if(!X.check_alien_construction(current_turf))
@@ -863,8 +863,8 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
-		to_chat(M, "<span class='alien'>You hear a strange, alien voice in your head. \italic \"[msg]\"</span>")
-		to_chat(X, "<span class='xenonotice'>You said: \"[msg]\" to [M]</span>")
+		M << "<span class='alien'>You hear a strange, alien voice in your head. \italic \"[msg]\"</span>"
+		X << "<span class='xenonotice'>You said: \"[msg]\" to [M]</span>"
 
 /datum/action/xeno_action/watch_xeno
 	name = "Watch Xenomorph"
@@ -917,22 +917,22 @@
 		return
 	if(X.observed_xeno)
 		if(X.queen_ability_cooldown > world.time)
-			to_chat(X, "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>")
+			X << "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>"
 			return
 		if(X.caste.queen_leader_limit <= hive.xeno_leader_list.len && !X.observed_xeno.queen_chosen_lead)
-			to_chat(X, "<span class='xenowarning'>You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows.</span>")
+			X << "<span class='xenowarning'>You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows.</span>"
 			return
 		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
 		T.queen_chosen_lead = !T.queen_chosen_lead
 		T.hud_set_queen_overwatch()
 		X.queen_ability_cooldown = world.time + 150 //15 seconds
 		if(T.queen_chosen_lead)
-			to_chat(X, "<span class='xenonotice'>You've selected [T] as a Hive Leader.</span>")
-			to_chat(T, "<span class='xenoannounce'>[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones.</span>")
+			X << "<span class='xenonotice'>You've selected [T] as a Hive Leader.</span>"
+			T << "<span class='xenoannounce'>[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones.</span>"
 			hive.xeno_leader_list += T
 		else
-			to_chat(X, "<span class='xenonotice'>You've demoted [T] from Lead.</span>")
-			to_chat(T, "<span class='xenoannounce'>[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned.</span>")
+			X << "<span class='xenonotice'>You've demoted [T] from Lead.</span>"
+			T << "<span class='xenoannounce'>[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned.</span>"
 			hive.xeno_leader_list -= T
 		T.handle_xeno_leader_pheromones(X)
 	else
@@ -948,7 +948,7 @@
 		else if(possible_xenos.len)
 			X.set_queen_overwatch(possible_xenos[1])
 		else
-			to_chat(X, "<span class='xenowarning'>There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader.</span>")
+			X << "<span class='xenowarning'>There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader.</span>"
 
 /datum/action/xeno_action/queen_heal
 	name = "Heal Xenomorph (600)"
@@ -960,15 +960,15 @@
 	if(!X.check_state())
 		return
 	if(X.queen_ability_cooldown > world.time)
-		to_chat(X, "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>")
+		X << "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>"
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
 		if(!target.caste.can_be_queen_healed)
-			to_chat(X, "<span class='xenowarning'>This caste cannot be healed!</span>")
+			X << "<span class='xenowarning'>This caste cannot be healed!</span>"
 			return
 		if(X.loc.z != target.loc.z)
-			to_chat(X, "<span class='xenowarning'>They are too far away to do this.</span>")
+			X << "<span class='xenowarning'>They are too far away to do this.</span>"
 			return
 		if(target.stat != DEAD)
 			if(target.health < target.maxHealth)
@@ -976,12 +976,12 @@
 					X.use_plasma(600)
 					target.adjustBruteLoss(-50)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
-					to_chat(X, "<span class='xenonotice'>You channel your plasma to heal [target]'s wounds.</span>")
+					X << "<span class='xenonotice'>You channel your plasma to heal [target]'s wounds.</span>"
 			else
 
-				to_chat(X, "<span class='warning'>[target] is at full health.</span>")
+				X << "<span class='warning'>[target] is at full health.</span>"
 	else
-		to_chat(X, "<span class='warning'>You must overwatch the xeno you want to give healing to.</span>")
+		X << "<span class='warning'>You must overwatch the xeno you want to give healing to.</span>"
 
 /datum/action/xeno_action/queen_give_plasma
 	name = "Give Plasma (600)"
@@ -993,12 +993,12 @@
 	if(!X.check_state())
 		return
 	if(X.queen_ability_cooldown > world.time)
-		to_chat(X, "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>")
+		X << "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>"
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
 		if(!target.caste.can_be_queen_healed)
-			to_chat(X, "<span class='xenowarning'>This caste cannot be given plasma!</span>")
+			X << "<span class='xenowarning'>This caste cannot be given plasma!</span>"
 			return
 		if(target.stat != DEAD)
 			if(target.plasma_stored < target.caste.plasma_max)
@@ -1006,13 +1006,13 @@
 					X.use_plasma(600)
 					target.gain_plasma(100)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
-					to_chat(X, "<span class='xenonotice'>You transfer some plasma to [target].</span>")
+					X << "<span class='xenonotice'>You transfer some plasma to [target].</span>"
 
 			else
 
-				to_chat(X, "<span class='warning'>[target] is at full plasma.</span>")
+				X << "<span class='warning'>[target] is at full plasma.</span>"
 	else
-		to_chat(X, "<span class='warning'>You must overwatch the xeno you want to give plasma to.</span>")
+		X << "<span class='warning'>You must overwatch the xeno you want to give plasma to.</span>"
 
 /datum/action/xeno_action/queen_order
 	name = "Give Order (100)"
@@ -1035,12 +1035,12 @@
 					return
 				if(target.client)
 					X.use_plasma(100)
-					to_chat(target, "[queen_order]")
+					target << "[queen_order]"
 					log_admin("[queen_order]")
 					message_admins("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
 
 	else
-		to_chat(X, "<span class='warning'>You must overwatch the Xenomorph you want to give orders to.</span>")
+		X << "<span class='warning'>You must overwatch the Xenomorph you want to give orders to.</span>"
 
 /datum/action/xeno_action/deevolve
 	name = "De-Evolve a Xenomorph"
@@ -1056,19 +1056,19 @@
 		if(!X.check_plasma(600)) return
 
 		if(T.is_ventcrawling)
-			to_chat(X, "<span class='warning'>[T] can't be deevolved here.</span>")
+			X << "<span class='warning'>[T] can't be deevolved here.</span>"
 			return
 
 		if(!isturf(T.loc))
-			to_chat(X, "<span class='warning'>[T] can't be deevolved here.</span>")
+			X << "<span class='warning'>[T] can't be deevolved here.</span>"
 			return
 
 		if(T.health <= 0)
-			to_chat(X, "<span class='warning'>[T] is too weak to be deevolved.</span>")
+			X << "<span class='warning'>[T] is too weak to be deevolved.</span>"
 			return
 
 		if(!T.caste.deevolves_to)
-			to_chat(X, "<span class='xenowarning'>[T] can't be deevolved.</span>")
+			X << "<span class='xenowarning'>[T] can't be deevolved.</span>"
 			return
 
 		var/newcaste = T.caste.deevolves_to
@@ -1079,7 +1079,7 @@
 
 		var/reason = stripped_input(X, "Provide a reason for deevolving this xenomorph, [T]")
 		if(isnull(reason))
-			to_chat(X, "<span class='xenowarning'>You must provide a reason for deevolving [T].</span>")
+			X << "<span class='xenowarning'>You must provide a reason for deevolving [T].</span>"
 			return
 
 		if(!X.check_state() || !X.check_plasma(600) || X.observed_xeno != T)
@@ -1094,7 +1094,7 @@
 		if(T.health <= 0)
 			return
 
-		to_chat(T, "<span class='xenowarning'>The queen is deevolving you for the following reason: [reason]</span>")
+		T << "<span class='xenowarning'>The queen is deevolving you for the following reason: [reason]</span>"
 
 		var/xeno_type
 
@@ -1121,9 +1121,9 @@
 
 		if(!istype(new_xeno))
 			//Something went horribly wrong!
-			to_chat(T, "<span class='warning'>Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!</span>")
+			X << "<span class='warning'>Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!</span>"
 			if(new_xeno)
-				qdel(new_xeno)
+				cdel(new_xeno)
 			return
 
 		if(T.mind)
@@ -1168,11 +1168,11 @@
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 
 		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
-		qdel(T)
+		cdel(T)
 		X.use_plasma(600)
 
 	else
-		to_chat(X, "<span class='warning'>You must overwatch the xeno you want to de-evolve.</span>")
+		X << "<span class='warning'>You must overwatch the xeno you want to de-evolve.</span>"
 
 //Ravager Abilities
 

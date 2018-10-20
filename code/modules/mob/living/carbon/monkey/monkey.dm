@@ -143,9 +143,9 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [usr.name] ([usr.ckey])</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) internals</font>")
 			if(internal)
-				usr.visible_message("<span class='danger'>[usr] is trying to disable [src]'s internals</span>", null, 4)
+				usr.visible_message("\red <B>[usr] is trying to disable [src]'s internals</B>", null, 4)
 			else
-				usr.visible_message("<span class='danger'>[usr] is trying to enable [src]'s internals.</span>", null, 4)
+				usr.visible_message("\red <B>[usr] is trying to enable [src]'s internals.</B>", null, 4)
 
 			if(do_mob(usr, src, 30, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 				if (internal)
@@ -176,7 +176,7 @@
 			if ((prob(75) && health > 0))
 				playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
 				for(var/mob/O in viewers(src, null))
-					O.show_message("<span class='danger'>[M.name] has bit [name]!</span>", 1)
+					O.show_message("\red <B>[M.name] has bit [name]!</B>", 1)
 				var/damage = rand(1, 5)
 				adjustBruteLoss(damage)
 				health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
@@ -185,16 +185,16 @@
 						contract_disease(D,1,0)
 			else
 				for(var/mob/O in viewers(src, null))
-					O.show_message("<span class='danger'>[M.name] has attempted to bite [name]!</span>", 1)
+					O.show_message("\red <B>[M.name] has attempted to bite [name]!</B>", 1)
 	return
 
 /mob/living/carbon/monkey/attack_hand(mob/living/carbon/human/M as mob)
 	if (!ticker)
-		to_chat(M, "You cannot attack people before the game has started.")
+		M << "You cannot attack people before the game has started."
 		return
 
 	if (istype(loc, /turf) && istype(loc.loc, /area/start))
-		to_chat(M, "No attacking people at spawn, you jackass.")
+		M << "No attacking people at spawn, you jackass."
 		return
 
 	if(M.gloves)
@@ -210,10 +210,10 @@
 
 					for(var/mob/O in viewers(src, null))
 						if (O.client)
-							O.show_message("<span class='danger'>[src] has been touched with the stun gloves by [M]!</span>", 1, "<span class='warning'> You hear someone fall</span>", 2)
+							O.show_message("\red <B>[src] has been touched with the stun gloves by [M]!</B>", 1, "\red You hear someone fall", 2)
 					return
 				else
-					to_chat(M, "<span class='warning'>Not enough charge!</span>")
+					M << "\red Not enough charge! "
 					return
 
 	if (M.a_intent == "help")
@@ -222,7 +222,7 @@
 		if (M.a_intent == "hurt")
 			var/datum/unarmed_attack/attack = M.species.unarmed
 			if ((prob(75) && health > 0))
-				visible_message("<span class='danger'>[M] [pick(attack.attack_verb)]ed [src]!</span>")
+				visible_message("\red <B>[M] [pick(attack.attack_verb)]ed [src]!</B>")
 
 				playsound(loc, "punch", 25, 1)
 				var/damage = rand(5, 10)
@@ -230,7 +230,7 @@
 					damage = rand(10, 15)
 					if (knocked_out < 5)
 						KnockOut(rand(10, 15))
-						visible_message("<span class='danger'>[M] has knocked out [src]!</span>")
+						visible_message("\red <B>[M] has knocked out [src]!</B>")
 
 				adjustBruteLoss(damage)
 
@@ -241,7 +241,7 @@
 				updatehealth()
 			else
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
-				visible_message("<span class='danger'>[M] tried to [pick(attack.attack_verb)] [src]!</span>")
+				visible_message("\red <B>[M] tried to [pick(attack.attack_verb)] [src]!</B>")
 		else
 			if (M.a_intent == "grab")
 				if(M == src || anchored)
@@ -256,13 +256,13 @@
 						playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 						for(var/mob/O in viewers(src, null))
 							if ((O.client && !( O.blinded )))
-								O.show_message(text("<span class='danger'>[] has pushed down [name]!</span>", M), 1)
+								O.show_message(text("\red <B>[] has pushed down [name]!</B>", M), 1)
 					else
 						drop_held_item()
 						playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 						for(var/mob/O in viewers(src, null))
 							if ((O.client && !( O.blinded )))
-								O.show_message(text("<span class='danger'>[] has disarmed [name]!</span>", M), 1)
+								O.show_message(text("\red <B>[] has disarmed [name]!</B>", M), 1)
 	return
 
 /mob/living/carbon/monkey/attack_animal(mob/living/M as mob)
@@ -275,7 +275,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message("<span class='danger'>[M]</span> [M.attacktext] [src]!", 1)
+			O.show_message("\red <B>[M]</B> [M.attacktext] [src]!", 1)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)

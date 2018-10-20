@@ -12,6 +12,10 @@
 	throw_range = 15
 	attack_verb = list("banned")
 
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is hitting \himself with the [src.name]! It looks like \he's trying to ban \himself from life.</b>"
+		return (BRUTELOSS|FIRELOSS|TOXLOSS|OXYLOSS)
+
 /obj/item/weapon/nullrod
 	name = "null rod"
 	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomenae."
@@ -23,6 +27,10 @@
 	throw_range = 4
 	throwforce = 10
 	w_class = 2
+
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is impaling \himself with the [src.name]! It looks like \he's trying to commit suicide.</b>"
+		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/weapon/harpoon
 	name = "harpoon"
@@ -81,7 +89,7 @@
 /obj/item/weapon/butterfly/attack_self(mob/user)
 	active = !active
 	if(active)
-		to_chat(user, "<span class='notice'>You flip out your [src].</span>")
+		user << "<span class='notice'>You flip out your [src].</span>"
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 		force = 15 //bay adjustments
 		throwforce = 12
@@ -92,7 +100,7 @@
 		w_class = 3
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		to_chat(user, "<span class='notice'>The butterfly knife can now be concealed.</span>")
+		user << "<span class='notice'>The butterfly knife can now be concealed.</span>"
 		force = initial(force)
 		edge = 0
 		sharp = 0
@@ -136,17 +144,17 @@
 		var/obj/item/weapon/twohanded/spear/S = new /obj/item/weapon/twohanded/spear
 
 		user.put_in_hands(S)
-		to_chat(user, "<span class='notice'>You fasten the glass shard to the top of the rod with the cable.</span>")
-		qdel(I)
-		qdel(src)
+		user << "<span class='notice'>You fasten the glass shard to the top of the rod with the cable.</span>"
+		cdel(I)
+		cdel(src)
 		update_icon(user)
 
 	else if(istype(I, /obj/item/tool/wirecutters))
 		var/obj/item/weapon/baton/cattleprod/P = new /obj/item/weapon/baton/cattleprod
 
 		user.put_in_hands(P)
-		to_chat(user, "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>")
-		qdel(I)
-		qdel(src)
+		user << "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>"
+		cdel(I)
+		cdel(src)
 		update_icon(user)
 	update_icon(user)

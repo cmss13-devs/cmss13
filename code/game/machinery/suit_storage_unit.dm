@@ -73,11 +73,11 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				dump_everything()
-				qdel(src)
+				cdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(prob(50))
 				dump_everything() //So suits dont survive all the time
-			qdel(src)
+			cdel(src)
 
 
 /obj/machinery/suit_storage_unit/attack_hand(mob/user)
@@ -192,7 +192,7 @@
 
 /obj/machinery/suit_storage_unit/proc/toggle_open(mob/user as mob)
 	if(isUV)
-		to_chat(user, "<span class='caution'>Unable to open unit.</span>")
+		user << "<font color='red'>Unable to open unit.</font>"
 		return
 	isopen = !isopen
 	update_icon()
@@ -202,16 +202,16 @@
 	set waitfor = 0
 
 	if(isopen)
-		to_chat(user, "<font color='red'>Unit storage is not closed -- Aborting.</font>")
+		user << "<font color='red'>Unit storage is not closed -- Aborting.</font>"
 		return
 
 	if(isUV)
 		return
 
 	if(!inserted_helmet && !inserted_mask && !inserted_suit) //shit's empty yo
-		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
+		user << "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>"
 		return
-	to_chat(user, "<span class='notice'>You start the Unit's cauterisation cycle.</span>")
+	user << "<span class='notice'>You start the Unit's cauterisation cycle.</span>"
 	isUV = 1
 	update_icon()
 	updateUsrDialog()
@@ -244,10 +244,10 @@
 			if( istype(I,/obj/item/clothing/suit/space) )
 				var/obj/item/clothing/suit/space/S = I
 				if(inserted_suit)
-					to_chat(user, "<span class='warning'>The unit already contains a suit.</span>")
+					user << "<span class='warning'>The unit already contains a suit.</span>"
 					return
 				if(user.drop_inv_item_to_loc(S, src))
-					to_chat(user, "<span class='notice'>You load the [S.name] into the storage compartment.</span>")
+					user << "<span class='notice'>You load the [S.name] into the storage compartment.</span>"
 					inserted_suit = S
 					update_icon()
 					updateUsrDialog()
@@ -256,9 +256,9 @@
 			if( istype(I,/obj/item/clothing/head/helmet) )
 				var/obj/item/clothing/head/helmet/H = I
 				if(inserted_helmet)
-					to_chat(user, "<span class='warning'>The unit already contains a helmet.</span>")
+					user << "<span class='warning'>The unit already contains a helmet.</span>"
 					return
-				to_chat(user, "<span class='notice'>You load the [H.name] into the storage compartment.</span>")
+				user << "<span class='notice'>You load the [H.name] into the storage compartment.</span>"
 				if(user.drop_inv_item_to_loc(H, src))
 					inserted_helmet = H
 					update_icon()
@@ -268,9 +268,9 @@
 			if( istype(I,/obj/item/clothing/mask) )
 				var/obj/item/clothing/mask/M = I
 				if(inserted_mask)
-					to_chat(user, "<span class='warning'>The unit already contains a mask.</span>")
+					user << "<span class='warning'>The unit already contains a mask.</span>"
 					return
-				to_chat(user, "<span class='notice'>You load the [M.name] into the storage compartment.</span>")
+				user << "<span class='notice'>You load the [M.name] into the storage compartment.</span>"
 				if(user.drop_inv_item_to_loc(M, src))
 					inserted_mask = M
 					update_icon()
@@ -280,9 +280,9 @@
 			if( istype(I,/obj/item/tank) )
 				var/obj/item/tank/T = I
 				if(inserted_tank)
-					to_chat(user, "<span class='warning'>The unit already contains a tank.</span>")
+					user << "<span class='warning'>The unit already contains a tank.</span>"
 					return
-				to_chat(user, "<span class='notice'>You load the [T.name] into the storage compartment.</span>")
+				user << "<span class='notice'>You load the [T.name] into the storage compartment.</span>"
 				if(user.drop_inv_item_to_loc(T, src))
 					inserted_tank = T
 					update_icon()
@@ -296,7 +296,7 @@
 
 
 /obj/machinery/suit_storage_unit/attack_paw(mob/user as mob)
-	to_chat(user, "<span class='notice'>The console controls are far too complicated for your tiny brain!</span>")
+	user << "<font color='blue'>The console controls are far too complicated for your tiny brain!</font>"
 	return
 
 

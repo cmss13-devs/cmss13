@@ -52,8 +52,8 @@
 				M.take_overall_damage(dam_force)
 				M.adjustOxyLoss(round(dam_force/2))
 				M.updatehealth()
-				occupant_message("<span class='warning'>You squeeze [target] with the [src.name]!</span>")
-				chassis.visible_message("<span class='warning'>[chassis] squeezes [target]!</span>")
+				occupant_message("\red You squeeze [target] with the [src.name]!")
+				chassis.visible_message("\red [chassis] squeezes [target]!")
 				chassis.occupant.attack_log += text("\[[time_stamp()]\] <font color='red'>squeezed [M.name] with the [src.name]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was squeezed by [chassis.occupant.name] with the [src.name]</font>")
 				playsound(chassis.loc, 'sound/mecha/powerloader_attack.ogg', 25, 1)
@@ -151,12 +151,12 @@
 			if( istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
 				var/obj/o = target
 				o.reagents.trans_to(src, 200)
-				occupant_message("<span class='notice'>\The [src] is now refilled</span>")
+				occupant_message("\blue \The [src] is now refilled")
 				playsound(chassis, 'sound/effects/refill.ogg', 25, 1, 4)
 				return
 
 			if (src.reagents.total_volume < 1)
-				occupant_message("<span class='warning'>\The [src] is empty.</span>")
+				occupant_message("\red \The [src] is empty.")
 				return
 
 			playsound(chassis, 'sound/effects/extinguish.ogg', 25, 1, 10)
@@ -191,7 +191,7 @@
 							W.reagents.reaction(atm)
 						if(W.loc == my_target) break
 						sleep(2)
-					qdel(W)
+					cdel(W)
 			return 1
 
 	get_equip_info()
@@ -251,7 +251,7 @@
 						if(disabled) return
 						chassis.spark_system.start()
 						playsound(target, 'sound/items/Deconstruct.ogg', 25, 1)
-						qdel(target)
+						cdel(target)
 						chassis.use_power(energy_drain)
 			if(1)
 				if(istype(target, /turf/open/space))
@@ -373,7 +373,7 @@
 		do_after_cooldown()
 		src = null
 		spawn(rand(150,300))
-			qdel(P)
+			cdel(P)
 		return
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult
@@ -489,7 +489,7 @@
 			return chassis.dynattackby(W,user)
 		chassis.log_message("Attacked by [W]. Attacker - [user]")
 		if(prob(chassis.deflect_chance*deflect_coeff))
-			to_chat(user, "<span class='warning'>The [W] bounces off [chassis] armor.</span>")
+			user << "\red The [W] bounces off [chassis] armor."
 			chassis.log_append_to_last("Armor saved.")
 		else
 			chassis.occupant_message("<font color='red'><b>[user] hits [chassis] with [W].</b></font>")
@@ -540,7 +540,7 @@
 		if(!action_checks(src))
 			return chassis.dynbulletdamage(Proj)
 		if(prob(chassis.deflect_chance*deflect_coeff))
-			chassis.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
+			chassis.occupant_message("\blue The armor deflects incoming projectile.")
 			chassis.visible_message("The [chassis.name] armor deflects the projectile")
 			chassis.log_append_to_last("Armor saved.")
 		else
@@ -555,7 +555,7 @@
 		if(!action_checks(A))
 			return chassis.dynhitby(A)
 		if(prob(chassis.deflect_chance*deflect_coeff) || istype(A, /mob/living) || istype(A, /obj/item/mecha_parts/mecha_tracking))
-			chassis.occupant_message("<span class='notice'>The [A] bounces off the armor.</span>")
+			chassis.occupant_message("\blue The [A] bounces off the armor.")
 			chassis.visible_message("The [A] bounces off the [chassis] armor")
 			chassis.log_append_to_last("Armor saved.")
 			if(istype(A, /mob/living))
@@ -859,7 +859,7 @@
 		if(isnull(result))
 			user.visible_message("[user] tries to shove [weapon] into [src]. What a dumb-ass.","<font color='red'>[fuel] traces minimal. [weapon] cannot be used as fuel.</font>")
 		else if(!result)
-			to_chat(user, "Unit is full.")
+			user << "Unit is full."
 		else
 			user.visible_message("[user] loads [src] with [fuel].","[result] unit\s of [fuel] successfully loaded.")
 		return
@@ -984,7 +984,7 @@
 			if(M.stat>1) return
 			if(chassis.occupant.a_intent == "hurt")
 				chassis.occupant_message("\red You obliterate [target] with [src.name], leaving blood and guts everywhere.")
-				chassis.visible_message("<span class='warning'>[chassis] destroys [target] in an unholy fury.</span>")
+				chassis.visible_message("\red [chassis] destroys [target] in an unholy fury.")
 			if(chassis.occupant.a_intent == "disarm")
 				chassis.occupant_message("\red You tear [target]'s limbs off with [src.name].")
 				chassis.visible_message("\red [chassis] rips [target]'s arms off.")
@@ -1024,7 +1024,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(var/mob/user)
 	if (chassis)
-		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
+		chassis.visible_message("\blue [user] starts to climb into [chassis].")
 
 	if(do_after(user, 40, FALSE, 5, BUSY_ICON_GENERIC))
 		if(!src.occupant)
@@ -1033,9 +1033,9 @@
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
 		else if(src.occupant != user)
-			to_chat(user, "\red [src.occupant] was faster. Try better next time, loser.")
+			user << "\red [src.occupant] was faster. Try better next time, loser."
 	else
-		to_chat(user, "You stop entering the exosuit.")
+		user << "You stop entering the exosuit."
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/verb/eject()
 	set name = "Eject"
@@ -1045,7 +1045,7 @@
 
 	if(usr != occupant)
 		return
-	to_chat(occupant, "You climb out from \the [src].")
+	occupant << "You climb out from \the [src]."
 	go_out()
 	occupant_message("[occupant] disembarked.")
 	log_message("[occupant] disembarked.")
@@ -1107,13 +1107,13 @@
 		return
 
 	if (!isturf(usr.loc))
-		to_chat(usr, "\red You can't reach the passenger compartment from here.")
+		usr << "\red You can't reach the passenger compartment from here."
 		return
 
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C.handcuffed)
-			to_chat(usr, "\red Kinda hard to climb in while handcuffed don't you think?")
+			usr << "\red Kinda hard to climb in while handcuffed don't you think?"
 			return
 
 	//search for a valid passenger compartment
@@ -1133,10 +1133,10 @@
 	//didn't find anything
 	switch (feedback)
 		if (OCCUPIED)
-			to_chat(usr, "<span class='warning'>The passenger compartment is already occupied!</span>")
+			usr << "\red The passenger compartment is already occupied!"
 		if (LOCKED)
-			to_chat(usr, "<span class='warning'>The passenger compartment hatch is locked!</span>")
+			usr << "\red The passenger compartment hatch is locked!"
 		if (OCCUPIED|LOCKED)
-			to_chat(usr, "<span class='warning'>All of the passenger compartments are already occupied or locked!</span>")
+			usr << "\red All of the passenger compartments are already occupied or locked!"
 		if (0)
-			to_chat(usr, "\red \The [src] doesn't have a passenger compartment.")
+			usr << "\red \The [src] doesn't have a passenger compartment."

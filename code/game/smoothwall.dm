@@ -23,9 +23,9 @@
 
 			for(k in T)
 				if(istype(k, j))
-					//to_chat(world, "DEBUG: type is: [j], object is [k]. Checking successful.")
+					//world << "DEBUG: type is: [j], object is [k]. Checking successful."
 					junction |= i
-					//to_chat(world, "DEBUG: Junction is: [junction].")
+					//world << "DEBUG: Junction is: [junction]."
 					break
 
 	handle_icon_junction(junction)

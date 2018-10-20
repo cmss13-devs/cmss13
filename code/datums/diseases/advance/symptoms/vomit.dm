@@ -34,7 +34,7 @@ Bonus
 		var/mob/living/M = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, "<span class='notice'>[pick("You feel nauseous.", "You feel like you're going to throw up!")]</span>")
+				M << "<span class='notice'>[pick("You feel nauseous.", "You feel like you're going to throw up!")]</span>"
 			else
 				Vomit(M)
 
@@ -76,7 +76,7 @@ Bonus
 /datum/symptom/vomit/blood/Vomit(var/mob/living/M)
 
 	M.Stun(1)
-	M.visible_message("<span class='warning'>[M] vomits on the floor!</span>")
+	M.visible_message("<B>[M]</B> vomits on the floor!")
 
 	// They lose blood and health.
 	var/brute_dam = M.getBruteLoss()

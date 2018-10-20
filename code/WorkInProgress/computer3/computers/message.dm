@@ -21,7 +21,7 @@
 	var/noserver = "<span class='alert'>ALERT: No server detected.</span>"
 	var/incorrectkey = "<span class='warning'>ALERT: Incorrect decryption key!</span>"
 	var/defaultmsg = "<span class='notice'>Welcome. Please select an option.</span>"
-	var/rebootmsg = "<span class='warning'>%$&(ï¿½: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!</span>"
+	var/rebootmsg = "<span class='warning'>%$&(£: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!</span>"
 
 	//Computer properties
 	var/screen = 0 		// 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
@@ -64,10 +64,10 @@
 
 		if(auth)
 			dat += "<h4><dd><A href='?src=\ref[src];auth=1'>&#09;<font color='green'>\[Authenticated\]</font></a>&#09;/"
-			dat += " Server Power: <A href='?src=\ref[src];active=1'>[src.linkedServer && src.linkedServer.active ? "<font color='green'>\[On\]</font>":"<span class='caution'>\[Off\]</span>"]</a></h4>"
+			dat += " Server Power: <A href='?src=\ref[src];active=1'>[src.linkedServer && src.linkedServer.active ? "<font color='green'>\[On\]</font>":"<font color='red'>\[Off\]</font>"]</a></h4>"
 		else
-			dat += "<h4><dd><A href='?src=\ref[src];auth=1'>&#09;<span class='caution'>\[Unauthenticated\]</span></a>&#09;/"
-			dat += " Server Power: <u>[src.linkedServer && src.linkedServer.active ? "<font color='green'>\[On\]</font>":"<span class='caution'>\[Off\]</span>"]</u></h4>"
+			dat += "<h4><dd><A href='?src=\ref[src];auth=1'>&#09;<font color='red'>\[Unauthenticated\]</font></a>&#09;/"
+			dat += " Server Power: <u>[src.linkedServer && src.linkedServer.active ? "<font color='green'>\[On\]</font>":"<font color='red'>\[Off\]</font>"]</u></h4>"
 
 		if(hacking || emag)
 			screen = 2
@@ -220,10 +220,10 @@
 
 	proc/BruteForce(mob/usr as mob)
 		if(isnull(linkedServer))
-			to_chat(usr, "<span class='warning'>Could not complete brute-force: Linked Server Disconnected!</span>")
+			usr << "<span class='warning'>Could not complete brute-force: Linked Server Disconnected!</span>"
 		else
 			var/currentKey = src.linkedServer.decryptkey
-			to_chat(usr, "<span class='warning'>Brute-force completed! The key is '[currentKey]'.</span>")
+			usr << "<span class='warning'>Brute-force completed! The key is '[currentKey]'.</span>"
 		src.hacking = 0
 		src.active_state = normal_icon
 		src.screen = 0 // Return the screen back to normal
@@ -411,10 +411,10 @@
 							if (!customrecepient.silent)
 								playsound(customrecepient.loc, 'sound/machines/twobeep.ogg', 50, 1)
 								for (var/mob/O in hearers(3, customrecepient.loc))
-									O.show_message(text("[bicon(customrecepient)] *[customrecepient.ttone]*"))
+									O.show_message(text("\icon[customrecepient] *[customrecepient.ttone]*"))
 								if( customrecepient.loc && ishuman(customrecepient.loc) )
 									var/mob/living/carbon/human/H = customrecepient.loc
-									to_chat(H, "[bicon(customrecepient)] <b>Message from [customsender] ([customjob]), </b>\"[custommessage]\" (<a href='byond://?src=\ref[src];choice=Message;skiprefresh=1;target=\ref[src]'>Reply</a>)")
+									H << "\icon[customrecepient] <b>Message from [customsender] ([customjob]), </b>\"[custommessage]\" (<a href='byond://?src=\ref[src];choice=Message;skiprefresh=1;target=\ref[src]'>Reply</a>)"
 								log_pda("[usr] (PDA: [customsender]) sent \"[custommessage]\" to [customrecepient.owner]")
 								customrecepient.overlays.Cut()
 								customrecepient.overlays += image('icons/obj/pda.dmi', "pda-r")
@@ -425,10 +425,10 @@
 							if (!customrecepient.silent)
 								playsound(customrecepient.loc, 'sound/machines/twobeep.ogg', 50, 1)
 								for (var/mob/O in hearers(3, customrecepient.loc))
-									O.show_message(text("[bicon(customrecepient)] *[customrecepient.ttone]*"))
+									O.show_message(text("\icon[customrecepient] *[customrecepient.ttone]*"))
 								if( customrecepient.loc && ishuman(customrecepient.loc) )
 									var/mob/living/carbon/human/H = customrecepient.loc
-									to_chat(H, "[bicon(customrecepient)] <b>Message from [PDARec.owner] ([customjob]), </b>\"[custommessage]\" (<a href='byond://?src=\ref[customrecepient];choice=Message;skiprefresh=1;target=\ref[PDARec]'>Reply</a>)")
+									H << "\icon[customrecepient] <b>Message from [PDARec.owner] ([customjob]), </b>\"[custommessage]\" (<a href='byond://?src=\ref[customrecepient];choice=Message;skiprefresh=1;target=\ref[PDARec]'>Reply</a>)"
 								log_pda("[usr] (PDA: [PDARec.owner]) sent \"[custommessage]\" to [customrecepient.owner]")
 								customrecepient.overlays.Cut()
 								customrecepient.overlays += image('icons/obj/pda.dmi', "pda-r")
@@ -442,6 +442,8 @@
 			else
 				if(auth)
 					src.screen = 4
+
+			//usr << href_list["select"]
 
 		if ("back" in href_list)
 			src.screen = 0

@@ -61,7 +61,7 @@
 
 /obj/machinery/computer/forensic_scanning/proc/process_card(var/obj/item/f_card/card)
 	if(card.fingerprints)
-		to_chat(usr, "<span class='notice'>\The [src] sucks in \the [card] and whirrs, scanning it.</span>")
+		usr << "<span class='notice'>\The [src] sucks in \the [card] and whirrs, scanning it.</span>"
 		var/found = 0
 		for(var/id in files)
 			var/datum/data/record/forensic/rec = files[id]
@@ -71,12 +71,12 @@
 					prints[master_print] = master_print
 					found = 1
 		if(found)
-			to_chat(usr, "<span class='notice'>Complete match found.</span>")
+			usr << "<span class='notice'>Complete match found.</span>"
 		else
-			to_chat(usr, "<span class='notice'>No match found.</span>")
+			usr << "<span class='notice'>No match found.</span>"
 		return 1
 	else
-		to_chat(usr, "<span class='warning'>No fingerprints detected on [card].</span>")
+		usr << "<span class='warning'>No fingerprints detected on [card].</span>"
 		return 0
 
 //Takes a list of forensic records, with key being reference to object, and updates internal database.
@@ -227,7 +227,7 @@
 				screen = "details"
 				current = files[href_list["identifier"]]
 			else
-				to_chat(usr, "<spawn class='warning'>No record found.</span>")
+				usr << "<spawn class='warning'>No record found.</span>"
 		if("delete")
 			if(href_list["identifier"])
 				if(alert("Are you sure you want to delete this record?","Record deletion", "Yes", "No") == "Yes")
@@ -258,7 +258,7 @@
 						M.drop_held_item()
 						I.loc = src
 				else
-					to_chat(usr, "<spawn class='warning'>Invalid object, rejected.</span>")
+					usr << "<spawn class='warning'>Invalid object, rejected.</span>"
 		if("scan")
 			if(scanning)
 				scan_progress = 10
@@ -271,9 +271,9 @@
 			if(istype(I, /obj/item/f_card))
 				if(process_card(I))
 					M.drop_held_item()
-					qdel(I)
+					cdel(I)
 			else
-				to_chat(usr, "<spawn class='warning'>Invalid fingerprint card, rejected.</span>")
+				usr << "<spawn class='warning'>Invalid fingerprint card, rejected.</span>"
 		if("print")
 			if(current)
 				var/obj/item/paper/P = new(loc)

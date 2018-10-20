@@ -1,7 +1,7 @@
 /mob/living/silicon/robot/dust()
 	//Delete the MMI first so that it won't go popping out.
 	if(mmi)
-		qdel(mmi)
+		cdel(mmi)
 		mmi = null
 	..()
 
@@ -16,4 +16,4 @@
 	..(gibbed,"is destroyed!")
 	playsound(src.loc, 'sound/effects/metal_crash.ogg', 100)
 	robogibs(src)
-	qdel(src)
+	cdel(src)

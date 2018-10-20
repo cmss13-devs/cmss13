@@ -679,7 +679,7 @@
 		var/turf/T = get_turf(src)
 		if(T)
 			new /obj/item/trash/uscm_mre(T)
-		qdel(src)
+		cdel(src)
 	else if(!isopened)
 		isopened = 1
 		icon_state = "mealpackopened"

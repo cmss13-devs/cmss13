@@ -114,7 +114,7 @@
 		user.drop_held_item()
 		var/obj/item/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
-		qdel(src)
+		cdel(src)
 		return
 
 	..()
@@ -151,7 +151,7 @@
 		fingerprint_hash = md5(loc:dna:uni_identity)
 
 /obj/item/card/id/attack_self(mob/user as mob)
-	user.visible_message("[user] shows you: [bicon(src)] [name]: assignment: [assignment]")
+	user.visible_message("[user] shows you: \icon[src] [name]: assignment: [assignment]")
 
 	src.add_fingerprint(user)
 	return
@@ -168,10 +168,10 @@
 	set category = "Object"
 	set src in usr
 
-	to_chat(usr, "[bicon(src)] [src.name]: The current assignment on the card is [src.assignment].")
-	to_chat(usr, "The blood type on the card is [blood_type].")
-	to_chat(usr, "The DNA hash on the card is [dna_hash].")
-	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
+	usr << text("\icon[] []: The current assignment on the card is [].", src, src.name, src.assignment)
+	usr << "The blood type on the card is [blood_type]."
+	usr << "The DNA hash on the card is [dna_hash]."
+	usr << "The fingerprint hash on the card is [fingerprint_hash]."
 	return
 
 
@@ -209,7 +209,7 @@
 		src.access |= I.access
 		if(istype(user, /mob/living) && user.mind)
 			if(user.mind.special_role)
-				to_chat(usr, "<span class='notice'>The card's microscanners activate as you pass it over the ID, copying its access.</span>")
+				usr << "\blue The card's microscanners activate as you pass it over the ID, copying its access."
 
 /obj/item/card/id/syndicate/attack_self(mob/user as mob)
 	if(!src.registered_name)
@@ -227,7 +227,7 @@
 			return
 		src.assignment = u
 		src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-		to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
+		user << "\blue You successfully forge the ID card."
 		registered_user = user
 	else if(!registered_user || registered_user == user)
 
@@ -247,7 +247,7 @@
 					return
 				src.assignment = u
 				src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-				to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
+				user << "\blue You successfully forge the ID card."
 				return
 			if("Show")
 				..()
@@ -311,7 +311,7 @@
 /obj/item/card/id/dogtag/examine(mob/user)
 	..()
 	if(ishuman(user))
-		to_chat(user, "<span class='notice'>It reads \"[registered_name] - [assignment] - [blood_type]\"</span>")
+		user << "<span class='notice'>It reads \"[registered_name] - [assignment] - [blood_type]\"</span>"
 
 
 /obj/item/dogtag
@@ -327,13 +327,13 @@
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, "<span class='notice'>You join the two tags together.</span>")
+		user << "<span class='notice'>You join the two tags together.</span>"
 		name = "information dog tags"
 		if(D.fallen_names)
 			if(!fallen_names)
 				fallen_names = list()
 			fallen_names += D.fallen_names
-		qdel(D)
+		cdel(D)
 		return TRUE
 	else
 		. = ..()
@@ -342,6 +342,6 @@
 	..()
 	if(ishuman(user) && fallen_names && fallen_names.len)
 		if(fallen_names.len == 1)
-			to_chat(user, "<span class='notice'>It reads \"[fallen_names[1]] - [fallen_assgn] - [fallen_blood_type]\"</span>")
+			user << "<span class='notice'>It reads \"[fallen_names[1]] - [fallen_assgn] - [fallen_blood_type]\"</span>"
 		else
-			to_chat(user, "There's multiple tags joined together.")
+			user << "There's multiple tags joined together."

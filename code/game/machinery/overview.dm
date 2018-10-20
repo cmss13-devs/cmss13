@@ -30,7 +30,7 @@
 		imap += icon('icons/misc/imap.dmi', "blank")
 		imap += icon('icons/misc/imap.dmi', "blank")
 
-	//to_chat(world, "[icount] images in list")
+	//world << "[icount] images in list"
 
 
 	for(var/wx = 1 ; wx <= world.maxx; wx++)
@@ -128,12 +128,12 @@
 			var/rx = ((wx*2+xoff)%32) + 1
 			var/ry = ((wy*2+yoff)%32) + 1
 
-			//to_chat(world, "trying [ix],[iy] : [ix+icx*iy]")
+			//world << "trying [ix],[iy] : [ix+icx*iy]"
 			var/icon/I = imap[1+(ix + icx*iy)*2]
 			var/icon/I2 = imap[2+(ix + icx*iy)*2]
 
 
-			//to_chat(world, "icon: [bicon(I)]")
+			//world << "icon: \icon[I]"
 
 			I.DrawBox(colour, rx, ry, rx+1, ry+1)
 
@@ -150,7 +150,7 @@
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
-		//to_chat(world, "[bicon(I)] at [H.screen_loc]")
+		//world<<"\icon[I] at [H.screen_loc]"
 
 		H.name = (i==0)?"maprefresh":"map"
 
@@ -162,8 +162,8 @@
 		HI.Insert(I, frame=1, delay = 5)
 		HI.Insert(J, frame=2, delay = 5)
 
-		qdel(I)
-		qdel(J)
+		cdel(I)
+		cdel(J)
 		H.icon = HI
 		H.layer = 25
 		usr.mapobjs += H
@@ -251,11 +251,11 @@
 			var/rx = ((wx*2+xoff)%32) + 1
 			var/ry = ((wy*2+yoff)%32) + 1
 
-			//to_chat(world, "trying [ix],[iy] : [ix+icx*iy]")
+			//world << "trying [ix],[iy] : [ix+icx*iy]"
 			var/icon/I = imap[1+(ix + icx*iy)]
 
 
-			//to_chat(world, "icon: [bicon(I)]")
+			//world << "icon: \icon[I]"
 
 			I.DrawBox(colour, rx, ry, rx, ry)
 
@@ -270,14 +270,14 @@
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
-		//to_chat(world, "[bicon(I)] at [H.screen_loc]")
+		//world<<"\icon[I] at [H.screen_loc]"
 
 		H.name = (i==0)?"maprefresh":"map"
 
 		var/icon/I = imap[i+1]
 
 		H.icon = I
-		qdel(I)
+		cdel(I)
 		H.layer = 25
 		usr.mapobjs += H
 
@@ -324,7 +324,7 @@ proc/getb(col)
 /mob/proc/clearmap()
 	src.client.screen -= src.mapobjs
 	for(var/obj/screen/O in mapobjs)
-		qdel(O)
+		cdel(O)
 
 	mapobjs = null
 	src.unset_interaction()

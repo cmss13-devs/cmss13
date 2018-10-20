@@ -172,7 +172,7 @@
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		if(!istype(usr, /mob/living/silicon/ai))
-			to_chat(usr, "\red You don't have the dexterity to do this!")
+			usr << "\red You don't have the dexterity to do this!"
 			return
 
 	if (( usr.interactee==src && ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon/ai)))
@@ -220,7 +220,7 @@
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20))
 			if (src.stat & BROKEN)
-				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+				user << "\blue The broken glass falls out."
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				new /obj/item/shard( src.loc )
 				var/obj/item/circuitboard/computer/turbine_control/M = new /obj/item/circuitboard/computer/turbine_control( A )
@@ -231,9 +231,9 @@
 				A.state = 3
 				A.icon_state = "3"
 				A.anchored = 1
-				qdel(src)
+				cdel(src)
 			else
-				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+				user << "\blue You disconnect the monitor."
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 				var/obj/item/circuitboard/computer/turbine_control/M = new /obj/item/circuitboard/computer/turbine_control( A )
 				for (var/obj/C in src)
@@ -243,7 +243,7 @@
 				A.state = 4
 				A.icon_state = "4"
 				A.anchored = 1
-				qdel(src)
+				cdel(src)
 	else
 		src.attack_hand(user)
 	return

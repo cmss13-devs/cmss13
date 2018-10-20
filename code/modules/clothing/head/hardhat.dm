@@ -13,16 +13,14 @@
 
 	attack_self(mob/user)
 		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
+			user << "You cannot turn the light on while in [user.loc]" //To prevent some lighting anomalities.
 			return
 		on = !on
 		icon_state = "hardhat[on]_[hardhat_color]"
 		item_state = "hardhat[on]_[hardhat_color]"
 
-		if(on)	
-			set_light(brightness_on)
-		else	
-			set_light(-brightness_on)
+		if(on)	user.SetLuminosity(brightness_on)
+		else	user.SetLuminosity(-brightness_on)
 
 		if(ismob(loc))
 			var/mob/M = loc
@@ -31,6 +29,28 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
+
+	pickup(mob/user)
+		if(on)
+			user.SetLuminosity(brightness_on)
+//			user.UpdateLuminosity()	//TODO: Carn
+			SetLuminosity(0)
+		..()
+
+	dropped(mob/user)
+		if(on)
+			user.SetLuminosity(-brightness_on)
+//			user.UpdateLuminosity()
+			SetLuminosity(brightness_on)
+		..()
+
+	Dispose()
+		if(ismob(src.loc))
+			src.loc.SetLuminosity(-brightness_on)
+		else
+			SetLuminosity(0)
+		. = ..()
+
 
 /obj/item/clothing/head/hardhat/orange
 	icon_state = "hardhat0_orange"

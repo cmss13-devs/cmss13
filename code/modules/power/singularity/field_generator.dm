@@ -85,7 +85,7 @@ field_generator power level display
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)
-				to_chat(user, "You are unable to turn off the [src.name] once it is online.")
+				user << "You are unable to turn off the [src.name] once it is online."
 				return 1
 			else
 				user.visible_message("[user.name] turns on the [src.name]", \
@@ -96,13 +96,13 @@ field_generator power level display
 
 				src.add_fingerprint(user)
 	else
-		to_chat(user, "The [src] needs to be firmly secured to the floor first.")
+		user << "The [src] needs to be firmly secured to the floor first."
 		return
 
 
 /obj/machinery/field_generator/attackby(obj/item/W, mob/user)
 	if(active)
-		to_chat(user, "The [src] needs to be off.")
+		user << "The [src] needs to be off."
 		return
 	else if(istype(W, /obj/item/tool/wrench))
 		switch(state)
@@ -121,13 +121,13 @@ field_generator power level display
 					"You hear ratchet")
 				src.anchored = 0
 			if(2)
-				to_chat(user, "<span class='warning'>The [src.name] needs to be unwelded from the floor.</span>")
+				user << "\red The [src.name] needs to be unwelded from the floor."
 				return
 	else if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		switch(state)
 			if(0)
-				to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor.</span>")
+				user << "\red The [src.name] needs to be wrenched to the floor."
 				return
 			if(1)
 				if (WT.remove_fuel(0,user))
@@ -138,7 +138,7 @@ field_generator power level display
 					if (do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn()) return
 						state = 2
-						to_chat(user, "You weld the field generator to the floor.")
+						user << "You weld the field generator to the floor."
 				else
 					return
 			if(2)
@@ -150,7 +150,7 @@ field_generator power level display
 					if (do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn()) return
 						state = 1
-						to_chat(user, "You cut the [src] free from the floor.")
+						user << "You cut the [src] free from the floor."
 				else
 					return
 	else
@@ -213,9 +213,9 @@ field_generator power level display
 		return 1
 	else
 		for(var/mob/M in viewers(src))
-			M.show_message("<span class='warning'>\The [src] shuts down!</span>")
+			M.show_message("\red \The [src] shuts down!")
 		turn_off()
-		investigate_log("ran out of power and <span class='caution'>deactivated</span>","singulo")
+		investigate_log("ran out of power and <font color='red'>deactivated</font>","singulo")
 		src.power = 0
 		return 0
 
@@ -316,7 +316,7 @@ field_generator power level display
 	for (var/obj/machinery/containment_field/F in fields)
 		if (isnull(F))
 			continue
-		qdel(F)
+		cdel(F)
 	fields = list()
 	for(var/obj/machinery/field_generator/FG in connected_gens)
 		if (isnull(FG))
@@ -339,5 +339,5 @@ field_generator power level display
 				if((world.time - O.last_warning) > 50) //to stop message-spam
 					temp = 0
 					message_admins("A singulo exists and a containment field has failed.",1)
-					investigate_log("has <span class='caution'>failed</span> whilst a singulo exists.","singulo")
+					investigate_log("has <font color='red'>failed</font> whilst a singulo exists.","singulo")
 			O.last_warning = world.time

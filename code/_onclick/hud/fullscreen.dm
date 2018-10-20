@@ -13,7 +13,7 @@
 		else if((!severity || severity == FS.severity) && (!client || FS.screen_loc != "CENTER-7,CENTER-7" || FS.fs_view == client.view))
 			return null
 	else
-		FS = new type()
+		FS = rnew(type)
 
 	FS.icon_state = "[initial(FS.icon_state)][severity]"
 	FS.severity = severity
@@ -38,7 +38,7 @@
 
 	if(client)
 		client.screen -= FS
-	qdel(FS)
+	cdel(FS)
 
 
 /mob/proc/clear_fullscreens()
@@ -65,7 +65,6 @@
 	icon_state = "default"
 	screen_loc = "CENTER-7,CENTER-7"
 	layer = FULLSCREEN_LAYER
-	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 	var/severity = 0
 	var/fs_view = 7
@@ -86,41 +85,34 @@
 /obj/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/oxy
 	icon_state = "oxydamageoverlay"
 	layer = FULLSCREEN_DAMAGE_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/crit
 	icon_state = "passage"
 	layer = FULLSCREEN_CRIT_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/blind
 	icon_state = "blackimageoverlay"
 	layer = FULLSCREEN_BLIND_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/impaired
 	icon_state = "impairedoverlay"
 	layer = FULLSCREEN_IMPAIRED_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/blurry
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "blurry"
 	layer = FULLSCREEN_BLURRY_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/flash
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "flash"
 	layer = FULLSCREEN_FLASH_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/flash/noise
 	icon = 'icons/mob/screen1.dmi'
@@ -132,7 +124,6 @@
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "druggy"
 	layer = FULLSCREEN_DRUGGY_LAYER
-	plane = FULLSCREEN_PLANE
 
 /obj/screen/fullscreen/nvg
 	icon = 'icons/mob/screen1.dmi'
@@ -153,5 +144,4 @@
 /obj/screen/fullscreen/pain
 	icon_state = "painoverlay"
 	layer = FULLSCREEN_PAIN_LAYER
-	plane = FULLSCREEN_PLANE
 

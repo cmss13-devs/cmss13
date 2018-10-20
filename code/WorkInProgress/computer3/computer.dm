@@ -77,11 +77,11 @@
 		set src in view(1)
 
 		if(usr.stat || usr.is_mob_restrained() || usr.lying || !istype(usr, /mob/living))
-			to_chat(usr, "\red You can't do that.")
+			usr << "\red You can't do that."
 			return
 
 		if(!Adjacent(usr))
-			to_chat(usr, "You can't reach it.")
+			usr << "You can't reach it."
 			return
 
 		Reset()
@@ -214,14 +214,14 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				qdel(src)
+				cdel(src)
 				return
 			if (prob(50))
 				for(var/x in verbs)
 					verbs -= x
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 		else
 	return
@@ -358,7 +358,7 @@
 		os.attack_hand(user)
 		return
 
-	to_chat(user, "\The [src] won't boot!")
+	user << "\The [src] won't boot!"
 
 /obj/machinery/computer3/attack_ai(var/mob/user as mob) // copypasta because server racks lose attack_hand()
 	if(stat)
@@ -383,7 +383,7 @@
 		os.attack_hand(user)
 		return
 
-	to_chat(user, "\The [src] won't boot!")
+	user << "\The [src] won't boot!"
 
 /obj/machinery/computer3/interact()
 	if(stat)

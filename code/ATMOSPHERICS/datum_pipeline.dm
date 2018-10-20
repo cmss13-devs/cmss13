@@ -10,7 +10,7 @@
 
 /datum/pipeline/Dispose()
 	if(network)
-		qdel(network)
+		cdel(network)
 
 	..()
 

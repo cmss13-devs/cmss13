@@ -25,9 +25,9 @@
 	active_areas += src
 	all_areas += src
 
-	//initialize_power_and_lighting()
+	initialize_power_and_lighting()
 
-/*/area/proc/initialize_power_and_lighting(override_power)
+/area/proc/initialize_power_and_lighting(override_power)
 	if(requires_power)
 		luminosity = 0
 		if(override_power) //Reset everything if you want to override.
@@ -43,7 +43,7 @@
 		lighting_use_dynamic = 0
 
 	power_change()		// all machines set to current power level, also updates lighting icon
-	InitializeLighting()*/
+	InitializeLighting()
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
 	if (state != poweralm)
@@ -371,7 +371,7 @@
 		mob:AdjustStunned(2)
 		mob:AdjustKnockeddown(2)
 
-	to_chat(mob, "Gravity!")
+	mob << "Gravity!"
 
 
 

@@ -17,7 +17,7 @@
 	if(charging && !(stat & (BROKEN|NOPOWER)) )
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//to_chat(world, "nl: [newlevel]")
+		//world << "nl: [newlevel]"
 
 		if(chargelevel != newlevel)
 
@@ -30,9 +30,9 @@
 
 /obj/machinery/cell_charger/examine(mob/user)
 	..()
-	to_chat(user, "There's [charging ? "a" : "no"] cell in the charger.")
+	user << "There's [charging ? "a" : "no"] cell in the charger."
 	if(charging)
-		to_chat(user, "Current charge: [charging.charge]")
+		user << "Current charge: [charging.charge]"
 
 /obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
 	if(stat & BROKEN)
@@ -40,14 +40,14 @@
 
 	if(istype(W, /obj/item/cell) && anchored)
 		if(charging)
-			to_chat(user, "<span class='warning'>There is already a cell in the charger.</span>")
+			user << "\red There is already a cell in the charger."
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, "<span class='warning'>The [name] blinks red as you try to insert the cell!</span>")
+				user << "\red The [name] blinks red as you try to insert the cell!"
 				return
 
 			if(user.drop_inv_item_to_loc(W, src))
@@ -58,11 +58,11 @@
 		updateicon()
 	else if(istype(W, /obj/item/tool/wrench))
 		if(charging)
-			to_chat(user, "<span class='warning'>Remove the cell first!</span>")
+			user << "\red Remove the cell first!"
 			return
 
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground")
+		user << "You [anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground"
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 /obj/machinery/cell_charger/attack_hand(mob/user)
@@ -89,7 +89,7 @@
 
 
 /obj/machinery/cell_charger/process()
-	//to_chat(world, "ccpt [charging] [stat]")
+	//world << "ccpt [charging] [stat]"
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(0)
 		return

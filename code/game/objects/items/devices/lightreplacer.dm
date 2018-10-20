@@ -64,7 +64,7 @@
 
 /obj/item/device/lightreplacer/examine(mob/user)
 	..()
-	to_chat(user, "It has [uses] lights remaining.")
+	user << "It has [uses] lights remaining."
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W,  /obj/item/card/emag) && emagged == 0)
@@ -74,26 +74,26 @@
 	if(istype(W, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = W
 		if(uses >= max_uses)
-			to_chat(user, "<span class='warning'>[src.name] is full.")
+			user << "<span class='warning'>[src.name] is full."
 			return
 		else if(G.use(1))
 			AddUses(5)
-			to_chat(user, "<span class='notice'>You insert a piece of glass into the [src.name]. You have [uses] lights remaining.</span>")
+			user << "<span class='notice'>You insert a piece of glass into the [src.name]. You have [uses] lights remaining.</span>"
 			return
 		else
-			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
+			user << "<span class='warning'>You need one sheet of glass to replace lights.</span>"
 
 	if(istype(W, /obj/item/light_bulb))
 		var/obj/item/light_bulb/L = W
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, "You insert the [L.name] into the [src.name]. You have [uses] lights remaining.")
+				user << "You insert the [L.name] into the [src.name]. You have [uses] lights remaining."
 				user.drop_held_item()
-				qdel(L)
+				cdel(L)
 				return
 		else
-			to_chat(user, "You need a working light.")
+			user << "You need a working light."
 			return
 
 
@@ -103,10 +103,10 @@
 		var/mob/living/silicon/robot/R = user
 		if(R.emagged)
 			src.Emag()
-			to_chat(usr, "You shortcircuit the [src].")
+			usr << "You shortcircuit the [src]."
 			return
 	*/
-	to_chat(usr, "It has [uses] lights remaining.")
+	usr << "It has [uses] lights remaining."
 
 /obj/item/device/lightreplacer/update_icon()
 	icon_state = "lightreplacer[emagged]"
@@ -133,7 +133,7 @@
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
 			if(!Use(U)) return
-			to_chat(U, "<span class='notice'>You replace the [target.fitting] with the [src].</span>")
+			U << "<span class='notice'>You replace the [target.fitting] with the [src].</span>"
 
 			if(target.status != LIGHT_EMPTY)
 
@@ -156,17 +156,17 @@
 			target.brightness = L2.brightness
 			target.on = target.has_power()
 			target.update()
-			qdel(L2)
+			cdel(L2)
 
 			if(target.on && target.rigged)
 				target.explode()
 			return
 
 		else
-			to_chat(U, failmsg)
+			U << failmsg
 			return
 	else
-		to_chat(U, "There is a working [target.fitting] already inserted.")
+		U << "There is a working [target.fitting] already inserted."
 		return
 
 /obj/item/device/lightreplacer/proc/Emag()

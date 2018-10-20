@@ -45,14 +45,14 @@
 		var/obj/item/card/id/C = W
 		if(ACCESS_MARINE_ENGINEERING in C.access || ACCESS_MARINE_CE in C.access)
 			src.locked = !src.locked
-			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
+			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
 			updateDialog()
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			user << "\red Access denied."
 	else if(istype(W, /obj/item/card/emag))
 		if(prob(75))
 			src.locked = !src.locked
-			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
+			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
 			updateDialog()
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
@@ -60,7 +60,7 @@
 
 	else if(istype(W, /obj/item/tool/wrench))
 		src.anchored = !src.anchored
-		src.visible_message("\blue [bicon(src)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].")
+		src.visible_message("\blue \icon[src] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].")
 
 		if(active)
 			toggle()
@@ -182,7 +182,7 @@
 		return
 	else if( href_list["toggle"] )
 		if (!active && !anchored)
-			to_chat(usr, "<span class='warning'>The [src] needs to be firmly secured to the floor first.</span>")
+			usr << "\red The [src] needs to be firmly secured to the floor first."
 			return
 		toggle()
 	else if( href_list["change_radius"] )
@@ -212,17 +212,17 @@
 		for(var/turf/O in covered_turfs)
 			var/obj/effect/energy_field/E = new(O)
 			field.Add(E)
-		qdel(covered_turfs)
+		cdel(covered_turfs)
 
 		for(var/mob/M in view(5,src))
-			to_chat(M, "[bicon(src)] You hear heavy droning start up.")
+			M << "\icon[src] You hear heavy droning start up."
 	else
 		for(var/obj/effect/energy_field/D in field)
 			field.Remove(D)
 			D.loc = null
 
 		for(var/mob/M in view(5,src))
-			to_chat(M, "[bicon(src)] You hear heavy droning fade out.")
+			M << "\icon[src] You hear heavy droning fade out."
 
 /obj/machinery/shield_gen/update_icon()
 	if(stat & BROKEN)

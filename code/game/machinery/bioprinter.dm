@@ -34,18 +34,18 @@
 
 /obj/machinery/bioprinter/attack_hand(mob/user)
 	if(working)
-		to_chat(user, "Something is already being printed...")
+		user << "Something is already being printed..."
 		return
 	var/choice = input("What would you like to print?") as null|anything in products
 	if(!choice)
 		return
 	if(stored_matter >= products[choice][2] && stored_metal >= products[choice][3]) //Matter and metal
 		if(working)
-			to_chat(user, "Something is already being printed...")
+			user << "Something is already being printed..."
 			return
 		stored_matter -= products[choice][2] //Matter
 		stored_metal -= products[choice][3] //Metal
-		to_chat(user, "<span class='notice'>\The [src] is now printing the selected organ. Please hold.</span>")
+		user << "\blue \The [src] is now printing the selected organ. Please hold."
 		working = 1
 		spawn(products[choice][4]) //Time
 			var/new_organ = products[choice][1]
@@ -54,27 +54,27 @@
 			visible_message("The bio/synthetic printer spits out a new organ.")
 
 	else
-		to_chat(user, "There is not enough materials in the printer.")
+		user << "There is not enough materials in the printer."
 
 /obj/machinery/bioprinter/attackby(obj/item/W, mob/user)
 //Matter
 	if(istype(W, /obj/item/reagent_container/food/snacks/meat))
-		to_chat(user, "<span class='notice'>\The [src] processes \the [W].</span>")
+		user << "\blue \The [src] processes \the [W]."
 		stored_matter += 50
 		user.drop_held_item()
-		qdel(W)
+		cdel(W)
 		return
 //Metal
 	else if(istype(W, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = W
-		to_chat(user, "<span class='notice'>\The [src] processes \the [W].</span>")
+		user << "\blue \The [src] processes \the [W]."
 		stored_metal += M.amount * 100
 		user.drop_held_item()
-		qdel(W)
+		cdel(W)
 		return
 	else
 		return..()
 
 /obj/machinery/bioprinter/examine(mob/user)
 	..()
-	to_chat(user, "It has [stored_matter] matter and [stored_metal] metal left.")
+	user << "It has [stored_matter] matter and [stored_metal] metal left."

@@ -28,15 +28,13 @@
 
 	attack_self(mob/user)
 		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
+			user << "You cannot turn the light on while in [user.loc]" //To prevent some lighting anomalities.
 			return
 		on = !on
 		icon_state = "rig[on]-[rig_color]"
 
-		if(on)	
-			set_light(brightness_on)
-		else	
-			set_light(-brightness_on)
+		if(on)	user.SetLuminosity(brightness_on)
+		else	user.SetLuminosity(-brightness_on)
 
 		if(istype(user,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = user
@@ -45,6 +43,27 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
+
+	pickup(mob/user)
+		if(on)
+			user.SetLuminosity(brightness_on)
+//			user.UpdateLuminosity()
+			SetLuminosity(0)
+		..()
+
+	dropped(mob/user)
+		if(on)
+			user.SetLuminosity(-brightness_on)
+//			user.UpdateLuminosity()
+			SetLuminosity(brightness_on)
+		..()
+
+	Dispose()
+		if(ismob(src.loc))
+			src.loc.SetLuminosity(-brightness_on)
+		else
+			SetLuminosity(0)
+		. = ..()
 
 /obj/item/clothing/suit/space/rig
 	name = "hardsuit"
@@ -98,9 +117,9 @@
 
 	if(attached_helmet && helmet)
 		if(H.head)
-			to_chat(M, "You are unable to deploy your suit's helmet as \the [H.head] is in the way.")
+			M << "You are unable to deploy your suit's helmet as \the [H.head] is in the way."
 		else
-			to_chat(M, "Your suit's helmet deploys with a hiss.")
+			M << "Your suit's helmet deploys with a hiss."
 			//TODO: Species check, skull damage for forcing an unfitting helmet on?
 			helmet.loc = H
 			H.equip_to_slot(helmet, WEAR_HEAD)
@@ -108,9 +127,9 @@
 
 	if(attached_boots && boots)
 		if(H.shoes)
-			to_chat(M, "You are unable to deploy your suit's magboots as \the [H.shoes] are in the way.")
+			M << "You are unable to deploy your suit's magboots as \the [H.shoes] are in the way."
 		else
-			to_chat(M, "Your suit's boots deploy with a hiss.")
+			M << "Your suit's boots deploy with a hiss."
 			boots.loc = H
 			H.equip_to_slot(boots, WEAR_FEET)
 			boots.flags_item |= NODROP
@@ -150,11 +169,11 @@
 	if(usr.stat) return
 
 	if(active_device)
-		to_chat(usr, "You already have \the [active_device] deployed.")
+		usr << "You already have \the [active_device] deployed."
 		return
 
 	if(!mounted_devices.len)
-		to_chat(usr, "You do not have any devices mounted on \the [src].")
+		usr << "You do not have any devices mounted on \the [src]."
 		return
 
 /obj/item/clothing/suit/space/rig/verb/stow_mounted_device()
@@ -173,7 +192,7 @@
 	if(usr.stat) return
 
 	if(!active_device)
-		to_chat(usr, "You have no device currently deployed.")
+		usr << "You have no device currently deployed."
 		return
 */
 
@@ -186,7 +205,7 @@
 	if(!istype(src.loc,/mob/living)) return
 
 	if(!helmet)
-		to_chat(usr, "There is no helmet installed.")
+		usr << "There is no helmet installed."
 		return
 
 	var/mob/living/carbon/human/H = usr
@@ -198,17 +217,17 @@
 	if(H.head == helmet)
 		helmet.flags_item &= ~NODROP
 		H.drop_inv_item_to_loc(helmet, src)
-		to_chat(H, "<span class='notice'>You retract your hardsuit helmet.</span>")
+		H << "\blue You retract your hardsuit helmet."
 	else
 		if(H.head)
-			to_chat(H, "<span class='warning'>You cannot deploy your helmet while wearing another helmet.</span>")
+			H << "\red You cannot deploy your helmet while wearing another helmet."
 			return
 		//TODO: Species check, skull damage for forcing an unfitting helmet on?
 		helmet.loc = H
 		helmet.pickup(H)
 		H.equip_to_slot(helmet, WEAR_HEAD)
 		helmet.flags_item |= NODROP
-		to_chat(H, "\blue You deploy your hardsuit helmet, sealing you off from the world.")
+		H << "\blue You deploy your hardsuit helmet, sealing you off from the world."
 
 /obj/item/clothing/suit/space/rig/attackby(obj/item/W as obj, mob/user as mob)
 
@@ -217,7 +236,7 @@
 	if(user.a_intent == "help")
 
 		if(istype(src.loc,/mob/living))
-			to_chat(user, "How do you propose to modify a hardsuit while it is being worn?")
+			user << "How do you propose to modify a hardsuit while it is being worn?"
 			return
 
 		var/target_zone = user.zone_selected
@@ -226,22 +245,22 @@
 
 			//Installing a component into or modifying the contents of the helmet.
 			if(!attached_helmet)
-				to_chat(user, "\The [src] does not have a helmet mount.")
+				user << "\The [src] does not have a helmet mount."
 				return
 
 			if(istype(W,/obj/item/tool/screwdriver))
 				if(!helmet)
-					to_chat(user, "\The [src] does not have a helmet installed.")
+					user << "\The [src] does not have a helmet installed."
 				else
-					to_chat(user, "You detatch \the [helmet] from \the [src]'s helmet mount.")
+					user << "You detatch \the [helmet] from \the [src]'s helmet mount."
 					helmet.loc = get_turf(src)
 					src.helmet = null
 				return
 			else if(istype(W,/obj/item/clothing/head/helmet/space))
 				if(helmet)
-					to_chat(user, "\The [src] already has a helmet installed.")
+					user << "\The [src] already has a helmet installed."
 				else
-					to_chat(user, "You attach \the [W] to \the [src]'s helmet mount.")
+					user << "You attach \the [W] to \the [src]'s helmet mount."
 					user.drop_held_item()
 					W.loc = src
 					src.helmet = W
@@ -253,22 +272,22 @@
 
 			//Installing a component into or modifying the contents of the feet.
 			if(!attached_boots)
-				to_chat(user, "\The [src] does not have boot mounts.")
+				user << "\The [src] does not have boot mounts."
 				return
 
 			if(istype(W,/obj/item/tool/screwdriver))
 				if(!boots)
-					to_chat(user, "\The [src] does not have any boots installed.")
+					user << "\The [src] does not have any boots installed."
 				else
-					to_chat(user, "You detatch \the [boots] from \the [src]'s boot mounts.")
+					user << "You detatch \the [boots] from \the [src]'s boot mounts."
 					boots.loc = get_turf(src)
 					boots = null
 				return
 			else if(istype(W,/obj/item/clothing/shoes/magboots))
 				if(boots)
-					to_chat(user, "\The [src] already has magboots installed.")
+					user << "\The [src] already has magboots installed."
 				else
-					to_chat(user, "You attach \the [W] to \the [src]'s boot mounts.")
+					user << "You attach \the [W] to \the [src]'s boot mounts."
 					user.drop_held_item()
 					W.loc = src
 					boots = W
@@ -366,12 +385,12 @@
 		camera.network = list("NUKE")
 		cameranet.removeCamera(camera)
 		camera.c_tag = user.name
-		to_chat(user, "\blue User scanned as [camera.c_tag]. Camera activated.")
+		user << "\blue User scanned as [camera.c_tag]. Camera activated."
 
 /obj/item/clothing/head/helmet/space/rig/syndi/examine(mob/user)
 	..()
 	if(get_dist(user,src) <= 1)
-		to_chat(user, "This helmet has a built-in camera. It's [camera ? "" : "in"]active.")
+		user << "This helmet has a built-in camera. It's [camera ? "" : "in"]active."
 
 /obj/item/clothing/suit/space/rig/syndi
 	icon_state = "rig-syndie"

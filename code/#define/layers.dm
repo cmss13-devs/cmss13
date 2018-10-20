@@ -84,17 +84,12 @@
 
 //#define FLY_LAYER 5
 
-#define LIGHTING_PLANE 			5
-
-#define LIGHTING_LAYER 			5.2
-
 #define ABOVE_FLY_LAYER 6
 
 #define AREAS_LAYER 10 //for areas, so they appear above everything else on map file.
 
 #define BELOW_FULLSCREEN_LAYER 16.9 //blip from motion detector
-#define FULLSCREEN_PLANE 17
-#define FULLSCREEN_LAYER 17.01
+#define FULLSCREEN_LAYER 17
 #define FULLSCREEN_IMPAIRED_LAYER 17.02 //visual impairment from wearing welding helmet, etc
 #define FULLSCREEN_DRUGGY_LAYER 17.03
 #define FULLSCREEN_BLURRY_LAYER 17.04
@@ -104,9 +99,8 @@
 #define FULLSCREEN_PAIN_LAYER	17.2 //pain flashes
 #define FULLSCREEN_CRIT_LAYER 17.25 //in critical
 
-#define HUD_PLANE 19
-#define HUD_LAYER 19.1
-#define ABOVE_HUD_PLANE 20
-#define ABOVE_HUD_LAYER 20.1
+#define HUD_LAYER 19
+#define ABOVE_HUD_LAYER 20
 
 #define CINEMATIC_LAYER 21
+

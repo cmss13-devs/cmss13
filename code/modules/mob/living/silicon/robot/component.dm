@@ -29,7 +29,7 @@
 		var/obj/item/robot_parts/robot_component/comp = wrapped
 		brokenstate = comp.icon_state_broken
 	if(wrapped)
-		qdel(wrapped)
+		cdel(wrapped)
 
 
 	wrapped = new/obj/item/broken_device

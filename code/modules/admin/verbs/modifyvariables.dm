@@ -18,7 +18,7 @@ var/list/forbidden_varedit_object_types = list(
 	set name = "Edit Ticker Variables"
 
 	if (ticker == null)
-		to_chat(src, "Game hasn't started yet.")
+		src << "Game hasn't started yet."
 	else
 		src.modify_variables(ticker)
 		feedback_add_details("admin_verb","ETV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -128,7 +128,7 @@ var/list/forbidden_varedit_object_types = list(
 /client/proc/mod_list(var/list/L)
 	if(!check_rights(R_VAREDIT))	return
 
-	if(!istype(L,/list)) to_chat(src, "Not a List.")
+	if(!istype(L,/list)) src << "Not a List."
 
 	var/list/locked = list("vars", "key", "ckey", "client", "firemut", "ishulk", "telekinesis", "xray", "virus", "viruses", "cuffed", "ka", "last_eaten", "urine", "poo", "icon", "icon_state")
 	var/list/names = sortList(L)
@@ -150,43 +150,43 @@ var/list/forbidden_varedit_object_types = list(
 		if(!check_rights(R_DEBUG))	return
 
 	if(isnull(variable))
-		to_chat(usr, "Unable to determine variable type.")
+		usr << "Unable to determine variable type."
 
 	else if(isnum(variable))
-		to_chat(usr, "Variable appears to be <b>NUM</b>.")
+		usr << "Variable appears to be <b>NUM</b>."
 		default = "num"
 		dir = 1
 
 	else if(istext(variable))
-		to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+		usr << "Variable appears to be <b>TEXT</b>."
 		default = "text"
 
 	else if(isloc(variable))
-		to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
+		usr << "Variable appears to be <b>REFERENCE</b>."
 		default = "reference"
 
 	else if(isicon(variable))
-		to_chat(usr, "Variable appears to be <b>ICON</b>.")
+		usr << "Variable appears to be <b>ICON</b>."
 		variable = "\icon[variable]"
 		default = "icon"
 
 	else if(istype(variable,/atom) || istype(variable,/datum))
-		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+		usr << "Variable appears to be <b>TYPE</b>."
 		default = "type"
 
 	else if(istype(variable,/list))
-		to_chat(usr, "Variable appears to be <b>LIST</b>.")
+		usr << "Variable appears to be <b>LIST</b>."
 		default = "list"
 
 	else if(istype(variable,/client))
-		to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+		usr << "Variable appears to be <b>CLIENT</b>."
 		default = "cancel"
 
 	else
-		to_chat(usr, "Variable appears to be <b>FILE</b>.")
+		usr << "Variable appears to be <b>FILE</b>."
 		default = "file"
 
-	to_chat(usr, "Variable contains: [variable]")
+	usr << "Variable contains: [variable]"
 	if(dir)
 		switch(variable)
 			if(1)
@@ -209,7 +209,7 @@ var/list/forbidden_varedit_object_types = list(
 				dir = null
 
 		if(dir)
-			to_chat(usr, "If a direction, direction is: [dir]")
+			usr << "If a direction, direction is: [dir]"
 
 	var/class = "text"
 	var/list/choices = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
@@ -279,7 +279,7 @@ var/list/forbidden_varedit_object_types = list(
 
 	for(var/p in forbidden_varedit_object_types)
 		if( istype(O,p) )
-			to_chat(usr, "\red It is forbidden to edit this object's variables.")
+			usr << "\red It is forbidden to edit this object's variables."
 			return
 
 	var/class
@@ -288,7 +288,7 @@ var/list/forbidden_varedit_object_types = list(
 
 	if(param_var_name)
 		if(!param_var_name in O.vars)
-			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist in this atom ([O])")
+			src << "A variable with this name ([param_var_name]) doesn't exist in this atom ([O])"
 			return
 
 		if(param_var_name == "holder" || (param_var_name in locked))
@@ -300,41 +300,41 @@ var/list/forbidden_varedit_object_types = list(
 
 		if(autodetect_class)
 			if(isnull(var_value))
-				to_chat(usr, "Unable to determine variable type.")
+				usr << "Unable to determine variable type."
 				class = null
 				autodetect_class = null
 			else if(isnum(var_value))
-				to_chat(usr, "Variable appears to be <b>NUM</b>.")
+				usr << "Variable appears to be <b>NUM</b>."
 				class = "num"
 				dir = 1
 
 			else if(istext(var_value))
-				to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+				usr << "Variable appears to be <b>TEXT</b>."
 				class = "text"
 
 			else if(isloc(var_value))
-				to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
+				usr << "Variable appears to be <b>REFERENCE</b>."
 				class = "reference"
 
 			else if(isicon(var_value))
-				to_chat(usr, "Variable appears to be <b>ICON</b>.")
+				usr << "Variable appears to be <b>ICON</b>."
 				var_value = "\icon[var_value]"
 				class = "icon"
 
 			else if(istype(var_value,/atom) || istype(var_value,/datum))
-				to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+				usr << "Variable appears to be <b>TYPE</b>."
 				class = "type"
 
 			else if(istype(var_value,/list))
-				to_chat(usr, "Variable appears to be <b>LIST</b>.")
+				usr << "Variable appears to be <b>LIST</b>."
 				class = "list"
 
 			else if(istype(var_value,/client))
-				to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+				usr << "Variable appears to be <b>CLIENT</b>."
 				class = "cancel"
 
 			else
-				to_chat(usr, "Variable appears to be <b>FILE</b>.")
+				usr << "Variable appears to be <b>FILE</b>."
 				class = "file"
 
 	else
@@ -357,43 +357,43 @@ var/list/forbidden_varedit_object_types = list(
 		var/dir
 		var/default
 		if(isnull(var_value))
-			to_chat(usr, "Unable to determine variable type.")
+			usr << "Unable to determine variable type."
 
 		else if(isnum(var_value))
-			to_chat(usr, "Variable appears to be <b>NUM</b>.")
+			usr << "Variable appears to be <b>NUM</b>."
 			default = "num"
 			dir = 1
 
 		else if(istext(var_value))
-			to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+			usr << "Variable appears to be <b>TEXT</b>."
 			default = "text"
 
 		else if(isloc(var_value))
-			to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
+			usr << "Variable appears to be <b>REFERENCE</b>."
 			default = "reference"
 
 		else if(isicon(var_value))
-			to_chat(usr, "Variable appears to be <b>ICON</b>.")
+			usr << "Variable appears to be <b>ICON</b>."
 			var_value = "\icon[var_value]"
 			default = "icon"
 
 		else if(istype(var_value,/atom) || istype(var_value,/datum))
-			to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+			usr << "Variable appears to be <b>TYPE</b>."
 			default = "type"
 
 		else if(istype(var_value,/list))
-			to_chat(usr, "Variable appears to be <b>LIST</b>.")
+			usr << "Variable appears to be <b>LIST</b>."
 			default = "list"
 
 		else if(istype(var_value,/client))
-			to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+			usr << "Variable appears to be <b>CLIENT</b>."
 			default = "cancel"
 
 		else
-			to_chat(usr, "Variable appears to be <b>FILE</b>.")
+			usr << "Variable appears to be <b>FILE</b>."
 			default = "file"
 
-		to_chat(usr, "Variable contains: [var_value]")
+		usr << "Variable contains: [var_value]"
 		if(dir)
 			switch(var_value)
 				if(1)
@@ -415,7 +415,7 @@ var/list/forbidden_varedit_object_types = list(
 				else
 					dir = null
 			if(dir)
-				to_chat(usr, "If a direction, direction is: [dir]")
+				usr << "If a direction, direction is: [dir]"
 
 		if(src.holder && src.holder.marked_datum)
 			class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
@@ -458,7 +458,7 @@ var/list/forbidden_varedit_object_types = list(
 			if(variable=="luminosity")
 				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
 				if(var_new == null) return
-				O.set_light(var_new)
+				O.SetLuminosity(var_new)
 			else if(variable=="stat")
 				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
 				if(var_new == null) return

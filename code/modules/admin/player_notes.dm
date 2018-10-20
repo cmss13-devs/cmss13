@@ -116,7 +116,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 		if(usr.client && usr.client.holder)
 			P.rank = usr.client.holder.rank
 		else
-			to_chat(usr, "NA01: Something went wrong, tell a coder.")
+			usr << "NA01: Something went wrong, tell a coder."
 			return
 	else
 		P.author = "Adminbot"
@@ -130,7 +130,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	message_admins("\blue [key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
 	log_admin("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
 
-	qdel(info)
+	cdel(info)
 
 	//Updating list of keys with notes on them
 	var/savefile/note_list = new("data/player_notes.sav")
@@ -139,7 +139,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	if(!note_keys) note_keys = list()
 	if(!note_keys.Find(key)) note_keys += key
 	note_list << note_keys
-	qdel(note_list)
+	cdel(note_list)
 
 
 /proc/notes_del(var/key, var/index)
@@ -155,7 +155,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	message_admins("\blue [key_name_admin(usr)] deleted one of [key]'s notes.")
 	log_admin("[key_name_admin(usr)] deleted one of [key]'s notes.")
 
-	qdel(info)
+	cdel(info)
 
 /proc/player_notes_show_irc(var/key as text)
 	var/dat = "          Info on [key]%0D%0A"

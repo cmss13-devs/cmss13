@@ -141,12 +141,12 @@
 	if(huggers_cur < caste.huggers_max)
 		if(F.stat == CONSCIOUS && !F.sterile)
 			huggers_cur++
-			to_chat(src, "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [caste.huggers_max].</span>")
-			qdel(F)
+			src << "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [caste.huggers_max].</span>"
+			cdel(F)
 		else
-			to_chat(src, "<span class='warning'>This [F.name] looks too unhealthy.</span>")
+			src << "<span class='warning'>This [F.name] looks too unhealthy.</span>"
 	else
-		to_chat(src, "<span class='warning'>You can't carry more facehuggers on you.</span>")
+		src << "<span class='warning'>You can't carry more facehuggers on you.</span>"
 
 
 /mob/living/carbon/Xenomorph/Carrier/proc/throw_hugger(atom/T)
@@ -160,7 +160,7 @@
 		var/obj/item/clothing/mask/facehugger/F = T
 		if(isturf(F.loc) && Adjacent(F))
 			if(F.hivenumber != hivenumber)
-				to_chat(src, "<span class='warning'>That facehugger is tainted!</span>")
+				src << "<span class='warning'>That facehugger is tainted!</span>"
 				drop_inv_item_on_ground(F)
 				return
 			store_hugger(F)
@@ -170,17 +170,17 @@
 	if(!F) //empty active hand
 		//if no hugger in active hand, we take one from our storage
 		if(huggers_cur <= 0)
-			to_chat(src, "<span class='warning'>You don't have any facehuggers to use!</span>")
+			src << "<span class='warning'>You don't have any facehuggers to use!</span>"
 			return
 		F = new()
 		F.hivenumber = hivenumber
 		huggers_cur--
 		put_in_active_hand(F)
-		to_chat(src, "<span class='xenonotice'>You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [caste.huggers_max].</span>")
+		src << "<span class='xenonotice'>You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [caste.huggers_max].</span>"
 		return
 
 	if(!istype(F)) //something else in our hand
-		to_chat(src, "<span class='warning'>You need a facehugger in your hand to throw one!</span>")
+		src << "<span class='warning'>You need a facehugger in your hand to throw one!</span>"
 		return
 
 	if(!threw_a_hugger)
@@ -202,17 +202,17 @@
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_egg(obj/item/xeno_egg/E)
 	if(E.hivenumber != hivenumber)
-		to_chat(src, "<span class='warning'>That egg is tainted!</span>")
+		src << "<span class='warning'>That egg is tainted!</span>"
 		return
 	if(eggs_cur < caste.eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
-			to_chat(src, "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [caste.eggs_max].</span>")
-			qdel(E)
+			src << "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [caste.eggs_max].</span>"
+			cdel(E)
 		else
-			to_chat(src, "<span class='warning'>This [E.name] looks too unhealthy.</span>")
+			src << "<span class='warning'>This [E.name] looks too unhealthy.</span>"
 	else
-		to_chat(src, "<span class='warning'>You can't carry more eggs on you.</span>")
+		src << "<span class='warning'>You can't carry more eggs on you.</span>"
 
 
 /mob/living/carbon/Xenomorph/Carrier/proc/retrieve_egg(atom/T)
@@ -232,15 +232,15 @@
 	if(!E) //empty active hand
 		//if no hugger in active hand, we take one from our storage
 		if(eggs_cur <= 0)
-			to_chat(src, "<span class='warning'>You don't have any egg to use!</span>")
+			src << "<span class='warning'>You don't have any egg to use!</span>"
 			return
 		E = new()
 		E.hivenumber = hivenumber
 		eggs_cur--
 		put_in_active_hand(E)
-		to_chat(src, "<span class='xenonotice'>You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [caste.eggs_max].</span>")
+		src << "<span class='xenonotice'>You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [caste.eggs_max].</span>"
 		return
 
 	if(!istype(E)) //something else in our hand
-		to_chat(src, "<span class='warning'>You need an empty hand to grab one of your stored eggs!</span>")
+		src << "<span class='warning'>You need an empty hand to grab one of your stored eggs!</span>"
 		return

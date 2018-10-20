@@ -51,7 +51,7 @@
 					src.imp = null
 					update()
 				else
-					to_chat(user, "<span class='notice'> You failed to implant [M].</span>")
+					user << "<span class='notice'> You failed to implant [M].</span>"
 
 	return
 
@@ -109,7 +109,7 @@
 	var/obj/item/implant/compressed/c = imp
 	if (!c)	return
 	if (c.scanned == null)
-		to_chat(user, "Please scan an object with the implanter first.")
+		user << "Please scan an object with the implanter first."
 		return
 	..()
 
@@ -119,7 +119,7 @@
 	if(istype(A,/obj/item) && imp)
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
-			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
+			user << "\red Something is already scanned inside the implant!"
 			return
 		c.scanned = A
 		if(istype(A.loc,/mob/living/carbon/human))

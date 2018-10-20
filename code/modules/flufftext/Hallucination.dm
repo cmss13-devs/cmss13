@@ -28,13 +28,13 @@ mob/living/carbon/proc/handle_hallucinations()
 		switch(halpick)
 			if(0 to 15)
 				//Screwy HUD
-				//to_chat(src, "Screwy HUD")
+				//src << "Screwy HUD"
 				hal_screwyhud = pick(1,2,3,3,4,4)
 				spawn(rand(100,250))
 					hal_screwyhud = 0
 			if(16 to 25)
 				//Strange items
-				//to_chat(src, "Traitor Items")
+				//src << "Traitor Items"
 				if(!halitem)
 					halitem = new
 					var/list/slots_free = list(ui_lhand,ui_rhand)
@@ -82,7 +82,7 @@ mob/living/carbon/proc/handle_hallucinations()
 							halitem = null
 			if(26 to 40)
 				//Flashes of danger
-				//to_chat(src, "Danger Flash")
+				//src << "Danger Flash"
 				if(!halimage)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,world.view))
@@ -92,13 +92,13 @@ mob/living/carbon/proc/handle_hallucinations()
 
 						switch(rand(1,3))
 							if(1)
-								//to_chat(src, "Space")
+								//src << "Space"
 								halimage = image('icons/turf/space.dmi',target,"[rand(1,25)]",TURF_LAYER)
 							if(2)
-								//to_chat(src, "Fire")
+								//src << "Fire"
 								halimage = image('icons/effects/fire.dmi',target,"1",TURF_LAYER)
 							if(3)
-								//to_chat(src, "C4")
+								//src << "C4"
 								halimage = image('icons/obj/items/assemblies.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 
 
@@ -110,7 +110,7 @@ mob/living/carbon/proc/handle_hallucinations()
 
 			if(41 to 65)
 				//Strange audio
-				//to_chat(src, "Strange Audio")
+				//src << "Strange Audio"
 				switch(rand(1,12))
 					if(1) src << 'sound/machines/airlock.ogg'
 					if(2)
@@ -144,7 +144,7 @@ mob/living/carbon/proc/handle_hallucinations()
 						src << pick(creepyasssounds)
 			if(66 to 70)
 				//Flashes of danger
-				//to_chat(src, "Danger Flash")
+				//src << "Danger Flash"
 				if(!halbody)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,world.view))
@@ -240,8 +240,8 @@ proc/check_panel(mob/M)
 	attackby(var/obj/item/P as obj, mob/user as mob)
 		step_away(src,my_target,2)
 		for(var/mob/M in oviewers(world.view,my_target))
-			to_chat(M, "<span class='danger'>[my_target] flails around wildly.</span>")
-		my_target.show_message("<span class='danger'>[src] has been attacked by [my_target] </span>", 1) //Lazy.
+			M << "\red <B>[my_target] flails around wildly.</B>"
+		my_target.show_message("\red <B>[src] has been attacked by [my_target] </B>", 1) //Lazy.
 
 		src.health -= P.force
 
@@ -253,14 +253,14 @@ proc/check_panel(mob/M)
 			step_away(src,my_target,2)
 			if(prob(30))
 				for(var/mob/O in oviewers(world.view , my_target))
-					to_chat(O, "<span class='danger'>[my_target] stumbles around.</span>")
+					O << "\red <B>[my_target] stumbles around.</B>"
 
 	New()
 		..()
 		spawn(300)
 			if(my_target)
 				my_target.hallucinations -= src
-			qdel(src)
+			cdel(src)
 		step_away(src,my_target,2)
 		spawn attack_loop()
 
@@ -270,35 +270,35 @@ proc/check_panel(mob/M)
 			my_target = null
 		weap = null
 		if(currentimage)
-			qdel(currentimage)
+			cdel(currentimage)
 			currentimage = null
 		if(left)
-			qdel(left)
+			cdel(left)
 			left = null
 		if(right)
-			qdel(right)
+			cdel(right)
 			right = null
 		if(up)
-			qdel(up)
+			cdel(up)
 			up = null
 		if(down)
-			qdel(down)
+			cdel(down)
 			down = null
 		. = ..()
 
 	proc/updateimage()
 
 		if(src.dir == NORTH)
-			qdel(src.currentimage)
+			cdel(src.currentimage)
 			src.currentimage = new /image(up,src)
 		else if(src.dir == SOUTH)
-			qdel(src.currentimage)
+			cdel(src.currentimage)
 			src.currentimage = new /image(down,src)
 		else if(src.dir == EAST)
-			qdel(src.currentimage)
+			cdel(src.currentimage)
 			src.currentimage = new /image(right,src)
 		else if(src.dir == WEST)
-			qdel(src.currentimage)
+			cdel(src.currentimage)
 			src.currentimage = new /image(left,src)
 		my_target << currentimage
 
@@ -317,7 +317,7 @@ proc/check_panel(mob/M)
 				if(prob(15))
 					if(weapon_name)
 						my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
-						my_target.show_message("<span class='danger'>[my_target] has been attacked with [weapon_name] by [src.name] </span>", 1)
+						my_target.show_message("\red <B>[my_target] has been attacked with [weapon_name] by [src.name] </B>", 1)
 						my_target.halloss += 8
 						if(prob(20)) my_target.eye_blurry += 3
 						if(prob(33))
@@ -325,7 +325,7 @@ proc/check_panel(mob/M)
 								fake_blood(my_target)
 					else
 						my_target << sound(pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'))
-						my_target.show_message("<span class='danger'>[src.name] has punched [my_target]!</span>", 1)
+						my_target.show_message("\red <B>[src.name] has punched [my_target]!</B>", 1)
 						my_target.halloss += 4
 						if(prob(33))
 							if(!locate(/obj/effect/overlay) in my_target.loc)
@@ -344,7 +344,7 @@ proc/check_panel(mob/M)
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
 	target << I
 	spawn(300)
-		qdel(O)
+		cdel(O)
 	return
 
 var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
@@ -387,5 +387,28 @@ var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
 	F.right = image(clone,dir = EAST)
 	F.up = image(clone,dir = NORTH)
 	F.down = image(clone,dir = SOUTH)
+
+//	F.base = new /icon(clone.stand_icon)
+//	F.currentimage = new /image(clone)
+
+/*
+
+
+
+	F.left = new /icon(clone.stand_icon,dir=WEST)
+	for(var/icon/i in clone.overlays)
+		F.left.Blend(i)
+	F.up = new /icon(clone.stand_icon,dir=NORTH)
+	for(var/icon/i in clone.overlays)
+		F.up.Blend(i)
+	F.down = new /icon(clone.stand_icon,dir=SOUTH)
+	for(var/icon/i in clone.overlays)
+		F.down.Blend(i)
+	F.right = new /icon(clone.stand_icon,dir=EAST)
+	for(var/icon/i in clone.overlays)
+		F.right.Blend(i)
+
+	target << F.up
+	*/
 
 	F.updateimage()

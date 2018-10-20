@@ -101,7 +101,7 @@
 
 /proc/makepowernets()
 	for(var/datum/powernet/PN in powernets)
-		del(PN) //not qdel on purpose, powernet is still using del.
+		del(PN) //not cdel on purpose, powernet is still using del.
 	powernets.Cut()
 
 	for(var/obj/structure/cable/PC in cable_list)
@@ -262,11 +262,11 @@
 
 /obj/machinery/power/proc/disconnect_from_network()
 	if(!powernet)
-		//to_chat(world, " no powernet")
+		//world << " no powernet"
 		return 0
 	powernet.nodes -= src
 	powernet = null
-	//to_chat(world, "powernet null")
+	//world << "powernet null"
 	return 1
 
 /turf/proc/get_cable_node()

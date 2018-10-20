@@ -30,8 +30,8 @@
 		for(var/datum/playingcard/P in H.cards)
 			cards += P
 		update_icon()
-		qdel(O)
-		to_chat(user, "You place your cards on the bottom of the deck.")
+		cdel(O)
+		user << "You place your cards on the bottom of the deck."
 		return
 	..()
 
@@ -56,7 +56,7 @@
 	var/mob/living/carbon/human/user = usr
 
 	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+		usr << "There are no cards in the deck."
 		return
 
 	var/obj/item/toy/handcard/H
@@ -76,7 +76,7 @@
 	H.update_icon()
 	update_icon()
 	user.visible_message("\The [user] draws a card.")
-	to_chat(user, "It's the [P].")
+	user << "It's the [P]."
 
 /obj/item/toy/deck/verb/deal_card()
 
@@ -88,7 +88,7 @@
 	if(usr.stat || !Adjacent(usr)) return
 
 	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+		usr << "There are no cards in the deck."
 		return
 
 	var/list/players = list()
@@ -139,7 +139,7 @@
 	if(!ishuman(over) || !(over in viewers(3))) return
 
 	if(!cards.len)
-		to_chat(usr, "There are no cards in the deck.")
+		usr << "There are no cards in the deck."
 		return
 
 	deal_at(usr, over)
@@ -163,7 +163,7 @@
 		for(var/datum/playingcard/P in H.cards)
 			cards += P
 		src.concealed = H.concealed
-		qdel(O)
+		cdel(O)
 		if(loc != user)
 			user.put_in_hands(src)
 		update_icon()
@@ -193,7 +193,7 @@
 			break
 	if(!found)
 		return
-	qdel(to_discard)
+	cdel(to_discard)
 
 	var/obj/item/toy/handcard/H = new(src.loc)
 	H.cards += card
@@ -205,7 +205,7 @@
 	H.loc = get_step(usr,usr.dir)
 
 	if(!cards.len)
-		qdel(src)
+		cdel(src)
 
 /obj/item/toy/handcard/attack_self(var/mob/user as mob)
 	concealed = !concealed
@@ -215,11 +215,11 @@
 /obj/item/toy/handcard/examine(mob/user)
 	..()
 	if(cards.len)
-		to_chat(user, "It has [cards.len] cards.")
+		user << "It has [cards.len] cards."
 		if((!concealed || loc == user))
-			to_chat(user, "The cards are: ")
+			user << "The cards are: "
 			for(var/datum/playingcard/P in cards)
-				to_chat(user, "The [P.name].")
+				user << "The [P.name]."
 
 /obj/item/toy/handcard/update_icon(var/direction = 0)
 	if(cards.len > 1)

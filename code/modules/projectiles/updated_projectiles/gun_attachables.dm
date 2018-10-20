@@ -79,7 +79,7 @@ Defined in conflicts.dm of the #defines folder.
 	attackby(obj/item/I, mob/user)
 		if(flags_attach_features & ATTACH_RELOADABLE)
 			if(user.get_inactive_hand() != src)
-				to_chat(user, "<span class='warning'>You have to hold [src] to do that!</span>")
+				user << "<span class='warning'>You have to hold [src] to do that!</span>"
 			else
 				reload_attachment(I, user)
 			return TRUE
@@ -194,7 +194,7 @@ Defined in conflicts.dm of the #defines folder.
 	for(var/X in G.actions)
 		var/datum/action/DA = X
 		if(DA.target == src)
-			qdel(X)
+			cdel(X)
 			break
 
 	loc = get_turf(G)
@@ -207,7 +207,7 @@ Defined in conflicts.dm of the #defines folder.
 		if(activate_attachment(G, user)) //success
 			return
 	else
-		to_chat(user, "<span class='warning'>[G] must be in our active hand to do this.</span>")
+		user << "<span class='warning'>[G] must be in our active hand to do this.</span>"
 
 
 
@@ -260,7 +260,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	attackby(obj/item/I, mob/user)
 		if(istype(I,/obj/item/tool/screwdriver))
-			to_chat(user, "<span class='notice'>You modify the bayonet back into a combat knife.</span>")
+			user << "<span class='notice'>You modify the bayonet back into a combat knife.</span>"
 			if(istype(loc, /obj/item/storage))
 				var/obj/item/storage/S = loc
 				S.remove_from_storage(src)
@@ -270,7 +270,7 @@ Defined in conflicts.dm of the #defines folder.
 			user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
 			if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
 				F.loc = src.loc
-			qdel(src) //Delete da old bayonet
+			cdel(src) //Delete da old bayonet
 		else
 			. = ..()
 
@@ -399,7 +399,8 @@ Defined in conflicts.dm of the #defines folder.
 		if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
 			return
 		var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? -1 : 1
-		G.set_light(light_mod * flashlight_on)
+		var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
+		light_source.SetLuminosity(light_mod * flashlight_on)
 		G.flags_gun_features ^= GUN_FLASHLIGHT_ON
 
 		if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
@@ -421,7 +422,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	attackby(obj/item/I, mob/user)
 		if(istype(I,/obj/item/tool/screwdriver))
-			to_chat(user, "<span class='notice'>You modify the rail flashlight back into a normal flashlight.</span>")
+			user << "<span class='notice'>You modify the rail flashlight back into a normal flashlight.</span>"
 			if(istype(loc, /obj/item/storage))
 				var/obj/item/storage/S = loc
 				S.remove_from_storage(src)
@@ -429,7 +430,7 @@ Defined in conflicts.dm of the #defines folder.
 				user.temp_drop_inv_item(src)
 			var/obj/item/device/flashlight/F = new(user)
 			user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-			qdel(src) //Delete da old flashlight
+			cdel(src) //Delete da old flashlight
 		else
 			. = ..()
 
@@ -497,7 +498,7 @@ Defined in conflicts.dm of the #defines folder.
 
 		if(!G.zoom && !(G.flags_item & WIELDED))
 			if(user)
-				to_chat(user, "<span class='warning'>You must hold [G] with two hands to use [src].</span>")
+				user << "<span class='warning'>You must hold [G] with two hands to use [src].</span>"
 			return 0
 		else
 			G.zoom(user, zoom_offset, zoom_viewsize)
@@ -695,12 +696,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(G.active_attachable == src)
 		if(user)
-			to_chat(user, "<span class='notice'>You are no longer using [src].</span>")
+			user << "<span class='notice'>You are no longer using [src].</span>"
 		G.active_attachable = null
 		icon_state = initial(icon_state)
 	else if(!turn_off)
 		if(user)
-			to_chat(user, "<span class='notice'>You are now using [src].</span>")
+			user << "<span class='notice'>You are now using [src].</span>"
 		G.active_attachable = src
 		icon_state += "-on"
 
@@ -737,8 +738,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	examine(mob/user)
 		..()
-		if(current_rounds) 	to_chat(user, "It has [current_rounds] grenade\s left.")
-		else 				to_chat(user, "It's empty.")
+		if(current_rounds) 	user << "It has [current_rounds] grenade\s left."
+		else 				user << "It's empty."
 
 
 
@@ -746,25 +747,25 @@ Defined in conflicts.dm of the #defines folder.
 
 	reload_attachment(obj/item/explosive/grenade/G, mob/user)
 		if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
-			to_chat(user, "<span class='warning'>[src] doesn't accept that type of grenade.</span>")
+			user << "<span class='warning'>[src] doesn't accept that type of grenade.</span>"
 			return
 		if(!G.active) //can't load live grenades
 			if(!G.underslug_launchable)
-				to_chat(user, "<span class='warning'>[src] doesn't accept that type of grenade.</span>")
+				user << "<span class='warning'>[src] doesn't accept that type of grenade.</span>"
 				return
 			if(current_rounds >= max_rounds)
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
+				user << "<span class='warning'>[src] is full.</span>"
 			else
 				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
 				current_rounds++
 				loaded_grenades += G.type
-				to_chat(user, "<span class='notice'>You load [G] in [src].</span>")
+				user << "<span class='notice'>You load [G] in [src].</span>"
 				user.temp_drop_inv_item(G)
-				qdel(G)
+				cdel(G)
 
 	fire_attachment(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 		if(get_dist(user,target) > max_range)
-			to_chat(user, "<span class='warning'>Too far to fire the attachment!</span>")
+			user << "<span class='warning'>Too far to fire the attachment!</span>"
 			return
 		if(current_rounds > 0) prime_grenade(target,gun,user)
 
@@ -808,27 +809,27 @@ Defined in conflicts.dm of the #defines folder.
 
 	examine(mob/user)
 		..()
-		if(current_rounds > 0) to_chat(user, "It has [current_rounds] unit\s of fuel left.")
-		else to_chat(user, "It's empty.")
+		if(current_rounds > 0) user << "It has [current_rounds] unit\s of fuel left."
+		else user << "It's empty."
 
 	reload_attachment(obj/item/ammo_magazine/flamer_tank/FT, mob/user)
 		if(istype(FT))
 			if(current_rounds >= max_rounds)
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
+				user << "<span class='warning'>[src] is full.</span>"
 			else if(FT.current_rounds <= 0)
-				to_chat(user, "<span class='warning'>[FT] is empty!</span>")
+				user << "<span class='warning'>[FT] is empty!</span>"
 			else
 				playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
-				to_chat(user, "<span class='notice'>You refill [src] with [FT].</span>")
+				user << "<span class='notice'>You refill [src] with [FT].</span>"
 				var/transfered_rounds = min(max_rounds - current_rounds, FT.current_rounds)
 				current_rounds += transfered_rounds
 				FT.current_rounds -= transfered_rounds
 		else
-			to_chat(user, "<span class='warning'>[src] can only be refilled with an incinerator tank.</span>")
+			user << "<span class='warning'>[src] can only be refilled with an incinerator tank.</span>"
 
 	fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 		if(get_dist(user,target) > max_range+3)
-			to_chat(user, "<span class='warning'>Too far to fire the attachment!</span>")
+			user << "<span class='warning'>Too far to fire the attachment!</span>"
 			return
 		if(current_rounds) unleash_flame(target, user)
 
@@ -884,7 +885,7 @@ Defined in conflicts.dm of the #defines folder.
 
 		M.adjust_fire_stacks(rand(3,5))
 		M.adjustFireLoss(rand(20,40))  //fwoom!
-		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
+		M << "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!"
 
 /obj/item/attachable/attached_gun/shotgun
 	name = "masterkey shotgun"
@@ -910,25 +911,25 @@ Defined in conflicts.dm of the #defines folder.
 
 	examine(mob/user)
 		..()
-		if(current_rounds > 0) 	to_chat(user, "It has [current_rounds] shell\s left.")
-		else 					to_chat(user, "It's empty.")
+		if(current_rounds > 0) 	user << "It has [current_rounds] shell\s left."
+		else 					user << "It's empty."
 
 	reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
 		if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
 			if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
 				if(current_rounds >= max_rounds)
-					to_chat(user, "<span class='warning'>[src] is full.</span>")
+					user << "<span class='warning'>[src] is full.</span>"
 				else
 					current_rounds++
 					mag.current_rounds--
 					mag.update_icon()
-					to_chat(user, "<span class='notice'>You load one shotgun shell in [src].</span>")
+					user << "<span class='notice'>You load one shotgun shell in [src].</span>"
 					playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
 					if(mag.current_rounds <= 0)
 						user.temp_drop_inv_item(mag)
-						qdel(mag)
+						cdel(mag)
 				return
-		to_chat(user, "<span class='warning'>[src] only accepts shotgun buckshot.</span>")
+		user << "<span class='warning'>[src] only accepts shotgun buckshot.</span>"
 
 
 
@@ -1036,11 +1037,11 @@ Defined in conflicts.dm of the #defines folder.
 			if(user)
 				if(bipod_deployed)
 					var/obj/support = check_bipod_support(G, user)
-					to_chat(user, "<span class='notice'>You deploy [src][support ? " on [support]" : ""].</span>")
+					user << "<span class='notice'>You deploy [src][support ? " on [support]" : ""].</span>"
 					G.aim_slowdown += SLOWDOWN_ADS_SCOPE
 					G.wield_delay += WIELD_DELAY_FAST
 				else
-					to_chat(user, "<span class='notice'>You retract [src].</span>")
+					user << "<span class='notice'>You retract [src].</span>"
 					G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
 					G.wield_delay -= WIELD_DELAY_FAST
 

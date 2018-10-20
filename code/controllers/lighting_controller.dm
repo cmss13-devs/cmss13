@@ -22,7 +22,7 @@ datum/controller/lighting/New()
 	if(lighting_controller != src)
 		if(istype(lighting_controller,/datum/controller/lighting))
 			Recover()	//if we are replacing an existing lighting_controller (due to a crash) we attempt to preserve as much as we can
-			qdel(lighting_controller)
+			cdel(lighting_controller)
 		lighting_controller = src
 
 
@@ -164,4 +164,4 @@ datum/controller/lighting/proc/Recover()
 				msg += "\t [varname] = [varval1] -> [varval2]\n"
 	world.log << msg
 
-//#undef LIGHTING_ICON
+#undef LIGHTING_ICON

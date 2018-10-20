@@ -34,7 +34,7 @@
 			operating = 1
 			flick("pdoorc0", src)
 			icon_state = "pdoor0"
-			set_opacity(0)
+			SetOpacity(0)
 			sleep(15)
 			density = 0
 			operating = 0
@@ -52,7 +52,7 @@
 		operating = 1
 	flick("pdoorc0", src)
 	icon_state = "pdoor0"
-	set_opacity(0)
+	SetOpacity(0)
 	sleep(10)
 	layer = PODDOOR_OPEN_LAYER
 	density = 0
@@ -72,7 +72,7 @@
 	flick("pdoorc1", src)
 	icon_state = "pdoor1"
 	density = 1
-	set_opacity(initial(opacity))
+	SetOpacity(initial(opacity))
 
 	sleep(10)
 	operating = 0
@@ -88,9 +88,9 @@
 		operating = 1
 	flick("pdoorc0", src)
 	icon_state = "pdoor0"
-	set_opacity(0)
-	f1.set_opacity(0)
-	f2.set_opacity(0)
+	SetOpacity(0)
+	f1.SetOpacity(0)
+	f2.SetOpacity(0)
 
 	sleep(10)
 	density = 0
@@ -116,9 +116,9 @@
 	f2.density = 1
 
 	sleep(10)
-	set_opacity(initial(opacity))
-	f1.set_opacity(initial(opacity))
-	f2.set_opacity(initial(opacity))
+	SetOpacity(initial(opacity))
+	f1.SetOpacity(initial(opacity))
+	f2.SetOpacity(initial(opacity))
 
 	operating = 0
 	return
@@ -134,16 +134,16 @@
 	icon_state = "pdoor0"
 	sleep(10)
 	density = 0
-	set_opacity(0)
+	SetOpacity(0)
 
 	f1.density = 0
-	f1.set_opacity(0)
+	f1.SetOpacity(0)
 	f2.density = 0
-	f2.set_opacity(0)
+	f2.SetOpacity(0)
 	f3.density = 0
-	f3.set_opacity(0)
+	f3.SetOpacity(0)
 	f4.density = 0
-	f4.set_opacity(0)
+	f4.SetOpacity(0)
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -161,16 +161,16 @@
 	density = 1
 
 	f1.density = 1
-	f1.set_opacity(1)
+	f1.SetOpacity(1)
 	f2.density = 1
-	f2.set_opacity(1)
+	f2.SetOpacity(1)
 	f3.density = 1
-	f3.set_opacity(1)
+	f3.SetOpacity(1)
 	f4.density = 1
-	f4.set_opacity(1)
+	f4.SetOpacity(1)
 
 	if(visible)
-		set_opacity(1)
+		SetOpacity(1)
 
 	sleep(10)
 	operating = 0
@@ -187,12 +187,12 @@
 	icon_state = "pdoor0"
 	sleep(10)
 	density = 0
-	set_opacity(0)
+	SetOpacity(0)
 
 	f1.density = 0
-	f1.set_opacity(0)
+	f1.SetOpacity(0)
 	f2.density = 0
-	f2.set_opacity(0)
+	f2.SetOpacity(0)
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -210,12 +210,12 @@
 	density = 1
 
 	f1.density = 1
-	f1.set_opacity(1)
+	f1.SetOpacity(1)
 	f2.density = 1
-	f2.set_opacity(1)
+	f2.SetOpacity(1)
 
 	if(visible)
-		set_opacity(1)
+		SetOpacity(1)
 
 	sleep(10)
 	operating = 0
@@ -232,16 +232,16 @@
 	icon_state = "pdoor0"
 	sleep(10)
 	density = 0
-	set_opacity(0)
+	SetOpacity(0)
 
 	f1.density = 0
-	f1.set_opacity(0)
+	f1.SetOpacity(0)
 	f2.density = 0
-	f2.set_opacity(0)
+	f2.SetOpacity(0)
 	f3.density = 0
-	f3.set_opacity(0)
+	f3.SetOpacity(0)
 	f4.density = 0
-	f4.set_opacity(0)
+	f4.SetOpacity(0)
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -259,16 +259,16 @@
 	density = 1
 
 	f1.density = 1
-	f1.set_opacity(1)
+	f1.SetOpacity(1)
 	f2.density = 1
-	f2.set_opacity(1)
+	f2.SetOpacity(1)
 	f3.density = 1
-	f3.set_opacity(1)
+	f3.SetOpacity(1)
 	f4.density = 1
-	f4.set_opacity(1)
+	f4.SetOpacity(1)
 
 	if(visible)
-		set_opacity(1)
+		SetOpacity(1)
 
 	sleep(10)
 	operating = 0
@@ -288,13 +288,13 @@
 		f2 = new/obj/machinery/door/poddoor/filler_object (get_step(src,EAST))
 		f1.density = density
 		f2.density = density
-		f1.set_opacity(opacity)
-		f2.set_opacity(opacity)
+		f1.SetOpacity(opacity)
+		f2.SetOpacity(opacity)
 
 	Dispose()
-		qdel(f1)
+		cdel(f1)
 		f1 = null
-		qdel(f2)
+		cdel(f2)
 		f2 = null
 		. = ..()
 
@@ -309,13 +309,13 @@
 		f2 = new/obj/machinery/door/poddoor/filler_object (get_step(src,NORTH))
 		f1.density = density
 		f2.density = density
-		f1.set_opacity(opacity)
-		f2.set_opacity(opacity)
+		f1.SetOpacity(opacity)
+		f2.SetOpacity(opacity)
 
 	Dispose()
-		qdel(f1)
+		cdel(f1)
 		f1 = null
-		qdel(f2)
+		cdel(f2)
 		f2 = null
 		. = ..()
 
@@ -336,19 +336,19 @@
 		f2.density = density
 		f3.density = density
 		f4.density = density
-		f1.set_opacity(opacity)
-		f2.set_opacity(opacity)
-		f4.set_opacity(opacity)
-		f3.set_opacity(opacity)
+		f1.SetOpacity(opacity)
+		f2.SetOpacity(opacity)
+		f4.SetOpacity(opacity)
+		f3.SetOpacity(opacity)
 
 	Dispose()
-		qdel(f1)
+		cdel(f1)
 		f1 = null
-		qdel(f2)
+		cdel(f2)
 		f2 = null
-		qdel(f3)
+		cdel(f3)
 		f3 = null
-		qdel(f4)
+		cdel(f4)
 		f4 = null
 		. = ..()
 
@@ -369,19 +369,19 @@
 		f2.density = density
 		f3.density = density
 		f4.density = density
-		f1.set_opacity(opacity)
-		f2.set_opacity(opacity)
-		f4.set_opacity(opacity)
-		f3.set_opacity(opacity)
+		f1.SetOpacity(opacity)
+		f2.SetOpacity(opacity)
+		f4.SetOpacity(opacity)
+		f3.SetOpacity(opacity)
 
 	Dispose()
-		qdel(f1)
+		cdel(f1)
 		f1 = null
-		qdel(f2)
+		cdel(f2)
 		f2 = null
-		qdel(f3)
+		cdel(f3)
 		f3 = null
-		qdel(f4)
+		cdel(f4)
 		f4 = null
 		. = ..()
 

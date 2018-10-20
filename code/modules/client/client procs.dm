@@ -1,10 +1,10 @@
 	////////////
 	//SECURITY//
 	////////////
-#define TOPIC_SPAM_DELAY	2			//2 ticks is about 2/10ths of a second; it was 4 ticks, but that caused too many clicks to be lost due to lag
+#define TOPIC_SPAM_DELAY	2		//2 ticks is about 2/10ths of a second; it was 4 ticks, but that caused too many clicks to be lost due to lag
 #define UPLOAD_LIMIT		10485760	//Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
-#define MIN_CLIENT_VERSION	0			//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
-#define MIN_CLIENT_BUILD	1432		//I would just like the code ready should it ever need to be used.
+#define MIN_CLIENT_VERSION	0		//Just an ambiguously low version for now, I don't want to suddenly stop people playing.
+									//I would just like the code ready should it ever need to be used.
 	/*
 	When somebody clicks a link in game, this Topic is called first.
 	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
@@ -23,9 +23,6 @@
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
-
-	if(href_list["_src_"] == "chat") // Oh god the ping hrefs.
-		return chatOutput.Topic(href, href_list)
 
 	//Reduces spamming of links by dropping calls that happen during the delay period
 	if(next_allowed_topic_time > world.time)
@@ -72,11 +69,11 @@
 	if(config.automute_on && !holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
-			to_chat(src, "\red You have exceeded the spam filter limit for identical messages. An auto-mute was applied.")
+			src << "\red You have exceeded the spam filter limit for identical messages. An auto-mute was applied."
 			cmd_admin_mute(src.mob, mute_type, 1)
 			return 1
 		if(src.last_message_count >= SPAM_TRIGGER_WARNING)
-			to_chat(src, "<span class='warning'>You are nearing the spam filter limit for identical messages.</span>")
+			src << "\red You are nearing the spam filter limit for identical messages."
 			return 0
 	else
 		last_message = message
@@ -86,13 +83,13 @@
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
+		src << "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>"
 		return 0
 /*	//Don't need this at the moment. But it's here if it's needed later.
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
+		src << "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>"
 		return 0
 	fileaccess_timer = world.time + FTPDELAY	*/
 	return 1
@@ -102,9 +99,6 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
-
-	chatOutput = new /datum/chatOutput(src) // Right off the bat.
-
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
@@ -112,7 +106,7 @@
 
 	if(!guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
-		qdel(src)
+		cdel(src)
 		return
 
 	// Change the way they should download resources.
@@ -120,7 +114,8 @@
 		src.preload_rsc = pick(config.resource_urls)
 	else src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
 
-	to_chat(src, "<span class='warning'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</span>")
+	src << "\red If the title screen is black, resources are still downloading. Please be patient until the title screen appears."
+
 
 	clients += src
 	directory[ckey] = src
@@ -140,20 +135,19 @@
 	prefs.last_id = computer_id			//these are gonna be used for banning
 
 	. = ..()	//calls mob.Login()
-	chatOutput.start()
 
-	if((byond_version < world.byond_version) || ((byond_version == world.byond_version) && (byond_build < MIN_CLIENT_BUILD)))
-		to_chat(src, "<span class='warning'>Your version of Byond (v[byond_version].[byond_build]) differs from the server (v[world.byond_version].[MIN_CLIENT_BUILD]). You may experience graphical glitches, crashes, or other errors. You will be disconnected until your version matches or exceeds the server version.<br> \
-		Direct Download (Windows Installer): http://www.byond.com/download/build/[world.byond_version]/[world.byond_version].[MIN_CLIENT_BUILD]_byond.exe <br> \
-		Other versions (search for [MIN_CLIENT_BUILD] or higher): http://www.byond.com/download/build/[world.byond_version]</span>")
-		qdel(src)
+	if((byond_version < world.byond_version) || ((byond_version == world.byond_version) && (byond_build < world.byond_build)))
+		src << "<span class='warning'>Your version of Byond (v[byond_version].[byond_build]) differs from the server (v[world.byond_version].[world.byond_build]). You may experience graphical glitches, crashes, or other errors. You will be disconnected until your version matches or exceeds the server version.<br> \
+		Direct Download (Windows Installer): http://www.byond.com/download/build/[world.byond_version]/[world.byond_version].[world.byond_build]_byond.exe <br> \
+		Other versions (search for [world.byond_build] or higher): http://www.byond.com/download/build/[world.byond_version]</span>"
+		cdel(src)
 		return
 
 	if(custom_event_msg && custom_event_msg != "")
-		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
-		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
-		to_chat(src, "<span class='alert'>[html_encode(custom_event_msg)]</span>")
-		to_chat(src, "<br>")
+		src << "<h1 class='alert'>Custom Event</h1>"
+		src << "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>"
+		src << "<span class='alert'>[html_encode(custom_event_msg)]</span>"
+		src << "<br>"
 
 	if( (world.address == address || !address) && !host )
 		host = key
@@ -323,5 +317,5 @@
 		return .
 
 	// Nothing happening, long sleep
-	sleep(5)
+	sleep(32)
 	return .

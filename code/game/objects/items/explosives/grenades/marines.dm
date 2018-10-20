@@ -12,12 +12,12 @@
 /obj/item/explosive/grenade/frag/prime()
 	spawn(0)
 		explosion(loc, -1, -1, 3)
-		qdel(src)
+		cdel(src)
 	return
 
 /obj/item/explosive/grenade/frag/flamer_fire_act()
 	var/turf/T = loc
-	qdel(src)
+	cdel(src)
 	explosion(T, -1, -1, 3)
 
 
@@ -54,7 +54,7 @@
 	prime()
 		spawn(0)
 			explosion(loc, -1, -1, 4)
-			qdel(src)
+			cdel(src)
 		return
 
 /obj/item/explosive/grenade/frag/m15
@@ -67,7 +67,7 @@
 	prime()
 		spawn(0)
 			explosion(loc, -1, -1, 4)
-			qdel(src)
+			cdel(src)
 		return
 
 /obj/item/explosive/grenade/frag/stick
@@ -117,7 +117,7 @@
 		spawn(0)
 			flame_radius(2, get_turf(src))
 			playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-			qdel(src)
+			cdel(src)
 		return
 
 proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
@@ -143,7 +143,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 			playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
 			flame_radius(2, get_turf(src))
 			playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 30, 1, 4)
-			qdel(src)
+			cdel(src)
 		return
 
 
@@ -165,7 +165,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 		smoke.set_up(3, 0, usr.loc, null, 6)
 		smoke.start()
-		qdel(src)
+		cdel(src)
 
 /obj/item/explosive/grenade/phosphorus
 	name = "\improper M40 HPDP grenade"
@@ -186,7 +186,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 		smoke.set_up(3, 0, usr.loc)
 		smoke.start()
-		qdel(src)
+		cdel(src)
 
 /obj/item/explosive/grenade/phosphorus/upp
 	name = "\improper Type 8 WP grenade"

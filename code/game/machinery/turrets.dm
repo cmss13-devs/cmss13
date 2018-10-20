@@ -84,7 +84,7 @@
 
 	if(user.species.can_shred(user) && !(stat & BROKEN))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1, -1)
-		visible_message("<span class='danger'>[user] has slashed at [src]!</span>")
+		visible_message("\red <B>[user] has slashed at [src]!</B>")
 		src.take_damage(15)
 	return
 
@@ -209,7 +209,7 @@
 		cur_target = get_new_target() //get new target
 
 	if(cur_target) //if it's found, proceed
-//		to_chat(world, "[cur_target]")
+//		world << "[cur_target]"
 		if(!isPopping())
 			if(isDown())
 				popUp()
@@ -380,7 +380,7 @@
 		return src.attack_hand(user)
 
 	if (istype(W, /obj/item/weapon/card/emag) && !emagged)
-		to_chat(user, "\red You short out the turret controls' access analysis module.")
+		user << "\red You short out the turret controls' access analysis module."
 		emagged = 1
 		locked = 0
 		if(user.machine==src)
@@ -391,11 +391,11 @@
 	else if( get_dist(src, user) == 0 )		// trying to unlock the interface
 		if (src.allowed(usr))
 			if(emagged)
-				to_chat(user, "<span class='notice'>The turret control is unresponsive.</span>")
+				user << "<span class='notice'>The turret control is unresponsive.</span>"
 				return
 
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the panel.</span>")
+			user << "<span class='notice'>You [ locked ? "lock" : "unlock"] the panel.</span>"
 			if (locked)
 				if (user.machine==src)
 					user.unset_machine()
@@ -404,18 +404,18 @@
 				if (user.machine==src)
 					src.attack_hand(user)
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			user << "<span class='warning'>Access denied.</span>"
 
 /obj/machinery/turretid/attack_ai(mob/user as mob)
 	if(!ailock)
 		return attack_hand(user)
 	else
-		to_chat(user, "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>")
+		user << "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>"
 
 /obj/machinery/turretid/attack_hand(mob/user as mob)
 	if ( get_dist(src, user) > 0 )
 		if ( !issilicon(user) )
-			to_chat(user, "<span class='notice'>You are too far away.</span>")
+			user << "<span class='notice'>You are too far away.</span>"
 			user.unset_machine()
 			user << browse(null, "window=turretid")
 			return
@@ -425,7 +425,7 @@
 	if (istype(loc, /turf))
 		loc = loc:loc
 	if (!istype(loc, /area))
-		to_chat(user, "Turret badly positioned - loc.loc is [].", loc)
+		user << text("Turret badly positioned - loc.loc is [].", loc)
 		return
 	var/area/area = loc
 	var/t = "<TT><B>Turret Control Panel</B> ([area.name])<HR>"
@@ -443,14 +443,14 @@
 /obj/machinery/turret/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	if(!(stat & BROKEN))
-		visible_message("<span class='danger'>[M] [M.attacktext] [src]!</span>")
-		M.attack_log += text("\[[time_stamp()]\] <span class='caution'>attacked [src.name]</span>")
+		visible_message("\red <B>[M] [M.attacktext] [src]!</B>")
+		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 		//src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		src.health -= M.melee_damage_upper
 		if (src.health <= 0)
 			src.die()
 	else
-		to_chat(M, "<span class='warning'>That object is useless to you.</span>")
+		M << "\red That object is useless to you."
 	return
 
 /obj/machinery/turretid/Topic(href, href_list, var/nowindow = 0)
@@ -458,7 +458,7 @@
 		return
 	if (src.locked)
 		if (!istype(usr, /mob/living/silicon))
-			to_chat(usr, "Control panel is locked!")
+			usr << "Control panel is locked!"
 			return
 	if ( get_dist(src, usr) == 0 || issilicon(usr))
 		if (href_list["toggleOn"])

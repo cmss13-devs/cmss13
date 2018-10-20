@@ -50,11 +50,14 @@
 		ChangeTurf(text2path(oldTurf), TRUE)
 	else
 		ChangeTurf(/turf/open/floor/plating, TRUE)
-	//..()
+	..()
 	return TA_PURGE_ME_NOW
 
 /turf/ex_act(severity)
 	return 0
+
+/turf/proc/update_icon() //Base parent. - Abby
+	return
 
 /*
 The purpose of turf processing is for turf types to override process() to do
@@ -91,7 +94,7 @@ spookydonut august 2018
 
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		to_chat(usr, "\red Movement is admin-disabled.") //This is to identify lag problems
+		usr << "\red Movement is admin-disabled." //This is to identify lag problems
 		return
 	if (!mover || !isturf(mover.loc))
 		return 1
@@ -193,34 +196,23 @@ spookydonut august 2018
 			O.hide(intact_tile)
 
 
-//Creates a new turf. this is called by every code that changes a turf ("spawn atom" verb, qdel, build mode stuff, etc)
-/turf/proc/ChangeTurf(new_turf_path, forget_old_turf=0, var/force_lighting_update = 0)
+//Creates a new turf. this is called by every code that changes a turf ("spawn atom" verb, cdel, build mode stuff, etc)
+/turf/proc/ChangeTurf(new_turf_path, forget_old_turf)
 	if (!new_turf_path)
 		return
 
-	//to_chat(world, "Replacing [src.type] with [new_turf_path]")
-	var/old_opacity = opacity
-	var/old_dynamic_lighting = dynamic_lighting
-	var/old_affecting_lights = affecting_lights
-	var/old_lighting_overlay = lighting_overlay
-	var/old_corners = corners
+	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
+
+	//world << "Replacing [src.type] with [new_turf_path]"
+
 	var/path = "[src.type]"
 	var/turf/W = new new_turf_path( locate(src.x, src.y, src.z) )
 	if(!forget_old_turf)	//e.g. if an admin spawn a new wall on a wall tile, we don't
 		W.oldTurf = path	//want the new wall to change into the old wall when destroyed
-
-	recalc_atom_opacity()
-	if (SSlighting && SSlighting.initialized)
-		lighting_overlay = old_lighting_overlay
-		affecting_lights = old_affecting_lights
-		corners = old_corners
-		if((old_opacity != opacity) || (dynamic_lighting != old_dynamic_lighting) || force_lighting_update)
-			reconsider_lights()
-		if(dynamic_lighting != old_dynamic_lighting)
-			if(dynamic_lighting)
-				lighting_build_overlay()
-			else
-				lighting_clear_overlay()
+	W.lighting_lumcount += old_lumcount
+	if(old_lumcount != W.lighting_lumcount)
+		W.lighting_changed = 1
+		lighting_controller.changed_turfs += W
 
 	W.levelupdate()
 	return W
@@ -327,19 +319,19 @@ spookydonut august 2018
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_NONE)
-			to_chat(user, "It is in the open.")
+			user << "It is in the open."
 		if(CEILING_GLASS)
-			to_chat(user, "The ceiling above is glass.")
+			user << "The ceiling above is glass."
 		if(CEILING_METAL)
-			to_chat(user, "The ceiling above is metal.")
+			user << "The ceiling above is metal."
 		if(CEILING_UNDERGROUND)
-			to_chat(user, "It is underground. The cavern roof lies above.")
+			user << "It is underground. The cavern roof lies above."
 		if(CEILING_UNDERGROUND_METAL)
-			to_chat(user, "It is underground. The ceiling above is metal.")
+			user << "It is underground. The ceiling above is metal."
 		if(CEILING_DEEP_UNDERGROUND)
-			to_chat(user, "It is deep underground. The cavern roof lies above.")
+			user << "It is deep underground. The cavern roof lies above."
 		if(CEILING_DEEP_UNDERGROUND_METAL)
-			to_chat(user, "It is deep underground. The ceiling above is metal.")
+			user << "It is deep underground. The ceiling above is metal."
 
 
 

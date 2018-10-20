@@ -430,16 +430,3 @@ datum/projectile_data
 /proc/convert_c2k(var/temp)
 	return ((temp + T0C))
 
-/proc/flick_overlay(image/I, list/show_to, duration)
-	set waitfor = FALSE
-	for(var/client/C in show_to)
-		C.images += I
-	spawn(duration)
-		for(var/client/C in show_to)
-			C.images -= I
-
-/proc/clients_in_moblist(var/list/mob/mobs)
-	. = list()
-	for(var/mob/M in mobs)
-		if(M.client)
-			. += M.client

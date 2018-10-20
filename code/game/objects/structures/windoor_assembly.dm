@@ -73,13 +73,13 @@ obj/structure/windoor_assembly/Dispose()
 
 					if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn()) return
-						to_chat(user, "<span class='notice'>You dissasembled the windoor assembly!</span>")
+						user << "\blue You dissasembled the windoor assembly!"
 						new /obj/item/stack/sheet/glass/reinforced(get_turf(src), 5)
 						if(secure)
 							new /obj/item/stack/rods(get_turf(src), 4)
-						qdel(src)
+						cdel(src)
 				else
-					to_chat(user, "<span class='notice'>You need more welding fuel to dissassemble the windoor assembly.</span>")
+					user << "\blue You need more welding fuel to dissassemble the windoor assembly."
 					return
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
@@ -89,7 +89,7 @@ obj/structure/windoor_assembly/Dispose()
 
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 					if(!src) return
-					to_chat(user, "<span class='notice'>You've secured the windoor assembly!</span>")
+					user << "\blue You've secured the windoor assembly!"
 					src.anchored = 1
 					if(src.secure)
 						src.name = "Secure Anchored Windoor Assembly"
@@ -103,7 +103,7 @@ obj/structure/windoor_assembly/Dispose()
 
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 					if(!src) return
-					to_chat(user, "<span class='notice'>You've unsecured the windoor assembly!</span>")
+					user << "\blue You've unsecured the windoor assembly!"
 					src.anchored = 0
 					if(src.secure)
 						src.name = "Secure Windoor Assembly"
@@ -114,13 +114,13 @@ obj/structure/windoor_assembly/Dispose()
 			else if(istype(W, /obj/item/stack/rods) && !secure)
 				var/obj/item/stack/rods/R = W
 				if(R.get_amount() < 4)
-					to_chat(user, "<span class='warning'>You need more rods to do this.</span>")
+					user << "<span class='warning'>You need more rods to do this.</span>"
 					return
-				to_chat(user, "<span class='notice'>You start to reinforce the windoor with rods.</span>")
+				user << "<span class='notice'>You start to reinforce the windoor with rods.</span>"
 
 				if(do_after(user,40, TRUE, 5, BUSY_ICON_BUILD) && !secure)
 					if (R.use(4))
-						to_chat(user, "<span class='notice'>You reinforce the windoor.</span>")
+						user << "<span class='notice'>You reinforce the windoor.</span>"
 						src.secure = "secure_"
 						if(src.anchored)
 							src.name = "Secure Anchored Windoor Assembly"
@@ -134,7 +134,7 @@ obj/structure/windoor_assembly/Dispose()
 				var/obj/item/stack/cable_coil/CC = W
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 					if (CC.use(1))
-						to_chat(user, "<span class='notice'>You wire the windoor!</span>")
+						user << "<span class='notice'>You wire the windoor!</span>"
 						src.state = "02"
 						if(src.secure)
 							src.name = "Secure Wired Windoor Assembly"
@@ -153,7 +153,7 @@ obj/structure/windoor_assembly/Dispose()
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 					if(!src) return
 
-					to_chat(user, "<span class='notice'>You cut the windoor wires.!</span>")
+					user << "\blue You cut the windoor wires.!"
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
 					src.state = "01"
 					if(src.secure)
@@ -171,7 +171,7 @@ obj/structure/windoor_assembly/Dispose()
 
 					user.drop_held_item()
 					W.loc = src
-					to_chat(user, "<span class='notice'>You've installed the airlock electronics!</span>")
+					user << "\blue You've installed the airlock electronics!"
 					src.name = "Near finished Windoor Assembly"
 					src.electronics = W
 				else
@@ -184,7 +184,7 @@ obj/structure/windoor_assembly/Dispose()
 
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 					if(!src || !src.electronics) return
-					to_chat(user, "<span class='notice'>You've removed the airlock electronics!</span>")
+					user << "\blue You've removed the airlock electronics!"
 					if(src.secure)
 						src.name = "Secure Wired Windoor Assembly"
 					else
@@ -196,7 +196,7 @@ obj/structure/windoor_assembly/Dispose()
 			//Crowbar to complete the assembly, Step 7 complete.
 			else if(istype(W, /obj/item/tool/crowbar))
 				if(!src.electronics)
-					to_chat(usr, "<span class='warning'>The assembly is missing electronics.</span>")
+					usr << "\red The assembly is missing electronics."
 					return
 				usr << browse(null, "window=windoor_access")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -207,7 +207,7 @@ obj/structure/windoor_assembly/Dispose()
 					if(!src) return
 
 					density = 1 //Shouldn't matter but just incase
-					to_chat(user, "<span class='notice'>You finish the windoor!</span>")
+					user << "\blue You finish the windoor!"
 
 					if(secure)
 						var/obj/machinery/door/window/brigdoor/windoor = new /obj/machinery/door/window/brigdoor(src.loc)
@@ -247,7 +247,7 @@ obj/structure/windoor_assembly/Dispose()
 						src.electronics.loc = windoor
 
 
-					qdel(src)
+					cdel(src)
 
 
 			else
@@ -264,7 +264,7 @@ obj/structure/windoor_assembly/Dispose()
 	set src in oview(1)
 
 	if (src.anchored)
-		to_chat(usr, "It is fastened to the floor; therefore, you can't rotate it!")
+		usr << "It is fastened to the floor; therefore, you can't rotate it!"
 		return 0
 	src.dir = turn(src.dir, 270)
 	update_icon()
@@ -277,11 +277,11 @@ obj/structure/windoor_assembly/Dispose()
 	set src in oview(1)
 
 	if(src.facing == "l")
-		to_chat(usr, "The windoor will now slide to the right.")
+		usr << "The windoor will now slide to the right."
 		src.facing = "r"
 	else
 		src.facing = "l"
-		to_chat(usr, "The windoor will now slide to the left.")
+		usr << "The windoor will now slide to the left."
 
 	update_icon()
 	return

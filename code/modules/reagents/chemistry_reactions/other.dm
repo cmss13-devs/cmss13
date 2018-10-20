@@ -21,15 +21,15 @@
 			//Should be removed when we actually balance out chemistry.
 				var/obj/item/explosive/grenade/g
 				var/obj/item/storage/s
-				for(g in location) qdel(g) //Grab anything on our turf/something.
+				for(g in location) cdel(g) //Grab anything on our turf/something.
 				if(istype(location, /obj/item/storage) || ismob(location)) //If we're in a bag or person.
 					for(s in location) //Find all other containers.
-						for(g in s) qdel(g) //Delete all the grenades.
+						for(g in s) cdel(g) //Delete all the grenades.
 				if(istype(location.loc, /obj/item/storage) || ismob(location.loc)) //If the container is in another container.
-					for(g in location.loc) qdel(g) //Delete all the grenades inside.
+					for(g in location.loc) cdel(g) //Delete all the grenades inside.
 					for(s in location.loc) //Search for more containers.
 						if(s == location) continue //Don't search the container we're in.
-						for(g in s) qdel(g) //Delete all the grenades inside.
+						for(g in s) cdel(g) //Delete all the grenades inside.
 		holder.clear_reagents()
 		return
 
@@ -349,16 +349,16 @@
 
 		var/location = get_turf(holder.my_atom)
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution violently bubbles!</span>")
+			M << "\red The solution violently bubbles!"
 
 		location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution spews out foam!</span>")
+			M << "\red The solution spews out foam!"
 
-		//to_chat(world, "Holder volume is [holder.total_volume]")
+		//world << "Holder volume is [holder.total_volume]"
 		//for(var/datum/reagent/R in holder.reagent_list)
-		//	to_chat(world, "[R.name] = [R.volume]")
+		//	world << "[R.name] = [R.volume]"
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 0)
@@ -378,7 +378,7 @@
 		var/location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
+			M << "\red The solution spews out a metalic foam!"
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 1)
@@ -397,7 +397,7 @@
 		var/location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
+			M << "\red The solution spews out a metalic foam!"
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 2)

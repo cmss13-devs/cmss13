@@ -27,7 +27,7 @@
 		if(usr.drop_held_item())
 			O.forceMove(src)
 			scan = O
-			to_chat(user, "You insert [O].")
+			user << "You insert [O]."
 	..()
 
 /obj/machinery/computer/skills/attack_ai(mob/user as mob)
@@ -41,7 +41,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, "<span class='danger'>Unable to establish a connection</span>: \black You're too far away from the station!")
+		user << "\red <b>Unable to establish a connection</b>: \black You're too far away from the station!"
 		return
 	var/dat
 
@@ -295,7 +295,7 @@ What a mess.*/
 					PDA_Manifest.Cut()
 				for(var/datum/data/record/R in data_core.security)
 					data_core.security -= R
-					qdel(R)
+					cdel(R)
 				temp = "All Employment records deleted."
 
 			if ("Delete Record (ALL)")
@@ -380,9 +380,9 @@ What a mess.*/
 							for(var/datum/data/record/R in data_core.medical)
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									data_core.medical -= R
-									qdel(R)
+									cdel(R)
 								else
-							qdel(active1)
+							cdel(active1)
 							active1 = null
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."
@@ -417,7 +417,7 @@ What a mess.*/
 
 		else if(prob(1))
 			data_core.security -= R
-			qdel(R)
+			cdel(R)
 			continue
 
 	..(severity)

@@ -50,13 +50,13 @@
 					custom_pain("Your head feels numb and painful.")
 			if(4 to 6)
 				if(getBrainLoss() >= 15 && eye_blurry <= 0)
-					to_chat(src, "<span class='danger'>It becomes hard to see for some reason.</span>")
+					src << "<span class='danger'>It becomes hard to see for some reason.</span>"
 					eye_blurry = 10
 			if(7 to 9)
 				if(getBrainLoss() >= 35 && (hand && get_held_item()))
-					to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding.</span>")
+					src << "<span class='danger'>Your hand won't respond properly, you drop what you're holding.</span>"
 					drop_held_item()
 			if(10 to 12)
 				if(getBrainLoss() >= 50 && !lying)
-					to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down.</span>")
+					src << "<span class='danger'>Your legs won't respond properly, you fall down.</span>"
 					resting = 1

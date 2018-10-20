@@ -22,14 +22,14 @@
 
 	if(!origin)
 		user.temp_drop_inv_item(src)
-		qdel(src)
+		cdel(src)
 		return
 
 	if(user)
 		origin.loc = get_turf(user)
 		user.temp_drop_inv_item(src)
-		user.visible_message("<span class='notice'>[user] puts [src] down.</span>", "<span class='notice'>You put [src] down.</span>")
-		qdel(src)
+		user.visible_message("\blue [user] puts [src] down.", "\blue You put [src] down.")
+		cdel(src)
 
 /obj/item/stool/attack_self(mob/user as mob)
 	..()
@@ -45,6 +45,6 @@
 		if(istype(T) && !isXeno(T))
 			T.KnockDown(10)
 		T.apply_damage(20)
-		qdel(src)
+		cdel(src)
 		return
 	..()

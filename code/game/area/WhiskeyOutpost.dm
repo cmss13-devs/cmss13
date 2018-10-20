@@ -74,7 +74,7 @@
 	ambience = list('sound/ambience/jungle_amb1.ogg')
 	requires_power = 1
 	always_unpowered = 1
-	//lighting_use_dynamic = 1
+	lighting_use_dynamic = 1
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -174,7 +174,7 @@
 	ceiling = CEILING_UNDERGROUND
 	requires_power = 1
 	always_unpowered = 1
-	//lighting_use_dynamic = 1
+	lighting_use_dynamic = 1
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

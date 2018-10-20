@@ -163,11 +163,11 @@
 /obj/machinery/atmospherics/unary/cryo_cell/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			user << "<span class='warning'>A beaker is already loaded into the machine.</span>"
 			return
 
 		if(istype(W, /obj/item/reagent_container/glass/bucket))
-			to_chat(user, "<span class='warning'>That's too big to fit!</span>")
+			user << "<span class='warning'>That's too big to fit!</span>"
 			return
 
 		beaker =  W
@@ -251,23 +251,23 @@
 	return
 /obj/machinery/atmospherics/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if (stat & (NOPOWER|BROKEN))
-		to_chat(usr, "<span class='warning'>The cryo cell is not functioning.</span>")
+		usr << "\red The cryo cell is not functioning."
 		return
 	if (!istype(M))
-		to_chat(usr, "<span class='danger'>The cryo cell cannot handle such a lifeform!</span>")
+		usr << "\red <B>The cryo cell cannot handle such a lifeform!</B>"
 		return
 	if (occupant)
-		to_chat(usr, "<span class='danger'>The cryo cell is already occupied!</span>")
+		usr << "\red <B>The cryo cell is already occupied!</B>"
 		return
 	if (M.abiotic())
-		to_chat(usr, "<span class='warning'>Subject may not have abiotic items on.</span>")
+		usr << "\red Subject may not have abiotic items on."
 		return
 	if(!node)
-		to_chat(usr, "<span class='warning'>The cell is not correctly connected to its pipe network!</span>")
+		usr << "\red The cell is not correctly connected to its pipe network!"
 		return
 	M.forceMove(src)
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
-		to_chat(M, "<span class='boldnotice'>You feel a cold liquid surround you. Your skin starts to freeze up.</span>")
+		M << "\blue <b>You feel a cold liquid surround you. Your skin starts to freeze up.</b>"
 	occupant = M
 	update_use_power(2)
 //	M.metabslow = 1
@@ -282,7 +282,7 @@
 	if(usr == occupant)//If the user is inside the tube...
 		if (usr.stat == 2)//and he's not dead....
 			return
-		to_chat(usr, "<span class='notice'>Release sequence activated. This will take two minutes.</span>")
+		usr << "\blue Release sequence activated. This will take two minutes."
 		sleep(1200)
 		if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 			return

@@ -28,7 +28,7 @@
 		return
 
 	if(!( connected ))
-		visible_message("Cannot locate mass driver connector. Cancelling firing sequence!")
+		viewers(null, null) << "Cannot locate mass driver connector. Cancelling firing sequence!"
 		return
 
 	for(var/obj/machinery/door/poddoor/M in machines)
@@ -55,7 +55,7 @@
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20))
 			if(stat & BROKEN)
-				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+				user << "\blue The broken glass falls out."
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( loc )
 				new /obj/item/shard( loc )
 
@@ -77,9 +77,9 @@
 				A.state = 3
 				A.icon_state = "3"
 				A.anchored = 1
-				qdel(src)
+				cdel(src)
 			else
-				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+				user << "\blue You disconnect the monitor."
 				var/obj/structure/computerframe/A = new /obj/structure/computerframe( loc )
 
 				//generate appropriate circuitboard. Accounts for /pod/old computer types
@@ -100,7 +100,7 @@
 				A.state = 4
 				A.icon_state = "4"
 				A.anchored = 1
-				qdel(src)
+				cdel(src)
 	else
 		attack_hand(user)
 	return
@@ -212,7 +212,7 @@
 
 /obj/machinery/computer/pod/old/syndicate/attack_hand(var/mob/user as mob)
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'> Access Denied</span>")
+		user << "\red Access Denied"
 		return
 	else
 		..()

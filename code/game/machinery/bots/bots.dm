@@ -20,25 +20,29 @@
 	if(stat)
 		return 0
 	on = 1
-	set_light(initial(luminosity))
+	SetLuminosity(initial(luminosity))
 	return 1
 
 /obj/machinery/bot/proc/turn_off()
 	on = 0
-	set_light(0)
+	SetLuminosity(0)
 
 /obj/machinery/bot/proc/explode()
-	qdel(src)
+	cdel(src)
 
 /obj/machinery/bot/proc/healthcheck()
 	if(health <= 0)
 		explode()
 
+/obj/machinery/bot/Dispose()
+	SetLuminosity(0)
+	. = ..()
+
 /obj/machinery/bot/proc/Emag(mob/user as mob)
 	if(locked)
 		locked = 0
 		emagged = 1
-		to_chat(user, "<span class='warning'>You short out [src]'s maintenance hatch lock.</span>")
+		user << "<span class='warning'>You short out [src]'s maintenance hatch lock.</span>"
 		log_and_message_admins("emagged [src]'s maintenance hatch lock")
 	if(!locked && open)
 		emagged = 2
@@ -48,15 +52,15 @@
 	..()
 	if(health < maxhealth)
 		if(health > maxhealth/3)
-			to_chat(user, "<span class='warning'>[src]'s parts look loose.</span>")
+			user << "<span class='warning'>[src]'s parts look loose.</span>"
 		else
-			to_chat(user, "<span class='danger'>[src]'s parts look very loose!</span>")
+			user << "<span class='danger'>[src]'s parts look very loose!</span>"
 
 /obj/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
-	visible_message("<span class='danger'>[M] has [M.attacktext] [src]!</span>")
-	M.attack_log += text("\[[time_stamp()]\] <span class='caution'>attacked [src.name]</span>")
+	visible_message("\red <B>[M] has [M.attacktext] [src]!</B>")
+	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
@@ -65,16 +69,16 @@
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!locked)
 			open = !open
-			to_chat(user, "<span class='notice'>Maintenance panel is now [src.open ? "opened" : "closed"].</span>")
+			user << "<span class='notice'>Maintenance panel is now [src.open ? "opened" : "closed"].</span>"
 	else if(istype(W, /obj/item/tool/weldingtool))
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)
-				user.visible_message("<span class='warning'>[user] repairs [src]!","<span class='notice'>You repair [src]!</span></span>")
+				user.visible_message("\red [user] repairs [src]!","\blue You repair [src]!")
 			else
-				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
+				user << "<span class='notice'>Unable to repair with the maintenance panel closed.</span>"
 		else
-			to_chat(user, "<span class='notice'>[src] does not need a repair.</span>")
+			user << "<span class='notice'>[src] does not need a repair.</span>"
 	else if (istype(W, /obj/item/card/emag) && emagged < 2)
 		Emag(user)
 	else

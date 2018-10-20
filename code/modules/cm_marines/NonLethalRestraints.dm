@@ -13,6 +13,10 @@
 
 	origin_tech = "combat=2"
 
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is putting the live [src.name] in \his mouth! It looks like \he's trying to commit suicide.</b>"
+		return (FIRELOSS)
+
 /obj/item/weapon/stunprod/update_icon()
 	if(status)
 		icon_state = "stunbaton_active"
@@ -21,7 +25,7 @@
 
 /obj/item/weapon/stunprod/attack_self(mob/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>You grab the [src] on the wrong side.</span>")
+		user << "\red You grab the [src] on the wrong side."
 		user.KnockDown(30)
 		charges--
 		if(charges < 1)
@@ -30,17 +34,17 @@
 		return
 	if(charges > 0)
 		status = !status
-		to_chat(user, "<span class='notice'>\The [src] is now [status ? "on" : "off"].</span>")
+		user << "<span class='notice'>\The [src] is now [status ? "on" : "off"].</span>"
 		playsound(src.loc, "sparks", 15, 1)
 		update_icon()
 	else
 		status = 0
-		to_chat(user, "<span class='warning'>\The [src] is out of charge.</span>")
+		user << "<span class='warning'>\The [src] is out of charge.</span>"
 	add_fingerprint(user)
 
 /obj/item/weapon/stunprod/attack(mob/M, mob/user)
 	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
+		user << "<span class='danger'>You accidentally hit yourself with the [src]!</span>"
 		user.KnockDown(30)
 		charges--
 		if(charges < 1)
@@ -100,4 +104,4 @@
 
 	examine(mob/user)
 		..()
-		to_chat(user, "<span class='notice'>It has [charges] charges left.</span>")
+		user << "<span class='notice'>It has [charges] charges left.</span>"

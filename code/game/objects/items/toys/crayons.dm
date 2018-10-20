@@ -46,11 +46,11 @@
 	if(colour != "#FFFFFF" && shadeColour != "#000000")
 		colour = "#FFFFFF"
 		shadeColour = "#000000"
-		to_chat(user, "You will now draw in white and black with this crayon.")
+		user << "You will now draw in white and black with this crayon."
 	else
 		colour = "#000000"
 		shadeColour = "#FFFFFF"
-		to_chat(user, "You will now draw in black and white with this crayon.")
+		user << "You will now draw in black and white with this crayon."
 	return
 
 /obj/item/toy/crayon/rainbow
@@ -72,30 +72,30 @@
 		switch(drawtype)
 			if("letter")
 				drawtype = input("Choose the letter.", "Crayon scribbles") in list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
-				to_chat(user, "You start drawing a letter on the [target.name].")
+				user << "You start drawing a letter on the [target.name]."
 			if("graffiti")
-				to_chat(user, "You start drawing graffiti on the [target.name].")
+				user << "You start drawing graffiti on the [target.name]."
 			if("rune")
-				to_chat(user, "You start drawing a rune on the [target.name].")
+				user << "You start drawing a rune on the [target.name]."
 		if(instant || do_after(user, 50, TRUE, 5, BUSY_ICON_GENERIC))
 			new /obj/effect/decal/cleanable/crayon(target,colour,shadeColour,drawtype)
-			to_chat(user, "You finish drawing.")
+			user << "You finish drawing."
 			target.add_fingerprint(user)		// Adds their fingerprints to the floor the crayon is drawn on.
 			if(uses)
 				uses--
 				if(!uses)
-					to_chat(user, "<span class='warning'>You used up your crayon!</span>")
-					qdel(src)
+					user << "\red You used up your crayon!"
+					cdel(src)
 	return
 
 /obj/item/toy/crayon/attack(mob/M as mob, mob/user as mob)
 	if(M == user)
-		to_chat(user, "You take a bite of the crayon and swallow it.")
+		user << "You take a bite of the crayon and swallow it."
 //		user.nutrition += 5
 		if(uses)
 			uses -= 5
 			if(uses <= 0)
-				to_chat(user, "<span class='warning'>You ate your crayon!</span>")
-				qdel(src)
+				user << "\red You ate your crayon!"
+				cdel(src)
 	else
 		..()

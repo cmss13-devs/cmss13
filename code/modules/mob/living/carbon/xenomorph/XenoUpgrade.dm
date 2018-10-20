@@ -10,43 +10,43 @@
 	switch(upgrade)
 		//FIRST UPGRADE
 		if(1)
-			to_chat(src, "<span class='xenodanger'>You feel a bit stronger.</span>")
+			src << "<span class='xenodanger'>You feel a bit stronger.</span>"
 		//SECOND UPGRADE
 		if(2)
-			to_chat(src, "<span class='xenodanger'>You feel a whole lot stronger.</span>")
+			src << "<span class='xenodanger'>You feel a whole lot stronger.</span>"
 		//Final UPGRADE
 		if(3)
 			switch(caste.caste_name)
 				if("Runner")
-					to_chat(src, "<span class='xenoannounce'>You are the fastest assassin of all time. Your speed is unmatched.</span>")
+					src << "<span class='xenoannounce'>You are the fastest assassin of all time. Your speed is unmatched.</span>"
 				if("Lurker")
-					to_chat(src, "<span class='xenoannounce'>You are the epitome of the hunter. Few can stand against you in open combat.</span>")
+					src << "<span class='xenoannounce'>You are the epitome of the hunter. Few can stand against you in open combat.</span>"
 				if("Ravager")
-					to_chat(src, "<span class='xenoannounce'>You are death incarnate. All will tremble before you.</span>")
+					src << "<span class='xenoannounce'>You are death incarnate. All will tremble before you.</span>"
 				if ("Defender")
-					to_chat(src, "<span class='xenoannounce'>You are a incredibly resilient, you can control the battle through sheer force.</span>")
+					src << "<span class='xenoannounce'>You are a incredibly resilient, you can control the battle through sheer force.</span>"
 				if ("Warrior")
-					to_chat(src, "<span class='xenoannounce'>None can stand before you. You will annihilate all weaklings who try.</span>")
+					src << "<span class='xenoannounce'>None can stand before you. You will annihilate all weaklings who try.</span>"
 				if("Crusher")
-					to_chat(src, "<span class='xenoannounce'>You are the physical manifestation of a Tank. Almost nothing can harm you.</span>")
+					src << "<span class='xenoannounce'>You are the physical manifestation of a Tank. Almost nothing can harm you.</span>"
 				if("Sentinel")
-					to_chat(src, "<span class='xenoannounce'>You are the stun master. Your stunning is legendary and causes massive quantities of salt.</span>")
+					src << "<span class='xenoannounce'>You are the stun master. Your stunning is legendary and causes massive quantities of salt.</span>"
 				if("Spitter")
-					to_chat(src, "<span class='xenoannounce'>You are a master of ranged stuns and damage. Go fourth and generate salt.</span>")
+					src << "<span class='xenoannounce'>You are a master of ranged stuns and damage. Go fourth and generate salt.</span>"
 				if("Boiler")
-					to_chat(src, "<span class='xenoannounce'>You are the master of ranged artillery. Bring death from above.</span>")
+					src << "<span class='xenoannounce'>You are the master of ranged artillery. Bring death from above.</span>"
 				if("Praetorian")
-					to_chat(src, "<span class='xenoannounce'>You are the strongest range fighter around. Your spit is devestating and you can fire nearly a constant stream.</span>")
+					src << "<span class='xenoannounce'>You are the strongest range fighter around. Your spit is devestating and you can fire nearly a constant stream.</span>"
 				if("Drone")
-					to_chat(src, "<span class='xenoannounce'>You are the ultimate worker of the Hive. Time to clock in, and clock the tallhosts out.</span>")
+					src <<"<span class='xenoannounce'>You are the ultimate worker of the Hive. Time to clock in, and clock the tallhosts out.</span>"
 				if("Hivelord")
-					to_chat(src, "<span class='xenoannounce'>You are the builder of walls. Ensure that the marines are the ones who pay for them.</span>")
+					src <<"<span class='xenoannounce'>You are the builder of walls. Ensure that the marines are the ones who pay for them.</span>"
 				if("Carrier")
-					to_chat(src, "<span class='xenoannounce'>You are the master of huggers. Throw them like baseballs at the marines!</span>")
+					src << "<span class='xenoannounce'>You are the master of huggers. Throw them like baseballs at the marines!</span>"
 				if("Burrower")
-					to_chat(src, "<span class='xenoannounce'>You are the master of traps. You are the bane of marine pushes!</span>")
+					src << "<span class='xenoannounce'>You are the master of traps. You are the bane of marine pushes!</span>"
 				if("Queen")
-					to_chat(src, "<span class='xenoannounce'>You are the Alpha and the Omega. The beginning and the end.</span>")
+					src << "<span class='xenoannounce'>You are the Alpha and the Omega. The beginning and the end.</span>"
 
 	caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
 	maxHealth = caste.max_health

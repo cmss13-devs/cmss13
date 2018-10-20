@@ -45,7 +45,7 @@
 		icon_state = "piano"
 
 /obj/structure/device/piano/proc/playnote(var/note as text)
-	//to_chat(world, "Note: [note]")
+	//world << "Note: [note]"
 	var/soundfile
 	/*BYOND loads resource files at compile time if they are ''. This means you can't really manipulate them dynamically.
 	Tried doing it dynamically at first but its more trouble than its worth. Would have saved many lines tho.*/
@@ -237,16 +237,16 @@
 		for(var/line in song.lines)
 			//world << line
 			for(var/beat in text2list(lowertext(line), ","))
-				//to_chat(world, "beat: [beat]")
+				//world << "beat: [beat]"
 				var/list/notes = text2list(beat, "/")
 				for(var/note in text2list(notes[1], "-"))
-					//to_chat(world, "note: [note]")
+					//world << "note: [note]"
 					if(!playing || !anchored)//If the piano is playing, or is loose
 						playing = 0
 						return
 					if(lentext(note) == 0)
 						continue
-					//to_chat(world, "Parse: [copytext(note,1,2)]")
+					//world << "Parse: [copytext(note,1,2)]"
 					var/cur_note = text2ascii(note) - 96
 					if(cur_note < 1 || cur_note > 7)
 						continue
@@ -409,12 +409,12 @@
 					tempo = 600 / text2num(copytext(lines[1],6))
 					lines.Cut(1,2)
 				if(lines.len > 50)
-					to_chat(usr, "Too many lines!")
+					usr << "Too many lines!"
 					lines.Cut(51)
 				var/linenum = 1
 				for(var/l in lines)
 					if(lentext(l) > 50)
-						to_chat(usr, "Line [linenum] too long!")
+						usr << "Line [linenum] too long!"
 						lines.Remove(l)
 					else
 						linenum++
@@ -431,20 +431,20 @@
 	if (istype(O, /obj/item/tool/wrench))
 		if (anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>You begin to loosen \the [src]'s casters...</span>")
+			user << "\blue You begin to loosen \the [src]'s casters..."
 			if (do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 				user.visible_message( \
 					"[user] loosens \the [src]'s casters.", \
-					"<span class='notice'>You have loosened \the [src]. Now it can be pulled somewhere else.</span>", \
+					"\blue You have loosened \the [src]. Now it can be pulled somewhere else.", \
 					"You hear ratchet.")
 				src.anchored = 0
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>You begin to tighten \the [src] to the floor...</span>")
+			user << "\blue You begin to tighten \the [src] to the floor..."
 			if (do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
 				user.visible_message( \
 					"[user] tightens \the [src]'s casters.", \
-					"<span class='notice'>You have tightened \the [src]'s casters. Now it can be played again.</span>", \
+					"\blue You have tightened \the [src]'s casters. Now it can be played again.", \
 					"You hear ratchet.")
 				src.anchored = 1
 	else

@@ -42,13 +42,13 @@
 			spawn_area_type = /area/sulaco/medbay/storage
 			locstring = "medbay storage"
 
-	//to_chat(world, "looking for [spawn_area_type]")
+	//world << "looking for [spawn_area_type]"
 	for(var/areapath in typesof(spawn_area_type))
-		//to_chat(world, "	checking [areapath]")
+		//world << "	checking [areapath]"
 		var/area/A = locate(areapath)
-		//to_chat(world, "	A: [A], contents.len: [A.contents.len]")
+		//world << "	A: [A], contents.len: [A.contents.len]"
 		for(var/area/B in A.related)
-			//to_chat(world, "	B: [B], contents.len: [B.contents.len]")
+			//world << "	B: [B], contents.len: [B.contents.len]"
 			for(var/turf/open/floor/F in B.contents)
 				if(!F.contents.len)
 					turfs += F

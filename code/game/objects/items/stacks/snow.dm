@@ -29,7 +29,7 @@
 					ET.dirt_amt = 0
 					ET.update_icon()
 			else
-				to_chat(user, "<span class='notice'>You start taking snow from [src].</span>")
+				user << "<span class='notice'>You start taking snow from [src].</span>"
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
 				if(!do_after(user, ET.shovelspeed, TRUE, 5, BUSY_ICON_BUILD))
 					return
@@ -38,7 +38,7 @@
 					transf_amt = amount
 				ET.dirt_amt = transf_amt
 				ET.dirt_type = DIRT_TYPE_SNOW
-				to_chat(user, "<span class='notice'>You take snow from [src].</span>")
+				user <<"<span class='notice'>You take snow from [src].</span>"
 				ET.update_icon()
 				use(transf_amt)
 				return TRUE
@@ -56,14 +56,14 @@
 		var/turf/open/T = target
 		if(T.get_dirt_type() == DIRT_TYPE_SNOW)
 			if(T.slayer >= 3)
-				to_chat(user, "This ground is already full of snow.")
+				user << "This ground is already full of snow."
 				return
-			to_chat(user, "You start putting some snow back on the ground.")
+			user << "You start putting some snow back on the ground."
 			if(!do_after(user, 15, FALSE, 5, BUSY_ICON_BUILD))
 				return
 			if(T.slayer >= 3)
 				return
-			to_chat(user, "You put a new snow layer on the ground.")
+			user << "You put a new snow layer on the ground."
 			T.slayer += 1
 			T.update_icon(TRUE, FALSE)
 			use(1)
@@ -71,14 +71,14 @@
 /obj/item/stack/snow/attack_self(mob/user)
 	var/turf/T = get_turf(user)
 	if(T.get_dirt_type() != DIRT_TYPE_SNOW)
-		to_chat(user, "<span class='warning'>You can't build a snow barricade at this location!</span>")
+		user << "<span class='warning'>You can't build a snow barricade at this location!</span>"
 		return
 
 	if(user.action_busy)
 		return
 
 	if(amount < 3)
-		to_chat(user, "<span class='warning'>You need 3 layers of snow to build a barricade.</span>")
+		user << "<span class='warning'>You need 3 layers of snow to build a barricade.</span>"
 		return
 
 	//Using same safeties as other constructions
@@ -86,10 +86,10 @@
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				if(O.dir == user.dir)
-					to_chat(user, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
+					user << "<span class='warning'>There is already \a [O.name] in this direction!</span>"
 					return
 			else
-				to_chat(user, "<span class='warning'>You need a clear, open area to build the sandbag barricade!</span>")
+				user << "<span class='warning'>You need a clear, open area to build the sandbag barricade!</span>"
 				return
 
 	user.visible_message("<span class='notice'>[user] starts assembling a snow barricade.</span>",

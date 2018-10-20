@@ -40,7 +40,7 @@
 	if(wires & 2)
 		return src.attack_hand(user)
 	else
-		to_chat(user, "Error, no route to host.")
+		user << "Error, no route to host."
 
 /obj/machinery/door_control/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
@@ -188,11 +188,11 @@
 	if(istype(user,/mob/living/carbon/Xenomorph))
 		return
 	if(stat & (NOPOWER|BROKEN))
-		to_chat(user, "<span class='warning'>[src] doesn't seem to be working.</span>")
+		user << "<span class='warning'>[src] doesn't seem to be working.</span>"
 		return
 
 	if(!allowed(user) && (wires & 1))
-		to_chat(user, "<span class='warning'> Access Denied</span>")
+		user << "\red Access Denied"
 		flick("doorctrl-denied",src)
 		return
 

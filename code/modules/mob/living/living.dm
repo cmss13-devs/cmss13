@@ -14,7 +14,7 @@
 
 /mob/living/Dispose()
 	if(attack_icon)
-		qdel(attack_icon)
+		cdel(attack_icon)
 		attack_icon = null
 	. = ..()
 
@@ -27,7 +27,7 @@
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(istype(src, /mob/living/carbon/human))
-		//to_chat(world, "DEBUG: burn_skin(), mutations=[mutations]")
+		//world << "DEBUG: burn_skin(), mutations=[mutations]"
 		if(mShock in src.mutations) //shockproof
 			return 0
 		if (COLD_RESISTANCE in src.mutations) //fireproof
@@ -68,7 +68,7 @@
 		if(actual < desired)
 			temperature = desired
 //	if(istype(src, /mob/living/carbon/human))
-//		to_chat(world, "[src] ~ [src.bodytemperature] ~ [temperature]")
+//		world << "[src] ~ [src.bodytemperature] ~ [temperature]"
 	return temperature
 
 
@@ -140,11 +140,11 @@
 
 	if(config.allow_Metadata)
 		if(client)
-			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
+			usr << "[src]'s Metainfo:<br>[client.prefs.metadata]"
 		else
-			to_chat(usr, "[src] does not have any stored infomation!")
+			usr << "[src] does not have any stored infomation!"
 	else
-		to_chat(usr, "OOC Metadata is not supported by this server!")
+		usr << "OOC Metadata is not supported by this server!"
 
 	return
 
@@ -267,7 +267,7 @@
 
 		if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
 			if(!(world.time % 5))
-				to_chat(src, "<span class='warning'>[L] is restrained, you cannot push past.</span>")
+				src << "<span class='warning'>[L] is restrained, you cannot push past.</span>"
 			now_pushing = 0
 			return
 
@@ -276,7 +276,7 @@
  				var/mob/P = L.pulling
  				if(P.is_mob_restrained())
  					if(!(world.time % 5))
- 						to_chat(src, "<span class='warning'>[L] is restraining [P], you cannot push past.</span>")
+ 						src << "<span class='warning'>[L] is restraining [P], you cannot push past.</span>"
 					now_pushing = 0
 					return
 
@@ -284,7 +284,7 @@
 
 			if(HULK in L.mutations)
 				if(prob(70))
-					to_chat(usr, "<span class='warning'>You fail to push [L]'s fat ass out of the way.</span>")
+					usr << "\red <B>You fail to push [L]'s fat ass out of the way.</B>"
 					now_pushing = 0
 					return
 			if(!(L.status_flags & CANPUSH))

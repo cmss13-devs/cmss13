@@ -27,7 +27,7 @@
 	var/current_bulletholes = 0
 	var/bullethole_increment = 1
 	var/bullethole_state = 0
-	var/image/bullethole_overlay
+	var/image/reusable/bullethole_overlay
 
 	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
 
@@ -46,12 +46,12 @@
 	for(var/obj/item/explosive/mine/M in src)
 		if(M)
 			visible_message("<span class='warning'>\The [M] is sealed inside the wall as it is built</span>")
-			qdel(M)
+			cdel(M)
 
 
 /turf/closed/wall/ChangeTurf(newtype)
 	if(acided_hole)
-		qdel(acided_hole)
+		cdel(acided_hole)
 		acided_hole = null
 
 	. = ..()
@@ -78,7 +78,7 @@
 				var/obj/structure/sign/poster/P = O
 				P.roll_and_drop(src)
 			if(istype(O, /obj/effect/alien/weeds))
-				qdel(O)
+				cdel(O)
 
 
 
@@ -105,36 +105,36 @@
 
 	if(!damage)
 		if (acided_hole)
-			to_chat(user, "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>")
+			user << "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>"
 		else
-			to_chat(user, "<span class='notice'>It looks fully intact.</span>")
+			user << "<span class='notice'>It looks fully intact.</span>"
 	else
 		var/dam = damage / damage_cap
 		if(dam <= 0.3)
-			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
+			user << "<span class='warning'>It looks slightly damaged.</span>"
 		else if(dam <= 0.6)
-			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
+			user << "<span class='warning'>It looks moderately damaged.</span>"
 		else
-			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
+			user << "<span class='danger'>It looks heavily damaged.</span>"
 
 		if (acided_hole)
-			to_chat(user, "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>")
+			user << "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>"
 
 	switch(d_state)
 		if(1)
-			to_chat(user, "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>")
+			user << "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>"
 		if(2)
-			to_chat(user, "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>")
+			user << "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>"
 		if(3)
-			to_chat(user, "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>")
+			user << "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>"
 		if(4)
-			to_chat(user, "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>")
+			user << "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>"
 		if(5)
-			to_chat(user, "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>")
+			user << "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>"
 		if(6)
-			to_chat(user, "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>")
+			user << "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>"
 		if(7)
-			to_chat(user, "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>")
+			user << "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>"
 
 #define BULLETHOLE_STATES 10 //How many variations of bullethole patterns there are
 #define BULLETHOLE_MAX 8 * 3 //Maximum possible bullet holes.
@@ -153,7 +153,7 @@
 		current_bulletholes = initial(current_bulletholes)
 		bullethole_increment = initial(current_bulletholes)
 		bullethole_state = initial(current_bulletholes)
-		qdel(bullethole_overlay)
+		cdel(bullethole_overlay)
 		bullethole_overlay = null
 		return
 
@@ -173,7 +173,7 @@
 		overlays -= bullethole_overlay
 		if(!bullethole_overlay)
 			bullethole_state = rand(1, BULLETHOLE_STATES)
-			bullethole_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]")
+			bullethole_overlay = rnew(/image/reusable, list('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]"))
 			//for(var/mob/M in view(7)) M << bullethole_overlay
 		if(cur_increment(current_bulletholes) > bullethole_increment) bullethole_overlay.icon_state = "bhole_[bullethole_state]_[++bullethole_increment]"
 
@@ -184,7 +184,7 @@
 		Luckily, it doesn't matter what direction the walls are set to, they link together via icon_state it seems.
 		But I haven't thoroughly tested it.*/
 		overlays += bullethole_overlay
-		//to_chat(world, "<span class='debuginfo'>Increment: <b>[bullethole_increment]</b>, Direction: <b>[current_direction]</b></span>")
+		//world << "<span class='debuginfo'>Increment: <b>[bullethole_increment]</b>, Direction: <b>[current_direction]</b></span>"
 
 #undef BULLETHOLE_STATES
 #undef BULLETHOLE_MAX
@@ -242,7 +242,8 @@
 		make_girder(TRUE)
 	else
 		make_girder(FALSE)
-	ChangeTurf(/turf/open/floor/plating, TRUE)
+
+	cdel(src)
 
 /turf/closed/wall/ex_act(severity)
 	if(hull)
@@ -251,7 +252,7 @@
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 	if ( damage + exp_damage > damage_cap*2 )
-		ChangeTurf(/turf/open/floor/plating, TRUE)
+		cdel(src)
 	else
 		take_damage(exp_damage)
 
@@ -275,12 +276,12 @@
 	O.density = 1
 	O.layer = FLY_LAYER
 
-	to_chat(user, "<span class='warning'>The thermite starts melting through [src].</span>")
+	user << "<span class='warning'>The thermite starts melting through [src].</span>"
 	spawn(50)
 		dismantle_wall()
 
 	spawn(50)
-		if(O) qdel(O)
+		if(O) cdel(O)
 	return
 
 
@@ -305,7 +306,7 @@
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((istype(src, /turf/closed/wall/r_wall)) || hull)
-			to_chat(M, "<span class='warning'>This [name] is far too strong for you to destroy.</span>")
+			M << "<span class='warning'>This [name] is far too strong for you to destroy.</span>"
 			return
 		else
 			if((prob(40)))
@@ -340,14 +341,14 @@
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 
 	if(!ishuman(user))
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		user << "<span class='warning'>You don't have the dexterity to do this!</span>"
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
 		if(W.heat_source >= 1000)
 			if(hull)
-				to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
+				user << "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>."
 			else
 				if(istype(W, /obj/item/tool/weldingtool))
 					var/obj/item/tool/weldingtool/WT = W
@@ -386,7 +387,7 @@
 		return
 
 	if(hull)
-		to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
+		user << "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>."
 		return
 
 	if(damage && istype(W, /obj/item/tool/weldingtool))
@@ -401,7 +402,7 @@
 				take_damage(-damage)
 			return
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
 			return
 
 	//DECONSTRUCTION

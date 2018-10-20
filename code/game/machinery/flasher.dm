@@ -111,11 +111,11 @@
 		src.anchored = !src.anchored
 
 		if (!src.anchored)
-			user.show_message(text("<span class='warning'>[src] can now be moved.</span>"))
+			user.show_message(text("\red [src] can now be moved."))
 			src.overlays.Cut()
 
 		else if (src.anchored)
-			user.show_message(text("<span class='warning'>[src] is now secured.</span>"))
+			user.show_message(text("\red [src] is now secured."))
 			src.overlays += "[base_state]-s"
 
 /obj/machinery/flasher_button/attack_ai(mob/user as mob)
@@ -135,7 +135,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access Denied.</span>")
+		user << "<span class='warning'>Access Denied.</span>"
 		return
 
 	use_power(5)

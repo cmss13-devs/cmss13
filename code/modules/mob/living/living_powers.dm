@@ -12,7 +12,7 @@
 
 	if (layer != ANIMAL_HIDING_LAYER)
 		layer = ANIMAL_HIDING_LAYER
-		to_chat(src, "<span class='notice'>You are now hiding.</span>")
+		src << text("\blue You are now hiding.")
 	else
 		layer = MOB_LAYER
-		to_chat(src, "<span class='notice'>You have stopped hiding.</span>")
+		src << text("\blue You have stopped hiding.")

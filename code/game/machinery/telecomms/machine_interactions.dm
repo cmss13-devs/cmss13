@@ -24,7 +24,7 @@
 
 	else
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-			to_chat(user, "<span class='warning'>You stare at [src] cluelessly...</span>")
+			user << "<span class='warning'>You stare at [src] cluelessly...</span>"
 			return 0
 
 	// REPAIRING: Use Nanopaste to repair 10-20 integrity points.
@@ -33,35 +33,35 @@
 		if (integrity < 100)               								//Damaged, let's repair!
 			if (T.use(1))
 				integrity = between(0, integrity + rand(10,20), 100)
-				to_chat(usr, "You apply the Nanopaste to [src], repairing some of the damage.")
+				usr << "You apply the Nanopaste to [src], repairing some of the damage."
 		else
-			to_chat(usr, "This machine is already in perfect condition.")
+			usr << "This machine is already in perfect condition."
 		return
 
 
 	switch(construct_op)
 		if(0)
 			if(istype(P, /obj/item/tool/screwdriver) && deconstructable)
-				to_chat(user, "You unfasten the bolts.")
+				user << "You unfasten the bolts."
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op ++
 		if(1)
 			if(istype(P, /obj/item/tool/screwdriver))
-				to_chat(user, "You fasten the bolts.")
+				user << "You fasten the bolts."
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op --
 			if(istype(P, /obj/item/tool/wrench))
-				to_chat(user, "You dislodge the external plating.")
+				user << "You dislodge the external plating."
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op ++
 		if(2)
 			if(istype(P, /obj/item/tool/wrench))
-				to_chat(user, "You secure the external plating.")
+				user << "You secure the external plating."
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op --
 			if(istype(P, /obj/item/tool/wirecutters))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				to_chat(user, "You remove the cables.")
+				user << "You remove the cables."
 				construct_op ++
 				var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( user.loc )
 				A.amount = 5
@@ -70,16 +70,16 @@
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/A = P
 				if (A.use(5))
-					to_chat(user, "<span class='notice'>You insert the cables.</span>")
+					user << "<span class='notice'>You insert the cables.</span>"
 					construct_op--
 					stat &= ~BROKEN // the machine's not borked anymore!
 				else
-					to_chat(user, "<span class='warning'>You need five coils of wire for this.</span>")
+					user << "<span class='warning'>You need five coils of wire for this.</span>"
 			if(istype(P, /obj/item/tool/crowbar))
-				to_chat(user, "You begin prying out the circuit board other components...")
+				user << "You begin prying out the circuit board other components..."
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user,60, TRUE, 5, BUSY_ICON_BUILD))
-					to_chat(user, "You finish prying out the components.")
+					user << "You finish prying out the components."
 
 					// Drop all the component stuff
 					if(contents.len > 0)
@@ -106,7 +106,7 @@
 					// Create a machine frame and delete the current machine
 					var/obj/machinery/constructable_frame/machine_frame/F = new
 					F.loc = src.loc
-					qdel(src)
+					cdel(src)
 
 
 /obj/machinery/telecomms/attack_ai(var/mob/user as mob)
@@ -117,7 +117,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!issilicon(user))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-			to_chat(user, "<span class='warning'>You stare at [src] cluelessly...</span>")
+			user << "<span class='warning'>You stare at [src] cluelessly...</span>"
 			return
 		// istype returns false if the value is null
 		if(!istype(user.get_active_hand(), /obj/item/device/multitool))

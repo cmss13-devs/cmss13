@@ -410,7 +410,7 @@ Buildable meters
 
 	for(var/obj/machinery/atmospherics/M in src.loc)
 		if((M.initialize_directions & pipe_dir) && M.check_connect_types_construction(M,src))	// matches at least one direction on either type of pipe & same connection type
-			to_chat(user, "<span class='warning'>There is already a pipe of the same type at this location.</span>")
+			user << "\red There is already a pipe of the same type at this location."
 			return 1
 	// no conflicts found
 
@@ -426,7 +426,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -444,7 +444,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -462,7 +462,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -480,7 +480,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -497,7 +497,7 @@ Buildable meters
 			P.initialize_directions_he = pipe_dir
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -530,7 +530,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -552,7 +552,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
+				usr << "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -574,7 +574,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
+				usr << "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -596,7 +596,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -622,7 +622,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
+				usr << "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -648,7 +648,7 @@ Buildable meters
 			M.level = pipelevel
 			M.initialize()
 			if (!M)
-				to_chat(usr, "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)")
+				usr << "There's nothing to connect this manifold to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			M.build_network()
 			if (M.node1)
@@ -672,7 +672,7 @@ Buildable meters
 
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext) //"There's nothing to connect this pipe to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
+				usr << pipefailtext //"There's nothing to connect this pipe to! (with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -708,11 +708,11 @@ Buildable meters
 			V.initialize()
 			V.build_network()
 			if (V.node1)
-//					to_chat(world, "[V.node1.name] is connected to valve, forcing it to update its nodes.")
+//					world << "[V.node1.name] is connected to valve, forcing it to update its nodes."
 				V.node1.initialize()
 				V.node1.build_network()
 			if (V.node2)
-//					to_chat(world, "[V.node2.name] is connected to valve, forcing it to update its nodes.")
+//					world << "[V.node2.name] is connected to valve, forcing it to update its nodes."
 				V.node2.initialize()
 				V.node2.build_network()
 
@@ -855,7 +855,7 @@ Buildable meters
 			P.level = pipelevel
 			P.initialize()
 			if (!P)
-				to_chat(usr, pipefailtext)
+				usr << pipefailtext
 				return 1
 			P.build_network()
 			if (P.node1)
@@ -979,9 +979,9 @@ Buildable meters
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message( \
 		"[user] fastens the [src].", \
-		"<span class='notice'>You have fastened the [src].</span>", \
+		"\blue You have fastened the [src].", \
 		"You hear ratchet.")
-	qdel(src)	// remove the pipe item
+	cdel(src)	// remove the pipe item
 
 	return
 	 //TODO: DEFERRED
@@ -1005,12 +1005,12 @@ Buildable meters
 	if (!istype(W, /obj/item/tool/wrench))
 		return ..()
 	if(!locate(/obj/machinery/atmospherics/pipe, src.loc))
-		to_chat(user, "<span class='warning'> You need to fasten it to a pipe</span>")
+		user << "\red You need to fasten it to a pipe"
 		return 1
 	new/obj/machinery/meter( src.loc )
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	to_chat(user, "<span class='notice'> You have fastened the meter to the pipe</span>")
-	qdel(src)
+	user << "\blue You have fastened the meter to the pipe"
+	cdel(src)
 //not sure why these are necessary
 #undef PIPE_SIMPLE_STRAIGHT
 #undef PIPE_SIMPLE_BENT

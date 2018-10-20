@@ -127,7 +127,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		if(explosion_in_progress)
 			explosion_damage()
 			spawn(20)
-				qdel(src)
+				cdel(src)
 
 
 
@@ -217,10 +217,10 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		if(explosion_turfs[T] >= 0)
 			num_tiles_affected++
 
-	//if(num_tiles_affected > 25) //pause lighting and powernet processing until explosion damage is finished
-	//	lighting_controller.processing = 0
-	//	if(!defer_powernet_rebuild)
-	//		defer_powernet_rebuild = 1
+	if(num_tiles_affected > 25) //pause lighting and powernet processing until explosion damage is finished
+		lighting_controller.processing = 0
+		if(!defer_powernet_rebuild)
+			defer_powernet_rebuild = 1
 
 	reflected_power *= reflection_multiplier
 
@@ -245,15 +245,15 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 				A.ex_act(severity, direction)
 
 	spawn(8)  //resume lighting and powernet processing
-		/*if(!lighting_controller.processing)
+		if(!lighting_controller.processing)
 			lighting_controller.processing = 1
 			lighting_controller.process() //Restart the lighting controller
-		*/
+
 		if(!powernet_rebuild_was_deferred_already && defer_powernet_rebuild)
 			makepowernets()
 			defer_powernet_rebuild = 0
 
-		qdel(src)
+		cdel(src)
 
 
 /atom/proc/get_explosion_resistance()

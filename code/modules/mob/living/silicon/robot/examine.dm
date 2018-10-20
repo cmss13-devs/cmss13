@@ -1,9 +1,9 @@
 /mob/living/silicon/robot/examine(mob/user)
 	if( (user.sdisabilities & BLIND || user.blinded || user.stat) && !istype(user,/mob/dead/observer) )
-		to_chat(user, "<span class='notice'>Something is there but you can't see it.</span>")
+		user << "<span class='notice'>Something is there but you can't see it.</span>"
 		return
 
-	var/msg = "<span class='info'>*---------*\nThis is [bicon(src)] \a <EM>[src]</EM>[custom_name ? ", [modtype] [braintype]" : ""]!\n"
+	var/msg = "<span class='info'>*---------*\nThis is \icon[src] \a <EM>[src]</EM>[custom_name ? ", [modtype] [braintype]" : ""]!\n"
 	msg += "<span class='warning'>"
 	if (src.getBruteLoss())
 		if (src.getBruteLoss() < maxHealth*0.5)
@@ -41,5 +41,5 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\nIt is [pose]"
 
-	to_chat(user, msg)
+	user << msg
 	return

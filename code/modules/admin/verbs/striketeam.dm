@@ -5,13 +5,13 @@ var/global/sent_strike_team = 0
 
 /client/proc/strike_team()
 	if(!ticker)
-		to_chat(usr, "<font color='red'>The game hasn't started yet!</font>")
+		usr << "<font color='red'>The game hasn't started yet!</font>"
 		return
 	if(world.time < 6000)
-		to_chat(usr, "<font color='red'>There are [(6000-world.time)/10] seconds remaining before it may be called.</font>")
+		usr << "<font color='red'>There are [(6000-world.time)/10] seconds remaining before it may be called.</font>"
 		return
 	if(sent_strike_team == 1)
-		to_chat(usr, "<span class='caution'>CentCom is already sending a team.</span>")
+		usr << "<font color='red'>CentCom is already sending a team.</font>"
 		return
 	if(alert("Do you want to send in the CentCom death squad? Once enabled, this is irreversible.",,"Yes","No")!="Yes")
 		return
@@ -25,7 +25,7 @@ var/global/sent_strike_team = 0
 				return
 
 	if(sent_strike_team)
-		to_chat(usr, "Looks like someone beat you to it.")
+		usr << "Looks like someone beat you to it."
 		return
 
 	sent_strike_team = 1
@@ -76,7 +76,7 @@ var/global/sent_strike_team = 0
 				new_commando.mind.store_memory("<B>Nuke Code:</B> \red [nuke_code].")
 			new_commando.mind.store_memory("<B>Mission:</B> \red [input].")
 
-			new_to_chat(commando, "\blue You are a Special Ops. [!leader_selected?"commando":"<B>LEADER</B>"] in the service of Central Command. Check the table ahead for detailed instructions.\nYour current mission is: \red<B>[input]</B>")
+			new_commando << "\blue You are a Special Ops. [!leader_selected?"commando":"<B>LEADER</B>"] in the service of Central Command. Check the table ahead for detailed instructions.\nYour current mission is: \red<B>[input]</B>"
 
 			commando_number--
 

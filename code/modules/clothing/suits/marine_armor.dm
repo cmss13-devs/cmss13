@@ -11,9 +11,9 @@
 	for(var/X in H.limbs)
 		var/datum/limb/E = X
 		armor = getarmor_organ(E, "bullet")
-		to_chat(src, "<span class='debuginfo'><b>[E.name]</b> is protected with <b>[armor]</b> armor against bullets.</span>")
+		src << "<span class='debuginfo'><b>[E.name]</b> is protected with <b>[armor]</b> armor against bullets.</span>"
 		counter += armor
-	to_chat(src, "<span class='debuginfo'>The overall armor score is: <b>[counter]</b>.</span>")
+	src << "<span class='debuginfo'>The overall armor score is: <b>[counter]</b>.</span>"
 #endif
 
 //=======================================================================\\
@@ -125,19 +125,22 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
-	var/image/I
+	var/image/reusable/I
 	I = armor_overlays["lamp"]
 	overlays -= I
-	qdel(I)
+	cdel(I)
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
-		if(flags_marine_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-on")
-		else
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-off")
+		I = rnew(/image/reusable, flags_marine_armor & ARMOR_LAMP_ON? list('icons/obj/clothing/cm_suits.dmi', src, "lamp-on") : list('icons/obj/clothing/cm_suits.dmi', src, "lamp-off"))
 		armor_overlays["lamp"] = I
 		overlays += I
 	else armor_overlays["lamp"] = null
 	if(user) user.update_inv_wear_suit()
+
+/obj/item/clothing/suit/storage/marine/pickup(mob/user)
+	if(flags_marine_armor & ARMOR_LAMP_ON && src.loc != user)
+		user.SetLuminosity(brightness_on)
+		SetLuminosity(0)
+	..()
 
 /obj/item/clothing/suit/storage/marine/dropped(mob/user)
 	if(loc != user)
@@ -146,13 +149,22 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/marine/proc/turn_off_light(mob/wearer)
 	if(flags_marine_armor & ARMOR_LAMP_ON)
+		wearer.SetLuminosity(-brightness_on)
+		SetLuminosity(brightness_on)
 		toggle_armor_light() //turn the light off
 		return 1
 	return 0
 
+/obj/item/clothing/suit/storage/marine/Dispose()
+	if(ismob(src.loc))
+		src.loc.SetLuminosity(-brightness_on)
+	else
+		SetLuminosity(0)
+	. = ..()
+
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot turn the light on while in [user.loc].</span>") //To prevent some lighting anomalities.
+		user << "<span class='warning'>You cannot turn the light on while in [user.loc].</span>" //To prevent some lighting anomalities.
 		return
 
 	if(flashlight_cooldown > world.time)
@@ -173,9 +185,11 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/proc/toggle_armor_light(mob/user)
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
 	if(flags_marine_armor & ARMOR_LAMP_ON) //Turn it off.
-		set_light(0)
+		if(user) user.SetLuminosity(-brightness_on)
+		else SetLuminosity(0)
 	else //Turn it on.
-		set_light(brightness_on)
+		if(user) user.SetLuminosity(brightness_on)
+		else SetLuminosity(brightness_on)
 
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
@@ -304,7 +318,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			M << "<span class='warning'>You are not trained to use [src]!</span>"
 			return 0
 
 /obj/item/clothing/suit/storage/marine/specialist/verb/inject()
@@ -316,14 +330,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		return 0
 
 	if(!injections)
-		to_chat(usr, "Your armor is all out of injectors.")
+		usr << "Your armor is all out of injectors."
 		return 0
 
 	if(usr.get_active_hand())
-		to_chat(usr, "Your active hand must be empty.")
+		usr << "Your active hand must be empty."
 		return 0
 
-	to_chat(usr, "You feel a faint hiss and an injector drops into your hand.")
+	usr << "You feel a faint hiss and an injector drops into your hand."
 	var/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless/O = new(usr)
 	usr.put_in_active_hand(O)
 	injections--
@@ -357,7 +371,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_SCOUT)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			M << "<span class='warning'>You are not trained to use [src]!</span>"
 			return 0
 
 /obj/item/clothing/suit/storage/marine/M35
@@ -378,7 +392,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			M << "<span class='warning'>You are not trained to use [src]!</span>"
 			return 0
 
 /obj/item/clothing/suit/storage/marine/sniper
@@ -529,28 +543,40 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	update_icon()
 
 /obj/item/clothing/suit/storage/faction/update_icon(mob/user)
-	var/image/I
+	var/image/reusable/I
 	I = armor_overlays["lamp"]
 	overlays -= I
-	qdel(I)
+	cdel(I)
 	if(flags_faction_armor & ARMOR_LAMP_OVERLAY)
-		if(flags_faction_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-on")
-		else
-			I = image('icons/obj/clothing/cm_suits.dmi', src, "lamp-off")
+		I = rnew(/image/reusable, flags_faction_armor & ARMOR_LAMP_ON? list('icons/obj/clothing/cm_suits.dmi', src, "lamp-on") : list('icons/obj/clothing/cm_suits.dmi', src, "lamp-off"))
 		armor_overlays["lamp"] = I
 		overlays += I
 	else armor_overlays["lamp"] = null
 	if(user) user.update_inv_wear_suit()
 
+/obj/item/clothing/suit/storage/faction/pickup(mob/user)
+	if(flags_faction_armor & ARMOR_LAMP_ON && src.loc != user)
+		user.SetLuminosity(brightness_on)
+		SetLuminosity(0)
+	..()
+
 /obj/item/clothing/suit/storage/faction/dropped(mob/user)
 	if(flags_faction_armor & ARMOR_LAMP_ON && src.loc != user)
+		user.SetLuminosity(-brightness_on)
+		SetLuminosity(brightness_on)
 		toggle_armor_light() //turn the light off
 	..()
 
+/obj/item/clothing/suit/storage/faction/Dispose()
+	if(ismob(src.loc))
+		src.loc.SetLuminosity(-brightness_on)
+	else
+		SetLuminosity(0)
+	. = ..()
+
 /obj/item/clothing/suit/storage/faction/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot turn the light on while in [user.loc].</span>") //To prevent some lighting anomalities.
+		user << "<span class='warning'>You cannot turn the light on while in [user.loc].</span>" //To prevent some lighting anomalities.
 		return
 
 	if(flashlight_cooldown > world.time)
@@ -571,9 +597,11 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/faction/proc/toggle_armor_light(mob/user)
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
 	if(flags_faction_armor & ARMOR_LAMP_ON) //Turn it off.
-		set_light(0)
+		if(user) user.SetLuminosity(-brightness_on)
+		else SetLuminosity(0)
 	else //Turn it on.
-		set_light(brightness_on)
+		if(user) user.SetLuminosity(brightness_on)
+		else SetLuminosity(brightness_on)
 
 	flags_faction_armor ^= ARMOR_LAMP_ON
 

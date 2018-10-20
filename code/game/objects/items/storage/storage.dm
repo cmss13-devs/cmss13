@@ -162,7 +162,6 @@
 	for(var/obj/O in src.contents)
 		O.screen_loc = "[cx],[cy]"
 		O.layer = ABOVE_HUD_LAYER
-		O.plane = ABOVE_HUD_PLANE
 		cx++
 		if (cx > mx)
 			cx = tx
@@ -183,7 +182,6 @@
 			ND.sample_object.screen_loc = "[cx]:16,[cy]:16"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
 			ND.sample_object.layer = ABOVE_HUD_LAYER
-			ND.sample_object.plane = ABOVE_HUD_PLANE
 			cx++
 			if (cx > (4+cols))
 				cx = 4
@@ -194,7 +192,6 @@
 			O.screen_loc = "[cx]:16,[cy]:16"
 			O.maptext = ""
 			O.layer = ABOVE_HUD_LAYER
-			O.plane = ABOVE_HUD_PLANE
 			cx++
 			if (cx > (4+cols))
 				cx = 4
@@ -249,7 +246,6 @@
 		O.screen_loc = "4:[round((startpoint+endpoint)/2)+2],2:16"
 		O.maptext = ""
 		O.layer = ABOVE_HUD_LAYER
-		O.plane = ABOVE_HUD_PLANE
 
 	src.closer.screen_loc = "4:[storage_width+19],2:16"
 	return
@@ -292,7 +288,7 @@
 
 	New(obj/item/sample)
 		if(!istype(sample))
-			qdel(src)
+			cdel(src)
 		sample_object = sample
 		number = 1
 
@@ -340,7 +336,7 @@
 		return 0 //Means the item is already in the storage item
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
+			usr << "<span class='notice'>[src] is full, make some space.</span>"
 		return 0 //Storage item is full
 
 	if(can_hold.len)
@@ -353,13 +349,13 @@
 			if(!stop_messages)
 				if (istype(W, /obj/item/tool/hand_labeler))
 					return 0
-				to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
+				usr << "<span class='notice'>[src] cannot hold [W].</span>"
 			return 0
 
 	for(var/A in cant_hold) //Check for specific items which this container can't hold.
 		if(istype(W, text2path(A) ))
 			if(!stop_messages)
-				to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
+				usr << "<span class='notice'>[src] cannot hold [W].</span>"
 			return 0
 
 	var/w_limit_bypassed = 0
@@ -371,7 +367,7 @@
 
 	if (!w_limit_bypassed && W.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[W] is too long for this [src].</span>")
+			usr << "<span class='notice'>[W] is too long for this [src].</span>"
 		return 0
 
 	var/sum_storage_cost = W.get_storage_cost()
@@ -380,13 +376,13 @@
 
 	if(sum_storage_cost > max_storage_space)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
+			usr << "<span class='notice'>[src] is full, make some space.</span>"
 		return 0
 
 	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>")
+				usr << "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>"
 			return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -431,11 +427,9 @@
 	if(new_location)
 		if(ismob(new_location))
 			W.layer = ABOVE_HUD_LAYER
-			W.plane = ABOVE_HUD_PLANE
 			W.pickup(new_location)
 		else
 			W.layer = initial(W.layer)
-			W.plane = initial(W.plane)
 		W.forceMove(new_location)
 	else
 		W.forceMove(get_turf(src))
@@ -455,7 +449,7 @@
 	..()
 
 	if(isrobot(user))
-		to_chat(user, "<span class='notice'>You're a robot. No.</span>")
+		user << "\blue You're a robot. No."
 		return //Robots can't interact with storage items.
 
 	if(!can_be_inserted(W))
@@ -465,14 +459,14 @@
 		var/obj/item/tool/kitchen/tray/T = W
 		if(T.calc_carry() > 0)
 			if(prob(85))
-				to_chat(user, "\red The tray won't fit in [src].")
+				user << "\red The tray won't fit in [src]."
 				return
 			else
 				W.loc = user.loc
 				if ((user.client && user.s_active != src))
 					user.client.screen -= W
 				W.dropped(user)
-				to_chat(user, "<span class='warning'>God damnit!</span>")
+				user << "\red God damnit!"
 
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, FALSE, user)
@@ -499,9 +493,9 @@
 	collection_mode = !collection_mode
 	switch (collection_mode)
 		if(1)
-			to_chat(usr, "[src] now picks up all items in a tile at once.")
+			usr << "[src] now picks up all items in a tile at once."
 		if(0)
-			to_chat(usr, "[src] now picks up one item at a time.")
+			usr << "[src] now picks up one item at a time."
 
 
 
@@ -510,9 +504,9 @@
 	set category = "Object"
 	draw_mode = !draw_mode
 	if(draw_mode)
-		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
+		usr << "Clicking [src] with an empty hand now puts the last stored item in your hand."
 	else
-		to_chat(usr, "Clicking [src] with an empty hand now opens the pouch storage menu.")
+		usr << "Clicking [src] with an empty hand now opens the pouch storage menu."
 
 
 
@@ -540,7 +534,6 @@
 	boxes.icon_state = "block"
 	boxes.screen_loc = "7,7 to 10,8"
 	boxes.layer = HUD_LAYER
-	boxes.plane = HUD_PLANE
 
 	storage_start = new /obj/screen/storage(  )
 	storage_start.name = "storage"
@@ -548,66 +541,60 @@
 	storage_start.icon_state = "storage_start"
 	storage_start.screen_loc = "7,7 to 10,8"
 	storage_start.layer = HUD_LAYER
-	storage_start.plane = HUD_PLANE
 	storage_continue = new /obj/screen/storage(  )
 	storage_continue.name = "storage"
 	storage_continue.master = src
 	storage_continue.icon_state = "storage_continue"
 	storage_continue.screen_loc = "7,7 to 10,8"
 	storage_continue.layer = HUD_LAYER
-	storage_continue.plane = HUD_PLANE
 	storage_end = new /obj/screen/storage(  )
 	storage_end.name = "storage"
 	storage_end.master = src
 	storage_end.icon_state = "storage_end"
 	storage_end.screen_loc = "7,7 to 10,8"
 	storage_end.layer = HUD_LAYER
-	storage_end.plane = HUD_PLANE
 
 	stored_start = new /obj //we just need these to hold the icon
 	stored_start.icon_state = "stored_start"
 	stored_start.layer = HUD_LAYER
-	stored_start.plane = HUD_PLANE
 	stored_continue = new /obj
 	stored_continue.icon_state = "stored_continue"
 	stored_continue.layer = HUD_LAYER
-	stored_continue.plane = HUD_PLANE
 	stored_end = new /obj
 	stored_end.icon_state = "stored_end"
 	stored_end.layer = HUD_LAYER
-	stored_end.plane = HUD_PLANE
 
 	closer = new
 	closer.master = src
 
 /obj/item/storage/Dispose()
 	for(var/atom/movable/I in contents)
-		qdel(I)
+		cdel(I)
 	for(var/mob/M in content_watchers)
 		hide_from(M)
 	if(boxes)
-		qdel(boxes)
+		cdel(boxes)
 		boxes = null
 	if(storage_start)
-		qdel(storage_start)
+		cdel(storage_start)
 		storage_start = null
 	if(storage_continue)
-		qdel(storage_continue)
+		cdel(storage_continue)
 		storage_continue = null
 	if(storage_end)
-		qdel(storage_end)
+		cdel(storage_end)
 		storage_end = null
 	if(stored_start)
-		qdel(stored_start)
+		cdel(stored_start)
 		stored_start = null
 	if(src.stored_continue)
-		qdel(src.stored_continue)
+		cdel(src.stored_continue)
 		src.stored_continue = null
 	if(stored_end)
-		qdel(stored_end)
+		cdel(stored_end)
 		stored_end = null
 	if(closer)
-		qdel(closer)
+		cdel(closer)
 		closer = null
 	. = ..()
 
@@ -638,9 +625,9 @@
 		close(M)
 
 	// Now make the cardboard
-	to_chat(user, "<span class='notice'>You fold [src] flat.</span>")
+	user << "<span class='notice'>You fold [src] flat.</span>"
 	new foldable(get_turf(src))
-	qdel(src)
+	cdel(src)
 //BubbleWrap END
 
 /obj/item/storage/hear_talk(mob/M as mob, text)

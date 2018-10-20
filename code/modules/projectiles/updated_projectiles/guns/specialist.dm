@@ -13,7 +13,7 @@
 		. = ..()
 		if(. && istype(user)) //Let's check all that other stuff first.
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_SNIPER)
-				to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+				user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 				return 0
 
 //Pow! Headshot.
@@ -193,7 +193,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_SCOUT)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 			return 0
 
 
@@ -243,8 +243,8 @@
 
 /obj/item/weapon/gun/smartgun/examine(mob/user)
 	..()
-	to_chat(user, "[current_mag.current_rounds ? "Ammo counter shows [current_mag.current_rounds] round\s remaining." : "It's dry."]")
-	to_chat(user, "The restriction system is [restriction_toggled ? "<B>on</b>" : "<B>off</b>"].")
+	user << "[current_mag.current_rounds ? "Ammo counter shows [current_mag.current_rounds] round\s remaining." : "It's dry."]"
+	user << "The restriction system is [restriction_toggled ? "<B>on</b>" : "<B>off</b>"]."
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	toggle_restriction(user)
@@ -255,7 +255,7 @@
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.smartgun < SKILL_SMART_USE)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 			return 0
 		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
 			click_empty(H)
@@ -277,12 +277,12 @@
 	return current_mag.current_rounds
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
+	cdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 
 /obj/item/weapon/gun/smartgun/proc/toggle_restriction(mob/user)
-	to_chat(user, "[bicon(src)] You [restriction_toggled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [restriction_toggled ? "harm anyone in your way" : "target through IFF"].")
+	user << "\icon[src] You [restriction_toggled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [restriction_toggled ? "harm anyone in your way" : "target through IFF"]."
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	var/A = ammo
 	ammo = ammo_secondary
@@ -370,7 +370,7 @@
 	..()
 	if(grenades.len)
 		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, "\blue It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades.")
+		user << "\blue It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades."
 
 /obj/item/weapon/gun/launcher/m92/attackby(obj/item/I, mob/user)
 	if(allowed_ammo_type(I))
@@ -378,25 +378,25 @@
 			if(grenades.len < max_grenades)
 				if(user.drop_inv_item_to_loc(I, src))
 					grenades += I
-					to_chat(user, "<span class='notice'>You put [I] in the grenade launcher.</span>")
-					to_chat(user, "<span class='info'>Now storing: [grenades.len] / [max_grenades] grenades.</span>")
+					user << "<span class='notice'>You put [I] in the grenade launcher.</span>"
+					user << "<span class='info'>Now storing: [grenades.len] / [max_grenades] grenades.</span>"
 			else
-				to_chat(user, "<span class='warning'>The grenade launcher cannot hold more grenades!</span>")
+				user << "<span class='warning'>The grenade launcher cannot hold more grenades!</span>"
 
 		else if(istype(I,/obj/item/attachable))
 			if(check_inactive_hand(user)) attach_to_gun(user,I)
 	else
-		to_chat(user, "<span class='warning'>[src] can't use this type of grenade!</span>")
+		user << "<span class='warning'>[src] can't use this type of grenade!</span>"
 
 /obj/item/weapon/gun/launcher/m92/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
-			to_chat(user, "<span class='warning'>The grenade launcher beeps a warning noise. You are too close!</span>")
+			user << "<span class='warning'>The grenade launcher beeps a warning noise. You are too close!</span>"
 			return
 		if(grenades.len)
 			fire_grenade(target,user)
 			playsound(user.loc, cocked_sound, 25, 1)
-		else to_chat(user, "<span class='warning'>The grenade launcher is empty.</span>")
+		else user << "<span class='warning'>The grenade launcher is empty.</span>"
 
 //Doesn't use most of any of these. Listed for reference.
 /obj/item/weapon/gun/launcher/m92/load_into_chamber()
@@ -413,13 +413,13 @@
 			playsound(user, unload_sound, 25, 1)
 		else nade.loc = get_turf(src)
 		grenades -= nade
-	else to_chat(user, "<span class='warning'>It's empty!</span>")
+	else user << "<span class='warning'>It's empty!</span>"
 
 /obj/item/weapon/gun/launcher/m92/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 			return 0
 
 /obj/item/weapon/gun/launcher/m92/proc/fire_grenade(atom/target, mob/user)
@@ -427,7 +427,7 @@
 	last_fired = world.time
 	for(var/mob/O in viewers(world.view, user))
 		O.show_message(text("<span class='danger'>[] fired a grenade!</span>", user), 1)
-	to_chat(user, "<span class='warning'>You fire the grenade launcher!</span>")
+	user << "<span class='warning'>You fire the grenade launcher!</span>"
 	var/obj/item/explosive/grenade/F = grenades[1]
 	grenades -= F
 	F.loc = user.loc
@@ -485,7 +485,7 @@
 	..()
 	if(grenade)
 		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, "<span class='notice'>It is loaded with a grenade.</span>")
+		user << "\blue It is loaded with a grenade."
 
 /obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
 	if(allowed_ammo_type(I))
@@ -494,26 +494,26 @@
 				if(!grenade)
 					if(user.drop_inv_item_to_loc(I, src))
 						grenade = I
-						to_chat(user, "<span class='notice'>You put [I] in the grenade launcher.</span>")
+						user << "<span class='notice'>You put [I] in the grenade launcher.</span>"
 				else
-					to_chat(user, "<span class='warning'>The grenade launcher cannot hold more grenades!</span>")
+					user << "<span class='warning'>The grenade launcher cannot hold more grenades!</span>"
 			else
-				to_chat(user, "<span class='warning'>[src] can't use this type of grenade!</span>")
+				user << "<span class='warning'>[src] can't use this type of grenade!</span>"
 
 		else if(istype(I,/obj/item/attachable))
 			if(check_inactive_hand(user)) attach_to_gun(user,I)
 	else
-		to_chat(user, "<span class='warning'>[src] can't use this type of grenade!</span>")
+		user << "<span class='warning'>[src] can't use this type of grenade!</span>"
 
 /obj/item/weapon/gun/launcher/m81/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
-			to_chat(user, "<span class='warning'>The grenade launcher beeps a warning noise. You are too close!</span>")
+			user << "<span class='warning'>The grenade launcher beeps a warning noise. You are too close!</span>"
 			return
 		if(grenade)
 			fire_grenade(target,user)
 			playsound(user.loc, cocked_sound, 25, 1)
-		else to_chat(user, "<span class='warning'>The grenade launcher is empty.</span>")
+		else user << "<span class='warning'>The grenade launcher is empty.</span>"
 
 //Doesn't use most of any of these. Listed for reference.
 /obj/item/weapon/gun/launcher/m81/load_into_chamber()
@@ -530,7 +530,7 @@
 			playsound(user, unload_sound, 25, 1)
 		else nade.loc = get_turf(src)
 		grenade = null
-	else to_chat(user, "<span class='warning'>It's empty!</span>")
+	else user << "<span class='warning'>It's empty!</span>"
 
 /obj/item/weapon/gun/launcher/m81/able_to_fire(mob/living/user)
 	. = ..()
@@ -538,10 +538,10 @@
 		if(user.mind && user.mind.cm_skills)
 			if(riot_version)
 				if(user.mind.cm_skills.police < SKILL_POLICE_MP)
-					to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+					user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 					return 0
 			else if(user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
-				to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+				user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 				return 0
 
 
@@ -615,8 +615,8 @@
 
 /obj/item/weapon/gun/launcher/rocket/examine(mob/user)
 	..()
-	if(current_mag.current_rounds)  to_chat(user, "It's ready to rocket.")
-	else 							to_chat(user, "It's empty.")
+	if(current_mag.current_rounds)  user << "It's ready to rocket."
+	else 							user << "It's empty."
 
 
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
@@ -625,10 +625,10 @@
 		/*var/turf/current_turf = get_turf(user)
 		if (current_turf.z == 3 || current_turf.z == 4) //Can't fire on the Almayer, bub.
 			click_empty(user)
-			to_chat(user, "<span class='warning'>You can't fire that here!</span>")
+			user << "<span class='warning'>You can't fire that here!</span>"
 			return 0*/
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_ROCKET)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 			return 0
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
@@ -640,7 +640,7 @@
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
+	cdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 
@@ -648,29 +648,29 @@
 	if(flags_gun_features & GUN_BURST_FIRING) return
 
 	if(!rocket || !istype(rocket) || rocket.caliber != current_mag.caliber)
-		to_chat(user, "<span class='warning'>That's not going to fit!</span>")
+		user << "<span class='warning'>That's not going to fit!</span>"
 		return
 
 	if(current_mag.current_rounds > 0)
-		to_chat(user, "<span class='warning'>[src] is already loaded!</span>")
+		user << "<span class='warning'>[src] is already loaded!</span>"
 		return
 
 	if(rocket.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That frame is empty!</span>")
+		user << "<span class='warning'>That frame is empty!</span>"
 		return
 
 	if(user)
-		to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+		user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
 		if(do_after(user,current_mag.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY))
 			user.drop_inv_item_on_ground(rocket)
 			replace_ammo(user,rocket)
 			current_mag.current_rounds = current_mag.max_rounds
 			rocket.current_rounds = 0
-			to_chat(user, "<span class='notice'>You load [rocket] into [src].</span>")
+			user << "<span class='notice'>You load [rocket] into [src].</span>"
 			if(reload_sound) playsound(user, reload_sound, 25, 1)
 			else playsound(user,'sound/machines/click.ogg', 25, 1)
 		else
-			to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+			user << "<span class='warning'>Your reload was interrupted!</span>"
 			return
 	else
 		rocket.loc = get_turf(src)
@@ -682,8 +682,8 @@
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user)
 	if(user)
-		if(!current_mag.current_rounds) to_chat(user, "<span class='warning'>[src] is already empty!</span>")
-		else 							to_chat(user, "<span class='warning'>It would be too much trouble to unload [src] now. Should have thought ahead!</span>")
+		if(!current_mag.current_rounds) user << "<span class='warning'>[src] is already empty!</span>"
+		else 							user << "<span class='warning'>It would be too much trouble to unload [src] now. Should have thought ahead!</span>"
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)

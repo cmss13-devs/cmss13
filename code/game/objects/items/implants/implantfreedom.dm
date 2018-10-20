@@ -19,7 +19,7 @@
 		if (src.uses < 1)	return 0
 		if (emote == src.activation_emote)
 			src.uses--
-			to_chat(source, "You feel a faint click.")
+			source << "You feel a faint click."
 			if (source.handcuffed)
 				var/obj/item/W = source.handcuffed
 				source.handcuffed = null
@@ -35,7 +35,7 @@
 
 	implanted(mob/living/carbon/source)
 		source.mind.store_memory("Freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
-		to_chat(source, "The implanted freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
+		source << "The implanted freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate."
 		return 1
 
 
@@ -44,7 +44,7 @@
 <b>Implant Specifications:</b><BR>
 <b>Name:</b> Freedom Beacon<BR>
 <b>Life:</b> optimum 5 uses<BR>
-<b>Important Notes:</b> <span class='caution'>Illegal</span><BR>
+<b>Important Notes:</b> <font color='red'>Illegal</font><BR>
 <HR>
 <b>Implant Details:</b> <BR>
 <b>Function:</b> Transmits a specialized cluster of signals to override handcuff locking

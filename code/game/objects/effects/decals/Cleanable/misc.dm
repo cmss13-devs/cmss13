@@ -17,15 +17,15 @@
 	anchored = 1
 
 /obj/effect/decal/cleanable/ash/attack_hand(mob/user as mob)
-	to_chat(user, "<span class='notice'>[src] sifts through your fingers.</span>")
-	qdel(src)
+	user << "<span class='notice'>[src] sifts through your fingers.</span>"
+	cdel(src)
 
 /obj/effect/decal/cleanable/greenglow
 
 	New()
 		..()
 		spawn(1200)// 2 minutes
-			qdel(src)
+			cdel(src)
 
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
@@ -58,6 +58,10 @@
 	luminosity = 1
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
+
+/obj/effect/decal/cleanable/greenglow/Dispose()
+	SetLuminosity(0)
+	. = ..()
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"

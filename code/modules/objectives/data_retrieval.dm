@@ -166,35 +166,35 @@
 
 /obj/machinery/computer/objective/attack_hand(mob/living/user)
 	if(!powered())
-		to_chat(user, "<span class='warning'>This terminal has no power!</span>")
+		user << "<span class='warning'>This terminal has no power!</span>"
 		return 0
 	if(objective.objective_flags & OBJ_REQUIRES_COMMS)
 		if(!objectives_controller || !objectives_controller.comms || !objectives_controller.comms.is_complete())
-			to_chat(user, "<span class='warning'>The terminal flashes a network connection error.</span>")
+			user << "<span class='warning'>The terminal flashes a network connection error.</span>"
 			return 0
 	if(objective.is_complete())
-		to_chat(user, "<span class='warning'>There's a message on the screen that the data upload finished successfully.</span>")
+		user << "<span class='warning'>There's a message on the screen that the data upload finished successfully.</span>"
 		return 1
 	if(uploading)
-		to_chat(user, "<span class='warning'>Looks like the terminal is already uploading, better make sure nothing interupts it!</span>")
+		user << "<span class='warning'>Looks like the terminal is already uploading, better make sure nothing interupts it!</span>"
 		return 1
 	if(input(user,"Enter the password","Password","") != objective.decryption_password)
-		to_chat(user, "<span class='warning'>The terminal rejects the password.</span>")
+		user << "<span class='warning'>The terminal rejects the password.</span>"
 		return 0
 	if(!objective.is_active())
 		objective.activate(1) // force it active now, we have the password
 	if(!powered())
-		to_chat(user, "<span class='warning'>This terminal has no power!</span>")
+		user << "<span class='warning'>This terminal has no power!</span>"
 		return 0
 	if(objective.objective_flags & OBJ_REQUIRES_COMMS)
 		if(!objectives_controller || !objectives_controller.comms || !objectives_controller.comms.is_complete())
-			to_chat(user, "<span class='warning'>The terminal flashes a network connection error.</span>")
+			user << "<span class='warning'>The terminal flashes a network connection error.</span>"
 			return 0
 	if(uploading)
-		to_chat(user, "<span class='warning'>Looks like the terminal is already uploading, better make sure nothing interupts it!</span>")
+		user << "<span class='warning'>Looks like the terminal is already uploading, better make sure nothing interupts it!</span>"
 		return 1
 	uploading = 1
-	to_chat(user, "<span class='notice'>You start uploading the data.</span>")
+	user << "<span class='notice'>You start uploading the data.</span>"
 
 // --------------------------------------------
 // *** Upload data from an inserted disk ***
@@ -210,29 +210,29 @@
 	if(isXeno(user))
 		return
 	if(disk)
-		to_chat(user, "<span class='notice'>[disk] is currently loaded into the machine.</span>")
+		user << "<span class='notice'>[disk] is currently loaded into the machine.</span>"
 		if(disk.objective)
 			if(disk.objective.is_active() && !disk.objective.is_complete() && disk.objective.data_is_avaliable())
-				to_chat(user, "<span class='notice'>Data is currently being uploaded to ARES.</span>")
+				user << "<span class='notice'>Data is currently being uploaded to ARES.</span>"
 				return
-		to_chat(user, "<span class='notice'>No data is being uploaded.</span>")
+		user << "<span class='notice'>No data is being uploaded.</span>"
 		
 /obj/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/disk/objective))
 		if(istype(disk))
-			to_chat(user, "<span class='warning'>There is a disk in the drive being uploaded already!</span>")
+			user << "<span class='warning'>There is a disk in the drive being uploaded already!</span>"
 			return 0
 		var/obj/item/disk/objective/newdisk = W
 		if(newdisk.objective.is_complete())
-			to_chat(user, "<span class='warning'>The reader displays a message stating this disk has already been read and refuses to accept it.</span>")
+			user << "<span class='warning'>The reader displays a message stating this disk has already been read and refuses to accept it.</span>"
 			return 0
 		if(input(user,"Enter the encryption key","Encryption key","") != newdisk.objective.decryption_password)
-			to_chat(user, "<span class='warning'>The reader asks for the encryption key for this disk, not having the correct key you eject the disk.</span>")
+			user << "<span class='warning'>The reader asks for the encryption key for this disk, not having the correct key you eject the disk.</span>"
 			return 0
 		if(!newdisk.objective.is_active())
 			newdisk.objective.activate(1) // force it active now, we have the password
 		if(istype(disk))
-			to_chat(user, "<span class='warning'>There is a disk in the drive being uploaded already!</span>")
+			user << "<span class='warning'>There is a disk in the drive being uploaded already!</span>"
 			return 0
 
 		if(!(newdisk in user.contents))
@@ -240,4 +240,4 @@
 
 		user.drop_inv_item_to_loc(W, src)
 		disk = W
-		to_chat(user, "<span class='notice'>You insert \the [W] and enter the decryption key.</span>")
+		user << "<span class='notice'>You insert \the [W] and enter the decryption key.</span>"

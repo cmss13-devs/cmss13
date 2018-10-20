@@ -29,7 +29,7 @@
 			if(player_caused)
 				if (src.client)
 					if (client.prefs.muted & MUTE_IC)
-						to_chat(src, "<span class='warning'>You cannot send IC messages (muted).</span>")
+						src << "\red You cannot send IC messages (muted)."
 						return
 					if (src.client.handle_spam_prevention(message,MUTE_IC))
 						return
@@ -81,7 +81,7 @@
 					if(player_caused)
 						start_audio_emote_cooldown()
 			else
-				to_chat(src, "You just did an audible emote. Wait a while.")
+				src << "You just did an audible emote. Wait a while."
 				return
 
 		if ("collapse")
@@ -163,7 +163,7 @@
 					if(player_caused)
 						start_audio_emote_cooldown()
 			else
-				to_chat(src, "You just did an audible emote. Wait a while.")
+				src << "You just did an audible emote. Wait a while."
 				return
 
 		if ("grin")
@@ -254,7 +254,7 @@
 					if(player_caused)
 						start_audio_emote_cooldown()
 			else
-				to_chat(src, "You just did an audible emote. Wait a while.")
+				src << "You just did an audible emote. Wait a while."
 				return
 
 		if ("moan")
@@ -283,7 +283,7 @@
 				if(player_caused)
 					start_audio_emote_cooldown()
 			else
-				to_chat(src, "You just did an audible emote. Wait a while.")
+				src << "You just did an audible emote. Wait a while."
 				return
 
 		if ("salute")
@@ -318,7 +318,7 @@
 				if(player_caused)
 					start_audio_emote_cooldown()
 			else
-				to_chat(src, "You just did an audible emote. Wait a while.")
+				src << "You just did an audible emote. Wait a while."
 				return
 
 		if("shakehead")
@@ -393,7 +393,7 @@
 
 
 		if ("help")
-			to_chat(src, "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br> \
+			src << "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br> \
 			blink, \
 			blink_r, \
 			bow-(mob name), \
@@ -436,9 +436,9 @@
 			stare-(mob name), \
 			twitch, \
 			wave, \
-			yawn</b><br>")
+			yawn</b><br>"
 			if (has_species(src,"Yautja"))
-				to_chat(src, "<br><b>As a Predator, you have the following additional emotes. Tip: The *medic emote has neither a cooldown nor a visibile origin...<br><br>\
+				src << "<br><b>As a Predator, you have the following additional emotes. Tip: The *medic emote has neither a cooldown nor a visibile origin...<br><br>\
 				<span style='color: green;'>anytime</span>, \
 				<span style='color: green;'>click</span>, \
 				<span style='color: green;'>helpme</span>, \
@@ -452,7 +452,7 @@
 				me, \
 				<span style='color: green;'>overhere</span>, \
 				<span style='color: green;'>turnaround</span>, \
-				<span style='color: green;'>roar</span></b><br>")
+				<span style='color: green;'>roar</span></b><br>"
 
 
 		// Pred emotes
@@ -518,7 +518,7 @@
 				m_type = 1
 				playsound(src.loc, 'sound/voice/pred_turnaround.ogg', 25, 0)
 		else
-			to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list of emotes.</span>")
+			src << "\blue Unusable emote '[act]'. Say *help for a list of emotes."
 
 	if (message)
 		log_emote("[name]/[key] : [message]")

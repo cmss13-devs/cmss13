@@ -50,15 +50,15 @@
 
 /obj/item/XenoItem/ResinPaste/afterattack(obj/item/clothing/head/helmet/marine/A as obj, mob/user as mob)
 	if (!istype(A) || !istype(usr))
-		to_chat(usr, "Doesn't work that way")
+		usr << "Doesn't work that way"
 		return
 	if (A.anti_hug >= 1)
-		to_chat(usr, "This Helmet can't be further reinforced.")
+		usr <<"This Helmet can't be further reinforced."
 		return
-	to_chat(usr, "You reinforce the Helmet...")
+	usr << "You reinforce the Helmet..."
 	A.anti_hug++
 	user.temp_drop_inv_item(src)
-	qdel(src)
+	cdel(src)
 	..()
 	return
 
@@ -70,17 +70,17 @@
 
 /obj/item/XenoItem/ChitinPlate/afterattack(obj/item/clothing/suit/storage/marine/A as obj, mob/user as mob)
 	if (!istype(A) || !istype(usr))
-		to_chat(usr, "Doesn't work that way...")
+		usr << "Doesn't work that way..."
 		return
 	if (A.flags_marine_armor & ARMOR_IS_REINFORCED)
-		to_chat(usr, "This armor is already reinforced.")
+		usr <<"This armor is already reinforced."
 		return
-	to_chat(usr, "You reinforce the armor with some Chitin Plating...")
+	usr << "You reinforce the armor with some Chitin Plating..."
 	A.armor = list(melee = 70, bullet = 90, laser = 7, energy = 40, bomb = 50, bio = 40, rad = 20)
 	A.slowdown++
 	A.flags_marine_armor |= ARMOR_IS_REINFORCED
 	user.temp_drop_inv_item(src)
-	qdel(src)
+	cdel(src)
 	..()
 	return
 
@@ -94,18 +94,18 @@
 
 /obj/item/XenoItem/AntiAcid/afterattack(obj/A as obj, mob/user as mob, proximity)
 	if (!isobj(A))
-		to_chat(usr, "Doesn't work that way...")
+		usr << "Doesn't work that way..."
 		return
 	if (A.unacidable == 1)
-		to_chat(usr, "It's already resistant to acid...")
+		usr << "It's already resistant to acid..."
 		return
 	if (istype(A, /obj/machinery/door))
-		to_chat(usr, "It doesn't work on doors...")
+		usr << "It doesn't work on doors..."
 		return
-	to_chat(usr, "You spray [A] with the Anti-Acid spray making it unacidable...")
+	usr << "You spray [A] with the Anti-Acid spray making it unacidable..."
 	A.unacidable = 1
 	user.temp_drop_inv_item(src)
-	qdel(src)
+	cdel(src)
 	..()
 	return
 

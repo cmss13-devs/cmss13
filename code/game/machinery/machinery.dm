@@ -153,14 +153,14 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 	return
 
@@ -204,7 +204,7 @@ Class Procs:
 			istype(usr, /mob/living/silicon) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey)) )
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		usr << "\red You don't have the dexterity to do this!"
 		return 1
 
 	var/norange = 0
@@ -247,7 +247,7 @@ Class Procs:
 			istype(usr, /mob/living/silicon) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey)) )
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		usr << "\red You don't have the dexterity to do this!"
 		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
@@ -257,10 +257,10 @@ Class Procs:
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
-			visible_message("<span class='warning'>[H] stares cluelessly at [src] and drools.</span>")
+			visible_message("\red [H] stares cluelessly at [src] and drools.")
 			return 1
 		else if(prob(H.getBrainLoss()))
-			to_chat(user, "<span class='warning'>You momentarily forget how to use [src].</span>")
+			user << "\red You momentarily forget how to use [src]."
 			return 1
 
 	src.add_fingerprint(user)
@@ -280,7 +280,7 @@ Class Procs:
 
 /obj/machinery/proc/state(var/msg)
   for(var/mob/O in hearers(src, null))
-    O.show_message("[bicon(src)] <span class = 'notice'>[msg]</span>", 2)
+    O.show_message("\icon[src] <span class = 'notice'>[msg]</span>", 2)
 
 /obj/machinery/proc/ping(text=null)
   if (!text)
@@ -311,5 +311,5 @@ Class Procs:
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1
 		I.loc = loc
-	qdel(src)
+	cdel(src)
 	return 1

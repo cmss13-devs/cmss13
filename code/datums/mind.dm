@@ -136,7 +136,7 @@
 		alert("Not before round-start!", "Alert")
 		return
 
-	var/out = "<em>[name]</em>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
+	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
 	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
 	out += "Factions and special roles:<br>"
@@ -151,9 +151,9 @@
 		/** Impanted**/
 		if(istype(current, /mob/living/carbon/human))
 			if(H.is_loyalty_implanted(H))
-				text = "Loyalty Implant:<a href='?src=\ref[src];implant=remove'>Remove</a>|<em>Implanted</em></br>"
+				text = "Loyalty Implant:<a href='?src=\ref[src];implant=remove'>Remove</a>|<b>Implanted</b></br>"
 			else
-				text = "Loyalty Implant:<em>No Implant</em>|<a href='?src=\ref[src];implant=add'>Implant him!</a></br>"
+				text = "Loyalty Implant:<b>No Implant</b>|<a href='?src=\ref[src];implant=add'>Implant him!</a></br>"
 		else
 			text = "Loyalty Implant: Don't implant that monkey!</br>"
 		sections["implant"] = text
@@ -336,7 +336,7 @@
 					ticker.mode.traitors -= src
 					special_role = null
 					current.hud_set_special_role()
-					to_chat(current, "<span class='highdanger'>You have been brainwashed! You are no longer a traitor!</span>")
+					current << "\red <FONT size = 3><B>You have been brainwashed! You are no longer a traitor!</B></FONT>"
 					log_admin("[key_name_admin(usr)] has de-traitor'ed [current].")
 					if(isAI(current))
 						var/mob/living/silicon/ai/A = current
@@ -348,7 +348,7 @@
 					ticker.mode.traitors += src
 					special_role = "traitor"
 					current.hud_set_special_role()
-					to_chat(current, "<span class='danger'>You are a traitor!</span>")
+					current << "<B>\red You are a traitor!</B>"
 					log_admin("[key_name_admin(usr)] has traitor'ed [current].")
 					show_objectives()
 
@@ -360,7 +360,7 @@
 			if("autoobjectives")
 				if (!config.objectives_disabled)
 					ticker.mode.forge_traitor_objectives(src)
-					to_chat(usr, "<span class='notice'>The objectives for traitor [key] have been generated. You can edit them and anounce manually.</span>")
+					usr << "\blue The objectives for traitor [key] have been generated. You can edit them and anounce manually."
 
 	else if (href_list["common"])
 		switch(href_list["common"])
@@ -382,13 +382,13 @@
 							suplink.uses = crystals
 			if("uplink")
 				if (!ticker.mode.equip_traitor(current, !(src in ticker.mode.traitors)))
-					to_chat(usr, "<span class='warning'>Equipping a syndicate failed!</span>")
+					usr << "\red Equipping a syndicate failed!"
 
 	else if (href_list["obj_announce"])
 		var/obj_count = 1
-		to_chat(current, "<span class='notice'>Your current objectives:</span>")
+		current << "\blue Your current objectives:"
 		for(var/datum/objective/objective in objectives)
-			to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+			current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
 			obj_count++
 
 	edit_memory()
@@ -403,7 +403,7 @@
 /datum/mind/proc/take_uplink()
 	var/obj/item/device/uplink/hidden/H = find_syndicate_uplink()
 	if(H)
-		qdel(H)
+		cdel(H)
 
 /datum/mind/proc/make_Traitor()
 	if(!(src in ticker.mode.traitors))
@@ -447,7 +447,7 @@
 
 /datum/mind/proc/set_cm_skills(skills_path)
 	if(cm_skills)
-		qdel(cm_skills)
+		cdel(cm_skills)
 	cm_skills = new skills_path()
 
 
@@ -483,7 +483,7 @@
 	if(!mind.assigned_role)
 		mind.assigned_role = "Squad Marine"	//default
 		if(mind.cm_skills)
-			qdel(mind.cm_skills)
+			cdel(mind.cm_skills)
 		mind.cm_skills = null //no restriction on what we can do.
 
 //MONKEY

@@ -22,7 +22,7 @@
 
 	Dispose()
 		if(Beacon)
-			qdel(Beacon)
+			cdel(Beacon)
 			Beacon = null
 		. = ..()
 

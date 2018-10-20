@@ -19,18 +19,18 @@
 	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(user,target) <= 1)
 		var/obj/structure/reagent_dispensers/fueltank/FT = target
 		if(current_rounds)
-			to_chat(user, "<span class='warning'>You can't mix fuel mixtures!</span>")
+			user << "<span class='warning'>You can't mix fuel mixtures!</span>"
 			return
 		var/fuel_available = FT.reagents.get_reagent_amount("fuel") < max_rounds ? FT.reagents.get_reagent_amount("fuel") : max_rounds
 		if(!fuel_available)
-			to_chat(user, "<span class='warning'>[FT] is empty!</span>")
+			user << "<span class='warning'>[FT] is empty!</span>"
 			return
 
 		FT.reagents.remove_reagent("fuel", fuel_available)
 		current_rounds = fuel_available
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		caliber = "Fuel"
-		to_chat(user, "<span class='notice'>You refill [src] with [lowertext(caliber)].</span>")
+		user << "<span class='notice'>You refill [src] with [lowertext(caliber)].</span>"
 		update_icon()
 
 	else

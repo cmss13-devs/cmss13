@@ -282,9 +282,6 @@
 	name = "strange tree"
 	desc = "Some kind of bizarre alien tree. It oozes with a sickly yellow sap."
 	icon_state = "plantbot1"
-	light_range = 2
-	light_power = 1
-	light_color = LIGHT_COLOR_SLIME_LAMP
 
 /obj/structure/jungle/planttop1
 	name = "strange tree"
@@ -320,10 +317,10 @@
 
 /obj/structure/jungle/vines/attackby(obj/item/W, mob/living/user)
 	if(W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, "<span class='warning'>You cut \the [src] away with \the [W].</span>")
+		user << "<span class='warning'>You cut \the [src] away with \the [W].</span>"
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
-		qdel(src)
+		cdel(src)
 	else
 		. = ..()
 

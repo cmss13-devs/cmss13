@@ -71,15 +71,15 @@ var/list/ob_type_fuel_requirements
 
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, "no warhead in the tray, loading operation cancelled.")
+			user << "no warhead in the tray, loading operation cancelled."
 		return
 
 	if(tray.fuel_amt < 1)
-		to_chat(user, "no solid fuel in the tray, loading operation cancelled.")
+		user << "no solid fuel in the tray, loading operation cancelled."
 		return
 
 	if(loaded_tray)
-		to_chat(user, "Tray is already loaded.")
+		user << "Tray is already loaded."
 		return
 
 	tray.forceMove(src)
@@ -108,11 +108,11 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(chambered_tray)
-		to_chat(user, "Tray cannot be unloaded after its chambered, fire the gun first.")
+		user << "Tray cannot be unloaded after its chambered, fire the gun first."
 		return
 
 	if(!loaded_tray)
-		to_chat(user, "No loaded tray to unload.")
+		user << "No loaded tray to unload."
 		return
 
 	flick("OBC_unloading",src)
@@ -148,23 +148,23 @@ var/list/ob_type_fuel_requirements
 		return
 	if(!loaded_tray)
 		if(user)
-			to_chat(user, "<span class='warning'>You need to load the tray before firing the payload.</span>")
+			user << "<span class='warning'>You need to load the tray before firing the payload.</span>"
 		return
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, "<span class='warning'>no warhead in the tray, cancelling chambering operation.</span>")
+			user << "<span class='warning'>no warhead in the tray, cancelling chambering operation.</span>"
 		return
 
 	if(tray.fuel_amt < 1)
 		if(user)
-			to_chat(user, "<span class='warning'>no solid fuel in the tray, cancelling chambering operation.</span>")
+			user << "<span class='warning'>no solid fuel in the tray, cancelling chambering operation.</span>"
 		return
 
 	if(last_orbital_firing) //fired at least once
 		var/cooldown_left = (last_orbital_firing + 5000) - world.time
 		if(cooldown_left > 0)
 			if(user)
-				to_chat(user, "<span class='warning'>[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds.</span>")
+				user << "<span class='warning'>[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds.</span>"
 			return
 
 	flick("OBC_chambering",src)
@@ -226,7 +226,7 @@ var/list/ob_type_fuel_requirements
 	chambered_tray = FALSE
 	tray.fuel_amt = 0
 	if(tray.warhead)
-		qdel(tray.warhead)
+		cdel(tray.warhead)
 		tray.warhead = null
 	tray.update_icon()
 
@@ -257,7 +257,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/orbital_tray/Dispose()
 	if(warhead)
-		qdel(warhead)
+		cdel(warhead)
 		warhead = null
 	if(linked_ob)
 		linked_ob.tray = null
@@ -290,22 +290,22 @@ var/list/ob_type_fuel_requirements
 					var/obj/structure/ob_ammo/OA = PC.loaded
 					if(OA.is_solid_fuel)
 						if(fuel_amt >= 6)
-							to_chat(user, "<span class='warning'>[src] can't accept more solid fuel.</span>")
+							user << "<span class='warning'>[src] can't accept more solid fuel.</span>"
 						else if(!warhead)
-							to_chat(user, "<span class='warning'>A warhead must be placed in [src] first.</span>")
+							user << "<span class='warning'>A warhead must be placed in [src] first.</span>"
 						else
-							to_chat(user, "<span class='notice'>You load [OA] into [src].</span>")
+							user << "<span class='notice'>You load [OA] into [src].</span>"
 							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 							fuel_amt++
 							PC.loaded = null
 							PC.update_icon()
-							qdel(OA)
+							cdel(OA)
 							update_icon()
 					else
 						if(warhead)
-							to_chat(user, "<span class='warning'>[src] already has a warhead.</span>")
+							user << "<span class='warning'>[src] already has a warhead.</span>"
 						else
-							to_chat(user, "<span class='notice'>You load [OA] into [src].</span>")
+							user << "<span class='notice'>You load [OA] into [src].</span>"
 							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 							warhead = OA
 							OA.forceMove(src)
@@ -327,7 +327,7 @@ var/list/ob_type_fuel_requirements
 					return TRUE
 				PC.update_icon()
 				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				to_chat(user, "<span class='notice'>You grab [PC.loaded] with [PC].</span>")
+				user << "<span class='notice'>You grab [PC.loaded] with [PC].</span>"
 				update_icon()
 		return TRUE
 	else
@@ -354,7 +354,7 @@ var/list/ob_type_fuel_requirements
 				PC.loaded = src
 				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 				PC.update_icon()
-				to_chat(user, "<span class='notice'>You grab [PC.loaded] with [PC].</span>")
+				user << "<span class='notice'>You grab [PC.loaded] with [PC].</span>"
 				update_icon()
 		return TRUE
 	else
@@ -362,7 +362,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/examine(mob/user)
 	..()
-	to_chat(user, "Moving this will require some sort of lifter.")
+	user << "Moving this will require some sort of lifter."
 
 
 /obj/structure/ob_ammo/warhead
@@ -452,7 +452,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		to_chat(user, "<span class='warning'>You have no idea how to use that console.</span>")
+		user << "<span class='warning'>You have no idea how to use that console.</span>"
 		return 1
 
 	user.set_interaction(src)

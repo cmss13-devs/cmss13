@@ -12,7 +12,7 @@
 		holder = atom
 		if(!holder) //don't want this without a holder
 			spawn
-				qdel(src)
+				cdel(src)
 		set_desc(steps.len)
 		return
 
@@ -65,7 +65,7 @@
 		if(result)
 			new result(get_turf(holder))
 			spawn()
-				qdel(holder)
+				cdel(holder)
 				holder = null
 		return
 

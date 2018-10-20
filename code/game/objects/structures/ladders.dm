@@ -42,7 +42,7 @@
 		up.down = null
 		up = null
 	if(cam)
-		qdel(cam)
+		cdel(cam)
 		cam = null
 	. = ..()
 
@@ -62,7 +62,7 @@
 /obj/structure/ladder/attack_hand(mob/user)
 	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying || user.buckled || user.anchored) return
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
+		user << "<span class='warning'>Someone else is currently using [src].</span>"
 		return
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
@@ -143,10 +143,10 @@
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
 		if(isXenoLarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
-			to_chat(usr, "You can't do that in your current state.")
+			usr << "You can't do that in your current state."
 			return
 		if(is_watching)
-			to_chat(usr, "Someone's already looking through [src].")
+			usr << "Someone's already looking through [src]."
 			return
 		if(up && down)
 			switch( alert("Look up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )

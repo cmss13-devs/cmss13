@@ -1,6 +1,3 @@
-var/global/list/del_profiling = list()
-var/global/list/gdel_profiling = list()
-var/global/list/ghdel_profiling = list()
 /atom
 	layer = TURF_LAYER
 	var/level = 2
@@ -20,8 +17,6 @@ var/global/list/ghdel_profiling = list()
 
 	//Detective Work, used for the duplicate data points kept in the scanners
 	var/list/original_atom
-	var/ignoreinvert = 0
-	var/timestopped
 
 
 /*
@@ -33,11 +28,14 @@ directive is properly returned.
 //===========================================================================
 /atom/Dispose()
 	if(reagents)
-		qdel(reagents)
+		cdel(reagents)
 	if(light)
-		qdel(light)
+		cdel(light)
 		light = null
 	. = ..()
+
+/atom/Recycle()
+	return
 
 //===========================================================================
 
@@ -182,7 +180,7 @@ its easier to just keep the beam vertical.
 
 		for(var/obj/effect/overlay/beam/O in orange(10,src))	//This section erases the previously drawn beam because I found it was easier to
 			if(O.BeamSource==src)				//just draw another instance of the beam instead of trying to manipulate all the
-				qdel(O)							//pieces to a new orientation.
+				cdel(O)							//pieces to a new orientation.
 		var/Angle=round(Get_Angle(src,BeamTarget))
 		var/icon/I=new(icon,icon_state)
 		I.Turn(Angle)
@@ -223,7 +221,7 @@ its easier to just keep the beam vertical.
 			X.pixel_y=Pixel_y
 		sleep(3)	//Changing this to a lower value will cause the beam to follow more smoothly with movement, but it will also be more laggy.
 					//I've found that 3 ticks provided a nice balance for my use.
-	for(var/obj/effect/overlay/beam/O in orange(10,src)) if(O.BeamSource==src) qdel(O)
+	for(var/obj/effect/overlay/beam/O in orange(10,src)) if(O.BeamSource==src) cdel(O)
 
 
 //All atoms
@@ -236,9 +234,9 @@ its easier to just keep the beam vertical.
 	examine(usr)
 
 /atom/proc/examine(mob/user)
-	to_chat(user, "[bicon(src)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets") ~Carn
+	user << "\icon[src] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
-		to_chat(user, desc)
+		user << desc
 
 // called by mobs when e.g. having the atom as their machine, pulledby, loc (AKA mob being inside the atom) or buckled var set.
 // see code/modules/mob/mob_movement.dm for more.
@@ -383,7 +381,7 @@ its easier to just keep the beam vertical.
 
 	//Cleaning up shit.
 	if(fingerprints && !fingerprints.len)
-		qdel(fingerprints)
+		cdel(fingerprints)
 		fingerprints = null
 	return
 
@@ -430,7 +428,7 @@ its easier to just keep the beam vertical.
 		cur_y = y_arr.Find(src.z)
 		if(cur_y)
 			break
-//	to_chat(world, "X = [cur_x]; Y = [cur_y]")
+//	world << "X = [cur_x]; Y = [cur_y]"
 	if(cur_x && cur_y)
 		return list("x"=cur_x,"y"=cur_y)
 	else
@@ -447,14 +445,3 @@ its easier to just keep the beam vertical.
 //things that object need to do when a movable atom inside it is deleted
 /atom/proc/on_stored_atom_del(atom/movable/AM)
 	return
-
-/atom/proc/initialize()
-	return
-
-/atom/proc/change_area(var/area/oldarea, var/area/newarea)
-	change_area_name(oldarea.name, newarea.name)
-
-/atom/proc/change_area_name(var/oldname, var/newname)
-	name = replacetext(name,oldname,newname)
-
-/atom/proc/update_icon()

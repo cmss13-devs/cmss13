@@ -46,7 +46,7 @@
 			updateUsrDialog()
 			return 0
 	if (!is_type_in_list(O, allowed_items))
-		to_chat(user, "It looks as not containing any juice.")
+		user << "It looks as not containing any juice."
 		return 1
 	if(user.drop_held_item())
 		O.forceMove(src)
@@ -152,7 +152,7 @@
 	for (var/obj/item/reagent_container/food/snacks/O in src.contents)
 		var/r_id = get_juice_id(O)
 		beaker.reagents.add_reagent(r_id,get_juice_amount(O))
-		qdel(O)
+		cdel(O)
 		if (beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 			break
 

@@ -19,7 +19,7 @@
 	return 1
 
 /datum/game_mode/colonialmarines/announce()
-	to_chat(world, "<span class='round_header'>The current map is - [map_tag]!</span>")
+	world << "<span class='round_header'>The current map is - [map_tag]!</span>"
 
 /datum/game_mode/colonialmarines/send_intercept()
 	return 1
@@ -55,33 +55,33 @@
 	for(var/obj/effect/landmark/L in landmarks_list)
 		switch(L.name)
 			if("hunter_primary")
-				qdel(L)
+				cdel(L)
 			if("hunter_secondary")
-				qdel(L)
+				cdel(L)
 			if("crap_item")
-				qdel(L)
+				cdel(L)
 			if("good_item")
-				qdel(L)
+				cdel(L)
 			if("block_hellhound")
-				qdel(L)
+				cdel(L)
 			if("fog blocker")
 				F = new(L.loc)
 				round_fog += F
-				qdel(L)
+				cdel(L)
 			if("fog time extender")
 				var/obj/effect/landmark/lv624/fog_time_extender/fte = L
 				if(istype(fte))
 					fog_timer += fte.time_to_extend
-				qdel(L)
+				cdel(L)
 			if("xeno tunnel")
 				xeno_tunnels += L.loc
-				qdel(L)
+				cdel(L)
 			if("monkey_spawn")
 				monkey_spawns += L.loc
-				qdel(L)
+				cdel(L)
 			if("map item")
 				map_items += L.loc
-				qdel(L)
+				cdel(L)
 
 	// Spawn gamemode-specific map items
 	for(var/turf/T in map_items)
@@ -221,12 +221,12 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/colonialmarines/declare_completion()
-	//to_chat(world, "<span class='round_header'>[round_finished]</span>")
-	to_chat(world, "<span class='round_header'>|Round Complete|</span>")
+	//world << "<span class='round_header'>[round_finished]</span>"
+	world << "<span class='round_header'>|Round Complete|</span>"
 	feedback_set_details("round_end_result",round_finished)
 
-	to_chat(world, "<span class='round_body'>Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag].</span>")
-	to_chat(world, "<span class='round_body'>End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details.</span>")
+	world << "<span class='round_body'>Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag].</span>"
+	world << "<span class='round_body'>End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details.</span>"
 	var/musical_track
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR) musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
@@ -242,7 +242,7 @@
 		//dat = "\nXenomorphs remaining: [living_player_list[2]]. Humans remaining: [living_player_list[1]]."
 	if(round_stats) round_stats << "[round_finished][dat]\nGame mode: [name]\nRound time: [duration2text()]\nEnd round player population: [clients.len]\nTotal xenos spawned: [round_statistics.total_xenos_created]\nTotal Preds spawned: [predators.len]\nTotal humans spawned: [round_statistics.total_humans_created][log_end]" // Logging to data/logs/round_stats.log
 
-	to_chat(world, dat)
+	world << dat
 
 	declare_completion_announce_objectives()
 	declare_completion_announce_individual()

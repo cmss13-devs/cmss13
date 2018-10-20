@@ -16,7 +16,7 @@
 				for(var/i = 1, i <= amount, i++)
 					new s (pick(T))
 		sleep(-1)
-	qdel(src)
+	cdel(src)
 
 
 /obj/effect/landmark/supplyspawner/weapons
@@ -314,17 +314,17 @@
 /obj/structure/largecrate/machine/examine(mob/user)
 	..()
 	if(unmovable)
-		to_chat(user, "<b>!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!</b>")
+		user << "<b>!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!</b>"
 
 /obj/structure/largecrate/machine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/crowbar) && dir_needed)
 		var/turf/next_turf = get_step(src, dir_needed)
 		if(next_turf.density)
-			to_chat(user, "<span class='warning'>You can't open the crate here, there's not enough room!</span>")
+			user << "<span class='warning'>You can't open the crate here, there's not enough room!</span>"
 			return
 		for(var/atom/movable/AM in next_turf.contents)
 			if(AM.density)
-				to_chat(user, "<span class='warning'>You can't open the crate here, [AM] blocks the way.</span>")
+				user << "<span class='warning'>You can't open the crate here, [AM] blocks the way.</span>"
 				return
 	..()
 

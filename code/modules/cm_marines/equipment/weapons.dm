@@ -42,7 +42,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.glasses && istype(H.glasses, /obj/item/clothing/glasses/night/m56_goggles))
 			if(H.back == src)
-				to_chat(H, "<span class='notice'>You remove \the [H.glasses].</span>")
+				H << "<span class='notice'>You remove \the [H.glasses].</span>"
 				H.drop_inv_item_on_ground(H.glasses)
 	..()
 
@@ -52,13 +52,13 @@
 	var/obj/item/weapon/gun/smartgun/mygun = user.get_active_hand()
 
 	if(isnull(mygun) || !mygun || !istype(mygun))
-		to_chat(user, "You must be holding an M56 Smartgun to begin the reload process.")
+		user << "You must be holding an M56 Smartgun to begin the reload process."
 		return
 	if(rounds_remaining < 1)
-		to_chat(user, "Your powerpack is completely devoid of spare ammo belts! Looks like you're up shit creek, maggot!")
+		user << "Your powerpack is completely devoid of spare ammo belts! Looks like you're up shit creek, maggot!"
 		return
 	if(!pcell)
-		to_chat(user, "Your powerpack doesn't have a battery! Slap one in there!")
+		user << "Your powerpack doesn't have a battery! Slap one in there!"
 		return
 
 	mygun.shells_fired_now = 0 //If you attempt a reload, the shells reset. Also prevents double reload if you fire off another 20 bullets while it's loading.
@@ -66,7 +66,7 @@
 	if(reloading)
 		return
 	if(pcell.charge <= 50)
-		to_chat(user, "Your powerpack's battery is too drained! Get a new battery and install it!")
+		user << "Your powerpack's battery is too drained! Get a new battery and install it!"
 		return
 
 	reloading = 1
@@ -85,13 +85,13 @@
 		mygun.current_mag.current_rounds += rounds_to_reload
 		rounds_remaining -= rounds_to_reload
 
-		to_chat(user, "You finish loading [rounds_to_reload] shells into the M56 Smartgun. Ready to rumble!")
+		user << "You finish loading [rounds_to_reload] shells into the M56 Smartgun. Ready to rumble!"
 		playsound(user, 'sound/weapons/unload.ogg', 25, 1)
 
 		reloading = 0
 		return 1
 	else
-		to_chat(user, "Your reloading was interrupted!")
+		user << "Your reloading was interrupted!"
 		reloading = 0
 		return
 	return 1
@@ -100,7 +100,7 @@
 	if(istype(A,/obj/item/cell))
 		var/obj/item/cell/C = A
 		visible_message("[user.name] swaps out the power cell in the [src.name].","You swap out the power cell in the [src] and drop the old one.")
-		to_chat(user, "The new cell contains: [C.charge] power.")
+		user << "The new cell contains: [C.charge] power."
 		pcell.loc = get_turf(user)
 		pcell = C
 		C.loc = src
@@ -112,7 +112,7 @@
 	..()
 	if (get_dist(user, src) <= 1)
 		if(pcell)
-			to_chat(user, "A small gauge in the corner reads: Ammo: [rounds_remaining] / 250.")
+			user << "A small gauge in the corner reads: Ammo: [rounds_remaining] / 250."
 
 /obj/item/smartgun_powerpack/snow
 	icon_state = "s_powerpack"
@@ -430,13 +430,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/spec_kit/attack_self(mob/user)
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED)
-		to_chat(user, "<span class='notice'>This box is not for you, give it to a specialist!</span>")
+		user << "<span class='notice'>This box is not for you, give it to a specialist!</span>"
 		return
 	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
 	if(!selection)
 		return
 	if(!kits[selection])
-		to_chat(user, "<span class='notice'>No more kits of this type may be chosen!!</span>")
+		user << "<span class='notice'>No more kits of this type may be chosen!!</span>"
 		return
 	var/turf/T = get_turf(loc)
 	switch(selection)
@@ -455,4 +455,4 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		if("Demo")
 			new /obj/item/storage/box/spec/demolitionist (T)
 			kits["Demo"] --
-	qdel(src)
+	cdel(src)

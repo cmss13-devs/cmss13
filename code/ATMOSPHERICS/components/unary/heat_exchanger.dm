@@ -38,7 +38,7 @@
 		return ..()
 	var/turf/T = loc
 	if(level == 1 && isturf(T) && T.intact_tile)
-		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
+		user << "<span class='warning'>You must remove the plating first.</span>"
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -49,4 +49,4 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe(loc, make_from = src)
-		qdel(src)
+		cdel(src)

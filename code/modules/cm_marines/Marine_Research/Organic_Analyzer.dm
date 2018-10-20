@@ -47,11 +47,11 @@ Note: Must be placed within 3 tiles of the WY Research Console
 				linked_console.linked_destroy = null
 				linked_console = null
 			icon_state = "d_analyzer_t"
-			to_chat(user, "You open the maintenance hatch of [src].")
+			user << "You open the maintenance hatch of [src]."
 		else
 			opened = 0
 			icon_state = "d_analyzer"
-			to_chat(user, "You close the maintenance hatch of [src].")
+			user << "You close the maintenance hatch of [src]."
 		return
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
@@ -61,31 +61,31 @@ Note: Must be placed within 3 tiles of the WY Research Console
 			M.icon_state = "box_1"
 			for(var/obj/I in component_parts)
 				I.loc = src.loc
-			qdel(src)
+			cdel(src)
 			return 1
 		else
-			to_chat(user, "\red You can't load the [src.name] while it's opened.")
+			user << "\red You can't load the [src.name] while it's opened."
 			return 1
 	if (disabled)
 		return
 	if (!linked_console)
-		to_chat(user, "\red The Weyland Brand Organic Analyzer must be linked to an R&D console first!")
+		user << "\red The Weyland Brand Organic Analyzer must be linked to an R&D console first!"
 		return
 	if (busy)
-		to_chat(user, "<span class='warning'>The Weyland Brand Organic Analyzer is busy right now.</span>")
+		user << "\red The Weyland Brand Organic Analyzer is busy right now."
 		return
 	if (istype(O, /obj/item/XenoBio) && !loaded_item)
 		if(isrobot(user)) //Don't put your module items in there!
 			return
 		if(!O.origin_tech)
-			to_chat(user, "\red Can't do anything with that, maybe something organic...!")
+			user << "\red Can't do anything with that, maybe something organic...!"
 			return
 		//var/list/temp_tech = ConvertReqString2List(O.origin_tech) //This warning might just be Byond being silly.
 		busy = 1
 		loaded_item = O
 		user.drop_held_item()
 		O.loc = src
-		to_chat(user, "\blue You add the [O.name] to the machine!")
+		user << "\blue You add the [O.name] to the machine!"
 		flick("d_analyzer_la", src)
 		spawn(10)
 			icon_state = "d_analyzer_l"

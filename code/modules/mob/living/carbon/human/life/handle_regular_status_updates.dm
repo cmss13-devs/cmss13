@@ -40,7 +40,7 @@
 		else
 			for(var/atom/a in hallucinations)
 				hallucinations -= a
-				qdel(a)
+				cdel(a)
 
 			if(halloss > 100)
 				visible_message("<span class='warning'>\The [src] slumps to the ground, too weak to continue fighting.</span>", \

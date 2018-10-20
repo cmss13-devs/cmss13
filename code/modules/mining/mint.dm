@@ -43,22 +43,22 @@
 		if(O)
 			if (istype(O,/obj/item/stack/sheet/mineral/gold))
 				amt_gold += 100 * O.get_amount()
-				qdel(O)
+				cdel(O)
 			if (istype(O,/obj/item/stack/sheet/mineral/silver))
 				amt_silver += 100 * O.get_amount()
-				qdel(O)
+				cdel(O)
 			if (istype(O,/obj/item/stack/sheet/mineral/diamond))
 				amt_diamond += 100 * O.get_amount()
-				qdel(O)
+				cdel(O)
 			if (istype(O,/obj/item/stack/sheet/mineral/phoron))
 				amt_phoron += 100 * O.get_amount()
-				qdel(O)
+				cdel(O)
 			if (istype(O,/obj/item/stack/sheet/mineral/uranium))
 				amt_uranium += 100 * O.get_amount()
-				qdel(O)
+				cdel(O)
 			if (istype(O,/obj/item/stack/sheet/metal))
 				amt_iron += 100 * O.get_amount()
-				qdel(O)
+				cdel(O)
 
 /obj/machinery/mineral/mint/attack_hand(user as mob)
 
@@ -66,10 +66,10 @@
 
 	if (!input)
 		dat += text("input connection status: ")
-		dat += text("<span class='danger'>NOT CONNECTED</span><br>")
+		dat += text("<b><font color='red'>NOT CONNECTED</font></b><br>")
 	if (!output)
 		dat += text("<br>output connection status: ")
-		dat += text("<span class='danger'>NOT CONNECTED</span><br>")
+		dat += text("<b><font color='red'>NOT CONNECTED</font></b><br>")
 
 	dat += text("<br><font color='#ffcc00'><b>Gold inserted: </b>[amt_gold]</font> ")
 	if (chosen == "gold")
@@ -121,7 +121,7 @@
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 	if(processing==1)
-		to_chat(usr, "<span class='notice'>The machine is processing.</span>")
+		usr << "\blue The machine is processing."
 		return
 	if(href_list["choose"])
 		chosen = href_list["choose"]

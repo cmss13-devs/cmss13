@@ -62,11 +62,11 @@
 /obj/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/reagent_container))
 		if(beaker)
-			to_chat(user, "<span class='warning'>There is already a reagent container loaded!</span>")
+			user << "<span class='warning'>There is already a reagent container loaded!</span>"
 			return
 
 		if((!istype(W, /obj/item/reagent_container/blood) && !istype(W, /obj/item/reagent_container/glass)) || istype(W, /obj/item/reagent_container/glass/bucket))
-			to_chat(user, "<span class='warning'>That won't fit!</span>")
+			user << "<span class='warning'>That won't fit!</span>"
 			return
 
 		if(user.drop_inv_item_to_loc(W, src))
@@ -79,7 +79,7 @@
 			message_staff("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
 			log_admin("[key_name(user)] put a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
-			to_chat(user, "You attach \the [W] to \the [src].")
+			user << "You attach \the [W] to \the [src]."
 			update_icon()
 		return
 	else
@@ -156,18 +156,18 @@
 		return
 
 	mode = !mode
-	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
+	usr << "The IV drip is now [mode ? "injecting" : "taking blood"]."
 
 /obj/machinery/iv_drip/examine(mob/user)
 	..()
-	to_chat(user, "The IV drip is [mode ? "injecting" : "taking blood"].")
+	user << "The IV drip is [mode ? "injecting" : "taking blood"]."
 
 	if(beaker)
 		if(beaker.reagents && beaker.reagents.reagent_list.len)
-			to_chat(user, "<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.</span>")
+			user << "\blue Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid."
 		else
-			to_chat(user, "<span class='notice'>Attached is an empty [beaker].</span>")
+			user << "\blue Attached is an empty [beaker]."
 	else
-		to_chat(user, "<span class='notice'>No chemicals are attached.</span>")
+		user << "\blue No chemicals are attached."
 
-	to_chat(user, "<span class='notice'>[attached ? attached : "No one"] is attached.</span>")
+	user << "\blue [attached ? attached : "No one"] is attached."

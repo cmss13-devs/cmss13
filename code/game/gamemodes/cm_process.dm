@@ -3,9 +3,9 @@
 	set name = "DEBUG EVAC SHUTTLE"
 	set category = "DEBUG"
 
-	to_chat(world, "Location is [emergency_shuttle.shuttle.location]")
-	to_chat(world, "Moving status is [emergency_shuttle.shuttle.moving_status]")
-	to_chat(world, "Departed is [emergency_shuttle.departed]")
+	world << "Location is [emergency_shuttle.shuttle.location]"
+	world << "Moving status is [emergency_shuttle.shuttle.moving_status]"
+	world << "Departed is [emergency_shuttle.departed]"
 
 */
 #define QUEEN_DEATH_COUNTDOWN 			 6000 //20 minutes. Can be changed into a variable if it needs to be manipulated later.
@@ -52,7 +52,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		var/dat = "<span class='round_body'>The objective scores were:</span><br>"
 		dat += objectives_controller.get_objectives_progress()
 
-		to_chat(world, dat)
+		world << dat
 
 /datum/game_mode/proc/declare_completion_announce_individual()
 	set waitfor = 0
@@ -76,9 +76,9 @@ dat += " At least you've made it to evac; it's all over now, right?"
 dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 
 
-"<em>You have survived</em>
-"<em>You have survived</em>, and you have managed to evacuate the [MAIN_SHIP_NAME]. Maybe it's finally over..."
-"<em>You have survived</em>. That is more than enough, but who knows what the future holds for you now..."
+"<b>You have survived</b>
+"<b>You have survived</b>, and you have managed to evacuate the [MAIN_SHIP_NAME]. Maybe it's finally over..."
+"<b>You have survived</b>. That is more than enough, but who knows what the future holds for you now..."
 
 "<span class='round_body'>You lead your hive, and you have survived. Your influence will grow in time.</span>"
 "<span class='round_body'>You have served the hive.</span>"
@@ -100,15 +100,15 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(playerTurf.z != 2)
-						to_chat(Player, "<span class='round_body'>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</span>")
+						Player << "<span class='round_body'>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</span>"
 					else
-						to_chat(Player, "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>")
+						Player << "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>"
 				else if(playerTurf.z == 2)
-					to_chat(Player, "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>")
+					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>"
 				else if(issilicon(Player))
-					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>")
+					Player << "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>"
 				else
-					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>")
+					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>"
 			else
 
 	if(xenomorphs.len)
@@ -120,7 +120,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				if(!M || !M.loc) M = X.original
 				if(M && M.loc && istype(M,/mob/living/carbon/Xenomorph/Queen)) dat += "<br>[X.key] was [M] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
 
-		to_chat(world, dat)
+		world << dat
 */
 /datum/game_mode/proc/declare_completion_announce_xenomorphs()
 	set waitfor = 0
@@ -134,7 +134,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				if(!M || !M.loc) M = X.original
 				if(M && M.loc && istype(M,/mob/living/carbon/Xenomorph/Queen)) dat += "<br>[X.key] was [M] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
 
-		to_chat(world, dat)
+		world << dat
 
 /datum/game_mode/proc/declare_completion_announce_survivors()
 	set waitfor = 0
@@ -149,7 +149,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				if(M && M.loc) 	dat += "<br>[S.key] was [M.real_name] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
 				else 			dat += "<br>[S.key]'s body was destroyed... <span class='boldnotice'>(DIED)</span>"
 
-		to_chat(world, dat)
+		world << dat
 
 /datum/game_mode/proc/declare_completion_announce_predators()
 	set waitfor = 0
@@ -164,7 +164,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				if(M && M.loc) 	dat += "<br>[P.key] was [M.real_name] <span class='boldnotice'>([M.stat == DEAD? "DIED":"SURVIVED"])</span>"
 				else 			dat += "<br>[P.key]'s body was destroyed... <span class='boldnotice'>(DIED)</span>"
 
-		to_chat(world, dat)
+		world << dat
 
 
 /datum/game_mode/proc/declare_completion_announce_medal_awards()
@@ -176,7 +176,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 			var/datum/recipient_awards/RA = medal_awards[recipient]
 			for(var/i in 1 to RA.medal_names.len)
 				dat += "<br><b>[RA.recipient_rank] [recipient]</b> is awarded [RA.posthumous[i] ? "posthumously " : ""]the <span class='boldnotice'>[RA.medal_names[i]]</span>: \'<i>[RA.medal_citations[i]]</i>\'."
-		to_chat(world, dat)
+		world << dat
 
 
 
@@ -196,12 +196,12 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 //Disperses fog, doing so gradually.
 /datum/game_mode/proc/disperse_fog()
 	set waitfor = 0
-	//to_chat(world, "<span class='boldnotice'>The fog north of the colony is starting to recede.</span>") //Let's try it without an announcement.
+	//world << "<span class='boldnotice'>The fog north of the colony is starting to recede.</span>" //Let's try it without an announcement.
 	flags_round_type &= ~MODE_FOG_ACTIVATED
 	var/i
 	for(i in round_fog)
 		round_fog -= i
-		qdel(i)
+		cdel(i)
 		sleep(1)
 	round_fog = null
 
@@ -239,8 +239,8 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 	// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
 	for(var/mob/M in activeXenos)
 		M << sound(get_sfx("queen"), wait = 0, volume = 50)
-		to_chat(M, "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>")
-		to_chat(M, "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? "approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere.</span>")
+		M << "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>"
+		M << "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? "approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere.</span>"
 
 	// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"

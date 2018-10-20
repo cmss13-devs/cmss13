@@ -43,11 +43,10 @@
 		if(WEAR_IN_BACK)
 			W.forceMove(back)
 		else
-			to_chat(usr, "<span class='warning'>You are trying to equip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
+			usr << "\red You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."
 			return
 
 	W.layer = ABOVE_HUD_LAYER
-	W.plane = ABOVE_HUD_PLANE
 
 	return 1
 

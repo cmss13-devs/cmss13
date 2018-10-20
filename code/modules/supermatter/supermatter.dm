@@ -53,13 +53,9 @@
 	var/emergency_alert = "CRYSTAL DELAMINATION IMMINENT."
 	var/explosion_point = 1500
 
-	light_color = LIGHT_COLOR_YELLOW
-
+	l_color = "#8A8A00"
 	var/warning_color = "#B8B800"
 	var/emergency_color = "#D9D900"
-
-	var/max_power = 2000 // Used for lighting scaling.
-	var/max_luminosity = 8
 
 	var/grav_pulling = 0
 	var/pull_radius = 20
@@ -108,8 +104,9 @@
 
 
 /obj/machinery/power/supermatter/Dispose()
-	qdel(radio)
+	cdel(radio)
 	radio = null
+	SetLuminosity(0)
 	. = ..()
 
 /obj/machinery/power/supermatter/proc/explode()
@@ -117,8 +114,15 @@
 	grav_pulling = 1
 	spawn(200) // Breaking apart and sucking everything in before the final explosion. Increasing this might decrease lag since the explosion doesn't need to destroy as much
 		explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1)
-		qdel(src)
+		cdel(src)
 		return
+
+//Changes color and luminosity of the light to these values if they were not already set
+/obj/machinery/power/supermatter/proc/shift_light(var/lum, var/clr)
+	if(l_color != clr)
+		l_color = clr
+	if(luminosity != lum)
+		SetLuminosity(lum)
 
 /obj/machinery/power/supermatter/process()
 
@@ -133,11 +137,13 @@
 
 	if(damage > warning_point) // while the core is still damaged and it's still worth noting its status
 
+		shift_light(5, warning_color)
 		if((world.timeofday - lastwarning) / 10 >= WARNING_DELAY)
 			var/stability = num2text(round((damage / explosion_point) * 100))
 			var/alert_msg
 
 			if(damage > emergency_point)
+				shift_light(7, emergency_color)
 				alert_msg = addtext(emergency_alert, " Instability: ",stability,"%")
 				lastwarning = world.timeofday
 			else if(damage >= damage_archived) // The damage is still going up
@@ -163,6 +169,8 @@
 					mob.apply_effect(rads, IRRADIATE)
 
 			explode()
+	else
+		shift_light(4,initial(l_color))
 	if(grav_pulling)
 		supermatter_pull()
 
@@ -232,10 +240,6 @@
 
 		power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
 
-	var/light_value = Clamp(round(Clamp(power / max_power, 0, 1) * max_luminosity), 0, max_luminosity)
-
-	set_light(light_value, light_value / 2)
-
 	return 1
 
 
@@ -256,11 +260,11 @@
 	if(Adjacent(user))
 		return attack_hand(user)
 	else
-		to_chat(user, "<span class = \"warning\">You attempt to interface with the control circuits but find they are not connected to your network.  Maybe in a future firmware update.</span>")
+		user << "<span class = \"warning\">You attempt to interface with the control circuits but find they are not connected to your network.  Maybe in a future firmware update.</span>"
 	return
 
 /obj/machinery/power/supermatter/attack_ai(mob/user as mob)
-	to_chat(user, "<span class = \"warning\">You attempt to interface with the control circuits but find they are not connected to your network.  Maybe in a future firmware update.</span>")
+	user << "<span class = \"warning\">You attempt to interface with the control circuits but find they are not connected to your network.  Maybe in a future firmware update.</span>"
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... \his body starts to glow and bursts into flames before flashing into ash.</span>",\
@@ -305,7 +309,7 @@
 		user.dust()
 		power += 200
 	else
-		qdel(user)
+		cdel(user)
 
 	power += 200
 

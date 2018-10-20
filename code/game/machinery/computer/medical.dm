@@ -24,13 +24,13 @@
 	if(!usr || usr.stat || usr.lying)	return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		usr << "You remove \the [scan] from \the [src]."
 		scan.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		usr << "There is nothing to remove from the console."
 	return
 
 /obj/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
@@ -38,7 +38,7 @@
 		if(usr.drop_held_item())
 			O.forceMove(src)
 			scan = O
-			to_chat(user, "You insert [O].")
+			user << "You insert [O]."
 	..()
 
 /obj/machinery/computer/med_data/attack_ai(user as mob)
@@ -218,7 +218,7 @@
 			if (href_list["del_all2"])
 				for(var/datum/data/record/R in data_core.medical)
 					data_core.medical -= R
-					qdel(R)
+					cdel(R)
 					//Foreach goto(494)
 				src.temp = "All records deleted."
 
@@ -370,7 +370,7 @@
 
 			if (href_list["del_r2"])
 				if (active2)
-					qdel(active2)
+					cdel(active2)
 					active2 = null
 
 			if (href_list["d_rec"])
@@ -506,7 +506,7 @@
 
 		else if(prob(1))
 			data_core.medical -= R
-			qdel(R)
+			cdel(R)
 			continue
 
 	..(severity)

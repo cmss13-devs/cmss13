@@ -338,7 +338,7 @@
 	signal.data["sigtype"] = "command"
 
 	radio_connection.post_signal(src, signal, RADIO_FROM_AIRALARM)
-//			to_chat(world, "Signal [command] Broadcasted to [target]")
+//			world << text("Signal [] Broadcasted to []", command, target)
 
 	return 1
 
@@ -552,7 +552,7 @@
 
 
 		else if (istype(user, /mob/living/silicon) && aidisabled)
-			to_chat(user, "AI control for this Air Alarm interface has been disabled.")
+			user << "AI control for this Air Alarm interface has been disabled."
 			user << browse(null, "window=air_alarm")
 			return
 
@@ -684,7 +684,7 @@ Pressure: <span class='dl[pressure_dangerlevel]'>[environment_pressure]</span>kP
 			if (mode==AALARM_MODE_PANIC)
 				output += "<font color='red'><B>PANIC SYPHON ACTIVE</B></font><br><A href='?src=\ref[src];mode=[AALARM_MODE_SCRUBBING]'>Turn syphoning off</A>"
 			else
-				output += "<A href='?src=\ref[src];mode=[AALARM_MODE_PANIC]'><span class='caution'>ACTIVATE PANIC SYPHON IN AREA</span></A>"
+				output += "<A href='?src=\ref[src];mode=[AALARM_MODE_PANIC]'><font color='red'>ACTIVATE PANIC SYPHON IN AREA</font></A>"
 
 
 		if (AALARM_SCREEN_VENT)
@@ -857,7 +857,7 @@ table tr:first-child th:first-child { border: none;}
 		var/min_temperature = max(selected[2] - T0C, MIN_TEMPERATURE)
 		var/input_temperature = input("What temperature would you like the system to mantain? (Capped between [min_temperature]C and [max_temperature]C)", "Thermostat Controls") as num|null
 		if(!input_temperature || input_temperature > max_temperature || input_temperature < min_temperature)
-			to_chat(usr, "Temperature must be between [min_temperature]C and [max_temperature]C")
+			usr << "Temperature must be between [min_temperature]C and [max_temperature]C"
 		else
 			target_temperature = input_temperature + T0C
 
@@ -959,14 +959,14 @@ table tr:first-child th:first-child { border: none;}
 		if (href_list["AAlarmwires"])
 			var/t1 = text2num(href_list["AAlarmwires"])
 			if (!( istype(usr.get_held_item(), /obj/item/tool/wirecutters) ))
-				to_chat(usr, "You need wirecutters!")
+				usr << "You need wirecutters!"
 				return
 			if (isWireColorCut(t1))
 				mend(t1)
 			else
 				cut(t1)
 				if (AAlarmwires == 0)
-					to_chat(usr, "<span class='notice'>You cut last of wires inside [src]</span>")
+					usr << "<span class='notice'>You cut last of wires inside [src]</span>"
 					update_icon()
 					buildstage = 1
 				return
@@ -974,10 +974,10 @@ table tr:first-child th:first-child { border: none;}
 		else if (href_list["pulse"])
 			var/t1 = text2num(href_list["pulse"])
 			if (!istype(usr.get_held_item(), /obj/item/device/multitool))
-				to_chat(usr, "You need a multitool!")
+				usr << "You need a multitool!"
 				return
 			if (isWireColorCut(t1))
-				to_chat(usr, "You can't pulse a cut wire.")
+				usr << "You can't pulse a cut wire."
 				return
 			else
 				pulse(t1)
@@ -990,7 +990,7 @@ table tr:first-child th:first-child { border: none;}
 		stat ^= BROKEN
 		add_fingerprint(user)
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text("<span class='warning'>[] has []activated []!</span>", user, (stat&BROKEN) ? "de" : "re", src), 1)
+			O.show_message(text("\red [] has []activated []!", user, (stat&BROKEN) ? "de" : "re", src), 1)
 		update_icon()
 		return
 */
@@ -999,9 +999,9 @@ table tr:first-child th:first-child { border: none;}
 	switch(buildstage)
 		if(2)
 			if(isscrewdriver(W))  // Opening that Air Alarm up.
-				//to_chat(user, "You pop the Air Alarm's maintence panel open.")
+				//user << "You pop the Air Alarm's maintence panel open."
 				wiresexposed = !wiresexposed
-				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
+				user << "The wires have been [wiresexposed ? "exposed" : "unexposed"]"
 				update_icon()
 				return
 
@@ -1010,28 +1010,28 @@ table tr:first-child th:first-child { border: none;}
 
 			if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda))// trying to unlock the interface with an ID card
 				if(stat & (NOPOWER|BROKEN))
-					to_chat(user, "It does nothing")
+					user << "It does nothing"
 					return
 				else
 					if(allowed(usr) && !isWireCut(AALARM_WIRE_IDSCAN))
 						locked = !locked
-						to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+						user << "\blue You [ locked ? "lock" : "unlock"] the Air Alarm interface."
 						updateUsrDialog()
 					else
-						to_chat(user, "<span class='warning'>Access denied.</span>")
+						user << "\red Access denied."
 			return
 
 		if(1)
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(5))
-					to_chat(user, "<span class='notice'>You wire \the [src].</span>")
+					user << "<span class='notice'>You wire \the [src].</span>"
 					buildstage = 2
 					update_icon()
 					first_run()
 					return
 				else
-					to_chat(user, "<span class='warning'>You need 5 pieces of cable to do wire \the [src].</span>")
+					user << "<span class='warning'>You need 5 pieces of cable to do wire \the [src].</span>"
 					return
 
 			else if(iscrowbar(W))
@@ -1048,18 +1048,18 @@ table tr:first-child th:first-child { border: none;}
 				return
 		if(0)
 			if(istype(W, /obj/item/circuitboard/airalarm))
-				to_chat(user, "You insert the circuit!")
-				qdel(W)
+				user << "You insert the circuit!"
+				cdel(W)
 				buildstage = 1
 				update_icon()
 				return
 
 			else if(iswrench(W))
-				to_chat(user, "You remove the fire alarm assembly from the wall!")
+				user << "You remove the fire alarm assembly from the wall!"
 				var/obj/item/frame/air_alarm/frame = new /obj/item/frame/air_alarm()
 				frame.loc = user.loc
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				qdel(src)
+				cdel(src)
 
 	return ..()
 
@@ -1071,9 +1071,9 @@ table tr:first-child th:first-child { border: none;}
 /obj/machinery/alarm/examine(mob/user)
 	..()
 	if (buildstage < 2)
-		to_chat(user, "It is not wired.")
+		user << "It is not wired."
 	if (buildstage < 1)
-		to_chat(user, "The circuit is missing.")
+		user << "The circuit is missing."
 
 
 

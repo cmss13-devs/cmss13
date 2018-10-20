@@ -39,7 +39,7 @@
 		if(enemies.len && prob(10))
 			enemies = list()
 			LoseTarget()
-			src.visible_message("<span class='notice'>[src] calms down.</span>")
+			src.visible_message("\blue [src] calms down.")
 
 		if(stat == CONSCIOUS)
 			if(udder && prob(5))
@@ -47,7 +47,7 @@
 
 		if(locate(/obj/effect/plantsegment) in loc)
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
-			qdel(SV)
+			cdel(SV)
 			if(prob(10))
 				say("Nom")
 
@@ -67,7 +67,7 @@
 	if(!stat)
 		if(locate(/obj/effect/plantsegment) in loc)
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
-			qdel(SV)
+			cdel(SV)
 			if(prob(10))
 				say("Nom")
 
@@ -77,9 +77,9 @@
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, "<span class='warning'>The [O] is full.</span>")
+			user << "\red The [O] is full."
 		if(!transfered)
-			to_chat(user, "<span class='warning'>The udder is dry. Wait a bit longer...</span>")
+			user << "\red The udder is dry. Wait a bit longer..."
 	else
 		..()
 //cow
@@ -117,9 +117,9 @@
 		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, "<span class='warning'>The [O] is full.</span>")
+			user << "\red The [O] is full."
 		if(!transfered)
-			to_chat(user, "<span class='warning'>The udder is dry. Wait a bit longer...</span>")
+			user << "\red The udder is dry. Wait a bit longer..."
 	else
 		..()
 
@@ -141,7 +141,7 @@
 											"[src] looks at you pleadingly",
 											"[src] looks at you with a resigned expression.",
 											"[src] seems resigned to its fate.")
-				to_chat(M, pick(responses))
+				M << pick(responses)
 	else
 		..()
 
@@ -182,7 +182,7 @@
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
 			new /mob/living/simple_animal/chicken(src.loc)
-			qdel(src)
+			cdel(src)
 
 var/const/MAX_CHICKENS = 50
 var/global/chicken_count = 0
@@ -231,10 +231,11 @@ var/global/chicken_count = 0
 		if(!stat && eggsleft < 8)
 			user.visible_message("\blue [user] feeds [O] to [name]! It clucks happily.","\blue You feed [O] to [name]! It clucks happily.")
 			user.drop_held_item()
-			qdel(O)
+			cdel(O)
 			eggsleft += rand(1, 4)
+			//world << eggsleft
 		else
-			to_chat(user, "\blue [name] doesn't seem hungry!")
+			user << "\blue [name] doesn't seem hungry!"
 	else
 		..()
 
@@ -259,6 +260,6 @@ var/global/chicken_count = 0
 			visible_message("[src] hatches with a quiet cracking sound.")
 			new /mob/living/simple_animal/chick(get_turf(src))
 			processing_objects.Remove(src)
-			qdel(src)
+			cdel(src)
 	else
 		processing_objects.Remove(src)

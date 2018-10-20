@@ -108,13 +108,13 @@
 		return
 
 	if (busy)
-		to_chat(user, "<span class='warning'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		user << "\red \The [src] is busy. Please wait for completion of previous operation."
 		return
 
 	if(istype(O, /obj/item/tool/screwdriver))
 		opened = !opened
 		icon_state = (opened ? "autolathe_t": "autolathe")
-		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
+		user << "You [opened ? "open" : "close"] the maintenance hatch of [src]."
 		updateUsrDialog()
 		return
 
@@ -132,7 +132,7 @@
 	//Resources are being loaded.
 	var/obj/item/eating = O
 	if(!eating.matter)
-		to_chat(user, "\The [eating] does not contain significant amounts of useful materials and cannot be accepted.")
+		user << "\The [eating] does not contain significant amounts of useful materials and cannot be accepted."
 		return
 
 	var/filltype = 0       // Used to determine message.
@@ -165,12 +165,12 @@
 		mass_per_sheet += eating.matter[material]
 
 	if(!filltype)
-		to_chat(user, "<span class='warning'>\The [src] is full. Please remove material from the autolathe in order to insert more.</span>")
+		user << "\red \The [src] is full. Please remove material from the autolathe in order to insert more."
 		return
 	else if(filltype == 1)
-		to_chat(user, "You fill \the [src] to capacity with \the [eating].")
+		user << "You fill \the [src] to capacity with \the [eating]."
 	else
-		to_chat(user, "You fill \the [src] with \the [eating].")
+		user << "You fill \the [src] with \the [eating]."
 
 	flick("autolathe_o",src) // Plays metal insertion animation. Work out a good way to work out a fitting animation. ~Z
 
@@ -179,7 +179,7 @@
 		stack.use(max(1,round(total_used/mass_per_sheet))) // Always use at least 1 to prevent infinite materials.
 	else
 		if(user.temp_drop_inv_item(O))
-			qdel(O)
+			cdel(O)
 
 	updateUsrDialog()
 	return TRUE //so the item's afterattack isn't called
@@ -200,7 +200,7 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		to_chat(usr, "<span class='warning'>The autolathe is busy. Please wait for completion of previous operation.</span>")
+		usr << "\red The autolathe is busy. Please wait for completion of previous operation."
 		return
 
 	if(href_list["change_category"])
@@ -267,11 +267,11 @@
 		if(href_list["act"] == "pulse")
 
 			if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
-				to_chat(usr, "You need a multitool!")
+				usr << "You need a multitool!"
 				return
 
 			if(wires[temp_wire])
-				to_chat(usr, "You can't pulse a cut wire.")
+				usr << "You can't pulse a cut wire."
 				return
 
 			if(hack_wire == temp_wire)
@@ -297,7 +297,7 @@
 		else if(href_list["act"] == "wire")
 
 			if (!istype(usr.get_active_hand(), /obj/item/tool/wirecutters))
-				to_chat(usr, "You need wirecutters!")
+				usr << "You need wirecutters!"
 				return
 
 			wires[temp_wire] = !wires[temp_wire]
@@ -338,7 +338,7 @@
 							recipe.resources[material] = I.matter[material] //Doesn't take more if it's just a sheet or something. Get what you put in.
 						else
 							recipe.resources[material] = round(I.matter[material]*1.25) // More expensive to produce than they are to recycle.
-				qdel(I)
+				cdel(I)
 
 	//Create parts for lathe.
 	component_parts = list()

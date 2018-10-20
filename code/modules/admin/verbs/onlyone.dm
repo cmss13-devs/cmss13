@@ -10,12 +10,12 @@
 		ticker.mode.traitors += H.mind
 		H.mind.special_role = "traitor"
 
-		to_chat(H, "<B>You are the traitor.</B>")
+		H << "<B>You are the traitor.</B>"
 
 		for (var/obj/item/I in H)
 			if (istype(I, /obj/item/implant))
 				continue
-			qdel(I)
+			cdel(I)
 
 		H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/beret(H), WEAR_HEAD)

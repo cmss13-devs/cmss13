@@ -12,12 +12,12 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
-				qdel(src)
+				cdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				cdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 	return
 
 /obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
@@ -46,7 +46,7 @@
 
 /obj/effect/spider/proc/healthcheck()
 	if(health <= 0)
-		qdel(src)
+		cdel(src)
 
 /obj/effect/spider/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)
@@ -64,7 +64,7 @@
 		return 1
 	else if(istype(mover, /mob/living))
 		if(prob(50))
-			to_chat(mover, "<span class='warning'>You get stuck in [src] for a moment.</span>")
+			mover << "<span class='warning'>You get stuck in [src] for a moment.</span>"
 			return 0
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)
@@ -86,7 +86,7 @@
 		var/num = rand(6,24)
 		for(var/i=0, i<num, i++)
 			new /obj/effect/spider/spiderling(src.loc)
-		qdel(src)
+		cdel(src)
 
 /obj/effect/spider/spiderling
 	name = "spiderling"
@@ -115,7 +115,7 @@
 /obj/effect/spider/spiderling/proc/die()
 	visible_message("<span class='alert'>[src] dies!</span>")
 	new /obj/effect/decal/cleanable/spiderling_remains(src.loc)
-	qdel(src)
+	cdel(src)
 
 /obj/effect/spider/spiderling/healthcheck()
 	if(health <= 0)
@@ -150,7 +150,7 @@
 							return
 
 						if(prob(50))
-							src.visible_message("<span class='notice'>You hear something squeezing through the ventilation ducts.</span>",2)
+							src.visible_message("\blue You hear something squeezing through the ventilation ducts.",2)
 						sleep(travel_time)
 
 						if(!exit_vent || exit_vent.welded)
@@ -172,7 +172,7 @@
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom, 5)
 			if(prob(25))
-				src.visible_message("<span class='notice'>\the [src] skitters[pick(" away"," around","")].</span>")
+				src.visible_message("\blue \the [src] skitters[pick(" away"," around","")].")
 	else if(prob(5))
 		//vent crawl!
 		for(var/obj/machinery/atmospherics/unary/vent_pump/v in view(7,src))
@@ -182,13 +182,13 @@
 				break
 
 	if(prob(1))
-		src.visible_message("<span class='notice'>\the [src] chitters.</span>")
+		src.visible_message("\blue \the [src] chitters.")
 	if(isturf(loc) && amount_grown > 0)
 		amount_grown += rand(0,2)
 		if(amount_grown >= 100)
 			var/spawn_type = pick(typesof(/mob/living/simple_animal/hostile/giant_spider))
 			new spawn_type(src.loc)
-			qdel(src)
+			cdel(src)
 
 /obj/effect/decal/cleanable/spiderling_remains
 	name = "spiderling remains"
@@ -206,7 +206,7 @@
 		icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Dispose()
-	visible_message("<span class='warning'>[src] splits open.</span>")
+	visible_message("\red [src] splits open.")
 	for(var/atom/movable/A in contents)
 		A.forceMove(loc)
 	. = ..()

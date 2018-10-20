@@ -21,13 +21,13 @@
 		if(absorb_text)
 			show_message("[absorb_text]")
 		else
-			show_message("<span class='warning'>Your armor absorbs the blow!</span>")
+			show_message("\red Your armor absorbs the blow!")
 		return 2
 	if(absorb == 1)
 		if(absorb_text)
 			show_message("[soften_text]")
 		else
-			show_message("<span class='warning'>Your armor softens the blow!</span>")
+			show_message("\red Your armor softens the blow!")
 		return 1
 	return 0
 
@@ -79,7 +79,7 @@
 			visible_message("\blue \The [O] misses [src] narrowly!", null, null, 5)
 			return
 
-		src.visible_message("<span class='warning'>[src] has been hit by [O].</span>", null, null, 5)
+		src.visible_message("\red [src] has been hit by [O].", null, null, 5)
 		var/armor = run_armor_check(null, "melee")
 
 		if(armor < 2)
@@ -102,7 +102,7 @@
 			var/momentum = speed/2
 			var/dir = get_dir(O.throw_source, src)
 
-			visible_message("<span class='warning'>[src] staggers under the impact!</span>","<span class='warning'>You stagger under the impact!</span>", null, 5)
+			visible_message("\red [src] staggers under the impact!","\red You stagger under the impact!", null, 5)
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
 			if(!W || !src) return
@@ -138,8 +138,7 @@
 /mob/living/proc/IgniteMob()
 	if(fire_stacks > 0 && !on_fire)
 		on_fire = 1
-		set_light(min(fire_stacks,5))
-		to_chat(src, "<span class='danger'>You are on fire! Use Resist to put yourself out!</span>")
+		src << "<span class='danger'>You are on fire! Use Resist to put yourself out!</span>"
 		update_fire()
 		return 1
 
@@ -153,7 +152,6 @@
 	if(on_fire)
 		on_fire = 0
 		fire_stacks = 0
-		set_light(0)
 		update_fire()
 
 /mob/living/proc/update_fire()
@@ -171,7 +169,6 @@
 	if(!on_fire)
 		return 1
 	if(fire_stacks > 0)
-		set_light(min(fire_stacks,5))
 		adjust_fire_stacks(-1) //the fire is consumed slowly
 
 /mob/living/fire_act()

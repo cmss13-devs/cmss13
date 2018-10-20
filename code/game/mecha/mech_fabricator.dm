@@ -192,7 +192,7 @@
 		for(var/ID in list(H.get_active_hand(), H.wear_id, H.belt))
 			if(src.check_access(ID))
 				return 1
-	to_chat(M, "<font color='red'>You don't have required permissions to use [src]</font>")
+	M << "<font color='red'>You don't have required permissions to use [src]</font>"
 	return 0
 
 
@@ -251,7 +251,7 @@
 	if(!istype(apart)) return 0
 	for(var/obj/O in part_set)
 		if(O.type == apart.type)
-			qdel(apart)
+			cdel(apart)
 			return 0
 	part_set[++part_set.len] = apart
 	return 1
@@ -267,13 +267,13 @@
 			var/index = resources.Find(p)
 			index = resources.Find(p, ++index)
 			if(index) //duplicate resource
-				to_chat(world, "Duplicate resource definition for [src](\ref[src])")
+				world << "Duplicate resource definition for [src](\ref[src])"
 				return 0
 		for(var/set_name in part_sets)
 			var/index = part_sets.Find(set_name)
 			index = part_sets.Find(set_name, ++index)
 			if(index) //duplicate part set
-				to_chat(world, "Duplicate part set definition for [src](\ref[src])")
+				world << "Duplicate part set definition for [src](\ref[src])"
 				return 0
 		return 1
 */
@@ -725,7 +725,7 @@
 		res.Move(src.loc)
 		result = res.amount
 	else
-		qdel(res)
+		cdel(res)
 	return result
 
 
@@ -734,11 +734,11 @@
 		if (!opened)
 			opened = 1
 			icon_state = "fab-o"
-			to_chat(user, "You open the maintenance hatch of [src].")
+			user << "You open the maintenance hatch of [src]."
 		else
 			opened = 0
 			icon_state = "fab-idle"
-			to_chat(user, "You close the maintenance hatch of [src].")
+			user << "You close the maintenance hatch of [src]."
 		return
 	if (opened)
 		if(istype(W, /obj/item/tool/crowbar))
@@ -771,10 +771,10 @@
 			if(src.resources["diamond"] >= 2000)
 				var/obj/item/stack/sheet/mineral/diamond/G = new /obj/item/stack/sheet/mineral/diamond(src.loc)
 				G.amount = round(src.resources["diamond"] / G.perunit)
-			qdel(src)
+			cdel(src)
 			return 1
 		else
-			to_chat(user, "\red You can't load the [src.name] while it's opened.")
+			user << "\red You can't load the [src.name] while it's opened."
 			return 1
 
 	if(istype(W, /obj/item/card/emag))
@@ -801,7 +801,7 @@
 			return ..()
 
 	if(src.being_built)
-		to_chat(user, "The fabricator is currently processing. Please wait until completion.")
+		user << "The fabricator is currently processing. Please wait until completion."
 		return
 
 	var/obj/item/stack/sheet/stack = W
@@ -819,11 +819,11 @@
 				stack.use(1)
 				count++
 			src.overlays -= "fab-load-[material]"
-			to_chat(user, "You insert [count] [sname] into the fabricator.")
+			user << "You insert [count] [sname] into the fabricator."
 			src.updateUsrDialog()
 		else
-			to_chat(user, "The fabricator can only accept full sheets of [sname].")
+			user << "The fabricator can only accept full sheets of [sname]."
 			return
 	else
-		to_chat(user, "The fabricator cannot hold more [sname].")
+		user << "The fabricator cannot hold more [sname]."
 	return

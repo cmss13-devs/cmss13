@@ -14,8 +14,8 @@
 		new /obj/item/reagent_container/food/snacks/rawcutlet(src)
 		new /obj/item/reagent_container/food/snacks/rawcutlet(src)
 		new /obj/item/reagent_container/food/snacks/rawcutlet(src)
-		to_chat(user, "You cut the meat in thin strips.")
-		qdel(src)
+		user << "You cut the meat in thin strips."
+		cdel(src)
 	else
 		..()
 

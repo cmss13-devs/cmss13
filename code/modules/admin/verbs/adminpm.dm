@@ -3,7 +3,7 @@
 	set category = null
 	set name = "Admin PM Mob"
 	if(!holder)
-		to_chat(src, "<font color='red'>Error: Admin-PM-Context: Only administrators may use this command.</font>")
+		src << "<font color='red'>Error: Admin-PM-Context: Only administrators may use this command.</font>"
 		return
 	if( !ismob(M) || !M.client )	return
 	cmd_admin_pm(M.client,null)
@@ -14,7 +14,7 @@
 	set category = "Admin"
 	set name = "Admin PM"
 	if(!holder)
-		to_chat(src, "<font color='red'>Error: Admin-PM-Panel: Only administrators may use this command.</font>")
+		src << "<font color='red'>Error: Admin-PM-Panel: Only administrators may use this command.</font>"
 		return
 	var/list/client/targets[0]
 	for(var/client/T)
@@ -38,12 +38,12 @@
 
 /client/proc/cmd_admin_pm(var/client/C, var/msg = null)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<font color='red'>Error: Private-Message: You are unable to use PMs (muted).</font>")
+		src << "<font color='red'>Error: Private-Message: You are unable to use PMs (muted).</font>"
 		return
 
 	if(!istype(C,/client))
-		if(holder)	to_chat(src, "<font color='red'>Error: Private-Message: Client not found.</font>")
-		else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
+		if(holder)	src << "<font color='red'>Error: Private-Message: Client not found.</font>"
+		else		src << "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>"
 		return
 
 	//get message text, limit it's length.and clean/escape html
@@ -52,8 +52,8 @@
 
 		if(!msg)	return
 		if(!C)
-			if(holder)	to_chat(src, "<font color='red'>Error: Admin-PM: Client not found.</font>")
-			else		to_chat(src, "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>")
+			if(holder)	src << "<font color='red'>Error: Admin-PM: Client not found.</font>"
+			else		src << "<font color='red'>Error: Private-Message: Client not found. They may have lost connection, so try using an adminhelp!</font>"
 			return
 
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
@@ -89,7 +89,7 @@
 			msg = replacetext(msg,"T:APC","<a href=\"https://cm-ss13.com/wiki/Guide_to_Engineering#APC_Maintenance\">APC Repair</a>")
 
 	else if(!C.holder)
-		to_chat(src, "<font color='red'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</font>")
+		src << "<font color='red'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</font>"
 		return
 
 	var/recieve_message = ""
@@ -97,7 +97,7 @@
 	if(holder && !C.holder)
 		recieve_message = "<font color='[recieve_color]'><b>-- Click the [recieve_pm_type]'s name to reply --</b></font>\n"
 		if(C.adminhelped)
-			to_chat(C, recieve_message)
+			C << recieve_message
 			C.adminhelped = 0
 
 		//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
@@ -114,8 +114,8 @@
 				return
 
 	recieve_message = "<br><br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
-	to_chat(C, recieve_message)
-	to_chat(src, "<br><br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
+	C << recieve_message
+	src << "<br><br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, holder ? 1 : 0, holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
 
 	//play the recieving admin the adminhelp sound (if they have them enabled)
 	//non-admins shouldn't be able to disable this
@@ -130,4 +130,4 @@
 		if(X == C || X == src)
 			continue
 		if(X.key!=key && X.key!=C.key && (X.holder.rights & R_ADMIN) || (X.holder.rights & (R_MOD|R_MENTOR)) )
-			to_chat(X, "<B><font color='blue'>PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> \blue [msg]</font>") //inform X
+			X << "<B><font color='blue'>PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> \blue [msg]</font>" //inform X

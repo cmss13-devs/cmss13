@@ -76,7 +76,7 @@
 */
 
 /datum/game_mode/proc/announce() //to be calles when round starts
-	to_chat(world, "<B>Notice</B>: [src] did not define announce()")
+	world << "<B>Notice</B>: [src] did not define announce()"
 
 
 ///can_start()
@@ -203,8 +203,6 @@
 
 
 /datum/game_mode/proc/send_intercept()
-	return
-	/*
 	var/intercepttext = "<FONT size = 3><B>Cent. Com. Update</B> Requested status information:</FONT><HR>"
 	intercepttext += "<B> In case you have misplaced your copy, attached is a list of personnel whom reliable sources&trade; suspect may be affiliated with subversive elements:</B><br>"
 
@@ -230,10 +228,10 @@
 			if(suplink)
 				var/extra = 4
 				suplink.uses += extra
-				to_chat(man, "<span class='warning'>We have received notice that enemy intelligence suspects you to be linked with us. We have thus invested significant resources to increase your uplink's capacity.</span>")
+				man << "\red We have received notice that enemy intelligence suspects you to be linked with us. We have thus invested significant resources to increase your uplink's capacity."
 			else
 				// Give them a warning!
-				to_chat(man, "<span class='warning'>They are on to you!</span>")
+				man << "\red They are on to you!"
 
 		// Some poor people who were just in the wrong place at the wrong time..
 		else if(prob(10))
@@ -253,7 +251,7 @@
 
 			comm.messagetitle.Add("Cent. Com. Status Summary")
 			comm.messagetext.Add(intercepttext)
-	world << sound('sound/AI/commandreport.ogg')*/
+	world << sound('sound/AI/commandreport.ogg')
 
 /*	command_alert("Summary downloaded and printed out at all communications consoles.", "Enemy communication intercept. Security Level Elevated.")
 	for(var/mob/M in player_list)
@@ -338,7 +336,7 @@
 			if(applicant)
 				candidates += applicant
 				drafted.Remove(applicant)
-				to_chat(world, "<span class='warning'>[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.</span>")
+				world << "\red [applicant.key] was force-drafted as [roletext], because there aren't enough candidates."
 				log_debug("[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.")
 
 		else //Not enough scrubs, ABORT ABORT ABORT
@@ -384,14 +382,14 @@
 
 /datum/game_mode/New()
 	if(!map_tag)
-		to_chat(world, "MT001: No mapping tag set, tell a coder. [map_tag]")
+		world << "MT001: No mapping tag set, tell a coder. [map_tag]"
 	newscaster_announcements = pick(newscaster_standard_feeds)
 
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
 proc/display_roundstart_logout_report()
-	var/msg = "<span class='boldnotice'>Roundstart logout report</span><br><br>"
+	var/msg = "\blue <b>Roundstart logout report\n\n"
 	for(var/mob/living/L in mob_list)
 
 		if(L.ckey)
@@ -441,7 +439,7 @@ proc/display_roundstart_logout_report()
 
 	for(var/mob/M in mob_list)
 		if(M.client && M.client.holder)
-			to_chat(M, msg)
+			M << msg
 
 
 proc/get_nt_opposed()
@@ -475,9 +473,9 @@ proc/get_nt_opposed()
 		return
 
 	var/obj_count = 1
-	to_chat(player.current, "<span class='notice'>Your current objectives:</span>")
+	player.current << "\blue Your current objectives:"
 	for(var/datum/objective/objective in player.objectives)
-		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		player.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
 		obj_count++
 
 /datum/game_mode/proc/printplayer(var/datum/mind/ply)

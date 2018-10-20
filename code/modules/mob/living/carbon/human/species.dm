@@ -267,7 +267,7 @@
 
 	//To show them we mean business.
 	handle_unique_behavior(var/mob/living/carbon/human/H)
-		//if(prob(25)) animation_horror_flick(H)
+		if(prob(25)) animation_horror_flick(H)
 
 		//Organ damage will likely still take them down eventually.
 		H.adjustBruteLoss(-3)
@@ -568,18 +568,18 @@
 
 /datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.hud_used)
-		qdel(H.hud_used)
+		cdel(H.hud_used)
 		H.hud_used = null
 //		H.create_mob_hud()
 		if(H.hud_used)
 			H.hud_used.show_hud(H.hud_used.hud_version)
 	if(H.l_hand) H.drop_inv_item_on_ground(H.l_hand, FALSE, TRUE)
 	if(H.r_hand) H.drop_inv_item_on_ground(H.r_hand, FALSE, TRUE)
-	if(H.wear_id) qdel(H.wear_id)
-	if(H.gloves) qdel(H.gloves)
-	if(H.head) qdel(H.head)
-	if(H.glasses) qdel(H.glasses)
-	if(H.wear_mask) qdel(H.wear_mask)
+	if(H.wear_id) cdel(H.wear_id)
+	if(H.gloves) cdel(H.gloves)
+	if(H.head) cdel(H.head)
+	if(H.glasses) cdel(H.glasses)
+	if(H.wear_mask) cdel(H.wear_mask)
 	var/obj/item/weapon/zombie_claws/ZC = new()
 	ZC.icon_state = "claw_r"
 	H.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)
@@ -601,10 +601,10 @@
 	if(!H.regenZ) return  //Also in each check, in case they are hit with the stuff to stop the regenerating during timers.
 	sleep(5)
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		to_chat(H, "<span class='notice'>You fall... but your body is slowly regenerating itself.</span>")
+		H << "\green You fall... but your body is slowly regenerating itself."
 	sleep(1200)
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		to_chat(H, "<span class='notice'>Your body is half regenerated...</span>")
+		H << "\green Your body is half regenerated..."
 	sleep(1200)
 
 	if(H && H.loc && H.stat == DEAD && H.regenZ)

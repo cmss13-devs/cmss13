@@ -683,16 +683,15 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-	elem "browseroutput"
-		type = BROWSER
+	elem "output"
+		type = OUTPUT
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #ffffff
-		is-disabled = true
-		saved-params = ""
-		auto-format = false
+		is-default = true
+		saved-params = "max-lines"
+		style = ".system {color:#ff0000;}"
 
 window "rpane"
 	elem "rpane"

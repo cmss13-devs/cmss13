@@ -50,7 +50,7 @@
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.use(1))
-			to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
+			user << "\blue Constructing support lattice ..."
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			ReplaceWithLattice()
 		return
@@ -61,13 +61,13 @@
 			var/obj/item/stack/tile/plasteel/S = C
 			if (S.get_amount() < 1)
 				return
-			qdel(L)
+			cdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			S.build(src)
 			S.use(1)
 			return
 		else
-			to_chat(user, "<span class='warning'>The plating is going to need some support.</span>")
+			user << "\red The plating is going to need some support."
 	return
 
 
@@ -88,7 +88,7 @@
 		if(A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE - 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE - 1))
 
 			if(istype(A, /obj/item/disk/nuclear)) // Don't let nuke disks travel Z levels  ... And moving this shit down here so it only fires when they're actually trying to change z-level.
-				qdel(A) //The disk's Dispose() proc ensures a new one is created
+				cdel(A) //The disk's Dispose() proc ensures a new one is created
 				return
 
 			var/list/disk_search = A.search_contents_for(/obj/item/disk/nuclear)
@@ -96,7 +96,7 @@
 				if(istype(A, /mob/living))
 					var/mob/living/MM = A
 					if(MM.client && !MM.stat)
-						to_chat(MM, "\red Something you are carrying is preventing you from leaving. Don't play stupid; you know exactly what it is.")
+						MM << "\red Something you are carrying is preventing you from leaving. Don't play stupid; you know exactly what it is."
 						if(MM.x <= TRANSITIONEDGE)
 							MM.inertia_dir = 4
 						else if(MM.x >= world.maxx -TRANSITIONEDGE)
@@ -108,11 +108,11 @@
 					else
 						for(var/obj/item/disk/nuclear/N in disk_search)
 							disk_search -= N
-							qdel(N)//Make the disk respawn it is on a clientless mob or corpse
+							cdel(N)//Make the disk respawn it is on a clientless mob or corpse
 				else
 					for(var/obj/item/disk/nuclear/N in disk_search)
 						disk_search -= N
-						qdel(N)//Make the disk respawn if it is floating on its own
+						cdel(N)//Make the disk respawn if it is floating on its own
 				return
 
 			var/move_to_z = src.z

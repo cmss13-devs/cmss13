@@ -17,7 +17,7 @@ var/global/list/all_type_pools = list()		// Associated list of lists, indexed by
 
 	// If there's a lot of this type pooled, we don't need more
 	if (type_pool.len >= POOL_SIZE_LIMIT)
-		qdel(D)
+		cdel(D)
 
 	type_pool += D
 	D.pooled(D.type)
@@ -54,9 +54,9 @@ var/global/list/all_type_pools = list()		// Associated list of lists, indexed by
 	return all_type_pools[type]
 
 
-// A datum will be qdel()'d after it's type is pooled
+// A datum will be cdel()'d after it's type is pooled
 /datum/proc/pooled(var/type)
-	qdel(src)
+	cdel(src)
 
 /datum/proc/unpooled(var/type)
 	disposed = 0

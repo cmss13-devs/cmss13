@@ -12,6 +12,10 @@
 	w_class = 3
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.</b>"
+		return(BRUTELOSS)
+
 /obj/item/weapon/claymore/mercsword
 	name = "combat sword"
 	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
@@ -50,6 +54,10 @@
 	w_class = 3
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"
+		return(BRUTELOSS)
+
 //To do: replace the toys.
 /obj/item/weapon/katana/replica
 	name = "replica katana"
@@ -83,7 +91,7 @@
 		if(istype(I,/obj/item/stack/cable_coil))
 			var/obj/item/stack/cable_coil/CC = I
 			if (CC.use(5))
-				to_chat(user, "You wrap some cable around the bayonet. It can now be attached to a gun.")
+				user << "You wrap some cable around the bayonet. It can now be attached to a gun."
 				if(istype(loc, /obj/item/storage))
 					var/obj/item/storage/S = loc
 					S.remove_from_storage(src)
@@ -93,12 +101,18 @@
 				user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
 				if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
 					F.loc = get_turf(src)
-				qdel(src) //Delete da old knife
+				cdel(src) //Delete da old knife
 			else
-				to_chat(user, "<span class='notice'>You don't have enough cable for that.</span>")
+				user << "<span class='notice'>You don't have enough cable for that.</span>"
 				return
 		else
 			..()
+
+	suicide_act(mob/user)
+		viewers(user) << pick("\red <b>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</b>", \
+							"\red <b>[user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide.</b>", \
+							"\red <b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>")
+		return (BRUTELOSS)
 
 /obj/item/weapon/combat_knife/upp
 	name = "\improper Type 30 survival knife"

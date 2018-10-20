@@ -13,16 +13,16 @@ var/can_call_ert
 	set desc = "Send an emergency response team to the station"
 
 	if(!holder)
-		to_chat(usr, "<span class='warning'>Only administrators may use this command.</span>")
+		usr << "\red Only administrators may use this command."
 		return
 	if(!ticker)
-		to_chat(usr, "\red The game hasn't started yet!")
+		usr << "\red The game hasn't started yet!"
 		return
 	if(ticker.current_state == 1)
-		to_chat(usr, "\red The round hasn't started yet!")
+		usr << "\red The round hasn't started yet!"
 		return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='warning'>Central Command has already dispatched an emergency response team!</span>")
+		usr << "\red Central Command has already dispatched an emergency response team!"
 		return
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
 		return
@@ -31,7 +31,7 @@ var/can_call_ert
 			if("No")
 				return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='warning'>Looks like somebody beat you to it!</span>")
+		usr << "\red Looks like somebody beat you to it!"
 		return
 
 	message_admins("[key_name_admin(usr)] is dispatching an Emergency Response Team.", 1)
@@ -44,16 +44,16 @@ client/verb/JoinResponseTeam()
 
 	if(istype(usr,/mob/dead/observer) || istype(usr,/mob/new_player))
 		if(!send_emergency_team)
-			to_chat(usr, "No emergency response team is currently being sent.")
+			usr << "No emergency response team is currently being sent."
 			return
 	/*	if(admin_emergency_team)
-			to_chat(usr, "An emergency response team has already been sent.")
+			usr << "An emergency response team has already been sent."
 			return */
 		if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team") || jobban_isbanned(usr, "Security Officer"))
-			to_chat(usr, "<font color=red><b>You are jobbanned from the emergency reponse team!")
+			usr << "<font color=red><b>You are jobbanned from the emergency reponse team!"
 			return
 
-		if(response_team_members.len > 5) to_chat(usr, "The emergency response team is already full!")
+		if(response_team_members.len > 5) usr << "The emergency response team is already full!"
 
 
 		for (var/obj/effect/landmark/L in landmarks_list) if (L.name == "Commando")
@@ -64,20 +64,20 @@ client/verb/JoinResponseTeam()
 				return
 			var/leader_selected = isemptylist(response_team_members)
 			var/mob/living/carbon/human/new_commando = create_response_team(L.loc, leader_selected, new_name)
-			qdel(L)
+			cdel(L)
 			new_commando.mind.key = usr.key
 			new_commando.key = usr.key
 
-			to_chat(new_commando, "<span class='notice'>You are [!leader_selected?"a member":"the <B>LEADER</B>"] of an Emergency Response Team, a type of military division, under CentComm's service. There is a code red alert on [station_name()], you are tasked to go and fix the problem.</span>")
-			to_chat(new_commando, "<b>You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready.")
+			new_commando << "\blue You are [!leader_selected?"a member":"the <B>LEADER</B>"] of an Emergency Response Team, a type of military division, under CentComm's service. There is a code red alert on [station_name()], you are tasked to go and fix the problem."
+			new_commando << "<b>You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready."
 			if(!leader_selected)
-				to_chat(new_commando, "<b>As member of the Emergency Response Team, you answer only to your leader and CentComm officials.</b>")
+				new_commando << "<b>As member of the Emergency Response Team, you answer only to your leader and CentComm officials.</b>"
 			else
-				to_chat(new_commando, "<b>As leader of the Emergency Response Team, you answer only to CentComm, and have authority to override the Captain where it is necessary to achieve your mission goals. It is recommended that you attempt to cooperate with the captain where possible, however.")
+				new_commando << "<b>As leader of the Emergency Response Team, you answer only to CentComm, and have authority to override the Captain where it is necessary to achieve your mission goals. It is recommended that you attempt to cooperate with the captain where possible, however."
 			return
 
 	else
-		to_chat(usr, "You need to be an observer or new player to use this.")
+		usr << "You need to be an observer or new player to use this."
 */
 // returns a number of dead players in %
 proc/percentage_dead()
@@ -147,7 +147,7 @@ proc/trigger_armed_response_team(var/force = 0)
 
 /client/proc/create_response_team(obj/spawn_location, leader_selected = 0, commando_name)
 
-	//to_chat(usr, "<span class='warning'>ERT has been temporarily disabled. Talk to a coder.</span>")
+	//usr << "\red ERT has been temporarily disabled. Talk to a coder."
 	//return
 
 	var/mob/living/carbon/human/M = new(null)
@@ -182,7 +182,7 @@ proc/trigger_armed_response_team(var/force = 0)
 	for(var/x in all_hairs)
 		var/datum/sprite_accessory/hair/H = new x // create new hair datum based on type x
 		hairs.Add(H.name) // add hair name to hairs
-		qdel(H) // delete the hair after it's all done
+		cdel(H) // delete the hair after it's all done
 
 //	var/new_style = input("Please select hair style", "Character Generation")  as null|anything in hairs
 //hair

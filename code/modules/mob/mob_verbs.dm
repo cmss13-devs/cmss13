@@ -63,7 +63,7 @@
 	if(mind)
 		mind.show_memory(src)
 	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
@@ -75,7 +75,7 @@
 	if(mind)
 		mind.store_memory(msg)
 	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
 /mob/verb/view_objective_memory()
 	set name = "View objectives clues"
@@ -84,7 +84,7 @@
 	if(mind)
 		mind.view_objective_memories(src)
 	else
-		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+		src << "The game appears to have misplaced your mind datum, so we can't show you your notes."
 
 
 /mob/verb/abandon_mob()
@@ -96,20 +96,20 @@
 		is_admin = 1
 
 	if (!( abandon_allowed ) && !is_admin)
-		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
+		usr << "\blue Respawn is disabled."
 		return
 	if ((stat != 2 || !( ticker )))
-		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
+		usr << "\blue <B>You must be dead to use this!</B>"
 		return
 	if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic") //BS12 EDIT
-		to_chat(usr, "<span class='notice'>Respawn is disabled for this roundtype.</span>")
+		usr << "\blue Respawn is disabled for this roundtype."
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
 //		if(istype(src,/mob/dead/observer))
 //			var/mob/dead/observer/G = src
 //			if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-//				to_chat(usr, "<span class='boldnotice'>Upon using the antagHUD you forfeighted the ability to join the round.</span>")
+//				usr << "\blue <B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"
 //				return
 		var/deathtimeminutes = round(deathtime / 600)
 		var/pluralcheck = "minute"
@@ -120,17 +120,17 @@
 		else if(deathtimeminutes > 1)
 			pluralcheck = " [deathtimeminutes] minutes and"
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
+		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
 
 		if (deathtime < 18000 && !is_admin)
-			to_chat(usr, "You must wait 30 minutes to respawn!")
+			usr << "You must wait 30 minutes to respawn!"
 			return
 		else
-			to_chat(usr, "You can respawn now, enjoy your new life!")
+			usr << "You can respawn now, enjoy your new life!"
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
-	to_chat(usr, "<span class='boldnotice'>Make sure to play a different character, and please roleplay correctly!</span>")
+	usr << "\blue <B>Make sure to play a different character, and please roleplay correctly!</B>"
 
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
@@ -143,7 +143,7 @@
 	var/mob/new_player/M = new /mob/new_player()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
-		qdel(M)
+		cdel(M)
 		return
 
 	M.key = key
@@ -163,7 +163,7 @@
 	if(client.holder && (client.holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, "<span class='notice'>You must be observing to use this!</span>")
+		usr << "\blue You must be observing to use this!"
 		return
 
 	if(is_admin && stat == DEAD)

@@ -35,11 +35,11 @@
 
 	examine(mob/user)
 		..()
-		to_chat(user, "It's turned [lit? "on" : "off"].")
+		user << "It's turned [lit? "on" : "off"]."
 		if(current_mag)
-			to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
+			user << "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
 		else
-			to_chat(user, "There's no tank in [src]!")
+			user << "There's no tank in [src]!"
 
 /obj/item/weapon/gun/flamer/update_icon()
 	overlays.Cut()
@@ -48,7 +48,7 @@
 	else
 		overlays += "[current_mag.icon_state]"
 	if(lit)
-		var/image/I = image('icons/obj/items/gun.dmi', src, "+lit")
+		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/gun.dmi', src, "+lit"))
 		I.pixel_x += 3
 		overlays += I
 
@@ -74,7 +74,7 @@
 	if (!targloc || !curloc) return //Something has gone wrong...
 
 	if(!lit)
-		to_chat(user, "<span class='alert'>The weapon isn't lit</span>")
+		user << "<span class='alert'>The weapon isn't lit</span>"
 		return
 
 	if(!current_mag) return
@@ -85,32 +85,32 @@
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
+		user << "<span class='warning'>That's not a magazine!</span>"
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+		user << "<span class='warning'>That [magazine.name] is empty!</span>"
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
+		user << "<span class='warning'>That magazine doesn't fit in there!</span>"
 		return
 
 	if (istype(magazine, /obj/item/ammo_magazine/flamer_tank/large))
-		to_chat(user, "<span class='warning'>That tank is too large for this model!</span>")
+		user << "<span class='warning'>That tank is too large for this model!</span>"
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
+		user << "<span class='warning'>It's still got something loaded!</span>"
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
 				if(do_after(user,magazine.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
 				else
-					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+					user << "<span class='warning'>Your reload was interrupted!</span>"
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -238,7 +238,7 @@
 		M.adjust_fire_stacks(rand(5,burn*2))
 		M.IgniteMob()
 		M.adjustFireLoss(rand(burn,(burn*2))) // Make it so its the amount of heat or twice it for the initial blast.
-		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
+		M << "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!"
 
 /obj/item/weapon/gun/flamer/proc/triangular_flame(var/atom/target, var/mob/living/user, var/burntime, var/burnlevel)
 	set waitfor = 0
@@ -315,28 +315,28 @@
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
+		user << "<span class='warning'>That's not a magazine!</span>"
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+		user << "<span class='warning'>That [magazine.name] is empty!</span>"
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
+		user << "<span class='warning'>That magazine doesn't fit in there!</span>"
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
+		user << "<span class='warning'>It's still got something loaded!</span>"
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
 				if(do_after(user,magazine.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
 				else
-					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+					user << "<span class='warning'>Your reload was interrupted!</span>"
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -354,7 +354,7 @@
 			return
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 			return 0
 
 
@@ -373,17 +373,11 @@
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
-	light_color = LIGHT_COLOR_FIRE
 
 /obj/flamer_fire/New(loc, fire_lvl, burn_lvl, f_color, fire_spread_amount)
 	..()
 	if (f_color)
 		flame_color = f_color
-		switch(f_color)
-			if("green")
-				light_color = LIGHT_COLOR_GREEN
-			if("blue")
-				light_color = LIGHT_COLOR_BLUE
 
 	icon_state = "[flame_color]_2"
 	if(fire_lvl) firelevel = fire_lvl
@@ -407,6 +401,7 @@
 
 
 /obj/flamer_fire/Dispose()
+	SetLuminosity(0)
 	processing_objects.Remove(src)
 	. = ..()
 
@@ -435,7 +430,7 @@
 			M.IgniteMob()
 
 		M.adjustFireLoss(round(burnlevel*0.5)) //This makes fire stronk.
-		to_chat(M, "<span class='danger'>You are burned!</span>")
+		M << "<span class='danger'>You are burned!</span>"
 		if(isXeno(M)) M.updatehealth()
 
 
@@ -445,26 +440,26 @@
 	switch(firelevel)
 		if(1 to 9)
 			icon_state = "[flame_color]_1"
-			set_light(2)
+			SetLuminosity(2)
 		if(10 to 25)
 			icon_state = "[flame_color]_2"
-			set_light(4)
+			SetLuminosity(4)
 		if(25 to INFINITY) //Change the icons and luminosity based on the fire's intensity
 			icon_state = "[flame_color]_3"
-			set_light(6)
+			SetLuminosity(6)
 
 
 /obj/flamer_fire/process()
 	var/turf/T = loc
 	firelevel = max(0, firelevel)
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
-		qdel(src)
+		cdel(src)
 		return
 
 	updateicon()
 
 	if(!firelevel)
-		qdel(src)
+		cdel(src)
 		return
 
 	var/j = 0

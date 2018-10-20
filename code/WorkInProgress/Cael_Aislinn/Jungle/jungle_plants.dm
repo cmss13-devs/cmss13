@@ -54,17 +54,17 @@
 					if(0 to 4)
 						H.next_move_slowdown += rand(2,3)
 						if(prob(2))
-							to_chat(H, "<span class='warning'>Moving through [src] slows you down.</span>")
+							H << "<span class='warning'>Moving through [src] slows you down.</span>"
 					if(5 to 7)
 						H.next_move_slowdown += rand(4,7)
 						if(prob(10))
-							to_chat(H, "<span class='warning'>It is very hard to move trough this [src]...</span>")
+							H << "<span class='warning'>It is very hard to move trough this [src]...</span>"
 					if(8 to 9)
 						H.next_move_slowdown += rand(8,11)
-						to_chat(H, "<span class='warning'>You got tangeled in [src]!</span>")
+						H << "<span class='warning'>You got tangeled in [src]!</span>"
 					if(10)
 						H.next_move_slowdown += rand(12,20)
-						to_chat(H, "<span class='warning'>You got completely tangeled in [src]! Oh boy...</span>")
+						H << "<span class='warning'>You got completely tangeled in [src]! Oh boy...</span>"
 
 /obj/structure/bush/attackby(var/obj/I as obj, var/mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
@@ -74,13 +74,13 @@
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it
-			to_chat(user, "\red You flail away at the undergrowth, but it's too thick here.")
+			user << "\red You flail away at the undergrowth, but it's too thick here."
 		else
-			user.visible_message("<span class='warning'>[user] flails away at the  [src] with [I].</span>","<span class='warning'>You flail away at the [src] with [I].</span>")
+			user.visible_message("\red [user] flails away at the  [src] with [I].","\red You flail away at the [src] with [I].")
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)
-				to_chat(user, "<span class='notice'>You clear away [src].</span>")
+				user << "\blue You clear away [src]."
 			healthcheck()
 	else
 		return ..()
@@ -97,7 +97,7 @@
 			pixel_x = rand(-6,6)
 			pixel_y = rand(-6,6)
 		else
-			qdel(src)
+			cdel(src)
 
 /obj/structure/bush/flamer_fire_act(heat)
 	health -= 30
@@ -169,7 +169,7 @@ var/jungle_plants_init = 0
 /obj/structure/jungle_plant/attack_hand(var/mob/user as mob)
 	if(fruits_left > 0)
 		fruits_left--
-		to_chat(user, "<span class='notice'>You pick a fruit off [src].</span>")
+		user << "\blue You pick a fruit off [src]."
 		overlays -= fruit_overlay
 		fruit_overlay = icon('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"fruit[fruits_left]")
 		if(norm)
@@ -186,4 +186,4 @@ var/jungle_plants_init = 0
 		fruit_overlay.Blend(rgb(fruit_r, fruit_g, fruit_b), ICON_ADD)
 		overlays += fruit_overlay
 	else
-		to_chat(user, "<span class='warning'>There are no fruit left on [src].</span>")
+		user << "\red There are no fruit left on [src]."

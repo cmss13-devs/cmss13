@@ -116,16 +116,16 @@
 
 	attackby(obj/O as obj, mob/user as mob)
 		if(inserted && istype(O,/obj/item/tool/pen))
-			to_chat(usr, "You use [O] to carefully pry [inserted] out of [src].")
+			usr << "You use [O] to carefully pry [inserted] out of [src]."
 			eject_disk(forced = 1)
 			return
 
 		if(istype(O,/obj/item/disk/file))
 			if(inserted)
-				to_chat(usr, "There's already a disk in [src]!")
+				usr << "There's already a disk in [src]!"
 				return
 
-			to_chat(usr, "You insert [O] into [src].")
+			usr << "You insert [O] into [src]."
 			usr.drop_inv_item_to_loc(O, src)
 			inserted = O
 			writeprotect = inserted.writeprotect

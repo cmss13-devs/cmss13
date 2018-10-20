@@ -31,11 +31,11 @@
 		return
 
 	if (world.time <= next_click)
-		//DEBUG: to_chat(world, "FAIL! TIME:[world.time]   NEXT_CLICK:[next_click]    NEXT_MOVE: [next_move]")
+		//DEBUG: world << "FAIL! TIME:[world.time]   NEXT_CLICK:[next_click]    NEXT_MOVE: [next_move]"
 		return
 
 	next_click = world.time + 1
-	//DEBUG: to_chat(world, "SUCCESS! TIME:[world.time]   NEXT_CLICK:[next_click]     NEXT_MOVE: [next_move]")
+	//DEBUG: world << "SUCCESS! TIME:[world.time]   NEXT_CLICK:[next_click]     NEXT_MOVE: [next_move]"
 
 	var/list/mods = params2list(params)
 
@@ -92,7 +92,7 @@
 		return
 
 	if (world.time <= next_move)	// Attack click cooldown check
-		//DEBUG: to_chat(world, "FAIL! TIME:[world.time]   NEXT_CLICK:[next_click]    NEXT_MOVE: [next_move]")
+		//DEBUG: world << "FAIL! TIME:[world.time]   NEXT_CLICK:[next_click]    NEXT_MOVE: [next_move]"
 		return
 
 	next_move = world.time
@@ -249,7 +249,7 @@
 		nutrition = max(nutrition - rand(1,5),0)
 		handle_regular_hud_updates()
 	else
-		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
+		src << "\red You're out of energy!  You need food!"
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)

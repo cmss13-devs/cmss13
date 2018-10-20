@@ -34,9 +34,9 @@
 	if(!active)
 		if(!isYautja(user))
 			if(prob(75))
-				to_chat(user, "You fiddle with the disc, but nothing happens. Try again maybe?")
+				user << "You fiddle with the disc, but nothing happens. Try again maybe?"
 				return
-		to_chat(user, "<span class='warning'>You activate the smart-disc and it whirrs to life!</span>")
+		user << "<span class='warning'>You activate the smart-disc and it whirrs to life!</span>"
 		activate(user)
 		add_fingerprint(user)
 		if(iscarbon(user))
@@ -67,7 +67,7 @@
 		var/atom/movable/x = new spawner_type
 		x.loc = T
 
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/throw_impact(atom/hit_atom)
@@ -148,14 +148,14 @@
 	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 	..()
 	spawn(1)
-		if(src) qdel(src)
+		if(src) cdel(src)
 
 /mob/living/simple_animal/hostile/smartdisc/gib()
 	visible_message("\The [src] explodes!")
 	..(icon_gib,1)
 	spawn(1)
 		if(src)
-			qdel(src)
+			cdel(src)
 
 /mob/living/simple_animal/hostile/smartdisc/FindTarget()
 	var/atom/T = null
@@ -203,7 +203,7 @@
 	if(lifetime <= 0 || time_idle > 3)
 		visible_message("\The [src] stops whirring and spins out onto the floor.")
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
-		qdel(src)
+		cdel(src)
 		return
 
 	for(var/mob/living/carbon/C in range(6))

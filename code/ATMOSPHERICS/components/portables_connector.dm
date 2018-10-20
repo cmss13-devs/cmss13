@@ -126,7 +126,7 @@
 	if(!iswrench(W))
 		return ..()
 	if(connected_device)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], dettach [connected_device] first.</span>")
+		user << "<span class='warning'>You cannot unwrench [src], dettach [connected_device] first.</span>"
 		return 1
 	if(locate(/obj/machinery/portable_atmospherics, loc))
 		return 1
@@ -139,4 +139,4 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe(loc, make_from = src)
-		qdel(src)
+		cdel(src)

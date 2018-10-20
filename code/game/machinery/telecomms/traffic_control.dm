@@ -125,7 +125,7 @@
 		add_fingerprint(usr)
 		usr.set_interaction(src)
 		if(!src.allowed(usr) && !emagged)
-			to_chat(usr, "<span class='warning'>ACCESS DENIED.</span>")
+			usr << "\red ACCESS DENIED."
 			return
 
 		if(href_list["viewserver"])
@@ -215,7 +215,7 @@
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
 				if (src.stat & BROKEN)
-					to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+					user << "\blue The broken glass falls out."
 					var/obj/structure/computerframe/A = new( src.loc )
 					new /obj/item/shard( src.loc )
 					var/obj/item/circuitboard/computer/comm_traffic/M = new( A )
@@ -225,9 +225,9 @@
 					A.state = 3
 					A.icon_state = "3"
 					A.anchored = 1
-					qdel(src)
+					cdel(src)
 				else
-					to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+					user << "\blue You disconnect the monitor."
 					var/obj/structure/computerframe/A = new( src.loc )
 					var/obj/item/circuitboard/computer/comm_traffic/M = new( A )
 					for (var/obj/C in src)
@@ -236,10 +236,10 @@
 					A.state = 4
 					A.icon_state = "4"
 					A.anchored = 1
-					qdel(src)
+					cdel(src)
 		else if(istype(D, /obj/item/card/emag) && !emagged)
 			playsound(src.loc, 'sound/effects/sparks4.ogg', 25, 1)
 			emagged = 1
-			to_chat(user, "<span class='notice'> You you disable the security protocols</span>")
+			user << "\blue You you disable the security protocols"
 		src.updateUsrDialog()
 		return

@@ -38,7 +38,7 @@
 		if(on && powered && cell && cell.charge < charge_use)
 			turn_off()
 		else if(!on && powered)
-			to_chat(user, "<span class='warning'>Turn on the engine first.</span>")
+			user << "<span class='warning'>Turn on the engine first.</span>"
 		else
 			. = step(src, direction)
 
@@ -48,7 +48,7 @@
 		if(!locked)
 			open = !open
 			update_icon()
-			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
+			user << "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>"
 	else if(istype(W, /obj/item/tool/crowbar) && cell && open)
 		remove_cell(user)
 
@@ -65,7 +65,7 @@
 					health = min(maxhealth, health+10)
 					user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
 			else
-				to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
+				user << "<span class='notice'>[src] does not need repairs.</span>"
 
 	else if(W.force)
 		switch(W.damtype)
@@ -82,8 +82,8 @@
 /obj/vehicle/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
-	src.visible_message("<span class='danger'>[M] has [M.attacktext] [src]!</span>")
-	M.attack_log += text("\[[time_stamp()]\] <span class='caution'>attacked [src.name]</span>")
+	src.visible_message("\red <B>[M] has [M.attacktext] [src]!</B>")
+	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
@@ -123,13 +123,13 @@
 	if(powered && cell.charge < charge_use)
 		return 0
 	on = 1
-	set_light(initial(luminosity))
+	SetLuminosity(initial(luminosity))
 	update_icon()
 	return 1
 
 /obj/vehicle/proc/turn_off()
 	on = 0
-	set_light(0)
+	SetLuminosity(0)
 	update_icon()
 
 /obj/vehicle/proc/Emag(mob/user as mob)
@@ -137,10 +137,10 @@
 
 	if(locked)
 		locked = 0
-		to_chat(user, "<span class='warning'>You bypass [src]'s controls.</span>")
+		user << "<span class='warning'>You bypass [src]'s controls.</span>"
 
 /obj/vehicle/proc/explode()
-	src.visible_message("<span class='danger'>[src] blows apart!</span>", 1)
+	src.visible_message("\red <B>[src] blows apart!</B>", 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/stack/rods(Tsec)
@@ -159,7 +159,7 @@
 	new /obj/effect/spawner/gibspawner/robot(Tsec)
 	new /obj/effect/decal/cleanable/blood/oil(src.loc)
 
-	qdel(src)
+	cdel(src)
 
 /obj/vehicle/proc/healthcheck()
 	if(health <= 0)
@@ -190,13 +190,13 @@
 	H.drop_inv_item_to_loc(C, src)
 	cell = C
 	powercheck()
-	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
+	usr << "<span class='notice'>You install [C] in [src].</span>"
 
 /obj/vehicle/proc/remove_cell(var/mob/living/carbon/human/H)
 	if(!cell)
 		return
 
-	to_chat(usr, "<span class='notice'>You remove [cell] from [src].</span>")
+	usr << "<span class='notice'>You remove [cell] from [src].</span>"
 	cell.forceMove(get_turf(H))
 	H.put_in_hands(cell)
 	cell = null
@@ -215,6 +215,10 @@
 		M.pixel_x = initial(buckled_mob.pixel_x)
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
+
+/obj/vehicle/Dispose()
+	SetLuminosity(0)
+	. = ..()
 
 //-------------------------------------------------------
 // Stat update procs

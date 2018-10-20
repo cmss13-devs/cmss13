@@ -22,7 +22,7 @@
 			user.visible_message("<span class='notice'>\The [user] applied some [src] at [R]'s damaged areas.</span>",\
 				"<span class='notice'>You apply some [src] at [R]'s damaged areas.</span>")
 		else
-			to_chat(user, "<span class='notice'>All [R]'s systems are nominal.</span>")
+			user << "<span class='notice'>All [R]'s systems are nominal.</span>"
 
 	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
 		if(isSynth(M) && M == user)
@@ -39,10 +39,10 @@
 					user.visible_message("<span class='notice'>\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src].</span>",\
 					"<span class='notice'>You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name].</span>")
 				else
-					to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
+					user << "<span class='notice'>Nothing to fix here.</span>"
 		else
 			if (H.can_be_operated_on())
 				if (do_surgery(H,user,src))
 					return
 			else
-				to_chat(user, "<span class='notice'>Nothing to fix in here.</span>")
+				user << "<span class='notice'>Nothing to fix in here.</span>"

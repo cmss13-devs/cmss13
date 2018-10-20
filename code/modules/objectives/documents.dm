@@ -89,27 +89,27 @@
 /obj/item/document_objective/proc/display_fail_message(mob/living/user)
 	for(var/datum/cm_objective/C in objective.required_objectives)
 		if(C.is_complete())
-			to_chat(user, "<span class='warning'>You aren't entirely sure what you're meant to be looking for in this document.</span>")
+			user << "<span class='warning'>You aren't entirely sure what you're meant to be looking for in this document.</span>"
 			return
-	to_chat(user, "<span class='notice'>You don't notice anything useful.</span>")
+	user << "<span class='notice'>You don't notice anything useful.</span>"
 
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
 	switch(skill_required)
 		if(DOCUMENT_SKILL_SURGERY)
 			if(!user.mind || !user.mind.cm_skills || !user.mind.cm_skills.surgery)
-				to_chat(user, "<span class='warning'>You can't understand this.</span>")
+				user << "<span class='warning'>You can't understand this.</span>"
 				return 0
 		if(DOCUMENT_SKILL_ENGINEERING)
 			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-				to_chat(user, "<span class='warning'>You can't understand this.</span>")
+				user << "<span class='warning'>You can't understand this.</span>"
 				return 0
 		if(DOCUMENT_SKILL_WEAPONS)
 			if(!user.mind || !user.mind.cm_skills || !user.mind.cm_skills.spec_weapons)
-				to_chat(user, "<span class='warning'>You can't understand this.</span>")
+				user << "<span class='warning'>You can't understand this.</span>"
 				return 0
-	to_chat(user, "<span class='notice'>You start reading \the [src].")
+	user << "<span class='notice'>You start reading \the [src]."
 	if(!do_after(user, reading_time, TRUE, 5, BUSY_ICON_GENERIC))
-		to_chat(user, "<span class='warning'>You get distracted and lose your train of thought, you'll have to start over reading this.</span>")
+		user << "<span class='warning'>You get distracted and lose your train of thought, you'll have to start over reading this.</span>"
 		return 0
 	if(!objective.is_active() && !objective.is_prerequisites_completed())
 		display_fail_message(user)
@@ -118,7 +118,7 @@
 	objective.check_completion()
 	display_read_message(user)
 	if(objective.important && objective.is_complete())
-		to_chat(user, "<span class='notice'>You feel this document is important and should be returned to the [MAIN_SHIP_NAME].</span>")
+		user << "<span class='notice'>You feel this document is important and should be returned to the [MAIN_SHIP_NAME].</span>"
 	return 1
 
 /obj/item/document_objective/paper
@@ -131,8 +131,8 @@
 /obj/item/document_objective/paper/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/document/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You make out something about [D.get_clue()].</span>")
-	to_chat(user, "<span class='information'>You finish examining \the [src].</span>")
+		user << "<span class='notice'>You make out something about [D.get_clue()].</span>"
+	user << "<span class='information'>You finish examining \the [src].</span>"
 
 /obj/item/document_objective/paper/report
 	name = "Progress report"
@@ -159,13 +159,13 @@
 /obj/item/document_objective/folder/examine(mob/living/user)
 	..()
 	if(get_dist(user, src) < 2 && ishuman(user))
-		to_chat(user, "<span class='information'>\The [src] is labelled [label].</span>")
+		user << "<span class='information'>\The [src] is labelled [label].</span>"
 
 /obj/item/document_objective/folder/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You see a reference to [D.get_clue()].</span>")
-	to_chat(user, "<span class='information'>You finish sifting through the documents.</span>")
+		user << "<span class='notice'>You see a reference to [D.get_clue()].</span>"
+	user << "<span class='information'>You finish sifting through the documents.</span>"
 
 /obj/item/document_objective/technical_manual
 	name = "Technical Manual"
@@ -178,5 +178,5 @@
 /obj/item/document_objective/technical_manual/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/document/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You see a reference to [D.get_clue()].</span>")
-	to_chat(user, "<span class='information'>You finish reading the technical manual.</span>")
+		user << "<span class='notice'>You see a reference to [D.get_clue()].</span>"
+	user << "<span class='information'>You finish reading the technical manual.</span>"

@@ -38,19 +38,19 @@
 	if(!usr || usr.stat || usr.lying)	return
 
 	if(scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		usr << "You remove \the [scan] from \the [src]."
 		scan.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else if(modify)
-		to_chat(usr, "You remove \the [modify] from \the [src].")
+		usr << "You remove \the [modify] from \the [src]."
 		modify.loc = get_turf(src)
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(modify)
 		modify = null
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		usr << "There is nothing to remove from the console."
 	return
 
 /obj/machinery/computer/card/attackby(obj/item/card/id/id_card, mob/user)
@@ -214,7 +214,7 @@
 								jobdatum = J
 								break
 						if(!jobdatum)
-							to_chat(usr, "<span class='warning'>No log exists for this job: [t1]</span>")
+							usr << "\red No log exists for this job: [t1]"
 							return
 
 						access = jobdatum.get_access()

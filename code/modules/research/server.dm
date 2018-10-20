@@ -102,11 +102,11 @@
 		if (!opened)
 			opened = 1
 			icon_state = "server_o"
-			to_chat(user, "You open the maintenance hatch of [src].")
+			user << "You open the maintenance hatch of [src]."
 		else
 			opened = 0
 			icon_state = "server"
-			to_chat(user, "You close the maintenance hatch of [src].")
+			user << "You close the maintenance hatch of [src]."
 		return
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
@@ -119,7 +119,7 @@
 				if(I.reliability != 100 && crit_fail)
 					I.crit_fail = 1
 				I.loc = src.loc
-			qdel(src)
+			cdel(src)
 			return 1
 
 /obj/machinery/r_n_d/server/attack_hand(mob/user as mob)
@@ -180,7 +180,7 @@
 	add_fingerprint(usr)
 	usr.set_interaction(src)
 	if(!src.allowed(usr) && !emagged)
-		to_chat(usr, "<span class='warning'> You do not have the required access level</span>")
+		usr << "\red You do not have the required access level"
 		return
 
 	if(href_list["main"])
@@ -309,7 +309,7 @@
 	if(istype(D, /obj/item/card/emag) && !emagged)
 		playsound(src.loc, 'sound/effects/sparks4.ogg', 25, 1)
 		emagged = 1
-		to_chat(user, "<span class='notice'> You you disable the security protocols</span>")
+		user << "\blue You you disable the security protocols"
 	src.updateUsrDialog()
 	return ..()
 

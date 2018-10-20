@@ -1,1 +1,0 @@
-The stonedmc controller files are gplv3 ported from vg13 which is gplv3

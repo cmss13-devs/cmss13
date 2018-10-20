@@ -39,7 +39,7 @@
 	if (T)
 		T.overlays += image('icons/Xeno/Ovipositor.dmi', "ovipositor_molted")
 
-	qdel(src)
+	cdel(src)
 
 /obj/ovipositor/proc/explode()
 	icon_state = "ovipositor_gibbed"
@@ -50,7 +50,7 @@
 	if (T)
 		T.overlays += image('icons/Xeno/Ovipositor.dmi', "ovipositor_gibbed")
 
-	qdel(src)
+	cdel(src)
 
 /obj/ovipositor/ex_act(severity)
 	health -= severity/4
@@ -78,7 +78,7 @@
 			return 1
 
 		if("disarm")
-			to_chat(M, "<span class='warning'>There's nothing to disarm!</span>")
+			M << "<span class='warning'>There's nothing to disarm!</span>"
 
 	return 0
 

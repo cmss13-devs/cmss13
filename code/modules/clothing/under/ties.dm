@@ -17,7 +17,7 @@
 	if(has_suit)
 		has_suit.remove_accessory()
 	if(inv_overlay)
-		qdel(inv_overlay)
+		cdel(inv_overlay)
 		inv_overlay = null
 	. = ..()
 
@@ -30,7 +30,7 @@
 	has_suit.overlays += inv_overlay
 
 	if(user)
-		to_chat(user, "<span class='notice'>You attach [src] to [has_suit].</span>")
+		user << "<span class='notice'>You attach [src] to [has_suit].</span>"
 		src.add_fingerprint(user)
 
 /obj/item/clothing/tie/proc/on_removed()
@@ -111,14 +111,14 @@
 
 /obj/item/clothing/tie/medal/tie_check(obj/item/clothing/under/U, mob/user)
 	if(!ishuman(U.loc))
-		to_chat(user, "<span class='warning'>[U] must be worn to apply [src].</span>")
+		user << "<span class='warning'>[U] must be worn to apply [src].</span>"
 	else
 		var/mob/living/carbon/human/H = U.loc
 		if(H.w_uniform != U)
-			to_chat(user, "<span class='warning'>[U] must be worn to apply [src].</span>")
+			user << "<span class='warning'>[U] must be worn to apply [src].</span>"
 		else
 			if(recipient_name != H.real_name)
-				to_chat(user, "<span class='warning'>[src] isn't awarded to [H].</span>")
+				user << "<span class='warning'>[src] isn't awarded to [H].</span>"
 			else
 				return TRUE
 
@@ -127,11 +127,11 @@
 		if(H.w_uniform)
 			var/obj/item/clothing/under/U = H.w_uniform
 			if(U.hastie)
-				to_chat(user, "<span class='warning'>There's already something attached to [H]'s [U.name].</span>")
+				user << "<span class='warning'>There's already something attached to [H]'s [U.name].</span>"
 				return
 			else
 				if(recipient_name != H.real_name)
-					to_chat(user, "<span class='warning'>[src] isn't awarded to [H].</span>")
+					user << "<span class='warning'>[src] isn't awarded to [H].</span>"
 					return
 				if(user != H)
 					user.visible_message("[user] starts pinning [src] on [H]'s [U.name].", \
@@ -151,14 +151,14 @@
 					user.visible_message("[user] pins [src] on [H]'s [U.name].", \
 					"<span class='notice'>You pin [src] on [H]'s [U.name].</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] needs a uniform to be pinned to.</span>")
+			user << "<span class='warning'>[src] needs a uniform to be pinned to.</span>"
 	else
 		return ..()
 
 
 /obj/item/clothing/tie/medal/examine(mob/user)
 	..()
-	to_chat(user, "Awarded to: \'[recipient_rank] [recipient_name]\'. The citation reads \'[medal_citation]\'.")
+	user << "Awarded to: \'[recipient_rank] [recipient_name]\'. The citation reads \'[medal_citation]\'."
 
 /obj/item/clothing/tie/medal/conduct
 	name = "distinguished conduct medal"
@@ -247,7 +247,7 @@
 
 /obj/item/clothing/tie/holster/Dispose()
 	if(holstered)
-		qdel(holstered)
+		cdel(holstered)
 		holstered = null
 	. = ..()
 
@@ -258,29 +258,29 @@
 
 /obj/item/clothing/tie/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
-		to_chat(user, "<span class='warning'>There is already a [holstered] holstered here!</span>")
+		user << "\red There is already a [holstered] holstered here!"
 		return
 
 	if (!istype(I, /obj/item/weapon/gun))
-		to_chat(user, "<span class='warning'>Only guns can be holstered!</span>")
+		user << "\red Only guns can be holstered!"
 		return
 
 	var/obj/item/weapon/gun/W = I
 	if (!can_holster(W))
-		to_chat(user, "\red This [W] won't fit in the [src]!")
+		user << "\red This [W] won't fit in the [src]!"
 		return
 
 	holstered = W
 	user.drop_inv_item_to_loc(holstered, src)
 	holstered.add_fingerprint(user)
-	user.visible_message("<span class='notice'>[user] holsters the [holstered].</span>", "You holster the [holstered].")
+	user.visible_message("\blue [user] holsters the [holstered].", "You holster the [holstered].")
 
 /obj/item/clothing/tie/holster/proc/unholster(mob/user as mob)
 	if(!holstered)
 		return
 
 	if(user.get_active_hand() && user.get_inactive_hand())
-		to_chat(user, "<span class='warning'>You need an empty hand to draw the [holstered]!</span>")
+		user << "<span class='warning'>You need an empty hand to draw the [holstered]!</span>"
 	else
 		if(user.a_intent == "hurt")
 			usr.visible_message("<span class='danger'>[user] draws the [holstered], ready to shoot!</span>", \
@@ -311,9 +311,9 @@
 /obj/item/clothing/tie/holster/examine(mob/user)
 	..()
 	if (holstered)
-		to_chat(user, "A [holstered] is holstered here.")
+		user << "A [holstered] is holstered here."
 	else
-		to_chat(user, "It is empty.")
+		user << "It is empty."
 
 /obj/item/clothing/tie/holster/armpit
 	name = "shoulder holster"
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/tie/storage/Dispose()
 	if(hold)
-		qdel(hold)
+		cdel(hold)
 		hold = null
 	. = ..()
 
@@ -378,7 +378,7 @@
 	..()
 
 /obj/item/clothing/tie/storage/attack_self(mob/user as mob)
-	to_chat(user, "<span class='notice'>You empty [src].</span>")
+	user << "<span class='notice'>You empty [src].</span>"
 	var/turf/T = get_turf(src)
 	hold.hide_from(usr)
 	for(var/obj/item/I in hold.contents)
@@ -460,7 +460,7 @@
 
 /obj/item/clothing/tie/holobadge/attack_self(mob/user as mob)
 	if(!stored_name)
-		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
+		user << "Waving around a badge before swiping an ID would be pretty pointless."
 		return
 	if(isliving(user))
 		user.visible_message("\red [user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security.","\red You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security.")
@@ -469,11 +469,11 @@
 
 	if (istype(O, /obj/item/card/emag))
 		if (emagged)
-			to_chat(user, "<span class='warning'>[src] is already cracked.</span>")
+			user << "\red [src] is already cracked."
 			return
 		else
 			emagged = 1
-			to_chat(user, "<span class='warning'>You swipe [O] and crack the holobadge security checks.</span>")
+			user << "\red You swipe [O] and crack the holobadge security checks."
 			return
 
 	else if(istype(O, /obj/item/card/id) || istype(O, /obj/item/device/pda))
@@ -487,12 +487,12 @@
 			id_card = pda.id
 
 		if(ACCESS_MARINE_BRIG in id_card.access || emagged)
-			to_chat(user, "You imprint your ID details onto the badge.")
+			user << "You imprint your ID details onto the badge."
 			stored_name = id_card.registered_name
 			name = "holobadge ([stored_name])"
 			desc = "This glowing blue badge marks [stored_name] as THE LAW."
 		else
-			to_chat(user, "[src] rejects your insufficient access rights.")
+			user << "[src] rejects your insufficient access rights."
 		return
 	..()
 

@@ -117,7 +117,7 @@
 		if(observed)
 			add_examine_urge(H)
 		if(eye_contact)
-			to_chat(H, "<span class='alert'>You are facing it, and it is facing you...</span>")
+			H << "<span class='alert'>You are facing it, and it is facing you...</span>"
 			add_examine_urge(H)
 
 	return
@@ -138,11 +138,11 @@
 
 	switch(examine_urge)
 		if(1)
-			to_chat(H, "<span class='alert'>You feel the urge to examine it...</span>")
+			H << "<span class='alert'>You feel the urge to examine it...</span>"
 		if(3)
-			to_chat(H, "<span class='alert'>It is becoming difficult to resist the urge to examine it ...</span>")
+			H << "<span class='alert'>It is becoming difficult to resist the urge to examine it ...</span>"
 		if(5)
-			to_chat(H, "<span class='alert'>Unable to resist the urge, you look closely...</span>")
+			H << "<span class='alert'>Unable to resist the urge, you look closely...</span>"
 			spawn(10)
 				examine(H)
 
@@ -163,7 +163,7 @@
 	else return
 
 	if (examine_urge == 1 && !(H in shitlist))
-		to_chat(H, "<span class='notice'>The urge fades away...</span>")
+		H << "<span class='notice'>The urge fades away...</span>"
 
 	examine_urge = max(examine_urge-1, 0)
 
@@ -172,16 +172,16 @@
 /mob/living/simple_animal/shyguy/examine(var/userguy)
 	if (istype(userguy, /mob/living/carbon))
 		if (!(userguy in shitlist))
-			to_chat(userguy, target_desc_1)
+			userguy <<  target_desc_1
 			shitlist += userguy
 			spawn(20)
 				if(userguy)
-					to_chat(userguy, "<span class='alert'>That was a mistake. Run</span>")
+					userguy << "<span class='alert'>That was a mistake. Run</span>"
 			spawn(30)
 				if(userguy)
-					to_chat(userguy, "<span class='danger'>RUN</span>")
+					userguy << "<span class='danger'>RUN</span>"
 		else
-			to_chat(userguy, target_desc_2)
+			userguy << target_desc_2
 		if(will_scream)
 			if(!buckled) dir = 2
 			visible_message("<span class='danger'>[src] SCREAMS!</span>")
@@ -219,7 +219,7 @@
 	target_turf = get_turf(target)
 
 	if(!chasing_message_played)
-		to_chat(target, "<span class='danger'>You saw its face</span>")
+		target << "<span class='danger'>You saw its face</span>"
 		chasing_message_played = 1
 
 	if(!scare_played) //Let's minimize the spam
@@ -258,14 +258,14 @@
 					sleep(10)
 
 				if(doom_message_played == 0 && get_dist(src,target) < 7)
-					to_chat(target, "<span class='danger'>YOU SAW ITS FACE</span>")
+					target << "<span class='danger'>YOU SAW ITS FACE</span>"
 					doom_message_played = 1
 
 				forceMove(next_turf)
 
 				if(is_different_level(target_turf))
 					next_turf = target_turf
-					to_chat(target, "<span class='danger'>DID YOU THINK YOU COULD HIDE?</span>")
+					target << "<span class='danger'>DID YOU THINK YOU COULD HIDE?</span>"
 				else
 					dir = get_dir(src, target)
 					next_turf = get_step(src, get_dir(next_turf,target))
@@ -357,7 +357,7 @@
 		T.gib()
 
 		//Logging stuff
-		T.attack_log += text("\[[time_stamp()]\] <span class='caution'>has been torn apart by [src]!</span>")
+		T.attack_log += text("\[[time_stamp()]\] <font color='red'>has been torn apart by [src]!</font>")
 		log_admin("[T] ([T.ckey]) has been torn apart by an active [src].")
 		message_admins("ALERT: <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[T.real_name]</a> has been torn apart by an active [src].")
 		shitlist -= T

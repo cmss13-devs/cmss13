@@ -51,10 +51,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 
 
@@ -150,14 +150,14 @@
 	if(isrobot(user))
 		return
 	if(src.beaker)
-		to_chat(user, "Something is already loaded into the machine.")
+		user << "Something is already loaded into the machine."
 		return
 	if(istype(B, /obj/item/reagent_container/glass) || istype(B, /obj/item/reagent_container/food))
 		if(!accept_glass && istype(B,/obj/item/reagent_container/food))
-			to_chat(user, "<span class='notice'>This machine only accepts beakers</span>")
+			user << "<span class='notice'>This machine only accepts beakers</span>"
 		if(user.drop_inv_item_to_loc(B, src))
 			beaker =  B
-			to_chat(user, "You set [B] on the machine.")
+			user << "You set [B] on the machine."
 			nanomanager.update_uis(src) // update all UIs attached to src
 		return
 
@@ -172,7 +172,7 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(!check_access(H.wear_id))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "<span class='warning'>Access denied.</span>"
 		return
 	ui_interact(user)
 
@@ -191,13 +191,13 @@
 	..()
 	if(istype(B, /obj/item/device/multitool))
 		if(hackedcheck == 0)
-			to_chat(user, "You change the mode from 'McNano' to 'Pizza King'.")
+			user << "You change the mode from 'McNano' to 'Pizza King'."
 			dispensable_reagents += list("thirteenloko","grapesoda")
 			hackedcheck = 1
 			return
 
 		else
-			to_chat(user, "You change the mode from 'Pizza King' to 'McNano'.")
+			user << "You change the mode from 'Pizza King' to 'McNano'."
 			dispensable_reagents -= list("thirteenloko","grapesoda")
 			hackedcheck = 0
 			return
@@ -218,13 +218,13 @@
 
 	if(istype(B, /obj/item/device/multitool))
 		if(hackedcheck == 0)
-			to_chat(user, "You disable the 'nanotrasen-are-cheap-bastards' lock, enabling hidden and very expensive boozes.")
+			user << "You disable the 'nanotrasen-are-cheap-bastards' lock, enabling hidden and very expensive boozes."
 			dispensable_reagents += list("goldschlager","patron","watermelonjuice","berryjuice")
 			hackedcheck = 1
 			return
 
 		else
-			to_chat(user, "You re-enable the 'nanotrasen-are-cheap-bastards' lock, disabling hidden and very expensive boozes.")
+			user << "You re-enable the 'nanotrasen-are-cheap-bastards' lock, disabling hidden and very expensive boozes."
 			dispensable_reagents -= list("goldschlager","patron","watermelonjuice","berryjuice")
 			hackedcheck = 0
 			return
@@ -261,10 +261,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 
 /obj/machinery/chem_master/attackby(obj/item/B, mob/living/user)
@@ -272,23 +272,23 @@
 	if(istype(B, /obj/item/reagent_container/glass))
 
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			user << "<span class='warning'>A beaker is already loaded into the machine.</span>"
 			return
 		beaker = B
 		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, "<span class='notice'>You add the beaker to the machine!</span>")
+		user << "<span class='notice'>You add the beaker to the machine!</span>"
 		updateUsrDialog()
 		icon_state = "mixer1"
 
 	else if(istype(B, /obj/item/storage/pill_bottle))
 
 		if(loaded_pill_bottle)
-			to_chat(user, "<span class='warning'>A pill bottle is already loaded into the machine.</span>")
+			user << "<span class='warning'>A pill bottle is already loaded into the machine.</span>"
 			return
 
 		loaded_pill_bottle = B
 		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, "<span class='notice'>You add the pill bottle into the dispenser slot!</span>")
+		user << "<span class='notice'>You add the pill bottle into the dispenser slot!</span>"
 		updateUsrDialog()
 	return
 
@@ -783,12 +783,12 @@
 	if(istype(I, /obj/item/reagent_container/glass))
 		if(stat & (NOPOWER|BROKEN)) return
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			user << "<span class='warning'>A beaker is already loaded into the machine.</span>"
 			return
 
 		beaker =  I
 		user.drop_inv_item_to_loc(I, src)
-		to_chat(user, "<span class='notice'>You add the beaker to the machine!</span>")
+		user << "<span class='notice'>You add the beaker to the machine!</span>"
 		updateUsrDialog()
 		icon_state = "mixer1"
 
@@ -881,14 +881,14 @@
 			return 0
 
 	if(holdingitems && holdingitems.len >= limit)
-		to_chat(user, "<span class='warning'>The machine cannot hold anymore items.</span>")
+		user << "<span class='warning'>The machine cannot hold anymore items.</span>"
 		return 1
 
 		updateUsrDialog()
 		return 0
 
 	if (!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
-		to_chat(user, "<span class='warning'>Cannot refine into a reagent.</span>")
+		user << "<span class='warning'>Cannot refine into a reagent.</span>"
 		return 1
 
 	user.drop_inv_item_to_loc(O, src)
@@ -1023,7 +1023,7 @@
 
 /obj/machinery/reagentgrinder/proc/remove_object(var/obj/item/O)
 	holdingitems -= O
-	qdel(O)
+	cdel(O)
 
 /obj/machinery/reagentgrinder/proc/juice()
 	power_change()

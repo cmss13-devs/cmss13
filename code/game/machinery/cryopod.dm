@@ -103,7 +103,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	else if(href_list["item"])
 
 		if(frozen_items_for_type.len == 0)
-			to_chat(user, "<span class='warning'>There is nothing to recover from storage.</span>")
+			user << "<span class='warning'>There is nothing to recover from storage.</span>"
 			return
 
 		var/obj/item/I = input(usr, "Please choose which object to retrieve.", "Object recovery",null) as null|anything in frozen_items_for_type
@@ -111,7 +111,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			return
 
 		if(!(I in frozen_items_for_type))
-			to_chat(user, "<span class='warning'>[I] is no longer in storage.</span>")
+			user << "<span class='warning'>[I] is no longer in storage.</span>"
 			return
 
 		visible_message("<span class='notice'>[src] beeps happily as it disgorges [I].</span>")
@@ -122,7 +122,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	else if(href_list["allitems"])
 
 		if(frozen_items_for_type.len == 0)
-			to_chat(user, "<span class='warning'>There is nothing to recover from storage.</span>")
+			user << "<span class='warning'>There is nothing to recover from storage.</span>"
 			return
 
 		visible_message("<span class='notice'>[src] beeps happily as it disgorges the desired objects.</span>")
@@ -252,7 +252,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 								S.remove_from_storage(I, loc)
 								strippeditems += I
 								I.loc = null
-						qdel(W)
+						cdel(W)
 						continue
 
 
@@ -285,13 +285,13 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 					for(var/TT in deleteempty)
 						if(istype(W, TT))
 							if(length(W.contents) == 0)
-								qdel(W) // delete all the empty satchels
+								cdel(W) // delete all the empty satchels
 								continue item_loop
 							break // not empty, don't delete
 
 					for(var/DA in deleteall)
 						if(istype(W, DA))
-							qdel(W)
+							cdel(W)
 							continue item_loop
 
 
@@ -303,7 +303,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 				for(var/obj/item/A in strippeditems)
 					for(var/DAA in deleteall)
 						if(istype(A, DAA))
-							qdel(A)
+							cdel(A)
 							continue stripped_items
 
 					dept_console += A
@@ -315,11 +315,11 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 				//We don't want revs to get objectives that aren't for heads of staff. Letting
 				//them win or lose based on cryo is silly so we remove the objective.
 				if(istype(O, /datum/objective/mutiny) && O.target == occupant.mind)
-					qdel(O)
+					cdel(O)
 				else if(O.target && istype(O.target,/datum/mind))
 					if(O.target == occupant.mind)
 						if(O.owner && O.owner.current)
-							to_chat(O.owner.current, "<span class='danger'>You get the feeling your target is no longer within your reach. Time for Plan [pick(list("A","B","C","D","X","Y","Z"))].</span>")
+							O.owner.current << "<span class='danger'>You get the feeling your target is no longer within your reach. Time for Plan [pick(list("A","B","C","D","X","Y","Z"))].</span>"
 						O.target = null
 						spawn(1) //This should ideally fire after the occupant is deleted.
 							if(!O) return
@@ -327,7 +327,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 							if(!(O.target))
 								all_objectives -= O
 								O.owner.objectives -= O
-								qdel(O)
+								cdel(O)
 
 			if(ishuman(occupant))
 				var/mob/living/carbon/human/H = occupant
@@ -370,7 +370,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 				RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.mind.assigned_role])
 
 				if(occupant.mind.objectives.len)
-					qdel(occupant.mind.objectives)
+					cdel(occupant.mind.objectives)
 					occupant.mind.objectives = null
 					occupant.mind.special_role = null
 
@@ -380,15 +380,15 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			for(var/datum/data/record/R in data_core.medical)
 				if((R.fields["name"] == occupant.real_name))
 					data_core.medical -= R
-					qdel(R)
+					cdel(R)
 			for(var/datum/data/record/T in data_core.security)
 				if((T.fields["name"] == occupant.real_name))
 					data_core.security -= T
-					qdel(T)
+					cdel(T)
 			for(var/datum/data/record/G in data_core.general)
 				if((G.fields["name"] == occupant.real_name))
 					data_core.general -= G
-					qdel(G)
+					cdel(G)
 
 			if(orient_right)
 				icon_state = "body_scanner_0-r"
@@ -407,7 +407,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 			//Delete the mob.
 
-			qdel(occupant)
+			cdel(occupant)
 			occupant = null
 			stop_processing()
 
@@ -418,7 +418,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		if(isXeno(user)) return
 		var/obj/item/grab/G = W
 		if(occupant)
-			to_chat(user, "<span class='warning'>[src] is occupied.</span>")
+			user << "<span class='warning'>[src] is occupied.</span>"
 			return
 
 		if(!isliving(G.grabbed_thing))
@@ -428,11 +428,11 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		var/mob/living/M = G.grabbed_thing
 
 		if(M.stat == DEAD) //This mob is dead
-			to_chat(user, "<span class='warning'>[src] immediately rejects [M]. \He passed away!</span>")
+			user << "<span class='warning'>[src] immediately rejects [M]. \He passed away!</span>"
 			return
 
 		if(isXeno(M))
-			to_chat(user, "<span class='warning'>There is no way [src] will accept [M]!</span>")
+			user << "<span class='warning'>There is no way [src] will accept [M]!</span>"
 			return
 
 		if(M.client)
@@ -450,7 +450,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			if(!do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC)) return
 			if(!M || !G || !G.grabbed_thing) return
 			if(occupant)
-				to_chat(user, "<span class='warning'>[src] is occupied.</span>")
+				user << "<span class='warning'>[src] is occupied.</span>"
 				return
 			M.forceMove(src)
 			if(orient_right)
@@ -458,8 +458,8 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			else
 				icon_state = "body_scanner_1"
 
-			to_chat(M, "<span class='notice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
-			to_chat(M, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
+			M << "<span class='notice'>You feel cool air surround you. You go numb as your senses turn inward.</span>"
+			M << "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>"
 			occupant = M
 			start_processing()
 			time_entered = world.time
@@ -467,7 +467,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			//Book keeping!
 			var/turf/location = get_turf(src)
 			log_admin("[key_name_admin(M)] has entered a stasis pod. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
-			message_admins("<span class='notice'>[key_name_admin(M)] has entered a stasis pod.</span>")
+			message_admins("\blue [key_name_admin(M)] has entered a stasis pod.")
 
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(M)
@@ -481,7 +481,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		return
 
 	if(occupant != usr)
-		to_chat(usr, "<span class='warning'>You can't drag people out of hypersleep!</span>")
+		usr << "<span class='warning'>You can't drag people out of hypersleep!</span>"
 		return
 
 	if(orient_right)
@@ -510,11 +510,11 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		return
 
 	if(occupant)
-		to_chat(usr, "<span class='warning'>[src] is occupied.</span>")
+		usr << "<span class='warning'>[src] is occupied.</span>"
 		return
 
 	if(isXeno(usr))
-		to_chat(usr, "<span class='warning'>There is no way [src] will accept you!</span>")
+		usr << "<span class='warning'>There is no way [src] will accept you!</span>"
 		return
 
 	usr.visible_message("<span class='notice'>[usr] starts climbing into [src].</span>",
@@ -526,7 +526,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			return
 
 		if(occupant)
-			to_chat(usr, "<span class='warning'>[src] is occupied.</span>")
+			usr << "<span class='warning'>[src] is occupied.</span>"
 			return
 
 		usr.forceMove(src)
@@ -537,8 +537,8 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		else
 			icon_state = "body_scanner_1"
 
-		to_chat(usr, "<span class='notice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
-		to_chat(usr, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
+		usr << "<span class='notice'>You feel cool air surround you. You go numb as your senses turn inward.</span>"
+		usr << "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>"
 		time_entered = world.time
 		start_processing()
 

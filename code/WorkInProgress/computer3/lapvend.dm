@@ -45,7 +45,7 @@
 			calc_reimburse(L)
 			usr.drop_inv_item_to_loc(L, src)
 			vendmode = 3
-			to_chat(usr, "<span class='notice'>You slot your [L.name] into \The [src.name]</span>")
+			usr << "<span class='notice'>You slot your [L.name] into \The [src.name]</span>"
 	else
 		..()
 
@@ -190,10 +190,10 @@
 	if (network == 3)
 		newlap.spawn_parts += (/obj/item/computer3_part/networking/cable)
 	if (power == 1)
-		qdel(newlap.battery)
+		cdel(newlap.battery)
 		newlap.battery = new /obj/item/cell/high(newlap)
 	if (power == 2)
-		qdel(newlap.battery)
+		cdel(newlap.battery)
 		newlap.battery = new /obj/item/cell/super(newlap)
 
 	newlap.spawn_parts()
@@ -204,7 +204,7 @@
 		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
 		var/datum/money_account/CH = get_account(C.associated_account_number)
 		if(!CH || isnull(CH) || !istype(CH))
-			to_chat(usr, "<span class='warning'>This card has no account data!</span>")
+			usr << "\red This card has no account data!"
 			return
 		if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 			if(vendor_account)
@@ -213,9 +213,9 @@
 				if(D)
 					transfer_and_vend(D, C)
 				else
-					to_chat(usr, "\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
+					usr << "\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>"
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call CentComm Support.</span>")
+				usr << "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call CentComm Support.</span>"
 		else
 			transfer_and_vend(CH, C)
 
@@ -264,7 +264,7 @@
 		network = 0
 		power = 0
 	else
-		to_chat(usr, "\icon[src]<span class='warning'>You don't have that much money!</span>")
+		usr << "\icon[src]<span class='warning'>You don't have that much money!</span>"
 
 /obj/machinery/lapvend/proc/total()
 	var/total = 0
@@ -357,9 +357,9 @@
 				if(D)
 					transfer_and_reimburse(D)
 				else
-					to_chat(usr, "\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>")
+					usr << "\icon[src]<span class='warning'>Unable to access account. Check security settings and try again.</span>"
 			else
-				to_chat(usr, "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call CentComm Support.</span>")
+				usr << "\icon[src]<span class='warning'>Unable to access vendor account. Please record the machine ID and call CentComm Support.</span>"
 		else
 			transfer_and_reimburse(CH)
 
@@ -391,7 +391,7 @@
 	T.time = worldtime2text()
 	vendor_account.transaction_log.Add(T)
 
-	qdel(relap)
+	cdel(relap)
 	relap = null
 	vendmode = 0
 	cardreader = 0

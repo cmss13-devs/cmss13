@@ -25,16 +25,16 @@
 
 /obj/structure/mortar/attack_hand(mob/user as mob)
 	if(isYautja(user))
-		to_chat(user, "<span class='warning'>You kick [src] but nothing happens.</span>")
+		user << "<span class='warning'>You kick [src] but nothing happens.</span>"
 		return
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		to_chat(user, "<span class='warning'>You don't have the training to use [src].</span>")
+		user << "<span class='warning'>You don't have the training to use [src].</span>"
 		return
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
+		user << "<span class='warning'>Someone else is currently using [src].</span>"
 		return
 	if(firing)
-		to_chat(user, "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>")
+		user << "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>"
 		return
 	add_fingerprint(user)
 
@@ -44,18 +44,18 @@
 	if(choice == "Target")
 		var/temp_targ_x = input("Set longitude of strike from 0 to [world.maxx].") as num
 		if(dial_x + deobfuscate_x(temp_targ_x) > world.maxx || dial_x + deobfuscate_x(temp_targ_x) < 0)
-			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>")
+			user << "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>"
 			return
 		var/temp_targ_y = input("Set latitude of strike from 0 to [world.maxy].") as num
 		if(dial_y + deobfuscate_y(temp_targ_y) > world.maxy || dial_y + deobfuscate_y(temp_targ_y) < 0)
-			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>")
+			user << "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>"
 			return
 		var/turf/T = locate(deobfuscate_x(temp_targ_x) + dial_x, deobfuscate_y(temp_targ_y) + dial_y, z)
 		if(get_dist(loc, T) < 10)
-			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is too close to your mortar.</span>")
+			user << "<span class='warning'>You cannot aim at this coordinate, it is too close to your mortar.</span>"
 			return
 		if(busy)
-			to_chat(user, "<span class='warning'>Someone else is currently using this mortar.</span>")
+			user << "<span class='warning'>Someone else is currently using this mortar.</span>"
 			return
 		user.visible_message("<span class='notice'>[user] starts adjusting [src]'s firing angle and distance.</span>",
 		"<span class='notice'>You start adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
@@ -75,24 +75,24 @@
 	if(choice == "Dial")
 		var/temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
 		if(temp_dial_x + targ_x > world.maxx || temp_dial_x + targ_x < 0)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>")
+			user << "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>"
 			return
 		if(temp_dial_x < -10 || temp_dial_x > 10)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>")
+			user << "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>"
 			return
 		var/temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
 		if(temp_dial_y + targ_y > world.maxy || temp_dial_y + targ_y < 0)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>")
+			user << "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>"
 			return
 		var/turf/T = locate(targ_x + temp_dial_x, targ_y + temp_dial_y, z)
 		if(get_dist(loc, T) < 10)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too close to your mortar.</span>")
+			user << "<span class='warning'>You cannot dial to this coordinate, it is too close to your mortar.</span>"
 			return
 		if(temp_dial_y < -10 || temp_dial_y > 10)
-			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>")
+			user << "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>"
 			return
 		if(busy)
-			to_chat(user, "<span class='warning'>Someone else is currently using this mortar.</span>")
+			user << "<span class='warning'>Someone else is currently using this mortar.</span>"
 			return
 		user.visible_message("<span class='notice'>[user] starts dialing [src]'s firing angle and distance.</span>",
 		"<span class='notice'>You start dialing [src]'s firing angle and distance to match the new coordinates.</span>")
@@ -112,24 +112,24 @@
 
 		var/obj/item/mortal_shell/mortar_shell = O
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			to_chat(user, "<span class='warning'>You don't have the training to fire [src].</span>")
+			user << "<span class='warning'>You don't have the training to fire [src].</span>"
 			return
 		if(busy)
-			to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
+			user << "<span class='warning'>Someone else is currently using [src].</span>"
 			return
 		if(z != 1)
-			to_chat(user, "<span class='warning'>You cannot fire [src] here.</span>")
+			user << "<span class='warning'>You cannot fire [src] here.</span>"
 			return
 		if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
-			to_chat(user, "<span class='warning'>[src] needs to be aimed first.</span>")
+			user << "<span class='warning'>[src] needs to be aimed first.</span>"
 			return
 		var/turf/T = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
 		if(!isturf(T))
-			to_chat(user, "<span class='warning'>You cannot fire [src] to this target.</span>")
+			user << "<span class='warning'>You cannot fire [src] to this target.</span>"
 			return
 		var/area/A = get_area(T)
 		if(istype(A) && A.ceiling >= CEILING_UNDERGROUND)
-			to_chat(user, "<span class='warning'>You cannot hit the target. It is probably underground.</span>")
+			user << "<span class='warning'>You cannot hit the target. It is probably underground.</span>"
 			return
 
 		user.visible_message("<span class='notice'>[user] starts loading \a [mortar_shell.name] into [src].</span>",
@@ -139,7 +139,7 @@
 		if(do_after(user, 15, TRUE, 5, BUSY_ICON_HOSTILE))
 			user.visible_message("<span class='notice'>[user] loads \a [mortar_shell.name] into [src].</span>",
 			"<span class='notice'>You load \a [mortar_shell.name] into [src].</span>")
-			visible_message("[bicon(src)] <span class='danger'>The [name] fires!</span>")
+			visible_message("\icon[src] <span class='danger'>The [name] fires!</span>")
 			user.drop_inv_item_to_loc(mortar_shell, src)
 			playsound(loc, 'sound/weapons/gun_mortar_fire.ogg', 50, 1)
 			busy = 0
@@ -157,23 +157,23 @@
 				spawn(45) //Must go down //This should always be 45 ticks!
 					T.ceiling_debris_check(2)
 					mortar_shell.detonate(T)
-					qdel(mortar_shell)
+					cdel(mortar_shell)
 					firing = 0
 		else
 			busy = 0
 
 	if(istype(O, /obj/item/tool/wrench))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			to_chat(user, "<span class='warning'>You don't have the training to undeploy [src].</span>")
+			user << "<span class='warning'>You don't have the training to undeploy [src].</span>"
 			return
 		if(fixed)
-			to_chat(user, "<span class='warning'>[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there.</span>")
+			user << "<span class='warning'>[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there.</span>"
 			return
 		if(busy)
-			to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
+			user << "<span class='warning'>Someone else is currently using [src].</span>"
 			return
 		if(firing)
-			to_chat(user, "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>")
+			user << "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>"
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] starts undeploying [src].",
@@ -183,12 +183,12 @@
 			"<span class='notice'>You undeploy [src].")
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			new /obj/item/mortar_kit(loc)
-			qdel(src)
+			cdel(src)
 
 /obj/structure/mortar/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 	return
 
 /obj/structure/mortar/fixed
@@ -207,20 +207,20 @@
 /obj/item/mortar_kit/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 	return
 
 /obj/item/mortar_kit/attack_self(mob/user)
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		to_chat(user, "<span class='warning'>You don't have the training to deploy [src].</span>")
+		user << "<span class='warning'>You don't have the training to deploy [src].</span>"
 		return
 	if(user.z != 1)
-		to_chat(user, "<span class='warning'>You cannot deploy [src] here.</span>")
+		user << "<span class='warning'>You cannot deploy [src] here.</span>"
 		return
 	var/area/A = get_area(src)
 	if(A.ceiling >= CEILING_METAL)
-		to_chat(user, "<span class='warning'>You probably shouldn't deploy [src] indoors.</span>")
+		user << "<span class='warning'>You probably shouldn't deploy [src] indoors.</span>"
 		return
 	user.visible_message("<span class='notice'>[user] starts deploying [src].",
 	"<span class='notice'>You start deploying [src].")
@@ -231,7 +231,7 @@
 		playsound(loc, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		var/obj/structure/mortar/M = new /obj/structure/mortar(get_turf(user))
 		M.dir = user.dir
-		qdel(src)
+		cdel(src)
 
 /obj/item/mortal_shell
 	name = "\improper 80mm mortar shell"
@@ -284,7 +284,7 @@
 	smoke.set_up(6, 0, T, null, 6)
 	smoke.start()
 	smoke = null
-	qdel(src)
+	cdel(src)
 
 /obj/item/mortal_shell/flash
 	name = "\improper 80mm flash mortar shell"
@@ -328,7 +328,7 @@
 /obj/item/device/flashlight/flare/on/illumination/turn_off()
 
 	..()
-	qdel(src)
+	cdel(src)
 
 /obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
 

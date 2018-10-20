@@ -21,7 +21,7 @@
 
 	Dispose()
 		if(first)
-			qdel(first)
+			cdel(first)
 			first = null
 		processing_objects.Remove(src)
 		. = ..()
@@ -40,7 +40,7 @@
 		else
 			on = 0
 			if(first)
-				qdel(first)
+				cdel(first)
 				first = null
 			processing_objects.Remove(src)
 		update_icon()
@@ -62,7 +62,7 @@
 	process()//Old code
 		if(!on)
 			if(first)
-				qdel(first)
+				cdel(first)
 				first = null
 				return
 
@@ -78,9 +78,9 @@
 				I.vis_spread(visible)
 				spawn(0)
 					if(I)
-						//to_chat(world, "infra: setting limit")
+						//world << "infra: setting limit"
 						I.limit = 8
-						//to_chat(world, "infra: processing beam \ref[I]")
+						//world << "infra: processing beam \ref[I]"
 						I.process()
 					return
 		return
@@ -88,7 +88,7 @@
 
 	attack_hand()
 		if(first)
-			qdel(first)
+			cdel(first)
 			first = null
 		..()
 
@@ -97,7 +97,7 @@
 		var/t = dir
 		..()
 		dir = t
-		qdel(first)
+		cdel(first)
 		first = null
 		return
 
@@ -105,7 +105,7 @@
 	holder_movement()
 		if(!holder)	return 0
 //		dir = holder.dir
-		qdel(first)
+		cdel(first)
 		first = null
 		return 1
 
@@ -114,7 +114,7 @@
 		if((!secured)||(!on)||(cooldown > 0))	return 0
 		pulse(0)
 		if(!holder)
-			visible_message("[bicon(src)] *beep* *beep*")
+			visible_message("\icon[src] *beep* *beep*")
 		cooldown = 2
 		spawn(10)
 			process_cooldown()
@@ -184,19 +184,19 @@
 	flags_atom = NOINTERACT
 
 /obj/effect/beam/i_beam/proc/hit()
-	//to_chat(world, "beam \ref[src]: hit")
+	//world << "beam \ref[src]: hit"
 	if(master)
-		//to_chat(world, "beam hit \ref[src]: calling master \ref[master].hit")
+		//world << "beam hit \ref[src]: calling master \ref[master].hit"
 		master.trigger_beam()
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/effect/beam/i_beam/proc/vis_spread(v)
-	//to_chat(world, "i_beam \ref[src] : vis_spread")
+	//world << "i_beam \ref[src] : vis_spread"
 	visible = v
 	spawn(0)
 		if(next)
-			//to_chat(world, "i_beam \ref[src] : is next [next.type] \ref[next], calling spread")
+			//world << "i_beam \ref[src] : is next [next.type] \ref[next], calling spread"
 			next.vis_spread(v)
 		return
 	return
@@ -206,13 +206,13 @@
 	. = ..()
 
 /obj/effect/beam/i_beam/process()
-	//to_chat(world, "i_beam \ref[src] : process")
+	//world << "i_beam \ref[src] : process"
 
 	if((!loc || loc.density || !(master)))
-	//	to_chat(world, "beam hit loc [loc] or no master [master], deleting")
-		qdel(src)
+	//	world << "beam hit loc [loc] or no master [master], deleting"
+		cdel(src)
 		return
-	//to_chat(world, "proccess: [src.left] left")
+	//world << "proccess: [src.left] left"
 
 	if(left > 0)
 		left--
@@ -225,35 +225,35 @@
 		invisibility = 0
 
 
-	//to_chat(world, "now [src.left] left")
+	//world << "now [src.left] left"
 	var/obj/effect/beam/i_beam/I = new /obj/effect/beam/i_beam(loc)
 	I.master = master
 	I.density = 1
 	I.dir = dir
-	//to_chat(world, "created new beam \ref[I] at [I.x] [I.y] [I.z]")
+	//world << "created new beam \ref[I] at [I.x] [I.y] [I.z]"
 	step(I, I.dir)
 
 	if(I)
-		//to_chat(world, "step worked, now at [I.x] [I.y] [I.z]")
+		//world << "step worked, now at [I.x] [I.y] [I.z]"
 		if(!(next))
-			//to_chat(world, "no next")
+			//world << "no next"
 			I.density = 0
-			//to_chat(world, "spreading")
+			//world << "spreading"
 			I.vis_spread(visible)
 			next = I
 			spawn(0)
-				//to_chat(world, "limit = [limit] ")
+				//world << "limit = [limit] "
 				if((I && limit > 0))
 					I.limit = limit - 1
-					//to_chat(world, "calling next process")
+					//world << "calling next process"
 					I.process()
 				return
 		else
-			//to_chat(world, "is a next: \ref[next], deleting beam \ref[I]")
-			qdel(I)
+			//world << "is a next: \ref[next], deleting beam \ref[I]"
+			cdel(I)
 	else
-		//to_chat(world, "step failed, deleting \ref[next]")
-		qdel(next)
+		//world << "step failed, deleting \ref[next]"
+		cdel(next)
 		next = null
 	spawn(10)
 		process()
@@ -261,7 +261,7 @@
 	return
 
 /obj/effect/beam/i_beam/Bump()
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/effect/beam/i_beam/Bumped()
@@ -280,7 +280,7 @@
 	if(master)
 		master = null
 	if(next)
-		qdel(next)
+		cdel(next)
 		next = null
 	. = ..()
 

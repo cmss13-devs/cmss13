@@ -33,7 +33,7 @@
 	// Internal organs of this body part
 	var/list/datum/internal_organ/internal_organs
 
-	var/damage_msg = "<span class='warning'> You feel an intense pain</span>"
+	var/damage_msg = "\red You feel an intense pain"
 	var/broken_description
 
 	var/surgery_open_stage = 0
@@ -309,7 +309,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
-		to_chat(owner, "<span class='danger'>The splint on your [display_name] comes apart!</span>")
+		owner << "<span class='danger'>The splint on your [display_name] comes apart!</span>"
 
 	// first check whether we can widen an existing wound
 	var/datum/wound/W
@@ -391,7 +391,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(!(status & LIMB_SPLINTED))
 			knitting_time = -1 // stop knitting
 		if(knitting_time > world.time)
-			to_chat(owner, "<span class='warning'>The bones in your [display_name] feel fully knitted, you discard the splint.</span>")
+			owner << "<span class='warning'>The bones in your [display_name] feel fully knitted, you discard the splint.</span>"
 			status &= ~LIMB_SPLINTED
 			knitting_time = -1
 
@@ -466,7 +466,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if (prob(15))	//adjust this to tweak how fast people take toxin damage from infections
 				owner.adjustToxLoss(1)
 			if (prob(1) && (germ_level <= INFECTION_LEVEL_TWO))
-				to_chat(owner, "<span class='notice'>You have a slight fever...</span>")
+				owner << "<span class='notice'>You have a slight fever...</span>"
 //LEVEL II
 	if(germ_level >= INFECTION_LEVEL_TWO && antibiotics < 3)
 		//spread the infection to internal organs
@@ -480,7 +480,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if (antibiotics < MIN_ANTIBIOTICS)
 				germ_level++
 		if (prob(1) && (germ_level <= INFECTION_LEVEL_THREE))
-			to_chat(owner, "<span class='notice'>Your infected wound itches and badly hurts!</span>")
+			owner << "<span class='notice'>Your infected wound itches and badly hurts!</span>"
 
 		if (prob(25))	//adjust this to tweak how fast people take toxin damage from infections
 			owner.adjustToxLoss(1)
@@ -512,14 +512,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < 25)	//overdosing is necessary to stop severe infections
 		if (!(status & LIMB_NECROTIZED))
 			status |= LIMB_NECROTIZED
-			to_chat(owner, "<span class='notice'>You can't feel your [display_name] anymore...</span>")
+			owner << "<span class='notice'>You can't feel your [display_name] anymore...</span>"
 			owner.update_body(1)
 
 		germ_level++
 		if (prob(50))	//adjust this to tweak how fast people take toxin damage from infections
 			owner.adjustToxLoss(1)
 		if (prob(1))
-			to_chat(owner, "<span class='notice'>You have a high fever!</span>")
+			owner << "<span class='notice'>You have a high fever!</span>"
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /datum/limb/proc/update_wounds()
 
@@ -692,7 +692,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			status = LIMB_DESTROYED
 		for(var/i in implants)
 			implants -= i
-			qdel(i)
+			cdel(i)
 
 		germ_level = 0
 		if(hidden)
@@ -755,7 +755,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
 
 		if(delete_limb)
-			qdel(organ)
+			cdel(organ)
 		else
 			owner.visible_message("<span class='warning'>[owner.name]'s [display_name] flies off in an arc!</span>",
 			"<span class='highdanger'><b>Your [display_name] goes flying off!</b></span>",
@@ -890,7 +890,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(isnull(suit.supporting_limbs))
 				return
 
-			to_chat(owner, "You feel [suit] constrict about your [display_name], supporting it.")
+			owner << "You feel [suit] constrict about your [display_name], supporting it."
 			status |= LIMB_SPLINTED
 			suit.supporting_limbs |= src
 	return
@@ -988,7 +988,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			spark_system.attach(owner)
 			spark_system.start()
 			spawn(10)
-				qdel(spark_system)
+				cdel(spark_system)
 				spark_system = null
 
 /datum/limb/proc/embed(var/obj/item/W, var/silent = 0)
@@ -1186,13 +1186,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if (disfigured)
 		return
 	if(type == "brute")
-		owner.visible_message("<span class='warning'>You hear a sickening cracking sound coming from \the [owner]'s face.</span>",	\
-		"<span class='danger'>Your face becomes unrecognizible mangled mess!</span>",	\
-		"<span class='warning'>You hear a sickening crack.</span>")
+		owner.visible_message("\red You hear a sickening cracking sound coming from \the [owner]'s face.",	\
+		"\red <b>Your face becomes unrecognizible mangled mess!</b>",	\
+		"\red You hear a sickening crack.")
 	else
-		owner.visible_message("<span class='warning'>[owner]'s face melts away, turning into mangled mess!</span>",	\
-		"<span class='danger'>Your face melts off!</span>",	\
-		"<span class='warning'>You hear a sickening sizzle.</span>")
+		owner.visible_message("\red [owner]'s face melts away, turning into mangled mess!",	\
+		"\red <b>Your face melts off!</b>",	\
+		"\red You hear a sickening sizzle.")
 	disfigured = 1
 	owner.name = owner.get_visible_name()
 

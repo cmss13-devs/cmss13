@@ -42,24 +42,24 @@
 	src.add_fingerprint(usr)
 
 	if(broken)
-		to_chat(user, "<span class='notice'>[src] is irrepairably broken.</span>")
+		user << "<span class='notice'>[src] is irrepairably broken.</span>"
 		return
 
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "<span class='warning'>Access denied.</span>"
 		return
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
-		to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
+		H << "<span class='warning'>Access denied. No ID card detected</span>"
 		return
 
 	if(I.registered_name != H.real_name)
-		to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+		H << "<span class='warning'>Wrong ID card owner detected.</span>"
 		return
 
 	if(req_role && I.rank != req_role)
-		to_chat(H, "<span class='warning'>This device isn't for you.</span>")
+		H << "<span class='warning'>This device isn't for you.</span>"
 		return
 
 
@@ -118,21 +118,21 @@
 		if (href_list["vend"])
 
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>Access denied.</span>")
+				usr << "<span class='warning'>Access denied.</span>"
 				return
 
 			var/mob/living/carbon/human/H = usr
 			var/obj/item/card/id/I = H.wear_id
 			if(!istype(I)) //not wearing an ID
-				to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
+				H << "<span class='warning'>Access denied. No ID card detected</span>"
 				return
 
 			if(I.registered_name != H.real_name)
-				to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+				H << "<span class='warning'>Wrong ID card owner detected.</span>"
 				return
 
 			if(req_role && I.rank != req_role)
-				to_chat(H, "<span class='warning'>This device isn't for you.</span>")
+				H << "<span class='warning'>This device isn't for you.</span>"
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -141,12 +141,12 @@
 			var/cost = L[2]
 
 			if(use_points && points < cost)
-				to_chat(H, "<span class='warning'>Not enough points.</span>")
+				H << "<span class='warning'>Not enough points.</span>"
 
 
 			var/turf/T = loc
 			if(T.contents.len > 25)
-				to_chat(H, "<span class='warning'>The floor is too cluttered, make some space.</span>")
+				H << "<span class='warning'>The floor is too cluttered, make some space.</span>"
 				return
 
 
@@ -219,12 +219,12 @@
 				malfunction()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				cdel(src)
 				return
 			else
 				malfunction()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 
 

@@ -96,7 +96,7 @@ var/list/ghostteleportlocs = list()
 	name = "\improper Space"
 	requires_power = 1
 	always_unpowered = 1
-	//lighting_use_dynamic = 1
+	lighting_use_dynamic = 1
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -128,7 +128,7 @@ var/list/ghostteleportlocs = list()
 /area/shuttle //DO NOT TURN THE lighting_use_dynamic STUFF ON FOR SHUTTLES. IT BREAKS THINGS.
 	requires_power = 0
 	luminosity = 1
-	//lighting_use_dynamic = 0
+	lighting_use_dynamic = 0
 
 /area/shuttle/arrival
 	name = "\improper abandoned  Arrival Shuttle"
@@ -326,7 +326,7 @@ var/list/ghostteleportlocs = list()
 	icon_state = "start"
 	requires_power = 0
 	luminosity = 1
-	//lighting_use_dynamic = 0
+	lighting_use_dynamic = 0
 	has_gravity = 1
 
 // === end remove
@@ -977,7 +977,7 @@ var/list/ghostteleportlocs = list()
 	name = "\improper abandoned  Holodeck"
 	icon_state = "Holodeck"
 	luminosity = 1
-	//lighting_use_dynamic = 0
+	lighting_use_dynamic = 0
 
 /area/holodeck/alphadeck
 	name = "\improper abandoned  Holodeck Alpha"
@@ -1117,7 +1117,7 @@ var/list/ghostteleportlocs = list()
 	requires_power = 1
 	always_unpowered = 1
 	luminosity = 1
-	//lighting_use_dynamic = 0
+	lighting_use_dynamic = 0
 
 	auxport
 		name = "\improper abandoned  Fore Port Solar Array"

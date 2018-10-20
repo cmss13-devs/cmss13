@@ -15,6 +15,10 @@
 	usr.visible_message("<span class='notice'>[usr] opens the [src.name]. </span>")
 	initialize_map()
 
+// /obj/item/map/attack(mob/living/carbon/human/M as mob, mob/living/carbon/human/usr as mob) //Show someone the map by hitting them with it
+//     usr.visible_message("<span class='notice'>You open up the [name] and show it to [M]. </span>", \
+//         "<span class='notice'>[usr] opens up the [name] and shows it to \the [M]. </span>")
+//     M << initialize_map()
 /obj/item/map/attack()
 	return
 
@@ -83,7 +87,7 @@
 /obj/item/map/current_map/New()
 	..()
 	if(!map_tag)
-		qdel(src)
+		cdel(src)
 		return
 	switch(map_tag)
 		if(MAP_LV_624)
@@ -107,7 +111,7 @@
 			html_link = "images/4/4c/Map_Prison.png"
 			color = "#e88a10"
 		else
-			qdel(src)
+			cdel(src)
 
 
 

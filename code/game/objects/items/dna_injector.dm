@@ -93,14 +93,14 @@
 	spawn(0)//this prevents the collapse of space-time continuum
 		if (user)
 			user.temp_drop_inv_item(src)
-		qdel(src)
+		cdel(src)
 	return uses
 
 /obj/item/dnainjector/attack(mob/M as mob, mob/user as mob)
 	if (!istype(M, /mob))
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		user << "\red You don't have the dexterity to do this!"
 		return
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [name] by [user.name] ([user.ckey])</font>")
@@ -133,21 +133,21 @@
 					log_attack("[key_name(user)] injected [key_name(M)] with the [name]")
 
 
-				user.visible_message("<span class='danger'>[user] is trying to inject [M] with [src]!</span>")
+				user.visible_message("\red <B>[user] is trying to inject [M] with [src]!</B>")
 				if(do_mob(user, M, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 					if(src == user.get_active_hand())
 						add_fingerprint(user)
 						inject(M, user)
-						user.visible_message("<span class='warning'>[user] injects [M] with the DNA Injector!</span>")
+						user.visible_message("\red [user] injects [M] with the DNA Injector!")
 
 
 		else
 
 			for(var/mob/O in viewers(M, null))
-				O.show_message(text("<span class='warning'>[] has been injected with [] by [].</span>", M, src, user), 1)
+				O.show_message(text("\red [] has been injected with [] by [].", M, src, user), 1)
 				//Foreach goto(192)
 			if (!(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey)))
-				to_chat(user, "<span class='warning'>Apparently it didn't work.</span>")
+				user << "\red Apparently it didn't work."
 				return
 
 			if (buf && buf.types & DNA2_BUF_SE)
@@ -180,9 +180,9 @@
 			*/
 			if(user)//If the user still exists. Their mob may not.
 				if(M)//Runtime fix: If the mob doesn't exist, mob.name doesnt work. - Nodrak
-					user.show_message(text("<span class='warning'>You inject [M.name]</span>"))
+					user.show_message(text("\red You inject [M.name]"))
 				else
-					user.show_message(text("<span class='warning'>You finish the injection.</span>"))
+					user.show_message(text("\red You finish the injection."))
 
 
 

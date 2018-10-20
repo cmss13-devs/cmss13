@@ -50,7 +50,7 @@ proc/dmp2swapmap(filename)
 	while(txt)
 		if(text2ascii(txt)==34)
 			if(mode!=34)
-				to_chat(world, "Corrupt map file [filename]: Unexpected code found after z-level [z]")
+				world << "Corrupt map file [filename]: Unexpected code found after z-level [z]"
 				return
 			// standard line:
 			// "a" = (/obj, /obj, /turf, /area)
@@ -59,20 +59,20 @@ proc/dmp2swapmap(filename)
 			codelen=length(code)
 			i=findtext(txt,"(",i)
 			if(!i)
-				to_chat(world, "Corrupt map file [filename]: No type list follows \"[code]\"")
+				world << "Corrupt map file [filename]: No type list follows \"[code]\""
 				return
 			k=findtext(txt,"\n",++i)
 			j=(k || length(txt+1))
 			while(--j>=i && text2ascii(txt,j)!=41)
 			if(j<i)
-				to_chat(world, "Corrupt map file [filename]: Type list following \"[code]\" is incomplete")
+				world << "Corrupt map file [filename]: Type list following \"[code]\" is incomplete"
 				return
 			var/list/L = d2sm_ParseCommaList(copytext(txt,i,j))
 			if(istext(L))
-				to_chat(world, "Corrupt map file [filename]: [L]")
+				world << "Corrupt map file [filename]: [L]"
 				return
 			if(L.len<2)
-				to_chat(world, "Corrupt map file [filename]: Type list following \"[code]\" has only 1 item")
+				world << "Corrupt map file [filename]: Type list following \"[code]\" has only 1 item"
 				return
 			txt=k?copytext(txt,k+1):null
 			if(L[L.len] == "[world.area]") L[L.len]=0
@@ -96,25 +96,25 @@ proc/dmp2swapmap(filename)
 			// "}
 			i=d2sm_MatchBrace(txt,1,40)
 			if(!i)
-				to_chat(world, "Corrupt map file [filename]: No matching ) for coordinates: [copytext(txt,1,findtext(txt,"\n"))]")
+				world << "Corrupt map file [filename]: No matching ) for coordinates: [copytext(txt,1,findtext(txt,"\n"))]"
 				return
 			var/list/coords=d2sm_ParseCommaList(copytext(txt,2,i))
 			if(istext(coords) || coords.len!=3)
-				to_chat(world, "Corrupt map file [filename]: [istext(coords)?(coords):"[copytext(txt,1,i+1)] is not a valid (x,y,z) coordinate"]")
+				world << "Corrupt map file [filename]: [istext(coords)?(coords):"[copytext(txt,1,i+1)] is not a valid (x,y,z) coordinate"]"
 				return
 			j=findtext(txt,"{",i+1)
 			if(!j)
-				to_chat(world, "Corrupt map file [filename]: No braces {} following [copytext(txt,1,i+1)]")
+				world << "Corrupt map file [filename]: No braces {} following [copytext(txt,1,i+1)]"
 				return
 			k=d2sm_MatchBrace(txt,j,123)
 			if(!k)
-				to_chat(world, "Corrupt map file [filename]: No closing brace } following [copytext(txt,1,i+1)]")
+				world << "Corrupt map file [filename]: No closing brace } following [copytext(txt,1,i+1)]"
 				return
 			var/mtxt=copytext(txt,j+1,k)
 			if(findText(mtxt,"\"\n")!=1 || !findText(mtxt,"\n\"",length(mtxt)-1))
 				world << findText(mtxt,"\"\n")
 				world << findText(mtxt,"\n\"",length(mtxt)-1)
-				to_chat(world, "Corrupt map file [filename]: No quotes in braces following [copytext(txt,1,i+1)]")
+				world << "Corrupt map file [filename]: No quotes in braces following [copytext(txt,1,i+1)]"
 				return
 			mtxt=copytext(mtxt,2,length(mtxt))
 			var/_x=0,_y=0
@@ -131,19 +131,19 @@ proc/dmp2swapmap(filename)
 		else
 			i=findtext(txt,"\n")
 			txt=i?copytext(txt,i+1):null
-	to_chat(world, "Map size: [X],[Y],[Z]")
+	world << "Map size: [X],[Y],[Z]"
 	//for(var/code in codes)
-	//	to_chat(world, "Code \"[code]\":\n[codes[code]]")
+	//	world << "Code \"[code]\":\n[codes[code]]"
 	fdel("map_[mapname].txt")
 	var/F = file("map_[mapname].txt")
-	to_chat(F, ". = object(\".0\")\n.0\n\ttype = /swapmap\n\tid = \"[mapname]\"\n\tz = [Z]\n\ty = [Y]\n\tx = [X]")
+	F << ". = object(\".0\")\n.0\n\ttype = /swapmap\n\tid = \"[mapname]\"\n\tz = [Z]\n\ty = [Y]\n\tx = [X]"
 	if(areas)
 		txt=""
 		for(i=0,i<areas.len,++i)
 			txt+="[i?", ":""]object(\".[i]\")"
-		to_chat(F, "\tareas = list([txt])")
+		F << "\tareas = list([txt])"
 		for(i=0,i<areas.len,++i)
-			to_chat(F, "\t\t.[i]")
+			F << "\t\t.[i]"
 			txt=d2sm_ConvertType(areas[i+1],"\t\t\t")
 			F << copytext(txt,1,length(txt))
 
@@ -168,23 +168,23 @@ proc/dmp2swapmap(filename)
 			_x=max(_x,(j-i-1)/codelen)
 			i=j
 		// print out this z-level now
-		to_chat(F, "\t[coords[3]]")
+		F << "\t[coords[3]]"
 		i=1
 		for(var/y=_y,y>0,--y)	// map is top-down
 			++i
-			to_chat(F, "\t\t[y]")
+			F << "\t\t[y]"
 			for(var/x in 1 to _x)
-				to_chat(F, "\t\t\t[x]")
+				F << "\t\t\t[x]"
 				j=i+codelen
 				F << codes[copytext(mtxt,i,j)]
 				i=j
 		txt=copytext(txt,k+1)
 	/* for(z in 1 to Z)
-		to_chat(F, "\t[z]")
+		F << "\t[z]"
 		for(var/y in 1 to Y)
-			to_chat(F, "\t\t[y]")
+			F << "\t\t[y]"
 			for(var/x in 1 to X)
-				to_chat(F, "\t\t\t[x]")
+				F << "\t\t\t[x]"
 				F << codes[pick(codes)] */
 
 proc/d2sm_ParseCommaList(txt)

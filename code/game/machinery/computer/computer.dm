@@ -42,14 +42,14 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				qdel(src)
+				cdel(src)
 				return
 			if (prob(50))
 				for(var/x in verbs)
 					verbs -= x
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 		else
 	return
@@ -96,7 +96,7 @@
 /obj/machinery/computer/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/screwdriver) && circuit)
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-			to_chat(user, "<span class='warning'>You don't know how to deconstruct [src]...</span>")
+			user << "<span class='warning'>You don't know how to deconstruct [src]...</span>"
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
@@ -107,16 +107,16 @@
 			for (var/obj/C in src)
 				C.loc = src.loc
 			if (src.stat & BROKEN)
-				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+				user << "\blue The broken glass falls out."
 				new /obj/item/shard( src.loc )
 				A.state = 3
 				A.icon_state = "3"
 			else
-				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+				user << "\blue You disconnect the monitor."
 				A.state = 4
 				A.icon_state = "4"
 			M.deconstruct(src)
-			qdel(src)
+			cdel(src)
 	else
 		if(isXeno(user))
 			src.attack_alien(user)

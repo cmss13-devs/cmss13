@@ -59,8 +59,8 @@
 					if(G.amount>=G.max_amount)
 						continue
 					G.attackby(NG, user)
-					to_chat(usr, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
-			qdel(src)
+					usr << "You add the newly-formed wood to the stack. It now contains [NG.amount] planks."
+			cdel(src)
 			return
 
 /obj/item/grown/sunflower // FLOWER POWER!
@@ -78,8 +78,8 @@
 	throw_range = 3
 
 /obj/item/grown/sunflower/attack(mob/M as mob, mob/user as mob)
-	to_chat(M, "<font color='green'><b> [user] smacks you with a sunflower!</font><font color='yellow'><b>FLOWER POWER<b></font>")
-	to_chat(user, "<font color='green'> Your sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>")
+	M << "<font color='green'><b> [user] smacks you with a sunflower!</font><font color='yellow'><b>FLOWER POWER<b></font>"
+	user << "<font color='green'> Your sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>"
 
 /obj/item/grown/nettle // -- Skie
 	plantname = "nettle"
@@ -107,7 +107,7 @@
 
 /obj/item/grown/nettle/pickup(mob/living/carbon/human/user as mob)
 	if(istype(user) && !user.gloves)
-		to_chat(user, "<span class='warning'>The nettle burns your bare hand!</span>")
+		user << "\red The nettle burns your bare hand!"
 		if(istype(user, /mob/living/carbon/human))
 			var/organ = ((user.hand ? "l_":"r_") + "arm")
 			var/datum/limb/affecting = user.get_limb(organ)
@@ -127,9 +127,9 @@
 
 	if(force <= 0)
 		if(user)
-			to_chat(user, "All the leaves have fallen off \the [src] from violent whacking.")
+			user << "All the leaves have fallen off \the [src] from violent whacking."
 			user.temp_drop_inv_item(src)
-		qdel(src)
+		cdel(src)
 
 /obj/item/grown/nettle/death // -- Skie
 	plantname = "deathnettle"
@@ -143,7 +143,7 @@
 
 	if(..() && prob(50))
 		user.KnockOut(5)
-		to_chat(user, "<span class='warning'>You are stunned by the deathnettle when you try picking it up!</span>")
+		user << "\red You are stunned by the deathnettle when you try picking it up!"
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 
@@ -156,7 +156,7 @@
 	if(!..()) return
 
 	if(istype(M, /mob/living))
-		to_chat(M, "<span class='warning'>You are stunned by the powerful acid of the deathnettle!</span>")
+		M << "\red You are stunned by the powerful acid of the deathnettle!"
 
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Had the [src.name] used on them by [user.name] ([user.ckey])</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] on [M.name] ([M.ckey])</font>")
@@ -181,8 +181,8 @@
 
 /obj/item/corncob/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
-		to_chat(user, "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>")
+		user << "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>"
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
-		qdel(src)
+		cdel(src)
 	else
 		return ..()

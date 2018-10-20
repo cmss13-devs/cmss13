@@ -11,6 +11,11 @@
 	origin_tech = "combat=4"
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is strangling \himself with the [src.name]! It looks like \he's trying to commit suicide.</b>"
+		return (OXYLOSS)
+
+
 /obj/item/weapon/broken_bottle
 	name = "Broken Bottle"
 	desc = "A bottle with a sharp broken bottom."

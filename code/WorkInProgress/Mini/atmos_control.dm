@@ -241,10 +241,10 @@
 					var/list/data = current.alarm_area.air_vent_info[id_tag]
 					var/state = ""
 					if(!data)
-						state = "<span class='caution'> can not be found!</span>"
+						state = "<font color='red'> can not be found!</font>"
 						data = list("external" = 0) //for "0" instead of empty string
 					else if (data["timestamp"]+AALARM_REPORT_TIMEOUT < world.time)
-						state = "<span class='caution'> not responding!</span>"
+						state = "<font color='red'> not responding!</font>"
 					sensor_data += {"
 <B>[long_name]</B>[state]<BR>
 <B>Operating:</B>
@@ -284,10 +284,10 @@ siphoning
 					var/list/data = current.alarm_area.air_scrub_info[id_tag]
 					var/state = ""
 					if(!data)
-						state = "<span class='caution'> can not be found!</span>"
+						state = "<font color='red'> can not be found!</font>"
 						data = list("external" = 0) //for "0" instead of empty string
 					else if (data["timestamp"]+AALARM_REPORT_TIMEOUT < world.time)
-						state = "<span class='caution'> not responding!</span>"
+						state = "<font color='red'> not responding!</font>"
 
 					sensor_data += {"
 <B>[long_name]</B>[state]<BR>

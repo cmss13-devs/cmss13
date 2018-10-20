@@ -1,6 +1,4 @@
 /client
-	// dark magic.
-	parent_type = /datum
 		////////////////
 		//ADMIN THINGS//
 		////////////////
@@ -61,10 +59,3 @@
 
 
 	preload_rsc = 0 // This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.
-
-	// Their chat window, sort of important.
-	// See /goon/code/datums/browserOutput.dm
-	var/datum/chatOutput/chatOutput
-
-	// This gets set by goonchat.
-	var/encoding = "1252"

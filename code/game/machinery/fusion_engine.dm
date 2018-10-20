@@ -43,7 +43,7 @@
 			stop_processing()
 		return 0
 	if (fusion_cell.fuel_amount <= 0)
-		visible_message("[bicon(src)] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
+		visible_message("\icon[src] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
 		fuel_rate = 0
 		buildstate = 2  //No fuel really fucks it.
 		is_on = 0
@@ -59,13 +59,13 @@
 
 		switch(power_gen_percent) //Flavor text!
 			if(10)
-				visible_message("[bicon(src)] <span class='notice'><em>[src]</em> begins to whirr as it powers up.</span>")
+				visible_message("\icon[src] <span class='notice'><b>[src]</b> begins to whirr as it powers up.</span>")
 				fuel_rate = 0.025
 			if(50)
-				visible_message("[bicon(src)] <span class='notice'><em>[src]</em> begins to hum loudly as it reaches half capacity.</span>")
+				visible_message("\icon[src] <span class='notice'><b>[src]</b> begins to hum loudly as it reaches half capacity.</span>")
 				fuel_rate = 0.05
 			if(99)
-				visible_message("[bicon(src)] <span class='notice'><em>[src]</em> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
+				visible_message("\icon[src] <span class='notice'><b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.</span>")
 				fuel_rate = 0.1
 
 		add_avail(FUSION_ENGINE_MAX_POWER_GEN * (power_gen_percent / 100) ) //Nope, all good, just add the power
@@ -86,21 +86,21 @@
 
 /obj/machinery/power/fusion_engine/attack_hand(mob/user)
 	if(!ishuman(user))
-		to_chat(user, "<span class='warning'>You have no idea how to use that.</span>") //No ayylamos
+		user << "<span class='warning'>You have no idea how to use that.</span>" //No ayylamos
 		r_FAL
 	add_fingerprint(user)
 	switch(buildstate)
 		if(1)
-			to_chat(user, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>")
+			user << "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>"
 			r_FAL
 		if(2)
-			to_chat(user, "<span class='notice'>Use a wirecutters, then wrench to repair it.</span>")
+			user << "<span class='notice'>Use a wirecutters, then wrench to repair it.</span>"
 			r_FAL
 		if(3)
-			to_chat(user, "<span class='notice'>Use a wrench to repair it.</span>")
+			user << "<span class='notice'>Use a wrench to repair it.</span>"
 			r_FAL
 	if(is_on)
-		visible_message("[bicon(src)] <span class='warning'><em>[src]</em> beeps softly and the humming stops as [usr] shuts off the generator.</span>")
+		visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.</span>")
 		is_on = 0
 		power_gen_percent = 0
 		cur_tick = 0
@@ -109,17 +109,17 @@
 		r_TRU
 
 	if(!fusion_cell)
-		to_chat(user, "<span class='notice'>The reactor requires a fuel cell before you can turn it on.</span>")
+		user << "<span class='notice'>The reactor requires a fuel cell before you can turn it on.</span>"
 		r_FAL
 
 	if(!powernet)
 		if(!connect_to_network())
-			to_chat(user, "<span class='warning'>Power network not found, make sure the engine is connected to a cable.</span>")
+			user << "<span class='warning'>Power network not found, make sure the engine is connected to a cable.</span>"
 			r_FAL
 
 	if(fusion_cell.fuel_amount <= 10)
-		to_chat(user, "[bicon(src)] <span class='warning'><em>[src]</em>: Fuel levels critically low.</span>")
-	visible_message("[bicon(src)] <span class='warning'><em>[src]</em> beeps loudly as [user] turns the generator on and begins the process of fusion...</span>")
+		user << "\icon[src] <span class='warning'><b>[src]</b>: Fuel levels critically low.</span>"
+	visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps loudly as [user] turns the generator on and begins the process of fusion...</span>")
 	fuel_rate = 0.01
 	is_on = 1
 	cur_tick = 0
@@ -131,16 +131,16 @@
 /obj/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
-			to_chat(user, "<span class='warning'>The [src] needs to be turned off first.</span>")
+			user << "<span class='warning'>The [src] needs to be turned off first.</span>"
 			r_TRU
 		if(!fusion_cell)
 			if(user.drop_inv_item_to_loc(O, src.))
 				fusion_cell = O
 				update_icon()
-				to_chat(user, "<span class='notice'>You load the [src] with the [O].</span>")
+				user << "<span class='notice'>You load the [src] with the [O].</span>"
 			r_TRU
 		else
-			to_chat(user, "<span class='warning'>You need to remove the fuel cell from [src] first.</span>")
+			user << "<span class='warning'>You need to remove the fuel cell from [src] first.</span>"
 			r_TRU
 		r_TRU
 	else if(iswelder(O))
@@ -164,7 +164,7 @@
 					update_icon()
 					r_TRU
 			else
-				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+				user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
 				r_FAL
 	else if(istype(O,/obj/item/tool/wirecutters))
 		if(buildstate == 2 && !is_on)
@@ -204,13 +204,13 @@
 				r_TRU
 	else if(iscrowbar(O))
 		if(buildstate)
-			to_chat(user, "<span class='warning'>You must repair the generator before working with its fuel cell.</span>")
+			user << "<span class='warning'>You must repair the generator before working with its fuel cell.</span>"
 			return
 		if(is_on)
-			to_chat(user, "<span class='warning'>You must turn off the generator before working with its fuel cell.</span>")
+			user << "<span class='warning'>You must turn off the generator before working with its fuel cell.</span>"
 			return
 		if(!fusion_cell)
-			to_chat(user, "<span class='warning'>There is no cell to remove.</span>")
+			user << "<span class='warning'>There is no cell to remove.</span>"
 		else
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 				user.visible_message("<span class='warning'>[user] fumbles around figuring out [src]'s fuel receptacle.</span>",
@@ -236,36 +236,36 @@
 	..()
 	if(ishuman(user))
 		if(buildstate)
-			to_chat(user, "<span class='info'>It's broken.</span>")
+			user << "<span class='info'>It's broken.</span>"
 			switch(buildstate)
 				if(1)
-					to_chat(user, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>")
+					user << "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>"
 				if(2)
-					to_chat(user, "<span class='info'>Use a wirecutters, then wrench to repair it.</span>")
+					user << "<span class='info'>Use a wirecutters, then wrench to repair it.</span>"
 				if(3)
-					to_chat(user, "<span class='info'>Use a wrench to repair it.</span>")
+					user << "<span class='info'>Use a wrench to repair it.</span>"
 			r_FAL
 
 		if(!is_on)
-			to_chat(user, "<span class='info'>It looks offline.</span>")
+			user << "<span class='info'>It looks offline.</span>"
 		else
-			to_chat(user, "<span class='info'>The power gauge reads: [power_gen_percent]%</span>")
+			user << "<span class='info'>The power gauge reads: [power_gen_percent]%</span>"
 		if(fusion_cell)
-			to_chat(user, "<span class='info'>You can see a fuel cell in the receptacle.</span>")
+			user << "<span class='info'>You can see a fuel cell in the receptacle.</span>"
 			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_MT)
 				switch(fusion_cell.fuel_amount)
 					if(0 to 10)
-						to_chat(user, "<span class='danger'>The fuel cell is critically low.</span>")
+						user << "<span class='danger'>The fuel cell is critically low.</span>"
 					if(11 to 25)
-						to_chat(user, "<span class='warning'>The fuel cell is running low.</span>")
+						user << "<span class='warning'>The fuel cell is running low.</span>"
 					if(26 to 50)
-						to_chat(user, "<span class='info'>The fuel cell is a little under halfway.</span>")
+						user << "<span class='info'>The fuel cell is a little under halfway.</span>"
 					if(51 to 75)
-						to_chat(user, "<span class='info'>The fuel cell is a little above halfway.</span>")
+						user << "<span class='info'>The fuel cell is a little above halfway.</span>"
 					if(76 to INFINITY)
-						to_chat(user, "<span class='info'>The fuel cell is nearly full.</span>")
+						user << "<span class='info'>The fuel cell is nearly full.</span>"
 		else
-			to_chat(user, "<span class='info'>There is no fuel cell in the receptacle.</span>")
+			user << "<span class='info'>There is no fuel cell in the receptacle.</span>"
 
 /obj/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)
@@ -301,10 +301,10 @@
 	cur_tick = 0 //reset the timer
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(prob(25))
-			visible_message("[bicon(src)] <span class='notice'><em>[src]</em> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
+			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")
 			buildstate = 2
 		else
-			visible_message("[bicon(src)] <span class='notice'><em>[src]</em> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
+			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")
 			buildstate = 3
 		is_on = 0
 		power_gen_percent = 0
@@ -345,7 +345,7 @@
 /obj/item/fuelCell/examine(mob/user)
 	..()
 	if(ishuman(user))
-		to_chat(user, "The fuel indicator reads: [get_fuel_percent()]%")
+		user << "The fuel indicator reads: [get_fuel_percent()]%"
 
 /obj/item/fuelCell/proc/get_fuel_percent()
 	return round(100*fuel_amount/max_fuel_amount)

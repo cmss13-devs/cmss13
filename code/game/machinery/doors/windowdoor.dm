@@ -129,7 +129,7 @@
 			ae.icon_state = "door_electronics_smoked"
 			operating = 0
 		src.density = 0
-		qdel(src)
+		cdel(src)
 		return
 
 /obj/machinery/door/window/bullet_act(var/obj/item/projectile/Proj)
@@ -141,7 +141,7 @@
 /obj/machinery/door/window/hitby(AM as mob|obj)
 
 	..()
-	visible_message("<span class='danger'>The glass door was hit by [AM].</span>", 1)
+	visible_message("\red <B>The glass door was hit by [AM].</B>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
@@ -161,7 +161,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-			visible_message("<span class='danger'>[user] smashes against the [src.name].</span>", 1)
+			visible_message("\red <B>[user] smashes against the [src.name].</B>", 1)
 			take_damage(25)
 			return
 	return try_to_activate_door(user)
@@ -185,7 +185,7 @@
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
 		if (do_after(user,40, TRUE, 5, BUSY_ICON_BUILD))
-			to_chat(user, "<span class='notice'>You removed the windoor electronics!</span>")
+			user << "\blue You removed the windoor electronics!"
 
 			var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
 			if (istype(src, /obj/machinery/door/window/brigdoor))
@@ -216,13 +216,13 @@
 			ae.icon_state = "door_electronics_smoked"
 
 			operating = 0
-			qdel(src)
+			cdel(src)
 			return
 
 	if(!(I.flags_item & NOBLUDGEON) && I.force && density) //trying to smash windoor with item
 		var/aforce = I.force
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-		visible_message("<span class='danger'>[src] was hit by [I].</span>")
+		visible_message("\red <B>[src] was hit by [I].</B>")
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(aforce)
 		return 1

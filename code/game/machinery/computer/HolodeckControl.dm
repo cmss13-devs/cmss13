@@ -113,8 +113,8 @@ var/global/list/holodeck_programs = list(
 	if(istype(D, /obj/item/card/emag) && !emagged)
 		playsound(src.loc, 'sound/effects/sparks4.ogg', 25, 1)
 		emagged = 1
-		to_chat(user, "<span class='notice'>You vastly increase projector power and override the safety and security protocols.</span>")
-		to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call Nanotrasen maintenance and do not use the simulator.")
+		user << "\blue You vastly increase projector power and override the safety and security protocols."
+		user << "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call Nanotrasen maintenance and do not use the simulator."
 		log_game("[key_name(usr)] emagged the Holodeck Control Computer")
 	src.updateUsrDialog()
 	return
@@ -182,7 +182,7 @@ var/global/list/holodeck_programs = list(
 	if(!silent)
 		var/obj/oldobj = obj
 		visible_message("The [oldobj.name] fades away!")
-	qdel(obj)
+	cdel(obj)
 
 /obj/machinery/computer/HolodeckControl/proc/checkInteg(var/area/A)
 	for(var/turf/T in A)
@@ -236,11 +236,11 @@ var/global/list/holodeck_programs = list(
 
 	for(var/obj/effect/decal/cleanable/blood/B in linkedholodeck)
 		linkedholodeck -= B
-		qdel(B)
+		cdel(B)
 
 	for(var/mob/living/simple_animal/hostile/carp/C in linkedholodeck)
 		linkedholodeck -= C
-		qdel(C)
+		cdel(C)
 
 	holographic_items = A.copy_contents_to(linkedholodeck , 1)
 
@@ -341,7 +341,7 @@ var/global/list/holodeck_programs = list(
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
-				to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+				user << "<span class='warning'>You need a better grip to do that!</span>"
 				return
 			M.forceMove(loc)
 			M.KnockDown(5)
@@ -349,7 +349,7 @@ var/global/list/holodeck_programs = list(
 		return
 
 	if (istype(W, /obj/item/tool/wrench))
-		to_chat(user, "It's a holotable!  There are no bolts!")
+		user << "It's a holotable!  There are no bolts!"
 		return
 
 	if(isrobot(user))
@@ -417,7 +417,7 @@ var/global/list/holodeck_programs = list(
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
-				to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+				user << "<span class='warning'>You need a better grip to do that!</span>"
 				return
 			M.forceMove(loc)
 			M.KnockDown(5)
@@ -447,9 +447,9 @@ var/global/list/holodeck_programs = list(
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
-			visible_message("<span class='notice'>Swish! \the [I] lands in \the [src].</span>", 3)
+			visible_message("\blue Swish! \the [I] lands in \the [src].", 3)
 		else
-			visible_message("<span class='warning'>\the [I] bounces off of \the [src]'s rim!</span>", 3)
+			visible_message("\red \the [I] bounces off of \the [src]'s rim!", 3)
 		return 0
 	else
 		return ..()
@@ -471,11 +471,11 @@ var/global/list/holodeck_programs = list(
 	power_channel = ENVIRON
 
 /obj/machinery/readybutton/attack_ai(mob/user as mob)
-	to_chat(user, "The station AI is not to interact with these devices!")
+	user << "The station AI is not to interact with these devices!"
 	return
 
 /obj/machinery/readybutton/attack_paw(mob/user as mob)
-	to_chat(user, "You are too primitive to use this device.")
+	user << "You are too primitive to use this device."
 	return
 
 /obj/machinery/readybutton/New()
@@ -483,19 +483,19 @@ var/global/list/holodeck_programs = list(
 
 
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
-	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
+	user << "The device is a solid button, there's nothing you can do with it!"
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
-		to_chat(user, "This device is not powered.")
+		user << "This device is not powered."
 		return
 
 	currentarea = get_area(src.loc)
 	if(!currentarea)
-		qdel(src)
+		cdel(src)
 
 	if(eventstarted)
-		to_chat(usr, "The event has already begun!")
+		usr << "The event has already begun!"
 		return
 
 	ready = !ready
@@ -524,10 +524,10 @@ var/global/list/holodeck_programs = list(
 
 	for(var/obj/structure/holowindow/W in currentarea)
 		currentarea -= W
-		qdel(W)
+		cdel(W)
 
 	for(var/mob/M in currentarea)
-		to_chat(M, "FIGHT!")
+		M << "FIGHT!"
 
 //Holorack
 
@@ -542,5 +542,5 @@ var/global/list/holodeck_programs = list(
 
 /obj/structure/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/tool/wrench))
-		to_chat(user, "It's a holorack!  You can't unwrench it!")
+		user << "It's a holorack!  You can't unwrench it!"
 		return

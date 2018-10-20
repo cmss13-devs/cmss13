@@ -74,23 +74,23 @@
 	var/turf/T = get_step(src, crawl_dir)
 
 	if (!T || T.density)
-		to_chat(user, "This hole leads nowhere!")
+		user << "This hole leads nowhere!"
 		return
 
 	if(entrance_dir)
 		if(!step(user, entrance_dir))
-			to_chat(user, "<span class='warning'>You can't reach the hole's entrance.</span>")
+			user << "<span class='warning'>You can't reach the hole's entrance.</span>"
 			return
 
 	for(var/obj/O in T)
 		if(!O.CanPass(user, user.loc))
-			to_chat(user, "<span class='warning'>The hole's exit is blocked by something!</span>")
+			user << "<span class='warning'>The hole's exit is blocked by something!</span>"
 			return
 
 	if(user.action_busy)
 		return
 
-	to_chat(user, "<span class='notice'>You start crawling through the hole.</span>")
+	user << "<span class='notice'>You start crawling through the hole.</span>"
 
 	if(do_after(user, 15, FALSE, 5, BUSY_ICON_GENERIC))
 		if(!user.is_mob_incapacitated() && !user.lying && !user.buckled)
@@ -101,7 +101,7 @@
 					return
 			if(user.pulling)
 				user.stop_pulling()
-				to_chat(user, "<span class='warning'>You release what you're pulling to fit into the tunnel!</span>")
+				user << "<span class='warning'>You release what you're pulling to fit into the tunnel!</span>"
 			user.forceMove(T)
 
 
@@ -123,10 +123,10 @@
 		var/obj/item/explosive/grenade/G = W
 
 		if(!Target ||Target.density)
-			to_chat(user, "<span class='warning'>This hole leads nowhere!</span>")
+			user << "<span class='warning'>This hole leads nowhere!</span>"
 			return
 
-		to_chat(user, "<span class='notice'>You take the position to throw [G].</span>")
+		user << "<span class='notice'>You take the position to throw [G].</span>"
 		if(do_after(user,10, TRUE, 5, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
@@ -145,10 +145,10 @@
 		var/obj/item/device/flashlight/F = W
 
 		if(!Target ||Target.density)
-			to_chat(user, "<span class='warning'>This hole leads nowhere!</span>")
+			user << "<span class='warning'>This hole leads nowhere!</span>"
 			return
 
-		to_chat(user, "<span class='notice'>You take the position to throw [F].</span>")
+		user << "<span class='notice'>You take the position to throw [F].</span>"
 		if(do_after(user,10, TRUE, 5, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
@@ -158,4 +158,7 @@
 			F.forceMove(Target)
 			F.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 			step_away(F,src,rand(1,5))
+			F.SetLuminosity(0)
+			if(F.on && loc != user)
+				F.SetLuminosity(F.brightness_on)
 		return

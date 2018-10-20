@@ -169,7 +169,7 @@
 			src.reagent_glass.loc = get_turf(src)
 			src.reagent_glass = null
 		else
-			to_chat(usr, "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>")
+			usr << "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>"
 
 	else if ((href_list["togglevoice"]) && (!src.locked || issilicon(usr)))
 		src.shut_up = !src.shut_up
@@ -184,27 +184,27 @@
 	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if (src.allowed(user) && !open && !emagged)
 			src.locked = !src.locked
-			to_chat(user, "<span class='notice'>Controls are now [src.locked ? "locked." : "unlocked."]</span>")
+			user << "<span class='notice'>Controls are now [src.locked ? "locked." : "unlocked."]</span>"
 			src.updateUsrDialog()
 		else
 			if(emagged)
-				to_chat(user, "<span class='warning'>ERROR</span>")
+				user << "<span class='warning'>ERROR</span>"
 			if(open)
-				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
+				user << "<span class='warning'>Please close the access panel before locking it.</span>"
 			else
-				to_chat(user, "<span class='warning'>Access denied.</span>")
+				user << "<span class='warning'>Access denied.</span>"
 
 	else if (istype(W, /obj/item/reagent_container/glass))
 		if(src.locked)
-			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
+			user << "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>"
 			return
 		if(!isnull(src.reagent_glass))
-			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
+			user << "<span class='notice'>There is already a beaker loaded.</span>"
 			return
 
 		if(user.drop_inv_item_to_loc(W, src))
 			reagent_glass = W
-			to_chat(user, "<span class='notice'>You insert [W].</span>")
+			user << "<span class='notice'>You insert [W].</span>"
 			src.updateUsrDialog()
 		return
 
@@ -216,10 +216,10 @@
 /obj/machinery/bot/medbot/Emag(mob/user as mob)
 	..()
 	if(open && !locked)
-		if(user) to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>")
+		if(user) user << "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>"
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
-				O.show_message("<span class='danger'>[src] buzzes oddly!</span>", 1)
+				O.show_message("\red <B>[src] buzzes oddly!</B>", 1)
 		flick("medibot_spark", src)
 		src.patient = null
 		if(user) src.oldpatient = user
@@ -438,7 +438,7 @@
 		return
 	else
 		src.icon_state = "medibots"
-		visible_message("<span class='danger'>[src] is trying to inject [src.patient]!</span>")
+		visible_message("\red <B>[src] is trying to inject [src.patient]!</B>")
 		spawn(30)
 			if ((get_dist(src, src.patient) <= 1) && (src.on))
 				if(reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
@@ -446,7 +446,7 @@
 					src.reagent_glass.reagents.reaction(src.patient, 2)
 				else
 					src.patient.reagents.add_reagent(reagent_id,src.injection_amount)
-				visible_message("<span class='danger'>[src] injects [src.patient] with the syringe!</span>")
+				visible_message("\red <B>[src] injects [src.patient] with the syringe!</B>")
 
 			src.icon_state = "medibot[src.on]"
 			src.currently_healing = 0
@@ -465,7 +465,7 @@
 
 /obj/machinery/bot/medbot/explode()
 	src.on = 0
-	visible_message("<span class='danger'>[src] blows apart!</span>", 1)
+	visible_message("\red <B>[src] blows apart!</B>", 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/storage/firstaid(Tsec)
@@ -484,7 +484,7 @@
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/machinery/bot/medbot/Bump(M as mob|obj) //Leave no door unopened!
@@ -520,7 +520,7 @@
 
 	//Making a medibot!
 	if(src.contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
+		user << "<span class='notice'>You need to empty [src] out first.</span>"
 		return
 
 	var/obj/item/frame/firstaid_arm_assembly/A = new /obj/item/frame/firstaid_arm_assembly
@@ -531,8 +531,8 @@
 	else if(istype(src,/obj/item/storage/firstaid/o2))
 		A.skin = "o2"
 
-	qdel(S)
+	cdel(S)
 	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
+	user << "<span class='notice'>You add the robot arm to the first aid kit.</span>"
 	user.temp_drop_inv_item(src)
-	qdel(src)
+	cdel(src)

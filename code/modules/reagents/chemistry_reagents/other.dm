@@ -603,7 +603,7 @@
 
 	reaction_obj(var/obj/O, var/volume)
 		if(istype(O,/obj/effect/decal/cleanable))
-			qdel(O)
+			cdel(O)
 		else
 			if(O)
 				O.clean_blood()
@@ -613,7 +613,7 @@
 			T.clean_blood()
 			for(var/obj/effect/decal/cleanable/C in T.contents)
 				src.reaction_obj(C, volume)
-				qdel(C)
+				cdel(C)
 
 	reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
 		if(iscarbon(M))

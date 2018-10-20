@@ -87,20 +87,26 @@
 /obj/mecha/Dispose()
 	go_out()
 	mechas_list -= src //global mech list
+	SetLuminosity(0)
+
+/obj/mecha/Dispose()
+	go_out()
+	mechas_list -= src //global mech list
+	SetLuminosity(0)
 	if(cell)
-		qdel(cell)
+		cdel(cell)
 		cell = null
 	if(spark_system)
-		qdel(spark_system)
+		cdel(spark_system)
 		spark_system = null
 	if(internal_tank)
-		qdel(internal_tank)
+		cdel(internal_tank)
 		internal_tank = null
 	if(connected_port)
-		qdel(connected_port)
+		cdel(connected_port)
 		connected_port = null
 	if(radio)
-		qdel(radio)
+		cdel(radio)
 		radio = null
 	if(pr_inertial_movement)
 		del(pr_inertial_movement)
@@ -176,19 +182,19 @@
 	var/integrity = health/initial(health)*100
 	switch(integrity)
 		if(85 to 100)
-			to_chat(usr, "It's fully intact.")
+			usr << "It's fully intact."
 		if(65 to 85)
-			to_chat(usr, "It's slightly damaged.")
+			usr << "It's slightly damaged."
 		if(45 to 65)
-			to_chat(usr, "It's badly damaged.")
+			usr << "It's badly damaged."
 		if(25 to 45)
-			to_chat(usr, "It's heavily damaged.")
+			usr << "It's heavily damaged."
 		else
-			to_chat(usr, "It's falling apart.")
+			usr << "It's falling apart."
 	if(equipment && equipment.len)
-		to_chat(user, "It's equipped with:")
+		user << "It's equipped with:"
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
-			to_chat(user, "\icon[ME] [ME]")
+			user << "\icon[ME] [ME]"
 
 
 /obj/mecha/proc/drop_item()//Derpfix, but may be useful in future for engineering exosuits.
@@ -248,7 +254,7 @@
 /obj/mecha/relaymove(mob/user,direction)
 	if(user != src.occupant) //While not "realistic", this piece is player friendly.
 		user.forceMove(get_turf(src))
-		to_chat(user, "You climb out from [src]")
+		user << "You climb out from [src]"
 		return 0
 	if(connected_port)
 		if(world.time - last_message > 20)
@@ -399,14 +405,14 @@
 				src.take_damage(15)
 				src.check_for_internal_damage(list(MECHA_INT_CONTROL_LOST))
 				playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-				to_chat(user, "<span class='warning'>You slash at the armored suit!</span>")
+				user << "\red You slash at the armored suit!"
 				visible_message("\red [user] slashes at [name]'s armor!")
 			else
 				src.log_append_to_last("Armor saved.")
 				playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-				to_chat(user, "\green Your claws had no effect!")
-				src.occupant_message("<span class='notice'>The [user]'s claws are stopped by the armor.</span>")
-				visible_message("<span class='notice'>[user] rebounds off [name]'s armor!</span>")
+				user << "\green Your claws had no effect!"
+				src.occupant_message("\blue The [user]'s claws are stopped by the armor.")
+				visible_message("\blue [user] rebounds off [name]'s armor!")
 		else
 			user.visible_message("<font color='red'><b>[user] hits [src.name]. Nothing happens</b></font>","<font color='red'><b>You hit [src.name] with no visible effect.</b></font>")
 			src.log_append_to_last("Armor saved.")
@@ -437,8 +443,8 @@
 		else
 			src.log_append_to_last("Armor saved.")
 			playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-			src.occupant_message("<span class='notice'>The [user]'s attack is stopped by the armor.</span>")
-			visible_message("<span class='notice'>The [user] rebounds off [src.name]'s armor!</span>")
+			src.occupant_message("\blue The [user]'s attack is stopped by the armor.")
+			visible_message("\blue The [user] rebounds off [src.name]'s armor!")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	return
 
@@ -454,7 +460,7 @@
 		src.visible_message("The [A] fastens firmly to [src].")
 		return
 	if(prob(src.deflect_chance) || istype(A, /mob))
-		src.occupant_message("<span class='notice'>The [A] bounces off the armor.</span>")
+		src.occupant_message("\blue The [A] bounces off the armor.")
 		src.visible_message("The [A] bounces off the [src.name] armor")
 		src.log_append_to_last("Armor saved.")
 		if(istype(A, /mob/living))
@@ -476,7 +482,7 @@
 
 /obj/mecha/proc/dynbulletdamage(var/obj/item/projectile/Proj)
 	if(prob(src.deflect_chance))
-		src.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
+		src.occupant_message("\blue The armor deflects incoming projectile.")
 		src.visible_message("The [src.name] armor deflects the projectile")
 		src.log_append_to_last("Armor saved.")
 		return
@@ -536,7 +542,7 @@
 						E.forceMove(T)
 						E.destroy()
 		spawn(0)
-			qdel(src)
+			cdel(src)
 	return
 
 /obj/mecha/ex_act(severity)
@@ -578,7 +584,7 @@
 /obj/mecha/proc/dynattackby(obj/item/W as obj, mob/user as mob)
 	src.log_message("Attacked by [W]. Attacker - [user]")
 	if(prob(src.deflect_chance))
-		to_chat(user, "<span class='warning'>\The [W] bounces off [src.name].</span>")
+		user << "\red \The [W] bounces off [src.name]."
 		src.log_append_to_last("Armor saved.")
 
 	else
@@ -597,9 +603,9 @@
 
 	if(istype(W, /obj/item/device/mmi))
 		if(mmi_move_inside(W,user))
-			to_chat(user, "[src]-MMI interface initialized successfuly")
+			user << "[src]-MMI interface initialized successfuly"
 		else
-			to_chat(user, "[src]-MMI interface initialization failed.")
+			user << "[src]-MMI interface initialization failed."
 		return
 
 	if(istype(W, /obj/item/mecha_parts/mecha_equipment))
@@ -610,7 +616,7 @@
 					E.attach(src)
 					user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
 			else
-				to_chat(user, "You were unable to attach [W] to [src]")
+				user << "You were unable to attach [W] to [src]"
 		return
 	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if(add_req_access || maint_access)
@@ -624,56 +630,56 @@
 				output_maintenance_dialog(id_card, user)
 				return
 			else
-				to_chat(user, "<span class='warning'>Invalid ID: Access denied.</span>")
+				user << "\red Invalid ID: Access denied."
 		else
-			to_chat(user, "<span class='warning'>Maintenance protocols disabled by operator.</span>")
+			user << "\red Maintenance protocols disabled by operator."
 	else if(istype(W, /obj/item/tool/wrench))
 		if(state==1)
 			state = 2
-			to_chat(user, "You undo the securing bolts.")
+			user << "You undo the securing bolts."
 		else if(state==2)
 			state = 1
-			to_chat(user, "You tighten the securing bolts.")
+			user << "You tighten the securing bolts."
 		return
 	else if(istype(W, /obj/item/tool/crowbar))
 		if(state==2)
 			state = 3
-			to_chat(user, "You open the hatch to the power unit")
+			user << "You open the hatch to the power unit"
 		else if(state==3)
 			state=2
-			to_chat(user, "You close the hatch to the power unit")
+			user << "You close the hatch to the power unit"
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		if(state == 3 && hasInternalDamage(MECHA_INT_SHORT_CIRCUIT))
 			var/obj/item/stack/cable_coil/CC = W
 			if(CC.use(2))
 				clearInternalDamage(MECHA_INT_SHORT_CIRCUIT)
-				to_chat(user, "You replace the fused wires.")
+				user << "You replace the fused wires."
 			else
-				to_chat(user, "There's not enough wire to finish the task.")
+				user << "There's not enough wire to finish the task."
 		return
 	else if(istype(W, /obj/item/tool/screwdriver))
 		if(state==3 && src.cell)
 			src.cell.forceMove(src.loc)
 			src.cell = null
 			state = 4
-			to_chat(user, "You unscrew and pry out the powercell.")
+			user << "You unscrew and pry out the powercell."
 			src.log_message("Powercell removed")
 		else if(state==4 && src.cell)
 			state=3
-			to_chat(user, "You screw the cell in place")
+			user << "You screw the cell in place"
 		return
 
 	else if(istype(W, /obj/item/cell))
 		if(state==4)
 			if(!src.cell)
-				to_chat(user, "You install the powercell")
+				user << "You install the powercell"
 				if(user.drop_held_item())
 					W.forceMove(src)
 					cell = W
 					log_message("Powercell installed")
 			else
-				to_chat(user, "There's already a powercell installed.")
+				user << "There's already a powercell installed."
 		return
 
 	else if(istype(W, /obj/item/tool/weldingtool) && user.a_intent != "hurt")
@@ -681,10 +687,10 @@
 		if (!WT.remove_fuel(0,user))
 			return
 		if(src.health<initial(src.health))
-			to_chat(user, "<span class='notice'>You repair some damage to [src.name].</span>")
+			user << "\blue You repair some damage to [src.name]."
 			src.health += min(10, initial(src.health)-src.health)
 		else
-			to_chat(user, "The [src.name] is at full integrity")
+			user << "The [src.name] is at full integrity"
 		return
 
 	else if(istype(W, /obj/item/mecha_parts/mecha_tracking))
@@ -792,12 +798,12 @@
 	var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
 	if(possible_port)
 		if(connect(possible_port))
-			src.occupant_message("<span class='notice'>[name] connects to the port.</span>")
+			src.occupant_message("\blue [name] connects to the port.")
 			src.verbs += /obj/mecha/verb/disconnect_from_port
 			src.verbs -= /obj/mecha/verb/connect_to_port
 			return
 		else
-			src.occupant_message("<span class='warning'>[name] failed to connect to the port.</span>")
+			src.occupant_message("\red [name] failed to connect to the port.")
 			return
 	else
 		src.occupant_message("Nothing happens")
@@ -812,11 +818,11 @@
 	if(usr!=src.occupant)
 		return
 	if(disconnect())
-		src.occupant_message("<span class='notice'>[name] disconnects from the port.</span>")
+		src.occupant_message("\blue [name] disconnects from the port.")
 		src.verbs -= /obj/mecha/verb/disconnect_from_port
 		src.verbs += /obj/mecha/verb/connect_to_port
 	else
-		src.occupant_message("<span class='warning'>[name] is not connected to the port at the moment.</span>")
+		src.occupant_message("\red [name] is not connected to the port at the moment.")
 
 /obj/mecha/verb/toggle_lights()
 	set name = "Toggle Lights"
@@ -825,8 +831,8 @@
 	set popup_menu = 0
 	if(usr!=occupant)	return
 	lights = !lights
-	if(lights)	set_light(lights_power)
-	else		set_light(0)
+	if(lights)	SetLuminosity(lights_power)
+	else		SetLuminosity(0)
 	src.occupant_message("Toggled lights [lights?"on":"off"].")
 	log_message("Toggled lights [lights?"on":"off"].")
 	return
@@ -892,13 +898,17 @@
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C.handcuffed)
-			to_chat(usr, "<span class='warning;>Kinda hard to climb in while handcuffed don't you think?</span>")
+			usr << "\red Kinda hard to climb in while handcuffed don't you think?"
 			return
 	if (src.occupant)
-		to_chat(usr, "<span class='boldnotice'>The [src.name] is already occupied!</span>")
+		usr << "\blue <B>The [src.name] is already occupied!</B>"
 		src.log_append_to_last("Permission denied.")
 		return
-
+/*
+	if (usr.abiotic())
+		usr << "\blue <B>Subject cannot have abiotic items on.</B>"
+		return
+*/
 	var/passed
 	if(src.dna)
 		if(usr.dna.unique_enzymes==src.dna)
@@ -906,19 +916,20 @@
 	else if(src.operation_allowed(usr))
 		passed = 1
 	if(!passed)
-		to_chat(usr, "<span class='warning'> Access denied</span>")
+		usr << "\red Access denied"
 		src.log_append_to_last("Permission denied.")
 		return
+//	usr << "You start climbing into [src.name]"
 
-	visible_message("<span class='notice'>[usr] starts to climb into [src.name]</span>")
+	visible_message("\blue [usr] starts to climb into [src.name]")
 
 	if(enter_after(40,usr))
 		if(!src.occupant)
 			moved_inside(usr)
 		else if(src.occupant!=usr)
-			to_chat(usr, "[src.occupant] was faster. Try better next time, loser.")
+			usr << "[src.occupant] was faster. Try better next time, loser."
 	else
-		to_chat(usr, "You stop entering the exosuit.")
+		usr << "You stop entering the exosuit."
 	return
 
 /obj/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
@@ -945,38 +956,38 @@
 
 /obj/mecha/proc/mmi_move_inside(var/obj/item/device/mmi/mmi_as_oc as obj,mob/user as mob)
 	if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
-		to_chat(user, "Consciousness matrix not detected.")
+		user << "Consciousness matrix not detected."
 		return 0
 	else if(mmi_as_oc.brainmob.stat)
-		to_chat(user, "Beta-rhythm below acceptable level.")
+		user << "Beta-rhythm below acceptable level."
 		return 0
 	else if(occupant)
-		to_chat(user, "Occupant detected.")
+		user << "Occupant detected."
 		return 0
 	else if(dna && dna!=mmi_as_oc.brainmob.dna.unique_enzymes)
-		to_chat(user, "Stop it!")
+		user << "Stop it!"
 		return 0
 	//Added a message here since people assume their first click failed or something./N
-//	to_chat(user, "Installing MMI, please stand by.")
+//	user << "Installing MMI, please stand by."
 
-	visible_message("<span class='notice'>[usr] starts to insert an MMI into [src.name]</span>")
+	visible_message("\blue [usr] starts to insert an MMI into [src.name]")
 
 	if(enter_after(40,user))
 		if(!occupant)
 			return mmi_moved_inside(mmi_as_oc,user)
 		else
-			to_chat(user, "Occupant detected.")
+			user << "Occupant detected."
 	else
-		to_chat(user, "You stop inserting the MMI.")
+		user << "You stop inserting the MMI."
 	return 0
 
 /obj/mecha/proc/mmi_moved_inside(var/obj/item/device/mmi/mmi_as_oc as obj,mob/user as mob)
 	if(mmi_as_oc && user in range(1))
 		if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
-			to_chat(user, "Consciousness matrix not detected.")
+			user << "Consciousness matrix not detected."
 			return 0
 		else if(mmi_as_oc.brainmob.stat)
-			to_chat(user, "Beta-rhythm below acceptable level.")
+			user << "Beta-rhythm below acceptable level."
 			return 0
 		user.temp_drop_inv_item(mmi_as_oc)
 		var/mob/brainmob = mmi_as_oc.brainmob
@@ -1320,7 +1331,7 @@
 /obj/mecha/proc/occupant_message(message as text)
 	if(message)
 		if(src.occupant && src.occupant.client)
-			to_chat(src.occupant, "\icon[src] [message]")
+			src.occupant << "\icon[src] [message]"
 	return
 
 /obj/mecha/proc/log_message(message as text,red=null)
@@ -1432,10 +1443,10 @@
 		if(user)
 			if(state==0)
 				state = 1
-				to_chat(user, "The securing bolts are now exposed.")
+				user << "The securing bolts are now exposed."
 			else if(state==1)
 				state = 0
-				to_chat(user, "The securing bolts are now hidden.")
+				user << "The securing bolts are now hidden."
 			output_maintenance_dialog(filterhref.getObj("id_card"),user)
 		return
 	if(href_list["set_internal_tank_valve"] && state >=1)
@@ -1445,7 +1456,7 @@
 			var/new_pressure = input(user,"Input new output pressure","Pressure setting",internal_tank_valve) as num
 			if(new_pressure)
 				internal_tank_valve = new_pressure
-				to_chat(user, "The internal pressure valve has been set to [internal_tank_valve]kPa.")
+				user << "The internal pressure valve has been set to [internal_tank_valve]kPa."
 	if(href_list["remove_passenger"] && state >= 1)
 		var/mob/user = filterhref.getMob("user")
 		var/list/passengers = list()
@@ -1454,7 +1465,7 @@
 				passengers["[P.occupant]"] = P
 
 		if (!passengers)
-			to_chat(user, "<span class='warning'>There are no passengers to remove.</span>")
+			user << "\red There are no passengers to remove."
 			return
 
 		var/pname = input(user, "Choose a passenger to forcibly remove.", "Forcibly Remove Passenger") as null|anything in passengers
@@ -1465,11 +1476,11 @@
 		var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P = passengers[pname]
 		var/mob/occupant = P.occupant
 
-		user.visible_message("<span class='warning'>[user] begins opening the hatch on \the [P]...</span>", "<span class='warning'>You begin opening the hatch on \the [P]...</span>")
+		user.visible_message("\red [user] begins opening the hatch on \the [P]...", "\red You begin opening the hatch on \the [P]...")
 		if (!do_after(user, 40, FALSE, 5, BUSY_ICON_GENERIC))
 			return
 
-		user.visible_message("<span class='warning'>[user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='warning'>You open the hatch on \the [P] and remove [occupant]!</span>")
+		user.visible_message("\red [user] opens the hatch on \the [P] and removes [occupant]!", "\red You open the hatch on \the [P] and remove [occupant]!")
 		P.go_out()
 		P.log_message("[occupant] was removed.")
 		return

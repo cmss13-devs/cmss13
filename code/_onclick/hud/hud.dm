@@ -66,22 +66,22 @@
 		mymob.hud_used = null
 	if(static_inventory.len)
 		for(var/thing in static_inventory)
-			qdel(thing)
+			cdel(thing)
 		static_inventory.Cut()
 	if(toggleable_inventory.len)
 		for(var/thing in toggleable_inventory)
-			qdel(thing)
+			cdel(thing)
 		toggleable_inventory.Cut()
 	if(hotkeybuttons.len)
 		for(var/thing in hotkeybuttons)
-			qdel(thing)
+			cdel(thing)
 		hotkeybuttons.Cut()
 	if(infodisplay.len)
 		for(var/thing in infodisplay)
-			qdel(thing)
+			cdel(thing)
 		infodisplay.Cut()
 
- 	qdel(hide_actions_toggle)
+ 	cdel(hide_actions_toggle)
 	hide_actions_toggle = null
 
 	r_hand_hud_object = null
@@ -214,6 +214,6 @@
 
 	if(hud_used && client)
 		hud_used.show_hud()
-		to_chat(usr, "<span class ='info'>Switched HUD mode. Press F12 to toggle.</span>")
+		usr << "<span class ='info'>Switched HUD mode. Press F12 to toggle.</span>"
 	else
-		to_chat(usr, "<span class ='warning'>This mob type does not use a HUD.</span>")
+		usr << "<span class ='warning'>This mob type does not use a HUD.</span>"

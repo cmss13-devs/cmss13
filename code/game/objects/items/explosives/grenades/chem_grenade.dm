@@ -40,13 +40,13 @@
 	if(istype(W,/obj/item/device/assembly_holder) && (!stage || stage==1) && path != 2)
 		var/obj/item/device/assembly_holder/det = W
 		if(istype(det.a_left,det.a_right.type) || (!isigniter(det.a_left) && !isigniter(det.a_right)))
-			to_chat(user, "<span class='warning'>Assembly must contain one igniter.</span>")
+			user << "\red Assembly must contain one igniter."
 			return
 		if(!det.secured)
-			to_chat(user, "<span class='warning'>Assembly must be secured with screwdriver.</span>")
+			user << "\red Assembly must be secured with screwdriver."
 			return
 		path = 1
-		to_chat(user, "<span class='notice'>You add [W] to the metal casing.</span>")
+		user << "\blue You add [W] to the metal casing."
 		playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 		user.temp_drop_inv_item(det)
 		det.forceMove(src)
@@ -58,22 +58,22 @@
 		if(stage == 1)
 			path = 1
 			if(beakers.len)
-				to_chat(user, "<span class='notice'>You lock the assembly.</span>")
+				user << "\blue You lock the assembly."
 				name = "grenade"
 			else
-//					to_chat(user, "<span class='warning'>You need to add at least one beaker before locking the assembly.</span>")
-				to_chat(user, "<span class='notice'>You lock the empty assembly.</span>")
+//					user << "\red You need to add at least one beaker before locking the assembly."
+				user << "\blue You lock the empty assembly."
 				name = "fake grenade"
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 			icon_state = initial(icon_state) +"_locked"
 			stage = 2
 		else if(stage == 2)
 			if(active && prob(95))
-				to_chat(user, "<span class='warning'>You trigger the assembly!</span>")
+				user << "\red You trigger the assembly!"
 				prime()
 				return
 			else
-				to_chat(user, "<span class='notice'>You unlock the assembly.</span>")
+				user << "\blue You unlock the assembly."
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 				name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
 				icon_state = initial(icon_state) + (detonator?"_ass":"")
@@ -82,23 +82,23 @@
 	else if(is_type_in_list(W, allowed_containers) && (!stage || stage==1) && path != 2)
 		path = 1
 		if(beakers.len == 2)
-			to_chat(user, "<span class='warning'>The grenade can not hold more containers.</span>")
+			user << "\red The grenade can not hold more containers."
 			return
 		else
 			if(W.reagents.total_volume)
 				if(user.drop_held_item())
-					to_chat(user, "<span class='notice'>You add \the [W] to the assembly.</span>")
+					user << "\blue You add \the [W] to the assembly."
 					W.forceMove(src)
 					beakers += W
 					stage = 1
 					name = "unsecured grenade with [beakers.len] containers[detonator?" and detonator":""]"
 			else
-				to_chat(user, "<span class='warning'>\the [W] is empty.</span>")
+				user << "\red \the [W] is empty."
 
 /obj/item/explosive/grenade/chem_grenade/examine(mob/user)
 	..()
 	if(detonator)
-		to_chat(user, "With attached [detonator.name]")
+		user << "With attached [detonator.name]"
 
 /obj/item/explosive/grenade/chem_grenade/activate(mob/user as mob)
 	if(active) return
@@ -141,7 +141,7 @@
 	for(var/obj/item/reagent_container/glass/G in beakers)
 		G.reagents.trans_to(src, G.reagents.total_volume)
 
-	if(!disposed) //the possible reactions didn't qdel src
+	if(!disposed) //the possible reactions didn't cdel src
 		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
 			var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()
 			steam.set_up(10, 0, get_turf(src))
@@ -159,7 +159,7 @@
 
 		invisibility = INVISIBILITY_MAXIMUM //Why am i doing this?
 		spawn(50)		   //To make sure all reagents can work
-			qdel(src)	   //correctly before deleting the grenade.
+			cdel(src)	   //correctly before deleting the grenade.
 
 
 /obj/item/explosive/grenade/chem_grenade/large
@@ -289,6 +289,6 @@
 
 /obj/item/explosive/grenade/chem_grenade/teargas/attack_self(mob/user)
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_MP)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 		return
 	..()

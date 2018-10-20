@@ -19,7 +19,7 @@
 			icon_state = "shutter0"
 			sleep(15)
 			density = 0
-			set_opacity(0)
+			SetOpacity(0)
 			operating = 0
 			return
 	return
@@ -37,7 +37,7 @@
 	sleep(10)
 	density = 0
 	layer = open_layer
-	set_opacity(0)
+	SetOpacity(0)
 
 	if(operating == 1) //emag again
 		operating = 0
@@ -55,7 +55,7 @@
 	layer = closed_layer
 	density = 1
 	if(visible)
-		set_opacity(1)
+		SetOpacity(1)
 	playsound(loc, 'sound/machines/blastdoor.ogg', 25)
 
 	sleep(10)

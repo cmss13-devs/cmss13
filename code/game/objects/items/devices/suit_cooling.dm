@@ -102,7 +102,7 @@
 		cell.add_fingerprint(user)
 		cell.updateicon()
 
-		to_chat(user, "You remove the [src.cell].")
+		user << "You remove the [src.cell]."
 		src.cell = null
 		updateicon()
 		return
@@ -113,28 +113,28 @@
 	else
 		turn_on()
 		if (on)
-			to_chat(user, "You switch on the [src].")
+			user << "You switch on the [src]."
 
 /obj/item/device/suit_cooling_unit/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/tool/screwdriver))
 		if(cover_open)
 			cover_open = 0
-			to_chat(user, "You screw the panel into place.")
+			user << "You screw the panel into place."
 		else
 			cover_open = 1
-			to_chat(user, "You unscrew the panel.")
+			user << "You unscrew the panel."
 		updateicon()
 		return
 
 	if (istype(W, /obj/item/cell))
 		if(cover_open)
 			if(cell)
-				to_chat(user, "There is a [cell] already installed here.")
+				user << "There is a [cell] already installed here."
 			else
 				if(user.drop_held_item())
 					W.forceMove(src)
 					cell = W
-					to_chat(user, "You insert the [cell].")
+					user << "You insert the [cell]."
 		updateicon()
 		return
 
@@ -153,19 +153,19 @@
 	..()
 	if (on)
 		if (attached_to_suit(src.loc))
-			to_chat(user, "It's switched on and running.")
+			user << "It's switched on and running."
 		else
-			to_chat(user, "It's switched on, but not attached to anything.")
+			user << "It's switched on, but not attached to anything."
 	else
-		to_chat(user, "It is switched off.")
+		user << "It is switched off."
 
 	if (cover_open)
 		if(cell)
-			to_chat(user, "The panel is open, exposing the [cell].")
+			user << "The panel is open, exposing the [cell]."
 		else
-			to_chat(user, "The panel is open.")
+			user << "The panel is open."
 
 	if (cell)
-		to_chat(user, "The charge meter reads [round(cell.percent())]%.")
+		user << "The charge meter reads [round(cell.percent())]%."
 	else
-		to_chat(user, "It doesn't have a power cell installed.")
+		user << "It doesn't have a power cell installed."

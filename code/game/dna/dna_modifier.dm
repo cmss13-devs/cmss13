@@ -101,13 +101,13 @@
 	if (usr.stat != 0)
 		return
 	if (!ishuman(usr) && !ismonkey(usr)) //Make sure they're a mob that has dna
-		to_chat(usr, "<span class='notice'>Try as you might, you can not climb up into the scanner.</span>")
+		usr << "\blue Try as you might, you can not climb up into the scanner."
 		return
 	if (src.occupant)
-		to_chat(usr, "<span class='boldnotice'>The scanner is already occupied!</span>")
+		usr << "\blue <B>The scanner is already occupied!</B>"
 		return
 	if (usr.abiotic())
-		to_chat(usr, "<span class='boldnotice'>Subject cannot have abiotic items on.</span>")
+		usr << "\blue <B>Subject cannot have abiotic items on.</B>"
 		return
 	usr.stop_pulling()
 	usr.client.perspective = EYE_PERSPECTIVE
@@ -121,7 +121,7 @@
 /obj/machinery/dna_scannernew/attackby(var/obj/item/item as obj, var/mob/user as mob)
 	if(istype(item, /obj/item/reagent_container/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			user << "\red A beaker is already loaded into the machine."
 			return
 
 		beaker = item
@@ -135,10 +135,10 @@
 		return
 	var/mob/M = G.grabbed_thing
 	if (src.occupant)
-		to_chat(user, "<span class='boldnotice'>The scanner is already occupied!</span>")
+		user << "\blue <B>The scanner is already occupied!</B>"
 		return
 	if (M.abiotic())
-		to_chat(user, "<span class='boldnotice'>Subject cannot have abiotic items on.</span>")
+		user << "\blue <B>Subject cannot have abiotic items on.</B>"
 		return
 	put_in(M)
 	add_fingerprint(user)
@@ -169,7 +169,7 @@
 					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
@@ -178,7 +178,7 @@
 					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			for(var/atom/movable/A as mob|obj in src)
@@ -186,7 +186,7 @@
 				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
-			qdel(src)
+			cdel(src)
 			return
 		else
 	return
@@ -223,7 +223,7 @@
 		if (!src.disk)
 			user.drop_inv_item_to_loc(I, src)
 			src.disk = I
-			to_chat(user, "You insert [I].")
+			user << "You insert [I]."
 			nanomanager.update_uis(src) // update all UIs attached to src
 			return
 	else
@@ -235,10 +235,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				qdel(src)
+				cdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 		else
 	return

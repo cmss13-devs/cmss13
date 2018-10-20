@@ -90,7 +90,7 @@
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
 	for(var/X in actions)
 		actions -= X
-		qdel(X)
+		cdel(X)
 	master = null
 	item_list -= src
 	. = ..()
@@ -101,16 +101,16 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				qdel(src)
+				cdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				cdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 
 
 
@@ -178,15 +178,15 @@ cases. Override_icon_state should be a list.*/
 			size = "huge"
 		else
 	//if ((CLUMSY in usr.mutations) && prob(50)) t = "funny-looking"
-	to_chat(user, "This is a [blood_DNA ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""][bicon(src)][src.name]. It is a [size] item.")
+	user << "This is a [blood_DNA ? blood_color != "#030303" ? "bloody " : "oil-stained " : ""]\icon[src][src.name]. It is a [size] item."
 	if(desc)
-		to_chat(user, desc)
+		user << desc
 
 /obj/item/attack_hand(mob/user)
 	if (!user) return
 
 	if(anchored)
-		to_chat(user, "[src] is anchored to the ground.")
+		user << "[src] is anchored to the ground."
 		return
 
 	if(!Adjacent(user)) // needed because of alt-click
@@ -206,7 +206,7 @@ cases. Override_icon_state should be a list.*/
 			return
 	else
 		user.next_move = max(user.next_move+2,world.time + 2)
-	if(!disposed) //item may have been qdel'd by the drop above.
+	if(!disposed) //item may have been cdel'd by the drop above.
 		pickup(user)
 		add_fingerprint(user)
 		if(!user.put_in_active_hand(src))
@@ -216,7 +216,7 @@ cases. Override_icon_state should be a list.*/
 /obj/item/attack_paw(mob/user as mob)
 
 	if(anchored)
-		to_chat(user, "[src] is anchored to the ground.")
+		user << "[src] is anchored to the ground."
 		return
 
 	if (istype(src.loc, /obj/item/storage))
@@ -229,7 +229,7 @@ cases. Override_icon_state should be a list.*/
 			return
 	else
 		user.next_move = max(user.next_move+2,world.time + 2)
-	if(!disposed) //item may have been qdel'd by the drop above.
+	if(!disposed) //item may have been cdel'd by the drop above.
 		pickup(user)
 		if(!user.put_in_active_hand(src))
 			dropped(user)
@@ -255,11 +255,11 @@ cases. Override_icon_state should be a list.*/
 					success = 1
 					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
-					to_chat(user, "<span class='notice'>You put everything in [S].</span>")
+					user << "<span class='notice'>You put everything in [S].</span>"
 				else if(success)
-					to_chat(user, "<span class='notice'>You put some things in [S].</span>")
+					user << "<span class='notice'>You put some things in [S].</span>"
 				else
-					to_chat(user, "<span class='notice'>You fail to pick anything up with [S].</span>")
+					user << "<span class='notice'>You fail to pick anything up with [S].</span>"
 
 			else if(S.can_be_inserted(src))
 				S.handle_item_insertion(src, FALSE, user)
@@ -284,7 +284,7 @@ cases. Override_icon_state should be a list.*/
 		A.remove_action(user)
 
 	if(flags_item & DELONDROP)
-		qdel(src)
+		cdel(src)
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
@@ -379,7 +379,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						H << "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>"
 					return 0
 				if(!(flags_equip_slot & SLOT_WAIST))
 					return
@@ -419,7 +419,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						H << "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>"
 					return 0
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return 0
@@ -430,7 +430,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						H << "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>"
 					return 0
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return 0
@@ -442,11 +442,11 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
+						H << "<span class='warning'>You need a suit before you can attach this [name].</span>"
 					return 0
 				if(!H.wear_suit.allowed)
 					if(!disable_warning)
-						to_chat(usr, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
+						usr << "You somehow have a suit with no defined allowed items for suit storage, stop that."
 					return 0
 				if( istype(src, /obj/item/device/pda) || istype(src, /obj/item/tool/pen) || is_type_in_list(src, H.wear_suit.allowed) )
 					return 1
@@ -566,22 +566,22 @@ cases. Override_icon_state should be a list.*/
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/brain)))//Is humanoid, and is not a brain
-		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")
+		usr << "\red You can't pick things up!"
 		return
 	if( usr.stat || usr.is_mob_restrained() )//Is not asleep/dead and is not restrained
-		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")
+		usr << "\red You can't pick things up!"
 		return
 	if(src.anchored) //Object isn't anchored
-		to_chat(usr, "<span class='warning'>You can't pick that up!</span>")
+		usr << "\red You can't pick that up!"
 		return
 	if(!usr.hand && usr.r_hand) //Right hand is not full
-		to_chat(usr, "<span class='warning'>Your right hand is full.</span>")
+		usr << "\red Your right hand is full."
 		return
 	if(usr.hand && usr.l_hand) //Left hand is not full
-		to_chat(usr, "<span class='warning'>Your left hand is full.</span>")
+		usr << "\red Your left hand is full."
 		return
 	if(!istype(src.loc, /turf)) //Object is on a turf
-		to_chat(usr, "<span class='warning'>You can't pick that up!</span>")
+		usr << "\red You can't pick that up!"
 		return
 	//All checks are done, time to pick it up!
 	if (world.time <= usr.next_move)
@@ -636,13 +636,13 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	for(var/obj/item/I in user.contents)
 		if(I.zoom && I != src)
-			to_chat(user, "<span class='warning'>You are already looking through \the [zoom_device].</span>")
+			user << "<span class='warning'>You are already looking through \the [zoom_device].</span>"
 			return //Return in the interest of not unzooming the other item. Check first in the interest of not fucking with the other clauses
 
-	if(user.eye_blind) 												to_chat(user, "<span class='warning'>You are too blind to see anything.</span>")
-	else if(user.stat || !ishuman(user)) 							to_chat(user, "<span class='warning'>You are unable to focus through \the [zoom_device].</span>")
-	else if(!zoom && user.client && user.update_tint()) 			to_chat(user, "<span class='warning'>Your welding equipment gets in the way of you looking through \the [zoom_device].</span>")
-	else if(!zoom && user.get_active_hand() != src)					to_chat(user, "<span class='warning'>You need to hold \the [zoom_device] to look through it.</span>")
+	if(user.eye_blind) 												user << "<span class='warning'>You are too blind to see anything.</span>"
+	else if(user.stat || !ishuman(user)) 							user << "<span class='warning'>You are unable to focus through \the [zoom_device].</span>"
+	else if(!zoom && user.client && user.update_tint()) 			user << "<span class='warning'>Your welding equipment gets in the way of you looking through \the [zoom_device].</span>"
+	else if(!zoom && user.get_active_hand() != src)					user << "<span class='warning'>You need to hold \the [zoom_device] to look through it.</span>"
 	else if(zoom) //If we are zoomed out, reset that parameter.
 		user.visible_message("<span class='notice'>[user] looks up from [zoom_device].</span>",
 		"<span class='notice'>You look up from [zoom_device].</span>")

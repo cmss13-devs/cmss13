@@ -42,15 +42,15 @@
 		return
 
 	if(istype(I, /obj/item/evidencebag))
-		to_chat(user, "<span class='notice'>You find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
+		user << "<span class='notice'>You find putting an evidence bag in another evidence bag to be slightly absurd.</span>"
 		return
 
 	if(I.w_class > 3)
-		to_chat(user, "<span class='notice'>[I] won't fit in [src].</span>")
+		user << "<span class='notice'>[I] won't fit in [src].</span>"
 		return
 
 	if(contents.len)
-		to_chat(user, "<span class='notice'>[src] already has something inside it.</span>")
+		user << "<span class='notice'>[src] already has something inside it.</span>"
 		return
 
 	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
@@ -89,7 +89,7 @@
 		icon_state = "evidenceobj"
 		desc = "An empty evidence bag."
 	else
-		to_chat(user, "[src] is empty.")
+		user << "[src] is empty."
 		icon_state = "evidenceobj"
 	return
 

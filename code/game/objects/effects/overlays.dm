@@ -10,7 +10,7 @@
 	var/tmp/atom/BeamSource
 	New()
 		..()
-		spawn(10) qdel(src)
+		spawn(10) cdel(src)
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
@@ -53,7 +53,7 @@
 /obj/effect/overlay/temp/proc/start_countdown()
 	set waitfor = 0
 	sleep(effect_duration)
-	qdel(src)
+	cdel(src)
 
 /obj/effect/overlay/temp/point
 	name = "arrow"
@@ -83,6 +83,7 @@
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.coord = null
 		source_binoc = null
+	SetLuminosity(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target
@@ -112,8 +113,9 @@
 		source_binoc.laser = null
 		source_binoc = null
 	if(linked_cam)
-		qdel(linked_cam)
+		cdel(linked_cam)
 		linked_cam = null
+	SetLuminosity(0)
 	. = ..()
 
 /obj/effect/overlay/temp/laser_target/ex_act(severity) //immune to explosions
@@ -122,7 +124,7 @@
 /obj/effect/overlay/temp/laser_target/examine()
 	..()
 	if(ishuman(usr))
-		to_chat(usr, "<span class='danger'>It's a laser to designate artillery targets, get away from it!</span>")
+		usr << "<span class='danger'>It's a laser to designate artillery targets, get away from it!</span>"
 
 
 //used to show where dropship ordnance will impact.
@@ -136,6 +138,7 @@
 	icon_state = "laser_target3"
 
 /obj/effect/overlay/temp/blinking_laser/Dispose()
+	SetLuminosity(0)
 	. = ..()
 
 /obj/effect/overlay/temp/emp_sparks

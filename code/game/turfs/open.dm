@@ -177,10 +177,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			user << "There's already a [L]  at this position!"
 			return
 
-		to_chat(user, "Now planting \the [L].")
+		user << "Now planting \the [L]."
 		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 			return
 
@@ -192,7 +192,7 @@
 		L.y = y
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.set_light(2)
+		L.SetLuminosity(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 
@@ -252,7 +252,7 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja))
 					var/obj/item/clothing/gloves/yautja/Y = H.gloves
 					if(Y && istype(Y) && Y.cloaked)
-						to_chat(H, "<span class='warning'> Your bracers hiss and spark as they short out!</span>")
+						H << "<span class='warning'> Your bracers hiss and spark as they short out!</span>"
 						Y.decloak(H)
 
 		else if(isXeno(C))
@@ -536,7 +536,7 @@
 	if(probability <= 0)
 		return
 
-	//to_chat(world, "\blue Spread([probability])")
+	//world << "\blue Spread([probability])"
 	for(var/turf/open/jungle/J in orange(1, src))
 		if(!J.bushes_spawn)
 			continue
@@ -555,10 +555,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			user << "There's already a [L]  at this position!"
 			return
 
-		to_chat(user, "Now planting \the [L].")
+		user << "Now planting \the [L]."
 		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 			return
 
@@ -570,7 +570,7 @@
 		L.y = y
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.set_light(2)
+		L.SetLuminosity(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 	return
 
@@ -591,7 +591,7 @@
 /turf/open/jungle/path/New()
 	..()
 	for(var/obj/structure/bush/B in src)
-		qdel(B)
+		cdel(B)
 
 /turf/open/jungle/impenetrable
 	bushes_spawn = 0
@@ -616,7 +616,7 @@
 /turf/open/jungle/water/New()
 	..()
 	for(var/obj/structure/bush/B in src)
-		qdel(B)
+		cdel(B)
 
 /turf/open/jungle/water/Entered(atom/movable/O)
 	..()
@@ -624,36 +624,36 @@
 		var/mob/living/M = O
 		//slip in the murky water if we try to run through it
 		if(prob(10 + (M.m_intent == MOVE_INTENT_RUN ? 40 : 0)))
-			to_chat(M, pick("<span class='notice'>You slip on something slimy.</span>","<span class='notice'>You fall over into the murk.</span>"))
+			M << pick("\blue You slip on something slimy.","\blue You fall over into the murk.")
 			M.Stun(2)
 			M.KnockDown(1)
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
-			to_chat(M, "<span class='notice'>You feel something slithering around your legs.</span>")
+			M << "\blue You feel something slithering around your legs."
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						to_chat(M, pick("<span class='warning'>Something sharp bites you!</span>","<span class='warning'>Sharp teeth grab hold of you!</span>","<span class='warning'>You feel something take a chunk out of your leg!</span>"))
+						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						to_chat(M, pick("<span class='warning'>Something sharp bites you!</span>","<span class='warning'>Sharp teeth grab hold of you!</span>","<span class='warning'>You feel something take a chunk out of your leg!</span>"))
+						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						to_chat(M, pick("<span class='warning'>Something sharp bites you!</span>","<span class='warning'>Sharp teeth grab hold of you!</span>","<span class='warning'>You feel something take a chunk out of your leg!</span>"))
+						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						to_chat(M, pick("<span class='warning'>Something sharp bites you!</span>","<span class='warning'>Sharp teeth grab hold of you!</span>","<span class='warning'>You feel something take a chunk out of your leg!</span>"))
+						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 
 /turf/open/jungle/water/deep
@@ -678,8 +678,7 @@
 /turf/open/shuttle/dropship
 	name = "floor"
 	icon_state = "rasputin1"
-	light_range = 2
-	light_power = 2
+
 
 //not really plating, just the look
 /turf/open/shuttle/plating
@@ -694,8 +693,7 @@
 /turf/open/shuttle/escapepod
 	icon = 'icons/turf/escapepods.dmi'
 	icon_state = "floor3"
-	light_range = 2
-	light_power = 2
+
 
 // Elevator floors
 /turf/open/shuttle/elevator

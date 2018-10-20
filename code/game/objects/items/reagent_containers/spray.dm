@@ -34,23 +34,23 @@
 
 	if(istype(A, /obj/structure/reagent_dispensers) && get_dist(src,A) <= 1) //this block copypasted from reagent_containers/glass, for lack of a better solution
 		if(!A.reagents.total_volume && A.reagents)
-			to_chat(user, "<span class='notice'>\The [A] is empty.</span>")
+			user << "<span class='notice'>\The [A] is empty.</span>"
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			user << "<span class='notice'>\The [src] is full.</span>"
 			return
 
 		var/trans = A.reagents.trans_to(src, A:amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You fill \the [src] with [trans] units of the contents of \the [A].</span>")
+		user << "<span class='notice'>You fill \the [src] with [trans] units of the contents of \the [A].</span>"
 		return
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
+		user << "<span class='notice'>\The [src] is empty!</span>"
 		return
 
 	if(safety)
-		to_chat(user, "<span class = 'warning'>The safety is on!</span>")
+		user << "<span class = 'warning'>The safety is on!</span>"
 		return
 
 	Spray_at(A)
@@ -85,7 +85,7 @@
 					D.reagents.reaction(A_turf)
 				sleep(2)
 			sleep(3)
-		qdel(D)
+		cdel(D)
 
 
 /obj/item/reagent_container/spray/attack_self(var/mob/user)
@@ -93,12 +93,12 @@
 		return
 	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
 	spray_size = next_in_list(spray_size, spray_sizes)
-	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
+	user << "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>"
 
 
 /obj/item/reagent_container/spray/examine(mob/user)
 	..()
-	to_chat(user, "[round(reagents.total_volume)] units left.")
+	user << "[round(reagents.total_volume)] units left."
 
 /obj/item/reagent_container/spray/verb/empty()
 
@@ -109,7 +109,7 @@
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
 		return
 	if(isturf(usr.loc))
-		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
+		usr << "<span class='notice'>You empty \the [src] onto the floor.</span>"
 		reagents.reaction(usr.loc)
 		spawn(5) src.reagents.clear_reagents()
 
@@ -144,11 +144,11 @@
 /obj/item/reagent_container/spray/pepper/examine(mob/user)
 	..()
 	if(get_dist(user,src) <= 1)
-		to_chat(user, "The safety is [safety ? "on" : "off"].")
+		user << "The safety is [safety ? "on" : "off"]."
 
 /obj/item/reagent_container/spray/pepper/attack_self(mob/user)
 	safety = !safety
-	to_chat(user, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
+	user << "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>"
 
 //water flower
 /obj/item/reagent_container/spray/waterflower
@@ -212,7 +212,7 @@
 				for(var/atom/t in get_turf(D))
 					D.reagents.reaction(t)
 				sleep(2)
-			qdel(D)
+			cdel(D)
 
 	return
 

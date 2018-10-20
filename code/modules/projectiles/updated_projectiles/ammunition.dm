@@ -44,10 +44,10 @@ They're all essentially identical when it comes to getting the job done.
 	..()
 	// It should never have negative ammo after spawn. If it does, we need to know about it.
 	if(current_rounds < 0)
-		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine.")
+		user<< "Something went horribly wrong. Ahelp the following: ERROR CODE R1: negative current_rounds on examine."
 		log_debug("ERROR CODE R1: negative current_rounds on examine. User: <b>[usr]</b>")
 	else
-		to_chat(user, "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>.")
+		user << "[src] has <b>[current_rounds]</b> rounds out of <b>[max_rounds]</b>."
 
 
 /obj/item/ammo_magazine/attack_hand(mob/user)
@@ -56,7 +56,7 @@ They're all essentially identical when it comes to getting the job done.
 			if (current_rounds > 0)
 				if(create_handful(user))
 					return
-			else to_chat(user, "[src] is empty. Nothing to grab.")
+			else user << "[src] is empty. Nothing to grab."
 			return
 	return ..() //Do normal stuff.
 
@@ -70,17 +70,17 @@ They're all essentially identical when it comes to getting the job done.
 				if(src == user.get_inactive_hand() || bypass_hold_check) //It has to be held.
 					if(default_ammo == transfer_from.default_ammo)
 						transfer_ammo(transfer_from,user,transfer_from.current_rounds) // This takes care of the rest.
-					else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
-				else to_chat(user, "Try holding [src] before you attempt to restock it.")
+					else user << "Those aren't the same rounds. Better not mix them up."
+				else user << "Try holding [src] before you attempt to restock it."
 
 //Generic proc to transfer ammo between ammo mags. Can work for anything, mags, handfuls, etc.
 /obj/item/ammo_magazine/proc/transfer_ammo(obj/item/ammo_magazine/source, mob/user, transfer_amount = 1)
 	if(current_rounds == max_rounds) //Does the mag actually need reloading?
-		to_chat(user, "[src] is already full.")
+		user << "[src] is already full."
 		return
 
 	if(source.caliber != caliber) //Are they the same caliber?
-		to_chat(user, "The rounds don't match up. Better not mix them up.")
+		user << "The rounds don't match up. Better not mix them up."
 		return
 
 	var/S = min(transfer_amount, max_rounds - current_rounds)
@@ -89,7 +89,7 @@ They're all essentially identical when it comes to getting the job done.
 	if(source.current_rounds <= 0 && istype(source, /obj/item/ammo_magazine/handful)) //We want to delete it if it's a handful.
 		if(user)
 			user.temp_drop_inv_item(source)
-		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
+		cdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
 	else source.update_icon()
 	update_icon(S)
 	return S // We return the number transferred if it was successful.
@@ -98,7 +98,7 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
 	var/R
 	if (current_rounds > 0)
-		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+		var/obj/item/ammo_magazine/handful/new_handful = rnew(/obj/item/ammo_magazine/handful)
 		var/MR = caliber == "12g" ? 5 : 8
 		R = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, MR)
 		new_handful.generate_handful(default_ammo, caliber, MR, R, gun_type)
@@ -106,7 +106,7 @@ They're all essentially identical when it comes to getting the job done.
 
 		if(user)
 			user.put_in_hands(new_handful)
-			to_chat(user, "<span class='notice'>You grab <b>[R]</b> round\s from [obj_name].</span>")
+			user << "<span class='notice'>You grab <b>[R]</b> round\s from [obj_name].</span>"
 
 		else new_handful.loc = get_turf(src)
 		update_icon(-R) //Update the other one.
@@ -124,7 +124,7 @@ They're all essentially identical when it comes to getting the job done.
 		if(0) return
 		if(1 to 100) explosion(loc,  -1, -1, 0, 2) //blow it up.
 		else explosion(loc,  -1, -1, 1, 2) //blow it up HARDER
-	qdel(src)
+	cdel(src)
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
 /obj/item/ammo_magazine/internal
@@ -167,6 +167,10 @@ bullets/shells. ~N
 	..()
 	return TA_REVIVE_ME
 
+/obj/item/ammo_magazine/handful/Recycle()
+	var/blacklist[] = list("name","desc","icon_state","caliber","max_rounds","current_rounds","default_ammo","icon_type","gun_type")
+	. = ..() + blacklist
+
 /obj/item/ammo_magazine/handful/update_icon() //Handles the icon itself as well as some bonus things.
 	if(max_rounds >= current_rounds)
 		var/I = current_rounds*50 // For the metal.
@@ -183,7 +187,7 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	if(istype(transfer_from)) // We have a handful. They don't need to hold it.
 		if(default_ammo == transfer_from.default_ammo) //Has to match.
 			transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
-		else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
+		else user << "Those aren't the same rounds. Better not mix them up."
 
 /obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, maximum_rounds, new_rounds, new_gun_type)
 	var/datum/ammo/A = ammo_list[new_ammo]
@@ -300,22 +304,22 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	..()
 	if(!handfuls)
 		if(contents.len < (num_of_magazines/3))
-			to_chat(user, "<span class='information'>It feels almost empty.</span>")
+			user << "<span class='information'>It feels almost empty.</span>"
 			return
 		if(contents.len < ((num_of_magazines*2)/3))
-			to_chat(user, "<span class='information'>It feels about half full.</span>")
+			user << "<span class='information'>It feels about half full.</span>"
 			return
-		to_chat(user, "<span class='information'>It feels almost full.</span>")
+		user << "<span class='information'>It feels almost full.</span>"
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
 			if(AM.current_rounds < (AM.max_rounds/3))
-				to_chat(user, "<span class='information'>It feels almost empty.</span>")
+				user << "<span class='information'>It feels almost empty.</span>"
 				return
 			if(AM.current_rounds < ((AM.max_rounds*2)/3))
-				to_chat(user, "<span class='information'>It feels about half full.</span>")
+				user << "<span class='information'>It feels about half full.</span>"
 				return
-			to_chat(user, "<span class='information'>It feels almost full.</span>")
+			user << "<span class='information'>It feels almost full.</span>"
 
 /obj/item/magazine_box/attack_self(mob/living/user)
 	deploy_ammo_box(user, user.loc)
@@ -333,7 +337,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		contents -= AM
 	M.update_icon()
 	user.drop_inv_item_on_ground(src)
-	qdel(src)
+	cdel(src)
 
 /obj/item/magazine_box/afterattack(atom/target, mob/living/user, proximity)
 	if(!proximity)
@@ -429,7 +433,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			MB.contents += AM
 			contents -= AM
 		usr.put_in_hands(MB)
-		qdel(src)
+		cdel(src)
 
 /obj/structure/magazine_box/examine(mob/user)
 	..()
@@ -438,9 +442,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(handfuls)
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 		if(AM)
-			to_chat(user, "<span class='information'>It has roughly [round(AM.current_rounds/5)] handfuls remaining.</span>")
+			user << "<span class='information'>It has roughly [round(AM.current_rounds/5)] handfuls remaining.</span>"
 	else
-		to_chat(user, "<span class='information'>It has [contents.len] magazines out of [num_of_magazines].</span>")
+		user << "<span class='information'>It has [contents.len] magazines out of [num_of_magazines].</span>"
 
 /obj/structure/magazine_box/update_icon()
 	if(!handfuls)
@@ -461,14 +465,14 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			var/obj/item/ammo_magazine/AM = pick(contents)
 			contents -= AM
 			user.put_in_hands(AM)
-			to_chat(user, "<span class='notice'>You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine.</span>")
+			user << "<span class='notice'>You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine.</span>"
 		else
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 			if(AM)
 				AM.create_handful(user, 5, src)
 		update_icon()
 	else
-		to_chat(user, "<span class='notice'>\The [src] is empty.</span>")
+		user << "<span class='notice'>\The [src] is empty.</span>"
 
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
@@ -477,10 +481,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			if(contents.len < num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				contents += W
-				to_chat(user, "<span class='notice'>You put a [W] in to \the [src]</span>")
+				user << "<span class='notice'>You put a [W] in to \the [src]</span>"
 				update_icon()
 			else
-				to_chat(user, "<span class='warning'>\The [src] is full.</span>")
+				user << "<span class='warning'>\The [src] is full.</span>"
 	else
 		if(istype(W,/obj/item/ammo_magazine/handful))
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
@@ -507,25 +511,25 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/big_ammo_box/examine(mob/user)
 	..()
 	if(bullet_amount)
-		to_chat(user, "It contains [bullet_amount] round\s.")
+		user << "It contains [bullet_amount] round\s."
 	else
-		to_chat(user, "It's empty.")
+		user << "It's empty."
 
 /obj/item/big_ammo_box/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = I
 		if(!isturf(loc))
-			to_chat(user, "<span class='warning'>[src] must be on the ground to be used.</span>")
+			user << "<span class='warning'>[src] must be on the ground to be used.</span>"
 			return
 		if(AM.flags_magazine & AMMUNITION_REFILLABLE)
 			if(default_ammo != AM.default_ammo)
-				to_chat(user, "<span class='warning'>Those aren't the same rounds. Better not mix them up.</span>")
+				user << "<span class='warning'>Those aren't the same rounds. Better not mix them up.</span>"
 				return
 			if(caliber != AM.caliber)
-				to_chat(user, "<span class='warning'>The rounds don't match up. Better not mix them up.</span>")
+				user << "<span class='warning'>The rounds don't match up. Better not mix them up.</span>"
 				return
 			if(AM.current_rounds == AM.max_rounds)
-				to_chat(user, "<span class='warning'>[AM] is already full.</span>")
+				user << "<span class='warning'>[AM] is already full.</span>"
 				return
 			if(!do_after(user,15, TRUE, 5, BUSY_ICON_FRIENDLY))
 				return
@@ -536,25 +540,25 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			AM.update_icon(S)
 			update_icon()
 			if(AM.current_rounds == AM.max_rounds)
-				to_chat(user, "<span class='notice'>You refill [AM].</span>")
+				user << "<span class='notice'>You refill [AM].</span>"
 			else
-				to_chat(user, "<span class='notice'>You put [S] rounds in [AM].</span>")
+				user << "<span class='notice'>You put [S] rounds in [AM].</span>"
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
 			if(caliber != AM.caliber)
-				to_chat(user, "<span class='warning'>The rounds don't match up. Better not mix them up.</span>")
+				user << "<span class='warning'>The rounds don't match up. Better not mix them up.</span>"
 				return
 			if(bullet_amount == max_bullet_amount)
-				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				user << "<span class='warning'>[src] is full!</span>"
 				return
 			playsound(loc, 'sound/weapons/gun_revolver_load3.ogg', 25, 1)
 			var/S = min(AM.current_rounds, max_bullet_amount - bullet_amount)
 			AM.current_rounds -= S
 			bullet_amount += S
 			AM.update_icon()
-			to_chat(user, "<span class='notice'>You put [S] rounds in [src].</span>")
+			user << "<span class='notice'>You put [S] rounds in [src].</span>"
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
-				qdel(AM)
+				cdel(AM)
 
 //explosion when using flamer procs.
 /obj/item/big_ammo_box/flamer_fire_act()
@@ -562,7 +566,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		if(0) return
 		if(1 to 100) explosion(loc,  0, 0, 1, 2) //blow it up.
 		else explosion(loc,  0, 0, 2, 3) //blow it up HARDER
-	qdel(src)
+	cdel(src)
 
 
 

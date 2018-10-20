@@ -36,19 +36,19 @@
 	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			qdel(src)
+			cdel(src)
 	else if(W.heat_source >= 3500)
-		qdel(src)
+		cdel(src)
 	else if(W.sharp)
 		switch(W.sharp)
 			if(IS_SHARP_ITEM_BIG)
-				qdel(src)
+				cdel(src)
 			if(IS_SHARP_ITEM_ACCURATE)
 				if(prob(60))
-					qdel(src)
+					cdel(src)
 			if(IS_SHARP_ITEM_SIMPLE)
 				if(prob(25))
-					qdel(src)
+					cdel(src)
 	else
 		manual_unbuckle(user)
 		return
@@ -126,7 +126,7 @@
 				V.loc = src.loc
 				V.update_canmove()
 				src.buckled_mob = V
-				to_chat(V, "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around you!</span>")
+				V << "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around you!</span>"
 
 		// FEED ME, SEYMOUR.
 		if(buckled_mob && seed && (buckled_mob.stat != DEAD)) //Don't bother with a dead mob.
@@ -137,7 +137,7 @@
 
 			// Drink some blood/cause some brute.
 			if(seed.carnivorous == 2)
-				to_chat(buckled_mob, "<span class='danger'>\The [src] pierces your flesh greedily!</span>")
+				buckled_mob << "<span class='danger'>\The [src] pierces your flesh greedily!</span>"
 
 				var/damage = rand(round(seed.potency/2),seed.potency)
 				if(!istype(H))
@@ -158,7 +158,7 @@
 
 			// Inject some chems.
 			if(seed.chems && seed.chems.len && istype(H))
-				to_chat(H, "<span class='danger'>You feel something seeping into your skin!</span>")
+				H << "<span class='danger'>You feel something seeping into your skin!</span>"
 				for(var/rid in seed.chems)
 					var/injecting = min(5,max(1,seed.potency/5))
 					H.reagents.add_reagent(rid,injecting)
@@ -168,14 +168,14 @@
 
 	// Update bioluminescence.
 	if(seed.biolum)
-		set_light(1+round(seed.potency/10))
+		SetLuminosity(1+round(seed.potency/10))
 		if(seed.biolum_colour)
-			light_color = seed.biolum_colour
+			l_color = seed.biolum_colour
 		else
-			light_color = null
+			l_color = null
 		return
 	else
-		set_light(0)
+		SetLuminosity(0)
 
 	// Update flower/product overlay.
 	overlays.Cut()
@@ -224,12 +224,12 @@
 
 // Hotspots kill vines.
 /obj/effect/plantsegment/fire_act(null, temp, volume)
-	qdel(src)
+	cdel(src)
 
 /obj/effect/plantsegment/proc/die()
 	if(seed && harvest && rand(5))
 		seed.harvest(src,1)
-		qdel(src)
+		cdel(src)
 
 /obj/effect/plantsegment/proc/life()
 
@@ -254,13 +254,19 @@
 		die()
 		return
 
-	var/light_available = T.get_lumcount()
-	if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
-		die()
-		return
+	var/area/A = T.loc
+	if(A)
+		var/light_available
+		if(A.lighting_use_dynamic)
+			light_available = max(0,min(10,T.lighting_lumcount)-5)
+		else
+			light_available =  5
+		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
+			die()
+			return
 
 /obj/effect/plantsegment/flamer_fire_act()
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/effect/plant_controller
@@ -285,7 +291,7 @@
 
 /obj/effect/plant_controller/New()
 	if(!istype(src.loc,/turf/open/floor))
-		qdel(src)
+		cdel(src)
 
 	spawn(0)
 		spawn_piece(src.loc)
@@ -311,12 +317,12 @@
 
 	// Space vines exterminated. Remove the controller
 	if(!vines)
-		qdel(src)
+		cdel(src)
 		return
 
 	// Sanity check.
 	if(!growth_queue)
-		qdel(src)
+		cdel(src)
 		return
 
 	// Check if we're too big for our own good.

@@ -127,7 +127,7 @@ obj/structure/bed/Dispose()
 				H.put_in_hands(I)
 				H.visible_message("<span class='warning'>[H] grabs [src] from the floor!</span>",
 				"<span class='warning'>You grab [src] from the floor!</span>")
-				qdel(src)
+				cdel(src)
 
 
 /obj/structure/bed/attackby(obj/item/W, mob/user)
@@ -135,13 +135,13 @@ obj/structure/bed/Dispose()
 		if(buildstacktype)
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			new buildstacktype(loc, buildstackamount)
-			qdel(src)
+			cdel(src)
 
 	else if(istype(W, /obj/item/grab) && !buckled_mob)
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
-			to_chat(user, "<span class='notice'>You place [M] on [src].</span>")
+			user << "<span class='notice'>You place [M] on [src].</span>"
 			M.forceMove(loc)
 		return TRUE
 
@@ -178,7 +178,7 @@ obj/structure/bed/Dispose()
 		else
 			visible_message("<span class='notice'>[user] collapses [name].</span>")
 			new/obj/item/roller(get_turf(src))
-			qdel(src)
+			cdel(src)
 		return
 	. = ..()
 
@@ -205,7 +205,7 @@ obj/structure/bed/Dispose()
 	if(istype(W, /obj/item/roller_holder) && rollertype == /obj/structure/bed/roller)
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
-			to_chat(user, "<span class='notice'>You pick up [src].</span>")
+			user << "<span class='notice'>You pick up [src].</span>"
 			loc = RH
 			RH.held = src
 			return
@@ -215,7 +215,7 @@ obj/structure/bed/Dispose()
 	var/obj/structure/bed/roller/R = new rollertype(location)
 	R.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
-	qdel(src)
+	cdel(src)
 
 /obj/item/roller_holder
 	name = "roller bed rack"
@@ -231,13 +231,13 @@ obj/structure/bed/Dispose()
 /obj/item/roller_holder/attack_self(mob/user as mob)
 
 	if(!held)
-		to_chat(user, "<span class='warning'>The rack is empty.</span>")
+		user << "<span class='warning'>The rack is empty.</span>"
 		return
 
 	var/obj/structure/bed/roller/R = new(user.loc)
-	to_chat(user, "<span class='notice'>You deploy [R].</span>")
+	user << "<span class='notice'>You deploy [R].</span>"
 	R.add_fingerprint(user)
-	qdel(held)
+	cdel(held)
 	held = null
 
 ////////////////////////////////////////////
@@ -292,11 +292,11 @@ var/global/list/activated_medevac_stretchers = list()
 		return
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-		to_chat(user, "<span class='warning'>You don't know how to use [src].</span>")
+		user << "<span class='warning'>You don't know how to use [src].</span>"
 		return
 
 	if(user == buckled_mob)
-		to_chat(user, "<span class='warning'>You can't reach the beacon activation button while buckled to [src].</span>")
+		user << "<span class='warning'>You can't reach the beacon activation button while buckled to [src].</span>"
 		return
 
 	if(stretcher_activated)
@@ -305,26 +305,26 @@ var/global/list/activated_medevac_stretchers = list()
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
-		to_chat(user, "<span class='notice'>You deactivate [src]'s beacon.</span>")
+		user << "<span class='notice'>You deactivate [src]'s beacon.</span>"
 		update_icon()
 
 	else
 		if(z != 1)
-			to_chat(user, "<span class='warning'>You can't activate [src]'s beacon here.</span>")
+			user << "<span class='warning'>You can't activate [src]'s beacon here.</span>"
 			return
 
 		var/area/AR = get_area(src)
 		if(AR.ceiling >= CEILING_METAL)
-			to_chat(user, "<span class='warning'>[src] must be in the open or under a glass roof.</span>")
+			user << "<span class='warning'>[src] must be in the open or under a glass roof.</span>"
 			return
 
 		if(buckled_mob || buckled_bodybag)
 			stretcher_activated = TRUE
 			activated_medevac_stretchers += src
-			to_chat(user, "<span class='notice'>You activate [src]'s beacon.</span>")
+			user << "<span class='notice'>You activate [src]'s beacon.</span>"
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>You need to attach something to [src] before you can activate its beacon yet.</span>")
+			user << "<span class='warning'>You need to attach something to [src] before you can activate its beacon yet.</span>"
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"

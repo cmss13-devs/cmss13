@@ -36,7 +36,7 @@
 		var/mob/living/carbon/human/wielder = user
 		var/datum/limb/hand = wielder.get_limb(check_hand)
 		if( !istype(hand) || !hand.is_usable() )
-			to_chat(user, "<span class='warning'>Your other hand can't hold [src]!</span>")
+			user << "<span class='warning'>Your other hand can't hold [src]!</span>"
 			return
 
 	flags_item 	   ^= WIELDED
@@ -54,8 +54,8 @@
 	return 1
 
 /obj/item/proc/place_offhand(var/mob/user,item_name)
-	to_chat(user, "<span class='notice'>You grab [item_name] with both hands.</span>")
-	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
+	user << "<span class='notice'>You grab [item_name] with both hands.</span>"
+	var/obj/item/weapon/twohanded/offhand/offhand = rnew(/obj/item/weapon/twohanded/offhand, user)
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
 	offhand.flags_item |= WIELDED
@@ -64,7 +64,7 @@
 	user.update_inv_r_hand()
 
 /obj/item/proc/remove_offhand(var/mob/user)
-	to_chat(user, "<span class='notice'>You are now carrying [name] with one hand.</span>")
+	user << "<span class='notice'>You are now carrying [name] with one hand.</span>"
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
 	if(istype(offhand)) offhand.unwield(user)
 	user.update_inv_l_hand(0)
@@ -85,7 +85,7 @@
 /obj/item/weapon/twohanded/attack_self(mob/user)
 	..()
 	if(ismonkey(user))
-		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully!</span>")
+		user << "<span class='warning'>It's too heavy for you to wield fully!</span>"
 		return
 
 	if(flags_item & WIELDED) unwield(user)
@@ -102,14 +102,18 @@
 		if(flags_item & WIELDED)
 			flags_item &= ~WIELDED
 			user.temp_drop_inv_item(src)
-			qdel(src)
+			cdel(src)
 
 	wield()
-		qdel(src) //This shouldn't even happen.
+		cdel(src) //This shouldn't even happen.
 
 	Dispose()
 		..()
 		return TA_REVIVE_ME //So we can recycle this garbage.
+
+	Recycle()
+		var/blacklist[] = list("name","w_class","desc","flags","icon_state")
+		. = ..() + blacklist
 
 	dropped(mob/user)
 		..()
@@ -150,7 +154,7 @@
 	if(!proximity) return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
-		qdel(A)
+		cdel(A)
 
 /*
  * Double-Bladed Energy Swords - Cheridan
@@ -178,7 +182,7 @@
 /obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
 	if((CLUMSY in user.mutations) && (flags_item & WIELDED) &&prob(40))
-		to_chat(user, "<span class='highdanger'>You twirl around a bit before losing your balance and impaling yourself on [src].</span>")
+		user << "<span class='highdanger'>You twirl around a bit before losing your balance and impaling yourself on [src].</span>"
 		user.take_limb_damage(20,25)
 		return
 	if((flags_item & WIELDED) && prob(50))

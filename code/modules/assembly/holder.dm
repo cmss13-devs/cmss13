@@ -16,13 +16,13 @@
 
 /obj/item/device/assembly_holder/Dispose()
 	if(a_left)
-		qdel(a_left)
+		cdel(a_left)
 		a_left = null
 	if(a_right)
-		qdel(a_right)
+		cdel(a_right)
 		a_right = null
 	if(special_assembly)
-		qdel(special_assembly)
+		cdel(special_assembly)
 		special_assembly = null
 	. = ..()
 
@@ -88,9 +88,9 @@
 	..()
 	if (in_range(src, user) || loc == user)
 		if (secured)
-			to_chat(user, "[src] is ready!")
+			user << "[src] is ready!"
 		else
-			to_chat(user, "[src] can be attached!")
+			user << "[src] can be attached!"
 
 
 
@@ -140,15 +140,15 @@
 /obj/item/device/assembly_holder/attackby(obj/item/W as obj, mob/user as mob)
 	if(isscrewdriver(W))
 		if(!a_left || !a_right)
-			to_chat(user, "\red BUG:Assembly part missing, please report this!")
+			user << "\red BUG:Assembly part missing, please report this!"
 			return
 		a_left.toggle_secure()
 		a_right.toggle_secure()
 		secured = !secured
 		if(secured)
-			to_chat(user, "\blue \The [src] is ready!")
+			user << "\blue \The [src] is ready!"
 		else
-			to_chat(user, "\blue \The [src] can now be taken apart!")
+			user << "\blue \The [src] can now be taken apart!"
 		update_icon()
 		return
 	else if(W.IsSpecialAssembly())
@@ -162,7 +162,7 @@
 	src.add_fingerprint(user)
 	if(src.secured)
 		if(!a_left || !a_right)
-			to_chat(user, "<span class='warning'>Assembly part missing!</span>")
+			user << "\red Assembly part missing!"
 			return
 		if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
 			switch(alert("Which side would you like to use?",,"Left","Right"))
@@ -186,18 +186,18 @@
 			a_right.holder = null
 			a_right.loc = T
 			a_right = null
-		qdel(src)
+		cdel(src)
 
 
 
 /obj/item/device/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
 	if(!D)	return 0
 	if(!secured)
-		visible_message("[bicon(src)] *beep* *beep*", "*beep* *beep*")
+		visible_message("\icon[src] *beep* *beep*", "*beep* *beep*")
 	if((normal) && (a_right) && (a_left))
 		if(a_right != D)
 			a_right.pulsed(0)
-		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've qdel'd the assembly
+		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've cdel'd the assembly
 			a_left.pulsed(0)
 	if(master)
 		master.receive_signal()
@@ -258,18 +258,18 @@
 		if(!istype(tmr,/obj/item/device/assembly/timer))
 			tmr = holder.a_right
 		if(!istype(tmr,/obj/item/device/assembly/timer))
-			to_chat(usr, "<span class='notice'>This detonator has no timer.</span>")
+			usr << "<span class='notice'>This detonator has no timer.</span>"
 			return
 
 		if(tmr.timing)
-			to_chat(usr, "<span class='notice'>Clock is ticking already.</span>")
+			usr << "<span class='notice'>Clock is ticking already.</span>"
 		else
 			var/ntime = input("Enter desired time in seconds", "Time", "5") as num
 			if (ntime>0 && ntime<1000)
 				tmr.time = ntime
 				name = initial(name) + "([tmr.time] secs)"
-				to_chat(usr, "<span class='notice'>Timer set to [tmr.time] seconds.</span>")
+				usr << "<span class='notice'>Timer set to [tmr.time] seconds.</span>"
 			else
-				to_chat(usr, "<span class='notice'>Timer can't be [ntime<=0?"negative":"more than 1000 seconds"].</span>")
+				usr << "<span class='notice'>Timer can't be [ntime<=0?"negative":"more than 1000 seconds"].</span>"
 	else
-		to_chat(usr, "<span class='notice'>You cannot do this while [usr.stat?"unconscious/dead":"restrained"].</span>")
+		usr << "<span class='notice'>You cannot do this while [usr.stat?"unconscious/dead":"restrained"].</span>"

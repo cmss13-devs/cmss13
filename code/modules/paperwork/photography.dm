@@ -46,9 +46,9 @@
 /obj/item/photo/examine(mob/user)
 	if(in_range(user, src))
 		show(user)
-		..()
+		user << desc
 	else
-		to_chat(user, "<span class='notice'>It is too far away.</span>")
+		user << "<span class='notice'>It is too far away.</span>"
 
 /obj/item/photo/proc/show(mob/living/user)
 	if(!isicon(img)) return // this should stop a runtime error
@@ -134,7 +134,7 @@
 	var/nsize = input("Photo Size","Pick a size of resulting photo.") as null|anything in list(1,3,5,7)
 	if(nsize)
 		size = nsize
-		to_chat(usr, "<span class='notice'>Camera will now take [size]x[size] photos.</span>")
+		usr << "<span class='notice'>Camera will now take [size]x[size] photos.</span>"
 
 /obj/item/device/camera/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	return
@@ -145,17 +145,17 @@
 		src.icon_state = icon_on
 	else
 		src.icon_state = icon_off
-	to_chat(user, "You switch the camera [on ? "on" : "off"].")
+	user << "You switch the camera [on ? "on" : "off"]."
 	return
 
 /obj/item/device/camera/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/device/camera_film))
 		if(pictures_left)
-			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
+			user << "<span class='notice'>[src] still has some film in it!</span>"
 			return
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		user << "<span class='notice'>You insert [I] into [src].</span>"
 		if(user.temp_drop_inv_item(I))
-			qdel(I)
+			cdel(I)
 			pictures_left = pictures_max
 		return
 	..()
@@ -240,7 +240,7 @@
 
 	pictures_left--
 	desc = "A polaroid camera. It has [pictures_left] photos left."
-	to_chat(user, "<span class='notice'>[pictures_left] photos left.</span>")
+	user << "<span class='notice'>[pictures_left] photos left.</span>"
 	icon_state = icon_off
 	on = 0
 	spawn(64)

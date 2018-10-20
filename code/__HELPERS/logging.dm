@@ -32,7 +32,7 @@
 
 	for(var/client/C in admins)
 		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
-			to_chat(C, "DEBUG: [text]")
+			C << "DEBUG: [text]"
 
 
 /proc/log_game(text)

@@ -238,7 +238,7 @@
 					unfold_up()
 					return
 			if(DROPSHIP_CHAIR_BROKEN)
-				to_chat(user, "<span class='warning'>\The [src] appears to be broken and needs welding.</span>")
+				user << "<span class='warning'>\The [src] appears to be broken and needs welding.</span>"
 				return
 	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
 		var/obj/item/tool/weldingtool/C = W

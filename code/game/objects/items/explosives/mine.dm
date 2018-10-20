@@ -31,7 +31,7 @@
 
 /obj/item/explosive/mine/Dispose()
 	if(tripwire)
-		qdel(tripwire)
+		cdel(tripwire)
 		tripwire = null
 	. = ..()
 
@@ -44,15 +44,15 @@
 //Arming
 /obj/item/explosive/mine/attack_self(mob/living/user)
 	if(locate(/obj/item/explosive/mine) in get_turf(src))
-		to_chat(user, "<span class='warning'>There already is a mine at this position!</span>")
+		user << "<span class='warning'>There already is a mine at this position!</span>"
 		return
 
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
-		to_chat(user, "<span class='warning'>You can't plant a mine here.</span>")
+		user << "<span class='warning'>You can't plant a mine here.</span>"
 		return
 
 	/*if(user.z == MAIN_SHIP_Z_LEVEL || user.z == LOW_ORBIT_Z_LEVEL) // Almayer or dropship transit level
-		to_chat(user, "<span class='warning'>You can't plant a mine on a spaceship!</span>")
+		user << "<span class='warning'>You can't plant a mine on a spaceship!</span>"
 		return*/
 
 	if(!armed)
@@ -90,7 +90,7 @@
 			armed = 0
 			icon_state = copytext(icon_state,1,-6)
 			if(tripwire)
-				qdel(tripwire)
+				cdel(tripwire)
 				tripwire = null
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
@@ -105,8 +105,8 @@
 
 	if((istype(H) && H.get_target_lock(iff_signal)) || isrobot(H)) return
 
-	H.visible_message("<span class='danger'>[bicon(src)] The [name] clicks as [H] moves in front of it.</span>", \
-	"<span class='danger'>[bicon(src)] The [name] clicks as you move in front of it.</span>", \
+	H.visible_message("<span class='danger'>\icon[src] The [name] clicks as [H] moves in front of it.</span>", \
+	"<span class='danger'>\icon[src] The [name] clicks as you move in front of it.</span>", \
 	"<span class='danger'>You hear a click.</span>")
 
 	triggered = 1
@@ -121,7 +121,7 @@
 		if("explosive")
 			if(tripwire)
 				explosion_rec(tripwire.loc, 80, 30)
-				qdel(src)
+				cdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(triggered) //Mine is already set to go off
@@ -159,7 +159,7 @@
 
 /obj/effect/mine_tripwire/Crossed(atom/A)
 	if(!linked_claymore)
-		qdel(src)
+		cdel(src)
 		return
 
 	if(linked_claymore.triggered) //Mine is already set to go off

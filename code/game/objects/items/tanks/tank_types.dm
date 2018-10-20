@@ -81,7 +81,7 @@
 	examine(mob/user)
 		..()
 		if(pressure < 50 && loc==user)
-			to_chat(user, "<span class = 'danger'>The meter on the [src.name] indicates you are almost out of air!</span>")
+			user << "<span class = 'danger'>The meter on the [src.name] indicates you are almost out of air!</span>"
 			user << sound('sound/effects/alert.ogg')
 
 /obj/item/tank/emergency_oxygen/engi

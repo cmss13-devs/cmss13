@@ -26,7 +26,7 @@
 
 /obj/machinery/atmospherics/pipe/proc/check_pressure(pressure)
 	//Return 1 if parent should continue checking other pipes
-	//Return null if parent should stop checking other pipes. Recall: qdel(src) will by default return null
+	//Return null if parent should stop checking other pipes. Recall: cdel(src) will by default return null
 
 	return 1
 
@@ -65,12 +65,12 @@
 	return parent.return_network(reference)
 
 /obj/machinery/atmospherics/pipe/Dispose()
-	if(!disposed) //not already qdel'd
+	if(!disposed) //not already cdel'd
 		if(contents.len)
 			for(var/atom/movable/A in contents)
 				A.forceMove(loc)
 		if(parent)
-			qdel(parent)
+			cdel(parent)
 	. = ..()
 	//build_network()
 
@@ -87,7 +87,7 @@
 		return ..()
 	var/turf/T = src.loc
 	if(level == 1 && isturf(T) && T.intact_tile)
-		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
+		user << "<span class='warning'>You must remove the plating first.</span>"
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -101,8 +101,8 @@
 		for(var/obj/machinery/meter/meter in T)
 			if(meter.target == src)
 				new /obj/item/pipe_meter(T)
-				qdel(meter)
-		qdel(src)
+				cdel(meter)
+		cdel(src)
 
 /obj/machinery/atmospherics/proc/change_color(var/new_color)
 	//only pass valid pipe colors please ~otherwise your pipe will turn invisible
@@ -202,12 +202,12 @@
 	return 1
 
 /obj/machinery/atmospherics/pipe/simple/proc/burst()
-	src.visible_message("<span class='danger'>[src] bursts!</span>");
+	src.visible_message("\red \bold [src] bursts!");
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
 	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(0,0, src.loc, 0)
 	smoke.start()
-	qdel(src)
+	cdel(src)
 
 /obj/machinery/atmospherics/pipe/simple/proc/normalize_dir()
 	if(dir==3)
@@ -247,8 +247,8 @@
 		for (var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
-				qdel(meter)
-		qdel(src)
+				cdel(meter)
+		cdel(src)
 	else if(node1 && node2)
 		overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, "[pipe_icon]intact[icon_connect_type]")
 	else
@@ -287,7 +287,7 @@
 				break
 
 	if(!node1 && !node2)
-		qdel(src)
+		cdel(src)
 		return
 
 	var/turf/T = get_turf(src)
@@ -490,8 +490,8 @@
 		for (var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
-				qdel(meter)
-		qdel(src)
+				cdel(meter)
+		cdel(src)
 	else
 		overlays.Cut()
 		overlays += icon_manager.get_atmos_icon("manifold", , pipe_color, "core" + icon_connect_type)
@@ -566,7 +566,7 @@
 				break
 
 	if(!node1 && !node2 && !node3)
-		qdel(src)
+		cdel(src)
 		return
 
 	var/turf/T = get_turf(src)
@@ -736,8 +736,8 @@
 		for (var/obj/machinery/meter/meter in T)
 			if (meter.target == src)
 				new /obj/item/pipe_meter(T)
-				qdel(meter)
-		qdel(src)
+				cdel(meter)
+		cdel(src)
 	else
 		overlays.Cut()
 		overlays += icon_manager.get_atmos_icon("manifold", , pipe_color, "4way" + icon_connect_type)
@@ -823,7 +823,7 @@
 				break
 
 	if(!node1 && !node2 && !node3 && !node4)
-		qdel(src)
+		cdel(src)
 		return
 
 	var/turf/T = get_turf(src)
@@ -1101,15 +1101,15 @@
 
 	if(istype(W, /obj/item/device/analyzer) && in_range(user, src))
 		for (var/mob/O in viewers(user, null))
-			to_chat(O, "<span class='warning'>[user] has used the analyzer on [bicon(icon)]</span>")
+			O << "\red [user] has used the analyzer on \icon[icon]"
 
-		to_chat(user, "<span class='notice'>Results of analysis of [bicon(icon)]</span>")
+		user << "\blue Results of analysis of \icon[icon]"
 		if (pressure>0)
-			to_chat(user, "<span class='notice'>Pressure: [round(pressure,0.1)] kPa</span>")
-			to_chat(user, "<span class='notice'>[gas_type]: [100]%</span>")
-			to_chat(user, "<span class='notice'>Temperature: [round(temperature-T0C)]&deg;C</span>")
+			user << "\blue Pressure: [round(pressure,0.1)] kPa"
+			user << "\blue [gas_type]: [100]%"
+			user << "\blue Temperature: [round(temperature-T0C)]&deg;C"
 		else
-			to_chat(user, "<span class='notice'>Tank is empty!</span>")
+			user << "\blue Tank is empty!"
 
 /obj/machinery/atmospherics/pipe/tank/air
 	name = "Pressure Tank (Air)"

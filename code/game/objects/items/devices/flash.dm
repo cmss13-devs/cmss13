@@ -17,7 +17,7 @@
 /obj/item/device/flash/proc/clown_check(var/mob/user)
 	if(user && (CLUMSY in user.mutations) && prob(50))
 		if(user.drop_held_item())
-			to_chat(user, "<span class='warning'>\The [src] slips out of your hand.</span>")
+			user << "\red \The [src] slips out of your hand."
 		return 0
 	return 1
 
@@ -41,17 +41,17 @@
 	msg_admin_attack("[user.name] ([user.ckey]) Used the [src.name] to flash [M.name] ([M.ckey]) (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_FLASH)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 		return
 
 	if(!clown_check(user))	return
 	if(broken)
-		to_chat(user, "<span class='warning'>\The [src] is broken.</span>")
+		user << "<span class='warning'>\The [src] is broken.</span>"
 		return
 
 	flash_recharge()
 	if(isXeno(M))
-		to_chat(user, "You can't find any eyes!")
+		user << "You can't find any eyes!"
 		return
 
 	//spamming the flash before it's fully charged (60seconds) increases the chance of it  breaking
@@ -61,12 +61,12 @@
 			last_used = world.time
 			if(prob(times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
 				broken = 1
-				to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+				user << "<span class='warning'>The bulb has burnt out!</span>"
 				icon_state = "flashburnt"
 				return
 			times_used++
 		else	//can only use it  5 times a minute
-			to_chat(user, "<span class='warning'>*click* *click*</span>")
+			user << "<span class='warning'>*click* *click*</span>"
 			return
 	playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 	var/flashfail = 0
@@ -90,7 +90,7 @@
 			animation.master = user
 			flick("blspell", animation)
 			sleep(5)
-			qdel(animation)
+			cdel(animation)
 
 	if(!flashfail)
 	//	flick("flash2", src)
@@ -113,7 +113,7 @@
 	if(!user || !clown_check(user)) 	return
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_FLASH)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 		return
 
 	if(broken)
@@ -128,7 +128,7 @@
 		if(0 to 5)
 			if(prob(2*times_used))	//if you use it 5 times in a minute it has a 10% chance to break!
 				broken = 1
-				to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+				user << "<span class='warning'>The bulb has burnt out!</span>"
 				icon_state = "flashburnt"
 				return
 			times_used++
@@ -146,7 +146,7 @@
 			animation.master = user
 			flick("blspell", animation)
 			sleep(5)
-			qdel(animation)
+			cdel(animation)
 
 	for(var/mob/living/carbon/human/M in oviewers(3, null))
 		if(prob(50))
@@ -187,12 +187,12 @@
 	..()
 	if(!broken)
 		broken = 1
-		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+		user << "\red The bulb has burnt out!"
 		icon_state = "flashburnt"
 
 /obj/item/device/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	..()
 	if(!broken)
 		broken = 1
-		to_chat(user, "<span class='warning'>The bulb has burnt out!</span>")
+		user << "\red The bulb has burnt out!"
 		icon_state = "flashburnt"

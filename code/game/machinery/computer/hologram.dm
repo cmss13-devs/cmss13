@@ -66,7 +66,7 @@
 		if (href_list["power"])
 			if (projector.hologram)
 				projector.icon_state = "hologram0"
-				qdel(projector.hologram)
+				cdel(projector.hologram)
 				projector.hologram = null
 			else
 				projector.hologram = new(projector.loc)

@@ -114,7 +114,7 @@
 		A.bullet_act(src)
 		src.life -= 10
 		if(life <= 0)
-			qdel(src)
+			cdel(src)
 		return
 */
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
@@ -155,7 +155,7 @@
 				var/mob/living/carbon/human/H = M
 				if(istype(H.l_ear, /obj/item/clothing/ears/earmuffs) || istype(H.r_ear, /obj/item/clothing/ears/earmuffs))
 					continue
-			to_chat(M, "<font color='red' size='7'>HONK</font>")
+			M << "<font color='red' size='7'>HONK</font>"
 			M.sleeping = 0
 			M.stuttering += 20
 			M.ear_deaf += 30

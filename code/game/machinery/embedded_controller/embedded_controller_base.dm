@@ -30,7 +30,7 @@
 	src.ui_interact(user)
 
 /obj/machinery/embedded_controller/attack_paw(mob/user as mob)
-	to_chat(user, "You do not have the dexterity to use this.")
+	user << "You do not have the dexterity to use this."
 	return
 
 /obj/machinery/embedded_controller/attack_hand(mob/user as mob)
@@ -71,7 +71,7 @@
 		//use_power(radio_power_use)	//neat idea, but causes way too much lag.
 		return radio_connection.post_signal(src, signal, filter)
 	else
-		qdel(signal)
+		cdel(signal)
 
 /obj/machinery/embedded_controller/radio/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)

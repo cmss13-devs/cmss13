@@ -56,11 +56,11 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 				linked_console.linked_lathe = null
 				linked_console = null
 			icon_state = "protolathe_t"
-			to_chat(user, "You open the maintenance hatch of [src].")
+			user << "You open the maintenance hatch of [src]."
 		else
 			opened = 0
 			icon_state = "protolathe"
-			to_chat(user, "You close the maintenance hatch of [src].")
+			user << "You close the maintenance hatch of [src]."
 		return
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
@@ -80,21 +80,21 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 				new /obj/item/XenoBio/Chitin(src.loc)
 			while(resin_amount>0)
 				new /obj/item/XenoBio/Resin(src.loc)
-			qdel(src)
+			cdel(src)
 			return 1
 		else
-			to_chat(user, "\red You can't load the [src.name] while it's opened.")
+			user << "\red You can't load the [src.name] while it's opened."
 			return 1
 	if (disabled)
 		return
 	if (!linked_console)
-		to_chat(user, "\The Weyland Yutani Brand Bioprinter(TM) must be linked to an R&D console first!")
+		user << "\The Weyland Yutani Brand Bioprinter(TM) must be linked to an R&D console first!"
 		return 1
 	if (busy)
-		to_chat(user, "<span class='warning'>The Weyland Yutani Brand Bioprinter(TM) is busy. Please wait for completion of previous operation.</span>")
+		user << "\red The Weyland Yutani Brand Bioprinter(TM) is busy. Please wait for completion of previous operation."
 		return 1
 	if (!istype(O, /obj/item/XenoBio))
-		to_chat(user, "<span class='warning'>You cannot insert this item into the protolathe!</span>")
+		user << "\red You cannot insert this item into the protolathe!"
 		return 1
 	if (stat)
 		return 1
@@ -103,17 +103,17 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 	busy = 1
 	use_power(max(1000, (3750)))
 	if (do_after(user, 16, TRUE, 5, BUSY_ICON_GENERIC))
-		to_chat(user, "<span class='notice'>You add a [O] to the [src.name].</span>")
+		user << "\blue You add a [O] to the [src.name]."
 		icon_state = "protolathe"
 		if(istype(O, /obj/item/XenoBio/Blood))
 			blood_amount++
-			qdel(O)
+			cdel(O)
 		if(istype(O, /obj/item/XenoBio/Chitin))
 			chitin_amount++
-			qdel(O)
+			cdel(O)
 		if(istype(O, /obj/item/XenoBio/Resin))
 			resin_amount++
-			qdel(O)
+			cdel(O)
 	busy = 0
 	src.updateUsrDialog()
 	return

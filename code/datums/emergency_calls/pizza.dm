@@ -34,13 +34,13 @@
 	spawn(0)
 		spawn_pizza(mob)
 		var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
-		to_chat(mob, "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>")
-		to_chat(mob, "Your job is to deliver your pizzas. You're PRETTY sure this is the right place..")
+		mob << "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>"
+		mob << "Your job is to deliver your pizzas. You're PRETTY sure this is the right place.."
 	spawn(10)
-		to_chat(M, "<B>Objectives:</b> [objectives]")
+		M << "<B>Objectives:</b> [objectives]"
 
 	if(original)
-		qdel(original)
+		cdel(original)
 	return
 
 /datum/emergency_call/pizza/proc/spawn_pizza(var/mob/M)

@@ -243,7 +243,7 @@
 	corpses -= H
 
 /hook/death/proc/handle_marine_deaths(var/mob/living/carbon/human/H, var/gibbed)
-	if(!H || !istype(H.assigned_squad) || gibbed || !objectives_controller)
+	if(!istype(H.assigned_squad) || gibbed || !objectives_controller)
 		return 1
 	objectives_controller.marines.add_marine(H)
 	return 1

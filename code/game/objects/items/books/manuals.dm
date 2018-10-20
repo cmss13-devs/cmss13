@@ -227,7 +227,7 @@
 				A power problem has made the entire station lose power? Could be station-wide wiring problems or syndicate power sinks. In any case follow these steps:
 
 				<ol>
-					<li><span class='danger'>PANIC!</span></li>
+					<li><b><font color='red'>PANIC!</font></b></li>
 					<li>Get your ass over to engineering! <b>QUICKLY!!!</b></li>
 					<li>Get to the <b>Area Power Controller</b> which controls the power to the emitters.</li>
 					<li>Swipe it with your <b>ID card</b> - if it doesn't unlock, continue with step 15.</li>

@@ -460,7 +460,7 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
-	to_chat(user, "<span class='warning'>You scrape ineffectively at \the [src].</span>")
+	user << "<span class='warning'>You scrape ineffectively at \the [src].</span>"
 
 
 /turf/closed/wall/resin/attack_paw(mob/user)
@@ -481,8 +481,7 @@
 	return !density
 
 /turf/closed/wall/resin/dismantle_wall(devastated = 0, explode = 0)
-	ChangeTurf(oldTurf, TRUE)
-	//qdel(src) //ChangeTurf is called by Dispose() no it isnt
+	cdel(src) //ChangeTurf is called by Dispose()
 
 
 

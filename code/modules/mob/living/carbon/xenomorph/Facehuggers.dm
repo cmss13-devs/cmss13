@@ -52,7 +52,7 @@
 		if(F.stat == CONSCIOUS) count++
 		if(count > 2) //Was 5, our rules got much tighter
 			visible_message("<span class='xenowarning'>The facehugger is furiously cannibalized by the nearby horde of other ones!</span>")
-			qdel(src)
+			cdel(src)
 			return
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
 		if(check_lifecycle())
@@ -89,7 +89,7 @@
 		Attach(M)
 		user.update_icons()
 	else
-		to_chat(user, "<span class='warning'>The facehugger refuses to attach.</span>")
+		user << "<span class='warning'>The facehugger refuses to attach.</span>"
 		..()
 
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
@@ -100,12 +100,10 @@
 /obj/item/clothing/mask/facehugger/examine(mob/user)
 	..()
 	switch(stat)
-		if(DEAD, UNCONSCIOUS)
-			to_chat(user, "<span class='danger'>[src] is not moving.</span>")
-		if(CONSCIOUS) 
-			to_chat(user, "<span class='danger'>[src] seems to be active.</span>")
+		if(DEAD, UNCONSCIOUS) user << "<span class='danger'>[src] is not moving.</span>"
+		if(CONSCIOUS) user << "<span class='danger'>[src] seems to be active.</span>"
 	if(sterile)
-		to_chat(user, "<span class='danger'>It looks like the proboscis has been removed.</span>")
+		user << "<span class='danger'>It looks like the proboscis has been removed.</span>"
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/W, mob/user)
 	if(W.flags_item & NOBLUDGEON) return
@@ -374,14 +372,14 @@
 				E.status = GROWN
 				E.icon_state = "Egg"
 				E.deploy_egg_triggers()
-				qdel(src)
+				cdel(src)
 				return
 			var/obj/effect/alien/resin/trap/T = locate() in loc
 			if(T && T.trap_type == RESIN_TRAP_EMPTY)
 				visible_message("<span class='xenowarning'>[src] crawls into [T]!</span>")
 				T.hugger_hivenumber = hivenumber
 				T.set_state(RESIN_TRAP_HUGGER)
-				qdel(src)
+				cdel(src)
 				return
 		Die()
 	else if(!attached || !ishuman(loc)) //doesn't age while attached
@@ -421,7 +419,7 @@
 	icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
 
-	visible_message("[bicon(src)] <span class='danger'>\The [src] curls up into a ball!</span>")
+	visible_message("\icon[src] <span class='danger'>\The [src] curls up into a ball!</span>")
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
@@ -431,8 +429,8 @@
 	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
 
 	sleep(1800) //3 minute timer for it to decay
-	visible_message("[bicon(src)] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
-	qdel(src)
+	visible_message("\icon[src] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
+	cdel(src)
 
 /proc/CanHug(mob/living/carbon/M)
 

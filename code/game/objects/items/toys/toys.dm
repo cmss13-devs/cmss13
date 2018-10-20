@@ -44,7 +44,7 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
+		user << "\blue You fill the balloon with the contents of [A]."
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -53,29 +53,29 @@
 	if(istype(O, /obj/item/reagent_container/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				to_chat(user, "The [O] is empty.")
+				user << "The [O] is empty."
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
-					to_chat(user, "The acid chews through the balloon!")
+					user << "The acid chews through the balloon!"
 					O.reagents.reaction(user)
-					qdel(src)
+					cdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, "<span class='notice'>You fill the balloon with the contents of [O].</span>")
+					user << "\blue You fill the balloon with the contents of [O]."
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
 	return
 
 /obj/item/toy/balloon/throw_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
-		src.visible_message("<span class='warning'>The [src] bursts!</span>","You hear a pop and a splash.")
+		src.visible_message("\red The [src] bursts!","You hear a pop and a splash.")
 		src.reagents.reaction(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A)
 		src.icon_state = "burst"
 		spawn(5)
 			if(src)
-				qdel(src)
+				cdel(src)
 	return
 
 /obj/item/toy/balloon/update_icon()
@@ -136,6 +136,10 @@
 	var/instant = 0
 	var/colourName = "red" //for updateIcon purposes
 
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is jamming the [src.name] up \his nose and into \his brain. It looks like \he's trying to commit suicide.</b>"
+		return (BRUTELOSS|OXYLOSS)
+
 /*
  * Snap pops
  */
@@ -151,23 +155,23 @@
 		s.set_up(3, 1, src)
 		s.start()
 		new /obj/effect/decal/cleanable/ash(src.loc)
-		src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
+		src.visible_message("\red The [src.name] explodes!","\red You hear a snap!")
 		playsound(src, 'sound/effects/snap.ogg', 25, 1)
-		qdel(src)
+		cdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
 		if(M.m_intent == MOVE_INTENT_RUN)
-			to_chat(M, "<span class='warning'>You step on the snap pop!</span>")
+			M << "\red You step on the snap pop!"
 
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(2, 0, src)
 			s.start()
 			new /obj/effect/decal/cleanable/ash(src.loc)
-			src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
+			src.visible_message("\red The [src.name] explodes!","\red You hear a snap!")
 			playsound(src, 'sound/effects/snap.ogg', 25, 1)
-			qdel(src)
+			cdel(src)
 
 /*
  * Water flower
@@ -200,12 +204,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class='notice'>You refill your flower!</span>")
+		user << "\blue You refill your flower!"
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		to_chat(user, "<span class='notice'>Your flower has run dry!</span>")
+		user << "\blue Your flower has run dry!"
 		return
 
 	else
@@ -226,17 +230,16 @@
 				D.reagents.reaction(get_turf(D))
 				for(var/atom/T in get_turf(D))
 					D.reagents.reaction(T)
-					if(ismob(T))
-						var/mob/M = T 
-						to_chat(M, "<span class='warning'>[user] has sprayed you with water!</span>")
+					if(ismob(T) && T:client)
+						T:client << "\red [user] has sprayed you with water!"
 				sleep(4)
-			qdel(D)
+			cdel(D)
 
 		return
 
 /obj/item/toy/waterflower/examine(mob/user)
 	..()
-	to_chat(user, "[reagents.total_volume] units of water left!")
+	user << "[reagents.total_volume] units of water left!"
 
 
 
@@ -250,14 +253,14 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user as mob)
 	if(cooldown < world.time - 8)
-		to_chat(user, "<span class='notice'>You play with [src].</span>")
+		user << "<span class='notice'>You play with [src].</span>"
 		playsound(user, 'sound/mecha/mechstep.ogg', 15, 1)
 		cooldown = world.time
 
 /obj/item/toy/prize/attack_hand(mob/user as mob)
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			to_chat(user, "<span class='notice'>You play with [src].</span>")
+			user << "<span class='notice'>You play with [src].</span>"
 			playsound(user, 'sound/mecha/mechturn.ogg', 15, 1)
 			cooldown = world.time
 			return

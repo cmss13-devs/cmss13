@@ -22,7 +22,7 @@
 		if (istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
 			if (!C.iscopy && !C.copied)
-				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
+				user << "<span class='notice'>Take off the carbon copy first.</span>"
 				add_fingerprint(user)
 				return
 		if(loc == user)
@@ -39,8 +39,8 @@
 			user.drop_inv_item_on_ground(W)
 			for(var/obj/O in W)
 				attach_doc(O, user, TRUE)
-			to_chat(user, "<span class='notice'>You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
-			qdel(W)
+			user << "<span class='notice'>You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>"
+			cdel(W)
 	else
 		if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/toy/crayon))
 			usr << browse("", "window=[name]") //Closes the dialog
@@ -70,17 +70,17 @@
 					user.drop_inv_item_on_ground(src)
 
 				new /obj/effect/decal/cleanable/ash(src.loc)
-				qdel(src)
+				cdel(src)
 
 			else
-				to_chat(user, "<span class='warning'>You must hold \the [P] steady to burn \the [src].</span>")
+				user << "\red You must hold \the [P] steady to burn \the [src]."
 
 /obj/item/paper_bundle/examine(mob/user)
-	..()
+	user << desc
 	if(in_range(user, src))
 		src.attack_self(user)
 	else
-		to_chat(user, "<span class='notice'>It is too far away.</span>")
+		user << "<span class='notice'>It is too far away.</span>"
 
 /obj/item/paper_bundle/attack_self(mob/user as mob)
 	if(ishuman(user))
@@ -144,13 +144,13 @@
 		if(href_list["remove"])
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
-			to_chat(usr, "<span class='notice'>You remove the [W.name] from the bundle.</span>")
+			usr << "<span class='notice'>You remove the [W.name] from the bundle.</span>"
 			amount--
 			if(amount == 1)
 				var/obj/item/paper/P = contents[1]
 				P.loc = usr.loc
 				usr.drop_inv_item_on_ground(src)
-				qdel(src)
+				cdel(src)
 				usr.put_in_hands(P)
 				return
 			else if(page >= amount)
@@ -163,7 +163,7 @@
 		src.attack_self(src.loc)
 		updateUsrDialog()
 	else
-		to_chat(usr, "<span class='notice'>You need to hold it in hands!</span>")
+		usr << "<span class='notice'>You need to hold it in hands!</span>"
 
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
@@ -180,12 +180,12 @@
 	set category = "Object"
 	set src in usr
 
-	to_chat(usr, "<span class='notice'>You loosen the bundle.</span>")
+	usr << "<span class='notice'>You loosen the bundle.</span>"
 	for(var/obj/O in src)
 		O.forceMove(usr.loc)
 		O.add_fingerprint(usr)
 	usr.drop_inv_item_on_ground(src)
-	qdel(src)
+	cdel(src)
 
 /obj/item/paper_bundle/update_icon()
 	if(contents.len)
@@ -225,7 +225,7 @@
 	I.add_fingerprint(user)
 	amount++
 	if(!no_message)
-		to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
+		user << "<span class='notice'>You add [I] to [src].</span>"
 	if(screen == 2)
 		screen = 1
 	update_icon()

@@ -43,7 +43,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge = 0,mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 
 	if(!(src in usr.spell_list))
-		to_chat(usr, "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>")
+		usr << "\red You shouldn't have this spell! Something's wrong."
 		return 0
 
 	if(usr.z == 2 && !centcomm_cancast) //Certain spells are not allowed on the centcomm zlevel
@@ -53,34 +53,34 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 		switch(charge_type)
 			if("recharge")
 				if(charge_counter < charge_max)
-					to_chat(usr, "[name] is still recharging.")
+					usr << "[name] is still recharging."
 					return 0
 			if("charges")
 				if(!charge_counter)
-					to_chat(usr, "[name] has no charges left.")
+					usr << "[name] has no charges left."
 					return 0
 
 	if(usr.stat && !stat_allowed)
-		to_chat(usr, "Not when you're incapacitated.")
+		usr << "Not when you're incapacitated."
 		return 0
 
 	if(ishuman(usr) || ismonkey(usr))
 		if(istype(usr.wear_mask, /obj/item/clothing/mask/muzzle))
-			to_chat(usr, "Mmmf mrrfff!")
+			usr << "Mmmf mrrfff!"
 			return 0
 
 	if(clothes_req) //clothes check
 		if(!istype(usr, /mob/living/carbon/human))
-			to_chat(usr, "You aren't a human, Why are you trying to cast a human spell, silly non-human? Casting human spells is for humans.")
+			usr << "You aren't a human, Why are you trying to cast a human spell, silly non-human? Casting human spells is for humans."
 			return 0
 		if(!istype(usr:wear_suit, /obj/item/clothing/suit/wizrobe) && !istype(user:wear_suit, /obj/item/clothing/suit/space/rig/wizard))
-			to_chat(usr, "I don't feel strong enough without my robe.")
+			usr << "I don't feel strong enough without my robe."
 			return 0
 		if(!istype(usr:shoes, /obj/item/clothing/shoes/sandal))
-			to_chat(usr, "I don't feel strong enough without my sandals.")
+			usr << "I don't feel strong enough without my sandals."
 			return 0
 		if(!istype(usr:head, /obj/item/clothing/head/wizard) && !istype(user:head, /obj/item/clothing/head/helmet/space/rig/wizard))
-			to_chat(usr, "I don't feel strong enough without my hat.")
+			usr << "I don't feel strong enough without my hat."
 			return 0
 
 	if(!skipcharge)
@@ -160,7 +160,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 			spell.anchored = 1
 			spell.density = 0
 			spawn(overlay_lifespan)
-				qdel(spell)
+				cdel(spell)
 
 /obj/effect/proc_holder/spell/proc/after_cast(list/targets)
 	for(var/atom/target in targets)
@@ -170,7 +170,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 		else if(istype(target,/turf))
 			location = target
 		if(istype(target,/mob/living) && message)
-			to_chat(target, text("[message]"))
+			target << text("[message]")
 		if(sparks_spread)
 			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 			sparks.set_up(sparks_amt, 0, location) //no idea what the 0 is

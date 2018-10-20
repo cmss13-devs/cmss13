@@ -111,6 +111,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 	Dispose()
 		allCasters -= src
+		SetLuminosity(0)
 		. = ..()
 
 /obj/machinery/newscaster/update_icon()
@@ -159,12 +160,12 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			src.isbroken=1
 			if(prob(50))
-				qdel(src)
+				cdel(src)
 			else
 				src.update_icon() //can't place it above the return and outside the if-else. or we might get runtimes of null.update_icon() if(prob(50)) goes in.
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 	return
 
@@ -722,7 +723,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						O.show_message("[user.name] forcefully slams the [src.name] with the [I.name]!" )
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 		else
-			to_chat(user, "<span class='notice'>This does nothing.</span>")
+			user << "<FONT COLOR='blue'>This does nothing.</FONT>"
 	src.update_icon()
 
 /obj/machinery/newscaster/attack_ai(mob/user as mob)
@@ -730,7 +731,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 
 /obj/machinery/newscaster/attack_paw(mob/user as mob)
-	to_chat(user, "<span class='notice'>The newscaster controls are far too complicated for your tiny brain!</span>")
+	user << "<font color='blue'>The newscaster controls are far too complicated for your tiny brain!</font>"
 	return
 
 /obj/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
@@ -775,7 +776,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 /*obj/item/newspaper/attack_hand(mob/user as mob)
 	..()
-	to_chat(world, "derp")*/
+	world << "derp"*/
 
 obj/item/newspaper/attack_self(mob/user as mob)
 	if(ishuman(user))
@@ -854,7 +855,7 @@ obj/item/newspaper/attack_self(mob/user as mob)
 		human_user << browse(dat, "window=newspaper_main;size=300x400")
 		onclose(human_user, "newspaper_main")
 	else
-		to_chat(user, "The paper is full of intelligible symbols!")
+		user << "The paper is full of intelligible symbols!"
 
 
 obj/item/newspaper/Topic(href, href_list)
@@ -892,7 +893,7 @@ obj/item/newspaper/Topic(href, href_list)
 obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/pen))
 		if(src.scribble_page == src.curr_page)
-			to_chat(user, "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
+			user << "<FONT COLOR='blue'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>"
 		else
 			var/s = strip_html( input(user, "Write something", "Newspaper", "") )
 			s = copytext(sanitize(s), 1, MAX_MESSAGE_LEN)

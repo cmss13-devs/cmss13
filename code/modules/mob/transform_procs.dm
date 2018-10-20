@@ -12,7 +12,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		qdel(t)
+		cdel(t)
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
 	animation.icon_state = "blank"
 	animation.icon = 'icons/mob/mob.dmi'
@@ -46,11 +46,11 @@
 	if(mind)
 		mind.transfer_to(O)
 
-	to_chat(O, "<B>You are now [O]. </B>")
+	O << "<B>You are now [O]. </B>"
 
 	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
-	qdel(animation)
+		cdel(src)
+	cdel(animation)
 
 	return O
 
@@ -62,7 +62,7 @@
 	if (monkeyizing)
 		return
 	for(var/t in limbs)
-		qdel(t)
+		cdel(t)
 
 	return ..()
 
@@ -105,7 +105,7 @@
 					continue
 				loc_landmark = tripai
 	if (!loc_landmark)
-		to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
+		O << "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone."
 		for(var/obj/effect/landmark/start/sloc in landmarks_list)
 			if (sloc.name == "AI")
 				loc_landmark = sloc
@@ -114,20 +114,20 @@
 	for (var/obj/item/device/radio/intercom/comm in O.loc)
 		comm.ai += O
 
-	to_chat(O, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
-	to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
-	to_chat(O, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
-	to_chat(O, "To use something, simply click on it.")
-	to_chat(O, {"Use say ":b to speak to your cyborgs through binary."})
+	O << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
+	O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
+	O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
+	O << "To use something, simply click on it."
+	O << {"Use say ":b to speak to your cyborgs through binary."}
 	O.show_laws()
-	to_chat(O, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
+	O << "<b>These laws may be changed by other players, or by you being the traitor.</b>"
 
 	O.add_ai_verbs()
 	O.job = "AI"
 
 	O.rename_self("ai",1)
 	. = O
-	qdel(src)
+	cdel(src)
 
 
 //human -> robot
@@ -142,7 +142,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		qdel(t)
+		cdel(t)
 
 	var/mob/living/silicon/robot/O = new /mob/living/silicon/robot( loc )
 
@@ -181,7 +181,7 @@
 	O.Namepick()
 
 	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+		cdel(src)
 	return O
 
 //human -> alien
@@ -196,7 +196,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		qdel(t)
+		cdel(t)
 
 //	var/alien_caste = "larva"
 	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
@@ -205,9 +205,9 @@
 	new_xeno.key = key
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
-	to_chat(new_xeno, "<B>You are now an alien.</B>")
+	new_xeno << "<B>You are now an alien.</B>"
 	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+		cdel(src)
 	return
 
 //human -> alien drone
@@ -222,7 +222,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		qdel(t)
+		cdel(t)
 
 //	var/alien_caste = "Drone"
 	var/mob/living/carbon/Xenomorph/Drone/new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
@@ -231,10 +231,10 @@
 	new_xeno.key = key
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
-	to_chat(new_xeno, "<b>You are an alien!</b>")
-	to_chat(new_xeno, "<b>Use Say \":a message\" to communicate with other aliens.</b>")
+	new_xeno << "<b>You are an alien!</b>"
+	new_xeno << "<b>Use Say \":a message\" to communicate with other aliens.</b>"
 	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+		cdel(src)
 	return
 
 /mob/living/carbon/human/proc/corgize()
@@ -248,16 +248,16 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)	//this really should not be necessary
-		qdel(t)
+		cdel(t)
 
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
 	new_corgi.a_intent = "hurt"
 	new_corgi.key = key
 	if(new_corgi.client) new_corgi.client.change_view(world.view)
 
-	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
+	new_corgi << "<B>You are now a Corgi. Yap Yap!</B>"
 	spawn(0)//To prevent the proc from returning null.
-		qdel(src)
+		cdel(src)
 	return
 
 /mob/living/carbon/human/Animalize()
@@ -266,7 +266,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<span class='warning'>Sorry but this mob type is currently unavailable.</span>")
+		usr << "\red Sorry but this mob type is currently unavailable."
 		return
 
 	if(monkeyizing)
@@ -281,7 +281,7 @@
 	invisibility = 101
 
 	for(var/t in limbs)
-		qdel(t)
+		cdel(t)
 
 	var/mob/new_mob = new mobpath(src.loc)
 
@@ -290,9 +290,9 @@
 	new_mob.a_intent = "hurt"
 
 
-	to_chat(new_mob, "You suddenly feel more... animalistic.")
+	new_mob << "You suddenly feel more... animalistic."
 	spawn()
-		qdel(src)
+		cdel(src)
 	return
 
 /mob/proc/Animalize()
@@ -301,7 +301,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<span class='warning'>Sorry but this mob type is currently unavailable.</span>")
+		usr << "\red Sorry but this mob type is currently unavailable."
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
@@ -309,9 +309,9 @@
 	new_mob.key = key
 	if(new_mob.client) new_mob.client.change_view(world.view)
 	new_mob.a_intent = "hurt"
-	to_chat(new_mob, "You feel more... animalistic")
+	new_mob << "You feel more... animalistic"
 
-	qdel(src)
+	cdel(src)
 
 /* Certain mob types have problems and should not be allowed to be controlled by players.
  *

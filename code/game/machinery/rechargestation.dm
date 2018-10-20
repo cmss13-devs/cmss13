@@ -71,7 +71,7 @@
 	return 0
 
 /obj/machinery/recharge_station/examine(mob/user)
-	to_chat(user, "The charge meter reads: [round(chargepercentage())]%")
+	user << "The charge meter reads: [round(chargepercentage())]%"
 
 /obj/machinery/recharge_station/proc/chargepercentage()
 	return ((current_internal_charge / max_internal_charge) * 100)
@@ -165,13 +165,13 @@
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
 	if (!(istype(usr, /mob/living/silicon/)))
-		to_chat(usr, "<span class='boldnotice'>Only non-organics may enter the recharger!</span>")
+		usr << "\blue <B>Only non-organics may enter the recharger!</B>"
 		return
 	if (src.occupant)
-		to_chat(usr, "<span class='boldnotice'>The cell is already occupied!</span>")
+		usr << "\blue <B>The cell is already occupied!</B>"
 		return
 	if (!usr:cell)
-		to_chat(usr, "<span class='notice'>Without a powercell, you can't be recharged.</span>")
+		usr<<"\blue Without a powercell, you can't be recharged."
 		//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
 		return
 	usr.stop_pulling()

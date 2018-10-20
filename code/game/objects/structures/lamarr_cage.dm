@@ -23,7 +23,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			new /obj/item/shard( src.loc )
 			Break()
-			qdel(src)
+			cdel(src)
 
 
 /obj/structure/lamarr/bullet_act(var/obj/item/projectile/Proj)
@@ -61,11 +61,14 @@
 /obj/structure/lamarr/attack_paw(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/lamarr/attack_hand(mob/living/user)
-	if (destroyed)
+/obj/structure/lamarr/attack_hand(mob/user as mob)
+	if (src.destroyed)
 		return
 	else
-		user.visible_message("<span class='warning'>[user] kicks the lab cage.</span>","<span class='notice'>You kick the lab cage.</span>")
+		usr << text("\blue You kick the lab cage.")
+		for(var/mob/O in oviewers())
+			if ((O.client && !( O.blinded )))
+				O << text("\red [] kicks the lab cage.", usr)
 		src.health -= 2
 		healthcheck()
 		return

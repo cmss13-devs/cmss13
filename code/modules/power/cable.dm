@@ -116,7 +116,7 @@
 
 ///// Z-Level Stuff
 		if(src.d1 == 12 || src.d2 == 12)
-			to_chat(user, "<span class='warning'>You must cut this cable from above.</span>")
+			user << "<span class='warning'>You must cut this cable from above.</span>"
 			return
 
 		if(src.d1 == 11 || src.d2 == 11)
@@ -128,7 +128,7 @@
 ///// Z-Level Stuff
 
 		if(breaker_box)
-			to_chat(user, "<span class='warning'>This cable is connected to nearby breaker box. Use breaker box to interact with it.</span>")
+			user << "\red This cable is connected to nearby breaker box. Use breaker box to interact with it."
 			return
 
 		if (shock(user, 50))
@@ -144,7 +144,7 @@
 		log_admin("[key_name(user)] cut a wire at ([x],[y],[z])")
 		message_admins("[key_name(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) cut a wire at ([x],[y],[z]) - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>")
 
-		qdel(src)
+		cdel(src)
 
 		return	// not needed, but for clarity
 
@@ -158,10 +158,10 @@
 		var/datum/powernet/PN = get_powernet()		// find the powernet
 
 		if(PN && (PN.avail > 0))		// is it powered?
-			to_chat(user, "<span class='warning'>[PN.avail]W in power network.</span>")
+			user << "<span class='warning'>[PN.avail]W in power network.</span>"
 
 		else
-			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
+			user << "<span class='warning'>The cable is not powered.</span>"
 
 		shock(user, 5, 0.2)
 
@@ -200,13 +200,13 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-				qdel(src)
+				cdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-				qdel(src)
+				cdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 	return
 
 

@@ -20,19 +20,19 @@
 /obj/item/book/attack_self(var/mob/user as mob)
 	if(carved)
 		if(store)
-			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
+			user << "<span class='notice'>[store] falls out of [title]!</span>"
 			store.loc = get_turf(src.loc)
 			store = null
 			return
 		else
-			to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
+			user << "<span class='notice'>The pages of [title] have been cut out!</span>"
 			return
 	if(src.dat)
 		user << browse("<TT><I>Owner: [author].</I></TT> <BR>" + "[dat]", "window=book;size=800x600")
 		user.visible_message("[user] opens \"[src.title]\".")
 		onclose(user, "book")
 	else
-		to_chat(user, "This book is completely blank!")
+		user << "This book is completely blank!"
 
 /obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
 	if(carved)
@@ -41,24 +41,24 @@
 				user.drop_held_item()
 				W.loc = src
 				store = W
-				to_chat(user, "<span class='notice'>You put [W] in [title].</span>")
+				user << "<span class='notice'>You put [W] in [title].</span>"
 				return
 			else
-				to_chat(user, "<span class='notice'>[W] won't fit in [title].</span>")
+				user << "<span class='notice'>[W] won't fit in [title].</span>"
 				return
 		else
-			to_chat(user, "<span class='notice'>There's already something in [title]!</span>")
+			user << "<span class='notice'>There's already something in [title]!</span>"
 			return
 	if(istype(W, /obj/item/tool/pen))
 		if(unique)
-			to_chat(user, "These pages don't seem to take the ink well. Looks like you can't modify it.")
+			user << "These pages don't seem to take the ink well. Looks like you can't modify it."
 			return
 		var/choice = input("What would you like to change?") in list("Title", "Contents", "Author", "Cancel")
 		switch(choice)
 			if("Title")
 				var/newtitle = reject_bad_text(stripped_input(usr, "Write a new title:"))
 				if(!newtitle)
-					to_chat(usr, "The title is invalid.")
+					usr << "The title is invalid."
 					return
 				else
 					src.name = newtitle
@@ -66,14 +66,14 @@
 			if("Contents")
 				var/content = strip_html(input(usr, "Write your book's contents (HTML NOT allowed):"),8192) as message|null
 				if(!content)
-					to_chat(usr, "The content is invalid.")
+					usr << "The content is invalid."
 					return
 				else
 					src.dat += content
 			if("Author")
 				var/newauthor = stripped_input(usr, "Write the author's name:")
 				if(!newauthor)
-					to_chat(usr, "The name is invalid.")
+					usr << "The name is invalid."
 					return
 				else
 					src.author = newauthor
@@ -82,9 +82,9 @@
 
 	else if(istype(W, /obj/item/tool/kitchen/knife) || istype(W, /obj/item/tool/wirecutters))
 		if(carved)	return
-		to_chat(user, "<span class='notice'>You begin to carve out [title].</span>")
+		user << "<span class='notice'>You begin to carve out [title].</span>"
 		if(do_after(user, 30, TRUE, 5, BUSY_ICON_HOSTILE))
-			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")
+			user << "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>"
 			carved = 1
 			return
 	else

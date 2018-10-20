@@ -27,8 +27,6 @@
 #define	NOREACT					64		//Reagents dont' react inside this container.
 #define OPENCONTAINER			128		//is an open container for chemistry purposes
 #define RELAY_CLICK				256		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs + Sentries ~Art
-#define INVULNERABLE			512
-#define TIMELESS				1024	// Immune to time manipulation.
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1

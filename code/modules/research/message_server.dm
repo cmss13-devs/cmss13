@@ -110,8 +110,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	rc_msgs += new/datum/data_rc_msg(recipient,sender,message,stamp,id_auth)
 
 /obj/machinery/message_server/attack_hand(user as mob)
-//	to_chat(user, "\blue There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays.")
-	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
+//	user << "\blue There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few CentCom delays."
+	user << "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]"
 	active = !active
 	update_icon()
 
@@ -122,8 +122,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 		istype(O,/obj/item/circuitboard/computer/message_monitor))
 		spamfilter_limit += round(MESSAGE_SERVER_DEFAULT_SPAM_LIMIT / 2)
 		user.temp_drop_inv_item(O)
-		qdel(O)
-		to_chat(user, "You install additional memory and processors into message server. Its filtering capabilities have been enhanced.")
+		cdel(O)
+		user << "You install additional memory and processors into message server. Its filtering capabilities have been enhanced."
 	else
 		..(O, user)
 
@@ -224,7 +224,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 /obj/machinery/blackbox_recorder/New()
 	if(blackbox)
 		if(istype(blackbox,/obj/machinery/blackbox_recorder))
-			qdel(src)
+			cdel(src)
 	blackbox = src
 
 /obj/machinery/blackbox_recorder/Dispose()

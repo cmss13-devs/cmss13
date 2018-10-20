@@ -5,16 +5,16 @@
 	firerate = !firerate
 
 	if (firerate)
-		to_chat(loc, "You will now continue firing when your target moves.")
+		loc << "You will now continue firing when your target moves."
 	else
-		to_chat(loc, "You will now only fire once, then lower your aim, when your target moves.")
+		loc << "You will now only fire once, then lower your aim, when your target moves."
 
 /obj/item/weapon/gun/verb/lower_aim()
 	set name = "Lower Aim"
 	set category = "Object"
 	if(target)
 		stop_aim()
-		usr.visible_message("<span class='notice'>\The [usr] lowers \the [src]...</span>")
+		usr.visible_message("\blue \The [usr] lowers \the [src]...")
 
 
 //Removes lock fro mall targets
@@ -23,7 +23,7 @@
 		for(var/mob/living/M in target)
 			if(M)
 				M.NotTargeted(src) //Untargeting people.
-		qdel(target)
+		cdel(target)
 		target = null
 
 //Compute how to fire.....
@@ -49,11 +49,11 @@
 			for(var/mob/living/L in target)
 				if(L)
 					L.NotTargeted(src)
-			qdel(target)
+			cdel(target)
 			target = null
-			usr.visible_message("<span class='danger'>[usr] turns \the [src] on [M]!</span>")
+			usr.visible_message("\red <b>[usr] turns \the [src] on [M]!</b>")
 		else
-			usr.visible_message("<span class='danger'>[usr] aims \a [src] at [M]!</span>")
+			usr.visible_message("\red <b>[usr] aims \a [src] at [M]!</b>")
 		M.Targeted(src)
 
 //HE MOVED, SHOOT HIM!
@@ -80,7 +80,7 @@
 #define SIGN(X) ((X<0)?-1:1)
 
 /proc/GunTrace(X1,Y1,X2,Y2,Z=1,exc_obj,PX1=16,PY1=16,PX2=16,PY2=16)
-	//to_chat(bluh, "Tracin' [X1],[Y1] to [X2],[Y2] on floor [Z].")
+	//bluh << "Tracin' [X1],[Y1] to [X2],[Y2] on floor [Z]."
 	var/turf/T
 	var/mob/living/M
 	if(X1==X2)
@@ -137,7 +137,7 @@
 		I.target += src
 	else if(I.target.len >= 5)
 		if(ismob(I.loc))
-			to_chat(I.loc, "You can only target 5 people at once!")
+			I.loc << "You can only target 5 people at once!"
 		return
 	else
 		return
@@ -147,7 +147,7 @@
 	if(!targeted_by) targeted_by = list()
 	targeted_by += I
 	I.lock_time = world.time + 20 //Target has 2 second to realize they're targeted and stop (or target the opponent).
-	to_chat(src, "<span class='highdanger'>You are being targeted! You have 2 seconds to stop any click or move actions.</span>")
+	src << "<span class='highdanger'>You are being targeted! You have 2 seconds to stop any click or move actions.</span>"
 
 	if(targeted_by.len == 1)
 		spawn(0)
@@ -174,7 +174,7 @@
 			I.lower_aim()
 			return
 //		if(m_intent == MOVE_INTENT_RUN && T.client.target_can_move == 1 && T.client.target_can_run == 0)
-//			to_chat(src, "\red Your move intent is now set to walk, as your targeter permits it.")  //Self explanitory.
+//			src << "\red Your move intent is now set to walk, as your targeter permits it."  //Self explanitory.
 //			set_m_intent(MOVE_INTENT_WALK)
 
 		//Processing the aiming. Should be probably in separate object with process() but lasy.
@@ -209,16 +209,16 @@
 	if(I.target)//To prevent runtimes. This whole thing is such an awful mess. Might come back to later, sigh. ~N
 		I.target.Remove(src) //De-target them
 		if(!I.target.len)
-			qdel(I.target) //What the hell.
+			cdel(I.target) //What the hell.
 			I.target = null
 
 	var/mob/living/T = I.loc //Remove the targeting icons
 	if(istype(T) && T.client && !I.target)
 		T.update_gun_icons()
 	if(!targeted_by.len)
-		qdel(target_locked) //Remove the overlay
+		cdel(target_locked) //Remove the overlay
 		target_locked = null
-		//qdel(targeted_by) // can't qdel lists
+		cdel(targeted_by)
 		targeted_by = null
 	spawn(1) update_targeted()
 
@@ -238,9 +238,9 @@
 /mob/proc/ToggleGunMode()
 	gun_mode = !gun_mode
 	if(gun_mode)
-		to_chat(src, "You will now take people captive.")
+		src << "You will now take people captive."
 	else
-		to_chat(src, "You will now shoot where you target.")
+		src << "You will now shoot where you target."
 		for(var/obj/item/weapon/gun/G in src)
 			G.stop_aim()
 	update_gun_icons()
@@ -262,9 +262,9 @@
 	//Changing client's permissions
 	target_can_move = !target_can_move
 	if(target_can_move)
-		to_chat(src, "Target may now walk.")
+		src << "Target may now walk."
 	else
-		to_chat(src, "Target may no longer move.")
+		src << "Target may no longer move."
 		target_can_run = 0
 	if(hud_used && hud_used.gun_run_icon)
 		hud_used.gun_run_icon.update_icon(src)
@@ -279,12 +279,12 @@
 		if(G.target)
 			for(var/mob/living/carbon/human/M in G.target)
 				if(target_can_move)
-					to_chat(M, "Your character may now <b>walk</b> at the discretion of their targeter.")
+					M << "Your character may now <b>walk</b> at the discretion of their targeter."
 					if(!target_can_run)
-						to_chat(M, "\red Your move intent is now set to walk, as your targeter permits it.")
+						M << "\red Your move intent is now set to walk, as your targeter permits it."
 						M.set_m_intent(MOVE_INTENT_WALK)
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they move.</span>")
+					M << "<span class='danger'>Your character will now be shot if they move.</span>"
 
 /mob/proc/set_m_intent(var/intent)
 	if (intent != MOVE_INTENT_WALK && intent != MOVE_INTENT_RUN)
@@ -299,9 +299,9 @@
 	//Changing client's permissions
 	target_can_run = !target_can_run
 	if(target_can_run)
-		to_chat(src, "Target may now run.")
+		src << "Target may now run."
 	else
-		to_chat(src, "Target may no longer run.")
+		src << "Target may no longer run."
 
 	//Updating running permission button
 	if(hud_used && hud_used.gun_run_icon)
@@ -313,18 +313,18 @@
 		if(G.target)
 			for(var/mob/living/M in G.target)
 				if(target_can_run)
-					to_chat(M, "Your character may now <b>run</b> at the discretion of their targeter.")
+					M << "Your character may now <b>run</b> at the discretion of their targeter."
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they run.</span>")
+					M << "<span class='danger'>Your character will now be shot if they run.</span>"
 
 /mob/proc/AllowTargetClick()
 
 	//Changing client's permissions
 	target_can_click = !target_can_click
 	if(target_can_click)
-		to_chat(usr, "Target may now use items.")
+		usr << "Target may now use items."
 	else
-		to_chat(usr, "Target may no longer use items.")
+		usr << "Target may no longer use items."
 
 	if(hud_used && hud_used.gun_item_use_icon)
 		hud_used.gun_item_use_icon.update_icon(src)
@@ -335,6 +335,6 @@
 		if(G.target)
 			for(var/mob/living/M in G.target)
 				if(target_can_click)
-					to_chat(M, "Your character may now <b>use items</b> at the discretion of their targeter.")
+					M << "Your character may now <b>use items</b> at the discretion of their targeter."
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they use items.</span>")
+					M << "<span class='danger'>Your character will now be shot if they use items.</span>"

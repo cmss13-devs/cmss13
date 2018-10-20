@@ -18,15 +18,15 @@
 
 		opened = !opened
 		if(opened)
-			to_chat(usr, "<span class='notice'>The access panel is now open.</span>")
+			usr << "\blue The access panel is now open."
 		else
-			to_chat(usr, "<span class='notice'>The access panel is now closed.</span>")
+			usr << "\blue The access panel is now closed."
 		return
 
 
 	attackby(obj/item/O as obj, mob/user as mob)
 		if (user.z > 6)
-			to_chat(user, "<span class='danger'>Unable to establish a connection</span>: \black You're too far away from the station!")
+			user << "\red <b>Unable to establish a connection</b>: \black You're too far away from the station!"
 			return
 		if(istype(O, /obj/item/circuitboard/ai_module))
 			var/obj/item/circuitboard/ai_module/M = O
@@ -37,18 +37,18 @@
 
 	attack_hand(var/mob/user as mob)
 		if(src.stat & NOPOWER)
-			to_chat(usr, "The upload computer has no power!")
+			usr << "The upload computer has no power!"
 			return
 		if(src.stat & BROKEN)
-			to_chat(usr, "The upload computer is broken!")
+			usr << "The upload computer is broken!"
 			return
 
 		src.current = select_active_ai(user)
 
 		if (!src.current)
-			to_chat(usr, "No active AIs detected.")
+			usr << "No active AIs detected."
 		else
-			to_chat(usr, "[src.current.name] selected for law changes.")
+			usr << "[src.current.name] selected for law changes."
 		return
 
 
@@ -70,16 +70,16 @@
 
 	attack_hand(var/mob/user as mob)
 		if(src.stat & NOPOWER)
-			to_chat(usr, "The upload computer has no power!")
+			usr << "The upload computer has no power!"
 			return
 		if(src.stat & BROKEN)
-			to_chat(usr, "The upload computer is broken!")
+			usr << "The upload computer is broken!"
 			return
 
 		src.current = freeborg()
 
 		if (!src.current)
-			to_chat(usr, "No free cyborgs detected.")
+			usr << "No free cyborgs detected."
 		else
-			to_chat(usr, "[src.current.name] selected for law changes.")
+			usr << "[src.current.name] selected for law changes."
 		return

@@ -34,12 +34,12 @@
 			survive_mob_death = TRUE //changed because infection rate was REALLY horrible.
 			if(goo_message_cooldown < world.time )
 				if(prob(3))
-					to_chat(affected_mob, "<span class='warning'>You feel really warm...</span>")
+					affected_mob << "\red You feel really warm..."
 					goo_message_cooldown = world.time + 100
 		if(2)
 			if(goo_message_cooldown < world.time)
-				if (prob(3)) to_chat(affected_mob, "<span class='warning'>Your throat is really dry...</span>")
-				else if (prob(6)) to_chat(affected_mob, "<span class='warning'>You feel really warm...</span>")
+				if (prob(3)) affected_mob << "\red Your throat is really dry..."
+				else if (prob(6)) affected_mob << "\red You feel really warm..."
 				else if (prob(2)) H.vomit_on_floor()
 				goo_message_cooldown = world.time + 100
 		if(3)
@@ -48,13 +48,13 @@
 			H.next_move_slowdown = max(H.next_move_slowdown, 1)
 			if(goo_message_cooldown < world.time)
 				if (prob(3))
-					to_chat(affected_mob, "<span class='warning'>You cough up some black fluid...</span>")
+					affected_mob << "\red You cough up some black fluid..."
 					goo_message_cooldown = world.time + 100
 				else if (prob(6))
-					to_chat(affected_mob, "<span class='warning'>Your throat is really dry...</span>")
+					affected_mob << "\red Your throat is really dry..."
 					goo_message_cooldown = world.time + 100
 				else if (prob(9))
-					to_chat(affected_mob, "<span class='warning'>You feel really warm...</span>")
+					affected_mob << "\red You feel really warm..."
 					goo_message_cooldown = world.time + 100
 				else if(prob(5))
 					goo_message_cooldown = world.time + 100
@@ -78,7 +78,7 @@
 				H.nutrition = 450 //never hungry
 				if(goo_message_cooldown < world.time)
 					goo_message_cooldown = world.time + 100
-					to_chat(affected_mob, "\green Spread... Consume... Infect...")
+					affected_mob << "\green Spread... Consume... Infect..."
 
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/H)
@@ -118,11 +118,11 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
 			for(var/datum/disease/black_goo/BG in H.viruses)
-				user.show_message(text("<span class='warning'>You sense your target is infected</span>"))
+				user.show_message(text("\green <B>You sense your target is infected</B>"))
 				return
 			if(prob(75))
 				M.contract_disease(new /datum/disease/black_goo)
-				user.show_message(text("<span class='warning'>You sense your target is now infected</span>"))
+				user.show_message(text("\green <B>You sense your target is now infected</B>"))
 
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
@@ -188,13 +188,13 @@
 
 
 	examine(mob/user)
-		to_chat(user, "A strange looking metal container...")
+		user << "A strange looking metal container..."
 		if(contents.len <= 0)
-			to_chat(user, "There are no bottles left inside it.")
+			user << "There are no bottles left inside it."
 		else if(contents.len == 1)
-			to_chat(user, "There is one bottles left inside it.")
+			user << "There is one bottles left inside it."
 		else
-			to_chat(user, "There are [src.contents.len] bottles inside the container.")
+			user << "There are [src.contents.len] bottles inside the container."
 
 
 /obj/item/storage/fancy/blackgoo/New()

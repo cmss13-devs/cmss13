@@ -8,10 +8,10 @@
 		return
 	var/obj/item/I
 	if(!usr.hand && usr.r_hand == null)
-		to_chat(usr, "<span class='warning'>You don't have anything in your right hand to give to [name].</span>")
+		usr << "<span class='warning'>You don't have anything in your right hand to give to [name].</span>"
 		return
 	if(usr.hand && usr.l_hand == null)
-		to_chat(usr, "<span class='warning'>You don't have anything in your left hand to give to [name].</span>")
+		usr << "<span class='warning'>You don't have anything in your left hand to give to [name].</span>"
 		return
 	if(!ishuman(src) || !ishuman(usr))
 		return
@@ -27,16 +27,16 @@
 				if(!I || !usr || !istype(I))
 					return
 				if(!Adjacent(usr))
-					to_chat(usr, "<span class='warning'>You need to stay in reaching distance while giving an object.</span>")
-					to_chat(src, "<span class='warning'>[usr] moved too far away.</span>")
+					usr << "<span class='warning'>You need to stay in reaching distance while giving an object.</span>"
+					src << "<span class='warning'>[usr] moved too far away.</span>"
 					return
 				if((usr.hand && usr.l_hand != I) || (!usr.hand && usr.r_hand != I))
-					to_chat(usr, "<span class='warning'>You need to keep the item in your active hand.</span>")
-					to_chat(src, "<span class='warning'>[usr] seem to have given up on giving [I] to you.</span>")
+					usr << "<span class='warning'>You need to keep the item in your active hand.</span>"
+					src << "<span class='warning'>[usr] seem to have given up on giving [I] to you.</span>"
 					return
 				if(r_hand != null && l_hand != null)
-					to_chat(src, "<span class='warning'>Your hands are full.</span>")
-					to_chat(usr, "<span class='warning'>[src]'s hands are full.</span>")
+					src << "<span class='warning'>Your hands are full.</span>"
+					usr << "<span class='warning'>[src]'s hands are full.</span>"
 					return
 				else
 					if(usr.drop_held_item())
@@ -46,4 +46,4 @@
 			if("No")
 				return
 	else
-		to_chat(usr, "<span class='warning'>[src]'s hands are full.</span>")
+		usr << "<span class='warning'>[src]'s hands are full.</span>"

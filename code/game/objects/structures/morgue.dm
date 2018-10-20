@@ -21,7 +21,7 @@
 /obj/structure/morgue/Dispose()
 	. = ..()
 	if(connected)
-		qdel(connected)
+		cdel(connected)
 		connected = null
 
 /obj/structure/morgue/update_icon()
@@ -44,7 +44,7 @@
 	for(var/atom/movable/A in src)
 		A.forceMove(loc)
 		ex_act(severity)
-	qdel(src)
+	cdel(src)
 
 /obj/structure/morgue/attack_paw(mob/user)
 	toggle_morgue(user)
@@ -151,7 +151,7 @@
 	O.forceMove(loc)
 	if (user != O)
 		for(var/mob/B in viewers(user, 3))
-			B.show_message("<span class='warning'>[user] stuffs [O] into [src]!</span>", 1)
+			B.show_message("\red [user] stuffs [O] into [src]!", 1)
 
 
 
@@ -172,7 +172,7 @@
 
 /obj/structure/morgue/crematorium/toggle_morgue(mob/user)
 	if (cremating)
-		to_chat(user, "<span class='warning'>It's locked.</span>")
+		user << "<span class='warning'>It's locked.</span>"
 		return
 	..()
 
@@ -195,9 +195,9 @@
 		return
 
 	if(contents.len <= 1) //1 because the tray is inside.
-		visible_message("<span class='warning'>You hear a hollow crackle.</span>")
+		visible_message("\red You hear a hollow crackle.")
 	else
-		visible_message("<span class='warning'>You hear a roar as the crematorium activates.</span>")
+		visible_message("\red You hear a roar as the crematorium activates.")
 
 		cremating = 1
 
@@ -216,11 +216,11 @@
 			log_attack("\[[time_stamp()]\] <b>[user]/[user.ckey]</b> cremated <b>[M]/[M.ckey]</b>")
 			M.death(1)
 			M.ghostize()
-			qdel(M)
+			cdel(M)
 
 		for(var/obj/O in contents)
 			if(istype(O, /obj/structure/morgue_tray)) continue
-			qdel(O)
+			cdel(O)
 
 		new /obj/effect/decal/cleanable/ash(src)
 		sleep(30)
@@ -250,7 +250,7 @@
 				if(!C.cremating)
 					C.cremate(user)
 	else
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "\red Access denied."
 
 
 

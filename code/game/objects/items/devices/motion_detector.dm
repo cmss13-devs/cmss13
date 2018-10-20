@@ -33,10 +33,10 @@
 	set category = "Object"
 	detector_mode = !detector_mode
 	if(detector_mode)
-		to_chat(usr, "<span class='notice'>You switch [src] to short range mode.</span>")
+		usr << "<span class='notice'>You switch [src] to short range mode.</span>"
 		detector_range = 7
 	else
-		to_chat(usr, "<span class='notice'>You switch [src] to long range mode.</span>")
+		usr << "<span class='notice'>You switch [src] to long range mode.</span>"
 		detector_range = 14
 	if(active)
 		icon_state = "detector_on_[detector_mode]"
@@ -47,18 +47,18 @@
 		active = !active
 		if(active)
 			icon_state = "detector_on_[detector_mode]"
-			to_chat(user, "<span class='notice'>You activate [src].</span>")
+			user << "<span class='notice'>You activate [src].</span>"
 			processing_objects.Add(src)
 
 		else
 			icon_state = "detector_off"
-			to_chat(user, "<span class='notice'>You deactivate [src].</span>")
+			user << "<span class='notice'>You deactivate [src].</span>"
 			processing_objects.Remove(src)
 
 /obj/item/device/motiondetector/Dispose()
 	processing_objects.Remove(src)
 	for(var/obj/X in blip_pool)
-		qdel(X)
+		cdel(X)
 	blip_pool = list()
 	..()
 
@@ -71,7 +71,7 @@
 		recycletime = initial(recycletime)
 		for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
 			if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
-				qdel(blip_pool[X])
+				cdel(blip_pool[X]) //the blips are garbage-collected and reused via rnew() below
 		blip_pool = list()
 
 	if(!detector_mode)
@@ -111,7 +111,7 @@
 	if(user.client)
 
 		if(!blip_pool[target])
-			blip_pool[target] = new /obj/effect/detector_blip
+			blip_pool[target] = rnew(/obj/effect/detector_blip)
 
 		var/obj/effect/detector_blip/DB = blip_pool[target]
 		var/c_view = user.client.view

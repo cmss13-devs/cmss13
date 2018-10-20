@@ -6,4 +6,4 @@
 	. = ..()
 
 	loc.overlays += src
-	qdel(src)
+	cdel(src)

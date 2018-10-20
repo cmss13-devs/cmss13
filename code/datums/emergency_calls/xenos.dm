@@ -37,7 +37,7 @@
 	new_xeno.key  = M.key
 
 	if(original) //Just to be sure.
-		qdel(original)
+		cdel(original)
 
 
 

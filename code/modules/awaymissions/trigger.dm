@@ -4,9 +4,9 @@
 
 /obj/effect/step_trigger/message/Trigger(mob/M as mob)
 	if(M.client)
-		to_chat(M, "<span class='info'>[message]</span>")
+		M << "<span class='info'>[message]</span>"
 		if(once)
-			qdel(src)
+			cdel(src)
 
 /obj/effect/step_trigger/teleport_fancy
 	var/locationx
@@ -44,4 +44,4 @@
 
 	uses--
 	if(uses == 0)
-		qdel(src)
+		cdel(src)

@@ -50,11 +50,11 @@ Note: Must be placed within 3 tiles of the R&D Console
 				linked_console.linked_destroy = null
 				linked_console = null
 			icon_state = "d_analyzer_t"
-			to_chat(user, "You open the maintenance hatch of [src].")
+			user << "You open the maintenance hatch of [src]."
 		else
 			opened = 0
 			icon_state = "d_analyzer"
-			to_chat(user, "You close the maintenance hatch of [src].")
+			user << "You close the maintenance hatch of [src]."
 		return
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
@@ -64,36 +64,36 @@ Note: Must be placed within 3 tiles of the R&D Console
 			M.icon_state = "box_1"
 			for(var/obj/I in component_parts)
 				I.loc = src.loc
-			qdel(src)
+			cdel(src)
 			return 1
 		else
-			to_chat(user, "\red You can't load the [src.name] while it's opened.")
+			user << "\red You can't load the [src.name] while it's opened."
 			return 1
 	if (disabled)
 		return
 	if (!linked_console)
-		to_chat(user, "\red The destructive analyzer must be linked to an R&D console first!")
+		user << "\red The destructive analyzer must be linked to an R&D console first!"
 		return
 	if (busy)
-		to_chat(user, "<span class='warning'>The destructive analyzer is busy right now.</span>")
+		user << "\red The destructive analyzer is busy right now."
 		return
 	if (istype(O, /obj/item) && !loaded_item)
 		if(isrobot(user)) //Don't put your module items in there!
 			return
 		if(!O.origin_tech)
-			to_chat(user, "\red This doesn't seem to have a tech origin!")
+			user << "\red This doesn't seem to have a tech origin!"
 			return
 		var/list/temp_tech = ConvertReqString2List(O.origin_tech)
 		if (temp_tech.len == 0)
-			to_chat(user, "<span class='warning'>You cannot deconstruct this item!</span>")
+			user << "\red You cannot deconstruct this item!"
 			return
 		if(O.reliability < 90 && O.crit_fail == 0)
-			to_chat(usr, "<span class='warning'>Item is neither reliable enough nor broken enough to learn from.</span>")
+			usr << "\red Item is neither reliable enough nor broken enough to learn from."
 			return
 		busy = 1
 		loaded_item = O
 		user.drop_inv_item_to_loc(O, src)
-		to_chat(user, "\blue You add the [O.name] to the machine!")
+		user << "\blue You add the [O.name] to the machine!"
 		flick("d_analyzer_la", src)
 		spawn(10)
 			icon_state = "d_analyzer_l"

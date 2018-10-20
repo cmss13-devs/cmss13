@@ -30,7 +30,7 @@
 			W.loc = loc
 			W.layer = layer + 0.1
 			pinned_target = W
-			to_chat(user, "You slide the target into the stake.")
+			user << "You slide the target into the stake."
 		return
 
 	attack_hand(mob/user as mob)
@@ -44,9 +44,9 @@
 			if(ishuman(user))
 				if(!user.get_active_hand())
 					user.put_in_hands(pinned_target)
-					to_chat(user, "You take the target out of the stake.")
+					user << "You take the target out of the stake."
 			else
 				pinned_target.loc = get_turf(user)
-				to_chat(user, "You take the target out of the stake.")
+				user << "You take the target out of the stake."
 
 			pinned_target = null

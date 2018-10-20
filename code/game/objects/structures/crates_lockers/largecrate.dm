@@ -7,7 +7,7 @@
 	anchored = 0
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
-	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
+	user << "<span class='notice'>You need a crowbar to pry this open!</span>"
 	return
 
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
@@ -19,7 +19,7 @@
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
 							 "<span class='notice'>You hear splitting wood.</span>")
-		qdel(src)
+		cdel(src)
 	else
 		return attack_hand(user)
 
@@ -170,14 +170,14 @@
 		return
 
 	if (!W.sharp)
-		to_chat(user, "<span class='notice'>You need something sharp to cut off the straps.</span>")
+		user << "<span class='notice'>You need something sharp to cut off the straps.</span>"
 		return
 
-	to_chat(user, "<span class='notice'>You begin to cut the straps off \the [src]...</span>")
+	user << "<span class='notice'>You begin to cut the straps off \the [src]...</span>"
 
 	if (do_after(user, 15, TRUE, 5, BUSY_ICON_GENERIC))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		to_chat(user, "<span class='notice'>You cut the straps away.</span>")
+		user << "<span class='notice'>You cut the straps away.</span>"
 		icon_state = "secure_crate"
 		strapped = 0
 

@@ -88,12 +88,12 @@
 					var/mob/living/carbon/Xenomorph/target = M
 					if(target.mob_size == MOB_SIZE_BIG) return //Big xenos are not affected.
 					target.apply_effects(0,1) //Smaller ones just get shaken.
-					to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
+					target << "<span class='xenodanger'>You are shaken by the sudden impact!</span>"
 				else
 					if(!isYautja(M)) //Not predators.
 						var/mob/living/target = M
 						target.apply_effects(1,2) //Humans get stunned a bit.
-						to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
+						target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
 			step_away(M,P)
 
 	proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE)
@@ -112,7 +112,7 @@
 			var/scatter_y = rand(-1,1)
 			var/turf/new_target = locate(original_P.target_turf.x + round(scatter_x),original_P.target_turf.y + round(scatter_y),original_P.target_turf.z)
 			if(!istype(new_target) || isnull(new_target)) continue	//If we didn't find anything, make another pass.
-			var/obj/item/projectile/P = new /obj/item/projectile(original_P.shot_from)
+			var/obj/item/projectile/P = rnew(/obj/item/projectile, original_P.shot_from)
 			P.generate_bullet(ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 			P.original = new_target
 			P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
@@ -720,7 +720,7 @@
 		shell_speed = config.slow_shell_speed
 
 	Dispose()
-		qdel(smoke)
+		cdel(smoke)
 		smoke = null
 		. = ..()
 
@@ -1173,7 +1173,7 @@
 		max_range = config.long_shell_range
 
 	Dispose()
-		qdel(smoke_system)
+		cdel(smoke_system)
 		smoke_system = null
 		. = ..()
 
@@ -1320,7 +1320,7 @@
 		processing_objects += G
 		G.icon_state = "flare-on"
 		G.damtype = "fire"
-		G.set_light(G.brightness_on)
+		G.SetLuminosity(G.brightness_on)
 
 
 
@@ -1329,7 +1329,7 @@
 	damage = 1
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
-		to_chat(M, "<font size=6 color=red>NO BUGS</font>")
+		M << "<font size=6 color=red>NO BUGS</font>"
 
 	on_hit_obj(obj/O,obj/item/projectile/P)
 		return

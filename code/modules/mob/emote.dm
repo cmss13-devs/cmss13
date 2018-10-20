@@ -3,7 +3,7 @@
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
-			to_chat(src, "You are unable to emote.")
+			src << "You are unable to emote."
 		return
 	if(istype(src, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = src
@@ -71,16 +71,16 @@
 /mob/proc/emote_dead(var/message)
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, "<span class='warning'>You cannot send deadchat emotes (muted).</span>")
+		src << "\red You cannot send deadchat emotes (muted)."
 		return
 
 	if(!(client.prefs.toggles_chat & CHAT_DEAD))
-		to_chat(src, "<span class='warning'>You have deadchat muted.</span>")
+		src << "\red You have deadchat muted."
 		return
 
 	if(!src.client.holder)
 		if(!dsay_allowed)
-			to_chat(src, "<span class='warning'>Deadchat is globally muted</span>")
+			src << "\red Deadchat is globally muted"
 			return
 
 
@@ -104,7 +104,7 @@
 				continue
 
 			if(M.client && M.client.holder && (M.client.holder.rights & R_ADMIN|R_MOD) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
-				to_chat(M, message)
+				M << message
 
 			else if(M.stat == DEAD && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to regular ghosts with deadchat toggled on
 				M.show_message(message, 2)

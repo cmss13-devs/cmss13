@@ -115,15 +115,16 @@
 
 	New()
 		..()
-		set_light(3)
+		SetLuminosity(3)
 		smoke = new /datum/effect_system/smoke_spread/xeno_acid
 		smoke.attach(src)
 		see_in_dark = 20
 		ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
 
 	Dispose()
+		SetLuminosity(0)
 		if(smoke)
-			qdel(smoke)
+			cdel(smoke)
 			smoke = null
 		. = ..()
 
@@ -135,7 +136,7 @@
 
 /mob/living/carbon/Xenomorph/Boiler/proc/bomb_turf(var/turf/T)
 	if(!istype(T) || T.z != src.z || T == get_turf(src))
-		to_chat(src, "<span class='warning'>This is not a valid target.</span>")
+		src << "<span class='warning'>This is not a valid target.</span>"
 		return
 
 	if(!isturf(loc)) //In a locker
@@ -153,15 +154,15 @@
 		return
 
 	if(!is_bombarding)
-		to_chat(src, "<span class='warning'>You must dig yourself in before you can do this.</span>")
+		src << "<span class='warning'>You must dig yourself in before you can do this.</span>"
 		return
 
 	if(bomb_cooldown)
-		to_chat(src, "<span class='warning'>You are still preparing another spit. Be patient!</span>")
+		src << "<span class='warning'>You are still preparing another spit. Be patient!</span>"
 		return
 
 	if(get_dist(T, U) <= 5) //Magic number
-		to_chat(src, "<span class='warning'>You are too close! You must be at least 7 meters from the target due to the trajectory arc.</span>")
+		src << "<span class='warning'>You are too close! You must be at least 7 meters from the target due to the trajectory arc.</span>"
 		return
 
 	if(!check_plasma(200))
@@ -180,7 +181,7 @@
 	if(!istype(target))
 		return
 
-	to_chat(src, "<span class='xenonotice'>You begin building up acid.</span>")
+	src << "<span class='xenonotice'>You begin building up acid.</span>"
 	if(client)
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) //Reset the mouse pointer.
 	bomb_cooldown = 1
@@ -195,7 +196,7 @@
 		visible_message("<span class='xenowarning'>\The [src] launches a huge glob of acid hurling into the distance!</span>", \
 		"<span class='xenowarning'>You launch a huge glob of acid hurling into the distance!</span>", null, 5)
 
-		var/obj/item/projectile/P = new /obj/item/projectile(loc)
+		var/obj/item/projectile/P = rnew(/obj/item/projectile, loc)
 		P.generate_bullet(ammo)
 		P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 		playsound(src, 'sound/effects/blobattack.ogg', 25, 1)
@@ -207,14 +208,14 @@
 
 		spawn(caste.bomb_delay) //20 seconds cooldown.
 			bomb_cooldown = 0
-			to_chat(src, "<span class='notice'>You feel your toxin glands swell. You are able to bombard an area again.</span>")
+			src << "<span class='notice'>You feel your toxin glands swell. You are able to bombard an area again.</span>"
 			for(var/X in actions)
 				var/datum/action/A = X
 				A.update_button_icon()
 		return
 	else
 		bomb_cooldown = 0
-		to_chat(src, "<span class='warning'>You decide not to launch any acid.</span>")
+		src << "<span class='warning'>You decide not to launch any acid.</span>"
 	return
 
 
@@ -228,7 +229,7 @@
 		return
 
 	if(!isturf(loc) || istype(loc, /turf/open/space))
-		to_chat(src, "<span class='warning'>You can't do that from there.</span>")
+		src << "<span class='warning'>You can't do that from there.</span>"
 		return
 
 	if(!check_plasma(10))
@@ -246,7 +247,7 @@
 			return
 
 		if(target == loc)
-			to_chat(src, "<span class='warning'>That's far too close!</span>")
+			src << "<span class='warning'>That's far too close!</span>"
 			return
 
 		if(!target)
@@ -261,12 +262,12 @@
 		spray_turfs(turflist)
 		spawn(caste.acid_delay) //12 second cooldown.
 			acid_cooldown = 0
-			to_chat(src, "<span class='warning'>You feel your acid glands refill. You can spray <B>acid</b> again.</span>")
+			src << "<span class='warning'>You feel your acid glands refill. You can spray <B>acid</b> again.</span>"
 			for(var/X in actions)
 				var/datum/action/A = X
 				A.update_button_icon()
 	else
-		to_chat(src, "<span class='warning'>You see nothing to spit at!</span>")
+		src << "<span class='warning'>You see nothing to spit at!</span>"
 
 
 /mob/living/carbon/Xenomorph/Boiler/proc/spray_turfs(list/turflist)
@@ -327,7 +328,7 @@
 				if((M.status_flags & XENO_HOST) && istype(M.buckled, /obj/structure/bed/nest))
 					continue //nested infected hosts are not hurt by acid spray
 				M.adjustFireLoss(rand(20 + 5 * upgrade, 30 + 5 * upgrade))
-				to_chat(M, "<span class='xenodanger'>\The [src] showers you in corrosive acid!</span>")
+				M << "<span class='xenodanger'>\The [src] showers you in corrosive acid!</span>"
 				if(!isYautja(M))
 					M.emote("scream")
 					M.KnockDown(rand(3, 4))

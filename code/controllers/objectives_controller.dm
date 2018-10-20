@@ -1,4 +1,6 @@
 
+var/global/datum/objectives_controller/objectives_controller
+
 /datum/objectives_controller
 	var/list/objectives = list()
 	var/list/active_objectives = list()
@@ -186,3 +188,15 @@
 	non_processing_objectives -= O
 	inactive_objectives -= O
 	active_objectives -= O
+
+/hook/startup/proc/create_objectives_controller()
+	objectives_controller = new /datum/objectives_controller
+	// Setup some global objectives
+	objectives_controller.power = new /datum/cm_objective/establish_power
+	objectives_controller.comms = new /datum/cm_objective/communications
+	objectives_controller.marines = new /datum/cm_objective/recover_corpses/marines
+	objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
+	objectives_controller.add_objective(new /datum/cm_objective/recover_corpses/colonists)
+	objectives_controller.active_objectives += objectives_controller.power
+	objectives_controller.active_objectives += objectives_controller.comms
+	return 1

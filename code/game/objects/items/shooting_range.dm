@@ -37,7 +37,7 @@
 			var/obj/item/tool/weldingtool/WT = W
 			if(WT.remove_fuel(0, user))
 				overlays.Cut()
-				to_chat(usr, "You slice off [src]'s uneven chunks of aluminum and scorch marks.")
+				usr << "You slice off [src]'s uneven chunks of aluminum and scorch marks."
 				return
 
 
@@ -59,10 +59,10 @@
 				if(ishuman(user))
 					if(!user.get_active_hand())
 						user.put_in_hands(src)
-						to_chat(user, "You take the target out of the stake.")
+						user << "You take the target out of the stake."
 				else
 					src.loc = get_turf(user)
-					to_chat(user, "You take the target out of the stake.")
+					user << "You take the target out of the stake."
 
 				stake.pinned_target = null
 				return
@@ -95,8 +95,8 @@
 		if(hp <= 0)
 			for(var/mob/O in oviewers())
 				if ((O.client && !( O.blinded )))
-					to_chat(O, "<span class='warning'>[src] breaks into tiny pieces and collapses!</span>")
-			qdel(src)
+					O << "\red [src] breaks into tiny pieces and collapses!"
+			cdel(src)
 
 		// Create a temporary object to represent the damage
 		var/obj/bmark = new

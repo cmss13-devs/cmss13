@@ -307,7 +307,7 @@
 	if(!powered())
 		return
 	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "\red Access denied."
 		return
 	..()
 
@@ -349,7 +349,7 @@
 	if(!iswrench(W))
 		return ..()
 	if(istype(src, /obj/machinery/atmospherics/tvalve/digital))
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], it's too complicated.</span>")
+		user << "<span class='warning'>You cannot unwrench [src], it's too complicated.</span>"
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -360,7 +360,7 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe(loc, make_from = src)
-		qdel(src)
+		cdel(src)
 
 /obj/machinery/atmospherics/tvalve/mirrored
 	icon_state = "map_tvalvem0"
@@ -442,7 +442,7 @@
 	if(!powered())
 		return
 	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "\red Access denied."
 		return
 	..()
 

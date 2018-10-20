@@ -65,7 +65,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			playsound(user, reload_sound, 25, 1)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) to_chat(user, "<span class='warning'>[src] is already empty.</span>")
+			if(user) user << "<span class='warning'>[src] is already empty.</span>"
 		return
 
 	unload_shell(user)
@@ -87,7 +87,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		//While there is a much smaller way to do this,
 		//this is the most resource efficient way to do it.
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
-	var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+	var/obj/item/ammo_magazine/handful/new_handful = rnew(/obj/item/ammo_magazine/handful)
 	new_handful.generate_handful(selection, "12g", 5, 1, /obj/item/weapon/gun/shotgun)
 	return new_handful
 
@@ -99,11 +99,11 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(flags_gun_features & GUN_BURST_FIRING) return
 
 		if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
-			to_chat(user, "<span class='warning'>You can't use that to reload!</span>")
+			user << "<span class='warning'>You can't use that to reload!</span>"
 			return
 
 		if(!check_chamber_position()) //For the double barrel.
-			to_chat(user, "<span class='warning'>[src] has to be open!</span>")
+			user << "<span class='warning'>[src] has to be open!</span>"
 			return
 
 		//From here we know they are using shotgun type ammo and reloading via handful.
@@ -149,7 +149,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons == SKILL_SPEC_SCOUT)
-			to_chat(user, "<span class='warning'>Scout specialists can't use shotguns...</span>")
+			user << "<span class='warning'>Scout specialists can't use shotguns...</span>"
 			return 0
 
 
@@ -189,7 +189,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/merc/examine(mob/user)
 	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+	if(in_chamber) user << "It has a chambered round."
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -236,7 +236,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/examine(mob/user)
 	..()
-	if(in_chamber) to_chat(user, "It has a chambered round.")
+	if(in_chamber) user << "It has a chambered round."
 
 //-------------------------------------------------------
 //DOUBLE SHOTTY
@@ -277,8 +277,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/examine(mob/user)
 	..()
-	if(current_mag.chamber_closed) to_chat(user, "It's closed.")
-	else to_chat(user, "It's open with [current_mag.current_rounds] shell\s loaded.")
+	if(current_mag.chamber_closed) user << "It's closed."
+	else user << "It's open with [current_mag.current_rounds] shell\s loaded."
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	empty_chamber(user)
@@ -301,7 +301,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if(. && istype(user))
 		if(!current_mag.chamber_closed)
-			to_chat(user, "<span class='warning'>Close the chamber!</span>")
+			user << "\red Close the chamber!"
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
@@ -333,7 +333,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		current_mag.used_casings = 0
 
 /obj/item/weapon/gun/shotgun/double/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	qdel(projectile_to_fire)
+	cdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 

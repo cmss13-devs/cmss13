@@ -13,7 +13,7 @@
 			if(player_caused)
 				if (src.client)
 					if(client.prefs.muted & MUTE_IC)
-						to_chat(src, "You cannot send IC messages (muted).")
+						src << "You cannot send IC messages (muted)."
 						return
 					if (src.client.handle_spam_prevention(message,MUTE_IC))
 						return
@@ -249,7 +249,7 @@
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 25, 0)
 				m_type = 2
 			else
-				to_chat(src, "You are not THE LAW, pal.")
+				src << "You are not THE LAW, pal."
 
 		if("halt")
 			if (istype(module,/obj/item/circuitboard/robot_module/security))
@@ -258,12 +258,12 @@
 				playsound(src.loc, 'sound/voice/halt.ogg', 25, 0)
 				m_type = 2
 			else
-				to_chat(src, "You are not security.")
+				src << "You are not security."
 
 		if ("help")
-			to_chat(src, "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, \nbeep, ping, buzz, alert, sad, confused, spark, law, halt")
+			src << "salute, bow-(none)/mob, clap, flap, aflap, twitch, twitch_s, nod, deathgasp, glare-(none)/mob, stare-(none)/mob, look, \nbeep, ping, buzz, alert, sad, confused, spark, law, halt"
 		else
-			to_chat(src, "\blue Unusable emote '[act]'. Say *help for a list.")
+			src << "\blue Unusable emote '[act]'. Say *help for a list."
 
 	if ((message && stat == CONSCIOUS))
 		if (m_type & 1)

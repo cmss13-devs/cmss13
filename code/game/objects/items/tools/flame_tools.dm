@@ -42,6 +42,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/tool/candle/Dispose()
 	if(heat_source)
 		processing_objects.Remove(src)
+	if(ismob(src.loc))
+		src.loc.SetLuminosity(-CANDLE_LUM)
+	else
+		SetLuminosity(0)
 	. = ..()
 
 /obj/item/tool/candle/attackby(obj/item/W as obj, mob/user as mob)
@@ -61,7 +65,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			flavor_text = "<span class ='notice'>[usr] lights [src].</span>"
 		for(var/mob/O in viewers(usr, null))
 			O.show_message(flavor_text, 1)
-		set_light(CANDLE_LUM)
+		SetLuminosity(CANDLE_LUM)
 		update_icon()
 		processing_objects.Add(src)
 
@@ -72,7 +76,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	wax--
 	if(!wax)
 		new/obj/item/trash/candle(src.loc)
-		qdel(src)
+		cdel(src)
 		return
 	update_icon()
 
@@ -82,8 +86,24 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(heat_source)
 		heat_source = 0
 		update_icon()
-		set_light(0)
+		SetLuminosity(0)
+		user.SetLuminosity(-CANDLE_LUM)
 		processing_objects.Remove(src)
+
+
+/obj/item/tool/candle/pickup(mob/user)
+	if(heat_source && src.loc != user)
+		SetLuminosity(0)
+		user.SetLuminosity(CANDLE_LUM)
+
+
+/obj/item/tool/candle/dropped(mob/user)
+	..()
+	if(heat_source && src.loc != user)
+		user.SetLuminosity(-CANDLE_LUM)
+		SetLuminosity(CANDLE_LUM)
+
+
 
 ///////////
 //MATCHES//
@@ -122,7 +142,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	heat_source = 1000
 	damtype = "burn"
 	icon_state = "match_lit"
-	set_light(2)
+	if(ismob(loc))
+		loc.SetLuminosity(2)
+	else
+		SetLuminosity(2)
 	processing_objects.Add(src)
 	update_icon()
 
@@ -132,11 +155,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	damtype = "brute"
 	icon_state = "match_burnt"
 	item_state = "cigoff"
-	set_light(0)
+	if(user && loc != user)
+		user.SetLuminosity(-2)
+	SetLuminosity(0)
 	name = "burnt match"
 	desc = "A match. This one has seen better days."
 	processing_objects.Remove(src)
 
+/obj/item/tool/lighter/dropped(mob/user)
+	if(heat_source && src.loc != user)
+		user.SetLuminosity(-2)
+		SetLuminosity(2)
+	return ..()
 //////////////////
 //FINE SMOKABLES//
 //////////////////
@@ -155,7 +185,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/lastHolder = null
 	var/smoketime = 300
 	var/chem_volume = 15
-	var/brightness_on = 1
 	flags_armor_protection = 0
 
 /obj/item/clothing/mask/cigarette/New()
@@ -206,7 +235,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(F.lit)
 			light("<span class='notice'>[user] lights their [src] with the pilot light of the [F].</span>")
 		else
-			to_chat(user, "<span class='warning'>Turn on the pilot light first!</span>")
+			user << "<span class='warning'>Turn on the pilot light first!</span>"
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
@@ -235,12 +264,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/obj/item/reagent_container/glass/glass = target
 		var/transfered = glass.reagents.trans_to(src, chem_volume)
 		if(transfered)	//if reagents were transfered, show the message
-			to_chat(user, "<span class='notice'>You dip \the [src] into \the [glass].</span>")
+			user << "<span class='notice'>You dip \the [src] into \the [glass].</span>"
 		else			//if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)
-				to_chat(user, "<span class='notice'>[glass] is empty.</span>")
+				user << "<span class='notice'>[glass] is empty.</span>"
 			else
-				to_chat(user, "<span class='notice'>[src] is full.</span>")
+				user << "<span class='notice'>[src] is full.</span>"
 
 	else if(isturf(target))
 		var/turf/T = target
@@ -268,19 +297,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/datum/effect_system/reagents_explosion/e = new()
 			e.set_up(round(reagents.get_reagent_amount("phoron") / 2.5, 1), get_turf(src), 0, 0)
 			e.start()
-			qdel(src)
+			cdel(src)
 			return
 		if(reagents.get_reagent_amount("fuel")) // the fuel explodes, too, but much less violently
 			var/datum/effect_system/reagents_explosion/e = new()
 			e.set_up(round(reagents.get_reagent_amount("fuel") / 5, 1), get_turf(src), 0, 0)
 			e.start()
-			qdel(src)
+			cdel(src)
 			return
 		flags_atom &= ~NOREACT // allowing reagents to react after being lit
 		reagents.handle_reactions()
 		icon_state = icon_on
 		item_state = icon_on
-		set_light(brightness_on)
 		if(iscarbon(loc))
 			var/mob/living/carbon/C = loc
 			if(C.r_hand == src)
@@ -334,11 +362,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	transfer_fingerprints_to(butt)
 	if(ismob(loc))
 		var/mob/living/M = loc
-		to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+		M << "<span class='notice'>Your [name] goes out.</span>"
 		M.temp_drop_inv_item(src)	//un-equip it so the overlays can update
 		M.update_inv_wear_mask()
 	processing_objects.Remove(src)
-	qdel(src)
+	cdel(src)
 
 ////////////
 // CIGARS //
@@ -354,7 +382,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar2off"
 	smoketime = 1500
 	chem_volume = 20
-	brightness_on = 1.5
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"
@@ -409,7 +436,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(F.lit)
 			light("<span class='notice'>[user] lights their [src] with the pilot light of the [F], the glint of pyromania in their eye.</span>")
 		else
-			to_chat(user, "<span class='warning'>Turn on the pilot light first!</span>")
+			user << "<span class='warning'>Turn on the pilot light first!</span>"
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
@@ -439,7 +466,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "pipeon"  //Note - these are in masks.dmi
 	icon_off = "pipeoff"
 	smoketime = 100
-	brightness_on = 2
 
 /obj/item/clothing/mask/cigarette/pipe/process()
 	var/turf/location = get_turf(src)
@@ -448,7 +474,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		new /obj/effect/decal/cleanable/ash(location)
 		if(ismob(loc))
 			var/mob/living/M = loc
-			to_chat(M, "<span class='notice'>Your [name] goes out, and you empty the ash.</span>")
+			M << "<span class='notice'>Your [name] goes out, and you empty the ash.</span>"
 			heat_source = 0
 			icon_state = icon_off
 			item_state = icon_off
@@ -465,7 +491,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		processing_objects.Remove(src)
 		return
 	if(smoketime <= 0)
-		to_chat(user, "<span class='notice'>You refill the pipe with tobacco.</span>")
+		user << "<span class='notice'>You refill the pipe with tobacco.</span>"
 		smoketime = initial(smoketime)
 	return
 
@@ -542,6 +568,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		icon_off = "lighter-[clr]"
 		icon_state = icon_off
 
+/obj/item/tool/lighter/Dispose()
+	if(ismob(src.loc))
+		src.loc.SetLuminosity(-2)
+	else
+		SetLuminosity(0)
+	. = ..()
+
 /obj/item/tool/lighter/attack_self(mob/living/user)
 	if(user.r_hand == src || user.l_hand == src)
 		if(!heat_source)
@@ -554,14 +587,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				if(prob(95))
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 				else
-					to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
+					user << "<span class='warning'>You burn yourself while lighting the lighter.</span>"
 					if (user.l_hand == src)
 						user.apply_damage(2,BURN,"l_hand")
 					else
 						user.apply_damage(2,BURN,"r_hand")
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
-			set_light(2)
+			user.SetLuminosity(2)
 			processing_objects.Add(src)
 		else
 			turn_off(user, 0)
@@ -580,7 +613,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				bearer.visible_message("<span class='notice'>[bearer] quietly shuts off the [src].")
 
-		set_light(0)
+		bearer.SetLuminosity(-2)
 		processing_objects.Remove(src)
 		return 1
 	return 0
@@ -605,3 +638,17 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		..()
 
 /obj/item/tool/lighter/process()
+
+
+/obj/item/tool/lighter/pickup(mob/user)
+	if(heat_source && src.loc != user)
+		SetLuminosity(0)
+		user.SetLuminosity(2)
+	return
+
+
+/obj/item/tool/lighter/dropped(mob/user)
+	if(heat_source && src.loc != user)
+		user.SetLuminosity(-2)
+		SetLuminosity(2)
+	return ..()

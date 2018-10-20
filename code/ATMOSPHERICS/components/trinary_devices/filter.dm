@@ -117,14 +117,14 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe(loc, make_from = src)
-		qdel(src)
+		cdel(src)
 
 /obj/machinery/atmospherics/trinary/filter/attack_hand(user as mob) // -- TLE
 	if(..())
 		return
 
 	if(!src.allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		user << "\red Access denied."
 		return
 
 	var/dat

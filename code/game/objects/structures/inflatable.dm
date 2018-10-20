@@ -7,11 +7,11 @@
 
 /obj/item/inflatable/attack_self(mob/user)
 	playsound(loc, 'sound/items/zip.ogg', 25, 1)
-	to_chat(user, "<span class='notice'>You inflate [src].</span>")
+	user << "\blue You inflate [src]."
 	var/obj/structure/inflatable/R = new /obj/structure/inflatable(user.loc)
 	src.transfer_fingerprints_to(R)
 	R.add_fingerprint(user)
-	qdel(src)
+	cdel(src)
 
 
 
@@ -23,11 +23,11 @@
 
 	attack_self(mob/user)
 		playsound(loc, 'sound/items/zip.ogg', 25, 1)
-		to_chat(user, "<span class='notice'>You inflate [src].</span>")
+		user << "\blue You inflate [src]."
 		var/obj/structure/inflatable/door/R = new /obj/structure/inflatable/door(user.loc)
 		src.transfer_fingerprints_to(R)
 		R.add_fingerprint(user)
-		qdel(src)
+		cdel(src)
 
 
 
@@ -67,7 +67,7 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			deflate(1)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 
 
 /obj/structure/inflatable/attack_paw(mob/user as mob)
@@ -98,7 +98,7 @@
 	if(!istype(W)) return
 
 	if (can_puncture(W))
-		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
+		visible_message("\red <b>[user] pierces [src] with [W]!</b>")
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
@@ -126,15 +126,15 @@
 		new /obj/structure/inflatable/popped(loc)
 		//var/obj/item/inflatable/torn/R = new /obj/item/inflatable/torn(loc)
 		//src.transfer_fingerprints_to(R)
-		qdel(src)
+		cdel(src)
 	else
-		//to_chat(user, "<span class='notice'>You slowly deflate the inflatable wall.</span>")
+		//user << "\blue You slowly deflate the inflatable wall."
 		visible_message("[src] slowly deflates.")
 		flick("wall_deflating", src)
 		spawn(50)
 			var/obj/item/inflatable/R = new /obj/item/inflatable(loc)
 			src.transfer_fingerprints_to(R)
-			qdel(src)
+			cdel(src)
 
 /obj/structure/inflatable/verb/hand_deflate()
 	set name = "Deflate"
@@ -149,7 +149,7 @@
 	if(!deflated)
 		deflate()
 	else
-		to_chat(usr, "[src] is already deflated.")
+		usr << "[src] is already deflated."
 
 
 
@@ -274,15 +274,15 @@
 		new /obj/structure/inflatable/popped/door(loc)
 		//var/obj/item/inflatable/door/torn/R = new /obj/item/inflatable/door/torn(loc)
 		//src.transfer_fingerprints_to(R)
-		qdel(src)
+		cdel(src)
 	else
-		//to_chat(user, "<span class='notice'>You slowly deflate the inflatable wall.</span>")
+		//user << "\blue You slowly deflate the inflatable wall."
 		visible_message("[src] slowly deflates.")
 		flick("door_deflating", src)
 		spawn(50)
 			var/obj/item/inflatable/door/R = new /obj/item/inflatable/door(loc)
 			src.transfer_fingerprints_to(R)
-			qdel(src)
+			cdel(src)
 
 
 

@@ -149,8 +149,7 @@ client/proc/mark_report_done(ID as num)
 	for(var/datum/admin_report/N in reports)
 		if(N.ID == ID)
 			found = N
-	if(!found) 
-		to_chat(src, "<b>* An error occured, sorry.</b>")
+	if(!found) src << "<b>* An error occured, sorry.</b>"
 
 	found.done = 1
 
@@ -159,7 +158,7 @@ client/proc/mark_report_done(ID as num)
 
 client/proc/edit_report(ID as num)
 	if(!src.holder || src.holder.level < 0)
-		to_chat(src, "<b>You tried to modify the news, but you're not an admin!")
+		src << "<b>You tried to modify the news, but you're not an admin!"
 		return
 
 	var/savefile/Reports = new("data/reports.sav")
@@ -171,8 +170,7 @@ client/proc/edit_report(ID as num)
 	for(var/datum/admin_report/N in reports)
 		if(N.ID == ID)
 			found = N
-	if(!found) 
-		to_chat(src, "<b>* An error occured, sorry.</b>")
+	if(!found) src << "<b>* An error occured, sorry.</b>"
 
 	var/body = input(src.mob, "Enter a body for the news", "Body") as null|message
 	if(!body) return

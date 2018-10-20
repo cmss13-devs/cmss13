@@ -69,7 +69,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
-	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweetenï¿½d not thy breath.\""
+	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweeten’d not thy breath.\""
 	icon_state = "harebell"
 	potency = 1
 	filling_color = "#D4B2C9"
@@ -88,11 +88,11 @@
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(C.use(5))
-			to_chat(user, "<span class='notice'>You add some cable to the potato and slide it inside the battery encasing.</span>")
+			user << "<span class='notice'>You add some cable to the potato and slide it inside the battery encasing.</span>"
 			var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(user.loc)
 			pocell.maxcharge = src.potency * 10
 			pocell.charge = pocell.maxcharge
-			qdel(src)
+			cdel(src)
 			return
 
 /obj/item/reagent_container/food/snacks/grown/grapes
@@ -160,9 +160,9 @@
 	var/obj/item/stack/medical/ointment/tajaran/poultice = new /obj/item/stack/medical/ointment/tajaran(user.loc)
 
 	poultice.heal_burn = potency
-	qdel(src)
+	cdel(src)
 
-	to_chat(user, "<span class='notice'>You mash the petals into a poultice.</span>")
+	user << "<span class='notice'>You mash the petals into a poultice.</span>"
 
 /obj/item/reagent_container/food/snacks/grown/shand/attack_self(mob/user as mob)
 	if(istype(user.loc,/turf/open/space))
@@ -170,9 +170,9 @@
 	var/obj/item/stack/medical/bruise_pack/tajaran/poultice = new /obj/item/stack/medical/bruise_pack/tajaran(user.loc)
 
 	poultice.heal_brute = potency
-	qdel(src)
+	cdel(src)
 
-	to_chat(user, "<span class='notice'>You mash the leaves into a poultice.</span>")
+	user << "<span class='notice'>You mash the leaves into a poultice.</span>"
 
 /obj/item/reagent_container/food/snacks/grown/glowberries
 	name = "bunch of glow-berries"
@@ -182,6 +182,19 @@
 	filling_color = "#D3FF9E"
 	icon_state = "glowberrypile"
 	plantname = "glowberries"
+
+/obj/item/reagent_container/food/snacks/grown/glowberries/Dispose()
+	if(istype(loc,/mob))
+		loc.SetLuminosity(round(-potency/5,1))
+	. = ..()
+
+/obj/item/reagent_container/food/snacks/grown/glowberries/pickup(mob/user)
+	src.SetLuminosity(0)
+	user.SetLuminosity(round((potency/5),1))
+
+/obj/item/reagent_container/food/snacks/grown/glowberries/dropped(mob/user)
+	user.SetLuminosity(-(round((potency/5),1)))
+	src.SetLuminosity(round(potency/5,1))
 
 /obj/item/reagent_container/food/snacks/grown/cocoapod
 	name = "cocoa pod"
@@ -277,9 +290,9 @@
 
 /obj/item/reagent_container/food/snacks/grown/pumpkin/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, "<span class='notice'>You carve a face into [src]!</span>")
+		user << "<span class='notice'>You carve a face into [src]!</span>"
 		new /obj/item/clothing/head/pumpkinhead (user.loc)
-		qdel(src)
+		cdel(src)
 	else
 		return ..()
 
@@ -359,7 +372,7 @@
 	..()
 	new/obj/effect/decal/cleanable/tomato_smudge(src.loc)
 	src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/item/reagent_container/food/snacks/grown/killertomato
@@ -375,9 +388,9 @@
 	if(istype(user.loc,/turf/open/space))
 		return
 	new /mob/living/simple_animal/tomato(user.loc)
-	qdel(src)
+	cdel(src)
 
-	to_chat(user, "<span class='notice'>You plant the killer-tomato.</span>")
+	user << "<span class='notice'>You plant the killer-tomato.</span>"
 
 /obj/item/reagent_container/food/snacks/grown/bloodtomato
 	name = "blood-tomato"
@@ -394,7 +407,7 @@
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/item/reagent_container/food/snacks/grown/bluetomato
@@ -412,7 +425,7 @@
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/item/reagent_container/food/snacks/grown/bluetomato/Crossed(AM as mob|obj)
@@ -510,9 +523,9 @@
 	if(istype(user.loc,/turf/open/space))
 		return
 	new /mob/living/simple_animal/mushroom(user.loc)
-	qdel(src)
+	cdel(src)
 
-	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
+	user << "<span class='notice'>You plant the walking mushroom.</span>"
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle
 	name = "chanterelle cluster"
@@ -537,9 +550,23 @@
 	planted.delay = 50
 	planted.endurance = 100
 	planted.potency = potency
-	qdel(src)
+	cdel(src)
 
-	to_chat(user, "<span class='notice'>You plant the glowshroom.</span>")
+	user << "<span class='notice'>You plant the glowshroom.</span>"
+
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/Dispose()
+	if(istype(loc,/mob))
+		loc.SetLuminosity(round(-potency/10,1))
+	. = ..()
+
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
+	SetLuminosity(0)
+	user.SetLuminosity(round((potency/10),1))
+
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
+	user.SetLuminosity(round(-(potency/10),1))
+	SetLuminosity(round(potency/10,1))
+
 
 // *************************************
 // Complex Grown Object Defines -
@@ -565,7 +592,7 @@
 	if(inner_teleport_radius < 1) //Wasn't potent enough, it just splats.
 		new/obj/effect/decal/cleanable/blood/oil(src.loc)
 		src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
-		qdel(src)
+		cdel(src)
 		return
 	for(var/turf/T in orange(M,outer_teleport_radius))
 		if(T in orange(M,inner_teleport_radius)) continue
@@ -602,5 +629,5 @@
 				s.start()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
 	src.visible_message("<span class='notice'>The [src.name] has been squashed, causing a distortion in space-time.</span>","<span class='moderate'>You hear a splat and a crackle.</span>")
-	qdel(src)
+	cdel(src)
 	return

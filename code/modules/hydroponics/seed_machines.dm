@@ -17,7 +17,7 @@
 	if(genes.len)
 		var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobotany Data", "No", "Yes")
 		if(src && user && genes && choice == "Yes")
-			to_chat(user, "You wipe the disk data.")
+			user << "You wipe the disk data."
 			name = initial(name)
 			desc = initial(name)
 			genes = list()
@@ -71,36 +71,36 @@
 	active = 0
 	if(failed_task)
 		failed_task = 0
-		visible_message("[bicon(src)] [src] pings unhappily, flashing a red warning light.")
+		visible_message("\icon[src] [src] pings unhappily, flashing a red warning light.")
 	else
-		visible_message("[bicon(src)] [src] pings happily.")
+		visible_message("\icon[src] [src] pings happily.")
 
 	if(eject_disk)
 		eject_disk = 0
 		if(loaded_disk)
 			loaded_disk.loc = get_turf(src)
-			visible_message("[bicon(src)] [src] beeps and spits out [loaded_disk].")
+			visible_message("\icon[src] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 	stop_processing()
 
 /obj/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/seeds))
 		if(seed)
-			to_chat(user, "There is already a seed loaded.")
+			user << "There is already a seed loaded."
 			return
 		var/obj/item/seeds/S =W
 		if(S.seed && S.seed.immutable > 0)
-			to_chat(user, "That seed is not compatible with our genetics technology.")
+			user << "That seed is not compatible with our genetics technology."
 		else
 			user.drop_held_item()
 			W.loc = src
 			seed = W
-			to_chat(user, "You load [W] into [src].")
+			user << "You load [W] into [src]."
 		return
 
 	if(istype(W,/obj/item/tool/screwdriver))
 		open = !open
-		to_chat(user, "\blue You [open ? "open" : "close"] the maintenance panel.")
+		user << "\blue You [open ? "open" : "close"] the maintenance panel."
 		return
 
 	if(open)
@@ -110,24 +110,24 @@
 
 	if(istype(W,/obj/item/disk/botany))
 		if(loaded_disk)
-			to_chat(user, "There is already a data disk loaded.")
+			user << "There is already a data disk loaded."
 			return
 		else
 			var/obj/item/disk/botany/B = W
 
 			if(B.genes && B.genes.len)
 				if(!disk_needs_genes)
-					to_chat(user, "That disk already has gene data loaded.")
+					user << "That disk already has gene data loaded."
 					return
 			else
 				if(disk_needs_genes)
-					to_chat(user, "That disk does not have any gene data loaded.")
+					user << "That disk does not have any gene data loaded."
 					return
 
 			user.drop_held_item()
 			W.loc = src
 			loaded_disk = W
-			to_chat(user, "You load [W] into [src].")
+			user << "You load [W] into [src]."
 
 		return
 	..()
@@ -196,14 +196,14 @@
 			seed_types[seed.seed.name] = seed.seed
 
 		seed.update_seed()
-		visible_message("[bicon(src)] [src] beeps and spits out [seed].")
+		visible_message("\icon[src] [src] beeps and spits out [seed].")
 
 		seed = null
 
 	if(href_list["eject_disk"])
 		if(!loaded_disk) return
 		loaded_disk.loc = get_turf(src)
-		visible_message("[bicon(src)] [src] beeps and spits out [loaded_disk].")
+		visible_message("\icon[src] [src] beeps and spits out [loaded_disk].")
 		loaded_disk = null
 
 	usr.set_interaction(src)
@@ -229,7 +229,7 @@
 			genetics = seed.seed
 			degradation = 0
 
-		qdel(seed)
+		cdel(seed)
 		seed = null
 
 	if(href_list["get_gene"])

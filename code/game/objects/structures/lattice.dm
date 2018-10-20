@@ -11,10 +11,10 @@
 /obj/structure/lattice/New()
 	..()
 	if(!istype(src.loc, /turf/open/space))
-		qdel(src)
+		cdel(src)
 	for(var/obj/structure/lattice/LAT in src.loc)
 		if(LAT != src)
-			qdel(LAT)
+			cdel(LAT)
 	icon = 'icons/obj/smoothlattice.dmi'
 	icon_state = "latticeblank"
 	updateOverlays()
@@ -37,10 +37,10 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			qdel(src)
+			cdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 			return
 		else
 	return
@@ -54,15 +54,15 @@
 	if (istype(C, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = C
 		if(WT.remove_fuel(0, user))
-			to_chat(user, "<span class='notice'>Slicing lattice joints ...</span>")
+			user << "\blue Slicing lattice joints ..."
 		new /obj/item/stack/rods(src.loc)
-		qdel(src)
+		cdel(src)
 
 	return
 
 /obj/structure/lattice/proc/updateOverlays()
 	//if(!(istype(src.loc, /turf/open/space)))
-	//	qdel(src)
+	//	cdel(src)
 	spawn(1)
 		overlays = list()
 

@@ -29,7 +29,7 @@
 
 /obj/item/clothing/under/Dispose()
 	if(hastie)
-		qdel(hastie)
+		cdel(hastie)
 		hastie = null
 	. = ..()
 
@@ -102,30 +102,30 @@
 	if(has_sensor)
 		switch(sensor_mode)
 			if(0)
-				to_chat(user, "Its sensors appear to be disabled.")
+				user << "Its sensors appear to be disabled."
 			if(1)
-				to_chat(user, "Its binary life sensors appear to be enabled.")
+				user << "Its binary life sensors appear to be enabled."
 			if(2)
-				to_chat(user, "Its vital tracker appears to be enabled.")
+				user << "Its vital tracker appears to be enabled."
 			if(3)
-				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
+				user << "Its vital tracker and tracking beacon appear to be enabled."
 	if(hastie)
-		to_chat(user, "\A [hastie] is clipped to it.")
+		user << "\A [hastie] is clipped to it."
 
 /obj/item/clothing/under/proc/set_sensors(mob/user)
 	if (istype(user, /mob/dead/)) return
 	if (user.stat || user.is_mob_restrained()) return
 	if(has_sensor >= 2)
-		to_chat(user, "The controls are locked.")
+		user << "The controls are locked."
 		return 0
 	if(has_sensor <= 0)
-		to_chat(user, "This suit does not have any sensors.")
+		user << "This suit does not have any sensors."
 		return 0
 
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
 	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
 	if(get_dist(user, src) > 1)
-		to_chat(user, "You have moved too far away.")
+		user << "You have moved too far away."
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
@@ -137,13 +137,13 @@
 	if (loc == user)
 		switch(sensor_mode)
 			if(0)
-				to_chat(user, "You disable your suit's remote sensing equipment.")
+				user << "You disable your suit's remote sensing equipment."
 			if(1)
-				to_chat(user, "Your suit will now report whether you are live or dead.")
+				user << "Your suit will now report whether you are live or dead."
 			if(2)
-				to_chat(user, "Your suit will now report your vital lifesigns.")
+				user << "Your suit will now report your vital lifesigns."
 			if(3)
-				to_chat(user, "Your suit will now report your vital lifesigns as well as your coordinate position.")
+				user << "Your suit will now report your vital lifesigns as well as your coordinate position."
 	else if (ismob(loc))
 		switch(sensor_mode)
 			if(0)
@@ -191,7 +191,7 @@
 		flags_heat_protection = flags_armor_protection
 		update_clothing_icon()
 
-	else to_chat(usr, "<span class='warning'>You cannot roll down the uniform!</span>")
+	else usr << "<span class='warning'>You cannot roll down the uniform!</span>"
 
 //proper proc to remove the uniform's tie (user optional)
 /obj/item/clothing/under/proc/remove_accessory(mob/user)

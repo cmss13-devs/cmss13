@@ -237,7 +237,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message("<span class='danger'>[M]</span> [M.attacktext] [src]!", 1)
+			O.show_message("\red <B>[M]</B> [M.attacktext] [src]!", 1)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
@@ -288,14 +288,14 @@
 					MED.use(1)
 					for(var/mob/M in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message("<span class='notice'>[user] applies the [MED] on [src]</span>")
+							M.show_message("\blue [user] applies the [MED] on [src]")
 		else
-			to_chat(user, "\blue this [src] is dead, medical items won't bring it back to life.")
+			user << "\blue this [src] is dead, medical items won't bring it back to life."
 	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
 			new meat_type (get_turf(src))
 			if(prob(95))
-				qdel(src)
+				cdel(src)
 				return
 			gib()
 	else
@@ -306,12 +306,12 @@
 			adjustBruteLoss(damage)
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<span class='warning'>\b [src] has been attacked with the [O] by [user]. </span>")
+					M.show_message("\red \b [src] has been attacked with the [O] by [user]. ")
 		else
-			to_chat(usr, "\red This weapon is ineffective, it does no damage.")
+			usr << "\red This weapon is ineffective, it does no damage."
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<span class='warning'>[user] gently taps [src] with the [O]. </span>")
+					M.show_message("\red [user] gently taps [src] with the [O]. ")
 
 
 
@@ -367,7 +367,7 @@
 //Call when target overlay should be added/removed
 /mob/living/simple_animal/update_targeted()
 	if(!targeted_by && target_locked)
-		qdel(target_locked)
+		cdel(target_locked)
 		target_locked = null
 	overlays = null
 	if (targeted_by && target_locked)

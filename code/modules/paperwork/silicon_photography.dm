@@ -29,11 +29,11 @@
 	if(C.connected_ai)
 		var/mob/A = P.fields["author"]
 		C.connected_ai.aiCamera.injectaialbum(P, " (taken by [A.name])")
-		to_chat(C.connected_ai, "<span class='unconscious'>Image recorded and saved by [name]</span>")
-		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>")	//feedback to the Cyborg player that the picture was taken
+		C.connected_ai << "<span class='unconscious'>Image recorded and saved by [name]</span>"
+		usr << "<span class='unconscious'>Image recorded and saved to remote database</span>"	//feedback to the Cyborg player that the picture was taken
 	else
 		injectaialbum(P)
-		to_chat(usr, "<span class='unconscious'>Image recorded</span>")
+		usr << "<span class='unconscious'>Image recorded</span>"
 
 /obj/item/device/camera/siliconcam/proc/selectpicture(obj/item/device/camera/siliconcam/cam)
 	if(!cam)
@@ -42,7 +42,7 @@
 	var/list/nametemp = list()
 	var/find
 	if(cam.aipictures.len == 0)
-		to_chat(usr, "<span class='userdanger'>No images saved</span>")
+		usr << "<span class='userdanger'>No images saved</span>"
 		return
 	for(var/datum/picture/t in cam.aipictures)
 		nametemp += t.fields["name"]
@@ -61,10 +61,10 @@
 	var/obj/item/photo/P = new/obj/item/photo()
 	P.construct(selection)
 	P.show(usr)
-	to_chat(usr, P.desc)
+	usr << P.desc
 
 	// TG uses a special garbage collector.. qdel(P)
-	qdel(P) //so 10 thousand pictures items are not left in memory should an AI take them and then view them all.
+	cdel(P) //so 10 thousand pictures items are not left in memory should an AI take them and then view them all.
 
 /obj/item/device/camera/siliconcam/proc/deletepicture()
 	var/datum/picture/selection = selectpicture()
@@ -73,7 +73,7 @@
 		return
 
 	aipictures -= selection
-	to_chat(usr, "<span class='unconscious'>Image deleted</span>")
+	usr << "<span class='unconscious'>Image deleted</span>"
 
 /obj/item/device/camera/siliconcam/ai_camera/can_capture_turf(turf/T, mob/user)
 	var/mob/living/silicon/ai = user
@@ -87,15 +87,15 @@
 
 /obj/item/device/camera/siliconcam/proc/camera_mode_off()
 	src.in_camera_mode = 0
-	to_chat(usr, "<B>Camera Mode deactivated</B>")
+	usr << "<B>Camera Mode deactivated</B>"
 
 /obj/item/device/camera/siliconcam/proc/camera_mode_on()
 	src.in_camera_mode = 1
-	to_chat(usr, "<B>Camera Mode activated</B>")
+	usr << "<B>Camera Mode activated</B>"
 
 /obj/item/device/camera/siliconcam/ai_camera/printpicture(mob/user, datum/picture/P)
 	injectaialbum(P)
-	to_chat(usr, "<span class='unconscious'>Image recorded</span>")
+	usr << "<span class='unconscious'>Image recorded</span>"
 
 /obj/item/device/camera/siliconcam/robot_camera/printpicture(mob/user, datum/picture/P)
 	injectmasteralbum(P)
@@ -149,7 +149,7 @@
 	// Explicitly only allow deletion from the local camera
 	var/mob/living/silicon/robot/C = src.loc
 	if(C.connected_ai)
-		to_chat(C, "Not allowed to delete from the remote database.")
+		C << "Not allowed to delete from the remote database."
 		return
 
 	deletepicture()

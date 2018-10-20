@@ -274,7 +274,7 @@
 			if(key)
 				interact()
 			else
-				to_chat(usr, "The screen turns to static.")
+				usr << "The screen turns to static."
 			return
 
 			// Atlantis: Required for camnetkeys to work.

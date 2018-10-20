@@ -202,7 +202,7 @@ var/global/list/damage_icon_parts = list()
 
 	//Create a new, blank icon for our mob to use.
 	if(stand_icon)
-		qdel(stand_icon)
+		cdel(stand_icon)
 
 	stand_icon = new(species.icon_template ? species.icon_template : 'icons/mob/human.dmi',"blank")
 
@@ -463,7 +463,7 @@ var/global/list/damage_icon_parts = list()
 	if (targeted_by && target_locked)
 		I = image("icon" = target_locked, "layer" =-TARGETED_LAYER)
 	else if (!targeted_by && target_locked)
-		qdel(target_locked)
+		cdel(target_locked)
 		target_locked = null
 	if(holo_card_color)
 		if(I)

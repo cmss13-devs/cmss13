@@ -21,7 +21,7 @@
 	..()
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
-	to_chat(user, "<span class='warning'>The sensors in your uniform can't be modified.</span>")
+	user << "<span class='warning'>The sensors in your uniform can't be modified.</span>"
 	return
 
 /obj/item/clothing/under/marine/medic

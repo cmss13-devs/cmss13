@@ -24,7 +24,7 @@
 			new /obj/item/shard( src.loc )
 			if (occupied)
 				occupied = 0
-			qdel(src)
+			cdel(src)
 
 
 /obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
@@ -64,16 +64,16 @@
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)
 	if (src.destroyed && src.occupied)
-		to_chat(user, "\b You deactivate the hover field built into the case.")
+		user << "\b You deactivate the hover field built into the case."
 		src.occupied = 0
 		src.add_fingerprint(user)
 		update_icon()
 		return
 	else
-		to_chat(usr, "<span class='notice'>You kick the display case.</span>")
+		usr << text("\blue You kick the display case.")
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
-				to_chat(O, "<span class='warning'>[usr] kicks the display case.</span>")
+				O << text("\red [] kicks the display case.", usr)
 		src.health -= 2
 		healthcheck()
 		return

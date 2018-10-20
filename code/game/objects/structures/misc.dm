@@ -10,9 +10,9 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				qdel(src)
+				cdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+			cdel(src)
 
 /obj/structure/monorail
 	name = "monorail track"
@@ -38,15 +38,15 @@
 
 /obj/structure/mopbucket/examine(mob/user)
 	..()
-	to_chat(user, "It contains [reagents.total_volume] unit\s of water!")
+	user << "It contains [reagents.total_volume] unit\s of water!"
 
 /obj/structure/mopbucket/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop))
 		if(reagents.total_volume < 1)
-			to_chat(user, "<span class='warning'>[src] is out of water!</span>")
+			user << "<span class='warning'>[src] is out of water!</span>"
 		else
 			reagents.trans_to(I, 5)
-			to_chat(user, "<span class='notice'>You wet [I] in [src].</span>")
+			user << "<span class='notice'>You wet [I] in [src].</span>"
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 
 

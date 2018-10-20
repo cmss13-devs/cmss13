@@ -64,11 +64,11 @@ Note: Must be placed west/left of and R&D console to function.
 				linked_console.linked_lathe = null
 				linked_console = null
 			icon_state = "protolathe_t"
-			to_chat(user, "You open the maintenance hatch of [src].")
+			user << "You open the maintenance hatch of [src]."
 		else
 			opened = 0
 			icon_state = "protolathe"
-			to_chat(user, "You close the maintenance hatch of [src].")
+			user << "You close the maintenance hatch of [src]."
 		return
 	if (opened)
 		if(istype(O, /obj/item/tool/crowbar))
@@ -103,28 +103,28 @@ Note: Must be placed west/left of and R&D console to function.
 			if(diamond_amount >= 2000)
 				var/obj/item/stack/sheet/mineral/diamond/G = new /obj/item/stack/sheet/mineral/diamond(src.loc)
 				G.amount = round(diamond_amount / G.perunit)
-			qdel(src)
+			cdel(src)
 			return 1
 		else
-			to_chat(user, "\red You can't load the [src.name] while it's opened.")
+			user << "\red You can't load the [src.name] while it's opened."
 			return 1
 	if (disabled)
 		return
 	if (!linked_console)
-		to_chat(user, "\The protolathe must be linked to an R&D console first!")
+		user << "\The protolathe must be linked to an R&D console first!"
 		return 1
 	if (busy)
-		to_chat(user, "<span class='warning'>The protolathe is busy. Please wait for completion of previous operation.</span>")
+		user << "\red The protolathe is busy. Please wait for completion of previous operation."
 		return 1
 	if (!istype(O, /obj/item/stack/sheet))
-		to_chat(user, "<span class='warning'>You cannot insert this item into the protolathe!</span>")
+		user << "\red You cannot insert this item into the protolathe!"
 		return 1
 	if (stat)
 		return 1
 	if(istype(O,/obj/item/stack/sheet))
 		var/obj/item/stack/sheet/S = O
 		if (TotalMaterials() + S.perunit > max_material_storage)
-			to_chat(user, "\red The protolathe's material bin is full. Please remove material before adding more.")
+			user << "\red The protolathe's material bin is full. Please remove material before adding more."
 			return 1
 
 	var/obj/item/stack/sheet/stack = O
@@ -150,7 +150,7 @@ Note: Must be placed west/left of and R&D console to function.
 	var/stacktype = stack.type
 	stack.use(amount)
 	if(do_after(user, 15, TRUE, 5, BUSY_ICON_FRIENDLY))
-		to_chat(user, "<span class='notice'>You add [amount] sheets to the [src.name].</span>")
+		user << "\blue You add [amount] sheets to the [src.name]."
 		icon_state = "protolathe"
 		switch(stacktype)
 			if(/obj/item/stack/sheet/metal)

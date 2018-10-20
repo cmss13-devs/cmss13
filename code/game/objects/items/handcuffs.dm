@@ -22,10 +22,10 @@
 	if(!istype(C))
 		return ..()
 	if (!istype(user, /mob/living/carbon/human))
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		user << "\red You don't have the dexterity to do this!"
 		return
 	if ((CLUMSY in usr.mutations) && prob(50))
-		to_chat(user, "<span class='warning'>Uh ... how do those things work?!</span>")
+		user << "\red Uh ... how do those things work?!"
 		place_handcuffs(user, user)
 		return
 	if(!C.handcuffed)
@@ -41,7 +41,7 @@
 		var/mob/living/carbon/human/H = target
 
 		if (!H.has_limb_for_slot(WEAR_HANDCUFFS))
-			to_chat(user, "<span class='warning'>\The [H] needs at least two wrists before you can cuff them together!</span>")
+			user << "\red \The [H] needs at least two wrists before you can cuff them together!"
 			return
 
 		H.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been handcuffed (attempt) by [user.name] ([user.ckey])</font>")
@@ -119,8 +119,8 @@
 			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
 
 			user.put_in_hands(W)
-			to_chat(user, "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>")
-			qdel(src)
+			user << "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>"
+			cdel(src)
 			update_icon(user)
 
 
@@ -132,12 +132,12 @@
 		var/turf/p_loc = user.loc
 		var/turf/p_loc_m = C.loc
 		playsound(src.loc, cuff_sound, 25, 1, 4)
-		user.visible_message("<span class='danger'>[user] is trying to put handcuffs on [C]!</span>")
+		user.visible_message("\red <B>[user] is trying to put handcuffs on [C]!</B>")
 
 		if (ishuman(C))
 			var/mob/living/carbon/human/H = C
 			if (!H.has_limb_for_slot(WEAR_HANDCUFFS))
-				to_chat(user, "<span class='warning'>\The [H] needs at least two wrists before you can cuff them together!</span>")
+				user << "\red \The [H] needs at least two wrists before you can cuff them together!"
 				return
 
 		spawn(30)
@@ -169,19 +169,19 @@
 
 /obj/item/restraints/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(!istype(C, /mob/living/carbon/Xenomorph))
-		to_chat(user, "<span class='warning'>The cuffs do not fit!</span>")
+		user << "\red The cuffs do not fit!"
 		return
 	if(!C.handcuffed)
 		var/turf/p_loc = user.loc
 		var/turf/p_loc_m = C.loc
 		playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
 		for(var/mob/O in viewers(user, null))
-			O.show_message("<span class='danger'>[user] is trying to put restraints on [C]!</span>", 1)
+			O.show_message("\red <B>[user] is trying to put restraints on [C]!</B>", 1)
 		spawn(30)
 			if(!C)	return
 			if(p_loc == user.loc && p_loc_m == C.loc)
 				C.handcuffed = new /obj/item/restraints(C)
 				C.handcuff_update()
-				C.visible_message("<span class='warning'>[C] has been successfully restrained by [user]!</span>")
-				qdel(src)
+				C.visible_message("\red [C] has been successfully restrained by [user]!")
+				cdel(src)
 	return

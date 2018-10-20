@@ -19,7 +19,7 @@
 		S.hide_from(usr)
 		for(var/obj/item/ore/O in S.contents)
 			S.remove_from_storage(O, src) //This will move the item to this item's contents
-		to_chat(user, "<span class='notice'>You empty the satchel into the box.</span>")
+		user << "\blue You empty the satchel into the box."
 
 	update_ore_count()
 
@@ -45,16 +45,16 @@
 	add_fingerprint(user)
 
 	if(!contents.len)
-		to_chat(user, "It is empty.")
+		user << "It is empty."
 		return
 
 	if(world.time > last_update + 10)
 		update_ore_count()
 		last_update = world.time
 
-	to_chat(user, "It holds:")
+	user << "It holds:"
 	for(var/ore in stored_ore)
-		to_chat(user, "- [stored_ore[ore]] [ore]")
+		user << "- [stored_ore[ore]] [ore]"
 
 
 
@@ -64,26 +64,26 @@
 	set src in view(1)
 
 	if(!istype(usr, /mob/living/carbon/human)) //Only living, intelligent creatures with hands can empty ore boxes.
-		to_chat(usr, "<span class='warning'>You are physically incapable of emptying the ore box.</span>")
+		usr << "\red You are physically incapable of emptying the ore box."
 		return
 
 	if( usr.stat || usr.is_mob_restrained() )
 		return
 
 	if(!Adjacent(usr)) //You can only empty the box if you can physically reach it
-		to_chat(usr, "You cannot reach the ore box.")
+		usr << "You cannot reach the ore box."
 		return
 
 	add_fingerprint(usr)
 
 	if(contents.len < 1)
-		to_chat(usr, "<span class='warning'> The ore box is empty</span>")
+		usr << "\red The ore box is empty"
 		return
 
 	for (var/obj/item/ore/O in contents)
 		contents -= O
 		O.loc = src.loc
-	to_chat(usr, "<span class='notice'> You empty the ore box</span>")
+	usr << "\blue You empty the ore box"
 
 	return
 
@@ -92,5 +92,5 @@
 		for (var/obj/item/ore/O in contents)
 			O.loc = src.loc
 			O.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
-		qdel(src)
+		cdel(src)
 		return

@@ -125,7 +125,7 @@
 						src.temp = null
 
 				else
-					to_chat(usr, "<span class='warning'>Access Denied.</span>")
+					usr << "\red Access Denied."
 
 		if ("stop" in href_list)
 			src.temp = {"
@@ -159,7 +159,7 @@
 					if(choice == "Confirm")
 						if(R && istype(R))
 							if(R.mind && R.mind.special_role && R.emagged)
-								to_chat(R, "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered.")
+								R << "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered."
 								R.ResetSecurityCodes()
 
 							else
@@ -167,7 +167,7 @@
 								log_game("\blue [key_name_admin(usr)] detonated [R.name]!")
 								R.self_destruct()
 			else
-				to_chat(usr, "<span class='warning'>Access Denied.</span>")
+				usr << "\red Access Denied."
 
 		if ("stopbot" in href_list)
 			if(computer.allowed(usr))
@@ -182,14 +182,14 @@
 							if (R.lockcharge)
 							//	R.cell.charge = R.lockcharge
 								R.lockcharge = !R.lockcharge
-								to_chat(R, "Your lockdown has been lifted!")
+								R << "Your lockdown has been lifted!"
 							else
 								R.lockcharge = !R.lockcharge
 						//		R.cell.charge = 0
-								to_chat(R, "You have been locked down!")
+								R << "You have been locked down!"
 
 			else
-				to_chat(usr, "<span class='warning'>Access Denied.</span>")
+				usr << "\red Access Denied."
 
 		if ("magbot" in href_list)
 			if(computer.allowed(usr))

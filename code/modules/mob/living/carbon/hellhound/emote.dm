@@ -68,10 +68,10 @@
 						sleep(1)
 		if("help")
 			text += "scratch, whimper, roar, tail, paw, sway, snore, grunt, rumble, howl, growl, stare, sniff, dance"
-			to_chat(src, text)
+			src << text
 			return
 		else
-			to_chat(src, text("Invalid Emote: []", act))
+			src << text("Invalid Emote: []", act)
 			return
 	if (message)
 		if(src.client)

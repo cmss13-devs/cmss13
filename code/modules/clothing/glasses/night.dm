@@ -61,7 +61,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(!istype(H.back, /obj/item/smartgun_powerpack))
-				to_chat(user, "You must be wearing an M56 Powerpack on your back to wear these.")
+				user << "You must be wearing an M56 Powerpack on your back to wear these."
 				return 0
 	return ..()
 
@@ -81,3 +81,8 @@
 /obj/item/clothing/glasses/night/yautja/Dispose()
 	..()
 	return TA_REVIVE_ME
+
+/obj/item/clothing/glasses/night/yautja/Recycle()
+	var/blacklist[] = list("overlay","icon_state","item_state","name","desc","darkness_view","can_remove")
+	. = ..() + blacklist
+

@@ -27,7 +27,7 @@
 
 	Dispose()
 		if(milled_item)
-			qdel(milled_item)
+			cdel(milled_item)
 			milled_item = null
 		. = ..()
 
@@ -59,7 +59,7 @@
 		else
 			error = 1
 
-	qdel(milled_item)
+	cdel(milled_item)
 	milled_item = null
 	busy = 0
 
@@ -101,7 +101,7 @@
 
 	Dispose()
 		if(fermenting_item)
-			qdel(fermenting_item)
+			cdel(fermenting_item)
 			fermenting_item = null
 		. = ..()
 
@@ -135,7 +135,7 @@
 		else
 			error = 1
 
-	qdel(fermenting_item)
+	cdel(fermenting_item)
 	fermenting_item = null
 	busy = 0
 
@@ -173,7 +173,7 @@
 
 	Dispose()
 		if(destilling_item)
-			qdel(destilling_item)
+			cdel(destilling_item)
 			destilling_item = null
 		. = ..()
 
@@ -202,7 +202,7 @@
 		else
 			error = 1
 
-	qdel(destilling_item)
+	cdel(destilling_item)
 	destilling_item = null
 	busy = 0
 

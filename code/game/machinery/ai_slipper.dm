@@ -40,7 +40,7 @@
 	else // trying to unlock the interface
 		if (src.allowed(usr))
 			locked = !locked
-			to_chat(user, "You [ locked ? "lock" : "unlock"] the device.")
+			user << "You [ locked ? "lock" : "unlock"] the device."
 			if (locked)
 				if (user.interactee==src)
 					user.unset_interaction()
@@ -49,7 +49,7 @@
 				if (user.interactee==src)
 					src.attack_hand(usr)
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			user << "\red Access denied."
 			return
 	return
 
@@ -61,7 +61,7 @@
 		return
 	if ( (get_dist(src, user) > 1 ))
 		if (!istype(user, /mob/living/silicon))
-			to_chat(user, "Too far away.")
+			user << text("Too far away.")
 			user.unset_interaction()
 			user << browse(null, "window=ai_slipper")
 			return
@@ -71,7 +71,7 @@
 	if (istype(loc, /turf))
 		loc = loc:loc
 	if (!istype(loc, /area))
-		to_chat(user, "Turret badly positioned - loc.loc is [loc].")
+		user << text("Turret badly positioned - loc.loc is [].", loc)
 		return
 	var/area/area = loc
 	var/t = "<TT><B>AI Liquid Dispenser</B> ([area.name])<HR>"
@@ -90,7 +90,7 @@
 	..()
 	if (src.locked)
 		if (!istype(usr, /mob/living/silicon))
-			to_chat(usr, "Control panel is locked!")
+			usr << "Control panel is locked!"
 			return
 	if (href_list["toggleOn"])
 		src.disabled = !src.disabled

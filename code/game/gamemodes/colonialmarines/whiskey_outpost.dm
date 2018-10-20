@@ -89,7 +89,7 @@
 	var/mob/M
 	for(var/obj/effect/landmark/start/S in world)
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
-			qdel(S)
+			cdel(S)
 
 	if(config) config.remove_gun_restrictions = 1
 
@@ -101,12 +101,12 @@
 				spawn_player(H)
 
 	sleep(10)
-	to_chat(world, "<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
-	to_chat(world, "<span class='round_body'>It is the year 2181 on the planet LV-624, five years before the arrival of the USS Almayer and the 7th 'Falling Falcons' Battalion in the sector</span>")
-	to_chat(world, "<span class='round_body'>The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector</span>")
-	to_chat(world, "<span class='round_body'>[map_tag], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces</span>")
-	to_chat(world, "<span class='round_body'>With casualties mounting and supplies running thin, the Dust Raiders at [map_tag] must survive for an hour to alert the rest of their battalion in the sector</span>")
-	to_chat(world, "<span class='round_body'>Hold out for as long as you can.</span>")
+	world << "<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>"
+	world << "<span class='round_body'>It is the year 2181 on the planet LV-624, five years before the arrival of the USS Almayer and the 7th 'Falling Falcons' Battalion in the sector</span>"
+	world << "<span class='round_body'>The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector</span>"
+	world << "<span class='round_body'>[map_tag], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces</span>"
+	world << "<span class='round_body'>With casualties mounting and supplies running thin, the Dust Raiders at [map_tag] must survive for an hour to alert the rest of their battalion in the sector</span>"
+	world << "<span class='round_body'>Hold out for as long as you can.</span>"
 	world << sound('sound/effects/siren.ogg')
 
 	sleep(50)
@@ -399,7 +399,7 @@ var/global/spawn_next_wo_wave = 0
 				//	X:huggers_cur = 6 //Max out huggers
 
 	//if(xenos_spawned)
-	//	to_chat(world, "Xenos_spawned: [xenos_spawned]")
+	//	world << "Xenos_spawned: [xenos_spawned]"
 
 /datum/game_mode/whiskey_outpost/proc/count_xenos()//Counts braindead too
 	var/xeno_count = 0
@@ -428,28 +428,28 @@ var/global/spawn_next_wo_wave = 0
 	var/marines = count_marines(SURFACE_Z_LEVELS)
 	if(finished == 1)
 		feedback_set_details("round_end_result","Xenos won")
-		to_chat(world, "<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>")
-		to_chat(world, "<span class='round_body'>Well done, you've secured LV-624 for the hive!</span>")
-		to_chat(world, "<span class='round_body'>It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 7th 'Falling Falcons' Battalion and the USS Almayer.</span>")
-		to_chat(world, "<span class='round_body'>The xenomorph hive on LV-624 remains unthreatened until then..</span>")
+		world << "<span class='round_header'>The Xenos have succesfully defended their hive from colonization.</span>"
+		world << "<span class='round_body'>Well done, you've secured LV-624 for the hive!</span>"
+		world << "<span class='round_body'>It will be another five years before the USCM returns to the Tychon's Rift sector, with the arrival of the 7th 'Falling Falcons' Battalion and the USS Almayer.</span>"
+		world << "<span class='round_body'>The xenomorph hive on LV-624 remains unthreatened until then..</span>"
 		world << sound('sound/misc/Game_Over_Man.ogg')
 		if(round_stats) // Logging to data/logs/round_stats.log
 			round_stats << "Marines remaining: [marines]\nRound time: [duration2text()][log_end]\nBig Winner:)"
 
 	else if(finished == 2)
 		feedback_set_details("round_end_result","Marines Won")
-		to_chat(world, "<span class='round_header'>Against the onslaught, the marines have survived.</span>")
-		to_chat(world, "<span class='round_body'>The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in Tychon's Rift begin to converge on LV-624.</span>")
-		to_chat(world, "<span class='round_body'>Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come.</span>")
-		to_chat(world, "<span class='round_body'>The USS Almayer and the 7th 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186.</span>")
+		world << "<span class='round_header'>Against the onslaught, the marines have survived.</span>"
+		world << "<span class='round_body'>The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in Tychon's Rift begin to converge on LV-624.</span>"
+		world << "<span class='round_body'>Eventually, the Dust Raiders secure LV-624 and the entire Tychon's Rift sector in 2182, pacifiying it and establishing peace in the sector for decades to come.</span>"
+		world << "<span class='round_body'>The USS Almayer and the 7th 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186.</span>"
 		world << sound('sound/misc/hell_march.ogg')
 
 		if(round_stats) // Logging to data/logs/round_stats.log
 			round_stats << "Marines remaining: [marines]\nRound time: [duration2text()][log_end]"
 	else
 		feedback_set_details("round_end_result","no winners")
-		to_chat(world, "<span class='round_header'>NOBODY WON!</span>")
-		to_chat(world, "<span class='round_body'>How? Don't ask me...</span>")
+		world << "<span class='round_header'>NOBODY WON!</span>"
+		world << "<span class='round_body'>How? Don't ask me...</span>"
 		world << 'sound/misc/sadtrombone.ogg'
 
 		if(round_stats) // Logging to data/logs/round_stats.log
@@ -664,23 +664,23 @@ var/global/spawn_next_wo_wave = 0
 		if(istype(usr, /mob/living/silicon) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey))
-			to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+			usr << "\red You don't have the dexterity to do this!"
 			return
 		if(working)
-			to_chat(user, "<span class='warning'>Wait for it to recharge first.</span>")
+			user << "\red Wait for it to recharge first."
 			return
 
 		var/remove_max = 10
 		var/turf/T = src.loc
 		if(T)
-			to_chat(user, "<span class='warning'>You turn on the recycler.</span>")
+			user << "\red You turn on the recycler."
 			var/removed = 0
 			for(var/i, i < remove_max, i++)
 				for(var/obj/O in T)
 					if(istype(O,/obj/structure/closet/crate))
 						var/obj/structure/closet/crate/C = O
 						if(C.contents.len)
-							to_chat(user, "<span class='warning'>[O] must be emptied before it can be recycled</span>")
+							user << "\red [O] must be emptied before it can be recycled"
 							continue
 						new /obj/item/stack/sheet/metal(get_step(src,dir))
 						O.loc = get_turf(locate(84,237,2)) //z.2
@@ -744,16 +744,16 @@ var/global/spawn_next_wo_wave = 0
 
 /obj/item/device/whiskey_supply_beacon/attack_self(mob/user)
 	if(activated)
-		to_chat(user, "Toss it to get supplies!")
+		user << "Toss it to get supplies!"
 		return
 
 	if(!ishuman(user)) return
 	if(!user.mind)
-		to_chat(user, "It doesn't seem to do anything for you.")
+		user << "It doesn't seem to do anything for you."
 		return
 
 	if(user.z != 1)
-		to_chat(user, "You have to be on the ground to use this or it won't transmit.")
+		user << "You have to be on the ground to use this or it won't transmit."
 		return
 
 	activated = 1
@@ -761,12 +761,12 @@ var/global/spawn_next_wo_wave = 0
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	user << "You activate the [src]. Now toss it, the supplies will arrive in a moment!"
 	sleep(100) //10 seconds should be enough.
 	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
 	drop_supplies(T, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
-	qdel(src)
+	cdel(src)
 	return
 
 /obj/item/device/whiskey_supply_beacon/verb/switch_supplies()
@@ -780,31 +780,31 @@ var/global/spawn_next_wo_wave = 0
 	switch(supply_drop)
 		if(0)
 			supply_drop = 1
-			to_chat(usr, "<span class='notice'>Rocket ammo will now drop!</span>")
+			usr << "<span class='notice'>Rocket ammo will now drop!</span>"
 			return
 		if(1)
 			supply_drop = 2
-			to_chat(usr, "<span class='notice'>Smartgun ammo will now drop!</span>")
+			usr << "<span class='notice'>Smartgun ammo will now drop!</span>"
 			return
 		if(2)
 			supply_drop = 3
-			to_chat(usr, "<span class='notice'>Sniper ammo will now drop!</span>")
+			usr << "<span class='notice'>Sniper ammo will now drop!</span>"
 			return
 		if(3)
 			supply_drop = 4
-			to_chat(usr, "<span class='notice'>Explosives and grenades will now drop!</span>")
+			usr << "<span class='notice'>Explosives and grenades will now drop!</span>"
 			return
 		if(4)
 			supply_drop = 5
-			to_chat(usr, "<span class='notice'>Pyrotechnician tanks will now drop!</span>")
+			usr << "<span class='notice'>Pyrotechnician tanks will now drop!</span>"
 			return
 		if(5)
 			supply_drop = 6
-			to_chat(usr, "<span class='notice'>Scout ammo will now drop!</span>")
+			usr << "<span class='notice'>Scout ammo will now drop!</span>"
 			return
 		if(6)
 			supply_drop = 0
-			to_chat(usr, "<span class='notice'>10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!</span>")
+			usr << "<span class='notice'>10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!</span>"
 			return
 	return
 
@@ -903,4 +903,4 @@ var/global/spawn_next_wo_wave = 0
 		var/turf/T = get_turf(src)
 		if(T)
 			new /obj/item/paper/crumpled(T)
-		qdel(src)
+		cdel(src)

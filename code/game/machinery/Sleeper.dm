@@ -24,10 +24,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -40,7 +40,7 @@
 		if(dir == WEST || dir == NORTH)
 			connected = locate(/obj/machinery/sleeper,get_step(src, EAST))
 		if(!connected)
-			cdel(src)
+			qdel(src)
 		else
 			connected.connected = src
 
@@ -67,9 +67,9 @@
 				if(0)
 					t1 = "Conscious"
 				if(1)
-					t1 = "<font color='blue'>Unconscious</font>"
+					t1 = "<span class='notice'>Unconscious</span>"
 				if(2)
-					t1 = "<font color='red'>*dead*</font>"
+					t1 = "<span class='caution'>*dead*</span>"
 				else
 			dat += text("[]\tHealth %: [] ([])</FONT><BR>", (occupant.health > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.health, t1)
 			if(iscarbon(occupant))
@@ -125,13 +125,13 @@
 			if (connected)
 				if (connected.occupant)
 					if (connected.occupant.stat == DEAD)
-						user << "<span class='warning'>This person has no life for to preserve anymore. Take them to a department capable of reanimating them.</span>"
+						to_chat(user, "<span class='warning'>This person has no life for to preserve anymore. Take them to a department capable of reanimating them.</span>")
 					else if(href_list["chemical"] in connected.available_chemicals && (connected.occupant.health > 0 || href_list["chemical"] == "inaprovaline"))
 						var/amount = text2num(href_list["amount"])
 						if(amount == 5 || amount == 10)
 							connected.inject_chemical(user,href_list["chemical"],amount)
 					else
-						user << "<span class='warning'>This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!</span>"
+						to_chat(user, "<span class='warning'>This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!</span>")
 					updateUsrDialog()
 		if (href_list["refresh"])
 			updateUsrDialog()
@@ -220,7 +220,7 @@
 				updateUsrDialog()
 			return
 		else
-			user << "<span class='warning'>The sleeper has a beaker already.</span>"
+			to_chat(user, "<span class='warning'>The sleeper has a beaker already.</span>")
 			return
 
 	else if(istype(W, /obj/item/grab))
@@ -230,14 +230,14 @@
 			return
 
 		if(occupant)
-			user << "<span class='notice'>The sleeper is already occupied!</span>"
+			to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
 			return
 
 		visible_message("[user] starts putting [G.grabbed_thing] into the sleeper.", 3)
 
 		if(do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC))
 			if(occupant)
-				user << "<span class='notice'>The sleeper is already occupied!</span>"
+				to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
 				return
 			if(!G || !G.grabbed_thing) return
 			var/mob/M = G.grabbed_thing
@@ -260,12 +260,12 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 
 /obj/machinery/sleeper/emp_act(severity)
@@ -306,15 +306,15 @@
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= 20)
 			occupant.reagents.add_reagent(chemical, amount)
-			user << "<span class='notice'>Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in his/her bloodstream.</span>"
+			to_chat(user, "<span class='notice'>Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in his/her bloodstream.</span>")
 			return
-	user << "<span class='warning'>There's no occupant in the sleeper or the subject has too many chemicals!</span>"
+	to_chat(user, "<span class='warning'>There's no occupant in the sleeper or the subject has too many chemicals!</span>")
 	return
 
 
 /obj/machinery/sleeper/proc/check(mob/living/user)
 	if(occupant)
-		user << text("\blue <B>Occupant ([]) Statistics:</B>", occupant)
+		to_chat(user, "<span class='boldnotice'>Occupant ([]) Statistics:</span>", occupant)
 		var/t1
 		switch(occupant.stat)
 			if(0)
@@ -324,20 +324,20 @@
 			if(2)
 				t1 = "*dead*"
 			else
-		user << text("[]\t Health %: [] ([])", (occupant.health > 50 ? "\blue " : "\red "), occupant.health, t1)
-		user << text("[]\t -Core Temperature: []&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
-		user << text("[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? "\blue " : "\red "), occupant.getBruteLoss())
-		user << text("[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? "\blue " : "\red "), occupant.getOxyLoss())
-		user << text("[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? "\blue " : "\red "), occupant.getToxLoss())
-		user << text("[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? "\blue " : "\red "), occupant.getFireLoss())
-		user << "\blue Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)"
-		user << "\blue \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"
+		to_chat(user, "[]\t Health %: [] ([])", (occupant.health > 50 ? "\blue " : "\red "), occupant.health, t1)
+		to_chat(user, "[]\t -Core Temperature: []&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
+		to_chat(user, "[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? "\blue " : "\red "), occupant.getBruteLoss())
+		to_chat(user, "[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? "\blue " : "\red "), occupant.getOxyLoss())
+		to_chat(user, "[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? "\blue " : "\red "), occupant.getToxLoss())
+		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? "\blue " : "\red "), occupant.getFireLoss())
+		to_chat(user, "\blue Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)")
+		to_chat(user, "\blue \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)")
 		if(beaker)
-			user << "\blue \t Dialysis Output Beaker has [beaker.reagents.maximum_volume - beaker.reagents.total_volume] of free space remaining."
+			to_chat(user, "\blue \t Dialysis Output Beaker has [beaker.reagents.maximum_volume - beaker.reagents.total_volume] of free space remaining.")
 		else
-			user << "\blue No Dialysis Output Beaker loaded."
+			to_chat(user, "<span class='notice'>No Dialysis Output Beaker loaded.</span>")
 	else
-		user << "\blue There is no one inside!"
+		to_chat(user, "<span class='notice'>There is no one inside!</span>")
 	return
 
 
@@ -378,7 +378,7 @@
 	var/mob/living/carbon/human/user = usr
 
 	if(occupant)
-		user << "<span class='notice'>The sleeper is already occupied!</span>"
+		to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
 		return
 
 	visible_message("[user] starts climbing into the sleeper.", 3)
@@ -388,7 +388,7 @@
 			grabmob.stop_pulling()
 	if(do_after(user, 20, FALSE, 5, BUSY_ICON_GENERIC))
 		if(occupant)
-			user << "<span class='notice'>The sleeper is already occupied!</span>"
+			to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
 			return
 		user.stop_pulling()
 		if(user.pulledby)
@@ -405,5 +405,5 @@
 			icon_state = "sleeper_1-r"
 
 		for(var/obj/O in src)
-			cdel(O)
+			qdel(O)
 		add_fingerprint(user)

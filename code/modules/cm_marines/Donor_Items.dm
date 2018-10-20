@@ -18,10 +18,10 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		usr << "<span class='warning'>Not right now!</span>"
+		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	usr << "<span class='notice'>You [flags_marine_armor & ARMOR_SQUAD_OVERLAY? "hide" : "show"] the squad markings.</span>"
+	to_chat(usr, "<span class='notice'>You [flags_marine_armor & ARMOR_SQUAD_OVERLAY? "hide" : "show"] the squad markings.</span>")
 	flags_marine_armor ^= ARMOR_SQUAD_OVERLAY
 	usr.update_inv_wear_suit()
 
@@ -29,10 +29,10 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		usr << "<span class='warning'>Not right now!</span>"
+		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	usr << "<span class='notice'>You [flags_marine_armor & ARMOR_LAMP_OVERLAY? "hide" : "show"] the shoulder lamp.</span>"
+	to_chat(usr, "<span class='notice'>You [flags_marine_armor & ARMOR_LAMP_OVERLAY? "hide" : "show"] the shoulder lamp.</span>")
 	flags_marine_armor ^= ARMOR_LAMP_OVERLAY
 	update_icon(usr)
 
@@ -443,10 +443,10 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		usr << "<span class='warning'>Not right now!</span>"
+		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	usr << "<span class='notice'>You [flags_marine_helmet & HELMET_SQUAD_OVERLAY? "hide" : "show"] the squad markings.</span>"
+	to_chat(usr, "<span class='notice'>You [flags_marine_helmet & HELMET_SQUAD_OVERLAY? "hide" : "show"] the squad markings.</span>")
 	flags_marine_helmet ^= HELMET_SQUAD_OVERLAY
 	usr.update_inv_head()
 
@@ -454,10 +454,10 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		usr << "<span class='warning'>Not right now!</span>"
+		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	usr << "<span class='notice'>You [flags_marine_helmet & HELMET_GARB_OVERLAY? "hide" : "show"] the helmet garb.</span>"
+	to_chat(usr, "<span class='notice'>You [flags_marine_helmet & HELMET_GARB_OVERLAY? "hide" : "show"] the helmet garb.</span>")
 	flags_marine_helmet ^= HELMET_GARB_OVERLAY
 	update_icon(usr, flags_marine_helmet & HELMET_GARB_OVERLAY? 0 : 2)
 
@@ -1280,4 +1280,4 @@ obj/item/clothing/gloves/marine/fluff/jedijas
 	if(istype(W, /obj/item/tool/lighter/zippo/fluff/ghost))
 		..()
 	else
-		user << "<span class='notice'>\The [src] straight out REFUSES to be lit by anything other than a purple zippo.</span>"
+		to_chat(user, "<span class='notice'>\The [src] straight out REFUSES to be lit by anything other than a purple zippo.</span>")

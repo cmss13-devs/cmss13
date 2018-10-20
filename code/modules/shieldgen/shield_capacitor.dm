@@ -34,14 +34,14 @@
 		var/obj/item/card/id/C = W
 		if(ACCESS_MARINE_ENGINEERING in C.access || ACCESS_MARINE_CE in C.access)
 			src.locked = !src.locked
-			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 			updateDialog()
 		else
-			user << "\red Access denied."
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 	else if(istype(W, /obj/item/card/emag))
 		if(prob(75))
 			src.locked = !src.locked
-			user << "Controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
 			updateDialog()
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
@@ -49,7 +49,7 @@
 
 	else if(istype(W, /obj/item/tool/wrench))
 		src.anchored = !src.anchored
-		src.visible_message("\blue \icon[src] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].")
+		src.visible_message("\blue [bicon(src)] [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].")
 
 		if(anchored)
 			spawn(0)
@@ -134,7 +134,7 @@
 		return
 	if( href_list["toggle"] )
 		if(!active && !anchored)
-			usr << "\red The [src] needs to be firmly secured to the floor first."
+			to_chat(usr, "<span class='warning'>The [src] needs to be firmly secured to the floor first.</span>")
 			return
 		active = !active
 	if( href_list["charge_rate"] )
@@ -154,7 +154,7 @@
 	set src in oview(1)
 
 	if (src.anchored)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return
 	src.dir = turn(src.dir, 270)
 	return

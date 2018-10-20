@@ -12,7 +12,7 @@
 		return
 
 	if(emotedown)
-		src << "STOP SPAMMING"
+		to_chat(src, "STOP SPAMMING")
 		return
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
@@ -26,7 +26,7 @@
 			if(player_caused)
 				if(client)
 					if (client.prefs.muted & MUTE_IC)
-						src << "<span class='warning'>You cannot send IC messages (muted)</span>"
+						to_chat(src, "<span class='warning'>You cannot send IC messages (muted)</span>")
 						return
 					if(client.handle_spam_prevention(message, MUTE_IC))
 						return
@@ -186,7 +186,7 @@
 				canmove = 1
 
 		if("help")
-			src << "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br>\
+			to_chat(src, "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br>\
 			dance, \
 			<span style='color: green;'>growl</span>, \
 			<span style='color: green;'>growl1</span>, \
@@ -208,9 +208,9 @@
 			<span style='color: green;'>tail</span>, \
 			<span style='color: green;'>tail1</span>, \
 			<span style='color: green;'>tail2</span>, \
-			<span style='color: green;'>tail3</span></b><br>"
+			<span style='color: green;'>tail3</span></b><br>")
 		else
-			src << text("Invalid Emote: []", act)
+			to_chat(src, text("Invalid Emote: []", act))
 	if(message)
 		log_emote("[name]/[key] : [message]")
 		if(m_type & 1)

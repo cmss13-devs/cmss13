@@ -41,7 +41,7 @@
 	set src in oview(1)
 
 	if (src.anchored || usr:stat)
-		usr << "It is fastened to the floor!"
+		to_chat(usr, "It is fastened to the floor!")
 		return 0
 	src.dir = turn(src.dir, 90)
 	return 1
@@ -55,7 +55,7 @@
 /obj/machinery/power/emitter/Dispose()
 	message_admins("Emitter deleted at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	log_game("Emitter deleted at ([x],[y],[z])")
-	investigate_log("<font color='red'>deleted</font> at ([x],[y],[z])","singulo")
+	investigate_log("<span class='caution'>deleted</span> at ([x],[y],[z])","singulo")
 	. = ..()
 
 /obj/machinery/power/emitter/update_icon()
@@ -71,18 +71,18 @@
 /obj/machinery/power/emitter/proc/activate(mob/user as mob)
 	if(state == 2)
 		if(!powernet)
-			user << "The emitter isn't connected to a wire."
+			to_chat(user, "The emitter isn't connected to a wire.")
 			return 1
 		if(!src.locked)
 			if(src.active==1)
 				src.active = 0
-				user << "You turn off the [src]."
+				to_chat(user, "You turn off the [src].")
 				message_admins("Emitter turned off by [key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 				log_game("Emitter turned off by [user.ckey]([user]) in ([x],[y],[z])")
-				investigate_log("turned <font color='red'>off</font> by [user.key]","singulo")
+				investigate_log("turned <span class='caution'>off</span> by [user.key]","singulo")
 			else
 				src.active = 1
-				user << "You turn on the [src]."
+				to_chat(user, "You turn on the [src].")
 				src.shot_number = 0
 				src.fire_delay = 100
 				message_admins("Emitter turned on by [key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
@@ -90,9 +90,9 @@
 				investigate_log("turned <font color='green'>on</font> by [user.key]","singulo")
 			update_icon()
 		else
-			user << "\red The controls are locked!"
+			to_chat(user, "<span class='warning'>The controls are locked!</span>")
 	else
-		user << "\red The [src] needs to be firmly secured to the floor first."
+		to_chat(user, "<span class='warning'>The [src] needs to be firmly secured to the floor first.</span>")
 		return 1
 
 
@@ -117,7 +117,7 @@
 			if(powered)
 				powered = 0
 				update_icon()
-				investigate_log("lost power and turned <font color='red'>off</font>","singulo")
+				investigate_log("lost power and turned <span class='caution'>off</span>","singulo")
 			return
 
 		last_shot = world.time
@@ -131,7 +131,7 @@
 		//need to calculate the power per shot as the emitter doesn't fire continuously.
 		var/burst_time = (min_burst_delay + max_burst_delay)/2 + 2*(burst_shots-1)
 		var/power_per_shot = active_power_usage * (burst_time/10) / burst_shots
-		var/obj/item/projectile/A = rnew(/obj/item/projectile, loc)
+		var/obj/item/projectile/A = new /obj/item/projectile(loc)
 		A.generate_bullet(ammo, round(power_per_shot/EMITTER_DAMAGE_POWER_TRANSFER))
 
 		playsound(src.loc, 'sound/weapons/emitter.ogg', 25, 1)
@@ -146,7 +146,7 @@
 			else 		target = locate(T.x,T.y+3,T.z)
 
 		if(!target) //Off the edge of the map somehow.
-			cdel(A)
+			qdel(A)
 			return
 
 		A.fire_at(target,src,src,A.ammo.max_range,A.ammo.shell_speed) //Range, speed. Emitter shots are slow.
@@ -155,7 +155,7 @@
 
 	if(istype(W, /obj/item/tool/wrench))
 		if(active)
-			user << "Turn off the [src] first."
+			to_chat(user, "Turn off the [src] first.")
 			return
 		switch(state)
 			if(0)
@@ -173,17 +173,17 @@
 					"You hear a ratchet")
 				src.anchored = 0
 			if(2)
-				user << "\red The [src.name] needs to be unwelded from the floor."
+				to_chat(user, "<span class='warning'>The [src.name] needs to be unwelded from the floor.</span>")
 		return
 
 	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(active)
-			user << "Turn off the [src] first."
+			to_chat(user, "Turn off the [src] first.")
 			return
 		switch(state)
 			if(0)
-				user << "\red The [src.name] needs to be wrenched to the floor."
+				to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor.</span>")
 			if(1)
 				if (WT.remove_fuel(0,user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -193,11 +193,11 @@
 					if (do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn()) return
 						state = 2
-						user << "You weld the [src] to the floor."
+						to_chat(user, "You weld the [src] to the floor.")
 						connect_to_network()
 						src.directwired = 1
 				else
-					user << "\red You need more welding fuel to complete this task."
+					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			if(2)
 				if (WT.remove_fuel(0,user))
 					playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -207,33 +207,33 @@
 					if (do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 						if(!src || !WT.isOn()) return
 						state = 1
-						user << "You cut the [src] free from the floor."
+						to_chat(user, "You cut the [src] free from the floor.")
 						disconnect_from_network()
 						src.directwired = 0
 				else
-					user << "\red You need more welding fuel to complete this task."
+					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 		return
 
 	if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda))
 		if(emagged)
-			user << "\red The lock seems to be broken"
+			to_chat(user, "<span class='warning'> The lock seems to be broken</span>")
 			return
 		if(src.allowed(user))
 			if(active)
 				src.locked = !src.locked
-				user << "The controls are now [src.locked ? "locked." : "unlocked."]"
+				to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 			else
 				src.locked = 0 //just in case it somehow gets locked
-				user << "\red The controls can only be locked when the [src] is online"
+				to_chat(user, "<span class='warning'>The controls can only be locked when the [src] is online</span>")
 		else
-			user << "\red Access denied."
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 
 
 	if(istype(W, /obj/item/card/emag) && !emagged)
 		locked = 0
 		emagged = 1
-		user.visible_message("[user.name] emags the [src.name].","\red You short out the lock.")
+		user.visible_message("[user.name] emags the [src.name].","<span class='warning'>You short out the lock.</span>")
 		return
 
 	..()

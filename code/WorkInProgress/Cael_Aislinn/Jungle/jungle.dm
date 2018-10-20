@@ -18,7 +18,7 @@
 	name = "jungle"
 	icon = 'code/workinprogress/cael_aislinn/jungle/jungle.dmi'
 	icon_state = "area"
-	lighting_use_dynamic = 0
+	//lighting_use_dynamic = 0
 	luminosity = 1
 
 //randomly spawns, will create paths around the map
@@ -49,8 +49,8 @@
 		dest_temple.my_ladder.up = my_ladder
 
 		//delete the landmarks now that we're finished
-		cdel(dest_temple)
-		cdel(src)
+		qdel(dest_temple)
+		qdel(src)
 
 /obj/effect/landmark/temple/destination/New()
 	//nothing
@@ -63,7 +63,7 @@
 	//loop over the walls in the temple and make them a random pre-chosen mineral (null is a stand in for phoron, which the walls already are)
 	//treat phoron slightly differently because it's the default wall type
 	var/mineral = pick("uranium","sandstone","gold","iron","silver","diamond","clown","phoron")
-	//world << "init [mineral]"
+	//to_chat(world, "init [mineral]")
 	var/area/my_area = get_area(src)
 	var/list/temple_turfs = get_area_turfs(my_area.type)
 
@@ -74,7 +74,7 @@
 			fwall.mineral = mineral
 			if(mineral == "iron")
 				fwall.is_metal = 1
-			cdel(F)
+			qdel(F)
 
 		for(var/obj/effect/landmark/door_spawner/D in T.contents)
 			var/spawn_type
@@ -83,25 +83,25 @@
 			else
 				spawn_type = text2path("/obj/machinery/door/airlock/[mineral]")
 			new spawn_type(D.loc)
-			cdel(D)
+			qdel(D)
 
 	for(var/turf/closed/wall/T in temple_turfs)
 		if(mineral != "phoron")
 			T.icon_state = oldreplacetext(T.icon_state, "phoron", mineral)
 
 		/*for(var/obj/effect/landmark/falsewall_spawner/F in T.contents)
-			//world << "falsewall_spawner found in wall"
+			//to_chat(world, "falsewall_spawner found in wall")
 			var/obj/structure/temple_falsewall/fwall = new(F.loc)
 			fwall.mineral = mineral
-			cdel(F)
+			qdel(F)
 
 		for(var/obj/effect/landmark/door_spawner/D in T.contents)
-			//world << "door_spawner found in wall"
+			//to_chat(world, "door_spawner found in wall")
 			T = new /turf/open/floor(T.loc)
 			T.icon_state = "dark"
 			var/spawn_type = text2path("/obj/machinery/door/airlock/[door_mineral]")
 			new spawn_type(T)
-			cdel(D)*/
+			qdel(D)*/
 
 //a shuttle has crashed somewhere on the map, it should have a power cell to let the adventurers get home
 /area/jungle/crash_ship_source
@@ -135,7 +135,7 @@
 
 
 /obj/machinery/jungle_controller/initialize()
-	world << "\red \b Setting up jungle, this may take a bleeding eternity..."
+	to_chat(world, "\red \b Setting up jungle, this may take a bleeding eternity...")
 
 	//crash dat shuttle
 	var/area/start_location = locate(/area/jungle/crash_ship_source)

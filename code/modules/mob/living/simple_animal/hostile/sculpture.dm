@@ -256,12 +256,12 @@
 
 		//Warn everyone
 		visible_message("<span class='danger'>[src] [response_snap] [target]!</span>")
-		target << "<span class='alert'><b>[response_snap_target]</b> Your vision fades away...</span>"
+		to_chat(target, "<span class='alert'><b>[response_snap_target]</b> Your vision fades away...</span>")
 
 		target.death() //Immediately trigger death to avoid doublesnap during lag
 
 		//Logging stuff
-		target.attack_log += text("\[[time_stamp()]\] <font color='red'>Has had his neck snapped by [src]!</font>")
+		target.attack_log += text("\[[time_stamp()]\] <span class='caution'>Has had his neck snapped by [src]!</span>")
 		log_admin("[target] ([target.ckey]) has had his neck snapped by an active [src].")
 		message_admins("ALERT: <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>[target.real_name]</a> has had his neck snapped by an active [src].")
 

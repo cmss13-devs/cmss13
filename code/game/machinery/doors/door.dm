@@ -44,7 +44,7 @@
 	Dispose()
 		. = ..()
 		if(filler && width > 1)
-			filler.SetOpacity(0)// Ehh... let's hope there are no walls there. Must fix this
+			filler.set_opacity(0)// Ehh... let's hope there are no walls there. Must fix this
 			filler = null
 		density = 0
 
@@ -54,12 +54,12 @@
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
 			filler = get_step(src,EAST)
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 			filler = get_step(src,NORTH)
-			filler.SetOpacity(opacity)
+			filler.set_opacity(opacity)
 
 //process()
 	//return
@@ -179,7 +179,7 @@
 					s.set_up(2, 1, src)
 					s.start()
 			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
-				cdel(src)
+				qdel(src)
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
@@ -188,7 +188,7 @@
 					s.set_up(2, 1, src)
 					s.start()
 			else
-				cdel(src)
+				qdel(src)
 	return
 
 
@@ -235,15 +235,15 @@
 
 	do_animate("opening")
 	icon_state = "door0"
-	src.SetOpacity(0)
+	src.set_opacity(0)
 	sleep(openspeed)
 	src.layer = open_layer
 	src.density = 0
 	explosion_resistance = 0
 	update_icon()
-	SetOpacity(0)
+	set_opacity(0)
 	if (filler)
-		filler.SetOpacity(0)
+		filler.set_opacity(0)
 
 	if(operating)	operating = 0
 
@@ -269,9 +269,9 @@
 	sleep(openspeed)
 	update_icon()
 	if(visible && !glass)
-		SetOpacity(1)	//caaaaarn!
+		set_opacity(1)	//caaaaarn!
 		if (filler)
-			filler.SetOpacity(0)
+			filler.set_opacity(0)
 	operating = 0
 	return
 
@@ -294,12 +294,12 @@
 		if(dir in list(EAST, WEST))
 			bound_width = width * world.icon_size
 			bound_height = world.icon_size
-			filler.SetOpacity(0)
+			filler.set_opacity(0)
 			filler = (get_step(src,EAST)) //Find new turf
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
-			filler.SetOpacity(0)
+			filler.set_opacity(0)
 			filler = (get_step(src,NORTH)) //Find new turf
 
 

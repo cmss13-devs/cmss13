@@ -35,7 +35,7 @@
 
 	if (src.health <= 0)
 		visible_message("\blue The [src] dissipates!")
-		cdel(src)
+		qdel(src)
 		return
 
 	opacity = 1
@@ -48,7 +48,7 @@
 	..()
 	if(health <=0)
 		visible_message("\blue The [src] dissipates!")
-		cdel(src)
+		qdel(src)
 		return 1
 	opacity = 1
 	spawn(20) if(src) opacity = 0
@@ -58,26 +58,26 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if (prob(75))
-				cdel(src)
+				qdel(src)
 	return
 
 /obj/machinery/shield/emp_act(severity)
 	switch(severity)
 		if(1)
-			cdel(src)
+			qdel(src)
 		if(2)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 
 /obj/machinery/shield/hitby(AM as mob|obj)
 	//Let everyone know we've been hit!
-	visible_message("\red <B>[src] was hit by [AM].</B>")
+	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
 
 	//Super realistic, resource-intensive, real-time damage calculations.
 	var/tforce = 0
@@ -94,7 +94,7 @@
 	//Handle the destruction of the shield
 	if (src.health <= 0)
 		visible_message("\blue The [src] dissipates!")
-		cdel(src)
+		qdel(src)
 		return
 
 	//The shield becomes dense to absorb the blow.. purely asthetic.
@@ -170,7 +170,7 @@
 /obj/machinery/shieldgen/proc/collapse_shields()
 	for(var/obj/machinery/shield/shield_tile in deployed_shields)
 		deployed_shields -= shield_tile
-		cdel(shield_tile)
+		qdel(shield_tile)
 
 /obj/machinery/shieldgen/power_change()
 	..()
@@ -187,7 +187,7 @@
 
 	if(malfunction)
 		if(deployed_shields.len && prob(5))
-			cdel(pick(deployed_shields))
+			qdel(pick(deployed_shields))
 	else
 		if (check_delay <= 0)
 			create_shields()
@@ -210,7 +210,7 @@
 	if(health <= 0)
 		spawn(0)
 			explosion(get_turf(src.loc), 0, 0, 1, 0, 0, 0)
-		cdel(src)
+		qdel(src)
 	update_icon()
 	return
 
@@ -243,25 +243,25 @@
 
 /obj/machinery/shieldgen/attack_hand(mob/user as mob)
 	if(locked)
-		user << "The machine is locked, you are unable to use it."
+		to_chat(user, "The machine is locked, you are unable to use it.")
 		return
 	if(is_open)
-		user << "The panel must be closed before operating this machine."
+		to_chat(user, "The panel must be closed before operating this machine.")
 		return
 
 	if (src.active)
-		user.visible_message("\blue \icon[src] [user] deactivated the shield generator.", \
-			"\blue \icon[src] You deactivate the shield generator.", \
+		user.visible_message("<span class='notice'>[bicon(src)] [user] deactivated the shield generator.</span>", \
+			"<span class='notice'>[bicon(src)] You deactivate the shield generator.</span>", \
 			"You hear heavy droning fade out.")
 		src.shields_down()
 	else
 		if(anchored)
-			user.visible_message("\blue \icon[src] [user] activated the shield generator.", \
-				"\blue \icon[src] You activate the shield generator.", \
+			user.visible_message("<span class='notice'>[bicon(src)] [user] activated the shield generator.</span>", \
+				"<span class='notice'>[bicon(src)] You activate the shield generator.</span>", \
 				"You hear heavy droning.")
 			src.shields_up()
 		else
-			user << "The device must first be secured to the floor."
+			to_chat(user, "The device must first be secured to the floor.")
 	return
 
 /obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
@@ -272,47 +272,47 @@
 	else if(istype(W, /obj/item/tool/screwdriver))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(is_open)
-			user << "\blue You close the panel."
+			to_chat(user, "<span class='notice'>You close the panel.</span>")
 			is_open = 0
 		else
-			user << "\blue You open the panel and expose the wiring."
+			to_chat(user, "<span class='notice'>You open the panel and expose the wiring.</span>")
 			is_open = 1
 
 	else if(istype(W, /obj/item/stack/cable_coil) && malfunction && is_open)
 		var/obj/item/stack/cable_coil/coil = W
-		user << "<span class='notice'>You begin to replace the wires.</span>"
+		to_chat(user, "<span class='notice'>You begin to replace the wires.</span>")
 		//if(do_after(user, min(60, round( ((maxhealth/health)*10)+(malfunction*10) ))) //Take longer to repair heavier damage
 		if(do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
 			if (coil.use(1))
 				health = max_health
 				malfunction = 0
-				user << "<span class='notice'>You repair the [src]!</span>"
+				to_chat(user, "<span class='notice'>You repair the [src]!</span>")
 				update_icon()
 
 	else if(istype(W, /obj/item/tool/wrench))
 		if(locked)
-			user << "The bolts are covered, unlocking this would retract the covers."
+			to_chat(user, "The bolts are covered, unlocking this would retract the covers.")
 			return
 		if(anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user << "\blue You unsecure the [src] from the floor!"
+			to_chat(user, "\blue You unsecure the [src] from the floor!")
 			if(active)
-				user << "\blue The [src] shuts off!"
+				to_chat(user, "\blue The [src] shuts off!")
 				src.shields_down()
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/open/space)) return //No wrenching these in space!
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user << "\blue You secure the [src] to the floor!"
+			to_chat(user, "\blue You secure the [src] to the floor!")
 			anchored = 1
 
 
 	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda))
 		if(src.allowed(user))
 			src.locked = !src.locked
-			user << "The controls are now [src.locked ? "locked." : "unlocked."]"
+			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")
 		else
-			user << "\red Access denied."
+			to_chat(user, "<span class='warning'>Access denied.</span>")
 
 	else
 		..()

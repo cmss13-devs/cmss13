@@ -69,10 +69,10 @@
 	var/t = "A gas flow meter. "
 
 	if(get_dist(user, src) > 3 && !(istype(user, /mob/living/silicon/ai) || istype(user, /mob/dead)))
-		t += "\blue <B>You are too far away to read it.</B>"
+		t += "<span class='boldnotice'>You are too far away to read it.</span>"
 
 	else if(stat & (NOPOWER|BROKEN))
-		t += "\red <B>The display is off.</B>"
+		t += "<span class='danger'>The display is off.</span>"
 
 	else if(target)
 		if(target.return_pressure())
@@ -82,7 +82,7 @@
 	else
 		t += "The connect error light is blinking."
 
-	user << t
+	to_chat(user, t)
 
 /obj/machinery/meter/clicked(var/mob/user)
 	..()
@@ -102,7 +102,7 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe_meter(loc)
-		cdel(src)
+		qdel(src)
 
 // TURF METER - REPORTS A TILE'S AIR CONTENTS
 

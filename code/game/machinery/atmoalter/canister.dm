@@ -180,7 +180,7 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if(!istype(W, /obj/item/tool/wrench) && !istype(W, /obj/item/tank) && !istype(W, /obj/item/device/analyzer) && !istype(W, /obj/item/device/pda))
-		visible_message("\red [user] hits the [src] with a [W]!")
+		visible_message("<span class='warning'>[user] hits the [src] with a [W]!</span>")
 		src.health -= W.force
 		src.add_fingerprint(user)
 		healthcheck()
@@ -191,7 +191,7 @@ update_flag
 			JT.gas_type = gas_type
 			JT.pressure = JT.pressure_full
 			pressure -= 10
-			user << "You pulse-pressurize your jetpack from [src]."
+			to_chat(user, "You pulse-pressurize your jetpack from [src].")
 		return
 
 	else if(istype(W, /obj/item/tank))
@@ -200,7 +200,7 @@ update_flag
 			TAK.gas_type = gas_type
 			TAK.pressure = TAK.pressure_full
 			pressure -= 10
-			user << "You pulse-pressurize [TAK] from [src]."
+			to_chat(user, "You pulse-pressurize [TAK] from [src].")
 		return
 
 	..()

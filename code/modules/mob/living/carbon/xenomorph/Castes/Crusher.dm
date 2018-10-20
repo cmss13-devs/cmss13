@@ -95,11 +95,11 @@
 	if(!check_state()) return
 
 	if(world.time < has_screeched + CRUSHER_STOMP_COOLDOWN) //Sure, let's use this.
-		src << "<span class='xenowarning'>You are not ready to stomp again.</span>"
+		to_chat(src, "<span class='xenowarning'>You are not ready to stomp again.</span>")
 		r_FAL
 
 	if(legcuffed)
-		src << "<span class='xenodanger'>You can't rear up to stomp with that thing on your leg!</span>"
+		to_chat(src, "<span class='xenodanger'>You can't rear up to stomp with that thing on your leg!</span>")
 		return
 
 	if(!check_plasma(50)) return
@@ -127,7 +127,7 @@
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
 				M.KnockDown(rand(2, 3))
-				M << "<span class='highdanger'>You are stomped on by [src]!</span>"
+				to_chat(M, "<span class='highdanger'>You are stomped on by [src]!</span>")
 			shake_camera(M, 2, 2)
 		i--
 
@@ -188,7 +188,7 @@
 				if(contents.len) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
 					for(var/atom/movable/S in contents) S.loc = T
-				cdel(src)
+				qdel(src)
 				X.charge_speed -= X.charge_speed_buildup * 3 //Lose three turfs worth of speed
 		else
 			if(X.charge_speed > X.charge_speed_buildup * X.charge_turfs_to_charge)

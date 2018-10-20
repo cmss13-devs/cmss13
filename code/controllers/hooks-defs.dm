@@ -33,7 +33,7 @@
 /**
  * Debrained hook.
  * Called in brain_item.dm when someone gets debrained.
- * Parameters: var/obj/item/organ/brain
+ * Parameters: var/obj/item/organ/internal/brain
  */
 /hook/debrain
 
@@ -43,6 +43,13 @@
  * Parameters: var/mob/living/silicon/robot
  */
 /hook/borgify
+
+/**
+ * Podman hook.
+ * Called in podmen.dm when someone is brought back as a Diona.
+ * Parameters: var/mob/living/carbon/monkey/diona
+ */
+/hook/harvest_podman
 
 /**
  * Payroll revoked hook.
@@ -61,14 +68,14 @@
 /**
  * Employee reassignment hook.
  * Called in card.dm when someone's card is reassigned at the HoP's desk.
- * Parameters: var/obj/item/card/id
+ * Parameters: var/obj/item/weapon/card/id
  */
 /hook/reassign_employee
 
 /**
  * Employee terminated hook.
  * Called in card.dm when someone's card is terminated at the HoP's desk.
- * Parameters: var/obj/item/card/id
+ * Parameters: var/obj/item/weapon/card/id
  */
 /hook/terminate_employee
 

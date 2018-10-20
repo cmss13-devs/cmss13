@@ -181,13 +181,13 @@
 		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 			var/obj/item/device/radio/headset/almayer/marine/R = old_lead.wear_ear
 			if(istype(R.keyslot1, /obj/item/device/encryptionkey/squadlead))
-				cdel(R.keyslot1)
+				qdel(R.keyslot1)
 				R.keyslot1 = null
 			else if(istype(R.keyslot2, /obj/item/device/encryptionkey/squadlead))
-				cdel(R.keyslot2)
+				qdel(R.keyslot2)
 				R.keyslot2 = null
 			else if(istype(R.keyslot3, /obj/item/device/encryptionkey/squadlead))
-				cdel(R.keyslot3)
+				qdel(R.keyslot3)
 				R.keyslot3 = null
 			R.recalculateChannels()
 		if(istype(old_lead.wear_id, /obj/item/card/id))
@@ -196,7 +196,7 @@
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()
-	old_lead << "<font size='3' color='blue'>You're no longer the Squad Leader for [src]!</font>"
+	to_chat(old_lead, "<font size='3' color='blue'>You're no longer the Squad Leader for [src]!</font>")
 
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.

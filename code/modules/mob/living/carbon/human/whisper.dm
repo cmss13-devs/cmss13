@@ -3,14 +3,14 @@
 	var/alt_name = ""
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='warning'>Speech is currently admin-disabled.</span>")
 		return
 
 	log_whisper("[src.name]/[src.key] : [message]")
 
 	if (src.client)
 		if (src.client.prefs.muted & MUTE_IC)
-			src << "\red You cannot whisper (muted)."
+			to_chat(src, "<span class='warning'>You cannot whisper (muted).</span>")
 			return
 
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
@@ -122,14 +122,14 @@
 	var/not_dead_speaker = (stat != DEAD)
 	for(var/mob/M in listening)
 		if(not_dead_speaker)
-			M << speech_bubble
+			to_chat(M, speech_bubble)
 		M.hear_say(message, verb, speaking, alt_name, italics, src)
 
 	if (eavesdropping.len)
 		var/new_message = stars(message)	//hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
 		for(var/mob/M in eavesdropping)
 			if(not_dead_speaker)
-				M << speech_bubble
+				to_chat(M, speech_bubble)
 			M.hear_say(new_message, verb, speaking, alt_name, italics, src)
 
 	spawn(30)
@@ -139,7 +139,7 @@
 				if(M.client) M.client.images -= speech_bubble
 			for(var/mob/M in eavesdropping)
 				if(M.client) M.client.images -= speech_bubble
-		cdel(speech_bubble)
+		qdel(speech_bubble)
 
 
 	if (watching.len)

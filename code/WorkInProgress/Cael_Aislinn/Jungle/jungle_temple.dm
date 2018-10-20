@@ -2,37 +2,37 @@
 
 /area/jungle/temple_one
 	name = "temple"
-	lighting_use_dynamic = 1
+	//lighting_use_dynamic = 1
 	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
 	icon_state = "temple1"
 
 /area/jungle/temple_two
 	name = "temple"
-	lighting_use_dynamic = 1
+	//lighting_use_dynamic = 1
 	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
 	icon_state = "temple2"
 
 /area/jungle/temple_three
 	name = "temple"
-	lighting_use_dynamic = 1
+	//lighting_use_dynamic = 1
 	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
 	icon_state = "temple3"
 
 /area/jungle/temple_four
 	name = "temple"
-	lighting_use_dynamic = 1
+	//lighting_use_dynamic = 1
 	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
 	icon_state = "temple4"
 
 /area/jungle/temple_five
 	name = "temple"
-	lighting_use_dynamic = 1
+	//lighting_use_dynamic = 1
 	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
 	icon_state = "temple5"
 
 /area/jungle/temple_six
 	name = "temple"
-	lighting_use_dynamic = 1
+	//lighting_use_dynamic = 1
 	icon = 'code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi'
 	icon_state = "temple6"
 
@@ -49,7 +49,7 @@
 	New()
 		if(prob(10))
 			new /obj/effect/glowshroom(src.loc)
-		cdel(src)
+		qdel(src)
 
 /obj/effect/landmark/loot_spawn
 	name = "loot spawner"
@@ -263,7 +263,7 @@
 				for(var/i=0,i<num,i++)
 					new /mob/living/simple_animal/hostile/viscerator(C)
 
-		cdel(src)
+		qdel(src)
 
 /obj/effect/landmark/loot_spawn/low
 	name = "low prob loot spawner"
@@ -298,7 +298,7 @@
 
 	switch(trap_type)
 		if("sawburst")
-			M << "\red <b>A sawblade shoots out of the ground and strikes you!</b>"
+			to_chat(M, "<span class='danger'>A sawblade shoots out of the ground and strikes you!</span>")
 			M.apply_damage(rand(5,10), BRUTE, sharp=1, edge=1)
 
 			var/atom/myloc = src.loc
@@ -306,10 +306,10 @@
 			myloc.overlays += flicker
 			spawn(8)
 				myloc.overlays -= flicker
-				cdel(flicker)
+				qdel(flicker)
 			//flick("sawblade",src)
 		if("poison_dart")
-			M << "\red <b>You feel something small and sharp strike you!</b>"
+			to_chat(M, "<span class='danger'>You feel something small and sharp strike you!</span>")
 			M.apply_damage(rand(5,10), TOX)
 
 			var/atom/myloc = src.loc
@@ -317,10 +317,10 @@
 			myloc.overlays += flicker
 			spawn(8)
 				myloc.overlays -= flicker
-				cdel(flicker)
+				qdel(flicker)
 			//flick("dart[rand(1,3)]",src)
 		if("flame_burst")
-			M << "\red <b>A jet of fire comes out of nowhere!</b>"
+			to_chat(M, "<span class='danger'>A jet of fire comes out of nowhere!</span>")
 			M.apply_damage(rand(5,10), BURN)
 
 			var/atom/myloc = src.loc
@@ -328,7 +328,7 @@
 			myloc.overlays += flicker
 			spawn(8)
 				myloc.overlays -= flicker
-				cdel(flicker)
+				qdel(flicker)
 			//flick("flameburst",src)
 		if("phoron_gas")
 			//spawn a bunch of phoron
@@ -337,7 +337,7 @@
 		if("thrower")
 			//edited version of obj/effect/step_trigger/thrower
 			var/throw_dir = pick(1,2,4,8)
-			M.visible_message("\red <b>The floor under [M] suddenly tips upward!</b>","\red <b>The floor tips upward under you!</b>")
+			M.visible_message("<span class='danger'>The floor under [M] suddenly tips upward!</span>","<span class='danger'>The floor tips upward under you!</span>")
 
 			var/atom/myloc = src.loc
 			var/image/flicker = image('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"throw[throw_dir]")
@@ -349,7 +349,7 @@
 					my_turf.density = 0
 			spawn(8)
 				myloc.overlays -= flicker
-				cdel(flicker)
+				qdel(flicker)
 
 			var/dist = rand(1,5)
 			var/curtiles = 0
@@ -377,7 +377,7 @@
 		if(prob(90))
 			var/turf/T = get_turf(src)
 			T.desc = pick("It looks a little dustier than the surrounding tiles.","It is somewhat ornate.","It looks a little darker than the surrounding tiles.")
-		cdel(src)
+		qdel(src)
 
 //50% chance of being a trap
 /obj/effect/step_trigger/trap/fifty
@@ -391,4 +391,4 @@
 		else
 			if(prob(10))
 				new /obj/effect/glowshroom(src.loc)
-			cdel(src)
+			qdel(src)

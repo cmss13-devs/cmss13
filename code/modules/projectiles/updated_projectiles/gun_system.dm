@@ -151,12 +151,6 @@
 	target 			= null
 	last_moved_mob 	= null
 	muzzle 			= null
-	if(flags_gun_features & GUN_FLASHLIGHT_ON)//Handle flashlight.
-		flags_gun_features &= ~GUN_FLASHLIGHT_ON
-		if(ismob(loc))
-			loc.SetLuminosity(-rail.light_mod)
-		else
-			SetLuminosity(0)
 	rail 			= null
 	under 			= null
 	stock 			= null
@@ -197,11 +191,11 @@
 	else
 		dat += "The safety's off!<br>"
 
-	if(rail) 	dat += "It has \icon[rail] [rail.name] mounted on the top.<br>"
-	if(muzzle) 	dat += "It has \icon[muzzle] [muzzle.name] mounted on the front.<br>"
-	if(stock) 	dat += "It has \icon[stock] [stock.name] for a stock.<br>"
+	if(rail) 	dat += "It has [bicon(rail)] [rail.name] mounted on the top.<br>"
+	if(muzzle) 	dat += "It has [bicon(muzzle)] [muzzle.name] mounted on the front.<br>"
+	if(stock) 	dat += "It has [bicon(stock)] [stock.name] for a stock.<br>"
 	if(under)
-		dat += "It has \icon[under] [under.name]"
+		dat += "It has [bicon(under)] [under.name]"
 		if(under.flags_attach_features & ATTACH_WEAPON)
 			dat += " ([under.current_rounds]/[under.max_rounds])"
 		dat += " mounted underneath.<br>"
@@ -213,7 +207,7 @@
 			else 								dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else 									dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 	if(dat)
-		user << dat
+		to_chat(user, dat)
 
 /obj/item/weapon/gun/wield(var/mob/user)
 
@@ -232,7 +226,7 @@
 		var/mob/living/carbon/human/wielder = user
 		var/datum/limb/hand = wielder.get_limb(check_hand)
 		if(!istype(hand) || !hand.is_usable())
-			user << "<span class='warning'>Your other hand can't hold \the [src]!</span>"
+			to_chat(user, "<span class='warning'>Your other hand can't hold \the [src]!</span>")
 			return
 
 	flags_item 	   ^= WIELDED
@@ -286,7 +280,7 @@
 
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, var/obj/item/ammo_magazine/magazine)
 	if(!magazine.default_ammo)
-		user << "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading."
+		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
 		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b>")
 		ammo = ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
 	else ammo = ammo_list[magazine.default_ammo]
@@ -307,33 +301,33 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) return
 
 	if(!magazine || !istype(magazine))
-		user << "<span class='warning'>That's not a magazine!</span>"
+		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
 		return
 
 	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
-		user << "<span class='warning'>[src] needs an actual magazine.</span>"
+		to_chat(user, "<span class='warning'>[src] needs an actual magazine.</span>")
 		return
 
 	if(magazine.current_rounds <= 0)
-		user << "<span class='warning'>[magazine] is empty!</span>"
+		to_chat(user, "<span class='warning'>[magazine] is empty!</span>")
 		return
 
 	if(!istype(src, magazine.gun_type))
-		user << "<span class='warning'>That magazine doesn't fit in there!</span>"
+		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
 		return
 
 	if(current_mag)
-		user << "<span class='warning'>It's still got something loaded.</span>"
+		to_chat(user, "<span class='warning'>It's still got something loaded.</span>")
 		return
 
 
 
 	if(user)
 		if(magazine.reload_delay > 1)
-			user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
+			to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
 			if(do_after(user,magazine.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
 			else
-				user << "<span class='warning'>Your reload was interrupted!</span>"
+				to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
 				return
 		else replace_magazine(user, magazine)
 	else
@@ -399,7 +393,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 					H.update_icon()
 					break
 			if(!found_handful)
-				var/obj/item/ammo_magazine/handful/new_handful = rnew(/obj/item/ammo_magazine/handful)
+				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 				new_handful.generate_handful(current_mag.default_ammo, current_mag.caliber, 8, 1, type)
 				new_handful.loc = get_turf(src)
 		else
@@ -462,8 +456,8 @@ and you're good to go.
 			active_attachable.current_rounds--
 			return create_bullet(active_attachable.ammo)
 		else
-			user << "<span class='warning'>[active_attachable] is empty!</span>"
-			user << "<span class='notice'>You disable [active_attachable].</span>"
+			to_chat(user, "<span class='warning'>[active_attachable] is empty!</span>")
+			to_chat(user, "<span class='notice'>You disable [active_attachable].</span>")
 			playsound(user, active_attachable.activation_sound, 15, 1)
 			active_attachable.activate_attachment(src, null, TRUE)
 	else
@@ -478,11 +472,11 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/create_bullet(datum/ammo/chambered)
 	if(!chambered)
-		usr << "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()"
+		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
 		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
-	var/obj/item/projectile/P = rnew(/obj/item/projectile, src)
+	var/obj/item/projectile/P = new /obj/item/projectile(src)
 	P.generate_bullet(chambered)
 	return P
 
@@ -510,7 +504,7 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/delete_bullet(var/obj/item/projectile/projectile_to_fire, var/refund = 0)
 	if(active_attachable) //Attachables don't chamber rounds, so we want to delete it right away.
-		cdel(projectile_to_fire) //Getting rid of it. Attachables only use ammo after the cycle is over.
+		qdel(projectile_to_fire) //Getting rid of it. Attachables only use ammo after the cycle is over.
 		if(refund)
 			active_attachable.current_rounds++ //Refund the bullet.
 		return 1
@@ -520,7 +514,7 @@ and you're good to go.
 	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
 	//If it's a regular bullet, we're just going to keep it chambered.
 	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
-	user << "<span class='warning'>[src] jammed! You'll need a second to get it fixed!</span>"
+	to_chat(user, "<span class='warning'>[src] jammed! You'll need a second to get it fixed!</span>")
 
 //----------------------------------------------------------
 		//									   \\
@@ -549,8 +543,8 @@ and you're good to go.
 		if( !(active_attachable.flags_attach_features & ATTACH_PROJECTILE) ) //If it's unique projectile, this is where we fire it.
 			if(active_attachable.current_rounds <= 0)
 				click_empty(user) //If it's empty, let them know.
-				user << "<span class='warning'>[active_attachable] is empty!</span>"
-				user << "<span class='notice'>You disable [active_attachable].</span>"
+				to_chat(user, "<span class='warning'>[active_attachable] is empty!</span>")
+				to_chat(user, "<span class='notice'>You disable [active_attachable].</span>")
 				active_attachable.activate_attachment(src, null, TRUE)
 			else
 				active_attachable.fire_attachment(target,src,user) //Fire it.
@@ -613,7 +607,7 @@ and you're good to go.
 				scatter_chance_mod -= config.med_scatter_value
 				burst_scatter_chance_mod = -2
 				if(prob(30)) projectile_to_fire.damage *= config.base_hit_damage_mult + config.low_hit_damage_mult//Lower chance of a damage buff.
-				if(i == 1) user << "<span class='notice'>Your bipod keeps [src] steady!</span>"
+				if(i == 1) to_chat(user, "<span class='notice'>Your bipod keeps [src] steady!</span>")
 		//End of bipods.
 
 		target = original_target ? original_target : targloc
@@ -628,7 +622,7 @@ and you're good to go.
 
 		//Finally, make with the pew pew!
 		if(!projectile_to_fire || !istype(projectile_to_fire,/obj))
-			user << "Your gun is malfunctioning. Ahelp the following: ERROR CODE I1: projectile malfunctioned while firing."
+			to_chat(user, "Your gun is malfunctioning. Ahelp the following: ERROR CODE I1: projectile malfunctioned while firing.")
 			log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b>")
 			flags_gun_features &= ~GUN_BURST_FIRING
 			return
@@ -685,11 +679,11 @@ and you're good to go.
 							user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
 							user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
 							user.death()
-							user << "<span class='highdanger'>Your life flashes before you as your spirit is torn from your body!</span>"
+							to_chat(user, "<span class='highdanger'>Your life flashes before you as your spirit is torn from your body!</span>")
 							user.ghostize(0) //No return.
 						else
 							if(projectile_to_fire.ammo.damage_type == HALLOSS)
-								user << "<span class = 'notice'>Ow...</span>"
+								to_chat(user, "<span class = 'notice'>Ow...</span>")
 								user.apply_effect(110, AGONY, 0)
 							else
 								user.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", sharp = 1)
@@ -702,7 +696,7 @@ and you're good to go.
 						last_fired = world.time
 
 						projectile_to_fire.play_damage_effect(user)
-						if(!delete_bullet(projectile_to_fire)) cdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
+						if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
 
 						reload_into_chamber(user) //Reload the sucker.
 
@@ -727,17 +721,17 @@ and you're good to go.
 					if(projectile_to_fire.ammo.bonus_projectiles_amount)
 						var/obj/item/projectile/BP
 						for(var/i = 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-							BP = rnew(/obj/item/projectile, M.loc)
+							BP = new /obj/item/projectile(M.loc)
 							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type])
 							BP.ammo.on_hit_mob(M, BP)
 							M.bullet_act(BP)
-							cdel(BP)
+							qdel(BP)
 
 					projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
 					M.bullet_act(projectile_to_fire)
 					last_fired = world.time
 
-					if(!delete_bullet(projectile_to_fire)) cdel(projectile_to_fire)
+					if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
 					reload_into_chamber(user) //Reload into the chamber if the gun supports it.
 					return TRUE
 
@@ -759,20 +753,20 @@ and you're good to go.
 	if(world.time < wield_time || world.time < pull_time) return //We just put the gun up. Can't do it that fast
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())
-			user << "<span class='warning'>You don't have the dexterity to do this!</span>"
+			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return
 
 		if(!config.allow_synthetic_gun_use)
 			if(isSynth(user))
-				user << "<span class='warning'>Your program does not allow you to use firearms.</span>"
+				to_chat(user, "<span class='warning'>Your program does not allow you to use firearms.</span>")
 				return
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
-			user << "<span class='warning'>The safety is on!</span>"
+			to_chat(user, "<span class='warning'>The safety is on!</span>")
 			return
 
 		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED)) //If we're not holding the weapon with both hands when we should.
-			user << "<span class='warning'>You need a more secure grip to fire this weapon!"
+			to_chat(user, "<span class='warning'>You need a more secure grip to fire this weapon!")
 			return
 
 		if( (flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user) ) return
@@ -800,13 +794,13 @@ and you're good to go.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3) user << "<span class='warning'>[src] is not ready to fire again!</span>" //to prevent spam
+			if (world.time % 3) to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>") //to prevent spam
 			return
 	return 1
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)
 	if(user)
-		user << "<span class='warning'><b>*click*</b></span>"
+		to_chat(user, "<span class='danger'>*click*</span>")
 		playsound(user, 'sound/weapons/gun_empty.ogg', 25, 1, 5) //5 tile range
 	else
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
@@ -890,7 +884,7 @@ and you're good to go.
 			else
 				playsound(user, actual_sound, 25)
 				if(bullets_fired == 1)
-					user << "<span class='warning'>You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]</span>"
+					to_chat(user, "<span class='warning'>You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]</span>")
 	return 1
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_chance = 0, mob/user, burst_scatter_bonus = 0)
@@ -980,17 +974,16 @@ and you're good to go.
 	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle)) return //We have to check for null angle here, as 0 can also be an angle.
 	if(!istype(user) || !istype(user.loc,/turf)) return
 
-	if(user.luminosity <= muzzle_flash_lum)
-		user.SetLuminosity(muzzle_flash_lum)
+	if(light_range <= muzzle_flash_lum)
+		set_light(muzzle_flash_lum)
 		spawn(10)
-			user.SetLuminosity(-muzzle_flash_lum)
+			set_light(0)
 
 	if(prob(65)) //Not all the time.
 		var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
-		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer))
+		var/image/I = image('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer)
 		var/matrix/rotate = matrix() //Change the flash angle.
 		rotate.Translate(x,y)
 		rotate.Turn(angle)
 		I.transform = rotate
-
-		I.flick_overlay(user, 3)
+		flick_overlay(I, clients_in_moblist(viewers()), 3) 

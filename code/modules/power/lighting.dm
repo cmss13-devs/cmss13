@@ -32,11 +32,11 @@
 	..()
 	switch(stage)
 		if(1)
-			user << "It's an empty frame."
+			to_chat(user, "It's an empty frame.")
 		if(2)
-			user << "It's wired."
+			to_chat(user, "It's wired.")
 		if(3)
-			user << "The casing is closed."
+			to_chat(user, "The casing is closed.")
 
 
 /obj/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
@@ -44,20 +44,20 @@
 	if (istype(W, /obj/item/tool/wrench))
 		if (src.stage == 1)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			usr << "You begin deconstructing [src]."
+			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, TRUE, 5, BUSY_ICON_BUILD))
 				return
 			new /obj/item/stack/sheet/metal( get_turf(src.loc), sheets_refunded )
 			user.visible_message("[user.name] deconstructs [src].", \
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			cdel(src)
+			qdel(src)
 		if (src.stage == 2)
-			usr << "You have to remove the wires first."
+			to_chat(usr, "You have to remove the wires first.")
 			return
 
 		if (src.stage == 3)
-			usr << "You have to unscrew the case first."
+			to_chat(usr, "You have to unscrew the case first.")
 			return
 
 	if(istype(W, /obj/item/tool/wirecutters))
@@ -109,7 +109,7 @@
 
 			newlight.dir = src.dir
 			src.transfer_fingerprints_to(newlight)
-			cdel(src)
+			qdel(src)
 			return
 	..()
 
@@ -182,12 +182,12 @@
 		switch(fitting)
 			if("tube")
 				brightness = 8
-				if(prob(2))
-					broken(1)
+//				if(prob(2))
+//					broken(1)
 			if("bulb")
 				brightness = 4
-				if(prob(5))
-					broken(1)
+//				if(prob(5))
+//					broken(1)
 
 		spawn(1)
 			update(0)
@@ -204,8 +204,6 @@
 	var/area/A = get_area(src)
 	if(A)
 		on = 0
-//		A.update_lights()
-	SetLuminosity(0)
 	. = ..()
 
 /obj/machinery/light/proc/is_broken()
@@ -243,18 +241,19 @@
 					message_admins("LOG: Rigged light explosion, last touched by [fingerprintslast]")
 
 					explode()
-			else if( prob( min(60, switchcount*switchcount*0.01) ) )
-				if(status == LIGHT_OK && trigger)
-					status = LIGHT_BURNED
-					icon_state = "[base_state]-burned"
-					on = 0
-					SetLuminosity(0)
+			//else if( prob( min(60, switchcount*switchcount*0.01) ) )
+				//if(status == LIGHT_OK && trigger)
+					//world.log << "update() tried to burn out a light."
+					//status = LIGHT_BURNED
+					//icon_state = "[base_state]-burned"
+					//on = 0
+					//set_light(0)
 			else
 				use_power = 2
-				SetLuminosity(brightness)
+				set_light(brightness)
 	else
 		use_power = 1
-		SetLuminosity(0)
+		set_light(0)
 
 	active_power_usage = (luminosity * 10)
 	if(on != on_gs)
@@ -272,13 +271,13 @@
 	..()
 	switch(status)
 		if(LIGHT_OK)
-			user << "It is turned [on? "on" : "off"]."
+			to_chat(user, "It is turned [on? "on" : "off"].")
 		if(LIGHT_EMPTY)
-			user << "The [fitting] has been removed."
+			to_chat(user, "The [fitting] has been removed.")
 		if(LIGHT_BURNED)
-			user << "The [fitting] is burnt out."
+			to_chat(user, "The [fitting] is burnt out.")
 		if(LIGHT_BROKEN)
-			user << "The [fitting] has been smashed."
+			to_chat(user, "The [fitting] has been smashed.")
 
 
 
@@ -297,23 +296,23 @@
 	// attempt to insert light
 	if(istype(W, /obj/item/light_bulb))
 		if(status != LIGHT_EMPTY)
-			user << "There is a [fitting] already inserted."
+			to_chat(user, "There is a [fitting] already inserted.")
 			return
 		else
 			src.add_fingerprint(user)
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
 				status = L.status
-				user << "You insert the [L.name]."
+				to_chat(user, "You insert the [L.name].")
 				switchcount = L.switchcount
 				rigged = L.rigged
 				brightness = L.brightness
-				l_color = L.color
+				light_color = L.color
 				on = has_power()
 				update()
 
 				if(user.temp_drop_inv_item(L))
-					cdel(L)
+					qdel(L)
 
 					if(on && rigged)
 
@@ -322,7 +321,7 @@
 
 						explode()
 			else
-				user << "This type of light requires a [fitting]."
+				to_chat(user, "This type of light requires a [fitting].")
 				return
 
 		// attempt to break the light
@@ -333,7 +332,7 @@
 
 		if(prob(1+W.force * 5))
 
-			user << "You hit the light, and it smashes!"
+			to_chat(user, "You hit the light, and it smashes!")
 			for(var/mob/M in viewers(src))
 				if(M == user)
 					continue
@@ -345,7 +344,7 @@
 			broken()
 
 		else
-			user << "You hit the light!"
+			to_chat(user, "You hit the light!")
 
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
@@ -367,10 +366,10 @@
 			newlight.fingerprints = src.fingerprints
 			newlight.fingerprintshidden = src.fingerprintshidden
 			newlight.fingerprintslast = src.fingerprintslast
-			cdel(src)
+			qdel(src)
 			return
 
-		user << "You stick \the [W] into the light socket!"
+		to_chat(user, "You stick \the [W] into the light socket!")
 		if(has_power() && (W.flags_atom & CONDUCT))
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
@@ -409,11 +408,11 @@
 /obj/machinery/light/attack_animal(mob/living/M)
 	if(M.melee_damage_upper == 0)	return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
-		M << "\red That object is useless to you."
+		to_chat(M, "<span class='warning'>That object is useless to you.</span>")
 		return
 	else if (status == LIGHT_OK||status == LIGHT_BURNED)
 		for(var/mob/O in viewers(src))
-			O.show_message("\red [M.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
+			O.show_message("<span class='warning'>[M.name] smashed the light!</span>", 3, "You hear a tinkle of breaking glass", 2)
 		broken()
 	return
 // attack with hand - remove tube/bulb
@@ -424,14 +423,14 @@
 	add_fingerprint(user)
 
 	if(status == LIGHT_EMPTY)
-		user << "There is no [fitting] in this light."
+		to_chat(user, "There is no [fitting] in this light.")
 		return
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			for(var/mob/M in viewers(src))
-				M.show_message("\red [user.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
+				M.show_message("<span class='warning'>[user.name] smashed the light!</span>", 3, "You hear a tinkle of breaking glass", 2)
 			broken()
 			return
 
@@ -450,21 +449,21 @@
 			prot = 1
 
 		if(prot > 0 || (COLD_RESISTANCE in user.mutations))
-			user << "You remove the light [fitting]"
+			to_chat(user, "You remove the light [fitting]")
 		else if(TK in user.mutations)
-			user << "You telekinetically remove the light [fitting]."
+			to_chat(user, "You telekinetically remove the light [fitting].")
 		else
-			user << "You try to remove the light [fitting], but it's too hot and you don't want to burn your hand."
+			to_chat(user, "You try to remove the light [fitting], but it's too hot and you don't want to burn your hand.")
 			return				// if burned, don't remove the light
 	else
-		user << "You remove the light [fitting]."
+		to_chat(user, "You remove the light [fitting].")
 
 	// create a light tube/bulb item and put it in the user's hand
 	var/obj/item/light_bulb/L = new light_type()
 	L.status = status
 	L.rigged = rigged
 	L.brightness = src.brightness
-	L.color = l_color
+	L.color = light_color
 
 	// light item inherits the switchcount, then zero it
 	L.switchcount = switchcount
@@ -482,16 +481,16 @@
 
 /obj/machinery/light/attack_tk(mob/user)
 	if(status == LIGHT_EMPTY)
-		user << "There is no [fitting] in this light."
+		to_chat(user, "There is no [fitting] in this light.")
 		return
 
-	user << "You telekinetically remove the light [fitting]."
+	to_chat(user, "You telekinetically remove the light [fitting].")
 	// create a light tube/bulb item and put it in the user's hand
 	var/obj/item/light_bulb/L = new light_type()
 	L.status = status
 	L.rigged = rigged
 	L.brightness = brightness
-	L.color = l_color
+	L.color = light_color
 
 	// light item inherits the switchcount, then zero it
 	L.switchcount = switchcount
@@ -540,7 +539,7 @@
 			if (prob(75))
 				broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 	return
 
@@ -577,7 +576,7 @@
 		sleep(2)
 		explosion(T, 0, 0, 2, 2)
 		sleep(1)
-		cdel(src)
+		qdel(src)
 
 // the light item
 // can be tube or bulb subtypes
@@ -663,7 +662,7 @@
 	if(istype(I, /obj/item/reagent_container/syringe))
 		var/obj/item/reagent_container/syringe/S = I
 
-		user << "You inject the solution into the [src]."
+		to_chat(user, "You inject the solution into the [src].")
 
 		if(S.reagents.has_reagent("phoron", 5))
 
@@ -692,7 +691,7 @@
 
 /obj/item/light_bulb/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message("\red [name] shatters.","\red You hear a small glass object shatter.")
+		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>You hear a small glass object shatter.</span>")
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
@@ -723,7 +722,7 @@
 
 /obj/machinery/landinglight/proc/turn_off()
 	icon_state = "landingstripe"
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/machinery/landinglight/ds1
 	id = "USS Almayer Dropship 1" // ID for landing zone
@@ -733,28 +732,28 @@
 
 /obj/machinery/landinglight/proc/turn_on()
 	icon_state = "landingstripe0"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/machinery/landinglight/ds1/delayone/turn_on()
 	icon_state = "landingstripe1"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/machinery/landinglight/ds1/delaytwo/turn_on()
 	icon_state = "landingstripe2"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/machinery/landinglight/ds1/delaythree/turn_on()
 	icon_state = "landingstripe3"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/machinery/landinglight/ds2/delayone/turn_on()
 	icon_state = "landingstripe1"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/machinery/landinglight/ds2/delaytwo/turn_on()
 	icon_state = "landingstripe2"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/machinery/landinglight/ds2/delaythree/turn_on()
 	icon_state = "landingstripe3"
-	SetLuminosity(2)
+	set_light(2)

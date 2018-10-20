@@ -70,7 +70,7 @@
 		if(L.reagents)
 			L.reagents.add_reagent("toxin", poison_per_bite)
 			if(prob(poison_per_bite))
-				L << "\red You feel a tiny prick."
+				to_chat(L, "<span class='warning'>You feel a tiny prick.</span>")
 				L.reagents.add_reagent(poison_type, 5)
 
 /mob/living/simple_animal/hostile/giant_spider/Life()
@@ -117,7 +117,7 @@
 				var/obj/effect/spider/stickyweb/W = locate() in get_turf(src)
 				if(!W)
 					busy = SPINNING_WEB
-					src.visible_message("\blue \the [src] begins to secrete a sticky substance.")
+					src.visible_message("<span class='notice'>\the [src] begins to secrete a sticky substance.</span>")
 					stop_automated_movement = 1
 					spawn(40)
 						if(busy == SPINNING_WEB)
@@ -129,7 +129,7 @@
 					var/obj/effect/spider/eggcluster/E = locate() in get_turf(src)
 					if(!E && fed > 0)
 						busy = LAYING_EGGS
-						src.visible_message("\blue \the [src] begins to lay a cluster of eggs.")
+						src.visible_message("<span class='notice'>\the [src] begins to lay a cluster of eggs.</span>")
 						stop_automated_movement = 1
 						spawn(50)
 							if(busy == LAYING_EGGS)

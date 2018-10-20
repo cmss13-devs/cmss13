@@ -299,9 +299,13 @@ x_pos = 0 1 2 3 4 5 6
 	icon_state = "spawn_shuttle"
 	var/rotation = 0 //When loading to this landmark, how much to rotate the turfs. See /proc/rotate_shuttle_turfs()
 
-	New()
-		set waitfor = 0
-		..()
+/obj/effect/landmark/shuttle_loc/New()
+	set waitfor = 0
+	shuttle_landmarks += src
+	..()
+
+/obj/effect/landmark/shuttle_loc/proc/initialize_marker()
+	return
 
 /obj/effect/landmark/shuttle_loc/marine_src
 	icon_state = "spawn_shuttle_dock"
@@ -313,48 +317,39 @@ x_pos = 0 1 2 3 4 5 6
 	icon_state = "spawn_shuttle_crash"
 
 #define SHUTTLE_LINK_LOCATIONS(T, L) \
-sleep(50); \
 ..(); \
 var/datum/shuttle/ferry/marine/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] [T] [name]"]; \
 if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] [T] [name]"]."); \
 r_FAL}; \
 L[get_turf(src)] = rotation; \
-cdel(src)
+qdel(src)
 
-/obj/effect/landmark/shuttle_loc/marine_src/dropship //Name these "1" or "2", etc.
-	New()
-		SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
+/obj/effect/landmark/shuttle_loc/marine_src/dropship/initialize_marker() //Name these "1" or "2", etc.
+	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
 
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation
-	New()
-		sleep(50)
-		..()
-		var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
-		if(!S)
-			log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
-			r_FAL
-		S.locs_dock[get_turf(src)] = rotation
-		S.link_support_units(get_turf(src)) //Process links.
-		cdel(src)
+/obj/effect/landmark/shuttle_loc/marine_src/evacuation/initialize_marker()
+	..()
+	var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
+	if(!S)
+		log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
+		r_FAL
+	S.locs_dock[get_turf(src)] = rotation
+	S.link_support_units(get_turf(src)) //Process links.
+	qdel(src)
 
-/obj/effect/landmark/shuttle_loc/marine_int/dropship
-	New()
-		SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)
+/obj/effect/landmark/shuttle_loc/marine_int/dropship/initialize_marker()
+	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)
 
-/obj/effect/landmark/shuttle_loc/marine_trg/landing
-	New()
-		SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_land)
+/obj/effect/landmark/shuttle_loc/marine_trg/landing/initialize_marker()
+	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_land)
 
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation
-	New()
-		SHUTTLE_LINK_LOCATIONS("Evac", S.locs_land)
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation/initialize_marker()
+	SHUTTLE_LINK_LOCATIONS("Evac", S.locs_land)
 
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship
-	New()
-		sleep(50)
-		..()
-		shuttle_controller.locs_crash[get_turf(src)] = rotation
-		cdel(src)
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship/initialize_marker()
+	..()
+	shuttle_controller.locs_crash[get_turf(src)] = rotation
+	qdel(src)
 
 #undef SHUTTLE_LINK_LOCATIONS
 
@@ -415,7 +410,7 @@ cdel(src)
 	return toReturn
 
 /proc/move_shuttle_to(turf/reference, turftoleave = null, list/source, iselevator = 0, deg = 0, datum/shuttle/ferry/marine/shuttle)
-	//var/list/turfsToUpdate = list()
+	var/list/turfsToUpdate = list()
 
 	if(shuttle.sound_misc) playsound(source[shuttle.sound_target], shuttle.sound_misc, 75, 1)
 
@@ -431,7 +426,7 @@ cdel(src)
 		// Delete objects and gib living things in the destination
 		for (var/atom/A in target)
 			if (isobj(A) && A.loc == target)
-				cdel(A)
+				qdel(A)
 				continue
 
 			if (isliving(A))
@@ -442,12 +437,13 @@ cdel(src)
 		var/old_dir = T.dir
 		var/old_icon_state = T.icon_state
 		var/old_icon = T.icon
-
-		target.ChangeTurf(T.type)
+		qdel(target.lighting_overlay)
+		target.lighting_overlay = null
+		target.ChangeTurf(T.type, 1, 1)
 		target.dir = old_dir
 		target.icon_state = old_icon_state
 		target.icon = old_icon
-
+		turfsToUpdate += target
 
 		for (var/atom/movable/A in T)
 			if (isobj(A))
@@ -460,10 +456,10 @@ cdel(src)
 					var/mob/living/carbon/M = A
 					if(M.client)
 						if(M.buckled && !iselevator)
-							M << "<span class='warning'>Sudden acceleration presses you into [M.buckled]!</span>"
+							to_chat(M, "<span class='warning'>Sudden acceleration presses you into [M.buckled]!</span>")
 							shake_camera(M, 3, 1)
 						else if (!M.buckled)
-							M << "<span class='warning'>The floor lurches beneath you!</span>"
+							to_chat(M, "<span class='warning'>The floor lurches beneath you!</span>")
 							shake_camera(M, iselevator ? 2 : 10, 1)
 
 					if(!iselevator)
@@ -472,11 +468,22 @@ cdel(src)
 
 
 		if(turftoleave && ispath(turftoleave))
-			T.ChangeTurf(turftoleave)
+			qdel(T.lighting_overlay)
+			T.lighting_overlay = null
+			T.ChangeTurf(turftoleave, 1, 1)
+			T.lighting_build_overlay()
 		else
-			T.ChangeTurf(/turf/open/floor/plating)
+			qdel(T.lighting_overlay)
+			T.lighting_overlay = null
+			T.ChangeTurf(/turf/open/floor/plating, 1, 1)
+			T.lighting_build_overlay()
+		turfsToUpdate += T
 
 	shuttle.move_scheduled = 0
+
+	for(var/turf/Z in turfsToUpdate)
+		Z.lighting_clear_overlay()
+		Z.lighting_build_overlay()
 
 	// Do this after because it's expensive.
 	for (var/mob/living/L in knocked_down_mobs)

@@ -40,11 +40,11 @@
 
 	if (usr.stat || !(ishuman(usr) || ismonkey(usr)))
 		return
-	if (src.occupant)
-		usr << "\blue <B>The scanner is already occupied!</B>"
+	if (occupant)
+		to_chat(usr, "<span class='warning'>The scanner is already occupied!</span>")
 		return
 	if (usr.abiotic())
-		usr << "\blue <B>Subject cannot have abiotic items on.</B>"
+		to_chat(usr, "<span class='warning'>Subject cannot have abiotic items on.</span>")
 		return
 	usr.forceMove(src)
 	src.occupant = usr
@@ -52,7 +52,7 @@
 	src.icon_state = "body_scanner_1"
 	for(var/obj/O in src)
 		//O = null
-		cdel(O)
+		qdel(O)
 		//Foreach goto(124)
 	src.add_fingerprint(usr)
 	return
@@ -76,13 +76,13 @@
 	var/mob/M
 	if (istype(I, /obj/item/grab))
 		if (occupant)
-			user << "<span class='warning'>The scanner is already occupied!</span>"
+			to_chat(user, "<span class='warning'>The scanner is already occupied!</span>")
 			return
 		var/obj/item/grab/G = I
 		if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
 			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing
 			if(!C.stasis_mob)
-				user << "<span class='warning'>The stasis bag is empty!</span>"
+				to_chat(user, "<span class='warning'>The stasis bag is empty!</span>")
 				return
 			M = C.stasis_mob
 			C.open()
@@ -94,7 +94,7 @@
 	else
 		return
 	if (M.abiotic())
-		user << "<span class='warning'>Subject cannot have abiotic items on.</span>"
+		to_chat(user, "<span class='warning'>Subject cannot have abiotic items on.</span>")
 		return
 	M.forceMove(src)
 	occupant = M
@@ -114,14 +114,14 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -131,10 +131,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -170,7 +170,7 @@
 		if(dir == WEST || dir == NORTH)
 			connected = locate(/obj/machinery/bodyscanner,get_step(src, EAST))
 		if(!connected)
-			cdel(src)
+			qdel(src)
 
 /*
 
@@ -208,10 +208,10 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(!connected || (connected.stat & (NOPOWER|BROKEN)))
-		user << "<span class='warning'>This console is not connected to a functioning body scanner.</span>"
+		to_chat(user, "<span class='warning'>This console is not connected to a functioning body scanner.</span>")
 		return
 	if(!ishuman(connected.occupant))
-		user << "<span class='warning'>This device can only scan compatible lifeforms.</span>"
+		to_chat(user, "<span class='warning'>This device can only scan compatible lifeforms.</span>")
 		return
 
 	var/dat
@@ -250,14 +250,14 @@
 
 	if (href_list["print"])
 		if (!src.connected)
-			usr << "\icon[src]<span class='warning'>Error: No body scanner connected.</span>"
+			to_chat(usr, "[bicon(src)]<span class='warning'>Error: No body scanner connected.</span>")
 			return
 		var/mob/living/carbon/human/occupant = src.connected.occupant
 		if (!src.connected.occupant)
-			usr << "\icon[src]<span class='warning'>The body scanner is empty.</span>"
+			to_chat(usr, "[bicon(src)]<span class='warning'>The body scanner is empty.</span>")
 			return
 		if (!istype(occupant,/mob/living/carbon/human))
-			usr << "\icon[src]<span class='warning'>The body scanner cannot scan that lifeform.</span>"
+			to_chat(usr, "[bicon(src)]<span class='warning'>The body scanner cannot scan that lifeform.</span>")
 			return
 		var/obj/item/paper/R = new(src.loc)
 		R.name = "Body scan report -[src.connected.occupant.real_name]-"
@@ -310,7 +310,7 @@
 			aux = "Dead"
 	dat += text("[]\tHealth %: [] ([])</font><br>", (occ["health"] > 50 ? "<font color='blue'>" : "<font color='red'>"), occ["health"], aux)
 	if (occ["virus_present"])
-		dat += "<font color='red'>Viral pathogen detected in blood stream.</font><br>"
+		dat += "<span class='caution'>Viral pathogen detected in blood stream.</span><br>"
 	dat += text("[]\t-Brute Damage %: []</font><br>", (occ["bruteloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["bruteloss"])
 	dat += text("[]\t-Respiratory Damage %: []</font><br>", (occ["oxyloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["oxyloss"])
 	dat += text("[]\t-Toxin Content %: []</font><br>", (occ["toxloss"] < 60 ? "<font color='blue'>" : "<font color='red'>"), occ["toxloss"])
@@ -461,7 +461,7 @@
 			dat += text("<font color='red'>No [organ_name] detected.</font><BR>")
 
 	if(occ["sdisabilities"] & BLIND)
-		dat += text("<font color='red'>Cataracts detected.</font><BR>")
+		dat += "<span class='caution'>Cataracts detected.</span><BR>"
 	if(occ["sdisabilities"] & NEARSIGHTED)
-		dat += text("<font color='red'>Retinal misalignment detected.</font><BR>")
+		dat += "<span class='caution'>Retinal misalignment detected.</span><BR>"
 	return dat

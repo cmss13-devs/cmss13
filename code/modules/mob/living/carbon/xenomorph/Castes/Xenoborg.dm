@@ -54,7 +54,7 @@
 		return
 
 	if(!gun_on)
-		src << "<span class='warning'>Your autocannon is currently retracted.</span>"
+		to_chat(src, "<span class='warning'>Your autocannon is currently retracted.</span>")
 		return
 
 	if(usedPounce)
@@ -93,7 +93,7 @@
 			updatehealth()
 			if(health < maxHealth)
 				if(!WT.remove_fuel(10))
-					user << "<span class='warning'>You need more welding fuel to repair \the [src].</span>"
+					to_chat(user, "<span class='warning'>You need more welding fuel to repair \the [src].</span>")
 					return
 				adjustBruteLoss(-20)
 				adjustFireLoss(-20)
@@ -102,18 +102,18 @@
 				visible_message("<span class='notice'>\The [user] repairs some of the damage to \the [src].</span>")
 				return
 			else
-				user << "<span class='warning'>\The [src] is not damaged.</span>"
+				to_chat(user, "<span class='warning'>\The [src] is not damaged.</span>")
 				return
 		if(istype(O, /obj/item/cell))
 			var/obj/item/cell/C = O
 			if(plasma_stored >= caste.plasma_max)
-				user << "<span class='warning'>\The [src] does not need a new cell right now.</span>"
+				to_chat(user, "<span class='warning'>\The [src] does not need a new cell right now.</span>")
 				return
 			src.visible_message("<span class='notice'>\The [user] carefully inserts \the [C] into \the [src]'s power supply port.")
 			plasma_stored += C.charge
 			if(plasma_stored > caste.plasma_max) plasma_stored = caste.plasma_max
-			src << "<span class='notice'>Your power supply suddenly updates. New charge: [plasma_stored]/[caste.plasma_max]"
-			cdel(O)
+			to_chat(src, "<span class='notice'>Your power supply suddenly updates. New charge: [plasma_stored]/[caste.plasma_max]")
+			qdel(O)
 			user.update_inv_l_hand(0) //Update the user sprites after the del, just to be safe.
 			user.update_inv_r_hand()
 	return ..() //Just do normal stuff then.

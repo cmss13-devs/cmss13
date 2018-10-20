@@ -70,10 +70,10 @@
 		for(var/i in ticker.mode.predators)
 			M = i
 			if(M.current && M.current.stat != DEAD)
-				M.current << "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>"
+				to_chat(M.current, "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>")
 				M.current.emote("roar")
 
-	src << {"
+	to_chat(src, {"
 <span class='role_body'>|______________________|</span>
 <span class='role_header'>You are a predator-alien hybrid!</span>
 <span class='role_body'>You are a very powerful xenomorph creature that was born of a Yautja warrior body.
@@ -81,7 +81,7 @@ You are stronger, faster, and smarter than a regular xenomorph, but you must sti
 You have a degree of freedom to where you can hunt and claim the heads of the hive's enemies, so check your verbs.
 Your health meter will not regenerate normally, so kill and die for the hive!</span>
 <span class='role_body'>|______________________|</span>
-"}
+"})
 
 	emote("roar")
 
@@ -92,7 +92,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	set desc = "Butcher a corpse to attain a trophy from your kill."
 
 	if(is_mob_incapacitated()|| lying || buckled)
-		src << "<span class='xenowarning'>You're not able to do that right now.</span>"
+		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.</span>")
 		r_FAL
 
 	var/choices[] = new
@@ -104,19 +104,19 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	if(!H || !H.loc) r_FAL
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "<span class='xenowarning'>You're not able to do that right now.<span>"
+		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.<span>")
 		r_FAL
 
 	if(!H.stat)
-		src << "<span class='xenowarning'>Your prey must be dead.</span>"
+		to_chat(src, "<span class='xenowarning'>Your prey must be dead.</span>")
 		r_FAL
 
 	if(!Adjacent(H))
-		src << "<span class='xenowarning'>You have to be next to your target.</span>"
+		to_chat(src, "<span class='xenowarning'>You have to be next to your target.</span>")
 		r_FAL
 
 	if(world.time <= butchered_last + PREDALIEN_BUTCHER_COOLDOWN)
-		src << "<span class='xenowarning'>You have recently attempted to butcher a carcass. Wait.</span>"
+		to_chat(src, "<span class='xenowarning'>You have recently attempted to butcher a carcass. Wait.</span>")
 		r_FAL
 
 	butchered_last = world.time

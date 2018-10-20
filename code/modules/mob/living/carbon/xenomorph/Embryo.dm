@@ -21,7 +21,7 @@
 			var/mob/living/carbon/C = affected_mob
 			C.med_hud_set_status()
 	else
-		cdel(src)
+		qdel(src)
 
 /obj/item/alien_embryo/Dispose()
 	if(affected_mob)
@@ -36,7 +36,7 @@
 /obj/item/alien_embryo/process()
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		r_FAL
 
 	if(loc != affected_mob) //Our location is not the host
@@ -92,12 +92,12 @@
 	switch(stage)
 		if(2)
 			if(prob(2))
-				affected_mob << "<span class='warning'>[pick("Your chest hurts a little bit", "Your stomach hurts")].</span>"
+				to_chat(affected_mob, "<span class='warning'>[pick("Your chest hurts a little bit", "Your stomach hurts")].</span>")
 		if(3)
 			if(prob(2))
-				affected_mob << "<span class='warning'>[pick("Your throat feels sore", "Mucous runs down the back of your throat")].</span>"
+				to_chat(affected_mob, "<span class='warning'>[pick("Your throat feels sore", "Mucous runs down the back of your throat")].</span>")
 			else if(prob(1))
-				affected_mob << "<span class='warning'>Your muscles ache.</span>"
+				to_chat(affected_mob, "<span class='warning'>Your muscles ache.</span>")
 				if(prob(20))
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
@@ -111,7 +111,7 @@
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
-				affected_mob << "<span class='warning'>[pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")].</span>"
+				to_chat(affected_mob, "<span class='warning'>[pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")].</span>")
 		if(5)
 			become_larva()
 		if(6)
@@ -159,7 +159,7 @@
 		if(new_xeno.client)
 			new_xeno.client.change_view(world.view)
 
-		new_xeno << "<span class='xenoannounce'>You are a xenomorph larva inside a host! Move to burst out of it!</span>"
+		to_chat(new_xeno, "<span class='xenoannounce'>You are a xenomorph larva inside a host! Move to burst out of it!</span>")
 		new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 	stage = 6
@@ -168,7 +168,7 @@
 	set waitfor = 0
 	if(victim.chestburst || loc != victim) return
 	victim.chestburst = 1
-	src << "<span class='danger'>You start bursting out of [victim]'s chest!</span>"
+	to_chat(src, "<span class='danger'>You start bursting out of [victim]'s chest!</span>")
 	if(victim.knocked_out < 1)
 		victim.KnockOut(20)
 	victim.visible_message("<span class='danger'>\The [victim] starts shaking uncontrollably!</span>", \
@@ -207,10 +207,10 @@
 			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
 			ticker.mode.stored_larva++
-			cdel(L)
+			qdel(L)
 
 	for(var/obj/item/alien_embryo/AE in victim)
-		cdel(AE)
+		qdel(AE)
 
 	if(burstcount >= 4)
 		victim.gib()

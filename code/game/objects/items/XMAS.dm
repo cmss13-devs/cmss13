@@ -23,31 +23,31 @@
 
 	if(fancy > 95)
 		if(exFancy == 1)
-			M << "\blue It's a brand new, un-restricted, THERMOBARIC ROCKET LAUNCHER!!!!!!  What are the chances???"
+			to_chat(M, "<span class='notice'>It's a brand new, un-restricted, THERMOBARIC ROCKET LAUNCHER!!!!!!  What are the chances???</span>")
 			gift_type = /obj/item/weapon/gun/launcher/rocket/m57a4/XMAS
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 		else if(exFancy == 10)
-			M << "\blue It's a brand new, un-restricted, ANTI-MATERIAL SNIPER RIFLE!!!!!!  What are the chances???"
+			to_chat(M, "<span class='notice'>It's a brand new, un-restricted, ANTI-MATERIAL SNIPER RIFLE!!!!!!  What are the chances???</span>")
 			gift_type = /obj/item/weapon/gun/rifle/sniper/elite/XMAS
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 		else if(exFancy == 20)
-			M << "\blue Just what the fuck is it???"
+			to_chat(M, "<span class='notice'>Just what the fuck is it???</span>")
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 		else
 			gift_type = pick(
@@ -60,17 +60,17 @@
 			/obj/item/attachable/extended_barrel,
 			/obj/item/attachable/burstfire_assembly,
 			)
-			M << "\blue It's a REAL gift!!!"
+			to_chat(M, "<span class='notice'>It's a REAL gift!!!</span>")
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 	else if (fancy <=5)
-		M << "\blue It's fucking EMPTY.  Man, Fuck CM."
+		to_chat(M, "<span class='notice'>It's fucking EMPTY.  Man, Fuck CM.</span>")
 		M.temp_drop_inv_item(src)
-		cdel(src)
+		qdel(src)
 		return
 
 
@@ -112,12 +112,12 @@
 		/obj/item/attachable/scope)
 
 	if(!ispath(gift_type,/obj/item))	return
-	M << "\blue At least it's something..."
+	to_chat(M, "<span class='notice'>At least it's something...</span>")
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
-	cdel(src)
+	qdel(src)
 	return
 
 
@@ -134,7 +134,7 @@
 		var/turf/current_turf = get_turf(user)
 		if (current_turf.z == 3 || current_turf.z == 4) //Can't fire on the Almayer, bub.
 			click_empty(user)
-			user << "<span class='warning'>You can't fire that here!</span>"
+			to_chat(user, "<span class='warning'>You can't fire that here!</span>")
 			return 0
 		else
 			return 1

@@ -7,6 +7,7 @@
 	flags_atom = NOFLAGS
 	flags_item = NOBLUDGEON|DELONDROP|ITEM_ABSTRACT
 	layer = ABOVE_HUD_LAYER
+	plane = ABOVE_HUD_PLANE
 	item_state = "nothing"
 	w_class = 5
 	var/atom/movable/grabbed_thing
@@ -79,32 +80,32 @@
 		if(!istype(pulled))
 			return
 		if(isXeno(pulled) || isSynth(pulled))
-			X << "<span class='warning'>That wouldn't taste very good.</span>"
+			to_chat(X, "<span class='warning'>That wouldn't taste very good.</span>")
 			return 0
 		if(pulled.buckled)
-			X << "<span class='warning'>[pulled] is buckled to something.</span>"
+			to_chat(X, "<span class='warning'>[pulled] is buckled to something.</span>")
 			return 0
 		if(pulled.stat == DEAD)
-			X << "<span class='warning'>Ew, [pulled] is already starting to rot.</span>"
+			to_chat(X, "<span class='warning'>Ew, [pulled] is already starting to rot.</span>")
 			return 0
 		if(X.stomach_contents.len) //Only one thing in the stomach at a time, please
-			X << "<span class='warning'>You already have something in your belly, there's no way that will fit.</span>"
+			to_chat(X, "<span class='warning'>You already have something in your belly, there's no way that will fit.</span>")
 			return 0
 			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
 			else // The client is observing
 				for(var/mob/dead/observer/G in player_list)
 					if(ckey(G.mind.original.ckey) == pulled.ckey)
-						src << "You start to devour [pulled] but realize \he is already dead."
+						to_chat(src, "You start to devour [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
-			X << "<span class='warning'>You are already busy with something.</span>"
+			to_chat(X, "<span class='warning'>You are already busy with something.</span>")
 			return
 		X.visible_message("<span class='danger'>[X] starts to devour [pulled]!</span>", \
 		"<span class='danger'>You start to devour [pulled]!</span>", null, 5)
 		if(do_after(X, 50, FALSE, 5, BUSY_ICON_HOSTILE))
 			if(isXeno(pulled.loc) && !X.stomach_contents.len)
-				X << "<span class='warning'>Someone already ate \the [pulled].</span>"
+				to_chat(X, "<span class='warning'>Someone already ate \the [pulled].</span>")
 				return 0
 			if(X.pulling == pulled && !pulled.buckled && pulled.stat != DEAD && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
 				X.visible_message("<span class='warning'>[X] devours [pulled]!</span>", \
@@ -124,5 +125,5 @@
 				pulled.forceMove(X)
 				return 1
 		if(!(pulled in X.stomach_contents))
-			X << "<span class='warning'>You stop devouring \the [pulled]. \He probably tasted gross anyways.</span>"
+			to_chat(X, "<span class='warning'>You stop devouring \the [pulled]. \He probably tasted gross anyways.</span>")
 		return 0

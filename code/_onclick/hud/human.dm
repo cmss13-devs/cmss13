@@ -19,6 +19,7 @@
 		inv_box = new /obj/screen/inventory()
 		inv_box.icon = ui_style
 		inv_box.layer = HUD_LAYER
+		inv_box.plane = HUD_LAYER
 		inv_box.color = ui_color
 		inv_box.alpha = ui_alpha
 

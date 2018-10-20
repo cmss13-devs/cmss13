@@ -58,7 +58,7 @@
 			return
 
 		if (computer.z > 6)
-			usr << "\red <b>Unable to establish a connection</b>: \black You're too far away from the station!"
+			to_chat(usr, "<span class='danger'>Unable to establish a connection</span>: \black You're too far away from the station!")
 			return
 		var/dat
 
@@ -394,7 +394,7 @@ What a mess.*/
 			if ("Purge All Records")
 				for(var/datum/data/record/R in data_core.security)
 					data_core.security -= R
-					cdel(R)
+					qdel(R)
 				temp = "All Security records deleted."
 
 			if ("Add Entry")
@@ -552,7 +552,7 @@ What a mess.*/
 
 					if ("Delete Record (Security) Execute")
 						if (active2)
-							cdel(active2)
+							qdel(active2)
 							active2 = null
 
 					if ("Delete Record (ALL) Execute")
@@ -560,12 +560,12 @@ What a mess.*/
 							for(var/datum/data/record/R in data_core.medical)
 								if ((R.fields["name"] == active1.fields["name"] || R.fields["id"] == active1.fields["id"]))
 									data_core.medical -= R
-									cdel(R)
+									qdel(R)
 								else
-							cdel(active1)
+							qdel(active1)
 							active1 = null
 						if (active2)
-							cdel(active2)
+							qdel(active2)
 							active2 = null
 					else
 						temp = "This function does not appear to be working at the moment. Our apologies."
@@ -600,7 +600,7 @@ What a mess.*/
 
 		else if(prob(1))
 			data_core.security -= R
-			cdel(R)
+			qdel(R)
 			continue
 
 	..(severity)

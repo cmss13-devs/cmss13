@@ -25,7 +25,7 @@
 			mob_container.forceMove(get_turf(src))
 			M.reset_view()
 
-		cdel(src)
+		qdel(src)
 
 /obj/item/holder/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/mob/M in src.contents)
@@ -46,8 +46,8 @@
 	H.name = loc.name
 	H.attack_hand(grabber)
 
-	grabber << "You scoop up [src]."
-	src << "[grabber] scoops you up."
+	to_chat(grabber, "You scoop up [src].")
+	to_chat(src, "[grabber] scoops you up.")
 	grabber.status_flags |= PASSEMOTES
 	return
 

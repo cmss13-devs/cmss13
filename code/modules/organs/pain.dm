@@ -28,7 +28,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				else 					drop_r_hand()
 				i++
 			if(i) msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
-			H << "<span class='warning'>[msg].</span>"
+			to_chat(H, "<span class='warning'>[msg].</span>")
 
 	if(burning)
 		switch(amount)
@@ -39,7 +39,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				msg = "<span class='danger'>Your [partname] burns badly!</span>"
 			if(91 to 10000)
 				flash_pain()
-				msg = "<span class='HIGHDANGER'>OH GOD! Your [partname] is on fire!</span>"
+				msg = "<span class='highdanger'>OH GOD! Your [partname] is on fire!</span>"
 	else
 		switch(amount)
 			if(1 to 10)
@@ -49,10 +49,10 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				msg = "<span class='danger'>Your [partname] hurts badly.</span>"
 			if(91 to 10000)
 				flash_pain()
-				msg = "<span class='HIGHDANGER'>OH GOD! Your [partname] is hurting terribly!</span>"
+				msg = "<span class='highdanger'>OH GOD! Your [partname] is hurting terribly!</span>"
 	if(msg && (msg != last_pain_message || prob(10)))
 		last_pain_message = msg
-		src << msg
+		to_chat(src, msg)
 	next_pain_time = world.time + (100 - amount)
 
 
@@ -70,7 +70,7 @@ mob/living/carbon/human/proc/custom_pain(message, flash_strength)
 	// Anti message spam checks
 	if(msg && ((msg != last_pain_message) || (world.time >= next_pain_time)))
 		last_pain_message = msg
-		src << msg
+		to_chat(src, msg)
 	next_pain_time = world.time + 100
 
 mob/living/carbon/human/proc/handle_pain()

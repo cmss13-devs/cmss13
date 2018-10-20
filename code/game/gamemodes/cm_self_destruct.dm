@@ -46,7 +46,7 @@ All of the necessary difines are stored under mode.dm in defines.
 var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initited elsewhere so that the world has a chance to load in.
 
 /datum/authority/branch/evacuation
-	name = "Evacuation Authority"
+	var/name = "Evacuation Authority"
 	var/evac_time	//Time the evacuation was initiated.
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
@@ -64,14 +64,14 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_master = locate()
 		if(!dest_master)
 			log_debug("ERROR CODE SD1: could not find master self-destruct console")
-			world << "<span class='debuginfo'>ERROR CODE SD1: could not find master self-destruct console</span>"
+			to_chat(world, "<span class='debuginfo'>ERROR CODE SD1: could not find master self-destruct console</span>")
 			r_FAL
 		dest_rods = new
 		for(var/obj/machinery/self_destruct/rod/I in dest_master.loc.loc) dest_rods += I
 		if(!dest_rods.len)
 			log_debug("ERROR CODE SD2: could not find any self destruct rods")
-			world << "<span class='debuginfo'>ERROR CODE SD2: could not find any self destruct rods</span>"
-			cdel(dest_master)
+			to_chat(world, "<span class='debuginfo'>ERROR CODE SD2: could not find any self destruct rods</span>")
+			qdel(dest_master)
 			dest_master = null
 			r_FAL
 		dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len
@@ -262,7 +262,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		dest_status = NUKE_EXPLOSION_FINISHED
 
 		if(!ticker || !ticker.mode) //Just a safety, just in case a mode isn't running, somehow.
-			world << "<span class='round_body'>Resetting in 30 seconds!</span>"
+			to_chat(world, "<span class='round_body'>Resetting in 30 seconds!</span>")
 			sleep(300)
 			log_game("Rebooting due to nuclear detonation.")
 			world.Reboot()
@@ -339,8 +339,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(..()) r_TRU
 		switch(href_list["command"])
 			if("dest_start")
-				usr << "<span class='notice'>You press a few keys on the panel.</span>"
-				usr << "<span class='notice'>The system must be booting up the self-destruct sequence now.</span>"
+				to_chat(usr, "<span class='notice'>You press a few keys on the panel.</span>")
+				to_chat(usr, "<span class='notice'>The system must be booting up the self-destruct sequence now.</span>")
 				ai_system.Announce("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
 				active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
 				var/obj/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
@@ -355,7 +355,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if("dest_cancel")
 				var/list/allowed_officers = list("Commander", "Executive Officer", "Staff Officer", "Chief MP","Chief Medical Officer","Chief Engineer")
 				if(!usr.mind || !allowed_officers.Find(usr.mind.assigned_role))
-					usr << "<span class='notice'>You don't have the necessary clearance to cancel the emergency destruct system.</span>"
+					to_chat(usr, "<span class='notice'>You don't have the necessary clearance to cancel the emergency destruct system.</span>")
 					return
 				if(EvacuationAuthority.cancel_self_destruct()) nanomanager.close_user_uis(usr, src, "main")
 
@@ -397,13 +397,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(..())
 			switch(active_state)
 				if(SELF_DESTRUCT_MACHINE_ACTIVE)
-					user << "<span class='notice'>You twist and release the control rod, arming it.</span>"
+					to_chat(user, "<span class='notice'>You twist and release the control rod, arming it.</span>")
 					playsound(src, 'sound/machines/switch.ogg', 25, 1)
 					icon_state = "rod_4"
 					active_state = SELF_DESTRUCT_MACHINE_ARMED
 				if(SELF_DESTRUCT_MACHINE_ARMED)
-					user << "<span class='notice'>You twist and release the control rod, disarming it.</span>"
+					to_chat(user, "<span class='notice'>You twist and release the control rod, disarming it.</span>")
 					playsound(src, 'sound/machines/switch.ogg', 25, 1)
 					icon_state = "rod_3"
 					active_state = SELF_DESTRUCT_MACHINE_ACTIVE
-				else user << "<span class='warning'>The control rod is not ready.</span>"
+				else to_chat(user, "<span class='warning'>The control rod is not ready.</span>")

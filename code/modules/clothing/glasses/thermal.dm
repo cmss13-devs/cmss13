@@ -17,7 +17,7 @@
 /obj/item/clothing/glasses/thermal/emp_act(severity)
 	if(istype(src.loc, /mob/living/carbon/human))
 		var/mob/living/carbon/human/M = src.loc
-		M << "\red The Optical Thermal Scanner overloads and blinds you!"
+		to_chat(M, "<span class='warning'>The Optical Thermal Scanner overloads and blinds you!</span>")
 		if(M.glasses == src)
 			M.eye_blind = 3
 			M.eye_blurry = 5
@@ -73,8 +73,3 @@
 	Dispose()
 		..()
 		return TA_REVIVE_ME
-
-	Recycle()
-		var/blacklist[] = list("icon_state","item_state","name","desc","vision_flags","invisa_view","can_remove")
-		. = ..() + blacklist
-

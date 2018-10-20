@@ -18,7 +18,7 @@
 		if (machine)
 			machine.console = src
 		else
-			cdel(src)
+			qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)
 	add_fingerprint(user)
@@ -30,7 +30,7 @@
 		return
 
 	if(!allowed(user))
-		user << "\red Access denied."
+		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 
 	user.set_interaction(src)
@@ -60,7 +60,7 @@
 
 	dat += "</table><hr>"
 	dat += "Currently displaying [show_all_ores ? "all ore types" : "only available ore types"]. <A href='?src=\ref[src];toggle_ores=1'>\[[show_all_ores ? "show less" : "show more"]\]</a></br>"
-	dat += "The ore processor is currently <A href='?src=\ref[src];toggle_power=1'>[(machine.active ? "<font color='green'>processing</font>" : "<font color='red'>disabled</font>")]</a>."
+	dat += "The ore processor is currently <A href='?src=\ref[src];toggle_power=1'>[(machine.active ? "<font color='green'>processing</font>" : "<span class='caution'>disabled</span>")]</a>."
 	user << browse(dat, "window=processor_console;size=400x500")
 	onclose(user, "processor_console")
 	return
@@ -233,7 +233,3 @@
 			continue
 
 	console.updateUsrDialog()
-
-/obj/machinery/mineral/processing_unit/Dispose()
-	SetLuminosity(0)
-	. = ..()

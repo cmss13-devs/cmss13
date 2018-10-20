@@ -67,7 +67,7 @@
 			else
 				D.organ_names += ", [O.display_name]"
 
-		cdel(D.organs_scanned[O.name])
+		qdel(D.organs_scanned[O.name])
 		D.organs_scanned[O.name] = W.copy()
 
 	for(var/V in O.trace_chemicals)
@@ -79,7 +79,7 @@
 	set src in view(usr, 1)
 	set name = "Print Data"
 	if(usr.stat || !(istype(usr,/mob/living/carbon/human)))
-		usr << "No."
+		to_chat(usr, "No.")
 		return
 
 	var/scan_data = ""
@@ -124,7 +124,7 @@
 			if(15 to 30)
 				damage_desc = "<font color='orange'>moderate</font>"
 			if(30 to 1000)
-				damage_desc = "<font color='red'>severe</font>"
+				damage_desc = "<span class='caution'>severe</span>"
 
 		if(!total_score) total_score = D.organs_scanned.len
 
@@ -149,7 +149,7 @@
 			scan_data += "<br>"
 
 	for(var/mob/O in viewers(usr))
-		O.show_message("\red \the [src] rattles and prints out a sheet of paper.", 1)
+		O.show_message("<span class='warning'>\the [src] rattles and prints out a sheet of paper.</span>", 1)
 
 	sleep(10)
 
@@ -178,16 +178,16 @@
 		src.wdata = list()
 		src.chemtraces = list()
 		src.timeofdeath = null
-		user << "\red A new patient has been registered.. Purging data for previous patient."
+		to_chat(user, "<span class='warning'>A new patient has been registered.. Purging data for previous patient.</span>")
 
 	src.timeofdeath = M.timeofdeath
 
 	var/datum/limb/S = M.get_limb(user.zone_selected)
 	if(!S)
-		usr << "<b>You can't scan this body part.</b>"
+		to_chat(usr, "<b>You can't scan this body part.</b>")
 		return
 	if(!S.surgery_open_stage)
-		usr << "<b>You have to cut the limb open first!</b>"
+		to_chat(usr, "<b>You have to cut the limb open first!</b>")
 		return
 	for(var/mob/O in viewers(M))
 		O.show_message("\red [user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]", 1)

@@ -16,12 +16,10 @@
 
 	New()
 		..()
+		if(on)
+			set_light(brightness_on)
 		spawn(1)
 			cell = new /obj/item/cell(src)
-
-	Dispose()
-		SetLuminosity(0)
-		. = ..()
 
 /obj/machinery/floodlight/proc/updateicon()
 	icon_state = "flood[open ? "o" : ""][open && cell ? "b" : ""]0[on]"
@@ -50,14 +48,14 @@
 		cell.updateicon()
 
 		src.cell = null
-		user << "You remove the power cell."
+		to_chat(user, "<span class='notice'>You remove the power cell.</span>")
 		updateicon()
 		return
 
 	if(on)
 		on = 0
-		user << "\blue You turn off the light."
-		SetLuminosity(0)
+		to_chat(user, "<span class='notice'>You turn off the light.</span>")
+		set_light(0)
 		unacidable = 1
 	else
 		if(!cell)
@@ -65,8 +63,8 @@
 		if(cell.charge <= 0)
 			return
 		on = 1
-		user << "\blue You turn on the light."
-		SetLuminosity(brightness_on)
+		to_chat(user, "<span class='notice'>You turn on the light.</span>")
+		set_light(brightness_on)
 		unacidable = 0
 
 	updateicon()
@@ -79,39 +77,39 @@
 	if (istype(W, /obj/item/tool/wrench))
 		if (!anchored)
 			anchored = 1
-			user << "You anchor the [src] in place."
+			to_chat(user, "You anchor the [src] in place.")
 		else
 			anchored = 0
-			user << "You remove the bolts from the [src]."
+			to_chat(user, "You remove the bolts from the [src].")
 
 	if (istype(W, /obj/item/tool/screwdriver))
 		if (!open)
 			if(unlocked)
 				unlocked = 0
-				user << "You screw the battery panel in place."
+				to_chat(user, "You screw the battery panel in place.")
 			else
 				unlocked = 1
-				user << "You unscrew the battery panel."
+				to_chat(user, "You unscrew the battery panel.")
 
 	if (istype(W, /obj/item/tool/crowbar))
 		if(unlocked)
 			if(open)
 				open = 0
 				overlays = null
-				user << "You crowbar the battery panel in place."
+				to_chat(user, "You crowbar the battery panel in place.")
 			else
 				if(unlocked)
 					open = 1
-					user << "You remove the battery panel."
+					to_chat(user, "You remove the battery panel.")
 
 	if (istype(W, /obj/item/cell))
 		if(open)
 			if(cell)
-				user << "There is a power cell already installed."
+				to_chat(user, "There is a power cell already installed.")
 			else
 				if(user.drop_inv_item_to_loc(W, src))
 					cell = W
-					user << "You insert the power cell."
+					to_chat(user, "You insert the power cell.")
 	updateicon()
 
 //Magical floodlight that cannot be destroyed or interacted with.

@@ -26,9 +26,9 @@
 		//	if(!istates.Find(O.item_state))
 		//		text += "[O.type] MISSING NORMAL ICON CALLED\n\"[O.item_state]\" IN \"[O.icon]\"\n"
 		//text+="\n"
-		cdel(O)
+		qdel(O)
 	if(text)
 		var/F = file("broken_icons.txt")
 		fdel(F)
 		F << text
-		world << "Completeled successfully and written to [F]"
+		to_chat(world, "Completeled successfully and written to [F]")

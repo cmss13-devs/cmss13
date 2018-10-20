@@ -29,29 +29,29 @@
 				if(isturf(T) && !T.intact_tile)
 					attached = locate() in T
 					if(!attached)
-						user << "No exposed cable here to attach to."
+						to_chat(user, "No exposed cable here to attach to.")
 						return
 					else
 						anchored = 1
 						mode = 1
-						user << "You attach the device to the cable."
+						to_chat(user, "You attach the device to the cable.")
 						for(var/mob/M in viewers(user))
 							if(M == user) continue
-							M << "[user] attaches the power sink to the cable."
+							to_chat(M, "[user] attaches the power sink to the cable.")
 						return
 				else
-					user << "Device must be placed over an exposed cable to attach to it."
+					to_chat(user, "Device must be placed over an exposed cable to attach to it.")
 					return
 			else
 				if (mode == 2)
 					processing_objects.Remove(src) // Now the power sink actually stops draining the station's power if you unhook it. --NeoFite
 				anchored = 0
 				mode = 0
-				user << "You detach	the device from the cable."
+				to_chat(user, "You detach	the device from the cable.")
 				for(var/mob/M in viewers(user))
 					if(M == user) continue
-					M << "[user] detaches the power sink from the cable."
-				SetLuminosity(0)
+					to_chat(M, "[user] detaches the power sink from the cable.")
+				set_light(0)
 				icon_state = "powersink0"
 
 				return
@@ -72,21 +72,21 @@
 				..()
 
 			if(1)
-				user << "You activate the device!"
+				to_chat(user, "You activate the device!")
 				for(var/mob/M in viewers(user))
 					if(M == user) continue
-					M << "[user] activates the power sink!"
+					to_chat(M, "[user] activates the power sink!")
 				mode = 2
 				icon_state = "powersink1"
 				processing_objects.Add(src)
 
 			if(2)  //This switch option wasn't originally included. It exists now. --NeoFite
-				user << "You deactivate the device!"
+				to_chat(user, "You deactivate the device!")
 				for(var/mob/M in viewers(user))
 					if(M == user) continue
-					M << "[user] deactivates the power sink!"
+					to_chat(M, "[user] deactivates the power sink!")
 				mode = 1
-				SetLuminosity(0)
+				set_light(0)
 				icon_state = "powersink0"
 				processing_objects.Remove(src)
 
@@ -94,7 +94,7 @@
 		if(attached)
 			var/datum/powernet/PN = attached.get_powernet()
 			if(PN)
-				SetLuminosity(12)
+				set_light(12)
 
 				// found a powernet, so drain up to max power from it
 
@@ -118,4 +118,4 @@
 			if(power_drained >= max_power)
 				processing_objects.Remove(src)
 				explosion(src.loc, 3,6,9,12)
-				cdel(src)
+				qdel(src)

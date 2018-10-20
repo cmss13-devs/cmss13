@@ -53,8 +53,8 @@
 								break
 				target.canmove = 1
 				target.client.eye = target
-				cdel(animation)
-				cdel(holder)
+				qdel(animation)
+				qdel(holder)
 			else
 				flick("liquify",animation)
 				target.loc = holder
@@ -79,8 +79,8 @@
 								break
 				target.canmove = 1
 				target.client.eye = target
-				cdel(animation)
-				cdel(holder)
+				qdel(animation)
+				qdel(holder)
 
 /obj/effect/dummy/spell_jaunt
 	name = "water"
@@ -96,7 +96,7 @@
 	if(!(newLoc.flags_atom & NOJAUNT))
 		loc = newLoc
 	else
-		user << "<span class='warning'>Some strange aura is blocking the way!</span>"
+		to_chat(user, "<span class='warning'>Some strange aura is blocking the way!</span>")
 	src.canmove = 0
 	spawn(2) src.canmove = 1
 

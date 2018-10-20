@@ -20,14 +20,14 @@
 		new/obj/item/stack/sheet/glass(user.loc)
 		if(amount <= 0)
 			user.temp_drop_inv_item(src)
-			cdel(src)
+			qdel(src)
 
 	if(istype(O,/obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = O
 		if (M.use(1))
 			new/obj/item/stack/tile/light(user.loc, 1)
 			use(1)
-			user << "<span class='notice'>You make a light tile.</span>"
+			to_chat(user, "<span class='notice'>You make a light tile.</span>")
 		else
-			user << "<span class='warning'>You need one metal sheet to finish the light tile.</span>"
+			to_chat(user, "<span class='warning'>You need one metal sheet to finish the light tile.</span>")
 		return

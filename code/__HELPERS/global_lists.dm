@@ -37,7 +37,6 @@ var/global/list/dead_hardcore_xeno_list = list() // mostly for WO clean up
 
 var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
 
-var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
 var/global/list/chemical_reactions_list				//List of all /datum/chemical_reaction datums. Used during chemical reactions
 var/global/list/chemical_reagents_list				//List of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
 var/global/list/landmarks_list = list()				//List of all landmarks created
@@ -50,8 +49,7 @@ var/global/list/joblist = list()					//List of all jobstypes, minus borg and AI
 var/global/list/structure_list = list()				//List of all /obj/structure as they are created, to fetch generic structures with a lot less lag
 var/global/list/active_areas = list()
 var/global/list/all_areas = list()
-var/global/list/machines = list()
-var/global/list/processing_machines = list()
+
 var/global/list/turfs = list()
 var/global/list/processing_turfs = list()
 var/global/list/object_list = list()
@@ -61,9 +59,6 @@ var/global/list/attachment_vendors = list() //Used by our gamemode code
 var/global/list/marine_vendors = list() //Used by our gamemode code
 var/global/list/cargo_ammo_vendors = list() //Used by our gamemode code
 var/global/list/cargo_guns_vendors = list() //Used by our gamemode code
-var/global/list/processing_objects = list()
-var/global/list/active_diseases = list()
-var/global/list/events = list()
 
 var/global/list/yautja_gear = list() // list of loose pred gear
 

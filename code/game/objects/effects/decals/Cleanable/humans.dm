@@ -36,7 +36,7 @@ var/global/list/image/splatter_cache=list()
 				if(B != src)
 					if (B.blood_DNA)
 						blood_DNA |= B.blood_DNA.Copy()
-					cdel(B)
+					qdel(B)
 	spawn(DRYING_TIME * (amount+1))
 		dry()
 
@@ -88,7 +88,7 @@ var/global/list/image/splatter_cache=list()
 			return
 		var/taken = rand(1,amount)
 		amount -= taken
-		user << "<span class='notice'>You get some of \the [src] on your hands.</span>"
+		to_chat(user, "<span class='notice'>You get some of \the [src] on your hands.</span>")
 
 		user.add_blood(blood_DNA, basecolor)
 		user.bloody_hands += taken
@@ -129,7 +129,7 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/decal/cleanable/blood/writing/examine(mob/user)
 	..()
-	user << "It reads: <font color='[basecolor]'>\"[message]\"<font>"
+	to_chat(user, "It reads: <font color='[basecolor]'>\"[message]\"<font>")
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"

@@ -22,6 +22,7 @@
 	var/busy = 0
 	var/firing = 0 //Used for deconstruction and aiming sanity
 	var/fixed = 0 //If set to 1, can't unanchor and move the mortar, used for map spawns and WO
+	var/has_created_ceiling_debris = 0 //prevents mortar from creating endless piles of glass shards
 
 /obj/structure/mortar/attack_hand(mob/user as mob)
 	if(isYautja(user))
@@ -147,8 +148,10 @@
 			flick(icon_state + "_fire", src)
 			mortar_shell.forceMove(src)
 
-			var/turf/G = get_turf(src)
-			G.ceiling_debris_check(2)
+			if(!has_created_ceiling_debris)
+				var/turf/G = get_turf(src)
+				G.ceiling_debris_check(2)
+				has_created_ceiling_debris = 1
 
 			for(var/mob/M in range(7))
 				shake_camera(M, 3, 1)

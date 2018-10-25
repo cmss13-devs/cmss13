@@ -384,7 +384,7 @@
 		if (P.distance_travelled <= P.ammo.point_blank_range)
 			//If bullet within point blank range, big accuracy buff
 			. += 25
-		else if ((P.ammo.flags_ammo_behavior & AMMO_SNIPER) && P.distance_travelled <= P.ammo.accurate_range_min)
+		else if (P.distance_travelled <= P.ammo.accurate_range_min)
 			// Snipers have accuracy falloff at closer range before point blank
 			. -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
 	else

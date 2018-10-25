@@ -1,8 +1,98 @@
 
-///***GRENADES***///
-/obj/item/explosive/grenade/frag
+/*
+//================================================
+				High-explosive Grenades
+//================================================
+*/
+/obj/item/explosive/grenade/HE
 	name = "\improper M40 HEDP grenade"
-	desc = "A small, but deceptively strong fragmentation grenade that has been phasing out the M15 Fragmentation Grenades. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	desc = "A small, but deceptively strong high-explosive grenade that has been phasing out the M15 HE grenades. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	icon_state = "grenade"
+	det_time = 40
+	item_state = "grenade"
+	dangerous = 1
+	underslug_launchable = TRUE
+
+/obj/item/explosive/grenade/HE/prime()
+	spawn(0)
+		explosion(loc, -1, -1, 3)
+		cdel(src)
+	return
+
+/obj/item/explosive/grenade/HE/flamer_fire_act()
+	var/turf/T = loc
+	cdel(src)
+	explosion(T, -1, -1, 3)
+
+
+
+/obj/item/explosive/grenade/HE/PMC
+	desc = "A high-explosive grenade produced for private security firms. It explodes 3 seconds after the pin has been pulled."
+	icon_state = "grenade_pmc"
+	item_state = "grenade_ex"
+	underslug_launchable = FALSE
+
+
+	prime()
+		spawn(0)
+			explosion(loc, -1, -1, 4)
+			cdel(src)
+		return
+
+/obj/item/explosive/grenade/HE/m15
+	name = "\improper M15 HE grenade"
+	desc = "An outdated USCM high-explosive grenade. With decades of service in the USCM, the old M15 HE grenade is slowly being replaced with the slightly safer M40 HEDP. It is set to detonate in 4 seconds."
+	icon_state = "grenade_ex"
+	item_state = "grenade_ex"
+	underslug_launchable = FALSE
+
+	prime()
+		spawn(0)
+			explosion(loc, -1, -1, 4)
+			cdel(src)
+		return
+
+/obj/item/explosive/grenade/HE/stick
+	name = "\improper Webley Mk15 stick grenade"
+	desc = "A high-explosive grenade produced in the colonies, most commonly using old designs and schematics. It explodes 3 seconds after the pin has been pulled."
+	icon_state = "grenade_stick"
+	item_state = "grenade_stick"
+	force = 10
+	w_class = 2
+	throwforce = 15
+	throw_speed = 2
+	throw_range = 7
+	underslug_launchable = FALSE
+
+	prime()
+		spawn(0)
+			explosion(src.loc,-1,-1,3)
+			del(src)
+		return
+
+/obj/item/explosive/grenade/HE/upp
+	name = "\improper Type 5 high-explosive grenade"
+	desc = "A high-explosive grenade found within the ranks of the UPP. Designed to rupture the bodies of opponents through blast-effect alone. It explodes 3 seconds after the pin has been pulled."
+	icon_state = "grenade_upp"
+	item_state = "grenade_upp"
+	throw_speed = 2
+	throw_range = 6
+	underslug_launchable = FALSE
+
+	prime()
+		spawn(0)
+			explosion(src.loc,-1,-1,3)
+			del(src)
+		return
+
+/*
+//================================================
+				Fragmentation Grenades
+//================================================
+*/
+/obj/item/explosive/grenade/frag
+	name = "\improper M41 HEFA grenade"
+	desc = "A small, but deceptively strong fragmentation grenade that has been phasing out the M16 HE grenades. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade"
 	det_time = 40
 	item_state = "grenade"
@@ -11,14 +101,14 @@
 
 /obj/item/explosive/grenade/frag/prime()
 	spawn(0)
-		explosion(loc, -1, -1, 3)
+		create_shrapnel(loc, 30)
+		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+		explosion_rec(loc,60,20)
 		cdel(src)
 	return
 
 /obj/item/explosive/grenade/frag/flamer_fire_act()
-	var/turf/T = loc
-	cdel(src)
-	explosion(T, -1, -1, 3)
+	prime()
 
 
 
@@ -53,22 +143,29 @@
 
 	prime()
 		spawn(0)
-			explosion(loc, -1, -1, 4)
+			create_shrapnel(loc, 40)
+			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+			explosion_rec(loc,60,20)
 			cdel(src)
 		return
 
+
 /obj/item/explosive/grenade/frag/m15
-	name = "\improper M15 fragmentation grenade"
-	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M15 Fragmentation Grenade is slowly being replaced with the slightly safer M40 HEDP. It is set to detonate in 4 seconds."
+	name = "\improper M12 fragmentation grenade"
+	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M12 Fragmentation Grenade is slowly being replaced with the slightly safer M41 HEFA. It is set to detonate in 4 seconds."
 	icon_state = "grenade_ex"
 	item_state = "grenade_ex"
 	underslug_launchable = FALSE
 
 	prime()
 		spawn(0)
-			explosion(loc, -1, -1, 4)
+			create_shrapnel(loc, 40)
+			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+			explosion_rec(loc,60,20)
 			cdel(src)
 		return
+
+
 
 /obj/item/explosive/grenade/frag/stick
 	name = "\improper Webley Mk15 stick grenade"
@@ -84,7 +181,9 @@
 
 	prime()
 		spawn(0)
-			explosion(src.loc,-1,-1,3)
+			create_shrapnel(loc, 30)
+			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+			explosion_rec(loc,60,20)
 			del(src)
 		return
 
@@ -99,9 +198,17 @@
 
 	prime()
 		spawn(0)
-			explosion(src.loc,-1,-1,3)
+			create_shrapnel(loc, 30)
+			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+			explosion_rec(loc,60,20)
 			del(src)
 		return
+
+/*
+//================================================
+				Incendiary Grenades
+//================================================
+*/
 
 /obj/item/explosive/grenade/incendiary
 	name = "\improper M40 HIDP incendiary grenade"

@@ -688,6 +688,23 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return locate(x,y,A.z)
 
+// returns turf relative to A for a given clockwise angle at set range
+// result is bounded to map size
+// note range is non-pythagorean
+// used for disposal system
+/proc/get_angle_target_turf(var/atom/A, var/angle, var/range)
+
+	var/x = A.x
+	var/y = A.y
+
+	x += range * sin(angle)
+	y += range * cos(angle)
+
+	x = Clamp( round(x,1) ,1,world.maxx)
+	y = Clamp( round(y,1) ,1,world.maxy)
+
+	return locate(x,y,A.z)
+
 
 // returns turf relative to A offset in dx and dy tiles
 // bound to map limits

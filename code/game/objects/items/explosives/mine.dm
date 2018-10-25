@@ -119,10 +119,9 @@
 
 	switch(trigger_type)
 		if("explosive")
-			create_shrapnel(loc, 7, dir, 60)
-			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-			explosion_rec(src.loc, 60, 20)
-			cdel(src)
+			if(tripwire)
+				explosion_rec(tripwire.loc, 80, 30)
+				cdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(triggered) //Mine is already set to go off

@@ -38,6 +38,8 @@ MODE_PREDATOR
 Additional game mode variables.
 */
 
+#define MAX_PRED_LEADERS 1
+
 /datum/game_mode
 	var/datum/mind/xenomorphs[] = list() //These are our basic lists to keep track of who is in the game.
 	var/datum/mind/survivors[] = list()
@@ -54,7 +56,8 @@ Additional game mode variables.
 	var/merc_starting_num 	= 0 //PMC clamp.
 	var/marine_starting_num = 0 //number of players not in something special
 	var/pred_current_num 	= 0 //How many are there now?
-	var/pred_maximum_num 	= 4 //How many are possible per round? Does not count elders.
+	var/pred_leaders		= 0
+	var/pred_maximum_num 	= 3 //How many are possible per round? Does not count elders.
 	var/pred_round_chance 	= 20 //%
 
 	//Some gameplay variables.
@@ -112,7 +115,7 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator)
 	predators += new_predator.mind //Add them to the proper list.
 	pred_keys += new_predator.ckey //Add their key.
-	if(!(RoleAuthority.roles_whitelist[new_predator.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER))) pred_current_num++ //If they are not an elder, tick up the max.
+	if(!(RoleAuthority.roles_whitelist[new_predator.ckey] & WHITELIST_YAUTJA_ELDER)) pred_current_num++ //If they are not an elder, tick up the max.
 
 /datum/game_mode/proc/initialize_starting_predator_list()
 	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
@@ -126,7 +129,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			L -= M
 			M.assigned_role = "MODE" //So they are not chosen later for another role.
 			predators += M
-			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER))) i++
+			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & WHITELIST_YAUTJA_ELDER)) i++
 
 /datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
 	var/temp_pred_list[] = predators //We don't want to use the actual predator list as it will be overriden.
@@ -185,8 +188,9 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER))
 		if(pred_current_num >= pred_maximum_num)
-			if(show_warning) pred_candidate << "<span class='warning'>Only [pred_maximum_num] predators may spawn per round, but Elders are excluded.</span>"
-			return
+			if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_COUNCIL) || pred_leaders >= MAX_PRED_LEADERS)
+				if(show_warning) pred_candidate << "<span class='warning'>Only [pred_maximum_num] predators may spawn per round, but Elders are excluded.</span>"
+				return
 
 	return 1
 
@@ -198,11 +202,19 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	var/mob/living/carbon/human/new_predator
 	var/wants_elder = 0
+	var/pred_leader = 0
 	if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER)
 		if(alert(pred_candidate,"Would you like to play as an Elder, or a Youngblood?","Predator Type","Elder","Youngblood") == "Elder")
 			wants_elder = 1
+	else if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_COUNCIL)
+		var/leader_choice = alert(pred_candidate,"Would you like to play as a Leader, or a Youngblood?","Predator Type","Leader","Youngblood")
+		if((leader_choice == "Youngblood" && pred_current_num >= pred_maximum_num) || pred_leaders >= MAX_PRED_LEADERS)
+			pred_candidate << "Sorry all slots are full."
+			return
+		if(leader_choice == "Leader")
+			pred_leader = 1
 
-	new_predator = new(wants_elder ? pick(pred_elder_spawn) : pick(pred_spawn))
+	new_predator = new(wants_elder||pred_leader ? pick(pred_elder_spawn) : pick(pred_spawn))
 	new_predator.set_species("Yautja")
 
 	new_predator.mind_initialize()
@@ -227,6 +239,8 @@ datum/game_mode/proc/initialize_special_clamps()
 	var/boot_number = new_predator.client.prefs.predator_boot_type
 	var/mask_number = new_predator.client.prefs.predator_mask_type
 
+	var/login_message = ""
+
 	new_predator.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(new_predator, boot_number), WEAR_FEET)
 	if(wants_elder)
 		new_predator.real_name = "Elder [new_predator.real_name]"
@@ -235,20 +249,29 @@ datum/game_mode/proc/initialize_special_clamps()
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(new_predator, armor_number), WEAR_BACK)
 
 		spawn(10)
-			new_predator << "<span class='notice'><B> Welcome Elder!</B></span>"
-			new_predator << "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>"
-			new_predator << "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>"
-			new_predator << "<span class='notice'>You come equipped as an Elder should, with a bonus glaive and heavy armor.</span>"
+			login_message += "<span class='notice'><B> Welcome Elder!</B></span><br>"
+			login_message += "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span><br>"
+			login_message += "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span><br>"
+			login_message += "<span class='notice'>You come equipped as an Elder should, with a bonus glaive and heavy armor.</span><br>"
 	else
+		if(pred_leader)
+			new_predator.real_name = "Leader [new_predator.real_name]"
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
 
 		spawn(12)
-			new_predator << "<span class='notice'>You are <B>Yautja</b>, a great and noble predator!</span>"
-			new_predator << "<span class='notice'>Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered.</span>"
-			new_predator << "<span class='notice'>Hunt at your discretion, yet be observant rather than violent.</span>"
-			new_predator << "<span class='notice'>And above all, listen to your Elders!</span>"
+			if(pred_leader)
+				login_message += "<span class='notice'>You are <B>Yautja Leader</b>, a great and noble predator!</span><br>"
+				login_message += "<span class='notice'>Your job is to teach the new hunters.</span><br>"
+				login_message += "<span class='notice'>You are not here to hunt or engage in fighting but to guide and train others.</span><br>"
+				login_message += "<span class='notice'>And above all, listen to your Elders!</span><br>"
+			else	
+				login_message += "<span class='notice'>You are <B>Yautja</b>, a great and noble predator!</span><br>"
+				login_message += "<span class='notice'>Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered.</span><br>"
+				login_message += "<span class='notice'>Hunt at your discretion, yet be observant rather than violent.</span><br>"
+				login_message += "<span class='notice'>And above all, listen to your Elders!</span><br>"
 
+	new_predator << login_message
 	new_predator.update_icons()
 	initialize_predator(new_predator)
 	return new_predator

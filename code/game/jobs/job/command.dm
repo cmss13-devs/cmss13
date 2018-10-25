@@ -20,8 +20,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	idtype = /obj/item/card/id/gold
 	minimal_player_age = 14
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist = WHITELIST_COMMANDER_HAS
-	council_alternative = /datum/job/command/commander/captain
+	flags_whitelist = WHITELIST_COMMANDER
 	skills_type = /datum/skills/commander
 
 	generate_wearable_equipment()
@@ -49,46 +48,12 @@ Your first order of business should be briefing the marines on the mission they 
 If you require any help, use adminhelp to talk to game staff about what you're supposed to do.
 Godspeed, commander!"}
 
-	announce_entry_message(mob/living/carbon/human/H, var/bypass_announce=0)
-		if(!bypass_announce)
-			sleep(15)
-			if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
+	announce_entry_message(mob/living/carbon/human/H)
+		sleep(15)
+		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
 		..()
 
 	get_access() return get_all_marine_access()
-
-//Commander
-/datum/job/command/commander/captain
-	title = "Captain"
-	comm_title = "CPT"
-	paygrade = "O5"
-	flags_whitelist = WHITELIST_COMMANDER_COUNCIL
-	base_job_name = "Commander"
-
-/datum/job/command/commander/captain/generate_wearable_equipment()
-	. = list(
-			WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-			WEAR_BODY = /obj/item/clothing/under/marine/officer/command/captain,
-			WEAR_FEET = /obj/item/clothing/shoes/marinechief/commander/captain,
-			WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer/commander/captain,
-			WEAR_WAIST = /obj/item/storage/belt/gun/mateba/cmateba/full,
-			WEAR_HEAD = /obj/item/clothing/head/beret/cm/tan,
-			WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-			WEAR_R_STORE = /obj/item/storage/pouch/general/large
-			)
-
-/datum/job/command/commander/captain/generate_entry_message()
-	. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.
-While you support Weyland-Yutani, you report to the USCM High Command, not the corporate office.
-Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines.
-Your first order of business should be briefing the marines on the mission they are about to undertake.
-If you require any help, use adminhelp to talk to game staff about what you're supposed to do.
-Godspeed, captain!"}
-
-/datum/job/command/commander/captain/announce_entry_message(mob/living/carbon/human/H)
-	sleep(15)
-	if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) captain_announcement.Announce("All hands, Captain [H.real_name] on deck!")
-	..(H, 1)
 
 /datum/job/command/commander/nightmare
 	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED

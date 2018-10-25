@@ -1243,6 +1243,27 @@
 
 /*
 //================================================
+					Shrapnel
+//================================================
+*/
+/datum/ammo/bullet/shrapnel
+	name = "shrapnel"
+	icon_state = "buckshot"
+	accurate_range_min = 5
+	New()
+		..()
+		accuracy = config.med_hit_accuracy
+		accurate_range = config.max_shell_range
+		point_blank_range = -1
+		max_range = config.norm_shell_range
+		damage = config.med_hit_damage
+		damage_var_low = -config.med_proj_variance
+		damage_var_high = config.med_proj_variance
+		damage_falloff = config.reg_damage_falloff
+		shell_speed = config.reg_shell_speed
+
+/*
+//================================================
 					Misc Ammo
 //================================================
 */

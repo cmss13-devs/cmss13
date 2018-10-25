@@ -367,10 +367,12 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 			//Handle job slot/tater cleanup.
 			if(occupant.mind)
-				RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.mind.assigned_role])
+				var/role_to_free = occupant.mind.assigned_role
+				if(occupant.mind.base_job_name)
+					role_to_free = occupant.mind.base_job_name
+				RoleAuthority.free_role(RoleAuthority.roles_for_mode[role_to_free])
 
 				if(occupant.mind.objectives.len)
-					cdel(occupant.mind.objectives)
 					occupant.mind.objectives = null
 					occupant.mind.special_role = null
 

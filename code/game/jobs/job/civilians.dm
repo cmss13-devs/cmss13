@@ -208,7 +208,7 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 /datum/job/civilian/synthetic
 	title = "Synthetic"
 	comm_title = "Syn"
-	paygrade = "???"
+	paygrade = "Syn"
 	flag = ROLE_SYNTHETIC
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	total_positions = 1
@@ -218,7 +218,7 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 	selection_color = "#aaee55"
 	idtype = /obj/item/card/id/gold
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
-	flags_whitelist = WHITELIST_SYNTHETIC
+	flags_whitelist = WHITELIST_SYNTHETIC_HAS
 	skills_type = /datum/skills/synthetic
 
 	get_access()

@@ -314,7 +314,7 @@
 "agb" = (/obj/structure/foamedmetal,/turf/open/floor/plating,/area/almayer/hull/upper_hull)
 "agc" = (/turf/open/floor/carpet,/area/almayer/living/commandbunks)
 "agd" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/open/floor/plating/plating_catwalk,/area/almayer/hallways/aft_hallway)
-"age" = (/obj/structure/bed/chair/office/dark{dir = 1},/obj/effect/landmark/start{name = "Commander"},/turf/open/floor/carpet,/area/almayer/living/commandbunks)
+"age" = (/obj/structure/bed/chair/office/dark{dir = 1},/obj/effect/landmark/start{name = "Captain"},/obj/effect/landmark/start{name = "Commander"},/turf/open/floor/carpet,/area/almayer/living/commandbunks)
 "agf" = (/obj/machinery/light{tag = "icon-tube1 (WEST)"; icon_state = "tube1"; dir = 8},/turf/open/floor/wood,/area/almayer/living/commandbunks)
 "agg" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/carpet,/area/almayer/living/commandbunks)
 "agh" = (/obj/machinery/atmospherics/unary/vent_scrubber/on,/turf/open/floor/carpet,/area/almayer/living/commandbunks)

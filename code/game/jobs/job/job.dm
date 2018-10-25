@@ -29,7 +29,8 @@
 	var/department_flag = NOFLAGS //TODO robust this later.
 	var/flags_startup_parameters 	= NOFLAGS //These flags are used to determine how to load the role, and some other parameters.
 	var/flags_whitelist 			= NOFLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
-
+	var/council_alternative = null
+	var/base_job_name = null
 	var/skills_type //the job knowledges we have. a type path
 
 	New()

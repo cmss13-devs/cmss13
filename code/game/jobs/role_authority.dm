@@ -112,13 +112,13 @@ var/global/datum/authority/branch/role/RoleAuthority
 		r = 1
 		while(++r <= P.len)
 			switch(ckey(P[r]))
+				if("yautjacouncil")									role |= WHITELIST_YAUTJA_COUNCIL
 				if("yautja","predator","pred","unblooded") 			role |= WHITELIST_YAUTJA_UNBLOODED
-				if("yautjablooded","bloodedpredator","blooded") 	role |= WHITELIST_YAUTJA_BLOODED
-				if("yautjaelite","elitepredator","elite")			role |= WHITELIST_YAUTJA_ELITE
 				if("yautjaelder","elderpredator","elder")			role |= WHITELIST_YAUTJA_ELDER
+				if("commandercouncil")								role |= WHITELIST_COMMANDER_COUNCIL
 				if("commander","co") 								role |= WHITELIST_COMMANDER
+				if("syntheticcouncil")								role |= WHITELIST_SYNTHETIC_COUNCIL
 				if("synthetic","synth") 							role |= WHITELIST_SYNTHETIC
-				if("arcturian","snowflake") 						role |= WHITELIST_ARCTURIAN
 				if("all","everything") 								role |= WHITELIST_ALL
 
 		W[ckey] = role
@@ -320,12 +320,23 @@ roles willy nilly.
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin=0)
 	if(ismob(M) && M.mind && istype(J))
 		if(check_role_entry(M, J, latejoin))
-			M.mind.assigned_role 		= J.title
-			M.mind.set_cm_skills(J.skills_type)
-			M.mind.special_role 		= J.special_role
-			M.mind.role_alt_title 		= J.get_alternative_title(M)
-			M.mind.role_comm_title 		= J.comm_title
-			J.current_positions++
+			if(J.council_alternative)
+				var/datum/job/council = new J.council_alternative
+				if(roles_whitelist[M.ckey] & council.flags_whitelist)
+					J.current_positions++
+					M.mind.assigned_role = council.title
+					M.mind.set_cm_skills(council.skills_type)
+					M.mind.special_role = council.special_role
+					M.mind.role_alt_title = council.get_alternative_title(M)
+					M.mind.role_comm_title = council.comm_title
+					M.mind.base_job_name = council.base_job_name
+				else
+					M.mind.assigned_role 		= J.title
+					M.mind.set_cm_skills(J.skills_type)
+					M.mind.special_role 		= J.special_role
+					M.mind.role_alt_title 		= J.get_alternative_title(M)
+					M.mind.role_comm_title 		= J.comm_title
+					J.current_positions++
 			//world << "[J.title]: [J.current_positions] current positions filled." //TODO DEBUG
 			return 1
 

@@ -357,17 +357,17 @@
 			return 1
 
 		if("module1")
-			if(istype(user, /mob/living/silicon/robot))
+			if(isrobot(user))
 				user:toggle_module(1)
 			return 1
 
 		if("module2")
-			if(istype(user, /mob/living/silicon/robot))
+			if(isrobot(user))
 				user:toggle_module(2)
 			return 1
 
 		if("module3")
-			if(istype(user, /mob/living/silicon/robot))
+			if(isrobot(user))
 				user:toggle_module(3)
 			return 1
 

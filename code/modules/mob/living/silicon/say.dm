@@ -16,7 +16,7 @@
 	if (!speaking)
 		if (istype(other, /mob/living/carbon))
 			return 1
-		if (istype(other, /mob/living/silicon))
+		if (issilicon(other))
 			return 1
 		if (istype(other, /mob/living/brain))
 			return 1
@@ -42,9 +42,9 @@
 		return emote(copytext(message,2))
 
 	var/bot_type = 0			//Let's not do a fuck ton of type checks, thanks.
-	if(istype(src, /mob/living/silicon/ai))
+	if(isAI(src))
 		bot_type = IS_AI
-	else if(istype(src, /mob/living/silicon/robot))
+	else if(isrobot(src))
 		bot_type = IS_ROBOT
 
 	var/mob/living/silicon/ai/AI = src		//and let's not declare vars over and over and over for these guys.

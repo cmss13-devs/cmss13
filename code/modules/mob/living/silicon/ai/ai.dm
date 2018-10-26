@@ -10,10 +10,7 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/ai_camera_list,
 	/mob/living/silicon/ai/proc/ai_goto_location,
 	/mob/living/silicon/ai/proc/ai_remove_location,
-	/mob/living/silicon/ai/proc/ai_hologram_change,
-	/mob/living/silicon/ai/proc/ai_network_change,
 	/mob/living/silicon/ai/proc/ai_roster,
-	/mob/living/silicon/ai/proc/ai_statuschange,
 	/mob/living/silicon/ai/proc/ai_store_location,
 	/mob/living/silicon/ai/proc/checklaws,
 	/mob/living/silicon/ai/proc/control_integrated_radio,
@@ -21,9 +18,15 @@ var/list/ai_verbs_default = list(
 	/mob/living/silicon/ai/proc/pick_icon,
 	/mob/living/silicon/ai/proc/sensor_mode,
 	/mob/living/silicon/ai/proc/show_laws_verb,
-	/mob/living/silicon/ai/proc/toggle_acceleration,
-	/mob/living/silicon/ai/proc/toggle_camera_light
+	/mob/living/silicon/ai/proc/toggle_acceleration
 )
+
+
+	//mob/living/silicon/ai/proc/ai_hologram_change,
+	
+	//mob/living/silicon/ai/proc/ai_network_change
+	//mob/living/silicon/ai/proc/ai_statuschange,
+	//mob/living/silicon/ai/proc/toggle_camera_light
 
 //Not sure why this is necessary...
 /proc/AutoUpdateAI(obj/subject)
@@ -46,7 +49,7 @@ var/list/ai_verbs_default = list(
 	status_flags = CANSTUN|CANKNOCKOUT
 	med_hud = MOB_HUD_MEDICAL_BASIC
 	sec_hud = MOB_HUD_SECURITY_BASIC
-	var/list/network = list("SS13")
+	var/list/network = list("almayer")
 	var/obj/machinery/camera/camera = null
 	var/list/connected_robots = list()
 	var/aiRestorePowerRoutine = 0
@@ -56,7 +59,7 @@ var/list/ai_verbs_default = list(
 	var/ioncheck[1]
 	var/lawchannel = "Common" // Default channel on which to state laws
 	var/icon/holo_icon//Default is assigned when AI is created.
-	var/obj/item/device/pda/ai/aiPDA = null
+//	var/obj/item/device/pda/ai/aiPDA = null
 	var/obj/item/device/multitool/aiMulti = null
 	var/obj/item/device/radio/headset/ai_integrated/aiRadio = null
 //Hud stuff
@@ -102,7 +105,7 @@ var/list/ai_verbs_default = list(
 				possibleNames -= pickedName
 				pickedName = null
 
-	aiPDA = new/obj/item/device/pda/ai(src)
+//	aiPDA = new/obj/item/device/pda/ai(src)
 	SetName(pickedName)
 	anchored = 1
 	canmove = 0
@@ -127,13 +130,10 @@ var/list/ai_verbs_default = list(
 
 	//Languages
 	add_language("Robot Talk", 1)
-	add_language("English", 0)
-	add_language("Sol Common", 0)
-	add_language("Sinta'unathi", 0)
-	add_language("Siik'tajr", 0)
-	add_language("Skrellian", 0)
-	add_language("Tradeband", 1)
-	add_language("Gutter", 0)
+	add_language("English", 1)
+	add_language("Russian", 1)
+	add_language("Xenomorph", 0)
+
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
@@ -173,10 +173,12 @@ var/list/ai_verbs_default = list(
 		eyeobj.name = "[pickedName] (AI Eye)"
 
 	// Set ai pda name
+	/*
 	if(aiPDA)
 		aiPDA.ownjob = "AI"
 		aiPDA.owner = pickedName
 		aiPDA.name = pickedName + " (" + aiPDA.ownjob + ")"
+	Fuck PDAs */
 
 /*
 	The AI Power supply is a dummy object used for powering the AI since only machinery should be using power.
@@ -344,7 +346,7 @@ var/list/ai_verbs_default = list(
 		checklaws()
 
 	if (href_list["lawr"]) // Selects on which channel to state laws
-		var/setchannel = input(usr, "Specify channel.", "Channel selection") in list("State","Common","Science","Command","Medical","Engineering","Security","Supply","Binary","Holopad", "Cancel")
+		var/setchannel = input(usr, "Specify channel.", "Channel selection") in list("State","Common","Command","Medical","Engineering","Security","Supply","Binary", "Alpha","Bravo","Charlie","Delta","Cancel")
 		if(setchannel == "Cancel")
 			return
 		lawchannel = setchannel

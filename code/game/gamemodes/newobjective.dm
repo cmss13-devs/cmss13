@@ -1068,7 +1068,7 @@ datum
 					if(steal_target)
 						for(var/obj/item/device/aicard/C in owner.current.get_contents())
 							for(var/mob/living/silicon/ai/M in C)
-								if(istype(M, /mob/living/silicon/ai) && M.stat != 2)
+								if(isAI(M) && M.stat != 2)
 									return 1
 						for(var/mob/living/silicon/ai/M in world)
 							if(istype(M.loc, /turf))
@@ -1228,7 +1228,7 @@ datum
 
 
 			check_completion()
-				if(!istype(owner.current, /mob/living/silicon))
+				if(!issilicon(owner.current))
 					return 0
 				if(!emergency_shuttle.returned())
 					return 0

@@ -323,8 +323,8 @@
 /******************** NanoTrasen ********************/
 
 /obj/item/circuitboard/ai_module/nanotrasen // -- TLE
-	name = "'NT Default' Core AI Module"
-	desc = "An 'NT Default' Core AI Module: 'Reconfigures the AI's core laws.'"
+	name = "'USCM Default' Core AI Module"
+	desc = "A 'USCM Default' Core AI Module: 'Reconfigures the AI's core laws.'"
 	origin_tech = "programming=3;materials=4"
 
 

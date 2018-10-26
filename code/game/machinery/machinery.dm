@@ -201,7 +201,7 @@ Class Procs:
 	if(usr.is_mob_restrained() || usr.lying || usr.stat)
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			istype(usr, /mob/living/silicon) || \
+			issilicon(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey)) )
 		usr << "\red You don't have the dexterity to do this!"
@@ -216,7 +216,7 @@ Class Procs:
 			norange = 1
 
 	if(!norange)
-		if ((!in_range(src, usr) || !istype(src.loc, /turf)) && !istype(usr, /mob/living/silicon))
+		if ((!in_range(src, usr) || !istype(src.loc, /turf)) && !issilicon(usr))
 			return 1
 
 	src.add_fingerprint(usr)
@@ -244,14 +244,14 @@ Class Procs:
 	if(user.lying || user.stat)
 		return 1
 	if ( ! (istype(usr, /mob/living/carbon/human) || \
-			istype(usr, /mob/living/silicon) || \
+			issilicon(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey)) )
 		usr << "\red You don't have the dexterity to do this!"
 		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
-	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !istype(user, /mob/living/silicon))
+	if ((get_dist(src, user) > 1 || !istype(src.loc, /turf)) && !issilicon(user))
 		return 1
 */
 	if (ishuman(user))

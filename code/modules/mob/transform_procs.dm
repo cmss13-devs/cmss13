@@ -93,41 +93,27 @@
 
 	var/obj/loc_landmark
 	for(var/obj/effect/landmark/start/sloc in landmarks_list)
-		if (sloc.name != "AI")
-			continue
-		if (locate(/mob/living) in sloc.loc)
-			continue
-		loc_landmark = sloc
-	if (!loc_landmark)
-		for(var/obj/effect/landmark/tripai in landmarks_list)
-			if (tripai.name == "tripai")
-				if(locate(/mob/living) in tripai.loc)
-					continue
-				loc_landmark = tripai
-	if (!loc_landmark)
-		O << "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone."
-		for(var/obj/effect/landmark/start/sloc in landmarks_list)
-			if (sloc.name == "AI")
-				loc_landmark = sloc
+		if (sloc.name == "AI")
+			loc_landmark = sloc
+	if(loc_landmark && loc_landmark.loc)
+		O.loc = loc_landmark.loc
+		for (var/obj/item/device/radio/intercom/comm in O.loc)
+			comm.ai += O
 
-	O.loc = loc_landmark.loc
-	for (var/obj/item/device/radio/intercom/comm in O.loc)
-		comm.ai += O
+		O << "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
+		O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
+		O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
+		O << "To use something, simply click on it."
+		O << {"Use :6 to speak to your cyborgs through binary."}
+		O.show_laws()
+		O << "<b>These laws may be changed by other players, or by you being the traitor.</b>"
 
-	O << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
-	O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
-	O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
-	O << "To use something, simply click on it."
-	O << {"Use say ":b to speak to your cyborgs through binary."}
-	O.show_laws()
-	O << "<b>These laws may be changed by other players, or by you being the traitor.</b>"
+		O.add_ai_verbs()
+		O.job = "AI"
 
-	O.add_ai_verbs()
-	O.job = "AI"
-
-	O.rename_self("ai",1)
-	. = O
-	cdel(src)
+		O.rename_self("ai",1)
+		. = O
+		cdel(src)
 
 
 //human -> robot

@@ -23,8 +23,7 @@
 			return 1
 
 	else if(mods["shift"])
-		if (!A.BorgShiftClick(src))
-			return 1
+		return A.BorgShiftClick(src)
 
 	if(mods["alt"]) // alt and alt-gr (rightalt)
 		if (!A.BorgAltClick(src))
@@ -98,7 +97,7 @@
 /obj/machinery/door/airlock/BorgCtrlShiftClick()
 	AICtrlShiftClick()
 
-/atom/proc/BorgShiftClick(var/mob/living/silicon/robot/user) //forward to human click if not overriden
+/atom/proc/BorgShiftClick(var/mob/living/silicon/robot/user) //this should only return 1 if it is not overridden. this prevents things like examining objects also clicking them with an activated module.
 	return 1
 
 /obj/machinery/door/airlock/BorgShiftClick()  // Opens and closes doors! Forwards to AI code.

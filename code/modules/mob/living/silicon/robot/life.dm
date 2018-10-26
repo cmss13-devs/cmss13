@@ -148,7 +148,7 @@
 
 	if (hud_used && hud_used.healths)
 		if (src.stat != DEAD)
-			if(istype(src,/mob/living/silicon/robot/drone))
+			if(ismaintdrone(src))
 				switch(round(health * 100 / maxHealth))
 					if(100 to INFINITY)
 						hud_used.healths.icon_state = "health0"

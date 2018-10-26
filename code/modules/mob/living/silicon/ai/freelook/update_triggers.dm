@@ -19,8 +19,22 @@
 	..()
 	visibilityChanged()
 
+/obj/machinery/door/poddoor/shutters/open()
+	if(ticker)
+		cameranet.updateVisibility(src)
+	. = ..()
 
 
+/obj/machinery/door/poddoor/shutters/close()
+	if(ticker)
+		cameranet.updateVisibility(src)
+	. = ..()
+
+
+/obj/machinery/door/poddoor/shutters/Dispose()
+	if(ticker)
+		cameranet.updateVisibility(src)
+	. = ..()
 // STRUCTURES
 
 /obj/structure/Dispose()
@@ -65,6 +79,21 @@
 						cameranet.updatePortableCamera(src.camera)
 					updating = 0
 
+/mob/living/carbon/human/var/updating = 0
+
+/mob/living/carbon/human/Move()
+	var/oldLoc = src.loc
+	. = ..()
+	if(.)
+		for(var/obj/item/clothing/head/helmet/marine/H in src.contents)
+			if(H.camera && H.camera.network.len)
+				if(!updating)
+					updating = 1
+					spawn(BORG_CAMERA_BUFFER)
+						if(oldLoc != src.loc)
+							cameranet.updatePortableCamera(H.camera)
+						updating = 0
+
 // CAMERA
 
 // An addition to deactivate which removes/adds the camera from the chunk list based on if it works or not.
@@ -91,4 +120,4 @@
 		cameranet.removeCamera(src)
 	. = ..()
 
-#undef BORG_CAMERA_BUFFER
+//#undef BORG_CAMERA_BUFFER

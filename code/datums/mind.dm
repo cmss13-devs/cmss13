@@ -352,7 +352,7 @@
 					log_admin("[key_name_admin(usr)] has traitor'ed [current].")
 					show_objectives()
 
-					if(istype(current, /mob/living/silicon))
+					if(issilicon(current))
 						var/mob/living/silicon/A = current
 						call(/datum/game_mode/proc/add_law_zero)(A)
 						A.show_laws()

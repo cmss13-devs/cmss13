@@ -1048,7 +1048,7 @@
 	var/obj/machinery/camera/current = null
 
 	check_eye(var/mob/user as mob)
-		if (user.z == 0 || user.stat || ((get_dist(user, src) > 1 || user.blinded) && !istype(user, /mob/living/silicon))) //user can't see - not sure why canmove is here.
+		if (user.z == 0 || user.stat || ((get_dist(user, src) > 1 || user.blinded) && !issilicon(user))) //user can't see - not sure why canmove is here.
 			return null
 		if(!linked_turret || isnull(linked_turret.camera))
 			return null

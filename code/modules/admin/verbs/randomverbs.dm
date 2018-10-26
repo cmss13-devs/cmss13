@@ -24,7 +24,7 @@
 		src << "Only administrators may use this command."
 		return
 	if (ismob(M))
-		if(istype(M, /mob/living/silicon/ai))
+		if(isAI(M))
 			alert("The AI can't be sent to prison you jerk!", null, null, null, null, null)
 			return
 		//strip their stuff before they teleport into a cell :downs:

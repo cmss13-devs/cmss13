@@ -84,7 +84,7 @@ var/global/list/holodeck_programs = list(
 	Topic(href, href_list)
 		if(..())
 			return
-		if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
+		if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (issilicon(usr)))
 			usr.set_interaction(src)
 
 			if(href_list["program"])
@@ -352,7 +352,7 @@ var/global/list/holodeck_programs = list(
 		user << "It's a holotable!  There are no bolts!"
 		return
 
-	if(isrobot(user))
+	if(isborg(user))
 		return
 
 	..()

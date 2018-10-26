@@ -56,14 +56,17 @@
 	/var/prefix = ""
 	switch(lawchannel)
 		if("Common") prefix = ";"
-		if("Science") prefix = ":n "
-		if("Command") prefix = ":c "
+		if("Command") prefix = ":v "
 		if("Medical") prefix = ":m "
 		if("Engineering") prefix = ":e "
-		if("Security") prefix = ":s "
+		if("Security") prefix = ":p "
 		if("Supply") prefix = ":u "
-		if("Binary") prefix = ":b "
-		if("Holopad") prefix = ":h "
+		if("Binary") prefix = ":6 "
+		if("Alpha") prefix = ":q "
+		if("Bravo") prefix = ":b "
+		if("Charlie") prefix = ":c "
+		if("Delta") prefix = ":d "
+//		if("Holopad") prefix = ":h "
 		else prefix = ""
 
 	if(src.say("[prefix]Current Active Laws:") != 1)
@@ -73,38 +76,40 @@
 	//src.laws.show_laws(world)
 	var/number = 1
 	sleep(10)
-
-	if (src.laws.zeroth)
-		if (src.lawcheck[1] == "Yes") //This line and the similar lines below make sure you don't state a law unless you want to. --NeoFite
-			src.say("[prefix]0. [src.laws.zeroth]")
-			sleep(10)
-
-	for (var/index = 1, index <= src.laws.ion.len, index++)
-		var/law = src.laws.ion[index]
-		var/num = ionnum()
-		if (length(law) > 0)
-			if (src.ioncheck[index] == "Yes")
-				src.say("[prefix][num]. [law]")
+	if(src.laws)
+		if (src.laws.zeroth)
+			if (src.lawcheck[1] == "Yes") //This line and the similar lines below make sure you don't state a law unless you want to. --NeoFite
+				src.say("[prefix]0. [src.laws.zeroth]")
 				sleep(10)
 
-	for (var/index = 1, index <= src.laws.inherent.len, index++)
-		var/law = src.laws.inherent[index]
+		for (var/index = 1, index <= src.laws.ion.len, index++)
+			var/law = src.laws.ion[index]
+			var/num = ionnum()
+			if (length(law) > 0)
+				if (src.ioncheck[index] == "Yes")
+					src.say("[prefix][num]. [law]")
+					sleep(10)
 
-		if (length(law) > 0)
-			if (src.lawcheck[index+1] == "Yes")
-				src.say("[prefix][number]. [law]")
-				sleep(10)
-			number++
+		for (var/index = 1, index <= src.laws.inherent.len, index++)
+			var/law = src.laws.inherent[index]
 
-	for (var/index = 1, index <= src.laws.supplied.len, index++)
-		var/law = src.laws.supplied[index]
-
-		if (length(law) > 0)
-			if(src.lawcheck.len >= number+1)
-				if (src.lawcheck[number+1] == "Yes")
+			if (length(law) > 0)
+				if (src.lawcheck[index+1] == "Yes")
 					src.say("[prefix][number]. [law]")
 					sleep(10)
 				number++
+
+		for (var/index = 1, index <= src.laws.supplied.len, index++)
+			var/law = src.laws.supplied[index]
+
+			if (length(law) > 0)
+				if(src.lawcheck.len >= number+1)
+					if (src.lawcheck[number+1] == "Yes")
+						src.say("[prefix][number]. [law]")
+						sleep(10)
+					number++
+	else
+		src.say("[prefix] NONE.")
 
 /mob/living/silicon/ai/proc/checklaws() //Gives you a link-driven interface for deciding what laws the statelaws() proc will share with the crew. --NeoFite
 	set category = "AI Commands"

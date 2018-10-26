@@ -887,7 +887,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		if(!P.conversations.Find("\ref[src]"))
 			P.conversations.Add("\ref[src]")
 
-
+/*
 		if (prob(15)) //Give the AI a chance of intercepting the message
 			var/who = src.owner
 			if(prob(50))
@@ -896,7 +896,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				// Allows other AIs to intercept the message but the AI won't intercept their own message.
 				if(ai.aiPDA != P && ai.aiPDA != src)
 					ai.show_message("<i>Intercepted message from <b>[who]</b>: [t]</i>")
-
+*/
 
 		if (!P.silent)
 			playsound(P.loc, 'sound/machines/twobeep.ogg', 25, 1)
@@ -908,7 +908,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			L = P.loc
 
 		if(L)
-			L << "\icon[P] <b>Message from [src.owner] ([ownjob]), </b>\"[t]\" (<a href='byond://?src=\ref[P];choice=Message;notap=[istype(L, /mob/living/silicon)];skiprefresh=1;target=\ref[src]'>Reply</a>)"
+			L << "\icon[P] <b>Message from [src.owner] ([ownjob]), </b>\"[t]\" (<a href='byond://?src=\ref[P];choice=Message;notap=[issilicon(L)];skiprefresh=1;target=\ref[src]'>Reply</a>)"
 			nanomanager.update_user_uis(L, P) // Update the receiving user's PDA UI so that they can see the new message
 
 		nanomanager.update_user_uis(U, P) // Update the sending user's PDA UI so that they can see the new message

@@ -206,7 +206,7 @@
 	pockets.max_storage_space = 3
 
 	camera = new /obj/machinery/camera(src)
-	camera.network = list("LEADER")
+	camera.network = list("Overwatch")
 
 /obj/item/clothing/head/helmet/marine/attack_hand(mob/user)
 	if (pockets.handle_attack_hand(user))

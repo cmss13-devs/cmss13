@@ -23,7 +23,7 @@
 		. = ..()
 
 	say_understands(var/other)//Goddamn is this hackish, but this say code is so odd
-		if (istype(other, /mob/living/silicon/ai))
+		if (isAI(other))
 			if(!(container && istype(container, /obj/item/device/mmi)))
 				return 0
 			else
@@ -33,7 +33,7 @@
 				return 0
 			else
 				return 1
-		if (istype(other, /mob/living/silicon/robot))
+		if (isrobot(other))
 			if(!(container && istype(container, /obj/item/device/mmi)))
 				return 0
 			else

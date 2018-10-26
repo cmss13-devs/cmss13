@@ -73,7 +73,7 @@
 	if(!isliving(usr))	return
 	var/mob/living/user = usr
 
-	if(in_range(src, user) || istype(user, /mob/living/silicon))
+	if(in_range(src, user) || issilicon(user))
 		user.set_machine(src)
 
 	if(href_list["syndicate"])

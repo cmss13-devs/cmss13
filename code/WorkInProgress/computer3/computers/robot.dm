@@ -43,10 +43,10 @@
 				dat += "<A href='?src=\ref[src];screen=2'>2. Emergency Full Destruct</A><BR>"
 			if(screen == 1)
 				for(var/mob/living/silicon/robot/R in mob_list)
-					if(istype(usr, /mob/living/silicon/ai))
+					if(isAI(usr))
 						if (R.connected_ai != usr)
 							continue
-					if(istype(usr, /mob/living/silicon/robot))
+					if(isrobot(usr))
 						if (R != usr)
 							continue
 					if(R.scrambledcodes)
@@ -72,7 +72,7 @@
 						dat += " Slaved to [R.connected_ai.name] |"
 					else
 						dat += " Independent from AI |"
-					if (istype(usr, /mob/living/silicon))
+					if (issilicon(usr))
 						if(issilicon(usr) && is_special_character(usr) && !R.emagged)
 							dat += "<A href='?src=\ref[src];magbot=\ref[R]'>(<i>Hack</i>)</A> "
 					dat += "<A href='?src=\ref[src];stopbot=\ref[R]'>(<i>[R.canmove ? "Lockdown" : "Release"]</i>)</A> "

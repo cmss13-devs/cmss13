@@ -13,7 +13,7 @@
 			if(MS.active)
 				useMS = MS
 				break
-
+/*
 /datum/event/pda_spam/tick()
 	if(world.time > last_spam_time + 3000)
 		//if there's no spam managed to get to receiver for five minutes, give up
@@ -117,3 +117,4 @@
 
 			if(L)
 				L << "\icon[P] <b>Message from [sender] (Unknown / spam?), </b>\"[message]\" (Unable to Reply)"
+*/

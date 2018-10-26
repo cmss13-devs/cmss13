@@ -24,7 +24,8 @@
 								25; /obj/item/explosive/grenade/flashbang, \
 								25; /obj/item/legcuffs/yautja, \
 								50; /obj/item/explosive/plastique, \
-								100; /obj/item/explosive/grenade/frag, \
+								100; /obj/item/explosive/grenade/HE, \
+								100; /obj/item/explosive/grenade/HE/frag, \
 								100; /obj/item/explosive/grenade/incendiary, \
 \
 								170; /obj/item/clothing/suit/armor/vest/security, \

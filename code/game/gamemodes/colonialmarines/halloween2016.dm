@@ -522,7 +522,7 @@
 				H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(H), WEAR_R_STORE)
 				H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/vp78(H.back), WEAR_IN_BACK)
 				H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_STORE)
-				H.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/PMC(H.back), WEAR_IN_BACK)
+				H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC(H.back), WEAR_IN_BACK)
 				H.mind.assigned_role = "PMC Officer"
 				random_primary = !random_primary
 
@@ -602,7 +602,7 @@
 						var/obj/item/stack/sheet/plasteel/P = new /obj/item/stack/sheet/plasteel(H.back)
 						P.amount = 30
 						H.equip_to_slot_or_del(P, WEAR_IN_BACK)
-						H.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/PMC(H.back), WEAR_IN_BACK)
+						H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC(H.back), WEAR_IN_BACK)
 						H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary(H.back), WEAR_IN_BACK)
 						H.mind.assigned_role = "PMC Mechanic" */
 					/*if("Squad Medic")
@@ -714,7 +714,7 @@
 				H.equip_to_slot_or_del(P, WEAR_IN_BACK)
 
 				H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
-				H.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag(H.back), WEAR_IN_BACK)
+				H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(H.back), WEAR_IN_BACK)
 				H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary(H.back), WEAR_IN_BACK)
 				H.equip_to_slot_or_del(new /obj/item/device/multitool(H.back), WEAR_L_STORE)
 				H.equip_to_slot_or_del(new /obj/item/device/encryptionkey/engi(H), WEAR_R_STORE)
@@ -761,8 +761,8 @@
 						H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
 						H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
-						new /obj/item/explosive/grenade/frag(W.hold)
-						new /obj/item/explosive/grenade/frag/m15(W.hold)
+						new /obj/item/explosive/grenade/HE(W.hold)
+						new /obj/item/explosive/grenade/HE/m15(W.hold)
 						new /obj/item/explosive/grenade/incendiary(W.hold)
 
 						H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
@@ -784,7 +784,7 @@
 						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/ap(H.back), WEAR_IN_BACK)
 						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/wp(H.back), WEAR_IN_BACK)
 						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rocket/wp(H.back), WEAR_IN_BACK)
-						H.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag(H), WEAR_L_STORE)
+						H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(H), WEAR_L_STORE)
 						H.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/rocket(H), WEAR_J_STORE)
 
 					if(16 to 18) //Sniper. Gets the marksman kit.
@@ -1255,9 +1255,9 @@
 
 	supply_manifest=list(
 		/obj/item/storage/box/explosive_mines/pmc = 2,
-		/obj/item/explosive/grenade/frag/PMC = 6,
+		/obj/item/explosive/grenade/HE/PMC = 6,
 		/obj/item/explosive/grenade/incendiary = 4,
-		/obj/item/explosive/grenade/frag/m15 = 4
+		/obj/item/explosive/grenade/HE/m15 = 4
 		)
 	generate_supply_crate(supply_spawn,supply_manifest,"\improper explosives crate (WARNING)", "A crate full of high explosives. Not a good time to have a smoke.")
 
@@ -1421,9 +1421,9 @@
 
 	supply_manifest=list(
 		/obj/item/storage/box/explosive_mines = 3,
-		/obj/item/explosive/grenade/frag = 4,
+		/obj/item/explosive/grenade/HE = 4,
 		/obj/item/explosive/grenade/incendiary = 3,
-		/obj/item/explosive/grenade/frag/m15 = 3
+		/obj/item/explosive/grenade/HE/m15 = 3
 		)
 	generate_supply_crate(supply_spawn,supply_manifest,"\improper explosives crate (WARNING)", "A crate containing all sorts of explosives.")
 

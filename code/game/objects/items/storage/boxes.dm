@@ -570,14 +570,14 @@
 
 /obj/item/storage/box/nade_box
 	name = "\improper M40 HEDP grenade box"
-	desc = "A secure box holding 25 M40 HEDP grenades. High explosive, don't store near the flamer fuel."
+	desc = "A secure box holding 25 M40 High-Explosive Dual-Purpose grenades. High explosive, don't store near the flamer fuel."
 	icon_state = "nade_placeholder"
 	w_class = 4
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list("/obj/item/explosive/grenade/frag")
+	can_hold = list("/obj/item/explosive/grenade/HE")
 	var/nade_box_icon
-	var/grenade_type = /obj/item/explosive/grenade/frag
+	var/grenade_type = /obj/item/explosive/grenade/HE
 
 /obj/item/storage/box/nade_box/New()
 	..()
@@ -593,13 +593,24 @@
 		icon_state = nade_box_icon
 
 
+/obj/item/storage/box/nade_box/frag
+	name = "\improper M50 HEFA grenade box"
+	desc = "A secure box holding 25 M50 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
+	icon_state = "nade_placeholder_frag"
+	w_class = 4
+	storage_slots = 25
+	max_storage_space = 50
+	can_hold = list("/obj/item/explosive/grenade/HE/frag")
+	grenade_type = /obj/item/explosive/grenade/HE/frag
+
+
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
-	grenade_type = /obj/item/explosive/grenade/frag/training
+	grenade_type = /obj/item/explosive/grenade/HE/training
 	can_hold = list(
-		"/obj/item/explosive/grenade/frag/training"
+		"/obj/item/explosive/grenade/HE/training"
 		)
 
 

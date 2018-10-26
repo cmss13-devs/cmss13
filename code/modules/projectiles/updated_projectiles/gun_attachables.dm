@@ -773,7 +773,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/grenade/proc/prime_grenade(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	set waitfor = 0
 	var/nade_type = loaded_grenades[1]
-	var/obj/item/explosive/grenade/frag/G = new nade_type (get_turf(gun))
+	var/obj/item/explosive/grenade/HE/G = new nade_type (get_turf(gun))
 	playsound(user.loc, fire_sound, 50, 1)
 	message_admins("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>)")
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")

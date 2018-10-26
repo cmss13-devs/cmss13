@@ -1255,12 +1255,13 @@
 		accuracy = config.med_hit_accuracy
 		accurate_range = config.max_shell_range
 		point_blank_range = -1
-		max_range = config.norm_shell_range
-		damage = config.med_hit_damage
+		max_range = 7
+		damage = config.high_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.reg_damage_falloff
 		shell_speed = config.reg_shell_speed
+		shrapnel_chance = config.min_shrapnel_chance
 
 /*
 //================================================
@@ -1365,7 +1366,7 @@
 	name = "grenade shell"
 	ping = null
 	damage_type = BRUTE
-	var/nade_type = /obj/item/explosive/grenade/frag
+	var/nade_type = /obj/item/explosive/grenade/HE
 	icon_state = "grenade"
 
 	New()

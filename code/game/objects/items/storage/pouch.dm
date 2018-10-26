@@ -259,9 +259,9 @@
 
 /obj/item/storage/pouch/explosive/full/New()
 	..()
-	new /obj/item/explosive/grenade/frag (src)
-	new /obj/item/explosive/grenade/frag (src)
-	new /obj/item/explosive/grenade/frag (src)
+	new /obj/item/explosive/grenade/HE/frag (src)
+	new /obj/item/explosive/grenade/HE (src)
+	new /obj/item/explosive/grenade/HE (src)
 
 
 /obj/item/storage/pouch/explosive/upp/New()

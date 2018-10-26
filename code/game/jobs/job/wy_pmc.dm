@@ -13,7 +13,7 @@
 	var/L[] = list(
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/webbing,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/quickclot,
-				WEAR_IN_JACKET = /obj/item/explosive/grenade/frag/PMC
+				WEAR_IN_JACKET = /obj/item/explosive/grenade/HE/PMC
 				)
 	switch(shuffle)
 		if(1 to 11)
@@ -76,7 +76,7 @@
 			L[WEAR_L_STORE] = /obj/item/storage/pouch/magazine/pistol/pmc_vp70
 		else if(prob(35)) L[WEAR_WAIST] = /obj/item/storage/belt/knifepouch
 		L[WEAR_IN_JACKET] = /obj/item/reagent_container/hypospray/autoinjector/quickclot
-		L[WEAR_IN_JACKET] = /obj/item/explosive/grenade/frag/PMC
+		L[WEAR_IN_JACKET] = /obj/item/explosive/grenade/HE/PMC
 		return L
 
 	equip(mob/living/carbon/human/H, L[] = generate_wearable_equipment() + generate_stored_equipment() + generate_random_pmc_primary())
@@ -113,7 +113,7 @@
 				WEAR_L_STORE = /obj/item/storage/pouch/explosive,
 				WEAR_IN_BACK = /obj/item/explosive/plastique,
 				WEAR_IN_BACK = /obj/item/stack/sheet/plasteel,
-				WEAR_IN_BACK = /obj/item/explosive/grenade/frag/PMC,
+				WEAR_IN_BACK = /obj/item/explosive/grenade/HE/PMC,
 				WEAR_IN_BACK = /obj/item/explosive/grenade/incendiary,
 				WEAR_IN_BACK = /obj/item/stack/sheet/plasteel
 				)
@@ -255,7 +255,7 @@
 				WEAR_J_STORE = /obj/item/weapon/gun/rifle/m41a/elite,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/black_vest,
 				WEAR_IN_BACK = /obj/item/ammo_magazine/rifle/extended,
-				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/frag/PMC,
+				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/HE/PMC,
 				WEAR_IN_ACCESSORY = /obj/item/device/flashlight,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/quickclot,
 				WEAR_IN_JACKET = /obj/item/stack/medical/advanced/bruise_pack
@@ -328,7 +328,7 @@
 				WEAR_IN_BACK = /obj/item/ammo_magazine/shotgun/incendiary,
 				WEAR_IN_BACK = /obj/item/weapon/baton,
 				WEAR_IN_BACK = /obj/item/device/flashlight,
-				WEAR_IN_BACK = /obj/item/explosive/grenade/frag/PMC,
+				WEAR_IN_BACK = /obj/item/explosive/grenade/HE/PMC,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/webbing,
 				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,
 				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,

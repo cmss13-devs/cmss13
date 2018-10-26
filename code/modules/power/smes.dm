@@ -304,7 +304,7 @@
 	if (usr.stat || usr.is_mob_restrained() )
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		if(!istype(usr, /mob/living/silicon/ai))
+		if(!isAI(usr))
 			usr << "\red You don't have the dexterity to do this!"
 			return
 

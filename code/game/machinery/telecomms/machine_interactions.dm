@@ -115,7 +115,7 @@
 /obj/machinery/telecomms/attack_hand(var/mob/user as mob)
 
 	// You need a multitool to use this, or be silicon
-	if(!issilicon(user))
+	if(!ishighersilicon(user))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
 			user << "<span class='warning'>You stare at [src] cluelessly...</span>"
 			return
@@ -208,12 +208,12 @@
 
 	var/obj/item/device/multitool/P = null
 	// Let's double check
-	if(!issilicon(user) && istype(user.get_active_hand(), /obj/item/device/multitool))
+	if(!ishighersilicon(user) && istype(user.get_active_hand(), /obj/item/device/multitool))
 		P = user.get_active_hand()
 	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
-	else if(isrobot(user) && in_range(user, src))
+	else if(isborg(user) && in_range(user, src))
 		if(istype(user.get_active_hand(), /obj/item/device/multitool))
 			P = user.get_active_hand()
 	return P
@@ -295,7 +295,7 @@
 
 /obj/machinery/telecomms/Topic(href, href_list)
 
-	if(!issilicon(usr))
+	if(!ishighersilicon(usr))
 		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
 			return
 

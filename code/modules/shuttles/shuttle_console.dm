@@ -16,7 +16,7 @@
 	if(..(user))
 		return
 	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
-	if(!allowed(user) && !isXeno(user))
+	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
 		user << "<span class='warning'>Access denied.</span>"
 		return 1
 

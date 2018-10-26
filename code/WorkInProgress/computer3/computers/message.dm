@@ -21,7 +21,7 @@
 	var/noserver = "<span class='alert'>ALERT: No server detected.</span>"
 	var/incorrectkey = "<span class='warning'>ALERT: Incorrect decryption key!</span>"
 	var/defaultmsg = "<span class='notice'>Welcome. Please select an option.</span>"
-	var/rebootmsg = "<span class='warning'>%$&(£: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!</span>"
+	var/rebootmsg = "<span class='warning'>%$&(ï¿½: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!</span>"
 
 	//Computer properties
 	var/screen = 0 		// 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
@@ -94,7 +94,7 @@
 				else
 					for(var/n = ++i; n <= optioncount; n++)
 						dat += "<dd><font color='blue'>&#09;[n]. ---------------</font><br></dd>"
-				if((istype(usr, /mob/living/silicon/ai) || istype(usr, /mob/living/silicon/robot)) && (usr.mind.special_role && usr.mind.original == usr))
+				if(ishighersilicon(usr) && (usr.mind.special_role && usr.mind.original == usr))
 					//Malf/Traitor AIs can bruteforce into the system to gain the Key.
 					dat += "<dd><A href='?src=\ref[src];hack=1'><i><font color='Red'>*&@#. Bruteforce Key</font></i></font></a><br></dd>"
 				else
@@ -124,7 +124,7 @@
 				dat += "</table>"
 			//Hacking screen.
 			if(2)
-				if(istype(usr, /mob/living/silicon/ai) || istype(usr, /mob/living/silicon/robot))
+				if(ishighersilicon(usr))
 					dat += "Brute-forcing for server key.<br> It will take 20 seconds for every character that the password has."
 					dat += "In the meantime, this console can reveal your true intentions if you let someone access it. Make sure no humans enter the room during that time."
 				else
@@ -314,7 +314,7 @@
 
 		//Hack the Console to get the password
 		if ("hack" in href_list)
-			if((istype(usr, /mob/living/silicon/ai) || istype(usr, /mob/living/silicon/robot)) && (usr.mind.special_role && usr.mind.original == usr))
+			if(ishighersilicon(usr) && (usr.mind.special_role && usr.mind.original == usr))
 				src.hacking = 1
 				src.screen = 2
 				src.active_state = hack_icon

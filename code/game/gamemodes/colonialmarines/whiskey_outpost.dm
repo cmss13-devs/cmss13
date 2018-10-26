@@ -661,7 +661,7 @@ var/global/spawn_next_wo_wave = 0
 			return
 		if(user.lying || user.stat)
 			return
-		if(istype(usr, /mob/living/silicon) || \
+		if(ismaintdrone(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey))
 			usr << "\red You don't have the dexterity to do this!"

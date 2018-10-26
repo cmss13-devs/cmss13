@@ -320,7 +320,7 @@ var/list/mechtoys = list(
 	if(..())
 		return
 
-	if( isturf(loc) && (in_range(src, usr) || istype(usr, /mob/living/silicon)) )
+	if( isturf(loc) && (in_range(src, usr) || ishighersilicon(usr)) )
 		usr.set_interaction(src)
 
 	if(href_list["order"])
@@ -364,7 +364,7 @@ var/list/mechtoys = list(
 			var/mob/living/carbon/human/H = usr
 			idname = H.get_authentification_name()
 			idrank = H.get_assignment()
-		else if(issilicon(usr))
+		else if(ishighersilicon(usr))
 			idname = usr.real_name
 
 		supply_controller.ordernum++
@@ -497,7 +497,10 @@ var/list/mechtoys = list(
 	if(..())
 		return
 
-	if(isturf(loc) && ( in_range(src, usr) || istype(usr, /mob/living/silicon) ) )
+	if(ismaintdrone(usr))
+		return
+
+	if(isturf(loc) && ( in_range(src, usr) || ishighersilicon(usr) ) )
 		usr.set_interaction(src)
 
 	//Calling the shuttle

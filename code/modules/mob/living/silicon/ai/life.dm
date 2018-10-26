@@ -38,7 +38,7 @@
 		handle_stunned()
 
 		//stage = 1
-		//if (istype(src, /mob/living/silicon/ai)) // Are we not sure what we are?
+		//if (isAI(src)) // Are we not sure what we are?
 		var/blind = 0
 		//stage = 2
 		var/area/loc = null

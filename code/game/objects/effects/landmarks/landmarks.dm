@@ -119,6 +119,9 @@
 
 	return 1
 
+/obj/effect/landmark/start/AISloc
+	name = "AI"
+
 /obj/effect/landmark/start/whiskey
 	icon = 'icons/misc/mark.dmi'
 	icon_state = "spawn_shuttle"

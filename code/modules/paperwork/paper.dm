@@ -63,7 +63,7 @@
 // I didn't like the idea that people can read tiny pieces of paper from across the room.
 // Now you need to be next to the paper in order to read it.
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
-		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || istype(user, /mob/living/silicon)))
+		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || issilicon(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
 			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)][stamps]</BODY></HTML>", "window=[name]")
 			onclose(user, "[name]")

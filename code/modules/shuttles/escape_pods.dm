@@ -175,7 +175,7 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 			if(M)
 				n++ //No hiding in closets.
 				if(M.stat != DEAD && msg) M << msg
-		else if(istype(i, /mob/living/carbon/human) || istype(i, /mob/living/silicon/robot))
+		else if(istype(i, /mob/living/carbon/human) || isrobot(i))
 			n++ //Dead or alive, counts as a thing.
 			M = i
 			if(M.stat != DEAD && msg) M << msg

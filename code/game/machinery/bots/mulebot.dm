@@ -289,7 +289,7 @@
 		return
 	if (usr.stat)
 		return
-	if ((in_range(src, usr) && istype(src.loc, /turf)) || (istype(usr, /mob/living/silicon)))
+	if ((in_range(src, usr) && istype(src.loc, /turf)) || (ishighersilicon(usr)))
 		usr.set_interaction(src)
 
 		switch(href_list["op"])
@@ -774,7 +774,7 @@
 	if(!(wires & wire_mobavoid))		//usually just bumps, but if avoidance disabled knock over mobs
 		var/mob/M = obs
 		if(ismob(M))
-			if(istype(M,/mob/living/silicon/robot))
+			if(isborg(M))
 				src.visible_message("\red [src] bumps into [M]!")
 			else
 				src.visible_message("\red [src] knocks over [M]!")

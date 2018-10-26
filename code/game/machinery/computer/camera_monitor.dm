@@ -56,7 +56,7 @@
 		return 0
 
 	if (C)
-		if ((get_dist(user, src) > 1 || user.machine != src || user.blinded || !( user.canmove ) || !( C.status )) && (!istype(user, /mob/living/silicon/ai)))
+		if ((get_dist(user, src) > 1 || user.machine != src || user.blinded || !( user.canmove ) || !( C.status )) && (!isAI(user)))
 			return 0
 		else
 			src.current = C

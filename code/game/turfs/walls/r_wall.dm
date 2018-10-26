@@ -27,7 +27,7 @@
 	if(hull)
 		return
 
-	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
+	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || ticker) && ticker.mode.name != "monkey")
 		user << "<span class='warning'>You don't have the dexterity to do this!</span>"
 		return
 

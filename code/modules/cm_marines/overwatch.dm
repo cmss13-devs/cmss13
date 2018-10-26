@@ -8,7 +8,7 @@
 	var/datum/squad/current_squad = null
 	var/state = 0
 	var/obj/machinery/camera/cam = null
-	var/list/network = list("LEADER")
+	var/list/network = list("Overwatch")
 	var/x_supply = 0
 	var/y_supply = 0
 	var/x_bomb = 0
@@ -27,7 +27,8 @@
 	return 0
 
 /obj/machinery/computer/overwatch/attack_ai(var/mob/user as mob)
-	return src.attack_hand(user)
+	if(!ismaintdrone(user))
+		return src.attack_hand(user)
 
 
 /obj/machinery/computer/overwatch/attack_paw(var/mob/user as mob) //why monkey why
@@ -37,7 +38,7 @@
 	if(..())  //Checks for power outages
 		return
 
-	if(user.mind.cm_skills && user.mind.cm_skills.leadership < SKILL_LEAD_EXPERT && !Check_WO())
+	if(!ishighersilicon(usr) && user.mind.cm_skills && user.mind.cm_skills.leadership < SKILL_LEAD_EXPERT && !Check_WO())
 		user << "<span class='warning'>You don't have the training to use [src].</span>"
 		return
 
@@ -320,7 +321,7 @@
 	if(!href_list["operation"])
 		return
 
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
+	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (ishighersilicon(usr)))
 		usr.set_interaction(src)
 
 	switch(href_list["operation"])
@@ -342,23 +343,33 @@
 			state = 3
 		if("change_operator")
 			if(operator != usr)
+				if(ishighersilicon(operator))
+					visible_message("\icon[src] <span class='boldnotice'>AI override in progress. Access denied.</span>")
 				if(current_squad)
 					current_squad.overwatch_officer = usr
 				operator = usr
-				var/mob/living/carbon/human/H = operator
-				var/obj/item/card/id/ID = H.get_idcard()
-				visible_message("\icon[src] <span class='boldnotice'>Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.</span>")
-				send_to_squad("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].") //This checks for squad, so we don't need to.
+				if(ishighersilicon(usr))
+					usr << "\icon[src] <span class='boldnotice'>Overwatch system AI override protocol successful.</span>"
+					send_to_squad("Attention. [operator.name] has engaged overwatch system control override.")
+				else
+					var/mob/living/carbon/human/H = operator
+					var/obj/item/card/id/ID = H.get_idcard()
+					visible_message("\icon[src] <span class='boldnotice'>Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.</span>")
+					send_to_squad("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].") //This checks for squad, so we don't need to.
 		if("logout")
 			if(current_squad)
 				current_squad.overwatch_officer = null //Reset the squad's officer.
-			var/mob/living/carbon/human/H = operator
-			var/obj/item/card/id/ID = H.get_idcard()
-			send_to_squad("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.")
-			visible_message("\icon[src] <span class='boldnotice'>Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].</span>")
+			if(ishighersilicon(usr))
+				send_to_squad("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.")
+				usr << "\icon[src] <span class='boldnotice'>Overwatch system control override disengaged.</span>"
+			else
+				var/mob/living/carbon/human/H = operator
+				var/obj/item/card/id/ID = H.get_idcard()
+				send_to_squad("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.")
+				visible_message("\icon[src] <span class='boldnotice'>Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].</span>")
 			operator = null
 			current_squad = null
-			if(cam)
+			if(cam && !ishighersilicon(usr))
 				usr.reset_view(null)
 			cam = null
 			state = 0
@@ -489,6 +500,9 @@
 		if("back")
 			state = 0
 		if("use_cam")
+			if(isAI(usr))
+				usr << "\icon[src] <span class='warning'>Unable to override console camera viewer. Track with camera instead. </span>"
+				return
 			if(current_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
 				var/obj/machinery/camera/new_cam = get_camera_from_target(cam_target)
@@ -515,8 +529,9 @@
 
 /obj/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
-	cam = null
-	user.reset_view(null)
+	if(!isAI(user))
+		cam = null
+		user.reset_view(null)
 
 //returns the helmet camera the human is wearing
 /obj/machinery/computer/overwatch/proc/get_camera_from_target(mob/living/carbon/human/H)
@@ -626,7 +641,12 @@
 							R.fields["ma_crim"]	= "Insubordination."
 						else
 							R.fields["ma_crim"] += "Insubordination."
-						visible_message("\icon[src] <span class='boldnotice'>[wanted_marine] has been reported for insubordination. Logging to enlistment file.</span>")
+						
+						var/insub = "\icon[src] <span class='boldnotice'>[wanted_marine] has been reported for insubordination. Logging to enlistment file.</span>"
+						if(isAI(usr))
+							usr << insub
+						else
+							visible_message(insub)
 						wanted_marine << "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been reported for insubordination by your overwatch officer.</font>"
 						wanted_marine.sec_hud_set_security_status()
 					return
@@ -666,7 +686,7 @@
 	if(new_squad == old_squad)
 		usr << "\icon[src] <span class='warning'>[transfer_marine] is already in [new_squad]!</span>"
 		return
-
+ 
 
 	var/no_place = FALSE
 	switch(transfer_marine.mind.assigned_role)

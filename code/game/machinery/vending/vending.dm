@@ -266,7 +266,8 @@
 	return attack_hand(user)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
-	return attack_hand(user)
+	if(!(stat & (BROKEN|NOPOWER) || tipped_level))
+		return ui_interact(user)
 
 /obj/machinery/vending/proc/GetProductIndex(var/datum/data/vending_product/P)
 	var/list/plist
@@ -414,7 +415,7 @@
 		usr << "\blue You remove the [ewallet] from the [src]"
 		ewallet = null
 
-	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
+	if (issilicon(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
 		if ((href_list["vend"]) && vend_ready && !currently_vending)
 

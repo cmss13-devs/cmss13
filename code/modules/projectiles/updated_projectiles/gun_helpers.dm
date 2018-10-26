@@ -420,6 +420,12 @@ should be alright.
 //----------------------------------------------------------
 
 //For the holster hotkey
+/mob/living/silicon/robot/verb/holster_verb()
+	set name = "Holster"
+	set category = "Object"
+	set hidden = 1
+	src.uneq_active()
+
 /mob/living/carbon/human/verb/holster_verb()
 	set name = "Holster"
 	set category = "Object"

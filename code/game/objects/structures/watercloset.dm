@@ -352,7 +352,7 @@
 	var/busy = 0 	//Something's being washed at the moment
 
 /obj/structure/sink/attack_hand(mob/user)
-	if(isrobot(user) || isAI(user))
+	if(issilicon(user))
 		return
 
 	if(!Adjacent(user))

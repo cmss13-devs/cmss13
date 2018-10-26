@@ -20,7 +20,7 @@
 
 	interact(mob/user)
 		if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
-			if (!istype(user, /mob/living/silicon))
+			if (!issilicon(user))
 				user.unset_interaction()
 				user << browse(null, "window=laser_control")
 				return
@@ -39,7 +39,7 @@
 /obj/machinery/computer/lasercon/proc/interact(mob/user)
 
 	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN|NOPOWER)) )
-		if (!istype(user, /mob/living/silicon))
+		if (!issilicon(user))
 			user.interactee = null
 			user << browse(null, "window=powcomp")
 			return

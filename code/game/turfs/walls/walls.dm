@@ -340,7 +340,7 @@
 
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 
-	if(!ishuman(user))
+	if(!ishuman(user) && !isrobot(user))
 		user << "<span class='warning'>You don't have the dexterity to do this!</span>"
 		return
 

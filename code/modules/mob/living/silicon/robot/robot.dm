@@ -44,7 +44,7 @@ var/list/robot_verbs_default = list(
 
 	var/obj/item/device/mmi/mmi = null
 
-	var/obj/item/device/pda/ai/rbPDA = null
+	//var/obj/item/device/pda/ai/rbPDA = null
 
 	var/opened = 0
 	var/emagged = 0
@@ -145,10 +145,10 @@ var/list/robot_verbs_default = list(
 	// playsound(loc, 'sound/voice/liveagain.ogg', 75, 1)
 
 // setup the PDA and its name
-/mob/living/silicon/robot/proc/setup_PDA()
+/*/mob/living/silicon/robot/proc/setup_PDA()
 	if (!rbPDA)
 		rbPDA = new/obj/item/device/pda/ai(src)
-	rbPDA.set_name_and_job(custom_name,"[modtype] [braintype]")
+	rbPDA.set_name_and_job(custom_name,"[modtype] [braintype]")*/
 
 //If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
 //Improved /N
@@ -260,7 +260,7 @@ var/list/robot_verbs_default = list(
 		mind.name = changed_name
 
 	// if we've changed our name, we also need to update the display name for our PDA
-	setup_PDA()
+	//setup_PDA()
 
 	//We also need to update name of internal camera.
 	if (camera)
@@ -485,7 +485,7 @@ var/list/robot_verbs_default = list(
 			user << "Need more welding fuel!"
 			return
 
-	else if(istype(W, /obj/item/stack/cable_coil) && (wiresexposed || istype(src,/mob/living/silicon/robot/drone)))
+	else if(istype(W, /obj/item/stack/cable_coil) && (wiresexposed || ismaintdrone(src)))
 		if (!getFireLoss())
 			user << "Nothing to fix here!"
 			return
@@ -718,7 +718,7 @@ var/list/robot_verbs_default = list(
 
 	add_fingerprint(user)
 
-	if(opened && !wiresexposed && (!istype(user, /mob/living/silicon)))
+	if(opened && !wiresexposed && (!issilicon(user)))
 		var/datum/robot_component/cell_component = components["power cell"]
 		if(cell)
 			cell.updateicon()

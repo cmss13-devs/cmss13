@@ -97,7 +97,8 @@ var/list/cheartstopper = list("potassium_chloride") //this stops the heart when 
 var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.
 	"thunder",
 	"ERT",
-	"NUKE"
+	"NUKE",
+	"LADDER"
 	)
 
 #define STASIS_IN_BAG 		1

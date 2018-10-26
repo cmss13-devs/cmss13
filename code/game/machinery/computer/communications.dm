@@ -81,6 +81,8 @@
 		if("main") state = STATE_DEFAULT
 
 		if("login")
+			if(issilicon(usr))
+				return
 			var/mob/living/carbon/human/C = usr
 			var/obj/item/card/id/I = C.get_active_hand()
 			if(istype(I))
@@ -342,7 +344,7 @@
 		dat += "<B>Evacuation in Progress</B>\n<BR>\nETA: [EvacuationAuthority.get_status_panel_eta()]<BR>"
 
 /*
-	if(istype(user, /mob/living/silicon))
+	if(issilicon(user))
 		var/dat2 = interact_ai(user) // give the AI a different interact proc to limit its access
 		if(dat2)
 			dat +=  dat2

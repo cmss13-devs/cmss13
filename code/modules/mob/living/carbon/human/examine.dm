@@ -575,7 +575,7 @@
 				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && istype(H.wear_ear, /obj/item/device/radio/headset/almayer/marine)
 			else
 				return 0
-	else if(istype(M, /mob/living/silicon/robot))
+	else if(isrobot(M))
 		var/mob/living/silicon/robot/R = M
 		switch(hudtype)
 			if("security")

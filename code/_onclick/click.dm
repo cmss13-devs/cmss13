@@ -141,6 +141,8 @@
 		if(user.client && user.client.eye == user)
 			examine(user)
 			user.face_atom(src)
+		if(isAI(user))
+			examine(user)
 		return 1
 
 	if (mods["alt"])

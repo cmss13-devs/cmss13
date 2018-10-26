@@ -142,18 +142,18 @@
 					continue
 				if(5)
 					new /obj/item/weapon/gun/launcher/m92(drop_spawn)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
 					continue
 				if(6)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
 					new /obj/item/weapon/gun/flamer(drop_spawn)
 					continue
 				if(7)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
-					new /obj/item/explosive/grenade/frag/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
+					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
 					new /obj/item/weapon/gun/flamer(drop_spawn)
 					continue
 

@@ -1,60 +1,49 @@
 
 /*
 //================================================
-				High-explosive Grenades
+				Blast Grenades
 //================================================
 */
 /obj/item/explosive/grenade/HE
 	name = "\improper M40 HEDP grenade"
-	desc = "A small, but deceptively strong high-explosive grenade that has been phasing out the M15 HE grenades. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M50 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade"
 	det_time = 40
 	item_state = "grenade"
 	dangerous = 1
 	underslug_launchable = TRUE
+	var/explosion_power = 100
+	var/explosion_falloff = 20
+	var/shrapnel_count = 0
 
 /obj/item/explosive/grenade/HE/prime()
 	spawn(0)
-		explosion(loc, -1, -1, 3)
+		if(shrapnel_count)
+			create_shrapnel(loc, shrapnel_count)
+			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+		explosion_rec(loc, explosion_power, explosion_falloff)
 		cdel(src)
 	return
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
-	var/turf/T = loc
-	cdel(src)
-	explosion(T, -1, -1, 3)
+	spawn(rand(10,50))
+		prime()
 
 
 
 /obj/item/explosive/grenade/HE/PMC
+	name = "\improper M12 blast grenade"
 	desc = "A high-explosive grenade produced for private security firms. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_pmc"
 	item_state = "grenade_ex"
 	underslug_launchable = FALSE
+	explosion_power = 120
 
 
-	prime()
-		spawn(0)
-			explosion(loc, -1, -1, 4)
-			cdel(src)
-		return
-
-/obj/item/explosive/grenade/HE/m15
-	name = "\improper M15 HE grenade"
-	desc = "An outdated USCM high-explosive grenade. With decades of service in the USCM, the old M15 HE grenade is slowly being replaced with the slightly safer M40 HEDP. It is set to detonate in 4 seconds."
-	icon_state = "grenade_ex"
-	item_state = "grenade_ex"
-	underslug_launchable = FALSE
-
-	prime()
-		spawn(0)
-			explosion(loc, -1, -1, 4)
-			cdel(src)
-		return
 
 /obj/item/explosive/grenade/HE/stick
 	name = "\improper Webley Mk15 stick grenade"
-	desc = "A high-explosive grenade produced in the colonies, most commonly using old designs and schematics. It explodes 3 seconds after the pin has been pulled."
+	desc = "A blast grenade produced in the colonies, most commonly using old designs and schematics. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_stick"
 	item_state = "grenade_stick"
 	force = 10
@@ -63,146 +52,48 @@
 	throw_speed = 2
 	throw_range = 7
 	underslug_launchable = FALSE
+	explosion_power = 100
 
-	prime()
-		spawn(0)
-			explosion(src.loc,-1,-1,3)
-			del(src)
-		return
-
-/obj/item/explosive/grenade/HE/upp
-	name = "\improper Type 5 high-explosive grenade"
-	desc = "A high-explosive grenade found within the ranks of the UPP. Designed to rupture the bodies of opponents through blast-effect alone. It explodes 3 seconds after the pin has been pulled."
-	icon_state = "grenade_upp"
-	item_state = "grenade_upp"
-	throw_speed = 2
-	throw_range = 6
-	underslug_launchable = FALSE
-
-	prime()
-		spawn(0)
-			explosion(src.loc,-1,-1,3)
-			del(src)
-		return
 
 /*
 //================================================
 				Fragmentation Grenades
 //================================================
 */
-/obj/item/explosive/grenade/frag
-	name = "\improper M41 HEFA grenade"
-	desc = "A small, but deceptively strong fragmentation grenade that has been phasing out the M16 HE grenades. Capable of being loaded in the M92 Launcher, or thrown by hand."
-	icon_state = "grenade"
-	det_time = 40
-	item_state = "grenade"
-	dangerous = 1
-	underslug_launchable = TRUE
-
-/obj/item/explosive/grenade/frag/prime()
-	spawn(0)
-		create_shrapnel(loc, 30)
-		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-		explosion_rec(loc,60,20)
-		cdel(src)
-	return
-
-/obj/item/explosive/grenade/frag/flamer_fire_act()
-	prime()
+/obj/item/explosive/grenade/HE/frag
+	name = "\improper M50 HEFA grenade"
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	icon_state = "grenade_frag"
+	item_state = "grenade_frag"
+	explosion_power = 40
+	shrapnel_count = 32
 
 
 
-/obj/item/explosive/grenade/frag/training
-	name = "M07 training grenade"
-	desc = "A harmless reusable version of the M40 HEDP, used for training. Capable of being loaded in the M92 Launcher, or thrown by hand."
-	icon_state = "training_grenade"
-	item_state = "grenade"
-	dangerous = 0
-
-/obj/item/explosive/grenade/frag/training/prime()
-	spawn(0)
-		playsound(loc, 'sound/items/detector.ogg', 80, 0, 7)
-		active = 0 //so we can reuse it
-		overlays.Cut()
-		icon_state = initial(icon_state)
-		det_time = initial(det_time) //these can be modified when fired by UGL
-		throw_range = initial(throw_range)
-
-
-/obj/item/explosive/grenade/frag/training/flamer_fire_act()
-	return
-
-
-
-/obj/item/explosive/grenade/frag/PMC
-	desc = "A fragmentation grenade produced for private security firms. It explodes 3 seconds after the pin has been pulled."
-	icon_state = "grenade_pmc"
-	item_state = "grenade_ex"
-	underslug_launchable = FALSE
-
-
-	prime()
-		spawn(0)
-			create_shrapnel(loc, 40)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-			explosion_rec(loc,60,20)
-			cdel(src)
-		return
-
-
-/obj/item/explosive/grenade/frag/m15
-	name = "\improper M12 fragmentation grenade"
-	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M12 Fragmentation Grenade is slowly being replaced with the slightly safer M41 HEFA. It is set to detonate in 4 seconds."
+/obj/item/explosive/grenade/HE/m15
+	name = "\improper M15 fragmentation grenade"
+	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M15 Fragmentation Grenade is slowly being replaced by the slightly safer M40 HEDP and M50 HEFA grenades. It is set to detonate in 4 seconds."
 	icon_state = "grenade_ex"
 	item_state = "grenade_ex"
-	underslug_launchable = FALSE
-
-	prime()
-		spawn(0)
-			create_shrapnel(loc, 40)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-			explosion_rec(loc,60,20)
-			cdel(src)
-		return
-
-
-
-/obj/item/explosive/grenade/frag/stick
-	name = "\improper Webley Mk15 stick grenade"
-	desc = "A fragmentation grenade produced in the colonies, most commonly using old designs and schematics. It explodes 3 seconds after the pin has been pulled."
-	icon_state = "grenade_stick"
-	item_state = "grenade_stick"
-	force = 10
-	w_class = 2
-	throwforce = 15
 	throw_speed = 2
-	throw_range = 7
+	throw_range = 6
 	underslug_launchable = FALSE
+	explosion_power = 100
+	shrapnel_count = 32
 
-	prime()
-		spawn(0)
-			create_shrapnel(loc, 30)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-			explosion_rec(loc,60,20)
-			del(src)
-		return
 
-/obj/item/explosive/grenade/frag/upp
-	name = "\improper Type 5 shrapnel grenade"
+
+/obj/item/explosive/grenade/HE/upp
+	name = "\improper Type 6 shrapnel grenade"
 	desc = "A fragmentation grenade found within the ranks of the UPP. Designed to explode into shrapnel and rupture the bodies of opponents. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_upp"
 	item_state = "grenade_upp"
 	throw_speed = 2
 	throw_range = 6
 	underslug_launchable = FALSE
+	explosion_power = 80
+	shrapnel_count = 40
 
-	prime()
-		spawn(0)
-			create_shrapnel(loc, 30)
-			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
-			explosion_rec(loc,60,20)
-			del(src)
-		return
 
 /*
 //================================================
@@ -300,3 +191,29 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 	desc = "A deadly gas grenade found within the ranks of the UPP. Designed to spill white phosporus on the target. It explodes 2 seconds after the pin has been pulled."
 	icon_state = "grenade_upp_wp"
 	item_state = "grenade_upp_wp"
+
+/*
+//================================================
+					Other
+//================================================
+*/
+
+/obj/item/explosive/grenade/HE/training
+	name = "M07 training grenade"
+	desc = "A harmless reusable version of the M40 HEDP, used for training. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	icon_state = "training_grenade"
+	item_state = "grenade"
+	dangerous = 0
+
+/obj/item/explosive/grenade/HE/training/prime()
+	spawn(0)
+		playsound(loc, 'sound/items/detector.ogg', 80, 0, 7)
+		active = 0 //so we can reuse it
+		overlays.Cut()
+		icon_state = initial(icon_state)
+		det_time = initial(det_time) //these can be modified when fired by UGL
+		throw_range = initial(throw_range)
+
+
+/obj/item/explosive/grenade/HE/training/flamer_fire_act()
+	return

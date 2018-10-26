@@ -351,11 +351,11 @@
 	select_gamemode_skin(/obj/item/weapon/gun/launcher/m92)
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 	sleep(1)
-	grenades += new /obj/item/explosive/grenade/frag(src)
-	grenades += new /obj/item/explosive/grenade/frag(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/incendiary(src)
-	grenades += new /obj/item/explosive/grenade/frag(src)
-	grenades += new /obj/item/explosive/grenade/frag(src)
+	grenades += new /obj/item/explosive/grenade/HE/frag(src)
+	grenades += new /obj/item/explosive/grenade/HE/frag(src)
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
 	fire_delay = config.max_fire_delay*3
@@ -472,7 +472,7 @@
 		if(riot_version)
 			grenade = new /obj/item/explosive/grenade/chem_grenade/teargas(src)
 		else
-			grenade = new /obj/item/explosive/grenade/frag(src)
+			grenade = new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m81/set_gun_config_values()
 	fire_delay = config.max_fire_delay * 1.5

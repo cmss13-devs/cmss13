@@ -568,7 +568,10 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		P.play_damage_effect(src)
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10) ) )
 			var/obj/item/shard/shrapnel/shrap = new()
-			shrap.name = "[P.name] shrapnel"
+			if(P.name == "shrapnel")
+				shrap.name = "shrapnel" //prevents shrapnel from being named "shrapnel shrapnel"
+			else
+				shrap.name = "[P.name] shrapnel"
 			shrap.desc = "[shrap.desc] It looks like it was fired from [P.shot_from ? P.shot_from : "something unknown"]."
 			shrap.loc = organ
 			organ.embed(shrap)

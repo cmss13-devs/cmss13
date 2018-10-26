@@ -373,7 +373,7 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(M), WEAR_FACE)
 
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(M), WEAR_BACK)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/PMC(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/device/flashlight(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/weapon/baton(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(M), WEAR_WAIST)
@@ -634,7 +634,7 @@
 
 			M.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71(M), WEAR_J_STORE)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/upp(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(M.back), WEAR_IN_BACK)
@@ -715,7 +715,7 @@
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/c99/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/upp(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(M.back), WEAR_IN_BACK)
@@ -754,7 +754,7 @@
 			M.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer(M), WEAR_J_STORE)
 			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard(M), WEAR_WAIST)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/upp(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99(M.back), WEAR_IN_BACK)
@@ -929,7 +929,7 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(M), WEAR_HANDS)
 			M.equip_to_slot_or_del(new /obj/item/device/flashlight(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/pouch/general(M), WEAR_R_STORE)
@@ -958,7 +958,7 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
 
 			M.equip_to_slot_or_del(new /obj/item/device/defibrillator(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(M.back), WEAR_IN_BACK)
@@ -995,8 +995,8 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/device/flashlight(M.back), WEAR_IN_BACK)
@@ -1029,8 +1029,8 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/pouch/general(M), WEAR_R_STORE)
 
 			spawn_merc_gun(M)
@@ -1059,7 +1059,7 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
 
 			M.equip_to_slot_or_del(new /obj/item/device/defibrillator(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(M.back), WEAR_IN_BACK)
@@ -1096,7 +1096,7 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/stick(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(M), WEAR_R_STORE)
 
@@ -1223,7 +1223,7 @@
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/device/chameleon	(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/frag/upp(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/explosive/plastique(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(M.back), WEAR_IN_BACK)
@@ -1421,9 +1421,9 @@
 		/obj/item/storage/large_holster/katana/full = null,
 		/obj/item/storage/large_holster/machete/full = null,
 		/obj/item/weapon/combat_knife = null,
-		/obj/item/explosive/grenade/frag/stick = null,
-		/obj/item/explosive/grenade/frag/stick = null,
-		/obj/item/explosive/grenade/frag/stick = null,
+		/obj/item/explosive/grenade/HE/stick = null,
+		/obj/item/explosive/grenade/HE/stick = null,
+		/obj/item/explosive/grenade/HE/stick = null,
 		/obj/item/weapon/combat_knife/upp = null,
 		/obj/item/reagent_container/spray/pepper = null,
 		/obj/item/reagent_container/spray/pepper = null,

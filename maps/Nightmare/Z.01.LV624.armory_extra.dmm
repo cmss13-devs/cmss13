@@ -26,7 +26,7 @@
 "z" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle9)
 "A" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
 "B" = (/obj/machinery/door/airlock/almayer/secure{locked = 1; name = "\improper Nexus Dome Armory"; req_access_txt = "100"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
-"C" = (/obj/structure/rack,/obj/item/explosive/plastique,/obj/item/explosive/plastique,/obj/item/explosive/grenade/frag/PMC,/obj/item/explosive/grenade/frag/PMC,/obj/item/explosive/grenade/frag/PMC,/obj/item/explosive/grenade/frag/PMC,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"C" = (/obj/structure/rack,/obj/item/explosive/plastique,/obj/item/explosive/plastique,/obj/item/explosive/grenade/HE/PMC,/obj/item/explosive/grenade/HE/PMC,/obj/item/explosive/grenade/HE/PMC,/obj/item/explosive/grenade/HE/PMC,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
 
 (1,1,1) = {"
 abaaacd

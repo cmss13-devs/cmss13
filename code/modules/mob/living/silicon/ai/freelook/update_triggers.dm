@@ -1,4 +1,4 @@
-#define BORG_CAMERA_BUFFER 30
+#define BORG_CAMERA_BUFFER 5
 
 //UPDATE TRIGGERS, when the chunk (and the surrounding chunks) should update.
 

@@ -28,7 +28,16 @@
 		if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
 			user << "<span class='warning'>You can't figure out to use \the [src], guess it must have some sort of ID lock.</span>"
 			return 0
-
+		var/sleeptoxin = 0
+		for(var/datum/reagent/R in reagents.reagent_list)
+			if(istype(R, /datum/reagent/toxin/chloralhydrate) || istype(R, /datum/reagent/toxin/stoxin))
+				sleeptoxin = 1
+				break
+		if(sleeptoxin)
+			if(!do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC, TRUE))
+				return 0
+			if(!M.Adjacent(user))
+				return 0
 		if(M != user && M.stat != DEAD && M.a_intent != "help" && !M.is_mob_incapacitated() && ((M.mind && M.mind.cm_skills && M.mind.cm_skills.cqc >= SKILL_CQC_MP) || isYautja(M))) // preds have null skills
 			user.KnockDown(3)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used cqc skill to stop [user.name] ([user.ckey]) injecting them.</font>")
@@ -58,8 +67,6 @@
 			user << "\blue [trans] units injected. [reagents.total_volume] units remaining in [src]."
 
 	return 1
-
-
 
 /obj/item/reagent_container/hypospray/tricordrazine
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients. Contains tricordrazine."

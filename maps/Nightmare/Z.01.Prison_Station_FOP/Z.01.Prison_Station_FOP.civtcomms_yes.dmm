@@ -1,0 +1,54 @@
+"a" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/telecomms)
+"b" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/maintenance/residential/nw)
+"c" = (/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"d" = (/obj/machinery/atmospherics/unary/vent_pump{on = 1},/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"e" = (/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 6},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"f" = (/turf/open/floor/prison{icon_state = "rampbottom"},/area/prison/maintenance/residential/nw)
+"g" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{icon_state = "rampbottom"},/area/prison/maintenance/residential/nw)
+"h" = (/obj/machinery/power/apc{dir = 8; pixel_x = -24; start_charge = 0},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/cable{d2 = 2; icon_state = "0-2"; pixel_y = 0},/turf/open/floor/prison{dir = 10; icon_state = "darkyellow2"},/area/prison/telecomms)
+"i" = (/obj/effect/alien/weeds/node,/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"j" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/residential/central)
+"k" = (/turf/closed/wall/prison,/area/prison/maintenance/residential/nw)
+"l" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"m" = (/obj/machinery/atmospherics/unary/vent_scrubber,/turf/open/floor/prison{dir = 9; icon_state = "darkyellow2"},/area/prison/telecomms)
+"n" = (/obj/machinery/telecomms/bus,/turf/open/floor/prison{dir = 1; icon_state = "darkyellow2"},/area/prison/telecomms)
+"o" = (/obj/machinery/atmospherics/unary/vent_pump{on = 1},/obj/machinery/alarm/almayer{dir = 1},/turf/open/floor/prison{dir = 1; icon_state = "darkyellow2"},/area/prison/telecomms)
+"p" = (/obj/machinery/telecomms/relay/preset/station/prison,/turf/open/floor/prison{dir = 5; icon_state = "darkyellow2"},/area/prison/telecomms)
+"q" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/open/floor/prison{dir = 8; icon_state = "darkyellow2"},/area/prison/telecomms)
+"r" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor/prison,/area/prison/telecomms)
+"s" = (/turf/open/floor/prison,/area/prison/telecomms)
+"t" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison,/area/prison/telecomms)
+"u" = (/obj/machinery/computer/telecomms/traffic,/obj/effect/decal/cleanable/dirt,/turf/open/floor/prison{dir = 4; icon_state = "darkyellow2"},/area/prison/telecomms)
+"v" = (/obj/structure/table/reinforced,/obj/effect/spawner/random/tool,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHEAST)"; icon_state = "intact-scrubbers"; dir = 5},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"w" = (/turf/open/floor/plating/plating_catwalk/prison,/area/prison/telecomms)
+"x" = (/obj/effect/decal/cleanable/blood,/turf/open/floor/plating/plating_catwalk/prison,/area/prison/telecomms)
+"y" = (/obj/item/device/radio/headset,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/plating/plating_catwalk/prison,/area/prison/telecomms)
+"z" = (/obj/effect/spawner/random/tool,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/open/floor/prison{dir = 4; icon_state = "darkyellow2"},/area/prison/telecomms)
+"A" = (/obj/structure/table/reinforced,/obj/effect/spawner/random/tool,/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"B" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating/plating_catwalk/prison,/area/prison/telecomms)
+"C" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/door/airlock/almayer/secure{name = "Telecommunications"; req_access_txt = "0"},/turf/open/floor/prison,/area/prison/telecomms)
+"D" = (/obj/structure/table/reinforced,/obj/effect/landmark{name = "good_item"},/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"E" = (/turf/open/floor/prison{icon_state = "darkyellow2"},/area/prison/telecomms)
+"F" = (/obj/structure/bed/chair/office/dark,/turf/open/floor/prison{icon_state = "darkyellow2"},/area/prison/telecomms)
+"G" = (/turf/open/floor/prison{dir = 6; icon_state = "darkyellow2"},/area/prison/telecomms)
+"H" = (/obj/structure/table/reinforced,/obj/effect/spawner/random/tool,/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"I" = (/obj/machinery/computer/telecomms/monitor{req_one_access_txt = "19;200"},/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"J" = (/obj/machinery/computer/telecomms/server{req_access = null; req_one_access_txt = "19;200"},/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"K" = (/obj/machinery/computer/telecomms/traffic{req_access = null; req_one_access_txt = "19;200"},/turf/open/floor/prison{tag = "icon-darkyellowfull2 (EAST)"; icon_state = "darkyellowfull2"; dir = 4},/area/prison/telecomms)
+"L" = (/turf/closed/wall/prison,/area/prison/residential/central)
+"M" = (/obj/effect/decal/cleanable/blood,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating/plating_catwalk/prison,/area/prison/telecomms)
+"N" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/prison{dir = 4; icon_state = "darkyellow2"},/area/prison/telecomms)
+"O" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"P" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+"Q" = (/obj/machinery/door/airlock/almayer/maint{dir = 2; req_one_access_txt = "0"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plating,/area/prison/maintenance/residential/nw)
+
+(1,1,1) = {"
+aaaaaabbb
+amnnopkcd
+aqrstukce
+ahwxyzkfg
+avBBMNCOP
+aDEEFGkil
+aHAIJKkcl
+jLLLLLkkQ
+"}

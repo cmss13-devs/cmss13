@@ -119,7 +119,7 @@
 
 	switch(trigger_type)
 		if("explosive")
-			create_shrapnel(loc, 7, dir, 60)
+			create_shrapnel(loc, 7, dir, 60, /datum/ammo/bullet/shrapnel)
 			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 			explosion_rec(src.loc, 60, 20)
 			cdel(src)

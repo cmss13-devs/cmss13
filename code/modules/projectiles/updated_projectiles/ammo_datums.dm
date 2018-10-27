@@ -1256,7 +1256,7 @@
 		accurate_range = config.max_shell_range
 		point_blank_range = -1
 		max_range = 7
-		damage = config.high_hit_damage
+		damage = config.med_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.reg_damage_falloff

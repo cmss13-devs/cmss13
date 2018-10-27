@@ -36,6 +36,8 @@
 		if(sleeptoxin)
 			if(!do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC, TRUE))
 				return 0
+			if(!M.Adjacent(user))
+				return 0
 		if(M != user && M.stat != DEAD && M.a_intent != "help" && !M.is_mob_incapacitated() && ((M.mind && M.mind.cm_skills && M.mind.cm_skills.cqc >= SKILL_CQC_MP) || isYautja(M))) // preds have null skills
 			user.KnockDown(3)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used cqc skill to stop [user.name] ([user.ckey]) injecting them.</font>")

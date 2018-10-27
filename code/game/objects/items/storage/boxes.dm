@@ -594,9 +594,9 @@
 
 
 /obj/item/storage/box/nade_box/frag
-	name = "\improper M50 HEFA grenade box"
-	desc = "A secure box holding 25 M50 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
-	icon_state = "nade_placeholder_frag"
+	name = "\improper M40 HEFA grenade box"
+	desc = "A secure box holding 25 M40 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
+	icon_state = "frag_nade_placeholder"
 	w_class = 4
 	storage_slots = 25
 	max_storage_space = 50

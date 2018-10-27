@@ -15,11 +15,12 @@
 	var/explosion_power = 100
 	var/explosion_falloff = 20
 	var/shrapnel_count = 0
+	var/shrapnel_type = /datum/ammo/bullet/shrapnel
 
 /obj/item/explosive/grenade/HE/prime()
 	spawn(0)
 		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count)
+			create_shrapnel(loc, shrapnel_count, , ,shrapnel_type)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		explosion_rec(loc, explosion_power, explosion_falloff)
 		cdel(src)
@@ -61,7 +62,7 @@
 //================================================
 */
 /obj/item/explosive/grenade/HE/frag
-	name = "\improper M50 HEFA grenade"
+	name = "\improper M40 HEFA grenade"
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade_frag"
 	item_state = "grenade_frag"
@@ -72,7 +73,7 @@
 
 /obj/item/explosive/grenade/HE/m15
 	name = "\improper M15 fragmentation grenade"
-	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M15 Fragmentation Grenade is slowly being replaced by the slightly safer M40 HEDP and M50 HEFA grenades. It is set to detonate in 4 seconds."
+	desc = "An outdated USCM Fragmentation Grenade. With decades of service in the USCM, the old M15 Fragmentation Grenade is slowly being replaced by the slightly safer M40-series grenades. It is set to detonate in 4 seconds."
 	icon_state = "grenade_ex"
 	item_state = "grenade_ex"
 	throw_speed = 2

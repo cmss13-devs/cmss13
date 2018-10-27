@@ -240,7 +240,7 @@ WEAPONS
 	group = "Weapons"
 
 /datum/supply_packs/explosives
-	name = "surplus explosives crate (claymore mine x4, M40 HIDP x2, M40 HEDP x2, M15 HE x2, M50 HEFA x2, M12 Frag x2)"
+	name = "surplus explosives crate (claymore mine x4, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M40 HEFA x2, M12 Blast x2)"
 	contains = list(
 					/obj/item/storage/box/explosive_mines,
 					/obj/item/explosive/grenade/HE,
@@ -331,8 +331,8 @@ WEAPONS
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
 	group = "Weapons"
 
-/datum/supply_packs/explosives_M50_HEDP
-	name = "M50 HEFA fragmentation grenades crate (x5)"
+/datum/supply_packs/explosives_M40_HEDP
+	name = "M40 HEFA fragmentation grenades crate (x5)"
 	contains = list(
 					/obj/item/explosive/grenade/HE/frag,
 					/obj/item/explosive/grenade/HE/frag,
@@ -342,11 +342,11 @@ WEAPONS
 					)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper explosive M50 HEFA grenades crate (WARNING)"
+	containername = "\improper explosive M40 HEFA grenades crate (WARNING)"
 	group = "Weapons"
 
 /datum/supply_packs/explosives_hefa
-	name = "M50 HEFA fragmentation grenade box crate (x25)"
+	name = "M40 HEFA fragmentation grenade box crate (x25)"
 	contains = list(
 					/obj/item/storage/box/nade_box/frag
 					)

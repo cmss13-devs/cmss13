@@ -96,7 +96,7 @@
 /obj/item/ammo_magazine/pistol/automatic
 	name = "\improper KT-42 magazine (.44)"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
-	caliber = ".32"
+	caliber = ".44"
 	icon_state = "kt42"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/kt42

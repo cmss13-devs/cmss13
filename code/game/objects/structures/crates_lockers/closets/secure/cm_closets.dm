@@ -384,7 +384,10 @@
 		new /obj/item/device/radio/headset/almayer/mmpo(src)
 		new /obj/item/weapon/gun/energy/taser(src)
 		new /obj/item/weapon/baton(src)
-		new /obj/item/storage/backpack/security (src)
+		if(prob(50))
+			new /obj/item/storage/backpack/security(src)
+		else
+			new /obj/item/storage/backpack/satchel/sec(src)
 
 /obj/structure/closet/secure_closet/warrant_officer
 	name = "chief MP's locker"
@@ -410,6 +413,7 @@
 		new /obj/item/weapon/gun/energy/taser(src)
 		new /obj/item/weapon/baton(src)
 		new /obj/item/storage/backpack/security (src)
+		new /obj/item/storage/backpack/satchel/sec(src)
 
 /obj/structure/closet/secure_closet/military_officer_spare
 	name = "extra equipment locker"

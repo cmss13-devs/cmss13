@@ -143,7 +143,7 @@ WEAPONS
 					/obj/item/ammo_magazine/revolver,
 					/obj/item/ammo_magazine/revolver
 					)
-	name = "surplus idearms crate (M4A3 x2, M44 x2, ammo x2 each)"
+	name = "surplus sidearms crate (M4A3 x2, M44 x2, ammo x2 each)"
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper sidearms crate"
@@ -171,7 +171,7 @@ WEAPONS
 					/obj/item/ammo_magazine/smg/m39,
 					/obj/item/ammo_magazine/smg/m39
 					)
-	name = "surplus SMGd crate (M39 x2, M39 ammo x2)"
+	name = "surplus SMG crate (M39 x2, M39 ammo x2)"
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate
 	containername = "\improper SMGs crate"

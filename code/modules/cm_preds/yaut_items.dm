@@ -900,7 +900,7 @@
 	..()
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
-	name = "unusual crysal"
+	name = "unusual crystal"
 	desc = "A strange glowing crystal with a spike at one end."
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "crystal"

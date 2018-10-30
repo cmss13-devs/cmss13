@@ -325,7 +325,9 @@
 	desc = "It can contain papers and clipboards."
 	icon_state = "document"
 	storage_slots = 7
-	can_hold = list("/obj/item/paper", "/obj/item/clipboard", "/obj/item/document_objective/paper", "/obj/item/document_objective/paper/report", "/obj/item/document_objective/folder", "/obj/item/disk/objective")
+	max_w_class = 3
+	max_storage_space = 21
+	can_hold = list("/obj/item/paper", "/obj/item/clipboard", "/obj/item/document_objective/paper", "/obj/item/document_objective/paper/report", "/obj/item/document_objective/folder", "/obj/item/disk/objective", "/obj/item/document_objective/technical_manual")
 
 
 /obj/item/storage/pouch/flare

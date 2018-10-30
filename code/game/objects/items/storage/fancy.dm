@@ -49,7 +49,7 @@
 	name = "egg box"
 	storage_slots = 12
 	max_storage_space = 24
-	can_hold = list("/obj/item/reagent_container/food/snacks/egg")
+	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
 
 /obj/item/storage/fancy/egg_box/New()
 	..()
@@ -91,9 +91,7 @@
 	w_class = 2.0
 	storage_slots = 6
 	icon_type = "crayon"
-	can_hold = list(
-		"/obj/item/toy/crayon"
-	)
+	can_hold = list(/obj/item/toy/crayon)
 
 /obj/item/storage/fancy/crayons/New()
 	..()
@@ -135,7 +133,10 @@
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 6
-	can_hold = list("/obj/item/clothing/mask/cigarette", "/obj/item/tool/lighter")
+	can_hold = list(
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/tool/lighter
+	)
 	icon_type = "cigarette"
 
 /obj/item/storage/fancy/cigarettes/New()
@@ -204,7 +205,7 @@
 	w_class = 2
 	flags_equip_slot = SLOT_WAIST
 	storage_slots = 7
-	can_hold = list("/obj/item/clothing/mask/cigarette/cigar")
+	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
 
 /obj/item/storage/fancy/cigar/New()
@@ -248,7 +249,7 @@
 	icon_type = "vial"
 	name = "vial storage box"
 	storage_slots = 6
-	can_hold = list("/obj/item/reagent_container/glass/beaker/vial")
+	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 
 
 /obj/item/storage/fancy/vials/New()
@@ -264,7 +265,7 @@
 	icon_state = "vialbox0"
 	item_state = "syringe_kit"
 	max_w_class = 3
-	can_hold = list("/obj/item/reagent_container/glass/beaker/vial")
+	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.
 	storage_slots = 6
 	req_access = list(ACCESS_MARINE_MEDBAY)

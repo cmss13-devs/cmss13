@@ -33,12 +33,13 @@
 	desc = "A general purpose pouch used to carry small items and ammo magazines."
 	icon_state = "small_drop"
 	draw_mode = 1
-	bypass_w_limit = list("/obj/item/ammo_magazine/rifle",
-					"/obj/item/ammo_magazine/smg",
-					"/obj/item/ammo_magazine/pistol",
-					"/obj/item/ammo_magazine/revolver",
-					"/obj/item/ammo_magazine/sniper",
-					)
+	bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/sniper,
+	)
 
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
@@ -60,7 +61,11 @@
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
 	desc = "A pouch for your knives."
-	can_hold = list("/obj/item/weapon/combat_knife", "/obj/item/weapon/throwing_knife", "/obj/item/attachable/bayonet")
+	can_hold = list(
+		/obj/item/weapon/combat_knife,
+		/obj/item/weapon/throwing_knife,
+		/obj/item/attachable/bayonet
+	)
 	icon_state = "bayonet"
 	storage_slots = 3
 	draw_mode = 1
@@ -81,12 +86,12 @@
 	storage_slots = 5
 	max_w_class = 3
 	can_hold = list(
-					"/obj/item/device/flashlight",
-					"/obj/item/tool/crowbar",
-					"/obj/item/reagent_container/pill",
-					"/obj/item/stack/medical/bruise_pack",
-					"/obj/item/stack/sheet/metal"
-					)
+		/obj/item/device/flashlight,
+		/obj/item/tool/crowbar,
+		/obj/item/reagent_container/pill,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/sheet/metal
+	)
 
 /obj/item/storage/pouch/survival/full/New()
 	..()
@@ -105,11 +110,11 @@
 	icon_state = "firstaid"
 	storage_slots = 4
 	can_hold = list(
-					"/obj/item/stack/medical/ointment",
-					"/obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless",
-					"/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless",
-					"/obj/item/stack/medical/bruise_pack"
-					)
+		/obj/item/stack/medical/ointment,
+		/obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless,
+		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
+		/obj/item/stack/medical/bruise_pack
+	)
 
 /obj/item/storage/pouch/firstaid/full
 	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
@@ -127,7 +132,7 @@
 	desc = "It can contain a pistol. Useful for emergencies."
 	icon_state = "pistol"
 	max_w_class = 3
-	can_hold = list("/obj/item/weapon/gun/pistol")
+	can_hold = list(/obj/item/weapon/gun/pistol)
 	draw_mode = 1
 
 
@@ -141,15 +146,18 @@
 	max_w_class = 3
 	storage_slots = 2
 	draw_mode = 0
-	bypass_w_limit = list("/obj/item/ammo_magazine/rifle",
-					"/obj/item/ammo_magazine/smg/m39")
-	can_hold = list("/obj/item/ammo_magazine/rifle",
-					"/obj/item/ammo_magazine/smg",
-					"/obj/item/ammo_magazine/pistol",
-					"/obj/item/ammo_magazine/revolver",
-					"/obj/item/ammo_magazine/sniper",
-					"/obj/item/ammo_magazine/handful",
-					)
+	bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg/m39
+	)
+	can_hold = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/handful
+	)
 
 
 /obj/item/storage/pouch/magazine/large
@@ -167,9 +175,9 @@
 	storage_slots = 3
 
 	can_hold = list(
-					"/obj/item/ammo_magazine/pistol",
-					"/obj/item/ammo_magazine/revolver",
-					)
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+	)
 
 /obj/item/storage/pouch/magazine/pistol/large
 	name = "large pistol magazine pouch"
@@ -251,11 +259,11 @@
 	storage_slots = 3
 	max_w_class = 3
 	can_hold = list(
-					"/obj/item/explosive/plastique",
-					"/obj/item/explosive/mine",
-					"/obj/item/explosive/grenade",
-					"/obj/item/storage/box/explosive_mines"
-					)
+		/obj/item/explosive/plastique,
+		/obj/item/explosive/mine,
+		/obj/item/explosive/grenade,
+		/obj/item/storage/box/explosive_mines
+	)
 
 /obj/item/storage/pouch/explosive/full/New()
 	..()
@@ -277,15 +285,15 @@
 	storage_slots = 3
 
 	can_hold = list(
-		"/obj/item/device/healthanalyzer",
-		"/obj/item/reagent_container/dropper",
-		"/obj/item/reagent_container/pill",
-		"/obj/item/reagent_container/glass/bottle",
-		"/obj/item/reagent_container/syringe",
-		"/obj/item/storage/pill_bottle",
-		"/obj/item/stack/medical",
-		"/obj/item/device/flashlight/pen",
-	    "/obj/item/reagent_container/hypospray"
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/device/flashlight/pen,
+	    /obj/item/reagent_container/hypospray
 	)
 
 
@@ -294,9 +302,7 @@
 	desc = "A pouch specifically for auto-injectors."
 	icon_state = "autoinjector"
 	storage_slots = 4
-	can_hold = list(
-	    "/obj/item/reagent_container/hypospray/autoinjector"
-	)
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
 
 
 /obj/item/storage/pouch/syringe
@@ -304,7 +310,7 @@
 	desc = "It can contain syringes."
 	icon_state = "syringe"
 	storage_slots = 6
-	can_hold = list("/obj/item/reagent_container/syringe")
+	can_hold = list(/obj/item/reagent_container/syringe)
 
 
 /obj/item/storage/pouch/medkit
@@ -313,7 +319,7 @@
 	draw_mode = 1
 	icon_state = "medkit"
 	desc = "It's specifically made to hold a medkit."
-	can_hold = list("/obj/item/storage/firstaid")
+	can_hold = list(/obj/item/storage/firstaid)
 
 
 /obj/item/storage/pouch/medkit/full/New()
@@ -327,7 +333,15 @@
 	storage_slots = 7
 	max_w_class = 3
 	max_storage_space = 21
-	can_hold = list("/obj/item/paper", "/obj/item/clipboard", "/obj/item/document_objective/paper", "/obj/item/document_objective/paper/report", "/obj/item/document_objective/folder", "/obj/item/disk/objective", "/obj/item/document_objective/technical_manual")
+	can_hold = list(
+		/obj/item/paper,
+		/obj/item/clipboard,
+		/obj/item/document_objective/paper,
+		/obj/item/document_objective/paper/report,
+		/obj/item/document_objective/folder,
+		/obj/item/disk/objective,
+		/obj/item/document_objective/technical_manual
+	)
 
 
 /obj/item/storage/pouch/flare
@@ -337,7 +351,7 @@
 	storage_slots = 5
 	draw_mode = 1
 	icon_state = "flare"
-	can_hold = list("/obj/item/device/flashlight/flare")
+	can_hold = list(/obj/item/device/flashlight/flare)
 
 /obj/item/storage/pouch/flare/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))
@@ -377,7 +391,7 @@
 	icon_state = "radio"
 	draw_mode = 1
 	desc = "It can contain two handheld radios."
-	can_hold = list("/obj/item/device/radio")
+	can_hold = list(/obj/item/device/radio)
 
 
 /obj/item/storage/pouch/electronics
@@ -386,9 +400,9 @@
 	icon_state = "electronics"
 	storage_slots = 5
 	can_hold = list(
-					"/obj/item/circuitboard",
-					"/obj/item/cell"
-					)
+		/obj/item/circuitboard,
+		/obj/item/cell
+	)
 
 /obj/item/storage/pouch/electronics/full/New()
 	..()
@@ -404,13 +418,13 @@
 	max_w_class = 3
 	icon_state = "construction"
 	can_hold = list(
-					"/obj/item/stack/barbed_wire",
-					"/obj/item/stack/sheet",
-					"/obj/item/stack/rods",
-					"/obj/item/stack/cable_coil",
-					"/obj/item/tool/shovel/etool",
-					"/obj/item/stack/sandbags_empty"
-					)
+		/obj/item/stack/barbed_wire,
+		/obj/item/stack/sheet,
+		/obj/item/stack/rods,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/shovel/etool,
+		/obj/item/stack/sandbags_empty
+	)
 
 /obj/item/storage/pouch/construction/full/New()
 	..()
@@ -428,18 +442,18 @@
 	max_w_class = 3
 	icon_state = "tools"
 	can_hold = list(
-					"/obj/item/tool/wirecutters",
-					"/obj/item/tool/shovel/etool",
-					"/obj/item/tool/screwdriver",
-					"/obj/item/tool/crowbar",
-					"/obj/item/tool/weldingtool",
-					"/obj/item/device/multitool",
-					"/obj/item/tool/wrench",
-					"/obj/item/stack/cable_coil",
-					"/obj/item/tool/extinguisher/mini",
-					"/obj/item/tool/shovel/etool"
-					)
-	bypass_w_limit = list("/obj/item/tool/shovel/etool")
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/weldingtool,
+		/obj/item/device/multitool,
+		/obj/item/tool/wrench,
+		/obj/item/stack/cable_coil,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool
+	)
+	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
 /obj/item/storage/pouch/tools/full/New()
 	..()

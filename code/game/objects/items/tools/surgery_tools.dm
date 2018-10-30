@@ -53,7 +53,7 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
 	flags_atom = FPRINT|CONDUCT
-	force = 15.0
+	force = 0
 	w_class = 2.0
 	origin_tech = "materials=1;biotech=1"
 	attack_verb = list("drilled")
@@ -126,7 +126,7 @@
 	icon_state = "saw3"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
-	force = 15.0
+	force = 0
 	w_class = 2.0
 	throwforce = 9.0
 	throw_speed = 3
@@ -157,7 +157,7 @@
 /obj/item/tool/surgery/bonesetter
 	name = "bone setter"
 	icon_state = "bone setter"
-	force = 8.0
+	force = 0
 	throwforce = 9.0
 	throw_speed = 3
 	throw_range = 5
@@ -240,7 +240,7 @@
 	desc = "Putting the FUN back in Autopsy.  This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
 	icon_state = "scalpel_laser2_on"
 	damtype = "fire"
-	force = 12.0
+	force = 0
 	var/active = 0
 	var/resetting = 0//For the reset, to prevent macro-spam abuse
 

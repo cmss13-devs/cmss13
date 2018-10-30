@@ -98,6 +98,7 @@
 					/obj/item/storage/large_holster/m39 = 3,
 					/obj/item/storage/pouch/general/medium = 1,
 					/obj/item/storage/pouch/construction = 1,
+					/obj/item/storage/pouch/document = 1,
 					/obj/item/storage/pouch/tools = 1,
 					/obj/item/storage/pouch/explosive = 1,
 					/obj/item/storage/pouch/syringe = 1,

@@ -124,8 +124,8 @@
 		amount = round(text2num(href_list["amount"]), 5) // round to nearest 5
 		if (amount < 0) // Since the user can actually type the commands himself, some sanity checking
 			amount = 0
-		if (amount > 120)
-			amount = 120
+		if (amount > 240)
+			amount = 240
 
 	if(href_list["dispense"])
 		if (dispensable_reagents.Find(href_list["dispense"]) && beaker != null && beaker.is_open_container())
@@ -253,7 +253,7 @@
 
 /obj/machinery/chem_master/New()
 	..()
-	var/datum/reagents/R = new/datum/reagents(120)
+	var/datum/reagents/R = new/datum/reagents(240)
 	reagents = R
 	R.my_atom = src
 
@@ -499,6 +499,8 @@
 				dat += "<A href='?src=\ref[src];add=[G.id];amount=1'>(1)</A> "
 				dat += "<A href='?src=\ref[src];add=[G.id];amount=5'>(5)</A> "
 				dat += "<A href='?src=\ref[src];add=[G.id];amount=10'>(10)</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=30'>(30)</A> "
+				dat += "<A href='?src=\ref[src];add=[G.id];amount=60'>(60)</A> "
 				dat += "<A href='?src=\ref[src];add=[G.id];amount=[G.volume]'>(All)</A> "
 				dat += "<A href='?src=\ref[src];addcustom=[G.id]'>(Custom)</A><BR>"
 
@@ -510,6 +512,8 @@
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=1'>(1)</A> "
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=5'>(5)</A> "
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=10'>(10)</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=30'>(30)</A> "
+				dat += "<A href='?src=\ref[src];remove=[N.id];amount=60'>(60)</A> "
 				dat += "<A href='?src=\ref[src];remove=[N.id];amount=[N.volume]'>(All)</A> "
 				dat += "<A href='?src=\ref[src];removecustom=[N.id]'>(Custom)</A><BR>"
 		else

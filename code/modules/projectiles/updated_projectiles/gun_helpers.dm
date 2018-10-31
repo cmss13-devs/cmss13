@@ -430,7 +430,9 @@ should be alright.
 	set name = "Holster"
 	set category = "Object"
 	set hidden = 1
-	if(usr.stat) return
+	if(usr.is_mob_incapacitated(TRUE))
+		src << "<span class='warning'>You can't draw a weapon in your current state.</span>"
+		return
 
 	var/obj/item/weapon/W = src.get_active_hand()
 	var/obj/item/clothing/under/U = src.w_uniform
@@ -469,6 +471,8 @@ should be alright.
 				if(B.return_inv().len)
 					src.back.attack_hand(src)
 					return
+			if(istype(src.back,/obj/item/weapon))
+				src.back.attack_hand(src)
 		
 		if(src.shoes)
 			if(istype(src.shoes, /obj/item/clothing/shoes))

@@ -10,6 +10,7 @@
 	opacity = 1
 	anchored = 1
 	mouse_opacity = 0
+	layer = ABOVE_MOB_LAYER + 0.1 //above mobs and barricades
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 4

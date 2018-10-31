@@ -257,6 +257,16 @@
 
 	explosion(T, 0, 3, 5, 7)
 
+/obj/item/mortal_shell/frag
+	name = "\improper 80mm fragmentation mortar shell"
+	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
+	icon_state = "mortar_ammo_frag"
+
+/obj/item/mortal_shell/frag/detonate(var/turf/T)
+
+	explosion_rec(T, 60, 20)
+	create_shrapnel(loc, 60)
+
 /obj/item/mortal_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a napalm charge."
@@ -352,6 +362,10 @@
 	new /obj/item/mortal_shell/he(src)
 	new /obj/item/mortal_shell/he(src)
 	new /obj/item/mortal_shell/he(src)
+	new /obj/item/mortal_shell/frag(src)
+	new /obj/item/mortal_shell/frag(src)
+	new /obj/item/mortal_shell/frag(src)
+	new /obj/item/mortal_shell/frag(src)
 	new /obj/item/mortal_shell/incendiary(src)
 	new /obj/item/mortal_shell/incendiary(src)
 	new /obj/item/mortal_shell/incendiary(src)
@@ -375,6 +389,9 @@
 	new /obj/item/mortal_shell/he(src)
 	new /obj/item/mortal_shell/he(src)
 	new /obj/item/mortal_shell/he(src)
+	new /obj/item/mortal_shell/frag(src)
+	new /obj/item/mortal_shell/frag(src)
+	new /obj/item/mortal_shell/frag(src)
 	new /obj/item/mortal_shell/incendiary(src)
 	new /obj/item/mortal_shell/incendiary(src)
 	new /obj/item/mortal_shell/incendiary(src)

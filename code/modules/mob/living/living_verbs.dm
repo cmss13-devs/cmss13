@@ -288,5 +288,8 @@
 	if(is_mob_incapacitated(TRUE))
 		return
 
+	if(!resting)
+		src.KnockDown(1) //so that the mob immediately falls over
+
 	resting = !resting
 	src << "\blue You are now [resting ? "resting" : "getting up"]"

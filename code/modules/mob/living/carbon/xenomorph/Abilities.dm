@@ -52,6 +52,9 @@
 		X << "<span class='warning'>No time to rest, must KILL!</span>"
 		return
 
+	if(!X.resting)
+		X.KnockDown(1) //so that the mob immediately falls over
+
 	X.resting = !X.resting
 	X << "\blue You are now [X.resting ? "resting" : "getting up"]"
 

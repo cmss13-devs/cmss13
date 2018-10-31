@@ -11,6 +11,7 @@
 		angle_increment = shrapnel_spread*2/shrapnel_number
 	else
 		angle_increment = 360/shrapnel_number
+	var/angle_randomization = angle_increment/2
 
 	var/mob/living/mob_standing_on_turf
 	var/mob/living/mob_lying_on_turf
@@ -40,7 +41,7 @@
 			mob_lying_on_turf.bullet_act(S)
 
 		else
-			var/angle = initial_angle + i*angle_increment + rand(-angle_increment,angle_increment)
+			var/angle = initial_angle + i*angle_increment + rand(-angle_randomization,angle_randomization)
 
-			var/atom/target = get_angle_target_turf(epicenter, angle, 10)
+			var/atom/target = get_angle_target_turf(epicenter, angle, 20)
 			S.fire_at(target, source, null, S.ammo.max_range, S.ammo.shell_speed)

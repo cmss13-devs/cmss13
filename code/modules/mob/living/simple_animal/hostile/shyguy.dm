@@ -188,12 +188,18 @@
 			playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
 			screaming = 1
 			will_scream = 0
+			for(var/mob/M in viewers(src, null))
+				shake_camera(M, 19, 2)
 			spawn(100)
 				visible_message("<span class='danger'>[src] SCREAMS!</span>")
 				playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+				for(var/mob/M in viewers(src, null))
+					shake_camera(M, 19, 2)
 			spawn(200)
 				visible_message("<span class='danger'>[src] SCREAMS!</span>")
 				playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+				for(var/mob/M in viewers(src, null))
+					shake_camera(M, 19, 2)
 			spawn(300)
 				screaming = 0
 		return
@@ -225,6 +231,8 @@
 	if(!scare_played) //Let's minimize the spam
 		playsound(get_turf(src), pick(scare_sound), 50, 1)
 		scare_played = 1
+		for(var/mob/M in viewers(src, null))
+			shake_camera(M, 19, 1)
 		spawn(50)
 			scare_played = 0
 
@@ -237,23 +245,24 @@
 			if(murdering <= 0)
 				target_turf = get_turf(target)
 
-				for(var/obj/structure/window/W in next_turf)
-					W.health -= 1000
-					W.healthcheck(1, 1, 1, src)
-					sleep(5)
-				for(var/obj/structure/table/O in next_turf)
-					O.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
-					sleep(5)
-				for(var/obj/structure/closet/C in next_turf)
-					C.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
-					sleep(5)
-				for(var/obj/structure/grille/G in next_turf)
-					G.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
-					sleep(5)
 				for(var/obj/machinery/door/D in next_turf)
 					if(D.density)
 						D.open()
+						sleep(10)
+						if(D.density)
+							D.ex_act(EXPLOSION_THRESHOLD_HIGH)
+				for(var/obj/structure/S in next_turf)
+					if(S.density)
+						S.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 						sleep(5)
+						if(S && S.density)
+							S.ex_act(1000000)
+				if(istype(next_turf, /turf/closed))
+					next_turf.ex_act(EXPLOSION_THRESHOLD_HIGH)
+					sleep(10)
+					if(next_turf && istype(next_turf, /turf/closed))
+						next_turf.ex_act(1000000)
+
 				if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
 					sleep(10)
 
@@ -339,8 +348,8 @@
 		T.pixel_y = 10
 		murdering = 1
 
-		for(var/mob/living/L in viewers(src, null))
-			shake_camera(L, 19, 1)
+		for(var/mob/M in viewers(src, null))
+			shake_camera(M, 30, 1)
 
 		sleep(20)
 

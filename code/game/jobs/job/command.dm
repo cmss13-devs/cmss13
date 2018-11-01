@@ -239,13 +239,13 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 
 	generate_stored_equipment()
 		. = list(
-				WEAR_R_HAND = /obj/item/clothing/head/helmet/marine/tanker
-				)
+			WEAR_R_HAND = /obj/item/clothing/head/helmet/marine/tanker
+		)
 
 	get_wearable_equipment()
 		var/L[] = list(
-						WEAR_EYES = /obj/item/clothing/head/helmet/marine/tanker
-						)
+			WEAR_EYES = /obj/item/clothing/head/helmet/marine/tanker
+		)
 
 		return generate_wearable_equipment() + L
 
@@ -283,17 +283,17 @@ While you are an officer, your authority is limited to your own vehicle, where y
 			backItem = /obj/item/storage/backpack/security
 
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mmpo,
-				WEAR_BODY = /obj/item/clothing/under/marine/mp,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/black,
-				WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm/red,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mmpo,
+			WEAR_BODY = /obj/item/clothing/under/marine/mp,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/black,
+			WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
+			WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP,
+			WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+			WEAR_HEAD = /obj/item/clothing/head/beret/cm/red,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/medium
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
@@ -320,17 +320,17 @@ In addition, you are tasked with the security of high-ranking personnel, includi
 			backItem = /obj/item/storage/backpack/security
 
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/cmpcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/warrant,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/black,
-				WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/WO,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm/wo,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/cmpcom,
+			WEAR_BODY = /obj/item/clothing/under/marine/officer/warrant,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/black,
+			WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
+			WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/WO,
+			WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+			WEAR_HEAD = /obj/item/clothing/head/beret/cm/wo,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/large
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.

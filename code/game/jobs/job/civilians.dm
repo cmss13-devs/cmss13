@@ -147,22 +147,22 @@ You are also an expert when it comes to medication and treatment. If you do not 
 			backItem = /obj/item/storage/backpack/marine/medic
 
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/doc,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/researcher,
-				WEAR_FEET = /obj/item/clothing/shoes/laceup,
-				WEAR_HANDS = /obj/item/clothing/gloves/latex,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/researcher,
-				WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/medical,
-				WEAR_L_STORE = /obj/item/storage/pouch/syringe
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/doc,
+			WEAR_BODY = /obj/item/clothing/under/marine/officer/researcher,
+			WEAR_FEET = /obj/item/clothing/shoes/laceup,
+			WEAR_HANDS = /obj/item/clothing/gloves/latex,
+			WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/researcher,
+			WEAR_EYES = /obj/item/clothing/glasses/hud/health,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/medical,
+			WEAR_L_STORE = /obj/item/storage/pouch/syringe
+		)
 
 	generate_stored_equipment()
 		. = list(
-				WEAR_WAIST = /obj/item/device/healthanalyzer,
-				WEAR_J_STORE = /obj/item/device/flashlight/pen
-				)
+			WEAR_WAIST = /obj/item/device/healthanalyzer,
+			WEAR_J_STORE = /obj/item/device/flashlight/pen
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM.
@@ -189,16 +189,16 @@ Your role involves a lot of roleplaying, but you can perform the function of a r
 	generate_wearable_equipment(mob/living/carbon/human/H)
 		if(!H.client || !H.client.prefs || !H.client.prefs) return
 		var/backItem = /obj/item/storage/backpack/satchel
-		if (H.client.prefs.backbag == 1)
-			//There is no suitable backpack for a CL really
-			//backItem = /obj/item/storage/backpack/industrial
+		//There is no suitable backpack for a CL really
+		//if (H.client.prefs.backbag == 1)
+			//backItem = /obj/item/storage/backpack
 
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/liaison_suit,
-				WEAR_FEET = /obj/item/clothing/shoes/laceup,
-				WEAR_BACK = backItem,
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
+			WEAR_BODY = /obj/item/clothing/under/liaison_suit,
+			WEAR_FEET = /obj/item/clothing/shoes/laceup,
+			WEAR_BACK = backItem,
+		)
 
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -252,15 +252,15 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 			backItem = /obj/item/storage/backpack/industrial
 
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/rank/synthetic,
-				WEAR_FEET = /obj/item/clothing/shoes/white,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium,
-				WEAR_L_STORE = /obj/item/storage/pouch/general/medium
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
+			WEAR_BODY = /obj/item/clothing/under/rank/synthetic,
+			WEAR_FEET = /obj/item/clothing/shoes/white,
+			WEAR_WAIST = /obj/item/storage/belt/utility/full,
+			WEAR_HANDS = /obj/item/clothing/gloves/yellow,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/medium,
+			WEAR_L_STORE = /obj/item/storage/pouch/general/medium
+		)
 
 	generate_entry_conditions(mob/living/carbon/human/H)
 		. = ..()

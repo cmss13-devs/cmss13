@@ -36,10 +36,15 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	skills_type = /datum/skills/SL
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel
-				)
+			WEAR_BACK = backItem
+		)
 
 	generate_entry_message()
 		. = ..() + {"\nYou are responsible for the men and women of your squad. Make sure they are on task, working together, and communicating.
@@ -61,10 +66,15 @@ You are also in charge of communicating with command and letting them know about
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	skills_type = /datum/skills/combat_engineer
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/tech
+
 		. = list(
-				WEAR_BACK = /obj/item/storage/backpack/marine/tech
-				)
+			WEAR_BACK = backItem
+		)
 
 	generate_entry_message()
 		. = ..() + {"\nYou have the equipment and skill to build fortifications, reroute power lines, and bunker down.
@@ -94,10 +104,15 @@ Your squaddies will look to you when it comes to construction in the field of ba
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	skills_type = /datum/skills/combat_medic
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/medic
+
 		. = list(
-				WEAR_BACK = /obj/item/storage/backpack/marine/medic
-				)
+			WEAR_BACK = backItem
+		)
 
 	generate_entry_message()
 		. = ..() + {"\nYou must tend the wounds of your squad mates and make sure they are healthy and active.
@@ -128,11 +143,16 @@ You may not be a fully-fledged doctor, but you stand between life and death when
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	skills_type = /datum/skills/specialist
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/helmet/specrag,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel
-				)
+			WEAR_HEAD = /obj/item/clothing/head/helmet/specrag,
+			WEAR_BACK = backItem
+		)
 
 	generate_entry_message()
 		. = ..() + {"\nYou are the very rare and valuable weapon expert, trained to use special equipment.
@@ -158,10 +178,15 @@ You can serve a variety of roles, so choose carefully."}
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	skills_type = /datum/skills/smartgunner
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel
-				)
+			WEAR_BACK = backItem
+		)
 
 	generate_entry_message()
 		. = ..() + {"\nYou are the smartgunner. Your job is to provide heavy weapons support."}
@@ -185,10 +210,15 @@ You can serve a variety of roles, so choose carefully."}
 	minimal_player_age = 0
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel
-				)
+			WEAR_BACK = backItem
+		)
 
 	generate_entry_message()
 		. = ..() + {"\nYou are a rank-and-file soldier of the USCM, and that is your strength.

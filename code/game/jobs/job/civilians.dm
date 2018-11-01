@@ -31,6 +31,11 @@
 	skills_type = /datum/skills/CMO
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/medic
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/cmo,
 				WEAR_BODY = /obj/item/clothing/under/rank/medical/green,
@@ -38,7 +43,7 @@
 				WEAR_HANDS = /obj/item/clothing/gloves/latex,
 				WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat,
 				WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/medical,
 				WEAR_L_STORE = /obj/item/storage/pouch/syringe,
 				WEAR_HEAD = /obj/item/clothing/head/surgery/green
@@ -82,6 +87,11 @@ Make sure that the doctors and nurses are doing their jobs and keeping the marin
 		return (latejoin ? doc_slot_formula(get_total_marines()) : spawn_positions)
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/medic
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/doc,
 				WEAR_BODY = /obj/item/clothing/under/rank/medical/green,
@@ -90,7 +100,7 @@ Make sure that the doctors and nurses are doing their jobs and keeping the marin
 				//WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat,
 				WEAR_EYES = /obj/item/clothing/glasses/hud/health,
 				WEAR_HEAD = /obj/item/clothing/head/surgery/green,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/medical,
 				WEAR_L_STORE = /obj/item/storage/pouch/syringe
 				)
@@ -131,6 +141,11 @@ You are also an expert when it comes to medication and treatment. If you do not 
 		return (latejoin ? rsc_slot_formula(get_total_marines()) : spawn_positions)
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/medic
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/doc,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/researcher,
@@ -138,7 +153,7 @@ You are also an expert when it comes to medication and treatment. If you do not 
 				WEAR_HANDS = /obj/item/clothing/gloves/latex,
 				WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/researcher,
 				WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/medical,
 				WEAR_L_STORE = /obj/item/storage/pouch/syringe
 				)
@@ -171,12 +186,18 @@ Your role involves a lot of roleplaying, but you can perform the function of a r
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/civilian
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel
+		if (H.client.prefs.backbag == 1)
+			//There is no suitable backpack for a CL really
+			//backItem = /obj/item/storage/backpack/industrial
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/liaison_suit,
 				WEAR_FEET = /obj/item/clothing/shoes/laceup,
-				WEAR_BACK = /obj/item/storage/backpack/satchel
+				WEAR_BACK = backItem,
 				)
 
 

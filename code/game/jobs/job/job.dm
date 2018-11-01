@@ -76,7 +76,7 @@
 /datum/job/proc/generate_entry_conditions(mob/living/M) return //Anything special that should happen to the mob upon entering the world.
 
 //Have to pass H to both equip procs so that "backbag" shows correctly. Sigh.
-/datum/job/proc/equip(mob/living/carbon/human/H, list/L = generate_wearable_equipment() + generate_stored_equipment())
+/datum/job/proc/equip(mob/living/carbon/human/H, list/L = generate_wearable_equipment(H) + generate_stored_equipment(H))
 	if(!istype(H) || !L.len) return
 	var/i
 	var/item_path

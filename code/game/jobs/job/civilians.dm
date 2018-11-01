@@ -224,15 +224,19 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 	get_access()
 		return get_all_accesses()
 
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/industrial
 
-	generate_wearable_equipment()
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/rank/synthetic,
 				WEAR_FEET = /obj/item/clothing/shoes/white,
 				WEAR_WAIST = /obj/item/storage/belt/utility/full,
 				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/medium,
 				WEAR_L_STORE = /obj/item/storage/pouch/general/medium
 				)

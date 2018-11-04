@@ -331,10 +331,9 @@
 			var/obj/item/clothing/under/U = w_uniform
 			if(U && !U.hastie)
 				var/obj/item/clothing/tie/T = W
-				if(istype(T))
-					T.on_attached(U, src)
-					U.hastie = T
-					update_inv_w_uniform()
+				T.on_attached(U, src)
+				U.hastie = T
+				update_inv_w_uniform()
 		if(WEAR_J_STORE)
 			s_store = W
 			W.equipped(src, slot)

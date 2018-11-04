@@ -182,6 +182,8 @@
 	icon_state = "medicalbag_u"
 	item_state = "medicbag_u"
 	has_gamemode_skin = FALSE
+	storage_slots = 42
+	max_storage_space = 82
 
 /obj/item/storage/belt/combatLifesaver/upp/New()  //The belt, with all it's magic inside!
 	..()

@@ -551,6 +551,8 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = -config.min_recoil_value
 		scatter_unwielded_mod = -config.min_scatter_value
 
+		matter = list("wood" = 2000)
+
 		select_gamemode_skin(type)
 
 /obj/item/attachable/stock/tactical

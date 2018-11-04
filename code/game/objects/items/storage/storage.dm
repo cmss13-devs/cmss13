@@ -370,14 +370,16 @@
 			usr << "<span class='notice'>[W] is too long for this [src].</span>"
 		return 0
 
-	var/sum_storage_cost = W.get_storage_cost()
-	for(var/obj/item/I in contents)
-		sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
+	//calculate storage space only for containers that don't have slots
+	if (storage_slots == null)
+		var/sum_storage_cost = W.get_storage_cost()
+		for(var/obj/item/I in contents)
+			sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
 
-	if(sum_storage_cost > max_storage_space)
-		if(!stop_messages)
-			usr << "<span class='notice'>[src] is full, make some space.</span>"
-		return 0
+		if(sum_storage_cost > max_storage_space)
+			if(!stop_messages)
+				usr << "<span class='notice'>[src] is full, make some space.</span>"
+			return 0
 
 	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.

@@ -6,7 +6,11 @@
 	w_class = 4 //Should not fit in backpacks
 	storage_slots = 12
 	max_storage_space = 24
-	can_hold = list("/obj/item/tool/surgery", "/obj/item/stack/medical/advanced/bruise_pack", "/obj/item/stack/nanopaste")
+	can_hold = list(
+		/obj/item/tool/surgery,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/stack/nanopaste
+	)
 
 	New()
 		..()

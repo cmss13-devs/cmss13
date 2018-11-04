@@ -33,6 +33,9 @@
 		)
 
 /obj/machinery/bioprinter/attack_hand(mob/user)
+	if(stat & (BROKEN|NOPOWER))
+		return
+
 	if(working)
 		user << "Something is already being printed..."
 		return

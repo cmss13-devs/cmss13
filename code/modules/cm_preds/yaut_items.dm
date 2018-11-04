@@ -499,18 +499,22 @@
 	var/closest = 10000
 	var/direction = -1
 	for(var/obj/item/I in yautja_gear)
-		switch(I.z)
+		var/atom/loc = I.get_true_location()
+		if (isYautja(loc))
+			//it's actually yautja holding the item, ignore!
+			continue
+		switch(loc.z)
 			if(LOW_ORBIT_Z_LEVEL)
 				gear_low_orbit++
 			if(MAIN_SHIP_Z_LEVEL)
 				gear_on_almayer++
 			if(1)
 				gear_on_planet++
-		if(M.z == I.z)
-			var/dist = get_dist(M,I)
+		if(M.z == loc.z)
+			var/dist = get_dist(M,loc)
 			if(dist < closest)
 				closest = dist
-				direction = get_dir(M,I)
+				direction = get_dir(M,loc)
 	for(var/mob/living/carbon/human/Y in yautja_mob_list)
 		if(Y.stat != DEAD) continue
 		switch(Y.z)

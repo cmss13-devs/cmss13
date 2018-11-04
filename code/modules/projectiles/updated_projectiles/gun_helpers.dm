@@ -257,7 +257,7 @@ should be alright.
 		if(istype(src, AM.gun_type))
 			if(current_mag)
 				unload(user,0,1)
-				user << "<span class='notice'>You start a tactical reload.</span>"
+			user << "<span class='notice'>You start a tactical reload.</span>"
 			var/old_mag_loc = AM.loc
 			var/tac_reload_time = 15
 			if(user.mind && user.mind.cm_skills)

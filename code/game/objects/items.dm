@@ -95,7 +95,14 @@
 	item_list -= src
 	. = ..()
 
-
+/obj/item/proc/get_true_location()
+	var/atom/subLoc = src
+	while(subLoc.z == 0 && subLoc.z == 0 && subLoc.z == 0)
+		if (istype(subLoc.loc, /atom))
+			subLoc = subLoc.loc
+		else
+			return src
+	return subLoc
 
 /obj/item/ex_act(severity, explosion_direction)
 	switch(severity)

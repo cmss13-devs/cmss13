@@ -1021,7 +1021,7 @@ datum/preferences
 					g_skin = rand(0,255)
 					b_skin = rand(0,255)
 				if ("bag")
-					backbag = rand(1,4)
+					backbag = rand(1,2)
 
 				if ("all")
 					randomize_appearance_for()	//no params needed
@@ -1529,8 +1529,8 @@ datum/preferences
 		undershirt = 0
 	character.undershirt = undershirt
 
-	if(backbag > 4 || backbag < 1)
-		backbag = 1 //Same as above
+	if(backbag > 2 || backbag < 1)
+		backbag = 2 //Same as above
 	character.backbag = backbag
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.

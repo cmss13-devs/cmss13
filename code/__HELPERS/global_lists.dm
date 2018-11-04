@@ -106,7 +106,7 @@ var/global/list/underwear_f = list("Briefs", "Panties")
 	//undershirt
 var/global/list/undershirt_t = list("None","Undershirt(Sleeveless)", "Undershirt(Sleeved)", "Rolled Undershirt(Sleeveless)", "Rolled Undershirt(Sleeved)")
 	//Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel")
+var/global/list/backbaglist = list("Backpack", "Satchel")
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
 
 //////////////////////////

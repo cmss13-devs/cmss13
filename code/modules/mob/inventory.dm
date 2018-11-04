@@ -264,6 +264,15 @@
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
 					W.loc = B
 					equipped = 1
+		if(WEAR_ACCESSORY)
+			if(w_uniform && !w_uniform.hastie)
+				var/obj/item/clothing/tie/T = W
+				if(istype(T))
+					T.on_attached(w_uniform, src)
+					w_uniform.hastie = T
+					T.loc = w_uniform
+					equipped = 1
+
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/under/U = w_uniform
 			if(U && U.hastie)

@@ -67,6 +67,8 @@
 	var/plant_time = 35
 	if(isXenoDrone(user))
 		plant_time = 25
+	if(isXenoCarrier(user))
+		plant_time = 10
 	if(!do_after(user, plant_time, TRUE, 5, BUSY_ICON_BUILD))
 		return
 	if(!user.check_alien_construction(T))

@@ -86,6 +86,21 @@
 					icon_state = "yauttrap1"
 		..()
 
+
+/obj/item/legcuffs/yautja/armedTrap
+	armed = 1
+	icon_state = "yauttrap1"
+
+	New(location)
+		if(isturf(location))
+			if(istype(location,/turf/open/gm/dirt))
+				icon_state = "yauttrapdirt"
+			else if (istype(location,/turf/open/gm/grass))
+				icon_state = "yauttrapgrass"
+			else
+				icon_state = "yauttrap1"
+
+
 /obj/item/legcuffs/yautja/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())

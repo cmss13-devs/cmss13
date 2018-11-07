@@ -114,19 +114,24 @@
 		)
 
 	death(gibbed)
-		if(..() && !gibbed && huggers_cur)
+		if(..(gibbed))
+			var/obj/item/xeno_egg/E
 			var/obj/item/clothing/mask/facehugger/F
-			var/i = 3
 			var/chance = 75
-			visible_message("<span class='xenowarning'>The chittering mass of tiny aliens is trying to escape [src]!</span>")
-			while(i && huggers_cur)
+
+			while (eggs_cur > 0)
 				if(prob(chance))
+					E = new(loc)
+					E.hivenumber = hivenumber
+					eggs_cur--
+			if (huggers_cur)
+				visible_message("<span class='xenowarning'>The chittering mass of tiny aliens is trying to escape [src]!</span>")
+				while(huggers_cur)
+					if(prob(chance))
+						F = new(loc)
+						F.hivenumber = hivenumber
+						step_away(F,src,1)
 					huggers_cur--
-					F = new(loc)
-					F.hivenumber = hivenumber
-					step_away(F,src,1)
-				i--
-				chance -= 30
 
 
 /mob/living/carbon/Xenomorph/Carrier/Stat()

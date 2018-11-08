@@ -74,88 +74,145 @@
 	if(isXeno(T))
 		xeno_victim = T
 
+	var/list/procedureChoices = list(
+		"Skin",
+		"Behead",
+		"Delimb - right hand",
+		"Delimb - left hand",
+		"Delimb - right arm",
+		"Delimb - left arm",
+		"Delimb - right foot",
+		"Delimb - left foot",
+		"Delimb - right leg",
+		"Delimb - left leg",
+	)
+	var/procedure = ""
 	if(ishuman(T))
 		victim = T
-
-	if(T.butchery_progress)
-		playsound(loc, 'sound/weapons/pierce.ogg', 25)
-		visible_message("<b>[src] goes back to butchering \the [T].</b>","<b>You get back to butchering \the [T].</b>")
-	else
-		playsound(loc, 'sound/weapons/pierce.ogg', 25)
-		visible_message("<b>[src] begins chopping and mutilating \the [T].</b>","<b>You take out your tools and begin your gruesome work on \the [T]. Hold still.</b>")
-		T.butchery_progress = 1
+		procedure = input(src,"Which slice would you like to take?") as null|anything in procedureChoices
 
 
-	if(T.butchery_progress == 1)
-		if(do_after(src,70, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
-			visible_message("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity.","You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!")
-			T.butchery_progress = 2
-			playsound(loc, 'sound/weapons/slash.ogg', 25)
+	if (isXeno(T) || procedure == "Skin")
+		if(T.butchery_progress)
+			playsound(loc, 'sound/weapons/pierce.ogg', 25)
+			visible_message("<b>[src] goes back to butchering \the [T].</b>","<b>You get back to butchering \the [T].</b>")
 		else
-			src << "You pause your butchering for later."
+			playsound(loc, 'sound/weapons/pierce.ogg', 25)
+			visible_message("<b>[src] begins chopping and mutilating \the [T].</b>","<b>You take out your tools and begin your gruesome work on \the [T]. Hold still.</b>")
+			T.butchery_progress = 1
 
-	if(T.butchery_progress == 2)
-		if(do_after(src,65, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
-			visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
-			if(xeno_victim && isturf(xeno_victim.loc))
-				var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-				xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] steak"
-			else if(victim && isturf(victim.loc))
-				victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
-				var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
-				meat.name = "raw [victim.name] steak"
-			T.butchery_progress = 3
-			playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
-		else
-			src << "You pause your butchering for later."
+		if(T.butchery_progress == 1)
+			if(do_after(src,70, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
+				visible_message("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity.","You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!")
+				T.butchery_progress = 2
+				playsound(loc, 'sound/weapons/slash.ogg', 25)
+			else
+				src << "You pause your butchering for later."
 
-	if(T.butchery_progress == 3)
-		if(do_after(src,70, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
-			visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
-			if(xeno_victim && isturf(xeno_victim.loc))
-				var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-				xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] tenderloin"
-			else if(victim && isturf(T.loc))
-				var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
-				meat.name = "raw [victim.name] tenderloin"
-//				T.apply_damage(100,BRUTE,"chest",0,0,0) //Does random serious damage, so we make sure they're dead.
-//				Why was this even in here?
-			T.butchery_progress = 4
-			playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
-		else
-			src << "You pause your butchering for later."
-
-	if(T.butchery_progress == 4)
-		if(do_after(src,90, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
-			if(xeno_victim && isturf(T.loc))
-				visible_message("<b>[src] flenses the last of [victim]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [victim]'s exoskeleton clean off!</b>")
-				new /obj/effect/decal/remains/xeno(xeno_victim.loc)
-				var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-				xenohide.name = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
-				xenohide.singular_name = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
-				xenohide.stack_id = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
-
-			else if(victim && isturf(T.loc))
-				visible_message("<b>[src] reaches down and rips out \the [T]'s spinal cord and skull!</b>.","<b>You firmly grip the revealed spinal column and rip [T]'s head off!</b>")
-				var/mob/living/carbon/human/H = T
-				if(H.get_limb("head"))
-					H.apply_damage(150,BRUTE,"head",0,1,1)
-				else
+		if(T.butchery_progress == 2)
+			if(do_after(src,65, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
+				visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
+				if(xeno_victim && isturf(xeno_victim.loc))
+					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
+					xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] steak"
+				else if(victim && isturf(victim.loc))
+					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] steak"
-				var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
-				hide.name = "[victim.name]-hide"
-				hide.singular_name = "[victim.name]-hide"
-				hide.stack_id = "[victim.name]-hide"
-				new /obj/effect/decal/remains/human(T.loc)
-			if(T.legcuffed)
-				T.drop_inv_item_on_ground(T.legcuffed)
-			T.butchery_progress = 5 //Won't really matter.
-			playsound(loc, 'sound/weapons/slice.ogg', 25)
-			src << "\blue You finish butchering!"
-			cdel(T)
+				T.butchery_progress = 3
+				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
+			else
+				src << "You pause your butchering for later."
+
+		if(T.butchery_progress == 3)
+			if(do_after(src,70, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
+				visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
+				if(xeno_victim && isturf(xeno_victim.loc))
+					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
+					xenomeat.name = "raw [xeno_victim.caste.upgrade_name] [xeno_victim.caste_name] tenderloin"
+				else if(victim && isturf(T.loc))
+					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+					meat.name = "raw [victim.name] tenderloin"
+	//				T.apply_damage(100,BRUTE,"chest",0,0,0) //Does random serious damage, so we make sure they're dead.
+	//				Why was this even in here?
+				T.butchery_progress = 4
+				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
+			else
+				src << "You pause your butchering for later."
+
+		if(T.butchery_progress == 4)
+			if(do_after(src,90, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
+				if(xeno_victim && isturf(T.loc))
+					visible_message("<b>[src] flenses the last of [victim]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [victim]'s exoskeleton clean off!</b>")
+					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
+					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
+					xenohide.name = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
+					xenohide.singular_name = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
+					xenohide.stack_id = "[xeno_victim.caste.upgrade_name] [xeno_victim.caste_name]-hide"
+
+				else if(victim && isturf(T.loc))
+					visible_message("<b>[src] reaches down and rips out \the [T]'s spinal cord and skull!</b>.","<b>You firmly grip the revealed spinal column and rip [T]'s head off!</b>")
+					var/mob/living/carbon/human/H = T
+					if(H.get_limb("head"))
+						H.apply_damage(150,BRUTE,"head",0,1,1)
+					else
+						var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+						meat.name = "raw [victim.name] steak"
+					var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
+					hide.name = "[victim.name]-hide"
+					hide.singular_name = "[victim.name]-hide"
+					hide.stack_id = "[victim.name]-hide"
+					new /obj/effect/decal/remains/human(T.loc)
+				if(T.legcuffed)
+					T.drop_inv_item_on_ground(T.legcuffed)
+				T.butchery_progress = 5 //Won't really matter.
+				playsound(loc, 'sound/weapons/slice.ogg', 25)
+				src << "\blue You finish butchering!"
+				cdel(T)
+			else
+				src << "You pause your butchering for later."
+	else
+		var/limb = ""
+		switch(procedure)
+			if ("")
+				src << "You pause your butchering for later."
+				return
+			if ("Behead")
+				limb = "head"
+			if ("Delimb - right hand")
+				limb = "r_hand"
+			if ("Delimb - left hand")
+				limb = "l_hand"
+			if ("Delimb - right arm")
+				limb = "r_arm"
+			if ("Delimb - left arm")
+				limb = "l_arm"
+			if ("Delimb - right foot")
+				limb = "r_foot"
+			if ("Delimb - left foot")
+				limb = "l_foot"
+			if ("Delimb - right leg")
+				limb = "r_leg"
+			if ("Delimb - left leg")
+				limb = "l_leg"
+
+		var/limbName = parse_zone(limb)
+		var/mob/living/carbon/human/H = T
+		if(H.get_limb(limb).status & LIMB_DESTROYED)
+			src << "The victim lacks a [limbName]."
+			return
+		if(limb == "head")
+			visible_message("<b>[src] reaches down and starts beheading [T].</b>","<b>You reach down and start beheading [T].</b>")
 		else
-			src << "You pause your butchering for later."
+			visible_message("<b>[src] reaches down and starts removing [T]'s [limbName].</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
+		if(do_after(src,90, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
+			if(H.get_limb(limb).status & LIMB_DESTROYED)
+				src << "The victim lacks a [limbName]."
+				return
+			H.get_limb(limb).droplimb(1)
+			playsound(loc, 'sound/weapons/slice.ogg', 25)
+			H.butchery_progress = 0
+			src << "\blue You finish butchering!"
 
 	return
 

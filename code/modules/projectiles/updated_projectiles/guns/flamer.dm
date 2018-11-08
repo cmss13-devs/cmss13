@@ -200,45 +200,7 @@
 	if (locate(/obj/flamer_fire) in T)
 		return
 
-	new /obj/flamer_fire(T, heat, burn, f_color)
-
-	// Melt a single layer of snow
-	if (istype(T, /turf/open/snow))
-		var/turf/open/snow/S = T
-
-		if (S.slayer > 0)
-			S.slayer -= 1
-			S.update_icon(1, 0)
-
-	for(var/mob/living/M in T) //Deal bonus damage if someone's caught directly in initial stream
-		if(M.stat == DEAD)
-			continue
-
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
-			if(X.caste.fire_immune)
-				continue
-			if(X.burrow)
-				continue
-		else if(ishuman(M))
-			var/mob/living/carbon/human/H = M //fixed :s
-
-			if(user)
-				if(user.mind && !user.mind.special_role && H.mind && !H.mind.special_role)
-					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_ff("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
-				else
-					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire)) continue
-
-		M.adjust_fire_stacks(rand(5,burn*2))
-		M.IgniteMob()
-		M.adjustFireLoss(rand(burn,(burn*2))) // Make it so its the amount of heat or twice it for the initial blast.
-		M << "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!"
+	new /obj/flamer_fire(T, heat, burn, f_color, user)
 
 /obj/item/weapon/gun/flamer/proc/triangular_flame(var/atom/target, var/mob/living/user, var/burntime, var/burnlevel)
 	set waitfor = 0
@@ -374,7 +336,7 @@
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
 
-/obj/flamer_fire/New(loc, fire_lvl, burn_lvl, f_color, fire_spread_amount)
+/obj/flamer_fire/New(turf/loc, fire_lvl, burn_lvl, f_color, fire_spread_amount, mob/living/user)
 	..()
 	if (f_color)
 		flame_color = f_color
@@ -397,7 +359,47 @@
 						new_spread_amt = 0
 						break
 			spawn(0) //delay so the newer flame don't block the spread of older flames
-				new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt)
+				new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user)
+
+	//Apply fire effects onto everyone in the fire
+
+	// Melt a single layer of snow
+	if (istype(loc, /turf/open/snow))
+		var/turf/open/snow/S = loc
+
+		if (S.slayer > 0)
+			S.slayer -= 1
+			S.update_icon(1, 0)
+
+	for(var/mob/living/M in loc) //Deal bonus damage if someone's caught directly in initial stream
+		if(M.stat == DEAD)
+			continue
+
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/X = M
+			if(X.caste.fire_immune)
+				continue
+			if(X.burrow)
+				continue
+		else if(ishuman(M))
+			var/mob/living/carbon/human/H = M //fixed :s
+
+			if(user)
+				if(user.mind && !user.mind.special_role && H.mind && !H.mind.special_role)
+					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
+					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
+					msg_admin_ff("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
+				else
+					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
+					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
+					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
+
+			if(istype(H.wear_suit, /obj/item/clothing/suit/fire)) continue
+
+		M.adjust_fire_stacks(rand(5,burn_lvl*2))
+		M.IgniteMob()
+		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.
+		M << "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!"
 
 
 /obj/flamer_fire/Dispose()

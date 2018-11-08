@@ -377,7 +377,7 @@
 	icon = 'icons/Marine/marine-weapons.dmi'
 	icon_state = "armor_case"
 	w_class = 5
-	storage_slots = 8
+	storage_slots = 10
 	slowdown = 1
 	can_hold = list()
 	foldable = null
@@ -395,6 +395,8 @@
 			new /obj/item/ammo_magazine/flamer_tank/large(src)
 			new /obj/item/ammo_magazine/flamer_tank/large/B(src)
 			new /obj/item/ammo_magazine/flamer_tank/large/X(src)
+			new /obj/item/tool/extinguisher(src)
+			new /obj/item/tool/extinguisher/mini(src)
 
 
 

@@ -850,17 +850,12 @@
 		smoke.set_up(1, T)
 		smoke.start()
 		if(locate(/obj/flamer_fire) in T) return
-		new /obj/flamer_fire(T, pick(15, 20, 25, 30))
+		new /obj/flamer_fire(T, pick(15, 20, 25, 30), 15, fire_spread_amount = 2)
 
-		for(var/mob/living/carbon/M in range(3, T))
-			if(isXeno(M))
-				var/mob/living/carbon/Xenomorph/X = M
-				if(X.caste.fire_immune) continue
+		var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
+		landingSmoke.set_up(3, 0, T, null, 6)
+		landingSmoke.start()
 
-			if(M.stat == DEAD) continue
-			M.adjust_fire_stacks(rand(5, 25))
-			M.IgniteMob()
-			M.visible_message("<span class='danger'>[M] bursts into flames!</span>","[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]You burst into flames!</span>")
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
 		drop_flame(get_turf(M))

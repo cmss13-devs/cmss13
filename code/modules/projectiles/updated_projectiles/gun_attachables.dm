@@ -862,32 +862,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 		new/obj/flamer_fire(T)
-	else return
 
-	for(var/mob/living/carbon/M in T) //Deal bonus damage if someone's caught directly in initial stream
-		if(M.stat == DEAD)		continue
-
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
-			if(X.caste.fire_immune) 	continue
-		else if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-
-			if(user)
-				if(user.mind && !user.mind.special_role && H.mind && !H.mind.special_role)
-					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_ff("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
-				else
-					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire) || istype(H.wear_suit,/obj/item/clothing/suit/space/rig/atmos)) continue
-
-		M.adjust_fire_stacks(rand(3,5))
-		M.adjustFireLoss(rand(20,40))  //fwoom!
-		M << "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!"
 
 /obj/item/attachable/attached_gun/shotgun
 	name = "masterkey shotgun"

@@ -417,7 +417,7 @@
 				if(!Z.caste.fire_immune)
 					Z.adjust_fire_stacks(burnlevel)
 					Z.IgniteMob()
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire))
+			if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
 				H.show_message(text("Your suit protects you from the flames."),1)
 				H.adjustFireLoss(burnlevel*0.25) //Does small burn damage to a person wearing one of the suits.
 				return
@@ -471,7 +471,7 @@
 			var/mob/living/I = i
 			if(ishuman(I))
 				var/mob/living/carbon/human/M = I
-				if(istype(M.wear_suit, /obj/item/clothing/suit/fire) || istype(M.wear_suit,/obj/item/clothing/suit/space/rig/atmos))
+				if(istype(M.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(M.wear_suit, /obj/item/clothing/suit/fire) || istype(M.wear_suit,/obj/item/clothing/suit/space/rig/atmos))
 					M.show_message(text("Your suit protects you from the flames."),1)
 					M.adjustFireLoss(rand(0 ,burnlevel*0.25)) //Does small burn damage to a person wearing one of the suits.
 					continue

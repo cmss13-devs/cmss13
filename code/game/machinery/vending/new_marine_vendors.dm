@@ -669,6 +669,69 @@
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
 
+/obj/machinery/marine_selector/clothes/synth
+	req_access = list(ACCESS_MARINE_COMMANDER)
+	vendor_role = "Synthetic"
+
+	listed_products = list(
+							list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "orange"),
+
+							list("UNIFORM (choose 1)", 0, null, null, null),
+							list("Uniform, standard Synth", 0, /obj/item/clothing/under/rank/synthetic, MARINE_CAN_BUY_UNIFORM, "orange"),
+							list("Medical scrubs, green", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, "black"),
+
+							list("WEBBING (choose 1)", 0, null, null, null),
+							list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+							list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ATTACHMENT, "black"),
+
+							list("SHOES (choose 1)", 0, null, null, null),
+							list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "black"),
+							list("Shoes, white", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, "orange"),
+
+							list("HELMET (choose 1)", 0, null, null, null),
+							list("Hard hat, orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, "black"),
+							list("Surgical cap, green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, "black"),
+							list("Welding helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, "black"),
+
+							list("GLASSES (choose 1)", 0, null, null, null),
+							list("Welding glasses", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, "black"),
+							list("Medical HUD glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, "black"),
+
+							list("SUIT (choose 1)", 0, null, null, null),
+							list("Hazard vest", 0, /obj/item/clothing/suit/storage/hazardvest, MARINE_CAN_BUY_ARMOR, "orange"),
+
+							list("GLOVES (choose 1)", 0, null, null, null),
+							list("Insulated gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, "orange"),
+							list("Latex gloves", 0, /obj/item/clothing/gloves/latex, MARINE_CAN_BUY_GLOVES, "black"),
+
+							list("BACKPACK (choose 1)", 0, null, null, null),
+							list("Satchel, standard", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, "orange"),
+							list("Backpack, industrial", 0, /obj/item/storage/backpack/industrial, MARINE_CAN_BUY_BACKPACK, "black"),
+							list("Backpack, medic", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, "black"),
+							list("Backpack, standard", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
+							list("Backpack, tech", 0, /obj/item/storage/backpack/marine/tech, MARINE_CAN_BUY_BACKPACK, "black"),
+							list("Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack, MARINE_CAN_BUY_BACKPACK, "black"),
+
+							list("BELT (choose 1)", 0, null, null, null),
+							list("Lifesaver belt", 0, /obj/item/storage/belt/combatLifesaver, MARINE_CAN_BUY_BELT, "black"),
+							list("Medical belt", 0, /obj/item/storage/belt/medical, MARINE_CAN_BUY_BELT, "black"),
+							list("Tool belt", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, "orange"),
+
+							list("POUCHES (choose 2)", 0, null, null, null),
+							list("Autoinjector pouch", 0, /obj/item/storage/pouch/autoinjector, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Construction pouch", 0, /obj/item/storage/pouch/construction, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Document pouch", 0, /obj/item/storage/pouch/document, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Electronics pouch", 0, /obj/item/storage/pouch/electronics/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Firstaid pouch", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Flare pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Large general pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Medical pouch", 0, /obj/item/storage/pouch/medical, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Medkit pouch", 0, /obj/item/storage/pouch/medkit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+							list("Tools pouch", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+							list("MASKS", 0, null, null, null),
+							list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, "black"),
+							)
 
 
 ////////////////////// Gear ////////////////////////////////////////////////////////
@@ -890,6 +953,61 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 							)
 
 
+
+/obj/machinery/marine_selector/gear/synth
+	req_access = list(ACCESS_MARINE_COMMANDER)
+	vendor_role = "Synthetic"
+
+	listed_products = list(
+							list("ENGINEER SUPPLIES", 0, null, null, null),
+							list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, "black"),
+							list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, "black"),
+							list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, "black"),
+							list("Entrenching tool", 2, /obj/item/tool/shovel/etool, null, "black"),
+							list("High capacity powercell", 3, /obj/item/cell/high, null, "black"),
+							list("Multitool", 4, /obj/item/device/multitool, null, "black"),
+							list("Power control module", 2, /obj/item/circuitboard/apc, null, "black"),
+							list("Airlock electronics", 2, /obj/item/circuitboard/airlock, null, "black"),
+							list("Welding glasses", 4, /obj/item/clothing/glasses/welding, null, "black"),
+
+
+							list("MEDICAL SUPPLIES", 0, null, null, null),
+							list("Medical splints", 1, /obj/item/stack/medical/splint, null, "black"),
+							list("Adv trauma kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, "black"),
+							list("Adv burn kit", 2, /obj/item/stack/medical/advanced/ointment, null, "black"),
+							list("Roller Bed", 4, /obj/item/roller, null, "black"),
+							list("Medevac Bed", 6, /obj/item/roller/medevac, null, "black"),
+							list("Firstaid kit", 6, /obj/item/storage/firstaid/regular, null, "black"),
+							list("Advanced firstaid kit", 12, /obj/item/storage/firstaid/adv, null, "black"),
+							list("Stasis bag", 6, /obj/item/bodybag/cryobag, null, "black"),
+
+							list("Pillbottle (QuickClot)", 4, /obj/item/storage/pill_bottle/quickclot, null, "black"),
+							list("Pillbottle (Bicaridine)", 4, /obj/item/storage/pill_bottle/bicaridine, null, "black"),
+							list("Pillbottle (Kelotane)", 4, /obj/item/storage/pill_bottle/kelotane, null, "black"),
+							list("Pillbottle (Dylovene)", 4, /obj/item/storage/pill_bottle/antitox, null, "black"),
+							list("Pillbottle (Dexalin)", 4, /obj/item/storage/pill_bottle/dexalin, null, "black"),
+							list("Pillbottle (Tramadol)", 4, /obj/item/storage/pill_bottle/tramadol, null, "black"),
+							list("Pillbottle (Inaprovaline)", 4, /obj/item/storage/pill_bottle/inaprovaline, null, "black"),
+							list("Pillbottle (Peridaxon)", 4, /obj/item/storage/pill_bottle/peridaxon, null, "black"),
+							list("Pillbottle (Spaceacillin)", 4, /obj/item/storage/pill_bottle/spaceacillin, null, "black"),
+
+							list("Injector (Inaprovaline)", 1, /obj/item/reagent_container/hypospray/autoinjector/Inaprovaline, null, "black"),
+							list("Injector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/Bicard, null, "black"),
+							list("Injector (Kelotane)", 1, /obj/item/reagent_container/hypospray/autoinjector/Kelo, null, "black"),
+							list("Injector (Dylovene)", 1, /obj/item/reagent_container/hypospray/autoinjector/Dylovene, null, "black"),
+							list("Injector (Dexalin+)", 1, /obj/item/reagent_container/hypospray/autoinjector/dexP, null, "black"),
+							list("Injector (QuickClot)", 1, /obj/item/reagent_container/hypospray/autoinjector/quickclot, null, "black"),
+							list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/Oxycodone, null, "black"),
+							list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, "black"),
+
+							list("Health analyzer", 4, /obj/item/device/healthanalyzer, null, "black"),
+							list("Medical HUD glasses", 4, /obj/item/clothing/glasses/hud/health, null, "black"),
+
+
+							list("OTHER SUPPLIES", 0, null, null, null),
+							list("Motion detector", 5, /obj/item/device/motiondetector, null, "black"),
+							list("Whistle", 5, /obj/item/device/whistle, null, "black"),
+							)
 
 //Five global lists - one for each slot - so that two tankers can't each get five items
 

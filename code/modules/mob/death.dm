@@ -3,7 +3,8 @@
 /mob/proc/gib()
 	death(1)
 	gib_animation()
-	spawn_gibs()
+	if (map_tag != MAP_WHISKEY_OUTPOST)
+		spawn_gibs()
 	cdel(src)
 
 

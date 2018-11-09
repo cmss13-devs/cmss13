@@ -147,7 +147,7 @@
 
 			var/obj/item/card/id/dogtag/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
-			W.access = list()
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
 			W.assignment = "Squad Marine"
 			W.rank = "Squad Marine"
 			W.registered_name = M.real_name
@@ -162,16 +162,21 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(M), WEAR_JACKET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(M), WEAR_HEAD)
-			M.equip_to_slot_or_del(new /obj/item/storage/belt/marine(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(M), WEAR_J_STORE)
 			M.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(M), WEAR_L_HAND)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(M), WEAR_HANDS)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(M.back), WEAR_IN_BACK)
 
 			var/obj/item/card/id/dogtag/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
-			W.access = list()
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
 			W.assignment = "Squad Marine"
 			W.rank = "Squad Marine"
 			W.registered_name = M.real_name
@@ -186,7 +191,7 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(M), WEAR_JACKET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(M), WEAR_HEAD)
-			M.equip_to_slot_or_del(new /obj/item/storage/belt/marine(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(M), WEAR_J_STORE)
@@ -196,7 +201,7 @@
 
 			var/obj/item/card/id/dogtag/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
-			W.access = list()
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 			W.assignment = "Squad Smartgunner"
 			W.rank = "Squad Smartgunner"
 			W.registered_name = M.real_name
@@ -242,14 +247,14 @@
 
 			M.equip_to_slot_or_del(L, WEAR_HEAD)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(M), WEAR_JACKET)
-			M.equip_to_slot_or_del(new /obj/item/storage/belt/marine(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/full(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(M), WEAR_J_STORE)
 			M.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(M), WEAR_L_HAND)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(M), WEAR_HANDS)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(M), WEAR_EYES)
-
+		
 			var/obj/item/card/id/dogtag/W = new(M)
 			W.name = "[M.real_name]'s ID Card (Combat Synth)"
 			W.access = list()
@@ -266,26 +271,38 @@
 
 		if("USCM Specialist (Armor)")
 			if(M.mind)
-				M.mind.role_comm_title = "Spc"
-				M.mind.assigned_role = "Squad Specialist"
+				if(!map_tag == MAP_WHISKEY_OUTPOST)
+					M.mind.role_comm_title = "Spc"
+					M.mind.assigned_role = "Squad Specialist"
+				if(map_tag == MAP_WHISKEY_OUTPOST)
+					M.mind.role_comm_title = "aSL"
+					M.mind.assigned_role = "acting Squad Leader"
 				M.mind.set_cm_skills(/datum/skills/specialist) //skills are set before equipment because of skill restrictions on certain clothes.
 
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/specialist(M), WEAR_JACKET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/specialist(M), WEAR_HEAD)
-			M.equip_to_slot_or_del(new /obj/item/storage/belt/marine(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(M), WEAR_FACE)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(M), WEAR_J_STORE)
 			M.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(M), WEAR_L_HAND)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/specialist(M), WEAR_HANDS)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(M.back), WEAR_IN_BACK)
 
 			var/obj/item/card/id/dogtag/W = new(M)
 			W.name = "[M.real_name]'s ID Card"
-			W.access = list()
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 			W.assignment = "Squad Specialist"
 			W.rank = "Squad Specialist"
+			if(map_tag == MAP_WHISKEY_OUTPOST)
+				W.assignment = "Squad Leader"
+				W.rank = "Squad Specialist"
 			W.registered_name = M.real_name
 			W.paygrade = "E5"
 			M.equip_to_slot_or_del(W, WEAR_ID)

@@ -21,6 +21,10 @@
 			latejoin += loc
 			cdel(src)
 
+		if("latewhiskey")
+			latewhiskey += loc
+			cdel(src)
+
 		if("JoinLateGateway")
 			latejoin_gateway += loc
 			cdel(src)

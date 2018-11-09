@@ -327,9 +327,12 @@
 
 		var/datum/spawnpoint/S //We need to find a spawn location for them.
 		var/turf/T
-		if(spawning_at) S = spawntypes[spawning_at]
-		if(istype(S)) 	T = pick(S.turfs)
-		else 			T = pick(latejoin)
+		if(map_tag != MAP_WHISKEY_OUTPOST)
+			if(spawning_at) S = spawntypes[spawning_at]
+			if(istype(S)) 	T = pick(S.turfs)
+			else 			T = pick(latejoin)
+		else if (map_tag == MAP_WHISKEY_OUTPOST)
+			T = pick(latewhiskey)
 
 		var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
 		RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
@@ -338,6 +341,8 @@
 
 		ticker.mode.latespawn(character)
 		data_core.manifest_inject(character)
+		if(map_tag == MAP_WHISKEY_OUTPOST)
+			call(/datum/game_mode/whiskey_outpost/proc/spawn_player)(character)
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 		ticker.mode.latejoin_tally++
 

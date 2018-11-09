@@ -8,8 +8,9 @@ var/list/USCMFaxes = list()							//List of all USCM faxes sent this round
 var/list/active_tracking_beacons = list()			//List of all active squad tracking beacons
 
 //Names of maps that can be compiled on
-var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_ICE_COLONY, MAP_BIG_RED, MAP_PRISON_STATION)
-var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy()
+var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_ICE_COLONY, MAP_BIG_RED, MAP_PRISON_STATION, MAP_WHISKEY_OUTPOST)
+var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST)
+var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy() - NOTVOTABLE_MAPS
 
 //List of player votes. Name of the map from NEXT_MAP_CANDIADATES indexed by ckey
 var/list/player_votes = list()
@@ -36,6 +37,8 @@ var/global/list/living_misc_mobs = list() // anything that isnt a xeno or human
 var/global/list/dead_hardcore_xeno_list = list() // mostly for WO clean up
 
 var/global/list/xeno_datum_list = list() // multi-d list of xeno datums
+
+var/global/list/whiskey_outpost_waves = list()
 
 var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
 var/global/list/chemical_reactions_list				//List of all /datum/chemical_reaction datums. Used during chemical reactions
@@ -209,6 +212,14 @@ var/global/list/backbaglist = list("Backpack", "Satchel")
 		if(!(CD.caste_name in xeno_datum_list))
 			xeno_datum_list[CD.caste_name] = list(1,2,3,4) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
 		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
+
+	//  WO waves
+	paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)
+	for(var/T in paths)
+		var/datum/whiskey_outpost_wave/WOW = new T
+		if(WOW.wave_number > 0)
+			whiskey_outpost_waves += WOW.wave_number
+			whiskey_outpost_waves[WOW.wave_number] = WOW
 	return 1
 
 /* // Uncomment to debug chemical reaction list.

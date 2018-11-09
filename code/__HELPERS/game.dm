@@ -326,7 +326,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 			continue
 
 		// Admins and AFK players cannot be drafted
-		if (O.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5 || istype(O.client.holder, /datum/admins))
+		if (O.client.inactivity / 600 > ALIEN_SELECT_AFK_BUFFER + 5 || (istype(O.client.holder, /datum/admins) && O.adminlarva == 0))
 			continue
 
 		candidates += O.client

@@ -2,6 +2,7 @@
 var/list/admin_verbs_default = list(
 	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 	/client/proc/toggleadminhelpsound,	/*toggles whether we hear a sound when adminhelps/PMs are used*/
+	/client/proc/becomelarva,			/*lets you forgo your larva protection as staff member. */
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
 	/client/proc/hide_most_verbs,		/*hides all our hideable adminverbs*/
@@ -984,3 +985,16 @@ var/list/admin_verbs_mentor = list(
 
 	log_admin("Admin [key_name_admin(usr)] set the away_timer of nearby clientless Xenos to 300.", 1)
 	message_admins("<b>[key_name(src)]</b> set the away_timer of nearby clientless Xenos to 300.", 1)
+
+/client/proc/becomelarva()
+	set name = "Lose larva Protection"
+	set desc = "Remove your protection from becoming a larva."
+	set category = "Admin"
+	if(!holder)	return
+	if(istype(mob,/mob/dead/observer))
+		var/mob/dead/observer/ghost = mob
+		ghost.adminlarva = 1
+	else if(istype(mob,/mob/new_player))
+		src << "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>"
+	else
+		src << "<font color='red'>Error: Lose larva Protection: You must be a ghost to use this.</font>"

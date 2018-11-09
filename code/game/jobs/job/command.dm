@@ -55,7 +55,7 @@ Godspeed, commander!"}
 
 	announce_entry_message(mob/living/carbon/human/H)
 		sleep(15)
-		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
+		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
 		..()
 
 	get_access() return get_all_marine_access()

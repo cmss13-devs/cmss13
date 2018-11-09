@@ -402,3 +402,7 @@
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/binoculars/tactical/range(src)
+
+/obj/structure/mortar/wo
+	offset_per_turfs = 0
+	fixed = 1

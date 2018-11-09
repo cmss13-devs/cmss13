@@ -536,7 +536,7 @@ roles willy nilly.
 	//Non-standards are distributed regardless of squad population.
 	//If the number of available positions for the job are more than max_whatever, it will break.
 	//Ie. 8 squad medic jobs should be available, and total medics in squads should be 8.
-	if(H.mind.assigned_role != "Squad Marine")
+	if(H.mind.assigned_role != "Squad Marine" && H.mind.assigned_role != "Reinforcements")
 		var/pref_squad_name
 		if(H && H.client && H.client.prefs.preferred_squad && H.client.prefs.preferred_squad != "None")
 			pref_squad_name = H.client.prefs.preferred_squad
@@ -608,7 +608,9 @@ roles willy nilly.
 							lowest = S
 						else if(S.num_smartgun < lowest.num_smartgun)
 							lowest = S
-
+		if(!lowest)
+			var/ranpick = rand(1,4)
+			lowest = mixed_squads[ranpick]
 		if(lowest)	lowest.put_marine_in_squad(H)
 		else H << "Something went badly with randomize_squad()! Tell a coder!"
 

@@ -993,7 +993,14 @@ var/list/admin_verbs_mentor = list(
 	if(!holder)	return
 	if(istype(mob,/mob/dead/observer))
 		var/mob/dead/observer/ghost = mob
-		ghost.adminlarva = 1
+		if(ghost.adminlarva == 0)
+			ghost.adminlarva = 1
+			usr << "<span class='boldnotice'>You have disabled your larva protection.</span>"
+		else if(ghost.adminlarva == 1)
+			ghost.adminlarva = 0
+			usr << "<span class='boldnotice'>You have re-activated your larva protection.</span>"
+		else
+			usr << "<span class='boldnotice'>Something went wrong tell a coder</span>"
 	else if(istype(mob,/mob/new_player))
 		src << "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>"
 	else

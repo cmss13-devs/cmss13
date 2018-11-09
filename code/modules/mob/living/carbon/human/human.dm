@@ -51,7 +51,11 @@
 	//and display them
 	add_to_all_mob_huds()
 
-
+/mob/living/carbon/human/proc/ResetLanguages()
+	languages = list()
+	add_language("English")
+	species.language = "English"
+	species.default_language = "English"
 
 /mob/living/carbon/human/Dispose()
 	if(assigned_squad)

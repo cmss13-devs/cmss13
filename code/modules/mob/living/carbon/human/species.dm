@@ -635,7 +635,11 @@
 
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.universal_understand = 1
+	H.add_language("English")
+	H.add_language("Russian")
+	H.add_language("Tradeband")
+	H.add_language("Sainja")
+	H.add_language("Xenomorph")
 	living_human_list -= H
 	return ..()
 

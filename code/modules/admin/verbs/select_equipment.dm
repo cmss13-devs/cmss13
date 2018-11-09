@@ -139,6 +139,8 @@
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
 /mob/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode)
+	M.ResetLanguages()
+
 	switch(dresscode)
 		if ("strip")
 			//do nothing
@@ -669,6 +671,8 @@
 			W.paygrade = "E1"
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -709,6 +713,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 
 			if(M.mind)
@@ -750,6 +756,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 
 			if(M.mind)
@@ -790,6 +798,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 			if(M.mind)
 				M.mind.role_comm_title = "SL"
@@ -837,6 +847,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -883,6 +895,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 			if(M.mind)
 				M.mind.role_comm_title = "Cpl"
@@ -929,6 +943,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
+			M.species.language = "Russian"
+			M.species.default_language = "Russian"
 
 
 			if(M.mind)
@@ -961,6 +977,10 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
+
+			M.add_language("Tradeband")
+			M.species.language = "Tradeband"
+			M.species.default_language = "Tradeband"
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -998,6 +1018,10 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
+			
+			M.add_language("Tradeband")
+			M.species.language = "Tradeband"
+			M.species.default_language = "Tradeband"
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -1030,6 +1054,10 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
+			
+			M.add_language("Tradeband")
+			M.species.language = "Tradeband"
+			M.species.default_language = "Tradeband"
 
 			if(M.mind)
 				M.mind.role_comm_title = "Lead"
@@ -1253,6 +1281,7 @@
 			W.registered_name = M.real_name
 			W.paygrade = "E6E"
 			M.equip_if_possible(W, WEAR_ID)
+			M.add_language("Russian")//can speak russian, but it's not default
 
 			if(M.mind)
 				M.mind.role_comm_title = "MT"

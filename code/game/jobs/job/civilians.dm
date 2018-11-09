@@ -258,8 +258,6 @@ Best to let the mercs do the killing and the dying, but remind them who pays the
 			WEAR_WAIST = /obj/item/storage/belt/utility/full,
 			WEAR_HANDS = /obj/item/clothing/gloves/yellow,
 			WEAR_BACK = backItem,
-			WEAR_R_STORE = /obj/item/storage/pouch/general/medium,
-			WEAR_L_STORE = /obj/item/storage/pouch/general/medium
 		)
 
 	generate_entry_conditions(mob/living/carbon/human/H)

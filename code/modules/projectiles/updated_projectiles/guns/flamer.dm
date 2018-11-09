@@ -200,7 +200,7 @@
 	if (locate(/obj/flamer_fire) in T)
 		return
 
-	new /obj/flamer_fire(T, heat, burn, f_color, user)
+	new /obj/flamer_fire(T, heat, burn, f_color, 0, user)
 
 /obj/item/weapon/gun/flamer/proc/triangular_flame(var/atom/target, var/mob/living/user, var/burntime, var/burnlevel)
 	set waitfor = 0

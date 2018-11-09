@@ -295,6 +295,7 @@ cases. Override_icon_state should be a list.*/
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
+	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	return
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -315,6 +316,7 @@ cases. Override_icon_state should be a list.*/
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
 /obj/item/proc/equipped(mob/user, slot)
+	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	for(var/X in actions)
 		var/datum/action/A = X
 		if(item_action_slot_check(user, slot)) //some items only give their actions buttons when in a specific slot.

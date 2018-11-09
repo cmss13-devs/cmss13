@@ -92,6 +92,12 @@
 		"USCM Officer (USCM Command)",
 		"USCM Admiral (USCM Command)",
 		"USCM Combat Synth (Smartgunner)",
+		"Dust Raider Squad Leader",
+		"Dust Raider Specialist",
+		"Dust Raider Smartgunner",
+		"Dust Raider Engineer",
+		"Dust Raider Medic",
+		"Dust Raider Private",
 		"Weyland-Yutani PMC (Standard)",
 		"Weyland-Yutani PMC (Leader)",
 		"Weyland-Yutani PMC (Gunner)",
@@ -273,12 +279,8 @@
 
 		if("USCM Specialist (Armor)")
 			if(M.mind)
-				if(!map_tag == MAP_WHISKEY_OUTPOST)
-					M.mind.role_comm_title = "Spc"
-					M.mind.assigned_role = "Squad Specialist"
-				if(map_tag == MAP_WHISKEY_OUTPOST)
-					M.mind.role_comm_title = "aSL"
-					M.mind.assigned_role = "acting Squad Leader"
+				M.mind.role_comm_title = "Spc"
+				M.mind.assigned_role = "Squad Specialist"
 				M.mind.set_cm_skills(/datum/skills/specialist) //skills are set before equipment because of skill restrictions on certain clothes.
 
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
@@ -302,15 +304,156 @@
 			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 			W.assignment = "Squad Specialist"
 			W.rank = "Squad Specialist"
-			if(map_tag == MAP_WHISKEY_OUTPOST)
-				W.assignment = "Squad Leader"
-				W.rank = "Squad Specialist"
 			W.registered_name = M.real_name
 			W.paygrade = "E5"
 			M.equip_to_slot_or_del(W, WEAR_ID)
 
+		if("Dust Raider Squad Leader")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(M), WEAR_L_HAND)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41amk1(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(M), WEAR_J_STORE)
+			M.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/map/whiskey_outpost_map(M), WEAR_IN_BACK)
+			call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(M)
+			M.mind.set_cm_skills(/datum/skills/SL)
+			var/obj/item/card/id/dogtag/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+			W.registered_name = M.real_name
+			W.assignment = "Squad Leader"
+			W.rank = "Squad Leader"
+			M.mind.assigned_role = "Squad Leader"
+			M.mind.role_comm_title = "SL"
+			M.equip_to_slot_or_del(W, WEAR_ID)
 
+		if("Dust Raider Smartgunner")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(M), WEAR_R_HAND)
+			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(M), WEAR_J_STORE)
+			call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(M)
+			//Backup SMG Weapon
+			M.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(M), WEAR_L_HAND)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(M), WEAR_L_STORE)
+			M.mind.set_cm_skills(/datum/skills/smartgunner)
+			var/obj/item/card/id/dogtag/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+			W.registered_name = M.real_name
+			W.assignment = "Squad Smartgunner"
+			W.rank = "Squad Smartgunner"
+			M.mind.assigned_role = "Squad Smartgunner"
+			M.mind.role_comm_title = "LCpl"
+			M.equip_to_slot_or_del(W, WEAR_ID)
 
+		if("Dust Raider Engineer")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(M), WEAR_L_HAND)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(M), WEAR_HANDS)
+			M.equip_to_slot_or_del(new /obj/item/device/binoculars/tactical/range(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(M), WEAR_EYES)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(M), WEAR_R_STORE)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(M), WEAR_L_STORE)
+			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(M)
+			call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(M)
+			var/obj/item/card/id/dogtag/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+			W.registered_name = M.real_name
+			M.mind.set_cm_skills(/datum/skills/combat_engineer)
+			W.assignment = 	"Squad Engineer"
+			W.rank = "Squad Engineer"
+			M.mind.assigned_role = "Squad Engineer"
+			M.mind.role_comm_title = "Eng"
+			M.equip_to_slot_or_del(W, WEAR_ID)
+
+		if("Dust Raider Medic")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(M), WEAR_L_HAND)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
+			if(prob(50))
+				M.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(M), WEAR_FACE)
+			M.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/device/defibrillator(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/combatLifesaver(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(M), WEAR_EYES)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full(M), WEAR_L_STORE)
+			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(M)
+			call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(M)
+
+			var/obj/item/card/id/dogtag/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+			W.registered_name = M.real_name
+			M.mind.set_cm_skills(/datum/skills/combat_medic)
+			M.mind.role_comm_title = "Med"
+			W.assignment = "Squad Medic"
+			W.rank = "Squad Medic"
+			M.mind.assigned_role = "Squad Medic"
+			M.equip_to_slot_or_del(W, WEAR_ID)
+
+		if("Dust Raider Specialist")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/webbing(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(M), WEAR_WAIST)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(M), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(M), WEAR_L_HAND)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(M), WEAR_L_STORE)
+			call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(M)
+
+			var/obj/item/card/id/dogtag/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+			W.registered_name = M.real_name
+			M.mind.set_cm_skills(/datum/skills/specialist)
+			M.mind.role_comm_title = "Spc"
+			W.assignment = "Squad Specialist"
+			W.rank = "Squad Specialist"
+			M.mind.assigned_role = "Squad Specialist"
+			M.equip_to_slot_or_del(W, WEAR_ID)
+
+		if("Dust Raider Private")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(M), WEAR_L_HAND)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
+			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(M)
+			call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(M)
+
+			var/obj/item/card/id/dogtag/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+			W.registered_name = M.real_name
+			M.mind.set_cm_skills(/datum/skills/pfc/crafty)
+			M.mind.role_comm_title = "Pfc"
+			M.mind.assigned_role = "Squad Marine"
+			W.assignment = "Squad Marine"
+			W.rank = "Squad Marine"
+			M.equip_to_slot_or_del(W, WEAR_ID)
 		if("USCM Second-Lieutenant (SO)")
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(M), WEAR_BODY)
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(M), WEAR_HEAD)

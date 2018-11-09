@@ -87,7 +87,7 @@
 	hacking_safety = 1
 	wrenchable = FALSE
 	products = list(
-					/obj/item/storage/backpack/marine = 10,
+/obj/item/storage/backpack/marine = 10,
 					/obj/item/storage/belt/marine = 10,
 					/obj/item/storage/belt/shotgun = 6,
 					/obj/item/clothing/tie/storage/webbing = 3,
@@ -152,6 +152,72 @@
 					)
 	premium = list()
 
+/obj/machinery/vending/marine/cargo_guns/wo
+	products = list(					/obj/item/storage/backpack/marine = 10,
+					/obj/item/storage/belt/marine = 10,
+					/obj/item/storage/belt/shotgun = 10,
+					/obj/item/clothing/tie/storage/webbing = 5,
+					/obj/item/clothing/tie/storage/brown_vest = 5,
+					/obj/item/clothing/tie/holster = 5,
+					/obj/item/storage/belt/gun/m4a3 = 10,
+					/obj/item/storage/belt/gun/m44 = 5,
+					/obj/item/storage/large_holster/m39 = 5,
+					/obj/item/storage/pouch/general/medium = 3,
+					/obj/item/storage/pouch/construction = 3,
+					/obj/item/storage/pouch/document = 3,
+					/obj/item/storage/pouch/tools = 3,
+					/obj/item/storage/pouch/explosive = 1,
+					/obj/item/storage/pouch/syringe = 1,
+					/obj/item/storage/pouch/medical = 1,
+					/obj/item/storage/pouch/medkit = 1,
+					/obj/item/storage/pouch/magazine = 1,
+					/obj/item/storage/pouch/flare/full = 5,
+					/obj/item/storage/pouch/firstaid/full = 5,
+					/obj/item/storage/pouch/pistol = 10,
+					/obj/item/storage/pouch/magazine/pistol/large = 3,
+					/obj/item/weapon/gun/pistol/m4a3 = 5,
+					/obj/item/weapon/gun/pistol/m1911 = 3,
+					/obj/item/weapon/gun/revolver/m44 = 5,
+					/obj/item/weapon/gun/smg/m39 = 10,
+					/obj/item/weapon/gun/smg/m39/elite = 0,
+					/obj/item/weapon/gun/rifle/m41aMK1 = 5,
+					/obj/item/weapon/gun/rifle/m41a = 10,
+					/obj/item/weapon/gun/rifle/m41a/elite = 0,
+					/obj/item/weapon/gun/rifle/lmg = 3,
+					/obj/item/weapon/gun/shotgun/pump = 5,
+					/obj/item/weapon/gun/shotgun/combat = 3,
+					/obj/item/explosive/mine = 5,
+					/obj/item/storage/box/nade_box = 5,
+					/obj/item/explosive/grenade/HE = 1,
+					/obj/item/explosive/grenade/HE/m15 = 1,
+					/obj/item/explosive/grenade/HE = 1,
+					/obj/item/explosive/grenade/HE/m15 = 1,
+					/obj/item/explosive/grenade/incendiary = 1,
+					/obj/item/explosive/grenade/smokebomb = 1,
+					/obj/item/explosive/grenade/phosphorus = 0,
+					/obj/item/storage/box/m94 = 10,
+					/obj/item/storage/box/zipcuffs = 0,
+					/obj/item/device/flashlight/combat = 15,
+					/obj/item/clothing/mask/gas = 10
+					)
+					
+
+	contraband = list(
+					/obj/item/weapon/gun/pistol/holdout = 0,
+					/obj/item/weapon/gun/pistol/heavy = 0,
+					/obj/item/weapon/gun/pistol/highpower = 0,
+					/obj/item/weapon/gun/pistol/vp70 = 0,
+					/obj/item/weapon/gun/revolver/small = 0,
+					/obj/item/weapon/gun/revolver/cmb = 0,
+					/obj/item/weapon/gun/shotgun/merc = 0,
+					/obj/item/weapon/gun/shotgun/pump/cmb = 0,
+					/obj/item/weapon/gun/shotgun/double = 0,
+					/obj/item/weapon/gun/smg/mp7 = 0,
+					/obj/item/weapon/gun/smg/skorpion = 0,
+					/obj/item/weapon/gun/smg/uzi = 0,
+					/obj/item/weapon/gun/smg/p90 = 0
+					)
+	premium = list()
 
 /obj/machinery/vending/marine/cargo_guns/select_gamemode_equipment(gamemode)
 	return
@@ -218,7 +284,36 @@
 					)
 	premium = list()
 
-
+/obj/machinery/vending/marine/cargo_ammo/wo
+	products = list(
+					///obj/item/weapon/claymore/mercsword/machete = 5,
+					/obj/item/storage/large_holster/machete/full = 6,
+					/obj/item/ammo_magazine/pistol = 10,
+					/obj/item/ammo_magazine/pistol/hp = 3,
+					/obj/item/ammo_magazine/pistol/ap = 3,
+					/obj/item/ammo_magazine/pistol/incendiary = 1,
+					/obj/item/ammo_magazine/pistol/extended = 1,
+					/obj/item/ammo_magazine/pistol/m1911 = 1,
+					/obj/item/ammo_magazine/revolver = 10,
+					/obj/item/ammo_magazine/revolver/marksman = 2,
+					/obj/item/ammo_magazine/smg/m39 = 15,
+					/obj/item/ammo_magazine/smg/m39/ap = 5,
+					/obj/item/ammo_magazine/smg/m39/extended = 1,
+					/obj/item/ammo_magazine/rifle = 15,
+					/obj/item/ammo_magazine/rifle/extended = 3,
+					/obj/item/ammo_magazine/rifle/incendiary = 3,
+					/obj/item/ammo_magazine/rifle/ap = 10,
+					/obj/item/ammo_magazine/rifle/m4ra = 1,
+					/obj/item/ammo_magazine/rifle/m41aMK1 = 20,
+					/obj/item/ammo_magazine/rifle/lmg = 5,
+					/obj/item/ammo_magazine/shotgun = 5,
+					/obj/item/ammo_magazine/shotgun/buckshot = 5,
+					/obj/item/ammo_magazine/shotgun/flechette = 5,
+					/obj/item/ammo_magazine/sniper = 1,
+					/obj/item/ammo_magazine/sniper/incendiary = 1,
+					/obj/item/ammo_magazine/sniper/flak = 1,
+					/obj/item/smartgun_powerpack = 5
+					)
 /obj/machinery/vending/marine/cargo_ammo/select_gamemode_equipment(gamemode)
 	return
 

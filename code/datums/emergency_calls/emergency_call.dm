@@ -108,8 +108,9 @@
 	var/deathtime = world.time - usr.timeofdeath
 
 	if(deathtime < 600) //Nice try, ghosting right after the announcement
-		usr << "<span class='warning'>You ghosted too recently.</span>"
-		return
+		if (map_tag != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
+			usr << "<span class='warning'>You ghosted too recently.</span>"
+			return
 
 	if(!ticker.mode.waiting_for_candidates)
 		usr << "<span class='warning'>The emergency response team has already been selected.</span>"

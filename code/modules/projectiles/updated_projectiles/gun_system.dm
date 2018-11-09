@@ -417,15 +417,16 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		var/sound_to_play = casing_type == "shell" ? 'sound/weapons/bulletcasing_shotgun_fall.ogg' : pick('sound/weapons/bulletcasing_fall2.ogg','sound/weapons/bulletcasing_fall.ogg')
 		var/turf/current_turf = get_turf(src)
 		var/new_casing = text2path("/obj/item/ammo_casing/[casing_type]")
-		var/obj/item/ammo_casing/casing = locate(new_casing) in current_turf
-		if(!casing) //No casing on the ground?
-			casing = new new_casing(current_turf)
-			num_of_casings--
-			playsound(current_turf, sound_to_play, 25, 1, 5) //Played again if necessary.
-		if(num_of_casings) //Still have some.
-			casing.current_casings += num_of_casings
-			casing.update_icon()
-			playsound(current_turf, sound_to_play, 25, 1, 5)
+		if (!map_tag == MAP_WHISKEY_OUTPOST)
+			var/obj/item/ammo_casing/casing = locate(new_casing) in current_turf
+			if(!casing) //No casing on the ground?
+				casing = new new_casing(current_turf)
+				num_of_casings--
+				playsound(current_turf, sound_to_play, 25, 1, 5) //Played again if necessary.
+			if(num_of_casings) //Still have some.
+				casing.current_casings += num_of_casings
+				casing.update_icon()
+				playsound(current_turf, sound_to_play, 25, 1, 5)
 
 //----------------------------------------------------------
 			//							    \\

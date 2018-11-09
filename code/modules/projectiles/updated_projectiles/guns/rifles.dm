@@ -86,6 +86,10 @@
 /obj/item/weapon/gun/rifle/m41a/stripped
 	starting_attachment_types = list()
 
+/obj/item/weapon/gun/rifle/m41a/stripped/New()
+	select_gamemode_skin(/obj/item/weapon/gun/rifle/m41a/stripped)
+	. = ..()
+	
 //-------------------------------------------------------
 //M41A PMC VARIANT
 

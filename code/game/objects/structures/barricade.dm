@@ -838,3 +838,45 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		take_damage( 50 )
 
 	return 1
+
+/obj/structure/barricade/sandbags/wired/New()
+	if(!closed)
+		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+	else
+		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+	overlays += wired_overlay
+	maxhealth += 50
+	health += 50
+	update_health()
+	can_wire = 0
+	is_wired = 1
+	climbable = FALSE
+	. = ..()
+	
+
+/obj/structure/barricade/plasteel/wired/New()	
+	if(!closed)
+		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+	else
+		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+	overlays += wired_overlay
+	maxhealth += 50
+	health += 50
+	update_health()
+	can_wire = 0
+	is_wired = 1
+	climbable = FALSE
+	. = ..()
+/obj/structure/barricade/metal/wired/New()
+	if(!closed)
+		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+	else
+		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+	overlays += wired_overlay
+	maxhealth += 50
+	health += 50
+	update_health()
+	can_wire = 0
+	is_wired = 1
+	climbable = FALSE
+	. = ..()

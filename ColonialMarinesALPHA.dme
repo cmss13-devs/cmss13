@@ -203,6 +203,7 @@
 #include "code\datums\emergency_calls\supplies.dm"
 #include "code\datums\emergency_calls\upp.dm"
 #include "code\datums\emergency_calls\upp_commando.dm"
+#include "code\datums\emergency_calls\whiskey_outpost.dm"
 #include "code\datums\emergency_calls\xenos.dm"
 #include "code\datums\emergency_calls\zombie.dm"
 #include "code\datums\helper_datums\construction_datum.dm"

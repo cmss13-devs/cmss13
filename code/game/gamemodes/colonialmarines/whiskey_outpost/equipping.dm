@@ -161,12 +161,12 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 				WEAR_HEAD = /obj/item/clothing/head/beret/sec/alt,
 				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
 				WEAR_R_STORE = /obj/item/storage/pouch/bayonet/full,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium
+				WEAR_L_STORE = /obj/item/storage/pouch/general/medium
 				)
 
 	generate_stored_equipment()
 		. = list(
-				WEAR_J_STORE = /obj/item/weapon/gun/rifle/m41aMK1,
+				WEAR_J_STORE = /obj/item/weapon/gun/rifle/m41aMK1
 				)
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -508,14 +508,19 @@ You just gotta get out of this jungle to tell the tale!"}
 	set waitfor = 0 //Doing this before hand.
 	var/mob/living/carbon/human/H
 	var/list/spawns = list()
-	if(istype(M,/mob/living/carbon/human)) //If We started on Sulaco as squad marine
-		H = M
+	H = M
 	for(var/obj/effect/landmark/start/whiskey/W in world)
 		if(W.name == "Marine")
 			spawns += W
-	var/obj/P = pick(spawns)
-	H.loc = P.loc
-	H.key = M.key
+	for(var/L in latewhiskey)
+		spawns += L
+	if(spawns.len > 0)
+		var/obj/P = pick(spawns)
+		H.loc = P.loc
+		H.key = M.key
+	if(!H.loc)
+		var/T = pick(latewhiskey)
+		H.loc = T
 	if(H.client) H.client.change_view(world.view)
 	if(!H.mind)
 		H.mind = new(H.key)
@@ -533,6 +538,7 @@ You just gotta get out of this jungle to tell the tale!"}
 			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/map/whiskey_outpost_map(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/device/binoculars/designator(H), WEAR_IN_BACK)
 
@@ -540,12 +546,14 @@ You just gotta get out of this jungle to tell the tale!"}
 		if("Squad Specialist")
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/webbing(H), WEAR_IN_BACK)
-
+			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
@@ -556,6 +564,7 @@ You just gotta get out of this jungle to tell the tale!"}
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_R_HAND)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
 
 			//Backup SMG Weapon
@@ -572,11 +581,12 @@ You just gotta get out of this jungle to tell the tale!"}
 			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 			H.equip_to_slot_or_del(new /obj/item/device/binoculars/tactical/range(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
-			generate_random_marine_primary(H)
+			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
 		//SQUAD MEDIC
 		if("Squad Medic")
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(H), WEAR_BODY)
@@ -590,12 +600,13 @@ You just gotta get out of this jungle to tell the tale!"}
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/combatLifesaver(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full(H), WEAR_L_STORE)
-			generate_random_marine_primary(H)
+			H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
+			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
 		else
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
-			generate_random_marine_primary(H)
+			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
@@ -617,7 +628,7 @@ You just gotta get out of this jungle to tell the tale!"}
 /datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary(var/mob/living/carbon/human/H, shuffle = rand(0,10))
 	switch(shuffle)
 		if(0 to 4)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/stripped(H), WEAR_J_STORE)
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)

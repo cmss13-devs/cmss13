@@ -253,7 +253,6 @@ datum/game_mode/proc/initialize_special_clamps()
 	initialize_predator(new_predator)
 	return new_predator
 
-#undef DEBUG_PREDATOR_INITIALIZE
 
 //===================================================\\
 

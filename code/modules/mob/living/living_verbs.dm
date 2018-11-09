@@ -280,6 +280,7 @@
 							O.show_message("\red <B>[CM] manages to remove the legcuffs!</B>", 1)
 						CM << "\blue You successfully remove \the [CM.legcuffed]."
 						CM.drop_inv_item_on_ground(CM.legcuffed)
+						CM.legcuff_update()
 
 /mob/living/verb/lay_down()
 	set name = "Rest"

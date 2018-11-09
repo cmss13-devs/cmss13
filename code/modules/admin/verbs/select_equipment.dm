@@ -671,8 +671,8 @@
 			W.paygrade = "E1"
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -713,8 +713,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 
 			if(M.mind)
@@ -756,8 +756,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 
 			if(M.mind)
@@ -798,8 +798,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 			if(M.mind)
 				M.mind.role_comm_title = "SL"
@@ -847,8 +847,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -895,8 +895,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 			if(M.mind)
 				M.mind.role_comm_title = "Cpl"
@@ -943,8 +943,8 @@
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			M.add_language("Russian")
-			M.species.language = "Russian"
-			M.species.default_language = "Russian"
+
+
 
 
 			if(M.mind)
@@ -979,8 +979,8 @@
 			W.access = get_antagonist_access()
 
 			M.add_language("Tradeband")
-			M.species.language = "Tradeband"
-			M.species.default_language = "Tradeband"
+			
+			
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -1020,8 +1020,8 @@
 			W.access = get_antagonist_access()
 			
 			M.add_language("Tradeband")
-			M.species.language = "Tradeband"
-			M.species.default_language = "Tradeband"
+			
+			
 
 			if(M.mind)
 				M.mind.assigned_role = "MODE"
@@ -1056,8 +1056,8 @@
 			W.access = get_antagonist_access()
 			
 			M.add_language("Tradeband")
-			M.species.language = "Tradeband"
-			M.species.default_language = "Tradeband"
+			
+			
 
 			if(M.mind)
 				M.mind.role_comm_title = "Lead"

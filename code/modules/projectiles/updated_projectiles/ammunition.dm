@@ -177,7 +177,14 @@ bullets/shells. ~N
 		matter = list("metal" = I)
 		dir = current_rounds + round(current_rounds/3)
 
+/obj/item/ammo_magazine/handful/pickup(mob/user)
+	return
 
+/obj/item/ammo_magazine/handful/equipped(mob/user, slot)
+	var/thisDir = src.dir
+	..(user,slot)
+	dir = thisDir
+	return
 /*
 There aren't many ways to interact here.
 If the default ammo isn't the same, then you can't do much with it.

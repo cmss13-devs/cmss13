@@ -263,8 +263,6 @@
 		see_invisible = SEE_INVISIBLE_LEVEL_TWO //Turn it off.
 		see_in_dark = 4
 		sight |= SEE_MOBS
-		sight &= ~SEE_TURFS
-		sight &= ~SEE_OBJS
 	else
 		see_invisible = SEE_INVISIBLE_MINIMUM
 		see_in_dark = 8

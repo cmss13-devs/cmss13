@@ -100,6 +100,10 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
 
+/mob/living/carbon/Xenomorph/Burrower/New()
+	. = ..()
+	sight |= SEE_TURFS
+
 /mob/living/carbon/Xenomorph/Burrower/update_canmove()
 	. = ..()
 	if(burrow)

@@ -111,10 +111,7 @@
 		cdel(animation)
 
 	var/mob/living/carbon/human/O
-	if(Mo.greaterform)
-		O = new(src, Mo.greaterform)
-	else
-		O = new(src)
+	O = new(src)
 
 	if (M.dna.GetUIState(DNA_UI_GENDER))
 		O.gender = FEMALE

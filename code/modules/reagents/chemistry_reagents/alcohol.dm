@@ -44,9 +44,6 @@
 		for(var/datum/reagent/ethanol/A in holder.reagent_list)
 			if(isnum(A.data)) d += A.data
 
-		if(alien && alien == IS_SKRELL) //Skrell get very drunk very quickly.
-			d*=5
-
 		M.dizziness += dizzy_adj.
 		if(d >= slur_start && d < pass_out)
 			if(!M:slurring) M:slurring = 1

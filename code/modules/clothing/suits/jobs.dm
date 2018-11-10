@@ -11,7 +11,6 @@
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
 	allowed = list (/obj/item/reagent_container/spray/plantbgone,/obj/item/device/analyzer/plant_analyzer,/obj/item/seeds,/obj/item/reagent_container/glass/fertilizer,/obj/item/tool/minihoe)
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 //Captain
 /obj/item/clothing/suit/captunic
 	name = "captain's parade tunic"
@@ -20,7 +19,6 @@
 	item_state = "bio_suit"
 	flags_armor_protection = UPPER_TORSO|ARMS
 	flags_inv_hide = HIDEJUMPSUIT
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 
 /obj/item/clothing/suit/captunic/capjacket
 	name = "captain's uniform jacket"
@@ -37,7 +35,6 @@
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
 	flags_armor_protection = UPPER_TORSO|ARMS
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 
 //Chaplain
 /obj/item/clothing/suit/nun
@@ -47,7 +44,6 @@
 	item_state = "nun"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 
 //Chef
 /obj/item/clothing/suit/chef
@@ -59,7 +55,6 @@
 	permeability_coefficient = 0.50
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	allowed = list (/obj/item/tool/kitchen/knife,/obj/item/tool/kitchen/knife/butcher)
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 
 //Chef
 /obj/item/clothing/suit/chef/classic
@@ -102,7 +97,6 @@
 	flags_armor_protection = UPPER_TORSO|ARMS
 	allowed = list(/obj/item/tank/emergency_oxygen, /obj/item/device/flashlight,/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/storage/fancy/cigarettes,/obj/item/tool/lighter,/obj/item/device/detective_scanner,/obj/item/device/taperecorder)
 	armor = list(melee = 50, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 
 /obj/item/clothing/suit/storage/det_suit/black
 	icon_state = "detective2"
@@ -137,8 +131,6 @@
 	/obj/item/tool/crowbar, /obj/item/tool/screwdriver, /obj/item/tool/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/tank/emergency_oxygen, \
 	/obj/item/clothing/mask/gas, /obj/item/tool/taperoll/engineering)
 	flags_armor_protection = UPPER_TORSO
-
-	sprite_sheets = list("Vox" = 'icons/mob/species/vox/suit.dmi')
 
 //Lawyer
 /obj/item/clothing/suit/storage/lawyer/bluejacket

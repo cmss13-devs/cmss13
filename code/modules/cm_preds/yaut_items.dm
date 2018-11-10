@@ -280,7 +280,6 @@
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
-	species_restricted = null
 	items_allowed = list(/obj/item/weapon/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
 	var/bootnumber = 1
 
@@ -321,7 +320,6 @@
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 10, rad = 10)
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	species_restricted = null
 
 /obj/item/clothing/under/chainshirt/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -342,7 +340,6 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "bracer"
 	origin_tech = "combat=8;materials=8;magnets=8;programming=8"
-	species_restricted = null
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_item = 0

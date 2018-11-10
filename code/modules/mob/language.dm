@@ -43,45 +43,6 @@
 			return ask_verb
 	return speech_verb
 
-/datum/language/unathi
-	name = "Sinta'unathi"
-	desc = "The common language of Moghes, composed of sibilant hisses and rattles. Spoken natively by Unathi."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verb = "roars"
-	colour = "soghun"
-	key = "o"
-	flags = WHITELISTED
-
-/datum/language/tajaran
-	name = "Siik'tajr"
-	desc = "The traditionally employed tongue of Ahdomai, composed of expressive yowls and chirps. Native to the Tajaran."
-	speech_verb = "mrowls"
-	ask_verb = "mrowls"
-	exclaim_verb = "yowls"
-	colour = "tajaran"
-	key = "j"
-	flags = WHITELISTED
-
-/datum/language/skrell
-	name = "Skrellian"
-	desc = "A melodic and complex language spoken by the Skrell of Qerrbalak. Some of the notes are inaudible to humans."
-	speech_verb = "warbles"
-	ask_verb = "warbles"
-	exclaim_verb = "warbles"
-	colour = "skrell"
-	key = "k"
-	flags = WHITELISTED
-
-/datum/language/vox
-	name = "Vox-pidgin"
-	desc = "The common tongue of the various Vox ships making up the Shoal. It sounds like chaotic shrieking to everyone else."
-	speech_verb = "shrieks"
-	ask_verb = "creels"
-	exclaim_verb = "SHRIEKS"
-	colour = "vox"
-	key = "9"
-	flags = RESTRICTED
 
 /datum/language/common
 	name = "English"
@@ -122,7 +83,7 @@
 	colour = "soghun"
 	key = "3"
 
-/datum/language/sainja
+/datum/language/sainja //Yautja tongue
 	name = "Sainja"
 	desc = "The deep, rumbling, gutteral sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
 	speech_verb = "rumbles"

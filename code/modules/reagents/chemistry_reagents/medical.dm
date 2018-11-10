@@ -20,11 +20,8 @@
 
 		M.reagent_shock_modifier += PAIN_REDUCTION_LIGHT
 
-		if(alien && alien == IS_VOX)
-			M.adjustToxLoss(REAGENTS_METABOLISM)
-		else
-			if(M.losebreath >= 10)
-				M.losebreath = max(10, M.losebreath-5)
+		if(M.losebreath >= 10)
+			M.losebreath = max(10, M.losebreath-5)
 
 		holder.remove_reagent(src.id, 0.5 * REAGENTS_METABOLISM)
 
@@ -252,9 +249,7 @@
 		if(M.stat == DEAD)
 			return  //See above, down and around. --Agouri
 
-		if(alien && alien == IS_VOX)
-			M.adjustToxLoss(2*REM)
-		else if(!alien)
+		if(!alien)
 			M.adjustOxyLoss(-2*REM)
 
 		holder.remove_reagent("lexorin", 2 * REM)
@@ -281,9 +276,7 @@
 		if(M.stat == DEAD)
 			return
 
-		if(alien && alien == IS_VOX)
-			M.adjustOxyLoss()
-		else if(!alien)
+		if(!alien)
 			M.adjustOxyLoss(-M.getOxyLoss())
 
 		holder.remove_reagent("lexorin", 2*REM)

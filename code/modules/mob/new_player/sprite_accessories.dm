@@ -44,7 +44,7 @@
 */
 
 /datum/sprite_accessory/hair
-	species_allowed = list("Human","Unathi","Tajara","Skrell","Vox","Machine","Synthetic", "Early Synthetic")
+	species_allowed = list("Human","Machine","Synthetic", "Early Synthetic")
 	icon = 'icons/mob/Human_face.dmi'	  // default icon for all hairs
 
 	crew
@@ -56,7 +56,7 @@
 		name = "Bald"
 		icon_state = "bald"
 		gender = MALE
-		species_allowed = list("Human","Unathi","Tajara","Skrell","Vox","Machine","Synthetic", "Early Synthetic")
+		species_allowed = list("Human","Machine","Synthetic", "Early Synthetic")
 	short
 		name = "Short Hair"	  // try to capatilize the names please~
 		icon_state = "hair_a" // you do not need to define _s or _l sub-states, game automatically does this for you
@@ -642,7 +642,7 @@
 		name = "Shaved"
 		icon_state = "bald"
 		gender = NEUTER
-		species_allowed = list("Human","Unathi","Tajara","Skrell","Vox","Machine","Synthetic", "Early Synthetic")
+		species_allowed = list("Human","Machine","Synthetic", "Early Synthetic")
 
 	watson
 		name = "Watson Mustache"
@@ -737,172 +737,6 @@
 		name = "Soul Patch"
 		icon_state = "facial_soulpatch"
 
-/*
-///////////////////////////////////
-/  =---------------------------=  /
-/  == Alien Style Definitions ==  /
-/  =---------------------------=  /
-///////////////////////////////////
-*/
-
-/datum/sprite_accessory/hair
-	una_spines_long
-		name = "Long Unathi Spines"
-		icon_state = "soghun_longspines"
-		species_allowed = list("Unathi")
-
-	una_spines_short
-		name = "Short Unathi Spines"
-		icon_state = "soghun_shortspines"
-		species_allowed = list("Unathi")
-
-	una_frills_long
-		name = "Long Unathi Frills"
-		icon_state = "soghun_longfrills"
-		species_allowed = list("Unathi")
-
-	una_frills_short
-		name = "Short Unathi Frills"
-		icon_state = "soghun_shortfrills"
-		species_allowed = list("Unathi")
-
-	una_horns
-		name = "Unathi Horns"
-		icon_state = "soghun_horns"
-		species_allowed = list("Unathi")
-
-	skr_tentacle_m
-		name = "Skrell Male Tentacles"
-		icon_state = "skrell_hair_m"
-		species_allowed = list("Skrell")
-		gender = MALE
-
-	skr_tentacle_f
-		name = "Skrell Female Tentacles"
-		icon_state = "skrell_hair_f"
-		species_allowed = list("Skrell")
-		gender = FEMALE
-
-	skr_gold_m
-		name = "Gold plated Skrell Male Tentacles"
-		icon_state = "skrell_goldhair_m"
-		species_allowed = list("Skrell")
-		gender = MALE
-
-	skr_gold_f
-		name = "Gold chained Skrell Female Tentacles"
-		icon_state = "skrell_goldhair_f"
-		species_allowed = list("Skrell")
-		gender = FEMALE
-
-	skr_clothtentacle_m
-		name = "Cloth draped Skrell Male Tentacles"
-		icon_state = "skrell_clothhair_m"
-		species_allowed = list("Skrell")
-		gender = MALE
-
-	skr_clothtentacle_f
-		name = "Cloth draped Skrell Female Tentacles"
-		icon_state = "skrell_clothhair_f"
-		species_allowed = list("Skrell")
-		gender = FEMALE
-
-	taj_ears
-		name = "Tajaran Ears"
-		icon_state = "ears_plain"
-		species_allowed = list("Tajara")
-
-	taj_ears_clean
-		name = "Tajara Clean"
-		icon_state = "hair_clean"
-		species_allowed = list("Tajara")
-
-	taj_ears_bangs
-		name = "Tajara Bangs"
-		icon_state = "hair_bangs"
-		species_allowed = list("Tajara")
-
-	taj_ears_braid
-		name = "Tajara Braid"
-		icon_state = "hair_tbraid"
-		species_allowed = list("Tajara")
-
-	taj_ears_shaggy
-		name = "Tajara Shaggy"
-		icon_state = "hair_shaggy"
-		species_allowed = list("Tajara")
-
-	taj_ears_mohawk
-		name = "Tajaran Mohawk"
-		icon_state = "hair_mohawk"
-		species_allowed = list("Tajara")
-
-	taj_ears_plait
-		name = "Tajara Plait"
-		icon_state = "hair_plait"
-		species_allowed = list("Tajara")
-
-	taj_ears_straight
-		name = "Tajara Straight"
-		icon_state = "hair_straight"
-		species_allowed = list("Tajara")
-
-	taj_ears_long
-		name = "Tajara Long"
-		icon_state = "hair_long"
-		species_allowed = list("Tajara")
-
-	taj_ears_rattail
-		name = "Tajara Rat Tail"
-		icon_state = "hair_rattail"
-		species_allowed = list("Tajara")
-
-	taj_ears_spiky
-		name = "Tajara Spiky"
-		icon_state = "hair_tajspiky"
-		species_allowed = list("Tajara")
-
-	taj_ears_messy
-		name = "Tajara Messy"
-		icon_state = "hair_messy"
-		species_allowed = list("Tajara")
-
-	vox_quills_short
-		name = "Short Vox Quills"
-		icon_state = "vox_shortquills"
-		species_allowed = list("Vox")
-
-/datum/sprite_accessory/facial_hair
-
-	taj_sideburns
-		name = "Tajara Sideburns"
-		icon_state = "facial_mutton"
-		species_allowed = list("Tajara")
-
-	taj_mutton
-		name = "Tajara Mutton"
-		icon_state = "facial_mutton"
-		species_allowed = list("Tajara")
-
-	taj_pencilstache
-		name = "Tajara Pencilstache"
-		icon_state = "facial_pencilstache"
-		species_allowed = list("Tajara")
-
-	taj_moustache
-		name = "Tajara Moustache"
-		icon_state = "facial_moustache"
-		species_allowed = list("Tajara")
-
-	taj_goatee
-		name = "Tajara Goatee"
-		icon_state = "facial_goatee"
-		species_allowed = list("Tajara")
-
-	taj_smallstache
-		name = "Tajara Smallsatche"
-		icon_state = "facial_smallstache"
-		species_allowed = list("Tajara")
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
@@ -919,21 +753,3 @@
 		name = "Tatt01 human skin"
 		icon_state = "tatt1"
 		species_allowed = list("Human")
-
-	tajaran
-		name = "Default tajaran skin"
-		icon_state = "default"
-		icon = 'icons/mob/human_races/r_tajaran.dmi'
-		species_allowed = list("Tajara")
-
-	unathi
-		name = "Default Unathi skin"
-		icon_state = "default"
-		icon = 'icons/mob/human_races/r_lizard.dmi'
-		species_allowed = list("Unathi")
-
-	skrell
-		name = "Default skrell skin"
-		icon_state = "default"
-		icon = 'icons/mob/human_races/r_skrell.dmi'
-		species_allowed = list("Skrell")

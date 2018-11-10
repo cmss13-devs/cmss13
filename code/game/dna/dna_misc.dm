@@ -493,8 +493,6 @@
 			del(animation)
 
 		var/mob/living/carbon/human/O = new( src )
-		if(Mo.greaterform)
-			O.set_species(Mo.greaterform)
 
 		if (isblockon(getblock(M.dna.uni_identity, 11,3),11))
 			O.gender = FEMALE

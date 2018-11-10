@@ -928,7 +928,7 @@
 	var/mob/M
 
 	targetloop:
-		for(M in oview(range, src))
+		for(M in orange(range, src))
 			if(!isliving(M) || M.stat || isrobot(M)) continue //No unconscious/deads, or non living.
 
 			/*

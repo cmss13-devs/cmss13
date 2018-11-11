@@ -362,7 +362,7 @@
 	skilllock = 0 //CL can open it
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine
 
-	req_access_txt = "200"
+	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = "Corporate Liaison"
 
 

@@ -7,7 +7,7 @@
 /obj/machinery/computer/shuttle_control/engineering
 	name = "engineering shuttle console"
 	shuttle_tag = "Engineering"
-	//req_one_access_txt = "11;24"
+	//req_one_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_WO)
 	circuit = /obj/item/circuitboard/computer/engineering_shuttle
 
 /obj/machinery/computer/shuttle_control/research

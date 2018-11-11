@@ -36,9 +36,7 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	req_access = null
-	req_access_txt = "0"
 	req_one_access = null
-	req_one_access_txt = "0"
 
 	var/gloves_type
 	var/headset_type

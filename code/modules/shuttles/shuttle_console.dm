@@ -356,7 +356,7 @@
 
 	unacidable = 1
 	exproof = 1
-	req_one_access_txt = "22;200"
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
 /obj/machinery/computer/shuttle_control/dropship1/New()
 	..()
@@ -376,7 +376,7 @@
 	icon_state = "shuttle"
 	unacidable = 1
 	exproof = 1
-	req_one_access_txt = "12;22;200"
+	req_one_access_txt = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
 /obj/machinery/computer/shuttle_control/dropship2/New()
 	..()

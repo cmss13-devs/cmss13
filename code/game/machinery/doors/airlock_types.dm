@@ -228,7 +228,7 @@
 /obj/machinery/door/airlock/almayer/security
 	name = "\improper Security Airlock"
 	icon = 'icons/obj/doors/almayer/secdoor.dmi'
-	req_access_txt = "3"
+	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/machinery/door/airlock/almayer/security/glass
 	name = "\improper Security Airlock"
@@ -239,52 +239,52 @@
 /obj/machinery/door/airlock/almayer/command
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/doors/almayer/comdoor.dmi'
-	req_access_txt = "19"
+	req_access = list(ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/secure
 	name = "\improper Secure Airlock"
 	icon = 'icons/obj/doors/almayer/securedoor.dmi'
-	req_access_txt = "19"
+	req_access = list(ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/maint
 	name = "\improper Maintenance Hatch"
 	icon = 'icons/obj/doors/almayer/maintdoor.dmi'
-	req_access_txt = "0"
-	req_one_access_txt = "2;7"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
 
 /obj/machinery/door/airlock/almayer/engineering
 	name = "\improper Engineering Airlock"
 	icon = 'icons/obj/doors/almayer/engidoor.dmi'
 	opacity = 0
 	glass = 1
-	req_access_txt = "0"
-	req_one_access_txt = "2;7"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ENGINEERING)
 
 /obj/machinery/door/airlock/almayer/medical
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/doors/almayer/medidoor.dmi'
-	req_access_txt = "0"
-	req_one_access_txt =  "2;8;19"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/medical/glass
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/doors/almayer/medidoor_glass.dmi'
 	opacity = 0
 	glass = 1
-	req_access_txt = "0"
-	req_one_access_txt =  "2;8;19"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/almayer/research
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/doors/almayer/medidoor.dmi'
-	req_access_txt = "14"
+	req_access = list(ACCESS_MARINE_RESEARCH)
 
 /obj/machinery/door/airlock/almayer/research/glass
 	name = "\improper Research Airlock"
 	icon = 'icons/obj/doors/almayer/medidoor_glass.dmi'
 	opacity = 0
 	glass = 1
-	req_access_txt = "14"
+	req_access = list(ACCESS_MARINE_RESEARCH)
 
 /obj/machinery/door/airlock/almayer/generic
 	name = "\improper Airlock"
@@ -293,7 +293,7 @@
 /obj/machinery/door/airlock/almayer/generic/corporate
 	name = "Corporate Liaison's Quarters"
 	icon = 'icons/obj/doors/almayer/personaldoor.dmi'
-	req_access_txt = "200"
+	req_access = list(ACCESS_WY_CORPORATE)
 
 /obj/machinery/door/airlock/almayer/marine
 	name = "\improper Airlock"
@@ -304,55 +304,55 @@
 /obj/machinery/door/airlock/almayer/marine/requisitions
 	name = "\improper Requisitions Bay"
 	icon = 'icons/obj/doors/almayer/prepdoor.dmi'
-	req_access_txt = "0"
-	req_one_access_txt =  "2;21"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/alpha
 	name = "\improper Alpha Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_alpha.dmi'
-	req_access_txt = "9"
-	req_one_access_txt =  "2;15"
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ALPHA)
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/alpha/sl
 	name = "\improper Alpha Squad Leader Preparations"
-	req_access_txt ="12;15"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/alpha/spec
 	name = "\improper Alpha Squad Specialist Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "13"
+	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/alpha/engineer
 	name = "\improper Alpha Squad Engineer Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "11"
+	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/alpha/medic
 	name = "\improper Alpha Squad Medic Preparations"
-	req_access_txt ="10;15"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/alpha/smart
 	name = "\improper Alpha Squad Smartgunner Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "25"
+	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_ALPHA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
@@ -360,47 +360,47 @@
 /obj/machinery/door/airlock/almayer/marine/bravo
 	name = "\improper Bravo Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_bravo.dmi'
-	req_access_txt = "9"
-	req_one_access_txt =  "2;16"
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRAVO)
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/bravo/sl
 	name = "\improper Bravo Squad Leader Preparations"
-	req_access_txt ="12;16"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/bravo/spec
 	name = "\improper Bravo Squad Specialist Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "13"
+	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/bravo/engineer
 	name = "\improper Bravo Squad Engineer Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "11"
+	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/bravo/medic
 	name = "\improper Bravo Squad Medic Preparations"
-	req_access_txt ="10;16"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/bravo/smart
 	name = "\improper Bravo Squad Smartgunner Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "25"
+	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_BRAVO)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
@@ -408,47 +408,47 @@
 /obj/machinery/door/airlock/almayer/marine/charlie
 	name = "\improper Charlie Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_charlie.dmi'
-	req_access_txt = "9"
-	req_one_access_txt =  "2;17"
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CHARLIE)
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/charlie/sl
 	name = "\improper Charlie Squad Leader Preparations"
-	req_access_txt ="12;17"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/charlie/spec
 	name = "\improper Charlie Squad Specialist Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "13"
+	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/charlie/engineer
 	name = "\improper Charlie Squad Engineer Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "11"
+	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/charlie/medic
 	name = "\improper Charlie Squad Medic Preparations"
-	req_access_txt ="10;17"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/charlie/smart
 	name = "\improper Charlie Squad Smartgunner Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "25"
+	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CHARLIE)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
@@ -456,47 +456,47 @@
 /obj/machinery/door/airlock/almayer/marine/delta
 	name = "\improper Delta Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_delta.dmi'
-	req_access_txt = "9"
-	req_one_access_txt =  "2;18"
+	req_access = list(ACCESS_MARINE_PREP)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_DELTA)
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/delta/sl
 	name = "\improper Delta Squad Leader Preparations"
-	req_access_txt ="12;18"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/delta/spec
 	name = "\improper Delta Squad Specialist Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "13"
+	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/delta/engineer
 	name = "\improper Delta Squad Engineer Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "11"
+	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/delta/medic
 	name = "\improper Delta Squad Medic Preparations"
-	req_access_txt ="10;18"
-	req_one_access_txt =  "0"
+	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
+	req_one_access = list()
 	dir = 2
 	opacity = 0
 	glass = 1
 
 /obj/machinery/door/airlock/almayer/marine/delta/smart
 	name = "\improper Delta Squad Smartgunner Preparations"
-	req_access_txt ="0"
-	req_one_access_txt =  "25"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_SMARTPREP)
 	dir = 2
 	opacity = 0
 	glass = 1
@@ -539,8 +539,8 @@
 /obj/machinery/door/airlock/hatch/cockpit
 	icon = 'icons/obj/doors/almayer/dropship1_pilot.dmi'
 	name = "\improper Cockpit"
-	req_access_txt = "22"
-	req_one_access_txt = "0"
+	req_access = list(ACCESS_MARINE_DROPSHIP)
+	req_one_access = list()
 	unacidable = 1
 	no_panel = 1
 	not_weldable = 1

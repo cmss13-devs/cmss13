@@ -34,8 +34,8 @@
 	var/datum/language/speaking = parse_language(message)
 	if(speaking)
 		message = copytext(message,3)
-	else if(species.default_language)
-		speaking = all_languages[species.default_language]
+	else
+		speaking = get_default_language()
 
 	var/ending = copytext(message, length(message))
 	if (speaking)

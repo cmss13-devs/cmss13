@@ -145,8 +145,6 @@
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
 /mob/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode)
-	M.ResetLanguages()
-
 	switch(dresscode)
 		if ("strip")
 			//do nothing
@@ -813,8 +811,7 @@
 			W.access = get_antagonist_access()
 			W.paygrade = "E1"
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -855,9 +852,7 @@
 			W.paygrade = "E4"
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -898,9 +893,7 @@
 			W.paygrade = "E5"
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -940,8 +933,7 @@
 			W.paygrade = "E6"
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -989,8 +981,7 @@
 			W.paygrade = "E2"
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -1037,8 +1028,7 @@
 			W.paygrade = "E4"
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -1085,9 +1075,7 @@
 			W.paygrade = "E6"
 			W.access = get_antagonist_access()
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-
-
+			M.set_languages(list("Russian", "English"))
 
 
 			if(M.mind)
@@ -1120,9 +1108,7 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
-
-			M.add_language("Tradeband")
-			
+			M.set_languages(list("Tradeband", "English"))
 			
 
 			if(M.mind)
@@ -1161,9 +1147,7 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
-			
-			M.add_language("Tradeband")
-			
+			M.set_languages(list("Tradeband", "English"))
 			
 
 			if(M.mind)
@@ -1197,10 +1181,8 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
-			
-			M.add_language("Tradeband")
-			
-			
+			M.set_languages("Tradeband", "English")
+
 
 			if(M.mind)
 				M.mind.role_comm_title = "Lead"
@@ -1297,8 +1279,7 @@
 			W.assignment = "Freelancer Warlord"
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
-			M.add_language("Russian")
-			M.add_language("Sainja")
+			M.set_languages(list("English", "Russian", "Tradeband", "Sainja"))
 			W.access = get_all_accesses()
 
 			if(M.mind)

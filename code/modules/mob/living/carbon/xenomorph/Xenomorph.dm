@@ -66,8 +66,7 @@
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
 
-	add_language("Xenomorph") //xenocommon
-	add_language("Hivemind") //hivemind
+	set_languages(list("Xenomorph", "Hivemind"))
 	add_inherent_verbs()
 	add_abilities()
 

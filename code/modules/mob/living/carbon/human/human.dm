@@ -51,11 +51,6 @@
 	//and display them
 	add_to_all_mob_huds()
 
-/mob/living/carbon/human/proc/ResetLanguages()
-	languages = list()
-	add_language("English")
-	species.language = "English"
-	species.default_language = "English"
 
 /mob/living/carbon/human/Dispose()
 	if(assigned_squad)
@@ -1264,14 +1259,8 @@
 			dna.species = new_species
 
 	if(species)
-
 		if(species.name && species.name == new_species) //we're already that species.
 			return
-		if(species.language)
-			remove_language(species.language)
-
-		if(species.default_language)
-			remove_language(species.default_language)
 
 		// Clear out their species abilities.
 		species.remove_inherent_verbs(src)
@@ -1285,12 +1274,6 @@
 		oldspecies.post_species_loss(src)
 
 	species.create_organs(src)
-
-	if(species.language)
-		add_language(species.language)
-
-	if(species.default_language)
-		add_language(species.default_language)
 
 	if(species.base_color && default_colour)
 		//Apply colour.

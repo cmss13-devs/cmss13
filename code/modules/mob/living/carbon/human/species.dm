@@ -24,10 +24,6 @@
 	var/unarmed_type =           /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
 
-	var/language                  // Default racial language, if any.
-	// Default language is used when 'say' is used without modifiers.
-	var/default_language = "English"
-	var/secondary_langs = list()  // The names of secondary languages that are available to this species.
 	var/mutantrace                // Safeguard due to old code.
 	var/list/speech_sounds        // A list of sounds to potentially play when speaking.
 	var/list/speech_chance
@@ -173,6 +169,8 @@
 	return
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
+	if(!H.languages || H.languages.len == 0)
+		H.set_languages(list("English"))
 	add_inherent_verbs(H)
 
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events.
@@ -212,7 +210,6 @@
 /datum/species/human
 	name = "Human"
 	name_plural = "Humans"
-	language = "Sol Common"
 	primitive = /mob/living/carbon/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR
@@ -240,7 +237,6 @@
 /datum/species/human/spook
 	name = "Horror"
 	name_plural = "Horrors"
-	default_language = "Drrrrrrr"
 	icobase = 'icons/mob/human_races/r_spooker.dmi'
 	deform = 'icons/mob/human_races/r_spooker.dmi'
 	brute_mod = 0.15
@@ -275,13 +271,17 @@
 		H.adjustOxyLoss(-15)
 		H.adjustToxLoss(-15)
 
+
+/datum/species/human/spook/handle_post_spawn(mob/living/carbon/human/H)
+	H.set_languages(list("Drrrrrrr"))
+	return ..()
+
 /datum/species/machine
 	name = "Machine"
 	name_plural = "machines"
 
 	icobase = 'icons/mob/human_races/r_machine.dmi'
 	deform = 'icons/mob/human_races/r_machine.dmi'
-	language = "Tradeband"
 	unarmed_type = /datum/unarmed_attack/punch
 	rarity_value = 2
 
@@ -390,8 +390,6 @@
 	icobase = 'icons/mob/human_races/r_goo_zed.dmi'
 	deform = 'icons/mob/human_races/r_goo_zed.dmi'
 	death_message = "seizes up and falls limp... But is it dead?"
-	language = "Zombie"
-	default_language = "Zombie"
 	flags = NO_PAIN|NO_BREATHE|NO_SCAN|NO_POISON
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
 	burn_mod = 2 //IT BURNS
@@ -408,6 +406,9 @@
 	knock_out_reduction = 5
 	has_organ = list()
 
+/datum/species/zombie/handle_post_spawn(mob/living/carbon/human/H)
+	H.set_languages("Zombie")
+	return ..()
 
 /datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.hud_used)
@@ -478,11 +479,7 @@
 
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.add_language("English")
-	H.add_language("Russian")
-	H.add_language("Tradeband")
-	H.add_language("Sainja")
-	H.add_language("Xenomorph")
+	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
 	living_human_list -= H
 	return ..()
 
@@ -496,8 +493,6 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_PAIN|NO_SCAN|NO_POISON //Hmm, let's see if this does anything
-	language = "Sainja" //"Warrior"
-	default_language = "Sainja"
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	blood_color = "#20d450"
@@ -610,6 +605,7 @@
 
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)
+	H.set_languages(list("Sainja"))
 
 	return ..()
 

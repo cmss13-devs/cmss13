@@ -264,8 +264,9 @@
 
 /obj/item/mortal_shell/frag/detonate(var/turf/T)
 
+	create_shrapnel(T, 60)
+	sleep(2)
 	explosion_rec(T, 60, 20)
-	create_shrapnel(loc, 60)
 
 /obj/item/mortal_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"

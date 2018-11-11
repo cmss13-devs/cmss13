@@ -3,6 +3,7 @@
 /mob/living/simple_animal/sculpture
 	name = "\improper sculpture"
 	desc = "It's some kind of hastily-painted human-size stone sculpture. Just looking at it makes you feel nervous."
+	layer = BELOW_MOB_LAYER
 	icon_state = "sculpture"
 	icon_living = "sculpture"
 	icon_dead = "sculpture"
@@ -250,8 +251,8 @@
 	if(target)
 		//To prevent movement cheese, SCP snaps necks the second it ends up on the same turf as someone
 		//Or in other terms, if SCP decides it had a clean shot for a neck snap at the moment this proc fired, you're good as dead
-		target.apply_damage(rand(120, 150), BRUTE, "head")
-		target.apply_damage(100, OXY)
+		target.apply_damage(50, BRUTE, "head")
+		target.apply_damage(160, OXY)
 		playsound(target.loc, pick(snap_sound), 50, 1)
 
 		//Warn everyone

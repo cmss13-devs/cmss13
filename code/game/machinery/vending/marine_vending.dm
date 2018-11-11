@@ -9,10 +9,8 @@
 	icon_state = "armory"
 	icon_vend = "armory-vend"
 	icon_deny = "armory"
-	req_access = null
-	req_access_txt = "0"
-	req_one_access = null
-	req_one_access_txt = "9;2;21"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_CARGO)
 	wrenchable = FALSE
 
 	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"
@@ -427,7 +425,7 @@
 	vend_delay = 15
 	//product_slogans = "Standard Issue Marine food!;It's good for you, and not the worst thing in the world.;Just fucking eat it.;"
 	product_ads = "Try the cornbread.;Try the pizza.;Try the pasta.;Try the tofu, wimp.;Try the pork."
-	req_access_txt = ""
+	req_access = list()
 
 
 //MARINE MEDICAL VENDOR -APOPHIS775 31JAN2017
@@ -761,10 +759,8 @@
 	icon_state = "uniform_marine"
 	icon_vend = "uniform_marine_vend"
 	icon_deny = "uniform_marine"
-	req_access = null
-	req_access_txt = "0"
-	req_one_access = null
-	req_one_access_txt = "9;2;21"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
 	var/squad_tag = ""
 
 	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"

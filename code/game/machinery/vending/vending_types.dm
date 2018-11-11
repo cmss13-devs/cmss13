@@ -254,7 +254,7 @@
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
-	req_access_txt = "3"
+	req_access = list(ACCESS_MARINE_BRIG)
 	products = list(/obj/item/handcuffs = 8,
 					/obj/item/handcuffs/zip = 10,
 					/obj/item/explosive/grenade/flashbang = 4,
@@ -329,7 +329,7 @@
 	desc = "Tools for tools."
 	icon_state = "tool"
 	icon_deny = "tool-deny"
-	//req_access_txt = "12" //Maintenance access
+	//req_access = list(ACCESS_MARINE_LEADER) //Maintenance access
 	products = list(/obj/item/stack/cable_coil/random = 10,/obj/item/tool/crowbar = 5,/obj/item/tool/weldingtool = 3,/obj/item/tool/wirecutters = 5,
 					/obj/item/tool/wrench = 5,/obj/item/device/analyzer = 5,/obj/item/device/t_scanner = 5,/obj/item/tool/screwdriver = 5)
 	contraband = list(/obj/item/tool/weldingtool/hugetank = 2,/obj/item/clothing/gloves/fyellow = 2)
@@ -340,7 +340,7 @@
 	desc = "Spare tool vending. What? Did you expect some witty description?"
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
-	req_access_txt = "7" //Engineering Equipment access
+	req_access = list(ACCESS_MARINE_ENGINEERING) //Engineering Equipment access
 	products = list(/obj/item/clothing/glasses/meson = 2,/obj/item/device/multitool = 4,/obj/item/circuitboard/airlock = 10,/obj/item/circuitboard/apc = 10,/obj/item/circuitboard/airalarm = 10,/obj/item/cell/high = 10)
 	contraband = list(/obj/item/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3)
@@ -351,7 +351,7 @@
 	desc = "A large storage machine containing various tools and devices for general repair."
 	icon_state = "engi"
 	icon_deny = "engi-deny"
-	req_access_txt = "7"
+	req_access = list(ACCESS_MARINE_ENGINEERING)
 	products = list(/obj/item/clothing/head/hardhat = 4,/obj/item/storage/belt/utility = 4,/obj/item/clothing/glasses/meson = 4,/obj/item/clothing/gloves/yellow = 4,
 					/obj/item/tool/screwdriver = 12,/obj/item/tool/crowbar = 12,/obj/item/tool/wirecutters = 12,/obj/item/device/multitool = 12,/obj/item/tool/wrench = 12,
 					/obj/item/device/t_scanner = 12,/obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/tool/weldingtool = 8,/obj/item/clothing/head/welding = 8,
@@ -367,7 +367,7 @@
 	desc = "All the tools you need to create your own robot army."
 	icon_state = "robotics"
 	icon_deny = "robotics-deny"
-	req_access_txt = "14"
+	req_access = list(ACCESS_MARINE_RESEARCH)
 	products = list(/obj/item/clothing/suit/storage/labcoat = 4,/obj/item/clothing/under/rank/roboticist = 4,/obj/item/stack/cable_coil = 4,/obj/item/device/flash = 4,
 					/obj/item/cell/high = 12, /obj/item/device/assembly/prox_sensor = 3,/obj/item/device/assembly/signaler = 3,/obj/item/device/healthanalyzer = 3,
 					/obj/item/tool/surgery/scalpel = 2,/obj/item/tool/surgery/circular_saw = 2,/obj/item/tank/anesthetic = 2,/obj/item/clothing/mask/breath/medical = 5,

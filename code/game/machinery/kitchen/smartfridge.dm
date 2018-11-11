@@ -365,7 +365,7 @@
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	is_secure_fridge = TRUE
-	req_one_access_txt = "5;33"
+	req_one_access = list(ACCESS_MARINE_CMO, 33)
 
 /obj/machinery/smartfridge/secure/medbay/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass/))
@@ -381,7 +381,7 @@
 	name = "\improper Refrigerated Virus Storage"
 	desc = "A refrigerated storage unit for storing viral material."
 	is_secure_fridge = TRUE
-	req_access_txt = "39"
+	req_access = list(39)
 	icon_state = "smartfridge_virology"
 	icon_on = "smartfridge_virology"
 	icon_off = "smartfridge_virology-off"
@@ -396,7 +396,7 @@
 	name = "\improper Smart Chemical Storage"
 	desc = "A refrigerated storage unit for medicine and chemical storage."
 	is_secure_fridge = TRUE
-	req_one_access_txt = "5;20"
+	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
 
 /obj/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)
 	if(istype(O,/obj/item/storage/pill_bottle) || istype(O,/obj/item/reagent_container))

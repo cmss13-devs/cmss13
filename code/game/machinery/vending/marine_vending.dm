@@ -110,6 +110,7 @@
 	desc = "A automated rack hooked up to a small supply of various firearms and explosives."
 	hacking_safety = 1
 	wrenchable = FALSE
+	req_access = list(ACCESS_MARINE_CARGO)
 	products = list()
 	contraband = list()
 	premium = list()
@@ -286,6 +287,7 @@
 	desc = "A automated rack hooked up to a small supply of ammo magazines."
 	hacking_safety = 1
 	wrenchable = FALSE
+	req_access = list(ACCESS_MARINE_CARGO)
 	products = list()
 	contraband = list()
 	premium = list()

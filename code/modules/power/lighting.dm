@@ -192,15 +192,25 @@
 		spawn(1)
 			update(0)
 
-	switch(dir)
-		if(NORTH)
-			pixel_y = 10
-		if(SOUTH)
-			pixel_y = -10
-		if(EAST)
-			pixel_x = 10
-		if(WEST)
-			pixel_x = -10
+	switch(fitting)
+		if("tube")
+			switch(dir)
+				if(NORTH)
+					pixel_y = 23
+				if(EAST)
+					pixel_x = 10
+				if(WEST)
+					pixel_x = -10
+		if("bulb")
+			switch(dir)
+				if(NORTH)
+					pixel_y = 10
+				if(SOUTH)
+					pixel_y = -10
+				if(EAST)
+					pixel_x = 10
+				if(WEST)
+					pixel_x = -10
 
 /obj/machinery/light/Dispose()
 	var/area/A = get_area(src)

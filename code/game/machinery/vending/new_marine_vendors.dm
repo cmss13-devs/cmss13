@@ -677,8 +677,10 @@
 							list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "orange"),
 
 							list("UNIFORM (choose 1)", 0, null, null, null),
-							list("Uniform, standard Synth", 0, /obj/item/clothing/under/rank/synthetic, MARINE_CAN_BUY_UNIFORM, "orange"),
 							list("Medical scrubs, green", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, "black"),
+							list("Uniform, outdated Synth", 0, /obj/item/clothing/under/rank/synthetic/old, MARINE_CAN_BUY_UNIFORM, "black"),
+							list("Uniform, standard Synth", 0, /obj/item/clothing/under/rank/synthetic, MARINE_CAN_BUY_UNIFORM, "orange"),
+							list("USCM standard uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, "black"),
 
 							list("WEBBING (choose 1)", 0, null, null, null),
 							list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
@@ -699,6 +701,8 @@
 
 							list("SUIT (choose 1)", 0, null, null, null),
 							list("Hazard vest", 0, /obj/item/clothing/suit/storage/hazardvest, MARINE_CAN_BUY_ARMOR, "orange"),
+							list("Labcoat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_ARMOR, "black"),
+							list("Labcoat, researcher", 0, /obj/item/clothing/suit/storage/labcoat/researcher, MARINE_CAN_BUY_ARMOR, "black"),
 
 							list("GLOVES (choose 1)", 0, null, null, null),
 							list("Insulated gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, "orange"),
@@ -1000,11 +1004,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 							list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/Oxycodone, null, "black"),
 							list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, "black"),
 
+							list("Emergency defibrillator", 4, /obj/item/device/defibrillator, null, "white"),
 							list("Health analyzer", 4, /obj/item/device/healthanalyzer, null, "black"),
 							list("Medical HUD glasses", 4, /obj/item/clothing/glasses/hud/health, null, "black"),
 
 
 							list("OTHER SUPPLIES", 0, null, null, null),
+							list("Flashlight", 1, /obj/item/device/flashlight, null, "black"),
 							list("Motion detector", 5, /obj/item/device/motiondetector, null, "black"),
 							list("Whistle", 5, /obj/item/device/whistle, null, "black"),
 							)

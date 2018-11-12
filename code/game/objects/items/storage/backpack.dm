@@ -340,6 +340,11 @@
 	var/camo_active_timer = 0
 	var/camo_cooldown_timer = 0
 	var/camo_ready = 1
+	actions_types = list(/datum/action/item_action)
+
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/attack_self(mob/user)
+	camouflage()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/verb/camouflage()
 	set name = "Toggle M68 Thermal Camouflage"

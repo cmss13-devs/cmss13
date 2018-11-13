@@ -1,7 +1,5 @@
 /obj/var/list/req_access = null
-/obj/var/req_access_txt = ""
 /obj/var/list/req_one_access = null
-/obj/var/req_one_access_txt = ""
 
 //returns 1 if this mob has sufficient access to use this object
 /obj/proc/allowed(mob/M)
@@ -26,21 +24,9 @@
 	var/i
 	if(!req_access)
 		req_access = list()
-		if(req_access_txt)
-			var/req_access_str[] = text2list(req_access_txt,";")
-			var/n
-			for(i in req_access_str)
-				n = text2num(i)
-				if(n) req_access += n
 
 	if(!req_one_access)
 		req_one_access = list()
-		if(req_one_access_txt)
-			var/req_one_access_str[] = text2list(req_one_access_txt,";")
-			var/n
-			for(i in req_one_access_str)
-				n = text2num(i)
-				if(n) req_one_access += n
 
 	if(!islist(req_access)) return 1//something's very wrong
 	var/L[] = req_access

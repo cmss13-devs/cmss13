@@ -38,12 +38,12 @@
             if(prob(40))
                 mob.arm_equipment(mob, "Dust Raider Smartgunner")
                 mob << "<font size='3'>\red You are a smartgunner in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
-            if(prob(40))
-                mob.arm_equipment(mob, "Dust Raider Engineer")
-                mob << "<font size='3'>\red You are an engineer in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
-            if(prob(20))
+            else if(prob(20))
                 mob.arm_equipment(mob, "Dust Raider Specialist")
                 mob << "<font size='3'>\red You are a specialist in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
+            else
+                mob.arm_equipment(mob, "Dust Raider Engineer")
+                mob << "<font size='3'>\red You are an engineer in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
             heavies ++
         else if (medics < max_medics)
             mob.arm_equipment(mob, "Dust Raider Medic")

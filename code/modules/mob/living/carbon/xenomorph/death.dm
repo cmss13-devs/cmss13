@@ -124,3 +124,12 @@
 
 /mob/living/carbon/Xenomorph/dust_animation()
 	new /obj/effect/overlay/temp/dust_animation(loc, src, "dust-a")
+
+/mob/living/carbon/Xenomorph/death()
+	set waitfor = 0
+	if (map_tag == MAP_WHISKEY_OUTPOST)
+		src.ghostize()
+		src.KnockDown(1)
+		sleep(50)
+		cdel(src)
+	. = ..()

@@ -660,13 +660,13 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES
 	New()
 		..()
-		accurate_range = config.short_shell_range
+		accurate_range = config.norm_shell_range
 		accuracy_var_low = config.low_proj_variance
 		accuracy_var_high = config.low_proj_variance
-		max_range = config.short_shell_range
+		max_range = config.norm_shell_range
 		damage = config.lmed_hit_damage
-		penetration = config.low_armor_penetration
-		accuracy = config.low_hit_accuracy
+		penetration = config.med_armor_penetration
+		accuracy = config.high_hit_accuracy
 
 /datum/ammo/bullet/turret/dumb
 	icon_state 	= "bullet"

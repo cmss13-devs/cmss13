@@ -106,11 +106,3 @@
 				if(prob(60) && !victim.stat && !(victim.species.flags & NO_PAIN))
 					victim.emote("scream") //Topkek
 				victim.take_limb_damage(0, rand(10, 25)) //Sizzledam! This automagically burns a random existing body part.
-
-/mob/living/carbon/Xenomorph/death()
-	set waitfor = 0
-	if (map_tag == MAP_WHISKEY_OUTPOST)
-		sleep(20)
-		src.ghostize()
-		cdel(src)
-	. = ..()

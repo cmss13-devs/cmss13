@@ -66,6 +66,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/toggleattacklogs,
 	/client/proc/toggledebuglogs,
+	/client/proc/togglenichelogs,
 	// /client/proc/toggleghostwriters,
 	/client/proc/toggledrones,
 	/client/proc/change_security_level, /* Changes alert levels*/
@@ -157,6 +158,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/callproc,
 	/client/proc/callatomproc,
 	/client/proc/toggledebuglogs,
+	/client/proc/togglenichelogs,
 	/datum/proc/ta_diagnose,
 	/datum/proc/ra_diagnose,
 	/datum/proc/ta_purge,
@@ -251,6 +253,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_panel,	/*admin-pm list*/
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game.*/
 	/client/proc/toggledebuglogs,
+	/client/proc/togglenichelogs,
 	/datum/admins/proc/player_notes_list,
 	/datum/admins/proc/player_notes_show,
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
@@ -879,6 +882,16 @@ var/list/admin_verbs_mentor = list(
 		usr << "<span class='boldnotice'>You will now get debug log messages.</span>"
 	else
 		usr << "<span class='boldnotice'>You will no longer get debug log messages.</span>"
+
+/client/proc/togglenichelogs()
+	set name = "Toggle Niche Log Messages"
+	set category = "Preferences"
+
+	prefs.toggles_chat ^= CHAT_NICHELOGS
+	if(prefs.toggles_chat & CHAT_NICHELOGS)
+		usr << "<span class='boldnotice'>You will now get niche log messages.</span>"
+	else
+		usr << "<span class='boldnotice'>You will no longer get niche log messages.</span>"
 
 /* Commenting this stupid shit out
 /client/proc/man_up(mob/T as mob in mob_list)

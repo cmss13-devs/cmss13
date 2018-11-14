@@ -1147,8 +1147,10 @@
 
 	New()
 		..()
-		max_range = config.min_shell_range
-		damage = config.med_hit_damage
+		damage_falloff = config.buckshot_damage_falloff
+		accuracy = config.high_hit_accuracy
+		max_range = config.short_shell_range
+		damage = config.hmed_hit_damage
 		damage_var_low = config.med_proj_variance
 		damage_var_high = config.high_proj_variance
 		shell_speed = config.reg_shell_speed

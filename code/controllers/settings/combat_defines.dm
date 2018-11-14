@@ -66,11 +66,11 @@
 	var/mhigh_fire_delay = 5
 	var/max_fire_delay = 6
 
-	var/min_scatter_value = 5
-	var/low_scatter_value = 10
-	var/med_scatter_value = 15
-	var/high_scatter_value = 20
-	var/max_scatter_value = 25
+	var/min_scatter_value = 2.5
+	var/low_scatter_value = 5
+	var/med_scatter_value = 7.5
+	var/high_scatter_value = 10
+	var/max_scatter_value = 15
 
 	var/min_recoil_value = 1
 	var/low_recoil_value = 2

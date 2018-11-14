@@ -869,17 +869,20 @@
 	if(load_into_chamber())
 		if(istype(in_chamber,/obj/item/projectile))
 
-			if (burst_fire)
-				//Apply scatter
-				//var/scatter_chance = in_chamber.ammo.scatter
-				//scatter_chance += (burst_size * 2)
+			var/initial_angle = Get_Angle(my_loc, targloc)
+			var/final_angle = initial_angle
 
-				if (prob(get_dist(src, target) * (7-angle)))
-					var/scatter_x = rand(-1, 1)
-					var/scatter_y = rand(-1, 1)
-					var/turf/new_target = locate(targloc.x + round(scatter_x),targloc.y + round(scatter_y),targloc.z) //Locate an adjacent turf.
-					if(new_target) //Looks like we found a turf.
-						target = new_target
+
+			var/total_scatter_angle = in_chamber.ammo.scatter
+
+			if (burst_fire)
+				total_scatter_angle += config.med_scatter_value
+
+			if(total_scatter_angle > 0)
+				if (prob(50))
+					total_scatter_angle *= 0.5 //a very crude way of simulating a normal distribution
+				final_angle += rand(-total_scatter_angle, total_scatter_angle)
+				target = get_angle_target_turf(my_loc, final_angle, 30)
 
 			in_chamber.ammo.accurate_range = 1 + angle
 

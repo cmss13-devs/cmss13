@@ -894,53 +894,50 @@ and you're good to go.
 					user << "<span class='warning'>You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]</span>"
 	return 1
 
-/obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_chance = 0, mob/user, burst_scatter_bonus = 0)
-	total_scatter_chance += projectile_to_fire.scatter
+
+/obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_angle = 0, mob/user, burst_scatter_bonus = 0)
+
+	var/turf/curloc = get_turf(src)
+	var/initial_angle = Get_Angle(curloc, targloc)
+	var/final_angle = initial_angle
+
+
+	total_scatter_angle += projectile_to_fire.scatter
+
+	if(flags_gun_features & GUN_BURST_ON && burst_amount > 1)//Much higher scatter on a burst.
+		total_scatter_angle += (flags_item & WIELDED) ? burst_amount * (burst_scatter_mult + burst_scatter_bonus) : burst_amount * (5+burst_scatter_bonus)
+
+	if(user && user.mind && user.mind.cm_skills)
+		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
+			total_scatter_angle += config.low_scatter_value
+		else
+			var/scatter_tweak = 0
+			switch(gun_skill_category)
+				if(GUN_SKILL_PISTOLS)
+					scatter_tweak = user.mind.cm_skills.pistols
+				if(GUN_SKILL_SMGS)
+					scatter_tweak = user.mind.cm_skills.smgs
+				if(GUN_SKILL_RIFLES)
+					scatter_tweak = user.mind.cm_skills.rifles
+				if(GUN_SKILL_SHOTGUNS)
+					scatter_tweak = user.mind.cm_skills.shotguns
+				if(GUN_SKILL_HEAVY_WEAPONS)
+					scatter_tweak = user.mind.cm_skills.heavy_weapons
+				if(GUN_SKILL_SMARTGUN)
+					scatter_tweak = user.mind.cm_skills.smartgun
+			if(scatter_tweak)
+				total_scatter_angle -= scatter_tweak*config.low_scatter_value
+
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
-	if(total_scatter_chance > 0)
-		var/targdist = get_dist(target, user)
-		if(flags_gun_features & GUN_BURST_ON && burst_amount > 1)//Much higher chance on a burst.
-			total_scatter_chance += (flags_item & WIELDED) ? burst_amount * (burst_scatter_mult + burst_scatter_bonus) : burst_amount * (5+burst_scatter_bonus)
+	if(total_scatter_angle > 0)
+		if (prob(50))
+			total_scatter_angle *= 0.5 //a very crude way of simulating a normal distribution
+		final_angle += rand(-total_scatter_angle, total_scatter_angle)
+		target = get_angle_target_turf(curloc, final_angle, 30)
 
-			//long range burst shots have more chance to scatter
-			if(targdist > 7)
-				total_scatter_chance += min(targdist*2, 15)
-
-		else if(user && targdist <= (4 + rand(-1,1))) //no scatter on single fire for close targets
-			return target
-
-
-		if(user && user.mind && user.mind.cm_skills)
-
-			if(user.mind.cm_skills.firearms == 0) //no training in any firearms
-				total_scatter_chance += config.low_scatter_value
-			else
-				var/scatter_tweak = 0
-				switch(gun_skill_category)
-					if(GUN_SKILL_PISTOLS)
-						scatter_tweak = user.mind.cm_skills.pistols
-					if(GUN_SKILL_SMGS)
-						scatter_tweak = user.mind.cm_skills.smgs
-					if(GUN_SKILL_RIFLES)
-						scatter_tweak = user.mind.cm_skills.rifles
-					if(GUN_SKILL_SHOTGUNS)
-						scatter_tweak = user.mind.cm_skills.shotguns
-					if(GUN_SKILL_HEAVY_WEAPONS)
-						scatter_tweak = user.mind.cm_skills.heavy_weapons
-					if(GUN_SKILL_SMARTGUN)
-						scatter_tweak = user.mind.cm_skills.smartgun
-				if(scatter_tweak)
-					total_scatter_chance -= scatter_tweak*config.low_scatter_value
-
-		if(prob(total_scatter_chance)) //Scattered!
-			var/scatter_x = rand(-1,1)
-			var/scatter_y = rand(-1,1)
-			var/turf/new_target = locate(targloc.x + round(scatter_x),targloc.y + round(scatter_y),targloc.z) //Locate an adjacent turf.
-			if(new_target) target = new_target//Looks like we found a turf.
-
-	projectile_to_fire.original = target
 	return target
+
 
 /obj/item/weapon/gun/proc/simulate_recoil(recoil_bonus = 0, mob/user, atom/target)
 	var/total_recoil = recoil_bonus

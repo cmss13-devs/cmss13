@@ -243,7 +243,7 @@
 	update_icon()
 	SetOpacity(0)
 	if (filler)
-		filler.SetOpacity(0)
+		filler.SetOpacity(opacity)
 
 	if(operating)	operating = 0
 
@@ -271,7 +271,7 @@
 	if(visible && !glass)
 		SetOpacity(1)	//caaaaarn!
 		if (filler)
-			filler.SetOpacity(0)
+			filler.SetOpacity(opacity)
 	operating = 0
 	return
 
@@ -296,11 +296,13 @@
 			bound_height = world.icon_size
 			filler.SetOpacity(0)
 			filler = (get_step(src,EAST)) //Find new turf
+			filler.SetOpacity(opacity)
 		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 			filler.SetOpacity(0)
 			filler = (get_step(src,NORTH)) //Find new turf
+			filler.SetOpacity(opacity)
 
 
 /obj/machinery/door/morgue

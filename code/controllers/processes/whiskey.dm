@@ -31,7 +31,7 @@ datum/controller/process/whiskey/doWork()
 		if (wo_game_mode.xeno_wave == 7)
 			if(!ticker.mode.picked_call)
 				for(var/datum/emergency_call/L in ticker.mode.all_calls)
-					if(L.name == "Marine squad")
+					if(L.name == "Marine Reinforcements (Squad)")
 						ticker.mode.picked_call = L
 						ticker.mode.picked_call.activate(FALSE)
 		if(wo_game_mode.xeno_wave < 15)

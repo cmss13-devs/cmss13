@@ -216,6 +216,7 @@ var/global/spawn_next_wo_wave = 0
 	wave_castes = list(/mob/living/carbon/Xenomorph/Runner)
 	sound_effect = list('sound/effects/siren.ogg')
 	command_announcement = list("We're tracking the creatures that wiped out our patrols heading towards your outpost.. Stand-by while we attempt to establish a signal with the USS Alistoun to alert them of these creatures.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
+	scaling_factor = 0.3
 
 /datum/whiskey_outpost_wave/wave2
 	wave_number = 2
@@ -226,6 +227,7 @@ var/global/spawn_next_wo_wave = 0
 					/mob/living/carbon/Xenomorph/Runner,
 					/mob/living/carbon/Xenomorph/Sentinel,
 					/mob/living/carbon/Xenomorph/Sentinel)
+	scaling_factor = 0.4
 
 /datum/whiskey_outpost_wave/wave3 //Tier II versions added, but rare
 	wave_number = 3
@@ -236,6 +238,7 @@ var/global/spawn_next_wo_wave = 0
 					/mob/living/carbon/Xenomorph/Lurker,
 					/mob/living/carbon/Xenomorph/Spitter,
 					/mob/living/carbon/Xenomorph/Defender)
+	scaling_factor = 0.6
 
 /datum/whiskey_outpost_wave/wave4 //Tier II more common
 	wave_number = 4
@@ -249,6 +252,7 @@ var/global/spawn_next_wo_wave = 0
 					/mob/living/carbon/Xenomorph/Spitter,
 					/mob/living/carbon/Xenomorph/Defender,
 					/mob/living/carbon/Xenomorph/Drone)
+	scaling_factor = 0.7
 
 /datum/whiskey_outpost_wave/wave5 //Reset the spawns	so we don't drown in xenos again.
 	wave_number = 5
@@ -262,7 +266,7 @@ var/global/spawn_next_wo_wave = 0
 					/mob/living/carbon/Xenomorph/Spitter,
 					/mob/living/carbon/Xenomorph/Defender,
 					/mob/living/carbon/Xenomorph/Drone)
-	scaling_factor = 1.0
+	scaling_factor = 0.8
 
 /datum/whiskey_outpost_wave/wave6 //Tier II more common
 	wave_number = 6
@@ -279,7 +283,7 @@ var/global/spawn_next_wo_wave = 0
 					/mob/living/carbon/Xenomorph/Defender,
 					/mob/living/carbon/Xenomorph/Drone,
 					/mob/living/carbon/Xenomorph/Warrior)
-	scaling_factor = 1.1
+	scaling_factor = 0.9
 
 /datum/whiskey_outpost_wave/wave7
 	wave_number = 7

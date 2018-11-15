@@ -699,7 +699,14 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	y += range * cos(angle)
 
 	//Restricts to map boundaries while keeping the final angle the same
-	var/ratio = (A.x - x) / (A.y - y)
+	var/dx = A.x - x
+	var/dy = A.y - y
+	var/ratio
+	try //prevents divide-by-zero errors
+		ratio = dx / dy
+	catch
+		ratio = INFINITY
+
 	if(x < 1)
 		y += (1 - x) / ratio
 		x = 1

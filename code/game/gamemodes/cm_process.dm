@@ -205,50 +205,126 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 		sleep(1)
 	round_fog = null
 
+
+//Variables for the below function that we need to keep throught the round
+var/peakHumans = 0
+var/peakXenos = 0
+
+var/lastXenoBioscan = 18000//30 minutes in (we will add to that!)
+var/lastHumanBioscan = 18000//30 minutes in (we will add to that!)
+var/nextPredatorBioscan = 3000//5 minutes in
+var/nextAdminBioscan = 18000//30 minutes in
+
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
 /datum/game_mode/proc/announce_bioscans(var/delta = 2)
-	var/list/activeXenos = list() //We'll announce to them later.
 	var/numHostsPlanet	= 0
 	var/numHostsShip	= 0
 	var/numXenosPlanet	= 0
 	var/numXenosShip	= 0
 
-	for(var/mob/M in player_list) //Scan through and detect Xenos and Hosts, but only those with clients.
-		if(M.stat != DEAD)
-			if(isXeno(M))
-				switch(M.z)
-					if(3) numXenosShip++ //On the ship.
-					if(0) //nullspace
-						if(M.loc && M.loc.z == 3) numXenosShip++ //maybe they're in a closet or vent, check that obj's z level.
-						else numXenosPlanet++
-					else numXenosPlanet++ //Elsewhere.
-				activeXenos += M
+	//We're assembling a list of locations so we can give hint about a random one
+	var/list/hostsPlanetLocations = list()
+	var/list/hostsShipLocations = list()
+	var/list/xenosPlanetLocations = list()
+	var/list/xenosShipLocations = list()
 
-			if(ishuman(M) && !isYautja(M))
-				switch(M.z)
-					if(3) numHostsShip++ //On the ship.
-					if(0) //nullspace
-						if(M.loc && M.loc.z == 3) numHostsShip++ //maybe they're in a closet or vent, check that obj's z level.
-						else numHostsPlanet++
-					else numHostsPlanet++ //Elsewhere.
+	var/larva = 0
+	if (ticker && ticker.mode)
+		larva = ticker.mode.stored_larva
+
+	//Keeping track of peak numbers to determine when a side is "losing"
+	if (peakHumans < living_human_list.len)
+		peakHumans = living_human_list.len
+	if (peakXenos < living_xeno_list.len)
+		peakXenos = living_xeno_list.len
+
+	for(var/mob/M in living_xeno_list)
+		var/atom/where = M
+		if (where == 0 && M.loc)
+			where = M.loc
+		switch(where.z)
+			if(3)//On the ship
+				numXenosShip++
+				xenosShipLocations+=where
+			if(1)//planet
+				numXenosPlanet++
+				xenosPlanetLocations+=where
+			else numXenosPlanet++ //Elsewhere, nullspace, transit
+
+	for (var/mob/M in living_human_list)
+		var/atom/where = M
+		if (where == 0 && M.loc)
+			where = M.loc
+		switch(where.z)
+			if(3) //On the ship.
+				numHostsShip++
+				hostsShipLocations+=where
+			if(1)//planet
+				numHostsPlanet++
+				hostsPlanetLocations+=where
+			else numHostsPlanet++ //Elsewhere, nullspace, transit
+
+	if (world.time > nextAdminBioscan)
+		nextAdminBioscan += 18000//every 30 minutes, straight
+		//Message the admins first before we tweak the numbers
+		log_admin("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
+		message_admins("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.", 1)
+
+	//Pick one random location to disclose
+	var/RandomHostsPlanetLocation = ""
+	if (hostsPlanetLocations.len>0)
+		RandomHostsPlanetLocation = get_area(hostsPlanetLocations[rand(1, hostsPlanetLocations.len)]).name
+	var/RandomHostsShipLocation = ""
+	if (hostsShipLocations.len>0)
+		RandomHostsShipLocation = get_area(hostsShipLocations[rand(1, hostsShipLocations.len)]).name
+	var/RandomXenosPlanetLocation = ""
+	if (xenosPlanetLocations.len>0)
+		RandomXenosPlanetLocation = get_area(xenosPlanetLocations[rand(1, xenosPlanetLocations.len)]).name
+	var/RandomXenosShipLocation = ""
+	if (xenosShipLocations.len>0)
+		RandomXenosShipLocation = get_area(xenosShipLocations[rand(1, xenosShipLocations.len)]).name
+
+	if(world.time > nextPredatorBioscan)
+		nextPredatorBioscan += 3000//5 minutes, straight
+		for(var/mob/M in player_list)
+			//Announce the numbers to Yautja, they have good scanners
+			if (isYautja(M))
+				M << "<h2 class='alert'>Bioscan complete</h2>"
+				M << "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""], with [larva] larva.\n[numXenosShip] serpents present on the ooman ship[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]\n[numHostsPlanet] oomans present in the hunting ground[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]\n[numHostsShip] oomans present on the ooman ship[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]</span>"
+
+			//Let the ghosts know what's up, they also get good numbers
+			if (isobserver(M))
+				M << "<h2 class='alert'>Bioscan complete</h2>"
+				M << "<span class='alert'>[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship.</span>"
 
 	//Adjust the randomness there so everyone gets the same thing
 	numHostsShip = max(0, numHostsShip + rand(-delta, delta))
 	numXenosPlanet = max(0, numXenosPlanet + rand(-delta, delta))
 
-	// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
-	for(var/mob/M in activeXenos)
-		M << sound(get_sfx("queen"), wait = 0, volume = 50)
-		M << "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>"
-		M << "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? "approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere.</span>"
+	//Depending on how either side is doing, we speed up the bioscans
+	//Formula is - last bioscan time, plus 30 minutes multiplied by ratio of current pop divided by highest pop
+	//So if you have peak 30 xenos, if you still have 30 xenos, humans will have to wait 30 minutes between bioscans
+	//But if you fall down to 15 xenos, humans will get them every 15 minutes
+	//But never more often than 5 minutes apart
+	var/nextXenoBioscan = lastXenoBioscan + max(18000 * living_human_list.len / peakHumans, 3000)
+	var/nextHumanBioscan = lastHumanBioscan + max(18000 * living_xeno_list.len / peakXenos, 3000)
 
-	// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
-	var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-	var/input = "Bioscan complete.\n\nSensors indicate [numXenosShip ? "[numXenosShip]":"no"] unknown lifeform signature[!numXenosShip || numXenosShip > 1 ? "s":""] present on the ship and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere."
-	command_announcement.Announce(input, name, new_sound = 'sound/AI/bioscan.ogg')
+	if(world.time > nextXenoBioscan)
+		lastXenoBioscan = world.time
+		// The announcement to all Xenos. Slightly off for the human ship, accurate otherwise.
+		for(var/mob/M in player_list)
+			if(isXeno(M))
+				M << sound(get_sfx("queen"), wait = 0, volume = 50)
+				M << "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>"
+				M << "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? "approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""] and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""].</span>"
 
-	log_admin("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
-	message_admins("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.", 1)
+
+	if(world.time > nextHumanBioscan)
+		lastHumanBioscan = world.time
+		// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
+		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
+		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShip ? "[numXenosShip]":"no"] unknown lifeform signature[!numXenosShip || numXenosShip > 1 ? "s":""] present on the ship[numXenosShip&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
+		command_announcement.Announce(input, name, new_sound = 'sound/AI/bioscan.ogg')
 
 /*
 Count up surviving humans and aliens.

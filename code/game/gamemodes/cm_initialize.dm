@@ -76,8 +76,8 @@ Additional game mode variables.
 	var/roles_for_mode[] //Won't have a list if the instruction is set to 0.
 
 	//Bioscan related.
-	var/bioscan_current_interval = 36000
-	var/bioscan_ongoing_interval = 18000
+	var/bioscan_current_interval = 3000//5 minutes in
+	var/bioscan_ongoing_interval = 600//every 1 minute
 
 	var/flags_round_type = NOFLAGS
 

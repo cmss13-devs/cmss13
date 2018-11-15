@@ -452,6 +452,7 @@
 			W.assignment = "Squad Marine"
 			W.rank = "Squad Marine"
 			M.equip_to_slot_or_del(W, WEAR_ID)
+
 		if("USCM Second-Lieutenant (SO)")
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(M), WEAR_BODY)
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(M), WEAR_HEAD)

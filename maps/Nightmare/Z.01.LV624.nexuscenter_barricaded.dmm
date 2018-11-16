@@ -110,7 +110,7 @@
 "Fo" = (/turf/open/floor/plating,/area/lv624/lazarus/chapel)
 "Fp" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor{dir = 8; icon_state = "chapel"},/area/lv624/lazarus/chapel)
 "Ft" = (/obj/machinery/atmospherics/pipe/simple/hidden/cyan,/turf/open/floor/grass,/area/lv624/lazarus/main_hall)
-"Fu" = (/obj/machinery/door/airlock/almayer/engineering{density = 0; icon_state = "door_open"; name = "\improper Nexus Cargo Storage"; req_access_txt = "100"; req_one_access_txt = "0"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/lazarus/quart)
+"Fu" = (/obj/machinery/door/airlock/almayer/engineering{density = 0; icon_state = "door_open"; name = "\improper Nexus Cargo Storage"},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/lazarus/quart)
 "Fv" = (/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/lazarus/quart)
 "Fz" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/plating,/area/lv624/lazarus/chapel)
 "FR" = (/turf/open/floor{dir = 4; icon_state = "chapel"},/area/lv624/lazarus/chapel)
@@ -129,7 +129,7 @@
 "He" = (/obj/machinery/vending/cigarette/colony,/turf/open/floor{tag = "icon-whiteblue (NORTHWEST)"; icon_state = "whiteblue"; dir = 9},/area/lv624/lazarus/main_hall)
 "Hf" = (/obj/structure/flora/pottedplant,/obj/machinery/light/spot{dir = 1},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
 "Hj" = (/obj/machinery/recharge_station,/obj/structure/window/reinforced{dir = 8},/turf/open/floor{dir = 4; icon_state = "whiteyellowfull"},/area/lv624/lazarus/quart)
-"HH" = (/obj/machinery/door/airlock/multi_tile/almayer/generic{name = "\improper Nexus Dome Chapel"; req_access_txt = "100"},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/chapel)
+"HH" = (/obj/machinery/door/airlock/multi_tile/almayer/generic{name = "\improper Nexus Dome Chapel"},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/chapel)
 "HI" = (/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/chapel)
 "HJ" = (/obj/structure/flora/pottedplant,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
 "Ie" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
@@ -161,7 +161,7 @@
 "NQ" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor{icon_state = "red"; dir = 10},/area/lv624/lazarus/security)
 "NR" = (/obj/machinery/power/apc{dir = 1; name = "Security Office APC"},/obj/structure/cable/yellow{d2 = 8; icon_state = "0-8"},/turf/open/floor{icon_state = "red"},/area/lv624/lazarus/security)
 "NS" = (/turf/open/floor{dir = 8; icon_state = "redcorner"},/area/lv624/lazarus/security)
-"NT" = (/obj/machinery/door/airlock/almayer/security{locked = 1; name = "\improper Nexus Dome Marshal Office"; req_access_txt = "100"},/turf/open/floor,/area/lv624/lazarus/security)
+"NT" = (/obj/machinery/door/airlock/almayer/security{locked = 1; name = "\improper Nexus Dome Marshal Office"},/turf/open/floor,/area/lv624/lazarus/security)
 "NU" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/kitchen)
 "NV" = (/obj/structure/table,/obj/machinery/chem_dispenser/soda{pixel_y = 22},/turf/open/floor{dir = 8; icon_state = "barber"},/area/lv624/lazarus/kitchen)
 "NW" = (/obj/structure/sink/kitchen{pixel_y = 30},/obj/structure/table,/obj/item/reagent_container/food/snacks/donkpocket{pixel_x = 4; pixel_y = 4},/obj/item/reagent_container/food/snacks/donkpocket{pixel_x = -4; pixel_y = -4},/obj/item/reagent_container/food/snacks/donkpocket,/turf/open/floor{dir = 8; icon_state = "barber"},/area/lv624/lazarus/kitchen)
@@ -173,7 +173,7 @@
 "OJ" = (/obj/structure/bed/chair/office/light,/turf/open/floor{icon_state = "redfull"; dir = 9},/area/lv624/lazarus/security)
 "OK" = (/turf/open/floor{icon_state = "red"; dir = 8},/area/lv624/lazarus/security)
 "OM" = (/obj/structure/flora/grass/green,/obj/machinery/atmospherics/pipe/simple/hidden/cyan,/turf/open/floor/grass,/area/lv624/lazarus/main_hall)
-"ON" = (/obj/machinery/door/airlock/almayer/medical/glass{name = "\improper Nexus Dome Canteen"; req_access_txt = "100"; req_one_access_txt = "0"},/turf/open/floor{dir = 8; icon_state = "barber"},/area/lv624/lazarus/kitchen)
+"ON" = (/obj/machinery/door/airlock/almayer/medical/glass{name = "\improper Nexus Dome Canteen"},/turf/open/floor{dir = 8; icon_state = "barber"},/area/lv624/lazarus/kitchen)
 
 (1,1,1) = {"
 FoFoFSFRFzztaaCwFTCyztacFuFvFUFVFW

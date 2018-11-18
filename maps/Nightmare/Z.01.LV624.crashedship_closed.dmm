@@ -47,7 +47,7 @@
 "aU" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/diamond{amount = 2},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
 "aV" = (/obj/structure/rack,/obj/item/stack/sheet/metal{amount = 50; pixel_x = 4; pixel_y = 4},/obj/item/stack/sheet/metal{amount = 30},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
 "aW" = (/obj/structure/rack,/obj/item/tool/shovel,/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"aX" = (/obj/machinery/door/airlock/almayer/secure{dir = 4; icon_state = "door_locked"; id = ""; locked = 1; name = "Mining Storage"; req_access_txt = "100"},/turf/open/floor{icon_state = "dark"},/area/lv624/ground/sand5)
+"aX" = (/obj/machinery/door/airlock/almayer/secure{dir = 4; icon_state = "door_locked"; id = ""; locked = 1; name = "Mining Storage"},/turf/open/floor{icon_state = "dark"},/area/lv624/ground/sand5)
 "aY" = (/turf/open/floor{icon_state = "dark"},/area/lv624/ground/sand5)
 "aZ" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/iron{amount = 5},/obj/item/stack/sheet/mineral/platinum,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
 "ba" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/sand6)

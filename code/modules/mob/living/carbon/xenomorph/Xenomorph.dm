@@ -35,6 +35,7 @@
 	speak_emote = list("hisses")
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //Arbitrary damage values
+	var/armor_deflection_buff = 0
 	attacktext = "claws"
 	attack_sound = null
 	friendly = "nuzzles"

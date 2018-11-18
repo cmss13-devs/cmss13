@@ -673,7 +673,7 @@
 	if (crest_defense)
 		round_statistics.defender_crest_lowerings++
 		src << "<span class='xenowarning'>You lower your crest.</span>"
-		caste.armor_deflection += 15
+		armor_deflection_buff += 25
 		speed += 0.8	// This is actually a slowdown but speed is dumb
 		update_icons()
 		do_crest_defense_cooldown()
@@ -681,7 +681,7 @@
 
 	round_statistics.defender_crest_raises++
 	src << "<span class='xenowarning'>You raise your crest.</span>"
-	caste.armor_deflection -= 15
+	armor_deflection_buff -= 25
 	speed -= 0.8
 	update_icons()
 	do_crest_defense_cooldown()
@@ -714,8 +714,9 @@
 
 	if (fortify)
 		src << "<span class='xenowarning'>You tuck yourself into a defensive stance.</span>"
-		caste.armor_deflection += 30
-		caste.xeno_explosion_resistance++
+		armor_deflection_buff += 50
+		//caste.xeno_explosion_resistance++ absolutely useless and prone to giving issues for entire caste
+		//come back when this is AT LEAST a multitude of 10
 		frozen = 1
 		anchored = 1
 		update_canmove()
@@ -740,8 +741,8 @@
 
 /mob/living/carbon/Xenomorph/proc/fortify_off()
 	src << "<span class='xenowarning'>You resume your normal stance.</span>"
-	caste.armor_deflection -= 30
-	caste.xeno_explosion_resistance--
+	armor_deflection_buff -= 50
+	//caste.xeno_explosion_resistance-- yeah... useless, and prone to create issues
 	frozen = 0
 	anchored = 0
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 30, 1)

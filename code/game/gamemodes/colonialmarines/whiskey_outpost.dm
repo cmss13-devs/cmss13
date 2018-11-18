@@ -147,9 +147,9 @@ var/global/spawn_next_wo_wave = 0
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
-	var/C = count_marines(SURFACE_Z_LEVELS)
+	var/C = count_humans_and_xenos(SURFACE_Z_LEVELS)
 
-	if(C == 0)
+	if(C[1] == 0)
 		finished = 1 //Alien win
 	else if(world.time > 36000 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
 		finished = 2 //Marine win

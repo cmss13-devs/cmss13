@@ -89,7 +89,8 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
 				WEAR_HEAD = /obj/item/clothing/head/cmcap,
 				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
+				WEAR_R_STORE = /obj/item/storage/pouch/general/large,
+				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/RO
 				)
 
 	generate_entry_message(mob/living/carbon/human/H)

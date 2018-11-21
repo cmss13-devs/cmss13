@@ -60,7 +60,7 @@
 	icon_state = "apc0"
 	anchored = 1
 	use_power = 0
-	req_access = list(ACCESS_CIVILIAN_ENGINEERING)
+	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_ENGINEERING)
 	unacidable = 1
 	var/area/area
 	var/areastring = null

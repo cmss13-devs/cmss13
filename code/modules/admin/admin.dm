@@ -34,6 +34,14 @@ var/global/floorIsLava = 0
 				var/msg = rendered
 				C << msg
 
+/proc/msg_admin_niche(var/msg) //Toggleable Niche Messages
+	log_admin(msg)
+	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN NICHE LOG:</span> <span class=\"message\">[msg]</span></span>"
+	for(var/client/C in admins)
+		if(R_MOD & C.holder.rights)
+			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
+				C << msg
+
 /proc/msg_admin_ff(var/text)
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <font color=#00ff00><b>[text]</b></font></span>" //I used <font> because I never learned html correctly, fix this if you want
@@ -191,16 +199,15 @@ var/global/floorIsLava = 0
 				<br>
 			"}
 
-	if (M.client)
-		body += {"<br><br>
-			<b>Other actions:</b>
-			<br>
-			<A href='?src=\ref[src];forcespeech=\ref[M]'>Forcesay</A> |
-			<A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> |
-			<A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> |
-			<A href='?src=\ref[src];tdomeadmin=\ref[M]'>Thunderdome Admin</A> |
-			<A href='?src=\ref[src];tdomeobserve=\ref[M]'>Thunderdome Observer</A>
-		"}
+	body += {"<br><br>
+		<b>Other actions:</b>
+		<br>
+		<A href='?src=\ref[src];forcespeech=\ref[M]'>Forcesay</A> |
+		<A href='?src=\ref[src];tdome1=\ref[M]'>Thunderdome 1</A> |
+		<A href='?src=\ref[src];tdome2=\ref[M]'>Thunderdome 2</A> |
+		<A href='?src=\ref[src];tdomeadmin=\ref[M]'>Thunderdome Admin</A> |
+		<A href='?src=\ref[src];tdomeobserve=\ref[M]'>Thunderdome Observer</A>
+	"}
 
 	body += {"<br>
 		</body></html>

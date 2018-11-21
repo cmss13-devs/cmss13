@@ -223,14 +223,6 @@
 
 	custom_metabolism = 0.01
 
-	on_mob_life(mob/living/M, alien)
-		. = ..()
-		if(!.) return
-		if(M.stat == 2) return
-		if(alien && alien == IS_VOX)
-			M.adjustToxLoss(REAGENTS_METABOLISM)
-			holder.remove_reagent(src.id, REAGENTS_METABOLISM) //By default it slowly disappears.
-
 /datum/reagent/copper
 	name = "Copper"
 	id = "copper"
@@ -248,13 +240,6 @@
 
 	custom_metabolism = 0.01
 
-	on_mob_life(mob/living/M, alien)
-		. = ..()
-		if(!.) return
-		if(M.stat == 2) return
-		if(alien && alien == IS_VOX)
-			M.adjustOxyLoss(-2*REM)
-			holder.remove_reagent(src.id, REAGENTS_METABOLISM) //By default it slowly disappears.
 
 /datum/reagent/hydrogen
 	name = "Hydrogen"

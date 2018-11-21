@@ -28,9 +28,7 @@
 	icon_state = "championbelt"
 	item_state = "champion"
 	storage_slots = 1
-	can_hold = list(
-		"/obj/item/clothing/mask/luchador"
-		)
+	can_hold = list(/obj/item/clothing/mask/luchador)
 
 
 
@@ -47,19 +45,20 @@
 	icon_state = "utilitybelt"
 	item_state = "utility"
 	can_hold = list(
-		"/obj/item/tool/crowbar",
-		"/obj/item/tool/screwdriver",
-		"/obj/item/tool/weldingtool",
-		"/obj/item/tool/wirecutters",
-		"/obj/item/tool/wrench",
-		"/obj/item/device/multitool",
-		"/obj/item/device/flashlight",
-		"/obj/item/stack/cable_coil",
-		"/obj/item/device/t_scanner",
-		"/obj/item/device/analyzer",
-		"/obj/item/tool/taperoll/engineering",
-		"/obj/item/tool/shovel/etool")
-	bypass_w_limit = list("/obj/item/tool/shovel/etool")
+		/obj/item/tool/crowbar,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/device/multitool,
+		/obj/item/device/flashlight,
+		/obj/item/stack/cable_coil,
+		/obj/item/device/t_scanner,
+		/obj/item/device/analyzer,
+		/obj/item/tool/taperoll/engineering,
+		/obj/item/tool/shovel/etool
+	)
+	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
 
 /obj/item/storage/belt/utility/full/New()
@@ -92,29 +91,29 @@
 	max_storage_space = 28
 
 	can_hold = list(
-		"/obj/item/device/healthanalyzer",
-		"/obj/item/dnainjector",
-		"/obj/item/reagent_container/dropper",
-		"/obj/item/reagent_container/glass/beaker",
-		"/obj/item/reagent_container/glass/bottle",
-		"/obj/item/reagent_container/pill",
-		"/obj/item/reagent_container/syringe",
-		"/obj/item/tool/lighter",
-		"/obj/item/storage/fancy/cigarettes",
-		"/obj/item/storage/pill_bottle",
-		"/obj/item/stack/medical",
-		"/obj/item/device/flashlight/pen",
-		"/obj/item/clothing/mask/surgical",
-		"/obj/item/clothing/gloves/latex",
-		"/obj/item/storage/syringe_case",
-		"/obj/item/ammo_magazine/pistol",
-		"/obj/item/ammo_magazine/revolver",
-		"/obj/item/ammo_magazine/handful",
-		"/obj/item/device/flashlight/flare",
-	    "/obj/item/reagent_container/hypospray",
-	    "/obj/item/bodybag",
-	    "/obj/item/device/defibrillator",
-	    "/obj/item/roller"
+		/obj/item/device/healthanalyzer,
+		/obj/item/dnainjector,
+		/obj/item/reagent_container/dropper,
+		/obj/item/reagent_container/glass/beaker,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/syringe,
+		/obj/item/tool/lighter,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/storage/pill_bottle,
+		/obj/item/stack/medical,
+		/obj/item/device/flashlight/pen,
+		/obj/item/clothing/mask/surgical,
+		/obj/item/clothing/gloves/latex,
+		/obj/item/storage/syringe_case,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/handful,
+		/obj/item/device/flashlight/flare,
+	    /obj/item/reagent_container/hypospray,
+	    /obj/item/bodybag,
+	    /obj/item/device/defibrillator,
+	    /obj/item/roller
 	)
 
 /obj/item/storage/belt/medical/New()
@@ -142,13 +141,13 @@
 	max_storage_space = 42
 	max_w_class = 2
 	can_hold = list(
-		"/obj/item/reagent_container/glass/bottle",
-		"/obj/item/reagent_container/pill",
-		"/obj/item/reagent_container/syringe",
-		"/obj/item/storage/pill_bottle",
-		"/obj/item/clothing/gloves/latex",
-		"/obj/item/reagent_container/hypospray/autoinjector",
-		"/obj/item/stack/medical"
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/syringe,
+		/obj/item/storage/pill_bottle,
+		/obj/item/clothing/gloves/latex,
+		/obj/item/reagent_container/hypospray/autoinjector,
+		/obj/item/stack/medical
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
@@ -182,6 +181,8 @@
 	icon_state = "medicalbag_u"
 	item_state = "medicbag_u"
 	has_gamemode_skin = FALSE
+	storage_slots = 42
+	max_storage_space = 82
 
 /obj/item/storage/belt/combatLifesaver/upp/New()  //The belt, with all it's magic inside!
 	..()
@@ -213,27 +214,27 @@
 	max_w_class = 3
 	max_storage_space = 21
 	can_hold = list(
-		"/obj/item/explosive/grenade/flashbang",
-		"/obj/item/explosive/grenade/chem_grenade/teargas",
-		"/obj/item/reagent_container/spray/pepper",
-		"/obj/item/handcuffs",
-		"/obj/item/device/flash",
-		"/obj/item/clothing/glasses",
-		"/obj/item/ammo_magazine/pistol",
-		"/obj/item/ammo_magazine/handful",
-		"/obj/item/reagent_container/food/snacks/donut/normal",
-		"/obj/item/reagent_container/food/snacks/donut/jelly",
-		"/obj/item/weapon/baton",
-		"/obj/item/weapon/gun/energy/taser",
-		"/obj/item/tool/lighter/zippo",
-		"/obj/item/cigpacket",
-		"/obj/item/clothing/glasses/hud/security",
-		"/obj/item/device/flashlight",
-		"/obj/item/device/pda",
-		"/obj/item/device/radio/headset",
-		"/obj/item/weapon",
-		"/obj/item/tool/taperoll/police"
-		)
+		/obj/item/explosive/grenade/flashbang,
+		/obj/item/explosive/grenade/chem_grenade/teargas,
+		/obj/item/reagent_container/spray/pepper,
+		/obj/item/handcuffs,
+		/obj/item/device/flash,
+		/obj/item/clothing/glasses,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/handful,
+		/obj/item/reagent_container/food/snacks/donut/normal,
+		/obj/item/reagent_container/food/snacks/donut/jelly,
+		/obj/item/weapon/baton,
+		/obj/item/weapon/gun/energy/taser,
+		/obj/item/tool/lighter/zippo,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/clothing/glasses/hud/security,
+		/obj/item/device/flashlight,
+		/obj/item/device/pda,
+		/obj/item/device/radio/headset,
+		/obj/item/weapon,
+		/obj/item/tool/taperoll/police
+	)
 
 
 
@@ -273,22 +274,22 @@
 	max_w_class = 3
 	max_storage_space = 20
 	can_hold = list(
-		"/obj/item/weapon/combat_knife",
-		"/obj/item/device/flashlight/flare",
-		"/obj/item/ammo_magazine/rifle",
-		"/obj/item/ammo_magazine/smg",
-		"/obj/item/ammo_magazine/pistol",
-		"/obj/item/ammo_magazine/revolver",
-		"/obj/item/ammo_magazine/sniper",
-		"/obj/item/ammo_magazine/handful",
-		"/obj/item/flareround_s",
-		"/obj/item/flareround_sp",
-		"/obj/item/explosive/grenade",
-		"/obj/item/explosive/mine",
-		"/obj/item/reagent_container/food/snacks"
-		)
-	bypass_w_limit = list("/obj/item/ammo_magazine/rifle",
-					"/obj/item/ammo_magazine/smg/m39")
+		/obj/item/weapon/combat_knife,
+		/obj/item/device/flashlight/flare,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/handful,
+		/obj/item/explosive/grenade,
+		/obj/item/explosive/mine,
+		/obj/item/reagent_container/food/snacks
+	)
+	bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg/m39
+	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
 	New()
@@ -346,7 +347,7 @@
 	storage_slots = 10
 	max_w_class = 2
 	max_storage_space = 20
-	can_hold = list("/obj/item/ammo_magazine/handful")
+	can_hold = list(/obj/item/ammo_magazine/handful)
 
 	New()
 		select_gamemode_skin(type)
@@ -370,7 +371,7 @@
 	max_w_class = 1
 	max_storage_space = 6
 
-	can_hold=list("/obj/item/weapon/throwing_knife")
+	can_hold=list(/obj/item/weapon/throwing_knife)
 	New()
 		select_gamemode_skin(type)
 		..()
@@ -391,7 +392,7 @@
 	storage_slots = 8
 	max_w_class = 3
 	max_storage_space = 24
-	can_hold = list("/obj/item/explosive/grenade")
+	can_hold = list(/obj/item/explosive/grenade)
 
 
 /obj/item/storage/belt/grenade/full/New()
@@ -466,9 +467,9 @@
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
 	can_hold = list(
-		"/obj/item/weapon/gun/pistol",
-		"/obj/item/ammo_magazine/pistol"
-		)
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol
+	)
 
 /obj/item/storage/belt/gun/Dispose()
 	if(gun_underlay)
@@ -546,9 +547,9 @@
 	name = "\improper M276 pattern M4A3 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the M4A3 comfortably secure. It also contains side pouches that can store 9mm or .45 magazines."
 	can_hold = list(
-		"/obj/item/weapon/gun/pistol",
-		"/obj/item/ammo_magazine/pistol"
-		)
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol
+	)
 
 	New()
 		select_gamemode_skin(type)
@@ -597,9 +598,9 @@
 	item_state = "m44_holster"
 	max_w_class = 7
 	can_hold = list(
-		"/obj/item/weapon/gun/revolver/m44",
-		"/obj/item/ammo_magazine/revolver"
-		)
+		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/ammo_magazine/revolver
+	)
 	New()
 		..()
 		select_gamemode_skin(type)
@@ -620,9 +621,9 @@
 	item_state = "s_cmateba_holster"
 	max_w_class = 7
 	can_hold = list(
-		"/obj/item/weapon/gun/revolver/mateba",
-		"/obj/item/ammo_magazine/revolver/mateba"
-		)
+		/obj/item/weapon/gun/revolver/mateba,
+		/obj/item/ammo_magazine/revolver/mateba
+	)
 
 /obj/item/storage/belt/gun/mateba/full/New()
 	..()
@@ -668,10 +669,10 @@
 	icon_state = "korovin_holster"
 	item_state = "korovin_holster"
 	can_hold = list(
-		"/obj/item/weapon/gun/pistol/c99",
-		"/obj/item/ammo_magazine/pistol/c99",
-		"/obj/item/ammo_magazine/pistol/c99t"
-		)
+		/obj/item/weapon/gun/pistol/c99,
+		/obj/item/ammo_magazine/pistol/c99,
+		/obj/item/ammo_magazine/pistol/c99t
+	)
 
 /obj/item/storage/belt/gun/korovin/standard/New()
 	..()

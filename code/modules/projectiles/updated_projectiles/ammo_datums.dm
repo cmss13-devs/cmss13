@@ -660,13 +660,13 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES
 	New()
 		..()
-		accurate_range = config.short_shell_range
+		accurate_range = config.norm_shell_range
 		accuracy_var_low = config.low_proj_variance
 		accuracy_var_high = config.low_proj_variance
-		max_range = config.short_shell_range
+		max_range = config.norm_shell_range
 		damage = config.lmed_hit_damage
-		penetration = config.low_armor_penetration
-		accuracy = config.low_hit_accuracy
+		penetration = config.med_armor_penetration
+		accuracy = config.high_hit_accuracy
 
 /datum/ammo/bullet/turret/dumb
 	icon_state 	= "bullet"
@@ -850,17 +850,12 @@
 		smoke.set_up(1, T)
 		smoke.start()
 		if(locate(/obj/flamer_fire) in T) return
-		new /obj/flamer_fire(T, pick(15, 20, 25, 30))
+		new /obj/flamer_fire(T, pick(15, 20, 25, 30), 15, fire_spread_amount = 2)
 
-		for(var/mob/living/carbon/M in range(3, T))
-			if(isXeno(M))
-				var/mob/living/carbon/Xenomorph/X = M
-				if(X.caste.fire_immune) continue
+		var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
+		landingSmoke.set_up(3, 0, T, null, 6)
+		landingSmoke.start()
 
-			if(M.stat == DEAD) continue
-			M.adjust_fire_stacks(rand(5, 25))
-			M.IgniteMob()
-			M.visible_message("<span class='danger'>[M] bursts into flames!</span>","[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]You burst into flames!</span>")
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
 		drop_flame(get_turf(M))
@@ -1152,8 +1147,10 @@
 
 	New()
 		..()
-		max_range = config.min_shell_range
-		damage = config.med_hit_damage
+		damage_falloff = config.buckshot_damage_falloff
+		accuracy = config.high_hit_accuracy
+		max_range = config.short_shell_range
+		damage = config.hmed_hit_damage
 		damage_var_low = config.med_proj_variance
 		damage_var_high = config.high_proj_variance
 		shell_speed = config.reg_shell_speed
@@ -1256,12 +1253,12 @@
 		accurate_range = config.max_shell_range
 		point_blank_range = -1
 		max_range = 7
-		damage = config.med_hit_damage
+		damage = config.lmed_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.reg_damage_falloff
 		shell_speed = config.reg_shell_speed
-		shrapnel_chance = config.min_shrapnel_chance
+		shrapnel_chance = 5
 
 /*
 //================================================

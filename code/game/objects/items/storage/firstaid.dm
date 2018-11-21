@@ -13,9 +13,11 @@
 	icon_state = "firstaid"
 	throw_speed = 2
 	throw_range = 8
-	cant_hold = list("/obj/item/ammo_magazine",
-							"/obj/item/explosive/grenade",
-							"/obj/item/tool") //to prevent powergaming.
+	cant_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/tool
+	) //to prevent powergaming.
 	var/empty = 0 //whether the kit starts empty
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
@@ -152,7 +154,13 @@
 	throw_range = 8
 	storage_slots = 3
 	w_class = 2.0
-	can_hold = list("/obj/item/reagent_container/pill","/obj/item/reagent_container/glass/bottle","/obj/item/paper","/obj/item/reagent_container/syringe","/obj/item/reagent_container/hypospray/autoinjector")
+	can_hold = list(
+		/obj/item/reagent_container/pill,
+		/obj/item/reagent_container/glass/bottle,
+		/obj/item/paper,
+		/obj/item/reagent_container/syringe,
+		/obj/item/reagent_container/hypospray/autoinjector
+	)
 
 /obj/item/storage/syringe_case/regular
 
@@ -198,7 +206,11 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_state = "contsolid"
 	w_class = 2.0
-	can_hold = list("/obj/item/reagent_container/pill","/obj/item/toy/dice","/obj/item/paper")
+	can_hold = list(
+		/obj/item/reagent_container/pill,
+		/obj/item/toy/dice,
+		/obj/item/paper
+	)
 	allow_quick_gather = 1
 	use_to_pickup = 1
 	storage_slots = null
@@ -350,7 +362,7 @@
 	skilllock = 0 //CL can open it
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine
 
-	req_access_txt = "200"
+	req_access = list(ACCESS_WY_CORPORATE)
 	var/req_role = "Corporate Liaison"
 
 

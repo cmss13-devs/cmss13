@@ -1021,7 +1021,7 @@ datum/preferences
 					g_skin = rand(0,255)
 					b_skin = rand(0,255)
 				if ("bag")
-					backbag = rand(1,4)
+					backbag = rand(1,2)
 
 				if ("all")
 					randomize_appearance_for()	//no params needed
@@ -1071,29 +1071,6 @@ datum/preferences
 					if(new_age)
 						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
-				if("language")
-					var/languages_available
-					var/list/new_languages = list("None")
-					var/datum/species/S = all_species[species]
-
-					if(config.usealienwhitelist)
-						for(var/L in all_languages)
-							var/datum/language/lang = all_languages[L]
-							if((!(lang.flags & RESTRICTED)) && (is_alien_whitelisted(user, L)||(!( lang.flags & WHITELISTED ))||(S && (L in S.secondary_langs))))
-								new_languages += lang
-
-								languages_available = 1
-
-						if(!(languages_available))
-							alert(user, "There are not currently any available secondary languages.")
-					else
-						for(var/L in all_languages)
-							var/datum/language/lang = all_languages[L]
-							if(!(lang.flags & RESTRICTED))
-								new_languages += lang.name
-
-					language = input("Please select a secondary language", "Character Generation", null) in new_languages
-
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
 					if(new_metadata)
@@ -1107,7 +1084,7 @@ datum/preferences
 				*/
 
 				if("hair")
-					if(species == "Human" || species == "Unathi" || species == "Tajara" || species == "Skrell")
+					if(species == "Human")
 						var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference") as color|null
 						if(new_hair)
 							r_hair = hex2num(copytext(new_hair, 2, 4))
@@ -1191,14 +1168,6 @@ datum/preferences
 						g_eyes = hex2num(copytext(new_eyes, 4, 6))
 						b_eyes = hex2num(copytext(new_eyes, 6, 8))
 
-
-				if("skin")
-					if(species == "Unathi" || species == "Tajara" || species == "Skrell")
-						var/new_skin = input(user, "Choose your character's skin colour: ", "Character Preference") as color|null
-						if(new_skin)
-							r_skin = hex2num(copytext(new_skin, 2, 4))
-							g_skin = hex2num(copytext(new_skin, 4, 6))
-							b_skin = hex2num(copytext(new_skin, 6, 8))
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference") as color|null
@@ -1529,8 +1498,8 @@ datum/preferences
 		undershirt = 0
 	character.undershirt = undershirt
 
-	if(backbag > 4 || backbag < 1)
-		backbag = 1 //Same as above
+	if(backbag > 2 || backbag < 1)
+		backbag = 2 //Same as above
 	character.backbag = backbag
 
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.

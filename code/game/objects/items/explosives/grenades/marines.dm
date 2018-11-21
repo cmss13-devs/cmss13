@@ -67,7 +67,7 @@
 	icon_state = "grenade_frag"
 	item_state = "grenade_frag"
 	explosion_power = 40
-	shrapnel_count = 32
+	shrapnel_count = 48
 
 
 
@@ -80,7 +80,7 @@
 	throw_range = 6
 	underslug_launchable = FALSE
 	explosion_power = 100
-	shrapnel_count = 32
+	shrapnel_count = 48
 
 
 
@@ -92,8 +92,8 @@
 	throw_speed = 2
 	throw_range = 6
 	underslug_launchable = FALSE
-	explosion_power = 80
-	shrapnel_count = 40
+	explosion_power = 60
+	shrapnel_count = 56
 
 
 /*

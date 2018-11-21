@@ -280,7 +280,6 @@
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
-	species_restricted = null
 	items_allowed = list(/obj/item/weapon/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
 	var/bootnumber = 1
 
@@ -321,7 +320,6 @@
 	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 10, rad = 10)
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	species_restricted = null
 
 /obj/item/clothing/under/chainshirt/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -342,7 +340,6 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "bracer"
 	origin_tech = "combat=8;materials=8;magnets=8;programming=8"
-	species_restricted = null
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_item = 0
@@ -499,18 +496,22 @@
 	var/closest = 10000
 	var/direction = -1
 	for(var/obj/item/I in yautja_gear)
-		switch(I.z)
+		var/atom/loc = I.get_true_location()
+		if (isYautja(loc))
+			//it's actually yautja holding the item, ignore!
+			continue
+		switch(loc.z)
 			if(LOW_ORBIT_Z_LEVEL)
 				gear_low_orbit++
 			if(MAIN_SHIP_Z_LEVEL)
 				gear_on_almayer++
 			if(1)
 				gear_on_planet++
-		if(M.z == I.z)
-			var/dist = get_dist(M,I)
+		if(M.z == loc.z)
+			var/dist = get_dist(M,loc)
 			if(dist < closest)
 				closest = dist
-				direction = get_dir(M,I)
+				direction = get_dir(M,loc)
 	for(var/mob/living/carbon/human/Y in yautja_mob_list)
 		if(Y.stat != DEAD) continue
 		switch(Y.z)
@@ -900,7 +901,7 @@
 	..()
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
-	name = "unusual crysal"
+	name = "unusual crystal"
 	desc = "A strange glowing crystal with a spike at one end."
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "crystal"

@@ -25,7 +25,7 @@
 "y" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/table,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/item/weapon/gun/revolver/cmb,/obj/item/ammo_magazine/revolver/cmb,/obj/item/ammo_magazine/revolver/cmb,/obj/item/ammo_magazine/revolver/cmb,/turf/open/floor{icon_state = "red"; dir = 5},/area/lv624/lazarus/security)
 "z" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle9)
 "A" = (/obj/machinery/light/small{dir = 1},/obj/item/stack/sheet/metal,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
-"B" = (/obj/machinery/door/airlock/almayer/secure{locked = 1; name = "\improper Nexus Dome Armory"; req_access_txt = "100"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
+"B" = (/obj/machinery/door/airlock/almayer/secure{locked = 1; name = "\improper Nexus Dome Armory"},/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
 "C" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/item/stack/sheet/metal,/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/lazarus/armory)
 
 (1,1,1) = {"

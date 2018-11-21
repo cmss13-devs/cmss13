@@ -58,7 +58,7 @@
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
 	icon_state = "latex"
-	can_hold = list("/obj/item/clothing/gloves/latex")
+	can_hold = list(/obj/item/clothing/gloves/latex)
 	w_class = 2
 
 
@@ -76,7 +76,7 @@
 	name = "box of sterile masks"
 	desc = "This box contains masks of sterility."
 	icon_state = "sterile"
-	can_hold = list("/obj/item/clothing/mask/surgical")
+	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = 2
 
 	New()
@@ -94,7 +94,7 @@
 	name = "box of syringes"
 	desc = "A box full of syringes."
 	desc = "A biohazard alert warning is printed on the box"
-	can_hold = list("/obj/item/reagent_container/syringe")
+	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	w_class = 2
 
@@ -111,7 +111,7 @@
 /obj/item/storage/box/beakers
 	name = "box of beakers"
 	icon_state = "beaker"
-	can_hold = list("/obj/item/reagent_container/glass/beaker")
+	can_hold = list(/obj/item/reagent_container/glass/beaker)
 	w_class = 3
 
 	New()
@@ -127,7 +127,7 @@
 /obj/item/storage/box/injectors
 	name = "box of DNA injectors"
 	desc = "This box contains injectors it seems."
-	can_hold = list("/obj/item/dnainjector")
+	can_hold = list(/obj/item/dnainjector)
 	w_class = 3
 
 	New()
@@ -143,7 +143,7 @@
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
 	icon_state = "flashbang"
-	can_hold = list("/obj/item/explosive/grenade/flashbang")
+	can_hold = list(/obj/item/explosive/grenade/flashbang)
 	w_class = 3
 	New()
 		..()
@@ -205,7 +205,7 @@
 	name = "box of prescription glasses"
 	desc = "This box contains nerd glasses."
 	icon_state = "glasses"
-	can_hold = list("/obj/item/clothing/glasses/regular")
+	can_hold = list(/obj/item/clothing/glasses/regular)
 	w_class = 3
 
 	New()
@@ -280,7 +280,7 @@
 	name = "box of donk-pockets"
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donk_kit"
-	can_hold = list("/obj/item/reagent_container/food/snacks")
+	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = 3
 
 	New()
@@ -446,7 +446,7 @@
 	item_state = "zippo"
 	w_class = 1
 	flags_equip_slot = SLOT_WAIST
-	can_hold = list("/obj/item/tool/match")
+	can_hold = list(/obj/item/tool/match)
 
 	New()
 		..()
@@ -482,7 +482,10 @@
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	item_state = "syringe_kit"
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
-	can_hold = list("/obj/item/light_bulb/tube", "/obj/item/light_bulb/bulb")
+	can_hold = list(
+		/obj/item/light_bulb/tube,
+		/obj/item/light_bulb/bulb
+	)
 	max_storage_space = 42	//holds 21 items of w_class 2
 	use_to_pickup = 1 // for picking up broken bulbs, not that most people will try
 
@@ -525,9 +528,7 @@
 	icon_state = "minebox"
 	w_class = 3
 	max_storage_space = 8
-	can_hold = list(
-		"/obj/item/explosive/mine"
-		)
+	can_hold = list(/obj/item/explosive/mine)
 
 /obj/item/storage/box/explosive_mines/New()
 	..()
@@ -547,9 +548,7 @@
 	icon_state = "m94"
 	w_class = 3
 	max_storage_space = 10
-	can_hold = list(
-		"/obj/item/device/flashlight/flare"
-		)
+	can_hold = list(/obj/item/device/flashlight/flare)
 
 /obj/item/storage/box/m94/New()
 	..()
@@ -575,7 +574,7 @@
 	w_class = 4
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list("/obj/item/explosive/grenade/HE")
+	can_hold = list(/obj/item/explosive/grenade/HE)
 	var/nade_box_icon
 	var/grenade_type = /obj/item/explosive/grenade/HE
 
@@ -600,7 +599,7 @@
 	w_class = 4
 	storage_slots = 25
 	max_storage_space = 50
-	can_hold = list("/obj/item/explosive/grenade/HE/frag")
+	can_hold = list(/obj/item/explosive/grenade/HE/frag)
 	grenade_type = /obj/item/explosive/grenade/HE/frag
 
 
@@ -609,16 +608,14 @@
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
 	grenade_type = /obj/item/explosive/grenade/HE/training
-	can_hold = list(
-		"/obj/item/explosive/grenade/HE/training"
-		)
+	can_hold = list(/obj/item/explosive/grenade/HE/training)
 
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
 	desc = "A secure box holding 25 M66 tear gas grenades. Used for riot control."
 	icon_state = "teargas_nade_placeholder"
-	can_hold = list("/obj/item/explosive/grenade/chem_grenade/teargas")
+	can_hold = list(/obj/item/explosive/grenade/chem_grenade/teargas)
 	grenade_type = /obj/item/explosive/grenade/chem_grenade/teargas
 
 

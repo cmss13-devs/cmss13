@@ -43,45 +43,6 @@
 			return ask_verb
 	return speech_verb
 
-/datum/language/unathi
-	name = "Sinta'unathi"
-	desc = "The common language of Moghes, composed of sibilant hisses and rattles. Spoken natively by Unathi."
-	speech_verb = "hisses"
-	ask_verb = "hisses"
-	exclaim_verb = "roars"
-	colour = "soghun"
-	key = "o"
-	flags = WHITELISTED
-
-/datum/language/tajaran
-	name = "Siik'tajr"
-	desc = "The traditionally employed tongue of Ahdomai, composed of expressive yowls and chirps. Native to the Tajaran."
-	speech_verb = "mrowls"
-	ask_verb = "mrowls"
-	exclaim_verb = "yowls"
-	colour = "tajaran"
-	key = "j"
-	flags = WHITELISTED
-
-/datum/language/skrell
-	name = "Skrellian"
-	desc = "A melodic and complex language spoken by the Skrell of Qerrbalak. Some of the notes are inaudible to humans."
-	speech_verb = "warbles"
-	ask_verb = "warbles"
-	exclaim_verb = "warbles"
-	colour = "skrell"
-	key = "k"
-	flags = WHITELISTED
-
-/datum/language/vox
-	name = "Vox-pidgin"
-	desc = "The common tongue of the various Vox ships making up the Shoal. It sounds like chaotic shrieking to everyone else."
-	speech_verb = "shrieks"
-	ask_verb = "creels"
-	exclaim_verb = "SHRIEKS"
-	colour = "vox"
-	key = "9"
-	flags = RESTRICTED
 
 /datum/language/common
 	name = "English"
@@ -122,7 +83,7 @@
 	colour = "soghun"
 	key = "3"
 
-/datum/language/sainja
+/datum/language/sainja //Yautja tongue
 	name = "Sainja"
 	desc = "The deep, rumbling, gutteral sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
 	speech_verb = "rumbles"
@@ -234,7 +195,6 @@
 
 // Language handling.
 /mob/proc/add_language(var/language)
-
 	var/datum/language/new_language = all_languages[language]
 
 	if(!istype(new_language) || new_language in languages)
@@ -243,15 +203,23 @@
 	languages.Add(new_language)
 	return 1
 
+/mob/proc/set_languages(var/list/new_languages)
+	languages = list()
+	for(var/language in new_languages)
+		add_language(language)
+
+
 /mob/proc/remove_language(var/rem_language)
-
 	languages.Remove(all_languages[rem_language])
-
 	return 0
+
+/mob/proc/get_default_language()
+	if (languages.len > 0)
+		return languages[1]
+	return null
 
 // Can we speak this language, as opposed to just understanding it?
 /mob/proc/can_speak(datum/language/speaking)
-
 	return (universal_speak || speaking in src.languages)
 
 //TBD

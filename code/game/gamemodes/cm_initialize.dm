@@ -76,8 +76,8 @@ Additional game mode variables.
 	var/roles_for_mode[] //Won't have a list if the instruction is set to 0.
 
 	//Bioscan related.
-	var/bioscan_current_interval = 36000
-	var/bioscan_ongoing_interval = 18000
+	var/bioscan_current_interval = 3000//5 minutes in
+	var/bioscan_ongoing_interval = 600//every 1 minute
 
 	var/flags_round_type = NOFLAGS
 
@@ -253,7 +253,6 @@ datum/game_mode/proc/initialize_special_clamps()
 	initialize_predator(new_predator)
 	return new_predator
 
-#undef DEBUG_PREDATOR_INITIALIZE
 
 //===================================================\\
 
@@ -756,198 +755,25 @@ datum/game_mode/proc/initialize_special_clamps()
 	var/scale = max(marine_pop_size / MARINE_GEAR_SCALING_NORMAL, 1) //This gives a decimal value representing a scaling multiplier. Cannot go below 1
 
 	//Set up attachment vendor contents related to Marine count
-	for(var/X in attachment_vendors)
-		var/obj/machinery/vending/attachments/A = X
+	for(var/obj/machinery/vending/attachments/A in attachment_vendors)
+		A.populate_product_list(scale)
 
-		//Forcefully reset the product list
-		A.product_records = list()
+	for(var/obj/machinery/vending/marine/cargo_ammo/CA in cargo_ammo_vendors)
+		CA.populate_product_list(scale)
 
-		A.products = list(
-					/obj/item/attachable/suppressor = round(scale * 14),
-					/obj/item/attachable/bayonet = round(scale * 14),
-					/obj/item/attachable/compensator = round(scale * 10),
-					/obj/item/attachable/extended_barrel = round(scale * 10),
-					/obj/item/attachable/heavy_barrel = round(scale * 4),
-
-					/obj/item/attachable/scope = round(scale * 4),
-					/obj/item/attachable/scope/mini = round(scale * 4),
-					/obj/item/attachable/flashlight = round(scale * 14),
-					/obj/item/attachable/reddot = round(scale * 14),
-					/obj/item/attachable/magnetic_harness = round(scale * 10),
-					/obj/item/attachable/quickfire = round(scale * 3),
-
-					/obj/item/attachable/verticalgrip = round(scale * 14),
-					/obj/item/attachable/angledgrip = round(scale * 14),
-					/obj/item/attachable/lasersight = round(scale * 14),
-					/obj/item/attachable/gyro = round(scale * 4),
-					/obj/item/attachable/bipod = round(scale * 8),
-					/obj/item/attachable/burstfire_assembly = round(scale * 4),
-
-					/obj/item/attachable/stock/shotgun = round(scale * 4),
-					/obj/item/attachable/stock/rifle = round(scale * 4) ,
-					/obj/item/attachable/stock/revolver = round(scale * 4),
-					/obj/item/attachable/stock/smg = round(scale * 4) ,
-
-					/obj/item/attachable/attached_gun/grenade = round(scale * 10),
-					/obj/item/attachable/attached_gun/shotgun = round(scale * 4),
-					/obj/item/attachable/attached_gun/flamer = round(scale * 4)
-					)
-
-		//Rebuild the vendor's inventory to make our changes apply
-		A.build_inventory(A.products)
-
-	for(var/X in cargo_ammo_vendors)
-		var/obj/machinery/vending/marine/cargo_ammo/CA = X
-
-		//Forcefully reset the product list
-		CA.product_records = list()
-
-		CA.products = list(
-						///obj/item/weapon/claymore/mercsword/machete = 5,
-						/obj/item/storage/large_holster/machete/full = round(scale * 10),
-						/obj/item/ammo_magazine/pistol = round(scale * 20),
-						/obj/item/ammo_magazine/pistol/hp = 0,
-						/obj/item/ammo_magazine/pistol/ap = round(scale * 5),
-						/obj/item/ammo_magazine/pistol/incendiary = 0,
-						/obj/item/ammo_magazine/pistol/extended = round(scale * 10),
-						/obj/item/ammo_magazine/pistol/m1911 = round(scale * 5),
-						/obj/item/ammo_magazine/revolver = round(scale * 20),
-						/obj/item/ammo_magazine/revolver/marksman = round(scale * 5),
-						/obj/item/magazine_box/smg = round(scale * 20 / 12),
-						/obj/item/ammo_magazine/smg/m39 = round(scale * 20) % 12,
-						/obj/item/magazine_box/smg/ap = round(scale * 5 / 12),
-						/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
-						/obj/item/magazine_box/smg/extended = round(scale * 10 / 10),
-						/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
-						/obj/item/magazine_box = round(scale * 30 / 10),
-						/obj/item/ammo_magazine/rifle = round(scale * 30) % 10,
-						/obj/item/magazine_box/rifle_extended = round(scale * 10 / 8),
-						/obj/item/ammo_magazine/rifle/extended = round(scale * 10) % 8,
-						/obj/item/ammo_magazine/rifle/incendiary = 0,
-						/obj/item/magazine_box/rifle_ap = round(scale * 10 / 10),
-						/obj/item/ammo_magazine/rifle/ap = round(scale * 10) % 10,
-						/obj/item/ammo_magazine/rifle/m4ra = 0,
-						/obj/item/ammo_magazine/rifle/m41aMK1 = 0,
-						/obj/item/ammo_magazine/rifle/lmg = 0,
-						/obj/item/ammo_magazine/shotgun = round(scale * 15) % 3,
-						/obj/item/magazine_box/shotgun = round(scale * 10 / 3),
-						/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10) % 3,
-						/obj/item/magazine_box/shotgun/buckshot = round(scale * 10 / 3),
-						/obj/item/ammo_magazine/shotgun/flechette = round(scale * 10),
-						/obj/item/ammo_magazine/sniper = 0,
-						/obj/item/ammo_magazine/sniper/incendiary = 0,
-						/obj/item/ammo_magazine/sniper/flak = 0,
-						/obj/item/smartgun_powerpack = round(scale * 2)
-						)
-
-		CA.build_inventory(CA.products)
-
-
-	for(var/X in cargo_guns_vendors)
-		var/obj/machinery/vending/marine/cargo_guns/CG = X
-
-		//Forcefully reset the product list
-		CG.product_records = list()
-
-		CG.products = list(
-						/obj/item/storage/backpack/marine = round(scale * 15),
-						/obj/item/storage/belt/marine = round(scale * 15),
-						/obj/item/storage/belt/shotgun = round(scale * 10),
-						/obj/item/clothing/tie/storage/webbing = round(scale * 5),
-						/obj/item/clothing/tie/storage/brown_vest = 0,
-						/obj/item/clothing/tie/holster = 0,
-						/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
-						/obj/item/storage/belt/gun/m44 = round(scale * 5),
-						/obj/item/storage/large_holster/m39 = round(scale * 5),
-						/obj/item/storage/pouch/general/medium = round(scale * 2),
-						/obj/item/storage/pouch/construction = round(scale * 2),
-						/obj/item/storage/pouch/tools = round(scale * 2),
-						/obj/item/storage/pouch/explosive = round(scale * 2),
-						/obj/item/storage/pouch/syringe = round(scale * 2),
-						/obj/item/storage/pouch/medical = round(scale * 2),
-						/obj/item/storage/pouch/medkit = round(scale * 2),
-						/obj/item/storage/pouch/magazine = round(scale * 5),
-						/obj/item/storage/pouch/flare/full = round(scale * 5),
-						/obj/item/storage/pouch/firstaid/full = round(scale * 5),
-						/obj/item/storage/pouch/pistol = round(scale * 15),
-						/obj/item/storage/pouch/magazine/pistol/large = round(scale * 5),
-						/obj/item/weapon/gun/pistol/m4a3 = round(scale * 20),
-						/obj/item/weapon/gun/pistol/m1911 = round(scale * 2),
-						/obj/item/weapon/gun/revolver/m44 = round(scale * 10),
-						/obj/item/weapon/gun/smg/m39 = round(scale * 15),
-						/obj/item/weapon/gun/smg/m39/elite = 0,
-						/obj/item/weapon/gun/rifle/m41aMK1 = 0,
-						/obj/item/weapon/gun/rifle/m41a = round(scale * 20),
-						/obj/item/weapon/gun/rifle/m41a/elite = 0,
-						/obj/item/weapon/gun/rifle/lmg = 0,
-						/obj/item/weapon/gun/shotgun/pump = round(scale * 10),
-						/obj/item/weapon/gun/shotgun/combat = 0,
-						/obj/item/explosive/mine = round(scale * 2),
-						/obj/item/storage/box/nade_box = round(scale * 2),
-						/obj/item/storage/box/nade_box/frag = round(scale * 2),
-						/obj/item/explosive/grenade/HE = 0,
-						/obj/item/explosive/grenade/HE/frag = 0,
-						/obj/item/explosive/grenade/HE/m15 = round(scale * 2),
-						/obj/item/explosive/grenade/incendiary = round(scale * 2),
-						/obj/item/explosive/grenade/smokebomb = round(scale * 5),
-						/obj/item/explosive/grenade/phosphorus = 0,
-						/obj/item/storage/box/m94 = round(scale * 10),
-						/obj/item/device/flashlight/combat = round(scale * 5),
-						/obj/item/clothing/mask/gas = round(scale * 10)
-						)
-
-		CG.build_inventory(CG.products)
-
+	for(var/obj/machinery/vending/marine/cargo_guns/CG in cargo_guns_vendors)
+		CG.populate_product_list(scale)
 
 
 	for(var/obj/machinery/vending/marine/M in marine_vendors)
-
-		//Forcefully reset the product list
-		M.product_records = list()
-
-		M.products = list(
-						/obj/item/weapon/gun/pistol/m4a3 = round(scale * 30),
-						/obj/item/weapon/gun/revolver/m44 = round(scale * 25),
-						/obj/item/weapon/gun/smg/m39 = round(scale * 30),
-						/obj/item/weapon/gun/rifle/m41a = round(scale * 30),
-						/obj/item/weapon/gun/shotgun/pump = round(scale * 15),
-
-						/obj/item/ammo_magazine/pistol = round(scale * 30),
-						/obj/item/ammo_magazine/revolver = round(scale * 20),
-						/obj/item/ammo_magazine/smg/m39 = round(scale * 30),
-						/obj/item/ammo_magazine/rifle = round(scale * 25),
-						/obj/item/ammo_magazine/rifle/ap = 0,
-						/obj/item/ammo_magazine/shotgun = round(scale * 10),
-						/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10),
-
-						/obj/item/weapon/combat_knife = round(scale * 30),
-						/obj/item/weapon/throwing_knife = round(scale * 10),
-						/obj/item/storage/box/m94 = round(scale * 10),
-
-						/obj/item/attachable/flashlight = round(scale * 25),
-						/obj/item/attachable/bayonet = round(scale * 25),
-
-						)
-
-		M.contraband =   list(/obj/item/ammo_magazine/revolver/marksman = 0,
-							/obj/item/ammo_magazine/pistol/ap = 0,
-							/obj/item/ammo_magazine/smg/m39/ap = 0
-							)
-
-		M.premium = list(/obj/item/weapon/gun/rifle/m41aMK1 = 0,
-						)
-
-		//Rebuild the vendor's inventory to make our changes apply
-		M.build_inventory(M.products)
-		M.build_inventory(M.contraband, 1)
-		M.build_inventory(M.premium, 0, 1)
+		M.populate_product_list(scale)
 
 		var/products2[]
 		//if(istype(src, /datum/game_mode/ice_colony)) //Literally, we are in gamemode code
 		if(map_tag == MAP_ICE_COLONY)
 			products2 = list(
-						/obj/item/clothing/mask/rebreather/scarf = round(scale * 30),
-							)
+				/obj/item/clothing/mask/rebreather/scarf = round(scale * 30),
+			)
 		M.build_inventory(products2)
 
 	//Scale the amount of cargo points through a direct multiplier

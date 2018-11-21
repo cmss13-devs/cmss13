@@ -53,7 +53,7 @@
 		return
 
 	//Pick the next target
-	if(shitlist.len)
+	if(!target && shitlist.len)
 		var/mob/living/carbon/H
 		for(var/i = 1, i <= shitlist.len, i++) //start from the first guy
 			H = shitlist[1]
@@ -176,7 +176,7 @@
 			shitlist += userguy
 			spawn(20)
 				if(userguy)
-					userguy << "<span class='alert'>That was a mistake. Run</span>"
+					userguy << "<span class='alert'>Run</span>"
 			spawn(30)
 				if(userguy)
 					userguy << "<span class='danger'>RUN</span>"
@@ -188,12 +188,18 @@
 			playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
 			screaming = 1
 			will_scream = 0
+			for(var/mob/M in viewers(src, null))
+				shake_camera(M, 19, 2)
 			spawn(100)
 				visible_message("<span class='danger'>[src] SCREAMS!</span>")
 				playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+				for(var/mob/M in viewers(src, null))
+					shake_camera(M, 19, 2)
 			spawn(200)
 				visible_message("<span class='danger'>[src] SCREAMS!</span>")
 				playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+				for(var/mob/M in viewers(src, null))
+					shake_camera(M, 19, 2)
 			spawn(300)
 				screaming = 0
 		return
@@ -225,35 +231,42 @@
 	if(!scare_played) //Let's minimize the spam
 		playsound(get_turf(src), pick(scare_sound), 50, 1)
 		scare_played = 1
+		for(var/mob/M in viewers(src, null))
+			shake_camera(M, 19, 1)
 		spawn(50)
 			scare_played = 0
+
+	//Just in case target is on the same tile
+	if(target_turf == get_turf(src))
+		murder(target)
 
 	//Rampage along a path to get to them,
 	var/turf/next_turf = get_step_towards(src, target)
 	var/limit = 100
 	spawn()
 		chasing = 1
-		while(get_turf(src) != target_turf && limit > 0)
+		while(target && get_turf(src) != target_turf && limit > 0)
 			if(murdering <= 0)
 				target_turf = get_turf(target)
 
-				for(var/obj/structure/window/W in next_turf)
-					W.health -= 1000
-					W.healthcheck(1, 1, 1, src)
-					sleep(5)
-				for(var/obj/structure/table/O in next_turf)
-					O.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
-					sleep(5)
-				for(var/obj/structure/closet/C in next_turf)
-					C.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
-					sleep(5)
-				for(var/obj/structure/grille/G in next_turf)
-					G.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
-					sleep(5)
 				for(var/obj/machinery/door/D in next_turf)
 					if(D.density)
 						D.open()
+						sleep(10)
+						if(D.density)
+							D.ex_act(EXPLOSION_THRESHOLD_HIGH)
+				for(var/obj/structure/S in next_turf)
+					if(S.density)
+						S.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
 						sleep(5)
+						if(S && S.density)
+							S.ex_act(1000000)
+				if(istype(next_turf, /turf/closed))
+					next_turf.ex_act(EXPLOSION_THRESHOLD_HIGH)
+					sleep(10)
+					if(next_turf && istype(next_turf, /turf/closed))
+						next_turf.ex_act(1000000)
+
 				if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
 					sleep(10)
 
@@ -316,22 +329,42 @@
 //This performs an immediate murder check, meant to avoid people cheesing us by just running faster than Life() refresh
 /mob/living/simple_animal/shyguy/proc/check_murder()
 
+	if(!target)
+		return
+
 	//See if we're able to murder anyone
 	for(var/mob/living/carbon/M in get_turf(src))
-		if(M in shitlist)
+		if(M == target)
 			murder(M)
 			break
 
 /mob/living/simple_animal/shyguy/forceMove(atom/destination, var/no_tp = 0)
 
 	..()
+	for(var/mob/living/carbon/M in get_turf(src))
+		if(M == target || !M.density)
+			continue
+		playsound(loc, "punch", 25, 1)
+		M.apply_damage(50, BRUTE)
+		visible_message("<span class='danger'>[src] knocks [M] aside!</span>")
+		M.KnockDown(4)
+		animation_flash_color(M)
+		diagonal_step(M, dir) //Occasionally fling it diagonally.
+		step_away(M, src, 3)
 	check_murder()
+
+/mob/living/simple_animal/shyguy/proc/diagonal_step(atom/movable/A, direction)
+	if(!A) r_FAL
+	switch(direction)
+		if(EAST, WEST) step(A, pick(NORTH,SOUTH))
+		if(NORTH,SOUTH) step(A, pick(EAST,WEST))
 
 /mob/living/simple_animal/shyguy/proc/murder(var/mob/living/T)
 
 	if(T)
 		T.loc = src.loc
 		visible_message("<span class='danger'>[src] grabs [T]!</span>")
+		animation_flash_color(T)
 		dir = 2
 		T.KnockDown(10)
 		T.anchored = 1
@@ -339,11 +372,12 @@
 		T.pixel_y = 10
 		murdering = 1
 
-		for(var/mob/living/L in viewers(src, null))
-			shake_camera(L, 19, 1)
+		for(var/mob/M in viewers(src, null))
+			shake_camera(M, 30, 1)
 
 		sleep(20)
 
+		animation_flash_color(T)
 		T.anchored = 0
 		T.pixel_y = original_y
 		if(ishuman(T))

@@ -60,21 +60,8 @@
 	var/time_to_equip = 0 // set to ticks it takes to equip a worn suit.
 	var/time_to_unequip = 0 // set to ticks it takes to unequip a worn suit.
 
-	/* Species-specific sprites, concept stolen from Paradise//vg/.
-	ex:
-	sprite_sheets = list(
-		"Tajara" = 'icons/cat/are/bad'
-		)
-	If index term exists and icon_override is not set, this sprite sheet will be used.
-	*/
-	var/list/sprite_sheets = null
 	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
 	var/sprite_sheet_id = 0 //Select which sprite sheet ID to use due to the sprite limit per .dmi. 0 is default, 1 is the new one.
-
-	/* Species-specific sprite sheets for inventory sprites
-	Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
-	*/
-	var/list/sprite_sheets_obj = null
 
 /obj/item/New(loc)
 	..()
@@ -95,7 +82,14 @@
 	item_list -= src
 	. = ..()
 
-
+/obj/item/proc/get_true_location()
+	var/atom/subLoc = src
+	while(subLoc.z == 0 && subLoc.z == 0 && subLoc.z == 0)
+		if (istype(subLoc.loc, /atom))
+			subLoc = subLoc.loc
+		else
+			return src
+	return subLoc
 
 /obj/item/ex_act(severity, explosion_direction)
 	switch(severity)
@@ -288,6 +282,7 @@ cases. Override_icon_state should be a list.*/
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
+	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	return
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -308,6 +303,7 @@ cases. Override_icon_state should be a list.*/
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
 /obj/item/proc/equipped(mob/user, slot)
+	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	for(var/X in actions)
 		var/datum/action/A = X
 		if(item_action_slot_check(user, slot)) //some items only give their actions buttons when in a specific slot.

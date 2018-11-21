@@ -89,9 +89,41 @@
 /obj/item/legcuffs/yautja/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		armed = !armed
+		armed = 1
+		anchored = 1
 		icon_state = "yauttrap[armed]"
-		user << "<span class='notice'>[src] is now [armed ? "armed" : "disarmed"].</span>"
+		user << "<span class='notice'>[src] is now armed.</span>"
+		user.drop_held_item()
+
+
+/obj/item/legcuffs/yautja/attack_hand(mob/living/carbon/human/user)
+	if(isYautja(user))
+		armed = 0
+		anchored = 0
+		icon_state = "yauttrap[armed]"
+		user << "<span class='notice'>[src] is now disarmed.</span>"
+	//Humans and synths don't know how to handle those traps!
+	if(isHumanSynthStrict(user))
+		if(armed)
+			user << "You foolishly reach out for \the [src]..."
+			trapMob(user)
+			return
+	. = ..()
+
+/obj/item/legcuffs/yautja/proc/trapMob(var/mob/living/carbon/H)
+	if(armed)
+		armed = 0
+		anchored = 0
+		icon_state = "yauttrap0"
+		H.legcuffed = src
+		src.loc = H
+		H.legcuff_update()
+		playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)
+		H << "\icon[src] \red <B>You get caught in \the [src]!</B>"
+		H.KnockDown(4)
+		if(ishuman(H))
+			H.emote("pain")
+		feedback_add_details("handcuffs","B")
 
 /obj/item/legcuffs/yautja/Crossed(atom/movable/AM)
 	if(armed)
@@ -105,21 +137,11 @@
 							H << "<span class='notice'>You carefully avoid stepping on the trap.</span>"
 							return
 						if(H.m_intent == MOVE_INTENT_RUN)
-							armed = 0
-							icon_state = "yauttrap0"
-							H.legcuffed = src
-							src.loc = H
-							H.legcuff_update()
-							playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)
-							H << "\icon[src] \red <B>You step on \the [src]!</B>"
-							H.KnockDown(4)
-							if(ishuman(H))
-								H.emote("pain")
-							feedback_add_details("handcuffs","B")
+							trapMob(H)
 							for(var/mob/O in viewers(H, null))
 								if(O == H)
 									continue
-								O.show_message("<span class='warning'>\icon[src] <B>[H] steps on [src].</B></span>", 1)
+								O.show_message("<span class='warning'>\icon[src] <B>[H] gets caught in \the [src].</B></span>", 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade) && !istype(AM, /mob/living/simple_animal/hostile/viscerator))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM

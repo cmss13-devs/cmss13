@@ -19,15 +19,20 @@
 	skills_type = /datum/skills/CE
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/tech
+
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/ce,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel/tech,
-				WEAR_R_STORE = /obj/item/storage/pouch/electronics
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
+			WEAR_BODY = /obj/item/clothing/under/marine/officer/ce,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/yellow,
+			WEAR_WAIST = /obj/item/storage/belt/utility/full,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/electronics
+		)
 
 	generate_stored_equipment()
 		. = list()
@@ -51,16 +56,21 @@ You are also next in the chain of command, should the bridge crew fall in the li
 	skills_type = /datum/skills/RO
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/industrial
+
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/rank/ro_suit,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m44/full,
-				WEAR_HEAD = /obj/item/clothing/head/cmcap/req,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
+			WEAR_BODY = /obj/item/clothing/under/rank/ro_suit,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/yellow,
+			WEAR_WAIST = /obj/item/storage/belt/gun/m44/full,
+			WEAR_HEAD = /obj/item/clothing/head/cmcap/req,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/large
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to dispense supplies to the marines, including weapon attachments.
@@ -98,20 +108,25 @@ A happy ship is a well-functioning ship."}
 		return (latejoin ? mt_slot_formula(get_total_marines()) : spawn_positions)
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine/tech
+
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mt,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/engi,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mt,
+			WEAR_BODY = /obj/item/clothing/under/marine/officer/engi,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/yellow,
+			WEAR_WAIST = /obj/item/storage/belt/utility/full,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/medium
+		)
 
 	generate_stored_equipment()
 		. = list(
-				WEAR_L_HAND = /obj/item/device/t_scanner
-				)
+			WEAR_L_HAND = /obj/item/device/t_scanner
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to make sure the ship is clean and the powergrid is operational.
@@ -142,16 +157,21 @@ Start with the ship's engine, and don't forget radiation equipment."}
 		return (latejoin ? ct_slot_formula(get_total_marines()) : spawn_positions)
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/industrial
+
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/ct,
-				WEAR_BODY = /obj/item/clothing/under/rank/cargotech,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/full,
-				WEAR_HEAD = /obj/item/clothing/head/beanie,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/ct,
+			WEAR_BODY = /obj/item/clothing/under/rank/cargotech,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/yellow,
+			WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/full,
+			WEAR_HEAD = /obj/item/clothing/head/beanie,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/medium
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to dispense supplies to the marines, including weapon attachments.

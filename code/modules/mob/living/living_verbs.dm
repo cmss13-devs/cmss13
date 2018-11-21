@@ -280,6 +280,7 @@
 							O.show_message("\red <B>[CM] manages to remove the legcuffs!</B>", 1)
 						CM << "\blue You successfully remove \the [CM.legcuffed]."
 						CM.drop_inv_item_on_ground(CM.legcuffed)
+						CM.legcuff_update()
 
 /mob/living/verb/lay_down()
 	set name = "Rest"
@@ -287,6 +288,9 @@
 
 	if(is_mob_incapacitated(TRUE))
 		return
+
+	if(!resting)
+		src.KnockDown(1) //so that the mob immediately falls over
 
 	resting = !resting
 	src << "\blue You are now [resting ? "resting" : "getting up"]"

@@ -12,6 +12,11 @@
 			m_intent = MOVE_INTENT_WALK
 			if(hud_used && hud_used.move_intent)
 				hud_used.move_intent.icon_state = "walking"
+	else
+		if(m_intent != MOVE_INTENT_RUN)
+			m_intent = MOVE_INTENT_RUN
+			if(hud_used && hud_used.move_intent)
+				hud_used.move_intent.icon_state = "running"
 	update_inv_legcuffed()
 
 

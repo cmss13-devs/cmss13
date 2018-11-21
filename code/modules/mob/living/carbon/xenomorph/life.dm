@@ -53,7 +53,8 @@
 				if(upgrade_stored >= caste.upgrade_threshold)
 					if(!is_mob_incapacitated() && !handcuffed && !legcuffed)
 						spawn(0)
-							upgrade_xeno(upgrade+1)
+							if (map_tag != MAP_WHISKEY_OUTPOST)
+								upgrade_xeno(upgrade+1)
 
 		if(caste.evolution_allowed && evolution_stored < caste.evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
 			evolution_stored = min(evolution_stored + progress_amount, caste.evolution_threshold)

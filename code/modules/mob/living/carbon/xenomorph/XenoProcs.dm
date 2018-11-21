@@ -263,8 +263,6 @@
 		see_invisible = SEE_INVISIBLE_LEVEL_TWO //Turn it off.
 		see_in_dark = 4
 		sight |= SEE_MOBS
-		sight &= ~SEE_TURFS
-		sight &= ~SEE_OBJS
 	else
 		see_invisible = SEE_INVISIBLE_MINIMUM
 		see_in_dark = 8
@@ -543,3 +541,13 @@
 		leader_aura_strength = Q.caste.aura_strength
 		leader_current_aura = Q.current_aura
 		src << "<span class='xenowarning'>Your pheromones have changed. The Queen has new plans for the Hive.</span>"
+
+/mob/living/carbon/Xenomorph/proc/nocrit(var/wowave)
+	if(map_tag == MAP_WHISKEY_OUTPOST)
+		if(wowave < 15)
+			maxHealth = ((maxHealth+abs(crit_health))*(wowave/15)*(3/4))+((maxHealth)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
+			health	= ((health+abs(crit_health))*(wowave/15)*(3/4))+((health)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
+		else
+			maxHealth = maxHealth+abs(crit_health) // From round 15 and on we give them only a slight boost
+			health = health+abs(crit_health) // From round 15 and on we give them only a slight boost
+	crit_health = -1 // Do not put this at 0 or xeno's will just vanish on WO due to how the garbage collector works.

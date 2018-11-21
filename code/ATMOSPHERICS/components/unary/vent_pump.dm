@@ -296,11 +296,13 @@
 					"<span class='notice'>You weld [src] shut.</span>")
 					welded = 1
 					update_icon()
+					msg_admin_niche("[key_name(user)] welded a vent pump.")
 					return 1
 				else
 					user.visible_message("<span class='notice'>[user] welds [src] open.</span>", \
 					"<span class='notice'>You weld [src] open.</span>")
 					welded = 0
+					msg_admin_niche("[key_name(user)] un-welded a vent pump.")
 					update_icon()
 					return 1
 			else

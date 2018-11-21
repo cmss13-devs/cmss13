@@ -23,7 +23,12 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	flags_whitelist = WHITELIST_COMMANDER
 	skills_type = /datum/skills/commander
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/mcommander
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/command,
@@ -31,7 +36,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 				WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer/commander,
 				WEAR_WAIST = /obj/item/storage/belt/gun/mateba/cmateba/full,
 				WEAR_HEAD = /obj/item/clothing/head/beret/cm/tan,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)
 	generate_stored_equipment()
@@ -50,7 +55,7 @@ Godspeed, commander!"}
 
 	announce_entry_message(mob/living/carbon/human/H)
 		sleep(15)
-		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
+		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
 		..()
 
 	get_access() return get_all_marine_access()
@@ -74,14 +79,19 @@ Come hell or high water, you are going to be there for them."}
 	skills_type = /datum/skills/XO
 
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/exec,
 				WEAR_FEET = /obj/item/clothing/shoes/marine,
 				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
 				WEAR_HEAD = /obj/item/clothing/head/cmcap,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)
 
@@ -114,14 +124,19 @@ Make the USCM proud!"}
 	get_total_positions(var/latejoin = 0)
 		return (latejoin ? so_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/bridge,
 				WEAR_FEET = /obj/item/clothing/shoes/marine,
 				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/commander,
 				WEAR_HEAD = /obj/item/clothing/head/cmcap/ro,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)
 	generate_stored_equipment()
@@ -154,7 +169,12 @@ You are in charge of logistics and the overwatch system. You are also in line to
 	get_total_positions(var/latejoin = 0)
 		return (latejoin ? po_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/marine
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/pilot,
@@ -162,7 +182,7 @@ You are in charge of logistics and the overwatch system. You are also in line to
 				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
 				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
 				WEAR_JACKET = /obj/item/clothing/suit/armor/vest/pilot,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)
 
@@ -200,7 +220,12 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	skills_type = /datum/skills/tank_crew
 	idtype = /obj/item/card/id/dogtag
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/marine/satchel
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/industrial
+
 		. = list(
 				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/tanker,
@@ -208,19 +233,19 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
 				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
 				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/tanker,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
+				WEAR_BACK = backItem,
 				WEAR_R_STORE = /obj/item/storage/pouch/general/large
 				)
 
 	generate_stored_equipment()
 		. = list(
-				WEAR_R_HAND = /obj/item/clothing/head/helmet/marine/tanker
-				)
+			WEAR_R_HAND = /obj/item/clothing/head/helmet/marine/tanker
+		)
 
 	get_wearable_equipment()
 		var/L[] = list(
-						WEAR_EYES = /obj/item/clothing/head/helmet/marine/tanker
-						)
+			WEAR_EYES = /obj/item/clothing/head/helmet/marine/tanker
+		)
 
 		return generate_wearable_equipment() + L
 
@@ -239,8 +264,8 @@ While you are an officer, your authority is limited to your own vehicle, where y
 	allow_additional = 1
 	scaled = 1
 	selection_color = "#ffdddd"
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
+	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
 	idtype = /obj/item/card/id
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/MP
@@ -251,19 +276,24 @@ While you are an officer, your authority is limited to your own vehicle, where y
 	get_total_positions(var/latejoin = 0)
 		return (latejoin ? mp_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel/sec
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/security
+
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mmpo,
-				WEAR_BODY = /obj/item/clothing/under/marine/mp,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/black,
-				WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm/red,
-				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/mmpo,
+			WEAR_BODY = /obj/item/clothing/under/marine/mp,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/black,
+			WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
+			WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP,
+			WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+			WEAR_HEAD = /obj/item/clothing/head/beret/cm/red,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/medium
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
@@ -278,24 +308,29 @@ In addition, you are tasked with the security of high-ranking personnel, includi
 	paygrade = "WO"
 	flag = ROLE_CHIEF_MP
 	selection_color = "#ffaaaa"
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH)
+	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/CMP
 
-	generate_wearable_equipment()
+	generate_wearable_equipment(mob/living/carbon/human/H)
+		if(!H.client || !H.client.prefs || !H.client.prefs) return
+		var/backItem = /obj/item/storage/backpack/satchel/sec
+		if (H.client.prefs.backbag == 1)
+			backItem = /obj/item/storage/backpack/security
+
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/cmpcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/warrant,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/black,
-				WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/WO,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm/wo,
-				WEAR_BACK = /obj/item/storage/backpack/security,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
+			WEAR_EAR = /obj/item/device/radio/headset/almayer/cmpcom,
+			WEAR_BODY = /obj/item/clothing/under/marine/officer/warrant,
+			WEAR_FEET = /obj/item/clothing/shoes/marine,
+			WEAR_HANDS = /obj/item/clothing/gloves/black,
+			WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
+			WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/WO,
+			WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
+			WEAR_HEAD = /obj/item/clothing/head/beret/cm/wo,
+			WEAR_BACK = backItem,
+			WEAR_R_STORE = /obj/item/storage/pouch/general/large
+		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.

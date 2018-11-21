@@ -357,9 +357,6 @@ var/list/global_mutations = list() // list of hidden mutation things
 //=================================================
 
 //Some on_mob_life() procs check for alien races.
-#define IS_VOX 2
-#define IS_SKRELL 3
-#define IS_UNATHI 4
 #define IS_XENOS 5
 #define IS_YAUTJA 6
 #define IS_HORROR 7

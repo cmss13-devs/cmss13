@@ -34,8 +34,8 @@
 	var/datum/language/speaking = parse_language(message)
 	if(speaking)
 		message = copytext(message,3)
-	else if(species.default_language)
-		speaking = all_languages[species.default_language]
+	else
+		speaking = get_default_language()
 
 	var/ending = copytext(message, length(message))
 	if (speaking)
@@ -101,7 +101,7 @@
 		for(var/mob/living/M in hearers(message_range, src))
 			if(M != src)
 				M.show_message("<span class='notice'>[src] talks into [used_radios.len ? used_radios[1] : "the radio."]</span>")
-		if(has_species(src,"Human"))
+		if(isHumanSynthStrict(src))
 			playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
 		italics = 1

@@ -24,10 +24,6 @@
 	var/unarmed_type =           /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
 
-	var/language                  // Default racial language, if any.
-	// Default language is used when 'say' is used without modifiers.
-	var/default_language = "English"
-	var/secondary_langs = list()  // The names of secondary languages that are available to this species.
 	var/mutantrace                // Safeguard due to old code.
 	var/list/speech_sounds        // A list of sounds to potentially play when speaking.
 	var/list/speech_chance
@@ -173,6 +169,8 @@
 	return
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
+	if(!H.languages || H.languages.len == 0)
+		H.set_languages(list("English"))
 	add_inherent_verbs(H)
 
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events.
@@ -212,7 +210,6 @@
 /datum/species/human
 	name = "Human"
 	name_plural = "Humans"
-	language = "Sol Common"
 	primitive = /mob/living/carbon/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR
@@ -240,7 +237,6 @@
 /datum/species/human/spook
 	name = "Horror"
 	name_plural = "Horrors"
-	default_language = "Drrrrrrr"
 	icobase = 'icons/mob/human_races/r_spooker.dmi'
 	deform = 'icons/mob/human_races/r_spooker.dmi'
 	brute_mod = 0.15
@@ -275,162 +271,10 @@
 		H.adjustOxyLoss(-15)
 		H.adjustToxLoss(-15)
 
-/datum/species/unathi
-	name = "Unathi"
-	name_plural = "Unathi"
-	icobase = 'icons/mob/human_races/r_lizard.dmi'
-	deform = 'icons/mob/human_races/r_def_lizard.dmi'
-	language = "Sinta'unathi"
-	tail = "sogtail"
-	unarmed_type = /datum/unarmed_attack/claws
-	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
-	primitive = /mob/living/carbon/monkey/unathi
-	darksight = 3
-	gluttonous = 1
 
-	cold_level_1 = 280 //Default 260 - Lower is better
-	cold_level_2 = 220 //Default 200
-	cold_level_3 = 130 //Default 120
-
-	heat_level_1 = 420 //Default 360 - Higher is better
-	heat_level_2 = 480 //Default 400
-	heat_level_3 = 1100 //Default 1000
-
-	flags = IS_WHITELISTED|HAS_LIPS|HAS_UNDERWEAR|HAS_SKIN_COLOR
-
-	flesh_color = "#34AF10"
-
-	reagent_tag = IS_UNATHI
-	base_color = "#066000"
-
-/datum/species/tajaran
-	name = "Tajara"
-	name_plural = "Tajaran"
-	icobase = 'icons/mob/human_races/r_tajaran.dmi'
-	deform = 'icons/mob/human_races/r_def_tajaran.dmi'
-	language = "Siik'tajr"
-	tail = "tajtail"
-	unarmed_type = /datum/unarmed_attack/claws
-	darksight = 8
-
-	cold_level_1 = 200 //Default 260
-	cold_level_2 = 140 //Default 200
-	cold_level_3 = 80 //Default 120
-
-	heat_level_1 = 330 //Default 360
-	heat_level_2 = 380 //Default 400
-	heat_level_3 = 800 //Default 1000
-
-	primitive = /mob/living/carbon/monkey/tajara
-
-	flags = IS_WHITELISTED|HAS_LIPS|HAS_UNDERWEAR|HAS_SKIN_COLOR
-
-	flesh_color = "#AFA59E"
-	base_color = "#333333"
-
-/datum/species/skrell
-	name = "Skrell"
-	name_plural = "Skrell"
-	icobase = 'icons/mob/human_races/r_skrell.dmi'
-	deform = 'icons/mob/human_races/r_def_skrell.dmi'
-	language = "Skrellian"
-	primitive = /mob/living/carbon/monkey/skrell
-	unarmed_type = /datum/unarmed_attack/punch
-
-	flags = IS_WHITELISTED|HAS_LIPS|HAS_UNDERWEAR|HAS_SKIN_COLOR
-
-	flesh_color = "#8CD7A3"
-
-	reagent_tag = IS_SKRELL
-
-/datum/species/vox
-	name = "Vox"
-	name_plural = "Vox"
-	icobase = 'icons/mob/human_races/r_vox.dmi'
-	deform = 'icons/mob/human_races/r_def_vox.dmi'
-	default_language = "Vox-pidgin"
-	language = "English"
-	unarmed_type = /datum/unarmed_attack/claws/strong
-	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
-	rarity_value = 2
-
-	speech_sounds = list('sound/voice/shriek1.ogg')
-	speech_chance = 20
-
-	warning_low_pressure = 50
-	hazard_low_pressure = 0
-
-	cold_level_1 = 80
-	cold_level_2 = 50
-	cold_level_3 = 0
-
-	eyes = "vox_eyes_s"
-
-	breath_type = "oxygen"//"nitrogen"
-	poison_type = "phoron"//"oxygen"
-	insulated = 1
-
-	flags = NO_SCAN
-
-	blood_color = "#2299FC"
-	flesh_color = "#808D11"
-
-	reagent_tag = IS_VOX
-
-	inherent_verbs = list(
-		/mob/living/carbon/human/proc/leap
-		)
-
-	has_organ = list(
-		"heart" =    /datum/internal_organ/heart,
-		"lungs" =    /datum/internal_organ/lungs,
-		"liver" =    /datum/internal_organ/liver,
-		"kidneys" =  /datum/internal_organ/kidneys,
-		"brain" =    /datum/internal_organ/brain,
-		"eyes" =     /datum/internal_organ/eyes,
-		"stack" =    /datum/internal_organ/stack/vox
-		)
-
-/datum/species/vox/armalis
-	name = "Vox Armalis"
-	name_plural = "Vox"
-	icobase = 'icons/mob/human_races/r_armalis.dmi'
-	deform = 'icons/mob/human_races/r_armalis.dmi'
-	rarity_value = 10
-
-	warning_low_pressure = 50
-	hazard_low_pressure = 0
-
-	cold_level_1 = 80
-	cold_level_2 = 50
-	cold_level_3 = 0
-
-	heat_level_1 = 2000
-	heat_level_2 = 3000
-	heat_level_3 = 4000
-
-	brute_mod = 0.2
-	burn_mod = 0.2
-
-	eyes = "blank_eyes"
-	breath_type = "nitrogen"
-	poison_type = "oxygen"
-
-	flags = NO_SCAN|NO_BLOOD|NO_PAIN
-
-	blood_color = "#2299FC"
-	flesh_color = "#808D11"
-
-	tail = "armalis_tail"
-	icon_template = 'icons/mob/human_races/r_armalis.dmi'
-
-	reagent_tag = IS_VOX
-
-	inherent_verbs = list(
-		/mob/living/carbon/human/proc/leap,
-		/mob/living/carbon/human/proc/gut,
-		/mob/living/carbon/human/proc/commune
-		)
+/datum/species/human/spook/handle_post_spawn(mob/living/carbon/human/H)
+	H.set_languages(list("Drrrrrrr"))
+	return ..()
 
 /datum/species/machine
 	name = "Machine"
@@ -438,7 +282,6 @@
 
 	icobase = 'icons/mob/human_races/r_machine.dmi'
 	deform = 'icons/mob/human_races/r_machine.dmi'
-	language = "Tradeband"
 	unarmed_type = /datum/unarmed_attack/punch
 	rarity_value = 2
 
@@ -547,8 +390,6 @@
 	icobase = 'icons/mob/human_races/r_goo_zed.dmi'
 	deform = 'icons/mob/human_races/r_goo_zed.dmi'
 	death_message = "seizes up and falls limp... But is it dead?"
-	language = "Zombie"
-	default_language = "Zombie"
 	flags = NO_PAIN|NO_BREATHE|NO_SCAN|NO_POISON
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
 	burn_mod = 2 //IT BURNS
@@ -565,6 +406,9 @@
 	knock_out_reduction = 5
 	has_organ = list()
 
+/datum/species/zombie/handle_post_spawn(mob/living/carbon/human/H)
+	H.set_languages("Zombie")
+	return ..()
 
 /datum/species/zombie/handle_post_spawn(var/mob/living/carbon/human/H)
 	if(H.hud_used)
@@ -635,7 +479,7 @@
 
 
 /datum/species/synthetic/handle_post_spawn(mob/living/carbon/human/H)
-	H.universal_understand = 1
+	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
 	living_human_list -= H
 	return ..()
 
@@ -649,8 +493,6 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_PAIN|NO_SCAN|NO_POISON //Hmm, let's see if this does anything
-	language = "Sainja" //"Warrior"
-	default_language = "Sainja"
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	blood_color = "#20d450"
@@ -763,6 +605,7 @@
 
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)
+	H.set_languages(list("Sainja"))
 
 	return ..()
 

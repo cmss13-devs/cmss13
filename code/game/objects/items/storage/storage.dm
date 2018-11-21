@@ -342,7 +342,7 @@
 	if(can_hold.len)
 		var/ok = 0
 		for(var/A in can_hold)
-			if(istype(W, text2path(A) ))
+			if(istype(W, A))
 				ok = 1
 				break
 		if(!ok)
@@ -353,7 +353,7 @@
 			return 0
 
 	for(var/A in cant_hold) //Check for specific items which this container can't hold.
-		if(istype(W, text2path(A) ))
+		if(istype(W, A))
 			if(!stop_messages)
 				usr << "<span class='notice'>[src] cannot hold [W].</span>"
 			return 0
@@ -361,7 +361,7 @@
 	var/w_limit_bypassed = 0
 	if(bypass_w_limit.len)
 		for(var/A in bypass_w_limit)
-			if(istype(W, text2path(A) ))
+			if(istype(W, A))
 				w_limit_bypassed = 1
 				break
 
@@ -370,14 +370,16 @@
 			usr << "<span class='notice'>[W] is too long for this [src].</span>"
 		return 0
 
-	var/sum_storage_cost = W.get_storage_cost()
-	for(var/obj/item/I in contents)
-		sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
+	//calculate storage space only for containers that don't have slots
+	if (storage_slots == null)
+		var/sum_storage_cost = W.get_storage_cost()
+		for(var/obj/item/I in contents)
+			sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
 
-	if(sum_storage_cost > max_storage_space)
-		if(!stop_messages)
-			usr << "<span class='notice'>[src] is full, make some space.</span>"
-		return 0
+		if(sum_storage_cost > max_storage_space)
+			if(!stop_messages)
+				usr << "<span class='notice'>[src] is full, make some space.</span>"
+			return 0
 
 	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.

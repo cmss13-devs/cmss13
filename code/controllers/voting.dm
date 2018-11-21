@@ -376,7 +376,7 @@ var/force_mapdaemon_vote = 0
 
 	if(alert("Are you sure you want to force the next map?",, "Yes", "No") == "No") return
 
-	var/selection = input("Vote for the next map to play on", "Vote:", "LV-624") as null|anything in NEXT_MAP_CANDIDATES
+	var/selection = input("Vote for the next map to play on", "Vote:", "LV-624") as null|anything in DEFAULT_NEXT_MAP_CANDIDATES
 
 	if(!selection || !src) return
 

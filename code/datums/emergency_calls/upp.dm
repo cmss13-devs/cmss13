@@ -108,9 +108,6 @@
 	spawn(10)
 		mob << "<B>Objectives:</b> [objectives]"
 
-	mob.remove_language("Sol Common")
-	mob.add_language("Russian")
-
 	if(original)
 		cdel(original)
 

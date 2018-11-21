@@ -102,15 +102,15 @@
 	icon = 'icons/obj/doors/almayer/2x1medidoor.dmi'
 	opacity = 0
 	glass = 1
-	req_access_txt = "0"
-	req_one_access_txt =  "2;8;19"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
 
 /obj/machinery/door/airlock/multi_tile/almayer/comdoor
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/doors/almayer/2x1comdoor.dmi'
 	opacity = 0
 	glass = 1
-	req_access_txt = "19"
+	req_access = list(ACCESS_MARINE_BRIDGE)
 
 
 

@@ -52,7 +52,6 @@
 	add_to_all_mob_huds()
 
 
-
 /mob/living/carbon/human/Dispose()
 	if(assigned_squad)
 		var/n = assigned_squad.marines_list.Find(src)
@@ -1260,14 +1259,8 @@
 			dna.species = new_species
 
 	if(species)
-
 		if(species.name && species.name == new_species) //we're already that species.
 			return
-		if(species.language)
-			remove_language(species.language)
-
-		if(species.default_language)
-			remove_language(species.default_language)
 
 		// Clear out their species abilities.
 		species.remove_inherent_verbs(src)
@@ -1281,12 +1274,6 @@
 		oldspecies.post_species_loss(src)
 
 	species.create_organs(src)
-
-	if(species.language)
-		add_language(species.language)
-
-	if(species.default_language)
-		add_language(species.default_language)
 
 	if(species.base_color && default_colour)
 		//Apply colour.
@@ -1524,3 +1511,33 @@
 			return 1
 		else //unequipped or deactivated
 			clear_fullscreen("glasses_vision", 0)
+
+/mob/living/carbon/human/verb/checkSkills()
+	set name = "Check Skills"
+	set category = "IC"
+	set src = usr
+
+	var/dat = "<b><font size = 5>Skills:</font></b><br/><br/>"
+	dat += "CQC: [usr.mind.cm_skills.cqc]<br/>"
+	dat += "Melee: [usr.mind.cm_skills.melee_weapons]<br/>"
+	dat += "Firearms: [usr.mind.cm_skills.firearms]<br/>"
+	dat += "Pistols: [usr.mind.cm_skills.pistols]<br/>"
+	dat += "Shotguns: [usr.mind.cm_skills.shotguns]<br/>"
+	dat += "Rifles: [usr.mind.cm_skills.rifles]<br/>"
+	dat += "SMGs: [usr.mind.cm_skills.smgs]<br/>"
+	dat += "Heavy Weapons: [usr.mind.cm_skills.heavy_weapons]<br/>"
+	dat += "Smartgun: [usr.mind.cm_skills.smartgun]<br/>"
+	dat += "Specialist Weapons: [usr.mind.cm_skills.spec_weapons]<br/>"
+	dat += "Endurance: [usr.mind.cm_skills.endurance]<br/>"
+	dat += "Engineer: [usr.mind.cm_skills.engineer]<br/>"
+	dat += "Construction: [usr.mind.cm_skills.construction]<br/>"
+	dat += "Leadership: [usr.mind.cm_skills.leadership]<br/>"
+	dat += "Medical: [usr.mind.cm_skills.medical]<br/>"
+	dat += "Surgery: [usr.mind.cm_skills.surgery]<br/>"
+	dat += "Pilot: [usr.mind.cm_skills.pilot]<br/>"
+	dat += "Police: [usr.mind.cm_skills.police]<br/>"
+	dat += "Powerloader: [usr.mind.cm_skills.powerloader]<br/>"
+	dat += "Large Vehicle: [usr.mind.cm_skills.large_vehicle]<br/>"
+
+	src << browse(dat, "window=checkskills")
+	return

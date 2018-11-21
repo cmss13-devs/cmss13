@@ -1,5 +1,4 @@
 /mob/living/carbon/Xenomorph/ex_act(severity, direction)
-
 	if(severity >= 30)
 		flash_eyes()
 
@@ -67,6 +66,8 @@
 
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
 	if(!damage)
+		return 0
+	if(map_tag == MAP_WHISKEY_OUTPOST)
 		return 0
 	var/chance = 20 //base chance
 	if(damtype == BRUTE) chance += 5

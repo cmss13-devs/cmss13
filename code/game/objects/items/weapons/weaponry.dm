@@ -83,7 +83,7 @@
 	throw_range = 4
 	throwforce = 7
 	attack_verb = list("patted", "tapped")
-	attack_speed = 4
+	attack_speed = 10
 
 
 /obj/item/weapon/butterfly/attack_self(mob/user)

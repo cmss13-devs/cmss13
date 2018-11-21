@@ -19,7 +19,7 @@
 	storage_slots = 6
 	var/startswith = 6
 	var/open = 0
-	can_hold = list("/obj/item/reagent_container/food/snacks/donut")
+	can_hold = list(/obj/item/reagent_container/food/snacks/donut)
 	foldable = /obj/item/stack/sheet/cardboard
 
 /obj/item/storage/donut_box/New()

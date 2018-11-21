@@ -327,3 +327,6 @@
 	desc = "A simple uniform made for Synthetic crewmembers."
 	icon_state = "rdalt"
 	rollable_sleeves = FALSE
+
+/obj/item/clothing/under/rank/synthetic/old
+	icon_state = "rdalt_s"

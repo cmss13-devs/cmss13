@@ -60,7 +60,7 @@
 "bh" = (/obj/effect/step_trigger/teleporter/random{affect_ghosts = 1; name = "escapeshuttle_leave"; teleport_x = 25; teleport_x_offset = 245; teleport_y = 25; teleport_y_offset = 245; teleport_z = 1; teleport_z_offset = 1},/turf/open/space/transit/north/shuttlespace_ns2,/area/space)
 "bi" = (/turf/open/space/transit/north/shuttlespace_ns8,/area/space)
 "bj" = (/obj/effect/step_trigger/teleporter/random{affect_ghosts = 1; name = "escapeshuttle_leave"; teleport_x = 25; teleport_x_offset = 245; teleport_y = 25; teleport_y_offset = 245; teleport_z = 1; teleport_z_offset = 1},/turf/open/space/transit/north/shuttlespace_ns1,/area/space)
-"bk" = (/obj/machinery/door/airlock/command{name = "Thunderdome Administration"; req_access = null; req_access_txt = "102"},/turf/open/floor,/area/tdome)
+"bk" = (/obj/machinery/door/airlock/command{name = "Thunderdome Administration"; req_access = list(102)},/turf/open/floor,/area/tdome)
 "bl" = (/obj/structure/window/reinforced{dir = 5; health = 80},/obj/effect/forcefield{desc = "You can't get in. Heh."; layer = 1; name = "Blocker"},/obj/machinery/atmospherics/pipe/simple/visible,/turf/open/floor,/area/tdome)
 "bm" = (/turf/open/space/transit/north/shuttlespace_ns7,/area/space)
 "bn" = (/turf/open/floor{icon_state = "redyellowfull"; dir = 5},/area/tdome/tdomeadmin)
@@ -210,7 +210,7 @@
 "eb" = (/obj/item/clothing/mask/gas/yautja,/obj/structure/window/reinforced{dir = 8; health = 80},/obj/machinery/door/window/northright{icon_state = "right"; dir = 2},/obj/structure/table/reinforced{layer = 2.69},/obj/item/clothing/suit/armor/yautja,/obj/item/clothing/shoes/yautja,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "ec" = (/obj/effect/step_trigger/teleporter/yautja_ship,/turf/open/floor/light,/area/yautja)
 "ed" = (/obj/structure/shuttle/window,/turf/open/shuttle{icon_state = "floor6"},/area/yautja)
-"ee" = (/obj/structure/table/reinforced,/obj/item/clothing/head/helmet/space/vox/pressure{anchored = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
+"ee" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "ef" = (/obj/structure/table/reinforced,/obj/item/weapon/twohanded/dualsaber,/obj/structure/window/reinforced{dir = 8; health = 80},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "eg" = (/obj/structure/table/reinforced,/obj/item/weapon/katana,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8; health = 80},/obj/structure/window/reinforced,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "eh" = (/obj/structure/table/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8; health = 80},/obj/structure/window/reinforced,/obj/item/clothing/mask/gas/voice/space_ninja{desc = "A close-fitting mask that appears to only cover half of the face. One can only wonder who would make such a thing."; name = "strange half-mask"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
@@ -269,7 +269,7 @@
 "fi" = (/obj/structure/holowindow,/turf/open/floor/vault,/area/centcom/living)
 "fj" = (/obj/structure/AIcore,/turf/open/floor/almayer{icon_state = "ai_floors"; tag = "icon-sterile"},/area/centcom/living)
 "fk" = (/obj/machinery/hologram/holopad,/turf/open/floor/almayer{icon_state = "ai_floors"; tag = "icon-sterile"},/area/centcom/living)
-"fl" = (/obj/machinery/door/airlock/almayer/generic{dir = 1; name = "\improper AI Core Room"; req_access_txt = "19"},/turf/open/floor/almayer{icon_state = "ai_floors"; tag = "icon-sterile"},/area/centcom/living)
+"fl" = (/obj/machinery/door/airlock/almayer/generic{dir = 1; name = "\improper AI Core Room"; req_access = list(19)},/turf/open/floor/almayer{icon_state = "ai_floors"; tag = "icon-sterile"},/area/centcom/living)
 "fm" = (/obj/machinery/door/airlock/centcom{name = "\improper Meeting Room"},/turf/open/floor/almayer,/area/centcom/living)
 "fn" = (/turf/closed/wall/indestructible,/area/centcom/control)
 "fo" = (/turf/closed/wall/indestructible,/area/centcom/living)
@@ -555,7 +555,7 @@
 "kI" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/obj/structure/bed,/obj/item/bedsheet/brown,/turf/open/floor/almayer,/area/shuttle/distress/start_big)
 "kJ" = (/obj/structure/largecrate/random/barrel/blue,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "kK" = (/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
-"kL" = (/obj/machinery/door/airlock/almayer/medical{name = "Operating Theatre"; req_one_access_txt = "0"},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
+"kL" = (/obj/machinery/door/airlock/almayer/medical{name = "Operating Theatre"; req_one_access = list()},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "kM" = (/obj/machinery/optable,/obj/item/tank/anesthetic,/obj/item/clothing/mask/breath/medical,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "kN" = (/obj/structure/table/almayer,/obj/item/storage/box/donkpockets,/obj/item/storage/box/donkpockets,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "kO" = (/obj/effect/decal/warning_stripes{tag = "icon-W"; icon_state = "W"},/obj/effect/decal/warning_stripes{tag = "icon-N"; icon_state = "N"},/turf/open/floor/plating/almayer,/area/shuttle/distress/start_big)
@@ -572,7 +572,7 @@
 "kZ" = (/obj/machinery/door/airlock/almayer/generic{dir = 2; name = "Crew Bunks"},/turf/open/floor/plating/almayer,/area/shuttle/distress/start_big)
 "la" = (/obj/structure/bed/chair/dropship/passenger{dir = 4},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "lb" = (/obj/structure/bed/chair/dropship/passenger{dir = 8},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
-"lc" = (/obj/machinery/door/airlock/almayer/medical{dir = 2; name = "Operating Theatre"; req_one_access_txt = "0"},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
+"lc" = (/obj/machinery/door/airlock/almayer/medical{dir = 2; name = "Operating Theatre"; req_one_access = list()},/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "ld" = (/obj/structure/table/almayer,/obj/machinery/computer/communications,/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/open/floor{tag = "icon-carpet5-1 (WEST)"; icon_state = "carpet5-1"; dir = 8},/area/shuttle/distress/start_big)
 "le" = (/obj/structure/table/almayer,/obj/item/device/flashlight/lamp/green,/turf/open/floor{tag = "icon-carpet9-4 (WEST)"; icon_state = "carpet9-4"; dir = 8},/area/shuttle/distress/start_big)
 "lf" = (/obj/structure/bed,/obj/item/bedsheet/rd,/turf/open/floor/wood,/area/shuttle/distress/start_big)
@@ -665,6 +665,10 @@
 "mO" = (/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/obj/structure/largecrate/random/case/double,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "mP" = (/obj/structure/table/almayer,/turf/open/floor/almayer{icon_state = "plate"; tag = "icon-sterile"},/area/shuttle/distress/start_big)
 "mQ" = (/obj/structure/toilet{tag = "icon-toilet00 (NORTH)"; icon_state = "toilet00"; dir = 1},/turf/open/floor{icon_state = "freezerfloor"},/area/shuttle/distress/start_big)
+"mR" = (/obj/machinery/light/small{tag = "icon-bulb1 (EAST)"; icon_state = "bulb1"; dir = 4},/turf/open/shuttle{icon_state = "floor6"},/area/yautja)
+"mS" = (/obj/structure/window/reinforced{dir = 5; health = 80},/obj/structure/grille,/turf/closed/wall/r_wall/dense,/area/yautja)
+"mT" = (/obj/structure/window/reinforced{dir = 5; health = 80},/obj/structure/grille,/turf/open/space,/area/yautja)
+"mU" = (/obj/machinery/light/small{dir = 8},/turf/open/shuttle{icon_state = "floor6"},/area/yautja)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -797,13 +801,13 @@ dsdvdvdvfXdvdvdNdsdIdvdIdsdOdvdvdvdvdvdvdNdsdydWdydydydydydydydydydydydWdydXaaaa
 dsdvdMdvfXdvdvdNdsdIdMdIdsdOdvdvdvdvdvdvdNdsdydydydWdWdWfYdydWdWdWdWdydydydXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcfcfcfcfcfcfcfcfcfcKcKdPcKcLcKdPcKcKcfcfcfcfcfcfcfcfcfcfcfcfcfaaaaaaaaaaaaaa
 dsgcgigcdsgjdvepdsdIdvdIdsgjeoeoeoeoeoeoepdsdydydydydydydydydydydydydydydydsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcKgzgAgBgAgAgAgAcfcfcfcfcfgCcfcfcfcfcfgDcKcfgDcKcfgDcKcfgEgFcfaaaaaaaaaaaaaa
 dsdsdsdsdsdsdxdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdydsdsdsdsdsdsdsdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaacfcfcfcfcfcKcKcKcKcKcKcKcKcfcKcKcMcKcLcKcMcKcKcfcKcKcfcKcKcfcKcKcfcKcKcfcfcfcfcfaaaaaa
-dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdudududududududududuiUiUiViViUiUdududududududududududududududududududtaaaaaaaaaaaaaacfcKcMcKgGcKcKcKcKcKcKcKcKcfcKcLcLcLdVcLcLcLcKcfgHgIgJgHgKgLgHgMgNcKcKcfgOgOgOcfaaaaaa
-dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdudududududuiUiWiWiUiUjejvktkuiUiUiUiUiUiUdudududududududududududududtaaaaaaaaaaaaaacfcKcKcKcfcfgPcffTfTfTfTgQcfdmcLgHgHcfgHgHcLddcfdccKcKcKcKcKcKcKcKcKddcfcKcKcKcfaaaaaa
-dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududuiUiUkykykziUkAjvktkBiUkCkDkEkFiUdudududududududududududududtaaaaaaaaaaaaaacfdmcKcKcfcKcKcKcKcKcKcKcKgRcLcLgHcKgScKgHcLcLgTcKcKcKcKcKcKcKcKcKcKcKgUcKcKgVcfaaaaaa
+dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdudududududududududuiUiUiViViUiUdududududududududududududududududududtaaaaaaaaaaaaaacfcKcMcKgGcKcKcKcKcKcKcKcKcfcKcLdVcLcLcLdVcLcKcfgHgIgJgHgKgLgHgMgNcKcKcfgOgOgOcfaaaaaa
+dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdudududududuiUiWiWiUiUjejvktkuiUiUiUiUiUiUdudududududududududududududtaaaaaaaaaaaaaacfcKcKcKcfcfgPcffTfTfTfTgQcfdmmRmSgHmTgHgHmUddcfdccKcKcKcKcKcKcKcKcKddcfcKcKcKcfaaaaaa
+dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududuiUiUkykykziUkAjvktkBiUkCkDkEkFiUdudududududududududududududtaaaaaaaaaaaaaacfdmcKcKcfcKcKcKcKcKcKcKcKgRcLcLgHcKcKcKgHcLcLgTcKcKcKcKcKcKcKcKcKcKcKgUcKcKgVcfaaaaaa
 dsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsaaaaaaaagWgWgWgWgWaaaaaagWgWgWgWgWaaaaaagWgWgWgWgWaadtdududududuiWkGkHkHkIiUkJjvktkKkLkKkHkHkMiUiUiWiWiUiUdududududududududtaaaaaaaaaaaaaacfcKcKcKcfcKfEfEfEfEfEfEddcfdmcLgXcKcKcKgXcLddcfdccKcKcKcKcKcKcKcKcKddcfcKcKcKcfaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagWgWgWgYgZhagWgWgWgWgWhbhchdgWgWgWgWgWhehfhggWgWdtdududududuiUkNkOkPkQiUiWkRkRiWiUkSkKkTkUiUkVkWkXkYiWdududududududududtaaaaaaaaaaaaaacfhhhihhcfdmfTfTfTfTfTfTcKcfcKcLgHcKdPcKgHcLcKcfgHhjhkgHhlhmgHhnhocKcKcfgOgOgOcfaaaaaa
-hphphphphphphphphphphphphphphpaahqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqaaaagWgYhrhshthuhrhagWhbhvhwhxhyhvhdgWhehzhAhBhChzhgdtdududuiUiWiUiUiUkZiUiUlajvktlbiUiUlciUiUiUldlekXlfiUiUiWiUiWdududududtaaaaaaaaaaaaaacfcfcfcfcfcKgrgrgrgrgrgrcKcfcKcLgHgHcfgHgHcLcKcfgDcKcfgDcKcfgDcKcfcKcKcfcfcfcfcfaaaaaa
-hphphphphphphphphphphphphphphpaahqhDhEhqhFhGhHhFhIhqhFhJhqhFhKhqhLhMhqhFhJhqaaaagWhNhOhPhQhRhShTgWhUhVhWhXhYhZiagWibicidieifigihdtduduiUiUlglhiUliljlklllmjvktlilllkljlklniUlolpkXlqiUlrlsltiWiWdudududtaaaaaaaaaaaaaaaaaaaaaacfcKcKcKdPcKcKcKcKcfcKcLcLcLiicLcLcLcKcfcKcKcfcKcKcfcKcKcfijikcfaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagWgWgWgYgZhagWgWgWgWgWhbhchdgWgWgWgWgWhehfhggWgWdtdududududuiUkNkOkPkQiUiWkRkRiWiUkSkKkTkUiUkVkWkXkYiWdududududududududtaaaaaaaaaaaaaacfhhhihhcfdmfTfTfTfTfTfTcKcfcKcLgHcKcKcKgHcLcKcfgHhjhkgHhlhmgHhnhocKcKcfgOgOgOcfaaaaaa
+hphphphphphphphphphphphphphphpaahqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqaaaagWgYhrhshthuhrhagWhbhvhwhxhyhvhdgWhehzhAhBhChzhgdtdududuiUiWiUiUiUkZiUiUlajvktlbiUiUlciUiUiUldlekXlfiUiUiWiUiWdududududtaaaaaaaaaaaaaacfcfcfcfcfcKgrgrgrgrgrgrcKcfcKmRgHgHmTgHgHmUcKcfgDcKcfgDcKcfgDcKcfcKcKcfcfcfcfcfaaaaaa
+hphphphphphphphphphphphphphphpaahqhDhEhqhFhGhHhFhIhqhFhJhqhFhKhqhLhMhqhFhJhqaaaagWhNhOhPhQhRhShTgWhUhVhWhXhYhZiagWibicidieifigihdtduduiUiUlglhiUliljlklllmjvktlilllkljlklniUlolpkXlqiUlrlsltiWiWdudududtaaaaaaaaaaaaaaaaaaaaaacfcKcKcKdPcKcKcKcKcfcKcLiicLcLcLiicLcKcfcKcKcfcKcKcfcKcKcfijikcfaaaaaaaaaaaaaa
 hphphphphphphphphphphphphphphpaahqilimhqilhJhqilimhqilhMhqilhGhqilhJhqilhIhqaaaagWinioipiqipioingWirisitiuitisirgWiviwixiyixiwivdtduduiWlulvlwiUlwlxlylylylzlAlylylylBlClDiUiUiUlEiUiUlFlGlHlIiWdudududtaaaaaaaaaaaaaaaaaacfcfcfcfcfcfcfcfcfcfcfcfcKcKdPcKcLcKdPcKcKcfcfcfcfcfcfcfcfcfcfcfcfcfaaaaaaaaaaaaaa
 hphphphphphphphphphphphphphphpaahqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqhqaaaagWhNizipiqipiAhTgWiBiCitiuitiDiEgWiFiGixiyixiHihdtduduiUlJlKlLlMlLktlklklkjvktlklklklNlkjvlOlPlQlRlSlOlLlTlUlViWdudududtaaaaaaaaaaaaaaaaaacfiIcKiIgSiIcKiIgSiIcKcfcfcfcfcfiJcfcfcfcfcfiKiLiMcKcKcfiNcfiNcfiNcfaaaaaaaaaaaaaa
 hphphphphphphphphphphphphphphpaahqiOhMhqhFiPhqhFimhqiQhIhqhFhIhqiRhJhqhFhMhqaaaagWhNizipiqipiAhTgWiSiCitiuitiDiTgWibiGixiyixiHihdtduduiWlWlXlYiUlYlZlylylylzlAlylylymalymbiUiUiWmciWiUmdmemfmgiWdudududtaaaaaaaaaaaaaaaaaacfcKcKcKcKcKcKcKcKcKiXcfcKcKgScKcLcKgScKcKcfdcfSiYcKcKcfiZcfiZcfiZcfaaaaaaaaaaaaaa

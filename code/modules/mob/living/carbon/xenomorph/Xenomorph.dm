@@ -35,6 +35,7 @@
 	speak_emote = list("hisses")
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //Arbitrary damage values
+	var/armor_deflection_buff = 0
 	attacktext = "claws"
 	attack_sound = null
 	friendly = "nuzzles"
@@ -66,8 +67,7 @@
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
 
-	add_language("Xenomorph") //xenocommon
-	add_language("Hivemind") //hivemind
+	set_languages(list("Xenomorph", "Hivemind"))
 	add_inherent_verbs()
 	add_abilities()
 

@@ -1,7 +1,5 @@
 /obj/var/list/req_access = null
-/obj/var/req_access_txt = "0"
 /obj/var/list/req_one_access = null
-/obj/var/req_one_access_txt = "0"
 
 //returns 1 if this mob has sufficient access to use this object
 /obj/proc/allowed(mob/M)
@@ -26,21 +24,9 @@
 	var/i
 	if(!req_access)
 		req_access = list()
-		if(req_access_txt)
-			var/req_access_str[] = text2list(req_access_txt,";")
-			var/n
-			for(i in req_access_str)
-				n = text2num(i)
-				if(n) req_access += n
 
 	if(!req_one_access)
 		req_one_access = list()
-		if(req_one_access_txt)
-			var/req_one_access_str[] = text2list(req_one_access_txt,";")
-			var/n
-			for(i in req_one_access_str)
-				n = text2num(i)
-				if(n) req_one_access += n
 
 	if(!islist(req_access)) return 1//something's very wrong
 	var/L[] = req_access
@@ -75,7 +61,10 @@
 	return get_all_centcom_access()
 
 /proc/get_all_accesses()
-	return get_all_marine_access() + list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
+	return get_all_marine_access() + get_all_civilian_accesses()
+
+/proc/get_all_civilian_accesses()
+	return list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /proc/get_all_marine_access()
 	return list(ACCESS_IFF_MARINE, ACCESS_MARINE_COMMANDER, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_WO, ACCESS_MARINE_CMO, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ENGPREP,ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CARGO, ACCESS_MARINE_DROPSHIP)

@@ -673,7 +673,7 @@
 	if (crest_defense)
 		round_statistics.defender_crest_lowerings++
 		src << "<span class='xenowarning'>You lower your crest.</span>"
-		caste.armor_deflection += 15
+		armor_deflection_buff += 25
 		speed += 0.8	// This is actually a slowdown but speed is dumb
 		update_icons()
 		do_crest_defense_cooldown()
@@ -681,7 +681,7 @@
 
 	round_statistics.defender_crest_raises++
 	src << "<span class='xenowarning'>You raise your crest.</span>"
-	caste.armor_deflection -= 15
+	armor_deflection_buff -= 25
 	speed -= 0.8
 	update_icons()
 	do_crest_defense_cooldown()
@@ -714,8 +714,9 @@
 
 	if (fortify)
 		src << "<span class='xenowarning'>You tuck yourself into a defensive stance.</span>"
-		caste.armor_deflection += 30
-		caste.xeno_explosion_resistance++
+		armor_deflection_buff += 50
+		//caste.xeno_explosion_resistance++ absolutely useless and prone to giving issues for entire caste
+		//come back when this is AT LEAST a multitude of 10
 		frozen = 1
 		anchored = 1
 		update_canmove()
@@ -740,8 +741,8 @@
 
 /mob/living/carbon/Xenomorph/proc/fortify_off()
 	src << "<span class='xenowarning'>You resume your normal stance.</span>"
-	caste.armor_deflection -= 30
-	caste.xeno_explosion_resistance--
+	armor_deflection_buff -= 50
+	//caste.xeno_explosion_resistance-- yeah... useless, and prone to create issues
 	frozen = 0
 	anchored = 0
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 30, 1)
@@ -1386,8 +1387,7 @@
 				if(leader == "") hivelord_list += xenoinfo
 				hivelord_count++
 			if ("Warrior")
-				if (leader == "")
-					warrior_list += xenoinfo
+				if (leader == "") warrior_list += xenoinfo
 				warrior_count++
 			if("Lurker")
 				if(leader == "") hunter_list += xenoinfo
@@ -1415,8 +1415,8 @@
 	dat += "<b>Total Living Sisters: [count]</b><BR>"
 	//if(exotic_count != 0) //Exotic Xenos in the Hive like Predalien or Xenoborg
 		//dat += "<b>Ultimate Tier:</b> [exotic_count] Sisters</b><BR>"
-	dat += "<b>Tier 3: [boiler_count + crusher_count + praetorian_count + ravager_count] Sisters</b> | Boilers: [boiler_count] | Carriers: [carrier_count] | Crushers: [crusher_count] | Praetorians: [praetorian_count] | Ravagers: [ravager_count]<BR>"
-	dat += "<b>Tier 2: [carrier_count + hivelord_count + hunter_count + spitter_count + warrior_count] Sisters</b> | Burrowers: [burrower_count] | Hivelords: [hivelord_count] | Warriors: [warrior_count] | Lurkers: [hunter_count] | Spitters: [spitter_count]<BR>"
+	dat += "<b>Tier 3: [carrier_count + boiler_count + crusher_count + praetorian_count + ravager_count] Sisters</b> | Boilers: [boiler_count] | Carriers: [carrier_count] | Crushers: [crusher_count] | Praetorians: [praetorian_count] | Ravagers: [ravager_count]<BR>"
+	dat += "<b>Tier 2: [burrower_count + hivelord_count + hunter_count + spitter_count + warrior_count] Sisters</b> | Burrowers: [burrower_count] | Hivelords: [hivelord_count] | Warriors: [warrior_count] | Lurkers: [hunter_count] | Spitters: [spitter_count]<BR>"
 	dat += "<b>Tier 1: [drone_count + runner_count + sentinel_count + defender_count] Sisters</b> | Drones: [drone_count] | Runners: [runner_count] | Sentinels: [sentinel_count] | Defenders: [defender_count]<BR>"
 	dat += "<b>Larvas: [larva_count] Sisters<BR>"
 	if(istype(user)) // cover calling it without parameters

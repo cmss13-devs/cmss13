@@ -50,6 +50,7 @@
 		if (!istype(O,/obj/machinery/light/small))
 			return
 	var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
+	newegg.add_hiddenprint(user)
 	newegg.hivenumber = hivenumber
 	playsound(T, 'sound/effects/splat.ogg', 15, 1)
 	cdel(src)
@@ -67,6 +68,8 @@
 	var/plant_time = 35
 	if(isXenoDrone(user))
 		plant_time = 25
+	if(isXenoCarrier(user))
+		plant_time = 10
 	if(!do_after(user, plant_time, TRUE, 5, BUSY_ICON_BUILD))
 		return
 	if(!user.check_alien_construction(T))
@@ -76,6 +79,7 @@
 	if(locate(/obj/effect/alien/weeds) in T)
 		user.use_plasma(30)
 		var/obj/effect/alien/egg/newegg = new /obj/effect/alien/egg(T)
+		newegg.add_hiddenprint(user)
 		newegg.hivenumber = hivenumber
 		playsound(T, 'sound/effects/splat.ogg', 15, 1)
 		cdel(src)

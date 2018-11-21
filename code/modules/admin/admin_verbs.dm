@@ -2,6 +2,7 @@
 var/list/admin_verbs_default = list(
 	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 	/client/proc/toggleadminhelpsound,	/*toggles whether we hear a sound when adminhelps/PMs are used*/
+	/client/proc/becomelarva,			/*lets you forgo your larva protection as staff member. */
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
 	/client/proc/hide_most_verbs,		/*hides all our hideable adminverbs*/
@@ -65,6 +66,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/toggleattacklogs,
 	/client/proc/toggledebuglogs,
+	/client/proc/togglenichelogs,
 	// /client/proc/toggleghostwriters,
 	/client/proc/toggledrones,
 	/client/proc/change_security_level, /* Changes alert levels*/
@@ -156,6 +158,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/callproc,
 	/client/proc/callatomproc,
 	/client/proc/toggledebuglogs,
+	/client/proc/togglenichelogs,
 	/datum/proc/ta_diagnose,
 	/datum/proc/ra_diagnose,
 	/datum/proc/ta_purge,
@@ -250,6 +253,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_panel,	/*admin-pm list*/
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game.*/
 	/client/proc/toggledebuglogs,
+	/client/proc/togglenichelogs,
 	/datum/admins/proc/player_notes_list,
 	/datum/admins/proc/player_notes_show,
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
@@ -719,7 +723,7 @@ var/list/admin_verbs_mentor = list(
 	if(!istype(M, /mob/living/carbon/human))
 		usr << "\red You can only do this to humans!"
 		return
-	switch(alert("Are you sure you wish to edit this mob's appearance? Skrell, Unathi, Vox and Tajaran can result in unintended consequences.",,"Yes","No"))
+	switch(alert("Are you sure you wish to edit this mob's appearance?",,"Yes","No"))
 		if("No")
 			return
 	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
@@ -739,12 +743,6 @@ var/list/admin_verbs_mentor = list(
 		M.r_eyes = hex2num(copytext(new_eyes, 2, 4))
 		M.g_eyes = hex2num(copytext(new_eyes, 4, 6))
 		M.b_eyes = hex2num(copytext(new_eyes, 6, 8))
-
-	var/new_skin = input("Please select body color. This is for Tajaran, Unathi, and Skrell only!", "Character Generation") as color
-	if(new_skin)
-		M.r_skin = hex2num(copytext(new_skin, 2, 4))
-		M.g_skin = hex2num(copytext(new_skin, 4, 6))
-		M.b_skin = hex2num(copytext(new_skin, 6, 8))
 
 
 	// hair
@@ -885,6 +883,16 @@ var/list/admin_verbs_mentor = list(
 	else
 		usr << "<span class='boldnotice'>You will no longer get debug log messages.</span>"
 
+/client/proc/togglenichelogs()
+	set name = "Toggle Niche Log Messages"
+	set category = "Preferences"
+
+	prefs.toggles_chat ^= CHAT_NICHELOGS
+	if(prefs.toggles_chat & CHAT_NICHELOGS)
+		usr << "<span class='boldnotice'>You will now get niche log messages.</span>"
+	else
+		usr << "<span class='boldnotice'>You will no longer get niche log messages.</span>"
+
 /* Commenting this stupid shit out
 /client/proc/man_up(mob/T as mob in mob_list)
 	set category = "Fun"
@@ -984,3 +992,23 @@ var/list/admin_verbs_mentor = list(
 
 	log_admin("Admin [key_name_admin(usr)] set the away_timer of nearby clientless Xenos to 300.", 1)
 	message_admins("<b>[key_name(src)]</b> set the away_timer of nearby clientless Xenos to 300.", 1)
+
+/client/proc/becomelarva()
+	set name = "Lose larva Protection"
+	set desc = "Remove your protection from becoming a larva."
+	set category = "Admin"
+	if(!holder)	return
+	if(istype(mob,/mob/dead/observer))
+		var/mob/dead/observer/ghost = mob
+		if(ghost.adminlarva == 0)
+			ghost.adminlarva = 1
+			usr << "<span class='boldnotice'>You have disabled your larva protection.</span>"
+		else if(ghost.adminlarva == 1)
+			ghost.adminlarva = 0
+			usr << "<span class='boldnotice'>You have re-activated your larva protection.</span>"
+		else
+			usr << "<span class='boldnotice'>Something went wrong tell a coder</span>"
+	else if(istype(mob,/mob/new_player))
+		src << "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>"
+	else
+		src << "<font color='red'>Error: Lose larva Protection: You must be a ghost to use this.</font>"

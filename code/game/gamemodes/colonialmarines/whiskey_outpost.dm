@@ -1,4 +1,6 @@
-#define SPAWN_MULTIPLIER 1
+#define WO_SPAWN_MULTIPLIER 1.0
+#define WO_SCALED_WAVE 1
+#define WO_STATIC_WAVE 2
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
@@ -37,7 +39,7 @@
 					/datum/job/marine/standard/equipped
 )
 
-	flags_round_type	= MODE_NO_LATEJOIN
+
 	latejoin_larva_drop = 0 //You never know
 
 	//var/mob/living/carbon/human/Commander //If there is no Commander, marines wont get any supplies
@@ -45,10 +47,9 @@
 	var/checkwin_counter = 0
 	var/finished = 0
 	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
-
+	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
 	var/spawn_next_wave = 1200 //Spawn first batch at ~15 minutes //200
 	var/xeno_wave = 1 //Which wave is it
-	var/spawn_xeno_num = 20 //How many to spawn per wave //First wave is big, cus runners.
 
 	var/wave_ticks_passed = 0 //Timer for xeno waves
 
@@ -69,7 +70,7 @@
 	var/wave_times_delayed = 0 //How many time was the current wave delayed due to pop limit?
 
 	var/map_locale = 0 // 0 is Jungle Whiskey Outpost, 1 is Big Red Whiskey Outpost, 2 is Ice Colony Whiskey Outpost, 3 is space
-
+	
 /datum/game_mode/whiskey_outpost/announce()
 	return 1
 
@@ -86,6 +87,7 @@
 /datum/game_mode/whiskey_outpost/post_setup()
 	set waitfor = 0
 	lobby_time = world.time
+	randomovertime = pickovertime()
 	var/mob/M
 	for(var/obj/effect/landmark/start/S in world)
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
@@ -99,7 +101,6 @@
 			players += H
 			if(H.mind.assigned_role in ROLES_MARINES)
 				spawn_player(H)
-
 	sleep(10)
 	world << "<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>"
 	world << "<span class='round_body'>It is the year 2181 on the planet LV-624, five years before the arrival of the USS Almayer and the 7th 'Falling Falcons' Battalion in the sector</span>"
@@ -133,6 +134,7 @@ var/global/spawn_next_wo_wave = 0
 		else
 			wave_ticks_passed -= 200 //Wait 20 ticks and try again
 			wave_times_delayed++
+			//delete_old_xenos(xeno_wave)
 
 	if(has_started_timer > 0) //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 		has_started_timer--
@@ -145,271 +147,382 @@ var/global/spawn_next_wo_wave = 0
 
 //CHECK WIN
 /datum/game_mode/whiskey_outpost/check_win()
-	var/C = count_marines(SURFACE_Z_LEVELS)
+	var/C = count_humans_and_xenos(SURFACE_Z_LEVELS)
 
-	if(C == 0)
+	if(C[1] == 0)
 		finished = 1 //Alien win
-	else if(world.time > 36000 + lobby_time + initial(spawn_next_wave))//one hour or so, plus lobby time, plus the setup time marines get
+	else if(world.time > 36000 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
 		finished = 2 //Marine win
 
+/datum/game_mode/whiskey_outpost/proc/disablejoining()
+	enter_allowed = 0
+	world << "<B>New players may no longer join the game.</B>"
+	log_admin("wave one disabled new player game joining.")
+	message_admins("wave one disabled new player game joining.", 1)
+	world.update_status()
+
 //SPAWN XENOS
-/proc/spawn_whiskey_outpost_xenos(var/spawn_xeno_num = 1)
+/proc/spawn_whiskey_outpost_xenos(var/datum/whiskey_outpost_wave/wave_data)
 	var/datum/game_mode/whiskey_outpost/wo_game_mode
 	if(istype(ticker.mode,/datum/game_mode/whiskey_outpost))
 		wo_game_mode = ticker.mode
 	else
 		return
-
-	var/spawn_this_many = spawn_xeno_num
+	if(!istype(wave_data))
+		return
 	var/turf/picked
-	//var/xenos_spawned = 0 //Debug
-	var/list/tempspawnxeno = list() //Temporarly replaces the main list
 	var/list/xeno_spawn_loc = list()
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 	if(hive.slashing_allowed != 1)
 		hive.slashing_allowed = 1 //Allows harm intent for aliens
+	var/xenos_to_spawn
+	if(wave_data.wave_type == WO_SCALED_WAVE)
+		xenos_to_spawn = max(wo_game_mode.count_marines(SURFACE_Z_LEVELS),5) * wave_data.scaling_factor * WO_SPAWN_MULTIPLIER
+	else
+		xenos_to_spawn = wave_data.number_of_xenos
 
-	var/humans_alive = wo_game_mode.count_marines(SURFACE_Z_LEVELS)
-	var/full_human_count = humans_alive // preserve this value
-	if(humans_alive > 50)
-		humans_alive = 50
+	xeno_spawn_loc = wo_game_mode.xeno_spawns.Copy()
 
-	if(humans_alive < 5)
-		humans_alive = 5
+	wo_game_mode.spawn_next_wave = wave_data.wave_delay
 
+	var/xeno_type
+	var/mob/living/carbon/Xenomorph/new_xeno
+	if(wave_data.wave_number == 1)
+		call(/datum/game_mode/whiskey_outpost/proc/disablejoining)()
+	while(xenos_to_spawn-- > 0)
+		if(xeno_spawn_loc.len <= 0)
+			break // no spawn points left
+		picked = pick(xeno_spawn_loc)
+		xeno_spawn_loc -= picked
+		xeno_type = pick(wave_data.wave_castes)
+		new_xeno = new xeno_type(picked)
+		new_xeno.away_timer = 300 //So ghosts can join instantly
+		new_xeno.plasma_stored = new_xeno.caste.plasma_max
+		new_xeno.flags_pass = 0
+		new_xeno.nocrit(wave_data.wave_number)
 
-	xeno_spawn_loc += wo_game_mode.xeno_spawns
+/datum/whiskey_outpost_wave
+	var/wave_number = 1
+	var/list/wave_castes = list()
+	var/wave_type = WO_SCALED_WAVE
+	var/scaling_factor = 1.0
+	var/number_of_xenos = 0 // not used for scaled waves
+	var/wave_delay = 250
+	var/list/sound_effect = list('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg', 'sound/voice/4_xeno_roars.ogg')
+	var/list/command_announcement = list()
 
+/datum/whiskey_outpost_wave/wave1
+	wave_number = 1
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner)
+	sound_effect = list('sound/effects/siren.ogg')
+	command_announcement = list("We're tracking the creatures that wiped out our patrols heading towards your outpost.. Stand-by while we attempt to establish a signal with the USS Alistoun to alert them of these creatures.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
+	scaling_factor = 0.3
 
-	switch(wo_game_mode.xeno_wave)//Xeno spawn controller
-		if(1)//Mostly weak runners
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Runner)
-			spawn_xeno_num = humans_alive * SPAWN_MULTIPLIER //Reset
-			wo_game_mode.spawn_next_wave = 250
-			world << sound('sound/effects/siren.ogg') //Mark the first wave
+/datum/whiskey_outpost_wave/wave2
+	wave_number = 2
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Sentinel,
+					/mob/living/carbon/Xenomorph/Sentinel)
+	scaling_factor = 0.4
 
+/datum/whiskey_outpost_wave/wave3 //Tier II versions added, but rare
+	wave_number = 3
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Sentinel,
+					/mob/living/carbon/Xenomorph/Sentinel,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Defender)
+	scaling_factor = 0.6
 
-		if(2)//Sentinels and drones are more common
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Sentinel,
-						/mob/living/carbon/Xenomorph/Sentinel)
+/datum/whiskey_outpost_wave/wave4 //Tier II more common
+	wave_number = 4
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Sentinel,
+					/mob/living/carbon/Xenomorph/Sentinel/mature,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Drone)
+	scaling_factor = 0.7
 
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Runner)
+/datum/whiskey_outpost_wave/wave5 //Reset the spawns	so we don't drown in xenos again.
+	wave_number = 5
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Sentinel/mature,
+					/mob/living/carbon/Xenomorph/Sentinel/elite,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Drone)
+	scaling_factor = 0.8
 
+/datum/whiskey_outpost_wave/wave6 //Tier II more common
+	wave_number = 6
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Sentinel/mature,
+					/mob/living/carbon/Xenomorph/Sentinel/elite,
+					/mob/living/carbon/Xenomorph/Lurker/mature,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Spitter/mature,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Warrior)
+	scaling_factor = 0.9
 
-		if(3)//Tier II versions added, but rare
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Lurker,
-						/mob/living/carbon/Xenomorph/Spitter,
-						/mob/living/carbon/Xenomorph/Defender)
+/datum/whiskey_outpost_wave/wave7
+	wave_number = 7
+	wave_type = WO_STATIC_WAVE
+	number_of_xenos = 0
+	command_announcement = list("Major Ike Saker speaking, The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. I have also recieved word that the 7th 'Falling Falcons' Battalion. Should be near. I used to be stationed with them they are top notch!", "Major Ike Saker, 3rd Battalion Command, LV-624 Garrison")
+	wave_delay = 500
 
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner)
+/datum/whiskey_outpost_wave/wave8
+	wave_number = 8
+	wave_castes = list(/mob/living/carbon/Xenomorph/Sentinel,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Warrior)
+	wave_delay = 250 //Slow down now, strong castes introduced next wave
+	sound_effect = list()
+	command_announcement = list("Captain Naiche speaking, we've been unsuccessful in establishing offworld communication for the moment. We're prepping our M402 mortars to destroy the inbound xeno force on the main road. Standby for fire support.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
-		if(4)//Tier II more common
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Lurker,
-						/mob/living/carbon/Xenomorph/Drone,
-						/mob/living/carbon/Xenomorph/Spitter)
+/datum/whiskey_outpost_wave/wave9 //Ravager and Praetorian Added, Tier II more common, Tier I less common
+	wave_number = 9
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker/mature,
+					/mob/living/carbon/Xenomorph/Lurker/mature,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter/mature,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Defender/mature,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Drone/mature,
+					/mob/living/carbon/Xenomorph/Warrior)
+	wave_delay = 250 //Speed it up again. After the period of grace.
+	sound_effect = list('sound/voice/alien_queen_command.ogg')
+	command_announcement = list("Our garrison forces are reaching seventy percent casualties, we are losing our grip on LV-624. It appears that vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We're counting on you to keep holding.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
-		if(5)//Reset the spawns	so we don't drown in xenos again.
-			spawn_xeno_num = full_human_count * SPAWN_MULTIPLIER * 0.5 //Reset
+/datum/whiskey_outpost_wave/wave10
+	wave_number = 10
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Runner/mature,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker/mature,
+					/mob/living/carbon/Xenomorph/Lurker/mature,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter/mature,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Defender/mature,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Drone/mature,
+					/mob/living/carbon/Xenomorph/Warrior)
+	wave_delay = 250 //Speed it up again. After the period of grace.
 
-		if(6)//Tier II more common
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Lurker,
-						/mob/living/carbon/Xenomorph/Spitter,
-						/mob/living/carbon/Xenomorph/Warrior)
+/datum/whiskey_outpost_wave/wave11
+	wave_number = 11
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter/elite,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Defender/elite,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Drone/elite,
+					/mob/living/carbon/Xenomorph/Warrior,
+					/mob/living/carbon/Xenomorph/Warrior/mature)
 
-		if(7)
-			spawn_xeno_num = 0
+/datum/whiskey_outpost_wave/wave12
+	wave_number = 12
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter/elite,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Defender/elite,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Drone/elite,
+					/mob/living/carbon/Xenomorph/Warrior,
+					/mob/living/carbon/Xenomorph/Warrior/mature,
+					/mob/living/carbon/Xenomorph/Ravager,
+					/mob/living/carbon/Xenomorph/Ravager/mature,
+					/mob/living/carbon/Xenomorph/Praetorian,
+					/mob/living/carbon/Xenomorph/Praetorian/mature)
+	scaling_factor = 2
+	command_announcement = list("This is Captain Naiche, we are picking up large signatures inbound, we'll see what we can do to delay them.", "Captain Naich, 3rd Battalion Command, LV-624")
 
-		if(8)
-			wo_game_mode.spawn_next_wave += 300 //Slow down now, strong castes introduced next wave
-			spawn_xeno_num = full_human_count * SPAWN_MULTIPLIER
+/datum/whiskey_outpost_wave/wave13
+	wave_number = 13
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter/elite,
+					/mob/living/carbon/Xenomorph/Spitter/elite,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Defender/elite,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Warrior,
+					/mob/living/carbon/Xenomorph/Warrior/mature,
+					/mob/living/carbon/Xenomorph/Ravager,
+					/mob/living/carbon/Xenomorph/Ravager/mature,
+					/mob/living/carbon/Xenomorph/Ravager/elite,
+					/mob/living/carbon/Xenomorph/Praetorian,
+					/mob/living/carbon/Xenomorph/Praetorian/mature,
+					/mob/living/carbon/Xenomorph/Praetorian/elite,
+					/mob/living/carbon/Xenomorph/Boiler,
+					/mob/living/carbon/Xenomorph/Crusher/mature,
+					/mob/living/carbon/Xenomorph/Hivelord/elite)
+	scaling_factor = 2
 
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Sentinel)
+/datum/whiskey_outpost_wave/wave14
+	wave_number = 14
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/elite,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Lurker/elite,
+					/mob/living/carbon/Xenomorph/Lurker/ancient,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter,
+					/mob/living/carbon/Xenomorph/Spitter/elite,
+					/mob/living/carbon/Xenomorph/Spitter/elite,
+					/mob/living/carbon/Xenomorph/Spitter/ancient,
+					/mob/living/carbon/Xenomorph/Defender,
+					/mob/living/carbon/Xenomorph/Defender/elite,
+					/mob/living/carbon/Xenomorph/Drone,
+					/mob/living/carbon/Xenomorph/Warrior,
+					/mob/living/carbon/Xenomorph/Warrior/mature,
+					/mob/living/carbon/Xenomorph/Ravager,
+					/mob/living/carbon/Xenomorph/Ravager/mature,
+					/mob/living/carbon/Xenomorph/Ravager/elite,
+					/mob/living/carbon/Xenomorph/Ravager/ancient,
+					/mob/living/carbon/Xenomorph/Praetorian/mature,
+					/mob/living/carbon/Xenomorph/Praetorian/elite,
+					/mob/living/carbon/Xenomorph/Praetorian/ancient,
+					/mob/living/carbon/Xenomorph/Boiler,
+					/mob/living/carbon/Xenomorph/Boiler/ancient,
+					/mob/living/carbon/Xenomorph/Crusher/mature,
+					/mob/living/carbon/Xenomorph/Crusher/ancient,
+					/mob/living/carbon/Xenomorph/Hivelord/elite)
+	wave_type = WO_STATIC_WAVE
+	number_of_xenos = 50
+	command_announcement = list("This is Captain Naiche, we've established our distress beacon for the USS Alistoun and the remaining Dust Raiders. Hold on for a bit longer while we trasmit our coordinates!", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
-		if(9)//Ravager and Praetorian Added, Tier II more common, Tier I less common
-			wo_game_mode.spawn_next_wave -= 300 //Speed it up again. After the period of grace.
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Lurker/mature,
-						/mob/living/carbon/Xenomorph/Lurker/mature,
-						/mob/living/carbon/Xenomorph/Spitter/mature,
-						/mob/living/carbon/Xenomorph/Runner/mature,
-						/mob/living/carbon/Xenomorph/Runner/mature,
-						/mob/living/carbon/Xenomorph/Drone/mature,
-						/mob/living/carbon/Xenomorph/Defender/mature)
+/datum/whiskey_outpost_wave/random
+	wave_type = WO_STATIC_WAVE
+	wave_number = 15
+	number_of_xenos = 50
+	wave_delay = 250
 
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Sentinel)
+/datum/whiskey_outpost_wave/random/wave1 //Runner madness
+	wave_castes = list(/mob/living/carbon/Xenomorph/Runner,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Runner/ancient,
+					/mob/living/carbon/Xenomorph/Ravager/ancient)
 
-		if(10)
-			wo_game_mode.spawn_next_wave += 300
-			spawn_xeno_num = full_human_count * SPAWN_MULTIPLIER
-
-		if(11)
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Lurker/elite,
-						/mob/living/carbon/Xenomorph/Lurker/elite,
-						/mob/living/carbon/Xenomorph/Spitter/elite,
-						/mob/living/carbon/Xenomorph/Runner/elite,
-						/mob/living/carbon/Xenomorph/Runner/elite,
-						/mob/living/carbon/Xenomorph/Drone/elite,
-						/mob/living/carbon/Xenomorph/Defender/elite,
-						/mob/living/carbon/Xenomorph/Warrior/mature)
-
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Lurker/mature,
-						/mob/living/carbon/Xenomorph/Lurker/mature,
-						/mob/living/carbon/Xenomorph/Spitter/mature,
-						/mob/living/carbon/Xenomorph/Runner/mature,
-						/mob/living/carbon/Xenomorph/Runner/mature,
-						/mob/living/carbon/Xenomorph/Drone/mature,
-						/mob/living/carbon/Xenomorph/Defender/mature)
-
-		if(12)//Boiler and Crusher Added, Ravager and Praetorian more common. Tier I less common
-			wo_game_mode.spawn_next_wave = full_human_count * SPAWN_MULTIPLIER * 2 //rip and tear.
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Ravager,
-						/mob/living/carbon/Xenomorph/Praetorian,
-						/mob/living/carbon/Xenomorph/Ravager/mature,
-						/mob/living/carbon/Xenomorph/Praetorian/mature)
-
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Sentinel,
-						/mob/living/carbon/Xenomorph/Runner,
-						/mob/living/carbon/Xenomorph/Runner)
-
-		if(13)//Start the elite transition
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Crusher/mature,
-						/mob/living/carbon/Xenomorph/Boiler,
-						/mob/living/carbon/Xenomorph/Ravager/elite,
-						/mob/living/carbon/Xenomorph/Runner/elite,
-						/mob/living/carbon/Xenomorph/Hivelord/elite,
-						/mob/living/carbon/Xenomorph/Spitter/elite,
-						/mob/living/carbon/Xenomorph/Praetorian/elite)
-
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Spitter/mature,
-						/mob/living/carbon/Xenomorph/Drone/elite,
-						/mob/living/carbon/Xenomorph/Hivelord)
-
-		if(14)//Start the ancient Also keeping this spawnlist the same since its suppose to be just about get fucked in the end.
-			wo_game_mode.spawn_xeno_num = 50
-			wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Crusher/ancient,
-						/mob/living/carbon/Xenomorph/Boiler/ancient,
-						/mob/living/carbon/Xenomorph/Ravager/ancient,
-						/mob/living/carbon/Xenomorph/Runner/ancient,
-						/mob/living/carbon/Xenomorph/Lurker/ancient,
+/datum/whiskey_outpost_wave/random/wave2 //Spitter madness
+	wave_castes = list(/mob/living/carbon/Xenomorph/Sentinel/ancient,
+						/mob/living/carbon/Xenomorph/Sentinel/ancient,
+						/mob/living/carbon/Xenomorph/Sentinel/ancient,
+						/mob/living/carbon/Xenomorph/Sentinel/ancient,
+						/mob/living/carbon/Xenomorph/Sentinel/ancient,
+						/mob/living/carbon/Xenomorph/Sentinel/ancient,
+						/mob/living/carbon/Xenomorph/Spitter/ancient,
+						/mob/living/carbon/Xenomorph/Spitter/ancient,
+						/mob/living/carbon/Xenomorph/Spitter/ancient,
 						/mob/living/carbon/Xenomorph/Spitter/ancient,
 						/mob/living/carbon/Xenomorph/Praetorian/ancient)
+	number_of_xenos = 45
 
-			wo_game_mode.spawnxeno -= list(/mob/living/carbon/Xenomorph/Crusher,
-						/mob/living/carbon/Xenomorph/Lurker/mature,
-						/mob/living/carbon/Xenomorph/Praetorian)
-
-		if(15 to INFINITY)
-			var/random_wave = rand(0,8)
-			switch(random_wave)
-				if(0 to 5)//Normal list, but makes it easier to pick stronger units
-					switch(random_wave)
-						if(0)//Add another Ravager
-							wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Ravager/ancient)
-						if(1)//Add another Carrier
-							wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Carrier/ancient)
-						if(2)//Add another Praetorian
-							wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Praetorian/ancient)
-						if(3)//Add another Boiler
-							wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Boiler/ancient)
-						if(4)//Add another Crusher
-							wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Crusher/ancient)
-						if(5)//Add another Hunter and Spitter
-							wo_game_mode.spawnxeno += list(/mob/living/carbon/Xenomorph/Lurker/ancient,
-										/mob/living/carbon/Xenomorph/Spitter/ancient,
-										/mob/living/carbon/Xenomorph/Defender/ancient)
-
-				if(6)//Runner madness
-					wo_game_mode.spawn_next_wave += 180//Slow down the next wave
-					spawn_this_many = 50//A lot of them
-					tempspawnxeno = list(/mob/living/carbon/Xenomorph/Runner,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Runner/ancient,
-									/mob/living/carbon/Xenomorph/Ravager/ancient)
-
-				if(7)//Spitter madness
-					wo_game_mode.spawn_next_wave += 180//Slow down the next wave
-					spawn_this_many =  45//A lot of them
-					tempspawnxeno = list(/mob/living/carbon/Xenomorph/Sentinel/ancient,
-										/mob/living/carbon/Xenomorph/Sentinel/ancient,
-										/mob/living/carbon/Xenomorph/Sentinel/ancient,
-										/mob/living/carbon/Xenomorph/Sentinel/ancient,
-										/mob/living/carbon/Xenomorph/Sentinel/ancient,
-										/mob/living/carbon/Xenomorph/Sentinel/ancient,
-										/mob/living/carbon/Xenomorph/Spitter/ancient,
-										/mob/living/carbon/Xenomorph/Spitter/ancient,
-										/mob/living/carbon/Xenomorph/Spitter/ancient,
-										/mob/living/carbon/Xenomorph/Spitter/ancient,
-										/mob/living/carbon/Xenomorph/Praetorian/ancient)
-
-				if(8)//Siege madness
-					spawn_this_many = 10//A lot of them
-					wo_game_mode.spawn_next_wave += 180//Slow down the next wave
-					tempspawnxeno = list(/mob/living/carbon/Xenomorph/Boiler/ancient,
-									/mob/living/carbon/Xenomorph/Boiler/ancient,
-									/mob/living/carbon/Xenomorph/Crusher/ancient)
-	var/path
-	if(tempspawnxeno.len)//If temp list exists, use it
-		for(var/i = 0; i < spawn_this_many; i++)
-			if(xeno_spawn_loc.len)
-				path = pick(tempspawnxeno)
-				//xenos_spawned++ //DEBUG
-				picked = pick(xeno_spawn_loc)
-				var/mob/living/carbon/Xenomorph/X = new path(picked)
-				X.away_timer = 300 //So ghosts can join instantly
-				X.plasma_stored = X.caste.plasma_max
-				X.flags_pass = 0 // Runners cannot pass trough tables
-
-				//X.a_intent = "harm" This caused problems
-				//if(istype(X,/mob/living/carbon/Xenomorph/Carrier))
-				//	X:huggers_cur = 6 //Max out huggers
-				break
-
-
-	else if(wo_game_mode.spawnxeno.len) //Else use the main list
-		for(var/i = 0; i < spawn_this_many; i++)
-			if(xeno_spawn_loc.len)
-				path = pick(wo_game_mode.spawnxeno)
-				//xenos_spawned++
-				picked = pick(xeno_spawn_loc)
-				var/mob/living/carbon/Xenomorph/X = new path(picked)
-				X.away_timer = 300 //So ghosts can join instantly
-				X.plasma_stored = X.caste.plasma_max
-				X.flags_pass = 0 // Runners cannot pass trough tables
-
-				//X.a_intent = "harm" This caused problems
-				//if(istype(X,/mob/living/carbon/Xenomorph/Carrier))
-				//	X:huggers_cur = 6 //Max out huggers
-
-	//if(xenos_spawned)
-	//	world << "Xenos_spawned: [xenos_spawned]"
+/datum/whiskey_outpost_wave/random/wave3 //Siege madness
+	wave_castes = list(/mob/living/carbon/Xenomorph/Boiler/ancient,
+					/mob/living/carbon/Xenomorph/Boiler/ancient,
+					/mob/living/carbon/Xenomorph/Crusher/ancient)
+	number_of_xenos = 15
 
 /datum/game_mode/whiskey_outpost/proc/count_xenos()//Counts braindead too
 	var/xeno_count = 0
-	for(var/mob/living/carbon/Xenomorph/X in living_mob_list)
+	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X) //Prevent any runtime errors
-			if(istype(X) && X.stat != DEAD && X.z != 0 && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
+			if(X.z == 1 && !istype(X.loc,/turf/open/space)) // If they're connected/unghosted and alive and not debrained
 				xeno_count += 1 //Add them to the amount of people who're alive.
 
 	return xeno_count
 
+/datum/game_mode/whiskey_outpost/proc/pickovertime()
+	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*1000)
+	var/maxovertime = 24000
+	if (randomtime >= maxovertime)
+		return maxovertime
+	return randomtime
 
 ///////////////////////////////
 //Checks if the round is over//
@@ -454,7 +567,7 @@ var/global/spawn_next_wo_wave = 0
 
 		if(round_stats) // Logging to data/logs/round_stats.log
 			round_stats << "Marines remaining: [marines]\nRound time: [duration2text()][log_end]"
-
+	round_finished = 1
 	return 1
 
 /datum/game_mode/proc/auto_declare_completion_whiskey_outpost()
@@ -476,7 +589,7 @@ var/global/spawn_next_wo_wave = 0
 		switch(randpick)
 			if(0 to 5)//Marine Gear 10% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
-				choosemax = rand(10,15)
+				choosemax = rand(5,10)
 				randomitems = list(/obj/item/clothing/head/helmet/marine,
 								/obj/item/clothing/head/helmet/marine,
 								/obj/item/clothing/head/helmet/marine,
@@ -497,23 +610,10 @@ var/global/spawn_next_wo_wave = 0
 
 			if(11 to 13) //6% Chance to drop this !FUN! junk.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
-				choosemax = rand(5,10)
-				randomitems = list(/obj/item/storage/fancy/cigarettes/lucky_strikes,
-									/obj/item/storage/fancy/cigarettes/lucky_strikes,
-									/obj/item/storage/fancy/cigarettes/dromedaryco,
-									/obj/item/storage/fancy/cigarettes/dromedaryco,
-									/obj/item/storage/fancy/cigarettes/lucky_strikes,
-									/obj/item/storage/fancy/cigarettes/lucky_strikes,
-									/obj/item/storage/fancy/cigarettes/dromedaryco,
-									/obj/item/storage/fancy/cigarettes/dromedaryco,
-									/obj/item/storage/fancy/cigarettes/lucky_strikes,
-									/obj/item/storage/fancy/cigarettes/lucky_strikes,
-									/obj/item/storage/fancy/cigarettes/dromedaryco,
-									/obj/item/storage/fancy/cigarettes/dromedaryco,
-									/obj/item/tool/lighter/random,
-									/obj/item/tool/lighter/random,
-									/obj/item/tool/lighter/random,
-									/obj/item/storage/box/bodybags)
+				spawnitems = list(/obj/item/storage/belt/utility/full,
+									/obj/item/storage/belt/utility/full,
+									/obj/item/storage/belt/utility/full,
+									/obj/item/storage/belt/utility/full)
 
 			if(14 to 18)//Materials 10% Chance.
 				crate = new /obj/structure/closet/crate/secure/gear(T)
@@ -528,18 +628,11 @@ var/global/spawn_next_wo_wave = 0
 
 			if(19 to 20)//Blood Crate 4% chance
 				crate = new /obj/structure/closet/crate/medical(T)
-				spawnitems = list(/obj/item/reagent_container/blood/APlus,
-								/obj/item/reagent_container/blood/APlus,
-								/obj/item/reagent_container/blood/AMinus,
-								/obj/item/reagent_container/blood/AMinus,
-								/obj/item/reagent_container/blood/BPlus,
-								/obj/item/reagent_container/blood/BPlus,
-								/obj/item/reagent_container/blood/BMinus,
-								/obj/item/reagent_container/blood/BMinus,
-								/obj/item/reagent_container/blood/OPlus,
+				spawnitems = list(/obj/item/reagent_container/blood/OMinus,
 								/obj/item/reagent_container/blood/OMinus,
-								/obj/item/reagent_container/blood/empty,
-								/obj/item/reagent_container/blood/empty)
+								/obj/item/reagent_container/blood/OMinus,
+								/obj/item/reagent_container/blood/OMinus,
+								/obj/item/reagent_container/blood/OMinus)
 
 			if(21 to 25)//Advanced meds Crate 10%
 				crate = new /obj/structure/closet/crate/medical(T)
@@ -550,50 +643,37 @@ var/global/spawn_next_wo_wave = 0
 								/obj/item/storage/firstaid/adv,
 								/obj/item/bodybag/cryobag,
 								/obj/item/bodybag/cryobag,
-								/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-								/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-								/obj/item/reagent_container/hypospray/autoinjector/quickclot,
+								/obj/item/storage/belt/combatLifesaver,
 								/obj/item/storage/belt/combatLifesaver,
 								/obj/item/clothing/glasses/hud/health,
 								/obj/item/clothing/glasses/hud/health,
-								/obj/item/device/defibrillator,
-								/obj/item/storage/pill_bottle/peridaxon,
-								/obj/item/storage/pill_bottle/imidazoline,
-								/obj/item/storage/pill_bottle/alkysine)
+								/obj/item/device/defibrillator)
 
 			if(26 to 30)//Random Medical Items 10% as well. Made the list have less small junk
 				crate = new /obj/structure/closet/crate/medical(T)
-				choosemax = rand(10,15)
-				randomitems = list(/obj/item/storage/firstaid/fire,
-								/obj/item/storage/firstaid/regular,
-								/obj/item/storage/firstaid/toxin,
-								/obj/item/storage/firstaid/o2,
-								/obj/item/storage/firstaid/adv,
+				spawnitems = list(/obj/item/storage/belt/combatLifesaver,
 								/obj/item/storage/belt/combatLifesaver,
-								/obj/item/storage/pill_bottle/tramadol,
-								/obj/item/storage/pill_bottle/tramadol,
-								/obj/item/storage/pill_bottle/spaceacillin,
-								/obj/item/storage/pill_bottle/antitox,
-								/obj/item/storage/pill_bottle/kelotane,
-								/obj/item/stack/medical/splint,
-								/obj/item/stack/medical/splint,
-								/obj/item/reagent_container/hypospray/autoinjector/tricord,
-								/obj/item/reagent_container/hypospray/autoinjector/tricord,
-								/obj/item/reagent_container/hypospray/autoinjector/tricord,
-								/obj/item/reagent_container/hypospray/autoinjector/quickclot,
-								/obj/item/reagent_container/hypospray/autoinjector/dexP,
-								/obj/item/reagent_container/hypospray/autoinjector/Bicard,
-								/obj/item/reagent_container/hypospray/autoinjector/Kelo)
+								/obj/item/storage/belt/combatLifesaver,
+								/obj/item/storage/belt/combatLifesaver,
+								/obj/item/storage/belt/combatLifesaver)
 
-			if(31 to 40)//Random Attachments Crate 20% because the lord commeth and said let there be attachments.
+			if(31 to 35)//Random explosives Crate 10% because the lord commeth and said let there be explosives.
 				crate = new /obj/structure/closet/crate/ammo(T)
-				choosemax = rand(10,20)
-				randomitems = list(/obj/effect/landmark/wo_supplies/attachments/standard,
-								/obj/effect/landmark/wo_supplies/attachments/common,
-								/obj/effect/landmark/wo_supplies/attachments/common,
-								/obj/effect/landmark/wo_supplies/attachments/scarce,
-								/obj/effect/landmark/wo_supplies/attachments/rare)
-
+				choosemax = rand(1,5)
+				randomitems = list(/obj/item/storage/box/explosive_mines,
+								/obj/item/storage/box/explosive_mines,
+								/obj/item/explosive/grenade/HE/m15,
+								/obj/item/explosive/grenade/HE/m15,
+								/obj/item/explosive/grenade/HE,
+								/obj/item/storage/box/nade_box
+								)
+			if(36 to 40) // Junk
+				crate = new /obj/structure/closet/crate/ammo(T)
+				spawnitems = list(
+									/obj/item/attachable/heavy_barrel,
+									/obj/item/attachable/heavy_barrel,
+									/obj/item/attachable/heavy_barrel,
+									/obj/item/attachable/heavy_barrel)
 			if(41 to 45)//Sentry gun drop. 10%
 				crate = new /obj/structure/closet/crate/ammo(T)
 				spawnitems = list(/obj/item/storage/box/sentry,
@@ -605,14 +685,7 @@ var/global/spawn_next_wo_wave = 0
 
 			if(46 to 48)//Weapon + supply beacon drop. 6%
 				crate = new /obj/structure/closet/crate/ammo(T)
-				spawnitems = list(/obj/effect/landmark/wo_supplies/ammo/powerpack,
-								/obj/effect/landmark/wo_supplies/ammo/box/m41a,
-								/obj/effect/landmark/wo_supplies/ammo/box/smg,
-								/obj/effect/landmark/wo_supplies/ammo/box/m41amag,
-								/obj/effect/landmark/wo_supplies/ammo/box/slug,
-								/obj/effect/landmark/wo_supplies/ammo/box/buck,
-								/obj/effect/landmark/wo_supplies/ammo/box/smgmag,
-								/obj/item/device/whiskey_supply_beacon,
+				spawnitems = list(/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon,
 								/obj/item/device/whiskey_supply_beacon)
@@ -904,3 +977,4 @@ var/global/spawn_next_wo_wave = 0
 		if(T)
 			new /obj/item/paper/crumpled(T)
 		cdel(src)
+

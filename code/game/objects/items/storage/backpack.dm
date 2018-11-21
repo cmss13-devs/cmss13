@@ -340,6 +340,11 @@
 	var/camo_active_timer = 0
 	var/camo_cooldown_timer = 0
 	var/camo_ready = 1
+	actions_types = list(/datum/action/item_action)
+
+
+/obj/item/storage/backpack/marine/satchel/scout_cloak/attack_self(mob/user)
+	camouflage()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/verb/camouflage()
 	set name = "Toggle M68 Thermal Camouflage"
@@ -505,14 +510,17 @@
 
 /obj/item/storage/backpack/marine/engineerpack/flamethrower/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/ammo_magazine/flamer_tank))
-		var/obj/item/ammo_magazine/flamer_tank/large/FTL = W
-		if(!FTL.current_rounds && reagents.total_volume)
-			var/fuel_available = reagents.total_volume < FTL.max_rounds ? reagents.total_volume : FTL.max_rounds
+		var/obj/item/ammo_magazine/flamer_tank/FTL = W
+		var/missing_volume = FTL.max_rounds - FTL.current_rounds
+
+		//Fuel has to be standard napalm OR tank needs to be empty. We need to have a non-full tank and our backpack be dry
+		if (((FTL.caliber == "UT-Napthal Fuel") || (!FTL.current_rounds)) && missing_volume && reagents.total_volume)
+			var/fuel_available = reagents.total_volume < missing_volume ? reagents.total_volume : missing_volume
 			reagents.remove_reagent("fuel", fuel_available)
-			FTL.current_rounds = fuel_available
+			FTL.current_rounds = FTL.current_rounds + fuel_available
 			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			FTL.caliber = "UT-Napthal Fuel"
-			user << "<span class='notice'>You refill [FTL] with [lowertext(FTL.caliber)].</span>"
+			user << "<span class='notice'>You refill [FTL] with [FTL.caliber].</span>"
 			FTL.update_icon()
 	. = ..()
 

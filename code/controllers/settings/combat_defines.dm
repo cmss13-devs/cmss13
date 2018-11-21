@@ -185,10 +185,16 @@
 		if("mhigh_fire_delay") mhigh_fire_delay = value
 		if("max_fire_delay")	max_fire_delay = value
 		if("min_scatter_value") min_scatter_value = value
+		if("mlow_scatter_value") mlow_scatter_value = value
 		if("low_scatter_value") low_scatter_value = value
+		if("lmed_scatter_value") lmed_scatter_value = value
 		if("med_scatter_value") med_scatter_value = value
+		if("hmed_scatter_value") hmed_scatter_value = value
 		if("high_scatter_value") high_scatter_value = value
+		if("mhigh_scatter_value") mhigh_scatter_value = value
 		if("max_scatter_value") max_scatter_value = value
+		if("super_scatter_value") super_scatter_value = value
+		if("ultra_scatter_value") ultra_scatter_value = value
 		if("min_recoil_value") min_recoil_value = value
 		if("low_recoil_value") low_recoil_value = value
 		if("med_recoil_value") med_recoil_value = value

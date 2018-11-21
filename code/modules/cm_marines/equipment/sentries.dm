@@ -877,7 +877,7 @@
 
 			var/total_scatter_angle = in_chamber.ammo.scatter
 
-			if (burst_fire)
+			if (shots_fired > 1)
 				total_scatter_angle += burst_scatter_mult * (shots_fired -1)
 
 			if(total_scatter_angle > 0)
@@ -896,8 +896,7 @@
 			playsound(loc, 'sound/weapons/gun_rifle.ogg', 75, 1)
 			in_chamber.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 			if(target)
-				var/target_angle = round(Get_Angle(src,target))
-				muzzle_flash(target_angle)
+				muzzle_flash(final_angle)
 			in_chamber = null
 			rounds--
 			if(rounds == 0)

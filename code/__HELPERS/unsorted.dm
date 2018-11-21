@@ -702,10 +702,11 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/dx = A.x - x
 	var/dy = A.y - y
 	var/ratio
-	try //prevents divide-by-zero errors
-		ratio = dx / dy
-	catch
+
+	if(dy == 0) //prevents divide-by-zero errors
 		ratio = INFINITY
+	else
+		ratio = dx / dy
 
 	if(x < 1)
 		y += (1 - x) / ratio

@@ -31,6 +31,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
@@ -181,6 +182,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.high_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
@@ -228,6 +230,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
@@ -258,7 +261,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/magnetic_harness)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-	burst_amount = 2 
+	burst_amount = 2
 	burst_delay = 0 //So doubleshotty can doubleshot
 
 /obj/item/weapon/gun/shotgun/double/New()
@@ -270,6 +273,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
@@ -362,6 +366,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.high_hit_damage_mult
 	recoil = config.med_recoil_value
@@ -407,6 +412,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
@@ -492,6 +498,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value

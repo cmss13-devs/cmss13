@@ -120,8 +120,6 @@
 			P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 
 			var/total_scatter_angle = P.scatter
-			if(prob(50)) //a very crude way of simulating a normal distribution
-				total_scatter_angle *= 0.5
 			final_angle += rand(-total_scatter_angle, total_scatter_angle)
 			var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
@@ -501,7 +499,7 @@
 		damage_var_low = -config.low_proj_variance
 		damage_var_high = config.low_proj_variance
 		penetration	= config.mlow_armor_penetration
-		scatter = config.high_scatter_value
+		scatter = config.super_scatter_value
 
 
 
@@ -552,7 +550,7 @@
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.extra_damage_falloff
 		shell_speed = config.reg_shell_speed
-		scatter = config.max_scatter_value
+		scatter = config.ultra_scatter_value
 
 /datum/ammo/bullet/shotgun/spread/masterkey
 	New()

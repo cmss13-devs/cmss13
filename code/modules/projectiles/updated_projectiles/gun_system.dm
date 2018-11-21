@@ -42,7 +42,7 @@
 	var/damage_falloff_mult 		= 1				//Same as above, for damage bleed (falloff)
 	var/recoil 					= 0				//Screen shake when the weapon is fired.
 	var/scatter					= 0				//How much the bullet scatters when fired.
-	var/burst_scatter_mult		= 3				//Multiplier. Increases or decreases how much bonus scatter is added when burst firing (wielded only).
+	var/burst_scatter_mult		= 4				//Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
 
 	var/accuracy_mult_unwielded 		= 1		//same vars as above but for unwielded firing.
 	var/recoil_unwielded 				= 0
@@ -124,6 +124,7 @@
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.lmed_scatter_value
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 
@@ -566,18 +567,18 @@ and you're good to go.
 	*/
 
 	//Number of bullets based on burst. If an active attachable is shooting, bursting is always zero.
-	var/bullets_fired = 1
+	var/bullets_to_fire = 1
 	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
-		bullets_fired = burst_amount
+		bullets_to_fire = burst_amount
 		if(flags_gun_features & GUN_FULL_AUTO_ON)
-			bullets_fired = 50
+			bullets_to_fire = 50
 		flags_gun_features |= GUN_BURST_FIRING
 
-	var/i
-	for(i = 1 to bullets_fired)
+	var/bullets_fired
+	for(bullets_fired = 1 to bullets_to_fire)
 		if(loc != user) break //If you drop it while bursting, for example.
 
-		if(i > 1 && !(flags_gun_features & GUN_BURST_FIRING))//no longer burst firing somehow
+		if(bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING))//no longer burst firing somehow
 			break
 
 		//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
@@ -589,7 +590,7 @@ and you're good to go.
 		var/recoil_comp = 0 //used by bipod and akimbo firing
 
 		//checking for a gun in other hand to fire akimbo
-		if(i == 1 && !reflex && !dual_wield)
+		if(bullets_fired == 1 && !reflex && !dual_wield)
 			if(user)
 				var/obj/item/IH = user.get_inactive_hand()
 				if(istype(IH, /obj/item/weapon/gun))
@@ -599,26 +600,26 @@ and you're good to go.
 						dual_wield = TRUE
 						recoil_comp++
 
-		apply_bullet_effects(projectile_to_fire, user, i, reflex, dual_wield) //User can be passed as null.
+		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
 
 
 		//BIPODS BEGINS HERE
-		var/scatter_chance_mod = 0
-		var/burst_scatter_chance_mod = 0
+		var/scatter_mod = 0
+		var/burst_scatter_mod = 0
 		//They decrease scatter chance and increase accuracy a tad. Can also increase damage.
 		if(user && under && under.bipod_deployed) //Let's get to work on the bipod. I'm not really concerned if they are the same person as the previous user. It doesn't matter.
 			if(under.check_bipod_support(src, user))
 				//Passive accuracy and recoil buff, but only when firing in position.
 				projectile_to_fire.accuracy *= config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult //More accuracy.
 				recoil_comp-- //Less recoil.
-				scatter_chance_mod -= config.med_scatter_value
-				burst_scatter_chance_mod = -2
+				scatter_mod -= config.low_scatter_value
+				burst_scatter_mod = -config.mlow_scatter_value
 				if(prob(30)) projectile_to_fire.damage *= config.base_hit_damage_mult + config.low_hit_damage_mult//Lower chance of a damage buff.
-				if(i == 1) user << "<span class='notice'>Your bipod keeps [src] steady!</span>"
+				if(bullets_fired == 1) user << "<span class='notice'>Your bipod keeps [src] steady!</span>"
 		//End of bipods.
 
 		target = original_target ? original_target : targloc
-		target = simulate_scatter(projectile_to_fire, target, targloc, scatter_chance_mod, user, burst_scatter_chance_mod)
+		target = simulate_scatter(projectile_to_fire, target, targloc, scatter_mod, user, burst_scatter_mod, bullets_fired)
 
 		if(params)
 			var/list/mouse_control = params2list(params)
@@ -657,7 +658,7 @@ and you're good to go.
 			click_empty(user)
 			break //Nothing else to do here, time to cancel out.
 
-		if(i < bullets_fired) // We still have some bullets to fire.
+		if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
 			extra_delay = min(extra_delay+(burst_delay*2), fire_delay*3) // The more bullets you shoot, the more delay there is, but no more than thrice the regular delay.
 			sleep(burst_delay)
 
@@ -832,10 +833,13 @@ and you're good to go.
 	if(dual_wield) //akimbo firing gives terrible accuracy
 		if(gun_skill_category == GUN_SKILL_PISTOLS)
 			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(1,2))
-			gun_scatter += 10*rand(1,3)
+			gun_scatter += config.low_scatter_value
+		else if(gun_skill_category == GUN_SKILL_SMGS)
+			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(1,3))
+			gun_scatter += config.med_scatter_value
 		else
 			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(2,4))
-			gun_scatter += 10*rand(3,5)
+			gun_scatter += config.high_scatter_value
 
 	// Apply any skill-based bonuses to accuracy
 	if(user && user.mind && user.mind.cm_skills)
@@ -895,7 +899,7 @@ and you're good to go.
 	return 1
 
 
-/obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_angle = 0, mob/user, burst_scatter_bonus = 0)
+/obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_angle = 0, mob/user, burst_scatter_mod = 0, bullets_fired = 1)
 
 	var/turf/curloc = get_turf(src)
 	var/initial_angle = Get_Angle(curloc, targloc)
@@ -904,8 +908,8 @@ and you're good to go.
 
 	total_scatter_angle += projectile_to_fire.scatter
 
-	if(flags_gun_features & GUN_BURST_ON && burst_amount > 1)//Much higher scatter on a burst.
-		total_scatter_angle += (flags_item & WIELDED) ? burst_amount * (burst_scatter_mult + burst_scatter_bonus) : burst_amount * (5+burst_scatter_bonus)
+	if(flags_gun_features & GUN_BURST_ON && bullets_fired > 1)//Much higher scatter on a burst. Each additional bullet adds scatter
+		total_scatter_angle += max(0, (flags_item & WIELDED) ? (bullets_fired-1) * (burst_scatter_mult + burst_scatter_mod) : 2 * (bullets_fired-1) * (burst_scatter_mult + burst_scatter_mod)  )
 
 	if(user && user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
@@ -931,8 +935,6 @@ and you're good to go.
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
 	if(total_scatter_angle > 0)
-		if (prob(50))
-			total_scatter_angle *= 0.5 //a very crude way of simulating a normal distribution
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		target = get_angle_target_turf(curloc, final_angle, 30)
 

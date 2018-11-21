@@ -98,10 +98,11 @@
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.max_burst_value
-	burst_delay = config.mlow_fire_delay
+	burst_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.lmed_scatter_value
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.med_recoil_value

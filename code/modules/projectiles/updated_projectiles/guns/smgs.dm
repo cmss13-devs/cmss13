@@ -65,7 +65,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -91,7 +92,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.max_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -130,6 +132,7 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.high_scatter_value
+	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
@@ -168,7 +171,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value + config.low_scatter_value
-	scatter_unwielded = config.med_scatter_value + config.high_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.med_scatter_value + config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.high_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -197,7 +201,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	scatter_unwielded = config.max_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -232,7 +237,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value + config.low_scatter_value
-	scatter_unwielded = config.max_scatter_value + config.low_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.high_scatter_value + config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -264,7 +270,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value + config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value + config.med_scatter_value + config.max_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.med_scatter_value + config.high_scatter_value 
 	damage_mult = config.base_hit_damage_mult - config.min_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
@@ -301,7 +308,8 @@
 	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
-	scatter_unwielded = config.med_scatter_value + config.max_scatter_value
+	burst_scatter_mult = config.mlow_scatter_value
+	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 

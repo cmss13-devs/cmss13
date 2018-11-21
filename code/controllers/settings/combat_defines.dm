@@ -58,7 +58,7 @@
 	var/high_burst_value = 4
 	var/max_burst_value = 5
 
-	var/min_fire_delay = 0
+	var/min_fire_delay = 1
 	var/mlow_fire_delay = 1
 	var/low_fire_delay = 2
 	var/med_fire_delay = 3
@@ -66,11 +66,17 @@
 	var/mhigh_fire_delay = 5
 	var/max_fire_delay = 6
 
-	var/min_scatter_value = 2.5
-	var/low_scatter_value = 5
-	var/med_scatter_value = 7.5
-	var/high_scatter_value = 10
-	var/max_scatter_value = 15
+	var/min_scatter_value = 1
+	var/mlow_scatter_value = 2
+	var/low_scatter_value = 3
+	var/lmed_scatter_value = 4
+	var/med_scatter_value = 5
+	var/hmed_scatter_value = 6
+	var/high_scatter_value = 7
+	var/mhigh_scatter_value = 8
+	var/max_scatter_value = 10
+	var/super_scatter_value = 15
+	var/ultra_scatter_value = 20
 
 	var/min_recoil_value = 1
 	var/low_recoil_value = 2

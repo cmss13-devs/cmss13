@@ -804,7 +804,7 @@ Defined in conflicts.dm of the #defines folder.
 	activate_attachment(atom/target, mob/user)
 		playsound(user, activation_sound, 15, 1)
 		..()
-	
+
 	New()
 		..()
 		attachment_firing_delay = config.max_fire_delay * 5
@@ -881,7 +881,7 @@ Defined in conflicts.dm of the #defines folder.
 	activate_attachment(atom/target, mob/user)
 		playsound(user, activation_sound, 15, 1)
 		..()
-	
+
 	New()
 		..()
 		attachment_firing_delay = config.mhigh_fire_delay*3
@@ -1063,7 +1063,5 @@ Defined in conflicts.dm of the #defines folder.
 		..()
 		accuracy_mod = -config.low_hit_accuracy_mult
 		burst_mod = config.low_burst_value
-		scatter_mod = config.low_scatter_value
 
 		accuracy_unwielded_mod = -config.med_hit_accuracy_mult
-		scatter_unwielded_mod = config.med_scatter_value

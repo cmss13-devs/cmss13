@@ -284,6 +284,7 @@
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
 	var/obj/item/cell/cell = null
 	var/burst_fire = 0
+	var/burst_scatter_mult = 4
 	var/obj/machinery/camera/camera = null
 	var/fire_delay = 3
 	var/last_fired = 0
@@ -301,6 +302,7 @@
 		spark_system = new /datum/effect_system/spark_spread
 		spark_system.set_up(5, 0, src)
 		spark_system.attach(src)
+		burst_scatter_mult = config.lmed_scatter_value
 		cell = new (src)
 		camera = new (src)
 		camera.network = list("military")
@@ -830,7 +832,7 @@
 		if(rounds >= burst_size)
 			for(var/i = 1 to burst_size)
 				is_bursting = 1
-				if(fire_shot())
+				if(fire_shot(i))
 					sleep(1)
 				else
 					break
@@ -847,7 +849,7 @@
 
 	target = null
 
-/obj/machinery/marine_turret/proc/fire_shot()
+/obj/machinery/marine_turret/proc/fire_shot(shots_fired = 1)
 	if(!target || !on || !ammo) return
 	if(last_fired) return
 
@@ -876,11 +878,9 @@
 			var/total_scatter_angle = in_chamber.ammo.scatter
 
 			if (burst_fire)
-				total_scatter_angle += config.med_scatter_value
+				total_scatter_angle += burst_scatter_mult * (shots_fired -1)
 
 			if(total_scatter_angle > 0)
-				if (prob(50))
-					total_scatter_angle *= 0.5 //a very crude way of simulating a normal distribution
 				final_angle += rand(-total_scatter_angle, total_scatter_angle)
 				target = get_angle_target_turf(my_loc, final_angle, 30)
 

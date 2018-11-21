@@ -151,6 +151,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/reload_admins,
 	/client/proc/reload_whitelist,
 	/client/proc/restart_controller,
+	/client/proc/cmd_debug_toggle_should_check_for_win,
 	///client/proc/remake_distribution_map,
 	///client/proc/show_distribution_map,
 	// /client/proc/show_plant_genes,

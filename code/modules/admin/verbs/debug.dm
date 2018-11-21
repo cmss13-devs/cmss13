@@ -315,6 +315,22 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		alert("Invalid mob")
 
+/client/proc/cmd_debug_toggle_should_check_for_win()
+	set category = "Debug"
+	set name = "Toggle Round End Checks"
+
+	feedback_add_details("admin_verb","CHCKWIN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+	if(!ticker || !ticker.mode)
+		usr << "Mode not found?"
+	round_should_check_for_win = !round_should_check_for_win
+	if (round_should_check_for_win)
+		message_admins("\blue [key_name(src)] enabled checking for round-end.", 1)
+	else
+		message_admins("\blue [key_name(src)] disabled checking for round-end.", 1)
+
+
+
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
 	set category = "Debug"

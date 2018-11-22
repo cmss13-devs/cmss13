@@ -16,6 +16,7 @@
 
 // DEATH SQUAD--------------------------------------------------------------------------------
 /datum/emergency_call/death/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 	var/mob/original = M.current
 
@@ -39,21 +40,21 @@
 	mob.mind.special_role = "DEATH SQUAD"
 	ticker.mode.traitors += mob.mind
 	mob.mind.set_cm_skills(/datum/skills/commando/deathsquad)
-	spawn(0)
-		if(!leader)       //First one spawned is always the leader.
-			leader = mob
-			spawn_officer(mob)
-			mob << "<font size='3'>\red You are the Death Squad Leader!</font>"
-			mob << "<B> You must clear out any traces of the infestation and its survivors..</b>"
-			mob << "<B> Follow any orders directly from Weyland-Yutani!</b>"
-		else
-			spawn_standard(mob)
-			mob << "<font size='3'>\red You are a Death Squad Commando!!</font>"
-			mob << "<B> You must clear out any traces of the infestation and its survivors..</b>"
-			mob << "<B> Follow any orders directly from Weyland-Yutani!</b>"
 
-	spawn(10)
-		M << "<B>Objectives:</b> [objectives]"
+	if(!leader)       //First one spawned is always the leader.
+		leader = mob
+		spawn_officer(mob)
+		mob << "<font size='3'>\red You are the Death Squad Leader!</font>"
+		mob << "<B> You must clear out any traces of the infestation and its survivors..</b>"
+		mob << "<B> Follow any orders directly from Weyland-Yutani!</b>"
+	else
+		spawn_standard(mob)
+		mob << "<font size='3'>\red You are a Death Squad Commando!!</font>"
+		mob << "<B> You must clear out any traces of the infestation and its survivors..</b>"
+		mob << "<B> Follow any orders directly from Weyland-Yutani!</b>"
+
+	sleep(10)
+	M << "<B>Objectives:</b> [objectives]"
 
 	if(original)
 		cdel(original)

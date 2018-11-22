@@ -529,6 +529,14 @@ var/list/wood_icons = list("wood", "wood-broken")
 
 
 
-
+/turf/open/floor/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(is_light_floor())
+		M.animation_attack_on(src)
+		playsound(src, 'sound/effects/glasshit.ogg', 25, 1)
+		M.visible_message("<span class='danger'>\The [M] smashes \the [src]!</span>", \
+		"<span class='danger'>You smash \the [src]!</span>", \
+		"<span class='danger'>You hear broken glass!</span>", 5)
+		icon_state = "light_off"
+		SetLuminosity(0)
 
 

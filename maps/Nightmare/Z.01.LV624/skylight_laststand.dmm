@@ -31,7 +31,7 @@
 "aE" = (/turf/open/gm/coast{tag = "icon-beach (SOUTHEAST)"; icon_state = "beach"; dir = 6},/area/lv624/ground/caves/central2)
 "aF" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/river,/area/lv624/ground/caves/central2)
 "aG" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/river,/area/lv624/ground/caves/central2)
-"aH" = (/obj/effect/landmark{name = "surv_spawn"; pixel_x = -1},/turf/open/gm/grass,/area/lv624/ground/caves/central2)
+"aH" = (/obj/effect/landmark/survivor_spawner/lv624_skylight{pixel_x = -1},/turf/open/gm/grass,/area/lv624/ground/caves/central2)
 "aI" = (/obj/structure/table/woodentable/poor,/obj/item/weapon/gun/shotgun/pump/cmb,/obj/item/ammo_magazine/revolver/small,/obj/item/ammo_magazine/revolver/small,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
 "aJ" = (/obj/structure/table/woodentable/poor,/obj/item/device/flashlight/lantern,/obj/item/weapon/gun/shotgun/pump/cmb,/obj/item/ammo_magazine/revolver/small,/obj/item/ammo_magazine/revolver/small,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
 "aK" = (/obj/item/weapon/gun/revolver/small,/turf/open/gm/dirtgrassborder,/area/lv624/ground/caves/central2)
@@ -52,7 +52,7 @@
 "aZ" = (/obj/structure/barricade/metal,/obj/structure/barricade/metal{dir = 4},/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
 "ba" = (/obj/item/storage/toolbox/emergency,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
 "bb" = (/obj/item/storage/toolbox/mechanical,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
-"bc" = (/obj/structure/campfire,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
+"bc" = (/obj/item/device/flashlight/on,/turf/open/gm/grass,/area/lv624/ground/caves/central2)
 "bd" = (/obj/item/storage/box/m56d_hmg,/turf/open/floor/wood,/area/lv624/ground/caves/central2)
 "be" = (/obj/item/storage/firstaid/regular,/turf/open/gm/grass,/area/lv624/ground/caves/central2)
 "bf" = (/obj/item/storage/firstaid/adv,/turf/open/gm/dirt,/area/lv624/ground/caves/central2)
@@ -64,10 +64,10 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaahahahahahahahababaaaaauabababaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaabababahamanbaapaqahababauabauabacababababababababaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaabaHaHabahaoaoaoaoaoahababauabauabadababababababababababaaaa
 aaaaaaaaaaaaaaaaaaaeabaHaHabaiaoaoaoaoaoaiababauabauabababababababababababababaa
-aaaaaaaaaaaaaaaeaeaeabaHaHabahaIaJaobdbbahagaKaLagaLagagagagagagagajababacababab
+aaaaaaaaaaaaaaaeaeaebcaHaHabahaIaJaobdbbahagaKaLagaLagagagagagagagajababacababab
 aaaaaaaaaaaaaeaeaeaeaeaHaHabahahahavahahahalalaMalaMalalalalalalalarajabadababab
 aaaaaaaaaaaeaeaeaeaeaeaHaHabbgbebeakbfbfasalalaMalaMalalalalalalalalaragajabafag
-aaaaaaaaaeaeaeaeaeaeaeababababafagaXalbcaNalalaMalaMalalalalalalalalalalaragatal
+aaaaaaaaaeaeaeaeaeaeaeababababafagaXalalaNalalaMalaMalalalalalalalalalalaragatal
 aaaaaaaeaeaeababababaOaPaQaRaSaTaUaVaUaUaUaUaUaWalaMalalalalalasalalalalalalalal
 aaaaaeaeababababababaOabafatalalalalalalalalalalalaMalalalalalalalalalalalalalal
 aaaaababababababafagaYaSaTaUaUaUaUaUaUaUaUaUaUaUaUaZalalalalalalalalalalalalalal

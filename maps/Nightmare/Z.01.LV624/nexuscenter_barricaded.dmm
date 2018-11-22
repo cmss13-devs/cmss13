@@ -31,7 +31,7 @@
 "aE" = (/obj/item/trash/chips,/obj/effect/decal/cleanable/blood/splatter/animated,/obj/item/ammo_casing,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
 "aF" = (/obj/item/limb/r_foot,/obj/structure/table{dir = 8; flipped = 1},/obj/item/ammo_casing,/obj/item/ammo_casing,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
 "aG" = (/obj/effect/decal/cleanable/blood/splatter/animated,/obj/item/limb/l_arm,/obj/item/frame/table,/obj/effect/decal/cleanable/blood/splatter/animated,/obj/item/ammo_casing,/obj/item/ammo_casing,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
-"aH" = (/obj/machinery/atmospherics/pipe/simple/hidden/cyan,/obj/item/limb/head,/obj/item/frame/table,/obj/item/ammo_casing,/turf/open/floor{icon_state = "damaged4"},/area/lv624/lazarus/main_hall)
+"aH" = (/obj/machinery/atmospherics/pipe/simple/hidden/cyan,/obj/item/frame/table,/obj/item/ammo_casing,/turf/open/floor{icon_state = "damaged4"},/area/lv624/lazarus/main_hall)
 "aI" = (/obj/effect/decal/cleanable/blood/splatter/animated,/obj/item/frame/table,/obj/item/ammo_casing,/obj/item/ammo_casing,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
 "aJ" = (/obj/item/limb/r_hand,/obj/structure/table{dir = 4; flipped = 1},/obj/item/ammo_casing,/obj/item/ammo_casing,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)
 "aK" = (/obj/structure/barricade/wooden{dir = 8},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/main_hall)

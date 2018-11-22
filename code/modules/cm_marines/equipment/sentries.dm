@@ -1078,8 +1078,9 @@
 		camera.c_tag = "[src.name] ([rand(0,1000)])"
 		spawn(2)
 			stat = 0
-			//processing_objects.Add(src)
-			start_processing()
+			machine_processing = 1
+			processing_objects.Add(src)
+			//start_processing()
 		ammo = ammo_list[ammo]
 
 /obj/machinery/marine_turret/premade/dumb

@@ -820,6 +820,31 @@
 				M.mind.special_role = "UPP"
 				M.mind.set_cm_skills(/datum/skills/pfc/crafty)
 
+		if("UPP Survivor")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/faction/UPP(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP(M), WEAR_HEAD)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
+			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(M), WEAR_HANDS)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(M), WEAR_R_STORE)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(M), WEAR_L_STORE)
+
+			var/obj/item/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list()
+			W.assignment = "UPP Soldier"
+			W.registered_name = M.real_name
+			W.access = get_antagonist_access()
+			W.paygrade = "E1"
+			M.equip_to_slot_or_del(W, WEAR_ID)
+			M.add_language("Russian")
+
+			if(M.mind)
+				M.mind.assigned_role = "MODE"
+				M.mind.special_role = "UPP"
+				M.mind.set_cm_skills(/datum/skills/civilian/survivor/doctor)
+
 		if("UPP Soldier (Medic)")
 			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(M), WEAR_EAR)
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic(M), WEAR_BODY)
@@ -1116,6 +1141,30 @@
 				M.mind.assigned_role = "MODE"
 				M.mind.special_role = "CLF"
 				M.mind.set_cm_skills(/datum/skills/pfc)
+
+		if("CLF Survivor")
+			M.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(M), WEAR_BODY)
+			M.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(M), WEAR_JACKET)
+			M.equip_to_slot_or_del(new /obj/item/clothing/head/militia(M), WEAR_HEAD)
+			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
+			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(M), WEAR_FEET)
+			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(M), WEAR_HANDS)
+			M.equip_to_slot_or_del(new /obj/item/device/flashlight(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(M), WEAR_R_STORE)
+			M.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(M), WEAR_L_STORE)
+
+			var/obj/item/card/id/W = new(M)
+			W.name = "[M.real_name]'s ID Card"
+			W.access = list()
+			W.assignment = "Colonist"
+			W.registered_name = M.real_name
+			M.equip_to_slot_or_del(W, WEAR_ID)
+			W.access = get_antagonist_access()
+
+			if(M.mind)
+				M.mind.assigned_role = "MODE"
+				M.mind.special_role = "CLF"
+				M.mind.set_cm_skills(/datum/skills/civilian/survivor/doctor)
 
 		if("CLF Fighter (Medic)")
 			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(M), WEAR_EAR)
@@ -1489,7 +1538,8 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/weapon/twohanded/glaive(M), WEAR_L_HAND)
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/plasmarifle(M), WEAR_R_HAND)
-
+		else
+			return -1
 
 
 

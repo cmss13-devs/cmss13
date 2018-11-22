@@ -174,7 +174,8 @@
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog)) disperse_fog()//Some RNG thrown in.
-			check_win()
+			if(round_should_check_for_win)
+				check_win()
 			round_checkwin = 0
 
 #undef FOG_DELAY_INTERVAL

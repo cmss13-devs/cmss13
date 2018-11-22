@@ -15,6 +15,7 @@
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 	var/mob/original = M.current
 
@@ -49,32 +50,31 @@
 
 	mob.mind.assigned_role = "PMC"
 	ticker.mode.traitors += mob.mind
-	spawn(0)
-		if(!leader)       //First one spawned is always the leader.
-			leader = mob
-			mob.mind.set_cm_skills(/datum/skills/SL/pmc)
-			mob.arm_equipment(mob, "Weyland-Yutani PMC (Leader)")
-			mob.mind.special_role = "MODE"
-			mob.mind.assigned_role = "PMC Leader"
+	if(!leader)       //First one spawned is always the leader.
+		leader = mob
+		mob.mind.set_cm_skills(/datum/skills/SL/pmc)
+		mob.arm_equipment(mob, "Weyland-Yutani PMC (Leader)")
+		mob.mind.special_role = "MODE"
+		mob.mind.assigned_role = "PMC Leader"
+	else
+		mob.mind.special_role = "MODE"
+		if(prob(55)) //Randomize the heavy commandos and standard PMCs.
+			mob.mind.set_cm_skills(/datum/skills/pfc/pmc)
+			mob.arm_equipment(mob, "Weyland-Yutani PMC (Standard)")
+			mob << "<font size='3'>\red You are a Weyland Yutani mercenary!</font>"
 		else
-			mob.mind.special_role = "MODE"
-			if(prob(55)) //Randomize the heavy commandos and standard PMCs.
-				mob.mind.set_cm_skills(/datum/skills/pfc/pmc)
-				mob.arm_equipment(mob, "Weyland-Yutani PMC (Standard)")
-				mob << "<font size='3'>\red You are a Weyland Yutani mercenary!</font>"
+			if(prob(30))
+				mob.mind.set_cm_skills(/datum/skills/specialist/pmc)
+				mob.arm_equipment(mob, "Weyland-Yutani PMC (Sniper)")
+				mob << "<font size='3'>\red You are a Weyland Yutani sniper!</font>"
 			else
-				if(prob(30))
-					mob.mind.set_cm_skills(/datum/skills/specialist/pmc)
-					mob.arm_equipment(mob, "Weyland-Yutani PMC (Sniper)")
-					mob << "<font size='3'>\red You are a Weyland Yutani sniper!</font>"
-				else
-					mob.mind.set_cm_skills(/datum/skills/smartgunner/pmc)
-					mob.arm_equipment(mob, "Weyland-Yutani PMC (Gunner)")
-					mob << "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>"
-		print_backstory(mob)
+				mob.mind.set_cm_skills(/datum/skills/smartgunner/pmc)
+				mob.arm_equipment(mob, "Weyland-Yutani PMC (Gunner)")
+				mob << "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>"
+	print_backstory(mob)
 
-	spawn(10)
-		M << "<B>Objectives:</b> [objectives]"
+	sleep(10)
+	M << "<B>Objectives:</b> [objectives]"
 
 	if(original)
 		cdel(original)

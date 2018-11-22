@@ -133,6 +133,7 @@
 		usr << "<span class='warning'>You did not get enlisted in the response team. Better luck next time!</span>"
 
 /datum/emergency_call/proc/activate(announce = TRUE)
+	set waitfor = 0
 	if(!ticker || !ticker.mode) //Something horribly wrong with the gamemode ticker
 		return
 
@@ -148,67 +149,68 @@
 		command_announcement.Announce("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", new_sound='sound/AI/distressbeacon.ogg')
 
 	ticker.mode.has_called_emergency = 1
-	spawn(600) //If after 60 seconds we aren't full, abort
-		if(candidates.len < mob_min)
-			message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].", 1)
-			ticker.mode.waiting_for_candidates = 0
-			ticker.mode.has_called_emergency = 0
-			members = list() //Empty the members list.
-			candidates = list()
 
-			if (announce)
-				command_announcement.Announce("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+	sleep(600) //If after 60 seconds we aren't full, abort
+	if(candidates.len < mob_min)
+		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].", 1)
+		ticker.mode.waiting_for_candidates = 0
+		ticker.mode.has_called_emergency = 0
+		members = list() //Empty the members list.
+		candidates = list()
 
-			ticker.mode.distress_cooldown = 1
-			ticker.mode.picked_call = null
-			spawn(1200)
-				ticker.mode.distress_cooldown = 0
-		else //We've got enough!
-			//Trim down the list
-			var/list/datum/mind/picked_candidates = list()
-			if(mob_max > 0)
-				for(var/i = 1 to mob_max)
-					if(!candidates.len) break//We ran out of candidates, maybe they alienized. Use what we have.
-					var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
-					if(istype(M.current,/mob/living/carbon/Xenomorph))
-						candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
-						if(!candidates.len) break //NO picking from empty lists
-						M = pick(candidates)
-					if(!istype(M))//Something went horrifically wrong
-						candidates.Remove(M)
-						if(!candidates.len) break //No empty lists!!
-						M = pick(candidates) //Lets try this again
-					picked_candidates.Add(M)
+		if (announce)
+			command_announcement.Announce("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon")
+
+		ticker.mode.distress_cooldown = 1
+		ticker.mode.picked_call = null
+		sleep(1200)
+		ticker.mode.distress_cooldown = 0
+	else //We've got enough!
+		//Trim down the list
+		var/list/datum/mind/picked_candidates = list()
+		if(mob_max > 0)
+			for(var/i = 1 to mob_max)
+				if(!candidates.len) break//We ran out of candidates, maybe they alienized. Use what we have.
+				var/datum/mind/M = pick(candidates) //Get a random candidate, then remove it from the candidates list.
+				if(istype(M.current,/mob/living/carbon/Xenomorph))
+					candidates.Remove(M) //Strip them from the list, they aren't dead anymore.
+					if(!candidates.len) break //NO picking from empty lists
+					M = pick(candidates)
+				if(!istype(M))//Something went horrifically wrong
 					candidates.Remove(M)
-				spawn(3) //Wait for all the above to be done
-					if(candidates.len)
-						for(var/datum/mind/I in candidates)
-							if(I.current)
-								I.current << "<span class='warning'>You didn't get selected to join the distress team. Better luck next time!</span>"
+					if(!candidates.len) break //No empty lists!!
+					M = pick(candidates) //Lets try this again
+				picked_candidates.Add(M)
+				candidates.Remove(M)
+			sleep(3) //Wait for all the above to be done
+			if(candidates.len)
+				for(var/datum/mind/I in candidates)
+					if(I.current)
+						I.current << "<span class='warning'>You didn't get selected to join the distress team. Better luck next time!</span>"
 
-			if (announce)
-				command_announcement.Announce(dispatch_message, "Distress Beacon", new_sound='sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
+		if (announce)
+			command_announcement.Announce(dispatch_message, "Distress Beacon", new_sound='sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
 
-			message_admins("Distress beacon: [src.name] finalized, setting up candidates.", 1)
-			var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]
-			if(!shuttle || !istype(shuttle))
-				message_admins("Warning: Distress shuttle not found. Aborting.")
-				return
-			spawn_items()
+		message_admins("Distress beacon: [src.name] finalized, setting up candidates.", 1)
+		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]
+		if(!shuttle || !istype(shuttle))
+			message_admins("Warning: Distress shuttle not found. Aborting.")
+			return
+		spawn_items()
 
-			if(auto_shuttle_launch)
-				shuttle.launch()
+		if(auto_shuttle_launch)
+			shuttle.launch()
 
-			if(picked_candidates.len)
-				var/i = 0
-				for(var/datum/mind/M in picked_candidates)
-					members += M
-					i++
-					if(i > mob_max) break //Some logic. Hopefully this will never happen..
-					spawn(1 + i)
-						create_member(M)
-			candidates = null //Blank out the candidates list for next time.
-			candidates = list()
+		if(picked_candidates.len)
+			var/i = 0
+			for(var/datum/mind/M in picked_candidates)
+				members += M
+				i++
+				if(i > mob_max) break //Some logic. Hopefully this will never happen..
+				create_member(M)
+				sleep(1)
+		candidates = null //Blank out the candidates list for next time.
+		candidates = list()
 
 /datum/emergency_call/proc/add_candidate(var/mob/M)
 	if(!M.client) return 0//Not connected

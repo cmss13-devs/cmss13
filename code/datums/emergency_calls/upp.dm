@@ -48,6 +48,7 @@
 ///////////////////UPP///////////////////////////
 
 /datum/emergency_call/upp/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 	var/mob/original = M.current
 
@@ -81,37 +82,33 @@
 	mob.mind.assigned_role = "MODE"
 	mob.mind.special_role = "UPP"
 	ticker.mode.traitors += mob.mind
-	spawn(0)
-		if(!leader)       //First one spawned is always the leader.
-			leader = mob
-			mob.mind.set_cm_skills(/datum/skills/SL/upp)
-			mob.arm_equipment(mob, "UPP Soldier (Leader)")
-			mob << "<font size='3'>\red You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		else if(medics < max_medics)
-			mob.mind.set_cm_skills(/datum/skills/combat_medic/crafty)
-			mob << "<font size='3'>\red You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-			mob.arm_equipment(mob, "UPP Soldier (Medic)")
-			medics++
-		else if(heavies < max_heavies)
-			mob.mind.set_cm_skills(/datum/skills/specialist/upp)
-			mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-			mob.arm_equipment(mob, "UPP Soldier (Heavy)")
-			heavies++
-		else
-			mob.mind.set_cm_skills(/datum/skills/pfc/crafty)
-			mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-			mob.arm_equipment(mob, "UPP Soldier (Standard)")
+	if(!leader)       //First one spawned is always the leader.
+		leader = mob
+		mob.mind.set_cm_skills(/datum/skills/SL/upp)
+		mob.arm_equipment(mob, "UPP Soldier (Leader)")
+		mob << "<font size='3'>\red You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+	else if(medics < max_medics)
+		mob.mind.set_cm_skills(/datum/skills/combat_medic/crafty)
+		mob << "<font size='3'>\red You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+		mob.arm_equipment(mob, "UPP Soldier (Medic)")
+		medics++
+	else if(heavies < max_heavies)
+		mob.mind.set_cm_skills(/datum/skills/specialist/upp)
+		mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+		mob.arm_equipment(mob, "UPP Soldier (Heavy)")
+		heavies++
+	else
+		mob.mind.set_cm_skills(/datum/skills/pfc/crafty)
+		mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+		mob.arm_equipment(mob, "UPP Soldier (Standard)")
 
-		print_backstory(mob)
+	print_backstory(mob)
 
-
-	spawn(10)
-		mob << "<B>Objectives:</b> [objectives]"
+	sleep(10)
+	mob << "<B>Objectives:</b> [objectives]"
 
 	if(original)
 		cdel(original)
-
-
 
 
 

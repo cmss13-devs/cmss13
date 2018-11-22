@@ -31,6 +31,7 @@
 
 
 /datum/emergency_call/clf/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 	var/mob/original = M.current
 
@@ -60,25 +61,24 @@
 	mob.g_eyes = 62
 	mob.b_eyes = 19
 
-	spawn(0)
-		if(!leader)       //First one spawned is always the leader.
-			mob.mind.set_cm_skills(/datum/skills/pfc)
-			mob << "<font size='4'>\red You are a leader of the local resistance group, the Colonial Liberation Front."
-			mob.arm_equipment(mob, "CLF Fighter (Leader)")
-			leader = mob
-		else if(medics < max_medics)
-			mob.mind.set_cm_skills(/datum/skills/combat_medic)
-			mob << "<font size='4'>\red You are a medic of the local resistance group, the Colonial Liberation Front."
-			mob.arm_equipment(mob, "CLF Fighter (Medic)")
-			medics++
-		else
-			mob.mind.set_cm_skills(/datum/skills/SL)
-			mob << "<font size='4'>\red You are a member of the local resistance group, the Colonial Liberation Front."
-			mob.arm_equipment(mob, "CLF Fighter (Standard)")
-		print_backstory(mob)
+	if(!leader)       //First one spawned is always the leader.
+		mob.mind.set_cm_skills(/datum/skills/pfc)
+		mob << "<font size='4'>\red You are a leader of the local resistance group, the Colonial Liberation Front."
+		mob.arm_equipment(mob, "CLF Fighter (Leader)")
+		leader = mob
+	else if(medics < max_medics)
+		mob.mind.set_cm_skills(/datum/skills/combat_medic)
+		mob << "<font size='4'>\red You are a medic of the local resistance group, the Colonial Liberation Front."
+		mob.arm_equipment(mob, "CLF Fighter (Medic)")
+		medics++
+	else
+		mob.mind.set_cm_skills(/datum/skills/SL)
+		mob << "<font size='4'>\red You are a member of the local resistance group, the Colonial Liberation Front."
+		mob.arm_equipment(mob, "CLF Fighter (Standard)")
+	print_backstory(mob)
 
-	spawn(10)
-		M << "<B>Objectives:</b> [objectives]"
+	sleep(10)
+	M << "<B>Objectives:</b> [objectives]"
 
 	if(original)
 		cdel(original)

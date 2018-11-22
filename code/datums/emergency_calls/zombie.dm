@@ -8,6 +8,7 @@
 
 
 /datum/emergency_call/zombie/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/T = get_spawn_point()
 	var/mob/original = M.current
 
@@ -34,10 +35,10 @@
 	for(var/datum/disease/black_goo/BG in H.viruses)
 		BG.stage = 5
 
-	spawn(20)
-		if(H && H.loc)
-			H << "<span class='role_header'>You are a Zombie!</span>"
-			H << "<span class='role_body'>Spread... Consume... Infect...</span>"
+	sleep(20)
+	if(H && H.loc)
+		H << "<span class='role_header'>You are a Zombie!</span>"
+		H << "<span class='role_body'>Spread... Consume... Infect...</span>"
 
 	if(original && original.loc)
 		cdel(original)

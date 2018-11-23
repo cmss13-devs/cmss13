@@ -82,10 +82,8 @@
 
 	name_prefix = hive.prefix
 	color = hive.color
-	if(name_prefix == "Corrupted ")
+	if(hivenumber == XENO_HIVE_CORRUPTED)
 		add_language("English")
-	else
-		remove_language("English") // its hacky doing it here sort of
 
 	switch(amount_grown)
 		if(0 to 49) //We're still bloody

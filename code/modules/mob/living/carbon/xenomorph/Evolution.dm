@@ -284,6 +284,18 @@
 			new_xeno.xeno_mobhud = TRUE
 
 		new_xeno.middle_mouse_toggle = middle_mouse_toggle //Keep our toggle state
+		new_xeno.a_intent_change(a_intent)//Keep intent
+		if(m_intent != MOVE_INTENT_RUN)
+			new_xeno.toggle_mov_intent()//Keep move intent
+
+		if(layer == XENO_HIDING_LAYER)
+			//We are hiding, let's keep hiding if we can!
+			for(var/datum/action/xeno_action/xenohide/hide in new_xeno.actions)
+				if(istype(hide))
+					new_xeno.layer = XENO_HIDING_LAYER
+
+		for(var/datum/language/L in src.languages)
+			new_xeno.add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 		for(var/obj/item/W in contents) //Drop stuff
 			drop_inv_item_on_ground(W)

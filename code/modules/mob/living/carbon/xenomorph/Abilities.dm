@@ -1148,6 +1148,18 @@
 			new_xeno.xeno_mobhud = TRUE
 
 		new_xeno.middle_mouse_toggle = T.middle_mouse_toggle //Keep our toggle state
+		new_xeno.a_intent_change(T.a_intent)//Keep intent
+		if(T.m_intent != MOVE_INTENT_RUN)
+			new_xeno.toggle_mov_intent()//Keep move intent
+
+		if(T.layer == XENO_HIDING_LAYER)
+			//We are hiding, let's keep hiding if we can!
+			for(var/datum/action/xeno_action/xenohide/hide in new_xeno.actions)
+				if(istype(hide))
+					new_xeno.layer = XENO_HIDING_LAYER
+
+		for(var/datum/language/L in T.languages)
+			new_xeno.add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 		for(var/obj/item/W in T.contents) //Drop stuff
 			T.drop_inv_item_on_ground(W)
@@ -1166,6 +1178,12 @@
 			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 
 		new_xeno.upgrade_xeno(TRUE, min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
+
+		//Preserving plasma ratio
+		var/plasma_ratio = T.plasma_stored / T.caste.plasma_max
+		new_xeno.plasma_stored = round(new_xeno.caste.plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+		if(new_xeno.plasma_stored > new_xeno.caste.plasma_max)
+			new_xeno.plasma_stored = new_xeno.caste.plasma_max
 
 		message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")

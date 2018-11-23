@@ -574,6 +574,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		W.add_hiddenprint(src)
 		W.visible_message("\red Invisible fingers crudely paint something in blood on [T]...")*/
 
+/mob/dead/verb/hive_status()
+	set name = "Hive Status"
+	set desc = "Check the status of the hive."
+	set category = "Ghost"
+
+	check_hive_status(src)
+
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost"
 	set name = "Join as Xeno"

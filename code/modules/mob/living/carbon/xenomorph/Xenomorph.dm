@@ -139,10 +139,8 @@
 
 	name_prefix = hive.prefix
 	color = hive.color
-	if(name_prefix == "Corrupted ")
+	if(hivenumber == XENO_HIVE_CORRUPTED)
 		add_language("English")
-	else
-		remove_language("English") // its hacky doing it here sort of
 
 	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
 	if(isXenoQueen(src))

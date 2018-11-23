@@ -47,11 +47,14 @@
 					src << "<span class='xenoannounce'>You are the master of traps. You are the bane of marine pushes!</span>"
 				if("Queen")
 					src << "<span class='xenoannounce'>You are the Alpha and the Omega. The beginning and the end.</span>"
-
+	var/plasma_ratio = plasma_stored / caste.plasma_max
 	caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
 	maxHealth = caste.max_health
 	health = maxHealth
 	speed = caste.speed
+	plasma_stored = round(caste.plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	if(plasma_stored > caste.plasma_max)
+		plasma_stored = caste.plasma_max
 	if(isXenoWarrior(src)) // because of the warrior speed bug.
 		if(agility)
 			speed = caste.speed + caste.agility_speed_increase

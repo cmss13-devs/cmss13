@@ -1331,6 +1331,7 @@
 	var/leader_list = ""
 
 	for(var/mob/living/carbon/Xenomorph/X in living_mob_list)
+		if(!istype(X)) continue //ignore non-xenos, just in case
 		if(X.z == ADMIN_Z_LEVEL) continue //don't show xenos in the thunderdome when admins test stuff.
 		if(istype(user)) // cover calling it without parameters
 			if(X.hivenumber != user.hivenumber)

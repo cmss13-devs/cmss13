@@ -84,7 +84,7 @@
 "bF" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{tag = "icon-floor (SOUTHWEST)"; icon_state = "floor"; dir = 10},/area/prison/cellblock/highsec/south/south)
 "bG" = (/obj/effect/landmark{name = "hunter_primary"},/turf/open/floor/prison{tag = "icon-floor (SOUTHWEST)"; icon_state = "floor"; dir = 10},/area/prison/cellblock/highsec/south/south)
 "bH" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/effect/decal/cleanable/blood,/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"bI" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
+"bI" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 8},/turf/open/floor/prison{dir = 1; icon_state = "redcorner"},/area/prison/cellblock/highsec/south/south)
 "bJ" = (/obj/structure/window/framed/prison/cell,/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
 "bK" = (/obj/structure/toilet,/turf/open/floor/prison{tag = "icon-cell_stripe (WEST)"; icon_state = "cell_stripe"; dir = 8},/area/prison/cellblock/highsec/south/south)
 "bL" = (/turf/open/floor/prison{tag = "icon-floor_plate (SOUTHWEST)"; icon_state = "floor_plate"; dir = 10},/area/prison/cellblock/highsec/south/south)
@@ -100,8 +100,8 @@
 "bV" = (/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "bW" = (/obj/structure/bed/chair{dir = 1},/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "bX" = (/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
-"bY" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"bZ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
+"bY" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{icon_state = "redcorner"},/area/prison/cellblock/highsec/south/south)
+"bZ" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "ca" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/light{dir = 1},/turf/open/floor/prison{dir = 1; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cb" = (/turf/open/floor/plating/plating_catwalk/prison,/area/prison/cellblock/highsec/south/south)
 "cc" = (/obj/machinery/light/small{dir = 4},/turf/open/floor/prison{tag = "icon-floor_plate (SOUTHWEST)"; icon_state = "floor_plate"; dir = 10},/area/prison/cellblock/highsec/south/south)
@@ -112,18 +112,18 @@
 "ch" = (/obj/machinery/door/airlock/almayer/security/glass{name = "Security Booth"},/turf/open/floor/prison,/area/prison/maintenance/residential/access/south)
 "ci" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cj" = (/obj/machinery/atmospherics/unary/vent_scrubber{dir = 1},/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"ck" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/light{dir = 4},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
+"ck" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/light{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cl" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cm" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/security/checkpoint/highsec_medsec)
 "cn" = (/obj/machinery/light/small{dir = 1},/turf/open/floor/prison{tag = "icon-floor_plate (SOUTHWEST)"; icon_state = "floor_plate"; dir = 10},/area/prison/cellblock/highsec/south/south)
 "co" = (/turf/open/floor/prison{tag = "icon-cell_stripe"; icon_state = "cell_stripe"; dir = 2},/area/prison/cellblock/highsec/south/south)
 "cp" = (/obj/structure/toilet{tag = "icon-toilet00 (NORTH)"; icon_state = "toilet00"; dir = 1},/turf/open/floor/prison{tag = "icon-cell_stripe"; icon_state = "cell_stripe"; dir = 2},/area/prison/cellblock/highsec/south/south)
 "cq" = (/obj/structure/lattice,/turf/open/space,/area/space)
-"cr" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
+"cr" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cs" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "ct" = (/obj/structure/toilet{dir = 4},/turf/open/floor/prison{tag = "icon-cell_stripe (WEST)"; icon_state = "cell_stripe"; dir = 8},/area/prison/cellblock/highsec/south/south)
 "cu" = (/turf/closed/wall/prison,/area/prison/security/checkpoint/highsec_medsec)
-"cv" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHEAST)"; icon_state = "intact-scrubbers"; dir = 5},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/turf/open/floor/prison{dir = 1; icon_state = "redcorner"},/area/prison/cellblock/highsec/south/south)
+"cv" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; tag = ""},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cw" = (/obj/structure/sink{dir = 4; icon_state = "sink"; pixel_x = 12; tag = "icon-sink (EAST)"},/turf/open/floor/prison{tag = "icon-floor_plate (SOUTHWEST)"; icon_state = "floor_plate"; dir = 10},/area/prison/cellblock/highsec/south/south)
 "cx" = (/turf/open/floor/prison{tag = "icon-cell_stripe (NORTH)"; icon_state = "cell_stripe"; dir = 1},/area/prison/cellblock/highsec/south/south)
 "cy" = (/obj/machinery/door/airlock/prison/horizontal{density = 0; icon_state = "door_open"; opacity = 0},/turf/open/floor/prison{icon_state = "redfull"},/area/prison/cellblock/highsec/south/south)
@@ -133,11 +133,11 @@
 "cC" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cD" = (/turf/open/floor/prison{tag = "icon-cell_stripe (WEST)"; icon_state = "cell_stripe"; dir = 8},/area/prison/cellblock/highsec/south/south)
 "cE" = (/obj/structure/toilet,/turf/open/floor/prison{tag = "icon-cell_stripe (NORTH)"; icon_state = "cell_stripe"; dir = 1},/area/prison/cellblock/highsec/south/south)
-"cF" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
+"cF" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; tag = ""},/turf/open/floor/prison{dir = 6; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "cG" = (/turf/open/floor/prison{tag = "icon-cell_stripe (EAST)"; icon_state = "cell_stripe"; dir = 4},/area/prison/cellblock/mediumsec/west)
 "cH" = (/obj/structure/toilet{dir = 8; pixel_x = -4},/turf/open/floor/prison{tag = "icon-cell_stripe (EAST)"; icon_state = "cell_stripe"; dir = 4},/area/prison/cellblock/mediumsec/west)
 "cI" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/light{dir = 4},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"cJ" = (/obj/machinery/door/airlock/almayer/secure{density = 0; dir = 2; icon_state = "door_open"; name = "Solitary Confinement"; opacity = 0; req_access_txt = "0"},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"cJ" = (/obj/machinery/door/airlock/almayer/secure{density = 0; dir = 2; icon_state = "door_open"; name = "Solitary Confinement"; opacity = 0},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
 "cK" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 1},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 1},/turf/open/floor/prison{dir = 1; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
 "cL" = (/turf/open/floor/prison{dir = 8; icon_state = "yellowcorner"},/area/prison/cellblock/mediumsec/west)
 "cM" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/open/floor/prison{icon_state = "yellowcorner"},/area/prison/cellblock/mediumsec/west)
@@ -167,7 +167,7 @@
 "dk" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "dl" = (/obj/structure/toilet{dir = 8; pixel_x = -4},/obj/effect/decal/cleanable/blood,/turf/open/floor/prison{tag = "icon-cell_stripe (EAST)"; icon_state = "cell_stripe"; dir = 4},/area/prison/cellblock/mediumsec/west)
 "dm" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 6; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
-"dn" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/door/airlock/almayer/maint{dir = 2; req_one_access_txt = "0"},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"dn" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/door/airlock/almayer/maint{dir = 2},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
 "do" = (/obj/structure/bed/chair/office/dark{tag = "icon-officechair_dark (NORTH)"; icon_state = "officechair_dark"; dir = 1},/obj/effect/landmark/corpsespawner/prison_security,/obj/machinery/atmospherics/unary/vent_pump{on = 1},/turf/open/floor/prison,/area/prison/security/checkpoint/highsec_medsec)
 "dp" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "dq" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/cellblock/mediumsec/south)
@@ -181,7 +181,7 @@
 "dy" = (/turf/open/floor/prison{dir = 9; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
 "dz" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 6; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 6},/turf/open/floor/prison{dir = 1; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
 "dA" = (/obj/machinery/atmospherics/unary/vent_scrubber{dir = 4},/turf/open/floor/prison{dir = 8; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
-"dB" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/turf/open/floor/prison{icon_state = "yellowcorner"},/area/prison/cellblock/mediumsec/west)
+"dB" = (/obj/machinery/door/airlock/almayer/maint{dir = 2; req_one_access = list()},/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
 "dC" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/prison{dir = 8; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
 "dD" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/prison{dir = 4; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
 "dE" = (/turf/open/floor/prison{dir = 8; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
@@ -215,7 +215,7 @@
 "eg" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHWEST)"; icon_state = "intact-scrubbers"; dir = 9},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "eh" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "ei" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 8},/turf/open/floor/prison{tag = "icon-bright_clean (SOUTHWEST)"; icon_state = "bright_clean"; dir = 10},/area/prison/laundry)
-"ej" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 2; name = "Toilet"; req_one_access_txt = "0"},/turf/open/floor/prison{tag = "icon-kitchen (SOUTHWEST)"; icon_state = "kitchen"; dir = 10},/area/prison/recreation/highsec/s)
+"ej" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 2; name = "Toilet"},/turf/open/floor/prison{tag = "icon-kitchen (SOUTHWEST)"; icon_state = "kitchen"; dir = 10},/area/prison/recreation/highsec/s)
 "ek" = (/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/open/floor/prison{tag = "icon-bright_clean (SOUTHWEST)"; icon_state = "bright_clean"; dir = 10},/area/prison/laundry)
 "el" = (/obj/machinery/atmospherics/unary/vent_scrubber{dir = 1},/obj/effect/landmark{name = "hunter_primary"},/turf/open/floor/prison{tag = "icon-bright_clean (SOUTHWEST)"; icon_state = "bright_clean"; dir = 10},/area/prison/laundry)
 "em" = (/obj/item/frame/table,/turf/open/floor/prison{dir = 1; icon_state = "darkred2"},/area/prison/security/checkpoint/highsec_medsec)
@@ -238,9 +238,9 @@
 "eD" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/open/floor/prison{tag = "icon-floor_plate (SOUTHWEST)"; icon_state = "floor_plate"; dir = 10},/area/prison/cellblock/highsec/south/south)
 "eE" = (/obj/structure/bed/chair{dir = 8},/turf/open/floor/prison{dir = 4; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "eF" = (/obj/machinery/light{dir = 1},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/prison{dir = 1; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"eG" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{icon_state = "redcorner"},/area/prison/cellblock/highsec/south/south)
+"eG" = (/obj/machinery/door/airlock/almayer/maint{dir = 2; req_one_access = list()},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; tag = ""},/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
 "eH" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor/prison{dir = 5; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"eI" = (/obj/machinery/door/airlock/almayer/maint{dir = 1; req_one_access_txt = "0"},/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
+"eI" = (/obj/machinery/door/airlock/almayer/maint{dir = 1},/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
 "eJ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/item/ammo_casing,/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "eK" = (/obj/effect/landmark/corpsespawner/prison_security,/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "eL" = (/obj/machinery/atmospherics/unary/vent_scrubber{dir = 8},/turf/open/floor/prison,/area/prison/security/checkpoint/highsec_medsec)
@@ -248,7 +248,7 @@
 "eN" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 4; on = 1},/turf/open/floor/prison{dir = 8; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "eO" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/turf/open/floor/prison{tag = "icon-floor_plate (SOUTHWEST)"; icon_state = "floor_plate"; dir = 10},/area/prison/cellblock/highsec/south/south)
 "eP" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 6; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
-"eQ" = (/obj/machinery/door/airlock/almayer/secure{density = 0; dir = 2; icon_state = "door_open"; name = "Solitary Confinement"; opacity = 0; req_access_txt = "0"},/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
+"eQ" = (/obj/machinery/door/airlock/almayer/secure{density = 0; dir = 2; icon_state = "door_open"; name = "Solitary Confinement"; opacity = 0},/turf/open/floor/plating,/area/prison/cellblock/highsec/south/south)
 "eR" = (/obj/effect/landmark/corpsespawner/prison_security,/turf/open/floor/prison{dir = 1; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "eS" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHEAST)"; icon_state = "intact-scrubbers"; dir = 5},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/turf/open/floor/prison,/area/prison/security/checkpoint/highsec_medsec)
 "eT" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/turf/open/floor/prison,/area/prison/security/checkpoint/highsec_medsec)
@@ -260,10 +260,20 @@
 "eZ" = (/turf/open/floor/prison{dir = 5; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "fa" = (/obj/machinery/atmospherics/unary/vent_pump{on = 1},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/south)
 "fb" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/south)
-"ff" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/door/airlock/almayer/security/glass{name = "Security Booth"; req_access_txt = "0"},/turf/open/floor/prison,/area/prison/security/checkpoint/highsec_medsec)
+"fc" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; tag = ""},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"fd" = (/obj/machinery/light/small{dir = 1},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"fe" = (/obj/machinery/door/airlock/almayer/maint{dir = 2; req_one_access = list()},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"ff" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/door/airlock/almayer/security/glass{name = "Security Booth"},/turf/open/floor/prison,/area/prison/security/checkpoint/highsec_medsec)
 "fg" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/turf/open/floor/prison{dir = 10; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "fh" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/prison{icon_state = "red"},/area/prison/cellblock/highsec/south/south)
+"fi" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{dir = 4},/turf/open/floor/prison{icon_state = "yellowcorner"},/area/prison/cellblock/mediumsec/west)
+"fj" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHEAST)"; icon_state = "intact-scrubbers"; dir = 5},/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 5; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = "90Curve"},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"fk" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"fl" = (/obj/machinery/door/airlock/almayer/maint{dir = 2; req_one_access = list()},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
+"fm" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/turf/open/floor/prison{dir = 8; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
 "fn" = (/turf/closed/wall/r_wall/prison,/area/prison/cellblock/highsec/south/south)
+"fo" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 9},/obj/machinery/atmospherics/pipe/manifold/hidden/supply{dir = 4},/turf/open/floor/prison{dir = 4; icon_state = "yellow"},/area/prison/cellblock/mediumsec/west)
+"fp" = (/obj/structure/largecrate/random,/turf/open/floor/plating,/area/prison/cellblock/mediumsec/west)
 "fq" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/item/ammo_casing,/turf/open/floor/prison{dir = 8; icon_state = "red"},/area/prison/cellblock/highsec/south/south)
 "ft" = (/obj/item/weapon/gun/rifle/mar40,/turf/open/floor/prison{dir = 1; icon_state = "redcorner"},/area/prison/cellblock/highsec/south/south)
 "fC" = (/obj/structure/bed,/turf/open/floor/prison{tag = "icon-floor_plate"; icon_state = "floor_plate"; dir = 2},/area/prison/cellblock/mediumsec/west)
@@ -309,29 +319,29 @@ aUbDbDbDaUbEbFbGbybybybybybybybybHbJbKbLbBbMbNbBbMbNbBbMbNbBbObPbBbNexbBbNexbBbN
 aTbQbRbSbDbTbUbVbWbWbWbWbWbWbVdgbPcVcDbLbBcbccbBcbccbBcbccbBbObPbBeybLbBeyezbBeybLfn
 cdcecfcgchbOcibBbBbBczbBbBbBbBbObPbBdZbNbBcpcobXcpcobBcpcobBbObPbBcocpbBcocpbBcocpfn
 aTaUaUaUaUbOcibJbKbLczbMcAcBbJbTcsbBbBbBbBbJcybBbJcybBbJcybBbObPbBcybJbBcybJbBcybJfn
-czbMcAcBbJbTcCcVcDbLczbNbLcUcVbOcvcPcPcPcPcOcPcacOcPcPcOcPcQcRcScTcTeAcTcTeAeFcTeHeI
-czbNbLcUcVbOcibBdZbNczbBbBbBbBbOeGbVbVbVbVclbVbVclbVbVclbVcjdgdhdibVeJeKbVclbVbVePfn
-czbBbBbBbBbOcIbBbBbBczbMcAcBbJbTbIbBbBbBbBbJcybBbJcybBbJcybBbObPbBcybJbBcybJbBcybJfn
-czbMcAcBbJbTdkbJbKbLczbNbLcUcVbObYbJbKbLbBcEcxbBcEcxbBcEcxbBbObPbBcxcEbBcxcEbBcxcEfn
-czbNbLcUcVbOcicVcDbLczbBbBbBbBbObZcVcDbLbBbLcNbBbLcNbBbLcNbBbObPbBeybLbBeybLbBeybLfn
-czbBbBbBbBbOcibBdZbNczbMcAcBbJbTbIbBdZbNbBbMbNbBbMbNbBbMbNbBdUdVbBbNexbBbNexbBbNexfn
+czbMcAcBbJbTcCcVcDbLczbNbLcUcVbObIcPcPcPcPcOcPcacOcPcPcOcPcQcRcScTcTeAcTcTeAeFcTeHeI
+czbNbLcUcVbOcibBdZbNczbBbBbBbBbObYbVbVbVbVclbVbVclbVbVclbVcjdgdhdibVeJeKbVclbVbVePfn
+czbBbBbBbBbOcIbBbBbBczbMcAcBbJbTcsbBbBbBbBbJcybBbJcybBbJcybBbObPbBcybJbBcybJbBcybJfn
+czbMcAcBbJbTdkbJbKbLczbNbLcUcVbObZbJbKbLbBcEcxbBcEcxbBcEcxbBbObPbBcxcEbBcxcEbBcxcEfn
+czbNbLcUcVbOcicVcDbLczbBbBbBbBbOcicVcDbLbBbLcNbBbLcNbBbLcNbBbObPbBeybLbBeybLbBeybLfn
+czbBbBbBbBbOcibBdZbNczbMcAcBbJbTcsbBdZbNbBbMbNbBbMbNbBbMbNbBdUdVbBbNexbBbNexbBbNexfn
 czbMcAcBbJbTdpbBbBbBczbNbLcUcVbOckbBbBbBbBczczczcmcucucucucubOefbBbBbBbBbBbBbBbBbBfn
-czbNbLcUcVbOdubJbKbLczbBbBbBbBbObZcVcDcnbNczcqcqcmdNdOemeneofqeqerbBbXbBbXbBbXbBbXfn
+czbNbLcUcVbOdubJbKbLczbBbBbBbBbOcicVcDcnbNczcqcqcmdNdOemeneofqeqerbBbXbBbXbBbXbBbXfn
 czbBbBbBbBeNdIcVcDbLczbMcAcBbJbTcrbJctbLcwczcqcqcmdPdoeBeCeobOeDeEbBbXbBbXbBbXbBbXfn
-czbMcAcBbJbTdXbBdZbNczbNbLcUcVbObZbBbBbBbBczcqcqcmdPdreLeMeoeNeOeEbBeQbBeQbBeQbBeQfn
-czbNbLcUcVbOdYbBbBbBczbBbBbBbBbObZcVcDcnbNczcqcqcmdPeSeTeUeoeVeWfteReXeYeXeXeXeXeZfn
+czbMcAcBbJbTdXbBdZbNczbNbLcUcVbOcibBbBbBbBczcqcqcmdPdreLeMeoeNeOeEbBeQbBeQbBeQbBeQfn
+czbNbLcUcVbOdYbBbBbBczbBbBbBbBbOcicVcDcnbNczcqcqcmdPeSeTeUeoeVeWfteReXeYeXeXeXeXeZfn
 czbBbBbBbBeVegbJbKbLczbMcAcBbJbTcrbJctbLcwczcqcqcmdQdJdSdTfffgfhbVbVbVbVbVbVbVbVesfn
 czbMcAcBbJbTehcVcDbLczbNbLcUcVbOckbBbBbBbBczcqcqcmeeeeeeeeeefnfnfnfnfnfnfnfnfnfnfnfn
-czbNbLcUcVfFesbBdZbNczbBbBbBbBbObZcVcDcnbNczcqcqiJfCfDfEfCfDfEfCfDfEgdfEfCfDfEfCfDfE
-czczczczczczczczczczczbMcAcBbJbTcFbJctbLcwczcqcqiJfOfPfEfOfPfEfOfPfEgdfEfOfPfEfOfPfE
-aaaaaaaaaaaaaaaaaaaaczbNbLcUcVfFesczczczczczcqcqiJgegffEgegffEgegffEgdfEgegffEgegffE
-aaaaaaaaaaaaaaaaaaaaczczczczczczczczcqcqcqcqcqcqiJgugvfEgugvfEgugvfEcJfEgugvfEgugvfE
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJiJiJiJiJdydzgDgDgEgFgDgGgDgDgDcKgGgDgDgGgD
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJfChCcGiLdAdBgRgRgSgRgRgRgRgRcLcMgRgRcWgRgR
-gTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJhNfPcHgvdCdDfEfEfEfEgZfEgZfEcXcYfEfEfEfEfE
-hagTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJiJiJiJiJdEhfgZgdgdfEgdfEgdfEdEcZiLhQhCfCfE
-aahagTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJfChCcGiLdEhffEfEfEfEgdfEgdfEdEdagvdbfPdcfE
-aaaahagTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJhNfPcHgvdCdDgZgdgdfEfEfEfEfEdAddfEfEfEfEfE
+czbNbLcUcVfFesbBdZbNczbBbBbBbBbOcicVcDcnbNczcqcqiJfCfDfEfCfDfEfCfDfEgdfEfCfDfEfCfDfE
+czczczczczczczczczczczbMcAcBbJbTcvbJctbLcwczcqcqiJfOfPfEfOfPfEfOfPfEgdfEfOfPfEfOfPfE
+aaaaaaaaaaaaaaaaaaaaczbNbLcUcVfFcFczczczczczcqcqiJgegffEgegffEgegffEgdfEgegffEgegffE
+aaaaaaaaaaaaaaaaaaaaczczczczczdBeGczcqcqcqcqcqcqiJgugvfEgugvfEgugvfEcJfEgugvfEgugvfE
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaiJgdfciJiJiJiJiJiJiJiJdydzgDgDgEgFgDgGgDgDgDcKgGgDgDgGgD
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaiJgdfcfdgdgdgdgdfdgdfedAfigRgRgSgRgRgRgRgRcLcMgRgRcWgRgR
+gTaaaaaaaaaaaaaaaaaaaaaaaaaaiJgdfjfkfkfkfkfkfkfkflfmfofEfEfEfEgZfEgZfEcXcYfEfEfEfEfE
+hagTaaaaaaaaaaaaaaaaaaaaaaaaiJiJiJfpgdfpiJiJiJiJiJdEhfgZgdgdfEgdfEgdfEdEcZiLhQhCfCfE
+aahagTaaaaaaaaaaaaaaaaaaaaaaaaaaiJfpgdfpiJfChCcGiLdEhffEfEfEfEgdfEgdfEdEdagvdbfPdcfE
+aaaahagTaaaaaaaaaaaaaaaaaaaaaaaaiJiJiJiJiJhNfPcHgvdCdDgZgdgdfEfEfEfEfEdAddfEfEfEfEfE
 aaaaaahagTaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJiJiJiJiJdEhffEfEfEfEfChCcGiLdEhqiLhQdefCfE
 aaaaaaaahagTaaaaaaaaaaaaaaaaaaaaaaaaaaaaiJfChCcGiLdEhfgvhMfPfEhNfPcHgvdCdfgvdbfPdcfE
 aaaaaaaaaahagTaaaaaaaaaaaaaaaaaaaaaaaaaaiJhNfPcHgvdCdDhPhQhRfEfEfEfEfEdEdjfEfEfEfEfE

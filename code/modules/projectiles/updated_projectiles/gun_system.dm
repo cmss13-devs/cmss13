@@ -619,6 +619,7 @@ and you're good to go.
 		//End of bipods.
 
 		target = original_target ? original_target : targloc
+		projectile_to_fire.original = target
 		target = simulate_scatter(projectile_to_fire, target, targloc, scatter_mod, user, burst_scatter_mod, bullets_fired)
 
 		if(params)

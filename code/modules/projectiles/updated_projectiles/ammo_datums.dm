@@ -106,16 +106,23 @@
 
 	proc/fire_bonus_projectiles(obj/item/projectile/original_P)
 		set waitfor = 0
+
+		var/turf/curloc = get_turf(original_P.shot_from)
+		var/initial_angle = Get_Angle(curloc, original_P.target_turf)
+
 		var/i
 		for(i = 0 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
-			var/scatter_x = rand(-1,1)
-			var/scatter_y = rand(-1,1)
-			var/turf/new_target = locate(original_P.target_turf.x + round(scatter_x),original_P.target_turf.y + round(scatter_y),original_P.target_turf.z)
-			if(!istype(new_target) || isnull(new_target)) continue	//If we didn't find anything, make another pass.
+
+			var/final_angle = initial_angle
+
 			var/obj/item/projectile/P = rnew(/obj/item/projectile, original_P.shot_from)
 			P.generate_bullet(ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
-			P.original = new_target
 			P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
+
+			var/total_scatter_angle = P.scatter
+			final_angle += rand(-total_scatter_angle, total_scatter_angle)
+			var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
+
 			P.fire_at(new_target,original_P.firer,original_P.shot_from,P.ammo.max_range,P.ammo.shell_speed) //Fire!
 
 	//This is sort of a workaround for now. There are better ways of doing this ~N.
@@ -492,6 +499,7 @@
 		damage_var_low = -config.low_proj_variance
 		damage_var_high = config.low_proj_variance
 		penetration	= config.mlow_armor_penetration
+		scatter = config.super_scatter_value
 
 
 
@@ -542,6 +550,7 @@
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.extra_damage_falloff
 		shell_speed = config.reg_shell_speed
+		scatter = config.ultra_scatter_value
 
 /datum/ammo/bullet/shotgun/spread/masterkey
 	New()

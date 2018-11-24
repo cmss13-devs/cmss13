@@ -186,6 +186,7 @@
 	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = config.low_scatter_value
+	burst_scatter_mult = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
 
@@ -239,6 +240,7 @@
 	burst_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 
 /obj/item/weapon/gun/smartgun/examine(mob/user)
@@ -309,6 +311,7 @@
 	burst_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult + config.min_hit_accuracy_mult
 	scatter = config.med_scatter_value
+	burst_scatter_mult = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 
 
@@ -321,7 +324,7 @@
 	for(var/G in disallowed_grenade_types)
 		if(istype(I, G))
 			return 0
-	return 1	
+	return 1
 
 /obj/item/weapon/gun/launcher/m92
 	name = "\improper M92 grenade launcher"

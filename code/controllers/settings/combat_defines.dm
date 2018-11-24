@@ -58,7 +58,7 @@
 	var/high_burst_value = 4
 	var/max_burst_value = 5
 
-	var/min_fire_delay = 0
+	var/min_fire_delay = 1
 	var/mlow_fire_delay = 1
 	var/low_fire_delay = 2
 	var/med_fire_delay = 3
@@ -66,11 +66,17 @@
 	var/mhigh_fire_delay = 5
 	var/max_fire_delay = 6
 
-	var/min_scatter_value = 5
-	var/low_scatter_value = 10
-	var/med_scatter_value = 15
-	var/high_scatter_value = 20
-	var/max_scatter_value = 25
+	var/min_scatter_value = 1
+	var/mlow_scatter_value = 2
+	var/low_scatter_value = 3
+	var/lmed_scatter_value = 4
+	var/med_scatter_value = 5
+	var/hmed_scatter_value = 6
+	var/high_scatter_value = 7
+	var/mhigh_scatter_value = 8
+	var/max_scatter_value = 10
+	var/super_scatter_value = 15
+	var/ultra_scatter_value = 20
 
 	var/min_recoil_value = 1
 	var/low_recoil_value = 2
@@ -179,10 +185,16 @@
 		if("mhigh_fire_delay") mhigh_fire_delay = value
 		if("max_fire_delay")	max_fire_delay = value
 		if("min_scatter_value") min_scatter_value = value
+		if("mlow_scatter_value") mlow_scatter_value = value
 		if("low_scatter_value") low_scatter_value = value
+		if("lmed_scatter_value") lmed_scatter_value = value
 		if("med_scatter_value") med_scatter_value = value
+		if("hmed_scatter_value") hmed_scatter_value = value
 		if("high_scatter_value") high_scatter_value = value
+		if("mhigh_scatter_value") mhigh_scatter_value = value
 		if("max_scatter_value") max_scatter_value = value
+		if("super_scatter_value") super_scatter_value = value
+		if("ultra_scatter_value") ultra_scatter_value = value
 		if("min_recoil_value") min_recoil_value = value
 		if("low_recoil_value") low_recoil_value = value
 		if("med_recoil_value") med_recoil_value = value

@@ -265,6 +265,7 @@
 	var/fire_delay = 4 //Gotta have rounds down quick.
 	var/last_fired = 0
 	var/burst_fire = 0 //0 is non-burst mode, 1 is burst.
+	var/burst_scatter_mult = 4
 	var/safety = 0 //Weapon safety, 0 is weapons hot, 1 is safe.
 	var/health = 200
 	var/health_max = 200 //Why not just give it sentry-tier health for now.
@@ -279,6 +280,7 @@
 
 	New()
 		ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
+		burst_scatter_mult = config.lmed_scatter_value
 		update_icon()
 
 	Dispose() //Make sure we pick up our trash.
@@ -418,7 +420,7 @@
 		if(rounds > 3)
 			for(var/i = 1 to 3)
 				is_bursting = 1
-				fire_shot()
+				fire_shot(i)
 				sleep(2)
 			spawn(0)
 				last_fired = 1
@@ -432,7 +434,7 @@
 
 	target = null
 
-/obj/machinery/m56d_hmg/proc/fire_shot() //Bang Bang
+/obj/machinery/m56d_hmg/proc/fire_shot(shots_fired = 1) //Bang Bang
 	if(!ammo) return //No ammo.
 	if(last_fired) return //still shooting.
 
@@ -447,23 +449,29 @@
 	if (!istype(T) || !istype(U))
 		return
 
-	var/scatter_chance = 5
-	if(burst_fire) scatter_chance = 10 //Make this sucker more accurate than the actual Sentry, gives it a better role.
-
-	if(prob(scatter_chance) && get_dist(T,U) > 2) //scatter at point blank could make us fire sideways.
-		U = locate(U.x + rand(-1,1),U.y + rand(-1,1),U.z)
-
-
 	if(load_into_chamber() == 1)
 		if(istype(in_chamber,/obj/item/projectile))
 			in_chamber.original = target
+
+			var/initial_angle = Get_Angle(T, U)
+			var/final_angle = initial_angle
+
+
+			var/total_scatter_angle = in_chamber.ammo.scatter
+
+			if (shots_fired > 1)
+				total_scatter_angle += burst_scatter_mult * (shots_fired -1)
+
+			if(total_scatter_angle > 0)
+				final_angle += rand(-total_scatter_angle, total_scatter_angle)
+				target = get_angle_target_turf(T, final_angle, 30)
+
 			in_chamber.dir = src.dir
 			in_chamber.def_zone = pick("chest","chest","chest","head")
 			playsound(src.loc, 'sound/weapons/gun_rifle.ogg', 75, 1)
-			in_chamber.fire_at(U,src,null,ammo.max_range,ammo.shell_speed)
+			in_chamber.fire_at(target,src,null,ammo.max_range,ammo.shell_speed)
 			if(target)
-				var/angle = round(Get_Angle(src,target))
-				muzzle_flash(angle)
+				muzzle_flash(final_angle)
 			in_chamber = null
 			rounds--
 			if(!rounds)

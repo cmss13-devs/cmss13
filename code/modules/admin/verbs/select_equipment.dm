@@ -505,7 +505,7 @@
 			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(M), WEAR_FEET)
-			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(M), WEAR_EAR)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(M), WEAR_EAR)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(M), WEAR_HANDS)
 
 			var/obj/item/card/id/W = new(M)
@@ -715,7 +715,7 @@
 			M.equip_if_possible(new /obj/item/clothing/shoes/centcom(M), WEAR_FEET)
 			M.equip_if_possible(new /obj/item/clothing/gloves/white(M), WEAR_HANDS)
 			M.equip_if_possible(new /obj/item/clothing/head/beret/centcom/officer(M), WEAR_HEAD)
-			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(M), WEAR_EAR)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(M), WEAR_EAR)
 
 
 			var/obj/item/device/pda/heads/pda = new(M)
@@ -743,7 +743,7 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/admiral(M), WEAR_BODY)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(M), WEAR_EAR)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(M), WEAR_EAR)
 			M.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(M), WEAR_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/admiral(M), WEAR_HEAD)
@@ -1482,7 +1482,7 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/head/hgpiratecap(M), WEAR_HEAD)
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(M), WEAR_HANDS)
-			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(M), WEAR_EAR)
+			M.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(M), WEAR_EAR)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/eyepatch(M), WEAR_EYES)
 			M.equip_to_slot_or_del(new /obj/item/clothing/suit/hgpirate(M), WEAR_JACKET)
 			M.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(M), WEAR_BACK)

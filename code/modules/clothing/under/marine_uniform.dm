@@ -143,8 +143,8 @@
 	..()
 
 /obj/item/clothing/under/marine/officer/command
-	name = "commander uniform"
-	desc = "The well-ironed uniform of a USCM commander. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	name = "commanding officer uniform"
+	desc = "The well-ironed uniform of a USCM commanding officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "CO_jumpsuit"
 
 /obj/item/clothing/under/marine/officer/command/New()

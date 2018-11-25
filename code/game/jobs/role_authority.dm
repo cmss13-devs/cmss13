@@ -116,8 +116,11 @@ var/global/datum/authority/branch/role/RoleAuthority
 				if("yautjablooded","bloodedpredator","blooded") 	role |= WHITELIST_YAUTJA_BLOODED
 				if("yautjaelite","elitepredator","elite")			role |= WHITELIST_YAUTJA_ELITE
 				if("yautjaelder","elderpredator","elder")			role |= WHITELIST_YAUTJA_ELDER
+				if("yautjacouncil","predcouncil")					role |= WHITELIST_YAUTJA_COUNCIL
 				if("commander","co") 								role |= WHITELIST_COMMANDER
+				if("commodore","cdre","cocouncil")					role |= WHITELIST_COMMANDER_COUNCIL
 				if("synthetic","synth") 							role |= WHITELIST_SYNTHETIC
+				if("syntheticcouncil","synthcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
 				if("arcturian","snowflake") 						role |= WHITELIST_ARCTURIAN
 				if("all","everything") 								role |= WHITELIST_ALL
 

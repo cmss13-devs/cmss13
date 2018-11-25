@@ -76,7 +76,7 @@
 	permeability_coefficient = 0.01
 
 /obj/item/clothing/gloves/marine/techofficer/commander
-	name = "commander's gloves"
+	name = "commanding officer's gloves"
 	desc = "You may like these gloves, but THEY think you are unworthy of them."
 	icon_state = "captain"
 	item_state = "egloves"

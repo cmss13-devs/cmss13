@@ -164,9 +164,13 @@
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/beret/marine/commander
-	name = "marine commander beret"
-	desc = "A beret with the commander insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	name = "marine captain beret"
+	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
 	icon_state = "centcomcaptain"
+
+/obj/item/clothing/head/beret/marine/commander/cdre
+	name = "marine commodore beret"
+	desc = "A beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
 
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"

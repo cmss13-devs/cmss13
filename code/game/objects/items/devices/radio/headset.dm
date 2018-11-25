@@ -305,7 +305,7 @@
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
-	desc = "This is used by the chief MP. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions"
+	desc = "This is used by the chief MP. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions"
 	icon_state = "med_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/cmpcom
 
@@ -315,11 +315,13 @@
 	icon_state = "med_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
+/obj/item/device/radio/headset/almayer/mcom/cdrcom
+	name = "marine commanding officer headset"
+	desc = "This is used by the commanding officer. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions"
+	keyslot1 = new /obj/item/device/encryptionkey/cmpcom/cdrcom
 
 /obj/item/device/radio/headset/almayer/mcom/ai
 	keyslot1 = new /obj/item/device/encryptionkey/mcom/ai
-
-
 
 /obj/item/device/radio/headset/almayer/marine
 

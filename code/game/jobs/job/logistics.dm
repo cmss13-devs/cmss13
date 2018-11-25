@@ -86,7 +86,7 @@ A happy ship is a well-functioning ship."}
 /datum/job/logistics/tech/maint
 	title = "Maintenance Tech"
 	comm_title = "MT"
-	paygrade = "E6E"
+	paygrade = "E5"
 	flag = ROLE_MAINTENANCE_TECH
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	faction = "Station"

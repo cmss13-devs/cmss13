@@ -36,7 +36,7 @@
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/marinechief/commander
-	name = "commander shoes"
+	name = "commanding officer shoes"
 	desc = "Has special soles for better trampling those underneath."
 
 

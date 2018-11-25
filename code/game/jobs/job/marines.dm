@@ -56,7 +56,7 @@ You are also in charge of communicating with command and letting them know about
 /datum/job/marine/engineer
 	title = "Squad Engineer"
 	comm_title = "Eng"
-	paygrade = "E4"
+	paygrade = "E3"
 	total_positions = 12
 	spawn_positions = 12
 	allow_additional = 1
@@ -94,7 +94,7 @@ Your squaddies will look to you when it comes to construction in the field of ba
 /datum/job/marine/medic
 	title = "Squad Medic"
 	comm_title = "Med"
-	paygrade = "E4"
+	paygrade = "E3"
 	total_positions = 16
 	spawn_positions = 16
 	allow_additional = 1
@@ -166,8 +166,8 @@ You can serve a variety of roles, so choose carefully."}
 
 /datum/job/marine/smartgunner
 	title = "Squad Smartgunner"
-	comm_title = "LCpl"
-	paygrade = "E3"
+	comm_title = "SGN"
+	paygrade = "E4"
 	flag = ROLE_MARINE_SMARTGUN
 	total_positions = 4
 	spawn_positions = 4

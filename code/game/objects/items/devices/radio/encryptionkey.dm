@@ -84,6 +84,9 @@
 	icon_state = "cap_cypherkey"
 	channels = list("Command" = 1, "MP" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1 )
 
+/obj/item/device/encryptionkey/cmpcom/cdrcom
+	name = "\improper Marine Commanding Officer radio encryption key"
+
 /obj/item/device/encryptionkey/mcom
 	name = "\improper Marine Command radio encryption key"
 	icon_state = "cap_cypherkey"

@@ -262,7 +262,7 @@
 
 //MARINE COMMAND CLOSET
 /obj/structure/closet/secure_closet/commander
-	name = "commander's locker"
+	name = "commanding officer's locker"
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	icon_state = "secure_locked_commander"
 	icon_closed = "secure_unlocked_commander"
@@ -279,10 +279,10 @@
 		new /obj/item/clothing/under/marine/officer/command(src)
 		new /obj/item/clothing/head/beret/marine/commander(src)
 		new /obj/item/clothing/glasses/sunglasses(src)
-		new /obj/item/device/radio/headset/almayer/mcom(src)
+		new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)
 
 /obj/structure/closet/secure_closet/securecom
-	name = "commander's secure box"
+	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	desc = "You could probably get court-marshaled just by looking at this..."
 	icon = 'icons/Marine/Marine_Lockers.dmi'

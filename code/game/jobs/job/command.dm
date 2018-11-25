@@ -12,8 +12,9 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 //Commander
 /datum/job/command/commander
 	title = "Commander"
+	disp_title = "Commanding Officer"
 	comm_title = "CO"
-	paygrade = "O4"
+	paygrade = "O5"
 	flag = ROLE_COMMANDING_OFFICER
 	supervisors = "USCM high command"
 	selection_color = "#ccccff"
@@ -22,6 +23,11 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
 	skills_type = /datum/skills/commander
+
+	equip_identification(mob/living/carbon/human/H)
+		if(RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL)
+			paygrade = "O5E"
+		. = ..()
 
 	generate_wearable_equipment(mob/living/carbon/human/H)
 		if(!H.client || !H.client.prefs || !H.client.prefs) return
@@ -55,7 +61,7 @@ Godspeed, commander!"}
 
 	announce_entry_message(mob/living/carbon/human/H)
 		sleep(15)
-		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST) captain_announcement.Announce("All hands, Commander [H.real_name] on deck!")
+		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST) captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
 		..()
 
 	get_access() return get_all_marine_access()
@@ -73,7 +79,7 @@ Come hell or high water, you are going to be there for them."}
 /datum/job/command/executive
 	title = "Executive Officer"
 	comm_title = "XO"
-	paygrade = "O3"
+	paygrade = "O4"
 	flag = ROLE_EXECUTIVE_OFFICER
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY
 	skills_type = /datum/skills/XO
@@ -209,7 +215,7 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 /datum/job/command/tank_crew
 	title = "Tank Crewman"
 	comm_title = "TC"
-	paygrade = "O1"
+	paygrade = "E7"
 	flag = ROLE_TANK_OFFICER
 	total_positions = 0
 	spawn_positions = 0
@@ -305,7 +311,7 @@ In addition, you are tasked with the security of high-ranking personnel, includi
 /datum/job/command/warrant
 	title = "Chief MP"
 	comm_title = "CMP"
-	paygrade = "WO"
+	paygrade = "O3"
 	flag = ROLE_CHIEF_MP
 	selection_color = "#ffaaaa"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY)

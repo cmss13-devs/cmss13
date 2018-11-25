@@ -118,7 +118,7 @@
 	name = "CMO"
 	cqc = SKILL_CQC_WEAK
 	firearms = SKILL_FIREARMS_UNTRAINED
-	leadership = SKILL_LEAD_TRAINED
+	leadership = SKILL_LEAD_EXPERT
 	medical = SKILL_MEDICAL_CMO
 	surgery = SKILL_SURGERY_EXPERT
 	melee_weapons = SKILL_MELEE_WEAK
@@ -188,7 +188,7 @@
 	construction = SKILL_CONSTRUCTION_PLASTEEL
 	leadership = SKILL_LEAD_EXPERT
 	medical = SKILL_MEDICAL_MEDIC
-
+	police = SKILL_POLICE_FLASH
 
 /datum/skills/pilot
 	name = "Pilot Officer"
@@ -206,7 +206,7 @@
 	name = "Chief MP"
 	cqc = SKILL_CQC_MP
 	police = SKILL_POLICE_MP
-	leadership = SKILL_LEAD_TRAINED
+	leadership = SKILL_LEAD_EXPERT
 
 
 /datum/skills/CE
@@ -221,7 +221,7 @@
 /datum/skills/RO
 	name = "Requisition Officer"
 	construction = SKILL_CONSTRUCTION_PLASTEEL
-	leadership = SKILL_LEAD_TRAINED
+	leadership = SKILL_LEAD_EXPERT
 	powerloader = SKILL_POWERLOADER_TRAINED
 
 /datum/skills/MT

@@ -31,7 +31,6 @@
 "aE" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
 "aF" = (/obj/structure/table,/obj/item/tool/surgery/scalpel{pixel_y = 12},/obj/machinery/light,/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
 "aG" = (/obj/structure/rack{layer = 2.5},/obj/item/clothing/glasses/regular,/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
-"aH" = (/turf/open/floor{icon_state = "white"},/area/space)
 "aI" = (/obj/machinery/door/poddoor/almayer{dir = 4; id = "science_blast"; layer = 3.3; name = "\improper Science Wing Blast Door"},/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
 "aJ" = (/obj/machinery/light,/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
 "aK" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/chem_dispenser,/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
@@ -67,7 +66,7 @@ aaaoasatayaBayakayawayaDaEaoax
 aaaoaFayaGauayakayauaJayaKaoax
 ababauaLauauauazauababaLaNabab
 aoajajayayauaQakaAabayayaSaTab
-aUakaVakakaCakakakaCakakbbaHaI
+aUakaVakakaCakakakaCakakbbakaI
 aoayaJayayauakakaMabayayaEaJaI
 ababauaLauauauazauababaLbkblbl
 aaaobmbnaOaubpakbqauaPayajaobt

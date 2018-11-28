@@ -457,14 +457,28 @@ datum/game_mode/proc/initialize_special_clamps()
 
 /datum/game_mode/proc/initialize_post_survivor_list()
 	for(var/datum/mind/survivor in survivors)
-		transform_survivor(survivor)
+		if(transform_survivor(survivor) == 1)
+			survivors -= survivor
 	tell_survivor_story()
 
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
 /datum/game_mode/proc/transform_survivor(var/datum/mind/ghost)
+	var/picked_spawn = pick(surv_spawn)
+	var/obj/effect/landmark/survivor_spawner/surv_datum
+	surv_datum = picked_spawn;
+	if(istype(surv_datum))
+		return survivor_event_transform(ghost.current, surv_datum)
+		//deleting datum is on us
+		surv_spawn -= picked_spawn
+		cdel(picked_spawn)
+	else
+		return survivor_non_event_transform(ghost.current, picked_spawn)
 
+/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H)
 	var/list/survivor_types
+	var/id_assignment = ""
+	var/datum/mind/ghost = H.mind
 	switch(map_tag)
 		if(MAP_PRISON_STATION)
 			survivor_types = list("Scientist","Doctor","Corporate","Security","Prisoner","Prisoner","Prisoner")
@@ -474,17 +488,8 @@ datum/game_mode/proc/initialize_special_clamps()
 			survivor_types = list("Scientist","Doctor","Salesman","Security")
 		else
 			survivor_types = list("Assistant","Civilian","Scientist","Doctor","Chef","Botanist","Atmos Tech","Chaplain","Miner","Salesman","Colonial Marshall")
-
-	var/mob/living/carbon/human/H = ghost.current
-
-	H.loc = pick(surv_spawn)
-
-	var/id_assignment = ""
-
-	//Damage them for realism purposes
-	H.take_limb_damage(rand(0,15), rand(0,15))
-
-//Give them proper jobs and stuff here later
+	
+	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
 	switch(randjob)
 		if("Scientist") //Scientist
@@ -609,9 +614,6 @@ datum/game_mode/proc/initialize_special_clamps()
 		W.registered_name = H.real_name
 		H.equip_to_slot_or_del(W, WEAR_ID)
 
-	H.name = H.get_visible_name()
-	new /datum/cm_objective/move_mob/almayer/survivor(H)
-
 	if(map_tag != MAP_PRISON_STATION)
 		var/random_weap = rand(0,4)
 		switch(random_weap)
@@ -654,6 +656,54 @@ datum/game_mode/proc/initialize_special_clamps()
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
+/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner)
+	H.loc = spawner.loc
+	if(spawner.roundstart_damage_max>0)
+		while(spawner.roundstart_damage_times>0)
+			H.take_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
+			spawner.roundstart_damage_times--
+	if(!spawner.equipment)
+		survivor_old_equipment(H)
+	else
+		if(H.arm_equipment(H,spawner.equipment) == -1)
+			H << "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor."
+			return
+	H.name = H.get_visible_name()
+	if(spawner.intro_text && spawner.intro_text.len)
+		spawn(4)
+			for(var/line in spawner.intro_text)
+				H << line
+	else
+		spawn(4)
+			H << "<h2>You are a survivor!</h2>"
+			switch(map_tag)
+				if(MAP_PRISON_STATION)
+					H << "\blue You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now."
+				if(MAP_ICE_COLONY)
+					H << "\blue You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now."
+				else
+					H << "\blue You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now."
+			H << "\blue You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."
+			H << "\blue You are NOT aware of the marines or their intentions, and lingering around arrival zones will get you survivor-banned."
+	if(spawner.story_text)
+		. = 1
+		spawn(6)
+			var/temp_story = "<b>Your story thus far</b>: " + spawner.story_text
+			H <<  temp_story
+			H.mind.memory += temp_story
+			//remove ourselves, so we don't get stuff generated for us
+			survivors -= H.mind
+
+	if(spawner.make_objective)
+		new /datum/cm_objective/move_mob/almayer/survivor(H)
+
+/datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc)	
+	H.loc = loc
+	//Damage them for realism purposes
+	H.take_limb_damage(rand(0,15), rand(0,15))
+	survivor_old_equipment(H)
+	H.name = H.get_visible_name()
+	new /datum/cm_objective/move_mob/almayer/survivor(H)	
 
 	//Give them some information
 	spawn(4)

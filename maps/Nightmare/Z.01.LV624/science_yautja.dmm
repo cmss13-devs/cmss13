@@ -41,7 +41,6 @@
 "aO" = (/obj/structure/bed/chair/office/dark{dir = 1},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/research)
 "aP" = (/obj/machinery/door/airlock/almayer/research{dir = 4; locked = 1; name = "\improper Research Dome"},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/research)
 "aQ" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/item/clothing/glasses/regular,/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/research)
-"aR" = (/turf/open/floor{icon_state = "white"},/area/space)
 "aS" = (/obj/machinery/door/poddoor/almayer{dir = 4; id = "science_blast"; layer = 3.3; name = "\improper Science Wing Blast Door"},/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/research)
 "aT" = (/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/open/floor{icon_state = "white"},/area/lv624/lazarus/research)
 "aU" = (/obj/structure/cable/yellow{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/closed/wall/r_wall,/area/lv624/lazarus/research)
@@ -70,7 +69,7 @@ aaaoawaxalayalakalazalaAaBaoav
 aaaoaqalaDaralakalaraEalaFaoav
 ababaraGarararaHarababaGaIabab
 aoajajalalaraJakaKabalalaLaMab
-aNakaOakakaPakakakaPakakaQaRaS
+aNakaOakakaPakakakaPakakaQakaS
 aoalaEalalarakakaTabalalaBaEaS
 ababaraGarararaHarababaGaUaVaV
 aaaoaWaXaYaraZakbaaraCalbbaobc

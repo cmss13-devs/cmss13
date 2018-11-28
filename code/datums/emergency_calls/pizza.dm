@@ -9,6 +9,7 @@
 	probability = 5
 
 /datum/emergency_call/pizza/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 	var/mob/original = M.current
 
@@ -31,13 +32,13 @@
 	mob.mind.special_role = "Pizza"
 	ticker.mode.traitors += mob.mind
 	mob.mind.set_cm_skills(/datum/skills/civilian)
-	spawn(0)
-		spawn_pizza(mob)
-		var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
-		mob << "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>"
-		mob << "Your job is to deliver your pizzas. You're PRETTY sure this is the right place.."
-	spawn(10)
-		M << "<B>Objectives:</b> [objectives]"
+	spawn_pizza(mob)
+	var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
+	mob << "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>"
+	mob << "Your job is to deliver your pizzas. You're PRETTY sure this is the right place.."
+
+	sleep(10)
+	M << "<B>Objectives:</b> [objectives]"
 
 	if(original)
 		cdel(original)

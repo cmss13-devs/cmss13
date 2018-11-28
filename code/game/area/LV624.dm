@@ -325,3 +325,7 @@
 /area/lv624/lazarus/console
 	name = "\improper Shuttle Console"
 	icon_state = "tcomsatcham"
+
+/area/lv624/lazarus/crashed_ship
+	name = "\improper Crashed Ship"
+	icon_state = "syndie-ship"

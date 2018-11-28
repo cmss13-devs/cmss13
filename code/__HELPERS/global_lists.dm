@@ -111,6 +111,7 @@ var/global/list/undershirt_t = list("None","Undershirt(Sleeveless)", "Undershirt
 	//Backpacks
 var/global/list/backbaglist = list("Backpack", "Satchel")
 // var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
+var/global/round_should_check_for_win = TRUE
 
 //////////////////////////
 /////Initial Building/////

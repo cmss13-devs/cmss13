@@ -43,6 +43,7 @@
 
 
 /datum/emergency_call/upp_commando/create_member(datum/mind/M)
+	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
 	var/mob/original = M.current
 
@@ -77,25 +78,24 @@
 	mob.mind.assigned_role = "MODE"
 	mob.mind.special_role = "UPP"
 	ticker.mode.traitors += mob.mind
-	spawn(0)
-		if(!leader)       //First one spawned is always the leader.
-			leader = mob
-			mob.mind.set_cm_skills(/datum/skills/commando/leader)
-			mob.arm_equipment(mob, "UPP Commando (Leader)")
-			mob << "<font size='3'>\red You are a commando officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		else if(medics < max_medics)
-			mob.mind.set_cm_skills(/datum/skills/commando/medic)
-			mob << "<font size='3'>\red You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-			mob.arm_equipment(mob, "UPP Commando (Medic)")
-			medics++
-		else
-			mob.mind.set_cm_skills(/datum/skills/commando)
-			mob << "<font size='3'>\red You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-			mob.arm_equipment(mob, "UPP Commando (Standard)")
-		print_backstory(mob)
+	if(!leader)       //First one spawned is always the leader.
+		leader = mob
+		mob.mind.set_cm_skills(/datum/skills/commando/leader)
+		mob.arm_equipment(mob, "UPP Commando (Leader)")
+		mob << "<font size='3'>\red You are a commando officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+	else if(medics < max_medics)
+		mob.mind.set_cm_skills(/datum/skills/commando/medic)
+		mob << "<font size='3'>\red You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+		mob.arm_equipment(mob, "UPP Commando (Medic)")
+		medics++
+	else
+		mob.mind.set_cm_skills(/datum/skills/commando)
+		mob << "<font size='3'>\red You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
+		mob.arm_equipment(mob, "UPP Commando (Standard)")
+	print_backstory(mob)
 
-	spawn(10)
-		mob << "<B>Objectives:</b> [objectives]"
+	sleep(10)
+	mob << "<B>Objectives:</b> [objectives]"
 
 	if(original)
 		cdel(original)

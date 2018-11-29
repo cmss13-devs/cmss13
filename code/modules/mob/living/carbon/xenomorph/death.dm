@@ -50,8 +50,9 @@
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/Xenomorph/Queen/Q in living_mob_list)
 					if(!isnull(Q) && Q != src && Q.stat != DEAD && Q.hivenumber == hivenumber)
-						hive.living_xeno_queen = Q
-						break
+						if (Q.loc.z != ADMIN_Z_LEVEL || Q.loc.z == src.loc.z) //Ignore admin-level Queens, unless the queen that died was also on the admin level
+							hive.living_xeno_queen = Q
+							break
 				for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
 					L.handle_xeno_leader_pheromones(XQ)
 				if(ticker && ticker.mode)

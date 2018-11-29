@@ -1175,13 +1175,9 @@
 			M.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(M), WEAR_FEET)
 			M.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(M), WEAR_HANDS)
 			M.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick(M.back), WEAR_IN_BACK)
-
-			M.equip_to_slot_or_del(new /obj/item/device/defibrillator(M.back), WEAR_IN_BACK)
+			M.equip_to_slot_or_del(new /obj/item/storage/belt/medical/with_defib_and_analyzer(M), WEAR_WAIST)
 			M.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/device/flashlight(M.back), WEAR_IN_BACK)
-			M.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(M.back), WEAR_IN_BACK)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(M), WEAR_EYES)
 			M.equip_to_slot_or_del(new /obj/item/storage/pouch/general(M), WEAR_L_STORE)
 			M.equip_to_slot_or_del(new /obj/item/storage/pouch/medical(M), WEAR_R_STORE)
@@ -1231,7 +1227,7 @@
 			W.registered_name = M.real_name
 			M.equip_to_slot_or_del(W, WEAR_ID)
 			W.access = get_antagonist_access()
-			M.set_languages("Tradeband", "English")
+			M.set_languages(list("Tradeband", "English"))
 
 
 			if(M.mind)

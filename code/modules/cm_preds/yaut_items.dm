@@ -283,13 +283,12 @@
 	items_allowed = list(/obj/item/weapon/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
 	var/bootnumber = 1
 
-/obj/item/clothing/shoes/yautja/update_icon()
-	icon_state = "y-boots[bootnumber]"
-	
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,3))
 	..()
-	bootnumber = boot_number
-	update_icon()
+	var/boot_input[] = list(1,2,3)
+	if(boot_number in boot_input)
+		icon_state = "y-boots[boot_number]"
+
 	if(boot_number != 1) //More overall protection, less defensive value.
 		flags_armor_protection = FEET|LEGS|LOWER_TORSO
 		armor = list(melee = 65, bullet = 75, laser = 55, energy = 45, bomb = 40, bio = 20, rad = 20)

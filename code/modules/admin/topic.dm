@@ -1210,7 +1210,7 @@
 			usr << "This can only be done to instances of type /mob/living/carbon/Xenomorph"
 			return
 
-		usr.client.cmd_admin_change_hivenumber(X,href_list["newhivenumber"])
+		X.set_hivenumber_and_update(href_list["newhivenumber"])
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return

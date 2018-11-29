@@ -66,7 +66,6 @@
 
 /datum/action/xeno_action/show_minimap/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	if(X.hivenumber != XENO_HIVE_NORMAL) return
 	if(X.map_view)
 		X.map_view = 0
 		X << browse(null, "window=queenminimap")
@@ -76,7 +75,7 @@
 		generate_xeno_mapview()
 		next_map_gen = world.time + 6000
 	if(!xeno_mapview_overlay)
-		overlay_xeno_mapview()
+		overlay_xeno_mapview(X.hivenumber)
 	X << browse_rsc(xeno_mapview_overlay, "xeno_minimap.png")
 	X << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"xeno_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=xeno_minimap.png></body></html>","window=queenminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 
@@ -442,13 +441,10 @@
 		"<span class='xenowarning'>You begin to emit '[choice]' pheromones.</span>", null, 5)
 		playsound(X.loc, "alien_drool", 25)
 
-	if(X.hivenumber && X.hivenumber <= hive_datum.len)
-		var/datum/hive_status/hive = hive_datum[X.hivenumber]
-
-		if(isXenoQueen(X) && hive.xeno_leader_list.len && X.anchored)
-			var/mob/living/carbon/Xenomorph/Queen/Q = X
-			for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-				L.handle_xeno_leader_pheromones(Q)
+	if(isXenoQueen(X) && X.hive.xeno_leader_list.len && X.anchored)
+		var/mob/living/carbon/Xenomorph/Queen/Q = X
+		for(var/mob/living/carbon/Xenomorph/L in X.hive.xeno_leader_list)
+			L.handle_xeno_leader_pheromones(Q)
 
 /datum/action/xeno_action/activable/transfer_plasma
 	name = "Transfer Plasma"
@@ -913,11 +909,7 @@
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
 		return
-	var/datum/hive_status/hive
-	if(X.hivenumber && X.hivenumber <= hive_datum.len)
-		hive = hive_datum[X.hivenumber]
-	else
-		return
+	var/datum/hive_status/hive = X.hive
 	if(X.observed_xeno)
 		if(X.queen_ability_cooldown > world.time)
 			X << "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>"
@@ -1140,6 +1132,7 @@
 
 		//Pass on the unique nicknumber, then regenerate the new mob's name now that our player is inside
 		new_xeno.nicknumber = T.nicknumber
+		new_xeno.set_hivenumber(T.hivenumber)
 		new_xeno.generate_name()
 
 		if(T.xeno_mobhud)
@@ -1172,10 +1165,8 @@
 			new_xeno.queen_chosen_lead = TRUE
 			new_xeno.hud_set_queen_overwatch()
 
-		var/datum/hive_status/hive = hive_datum[X.hivenumber]
-
-		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == T)
-			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
+		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
+			X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 
 		new_xeno.upgrade_xeno(TRUE, min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
 

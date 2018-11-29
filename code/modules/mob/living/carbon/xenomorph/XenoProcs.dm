@@ -19,73 +19,69 @@
 	if (!..())
 		return 0
 
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
+	if(!caste.evolution_allowed)
+		stat(null, "Evolve Progress (FINISHED)")
+	else if(!hive.living_xeno_queen)
+		stat(null, "Evolve Progress (HALTED - NO QUEEN)")
+	else if(!hive.living_xeno_queen.ovipositor)
+		stat(null, "Evolve Progress (HALTED - QUEEN HAS NO OVIPOSITOR)")
+	else
+		stat(null, "Evolve Progress: [round(evolution_stored)]/[caste.evolution_threshold]")
 
-		if(!caste.evolution_allowed)
-			stat(null, "Evolve Progress (FINISHED)")
-		else if(!hive.living_xeno_queen)
-			stat(null, "Evolve Progress (HALTED - NO QUEEN)")
-		else if(!hive.living_xeno_queen.ovipositor)
-			stat(null, "Evolve Progress (HALTED - QUEEN HAS NO OVIPOSITOR)")
+	if(upgrade != -1 && upgrade != 3) //upgrade possible
+		stat(null, "Upgrade Progress: [round(upgrade_stored)]/[caste.upgrade_threshold]")
+	else //Upgrade process finished or impossible
+		stat(null, "Upgrade Progress (FINISHED)")
+
+	if(caste.plasma_max > 0)
+		if(caste.is_robotic)
+			stat(null, "Charge: [plasma_stored]/[caste.plasma_max]")
 		else
-			stat(null, "Evolve Progress: [round(evolution_stored)]/[caste.evolution_threshold]")
+			stat(null, "Plasma: [plasma_stored]/[caste.plasma_max]")
 
-		if(upgrade != -1 && upgrade != 3) //upgrade possible
-			stat(null, "Upgrade Progress: [round(upgrade_stored)]/[caste.upgrade_threshold]")
-		else //Upgrade process finished or impossible
-			stat(null, "Upgrade Progress (FINISHED)")
-
-		if(caste.plasma_max > 0)
-			if(caste.is_robotic)
-				stat(null, "Charge: [plasma_stored]/[caste.plasma_max]")
-			else
-				stat(null, "Plasma: [plasma_stored]/[caste.plasma_max]")
-
-		if(hivenumber != XENO_HIVE_CORRUPTED)
-			if(hive.slashing_allowed == 1)
-				stat(null,"Slashing of hosts is currently: PERMITTED.")
-			else if(hive.slashing_allowed == 2)
-				stat(null,"Slashing of hosts is currently: LIMITED.")
-			else
-				stat(null,"Slashing of hosts is currently: FORBIDDEN.")
+	if(hivenumber != XENO_HIVE_CORRUPTED)
+		if(hive.slashing_allowed == 1)
+			stat(null,"Slashing of hosts is currently: PERMITTED.")
+		else if(hive.slashing_allowed == 2)
+			stat(null,"Slashing of hosts is currently: LIMITED.")
 		else
-			stat(null,"Slashing of hosts is decided by your masters.")
+			stat(null,"Slashing of hosts is currently: FORBIDDEN.")
+	else
+		stat(null,"Slashing of hosts is decided by your masters.")
 
-		//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
-		var/msg_holder = ""
-		if(frenzy_aura)
-			switch(frenzy_aura)
-				if(-INFINITY to 1.0) msg_holder = "very weak "
-				if(1.1 to 2.0) msg_holder = "weak "
-				if(2.1 to 2.9) msg_holder = ""
-				if(3.0 to 3.9) msg_holder = "strong "
-				if(4.0 to INFINITY) msg_holder = "very strong "
-			stat(null,"You are affected by a [msg_holder]FRENZY pheromone.")
-		if(warding_aura)
-			switch(warding_aura)
-				if(-INFINITY to 1.0) msg_holder = "very weak "
-				if(1.1 to 2.0) msg_holder = "weak "
-				if(2.1 to 2.9) msg_holder = ""
-				if(3.0 to 3.9) msg_holder = "strong "
-				if(4.0 to INFINITY) msg_holder = "very strong "
-			stat(null,"You are affected by a [msg_holder]WARDING pheromone.")
-		if(recovery_aura)
-			switch(recovery_aura)
-				if(-INFINITY to 1.0) msg_holder = "very weak "
-				if(1.1 to 2.0) msg_holder = "weak "
-				if(2.1 to 2.9) msg_holder = ""
-				if(3.0 to 3.9) msg_holder = "strong "
-				if(4.0 to INFINITY) msg_holder = "very strong "
-			stat(null,"You are affected by a [msg_holder]RECOVERY pheromone.")
+	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
+	var/msg_holder = ""
+	if(frenzy_aura)
+		switch(frenzy_aura)
+			if(-INFINITY to 1.0) msg_holder = "very weak "
+			if(1.1 to 2.0) msg_holder = "weak "
+			if(2.1 to 2.9) msg_holder = ""
+			if(3.0 to 3.9) msg_holder = "strong "
+			if(4.0 to INFINITY) msg_holder = "very strong "
+		stat(null,"You are affected by a [msg_holder]FRENZY pheromone.")
+	if(warding_aura)
+		switch(warding_aura)
+			if(-INFINITY to 1.0) msg_holder = "very weak "
+			if(1.1 to 2.0) msg_holder = "weak "
+			if(2.1 to 2.9) msg_holder = ""
+			if(3.0 to 3.9) msg_holder = "strong "
+			if(4.0 to INFINITY) msg_holder = "very strong "
+		stat(null,"You are affected by a [msg_holder]WARDING pheromone.")
+	if(recovery_aura)
+		switch(recovery_aura)
+			if(-INFINITY to 1.0) msg_holder = "very weak "
+			if(1.1 to 2.0) msg_holder = "weak "
+			if(2.1 to 2.9) msg_holder = ""
+			if(3.0 to 3.9) msg_holder = "strong "
+			if(4.0 to INFINITY) msg_holder = "very strong "
+		stat(null,"You are affected by a [msg_holder]RECOVERY pheromone.")
 
 
-		if(hivenumber != XENO_HIVE_CORRUPTED)
-			if(hive.hive_orders && hive.hive_orders != "")
-				stat(null,"Hive Orders: [hive.hive_orders]")
-		else
-			stat(null,"Hive Orders: Follow the instructions of your masters")
+	if(hivenumber != XENO_HIVE_CORRUPTED)
+		if(hive.hive_orders && hive.hive_orders != "")
+			stat(null,"Hive Orders: [hive.hive_orders]")
+	else
+		stat(null,"Hive Orders: Follow the instructions of your masters")
 
 	return 1
 

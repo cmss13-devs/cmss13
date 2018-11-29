@@ -229,8 +229,9 @@ var/nextAdminBioscan = 18000//30 minutes in
 	var/list/xenosShipLocations = list()
 
 	var/larva = 0
-	if (ticker && ticker.mode)
-		larva = ticker.mode.stored_larva
+	//Count all larva across all hives
+	for(var/datum/hive_status/hs in hive_datum)
+		larva += hs.stored_larva
 
 	//Keeping track of peak numbers to determine when a side is "losing"
 	if (peakHumans < living_human_list.len)

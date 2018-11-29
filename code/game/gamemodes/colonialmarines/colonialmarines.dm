@@ -200,9 +200,9 @@
 			else																round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
 		else if(!num_humans && !num_xenos)										round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(queen_time)
+/datum/game_mode/colonialmarines/check_queen_status(var/queen_time, var/hivenumber)
 	set waitfor = 0
-	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/hive = hive_datum[hivenumber]
 	hive.xeno_queen_timer = queen_time
 	if(!(flags_round_type & MODE_INFESTATION)) return
 	xeno_queen_deaths += 1
@@ -210,7 +210,12 @@
 	sleep(QUEEN_DEATH_COUNTDOWN)
 	//We want to make sure that another queen didn't die in the interim.
 
-	if(xeno_queen_deaths == num_last_deaths && !round_finished && !hive.living_xeno_queen ) round_finished = MODE_INFESTATION_M_MINOR
+	if(xeno_queen_deaths == num_last_deaths && !round_finished)
+		for(var/datum/hive_status/hs in hive_datum)
+			if(hs.living_xeno_queen && hs.living_xeno_queen.loc.z != ADMIN_Z_LEVEL)
+				//Some Queen is alive, we shouldn't end the game yet
+				return
+		round_finished = MODE_INFESTATION_M_MINOR
 
 ///////////////////////////////
 //Checks if the round is over//

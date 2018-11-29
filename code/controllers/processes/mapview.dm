@@ -17,7 +17,7 @@ datum/controller/process/mapview/doWork()
 
 	for(var/mob/living/carbon/Xenomorph/Queen/Q in living_xeno_list)
 		if(Q.map_view)
-			overlay_xeno_mapview()
+			overlay_xeno_mapview(Q.hivenumber)
 			break
 
 	if(RoleAuthority)

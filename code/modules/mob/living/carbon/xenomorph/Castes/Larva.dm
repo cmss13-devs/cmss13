@@ -40,6 +40,19 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
 
+/mob/living/carbon/Xenomorph/Larva/Corrupted
+	hivenumber = XENO_HIVE_CORRUPTED
+
+/mob/living/carbon/Xenomorph/Larva/Alpha
+	hivenumber = XENO_HIVE_ALPHA
+
+/mob/living/carbon/Xenomorph/Larva/Beta
+	hivenumber = XENO_HIVE_BETA
+
+/mob/living/carbon/Xenomorph/Larva/Zeta
+	hivenumber = XENO_HIVE_ZETA
+
+
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon_state = "Predalien Larva"
 	caste_name = "Predalien Larva"
@@ -72,13 +85,6 @@
 	var/state = "" //Icon convention, two different sprite sets
 
 	var/name_prefix = ""
-
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else
-		hivenumber = XENO_HIVE_NORMAL
-		hive = hive_datum[hivenumber]
 
 	name_prefix = hive.prefix
 	color = hive.color

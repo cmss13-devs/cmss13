@@ -19,11 +19,6 @@
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		update_icons()
 
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else return
-
 	if(z != ADMIN_Z_LEVEL) //so xeno players don't get death messages from admin tests
 		if(isXenoQueen(src))
 			var/mob/living/carbon/Xenomorph/Queen/XQ = src
@@ -33,14 +28,13 @@
 			if(XQ.ovipositor)
 				XQ.dismount_ovipositor(TRUE)
 
-			if(hivenumber == XENO_HIVE_NORMAL)
-				if(ticker.mode.stored_larva)
-					ticker.mode.stored_larva = round(ticker.mode.stored_larva * ((upgrade+1)/6.0)) // 83/66/50/33 for ancient/elite emp/elite queen/queen
-					var/turf/larva_spawn
-					while(ticker.mode.stored_larva > 0) // stil some left
-						larva_spawn = pick(xeno_spawn)
-						new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
-						ticker.mode.stored_larva--
+			if(hive_datum[hivenumber].stored_larva)
+				hive_datum[hivenumber].stored_larva = round(hive_datum[hivenumber].stored_larva * ((upgrade+1)/6.0)) // 83/66/50/33 for ancient/elite emp/elite queen/queen
+				var/turf/larva_spawn
+				while(hive_datum[hivenumber].stored_larva > 0) // stil some left
+					larva_spawn = pick(xeno_spawn)
+					new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
+					hive_datum[hivenumber].stored_larva--
 
 			if(hive.living_xeno_queen == src)
 				xeno_message("<span class='xenoannounce'>A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!</span>",3, hivenumber)

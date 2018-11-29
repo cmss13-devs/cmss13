@@ -76,13 +76,6 @@
 		src << "<span class='warning'>You can't evolve in your current state.</span>"
 		return
 
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else
-		hivenumber = XENO_HIVE_NORMAL
-		hive = hive_datum[hivenumber]
-
 	if((!hive.living_xeno_queen) && castepick != "Queen" && !isXenoLarva(src))
 		src << "<span class='warning'>The Hive is shaken by the death of the last Queen. You can't find the strength to evolve.</span>"
 		return
@@ -270,7 +263,7 @@
 
 		//Pass on the unique nicknumber, then regenerate the new mob's name now that our player is inside
 		new_xeno.nicknumber = nicknumber
-		new_xeno.hivenumber = hivenumber
+		new_xeno.set_hivenumber(hivenumber)
 		generate_name()
 
 		if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though

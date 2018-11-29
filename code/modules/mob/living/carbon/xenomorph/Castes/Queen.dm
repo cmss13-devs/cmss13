@@ -159,28 +159,24 @@
 /mob/living/carbon/Xenomorph/Queen/New()
 	..()
 	if(z != ADMIN_Z_LEVEL)//so admins can safely spawn Queens in Thunderdome for tests.
-		if(hivenumber && hivenumber <= hive_datum.len)
-			var/datum/hive_status/hive = hive_datum[hivenumber]
-			if(!hive.living_xeno_queen)
-				hive.living_xeno_queen = src
-			xeno_message("<span class='xenoannounce'>A new Queen has risen to lead the Hive! Rejoice!</span>",3,hivenumber)
+		if(!hive.living_xeno_queen)
+			hive.living_xeno_queen = src
+		xeno_message("<span class='xenoannounce'>A new Queen has risen to lead the Hive! Rejoice!</span>",3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
 /mob/living/carbon/Xenomorph/Queen/Dispose()
 	. = ..()
 	if(observed_xeno)
 		set_queen_overwatch(observed_xeno, TRUE)
-	if(hivenumber && hivenumber <= hive_datum.len)
-		var/datum/hive_status/hive = hive_datum[hivenumber]
-		if(hive.living_xeno_queen == src)
-			hive.living_xeno_queen = null
+	if(hive.living_xeno_queen == src)
+		hive.living_xeno_queen = null
 
 /mob/living/carbon/Xenomorph/Queen/proc/can_spawn_larva()
-	return hivenumber == XENO_HIVE_NORMAL && loc.z == 1 && ticker && ticker.mode && ticker.mode.stored_larva
+	return loc.z == 1 && hive_datum[hivenumber].stored_larva
 
 /mob/living/carbon/Xenomorph/Queen/proc/spawn_buried_larva(var/client/xeno_candidate)
 	if(ovipositor && !is_mob_incapacitated(TRUE))
-		if(ticker.mode.stored_larva && xeno_candidate)
+		if(hive_datum[hivenumber].stored_larva && xeno_candidate)
 			var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
 			new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
 			"<span class='xenodanger'>You burrow out of the ground and awaken from your slumber. For the Hive!</span>")
@@ -192,7 +188,7 @@
 			new_xeno << "<span class='xenoannounce'>You are a xenomorph larva awakened from slumber!</span>"
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
-			ticker.mode.stored_larva--
+			hive_datum[hivenumber].stored_larva.stored_larva--
 
 
 
@@ -224,7 +220,7 @@
 		for(var/mob/living/carbon/Xenomorph/Larva/L in range(1))
 			if(!L.ckey || !L.client) // no one home
 				visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
-				ticker.mode.stored_larva++
+				hive_datum[hivenumber].stored_larva++
 				round_statistics.total_xenos_created-- // keep stats sane
 				cdel(L)
 
@@ -287,11 +283,6 @@
 		return
 	plasma_stored -= 50
 	var/txt = copytext(sanitize(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders","")), 1, MAX_MESSAGE_LEN)
-
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else return
 
 	if(txt)
 		xeno_message("<B>The Queen has given a new order. Check Status panel for details.</B>",3,hivenumber)
@@ -356,11 +347,6 @@
 		pslash_delay = 0
 
 	pslash_delay = 1
-
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else return
 
 	var/choice = input("Choose which level of slashing hosts to permit to your hive.","Harming") as null|anything in list("Allowed", "Restricted - Less Damage", "Forbidden")
 
@@ -529,11 +515,8 @@
 	update_canmove()
 	update_icons()
 
-	if(hivenumber && hivenumber <= hive_datum.len)
-		var/datum/hive_status/hive = hive_datum[hivenumber]
-
-		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-			L.handle_xeno_leader_pheromones(src)
+	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
+		L.handle_xeno_leader_pheromones(src)
 
 	xeno_message("<span class='xenoannounce'>The Queen has grown an ovipositor, evolution progress resumed.</span>", 3, hivenumber)
 
@@ -588,11 +571,8 @@
 		anchored = FALSE
 		update_canmove()
 
-		if(hivenumber && hivenumber <= hive_datum.len)
-			var/datum/hive_status/hive = hive_datum[hivenumber]
-
-			for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-				L.handle_xeno_leader_pheromones(src)
+		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
+			L.handle_xeno_leader_pheromones(src)
 
 		if(!instant_dismount)
 			xeno_message("<span class='xenoannounce'>The Queen has shed her ovipositor, evolution progress paused.</span>", 3, hivenumber)

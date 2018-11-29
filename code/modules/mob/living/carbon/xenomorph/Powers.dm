@@ -1276,10 +1276,6 @@
 	set desc = "Check the status of your current hive."
 	set category = "Alien"
 
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else return
 	if(!hive.living_xeno_queen)
 		src << "<span class='warning'>There is no Queen. You are alone.</span>"
 		return
@@ -1291,6 +1287,9 @@
 
 
 /proc/check_hive_status(mob/living/carbon/Xenomorph/user, var/anchored = 0)
+	var/hivenumber = XENO_HIVE_NORMAL
+	if(istype(user)) // cover calling it without parameters
+		hivenumber = user.hivenumber
 	var/dat = "<html><head><title>Hive Status</title></head><body>"
 
 	var/count = 0
@@ -1327,27 +1326,20 @@
 	var/defender_count = 0
 	var/larva_list = ""
 	var/larva_count = 0
-	var/stored_larva_count = ticker.mode.stored_larva
+	var/stored_larva_count = hive_datum[hivenumber].stored_larva
 	var/leader_list = ""
 
 	for(var/mob/living/carbon/Xenomorph/X in living_mob_list)
 		if(!istype(X)) continue //ignore non-xenos, just in case
 		if(X.z == ADMIN_Z_LEVEL) continue //don't show xenos in the thunderdome when admins test stuff.
 		if(istype(user)) // cover calling it without parameters
-			if(X.hivenumber != user.hivenumber)
+			if(X.hivenumber != hivenumber)
 				continue // not our hive
 		var/area/A = get_area(X)
 
-		var/datum/hive_status/hive
-		if(X.hivenumber && X.hivenumber <= hive_datum.len)
-			hive = hive_datum[X.hivenumber]
-		else
-			X.hivenumber = XENO_HIVE_NORMAL
-			hive = hive_datum[X.hivenumber]
-
 		var/leader = ""
 
-		if(X in hive.xeno_leader_list)
+		if(X in X.hive.xeno_leader_list)
 			leader = "<b>(-L-)</b>"
 
 		var/xenoinfo
@@ -1420,9 +1412,7 @@
 	dat += "<b>Tier 2: [burrower_count + hivelord_count + hunter_count + spitter_count + warrior_count] Sisters</b> | Burrowers: [burrower_count] | Hivelords: [hivelord_count] | Warriors: [warrior_count] | Lurkers: [hunter_count] | Spitters: [spitter_count]<BR>"
 	dat += "<b>Tier 1: [drone_count + runner_count + sentinel_count + defender_count] Sisters</b> | Drones: [drone_count] | Runners: [runner_count] | Sentinels: [sentinel_count] | Defenders: [defender_count]<BR>"
 	dat += "<b>Larvas: [larva_count] Sisters<BR>"
-	if(istype(user)) // cover calling it without parameters
-		if(user.hivenumber == XENO_HIVE_NORMAL)
-			dat += "<b>Burrowed Larva: [stored_larva_count] Sisters<BR>"
+	dat += "<b>Burrowed Larva: [stored_larva_count] Sisters<BR>"
 	dat += "<table cellspacing=4>"
 	dat += queen_list + leader_list + boiler_list + burrower_list + crusher_list + praetorian_list + ravager_list + carrier_list + hivelord_list + warrior_list + hunter_list + spitter_list + drone_list + runner_list + sentinel_list + defender_list + larva_list
 	dat += "</table></body>"

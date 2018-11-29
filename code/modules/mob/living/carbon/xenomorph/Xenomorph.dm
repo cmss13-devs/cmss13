@@ -60,7 +60,7 @@
 	else
 		world << "something went very wrong"
 		return
-
+	set_hivenumber(hivenumber)
 	..()
 	//WO GAMEMODE
 	if(map_tag == MAP_WHISKEY_OUTPOST)
@@ -110,6 +110,9 @@
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
 //We set their name first, then update their real_name AND their mind name
 /mob/living/carbon/Xenomorph/proc/generate_name()
+	if(!hive)
+		set_hivenumber(hivenumber)
+
 
 	//We don't have a nicknumber yet, assign one to stick with us
 	if(!nicknumber)
@@ -129,13 +132,6 @@
 		return
 
 	var/name_prefix = ""
-
-	var/datum/hive_status/hive
-	if(hivenumber && hivenumber <= hive_datum.len)
-		hive = hive_datum[hivenumber]
-	else
-		hivenumber = XENO_HIVE_NORMAL
-		hive = hive_datum[hivenumber]
 
 	name_prefix = hive.prefix
 	color = hive.color
@@ -180,9 +176,7 @@
 				user << "It is heavily injured and limping badly."
 
 	if(hivenumber != XENO_HIVE_NORMAL)
-		if(hivenumber && hivenumber <= hive_datum.len)
-			var/datum/hive_status/hive = hive_datum[hivenumber]
-			user << "It appears to belong to the [hive.prefix]hive"
+		user << "It appears to belong to the [hive.prefix]hive"
 	return
 
 /mob/living/carbon/Xenomorph/Dispose()
@@ -192,12 +186,10 @@
 	living_xeno_list -= src
 	xeno_mob_list -= src
 
-	if(hivenumber && hivenumber <= hive_datum.len)
-		var/datum/hive_status/hive = hive_datum[hivenumber]
-		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
-			hive.living_xeno_queen.set_queen_overwatch(src, TRUE)
-		if(src in hive.xeno_leader_list)
-			hive.xeno_leader_list -= src
+	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
+		hive.living_xeno_queen.set_queen_overwatch(src, TRUE)
+	if(src in hive.xeno_leader_list)
+		hive.xeno_leader_list -= src
 	. = ..()
 
 
@@ -280,3 +272,24 @@
 ///Returns a number between -1 to 2
 /mob/living/carbon/Xenomorph/get_eye_protection()
 	return 2
+
+//Call this function to set the hivenumber
+//It also assigns the hive datum, since a lot of things reference that
+/mob/living/carbon/Xenomorph/proc/set_hivenumber(var/new_hivenumber = XENO_HIVE_NORMAL)
+	hivenumber = new_hivenumber
+	if(!hivenumber || hivenumber > hive_datum.len)
+		hivenumber = XENO_HIVE_NORMAL //Someone passed a bad number
+		log_debug("Invalid hivenumber forwarded - [hivenumber]. Let the devs know!")
+	hive = hive_datum[hivenumber]
+
+//Call this function to set the hivenumber and do other cleanup
+/mob/living/carbon/Xenomorph/proc/set_hivenumber_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
+	set_hivenumber(new_hivenumber)
+
+	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
+		var/mob/living/carbon/Xenomorph/Larva/L = src
+		L.update_icons() // larva renaming done differently
+	else
+		generate_name()
+	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
+		update_living_queens()

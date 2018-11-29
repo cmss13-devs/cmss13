@@ -10,7 +10,7 @@
 /var/global/icon/xeno_almayer_mapview
 /var/global/list/map_sizes = list(list(),list(),list())
 
-/proc/overlay_xeno_mapview()
+/proc/overlay_xeno_mapview(var/hivenumber = XENO_HIVE_NORMAL)
 	var/icon/newoverlay = icon(xeno_mapview)
 	var/list/hosts_in_sight = list()
 	var/list/tier_0 = list()
@@ -19,7 +19,7 @@
 	var/list/tier_3 = list()
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.loc.z != 1) continue
-		if(X.hivenumber != XENO_HIVE_NORMAL) continue
+		if(X.hivenumber != hivenumber) continue
 		switch(X.tier)
 			if(0)
 				tier_0 += X

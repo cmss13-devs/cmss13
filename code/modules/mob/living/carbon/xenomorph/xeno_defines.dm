@@ -100,6 +100,7 @@
 
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
+	var/datum/hive_status/hive
 
 	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/head/head = null
@@ -240,6 +241,7 @@
 	var/color = null
 	var/prefix = ""
 	var/list/xeno_leader_list = list()
+	var/stored_larva = 0
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

@@ -33,12 +33,7 @@
 				M.start_pulling(src)
 
 		if("hurt")
-			var/datum/hive_status/hive
-			if(M.hivenumber && M.hivenumber <= hive_datum.len)
-				hive = hive_datum[M.hivenumber]
-			else return
-
-			if(!hive.slashing_allowed && !M.caste.is_intelligent)
+			if(!M.hive.slashing_allowed && !M.caste.is_intelligent)
 				M << "<span class='warning'>Slashing is currently <b>forbidden</b> by the Queen. You refuse to slash [src].</span>"
 				r_FAL
 
@@ -47,7 +42,7 @@
 				r_FAL
 
 			if(!M.caste.is_intelligent)
-				if(hive.slashing_allowed == 2)
+				if(M.hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
 							if(embryo.hivenumber == M.hivenumber)
@@ -229,13 +224,8 @@
 				"<span class='warning'>You nibble [src].</span>", null, 5)
 				return 1
 
-			var/datum/hive_status/hive
-			if(M.hivenumber && M.hivenumber <= hive_datum.len)
-				hive = hive_datum[M.hivenumber]
-			else return
-
 			if(!M.caste.is_intelligent)
-				if(hive.slashing_allowed == 2)
+				if(M.hive.slashing_allowed == 2)
 					if(status_flags & XENO_HOST)
 						for(var/obj/item/alien_embryo/embryo in src)
 							if(embryo.hivenumber == M.hivenumber)

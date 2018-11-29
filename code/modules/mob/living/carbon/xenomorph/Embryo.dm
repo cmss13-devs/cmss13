@@ -149,7 +149,7 @@
 	else
 		new_xeno = new(affected_mob)
 
-	new_xeno.hivenumber = hivenumber
+	new_xeno.set_hivenumber(hivenumber)
 	new_xeno.update_icons()
 
 	// If we have a candidate, transfer it over
@@ -191,9 +191,9 @@
 	else victim.emote("scream")
 
 	var/burstcount = 0
-	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 
 	for(var/mob/living/carbon/Xenomorph/Larva/L in victim)
+		var/datum/hive_status/hive = hive_datum[L.hivenumber]
 		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 
@@ -203,10 +203,10 @@
 		round_statistics.total_larva_burst++
 		burstcount++
 
-		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && L.hivenumber == XENO_HIVE_NORMAL && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
-			ticker.mode.stored_larva++
+			hive.stored_larva++
 			cdel(L)
 
 	for(var/obj/item/alien_embryo/AE in victim)

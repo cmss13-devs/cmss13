@@ -292,28 +292,50 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		alert("Invalid mob")
 
-/client/proc/cmd_admin_change_hivenumber(mob/living/carbon/Xenomorph/M in mob_list, var/hivenumber = XENO_HIVE_NORMAL)
+/client/proc/cmd_admin_change_hivenumber()
 	set category = "Debug"
 	set name = "Change Hivenumber"
 
-	if(!ticker)
-		alert("Wait until the game starts")
+	var/mob/living/carbon/Xenomorph/X = input(src,"Select a xeno.", null, null) in living_xeno_list
+	if(!istype(X))
+		usr << "This can only be done to instances of type /mob/living/carbon/Xenomorph"
 		return
-	if(isXeno(M))
-		log_admin("[key_name(src)] changed hivenumber of [M] to [M.hivenumber].")
-		M.hivenumber = hivenumber
-		if(istype(M, /mob/living/carbon/Xenomorph/Larva))
-			var/mob/living/carbon/Xenomorph/Larva/L = M
-			L.update_icons() // larva renaming done differently
-		else
-			M.generate_name()
-		if(istype(M, /mob/living/carbon/Xenomorph/Queen))
-			update_living_queens()
-		usr << "Hivenumber set to [M.hivenumber]"
-		feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		message_admins("\blue [key_name(src)] changed hivenumber of [M] to [M.hivenumber].", 1)
-	else
-		alert("Invalid mob")
+
+	cmd_admin_change_their_hivenumber(X)
+
+//This is only for right-click drop-down menu, hence no category
+/client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/Xenomorph/X)
+	set category = "Admin"
+	set name = "Change Their Hivenumber"
+
+	var/hivenumber_status = X.hivenumber
+	var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
+
+	var/newhive = input(src,"Select a hive.", null, null) in namelist
+
+	if(!X)
+		usr << "This xeno no longer exists"
+		return
+	var/newhivenumber
+	switch(newhive)
+		if("Normal")
+			newhivenumber = XENO_HIVE_NORMAL
+		if("Corrupted")
+			newhivenumber = XENO_HIVE_CORRUPTED
+		if("Alpha")
+			newhivenumber = XENO_HIVE_ALPHA
+		if("Beta")
+			newhivenumber = XENO_HIVE_BETA
+		if("Zeta")
+			newhivenumber = XENO_HIVE_ZETA
+	if(X.hivenumber != hivenumber_status)
+		usr << "Someone else changed this xeno while you were deciding"
+		return
+
+	X.set_hivenumber_and_update(newhivenumber)
+	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	message_admins("\blue [key_name(src)] changed hivenumber of [X] to [X.hivenumber].", 1)
+
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"

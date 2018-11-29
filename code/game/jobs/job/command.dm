@@ -36,7 +36,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 			backItem = /obj/item/storage/backpack/mcommander
 
 		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
+				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom,
 				WEAR_BODY = /obj/item/clothing/under/marine/officer/command,
 				WEAR_FEET = /obj/item/clothing/shoes/marinechief/commander,
 				WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer/commander,

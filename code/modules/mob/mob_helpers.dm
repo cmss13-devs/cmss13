@@ -238,6 +238,13 @@ proc/isYautja(A)
 			return 1
 	return 0
 
+proc/isResearcher(A)
+	if(ishuman(A))
+		var/mob/living/carbon/human/H = A
+		if (H.mind && H.mind.assigned_role == "Researcher")
+			return 1
+	return 0
+
 proc/isSynth(A)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A

@@ -377,8 +377,8 @@
 	..()
 	if(slot == WEAR_HANDS)
 		flags_item = NODROP
+		processing_objects.Add(src)
 		if(isYautja(user))
-			processing_objects.Add(src)
 			user << "<span class='warning'>The bracer clamps securely around your forearm and beeps in a comfortable, familiar way.</span>"
 		else
 			user << "<span class='warning'>The bracer clamps painfully around your forearm and beeps angrily. It won't come off!</span>"
@@ -411,6 +411,11 @@
 		charge = max(charge - 10, 0)
 		if(charge <= 0)
 			decloak(loc)
+		//Non-Yautja have a chance to get stunned with each power drain
+		if(!isYautja(H))
+			if(prob(15))
+				shock_user(H)
+				decloak(loc)
 	else
 		charge = min(charge + 30, charge_max)
 	var/perc_charge = (charge / charge_max * 100)
@@ -428,24 +433,129 @@
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
 	M.update_power_display(perc)
+
+	//Non-Yautja have a chance to get stunned with each power drain
+	if(!isYautja(M))
+		if(prob(15))
+			shock_user(M)
 	return 1
+
+/obj/item/clothing/gloves/yautja/proc/shock_user(var/mob/living/carbon/human/M)
+	if(!isYautja(M))
+		//Spark
+		playsound(M, 'sound/effects/sparks2.ogg', 60, 1)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(2, 1, src)
+		s.start()
+		M.visible_message("<span class='warning'>[src] beeps and sends a shock through [M]'s body!</span>")
+		//Stun and knock out, scream in pain
+		M.Stun(2)
+		M.KnockDown(2)
+		M.emote("scream")
+		//Apply a bit of burn damage
+		M.apply_damage(5, BURN, "l_arm", 0, 0, 0, src)
+		M.apply_damage(5, BURN, "r_arm", 0, 0, 0, src)
+
 
 /obj/item/clothing/gloves/yautja/examine(mob/user)
 	..()
 	user << "They currently have [charge] out of [charge_max] charge."
+
+
+//We use this to activate random verbs for non-Yautja
+/obj/item/clothing/gloves/yautja/proc/activate_random_verb()
+	var/option = rand(1, 10)
+	//we have options from 1 to 7, but we're giving the user a higher probability of being punished if they already rolled this bad
+	switch(option)
+		if(1)
+			. = wristblades_internal(TRUE)
+		if(2)
+			. = track_gear_internal(TRUE)
+		if(3)
+			. = cloaker_internal(TRUE)
+		if(4)
+			. = caster_internal(TRUE)
+		if(5)
+			. = injectors_internal(TRUE)
+		if(6)
+			. = call_disk_internal(TRUE)
+		if(7)
+			. = translate_internal(TRUE)
+		else
+			. = delimb_user()
+			//Council did not want this to ever happen
+			//activate_suicide_internal(TRUE)
+	return
+
+//We use this to determine whether we should activate the given verb, or a random verb
+//0 - do nothing, 1 - random function, 2 - this function
+/obj/item/clothing/gloves/yautja/proc/should_activate_random_or_this_function()
+	var/mob/living/carbon/human/user = usr
+	if(!istype(user))
+		return 0
+
+	var/workingProbability = 20
+	var/randomProbability = 10
+	if (isSynth(user))
+		//Synths are smart, they can figure this out pretty well
+		workingProbability = 40
+		randomProbability = 4
+	else
+		//Researchers are sort of smart, they can sort of figure this out
+		if (isResearcher(user))
+			workingProbability = 25
+			randomProbability = 7
+	
+
+	user << "<span class='notice'>You press a few buttons...</span>"
+	//Add a little delay so the user wouldn't be just spamming all the buttons
+	user.next_move = world.time + 3
+	if(do_after(usr, 3, FALSE, 1, BUSY_ICON_FRIENDLY))
+		var/chance = rand(1, 100)
+		if(chance <= randomProbability)
+			return 1
+		chance-=randomProbability
+		if(chance <= workingProbability)
+			return 2
+	return 0
+	
+
+//This is used to punish people that fiddle with technology they don't understand
+/obj/item/clothing/gloves/yautja/proc/delimb_user()
+	var/mob/living/carbon/human/user = usr
+	if(!istype(user)) return
+	if(isYautja(usr)) return
+
+	var/datum/limb/O = user.get_limb(check_zone("r_arm"))
+	O.droplimb()
+	O = user.get_limb(check_zone("l_arm"))
+	O.droplimb()
+
+	user << "<span class='notice'>The device emits a strange noise and falls off... Along with your arms!</span>"
+	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
+	return 1
+
 
 //Should put a cool menu here, like ninjas.
 /obj/item/clothing/gloves/yautja/verb/wristblades()
 	set name = "Use Wrist Blades"
 	set desc = "Extend your wrist blades. They cannot be dropped, but can be retracted."
 	set category = "Yautja"
+	. = wristblades_internal(FALSE)
 
+
+/obj/item/clothing/gloves/yautja/proc/wristblades_internal(var/forced = FALSE)
 	if(!usr.loc || !usr.canmove || usr.stat) return
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user)) return
-	if(!isYautja(user))
-		user << "<span class='warning'>You have no idea how to work these things!</span>"
-		return
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 	var/obj/item/weapon/wristblades/R = user.get_active_hand()
 	if(R && istype(R)) //Turn it off.
 		user << "<span class='notice'>You retract your wrist blades.</span>"
@@ -473,19 +583,26 @@
 		user << "<span class='notice'>You activate your wrist blades.</span>"
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 
-
 	return 1
 
 /obj/item/clothing/gloves/yautja/verb/track_gear()
 	set name = "Track Yautja Gear"
 	set desc = "Find Yauja Gear."
 	set category = "Yautja"
+	. = track_gear_internal(FALSE)
 
+
+/obj/item/clothing/gloves/yautja/proc/track_gear_internal(var/forced = FALSE)
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
-	if(!isYautja(M))
-		M << "<span class='warning'>You have no idea how to work these things!</span>"
-		return 0
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 
 	var/dead_on_planet = 0
 	var/dead_on_almayer = 0
@@ -538,19 +655,33 @@
 		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)].</span>"
 	if(!output)
 		M << "<span class='notice'>There are no signatures that require your attention.</span>"
+	return 1
+
 
 /obj/item/clothing/gloves/yautja/verb/cloaker()
 	set name = "Toggle Cloaking Device"
 	set desc = "Activate your suit's cloaking device. It will malfunction if the suit takes damage or gets excessively wet."
 	set category = "Yautja"
+	. = cloaker_internal(FALSE)
 
-
+/obj/item/clothing/gloves/yautja/proc/cloaker_internal(var/forced = FALSE)
 	if(!usr || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
-	if(!isYautja(usr))
-		usr << "<span class='warning'>You have no idea how to work these things!</span>"
-		return 0
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			if(cloaked) //Turn it off.
+				//We're going to be nice here and say you can turn off the cloak without an issue
+				//Otherwise, humans wouldn't have any use for the cloak without being shocked every time they turn it on
+				//Since they couldn't turn it off in time afterwards with consistency
+				decloak(usr)
+				return 1
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 	if(cloaked) //Turn it off.
 		decloak(usr)
 	else //Turn it on!
@@ -599,13 +730,21 @@
 	set name = "Use Plasma Caster"
 	set desc = "Activate your plasma caster. If it is dropped it will retract back into your armor."
 	set category = "Yautja"
+	. = caster_internal(FALSE)
 
+
+/obj/item/clothing/gloves/yautja/proc/caster_internal(var/forced = FALSE)
 	if(!usr.loc || !usr.canmove || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
-	if(!isYautja(usr))
-		usr << "<span class='warning'>You have no idea how to work these things!</span>"
-		return
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 	var/obj/item/weapon/gun/energy/plasma_caster/R = usr.r_hand
 	var/obj/item/weapon/gun/energy/plasma_caster/L = usr.l_hand
 	if(!istype(R) && !istype(L))
@@ -645,6 +784,7 @@
 		caster_active = 1
 		usr << "<span class='notice'>You activate your plasma caster.</span>"
 		playsound(src,'sound/weapons/pred_plasmacaster_on.ogg', 15, 1)
+	return 1
 
 
 /obj/item/clothing/gloves/yautja/proc/explodey(var/mob/living/carbon/victim)
@@ -662,6 +802,10 @@
 	set name = "Final Countdown (!)"
 	set desc = "Activate the explosive device implanted into your bracers. You have failed! Show some honor!"
 	set category = "Yautja"
+	. = activate_suicide_internal(FALSE)
+
+
+/obj/item/clothing/gloves/yautja/proc/activate_suicide_internal(var/forced = FALSE)
 	if(!usr) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
@@ -671,9 +815,14 @@
 	if(M.stat == DEAD)
 		M << "<span class='warning'>Little too late for that now!</span>"
 		return
-	if(!isYautja(M))
-		M << "<span class='warning'>You have no idea how to work these things!</span>"
-		return
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
@@ -681,7 +830,7 @@
 		if(isYautja(comrade) && comrade.stat == DEAD)
 			var/obj/item/clothing/gloves/yautja/bracer = comrade.gloves
 			if(istype(bracer))
-				if(alert("Are you sure you want to send this Yautja into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
+				if(forced || alert("Are you sure you want to send this Yautja into the great hunting grounds?","Explosive Bracers", "Yes", "No") == "Yes")
 					if(M.get_active_hand() == G && comrade && comrade.gloves == bracer && !bracer.exploding)
 						bracer.explodey(comrade)
 						M.visible_message("<span class='warning'>[M] presses a few buttons on [comrade]'s wrist bracer.</span>","<span class='danger'>You activate the timer. May [comrade]'s final hunt be swift.</span>")
@@ -693,7 +842,7 @@
 		return
 
 	if(exploding)
-		if(alert("Are you sure you want to stop the countdown?","Bracers", "Yes", "No") == "Yes")
+		if(forced || alert("Are you sure you want to stop the countdown?","Bracers", "Yes", "No") == "Yes")
 			if(M.gloves != src)
 				return
 			if(M.stat == DEAD)
@@ -708,7 +857,7 @@
 	if((M.wear_mask && istype(M.wear_mask,/obj/item/clothing/mask/facehugger)) || M.status_flags & XENO_HOST)
 		M << "<span class='warning'>Strange...something seems to be interfering with your bracer functions...</span>"
 		return
-	if(alert("Detonate the bracers? Are you sure?","Explosive Bracers", "Yes", "No") == "Yes")
+	if(forced || alert("Detonate the bracers? Are you sure?","Explosive Bracers", "Yes", "No") == "Yes")
 		if(M.gloves != src)
 			return
 		if(M.stat == DEAD)
@@ -719,18 +868,29 @@
 			return
 		M << "<span class='userdanger'>You set the timer. May your journey to the great hunting grounds be swift.</span>"
 		explodey(M)
+	return 1
+
+
 
 /obj/item/clothing/gloves/yautja/verb/injectors()
 	set name = "Create Self-Heal Crystal"
 	set category = "Yautja"
 	set desc = "Create a focus crystal to energize your natural healing processes."
+	. = injectors_internal(FALSE)
 
+
+/obj/item/clothing/gloves/yautja/proc/injectors_internal(var/forced = FALSE)
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
 		return 0
 
-	if(!isYautja(usr))
-		usr << "<span class='warning'>You have no idea how to work these things!/span>"
-		return
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 
 	if(usr.get_active_hand())
 		usr << "<span class='warning'>Your active hand must be empty!</span>"
@@ -752,19 +912,27 @@
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(usr)
 	usr.put_in_active_hand(O)
 	playsound(src,'sound/machines/click.ogg', 15, 1)
-	return
+	return 1
 
 /obj/item/clothing/gloves/yautja/verb/call_disk()
 	set name = "Call Smart-Disc"
 	set category = "Yautja"
 	set desc = "Call back your smart-disc, if it's in range. If not you'll have to go retrieve it."
+	. = call_disk_internal(FALSE)
 
+
+/obj/item/clothing/gloves/yautja/proc/call_disk_internal(var/forced = FALSE)
 	if(usr.is_mob_incapacitated())
 		return 0
 
-	if(!isYautja(usr))
-		usr << "<span class='warning'>You have no idea how to work these things!</span>"
-		return
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 
 	if(inject_timer)
 		usr << "<span class='warning'>Your bracers need some time to recuperate first.</span>"
@@ -782,17 +950,25 @@
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
 		D.throw_at(usr,10,1,usr)
+	return 1
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"
 	set desc = "Emit a message from your bracer to those nearby."
 	set category = "Yautja"
+	. = translate_internal(FALSE)
 
+/obj/item/clothing/gloves/yautja/proc/translate_internal(var/forced = FALSE)
 	if(!usr || usr.stat) return
 
-	if(!isYautja(usr))
-		usr << "You have no idea how to work these things."
-		return
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
 
 	var/msg = input(usr,"Your bracer beeps and waits patiently for you to input your message.","Translator","") as text
 	if(!msg || !usr.client) return
@@ -818,6 +994,7 @@
 			if(Q.stat == 1) continue //Unconscious
 			if(isXeno(Q) && upgrades != 2) continue
 			Q << "<span class='info'>A strange voice says,</span> <span class='rough'>'[msg]'.</span>"
+	return 1
 
 //=================//\\=================\\
 //======================================\\

@@ -207,8 +207,8 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 
 
 //Variables for the below function that we need to keep throught the round
-var/peakHumans = 0
-var/peakXenos = 0
+var/peakHumans = 1
+var/peakXenos = 1
 
 var/lastXenoBioscan = 18000//30 minutes in (we will add to that!)
 var/lastHumanBioscan = 18000//30 minutes in (we will add to that!)

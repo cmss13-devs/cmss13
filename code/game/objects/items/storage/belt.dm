@@ -131,6 +131,12 @@
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
 
+/obj/item/storage/belt/medical/with_defib_and_analyzer
+
+/obj/item/storage/belt/medical/with_defib_and_analyzer/New()
+	..()
+	new /obj/item/device/defibrillator(src)
+	new /obj/item/device/healthanalyzer(src)
 
 /obj/item/storage/belt/combatLifesaver
 	name = "\improper M276 pattern lifesaver bag"

@@ -98,6 +98,10 @@
 	if(!ismob(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || (M.loc != loc) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
 		return
 
+	if(isXeno(M))
+		user << "<span class='warning'>You can't buckle your sisters.</span>"
+		return
+
 	if(buckled_mob)
 		user << "<span class='warning'>There's already someone in [src].</span>"
 		return

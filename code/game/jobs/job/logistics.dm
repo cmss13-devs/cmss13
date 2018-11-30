@@ -46,7 +46,7 @@ You are also next in the chain of command, should the bridge crew fall in the li
 /datum/job/logistics/requisition
 	title = "Requisitions Officer"
 	comm_title = "RO"
-	paygrade = "O1"
+	paygrade = "O3"
 	flag = ROLE_REQUISITION_OFFICER
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_color = "#9990B2"

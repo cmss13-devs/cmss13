@@ -823,6 +823,10 @@
 			. = activate_random_verb()
 			return
 
+		//Council did not want the humans to trigger SD EVER
+		. = delimb_user()
+		return
+
 	var/obj/item/grab/G = M.get_active_hand()
 	if(istype(G))
 		var/mob/living/carbon/human/comrade = G.grabbed_thing

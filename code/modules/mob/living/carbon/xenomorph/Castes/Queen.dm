@@ -188,7 +188,7 @@
 			new_xeno << "<span class='xenoannounce'>You are a xenomorph larva awakened from slumber!</span>"
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
-			hive_datum[hivenumber].stored_larva.stored_larva--
+			hive_datum[hivenumber].stored_larva--
 
 
 

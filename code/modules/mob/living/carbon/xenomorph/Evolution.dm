@@ -246,7 +246,7 @@
 			return
 
 		//From there, the new xeno exists, hopefully
-		var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src))
+		var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src), src)
 
 		if(!istype(new_xeno))
 			//Something went horribly wrong!
@@ -261,9 +261,7 @@
 			new_xeno.key = src.key
 			if(new_xeno.client) new_xeno.client.change_view(world.view)
 
-		//Pass on the unique nicknumber, then regenerate the new mob's name now that our player is inside
-		new_xeno.nicknumber = nicknumber
-		new_xeno.set_hivenumber(hivenumber)
+		//Regenerate the new mob's name now that our player is inside
 		generate_name()
 
 		if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
@@ -271,40 +269,10 @@
 			new_xeno.fireloss = src.fireloss //Transfers the damage over.
 			new_xeno.updatehealth()
 
-		if(xeno_mobhud)
-			var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
-			H.add_hud_to(new_xeno) //keep our mobhud choice
-			new_xeno.xeno_mobhud = TRUE
-
-		new_xeno.middle_mouse_toggle = middle_mouse_toggle //Keep our toggle state
-		new_xeno.a_intent_change(a_intent)//Keep intent
-		if(m_intent != MOVE_INTENT_RUN)
-			new_xeno.toggle_mov_intent()//Keep move intent
-
-		if(layer == XENO_HIDING_LAYER)
-			//We are hiding, let's keep hiding if we can!
-			for(var/datum/action/xeno_action/xenohide/hide in new_xeno.actions)
-				if(istype(hide))
-					new_xeno.layer = XENO_HIDING_LAYER
-
-		for(var/datum/language/L in src.languages)
-			new_xeno.add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
-
-		for(var/obj/item/W in contents) //Drop stuff
-			drop_inv_item_on_ground(W)
-
-		empty_gut()
 		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste.caste_name] emerges from the husk of \the [src].</span>", \
 		"<span class='xenodanger'>You emerge in a greater form from the husk of your old body. For the hive!</span>")
 
 		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
-
-		if(queen_chosen_lead && castepick != "Queen") // xeno leader is removed by Dispose()
-			new_xeno.queen_chosen_lead = TRUE
-			hive.xeno_leader_list += new_xeno
-			new_xeno.hud_set_queen_overwatch()
-			if(hive.living_xeno_queen)
-				new_xeno.handle_xeno_leader_pheromones(hive.living_xeno_queen)
 
 		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 			hive.living_xeno_queen.set_queen_overwatch(new_xeno)

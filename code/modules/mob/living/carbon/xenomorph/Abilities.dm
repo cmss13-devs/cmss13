@@ -1112,7 +1112,7 @@
 				xeno_type = /mob/living/carbon/Xenomorph/Burrower
 
 		//From there, the new xeno exists, hopefully
-		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(T))
+		var/mob/living/carbon/Xenomorph/new_xeno = new xeno_type(get_turf(T), T)
 
 		if(!istype(new_xeno))
 			//Something went horribly wrong!
@@ -1130,45 +1130,16 @@
 				new_xeno.client.pixel_x = 0
 				new_xeno.client.pixel_y = 0
 
-		//Pass on the unique nicknumber, then regenerate the new mob's name now that our player is inside
-		new_xeno.nicknumber = T.nicknumber
-		new_xeno.set_hivenumber(T.hivenumber)
+		//Regenerate the new mob's name now that our player is inside
 		new_xeno.generate_name()
 
-		if(T.xeno_mobhud)
-			var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
-			H.add_hud_to(new_xeno) //keep our mobhud choice
-			new_xeno.xeno_mobhud = TRUE
-
-		new_xeno.middle_mouse_toggle = T.middle_mouse_toggle //Keep our toggle state
-		new_xeno.a_intent_change(T.a_intent)//Keep intent
-		if(T.m_intent != MOVE_INTENT_RUN)
-			new_xeno.toggle_mov_intent()//Keep move intent
-
-		if(T.layer == XENO_HIDING_LAYER)
-			//We are hiding, let's keep hiding if we can!
-			for(var/datum/action/xeno_action/xenohide/hide in new_xeno.actions)
-				if(istype(hide))
-					new_xeno.layer = XENO_HIDING_LAYER
-
-		for(var/datum/language/L in T.languages)
-			new_xeno.add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
-
-		for(var/obj/item/W in T.contents) //Drop stuff
-			T.drop_inv_item_on_ground(W)
-
-		T.empty_gut()
 		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste.caste_name] emerges from the husk of \the [T].</span>", \
 		"<span class='xenodanger'>[X] makes you regress into your previous form.</span>")
-
-		if(T.queen_chosen_lead)
-			new_xeno.queen_chosen_lead = TRUE
-			new_xeno.hud_set_queen_overwatch()
 
 		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
 			X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 
-		new_xeno.upgrade_xeno(TRUE, min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
+		new_xeno.upgrade_xeno(min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
 
 		//Preserving plasma ratio
 		var/plasma_ratio = T.plasma_stored / T.caste.plasma_max

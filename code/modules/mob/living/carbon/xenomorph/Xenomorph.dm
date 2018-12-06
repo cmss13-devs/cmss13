@@ -54,33 +54,32 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 
-/mob/living/carbon/Xenomorph/New()
-	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade)])
-		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
-	else
-		world << "something went very wrong"
-		return
+/mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
+	if(oldXeno)
+		hivenumber = oldXeno.hivenumber
+		nicknumber = oldXeno.nicknumber
 	set_hivenumber(hivenumber)
-	..()
+	update_caste()
+	generate_name()
+	..(new_loc)
 	//WO GAMEMODE
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
 
 	set_languages(list("Xenomorph", "Hivemind"))
+	if(hivenumber == XENO_HIVE_CORRUPTED)
+		add_language("English")
+	if(oldXeno)
+		for(var/datum/language/L in oldXeno.languages)
+			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
+
 	add_inherent_verbs()
 	add_abilities()
-
-
-
-	maxHealth = caste.max_health
-	health = maxHealth
-	speed = caste.speed
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 8
-
 
 	if(caste.spit_types && caste.spit_types.len)
 		ammo = ammo_list[caste.spit_types[1]]
@@ -88,7 +87,6 @@
 	var/datum/reagents/R = new/datum/reagents(100)
 	reagents = R
 	R.my_atom = src
-	gender = NEUTER
 
 	living_xeno_list += src
 	xeno_mob_list += src
@@ -99,12 +97,57 @@
 		M.Scale(caste.adjust_size_x, caste.adjust_size_y)
 		transform = M
 
-	spawn(6) //Mind has to be transferred! Hopefully this will give it enough time to do so.
-		generate_name()
-
 	regenerate_icons()
-
 	toggle_xeno_mobhud() //This is a verb, but fuck it, it just werks
+
+	if(oldXeno)
+		if(xeno_mobhud)
+			var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+			H.add_hud_to(src) //keep our mobhud choice
+			xeno_mobhud = TRUE
+
+		middle_mouse_toggle = oldXeno.middle_mouse_toggle //Keep our toggle state
+		a_intent_change(oldXeno.a_intent)//Keep intent
+		if(oldXeno.m_intent != MOVE_INTENT_RUN)
+			toggle_mov_intent()//Keep move intent
+
+		if(oldXeno.layer == XENO_HIDING_LAYER)
+			//We are hiding, let's keep hiding if we can!
+			for(var/datum/action/xeno_action/xenohide/hide in actions)
+				if(istype(hide))
+					layer = XENO_HIDING_LAYER
+
+		for(var/obj/item/W in oldXeno.contents) //Drop stuff
+			oldXeno.drop_inv_item_on_ground(W)
+
+		oldXeno.empty_gut()
+
+		if(oldXeno.queen_chosen_lead && caste_name != "Queen") // xeno leader is removed by Dispose()
+			queen_chosen_lead = TRUE
+			hive.xeno_leader_list += src
+			hud_set_queen_overwatch()
+			if(hive.living_xeno_queen)
+				handle_xeno_leader_pheromones(hive.living_xeno_queen)
+
+
+/mob/living/carbon/Xenomorph/proc/update_caste()
+	var/plasma_ratio = 1
+	if(caste)
+		plasma_ratio = plasma_stored / caste.plasma_max
+	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade)])
+		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
+	else
+		world << "something went very wrong"
+		return
+	maxHealth = caste.max_health
+	health = maxHealth
+	speed = caste.speed
+	plasma_stored = round(caste.plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	if(plasma_stored > caste.plasma_max)
+		plasma_stored = caste.plasma_max
+	if(isXenoWarrior(src)) // because of the warrior speed bug.
+		if(agility)
+			speed = caste.speed + caste.agility_speed_increase
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -131,12 +174,8 @@
 	if(isXenoLarva(src))
 		return
 
-	var/name_prefix = ""
-
-	name_prefix = hive.prefix
+	var/name_prefix = hive.prefix
 	color = hive.color
-	if(hivenumber == XENO_HIVE_CORRUPTED)
-		add_language("English")
 
 	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
 	if(isXenoQueen(src))

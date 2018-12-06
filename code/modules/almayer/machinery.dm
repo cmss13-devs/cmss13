@@ -229,6 +229,13 @@
 	unacidable = 1
 	var/list/fallen_list
 
+/obj/structure/prop/almayer/ship_memorial/centcomm
+	name = "slab of remembrance"
+	desc = "A memorial to all Development Team members that have retired from working on CM. No mentor names are present."
+
+
+/obj/structure/prop/almayer/ship_memorial/centcomm/admin
+	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
 
 
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/I, mob/user)

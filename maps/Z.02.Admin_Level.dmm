@@ -202,7 +202,7 @@
 "dT" = (/obj/structure/rack{layer = 2.79},/obj/item/stack/sheet/plasteel{amount = 30},/obj/item/stack/sheet/metal{amount = 50},/obj/item/stack/sheet/metal{amount = 50},/obj/item/stack/sheet/mineral/sandstone{amount = 50},/obj/item/stack/sheet/glass{amount = 50},/obj/machinery/light/small{tag = "icon-bulb1 (NORTH)"; icon_state = "bulb1"; dir = 1},/obj/item/stack/sheet/mineral/sandstone{amount = 50},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "dU" = (/obj/machinery/door/airlock/secure{name = "\improper Hellhound Quarters"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "dV" = (/obj/machinery/light/small,/turf/open/shuttle{icon_state = "floor6"},/area/yautja)
-"dW" = (/obj/structure/bookcase{icon_state = "book-5"; name = "\improper Mentor's Guide Bookcase"},/turf/open/floor/wood,/area/centcom/living)
+"dW" = (/obj/machinery/door/airlock/centcom{name = "High Command Memorial"},/turf/open/floor/wood,/area/centcom/living)
 "dX" = (/obj/structure/window/framed/almayer/hull{name = "ultra-reinforced window"},/turf/open/floor/plating,/area/centcom/living)
 "dY" = (/turf/closed/wall/indestructible,/area/space)
 "dZ" = (/obj/item/clothing/mask/gas/yautja,/obj/structure/window/reinforced{dir = 4},/obj/machinery/door/window/northright{icon_state = "right"; dir = 2},/obj/structure/table/reinforced{layer = 2.69},/obj/item/clothing/suit/armor/yautja,/obj/item/clothing/shoes/yautja,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
@@ -228,9 +228,9 @@
 "et" = (/obj/structure/rack,/obj/item/reagent_container/food/snacks/meat,/obj/item/reagent_container/food/snacks/xenomeat{pixel_x = -6; pixel_y = -5},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "eu" = (/obj/structure/xenoautopsy/tank/hugger,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "ev" = (/turf/open/floor/carpet{tag = "icon-carpetside (NORTHWEST)"; icon_state = "carpetside"; dir = 9},/area/centcom/living)
-"ew" = (/obj/structure/bed/chair/wood/normal{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/open/floor/carpet{tag = "icon-carpetside (NORTH)"; icon_state = "carpetside"; dir = 1},/area/centcom/living)
-"ex" = (/obj/structure/table/woodentable,/turf/open/floor/carpet{tag = "icon-carpetside (NORTH)"; icon_state = "carpetside"; dir = 1},/area/centcom/living)
-"ey" = (/obj/structure/bed/chair/wood/normal{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/open/floor/carpet{tag = "icon-carpetside (NORTH)"; icon_state = "carpetside"; dir = 1},/area/centcom/living)
+"ew" = (/obj/structure/table/woodentable/fancy,/turf/open/floor/wood,/area/centcom/living)
+"ex" = (/obj/structure/bed/chair/wood/wings{tag = "icon-wooden_chair_wings (NORTH)"; icon_state = "wooden_chair_wings"; dir = 1},/turf/open/floor/wood,/area/centcom/living)
+"ey" = (/obj/structure/flora/pottedplant{tag = "icon-plant-10"; icon_state = "plant-10"},/turf/open/floor/carpet,/area/centcom/living)
 "ez" = (/obj/structure/rack{layer = 2.79},/obj/item/explosive/grenade/spawnergrenade/smartdisc,/obj/item/explosive/grenade/spawnergrenade/smartdisc,/obj/item/explosive/grenade/spawnergrenade/smartdisc,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "eA" = (/obj/structure/xenoautopsy/tank/alien,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "eB" = (/obj/structure/rack,/obj/item/reagent_container/food/snacks/meat,/obj/machinery/light/small{tag = "icon-bulb1 (EAST)"; icon_state = "bulb1"; dir = 4},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
@@ -253,9 +253,9 @@
 "eS" = (/obj/machinery/door/airlock/secure{name = "Central Chamber"},/turf/open/shuttle{icon_state = "floor6"},/area/yautja)
 "eT" = (/obj/structure/bed/chair/comfy/teal{tag = "icon-comfychair (WEST)"; icon_state = "comfychair"; dir = 8},/turf/open/floor/almayer,/area/centcom/living)
 "eU" = (/turf/open/floor/carpet{tag = "icon-carpetside (WEST)"; icon_state = "carpetside"; dir = 8},/area/centcom/living)
-"eV" = (/obj/structure/bed/chair/wood/normal{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/open/floor/carpet,/area/centcom/living)
-"eW" = (/obj/structure/table/woodentable,/turf/open/floor/carpet,/area/centcom/living)
-"eX" = (/obj/structure/bed/chair/wood/normal{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/open/floor/carpet,/area/centcom/living)
+"eV" = (/obj/mecha/working/ripley/firefighter{desc = "Physical suit used by Snypehunter007. It appears to be well maintained"; name = "F.R.I.E.N.D. Suit"},/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
+"eW" = (/obj/structure/flora/pottedplant{tag = "icon-plant-10"; icon_state = "plant-10"},/turf/open/floor/carpet{tag = "icon-carpetside (WEST)"; icon_state = "carpetside"; dir = 8},/area/centcom/living)
+"eX" = (/obj/effect/decal/mecha_wreckage/gygax/dark{desc = "Physical suit used by Snypehunter007. It appears to have completely fallen apart."; name = "M.A.P.P.I.N.G. Suit"},/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
 "eY" = (/turf/open/floor/carpet,/area/centcom/living)
 "eZ" = (/turf/open/floor/carpet{tag = "icon-carpetside (EAST)"; icon_state = "carpetside"; dir = 4},/area/centcom/living)
 "fa" = (/obj/machinery/power/am_control_unit,/turf/open/floor/almayer{icon_state = "ai_floors"; tag = "icon-sterile"},/area/centcom/living)
@@ -279,10 +279,10 @@
 "fs" = (/obj/machinery/door/airlock/vault,/turf/open/floor/vault,/area/centcom/living)
 "ft" = (/turf/open/floor/vault,/area/centcom/living)
 "fu" = (/obj/structure/safe{desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Developer Secrets, do not open without at least two development team members present and permission from the host and head-dev.\""},/turf/open/floor/vault,/area/centcom/living)
-"fv" = (/obj/structure/prop/almayer/ship_memorial{desc = "A memorial to all Development Team members that have retired from working on CM. No mentor names are present."; name = "slab of remembrance"},/turf/open/floor/carpet,/area/centcom/living)
-"fw" = (/obj/structure/flora/pottedplant{tag = "icon-plant-10"; icon_state = "plant-10"},/obj/machinery/hologram/holopad,/turf/open/floor/carpet,/area/centcom/living)
-"fx" = (/obj/structure/prop/almayer/ship_memorial{desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."; name = "slab of remembrance"},/turf/open/floor/carpet,/area/centcom/living)
-"fy" = (/obj/mecha/combat/gygax/dark{desc = "Physical suit used by Snypehunter007. It appears to be well-maintained and ready for use at any time."; name = "M.A.P.P.I.N.G. Suit"},/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
+"fv" = (/obj/structure/prop/almayer/ship_memorial/centcomm,/turf/open/floor/wood,/area/centcom/living)
+"fw" = (/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
+"fx" = (/obj/item/clothing/head/collectable/tophat{desc = "A top hat, placed here as a special thanks to someone often overlooked and forgotten. But who the community owes a thank you anyways."; name = "Penguin"},/obj/machinery/hologram/holopad,/turf/open/floor/carpet,/area/centcom/living)
+"fy" = (/obj/structure/prop/almayer/ship_memorial/centcomm/admin,/turf/open/floor/wood,/area/centcom/living)
 "fz" = (/obj/machinery/telecomms/receiver/preset_cent,/turf/open/floor{icon_state = "green"; dir = 9},/area/centcom/control)
 "fA" = (/obj/machinery/telecomms/bus/preset_cent,/turf/open/floor{icon_state = "green"; dir = 1},/area/centcom/control)
 "fB" = (/obj/machinery/telecomms/processor/preset_cent,/turf/open/floor{icon_state = "green"; dir = 1},/area/centcom/control)
@@ -296,9 +296,9 @@
 "fJ" = (/obj/effect/decal/mecha_wreckage/gygax{desc = "Physical suit used by Snypehunter007. It appears to have completely fallen apart."; name = "M.O.D.E.R.A.T.O.R Suit"},/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
 "fK" = (/obj/effect/decal/mecha_wreckage/mauler{desc = "Physical suit used by Snypehunter007. It appears to have completely fallen apart."; name = "S.U.G.G.E.S.T.I.O.N. Suit"},/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
 "fL" = (/turf/open/floor/carpet{tag = "icon-carpetside (SOUTHWEST)"; icon_state = "carpetside"; dir = 10},/area/centcom/living)
-"fM" = (/obj/structure/bed/chair/wood/normal{tag = "icon-wooden_chair (EAST)"; icon_state = "wooden_chair"; dir = 4},/turf/open/floor/carpet{icon_state = "carpetside"},/area/centcom/living)
-"fN" = (/obj/structure/table/woodentable,/turf/open/floor/carpet{icon_state = "carpetside"},/area/centcom/living)
-"fO" = (/obj/structure/bed/chair/wood/normal{tag = "icon-wooden_chair (WEST)"; icon_state = "wooden_chair"; dir = 8},/turf/open/floor/carpet{icon_state = "carpetside"},/area/centcom/living)
+"fM" = (/obj/structure/flora/pottedplant{tag = "icon-plant-10"; icon_state = "plant-10"},/turf/open/floor/carpet{tag = "icon-carpetside (EAST)"; icon_state = "carpetside"; dir = 4},/area/centcom/living)
+"fN" = (/obj/effect/step_trigger/message/memorial,/turf/open/floor/carpet{tag = "icon-carpetside (NORTH)"; icon_state = "carpetside"; dir = 1},/area/centcom/living)
+"fO" = (/obj/effect/step_trigger/message/memorial,/turf/open/floor/carpet{icon_state = "carpetside"},/area/centcom/living)
 "fP" = (/turf/open/floor/carpet{icon_state = "carpetside"},/area/centcom/living)
 "fQ" = (/obj/machinery/telecomms/relay/preset/centcom,/turf/open/floor{icon_state = "green"; dir = 8},/area/centcom/control)
 "fR" = (/turf/open/floor{icon_state = "floor"},/area/centcom/control)
@@ -308,17 +308,14 @@
 "fV" = (/obj/structure/table/reinforced,/obj/effect/decal/warning_stripes,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4; health = 80},/obj/machinery/door/window/southleft{dir = 8; icon_state = "left"; layer = 2.8; tag = "icon-left (WEST)"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "fW" = (/turf/open/floor/carpet{tag = "icon-carpetside (SOUTHEAST)"; icon_state = "carpetside"; dir = 6},/area/centcom/living)
 "fX" = (/obj/machinery/door/airlock/centcom{name = "\improper Suit Storage and Repair"},/turf/open/floor/almayer,/area/centcom/living)
-"fY" = (/obj/structure/bookcase{icon_state = "book-5"},/turf/open/floor/wood,/area/centcom/living)
 "fZ" = (/turf/open/floor{icon_state = "green"; dir = 8},/area/centcom/control)
 "ga" = (/obj/machinery/door/airlock/secure{name = "\improper Meeting Chamber"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "gb" = (/obj/machinery/door/airlock/secure{name = "Trophy Room"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
-"gc" = (/obj/structure/table/reinforced,/obj/effect/spawner/random/tool,/turf/open/floor/almayer,/area/centcom/living)
 "gd" = (/obj/machinery/telecomms/allinone/interceptor,/turf/open/floor{icon_state = "green"; dir = 10},/area/centcom/control)
 "ge" = (/obj/machinery/telecomms/broadcaster/preset_cent,/turf/open/floor{icon_state = "green"},/area/centcom/control)
 "gf" = (/obj/machinery/telecomms/hub/preset_cent,/turf/open/floor{icon_state = "green"},/area/centcom/control)
 "gg" = (/obj/machinery/computer/rdservercontrol{badmin = 1; name = "Master R&amp;D Server Controller"},/turf/open/floor{icon_state = "green"},/area/centcom/control)
 "gh" = (/obj/machinery/r_n_d/server/centcom,/turf/open/floor{icon_state = "green"; dir = 6},/area/centcom/control)
-"gi" = (/obj/structure/table/reinforced,/obj/effect/spawner/random/technology_scanner,/turf/open/floor/almayer,/area/centcom/living)
 "gj" = (/turf/open/floor/almayer{tag = "icon-blue (SOUTHWEST)"; icon_state = "blue"; dir = 10},/area/centcom/living)
 "gk" = (/obj/structure/table/reinforced,/obj/item/device/flashlight/lantern,/obj/machinery/light/small{dir = 4},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "gl" = (/obj/structure/curtain/red,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
@@ -786,21 +783,21 @@ dsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsaaaa
 dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaadYdYdYdYdYdYdYaaaCaPbmaPbmaPbmbhdQdQdQdQdQdQdQbhaPbmaPbmaPbmaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaacfdZeacMeaebcfaacfececedcKcLcKedececcfaacfeeefegeheicfaaaaaaaaaaaaaaaaaaaaaa
 dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaadYejejejejejdYaaaCbsbsbsbsbsbsbedQdQdQdQdQdQdQbebsbsbsbsbsbsaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaacfekekcKekekcfaacfececedcKcLcKedececcfaacfcKcKcKcKcKcfaaaaaaaaaaaaaaaaaaaaaa
 dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaadYejdwejdwejdYaaaCaGbxaGbxaGbxaXdQdQdQdQdQdQdQaXaGbxaGbxaGbxaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaacfcfdZeacKeaemcfcfcfenencfcKcLcKcfenencfcfcfcKcKcKcKcKcfcfaaaaaaaaaaaaaaaaaaaa
-dsdsdsdsdsdsdxdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdydsdsdsdsdsdsdsdsaadYejejejejejdYaaaCbgbzbgbzbgbzbAdQdQdQdQdQdQdQbAbgbzbgbzbgbzaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaacfeqcKcKcKcKcKeqcfcKcLcLcKcKcLcKcKcLcLcKcfercKescfetcKeucfaaaaaaaaaaaaaaaaaaaa
-dsdvdvdvdsdEdvdFdsdIdvdIdsdEdJdJdJdJdJdJdFdsdydydydydydydydydydydydydydydydsaadYejdwejdwejdYaaaCbibMbibMbibMbNdQdQdQdQdQdQdQbNbibMbibMbibMaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaacfezcKcKcKcKcKezcfcKcLcLcLcLcLcLcLcLcLcKcfeAcKeBcfeCcKeDcfaaaaaaaaaaaaaaaaaaaa
-dsdvdMdvdxdvdvdNdsdIdMdIdsdOdvdvdvdvdvdvdNdsdydWdydWdWdWdWdydWdWdWdWdydWdydXaadYejejejejejdYaaaCbmbObmbObmbObPdQdQdQdQdQdQdQbPbmbObmbObmbOaCaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaacfeKcKcKcKcKcKeLcfcKdPcKcKcKcLcKcKcKdPcKcfeMcKeNcfeOcKePcfaaaaaaaaaaaaaaaaaaaa
-dsdvdvdvdxdvdvdNdsdIdvdIdsdOdvdvdvdvdvdvdNdsdydWdydydydydydydydydydydydWdydXaadYdYdYdYdYdYdYaaaCbsbQbsbQbsbQbRdQdQdQdQdQdQdQbRbsbQbsbQbsbQaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfeQcKcKcKcKcKeRcfcfcfcfcfcfeScfcfcfcfcfcfeDcKcKcKcKcKeucfaaaaaaaaaaaaaaaaaaaa
-dsdvdvdvdsdOdvdNdsdIdvdIdsdOdvdMdveleoeoepdsdydWdyevewexeyeEewexeyeFdydWdydXaaaaaaaaaaaaaaaaaaaCbxaHbxaHbxaHaZdQdQdQdQdQdQdQaZbxaHbxaHbxaHaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcfcfcffccfcfcfcfcKcKcKcMcKcLcKcMcKcKcKcfcfcfcffccfcfcfcfaaaaaaaaaaaaaaaaaaaa
-dsdsdsdsdsdOdvdNdsdseGdsdsdOeHeIeTdNdsdsdsdsdydWdyeUeVeWeXeYeVeWeXeZdydWdydXaafnfnfnfnfnfnfoaaaCbzaObzaObzaObSdQdQdQdQdQdQdQbSbzaObzaObzaOaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKcKcKcKcKcKcKcfcKcKcLcLcLcLcLcLcLcKcKcffpcKcKcKcKcKfqcfaaaaaaaaaaaaaaaaaaaa
-dsfafbfddsdOdvfedJdJdvffdsdOeHfgeTdNdsfhfidsdydydyeUeYeYeYeYeYeYeYeZdydydydXaafnfzfAfBfCfDfoaaaCbMaQbMaQbMaQaYbTaYbTaYbTaYbTaYbMaQbMaQbMaQaCaaaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKcKfEfEfEcKddcfdmcLcLcKcKcKcKcKcLcLddcfdmcKcKcKcKcKcKcfaaaaaaaaaaaaaaaaaaaa
-dsfjfkfbfldvdMdvdvdvdvdvfmdveHfreTdvfsftfudsdydydyeUeYfveYfwfxeYeYeZdydydydXaafnfQfRfRfRfRfoaaaCbOaPbOaPbOaPaPaQaPaQaPaQaPaQaPbOaPbOaPbOaPaCaaaaaaaaaaaaaaaaaaaaaaeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKfSfTfTfTfUcKcfcKcLcKcKcLdPcLcKcKcLcKcfcKcKfVcKfVcKcKcfaaaaaaaaaaaaaaaaaaaa
-dsfafbfydsdOdveleoeodvffdsdOeHfFeTdNdsfhfGdsdydWdyeUeYeYeYeYeYeYeYeZdydWdydXaafnfZfRfRfRfRfoaaaCbQaNbQaNbQaNaQaPaQaPaQaPaQaPaQbQaNbQaNbQaNaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfdcfSfTcKfTfUcKgacLcLcKcLcfcfcfcLcKcLcLgbcKcKcKcKcKcKddcfaaaaaaaaaaaaaaaaaaaa
-dsdsdsdsdsdOdvdNdsdseGdsdsdOeHfHeTdNdsdsdsdsdydWdyeUeVeWeXeYeVeWeXeZdydWdydXaafngdgegfggghfnaaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKfSfTfTfTfUcKcfcKcLcKcKcLcMcLcKcKcLcKcfcKcKfVcKfVcKcKcfaaaaaaaaaaaaaaaaaaaa
-dsfIfJfKdsdOdvdNdsdIdvdIdsdOdvdMdvfedJdJdFdsdydWdyfLfMfNfOfPfMfNfOfWdydWdydXaafnfnfnfnfnfnfnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtaaaaaaaaaaaaaaaaaaaaaacfcKcKgrgrgrcKddcfdmcLcLcKcKcKcKcKcLcLddcfdmcKcKcKcKcKcKcfaaaaaaaaaaaaaaaaaaaa
-dsdvdvdvfXdvdvdNdsdIdvdIdsdOdvdvdvdvdvdvdNdsdydWdydydydydydydydydydydydWdydXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcKcKcKdPcKcKcKcfcKcKcLcLcLcLcLcLcLcKcKcfgtcKcKdPcKcKgucfaaaaaaaaaaaaaaaaaaaa
-dsdvdMdvfXdvdvdNdsdIdMdIdsdOdvdvdvdvdvdvdNdsdydydydWdWdWfYdydWdWdWdWdydydydXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcfcfcfcfcfcfcfcfcfcKcKdPcKcLcKdPcKcKcfcfcfcfcfcfcfcfcfcfcfcfcfaaaaaaaaaaaaaa
-dsgcgigcdsgjdvepdsdIdvdIdsgjeoeoeoeoeoeoepdsdydydydydydydydydydydydydydydydsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcKgzgAgBgAgAgAgAcfcfcfcfcfgCcfcfcfcfcfgDcKcfgDcKcfgDcKcfgEgFcfaaaaaaaaaaaaaa
-dsdsdsdsdsdsdxdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdydsdsdsdsdsdsdsdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaacfcfcfcfcfcKcKcKcKcKcKcKcKcfcKcKcMcKcLcKcMcKcKcfcKcKcfcKcKcfcKcKcfcKcKcfcfcfcfcfaaaaaa
+dsdsdsdsdsdsdxdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdWdsdsdsdsdsdsdsdsaadYejejejejejdYaaaCbgbzbgbzbgbzbAdQdQdQdQdQdQdQbAbgbzbgbzbgbzaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaacfeqcKcKcKcKcKeqcfcKcLcLcKcKcLcKcKcLcLcKcfercKescfetcKeucfaaaaaaaaaaaaaaaaaaaa
+dsdvdvdvdsdEdvdFdsdIdvdIdsdEdJdJdJdJdJdJdFdsdydydyewewdyeveEeFdyewewdydydydsaadYejdwejdwejdYaaaCbibMbibMbibMbNdQdQdQdQdQdQdQbNbibMbibMbibMaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaacfezcKcKcKcKcKezcfcKcLcLcLcLcLcLcLcLcLcKcfeAcKeBcfeCcKeDcfaaaaaaaaaaaaaaaaaaaa
+dsdvdMdvdxdvdvdNdsdIdMdIdsdOdvdvdvdvdvdvdNdsdydydyexexdyeUeYeZdyexexdydydydXaadYejejejejejdYaaaCbmbObmbObmbObPdQdQdQdQdQdQdQbPbmbObmbObmbOaCaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaacfeKcKcKcKcKcKeLcfcKdPcKcKcKcLcKcKcKdPcKcfeMcKeNcfeOcKePcfaaaaaaaaaaaaaaaaaaaa
+dsdvdvdvdxdvdvdNdsdIdvdIdsdOdvdvdvdvdvdvdNdsdydyevfNfNeEeYeYeYeEfNfNeFdydydXaadYdYdYdYdYdYdYaaaCbsbQbsbQbsbQbRdQdQdQdQdQdQdQbRbsbQbsbQbsbQaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfeQcKcKcKcKcKeRcfcfcfcfcfcfeScfcfcfcfcfcfeDcKcKcKcKcKeucfaaaaaaaaaaaaaaaaaaaa
+dsdvdvdvdsdOdvdNdsdIdvdIdsdOdvdMdveleoeoepdsdydyeWfvdyeyeYfxeYeyfydyfMdydydXaaaaaaaaaaaaaaaaaaaCbxaHbxaHbxaHaZdQdQdQdQdQdQdQaZbxaHbxaHbxaHaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcfcfcffccfcfcfcfcKcKcKcMcKcLcKcMcKcKcKcfcfcfcffccfcfcfcfaaaaaaaaaaaaaaaaaaaa
+dsdsdsdsdsdOdvdNdsdseGdsdsdOeHeIeTdNdsdsdsdsdydyfLfOfOfPeYeYeYfPfOfOfWdydydXaafnfnfnfnfnfnfoaaaCbzaObzaObzaObSdQdQdQdQdQdQdQbSbzaObzaObzaOaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKcKcKcKcKcKcKcfcKcKcLcLcLcLcLcLcLcKcKcffpcKcKcKcKcKfqcfaaaaaaaaaaaaaaaaaaaa
+dsfafbfddsdOdvfedJdJdvffdsdOeHfgeTdNdsfhfidsdydydydydydyeUeYeZdydydydydydydXaafnfzfAfBfCfDfoaaaCbMaQbMaQbMaQaYbTaYbTaYbTaYbTaYbMaQbMaQbMaQaCaaaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKcKfEfEfEcKddcfdmcLcLcKcKcKcKcKcLcLddcfdmcKcKcKcKcKcKcfaaaaaaaaaaaaaaaaaaaa
+dsfjfkfbfldvdMdvdvdvdvdvfmdveHfreTdvfsftfudsdydyexexexdyeUeYeZdyexexexdydydXaafnfQfRfRfRfRfoaaaCbOaPbOaPbOaPaPaQaPaQaPaQaPaQaPbOaPbOaPbOaPaCaaaaaaaaaaaaaaaaaaaaaaeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKfSfTfTfTfUcKcfcKcLcKcKcLdPcLcKcKcLcKcfcKcKfVcKfVcKcKcfaaaaaaaaaaaaaaaaaaaa
+dsfafbeVdsdOdveleoeodvffdsdOeHfFeTdNdsfhfGdsdydydydydydyeUeYeZdydydydydydydXaafnfZfRfRfRfRfoaaaCbQaNbQaNbQaNaQaPaQaPaQaPaQaPaQbQaNbQaNbQaNaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfdcfSfTcKfTfUcKgacLcLcKcLcfcfcfcLcKcLcLgbcKcKcKcKcKcKddcfaaaaaaaaaaaaaaaaaaaa
+dsdsdsdsdsdOdvdNdsdseGdsdsdOeHfHeTdNdsdsdsdsdydyexexexdyeUeYeZdyexexexdydydXaafngdgegfggghfnaaaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKfSfTfTfTfUcKcfcKcLcKcKcLcMcLcKcKcLcKcfcKcKfVcKfVcKcKcfaaaaaaaaaaaaaaaaaaaa
+dsfIfJfKdsdOdvdNdsdIdvdIdsdOdvdMdvfedJdJdFdsdydydydydydyeUeYeZdydydydydydydXaafnfnfnfnfnfnfnaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtdtaaaaaaaaaaaaaaaaaaaaaacfcKcKgrgrgrcKddcfdmcLcLcKcKcKcKcKcLcLddcfdmcKcKcKcKcKcKcfaaaaaaaaaaaaaaaaaaaa
+dsdvdvdvfXdvdvdNdsdIdvdIdsdOdvdvdvdvdvdvdNdsdydyexexexdyeUeYeZdyexexexdydydXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcKcKcKdPcKcKcKcfcKcKcLcLcLcLcLcLcLcKcKcfgtcKcKdPcKcKgucfaaaaaaaaaaaaaaaaaaaa
+dsdvdMdvfXdvdvdNdsdIdMdIdsdOdvdvdvdvdvdvdNdsdydydydydydyeUeYeZdydydydydydydXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcfcfcfcfcfcfcfcfcfcKcKdPcKcLcKdPcKcKcfcfcfcfcfcfcfcfcfcfcfcfcfaaaaaaaaaaaaaa
+dseXfwfwdsgjdvepdsdIdvdIdsgjeoeoeoeoeoeoepdsdydydydydydyfLfPfWdydydydydydydsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaaaaaaaaaacfcKgzgAgBgAgAgAgAcfcfcfcfcfgCcfcfcfcfcfgDcKcfgDcKcfgDcKcfgEgFcfaaaaaaaaaaaaaa
+dsdsdsdsdsdsdxdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdWdsdsdsdsdsdsdsdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududududududududududududududududududududududududududududududududtaaaaaaaaaaaaaacfcfcfcfcfcKcKcKcKcKcKcKcKcfcKcKcMcKcLcKcMcKcKcfcKcKcfcKcKcfcKcKcfcKcKcfcfcfcfcfaaaaaa
 dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdudududududududududuiUiUiViViUiUdududududududududududududududududududtaaaaaaaaaaaaaacfcKcMcKgGcKcKcKcKcKcKcKcKcfcKcLdVcLcLcLdVcLcKcfgHgIgJgHgKgLgHgMgNcKcKcfgOgOgOcfaaaaaa
 dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdudududududuiUiWiWiUiUjejvktkuiUiUiUiUiUiUdudududududududududududududtaaaaaaaaaaaaaacfcKcKcKcfcfgPcffTfTfTfTgQcfdmmRmSgHmTgHgHmUddcfdccKcKcKcKcKcKcKcKcKddcfcKcKcKcfaaaaaa
 dsdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdvdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadtdududududuiUiUkykykziUkAjvktkBiUkCkDkEkFiUdudududududududududududududtaaaaaaaaaaaaaacfdmcKcKcfcKcKcKcKcKcKcKcKgRcLcLgHcKcKcKgHcLcLgTcKcKcKcKcKcKcKcKcKcKcKgUcKcKgVcfaaaaaa

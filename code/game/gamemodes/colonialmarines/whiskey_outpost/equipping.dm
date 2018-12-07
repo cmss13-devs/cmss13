@@ -441,7 +441,6 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 	supervisors = "the bunker crew master and the quartermaster"
 	selection_color = "#BAAFD9"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CARGO)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CARGO)
 	skills_type = /datum/skills/CE
 	paygrade = "E4"
 	generate_wearable_equipment(mob/living/carbon/human/H)

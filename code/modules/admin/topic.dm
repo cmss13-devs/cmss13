@@ -1576,6 +1576,9 @@
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
 		for(var/obj/machinery/faxmachine/F in machines)
 			if(F == fax)
 				if(! (F.stat & (BROKEN|NOPOWER) ) )
@@ -1643,6 +1646,10 @@
 		CLFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		announce_fax( ,msg_ghost)
+
 
 		for(var/obj/machinery/faxmachine/F in machines)
 			if(F == fax)

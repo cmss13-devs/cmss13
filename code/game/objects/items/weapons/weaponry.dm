@@ -158,3 +158,130 @@
 		cdel(src)
 		update_icon(user)
 	update_icon(user)
+
+
+/obj/item/weapon/katana/sharp
+	name = "absurdly sharp katana"
+	desc = "<p>That's it. I'm sick of all this \"Masterwork Bastard Sword\" bullshit that's going on in CM-SS13 right now. Katanas deserve much better than that. Much, much better than that.</p>\
+<p>I should know what I'm talking about. I myself commissioned a genuine katana in Japan for 2,400,000 Yen (that's about $20,000) and have been practicing with it for almost 2 years now. I can even cut slabs of solid steel with my katana.</p>\
+<p>Japanese smiths spend years working on a single katana and fold it up to a million times to produce the finest blades known to mankind.</p>\
+<p>Katanas are thrice as sharp as European swords and thrice as hard for that matter too. Anything a longsword can cut through, a katana can cut through better. I'm pretty sure a katana could easily bisect a knight wearing full plate with a simple vertical slash.</p>\
+<p>Ever wonder why medieval Europe never bothered conquering Japan? That's right, they were too scared to fight the disciplined Samurai and their katanas of destruction. Even in World War II, American soldiers targeted the men with the katanas first because their killing power was feared and respected.</p>"
+	icon_state = "katana"
+	flags_atom = FPRINT|CONDUCT
+	force = 4444
+	throwforce = 4444
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	w_class = 3
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_speed = 1
+
+	var/kill_delay = 50
+	var/number_of_cuts = 8
+	var/list/already_dead = list()
+
+	attack_verb = list("sliced", "diced", "cut")
+
+	suicide_act(mob/user)
+		viewers(user) << "\red <b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"
+		return(BRUTELOSS)
+
+/obj/item/weapon/katana/sharp/attack(mob/living/M, mob/living/user, def_zone)
+
+	if(flags_item & NOBLUDGEON)
+		return
+
+	if (!istype(M)) // not sure if this is the right thing...
+		return 0
+
+	if (M.can_be_operated_on())        //Checks if mob is lying down on table for surgery
+		if (do_surgery(M,user,src))
+			return 0
+
+	if( (M in already_dead) || (M.stat == DEAD) )
+		user << "[M] is already dead."
+		return 0
+
+	already_dead += M
+	spawn(kill_delay)
+		already_dead -= M
+
+	/////////////////////////
+	user.lastattacked = M
+	M.lastattacker = user
+
+	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [M.name] ([M.ckey]) with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])</font>"
+	M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [user.name] ([user.ckey]) with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])</font>"
+	msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(user.a_intent)]) (DAMTYE: [uppertext(damtype)])" )
+
+	/////////////////////////
+
+	add_fingerprint(user)
+
+	var/power = force
+	if(HULK in user.mutations)
+		power *= 2
+
+	if(user.mind && user.mind.cm_skills)
+		power = round(power * (1 + 0.3*user.mind.cm_skills.melee_weapons)) //30% bonus per melee level
+
+
+	//if the target also has a katana (and we aren't attacking ourselves), we add some suspense
+	if( ( istype(M.get_active_hand(), /obj/item/weapon/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/katana) ) && M != user )
+
+		if(prob(50))
+			user.visible_message("<span class='danger'>[M] and [user] cross blades!</span>")
+		else
+			M.visible_message("<span class='danger'>[user] and [M] cross blades!</span>")
+		playsound(user, 'sound/weapons/bladeslice.ogg', 25, 1)
+		playsound(M, 'sound/weapons/bladeslice.ogg', 25, 1)
+		user.animation_attack_on(M)
+		user.flick_attack_overlay(M, "punch")
+		M.animation_attack_on(user)
+		M.flick_attack_overlay(user, "punch")
+		spawn(10)
+			user.Stun((kill_delay-10)/15)
+			M.Stun((kill_delay-10)/15)
+
+	else //No katana
+
+		var/showname = "."
+		if(user)
+			showname = " by [user]."
+		if(!(user in viewers(M, null)))
+			showname = "."
+
+		var/used_verb = "attacked"
+		if(attack_verb && attack_verb.len)
+			used_verb = pick(attack_verb)
+		user.visible_message("<span class='danger'>[M] has been [used_verb] with [src][showname].</span>",\
+						"<span class='danger'>You [used_verb] [M] with [src].</span>", null, 5)
+
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
+		user.animation_attack_on(M)
+		user.flick_attack_overlay(M, "punch")
+
+		M.Stun(kill_delay/15)
+
+
+	for (var/mob/O in hearers(world.view, M))
+		O << sound('sound/effects/Heart Beat.ogg', repeat = 1, wait = 0, volume = 100, channel = 2) //play on same channel as ambience
+		spawn(kill_delay)
+			O << sound(, , , , channel = 2) //cut sound
+
+
+	spawn(kill_delay) //OMAE WA MOU SHINDEIRU
+
+		playsound(M, 'sound/effects/bone_break1.ogg', 100, 1)
+
+		for(var/i=1, i <= number_of_cuts, i++)
+			def_zone = pick("head","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
+			switch(damtype)
+				if("brute")
+					M.apply_damage(power,BRUTE,def_zone)
+				if("fire")
+					if (!(COLD_RESISTANCE in M.mutations))
+						M.apply_damage(power,BURN,def_zone)
+
+	return 1

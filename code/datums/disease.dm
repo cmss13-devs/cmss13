@@ -156,8 +156,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		else //he's dead.
 			if(spread_type!=SPECIAL)
 				spread_type = CONTACT_GENERAL
-			affected_mob = null
-	if(!affected_mob) //the virus is in inanimate obj
+	if(!affected_mob || affected_mob.stat == DEAD) //the virus is in inanimate obj
 //		world << "[src] longevity = [longevity]"
 
 		if(prob(70))

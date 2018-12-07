@@ -356,10 +356,11 @@
 
 //Ultrazine
 /obj/item/storage/pill_bottle/ultrazine
-	name = "\improper Pill bottle"
+	name = "pill bottle"
 	icon_state = "pill_canister11"
 	max_storage_space = 5
 	skilllock = 0 //CL can open it
+	var/idlock = 1
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine
 
 	req_access = list(ACCESS_WY_CORPORATE)
@@ -367,6 +368,9 @@
 
 
 /obj/item/storage/pill_bottle/ultrazine/proc/id_check(mob/user)
+
+	if(!idlock)
+		return 1
 
 	var/mob/living/carbon/human/H = user
 
@@ -398,3 +402,7 @@
 	if(!id_check(user))
 		return
 	..()
+
+/obj/item/storage/pill_bottle/ultrazine/skillless
+	name = "\improper Ultrazine pill bottle"
+	idlock = 0

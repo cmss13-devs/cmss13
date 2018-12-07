@@ -1,6 +1,6 @@
 /obj/item/implant/neurostim
 	name = "neurostimulator implant"
-	desc = "An implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disoritentation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codeprhase. Implant may be degraded by the body's immune system over time, and thus may occasionally malfunction."
+	desc = "An implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disoritentation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant may be degraded by the body's immune system over time, and thus may occasionally malfunction."
 	var/phrase = "supercalifragilisticexpialidocious"
 	var/last_activated = 0
 	var/implant_age = 0 //number of ticks since being implanted

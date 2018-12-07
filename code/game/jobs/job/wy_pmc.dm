@@ -54,7 +54,6 @@
 	total_positions = -1
 	spawn_positions = -1
 	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN)
-	minimal_access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 
 	generate_wearable_equipment()
@@ -89,7 +88,6 @@
 	total_positions = 3
 	spawn_positions = 3
 	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE)
-	minimal_access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	skills_type = /datum/skills/combat_engineer
 
@@ -128,7 +126,6 @@
 	total_positions = 3
 	spawn_positions = 3
 	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE)
-	minimal_access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	skills_type = /datum/skills/combat_medic
 
@@ -169,7 +166,6 @@
 	spawn_positions = 2
 	minimal_player_age = 7
 	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_CORPORATE)
-	minimal_access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_CORPORATE)
 
 /datum/job/pmc/elite_responder/gunner
 	title = "PMC Gunner"
@@ -300,7 +296,6 @@
 	spawn_positions = 2
 	minimal_player_age = 10
 	access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
-	minimal_access = list(ACCESS_IFF_PMC, ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	skills_type = /datum/skills/SL/pmc
 

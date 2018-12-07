@@ -7,9 +7,8 @@
 	var/comm_title 			= "" //The mini-title to display over comms.
 	var/paygrade 			= 0 //Also displays a ranking when talking over the radio.
 
-	//Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
-	var/list/minimal_access		//Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
-	var/list/access				//Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
+	//Job access.
+	var/list/access	
 
 	var/faction 			= "Marines" //Players will be allowed to spawn in as jobs that are set to "Marines". Other factions are special game mode spawns.
 	var/total_positions 	= 0 //How many players can be this job
@@ -152,8 +151,6 @@
 		A.overlays += I
 
 /datum/job/proc/get_access()
-	if(!config)							return minimal_access.Copy() //Need to copy, because we want a new list here. Not the datum's list.
-	if(config.jobs_have_minimal_access) return minimal_access.Copy()
 	return access.Copy()
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1

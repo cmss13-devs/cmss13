@@ -14,7 +14,6 @@
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_color = "#ffeeaa"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/CE
 
@@ -51,7 +50,6 @@ You are also next in the chain of command, should the bridge crew fall in the li
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_color = "#9990B2"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/RO
 
@@ -97,7 +95,6 @@ A happy ship is a well-functioning ship."}
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/MT
 
@@ -146,7 +143,6 @@ Start with the ship's engine, and don't forget radiation equipment."}
 	supervisors = "the requisitions officer"
 	selection_color = "#BAAFD9"
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO)
-	minimal_access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/CT
 

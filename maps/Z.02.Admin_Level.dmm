@@ -279,10 +279,10 @@
 "fs" = (/obj/machinery/door/airlock/vault,/turf/open/floor/vault,/area/centcom/living)
 "ft" = (/turf/open/floor/vault,/area/centcom/living)
 "fu" = (/obj/structure/safe{desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Developer Secrets, do not open without at least two development team members present and permission from the host and head-dev.\""},/turf/open/floor/vault,/area/centcom/living)
-"fv" = (/obj/structure/prop/almayer/ship_memorial/centcomm,/turf/open/floor/wood,/area/centcom/living)
+"fv" = (/obj/structure/prop/almayer/ship_memorial/centcomm,/turf/open/floor/carpet,/area/centcom/living)
 "fw" = (/turf/open/floor/mech_bay_recharge_floor,/area/centcom/living)
 "fx" = (/obj/item/clothing/head/collectable/tophat{desc = "A top hat, placed here as a special thanks to someone often overlooked and forgotten. But who the community owes a thank you anyways."; name = "Penguin"},/obj/machinery/hologram/holopad,/turf/open/floor/carpet,/area/centcom/living)
-"fy" = (/obj/structure/prop/almayer/ship_memorial/centcomm/admin,/turf/open/floor/wood,/area/centcom/living)
+"fy" = (/obj/structure/prop/almayer/ship_memorial/centcomm/admin,/turf/open/floor/carpet,/area/centcom/living)
 "fz" = (/obj/machinery/telecomms/receiver/preset_cent,/turf/open/floor{icon_state = "green"; dir = 9},/area/centcom/control)
 "fA" = (/obj/machinery/telecomms/bus/preset_cent,/turf/open/floor{icon_state = "green"; dir = 1},/area/centcom/control)
 "fB" = (/obj/machinery/telecomms/processor/preset_cent,/turf/open/floor{icon_state = "green"; dir = 1},/area/centcom/control)
@@ -787,7 +787,7 @@ dsdsdsdsdsdsdxdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdWdsdsdsdsdsdsdsdsaadY
 dsdvdvdvdsdEdvdFdsdIdvdIdsdEdJdJdJdJdJdJdFdsdydydyewewdyeveEeFdyewewdydydydsaadYejdwejdwejdYaaaCbibMbibMbibMbNdQdQdQdQdQdQdQbNbibMbibMbibMaCaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaacfezcKcKcKcKcKezcfcKcLcLcLcLcLcLcLcLcLcKcfeAcKeBcfeCcKeDcfaaaaaaaaaaaaaaaaaaaa
 dsdvdMdvdxdvdvdNdsdIdMdIdsdOdvdvdvdvdvdvdNdsdydydyexexdyeUeYeZdyexexdydydydXaadYejejejejejdYaaaCbmbObmbObmbObPdQdQdQdQdQdQdQbPbmbObmbObmbOaCaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaacfeKcKcKcKcKcKeLcfcKdPcKcKcKcLcKcKcKdPcKcfeMcKeNcfeOcKePcfaaaaaaaaaaaaaaaaaaaa
 dsdvdvdvdxdvdvdNdsdIdvdIdsdOdvdvdvdvdvdvdNdsdydyevfNfNeEeYeYeYeEfNfNeFdydydXaadYdYdYdYdYdYdYaaaCbsbQbsbQbsbQbRdQdQdQdQdQdQdQbRbsbQbsbQbsbQaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfeQcKcKcKcKcKeRcfcfcfcfcfcfeScfcfcfcfcfcfeDcKcKcKcKcKeucfaaaaaaaaaaaaaaaaaaaa
-dsdvdvdvdsdOdvdNdsdIdvdIdsdOdvdMdveleoeoepdsdydyeWfvdyeyeYfxeYeyfydyfMdydydXaaaaaaaaaaaaaaaaaaaCbxaHbxaHbxaHaZdQdQdQdQdQdQdQaZbxaHbxaHbxaHaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcfcfcffccfcfcfcfcKcKcKcMcKcLcKcMcKcKcKcfcfcfcffccfcfcfcfaaaaaaaaaaaaaaaaaaaa
+dsdvdvdvdsdOdvdNdsdIdvdIdsdOdvdMdveleoeoepdsdydyeWfveYeyeYfxeYeyfyeYfMdydydXaaaaaaaaaaaaaaaaaaaCbxaHbxaHbxaHaZdQdQdQdQdQdQdQaZbxaHbxaHbxaHaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcfcfcffccfcfcfcfcKcKcKcMcKcLcKcMcKcKcKcfcfcfcffccfcfcfcfaaaaaaaaaaaaaaaaaaaa
 dsdsdsdsdsdOdvdNdsdseGdsdsdOeHeIeTdNdsdsdsdsdydyfLfOfOfPeYeYeYfPfOfOfWdydydXaafnfnfnfnfnfnfoaaaCbzaObzaObzaObSdQdQdQdQdQdQdQbSbzaObzaObzaOaCaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKcKcKcKcKcKcKcfcKcKcLcLcLcLcLcLcLcKcKcffpcKcKcKcKcKfqcfaaaaaaaaaaaaaaaaaaaa
 dsfafbfddsdOdvfedJdJdvffdsdOeHfgeTdNdsfhfidsdydydydydydyeUeYeZdydydydydydydXaafnfzfAfBfCfDfoaaaCbMaQbMaQbMaQaYbTaYbTaYbTaYbTaYbMaQbMaQbMaQaCaaaaaaaaaaaaaaeJeJeJeJeJeJeJeJeJeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKcKfEfEfEcKddcfdmcLcLcKcKcKcKcKcLcLddcfdmcKcKcKcKcKcKcfaaaaaaaaaaaaaaaaaaaa
 dsfjfkfbfldvdMdvdvdvdvdvfmdveHfreTdvfsftfudsdydyexexexdyeUeYeZdyexexexdydydXaafnfQfRfRfRfRfoaaaCbOaPbOaPbOaPaPaQaPaQaPaQaPaQaPbOaPbOaPbOaPaCaaaaaaaaaaaaaaaaaaaaaaeJeJeJeJeJeJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacfcKfSfTfTfTfUcKcfcKcLcKcKcLdPcLcKcKcLcKcfcKcKfVcKfVcKcKcfaaaaaaaaaaaaaaaaaaaa

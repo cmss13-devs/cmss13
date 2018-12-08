@@ -56,6 +56,7 @@
 	var/low_burst_value = 2
 	var/med_burst_value = 3
 	var/high_burst_value = 4
+	var/mhigh_burst_value = 5
 	var/max_burst_value = 6
 
 	var/min_fire_delay = 1

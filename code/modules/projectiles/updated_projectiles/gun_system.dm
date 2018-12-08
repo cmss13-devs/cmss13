@@ -15,7 +15,7 @@
 	sprite_sheet_id = 1
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
-
+	var/accepted_ammo = list()
 	var/muzzle_flash 	= "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
 
@@ -304,7 +304,7 @@ Reload a gun using a magazine.
 This sets all the initial datum's stuff. The bullet does the rest.
 User can be passed as null, (a gun reloading itself for instance), so we need to watch for that constantly.
 */
-/obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/proc/reload(mob/user, obj/item/ammo_magazine/magazine) //override for guns who use more special mags.
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG)) return
 
 	if(!magazine || !istype(magazine))
@@ -319,7 +319,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		user << "<span class='warning'>[magazine] is empty!</span>"
 		return
 
-	if(!istype(src, magazine.gun_type))
+	if(!istype(src, magazine.gun_type) && !((magazine.type) in src.accepted_ammo))
 		user << "<span class='warning'>That magazine doesn't fit in there!</span>"
 		return
 

@@ -250,7 +250,17 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/MP/RO/New()
 	select_gamemode_skin(/obj/item/clothing/suit/storage/marine/MP/RO)
 	..()
+//Making a new object because we might want to edit armor values and such.
+//Or give it its own sprite. It's more for the future.
+/obj/item/clothing/suit/storage/marine/MP/CO
+	icon_state = "officer"
+	name = "\improper M3 pattern captain armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 
+/obj/item/clothing/suit/storage/marine/MP/CO/New()
+	select_gamemode_skin(/obj/item/clothing/suit/storage/marine/MP/CO)
+	..()
 
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"

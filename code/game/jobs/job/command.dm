@@ -61,7 +61,16 @@ Godspeed, commander!"}
 
 	announce_entry_message(mob/living/carbon/human/H)
 		sleep(15)
-		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST) captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST) 
+			captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+			for(var/obj/structure/closet/secure_closet/securecom/S in world)
+				var/obj/item/weapon/gun/rifle/m41aMK1/elite/I = new/obj/item/weapon/gun/rifle/m41aMK1/elite/
+				if(S.opened == 0)
+					I.loc = S
+				if(S.opened == 1)
+					I.loc = S.loc
+				if(istype(I))
+					call(/obj/item/weapon/gun/rifle/m41aMK1/elite/proc/name_after_co)(H, I)
 		..()
 
 	get_access() return get_all_marine_access()

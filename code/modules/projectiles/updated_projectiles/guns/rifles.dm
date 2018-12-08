@@ -152,9 +152,79 @@
 	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
+//Special gun for the CO to replace the smartgun
+/obj/item/weapon/gun/rifle/m41aMK1/elite
+	name = "\improper M41A pulse rifle MK2/0"
+	desc = "A special prototype of the M41a MK2. Property of the CO. The reciever has been adjusted to accept both MK1 and MK2 mags."
+	icon_state = "m41amk1" //Placeholder.
+	item_state = "m41amk1" //Placeholder.
+	fire_sound = "gun_pulse"
+	current_mag = /obj/item/ammo_magazine/rifle/incendiary
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/rifle/incendiary,
+		/obj/item/ammo_magazine/rifle/ap
+	)
+	//somewhere in between the mk1 and mk2
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/scope/mini)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
+	toggle_burst()
+		var/obj/item/weapon/gun/G = get_active_firearm(usr)
+		if(!G) return
+		src = G
+		if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
+			return
+		if(burst_amount == config.med_burst_value && (flags_gun_features & GUN_BURST_ON))
+			playsound(usr, 'sound/machines/click.ogg', 15, 1)
+			usr << "<span class='notice'>\icon[src] You set [src] to full auto mode.</span>"
+			burst_amount = config.mhigh_burst_value
+			burst_scatter_mult = config.high_scatter_value
+			return
+		if(burst_amount == config.mhigh_burst_value && !(flags_gun_features & GUN_BURST_ON))
+			flags_gun_features |= GUN_BURST_ON
+			playsound(usr, 'sound/machines/click.ogg', 15, 1)
+			usr << "<span class='notice'>\icon[src] You set [src] to semi auto mode.</span>"
+			burst_amount = config.med_burst_value
+			burst_scatter_mult = config.low_scatter_value
+			return
+		. = ..()
 
-//-------------------------------------------------------
+	/obj/item/weapon/gun/rifle/m41aMK1/elite/New()
+		..() 
+		attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/m41aMK1/elite/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m41aMK1/elite/I)
+	I.desc = "A special prototype of the M41a MK2. Property of [H.real_name]. The reciever has been adjusted to accept both MK1 and MK2 mags."
+	return
+	
+/obj/item/weapon/gun/rifle/m41aMK1/elite/set_gun_config_values()
+	fire_delay = config.mhigh_fire_delay
+	burst_amount = config.mhigh_burst_value
+	burst_delay = config.low_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
+	scatter = config.low_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.max_scatter_value
+	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
+	recoil_unwielded = config.high_recoil_value
+
+//-------------------------------------------------------	
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
 
 

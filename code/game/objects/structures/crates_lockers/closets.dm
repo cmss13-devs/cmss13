@@ -29,7 +29,7 @@
 		if(!opened)		// if closed, any item at the crate's loc is put in the contents
 			for(var/obj/item/I in src.loc)
 				if(I.density || I.anchored || I == src) continue
-				I.loc = src
+				I.loc = src 
 
 /obj/structure/closet/alter_health()
 	return get_turf(src)

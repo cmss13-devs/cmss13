@@ -9,8 +9,8 @@
 	tacklemax = 5
 	tackle_chance = 40
 	max_health = 300
+	plasma_gain = 0.043
 	plasma_max = 700
-	plasma_gain = 30
 	is_intelligent = 1
 	speed = 0.6
 	upgrade_threshold = 800
@@ -21,11 +21,12 @@
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
 	xeno_explosion_resistance = 100 //some resistance against explosion stuns.
 	spit_delay = 25
-	queen_leader_limit = 2
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	can_denest_hosts = 1
+	acid_level = 2
+	weed_level = 1
 
 /datum/caste_datum/queen/mature
 	upgrade_name = "Mature"
@@ -33,8 +34,8 @@
 	melee_damage_lower = 40
 	melee_damage_upper = 50
 	max_health = 325
+	plasma_gain = 0.05
 	plasma_max = 800
-	plasma_gain = 40
 	upgrade_threshold = 1600
 	spit_delay = 20
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
@@ -42,7 +43,6 @@
 	tackle_chance = 45
 	speed = 0.5
 	aura_strength = 3
-	queen_leader_limit = 3
 
 /datum/caste_datum/queen/elder
 	upgrade_name = "Elder"
@@ -50,8 +50,8 @@
 	melee_damage_lower = 50
 	melee_damage_upper = 60
 	max_health = 350
+	plasma_gain = 0.056
 	plasma_max = 900
-	plasma_gain = 50
 	upgrade_threshold = 3200
 	spit_delay = 15
 	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
@@ -61,7 +61,6 @@
 	tackle_chance = 50
 	speed = 0.4
 	aura_strength = 4
-	queen_leader_limit = 4
 
 /datum/caste_datum/queen/ancient
 	upgrade_name = "Ancient"
@@ -69,15 +68,14 @@
 	melee_damage_lower = 60
 	melee_damage_upper = 70
 	max_health = 375
+	plasma_gain = 0.06
 	plasma_max = 1000
-	plasma_gain = 60
 	spit_delay = 10
 	caste_desc = "The most perfect Xeno form imaginable."
 	armor_deflection = 55
 	tackle_chance = 55
 	speed = 0.3
 	aura_strength = 5
-	queen_leader_limit = 5
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
@@ -103,17 +101,13 @@
 	attack_sound = null
 	friendly = "nuzzles"
 	wall_smash = 0
-	health = 300
-	maxHealth = 300
 	amount_grown = 0
 	max_grown = 10
-	plasma_stored = 300
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 0 //Queen doesn't count towards population limit.
-	upgrade = 0
 
 	var/map_view = 0
 	var/breathing_counter = 0
@@ -160,7 +154,7 @@
 	..()
 	if(z != ADMIN_Z_LEVEL)//so admins can safely spawn Queens in Thunderdome for tests.
 		if(!hive.living_xeno_queen)
-			hive.living_xeno_queen = src
+			hive.set_living_xeno_queen(src)
 		xeno_message("<span class='xenoannounce'>A new Queen has risen to lead the Hive! Rejoice!</span>",3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
@@ -169,7 +163,7 @@
 	if(observed_xeno)
 		set_queen_overwatch(observed_xeno, TRUE)
 	if(hive.living_xeno_queen == src)
-		hive.living_xeno_queen = null
+		hive.set_living_xeno_queen(null)
 
 /mob/living/carbon/Xenomorph/Queen/proc/can_spawn_larva()
 	return loc.z == 1 && hive_datum[hivenumber].stored_larva
@@ -516,7 +510,7 @@
 	update_icons()
 
 	for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-		L.handle_xeno_leader_pheromones(src)
+		L.handle_xeno_leader_pheromones()
 
 	xeno_message("<span class='xenoannounce'>The Queen has grown an ovipositor, evolution progress resumed.</span>", 3, hivenumber)
 
@@ -564,7 +558,7 @@
 		for(var/path in mobile_abilities)
 			var/datum/action/xeno_action/A = new path()
 			A.give_action(src)
-
+		recalculate_actions()
 
 		egg_amount = 0
 		ovipositor_cooldown = world.time + 3000 //5 minutes
@@ -572,7 +566,7 @@
 		update_canmove()
 
 		for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-			L.handle_xeno_leader_pheromones(src)
+			L.handle_xeno_leader_pheromones()
 
 		if(!instant_dismount)
 			xeno_message("<span class='xenoannounce'>The Queen has shed her ovipositor, evolution progress paused.</span>", 3, hivenumber)

@@ -8,7 +8,7 @@
 	evolves_to = list("Praetorian", "Crusher")
 	deevolves_to = "Defender"
 	tackle_chance = 40
-	plasma_gain = 8
+	plasma_gain = 0.08
 	plasma_max = 100
 	upgrade_threshold = 500
 	evolution_threshold = 500
@@ -64,13 +64,9 @@
 	desc = "A beefy, alien with an armored carapace."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Warrior Walking"
-	health = 200
-	maxHealth = 200
-	plasma_stored = 100
 	pixel_x = -16
 	old_x = -16
 	tier = 2
-	upgrade = 0
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,

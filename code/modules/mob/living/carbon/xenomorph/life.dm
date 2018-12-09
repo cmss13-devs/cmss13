@@ -45,17 +45,17 @@
 
 	if(upgrade != -1 && upgrade != 3) //upgrade possible
 		if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
-			upgrade_stored = min(upgrade_stored + progress_amount, caste.upgrade_threshold)
+			upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)
 
-			if(upgrade_stored >= caste.upgrade_threshold)
+			if(upgrade_stored >= upgrade_threshold)
 				if(!is_mob_incapacitated() && !handcuffed && !legcuffed)
 					spawn(0)
 						if (map_tag != MAP_WHISKEY_OUTPOST)
 							upgrade_xeno(upgrade+1)
 
-	if(caste.evolution_allowed && evolution_stored < caste.evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
-		evolution_stored = min(evolution_stored + progress_amount, caste.evolution_threshold)
-		if(evolution_stored >= caste.evolution_threshold - 1)
+	if(caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
+		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
+		if(evolution_stored >= evolution_threshold - 1)
 			src << "<span class='xenodanger'>Your carapace crackles and your tendons strengthen. You are ready to evolve!</span>" //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
@@ -90,23 +90,23 @@
 			var/atom/phero_center = Q
 			if(Q.observed_xeno)
 				phero_center = Q.observed_xeno
-			var/pheromone_range = round(6 + caste.aura_strength * 2)
+			var/pheromone_range = round(6 + aura_strength * 2)
 			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
-				if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-					Z.frenzy_new = caste.aura_strength
-				if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-					Z.warding_new = caste.aura_strength
-				if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-					Z.recovery_new = caste.aura_strength
+				if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+					Z.frenzy_new = aura_strength
+				if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+					Z.warding_new = aura_strength
+				if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+					Z.recovery_new = aura_strength
 		else
-			var/pheromone_range = round(6 + caste.aura_strength * 2)
+			var/pheromone_range = round(6 + aura_strength * 2)
 			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-				if(current_aura == "frenzy" && caste.aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-					Z.frenzy_new = caste.aura_strength
-				if(current_aura == "warding" && caste.aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-					Z.warding_new = caste.aura_strength
-				if(current_aura == "recovery" && caste.aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-					Z.recovery_new = caste.aura_strength
+				if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+					Z.frenzy_new = aura_strength
+				if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+					Z.warding_new = aura_strength
+				if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+					Z.recovery_new = aura_strength
 
 	if(leader_current_aura && !stat)
 		var/pheromone_range = round(6 + leader_aura_strength * 2)
@@ -266,48 +266,45 @@
 
 	if(hud_used && hud_used.alien_plasma_display)
 		if(stat != DEAD)
-			if(caste.plasma_max) //No divide by zeros please
-				switch(round(plasma_stored * 100 / caste.plasma_max))
-					if(100 to INFINITY)
-						hud_used.alien_plasma_display.icon_state = "power_display_full"
-					if(94 to 99)
-						hud_used.alien_plasma_display.icon_state = "power_display_16"
-					if(88 to 93)
-						hud_used.alien_plasma_display.icon_state = "power_display_15"
-					if(82 to 87)
-						hud_used.alien_plasma_display.icon_state = "power_display_14"
-					if(76 to 81)
-						hud_used.alien_plasma_display.icon_state = "power_display_13"
-					if(70 to 75)
-						hud_used.alien_plasma_display.icon_state = "power_display_12"
-					if(64 to 69)
-						hud_used.alien_plasma_display.icon_state = "power_display_11"
-					if(58 to 63)
-						hud_used.alien_plasma_display.icon_state = "power_display_10"
-					if(52 to 57)
-						hud_used.alien_plasma_display.icon_state = "power_display_9"
-					if(46 to 51)
-						hud_used.alien_plasma_display.icon_state = "power_display_8"
-					if(40 to 45)
-						hud_used.alien_plasma_display.icon_state = "power_display_7"
-					if(34 to 39)
-						hud_used.alien_plasma_display.icon_state = "power_display_6"
-					if(28 to 33)
-						hud_used.alien_plasma_display.icon_state = "power_display_5"
-					if(22 to 27)
-						hud_used.alien_plasma_display.icon_state = "power_display_4"
-					if(16 to 21)
-						hud_used.alien_plasma_display.icon_state = "power_display_3"
-					if(10 to 15)
-						hud_used.alien_plasma_display.icon_state = "power_display_2"
-					if(4 to 9)
-						hud_used.alien_plasma_display.icon_state = "power_display_1"
-					if(0 to 3)
-						hud_used.alien_plasma_display.icon_state = "power_display_0"
-					else
-						hud_used.alien_plasma_display.icon_state = "power_display_empty"
-			else
-				hud_used.alien_plasma_display.icon_state = "power_display_empty"
+			switch(get_plasma_percentage())
+				if(100 to INFINITY)
+					hud_used.alien_plasma_display.icon_state = "power_display_full"
+				if(94 to 99)
+					hud_used.alien_plasma_display.icon_state = "power_display_16"
+				if(88 to 93)
+					hud_used.alien_plasma_display.icon_state = "power_display_15"
+				if(82 to 87)
+					hud_used.alien_plasma_display.icon_state = "power_display_14"
+				if(76 to 81)
+					hud_used.alien_plasma_display.icon_state = "power_display_13"
+				if(70 to 75)
+					hud_used.alien_plasma_display.icon_state = "power_display_12"
+				if(64 to 69)
+					hud_used.alien_plasma_display.icon_state = "power_display_11"
+				if(58 to 63)
+					hud_used.alien_plasma_display.icon_state = "power_display_10"
+				if(52 to 57)
+					hud_used.alien_plasma_display.icon_state = "power_display_9"
+				if(46 to 51)
+					hud_used.alien_plasma_display.icon_state = "power_display_8"
+				if(40 to 45)
+					hud_used.alien_plasma_display.icon_state = "power_display_7"
+				if(34 to 39)
+					hud_used.alien_plasma_display.icon_state = "power_display_6"
+				if(28 to 33)
+					hud_used.alien_plasma_display.icon_state = "power_display_5"
+				if(22 to 27)
+					hud_used.alien_plasma_display.icon_state = "power_display_4"
+				if(16 to 21)
+					hud_used.alien_plasma_display.icon_state = "power_display_3"
+				if(10 to 15)
+					hud_used.alien_plasma_display.icon_state = "power_display_2"
+				if(4 to 9)
+					hud_used.alien_plasma_display.icon_state = "power_display_1"
+				if(0 to 3)
+					hud_used.alien_plasma_display.icon_state = "power_display_0"
+				else
+					hud_used.alien_plasma_display.icon_state = "power_display_empty"
 		else
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 
@@ -372,9 +369,9 @@ updatehealth()
 
 	if(!caste.is_robotic && !hardcore) //Robot no heal
 		if(caste.innate_healing || (locate(/obj/effect/alien/weeds) in T))
-			plasma_stored += caste.plasma_gain
+			plasma_stored += plasma_gain
 			if(recovery_aura)
-				plasma_stored += round(caste.plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
+				plasma_stored += round(plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth)
 				var/datum/hive_status/hive = hive_datum[hivenumber]
 				if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
@@ -410,7 +407,7 @@ updatehealth()
 	else if(!caste.is_robotic && hardcore)//Robot no heal
 		if(locate(/obj/effect/alien/weeds) in T)
 			if(health > 0)
-				plasma_stored += caste.plasma_gain
+				plasma_stored += plasma_gain
 				if(recovery_aura)
 					plasma_stored += (recovery_aura * 2)
 			if(health < 35) //Barely enough to stay near critical if saved
@@ -442,8 +439,8 @@ updatehealth()
 			plasma_stored -= 5
 		//END HARDCORE
 
-	if(plasma_stored > caste.plasma_max)
-		plasma_stored = caste.plasma_max
+	if(plasma_stored > plasma_max)
+		plasma_stored = plasma_max
 	if(plasma_stored < 0)
 		plasma_stored = 0
 		if(current_aura)

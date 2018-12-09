@@ -33,8 +33,6 @@
 	icon_state = "Drone Walking"
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
-	melee_damage_lower = 5
-	melee_damage_upper = 10 //Arbitrary damage values
 	var/armor_deflection_buff = 0
 	attacktext = "claws"
 	attack_sound = null
@@ -42,8 +40,6 @@
 	wall_smash = 0
 	universal_understand = 0
 	universal_speak = 0
-	health = 5
-	maxHealth = 5
 	mob_size = MOB_SIZE_XENO
 	hand = 1 //Make right hand active by default. 0 is left hand, mob defines it as null normally
 	see_in_dark = 8
@@ -52,12 +48,34 @@
 	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD,QUEEN_OVERWATCH_HUD)
 	unacidable = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/datum/mutator_set/individual_mutators/mutators = new
+
+	//Variables that can be mutated
+	health = 5
+	maxHealth = 5
+	var/speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	melee_damage_lower = 5
+	melee_damage_upper = 10
+	var/armor_deflection = 10
+
+	var/plasma_stored = 10
+	var/plasma_max = 10
+	var/plasma_gain = 5
+
+	var/aura_strength = 0
+	var/weed_level = 1
+	var/gas_level = 0
+
+	var/upgrade_threshold = 200
+	var/evolution_threshold = 200
+	var/pull_multiplier = 1.0
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
+	mutators.xeno = src
 	set_hivenumber(hivenumber)
 	update_caste()
 	generate_name()
@@ -76,6 +94,7 @@
 
 	add_inherent_verbs()
 	add_abilities()
+	recalculate_actions()
 
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_MINIMUM
@@ -127,27 +146,22 @@
 			hive.xeno_leader_list += src
 			hud_set_queen_overwatch()
 			if(hive.living_xeno_queen)
-				handle_xeno_leader_pheromones(hive.living_xeno_queen)
+				handle_xeno_leader_pheromones()
 
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	var/plasma_ratio = 1
-	if(caste)
-		plasma_ratio = plasma_stored / caste.plasma_max
 	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade)])
 		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
 	else
 		world << "something went very wrong"
 		return
-	maxHealth = caste.max_health
-	health = maxHealth
-	speed = caste.speed
-	plasma_stored = round(caste.plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
-	if(plasma_stored > caste.plasma_max)
-		plasma_stored = caste.plasma_max
-	if(isXenoWarrior(src)) // because of the warrior speed bug.
-		if(agility)
-			speed = caste.speed + caste.agility_speed_increase
+	upgrade = caste.upgrade
+	mutators.user_levelled_up(upgrade)
+	if(isXenoQueenLeadingHive(src))
+		//The Queen matures, so does the Hive!
+		hive.mutators.user_levelled_up(upgrade)
+	recalculate_everything()
+
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -312,6 +326,10 @@
 /mob/living/carbon/Xenomorph/get_eye_protection()
 	return 2
 
+/mob/living/carbon/Xenomorph/get_pull_miltiplier()
+	return pull_multiplier
+
+
 //Call this function to set the hivenumber
 //It also assigns the hive datum, since a lot of things reference that
 /mob/living/carbon/Xenomorph/proc/set_hivenumber(var/new_hivenumber = XENO_HIVE_NORMAL)
@@ -332,3 +350,105 @@
 		generate_name()
 	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
 		update_living_queens()
+	recalculate_everything()
+
+//*********************************************************//
+//********************Mutator functions********************//
+//*********************************************************//
+
+//Call this function when major changes happen - evolutions, upgrades, mutators getting removed
+/mob/living/carbon/Xenomorph/proc/recalculate_everything()
+	recalculate_health()
+	recalculate_plasma()
+	recalculate_speed()
+	recalculate_armor()
+	recalculate_damage()
+	recalculate_actions()
+	recalculate_pheromones()
+	recalculate_maturation()
+	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
+		hive.recalculate_hive() //Recalculating stuff around Queen maturing
+
+/mob/living/carbon/Xenomorph/proc/recalculate_health()
+	var/new_max_health = round(caste.max_health * mutators.health_multiplier * hive.mutators.health_multiplier + 0.5)
+	if (new_max_health == maxHealth)
+		return
+	var/currentHealthRatio = 1
+	if(health < maxHealth)
+		currentHealthRatio = health / maxHealth
+	maxHealth = new_max_health
+	health = round(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	if(health > maxHealth)
+		health = maxHealth
+
+/mob/living/carbon/Xenomorph/proc/recalculate_plasma()
+	var/new_plasma_max = round(caste.plasma_max * mutators.plasma_multiplier * hive.mutators.plasma_multiplier + 0.5)
+	plasma_gain = round(new_plasma_max * caste.plasma_gain * mutators.plasma_gain_multiplier * hive.mutators.plasma_gain_multiplier + 0.5)
+	if (new_plasma_max == plasma_max)
+		return
+	var/plasma_ratio = plasma_stored / plasma_max
+	plasma_max = new_plasma_max
+	plasma_stored = round(plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	if(plasma_stored > plasma_max)
+		plasma_stored = plasma_max
+
+/mob/living/carbon/Xenomorph/proc/recalculate_speed()
+	speed = caste.speed + mutators.speed_boost + hive.mutators.speed_boost
+	if(isXenoWarrior(src)) // because of the warrior speed bug.
+		if(agility)
+			speed = speed + caste.agility_speed_increase
+
+
+/mob/living/carbon/Xenomorph/proc/recalculate_armor()
+	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
+	armor_deflection = round(100 - (100 - caste.armor_deflection * mutators.armor_multiplier * hive.mutators.armor_multiplier) + 0.5)
+
+/mob/living/carbon/Xenomorph/proc/recalculate_damage()
+	melee_damage_lower = round(caste.melee_damage_lower * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)
+	melee_damage_upper = round(caste.melee_damage_upper * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)
+
+
+/mob/living/carbon/Xenomorph/proc/recalculate_actions()
+	recalculate_acid()
+	recalculate_weeds()
+	recalculate_gas()
+	pull_multiplier = mutators.pull_multiplier
+	if(isXenoRunner(src))
+		//Xeno runners need a small nerf to dragging speed mutator
+		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+
+
+/mob/living/carbon/Xenomorph/proc/recalculate_acid()
+	if(caste.acid_level == 0)
+		return //Caste does not use acid
+	for(var/datum/action/xeno_action/activable/corrosive_acid/acid in actions)
+		if(istype(acid))
+			var/new_acid_level = caste.acid_level + mutators.acid_boost_level + hive.mutators.acid_boost_level
+			if(new_acid_level > 3)
+				new_acid_level = 3
+			if(acid.level == new_acid_level)
+				return //nothing to update, we're at the same level
+			else
+				//We are setting the new acid level and updating our action
+				acid.level = new_acid_level
+				acid.update_level()
+
+/mob/living/carbon/Xenomorph/proc/recalculate_weeds()
+	if(caste.weed_level == 0)
+		return //Caste does not use weeds
+	weed_level = caste.weed_level + mutators.weed_boost_level + hive.mutators.weed_boost_level
+	if(weed_level < 1)
+		weed_level = 1//need to maintain the minimum in case something goes really wrong
+
+/mob/living/carbon/Xenomorph/proc/recalculate_pheromones()
+	if(caste.aura_strength > 0)
+		aura_strength = caste.aura_strength + mutators.pheromones_boost_level + hive.mutators.pheromones_boost_level
+	else
+		caste.aura_strength = 0
+
+/mob/living/carbon/Xenomorph/proc/recalculate_gas()
+	gas_level = upgrade + mutators.gas_boost_level
+
+/mob/living/carbon/Xenomorph/proc/recalculate_maturation()
+	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)
+	evolution_threshold =  round(caste.evolution_threshold * hive.mutators.maturation_multiplier)

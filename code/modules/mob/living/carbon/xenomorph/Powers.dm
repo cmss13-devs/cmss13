@@ -510,13 +510,9 @@
 	round_statistics.warrior_agility_toggles++
 	if (agility)
 		src << "<span class='xenowarning'>You lower yourself to all fours.</span>"
-		speed = caste.speed + caste.agility_speed_increase
-		update_icons()
-		do_agility_cooldown()
-		return
-
-	src << "<span class='xenowarning'>You raise yourself to stand on two feet.</span>"
-	speed = caste.speed - caste.agility_speed_increase
+	else
+		src << "<span class='xenowarning'>You raise yourself to stand on two feet.</span>"
+	recalculate_speed()
 	update_icons()
 	do_agility_cooldown()
 

@@ -11,14 +11,21 @@
 	layer = TURF_LAYER
 	unacidable = 1
 	health = 1
+	var/weed_strength = 1
 
 /obj/effect/alien/weeds/New(pos, obj/effect/alien/weeds/node/node)
 	..()
+	if(node)
+		weed_strength = node.weed_strength
+
+	//Weeds grow stronger, but are still weaker than nodes
+	//6 makes a PFC with plasma rifle have to hit it twice, but one with bayonett or just a combat knife only once at level 1
+	health = weed_strength * 6
 
 	update_sprite()
 	update_neighbours()
 	if(node && node.loc && (get_dist(node, src) < node.node_range))
-		spawn(rand(150, 200))
+		spawn(rand(150, 200) / weed_strength) //stronger weeds expand faster
 			if(loc && node && node.loc)
 				weed_expand(node)
 
@@ -230,6 +237,10 @@
 	..(loc, src)
 	if(X)
 		add_hiddenprint(X)
-
+		weed_strength = X.weed_level
+		if (weed_strength < 1)
+			weed_strength = 1
+		health = 15 * weed_strength
+		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 
 #undef NODERANGE

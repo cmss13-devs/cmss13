@@ -6,7 +6,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	max_health = 175
-	plasma_gain = 8
+	plasma_gain = 0.08
 	plasma_max = 100
 	evolution_threshold = 200
 	upgrade_threshold = 200
@@ -54,13 +54,9 @@
 	desc = "A alien with an armored head crest."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Defender Walking"
-	health = 175
-	maxHealth = 175
-	plasma_stored = 100
 	pixel_x = -16
 	old_x = -16
 	tier = 1
-	upgrade = 0
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,

@@ -77,15 +77,15 @@ var/global/list/cm_objectives = list()
 //used by binoculars for dropship bombardment
 var/list/global/active_laser_targets = list()
 
-//Used by Queen overwatch
-//var/global/list/xeno_leader_list = list() - moved to hive_datum
-
 //Languages/species/whitelist.
 var/global/list/all_species[0]
 var/global/list/all_languages[0]
 var/global/list/language_keys[0]					//table of say codes for all languages
 var/global/list/whitelisted_species = list("Human")
 var/global/list/synth_types = list("Synthetic","Early Synthetic")
+
+//Xeno mutators
+var/global/list/datum/xeno_mutator/xeno_mutator_list = list()
 
 // Posters
 var/global/list/datum/poster/poster_designs = typesof(/datum/poster) - /datum/poster
@@ -213,6 +213,12 @@ var/global/round_should_check_for_win = TRUE
 		if(!(CD.caste_name in xeno_datum_list))
 			xeno_datum_list[CD.caste_name] = list(1,2,3,4) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
 		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
+
+	// Xeno mutators
+	paths = typesof(/datum/xeno_mutator) - /datum/xeno_mutator
+	for(var/T in paths)
+		var/datum/xeno_mutator/XM = new T
+		xeno_mutator_list[XM.name] = XM
 
 	//  WO waves
 	paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)

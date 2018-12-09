@@ -6,7 +6,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	max_health = 125
-	plasma_gain = 10
+	plasma_gain = 0.034
 	plasma_max = 300
 	evolution_threshold = 200
 	upgrade_threshold = 200
@@ -18,6 +18,7 @@
 	spit_types = list(/datum/ammo/xeno/toxin)
 	evolves_to = list("Spitter")
 	xeno_explosion_resistance = 20
+	acid_level = 1
 
 /datum/caste_datum/sentinel/mature
 	upgrade_name = "Mature"
@@ -25,7 +26,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	max_health = 150
-	plasma_gain = 15
+	plasma_gain = 0.038
 	plasma_max = 400
 	upgrade_threshold = 400
 	spit_delay = 25
@@ -42,7 +43,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	max_health = 175
-	plasma_gain = 20
+	plasma_gain = 0.04
 	plasma_max = 500
 	upgrade_threshold = 800
 	spit_delay = 20
@@ -59,7 +60,7 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	max_health = 200
-	plasma_gain = 25
+	plasma_gain = 0.042
 	plasma_max = 600
 	spit_delay = 15
 	caste_desc = "Neurotoxin Factory, don't let it get you."
@@ -75,13 +76,9 @@
 	desc = "A slithery, spitting kind of alien."
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Sentinel Walking"
-	health = 125
-	maxHealth = 125
-	plasma_stored = 300
 	pixel_x = -12
 	old_x = -12
 	tier = 1
-	upgrade = 0
 	pull_speed = -1
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,

@@ -1,9 +1,9 @@
 /datum/caste_datum/predalien
 	caste_name = "Predalien"
 	display_name = "Abomination"
+	max_health = 800 //A lot of health, but it doesn't regenerate.
+	plasma_gain = 0.084
 	plasma_max = 300
-	max_health = 800
-	plasma_gain = 25
 	evolution_allowed = FALSE
 	tacklemin = 6
 	tacklemax = 10
@@ -27,16 +27,12 @@
 	icon_state = "Predalien Walking"
 	melee_damage_lower = 65
 	melee_damage_upper = 80
-	health = 800 //A lot of health, but it doesn't regenerate.
-	maxHealth = 800
-	plasma_stored = 300
 	amount_grown = 0
 	max_grown = 200
 	wall_smash = TRUE
 	hardcore = TRUE
 	tunnel_delay = 0
 	pslash_delay = 0
-	evo_points = 0
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

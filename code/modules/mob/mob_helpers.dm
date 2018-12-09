@@ -199,6 +199,15 @@ proc/isXenoQueen(A)
 		return 1
 	return 0
 
+//Returns 1 if A is the Queen AND is the Queen that is leading the given Hive
+proc/isXenoQueenLeadingHive(A)
+	if(!isXenoQueen(A))
+		return 0
+	var/mob/living/carbon/Xenomorph/Queen/Q = A
+	if(Q.hive.living_xeno_queen == Q)
+		return 1
+	return 0
+
 proc/isXenoRavager(A)
 	if(istype(A, /mob/living/carbon/Xenomorph/Ravager))
 		return 1

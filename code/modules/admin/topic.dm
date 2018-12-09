@@ -1211,6 +1211,7 @@
 			return
 
 		X.set_hivenumber_and_update(href_list["newhivenumber"])
+		message_admins("\blue [key_name(usr)] changed hivenumber of [X] to [X.hivenumber].", 1)
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return

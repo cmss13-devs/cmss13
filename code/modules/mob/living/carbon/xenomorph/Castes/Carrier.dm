@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 40
-	plasma_gain = 8
+	plasma_gain = 0.032
 	plasma_max = 250
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
@@ -24,6 +24,7 @@
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	can_denest_hosts = 1
 	xeno_explosion_resistance = 60
+	weed_level = 1
 
 /datum/caste_datum/carrier/mature
 
@@ -34,7 +35,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_gain = 10
+	plasma_gain = 0.034
 	plasma_max = 300
 	armor_deflection = 15
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
@@ -53,7 +54,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	plasma_gain = 12
+	plasma_gain = 0.035
 	plasma_max = 350
 	armor_deflection = 20
 	caste_desc = "A portable Love transport. It looks pretty strong."
@@ -74,7 +75,7 @@
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 55
-	plasma_gain = 15
+	plasma_gain = 0.0375
 	plasma_max = 400
 	armor_deflection = 25
 	caste_desc = "It's literally crawling with 10 huggers."
@@ -91,15 +92,11 @@
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi' //They are now like, 2x2
 	icon_state = "Carrier Walking"
-	health = 175
-	maxHealth = 175
-	plasma_stored = 250
 
 	drag_delay = 6 //pulling a big dead xeno is hard
 
 	mob_size = MOB_SIZE_BIG
 	tier = 3
-	upgrade = 0
 	pixel_x = -16 //Needed for 2x2
 	old_x = -16
 

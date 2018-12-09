@@ -365,6 +365,7 @@
 	hive_only = TRUE
 	unique = TRUE //Can only buy once
 	cost = MUTATOR_COST_EXPENSIVE
+	death_persistent = TRUE
 
 /datum/xeno_mutator/larva/apply_mutator(datum/mutator_set/hive_mutators/MS)
 	if(!istype(MS))
@@ -379,6 +380,7 @@
 	//Stronger claws
 	name = "Boost damage"
 	description = "Your claws sharpen."
+	cost = MUTATOR_COST_EXPENSIVE
 
 /datum/xeno_mutator/damage/apply_mutator(datum/mutator_set/MS)
 	. = ..()

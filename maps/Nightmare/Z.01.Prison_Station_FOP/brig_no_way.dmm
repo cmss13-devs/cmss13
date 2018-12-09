@@ -1,0 +1,75 @@
+"aa" = (/turf/open/space,/area/space)
+"ab" = (/turf/closed/wall/r_wall/prison,/area/prison/quarters/security)
+"ac" = (/turf/closed/wall/prison,/area/prison/quarters/security)
+"ad" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/closed/wall/prison,/area/prison/quarters/security)
+"ae" = (/turf/closed/wall/prison,/area/prison/maintenance/hangar_barracks)
+"af" = (/turf/closed/wall/r_wall/prison,/area/prison/security)
+"ao" = (/turf/closed/wall/r_wall/prison,/area/prison/intake)
+"ap" = (/obj/structure/disposalpipe/segment,/obj/machinery/door/airlock/almayer/security/glass{dir = 2; name = "Security Department"; req_access = list()},/obj/machinery/door/poddoor/almayer{dir = 2; name = "\improper Security Lockdown"},/turf/open/floor/prison{tag = "icon-darkredfull2 (SOUTHWEST)"; icon_state = "darkredfull2"; dir = 10},/area/prison/security)
+"aq" = (/obj/machinery/door/airlock/almayer/security/glass{dir = 2; name = "Security Department"; req_access = list()},/obj/machinery/door/poddoor/almayer{dir = 2; name = "\improper Security Lockdown"},/turf/open/floor/prison{tag = "icon-darkredfull2 (SOUTHWEST)"; icon_state = "darkredfull2"; dir = 10},/area/prison/security)
+"az" = (/turf/closed/wall/prison,/area/prison/intake)
+"aK" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/toilet/security)
+"bi" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/plating,/area/prison/toilet/security)
+"bU" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/security/head)
+"bV" = (/turf/closed/wall/prison,/area/prison/security)
+"bW" = (/obj/machinery/door/poddoor/almayer{density = 0; dir = 2; icon_state = "pdoor0"; name = "\improper Security Lockdown"},/obj/structure/window_frame/prison/reinforced,/obj/item/shard,/turf/open/floor/plating,/area/prison/security)
+"bX" = (/obj/structure/window/framed/prison/reinforced,/obj/machinery/door/poddoor/almayer{dir = 2; name = "\improper Security Lockdown"},/turf/open/floor/plating,/area/prison/security)
+"cg" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/plating,/area/prison/security/head)
+"cw" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/structure/disposalpipe/segment,/obj/machinery/door/airlock/almayer/security/glass{dir = 2; name = "Intake Processing"; req_access = list()},/obj/machinery/door/poddoor/almayer{dir = 2; name = "\improper Security Lockdown"},/turf/open/floor/prison{tag = "icon-darkredfull2 (SOUTHWEST)"; icon_state = "darkredfull2"; dir = 10},/area/prison/security)
+"cO" = (/obj/machinery/door/airlock/almayer/security/glass{dir = 2; name = "Intake Processing"; req_access = list()},/obj/machinery/door/poddoor/almayer{dir = 2; name = "\improper Security Lockdown"},/turf/open/floor/prison{tag = "icon-darkredfull2 (SOUTHWEST)"; icon_state = "darkredfull2"; dir = 10},/area/prison/security)
+"du" = (/turf/closed/wall/r_wall/prison,/area/prison/execution)
+"fh" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/space)
+"fs" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/security/briefing)
+"ft" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/security/armory/riot)
+"fu" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/security/armory/lethal)
+"fD" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/execution)
+"fE" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/plating,/area/prison/security/briefing)
+"fF" = (/obj/structure/window/framed/prison/reinforced,/obj/machinery/door/poddoor/almayer{dir = 4; name = "\improper Security Lockdown"},/turf/open/floor/plating,/area/prison/security)
+"fG" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/structure/disposalpipe/segment{dir = 4},/obj/machinery/door/airlock/almayer/security/glass{name = "Security Department"; req_access = list()},/obj/machinery/door/poddoor/almayer{dir = 4; name = "\improper Security Lockdown"},/turf/open/floor/prison,/area/prison/security)
+"fH" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/door/airlock/almayer/security/glass{name = "Security Department"; req_access = list()},/obj/machinery/door/poddoor/almayer{dir = 4; name = "\improper Security Lockdown"},/turf/open/floor/prison,/area/prison/security)
+"fQ" = (/turf/closed/wall/r_wall/prison,/area/prison/telecomms)
+"fV" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/telecomms)
+"go" = (/obj/structure/window/framed/prison/reinforced,/turf/open/floor/plating,/area/prison/intake)
+"gp" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/machinery/door/airlock/multi_tile/almayer/generic{name = "Intake Processing"},/turf/open/floor/prison{tag = "icon-darkbrownfull2"; icon_state = "darkbrownfull2"},/area/prison/intake)
+"gq" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/prison{tag = "icon-darkbrownfull2"; icon_state = "darkbrownfull2"},/area/prison/intake)
+"iq" = (/turf/closed/wall/r_wall/prison,/area/prison/disposal)
+"ir" = (/obj/effect/decal/warning_stripes{tag = "icon-N"; icon_state = "N"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/door/airlock/almayer/secure{dir = 2; name = "Execution"; req_access = list()},/turf/open/floor/prison,/area/prison/execution)
+"is" = (/obj/effect/decal/warning_stripes{tag = "icon-N"; icon_state = "N"},/obj/machinery/door/airlock/almayer/secure{dir = 2; name = "Execution"; req_access = list()},/turf/open/floor/prison,/area/prison/execution)
+"jj" = (/obj/structure/lattice,/turf/open/space,/area/space)
+"jl" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/disposal)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabacacadacacaeaeaefQaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafaaaaaaaaaaaaaaaafQaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaoaoaogogpgqgoaoaoaoafafafapaqbWafaaaaaaaaaaaaaaaafQfQfQfQfQfQfV
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabi
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaK
+aaaaaaaaaaaaaaaaaaaoaaaaaaaaaaaaaaaaazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+aaaaaaaaaaaaaaaaaaafbVbVbXcwcObXbVbVbVaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacg
+aaaaaaaaaaaaaaaaaafFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacg
+aaaaaaaaaaaaaaaaaafGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacg
+aaaaaaaaaaaaaaaaaafHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+aaaaaaaaaaaaaaaaaafFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+aaaaaaaaaaaaaaaaaaafaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+iqdududududuirisdududuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacg
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabU
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabUbUbUbUbU
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafhaaaaaaaa
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafhaaaaaaaa
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaafsftftftftftftfufufufufufufufhaaaaaaaa
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaafsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+iqaaaaaaaaaaaaaaaaaaduaaaaaaaaaaaaaaaaaaaaaafsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+iqaaaaaaaaaaaaaaaaaafDfsfEfEfEfEfEfEfEfEfEfsfsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+iqaaaaaaaaaaaaaaaaaafDaaaaaaaaaaaaaaaaaaaaaajjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+jlfDfDfDfDfDfDfDfDfDfDaaaaaaaaaaaaaaaaaaaaaajjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}

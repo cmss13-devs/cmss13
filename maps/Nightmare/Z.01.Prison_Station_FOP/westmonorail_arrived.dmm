@@ -1,21 +1,14 @@
 "aa" = (/turf/closed/wall/prison,/area/prison/monorail/west)
 "ab" = (/obj/machinery/door/airlock/multi_tile/almayer/generic{name = "Monorail Station West"},/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
 "ac" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
-"ad" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/security/monitoring/highsec)
-"ae" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 6; icon_state = "intact-supply"; tag = "icon-intact-supply (EAST)"},/turf/open/floor/prison{dir = 8; icon_state = "red"},/area/prison/security/monitoring/highsec)
-"af" = (/turf/open/floor/prison,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHEAST)"; icon_state = "intact-scrubbers"; dir = 5},/obj/machinery/atmospherics/pipe/manifold/hidden/supply,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plating/plating_catwalk/prison,/area/prison/security/monitoring/highsec)
-"ag" = (/turf/open/floor/prison,/obj/machinery/atmospherics/pipe/simple/hidden/supply{tag = "icon-intact-supply (EAST)"; icon_state = "intact-supply"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (EAST)"; icon_state = "intact-scrubbers"; dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating/plating_catwalk/prison,/area/prison/security/monitoring/highsec)
 "ah" = (/obj/structure/flora/pottedplant,/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
 "ai" = (/turf/open/floor/prison{dir = 9; icon_state = "green"},/area/prison/monorail/west)
 "aj" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 5; icon_state = "green"},/area/prison/monorail/west)
 "ak" = (/obj/machinery/vending/snack,/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
-"al" = (/obj/machinery/atmospherics/unary/vent_pump{dir = 1; on = 1},/turf/open/floor/prison{dir = 10; icon_state = "red"},/area/prison/security/monitoring/highsec)
-"am" = (/turf/open/floor/prison{icon_state = "red"},/area/prison/security/monitoring/highsec)
 "an" = (/obj/structure/bed/chair/comfy{dir = 4},/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
 "ao" = (/turf/open/floor/prison{dir = 8; icon_state = "green"},/area/prison/monorail/west)
 "ap" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/prison{dir = 4; icon_state = "green"},/area/prison/monorail/west)
 "aq" = (/obj/machinery/vending/cola,/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
-"ar" = (/obj/structure/window/framed/prison/reinforced/hull,/turf/open/floor/plating,/area/prison/security/monitoring/highsec)
 "as" = (/obj/effect/alien/weeds/node,/turf/open/floor/prison{dir = 8; icon_state = "green"},/area/prison/monorail/west)
 "at" = (/turf/open/floor/prison{dir = 9; icon_state = "greenfull"},/area/prison/monorail/west)
 "au" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/monorail/west)
@@ -59,10 +52,10 @@
 "bg" = (/obj/structure/lattice,/obj/structure/lattice,/turf/open/space,/area/space)
 
 (1,1,1) = {"
-aaaaabacaaadaeafagagagag
-aaahaiajakadalamamamamam
-aaanaoapaqadadadadadadar
-aaanasapatauavawawawaxay
+aaaaabacaaaGaGaGaGaGaGaG
+aaahaiajakaGaGaGaGaGaGaG
+aaanaoapaqaGaGaGaGaGaGaG
+aaanasapatauavawawawaxaG
 aaazaoapaAaBaCaDaEaFaCaG
 aaanaoapaAaBawaDaEaFawaG
 aaanaoapaAaBaCaHaEaHaCaG

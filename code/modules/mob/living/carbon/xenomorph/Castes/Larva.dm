@@ -2,7 +2,8 @@
 	caste_name = "Bloody Larva"
 	tier = 0
 	upgrade = -1
-	plasma_gain = 1
+	plasma_gain = 0.1
+	plasma_max = 10
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	max_health = 35
@@ -22,8 +23,6 @@
 	icon_state = "Bloody Larva"
 	amount_grown = 0
 	max_grown = 100
-	maxHealth = 35
-	health = 35
 	see_in_dark = 8
 	flags_pass = PASSTABLE | PASSMOB
 	away_timer = 300

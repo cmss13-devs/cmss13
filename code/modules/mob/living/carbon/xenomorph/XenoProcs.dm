@@ -26,19 +26,22 @@
 	else if(!hive.living_xeno_queen.ovipositor)
 		stat(null, "Evolve Progress (HALTED - QUEEN HAS NO OVIPOSITOR)")
 	else
-		stat(null, "Evolve Progress: [round(evolution_stored)]/[caste.evolution_threshold]")
+		stat(null, "Evolve Progress: [round(evolution_stored)]/[evolution_threshold]")
 
 	if(upgrade != -1 && upgrade != 3) //upgrade possible
-		stat(null, "Upgrade Progress: [round(upgrade_stored)]/[caste.upgrade_threshold]")
+		stat(null, "Upgrade Progress: [round(upgrade_stored)]/[upgrade_threshold]")
 	else //Upgrade process finished or impossible
 		stat(null, "Upgrade Progress (FINISHED)")
 
-	if(caste.plasma_max > 0)
+	if(plasma_max > 0)
 		if(caste.is_robotic)
-			stat(null, "Charge: [plasma_stored]/[caste.plasma_max]")
+			stat(null, "Charge: [plasma_stored]/[plasma_max]")
 		else
-			stat(null, "Plasma: [plasma_stored]/[caste.plasma_max]")
+			stat(null, "Plasma: [plasma_stored]/[plasma_max]")
 
+	stat(null, "Mutator points: [mutators.remaining_points]")
+	if(isXenoQueenLeadingHive(src))
+		stat(null, "Hive Mutator points: [hive.mutators.remaining_points]")
 	if(hivenumber != XENO_HIVE_CORRUPTED)
 		if(hive.slashing_allowed == 1)
 			stat(null,"Slashing of hosts is currently: PERMITTED.")
@@ -114,7 +117,7 @@
 		A.update_button_icon()
 
 /mob/living/carbon/Xenomorph/proc/gain_plasma(value)
-	plasma_stored = min(plasma_stored + value, caste.plasma_max)
+	plasma_stored = min(plasma_stored + value, plasma_max)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
@@ -527,14 +530,16 @@
 	pixel_y = old_y
 
 //When the Queen's pheromones are updated, or we add/remove a leader, update leader pheromones
-/mob/living/carbon/Xenomorph/proc/handle_xeno_leader_pheromones(var/mob/living/carbon/Xenomorph/Queen/Q)
-
+/mob/living/carbon/Xenomorph/proc/handle_xeno_leader_pheromones()
+	if(!hive)
+		return
+	var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
 	if(!Q || !Q.anchored || !queen_chosen_lead || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
 		src << "<span class='xenowarning'>Your pheromones wane. The Queen is no longer granting you her pheromones.</span>"
 	else
-		leader_aura_strength = Q.caste.aura_strength
+		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura
 		src << "<span class='xenowarning'>Your pheromones have changed. The Queen has new plans for the Hive.</span>"
 

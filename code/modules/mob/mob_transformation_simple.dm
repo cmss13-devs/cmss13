@@ -37,8 +37,9 @@
 		M.name = new_name
 		M.real_name = new_name
 	else
-		M.name = src.name
-		M.real_name = src.real_name
+		if(!isXeno(M)) //Xenos have their own naming convention, leave them alone!
+			M.name = src.name
+			M.real_name = src.real_name
 
 	if(src.dna)
 		M.dna = src.dna.Clone()

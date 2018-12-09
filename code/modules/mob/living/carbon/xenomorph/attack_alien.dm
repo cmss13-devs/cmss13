@@ -65,7 +65,7 @@
 				r_FAL
 
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-			var/damage = rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper) + dam_bonus
+			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper) + dam_bonus
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
@@ -252,7 +252,7 @@
 
 			// copypasted from attack_alien.dm
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-			var/damage = rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper)
+			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
@@ -324,7 +324,7 @@
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 		else
 			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		health -= rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper)
+		health -= rand(M.melee_damage_lower, M.melee_damage_upper)
 		if(health <= 0)
 			M.visible_message("<span class='danger'>\The [M] slices [src] apart!</span>", \
 			"<span class='danger'>You slice [src] apart!</span>", null, 5)
@@ -336,7 +336,7 @@
 //Breaking barricades
 /obj/structure/barricade/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
-	take_damage( rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper) )
+	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) )
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
 	if(health <= 0)
@@ -397,7 +397,7 @@
 		"<span class='warning'>You creepily tap on [src].</span>", \
 		"<span class='warning'>You hear a glass tapping sound.</span>", 5)
 	else
-		attack_generic(M, M.caste.melee_damage_lower)
+		attack_generic(M, M.melee_damage_lower)
 
 //Slashing bots
 /obj/machinery/bot/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -440,7 +440,7 @@
 	log_message("Attack by claw. Attacker - [M].", 1)
 
 	if(!prob(deflect_chance))
-		take_damage((rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper)/2))
+		take_damage((rand(M.melee_damage_lower, M.melee_damage_upper)/2))
 		check_for_internal_damage(list(MECHA_INT_CONTROL_LOST))
 		playsound(loc, "alien_claw_metal", 25, 1)
 		M.visible_message("<span class='danger'>[M] slashes [src]'s armor!</span>", \
@@ -736,7 +736,7 @@
 	else
 		M.animation_attack_on(src)
 		M.visible_message("[M] slashes away at [src]!","You slash and claw at the bright light!", null, null, 5)
-		health  = max(health - rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper), 0)
+		health  = max(health - rand(M.melee_damage_lower, M.melee_damage_upper), 0)
 		if(!health)
 			playsound(src, "shatter", 70, 1)
 			damaged = TRUE
@@ -810,7 +810,7 @@
 		return 0
 	else
 		M.animation_attack_on(src)
-		health -= round(rand(M.caste.melee_damage_lower, M.caste.melee_damage_upper) / 2)
+		health -= round(rand(M.melee_damage_lower, M.melee_damage_upper) / 2)
 		if(health <= 0)
 			M.visible_message("<span class='danger'>\The [M] smashes \the [src] apart!</span>", \
 			"<span class='danger'>You slice \the [src] apart!</span>", null, 5)
@@ -828,7 +828,7 @@
 
 	if(M.a_intent == "hurt")
 		M.animation_attack_on(src)
-		if(prob(M.caste.melee_damage_lower))
+		if(prob(M.melee_damage_lower))
 			playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 			M.visible_message("<span class='danger'>\The [M] smashes \the [src] beyond recognition!</span>", \
 			"<span class='danger'>You enter a frenzy and smash \the [src] apart!</span>", null, 5)

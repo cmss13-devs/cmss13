@@ -40,15 +40,13 @@
 				xeno_message("<span class='xenoannounce'>A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!</span>",3, hivenumber)
 				xeno_message("<span class='xenoannounce'>The slashing of hosts is now permitted.</span>",2)
 				hive.slashing_allowed = 1
-				hive.living_xeno_queen = null
+				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
 				for(var/mob/living/carbon/Xenomorph/Queen/Q in living_mob_list)
 					if(!isnull(Q) && Q != src && Q.stat != DEAD && Q.hivenumber == hivenumber)
-						if (Q.loc.z != ADMIN_Z_LEVEL || Q.loc.z == src.loc.z) //Ignore admin-level Queens, unless the queen that died was also on the admin level
-							hive.living_xeno_queen = Q
-							break
-				for(var/mob/living/carbon/Xenomorph/L in hive.xeno_leader_list)
-					L.handle_xeno_leader_pheromones(XQ)
+						hive.set_living_xeno_queen(Q)
+						break
+				hive.handle_xeno_leader_pheromones()
 				if(ticker && ticker.mode)
 					ticker.mode.check_queen_status(hive.queen_time)
 

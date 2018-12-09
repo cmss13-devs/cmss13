@@ -1188,37 +1188,29 @@
 			var/mob/living/carbon/C = M
 			if(C.status_flags & XENO_HOST && istype(C.buckled, /obj/structure/bed/nest) || C.stat == DEAD)
 				return
-		if(isXenoBoiler(P.firer))
-			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
-			smoke_system.amount = B.upgrade
-		drop_nade(get_turf(P))
+		drop_nade(get_turf(P), P)
 
 	on_hit_obj(obj/O, obj/item/projectile/P)
-		if(isXenoBoiler(P.firer))
-			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
-			smoke_system.amount = B.upgrade
-		drop_nade(get_turf(P))
+		drop_nade(get_turf(P), P)
 
 	on_hit_turf(turf/T, obj/item/projectile/P)
-		if(isXenoBoiler(P.firer))
-			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
-			smoke_system.amount = B.upgrade
 		if(T.density && isturf(P.loc))
-			drop_nade(P.loc) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
+			drop_nade(P.loc, P) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 		else
-			drop_nade(T)
+			drop_nade(T, P)
 
 	do_at_max_range(obj/item/projectile/P)
-		if(isXenoBoiler(P.firer))
-			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
-			smoke_system.amount = B.upgrade
-		drop_nade(get_turf(P))
+		drop_nade(get_turf(P), P)
 
 	proc/set_xeno_smoke(obj/item/projectile/P)
 		smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
-	proc/drop_nade(turf/T)
-		smoke_system.set_up(4, 0, T)
+	proc/drop_nade(turf/T, obj/item/projectile/P)
+		var/amount = 3
+		if(isXenoBoiler(P.firer))
+			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
+			amount += B.gas_level
+		smoke_system.set_up(amount, 0, T)
 		smoke_system.start()
 		T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into noxious fumes!</span>")
 
@@ -1242,8 +1234,12 @@
 	set_xeno_smoke(obj/item/projectile/P)
 		smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
-	drop_nade(turf/T)
-		smoke_system.set_up(3, 0, T)
+	drop_nade(turf/T, obj/item/projectile/P)
+		var/amount = 2
+		if(isXenoBoiler(P.firer))
+			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
+			amount += B.gas_level
+		smoke_system.set_up(amount, 0, T)
 		smoke_system.start()
 		T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into corrosive bile!</span>")
 

@@ -605,12 +605,12 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	#endif
 
 	if(damage > 0 && !(P.ammo.flags_ammo_behavior & AMMO_IGNORE_ARMOR))
-		var/armor = caste.armor_deflection + armor_deflection_buff
+		var/armor = armor_deflection + armor_deflection_buff
 		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
 			var/mob/living/carbon/Xenomorph/charger = src
 			armor += round(charger.charge_speed * 5) //Some armor deflection when charging.
-			if(P.dir == charger.dir) armor = max(0, armor - (caste.armor_deflection * config.xeno_armor_resist_low)) //Both facing same way -- ie. shooting from behind.
-			else if(P.dir == reverse_direction(charger.dir)) armor += round(caste.armor_deflection * config.xeno_armor_resist_low) //We are facing the bullet.
+			if(P.dir == charger.dir) armor = max(0, armor - (armor_deflection * config.xeno_armor_resist_low)) //Both facing same way -- ie. shooting from behind.
+			else if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * config.xeno_armor_resist_low) //We are facing the bullet.
 			//Otherwise use the standard armor deflection for crushers.
 			#if DEBUG_XENO_DEFENSE
 			world << "<span class='debuginfo'>Adjusted crest armor is: <b>[armor]</b></span>"

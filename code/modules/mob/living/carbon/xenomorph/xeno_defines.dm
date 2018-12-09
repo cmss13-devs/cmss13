@@ -71,8 +71,6 @@
 	var/xeno_explosion_resistance = 0 //0 to 3. how explosions affects the xeno, can it stun it, etc...
 
 	//Queen vars
-	var/queen_leader_limit = 0 //Amount of leaders allowed
-
 	var/can_hold_facehuggers = 0
 	var/can_hold_eggs = CANNOT_HOLD_EGGS
 
@@ -97,6 +95,8 @@
 
 	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
 	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
+	var/acid_level = 0
+	var/weed_level = 0
 
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
@@ -106,7 +106,6 @@
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
-	var/plasma_stored = 0
 	var/amount_grown = 0
 	var/time_of_birth
 	var/max_grown = 200
@@ -129,9 +128,6 @@
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/pslash_delay = 0
 
-	var/evo_points = 0 //Current # of evolution points. Max is 1000.
-	var/list/upgrades_bought = list()
-
 	var/current_aura = null //"claw", "armor", "regen", "speed"
 	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
 	var/warding_aura = 0
@@ -141,7 +137,6 @@
 	var/zoom_turf = null
 	var/autopsied = 0
 
-	var/speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution
 	var/crit_health = -100 // What negative healthy they die in.
@@ -242,8 +237,53 @@
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/prefix = ""
+	var/queen_leader_limit = 2
 	var/list/xeno_leader_list = list()
 	var/stored_larva = 0
+	var/datum/mutator_set/hive_mutators/mutators = new
+	var/tier_slot_multiplier = 1.0
+
+/datum/hive_status/New()
+	mutators.hive = src
+
+/datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
+	if(M == null)
+		mutators.reset_mutators()
+	else
+		mutators.user_levelled_up(M.upgrade)
+	living_xeno_queen = M
+	recalculate_hive()
+
+/datum/hive_status/proc/recalculate_hive()
+	if(!living_xeno_queen)
+		queen_leader_limit = 0 //No leaders for a Hive without a Queen!
+	else
+		queen_leader_limit = 2 + living_xeno_queen.upgrade + mutators.leader_count_boost
+	while(xeno_leader_list.len > queen_leader_limit)
+		//Removing Hive leaders from the most freshly added to the oldest ones
+		remove_hive_leader(xeno_leader_list[xeno_leader_list.len])
+	tier_slot_multiplier = mutators.tier_slot_multiplier
+
+/datum/hive_status/proc/add_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
+	if(!xeno)
+		return FALSE //How did this even happen?
+	if(xeno_leader_list.len >= queen_leader_limit)
+		return FALSE //Too many leaders already
+	if(xeno in xeno_leader_list)
+		return FALSE //Already on the list
+	xeno_leader_list += xeno
+	xeno.queen_chosen_lead = TRUE
+	xeno.handle_xeno_leader_pheromones()
+	return TRUE
+
+/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
+	xeno_leader_list -= xeno
+	xeno.queen_chosen_lead = FALSE
+	xeno.handle_xeno_leader_pheromones()
+
+/datum/hive_status/proc/handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)
+		L.handle_xeno_leader_pheromones()
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

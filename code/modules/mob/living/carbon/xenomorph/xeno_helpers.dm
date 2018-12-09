@@ -16,9 +16,7 @@
 	return FALSE
 
 /mob/living/carbon/Xenomorph/proc/get_plasma_percentage()
-	if(caste && caste.plasma_max) 
-		return plasma_stored * 100 / caste.plasma_max
-	return 0
+	return round(plasma_stored * 100 / plasma_max)
 
 
 //These don't do much currently. Or anything? Only around for legacy code.

@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	max_health = 150
-	plasma_gain = 10
+	plasma_gain = 0.1
 	plasma_max = 100
 	evolution_threshold = 500
 	upgrade_threshold = 500
@@ -26,7 +26,7 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	max_health = 170
-	plasma_gain = 15
+	plasma_gain = 0.107
 	plasma_max = 150
 	upgrade_threshold = 800
 	caste_desc = "A fast, powerful front line combatant. It looks a little more dangerous."
@@ -43,8 +43,8 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	max_health = 190
+	plasma_gain = 0.114
 	plasma_max = 175
-	plasma_gain = 20
 	upgrade_threshold = 1600
 	caste_desc = "A fast, powerful front line combatant. It looks pretty strong."
 	speed = -1.7
@@ -61,7 +61,7 @@
 	melee_damage_lower = 35
 	melee_damage_upper = 45
 	max_health = 210
-	plasma_gain = 25
+	plasma_gain = 0.125
 	plasma_max = 200
 	caste_desc = "A completly unmatched hunter. No, not even the Yautja can match you."
 	speed = -1.8
@@ -80,13 +80,9 @@
 	desc = "A beefy, fast alien with sharp claws."
 	icon = 'icons/Xeno/xenomorph_48x48.dmi'
 	icon_state = "Lurker Walking"
-	health = 150
-	maxHealth = 150
-	plasma_stored = 100
 	pixel_x = -12
 	old_x = -12
 	tier = 2
-	upgrade = 0
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,

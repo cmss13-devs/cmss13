@@ -13,6 +13,7 @@
 	var/tierB = 0 //Tier 2
 	var/tierC = 0 //Tier 3
 	var/potential_queens = 0
+	var/tier_slot_multiplier = hive.tier_slot_multiplier
 
 	if(is_ventcrawling)
 		src << "<span class='warning'>This place is too constraining to evolve.</span>"
@@ -51,7 +52,7 @@
 		src << "<span class='warning'>You must be at full health to evolve.</span>"
 		return
 
-	if(plasma_stored < caste.plasma_max)
+	if(plasma_stored < plasma_max)
 		src << "<span class='warning'>You must be at full plasma to evolve.</span>"
 		return
 
@@ -126,10 +127,12 @@
 			if(M.client && M.ckey)
 				totalXenos++
 
-	if(tier == 1 && ((tierB + tierC) / max(totalXenos, 1))> 0.5 && castepick != "Queen")
+	if(totalXenos < 1)
+		totalXenos = 1
+	if(tier == 1 && (((tierB + tierC) / totalXenos) * tier_slot_multiplier)> 0.5 && castepick != "Queen")
 		src << "<span class='warning'>The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die.</span>"
 		return
-	else if(tier == 2 && (tierC / max(totalXenos, 1))> 0.25 && castepick != "Queen")
+	else if(tier == 2 && ((tierC / totalXenos) * tier_slot_multiplier)> 0.25 && castepick != "Queen")
 		src << "<span class='warning'>The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die.</span>"
 
 		return
@@ -192,8 +195,8 @@
 		usr << "<span class='warning'>[castepick] is not a valid caste! If you're seeing this message, tell a coder!</span>"
 		return
 
-	if(caste.evolution_threshold && castepick != "Queen") //Does the caste have an evolution timer? Then check it
-		if(evolution_stored < caste.evolution_threshold)
+	if(evolution_threshold && castepick != "Queen") //Does the caste have an evolution timer? Then check it
+		if(evolution_stored < evolution_threshold)
 			src << "<span class='warning'>You must wait before evolving. Currently at: [evolution_stored] / [caste.evolution_threshold].</span>"
 			return
 
@@ -234,10 +237,12 @@
 				if(Z.client && Z.ckey)
 					totalXenos++
 
-		if(tier == 1 && ((tierB + tierC) / max(totalXenos, 1))> 0.5 && castepick != "Queen")
+		if(totalXenos < 1)
+			totalXenos = 1
+		if(tier == 1 && (((tierB + tierC) / totalXenos) * tier_slot_multiplier)> 0.5 && castepick != "Queen")
 			src << "<span class='warning'>The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die.</span>"
 			return
-		else if(tier == 2 && (tierC / max(totalXenos, 1))> 0.25 && castepick != "Queen")
+		else if(tier == 2 && ((tierC / totalXenos) * tier_slot_multiplier)> 0.25 && castepick != "Queen")
 			src << "<span class='warning'>The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die.</span>"
 
 			return

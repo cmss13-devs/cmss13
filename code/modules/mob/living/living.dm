@@ -212,20 +212,22 @@
 	if (drowsyness > 0)
 		. += 6
 
-	if(pulling && pulling.drag_delay && !ignore_pull_delay())	//Dragging stuff can slow you down a bit.
-		var/pull_delay = pulling.drag_delay
+	if(pulling && pulling.drag_delay && get_pull_miltiplier())	//Dragging stuff can slow you down a bit.
+		var/pull_delay = pulling.drag_delay * get_pull_miltiplier()
 		if(ismob(pulling))
 			var/mob/M = pulling
 			if(M.buckled) //if the pulled mob is buckled to an object, we use that object's drag_delay.
-				pull_delay = M.buckled.drag_delay
+				pull_delay = M.buckled.drag_delay * get_pull_miltiplier()
 		. += max(pull_speed + pull_delay + 3*grab_level, 0) //harder grab makes you slower
 
 //whether we are slowed when dragging things
-/mob/living/proc/ignore_pull_delay()
-	return FALSE
+/mob/living/proc/get_pull_miltiplier()
+	return 1.0
 
-/mob/living/carbon/human/ignore_pull_delay()
-	return has_species(src,"Yautja") //Predators aren't slowed when pulling their prey.
+/mob/living/carbon/human/get_pull_miltiplier()
+	if(has_species(src,"Yautja"))
+		return 0//Predators aren't slowed when pulling their prey.
+	return 1
 
 /mob/living/forceMove(atom/destination)
 	stop_pulling()

@@ -9,7 +9,7 @@
 	tacklemax = 4
 	tackle_chance = 40
 	max_health = 200
-	plasma_gain = 8
+	plasma_gain = 0.08
 	plasma_max = 100
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
@@ -28,7 +28,7 @@
 	melee_damage_lower = 40
 	melee_damage_upper = 50
 	max_health = 225
-	plasma_gain = 10
+	plasma_gain = 0.067
 	plasma_max = 150
 	upgrade_threshold = 1600
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
@@ -44,7 +44,7 @@
 	melee_damage_lower = 50
 	melee_damage_upper = 60
 	max_health = 250
-	plasma_gain = 15
+	plasma_gain = 0.075
 	plasma_max = 200
 	upgrade_threshold = 3200
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
@@ -73,9 +73,6 @@
 	desc = "A huge, nasty red alien with enormous scythed claws."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Ravager Walking"
-	health = 200
-	maxHealth = 200
-	plasma_stored = 50
 	var/usedcharge = 0 //What's the deal with the all caps?? They're not constants :|
 	var/CHARGESPEED = 2
 	var/CHARGESTRENGTH = 2
@@ -84,7 +81,6 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	upgrade = 0
 	pixel_x = -16
 	old_x = -16
 

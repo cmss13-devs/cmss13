@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 40
-	plasma_gain = 8
+	plasma_gain = 0.032
 	plasma_max = 250
 	upgrade_threshold = 500
 	evolution_threshold = 500
@@ -20,6 +20,7 @@
 	burrow_cooldown = 50
 	tunnel_cooldown = 100
 	widen_cooldown = 100
+	weed_level = 1
 
 /datum/caste_datum/burrower/mature
 	upgrade_name = "Mature"
@@ -29,7 +30,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_gain = 10
+	plasma_gain = 0.034
 	plasma_max = 300
 	armor_deflection = 15
 	caste_desc = "A digger and shaper. It looks a little more dangerous."
@@ -47,7 +48,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	plasma_gain = 12
+	plasma_gain = 0.035
 	plasma_max = 350
 	armor_deflection = 20
 	caste_desc = "A digger and shaper. It looks pretty strong."
@@ -65,7 +66,7 @@
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 55
-	plasma_gain = 15
+	plasma_gain = 0.0375
 	plasma_max = 400
 	armor_deflection = 25
 	caste_desc = "A digger and shaper. It looks extremely strong."

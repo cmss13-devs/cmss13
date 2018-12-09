@@ -169,20 +169,42 @@
 	action_icon_state = "corrosive_acid"
 	ability_name = "corrosive acid"
 	var/acid_plasma_cost = 100
+	var/level = 2 //level of the acid strength
 	var/acid_type = /obj/effect/xenomorph/acid
 
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.corrosive_acid(A, acid_type, acid_plasma_cost)
 
+/datum/action/xeno_action/activable/corrosive_acid/New()
+	update_level()
+	. = ..()
+
+/datum/action/xeno_action/activable/corrosive_acid/proc/update_level()
+	switch(level)
+		if(1)
+			name = "Corrosive Acid (75)"
+			acid_plasma_cost = 75
+			acid_type = /obj/effect/xenomorph/acid/weak
+		if(2)
+			name = "Corrosive Acid (100)"
+			acid_plasma_cost = 100
+			acid_type = /obj/effect/xenomorph/acid
+		if(3)
+			name = "Corrosive Acid (200)"
+			acid_plasma_cost = 200
+			acid_type = /obj/effect/xenomorph/acid/strong
+
 /datum/action/xeno_action/activable/corrosive_acid/drone
 	name = "Corrosive Acid (75)"
 	acid_plasma_cost = 75
+	level = 1
 	acid_type = /obj/effect/xenomorph/acid/weak
 
 /datum/action/xeno_action/activable/corrosive_acid/Boiler
 	name = "Corrosive Acid (200)"
 	acid_plasma_cost = 200
+	level = 3
 	acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/spray_acid
@@ -442,9 +464,8 @@
 		playsound(X.loc, "alien_drool", 25)
 
 	if(isXenoQueen(X) && X.hive.xeno_leader_list.len && X.anchored)
-		var/mob/living/carbon/Xenomorph/Queen/Q = X
 		for(var/mob/living/carbon/Xenomorph/L in X.hive.xeno_leader_list)
-			L.handle_xeno_leader_pheromones(Q)
+			L.handle_xeno_leader_pheromones()
 
 /datum/action/xeno_action/activable/transfer_plasma
 	name = "Transfer Plasma"
@@ -914,22 +935,22 @@
 		if(X.queen_ability_cooldown > world.time)
 			X << "<span class='xenowarning'>You're still recovering from your last overwatch ability. Wait [round((X.queen_ability_cooldown-world.time)*0.1)] seconds.</span>"
 			return
-		if(X.caste.queen_leader_limit <= hive.xeno_leader_list.len && !X.observed_xeno.queen_chosen_lead)
+		if(hive.queen_leader_limit <= hive.xeno_leader_list.len && !X.observed_xeno.queen_chosen_lead)
 			X << "<span class='xenowarning'>You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows.</span>"
 			return
 		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
-		T.queen_chosen_lead = !T.queen_chosen_lead
-		T.hud_set_queen_overwatch()
 		X.queen_ability_cooldown = world.time + 150 //15 seconds
-		if(T.queen_chosen_lead)
+		if(!T.queen_chosen_lead)
+			if(!hive.add_hive_leader(T))
+				X << "<span class='xenowarning'>Unable to add the leader.</span>"
+				return
 			X << "<span class='xenonotice'>You've selected [T] as a Hive Leader.</span>"
 			T << "<span class='xenoannounce'>[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones.</span>"
-			hive.xeno_leader_list += T
 		else
+			hive.remove_hive_leader(T)
 			X << "<span class='xenonotice'>You've demoted [T] from Lead.</span>"
 			T << "<span class='xenoannounce'>[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned.</span>"
-			hive.xeno_leader_list -= T
-		T.handle_xeno_leader_pheromones(X)
+		T.hud_set_queen_overwatch()
 	else
 		var/list/possible_xenos = list()
 		for(var/mob/living/carbon/Xenomorph/T in hive.xeno_leader_list)
@@ -996,7 +1017,7 @@
 			X << "<span class='xenowarning'>This caste cannot be given plasma!</span>"
 			return
 		if(target.stat != DEAD)
-			if(target.plasma_stored < target.caste.plasma_max)
+			if(target.plasma_stored < target.plasma_max)
 				if(X.check_plasma(600))
 					X.use_plasma(600)
 					target.gain_plasma(100)
@@ -1140,12 +1161,6 @@
 			X.hive.living_xeno_queen.set_queen_overwatch(new_xeno)
 
 		new_xeno.upgrade_xeno(min(T.upgrade+1,3)) //a young Crusher de-evolves into a MATURE Hunter
-
-		//Preserving plasma ratio
-		var/plasma_ratio = T.plasma_stored / T.caste.plasma_max
-		new_xeno.plasma_stored = round(new_xeno.caste.plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
-		if(new_xeno.plasma_stored > new_xeno.caste.plasma_max)
-			new_xeno.plasma_stored = new_xeno.caste.plasma_max
 
 		message_admins("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")

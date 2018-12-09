@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	plasma_gain = 30
+	plasma_gain = 0.0375
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
@@ -17,6 +17,7 @@
 	speed = 0.7
 	bomb_strength = 1
 	xeno_explosion_resistance = 60
+	acid_level = 3
 
 /datum/caste_datum/boiler/mature
 
@@ -28,7 +29,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	plasma_gain = 35
+	plasma_gain = 0.039
 	plasma_max = 900
 	upgrade_threshold = 1600
 	spit_delay = 30
@@ -48,7 +49,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_gain = 40
+	plasma_gain = 0.040
 	plasma_max = 1000
 	upgrade_threshold = 3200
 	spit_delay = 20
@@ -68,7 +69,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	plasma_gain = 45
+	plasma_gain = 0.041
 	plasma_max = 1100
 	spit_delay = 10
 	caste_desc = "A devestating piece of alien artillery."
@@ -83,15 +84,11 @@
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Boiler Walking"
-	health = 180
-	maxHealth = 180
-	plasma_stored = 450
 
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 3
-	upgrade = 0
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
 

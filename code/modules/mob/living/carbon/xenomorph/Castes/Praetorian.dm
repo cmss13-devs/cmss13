@@ -7,7 +7,7 @@
 	melee_damage_upper = 30
 	tackle_chance = 45
 	max_health = 225
-	plasma_gain = 25
+	plasma_gain = 0.032
 	plasma_max = 800
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
@@ -19,6 +19,7 @@
 	aura_strength = 1.5 //Praetorian's aura starts strong. They are the Queen's right hand. Climbs by 1 to 4.5
 	spit_types = list(/datum/ammo/xeno/toxin/heavy, /datum/ammo/xeno/acid/heavy, /datum/ammo/xeno/sticky)
 	xeno_explosion_resistance = 60
+	acid_level = 2
 
 /datum/caste_datum/praetorian/mature
 	upgrade_name = "Mature"
@@ -26,7 +27,7 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	max_health = 250
-	plasma_gain = 30
+	plasma_gain = 0.034
 	plasma_max = 900
 	upgrade_threshold = 1600
 	spit_delay = 15
@@ -42,7 +43,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	max_health = 275
-	plasma_gain = 40
+	plasma_gain = 0.04
 	plasma_max = 1000
 	upgrade_threshold = 3200
 	spit_delay = 10
@@ -58,7 +59,7 @@
 	melee_damage_lower = 35
 	melee_damage_upper = 45
 	max_health = 300
-	plasma_gain = 50
+	plasma_gain = 0.05
 	plasma_max = 1000
 	spit_delay = 5
 	caste_desc = "Its mouth looks like a minigun."
@@ -73,15 +74,11 @@
 	desc = "A huge, looming beast of an alien."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Praetorian Walking"
-	health = 225
-	maxHealth = 225
-	plasma_stored = 800
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	upgrade = 0
 	var/sticky_cooldown = 0
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,

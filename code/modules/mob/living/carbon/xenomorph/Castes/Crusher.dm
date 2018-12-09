@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 15
-	plasma_gain = 10
+	plasma_gain = 0.05
 	plasma_max = 200
 	upgrade_threshold = 800
 	evolution_allowed = FALSE
@@ -25,7 +25,7 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	tackle_chance = 20
-	plasma_gain = 15
+	plasma_gain = 0.05
 	plasma_max = 300
 	upgrade_threshold = 1600
 	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
@@ -40,7 +40,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	tackle_chance = 25
-	plasma_gain = 30
+	plasma_gain = 0.075
 	plasma_max = 400
 	upgrade_threshold = 3200
 	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
@@ -54,7 +54,7 @@
 	melee_damage_lower = 35
 	melee_damage_upper = 45
 	tackle_chance = 30
-	plasma_gain = 30
+	plasma_gain = 0.075
 	plasma_max = 400
 	upgrade_threshold = 3200
 	caste_desc = "It always has the right of way."
@@ -67,11 +67,7 @@
 	desc = "A huge alien with an enormous armored head crest."
 	icon = 'icons/Xeno/2x2_Xenos.dmi'
 	icon_state = "Crusher Walking"
-	health = 275
-	maxHealth = 275
-	plasma_stored = 200
 	tier = 3
-	upgrade = 0
 	drag_delay = 6 //pulling a big dead xeno is hard
 
 	mob_size = MOB_SIZE_BIG

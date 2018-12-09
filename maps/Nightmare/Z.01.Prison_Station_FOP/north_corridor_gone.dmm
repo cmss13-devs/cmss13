@@ -1,5 +1,6 @@
 "a" = (/turf/open/space,/area/space)
 "b" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/maintenance/residential/access/north)
+"c" = (/turf/open/space,/area/prison/maintenance/residential/access/north)
 "d" = (/turf/closed/wall/prison,/area/prison/maintenance/residential/access/north)
 "e" = (/obj/machinery/atmospherics/pipe/cap/hidden{icon_state = "cap"; dir = 8},/obj/machinery/atmospherics/pipe/cap/hidden{icon_state = "cap"; dir = 8},/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/maintenance/residential/access/north)
 "f" = (/obj/machinery/atmospherics/pipe/cap/hidden{icon_state = "cap"; dir = 4},/obj/machinery/atmospherics/pipe/cap/hidden{icon_state = "cap"; dir = 4},/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/maintenance/residential/access/north)
@@ -7,11 +8,11 @@
 "h" = (/turf/closed/wall/r_wall/prison_unmeltable,/area/prison/cellblock/highsec/north/south)
 
 (1,1,1) = {"
-baaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaad
-eaaaaaaaaaaaaaaaaaf
-baaaaaaaaaaaaaaaaab
-baaaaaaaaaaaaaaaaab
+bcccccccccccccccccb
+bcccccccccccccccccd
+ecccccccccccccccccf
+bcccccccccccccccccb
+bcccccccccccccccccb
 gaaaaaaaaaaaaaaaaah
 baaaaaaaaaaaaaaaaah
 "}

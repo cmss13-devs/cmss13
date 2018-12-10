@@ -401,7 +401,7 @@
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
-	armor_deflection = round(100 - (100 - caste.armor_deflection * mutators.armor_multiplier * hive.mutators.armor_multiplier) + 0.5)
+	armor_deflection = round(100 - ((100 - caste.armor_deflection) * mutators.armor_multiplier * hive.mutators.armor_multiplier) + 0.5)
 
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
 	melee_damage_lower = round(caste.melee_damage_lower * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)

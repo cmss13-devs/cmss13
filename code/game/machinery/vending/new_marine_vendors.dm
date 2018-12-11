@@ -318,8 +318,9 @@
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 
-		list("EXTRAS (choose 3)", 0, null, null, null),
+		list("EXTRAS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),
+		list("Box of flechette shells", 15, /obj/item/ammo_magazine/shotgun/flechette, null, "black"),
 		list("Fire extinguisher (portable)", 15, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Laser sight", 15, /obj/item/attachable/lasersight, null, "black"),
 		list("M37 wooden stock", 15, /obj/item/attachable/stock/shotgun, null, "black"),
@@ -826,37 +827,37 @@
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
 	listed_products = list(
-							list("ENGINEER SET (Mandatory)", 0, null, null, null),
-							list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("ENGINEER SET (Mandatory)", 0, null, null, null),
+		list("Essential Engineer Set", 0, /obj/effect/essentials_set/engi, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
-							list("ENGINEER SUPPLIES", 0, null, null, null),
-							list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, "orange"),
-							list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, "orange"),
-							list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, "orange"),
-							list("Plastique explosive", 5, /obj/item/explosive/plastique, null, "black"),
-							list("Entrenching tool", 2, /obj/item/tool/shovel/etool, null, "black"),
-							list("Range Finder", 10, /obj/item/device/binoculars/tactical/range, null, "black"),
-							list("High capacity powercell", 3, /obj/item/cell/high, null, "black"),
-							list("M20 mine box", 18, /obj/item/storage/box/explosive_mines, null, "black"),
-							list("Incendiary grenade", 6, /obj/item/explosive/grenade/incendiary, null, "black"),
-							list("Multitool", 4, /obj/item/device/multitool, null, "black"),
-							list("Power control module", 2, /obj/item/circuitboard/apc, null, "black"),
-							list("Airlock electronics", 2, /obj/item/circuitboard/airlock, null, "black"),
+		list("ENGINEER SUPPLIES", 0, null, null, null),
+		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, "orange"),
+		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, "orange"),
+		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, "orange"),
+		list("Airlock electronics", 2, /obj/item/circuitboard/airlock, null, "black"),
+		list("Entrenching tool", 2, /obj/item/tool/shovel/etool, null, "black"),
+		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
+		list("High capacity powercell", 3, /obj/item/cell/high, null, "black"),
+		list("Incendiary grenade", 6, /obj/item/explosive/grenade/incendiary, null, "black"),
+		list("M20 mine box", 18, /obj/item/storage/box/explosive_mines, null, "black"),
+		list("Multitool", 4, /obj/item/device/multitool, null, "black"),
+		list("Plastique explosive", 5, /obj/item/explosive/plastique, null, "black"),
+		list("Power control module", 2, /obj/item/circuitboard/apc, null, "black"),
+		list("Range Finder", 10, /obj/item/device/binoculars/tactical/range, null, "black"),
 
-							list("SPECIAL AMMUNITION", 0, null, null, null),
-							list("AP M4A3 magazine", 3, /obj/item/ammo_magazine/pistol/ap, null, "black"),
-							list("Extended M4A3 magazine", 3, /obj/item/ammo_magazine/pistol/extended, null, "black"),
-							list("AP M41A magazine", 6, /obj/item/ammo_magazine/rifle/ap, null, "black"),
-							list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
-							list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
-							list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
+		list("SPECIAL AMMUNITION", 0, null, null, null),
+		list("AP M4A3 magazine", 3, /obj/item/ammo_magazine/pistol/ap, null, "black"),
+		list("Extended M4A3 magazine", 3, /obj/item/ammo_magazine/pistol/extended, null, "black"),
+		list("AP M41A magazine", 6, /obj/item/ammo_magazine/rifle/ap, null, "black"),
+		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
+		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
-							list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
-							list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
-
- 							)
+		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
+		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
+	)
 
 
 
@@ -867,26 +868,28 @@
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
 	listed_products = list(
+		list("SMARTGUN SET (Mandatory)", 0, null, null, null),
+		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
-							list("SMARTGUN SET (Mandatory)", 0, null, null, null),
-							list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("SPECIAL AMMUNITION", 0, null, null, null),
 
-							list("SPECIAL AMMUNITION", 0, null, null, null),
+		list("M56 powerpack", 45, /obj/item/smartgun_powerpack, null, "black"),
+		list("AP M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/ap, null, "black"),
+		list("Extended M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/extended, null, "black"),
+		list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
+		list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
+		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
-							list("M56 powerpack", 45, /obj/item/smartgun_powerpack, null, "black"),
-							list("AP M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/ap, null, "black"),
-							list("Extended M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/extended, null, "black"),
-							list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
-							list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
-							list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
-							list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
-
-							list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
-							list("Submachinegun stock", 0, /obj/item/attachable/stock/smg, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							)
+		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
+		//They always take it, might as well make it a default...
+		//It will only cost them all of their poitns and an attachment
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Submachinegun stock", 0, /obj/item/attachable/stock/smg, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
+	)
 
 
 
@@ -901,37 +904,36 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
 	listed_products = list(
+		list("SPECIALIST SETS (Choose one)", 0, null, null, null),
+		list("Scout Set", 0, /obj/item/storage/box/spec/scout, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("Sniper Set", 0, /obj/item/storage/box/spec/sniper, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("Demolitionist Set", 0, /obj/item/storage/box/spec/demolitionist, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("Heavy Grenadier Set", 0, /obj/item/storage/box/spec/heavy_grenadier, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("Pyro Set", 0, /obj/item/storage/box/spec/pyro, MARINE_CAN_BUY_ESSENTIALS, "white"),
 
-							list("SPECIALIST SETS (Choose one)", 0, null, null, null),
-							list("Scout Set", 0, /obj/item/storage/box/spec/scout, MARINE_CAN_BUY_ESSENTIALS, "white"),
-							list("Sniper Set", 0, /obj/item/storage/box/spec/sniper, MARINE_CAN_BUY_ESSENTIALS, "white"),
-							list("Demolitionist Set", 0, /obj/item/storage/box/spec/demolitionist, MARINE_CAN_BUY_ESSENTIALS, "white"),
-							list("Heavy Grenadier Set", 0, /obj/item/storage/box/spec/heavy_grenadier, MARINE_CAN_BUY_ESSENTIALS, "white"),
-							list("Pyro Set", 0, /obj/item/storage/box/spec/pyro, MARINE_CAN_BUY_ESSENTIALS, "white"),
+		list("SPECIAL AMMUNITION", 0, null, null, null),
+		list("AP M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/ap, null, "black"),
+		list("Extended M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/extended, null, "black"),
+		list("88M4 AP magazine", 15, /obj/item/ammo_magazine/pistol/vp70, null, "black"),
+		list("M44 marksman speed loader", 15, /obj/item/ammo_magazine/revolver/marksman, null, "black"),
+		list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
+		list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
+		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
-							list("SPECIAL AMMUNITION", 0, null, null, null),
-							list("AP M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/ap, null, "black"),
-							list("Extended M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/extended, null, "black"),
-							list("88M4 AP magazine", 15, /obj/item/ammo_magazine/pistol/vp70, null, "black"),
-							list("M44 marksman speed loader", 15, /obj/item/ammo_magazine/revolver/marksman, null, "black"),
-							list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
-							list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
-							list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
-							list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
+		list("GRENADES", 0, null, null, null),
+		list("M40 HEDP grenade x6", 15, /obj/effect/essentials_set/hedp_6_pack, null, "black"),
+		list("M40 HEFA grenade x6", 15, /obj/effect/essentials_set/hefa_6_pack, null, "black"),
+		list("M40 HIDP incendiary grenade x6", 15, /obj/effect/essentials_set/hidp_6_pack, null, "black"),
 
-							list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
-							list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Extended barrel", 0, /obj/item/attachable/extended_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Recoil compensator", 0, /obj/item/attachable/compensator, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							list("Magnetic Harness", 0, /obj/item/attachable/magnetic_harness, MARINE_CAN_BUY_ATTACHMENT, "black"),
-							)
-
-
-
-
-
+		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
+		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Extended barrel", 0, /obj/item/attachable/extended_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Recoil compensator", 0, /obj/item/attachable/compensator, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Magnetic Harness", 0, /obj/item/attachable/magnetic_harness, MARINE_CAN_BUY_ATTACHMENT, "black"),
+	)
 
 
 
@@ -1095,81 +1097,112 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 /obj/effect/essentials_set/medic
 	spawned_gear_list = list(
-						/obj/item/bodybag/cryobag,
-						/obj/item/device/defibrillator,
-						/obj/item/storage/firstaid/adv,
-						/obj/item/device/healthanalyzer,
-						/obj/item/roller/medevac,
-						)
+		/obj/item/bodybag/cryobag,
+		/obj/item/device/defibrillator,
+		/obj/item/storage/firstaid/adv,
+		/obj/item/device/healthanalyzer,
+		/obj/item/roller/medevac,
+	)
 
 /obj/effect/essentials_set/engi
 	spawned_gear_list = list(
-						/obj/item/explosive/plastique,
-						/obj/item/stack/sandbags_empty = 25,
-						/obj/item/cell/high,
-						/obj/item/tool/shovel/etool,
-						/obj/item/device/lightreplacer,
-						)
+		/obj/item/explosive/plastique,
+		/obj/item/stack/sandbags_empty = 25,
+		/obj/item/cell/high,
+		/obj/item/tool/shovel/etool,
+		/obj/item/device/lightreplacer,
+	)
 
 
 /obj/effect/essentials_set/leader
 	spawned_gear_list = list(
-						/obj/item/explosive/plastique,
-						/obj/item/device/binoculars/tactical,
-						/obj/item/map/current_map,
-						/obj/item/weapon/gun/flamer,
-						/obj/item/storage/box/zipcuffs,
-						)
+		/obj/item/explosive/plastique,
+		/obj/item/device/binoculars/tactical,
+		/obj/item/map/current_map,
+		/obj/item/weapon/gun/flamer,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/storage/box/zipcuffs,
+	)
 
 
 //Not essentials sets but fuck it the code's here
 /obj/effect/essentials_set/ltb
 	spawned_gear_list = list(
-	/obj/item/hardpoint/primary/cannon,
-	/obj/item/ammo_magazine/tank/ltb_cannon,
-	/obj/item/ammo_magazine/tank/ltb_cannon,
-	/obj/item/ammo_magazine/tank/ltb_cannon,
-	/obj/item/ammo_magazine/tank/ltb_cannon,
-	/obj/item/ammo_magazine/tank/ltb_cannon
+		/obj/item/hardpoint/primary/cannon,
+		/obj/item/ammo_magazine/tank/ltb_cannon,
+		/obj/item/ammo_magazine/tank/ltb_cannon,
+		/obj/item/ammo_magazine/tank/ltb_cannon,
+		/obj/item/ammo_magazine/tank/ltb_cannon,
+		/obj/item/ammo_magazine/tank/ltb_cannon
 	)
 
 /obj/effect/essentials_set/gatling
 	spawned_gear_list = list(
-	/obj/item/hardpoint/primary/minigun,
-	/obj/item/ammo_magazine/tank/ltaaap_minigun,
-	/obj/item/ammo_magazine/tank/ltaaap_minigun,
-	/obj/item/ammo_magazine/tank/ltaaap_minigun
+		/obj/item/hardpoint/primary/minigun,
+		/obj/item/ammo_magazine/tank/ltaaap_minigun,
+		/obj/item/ammo_magazine/tank/ltaaap_minigun,
+		/obj/item/ammo_magazine/tank/ltaaap_minigun
 	)
 
 /obj/effect/essentials_set/tankflamer
 	spawned_gear_list = list(
-	/obj/item/hardpoint/secondary/flamer,
-	/obj/item/ammo_magazine/tank/flamer,
-	/obj/item/ammo_magazine/tank/flamer
+		/obj/item/hardpoint/secondary/flamer,
+		/obj/item/ammo_magazine/tank/flamer,
+		/obj/item/ammo_magazine/tank/flamer
 	)
 
 /obj/effect/essentials_set/tow
 	spawned_gear_list = list(
-	/obj/item/hardpoint/secondary/towlauncher,
-	/obj/item/hardpoint/secondary/grenade_launcher,
-	/obj/item/ammo_magazine/tank/towlauncher,
-	/obj/item/ammo_magazine/tank/towlauncher
+		/obj/item/hardpoint/secondary/towlauncher,
+		/obj/item/hardpoint/secondary/grenade_launcher,
+		/obj/item/ammo_magazine/tank/towlauncher,
+		/obj/item/ammo_magazine/tank/towlauncher
 	)
 
 /obj/effect/essentials_set/tank56
 	spawned_gear_list = list(
-	/obj/item/hardpoint/secondary/m56cupola,
-	/obj/item/ammo_magazine/tank/m56_cupola
+		/obj/item/hardpoint/secondary/m56cupola,
+		/obj/item/ammo_magazine/tank/m56_cupola
 	)
 
 /obj/effect/essentials_set/tankgl
 	spawned_gear_list = list(
-	/obj/item/hardpoint/secondary/grenade_launcher,
-	/obj/item/ammo_magazine/tank/tank_glauncher,
-	/obj/item/ammo_magazine/tank/tank_glauncher,
-	/obj/item/ammo_magazine/tank/tank_glauncher,
-	/obj/item/ammo_magazine/tank/tank_glauncher,
-	/obj/item/ammo_magazine/tank/tank_glauncher
+		/obj/item/hardpoint/secondary/grenade_launcher,
+		/obj/item/ammo_magazine/tank/tank_glauncher,
+		/obj/item/ammo_magazine/tank/tank_glauncher,
+		/obj/item/ammo_magazine/tank/tank_glauncher,
+		/obj/item/ammo_magazine/tank/tank_glauncher,
+		/obj/item/ammo_magazine/tank/tank_glauncher
+	)
+
+/obj/effect/essentials_set/hedp_6_pack
+	spawned_gear_list = list(
+		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/HE,
+		/obj/item/explosive/grenade/HE,
+	)
+
+/obj/effect/essentials_set/hefa_6_pack
+	spawned_gear_list = list(
+		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/HE/frag,
+		/obj/item/explosive/grenade/HE/frag,
+	)
+
+/obj/effect/essentials_set/hidp_6_pack
+	spawned_gear_list = list(
+		/obj/item/explosive/grenade/incendiary,
+		/obj/item/explosive/grenade/incendiary,
+		/obj/item/explosive/grenade/incendiary,
+		/obj/item/explosive/grenade/incendiary,
+		/obj/item/explosive/grenade/incendiary,
+		/obj/item/explosive/grenade/incendiary,
 	)
 
 #undef MARINE_CAN_BUY_UNIFORM

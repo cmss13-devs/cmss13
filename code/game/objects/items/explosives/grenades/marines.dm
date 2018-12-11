@@ -4,6 +4,10 @@
 				Blast Grenades
 //================================================
 */
+
+#define GRENADE_FIRE_RESISTANCE_MIN 10
+#define GRENADE_FIRE_RESISTANCE_MAX 60
+
 /obj/item/explosive/grenade/HE
 	name = "\improper M40 HEDP grenade"
 	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M50 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
@@ -16,6 +20,13 @@
 	var/explosion_falloff = 20
 	var/shrapnel_count = 0
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
+	var/fire_resistance = 30 //to prevent highly controlled massive explosions
+
+/obj/item/explosive/grenade/HE/New()
+
+	..()
+
+	fire_resistance = rand(GRENADE_FIRE_RESISTANCE_MIN, GRENADE_FIRE_RESISTANCE_MAX)
 
 /obj/item/explosive/grenade/HE/prime()
 	spawn(0)
@@ -27,8 +38,10 @@
 	return
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
-	spawn(rand(10,50))
-		prime()
+	fire_resistance-=1;
+	if(fire_resistance<=0)
+		spawn(rand(10,50))
+			prime()
 
 
 

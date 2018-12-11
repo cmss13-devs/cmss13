@@ -512,7 +512,7 @@
 		return
 	MS.maturation_multiplier *= 0.9
 	MS.recalculate_maturation(description)
-
+/*
 /datum/xeno_mutator/more_tier_slots
 	//Faster evolution and maturation
 	name = "More T2, T3 slots"
@@ -529,7 +529,7 @@
 		return
 	MS.tier_slot_multiplier *= 0.9
 	MS.recalculate_hive(description)
-
+*/
 /datum/xeno_mutator/faster_pulling
 	//Boiler gas spreads further
 	name = "Faster pulling"

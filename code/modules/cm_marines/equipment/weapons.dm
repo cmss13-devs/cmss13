@@ -28,7 +28,7 @@
 	flags_equip_slot = SLOT_BACK
 	w_class = 5.0
 	var/obj/item/cell/pcell = null
-	var/rounds_remaining = 250
+	var/rounds_remaining = 500
 	actions_types = list(/datum/action/item_action/toggle)
 	var/reloading = 0
 
@@ -112,7 +112,7 @@
 	..()
 	if (get_dist(user, src) <= 1)
 		if(pcell)
-			user << "A small gauge in the corner reads: Ammo: [rounds_remaining] / 250."
+			user << "A small gauge in the corner reads: Ammo: [rounds_remaining] / 500."
 
 /obj/item/smartgun_powerpack/snow
 	icon_state = "s_powerpack"

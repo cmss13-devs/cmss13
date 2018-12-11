@@ -18,9 +18,7 @@
 	if(node)
 		weed_strength = node.weed_strength
 
-	//Weeds grow stronger, but are still weaker than nodes
-	//6 makes a PFC with plasma rifle have to hit it twice, but one with bayonett or just a combat knife only once at level 1
-	health = weed_strength * 6
+	health = 1
 
 	update_sprite()
 	update_neighbours()
@@ -240,7 +238,7 @@
 		weed_strength = X.weed_level
 		if (weed_strength < 1)
 			weed_strength = 1
-		health = 15 * weed_strength
+		health = 15
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 
 #undef NODERANGE

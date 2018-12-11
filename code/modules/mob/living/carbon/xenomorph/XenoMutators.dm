@@ -314,7 +314,7 @@
 	var/description = "Mutator description" //Description to be displayed on purchase
 	var/cost = MUTATOR_COST_CHEAP //How expensive the mutator is
 	var/required_level = 0 //Level of xeno upgrade required to unlock
-	var/unique = FALSE //True if you can only buy it once
+	var/unique = TRUE //True if you can only buy it once
 	var/death_persistent = FALSE //True if the mutators persists after Queen death (aka, mostly for "once ever" mutators)
 	var/hive_only = FALSE //Hive-only mutators
 	var/individual_only = FALSE //Individual-only mutators
@@ -342,7 +342,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.health_multiplier *= 1.05
+	MS.health_multiplier *= 1.1
 	MS.recalculate_health(description)
 
 /datum/xeno_mutator/plasma
@@ -355,7 +355,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.plasma_multiplier *= 1.1
+	MS.plasma_multiplier *= 1.2
 	MS.recalculate_plasma(description)
 
 /datum/xeno_mutator/larva
@@ -386,7 +386,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.damage_multiplier *= 1.05
+	MS.damage_multiplier *= 1.075
 	MS.recalculate_damage(description)
 
 /datum/xeno_mutator/armor
@@ -399,7 +399,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.armor_multiplier *= 0.95
+	MS.armor_multiplier *= 0.90
 	MS.recalculate_armor(description)
 
 /datum/xeno_mutator/speed
@@ -448,8 +448,8 @@
 
 /datum/xeno_mutator/hardy_weeds
 	//Weeds spread further, faster, and are tougher
-	name = "Hardy weeds"
-	description = "Your weeds grow more hardy."
+	name = "Faster weeds"
+	description = "Your weeds grow more rapidly."
 	cost = MUTATOR_COST_EXPENSIVE
 	unique = TRUE //Can only buy once
 	caste_whitelist = list("Burrower", "Carrier", "Drone", "Hivelord", "Queen") //Only for weed-layers
@@ -475,7 +475,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.leader_count_boost += 2
+	MS.leader_count_boost += 3
 	MS.recalculate_hive(description)
 
 /datum/xeno_mutator/wider_gas
@@ -544,7 +544,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.pull_multiplier *= 0.5 //0.75 felt a bit too weak to be worth it, 0.5 is definitely noticeable
+	MS.pull_multiplier *= 0.75 //0.75 felt a bit too weak to be worth it, 0.5 is definitely noticeable
 	MS.recalculate_actions(description)
 
 

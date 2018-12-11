@@ -691,7 +691,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 // returns turf relative to A for a given clockwise angle at set range
 // result is bounded to map size
 /proc/get_angle_target_turf(var/atom/A, var/angle, var/range)
-
+	if(!istype(A))
+		return null
 	var/x = A.x
 	var/y = A.y
 

@@ -144,18 +144,44 @@ Quick adjacency (to turf):
 */
 
 /atom/proc/handle_barriers(mob/living/M)
+	var/rdir = get_dir(src,M)
+	var/fdir = get_dir(M,src)
+
+	var/d1 = fdir&(fdir-1)		// eg west		(1+8)&(8) = 8
+	var/d2 = fdir - d1		// eg north		(1+8) - 8 = 1
+
 	for(var/obj/structure/S in M.loc)
-		if(S.flags_atom & ON_BORDER && S.dir & get_dir(M,src) || S.dir&(S.dir-1))
+		if(S.flags_atom & ON_BORDER && S.dir & fdir || S.dir&(S.dir-1))
 			if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
 				if(S.handle_barrier_chance(M))
 					return S // blocked
+	
+	if(d1 && d1 != fdir)
+		var/d1loc = get_step(M, d1)
+		var/d1dir_a = get_dir(d1loc, M) // inverse direction for attacker
+		var/d1dir_d = get_dir(d1loc, src) // inverse direction for attacker
+		for(var/obj/structure/S in d1loc)
+			if(S.flags_atom & ON_BORDER && S.dir & d1dir_a || S.dir & d1dir_d || S.dir&(S.dir-1))
+				if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
+					if(S.handle_barrier_chance(M))
+						return S // blocked
+
+	if(d2 && d2 != fdir)
+		var/d2loc = get_step(M, d2)
+		var/d2dir_a = get_dir(d2loc, M) // inverse direction for attacker
+		var/d2dir_d = get_dir(d2loc, src) // inverse direction for attacker
+		for(var/obj/structure/S in d2loc)
+			if(S.flags_atom & ON_BORDER &&  S.dir & d2dir_a || S.dir & d2dir_d || S.dir&(S.dir-1))
+				if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
+					if(S.handle_barrier_chance(M))
+						return S // blocked
+
 	for(var/obj/structure/S in loc)
-		if(S.flags_atom & ON_BORDER && S.dir & get_dir(src,M) || S.dir&(S.dir-1))
+		if(S.flags_atom & ON_BORDER && S.dir & rdir || S.dir&(S.dir-1))
 			if(S.flags_barrier & HANDLE_BARRIER_CHANCE)
 				if(S.handle_barrier_chance(M))
 					return S // blocked
-				else
-					return src // not blocked
+	
 	return src
 
 /turf/handle_barriers(mob/living/M)

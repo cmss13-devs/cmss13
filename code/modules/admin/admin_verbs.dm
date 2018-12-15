@@ -6,8 +6,10 @@ var/list/admin_verbs_default = list(
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
 	/client/proc/hide_most_verbs,		/*hides all our hideable adminverbs*/
+	/client/proc/open_STUI, // This proc can be used by all admins but depending on your rank you see diffrent stuff.
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	// /client/proc/cmd_mentor_check_new_players
+
 	)
 var/list/admin_verbs_admin = list(
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
@@ -374,12 +376,16 @@ var/list/admin_verbs_mentor = list(
 
 
 
-
-
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
 	if(!holder)	return
+	var/new_STUI = 0
+	if(usr:open_uis)
+		for(var/datum/nanoui/ui in usr:open_uis)
+			if(ui.title == "STUI")
+				new_STUI = 1
+				ui.close()
 	if(istype(mob,/mob/dead/observer))
 		//re-enter
 		var/mob/dead/observer/ghost = mob
@@ -404,7 +410,9 @@ var/list/admin_verbs_mentor = list(
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 			if(body.client) body.client.change_view(world.view) //reset view range to default.
 		feedback_add_details("admin_verb","O") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
+		//re-open STUI
+	if(new_STUI)
+		STUI.ui_interact(mob)
 
 /client/proc/invisimin()
 	set name = "Invisimin"

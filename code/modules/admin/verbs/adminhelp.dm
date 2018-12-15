@@ -102,6 +102,8 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	if(!mob)	return	//this doesn't happen
 
 	var/mentor_msg = "<br><br><font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 0, 0, 1, 0)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
+	STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
+	STUI.processing |= 3
 	msg = "<br><br><font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
 
 	var/admin_number_afk = 0

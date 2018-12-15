@@ -228,7 +228,10 @@
 /mob/living/simple_animal/emote(var/act, var/type, var/message, player_caused)
 	if(act)
 		if(act == "scream")	act = "whimper" //ugly hack to stop animals screaming when crushed :P
-		..(act, type, message, player_caused)
+		if(act == "me")
+			custom_emote(type,desc, nolog = !ckey)		//if the animal has a ckey then it will log the message
+		else
+			..(act, type, message, player_caused)
 
 /mob/living/simple_animal/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)
@@ -390,4 +393,4 @@
 
 	message = capitalize(trim_left(message))
 
-	..(message, null, verb)
+	..(message, null, verb, nolog = !ckey)	//if the animal has a ckey then it will log the message

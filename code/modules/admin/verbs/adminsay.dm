@@ -7,7 +7,9 @@
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)	return
 
-	log_admin("[key_name(src)] : [msg]")
+	log_adminsay("ADMIN : [key_name(src)] : [msg]")
+	STUI.staff.Add("\[[time_stamp()]] <font color='#800080'>ADMIN: [key_name(src)] : [msg]</font><br>")
+	STUI.processing |= 3
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -29,7 +31,9 @@
 	if(!check_rights(R_ADMIN|R_MOD|R_MENTOR))	return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	log_admin("MOD: [key_name(src)] : [msg]")
+	log_adminsay("MOD: [key_name(src)] : [msg]")
+	STUI.staff.Add("\[[time_stamp()]] <font color='#b82e00'>MOD: [key_name(src)] : [msg]</font><br>")
+	STUI.processing |= 3
 
 	if (!msg)
 		return

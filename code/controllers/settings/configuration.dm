@@ -4,7 +4,7 @@
 	var/hub_password = null				// hub password
 
 	var/nudge_script_path = "nudge.py"  // where the nudge.py script is located
-
+	var/STUI_length = 150
 	var/log_ooc = 0						// log OOC channel
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say

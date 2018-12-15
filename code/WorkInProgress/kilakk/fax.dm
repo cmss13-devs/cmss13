@@ -199,6 +199,7 @@ var/list/alldepartments = list()
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/announce_fax(var/msg_admin, var/msg_ghost)
+	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(msg_admin)

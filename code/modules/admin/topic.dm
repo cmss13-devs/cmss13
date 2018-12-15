@@ -2409,6 +2409,9 @@
 			return
 
 		message_staff("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)] and is preparing to respond...", 1)
+		log_admin("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].", 1)
+		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].")
+		STUI.processing |= 3
 		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>"
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
@@ -2432,6 +2435,9 @@
 			return
 
 		message_staff("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)]. The player has been notified that their issue 'is being handled, it's fixed, or it's nonsensical'.", 1)
+		log_admin("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].", 1)
+		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].")
+		STUI.processing |= 3
 		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>"
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
@@ -2455,6 +2461,9 @@
 			return
 
 		message_staff("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)]. The player has been warned for abusing the Adminhelp system.", 1)
+		log_admin("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].", 1)
+		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].")
+		STUI.processing |= 3
 		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>"
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
@@ -2482,7 +2491,7 @@
 			usr << "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>"
 			return
 
-		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Guilty", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
+		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law","Whitelist Player", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
 
 		var/msgplayer
 		switch(choice)
@@ -2492,10 +2501,12 @@
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>"
 			if("Fixed")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>"
+			if("Whitelist Player")
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Whitelisted players only get sanctioned through <a href='https://cm-ss13.com/viewforum.php?f=63'>player reports.</a> Staff is allowed to talk to whitelisted players to get their side or to investigate."
 			if("Thanks")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
-			if("Guilty")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You broke Marine Law.</b>"
+			if("Marine Law")
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a <a href='http://cm-ss13.com/wiki/Marine_Law'>marine law issue</a>. <a href='https://cm-ss13.com/viewforum.php?f=63'>Unless the MP's are breaking procedure in a significant way</a> we will not influence ic events. You do have the right to appeal your sentence and should try to appeal to the Captain first. </b>"
 			if("L: Xeno Quickstart Guide")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b>"
 			if("L: Marine quickstart guide")
@@ -2519,7 +2530,9 @@
 			else return
 		msgplayer += " <b><i>You may click on administrator's name to ask more about this response.</i></b>"
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
-
+		log_admin("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>.", 1) //No need to log the text we send them.
+		STUI.staff.Add("\[[time_stamp()]][usr.key] is autoresponding to [ref_person] with [choice].")
+		STUI.processing |= 3
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-reply.ogg')
 

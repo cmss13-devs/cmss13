@@ -32,7 +32,7 @@ var/global/datum/controller/gameticker/ticker
 	var/list/availablefactions = list()	  // list of factions with openings
 
 	var/pregame_timeleft = 0
-
+	var/toweractive = 0
 	var/delay_end = 0	//if set to nonzero, the round will not restart on it's own
 
 	var/triai = 0//Global holder for Triumvirate

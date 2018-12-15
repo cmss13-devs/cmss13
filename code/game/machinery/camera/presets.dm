@@ -137,3 +137,14 @@
 	if (isMotion())
 		mult++
 	active_power_usage = mult*initial(active_power_usage)
+
+//Desert Dam camera networks
+
+/obj/machinery/camera/autoname/dam/sector_one
+	network = list("chigusa_1")
+
+/obj/machinery/camera/autoname/dam/sector_two
+	network = list("chigusa_2")
+
+/obj/machinery/camera/autoname/dam/sector_three
+	network = list("chigusa_3")

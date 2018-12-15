@@ -1,0 +1,92 @@
+/turf/open/floor/filtrationside
+	name = "filtration"
+	icon = 'icons/turf/floors/filtration.dmi'
+	icon_state = "filtrationside"
+
+/turf/open/floor/plating/catwalk/rusted
+	icon = 'icons/turf/floors/filtration.dmi'
+	icon_state = "grate"
+
+/turf/open/floor/plating/catwalk/rusted/ex_act()
+	return
+
+/turf/open/floor/coagulation
+	name = "coagulation"
+	icon = 'icons/obj/filtration/coagulation.dmi'
+
+
+
+/obj/structure/filtration
+	unacidable = 1
+/*
+/obj/structure/filtration
+	icon = 'icons/obj/filtration/96x96.dmi'
+	bound_x = 96
+	bound_y = 96
+	density = 1
+
+
+/obj/structure/prop/almayer/anti_air_cannon
+	name = "\improper Anti-air Cannon"
+	desc = "An anti-air cannon for shooting spaceships. It looks broken."
+	icon = 'icons/effects/128x128.dmi'
+	icon_state = "anti_air_cannon"
+	density = 1
+	anchored = 1
+	layer = LADDER_LAYER
+	bound_width = 128
+	bound_height = 64
+	bound_y = 64
+*/
+/obj/structure/filtration/machine
+	icon = 'icons/obj/filtration/96x96.dmi'
+	//bound_x = 96
+	//bound_y = 96
+	density = 1
+	anchored = 1
+	bound_width = 96
+	bound_height = 96
+
+/obj/structure/filtration/coagulation_arm
+	name = "coagulation arm"
+	desc = "An axel with four sides, made to spin to help filter the water."
+	density = 1
+	icon = 'icons/obj/filtration/coagulation_arm.dmi'
+	icon_state = "arm"
+	layer = ABOVE_MOB_LAYER + 0.1
+	bound_width = 96
+	bound_height = 96
+
+/obj/structure/filtration/flacculation_arm
+	name = "flacculation arm"
+	desc = "A long metal filtering rod on an axel, made to spin for flacculation."
+	density = 1
+	icon = 'icons/obj/filtration/flacculation_arm.dmi'
+	icon_state = "flacculation_arm"
+	bound_height = 32
+	bound_width = 128
+	layer = ABOVE_MOB_LAYER + 0.1
+
+/obj/structure/filtration/collector_pipes
+	name = "collection pipes"
+	desc = "A series of pipes collecting water from the river to take it to the plant for filtration."
+	icon = 'icons/obj/filtration/pipes.dmi'
+	icon_state = "upper_1" //use instances to set the types.
+	bound_height = 32
+	bound_width = 64
+
+/obj/structure/filtration/machine/distribution
+	name = "Distribution"
+	icon_state = "distribution"
+
+/obj/structure/filtration/machine/sedementation
+	name = "Sedementation"
+	icon_state = "sedementation"
+
+/obj/structure/filtration/machine/filtration
+	name = "Filtration"
+	icon_state = "filtration"
+
+/obj/structure/filtration/machine/disinfection
+	name = "Disinfection"
+	icon_state = "disinfection"

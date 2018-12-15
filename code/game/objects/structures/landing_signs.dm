@@ -32,13 +32,13 @@
 	bound_height = 64
 
 /obj/structure/dam_sign
-	name = "Chigusa landing sign"
-	desc = "A large sign that reads 'Chigusa mining colony', with half the sign written in japanese.."
+	name = "Trijent landing sign"
+	desc = "A large sign that reads 'Trijent mining colony', with half the sign written in japanese.."
 	icon = 'icons/obj/landing_signs.dmi'
 	icon_state = "dam_sign"
 	bound_width = 64
 	density = 1
 
 /obj/structure/dam_sign/damaged
-	desc = "A large sign that reads 'Chigusa mining col-', with the rest being obscured by what looks to be tried blood, and damage."
-	icon_state = "dam_sign"
+	desc = "A large sign that reads 'Trijent mining col-', with the rest being obscured by what looks to be tried blood, and damage."
+	icon_state = "dam_sign_d"

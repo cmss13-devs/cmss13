@@ -1,4 +1,5 @@
 
+
 //OBJ
 /obj/structure/desertdam/decals
 	name = "desert foliage"
@@ -16,9 +17,12 @@
 /obj/structure/desertdam/decals/road_edge
 	name = "road"
 	icon_state = "road_edge_decal1"
+	layer = TURF_LAYER
 /obj/structure/desertdam/decals/road_stop
 	name = "road"
 	icon_state = "stop_decal1"
+	layer = TURF_LAYER
+
 
 //TODO:
 //Relocate me somewhere that makes more sense

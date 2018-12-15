@@ -77,7 +77,6 @@
 		return 0
 	else if(cur_tick > fail_check_ticks) //Went past with no fail, reset the timer
 		cur_tick = 0
-		return 0
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(rand(0,3) == 0)
 			visible_message("\icon[src] <span class='notice'><b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")

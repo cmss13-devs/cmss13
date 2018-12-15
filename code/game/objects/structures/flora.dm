@@ -38,6 +38,8 @@
 	icon = 'icons/obj/flora/joshuatree.dmi'
 	icon_state = "joshua_1"
 	pixel_x = 0
+	density = 0
+	unacidable = 1
 /obj/structure/flora/tree/joshua/New()
 	..()
 	icon_state = "joshua_[rand(1,4)]"
@@ -223,19 +225,52 @@
 
 /obj/structure/flora/desert/New()
 	..()
-	icon_state = "[icon_tag]_[rand(1,variations)]"
+	//icon_state = "[icon_tag]_[rand(1,variations)]"
 
 //GRASS
 /obj/structure/flora/desert/grass
 	name = "grass"
 	icon_state = "lightgrass_1"
 	icon_tag = "lightgrass"
-	variations = 12
+	unacidable = 1
+	//variations = 12
 
 /obj/structure/flora/desert/grass/heavy
 	icon_state = "heavygrass_1"
 	icon_tag = "heavygrass"
-	variations = 16
+	//variations = 16
+
+//TALLGRASS
+/obj/structure/flora/desert/tallgrass
+	name = "tallgrass"
+	opacity = 1
+	unacidable = 1
+/obj/structure/flora/desert/tallgrass/center
+	icon_state = "tallgrass"
+	icon_tag = "tallgrass"
+/obj/structure/flora/desert/tallgrass/center/New()
+	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay","layer"=ABOVE_MOB_LAYER)
+/obj/structure/flora/desert/tallgrass/tallgrass_corner
+	icon_state = "tallgrass_corner"
+	icon_tag = "tallgrass"
+/obj/structure/flora/desert/tallgrass/tallgrass_corner/New()
+	switch(dir)
+		//if (NORTH)
+		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTH)
+		//if (NORTHEAST)
+		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTHEAST)
+		if (EAST)
+			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = EAST)
+		if (SOUTHEAST)
+			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTHEAST)
+		if (SOUTH)
+			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTH)
+		if (SOUTHWEST)
+			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTHWEST)
+		if (WEST)
+			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = WEST)
+		//if (NORTHWEST)
+		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTHWEST)
 
 //BUSHES
 /obj/structure/flora/desert/bush
@@ -243,7 +278,8 @@
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
 	icon_tag = "tree"
-	variations = 4
+	layer = ABOVE_MOB_LAYER
+	//variations = 4
 
 //CACTUS
 /obj/structure/flora/desert/cactus
@@ -251,7 +287,7 @@
 	desc = "It's a small, spiky cactus."
 	icon_state = "cactus_1"
 	icon_tag = "cactus"
-	variations = 12
+	//variations = 12
 
 /obj/structure/flora/desert/cactus/multiple
 	name = "cacti"

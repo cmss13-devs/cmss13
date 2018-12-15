@@ -684,6 +684,9 @@
 	if(cloaked) //Turn it off.
 		decloak(usr)
 	else //Turn it on!
+		if(exploding)
+			M << "<span class='warning'>Your bracer is much too busy violently exploding to activate the cloaking device.</span>"
+			return 0
 		if(cloak_timer)
 			if(prob(50))
 				M << "<span class='warning'>Your cloaking device is still recharging! Time left: <B>[cloak_timer]</b> ticks.</span>"
@@ -808,6 +811,9 @@
 	if(!usr) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
+	if(cloaked)
+		M << "<span class='warning'>Not while you're cloaked. It might disrupt the sequence.</span>"
+		return
 	if(!M.stat == CONSCIOUS)
 		M << "<span class='warning'>Not while you're unconcious...</span>"
 		return

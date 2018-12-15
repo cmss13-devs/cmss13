@@ -56,6 +56,8 @@ Additional game mode variables.
 	var/pred_current_num 	= 0 //How many are there now?
 	var/pred_maximum_num 	= 4 //How many are possible per round? Does not count elders.
 	var/pred_round_chance 	= 20 //%
+	var/pred_leader_count 	= 0 //How many Leader preds are active
+	var/pred_leader_max 	= 1 //How many Leader preds are permitted. Currently fixed to 1. May add admin verb to adjust this later.
 
 	//Some gameplay variables.
 	var/round_checkwin 		= 0
@@ -110,7 +112,7 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator)
 	predators += new_predator.mind //Add them to the proper list.
 	pred_keys += new_predator.ckey //Add their key.
-	if(!(RoleAuthority.roles_whitelist[new_predator.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER))) pred_current_num++ //If they are not an elder, tick up the max.
+	if(!(RoleAuthority.roles_whitelist[new_predator.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL))) pred_current_num++ //If they are not an elder, tick up the max.
 
 /datum/game_mode/proc/initialize_starting_predator_list()
 	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
@@ -124,7 +126,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			L -= M
 			M.assigned_role = "MODE" //So they are not chosen later for another role.
 			predators += M
-			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER))) i++
+			if(!(RoleAuthority.roles_whitelist[M.current.ckey] & (WHITELIST_YAUTJA_ELITE|WHITELIST_YAUTJA_ELDER|WHITELIST_YAUTJA_COUNCIL))) i++
 
 /datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
 	var/temp_pred_list[] = predators //We don't want to use the actual predator list as it will be overriden.
@@ -181,9 +183,9 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(show_warning) pred_candidate << "<span class='warning'>You already were a Yautja! Give someone else a chance.</span>"
 		return
 
-	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER))
+	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & (WHITELIST_YAUTJA_ELDER | WHITELIST_YAUTJA_COUNCIL)))
 		if(pred_current_num >= pred_maximum_num)
-			if(show_warning) pred_candidate << "<span class='warning'>Only [pred_maximum_num] predators may spawn per round, but Elders are excluded.</span>"
+			if(show_warning) pred_candidate << "<span class='warning'>Only [pred_maximum_num] predators may spawn this round, but Elders and Leaders do not count.</span>"
 			return
 
 	return 1
@@ -196,11 +198,16 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	var/mob/living/carbon/human/new_predator
 	var/wants_elder = 0
+	var/wants_leader = 0
 	if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER)
 		if(alert(pred_candidate,"Would you like to play as an Elder, or a Youngblood?","Predator Type","Elder","Youngblood") == "Elder")
 			wants_elder = 1
+	else if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_COUNCIL)
+		if(alert(pred_candidate,"Would you like to play as a Councillor, or a Youngblood?","Predator Type","Councillor","Youngblood") == "Councillor")
+			wants_leader = 1
+			wants_elder = 0
 
-	new_predator = new(wants_elder ? pick(pred_elder_spawn) : pick(pred_spawn))
+	new_predator = new(wants_elder|wants_leader ? pick(pred_elder_spawn) : pick(pred_spawn))
 	new_predator.set_species("Yautja")
 
 	new_predator.mind_initialize()
@@ -237,6 +244,16 @@ datum/game_mode/proc/initialize_special_clamps()
 			new_predator << "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>"
 			new_predator << "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>"
 			new_predator << "<span class='notice'>You come equipped as an Elder should, with a bonus glaive and heavy armor.</span>"
+	
+	else if(wants_leader)
+		new_predator.real_name = "Councillor [new_predator.real_name]"
+		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
+		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
+
+		spawn(10)
+			new_predator << "<span class='notice'><B> Welcome Councillor!</B></span>"
+			new_predator << "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>"
+			new_predator << "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>"
 	else
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)

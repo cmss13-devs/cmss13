@@ -50,6 +50,8 @@ var/global/list/mechas_list = list()				//List of all mechs. Used by hostile mob
 var/global/list/ammo_list = list()					//List of all ammo types. Used by guns to tell the projectile how to act.
 var/global/list/joblist = list()					//List of all jobstypes, minus borg and AI
 
+var/global/list/gear_presets_list = list()
+
 var/global/list/structure_list = list()				//List of all /obj/structure as they are created, to fetch generic structures with a lot less lag
 var/global/list/active_areas = list()
 var/global/list/all_areas = list()
@@ -213,6 +215,15 @@ var/global/round_should_check_for_win = TRUE
 		if(!(CD.caste_name in xeno_datum_list))
 			xeno_datum_list[CD.caste_name] = list(1,2,3,4) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
 		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
+    
+    // Equipment presets
+	paths = typesof(/datum/equipment_preset)
+	for(var/T in paths)
+		var/datum/equipment_preset/EP = new T
+		if (EP.flags == 0)
+			cdel(EP)
+			continue
+		gear_presets_list[EP.name] = EP
 
 	// Xeno mutators
 	paths = typesof(/datum/xeno_mutator) - /datum/xeno_mutator

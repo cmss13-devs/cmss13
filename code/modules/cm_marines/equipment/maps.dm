@@ -79,6 +79,11 @@
 	html_link = "images/4/4c/Map_Prison.png"
 	color = "#e88a10"
 
+/obj/item/map/desert_dam
+	name = "\improper Trijent Dam map"
+	desc = "An orbital scan printout of the Trijent Dam colony."
+	html_link = "images/9/92/Trijent_Dam.png"
+	color = "#ad8d0e"
 
 
 //used by marine equipment machines to spawn the correct map.
@@ -102,7 +107,7 @@
 		if(MAP_BIG_RED)
 			name = "\improper Solaris Ridge Map"
 			desc = "A censored blueprint of the Solaris Ridge facility"
-			html_link = "images/c/c5/Big_Red.png"
+			html_link = "images/9/9e/Solaris_Ridge.png"
 			color = "#e88a10"
 
 		if(MAP_PRISON_STATION)
@@ -110,6 +115,12 @@
 			desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
 			html_link = "images/4/4c/Map_Prison.png"
 			color = "#e88a10"
+		if(MAP_DESERT_DAM)
+			name = "\improper Trijent Dam map"
+			desc = "A map of Trijent Dam"
+			html_link = "images/9/92/Trijent_Dam.png"
+			color = "#cec13f"
+			//did only the basics todo change later
 		else
 			cdel(src)
 

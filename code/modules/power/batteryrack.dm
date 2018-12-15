@@ -4,7 +4,7 @@
 //Machines
 //The one that works safely.
 /obj/machinery/power/smes/batteryrack
-	name = "power cell rack PSU"
+	name = "Substation PSU"//"power cell rack PSU"
 	desc = "A rack of power cells working as a PSU."
 	charge = 0 //you dont really want to make a potato PSU which already is overloaded
 	online = 0
@@ -12,6 +12,7 @@
 	output = 0
 	input_level_max = 0
 	output_level_max = 0
+	should_be_mapped = 1
 	icon_state = "gsmes"
 	var/cells_amount = 0
 	var/capacitors_amount = 0

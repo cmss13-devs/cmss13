@@ -565,6 +565,26 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/areatype in areas_without_camera)
 		world << "* [areatype]"
 
+/client/proc/test_ceilings()
+	set category = "Mapping"
+	set name = "Test Ceilings"
+	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
+	var/list/areas_all = list()
+	for(var/area/A in all_areas)
+		if(!(A in areas_all))
+			areas_all.Add(A)
+	for(var/area/C in areas_all)
+		switch(C.ceiling)
+			if(CEILING_NONE)
+				for(var/turf/T in C)
+					T.color = "#00ff00"
+			if(CEILING_GLASS)
+				for(var/turf/T in C)
+					T.color = "#eeff00"
+			else
+				for(var/turf/T in C)
+					T.color = "#ff0000"
+
 /client/proc/startSinglo()
 
 	set category = "Debug"

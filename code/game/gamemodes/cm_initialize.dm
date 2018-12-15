@@ -64,8 +64,10 @@ Additional game mode variables.
 	var/round_finished
 	var/round_started  		= 5 //This is a simple timer so we don't accidently check win conditions right in post-game
 	var/round_fog[]				//List of the fog locations.
+	var/round_toxic_river[]		//List of all toxic river locations
 	var/round_time_lobby 		//Base time for the lobby, for fog dispersal.
 	var/round_time_fog 			//Variance time for fog dispersal, done during pre-setup.
+	var/round_time_river
 	var/monkey_amount		= 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types	= list() //What type of monkeys do we spawn
 	var/latejoin_tally		= 0 //How many people latejoined Marines
@@ -497,7 +499,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	switch(map_tag)
 		if(MAP_PRISON_STATION)
 			survivor_types = list("Scientist","Doctor","Corporate","Security","Prisoner","Prisoner","Prisoner")
-		if(MAP_LV_624,MAP_BIG_RED)
+		if(MAP_LV_624,MAP_BIG_RED,MAP_DESERT_DAM)
 			survivor_types = list("Assistant","Civilian","Scientist","Doctor","Chef","Botanist","Atmos Tech","Chaplain","Miner","Salesman","Colonial Marshall")
 		if(MAP_ICE_COLONY)
 			survivor_types = list("Scientist","Doctor","Salesman","Security")

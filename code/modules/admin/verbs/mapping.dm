@@ -136,6 +136,7 @@ var/list/debug_verbs = list(
         /client/proc/cmd_admin_grantfullaccess,
         /client/proc/cmd_admin_grantallskills,
         /client/proc/cmd_admin_areatest,
+		/client/proc/test_ceilings,
         /datum/admins/proc/show_traitor_panel,
         /client/proc/forceEvent,
         /client/proc/break_all_air_groups,

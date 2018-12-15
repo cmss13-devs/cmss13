@@ -60,9 +60,9 @@
 
 
 //desertdam rock
-/turf/closed/desertdamrockwall
+/turf/closed/desert_rock
     name = "rockwall"
-    icon = 'icons/turf/desertdam_map.dmi'
+    icon = 'icons/turf/walls/cave.dmi'
     icon_state = "cavewall1"
 
 

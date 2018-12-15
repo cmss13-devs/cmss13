@@ -47,6 +47,7 @@
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
 	round_fog = new
+	round_toxic_river = new
 	var/xeno_tunnels[] = new
 	var/monkey_spawns[] = new
 	var/map_items[] = new
@@ -72,6 +73,10 @@
 				var/obj/effect/landmark/lv624/fog_time_extender/fte = L
 				if(istype(fte))
 					fog_timer += fte.time_to_extend
+					cdel(L)
+			if("toxic river blocker")
+				F = new(L.loc)
+				round_toxic_river += F
 				cdel(L)
 			if("xeno tunnel")
 				xeno_tunnels += L.loc
@@ -91,6 +96,7 @@
 			if(MAP_ICE_COLONY) new /obj/item/map/ice_colony_map(T)
 			if(MAP_BIG_RED) new /obj/item/map/big_red_map(T)
 			if(MAP_PRISON_STATION) new /obj/item/map/FOP_map(T)
+			if(MAP_DESERT_DAM) new /obj/item/map/desert_dam(T)
 			if(MAP_WHISKEY_OUTPOST) new /obj/item/map/whiskey_outpost_map(T)
 	if(monkey_amount)
 		//var/debug_tally = 0
@@ -99,8 +105,11 @@
 			if(MAP_ICE_COLONY) monkey_types = list(/mob/living/carbon/monkey/yiren)
 			if(MAP_BIG_RED) monkey_types = list(/mob/living/carbon/monkey)
 			if(MAP_PRISON_STATION) monkey_types = list(/mob/living/carbon/monkey)
+			if(MAP_DESERT_DAM) monkey_types = list(/mob/living/carbon/monkey)
+			else monkey_types = list(/mob/living/carbon/monkey) //make sure we always have a monkey type
 		if(monkey_types.len)
-			for(var/i = monkey_amount, i > 0, i--)
+			for(var/i = min(monkey_amount,monkey_spawns.len), i > 0, i--)
+				//I added this in so that if the amount of monkey_spawns (landmark) on the map are less then the monkey_spawns variable the game still works.
 				var/turf/T = pick(monkey_spawns)
 				monkey_spawns -= T
 				var/monkey_to_spawn = pick(monkey_types)
@@ -113,6 +122,13 @@
 	else
 		round_time_fog = fog_timer + rand(-2500,2500)
 		flags_round_type |= MODE_FOG_ACTIVATED
+
+	//desert river test
+	if(!round_toxic_river.len) round_toxic_river = null //No tiles?
+	else
+		round_time_river = rand(-100,100)
+		flags_round_type |= MODE_FOG_ACTIVATED
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
@@ -123,8 +139,7 @@
 		T.id = "hole[i]"
 
 	..()
-
-	return TRUE
+	r_TRU
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -152,9 +167,9 @@
 				command_announcement.Announce("We've lost contact with the Weyland-Yutani's research facility, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
 			if(MAP_PRISON_STATION)
 				command_announcement.Announce("An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-	
+			if(MAP_DESERT_DAM)
+				command_announcement.Announce("We've lost contact with Weyland-Yutani's extra-solar colony, \"[map_tag]\", on the planet \"Navarone.\" The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
 	..()
-
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -174,12 +189,10 @@
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog)) disperse_fog()//Some RNG thrown in.
-			if(round_should_check_for_win)
-				check_win()
+			if(round_should_check_for_win) check_win()
 			round_checkwin = 0
 
 #undef FOG_DELAY_INTERVAL
-
 ///////////////////////////
 //Checks to see who won///
 //////////////////////////
@@ -249,7 +262,6 @@
 	if(round_stats) round_stats << "[round_finished][dat]\nGame mode: [name]\nRound time: [duration2text()]\nEnd round player population: [clients.len]\nTotal xenos spawned: [round_statistics.total_xenos_created]\nTotal Preds spawned: [predators.len]\nTotal humans spawned: [round_statistics.total_humans_created][log_end]" // Logging to data/logs/round_stats.log
 
 	world << dat
-
 	declare_completion_announce_objectives()
 	declare_completion_announce_individual()
 	declare_completion_announce_predators()

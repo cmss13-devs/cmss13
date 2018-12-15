@@ -687,6 +687,8 @@
 			products2 = list(/obj/item/map/whiskey_outpost_map = 3)
 		if(MAP_LV_624)
 			products2 = list(/obj/item/map/lazarus_landing_map = 3)
+		if(MAP_DESERT_DAM)
+			products2 = list(/obj/item/map/desert_dam = 3)
 	build_inventory(products2)
 
 

@@ -227,11 +227,18 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 	total_positions = 0
 	spawn_positions = 0
 	allow_additional = 1
+	scaled = 1
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	skills_type = /datum/skills/tank_crew
 	idtype = /obj/item/card/id/dogtag
 
+	set_spawn_positions(var/count)
+		spawn_positions = tc_slot_formula(count)
+
+	get_total_positions(var/latejoin = 0)
+		return tc_slot_formula()
+		
 	generate_wearable_equipment(mob/living/carbon/human/H)
 		if(!H.client || !H.client.prefs || !H.client.prefs) return
 		var/backItem = /obj/item/storage/backpack/marine/satchel

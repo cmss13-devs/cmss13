@@ -174,7 +174,10 @@
 	var/icon/newoverlay = icon(marine_mapview)
 	var/list/marines_with_helmets = list(list(),list(),list(),list(),list())
 	var/list/vehicles = list()
-
+	var/list/tier_0 = list()
+	var/list/tier_1 = list()
+	var/list/tier_2 = list()
+	var/list/tier_3 = list()
 	for(var/mob/living/carbon/human/H in living_mob_list)
 		if(istype(H.loc,/obj/vehicle/multitile/root/cm_armored))
 			if(H.loc.z == 1)
@@ -232,7 +235,26 @@
 			newoverlay.DrawBox(rgb(128,255,128),V.x+1,V.y)
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y-1)
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y+1)
-
+	if(MAP_DESERT_DAM && ticker.toweractive)
+		for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+			if(X.loc.z != 1) continue
+			switch(X.tier)
+				if(0)
+					tier_0 += X
+				if(1)
+					tier_1 += X
+				if(2)
+					tier_2 += X
+				if(3)
+					tier_3 += X
+			for(var/mob/living/carbon/Xenomorph/T0 in tier_0)
+				newoverlay.DrawBox(rgb(255,153,153),T0.loc.x-1,T0.loc.y-1,T0.loc.x+1,T0.loc.y+1)
+			for(var/mob/living/carbon/Xenomorph/T1 in tier_1)
+				newoverlay.DrawBox(rgb(255,128,128),T1.loc.x-1,T1.loc.y-1,T1.loc.x+1,T1.loc.y+1)
+			for(var/mob/living/carbon/Xenomorph/T2 in tier_2)
+				newoverlay.DrawBox(rgb(255,102,102),T2.loc.x-1,T2.loc.y-1,T2.loc.x+1,T2.loc.y+1)
+			for(var/mob/living/carbon/Xenomorph/T3 in tier_3)
+				newoverlay.DrawBox(rgb(255,77,77),T3.loc.x-1,T3.loc.y-1,T3.loc.x+1,T3.loc.y+1)
 	newoverlay.Crop(1,1,map_sizes[1][1],map_sizes[1][2])
 	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
 	if(selected)

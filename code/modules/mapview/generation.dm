@@ -235,7 +235,7 @@
 			newoverlay.DrawBox(rgb(128,255,128),V.x+1,V.y)
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y-1)
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y+1)
-	if(map_tag == MAP_DESERT_DAM && ticker.toweractive)
+	if(ticker.toweractive)
 		for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 			if(X.loc.z != 1) continue
 			switch(X.tier)

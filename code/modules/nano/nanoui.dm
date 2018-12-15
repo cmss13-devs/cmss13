@@ -78,6 +78,9 @@ nanoui is used to open and update nano browser uis
 	user = nuser
 	src_object = nsrc_object
 	ui_key = nui_key
+	// Lets make sure the dead admins can use STUI!
+	if(ui_key == "STUI")
+		allowed_user_stat = -1
 	window_id = "[ui_key]\ref[src_object]"
 
 	// add the passed template filename as the "main" template, this is required
@@ -138,6 +141,9 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/update_status(var/push_update = 0)
+	//To make STUI useable from the lobby
+	if (isnewplayer(user) && check_rights(R_ADMIN|R_MOD))
+		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	if (isAI(user))
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	else if (isrobot(user))
@@ -448,9 +454,11 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/push_data(data, force_push = 0)
-	update_status(0)
-	if (status == STATUS_DISABLED && !force_push)
-		return // Cannot update UI, no visibility
+
+	if(ui_key != "STUI")
+		update_status(0)
+		if (status == STATUS_DISABLED && !force_push)
+			return // Cannot update UI, no visibility
 
 	var/list/send_data = get_send_data(data)
 
@@ -465,6 +473,11 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/Topic(href, href_list)
+	if(ui_key == "STUI")
+		STUI.Topic(href,href_list)
+		nanomanager.update_uis(src_object)
+		return
+
 	update_status(0) // update the status
 	if (status != STATUS_INTERACTIVE || user != usr) // If UI is not interactive or usr calling Topic is not the UI user
 		return
@@ -506,5 +519,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/update(var/force_open = 0)
-	src_object.ui_interact(user, ui_key, src, force_open)
-
+	if(ui_key == "STUI")
+		STUI.ui_interact(user, ui_key, src, force_open)
+	else
+		src_object.ui_interact(user, ui_key, src, force_open)

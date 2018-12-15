@@ -58,7 +58,8 @@ var/global/normal_ooc_colour = "#002eb8"
 			return
 
 	log_ooc("[mob.name]/[key] : [msg]")
-
+	STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
+	STUI.processing |= 4 
 	var/display_colour = normal_ooc_colour
 	if(holder && !holder.fakekey)
 		display_colour = "#2e78d9"	//light blue
@@ -84,6 +85,7 @@ var/global/normal_ooc_colour = "#002eb8"
 					else
 						display_name = holder.fakekey
 			C << "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
+
 			/*
 			if(holder)
 				if(!holder.fakekey || C.holder)
@@ -170,7 +172,8 @@ var/global/normal_ooc_colour = "#002eb8"
 			return
 
 	log_ooc("(LOCAL) [mob.name]/[key] : [msg]")
-
+	STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[key]: [msg]</font><br>")
+	STUI.processing |= 4 
 	var/list/heard = get_mobs_in_view(7, src.mob)
 	var/mob/S = src.mob
 

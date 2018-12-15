@@ -14,3 +14,9 @@ datum/controller/process/nano/doWork()
 			i++
 			continue
 		nanomanager.processing_uis.Cut(i,i+1)
+		if(STUI.processing)		// Only do this if there is something processing.
+			for(var/mob/M in admins)		// Cheaty fix to stop processing a list if it hasn't changed
+				if(M:open_uis)
+					for(var/datum/nanoui/stui in nanomanager.processing_uis)	// need to wait until all UI's are processed
+						if(stui.title == "STUI")
+							STUI.processing.Remove(ui.user.STUI_log)

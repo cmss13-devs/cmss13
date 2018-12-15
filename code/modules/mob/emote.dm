@@ -1,5 +1,5 @@
 // All mobs should have custom emote, really..
-/mob/proc/custom_emote(var/m_type=1,var/message = null, player_caused)
+/mob/proc/custom_emote(var/m_type=1,var/message = null, player_caused, var/nolog = 0)
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
@@ -23,7 +23,8 @@
 
 
 	if (message)
-		log_emote("[name]/[key] : [message]")
+		if(!nolog)
+			log_emote("[name]/[key] : [message]")
 
  //Hearing gasp and such every five seconds is not good emotes were not global for a reason.
  // Maybe some people are okay with that.

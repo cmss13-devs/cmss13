@@ -74,7 +74,7 @@ var/list/department_radio_keys = list(
 		cdel(speech_bubble)
 
 
-/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol)
+/mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0)
 
 	var/turf/T = get_turf(src)
 
@@ -148,8 +148,9 @@ var/list/department_radio_keys = list(
 		spawn(0)
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
-
-	log_say("[name]/[key] : [message]")
+	//used for STUI to stop logging of animal messages and radio
+	if(!nolog)
+		log_say("[name]/[key] : [message]")
 	return 1
 
 /mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)

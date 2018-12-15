@@ -167,6 +167,8 @@
 
 	var/list/active_genes=list()
 
+	var/STUI_log = 1
+
 	var/away_timer = 0 //How long the player has been disconnected
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.

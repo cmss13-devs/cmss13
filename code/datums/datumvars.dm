@@ -49,67 +49,6 @@ client
 						var filter_text = document.getElementById('filter');
 						var filter = filter_text.value.toLowerCase();
 
-						if(event.keyCode == 13){	//Enter / return
-							var vars_ol = document.getElementById('vars');
-							var lis = vars_ol.getElementsByTagName("li");
-							for ( var i = 0; i < lis.length; ++i )
-							{
-								try{
-									var li = lis\[i\];
-									if ( li.style.backgroundColor == "#ffee88" )
-									{
-										alist = lis\[i\].getElementsByTagName("a")
-										if(alist.length > 0){
-											location.href=alist\[0\].href;
-										}
-									}
-								}catch(err) {   }
-							}
-							return
-						}
-
-						if(event.keyCode == 38){	//Up arrow
-							var vars_ol = document.getElementById('vars');
-							var lis = vars_ol.getElementsByTagName("li");
-							for ( var i = 0; i < lis.length; ++i )
-							{
-								try{
-									var li = lis\[i\];
-									if ( li.style.backgroundColor == "#ffee88" )
-									{
-										if( (i-1) >= 0){
-											var li_new = lis\[i-1\];
-											li.style.backgroundColor = "white";
-											li_new.style.backgroundColor = "#ffee88";
-											return
-										}
-									}
-								}catch(err) {  }
-							}
-							return
-						}
-
-						if(event.keyCode == 40){	//Down arrow
-							var vars_ol = document.getElementById('vars');
-							var lis = vars_ol.getElementsByTagName("li");
-							for ( var i = 0; i < lis.length; ++i )
-							{
-								try{
-									var li = lis\[i\];
-									if ( li.style.backgroundColor == "#ffee88" )
-									{
-										if( (i+1) < lis.length){
-											var li_new = lis\[i+1\];
-											li.style.backgroundColor = "white";
-											li_new.style.backgroundColor = "#ffee88";
-											return
-										}
-									}
-								}catch(err) {  }
-							}
-							return
-						}
-
 						//This part here resets everything to how it was at the start so the filter is applied to the complete list. Screw efficiency, it's client-side anyway and it only looks through 200 or so variables at maximum anyway (mobs).
 						if(complete_list != null && complete_list != ""){
 							var vars_ol1 = document.getElementById("vars");
@@ -132,16 +71,6 @@ client
 										i--;
 									}
 								}catch(err) {   }
-							}
-						}
-						var lis_new = vars_ol.getElementsByTagName("li");
-						for ( var j = 0; j < lis_new.length; ++j )
-						{
-							var li1 = lis\[j\];
-							if (j == 0){
-								li1.style.backgroundColor = "#ffee88";
-							}else{
-								li1.style.backgroundColor = "white";
 							}
 						}
 					}
@@ -349,9 +278,13 @@ client
 
 	proc/debug_variable(name, value, level, var/datum/DA = null)
 		var/html = ""
-
+		var/change = 0
+		//to make the value bold if changed
 		if(DA)
 			html += "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=\ref[DA];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=\ref[DA];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=\ref[DA];varnamemass=[name]'>M</a>) "
+			if(value != initial(DA.vars[name]))
+				html += "<font color='#8B008B'>"
+				change = 1
 		else
 			html += "<li>"
 
@@ -417,6 +350,9 @@ client
 
 		else
 			html += "[name] = <span class='value'>[value]</span>"
+		if(change)
+//			html += "<font color='red'> * Changed * </font>"
+			html += "</font>"
 
 		html += "</li>"
 

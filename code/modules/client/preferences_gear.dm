@@ -66,7 +66,7 @@ var/global/list/gear_datums = list()
 	slot = WEAR_HEAD
 
 /datum/gear/booniehat
-	display_name = "USCM ?????? ???"
+	display_name = "USCM Boonie Hat"
 	path = /obj/item/clothing/head/booniehat
 	cost = 3
 	slot = WEAR_HEAD

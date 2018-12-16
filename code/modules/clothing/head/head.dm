@@ -290,3 +290,13 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/booniehat
+	name = "\improper USCM boonie hat"
+	desc = "A casual cap occasionally worn by crazy marines. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	icon_state = "booniehat"
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	sprite_sheet_id = 1
+
+/obj/item/clothing/head/booniehat/New()
+	select_gamemode_skin(type)
+	..()

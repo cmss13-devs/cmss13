@@ -1944,6 +1944,20 @@
 				feedback_add_details("admin_secrets_fun_used","LO")
 				message_admins("[key_name_admin(usr)] has broke a lot of lights", 1)
 				lightsout(1,2)
+			if("Booniehats")
+				feedback_inc("admin_secrets_fun_used",1)
+				feedback_add_details("admin_secrets_fun_used","BH")
+				for(var/obj/item/clothing/head/H in world)
+					H.name = "\improper USCM boonie hat"
+					H.desc = "A casual cap occasionally worn by crazy marines. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+					H.icon_state = "booniehat"
+					H.icon = 'icons/obj/clothing/cm_hats.dmi'
+					H.sprite_sheet_id = 1
+					//flags_item |= NODROP lets not.
+					if(istype(H.loc,/mob/living/carbon/human/))
+						var/mob/M = H.loc
+						M.update_inv_head()
+				message_admins("[key_name_admin(usr)] gave everyone boonie hats", "ADMINBUS:")
 			if("blackout")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","BO")

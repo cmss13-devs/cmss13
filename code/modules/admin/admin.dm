@@ -688,6 +688,7 @@ var/global/floorIsLava = 0
 			<A href='?src=\ref[src];secretsfun=onlyone'>There can only be one!</A> (inop)<BR> <!--Not working -->
 			<A href='?src=\ref[src];secretsfun=blackout'>Break all lights</A><BR>
 			<A href='?src=\ref[src];secretsfun=whiteout'>Fix all lights</A><BR>
+			<A href='?src=\ref[src];secretsfun=Booniehats'>Make all hats boonie hats. (inop)</A><BR>
 			<BR>
 			<B>Mass-Teleportation</B><BR>
 			<BR>

@@ -128,11 +128,11 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/clf/fighter_medic
+/datum/equipment_preset/clf/fighter_leader
 	name = "CLF Fighter (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/clf/fighter_medic/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/fighter_leader/load_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = new(H)
 	W.name = "[H.real_name]'s ID Card"
 	W.assignment = "Colonist Leader"
@@ -144,11 +144,11 @@
 		H.mind.assigned_role = "MODE"
 		H.mind.special_role = "CLF"
 
-/datum/equipment_preset/clf/fighter_medic/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/fighter_leader/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.set_cm_skills(/datum/skills/SL)
 
-/datum/equipment_preset/clf/fighter_medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/fighter_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)

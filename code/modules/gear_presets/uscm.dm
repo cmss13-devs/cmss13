@@ -37,7 +37,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle
-	name = "USCM PFC (Plasma Rifle)"
+	name = "USCM PFC (Pulse Rifle)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle/load_gear(mob/living/carbon/human/H)

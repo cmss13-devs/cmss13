@@ -8,7 +8,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/pmc_standard
-	name = "Dust Raider Private"
+	name = "Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/pmc_standard/load_id(mob/living/carbon/human/H)

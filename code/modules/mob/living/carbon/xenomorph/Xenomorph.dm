@@ -150,7 +150,7 @@
 
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade)])
+	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])
 		caste = xeno_datum_list[caste_name][max(1,upgrade+1)]
 	else
 		world << "something went very wrong"

@@ -212,8 +212,9 @@ var/list/alldepartments = list()
 			if(!g.client)
 				continue
 			var/client/C = g.client
-			if((R_ADMIN|R_MOD) & C.holder.rights) //staff don't need to see the fax twice
-				continue
+			if(C && C.holder)
+				if((R_ADMIN|R_MOD) & C.holder.rights) //staff don't need to see the fax twice
+					continue
 			C << msg_ghost
 			C << 'sound/effects/sos-morse-code.ogg'
 

@@ -80,6 +80,8 @@
 
 //proc to check if smoke can expand to another turf
 /obj/effect/particle_effect/smoke/proc/check_airblock(turf/U, turf/T)
+	if(!T)
+		return FALSE
 	if(T.density)
 		return TRUE
 	for(var/atom/movable/M in T)

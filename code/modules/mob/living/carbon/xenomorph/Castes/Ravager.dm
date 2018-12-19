@@ -158,6 +158,7 @@
 	upgrade = 3
 	var/used_fire_breath = 0
 	actions = list(
+		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/activable/breathe_fire,
 		)
 
@@ -166,6 +167,21 @@
 		verbs -= /mob/living/carbon/Xenomorph/verb/hive_status
 		spawn(15) name = "Ravenger"
 
+/mob/living/carbon/Xenomorph/Ravager/ravenger/update_icons()
+	if(stat == DEAD)
+		icon_state = "Ravager Dead"
+	else if(lying)
+		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+			icon_state = "Ravager Sleeping"
+		else
+			icon_state = "Ravager Knocked Down"
+	else
+		if(m_intent == MOVE_INTENT_RUN)
+			icon_state = "Ravager Running"
+		else
+			icon_state = "Ravager Walking"
+
+	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 
 /mob/living/carbon/Xenomorph/Ravager/ravenger/proc/breathe_fire(atom/A)
 	set waitfor = 0

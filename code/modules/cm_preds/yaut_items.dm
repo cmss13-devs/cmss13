@@ -43,7 +43,7 @@
 	..()
 	loc = location
 
-	var/mask_input[] = list(1,2,3,4,5,6,7,231,334,732,928)
+	var/mask_input[] = list(1,2,3,4,5,6,7,185738,829275,385719,376628)
 	if(mask_number in mask_input) icon_state = "pred_mask[mask_number]"
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)

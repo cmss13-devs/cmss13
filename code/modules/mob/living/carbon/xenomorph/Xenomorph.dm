@@ -69,6 +69,10 @@
 	var/upgrade_threshold = 200
 	var/evolution_threshold = 200
 	var/pull_multiplier = 1.0
+	
+	var/tacklemin = 2
+	var/tacklemax = 3
+	var/tackle_chance = 35
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
@@ -358,16 +362,26 @@
 
 //Call this function when major changes happen - evolutions, upgrades, mutators getting removed
 /mob/living/carbon/Xenomorph/proc/recalculate_everything()
-	recalculate_health()
-	recalculate_plasma()
-	recalculate_speed()
-	recalculate_armor()
-	recalculate_damage()
+	recalculate_stats()
 	recalculate_actions()
 	recalculate_pheromones()
 	recalculate_maturation()
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
 		hive.recalculate_hive() //Recalculating stuff around Queen maturing
+
+
+/mob/living/carbon/Xenomorph/proc/recalculate_stats()
+	recalculate_health()
+	recalculate_plasma()
+	recalculate_speed()
+	recalculate_armor()
+	recalculate_damage()
+
+/mob/living/carbon/Xenomorph/proc/recalculate_tackle()
+	tacklemin = caste.tacklemin + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
+	tacklemax = caste.tacklemax + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
+	tackle_chance = round(caste.tackle_chance * mutators.tackle_chance_multiplier * hive.mutators.tackle_chance_multiplier + 0.5)
+
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
 	var/new_max_health = round(caste.max_health * mutators.health_multiplier * hive.mutators.health_multiplier + 0.5)
@@ -416,6 +430,9 @@
 	if(isXenoRunner(src))
 		//Xeno runners need a small nerf to dragging speed mutator
 		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
+	if(isXenoCarrier(src))
+		huggers_max = mutators.carry_boost_level + caste.huggers_max
+		eggs_max = mutators.carry_boost_level + caste.eggs_max
 
 
 /mob/living/carbon/Xenomorph/proc/recalculate_acid()

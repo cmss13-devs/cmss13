@@ -98,6 +98,9 @@
 	var/acid_level = 0
 	var/weed_level = 0
 
+	var/charge_speed = 2
+	var/charge_distance = 6
+
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
 	var/datum/hive_status/hive
@@ -187,7 +190,7 @@
 	var/charge_roar = 0 //Did we roar in our charge yet ?
 
 	//Pounce vars
-	var/usedPounce = 0
+	var/used_pounce = 0
 
 	// Warrior vars
 	var/agility = 0		// 0 - upright, 1 - all fours
@@ -221,6 +224,8 @@
 	var/threw_a_hugger = 0
 	var/huggers_cur = 0
 	var/eggs_cur = 0
+	var/huggers_max = 0
+	var/eggs_max = 0
 
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
@@ -240,8 +245,11 @@
 	var/queen_leader_limit = 2
 	var/list/xeno_leader_list = list()
 	var/stored_larva = 0
+
 	var/datum/mutator_set/hive_mutators/mutators = new
 	var/tier_slot_multiplier = 1.0
+	var/larva_gestation_multiplier = 1.0
+	var/bonus_larva_spawn_chance = 1.0
 
 /datum/hive_status/New()
 	mutators.hive = src
@@ -263,6 +271,9 @@
 		//Removing Hive leaders from the most freshly added to the oldest ones
 		remove_hive_leader(xeno_leader_list[xeno_leader_list.len])
 	tier_slot_multiplier = mutators.tier_slot_multiplier
+
+	larva_gestation_multiplier = mutators.larva_gestation_multiplier
+	bonus_larva_spawn_chance = mutators.bonus_larva_spawn_chance
 
 /datum/hive_status/proc/add_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
 	if(!xeno)

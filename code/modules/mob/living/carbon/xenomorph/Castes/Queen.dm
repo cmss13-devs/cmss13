@@ -202,7 +202,7 @@
 				set_queen_overwatch(observed_xeno, TRUE)
 
 		if(ovipositor && !is_mob_incapacitated(TRUE))
-			egg_amount += 0.07 //one egg approximately every 30 seconds
+			egg_amount += 0.07 * mutators.egg_laying_multiplier //one egg approximately every 30 seconds
 			if(egg_amount >= 1)
 				if(isturf(loc))
 					var/turf/T = loc

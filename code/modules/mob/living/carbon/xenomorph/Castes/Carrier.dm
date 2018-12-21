@@ -135,15 +135,15 @@
 	if (!..())
 		return 0
 
-	stat(null, "Stored Huggers: [huggers_cur] / [caste.huggers_max]")
-	stat(null, "Stored Eggs: [eggs_cur] / [caste.eggs_max]")
+	stat(null, "Stored Huggers: [huggers_cur] / [huggers_max]")
+	stat(null, "Stored Eggs: [eggs_cur] / [eggs_max]")
 	return 1
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
-	if(huggers_cur < caste.huggers_max)
+	if(huggers_cur < huggers_max)
 		if(F.stat == CONSCIOUS && !F.sterile)
 			huggers_cur++
-			src << "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [caste.huggers_max].</span>"
+			src << "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max].</span>"
 			cdel(F)
 		else
 			src << "<span class='warning'>This [F.name] looks too unhealthy.</span>"
@@ -206,10 +206,10 @@
 	if(E.hivenumber != hivenumber)
 		src << "<span class='warning'>That egg is tainted!</span>"
 		return
-	if(eggs_cur < caste.eggs_max)
+	if(eggs_cur < eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
-			src << "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [caste.eggs_max].</span>"
+			src << "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max].</span>"
 			cdel(E)
 		else
 			src << "<span class='warning'>This [E.name] looks too unhealthy.</span>"
@@ -240,7 +240,7 @@
 		E.hivenumber = hivenumber
 		eggs_cur--
 		put_in_active_hand(E)
-		src << "<span class='xenonotice'>You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [caste.eggs_max].</span>"
+		src << "<span class='xenonotice'>You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [eggs_max].</span>"
 		return
 
 	if(!istype(E)) //something else in our hand

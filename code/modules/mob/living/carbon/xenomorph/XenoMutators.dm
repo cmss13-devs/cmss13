@@ -28,13 +28,12 @@
 	var/pheromones_boost_level = 0
 	var/weed_boost_level = 0
 
+	var/tackle_chance_multiplier = 1.0
+	var/tackle_strength_bonus = 0
+
 //Functions to be overloaded to call for when something gets updated on the xenos
 /datum/mutator_set/proc/recalculate_everything(var/description)
-/datum/mutator_set/proc/recalculate_health(var/description)
-/datum/mutator_set/proc/recalculate_plasma(var/description)
-/datum/mutator_set/proc/recalculate_speed(var/description)
-/datum/mutator_set/proc/recalculate_damage(var/description)
-/datum/mutator_set/proc/recalculate_armor(var/description)
+/datum/mutator_set/proc/recalculate_stats(var/description)
 /datum/mutator_set/proc/recalculate_actions(var/description)
 /datum/mutator_set/proc/recalculate_pheromones(var/description)
 /datum/mutator_set/proc/give_feedback(var/description)
@@ -85,10 +84,15 @@
 	var/leader_count_boost = 0
 	var/maturation_multiplier = 1.0
 	var/tier_slot_multiplier = 1.0
+	var/larva_gestation_multiplier = 1.0
+	var/bonus_larva_spawn_chance = 0
 
 /datum/mutator_set/hive_mutators/list_and_purchase_mutators()
 	if(!hive || !hive.living_xeno_queen)
 		return //somehow Queen is not set but this function was called...
+	if(hive.living_xeno_queen.hardcore)
+		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		return
 	if(!hive.living_xeno_queen.ovipositor)
 		usr << "You must be in Ovipositor to purchase Hive Mutators."
 		return
@@ -139,10 +143,15 @@
 	acid_boost_level = 0
 	pheromones_boost_level = 0
 	weed_boost_level = 0
+	
+	tackle_chance_multiplier = 1.0
+	tackle_strength_bonus = 0
 
 	leader_count_boost = 0
 	maturation_multiplier = 1.0
 	tier_slot_multiplier = 1.0
+	larva_gestation_multiplier = 1.0
+	bonus_larva_spawn_chance = 0
 
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
@@ -157,34 +166,10 @@
 			X.recalculate_everything()
 			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
 			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_health(var/description)
+/datum/mutator_set/hive_mutators/recalculate_stats(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
-			X.recalculate_health()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
-			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_plasma(var/description)
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		if(X.hivenumber == hive.hivenumber)
-			X.recalculate_plasma()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
-			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_speed(var/description)
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		if(X.hivenumber == hive.hivenumber)
-			X.recalculate_speed()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
-			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_damage(var/description)
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		if(X.hivenumber == hive.hivenumber)
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
-			X.recalculate_damage()
-			X.xeno_jitter(15)
-/datum/mutator_set/hive_mutators/recalculate_armor(var/description)
-	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
-		if(X.hivenumber == hive.hivenumber)
-			X.recalculate_armor()
+			X.recalculate_stats()
 			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_actions(var/description)
@@ -220,8 +205,14 @@
 	var/mob/living/carbon/Xenomorph/xeno
 	var/gas_boost_level = 0
 	var/pull_multiplier = 1.0
+	var/carry_boost_level = 0
+	var/egg_laying_multiplier = 1.0
+	var/pounce_boost = 0
 
 /datum/mutator_set/individual_mutators/proc/user_levelled_up(var/new_level)
+	if(xeno.hardcore)
+		remaining_points = 0
+		return
 	if(user_level == new_level || new_level == -1) //-1 is for Predaliens
 		return //nothing to level up!
 	if(user_level > new_level)
@@ -245,24 +236,8 @@
 	xeno.recalculate_everything()
 	xeno << "<span class='xenoannounce'>[description]</span>"
 	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_health(var/description)
-	xeno.recalculate_health()
-	xeno << "<span class='xenoannounce'>[description]</span>"
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_plasma(var/description)
-	xeno.recalculate_plasma()
-	xeno << "<span class='xenoannounce'>[description]</span>"
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_speed(var/description)
-	xeno.recalculate_speed()
-	xeno << "<span class='xenoannounce'>[description]</span>"
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_damage(var/description)
-	xeno.recalculate_damage()
-	xeno << "<span class='xenoannounce'>[description]</span>"
-	xeno.xeno_jitter(15)
-/datum/mutator_set/individual_mutators/recalculate_armor(var/description)
-	xeno.recalculate_armor()
+/datum/mutator_set/individual_mutators/recalculate_stats(var/description)
+	xeno.recalculate_stats()
 	xeno << "<span class='xenoannounce'>[description]</span>"
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_actions(var/description)
@@ -281,18 +256,27 @@
 	set name = "Purchase Hive Mutators"
 	set desc = "Purchase Mutators affecting the entire Hive."
 	set category = "Alien"
+	if(hardcore)
+		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		return
 	src.hive.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/verb/purchase_mutators()
 	set name = "Purchase Mutators"
 	set desc = "Purchase Mutators for yourself."
 	set category = "Alien"
+	if(hardcore)
+		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		return
 	src.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/verb/list_mutators()
 	set name = "List Mutators"
 	set desc = "List Mutators that apply to you."
 	set category = "Alien"
+	if(hardcore)
+		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		return
 	src << "<span class='xenoannounce'>Mutators</span>"
 	src << "Personal mutators:"
 	if(!src.mutators.purchased_mutators || !src.mutators.purchased_mutators.len)
@@ -343,7 +327,7 @@
 	if(. == 0)
 		return
 	MS.health_multiplier *= 1.1
-	MS.recalculate_health(description)
+	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/plasma
 	//Boosts xeno plasma
@@ -356,7 +340,7 @@
 	if(. == 0)
 		return
 	MS.plasma_multiplier *= 1.2
-	MS.recalculate_plasma(description)
+	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/larva
 	//Gives hive an infusion of larva
@@ -387,7 +371,7 @@
 	if(. == 0)
 		return
 	MS.damage_multiplier *= 1.075
-	MS.recalculate_damage(description)
+	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/armor
 	//Strong armour
@@ -400,7 +384,7 @@
 	if(. == 0)
 		return
 	MS.armor_multiplier *= 0.90
-	MS.recalculate_armor(description)
+	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/speed
 	//Faster xenos
@@ -414,7 +398,7 @@
 	if(. == 0)
 		return
 	MS.speed_boost -= 0.2 //not a multiplier since speed is both positive and negative :P
-	MS.recalculate_speed(description)
+	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/acid
 	//Stronger acid
@@ -547,4 +531,89 @@
 	MS.pull_multiplier *= 0.75 //0.75 felt a bit too weak to be worth it, 0.5 is definitely noticeable
 	MS.recalculate_actions(description)
 
+/datum/xeno_mutator/more_carrier_capacity
+	//Gives Carrier more carry capacity
+	name = "Greater carry capacity"
+	description = "You are able to carry more."
+	cost = MUTATOR_COST_EXPENSIVE
+	unique = TRUE //Can only buy once
+	individual_only = TRUE //Only for individuals
+	caste_whitelist = list("Carrier") //Only for Carriers
 
+/datum/xeno_mutator/more_carrier_capacity/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	if(!istype(MS))
+		return 0
+	. = ..()
+	if(. == 0)
+		return
+	MS.carry_boost_level += 2
+	MS.recalculate_actions(description)
+
+/datum/xeno_mutator/faster_egg_laying
+	//Makes Queen lay eggs faster (for when you have more than one Carrier for example)
+	name = "Faster egg laying"
+	description = "Your ovipositor swells."
+	cost = MUTATOR_COST_EXPENSIVE
+	unique = TRUE //Can only buy once
+	individual_only = TRUE //Only for individuals
+	caste_whitelist = list("Queen") //Only for Queens
+
+/datum/xeno_mutator/faster_egg_laying/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	if(!istype(MS))
+		return 0
+	. = ..()
+	if(. == 0)
+		return
+	MS.egg_laying_multiplier *= 2.0
+	MS.give_feedback(description)
+
+/datum/xeno_mutator/longer_pounce
+	//Gives Carrier more carry capacity
+	name = "Longer pounce"
+	description = "You are able to punce further."
+	cost = MUTATOR_COST_EXPENSIVE
+	unique = TRUE //Can only buy once
+	individual_only = TRUE //Only for individuals
+	caste_whitelist = list("Runner", "Lurker", "Ravager") //Only for pouncing castes
+
+/datum/xeno_mutator/longer_pounce/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	if(!istype(MS))
+		return 0
+	. = ..()
+	if(. == 0)
+		return
+	MS.pounce_boost += 2
+	MS.recalculate_actions(description)
+
+/datum/xeno_mutator/better_tackle
+	//Increases tackle chance and so on
+	name = "Better tackle"
+	description = "You grow better at tackling."
+	cost = MUTATOR_COST_EXPENSIVE
+	unique = TRUE //Can only buy once
+
+/datum/xeno_mutator/better_tackle/apply_mutator(datum/mutator_set/MS)
+	. = ..()
+	if(. == 0)
+		return
+	MS.tackle_chance_multiplier *= 1.1
+	MS.tackle_strength_bonus += 1
+	MS.recalculate_stats(description)
+
+/datum/xeno_mutator/resilient_larva
+	//Faster evolution and maturation
+	name = "Resilient larva"
+	description = "The larva grow faster and more numerous."
+	cost = MUTATOR_COST_EXPENSIVE
+	unique = TRUE //Can only buy once
+	hive_only = TRUE //It's only on hive level, otherwise all xenos that want to evolve would take it first level just to evolve faster...
+
+/datum/xeno_mutator/resilient_larva/apply_mutator(datum/mutator_set/hive_mutators/MS)
+	if(!istype(MS))
+		return 0
+	. = ..()
+	if(. == 0)
+		return
+	MS.larva_gestation_multiplier *= 1.2
+	MS.bonus_larva_spawn_chance = 10 //10% chance to spawn an extra larva
+	MS.recalculate_hive(description)

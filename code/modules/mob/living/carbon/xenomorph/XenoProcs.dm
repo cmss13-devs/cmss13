@@ -174,7 +174,7 @@
 /mob/living/carbon/Xenomorph/throw_impact(atom/hit_atom, speed)
 	set waitfor = 0
 
-	if(!caste.charge_type || stat || (!throwing && usedPounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
+	if(!caste.charge_type || stat || (!throwing && used_pounce)) //No charge type, unconscious or dead, or not throwing but used pounce.
 		..() //Do the parent instead.
 		r_FAL
 

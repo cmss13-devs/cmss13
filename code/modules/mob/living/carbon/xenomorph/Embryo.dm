@@ -69,18 +69,18 @@
 	process_growth()
 
 /obj/item/alien_embryo/proc/process_growth()
-
+	var/datum/hive_status/hive = hive_datum[hivenumber]
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
-		if(stage <= 4)
-			counter += 0.33
+		if(stage < 5)
+			counter += 0.33 * hive.larva_gestation_multiplier
 		else if(stage == 4)
-			counter += 0.11
+			counter += 0.11 * hive.larva_gestation_multiplier
 	else if(istype(affected_mob.buckled, /obj/structure/bed/nest)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
-		counter += 1.5 //Currently twice as much, can be changed
+		counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
 	else
-		if(stage <= 4)
-			counter++
+		if(stage < 5)
+			counter += 1.0 * hive.larva_gestation_multiplier
 
 	if(stage < 5 && counter >= 120)
 		counter = 0

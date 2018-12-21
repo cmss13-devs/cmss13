@@ -58,7 +58,7 @@
 		src << "<span class='warning'>Your autocannon is currently retracted.</span>"
 		return
 
-	if(usedPounce)
+	if(used_pounce)
 		return
 
 	if(!check_plasma(5))
@@ -74,9 +74,9 @@
 	visible_message("<span class='xenowarning'>\The [src] fires its autocannon!</span>", \
 	"<span class='xenowarning'>You fire your autocannon!</span>" )
 	playsound(src.loc,'sound/weapons/gun_smg.ogg', 75, 1)
-	usedPounce = 1
+	used_pounce = 1
 	spawn(1)
-		usedPounce = 0
+		used_pounce = 0
 
 
 /mob/living/carbon/Xenomorph/Xenoborg/emp_act(severity)

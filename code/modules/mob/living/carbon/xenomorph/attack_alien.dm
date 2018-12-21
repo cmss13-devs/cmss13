@@ -167,7 +167,7 @@
 					"<span class='danger'>You try to tackle [src], but they are already down!</span>", null, 5)
 					return 1
 				playsound(loc, 'sound/weapons/pierce.ogg', 25, 1)
-				KnockDown(rand(M.caste.tacklemin, M.caste.tacklemax)) //Min and max tackle strenght. They are located in individual caste files.
+				KnockDown(rand(M.tacklemin, M.tacklemax)) //Min and max tackle strenght. They are located in individual caste files.
 				M.visible_message("<span class='danger'>\The [M] tackles down [src]!</span>", \
 				"<span class='danger'>You tackle down [src]!</span>", null, 5)
 
@@ -178,7 +178,7 @@
 				if(isYautja(src))
 					if(prob((M.caste.tackle_chance + tackle_bonus)*0.2))
 						playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-						KnockDown(rand(M.caste.tacklemin, M.caste.tacklemax))
+						KnockDown(rand(M.tacklemin, M.tacklemax))
 						M.visible_message("<span class='danger'>\The [M] tackles down [src]!</span>", \
 						"<span class='danger'>You tackle down [src]!</span>", null, 5)
 						return 1
@@ -189,7 +189,7 @@
 						return 1
 				else if(prob(M.caste.tackle_chance + tackle_bonus)) //Tackle_chance is now a special var for each caste.
 					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-					KnockDown(rand(M.caste.tacklemin, M.caste.tacklemax))
+					KnockDown(rand(M.tacklemin, M.tacklemax))
 					M.visible_message("<span class='danger'>\The [M] tackles down [src]!</span>", \
 					"<span class='danger'>You tackle down [src]!</span>", null, 5)
 					return 1

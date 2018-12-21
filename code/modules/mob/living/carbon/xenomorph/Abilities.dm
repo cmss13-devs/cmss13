@@ -394,7 +394,7 @@
 
 /datum/action/xeno_action/activable/pounce/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.usedPounce
+	return !X.used_pounce
 
 /datum/action/xeno_action/activable/xeno_spit
 	name = "Xeno Spit"
@@ -1185,7 +1185,7 @@
 
 /datum/action/xeno_action/activable/charge/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
-	return !X.usedPounce
+	return !X.used_pounce
 
 //Ravenger
 

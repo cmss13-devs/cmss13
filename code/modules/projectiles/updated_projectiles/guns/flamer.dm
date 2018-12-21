@@ -487,7 +487,7 @@
 				if(!I.stat)
 					var/mob/living/carbon/Xenomorph/Ravager/X = I
 					X.plasma_stored = X.plasma_max
-					X.usedcharge = 0 //Reset charge cooldown
+					X.used_charge = 0 //Reset charge cooldown
 					X.show_message(text("<span class='danger'>The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!</span>"),1)
 					if(rand(1,100) < 70) X.emote("roar")
 				continue

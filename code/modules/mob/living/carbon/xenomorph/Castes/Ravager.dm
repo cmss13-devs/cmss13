@@ -21,6 +21,9 @@
 	armor_deflection = 35
 	xeno_explosion_resistance = 60
 	attack_delay = -2
+	pounce_delay = 120
+
+	charge_distance = 4 //shorter than regular charges
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
@@ -73,11 +76,7 @@
 	desc = "A huge, nasty red alien with enormous scythed claws."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Ravager Walking"
-	var/usedcharge = 0 //What's the deal with the all caps?? They're not constants :|
-	var/CHARGESPEED = 2
-	var/CHARGESTRENGTH = 2
-	var/CHARGEDISTANCE = 4
-	var/CHARGECOOLDOWN = 120
+	var/used_charge = 0
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
@@ -97,7 +96,7 @@
 	if(!check_state())
 		return
 
-	if(usedPounce)
+	if(used_pounce)
 		return
 
 	if(!check_plasma(20))
@@ -110,11 +109,11 @@
 	visible_message("<span class='danger'>[src] charges towards \the [T]!</span>", \
 	"<span class='danger'>You charge towards \the [T]!</span>" )
 	emote("roar") //heheh
-	usedPounce = 1 //This has to come before throw_at, which checks impact. So we don't do end-charge specials when thrown
+	used_pounce = 1 //This has to come before throw_at, which checks impact. So we don't do end-charge specials when thrown
 	use_plasma(20)
-	throw_at(T, CHARGEDISTANCE, CHARGESPEED, src)
-	spawn(CHARGECOOLDOWN)
-		usedPounce = 0
+	throw_at(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src)
+	spawn(caste.pounce_delay)
+		used_pounce = 0
 		src << "<span class='notice'>Your exoskeleton quivers as you get ready to charge again.</span>"
 		for(var/X in actions)
 			var/datum/action/A = X

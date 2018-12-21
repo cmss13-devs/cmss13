@@ -14,7 +14,7 @@
 	if(!check_state())
 		return
 
-	if(usedPounce)
+	if(used_pounce)
 		src << "<span class='xenowarning'>You must wait before pouncing.</span>"
 		return
 
@@ -33,10 +33,10 @@
 
 	visible_message("<span class='xenowarning'>\The [src] pounces at [T]!</span>", \
 	"<span class='xenowarning'>You pounce at [T]!</span>")
-	usedPounce = 1
+	used_pounce = 1
 	flags_pass = PASSTABLE
 	use_plasma(10)
-	throw_at(T, 6, 2, src) //Victim, distance, speed
+	throw_at(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src) //Victim, distance, speed
 	spawn(6)
 		if(!hardcore)
 			flags_pass = initial(flags_pass) //Reset the passtable.
@@ -44,7 +44,7 @@
 			flags_pass = 0 //Reset the passtable.
 
 	spawn(caste.pounce_delay)
-		usedPounce = 0
+		used_pounce = 0
 		src << "<span class='notice'>You get ready to pounce again.</span>"
 		for(var/X in actions)
 			var/datum/action/A = X

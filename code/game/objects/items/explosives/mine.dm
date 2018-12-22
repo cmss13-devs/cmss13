@@ -19,6 +19,7 @@
 	var/iff_signal = ACCESS_IFF_MARINE
 	var/triggered = 0
 	var/armed = 0 //Will the mine explode or not
+	var/disarming = 0//Tracks if the mine is being disarmed.
 	var/trigger_type = "explosive" //Calls that proc
 	var/obj/effect/mine_tripwire/tripwire
 	/*
@@ -77,17 +78,20 @@
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/device/multitool))
-		if(anchored)
+		if(anchored && !disarming)
 			user.visible_message("<span class='notice'>[user] starts disarming [src].</span>", \
 			"<span class='notice'>You start disarming [src].</span>")
+			disarming = 1
 			if(!do_after(user, 80, TRUE, 5, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='warning'>[user] stops disarming [src].", \
 				"<span class='warning'>You stop disarming [src].")
+				disarming = 0
 				return
 			user.visible_message("<span class='notice'>[user] finishes disarming [src].", \
 			"<span class='notice'>You finish disarming [src].")
 			anchored = 0
 			armed = 0
+			disarming = 0
 			icon_state = copytext(icon_state,1,-6)
 			if(tripwire)
 				cdel(tripwire)

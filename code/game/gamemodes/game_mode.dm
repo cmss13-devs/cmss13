@@ -197,69 +197,8 @@
 
 	return 0
 
-
 /datum/game_mode/proc/check_win() //universal trigger to be called at mob death, nuke explosion, etc. To be called from everywhere.
 	return 0
-
-
-/datum/game_mode/proc/send_intercept()
-	var/intercepttext = "<FONT size = 3><B>Cent. Com. Update</B> Requested status information:</FONT><HR>"
-	intercepttext += "<B> In case you have misplaced your copy, attached is a list of personnel whom reliable sources&trade; suspect may be affiliated with subversive elements:</B><br>"
-
-
-	var/list/suspects = list()
-	for(var/mob/living/carbon/human/man in player_list) if(man.client && man.mind)
-		// NT relation option
-		var/special_role = man.mind.special_role
-		if (special_role == "Wizard" || special_role == "Ninja" || special_role == "Syndicate" || special_role == "Syndicate Commando" || special_role == "Vox Raider")
-			continue	//NT intelligence ruled out possiblity that those are too classy to pretend to be a crew.
-		if(man.client.prefs.nanotrasen_relation == "Opposed" && prob(50) || \
-		   man.client.prefs.nanotrasen_relation == "Skeptical" && prob(20))
-			suspects += man
-		// Antags
-		else if(special_role == "traitor" && prob(40) || \
-		   special_role == "Changeling" && prob(50) || \
-		   special_role == "Cultist" && prob(30) || \
-		   special_role == "Head Revolutionary" && prob(30))
-			suspects += man
-
-			// If they're a traitor or likewise, give them extra TC in exchange.
-			var/obj/item/device/uplink/hidden/suplink = man.mind.find_syndicate_uplink()
-			if(suplink)
-				var/extra = 4
-				suplink.uses += extra
-				man << "\red We have received notice that enemy intelligence suspects you to be linked with us. We have thus invested significant resources to increase your uplink's capacity."
-			else
-				// Give them a warning!
-				man << "\red They are on to you!"
-
-		// Some poor people who were just in the wrong place at the wrong time..
-		else if(prob(10))
-			suspects += man
-	for(var/mob/M in suspects)
-		switch(rand(1, 100))
-			if(1 to 50)
-				intercepttext += "Someone with the job of <b>[M.mind.assigned_role]</b> <br>"
-			else
-				intercepttext += "<b>[M.name]</b>, the <b>[M.mind.assigned_role]</b> <br>"
-
-	for (var/obj/machinery/computer/communications/comm in machines)
-		if (!(comm.stat & (BROKEN|NOPOWER)) && comm.prints_intercept)
-			var/obj/item/paper/intercept = new /obj/item/paper( comm.loc )
-			intercept.name = "Cent. Com. Status Summary"
-			intercept.info = intercepttext
-
-			comm.messagetitle.Add("Cent. Com. Status Summary")
-			comm.messagetext.Add(intercepttext)
-	world << sound('sound/AI/commandreport.ogg')
-
-/*	command_alert("Summary downloaded and printed out at all communications consoles.", "Enemy communication intercept. Security Level Elevated.")
-	for(var/mob/M in player_list)
-		if(!istype(M,/mob/new_player))
-			M << sound('sound/AI/intercept.ogg')
-	if(security_level < SEC_LEVEL_BLUE)
-		set_security_level(SEC_LEVEL_BLUE)*/
-
 
 /datum/game_mode/proc/get_players_for_role(var/role, override_jobbans = 0)
 	var/list/players = list()

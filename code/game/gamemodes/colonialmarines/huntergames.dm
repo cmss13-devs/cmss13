@@ -115,9 +115,6 @@ var/waiting_for_drop_votes = 0
 /datum/game_mode/huntergames/announce()
 	r_TRU
 
-/datum/game_mode/huntergames/send_intercept()
-	r_TRU
-
 /datum/game_mode/huntergames/pre_setup()
 	primary_spawns = list()
 	secondary_spawns = list()

@@ -23,15 +23,9 @@
 
 /datum/game_mode/infection/post_setup()
 	initialize_post_marine_gear_list()
-	spawn (rand(waittime_l, waittime_h)) // To reduce extended meta.
-		send_intercept()
-	..()
 
 /datum/game_mode/infection/can_start()
 	initialize_starting_survivor_list()
-	return 1
-
-/datum/game_mode/infection/send_intercept()
 	return 1
 
 /datum/game_mode/infection/check_win()

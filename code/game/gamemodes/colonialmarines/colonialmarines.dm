@@ -21,9 +21,6 @@
 /datum/game_mode/colonialmarines/announce()
 	world << "<span class='round_header'>The current map is - [map_tag]!</span>"
 
-/datum/game_mode/colonialmarines/send_intercept()
-	return 1
-
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
 /obj/effect/landmark/lv624

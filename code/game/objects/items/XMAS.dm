@@ -1,4 +1,6 @@
 
+/mob/living/carbon/human/var/opened_gift = 0
+
 /obj/item/m_gift //Marine Gift
 	name = "Present"
 	desc = "One, standard issue USCM Present"
@@ -17,32 +19,39 @@
 	return
 
 /obj/item/m_gift/attack_self(mob/M as mob)
+	var/mob/living/carbon/human/H = M
+	if(istype(H))
+		if(H.opened_gift == 1)
+			H << "\blue This is not your gift, opening it feels wrong."
+		if(H.opened_gift == 2)
+			H << "\blue Santa knows of your treachery, yet you open another present."
+		if(H.opened_gift == 3)
+			H << "\blue Even the Grinch glares with disguist..."
+		if(H.opened_gift == 4)
+			H << "\blue You're ruining the Christmas magic, I hope you're happy."
+		if(H.opened_gift == 5)
+			H << "\red Ok, Congratulations, you've ruined Christmas for 5 marines now."
+		if(H.opened_gift > 5)
+			H << "\red You've ruined Christmas for [H.opened_gift] marines now..."
+		
+		H.opened_gift++
 	var fancy = rand(1,100) //Check if it has the possibility of being a FANCY present
 	var exFancy = rand(1,20) // Checks if it might be one of the ULTRA fancy presents.
 	var gift_type = /obj/item/storage/fancy/crayons   //Default, just in case
 
-	if(fancy > 95)
+	if(fancy > 90)
 		if(exFancy == 1)
-			M << "\blue It's a brand new, un-restricted, THERMOBARIC ROCKET LAUNCHER!!!!!!  What are the chances???"
-			gift_type = /obj/item/weapon/gun/launcher/rocket/m57a4/XMAS
-			var/obj/item/I = new gift_type(M)
-			M.temp_drop_inv_item(src)
-			M.put_in_hands(I)
-			I.add_fingerprint(M)
-			cdel(src)
-			return
-		else if(exFancy == 10)
-			M << "\blue It's a brand new, un-restricted, ANTI-MATERIAL SNIPER RIFLE!!!!!!  What are the chances???"
-			gift_type = /obj/item/weapon/gun/rifle/sniper/elite/XMAS
-			var/obj/item/I = new gift_type(M)
-			M.temp_drop_inv_item(src)
-			M.put_in_hands(I)
-			I.add_fingerprint(M)
-			cdel(src)
-			return
-		else if(exFancy == 20)
 			M << "\blue Just what the fuck is it???"
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
+			var/obj/item/I = new gift_type(M)
+			M.temp_drop_inv_item(src)
+			M.put_in_hands(I)
+			I.add_fingerprint(M)
+			cdel(src)
+			return
+		if(exFancy > 15)
+			M << "\blue Oh, just what I needed... Fucking HEFA's."
+			gift_type = /obj/item/storage/box/nade_box/frag
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
@@ -103,7 +112,8 @@
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/reddot,
-		/obj/item/attachable/foregrip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/quickfire,
@@ -119,29 +129,3 @@
 	I.add_fingerprint(M)
 	cdel(src)
 	return
-
-
-
-
-
-
-
-
-/obj/item/weapon/gun/launcher/rocket/m57a4/XMAS
-	..()
-	flags_gun_features = GUN_INTERNAL_MAG
-	able_to_fire(mob/living/user)
-		var/turf/current_turf = get_turf(user)
-		if (current_turf.z == 3 || current_turf.z == 4) //Can't fire on the Almayer, bub.
-			click_empty(user)
-			user << "<span class='warning'>You can't fire that here!</span>"
-			return 0
-		else
-			return 1
-
-/obj/item/weapon/gun/rifle/sniper/elite/XMAS
-	..()
-	flags_gun_features = GUN_INTERNAL_MAG
-
-	able_to_fire(mob/living/user)
-		return 1

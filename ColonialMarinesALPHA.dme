@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\game\objects\items\XMAS.dm"
 #include "code\global.dm"
 #include "code\names.dm"
 #include "code\stylesheet.dm"

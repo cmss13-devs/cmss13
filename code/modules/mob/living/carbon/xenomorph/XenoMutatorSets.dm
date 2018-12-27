@@ -68,9 +68,7 @@
 //Lists mutators available for purchase
 /datum/mutator_set/proc/available_mutators()
 	var/list/can_purchase = list()
-	if(!remaining_points) //No points - can't buy anything
-		return can_purchase
-
+	
 	for(var/str in xeno_mutator_list)
 		if (can_purchase_mutator(str))
 			can_purchase += str //can purchase!

@@ -332,7 +332,7 @@ should be alright.
 
 	user.visible_message("<span class='notice'>[user] begins attaching [attachment] to [src].</span>",
 	"<span class='notice'>You begin attaching [attachment] to [src].</span>", null, 4)
-	if(do_after(user,60, TRUE, 5, BUSY_ICON_FRIENDLY))
+	if(do_after(user, 20, TRUE, 2, BUSY_ICON_FRIENDLY))
 		if(attachment && attachment.loc)
 			user.visible_message("<span class='notice'>[user] attaches [attachment] to [src].</span>",
 			"<span class='notice'>You attach [attachment] to [src].</span>", null, 4)

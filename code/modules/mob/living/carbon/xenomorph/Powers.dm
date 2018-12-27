@@ -1341,6 +1341,8 @@
 		var/xenoinfo
 		if(user && anchored && X != user)
 			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];watch_xeno_number=[X.nicknumber]>[X.name]</a> "
+		else if(user && isobserver(user))
+			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];track=\ref[X]>[X.name]</a> "
 		else
 			xenoinfo = "<tr><td>[leader][X.name] "
 		if(!X.client) xenoinfo += " <i>(SSD)</i>"
@@ -1407,11 +1409,19 @@
 	dat += "<b>Tier 3: [carrier_count + boiler_count + crusher_count + praetorian_count + ravager_count] Sisters</b> | Boilers: [boiler_count] | Carriers: [carrier_count] | Crushers: [crusher_count] | Praetorians: [praetorian_count] | Ravagers: [ravager_count]<BR>"
 	dat += "<b>Tier 2: [burrower_count + hivelord_count + hunter_count + spitter_count + warrior_count] Sisters</b> | Burrowers: [burrower_count] | Hivelords: [hivelord_count] | Warriors: [warrior_count] | Lurkers: [hunter_count] | Spitters: [spitter_count]<BR>"
 	dat += "<b>Tier 1: [drone_count + runner_count + sentinel_count + defender_count] Sisters</b> | Drones: [drone_count] | Runners: [runner_count] | Sentinels: [sentinel_count] | Defenders: [defender_count]<BR>"
-	dat += "<b>Larvas: [larva_count] Sisters<BR>"
-	dat += "<b>Burrowed Larva: [stored_larva_count] Sisters<BR>"
+	dat += "<b>Larvas: [larva_count] Sisters</b><BR>"
+	dat += "<b>Burrowed Larva: [stored_larva_count] Sisters</b><BR>"
 	dat += "<table cellspacing=4>"
 	dat += queen_list + leader_list + boiler_list + burrower_list + crusher_list + praetorian_list + ravager_list + carrier_list + hivelord_list + warrior_list + hunter_list + spitter_list + drone_list + runner_list + sentinel_list + defender_list + larva_list
 	dat += "</table></body>"
+
+
+	dat += "<b>Hive mutators:</b><BR>"
+	if(!hive_datum[hivenumber].mutators.purchased_mutators || !hive_datum[hivenumber].mutators.purchased_mutators.len)
+		dat += "-<BR>"
+	else
+		for(var/m in hive_datum[hivenumber].mutators.purchased_mutators)
+			dat += "- [m]<BR>"
 	usr << browse(dat, "window=roundstatus;size=500x500")
 
 

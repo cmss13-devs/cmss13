@@ -56,6 +56,8 @@
 	var/speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	var/burn_damage_lower = 0
+	var/burn_damage_upper = 0
 	var/armor_deflection = 10
 
 	var/plasma_stored = 10
@@ -64,6 +66,7 @@
 
 	var/aura_strength = 0
 	var/weed_level = 1
+	var/acid_level = 0
 	var/gas_level = 0
 
 	var/upgrade_threshold = 200
@@ -421,6 +424,15 @@
 	melee_damage_lower = round(caste.melee_damage_lower * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)
 	melee_damage_upper = round(caste.melee_damage_upper * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)
 
+	if(mutators.acid_claws)
+		//Burn damage is equal to 12.5% of brute damage, multiplied by acid level (1-3)
+		burn_damage_lower = round(melee_damage_lower * acid_level * 0.125 + 0.5)
+		burn_damage_upper = round(melee_damage_upper * acid_level * 0.125 + 0.5)
+
+		//Brute damage is lowered by 12.5%. Overall damage will be greater than before if acid level is above 1
+		melee_damage_lower = round(melee_damage_lower * 0.875 + 0.5)
+		melee_damage_upper = round(melee_damage_upper * 0.875 + 0.5)
+
 
 /mob/living/carbon/Xenomorph/proc/recalculate_actions()
 	recalculate_acid()
@@ -436,18 +448,19 @@
 
 
 /mob/living/carbon/Xenomorph/proc/recalculate_acid()
-	if(caste.acid_level == 0)
+	acid_level = caste.acid_level
+	if(acid_level == 0)
 		return //Caste does not use acid
 	for(var/datum/action/xeno_action/activable/corrosive_acid/acid in actions)
 		if(istype(acid))
-			var/new_acid_level = caste.acid_level + mutators.acid_boost_level + hive.mutators.acid_boost_level
-			if(new_acid_level > 3)
-				new_acid_level = 3
-			if(acid.level == new_acid_level)
+			acid_level = caste.acid_level + mutators.acid_boost_level + hive.mutators.acid_boost_level
+			if(acid_level > 3)
+				acid_level = 3
+			if(acid.level == acid_level)
 				return //nothing to update, we're at the same level
 			else
 				//We are setting the new acid level and updating our action
-				acid.level = new_acid_level
+				acid.level = acid_level
 				acid.update_level()
 
 /mob/living/carbon/Xenomorph/proc/recalculate_weeds()

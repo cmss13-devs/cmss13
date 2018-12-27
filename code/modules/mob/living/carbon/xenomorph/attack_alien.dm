@@ -66,10 +66,15 @@
 
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
 			var/damage = rand(M.melee_damage_lower, M.melee_damage_upper) + dam_bonus
+			var/acid_damage = 0
+			if(M.burn_damage_lower)
+				acid_damage = rand(M.burn_damage_lower, M.burn_damage_upper)
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * 2)
+				if(acid_damage)
+					acid_damage += (M.frenzy_aura * 2)
 
 			M.animation_attack_on(src)
 
@@ -142,6 +147,10 @@
 					return 1
 
 			apply_damage(damage, BRUTE, affecting, armor_block, sharp = 1, edge = 1) //This should slicey dicey
+			if(acid_damage)
+				playsound(loc, "acid_hit", 25, 1)
+				apply_damage(acid_damage, BURN, affecting, armor_block) //Burn damage
+
 			updatehealth()
 
 		if("disarm")

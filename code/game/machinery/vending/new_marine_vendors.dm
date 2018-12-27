@@ -837,7 +837,7 @@
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Gyroscopic stabilizer", 0, /obj/item/attachable/gyro, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Laser sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Submachinegun stock", 0, /obj/item/attachable/stock/smg, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 
@@ -1015,7 +1015,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Submachinegun stock", 0, /obj/item/attachable/stock/smg, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 

@@ -235,7 +235,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		accuracy_mod = config.min_hit_accuracy_mult
+		accuracy_mod = config.low_hit_accuracy_mult
 		damage_mod = -config.min_hit_damage_mult
 		recoil_mod = -config.min_recoil_value
 		scatter_mod = -config.min_scatter_value
@@ -466,6 +466,19 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = -config.min_hit_accuracy_mult
 		accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
+/datum/event_handler/scope_zoomout_removebuffs
+	var/obj/item/weapon/gun/G = null
+	var/obj/item/attachable/scope/scope
+	single_fire = 1
+
+	New(_g,_scope)
+		G = _g
+		scope = _scope
+
+	handle(sender, datum/event_args/ev_args)
+		G.accuracy_mult -= scope.accuracy_scoped_buff
+		G.fire_delay -= scope.delay_scoped_nerf
+		G.damage_falloff_mult -= scope.damage_falloff_scoped_buff
 
 
 /obj/item/attachable/scope
@@ -480,20 +493,33 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/zoom_offset = 11
 	var/zoom_viewsize = 12
+	var/allows_movement = 0
+	var/accuracy_scoped_buff
+	var/delay_scoped_nerf
+	var/damage_falloff_scoped_buff
 
 	New()
 		..()
-		delay_mod = config.mhigh_fire_delay
-		accuracy_mod = config.high_hit_accuracy_mult
-		burst_mod = -config.min_burst_value
+		delay_mod = config.min_fire_delay
+		accuracy_mod = -config.min_hit_accuracy_mult
 		movement_acc_penalty_mod = 2
-		accuracy_unwielded_mod = -config.min_hit_accuracy_mult
+		accuracy_unwielded_mod = -config.med_hit_accuracy_mult
 
+		accuracy_scoped_buff = config.high_hit_accuracy_mult + config.min_hit_accuracy_mult //to compensate initial debuff
+		delay_scoped_nerf = config.low_fire_delay - config.min_fire_delay //to compensate initial debuff. We want "high_fire_delay"
+		damage_falloff_scoped_buff = -0.4 //has to be negative
+
+	proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+		G.accuracy_mult += accuracy_scoped_buff
+		G.fire_delay += delay_scoped_nerf
+		G.damage_falloff_mult += damage_falloff_scoped_buff
+		var/datum/event_handler/eh = new /datum/event_handler/scope_zoomout_removebuffs(G,src)
+		user.add_zoomout_handler(eh)
 
 	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 		if(turn_off)
 			if(G.zoom)
-				G.zoom(user, zoom_offset, zoom_viewsize)
+				G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
 			return 1
 
 		if(!G.zoom && !(G.flags_item & WIELDED))
@@ -501,9 +527,19 @@ Defined in conflicts.dm of the #defines folder.
 				user << "<span class='warning'>You must hold [G] with two hands to use [src].</span>"
 			return 0
 		else
-			G.zoom(user, zoom_offset, zoom_viewsize)
+			G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
+			apply_scoped_buff(G,user)
 		return 1
 
+
+
+/datum/event_handler/miniscope_zoomout
+	var/obj/item/weapon/gun/G = null
+	var/aim_slowdown = 0
+	single_fire = 1
+	handle(sender, datum/event_args/ev_args)
+		if(G.zoom)
+			G.slowdown -= aim_slowdown
 
 
 /obj/item/attachable/scope/mini
@@ -512,8 +548,31 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "miniscope_a"
 	desc = "A small rail mounted zoom sight scope. Allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
 	slot = "rail"
-	zoom_offset = 5
+	zoom_offset = 6
 	zoom_viewsize = 7
+	var/dynamic_aim_slowdown = 5
+
+	New()
+		..()		
+		damage_falloff_scoped_buff = -0.2 //has to be negative
+
+	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+		if(istype(G, /obj/item/weapon/gun/launcher/rocket))	
+			allows_movement	= 0
+			if(do_after(user, 25, FALSE, 5, BUSY_ICON_HOSTILE))
+				. = ..()
+		else			
+			allows_movement	= 1
+			. = ..()
+			if(user && G.zoom)
+				var/datum/event_handler/miniscope_zoomout/handler = new /datum/event_handler/miniscope_zoomout(src)
+				handler.G = G
+				handler.aim_slowdown = dynamic_aim_slowdown
+
+				G.slowdown += dynamic_aim_slowdown
+			
+				user.add_zoomout_handler(handler)
+			
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"
@@ -542,14 +601,19 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		accuracy_mod = config.min_hit_accuracy_mult
-		recoil_mod = -config.min_recoil_value
-		scatter_mod = -config.min_scatter_value
-		delay_mod = config.high_fire_delay
+		//it makes stuff much better when two-handed
+		accuracy_mod = config.med_hit_accuracy_mult
+		recoil_mod = -config.low_recoil_value
+		scatter_mod = -config.low_scatter_value
+		delay_mod = config.min_fire_delay
 		movement_acc_penalty_mod = -1
-		accuracy_unwielded_mod = config.min_hit_accuracy_mult
-		recoil_unwielded_mod = -config.min_recoil_value
-		scatter_unwielded_mod = -config.min_scatter_value
+		//it makes stuff much worse when one handed
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+		recoil_unwielded_mod = config.low_recoil_value
+		scatter_unwielded_mod = config.low_scatter_value
+		//but at the same time you are slow when 2 handed
+		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+
 
 		matter = list("wood" = 2000)
 
@@ -603,14 +667,18 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		accuracy_mod = config.low_hit_accuracy_mult
-		recoil_mod = -config.min_recoil_value
-		scatter_mod = -config.min_scatter_value
-		delay_mod = config.med_fire_delay
+		//it makes stuff much better when two-handed
+		accuracy_mod = config.med_hit_accuracy_mult
+		recoil_mod = -config.low_recoil_value
+		scatter_mod = -config.low_scatter_value
+		delay_mod = config.min_fire_delay
 		movement_acc_penalty_mod = -1
-		accuracy_unwielded_mod = config.min_hit_accuracy_mult
-		recoil_unwielded_mod = -config.min_recoil_value
-		scatter_unwielded_mod = -config.min_scatter_value
+		//it makes stuff much worse when one handed
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+		recoil_unwielded_mod = config.low_recoil_value
+		scatter_unwielded_mod = config.low_scatter_value
+		//but at the same time you are slow when 2 handed
+		aim_speed_mod = SLOWDOWN_ADS_SCOPE
 
 
 /obj/item/attachable/stock/rifle/marksman
@@ -633,14 +701,92 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		accuracy_mod = config.min_hit_accuracy_mult
-		recoil_mod = -config.min_recoil_value
-		scatter_mod = -config.min_scatter_value
-		delay_mod = config.mlow_fire_delay
+		//it makes stuff much better when two-handed
+		accuracy_mod = config.med_hit_accuracy_mult
+		recoil_mod = -config.low_recoil_value
+		scatter_mod = -config.low_scatter_value
+		delay_mod = config.min_fire_delay
 		movement_acc_penalty_mod = -1
-		accuracy_unwielded_mod = config.min_hit_accuracy_mult
-		recoil_unwielded_mod = -config.min_recoil_value
-		scatter_unwielded_mod = -config.low_scatter_value
+		//it makes stuff much worse when one handed
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+		recoil_unwielded_mod = config.low_recoil_value
+		scatter_unwielded_mod = config.low_scatter_value
+		//but at the same time you are slow when 2 handed
+		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+
+
+/obj/item/attachable/stock/smg/collapsible
+	name = "submachinegun paratrooper's stock"
+	desc = "Even rarer stock distributed in small numbers to USCM specialists forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "smgstock"
+	attach_icon = "smgstock_a"
+	pixel_shift_x = 39
+	pixel_shift_y = 11
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+	var/activated = TRUE
+	var/collapsed_stock_scatter = 0
+
+	New()
+		..()
+		//it makes stuff much better when two-handed
+		accuracy_mod = config.med_hit_accuracy_mult
+		recoil_mod = -config.low_recoil_value
+		scatter_mod = -config.low_scatter_value
+		delay_mod = config.min_fire_delay
+		movement_acc_penalty_mod = -1
+		//it makes stuff much worse when one handed
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+		recoil_unwielded_mod = config.low_recoil_value
+		scatter_unwielded_mod = config.low_scatter_value
+		//but at the same time you are slow when 2 handed
+		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+
+		collapsed_stock_scatter = config.mlow_scatter_value
+
+	proc/apply_on_weapon(obj/item/weapon/gun/G, new_active)
+		var/multiplier = -1
+		if(new_active)
+			multiplier = 1
+		G.accuracy_mult += accuracy_mod * multiplier
+		G.recoil += recoil_mod * multiplier
+		G.scatter += scatter_mod * multiplier
+		G.fire_delay += delay_mod * multiplier		
+		G.movement_acc_penalty_mult = movement_acc_penalty_mod * multiplier
+		//it makes stuff much worse when one handed
+		G.accuracy_mult_unwielded += accuracy_unwielded_mod * multiplier
+		G.recoil_unwielded += recoil_unwielded_mod * multiplier
+		G.scatter_unwielded += scatter_unwielded_mod * multiplier
+		//but at the same time you are slow when 2 handed
+		G.aim_slowdown += aim_speed_mod * multiplier
+
+		//additionally increases scatter when collapsed
+		if(new_active)
+			G.scatter_unwielded -= collapsed_stock_scatter
+			G.w_class += size_mod
+			pixel_shift_x = 39
+			pixel_shift_y = 11
+		else
+			G.scatter_unwielded += collapsed_stock_scatter
+			G.w_class -= size_mod
+			pixel_shift_x = 32
+			pixel_shift_y = 11
+
+		G.update_overlays(src, "stock")
+
+	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+		activated = !activated
+		apply_on_weapon(G, activated)
+		if(!user)
+			return 1
+
+		if(activated)
+			user << "<span class='notice'>You extended [src].</span>"
+		else
+			user << "<span class='notice'>You collapsed [src].</span>"
 
 
 
@@ -657,15 +803,17 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		accuracy_mod = config.med_hit_accuracy_mult
-		recoil_mod = -config.min_recoil_value
-		scatter_mod = -config.min_scatter_value
-		delay_mod = config.high_fire_delay
-
-		accuracy_unwielded_mod = config.min_hit_accuracy_mult
-		recoil_unwielded_mod = -config.min_recoil_value
-		scatter_unwielded_mod = -config.min_scatter_value
-
+		//it makes stuff much better when two-handed
+		accuracy_mod = config.high_hit_accuracy_mult
+		recoil_mod = -config.low_recoil_value
+		scatter_mod = -config.low_scatter_value
+		delay_mod = config.min_fire_delay
+		//it makes stuff much worse when one handed
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+		recoil_unwielded_mod = config.low_recoil_value
+		scatter_unwielded_mod = config.low_scatter_value
+		//but at the same time you are slow when 2 handed
+		aim_speed_mod = SLOWDOWN_ADS_SCOPE
 
 
 
@@ -681,7 +829,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/type_of_casings = null
 	var/attachment_firing_delay = 0 //the delay between shots, for attachments that fires stuff
 	var/fire_sound = null //Sound to play when firing it alternately
-
+	var/gun_original_damage_mult = 1 //so you don't buff the underbarrell gun with charger for the wrong weapon
 
 /obj/item/attachable/attached_gun/New() //Let's make sure if something needs an ammo type, it spawns with one.
 	..()
@@ -700,11 +848,16 @@ Defined in conflicts.dm of the #defines folder.
 		if(user)
 			user << "<span class='notice'>You are no longer using [src].</span>"
 		G.active_attachable = null
+		var/diff = G.damage_mult - 1 //so that if we buffed gun in process, it still does stuff
+		//yeah you can cheat by placing BC after switching to underbarrell, but that is one time and we can skip it for sake of optimization
+		G.damage_mult = gun_original_damage_mult + diff
 		icon_state = initial(icon_state)
 	else if(!turn_off)
 		if(user)
 			user << "<span class='notice'>You are now using [src].</span>"
 		G.active_attachable = src
+		gun_original_damage_mult = G.damage_mult
+		G.damage_mult = 1
 		icon_state += "-on"
 
 	for(var/X in G.actions)
@@ -830,7 +983,7 @@ Defined in conflicts.dm of the #defines folder.
 			user << "<span class='warning'>[src] can only be refilled with an incinerator tank.</span>"
 
 	fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
-		if(get_dist(user,target) > max_range+3)
+		if(get_dist(user,target) > max_range+4)
 			user << "<span class='warning'>Too far to fire the attachment!</span>"
 			return
 		if(current_rounds) unleash_flame(target, user)
@@ -922,12 +1075,12 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		accuracy_mod = config.min_hit_accuracy_mult
+		accuracy_mod = config.low_hit_accuracy_mult
 		recoil_mod = -config.min_recoil_value
 		scatter_mod = -config.min_scatter_value
 		burst_scatter_mod = -2
 		movement_acc_penalty_mod = 1
-		accuracy_unwielded_mod = -config.min_hit_accuracy_mult
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 		scatter_unwielded_mod = config.min_scatter_value
 
 
@@ -981,11 +1134,16 @@ Defined in conflicts.dm of the #defines folder.
 		..()
 		accuracy_mod = config.min_hit_accuracy_mult
 		movement_acc_penalty_mod = -1
-		scatter_unwielded_mod = -config.low_scatter_value
-		accuracy_unwielded_mod = config.med_hit_accuracy_mult
+		scatter_unwielded_mod = -config.mlow_scatter_value
+		accuracy_unwielded_mod = config.min_hit_accuracy_mult
 
 
-
+/datum/event_handler/bipod_movement
+	var/obj/item/attachable/bipod/attachment
+	var/obj/item/weapon/gun/G
+	handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
+		if(attachment.bipod_deployed)
+			attachment.activate_attachment(G, sender)
 
 /obj/item/attachable/bipod
 	name = "bipod"
@@ -997,30 +1155,57 @@ Defined in conflicts.dm of the #defines folder.
 	melee_mod = -10
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-
+	var/datum/event_handler/bipod_movement/bipod_movement
 
 	New()
 		..()
 		delay_mod = config.mlow_fire_delay
 
+	proc/undeploy_bipod(obj/item/weapon/gun/G,mob/living/user)
+		bipod_deployed = FALSE
+		G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
+		G.wield_delay -= WIELD_DELAY_FAST
+		G.accuracy_mult -= config.hmed_hit_accuracy_mult
+		G.burst_scatter_mult += config.low_scatter_value
+		G.fire_delay += config.min_fire_delay + config.mlow_fire_delay
+		if(istype(G,/obj/item/weapon/gun/rifle/lmg))
+			G.fire_delay += config.min_fire_delay
+
 	activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 		if(turn_off)
 			if(bipod_deployed)
-				bipod_deployed = FALSE
-				G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
-				G.wield_delay -= WIELD_DELAY_FAST
+				undeploy_bipod(G,user)
+				if(bipod_movement)
+					user.remove_movement_handler(bipod_movement)
+					bipod_movement = null
 		else
+			var/obj/support = check_bipod_support(G, user)
+			if(!support&&!bipod_deployed)
+				user << "<span class='notice'>You need a support to deploy bipod.</span>"
+				return
 			bipod_deployed = !bipod_deployed
 			if(user)
-				if(bipod_deployed)
-					var/obj/support = check_bipod_support(G, user)
+				if(bipod_deployed)					
 					user << "<span class='notice'>You deploy [src][support ? " on [support]" : ""].</span>"
 					G.aim_slowdown += SLOWDOWN_ADS_SCOPE
 					G.wield_delay += WIELD_DELAY_FAST
+					G.accuracy_mult += config.hmed_hit_accuracy_mult
+					G.burst_scatter_mult -= config.low_scatter_value
+					G.fire_delay -= config.min_fire_delay + config.mlow_fire_delay
+					if(istype(G,/obj/item/weapon/gun/rifle/lmg))
+						G.fire_delay -= config.min_fire_delay
+					if(!bipod_movement)
+						bipod_movement = new /datum/event_handler/bipod_movement()
+						bipod_movement.attachment = src
+						bipod_movement.G = G
+						user.add_movement_handler(bipod_movement)
+
 				else
 					user << "<span class='notice'>You retract [src].</span>"
-					G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
-					G.wield_delay -= WIELD_DELAY_FAST
+					undeploy_bipod(G,user)
+					if(bipod_movement)
+						user.remove_movement_handler(bipod_movement)
+						bipod_movement = null
 
 		if(bipod_deployed)
 			icon_state = "bipod-on"

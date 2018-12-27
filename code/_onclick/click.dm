@@ -268,11 +268,17 @@
 	else
 		if(dx > 0)	direction = EAST
 		else		direction = WEST
+
+	var/mob/living/mliv = src
+	if(istype(mliv) && usr.dir != direction)
+		mliv.on_movement(1)
+
 	usr.dir = direction
 	if(buckled)
 		buckled.dir = direction
 		buckled.handle_rotation()
 
+	
 
 
 

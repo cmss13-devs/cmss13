@@ -377,10 +377,10 @@
 	fire_delay = config.high_fire_delay
 	burst_amount = config.high_burst_value
 	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.max_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
+	scatter = config.hmed_scatter_value
+	burst_scatter_mult = config.hmed_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.max_recoil_value

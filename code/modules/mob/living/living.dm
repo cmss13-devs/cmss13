@@ -171,6 +171,10 @@
 			pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 				stop_pulling()
+			else
+				var/mob/living/pmob =  pulling
+				if(istype(pmob))
+					pmob.on_movement()
 
 	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
@@ -236,6 +240,8 @@
 	if(buckled)
 		buckled.unbuckle()
 	. = ..()
+	on_movement()
+
 	if(.)
 		reset_view(destination)
 
@@ -398,3 +404,29 @@
 		return 1
 
 
+/mob/living/proc/on_zoomout()
+	var/datum/event_args/ev_args = new /datum/event_args()
+	event_zoomout.fire_event(src, ev_args)
+
+/mob/living/proc/add_zoomout_handler(datum/event_handler/handler)
+	event_zoomout.add_handler(handler)
+
+/mob/living/proc/remove_zoomout_handler(datum/event_handler/handler)
+	event_zoomout.remove_handler(handler)
+
+
+/datum/event_args/mob_movement
+	var/continue_movement = 1
+	var/moving = 0
+
+/mob/living/proc/on_movement(moving = 1)
+	var/datum/event_args/mob_movement/ev_args = new /datum/event_args/mob_movement()
+	ev_args.moving = moving
+	event_movement.fire_event(src, ev_args)
+	return ev_args.continue_movement
+
+/mob/living/proc/add_movement_handler(datum/event_handler/handler)
+	event_movement.add_handler(handler)
+
+/mob/living/proc/remove_movement_handler(datum/event_handler/handler)
+	event_movement.remove_handler(handler)

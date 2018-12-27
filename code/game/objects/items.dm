@@ -63,6 +63,28 @@
 	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
 	var/sprite_sheet_id = 0 //Select which sprite sheet ID to use due to the sprite limit per .dmi. 0 is default, 1 is the new one.
 
+	var/datum/event/event_dropped = new /datum/event()
+	var/datum/event/event_unwield = new /datum/event()
+
+/obj/item/proc/on_dropped()
+	event_dropped.fire_event(src)
+
+/obj/item/proc/add_dropped_handler(datum/event_handler/handler)
+	event_dropped.add_handler(handler)
+
+/obj/item/proc/remove_dropped_handler(datum/event_handler/handler)
+	event_dropped.remove_handler(handler)
+
+
+/obj/item/proc/on_unwield()
+	event_unwield.fire_event(src)
+
+/obj/item/proc/add_unwield_handler(datum/event_handler/handler)
+	event_unwield.add_handler(handler)
+
+/obj/item/proc/remove_unwield_handler(datum/event_handler/handler)
+	event_unwield.remove_handler(handler)
+
 /obj/item/New(loc)
 	..()
 	item_list += src
@@ -269,9 +291,7 @@ cases. Override_icon_state should be a list.*/
 // apparently called whenever an item is removed from a slot, container, or anything else.
 //the call happens after the item's potential loc change.
 /obj/item/proc/dropped(mob/user as mob)
-	if(user && user.client) //Dropped when disconnected, whoops
-		if(zoom) //binoculars, scope, etc
-			zoom(user, 11, 12)
+	on_dropped()
 
 	for(var/X in actions)
 		var/datum/action/A = X
@@ -620,13 +640,33 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/is_damaged()
 	return 0
 
+/datum/event_handler/event_gun_zoom
+	var/obj/item/zooming_item
+	var/mob/living/calee
+	single_fire = 1
+
+	New(obj/item/_zooming_item, mob/living/_calee)
+		zooming_item = _zooming_item
+		calee = _calee
+
+	handle(sender, datum/event_args/event_args)
+		var/datum/event_args/mob_movement/ev_args = event_args
+		if(istype(ev_args) && !ev_args.moving)
+			return
+		if(calee && calee.client) //Dropped when disconnected, whoops
+			if(zooming_item && zooming_item.zoom && calee) //sanity check
+				zooming_item.zoom(calee)
+
 /*
 For zooming with scope or binoculars. This is called from
 modules/mob/mob_movement.dm if you move you will be zoomed out
 modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
+keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 */
 
-/obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
+/obj/item/var/zoom_event_handler
+
+/obj/item/proc/zoom(mob/living/user, tileoffset = 11, viewsize = 12, keep_zoom = 0) //tileoffset is client view offset in the direction the user is facing. viewsize is how far out this thing zooms. 7 is normal view
 	if(!user) return
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
 
@@ -644,6 +684,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		"<span class='notice'>You look up from [zoom_device].</span>")
 		zoom = !zoom
 		user.zoom_cooldown = world.time + 20
+		user.on_zoomout(src, new /datum/event_args())
+		if(zoom_event_handler)
+			user.remove_movement_handler(zoom_event_handler)
+			remove_dropped_handler(zoom_event_handler)
+			remove_unwield_handler(zoom_event_handler)
 	else //Otherwise we want to zoom in.
 		if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
 			return
@@ -668,6 +713,12 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 				if(WEST)
 					user.client.pixel_x = -viewoffset
 					user.client.pixel_y = 0
+			if(!zoom_event_handler)
+				zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
+			if(!keep_zoom)
+				user.add_movement_handler(zoom_event_handler)
+			add_dropped_handler(zoom_event_handler)
+			add_unwield_handler(zoom_event_handler)
 
 		user.visible_message("<span class='notice'>[user] peers through \the [zoom_device].</span>",
 		"<span class='notice'>You peer through \the [zoom_device].</span>")

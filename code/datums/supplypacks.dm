@@ -193,9 +193,11 @@ WEAPONS
 /datum/supply_packs/gun/heavyweapons
 	contains = list(
 					/obj/item/weapon/gun/rifle/lmg,
+					/obj/item/weapon/gun/rifle/lmg,
+					/obj/item/ammo_magazine/rifle/lmg,
 					/obj/item/ammo_magazine/rifle/lmg,
 					)
-	name = "M41AE2 HPR crate (HPR x1, HPR ammo box x1)"
+	name = "M41AE2 HPR crate (HPR x2, HPR ammo box x2)"
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR crate"
@@ -888,7 +890,7 @@ ATTACHMENTS
 	group = "Attachments"
 
 /datum/supply_packs/s_attachables
-	name = "stock attachments crate (x3 each)"
+	name = "stock attachments crate (x3 each + 1 paratrooper's)"
 	contains = list(
 					/obj/item/attachable/stock/revolver,
 					/obj/item/attachable/stock/revolver,
@@ -902,6 +904,7 @@ ATTACHMENTS
 					/obj/item/attachable/stock/smg,
 					/obj/item/attachable/stock/smg,
 					/obj/item/attachable/stock/smg,
+					/obj/item/attachable/stock/smg/collapsible,
 					)
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate

@@ -41,7 +41,7 @@
 		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT
 
 	else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
-		progress_amount = XENO_ROUNDSTART_PROGRESS_AMOUNT + (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
+		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
 
 	if(upgrade != -1 && upgrade != 3) //upgrade possible
 		if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)

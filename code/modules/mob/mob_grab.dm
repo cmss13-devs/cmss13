@@ -37,6 +37,9 @@
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
 			step(user.pulling, get_dir(user.pulling.loc, T))
+			var/mob/living/pmob = user.pulling
+			if(istype(pmob))
+				pmob.on_movement()
 
 
 /obj/item/grab/attack_self(mob/user)

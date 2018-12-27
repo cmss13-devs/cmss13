@@ -74,8 +74,14 @@
 	proc/on_hit_mob(mob/M, obj/item/projectile/P) //Special effects when hitting mobs.
 		return
 
+	proc/on_pointblank(mob/M, obj/item/projectile/P) //Special effects when pointblanking mobs.
+		return
+
 	proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
 		return
+	
+	proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
+		return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
 	proc/knockback(mob/M, obj/item/projectile/P, var/max_range = 2)
 		if(!M || M == P.firer) return
@@ -96,13 +102,32 @@
 						target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
 			step_away(M,P)
 
-	proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE)
+	proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 2) //crazier version of knockback, for PB use
+		if(!M || M == P.firer) return
+		shake_camera(M, 3, 4)
+		if(isliving(M)) //This is pretty ugly, but what can you do.
+			if(isXeno(M))
+				var/mob/living/carbon/Xenomorph/target = M
+				target << "<span class='xenodanger'>You are shaken by the sudden impact!</span>"
+				if(target.mob_size == MOB_SIZE_BIG)
+					target.apply_effects(0,0.1)
+					return
+				target.apply_effects(1,3)				
+			else
+				if(!isYautja(M)) //Not predators.
+					var/mob/living/target = M
+					target.apply_effects(4,6) //Humans get heavily.
+					target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
+		step_away(M,P)
+
+	proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
 		if(!target || !P) return
-		for(var/mob/living/carbon/M in orange(1,target))
+		for(var/mob/living/carbon/M in orange(range,target))
 			if(P.firer == M)
 				continue
-			M.visible_message("<span class='danger'>[M] is hit by backlash from \a [P.name]!</span>","[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]You are hit by backlash from \a </b>[P.name]</b>!</span>")
-			M.apply_damage(rand(5,P.damage/2),damage_type)
+			if(show_message)
+				M.visible_message("<span class='danger'>[M] is hit by backlash from \a [P.name]!</span>","[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]You are hit by backlash from \a </b>[P.name]</b>!</span>")
+			M.apply_damage(rand(5,P.damage/damage_div),damage_type)
 
 	proc/fire_bonus_projectiles(obj/item/projectile/original_P)
 		set waitfor = 0
@@ -139,6 +164,8 @@
 						return
 					if("DEATH SQUAD")
 						target.apply_effects(0,1) //Almost unaffacted.
+						return
+					if("ANTAGONIST") //Completely unaffected.
 						return
 			target.apply_effects(12,20)
 
@@ -300,7 +327,7 @@
 	New()
 		..()
 		accuracy_var_high = config.max_proj_variance
-		damage = config.hmed_hit_damage
+		damage = config.high_hit_damage
 		damage_var_low = config.low_proj_variance
 		damage_var_high = config.med_proj_variance
 		penetration = config.mlow_armor_penetration
@@ -315,16 +342,19 @@
 	name = "submachinegun bullet"
 	New()
 		..()
-		damage = config.low_hit_damage
+		damage = config.lmed_hit_damage
 		accurate_range = config.near_shell_range
+		damage_falloff = config.tactical_damage_falloff
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 	New()
 		..()
 		scatter = config.min_scatter_value
-		damage = config.mlow_hit_damage
-		penetration = config.med_armor_penetration
+		damage = config.med_hit_damage
+		penetration = config.low_armor_penetration
+		shell_speed = config.fast_shell_speed
+		damage_falloff = config.reg_damage_falloff
 
 /*
 //================================================
@@ -337,15 +367,21 @@
 	New()
 		..()
 		accurate_range = config.norm_shell_range
-		damage = config.lmed_hit_damage
+		damage = config.med_hit_damage
 		accuracy = config.med_hit_accuracy
 		scatter = -config.low_scatter_value
+		shell_speed = config.ultra_shell_speed
+		damage_falloff = config.tactical_damage_falloff
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
 	New()
 		..()
+		damage = config.lmed_hit_damage
 		penetration = config.med_armor_penetration
+		shell_speed = config.super_shell_speed
+		damage_falloff = config.reg_damage_falloff
+
 
 /datum/ammo/bullet/rifle/incendiary
 	name = "incendiary rifle bullet"
@@ -354,7 +390,11 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
 	New()
 		..()
+		damage = config.lmed_hit_damage
+		shell_speed = config.super_shell_speed
 		accuracy = -config.low_hit_accuracy
+		damage_falloff = config.reg_damage_falloff
+
 
 /datum/ammo/bullet/rifle/m4ra
 	name = "A19 high velocity bullet"
@@ -390,7 +430,7 @@
 		accuracy = -config.low_hit_accuracy
 		scatter = -config.low_scatter_value
 		penetration= config.low_armor_penetration
-		shell_speed = config.fast_shell_speed
+		shell_speed = config.ultra_shell_speed
 
 	on_hit_mob(mob/M, obj/item/projectile/P)
 		knockback(M, P, config.max_shell_range)	// Can knockback basically at max range
@@ -417,11 +457,10 @@
 		..()
 		max_range = config.short_shell_range
 		damage = config.high_hit_damage
-		penetration= config.low_armor_penetration
+		penetration= config.med_armor_penetration
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
 		knockback(M, P, 5)
-
 
 
 /datum/ammo/bullet/shotgun/beanbag
@@ -479,11 +518,11 @@
 		accuracy_var_low = config.med_proj_variance
 		accuracy_var_high = config.med_proj_variance
 		max_range = config.short_shell_range
-		damage = config.lmed_hit_damage
+		damage = config.med_hit_damage
 		damage_var_low = -config.low_proj_variance
 		damage_var_high = config.low_proj_variance
-		penetration	= config.mlow_armor_penetration
-		bonus_projectiles_amount = config.low_proj_extra
+		penetration	= config.med_armor_penetration
+		bonus_projectiles_amount = config.med_proj_extra
 
 
 
@@ -495,11 +534,11 @@
 		accuracy_var_low = config.med_proj_variance
 		accuracy_var_high = config.med_proj_variance
 		max_range = config.short_shell_range
-		damage = config.low_hit_damage
+		damage = config.mlow_hit_damage
 		damage_var_low = -config.low_proj_variance
 		damage_var_high = config.low_proj_variance
-		penetration	= config.mlow_armor_penetration
-		scatter = config.super_scatter_value
+		penetration	= config.med_armor_penetration
+		scatter = config.hmed_scatter_value
 
 
 
@@ -514,16 +553,17 @@
 		accuracy_var_high = config.high_proj_variance
 		accurate_range = config.min_shell_range
 		max_range = config.close_shell_range
-		damage = config.mhigh_hit_damage
+		damage = config.hmed_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
-		damage_falloff = config.buckshot_damage_falloff
-		penetration	= -config.mlow_armor_penetration
+		damage_falloff = config.buckshot_v2_damage_falloff
+		penetration	= 0
 		bonus_projectiles_amount = config.low_proj_extra
 		shell_speed = config.reg_shell_speed
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
 		knockback(M,P)
+
 
 
 //buckshot variant only used by the masterkey shotgun attachment.
@@ -548,14 +588,14 @@
 		damage = config.med_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
-		damage_falloff = config.extra_damage_falloff
+		damage_falloff = config.buckshot_v2_damage_falloff
 		shell_speed = config.reg_shell_speed
-		scatter = config.ultra_scatter_value
+		scatter = config.max_scatter_value
 
 /datum/ammo/bullet/shotgun/spread/masterkey
 	New()
 		..()
-		damage = config.low_hit_damage
+		damage = config.mlow_hit_damage
 
 
 /*
@@ -596,6 +636,7 @@
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
 	iff_signal = ACCESS_IFF_MARINE
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES|AMMO_SCANS_NEARBY
 	New()
 		..()
 		accuracy = -config.low_hit_accuracy
@@ -606,7 +647,14 @@
 		penetration= -config.min_armor_penetration
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
-		burst(get_turf(M),P,damage_type)
+		burst(get_turf(M),P,damage_type, 2 , 4)
+		burst(get_turf(M),P,damage_type, 1 , 2 , 0)
+
+	on_near_target(turf/T, obj/item/projectile/P)
+		burst(T,P,damage_type, 2 , 4)
+		burst(T,P,damage_type, 1 , 2, 0)
+		return 1
+	
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
@@ -635,16 +683,17 @@
 	New()
 		..()
 		accurate_range = config.short_shell_range
+		damage_falloff = config.tactical_damage_falloff
 		damage = config.low_hit_damage
-		penetration= config.mlow_armor_penetration
+		penetration = config.low_armor_penetration
 
 /datum/ammo/bullet/smartgun/lethal
 	flags_ammo_behavior = AMMO_BALLISTIC
 	icon_state 	= "bullet"
 	New()
 		..()
-		damage = config.low_hit_damage
-		penetration= config.mlow_armor_penetration
+		damage = config.lmed_hit_damage
+		penetration= config.low_armor_penetration
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"
@@ -1258,10 +1307,11 @@
 		accurate_range = config.max_shell_range
 		point_blank_range = -1
 		max_range = 7
-		damage = config.lmed_hit_damage
+		damage = config.low_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.reg_damage_falloff
+		penetration = config.med_armor_penetration
 		shell_speed = config.reg_shell_speed
 		shrapnel_chance = 5
 

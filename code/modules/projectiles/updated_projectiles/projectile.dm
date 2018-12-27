@@ -171,7 +171,7 @@
 				cdel(src)
 				return
 
-		if(scan_a_turf(next_turf)) //We hit something! Get out of all of this.
+		if(scan_a_turf(next_turf, proj_dir)) //We hit something! Get out of all of this.
 			in_flight = 0
 			sleep(0)
 			cdel(src)
@@ -203,7 +203,7 @@
 				cdel(src)
 				return
 
-/obj/item/projectile/proc/scan_a_turf(turf/T)
+/obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
 	// Not a turf, keep moving
 	if(!istype(T))
 		return 0
@@ -227,7 +227,40 @@
 		if(T && T.loc)
 			T.bullet_act(src)
 
-		return 1
+		return 1	
+
+	if(ammo.flags_ammo_behavior & AMMO_SCANS_NEARBY && proj_dir)
+		//this thing scans depending on dir
+		var/cardinal_dir = get_perpen_dir(proj_dir)
+		if(!cardinal_dir)
+			var/d1 = proj_dir&(proj_dir-1)		// eg west		(1+8)&(8) = 8
+			var/d2 = proj_dir - d1			// eg north		(1+8) - 8 = 1
+			cardinal_dir = list(d1,d2)
+		
+		var/remote_detonation = 0
+		var/kill_proj = 0
+
+		for(var/ddir in cardinal_dir)
+			var/dloc = get_step(T, ddir)
+			var/turf/dturf = get_turf(dloc)
+			for(var/atom/movable/dA in dturf)
+				if(!isliving(dA))
+					continue
+				var/mob/living/dL = dA
+				if(dL.is_dead())
+					continue
+				if(ammo.flags_ammo_behavior & AMMO_SKIPS_HUMANS && ishuman(dL))
+					continue
+				if(ammo.flags_ammo_behavior & AMMO_SKIPS_ALIENS && isXeno(dL))
+					continue
+				remote_detonation = 1				
+				kill_proj = ammo.on_near_target(T, src)
+				break
+			if(remote_detonation)
+				break
+
+		if(kill_proj)
+			return 1
 
 	// Empty turf, keep moving
 	if(!T.contents.len)
@@ -419,8 +452,11 @@
 			. -= mobility_aura * 5
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
-			if(shooter_human.faction == faction || m_intent == MOVE_INTENT_WALK)
-				. -= 15
+			if(shooter_human.faction == faction)
+				var/buff_evading = 15
+				if(m_intent == MOVE_INTENT_WALK)
+					buff_evading += 35
+				. -= buff_evading
 
 
 /mob/living/carbon/Xenomorph/get_projectile_hit_chance(obj/item/projectile/P)
@@ -608,7 +644,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		var/armor = armor_deflection + armor_deflection_buff
 		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
 			var/mob/living/carbon/Xenomorph/charger = src
-			armor += round(charger.charge_speed * 5) //Some armor deflection when charging.
+			armor += round(charger.charge_speed * 7) //Some armor deflection when charging.
 			if(P.dir == charger.dir) armor = max(0, armor - (armor_deflection * config.xeno_armor_resist_low)) //Both facing same way -- ie. shooting from behind.
 			else if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * config.xeno_armor_resist_low) //We are facing the bullet.
 			//Otherwise use the standard armor deflection for crushers.

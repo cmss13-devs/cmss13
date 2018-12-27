@@ -48,7 +48,9 @@
 	var/high_hit_damage_mult = 0.35
 	var/max_hit_damage_mult = 0.45
 
+	var/tactical_damage_falloff = 0.8
 	var/reg_damage_falloff = 1 //in config it was 0.89 but referenced wrong var
+	var/buckshot_v2_damage_falloff = 3
 	var/buckshot_damage_falloff = 5 //ditto but 18.3 (!!!)
 	var/extra_damage_falloff = 10 //ditto but 9.75
 

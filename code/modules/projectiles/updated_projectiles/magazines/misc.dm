@@ -28,3 +28,8 @@
 	gun_type = /obj/item/weapon/gun/launcher/rocket/nobugs
 
 
+/obj/item/ammo_magazine/rifle/grenadespawner
+	name = "\improper GRENADE SPAWNER AMMO"
+	desc = "OH GOD OH FUCK"
+	icon_state = "m41a_explosive"
+	default_ammo = /datum/ammo/grenade_container

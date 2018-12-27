@@ -136,7 +136,7 @@
 	item_state = "armor"
 	sprite_sheet_id = 1
 	flags_armor_protection = UPPER_TORSO|ARM_LEFT
-	armor = list(melee = 75, bullet = 75, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
+	armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
@@ -161,45 +161,45 @@
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
+				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(7128)
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
 				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 80, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
+				armor = list(melee = 70, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(9867)
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
 				flags_armor_protection = UPPER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
+				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(4879)
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
 				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
+				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
 				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 80, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
+				armor = list(melee = 70, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 	else
 		switch(armor_number)
 			if(2)
 				icon_state = "halfarmor[armor_number]"
 				flags_armor_protection = UPPER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 75, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
+				armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
 			if(3)
 				icon_state = "halfarmor[armor_number]"
 				flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-				armor = list(melee = 75, bullet = 75, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
+				armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
 			if(4)
 				icon_state = "halfarmor[armor_number]"
 				flags_armor_protection = UPPER_TORSO
-				armor = list(melee = 75, bullet = 80, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
+				armor = list(melee = 75, bullet = 88, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
 			if(5,441)
 				icon_state = "halfarmor[armor_number]"
 				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 70, laser = 55, energy = 65, bomb = 40, bio = 20, rad = 20)
+				armor = list(melee = 70, bullet = 80, laser = 55, energy = 65, bomb = 40, bio = 20, rad = 20)
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
@@ -276,7 +276,7 @@
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = FEET|LEGS
-	armor = list(melee = 75, bullet = 85, laser = 60, energy = 50, bomb = 40, bio = 20, rad = 20)
+	armor = list(melee = 75, bullet = 90, laser = 60, energy = 50, bomb = 40, bio = 20, rad = 20)
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
@@ -291,7 +291,7 @@
 
 	if(boot_number != 1) //More overall protection, less defensive value.
 		flags_armor_protection = FEET|LEGS|LOWER_TORSO
-		armor = list(melee = 65, bullet = 75, laser = 55, energy = 45, bomb = 40, bio = 20, rad = 20)
+		armor = list(melee = 65, bullet = 85, laser = 55, energy = 45, bomb = 40, bio = 20, rad = 20)
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
@@ -343,7 +343,7 @@
 	permeability_coefficient = 0.05
 	flags_item = 0
 	flags_armor_protection = HANDS
-	armor = list(melee = 80, bullet = 80, laser = 55, energy = 50, bomb = 40, bio = 10, rad = 10)
+	armor = list(melee = 80, bullet = 88, laser = 55, energy = 50, bomb = 40, bio = 10, rad = 10)
 	flags_cold_protection = HANDS
 	flags_heat_protection = HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature

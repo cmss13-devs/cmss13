@@ -736,7 +736,7 @@
 		/obj/item/attachable/stock/rifle = round(scale * 4) ,
 		/obj/item/attachable/stock/revolver = round(scale * 4),
 		/obj/item/attachable/stock/smg = round(scale * 4) ,
-		/obj/item/attachable/stock/smg/collapsible = round(scale * 2) + 2 ,
+		/obj/item/attachable/stock/smg/collapsible = round(scale * 1) + 1 ,
 
 		/obj/item/attachable/attached_gun/grenade = round(scale * 10),
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),

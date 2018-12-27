@@ -721,8 +721,8 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "stock"
 	melee_mod = 5
 	size_mod = 1
-	icon_state = "smgstock"
-	attach_icon = "smgstock_a"
+	icon_state = "smgstockc"
+	attach_icon = "smgstockc_a"
 	pixel_shift_x = 39
 	pixel_shift_y = 11
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
@@ -767,19 +767,26 @@ Defined in conflicts.dm of the #defines folder.
 		if(new_active)
 			G.scatter_unwielded -= collapsed_stock_scatter
 			G.w_class += size_mod
-			pixel_shift_x = 39
-			pixel_shift_y = 11
+			icon_state = "smgstockc"
+			attach_icon = "smgstockc_a"
 		else
 			G.scatter_unwielded += collapsed_stock_scatter
 			G.w_class -= size_mod
-			pixel_shift_x = 32
-			pixel_shift_y = 11
-
+			icon_state = "smgstockcc"
+			attach_icon = "smgstockcc_a"
+		
 		G.update_overlays(src, "stock")
 
 	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+		if(G.flags_item & WIELDED)
+			if(activated)
+				user << "<span class='notice'>You need a free hand to collapse [src].</span>"
+			else
+				user << "<span class='notice'>You need a free hand to extend [src].</span>"
+			return 0
 		activated = !activated
 		apply_on_weapon(G, activated)
+		playsound(user, activation_sound, 15, 1)
 		if(!user)
 			return 1
 

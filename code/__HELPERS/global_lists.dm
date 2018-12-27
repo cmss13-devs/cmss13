@@ -230,7 +230,7 @@ var/global/round_should_check_for_win = TRUE
 	for(var/T in paths)
 		var/datum/xeno_mutator/XM = new T
 		xeno_mutator_list[XM.name] = XM
-
+	xeno_mutator_list = sortAssoc(xeno_mutator_list)
 	//  WO waves
 	paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)
 	for(var/T in paths)

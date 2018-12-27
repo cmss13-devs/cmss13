@@ -18,7 +18,7 @@
 	can_denest_hosts = 1
 	xeno_explosion_resistance = 40
 	acid_level = 2
-	weed_level = 1
+	weed_level = 2 //Starts with wider weeds by default
 
 /datum/caste_datum/hivelord/mature
 	upgrade_name = "Mature"

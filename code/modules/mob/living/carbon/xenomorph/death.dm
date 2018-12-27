@@ -11,6 +11,9 @@
 		zoom_out()
 
 	SetLuminosity(0)
+	
+	if(pulledby)
+		pulledby.stop_pulling()
 
 	if(!gibbed)
 		if(hud_used && hud_used.healths)

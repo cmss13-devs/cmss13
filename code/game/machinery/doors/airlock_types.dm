@@ -313,7 +313,7 @@
 	name = "\improper Alpha Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_alpha.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_ALPHA)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA)
 	opacity = 0
 	glass = 1
 
@@ -361,7 +361,7 @@
 	name = "\improper Bravo Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_bravo.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_BRAVO)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
 	opacity = 0
 	glass = 1
 
@@ -409,7 +409,7 @@
 	name = "\improper Charlie Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_charlie.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CHARLIE)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
 	opacity = 0
 	glass = 1
 
@@ -457,7 +457,7 @@
 	name = "\improper Delta Squad Preparations"
 	icon = 'icons/obj/doors/almayer/prepdoor_delta.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO, ACCESS_MARINE_DELTA)
 	opacity = 0
 	glass = 1
 

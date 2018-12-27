@@ -61,10 +61,10 @@
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	fire_delay = config.mlow_fire_delay
-	burst_delay = config.min_fire_delay
+	burst_delay = config.med_fire_delay
 	burst_amount = config.med_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value

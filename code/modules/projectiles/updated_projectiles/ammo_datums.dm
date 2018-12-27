@@ -345,7 +345,7 @@
 		..()
 		damage = config.lmed_hit_damage
 		accurate_range = config.near_shell_range
-		damage_falloff = config.tactical_damage_falloff
+		damage_falloff = config.reg_damage_falloff
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
@@ -373,6 +373,26 @@
 		scatter = -config.low_scatter_value
 		shell_speed = config.ultra_shell_speed
 		damage_falloff = config.tactical_damage_falloff
+
+/datum/ammo/bullet/rifle/explosive
+	name = "rifle bullet"
+	New()
+		..()
+		accurate_range = config.norm_shell_range
+		damage = config.low_hit_damage
+		accuracy = 0
+		shell_speed = config.super_shell_speed
+		damage_falloff = config.reg_damage_falloff
+
+	on_hit_mob(mob/M, obj/item/projectile/P)
+		explosion_rec(get_turf(M), 80, 40)
+
+	on_hit_obj(obj/O, obj/item/projectile/P)
+		explosion_rec(get_turf(O), 80, 40)
+
+	on_hit_turf(turf/T, obj/item/projectile/P)
+		if(T.density)
+			explosion_rec(T, 80, 40)
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"

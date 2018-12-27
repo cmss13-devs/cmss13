@@ -128,6 +128,7 @@
 			if(show_message)
 				M.visible_message("<span class='danger'>[M] is hit by backlash from \a [P.name]!</span>","[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]You are hit by backlash from \a </b>[P.name]</b>!</span>")
 			M.apply_damage(rand(5,P.damage/damage_div),damage_type)
+			P.play_damage_effect(M)
 
 	proc/fire_bonus_projectiles(obj/item/projectile/original_P)
 		set waitfor = 0

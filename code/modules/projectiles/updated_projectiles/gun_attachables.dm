@@ -705,7 +705,7 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = config.med_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
-		delay_mod = config.min_fire_delay
+		delay_mod = 0
 		movement_acc_penalty_mod = -1
 		//it makes stuff much worse when one handed
 		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
@@ -736,7 +736,7 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = config.med_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
-		delay_mod = config.min_fire_delay
+		delay_mod = 0
 		movement_acc_penalty_mod = -1
 		//it makes stuff much worse when one handed
 		accuracy_unwielded_mod = -config.low_hit_accuracy_mult

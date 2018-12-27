@@ -50,7 +50,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_config_values()
 	fire_delay = config.high_fire_delay*4
 	burst_amount = config.min_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	scatter = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value

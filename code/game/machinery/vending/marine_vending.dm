@@ -328,7 +328,8 @@
 		///obj/item/ammo_magazine/sniper = 0,
 		///obj/item/ammo_magazine/sniper/incendiary = 0,
 		///obj/item/ammo_magazine/sniper/flak = 0,
-		/obj/item/smartgun_powerpack = round(scale * 2)
+		/obj/item/smartgun_powerpack = round(scale * 2),
+		/obj/item/ammo_magazine/flamer_tank = round(scale * 2)
 	)
 
 	contraband = list(
@@ -735,6 +736,7 @@
 		/obj/item/attachable/stock/rifle = round(scale * 4) ,
 		/obj/item/attachable/stock/revolver = round(scale * 4),
 		/obj/item/attachable/stock/smg = round(scale * 4) ,
+		/obj/item/attachable/stock/smg/collapsible = round(scale * 2) + 2 ,
 
 		/obj/item/attachable/attached_gun/grenade = round(scale * 10),
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),

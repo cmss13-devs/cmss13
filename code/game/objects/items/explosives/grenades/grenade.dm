@@ -11,7 +11,7 @@
 	flags_equip_slot = SLOT_WAIST
 	hitsound = 'sound/weapons/smash.ogg'
 	var/active = 0
-	var/det_time = 50
+	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
@@ -20,7 +20,7 @@
 
 	..()
 
-	det_time = rand(det_time - 10, det_time + 10)
+	det_time = rand(det_time - 5, det_time + 5)
 
 /obj/item/explosive/grenade/attack_self(mob/user)
 	if(!active)

@@ -137,12 +137,11 @@
 		if(mob:is_zoomed)
 			mob:zoom_out()
 
-	// If mob moves while zoomed in with device, unzoom them.
-	if(view != world.view || pixel_x || pixel_y)
-		for(var/obj/item/item in mob.contents)
-			if(item.zoom)
-				item.zoom(mob)
-				break
+	// run mob move event if it is carbon
+	if(istype(mob,/mob/living/carbon))
+		var/mob/living/carbon/carbon_mob = mob
+		if(!carbon_mob.on_movement())
+			return //something blocked us from moving
 
 	//Check if you are being grabbed and if so attemps to break it
 	if(mob.pulledby)

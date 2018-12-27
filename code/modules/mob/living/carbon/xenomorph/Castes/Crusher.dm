@@ -12,7 +12,7 @@
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
-	armor_deflection = 40
+	armor_deflection = 50
 	max_health = 275
 	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
@@ -29,7 +29,7 @@
 	plasma_max = 300
 	upgrade_threshold = 1600
 	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
-	armor_deflection = 50
+	armor_deflection = 60
 	max_health = 300
 
 /datum/caste_datum/crusher/elder
@@ -44,7 +44,7 @@
 	plasma_max = 400
 	upgrade_threshold = 3200
 	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
-	armor_deflection = 60
+	armor_deflection = 70
 	max_health = 325
 
 /datum/caste_datum/crusher/ancient
@@ -58,7 +58,7 @@
 	plasma_max = 400
 	upgrade_threshold = 3200
 	caste_desc = "It always has the right of way."
-	armor_deflection = 70
+	armor_deflection = 80
 	max_health = 350
 
 /mob/living/carbon/Xenomorph/Crusher

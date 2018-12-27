@@ -41,6 +41,7 @@
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/stock/smg,
+						/obj/item/attachable/stock/smg/collapsible,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/flashlight,

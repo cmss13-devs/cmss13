@@ -555,11 +555,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 /mob/proc/facedir(var/ndir)
-	if(!canface())	return 0
+	if(!canface())	return 0	
 	dir = ndir
 	if(buckled && !buckled.anchored)
 		buckled.dir = ndir
 		buckled.handle_rotation()
+	var/mob/living/mliv = src
+	if(istype(mliv))
+		mliv.on_movement(1)
 	return 1
 
 

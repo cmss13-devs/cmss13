@@ -63,3 +63,6 @@
 	var/reagent_move_delay_modifier = 0 //negative values increase movement speed
 	var/reagent_shock_modifier = 0 //negative values reduce shock/pain
 	var/reagent_pain_modifier = 0 //same as above, except can potentially mask damage
+
+	var/datum/event/event_zoomout = new /datum/event()
+	var/datum/event/event_movement = new /datum/event()

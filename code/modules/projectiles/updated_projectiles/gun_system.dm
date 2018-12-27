@@ -269,8 +269,9 @@
 
 	if((flags_item|TWOHANDED|WIELDED) != flags_item)
 		return //Have to be actually a twohander and wielded.
-	if(zoom)
-		zoom(user)
+		
+	on_unwield()
+
 	flags_item ^= WIELDED
 	name 	    = copytext(name, 1, -10)
 	item_state  = copytext(item_state, 1, -2)
@@ -602,21 +603,8 @@ and you're good to go.
 
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
 
-
-		//BIPODS BEGINS HERE
 		var/scatter_mod = 0
 		var/burst_scatter_mod = 0
-		//They decrease scatter chance and increase accuracy a tad. Can also increase damage.
-		if(user && under && under.bipod_deployed) //Let's get to work on the bipod. I'm not really concerned if they are the same person as the previous user. It doesn't matter.
-			if(under.check_bipod_support(src, user))
-				//Passive accuracy and recoil buff, but only when firing in position.
-				projectile_to_fire.accuracy *= config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult //More accuracy.
-				recoil_comp-- //Less recoil.
-				scatter_mod -= config.low_scatter_value
-				burst_scatter_mod = -config.mlow_scatter_value
-				if(prob(30)) projectile_to_fire.damage *= config.base_hit_damage_mult + config.low_hit_damage_mult//Lower chance of a damage buff.
-				if(bullets_fired == 1) user << "<span class='notice'>Your bipod keeps [src] steady!</span>"
-		//End of bipods.
 
 		target = original_target ? original_target : targloc
 		projectile_to_fire.original = target
@@ -722,7 +710,11 @@ and you're good to go.
 					active_attachable.activate_attachment(src, null, TRUE)//No way.
 				var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 				if(projectile_to_fire) //We actually have a projectile, let's move on. We're going to simulate the fire cycle.
-					projectile_to_fire.damage *= (config.base_hit_damage_mult+config.low_hit_damage_mult) //Multiply the damage for point blank.
+					var/damage_buff = config.base_hit_damage_mult
+					//if target is lying or unconscious - add damage bonus
+					if(M.lying == 1 || M.stat == UNCONSCIOUS)
+						damage_buff += config.med_hit_damage_mult
+					projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 					user.visible_message("<span class='danger'>[user] fires [src] point blank at [M]!</span>")
 					apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
 					simulate_recoil(1, user)
@@ -737,6 +729,7 @@ and you're good to go.
 							cdel(BP)
 
 					projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
+					projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire)
 					M.bullet_act(projectile_to_fire)
 					last_fired = world.time
 
@@ -836,10 +829,10 @@ and you're good to go.
 			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(1,2))
 			gun_scatter += config.low_scatter_value
 		else if(gun_skill_category == GUN_SKILL_SMGS)
-			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(1,3))
+			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(2,4))
 			gun_scatter += config.med_scatter_value
 		else
-			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(2,4))
+			gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
 			gun_scatter += config.high_scatter_value
 
 	// Apply any skill-based bonuses to accuracy

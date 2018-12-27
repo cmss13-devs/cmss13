@@ -48,6 +48,7 @@
 /obj/item/proc/unwield(mob/user)
 	if( (flags_item|TWOHANDED|WIELDED) != flags_item) return //Have to be actually a twohander and wielded.
 	flags_item ^= WIELDED
+	on_unwield()
 	name 	    = copytext(name,1,-10)
 	item_state  = copytext(item_state,1,-2)
 	remove_offhand(user)
@@ -122,6 +123,12 @@
 		var/obj/item/main_hand = user.get_active_hand()
 		if(main_hand) main_hand.unwield(user)
 
+	//mute both events. otherwise we are stuck in the loop
+	on_unwield()
+		return 0
+	
+	on_dropped()
+		return 0
 /*
  * Fireaxe
  */

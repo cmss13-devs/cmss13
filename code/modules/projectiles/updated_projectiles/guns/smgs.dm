@@ -60,8 +60,8 @@
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 24, "under_y" = 16, "stock_x" = 24, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
-	fire_delay = config.mlow_fire_delay
-	burst_delay = config.med_fire_delay
+	fire_delay = config.mlow_fire_delay * 1.1
+	burst_delay = config.low_fire_delay * 1.1
 	burst_amount = config.med_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult

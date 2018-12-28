@@ -724,6 +724,7 @@ and you're good to go.
 						for(var/i = 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
 							BP = rnew(/obj/item/projectile, M.loc)
 							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type])
+							BP.damage *= damage_buff
 							BP.ammo.on_hit_mob(M, BP)
 							M.bullet_act(BP)
 							cdel(BP)

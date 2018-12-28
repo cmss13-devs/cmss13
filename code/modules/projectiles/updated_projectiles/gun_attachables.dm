@@ -747,6 +747,11 @@ Defined in conflicts.dm of the #defines folder.
 
 		collapsed_stock_scatter = config.mlow_scatter_value
 
+	Detach(obj/item/weapon/gun/G)
+		if(!activated)
+			apply_on_weapon(G, TRUE)
+		..()
+
 	proc/apply_on_weapon(obj/item/weapon/gun/G, new_active)
 		var/multiplier = -1
 		if(new_active)

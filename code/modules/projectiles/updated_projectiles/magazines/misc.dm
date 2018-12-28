@@ -33,3 +33,9 @@
 	desc = "OH GOD OH FUCK"
 	icon_state = "m41a_explosive"
 	default_ammo = /datum/ammo/grenade_container
+
+/obj/item/ammo_magazine/rifle/huggerspawner
+	name = "\improper HUGGER SPAWNER AMMO"
+	desc = "OH GOD OH FUCK"
+	icon_state = "m41a_explosive"
+	default_ammo = /datum/ammo/hugger_container

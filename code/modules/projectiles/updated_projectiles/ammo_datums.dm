@@ -477,8 +477,8 @@
 	New()
 		..()
 		max_range = config.short_shell_range
-		damage = config.high_hit_damage
-		penetration= config.med_armor_penetration
+		damage = config.mhigh_hit_damage
+		penetration= config.high_armor_penetration
 
 	on_hit_mob(mob/M,obj/item/projectile/P)
 		knockback(M, P, 5)
@@ -606,7 +606,7 @@
 		accuracy_var_high = config.high_proj_variance
 		accurate_range = config.min_shell_range
 		max_range = config.close_shell_range
-		damage = config.med_hit_damage
+		damage = config.hmed_hit_damage
 		damage_var_low = -config.med_proj_variance
 		damage_var_high = config.med_proj_variance
 		damage_falloff = config.buckshot_v2_damage_falloff
@@ -1470,3 +1470,33 @@
 	name = "smoke grenade shell"
 	nade_type = /obj/item/explosive/grenade/smokebomb
 	icon_state = "smoke_shell"
+
+/datum/ammo/hugger_container
+	name = "hugger shell"
+	ping = null
+	damage_type = BRUTE
+	var/hugger_hive = XENO_HIVE_NORMAL
+	icon_state = "smoke_shell"
+
+	New()
+		..()
+		damage = config.min_hit_damage
+		accuracy = config.med_hit_accuracy
+		max_range = config.near_shell_range
+
+	on_hit_mob(mob/M,obj/item/projectile/P)
+		spawn_hugger(get_turf(P))
+
+	on_hit_obj(obj/O,obj/item/projectile/P)
+		spawn_hugger(get_turf(P))
+
+	on_hit_turf(turf/T,obj/item/projectile/P)
+		spawn_hugger(get_turf(P))
+
+	do_at_max_range(obj/item/projectile/P)
+		spawn_hugger(get_turf(P))
+
+	proc/spawn_hugger(var/turf/T)
+		var/obj/item/clothing/mask/facehugger/child = new(T)
+		child.hivenumber = hugger_hive
+		child.leap_at_nearest_target()

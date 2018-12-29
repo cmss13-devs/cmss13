@@ -22,8 +22,8 @@
 		X << "<span class='warning'>There's a pod here already!</span>"
 		return
 
-	if(X.check_plasma(75))
-		X.use_plasma(75)
+	if(X.check_plasma(plasma_cost))
+		X.use_plasma(plasma_cost)
 		X.visible_message("<span class='xenonotice'>\The [X] regurgitates a pulsating node and plants it on the ground!</span>", \
 		"<span class='xenonotice'>You regurgitate a pulsating node and plant it on the ground!</span>", null, 5)
 		new /obj/effect/alien/weeds/node(X.loc, src, X)
@@ -445,7 +445,7 @@
 		X.visible_message("<span class='xenowarning'>\The [X] stops emitting pheromones.</span>", \
 		"<span class='xenowarning'>You stop emitting pheromones.</span>", null, 5)
 	else
-		if(!X.check_plasma(30))
+		if(!X.check_plasma(plasma_cost))
 			return
 		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
@@ -455,9 +455,9 @@
 		if(!X.check_state()) return
 		if(X.current_aura) //If they are stacking windows, disable all input
 			return
-		if(!X.check_plasma(30))
+		if(!X.check_plasma(plasma_cost))
 			return
-		X.use_plasma(30)
+		X.use_plasma(plasma_cost)
 		X.current_aura = choice
 		X.visible_message("<span class='xenowarning'>\The [X] begins to emit strange-smelling pheromones.</span>", \
 		"<span class='xenowarning'>You begin to emit '[choice]' pheromones.</span>", null, 5)
@@ -686,10 +686,10 @@
 		X.speed_activated = 0
 		return
 
-	if(!X.check_plasma(50))
+	if(!X.check_plasma(plasma_cost))
 		return
 	X.speed_activated = 1
-	X.use_plasma(50)
+	X.use_plasma(plasma_cost)
 	X << "<span class='notice'>You become one with the resin. You feel the urge to run!</span>"
 
 /datum/action/xeno_action/build_tunnel
@@ -732,7 +732,7 @@
 		X << "<span class='xenowarning'>You need an empty claw for this!</span>"
 		return
 
-	if(!X.check_plasma(200))
+	if(!X.check_plasma(plasma_cost))
 		return
 
 	X.visible_message("<span class='xenonotice'>[X] begins digging out a tunnel entrance.</span>", \
@@ -740,7 +740,7 @@
 	if(!do_after(X, 100, TRUE, 5, BUSY_ICON_BUILD))
 		X << "<span class='warning'>Your tunnel caves in as you stop digging it.</span>"
 		return
-	if(!X.check_plasma(200))
+	if(!X.check_plasma(plasma_cost))
 		return
 	if(!X.start_dig) //Let's start a new one.
 		X.visible_message("<span class='xenonotice'>\The [X] digs out a tunnel entrance.</span>", \
@@ -761,16 +761,16 @@
 			newt.other.tunnel_desc = msg
 			newt.tunnel_desc = msg
 
-	X.use_plasma(200)
+	X.use_plasma(plasma_cost)
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)
 
 
 //Queen Abilities
 
 /datum/action/xeno_action/grow_ovipositor
-	name = "Grow Ovipositor (700)"
+	name = "Grow Ovipositor (500)"
 	action_icon_state = "grow_ovipositor"
-	plasma_cost = 700
+	plasma_cost = 500
 
 /datum/action/xeno_action/grow_ovipositor/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -988,8 +988,8 @@
 			return
 		if(target.stat != DEAD)
 			if(target.health < target.maxHealth)
-				if(X.check_plasma(600))
-					X.use_plasma(600)
+				if(X.check_plasma(plasma_cost))
+					X.use_plasma(plasma_cost)
 					target.adjustBruteLoss(-50)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					X << "<span class='xenonotice'>You channel your plasma to heal [target]'s wounds.</span>"
@@ -1018,8 +1018,8 @@
 			return
 		if(target.stat != DEAD)
 			if(target.plasma_stored < target.plasma_max)
-				if(X.check_plasma(600))
-					X.use_plasma(600)
+				if(X.check_plasma(plasma_cost))
+					X.use_plasma(plasma_cost)
 					target.gain_plasma(100)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					X << "<span class='xenonotice'>You transfer some plasma to [target].</span>"
@@ -1042,15 +1042,15 @@
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/target = X.observed_xeno
 		if(target.stat != DEAD && target.client)
-			if(X.check_plasma(100))
+			if(X.check_plasma(plasma_cost))
 				var/input = stripped_input(X, "This message will be sent to the overwatched xeno.", "Queen Order", "")
 				if(!input)
 					return
 				var/queen_order = "<span class='xenoannounce'><b>[X]</b> reaches you:\"[input]\"</span>"
-				if(!X.check_state() || !X.check_plasma(100) || X.observed_xeno != target || target.stat == DEAD)
+				if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != target || target.stat == DEAD)
 					return
 				if(target.client)
-					X.use_plasma(100)
+					X.use_plasma(plasma_cost)
 					target << "[queen_order]"
 					log_admin("[queen_order]")
 					message_admins("[key_name_admin(X)] has given the following Queen order to [target]: \"[input]\"", 1)
@@ -1061,7 +1061,7 @@
 /datum/action/xeno_action/deevolve
 	name = "De-Evolve a Xenomorph"
 	action_icon_state = "xeno_deevolve"
-	plasma_cost = 600
+	plasma_cost = 500
 
 /datum/action/xeno_action/deevolve/action_activate()
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
@@ -1069,7 +1069,7 @@
 		return
 	if(X.observed_xeno)
 		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
-		if(!X.check_plasma(600)) return
+		if(!X.check_plasma(plasma_cost)) return
 
 		if(T.is_ventcrawling)
 			X << "<span class='warning'>[T] can't be deevolved here.</span>"
@@ -1098,7 +1098,7 @@
 			X << "<span class='xenowarning'>You must provide a reason for deevolving [T].</span>"
 			return
 
-		if(!X.check_state() || !X.check_plasma(600) || X.observed_xeno != T)
+		if(!X.check_state() || !X.check_plasma(plasma_cost) || X.observed_xeno != T)
 			return
 
 		if(T.is_ventcrawling)
@@ -1167,7 +1167,7 @@
 
 		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
 		cdel(T)
-		X.use_plasma(600)
+		X.use_plasma(plasma_cost)
 
 	else
 		X << "<span class='warning'>You must overwatch the xeno you want to de-evolve.</span>"

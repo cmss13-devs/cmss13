@@ -43,7 +43,7 @@
 	else if ( world.time < XENO_ROUNDSTART_PROGRESS_TIME_2) //gradually decrease to no bonus
 		progress_amount = 1 + (1 - XENO_ROUNDSTART_PROGRESS_AMOUNT) * (world.time-XENO_ROUNDSTART_PROGRESS_TIME_1)/(XENO_ROUNDSTART_PROGRESS_TIME_1-XENO_ROUNDSTART_PROGRESS_TIME_2)
 
-	if(ticker.mode.xeno_evo_speed)
+	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
 		progress_amount = ticker.mode.xeno_evo_speed
 
 	if(upgrade != -1 && upgrade != 3) //upgrade possible

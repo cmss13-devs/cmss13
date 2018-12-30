@@ -710,6 +710,8 @@ and you're good to go.
 					active_attachable.activate_attachment(src, null, TRUE)//No way.
 				var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 				if(projectile_to_fire) //We actually have a projectile, let's move on. We're going to simulate the fire cycle.
+					if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
+						return FALSE
 					var/damage_buff = config.base_hit_damage_mult
 					//if target is lying or unconscious - add damage bonus
 					if(M.lying == 1 || M.stat == UNCONSCIOUS)
@@ -730,7 +732,6 @@ and you're good to go.
 							cdel(BP)
 
 					projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
-					projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire)
 					M.bullet_act(projectile_to_fire)
 					last_fired = world.time
 

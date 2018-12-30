@@ -476,9 +476,10 @@ Defined in conflicts.dm of the #defines folder.
 		scope = _scope
 
 	handle(sender, datum/event_args/ev_args)
-		G.accuracy_mult -= scope.accuracy_scoped_buff
-		G.fire_delay -= scope.delay_scoped_nerf
-		G.damage_falloff_mult -= scope.damage_falloff_scoped_buff
+		if(!G.zoom)
+			G.accuracy_mult -= scope.accuracy_scoped_buff
+			G.fire_delay -= scope.delay_scoped_nerf
+			G.damage_falloff_mult -= scope.damage_falloff_scoped_buff
 
 
 /obj/item/attachable/scope
@@ -503,18 +504,19 @@ Defined in conflicts.dm of the #defines folder.
 		delay_mod = config.min_fire_delay
 		accuracy_mod = -config.min_hit_accuracy_mult
 		movement_acc_penalty_mod = 2
-		accuracy_unwielded_mod = -config.med_hit_accuracy_mult
+		accuracy_unwielded_mod = 0
 
 		accuracy_scoped_buff = config.high_hit_accuracy_mult + config.min_hit_accuracy_mult //to compensate initial debuff
 		delay_scoped_nerf = config.low_fire_delay - config.min_fire_delay //to compensate initial debuff. We want "high_fire_delay"
 		damage_falloff_scoped_buff = -0.4 //has to be negative
 
 	proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
-		G.accuracy_mult += accuracy_scoped_buff
-		G.fire_delay += delay_scoped_nerf
-		G.damage_falloff_mult += damage_falloff_scoped_buff
-		var/datum/event_handler/eh = new /datum/event_handler/scope_zoomout_removebuffs(G,src)
-		user.add_zoomout_handler(eh)
+		if(G.zoom)
+			G.accuracy_mult += accuracy_scoped_buff
+			G.fire_delay += delay_scoped_nerf
+			G.damage_falloff_mult += damage_falloff_scoped_buff
+			var/datum/event_handler/eh = new /datum/event_handler/scope_zoomout_removebuffs(G,src)
+			user.add_zoomout_handler(eh)
 
 	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 		if(turn_off)
@@ -550,7 +552,7 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
-	var/dynamic_aim_slowdown = 5
+	var/dynamic_aim_slowdown = 2
 
 	New()
 		..()		
@@ -612,7 +614,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+		aim_speed_mod = 0.5
 
 
 		matter = list("wood" = 2000)
@@ -678,7 +680,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+		aim_speed_mod = 0.5
 
 
 /obj/item/attachable/stock/rifle/marksman
@@ -702,7 +704,7 @@ Defined in conflicts.dm of the #defines folder.
 	New()
 		..()
 		//it makes stuff much better when two-handed
-		accuracy_mod = config.med_hit_accuracy_mult
+		accuracy_mod = config.low_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
 		delay_mod = 0
@@ -712,7 +714,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+		aim_speed_mod = 0.5
 
 
 /obj/item/attachable/stock/smg/collapsible
@@ -733,7 +735,7 @@ Defined in conflicts.dm of the #defines folder.
 	New()
 		..()
 		//it makes stuff much better when two-handed
-		accuracy_mod = config.med_hit_accuracy_mult
+		accuracy_mod = config.low_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
 		delay_mod = 0
@@ -743,7 +745,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+		aim_speed_mod = 0.5
 
 		collapsed_stock_scatter = config.mlow_scatter_value
 
@@ -825,7 +827,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = SLOWDOWN_ADS_SCOPE
+		aim_speed_mod = 0.5
 
 
 

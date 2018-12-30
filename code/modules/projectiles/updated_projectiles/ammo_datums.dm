@@ -295,7 +295,7 @@
 		..()
 		accuracy = -config.med_hit_accuracy
 		damage = config.med_hit_damage
-		penetration = config.min_armor_penetration
+		penetration = config.low_armor_penetration
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
@@ -312,7 +312,7 @@
 		accuracy = config.med_hit_accuracy
 		accurate_range = config.short_shell_range
 		scatter = config.low_scatter_value
-		penetration = config.mlow_armor_penetration
+		penetration = config.med_armor_penetration
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
@@ -602,8 +602,8 @@
 	icon_state = "buckshot"
 	New()
 		..()
-		accuracy_var_low = config.high_proj_variance
-		accuracy_var_high = config.high_proj_variance
+		accuracy_var_low = config.med_proj_variance
+		accuracy_var_high = config.med_proj_variance
 		accurate_range = config.min_shell_range
 		max_range = config.close_shell_range
 		damage = config.hmed_hit_damage

@@ -337,12 +337,12 @@
 		if(isHumanStrict(M))			
 			var/mob/living/carbon/human/H = M
 			user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
-			if(do_after(user, 10, FALSE, 5, BUSY_ICON_HOSTILE))			
-				H.apply_damage(500,BRUTE,"head") //not coming back
-				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
+			if(do_after(user, 10, FALSE, 5, BUSY_ICON_HOSTILE))
+				if(user.Adjacent(H))			
+					H.apply_damage(500,BRUTE,"head") //not coming back
+					H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
 			else
 				return -1
-
 /*
 //================================================
 					SMG Ammo

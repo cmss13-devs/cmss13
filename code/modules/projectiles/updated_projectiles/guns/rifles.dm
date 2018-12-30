@@ -162,6 +162,7 @@
 	icon_state = "msb46"
 	item_state = "msb46"
 	fire_sound = "gun_pulse"
+	flags_equip_slot = "null"
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
@@ -208,7 +209,7 @@
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/msb46/New()
-
+	..()
 	var/obj/item/attachable/attached_gun/grenade/G = new(src)
 	G.flags_attach_features &= ~ATTACH_REMOVABLE
 	G.attach_icon = ""
@@ -216,7 +217,6 @@
 	G.Attach(src)
 	update_attachable(G.slot)
 	G.icon_state = initial(G.icon_state)
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 
 /obj/item/weapon/gun/rifle/msb46/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/msb46/I)
 	I.desc = "A prototype MSB46, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"

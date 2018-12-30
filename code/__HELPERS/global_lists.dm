@@ -224,6 +224,7 @@ var/global/round_should_check_for_win = TRUE
 			cdel(EP)
 			continue
 		gear_presets_list[EP.name] = EP
+	gear_presets_list = sortAssoc(gear_presets_list)
 
 	// Xeno mutators
 	paths = typesof(/datum/xeno_mutator) - /datum/xeno_mutator

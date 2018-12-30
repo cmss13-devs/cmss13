@@ -5,7 +5,7 @@
 /datum/equipment_preset/synth/load_languages(mob/living/carbon/human/H)
 	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
 
-/datum/equipment_preset/synth/load_race(ob/living/carbon/human/H)
+/datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
 	H.set_species("Early Synthetic")
 
 /*****************************************************************************************************/

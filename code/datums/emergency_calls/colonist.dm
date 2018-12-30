@@ -18,23 +18,11 @@
 	if(!istype(T)) r_FAL
 
 	var/mob/living/carbon/human/H = new(T)
-	H.gender = pick(MALE, FEMALE)
-	var/datum/preferences/A = new
-	A.randomize_appearance_for(H)
-	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
-	H.name = H.real_name
-	H.age = rand(21,45)
 	H.dna.ready_dna(H)
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
-	H.mind.assigned_role = "Colonist"
-	H.mind.special_role = "MODE"
 	ticker.mode.traitors += H.mind
-	H.mind.cm_skills = null //no restriction
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
-	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
+	H.arm_equipment(H, "Colonist", TRUE)
 
 	sleep(20)
 	if(H && H.loc)

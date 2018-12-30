@@ -22,54 +22,25 @@
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.gender = pick(MALE,FEMALE)
-	var/list/first_names_m = list("Owen","Luka","Nelson","Branson", "Tyson", "Leo", "Bryant", "Kobe", "Rohan", "Riley", "Aidan", "Watase","Egawa", "Hisakawa", "Koide", "Remy", "Martial", "Magnus", "Heiko", "Lennard")
-	var/list/first_names_f = list("Madison","Jessica","Anna","Juliet", "Olivia", "Lea", "Diane", "Kaori", "Beatrice", "Riley", "Amy", "Natsue","Yumi", "Aiko", "Fujiko", "Jennifer", "Ashley", "Mary", "Hitomi", "Lisa")
-
-	var/list/last_names_mb = list("Bates","Shaw","Hansen","Black", "Chambers", "Hall", "Gibson", "Weiss", "Waller", "Burton", "Bakin", "Rohan", "Naomichi", "Yakumo", "Yosai", "Gallagher", "Hiles", "Bourdon", "Strassman", "Palau")
-	var/datum/preferences/A = new()
-	A.randomize_appearance_for(mob)
-
-	if(mob.gender == MALE)
-		mob.real_name = "PMC [pick(first_names_m)] [pick(last_names_mb)]"
-		mob.f_style = "5 O'clock Shadow"
-	else
-		mob.real_name = "PMC [pick(first_names_f)] [pick(last_names_mb)]"
-	mob.name = mob.real_name
-	mob.age = rand(25,35)
 	mob.dna.ready_dna(mob)
-	mob.h_style = "Shaved Head"
-	mob.r_hair = 25
-	mob.g_hair = 25
-	mob.b_hair = 35
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
 
-//	M.transfer_to(mob)
-
-
-	mob.mind.assigned_role = "PMC"
 	ticker.mode.traitors += mob.mind
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		mob.mind.set_cm_skills(/datum/skills/SL/pmc)
-		mob.arm_equipment(mob, "Weyland-Yutani PMC (Leader)")
-		mob.mind.special_role = "MODE"
-		mob.mind.assigned_role = "PMC Leader"
+		mob.arm_equipment(mob, "Weyland-Yutani PMC (Leader)", TRUE)
 	else
 		mob.mind.special_role = "MODE"
 		if(prob(55)) //Randomize the heavy commandos and standard PMCs.
-			mob.mind.set_cm_skills(/datum/skills/pfc/pmc)
-			mob.arm_equipment(mob, "Weyland-Yutani PMC (Standard)")
+			mob.arm_equipment(mob, "Weyland-Yutani PMC (Standard)", TRUE)
 			mob << "<font size='3'>\red You are a Weyland Yutani mercenary!</font>"
 		else
 			if(prob(30))
-				mob.mind.set_cm_skills(/datum/skills/specialist/pmc)
-				mob.arm_equipment(mob, "Weyland-Yutani PMC (Sniper)")
+				mob.arm_equipment(mob, "Weyland-Yutani PMC (Sniper)", TRUE)
 				mob << "<font size='3'>\red You are a Weyland Yutani sniper!</font>"
 			else
-				mob.mind.set_cm_skills(/datum/skills/smartgunner/pmc)
-				mob.arm_equipment(mob, "Weyland-Yutani PMC (Gunner)")
+				mob.arm_equipment(mob, "Weyland-Yutani PMC (Gunner)", TRUE)
 				mob << "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>"
 	print_backstory(mob)
 
@@ -95,10 +66,6 @@
 	M << ""
 	M << "<B>Ensure no damage is incurred against Weyland Yutani. Make sure the CL is safe.</b>"
 	M << "<B>Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces.</b>"
-
-
-
-
 
 
 /datum/emergency_call/pmc/spawn_items()
@@ -156,10 +123,6 @@
 					new /obj/item/explosive/grenade/HE/PMC(drop_spawn)
 					new /obj/item/weapon/gun/flamer(drop_spawn)
 					continue
-
-
-
-
 
 /datum/emergency_call/pmc/platoon
 	name = "Weyland-Yutani PMC (Platoon)"

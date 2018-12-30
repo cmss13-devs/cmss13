@@ -6,6 +6,29 @@
 /datum/equipment_preset/upp/load_languages(mob/living/carbon/human/H)
 	H.set_languages(list("Russian", "English"))
 
+/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H)
+	H.gender = pick(60;MALE,40;FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance_for(H)
+	var/list/first_names_mr = list("Badai","Mongkeemur","Alexei","Andrei","Artyom","Viktor","Xangai","Ivan","Choban","Oleg", "Dayan", "Taghi", "Batu", "Arik", "Orda", "Ghazan", "Bala", "Gao", "Zhan", "Ren", "Hou", "Xue", "Serafim", "Luca", "Su", "György", "István", "Mihály")
+	var/list/first_names_fr = list("Altani","Cirina","Anastasiya","Saran","Wei","Oksana","Ren","Svena","Tatyana","Yaroslava", "Izabella", "Kata", "Krisztina", "Miruna", "Flori", "Lucia", "Anica", "Li", "Yimu")
+	var/list/last_names_r = list("Azarov","Bogdanov","Barsukov","Golovin","Davydov","Khan","Noica","Barbu","Zhukov","Ivanov","Mihai","Kasputin","Belov","Melnikov", "Vasilevsky", "Aleksander", "Halkovich", "Stanislaw", "Proca", "Zaituc", "Arcos", "Kubat", "Kral", "Volf", "Xun", "Jia")
+	if(H.gender == MALE)
+		H.real_name = "[pick(first_names_mr)] [pick(last_names_r)]"
+		H.f_style = "5 O'clock Shadow"
+	else
+		H.real_name = "[pick(first_names_fr)] [pick(last_names_r)]"
+
+	H.name = H.real_name
+	H.age = rand(17,35)
+	H.h_style = "Shaved Head"
+	H.r_hair = 15
+	H.g_hair = 15
+	H.b_hair = 25
+	H.r_eyes = 139
+	H.g_eyes = 62
+	H.b_eyes = 19
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/upp/soldier
@@ -279,11 +302,11 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/upp/commando_medic
+/datum/equipment_preset/upp/commando/medic
 	name = "UPP Commando (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/commando_medic/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/commando/medic/load_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = new(H)
 	W.name = "[H.real_name]'s ID Card"
 	W.assignment = "UPP Commando Medic"
@@ -296,11 +319,11 @@
 		H.mind.assigned_role = "MODE"
 		H.mind.special_role = "UPP"
 
-/datum/equipment_preset/upp/commando_medic/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/commando/medic/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.set_cm_skills(/datum/skills/commando/medic)
 
-/datum/equipment_preset/upp/commando_medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic(H), WEAR_BODY)
@@ -332,11 +355,11 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/upp/commando_medic
+/datum/equipment_preset/upp/commando/leader
 	name = "UPP Commando (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/commando_medic/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/commando/leader/load_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = new(H)
 	W.name = "[H.real_name]'s ID Card"
 	W.assignment = "UPP Commando Leader"
@@ -349,11 +372,11 @@
 		H.mind.assigned_role = "MODE"
 		H.mind.special_role = "UPP"
 
-/datum/equipment_preset/upp/commando_medic/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/commando/leader/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.set_cm_skills(/datum/skills/commando/leader)
 
-/datum/equipment_preset/upp/commando_medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)

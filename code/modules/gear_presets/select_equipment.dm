@@ -12,9 +12,10 @@
 /datum/equipment_preset/proc/load_languages(ob/living/carbon/human/H)
 /datum/equipment_preset/proc/load_status(ob/living/carbon/human/H)
 
-/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
 	load_race(H)
-	//load_name(H)
+	if(randomise)
+		load_name(H)
 	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(H)
 	load_gear(H)
@@ -24,7 +25,7 @@
 /datum/equipment_preset/strip
 	name = "*strip*"
 
-/datum/equipment_preset/proc/spawn_rebel_gun(var/atom/M,var/sidearm = 0)
+/datum/equipment_preset/proc/spawn_rebel_gun(var/atom/M, var/sidearm = 0)
 	if(!M) return
 	var/atom/spawnloc = M
 

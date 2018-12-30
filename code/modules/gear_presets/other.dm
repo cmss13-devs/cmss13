@@ -7,236 +7,33 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/other/pmc_standard
-	name = "Weyland-Yutani PMC (Standard)"
-	flags = EQUIPMENT_PRESET_EXTRA
+/datum/equipment_preset/other/freelancer
+	name = "Freelancer"
 
-/datum/equipment_preset/other/pmc_standard/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(src)
-	W.assignment = "Weyland-Yutani PMC (Standard)"
-	W.rank = "PMC Standard"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access += get_all_centcom_access()
-	W.paygrade = "PMC1"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "PMC"
-		H.mind.special_role = "MODE"
-
-/datum/equipment_preset/other/pmc_standard/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc)
-
-/datum/equipment_preset/other/pmc_standard/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	var/choice = rand(1,4)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(H), WEAR_FACE)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/baton(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(H), WEAR_WAIST)
-
-	switch(choice)
-		if(1,2,3)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite(H), WEAR_J_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_R_STORE)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap(H.back), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap(H.back), WEAR_IN_BACK)
-		if(4)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer(H), WEAR_J_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_vp70(H), WEAR_L_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_vp70(H), WEAR_R_STORE)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
+/datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/H)
+	H.gender = pick(60;MALE,40;FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance_for(H)
+	var/list/first_names_mcol = list("Alan","Jack","Bil","Jonathan","John","Shiro","Gareth","Clark","Sam", "Lionel", "Aaron", "Charlie", "Scott", "Winston", "Aidan", "Ellis", "Mason", "Wesley", "Nicholas", "Calvin", "Nishikawa", "Hiroto", "Chiba", "Ouchi", "Furuse", "Takagi", "Oba", "Kishimoto")
+	var/list/first_names_fcol = list("Emma", "Adelynn", "Mary", "Halie", "Chelsea", "Lexie", "Arya", "Alicia", "Selah", "Amber", "Heather", "Myra", "Heidi", "Charlotte", "Ashley", "Raven", "Tori", "Anne", "Madison", "Oliva", "Lydia", "Tia", "Riko", "Ari", "Machida", "Ueki", "Mihara", "Noda")
+	var/list/last_names_col = list("Hawkins","Rickshaw","Elliot","Billard","Cooper","Fox", "Barlow", "Barrows", "Stewart", "Morgan", "Green", "Stone", "Titan", "Crowe", "Krantz", "Pathillo", "Driggers", "Burr", "Hunt", "Yuko", "Gesshin", "Takanibu", "Tetsuzan", "Tomomi", "Bokkai", "Takesi")
+	if(H.gender == MALE)
+		H.real_name = "[pick(first_names_mcol)] [pick(last_names_col)]"
+		H.f_style = "5 O'clock Shadow"
+	else
+		H.real_name = "[pick(first_names_fcol)] [pick(last_names_col)]"
+	H.age = rand(20,45)
+	H.r_hair = 25
+	H.g_hair = 25
+	H.b_hair = 35
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/other/pmc_leader
-	name = "Weyland-Yutani PMC (Leader)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/pmc_leader/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(src)
-	W.assignment = "PMC Officer"
-	W.rank = "PMC Leader"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access += get_all_centcom_access()
-	W.paygrade = "PMC4"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "SL"
-		H.mind.assigned_role = "PMC Leader"
-		H.mind.special_role = "MODE"
-
-/datum/equipment_preset/other/pmc_leader/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/SL/pmc)
-
-/datum/equipment_preset/other/pmc_leader/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/leader(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/leader(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/leader(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/baton(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_rifle(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_rifle(H), WEAR_R_STORE)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/other/pmc_gunner
-	name = "Weyland-Yutani PMC (Gunner)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/pmc_gunner/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(src)
-	W.assignment = "PMC Specialist"
-	W.rank = "PMC Gunner"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access += get_all_centcom_access()
-	W.paygrade = "PMC3"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Spc"
-		H.mind.assigned_role = "PMC"
-		H.mind.special_role = "MODE"
-
-/datum/equipment_preset/other/pmc_gunner/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/smartgunner/pmc)
-
-/datum/equipment_preset/other/pmc_gunner/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/gunner(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack/snow(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(H), WEAR_WAIST)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/other/pmc_sniper
-	name = "Weyland-Yutani PMC (Sniper)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/pmc_sniper/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(src)
-	W.assignment = "PMC Sniper"
-	W.rank = "PMC Sharpshooter"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access += get_all_centcom_access()
-	W.paygrade = "PMC3"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Spc"
-		H.mind.assigned_role = "PMC"
-		H.mind.special_role = "MODE"
-
-/datum/equipment_preset/other/pmc_sniper/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/specialist/pmc)
-
-/datum/equipment_preset/other/pmc_sniper/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/sniper(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/sniper(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/elite(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sniper(H), WEAR_L_STORE)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/other/deathsquad
-	name = "Weyland-Yutani Deathsquad"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/deathsquad/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.assignment = "Commando"
-	W.rank = "PMC Commando"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_antagonist_pmc_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "DEATH SQUAD"
-
-/datum/equipment_preset/other/deathsquad/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/commando/deathsquad)
-
-/datum/equipment_preset/other/deathsquad/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/commando(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/m42_goggles	(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC/commando(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/commando(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC/commando(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC/commando(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/commando(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/commando(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/leader(H), WEAR_FACE)
-	H.equip_to_slot_or_del(new /obj/item/tank/emergency_oxygen/engi(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_rifle(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite(H), WEAR_J_STORE)
-
-/*****************************************************************************************************/
-
-/datum/equipment_preset/other/freelancer_standard
+/datum/equipment_preset/other/freelancer/standard
 	name = "Freelancer (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/freelancer_standard/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/standard/load_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = new(H)
 	W.name = "[H.real_name]'s ID Card"
 	W.access = list()
@@ -248,11 +45,11 @@
 		H.mind.assigned_role = "MODE"
 		H.mind.special_role = "FREELANCERS"
 
-/datum/equipment_preset/other/freelancer_standard/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/standard/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.set_cm_skills(/datum/skills/pfc)
 
-/datum/equipment_preset/other/freelancer_standard/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/standard/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer(H), WEAR_BODY)
@@ -271,11 +68,11 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/other/freelancer_medic
+/datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/freelancer_medic/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/medic/load_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = new(H)
 	W.name = "[H.real_name]'s ID Card"
 	W.access = list()
@@ -287,11 +84,11 @@
 		H.mind.assigned_role = "MODE"
 		H.mind.special_role = "FREELANCERS"
 
-/datum/equipment_preset/other/freelancer_medic/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/medic/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.set_cm_skills(/datum/skills/combat_medic)
 
-/datum/equipment_preset/other/freelancer_medic/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer(H), WEAR_BODY)
@@ -315,11 +112,11 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/other/freelancer_leader
+/datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/freelancer_leader/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/leader/load_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/W = new(H)
 	W.name = "[H.real_name]'s ID Card"
 	W.access = list()
@@ -332,11 +129,11 @@
 		H.mind.assigned_role = "MODE"
 		H.mind.special_role = "FREELANCERS"
 
-/datum/equipment_preset/other/freelancer_leader/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/leader/load_skills(mob/living/carbon/human/H)
 	if(H.mind)
 		H.mind.set_cm_skills(/datum/skills/SL)
 
-/datum/equipment_preset/other/freelancer_leader/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer(H), WEAR_BODY)
@@ -353,7 +150,7 @@
 	spawn_merc_gun(H)
 	spawn_merc_gun(H,1)
 
-/datum/equipment_preset/other/freelancer_leader/load_languages(mob/living/carbon/human/H)
+/datum/equipment_preset/other/freelancer/leader/load_languages(mob/living/carbon/human/H)
 	H.set_languages(list("English", "Russian", "Tradeband", "Sainja"))
 
 /*****************************************************************************************************/
@@ -522,3 +319,107 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), WEAR_FACE)
 	J.Topic(null, list("stat" = 1))
 	spawn_merc_gun(H)
+
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/pizza
+	name = "Pizza"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+/datum/equipment_preset/other/pizza/load_languages(mob/living/carbon/human/H)
+	H.set_languages(list("English", "Russian", "Tradeband")) //Just in case they are delivering to UPP or CLF...
+
+/datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/H)
+	H.gender = pick(MALE,FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance_for(H)
+	if(H.gender == MALE)
+		H.real_name = "[pick(first_names_male)] [pick(last_names)]"
+	else
+		H.real_name = "[pick(first_names_female)] [pick(last_names)]"
+	H.name = H.real_name
+	H.age = rand(17,45)
+
+/datum/equipment_preset/other/pizza/load_id(mob/living/carbon/human/H)
+	var/obj/item/card/id/W = new(src)
+	W.assignment = "Pizza Deliverer"
+	W.registered_name = H.real_name
+	W.name = "[H.real_name]'s ID Card ([W.assignment])"
+	W.icon_state = "centcom"
+	W.access = get_freelancer_access()
+	H.equip_to_slot_or_del(W, WEAR_ID)
+	if(H.mind)
+		H.mind.assigned_role = "MODE"
+		H.mind.special_role = "Pizza"
+
+/datum/equipment_preset/other/pizza/load_skills(mob/living/carbon/human/H)
+	if(H.mind)
+		H.mind.set_cm_skills(/datum/skills/civilian)
+
+/datum/equipment_preset/other/pizza/load_gear(mob/living/carbon/human/H)
+	//TODO: add backpacks and satchels
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/pizza(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/red(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/margherita(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/device/radio(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/vegetable(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/mushroom(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/pizzabox/meat(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(H.back), WEAR_IN_BACK)
+
+
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/zombie
+	name = "Zombie"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+//Overloading the function to be able to spawn gear first
+/datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
+	if(randomise)
+		load_name(H)
+	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
+	load_languages(H)
+	load_gear(H)
+	load_id(H)
+	load_status(H)
+	load_race(H)//Race is loaded last, otherwise we wouldn't be able to equip gear!
+
+/datum/equipment_preset/other/zombie/load_languages(mob/living/carbon/human/H)
+	H.set_languages("Zombie")
+
+/datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H)
+	H.gender = pick(MALE, FEMALE)
+	var/datum/preferences/A = new
+	A.randomize_appearance_for(H)
+	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
+	H.name = H.real_name
+	H.age = rand(21,45)
+
+/datum/equipment_preset/other/zombie/load_id(mob/living/carbon/human/H)
+	if(H.mind)
+		H.mind.assigned_role = "Zombie"
+		H.mind.special_role = "MODE"
+
+/datum/equipment_preset/other/zombie/load_skills(mob/living/carbon/human/H)
+	if(H.mind)
+		H.mind.cm_skills = null //no restriction
+
+/datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
+	H.set_species("Zombie")
+	H.contract_disease(new /datum/disease/black_goo)
+	for(var/datum/disease/black_goo/BG in H.viruses)
+		BG.stage = 5
+
+/datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
+	//TODO: add backpacks and satchels
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)

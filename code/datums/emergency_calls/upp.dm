@@ -55,52 +55,25 @@
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.gender = pick(60;MALE,40;FEMALE)
-	var/datum/preferences/A = new()
-	A.randomize_appearance_for(mob)
-	var/list/first_names_mr = list("Badai","Mongkeemur","Alexei","Andrei","Artyom","Viktor","Xangai","Ivan","Choban","Oleg", "Dayan", "Taghi", "Batu", "Arik", "Orda", "Ghazan", "Bala", "Gao", "Zhan", "Ren", "Hou", "Xue", "Serafim", "Luca", "Su", "György", "István", "Mihály")
-	var/list/first_names_fr = list("Altani","Cirina","Anastasiya","Saran","Wei","Oksana","Ren","Svena","Tatyana","Yaroslava", "Izabella", "Kata", "Krisztina", "Miruna", "Flori", "Lucia", "Anica", "Li", "Yimu")
-	var/list/last_names_r = list("Azarov","Bogdanov","Barsukov","Golovin","Davydov","Khan","Noica","Barbu","Zhukov","Ivanov","Mihai","Kasputin","Belov","Melnikov", "Vasilevsky", "Aleksander", "Halkovich", "Stanislaw", "Proca", "Zaituc", "Arcos", "Kubat", "Kral", "Volf", "Xun", "Jia")
-	if(mob.gender == MALE)
-		mob.real_name = "[pick(first_names_mr)] [pick(last_names_r)]"
-		mob.f_style = "5 O'clock Shadow"
-	else
-		mob.real_name = "[pick(first_names_fr)] [pick(last_names_r)]"
-
-	mob.name = mob.real_name
-	mob.age = rand(17,35)
-	mob.h_style = "Shaved Head"
-	mob.r_hair = 15
-	mob.g_hair = 15
-	mob.b_hair = 25
-	mob.r_eyes = 139
-	mob.g_eyes = 62
-	mob.b_eyes = 19
 	mob.dna.ready_dna(mob)
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
-	mob.mind.assigned_role = "MODE"
-	mob.mind.special_role = "UPP"
 	ticker.mode.traitors += mob.mind
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		mob.mind.set_cm_skills(/datum/skills/SL/upp)
-		mob.arm_equipment(mob, "UPP Soldier (Leader)")
+		mob.arm_equipment(mob, "UPP Soldier (Leader)", TRUE)
 		mob << "<font size='3'>\red You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
 	else if(medics < max_medics)
-		mob.mind.set_cm_skills(/datum/skills/combat_medic/crafty)
 		mob << "<font size='3'>\red You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Soldier (Medic)")
+		mob.arm_equipment(mob, "UPP Soldier (Medic)", TRUE)
 		medics++
 	else if(heavies < max_heavies)
-		mob.mind.set_cm_skills(/datum/skills/specialist/upp)
 		mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Soldier (Heavy)")
+		mob.arm_equipment(mob, "UPP Soldier (Heavy)", TRUE)
 		heavies++
 	else
-		mob.mind.set_cm_skills(/datum/skills/pfc/crafty)
 		mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Soldier (Standard)")
+		mob.arm_equipment(mob, "UPP Soldier (Standard)", TRUE)
 
 	print_backstory(mob)
 

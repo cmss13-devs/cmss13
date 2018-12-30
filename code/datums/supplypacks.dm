@@ -203,7 +203,7 @@ WEAPONS
 	containername = "\improper M41AE2 HPR crate"
 	group = "Weapons"
 
-/datum/supply_packs/gun/heavyweapons
+/datum/supply_packs/gun/heavyweapons_ammo
 	contains = list(
 					/obj/item/ammo_magazine/rifle/lmg,
 					/obj/item/ammo_magazine/rifle/lmg,

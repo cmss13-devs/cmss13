@@ -74,7 +74,7 @@
 	proc/on_hit_mob(mob/M, obj/item/projectile/P) //Special effects when hitting mobs.
 		return
 
-	proc/on_pointblank(mob/M, obj/item/projectile/P) //Special effects when pointblanking mobs.
+	proc/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
 		return
 
 	proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
@@ -332,6 +332,16 @@
 		damage_var_low = config.low_proj_variance
 		damage_var_high = config.med_proj_variance
 		penetration = config.mlow_armor_penetration
+
+	on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+		if(isHumanStrict(M))			
+			var/mob/living/carbon/human/H = M
+			user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
+			if(do_after(user, 10, FALSE, 5, BUSY_ICON_HOSTILE))			
+				H.apply_damage(500,BRUTE,"head") //not coming back
+				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
+			else
+				return -1
 
 /*
 //================================================

@@ -8,6 +8,24 @@
 /datum/equipment_preset/clf/load_languages(mob/living/carbon/human/H)
 	H.set_languages(list("Tradeband", "English"))
 
+/datum/equipment_preset/clf/load_name(mob/living/carbon/human/H)
+	H.gender = pick(60;MALE, 40;FEMALE)
+	var/list/first_names_mreb = list("Alan","Jack","Bil","Jonathan","John","Shiro","Gareth","Clark","Sam", "Lionel", "Aaron", "Charlie", "Scott", "Winston", "Aidan", "Ellis", "Mason", "Wesley", "Nicholas", "Calvin", "Nishikawa", "Hiroto", "Chiba", "Ouchi", "Furuse", "Takagi", "Oba", "Kishimoto")
+	var/list/first_names_freb = list("Emma", "Adelynn", "Mary", "Halie", "Chelsea", "Lexie", "Arya", "Alicia", "Selah", "Amber", "Heather", "Myra", "Heidi", "Charlotte", "Oliva", "Lydia", "Tia", "Riko", "Ari", "Machida", "Ueki", "Mihara", "Noda")
+	var/list/last_names_reb = list("Hawkins","Rickshaw","Elliot","Billard","Cooper","Fox", "Barlow", "Barrows", "Stewart", "Morgan", "Green", "Stone", "Burr", "Hunt", "Yuko", "Gesshin", "Takanibu", "Tetsuzan", "Tomomi", "Bokkai", "Takesi")
+	if(H.gender == MALE)
+		H.real_name = "[pick(first_names_mreb)] [pick(last_names_reb)]"
+	else
+		H.real_name = "[pick(first_names_freb)] [pick(last_names_reb)]"
+	H.name = H.real_name
+	H.age = rand(17,45)
+	H.r_hair = 25
+	H.g_hair = 25
+	H.b_hair = 35
+	H.r_eyes = 139
+	H.g_eyes = 62
+	H.b_eyes = 19
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/clf/fighter

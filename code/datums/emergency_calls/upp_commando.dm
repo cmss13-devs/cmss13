@@ -1,8 +1,5 @@
 
 //UPP COMMANDOS
-
-
-
 /datum/emergency_call/upp_commando
 	name = "UPP Commandos"
 	mob_max = 6
@@ -40,8 +37,6 @@
 	M << "\blue This allows you to speak privately with your fellow UPP allies."
 	M << "\blue Utilize it with your radio to prevent enemy radio interceptions."
 
-
-
 /datum/emergency_call/upp_commando/create_member(datum/mind/M)
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
@@ -50,48 +45,22 @@
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.gender = pick(60;MALE,40;FEMALE)
-	var/datum/preferences/A = new()
-	A.randomize_appearance_for(mob)
-	var/list/first_names_mr = list("Badai","Mongkeemur","Alexei","Andrei","Artyom","Viktor","Xangai","Ivan","Choban","Oleg", "Dayan", "Taghi", "Batu", "Arik", "Orda", "Ghazan", "Bala", "Gao", "Zhan", "Ren", "Hou", "Serafim", "Luca")
-	var/list/first_names_fr = list("Altani","Cirina","Anastasiya","Saran","Wei","Oksana","Ren","Svena","Tatyana","Yaroslava", "Miruna", "Flori", "Lucia", "Anica")
-	var/list/last_names_r = list("Azarov","Bogdanov","Barsukov","Golovin","Davydov","Khan","Noica","Barbu","Zhukov","Ivanov","Mihai","Kasputin","Belov","Melnikov", "Vasilevsky", "Proca", "Zaituc", "Arcos", "Kubat", "Kral", "Volf")
 
-	if(mob.gender == MALE)
-		mob.real_name = "[pick(first_names_mr)] [pick(last_names_r)]"
-		mob.f_style = "7 O'clock Shadow"
-	else
-		mob.real_name = "[pick(first_names_fr)] [pick(last_names_r)]"
-
-	mob.name = mob.real_name
-	mob.age = rand(25,35)
-	mob.h_style = "Shaved Head"
-	mob.r_hair = 15
-	mob.g_hair = 15
-	mob.b_hair = 25
-	mob.r_eyes = 139
-	mob.g_eyes = 62
-	mob.b_eyes = 19
 	mob.dna.ready_dna(mob)
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
-	mob.mind.assigned_role = "MODE"
-	mob.mind.special_role = "UPP"
 	ticker.mode.traitors += mob.mind
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		mob.mind.set_cm_skills(/datum/skills/commando/leader)
-		mob.arm_equipment(mob, "UPP Commando (Leader)")
+		mob.arm_equipment(mob, "UPP Commando (Leader)", TRUE)
 		mob << "<font size='3'>\red You are a commando officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
 	else if(medics < max_medics)
-		mob.mind.set_cm_skills(/datum/skills/commando/medic)
 		mob << "<font size='3'>\red You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Commando (Medic)")
+		mob.arm_equipment(mob, "UPP Commando (Medic)", TRUE)
 		medics++
 	else
-		mob.mind.set_cm_skills(/datum/skills/commando)
 		mob << "<font size='3'>\red You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Commando (Standard)")
+		mob.arm_equipment(mob, "UPP Commando (Standard)", TRUE)
 	print_backstory(mob)
 
 	sleep(10)

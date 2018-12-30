@@ -212,7 +212,7 @@ WEAPONS
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR Ammo crate"
-	group = "Weapons"
+	group = "Ammo"
 
 /datum/supply_packs/gun/merc
 	contains = list()

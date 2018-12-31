@@ -1174,8 +1174,13 @@ Defined in conflicts.dm of the #defines folder.
 	New()
 		..()
 		delay_mod = config.mlow_fire_delay
+	
+	Detach(obj/item/weapon/gun/G)
+		if(bipod_deployed)
+			undeploy_bipod(G)
+		..()
 
-	proc/undeploy_bipod(obj/item/weapon/gun/G,mob/living/user)
+	proc/undeploy_bipod(obj/item/weapon/gun/G)
 		bipod_deployed = FALSE
 		G.aim_slowdown -= SLOWDOWN_ADS_SCOPE
 		G.wield_delay -= WIELD_DELAY_FAST
@@ -1188,7 +1193,7 @@ Defined in conflicts.dm of the #defines folder.
 	activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 		if(turn_off)
 			if(bipod_deployed)
-				undeploy_bipod(G,user)
+				undeploy_bipod(G)
 				if(bipod_movement)
 					user.remove_movement_handler(bipod_movement)
 					bipod_movement = null
@@ -1246,6 +1251,11 @@ Defined in conflicts.dm of the #defines folder.
 	for(var/obj/O in T)
 		if(O.throwpass && O.density && O.dir == user.dir && O.flags_atom & ON_BORDER)
 			return O
+	var/turf/T2 = get_step(T, user.dir)
+	
+	for(var/obj/O2 in T2)
+		if(O2.throwpass && O2.density)
+			return O2
 	return 0
 
 

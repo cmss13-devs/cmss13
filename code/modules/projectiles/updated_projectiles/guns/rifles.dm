@@ -156,11 +156,11 @@
 //Special gun for the CO to replace the smartgun
 //Attachment points need fixing
 
-/obj/item/weapon/gun/rifle/msb46
-	name = "\improper MSB46 pulse rifle"
-	desc = "A prototype MSB46, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
-	icon_state = "msb46"
-	item_state = "msb46"
+/obj/item/weapon/gun/rifle/m46c
+	name = "\improper M46C pulse rifle"
+	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	icon_state = "M46C"
+	item_state = "M46C"
 	fire_sound = "gun_pulse"
 	flags_equip_slot = "null"
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
@@ -204,11 +204,11 @@
 			return
 		. = ..()
 
-/obj/item/weapon/gun/rifle/msb46/New()
+/obj/item/weapon/gun/rifle/m46c/New()
 	..()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
-/obj/item/weapon/gun/rifle/msb46/New()
+/obj/item/weapon/gun/rifle/m46c/New()
 	..()
 	var/obj/item/attachable/attached_gun/grenade/G = new(src)
 	G.flags_attach_features &= ~ATTACH_REMOVABLE
@@ -218,11 +218,11 @@
 	update_attachable(G.slot)
 	G.icon_state = initial(G.icon_state)
 
-/obj/item/weapon/gun/rifle/msb46/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/msb46/I)
-	I.desc = "A prototype MSB46, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
+/obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
+	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
 	return
 
-/obj/item/weapon/gun/rifle/msb46/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.mhigh_burst_value
 	burst_delay = config.low_fire_delay

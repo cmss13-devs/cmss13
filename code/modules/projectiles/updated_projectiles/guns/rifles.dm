@@ -168,7 +168,7 @@
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
 		/obj/item/ammo_magazine/rifle/incendiary,
-		/obj/item/ammo_magazine/rifle/ap
+		/obj/item/ammo_magazine/rifle/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1
 	)
 	//somewhere in between the mk1 and mk2

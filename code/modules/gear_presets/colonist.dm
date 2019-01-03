@@ -2,6 +2,7 @@
 
 /datum/equipment_preset/colonist
 	name = "Colonist"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/colonist/load_languages(mob/living/carbon/human/H)
 	H.set_languages(list("English"))

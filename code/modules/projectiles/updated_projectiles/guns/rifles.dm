@@ -152,13 +152,17 @@
 	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
+//----------------------------------------------
 //Special gun for the CO to replace the smartgun
-/obj/item/weapon/gun/rifle/m41aMK1/elite
-	name = "\improper M41A pulse rifle MK2/0"
-	desc = "A special prototype of the M41a MK2. Property of the CO. The reciever has been adjusted to accept both MK1 and MK2 mags."
-	icon_state = "m41amk1" //Placeholder.
-	item_state = "m41amk1" //Placeholder.
+//Attachment points need fixing
+
+/obj/item/weapon/gun/rifle/m46c
+	name = "\improper M46C pulse rifle"
+	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	icon_state = "M46C"
+	item_state = "M46C"
 	fire_sound = "gun_pulse"
+	flags_equip_slot = "null"
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
@@ -171,16 +175,12 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
-						/obj/item/attachable/verticalgrip,
-						/obj/item/attachable/angledgrip,
-						/obj/item/attachable/lasersight,
 						/obj/item/attachable/flashlight,
-						/obj/item/attachable/bipod,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/scope/mini)
+
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 	toggle_burst()
@@ -204,15 +204,25 @@
 			return
 		. = ..()
 
-	/obj/item/weapon/gun/rifle/m41aMK1/elite/New()
-		..() 
-		attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+/obj/item/weapon/gun/rifle/m46c/New()
+	..()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
-/obj/item/weapon/gun/rifle/m41aMK1/elite/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m41aMK1/elite/I)
-	I.desc = "A special prototype of the M41a MK2. Property of [H.real_name]. The reciever has been adjusted to accept both MK1 and MK2 mags."
+/obj/item/weapon/gun/rifle/m46c/New()
+	..()
+	var/obj/item/attachable/attached_gun/grenade/G = new(src)
+	G.flags_attach_features &= ~ATTACH_REMOVABLE
+	G.attach_icon = ""
+	G.icon_state = ""
+	G.Attach(src)
+	update_attachable(G.slot)
+	G.icon_state = initial(G.icon_state)
+
+/obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
+	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
 	return
-	
-/obj/item/weapon/gun/rifle/m41aMK1/elite/set_gun_config_values()
+
+/obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.mhigh_burst_value
 	burst_delay = config.low_fire_delay
@@ -224,7 +234,7 @@
 	damage_mult = config.base_hit_damage_mult + config.min_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
-//-------------------------------------------------------	
+//-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
 
 

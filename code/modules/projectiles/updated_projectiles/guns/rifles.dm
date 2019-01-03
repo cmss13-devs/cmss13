@@ -159,8 +159,8 @@
 /obj/item/weapon/gun/rifle/m46c
 	name = "\improper M46C pulse rifle"
 	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
-	icon_state = "M46C"
-	item_state = "M46C"
+	icon_state = "m46c"
+	item_state = "m46c"
 	fire_sound = "gun_pulse"
 	flags_equip_slot = "null"
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
@@ -169,6 +169,7 @@
 		/obj/item/ammo_magazine/rifle/extended,
 		/obj/item/ammo_magazine/rifle/incendiary,
 		/obj/item/ammo_magazine/rifle/ap
+		/obj/item/ammo_magazine/rifle/m41aMK1
 	)
 	//somewhere in between the mk1 and mk2
 	attachable_allowed = list(

@@ -35,7 +35,8 @@
 	admin_log.Add(text)
 	if (config.log_admin)
 		diary << "\[[time_stamp()]]ADMIN: [text][log_end]"
-
+	STUI.staff.Add("\[[time_stamp()]]ADMIN: [text]<br>")
+	STUI.processing |= 3
 
 
 /proc/log_debug(text)

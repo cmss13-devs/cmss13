@@ -168,7 +168,7 @@
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
 		/obj/item/ammo_magazine/rifle/incendiary,
-		/obj/item/ammo_magazine/rifle/ap
+		/obj/item/ammo_magazine/rifle/ap,
 		/obj/item/ammo_magazine/rifle/m41aMK1
 	)
 	//somewhere in between the mk1 and mk2
@@ -207,7 +207,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 23, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
@@ -218,6 +218,14 @@
 	G.Attach(src)
 	update_attachable(G.slot)
 	G.icon_state = initial(G.icon_state)
+
+	var/obj/item/attachable/stock/rifle/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.attach_icon = ""
+	S.icon_state = ""
+	S.Attach(src)
+	update_attachable(S.slot)
+	S.icon_state = initial(S.icon_state)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"

@@ -149,8 +149,9 @@ var/list/department_radio_keys = list(
 			if(O) //It's possible that it could be deleted in the meantime.
 				O.hear_talk(src, message, verb, speaking, italics)
 	//used for STUI to stop logging of animal messages and radio
-	if(!nolog)
-		log_say("[name]/[key] : [message]")
+	//if(!nolog)
+	//Rather see stuff twice then not at all.
+	log_say("[name]/[key] : [message]")
 	return 1
 
 /mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)

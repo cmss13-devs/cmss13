@@ -115,7 +115,7 @@
 		italics = 1
 		message_range = 2
 
-	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, used_radios.len)	//ohgod we should really be passing a datum here.
+	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol)	//ohgod we should really be passing a datum here.
 
 	for(var/obj/item/device/radio/R in used_radios)
 		spawn(0)

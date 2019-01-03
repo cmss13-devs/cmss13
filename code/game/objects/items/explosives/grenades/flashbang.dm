@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade/flashbang
 	name = "flashbang"
-	icon_state = "flashbang2"
+	icon_state = "flashbang"
 	item_state = "flashbang"
 	origin_tech = "materials=2;combat=1"
 	var/banglet = 0

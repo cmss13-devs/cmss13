@@ -10,10 +10,6 @@
 
 	..()
 
-	if(client == null && mutators)
-		mutators.purchasing = FALSE
-
-
 	if(is_zoomed)
 		if(zoom_turf)
 			if(loc != zoom_turf)

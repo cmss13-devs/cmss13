@@ -7,7 +7,7 @@
 	var/remaining_points = 0 //How many points the xeno / hive still has to spend on mutators
 	var/list/purchased_mutators = list() //List of purchased mutators
 	var/user_level = -1 //Level of the Queen for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
-
+	var/purchasing = FALSE //we are in purchasing state
 	//Variables that affect the xeno / all xenos of the hive:
 	var/health_multiplier = 1.0
 	var/plasma_multiplier = 1.0
@@ -34,10 +34,15 @@
 	return FALSE
 
 /datum/mutator_set/proc/list_and_purchase_mutators()
+	if(purchasing)
+		usr << "You are already trying to purchase mutators."
+		return
 	var/list/mutators_for_purchase = available_mutators()
 	if(mutators_for_purchase.len == 0)
 		usr << "You can't afford any more mutators."
+	purchasing = TRUE
 	var/pick = input("Which mutator would you like to purchase?") as null|anything in mutators_for_purchase
+	purchasing = FALSE
 	if(!pick)
 		return
 	if(xeno_mutator_list[pick].apply_mutator(src))

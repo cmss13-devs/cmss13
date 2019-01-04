@@ -24,6 +24,8 @@
 
 
 /datum/xeno_mutator/proc/apply_mutator(datum/mutator_set/MS)
+	if(!MS.can_purchase_mutator(name))
+		return 0
 	if(MS.remaining_points < cost)
 		return 0
 	MS.remaining_points -= cost

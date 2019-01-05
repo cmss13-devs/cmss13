@@ -68,7 +68,7 @@ var/global/datum/objectives_controller/objectives_controller
 		dat = "<span class='objectivebig'>Total Objectives: [objectives.len]</span> <span class='objectivegreen'>[complete]pts completed ([round(100.0*complete/point_total)]%)</span>, <span class='objectivered'>[failed]pts failed ([round(100.0*failed/point_total)]%)</span> <br>"
 		if(categories.len)
 			var/count
-			var/total
+			var/total = 1 //To avoid divide by zero errors, just in case...
 			var/compl
 			var/fail
 			for(var/cat in categories)
@@ -76,6 +76,8 @@ var/global/datum/objectives_controller/objectives_controller
 				total = categories[cat]["total"]
 				compl = categories[cat]["complete"]
 				fail = categories[cat]["failed"]
+				if(total == 0)
+					total = 1 //To avoid divide by zero errors, just in case...
 				dat += "<span class='objectivebig'>[cat]: [count]</span> <span class='objectivegreen'>[compl]pts completed ([round(100.0*compl/total)]%)</span>, <span class='objectivered'>[fail]pts failed ([round(100.0*fail/total)]%)</span> <br>"
 
 		for(var/datum/cm_objective/O in notable_objectives)

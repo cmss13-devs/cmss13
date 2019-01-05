@@ -406,7 +406,10 @@
 				var/list/lines = text2list(t, "\n")
 				var/tempo = 5
 				if(copytext(lines[1],1,6) == "BPM: ")
-					tempo = 600 / text2num(copytext(lines[1],6))
+					var/bpm = text2num(copytext(lines[1],6))
+					if (!bpm)
+						bpm = 120
+					tempo = 600 / bpm
 					lines.Cut(1,2)
 				if(lines.len > 50)
 					usr << "Too many lines!"

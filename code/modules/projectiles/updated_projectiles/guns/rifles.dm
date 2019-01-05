@@ -162,7 +162,6 @@
 	icon_state = "m46c"
 	item_state = "m46c"
 	fire_sound = "gun_pulse"
-	flags_equip_slot = "null"
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,

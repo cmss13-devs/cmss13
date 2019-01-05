@@ -110,7 +110,7 @@
 
 	recipient << browse(output,"window=memory")
 
-//this is an objective that the player has just completed 
+//this is an objective that the player has just completed
 //and we want to store the objective clues generated based on it -spookydonut
 /datum/mind/proc/store_objective(var/datum/cm_objective/O)
 	for(var/datum/cm_objective/R in O.enables_objectives)
@@ -206,10 +206,10 @@
 			if(H.mind)
 				for(var/datum/job/J in get_all_jobs())
 					if(J.title == new_role)
-						H.mind.set_cm_skills(J.skills_type) //give new role's job_knowledge to us.
+						H.mind.set_cm_skills(J.get_skills()) //give new role's job_knowledge to us.
 						H.mind.special_role = J.special_role
 						H.mind.role_alt_title = J.get_alternative_title(src)
-						H.mind.role_comm_title = J.comm_title
+						H.mind.role_comm_title = J.get_comm_title()
 						break
 
 	else if (href_list["memory_edit"])
@@ -474,10 +474,10 @@
 				for(var/datum/job/J in get_all_jobs())
 					if(J.title == I.rank)
 						mind.assigned_role = J.title
-						mind.set_cm_skills(J.skills_type)
+						mind.set_cm_skills(J.get_skills())
 						mind.special_role = J.special_role
 						mind.role_alt_title = J.get_alternative_title(src)
-						mind.role_comm_title = J.comm_title
+						mind.role_comm_title = J.get_comm_title()
 						break
 	//if not, we give the mind default job_knowledge and assigned_role
 	if(!mind.assigned_role)

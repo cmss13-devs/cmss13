@@ -28,25 +28,25 @@
 	sleep(5)
 	if(!leader)
 		leader = mob
-		mob.arm_equipment(mob, "Dust Raider Squad Leader", TRUE)
+		arm_equipment(mob, "Dust Raider Squad Leader", TRUE)
 		mob << "<font size='3'>\red You are a Squad leader in the USCM, your squad is here to assist in the defence of the [map_tag]. </B>"
 	else if (heavies < max_heavies)
 		if(prob(40))
-			mob.arm_equipment(mob, "Dust Raider Smartgunner", TRUE)
+			arm_equipment(mob, "Dust Raider Smartgunner", TRUE)
 			mob << "<font size='3'>\red You are a smartgunner in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
 		else if(prob(20))
-			mob.arm_equipment(mob, "Dust Raider Specialist", TRUE)
+			arm_equipment(mob, "Dust Raider Specialist", TRUE)
 			mob << "<font size='3'>\red You are a specialist in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
 		else
-			mob.arm_equipment(mob, "Dust Raider Engineer", TRUE)
+			arm_equipment(mob, "Dust Raider Engineer", TRUE)
 			mob << "<font size='3'>\red You are an engineer in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
 		heavies ++
 	else if (medics < max_medics)
-		mob.arm_equipment(mob, "Dust Raider Medic", TRUE)
+		arm_equipment(mob, "Dust Raider Medic", TRUE)
 		mob << "<font size='3'>\red You are a medic in the USCM, your squad is here to assist in the defence of the [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
 		medics ++
 	else
-		mob.arm_equipment(mob,"Dust Raider Private", TRUE)
+		arm_equipment(mob,"Dust Raider Private", TRUE)
 		mob << "<font size='3'>\red You are a private in the USCM, your squad is here to assist in the defence of [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
 		
 	sleep(10)

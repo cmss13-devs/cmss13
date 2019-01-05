@@ -4,7 +4,6 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	selection_color = "#ddddff"
 	supervisors = "the acting commander"
-	idtype = /obj/item/card/id/silver
 	total_positions = 1
 	spawn_positions = 1
 	minimal_player_age = 7
@@ -12,44 +11,13 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 //Commander
 /datum/job/command/commander
 	title = "Commander"
-	disp_title = "Commanding Officer"
-	comm_title = "CO"
-	paygrade = "O5"
 	flag = ROLE_COMMANDING_OFFICER
 	supervisors = "USCM high command"
 	selection_color = "#ccccff"
-	idtype = /obj/item/card/id/gold
 	minimal_player_age = 14
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
-	skills_type = /datum/skills/commander
-
-	equip_identification(mob/living/carbon/human/H)
-		if(RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL)
-			paygrade = "O5E"
-		. = ..()
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/satchel
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/mcommander
-
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/command,
-				WEAR_FEET = /obj/item/clothing/shoes/marinechief/commander,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer/commander,
-				WEAR_WAIST = /obj/item/storage/belt/gun/mateba/cmateba/full,
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm/tan,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/binoculars
-				)
-
+	gear_preset = "USCM Commander (CO)"
 
 	generate_entry_message()
 		. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.
@@ -73,7 +41,6 @@ Godspeed, commander!"}
 					call(/obj/item/weapon/gun/rifle/m46c/proc/name_after_co)(H, I)
 		..()
 
-	get_access() return get_all_marine_access()
 
 /datum/job/command/commander/nightmare
 	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
@@ -87,76 +54,31 @@ Come hell or high water, you are going to be there for them."}
 //Executive Officer
 /datum/job/command/executive
 	title = "Executive Officer"
-	comm_title = "XO"
-	paygrade = "O4"
 	flag = ROLE_EXECUTIVE_OFFICER
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY
-	skills_type = /datum/skills/XO
-
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/satchel
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/marine
-
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/exec,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
-				WEAR_HEAD = /obj/item/clothing/head/cmcap,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
+	gear_preset = "USCM Executive Officer (XO)"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are second in command aboard the ship, and are in next in the chain of command after the commander.
 You may need to fill in for other duties if areas are understaffed, and you are given access to do so.
 Make the USCM proud!"}
 
-	get_access() return get_all_marine_access()
-
 //Staff Officer
 /datum/job/command/bridge
 	title = "Staff Officer"
-	disp_title = "Staff Officer"
-	comm_title = "SO"
-	paygrade = "O2"
 	flag = ROLE_BRIDGE_OFFICER
 	total_positions = 5
 	spawn_positions = 5
 	allow_additional = 1
 	scaled = 1
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	skills_type = /datum/skills/SO
+	gear_preset = "USCM Staff Officer (SO)"
 
 	set_spawn_positions(var/count)
 		spawn_positions = so_slot_formula(count)
 
 	get_total_positions(var/latejoin = 0)
 		return (latejoin ? so_slot_formula(get_total_marines()) : spawn_positions)
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/satchel
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/marine
-
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/bridge,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/commander,
-				WEAR_HEAD = /obj/item/clothing/head/cmcap/ro,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/binoculars
-				)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to monitor the marines, man the CIC, and listen to your superior officers.
@@ -165,53 +87,19 @@ You are in charge of logistics and the overwatch system. You are also in line to
 //Pilot Officer
 /datum/job/command/pilot
 	title = "Pilot Officer"
-	comm_title = "PO"
-	paygrade = "O1" //Technically Second Lieutenant equivalent, but 2ndLT doesn't exist in Marine pay grade, so Ensign
 	flag = ROLE_PILOT_OFFICER
 	total_positions = 4
 	spawn_positions = 4
 	allow_additional = 1
 	scaled = 1
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	skills_type = /datum/skills/pilot
+	gear_preset = "USCM Pilot Officer (PO)"
 
 	set_spawn_positions(var/count)
 		spawn_positions = po_slot_formula(count)
 
 	get_total_positions(var/latejoin = 0)
 		return (latejoin ? po_slot_formula(get_total_marines()) : spawn_positions)
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/satchel
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/marine
-
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/pilot,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
-				WEAR_JACKET = /obj/item/clothing/suit/armor/vest/pilot,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
-
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/clothing/glasses/sunglasses,
-				WEAR_R_HAND = /obj/item/clothing/head/helmet/marine/pilot
-				)
-
-	get_wearable_equipment()
-		var/L[] = list(
-						WEAR_EYES = /obj/item/clothing/head/helmet/marine/pilot,
-						WEAR_HEAD = /obj/item/clothing/glasses/sunglasses
-						)
-
-		return generate_wearable_equipment() + L
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to fly, protect, and maintain the ship's dropship.
@@ -220,53 +108,20 @@ If you are not piloting, there is an autopilot fallback for command, but don't l
 
 //Tank Crewmen //For now, straight up copied from the pilot officers until their role is more solidified
 /datum/job/command/tank_crew
-	title = "Tank Crewman"
-	comm_title = "TC"
-	paygrade = "E7"
+	title = "USCM Tank Crewman (TC)"
 	flag = ROLE_TANK_OFFICER
 	total_positions = 0
 	spawn_positions = 0
 	allow_additional = 1
 	scaled = 1
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	skills_type = /datum/skills/tank_crew
-	idtype = /obj/item/card/id/dogtag
+	gear_preset = "USCM Tank Crewman (TC)"
 
 	set_spawn_positions(var/count)
 		spawn_positions = tc_slot_formula(count)
 
 	get_total_positions(var/latejoin = 0)
 		return tc_slot_formula()
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/marine/satchel
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/industrial
-
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/tanker,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/tanker,
-				WEAR_BACK = backItem,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
-
-	generate_stored_equipment()
-		. = list(
-			WEAR_R_HAND = /obj/item/clothing/head/helmet/marine/tanker
-		)
-
-	get_wearable_equipment()
-		var/L[] = list(
-			WEAR_EYES = /obj/item/clothing/head/helmet/marine/tanker
-		)
-
-		return generate_wearable_equipment() + L
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to operate and maintain thee ship's armored vehicles.
@@ -275,18 +130,14 @@ While you are an officer, your authority is limited to your own vehicle, where y
 //Military Police
 /datum/job/command/police
 	title = "Military Police"
-	comm_title = "MP"
-	paygrade = "E6"
 	flag = ROLE_MILITARY_POLICE
 	total_positions = 5
 	spawn_positions = 5
 	allow_additional = 1
 	scaled = 1
 	selection_color = "#ffdddd"
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
-	idtype = /obj/item/card/id
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	skills_type = /datum/skills/MP
+	gear_preset = "USCM Military Police (MP)"
 
 	set_spawn_positions(var/count)
 		spawn_positions = mp_slot_formula(count)
@@ -294,24 +145,6 @@ While you are an officer, your authority is limited to your own vehicle, where y
 	get_total_positions(var/latejoin = 0)
 		return (latejoin ? mp_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/satchel/sec
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/security
-
-		. = list(
-			WEAR_EAR = /obj/item/device/radio/headset/almayer/mmpo,
-			WEAR_BODY = /obj/item/clothing/under/marine/mp,
-			WEAR_FEET = /obj/item/clothing/shoes/marine,
-			WEAR_HANDS = /obj/item/clothing/gloves/black,
-			WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-			WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP,
-			WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-			WEAR_HEAD = /obj/item/clothing/head/beret/cm/red,
-			WEAR_BACK = backItem,
-			WEAR_R_STORE = /obj/item/storage/pouch/general/medium
-		)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
@@ -322,32 +155,10 @@ In addition, you are tasked with the security of high-ranking personnel, includi
 //Chief MP
 /datum/job/command/warrant
 	title = "Chief MP"
-	comm_title = "CMP"
-	paygrade = "O3"
 	flag = ROLE_CHIEF_MP
 	selection_color = "#ffaaaa"
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	skills_type = /datum/skills/CMP
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		if(!H.client || !H.client.prefs || !H.client.prefs) return
-		var/backItem = /obj/item/storage/backpack/satchel/sec
-		if (H.client.prefs.backbag == 1)
-			backItem = /obj/item/storage/backpack/security
-
-		. = list(
-			WEAR_EAR = /obj/item/device/radio/headset/almayer/cmpcom,
-			WEAR_BODY = /obj/item/clothing/under/marine/officer/warrant,
-			WEAR_FEET = /obj/item/clothing/shoes/marine,
-			WEAR_HANDS = /obj/item/clothing/gloves/black,
-			WEAR_WAIST = /obj/item/storage/belt/security/MP/full,
-			WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/WO,
-			WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-			WEAR_HEAD = /obj/item/clothing/head/beret/cm/wo,
-			WEAR_BACK = backItem,
-			WEAR_R_STORE = /obj/item/storage/pouch/general/large
-		)
+	gear_preset = "USCM Chief MP (CMP)"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.

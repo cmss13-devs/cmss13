@@ -303,7 +303,7 @@
 						return
 
 					modify.access = jobdatum.get_access()
-					modify.paygrade = jobdatum.paygrade
+					modify.paygrade = jobdatum.get_paygrade()
 					modify.assignment = t1
 					modify.rank = t1
 		if ("reg")

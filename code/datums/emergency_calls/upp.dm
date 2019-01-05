@@ -61,19 +61,19 @@
 	ticker.mode.traitors += mob.mind
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		mob.arm_equipment(mob, "UPP Soldier (Leader)", TRUE)
+		arm_equipment(mob, "UPP Soldier (Leader)", TRUE)
 		mob << "<font size='3'>\red You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
 	else if(medics < max_medics)
 		mob << "<font size='3'>\red You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Soldier (Medic)", TRUE)
+		arm_equipment(mob, "UPP Soldier (Medic)", TRUE)
 		medics++
 	else if(heavies < max_heavies)
 		mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Soldier (Heavy)", TRUE)
+		arm_equipment(mob, "UPP Soldier (Heavy)", TRUE)
 		heavies++
 	else
 		mob << "<font size='3'>\red You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas. </B>"
-		mob.arm_equipment(mob, "UPP Soldier (Standard)", TRUE)
+		arm_equipment(mob, "UPP Soldier (Standard)", TRUE)
 
 	print_backstory(mob)
 

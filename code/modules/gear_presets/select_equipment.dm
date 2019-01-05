@@ -2,25 +2,74 @@
 /datum/equipment_preset
 	var/name = "Preset"
 	var/flags = EQUIPMENT_PRESET_STUB
+	var/uses_special_name = FALSE //For equipment that loads special name, aka Synths, Yautja, Death Squad, etc.
+
+	var/list/languages = list("English")
+	var/skills
+	var/idtype = /obj/item/card/id
+	var/list/access = list()
+	var/assignment
+	var/rank
+	var/paygrade
+	var/role_comm_title
+	var/special_role
 
 	//load_appearance()
-/datum/equipment_preset/proc/load_race(ob/living/carbon/human/H)
-/datum/equipment_preset/proc/load_name(ob/living/carbon/human/H)
-/datum/equipment_preset/proc/load_skills(ob/living/carbon/human/H)
-/datum/equipment_preset/proc/load_gear(ob/living/carbon/human/H)
-/datum/equipment_preset/proc/load_id(ob/living/carbon/human/H)
-/datum/equipment_preset/proc/load_languages(ob/living/carbon/human/H)
-/datum/equipment_preset/proc/load_status(ob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_race(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/proc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_status(mob/living/carbon/human/H)
+
+/datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H)
+	if(H.mind)
+		H.mind.set_cm_skills(skills)
+
+/datum/equipment_preset/proc/load_id(mob/living/carbon/human/H)
+	var/obj/item/card/id/W = new idtype()
+	W.name = "[H.real_name]'s ID Card"
+	if(assignment)
+		W.name += " ([assignment])"
+	W.access = access
+	W.assignment = assignment
+	W.rank = rank
+	W.registered_name = H.real_name
+	W.paygrade = paygrade
+	H.equip_to_slot_or_del(W, WEAR_ID)
+	if(H.mind)
+		H.mind.role_comm_title = role_comm_title
+		H.mind.assigned_role = W.rank
+		if(H.mind.initial_account)
+			W.associated_account_number = H.mind.initial_account.account_number
+
+/datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H)
+	H.set_languages(languages)
 
 /datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
 	load_race(H)
-	if(randomise)
-		load_name(H)
+	if(randomise || uses_special_name)
+		load_name(H, randomise)
 	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
 	load_languages(H)
 	load_gear(H)
 	load_id(H)
 	load_status(H)
+	load_vanity(H)
+
+/datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H)
+	if(!H.client || !H.client.prefs || !H.client.prefs.gear)
+		return//We want to equip them with custom stuff second, after they are equipped with everything else.
+	var/datum/gear/G
+	var/i
+	for(i in H.client.prefs.gear)
+		G = gear_datums[i]
+		if(G)
+			H.equip_to_slot_or_del(new G.path(H), G.slot ? G.slot : WEAR_IN_BACK)
+
+	//Gives glasses to the vision impaired
+	if(H.disabilities & NEARSIGHTED)
+		var/obj/item/clothing/glasses/regular/P = new (H)
+		P.prescription = 1
+		H.equip_to_slot_or_del(P, WEAR_EYES)
 
 /datum/equipment_preset/strip
 	name = "*strip*"
@@ -186,3 +235,31 @@
 				new ammopath(spawnloc)
 
 	return 1
+
+/datum/equipment_preset/proc/generate_random_marine_primary_for_wo(var/mob/living/carbon/human/H, shuffle = rand(0,10))
+	switch(shuffle)
+		if(0 to 4)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/stripped(H), WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
+		if(5,7)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m39(H), WEAR_WAIST)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
+		else
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump(H), WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full(H), WEAR_WAIST)
+	return
+
+/datum/equipment_preset/proc/add_common_wo_equipment(var/mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)

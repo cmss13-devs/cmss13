@@ -2,8 +2,8 @@
 /datum/equipment_preset/uscm
 	name = "USCM"
 
-/datum/equipment_preset/uscm/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English"))
+	languages = list("English")
+	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(60,250)
@@ -11,28 +11,22 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc
-	name = "USCM PFC (Cryo)"
+	name = "USCM (Cryo) Squad Marine (PFC)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/uscm/pfc/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.assignment = "Squad Marine"
-	W.rank = "Squad Marine"
-	W.registered_name = H.real_name
-	W.paygrade = "E2"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Mar"
-		H.mind.assigned_role = "Squad Marine"
-
-/datum/equipment_preset/uscm/pfc/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	assignment = "Squad Marine"
+	rank = "Squad Marine"
+	paygrade = "E2"
+	role_comm_title = "Mar"
+	skills = /datum/skills/pfc
 
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /*****************************************************************************************************/
 
@@ -41,11 +35,15 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
@@ -62,28 +60,22 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/sg
-	name = "USCM Smartgunner (Cryo)"
-	flags = EQUIPMENT_PRESET_EXTRA
+	name = "USCM (Cryo) Smartgunner"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/uscm/sg/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
-	W.assignment = "Squad Smartgunner"
-	W.rank = "Squad Smartgunner"
-	W.registered_name = H.real_name
-	W.paygrade = "E3"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "LCpl"
-		H.mind.assigned_role = "Squad Smartgunner"
-
-/datum/equipment_preset/uscm/sg/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/smartgunner)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	assignment = "Squad Smartgunner"
+	rank = "Squad Smartgunner"
+	paygrade = "E4"
+	role_comm_title = "LCpl"
+	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/uscm/sg/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /*****************************************************************************************************/
 
@@ -108,48 +100,63 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/uscm/tank/full
-	name = "USCM Tank Crewman"
+/datum/equipment_preset/uscm/tank
+	name = "USCM Tank Crewman (TC)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	assignment = "Tank Crewman"
+	rank = "Tank Crewman"
+	paygrade = "E7"
+	role_comm_title = "TC"
+	skills = /datum/skills/tank_crew
+
 /datum/equipment_preset/uscm/tank/full/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/industrial
+
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_EYES)
 
-/datum/equipment_preset/uscm/tank/full/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/tank_crew)
-
-/datum/equipment_preset/uscm/tank/full/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list()
-	W.assignment = "Tank Crewman"
-	W.rank = "Tank Crewman"
-	W.registered_name = H.real_name
-	W.paygrade = "O1"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "TC"
-		H.mind.assigned_role = "Tank Crewman"
-
-/datum/equipment_preset/uscm/tank/full/load_status()
+/datum/equipment_preset/uscm/tank/load_status()
 	return //No cryo munchies
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/uscm/spec
+	name = "USCM (Cryo) Squad Specialist"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
+	assignment = "Squad Specialist"
+	rank = "Squad Specialist"
+	paygrade = "E5"
+	role_comm_title = "Spc"
+	skills = /datum/skills/specialist
+
+/datum/equipment_preset/uscm/spec/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(H), WEAR_HEAD)
+
+/*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec/full_armor
 	name = "USCM Specialist (Armor)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/uscm/tank/full_armor/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/spec/full_armor/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/specialist(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/specialist(H), WEAR_HEAD)
@@ -166,31 +173,65 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/spec/full_armor/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/specialist)
-
-/datum/equipment_preset/uscm/spec/full_armor/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
-	W.assignment = "Squad Specialist"
-	W.rank = "Squad Specialist"
-	W.registered_name = H.real_name
-	W.paygrade = "E5"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	
-	if(H.mind)
-		H.mind.role_comm_title = "Spc"
-		H.mind.assigned_role = "Squad Specialist"
-
 /datum/equipment_preset/uscm/spec/full_armor/load_status()
 	return //No cryo munchies
 
+/*****************************************************************************************************/
 
+/datum/equipment_preset/uscm/medic
+	name = "USCM (Cryo) Squad Medic"
+	flags = EQUIPMENT_PRESET_EXTRA
 
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
+	assignment = "Squad Medic"
+	rank = "Squad Medic"
+	paygrade = "E3"
+	role_comm_title = "Med"
+	skills = /datum/skills/combat_medic
 
+/datum/equipment_preset/uscm/medic/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine/medic
 
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
+/*****************************************************************************************************/
 
+/datum/equipment_preset/uscm/engineer
+	name = "USCM (Cryo) Squad Engineer"
+	flags = EQUIPMENT_PRESET_EXTRA
 
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
+	assignment = "Squad Engineer"
+	rank = "Squad Engineer"
+	paygrade = "E3"
+	role_comm_title = "Eng"
+	skills = /datum/skills/combat_engineer
+
+/datum/equipment_preset/uscm/engineer/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine/tech
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm/leader
+	name = "USCM (Cryo) Squad Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+	assignment = "Squad Leader"
+	rank = "Squad Leader"
+	paygrade = "E6"
+	role_comm_title = "SL"
+	skills = /datum/skills/SL
+
+/datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)

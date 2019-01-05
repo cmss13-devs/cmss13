@@ -3,18 +3,12 @@
 /datum/equipment_preset/colonist
 	name = "Colonist"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "Colonist"
+	special_role = "MODE"
 
-/datum/equipment_preset/colonist/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English"))
+	skills = /datum/skills/civilian
 
-
-/datum/equipment_preset/colonist/load_id(mob/living/carbon/human/H)
-	. = ..()
-	if(H.mind)
-		H.mind.assigned_role = "Colonist"
-		H.mind.special_role = "MODE"
-
-/datum/equipment_preset/colonist/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/colonist/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance_for(H)
@@ -27,7 +21,3 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
-
-/datum/equipment_preset/colonist/fighter/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/civilian)

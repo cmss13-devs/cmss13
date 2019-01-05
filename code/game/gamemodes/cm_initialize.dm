@@ -682,7 +682,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!spawner.equipment)
 		survivor_old_equipment(H)
 	else
-		if(H.arm_equipment(H,spawner.equipment) == -1)
+		if(arm_equipment(H,spawner.equipment) == -1)
 			H << "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor."
 			return
 	H.name = H.get_visible_name()

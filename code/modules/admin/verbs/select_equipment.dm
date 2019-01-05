@@ -18,14 +18,14 @@
 	feedback_add_details("admin_verb","SMRK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(newrank != "Custom")
 		var/datum/job/J = RoleAuthority.roles_by_name[newrank]
-		H.mind.role_comm_title = J.comm_title
-		H.mind.set_cm_skills(J.skills_type)
+		H.mind.role_comm_title = J.get_comm_title()
+		H.mind.set_cm_skills(J.get_skills())
 		if(istype(I))
 			I.access = J.get_access()
 			I.rank = J.title
 			I.assignment = J.disp_title
 			I.name = "[I.registered_name]'s ID Card ([I.assignment])"
-			I.paygrade = J.paygrade
+			I.paygrade = J.get_paygrade()
 	else
 		var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
 		if(!newcommtitle)
@@ -67,7 +67,7 @@
 				return
 
 			var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
-			H.mind.set_cm_skills(J.skills_type)
+			H.mind.set_cm_skills(J.get_skills())
 
 
 
@@ -87,7 +87,7 @@
 		if (istype(I, /obj/item/implant))
 			continue
 		cdel(I)
-	M.arm_equipment(M, dresscode)
+	arm_equipment(M, dresscode)
 	M.regenerate_icons()
 	log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")
 	message_admins("\blue [key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].", 1)
@@ -96,7 +96,7 @@
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
-/mob/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE)
+/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE)
 	if(!gear_presets_list || !gear_presets_list[dresscode])
 		return
 	gear_presets_list[dresscode].load_preset(M, randomise)

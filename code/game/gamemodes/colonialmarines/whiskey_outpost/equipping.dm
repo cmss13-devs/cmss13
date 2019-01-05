@@ -4,26 +4,7 @@
 
 /datum/job/command/commander/whiskey
 	title = "Ground Commander"
-	comm_title = "CDR"
-	idtype = /obj/item/card/id/dogtag
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/command,
-				WEAR_FEET = /obj/item/clothing/shoes/marinechief/commander,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer/commander,
-				WEAR_WAIST = /obj/item/storage/belt/gun/mateba/full,
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm/tan,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/RO,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/binoculars,
-				WEAR_J_STORE = /obj/item/weapon/claymore/mercsword/commander
-				)
+	gear_preset = "WO Ground Commander"
 
 	generate_entry_message()
 		. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.
@@ -46,23 +27,7 @@ Stay alive, and Godspeed, commander!"}
 
 /datum/job/civilian/synthetic/whiskey
 	title = "Support Synthetic"
-	comm_title = "Syn"
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/beret/cm,
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/rank/synthetic,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/RO,
-				WEAR_FEET = /obj/item/clothing/shoes/brown,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/brown_vest,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel/medic,
-				WEAR_R_STORE = /obj/item/storage/pouch/construction/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/general/medium
-				)
-
+	gear_preset = "WO Support Synthetic"
 
 	generate_entry_message()
 		. = {"You are a Synthetic! You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal.
@@ -76,22 +41,7 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 *************************************/
 /datum/job/command/executive/whiskey
 	title = "Lieutendant Commander"
-	comm_title = "LCDR"
-	paygrade = "LCDR"
-	idtype = /obj/item/card/id/dogtag
-
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/exec,
-				WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
-				WEAR_HEAD = /obj/item/clothing/head/cmcap,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/MP/RO
-				)
+	gear_preset = "WO Lieutendant Commander"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You've been with the commander for as long as you can remember. You've always been the bookish nerd to the Honor Guard Squad Leader's jock; as such, you're the commander's right-hand man.
@@ -106,31 +56,8 @@ Make the USCM proud!"}
 //Chief MP
 /datum/job/command/warrant/whiskey
 	title = "Honor Guard Squad Leader"
-	comm_title = "HGSL"
-	paygrade = "E9"
 	selection_color = "#ffaaaa"
-	idtype = /obj/item/card/id/dogtag
-	skills_type = /datum/skills/honor_guard/lead
-	generate_wearable_equipment()
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/bridge,
-				WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/PMC,
-				WEAR_WAIST = /obj/item/storage/large_holster/m39/full,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/smartgunner,
-				WEAR_HEAD = /obj/item/clothing/head/beret/marine/chiefofficer,
-				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-				WEAR_L_HAND = /obj/item/smartgun_powerpack,
-				WEAR_R_STORE = /obj/item/storage/pouch/bayonet/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/magazine/large/pmc_m39
-				)
-
-	generate_stored_equipment()
-		. = list(
-				WEAR_J_STORE = /obj/item/weapon/gun/smartgun,
-				WEAR_IN_BACK = /obj/item/clothing/glasses/night/m56_goggles
-				)
+	gear_preset = "WO Honor Guard Squad Leader"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"The Commander is the best hope for this outpost! At least in your eyes. You two have saved each-other's asses enough times to testify to that, and have been together for longer than anyone cares to remember. You're his left-hand man, behind the Gunnery Sergeant. You two are men. Manly men.
@@ -144,31 +71,7 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 *************************************/
 /datum/job/command/bridge/whiskey
 	title = "Veteran Honor Guard"
-	disp_title = "Veteran Honor Guard"
-	comm_title = "VHG"
-	paygrade = "E8"
-	idtype = /obj/item/card/id/dogtag
-	skills_type = /datum/skills/honor_guard/vet
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/bridge,
-				WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/officer,
-				WEAR_WAIST = /obj/item/storage/belt/marine/m41amk1,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/leader,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/aviator,
-				WEAR_HEAD = /obj/item/clothing/head/beret/sec/alt,
-				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-				WEAR_R_STORE = /obj/item/storage/pouch/bayonet/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/general/medium
-				)
-
-	generate_stored_equipment()
-		. = list(
-				WEAR_J_STORE = /obj/item/weapon/gun/rifle/m41aMK1
-				)
+	gear_preset = "WO Veteran Honor Guard"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
@@ -182,28 +85,7 @@ Glory to the commander. Glory to the USCM."}
 *************************************/
 /datum/job/command/tank_crew/whiskey
 	title = "Honor Guard Specialist"
-	comm_title = "HGS"
-	paygrade = "E8E"
-	idtype = /obj/item/card/id/dogtag
-	skills_type = /datum/skills/honor_guard/spec
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/bridge,
-				WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-				WEAR_WAIST = /obj/item/storage/large_holster/m39/full,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/officer,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/aviator,
-				WEAR_HEAD = /obj/item/clothing/head/beret/marine/logisticsofficer,
-				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/medium,
-				WEAR_L_STORE = /obj/item/storage/pouch/magazine/large/pmc_m39,
-				)
-	generate_stored_equipment()
-		. = list(
-				WEAR_R_HAND = /obj/item/spec_kit
-				)
+	gear_preset = "WO Honor Guard Specialist"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
@@ -217,30 +99,7 @@ Glory to the commander. Glory to the USCM."}
 *************************************/
 /datum/job/command/police/whiskey
 	title = "Honor Guard"
-	comm_title = "HG"
-	paygrade = "E7"
-	idtype = /obj/item/card/id/dogtag
-	skills_type = /datum/skills/honor_guard
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/bridge,
-				WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/officer,
-				WEAR_WAIST = /obj/item/storage/belt/shotgun/full,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/marine/leader,
-				WEAR_EYES = /obj/item/clothing/glasses/sunglasses/aviator,
-				WEAR_HEAD = /obj/item/clothing/head/beret/marine/logisticsofficer,
-				WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
-				WEAR_R_STORE = /obj/item/storage/pouch/bayonet/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/general/medium
-				)
-	generate_stored_equipment()
-		. = list(
-				WEAR_J_STORE = /obj/item/weapon/gun/shotgun/combat,
-				WEAR_IN_BACK = /obj/item/storage/firstaid/regular
-				)
+	gear_preset = "WO Honor Guard"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
@@ -253,35 +112,7 @@ Glory to the commander. Glory to the USCM."}
 *************************************/
 /datum/job/command/pilot/whiskey
 	title = "Mortar Crew"
-	comm_title = "MC"
-	paygrade = "E3"
-	skills_type = /datum/skills/mortar_crew
-	idtype = /obj/item/card/id/dogtag
-
-	generate_wearable_equipment()
-		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/beret/eng,
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mt,
-				WEAR_BODY = /obj/item/clothing/under/marine/engineer,
-				WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-				WEAR_HANDS = /obj/item/clothing/gloves/black,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m4a3/vp70,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large,
-				WEAR_L_STORE = /obj/item/device/binoculars/tactical/range
-				)
-
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/clothing/glasses/sunglasses,
-				)
-
-	get_wearable_equipment()
-		var/L[] = list(
-						WEAR_HEAD = /obj/item/clothing/glasses/sunglasses
-						)
-
-		return generate_wearable_equipment() + L
+	gear_preset = "WO Mortar Crew"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You're entrusted with the maintaining of the mortars for the outpost. You were expecting to bomb some CLF, maybe, but not this...
@@ -293,20 +124,7 @@ Listen in on your radio, and pay attention to provide fire support for the marin
 *************************************/
 /datum/job/logistics/requisition/whiskey
 	title = "Quartermaster"
-	comm_title = "QM"
-	paygrade = "E8"
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/marine/officer/logistics,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/marine/techofficer,
-				WEAR_WAIST = /obj/item/storage/belt/gun/m44/full,
-				WEAR_HEAD = /obj/item/clothing/head/cmcap/req,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/general/large
-				)
+	gear_preset = "WO Quartermaster"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"This is YOUR Depot - ain't no body, marine or monster, are gonna have their way with it.
@@ -319,7 +137,7 @@ You can order bunker crew to assist you, in place of proper cargo technicians."}
 *************************************/
 /datum/job/civilian/professor/whiskey
 	title = "Head Surgeon"
-	comm_title = "HS"
+	gear_preset = "WO Head Surgeon"
 
 	generate_entry_message()
 		. = {"You volunteered to assist ground-side with medical duties. That may have been a mistake.
@@ -331,6 +149,7 @@ Treat the wounded, guide triage, and survive for as long as possible."}
 *************************************/
 /datum/job/civilian/doctor/whiskey
 	title = "Field Doctor"
+	gear_preset = "WO Field Doctor"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You volunteered to assist ground-side with medical duties. That may have been a mistake.
@@ -342,21 +161,7 @@ Treat the wounded, perform triage, and survive for as long as possible."}
 *************************************/
 /datum/job/civilian/researcher/whiskey
 	title = "Chemist"
-	disp_title = "Chemist"
-	comm_title = "Chem"
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		. = list(
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/doc,
-				WEAR_BODY = /obj/item/clothing/under/rank/medical/purple,
-				WEAR_FEET = /obj/item/clothing/shoes/laceup,
-				WEAR_HANDS = /obj/item/clothing/gloves/latex,
-				WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat/researcher,
-				WEAR_EYES = /obj/item/clothing/glasses/hud/health,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel,
-				WEAR_R_STORE = /obj/item/storage/pouch/medical,
-				WEAR_L_STORE = /obj/item/storage/pouch/syringe
-				)
+	gear_preset = "WO Chemist"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You volunteered to help produce medicine, and perform tests on the local wildlife, to see if it was safe for consumption. That may have been a mistake.
@@ -368,30 +173,7 @@ Hey, at least now, you can try out all those chems that are outlawed - not like 
 *************************************/
 /datum/job/logistics/engineering/whiskey
 	title = "Bunker Crew Master"
-	comm_title = "BCM"
-	paygrade = "E8"
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/beret/eng,
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_EYES = /obj/item/clothing/glasses/welding,
-				WEAR_BODY = /obj/item/clothing/under/marine/engineer,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel/tech,
-				WEAR_R_STORE = /obj/item/storage/pouch/construction/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/construction/full
-				)
-
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/binoculars/tactical/range,
-				WEAR_IN_BACK = /obj/item/tool/shovel/etool/folded
-				)
-
-	generate_stored_equipment()
-		. = list()
+	gear_preset = "WO Bunker Crew Master"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Everything in this bunker is yours. At least, you act like it is. You and your men keep it well maintained. You're not gonna let any filthy aliens take it.
@@ -403,29 +185,8 @@ Ensure power is up, and the bunker is well defended. You share your bunker crew 
 *************************************/
 /datum/job/logistics/tech/maint/whiskey
 	title = "Bunker Crew"
-	comm_title = "BC"
 	supervisors = "the bunker crew master and the quartermaster"
-	paygrade = "E4"
-
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/beret/eng,
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mt,
-				WEAR_EYES = /obj/item/clothing/glasses/welding,
-				WEAR_BODY = /obj/item/clothing/under/marine/engineer,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel/tech,
-				WEAR_R_STORE = /obj/item/storage/pouch/construction/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/construction/full
-				)
-
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/binoculars/tactical/range,
-				WEAR_IN_BACK = /obj/item/tool/shovel/etool/folded
-				)
+	gear_preset = "WO Bunker Crew"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You've worked here for a while, figuring it was a pretty comfy job. Now you gotta fight for your life. Have fun with that.
@@ -437,31 +198,10 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 *************************************/
 /datum/job/logistics/tech/cargo/whiskey
 	title = "Bunker Crew Logistics"
-	comm_title = "BCL"
 	supervisors = "the bunker crew master and the quartermaster"
 	selection_color = "#BAAFD9"
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CARGO)
-	skills_type = /datum/skills/CE
-	paygrade = "E4"
-	generate_wearable_equipment(mob/living/carbon/human/H)
-		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/beret/eng,
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mt,
-				WEAR_EYES = /obj/item/clothing/glasses/welding,
-				WEAR_BODY = /obj/item/clothing/under/marine/engineer,
-				WEAR_FEET = /obj/item/clothing/shoes/marine,
-				WEAR_HANDS = /obj/item/clothing/gloves/yellow,
-				WEAR_WAIST = /obj/item/storage/belt/utility/full,
-				WEAR_BACK = /obj/item/storage/backpack/marine/satchel/tech,
-				WEAR_R_STORE = /obj/item/storage/pouch/construction/full,
-				WEAR_L_STORE = /obj/item/storage/pouch/construction/full
-				)
+	gear_preset = "WO Bunker Crew Logistics"
 
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/binoculars/tactical/range,
-				WEAR_IN_BACK = /obj/item/tool/shovel/etool/folded
-				)
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You've worked here for a while, figuring it was a pretty comfy job. Now you gotta fight for your life. Have fun with that.
@@ -474,26 +214,9 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 *************************************/
 /datum/job/civilian/liaison/whiskey
 	title = "Combat Reporter"
-	comm_title = "PRESS"
 	supervisors = "the press"
-	idtype = /obj/item/card/id
+	gear_preset = "WO Combat Reporter"
 
-	generate_wearable_equipment()
-		. = list(
-				WEAR_HEAD = /obj/item/clothing/head/fedora,
-				WEAR_EAR = /obj/item/device/radio/headset/almayer/mcom,
-				WEAR_BODY = /obj/item/clothing/under/liaison_suit/suspenders,
-				WEAR_FEET = /obj/item/clothing/shoes/laceup,
-				WEAR_BACK = /obj/item/storage/backpack/satchel
-				)
-	generate_stored_equipment()
-		. = list(
-				WEAR_L_HAND = /obj/item/device/camera,
-				WEAR_IN_BACK = /obj/item/device/camera_film,
-				WEAR_IN_BACK = /obj/item/device/binoculars,
-				WEAR_IN_BACK = /obj/item/device/taperecorder,
-				WEAR_IN_BACK = /obj/item/device/megaphone
-				)
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"What a scoop! You followed the marines down to LV-624 to see what kinda mischief they'd get into down here, but it seems that trouble has come to them!
 This could be the story of the world! 'Brave Marines in brutal combat with unknown hostile alien lifeforms!' It'd surely get Mr. Parkerson to notice you in the office if you brought him a story like this!
@@ -524,86 +247,27 @@ You just gotta get out of this jungle to tell the tale!"}
 	if(H.client) H.client.change_view(world.view)
 	if(!H.mind)
 		H.mind = new(H.key)
-	H.nutrition = 400
+
 	//Squad ID and backpack are already spawned in job datum
 	switch(H.mind.assigned_role)
 		if("Squad Leader")
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(H), WEAR_JACKET)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41amk1(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(H), WEAR_J_STORE)
-			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/map/whiskey_outpost_map(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/binoculars/designator(H), WEAR_IN_BACK)
-
+			arm_equipment(H, "Dust Raider Squad Leader")
 		//SQUAD SPECIALIST
 		if("Squad Specialist")
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/webbing(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-
+			arm_equipment(H, "Dust Raider Squad Specialist")
 		//SQUAD SMARTGUNNER
 		if("Squad Smartgunner")
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
-			H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_R_HAND)
-			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
-
-			//Backup SMG Weapon
-			H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-
+			arm_equipment(H, "Dust Raider Squad Smartgunner")
 		//SQUAD ENGINEER
 		if("Squad Engineer")
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
-			H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack(H), WEAR_BACK)
-			H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-			H.equip_to_slot_or_del(new /obj/item/device/binoculars/tactical/range(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
-			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
+			arm_equipment(H, "Dust Raider Squad Engineer")
 		//SQUAD MEDIC
 		if("Squad Medic")
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
-			if(prob(50))
-				H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
-			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/combatLifesaver(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
-			H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full(H), WEAR_L_STORE)
-			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
+			arm_equipment(H, "Dust Raider Squad Medic")
 		else
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
-			call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
-		//Give them some information
+			arm_equipment(H, "Dust Raider Squad Marine (PFC)")
+	
+	//Give them some information
 	sleep(40)
 	H << "________________________"
 	H << "<span class='boldnotice'>You are the [H.mind.assigned_role]!</span>"
@@ -614,34 +278,6 @@ You just gotta get out of this jungle to tell the tale!"}
 	H << "________________________"
 
 	return 1
-
-/datum/game_mode/whiskey_outpost/proc/add_common_equipment(var/mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
-	
-/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary(var/mob/living/carbon/human/H, shuffle = rand(0,10))
-	switch(shuffle)
-		if(0 to 4)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/stripped(H), WEAR_J_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41a(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H), WEAR_IN_BACK)
-		if(5,7)
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_J_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m39(H), WEAR_WAIST)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)
-		else
-			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump(H), WEAR_J_STORE)
-			H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/full(H), WEAR_WAIST)
-	return
 
 //Er, no. I'm not gonna try to find a way to make every marine spawn with the proper headset. This is easier.
 /*************************************

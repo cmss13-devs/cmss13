@@ -10,7 +10,15 @@
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
 
-/datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/H)
+	assignment = "Freelancer"
+	rank = "MODE"
+	special_role = "FREELANCERS"
+
+/datum/equipment_preset/other/freelancer/New()
+	. = ..()
+	access = get_all_accesses()
+
+/datum/equipment_preset/other/freelancer/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance_for(H)
@@ -33,21 +41,7 @@
 	name = "Freelancer (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/freelancer/standard/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list()
-	W.assignment = "Freelancer"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_all_accesses()
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "FREELANCERS"
-
-/datum/equipment_preset/other/freelancer/standard/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc)
+	skills = /datum/skills/pfc
 
 /datum/equipment_preset/other/freelancer/standard/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -71,22 +65,9 @@
 /datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "Freelancer Medic"
 
-/datum/equipment_preset/other/freelancer/medic/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list()
-	W.assignment = "Freelancer Medic"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_all_accesses()
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "FREELANCERS"
-
-/datum/equipment_preset/other/freelancer/medic/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/combat_medic)
+	skills = /datum/skills/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -115,23 +96,10 @@
 /datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "Freelancer Warlord"
+	languages = list("English", "Russian", "Tradeband", "Sainja")
 
-/datum/equipment_preset/other/freelancer/leader/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list()
-	W.assignment = "Freelancer Warlord"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_all_accesses()
-	if(H.mind)
-		H.mind.role_comm_title = "Lead"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "FREELANCERS"
-
-/datum/equipment_preset/other/freelancer/leader/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/SL)
+	skills = /datum/skills/SL
 
 /datum/equipment_preset/other/freelancer/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -150,31 +118,21 @@
 	spawn_merc_gun(H)
 	spawn_merc_gun(H,1)
 
-/datum/equipment_preset/other/freelancer/leader/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian", "Tradeband", "Sainja"))
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/mercenary_heavy
 	name = "Mercenary (Heavy)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/mercenary_heavy/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.assignment = "Mercenary"
-	W.rank = "Mercenary Enforcer"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_antagonist_pmc_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "MERCENARIES"
+	idtype = /obj/item/card/id/centcom
+	assignment = "Mercenary"
+	rank = "Mercenary Enforcer"
+	special_role = "MERCENARIES"
+	skills = /datum/skills/mercenary
 
-/datum/equipment_preset/other/mercenary_heavy/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/mercenary)
+/datum/equipment_preset/other/mercenary_heavy/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
 
 /datum/equipment_preset/other/mercenary_heavy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -197,22 +155,15 @@
 	name = "Mercenary (Miner)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/mercenary_miner/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.assignment = "Mercenary"
-	W.rank = "Mercenary Worker"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_antagonist_pmc_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "MERCENARIES"
+	idtype = /obj/item/card/id/centcom
+	assignment = "Mercenary"
+	rank = "Mercenary Worker"
+	special_role = "MERCENARIES"
+	skills = /datum/skills/mercenary
 
-/datum/equipment_preset/other/mercenary_miner/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/mercenary)
+/datum/equipment_preset/other/mercenary_miner/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
 
 /datum/equipment_preset/other/mercenary_miner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -232,22 +183,15 @@
 	name = "Mercenary (Engineer)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/mercenary_engineer/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.assignment = "Mercenary"
-	W.rank = "Mercenary Engineer"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_antagonist_pmc_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "MERCENARIES"
+	idtype = /obj/item/card/id/centcom
+	assignment = "Mercenary"
+	rank = "Mercenary Engineer"
+	special_role = "MERCENARIES"
+	skills = /datum/skills/mercenary
 
-/datum/equipment_preset/other/mercenary_engineer/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/mercenary)
+/datum/equipment_preset/other/mercenary_engineer/New()
+	. = ..()
+	access = get_antagonist_pmc_access()
 
 /datum/equipment_preset/other/mercenary_engineer/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -268,21 +212,15 @@
 	name = "Business Person"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/business_person/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access = get_all_centcom_access()
-	W.assignment = "Corporate Representative"
-	W.registered_name = H.real_name
-	H.equip_if_possible(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
+	idtype = /obj/item/card/id/centcom
+	assignment = "Corporate Representative"
+	rank = "MODE"
+	special_role = "MODE"
+	skills = /datum/skills/civilian
 
-/datum/equipment_preset/other/business_person/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/civilian)
+/datum/equipment_preset/other/business_person/New()
+	. = ..()
+	access = get_all_accesses() + get_all_centcom_access()
 
 /datum/equipment_preset/other/business_person/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -298,13 +236,7 @@
 /datum/equipment_preset/other/compression_suit
 	name = "Mk50 Compression Suit"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/compression_suit/load_id(mob/living/carbon/human/H)
-	. = ..()
-
-/datum/equipment_preset/other/compression_suit/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc)
+	skills = /datum/skills/pfc
 
 /datum/equipment_preset/other/compression_suit/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -327,10 +259,18 @@
 	name = "Pizza"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/other/pizza/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian", "Tradeband")) //Just in case they are delivering to UPP or CLF...
+	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
+	idtype = /obj/item/card/id/centcom
+	assignment = "Pizza Deliverer"
+	rank = "MODE"
+	special_role = "Pizza"
+	skills = /datum/skills/civilian
 
-/datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/other/pizza/New()
+	. = ..()
+	access = get_freelancer_access()
+
+/datum/equipment_preset/other/pizza/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE,FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance_for(H)
@@ -340,22 +280,6 @@
 		H.real_name = "[pick(first_names_female)] [pick(last_names)]"
 	H.name = H.real_name
 	H.age = rand(17,45)
-
-/datum/equipment_preset/other/pizza/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(src)
-	W.assignment = "Pizza Deliverer"
-	W.registered_name = H.real_name
-	W.name = "[H.real_name]'s ID Card ([W.assignment])"
-	W.icon_state = "centcom"
-	W.access = get_freelancer_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "Pizza"
-
-/datum/equipment_preset/other/pizza/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/civilian)
 
 /datum/equipment_preset/other/pizza/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -374,13 +298,14 @@
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout(H.back), WEAR_IN_BACK)
 
-
-
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/zombie
 	name = "Zombie"
 	flags = EQUIPMENT_PRESET_EXTRA
+
+	languages = list("Zombie")
+	skills = null //no restrictions
 
 //Overloading the function to be able to spawn gear first
 /datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
@@ -391,12 +316,10 @@
 	load_gear(H)
 	load_id(H)
 	load_status(H)
+	load_vanity(H)
 	load_race(H)//Race is loaded last, otherwise we wouldn't be able to equip gear!
 
-/datum/equipment_preset/other/zombie/load_languages(mob/living/carbon/human/H)
-	H.set_languages("Zombie")
-
-/datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/other/zombie/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance_for(H)
@@ -409,10 +332,6 @@
 		H.mind.assigned_role = "Zombie"
 		H.mind.special_role = "MODE"
 
-/datum/equipment_preset/other/zombie/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.cm_skills = null //no restriction
-
 /datum/equipment_preset/other/zombie/load_race(mob/living/carbon/human/H)
 	H.set_species("Zombie")
 	H.contract_disease(new /datum/disease/black_goo)
@@ -420,6 +339,5 @@
 		BG.stage = 5
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)

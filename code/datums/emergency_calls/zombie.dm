@@ -19,7 +19,7 @@
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
 	ticker.mode.traitors += H.mind
-	H.arm_equipment(H, "Zombie", TRUE)
+	arm_equipment(H, "Zombie", TRUE)
 
 	sleep(20)
 	if(H && H.loc)

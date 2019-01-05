@@ -42,15 +42,15 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		mob.arm_equipment(mob, "Freelancer (Leader)", TRUE)
+		arm_equipment(mob, "Freelancer (Leader)", TRUE)
 		mob << "<font size='3'>\red You are the Freelancer leader!</font>"
 
 	else if(medics < max_medics)
-		mob.arm_equipment(mob, "Freelancer (Medic)", TRUE)
+		arm_equipment(mob, "Freelancer (Medic)", TRUE)
 		medics++
 		mob << "<font size='3'>\red You are a Freelancer medic!</font>"
 	else
-		mob.arm_equipment(mob, "Freelancer (Standard)", TRUE)
+		arm_equipment(mob, "Freelancer (Standard)", TRUE)
 		mob << "<font size='3'>\red You are a Freelancer mercenary!</font>"
 	print_backstory(mob)
 

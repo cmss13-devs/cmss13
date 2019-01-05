@@ -40,15 +40,15 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		mob << "<font size='4'>\red You are a leader of the local resistance group, the Colonial Liberation Front."
-		mob.arm_equipment(mob, "CLF Fighter (Leader)", TRUE)
+		arm_equipment(mob, "CLF Fighter (Leader)", TRUE)
 		leader = mob
 	else if(medics < max_medics)
 		mob << "<font size='4'>\red You are a medic of the local resistance group, the Colonial Liberation Front."
-		mob.arm_equipment(mob, "CLF Fighter (Medic)", TRUE)
+		arm_equipment(mob, "CLF Fighter (Medic)", TRUE)
 		medics++
 	else
 		mob << "<font size='4'>\red You are a member of the local resistance group, the Colonial Liberation Front."
-		mob.arm_equipment(mob, "CLF Fighter (Standard)", TRUE)
+		arm_equipment(mob, "CLF Fighter (Standard)", TRUE)
 	print_backstory(mob)
 
 	sleep(10)

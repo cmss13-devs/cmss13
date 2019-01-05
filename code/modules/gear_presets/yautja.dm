@@ -3,14 +3,16 @@
 /datum/equipment_preset/yautja
 	name = "Yautja"
 
-/datum/equipment_preset/yautja/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("Sainja"))
+	languages = list("Sainja")
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
 	//No ID for preds!
 	if(H.mind)
 		H.mind.assigned_role = "PRED"
 		H.mind.special_role = "Yautja"
+
+/datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/H)
+	return //No vanity items for Yautja!
 
 /*****************************************************************************************************/
 

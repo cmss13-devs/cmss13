@@ -1,12 +1,83 @@
 
 /datum/equipment_preset/synth
 	name = "Synth"
+	uses_special_name = TRUE
+	languages = list("English", "Russian", "Tradeband", "Sainja", "Xenomorph")
+	skills = /datum/skills/early_synthetic
 
-/datum/equipment_preset/synth/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian", "Tradeband", "Sainja", "Xenomorph"))
+/datum/equipment_preset/synth/New()
+	. = ..()
+	access = get_all_accesses()
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
 	H.set_species("Early Synthetic")
+
+/datum/equipment_preset/load_name(mob/living/carbon/human/H, var/randomise)
+	H.real_name = "David"
+	if(H.client && H.client.prefs)
+		H.real_name = H.client.prefs.synthetic_name
+		if(!H.real_name || H.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
+			H.real_name = "David"
+	if(H.mind)
+		H.mind.name = H.real_name
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/synth/uscm
+	name = "USCM Synthetic"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	idtype = /obj/item/card/id/gold
+	assignment = "Synthetic"
+	rank = "Synthetic"
+	paygrade = "???"
+	role_comm_title = "Syn"
+
+/datum/equipment_preset/synth/uscm/load_race(mob/living/carbon/human/H)
+	if(!H.client || !H.client.prefs)
+		H.set_species("Early Synthetic")
+	H.set_species(H.client.prefs.synthetic_type)
+
+/datum/equipment_preset/synth/uscm/load_skills(mob/living/carbon/human/H)
+	..()
+	if(H.client && H.client.prefs && H.mind)
+		if(H.client.prefs.synthetic_type == "Synthetic")
+			H.mind.set_cm_skills(/datum/skills/synthetic)
+
+/datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/industrial
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/synth/uscm/wo
+	name = "WO Support Synthetic"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
+
+/datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/industrial
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/brown_vest(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
 
 /*****************************************************************************************************/
 
@@ -14,26 +85,14 @@
 	name = "USCM Combat Synth (Smartgunner)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/synth/combat_smartgunner/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card (Combat Synth)"
-	W.access = list()
-	W.assignment = "Squad Smartgunner"
-	W.rank = "Squad Smartgunner"
-	W.registered_name = H.real_name
-	W.paygrade = "E3"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "LCpl"
-		H.mind.assigned_role = "Squad Smartgunner"
-		H.mind.set_cm_skills(/datum/skills/smartgunner)
-
-/datum/equipment_preset/synth/combat_smartgunner/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc/crafty)
+	idtype = /obj/item/card/id/dogtag
+	assignment = "Squad Smartgunner"
+	rank = "Squad Smartgunner"
+	paygrade = "E3"
+	role_comm_title = "LCpl"
+	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/synth/combat_smartgunner/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
 	var/obj/item/clothing/under/marine/J = new(H)
 	J.icon_state = ""
 	H.equip_to_slot_or_del(J, WEAR_BODY)

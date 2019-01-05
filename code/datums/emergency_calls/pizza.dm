@@ -21,7 +21,7 @@
 	if(mob.client) mob.client.change_view(world.view)
 	ticker.mode.traitors += mob.mind
 
-	mob.arm_equipment(mob, "Pizza", TRUE)
+	arm_equipment(mob, "Pizza", TRUE)
 
 	var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
 	mob << "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>"

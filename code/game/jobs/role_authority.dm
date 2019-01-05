@@ -17,6 +17,12 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define BE_ASSISTANT 1
 #define RETURN_TO_LOBBY 2
 
+var/list/departments = list("Command", "Medical", "Engineering", "Security", "Civilian", "Cargo")
+
+/proc/guest_jobbans(var/job)
+	return (job in ROLES_COMMAND)
+
+
 /datum/authority/branch/role
 	name = "Role Authority"
 
@@ -33,13 +39,11 @@ var/global/datum/authority/branch/role/RoleAuthority
 	New()
 		var/roles_all[] = typesof(/datum/job) - list( //We want to prune all the parent types that are only variable holders.
 												/datum/job,
-												/datum/job/pmc,
 												/datum/job/command,
 												/datum/job/civilian,
 												/datum/job/logistics,
 												/datum/job/logistics/tech,
-												/datum/job/marine,
-												/datum/job/pmc/elite_responder)
+												/datum/job/marine)
 		var/squads_all[] = typesof(/datum/squad) - /datum/squad
 
 		if(!roles_all.len)
@@ -324,10 +328,9 @@ roles willy nilly.
 	if(ismob(M) && M.mind && istype(J))
 		if(check_role_entry(M, J, latejoin))
 			M.mind.assigned_role 		= J.title
-			M.mind.set_cm_skills(J.skills_type)
 			M.mind.special_role 		= J.special_role
 			M.mind.role_alt_title 		= J.get_alternative_title(M)
-			M.mind.role_comm_title 		= J.comm_title
+			M.mind.role_comm_title 		= J.get_comm_title()
 			J.current_positions++
 			//world << "[J.title]: [J.current_positions] current positions filled." //TODO DEBUG
 			return 1
@@ -401,8 +404,6 @@ roles willy nilly.
 /datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
 	if(!istype(M) || !istype(J)) return
 
-	J.equip(M) //Equip them with the base job gear.
-
 	//If they didn't join late, we want to move them to the start position for their role.
 	if(late_join) M.loc = late_join //If they late joined, we passed on the location from the parent proc.
 	else //If they didn't, we need to find a suitable spawn location for them.
@@ -422,7 +423,7 @@ roles willy nilly.
 
 	if(ishuman(M))
 		var/mob/living/carbon/H = M
-		J.equip_preference_gear(H) //After we move them, we want to equip anything else they should have.
+		arm_equipment(H, J.gear_preset) //After we move them, we want to equip anything else they should have.
 		H.job = J.title //TODO Why is this a mob variable at all?
 
 		//Give them an account in the database.
@@ -455,8 +456,6 @@ roles willy nilly.
 		if(H.mind)
 			H.mind.assigned_role = J.title
 			alt_title = H.mind.role_alt_title*/ //TODO What is this for again?
-
-		J.equip_identification(H, J)
 
 		if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			randomize_squad(H)

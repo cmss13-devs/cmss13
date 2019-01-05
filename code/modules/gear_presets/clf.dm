@@ -1,14 +1,20 @@
 #define EQUIPMENT_PRESET_STUB 			0
 #define EQUIPMENT_PRESET_START_OF_ROUND 1
 #define EQUIPMENT_PRESET_EXTRA 			2
+#define EQUIPMENT_PRESET_START_OF_ROUND_WO 4
 
 /datum/equipment_preset/clf
 	name = "CLF"
+	languages = list("Tradeband", "English")
+	assignment = "Colonist"
+	rank = "MODE"
+	special_role = "CLF"
 
-/datum/equipment_preset/clf/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("Tradeband", "English"))
+/datum/equipment_preset/clf/New()
+	. = ..()
+	access = get_antagonist_access()
 
-/datum/equipment_preset/clf/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/clf/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE, 40;FEMALE)
 	var/list/first_names_mreb = list("Alan","Jack","Bil","Jonathan","John","Shiro","Gareth","Clark","Sam", "Lionel", "Aaron", "Charlie", "Scott", "Winston", "Aidan", "Ellis", "Mason", "Wesley", "Nicholas", "Calvin", "Nishikawa", "Hiroto", "Chiba", "Ouchi", "Furuse", "Takagi", "Oba", "Kishimoto")
 	var/list/first_names_freb = list("Emma", "Adelynn", "Mary", "Halie", "Chelsea", "Lexie", "Arya", "Alicia", "Selah", "Amber", "Heather", "Myra", "Heidi", "Charlotte", "Oliva", "Lydia", "Tia", "Riko", "Ari", "Machida", "Ueki", "Mihara", "Noda")
@@ -32,20 +38,7 @@
 	name = "CLF Fighter (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/clf/fighter/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "Colonist"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_antagonist_access()
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "CLF"
-
-/datum/equipment_preset/clf/fighter/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc)
+	skills = /datum/skills/pfc
 
 /datum/equipment_preset/clf/fighter/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -71,20 +64,7 @@
 	name = "CLF Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/clf/survivor/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "Colonist"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_antagonist_access()
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "CLF"
-
-/datum/equipment_preset/clf/survivor/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/civilian/survivor/doctor)
+	skills = /datum/skills/civilian/survivor/doctor
 
 /datum/equipment_preset/clf/survivor/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -104,20 +84,8 @@
 	name = "CLF Fighter (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/clf/fighter_medic/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "Colonist Medic"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_antagonist_access()
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "CLF"
-
-/datum/equipment_preset/clf/fighter_medic/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/combat_medic)
+	assignment = "Colonist Medic"
+	skills = /datum/skills/combat_medic
 
 /datum/equipment_preset/clf/fighter_medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -149,22 +117,10 @@
 /datum/equipment_preset/clf/fighter_leader
 	name = "CLF Fighter (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/clf/fighter_leader/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "Colonist Leader"
-	W.registered_name = H.real_name
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	W.access = get_antagonist_access()
-	if(H.mind)
-		H.mind.role_comm_title = "Lead"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "CLF"
-
-/datum/equipment_preset/clf/fighter_leader/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/SL)
+	
+	assignment = "Colonist Leader"
+	role_comm_title = "Lead"
+	skills = /datum/skills/SL
 
 /datum/equipment_preset/clf/fighter_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

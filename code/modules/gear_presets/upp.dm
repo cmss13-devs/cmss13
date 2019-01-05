@@ -3,10 +3,9 @@
 /datum/equipment_preset/upp
 	name = "UPP"
 
-/datum/equipment_preset/upp/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("Russian", "English"))
+	languages = list("Russian", "English")
 
-/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance_for(H)
@@ -35,21 +34,11 @@
 	name = "UPP Soldier (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/soldier/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Soldier"
-	W.registered_name = H.real_name
-	W.access = get_antagonist_access()
-	W.paygrade = "E1"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/soldier/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc/crafty)
+	skills = /datum/skills/pfc/crafty
+	assignment = "UPP Soldier"
+	rank = "MODE"
+	paygrade = "E1"
+	special_role = "UPP"
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -79,21 +68,11 @@
 	name = "UPP Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/survivor/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Soldier"
-	W.registered_name = H.real_name
-	W.access = get_antagonist_access()
-	W.paygrade = "E1"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/survivor/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/civilian/survivor/doctor)
+	skills = /datum/skills/civilian/survivor/doctor
+	assignment = "UPP Soldier"
+	rank = "MODE"
+	paygrade = "E1"
+	special_role = "UPP"
 
 /datum/equipment_preset/upp/survivor/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -112,22 +91,12 @@
 	name = "UPP Soldier (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/soldier_medic/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Medic"
-	W.registered_name = H.real_name
-	W.paygrade = "E4"
-	W.access = get_antagonist_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Cpl"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/soldier_medic/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/combat_medic/crafty)
+	skills = /datum/skills/combat_medic/crafty
+	assignment = "UPP Medic"
+	rank = "MODE"
+	paygrade = "E4"
+	special_role = "UPP"
+	role_comm_title = "Cpl"
 
 /datum/equipment_preset/upp/soldier_medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -161,22 +130,12 @@
 	name = "UPP Soldier (Heavy)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/soldier_heavy/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Specialist"
-	W.registered_name = H.real_name
-	W.paygrade = "E5"
-	W.access = get_antagonist_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Spc"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/soldier_heavy/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/specialist/upp)
+	skills = /datum/skills/specialist/upp
+	assignment = "UPP Specialist"
+	rank = "MODE"
+	paygrade = "E5"
+	special_role = "UPP"
+	role_comm_title = "Spc"
 
 /datum/equipment_preset/upp/soldier_heavy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -208,22 +167,12 @@
 	name = "UPP Soldier (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/soldier_leader/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Leader"
-	W.registered_name = H.real_name
-	W.paygrade = "E6"
-	W.access = get_antagonist_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "SL"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/soldier_leader/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/SL/upp)
+	skills = /datum/skills/SL/upp
+	assignment = "UPP Leader"
+	rank = "MODE"
+	paygrade = "E5"
+	special_role = "UPP"
+	role_comm_title = "SL"
 
 /datum/equipment_preset/upp/soldier_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -254,21 +203,11 @@
 	name = "UPP Commando (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/commando/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Commando"
-	W.registered_name = H.real_name
-	W.paygrade = "E2"
-	W.access = get_antagonist_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/commando/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/commando)
+	skills = /datum/skills/commando
+	assignment = "UPP Commando"
+	rank = "MODE"
+	paygrade = "E2"
+	special_role = "UPP"
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -306,22 +245,12 @@
 	name = "UPP Commando (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/commando/medic/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Commando Medic"
-	W.registered_name = H.real_name
-	W.paygrade = "E4"
-	W.access = get_antagonist_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Cpl"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/commando/medic/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/commando/medic)
+	skills = /datum/skills/commando/medic
+	assignment = "UPP Commando Medic"
+	rank = "MODE"
+	paygrade = "E4"
+	special_role = "UPP"
+	role_comm_title = "Cpl"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -359,22 +288,12 @@
 	name = "UPP Commando (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/upp/commando/leader/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.assignment = "UPP Commando Leader"
-	W.registered_name = H.real_name
-	W.paygrade = "E6"
-	W.access = get_antagonist_access()
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "SL"
-		H.mind.assigned_role = "MODE"
-		H.mind.special_role = "UPP"
-
-/datum/equipment_preset/upp/commando/leader/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/commando/leader)
+	skills = /datum/skills/commando/leader
+	assignment = "UPP Commando Leader"
+	rank = "MODE"
+	paygrade = "E6"
+	role_comm_title = "SL"
+	special_role = "UPP"
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

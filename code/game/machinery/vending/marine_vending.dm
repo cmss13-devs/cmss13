@@ -242,7 +242,7 @@
 		/obj/item/device/flashlight/combat = round(scale * 15),
 		/obj/item/clothing/mask/gas = round(scale * 10),
 	)
-
+					
 
 
 	contraband = list(
@@ -507,7 +507,7 @@
 
 	products = list(
 						/obj/item/clothing/under/marine/medic = 4,
-						/obj/item/clothing/head/helmet/marine/fluff/santahat = 4,
+						/obj/item/clothing/head/helmet/marine/medic = 4,
 						/obj/item/storage/backpack/marine/medic = 4,
 						/obj/item/storage/backpack/marine/satchel/medic = 4,
 						/obj/item/device/encryptionkey/med = 4,
@@ -658,7 +658,7 @@
 
 	products = list(
 						/obj/item/clothing/suit/storage/marine/leader = 1,
-						/obj/item/clothing/head/helmet/marine/fluff/santahat = 1,
+						/obj/item/clothing/head/helmet/marine/leader = 1,
 						/obj/item/clothing/tie/storage/webbing = 1,
 						/obj/item/explosive/plastique = 1,
 						/obj/item/explosive/grenade/smokebomb = 3,
@@ -775,7 +775,7 @@
 					/obj/item/clothing/shoes/marine = 20,
 					/obj/item/clothing/under/marine = 20,
 					/obj/item/clothing/suit/storage/marine = 20,
-					/obj/item/clothing/head/helmet/marine/fluff/santahat = 20,
+					/obj/item/clothing/head/helmet/marine = 20,
 					/obj/item/clothing/mask/rebreather/scarf = 10,
 					)
 

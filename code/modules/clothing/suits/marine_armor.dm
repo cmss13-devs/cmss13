@@ -103,11 +103,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	new_name[] 			= list(MAP_ICE_COLONY = "\improper M3 pattern marine snow armor"))
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
-		switch(armor_variation)
-			if(2,3)
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-				flags_cold_protection = flags_armor_protection
-				flags_heat_protection = flags_armor_protection
 		icon_state = "[armor_variation]"
 
 	select_gamemode_skin(expected_type,,new_name)
@@ -267,9 +262,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	armor = list(melee = 55, bullet = 75, laser = 35, energy = 35, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/tank/emergency_oxygen,
@@ -421,9 +413,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3 pattern marksman armor"
 	icon_state = "marine_sniperm"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 	New(loc,expected_type 	= type,
 		new_name[] 		= list(MAP_ICE_COLONY = "\improper M3 pattern marksman snow armor"))
@@ -465,9 +454,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/sniper
 	name = "\improper M4 pattern PMC sniper armor"
 	icon_state = "pmc_sniper"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS
 	armor = list(melee = 60, bullet = 70, laser = 50, energy = 60, bomb = 20, bio = 10, rad = 10)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDELOWHAIR
@@ -477,9 +463,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
 	icon_state = "heavy_armor"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	armor = list(melee = 85, bullet = 85, laser = 55, energy = 65, bomb = 20, bio = 20, rad = 20)
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/commando
@@ -653,7 +636,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "An extremely heavy duty set of body armor in service with the UPP military, the UH7 (Union Heavy MK5) is known for being a rugged set of armor, capable of taking immesnse punishment. Although the armor doesn't protect certain areas, it provides unmatchable protection from the front, which UPP engineers summerized as the most likely target for enemy fire. In order to cut costs, the head shielding in the MK6 has been stripped down a bit in the MK7, but this comes at much more streamlined production.  "
 	icon_state = "upp_armor_heavy"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
 	armor = list(melee = 85, bullet = 85, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
 
@@ -665,7 +648,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A armored protective chestplate scrapped together from various plates. It keeps up remarkably well, as the craftsmanship is solid, and the design mirrors such armors in the UPP and the USCM. The many skilled craftsmen in the freelancers ranks produce these vests at a rate about one a month."
 	icon_state = "freelancer_armor"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
 	armor = list(melee = 60, bullet = 60, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/freelancer)
 
@@ -677,7 +660,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "rebel_armor"
 	sprite_sheet_id = 1
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 30, bomb = 10, bio = 30, rad = 30)
 	uniform_restricted = list(/obj/item/clothing/under/colonist)
 	allowed = list(/obj/item/weapon/gun,

@@ -77,7 +77,7 @@
 		reagents.add_reagent("kelotane", 60)
 
 /obj/item/reagent_container/glass/bottle/dexalin
-	name = "\improper Dexaline bottle"
+	name = "\improper Dexalin bottle"
 	desc = "A small bottle. Contains dexalin - used to supply blood with oxygen."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle10"

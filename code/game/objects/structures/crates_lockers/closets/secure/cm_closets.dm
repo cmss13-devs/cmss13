@@ -202,7 +202,7 @@
 
 	New()
 		..()
-		new /obj/item/storage/belt/combatLifesaver(src)
+		new /obj/item/storage/belt/medical/combatLifesaver(src)
 		new /obj/item/clothing/glasses/hud/health(src)
 		new /obj/item/clothing/tie/storage/webbing(src)
 		new /obj/item/roller/medevac(src)

@@ -89,6 +89,7 @@
 	storage_slots = 14 //can hold 2 "rows" of very limited medical equipment and ammo.
 	max_w_class = 3
 	max_storage_space = 28
+	var/mode = 0 //Pill picking mode
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
@@ -118,9 +119,6 @@
 
 /obj/item/storage/belt/medical/New()
 	..()
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/splint(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/dexalin(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
@@ -130,6 +128,17 @@
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+
+/obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
+	set category = "Object"
+	set name = "Toggle Belt Mode"
+
+	if(src && ishuman(usr))
+		mode = !mode
+		usr << "<span class='notice'>You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"].</span>"
 
 /obj/item/storage/belt/medical/with_defib_and_analyzer
 
@@ -138,7 +147,7 @@
 	new /obj/item/device/defibrillator(src)
 	new /obj/item/device/healthanalyzer(src)
 
-/obj/item/storage/belt/combatLifesaver
+/obj/item/storage/belt/medical/combatLifesaver
 	name = "\improper M276 pattern lifesaver bag"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies and is common among medics."
 	icon_state = "medicalbag"
@@ -147,6 +156,8 @@
 	max_storage_space = 42
 	max_w_class = 2
 	can_hold = list(
+		/obj/item/device/healthanalyzer,
+		/obj/item/bodybag,
 		/obj/item/reagent_container/glass/bottle,
 		/obj/item/reagent_container/pill,
 		/obj/item/reagent_container/syringe,
@@ -157,59 +168,27 @@
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
-	New()
-		if(has_gamemode_skin)
-			select_gamemode_skin(type)
-		..()
-
-/obj/item/storage/belt/combatLifesaver/New()  //The belt, with all it's magic inside!
+/obj/item/storage/belt/medical/combatLifesaver/New()  //The belt, with all it's magic inside!
 	..()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/splint(src)
-	new /obj/item/storage/pill_bottle/bicaridine(src)
-	new /obj/item/storage/pill_bottle/dexalin(src)
-	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/storage/pill_bottle/kelotane(src)
-	new /obj/item/storage/pill_bottle/spaceacillin(src)
-	new /obj/item/storage/pill_bottle/inaprovaline(src)
-	new /obj/item/storage/pill_bottle/tramadol(src)
-	new /obj/item/storage/pill_bottle/peridaxon(src)
-	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/Oxycodone(src)
 
-/obj/item/storage/belt/combatLifesaver/upp
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
+
+/obj/item/storage/belt/medical/combatLifesaver/upp
 	icon_state = "medicalbag_u"
 	item_state = "medicbag_u"
 	has_gamemode_skin = FALSE
 	storage_slots = 42
 	max_storage_space = 82
 
-/obj/item/storage/belt/combatLifesaver/upp/New()  //The belt, with all it's magic inside!
+/obj/item/storage/belt/medical/combatLifesaver/upp/New()  //The belt, with all it's magic inside!
 	..()
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/splint(src)
-	new /obj/item/storage/pill_bottle/bicaridine/skillless(src)
-	new /obj/item/storage/pill_bottle/dexalin/skillless(src)
-	new /obj/item/storage/pill_bottle/antitox/skillless(src)
-	new /obj/item/storage/pill_bottle/kelotane/skillless(src)
-	new /obj/item/storage/pill_bottle/spaceacillin/skillless(src)
-	new /obj/item/storage/pill_bottle/inaprovaline/skillless(src)
-	new /obj/item/storage/pill_bottle/tramadol/skillless(src)
-	new /obj/item/storage/pill_bottle/peridaxon/skillless(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/Oxycodone(src)
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"

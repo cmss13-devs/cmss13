@@ -147,7 +147,6 @@
 	..()
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
 		if(!ishuman(usr))	return
-		if(opened)	return 0
 		if(contents.len)	return 0
 		visible_message("<span class='notice'>[usr] folds up [name].</span>")
 		var/obj/item/I = new item_path(get_turf(src), src)

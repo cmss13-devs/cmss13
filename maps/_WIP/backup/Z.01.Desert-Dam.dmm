@@ -5816,7 +5816,7 @@
 "chV" = (/obj/structure/platform{dir = 4},/turf/open/desertdam/river/toxic/shallow_water_toxic,/area/desert_dam/exterior/river/riverside_south)
 "chW" = (/obj/structure/table/reinforced,/obj/item/roller,/obj/item/roller,/obj/machinery/light{dir = 8; icon_state = "tube1"; tag = "icon-tube1 (EAST)"},/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
 "chX" = (/obj/structure/table/reinforced,/obj/item/reagent_container/spray/cleaner,/obj/item/reagent_container/spray/cleaner,/obj/item/reagent_container/spray/cleaner,/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
-"chY" = (/obj/structure/table/reinforced,/obj/item/storage/belt/combatLifesaver,/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
+"chY" = (/obj/structure/table/reinforced,/obj/item/storage/belt/medical/combatLifesaver,/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
 "chZ" = (/obj/effect/decal/medical_decals{tag = "icon-docstriping"; icon_state = "docstriping"},/obj/machinery/light{dir = 4},/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
 "cia" = (/obj/structure/table/reinforced,/obj/machinery/recharger,/obj/item/reagent_container/spray/cleaner,/turf/open/floor{tag = "icon-whitegreenfull"; icon_state = "whitegreenfull"; dir = 2},/area/desert_dam/building/medical/emergency_room)
 "cib" = (/obj/machinery/light,/turf/open/floor{tag = "icon-whitegreen (SOUTHWEST)"; icon_state = "whitegreen"; dir = 10},/area/desert_dam/building/medical/emergency_room)

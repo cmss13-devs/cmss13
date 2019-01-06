@@ -266,7 +266,7 @@ You just gotta get out of this jungle to tell the tale!"}
 			arm_equipment(H, "Dust Raider Squad Medic")
 		else
 			arm_equipment(H, "Dust Raider Squad Marine (PFC)")
-	
+
 	//Give them some information
 	sleep(40)
 	H << "________________________"

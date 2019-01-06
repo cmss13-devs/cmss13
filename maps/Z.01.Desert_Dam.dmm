@@ -7201,7 +7201,7 @@
 "cIy" = (/obj/structure/desertdam/decals/road_edge{icon_state = "road_edge_decal12"},/obj/effect/decal/sand_overlay/sand1{dir = 10; icon = 'icons/turf/overlays.dmi'; icon_state = "sand1_s"},/turf/open/asphalt,/area/desert_dam/exterior/valley/valley_cargo)
 "cIz" = (/obj/structure/table/reinforced,/obj/item/roller,/obj/item/roller,/obj/machinery/light{dir = 8; icon_state = "tube1"; tag = "icon-tube1 (EAST)"},/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
 "cIA" = (/obj/structure/table/reinforced,/obj/item/reagent_container/spray/cleaner,/obj/item/reagent_container/spray/cleaner,/obj/item/reagent_container/spray/cleaner,/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
-"cIB" = (/obj/structure/table/reinforced,/obj/item/storage/belt/combatLifesaver,/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
+"cIB" = (/obj/structure/table/reinforced,/obj/item/storage/belt/medical/combatLifesaver,/turf/open/floor/plating,/area/desert_dam/building/medical/garage)
 "cIC" = (/obj/effect/decal/medical_decals{tag = "icon-docstriping"; icon_state = "docstriping"},/obj/machinery/light{dir = 4},/turf/open/floor{icon_state = "white"},/area/desert_dam/building/medical/garage)
 "cID" = (/obj/structure/table/reinforced,/obj/machinery/recharger,/obj/item/reagent_container/spray/cleaner,/turf/open/floor/prison{tag = "icon-whitegreenfull (SOUTHWEST)"; icon_state = "whitegreenfull"; dir = 10},/area/desert_dam/building/medical/emergency_room)
 "cIE" = (/obj/machinery/light,/turf/open/floor/prison{dir = 10; icon_state = "whitegreen"},/area/desert_dam/building/medical/emergency_room)

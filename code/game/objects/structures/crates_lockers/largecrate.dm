@@ -284,7 +284,7 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/belt/medical(src)
-	new /obj/item/storage/belt/combatLifesaver(src)
+	new /obj/item/storage/belt/medical/combatLifesaver(src)
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/firstaid/adv(src)
 	new /obj/item/storage/firstaid/o2(src)

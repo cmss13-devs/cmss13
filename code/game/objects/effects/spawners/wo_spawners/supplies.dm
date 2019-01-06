@@ -178,7 +178,7 @@
 
 /obj/effect/landmark/wo_supplies/storage/belts/lifesaver
 	icon_state = "medicalbag"
-	stuff = list(/obj/item/storage/belt/combatLifesaver)
+	stuff = list(/obj/item/storage/belt/medical/combatLifesaver)
 
 
 

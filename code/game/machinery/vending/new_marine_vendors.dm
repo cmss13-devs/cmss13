@@ -462,7 +462,7 @@
 		list("Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, "black"),
 
 		list("BELT (choose 1)", 0, null, null, null),
-		list("Lifesaver belt", 0, /obj/item/storage/belt/combatLifesaver, MARINE_CAN_BUY_BELT, "orange"),
+		list("Lifesaver belt", 0, /obj/item/storage/belt/medical/combatLifesaver, MARINE_CAN_BUY_BELT, "orange"),
 		list("Medical belt", 0, /obj/item/storage/belt/medical, MARINE_CAN_BUY_BELT, "black"),
 
 		list("POUCHES (choose 2)", 0, null, null, null),
@@ -758,7 +758,7 @@
 
 		list("BELT (choose 1)", 0, null, null, null),
 		list("Tool belt", 0, /obj/item/storage/belt/utility/full, MARINE_CAN_BUY_BELT, "orange"),
-		list("Lifesaver belt", 0, /obj/item/storage/belt/combatLifesaver, MARINE_CAN_BUY_BELT, "black"),
+		list("Lifesaver belt", 0, /obj/item/storage/belt/medical/combatLifesaver, MARINE_CAN_BUY_BELT, "black"),
 		list("Medical belt", 0, /obj/item/storage/belt/medical, MARINE_CAN_BUY_BELT, "black"),
 
 		list("POUCHES (choose 2)", 0, null, null, null),

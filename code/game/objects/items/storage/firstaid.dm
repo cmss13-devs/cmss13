@@ -261,7 +261,29 @@
 			usr << "<span class='notice'>You can't open [src], it has some kind of lock.</span>"
 			return 0
 
-
+/obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
+	if(..())
+		return 1
+	else
+		if(istype(loc, /obj/item/storage/belt/medical))
+			var/obj/item/storage/belt/medical/M = loc
+			if(M.mode)
+				if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
+					user << "<span class='notice'>It must have some kind of ID lock...</span>"
+					return 0
+				if(user.get_active_hand())
+					return 0
+				if(contents.len)
+					var/obj/item/I = contents[1]
+					if(user.put_in_active_hand(I))
+						remove_from_storage(I,user)
+						user << "<span class='notice'>You take a pill out of \the [src].</span>"
+						return 1
+				else
+					user << "<span class='warning'>\The [src] is empty.</span>"
+					return 0
+			else
+				return 0
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"

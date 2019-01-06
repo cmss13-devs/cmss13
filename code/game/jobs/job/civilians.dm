@@ -80,7 +80,7 @@ Your role involves a lot of roleplaying, but you can perform the function of a r
 
 //Liaison
 /datum/job/civilian/liaison
-	title = "USCM Corporate Liaison"
+	title = "Corporate Liaison"
 	flag = ROLE_CORPORATE_LIAISON
 	department_flag = ROLEGROUP_MARINE_COMMAND
 	total_positions = 1

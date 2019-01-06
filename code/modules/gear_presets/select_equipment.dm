@@ -63,7 +63,8 @@
 	for(i in H.client.prefs.gear)
 		G = gear_datums[i]
 		if(G)
-			H.equip_to_slot_or_del(new G.path(H), G.slot ? G.slot : WEAR_IN_BACK)
+			if(!H.equip_to_slot_or_del(new G.path(H), G.slot))
+				H.equip_to_slot_or_del(new G.path(H), WEAR_IN_BACK)
 
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)

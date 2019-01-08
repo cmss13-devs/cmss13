@@ -525,6 +525,7 @@
 	role_comm_title = "MT"
 	special_role = "UPP"
 	skills = /datum/skills/spy
+	languages = list("English", "Russian") //can speak russian, but it's not default
 
 /datum/equipment_preset/uscm_ship/upp_spy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -534,19 +535,19 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_EAR)
 
+	//TODO: preload all of those items before equipping the backpack
+	//Otherwise, if you spawn the spy next to other people
+	//they will see messages for them putting guns and explosives into their backpack...
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/c99/upp/tranq(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/chameleon	(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/chameleon(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-
-/datum/equipment_preset/uscm_ship/upp_spy/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Russian"))//can speak russian, but it's not default
 
 /*****************************************************************************************************/
 

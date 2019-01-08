@@ -1,9 +1,9 @@
 
 /datum/equipment_preset/dust_raider
 	name = "Dust Raider"
+	idtype = /obj/item/card/id/dogtag
+	languages = list("English")
 
-/datum/equipment_preset/dust_raider/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English"))
 
 /datum/equipment_preset/dust_raider/load_name(mob/living/carbon/human/H)
 	H.gender = pick(60;MALE,40;FEMALE)
@@ -19,26 +19,17 @@
 	name = "Dust Raider Private"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/dust_raider/private/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.registered_name = H.real_name
-	W.assignment = "Squad Marine"
-	W.rank = "Squad Marine"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.role_comm_title = "Pfc"
-		H.mind.assigned_role = "Squad Marine"
-
-/datum/equipment_preset/dust_raider/private/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/pfc/crafty)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	assignment = "Squad Marine"
+	rank = "Squad Marine"
+	paygrade = "E2"
+	role_comm_title = "Pfc"
+	skills = /datum/skills/pfc/crafty
 
 /datum/equipment_preset/dust_raider/private/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
@@ -50,27 +41,18 @@
 	name = "Dust Raider Squad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/dust_raider/leader/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.registered_name = H.real_name
-	W.assignment = "Squad Leader"
-	W.rank = "Squad Leader"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "Squad Leader"
-		H.mind.role_comm_title = "SL"
-
-/datum/equipment_preset/dust_raider/leader/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/SL)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
+	assignment = "Squad Leader"
+	rank = "Squad Leader"
+	paygrade = "E6"
+	role_comm_title = "SL"
+	skills = /datum/skills/SL
 
 /datum/equipment_preset/dust_raider/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41amk1(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(H), WEAR_J_STORE)
@@ -88,21 +70,12 @@
 	name = "Dust Raider Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/dust_raider/smartgunner/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.registered_name = H.real_name
-	W.assignment = "Squad Smartgunner"
-	W.rank = "Squad Smartgunner"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "Squad Smartgunner"
-		H.mind.role_comm_title = "LCpl"
-
-/datum/equipment_preset/dust_raider/smartgunner/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/smartgunner)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
+	assignment = "Squad Smartgunner"
+	rank = "Squad Smartgunner"
+	paygrade = "E4"
+	role_comm_title = "LCpl"
+	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/dust_raider/smartgunner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -115,7 +88,7 @@
 	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
 	//Backup SMG Weapon
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 
 /*****************************************************************************************************/
@@ -124,27 +97,18 @@
 	name = "Dust Raider Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/dust_raider/engineer/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.registered_name = H.real_name
-	W.assignment = 	"Squad Engineer"
-	W.rank = "Squad Engineer"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "Squad Engineer"
-		H.mind.role_comm_title = "Eng"
-
-/datum/equipment_preset/dust_raider/engineer/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/combat_engineer)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
+	assignment = "Squad Engineer"
+	rank = "Squad Engineer"
+	paygrade = "E3"
+	role_comm_title = "Eng"
+	skills = /datum/skills/combat_engineer
 
 /datum/equipment_preset/dust_raider/engineer/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
@@ -163,26 +127,17 @@
 	name = "Dust Raider Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/dust_raider/medic/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.registered_name = H.real_name
-	W.assignment = "Squad Medic"
-	W.rank = "Squad Medic"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "Squad Medic"
-		H.mind.role_comm_title = "Med"
-
-/datum/equipment_preset/dust_raider/medic/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/combat_medic)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
+	assignment = "Squad Medic"
+	rank = "Squad Medic"
+	paygrade = "E3"
+	role_comm_title = "Med"
+	skills = /datum/skills/combat_medic
 
 /datum/equipment_preset/dust_raider/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	if(prob(50))
@@ -202,21 +157,12 @@
 	name = "Dust Raider Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/dust_raider/specialist/load_id(mob/living/carbon/human/H)
-	var/obj/item/card/id/dogtag/W = new(H)
-	W.name = "[H.real_name]'s ID Card"
-	W.access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
-	W.registered_name = H.real_name
-	W.assignment = "Squad Specialist"
-	W.rank = "Squad Specialist"
-	H.equip_to_slot_or_del(W, WEAR_ID)
-	if(H.mind)
-		H.mind.assigned_role = "Squad Specialist"
-		H.mind.role_comm_title = "Spc"
-
-/datum/equipment_preset/dust_raider/specialist/load_skills(mob/living/carbon/human/H)
-	if(H.mind)
-		H.mind.set_cm_skills(/datum/skills/specialist)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
+	assignment = "Squad Specialist"
+	rank = "Squad Specialist"
+	paygrade = "E5"
+	role_comm_title = "Spc"
+	skills = /datum/skills/specialist
 
 /datum/equipment_preset/dust_raider/specialist/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -231,6 +177,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)

@@ -29,7 +29,7 @@
 	W.name = "[H.real_name]'s ID Card"
 	if(assignment)
 		W.name += " ([assignment])"
-	W.access = access
+	W.access = access.Copy(1, 0)
 	W.assignment = assignment
 	W.rank = rank
 	W.registered_name = H.real_name
@@ -38,6 +38,7 @@
 	if(H.mind)
 		H.mind.role_comm_title = role_comm_title
 		H.mind.assigned_role = W.rank
+		H.mind.special_role = special_role
 		if(H.mind.initial_account)
 			W.associated_account_number = H.mind.initial_account.account_number
 

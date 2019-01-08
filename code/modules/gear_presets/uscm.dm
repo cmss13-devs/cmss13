@@ -28,6 +28,7 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle
@@ -111,7 +112,7 @@
 	role_comm_title = "TC"
 	skills = /datum/skills/tank_crew
 
-/datum/equipment_preset/uscm/tank/full/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
@@ -124,7 +125,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
 
 /datum/equipment_preset/uscm/tank/load_status()
 	return //No cryo munchies

@@ -723,7 +723,8 @@ and you're good to go.
 
 					if(projectile_to_fire.ammo.bonus_projectiles_amount)
 						var/obj/item/projectile/BP
-						for(var/i = 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
+						var/i
+						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
 							BP = rnew(/obj/item/projectile, M.loc)
 							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type])
 							BP.damage *= damage_buff

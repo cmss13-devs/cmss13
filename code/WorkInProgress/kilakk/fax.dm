@@ -201,7 +201,7 @@ var/list/alldepartments = list()
 /proc/announce_fax(var/msg_admin, var/msg_ghost)
 	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
 	for(var/client/C in admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
+		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			if(msg_admin)
 				C << msg_admin
 			else
@@ -212,8 +212,8 @@ var/list/alldepartments = list()
 			if(!g.client)
 				continue
 			var/client/C = g.client
-			if(C && C.holder)
-				if((R_ADMIN|R_MOD) & C.holder.rights) //staff don't need to see the fax twice
+			if(C && C.admin_holder)
+				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
 					continue
 			C << msg_ghost
 			C << 'sound/effects/sos-morse-code.ogg'

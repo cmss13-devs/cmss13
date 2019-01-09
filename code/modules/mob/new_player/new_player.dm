@@ -45,7 +45,7 @@
 
 			if(dbcon.IsConnected())
 				var/isadmin = 0
-				if(src.client && src.client.holder)
+				if(src.client && src.client.admin_holder)
 					isadmin = 1
 				var/DBQuery/query = dbcon.NewQuery("SELECT id FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM erro_poll_vote WHERE ckey = \"[ckey]\") AND id NOT IN (SELECT pollid FROM erro_poll_textreply WHERE ckey = \"[ckey]\")")
 				query.Execute()
@@ -127,7 +127,7 @@
 						client.prefs.real_name = random_name(client.prefs.gender)
 					observer.real_name = client.prefs.real_name
 					observer.name = observer.real_name
-	//				if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+	//				if(!client.admin_holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 	//					observer.verbs -= /mob/dead/observer/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
 					observer.key = key
 					observer.timeofdeath = 0
@@ -463,7 +463,7 @@
 		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = 1) // Stops lobby music.
 
 	proc/has_admin_rights()
-		return client.holder.rights & R_ADMIN
+		return client.admin_holder.rights & R_ADMIN
 
 	proc/is_species_whitelisted(datum/species/S)
 		if(!S) return 1

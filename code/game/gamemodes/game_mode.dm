@@ -378,7 +378,7 @@ proc/display_roundstart_logout_report()
 
 
 	for(var/mob/M in mob_list)
-		if(M.client && M.client.holder)
+		if(M.client && M.client.admin_holder)
 			M << msg
 
 

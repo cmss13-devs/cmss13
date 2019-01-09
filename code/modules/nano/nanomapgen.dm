@@ -20,7 +20,7 @@
 	set name = "Generate NanoUI Map"
 	set category = "Mapping"
 
-	if(holder)
+	if(admin_holder)
 		nanomapgen_DumpTile(1, 1, text2num(input(usr,"Enter the Z level to generate")))
 
 /client/proc/nanomapgen_DumpTile(var/startX = 1, var/startY = 1, var/currentZ = 1, var/endX = -1, var/endY = -1)

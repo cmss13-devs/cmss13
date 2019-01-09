@@ -109,5 +109,5 @@ Admin:
 
 	src << hotkey_mode
 	src << other
-	if(holder)
+	if(admin_holder)
 		src << admin

@@ -30,7 +30,7 @@
 	set name = "Show/Hide RadioChatter"
 	set category = "Preferences"
 	set desc = "Toggle seeing radiochatter from radios and speakers"
-	if(!holder) return
+	if(!admin_holder) return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
 	usr << "You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"
@@ -49,7 +49,7 @@
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences"
 	set desc = "Toggle hearing a notification when admin PMs are recieved"
-	if(!holder)	return
+	if(!admin_holder)	return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
 	usr << "You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."
@@ -62,7 +62,7 @@
 	prefs.toggles_chat ^= CHAT_DEAD
 	prefs.save_preferences()
 
-	if(src.holder)
+	if(src.admin_holder)
 		src << "You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."
 	else
 		src << "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."

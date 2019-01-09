@@ -12,7 +12,7 @@ var/can_call_ert
 	set category = "Special Verbs"
 	set desc = "Send an emergency response team to the station"
 
-	if(!holder)
+	if(!admin_holder)
 		usr << "\red Only administrators may use this command."
 		return
 	if(!ticker)

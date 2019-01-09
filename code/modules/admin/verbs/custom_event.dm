@@ -3,7 +3,7 @@
 	set category = "Fun"
 	set name = "Change Custom Event"
 
-	if(!holder)
+	if(!admin_holder)
 		src << "Only administrators may use this command."
 		return
 

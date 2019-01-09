@@ -6,7 +6,7 @@ client
 		set category = "Debug"
 		set name = "View Variables"
 
-		if(!usr.client || !usr.client.holder || !(usr.client.holder.rights & R_MOD))
+		if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 			usr << "\red You need to be a moderator or higher to access this."
 			return
 
@@ -20,7 +20,7 @@ client
 			usr << "<span class='warning'>You need host permission to access this.</span>"
 			return
 
-		if((istype(D,/datum/ammo) || istype(D,/datum/caste_datum) || istype(D,/mob/living/carbon/Xenomorph/Predalien)) && !(usr.client.holder.rights & R_DEBUG))
+		if((istype(D,/datum/ammo) || istype(D,/datum/caste_datum) || istype(D,/mob/living/carbon/Xenomorph/Predalien)) && !(usr.client.admin_holder.rights & R_DEBUG))
 			usr << "<span class='warning'>You need debugging permission to access this.</span>"
 			return
 
@@ -148,7 +148,7 @@ client
 
 		body += "<div align='center'><b><font size='1'>[formatted_type]</font></b>"
 
-		if(src.holder && src.holder.marked_datum && src.holder.marked_datum == D)
+		if(src.admin_holder && src.admin_holder.marked_datum && src.admin_holder.marked_datum == D)
 			body += "<br><font size='1' color='red'><b>Marked Object</b></font>"
 
 		body += "</div>"
@@ -360,7 +360,7 @@ client
 
 /client/proc/view_var_Topic(href, href_list, hsrc)
 	//This should all be moved over to datum/admins/Topic() or something ~Carn
-	if( (usr.client != src) || !src.holder )
+	if( (usr.client != src) || !src.admin_holder )
 		return
 	if(href_list["Vars"])
 		debug_variables(locate(href_list["Vars"]))
@@ -419,7 +419,7 @@ client
 			usr << "This can only be used on instances of type /mob"
 			return
 
-		src.holder.show_player_panel(M)
+		src.admin_holder.show_player_panel(M)
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
 	else if(href_list["give_spell"])
@@ -571,7 +571,7 @@ client
 			usr << "This can only be done to instances of type /datum"
 			return
 
-		src.holder.marked_datum = D
+		src.admin_holder.marked_datum = D
 		href_list["datumrefresh"] = href_list["mark_object"]
 
 	else if(href_list["rotatedatum"])
@@ -599,7 +599,7 @@ client
 		if(!H)
 			usr << "Mob doesn't exist anymore"
 			return
-		holder.Topic(href, list("monkeyone"=href_list["makemonkey"]))
+		admin_holder.Topic(href, list("monkeyone"=href_list["makemonkey"]))
 
 	else if(href_list["makerobot"])
 		if(!check_rights(R_SPAWN))	return
@@ -613,7 +613,7 @@ client
 		if(!H)
 			usr << "Mob doesn't exist anymore"
 			return
-		holder.Topic(href, list("makerobot"=href_list["makerobot"]))
+		admin_holder.Topic(href, list("makerobot"=href_list["makerobot"]))
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))	return
@@ -627,7 +627,7 @@ client
 		if(!H)
 			usr << "Mob doesn't exist anymore"
 			return
-		holder.Topic(href, list("makealien"=href_list["makealien"]))
+		admin_holder.Topic(href, list("makealien"=href_list["makealien"]))
 
 	else if(href_list["changehivenumber"])
 		if(!check_rights(R_DEBUG|R_ADMIN))	return
@@ -660,7 +660,7 @@ client
 			usr << "Someone else changed this xeno while you were deciding"
 			return
 
-		holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"],"newhivenumber"=newhivenumber))
+		admin_holder.Topic(href, list("changehivenumber"=href_list["changehivenumber"],"newhivenumber"=newhivenumber))
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))	return
@@ -674,7 +674,7 @@ client
 		if(!H)
 			usr << "Mob doesn't exist anymore"
 			return
-		holder.Topic(href, list("makeai"=href_list["makeai"]))
+		admin_holder.Topic(href, list("makeai"=href_list["makeai"]))
 
 	else if(href_list["setmutantrace"])
 		if(!check_rights(R_SPAWN))	return

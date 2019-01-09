@@ -45,7 +45,7 @@
 /client/proc/ToRban(task in list("update","toggle","show","remove","remove all","find"))
 	set name = "ToR Ban Settings"
 	set category = "Server"
-	if(!holder)	return
+	if(!admin_holder)	return
 	switch(task)
 		if("update")
 			ToRban_update()

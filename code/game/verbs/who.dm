@@ -15,7 +15,7 @@
 	for(var/client/C in clients)
 		if(isobserver(C.mob))
 			count_observers++
-			if(!C.holder)
+			if(!C.admin_holder)
 				count_nonadmin_observers++
 		if(C.mob && C.mob.stat != DEAD)
 			if(ishuman(C.mob) && !iszombie(C.mob))
@@ -36,11 +36,11 @@
 
 	var/list/Lines = list()
 
-	if(holder && (R_ADMIN & holder.rights || R_MOD & holder.rights))
+	if(admin_holder && (R_ADMIN & admin_holder.rights || R_MOD & admin_holder.rights))
 		for(var/client/C in clients)
 			var/entry = "\t[C.key]"
-			if(C.holder && C.holder.fakekey)
-				entry += " <i>(as [C.holder.fakekey])</i>"
+			if(C.admin_holder && C.admin_holder.fakekey)
+				entry += " <i>(as [C.admin_holder.fakekey])</i>"
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
@@ -70,19 +70,19 @@
 
 			if(is_special_character(C.mob))
 				entry += " - <b><font color='red'>Antagonist</font></b>"
-			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
+			entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
 	else
 		for(var/client/C in clients)
-			if(C.holder && C.holder.fakekey)
-				Lines += C.holder.fakekey
+			if(C.admin_holder && C.admin_holder.fakekey)
+				Lines += C.admin_holder.fakekey
 			else
 				Lines += C.key
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
 
-	if(holder)
+	if(admin_holder)
 		var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
 		msg += "<b>Total Players: [length(Lines)]</b>"
 		msg += "<br><b style='color:#777'>Observers: [count_observers] (Non-Admin: [count_nonadmin_observers])</b>"
@@ -103,17 +103,17 @@
 	var/num_mods_online = 0
 	var/num_admins_online = 0
 	var/num_mentors_online = 0
-	if(holder)
+	if(admin_holder)
 		for(var/client/C in admins)
-			if(R_ADMIN & C.holder.rights || (!R_MOD & C.holder.rights && !R_MENTOR & C.holder.rights))	//Used to determine who shows up in admin rows
+			if(R_ADMIN & C.admin_holder.rights || (!R_MOD & C.admin_holder.rights && !R_MENTOR & C.admin_holder.rights))	//Used to determine who shows up in admin rows
 
-				if(C.holder.fakekey && (!R_ADMIN & holder.rights && !R_MOD & holder.rights))		//Mentors can't see stealthmins
+				if(C.admin_holder.fakekey && (!R_ADMIN & admin_holder.rights && !R_MOD & admin_holder.rights))		//Mentors can't see stealthmins
 					continue
 
-				msg += "\t[C] is a [C.holder.rank]"
+				msg += "\t[C] is a [C.admin_holder.rank]"
 
-				if(C.holder.fakekey)
-					msg += " <i>(as [C.holder.fakekey])</i>"
+				if(C.admin_holder.fakekey)
+					msg += " <i>(as [C.admin_holder.fakekey])</i>"
 
 				if(isobserver(C.mob))
 					msg += " - Observing"
@@ -127,8 +127,8 @@
 				msg += "\n"
 
 				num_admins_online++
-			else if(R_MOD & C.holder.rights)				//Who shows up in mod/mentor rows.
-				modmsg += "\t[C] is a [C.holder.rank]"
+			else if(R_MOD & C.admin_holder.rights)				//Who shows up in mod/mentor rows.
+				modmsg += "\t[C] is a [C.admin_holder.rank]"
 
 				if(isobserver(C.mob))
 					modmsg += " - Observing"
@@ -142,8 +142,8 @@
 				modmsg += "\n"
 				num_mods_online++
 
-			else if(R_MENTOR & C.holder.rights)
-				mentmsg += "\t[C] is a [C.holder.rank]"
+			else if(R_MENTOR & C.admin_holder.rights)
+				mentmsg += "\t[C] is a [C.admin_holder.rank]"
 				if(isobserver(C.mob))
 					mentmsg += " - Observing"
 				else if(istype(C.mob,/mob/new_player))
@@ -158,15 +158,15 @@
 
 	else
 		for(var/client/C in admins)
-			if(R_ADMIN & C.holder.rights || (!R_MOD & C.holder.rights && !R_MENTOR & C.holder.rights))
-				if(!C.holder.fakekey)
-					msg += "\t[C] is a [C.holder.rank]\n"
+			if(R_ADMIN & C.admin_holder.rights || (!R_MOD & C.admin_holder.rights && !R_MENTOR & C.admin_holder.rights))
+				if(!C.admin_holder.fakekey)
+					msg += "\t[C] is a [C.admin_holder.rank]\n"
 					num_admins_online++
-			else if (R_MOD & C.holder.rights)
-				modmsg += "\t[C] is a [C.holder.rank]\n"
+			else if (R_MOD & C.admin_holder.rights)
+				modmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mods_online++
-			else if (R_MENTOR & C.holder.rights)
-				mentmsg += "\t[C] is a [C.holder.rank]\n"
+			else if (R_MENTOR & C.admin_holder.rights)
+				mentmsg += "\t[C] is a [C.admin_holder.rank]\n"
 				num_mentors_online++
 
 	if(config.admin_irc)

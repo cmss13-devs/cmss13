@@ -38,7 +38,7 @@
 	data["current_log"] = user.STUI_log
 	switch(user.STUI_log)
 		if(1)
-			if(user.client.holder.rights & R_MOD)
+			if(user.client.admin_holder.rights & R_MOD)
 				data["colour"] = "bad"
 				if(attack.len > config.STUI_length+1)
 					attack.Cut(,attack.len-config.STUI_length)
@@ -46,7 +46,7 @@
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(2)
-			if(user.client.holder.rights & R_ADMIN)
+			if(user.client.admin_holder.rights & R_ADMIN)
 				data["colour"] = "blue"
 				if(admin.len > config.STUI_length+1)
 					admin.Cut(,admin.len-config.STUI_length)
@@ -54,7 +54,7 @@
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(3)
-			if(user.client.holder.rights & R_ADMIN)
+			if(user.client.admin_holder.rights & R_ADMIN)
 				data["colour"] = "average"
 				if(staff.len > config.STUI_length+1)
 					staff.Cut(,staff.len-config.STUI_length)
@@ -62,7 +62,7 @@
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(4)
-			if((user.client.holder.rights & R_MOD) || (user.client.holder.rights & R_MENTOR))
+			if((user.client.admin_holder.rights & R_MOD) || (user.client.admin_holder.rights & R_MENTOR))
 				data["colour"] = "average"
 				if(ooc.len > config.STUI_length+1)
 					ooc.Cut(,ooc.len-config.STUI_length)
@@ -70,7 +70,7 @@
 			else
 				data["log"] = "You do not have the right permissions to view this."
 		if(5)
-			if((user.client.holder.rights & R_ADMIN) || (user.client.holder.rights & R_DEBUG))
+			if((user.client.admin_holder.rights & R_ADMIN) || (user.client.admin_holder.rights & R_DEBUG))
 				data["colour"] = "white"
 				if(game.len > config.STUI_length+1)
 					game.Cut(,game.len-config.STUI_length)
@@ -79,7 +79,7 @@
 				data["log"] = "You do not have the right permissions to view this."
 
 		else
-			if(user.client.holder.rights & R_DEBUG)
+			if(user.client.admin_holder.rights & R_DEBUG)
 				data["colour"] = "average"
 				if(debug.len > config.STUI_length+1)
 					debug.Cut(,debug.len-config.STUI_length)

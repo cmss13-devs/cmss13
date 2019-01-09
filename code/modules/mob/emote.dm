@@ -79,7 +79,7 @@
 		src << "\red You have deadchat muted."
 		return
 
-	if(!src.client.holder)
+	if(!src.client.admin_holder)
 		if(!dsay_allowed)
 			src << "\red Deadchat is globally muted"
 			return
@@ -104,7 +104,7 @@
 			if(istype(M, /mob/new_player))
 				continue
 
-			if(M.client && M.client.holder && (M.client.holder.rights & R_ADMIN|R_MOD) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
+			if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_ADMIN|R_MOD) && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to admins/mods
 				M << message
 
 			else if(M.stat == DEAD && (M.client.prefs.toggles_chat & CHAT_DEAD)) // Show the emote to regular ghosts with deadchat toggled on

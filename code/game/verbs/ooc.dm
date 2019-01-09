@@ -39,7 +39,7 @@ var/global/normal_ooc_colour = "#002eb8"
 		src << "\red You have OOC muted."
 		return
 
-	if(!holder)
+	if(!admin_holder)
 		if(!ooc_allowed)
 			src << "\red OOC is globally muted"
 			return
@@ -59,15 +59,15 @@ var/global/normal_ooc_colour = "#002eb8"
 
 	log_ooc("[mob.name]/[key] : [msg]")
 	STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
-	STUI.processing |= 4 
+	STUI.processing |= 4
 	var/display_colour = normal_ooc_colour
-	if(holder && !holder.fakekey)
+	if(admin_holder && !admin_holder.fakekey)
 		display_colour = "#2e78d9"	//light blue
-		if(holder.rights & R_MOD && !(holder.rights & R_ADMIN))
+		if(admin_holder.rights & R_MOD && !(admin_holder.rights & R_ADMIN))
 			display_colour = "#184880"	//dark blue
-		if(holder.rights & R_DEBUG && !(holder.rights & R_ADMIN))
+		if(admin_holder.rights & R_DEBUG && !(admin_holder.rights & R_ADMIN))
 			display_colour = "#1b521f"	//dark green
-		else if(holder.rights & R_COLOR)
+		else if(admin_holder.rights & R_COLOR)
 			if(config.allow_admin_ooccolor)
 				display_colour = src.prefs.ooccolor
 			else
@@ -78,26 +78,26 @@ var/global/normal_ooc_colour = "#002eb8"
 	for(var/client/C in clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
-			if(holder)
-				if(holder.fakekey)
-					if(C.holder)
-						display_name = "[holder.fakekey]/([src.key])"
+			if(admin_holder)
+				if(admin_holder.fakekey)
+					if(C.admin_holder)
+						display_name = "[admin_holder.fakekey]/([src.key])"
 					else
-						display_name = holder.fakekey
+						display_name = admin_holder.fakekey
 			C << "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
 
 			/*
-			if(holder)
-				if(!holder.fakekey || C.holder)
-					if(holder.rights & R_ADMIN)
-						C << "<font color=[config.allow_admin_ooccolor ? src.prefs.ooccolor :"#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[key][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
-					else if(holder.rights & R_MOD)
-						C << "<font color=#184880><b><span class='prefix'>OOC:</span> <EM>[src.key][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
+			if(admin_holder)
+				if(!admin_holder.fakekey || C.admin_holder)
+					if(admin_holder.rights & R_ADMIN)
+						C << "<font color=[config.allow_admin_ooccolor ? src.prefs.ooccolor :"#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[key][admin_holder.fakekey ? "/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
+					else if(admin_holder.rights & R_MOD)
+						C << "<font color=#184880><b><span class='prefix'>OOC:</span> <EM>[src.key][admin_holder.fakekey ? "/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
 					else
 						C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>"
 
 				else
-					C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : src.key]:</EM> <span class='message'>[msg]</span></span></font>"
+					C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[admin_holder.fakekey ? admin_holder.fakekey : src.key]:</EM> <span class='message'>[msg]</span></span></font>"
 			else
 				C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>"
 			*/
@@ -153,7 +153,7 @@ var/global/normal_ooc_colour = "#002eb8"
 		src << "\red You have LOOC muted."
 		return
 
-	if(!holder)
+	if(!admin_holder)
 		if(!looc_allowed)
 			src << "\red LOOC is globally muted"
 			return
@@ -173,7 +173,7 @@ var/global/normal_ooc_colour = "#002eb8"
 
 	log_ooc("(LOCAL) [mob.name]/[key] : [msg]")
 	STUI.ooc.Add("\[[time_stamp()]] <font color='#6699CC'>LOOC: [mob.name]/[key]: [msg]</font><br>")
-	STUI.processing |= 4 
+	STUI.processing |= 4
 	var/list/heard = get_mobs_in_view(7, src.mob)
 	var/mob/S = src.mob
 
@@ -190,12 +190,12 @@ var/global/normal_ooc_colour = "#002eb8"
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
-			if(holder)
-				if(holder.fakekey)
-					if(C.holder)
-						display_name = "[holder.fakekey]/([src.key])"
+			if(admin_holder)
+				if(admin_holder.fakekey)
+					if(C.admin_holder)
+						display_name = "[admin_holder.fakekey]/([src.key])"
 					else
-						display_name = holder.fakekey
+						display_name = admin_holder.fakekey
 			C << "<font color='#6699CC'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
 
 	// Now handle admins

@@ -8,28 +8,28 @@ var/global/floorIsLava = 0
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(R_ADMIN & C.holder.rights)
+		if(R_ADMIN & C.admin_holder.rights)
 			C << msg
 
 /proc/message_mods(var/msg) // +MOD and above (not Mentors)
 	msg = "<span class=\"admin\"><span class=\"prefix\">MOD LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(R_MOD & C.holder.rights)
+		if(R_MOD & C.admin_holder.rights)
 			C << msg
 
 /proc/message_staff(var/msg) // ALL staff - including Mentors
 	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]</span></span>"
 	log_adminwarn(msg)
 	for(var/client/C in admins)
-		if(C.holder.rights)
+		if(C.admin_holder.rights)
 			C << msg
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	log_attack(text)
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <span class=\"message\">[text]</span></span>"
 	for(var/client/C in admins)
-		if(R_MOD & C.holder.rights)
+		if(R_MOD & C.admin_holder.rights)
 			if(C.prefs.toggles_chat & CHAT_ATTACKLOGS)
 				var/msg = rendered
 				C << msg
@@ -38,7 +38,7 @@ var/global/floorIsLava = 0
 	log_admin(msg)
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN NICHE LOG:</span> <span class=\"message\">[msg]</span></span>"
 	for(var/client/C in admins)
-		if(R_MOD & C.holder.rights)
+		if(R_MOD & C.admin_holder.rights)
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				C << msg
 
@@ -46,7 +46,7 @@ var/global/floorIsLava = 0
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
 	var/rendered = "<span class=\"admin\"><span class=\"prefix\">ATTACK:</span> <font color=#00ff00><b>[text]</b></font></span>" //I used <font> because I never learned html correctly, fix this if you want
 	for(var/client/C in admins)
-		if(R_MOD & C.holder.rights)
+		if(R_MOD & C.admin_holder.rights)
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)
 				var/msg = rendered
 				C << msg
@@ -63,7 +63,7 @@ var/global/floorIsLava = 0
 		usr << "You seem to be selecting a mob that doesn't exist anymore."
 		return
 	if (!istype(src,/datum/admins))
-		src = usr.client.holder
+		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins))
 		usr << "Error: you are not an admin!"
 		return
@@ -72,7 +72,7 @@ var/global/floorIsLava = 0
 	body += "<body>Options panel for <b>[M]</b>"
 	if(M.client)
 		body += " played by <b>[M.client]</b> "
-		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.holder ? M.client.holder.rank : "Player"]</A>\]"
+		body += "\[<A href='?src=\ref[src];editrights=show'>[M.client.admin_holder ? M.client.admin_holder.rank : "Player"]</A>\]"
 
 	if(istype(M, /mob/new_player))
 		body += " <B>Hasn't Entered Game</B> "
@@ -96,7 +96,7 @@ var/global/floorIsLava = 0
 	"}
 
 	if(M.client)
-		body += "\ <A href='?_src_=holder;sendbacktolobby=\ref[M]'> Send back to Lobby</A>"
+		body += "\ <A href='?_src_=admin_holder;sendbacktolobby=\ref[M]'> Send back to Lobby</A>"
 		var/muted = M.client.prefs.muted
 		body += {"<br><b>Mute: </b>
 			\[<A href='?src=\ref[src];mute=\ref[M];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> |
@@ -227,7 +227,7 @@ var/global/floorIsLava = 0
 	set category = "Admin"
 	set name = "Player Notes List"
 	if (!istype(src,/datum/admins))
-		src = usr.client.holder
+		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins))
 		usr << "Error: you are not an admin!"
 		return
@@ -285,7 +285,7 @@ var/global/floorIsLava = 0
 	set category = "Admin"
 	set name = "Player Notes Show"
 	if (!istype(src,/datum/admins))
-		src = usr.client.holder
+		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins))
 		usr << "Error: you are not an admin!"
 		return
@@ -326,7 +326,7 @@ var/global/floorIsLava = 0
 	set category = null
 	set name = "Player Notes Copy"
 	if (!istype(src,/datum/admins))
-		src = usr.client.holder
+		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins))
 		usr << "Error: you are not an admin!"
 		return
@@ -359,7 +359,7 @@ var/global/floorIsLava = 0
 	set desc = "Allows you to view, add and edit news feeds."
 
 	if (!istype(src,/datum/admins))
-		src = usr.client.holder
+		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins))
 		usr << "Error: you are not an admin!"
 		return
@@ -721,16 +721,16 @@ var/global/floorIsLava = 0
 	set category = "Server"
 	set name = "Restart"
 	set desc="Restarts the world"
-	if (!usr.client.holder)
+	if (!usr.client.admin_holder)
 		return
 	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		world << "\red <b>Restarting world!</b> \blue Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!"
+		world << "\red <b>Restarting world!</b> \blue Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"
 		log_admin("[key_name(usr)] initiated a reboot.")
 
-		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
+		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")
 		feedback_add_details("admin_verb","R") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 		if(blackbox)
@@ -750,7 +750,7 @@ var/global/floorIsLava = 0
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = adminscrub(message,500)
-		world << "\blue <b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"
+		world << "\blue <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -974,13 +974,13 @@ var/global/floorIsLava = 0
 	set category = "Server"
 	set desc="Reboots the server post haste"
 	set name="Immediate Reboot"
-	if(!usr.client.holder)	return
+	if(!usr.client.admin_holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	world << "\red <b>Rebooting world!</b> \blue Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]!"
+	world << "\red <b>Rebooting world!</b> \blue Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
-	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]")
+	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")
 	feedback_add_details("admin_verb","IR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(blackbox)
@@ -1115,7 +1115,7 @@ var/global/floorIsLava = 0
 	set name = "Show Skills"
 
 	if (!istype(src,/datum/admins))
-		src = usr.client.holder
+		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins))
 		usr << "Error: you are not an admin!"
 		return
@@ -1129,7 +1129,7 @@ var/global/floorIsLava = 0
 	set name = "Update Mob Sprite"
 	set desc = "Should fix any mob sprite update errors."
 
-	if (!holder)
+	if (!admin_holder)
 		src << "Only administrators may use this command."
 		return
 
@@ -1144,10 +1144,10 @@ var/global/floorIsLava = 0
 
 	if(!istype(C))
 		return 0
-	if(!C.holder)
+	if(!C.admin_holder)
 		return 0
 
-	if(C.holder.rights == R_MENTOR)
+	if(C.admin_holder.rights == R_MENTOR)
 		return 1
 	return 0
 
@@ -1202,7 +1202,7 @@ var/global/floorIsLava = 0
 			return 0
 	else
 		return 0
-	if(C.holder && R_HOST & C.holder.rights)
+	if(C.admin_holder && R_HOST & C.admin_holder.rights)
 		return 1
 	else
 		return 0

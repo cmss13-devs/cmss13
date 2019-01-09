@@ -2,7 +2,7 @@
 		////////////////
 		//ADMIN THINGS//
 		////////////////
-	var/datum/admins/holder = null
+	var/datum/admins/admin_holder = null //Datum for storing admin permissions and other admin stuff
 	var/buildmode		= 0
 
 	var/last_message	= "" //Contains the last message sent by this client - used to protect against copy-paste spamming.

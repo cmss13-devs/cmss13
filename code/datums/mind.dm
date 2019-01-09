@@ -371,7 +371,7 @@
 				take_uplink()
 				memory = null//Remove any memory they may have had.
 			if("crystals")
-				if (usr.client.holder.rights & R_FUN)
+				if (usr.client.admin_holder.rights & R_FUN)
 					var/obj/item/device/uplink/hidden/suplink = find_syndicate_uplink()
 					var/crystals
 					if (suplink)

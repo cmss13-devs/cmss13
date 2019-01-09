@@ -114,7 +114,7 @@
 	if(!src.client) //Somehow
 		return
 
-	if(!src.client.holder)
+	if(!src.client.admin_holder)
 		if(!dsay_allowed)
 			src << "\red Deadchat is globally muted"
 			return
@@ -140,7 +140,7 @@
 			M << rendered
 			continue
 
-		if(M.client && M.client.holder && !is_mentor(M.client) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
+		if(M.client && M.client.admin_holder && !is_mentor(M.client) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
 			M << rendered	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	usr.talked = 1

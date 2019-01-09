@@ -617,7 +617,7 @@
 			return
 
 		if(M != usr)																//we can jobban ourselves
-			if(M.client && M.client.holder && (M.client.holder.rights & R_BAN))		//they can ban too. So we can't ban them
+			if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_BAN))		//they can ban too. So we can't ban them
 				alert("You cannot perform this action. You must be of a higher administrative rank!")
 				return
 
@@ -813,7 +813,7 @@
 		var/mob/M = locate(href_list["newban"])
 		if(!ismob(M)) return
 
-		if(M.client && M.client.holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+		if(M.client && M.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
 			usr << "\red <B>Warning: Mob ckey for [M.name] not found.</b>"
@@ -851,7 +851,7 @@
 		var/mob/M = locate(href_list["lazyban"])
 		if(!ismob(M)) return
 
-		if(M.client && M.client.holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+		if(M.client && M.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
 			usr << "\red <B>Warning: Mob ckey for [M.name] not found.</b>"
@@ -1511,7 +1511,7 @@
 		src.owner << "You sent [input] to [H] via a secure channel."
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
 		for(var/client/X in admins)
-			if((R_ADMIN|R_MOD) & X.holder.rights)
+			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 				X << "<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \"[input]\"</b>"
 		H << "\red You hear something crackle in your headset before a voice speaks, \"Please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"
 
@@ -2580,7 +2580,7 @@
 
 		//send this msg to all admins
 		for(var/client/X in admins)
-			if((R_ADMIN|R_MOD) & X.holder.rights)
+			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 				X << msg
 
 		//unanswered_distress -= ref_person

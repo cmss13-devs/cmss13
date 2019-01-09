@@ -3,7 +3,7 @@
 	set name = "Permissions Panel"
 	set desc = "Edit admin permissions"
 	if(!check_rights(R_PERMISSIONS))	return
-	usr.client.holder.edit_admin_permissions()
+	usr.client.admin_holder.edit_admin_permissions()
 
 /datum/admins/proc/edit_admin_permissions()
 	if(!check_rights(R_PERMISSIONS))	return
@@ -50,7 +50,7 @@
 	if(!usr.client)
 		return
 
-	if(!usr.client.holder || !(usr.client.holder.rights & R_PERMISSIONS))
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_PERMISSIONS))
 		usr << "\red You do not have permission to do this!"
 		return
 
@@ -100,7 +100,7 @@
 	if(!usr.client)
 		return
 
-	if(!usr.client.holder || !(usr.client.holder.rights & R_PERMISSIONS))
+	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_PERMISSIONS))
 		usr << "\red You do not have permission to do this!"
 		return
 

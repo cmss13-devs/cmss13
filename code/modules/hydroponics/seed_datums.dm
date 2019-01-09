@@ -7,7 +7,7 @@ var/global/list/gene_tag_masks = list()   // Gene obfuscation for delicious tria
 	set name = "Show Plant Genes"
 	set desc = "Prints the round's plant gene masks."
 
-	if(!holder)	return
+	if(!admin_holder)	return
 
 	if(!gene_tag_masks)
 		usr << "Gene masks not set."

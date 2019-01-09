@@ -63,7 +63,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	admin_datums.Cut()
 	for(var/client/C in admins)
 		C.remove_admin_verbs()
-		C.holder = null
+		C.admin_holder = null
 	admins.Cut()
 
 	if(config.admin_legacy_system)

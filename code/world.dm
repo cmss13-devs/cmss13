@@ -149,8 +149,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		var/admins = 0
 
 		for(var/client/C in clients)
-			if(C.holder)
-				if(C.holder.fakekey)
+			if(C.admin_holder)
+				if(C.admin_holder.fakekey)
 					continue	//so stealthmins aren't revealed by the hub
 				admins++
 			s["player[n]"] = C.key
@@ -342,7 +342,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		while(1)
 			sleep(INACTIVITY_KICK)
 			for(var/client/C in clients)
-				if(C.holder && C.holder.rights & R_ADMIN) //Skip admins.
+				if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.
 					continue
 				if(C.is_afk(INACTIVITY_KICK))
 					if(!istype(C.mob, /mob/dead))

@@ -60,7 +60,7 @@ var/scheduledEvent = null
 	set name = "Trigger Event (Debug Only)"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
-	if(!holder)
+	if(!admin_holder)
 		return
 
 	if(ispath(type))

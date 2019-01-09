@@ -163,7 +163,7 @@ datum/controller/vote
 
 	proc/submit_vote(var/ckey, var/vote)
 		if(mode)
-			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
+			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.admin_holder)
 				return 0
 			if(current_votes[ckey])
 				choices[choices[current_votes[ckey]]]--
@@ -232,8 +232,8 @@ datum/controller/vote
 		if(!C)	return
 		var/admin = 0
 		var/trialmin = 0
-		if(C.holder)
-			if(C.holder.rights & R_ADMIN)
+		if(C.admin_holder)
+			if(C.admin_holder.rights & R_ADMIN)
 				admin = 1
 				trialmin = 1 // don't know why we use both of these it's really weird, but I'm 2 lasy to refactor this all to use just admin.
 		voting |= C
@@ -298,22 +298,22 @@ datum/controller/vote
 				usr << browse(null, "window=vote")
 				return
 			if("cancel")
-				if(usr.client.holder)
+				if(usr.client.admin_holder)
 					reset()
 			if("toggle_restart")
-				if(usr.client.holder)
+				if(usr.client.admin_holder)
 					config.allow_vote_restart = !config.allow_vote_restart
 			if("toggle_gamemode")
-				if(usr.client.holder)
+				if(usr.client.admin_holder)
 					config.allow_vote_mode = !config.allow_vote_mode
 			if("restart")
-				if(config.allow_vote_restart || usr.client.holder)
+				if(config.allow_vote_restart || usr.client.admin_holder)
 					initiate_vote("restart",usr.key)
 			if("gamemode")
-				if(config.allow_vote_mode || usr.client.holder)
+				if(config.allow_vote_mode || usr.client.admin_holder)
 					initiate_vote("gamemode",usr.key)
 			if("custom")
-				if(usr.client.holder)
+				if(usr.client.admin_holder)
 					initiate_vote("custom",usr.key)
 			else
 				submit_vote(usr.ckey, round(text2num(href_list["vote"])))

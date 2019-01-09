@@ -50,7 +50,7 @@
 	establish_db_connection()
 	if(dbcon.IsConnected())
 		var/isadmin = 0
-		if(src.client && src.client.holder)
+		if(src.client && src.client.admin_holder)
 			isadmin = 1
 
 		var/DBQuery/select_query = dbcon.NewQuery("SELECT id, question FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime")
@@ -395,8 +395,8 @@
 			return
 
 		var/adminrank = "Player"
-		if(usr && usr.client && usr.client.holder)
-			adminrank = usr.client.holder.rank
+		if(usr && usr.client && usr.client.admin_holder)
+			adminrank = usr.client.admin_holder.rank
 
 
 		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO erro_poll_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]')")
@@ -444,8 +444,8 @@
 			return
 
 		var/adminrank = "Player"
-		if(usr && usr.client && usr.client.holder)
-			adminrank = usr.client.holder.rank
+		if(usr && usr.client && usr.client.admin_holder)
+			adminrank = usr.client.admin_holder.rank
 
 
 		replytext = oldreplacetext(replytext, "%BR%", "")
@@ -515,8 +515,8 @@
 			return
 
 		var/adminrank = "Player"
-		if(usr && usr.client && usr.client.holder)
-			adminrank = usr.client.holder.rank
+		if(usr && usr.client && usr.client.admin_holder)
+			adminrank = usr.client.admin_holder.rank
 
 
 		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO erro_poll_vote (id ,datetime ,pollid ,optionid ,ckey ,ip ,adminrank, rating) VALUES (null, Now(), [pollid], [optionid], '[usr.ckey]', '[usr.client.address]', '[adminrank]', [(isnull(rating)) ? "null" : rating])")

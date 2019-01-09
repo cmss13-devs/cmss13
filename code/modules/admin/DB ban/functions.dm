@@ -254,10 +254,10 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 	set name = "Banning Panel"
 	set desc = "Edit admin permissions"
 
-	if(!holder)
+	if(!admin_holder)
 		return
 
-	holder.DB_ban_panel()
+	admin_holder.DB_ban_panel()
 
 
 /datum/admins/proc/DB_ban_panel(var/playerckey = null, var/adminckey = null)

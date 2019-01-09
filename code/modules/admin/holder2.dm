@@ -9,7 +9,7 @@ var/list/admin_datums = list()
 	var/datum/marked_datum
 
 	var/admincaster_screen = 0	//See newscaster.dm under machinery for a full description
-	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as holders.
+	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
 	var/admincaster_signature	//What you'll sign the newsfeeds as
 
@@ -26,7 +26,7 @@ var/list/admin_datums = list()
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
 		owner = C
-		owner.holder = src
+		owner.admin_holder = src
 		owner.add_admin_verbs()	//TODO
 		admins |= C
 
@@ -34,7 +34,7 @@ var/list/admin_datums = list()
 	if(owner)
 		admins -= owner
 		owner.remove_admin_verbs()
-		owner.holder = null
+		owner.admin_holder = null
 		owner = null
 
 /*
@@ -48,19 +48,19 @@ proc/admin_proc()
 	world << "you have enough rights!"
 
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
-you will have to do something like if(client.holder.rights & R_ADMIN) yourself.
+you will have to do something like if(client.admin_holder.rights & R_ADMIN) yourself.
 */
 /proc/check_rights(rights_required, show_msg=1)
 	if(usr && usr.client)
 		if(rights_required)
-			if(usr.client.holder)
-				if(rights_required & usr.client.holder.rights)
+			if(usr.client.admin_holder)
+				if(rights_required & usr.client.admin_holder.rights)
 					return 1
 				else
 					if(show_msg)
 						usr << "<font color='red'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</font>"
 		else
-			if(usr.client.holder)
+			if(usr.client.admin_holder)
 				return 1
 			else
 				if(show_msg)
@@ -70,19 +70,23 @@ you will have to do something like if(client.holder.rights & R_ADMIN) yourself.
 //probably a bit iffy - will hopefully figure out a better solution
 /proc/check_if_greater_rights_than(client/other)
 	if(usr && usr.client)
-		if(usr.client.holder)
-			if(!other || !other.holder)
+		if(usr.client.admin_holder)
+			if(!other || !other.admin_holder)
 				return 1
-			if(usr.client.holder.rights != other.holder.rights)
-				if( (usr.client.holder.rights & other.holder.rights) == other.holder.rights )
+			if(usr.client.admin_holder.rights != other.admin_holder.rights)
+				if( (usr.client.admin_holder.rights & other.admin_holder.rights) == other.admin_holder.rights )
 					return 1	//we have all the rights they have and more
 		usr << "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>"
 	return 0
 
 /client/proc/deadmin()
-	admin_datums -= ckey
-	if(holder)
-		holder.disassociate()
-		cdel(holder)
-		holder = null
+	if(admin_holder)
+		admin_holder.disassociate()
+		cdel(admin_holder)
+		admin_holder = null
+	return 1
+
+/client/proc/readmin()
+	if(admin_datums[ckey])
+		admin_datums[ckey].associate(src)
 	return 1

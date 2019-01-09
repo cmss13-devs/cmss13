@@ -302,26 +302,26 @@ var/list/admin_verbs_mentor = list(
 )
 
 /client/proc/add_admin_verbs()
-	if(holder)
+	if(admin_holder)
 		verbs += admin_verbs_default
-		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
-		if(holder.rights & R_ADMIN)			verbs += admin_verbs_admin
-		if(holder.rights & R_BAN)			verbs += admin_verbs_ban
-		if(holder.rights & R_FUN)			verbs += admin_verbs_fun
-		if(holder.rights & R_SERVER)		verbs += admin_verbs_server
-		if(holder.rights & R_DEBUG)
+		if(admin_holder.rights & R_BUILDMODE)	verbs += /client/proc/togglebuildmodeself
+		if(admin_holder.rights & R_ADMIN)		verbs += admin_verbs_admin
+		if(admin_holder.rights & R_BAN)			verbs += admin_verbs_ban
+		if(admin_holder.rights & R_FUN)			verbs += admin_verbs_fun
+		if(admin_holder.rights & R_SERVER)		verbs += admin_verbs_server
+		if(admin_holder.rights & R_DEBUG)
 			verbs += admin_verbs_debug
 			if(config.debugparanoid && !check_rights(R_ADMIN))
 				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
-		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
-		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
-		if(holder.rights & R_STEALTH)		verbs += /client/proc/stealth
-		if(holder.rights & R_REJUVINATE)	verbs += admin_verbs_rejuv
-		if(holder.rights & R_COLOR)			verbs += admin_verbs_color
-		if(holder.rights & R_SOUNDS)		verbs += admin_verbs_sounds
-		if(holder.rights & R_SPAWN)			verbs += admin_verbs_spawn
-		if(holder.rights & R_MOD)			verbs += admin_verbs_mod
-		if(holder.rights & R_MENTOR)		verbs += admin_verbs_mentor
+		if(admin_holder.rights & R_POSSESS)		verbs += admin_verbs_possess
+		if(admin_holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
+		if(admin_holder.rights & R_STEALTH)		verbs += /client/proc/stealth
+		if(admin_holder.rights & R_REJUVINATE)	verbs += admin_verbs_rejuv
+		if(admin_holder.rights & R_COLOR)		verbs += admin_verbs_color
+		if(admin_holder.rights & R_SOUNDS)		verbs += admin_verbs_sounds
+		if(admin_holder.rights & R_SPAWN)		verbs += admin_verbs_spawn
+		if(admin_holder.rights & R_MOD)			verbs += admin_verbs_mod
+		if(admin_holder.rights & R_MENTOR)		verbs += admin_verbs_mentor
 
 /client/proc/remove_admin_verbs()
 	verbs.Remove(
@@ -379,7 +379,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/admin_ghost()
 	set category = "Admin"
 	set name = "Aghost"
-	if(!holder)	return
+	if(!admin_holder)	return
 	var/new_STUI = 0
 	if(usr:open_uis)
 		for(var/datum/nanoui/ui in usr:open_uis)
@@ -418,7 +418,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Invisimin"
 	set category = "Admin"
 	set desc = "Toggles ghost-like invisibility (Don't abuse this)"
-	if(holder && mob)
+	if(admin_holder && mob)
 		if(mob.invisibility == INVISIBILITY_OBSERVER)
 			mob.invisibility = initial(mob.invisibility)
 			mob << "\red <b>Invisimin off. Invisibility reset.</b>"
@@ -435,8 +435,8 @@ var/list/admin_verbs_mentor = list(
 /client/proc/player_panel()
 	set name = "Player Panel"
 	set category = "Admin"
-	if(holder)
-		holder.player_panel_old()
+	if(admin_holder)
+		admin_holder.player_panel_old()
 	feedback_add_details("admin_verb","PP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 */
@@ -444,16 +444,16 @@ var/list/admin_verbs_mentor = list(
 /client/proc/player_panel_new()
 	set name = "Player Panel"
 	set category = "Admin"
-	if(holder)
-		holder.player_panel_new()
+	if(admin_holder)
+		admin_holder.player_panel_new()
 	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
 	set category = "Admin"
-	if(holder)
-		holder.check_antagonists()
+	if(admin_holder)
+		admin_holder.check_antagonists()
 		log_admin("[key_name(usr)] checked antagonists.")	//for tsar~
 	feedback_add_details("admin_verb","CHA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
@@ -461,45 +461,45 @@ var/list/admin_verbs_mentor = list(
 /client/proc/jobbans()
 	set name = "Display Job Bans"
 	set category = "Admin"
-	if(holder)
+	if(admin_holder)
 		if(config.ban_legacy_system)
-			holder.Jobbans()
+			admin_holder.Jobbans()
 		else
-			holder.DB_ban_panel()
+			admin_holder.DB_ban_panel()
 	feedback_add_details("admin_verb","VJB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/unban_panel()
 	set name = "Unban Panel"
 	set category = "Admin"
-	if(holder)
+	if(admin_holder)
 		if(config.ban_legacy_system)
-			holder.unbanpanel()
+			admin_holder.unbanpanel()
 		else
-			holder.DB_ban_panel()
+			admin_holder.DB_ban_panel()
 	feedback_add_details("admin_verb","UBP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/game_panel()
 	set name = "Game Panel"
 	set category = "Admin"
-	if(holder)
-		holder.Game()
+	if(admin_holder)
+		admin_holder.Game()
 	feedback_add_details("admin_verb","GP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/secrets()
 	set name = "Secrets Panel"
 	set category = "Admin"
-	if (holder)
-		holder.Secrets()
+	if (admin_holder)
+		admin_holder.Secrets()
 	feedback_add_details("admin_verb","S") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
 /client/proc/set_ooc_color_self()
 	set category = "OOC"
 	set name = "OOC Text Color - Self"
-	if(!holder && !donator)	return
+	if(!admin_holder && !donator)	return
 	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
@@ -510,17 +510,17 @@ var/list/admin_verbs_mentor = list(
 /client/proc/stealth()
 	set category = "Admin"
 	set name = "Stealth Mode"
-	if(holder)
-		if(holder.fakekey)
-			holder.fakekey = null
+	if(admin_holder)
+		if(admin_holder.fakekey)
+			admin_holder.fakekey = null
 		else
 			var/new_key = ckeyEx(input("Enter your desired display name.", "Fake Key", key) as text|null)
 			if(!new_key)	return
 			if(length(new_key) >= 26)
 				new_key = copytext(new_key, 1, 26)
-			holder.fakekey = new_key
-		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
-		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]", 1)
+			admin_holder.fakekey = new_key
+		log_admin("[key_name(usr)] has turned stealth mode [admin_holder.fakekey ? "ON" : "OFF"]")
+		message_admins("[key_name_admin(usr)] has turned stealth mode [admin_holder.fakekey ? "ON" : "OFF"]", 1)
 	feedback_add_details("admin_verb","SM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 #define MAX_WARNS 3
@@ -675,7 +675,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "De-Admin Self"
 	set category = "Admin"
 
-	if(holder)
+	if(admin_holder)
 		if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") == "Yes")
 			log_admin("[src] deadmined themselves.")
 			message_admins("[src] deadmined themselves.", 1)
@@ -688,8 +688,8 @@ var/list/admin_verbs_mentor = list(
 	set name = "Re-admin Self"
 	set category = "Admin"
 
-	load_admins() //A bit ugly, but hey
 	verbs -= /client/proc/readmin_self
+	readmin()
 	src << "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>"
 	log_admin("[src] readmined themselves.")
 	message_admins("[src] readmined themselves.", 1)
@@ -698,7 +698,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/toggle_log_hrefs()
 	set name = "Toggle href Logging"
 	set category = "Server"
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(config)
 		if(config.log_hrefs)
 			config.log_hrefs = 0
@@ -710,8 +710,8 @@ var/list/admin_verbs_mentor = list(
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
 	set category = "Admin"
-	if(holder)
-		src.holder.output_ai_laws()
+	if(admin_holder)
+		src.admin_holder.output_ai_laws()
 
 
 //---- bs12 verbs ----
@@ -719,8 +719,8 @@ var/list/admin_verbs_mentor = list(
 /client/proc/mod_panel()
 	set name = "Moderator Panel"
 	set category = "Admin"
-/*	if(holder)
-		holder.mod_panel()*/
+/*	if(admin_holder)
+		admin_holder.mod_panel()*/
 //	feedback_add_details("admin_verb","MP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -778,14 +778,14 @@ var/list/admin_verbs_mentor = list(
 /client/proc/player_notes_list()
 	set name = "Player Notes List"
 	set category = "Admin"
-	if(holder)
-		holder.player_notes_list()
+	if(admin_holder)
+		admin_holder.player_notes_list()
 	return
 
 /client/proc/free_slot()
 	set name = "Job Slots - Free"
 	set category = "Admin"
-	if(holder)
+	if(admin_holder)
 		var/roles[] = new
 		var/i
 		var/datum/job/J
@@ -801,7 +801,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/modify_slot()
 	set name = "Job Slots - Modify"
 	set category = "Admin"
-	if(holder)
+	if(admin_holder)
 		var/roles[] = new
 		var/i
 		var/datum/job/J
@@ -817,12 +817,12 @@ var/list/admin_verbs_mentor = list(
 			var/num = input("How many slots role [J.title] should have?","Number:",tpos) as num|null
 			if(num && !RoleAuthority.modify_role(J, num))
 				usr << "<span class='boldnotice'>Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first.</span>"
-				
+
 /client/proc/adjust_predator_round()
 	set name = "Adjust Predator Round"
 	set category = "Admin"
 	set desc = "Adjust the number of predators present in a predator round."
-	if(holder)
+	if(admin_holder)
 		if(!ticker || !ticker.mode)
 			src << "<span class='warning'>The game hasn't started yet!</span>"
 			return
@@ -858,7 +858,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/toggleghostwriters()
 	set name = "Toggle Ghost Blood Writing"
 	set category = "Server"
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(config)
 		if(config.cult_ghostwriter)
 			config.cult_ghostwriter = 0
@@ -872,7 +872,7 @@ var/list/admin_verbs_mentor = list(
 /client/proc/toggledrones()
 	set name = "Toggle Maintenance Drones"
 	set category = "Server"
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(config)
 		if(config.allow_drone_spawn)
 			config.allow_drone_spawn = 0
@@ -944,7 +944,7 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Toggling to on will allow anyone to use restricted WY superguns. Leave this alone unless you know what you're doing."
 	set category = "Server"
 
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(config)
 		if(config.remove_gun_restrictions)
 			src << "<b>Enabled gun restrictions.</b>"
@@ -961,7 +961,7 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Toggling to on will allow synthetics to fire guns. Leave this alone unless you know what you're doing."
 	set category = "Server"
 
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(config)
 		if(config.allow_synthetic_gun_use)
 			src << "<b>Synthetic gun use allowed.</b>"
@@ -978,7 +978,7 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Using this allow to change how much accuracy and damage are changed. 1 is the normal number, anything higher will increase damage and/or accuracy."
 	set category = "Fun"
 
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(config)
 		var/acc = input("Select the new accuracy multiplier.","ACCURACY MULTIPLIER", 1) as num
 		var/dam = input("Select the new damage multiplier.","DAMAGE MULTIPLIER", 1) as num
@@ -992,7 +992,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Set Xeno Away Timer in View"
 	set desc = "Set the away_timer of all clientless Xenos in view to 300 to allow players to become them."
 	set category = "Fun"
-	if(!holder)	return
+	if(!admin_holder)	return
 
 	if(alert("Are you sure you want to set the away_timer of all visible Xenos to 300? Make sure there aren't any visible AFK Xenos with players that might return!",, "Confirm", "Cancel") == "Cancel") return
 
@@ -1007,7 +1007,7 @@ var/list/admin_verbs_mentor = list(
 	set name = "Lose larva Protection"
 	set desc = "Remove your protection from becoming a larva."
 	set category = "Admin"
-	if(!holder)	return
+	if(!admin_holder)	return
 	if(istype(mob,/mob/dead/observer))
 		var/mob/dead/observer/ghost = mob
 		if(ghost.adminlarva == 0)

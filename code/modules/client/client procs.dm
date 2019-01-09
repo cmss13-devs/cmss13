@@ -58,7 +58,7 @@
 		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
 
 	switch(href_list["_src_"])
-		if("holder")	hsrc = holder
+		if("admin_holder")	hsrc = admin_holder
 		if("usr")		hsrc = mob
 		if("prefs")		return prefs.process_link(usr,href_list)
 		if("vars")		return view_var_Topic(href,href_list,hsrc)
@@ -66,7 +66,7 @@
 	..()	//redirect to hsrc.Topic()
 
 /client/proc/handle_spam_prevention(var/message, var/mute_type)
-	if(config.automute_on && !holder && src.last_message == message)
+	if(config.automute_on && !admin_holder && src.last_message == message)
 		src.last_message_count++
 		if(src.last_message_count >= SPAM_TRIGGER_AUTOMUTE)
 			src << "\red You have exceeded the spam filter limit for identical messages. An auto-mute was applied."
@@ -121,10 +121,10 @@
 	directory[ckey] = src
 
 	//Admin Authorisation
-	holder = admin_datums[ckey]
-	if(holder)
+	admin_holder = admin_datums[ckey]
+	if(admin_holder)
 		admins += src
-		holder.owner = src
+		admin_holder.owner = src
 
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
@@ -153,7 +153,7 @@
 		host = key
 		world.update_status()
 
-	if(holder)
+	if(admin_holder)
 		add_admin_verbs()
 		admin_memo_show()
 
@@ -181,8 +181,8 @@
 	//DISCONNECT//
 	//////////////
 /client/Del()
-	if(holder)
-		holder.owner = null
+	if(admin_holder)
+		admin_holder.owner = null
 		admins -= src
 	directory -= ckey
 	clients -= src
@@ -232,8 +232,8 @@
 			return
 
 	var/admin_rank = "Player"
-	if(src.holder)
-		admin_rank = src.holder.rank
+	if(src.admin_holder)
+		admin_rank = src.admin_holder.rank
 
 	var/sql_ip = sql_sanitize_text(src.address)
 	var/sql_computerid = sql_sanitize_text(src.computer_id)

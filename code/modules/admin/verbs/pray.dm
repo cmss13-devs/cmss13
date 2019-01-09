@@ -15,7 +15,7 @@
 			return
 		if(src.client.handle_spam_prevention(msg,MUTE_PRAY))
 			return
-	
+
 	var/liaison = 0
 	if(src.mind)
 		if(src.mind.assigned_role == "Corporate Liaison")
@@ -42,7 +42,7 @@
 	msg = "\blue <b><font color=orange>USCM[iamessage ? " IA" : ""]:</font>[key_name(Sender, 1)] (<A HREF='?_src_=holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=holder;BlueSpaceArtillery=\ref[Sender]'>BSA</A>) (<A HREF='?_src_=holder;CentcommReply=\ref[Sender]'>RPLY</A>):</b> [msg]"
 	for(var/client/C in admins)
 		log_admin(msg)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
+		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			C << msg
 			C << 'sound/effects/sos-morse-code.ogg'
 
@@ -51,5 +51,5 @@
 	msg = "\blue <b><font color=crimson>SYNDICATE:</font>[key_name(Sender, 1)] (<A HREF='?_src_=holder;mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=holder;BlueSpaceArtillery=\ref[Sender]'>BSA</A>) (<A HREF='?_src_=holder;SyndicateReply=\ref[Sender]'>RPLY</A>):</b> [msg]"
 	log_admin(msg)
 	for(var/client/C in admins)
-		if(R_ADMIN & C.holder.rights)
+		if(R_ADMIN & C.admin_holder.rights)
 			C << msg

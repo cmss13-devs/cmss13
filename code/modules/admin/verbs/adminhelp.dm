@@ -95,7 +95,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 							mobs_found += found
 							if(!ai_found && isAI(found))
 								ai_found = 1
-							msg += "<b><font color='black'>[original_word] (<A HREF='?_src_=holder;adminmoreinfo=\ref[found]'>?</A>)</font></b> "
+							msg += "<b><font color='black'>[original_word] (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[found]'>?</A>)</font></b> "
 							continue
 			msg += "[original_word] "
 
@@ -108,32 +108,32 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 
 	var/admin_number_afk = 0
 
-	var/list/mentorholders = list()
-	var/list/debugholders = list()
-	var/list/adminholders = list()
+	var/list/mentoradmin_holders = list()
+	var/list/debugadmin_holders = list()
+	var/list/adminadmin_holders = list()
 	for(var/client/X in admins)
-		if(R_MENTOR & X.holder.rights && !(R_ADMIN & X.holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
-			mentorholders += X
+		if(R_MENTOR & X.admin_holder.rights && !(R_ADMIN & X.admin_holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
+			mentoradmin_holders += X
 			if(X.is_afk())
 				admin_number_afk++
-		if(R_DEBUG & X.holder.rights) // Looking for anyone with +Debug which will be admins, developers, and developer mentors
-			debugholders += X
-			if(!(R_ADMIN & X.holder.rights))
+		if(R_DEBUG & X.admin_holder.rights) // Looking for anyone with +Debug which will be admins, developers, and developer mentors
+			debugadmin_holders += X
+			if(!(R_ADMIN & X.admin_holder.rights))
 				if(X.is_afk())
 					admin_number_afk++
-		if(R_ADMIN|R_MOD & X.holder.rights) // just admins here please
-			adminholders += X
+		if(R_ADMIN|R_MOD & X.admin_holder.rights) // just admins here please
+			adminadmin_holders += X
 			if(X.is_afk())
 				admin_number_afk++
 
 	if("Gameplay/Roleplay Issue")
-		if(mentorholders.len)
-			for(var/client/X in mentorholders) // Mentors get a message without buttons and no character name
+		if(mentoradmin_holders.len)
+			for(var/client/X in mentoradmin_holders) // Mentors get a message without buttons and no character name
 				if(X.prefs.toggles_sound & SOUND_ADMINHELP)
 					X << 'sound/effects/adminhelp_new.ogg'
 				X << mentor_msg
-		if(adminholders.len)
-			for(var/client/X in adminholders) // Admins get the full monty
+		if(adminadmin_holders.len)
+			for(var/client/X in adminadmin_holders) // Admins get the full monty
 				if(X.prefs.toggles_sound & SOUND_ADMINHELP)
 					X << 'sound/effects/adminhelp_new.ogg'
 				X << msg
@@ -181,20 +181,20 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			return "<b>[key_name(C, link, name, highlight_special)]</b>"
 		if(1)
 			return "<b>[key_name(C, link, name, highlight_special)] \
-			(<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>)</b>"
+			(<A HREF='?_src_=admin_holder;adminmoreinfo=[ref_mob]'>?</A>)</b>"
 		if(2)
 			return "<b>[key_name(C, link, name, highlight_special)] \
-			(<A HREF='?_src_=holder;mark=[ref_mob]'>Mark</A>) \
-			(<A HREF='?_src_=holder;noresponse=[ref_mob]'>NR</A>) \
-			(<A HREF='?_src_=holder;warning=[ref_mob]'>Warn</A>) \
-			(<A HREF='?_src_=holder;autoresponse=[ref_mob]'>AutoResponse...</A>) \
-			(<A HREF='?_src_=holder;adminmoreinfo=[ref_mob]'>?</A>) \
-			(<A HREF='?_src_=holder;adminplayeropts=[ref_mob]'>PP</A>) \
+			(<A HREF='?_src_=admin_holder;mark=[ref_mob]'>Mark</A>) \
+			(<A HREF='?_src_=admin_holder;noresponse=[ref_mob]'>NR</A>) \
+			(<A HREF='?_src_=admin_holder;warning=[ref_mob]'>Warn</A>) \
+			(<A HREF='?_src_=admin_holder;autoresponse=[ref_mob]'>AutoResponse...</A>) \
+			(<A HREF='?_src_=admin_holder;adminmoreinfo=[ref_mob]'>?</A>) \
+			(<A HREF='?_src_=admin_holder;adminplayeropts=[ref_mob]'>PP</A>) \
 			(<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) \
-			(<A HREF='?_src_=holder;subtlemessage=[ref_mob]'>SM</A>) \
-			(<A HREF='?_src_=holder;adminplayerobservejump=[ref_mob]'>JMP</A>) \
-			(<A HREF='?_src_=holder;check_antagonist=1'>CA</A>)</b>"
+			(<A HREF='?_src_=admin_holder;subtlemessage=[ref_mob]'>SM</A>) \
+			(<A HREF='?_src_=admin_holder;adminplayerobservejump=[ref_mob]'>JMP</A>) \
+			(<A HREF='?_src_=admin_holder;check_antagonist=1'>CA</A>)</b>"
 		if(3)
 			return "<b>[key_name(C, link, name, highlight_special)] \
 			(<A HREF='?_src_=vars;Vars=[ref_mob]'>VV</A>) \
-			(<A HREF='?_src_=holder;adminplayerobservejump=[ref_mob]'>JMP</A>)</b>"
+			(<A HREF='?_src_=admin_holder;adminplayerobservejump=[ref_mob]'>JMP</A>)</b>"

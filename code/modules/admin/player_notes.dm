@@ -113,8 +113,8 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	var/datum/player_info/P = new
 	if (usr)
 		P.author = usr.key
-		if(usr.client && usr.client.holder)
-			P.rank = usr.client.holder.rank
+		if(usr.client && usr.client.admin_holder)
+			P.rank = usr.client.admin_holder.rank
 		else
 			usr << "NA01: Something went wrong, tell a coder."
 			return

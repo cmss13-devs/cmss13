@@ -26,9 +26,9 @@ var/list/forbidden_varedit_object_types = list(
 /client/proc/mod_list_add_ass() //haha
 
 	var/class = "text"
-	if(src.holder && src.holder.marked_datum)
+	if(src.admin_holder && src.admin_holder.marked_datum)
 		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
-			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum ([holder.marked_datum.type])")
+			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum ([admin_holder.marked_datum.type])")
 	else
 		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
 			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
@@ -36,7 +36,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(!class)
 		return
 
-	if(holder.marked_datum && class == "marked datum ([holder.marked_datum.type])")
+	if(admin_holder.marked_datum && class == "marked datum ([admin_holder.marked_datum.type])")
 		class = "marked datum"
 
 	var/var_value = null
@@ -65,7 +65,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Pick icon:","Icon") as null|icon
 
 		if("marked datum")
-			var_value = holder.marked_datum
+			var_value = admin_holder.marked_datum
 
 	if(!var_value) return
 
@@ -75,9 +75,9 @@ var/list/forbidden_varedit_object_types = list(
 /client/proc/mod_list_add(var/list/L)
 
 	var/class = "text"
-	if(src.holder && src.holder.marked_datum)
+	if(src.admin_holder && src.admin_holder.marked_datum)
 		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
-			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum ([holder.marked_datum.type])")
+			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum ([admin_holder.marked_datum.type])")
 	else
 		class = input("What kind of variable?","Variable Type") as null|anything in list("text",
 			"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
@@ -85,7 +85,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(!class)
 		return
 
-	if(holder.marked_datum && class == "marked datum ([holder.marked_datum.type])")
+	if(admin_holder.marked_datum && class == "marked datum ([admin_holder.marked_datum.type])")
 		class = "marked datum"
 
 	var/var_value = null
@@ -114,7 +114,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Pick icon:","Icon") as icon
 
 		if("marked datum")
-			var_value = holder.marked_datum
+			var_value = admin_holder.marked_datum
 
 	if(!var_value) return
 
@@ -213,8 +213,8 @@ var/list/forbidden_varedit_object_types = list(
 
 	var/class = "text"
 	var/list/choices = list("text","num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
-	if(src.holder && src.holder.marked_datum)
-		choices += "marked datum ([holder.marked_datum.type])"
+	if(src.admin_holder && src.admin_holder.marked_datum)
+		choices += "marked datum ([admin_holder.marked_datum.type])"
 	if(!isnull(default) && default != "num")
 		choices += "edit associated variable"
 	choices += "DELETE FROM LIST"
@@ -224,7 +224,7 @@ var/list/forbidden_varedit_object_types = list(
 	if(!class)
 		return
 
-	if(holder.marked_datum && class == "marked datum ([holder.marked_datum.type])")
+	if(admin_holder.marked_datum && class == "marked datum ([admin_holder.marked_datum.type])")
 		class = "marked datum"
 
 	switch(class) //Spits a runtime error if you try to modify an entry in the contents list. Dunno how to fix it, yet.
@@ -264,7 +264,7 @@ var/list/forbidden_varedit_object_types = list(
 			L[L.Find(variable)] = input("Pick icon:","Icon") as icon
 
 		if("marked datum")
-			L[L.Find(variable)] = holder.marked_datum
+			L[L.Find(variable)] = admin_holder.marked_datum
 
 		if("edit associated variable")
 			var/temp_var = mod_list_add_ass()
@@ -291,7 +291,7 @@ var/list/forbidden_varedit_object_types = list(
 			src << "A variable with this name ([param_var_name]) doesn't exist in this atom ([O])"
 			return
 
-		if(param_var_name == "holder" || (param_var_name in locked))
+		if(param_var_name == "admin_holder" || (param_var_name in locked))
 			if(!check_rights(R_DEBUG))	return
 
 		variable = param_var_name
@@ -349,7 +349,7 @@ var/list/forbidden_varedit_object_types = list(
 		if(!variable)	return
 		var_value = O.vars[variable]
 
-		if(variable == "holder" || (variable in locked))
+		if(variable == "admin_holder" || (variable in locked))
 			if(!check_rights(R_DEBUG))	return
 
 	if(!autodetect_class)
@@ -417,9 +417,9 @@ var/list/forbidden_varedit_object_types = list(
 			if(dir)
 				usr << "If a direction, direction is: [dir]"
 
-		if(src.holder && src.holder.marked_datum)
+		if(src.admin_holder && src.admin_holder.marked_datum)
 			class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
-				"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum ([holder.marked_datum.type])")
+				"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default","marked datum ([admin_holder.marked_datum.type])")
 		else
 			class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
 				"num","type","reference","mob reference", "icon","file","list","edit referenced object","restore to default")
@@ -434,7 +434,7 @@ var/list/forbidden_varedit_object_types = list(
 	else
 		original_name = O:name
 
-	if(holder.marked_datum && class == "marked datum ([holder.marked_datum.type])")
+	if(admin_holder.marked_datum && class == "marked datum ([admin_holder.marked_datum.type])")
 		class = "marked datum"
 
 	switch(class)
@@ -500,7 +500,7 @@ var/list/forbidden_varedit_object_types = list(
 			O.vars[variable] = var_new
 
 		if("marked datum")
-			O.vars[variable] = holder.marked_datum
+			O.vars[variable] = admin_holder.marked_datum
 
 	world.log << "### VarEdit by [key_name(src)]: [O.type] '[variable]': [var_value] => [html_encode("[O.vars[variable]]")]"
 	log_admin("[key_name(src)] modified [original_name]'s '[variable]': [html_encode("[var_value]")] => [O.vars[variable]]")

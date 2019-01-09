@@ -92,7 +92,7 @@
 	set category = "OOC"
 
 	var/is_admin = 0
-	if(client.holder && (client.holder.rights & R_ADMIN))
+	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 
 	if (!( abandon_allowed ) && !is_admin)
@@ -160,7 +160,7 @@
 	set category = "OOC"
 	var/is_admin = 0
 
-	if(client.holder && (client.holder.rights & R_ADMIN))
+	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
 		usr << "\blue You must be observing to use this!"

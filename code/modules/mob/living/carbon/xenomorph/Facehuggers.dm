@@ -341,6 +341,8 @@
 	else
 		target.visible_message("<span class='danger'>[src] violates [target]'s face!</span>")
 
+	round_statistics.total_huggers_applied++
+
 
 /obj/item/clothing/mask/facehugger/proc/get_impregnation_amount(mob/living/carbon/target)
 

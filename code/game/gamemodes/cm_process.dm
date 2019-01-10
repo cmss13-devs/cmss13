@@ -369,6 +369,7 @@ Only checks living mobs with a client attached.
 
 	return num_marines
 
+
 /*
 #undef QUEEN_DEATH_COUNTDOWN
 #undef MODE_INFESTATION_X_MAJOR

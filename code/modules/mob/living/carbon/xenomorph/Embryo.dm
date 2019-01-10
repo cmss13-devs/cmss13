@@ -226,3 +226,6 @@
 		victim.death() // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
+
+	if(ishuman(victim))
+		round_statistics.total_human_chestbursts++

@@ -218,3 +218,41 @@
 	assignment = "Deathsquad Leader"
 	rank = "PMC Commando"
 	special_role = "DEATH SQUAD"
+
+/*****************************************************************************************************/
+/******************************************SCP FLUFF**************************************************/
+/*****************************************************************************************************/
+
+/datum/equipment_preset/wy/pmc_standard/scp
+	name = "Weyland-Yutani SCP PMC (Standard)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "Weyland-Yutani SCP PMC (Standard)"
+	rank = "SCP PMC Standard"
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/wy/pmc_leader/scp
+	name = "Weyland-Yutani SCP PMC (Leader)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "SCP PMC Officer"
+	rank = "SCP PMC Leader"
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/wy/pmc_gunner/scp
+	name = "Weyland-Yutani SCP PMC (Gunner)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "SCP PMC Specialist"
+	rank = "SCP PMC Gunner"
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/wy/pmc_sniper/scp
+	name = "Weyland-Yutani SCP PMC (Sniper)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "SCP PMC Sniper"
+	rank = "SCP PMC Sharpshooter"

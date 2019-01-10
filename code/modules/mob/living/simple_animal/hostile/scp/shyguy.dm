@@ -1,6 +1,5 @@
-//sculpture
 //SCP-096, nothing more need be said
-/mob/living/simple_animal/shyguy
+/mob/living/simple_animal/scp/shyguy
 	name = "???"
 	desc = "No, no, you know not to look closely at it" //for non-targets
 	var/target_desc_1 = "A pale, emanciated figure. It looks almost human, but its limbs are long and skinny, and its face is......<span class='danger'>no. NO. NO</span>" //for targets
@@ -41,7 +40,7 @@
 
 	var/damage_state = 0
 
-/mob/living/simple_animal/shyguy/Life()
+/mob/living/simple_animal/scp/shyguy/Life()
 	if(hibernate)
 		return
 
@@ -57,7 +56,7 @@
 		var/mob/living/carbon/H
 		for(var/i = 1, i <= shitlist.len, i++) //start from the first guy
 			H = shitlist[1]
-			if(!H || H.stat == DEAD)
+			if(!H || H.stat == DEAD || !istype(H))
 				shitlist -= H
 				chasing_message_played = 0
 				doom_message_played = 0
@@ -82,7 +81,7 @@
 		handle_idle()
 
 //Check if any carbon mob can see us
-/mob/living/simple_animal/shyguy/proc/check_los()
+/mob/living/simple_animal/scp/shyguy/proc/check_los()
 
 	for(var/mob/living/carbon/H in viewers(src, null))
 		if(H in shitlist)
@@ -122,8 +121,9 @@
 
 	return
 
-/mob/living/simple_animal/shyguy/proc/add_examine_urge(var/mob/living/carbon/H)
-
+/mob/living/simple_animal/scp/shyguy/proc/add_examine_urge(var/mob/living/carbon/H)
+	if(!H || !istype(H))
+		return
 	var/index
 	var/examine_urge
 
@@ -153,7 +153,9 @@
 		if(H)
 			reduce_examine_urge(H)
 
-/mob/living/simple_animal/shyguy/proc/reduce_examine_urge(var/mob/living/carbon/H)
+/mob/living/simple_animal/scp/shyguy/proc/reduce_examine_urge(var/mob/living/carbon/H)
+	if(!H || !istype(H))
+		return
 	var/index
 	var/examine_urge
 
@@ -169,7 +171,7 @@
 
 	examine_urge_values[index] = examine_urge
 
-/mob/living/simple_animal/shyguy/examine(var/userguy)
+/mob/living/simple_animal/scp/shyguy/examine(var/userguy)
 	if (istype(userguy, /mob/living/carbon))
 		if (!(userguy in shitlist))
 			userguy <<  target_desc_1
@@ -206,9 +208,8 @@
 	..()
 
 
-/mob/living/simple_animal/shyguy/proc/handle_target(var/mob/living/carbon/target)
-
-	if(!target || chasing) //Sanity
+/mob/living/simple_animal/scp/shyguy/proc/handle_target(var/mob/living/carbon/target)
+	if(!target || chasing || !istype(target)) //Sanity
 		return
 
 	if(target.stat == DEAD)
@@ -286,7 +287,9 @@
 			sleep(move_to_delay + round(staggered/8))
 		chasing = 0
 
-/mob/living/simple_animal/shyguy/proc/is_different_level(var/turf/target_turf)
+/mob/living/simple_animal/scp/shyguy/proc/is_different_level(var/turf/target_turf)
+	if(!target_turf || !istype(target_turf))
+		return 0
 	if(target_turf.z != z)
 		return 1
 
@@ -327,7 +330,7 @@
 	return 0
 
 //This performs an immediate murder check, meant to avoid people cheesing us by just running faster than Life() refresh
-/mob/living/simple_animal/shyguy/proc/check_murder()
+/mob/living/simple_animal/scp/shyguy/proc/check_murder()
 
 	if(!target)
 		return
@@ -338,7 +341,7 @@
 			murder(M)
 			break
 
-/mob/living/simple_animal/shyguy/forceMove(atom/destination, var/no_tp = 0)
+/mob/living/simple_animal/scp/shyguy/forceMove(atom/destination, var/no_tp = 0)
 
 	..()
 	for(var/mob/living/carbon/M in get_turf(src))
@@ -353,13 +356,13 @@
 		step_away(M, src, 3)
 	check_murder()
 
-/mob/living/simple_animal/shyguy/proc/diagonal_step(atom/movable/A, direction)
+/mob/living/simple_animal/scp/shyguy/proc/diagonal_step(atom/movable/A, direction)
 	if(!A) r_FAL
 	switch(direction)
 		if(EAST, WEST) step(A, pick(NORTH,SOUTH))
 		if(NORTH,SOUTH) step(A, pick(EAST,WEST))
 
-/mob/living/simple_animal/shyguy/proc/murder(var/mob/living/T)
+/mob/living/simple_animal/scp/shyguy/proc/murder(var/mob/living/T)
 
 	if(T)
 		T.loc = src.loc
@@ -401,7 +404,7 @@
 			chasing_message_played = 0
 			doom_message_played = 0
 
-/mob/living/simple_animal/shyguy/proc/handle_idle()
+/mob/living/simple_animal/scp/shyguy/proc/handle_idle()
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
@@ -479,7 +482,7 @@
 		else
 			entry_vent = null
 
-/mob/living/simple_animal/shyguy/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/scp/shyguy/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj || Proj.damage <= 0)
 		return 0
 
@@ -487,7 +490,7 @@
 	adjustBruteLoss(Proj.damage)
 	return 1
 
-/mob/living/simple_animal/shyguy/adjustBruteLoss(var/damage)
+/mob/living/simple_animal/scp/shyguy/adjustBruteLoss(var/damage)
 
 	health = Clamp(health - damage, 0, maxHealth)
 
@@ -505,14 +508,14 @@
 
 
 
-/mob/living/simple_animal/shyguy/Bump(atom/movable/AM as mob)
+/mob/living/simple_animal/scp/shyguy/Bump(atom/movable/AM as mob)
 	..()
 
-/mob/living/simple_animal/shyguy/Bumped(atom/movable/AM as mob, yes)
+/mob/living/simple_animal/scp/shyguy/Bumped(atom/movable/AM as mob, yes)
 	..()
 
 //You cannot destroy us, fool!
-/mob/living/simple_animal/shyguy/ex_act(var/severity)
+/mob/living/simple_animal/scp/shyguy/ex_act(var/severity)
 	visible_message("<span class='danger'>[src] is staggered by the explosion!</span>")
 	adjustBruteLoss(severity)
 	return 1

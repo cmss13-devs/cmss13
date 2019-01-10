@@ -54,7 +54,7 @@
 			return 0
 	for(var/mob/living/carbon/Xenomorph/Xeno in get_turf(src))
 		return 0
-	for(var/mob/living/simple_animal/sculpture in get_turf(src))
+	for(var/mob/living/simple_animal/scp in get_turf(src))
 		return 0//Can't contain the SCP this easily!
 	return 1
 

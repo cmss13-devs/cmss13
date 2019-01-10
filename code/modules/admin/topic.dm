@@ -1003,6 +1003,20 @@
 		log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
 		message_admins("\blue [key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
+	else if(href_list["forceemote"])
+		if(!check_rights(R_FUN))	return
+
+		var/mob/M = locate(href_list["forceemote"])
+		if(!ismob(M))
+			usr << "this can only be used on instances of type /mob"
+
+		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		if(!speech)	return
+		M.custom_emote(1, speech, TRUE)
+		speech = sanitize(speech) // Nah, we don't trust them
+		log_admin("[key_name(usr)] forced [key_name(M)] to emote: [speech]")
+		message_admins("\blue [key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
+
 	else if(href_list["sendtoprison"])
 		if(!check_rights(R_ADMIN))	return
 

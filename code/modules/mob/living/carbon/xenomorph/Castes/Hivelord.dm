@@ -8,7 +8,6 @@
 	max_health = 200
 	plasma_gain = 0.044
 	plasma_max = 800
-	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	caste_desc = "A builder of REALLY BIG hives."
 	speed = 0.4
@@ -28,7 +27,6 @@
 	max_health = 220
 	plasma_gain = 0.045
 	plasma_max = 900
-	upgrade_threshold = 1600
 	caste_desc = "A builder of REALLY BIG hives. It looks a little more dangerous."
 	armor_deflection = 10
 	tacklemin = 3
@@ -45,7 +43,6 @@
 	max_health = 240
 	plasma_gain = 0.05
 	plasma_max = 1000
-	upgrade_threshold = 3200
 	caste_desc = "A builder of REALLY BIG hives. It looks pretty strong."
 	armor_deflection = 15
 	tacklemin = 4

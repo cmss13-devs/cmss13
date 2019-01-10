@@ -8,9 +8,6 @@
 	tackle_chance = 40
 	plasma_gain = 0.032
 	plasma_max = 250
-	upgrade_threshold = 500
-	evolution_threshold = 500
-	evolves_to = list("Carrier")
 	deevolves_to = "Drone"
 	caste_desc = "A digger and shaper."
 	max_health = 175

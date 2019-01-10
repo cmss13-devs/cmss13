@@ -142,7 +142,7 @@
 	health = 5
 	layer = RESIN_STRUCTURE_LAYER
 	var/list/tripwires = list()
-	var/hugger_hivenumber
+	var/hivenumber //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the hole)
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
 	var/created_by // ckey
@@ -152,6 +152,7 @@
 /obj/effect/alien/resin/trap/New(loc, mob/living/carbon/Xenomorph/X)
 	if(X)
 		created_by = X.ckey
+		hivenumber = X.hivenumber
 	..()
 
 /obj/effect/alien/resin/trap/examine(mob/user)
@@ -172,7 +173,6 @@
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)
 	FH.Die()
-	hugger_hivenumber = null
 	trap_type = RESIN_TRAP_EMPTY
 	icon_state = "trap0"
 
@@ -230,21 +230,17 @@
 			trap_type = RESIN_TRAP_GAS
 			icon_state = "trapgas"
 
-
-
-/obj/effect/alien/resin/trap/proc/trigger_trap(atom/A)
+/obj/effect/alien/resin/trap/proc/trigger_trap()
 	set waitfor = 0
-	/*if(notify_list && notify_list.len)
-		var/area/A = get_area(src)
-		if(A)
-			for(var/mob/living/carbon/Xenomorph/X in notify_list)
-				if(X && X.stat != DEAD)
-					X << "<span class='xenoannounce'>You sense one of your traps at [A.name] has been triggered!</span>"*/
+	var/area/A = get_area(src)
+	if(A)
+		for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+			if(X.hivenumber == hivenumber)
+				X << "<span class='xenoannounce'>You sense one of your Hive's traps at [A.name] has been triggered!</span>"
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
-			FH.hivenumber = hugger_hivenumber
-			hugger_hivenumber = null
+			FH.hivenumber = hivenumber
 			set_state()
 			visible_message("<span class='warning'>[FH] gets out of [src]!</span>")
 			sleep(15)
@@ -273,8 +269,7 @@
 				if(X.caste.can_hold_facehuggers)
 					set_state()
 					var/obj/item/clothing/mask/facehugger/F = new ()
-					F.hivenumber = hugger_hivenumber
-					hugger_hivenumber = null
+					F.hivenumber = hivenumber
 					X.put_in_active_hand(F)
 					X << "<span class='xenonotice'>You remove the facehugger from [src].</span>"
 				return
@@ -318,6 +313,7 @@
 					spawn(X.caste.acid_spray_cooldown)
 						X.used_acid_spray = 0
 						X << "<span class='notice'>You have produced enough acid to spray again.</span>"
+					hivenumber = X.hivenumber //Taking over the hole
 					return
 				if(isXenoBoiler(X))
 					var/mob/living/carbon/Xenomorph/Boiler/B = X
@@ -357,6 +353,7 @@
 					spawn(B.caste.bomb_delay)
 						B.bomb_cooldown = 0
 						B << "<span class='notice'>You have produced enough acid to bombard again.</span>"
+					hivenumber = X.hivenumber //Taking over the hole
 					return
 	else
 		if(trap_type == RESIN_TRAP_EMPTY)
@@ -380,7 +377,7 @@
 		if(FH.stat == DEAD)
 			user << "<span class='xenowarning'>You can't put a dead facehugger in [src].</span>"
 		else
-			hugger_hivenumber = FH.hivenumber
+			hivenumber = FH.hivenumber //Taking over the hole
 			set_state(RESIN_TRAP_HUGGER)
 			user << "<span class='xenonotice'>You place a facehugger in [src].</span>"
 			cdel(FH)

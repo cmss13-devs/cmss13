@@ -101,6 +101,62 @@
 	var/charge_speed = 2
 	var/charge_distance = 6
 
+/datum/caste_datum/New()
+	. = ..()
+
+	//Initialise evolution and upgrade thresholds in one place, once and for all
+	evolution_threshold = 0
+	if(evolution_allowed)
+		switch(tier)
+			if(1)
+				evolution_threshold = 200
+			if(2)
+				evolution_threshold = 500
+			//Other tiers (T3, Queen, etc.) can't evolve anyway
+
+	upgrade_threshold = 0
+
+	switch(tier)
+		if(1)
+			switch(upgrade)
+				if(0)
+					upgrade_threshold = 200
+				if(1)
+					upgrade_threshold = 400
+				if(2)
+					upgrade_threshold = 800
+		if(2)
+			switch(upgrade)
+				if(0)
+					upgrade_threshold = 500
+				if(1)
+					upgrade_threshold = 800
+				if(2)
+					upgrade_threshold = 1600
+		if(3)
+			switch(upgrade)
+				if(0)
+					upgrade_threshold = 800
+				if(1)
+					upgrade_threshold = 1600
+				if(2)
+					upgrade_threshold = 3200
+
+	if(caste_name == "Queen")
+		switch(upgrade)
+			if(0)
+				upgrade_threshold = 800
+			if(1)
+				upgrade_threshold = 1600
+			if(2)
+				upgrade_threshold = 3200
+
+
+
+
+
+
+
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
 	var/datum/hive_status/hive

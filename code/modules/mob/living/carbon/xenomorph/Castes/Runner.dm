@@ -7,8 +7,6 @@
 	melee_damage_upper = 20
 	plasma_gain = 0.02
 	plasma_max = 100
-	upgrade_threshold = 200
-	evolution_threshold = 200
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	max_health = 100
 	speed = -1.8
@@ -24,7 +22,6 @@
 	melee_damage_upper = 25
 	plasma_gain = 0.02
 	plasma_max = 150
-	upgrade_threshold = 400
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
 	armor_deflection = 5
 	max_health = 120
@@ -41,7 +38,6 @@
 	tackle_chance = 40
 	plasma_gain = 0.02
 	plasma_max = 200
-	upgrade_threshold = 800
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
 	armor_deflection = 10
 	max_health = 140
@@ -58,7 +54,6 @@
 	tackle_chance = 45
 	plasma_gain = 0.02
 	plasma_max = 250
-	upgrade_threshold = 800
 	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."
 	armor_deflection = 15
 	max_health = 160

@@ -197,7 +197,7 @@
 
 	if(evolution_threshold && castepick != "Queen") //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
-			src << "<span class='warning'>You must wait before evolving. Currently at: [evolution_stored] / [caste.evolution_threshold].</span>"
+			src << "<span class='warning'>You must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold].</span>"
 			return
 
 	visible_message("<span class='xenonotice'>\The [src] begins to twist and contort.</span>", \

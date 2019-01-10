@@ -1,17 +1,16 @@
 /datum/caste_datum/carrier
 	caste_name = "Carrier"
 	upgrade_name = "Young"
-	tier = 3
+	tier = 2
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 40
 	plasma_gain = 0.032
 	plasma_max = 250
-	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	caste_desc = "A carrier of huggies."
-	deevolves_to = "Burrower"
+	deevolves_to = "Drone"
 	max_health = 175
 	speed = 0.0
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
@@ -27,7 +26,6 @@
 	weed_level = 1
 
 /datum/caste_datum/carrier/mature
-
 	upgrade_name = "Mature"
 	upgrade = 1
 	melee_damage_lower = 25
@@ -46,7 +44,6 @@
 	eggs_max = 4
 
 /datum/caste_datum/carrier/elder
-
 	upgrade_name = "Elder"
 	upgrade = 2
 	melee_damage_lower = 30
@@ -66,9 +63,7 @@
 	eggs_max = 5
 
 /datum/caste_datum/carrier/ancient
-
 	upgrade_name = "Ancient"
-
 	upgrade = 3
 	melee_damage_lower = 35
 	melee_damage_upper = 45
@@ -178,7 +173,7 @@
 		F.hivenumber = hivenumber
 		huggers_cur--
 		put_in_active_hand(F)
-		src << "<span class='xenonotice'>You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [caste.huggers_max].</span>"
+		src << "<span class='xenonotice'>You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [huggers_max].</span>"
 		return
 
 	if(!istype(F)) //something else in our hand

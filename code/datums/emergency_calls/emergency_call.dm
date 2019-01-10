@@ -32,7 +32,7 @@
 	var/heavies = 0
 	var/max_medics = 1
 	var/max_heavies = 1
-	var/shuttle_id = "Distress"
+	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
 
 
@@ -132,12 +132,12 @@
 	else
 		usr << "<span class='warning'>You did not get enlisted in the response team. Better luck next time!</span>"
 
-/datum/emergency_call/proc/activate(announce = TRUE)
+/datum/emergency_call/proc/activate(announce = TRUE, is_emergency = FALSE)
 	set waitfor = 0
 	if(!ticker || !ticker.mode) //Something horribly wrong with the gamemode ticker
 		return
 
-	if(ticker.mode.has_called_emergency) //It's already been called.
+	if(is_emergency && ticker.mode.has_called_emergency) //It's already been called.
 		return
 
 	if(mob_max > 0)
@@ -148,7 +148,8 @@
 	if (announce)
 		command_announcement.Announce("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", new_sound='sound/AI/distressbeacon.ogg')
 
-	ticker.mode.has_called_emergency = 1
+	if(is_emergency) //non-emergency ERTs don't count as emergency
+		ticker.mode.has_called_emergency = 1
 
 	sleep(600) //If after 60 seconds we aren't full, abort
 	if(candidates.len < mob_min)
@@ -194,11 +195,12 @@
 		message_admins("Distress beacon: [src.name] finalized, setting up candidates.", 1)
 		var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_id]
 		if(!shuttle || !istype(shuttle))
-			message_admins("Warning: Distress shuttle not found. Aborting.")
-			return
+			if(shuttle_id) //Cryo distress doesn't have a shuttle
+				message_admins("Warning: Distress shuttle not found. Aborting.")
+				return
 		spawn_items()
 
-		if(auto_shuttle_launch)
+		if(shuttle && auto_shuttle_launch)
 			shuttle.launch()
 
 		if(picked_candidates.len)
@@ -224,7 +226,6 @@
 			candidates += M.mind
 	return 1
 
-
 /datum/emergency_call/proc/get_spawn_point(is_for_items)
 	var/list/spawn_list = list()
 
@@ -243,8 +244,6 @@
 		return null
 
 	return spawn_loc
-
-
 
 /datum/emergency_call/proc/create_member(datum/mind/M) //This is the parent, each type spawns its own variety.
 	return

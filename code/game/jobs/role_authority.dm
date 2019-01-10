@@ -518,7 +518,7 @@ roles willy nilly.
 	return lowest //Return whichever squad won the competition.
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(var/mob/living/carbon/human/H)
+/datum/authority/branch/role/proc/randomize_squad(var/mob/living/carbon/human/H, var/skip_limit = FALSE)
 	if(!H || !H.mind) return
 
 	if(!squads.len)
@@ -549,7 +549,7 @@ roles willy nilly.
 			if("Squad Engineer")
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable)
-						if(S.num_engineers >= S.max_engineers) continue
+						if(!skip_limit && S.num_engineers >= S.max_engineers) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us, no more searching needed.
 							return
@@ -562,7 +562,7 @@ roles willy nilly.
 			if("Squad Medic")
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable)
-						if(S.num_medics >= S.max_medics) continue
+						if(!skip_limit && S.num_medics >= S.max_medics) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
 							return
@@ -575,7 +575,7 @@ roles willy nilly.
 			if("Squad Leader")
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable)
-						if(S.num_leaders >= S.max_leaders) continue
+						if(!skip_limit && S.num_leaders >= S.max_leaders) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
 							return
@@ -588,7 +588,7 @@ roles willy nilly.
 			if("Squad Specialist")
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable)
-						if(S.num_specialists >= S.max_specialists) continue
+						if(!skip_limit && S.num_specialists >= S.max_specialists) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
 							return
@@ -601,7 +601,7 @@ roles willy nilly.
 			if("Squad Smartgunner")
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable)
-						if(S.num_smartgun >= S.max_smartgun) continue
+						if(!skip_limit && S.num_smartgun >= S.max_smartgun) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
 							return

@@ -195,6 +195,7 @@
 #include "code\datums\diseases\advance\symptoms\weight.dm"
 #include "code\datums\emergency_calls\clf.dm"
 #include "code\datums\emergency_calls\colonist.dm"
+#include "code\datums\emergency_calls\cryo_marines.dm"
 #include "code\datums\emergency_calls\deathsquad.dm"
 #include "code\datums\emergency_calls\emergency_call.dm"
 #include "code\datums\emergency_calls\mercs.dm"

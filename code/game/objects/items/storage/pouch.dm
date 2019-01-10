@@ -165,6 +165,14 @@
 	icon_state = "large_ammo_mag"
 	storage_slots = 3
 
+/obj/item/storage/pouch/magazine/large/with_beanbags
+
+/obj/item/storage/pouch/magazine/large/with_beanbags/New()
+	..()
+	for(var/i=1; i <= storage_slots; i++)
+		var/obj/item/ammo_magazine/handful/H = new(src)
+		H.generate_handful(/datum/ammo/bullet/shotgun/beanbag, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
+	return
 
 
 /obj/item/storage/pouch/magazine/pistol

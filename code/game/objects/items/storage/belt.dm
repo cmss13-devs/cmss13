@@ -247,6 +247,7 @@
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/handcuffs(src)
+	new /obj/item/reagent_container/spray/pepper(src)
 
 
 

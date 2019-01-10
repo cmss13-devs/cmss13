@@ -72,6 +72,8 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/combat
 
+/obj/item/ammo_magazine/internal/shotgun/combat/riot
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5

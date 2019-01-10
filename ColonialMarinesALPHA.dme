@@ -201,6 +201,7 @@
 #include "code\datums\emergency_calls\mercs.dm"
 #include "code\datums\emergency_calls\pizza.dm"
 #include "code\datums\emergency_calls\pmc.dm"
+#include "code\datums\emergency_calls\riot.dm"
 #include "code\datums\emergency_calls\supplies.dm"
 #include "code\datums\emergency_calls\upp.dm"
 #include "code\datums\emergency_calls\upp_commando.dm"

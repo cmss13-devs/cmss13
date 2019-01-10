@@ -556,7 +556,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
+	access = list()
 	assignment = "Fleet Admiral"
 	rank = "Fleet Admiral"
 	paygrade = "O8"
@@ -577,3 +577,58 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/hgpirate(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/soviet(H), WEAR_BODY)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/riot_mp
+	name = "USCM Riot MP (RMP)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/centcom
+	access = list()
+	assignment = "Riot Control"
+	rank = "RMP"
+	paygrade = "E6"
+	role_comm_title = "RMP"
+	skills = /datum/skills/CMP
+	special_role = "RIOT"
+
+/datum/equipment_preset/uscm_ship/riot_mp/New()
+	. = ..()
+	access = get_all_accesses() + get_all_centcom_access()
+
+/datum/equipment_preset/uscm_ship/riot_mp/load_gear(mob/living/carbon/human/H)
+	//TODO: add backpacks and satchels
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/riot/marine(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(H), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/riot(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/box/flashbangs(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/chem_grenade/teargas(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/with_beanbags(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/with_beanbags(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/riot_mp/riot_cmp
+	name = "USCM Riot Chief MP (RCMP)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = "Chief Riot Control"
+	rank = "CRMP"
+	role_comm_title = "CRMP"
+	skills = /datum/skills/CMP

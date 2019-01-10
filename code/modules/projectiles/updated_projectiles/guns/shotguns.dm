@@ -241,6 +241,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	..()
 	if(in_chamber) user << "It has a chambered round."
 
+
+/obj/item/weapon/gun/shotgun/combat/riot
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
+
 //-------------------------------------------------------
 //DOUBLE SHOTTY
 

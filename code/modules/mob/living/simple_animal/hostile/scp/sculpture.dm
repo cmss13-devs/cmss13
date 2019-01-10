@@ -1,6 +1,5 @@
-//sculpture
 //SCP-173, nothing more need be said
-/mob/living/simple_animal/sculpture
+/mob/living/simple_animal/scp/sculpture
 	name = "\improper sculpture"
 	desc = "It's some kind of hastily-painted human-size stone sculpture. Just looking at it makes you feel nervous."
 	layer = BELOW_MOB_LAYER
@@ -22,8 +21,7 @@
 	var/scare_played = 0 //Did we rape everyone's ears yet ?
 	var/obj/machinery/atmospherics/unary/vent_pump/entry_vent //Graciously stolen from spider code
 
-/mob/living/simple_animal/sculpture/Life()
-
+/mob/living/simple_animal/scp/sculpture/Life()
 	//If we are hibernating, just don't do anything
 	if(hibernate)
 		return
@@ -54,10 +52,8 @@
 	else
 		handle_idle()
 
-
 //Check if any mob can see SPC-173
-/mob/living/simple_animal/sculpture/proc/check_los()
-
+/mob/living/simple_animal/scp/sculpture/proc/check_los()
 	var/observed = 0
 
 	//Humans can observe SCP-173. If a single human observes him, he's observed for everyone
@@ -86,8 +82,7 @@
 		return 0 //Try again when we get a chance
 	return 1 //Success, let's move
 
-/mob/living/simple_animal/sculpture/proc/handle_target(var/mob/living/carbon/target)
-
+/mob/living/simple_animal/scp/sculpture/proc/handle_target(var/mob/living/carbon/target)
 	if(!target) //Sanity
 		return
 
@@ -141,8 +136,7 @@
 			next_turf = get_step(src, get_dir(next_turf,target))
 			num_turfs--
 
-/mob/living/simple_animal/sculpture/proc/handle_idle()
-
+/mob/living/simple_animal/scp/sculpture/proc/handle_idle()
 	if(!check_los())
 		return
 
@@ -230,21 +224,26 @@
 			entry_vent = null
 
 //This performs an immediate neck snap check, meant to avoid people cheesing SCP-173 by just running faster than Life() refresh
-/mob/living/simple_animal/sculpture/proc/check_snap_neck()
-
+/mob/living/simple_animal/scp/sculpture/proc/check_snap_neck()
 	//See if we're able to strangle anyone
 	for(var/mob/living/carbon/M in get_turf(src))
 		if(M.stat == CONSCIOUS && check_los())
 			snap_neck(M)
 			break
 
-/mob/living/simple_animal/sculpture/forceMove(atom/destination, var/no_tp = 0)
-
+/mob/living/simple_animal/scp/sculpture/forceMove(atom/destination, var/no_tp = 0)
 	..()
 	check_snap_neck()
 
-/mob/living/simple_animal/sculpture/proc/snap_neck(var/mob/living/target)
+	//Spawn some blood when we move
+	if(prob(50))
+		if(prob(50))
+			new /obj/effect/decal/cleanable/blood(destination)
+		else
+			new /obj/effect/decal/cleanable/blood/splatter(destination)
 
+
+/mob/living/simple_animal/scp/sculpture/proc/snap_neck(var/mob/living/target)
 	if(!check_los())
 		return
 
@@ -266,20 +265,20 @@
 		log_admin("[target] ([target.ckey]) has had his neck snapped by an active [src].")
 		message_admins("ALERT: <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>[target.real_name]</a> has had his neck snapped by an active [src].")
 
-/mob/living/simple_animal/sculpture/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/scp/sculpture/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	..()
 
-/mob/living/simple_animal/sculpture/Topic(href, href_list)
+/mob/living/simple_animal/scp/sculpture/Topic(href, href_list)
 	..()
 
-/mob/living/simple_animal/sculpture/Bump(atom/movable/AM as mob)
+/mob/living/simple_animal/scp/sculpture/Bump(atom/movable/AM as mob)
 	if(!check_los())
 		snap_neck(AM)
 	..()
 
-/mob/living/simple_animal/sculpture/Bumped(atom/movable/AM as mob, yes)
+/mob/living/simple_animal/scp/sculpture/Bumped(atom/movable/AM as mob, yes)
 	if(!check_los())
 		snap_neck(AM)
 
 //You cannot destroy SCP-173, fool!
-/mob/living/simple_animal/sculpture/ex_act(var/severity)
+/mob/living/simple_animal/scp/sculpture/ex_act(var/severity)

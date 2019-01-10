@@ -53,6 +53,10 @@
 		user.visible_message("<span class='notice'>[user] tries to put [src] on [H].</span>")
 		if(do_mob(user, H, cuff_delay, BUSY_ICON_HOSTILE, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !H.handcuffed && Adjacent(user))
+				if(iscarbon(H))
+					if(istype(H.buckled, /obj/structure/bed/roller))
+						user << "\red You cannot handcuff someone who is buckled onto a roller bed."
+						return
 				if(H.has_limb_for_slot(WEAR_HANDCUFFS))
 					user.drop_inv_item_on_ground(src)
 					H.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)

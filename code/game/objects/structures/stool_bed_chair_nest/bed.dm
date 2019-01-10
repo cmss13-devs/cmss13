@@ -182,6 +182,14 @@ obj/structure/bed/Dispose()
 		return
 	. = ..()
 
+/obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(C.handcuffed)
+			user << "\red You cannot buckle someone who is handcuffed onto this bed."
+			return
+	..()
+
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."

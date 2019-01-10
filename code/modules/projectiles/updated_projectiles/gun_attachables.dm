@@ -944,7 +944,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/nade_type = loaded_grenades[1]
 	var/obj/item/explosive/grenade/HE/G = new nade_type (get_turf(gun))
 	playsound(user.loc, fire_sound, 50, 1)
-	message_admins("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=holder;adminplayerobservejump=\ref[user]'>JMP</A>)")
+	message_admins("[key_name_admin(user)] fired an underslung grenade launcher (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[user]'>JMP</A>)")
 	log_game("[key_name_admin(user)] used an underslung grenade launcher.")
 	G.det_time = 15
 	G.throw_range = max_range

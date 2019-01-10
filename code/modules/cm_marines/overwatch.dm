@@ -773,7 +773,7 @@
 	send_to_squad("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 	spawn(6)
 		if(A)
-			message_mods("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
+			message_mods("ALERT: [usr] ([usr.key]) fired an orbital bombardment in [A.name] for squad '[current_squad]' (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
 			log_attack("[usr.name] ([usr.ckey]) fired an orbital bombardment in [A.name] for squad '[current_squad]'")
 		busy = 0
 		var/turf/target = locate(T.x + rand(-3, 3), T.y + rand(-3, 3), T.z)

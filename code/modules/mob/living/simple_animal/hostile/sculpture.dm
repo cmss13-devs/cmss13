@@ -264,7 +264,7 @@
 		//Logging stuff
 		target.attack_log += text("\[[time_stamp()]\] <font color='red'>Has had his neck snapped by [src]!</font>")
 		log_admin("[target] ([target.ckey]) has had his neck snapped by an active [src].")
-		message_admins("ALERT: <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>[target.real_name]</a> has had his neck snapped by an active [src].")
+		message_admins("ALERT: <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>[target.real_name]</a> has had his neck snapped by an active [src].")
 
 /mob/living/simple_animal/sculpture/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	..()

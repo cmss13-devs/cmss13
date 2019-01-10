@@ -179,7 +179,7 @@ var/global/datum/controller/gameticker/ticker
 
 //	var/admins_number = 0
 //	for(var/client/C)
-//		if(C.holder)
+//		if(C.admin_holder)
 //			admins_number++
 //	if(admins_number == 0)
 //		send2adminirc("Round has started with no admins online.")

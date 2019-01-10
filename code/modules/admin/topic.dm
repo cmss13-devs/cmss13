@@ -1573,11 +1573,11 @@
 		if(send_choice == "Cancel") return
 		fax_contents += fax_message // save a copy
 
-		USCMFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
+		USCMFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/machinery/faxmachine/F in machines)
@@ -1644,11 +1644,11 @@
 		if(send_choice == "Cancel") return
 		fax_contents += fax_message // save a copy
 
-		CLFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		CLFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 
@@ -2568,7 +2568,7 @@
 	//
 	// 	//send this msg to all admins
 	// 	for(var/client/X in admins)
-	// 		if((R_ADMIN|R_MOD|R_MENTOR) & X.holder.rights)
+	// 		if((R_ADMIN|R_MOD|R_MENTOR) & X.admin_holder.rights)
 	// 			X << msg
 	//
 	// 	ref_person << msgplayer //send a message to the player
@@ -2607,7 +2607,7 @@
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		distress_cancel = 0
-		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=holder;distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel) return
 			var/mob/ref_person = locate(href_list["distress"])

@@ -71,3 +71,15 @@ datum/emergency_call/wo/platoon
 	mob_max = 30
 	probability = 0
 	max_heavies = 8
+
+datum/emergency_call/wo/platoon/cryo
+	name = "Marine Reinforcements (Platoon) (Cryo)"
+	probability = 0
+	name_of_spawn = "Distress_Cryo"
+	shuttle_id = ""
+
+datum/emergency_call/wo/cryo
+	name = "Marine Reinforcements (Squad) (Cryo)"
+	probability = 0
+	name_of_spawn = "Distress_Cryo"
+	shuttle_id = ""

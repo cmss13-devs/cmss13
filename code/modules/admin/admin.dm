@@ -1234,6 +1234,7 @@ var/global/floorIsLava = 0
 	for(var/datum/emergency_call/L in ticker.mode.all_calls)
 		if(L && L.name != "name")
 			list_of_calls += L.name
+	list_of_calls = sortList(list_of_calls)
 
 	list_of_calls += "Randomize"
 

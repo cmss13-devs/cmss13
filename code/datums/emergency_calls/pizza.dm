@@ -33,3 +33,9 @@
 	if(original)
 		cdel(original)
 	return
+
+/datum/emergency_call/pizza/cryo
+	name = "Pizza Delivery (Cryo)"
+	probability = 0
+	name_of_spawn = "Distress_Cryo"
+	shuttle_id = ""

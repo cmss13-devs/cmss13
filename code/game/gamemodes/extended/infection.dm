@@ -60,13 +60,13 @@
 	world << musical_track
 	world << "<span class='round_body'>The zombies have been victorious!</span>"
 
-	var/dat = ""
-	//if(flags_round_type & MODE_INFESTATION)
-		//var/living_player_list[] = count_humans_and_xenos()
-		//dat = "\nXenomorphs remaining: [living_player_list[2]]. Humans remaining: [living_player_list[1]]."
-	if(round_stats) round_stats << "[round_finished][dat]\nGame mode: [name]\nRound time: [duration2text()]\nEnd round player population: [clients.len]\nTotal xenos spawned: [round_statistics.total_xenos_created]\nTotal Preds spawned: [predators.len]\nTotal humans spawned: [round_statistics.total_humans_created][log_end]" // Logging to data/logs/round_stats.log
+	round_statistics.round_finished = round_finished
+	round_statistics.game_mode = name
+	round_statistics.round_time = duration2text()
+	round_statistics.end_round_player_population = clients.len
+	round_statistics.total_predators_spawned = predators.len
 
-	world << dat
+	round_statistics.log_round_statistics()
 
 	declare_completion_announce_individual()
 	declare_completion_announce_predators()

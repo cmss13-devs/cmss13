@@ -81,6 +81,8 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 "}
 
 	emote("roar")
+	
+	round_statistics.total_predaliens++
 
 
 /mob/living/carbon/Xenomorph/Predalien/proc/claim_trophy()

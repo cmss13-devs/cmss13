@@ -254,6 +254,7 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/Halloween/declare_completion()
+	count_end_of_round_mobs_for_statistics()
 	if(finished == 1)
 		feedback_set_details("round_end_result","alien major victory - marine incursion fails")
 		world << "\red <FONT size = 4><B>Alien major victory!</B></FONT>"

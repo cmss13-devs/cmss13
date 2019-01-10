@@ -129,6 +129,7 @@
 	return
 
 /datum/game_mode/proc/declare_completion()
+	round_statistics.count_end_of_round_mobs_for_statistics()
 	var/clients = 0
 	var/surviving_humans = 0
 	var/surviving_total = 0

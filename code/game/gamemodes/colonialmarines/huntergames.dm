@@ -368,6 +368,7 @@ var/waiting_for_drop_votes = 0
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/huntergames/declare_completion()
+	round_statistics.count_end_of_round_mobs_for_statistics()
 	var/mob/living/carbon/winner = null
 
 	for(var/mob/living/carbon/human/Q in living_mob_list)
@@ -380,8 +381,7 @@ var/waiting_for_drop_votes = 0
 		world << "\red <FONT size = 4><B>We have a winner! >> [winner.real_name] ([winner.key]) << defeated all enemies!</B></FONT>"
 		world << "<FONT size = 3><B>Well done, your tale of survival will live on in legend!</B></FONT>"
 
-		if(round_stats) // Logging to data/logs/round_stats.log
-			round_stats << "Humans remaining: [count_humans()]\nRound time: [duration2text()][log_end]\nBig Winner: [winner.real_name] ([winner.key])"
+		round_statistics.hunter_games_winner = "[winner.real_name] ([winner.key])"
 
 	else if(finished == 2)
 		feedback_set_details("round_end_result","no winners")
@@ -397,8 +397,11 @@ var/waiting_for_drop_votes = 0
 		world << "<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>"
 		world << 'sound/misc/sadtrombone.ogg'
 
-		if(round_stats) // Logging to data/logs/round_stats.log
-			round_stats << "Humans remaining: [count_humans()]\nRound time: [duration2text()][log_end]"
+	round_statistics.game_mode = name
+	round_statistics.round_time = duration2text()
+	round_statistics.end_round_player_population = count_humans()
+
+	round_statistics.log_round_statistics()
 
 	return 1
 

@@ -8,8 +8,6 @@
 	max_health = 125
 	plasma_gain = 0.034
 	plasma_max = 300
-	evolution_threshold = 200
-	upgrade_threshold = 200
 	spit_delay = 30
 	caste_desc = "A weak ranged combat alien."
 	tackle_chance = 40
@@ -28,7 +26,6 @@
 	max_health = 150
 	plasma_gain = 0.038
 	plasma_max = 400
-	upgrade_threshold = 400
 	spit_delay = 25
 	caste_desc = "A ranged combat alien. It looks a little more dangerous."
 	tacklemin = 3
@@ -45,7 +42,6 @@
 	max_health = 175
 	plasma_gain = 0.04
 	plasma_max = 500
-	upgrade_threshold = 800
 	spit_delay = 20
 	caste_desc = "A ranged combat alien. It looks pretty strong."
 	armor_deflection = 20

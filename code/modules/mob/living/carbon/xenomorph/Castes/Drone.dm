@@ -8,12 +8,10 @@
 	max_health = 120
 	plasma_gain = 0.027
 	plasma_max = 750
-	evolution_threshold = 200
-	upgrade_threshold = 200
 	speed = -0.8
 	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
-	evolves_to = list("Queen", "Hivelord", "Burrower") //Add more here seperated by commas
+	evolves_to = list("Queen", "Burrower", "Carrier", "Hivelord") //Add more here seperated by commas
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	can_denest_hosts = 1
@@ -29,7 +27,6 @@
 	max_health = 145
 	plasma_gain = 0.032
 	plasma_max = 800
-	upgrade_threshold = 400
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	armor_deflection = 5
 	tacklemin = 3
@@ -46,7 +43,6 @@
 	max_health = 170
 	plasma_gain = 0.034
 	plasma_max = 900
-	upgrade_threshold = 800
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	armor_deflection = 10
 	tacklemin = 3

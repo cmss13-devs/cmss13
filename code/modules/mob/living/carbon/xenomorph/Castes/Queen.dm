@@ -13,7 +13,6 @@
 	plasma_max = 700
 	is_intelligent = 1
 	speed = 0.6
-	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	fire_immune = 1
 	armor_deflection = 45
@@ -36,7 +35,6 @@
 	max_health = 325
 	plasma_gain = 0.05
 	plasma_max = 800
-	upgrade_threshold = 1600
 	spit_delay = 20
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	armor_deflection = 50
@@ -52,7 +50,6 @@
 	max_health = 350
 	plasma_gain = 0.056
 	plasma_max = 900
-	upgrade_threshold = 3200
 	spit_delay = 15
 	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	armor_deflection = 55

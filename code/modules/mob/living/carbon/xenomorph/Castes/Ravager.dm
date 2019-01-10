@@ -11,7 +11,6 @@
 	max_health = 200
 	plasma_gain = 0.08
 	plasma_max = 100
-	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
@@ -33,7 +32,6 @@
 	max_health = 225
 	plasma_gain = 0.067
 	plasma_max = 150
-	upgrade_threshold = 1600
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	speed = -0.8
 	armor_deflection = 40
@@ -49,7 +47,6 @@
 	max_health = 250
 	plasma_gain = 0.075
 	plasma_max = 200
-	upgrade_threshold = 3200
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	speed = -0.9
 	armor_deflection = 45

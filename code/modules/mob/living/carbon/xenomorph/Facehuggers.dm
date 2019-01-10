@@ -386,7 +386,7 @@
 			var/obj/effect/alien/resin/trap/T = locate() in loc
 			if(T && T.trap_type == RESIN_TRAP_EMPTY)
 				visible_message("<span class='xenowarning'>[src] crawls into [T]!</span>")
-				T.hugger_hivenumber = hivenumber
+				T.hivenumber = hivenumber
 				T.set_state(RESIN_TRAP_HUGGER)
 				cdel(src)
 				return

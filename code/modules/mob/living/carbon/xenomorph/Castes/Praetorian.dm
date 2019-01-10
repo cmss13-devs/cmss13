@@ -9,7 +9,6 @@
 	max_health = 225
 	plasma_gain = 0.032
 	plasma_max = 800
-	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	spit_delay = 20
@@ -29,7 +28,6 @@
 	max_health = 250
 	plasma_gain = 0.034
 	plasma_max = 900
-	upgrade_threshold = 1600
 	spit_delay = 15
 	caste_desc = "A giant ranged monster. It looks a little more dangerous."
 	armor_deflection = 40
@@ -45,7 +43,6 @@
 	max_health = 275
 	plasma_gain = 0.04
 	plasma_max = 1000
-	upgrade_threshold = 3200
 	spit_delay = 10
 	caste_desc = "A giant ranged monster. It looks pretty strong."
 	armor_deflection = 45

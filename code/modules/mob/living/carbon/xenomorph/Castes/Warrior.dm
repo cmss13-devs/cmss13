@@ -10,8 +10,6 @@
 	tackle_chance = 40
 	plasma_gain = 0.08
 	plasma_max = 100
-	upgrade_threshold = 500
-	evolution_threshold = 500
 	caste_desc = "A powerful front line combatant."
 	armor_deflection = 30
 	max_health = 200
@@ -27,7 +25,6 @@
 	upgrade = 1
 	melee_damage_lower = 35
 	melee_damage_upper = 40
-	upgrade_threshold = 800
 	caste_desc = "An alien with an armored carapace. It looks a little more dangerous."
 	armor_deflection = 35
 	max_health = 225
@@ -40,7 +37,6 @@
 	upgrade = 2
 	melee_damage_lower = 40
 	melee_damage_upper = 45
-	upgrade_threshold = 1600
 	caste_desc = "An alien with an armored carapace. It looks pretty strong."
 	armor_deflection = 40
 	max_health = 250

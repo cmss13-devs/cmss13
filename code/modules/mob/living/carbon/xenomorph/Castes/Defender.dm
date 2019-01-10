@@ -8,8 +8,6 @@
 	max_health = 175
 	plasma_gain = 0.08
 	plasma_max = 100
-	evolution_threshold = 200
-	upgrade_threshold = 200
 	caste_desc = "A sturdy front line combatant."
 	speed = -0.2
 	charge_type = 2 //Pounce - Hunter
@@ -24,7 +22,6 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	max_health = 200
-	upgrade_threshold = 400
 	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
 	speed = -0.3
 	armor_deflection = 25
@@ -35,7 +32,6 @@
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	max_health = 225
-	upgrade_threshold = 800
 	caste_desc = "An alien with an armored head crest. It looks pretty strong."
 	speed = -0.4
 	armor_deflection = 30

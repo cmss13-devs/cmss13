@@ -8,8 +8,6 @@
 	max_health = 160
 	plasma_gain = 0.034
 	plasma_max = 600
-	evolution_threshold = 250
-	upgrade_threshold = 250
 	spit_delay = 25
 	speed = -0.5
 	caste_desc = "Ptui!"
@@ -28,7 +26,6 @@
 	max_health = 180
 	plasma_gain = 0.036
 	plasma_max = 700
-	upgrade_threshold = 800
 	spit_delay = 20
 	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	armor_deflection = 20
@@ -45,7 +42,6 @@
 	max_health = 200
 	plasma_gain = 0.038
 	plasma_max = 800
-	upgrade_threshold = 1600
 	spit_delay = 15
 	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	armor_deflection = 25

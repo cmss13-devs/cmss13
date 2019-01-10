@@ -7,7 +7,6 @@
 	melee_damage_upper = 20
 	plasma_gain = 0.0375
 	plasma_max = 800
-	upgrade_threshold = 800
 	evolution_allowed = FALSE
 	deevolves_to = "Spitter"
 	spit_delay = 40
@@ -20,9 +19,7 @@
 	acid_level = 3
 
 /datum/caste_datum/boiler/mature
-
 	upgrade_name = "Mature"
-
 	upgrade = 1
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -31,7 +28,6 @@
 	tackle_chance = 40
 	plasma_gain = 0.039
 	plasma_max = 900
-	upgrade_threshold = 1600
 	spit_delay = 30
 	caste_desc = "Some sort of abomination. It looks a little more dangerous."
 	armor_deflection = 25
@@ -40,9 +36,7 @@
 	bomb_strength = 1.5
 
 /datum/caste_datum/boiler/elder
-
 	upgrade_name = "Elder"
-
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 30
@@ -51,7 +45,6 @@
 	tackle_chance = 45
 	plasma_gain = 0.040
 	plasma_max = 1000
-	upgrade_threshold = 3200
 	spit_delay = 20
 	caste_desc = "Some sort of abomination. It looks pretty strong."
 	armor_deflection = 30
@@ -60,9 +53,7 @@
 	bomb_strength = 2
 
 /datum/caste_datum/boiler/ancient
-
 	upgrade_name = "Ancient"
-
 	upgrade = 3
 	melee_damage_lower = 30
 	melee_damage_upper = 40

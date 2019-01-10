@@ -8,8 +8,6 @@
 	max_health = 150
 	plasma_gain = 0.1
 	plasma_max = 100
-	evolution_threshold = 500
-	upgrade_threshold = 500
 	deevolves_to = "Runner"
 	caste_desc = "A fast, powerful front line combatant."
 	speed = -1.5 //Not as fast as runners, but faster than other xenos
@@ -28,7 +26,6 @@
 	max_health = 170
 	plasma_gain = 0.107
 	plasma_max = 150
-	upgrade_threshold = 800
 	caste_desc = "A fast, powerful front line combatant. It looks a little more dangerous."
 	speed = -1.6
 	armor_deflection = 20
@@ -45,7 +42,6 @@
 	max_health = 190
 	plasma_gain = 0.114
 	plasma_max = 175
-	upgrade_threshold = 1600
 	caste_desc = "A fast, powerful front line combatant. It looks pretty strong."
 	speed = -1.7
 	armor_deflection = 25

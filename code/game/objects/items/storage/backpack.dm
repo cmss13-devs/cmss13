@@ -460,27 +460,44 @@
 
 
 /obj/item/storage/backpack/marine/engineerpack/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/tool/weldingtool))
-		var/obj/item/tool/weldingtool/T = W
-		if(T.welding)
-			user << "<span class='warning'>That was close! However you realized you had the welder on and prevented disaster.</span>"
-			return
-		if(!(T.get_fuel()==T.max_fuel) && reagents.total_volume)
-			reagents.trans_to(W, T.max_fuel)
-			user << "<span class='notice'>Welder refilled!</span>"
-			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-			return
-	else if(istype(W, /obj/item/ammo_magazine/flamer_tank))
-		var/obj/item/ammo_magazine/flamer_tank/FT = W
-		if(!FT.current_rounds && reagents.total_volume)
-			var/fuel_available = reagents.total_volume < FT.max_rounds ? reagents.total_volume : FT.max_rounds
-			reagents.remove_reagent("fuel", fuel_available)
-			FT.current_rounds = fuel_available
-			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-			FT.caliber = "Fuel"
-			user << "<span class='notice'>You refill [FT] with [lowertext(FT.caliber)].</span>"
-			FT.update_icon()
-			return
+	if(reagents.total_volume)
+		if(istype(W, /obj/item/tool/weldingtool))
+			var/obj/item/tool/weldingtool/T = W
+			if(T.welding)
+				user << "<span class='warning'>That was close! However you realized you had the welder on and prevented disaster.</span>"
+				return
+			if(!(T.get_fuel()==T.max_fuel) && reagents.total_volume)
+				reagents.trans_to(W, T.max_fuel)
+				user << "<span class='notice'>Welder refilled!</span>"
+				playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+				return
+		else if(istype(W, /obj/item/ammo_magazine/flamer_tank))
+			var/obj/item/ammo_magazine/flamer_tank/FT = W
+			if(!FT.current_rounds && reagents.total_volume)
+				var/fuel_available = reagents.total_volume < FT.max_rounds ? reagents.total_volume : FT.max_rounds
+				reagents.remove_reagent("fuel", fuel_available)
+				FT.current_rounds = fuel_available
+				playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+				FT.caliber = "Fuel"
+				user << "<span class='notice'>You refill [FT] with [lowertext(FT.caliber)].</span>"
+				FT.update_icon()
+				return
+		else if(istype(W, ))
+			var/obj/item/weapon/gun/G = W
+			if(G.under && istype(G.under, /obj/item/attachable/attached_gun/flamer))
+				var/obj/item/attachable/attached_gun/flamer/F = G.under
+				if(F.current_rounds < F.max_rounds)
+					var/to_transfer = F.max_rounds - F.current_rounds
+					if(to_transfer > reagents.total_volume)
+						to_transfer = reagents.total_volume
+					reagents.remove_reagent("fuel", to_transfer)
+					F.current_rounds += to_transfer
+					playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+					user << "<span class='notice'>You refill [F] with Fuel.</span>"
+				else
+					user << "<span class='warning'>[F] is full.</span>"
+			else
+				user << "<span class='warning'>Nothing to refill.</span>"
 	. = ..()
 
 /obj/item/storage/backpack/marine/engineerpack/afterattack(obj/O as obj, mob/user as mob, proximity)

@@ -334,6 +334,10 @@
 	..()
 	new /obj/item/storage/firstaid/regular(src)
 
+/obj/item/storage/pouch/medkit/full_advanced/New()
+	..()
+	new /obj/item/storage/firstaid/adv(src)
+
 /obj/item/storage/pouch/document
 	name = "document pouch"
 	desc = "It can contain papers and clipboards."

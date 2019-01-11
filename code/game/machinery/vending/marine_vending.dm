@@ -120,14 +120,19 @@
 
 	products = list(
 		/obj/item/storage/backpack/marine = round(scale * 15),
+		/obj/item/storage/backpack/marine/engineerpack = round(scale * 2),
 		/obj/item/storage/belt/marine = round(scale * 15),
 		/obj/item/storage/belt/shotgun = round(scale * 10),
+
 		/obj/item/clothing/tie/storage/webbing = round(scale * 5),
-		///obj/item/clothing/tie/storage/brown_vest = 0,
+		/obj/item/clothing/tie/storage/brown_vest = round(scale * 2),
 		///obj/item/clothing/tie/holster = 0,
+
 		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
 		/obj/item/storage/belt/gun/m44 = round(scale * 5),
 		/obj/item/storage/large_holster/m39 = round(scale * 5),
+
+		/obj/item/storage/sparepouch = round(scale * 2),
 		/obj/item/storage/pouch/general/medium = round(scale * 2),
 		/obj/item/storage/pouch/construction = round(scale * 2),
 		/obj/item/storage/pouch/document = round(scale * 2),
@@ -141,9 +146,11 @@
 		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
 		/obj/item/storage/pouch/pistol = round(scale * 15),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 5),
+
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 20),
 		/obj/item/weapon/gun/pistol/m1911 = round(scale * 2),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 10),
+
 		/obj/item/weapon/gun/smg/m39 = round(scale * 15),
 		///obj/item/weapon/gun/smg/m39/elite = 0,
 		///obj/item/weapon/gun/rifle/m41aMK1 = 0,
@@ -152,6 +159,7 @@
 		///obj/item/weapon/gun/rifle/lmg = 0,
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 10),
 		///obj/item/weapon/gun/shotgun/combat = 0,
+
 		/obj/item/explosive/mine = round(scale * 2),
 		/obj/item/storage/box/nade_box = round(scale * 2),
 		/obj/item/storage/box/nade_box/frag = round(scale * 2),
@@ -161,6 +169,7 @@
 		/obj/item/explosive/grenade/incendiary = round(scale * 2),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 5),
 		///obj/item/explosive/grenade/phosphorus = 0,
+
 		/obj/item/storage/box/m94 = round(scale * 10),
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/clothing/mask/gas = round(scale * 10)

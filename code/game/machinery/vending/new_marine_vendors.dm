@@ -874,9 +874,10 @@
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
-		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Mini Flamethrower", 0, /obj/item/attachable/attached_gun/flamer, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 

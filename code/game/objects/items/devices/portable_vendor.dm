@@ -239,5 +239,12 @@
 		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disoritentation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
 		list("Ultrazine Pills", 20, /obj/item/storage/pill_bottle/ultrazine, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per pill. More than two pills at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
 		list("Cash", 5, /obj/item/spacecash/c1000, "white", "$1000 USD, unmarked bills"),
-		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered.")
+		
+		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
+		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/dromedaryco, "white", "Weyland Yutani Gold packet, for the more sophisticated taste."),
+		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),
+
+		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
+		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland Yutani Aspen Beer, for a more catual night."),
+		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 	)

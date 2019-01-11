@@ -387,7 +387,7 @@
 /datum/xeno_mutator/longer_pounce
 	//Gives Carrier more carry capacity
 	name = "KEYSTONE - Longer pounce"
-	description = "You are able to punce further."
+	description = "You are able to pounce further."
 	cost = MUTATOR_COST_EXPENSIVE
 	unique = TRUE //Can only buy once
 	individual_only = TRUE //Only for individuals

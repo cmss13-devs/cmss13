@@ -171,15 +171,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.mind)
 		switch(user.mind.assigned_role)
 			if(
-				"PMC Leader",
 				"PMC",
 				"WY Agent",
 				"Corporate Liaison",
 				"Event",
-				"PMC Standard",
-				"PMC Gunner",
-				"PMC Sharpshooter",
-				"PMC Commando",
 			) return 1
 		switch(user.mind.special_role)
 			if(

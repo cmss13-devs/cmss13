@@ -3,7 +3,7 @@
 	name = "WY"
 
 	idtype = /obj/item/card/id/centcom
-	special_role = "MODE"
+	special_role = "PMC"
 
 /datum/equipment_preset/wy/New()
 	. = ..()

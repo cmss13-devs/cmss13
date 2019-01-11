@@ -319,7 +319,8 @@
 	var/mob/living/carbon/human/H
 	if(ishuman(target))
 		H = target
-		if(H.species && (H.species.flags & IS_SYNTHETIC)) return //can't impregnate synthetics
+		if(H.species && (H.species.flags & IS_SYNTHETIC))
+			return //can't impregnate synthetics
 
 	if(!sterile)
 		var/embryos = 0
@@ -341,7 +342,8 @@
 	else
 		target.visible_message("<span class='danger'>[src] violates [target]'s face!</span>")
 
-	round_statistics.total_huggers_applied++
+	if(ishuman(target))
+		round_statistics.total_huggers_applied++
 
 
 /obj/item/clothing/mask/facehugger/proc/get_impregnation_amount(mob/living/carbon/target)

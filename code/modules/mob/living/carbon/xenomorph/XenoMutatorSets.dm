@@ -86,6 +86,8 @@
 /datum/mutator_set/hive_mutators/list_and_purchase_mutators()
 	if(!hive || !hive.living_xeno_queen)
 		return //somehow Queen is not set but this function was called...
+	if(hive.living_xeno_queen.is_dead())
+		return //Dead xenos can't mutate!
 	if(hive.living_xeno_queen.hardcore)
 		usr << "<span class='warning'>No time for that, must KILL!</span>"
 		return
@@ -265,6 +267,8 @@
 	if(hardcore)
 		usr << "<span class='warning'>No time for that, must KILL!</span>"
 		return
+	if(is_dead())
+		return //Dead xenos can't mutate!
 	src.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/verb/list_mutators()

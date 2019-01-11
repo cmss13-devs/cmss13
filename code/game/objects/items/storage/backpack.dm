@@ -482,7 +482,7 @@
 				user << "<span class='notice'>You refill [FT] with [lowertext(FT.caliber)].</span>"
 				FT.update_icon()
 				return
-		else if(istype(W, ))
+		else if(istype(W, /obj/item/weapon/gun))
 			var/obj/item/weapon/gun/G = W
 			if(G.under && istype(G.under, /obj/item/attachable/attached_gun/flamer))
 				var/obj/item/attachable/attached_gun/flamer/F = G.under

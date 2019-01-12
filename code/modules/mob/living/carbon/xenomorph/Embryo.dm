@@ -78,16 +78,6 @@
 			counter += 0.11 * hive.larva_gestation_multiplier
 	else if(istype(affected_mob.buckled, /obj/structure/bed/nest)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
 		counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
-
-		if( istype(affected_mob, /mob/living/carbon/human) )
-			for( var/mob/living/carbon/human/H in hearers(world.view,affected_mob) ) //Human hosts incubate faster when nested in line-of-sight of each other
-				if(H == affected_mob)
-					continue
-				if(H.stat == DEAD)
-					continue
-				if( (H.status_flags & XENO_HOST) && istype(H.buckled, /obj/structure/bed/nest) )
-					counter += 0.1 * hive.larva_gestation_multiplier
-
 	else
 		if(stage < 5)
 			counter += 1.0 * hive.larva_gestation_multiplier
@@ -236,3 +226,6 @@
 		victim.death() // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
+
+	if(ishuman(victim))
+		round_statistics.total_human_chestbursts++

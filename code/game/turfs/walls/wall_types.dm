@@ -6,13 +6,13 @@
 
 /turf/closed/wall/almayer
 	name = "hull"
-	desc = "A metal wall used to seperate rooms and make up the ship."
+	desc = "A huge chunk of metal used to seperate rooms and make up the ship."
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "testwall0"
 	walltype = "testwall"
 
 	damage = 0
-	damage_cap = 1000 //Wall will break down to girders if damage reaches this point
+	damage_cap = 10000 //Wall will break down to girders if damage reaches this point
 
 	max_temperature = 18000 //K, walls will take damage if they're next to a fire hotter than this
 
@@ -37,7 +37,7 @@
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
-	desc = "A metal wall used to seperate space from the ship"
+	desc = "A huge chunk of metal used to seperate space from the ship"
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = "testwall"
@@ -112,12 +112,12 @@
 //Sulaco walls.
 /turf/closed/wall/sulaco
 	name = "spaceship hull"
-	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
+	desc = "A huge chunk of metal used to separate rooms on spaceships from the cold void of space."
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "sulaco0"
 	hull = 0 //Can't be deconstructed
 
-	damage_cap = 1000
+	damage_cap = 8000 //As tough as R_walls.
 	max_temperature = 28000 //K, walls will take damage if they're next to a fire hotter than this
 	walltype = "sulaco" //Changes all the sprites and icons.
 
@@ -407,7 +407,7 @@
 	desc = "Weird slime translucent enough to let light pass through."
 	icon_state = "membrane0"
 	walltype = "membrane"
-	damage_cap = 200
+	damage_cap = 120
 	opacity = 0
 	alpha = 180
 

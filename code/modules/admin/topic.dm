@@ -261,22 +261,26 @@
 
 		switch(href_list["simplemake"])
 			if("observer")		M.change_mob_type( /mob/dead/observer , null, null, delmob )
+
 			if("larva")				M.change_mob_type( /mob/living/carbon/Xenomorph/Larva , null, null, delmob )
-			if("defender")		M.change_mob_type( /mob/living/carbon/Xenomorph/Defender, null, null, delmob )
+			if("defender")			M.change_mob_type( /mob/living/carbon/Xenomorph/Defender, null, null, delmob )
 			if("warrior")			M.change_mob_type( /mob/living/carbon/Xenomorph/Warrior, null, null, delmob )
 			if("runner")			M.change_mob_type( /mob/living/carbon/Xenomorph/Runner , null, null, delmob )
 			if("drone")				M.change_mob_type( /mob/living/carbon/Xenomorph/Drone , null, null, delmob )
-			if("sentinel")		M.change_mob_type( /mob/living/carbon/Xenomorph/Sentinel , null, null, delmob )
+			if("sentinel")			M.change_mob_type( /mob/living/carbon/Xenomorph/Sentinel , null, null, delmob )
 			if("lurker")			M.change_mob_type( /mob/living/carbon/Xenomorph/Lurker , null, null, delmob )
 			if("carrier")			M.change_mob_type( /mob/living/carbon/Xenomorph/Carrier , null, null, delmob )
-			if("hivelord")		M.change_mob_type( /mob/living/carbon/Xenomorph/Hivelord , null, null, delmob )
-			if("praetorian")	M.change_mob_type( /mob/living/carbon/Xenomorph/Praetorian , null, null, delmob )
+			if("hivelord")			M.change_mob_type( /mob/living/carbon/Xenomorph/Hivelord , null, null, delmob )
+			if("praetorian")		M.change_mob_type( /mob/living/carbon/Xenomorph/Praetorian , null, null, delmob )
 			if("ravager")			M.change_mob_type( /mob/living/carbon/Xenomorph/Ravager , null, null, delmob )
 			if("spitter")			M.change_mob_type( /mob/living/carbon/Xenomorph/Spitter , null, null, delmob )
 			if("boiler")			M.change_mob_type( /mob/living/carbon/Xenomorph/Boiler , null, null, delmob )
-			if("burrower")		M.change_mob_type( /mob/living/carbon/Xenomorph/Burrower , null, null, delmob )
+			if("burrower")			M.change_mob_type( /mob/living/carbon/Xenomorph/Burrower , null, null, delmob )
 			if("crusher")			M.change_mob_type( /mob/living/carbon/Xenomorph/Crusher , null, null, delmob )
 			if("queen")				M.change_mob_type( /mob/living/carbon/Xenomorph/Queen , null, null, delmob )
+			if("ravenger")			M.change_mob_type( /mob/living/carbon/Xenomorph/Ravager/ravenger , null, null, delmob )
+			if("predalien")			M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
+			
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("monkey")			M.change_mob_type( /mob/living/carbon/monkey , null, null, delmob )
 			if("robot")				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
@@ -999,6 +1003,20 @@
 		log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
 		message_admins("\blue [key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
+	else if(href_list["forceemote"])
+		if(!check_rights(R_FUN))	return
+
+		var/mob/M = locate(href_list["forceemote"])
+		if(!ismob(M))
+			usr << "this can only be used on instances of type /mob"
+
+		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		if(!speech)	return
+		M.custom_emote(1, speech, TRUE)
+		speech = sanitize(speech) // Nah, we don't trust them
+		log_admin("[key_name(usr)] forced [key_name(M)] to emote: [speech]")
+		message_admins("\blue [key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
+
 	else if(href_list["sendtoprison"])
 		if(!check_rights(R_ADMIN))	return
 
@@ -1211,6 +1229,7 @@
 			return
 
 		X.set_hivenumber_and_update(href_list["newhivenumber"])
+		message_admins("\blue [key_name(usr)] changed hivenumber of [X] to [X.hivenumber].", 1)
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return
@@ -1530,6 +1549,11 @@
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
 		H << "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\""
 
+	else if(href_list["CentcommFaxView"])
+		var/info = locate(href_list["CentcommFaxView"])
+
+		usr << browse("<HTML><HEAD><TITLE>Liaison Fax Message</TITLE></HEAD><BODY>[info]</BODY></HTML>", "window=Fax Message")
+
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
 		var/obj/machinery/faxmachine/fax = locate(href_list["originfax"])
@@ -1567,11 +1591,11 @@
 		if(send_choice == "Cancel") return
 		fax_contents += fax_message // save a copy
 
-		USCMFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
+		USCMFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/machinery/faxmachine/F in machines)
@@ -1638,11 +1662,11 @@
 		if(send_choice == "Cancel") return
 		fax_contents += fax_message // save a copy
 
-		CLFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		CLFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 
@@ -1938,6 +1962,20 @@
 				feedback_add_details("admin_secrets_fun_used","LO")
 				message_admins("[key_name_admin(usr)] has broke a lot of lights", 1)
 				lightsout(1,2)
+			if("Booniehats")
+				feedback_inc("admin_secrets_fun_used",1)
+				feedback_add_details("admin_secrets_fun_used","BH")
+				for(var/obj/item/clothing/head/H in world)
+					H.name = "\improper USCM boonie hat"
+					H.desc = "A casual cap occasionally worn by crazy marines. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+					H.icon_state = "booniehat"
+					H.icon = 'icons/obj/clothing/cm_hats.dmi'
+					H.sprite_sheet_id = 1
+					//flags_item |= NODROP lets not.
+					if(istype(H.loc,/mob/living/carbon/human/))
+						var/mob/M = H.loc
+						M.update_inv_head()
+				message_admins("[key_name_admin(usr)] gave everyone boonie hats", "ADMINBUS:")
 			if("blackout")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","BO")
@@ -2403,6 +2441,9 @@
 			return
 
 		message_staff("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)] and is preparing to respond...", 1)
+		log_admin("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].", 1)
+		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].<br>")
+		STUI.processing |= 3
 		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>"
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
@@ -2426,6 +2467,9 @@
 			return
 
 		message_staff("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)]. The player has been notified that their issue 'is being handled, it's fixed, or it's nonsensical'.", 1)
+		log_admin("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].", 1)
+		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].<br>")
+		STUI.processing |= 3
 		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>"
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
@@ -2449,6 +2493,9 @@
 			return
 
 		message_staff("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)]. The player has been warned for abusing the Adminhelp system.", 1)
+		log_admin("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].", 1)
+		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].<br>")
+		STUI.processing |= 3
 		var/msgplayer = "\blue <b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>"
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
@@ -2476,7 +2523,7 @@
 			usr << "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>"
 			return
 
-		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Guilty", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
+		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law","Whitelist Player", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros")
 
 		var/msgplayer
 		switch(choice)
@@ -2486,10 +2533,12 @@
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>"
 			if("Fixed")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>"
+			if("Whitelist Player")
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Whitelisted players only get sanctioned through <a href='https://cm-ss13.com/viewforum.php?f=63'>player reports.</a> Staff is allowed to talk to whitelisted players to get their side or to investigate."
 			if("Thanks")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
-			if("Guilty")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. You broke Marine Law.</b>"
+			if("Marine Law")
+				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a <a href='http://cm-ss13.com/wiki/Marine_Law'>marine law issue</a>. <a href='https://cm-ss13.com/viewforum.php?f=63'>Unless the MP's are breaking procedure in a significant way</a> we will not influence ic events. You do have the right to appeal your sentence and should try to appeal to the Captain first. </b>"
 			if("L: Xeno Quickstart Guide")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b>"
 			if("L: Marine quickstart guide")
@@ -2513,7 +2562,9 @@
 			else return
 		msgplayer += " <b><i>You may click on administrator's name to ask more about this response.</i></b>"
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
-
+		log_admin("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>.", 1) //No need to log the text we send them.
+		STUI.staff.Add("\[[time_stamp()]][usr.key] is autoresponding to [ref_person] with [choice].<br>")
+		STUI.processing |= 3
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-reply.ogg')
 
@@ -2535,7 +2586,7 @@
 	//
 	// 	//send this msg to all admins
 	// 	for(var/client/X in admins)
-	// 		if((R_ADMIN|R_MOD|R_MENTOR) & X.holder.rights)
+	// 		if((R_ADMIN|R_MOD|R_MENTOR) & X.admin_holder.rights)
 	// 			X << msg
 	//
 	// 	ref_person << msgplayer //send a message to the player
@@ -2574,7 +2625,7 @@
 
 	if(href_list["distress"]) //Distress Beacon, sends a random distress beacon when pressed
 		distress_cancel = 0
-		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=holder;distresscancel=\ref[usr]'>CANCEL</A>)")
+		message_staff("[key_name_admin(usr)] has opted to SEND the distress beacon! Launching in 10 seconds... (<A HREF='?_src_=admin_holder;distresscancel=\ref[usr]'>CANCEL</A>)")
 		spawn(100)
 			if(distress_cancel) return
 			var/mob/ref_person = locate(href_list["distress"])

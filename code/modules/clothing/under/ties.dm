@@ -253,8 +253,6 @@
 
 //subtypes can override this to specify what can be holstered
 /obj/item/clothing/tie/holster/proc/can_holster(obj/item/weapon/gun/W)
-	if(!istype(W))
-		return 0 //Only for guns
 	if(W.w_class <= 3) return 1
 	return 0
 

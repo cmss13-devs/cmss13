@@ -23,7 +23,8 @@
 	mob.dna.ready_dna(mob)
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
-	mob.mind.assigned_role = "Reinforcements"
+	mob.mind.assigned_role = ""
+	mob.mind.special_role = ""
 
 	sleep(5)
 	if(!leader)

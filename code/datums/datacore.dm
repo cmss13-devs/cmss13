@@ -210,7 +210,7 @@ var/global/list/PDA_Manifest = list()
 	if(PDA_Manifest.len)
 		PDA_Manifest.Cut()
 
-	if(H.mind && (H.mind.assigned_role != "MODE"))
+	if(H.mind && (H.mind.assigned_role != "MODE") && !H.mind.special_role)
 		var/assignment
 		if(H.mind.role_alt_title)
 			assignment = H.mind.role_alt_title

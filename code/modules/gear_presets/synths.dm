@@ -12,7 +12,7 @@
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
 	H.set_species("Early Synthetic")
 
-/datum/equipment_preset/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.real_name = "David"
 	if(H.client && H.client.prefs)
 		H.real_name = H.client.prefs.synthetic_name

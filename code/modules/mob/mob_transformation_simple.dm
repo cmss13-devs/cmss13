@@ -3,6 +3,7 @@
 //Returns the new mob
 //Note that this proc does NOT do MMI related stuff!
 /mob/proc/change_mob_type(var/new_type = null, var/turf/location = null, var/new_name = null as text, var/delete_old_mob = 0 as num, var/subspecies)
+
 	if(istype(src,/mob/new_player))
 		usr << "\red cannot convert players who have not entered yet."
 		return
@@ -32,6 +33,14 @@
 		cdel(M)
 		return
 
+	if( istext(new_name) )
+		M.name = new_name
+		M.real_name = new_name
+	else
+		if(!isXeno(M)) //Xenos have their own naming convention, leave them alone!
+			M.name = src.name
+			M.real_name = src.real_name
+
 	if(src.dna)
 		M.dna = src.dna.Clone()
 
@@ -44,17 +53,6 @@
 	if(subspecies && istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		H.set_species(subspecies)
-
-	if(M.client && M.client.prefs)
-		M.client.prefs.copy_to(M)
-
-	if( istext(new_name) )
-		M.name = new_name
-		M.real_name = new_name
-	else
-		if(!isXeno(M)) //Xenos have their own naming convention, leave them alone!
-			M.name = src.name
-			M.real_name = src.real_name
 
 	if(delete_old_mob)
 		spawn(1)

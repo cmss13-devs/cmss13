@@ -1407,9 +1407,6 @@ datum/preferences
 	return 1
 
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, safety = 0)
-	if(!istype(character))
-		return
-
 	if(be_random_name)
 		real_name = random_name(gender)
 

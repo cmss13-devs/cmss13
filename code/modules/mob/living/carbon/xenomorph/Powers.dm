@@ -1018,8 +1018,6 @@
 					use_plasma(resin_plasma_cost)
 					playsound(loc, "alien_resin_build", 25)
 				else if(WR.walltype == "membrane")
-					visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and thickens [WR].</span>", \
-					"<span class='xenonotice'>You regurgitate some resin and thicken [WR].</span>", null, 5)
 					var/prev_oldturf = WR.oldTurf
 					WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 					WR.oldTurf = prev_oldturf
@@ -1149,12 +1147,6 @@
 				current_turf.ChangeTurf(/turf/closed/wall/resin/thick)
 			else
 				current_turf.ChangeTurf(/turf/closed/wall/resin)
-			new_resin = current_turf
-		if("resin membrane")
-			if (isXenoHivelord(src))
-				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-			else
-				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane)
 			new_resin = current_turf
 		if("resin nest")
 			new_resin = new /obj/structure/bed/nest(current_turf)

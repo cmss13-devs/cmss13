@@ -185,20 +185,21 @@ var/list/alldepartments = list()
 /proc/Centcomm_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
-	var/msg_admin = "\blue <b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] (<A HREF='?_src_=holder;mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<a href='?_src_=holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: Receiving '[sentname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
-	var/msg_ghost = "\blue <b><font color='#006100'>USCM FAX: </font></b>Receiving '[sentname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
-	USCMFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	var/msg_admin = "\blue <b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: Receiving '[sentname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
+	var/msg_ghost = "\blue <b><font color='#006100'>USCM FAX: </font></b>Receiving '[sentname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
+	USCMFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/Solgov_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
-	var/msg_admin = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] (<A HREF='?_src_=holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=holder;secretsadmin=check_antagonist'>CA</A>) (<a href='?_src_=holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: Receiving '[sentname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
-	var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>Receiving '[sentname]' via secure connection ... <a href='?_src_=holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
-	CLFaxes.Add("<a href='?_src_=holder;CentcommFaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
+	var/msg_admin = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: Receiving '[sentname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
+	var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>Receiving '[sentname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[faxcontents]'>view message</a>"
+	CLFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)
 
 /proc/announce_fax(var/msg_admin, var/msg_ghost)
+	log_admin(msg_admin) //Always irked me the replies do show up but the faxes themselves don't
 	for(var/client/C in admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			if(msg_admin)
@@ -211,8 +212,9 @@ var/list/alldepartments = list()
 			if(!g.client)
 				continue
 			var/client/C = g.client
-			if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
-				continue
+			if(C && C.admin_holder)
+				if((R_ADMIN|R_MOD) & C.admin_holder.rights) //staff don't need to see the fax twice
+					continue
 			C << msg_ghost
 			C << 'sound/effects/sos-morse-code.ogg'
 

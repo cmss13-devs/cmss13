@@ -52,12 +52,6 @@
 		mapVote()
 		return
 
-	//View fax. For replying to faxes, see admin/topic.dm
-	if(href_list["CentcommFaxView"])
-		var/info = locate(href_list["CentcommFaxView"])
-
-		usr << browse("<HTML><HEAD><TITLE>Liaison Fax Message</TITLE></HEAD><BODY>[info]</BODY></HTML>", "window=Fax Message")
-
 
 	//Logs all hrefs
 	if(config && config.log_hrefs && href_logfile)

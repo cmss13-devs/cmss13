@@ -25,8 +25,7 @@
 	H.dna.ready_dna(H)
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
-	H.mind.assigned_role = ""
-	H.mind.special_role = ""
+	H.mind.assigned_role = "Reinforcements"
 
 	sleep(5)
 	if (medics < max_medics)

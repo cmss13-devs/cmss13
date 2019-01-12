@@ -33,6 +33,8 @@
 		H.mind.set_cm_skills(skills)
 
 /datum/equipment_preset/proc/load_id(mob/living/carbon/human/H)
+	if(!idtype)
+		return
 	var/obj/item/card/id/W = new idtype()
 	W.name = "[H.real_name]'s ID Card"
 	if(assignment)
@@ -81,8 +83,10 @@
 		P.prescription = 1
 		H.equip_to_slot_or_del(P, WEAR_EYES)
 
-/datum/equipment_preset/strip
+/datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"
+	flags = EQUIPMENT_PRESET_EXTRA
+	idtype = null
 
 /datum/equipment_preset/proc/spawn_rebel_gun(var/atom/M, var/sidearm = 0)
 	if(!M) return

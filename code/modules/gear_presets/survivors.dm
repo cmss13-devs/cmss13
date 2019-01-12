@@ -347,13 +347,13 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/survivor/miner
+/datum/equipment_preset/survivor/salesman
 	name = "Survivor - Salesman"
 	assignment = "Salesman"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/survivor/miner/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 
 	if(map_tag == MAP_ICE_COLONY)

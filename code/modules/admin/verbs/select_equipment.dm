@@ -97,7 +97,11 @@
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
 /proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE)
-	if(!gear_presets_list || !gear_presets_list[dresscode])
+	if(!gear_presets_list)
+		error("arm_equipment !gear_presets_list")
+		return
+	if(!gear_presets_list[dresscode])
+		error("arm_equipment !gear_presets_list[dresscode]")
 		return
 	gear_presets_list[dresscode].load_preset(M, randomise)
 	return

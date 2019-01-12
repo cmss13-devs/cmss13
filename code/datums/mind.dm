@@ -448,9 +448,10 @@
 /datum/mind/proc/set_cm_skills(skills_path)
 	if(cm_skills)
 		cdel(cm_skills)
-	cm_skills = new skills_path()
-
-
+	if(!skills_path)
+		cm_skills = null
+	else
+		cm_skills = new skills_path()
 
 //Initialisation procs
 /mob/proc/mind_initialize()

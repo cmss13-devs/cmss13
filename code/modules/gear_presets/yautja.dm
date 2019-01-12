@@ -2,7 +2,7 @@
 
 /datum/equipment_preset/yautja
 	name = "Yautja"
-
+	idtype = null //No IDs for Yautja!
 	languages = list("Sainja")
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)

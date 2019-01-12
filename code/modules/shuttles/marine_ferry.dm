@@ -430,7 +430,7 @@
 	for(var/j=0; j<10; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		explosion_rec(sploded, 5000, 1000) //Clears out walls
+		explosion_rec(sploded, 200, 20) //Clears out walls
 		sleep(3)
 
 	for(var/obj/structure/window/framed/almayer/requisitions/R in structure_list)

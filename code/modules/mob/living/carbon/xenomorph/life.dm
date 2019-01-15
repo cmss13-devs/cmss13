@@ -88,33 +88,31 @@
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
 	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
 
-	if(aura_strength <= 0)
-		return //Pheromone underflow, ignore their aura
-
-	if(current_aura && !stat && plasma_stored > 5)
-		if(caste_name == "Queen" && anchored) //stationary queen's pheromone apply around the observed xeno.
-			var/mob/living/carbon/Xenomorph/Queen/Q = src
-			var/atom/phero_center = Q
-			if(Q.observed_xeno)
-				phero_center = Q.observed_xeno
-			if(phero_center.loc.z == Q.loc.z)//Only same Z-level
+	if(aura_strength > 0) //Ignoring pheromone underflow
+		if(current_aura && !stat && plasma_stored > 5)
+			if(caste_name == "Queen" && anchored) //stationary queen's pheromone apply around the observed xeno.
+				var/mob/living/carbon/Xenomorph/Queen/Q = src
+				var/atom/phero_center = Q
+				if(Q.observed_xeno)
+					phero_center = Q.observed_xeno
+				if(phero_center.loc.z == Q.loc.z)//Only same Z-level
+					var/pheromone_range = round(6 + aura_strength * 2)
+					for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
+						if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+							Z.frenzy_new = aura_strength
+						if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+							Z.warding_new = aura_strength
+						if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+							Z.recovery_new = aura_strength
+			else
 				var/pheromone_range = round(6 + aura_strength * 2)
-				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
+				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
 					if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
 						Z.frenzy_new = aura_strength
 					if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
 						Z.warding_new = aura_strength
 					if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 						Z.recovery_new = aura_strength
-		else
-			var/pheromone_range = round(6 + aura_strength * 2)
-			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-				if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-					Z.frenzy_new = aura_strength
-				if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-					Z.warding_new = aura_strength
-				if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-					Z.recovery_new = aura_strength
 
 
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!

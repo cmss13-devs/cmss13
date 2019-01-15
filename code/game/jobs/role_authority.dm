@@ -423,7 +423,7 @@ roles willy nilly.
 
 	if(ishuman(M))
 		var/mob/living/carbon/H = M
-		
+
 		H.job = J.title //TODO Why is this a mob variable at all?
 
 		//Give them an account in the database.
@@ -451,6 +451,9 @@ roles willy nilly.
 					remembered_info += "<b>Your department's account funds are:</b> $[department_account.money]<br>"
 
 				H.mind.store_memory(remembered_info)
+
+		if((J.title == "Commander") && roles_whitelist && (roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
+			arm_equipment(H, J.gear_preset_council)
 		arm_equipment(H, J.gear_preset) //After we move them, we want to equip anything else they should have.
 		/*var/alt_title
 		if(H.mind)

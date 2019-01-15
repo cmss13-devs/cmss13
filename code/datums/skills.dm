@@ -1,6 +1,4 @@
 
-
-
 /datum/skills
 	var/name //the name of the skillset
 	var/cqc = SKILL_CQC_DEFAULT
@@ -26,20 +24,15 @@
 	var/powerloader = SKILL_POWERLOADER_DEFAULT
 	var/large_vehicle = SKILL_LARGE_VEHICLE_DEFAULT
 
-
-
 /datum/skills/pfc
 	name = "Private"
 	//same as default
-
-
 
 /datum/skills/civilian
 	name = "Civilian"
 	cqc = SKILL_CQC_WEAK
 	firearms = SKILL_FIREARMS_UNTRAINED
 	melee_weapons = SKILL_MELEE_WEAK
-
 
 /datum/skills/civilian/survivor
 	name = "Survivor"
@@ -84,14 +77,11 @@
 	melee_weapons = SKILL_MELEE_DEFAULT
 	pistols = SKILL_PISTOLS_DEFAULT
 
-
-
 /datum/skills/combat_engineer
 	name = "Combat Engineer"
 	engineer = SKILL_ENGINEER_ENGI
 	construction = SKILL_CONSTRUCTION_ADVANCED
 	leadership = SKILL_LEAD_BEGINNER
-
 
 /datum/skills/combat_medic
 	name = "Combat Medic"
@@ -103,7 +93,6 @@
 	construction = SKILL_CONSTRUCTION_METAL
 	engineer = SKILL_ENGINEER_METAL
 
-
 /datum/skills/doctor
 	name = "Doctor"
 	cqc = SKILL_CQC_WEAK
@@ -111,8 +100,6 @@
 	medical = SKILL_MEDICAL_DOCTOR
 	melee_weapons = SKILL_MELEE_WEAK
 	surgery = SKILL_SURGERY_TRAINED
-
-
 
 /datum/skills/CMO
 	name = "CMO"
@@ -182,7 +169,6 @@
 	police = SKILL_POLICE_FLASH
 	powerloader = SKILL_POWERLOADER_TRAINED
 
-
 /datum/skills/SO
 	name = "Staff Officer"
 	construction = SKILL_CONSTRUCTION_PLASTEEL
@@ -196,7 +182,6 @@
 	powerloader = SKILL_POWERLOADER_DABBLING
 	leadership = SKILL_LEAD_TRAINED
 
-
 /datum/skills/MP
 	name = "Military Police"
 	cqc = SKILL_CQC_MP
@@ -208,7 +193,6 @@
 	police = SKILL_POLICE_MP
 	leadership = SKILL_LEAD_EXPERT
 
-
 /datum/skills/CE
 	name = "Chief Engineer"
 	engineer = SKILL_ENGINEER_MT
@@ -216,7 +200,6 @@
 	leadership = SKILL_LEAD_MASTER
 	police = SKILL_POLICE_FLASH
 	powerloader = SKILL_POWERLOADER_PRO
-
 
 /datum/skills/RO
 	name = "Requisition Officer"
@@ -235,21 +218,14 @@
 	construction = SKILL_CONSTRUCTION_METAL
 	powerloader = SKILL_POWERLOADER_PRO
 
-
-
-
 /datum/skills/pfc/pmc
 	name = "PMC Private"
 	police = SKILL_POLICE_MP
-
 
 /datum/skills/pfc/crafty
 	name = "Crafty Private"
 	construction = SKILL_CONSTRUCTION_METAL
 	engineer = SKILL_ENGINEER_METAL
-
-
-
 
 /datum/skills/SL
 	name = "Squad Leader"
@@ -258,8 +234,6 @@
 	engineer = SKILL_ENGINEER_PLASTEEL
 	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_CHEM
-
-
 
 /datum/skills/SL/upp
 	name = "UPP Leader"
@@ -271,7 +245,6 @@
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
 
-
 /datum/skills/SL/pmc
 	name = "PMC Leader"
 	firearms = SKILL_FIREARMS_TRAINED
@@ -281,7 +254,6 @@
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
 	police = SKILL_POLICE_MP
-
 
 /datum/skills/specialist
 	name = "Squad Specialist"
@@ -297,7 +269,6 @@
 	name = "PMC Specialist"
 	police = SKILL_POLICE_MP
 
-
 /datum/skills/specialist/upp
 	name = "UPP Specialist"
 	firearms = SKILL_FIREARMS_TRAINED
@@ -306,8 +277,6 @@
 	rifles = SKILL_RIFLES_TRAINED
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
-
-
 
 /datum/skills/smartgunner
 	name = "Squad Smartgunner"
@@ -330,9 +299,6 @@
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
 	police = SKILL_POLICE_MP
 
-
-
-
 /datum/skills/commando
 	name = "Commando"
 	cqc = 3
@@ -348,7 +314,6 @@
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
 
-
 /datum/skills/commando/medic
 	name = "Commando Medic"
 	medical = SKILL_MEDICAL_MEDIC
@@ -363,8 +328,6 @@
 	smartgun = SKILL_SMART_TRAINED
 	spec_weapons = SKILL_SPEC_TRAINED
 	medical = SKILL_MEDICAL_MEDIC
-
-
 
 /datum/skills/mercenary
 	name = "Mercenary"
@@ -420,3 +383,22 @@
 	large_vehicle = SKILL_LARGE_VEHICLE_TRAINED
 	powerloader = SKILL_POWERLOADER_DABBLING
 	leadership = SKILL_LEAD_TRAINED
+
+/datum/skills/gladiator
+	name = "Gladiator"
+	cqc = SKILL_CQC_MP
+	melee_weapons = SKILL_MELEE_TRAINED
+	firearms = SKILL_FIREARMS_UNTRAINED
+	leadership = SKILL_LEAD_NOVICE
+	medical = SKILL_MEDICAL_CHEM
+
+/datum/skills/gladiator/champion
+	name = "Gladiator Champion"
+	cqc = SKILL_CQC_MASTER
+	melee_weapons = SKILL_MELEE_SUPER
+	leadership = SKILL_LEAD_TRAINED
+	medical = SKILL_MEDICAL_MEDIC
+
+/datum/skills/gladiator/champion/leader
+	name = "Gladiator Leader"
+	leadership = SKILL_LEAD_MASTER //Spartacus!

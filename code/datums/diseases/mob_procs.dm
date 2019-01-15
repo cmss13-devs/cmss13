@@ -103,13 +103,13 @@
 
 
 
-/mob/proc/AddDisease(datum/disease/D)
+/mob/proc/AddDisease(datum/disease/D, var/roll_for_carrier = TRUE)
 	var/datum/disease/DD = new D.type(1, D)
 	viruses += DD
 	DD.affected_mob = src
 	DD.strain_data = DD.strain_data.Copy()
 	DD.holder = src
-	if(DD.can_carry && prob(5))
+	if(DD.can_carry && roll_for_carrier && prob(5))
 		DD.carrier = 1
 
 

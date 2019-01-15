@@ -78,7 +78,7 @@
 
 //medical skill
 #define SKILL_MEDICAL_DEFAULT	0
-#define SKILL_MEDICAL_CHEM		1 // recognizing chemicals, using autoinjectors & hyposprays with any chemicals (SL)
+#define SKILL_MEDICAL_CHEM		1 //recognizing chemicals, using autoinjectors & hyposprays with any chemicals (SL)
 #define SKILL_MEDICAL_MEDIC		2 //syringe use & defib use (Combat Medic)
 #define SKILL_MEDICAL_DOCTOR	3
 #define SKILL_MEDICAL_CMO		4

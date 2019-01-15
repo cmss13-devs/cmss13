@@ -18,6 +18,7 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
 	gear_preset = "USCM Commander (CO)"
+	gear_preset_council = "USCM Commodore (CO+)"
 
 	generate_entry_message()
 		. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.

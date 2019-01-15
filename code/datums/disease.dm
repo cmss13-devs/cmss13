@@ -26,7 +26,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	var/list/affected_species = list()
 	var/mob/living/carbon/affected_mob = null //the mob which is affected by disease.
 	var/holder = null //the atom containing the disease (mob or obj)
-	var/carrier = 0.0 //there will be a small chance that the person will be a carrier
+	var/carrier = 0 //there will be a small chance that the person will be a carrier
 	var/curable = 0 //can this disease be cured? (By itself...)
 	var/list/strain_data = list() //This is passed on to infectees
 	var/stage_prob = 4		// probability of advancing to next stage, default 4% per check
@@ -47,9 +47,8 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 /datum/disease/proc/stage_act()
 	age++
 	var/cure_present = has_cure()
-	//world << "[cure_present]"
 
-	if(carrier&&!cure_present)
+	if(carrier && !cure_present)
 		//world << "[affected_mob] is carrier"
 		return
 
@@ -151,7 +150,7 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 					cdel(D) // if there are somehow two viruses of the same kind in the system, delete the other one
 
 	if(holder == affected_mob)
-		if(affected_mob.stat != DEAD || survive_mob_death) //he's alive or disease transcends death.
+		if((affected_mob.stat != DEAD) || survive_mob_death) //he's alive or disease transcends death.
 			stage_act()
 		else //he's dead.
 			if(spread_type!=SPECIAL)

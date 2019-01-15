@@ -995,6 +995,7 @@
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
 			usr << "this can only be used on instances of type /mob"
+			return
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)	return
@@ -1002,6 +1003,27 @@
 		speech = sanitize(speech) // Nah, we don't trust them
 		log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
 		message_admins("\blue [key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
+
+	else if(href_list["zombieinfect"])
+		if(!check_rights(R_ADMIN))	return
+		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
+		if(!istype(H))
+			usr << "this can only be used on instances of type /human"
+			return
+
+		if(alert(usr, "Are you sure you want to infect them with a ZOMBIE VIRUS? This can trigger a major event!", "Message", "Yes", "No") != "Yes")
+			return
+
+		var/datum/disease/black_goo/bg = new()
+		if(alert(usr, "Make them non-symptomatic carrier?", "Message", "Yes", "No") == "Yes")
+			bg.carrier = TRUE
+		else 
+			bg.carrier = FALSE
+		
+		H.AddDisease(bg, FALSE)
+
+		log_admin("[key_name(usr)] infected [key_name(H)] with a ZOMBIE VIRUS")
+		message_admins("\blue [key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return
@@ -1549,11 +1571,6 @@
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
 		H << "You hear something crackle in your headset for a moment before a voice speaks.  \"Please stand by for a message from your benefactor.  Message as follows, agent. <b>\"[input]\"</b>  Message ends.\""
 
-	else if(href_list["CentcommFaxView"])
-		var/info = locate(href_list["CentcommFaxView"])
-
-		usr << browse("<HTML><HEAD><TITLE>Liaison Fax Message</TITLE></HEAD><BODY>[info]</BODY></HTML>", "window=Fax Message")
-
 	else if(href_list["USCMFaxReply"])
 		var/mob/living/carbon/human/H = locate(href_list["USCMFaxReply"])
 		var/obj/machinery/faxmachine/fax = locate(href_list["originfax"])
@@ -1591,11 +1608,13 @@
 		if(send_choice == "Cancel") return
 		fax_contents += fax_message // save a copy
 
-		USCMFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
+		USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>USCM FAX REPLY: </font></b> "
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 		for(var/obj/machinery/faxmachine/F in machines)
@@ -1662,11 +1681,13 @@
 		if(send_choice == "Cancel") return
 		fax_contents += fax_message // save a copy
 
-		CLFaxes.Add("<a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		CLFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> Transmitting '[customname]' via secure connection ... <a href='?_src_=admin_holder;CentcommFaxView=\ref[fax_message]'>view message</a>"
+		var/msg_ghost = "\blue <b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> "
+		msg_ghost += "Transmitting '[customname]' via secure connection ... "
+		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
 
 

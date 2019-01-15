@@ -16,10 +16,9 @@
 	permeability_mod = 2
 	stage_prob = 4
 	stage_minimum_age = 150
-	survive_mob_death = FALSE //switch to true to make dead infected humans still transform
+	survive_mob_death = TRUE //FALSE //switch to true to make dead infected humans still transform
 	var/zombie_transforming = 0 //whether we're currently transforming the host into a zombie.
 	var/goo_message_cooldown = 0 //to make sure we don't spam messages too often.
-
 
 /datum/disease/black_goo/stage_act()
 	..()

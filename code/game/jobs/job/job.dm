@@ -24,6 +24,7 @@
 	var/flags_whitelist 			= NOFLAGS //Only used by whitelisted roles. Can be a single whitelist flag, or a combination of them.
 
 	var/gear_preset //Gear preset name used for this job
+	var/gear_preset_council //Gear preset name used for council snowflakes ;)
 
 	New()
 		..()

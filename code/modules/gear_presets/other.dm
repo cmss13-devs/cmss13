@@ -343,3 +343,61 @@
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/gladiator
+	name = "Gladiator"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/dogtag
+	skills = /datum/skills/gladiator
+
+	assignment = "Gladiator"
+	rank = "Bestiarius"
+	special_role = "Gladiator"
+
+//TODO: give them cool names!
+///datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)
+
+/datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/gladiator/champion
+	name = "Gladiator Champion"
+	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/gladiator/champion
+	rank = "Samnite"
+
+/datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_L_HAND)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/other/gladiator/leader
+	name = "Gladiator Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/gladiator/champion/leader
+	rank = "Spartacus"
+
+/datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_L_HAND)
+	
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade(H), WEAR_L_STORE)

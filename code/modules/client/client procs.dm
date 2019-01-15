@@ -52,6 +52,9 @@
 		mapVote()
 		return
 
+	else if(href_list["FaxView"])
+		var/info = locate(href_list["FaxView"])
+		usr << browse("<HTML><HEAD><TITLE>Fax Message</TITLE></HEAD><BODY>[info]</BODY></HTML>", "window=Fax Message")
 
 	//Logs all hrefs
 	if(config && config.log_hrefs && href_logfile)

@@ -247,7 +247,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/gold
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
 	assignment = "Commanding Officer"
 	rank = "Commander"
 	paygrade = "O5"
@@ -257,13 +256,6 @@
 /datum/equipment_preset/uscm_ship/commander/New()
 	. = ..()
 	access = get_all_marine_access()
-
-/datum/equipment_preset/uscm_ship/commander/load_id(mob/living/carbon/human/H)
-	. = ..()
-
-	if(H.wear_id && RoleAuthority && RoleAuthority.roles_whitelist && (RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_COMMANDER_COUNCIL))
-		var/obj/item/card/id/W = H.wear_id
-		W.paygrade = "O5E"
 
 /datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel
@@ -279,6 +271,21 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/commander/commodore
+	name = "USCM Commodore (CO+)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	idtype = /obj/item/card/id/gold/commodore
+	rank = "Commodore"
+	paygrade = "O5E"
+	role_comm_title = "CDRE"
+
+/datum/equipment_preset/uscm_ship/commander/commodore/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdre(H), WEAR_HEAD)
+	. = ..()
 
 /*****************************************************************************************************/
 

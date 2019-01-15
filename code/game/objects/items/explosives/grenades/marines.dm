@@ -231,3 +231,15 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 
 /obj/item/explosive/grenade/HE/training/flamer_fire_act()
 	return
+
+/obj/item/explosive/grenade/HE/holy_hand_grenade
+	name = "\improper Holy Hand Grenade of Antioch"
+	desc = "And Saint Attila raised the hand grenade up on high, saying, \"O LORD, bless this Thy hand grenade that with it Thou mayest blow Thine enemies to tiny bits, in Thy mercy.\" And the LORD did grin and the people did feast upon the lambs and sloths and carp and anchovies... And the LORD spake, saying, \"First shalt thou take out the Holy Pin, then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.\""
+	icon_state = "banana"
+	item_state = "banana"
+	throw_speed = 3
+	throw_range = 10
+	underslug_launchable = FALSE
+	explosion_power = 300
+	det_time = 50
+	arm_sound = 'sound/voice/holy_chorus.ogg'//https://www.youtube.com/watch?v=hNV5sPZFuGg

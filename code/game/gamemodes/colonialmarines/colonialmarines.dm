@@ -184,6 +184,8 @@
 			announce_bioscans() //Announce the results of the bioscan to both sides.
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
+			defcon_controller.check_defcon_level() //Might as well check it at a similar interval
+
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog)) disperse_fog()//Some RNG thrown in.
 			if(round_should_check_for_win) check_win()

@@ -9,6 +9,7 @@
 	var/last_power_output = 0 // for displaying progress
 	objective_flags = OBJ_DO_NOT_TREE | OBJ_CAN_BE_UNCOMPLETED
 	display_flags = OBJ_DISPLAY_AT_END | OBJ_DISPLAY_WHEN_COMPLETE
+	priority = OBJECTIVE_ABSOLUTE_VALUE
 
 /datum/cm_objective/establish_power/get_completion_status()
 	return "[last_power_output]W, [minimum_power_required]W required."
@@ -33,6 +34,15 @@
 	uncomplete()
 	return 0
 
+/datum/cm_objective/establish_power/get_point_value()
+	check_completion()
+	if (last_power_output >= minimum_power_required)
+		return priority
+	return priority * last_power_output / minimum_power_required
+
+/datum/cm_objective/establish_power/total_point_value()
+	return priority
+
 // --------------------------------------------
 // *** Restore the apcs to working order ***
 // --------------------------------------------
@@ -43,6 +53,7 @@
 	var/total_apcs = 0
 	var/last_functioning = 0
 	var/points_per_apc = 5
+	priority = OBJECTIVE_ABSOLUTE_VALUE
 
 /datum/cm_objective/repair_apcs/pre_round_start()
 	for(var/obj/machinery/power/apc/colony_apc in machines)

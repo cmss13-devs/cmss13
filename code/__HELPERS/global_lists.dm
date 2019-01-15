@@ -89,6 +89,9 @@ var/global/list/synth_types = list("Synthetic","Early Synthetic")
 //Xeno mutators
 var/global/list/datum/xeno_mutator/xeno_mutator_list = list()
 
+//DEFCON rewards / assets
+var/global/list/datum/defcon_reward/defcon_reward_list = list()
+
 // Posters
 var/global/list/datum/poster/poster_designs = typesof(/datum/poster) - /datum/poster
 
@@ -215,7 +218,7 @@ var/global/round_should_check_for_win = TRUE
 		if(!(CD.caste_name in xeno_datum_list))
 			xeno_datum_list[CD.caste_name] = list(1,2,3,4) // lists are numbered from 1 and 0 or negative numbers cause index out of bounds runtimes -spookydonut
 		xeno_datum_list[CD.caste_name][max(1,CD.upgrade+1)] = CD
-    
+
     // Equipment presets
 	paths = typesof(/datum/equipment_preset)
 	for(var/T in paths)
@@ -232,6 +235,14 @@ var/global/round_should_check_for_win = TRUE
 		var/datum/xeno_mutator/XM = new T
 		xeno_mutator_list[XM.name] = XM
 	xeno_mutator_list = sortAssoc(xeno_mutator_list)
+
+	//DEFCON rewards / assets
+	paths = typesof(/datum/defcon_reward) - /datum/defcon_reward
+	for(var/T in paths)
+		var/datum/defcon_reward/DR = new T
+		defcon_reward_list[DR.name] = DR
+	defcon_reward_list = sortAssoc(defcon_reward_list)
+
 	//  WO waves
 	paths = typesof(/datum/whiskey_outpost_wave) - /datum/whiskey_outpost_wave - typesof(/datum/whiskey_outpost_wave/random)
 	for(var/T in paths)

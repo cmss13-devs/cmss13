@@ -77,6 +77,9 @@
 			current_mapviewer = usr
 			update_mapview()
 			return
+		if("defcon")
+			defcon_controller.list_and_purchase_rewards()
+			return
 
 		if("main") state = STATE_DEFAULT
 
@@ -360,6 +363,12 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set status display</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message list</A> \]"
 				dat += "<BR>\[ <A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A> \]"
+				dat += "<BR>\[ <A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A> \]"
+				dat += "<BR><hr>"
+				dat += "<BR>DEFCON [defcon_controller.current_defcon_level]"
+				dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
+				dat += "<BR>Remaining DEFCON asset points: [defcon_controller.remaining_reward_points]."
+				dat += "<BR>\[ <A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A> \]"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)

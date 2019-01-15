@@ -40,6 +40,7 @@
 	name = "Restore Colony Communications"
 	objective_flags = OBJ_DO_NOT_TREE | OBJ_CAN_BE_UNCOMPLETED
 	display_flags = OBJ_DISPLAY_AT_END
+	priority = OBJECTIVE_ABSOLUTE_VALUE
 
 /datum/cm_objective/communications/get_completion_status()
 	if(is_complete())
@@ -57,3 +58,9 @@
 		return 1
 	uncomplete()
 	return 0
+
+/datum/cm_objective/establish_power/get_point_value()
+	return complete * priority
+
+/datum/cm_objective/establish_power/total_point_value()
+	return priority

@@ -40,7 +40,7 @@
 	else
 		complete()
 		return 1
-	
+
 /datum/cm_objective/eliminate/xenomorph
 	mob_type = /mob/living/carbon/Xenomorph
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -153,7 +153,7 @@
 			announce_losses(fail_threshold, 1)
 		fail()
 		return 0
-	
+
 	switch(get_loss_percentage())
 		if(poor_threshold to fail_threshold)
 			if(last_threshold < PASSED_POOR_THRESHOLD)
@@ -168,7 +168,8 @@
 /datum/cm_objective/minimise_losses/squad_marines
 	name = "Minimise Marine Losses"
 	display_flags = OBJ_DISPLAY_AT_END
-	
+	priority = OBJECTIVE_ABSOLUTE_VALUE
+
 /datum/cm_objective/minimise_losses/squad_marines/get_loss_percentage()
 	var/total_marines = 0
 	var/total_alive = 0
@@ -185,6 +186,17 @@
 
 /datum/cm_objective/minimise_losses/squad_marines/get_completion_status()
 	return "[get_loss_percentage()]% Losses"
+
+/datum/cm_objective/minimise_losses/get_point_value()
+	if(world.time < 18000)
+		//We don't count this objective for the first 30 minures
+		//Otherwise LV might get a lot of points before Marines drop due to tcomms being given for free...
+		return 0
+	return (1.0 - get_loss_percentage()) / 100 * priority
+
+/datum/cm_objective/minimise_losses/total_point_value()
+	return priority
+
 
 // --------------------------------------------
 // *** Recover the dead ***

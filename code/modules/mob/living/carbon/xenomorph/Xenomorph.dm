@@ -54,6 +54,7 @@
 	health = 5
 	maxHealth = 5
 	var/speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	var/burn_damage_lower = 0

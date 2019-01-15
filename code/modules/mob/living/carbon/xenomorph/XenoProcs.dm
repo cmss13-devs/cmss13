@@ -144,6 +144,7 @@
 	. = ..()
 
 	. += speed
+	. += ability_speed_modifier
 
 	if(frenzy_aura)
 		. -= (frenzy_aura * 0.05)

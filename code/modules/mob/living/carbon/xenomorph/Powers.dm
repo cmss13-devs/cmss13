@@ -100,10 +100,10 @@
 	visible_message("<span class='xenowarning'>\The [src] spews forth a wide cone of acid!</span>", \
 	"<span class='xenowarning'>You spew forth a cone of acid!</span>", null, 5)
 
-	speed += 2
+	ability_speed_modifier += 2
 	do_acid_spray_cone(target)
 	spawn(rand(20,30))
-		speed -= 2
+		ability_speed_modifier -= 2
 
 	spawn(caste.acid_spray_cooldown)
 		used_acid_spray = 0
@@ -670,7 +670,7 @@
 		round_statistics.defender_crest_lowerings++
 		src << "<span class='xenowarning'>You lower your crest.</span>"
 		armor_deflection_buff += 25
-		speed += 0.8	// This is actually a slowdown but speed is dumb
+		ability_speed_modifier += 0.8	// This is actually a slowdown but speed is dumb
 		update_icons()
 		do_crest_defense_cooldown()
 		return
@@ -678,7 +678,7 @@
 	round_statistics.defender_crest_raises++
 	src << "<span class='xenowarning'>You raise your crest.</span>"
 	armor_deflection_buff -= 25
-	speed -= 0.8
+	ability_speed_modifier -= 0.8
 	update_icons()
 	do_crest_defense_cooldown()
 

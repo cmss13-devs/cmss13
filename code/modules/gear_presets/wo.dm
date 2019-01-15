@@ -489,13 +489,13 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine
-	name = "Dust Raider" //Stub other Marine equipment stems from
+	name = "WO Dust Raider" //Stub other Marine equipment stems from
 	flags = EQUIPMENT_PRESET_STUB
 
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/sl
-	name = "Dust Raider Squad Leader"
+	name = "WO Dust Raider Squad Leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
@@ -513,7 +513,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41amk1(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(H), WEAR_J_STORE)
@@ -530,7 +530,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/spec
-	name = "Dust Raider Squad Specialist"
+	name = "WO Dust Raider Squad Specialist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
@@ -560,7 +560,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 
 	add_common_wo_equipment(H)
@@ -568,7 +568,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/sg
-	name = "Dust Raider Smartgunner"
+	name = "WO Dust Raider Squad Smartgunner"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
@@ -593,7 +593,7 @@
 
 	//Backup SMG Weapon
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 
 	add_common_wo_equipment(H)
@@ -601,7 +601,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/engineer
-	name = "Dust Raider Squad Engineer"
+	name = "WO Dust Raider Squad Engineer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
@@ -619,7 +619,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
@@ -635,8 +635,8 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/wo/marine/engineer
-	name = "Dust Raider Squad Medic"
+/datum/equipment_preset/wo/marine/medic
+	name = "WO Dust Raider Squad Medic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
@@ -646,7 +646,7 @@
 	role_comm_title = "Med"
 	skills = /datum/skills/combat_medic
 
-/datum/equipment_preset/wo/marine/engineer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/wo/marine/medic/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine/medic
@@ -654,7 +654,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
@@ -670,7 +670,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/pfc
-	name = "Dust Raider Squad Marine (PFC)"
+	name = "WO Dust Raider Squad Marine (PFC)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_PREP)
@@ -688,7 +688,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 
 	generate_random_marine_primary_for_wo(H)

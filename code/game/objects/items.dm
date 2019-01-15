@@ -63,8 +63,8 @@
 	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
 	var/sprite_sheet_id = 0 //Select which sprite sheet ID to use due to the sprite limit per .dmi. 0 is default, 1 is the new one.
 
-	var/datum/event/event_dropped = new /datum/event()
-	var/datum/event/event_unwield = new /datum/event()
+	var/datum/event/event_dropped = null
+	var/datum/event/event_unwield = null
 
 /obj/item/proc/on_dropped()
 	event_dropped.fire_event(src)
@@ -87,6 +87,10 @@
 
 /obj/item/New(loc)
 	..()
+
+	event_dropped = new /datum/event()
+	event_unwield = new /datum/event()
+
 	item_list += src
 	for(var/path in actions_types)
 		new path(src)

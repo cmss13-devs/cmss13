@@ -10,6 +10,10 @@
 
 /mob/living/New()
 	..()
+
+	event_zoomout = new /datum/event()
+	event_movement = new /datum/event()
+
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
 /mob/living/Dispose()

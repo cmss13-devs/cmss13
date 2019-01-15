@@ -32,8 +32,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
-	call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
+	generate_random_marine_primary_for_wo(H)
+	add_common_wo_equipment(H)
 
 /*****************************************************************************************************/
 
@@ -62,7 +62,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/map/whiskey_outpost_map(H), WEAR_IN_BACK)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
+	add_common_wo_equipment(H)
 
 /*****************************************************************************************************/
 
@@ -85,7 +85,7 @@
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
+	add_common_wo_equipment(H)
 	//Backup SMG Weapon
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
@@ -118,8 +118,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
-	call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
+	generate_random_marine_primary_for_wo(H)
+	add_common_wo_equipment(H)
 
 /*****************************************************************************************************/
 
@@ -148,8 +148,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/combatLifesaver(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full(H), WEAR_L_STORE)
-	call(/datum/game_mode/whiskey_outpost/proc/generate_random_marine_primary)(H)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
+	generate_random_marine_primary_for_wo(H)
+	add_common_wo_equipment(H)
 
 /*****************************************************************************************************/
 
@@ -179,4 +179,4 @@
 	H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-	call(/datum/game_mode/whiskey_outpost/proc/add_common_equipment)(H)
+	add_common_wo_equipment(H)

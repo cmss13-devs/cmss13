@@ -10,6 +10,8 @@ var/global/datum/objectives_controller/objectives_controller
 	var/datum/cm_objective/establish_power/power
 	var/datum/cm_objective/recover_corpses/marines/marines
 
+	var/nextDChatAnnouncement = 3000 //5 minutes in
+
 /datum/objectives_controller/New()
 	for(var/datum/cm_objective/C in cm_objectives)
 		if(!(C in objectives))
@@ -108,7 +110,7 @@ var/global/datum/objectives_controller/objectives_controller
 				extreme_value += O
 			if(OBJECTIVE_ABSOLUTE_VALUE)
 				absolute_value += O
-			
+
 	var/datum/cm_objective/enables
 	for(var/datum/cm_objective/N in no_value)
 		if(!low_value || !low_value.len)
@@ -202,3 +204,31 @@ var/global/datum/objectives_controller/objectives_controller
 	objectives_controller.active_objectives += objectives_controller.power
 	objectives_controller.active_objectives += objectives_controller.comms
 	return 1
+
+
+/datum/objectives_controller/proc/get_objective_completion_stats()
+	var/total_points = 0
+	var/scored_points = 0
+
+	for(var/datum/cm_objective/L in objectives)
+		total_points += L.total_point_value()
+		scored_points += L.get_point_value()
+
+	var/list/answer = list()
+
+	answer["scored_points"] = scored_points
+	answer["total_points"] = total_points
+
+	if(world.time > nextDChatAnnouncement)
+		nextDChatAnnouncement += 3000 //5 minutes
+
+		for(var/mob/M in player_list)
+			//Announce the numbers to deadchat
+			if (isobserver(M))
+				M << "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>"
+				M << "<span class='alert'>Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%).</span>"
+
+		log_admin("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].")
+		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].", 1)
+
+	return answer

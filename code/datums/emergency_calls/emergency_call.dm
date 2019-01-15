@@ -8,9 +8,9 @@
 /datum/game_mode
 	var/list/datum/emergency_call/all_calls = list() //initialized at round start and stores the datums.
 	var/datum/emergency_call/picked_call = null //Which distress call is currently active
-	var/has_called_emergency = 0
+	var/has_called_emergency = FALSE
 	var/distress_cooldown = 0
-	var/waiting_for_candidates = 0
+	var/waiting_for_candidates = FALSE
 
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
 /datum/emergency_call
@@ -65,10 +65,19 @@
 		break
 
 	if(!istype(chosen_call))
-		world << "\red Something went wrong with emergency calls. Tell a coder!"
+		error("get_random_call !istype(chosen_call)")
 		return null
 	else
 		return chosen_call
+
+/datum/game_mode/proc/get_specific_call(var/call_name, var/announce = TRUE, var/is_emergency = TRUE)
+	for(var/datum/emergency_call/E in all_calls) //Loop through all potential candidates
+		if (E.name == call_name)
+			picked_call = E
+			picked_call.activate(announce, is_emergency)
+			return
+	error("get_specific_call could not find emergency call '[call_name]'")
+	return
 
 /datum/emergency_call/proc/show_join_message()
 	if(!mob_max || !ticker || !ticker.mode) //Just a supply drop, don't bother.
@@ -141,7 +150,7 @@
 		return
 
 	if(mob_max > 0)
-		ticker.mode.waiting_for_candidates = 1
+		ticker.mode.waiting_for_candidates = TRUE
 	show_join_message() //Show our potential candidates the message to let them join.
 	message_admins("Distress beacon: '[name]' activated. Looking for candidates.", 1)
 
@@ -149,13 +158,13 @@
 		command_announcement.Announce("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", new_sound='sound/AI/distressbeacon.ogg')
 
 	if(is_emergency) //non-emergency ERTs don't count as emergency
-		ticker.mode.has_called_emergency = 1
+		ticker.mode.has_called_emergency = TRUE
 
 	sleep(600) //If after 60 seconds we aren't full, abort
 	if(candidates.len < mob_min)
 		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].", 1)
-		ticker.mode.waiting_for_candidates = 0
-		ticker.mode.has_called_emergency = 0
+		ticker.mode.waiting_for_candidates = FALSE
+		ticker.mode.has_called_emergency = FALSE
 		members = list() //Empty the members list.
 		candidates = list()
 
@@ -213,6 +222,7 @@
 				sleep(1)
 		candidates = null //Blank out the candidates list for next time.
 		candidates = list()
+		ticker.mode.waiting_for_candidates = FALSE
 
 /datum/emergency_call/proc/add_candidate(var/mob/M)
 	if(!M.client) return 0//Not connected

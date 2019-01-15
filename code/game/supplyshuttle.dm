@@ -137,6 +137,9 @@ var/list/mechtoys = list(
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
+	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
+	var/dropship_points = 0 //gains roughly 18 points per minute
+
 	New()
 		ordernum = rand(1,9000)
 
@@ -340,7 +343,7 @@ var/list/mechtoys = list(
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if(N.hidden || N.contraband || N.group != last_viewed_group) continue								//Have to send the type instead of a reference to
+				if(N.special || N.hidden || N.contraband || N.group != last_viewed_group) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [round(N.cost)]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
@@ -540,7 +543,7 @@ var/list/mechtoys = list(
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group) continue								//Have to send the type instead of a reference to
+				if(N.special || (N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [round(N.cost)]<BR>"		//the obj because it would get caught by the garbage
 
 		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"

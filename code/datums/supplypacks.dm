@@ -13,7 +13,19 @@
 #define RO_PRICE_PRICY		60
 #define RO_PRICE_VERY_PRICY	100
 
-var/list/all_supply_groups = list("Operations", "Weapons", "Hardpoint Modules", "Attachments", "Ammo", "Armor", "Clothing", "Medical", "Engineering", "Science", "Supplies")
+var/list/all_supply_groups = list(
+	"Operations",
+	"Weapons",
+	"Hardpoint Modules",
+	"Attachments",
+	"Ammo",
+	"Armor",
+	"Clothing",
+	"Medical",
+	"Engineering",
+	"Science",
+	"Supplies",
+)
 
 /datum/supply_packs
 	var/name = null
@@ -24,7 +36,8 @@ var/list/all_supply_groups = list("Operations", "Weapons", "Hardpoint Modules", 
 	var/containertype = null
 	var/containername = null
 	var/access = null
-	var/hidden = 0
+	var/hidden = 0 //Hidden packs only show up when the computer has been hacked
+	var/special = 0 //Special packs don't show up at all - they have to be spawned externally (fe: DEFCON)
 	var/contraband = 0
 	var/group = null
 	var/randomised_num_contained = 0 //Randomly picks X of items out of the contains list instead of using all.
@@ -105,6 +118,78 @@ OPERATIONS
 	containertype = /obj/structure/closet/crate/supply
 	containername = "unlabeled crate"
 	contraband = 1
+	group = "Operations"
+
+/datum/supply_packs/ob_incendiary
+	contains = list(
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/incendiary,
+
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/incendiary,
+	)
+
+	name = "OB Incendiary Crate"
+	cost = 0
+	containertype = /obj/structure/closet/crate/secure/ammo
+	containername = "OB Ammo Crate (Incendiary x2)"
+	special = 1
+	group = "Operations"
+
+/datum/supply_packs/ob_explosive
+	contains = list(
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/explosive,
+
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/explosive,
+	)
+
+	name = "OB HE Crate"
+	cost = 0
+	containertype = /obj/structure/closet/crate/secure/ammo
+	containername = "OB Ammo Crate (HE x2)"
+	special = 1
+	group = "Operations"
+
+/datum/supply_packs/ob_cluster
+	contains = list(
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/cluster,
+
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/ob_fuel,
+		/obj/structure/ob_ammo/warhead/cluster,
+	)
+
+	name = "OB Cluster Crate"
+	cost = 0
+	containertype = /obj/structure/closet/crate/secure/ammo
+	containername = "OB Ammo Crate (Cluster x2)"
+	special = 1
 	group = "Operations"
 
 

@@ -41,6 +41,10 @@ var/datum/round_statistics/round_statistics = new()
 	var/xeno_count_during_hijack = 0
 	var/human_count_during_hijack = 0
 
+	var/defcon_level = 0
+	var/objective_points = 0
+	var/total_objective_points = 0
+
 	var/friendly_fire_instances = 0
 
 	//End-of-round stats:
@@ -75,6 +79,10 @@ var/datum/round_statistics/round_statistics = new()
 	stats += "Total chestbursts: [total_human_chestbursts]\n"
 
 	stats += "Total friendly fire instances: [friendly_fire_instances]\n"
+
+	stats += "DEFCON level: [defcon_level]\n"
+	stats += "Objective points earned: [objective_points]\n"
+	stats += "Objective points total: [total_objective_points]\n"
 
 	//stats += ": []\n"
 

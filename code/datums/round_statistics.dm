@@ -40,6 +40,7 @@ var/datum/round_statistics/round_statistics = new()
 
 	var/xeno_count_during_hijack = 0
 	var/human_count_during_hijack = 0
+	var/hijack_time = ""
 
 	var/defcon_level = 0
 	var/objective_points = 0
@@ -88,6 +89,7 @@ var/datum/round_statistics/round_statistics = new()
 
 	stats += "Marines remaining: [end_of_round_marines]\n"
 	stats += "Xenos remaining: [end_of_round_xenos]\n"
+	stats += "Hijack time: [hijack_time]\n"
 	
 	if (hunter_games_winner)
 		stats += "Big Winner: [hunter_games_winner]\n"
@@ -102,3 +104,4 @@ var/datum/round_statistics/round_statistics = new()
 /datum/round_statistics/proc/count_hijack_mobs_for_statistics()
 	round_statistics.xeno_count_during_hijack = living_xeno_list.len
 	round_statistics.human_count_during_hijack = living_human_list.len
+	round_statistics.hijack_time = duration2text()

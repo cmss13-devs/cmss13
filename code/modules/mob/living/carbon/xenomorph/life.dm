@@ -87,20 +87,25 @@
 	//At least it's more efficient since only Xenos with an aura do this, instead of all Xenos
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
 	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
+
+	if(aura_strength <= 0)
+		return //Pheromone underflow, ignore their aura
+
 	if(current_aura && !stat && plasma_stored > 5)
 		if(caste_name == "Queen" && anchored) //stationary queen's pheromone apply around the observed xeno.
 			var/mob/living/carbon/Xenomorph/Queen/Q = src
 			var/atom/phero_center = Q
 			if(Q.observed_xeno)
 				phero_center = Q.observed_xeno
-			var/pheromone_range = round(6 + aura_strength * 2)
-			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
-				if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-					Z.frenzy_new = aura_strength
-				if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-					Z.warding_new = aura_strength
-				if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-					Z.recovery_new = aura_strength
+			if(phero_center.loc.z == Q.loc.z)//Only same Z-level
+				var/pheromone_range = round(6 + aura_strength * 2)
+				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
+					if(current_aura == "frenzy" && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+						Z.frenzy_new = aura_strength
+					if(current_aura == "warding" && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+						Z.warding_new = aura_strength
+					if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+						Z.recovery_new = aura_strength
 		else
 			var/pheromone_range = round(6 + aura_strength * 2)
 			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
@@ -111,15 +116,17 @@
 				if(current_aura == "recovery" && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 					Z.recovery_new = aura_strength
 
-	if(leader_current_aura && !stat)
-		var/pheromone_range = round(6 + leader_aura_strength * 2)
-		for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-			if(leader_current_aura == "frenzy" && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-				Z.frenzy_new = leader_aura_strength
-			if(leader_current_aura == "warding" && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-				Z.warding_new = leader_aura_strength
-			if(leader_current_aura == "recovery" && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-				Z.recovery_new = leader_aura_strength
+
+	if(hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
+		if(leader_current_aura && !stat)
+			var/pheromone_range = round(6 + leader_aura_strength * 2)
+			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
+				if(leader_current_aura == "frenzy" && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
+					Z.frenzy_new = leader_aura_strength
+				if(leader_current_aura == "warding" && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
+					Z.warding_new = leader_aura_strength
+				if(leader_current_aura == "recovery" && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
+					Z.recovery_new = leader_aura_strength
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
@@ -376,17 +383,17 @@ updatehealth()
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth)
-				var/datum/hive_status/hive = hive_datum[hivenumber]
-				if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
-					if(lying || resting)
-						if(health > -100 && health < 0) //Unconscious
-							XENO_HEAL_WOUNDS(0.33) //Healing is much slower. Warding pheromones make up for the rest if you're curious
-						else
-							XENO_HEAL_WOUNDS(1)
-					else if(isXenoCrusher() || isXenoRavager())
-						XENO_HEAL_WOUNDS(0.66)
+				//var/datum/hive_status/hive = hive_datum[hivenumber]
+				//if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
+				if(lying || resting)
+					if(health > -100 && health < 0) //Unconscious
+						XENO_HEAL_WOUNDS(0.33) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						XENO_HEAL_WOUNDS(0.33) //Major healing nerf if standing
+						XENO_HEAL_WOUNDS(1)
+				else if(isXenoCrusher() || isXenoRavager())
+					XENO_HEAL_WOUNDS(0.66)
+				else
+					XENO_HEAL_WOUNDS(0.33) //Major healing nerf if standing
 
 
 				updatehealth()

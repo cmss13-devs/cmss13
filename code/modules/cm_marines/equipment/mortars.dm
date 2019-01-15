@@ -405,5 +405,5 @@
 	new /obj/item/device/binoculars/tactical/range(src)
 
 /obj/structure/mortar/wo
-	offset_per_turfs = 1
+	//offset_per_turfs = 1
 	fixed = 1

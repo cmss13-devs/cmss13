@@ -251,21 +251,21 @@ You just gotta get out of this jungle to tell the tale!"}
 	//Squad ID and backpack are already spawned in job datum
 	switch(H.mind.assigned_role)
 		if("Squad Leader")
-			arm_equipment(H, "Dust Raider Squad Leader")
+			arm_equipment(H, "WO Dust Raider Squad Leader")
 		//SQUAD SPECIALIST
 		if("Squad Specialist")
-			arm_equipment(H, "Dust Raider Squad Specialist")
+			arm_equipment(H, "WO Dust Raider Squad Specialist")
 		//SQUAD SMARTGUNNER
 		if("Squad Smartgunner")
-			arm_equipment(H, "Dust Raider Squad Smartgunner")
+			arm_equipment(H, "WO Dust Raider Squad Smartgunner")
 		//SQUAD ENGINEER
 		if("Squad Engineer")
-			arm_equipment(H, "Dust Raider Squad Engineer")
+			arm_equipment(H, "WO Dust Raider Squad Engineer")
 		//SQUAD MEDIC
 		if("Squad Medic")
-			arm_equipment(H, "Dust Raider Squad Medic")
+			arm_equipment(H, "WO Dust Raider Squad Medic")
 		else
-			arm_equipment(H, "Dust Raider Squad Marine (PFC)")
+			arm_equipment(H, "WO Dust Raider Squad Marine (PFC)")
 
 	//Give them some information
 	sleep(40)

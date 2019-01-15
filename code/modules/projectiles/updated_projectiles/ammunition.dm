@@ -40,9 +40,6 @@ They're all essentially identical when it comes to getting the job done.
 	if(current_rounds <= 0) 					icon_state = base_mag_icon + "_e"
 	else if(current_rounds - round_diff <= 0) 	icon_state = base_mag_icon
 
-/obj/item/ammo_magazine/on_dropped()
-	return 0 //not needed
-
 /obj/item/ammo_magazine/examine(mob/user)
 	..()
 	// It should never have negative ammo after spawn. If it does, we need to know about it.

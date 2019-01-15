@@ -120,8 +120,8 @@
 	..()
 
 /obj/item/card/id
-	name = "identification card"
-	desc = "A card used to provide ID and determine access to a large array of machinery."
+	name = "identification holo-badge"
+	desc = "A slice of encoded compressed fiber glass. Used for identification and access control."
 	icon_state = "id"
 	item_state = "card-id"
 	var/access = list()
@@ -174,18 +174,67 @@
 	usr << "The fingerprint hash on the card is [fingerprint_hash]."
 	return
 
+/obj/item/card/id/data
+	name = "identification holo-badge"
+	desc = "A plain, mass produced holo-badge."
+	icon_state = "data"
+
+/obj/item/card/id/lanyard
+	name = "identification holo-lanyard"
+	desc = "A crude holo-lanyard. As cheap as they come."
+	icon_state = "lanyard"
 
 /obj/item/card/id/silver
-	name = "identification card"
-	desc = "A silver card which shows honour and dedication."
+	name = "identification holo-badge"
+	desc = "A silver plated holo-badge which shows honour and dedication."
 	icon_state = "silver"
 	item_state = "silver_id"
 
+/obj/item/card/id/pizza
+	name = "pizza guy badge"
+	desc = "It says: 'Pizza-guy local union No. 217','We always deliver!'"
+	icon_state = "pizza"
+	item_state = "gold_id"
+
 /obj/item/card/id/gold
-	name = "identification card"
-	desc = "A golden card which shows power and might."
+	name = "identification holo-badge"
+	desc = "A gold plated holo-badge which shows power and might."
 	icon_state = "gold"
 	item_state = "gold_id"
+
+/obj/item/card/id/silver/cl
+	name = "corporate holo-badge"
+	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
+	icon_state = "cl"
+
+/obj/item/card/id/gold/commodore
+	name = "identification holo-badge"
+	desc = "A real bronze gold Commodore's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
+	icon_state = "commodore"
+
+/obj/item/card/id/pmc
+	name = "\improper PMC holo-badge"
+	desc = "A corporate holo-badge. It has a unique uncapped bottom."
+	icon_state = "pmc"
+	registered_name = "The Corporation"
+	assignment = "Corporate Mercenary"
+	New()
+		access = get_all_centcom_access()
+		..()
+
+/obj/item/card/id/pmc/ds
+	name = "\improper Corporate holo-badge"
+	desc = "It lists a callsign and a bloodtype. Issued to Whiteout protocol teams only."
+	icon_state = "ds"
+
+/obj/item/card/id/admiral
+	name = "admirality holo-badge"
+	desc = "Top brass of the top brass. Issued to only the most dedicated."
+	icon_state = "admiral"
+	registered_name = "The USCM"
+	assignment = "Admiral"
+	New()
+		access = get_all_centcom_access()
 
 /obj/item/card/id/syndicate
 	name = "agent card"

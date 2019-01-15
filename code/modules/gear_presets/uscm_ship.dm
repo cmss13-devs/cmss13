@@ -101,11 +101,11 @@
 	name = "USCM Corporate Liaison"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	idtype = /obj/item/card/id/silver
+	idtype = /obj/item/card/id/silver/cl
 	access = list(
 		ACCESS_IFF_MARINE, ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS) 
+		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	assignment = "Corporate Liaison"
 	rank = "Corporate Liaison"
 	paygrade = "WY1"
@@ -433,7 +433,7 @@
 	name = "USCM Officer (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/admiral
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
 	assignment = "USCM Officer"
 	rank = "USCM Officer"
@@ -468,7 +468,7 @@
 	name = "USCM Admiral (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/admiral
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
 	assignment = "USCM Admiral"
 	rank = "USCM Admiral"
@@ -553,7 +553,7 @@
 	name = "Fleet Admiral" //Renamed from Soviet Admiral
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/admiral
 	access = list()
 	assignment = "Fleet Admiral"
 	rank = "Fleet Admiral"
@@ -582,7 +582,7 @@
 	name = "USCM Riot MP (RMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/silver
 	access = list()
 	assignment = "Riot Control"
 	rank = "RMP"

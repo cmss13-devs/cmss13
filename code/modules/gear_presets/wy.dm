@@ -2,7 +2,7 @@
 /datum/equipment_preset/wy
 	name = "WY"
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/pmc
 	special_role = "PMC"
 
 /datum/equipment_preset/wy/New()
@@ -168,6 +168,7 @@
 	rank = "PMC Commando"
 	special_role = "DEATH SQUAD"
 	skills = /datum/skills/commando/deathsquad
+	idtype = /obj/item/card/id/pmc/ds
 
 /datum/equipment_preset/wy/deathsquad/New()
 	. = ..()

@@ -31,6 +31,7 @@
 	H.r_eyes = 139
 	H.g_eyes = 62
 	H.b_eyes = 19
+	idtype = /obj/item/card/id/data
 
 /*****************************************************************************************************/
 
@@ -117,7 +118,7 @@
 /datum/equipment_preset/clf/fighter_leader
 	name = "CLF Fighter (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	
+
 	assignment = "Colonist Leader"
 	role_comm_title = "Lead"
 	skills = /datum/skills/SL

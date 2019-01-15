@@ -27,6 +27,7 @@
 	H.r_eyes = 139
 	H.g_eyes = 62
 	H.b_eyes = 19
+	idtype = /obj/item/card/id/dogtag
 
 /*****************************************************************************************************/
 
@@ -208,6 +209,7 @@
 	rank = "MODE"
 	paygrade = "E2"
 	special_role = "UPP"
+	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -294,6 +296,7 @@
 	paygrade = "E6"
 	role_comm_title = "SL"
 	special_role = "UPP"
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

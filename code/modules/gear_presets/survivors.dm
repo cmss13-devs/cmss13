@@ -8,6 +8,7 @@
 	skills = /datum/skills/civilian
 	languages = list("English")
 	paygrade = "C"
+	idtype = /obj/item/card/id/lanyard
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)
@@ -82,6 +83,7 @@
 	assignment = "Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/cl
 
 /datum/equipment_preset/survivor/corporate/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -108,6 +110,7 @@
 	assignment = "Security"
 	skills = /datum/skills/civilian/survivor/marshall
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/survivor/security/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -352,6 +355,7 @@
 	assignment = "Salesman"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/survivor/salesman/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -381,6 +385,7 @@
 	assignment = "Colonial Marshall"
 	skills = /datum/skills/civilian/survivor/marshall
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/silver/cl
 
 /datum/equipment_preset/survivor/colonial_marshall/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

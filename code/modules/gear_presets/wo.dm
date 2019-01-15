@@ -8,6 +8,7 @@
 /datum/equipment_preset/wo/load_status(mob/living/carbon/human/H)
 	H.nutrition = 400
 
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/commander
@@ -19,6 +20,8 @@
 	paygrade = "O5"
 	role_comm_title = "CDR"
 	skills = /datum/skills/commander
+	idtype = /obj/item/card/id/gold
+
 
 /datum/equipment_preset/wo/commander/New()
 	. = ..()
@@ -41,6 +44,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_J_STORE)
 
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/wo/xo
@@ -52,6 +56,7 @@
 	paygrade = "LCDR"
 	role_comm_title = "LCDR"
 	skills = /datum/skills/XO
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/xo/New()
 	. = ..()
@@ -83,6 +88,7 @@
 	paygrade = "E9"
 	role_comm_title = "HGSL"
 	skills = /datum/skills/honor_guard/lead
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -115,6 +121,7 @@
 	paygrade = "E8"
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -146,6 +153,7 @@
 	paygrade = "E8E"
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
+	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/wo/hgs/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -238,6 +246,7 @@
 	paygrade = "E8"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -265,6 +274,7 @@
 	paygrade = "E4"
 	role_comm_title = "BCL"
 	skills = /datum/skills/CE
+	idtype = /obj/item/card/id
 
 /datum/equipment_preset/wo/cargo/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -296,6 +306,7 @@
 	paygrade = "CCMO"
 	role_comm_title = "HS"
 	skills = /datum/skills/CMO
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/head_surgeron/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -329,6 +340,7 @@
 	paygrade = "CD"
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
+	idtype = /obj/item/card/id
 
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -359,6 +371,7 @@
 	paygrade = "CD"
 	role_comm_title = "Chem"
 	skills = /datum/skills/doctor
+	idtype = /obj/item/card/id
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/medic
@@ -387,6 +400,7 @@
 	paygrade = "E8"
 	role_comm_title = "BCM"
 	skills = /datum/skills/CE
+	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -418,6 +432,7 @@
 	paygrade = "E4"
 	role_comm_title = "BC"
 	skills = /datum/skills/MT
+	idtype = /obj/item/card/id
 
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel/tech
@@ -446,12 +461,13 @@
 	access = list(
 		ACCESS_IFF_MARINE, ACCESS_WY_CORPORATE, ACCESS_ILLEGAL_PIRATE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_CIVILIAN_PUBLIC,
-		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS) 
+		ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 	assignment = "Combat Reporter"
 	rank = "Combat Reporter"
 	paygrade = "WY1"
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
+	idtype = /obj/item/card/id/silver/cl
 
 /datum/equipment_preset/wo/reporter/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

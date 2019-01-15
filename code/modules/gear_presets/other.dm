@@ -13,6 +13,7 @@
 	assignment = "Freelancer"
 	rank = "MODE"
 	special_role = "FREELANCERS"
+	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/other/freelancer/New()
 	. = ..()
@@ -183,7 +184,7 @@
 	name = "Mercenary (Engineer)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/data
 	assignment = "Mercenary"
 	rank = "Mercenary Engineer"
 	special_role = "MERCENARIES"
@@ -212,7 +213,7 @@
 	name = "Business Person"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/silver/cl
 	assignment = "Corporate Representative"
 	rank = "MODE"
 	special_role = "MODE"
@@ -237,6 +238,7 @@
 	name = "Mk50 Compression Suit"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/pfc
+	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/other/compression_suit/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -260,7 +262,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = list("English", "Russian", "Tradeband") //Just in case they are delivering to UPP or CLF...
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/pizza
 	assignment = "Pizza Deliverer"
 	rank = "MODE"
 	special_role = "Pizza"

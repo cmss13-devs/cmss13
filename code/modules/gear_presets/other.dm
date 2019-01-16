@@ -23,14 +23,11 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance_for(H)
-	var/list/first_names_mcol = list("Alan","Jack","Bil","Jonathan","John","Shiro","Gareth","Clark","Sam", "Lionel", "Aaron", "Charlie", "Scott", "Winston", "Aidan", "Ellis", "Mason", "Wesley", "Nicholas", "Calvin", "Nishikawa", "Hiroto", "Chiba", "Ouchi", "Furuse", "Takagi", "Oba", "Kishimoto")
-	var/list/first_names_fcol = list("Emma", "Adelynn", "Mary", "Halie", "Chelsea", "Lexie", "Arya", "Alicia", "Selah", "Amber", "Heather", "Myra", "Heidi", "Charlotte", "Ashley", "Raven", "Tori", "Anne", "Madison", "Oliva", "Lydia", "Tia", "Riko", "Ari", "Machida", "Ueki", "Mihara", "Noda")
-	var/list/last_names_col = list("Hawkins","Rickshaw","Elliot","Billard","Cooper","Fox", "Barlow", "Barrows", "Stewart", "Morgan", "Green", "Stone", "Titan", "Crowe", "Krantz", "Pathillo", "Driggers", "Burr", "Hunt", "Yuko", "Gesshin", "Takanibu", "Tetsuzan", "Tomomi", "Bokkai", "Takesi")
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_mcol)] [pick(last_names_col)]"
+		H.real_name = "[pick(first_names_male_colonist)] [pick(last_names_colonist)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "[pick(first_names_fcol)] [pick(last_names_col)]"
+		H.real_name = "[pick(first_names_female_colonist)] [pick(last_names_colonist)]"
 	H.age = rand(20,45)
 	H.r_hair = 25
 	H.g_hair = 25
@@ -353,14 +350,20 @@
 	idtype = /obj/item/card/id/dogtag
 	skills = /datum/skills/gladiator
 
-	assignment = "Gladiator"
+	assignment = "Bestiarius"
 	rank = "Bestiarius"
 	special_role = "Gladiator"
 
-//TODO: give them cool names!
-///datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(MALE, FEMALE)
+	var/datum/preferences/A = new
+	A.randomize_appearance_for(H)
+	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male_gladiator : first_names_female_gladiator))
+	H.name = H.real_name
+	H.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
@@ -368,21 +371,36 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword(H), WEAR_L_HAND)
 
+	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
+	lantern.name = "Beacon of Holy Light"
+
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
+
 /*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator/champion
 	name = "Gladiator Champion"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/gladiator/champion
+	assignment = "Samnite"
 	rank = "Samnite"
 
 /datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_L_HAND)
+
+	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
+	lantern.name = "Beacon of Holy Light"
+
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
 /*****************************************************************************************************/
 
@@ -390,14 +408,21 @@
 	name = "Gladiator Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/gladiator/champion/leader
+	assignment = "Spartacus"
 	rank = "Spartacus"
 
 /datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/shield/riot(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/claymore/mercsword/commander(H), WEAR_L_HAND)
-	
+
+	var/obj/item/lantern = new /obj/item/device/flashlight/lantern(H)
+	lantern.name = "Beacon of Holy Light"
+
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)

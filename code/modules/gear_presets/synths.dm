@@ -89,7 +89,7 @@
 	assignment = "Squad Smartgunner"
 	rank = "Squad Smartgunner"
 	paygrade = "E3"
-	role_comm_title = "LCpl"
+	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/synth/combat_smartgunner/load_gear(mob/living/carbon/human/H)

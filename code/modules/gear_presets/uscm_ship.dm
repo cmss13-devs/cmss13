@@ -326,7 +326,7 @@
 
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
-	assignment = "Second Lieutenant"
+	assignment = "Staff Officer"
 	rank = "Staff Officer"
 	paygrade = "O2"
 	role_comm_title = "SO"

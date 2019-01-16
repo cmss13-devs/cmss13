@@ -119,7 +119,6 @@
 /datum/equipment_preset/wy/pmc_gunner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
@@ -130,6 +129,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp70(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
 /*****************************************************************************************************/
 
@@ -178,11 +178,10 @@
 	H.gender = pick(MALE)
 	//var/datum/preferences/A = new()
 	//A.randomize_appearance_for(mob)
-	var/list/first_names_mr = list("Alpha","Beta", "Gamma", "Delta","Epsilon", "Zeta", "Eta", "Theta", "Iota", "Kappa", "Lambda", "Mu", "Nu", "Xi", "Omnicron", "Pi", "Rho", "Sigma", "Tau", "Upsilon", "Phi", "Chi", "Psi", "Omega")
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_mr)]"
+		H.real_name = "[pick(first_names_deathsquad)]"
 	else
-		H.real_name = "[pick(first_names_mr)]"
+		H.real_name = "[pick(first_names_deathsquad)]"
 	H.name = H.real_name
 	H.age = rand(17,45)
 

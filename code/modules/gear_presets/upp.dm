@@ -9,14 +9,11 @@
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance_for(H)
-	var/list/first_names_mr = list("Badai","Mongkeemur","Alexei","Andrei","Artyom","Viktor","Xangai","Ivan","Choban","Oleg", "Dayan", "Taghi", "Batu", "Arik", "Orda", "Ghazan", "Bala", "Gao", "Zhan", "Ren", "Hou", "Xue", "Serafim", "Luca", "Su", "György", "István", "Mihály")
-	var/list/first_names_fr = list("Altani","Cirina","Anastasiya","Saran","Wei","Oksana","Ren","Svena","Tatyana","Yaroslava", "Izabella", "Kata", "Krisztina", "Miruna", "Flori", "Lucia", "Anica", "Li", "Yimu")
-	var/list/last_names_r = list("Azarov","Bogdanov","Barsukov","Golovin","Davydov","Khan","Noica","Barbu","Zhukov","Ivanov","Mihai","Kasputin","Belov","Melnikov", "Vasilevsky", "Aleksander", "Halkovich", "Stanislaw", "Proca", "Zaituc", "Arcos", "Kubat", "Kral", "Volf", "Xun", "Jia")
 	if(H.gender == MALE)
-		H.real_name = "[pick(first_names_mr)] [pick(last_names_r)]"
+		H.real_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		H.real_name = "[pick(first_names_fr)] [pick(last_names_r)]"
+		H.real_name = "[pick(first_names_female_upp)] [pick(last_names_upp)]"
 
 	H.name = H.real_name
 	H.age = rand(17,35)

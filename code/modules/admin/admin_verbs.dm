@@ -571,6 +571,7 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Cause an explosion of varying strength at your location."
 
 	var/turf/epicenter = mob.loc
+	var/custom_limit = 5000
 	var/list/choices = list("CANCEL", "Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/choice = input("What size explosion would you like to produce?") in choices
 	switch(choice)
@@ -584,8 +585,14 @@ var/list/admin_verbs_mentor = list(
 			explosion(epicenter, 3, 5, 7, 5)
 		if("Custom Bomb")
 			var/devastation_range = input("Devastation range (in tiles):") as num
+			if(devastation_range > custom_limit)
+				devastation_range = custom_limit
 			var/heavy_impact_range = input("Heavy impact range (in tiles):") as num
+			if(heavy_impact_range > custom_limit)
+				heavy_impact_range = custom_limit
 			var/light_impact_range = input("Light impact range (in tiles):") as num
+			if(light_impact_range > custom_limit)
+				light_impact_range = custom_limit
 			var/flash_range = input("Flash range (in tiles):") as num
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 	message_admins("\blue [ckey] used 'Drop Bomb' at [epicenter.loc].")

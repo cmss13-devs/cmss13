@@ -125,6 +125,7 @@
 
 
 /obj/item/tool/pen/sleepypen/New()
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(30) //Used to be 300
 	reagents = R
 	R.my_atom = src
@@ -159,18 +160,14 @@
 		if(reagents.total_volume)
 			if(M.reagents) reagents.trans_to(M, 50)
 
-
-
 /obj/item/tool/pen/paralysis/New()
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(50)
 	reagents = R
 	R.my_atom = src
 	R.add_reagent("zombiepowder", 10)
 	R.add_reagent("cryptobiolin", 15)
 	..()
-
-
-
 
 /obj/item/tool/stamp
 	name = "rubber stamp"

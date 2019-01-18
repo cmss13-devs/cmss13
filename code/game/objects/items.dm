@@ -67,29 +67,33 @@
 	var/datum/event/event_unwield = null
 
 /obj/item/proc/on_dropped()
-	event_dropped.fire_event(src)
+	if(event_dropped)
+		event_dropped.fire_event(src)
 
 /obj/item/proc/add_dropped_handler(datum/event_handler/handler)
+	if(!event_dropped)
+		event_dropped = new /datum/event()
 	event_dropped.add_handler(handler)
 
 /obj/item/proc/remove_dropped_handler(datum/event_handler/handler)
-	event_dropped.remove_handler(handler)
-
+	if(event_dropped)
+		event_dropped.remove_handler(handler)
 
 /obj/item/proc/on_unwield()
-	event_unwield.fire_event(src)
+	if(event_unwield)
+		event_unwield.fire_event(src)
 
 /obj/item/proc/add_unwield_handler(datum/event_handler/handler)
+	if(!event_unwield)
+		event_unwield = new /datum/event()
 	event_unwield.add_handler(handler)
 
 /obj/item/proc/remove_unwield_handler(datum/event_handler/handler)
-	event_unwield.remove_handler(handler)
+	if(event_unwield)
+		event_unwield.remove_handler(handler)
 
 /obj/item/New(loc)
 	..()
-
-	event_dropped = new /datum/event()
-	event_unwield = new /datum/event()
 
 	item_list += src
 	for(var/path in actions_types)

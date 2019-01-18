@@ -53,6 +53,7 @@
 		return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/New()
+	. = ..()
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
 		if ("red")
 			icon_state = "screwdriver2"
@@ -109,6 +110,7 @@
 	edge = 1
 
 /obj/item/tool/wirecutters/New()
+	. = ..()
 	if(prob(50))
 		icon_state = "cutters-y"
 		item_state = "cutters_yellow"
@@ -153,7 +155,7 @@
 	var/weld_tick = 0	//Used to slowly deplete the fuel when the tool is left on.
 
 /obj/item/tool/weldingtool/New()
-//	var/random_fuel = min(rand(10,20),max_fuel)
+	. = ..()
 	create_reagents(max_fuel)
 	reagents.add_reagent("fuel", max_fuel)
 	return
@@ -453,6 +455,7 @@
 	var/max_fuel = 600 //Because the marine backpack can carry 260, and still allows you to take items, there should be a reason to still use this one.
 
 /obj/item/tool/weldpack/New()
+	. = ..()
 	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
 	reagents = R
 	R.my_atom = src

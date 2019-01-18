@@ -563,6 +563,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/tool/lighter/random
 	New()
+		. = ..()
 		clr = pick("r","c","y","g")
 		icon_on = "lighter-[clr]-on"
 		icon_off = "lighter-[clr]"

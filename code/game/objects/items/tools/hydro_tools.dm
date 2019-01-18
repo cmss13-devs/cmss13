@@ -214,5 +214,6 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 	New()
+		. = ..()
 		src.pixel_x = rand(-5.0, 5)
 		src.pixel_y = rand(-5.0, 5)

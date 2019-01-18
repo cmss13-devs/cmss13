@@ -14,6 +14,7 @@
 
 
 /obj/item/tool/mop/New()
+	. = ..()
 	create_reagents(5)
 
 /turf/proc/clean(atom/source)
@@ -126,6 +127,7 @@
 	icon_state = "soapdeluxe"
 
 /obj/item/tool/soap/deluxe/New()
+	. = ..()
 	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
 
 /obj/item/tool/soap/syndie

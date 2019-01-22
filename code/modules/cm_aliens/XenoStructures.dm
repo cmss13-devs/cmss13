@@ -807,7 +807,6 @@ TUNNEL
 
 */
 
-
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
@@ -823,23 +822,21 @@ TUNNEL
 	var/tunnel_desc = "" //description added by the hivelord.
 
 	var/health = 140
-	var/obj/structure/tunnel/other = null
 	var/id = null //For mapping
 
-	New()
-		..()
-		spawn(5)
-			if(id && !other)
-				for(var/obj/structure/tunnel/T in structure_list)
-					if(T.id == id && T != src && T.other == null) //Found a matching tunnel
-						T.other = src
-						other = T //Link them!
-						break
+var/list/obj/structure/tunnel/global_tunnel_list = list()
+
+/obj/structure/tunnel/New()
+	..()
+	var/turf/L = get_turf(src)
+	tunnel_desc = L.loc.name + " ([loc.x], [loc.y])"//Default tunnel desc is the <area name> (x, y)
+	global_tunnel_list |= src
 
 /obj/structure/tunnel/Dispose()
-	if(other)
-		other.other = null
-		other = null
+	global_tunnel_list -= src
+	for(var/mob/living/carbon/Xenomorph/X in contents)
+		X.forceMove(loc)
+		X << "<span class='danger'>[src] suddenly collapses, forcing you out!</span>"
 	. = ..()
 
 /obj/structure/tunnel/examine(mob/user)
@@ -847,21 +844,12 @@ TUNNEL
 	if(!isXeno(user) && !isobserver(user))
 		return
 
-	if(!other)
-		user << "<span class='warning'>It does not seem to lead anywhere.</span>"
-	else
-		var/area/A = get_area(other)
-		user << "<span class='info'>It seems to lead to <b>[A.name]</b>.</span>"
-		if(tunnel_desc)
-			user << "<span class='info'>The Hivelord scent reads: \'[tunnel_desc]\'</span>"
+	if(tunnel_desc)
+		user << "<span class='info'>The pheromone scent reads: \'[tunnel_desc]\'</span>"
 
 /obj/structure/tunnel/proc/healthcheck()
 	if(health <= 0)
 		visible_message("<span class='danger'>[src] suddenly collapses!</span>")
-		if(other && isturf(other.loc))
-			visible_message("<span class='danger'>[other] suddenly collapses!</span>")
-			cdel(other)
-			other = null
 		cdel(src)
 
 /obj/structure/tunnel/bullet_act(var/obj/item/projectile/Proj)
@@ -875,6 +863,81 @@ TUNNEL
 	if(!isXeno(user))
 		return ..()
 	attack_alien(user)
+
+/obj/structure/tunnel/verb/use_tunnel()
+	set name = "Use Tunnel"
+	set category = "Object"
+	set src in view(1)
+
+	if(isXeno(usr) && (usr.loc == src))
+		pick_tunnel(usr)
+	else
+		usr << "You stare into the dark abyss" + "[contents.len ? ", making out what appears to be two little lights... almost like something is watching." : "."]"
+
+/obj/structure/tunnel/verb/exit_tunnel_verb()
+	set name = "Exit Tunnel"
+	set category = "Object"
+	set src in view(0)
+
+	if(isXeno(usr) && (usr.loc == src))
+		exit_tunnel(usr)
+
+/obj/structure/tunnel/proc/pick_tunnel(mob/living/carbon/Xenomorph/X)
+	. = 0	//For peace of mind when it comes to dealing with unintended proc failures
+	if(!istype(X) || X.stat || X.lying)
+		return 0
+	if(X in contents)
+		var/list/tunnels = list()
+		for(var/obj/structure/tunnel/T in global_tunnel_list)
+			if(T != src)
+				tunnels += T.tunnel_desc
+		var/pick = input("Which tunnel would you like to move to?") as null|anything in tunnels
+		if(!pick)
+			return 0
+
+		X << "<span class='xenonotice'>You begin moving to your destination.</span>"
+
+		var/tunnel_time = 40
+
+		if(X.mob_size == MOB_SIZE_BIG) //Big xenos take WAY longer
+			tunnel_time = 120
+
+		if(isXenoLarva(X)) //Larva can zip through near-instantly, they are wormlike after all
+			tunnel_time = 5
+
+		if(do_after(X, tunnel_time, FALSE, 5, 0))
+			for(var/obj/structure/tunnel/T in global_tunnel_list)
+				if(T.tunnel_desc == pick)
+					if(T.contents.len > 2)// max 3 xenos in a tunnel
+						X << "<span class='warning'>The tunnel is too crowded, wait for others to exit!</span>"
+						return 0
+					else
+						X.forceMove(T)
+						X << "<span class='xenonotice'>You have reached your destination.</span>"
+						return 1
+
+/obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/Xenomorph/X)
+	. = 0 //For peace of mind when it comes to dealing with unintended proc failures
+	if(X in contents)
+		X.forceMove(loc)
+
+		visible_message("<span class='xenonotice'>\The [X] pops out of the tunnel!</span>", \
+		"<span class='xenonotice'>You pop out through the other side!</span>")
+
+		return 1
+
+//Used for controling tunnel exiting and returning
+/obj/structure/tunnel/clicked(var/mob/user, var/list/mods)
+
+	if(isXeno(user))
+		var/mob/living/carbon/Xenomorph/X = user
+		if(mods["ctrl"])//Returning to original tunnel
+			if(pick_tunnel(X)) return 1
+
+		else if(mods["alt"])//Exiting the tunnel
+			if(exit_tunnel(X)) return 1
+	..()
+
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!istype(M) || M.stat || M.lying)
@@ -894,32 +957,26 @@ TUNNEL
 		M << "<span class='xenowarning'>You can't climb through a tunnel while immobile.</span>"
 		r_FAL
 
-	var/tunnel_time = 40
-
-	if(M.mob_size == MOB_SIZE_BIG) //Big xenos take WAY longer
-		tunnel_time = 120
-
-	if(isXenoLarva(M)) //Larva can zip through near-instantly, they are wormlike after all
-		tunnel_time = 5
-
-	if(!other || !isturf(other.loc))
+	if(!global_tunnel_list.len)
 		M << "<span class='warning'>\The [src] doesn't seem to lead anywhere.</span>"
 		return
 
-	var/area/A = get_area(other)
+	if(contents.len > 2)
+		M << "<span class='warning'>The tunnel is too crowded, wait for others to exit!</span>"
+		return
 
-	if(tunnel_time <= 50)
-		M.visible_message("<span class='xenonotice'>\The [M] begins crawling down into \the [src].</span>", \
-		"<span class='xenonotice'>You begin crawling down into \the [src] to <b>[A.name]</b>.</span>")
-	else
+	if(M.mob_size == MOB_SIZE_BIG)
 		M.visible_message("<span class='xenonotice'>[M] begins heaving their huge bulk down into \the [src].</span>", \
-		"<span class='xenonotice'>You begin heaving your monstrous bulk into \the [src] to <b>[A.name]</b>.</span>")
+		"<span class='xenonotice'>You begin heaving your monstrous bulk into \the [src]</b>.</span>")
+	else
+		M.visible_message("<span class='xenonotice'>\The [M] begins crawling down into \the [src].</span>", \
+		"<span class='xenonotice'>You begin crawling down into \the [src]</b>.</span>")
 
-	if(do_after(M, tunnel_time, FALSE, 5, BUSY_ICON_GENERIC))
-		if(other && isturf(other.loc)) //Make sure the end tunnel is still there
-			M.forceMove(other.loc)
-			M.visible_message("<span class='xenonotice'>\The [M] pops out of \the [src].</span>", \
-			"<span class='xenonotice'>You pop out through the other side!</span>")
+	if(do_after(M, 20, FALSE, 5, BUSY_ICON_GENERIC))
+		if(global_tunnel_list.len) //Make sure other tunnels exist
+			M.forceMove(src) //become one with the tunnel
+			M << "<span class='xenonotice'>Alt click the tunnel to exit, ctrl click to choose a destination.</span>"
+			pick_tunnel(M)
 		else
 			M << "<span class='warning'>\The [src] ended unexpectedly, so you return back up.</span>"
 	else

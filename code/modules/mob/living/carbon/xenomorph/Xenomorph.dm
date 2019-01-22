@@ -73,7 +73,7 @@
 	var/upgrade_threshold = 200
 	var/evolution_threshold = 200
 	var/pull_multiplier = 1.0
-	
+
 	var/tacklemin = 2
 	var/tacklemax = 3
 	var/tackle_chance = 35
@@ -155,6 +155,16 @@
 			hud_set_queen_overwatch()
 			if(hive.living_xeno_queen)
 				handle_xeno_leader_pheromones()
+
+	if(z != ADMIN_Z_LEVEL)//Do not add thunderdome xenos
+		switch(tier) //They have evolved/been created, add them to the slot count
+			if(2)
+				hive.tier_2_xenos |= src
+			if(3)
+				hive.tier_3_xenos |= src
+
+		hive.totalXenos |= src
+		hive.handle_evolution_alert(src)
 
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
@@ -246,6 +256,15 @@
 
 	living_xeno_list -= src
 	xeno_mob_list -= src
+
+	switch(tier)
+		if(2)
+			hive.tier_2_xenos -= src
+		if(3)
+			hive.tier_3_xenos -= src
+	hive.totalXenos -= src
+
+	hive.handle_evolution_alert(src) //see about alerting the hive on a new slot
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.set_queen_overwatch(src, TRUE)

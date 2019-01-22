@@ -67,7 +67,7 @@
 //Lists mutators available for purchase
 /datum/mutator_set/proc/available_mutators()
 	var/list/can_purchase = list()
-	
+
 	for(var/str in xeno_mutator_list)
 		if (can_purchase_mutator(str))
 			can_purchase += str //can purchase!
@@ -141,7 +141,7 @@
 	acid_boost_level = 0
 	pheromones_boost_level = 0
 	weed_boost_level = 0
-	
+
 	tackle_chance_multiplier = 1.0
 	tackle_strength_bonus = 0
 

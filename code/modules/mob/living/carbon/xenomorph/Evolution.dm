@@ -8,12 +8,7 @@
 	set name = "Evolve"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
-	var totalXenos = 0 //total number of Xenos
-	// var tierA = 0.0 //Tier 1 - Not used in calculation of Tier maximums
-	var/tierB = 0 //Tier 2
-	var/tierC = 0 //Tier 3
 	var/potential_queens = 0
-	var/tier_slot_multiplier = hive.tier_slot_multiplier
 
 	if(is_ventcrawling)
 		src << "<span class='warning'>This place is too constraining to evolve.</span>"
@@ -50,10 +45,6 @@
 
 	if(health < maxHealth)
 		src << "<span class='warning'>You must be at full health to evolve.</span>"
-		return
-
-	if(plasma_stored < plasma_max)
-		src << "<span class='warning'>You must be at full plasma to evolve.</span>"
 		return
 
 	if (agility || fortify || crest_defense)
@@ -102,9 +93,8 @@
 			src << "<span class='warning'>Nuh-uhh.</span>"
 			return
 
-	//This will build a list of ALL the current Xenos and their Tiers, then use that to calculate if they can evolve or not.
-	//Should count mindless as well so people don't cheat
-	for(var/mob/living/carbon/Xenomorph/M in living_mob_list)
+//Used for restricting benos to evolve to drone/queen when they're the only potential queen
+	for(var/mob/living/carbon/Xenomorph/M in living_xeno_list)
 		if(hivenumber == M.hivenumber)
 			switch(M.tier)
 				if(0)
@@ -116,29 +106,19 @@
 					if(isXenoDrone(M))
 						if(M.client && M.ckey)
 							potential_queens++
-				if(2)
-					tierB++
-				if(3)
-					tierC++
-				else
-					src <<"<span class='warning'>You shouldn't see this. If you do, bug repot it! (Error XE01).</span>"
 
-					continue
-			if(M.client && M.ckey)
-				totalXenos++
-
-	if(totalXenos < 1)
-		totalXenos = 1
-	if(tier == 1 && (((tierB + tierC) / totalXenos) * tier_slot_multiplier)> 0.5 && castepick != "Queen")
+	if(tier == 1 && (((hive.tier_2_xenos.len + hive.tier_3_xenos.len) / hive.totalXenos.len) * hive.tier_slot_multiplier)> 0.5 && castepick != "Queen")
 		src << "<span class='warning'>The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die.</span>"
 		return
-	else if(tier == 2 && ((tierC / totalXenos) * tier_slot_multiplier)> 0.25 && castepick != "Queen")
-		src << "<span class='warning'>The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die.</span>"
 
+	else if(tier == 2 && ((hive.tier_3_xenos.len / hive.totalXenos.len) * hive.tier_slot_multiplier)> 0.25 && castepick != "Queen")
+		src << "<span class='warning'>The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die.</span>"
 		return
+
 	else if(!hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != "Drone")
 		src << "<span class='xenonotice'>The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!</span>"
 		return
+
 	else
 		src << "<span class='xenonotice'>It looks like the hive can support your evolution to <span style='font-weight: bold'>[castepick]!</span></span>"
 
@@ -214,42 +194,6 @@
 				src << "<span class='warning'>There already is a Queen.</span>"
 				return
 
-		for(var/mob/living/carbon/Xenomorph/Z in living_mob_list)
-			if(hivenumber == Z.hivenumber)
-				switch(Z.tier)
-					if(0)
-						if(isXenoLarva(Z,1))
-							if(Z.client && Z.ckey)
-								potential_queens++
-						continue
-					if(1)
-						if(isXenoDrone(Z))
-							if(Z.client && Z.ckey)
-								potential_queens++
-					if(2)
-						tierB++
-					if(3)
-						tierC++
-					else
-						src <<"<span class='warning'>You shouldn't see this. If you do, bug repot it! (Error XE01).</span>"
-
-						continue
-				if(Z.client && Z.ckey)
-					totalXenos++
-
-		if(totalXenos < 1)
-			totalXenos = 1
-		if(tier == 1 && (((tierB + tierC) / totalXenos) * tier_slot_multiplier)> 0.5 && castepick != "Queen")
-			src << "<span class='warning'>The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die.</span>"
-			return
-		else if(tier == 2 && ((tierC / totalXenos) * tier_slot_multiplier)> 0.25 && castepick != "Queen")
-			src << "<span class='warning'>The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die.</span>"
-
-			return
-		else if(!hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != "Drone")
-			src << "<span class='xenonotice'>The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!</span>"
-			return
-
 		//From there, the new xeno exists, hopefully
 		var/mob/living/carbon/Xenomorph/new_xeno = new M(get_turf(src), src)
 
@@ -259,6 +203,11 @@
 			if(new_xeno)
 				cdel(new_xeno)
 			return
+		switch(new_xeno.tier) //They have evolved, add them to the slot count
+			if(2)
+				hive.tier_2_xenos |= new_xeno
+			if(3)
+				hive.tier_3_xenos |= new_xeno
 
 		if(mind)
 			mind.transfer_to(new_xeno)
@@ -273,6 +222,8 @@
 			new_xeno.bruteloss = src.bruteloss //Transfers the damage over.
 			new_xeno.fireloss = src.fireloss //Transfers the damage over.
 			new_xeno.updatehealth()
+
+		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
 
 		new_xeno.visible_message("<span class='xenodanger'>A [new_xeno.caste.caste_name] emerges from the husk of \the [src].</span>", \
 		"<span class='xenodanger'>You emerge in a greater form from the husk of your old body. For the hive!</span>")

@@ -1263,10 +1263,6 @@
 	"<span class='xenowarning'>You vomit globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!</span>", null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
-
-
-
-
 /mob/living/carbon/Xenomorph/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of your current hive."

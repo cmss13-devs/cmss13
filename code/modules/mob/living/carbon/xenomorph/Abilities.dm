@@ -742,24 +742,16 @@
 		return
 	if(!X.check_plasma(plasma_cost))
 		return
-	if(!X.start_dig) //Let's start a new one.
-		X.visible_message("<span class='xenonotice'>\The [X] digs out a tunnel entrance.</span>", \
-		"<span class='xenonotice'>You dig out the first entrance to your tunnel.</span>", null, 5)
-		X.start_dig = new /obj/structure/tunnel(T)
-	else
-		X << "<span class='xenonotice'>You dig your tunnel all the way to the original entrance, connecting both entrances!</span>"
-		var/obj/structure/tunnel/newt = new /obj/structure/tunnel(T)
-		newt.other = X.start_dig
-		X.start_dig.other = newt //Link the two together
-		X.start_dig = null //Now clear it
-		X.tunnel_delay = 1
-		spawn(2400)
-			X << "<span class='notice'>You are ready to dig a tunnel again.</span>"
-			X.tunnel_delay = 0
-		var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
-		if(msg)
-			newt.other.tunnel_desc = msg
-			newt.tunnel_desc = msg
+	X.visible_message("<span class='xenonotice'>\The [X] digs out a tunnel entrance.</span>", \
+	"<span class='xenonotice'>You dig out an entrance to the tunnel network.</span>", null, 5)
+	X.start_dig = new /obj/structure/tunnel(T)
+	X.tunnel_delay = 1
+	spawn(2400)
+		X << "<span class='notice'>You are ready to dig a tunnel again.</span>"
+		X.tunnel_delay = 0
+	var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
+	if(msg)
+		X.start_dig.tunnel_desc = msg
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)

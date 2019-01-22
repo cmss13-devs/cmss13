@@ -19,7 +19,7 @@
 /**
  * Death hook.
  * Called in death.dm when someone dies.
- * Parameters: var/mob/living/carbon/human, var/gibbed
+ * Parameters: var/mob/living, var/gibbed
  */
 /hook/death
 

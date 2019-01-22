@@ -112,6 +112,7 @@
 // --------------------------------------------
 // *** Minimise losses ***
 // --------------------------------------------
+/*
 #define PASSED_NO_THRESHOLD 0
 #define PASSED_GOOD_THRESHOLD 1
 #define PASSED_POOR_THRESHOLD 2
@@ -196,7 +197,7 @@
 
 /datum/cm_objective/minimise_losses/total_point_value()
 	return priority
-
+*/
 
 // --------------------------------------------
 // *** Recover the dead ***
@@ -210,22 +211,20 @@
 
 /datum/cm_objective/recover_corpses/get_point_value()
 	var/points = 0
-	for(var/mob/living/carbon/human/H in corpses)
+	for(var/mob/H in corpses)
 		if(istype(get_area(H),recovery_area))
 			points++
-	return points
+	return points * points_per_corpse
 
 /datum/cm_objective/recover_corpses/total_point_value()
 	return corpses.len * points_per_corpse
 
 /datum/cm_objective/recover_corpses/get_completion_status()
-	var/recovered = 0
-	for(var/mob/living/carbon/human/H in corpses)
-		if(istype(get_area(H),recovery_area))
-			recovered++
 	var/percentage = 0
-	if(corpses.len)
-		percentage = recovered*100.0/corpses.len
+	var/total = total_point_value()
+	if(total)
+		var/value = get_point_value()
+		percentage = value*100.0/total
 	return "[percentage]% Recovered"
 
 /datum/cm_objective/recover_corpses/colonists
@@ -255,6 +254,8 @@
 	corpses -= H
 
 /hook/death/proc/handle_marine_deaths(var/mob/living/carbon/human/H, var/gibbed)
+	if(!istype(H))
+		return 1
 	if(!istype(H.assigned_squad) || gibbed || !objectives_controller)
 		return 1
 	objectives_controller.marines.add_marine(H)
@@ -262,4 +263,22 @@
 
 /hook/clone/proc/handle_marine_revival(var/mob/living/carbon/human/H)
 	objectives_controller.marines.remove_marine(H)
+	return 1
+
+/datum/cm_objective/recover_corpses/xenos
+	name = "Recover Xeno corpse specimens"
+	display_flags = OBJ_DISPLAY_AT_END
+	recovery_area = /area/almayer/medical/medical_science
+
+/datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
+	if(!(X in corpses))
+		corpses += X
+
+/datum/cm_objective/recover_corpses/xenos/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X)
+	corpses -= X
+
+/hook/death/proc/handle_xeno_deaths(var/mob/living/carbon/Xenomorph/X, var/gibbed)
+	if(!istype(X) || gibbed || !objectives_controller)
+		return 1
+	objectives_controller.xenos.add_xeno(X)
 	return 1

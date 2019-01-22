@@ -74,6 +74,8 @@
 		dead_hardcore_xeno_list += src
 
 
+	callHook("death", list(src, gibbed))
+
 
 
 

@@ -165,7 +165,7 @@
 "di" = (/turf/open/space/transit/north/shuttlespace_ns4,/area/almayer/evacuation/stranded/pod11)
 "dj" = (/obj/structure/table/reinforced,/obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill,/obj/item/tool/surgery/scalpel/predatorscalpel,/obj/item/tool/surgery/FixOVein/predatorFixOVein,/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "dk" = (/obj/machinery/door/airlock/secure{name = "\improper Operation Room"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
-"dl" = (/obj/machinery/door/airlock/secure{name = "Youngblood Quarters"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
+"dl" = (/obj/machinery/door/airlock/secure{name = "Blooded Chambers"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "dm" = (/obj/machinery/light/small{dir = 8},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "dn" = (/obj/machinery/door/airlock/secure{name = "Elder Quarters"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)
 "do" = (/obj/structure/table/reinforced{layer = 2.69},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4; health = 80},/obj/machinery/door/window/southleft{dir = 1; icon_state = "left"; layer = 2.8; tag = "icon-left (NORTH)"},/turf/open/floor/holofloor{icon_state = "cult"; dir = 2},/area/yautja)

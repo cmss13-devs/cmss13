@@ -845,10 +845,6 @@
 		src << "<span class='xenowarning'>You can't tunnel into a solid wall!</span>"
 		return
 
-	if(istype(T, /turf/open/gm/river) || istype(T, /turf/open/space) || istype(T, /turf/open/floor/almayer_hull) || istype(T, /turf/open/shuttle/dropship))
-		src << "<span class='xenowarning'>You can't tunnel there!</span>"
-		return
-
 	for(var/obj/O in T.contents)
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)

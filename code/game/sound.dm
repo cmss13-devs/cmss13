@@ -102,7 +102,7 @@
 
 /client/proc/playtitlemusic()
 	if(!ticker || !ticker.login_music)	r_FAL
-	if(prefs.toggles_sound & SOUND_LOBBY)
+	if(prefs && prefs.toggles_sound & SOUND_LOBBY)
 		src << sound(ticker.login_music, repeat = 0, wait = 0, volume = 85, channel = 1) // MAD JAMS
 
 

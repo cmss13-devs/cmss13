@@ -36,7 +36,7 @@
 				continue
 			if(findtext(message," snores.")) //Because we have so many sleeping people.
 				break
-			if(M.stat == DEAD && (M.client.prefs.toggles_chat & CHAT_GHOSTSIGHT) && !(M in viewers(src,null)))
+			if(M.stat == DEAD && (M.client.prefs && M.client.prefs.toggles_chat & CHAT_GHOSTSIGHT) && !(M in viewers(src,null)))
 				M.show_message(message)
 
 

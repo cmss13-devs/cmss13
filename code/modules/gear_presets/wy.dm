@@ -4,6 +4,7 @@
 
 	idtype = /obj/item/card/id/pmc
 	special_role = "PMC"
+	faction = "Weyland-Yutani"
 
 /datum/equipment_preset/wy/New()
 	. = ..()

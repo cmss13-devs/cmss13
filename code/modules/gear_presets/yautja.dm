@@ -4,6 +4,7 @@
 	name = "Yautja"
 	idtype = null //No IDs for Yautja!
 	languages = list("Sainja")
+	faction = "Yautja"
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
 	//No ID for preds!

@@ -101,6 +101,18 @@ should be listed in the changelog upon commit though. Thanks. -->
 
 
 <div class='commit sansserif'>
+	<h2 class='date'>January 24 2019</h2>
+	<h3 class='author'>ThePiachu updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='bugfix'>ERTs should not delete old mobs anymore.</li>
+		<li class='bugfix'>Force-regurgitating humans while inside of a tunnel should spawn them outside of a tunnel now.</li>
+		<li class='bugfix'>Xenos can't remotely teleport into a tunnel anymore.</li>
+		<li class='bugfix'>Fixed an error while trying to load ammo into arty module (which doesn't take ammo!).</li>
+		<li class='bugfix'>Fixed some runtime errors.</li>
+	</ul>
+</div>
+
+<div class='commit sansserif'>
 	<h2 class='date'>January 20 2019</h2>
 	<h3 class='author'>ThePiachu updated:</h3>
 	<ul class='changes bgimages16'>
@@ -111,18 +123,13 @@ should be listed in the changelog upon commit though. Thanks. -->
 		<li class='rscdel'>Removed legacy syndicate uplinks.</li>
 		<li class='rscdel'>Removed legacy jobs that caused a lot of startup logs about being missing.</li>
 		<li class='rscdel'>Removed legacy news and events.</li>
-	</ul>
-</div>
-
-<div class='commit sansserif'>
-	<h2 class='date'>January 24 2019</h2>
-	<h3 class='author'>ThePiachu updated:</h3>
-	<ul class='changes bgimages16'>
-		<li class='bugfix'>ERTs should not delete old mobs anymore.</li>
-		<li class='bugfix'>Force-regurgitating humans while inside of a tunnel should spawn them outside of a tunnel now.</li>
-		<li class='bugfix'>Xenos can't remotely teleport into a tunnel anymore.</li>
-		<li class='bugfix'>Fixed an error while trying to load ammo into arty module (which doesn't take ammo!).</li>
-		<li class='bugfix'>Fixed some runtime errors.</li>
+		<li class='tweak'>As soon as the dropships crash into Almayer, mobs on the surface shouldn't count for round-end.</li>
+		<li class='bugfix'>Peeking up ladders should work properly now and not hog your view forever.</li>
+		<li class='bugfix'>Less runtime exceptions when looking up wonky ladders.</li>
+		<li class='bugfix'>Can actually delete the wonky ladders.</li>
+		<li class='bugfix'>You can't drag people out of the autodoc by holding them while they climb in anymore.</li>
+		<li class='bugfix'>A bunch of other random runtime exception fixes.</li>
+		<li class='tweak'>Gear presets should load name into mind correctly, so expect less unknowns in deadchat.</li>
 	</ul>
 </div>
 

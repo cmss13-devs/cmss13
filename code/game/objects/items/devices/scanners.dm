@@ -258,7 +258,7 @@ REAGENT SCANNER
 	var/reagents_in_body[0] // yes i know -spookydonut
 	if(istype(M, /mob/living/carbon))
 		// Show helpful reagents
-		if(M.reagents.total_volume > 0)
+		if(M.reagents && (M.reagents.total_volume > 0))
 			var/unknown = 0
 			var/reagentdata[0]
 			for(var/A in M.reagents.reagent_list)

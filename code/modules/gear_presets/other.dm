@@ -14,6 +14,7 @@
 	rank = "MODE"
 	special_role = "FREELANCERS"
 	idtype = /obj/item/card/id/data
+	faction = "Freelancers"
 
 /datum/equipment_preset/other/freelancer/New()
 	. = ..()
@@ -127,6 +128,7 @@
 	rank = "Mercenary Enforcer"
 	special_role = "MERCENARIES"
 	skills = /datum/skills/mercenary
+	faction = "Mercenaries"
 
 /datum/equipment_preset/other/mercenary_heavy/New()
 	. = ..()
@@ -158,6 +160,7 @@
 	rank = "Mercenary Worker"
 	special_role = "MERCENARIES"
 	skills = /datum/skills/mercenary
+	faction = "Mercenaries"
 
 /datum/equipment_preset/other/mercenary_miner/New()
 	. = ..()
@@ -186,6 +189,7 @@
 	rank = "Mercenary Engineer"
 	special_role = "MERCENARIES"
 	skills = /datum/skills/mercenary
+	faction = "Mercenaries"
 
 /datum/equipment_preset/other/mercenary_engineer/New()
 	. = ..()
@@ -264,6 +268,7 @@
 	rank = "MODE"
 	special_role = "Pizza"
 	skills = /datum/skills/civilian
+	faction = "Pizza"
 
 /datum/equipment_preset/other/pizza/New()
 	. = ..()
@@ -305,6 +310,7 @@
 
 	languages = list("Zombie")
 	skills = null //no restrictions
+	faction = "Zombie"
 
 //Overloading the function to be able to spawn gear first
 /datum/equipment_preset/other/zombie/load_preset(mob/living/carbon/human/H, var/randomise = FALSE)
@@ -353,6 +359,7 @@
 	assignment = "Bestiarius"
 	rank = "Bestiarius"
 	special_role = "Gladiator"
+	faction = "Gladiator"
 
 /datum/equipment_preset/other/gladiator/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE, FEMALE)

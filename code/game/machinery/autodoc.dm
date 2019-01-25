@@ -624,6 +624,8 @@
 			usr << "<span class='notice'>\The [src] is already occupied!</span>"
 			return
 		usr.stop_pulling()
+		if(usr.pulledby)
+			usr.pulledby.stop_pulling()
 		usr.client.perspective = EYE_PERSPECTIVE
 		usr.client.eye = src
 		usr.loc = src

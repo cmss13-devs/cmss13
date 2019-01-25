@@ -1377,6 +1377,17 @@ proc/get_mob_with_client_list()
 /proc/get_turf_or_move(turf/location)
 	return get_turf(location)
 
+proc/get_true_location(var/atom/loc)
+	var/atom/subLoc = loc
+	while(subLoc.z == 0 && subLoc.z == 0 && subLoc.z == 0)
+		if (istype(subLoc.loc, /atom))
+			subLoc = subLoc.loc
+		else
+			return src
+	return subLoc
+
+proc/get_true_turf(var/atom/loc)
+	return get_turf(get_true_location(loc))
 
 //Quick type checks for some tools
 var/global/list/common_tools = list(

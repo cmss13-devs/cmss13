@@ -895,6 +895,11 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		if(!pick)
 			return 0
 
+		if(!(X in contents))
+			//Xeno moved out of the tunel before they picked a destination
+			//No teleporting!
+			return 0
+		
 		X << "<span class='xenonotice'>You begin moving to your destination.</span>"
 
 		var/tunnel_time = 40

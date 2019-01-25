@@ -13,7 +13,6 @@
 /datum/emergency_call/colonist/create_member(datum/mind/M) //Blank ERT with only basic items.
 	set waitfor = 0
 	var/turf/T = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(T)) r_FAL
 
@@ -28,5 +27,3 @@
 	if(H && H.loc)
 		H << "<span class='role_header'>You are a colonist!</span>"
 		H << "<span class='role_body'>You have been put into the game by a staff member. Please follow all staff instructions.</span>"
-
-	if(original && original.loc) cdel(original)

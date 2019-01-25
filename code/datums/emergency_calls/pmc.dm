@@ -17,7 +17,6 @@
 /datum/emergency_call/pmc/create_member(datum/mind/M)
 	set waitfor = 0
 	var/turf/spawn_loc = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
@@ -47,8 +46,6 @@
 	sleep(10)
 	M << "<B>Objectives:</b> [objectives]"
 
-	if(original)
-		cdel(original)
 
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)

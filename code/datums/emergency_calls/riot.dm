@@ -11,7 +11,6 @@
 /datum/emergency_call/riot/create_member(datum/mind/M)
 	set waitfor = 0
 	var/turf/T = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(T)) r_FAL
 
@@ -37,9 +36,6 @@
 	sleep(10)
 	M << "<B>Objectives:</b> [objectives]"
 
-	if(original)
-		cdel(original)
-	return
 
 /datum/emergency_call/riot/spawn_items()
 	var/turf/drop_spawn

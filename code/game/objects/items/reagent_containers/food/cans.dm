@@ -228,15 +228,6 @@
 		..()
 		reagents.add_reagent("souto_classic", 50)
 
-/obj/item/reagent_container/food/drinks/cans/souto/blue
-	name = "\improper Blue Raspberry Souto"
-	desc = "A can of blue rasperry Souto. It tastes like the color blue. Technology really is amazing. Canned in Havana."
-	icon_state = "souto_blue"
-	center_of_mass = list("x"=16, "y"=10)
-	New()
-		..()
-		reagents.add_reagent("blueraspberry", 50)
-
 /obj/item/reagent_container/food/drinks/cans/souto/diet
 	name = "\improper Diet Souto"
 	desc = "Now with 0% fruit juice! Canned in Havana"
@@ -311,4 +302,61 @@
 	New()
 		..()
 		reagents.add_reagent("grapejuice", 25)
+		reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/blue
+	name = "\improper Blue Raspberry Souto"
+	desc = "It tastes like the color blue. Technology really is amazing. Canned in Havana."
+	icon_state = "souto_blue"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("blueraspberry", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/blue/diet
+	name = "\improper Diet Blue Raspberry Souto"
+	desc = "WHAT A SCAM! It doesn't even taste like blue! At best, it tastes like cyan. Canned in Havana."
+	icon_state = "souto_diet_blue"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("blueraspberry", 25)
+		reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/peach
+	name = "\improper Peach Souto"
+	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear a peach pit rattling on the inside. Canned in Havana."
+	icon_state = "souto_peach"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("peach", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/peach/diet
+	name = "\improper Diet Peach Souto"
+	desc = "On one hand, it tastes pretty good. On the other hand, you think you can hear half of a peach pit rattling on the inside. Canned in Havana."
+	icon_state = "souto_diet_peach"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("peach", 25)
+		reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/cranberry
+	name = "\improper Cranberry Souto"
+	desc = "On closer inspection, the can reads CRAMberry Souto. What the Hell is a Cramberry? Canned in Havana."
+	icon_state = "souto_cranberry"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("cranberry", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet
+	name = "\improper Cranberry Souto"
+	desc = "This tastes more like prunes than cranberries. It's not bad; it's just wrong. Canned in Havana."
+	icon_state = "souto_diet_cranberry"
+	center_of_mass = list("x"=16, "y"=10)
+	New()
+		..()
+		reagents.add_reagent("cranberry", 25)
 		reagents.add_reagent("water", 25)

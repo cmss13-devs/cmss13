@@ -31,54 +31,9 @@
 	var/uplink_uses = 10
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
-	var/list/datum/uplink_item/uplink_items = list(
-		"Highly Visible and Dangerous Weapons" = list(
-			 new/datum/uplink_item(/obj/item/weapon/energy/sword, 4, "Energy Sword", "ES"),
-			 new/datum/uplink_item(/obj/item/storage/box/syndicate, 10, "Syndicate Bundle", "BU"),
-			 new/datum/uplink_item(/obj/item/storage/box/emps, 3, "5 EMP Grenades", "EM")
-			),
-		"Stealthy and Inconspicuous Weapons" = list(
-			new/datum/uplink_item(/obj/item/tool/pen/paralysis, 3, "Paralysis Pen", "PP"),
-			new/datum/uplink_item(/obj/item/tool/soap/syndie, 1, "Syndicate Soap", "SP"),
-			new/datum/uplink_item(/obj/item/cartridge/syndicate, 3, "Detomatix PDA Cartridge", "DC")
-			),
-		"Stealth and Camouflage Items" = list(
-			new/datum/uplink_item(/obj/item/storage/box/syndie_kit/chameleon, 3, "Chameleon Kit", "CB"),
-			new/datum/uplink_item(/obj/item/clothing/shoes/syndigaloshes, 2, "No-Slip Syndicate Shoes", "SH"),
-			new/datum/uplink_item(/obj/item/card/id/syndicate, 2, "Agent ID card", "AC"),
-			new/datum/uplink_item(/obj/item/clothing/mask/gas/voice, 4, "Voice Changer", "VC"),
-			new/datum/uplink_item(/obj/item/device/chameleon, 4, "Chameleon-Projector", "CP")
-			),
-		"Devices and Tools" = list(
-			new/datum/uplink_item(/obj/item/card/emag, 3, "Cryptographic Sequencer", "EC"),
-			new/datum/uplink_item(/obj/item/storage/toolbox/syndicate, 1, "Fully Loaded Toolbox", "ST"),
-			new/datum/uplink_item(/obj/item/storage/box/syndie_kit/space, 3, "Space Suit", "SS"),
-			new/datum/uplink_item(/obj/item/clothing/glasses/thermal/syndi, 3, "Thermal Imaging Glasses", "TM"),
-			new/datum/uplink_item(/obj/item/device/encryptionkey/binary, 3, "Binary Translator Key", "BT"),
-			new/datum/uplink_item(/obj/item/circuitboard/ai_module/syndicate, 7, "Hacked AI Upload Module", "AI"),
-			new/datum/uplink_item(/obj/item/explosive/plastique, 2, "C-4 (Destroys walls)", "C4"),
-			new/datum/uplink_item(/obj/item/device/powersink, 5, "Powersink (DANGER!)", "PS",),
-			new/datum/uplink_item(/obj/item/circuitboard/computer/teleporter, 20, "Teleporter Circuit Board", "TP")
-			),
-		"Implants" = list(
-			new/datum/uplink_item(/obj/item/storage/box/syndie_kit/imp_freedom, 3, "Freedom Implant", "FI"),
-			new/datum/uplink_item(/obj/item/storage/box/syndie_kit/imp_uplink, 10, "Uplink Implant (Contains 5 Telecrystals)", "UI"),
-			new/datum/uplink_item(/obj/item/storage/box/syndie_kit/imp_explosive, 6, "Explosive Implant (DANGER!)", "EI"),
-			new/datum/uplink_item(/obj/item/storage/box/syndie_kit/imp_compress, 4, "Compressed Matter Implant", "CI")
-			),
-		"(Pointless) Badassery" = list(
-			new/datum/uplink_item(/obj/item/toy/syndicateballoon, 10, "For showing that You Are The BOSS (Useless Balloon)", "BS")
-			)
-		)
-
-// Items removed from above:
-/*
-/obj/item/device/cloaking_device:4:Cloaking Device;	//Replacing cloakers with thermals.	-Pete
-*/
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	world << "<B>Notice</B>: [src] did not define announce()"
-
 
 ///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.

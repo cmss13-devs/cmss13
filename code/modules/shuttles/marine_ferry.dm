@@ -485,6 +485,7 @@
 	moving_status = SHUTTLE_CRASHED
 
 	if(ticker && ticker.mode)
+		ticker.mode.is_in_endgame = TRUE
 		ticker.mode.force_end_at = world.time + 12000 // 20 mins
 
 

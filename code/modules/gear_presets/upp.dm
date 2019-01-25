@@ -4,6 +4,7 @@
 	name = "UPP"
 
 	languages = list("Russian", "English")
+	faction = "UPP"
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)

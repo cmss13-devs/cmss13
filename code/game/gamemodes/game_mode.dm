@@ -31,6 +31,7 @@
 	var/uplink_uses = 10
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
+	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	world << "<B>Notice</B>: [src] did not define announce()"

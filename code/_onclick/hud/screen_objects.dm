@@ -731,12 +731,13 @@
 	if (..())
 		return 1
 
-	if(user.hud_used.inventory_shown)
-		user.hud_used.inventory_shown = 0
-		user.client.screen -= user.hud_used.toggleable_inventory
-	else
-		user.hud_used.inventory_shown = 1
-		user.client.screen += user.hud_used.toggleable_inventory
+	if(user && user.hud_used)
+		if(user.hud_used.inventory_shown)
+			user.hud_used.inventory_shown = 0
+			user.client.screen -= user.hud_used.toggleable_inventory
+		else
+			user.hud_used.inventory_shown = 1
+			user.client.screen += user.hud_used.toggleable_inventory
 
-	user.hud_used.hidden_inventory_update()
+		user.hud_used.hidden_inventory_update()
 	return 1

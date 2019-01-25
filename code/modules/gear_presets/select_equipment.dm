@@ -13,6 +13,7 @@
 	var/paygrade
 	var/role_comm_title
 	var/special_role
+	var/faction = "neutral"
 
 	//load_appearance()
 /datum/equipment_preset/proc/load_race(mob/living/carbon/human/H)
@@ -46,9 +47,12 @@
 	W.paygrade = paygrade
 	H.equip_to_slot_or_del(W, WEAR_ID)
 	if(H.mind)
+		//TODO: fix properly
+		//H.mind.faction = faction
 		H.mind.role_comm_title = role_comm_title
 		H.mind.assigned_role = W.rank
 		H.mind.special_role = special_role
+		H.mind.name = H.real_name
 		if(H.mind.initial_account)
 			W.associated_account_number = H.mind.initial_account.account_number
 

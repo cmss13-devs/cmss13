@@ -114,6 +114,18 @@
 	description = "A blue fruit flavored soda canned in Havana"
 	color = "#005B96"
 
+/datum/reagent/drink/suoto/blueraspberry
+	name = "Peach Souto"
+	id = "peach"
+	description = "A pink fruit flavored soda with flecks of peach pit floating inside canned in Havana"
+	color = "#FFE5B4"
+
+/datum/reagent/drink/suoto/blueraspberry
+	name = "Cranberry Souto"
+	id = "cranberry"
+	description = "A red fruit flavored soda canned in Havana"
+	color = "#950714"
+
 /datum/reagent/drink/davenport
 	name = "Davenport Rye"
 	id = "davenport"

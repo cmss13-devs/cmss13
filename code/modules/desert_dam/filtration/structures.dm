@@ -38,7 +38,20 @@
 	bound_height = 64
 	bound_y = 64
 */
-/obj/structure/filtration/machine
+/obj/structure/filtration
+	name = "filtration machine"
+
+/obj/structure/filtration/machine_32x32
+	icon = 'icons/obj/filtration/32x32.dmi'
+	name = "filtration catwalks"
+	//bound_x = 96
+	//bound_y = 96
+	density = 0
+	anchored = 1
+	bound_width = 32
+	bound_height = 32
+
+/obj/structure/filtration/machine_96x96
 	icon = 'icons/obj/filtration/96x96.dmi'
 	//bound_x = 96
 	//bound_y = 96
@@ -46,6 +59,23 @@
 	anchored = 1
 	bound_width = 96
 	bound_height = 96
+
+/obj/structure/filtration/machine_64x96
+	icon = 'icons/obj/filtration/64x96.dmi'
+	//bound_x = 96
+	//bound_y = 96
+	density = 1
+	anchored = 1
+	bound_width = 64
+	bound_height = 96
+/obj/structure/filtration/machine_64x128
+	icon = 'icons/obj/filtration/64x128.dmi'
+	//bound_x = 96
+	//bound_y = 96
+	density = 1
+	anchored = 1
+	bound_width = 64
+	bound_height = 128
 
 /obj/structure/filtration/coagulation_arm
 	name = "coagulation arm"

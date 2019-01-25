@@ -1286,7 +1286,7 @@
 		smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 
 	proc/drop_nade(turf/T, obj/item/projectile/P)
-		var/amount = 3
+		var/amount = 4
 		if(isXenoBoiler(P.firer))
 			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
 			amount += B.gas_level
@@ -1315,7 +1315,7 @@
 		smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
 	drop_nade(turf/T, obj/item/projectile/P)
-		var/amount = 2
+		var/amount = 3
 		if(isXenoBoiler(P.firer))
 			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
 			amount += B.gas_level

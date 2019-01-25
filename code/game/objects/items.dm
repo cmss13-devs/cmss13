@@ -101,7 +101,6 @@
 	if(w_class <= 3) //pulling small items doesn't slow you down much
 		drag_delay = 1
 
-
 /obj/item/Dispose()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
@@ -111,15 +110,6 @@
 	master = null
 	item_list -= src
 	. = ..()
-
-/obj/item/proc/get_true_location()
-	var/atom/subLoc = src
-	while(subLoc.z == 0 && subLoc.z == 0 && subLoc.z == 0)
-		if (istype(subLoc.loc, /atom))
-			subLoc = subLoc.loc
-		else
-			return src
-	return subLoc
 
 /obj/item/ex_act(severity, explosion_direction)
 	switch(severity)

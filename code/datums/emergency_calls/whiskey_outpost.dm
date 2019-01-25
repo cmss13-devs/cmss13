@@ -15,7 +15,6 @@
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = "distress_wo"
 	var/turf/spawn_loc = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
@@ -58,8 +57,6 @@
 	mob.hud_set_special_role()
 	mob.hud_set_squad()
 
-	if(original)
-		cdel(original)
 
 /datum/game_mode/whiskey_outpost/activate_distress()
 	picked_call = /datum/emergency_call/wo

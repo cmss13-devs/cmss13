@@ -833,6 +833,10 @@
 		src << "<span class='notice'>You must wait some time to do this.</span>"
 		return
 
+	if (!T) //Not sure how we'd end up here, but we did have this happen, so sanity check!
+		src << "<span class='notice'>You can't tunnel there!.</span>"
+		return
+
 	if(T.z == MAIN_SHIP_Z_LEVEL)
 		src << "<span class='xenowarning'>The decking is too hard to tunnel through!</span>"
 		return
@@ -874,7 +878,6 @@
 	spawn while (tunnel && T)
 		if (world.timeofday > tunnel_timer)
 			tunnel = 0
-			//world << "spawnwhile"
 			do_tunnel(T)
 		sleep(10)	// Process every second.
 

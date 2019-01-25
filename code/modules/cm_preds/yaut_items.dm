@@ -504,7 +504,7 @@
 		if (isResearcher(user))
 			workingProbability = 25
 			randomProbability = 7
-	
+
 
 	user << "<span class='notice'>You press a few buttons...</span>"
 	//Add a little delay so the user wouldn't be just spamming all the buttons
@@ -517,7 +517,7 @@
 		if(chance <= workingProbability)
 			return 2
 	return 0
-	
+
 
 //This is used to punish people that fiddle with technology they don't understand
 /obj/item/clothing/gloves/yautja/proc/delimb_user()
@@ -612,7 +612,7 @@
 	var/closest = 10000
 	var/direction = -1
 	for(var/obj/item/I in yautja_gear)
-		var/atom/loc = I.get_true_location()
+		var/atom/loc = get_true_location(I)
 		if (isYautja(loc))
 			//it's actually yautja holding the item, ignore!
 			continue

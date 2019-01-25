@@ -164,7 +164,7 @@
 				hive.tier_3_xenos |= src
 
 		hive.totalXenos |= src
-		hive.handle_evolution_alert(src)
+		hive.handle_evolution_alert()
 
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
@@ -264,7 +264,7 @@
 			hive.tier_3_xenos -= src
 	hive.totalXenos -= src
 
-	hive.handle_evolution_alert(src) //see about alerting the hive on a new slot
+	hive.handle_evolution_alert() //see about alerting the hive on a new slot
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 		hive.living_xeno_queen.set_queen_overwatch(src, TRUE)

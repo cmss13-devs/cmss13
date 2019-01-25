@@ -15,7 +15,6 @@
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = "distress_wo"
 	var/turf/spawn_loc = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
@@ -31,6 +30,3 @@
 	sleep(10)
 	H << "<B>Objectives:</b> [objectives]"
 
-
-	if(original)
-		cdel(original)

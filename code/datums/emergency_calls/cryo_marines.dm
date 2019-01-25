@@ -17,7 +17,6 @@
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = "distress_wo"
 	var/turf/spawn_loc = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
@@ -48,9 +47,6 @@
 	H.sec_hud_set_implants()
 	H.hud_set_special_role()
 	H.hud_set_squad()
-
-	if(original)
-		cdel(original)
 
 datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"

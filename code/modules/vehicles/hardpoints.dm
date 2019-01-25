@@ -67,6 +67,9 @@ Currently only has the tank hardpoints
 	else if(backup_clips.len >= max_clips)
 		user << "<span class='warning'>The reloader is full.</span>"
 		return 0
+	else if(!ammo)
+		user << "<span class='warning'>This module does not use ammo!</span>"
+		return 0
 	else if(!istype(A, ammo.type))
 		user << "<span class='warning'>That is the wrong ammo type.</span>"
 		return 0

@@ -252,11 +252,11 @@
 		for(var/atom/movable/S in stomach_contents)
 			stomach_contents.Remove(S)
 			S.acid_damage = 0 //Reset the acid damage
-			S.forceMove(get_turf(src))
+			S.forceMove(get_true_turf(src))
 
 	if(contents.len) //Get rid of anything that may be stuck inside us as well
 		for(var/atom/movable/A in contents)
-			A.forceMove(get_turf(src))
+			A.forceMove(get_true_turf(src))
 
 /mob/living/carbon/Xenomorph/proc/toggle_nightvision()
 	if(see_invisible == SEE_INVISIBLE_MINIMUM)
@@ -338,7 +338,7 @@
 		if(victim)
 			stomach_contents.Remove(victim)
 			victim.acid_damage = 0
-			victim.forceMove(loc)
+			victim.forceMove(get_true_turf(loc))
 
 			visible_message("<span class='xenowarning'>\The [src] hurls out the contents of their stomach!</span>", \
 			"<span class='xenowarning'>You hurl out the contents of your stomach!</span>", null, 5)

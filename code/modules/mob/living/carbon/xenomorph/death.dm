@@ -82,7 +82,7 @@
 			hive.tier_3_xenos -= src
 
 	hive.totalXenos -= src
-	hive.handle_evolution_alert(src)
+	hive.handle_evolution_alert()
 
 	callHook("death", list(src, gibbed))
 

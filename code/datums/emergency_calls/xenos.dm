@@ -20,7 +20,6 @@
 
 /datum/emergency_call/xenos/create_member(datum/mind/M)
 	var/turf/spawn_loc = get_spawn_point()
-	var/mob/original = M.current
 
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 	var/chance = rand(0,3)
@@ -35,10 +34,6 @@
 	else
 		new_xeno = new /mob/living/carbon/Xenomorph/Lurker/mature(spawn_loc)
 	new_xeno.key  = M.key
-
-	if(original) //Just to be sure.
-		cdel(original)
-
 
 
 /datum/emergency_call/xenos/platoon

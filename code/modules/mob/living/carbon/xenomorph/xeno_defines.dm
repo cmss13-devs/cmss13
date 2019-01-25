@@ -356,14 +356,24 @@
 	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)
 		L.handle_xeno_leader_pheromones()
 
-/datum/hive_status/proc/handle_evolution_alert(var/mob/living/carbon/Xenomorph/X)
-	if( !(( (((tier_2_xenos.len + tier_3_xenos.len) / totalXenos.len) * tier_slot_multiplier)> 0.5  ) || ( ((tier_3_xenos.len / totalXenos.len) * tier_slot_multiplier)> 0.25  ))) //Usual slot check
-		if((X.tier > 1) && !(X in totalXenos) || (isXenoLarva(X,1) && (X in totalXenos))) //Basically, only is true on tiers > 1 dying or on new larvae bursts
-			if(!isSlotOpen)//plus a check to stop message spam
-				xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
-				isSlotOpen = TRUE
-	else
+/datum/hive_status/proc/handle_evolution_alert()
+	if (!totalXenos.len) //sanity check!
 		isSlotOpen = FALSE
+		return
+
+	if (((tier_2_xenos.len + tier_3_xenos.len) / totalXenos.len * tier_slot_multiplier) > 0.5)
+		if(!isSlotOpen)//plus a check to stop message spam
+			xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
+			isSlotOpen = TRUE
+			return
+
+	if ((tier_3_xenos.len / totalXenos.len * tier_slot_multiplier) > 0.25)
+		if(!isSlotOpen)//plus a check to stop message spam
+			xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
+			isSlotOpen = TRUE
+			return
+
+	isSlotOpen = FALSE
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

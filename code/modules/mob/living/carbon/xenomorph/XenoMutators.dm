@@ -240,7 +240,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.weed_boost_level += 1
+	MS.weed_boost_level += 2
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/more_leaders
@@ -433,7 +433,7 @@
 	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/resilient_larva
-	//Faster evolution and maturation
+	//Larva grows faster and can burst more larva
 	name = "KEYSTONE - Resilient larva"
 	description = "The larva grow faster and more numerous."
 	cost = MUTATOR_COST_EXPENSIVE
@@ -452,7 +452,7 @@
 	MS.recalculate_hive(description)
 
 /datum/xeno_mutator/acid_claws
-	//Stronger acid
+	//Turns brute claw damage into burn damage
 	name = "KEYSTONE - Acid-tipped claws"
 	description = "Your claws secrete acid."
 	cost = MUTATOR_COST_EXPENSIVE
@@ -465,4 +465,37 @@
 	if(. == 0)
 		return
 	MS.acid_claws = TRUE //turns claws acid, damage is calcualted elsewhere
+	MS.recalculate_stats(description)
+
+/datum/xeno_mutator/regenerate_off_weeds
+	//Xeno can regenerate / heal off weeds
+	name = "KEYSTONE - Regenerate off weeds"
+	description = "You can regenerate off weeds."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	keystone = TRUE
+
+/datum/xeno_mutator/regenerate_off_weeds/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if(. == 0)
+		return
+	MS.need_weeds = FALSE //we don't need weeds anymore to heal or regenerate plasma
+	MS.recalculate_actions(description)
+
+/datum/xeno_mutator/faster_charge_buildup
+	//Turns brute claw damage into burn damage
+	name = "KEYSTONE - Faster charge buildup"
+	description = "Your charge builds up faster."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Crusher") //Only for Crusher (since Queen doesn't have a charge anymore)
+	keystone = TRUE
+
+/datum/xeno_mutator/faster_charge_buildup/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if(. == 0)
+		return
+
+	MS.charge_speed_buildup_multiplier *= 1.2
+	MS.charge_turfs_to_charge_delta -= 1
 	MS.recalculate_stats(description)

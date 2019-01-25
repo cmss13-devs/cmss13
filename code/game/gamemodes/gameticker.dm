@@ -301,11 +301,6 @@ var/global/datum/controller/gameticker/ticker
 
 		return 1
 
-	proc/getfactionbyname(var/name)
-		for(var/datum/faction/F in factions)
-			if(F.name == name)
-				return F
-
 
 /datum/controller/gameticker/proc/declare_completion()
 /* 	world << "<br><br><br><font size=3><b>The round has ended.</b></font>"

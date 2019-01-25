@@ -367,22 +367,6 @@
 			if("undress")
 				for(var/obj/item/W in current)
 					current.drop_inv_item_on_ground(W)
-			if("takeuplink")
-				take_uplink()
-				memory = null//Remove any memory they may have had.
-			if("crystals")
-				if (usr.client.admin_holder.rights & R_FUN)
-					var/obj/item/device/uplink/hidden/suplink = find_syndicate_uplink()
-					var/crystals
-					if (suplink)
-						crystals = suplink.uses
-					crystals = input("Amount of telecrystals for [key]","Syndicate uplink", crystals) as null|num
-					if (!isnull(crystals))
-						if (suplink)
-							suplink.uses = crystals
-			if("uplink")
-				if (!ticker.mode.equip_traitor(current, !(src in ticker.mode.traitors)))
-					usr << "\red Equipping a syndicate failed!"
 
 	else if (href_list["obj_announce"])
 		var/obj_count = 1
@@ -392,18 +376,6 @@
 			obj_count++
 
 	edit_memory()
-
-/datum/mind/proc/find_syndicate_uplink()
-	var/list/L = current.get_contents()
-	for (var/obj/item/I in L)
-		if (I.hidden_uplink)
-			return I.hidden_uplink
-	return null
-
-/datum/mind/proc/take_uplink()
-	var/obj/item/device/uplink/hidden/H = find_syndicate_uplink()
-	if(H)
-		cdel(H)
 
 /datum/mind/proc/make_Traitor()
 	if(!(src in ticker.mode.traitors))

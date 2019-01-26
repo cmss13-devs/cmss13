@@ -91,6 +91,11 @@
 	if( !iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal) )
 		user << "<span class='warning'>This item is not suitable for the gibber!</span>"
 		return
+	if(istype(G.grabbed_thing, /mob/living/simple_animal/scp))
+		var/mob/living/simple_animal/scp/scp = G.grabbed_thing
+		scp.lash_out()
+		user << "<span class='warning'>This item is not suitable for the gibber!</span>"
+		return
 	var/mob/living/M = G.grabbed_thing
 	if(user.grab_level < GRAB_AGGRESSIVE)
 		user << "<span class='warning'>You need a better grip to do that!</span>"

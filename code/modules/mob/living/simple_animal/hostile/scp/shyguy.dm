@@ -9,10 +9,6 @@
 	icon_dead = "shyguy_dam0"
 	emote_hear = list("makes a faint groaning sound")
 	emote_see = list("shuffles around aimlessly", "shivers")
-	response_help  = "touches the"
-	response_disarm = "pushes the"
-	response_harm   = "hits the"
-	flags_pass = PASSTABLE
 	layer = BELOW_MOB_LAYER
 
 	health = 600
@@ -20,10 +16,6 @@
 	var/move_to_delay = 2
 
 	var/murder_sound = list('sound/voice/scream_horror2.ogg')
-	var/scare_sound = list('sound/scp/scare1.ogg','sound/scp/scare2.ogg','sound/scp/scare3.ogg','sound/scp/scare4.ogg')	//Boo
-	var/hibernate = 0 //Disables SCP until toggled back to 0
-	var/scare_played = 0 //Did we rape everyone's ears yet ?
-	var/obj/machinery/atmospherics/unary/vent_pump/entry_vent //Graciously stolen from spider code
 
 	var/list/shitlist = list() //list of folks this guy is about to murder
 	var/list/examine_urge_list = list() //tracks urge to examine
@@ -80,46 +72,20 @@
 		will_scream = 1
 		handle_idle()
 
-//Check if any carbon mob can see us
-/mob/living/simple_animal/scp/shyguy/proc/check_los()
-
-	for(var/mob/living/carbon/H in viewers(src, null))
-		if(H in shitlist)
-			continue
-		if(H.stat || H.blinded)
-			continue
-
-		var/observed = 0
-		var/eye_contact = 0
-
-		var/x_diff = H.x - src.x
-		var/y_diff = H.y - src.y
-		if(y_diff != 0) //If we are not on the same vertical plane (up/down), mob is either above or below src
-			if(y_diff < 0 && H.dir == NORTH) //Mob is below src and looking up
-				observed = 1
-				if(dir == SOUTH) //src is looking down
-					eye_contact = 1
-			else if(y_diff > 0 && H.dir == SOUTH) //Mob is above src and looking down
-				observed = 1
-				if(dir == NORTH) //src is looking up
-					eye_contact = 1
-		if(x_diff != 0) //If we are not on the same horizontal plane (left/right), mob is either left or right of src
-			if(x_diff < 0 && H.dir == EAST) //Mob is left of src and looking right
-				observed = 1
-				if(dir == WEST) //src is looking left
-					eye_contact = 1
-			else if(x_diff > 0 && H.dir == WEST) //Mob is right of src and looking left
-				observed = 1
-				if(dir == EAST) //src is looking right
-					eye_contact = 1
-
-		if(observed)
+/mob/living/simple_animal/scp/shyguy/on_observed(var/mob/living/carbon/H)
+	. = ..()
+	if(. == TRUE) //would be false if we add blinking or something
+		if(!(H in shitlist))
 			add_examine_urge(H)
-		if(eye_contact)
+
+//Function to call for each mob that has eye contact with us (we are looking at it, it is looking at us)
+/mob/living/simple_animal/scp/shyguy/on_eye_contact(var/mob/living/carbon/H)
+	. = ..()
+	if(. == TRUE) //would be false if we add blinking or something
+		if(!(H in shitlist))
 			H << "<span class='alert'>You are facing it, and it is facing you...</span>"
 			add_examine_urge(H)
 
-	return
 
 /mob/living/simple_animal/scp/shyguy/proc/add_examine_urge(var/mob/living/carbon/H)
 	if(!H || !istype(H))
@@ -208,9 +174,13 @@
 	..()
 
 
-/mob/living/simple_animal/scp/shyguy/proc/handle_target(var/mob/living/carbon/target)
+/mob/living/simple_animal/scp/shyguy/handle_target(var/mob/living/carbon/target, var/forced = FALSE)
 	if(!target || chasing || !istype(target)) //Sanity
 		return
+
+	if(forced)
+		//We are lashing out at them by triggering the examine condition
+		examine(target)
 
 	if(target.stat == DEAD)
 		target = null

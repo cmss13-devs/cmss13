@@ -117,8 +117,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	 )
 	pockets.max_storage_space = 8
 
-
-
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/reusable/I
 	I = armor_overlays["lamp"]
@@ -142,9 +140,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		turn_off_light(user)
 	..()
 
+
+/obj/item/clothing/suit/storage/marine/proc/is_light_on()
+	return flags_marine_armor & ARMOR_LAMP_ON
+
 /obj/item/clothing/suit/storage/marine/proc/turn_off_light(mob/wearer)
-	if(flags_marine_armor & ARMOR_LAMP_ON)
-		wearer.SetLuminosity(-brightness_on)
+	if(is_light_on())
+		if(wearer)
+			wearer.SetLuminosity(-brightness_on)
 		SetLuminosity(brightness_on)
 		toggle_armor_light() //turn the light off
 		return 1
@@ -179,7 +182,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/marine/proc/toggle_armor_light(mob/user)
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
-	if(flags_marine_armor & ARMOR_LAMP_ON) //Turn it off.
+	if(is_light_on()) //Turn it off.
 		if(user) user.SetLuminosity(-brightness_on)
 		else SetLuminosity(0)
 	else //Turn it on.

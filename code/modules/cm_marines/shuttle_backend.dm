@@ -470,7 +470,6 @@ cdel(src)
 						if(!M.buckled)
 							knocked_down_mobs += M
 
-
 		if(turftoleave && ispath(turftoleave))
 			T.ChangeTurf(turftoleave)
 		else

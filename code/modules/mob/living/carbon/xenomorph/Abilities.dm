@@ -133,6 +133,8 @@
 		if("resin door")
 			X.selected_resin = "resin wall"
 		if("resin wall")
+			X.selected_resin = "resin membrane"
+		if("resin membrane")
 			X.selected_resin = "resin nest"
 		if("resin nest")
 			X.selected_resin = "sticky resin"

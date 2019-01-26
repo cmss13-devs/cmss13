@@ -61,11 +61,11 @@
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	fire_delay = config.mlow_fire_delay * 1.1
-	burst_delay = config.low_fire_delay
+	burst_delay = config.mlow_fire_delay
 	burst_amount = config.med_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
-	scatter = config.med_scatter_value
+	scatter = config.high_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult
@@ -92,7 +92,7 @@
 	burst_amount = config.high_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
-	scatter = config.med_scatter_value
+	scatter = config.high_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult + config.max_hit_damage_mult
@@ -272,7 +272,7 @@
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value + config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
-	scatter_unwielded = config.med_scatter_value + config.high_scatter_value 
+	scatter_unwielded = config.med_scatter_value + config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult - config.min_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 

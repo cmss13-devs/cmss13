@@ -79,7 +79,7 @@
 
 	proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
 		return
-	
+
 	proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 		return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
@@ -112,7 +112,7 @@
 				if(target.mob_size == MOB_SIZE_BIG)
 					target.apply_effects(0,0.1)
 					return
-				target.apply_effects(1,3)				
+				target.apply_effects(1,3)
 			else
 				if(!isYautja(M)) //Not predators.
 					var/mob/living/target = M
@@ -334,11 +334,11 @@
 		penetration = config.mlow_armor_penetration
 
 	on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-		if(isHumanStrict(M))			
+		if(isHumanStrict(M))
 			var/mob/living/carbon/human/H = M
 			user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
 			if(do_after(user, 10, FALSE, 5, BUSY_ICON_HOSTILE))
-				if(user.Adjacent(H))			
+				if(user.Adjacent(H))
 					H.apply_damage(500,BRUTE,"head") //not coming back
 					H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
 			else
@@ -685,7 +685,7 @@
 		burst(T,P,damage_type, 2 , 4)
 		burst(T,P,damage_type, 1 , 2, 0)
 		return 1
-	
+
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
@@ -912,16 +912,16 @@
 		shell_speed = config.fast_shell_speed
 
 	on_hit_mob(mob/M, obj/item/projectile/P)
-		explosion(get_turf(M), 1, 1, 5, 6)
+		explosion_rec(get_turf(M), 220, 50)
 
 	on_hit_obj(obj/O, obj/item/projectile/P)
-		explosion(get_turf(P), 1, 1, 5, 6)
+		explosion_rec(get_turf(P), 220, 50)
 
 	on_hit_turf(turf/T, obj/item/projectile/P)
-		explosion(get_turf(P), 1, 1, 5, 6)
+		explosion_rec(get_turf(P), 220, 50)
 
 	do_at_max_range(obj/item/projectile/P)
-		explosion(get_turf(P), 1, 1, 5, 6)
+		explosion_rec(get_turf(P), 220, 50)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"

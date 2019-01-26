@@ -368,6 +368,24 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	processing_objects.Remove(src)
 	cdel(src)
 
+/obj/item/clothing/mask/cigarette/ucigarette
+	icon_on = "ucigon"
+	icon_off = "ucigoff"
+	type_butt = /obj/item/trash/ucigbutt
+	name = "cigarette"
+	desc = "An unfiltered roll of tobacco and nicotine."
+	item_state = "cigoff"
+	icon_state = "ucigoff"
+
+/obj/item/clothing/mask/cigarette/bcigarette
+	icon_on = "bcigon"
+	icon_off = "bcigoff"
+	type_butt = /obj/item/trash/bcigbutt
+	name = "cigarette"
+	desc = "A roll of tobacco and nicotine in a fancy black package."
+	item_state = "bcigoff"
+	icon_state = "bcigoff"
+
 ////////////
 // CIGARS //
 ////////////

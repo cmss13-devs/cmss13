@@ -124,26 +124,29 @@
 //CIG PACK//
 ////////////
 /obj/item/storage/fancy/cigarettes
-	name = "cigarette packet"
-	desc = "The most popular brand of Space Cigarettes, sponsors of the Space Olympics."
+	name = "\improper Emerald Green Packet"
+	desc = "They remind you of a gross, tar-filled version of Ireland...so regular Ireland."
 	icon = 'icons/obj/items/cigarettes.dmi'
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
 	w_class = 1
 	throwforce = 2
 	flags_equip_slot = SLOT_WAIST
-	storage_slots = 6
+	storage_slots = 20
 	can_hold = list(
+		/obj/item/clothing/mask/cigarette/ucigarette,
+		/obj/item/clothing/mask/cigarette/bcigarette,
 		/obj/item/clothing/mask/cigarette,
 		/obj/item/tool/lighter
 	)
 	icon_type = "cigarette"
+	var/default_cig_type=/obj/item/clothing/mask/cigarette
 
 /obj/item/storage/fancy/cigarettes/New()
 	..()
 	flags_atom |= NOREACT
 	for(var/i = 1 to storage_slots)
-		new /obj/item/clothing/mask/cigarette(src)
+		new default_cig_type(src)
 	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
 
 /obj/item/storage/fancy/cigarettes/update_icon()
@@ -181,6 +184,14 @@
 	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes...as the leading cause of marine lung cancer."
 	icon_state = "lspacket"
 	item_state = "lspacket"
+	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
+
+/obj/item/storage/fancy/cigarettes/blackpack
+	name = "\improper Executive Select Packet"
+	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory...and cigarette smoke."
+	icon_state = "blackpacket"
+	item_state = "blackpacket"
+	default_cig_type = /obj/item/clothing/mask/cigarette/bcigarette
 
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"
@@ -188,11 +199,19 @@
 	icon_state = "kpacket"
 	item_state = "kpacket"
 
-/obj/item/storage/fancy/cigarettes/lady_finger
+/obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace"
 	desc = "An entry level brand of cigarettes with a bright blue packaging. You're guessing these aren't really good for you, but it doesn't matter when it's Arcturian baby!"
 	icon_state = "aapacket"
 	item_state = "aapacket"
+
+/*	NEEDS SPRITES*/
+/obj/item/storage/fancy/cigarettes/lady_finger
+	name = "\improper lady_fingers"
+	desc = "These intensely strong unfiltered menthol cigarettes don't seem very ladylike. They don't seem very fingerlike for that matter, either. Smoking may kill, but poor branding is almost as bad."
+	icon_state = "lfpacket"
+	item_state = "lfpacket"
+	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigar
 	name = "cigar case"

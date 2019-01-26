@@ -99,7 +99,7 @@
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
 	icon_state = "Cola_Machine"
 	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
-	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It technically came from a spring!"
+	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
 	products = list(/obj/item/reagent_container/food/drinks/cans/souto = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -109,11 +109,6 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue/diet = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach/diet = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
@@ -125,12 +120,7 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/lime/diet = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue/diet = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/peach/diet = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -168,12 +158,20 @@
 /obj/machinery/vending/cigarette/colony
 	product_slogans = "Koorlander Gold, for the refined palate.;Lady Fingers, for the dainty smoker.;Lady Fingers, treat your palete with pink!;The big blue K means a cool fresh day!;For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
 	product_ads = "For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
-	products = list(/obj/item/storage/fancy/cigarettes/kpack = 15,
+	products = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
+					/obj/item/storage/fancy/cigarettes/arcturian_ace = 15,
+					/obj/item/storage/fancy/cigarettes = 15,
+					/obj/item/storage/fancy/cigarettes/dromedaryco = 15,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 15,
+					/obj/item/storage/fancy/cigarettes/blackpack = 10,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/tool/lighter/random = 20)
-	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 15,
-					/obj/item/storage/fancy/cigarettes/lady_finger = 15,
+	prices = list(/obj/item/storage/fancy/cigarettes/kpack = 20,
+					/obj/item/storage/fancy/cigarettes/arcturian_ace = 25,
+					/obj/item/storage/fancy/cigarettes = 40,
+					/obj/item/storage/fancy/cigarettes/dromedaryco = 20,
+					/obj/item/storage/fancy/cigarettes/lady_finger = 30,
+					/obj/item/storage/fancy/cigarettes/blackpack = 50,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/tool/lighter/random = 2)
 

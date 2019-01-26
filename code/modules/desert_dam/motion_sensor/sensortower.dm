@@ -1,9 +1,9 @@
-//sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines. 
+//sensor tower for deser dam. It is there to add the xeno's to the tactical map for marines.
 
 
 /obj/machinery/sensortower
 	name = "\improper experimental sensor tower"
-	icon = 'icons/obj/machines/motion_sensor.dmi'
+	icon = 'icons/obj/machines/motion_sensor_v2.dmi'
 	icon_state = "sensor_broken"
 	desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a blowtorch, wirecutters, then a wrench to repair it."
 	anchored = 1
@@ -36,7 +36,7 @@
 	else if(buildstate == 3)
 		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a wrench to repair it."
 		icon_state = "sensor_broken"
- 
+
 /obj/machinery/sensortower/process()
 	if(!is_on || buildstate || !anchored) //Default logic checking
 		return 0

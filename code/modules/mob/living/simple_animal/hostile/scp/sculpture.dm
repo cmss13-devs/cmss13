@@ -8,30 +8,23 @@
 	icon_dead = "sculpture"
 	emote_hear = list("makes a faint scraping sound")
 	emote_see = list("twitches slightly", "shivers")
-	response_help  = "touches the"
-	response_disarm = "pushes the"
-	response_harm   = "hits the"
 	see_in_dark = 8 //Needs to see in darkness to snap in darkness
-	flags_pass = PASSTABLE
 	var/response_snap = "snapped the neck of" //Past tense because it "happened before you could see it"
 	var/response_snap_target = "In the blink of an eye, something grabs you and snaps your neck!"
 	var/snap_sound = list('sound/scp/firstpersonsnap.ogg','sound/scp/firstpersonsnap2.ogg','sound/scp/firstpersonsnap3.ogg')
-	var/scare_sound = list('sound/scp/scare1.ogg','sound/scp/scare2.ogg','sound/scp/scare3.ogg','sound/scp/scare4.ogg')	//Boo
-	var/hibernate = 0 //Disables SCP until toggled back to 0
-	var/scare_played = 0 //Did we rape everyone's ears yet ?
-	var/obj/machinery/atmospherics/unary/vent_pump/entry_vent //Graciously stolen from spider code
 
 /mob/living/simple_animal/scp/sculpture/Life()
 	//If we are hibernating, just don't do anything
 	if(hibernate)
 		return
 
-	if(!check_los())
+	if(check_los(TRUE))
+		snuff_out_light() //When we are observed, we try to break lights to disable line of sight
 		return
 
 	//See if we're able to strangle anyone
 	for(var/mob/living/carbon/M in get_turf(src))
-		if(M.stat == CONSCIOUS && check_los())
+		if(M.stat == CONSCIOUS && !check_los())
 			snap_neck(M)
 			break
 
@@ -52,41 +45,11 @@
 	else
 		handle_idle()
 
-//Check if any mob can see SPC-173
-/mob/living/simple_animal/scp/sculpture/proc/check_los()
-	var/observed = 0
-
-	//Humans can observe SCP-173. If a single human observes him, he's observed for everyone
-	//Note that humans have a 180 degrees field of vision for the purposes of this proc
-	for(var/mob/living/carbon/H in viewers(src, null))
-		if(H.stat)
-			continue
-		var/x_diff = H.x - src.x
-		var/y_diff = H.y - src.y
-		if(y_diff != 0) //If we are not on the same vertical plane (up/down), mob is either above or below src
-			if(y_diff < 0 && H.dir == NORTH) //Mob is below src and looking up
-				observed = 1
-				break
-			else if(y_diff > 0 && H.dir == SOUTH) //Mob is above src and looking down
-				observed = 1
-				break
-		if(x_diff != 0) //If we are not on the same horizontal plane (left/right), mob is either left or right of src
-			if(x_diff < 0 && H.dir == EAST) //Mob is left of src and looking right
-				observed = 1
-				break
-			else if(x_diff > 0 && H.dir == WEST) //Mob is right of src and looking left
-				observed = 1
-				break
-
-	if(observed) //Is someone looking at us, given that they can see us ?
-		return 0 //Try again when we get a chance
-	return 1 //Success, let's move
-
-/mob/living/simple_animal/scp/sculpture/proc/handle_target(var/mob/living/carbon/target)
+/mob/living/simple_animal/scp/sculpture/handle_target(var/mob/living/carbon/target, var/forced = FALSE)
 	if(!target) //Sanity
 		return
 
-	if(!check_los())
+	if(!forced && check_los())
 		return
 
 	var/turf/target_turf
@@ -104,7 +67,7 @@
 	var/num_turfs = get_dist(src,target)
 	spawn()
 		while(get_turf(src) != target_turf && num_turfs > 0)
-			if(!check_los()) //Something is looking at us now
+			if(!forced && check_los()) //Something is looking at us now
 				break
 			if(!next_turf.CanPass(src, next_turf)) //We can't pass through our planned path
 				break
@@ -131,13 +94,13 @@
 				sleep(5)
 			if(!next_turf.CanPass(src, next_turf)) //Once we cleared everything we could, check one last time if we can pass
 				break
-			forceMove(next_turf)
+			forceMove(next_turf, FALSE, forced)
 			dir = get_dir(src, target)
 			next_turf = get_step(src, get_dir(next_turf,target))
 			num_turfs--
 
 /mob/living/simple_animal/scp/sculpture/proc/handle_idle()
-	if(!check_los())
+	if(check_los())
 		return
 
 	//If we're not strangling anyone, take a stroll
@@ -155,7 +118,7 @@
 		var/num_turfs = get_dist(src, target_turf)
 		spawn()
 			while(get_turf(src) != target_turf && num_turfs > 0)
-				if(!check_los()) //Something is looking at us now
+				if(check_los()) //Something is looking at us now
 					break
 				if(!next_turf.CanPass(src, next_turf)) //We can't pass through our planned path
 					break
@@ -203,7 +166,7 @@
 			if(!vents.len)
 				entry_vent = null
 				return
-			if(!check_los()) //Someone started looking at us
+			if(check_los()) //Someone started looking at us
 				return
 			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
 			spawn()
@@ -224,16 +187,16 @@
 			entry_vent = null
 
 //This performs an immediate neck snap check, meant to avoid people cheesing SCP-173 by just running faster than Life() refresh
-/mob/living/simple_animal/scp/sculpture/proc/check_snap_neck()
+/mob/living/simple_animal/scp/sculpture/proc/check_snap_neck(var/forced = FALSE)
 	//See if we're able to strangle anyone
 	for(var/mob/living/carbon/M in get_turf(src))
-		if(M.stat == CONSCIOUS && check_los())
-			snap_neck(M)
+		if(M.stat == CONSCIOUS && (forced || !check_los()))
+			snap_neck(M, forced)
 			break
 
-/mob/living/simple_animal/scp/sculpture/forceMove(atom/destination, var/no_tp = 0)
+/mob/living/simple_animal/scp/sculpture/forceMove(atom/destination, var/no_tp = 0, var/forced = FALSE)
 	..()
-	check_snap_neck()
+	check_snap_neck(forced)
 
 	//Spawn some blood when we move
 	if(prob(50))
@@ -243,8 +206,8 @@
 			new /obj/effect/decal/cleanable/blood/splatter(destination)
 
 
-/mob/living/simple_animal/scp/sculpture/proc/snap_neck(var/mob/living/target)
-	if(!check_los())
+/mob/living/simple_animal/scp/sculpture/proc/snap_neck(var/mob/living/target, var/forced = FALSE)
+	if(!forced && check_los())
 		return
 
 	if(target)
@@ -272,13 +235,49 @@
 	..()
 
 /mob/living/simple_animal/scp/sculpture/Bump(atom/movable/AM as mob)
-	if(!check_los())
+	if(check_los())
 		snap_neck(AM)
 	..()
 
 /mob/living/simple_animal/scp/sculpture/Bumped(atom/movable/AM as mob, yes)
-	if(!check_los())
+	if(check_los())
 		snap_neck(AM)
 
 //You cannot destroy SCP-173, fool!
 /mob/living/simple_animal/scp/sculpture/ex_act(var/severity)
+	lash_out()
+
+//Periodically disable lights
+/mob/living/simple_animal/scp/sculpture/proc/snuff_out_light()
+	if(hardcore && prob(5))
+		var/list/stuff = view(10, src)
+		snuff_out_light_in_list(stuff)
+
+/mob/living/simple_animal/scp/sculpture/proc/snuff_out_light_in_list(var/list/stuff, var/mob/wearer = null)
+	var/obj/machinery/light/light //wall lights
+	for(light in stuff)
+		if(light.luminosity != 0)
+			visible_message("<span class='notice'>[light.name] breaks suddenly.</span>")
+			light.broken()
+			return TRUE
+
+	var/obj/item/device/flashlight/flashlight
+	for(flashlight in stuff)
+		if(flashlight.on)
+			visible_message("<span class='notice'>[flashlight.name] goes off for some reason.</span>")
+			flashlight.turn_off_light(wearer)
+			return TRUE
+
+	var/obj/item/clothing/suit/storage/marine/armor
+	for(armor in stuff)
+		if(armor.is_light_on())
+			visible_message("<span class='notice'>[armor.name]'s light turns off for some reason.</span>")
+			armor.toggle_armor_light(wearer)
+			return TRUE
+
+	var/mob/living/carbon/humanoid
+	for(humanoid in stuff)
+		if(snuff_out_light_in_list(humanoid, humanoid))
+			return TRUE
+
+	return FALSE //We haven't snuffed out a single light

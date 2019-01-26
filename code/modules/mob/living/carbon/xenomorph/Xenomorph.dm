@@ -77,6 +77,14 @@
 	var/tacklemin = 2
 	var/tacklemax = 3
 	var/tackle_chance = 35
+	var/need_weeds = TRUE
+
+	//New variables for how charges work, max speed, speed buildup, all that jazz
+	var/charge_speed_max = 2.1 //Can only gain this much speed before capping
+	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
+	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
+	var/charge_speed = 0 //Modifier on base move delay as charge builds up
+	var/charge_roar = 0 //Did we roar in our charge yet ?
 
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
@@ -399,12 +407,18 @@
 	recalculate_speed()
 	recalculate_armor()
 	recalculate_damage()
+	recalculate_charge()
 
 /mob/living/carbon/Xenomorph/proc/recalculate_tackle()
 	tacklemin = caste.tacklemin + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tacklemax = caste.tacklemax + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tackle_chance = round(caste.tackle_chance * mutators.tackle_chance_multiplier * hive.mutators.tackle_chance_multiplier + 0.5)
 
+
+/mob/living/carbon/Xenomorph/proc/recalculate_charge()
+	charge_speed_max = caste.charge_speed_max
+	charge_speed_buildup = caste.charge_speed_buildup * mutators.charge_speed_buildup_multiplier
+	charge_turfs_to_charge = caste.charge_turfs_to_charge + mutators.charge_turfs_to_charge_delta
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
 	var/new_max_health = round(caste.max_health * mutators.health_multiplier * hive.mutators.health_multiplier + 0.5)
@@ -465,7 +479,7 @@
 	if(isXenoCarrier(src))
 		huggers_max = mutators.carry_boost_level + caste.huggers_max
 		eggs_max = mutators.carry_boost_level + caste.eggs_max
-
+	need_weeds = mutators.need_weeds
 
 /mob/living/carbon/Xenomorph/proc/recalculate_acid()
 	acid_level = caste.acid_level
@@ -497,7 +511,7 @@
 		caste.aura_strength = 0
 
 /mob/living/carbon/Xenomorph/proc/recalculate_gas()
-	gas_level = upgrade + mutators.gas_boost_level
+	gas_level = mutators.gas_boost_level
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)

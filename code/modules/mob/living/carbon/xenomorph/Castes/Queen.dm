@@ -322,10 +322,6 @@
 	set desc = "Allows you to permit the hive to harm."
 	set category = "Alien"
 
-	if(hivenumber == XENO_HIVE_CORRUPTED)
-		src << "<span class='warning'>Only your masters can decide this!</span>"
-		return
-
 	if(stat)
 		src << "<span class='warning'>You can't do that now.</span>"
 		return

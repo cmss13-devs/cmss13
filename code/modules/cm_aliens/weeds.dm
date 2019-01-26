@@ -232,7 +232,6 @@
 			break
 
 	overlays += "weednode"
-	..(loc, src)
 	if(X)
 		add_hiddenprint(X)
 		weed_strength = X.weed_level
@@ -240,5 +239,6 @@
 			weed_strength = 1
 		health = 15
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
+	..(loc, src)
 
 #undef NODERANGE

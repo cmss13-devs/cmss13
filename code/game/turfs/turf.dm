@@ -413,9 +413,11 @@ spookydonut august 2018
 /turf/open/floor/prison/can_dig_xeno_tunnel()
 	return TRUE
 
+/turf/open/desert/dirt/can_dig_xeno_tunnel()
+	return TRUE
 
-
-
+/turf/open/desert/rock/can_dig_xeno_tunnel()
+	return TRUE
 
 
 
@@ -432,7 +434,8 @@ spookydonut august 2018
 /turf/open/snow/get_dirt_type()
 	return DIRT_TYPE_SNOW
 
-
+/turf/open/desert/dirt/get_dirt_type()
+	return DIRT_TYPE_MARS
 
 
 

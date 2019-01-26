@@ -27,6 +27,8 @@
 
 	var/iselevator = 0 //Used to remove some shuttle related procs and texts to make it compatible with elevators
 	var/almayerelevator = 0 //elevators on the almayer without limitations
+	
+	var/list/last_passangers = list() //list of living creatures that were our last passengers
 
 /datum/shuttle/proc/short_jump(var/area/origin,var/area/destination)
 	if(moving_status != SHUTTLE_IDLE) return
@@ -209,7 +211,9 @@
 
 	origin.move_contents_to(destination, direction=direction)
 
+	last_passangers.Cut()
 	for(var/mob/M in destination)
+		last_passangers += M
 		if(M.client)
 			spawn(0)
 				if(M.buckled && !iselevator)

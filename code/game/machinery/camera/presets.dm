@@ -140,11 +140,14 @@
 
 //Desert Dam camera networks
 
-/obj/machinery/camera/autoname/dam/sector_one
-	network = list("chigusa_1")
+/obj/machinery/camera/autoname/dam/laboratory_cameras
+	network = list("laboratory_cameras")
 
-/obj/machinery/camera/autoname/dam/sector_two
-	network = list("chigusa_2")
+/obj/machinery/camera/autoname/dam/dam_interior_cameras
+	network = list("dam_interior_cameras")
 
-/obj/machinery/camera/autoname/dam/sector_three
-	network = list("chigusa_3")
+/obj/machinery/camera/autoname/dam/security_cameras
+	network = list("security_cameras")
+
+/obj/machinery/camera/autoname/dam/medical_cameras
+	network = list("medical_cameras")

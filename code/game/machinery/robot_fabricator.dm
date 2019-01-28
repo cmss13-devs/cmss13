@@ -115,6 +115,8 @@ Please wait until completion...</TT><BR>
 					build_cost = 75000
 
 			var/building = text2path(build_type)
+			if (building !in typesof(/obj/item/robot_parts))
+				return //Someone's trying to do some href fuckery.
 			if (!isnull(building))
 				if (src.metal_amount >= build_cost)
 					src.operating = 1

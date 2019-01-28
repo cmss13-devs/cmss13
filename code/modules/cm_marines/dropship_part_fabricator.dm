@@ -95,16 +95,16 @@
 		if(!produce)
 			return
 		var/printed
-		var/price
+		var/cost
 		if (produce in typesof(/obj/structure/dropship_equipment)) //Make sure whatever the fab is making is either DS equip or ammo.
 			var/obj/structure/dropship_equipment/P = produce
 			cost = initial(P.point_cost)
 			printed = produce
 		else if (produce in typesof(/obj/structure/ship_ammo))
 			var/obj/structure/ship_ammo/S = produce
-			cost = initial(P.point_cost)
+			cost = initial(S.point_cost)
 			printed = produce
 		else
 			return //Someone's trying to href exploit most likely.
-		build_dropship_part(printed, price, usr)
+		build_dropship_part(printed, cost, usr)
 		return

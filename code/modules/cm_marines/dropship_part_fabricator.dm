@@ -91,5 +91,20 @@
 		return
 
 	if(href_list["produce"])
-		build_dropship_part(href_list["produce"], text2num(href_list["cost"]), usr)
+		var/produce = text2path(href_list["produce"])
+		if(!produce)
+			return
+		var/printed
+		var/cost
+		if (produce in typesof(/obj/structure/dropship_equipment)) //Make sure whatever the fab is making is either DS equip or ammo.
+			var/obj/structure/dropship_equipment/P = produce
+			cost = initial(P.point_cost)
+			printed = produce
+		else if (produce in typesof(/obj/structure/ship_ammo))
+			var/obj/structure/ship_ammo/S = produce
+			cost = initial(S.point_cost)
+			printed = produce
+		else
+			return //Someone's trying to href exploit most likely.
+		build_dropship_part(printed, cost, usr)
 		return

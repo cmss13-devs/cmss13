@@ -115,7 +115,7 @@ Please wait until completion...</TT><BR>
 					build_cost = 75000
 
 			var/building = text2path(build_type)
-			if (!isnull(building))
+			if (building in typesof(/obj/item/robot_parts/))
 				if (src.metal_amount >= build_cost)
 					src.operating = 1
 					src.update_use_power(2)
@@ -134,6 +134,7 @@ Please wait until completion...</TT><BR>
 						src.update_use_power(1)
 						src.operating = 0
 						src.overlays -= "fab-active"
+			else return //Someone's doing href fuckery if this gets here.
 		return
 
 	for (var/mob/M in viewers(1, src))

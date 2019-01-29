@@ -99,7 +99,7 @@
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
 	icon_state = "Cola_Machine"
 	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
-	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
+	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It technically came from a spring!"
 	products = list(/obj/item/reagent_container/food/drinks/cans/souto = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -109,6 +109,11 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/peach/diet = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
@@ -120,7 +125,12 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/lime/diet = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/grape/diet = 5,
-					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/blue/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/peach = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/peach/diet = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry/diet = 5,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.

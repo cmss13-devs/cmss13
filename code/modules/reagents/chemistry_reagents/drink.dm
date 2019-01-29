@@ -96,23 +96,35 @@
 	description = "It's grrrrrape!"
 	color = "#863333" // rgb: 134, 51, 51
 
-/datum/reagent/drink/suoto
+/datum/reagent/drink/souto
 	name = "Souto Classic"
 	id = "souto_classic"
 	description = "A fruit flavored soda canned in Havana"
 	color = "#802b00"
 
-/datum/reagent/drink/suoto/cherry
+/datum/reagent/drink/souto/cherry
 	name = "Souto Cherry"
 	id = "souto_cherry"
 	description = "Now with more artificial flavors! Canned in Havanna"
 	color = "#800000"
 
-/datum/reagent/drink/suoto/blueraspberry
+/datum/reagent/drink/souto/blueraspberry
 	name = "Blue Raspberry Souto"
 	id = "blueraspberry"
 	description = "A blue fruit flavored soda canned in Havana"
 	color = "#005B96"
+
+/datum/reagent/drink/souto/peach
+	name = "Peach Souto"
+	id = "peach"
+	description = "A pink fruit flavored soda with flecks of peach pit floating inside canned in Havana"
+	color = "#FFE5B4"
+
+/datum/reagent/drink/souto/cranberry
+	name = "Cranberry Souto"
+	id = "cranberry"
+	description = "A red fruit flavored soda canned in Havana"
+	color = "#950714"
 
 /datum/reagent/drink/davenport
 	name = "Davenport Rye"

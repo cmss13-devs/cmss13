@@ -39,11 +39,11 @@
 	unacidable = 1
 	anti_hug = 100
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,7), elder_restricted = 0)
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,11), elder_restricted = 0)
 	..()
 	loc = location
 
-	var/mask_input[] = list(1,2,3,4,5,6,7,185738,829275,385719,376628)
+	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11)
 	if(mask_number in mask_input) icon_state = "pred_mask[mask_number]"
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)
@@ -135,8 +135,8 @@
 	icon_state = "halfarmor1"
 	item_state = "armor"
 	sprite_sheet_id = 1
-	flags_armor_protection = UPPER_TORSO|ARM_LEFT
-	armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 75, bullet = 88, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
@@ -152,54 +152,34 @@
 			/obj/item/weapon/twohanded/glaive)
 	unacidable = 1
 
-/obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,5), elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
 	..()
 	loc = location
 
 	if(elder_restricted)
+		armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 		switch(armor_number)
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
-				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(7128)
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(9867)
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
-				flags_armor_protection = UPPER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(4879)
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 	else
-		switch(armor_number)
-			if(2)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
-			if(3)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
-			if(4)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO
-				armor = list(melee = 75, bullet = 88, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
-			if(5,441)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 80, laser = 55, energy = 65, bomb = 40, bio = 20, rad = 20)
+		if(armor_number > 6)
+			armor_number = 1
+		if(armor_number) //Don't change full armor number
+			icon_state = "halfarmor[armor_number]"
+
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
@@ -275,7 +255,7 @@
 	unacidable = 1
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
-	flags_armor_protection = FEET|LEGS
+	flags_armor_protection = FEET|LEGS|LOWER_TORSO
 	armor = list(melee = 75, bullet = 90, laser = 60, energy = 50, bomb = 40, bio = 20, rad = 20)
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
@@ -289,9 +269,6 @@
 	if(boot_number in boot_input)
 		icon_state = "y-boots[boot_number]"
 
-	if(boot_number != 1) //More overall protection, less defensive value.
-		flags_armor_protection = FEET|LEGS|LOWER_TORSO
-		armor = list(melee = 65, bullet = 85, laser = 55, energy = 45, bomb = 40, bio = 20, rad = 20)
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
@@ -611,6 +588,7 @@
 	var/gear_low_orbit = 0
 	var/closest = 10000
 	var/direction = -1
+	var/atom/areaLoc = null
 	for(var/obj/item/I in yautja_gear)
 		var/atom/loc = get_true_location(I)
 		if (isYautja(loc))
@@ -628,6 +606,7 @@
 			if(dist < closest)
 				closest = dist
 				direction = get_dir(M,loc)
+				areaLoc = loc
 	for(var/mob/living/carbon/human/Y in yautja_mob_list)
 		if(Y.stat != DEAD) continue
 		switch(Y.z)
@@ -642,6 +621,7 @@
 			if(dist < closest)
 				closest = dist
 				direction = get_dir(M,Y)
+				areaLoc = loc
 
 	var/output = 0
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
@@ -651,7 +631,8 @@
 		output = 1
 		M << "<span class='notice'>Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit.</span>"
 	if(closest < 900)
-		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)].</span>"
+		var/areaName = get_area(areaLoc).name
+		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName].</span>"
 	if(!output)
 		M << "<span class='notice'>There are no signatures that require your attention.</span>"
 	return 1

@@ -10,6 +10,7 @@
 	var/r_speed = 1.0
 	var/force = 0
 	var/damtype = "brute"
+	var/embeddable = TRUE //FALSE if unembeddable
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	var/list/attack_verb = list() //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 

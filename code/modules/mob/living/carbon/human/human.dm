@@ -7,6 +7,7 @@
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD)
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/regenZ = 1 //Temp zombie thing until I write a better method ~Apop
+	var/allow_gun_usage = FALSE //False by default, so that synthetics can't use guns.
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 	b_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")

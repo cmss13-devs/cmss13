@@ -2554,8 +2554,6 @@
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>"
 			if("Fixed")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>"
-			if("Whitelist Player")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Whitelisted players only get sanctioned through <a href='https://cm-ss13.com/viewforum.php?f=63'>player reports.</a> Staff is allowed to talk to whitelisted players to get their side or to investigate."
 			if("Thanks")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
 			if("Marine Law")

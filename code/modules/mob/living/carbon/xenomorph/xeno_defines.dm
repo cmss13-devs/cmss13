@@ -241,6 +241,7 @@
 	var/noise_timer = 0 // Makes a mech footstep, but only every 3 turfs.
 	var/has_moved = 0
 	var/is_charging = 0 //Will the mob charge when moving ? You need the charge verb to change this
+	var/weedwalking_activated = 0 //Hivelord's weedwalking
 	var/last_charge_move = 0 //Time of the last time the Crusher moved while charging. If it's too far apart, the charge is broken
 
 

@@ -136,11 +136,13 @@
 /mob/living/carbon/Xenomorph/movement_delay()
 	. = ..()
 
-	. += speed
 	. += ability_speed_modifier
 
 	if(frenzy_aura)
 		. -= (frenzy_aura * 0.05)
+
+	if(agility)
+		. += caste.agility_speed_increase
 
 	if(is_charging)
 		if(legcuffed)
@@ -158,6 +160,12 @@
 					stop_momentum() //This should disallow rapid turn bumps
 				else
 					handle_momentum()
+
+	if(weedwalking_activated)
+		if(locate(/obj/effect/alien/weeds) in loc)
+			. -= 1.5
+
+	. *= speed_multiplier
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return

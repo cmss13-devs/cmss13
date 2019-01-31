@@ -167,7 +167,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.speed_boost -= 0.2 //not a multiplier since speed is both positive and negative :P
+	MS.speed_multiplier *= 0.9
 	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/speed_flaw
@@ -181,7 +181,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.speed_boost += 0.2 //not a multiplier since speed is both positive and negative :P
+	MS.speed_multiplier *= 1.1
 	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/acid

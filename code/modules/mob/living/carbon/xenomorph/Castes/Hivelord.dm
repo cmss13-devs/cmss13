@@ -77,7 +77,6 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
-	var/speed_activated = 0
 	tier = 2
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
@@ -91,11 +90,3 @@
 		/datum/action/xeno_action/toggle_speed,
 		)
 
-
-
-/mob/living/carbon/Xenomorph/Hivelord/movement_delay()
-	. = ..()
-
-	if(speed_activated)
-		if(locate(/obj/effect/alien/weeds) in loc)
-			. -= 1.5

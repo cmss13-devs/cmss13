@@ -39,10 +39,10 @@
 	var/memory
 	var/list/objective_memory = list() //a list of objectives you have knowledge about
 
-	var/assigned_role
-	var/special_role
+	var/assigned_role = ""
+	var/special_role = ""
 
-	var/datum/skills/cm_skills //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
+	var/datum/skills/cm_skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 								//see skills.dm in #define folder and code/datums/skills.dm for more info
 
 	var/role_alt_title

@@ -1008,27 +1008,22 @@ Note that amputating the affected organ does in fact remove the infection from t
 		W.forceMove(owner)
 
 /datum/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
-	if(do_mob(user, target, 50, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
-		if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
-			if(target != user)
+	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
+		if (target != user)
+			if(do_mob(user, target, 50, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 				user.visible_message(
 				"<span class='warning'>[user] finishes applying [S] to [target]'s [display_name].</span>",
 				"<span class='notice'>You finish applying [S] to [target]'s [display_name].</span>")
 				status |= LIMB_SPLINTED
 				. = 1
-			else
-				if(prob(25))
-					user.visible_message(
-					"<span class='warning'>[user] successfully applies [S] to their [display_name].</span>",
-					"<span class='notice'>You successfully apply [S] to your [display_name].</span>")
-					status |= LIMB_SPLINTED
-					. = 1
-				else
-					user.visible_message(
-					"<span class='warning'>[user] fumbles with [S].</span>",
-					"<span class='warning'>You fumble with [S].</span>")
-
-
+		else 
+			user.visible_message("<span class='warning'>You fumble with the medical splints...</span>")
+			if(do_mob(user, target, 150, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
+				user.visible_message(
+				"<span class='warning'>[user] successfully applies [S] to their [display_name].</span>",
+				"<span class='notice'>You successfully apply [S] to your [display_name].</span>")
+				status |= LIMB_SPLINTED
+				. = 1
 
 //called when limb is removed or robotized, any ongoing surgery and related vars are reset
 /datum/limb/proc/reset_limb_surgeries()

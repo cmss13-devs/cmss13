@@ -336,6 +336,7 @@
 	var/inject_timer = 0
 	var/cloak_timer = 0
 	var/upgrades = 0
+	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
 
 /obj/item/clothing/gloves/yautja/New()
 	..()
@@ -440,8 +441,8 @@
 
 //We use this to activate random verbs for non-Yautja
 /obj/item/clothing/gloves/yautja/proc/activate_random_verb()
-	var/option = rand(1, 10)
-	//we have options from 1 to 7, but we're giving the user a higher probability of being punished if they already rolled this bad
+	var/option = rand(1, 11)
+	//we have options from 1 to 8, but we're giving the user a higher probability of being punished if they already rolled this bad
 	switch(option)
 		if(1)
 			. = wristblades_internal(TRUE)
@@ -457,6 +458,8 @@
 			. = call_disk_internal(TRUE)
 		if(7)
 			. = translate_internal(TRUE)
+		if(8)
+			. = call_combi(TRUE)
 		else
 			. = delimb_user()
 			//Council did not want this to ever happen
@@ -778,14 +781,25 @@
 	var/turf/T = get_turf(victim)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
-		explosion(T, 2, 10, 15, 20) //Dramatically BIG explosion.
-		if(victim) victim.gib() //Adding one more safety.
+		if(victim) victim.gib() //Let's make sure they actually gib.
+		if(explosion_type == 0)
+			explosion(T, 2, 10, 15, 20) //Dramatically BIG explosion.
+		else
+			explosion(T, 1, 1, 1, 1)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
 	set desc = "Activate the explosive device implanted into your bracers. You have failed! Show some honor!"
 	set category = "Yautja"
 	. = activate_suicide_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/verb/change_explosion_type()
+	set name = "Change Explosion Type"
+	set desc = "Changes your bracer explosion to either only gib you or be a big explosion."
+	set category = "Yautja"
+	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
+		explosion_type = 0
+	else explosion_type = 1
 
 
 /obj/item/clothing/gloves/yautja/proc/activate_suicide_internal(var/forced = FALSE)
@@ -941,6 +955,42 @@
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
 		D.throw_at(usr,10,1,usr)
 	return 1
+
+/obj/item/clothing/gloves/yautja/verb/call_combi()
+	set name = "Yank Combi-stick"
+	set category = "Yautja"
+	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
+	. = call_combi_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/proc/call_combi_internal(var/forced = FALSE)
+	if(usr.is_mob_incapacitated())
+		return 0
+
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
+
+	if(inject_timer)
+		usr.visible_message("<span class='warning'>You're already pulling on the chain!</span>")
+		return 0
+
+	if(!drain_power(usr,70)) return
+	inject_timer = 1
+	spawn(100)
+		inject_timer = 0
+
+	for(var/obj/item/weapon/combistick/C in range(7))
+		usr.visible_message("<span class='warning'><b>You yank [C]'s chain back!</b></span>", "<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>")
+		new /obj/item/weapon/combistick(C.loc)
+		cdel(C)
+
+	for(var/obj/item/weapon/combistick/A in range(10))
+		A.throw_at(usr,10,1,usr)
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"
@@ -1302,7 +1352,7 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "scim"
 	item_state = "scim"
-	force = 50
+	force = 35
 	attack_speed = 18 //Will have the same speed as the glaive if there are two.
 	hitsound = 'sound/weapons/pierce.ogg'
 
@@ -1310,6 +1360,8 @@
 /obj/item/weapon/yautja_chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
+	icon = 'icons/obj/items/predator.dmi'
+	item_state = "chain"
 	icon_state = "whip"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -1466,7 +1518,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	sharp = IS_SHARP_ITEM_BIG
-	force = 32
+	force = 30
 	w_class = 4.0
 	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -1512,7 +1564,7 @@
 
 	return
 
-//Telescopic baton
+//Combistick
 /obj/item/weapon/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
@@ -1522,8 +1574,10 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED
 	w_class = 4
-	force = 28
+	force = 35
+	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throwforce = 70
+	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_ACCURATE
 	attack_verb = list("speared", "stabbed", "impaled")
@@ -1625,7 +1679,12 @@
 
 	return
 
-
+/obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
+	if(!isYautja(user))
+		user.visible_message("<span class='notice'>You start to untangle the chain on \the [src]...")
+		if(do_mob(user, src, 30, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+			..()
+	else ..()
 
 //=================//\\=================\\
 //======================================\\

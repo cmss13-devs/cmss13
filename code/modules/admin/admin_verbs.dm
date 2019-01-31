@@ -83,6 +83,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/allow_character_respawn,    /* Allows a ghost to respawn */
 	/datum/admins/proc/viewCLFaxes,
 	/datum/admins/proc/viewUSCMFaxes,
+	/client/proc/cmd_admin_change_their_name,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/check_round_statistics,
 	/client/proc/award_medal,
@@ -249,8 +250,9 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/enable_debug_verbs,
 	/proc/possess,
 	/proc/release,
-	/client/proc/remove_players_from_vic
-	)
+	/client/proc/remove_players_from_vic,
+)
+
 var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,	/*admin-pm list*/
@@ -282,7 +284,8 @@ var/list/admin_verbs_mod = list(
 	/proc/release,
 	/datum/admins/proc/viewUnheardAhelps, //Why even have it as a client proc anyway?  �\_("/)_/�
 	/datum/admins/proc/viewCLFaxes,
-	/datum/admins/proc/viewUSCMFaxes
+	/datum/admins/proc/viewUSCMFaxes,
+	/client/proc/cmd_admin_change_their_name,
 )
 
 var/list/admin_verbs_mentor = list(
@@ -297,7 +300,7 @@ var/list/admin_verbs_mentor = list(
 	/client/proc/cmd_admin_subtle_message,
 	/datum/admins/proc/viewUnheardAhelps,
 	/datum/admins/proc/viewCLFaxes,
-	/datum/admins/proc/viewUSCMFaxes
+	/datum/admins/proc/viewUSCMFaxes,
 )
 
 /client/proc/add_admin_verbs()

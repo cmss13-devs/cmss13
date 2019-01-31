@@ -837,12 +837,16 @@
 		src << "<span class='notice'>You can't tunnel there!.</span>"
 		return
 
-	if(T.z == MAIN_SHIP_Z_LEVEL)
+	if(!(T.z in SURFACE_Z_LEVELS)) //Can't burrow on Almayer or in the dropships, also not in the admin level. Pretty much only surface!
 		src << "<span class='xenowarning'>The decking is too hard to tunnel through!</span>"
 		return
 
 	if(T.density)
 		src << "<span class='xenowarning'>You can't tunnel into a solid wall!</span>"
+		return
+
+	if(istype(T, /turf/open/space))
+		src << "<span class='xenowarning'>You can't tunnel there!</span>"
 		return
 
 	for(var/obj/O in T.contents)

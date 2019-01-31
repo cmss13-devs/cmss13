@@ -386,7 +386,7 @@
 			var/mob/living/carbon/human/H = M //fixed :s
 
 			if(user)
-				if(user.mind && !user.mind.special_role && H.mind && !H.mind.special_role)
+				if(user.mind && H.mind && user.mind.faction == H.mind.faction)
 					H.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					user.attack_log += "\[[time_stamp()]\] <b>[user]/[user.ckey]</b> shot <b>[H]/[H.ckey]</b> with \a <b>[name]</b> in [get_area(user)]."
 					round_statistics.friendly_fire_instances++

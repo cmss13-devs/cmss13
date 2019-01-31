@@ -210,6 +210,7 @@
 	var/need_weeds = TRUE
 	var/charge_speed_buildup_multiplier = 1.0
 	var/charge_turfs_to_charge_delta = 0
+	var/gas_life_multiplier = 1.0
 
 /datum/mutator_set/individual_mutators/proc/user_levelled_up(var/new_level)
 	if(xeno.hardcore)

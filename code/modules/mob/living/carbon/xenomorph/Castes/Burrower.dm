@@ -17,6 +17,7 @@
 	burrow_cooldown = 50
 	tunnel_cooldown = 100
 	widen_cooldown = 100
+	acid_level = 2
 	weed_level = 1
 
 /datum/caste_datum/burrower/mature
@@ -90,6 +91,7 @@
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/plant_weeds,
+		/datum/action/xeno_action/activable/corrosive_acid,
 		/datum/action/xeno_action/activable/burrow,
 		/datum/action/xeno_action/build_tunnel,
 		/datum/action/xeno_action/place_trap

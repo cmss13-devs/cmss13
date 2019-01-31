@@ -129,8 +129,10 @@
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
-#define RESIN_TRAP_ACID 2
-#define RESIN_TRAP_GAS 3
+#define RESIN_TRAP_GAS 2
+#define RESIN_TRAP_ACID1 3
+#define RESIN_TRAP_ACID2 4
+#define RESIN_TRAP_ACID3 5
 
 /obj/effect/alien/resin/trap
 	desc = "It looks like a hiding hole."
@@ -165,7 +167,7 @@
 				user << "There's a little one inside."
 			if(RESIN_TRAP_GAS)
 				user << "It's filled with pressurised gas."
-			if(RESIN_TRAP_ACID)
+			if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 				user << "It's filled with pressurised acid."
 	else
 		..()
@@ -180,7 +182,7 @@
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			facehugger_die()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trigger_trap()
 	..()
 
@@ -188,7 +190,7 @@
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			facehugger_die()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trigger_trap()
 	..()
 
@@ -206,7 +208,7 @@
 								"<span class='danger'>You trip on [src]!</span>")
 				L.KnockDown(1)
 				trigger_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			if(ishuman(AM))
 				var/mob/living/carbon/human/H = AM
 				if(isSynth(H) || isYautja(H))
@@ -223,9 +225,15 @@
 		if(RESIN_TRAP_HUGGER)
 			trap_type = RESIN_TRAP_HUGGER
 			icon_state = "trap1"
-		if(RESIN_TRAP_ACID)
-			trap_type = RESIN_TRAP_ACID
-			icon_state = "trapacid"
+		if(RESIN_TRAP_ACID1)
+			trap_type = RESIN_TRAP_ACID1
+			icon_state = "trapacid1"
+		if(RESIN_TRAP_ACID2)
+			trap_type = RESIN_TRAP_ACID2
+			icon_state = "trapacid2"
+		if(RESIN_TRAP_ACID3)
+			trap_type = RESIN_TRAP_ACID3
+			icon_state = "trapacid3"
 		if(RESIN_TRAP_GAS)
 			trap_type = RESIN_TRAP_GAS
 			icon_state = "trapgas"
@@ -251,10 +259,10 @@
 			smoke_system.start()
 			set_state()
 			clear_tripwires()
-		if(RESIN_TRAP_ACID)
+		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			new /obj/effect/xenomorph/spray(loc)
 			for(var/turf/T in range(1,loc))
-				new /obj/effect/xenomorph/spray(T)
+				new /obj/effect/xenomorph/spray(T, trap_type-RESIN_TRAP_ACID1+1) //adding extra acid damage for better acid types
 			set_state()
 			clear_tripwires()
 
@@ -263,98 +271,93 @@
 		cdel(HT)
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
+	var/trap_acid_level = 0
+	if(trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
 	if(X.a_intent != "hurt")
-		switch(trap_type)
-			if(RESIN_TRAP_HUGGER)
-				if(X.caste.can_hold_facehuggers)
-					set_state()
-					var/obj/item/clothing/mask/facehugger/F = new ()
-					F.hivenumber = hivenumber
-					X.put_in_active_hand(F)
-					X << "<span class='xenonotice'>You remove the facehugger from [src].</span>"
-				return
-			if(RESIN_TRAP_GAS, RESIN_TRAP_ACID)
+		if(trap_type == RESIN_TRAP_HUGGER)
+			if(X.caste.can_hold_facehuggers)
+				set_state()
+				var/obj/item/clothing/mask/facehugger/F = new ()
+				F.hivenumber = hivenumber
+				X.put_in_active_hand(F)
+				X << "<span class='xenonotice'>You remove the facehugger from [src].</span>"
+
+		if(!X.acid_level || trap_type == RESIN_TRAP_GAS)
+			if(trap_type != RESIN_TRAP_EMPTY)
 				X << "<span class='xenonotice'>Better not risk setting this off.</span>"
 				return
-			if(RESIN_TRAP_EMPTY)
-				if(isXenoPraetorian(X))
-					if (X.used_acid_spray)
-						X << "<span class='xenowarning'>You must wait to produce enough acid to pressurise this trap.</span>"
-						return
+		if(trap_acid_level >= X.acid_level)
+			X << "<span class='xenonotice'>It already has good acid in.</span>"
+			return
 
-					if (!X.check_plasma(200))
-						X << "<span class='xenowarning'>You must produce more plasma before doing this.</span>"
-						return
+		if(isXenoBoiler(X))
+			var/mob/living/carbon/Xenomorph/Boiler/B = X
 
-					X << "<span class='xenonotice'>You begin charging the resin hole with acid.</span>"
-					if(!do_after(X, 30, TRUE, 5, BUSY_ICON_HOSTILE))
-						return
+			if (B.bomb_cooldown)
+				B << "<span class='xenowarning'>You must wait to produce enough acid to pressurise this trap.</span>"
+				return
 
-					if(trap_type != RESIN_TRAP_EMPTY)
-						return
+			if (!B.check_plasma(200))
+				B << "<span class='xenowarning'>You must produce more plasma before doing this.</span>"
+				return
 
-					if (X.used_acid_spray)
-						return
+			X << "<span class='xenonotice'>You begin charging the resin hole with acid gas.</span>"
+			if(!do_after(B, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+				return
 
-					if (!X.check_plasma(200))
-						return
+			if(trap_type != RESIN_TRAP_EMPTY)
+				return
 
-					X.used_acid_spray = 1
-					X.use_plasma(200)
-					setup_tripwires()
-					playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-					set_state(RESIN_TRAP_ACID)
-					X.visible_message("<span class='xenowarning'>\The [X] pressurises the resin hole with acid!</span>", \
-					"<span class='xenowarning'>You pressurise the resin hole with acid!</span>", null, 5)
-					X.speed += 2
-					spawn(rand(20,30))
-						X.speed -= 2
+			if (B.used_acid_spray)
+				return
 
-					spawn(X.caste.acid_spray_cooldown)
-						X.used_acid_spray = 0
-						X << "<span class='notice'>You have produced enough acid to spray again.</span>"
-					hivenumber = X.hivenumber //Taking over the hole
-					return
-				if(isXenoBoiler(X))
-					var/mob/living/carbon/Xenomorph/Boiler/B = X
+			if (!B.check_plasma(200))
+				return
+			if(B.ammo.type == /datum/ammo/xeno/boiler_gas)
+				smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
+			else
+				smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
+			setup_tripwires()
+			B.bomb_cooldown = 1
+			B.use_plasma(200)
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+			set_state(RESIN_TRAP_GAS)
+			B.visible_message("<span class='xenowarning'>\The [B] pressurises the resin hole with acid gas!</span>", \
+			"<span class='xenowarning'>You pressurise the resin hole with acid gas!</span>", null, 5)
 
-					if (B.bomb_cooldown)
-						B << "<span class='xenowarning'>You must wait to produce enough acid to pressurise this trap.</span>"
-						return
+			spawn(B.caste.bomb_delay)
+				B.bomb_cooldown = 0
+				B << "<span class='notice'>You have produced enough acid to bombard again.</span>"
+			hivenumber = X.hivenumber //Taking over the hole
+			return
+		else
+			//Non-boiler acid types
+			var/acid_cost = 70
+			if(X.acid_level == 2)
+				acid_cost = 100
+			else if(X.acid_level == 3)
+				acid_cost = 200
 
-					if (!B.check_plasma(200))
-						B << "<span class='xenowarning'>You must produce more plasma before doing this.</span>"
-						return
+			if (!X.check_plasma(acid_cost))
+				X << "<span class='xenowarning'>You must produce more plasma before doing this.</span>"
+				return
 
-					X << "<span class='xenonotice'>You begin charging the resin hole with acid gas.</span>"
-					if(!do_after(B, 30, TRUE, 5, BUSY_ICON_HOSTILE))
-						return
+			X << "<span class='xenonotice'>You begin charging the resin hole with acid.</span>"
+			if(!do_after(X, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+				return
 
-					if(trap_type != RESIN_TRAP_EMPTY)
-						return
+			if (!X.check_plasma(acid_cost))
+				return
 
-					if (B.used_acid_spray)
-						return
-
-					if (!B.check_plasma(200))
-						return
-					if(B.ammo.type == /datum/ammo/xeno/boiler_gas)
-						smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
-					else
-						smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
-					setup_tripwires()
-					B.bomb_cooldown = 1
-					B.use_plasma(200)
-					playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-					set_state(RESIN_TRAP_GAS)
-					B.visible_message("<span class='xenowarning'>\The [B] pressurises the resin hole with acid gas!</span>", \
-					"<span class='xenowarning'>You pressurise the resin hole with acid gas!</span>", null, 5)
-
-					spawn(B.caste.bomb_delay)
-						B.bomb_cooldown = 0
-						B << "<span class='notice'>You have produced enough acid to bombard again.</span>"
-					hivenumber = X.hivenumber //Taking over the hole
-					return
+			X.use_plasma(acid_cost)
+			setup_tripwires()
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
+			X.visible_message("<span class='xenowarning'>\The [X] pressurises the resin hole with acid!</span>", \
+			"<span class='xenowarning'>You pressurise the resin hole with acid!</span>", null, 5)
+			hivenumber = X.hivenumber //Taking over the hole
+			return
 	else
 		if(trap_type == RESIN_TRAP_EMPTY)
 			..()
@@ -899,7 +902,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 			//Xeno moved out of the tunel before they picked a destination
 			//No teleporting!
 			return 0
-		
+
 		X << "<span class='xenonotice'>You begin moving to your destination.</span>"
 
 		var/tunnel_time = 40

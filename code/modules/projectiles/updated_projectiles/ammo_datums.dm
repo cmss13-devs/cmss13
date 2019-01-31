@@ -1287,10 +1287,13 @@
 
 	proc/drop_nade(turf/T, obj/item/projectile/P)
 		var/amount = 4
+		var/lifetime_mult = 1.0
 		if(isXenoBoiler(P.firer))
 			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
 			amount += B.gas_level
+			lifetime_mult = B.gas_life_multiplier
 		smoke_system.set_up(amount, 0, T)
+		smoke_system.lifetime = 6 * lifetime_mult
 		smoke_system.start()
 		T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into noxious fumes!</span>")
 
@@ -1316,10 +1319,13 @@
 
 	drop_nade(turf/T, obj/item/projectile/P)
 		var/amount = 3
+		var/lifetime_mult = 1.0
 		if(isXenoBoiler(P.firer))
 			var/mob/living/carbon/Xenomorph/Boiler/B = P.firer
 			amount += B.gas_level
+			lifetime_mult = B.gas_life_multiplier
 		smoke_system.set_up(amount, 0, T)
+		smoke_system.lifetime = 6 * lifetime_mult
 		smoke_system.start()
 		T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into corrosive bile!</span>")
 

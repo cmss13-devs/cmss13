@@ -70,6 +70,7 @@
 	var/weed_level = 1
 	var/acid_level = 0
 	var/gas_level = 0
+	var/gas_life_multiplier = 1.0
 
 	var/upgrade_threshold = 200
 	var/evolution_threshold = 200
@@ -510,6 +511,7 @@
 
 /mob/living/carbon/Xenomorph/proc/recalculate_gas()
 	gas_level = mutators.gas_boost_level
+	gas_life_multiplier = mutators.gas_life_multiplier
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)

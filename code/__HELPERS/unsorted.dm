@@ -1383,7 +1383,7 @@ proc/get_true_location(var/atom/loc)
 		if (istype(subLoc.loc, /atom))
 			subLoc = subLoc.loc
 		else
-			return src
+			return subLoc
 	return subLoc
 
 proc/get_true_turf(var/atom/loc)

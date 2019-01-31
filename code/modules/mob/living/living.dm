@@ -210,7 +210,6 @@
 
 
 /mob/living/movement_delay()
-
 	. = ..()
 
 	if (do_bump_delay)

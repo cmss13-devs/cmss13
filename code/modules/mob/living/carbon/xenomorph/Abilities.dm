@@ -675,7 +675,7 @@
 
 /datum/action/xeno_action/toggle_speed/can_use_action()
 	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.lying && !X.buckled && (X.speed_activated || X.plasma_stored >= plasma_cost))
+	if(X && !X.is_mob_incapacitated() && !X.lying && !X.buckled && (X.weedwalking_activated || X.plasma_stored >= plasma_cost))
 		return TRUE
 
 /datum/action/xeno_action/toggle_speed/action_activate()
@@ -683,14 +683,14 @@
 	if(!X.check_state())
 		return
 
-	if(X.speed_activated)
+	if(X.weedwalking_activated)
 		X << "<span class='warning'>You feel less in tune with the resin.</span>"
-		X.speed_activated = 0
+		X.weedwalking_activated = 0
 		return
 
 	if(!X.check_plasma(plasma_cost))
 		return
-	X.speed_activated = 1
+	X.weedwalking_activated = 1
 	X.use_plasma(plasma_cost)
 	X << "<span class='notice'>You become one with the resin. You feel the urge to run!</span>"
 

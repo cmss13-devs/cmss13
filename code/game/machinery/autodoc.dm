@@ -633,7 +633,10 @@
 		occupant = usr
 		icon_state = "autodoc_closed"
 		start_processing()
-		connected.start_processing()
+		if(connected)
+			connected.start_processing()
+		else
+			usr << "Autodoc not properly connected"
 
 		for(var/obj/O in src)
 			cdel(O)
@@ -647,8 +650,11 @@
 	update_use_power(1)
 	icon_state = "autodoc_open"
 	stop_processing()
-	connected.stop_processing()
-	connected.process() // one last update
+	if(connected)
+		connected.stop_processing()
+		connected.process() // one last update
+	else
+		usr << "Autodoc not properly connected"
 
 /obj/machinery/autodoc/attackby(obj/item/W, mob/living/user)
 	if(!ishuman(user))
@@ -689,7 +695,10 @@
 			occupant = M
 			icon_state = "autodoc_closed"
 			start_processing()
-			connected.start_processing()
+			if(connected)
+				connected.start_processing()
+			else
+				usr << "Autodoc not properly connected"
 
 			add_fingerprint(user)
 

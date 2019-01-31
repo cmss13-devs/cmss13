@@ -262,10 +262,6 @@
 	set name = "Set Hive Orders (50)"
 	set desc = "Give some specific orders to the hive. They can see this on the status pane."
 
-	if(hivenumber == XENO_HIVE_CORRUPTED)
-		src << "<span class='warning'>Only your masters can decide this!</span>"
-		return
-
 	if(!check_state())
 		return
 	if(!check_plasma(50))

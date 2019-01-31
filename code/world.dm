@@ -165,7 +165,7 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(addr != "127.0.0.1")
 			return "Nah ah ah, you didn't say the magic word"
 		var/input[] = params2list(T)
-		var/ckey = input["ckey"]
+		var/ckey = trim(input["ckey"])
 		var/dat = "Notes for [ckey]:<br/><br/>"
 		var/savefile/info = new("data/player_saves/[copytext(ckey, 1, 2)]/[ckey]/info.sav")
 		var/list/infos

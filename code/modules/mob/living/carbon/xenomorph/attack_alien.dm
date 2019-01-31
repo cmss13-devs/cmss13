@@ -678,6 +678,9 @@
 
 /obj/machinery/computer/shuttle_control/attack_alien(mob/living/carbon/Xenomorph/M)
 	var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
+	if (!istype(shuttle))
+		..()
+		return
 	if(M.caste.is_intelligent)
 		attack_hand(M)
 		if(!shuttle.iselevator)

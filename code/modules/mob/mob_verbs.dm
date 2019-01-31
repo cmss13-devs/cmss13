@@ -95,13 +95,13 @@
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 
-	if (!( abandon_allowed ) && !is_admin)
+	if (!abandon_allowed && !is_admin)
 		usr << "\blue Respawn is disabled."
 		return
-	if ((stat != 2 || !( ticker )))
+	if (stat != 2 || !ticker)
 		usr << "\blue <B>You must be dead to use this!</B>"
 		return
-	if (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic") //BS12 EDIT
+	if (ticker && ticker.mode && (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")) //BS12 EDIT
 		usr << "\blue Respawn is disabled for this roundtype."
 		return
 	else

@@ -1,6 +1,6 @@
 /obj/machinery/door/window
-	name = "interior door"
-	desc = "A strong door."
+	name = "Glass door"
+	desc = "A window, that is also a door. A windoor if you will."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
 	var/base_state = "left"
@@ -233,12 +233,12 @@
 
 
 /obj/machinery/door/window/brigdoor
-	name = "Secure Door"
+	name = "Secure glass door"
 	icon = 'icons/obj/doors/windoor.dmi'
-	icon_state = "leftsecure"
-	base_state = "leftsecure"
+	icon_state = "left"
+	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
 	req_access = list(ACCESS_MARINE_BRIG)
-	health = 300.0 //Stronger doors for prison (regular window door health is 200)
+	health = 300.0 //Stronger doors for prison (regular window door health is 150)
 
 
 /obj/machinery/door/window/northleft
@@ -287,20 +287,20 @@
 
 /obj/machinery/door/window/brigdoor/northright
 	dir = NORTH
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"
 
 /obj/machinery/door/window/brigdoor/eastright
 	dir = EAST
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"
 
 /obj/machinery/door/window/brigdoor/westright
 	dir = WEST
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"
 
 /obj/machinery/door/window/brigdoor/southright
 	dir = SOUTH
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"

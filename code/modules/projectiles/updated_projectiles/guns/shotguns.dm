@@ -391,6 +391,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/pump_sound = 'sound/weapons/gun_shotgun_pump.ogg'
 	var/pump_delay //Higher means longer delay.
 	var/recent_pump //world.time to see when they last pumped it.
+	var/pumped = FALSE //Used to see if the shotgun has already been pumped.
+	var/message //To not spam the above.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
@@ -443,7 +445,11 @@ can cause issues with ammo types getting mixed up during the burst.
 //More or less chambers the round instead of load_into_chamber(). Also ejects used casings.
 /obj/item/weapon/gun/shotgun/pump/proc/pump_shotgun(mob/user)	//We can't fire bursts with pumps.
 	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
-
+	if(pumped)
+		if (world.time > (message + pump_delay))
+			user.visible_message("<span class='warning'><i>[src] already has a shell in the chamber!<i></span>")
+			message = world.time
+		return
 	if(in_chamber) //eject the chambered round
 		in_chamber = null
 		var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(ammo.type)
@@ -457,12 +463,15 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	playsound(user, pump_sound, 25, 1)
 	recent_pump = world.time
+	if (in_chamber)
+		pumped = TRUE
 
 
 /obj/item/weapon/gun/shotgun/pump/reload_into_chamber(mob/user)
 	if(active_attachable)
 		make_casing(active_attachable.type_of_casings)
 	else
+		pumped = FALSE //It was fired, so let's unlock the pump.
 		current_mag.used_casings++ //The shell was fired successfully. Add it to used.
 		in_chamber = null
 		//Time to move the tube position.
@@ -471,6 +480,11 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	return 1
 
+/obj/item/weapon/gun/shotgun/pump/unload(mob/user) //We can't pump it to get rid of the shells, so we'll make it work via the unloading mechanism.
+	if(pumped)
+		user.visible_message("<span class='warning'><i>You release the locking mechanism on [src]. </i></span>")
+		pumped = FALSE
+	return ..()
 
 //-------------------------------------------------------
 //SHOTGUN FROM ISOLATION

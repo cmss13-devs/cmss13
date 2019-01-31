@@ -26,8 +26,9 @@
 		return
 	if (reagents.total_volume)
 		if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-			user << "<span class='warning'>You can't figure out to use \the [src], guess it must have some sort of ID lock.</span>"
-			return 0
+			user.visible_message("<span class='warning'>You fumble with the autoinjector...</span>")
+			if(!do_mob(user, M, 30, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
+				return
 		var/sleeptoxin = 0
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(istype(R, /datum/reagent/toxin/chloralhydrate) || istype(R, /datum/reagent/toxin/stoxin))

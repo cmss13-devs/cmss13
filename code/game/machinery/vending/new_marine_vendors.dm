@@ -714,7 +714,7 @@
 	vendor_role = "Synthetic"
 
 	listed_products = list(
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "orange"),
+		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, "orange"),
 
 		list("UNIFORM (choose 1)", 0, null, null, null),
 		list("Medical scrubs, green", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, "black"),

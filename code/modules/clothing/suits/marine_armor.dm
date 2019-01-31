@@ -198,10 +198,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		var/datum/action/A = X
 		A.update_button_icon()
 
-/obj/item/clothing/suit/storage/marine/mob_can_equip(mob/M, slot, disable_warning = 0)
+/obj/item/clothing/suit/storage/marine/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
 	if (.)
-		if(isSynth(M) && M.allow_gun_usage == 0))
+		if(isSynth(M) && M.allow_gun_usage == 0)
 			M.visible_message("<span class ='danger'>Your programming prevents you from wearing this!</span>")
 			return 0
 

@@ -11,7 +11,7 @@
 	allowed = list(/obj/item/weapon/gun)//Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
 
-/obj/item/clothing/suit/armor/mob_can_equip(mob/M, slot, disable_warning = 0)
+/obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
 	if (.)
 		if(isSynth(M) && M.allow_gun_usage == 0)

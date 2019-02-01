@@ -1017,7 +1017,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				status |= LIMB_SPLINTED
 				. = 1
 		else 
-			user.visible_message("<span class='warning'>You fumble with the medical splints...</span>")
+			user.visible_message("<span class='warning'>[user] fumbles with the [S]</span>", "<span class='warning'>You fumble with the [S]...</span>")
 			if(do_mob(user, target, 150, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 				user.visible_message(
 				"<span class='warning'>[user] successfully applies [S] to their [display_name].</span>",

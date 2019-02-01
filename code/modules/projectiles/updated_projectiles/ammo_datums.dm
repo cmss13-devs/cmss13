@@ -585,8 +585,8 @@
 		accurate_range = config.min_shell_range
 		max_range = config.close_shell_range
 		damage = config.hmed_hit_damage
-		damage_var_low = -config.med_proj_variance
-		damage_var_high = config.med_proj_variance
+		damage_var_low = -config.low_proj_variance
+		damage_var_high = config.low_proj_variance
 		damage_falloff = config.buckshot_v2_damage_falloff
 		penetration	= 0
 		bonus_projectiles_amount = config.low_proj_extra
@@ -617,11 +617,11 @@
 		accurate_range = config.min_shell_range
 		max_range = config.close_shell_range
 		damage = config.hmed_hit_damage
-		damage_var_low = -config.med_proj_variance
-		damage_var_high = config.med_proj_variance
+		damage_var_low = -config.low_proj_variance
+		damage_var_high = config.low_proj_variance
 		damage_falloff = config.buckshot_v2_damage_falloff
 		shell_speed = config.reg_shell_speed
-		scatter = config.max_scatter_value
+		scatter = config.ultra_scatter_value
 
 /datum/ammo/bullet/shotgun/spread/masterkey
 	New()

@@ -269,6 +269,12 @@
 			now_pushing = 0
 			return
 
+		if(isXeno(L) && !isXenoLarva(L)) //Handling pushing Xenos in general, but big Xenos and Preds can still push small Xenos
+			var/mob/living/carbon/Xenomorph/X = L
+			if((has_species(src, "Human") && X.mob_size == MOB_SIZE_BIG) || (isXeno(src) && X.mob_size == MOB_SIZE_BIG))
+				now_pushing = 0
+				return
+
  		if(L.pulling)
  			if(ismob(L.pulling))
  				var/mob/P = L.pulling

@@ -26,7 +26,7 @@
 		return
 	if (reagents.total_volume)
 		if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-			user.visible_message("<span class='warning'>You fumble with the autoinjector...</span>")
+			user.visible_message("<span class='warning'>[user] fumbles with [src]...</span>", "<span class='warning'>You fumble with [src]...</span>")
 			if(!do_mob(user, M, 30, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 				return
 		var/sleeptoxin = 0

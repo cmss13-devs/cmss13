@@ -975,17 +975,10 @@
 			. = activate_random_verb()
 			return
 
-	if(inject_timer)
-		usr.visible_message("<span class='warning'>You're already pulling on the chain!</span>")
-		return 0
-
 	if(!drain_power(usr,70)) return
-	inject_timer = 1
-	spawn(100)
-		inject_timer = 0
 
 	for(var/obj/item/weapon/combistick/C in range(7))
-		usr.visible_message("<span class='warning'><b>You yank [C]'s chain back!</b></span>", "<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>")
+		usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
 		new /obj/item/weapon/combistick(C.loc)
 		cdel(C)
 
@@ -1570,13 +1563,13 @@
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED
 	w_class = 4
-	force = 35
+	force = 28
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
-	throwforce = 70
+	throwforce = 55
 	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -1685,6 +1678,14 @@
 		if(do_mob(user, src, 30, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
+
+/obj/item/weapon/combistick/throw_impact(atom/hit_atom)
+	if(isYautja(hit_atom) && istype(hit_atom,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = hit_atom
+		if(H.put_in_hands(src))
+			hit_atom.visible_message("<span class='notice'> [hit_atom] expertly catches [src] out of the air. </span>","<span class='notice'> You easily catch [src]. </span>")
+			return
+	..()
 
 //=================//\\=================\\
 //======================================\\

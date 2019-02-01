@@ -226,6 +226,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(!is_mob_incapacitated())
 				if(isturf(O.loc))
 					if(put_in_active_hand(O))
+						if((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src)) return
 						visible_message("<span class='warning'>[src] catches [O]!</span>", null, null, 5)
 						throw_mode_off()
 						return

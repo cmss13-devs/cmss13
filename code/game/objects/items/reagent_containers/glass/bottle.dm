@@ -253,18 +253,6 @@
 		var/list/data = list("viruses"= list(F))
 		reagents.add_reagent("blood", 20, data)
 
-/obj/item/reagent_container/glass/bottle/retrovirus
-	name = "retrovirus culture bottle"
-	desc = "A small bottle. Contains a retrovirus culture in a synthblood medium."
-	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle3"
-	New()
-		..()
-		var/datum/disease/F = new /datum/disease/dna_retrovirus(0)
-		var/list/data = list("viruses"= list(F))
-		reagents.add_reagent("blood", 20, data)
-
-
 /obj/item/reagent_container/glass/bottle/gbs
 	name = "\improper GBS culture bottle"
 	desc = "A small bottle. Contains Gravitokinetic Bipotential SADS+ culture in synthblood medium."//Or simply - General BullShit

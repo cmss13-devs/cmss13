@@ -116,8 +116,6 @@ var/global/sent_syndicate_strike_team = 0
 	new_syndicate_commando.real_name = "[!syndicate_leader_selected ? syndicate_commando_rank : syndicate_commando_leader_rank] [syndicate_commando_name]"
 	new_syndicate_commando.age = !syndicate_leader_selected ? rand(23,35) : rand(35,45)
 
-	new_syndicate_commando.dna.ready_dna(new_syndicate_commando)//Creates DNA.
-
 	//Creates mind stuff.
 	new_syndicate_commando.mind_initialize()
 	new_syndicate_commando.mind.assigned_role = "MODE"

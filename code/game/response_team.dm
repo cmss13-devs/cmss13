@@ -205,13 +205,10 @@ proc/trigger_armed_response_team(var/force = 0)
 	//M.rebuild_appearance()
 	M.update_hair()
 	M.update_body()
-	M.check_dna(M)
 
 	M.real_name = commando_name
 	M.name = commando_name
 	M.age = !leader_selected ? rand(23,35) : rand(35,45)
-
-	M.dna.ready_dna(M)//Creates DNA.
 
 	//Creates mind stuff.
 	M.mind = new

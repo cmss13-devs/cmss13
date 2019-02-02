@@ -12,7 +12,7 @@
 	return
 
 /mob/proc/spawn_gibs()
-	hgibs(loc, viruses, dna)
+	hgibs(loc, viruses, src)
 
 
 

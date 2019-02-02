@@ -13,9 +13,6 @@
 	set invisibility = 0
 	set background = 1
 	if (monkeyizing)	return
-	if (update_muts)
-		update_muts=0
-		domutcheck(src,null,MUTCHK_FORCED)
 	..()
 
 	life_tick++
@@ -139,11 +136,6 @@
 				if(75 to 100)
 					radiation -= 3
 					adjustToxLoss(3)
-					if(prob(1))
-						src << "\red You mutate!"
-						randmutb(src)
-						domutcheck(src,null)
-						emote("gasp")
 
 	proc/breathe()
 		if(reagents)

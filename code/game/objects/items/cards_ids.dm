@@ -145,10 +145,11 @@
 /obj/item/card/id/New()
 	..()
 	spawn(30)
-	if(istype(loc, /mob/living/carbon/human))
-		blood_type = loc:dna:b_type
-		dna_hash = loc:dna:unique_enzymes
-		fingerprint_hash = md5(loc:dna:uni_identity)
+		var/mob/living/carbon/human/H = loc
+		if(istype(H))
+			blood_type = H.blood_type
+			dna_hash = H.dna_sequence
+			fingerprint_hash = H.fingerprint
 
 /obj/item/card/id/attack_self(mob/user as mob)
 	user.visible_message("[user] shows you: \icon[src] [name]: assignment: [assignment]")

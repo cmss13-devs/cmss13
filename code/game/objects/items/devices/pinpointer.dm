@@ -162,9 +162,7 @@
 					if(!DNAstring)
 						return
 					for(var/mob/living/carbon/M in mob_list)
-						if(!M.dna)
-							continue
-						if(M.dna.unique_enzymes == DNAstring)
+						if(M.dna_sequence == DNAstring)
 							target = M
 							break
 

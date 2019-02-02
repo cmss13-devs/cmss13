@@ -433,9 +433,7 @@
 
 /obj/effect/rune/attunement/attack_hand(mob/living/user) //Special snowflake rune, do not steal 2016.
 	user << "<span class='notice'>You touch the rune, feeling it glow beneath your fingertip. It feels warm, somehow pleasant. The rune soon fades and disappears, as you feel a new sense of understanding about the world.</span>"
-	user.dna.SetSEState(pick(HULKBLOCK,XRAYBLOCK,FIREBLOCK,TELEBLOCK,NOBREATHBLOCK,REMOTEVIEWBLOCK), 1)
-	domutcheck(user,null,MUTCHK_FORCED)
-	user.update_mutations()
+	//TODO: force 1 mutation - HULKBLOCK,XRAYBLOCK,FIREBLOCK,TELEBLOCK,NOBREATHBLOCK,REMOTEVIEWBLOCK
 	cdel(src)
 
 /datum/game_mode/colonialmarines_halloween_2016/proc/spawn_battlefield_player(mob/M,given_role,shuffle_override1,shuffle_override2)
@@ -1041,14 +1039,10 @@
 			H.equip_to_slot_or_del(new /obj/item/tool/lighter(H), WEAR_L_STORE) //So they're not always stumbling in the dark. Unless the want to.
 
 			H.set_species("Horror")
-			H.dna.ready_dna(H)
 			H.mind_initialize()
 			H.mind.special_role = "MODE"
 			H.mind.assigned_role = "Horror"
 			H.sdisabilities |= MUTE //We don't want them chatting up people.
-			H.dna.SetSEState(XRAYBLOCK, 1)
-			domutcheck(H,null,MUTCHK_FORCED)
-			H.update_mutations()
 			horror = H
 			special_role = BE_SURVIVOR|BE_RESPONDER
 			recruit_msg = "a horror and kill the living?"
@@ -1161,7 +1155,6 @@
 			H.mind_initialize()
 			H.mind.special_role = "MODE"
 			H.mind.assigned_role = "Action Hero"
-			H.dna.ready_dna(H)
 			switch(shuffle2) //Have to do this after DNA.
 				if(3) //Dutch's robot hand.
 					var/datum/limb/O = H.get_limb("r_arm")
@@ -1176,9 +1169,6 @@
 				if(5)
 					var/datum/limb/O = H.get_limb("r_hand")
 					O.status |= LIMB_ROBOT
-					H.dna.SetSEState(TELEBLOCK, 1)
-					domutcheck(H,null,MUTCHK_FORCED)
-					H.update_mutations()
 
 			H.update_body(0)
 			H.update_hair()
@@ -1583,7 +1573,7 @@
 		var/obj/effect/decal/cleanable/blood/splatter/animated/B = new(get_turf(H))
 		B.target_turf = pick(range(1, src))
 		B.blood_DNA = new
-		B.blood_DNA[H.dna.unique_enzymes] = H.dna.b_type
+		B.blood_DNA[H.dna_sequence] = H.blood_type
 		H.blood_volume = max(0, H.blood_volume - rand(25,50))
 		animation_blood_spatter(H)
 	current_bloodcall = world.time

@@ -31,13 +31,6 @@
 					H.apply_effect((rand(15,35)),IRRADIATE,0)
 					if(prob(5))
 						H.apply_effect((rand(40,70)),IRRADIATE,0)
-						if (prob(75))
-							randmutb(H) // Applies bad mutation
-							domutcheck(H,null,MUTCHK_FORCED)
-						else
-							randmutg(H) // Applies good mutation
-							domutcheck(H,null,MUTCHK_FORCED)
-
 
 			for(var/mob/living/carbon/monkey/M in living_mob_list)
 				var/turf/T = get_turf(M)

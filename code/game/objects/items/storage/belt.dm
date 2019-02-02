@@ -93,7 +93,6 @@
 
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
-		/obj/item/dnainjector,
 		/obj/item/reagent_container/dropper,
 		/obj/item/reagent_container/glass/beaker,
 		/obj/item/reagent_container/glass/bottle,

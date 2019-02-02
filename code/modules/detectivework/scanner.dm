@@ -14,7 +14,7 @@
 		user << "<span class='warning'>[M] is not human and cannot have the fingerprints.</span>"
 		flick("forensic0",src)
 		return 0
-	if (( !( istype(M.dna, /datum/dna) ) || M.gloves) )
+	if (M.gloves)
 		user << "<span class='notice'>No fingerprints found on [M]</span>"
 		flick("forensic0",src)
 		return 0
@@ -25,7 +25,7 @@
 		F.icon_state = "fingerprint1"
 		F.name = text("FPrintC- '[M.name]'")
 		user << "<span class='notice'>Done printing."
-		user << "<span class='notice'>[M]'s Fingerprints: [md5(M.dna.uni_identity)]"
+		user << "<span class='notice'>[M]'s Fingerprints: [M.fingerprint]"
 	if ( M.blood_DNA && M.blood_DNA.len )
 		user << "<span class='notice'>Blood found on [M]. Analysing...</span>"
 		spawn(15)

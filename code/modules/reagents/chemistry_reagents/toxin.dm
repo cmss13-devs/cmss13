@@ -252,11 +252,6 @@
 			var/mob/living/carbon/C = M
 			if(!C.wear_mask) // If not wearing a mask
 				C.adjustToxLoss(2) // 4 toxic damage per application, doubled for some reason
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if(H.dna)
-					if(H.species.flags & IS_PLANT) //plantmen take a LOT of damage
-						H.adjustToxLoss(50)
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"

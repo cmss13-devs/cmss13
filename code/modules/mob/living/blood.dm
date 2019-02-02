@@ -171,7 +171,7 @@
 		var/mob/living/carbon/C = AM
 		if(blood_id == C.get_blood_id())//both mobs have the same blood substance
 			if(blood_id == "blood") //normal blood
-				if(!(blood_data["blood_type"] in get_safe_blood(C.dna.b_type)))
+				if(!(blood_data["blood_type"] in get_safe_blood(C.blood_type)))
 					C.reagents.add_reagent("toxin", amount * 0.5)
 					return 1
 
@@ -193,7 +193,7 @@
 	for(var/datum/reagent/blood/B in container.reagents.reagent_list)
 		if(B.id == b_id)
 
-			if(b_id == "blood" && B.data && !(B.data["blood_type"] in get_safe_blood(dna.b_type)))
+			if(b_id == "blood" && B.data && !(B.data["blood_type"] in get_safe_blood(blood_type)))
 				reagents.add_reagent("toxin", amount * 0.5)
 			else
 				blood_volume = min(blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAXIMUM)
@@ -310,14 +310,11 @@
 
 	switch(b_id)
 		if("blood")
-			if(dna)
-				return list(dna.unique_enzymes = dna.b_type)
-			else
-				return list("UNKNOWN DNA" = "X*")
+			return list(dna_sequence = blood_type)
 		if("whiteblood")
 			return list("SYNTHETIC BLOOD" = "S*")
 		if("greyblood")
-			return list(dna.unique_enzymes = "Z*")
+			return list(dna_sequence = "Z*")
 		if("greenblood")
 			return list("UNKNOWN DNA" = "Y*")
 		if("xenoblood")

@@ -44,7 +44,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 												/datum/job/logistics,
 												/datum/job/logistics/tech,
 												/datum/job/marine)
-		var/squads_all[] = typesof(/datum/squad) - /datum/squad
+		var/squads_all[] = typesof(/datum/squad) - /datum/squad -/datum/squad/echo
 
 		if(!roles_all.len)
 			world << "<span class='debug'>Error setting up jobs, no job datums found.</span>"

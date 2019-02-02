@@ -299,7 +299,7 @@
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"
 	desc = "Used by the lowly Cargo Technicians of the USCM, light weight and portable. To access the supply channel, use :u."
-	icon_state = "cargo_headset"
+	icon_state = "req_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/req
 
 /obj/item/device/radio/headset/almayer/ro

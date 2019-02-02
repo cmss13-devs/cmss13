@@ -17,7 +17,7 @@
 /proc/isHumanSynthStrict(A)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(H.species.name == "Human" || H.species.name == "Synthetic" || H.species.name == "Early Synthetic")
+		if(H.species.name == "Human" || H.species.name == "Synthetic" || H.species.name == "Early Synthetic" || H.species.name == "Second Generation Synthetic")
 			return 1
 	return 0
 
@@ -257,7 +257,7 @@ proc/isResearcher(A)
 proc/isSynth(A)
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(H.species.name == "Synthetic" || H.species.name == "Early Synthetic")
+		if(H.species.name == "Synthetic" || H.species.name == "Early Synthetic" || H.species.name == "Second Generation Synthetic")
 			return 1
 	return 0
 

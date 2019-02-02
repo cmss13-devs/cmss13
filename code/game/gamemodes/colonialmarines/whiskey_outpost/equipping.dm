@@ -291,12 +291,12 @@ You just gotta get out of this jungle to tell the tale!"}
 				if("Alpha")
 					name = "alpha radio headset"
 					desc = "This is used by  alpha squad members."
-					icon_state = "sec_headset"
+					icon_state = "alpha_headset"
 					frequency = ALPHA_FREQ
 				if("Bravo")
 					name = "bravo radio headset"
 					desc = "This is used by bravo squad members."
-					icon_state = "eng_headset"
+					icon_state = "bravo_headset"
 					frequency = BRAVO_FREQ
 				if("Charlie")
 					name = "charlie radio headset"
@@ -306,7 +306,7 @@ You just gotta get out of this jungle to tell the tale!"}
 				if("Delta")
 					name = "delta radio headset"
 					desc = "This is used by delta squad members."
-					icon_state = "com_headset"
+					icon_state = "delta_headset"
 					frequency = DELTA_FREQ
 			switch(H.mind.assigned_role)
 				if("Squad Leader")

@@ -44,8 +44,8 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	flick("scanner_on",src)
 	lastuser = user.real_name
 	var/mname = user.real_name
-	var/dna = user.dna.unique_enzymes
-	var/bloodtype = user.dna.b_type
+	var/dna = user.dna_sequence
+	var/bloodtype = user.blood_type
 	var/fingerprint = md5(user.dna.uni_identity)
 	var/list/marks = list()
 	var/age = user.age

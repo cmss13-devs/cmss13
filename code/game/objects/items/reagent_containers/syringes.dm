@@ -107,12 +107,6 @@
 					if(T.get_blood_id() && reagents.has_reagent(T.get_blood_id()))
 						user << "\red There is already a blood sample in this syringe"
 						return
-					if(!T.dna)
-						user << "You are unable to locate any blood."
-						return
-					if(NOCLONE in T.mutations) //target done been et, no more blood in him
-						user << "\red You are unable to locate any blood."
-						return
 
 					if(ishuman(T))
 						var/mob/living/carbon/human/H = T

@@ -282,7 +282,6 @@
 	static_inventory += gun_run_icon
 
 
-
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
 	set category = "OOC"
 	set name = "Toggle hotkey buttons"
@@ -294,21 +293,6 @@
 	else
 		client.screen -= hud_used.hotkeybuttons
 		hud_used.hotkey_ui_hidden = 1
-
-
-//Used for new human mobs created by cloning/goleming/etc.
-/mob/living/carbon/human/proc/set_cloned_appearance()
-	f_style = "Shaved"
-	if(dna.species == "Human") //no more xenos losing ears/tentacles
-		h_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
-	undershirt = undershirt_t.Find("None")
-	if(gender == MALE)
-		underwear = underwear_m.Find("None")
-	else
-		underwear = underwear_f.Find("None")
-	regenerate_icons()
-
-
 
 /datum/hud/human/hidden_inventory_update()
 	if(!mymob) return

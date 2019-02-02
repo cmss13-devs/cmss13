@@ -6,10 +6,9 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	..(loc)
 	if(!istype(H))
 		return
-	if(H.dna)
-		if(!blood_DNA)
-			blood_DNA = list()
-		blood_DNA[H.dna.unique_enzymes] = H.dna.b_type
+	if(!blood_DNA)
+		blood_DNA = list()
+	blood_DNA[H.dna_sequence] = H.blood_type
 
 	//Forming icon for the limb
 
@@ -122,7 +121,9 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	brainmob = new(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
-	brainmob.dna = H.dna.Clone()
+	brainmob.blood_type = H.blood_type
+	brainmob.dna_sequence = H.dna_sequence
+	brainmob.fingerprint = H.fingerprint
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 	brainmob.container = src

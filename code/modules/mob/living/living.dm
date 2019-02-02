@@ -15,6 +15,8 @@
 	event_movement = new /datum/event()
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
+	dna_sequence = md5("[rand(100000)]")
+	fingerprint = md5(dna_sequence)
 
 /mob/living/Dispose()
 	if(attack_icon)

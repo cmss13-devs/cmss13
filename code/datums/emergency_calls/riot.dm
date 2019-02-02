@@ -15,7 +15,6 @@
 	if(!istype(T)) r_FAL
 
 	var/mob/living/carbon/human/H = new(T)
-	H.dna.ready_dna(H)
 	H.key = M.key
 	if(H.client) H.client.change_view(world.view)
 

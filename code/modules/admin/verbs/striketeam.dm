@@ -111,8 +111,6 @@ var/global/sent_strike_team = 0
 	new_commando.real_name = "[!leader_selected ? commando_rank : commando_leader_rank] [commando_name]"
 	new_commando.age = !leader_selected ? rand(23,35) : rand(35,45)
 
-	new_commando.dna.ready_dna(new_commando)//Creates DNA.
-
 	//Creates mind stuff.
 	new_commando.mind_initialize()
 	new_commando.mind.assigned_role = "MODE"

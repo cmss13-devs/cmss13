@@ -1039,13 +1039,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 						user.show_message(text("\red <b>Warning: [D.form] Detected</b>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]"))
 
 			if(2)
-				if (!istype(C:dna, /datum/dna))
-					user << "\blue No fingerprints found on [C]"
-				else if(!istype(C, /mob/living/carbon/monkey))
+				if(!istype(C, /mob/living/carbon/monkey))
 					if(!isnull(C:gloves))
 						user << "\blue No fingerprints found on [C]"
 				else
-					user << text("\blue [C]'s Fingerprints: [md5(C:dna.uni_identity)]")
+					user << text("\blue [C]'s Fingerprints: [C:fingerprint]")
 				if (!C.blood_DNA || !C.blood_DNA.len)
 					user << "\blue No blood found on [C]"
 					if(C.blood_DNA)

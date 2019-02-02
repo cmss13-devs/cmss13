@@ -904,16 +904,9 @@
 		usr << "\blue <B>The [src.name] is already occupied!</B>"
 		src.log_append_to_last("Permission denied.")
 		return
-/*
-	if (usr.abiotic())
-		usr << "\blue <B>Subject cannot have abiotic items on.</B>"
-		return
-*/
+		
 	var/passed
-	if(src.dna)
-		if(usr.dna.unique_enzymes==src.dna)
-			passed = 1
-	else if(src.operation_allowed(usr))
+	if(src.operation_allowed(usr))
 		passed = 1
 	if(!passed)
 		usr << "\red Access denied"
@@ -964,7 +957,7 @@
 	else if(occupant)
 		user << "Occupant detected."
 		return 0
-	else if(dna && dna!=mmi_as_oc.brainmob.dna.unique_enzymes)
+	else if(dna && dna!=mmi_as_oc.brainmob.dna_sequence)
 		user << "Stop it!"
 		return 0
 	//Added a message here since people assume their first click failed or something./N
@@ -1506,7 +1499,7 @@
 			occupant_message("You are a brain. No.")
 			return
 		if(src.occupant)
-			src.dna = src.occupant.dna.unique_enzymes
+			src.dna = src.occupant.dna_sequence
 			src.occupant_message("You feel a prick as the needle takes your DNA sample.")
 		return
 	if(href_list["reset_dna"])

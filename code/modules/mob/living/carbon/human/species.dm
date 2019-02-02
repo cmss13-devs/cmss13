@@ -24,7 +24,6 @@
 	var/unarmed_type =           /datum/unarmed_attack
 	var/secondary_unarmed_type = /datum/unarmed_attack/bite
 
-	var/mutantrace                // Safeguard due to old code.
 	var/list/speech_sounds        // A list of sounds to potentially play when speaking.
 	var/list/speech_chance
 	var/has_fine_manipulation = 1 // Can use small items.
@@ -551,7 +550,7 @@
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
-	H.dna.b_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
+	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
 	yautja_mob_list -= src
 	for(var/datum/limb/L in H.limbs)
 		switch(L.name)
@@ -581,7 +580,7 @@
 	living_human_list -= H
 	H.universal_understand = 1
 
-	H.dna.b_type = "Y*"
+	H.blood_type = "Y*"
 	yautja_mob_list += src
 	for(var/datum/limb/L in H.limbs)
 		switch(L.name)

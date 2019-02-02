@@ -10,11 +10,7 @@
 	var/allow_gun_usage = FALSE //False by default, so that synthetics can't use guns.
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
-	b_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
-
-	if(!dna)
-		dna = new /datum/dna(b_type)
-		// Species name is handled by set_species()
+	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
 
 	human_mob_list += src
 	living_human_list += src
@@ -32,13 +28,7 @@
 	..()
 
 	round_statistics.total_humans_created++
-
-	if(dna)
-		dna.real_name = real_name
-
 	prev_gender = gender // Debug for plural genders
-
-
 
 /mob/living/carbon/human/prepare_huds()
 	..()
@@ -502,7 +492,7 @@
 						for(var/organ in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
 							var/datum/limb/o = get_limb(organ)
 							if (o && o.status & LIMB_SPLINTED)
-								o.status &= ~LIMB_SPLINTED			
+								o.status &= ~LIMB_SPLINTED
 								if(!W.add(1))
 									W = new /obj/item/stack/medical/splint(loc)//old stack is dropped, time for new one
 									W.amount = 0
@@ -917,19 +907,9 @@
 
 	return 0
 
-
-/mob/living/carbon/human/proc/check_dna()
-	dna.check_integrity(src)
-	return
-
 /mob/living/carbon/human/get_species()
-
 	if(!species)
 		set_species()
-
-	if(dna && dna.mutantrace == "golem")
-		return "Animated Construct"
-
 	return species.name
 
 /mob/living/carbon/human/proc/play_xylophone()
@@ -1040,7 +1020,6 @@
 		else
 			gender = FEMALE
 	regenerate_icons()
-	check_dna()
 
 	visible_message("\blue \The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!", "\blue You change your appearance!", "\red Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!")
 
@@ -1249,15 +1228,8 @@
 	src << browse(dat, "window=manifest;size=370x420;can_close=1")
 
 /mob/living/carbon/human/proc/set_species(var/new_species, var/default_colour)
-
-	if(!dna)
-		if(!new_species)
-			new_species = "Human"
-	else
-		if(!new_species)
-			new_species = dna.species
-		else
-			dna.species = new_species
+	if(!new_species)
+		new_species = "Human"
 
 	if(species)
 		if(species.name && species.name == new_species) //we're already that species.
@@ -1296,6 +1268,9 @@
 	spawn(0)
 		regenerate_icons()
 		restore_blood()
+		update_body(1,1)
+		update_hair()
+
 
 	if(species)
 		return 1
@@ -1395,16 +1370,6 @@
 				flavor_text += "\n\n"
 	return ..()
 
-/mob/living/carbon/human/getDNA()
-	if(species.flags & NO_SCAN)
-		return null
-	..()
-
-/mob/living/carbon/human/setDNA()
-	if(species.flags & NO_SCAN)
-		return
-	..()
-
 
 
 /mob/living/carbon/human/proc/vomit_on_floor()
@@ -1454,6 +1419,7 @@
 		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_in_dark = species.darksight
 		see_invisible = see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : SEE_INVISIBLE_LIVING
+		/* //TODO: remove once we confirm shadows don't need this
 		if(dna)
 			switch(dna.mutantrace)
 				if("slime")
@@ -1467,7 +1433,7 @@
 			sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 			see_in_dark = 8
 			see_invisible = SEE_INVISIBLE_LEVEL_TWO
-
+		*/
 		if(glasses)
 			process_glasses(glasses)
 		else

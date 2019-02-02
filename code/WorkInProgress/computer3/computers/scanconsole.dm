@@ -99,8 +99,9 @@
 			else
 				if(!buffer)
 					buffer = new
+				/*
 				if( which == "all" )
-					buffer.unique_enzymes	= scanner.occupant.dna.unique_enzymes
+					buffer.unique_enzymes	= scanner.occupant.dna_sequence
 					buffer.struc_enzymes	= scanner.occupant.dna.struc_enzymes
 					buffer.uni_identity		= scanner.occupant.dna.uni_identity
 					buffer.real_name		= scanner.occupant.dna.real_name
@@ -112,9 +113,9 @@
 					buffer.uni_identity		= scanner.occupant.dna.uni_identity
 				if( which == "ue" )
 					buffer.uni_identity		= scanner.occupant.dna.uni_identity
-					buffer.unique_enzymes	= scanner.occupant.dna.unique_enzymes
+					buffer.unique_enzymes	= scanner.occupant.dna_sequence
 					buffer.real_name		= scanner.occupant.dna.real_name
-
+				*/
 		// save buffer to file -
 		if("save" in href_list)
 			if(!viable || !buffer)
@@ -280,7 +281,7 @@
 				status_html += "<div class='line'><div class='statusLabel'>Rejuvenators:</div><div class='progressBar'><div style='width: [rejuvenators]%;' class='progressFill highlight'></div></div><div class='statusValue'>[occupant.reagents.get_reagent_amount("inaprovaline")] units</div></div>"
 
 			if (dna_summary)
-				status_html += "<div class='line'><div class='statusLabel'>Unique Enzymes :</div><div class='statusValue'><span class='highlight'>[uppertext(occupant.dna.unique_enzymes)]</span></div></div>"
+				status_html += "<div class='line'><div class='statusLabel'>Unique Enzymes :</div><div class='statusValue'><span class='highlight'>[uppertext(occupant.dna_sequence)]</span></div></div>"
 				status_html += "<div class='line'><div class='statusLabel'>Unique Identifier:</div><div class='statusValue'><span class='highlight'>[occupant.dna.uni_identity]</span></div></div>"
 				status_html += "<div class='line'><div class='statusLabel'>Structural Enzymes:</div><div class='statusValue'><span class='highlight'>[occupant.dna.struc_enzymes]</span></div></div>"
 
@@ -1220,7 +1221,7 @@
 			scanner_status_html += "<div class='line'><div class='statusLabel'>Rejuvenators:</div><div class='progressBar'><div style='width: [rejuvenators]%;' class='progressFill highlight'></div></div><div class='statusValue'>[human_occupant.reagents.get_reagent_amount("inaprovaline")] units</div></div>"
 
 		if (current_screen == "mainmenu")
-			scanner_status_html += "<div class='line'><div class='statusLabel'>Unique Enzymes :</div><div class='statusValue'><span class='highlight'>[uppertext(occupant.dna.unique_enzymes)]</span></div></div>"
+			scanner_status_html += "<div class='line'><div class='statusLabel'>Unique Enzymes :</div><div class='statusValue'><span class='highlight'>[uppertext(occupant.dna_sequence)]</span></div></div>"
 			scanner_status_html += "<div class='line'><div class='statusLabel'>Unique Identifier:</div><div class='statusValue'><span class='highlight'>[occupant.dna.uni_identity]</span></div></div>"
 			scanner_status_html += "<div class='line'><div class='statusLabel'>Structural Enzymes:</div><div class='statusValue'><span class='highlight'>[occupant.dna.struc_enzymes]</span></div></div>"
 

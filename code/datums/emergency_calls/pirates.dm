@@ -15,7 +15,6 @@
 	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
-	mob.dna.ready_dna(mob)
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
 	ticker.mode.traitors += mob.mind

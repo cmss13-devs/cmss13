@@ -1,37 +1,242 @@
-"aDG" = (/turf/open/floor{dir = 8; icon_state = "warning"},/area/shuttle/drop1/lz1)
-"aHM" = (/turf/open/floor{icon_state = "bot"; dir = 1},/area/shuttle/drop1/lz1)
-"aIw" = (/turf/open/floor{dir = 8; icon_state = "loadingarea"; tag = "loading"},/area/shuttle/drop1/lz1)
-"aGz" = (/turf/open/floor,/area/shuttle/drop1/lz1)
-"aJl" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 8; icon_state = "loadingarea"; tag = "loading"},/area/shuttle/drop1/lz1)
-"aJR" = (/obj/effect/decal/cleanable/blood/tracks/footprints{dir = 4},/obj/effect/decal/cleanable/blood/tracks/footprints{dir = 8},/turf/open/floor{dir = 8; icon_state = "warning"},/area/shuttle/drop1/lz1)
-"aJS" = (/obj/effect/landmark{name = "hunter_primary"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aMp" = (/obj/item/device/radio/intercom{anyai = 1; freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = -30; pixel_y = 0},/turf/open/floor{dir = 10; icon_state = "warning"},/area/shuttle/drop1/lz1)
-"aMq" = (/turf/open/floor{icon_state = "warning"},/area/shuttle/drop1/lz1)
-"aOf" = (/obj/structure/cargo_container{tag = "icon-blue 0,0"; icon_state = "blue 0,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aOg" = (/obj/structure/cargo_container{tag = "icon-blue 1,0"; icon_state = "blue 1,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aOh" = (/obj/structure/cargo_container{tag = "icon-blue 2,0"; icon_state = "blue 2,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aOS" = (/obj/structure/cargo_container{tag = "icon-WY 0,0"; icon_state = "WY 0,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aOT" = (/obj/structure/cargo_container{tag = "icon-WY 1,0"; icon_state = "WY 1,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aOU" = (/obj/structure/cargo_container{tag = "icon-WY 2,0"; icon_state = "WY 2,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aQR" = (/obj/structure/cargo_container{tag = "icon-green 0,0"; icon_state = "green 0,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aQS" = (/obj/structure/cargo_container{tag = "icon-green 1,0"; icon_state = "green 1,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aQT" = (/obj/structure/cargo_container{tag = "icon-green 2,0"; icon_state = "green 2,0"},/turf/open/floor,/area/shuttle/drop1/lz1)
-"aGQ" = (/turf/open/floor{dir = 10; icon_state = "warning"},/area/shuttle/drop1/lz1)
-(1,1,1) = {"
-aDGaHMaHMaHMaHMaHM
-aDGaIwaGzaGzaGzaGz
-aDGaJlaHMaHMaHMaHM
-aJRaIwaGzaGzaJSaGz
-aDGaIwaHMaHMaHMaHM
-aDGaIwaGzaGzaGzaGz
-aDGaHMaHMaHMaHMaHM
-aMpaMqaMqaMqaMqaMq
-aDGaGzaGzaGzaGzaGz
-aDGaOfaOgaOhaGzaGz
-aDGaOSaOTaOUaGzaGz
-aDGaGzaGzaGzaGzaGz
-aDGaGzaGzaGzaGzaGz
-aDGaGzaQRaQSaQTaGz
-aGQaMqaMqaMqaMqaMq
-"}
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aDG" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "warning"
+	},
+/area/shuttle/drop1/lz1)
+"aGz" = (
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aGQ" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "warning"
+	},
+/area/shuttle/drop1/lz1)
+"aHM" = (
+/turf/open/floor{
+	icon_state = "bot";
+	dir = 1
+	},
+/area/shuttle/drop1/lz1)
+"aIw" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "loadingarea";
+	tag = "loading"
+	},
+/area/shuttle/drop1/lz1)
+"aJl" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "loadingarea";
+	tag = "loading"
+	},
+/area/shuttle/drop1/lz1)
+"aJR" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "warning"
+	},
+/area/shuttle/drop1/lz1)
+"aJS" = (
+/obj/effect/landmark{
+	name = "hunter_primary"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aMp" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30;
+	pixel_y = 0
+	},
+/turf/open/floor{
+	dir = 10;
+	icon_state = "warning"
+	},
+/area/shuttle/drop1/lz1)
+"aMq" = (
+/turf/open/floor{
+	icon_state = "warning"
+	},
+/area/shuttle/drop1/lz1)
+"aOf" = (
+/obj/structure/cargo_container{
+	tag = "icon-blue 0,0";
+	icon_state = "blue 0,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aOg" = (
+/obj/structure/cargo_container{
+	tag = "icon-blue 1,0";
+	icon_state = "blue 1,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aOh" = (
+/obj/structure/cargo_container{
+	tag = "icon-blue 2,0";
+	icon_state = "blue 2,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aOS" = (
+/obj/structure/cargo_container{
+	tag = "icon-WY 0,0";
+	icon_state = "WY 0,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aOT" = (
+/obj/structure/cargo_container{
+	tag = "icon-WY 1,0";
+	icon_state = "WY 1,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aOU" = (
+/obj/structure/cargo_container{
+	tag = "icon-WY 2,0";
+	icon_state = "WY 2,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aQR" = (
+/obj/structure/cargo_container{
+	tag = "icon-green 0,0";
+	icon_state = "green 0,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aQS" = (
+/obj/structure/cargo_container{
+	tag = "icon-green 1,0";
+	icon_state = "green 1,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
+"aQT" = (
+/obj/structure/cargo_container{
+	tag = "icon-green 2,0";
+	icon_state = "green 2,0"
+	},
+/turf/open/floor,
+/area/shuttle/drop1/lz1)
 
+(1,1,1) = {"
+aDG
+aDG
+aDG
+aJR
+aDG
+aDG
+aDG
+aMp
+aDG
+aDG
+aDG
+aDG
+aDG
+aDG
+aGQ
+"}
+(2,1,1) = {"
+aHM
+aIw
+aJl
+aIw
+aIw
+aIw
+aHM
+aMq
+aGz
+aOf
+aOS
+aGz
+aGz
+aGz
+aMq
+"}
+(3,1,1) = {"
+aHM
+aGz
+aHM
+aGz
+aHM
+aGz
+aHM
+aMq
+aGz
+aOg
+aOT
+aGz
+aGz
+aQR
+aMq
+"}
+(4,1,1) = {"
+aHM
+aGz
+aHM
+aGz
+aHM
+aGz
+aHM
+aMq
+aGz
+aOh
+aOU
+aGz
+aGz
+aQS
+aMq
+"}
+(5,1,1) = {"
+aHM
+aGz
+aHM
+aJS
+aHM
+aGz
+aHM
+aMq
+aGz
+aGz
+aGz
+aGz
+aGz
+aQT
+aMq
+"}
+(6,1,1) = {"
+aHM
+aGz
+aHM
+aGz
+aHM
+aGz
+aHM
+aMq
+aGz
+aGz
+aGz
+aGz
+aGz
+aGz
+aMq
+"}

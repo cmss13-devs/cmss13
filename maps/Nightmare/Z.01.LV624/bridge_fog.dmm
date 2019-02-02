@@ -1,42 +1,343 @@
-"aa" = (/turf/open/space,/area/space)
-"ab" = (/obj/structure/fence,/turf/open/floor/plating{dir = 9; icon_state = "warnplate"},/area/lv624/ground/river2)
-"ac" = (/turf/open/floor/plating{dir = 1; icon_state = "asteroidwarning"},/area/lv624/ground/river2)
-"ad" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 5},/area/lv624/ground/river2)
-"ae" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 8},/area/lv624/ground/river2)
-"af" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 4},/area/lv624/ground/river2)
-"ag" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 10},/area/lv624/ground/river2)
-"ah" = (/obj/structure/fence,/turf/open/floor/plating{icon_state = "warnplate"; dir = 6},/area/lv624/ground/river2)
-"ai" = (/turf/open/gm/dirt,/area/lv624/ground/river2)
-"aj" = (/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"ak" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle7)
-"al" = (/obj/effect/landmark/lv624/fog_time_extender,/turf/open/floor/plating{dir = 1; icon_state = "asteroidfloor"},/area/lv624/ground/river2)
-"jq" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{icon_state = "beachcorner"},/area/lv624/ground/river2)
-"jr" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast,/area/lv624/ground/river2)
-"jT" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 2; icon_state = "beachcorner2"},/area/lv624/ground/river2)
-"jV" = (/turf/open/floor/plating{dir = 1; icon_state = "asteroidfloor"},/area/lv624/ground/river2)
-"km" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/river,/area/lv624/ground/river2)
-"lp" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{tag = "icon-beach (SOUTHEAST)"; icon_state = "beach"; dir = 6},/area/lv624/ground/river2)
-"lW" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1},/area/lv624/ground/river2)
-"lY" = (/turf/open/floor/plating{dir = 2; icon_state = "asteroidwarning"},/area/lv624/ground/river2)
-"mo" = (/obj/structure/flora/ausbushes/fullgrass,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/river2)
-"mq" = (/obj/machinery/colony_floodlight,/turf/open/gm/dirt,/area/lv624/ground/river2)
-"mr" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/river2)
-"ms" = (/obj/structure/jungle/planttop1,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirt,/area/lv624/ground/river2)
-"mD" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle7)
-"mE" = (/obj/structure/jungle/plantbot1,/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle7)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/space,
+/area/space)
+"ab" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river2)
+"ac" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/lv624/ground/river2)
+"ad" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	icon_state = "warnplate";
+	dir = 5
+	},
+/area/lv624/ground/river2)
+"ae" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	icon_state = "warnplate";
+	dir = 8
+	},
+/area/lv624/ground/river2)
+"af" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	icon_state = "warnplate";
+	dir = 4
+	},
+/area/lv624/ground/river2)
+"ag" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	icon_state = "warnplate";
+	dir = 10
+	},
+/area/lv624/ground/river2)
+"ah" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	icon_state = "warnplate";
+	dir = 6
+	},
+/area/lv624/ground/river2)
+"ai" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river2)
+"aj" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"ak" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle7)
+"al" = (
+/obj/effect/landmark/lv624/fog_time_extender,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river2)
+"jq" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river2)
+"jr" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast,
+/area/lv624/ground/river2)
+"jT" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 2;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river2)
+"jV" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river2)
+"km" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river2)
+"lp" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	tag = "icon-beach (SOUTHEAST)";
+	icon_state = "beach";
+	dir = 6
+	},
+/area/lv624/ground/river2)
+"lW" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/river2)
+"lY" = (
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "asteroidwarning"
+	},
+/area/lv624/ground/river2)
+"mo" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river2)
+"mq" = (
+/obj/machinery/colony_floodlight,
+/turf/open/gm/dirt,
+/area/lv624/ground/river2)
+"mr" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river2)
+"ms" = (
+/obj/structure/jungle/planttop1,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river2)
+"mD" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle7)
+"mE" = (
+/obj/structure/jungle/plantbot1,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle7)
 
 (1,1,1) = {"
-jqjrjrjrjrabacacacadjrjTkm
-lpaaaaaakmaejVjVjVafkmaaaa
-aaaaaaaakmaejVjVjVafkmaaaa
-aaaaaaaakmaejVjVjVafkmaaaa
-aaaaaaaakmaejValjVafkmaaaa
-aaaaaaaakmaejVjVjVafkmaaaa
-aaaaaaaakmaejVjVjVafkmaaaa
-aaaaaaaakmaejVjVjVafkmaaaa
-aaaalWlWlWaglYlYlYahlWaaaa
-aamoaaaaaaaiaiaiaiaimqmrms
-mDaaaaaaaaaaaaaaaaaaaaaamE
-aaajaaajakaaaaaaaaaaaaajak
-aaaaajaaaaajakajajajajaaaa
+jq
+lp
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+mD
+aa
+aa
+"}
+(2,1,1) = {"
+jr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+mo
+aa
+aj
+aa
+"}
+(3,1,1) = {"
+jr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+lW
+aa
+aa
+aa
+aj
+"}
+(4,1,1) = {"
+jr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+lW
+aa
+aa
+aj
+aa
+"}
+(5,1,1) = {"
+jr
+km
+km
+km
+km
+km
+km
+km
+lW
+aa
+aa
+ak
+aa
+"}
+(6,1,1) = {"
+ab
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ag
+ai
+aa
+aa
+aj
+"}
+(7,1,1) = {"
+ac
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+lY
+ai
+aa
+aa
+ak
+"}
+(8,1,1) = {"
+ac
+jV
+jV
+jV
+al
+jV
+jV
+jV
+lY
+ai
+aa
+aa
+aj
+"}
+(9,1,1) = {"
+ac
+jV
+jV
+jV
+jV
+jV
+jV
+jV
+lY
+ai
+aa
+aa
+aj
+"}
+(10,1,1) = {"
+ad
+af
+af
+af
+af
+af
+af
+af
+ah
+ai
+aa
+aa
+aj
+"}
+(11,1,1) = {"
+jr
+km
+km
+km
+km
+km
+km
+km
+lW
+mq
+aa
+aa
+aj
+"}
+(12,1,1) = {"
+jT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+mr
+aa
+aj
+aa
+"}
+(13,1,1) = {"
+km
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ms
+mE
+ak
+aa
 "}

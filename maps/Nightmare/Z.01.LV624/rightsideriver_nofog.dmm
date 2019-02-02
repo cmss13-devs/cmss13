@@ -1,44 +1,222 @@
-"a" = (/turf/open/gm/dirt,/area/lv624/ground/river3)
-"b" = (/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/jungle8)
-"c" = (/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"d" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle8)
-"e" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle8)
-"f" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner2"},/area/lv624/ground/jungle8)
-"g" = (/turf/open/gm/dirtgrassborder,/area/lv624/ground/jungle8)
-"h" = (/turf/open/gm/dirtgrassborder{dir = 1; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle8)
-"i" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/gm/dirt,/area/lv624/ground/river3)
-"j" = (/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/river3)
-"k" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/river3)
-"l" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8},/area/lv624/ground/river3)
-"m" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 1; icon_state = "beachcorner"},/area/lv624/ground/river3)
-"n" = (/obj/structure/flora/ausbushes/reedbush,/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 8},/area/lv624/ground/river3)
-"o" = (/obj/structure/flora/ausbushes/stalkybush,/turf/open/gm/dirt,/area/lv624/ground/river3)
-"p" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/dirt,/area/lv624/ground/river3)
-"q" = (/obj/structure/flora/ausbushes/fullgrass,/turf/open/gm/dirt,/area/lv624/ground/river3)
-"r" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle5)
-"s" = (/obj/structure/jungle/plantbot1{icon_state = "alienplant1"; luminosity = 2},/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/river3)
-"t" = (/obj/effect/landmark/lv624/fog_time_extender,/turf/open/gm/dirt,/area/lv624/ground/river3)
-"v" = (/obj/structure/flora/ausbushes/reedbush,/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/river3)
-"y" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/coast{dir = 4; icon_state = "beachcorner"},/area/lv624/ground/river3)
-"A" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle5)
-"B" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle5)
-"C" = (/turf/open/gm/grass,/area/lv624/ground/jungle5)
-"D" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle5)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river3)
+"b" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle8)
+"c" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"d" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle8)
+"e" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle8)
+"f" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle8)
+"g" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/jungle8)
+"h" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle8)
+"i" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/river3)
+"j" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/river3)
+"k" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/river3)
+"l" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/river3)
+"m" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river3)
+"n" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/river3)
+"o" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/river3)
+"p" = (
+/obj/structure/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/river3)
+"q" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/open/gm/dirt,
+/area/lv624/ground/river3)
+"r" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle5)
+"s" = (
+/obj/structure/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/river3)
+"t" = (
+/obj/effect/landmark/lv624/fog_time_extender,
+/turf/open/gm/dirt,
+/area/lv624/ground/river3)
+"v" = (
+/obj/structure/flora/ausbushes/reedbush,
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/river3)
+"y" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river3)
+"A" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle5)
+"B" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle5)
+"C" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle5)
+"D" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle5)
 
 (1,1,1) = {"
-abcde
-afghe
-aaijk
-maajv
-liajk
-naask
-latjk
-laojk
-laajk
-lapjv
-yqajk
-AAArB
-CCCBB
-CDDBB
-CCCBB
+a
+a
+a
+m
+l
+n
+l
+l
+l
+l
+y
+A
+C
+C
+C
+"}
+(2,1,1) = {"
+b
+f
+a
+a
+i
+a
+a
+a
+a
+a
+q
+A
+C
+D
+C
+"}
+(3,1,1) = {"
+c
+g
+i
+a
+a
+a
+t
+o
+a
+p
+a
+A
+C
+D
+C
+"}
+(4,1,1) = {"
+d
+h
+j
+j
+j
+s
+j
+j
+j
+j
+j
+r
+B
+B
+B
+"}
+(5,1,1) = {"
+e
+e
+k
+v
+k
+k
+k
+k
+k
+v
+k
+B
+B
+B
+B
 "}

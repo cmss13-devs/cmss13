@@ -1,8 +1,9 @@
 /obj/machinery/door/window
-	name = "interior door"
-	desc = "A strong door."
+	name = "Glass door"
+	desc = "A window, that is also a door. A windoor if you will."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
+	layer = WINDOW_LAYER
 	var/base_state = "left"
 	var/health = 150.0 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	visible = 0.0
@@ -14,7 +15,8 @@
 	air_properties_vary_with_direction = 1
 
 	New()
-		..()
+		spawn(0)
+			update_icon()
 		if (src.req_access && src.req_access.len)
 			src.icon_state = "[src.icon_state]"
 			src.base_state = src.icon_state
@@ -23,6 +25,15 @@
 		density = 0
 		playsound(src, "shatter", 50, 1)
 		. = ..()
+
+//Enforces perspective layering like it's contemporary; windows.
+/obj/machinery/door/window/update_icon(loc, direction)
+	if(direction)
+		dir = direction
+	switch(dir)
+		if(NORTH) layer = ABOVE_TABLE_LAYER
+		if(SOUTH) layer = ABOVE_MOB_LAYER
+		else layer = initial(layer)
 
 /obj/machinery/door/window/Bumped(atom/movable/AM as mob|obj)
 	if (!( ismob(AM) ))
@@ -233,12 +244,12 @@
 
 
 /obj/machinery/door/window/brigdoor
-	name = "Secure Door"
+	name = "Secure glass door"
 	icon = 'icons/obj/doors/windoor.dmi'
-	icon_state = "leftsecure"
-	base_state = "leftsecure"
+	icon_state = "left"
+	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
 	req_access = list(ACCESS_MARINE_BRIG)
-	health = 300.0 //Stronger doors for prison (regular window door health is 200)
+	health = 300.0 //Stronger doors for prison (regular window door health is 150)
 
 
 /obj/machinery/door/window/northleft
@@ -287,20 +298,20 @@
 
 /obj/machinery/door/window/brigdoor/northright
 	dir = NORTH
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"
 
 /obj/machinery/door/window/brigdoor/eastright
 	dir = EAST
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"
 
 /obj/machinery/door/window/brigdoor/westright
 	dir = WEST
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"
 
 /obj/machinery/door/window/brigdoor/southright
 	dir = SOUTH
-	icon_state = "rightsecure"
-	base_state = "rightsecure"
+	icon_state = "right"
+	base_state = "right"

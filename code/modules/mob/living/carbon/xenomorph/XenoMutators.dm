@@ -167,7 +167,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.speed_boost -= 0.2 //not a multiplier since speed is both positive and negative :P
+	MS.speed_multiplier *= 0.9
 	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/speed_flaw
@@ -181,7 +181,7 @@
 	. = ..()
 	if(. == 0)
 		return
-	MS.speed_boost += 0.2 //not a multiplier since speed is both positive and negative :P
+	MS.speed_multiplier *= 1.1
 	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/acid
@@ -190,7 +190,7 @@
 	description = "Your acid strengthens."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Drone", "Hivelord", "Praetorian", "Queen", "Sentinel", "Spitter") //Only for acid classes, except for Boiler
+	caste_whitelist = list("Burrower", "Drone", "Hivelord", "Praetorian", "Queen", "Sentinel", "Spitter") //Only for acid classes, except for Boiler
 
 /datum/xeno_mutator/acid/apply_mutator(datum/mutator_set/MS)
 	. = ..()
@@ -277,6 +277,25 @@
 	if(. == 0)
 		return
 	MS.gas_boost_level += 1
+	MS.recalculate_actions(description)
+
+/datum/xeno_mutator/lingering_gas
+	//Boiler gas lasts longer before dissipating
+	name = "KEYSTONE - Lingering gas"
+	description = "Your gas thickens."
+	cost = MUTATOR_COST_EXPENSIVE
+	unique = TRUE //Can only buy once
+	individual_only = TRUE //Only for individuals
+	caste_whitelist = list("Boiler") //Only for Boiler
+	keystone = TRUE
+
+/datum/xeno_mutator/lingering_gas/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	if(!istype(MS))
+		return 0
+	. = ..()
+	if(. == 0)
+		return
+	MS.gas_life_multiplier *= 1.5
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/faster_maturation
@@ -457,7 +476,7 @@
 	description = "Your claws secrete acid."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Drone", "Hivelord", "Praetorian", "Queen", "Sentinel", "Spitter", "Boiler") //Only for acid classes
+	caste_whitelist = list("Burrower", "Drone", "Hivelord", "Praetorian", "Queen", "Sentinel", "Spitter", "Boiler") //Only for acid classes
 	keystone = TRUE
 
 /datum/xeno_mutator/acid_claws/apply_mutator(datum/mutator_set/individual_mutators/MS)

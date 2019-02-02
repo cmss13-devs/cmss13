@@ -1,24 +1,83 @@
 
-
 /datum/equipment_preset/colonist
 	name = "Colonist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Colonist"
 	special_role = "MODE"
+	faction = "Colonists"
 
+	access = list(ACCESS_CIVILIAN_PUBLIC)
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 
-/datum/equipment_preset/colonist/load_name(mob/living/carbon/human/H, var/randomise)
-	H.gender = pick(MALE, FEMALE)
-	var/datum/preferences/A = new
-	A.randomize_appearance_for(H)
-	H.real_name = capitalize(pick(H.gender == MALE ? first_names_male : first_names_female)) + " " + capitalize(pick(last_names))
-	H.name = H.real_name
-	H.age = rand(21,45)
-
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/colonist/engineer
+	name = "Colonist - Engineer"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "Colonial Engineer"
+
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING)
+	skills = /datum/skills/MT
+
+/datum/equipment_preset/colonist/engineer/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/eng(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+
+	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/colonist/security
+	name = "Colonist - Security"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "Colonial Security"
+
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH)
+	skills = /datum/skills/MP
+
+/datum/equipment_preset/colonist/security/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec(H), WEAR_HEAD)
+
+	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
+	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/colonist/doctor
+	name = "Colonist - Doctor"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "Colonial Doctor"
+
+	//Marine access is required to use chem dispensers...
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
+	skills = /datum/skills/doctor
+
+/datum/equipment_preset/colonist/doctor/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
+
 	H.equip_to_slot(new /obj/item/weapon/combat_knife(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)

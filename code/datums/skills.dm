@@ -181,6 +181,7 @@
 	pilot = SKILL_PILOT_TRAINED
 	powerloader = SKILL_POWERLOADER_DABBLING
 	leadership = SKILL_LEAD_TRAINED
+	medical = SKILL_MEDICAL_CHEM
 
 /datum/skills/MP
 	name = "Military Police"

@@ -303,7 +303,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	cmd_admin_change_their_hivenumber(X)
 
-//This is only for right-click drop-down menu, hence no category
 /client/proc/cmd_admin_change_their_hivenumber(var/mob/living/carbon/Xenomorph/X)
 	set category = "Admin"
 	set name = "Change Their Hivenumber"
@@ -336,6 +335,20 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins("\blue [key_name(src)] changed hivenumber of [X] to [X.hivenumber].", 1)
 
+
+/client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
+	set category = "Admin"
+	set name = "Change Their Name"
+
+	var/newname = input(usr, "What do you want to name them?", "Name:") as null|text
+
+	if(!X)
+		usr << "This mob no longer exists"
+		return
+
+	X.name = newname
+	feedback_add_details("admin_verb","CHTN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	message_admins("\blue [key_name(src)] changed name of [X] to [newname].", 1)
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"

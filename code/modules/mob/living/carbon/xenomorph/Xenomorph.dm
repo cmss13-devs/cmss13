@@ -53,7 +53,8 @@
 	//Variables that can be mutated
 	health = 5
 	maxHealth = 5
-	var/speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	speed = -0.5 //Speed bonus/penalties. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
+	var/speed_multiplier = 1.0 //For speed mutator
 	var/ability_speed_modifier = 0.0 //Things that add on top of our base speed, based on what powers we are using
 	melee_damage_lower = 5
 	melee_damage_upper = 10
@@ -69,6 +70,7 @@
 	var/weed_level = 1
 	var/acid_level = 0
 	var/gas_level = 0
+	var/gas_life_multiplier = 1.0
 
 	var/upgrade_threshold = 200
 	var/evolution_threshold = 200
@@ -444,11 +446,8 @@
 		plasma_stored = plasma_max
 
 /mob/living/carbon/Xenomorph/proc/recalculate_speed()
-	speed = caste.speed + mutators.speed_boost + hive.mutators.speed_boost
-	if(isXenoWarrior(src)) // because of the warrior speed bug.
-		if(agility)
-			speed = speed + caste.agility_speed_increase
-
+	speed = caste.speed
+	speed_multiplier = mutators.speed_multiplier * hive.mutators.speed_multiplier
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
@@ -512,6 +511,7 @@
 
 /mob/living/carbon/Xenomorph/proc/recalculate_gas()
 	gas_level = mutators.gas_boost_level
+	gas_life_multiplier = mutators.gas_life_multiplier
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)

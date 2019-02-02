@@ -111,7 +111,13 @@
 	return 0
 
 /mob/proc/movement_delay()
+	switch(m_intent)
+		if(MOVE_INTENT_RUN)
+			. = 2 + config.run_speed
+		if(MOVE_INTENT_WALK)
+			. = 7 + config.walk_speed
 	. += next_move_slowdown
+	. += speed
 	next_move_slowdown = 0
 
 /mob/proc/Life()
@@ -555,7 +561,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 
 /mob/proc/facedir(var/ndir)
-	if(!canface())	return 0	
+	if(!canface())	return 0
 	dir = ndir
 	if(buckled && !buckled.anchored)
 		buckled.dir = ndir

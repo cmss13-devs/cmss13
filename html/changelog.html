@@ -42,7 +42,7 @@
 			<font size='2'><b>Head Developer:</b> Deanthelis<br></font>
 			<font size='2'><b>Head Manager:</b> Emerald Blood<br></font>
 			<font size='2'><b>Repo Maintainers:</b> Phil235, Dylanstrategie<br></font>
-			<font size='2'><b>Coders:</b> Apophis, Rahlzel, Abbysynth, Infernus, MadSnailDisease, forwardslashN, SnipeDragon, Dylanstrategie, BMC777, Hikato, Phil235, Spookydonut, Chowder McArthor, NGGJamie, Deanthelis, Awan, NethIafins, ThePiachu, Alexshreds<br></font>
+			<font size='2'><b>Coders:</b> Apophis, Rahlzel, Abbysynth, Infernus, MadSnailDisease, forwardslashN, SnipeDragon, Dylanstrategie, BMC777, Hikato, Phil235, Spookydonut, Chowder McArthor, NGGJamie, Deanthelis, Awan, NethIafins, ThePiachu, Alexshreds, MattAtlas<br></font>
 			<font size='2'><b>Mappers:</b> Abbysynth, Apophis, Allan, Infernus, Rahlzel, Minijar, BMC777, RavingManiac, Artouris, Snypehunter007, Ribbonflex, Okand37, Cakey<br></font>
 			<font size='2'><b>Spriters:</b> Secretstamos (Joshuu), Arefrigerator, Monkeysfist101, Infernus, Artouris, Gorg, NicBoone, Spheretech, Pixcellent, Triiodine<br></font>
 			<font size='2'><b>Sounds:</b> Rahlzel<br></font>
@@ -103,7 +103,89 @@ should be listed in the changelog upon commit though. Thanks. -->
 
 
 
+
 <!----------------------------------------------------PUT YOUR CHANGELOG ABOVE HERE---------------------------------------------------->
+
+<div class='commit sansserif'>
+	<h2 class='date'>February 1 2019</h2>
+	<h3 class='author'>Triiodine updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='bugfix'>Fixed a silly with Win-door layering.</li>
+	</ul>
+	<h3 class='author'>Neth Iafin updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='tweak'>Buckshot secondary pellet spread increased so that most of shells land 2 tiles infort of you but quickly spread.</li>
+		<li class='tweak'>Maximum and minimum buckshot damage variance has been reduced. It has less chance to instakill and less chance to do almost no damage.</li>
+		<li class='tweak'>No other changes were made to buckshot, so it still damages well even at 4-5 tiles, but chance of getting hit by all 4 pellets at that range is close to none even with attachments.</li>
+	</ul>
+</div>
+
+<div class='commit sansserif'>
+	<h2 class='date'>January 31 2019</h2>
+	<h3 class='author'>ThePiachu updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='rscadd'>Added a new Keystone Mutator for Boiler - Lingering Gas. It makes their gas linger for longer before dissipating.</li>
+		<li class='tweak'>Queen has stronger weeds by default.</li>
+		<li class='bugfix'>Burrowers can't burrow on a dropship or into space anymore.</li>
+		<li class='tweak'>Burrowers now have acid.</li>
+		<li class='tweak'>Every acid-producing caste can arm acid traps.</li>
+		<li class='tweak'>Acid traps come in different potencies based on acid used to arm them.</li>
+		<li class='bugfix'>Predator gear tracker should work correctly now.</li>
+		<li class='tweak'>Predator gear tracker now displays the name of the location the tracked item is in.</li>
+		<li class='tweak'>Predator armour now has uniform defence values and protection areas across all looks.</li>
+		<li class='tweak'>By the grace of the Predator Council, previously restricted armour and mask variants have been unlocked for all Yautja to enjoy. Elder items still remain event-only.</li>
+		<li class='tweak'>Synths now spawn with MP channel in their radio.</li>
+		<li class='tweak'>Gear presets should dictate what faction you belong to in terms of FF.</li>
+		<li class='rscadd'>Added a few more colonist gear presets for admins - engineer, security and doctor.</li>
+		<li class='rscadd'>Added a few more fun gear presets for admins - pirate, pirate captain.</li>
+		<li class='rscadd'>Added ERTs based on those presets for admins.</li>
+		<li class='tweak'>Speed has been refactored - it's no longer black magic that devs had issue handling for awhile.</li>
+		<li class='tweak'>Speed mutators have been refactored to multiply xeno's speed after everything else has been taken into consideration. Expect fastest castes to be a bit slower, but slowest castes to be a touch faster. Overall, xenos shouldn't break the speed barrier of the game anymore.</li>
+	</ul>
+</div>
+
+<div class='commit sansserif'>
+	<h2 class='date'>January 30 2019</h2>
+	<h3 class='author'>MattAtlas updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='rscdel'>The T3/T4 anti-bodyblock mechanic has been removed.</li>
+		<li class='rsctweak'>Synthetics can no longer wear armour unless their programming is overridden.</li>
+		<li class='rsctweak'>Synthetic gun usage is now a variable instead of a global toggle.</li>
+	</ul>
+	<h3 class='author'>Triiodine updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='tweak'>Changed the description of windows and windoors.</li>
+		<li class='tweak'>Changed how window layering works. No more standing above glass in the briefing box.</li>
+		<li class='imageadd'>Implemented NicBoone's lovely window & windoor sprites from long ago.</li>
+	</ul>
+</div>
+
+<div class='commit sansserif'>
+	<h2 class='date'>January 29 2019</h2>
+	<h3 class='author'>MattAtlas updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='rscadd'>The Yautja combi-stick can now be called back via the Yank Combistick verb.</li>
+		<li class='rsctweak'>The combi-stick now does more melee damage.</li>
+		<li class='rsctweak'>Wrist scimitar damage has been nerfed to be on the Chainwhip's level.</li>
+		<li class='rsctweak'>The double war scythe does very slightly less damage.</li>
+		<li class='rsctweak'>Predators can now adjust their self destruct size to either small or big.</li>
+		<li class='rscadd'>Self-splinting is now a guaranteed chance, although the process is longer.</li>
+		<li class='rscadd'>Light general pouches in the Marine vendor have been replaced with medium ones. You can also buy large pouches instead of medium ones.</li>
+		<li class='rscadd'>You can now choose which type of armour style you want from the uniform vendors. They are not mechanically different.</li>
+		<li class='rscadd'>Specialist weapons are now unacidable.</li>
+		<li class='rscadd'>Squad Marines and others with equal medical skill can now use full autoinjectors with a small delay.</li>
+		<li class='rscadd'>Smartgun wield delay has been considerably reduced.</li>
+		<li class='rscadd'>All pump shotguns now lock the pumping mechanism if they've already been pumped.</li>
+		<li class='rscadd'>Pilot Officers now have SL-level medical skill.</li>
+	</ul>
+	<h3 class='author'>ThePiachu updated:</h3>
+	<ul class='changes bgimages16'>
+		<li class='rscadd'>Mods can now change mobs' names (to be used when someone spawns with an inappropriate name).</li>
+		<li class='rscadd'>Admins now can add xeno larvas to human mobs via the Player Panel. Beware of xeno trojan horses!</li>
+		<li class='tweak'>Corrupted Hives should be able to set Hive Orders correctly now.</li>
+		<li class='bugfix'>Fixed some runtime errors.</li>
+	</ul>
+</div>
 
 <div class='commit sansserif'>
 	<h2 class='date'>January 28 2019</h2>

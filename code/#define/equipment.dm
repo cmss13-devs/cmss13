@@ -27,6 +27,7 @@
 #define	NOREACT					64		//Reagents dont' react inside this container.
 #define OPENCONTAINER			128		//is an open container for chemistry purposes
 #define RELAY_CLICK				256		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs + Sentries ~Art
+#define ITEM_UNCATCHABLE		512 	// The item can't be caught out of the air.
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -42,7 +43,7 @@
 #define DELONDROP				8	// Deletes on drop instead of falling on the floor.
 #define TWOHANDED				16	// The item is twohanded.
 #define WIELDED					32	// The item is wielded with both hands.
-#define	ITEM_ABSTRACT			64	//The item is abstract (grab, powerloader_clamp, etc)
+#define	ITEM_ABSTRACT			64	// The item is abstract (grab, powerloader_clamp, etc)
 
 //==========================================================================================
 

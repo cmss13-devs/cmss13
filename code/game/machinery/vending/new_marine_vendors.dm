@@ -308,7 +308,7 @@
 		list("Revolver belt", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, "black"),
 
 		list("POUCHES (choose 2)", 0, null, null, null),
-		list("Light general pouch", 0, /obj/item/storage/pouch/general, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+		list("Medium general pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Flare pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "orange"),
 		list("Document pouch", 0, /obj/item/storage/pouch/document, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Firstaid pouch", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "orange"),
@@ -332,7 +332,7 @@
 		list("M41A extended magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("M41A skeleton stock", 15, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
-		list("Medium general pouch", 15, /obj/item/storage/pouch/general/medium, null, "black"),
+		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
 		list("Red-dot sight", 15, /obj/item/attachable/reddot, null, "black"),
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
@@ -714,7 +714,7 @@
 	vendor_role = "Synthetic"
 
 	listed_products = list(
-		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "orange"),
+		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, "orange"),
 
 		list("UNIFORM (choose 1)", 0, null, null, null),
 		list("Medical scrubs, green", 0, /obj/item/clothing/under/rank/medical/green, MARINE_CAN_BUY_UNIFORM, "black"),

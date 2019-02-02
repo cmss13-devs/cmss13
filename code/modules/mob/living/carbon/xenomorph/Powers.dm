@@ -103,7 +103,7 @@
 	ability_speed_modifier += 2
 	do_acid_spray_cone(target)
 	spawn(rand(20,30))
-		ability_speed_modifier -= 2
+		ability_speed_modifier = 0
 
 	spawn(caste.acid_spray_cooldown)
 		used_acid_spray = 0
@@ -678,7 +678,7 @@
 	round_statistics.defender_crest_raises++
 	src << "<span class='xenowarning'>You raise your crest.</span>"
 	armor_deflection_buff -= 25
-	ability_speed_modifier -= 0.8
+	ability_speed_modifier = 0
 	update_icons()
 	do_crest_defense_cooldown()
 
@@ -837,12 +837,16 @@
 		src << "<span class='notice'>You can't tunnel there!.</span>"
 		return
 
-	if(T.z == MAIN_SHIP_Z_LEVEL)
+	if(!(T.z in SURFACE_Z_LEVELS)) //Can't burrow on Almayer or in the dropships, also not in the admin level. Pretty much only surface!
 		src << "<span class='xenowarning'>The decking is too hard to tunnel through!</span>"
 		return
 
 	if(T.density)
 		src << "<span class='xenowarning'>You can't tunnel into a solid wall!</span>"
+		return
+
+	if(istype(T, /turf/open/space))
+		src << "<span class='xenowarning'>You can't tunnel there!</span>"
 		return
 
 	for(var/obj/O in T.contents)

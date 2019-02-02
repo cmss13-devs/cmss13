@@ -166,12 +166,7 @@
 
 	if(isturf(mob.loc))
 		mob.last_move_intent = world.time + 10
-		switch(mob.m_intent)
-			if(MOVE_INTENT_RUN)
-				move_delay = 2 + config.run_speed
-			if(MOVE_INTENT_WALK)
-				move_delay = 7 + config.walk_speed
-		move_delay += mob.movement_delay()
+		move_delay = mob.movement_delay()
 		//We are now going to move
 		moving = 1
 

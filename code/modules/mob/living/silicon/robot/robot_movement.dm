@@ -15,8 +15,6 @@
 /mob/living/silicon/robot/movement_delay()
 	. = ..()
 
-	. += speed
-
 	if(module_active && istype(module_active, /obj/item/robot/combat/mobility))
 		. -= 3
 

@@ -11,7 +11,7 @@
 	var/health_multiplier = 1.0
 	var/plasma_multiplier = 1.0
 	var/plasma_gain_multiplier = 1.0
-	var/speed_boost = 0.0
+	var/speed_multiplier = 1.0
 	var/damage_multiplier = 1.0
 	var/armor_multiplier = 1.0
 	var/acid_boost_level = 0
@@ -135,7 +135,7 @@
 	health_multiplier = 1.0
 	plasma_multiplier = 1.0
 	plasma_gain_multiplier = 1.0
-	speed_boost = 0.0
+	speed_multiplier = 1.0
 	damage_multiplier = 1.0
 	armor_multiplier = 1.0
 	acid_boost_level = 0
@@ -210,6 +210,7 @@
 	var/need_weeds = TRUE
 	var/charge_speed_buildup_multiplier = 1.0
 	var/charge_turfs_to_charge_delta = 0
+	var/gas_life_multiplier = 1.0
 
 /datum/mutator_set/individual_mutators/proc/user_levelled_up(var/new_level)
 	if(xeno.hardcore)

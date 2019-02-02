@@ -42,15 +42,12 @@
 	stat(null, "Mutator points: [mutators.remaining_points]")
 	if(isXenoQueenLeadingHive(src))
 		stat(null, "Hive Mutator points: [hive.mutators.remaining_points]")
-	if(hivenumber != XENO_HIVE_CORRUPTED)
-		if(hive.slashing_allowed == 1)
-			stat(null,"Slashing of hosts is currently: PERMITTED.")
-		else if(hive.slashing_allowed == 2)
-			stat(null,"Slashing of hosts is currently: LIMITED.")
-		else
-			stat(null,"Slashing of hosts is currently: FORBIDDEN.")
+	if(hive.slashing_allowed == 1)
+		stat(null,"Slashing of hosts is currently: PERMITTED.")
+	else if(hive.slashing_allowed == 2)
+		stat(null,"Slashing of hosts is currently: LIMITED.")
 	else
-		stat(null,"Slashing of hosts is decided by your masters.")
+		stat(null,"Slashing of hosts is currently: FORBIDDEN.")
 
 	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
 	var/msg_holder = ""
@@ -79,12 +76,8 @@
 			if(4.0 to INFINITY) msg_holder = "very strong "
 		stat(null,"You are affected by a [msg_holder]RECOVERY pheromone.")
 
-
-	if(hivenumber != XENO_HIVE_CORRUPTED)
-		if(hive.hive_orders && hive.hive_orders != "")
-			stat(null,"Hive Orders: [hive.hive_orders]")
-	else
-		stat(null,"Hive Orders: Follow the instructions of your masters")
+	if(hive.hive_orders && hive.hive_orders != "")
+		stat(null,"Hive Orders: [hive.hive_orders]")
 
 	return 1
 
@@ -143,11 +136,13 @@
 /mob/living/carbon/Xenomorph/movement_delay()
 	. = ..()
 
-	. += speed
 	. += ability_speed_modifier
 
 	if(frenzy_aura)
 		. -= (frenzy_aura * 0.05)
+
+	if(agility)
+		. += caste.agility_speed_increase
 
 	if(is_charging)
 		if(legcuffed)
@@ -165,6 +160,12 @@
 					stop_momentum() //This should disallow rapid turn bumps
 				else
 					handle_momentum()
+
+	if(weedwalking_activated)
+		if(locate(/obj/effect/alien/weeds) in loc)
+			. -= 1.5
+
+	. *= speed_multiplier
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return

@@ -402,10 +402,10 @@ updatehealth()
 
 		if(isXenoHivelord(src))
 			var/mob/living/carbon/Xenomorph/Hivelord/H = src
-			if(H.speed_activated)
+			if(H.weedwalking_activated)
 				plasma_stored -= 30
 				if(plasma_stored < 0)
-					H.speed_activated = 0
+					H.weedwalking_activated = 0
 					src << "<span class='warning'>You feel dizzy as the world slows down.</span>"
 
 		if(current_aura)
@@ -437,10 +437,10 @@ updatehealth()
 
 		if(isXenoHivelord(src))
 			var/mob/living/carbon/Xenomorph/Hivelord/H = src
-			if(H.speed_activated)
+			if(H.weedwalking_activated)
 				plasma_stored -= 30
 				if(plasma_stored < 0)
-					H.speed_activated = 0
+					H.weedwalking_activated = 0
 					src << "<span class='warning'>You feel dizzy as the world slows down.</span>"
 
 		if(current_aura)

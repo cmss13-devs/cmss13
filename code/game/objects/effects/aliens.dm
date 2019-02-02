@@ -48,9 +48,11 @@
 	layer = ABOVE_OBJ_LAYER
 	mouse_opacity = 0
 	flags_pass = PASSTABLE|PASSMOB|PASSGRILLE
+	var/acid_strength = 1
 
-/obj/effect/xenomorph/spray/New() //Self-deletes
-	..()
+/obj/effect/xenomorph/spray/New(loc, var/acid_level = 1) //Self-deletes
+	..(loc)
+	acid_strength = acid_level
 	processing_objects.Add(src)
 	spawn(30 + rand(0, 20))
 		processing_objects.Remove(src)
@@ -66,14 +68,14 @@
 			H.emote("pain")
 			H.KnockDown(3)
 			var/datum/limb/affecting = H.get_limb("l_foot")
-			if(istype(affecting) && affecting.take_damage(0, rand(5, 10)))
+			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
 				H.UpdateDamageIcon()
 			affecting = H.get_limb("r_foot")
-			if(istype(affecting) && affecting.take_damage(0, rand(5, 10)))
+			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
 				H.UpdateDamageIcon()
 			H.updatehealth()
 		else
-			H.adjustFireLoss(rand(2, 5)) //This is ticking damage!
+			H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
 			H << "<span class='danger'>You are scalded by the burning acid!</span>"
 
 /obj/effect/xenomorph/spray/process()

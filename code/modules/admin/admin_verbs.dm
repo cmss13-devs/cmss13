@@ -73,7 +73,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggledrones,
 	/client/proc/change_security_level, /* Changes alert levels*/
 	/client/proc/toggle_gun_restrictions,
-	/client/proc/toggle_synthetic_restrictions,
 	/client/proc/adjust_weapon_mult,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
@@ -84,6 +83,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/allow_character_respawn,    /* Allows a ghost to respawn */
 	/datum/admins/proc/viewCLFaxes,
 	/datum/admins/proc/viewUSCMFaxes,
+	/client/proc/cmd_admin_change_their_name,
 	/datum/admins/proc/force_predator_round, //Force spawns a predator round.
 	/client/proc/check_round_statistics,
 	/client/proc/award_medal,
@@ -250,8 +250,9 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/enable_debug_verbs,
 	/proc/possess,
 	/proc/release,
-	/client/proc/remove_players_from_vic
-	)
+	/client/proc/remove_players_from_vic,
+)
+
 var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,	/*admin-pm list*/
@@ -283,7 +284,8 @@ var/list/admin_verbs_mod = list(
 	/proc/release,
 	/datum/admins/proc/viewUnheardAhelps, //Why even have it as a client proc anyway?  �\_("/)_/�
 	/datum/admins/proc/viewCLFaxes,
-	/datum/admins/proc/viewUSCMFaxes
+	/datum/admins/proc/viewUSCMFaxes,
+	/client/proc/cmd_admin_change_their_name,
 )
 
 var/list/admin_verbs_mentor = list(
@@ -298,7 +300,7 @@ var/list/admin_verbs_mentor = list(
 	/client/proc/cmd_admin_subtle_message,
 	/datum/admins/proc/viewUnheardAhelps,
 	/datum/admins/proc/viewCLFaxes,
-	/datum/admins/proc/viewUSCMFaxes
+	/datum/admins/proc/viewUSCMFaxes,
 )
 
 /client/proc/add_admin_verbs()
@@ -962,23 +964,6 @@ var/list/admin_verbs_mentor = list(
 			message_admins("Admin [key_name_admin(usr)] has disabled WY gun restrictions.", 1)
 			log_admin("[key_name(src)] disabled WY gun restrictions.")
 		config.remove_gun_restrictions = !config.remove_gun_restrictions
-
-/client/proc/toggle_synthetic_restrictions()
-	set name = "Toggle Synthetic Gun Use"
-	set desc = "Toggling to on will allow synthetics to fire guns. Leave this alone unless you know what you're doing."
-	set category = "Server"
-
-	if(!admin_holder)	return
-	if(config)
-		if(config.allow_synthetic_gun_use)
-			src << "<b>Synthetic gun use allowed.</b>"
-			message_admins("Admin [key_name_admin(usr)] has disabled synthetic gun use.", 1)
-			log_admin("[key_name(src)] disabled synthetic gun use.")
-		else
-			src << "<b>Synthetic gun use disallowed.</b>"
-			message_admins("Admin [key_name_admin(usr)] has synthetic gun use.", 1)
-			log_admin("[key_name(src)] allowed synthetic gun use.")
-		config.allow_synthetic_gun_use = !config.allow_synthetic_gun_use
 
 /client/proc/adjust_weapon_mult()
 	set name = "Adjust Weapon Multipliers"

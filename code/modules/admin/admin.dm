@@ -213,8 +213,9 @@ var/global/floorIsLava = 0
 	"}
 	
 	if(ishuman(M))
-		body += {"<br>
-		<A href='?src=\ref[src];zombieinfect=\ref[M]'>Infect with zombie virus</A>
+		body += {"
+		<br><A href='?src=\ref[src];zombieinfect=\ref[M]'>Infect with zombie virus</A>
+		<br><A href='?src=\ref[src];larvainfect=\ref[M]'>Infect with xeno larva</A>
 	"}
 
 	body += {"<br>

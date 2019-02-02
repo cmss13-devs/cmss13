@@ -39,11 +39,11 @@
 	unacidable = 1
 	anti_hug = 100
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,7), elder_restricted = 0)
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,11), elder_restricted = 0)
 	..()
 	loc = location
 
-	var/mask_input[] = list(1,2,3,4,5,6,7,185738,829275,385719,376628)
+	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11)
 	if(mask_number in mask_input) icon_state = "pred_mask[mask_number]"
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)
@@ -135,8 +135,8 @@
 	icon_state = "halfarmor1"
 	item_state = "armor"
 	sprite_sheet_id = 1
-	flags_armor_protection = UPPER_TORSO|ARM_LEFT
-	armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 75, bullet = 88, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
@@ -152,54 +152,34 @@
 			/obj/item/weapon/twohanded/glaive)
 	unacidable = 1
 
-/obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,5), elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
 	..()
 	loc = location
 
 	if(elder_restricted)
+		armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 		switch(armor_number)
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
-				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(7128)
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(9867)
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
-				flags_armor_protection = UPPER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			if(4879)
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
 	else
-		switch(armor_number)
-			if(2)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO|ARMS
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
-			if(3)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-				armor = list(melee = 75, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 20, rad = 20)
-			if(4)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO
-				armor = list(melee = 75, bullet = 88, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
-			if(5,441)
-				icon_state = "halfarmor[armor_number]"
-				flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-				armor = list(melee = 70, bullet = 80, laser = 55, energy = 65, bomb = 40, bio = 20, rad = 20)
+		if(armor_number > 6)
+			armor_number = 1
+		if(armor_number) //Don't change full armor number
+			icon_state = "halfarmor[armor_number]"
+
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
@@ -275,7 +255,7 @@
 	unacidable = 1
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
-	flags_armor_protection = FEET|LEGS
+	flags_armor_protection = FEET|LEGS|LOWER_TORSO
 	armor = list(melee = 75, bullet = 90, laser = 60, energy = 50, bomb = 40, bio = 20, rad = 20)
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
@@ -289,9 +269,6 @@
 	if(boot_number in boot_input)
 		icon_state = "y-boots[boot_number]"
 
-	if(boot_number != 1) //More overall protection, less defensive value.
-		flags_armor_protection = FEET|LEGS|LOWER_TORSO
-		armor = list(melee = 65, bullet = 85, laser = 55, energy = 45, bomb = 40, bio = 20, rad = 20)
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
@@ -359,6 +336,7 @@
 	var/inject_timer = 0
 	var/cloak_timer = 0
 	var/upgrades = 0
+	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
 
 /obj/item/clothing/gloves/yautja/New()
 	..()
@@ -463,8 +441,8 @@
 
 //We use this to activate random verbs for non-Yautja
 /obj/item/clothing/gloves/yautja/proc/activate_random_verb()
-	var/option = rand(1, 10)
-	//we have options from 1 to 7, but we're giving the user a higher probability of being punished if they already rolled this bad
+	var/option = rand(1, 11)
+	//we have options from 1 to 8, but we're giving the user a higher probability of being punished if they already rolled this bad
 	switch(option)
 		if(1)
 			. = wristblades_internal(TRUE)
@@ -480,6 +458,8 @@
 			. = call_disk_internal(TRUE)
 		if(7)
 			. = translate_internal(TRUE)
+		if(8)
+			. = call_combi(TRUE)
 		else
 			. = delimb_user()
 			//Council did not want this to ever happen
@@ -611,6 +591,7 @@
 	var/gear_low_orbit = 0
 	var/closest = 10000
 	var/direction = -1
+	var/atom/areaLoc = null
 	for(var/obj/item/I in yautja_gear)
 		var/atom/loc = get_true_location(I)
 		if (isYautja(loc))
@@ -628,6 +609,7 @@
 			if(dist < closest)
 				closest = dist
 				direction = get_dir(M,loc)
+				areaLoc = loc
 	for(var/mob/living/carbon/human/Y in yautja_mob_list)
 		if(Y.stat != DEAD) continue
 		switch(Y.z)
@@ -642,6 +624,7 @@
 			if(dist < closest)
 				closest = dist
 				direction = get_dir(M,Y)
+				areaLoc = loc
 
 	var/output = 0
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
@@ -651,7 +634,8 @@
 		output = 1
 		M << "<span class='notice'>Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit.</span>"
 	if(closest < 900)
-		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)].</span>"
+		var/areaName = get_area(areaLoc).name
+		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName].</span>"
 	if(!output)
 		M << "<span class='notice'>There are no signatures that require your attention.</span>"
 	return 1
@@ -797,14 +781,25 @@
 	var/turf/T = get_turf(victim)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
-		explosion(T, 2, 10, 15, 20) //Dramatically BIG explosion.
-		if(victim) victim.gib() //Adding one more safety.
+		if(victim) victim.gib() //Let's make sure they actually gib.
+		if(explosion_type == 0)
+			explosion(T, 2, 10, 15, 20) //Dramatically BIG explosion.
+		else
+			explosion(T, 1, 1, 1, 1)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
 	set desc = "Activate the explosive device implanted into your bracers. You have failed! Show some honor!"
 	set category = "Yautja"
 	. = activate_suicide_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/verb/change_explosion_type()
+	set name = "Change Explosion Type"
+	set desc = "Changes your bracer explosion to either only gib you or be a big explosion."
+	set category = "Yautja"
+	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
+		explosion_type = 0
+	else explosion_type = 1
 
 
 /obj/item/clothing/gloves/yautja/proc/activate_suicide_internal(var/forced = FALSE)
@@ -960,6 +955,35 @@
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
 		D.throw_at(usr,10,1,usr)
 	return 1
+
+/obj/item/clothing/gloves/yautja/verb/call_combi()
+	set name = "Yank Combi-stick"
+	set category = "Yautja"
+	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
+	. = call_combi_internal(FALSE)
+
+/obj/item/clothing/gloves/yautja/proc/call_combi_internal(var/forced = FALSE)
+	if(usr.is_mob_incapacitated())
+		return 0
+
+	if(!forced && !isYautja(usr))
+		var/option = should_activate_random_or_this_function()
+		if (option == 0)
+			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			return
+		if (option == 1)
+			. = activate_random_verb()
+			return
+
+	if(!drain_power(usr,70)) return
+
+	for(var/obj/item/weapon/combistick/C in range(7))
+		usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
+		new /obj/item/weapon/combistick(C.loc)
+		cdel(C)
+
+	for(var/obj/item/weapon/combistick/A in range(10))
+		A.throw_at(usr,10,1,usr)
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"
@@ -1321,7 +1345,7 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "scim"
 	item_state = "scim"
-	force = 50
+	force = 35
 	attack_speed = 18 //Will have the same speed as the glaive if there are two.
 	hitsound = 'sound/weapons/pierce.ogg'
 
@@ -1329,6 +1353,8 @@
 /obj/item/weapon/yautja_chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
+	icon = 'icons/obj/items/predator.dmi'
+	item_state = "chain"
 	icon_state = "whip"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -1485,7 +1511,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	sharp = IS_SHARP_ITEM_BIG
-	force = 32
+	force = 30
 	w_class = 4.0
 	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -1531,18 +1557,20 @@
 
 	return
 
-//Telescopic baton
+//Combistick
 /obj/item/weapon/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
+	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED
 	w_class = 4
 	force = 28
-	throwforce = 70
+	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
+	throwforce = 55
+	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_ACCURATE
 	attack_verb = list("speared", "stabbed", "impaled")
@@ -1644,7 +1672,20 @@
 
 	return
 
+/obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
+	if(!isYautja(user))
+		user.visible_message("<span class='notice'>You start to untangle the chain on \the [src]...")
+		if(do_mob(user, src, 30, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+			..()
+	else ..()
 
+/obj/item/weapon/combistick/throw_impact(atom/hit_atom)
+	if(isYautja(hit_atom) && istype(hit_atom,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = hit_atom
+		if(H.put_in_hands(src))
+			hit_atom.visible_message("<span class='notice'> [hit_atom] expertly catches [src] out of the air. </span>","<span class='notice'> You easily catch [src]. </span>")
+			return
+	..()
 
 //=================//\\=================\\
 //======================================\\

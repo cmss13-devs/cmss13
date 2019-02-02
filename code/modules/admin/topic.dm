@@ -1024,7 +1024,40 @@
 
 		log_admin("[key_name(usr)] infected [key_name(H)] with a ZOMBIE VIRUS")
 		message_admins("\blue [key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
+	else if(href_list["larvainfect"])
+		if(!check_rights(R_ADMIN))	return
+		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
+		if(!istype(H))
+			usr << "this can only be used on instances of type /human"
+			return
 
+		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
+			return
+		
+		var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
+		var/newhive = input(usr,"Select a hive.", null, null) in namelist
+
+		if(!H)
+			usr << "This mob no longer exists"
+			return
+		var/newhivenumber
+		switch(newhive)
+			if("Normal")
+				newhivenumber = XENO_HIVE_NORMAL
+			if("Corrupted")
+				newhivenumber = XENO_HIVE_CORRUPTED
+			if("Alpha")
+				newhivenumber = XENO_HIVE_ALPHA
+			if("Beta")
+				newhivenumber = XENO_HIVE_BETA
+			if("Zeta")
+				newhivenumber = XENO_HIVE_ZETA
+
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
+		embryo.hivenumber = newhivenumber
+
+		log_admin("[key_name(usr)] infected [key_name(H)] with a xeno ([newhive]) larva.")
+		message_admins("\blue [key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return
 
@@ -2554,8 +2587,6 @@
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>"
 			if("Fixed")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>"
-			if("Whitelist Player")
-				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Whitelisted players only get sanctioned through <a href='https://cm-ss13.com/viewforum.php?f=63'>player reports.</a> Staff is allowed to talk to whitelisted players to get their side or to investigate."
 			if("Thanks")
 				msgplayer = "\blue <b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>"
 			if("Marine Law")

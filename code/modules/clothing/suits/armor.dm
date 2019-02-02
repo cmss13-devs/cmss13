@@ -11,7 +11,12 @@
 	allowed = list(/obj/item/weapon/gun)//Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
 
-
+/obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
+	. = ..()
+	if (.)
+		if(isSynth(M) && M.allow_gun_usage == 0)
+			M.visible_message("<span class ='danger'>Your programming prevents you from wearing this!</span>")
+			return 0
 
 //armored vest
 

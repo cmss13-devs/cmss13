@@ -125,7 +125,23 @@ proc/listclearnulls(list/list)
 			return item
 
 	return null
-
+//Picks an element based upon its weight
+proc/pick_element_by_weight_byindex(list/L)
+  var/totalweight = 0
+  var/item
+  for(item in L)
+    var/weight = L[item]
+    if(isnull(weight))
+      weight = 1; L[item] = 1
+    totalweight += weight
+  totalweight *= rand()
+  for(var/i=1, i<=L.len, ++i)
+    var/weight = L[L[i]]
+    totalweight -= weight
+    if(totalweight < 0)
+      return i
+  return 0
+  
 //Pick a random element from the list and remove it from the list.
 /proc/pick_n_take(list/listfrom)
 	if (listfrom.len > 0)

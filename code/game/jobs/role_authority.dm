@@ -44,7 +44,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 												/datum/job/logistics,
 												/datum/job/logistics/tech,
 												/datum/job/marine)
-		var/squads_all[] = typesof(/datum/squad) - /datum/squad -/datum/squad/echo
+		var/squads_all[] = typesof(/datum/squad) - /datum/squad
 
 		if(!roles_all.len)
 			world << "<span class='debug'>Error setting up jobs, no job datums found.</span>"
@@ -522,8 +522,11 @@ roles willy nilly.
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/squads_copy = squads.Copy()
 	var/list/mixed_squads = list()
+	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
-		mixed_squads += pick_n_take(squads_copy)
+		var/datum/squad/S = pick_n_take(squads_copy)
+		if (S.usable)
+			mixed_squads += S
 
 	//Deal with non-standards first.
 	//Non-standards are distributed regardless of squad population.

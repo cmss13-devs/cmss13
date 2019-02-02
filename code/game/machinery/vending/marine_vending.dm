@@ -225,6 +225,7 @@
 		/obj/item/storage/pouch/flare/full = round(scale * 5),
 		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
 		/obj/item/storage/pouch/pistol = round(scale * 10),
+		/obj/item/storage/pouch/bayonet = round(scale * 1),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 3),
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 5),
 		/obj/item/weapon/gun/pistol/m1911 = round(scale * 3),
@@ -797,24 +798,32 @@
 
 /obj/machinery/vending/uniform_supply/New()
 	..()
-	var/products2[]
-	if(squad_tag != null) //probably some better way to slide this in but no sleep is no sleep.
-		switch(squad_tag)
-			if("Alpha")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/alpha = 20,
-								/obj/item/clothing/gloves/marine/alpha = 10)
-			if("Bravo")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/bravo = 20,
-								/obj/item/clothing/gloves/marine/bravo = 10)
-			if("Charlie")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/charlie = 20,
-								/obj/item/clothing/gloves/marine/charlie = 10)
-			if("Delta")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/delta = 20,
-								/obj/item/clothing/gloves/marine/delta = 10)
-	else
-		products2 = list(/obj/item/device/radio/headset/almayer = 10,
-						/obj/item/clothing/gloves/marine = 10)
+	var/products2 = list(
+		/obj/item/device/radio/headset/almayer = 10,
+		/obj/item/clothing/gloves/marine = 10,
+		//Encryption keys to slow into the headset, for customization
+		/obj/item/device/encryptionkey/alpha = 5,
+		/obj/item/device/encryptionkey/bravo = 5,
+		/obj/item/device/encryptionkey/charlie = 5,
+		/obj/item/device/encryptionkey/delta = 5,
+		/obj/item/device/encryptionkey/req = 5,
+		/obj/item/device/encryptionkey/engi = 5,
+	)
+
+	switch(squad_tag)
+		if("Alpha")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/alpha = 20,
+							/obj/item/clothing/gloves/marine/alpha = 10)
+		if("Bravo")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/bravo = 20,
+							/obj/item/clothing/gloves/marine/bravo = 10)
+		if("Charlie")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/charlie = 20,
+							/obj/item/clothing/gloves/marine/charlie = 10)
+		if("Delta")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/delta = 20,
+							/obj/item/clothing/gloves/marine/delta = 10)
+
 	build_inventory(products2)
 	marine_vendors.Add(src)
 

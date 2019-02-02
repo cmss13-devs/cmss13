@@ -65,6 +65,12 @@
 	usable = 1
 	radio_freq = DELTA_FREQ
 
+/datum/squad/echo
+	name = "Echo"
+	color = 5
+	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	usable = 0//Normally not usable
+	radio_freq = ECHO_FREQ
 
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.

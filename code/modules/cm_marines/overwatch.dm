@@ -881,6 +881,10 @@
 	icon_state = "deltadrop"
 	squad = "Delta"
 
+/obj/structure/supply_drop/echo //extra supply drop pad
+	icon_state = "echodrop"
+	squad = "Echo"
+
 //This is perhaps one of the weirdest places imaginable to put it, but it's a leadership skill, so
 /mob/living/carbon/human/verb/issue_order()
 

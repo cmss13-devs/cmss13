@@ -125,6 +125,7 @@ var/const/ALPHA_FREQ 	= 1449
 var/const/BRAVO_FREQ 	= 1451
 var/const/CHARLIE_FREQ 	= 1453
 var/const/DELTA_FREQ 	= 1455
+var/const/ECHO_FREQ 	= 1457
 
 var/const/PUB_FREQ 		= 1461
 

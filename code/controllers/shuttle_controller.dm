@@ -76,7 +76,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	// Supply shuttle
 	shuttle = new/datum/shuttle/ferry/supply()
 	shuttle.location = 1
-	shuttle.warmup_time = 3
+	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
 	for(var/area/A in all_areas)
 		if(A.type == /area/supply/dock)

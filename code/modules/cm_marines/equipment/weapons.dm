@@ -458,3 +458,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 			new /obj/item/storage/box/spec/demolitionist (T)
 			kits["Demo"] --
 	cdel(src)
+
+/obj/item/spec_kit/asrs
+	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
+	
+/obj/item/spec_kit/asrs/attack_self(mob/user)
+	if(user.mind && user.mind.assigned_role == "Squad Marine")
+		user.mind.cm_skills.spec_weapons = SKILL_SPEC_TRAINED
+	else
+		user << "<span class='notice'>This box is not for you, give it to a squad marine!</span>"
+	..()

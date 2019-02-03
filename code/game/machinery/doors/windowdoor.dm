@@ -240,13 +240,8 @@
 	else
 		return try_to_activate_door(user)
 
-
-
-
 /obj/machinery/door/window/brigdoor
 	name = "Secure glass door"
-	icon = 'icons/obj/doors/windoor.dmi'
-	icon_state = "left"
 	desc = "A thick chunk of tempered glass on metal track. Probably more robust than you."
 	req_access = list(ACCESS_MARINE_BRIG)
 	health = 300.0 //Stronger doors for prison (regular window door health is 150)

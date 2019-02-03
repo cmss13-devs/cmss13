@@ -390,7 +390,7 @@
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
-	desc = "A glass window with a rod matrice. It looks rather strong and opaque. Might take a few good hits to shatter it."
+	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
 	basestate = "twindow"
 	opacity = 1

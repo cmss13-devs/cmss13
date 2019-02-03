@@ -600,21 +600,20 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A non-standard heavy wooden stock for the M37 Shotgun. Less quick and more cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
 	slot = "stock"
 	icon_state = "stock"
-
+	wield_delay_mod = WIELD_DELAY_FAST
 	New()
 		..()
 		//it makes stuff much better when two-handed
 		accuracy_mod = config.med_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
-		delay_mod = config.min_fire_delay
 		movement_acc_penalty_mod = -1
 		//it makes stuff much worse when one handed
 		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = 0.5
+		aim_speed_mod = 0.25
 
 
 		matter = list("wood" = 2000)
@@ -666,6 +665,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "riflestock_a"
 	pixel_shift_x = 41
 	pixel_shift_y = 10
+	wield_delay_mod = WIELD_DELAY_FAST
 
 	New()
 		..()
@@ -673,14 +673,13 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = config.med_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
-		delay_mod = config.min_fire_delay
 		movement_acc_penalty_mod = -1
 		//it makes stuff much worse when one handed
 		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = 0.5
+		aim_speed_mod = 0.25
 
 
 /obj/item/attachable/stock/rifle/marksman
@@ -700,6 +699,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "smgstock_a"
 	pixel_shift_x = 39
 	pixel_shift_y = 11
+	wield_delay_mod = WIELD_DELAY_FAST
 
 	New()
 		..()
@@ -714,7 +714,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = 0.5
+		aim_speed_mod = 0.25
 
 
 /obj/item/attachable/stock/smg/collapsible
@@ -731,7 +731,7 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/activated = TRUE
 	var/collapsed_stock_scatter = 0
-
+	wield_delay_mod = WIELD_DELAY_FAST
 	New()
 		..()
 		//it makes stuff much better when two-handed
@@ -745,7 +745,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = 0.5
+		aim_speed_mod = 0.25
 
 		collapsed_stock_scatter = config.mlow_scatter_value
 
@@ -814,6 +814,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "44stock"
 	pixel_shift_x = 35
 	pixel_shift_y = 19
+	wield_delay_mod = WIELD_DELAY_FAST
 
 	New()
 		..()
@@ -821,13 +822,12 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = config.high_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
-		delay_mod = config.min_fire_delay
 		//it makes stuff much worse when one handed
 		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
 		recoil_unwielded_mod = config.low_recoil_value
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
-		aim_speed_mod = 0.5
+		aim_speed_mod = 0.25
 
 
 

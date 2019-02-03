@@ -126,6 +126,10 @@
 	var/med_proj_variance = 7
 	var/high_proj_variance = 9
 	var/max_proj_variance = 12
+	
+	//weapon settling multiplier
+	var/weapon_settle_accuracy_multiplier = 4
+	var/weapon_settle_scatter_multiplier = 2
 
 /datum/configuration/proc/initialize_combat_defines(name,value)
 	value = text2num(value)
@@ -237,5 +241,7 @@
 		if("med_proj_variance") med_proj_variance = value
 		if("high_proj_variance") high_proj_variance = value
 		if("max_proj_variance") max_proj_variance = value
+		if("weapon_settle_accuracy_multiplier") weapon_settle_accuracy_multiplier = value
+		if("weapon_settle_scatter_multiplier") weapon_settle_scatter_multiplier = value
 		else
 			log_misc("Unknown setting in combat defines: '[name]'")

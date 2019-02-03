@@ -688,6 +688,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 			user.remove_movement_handler(zoom_event_handler)
 			remove_dropped_handler(zoom_event_handler)
 			remove_unwield_handler(zoom_event_handler)
+			cdel(zoom_event_handler)
 	else //Otherwise we want to zoom in.
 		if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
 			return
@@ -712,8 +713,9 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 				if(WEST)
 					user.client.pixel_x = -viewoffset
 					user.client.pixel_y = 0
-			if(!zoom_event_handler)
-				zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
+			if(zoom_event_handler)
+				cdel(zoom_event_handler)
+			zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
 			if(!keep_zoom)
 				user.add_movement_handler(zoom_event_handler)
 			add_dropped_handler(zoom_event_handler)

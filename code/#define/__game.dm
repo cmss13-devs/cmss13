@@ -210,3 +210,11 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Arial Black"
 #define SCROLL_SPEED 2
+
+#define WEAPON_DELAY_NO_EFFECT 0
+#define WEAPON_DELAY_NO_FIRE 1
+#define WEAPON_DELAY_SCATTER 2
+#define WEAPON_DELAY_ACCURACY 4
+#define WEAPON_DELAY_SCATTER_AND_ACCURACY 6
+
+#define WEAPON_GUARANTEED_DELAY 0.1

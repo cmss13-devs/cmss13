@@ -99,13 +99,13 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	time_to_unequip = 20
 	time_to_equip = 20
 
-/obj/item/clothing/suit/storage/marine/New(loc,expected_type 		= /obj/item/clothing/suit/storage/marine,
+/obj/item/clothing/suit/storage/marine/New(loc,
 	new_name[] 			= list(MAP_ICE_COLONY = "\improper M3 pattern marine snow armor"))
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
 		icon_state = "[armor_variation]"
 
-	select_gamemode_skin(expected_type,,new_name)
+	select_gamemode_skin(type,,new_name)
 	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
@@ -224,12 +224,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/skull
 	name = "\improper M3 pattern marine armor (skull)"
 	icon_state = "5"
-
+	
 /obj/item/clothing/suit/storage/marine/smooth
 	name = "\improper M3 pattern marine armor (smooth)"
 	icon_state = "6"
-
-
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"

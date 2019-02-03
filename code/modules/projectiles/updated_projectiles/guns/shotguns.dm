@@ -447,7 +447,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
 	if(pumped)
 		if (world.time > (message + pump_delay))
-			user.visible_message("<span class='warning'><i>[src] already has a shell in the chamber!<i></span>")
+			usr << "<span class='warning'><i>[src] already has a shell in the chamber!<i></span>"
 			message = world.time
 		return
 	if(in_chamber) //eject the chambered round

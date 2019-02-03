@@ -337,6 +337,7 @@
 	var/cloak_timer = 0
 	var/upgrades = 0
 	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
+	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
 
 /obj/item/clothing/gloves/yautja/New()
 	..()
@@ -975,9 +976,17 @@
 			. = activate_random_verb()
 			return
 
+	if(combistick_cooldown)
+		usr << "<span class='warning'>Wait a bit before yanking the chain again!</span>"
+		return
+
 	if(!drain_power(usr,70)) return
+	combistick_cooldown = 1
+	spawn(30)
+		combistick_cooldown = 0
 
 	for(var/obj/item/weapon/combistick/C in range(7))
+		if(C in usr.loc) return
 		usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
 		new /obj/item/weapon/combistick(C.loc)
 		cdel(C)
@@ -1569,7 +1578,7 @@
 	w_class = 4
 	force = 28
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
-	throwforce = 55
+	throwforce = 38
 	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_ACCURATE

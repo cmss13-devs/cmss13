@@ -15,3 +15,6 @@
 
 /mob/living/carbon/human/synthetic_old/New(var/new_loc)
 	..(new_loc, "Early Synthetic")
+
+/mob/living/carbon/human/synthetic_2nd_gen/New(var/new_loc)
+	..(new_loc, "Second Generation Synthetic")

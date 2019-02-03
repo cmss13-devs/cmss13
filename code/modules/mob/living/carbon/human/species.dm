@@ -11,6 +11,7 @@
 	var/deform = 'icons/mob/human_races/r_def_human.dmi' // Mutated icon set.
 	var/prone_icon                                       // If set, draws this from icobase when mob is prone.
 	var/eyes = "eyes_s"                                  // Icon for eyes.
+	var/uses_ethnicity = FALSE						 //Set to TRUE to load proper ethnicities and what have you
 
 	var/primitive                              // Lesser form, if any (ie. monkey for humans)
 	var/tail                                   // Name of tail image in species effects icon file.
@@ -212,6 +213,7 @@
 	primitive = /mob/living/carbon/monkey
 	unarmed_type = /datum/unarmed_attack/punch
 	flags = HAS_SKIN_TONE|HAS_LIPS|HAS_UNDERWEAR
+	uses_ethnicity = TRUE
 
 	//If you wanted to add a species-level ability:
 	/*abilities = list(/client/proc/test_ability)*/
@@ -314,6 +316,7 @@
 /datum/species/synthetic
 	name = "Synthetic"
 	name_plural = "synthetics"
+	uses_ethnicity = TRUE //Uses ethnic presets
 
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	rarity_value = 2
@@ -344,6 +347,10 @@
 
 	knock_down_reduction = 5
 	stun_reduction = 5
+
+/datum/species/synthetic/second_gen_synthetic
+	name = "Second Generation Synthetic"
+	uses_ethnicity = FALSE //2nd gen uses generic human look
 
 
 /datum/species/early_synthetic

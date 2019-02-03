@@ -338,7 +338,7 @@
 	name = "load bearing equipment"
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
-	w_class = 3
+	w_class = 4 //too big to store in other pouches
 	var/slots = 3
 	var/obj/item/storage/internal/hold
 

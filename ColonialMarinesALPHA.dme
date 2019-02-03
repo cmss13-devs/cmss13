@@ -27,6 +27,7 @@
 #include "code\#define\mode.dm"
 #include "code\#define\objects.dm"
 #include "code\#define\skills.dm"
+#include "code\#define\xeno.dm"
 #include "code\__HELPERS\files.dm"
 #include "code\__HELPERS\game.dm"
 #include "code\__HELPERS\global_lists.dm"

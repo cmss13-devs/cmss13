@@ -11,7 +11,7 @@
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_color = "#ffeeaa"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Chief Engineer"
+	gear_preset = "USCM Chief Engineer (CE)"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to maintain the ship's engine and keep everything running.
@@ -25,7 +25,7 @@ You are also next in the chain of command, should the bridge crew fall in the li
 	department_flag = ROLEGROUP_MARINE_ENGINEERING
 	selection_color = "#9990B2"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Requisitions Officer"
+	gear_preset = "USCM Requisitions Officer (RO)"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Your job is to dispense supplies to the marines, including weapon attachments.
@@ -49,7 +49,7 @@ A happy ship is a well-functioning ship."}
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Maintenance Tech"
+	gear_preset = "USCM Maintenance Tech (MT)"
 
 	set_spawn_positions(var/count)
 		spawn_positions = mt_slot_formula(count)
@@ -73,7 +73,7 @@ Start with the ship's engine, and don't forget radiation equipment."}
 	supervisors = "the requisitions officer"
 	selection_color = "#BAAFD9"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Cargo Technician"
+	gear_preset = "USCM Cargo Technician (CT)"
 
 	set_spawn_positions(var/count)
 		spawn_positions = ct_slot_formula(count)

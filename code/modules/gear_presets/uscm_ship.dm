@@ -98,7 +98,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/liaison
-	name = "USCM Corporate Liaison"
+	name = "USCM Corporate Liaison (CL)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver/cl
@@ -134,7 +134,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chief_engineer
-	name = "USCM Chief Engineer"
+	name = "USCM Chief Engineer (CE)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
@@ -161,7 +161,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/maint
-	name = "USCM Maintenance Tech"
+	name = "USCM Maintenance Tech (MT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING)
@@ -188,7 +188,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/ro
-	name = "USCM Requisitions Officer"
+	name = "USCM Requisitions Officer (RO)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	idtype = /obj/item/card/id/silver
@@ -216,10 +216,10 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/cargo
-	name = "USCM Cargo Technician"
+	name = "USCM Cargo Technician (CT)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO)
+	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_CARGO, ACCESS_MARINE_PREP)
 	assignment = "Cargo Technician"
 	rank = "Cargo Technician"
 	paygrade = "E5"

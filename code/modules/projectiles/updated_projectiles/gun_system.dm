@@ -56,8 +56,11 @@
 	var/aim_slowdown	= 0						//Self explanatory. How much does aiming (wielding the gun) slow you
 	var/wield_delay		= WIELD_DELAY_FAST		//How long between wielding and firing in tenths of seconds
 	var/wield_time		= 0						//Storing value for above
+	var/guaranteed_delay_time = 0				//Storing value for guaranteed delay
 	var/pull_time		= 0						//Storing value for how long pulling a gun takes before you can use it
 	var/fast_pulled		= 0						//If 1, next pull will be fast, this halves pulling time
+
+	var/delay_style		= WEAPON_DELAY_SCATTER_AND_ACCURACY
 
 	//Burst fire.
 	var/burst_amount 	= 1						//How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst.
@@ -177,9 +180,11 @@
 	unwield(user)
 	if(fast_pulled)
 		pull_time = world.time + wield_delay
+		guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 		fast_pulled = 0
 	else
-		pull_time = world.time + wield_delay //Delay for picking something out of your inventory before you can fire, prevents instacuckshot. Keep a weapon out in dangerous spots
+		pull_time = world.time + wield_delay
+		guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 
 	return ..()
 
@@ -242,6 +247,7 @@
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
 	wield_time = world.time + wield_delay
+	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
 	if(user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.firearms == 0) //no training in any firearms
@@ -755,7 +761,8 @@ and you're good to go.
 	Consequently, predators are able to fire while cloaked.
 	*/
 	if(flags_gun_features & GUN_BURST_FIRING) return
-	if(world.time < wield_time || world.time < pull_time) return //We just put the gun up. Can't do it that fast
+	if(world.time < guaranteed_delay_time) return
+	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0)) return //We just put the gun up. Can't do it that fast
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())
 			user << "<span class='warning'>You don't have the dexterity to do this!</span>"
@@ -862,11 +869,23 @@ and you're good to go.
 			gun_accuracy_mult += skill_accuracy * config.low_hit_accuracy_mult // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
 	projectile_to_fire.accuracy = round(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
+	projectile_to_fire.scatter += gun_scatter
+
+	if(wield_delay > 0 && (world.time < wield_time || world.time < pull_time))
+		var/old_time = max(wield_time, pull_time) - wield_delay
+		var/new_time = world.time
+		var/pct_settled = 1 - (new_time-old_time + 1)/wield_delay
+		if(delay_style & WEAPON_DELAY_ACCURACY)
+			var/accuracy_debuff = 1 + (config.weapon_settle_accuracy_multiplier - 1) * pct_settled
+			projectile_to_fire.accuracy /=accuracy_debuff
+		if(delay_style & WEAPON_DELAY_SCATTER)
+			var/scatter_debuff = 1 + (config.weapon_settle_scatter_multiplier - 1) * pct_settled
+			projectile_to_fire.scatter *= scatter_debuff
+
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) 		// Apply gun damage multiplier to projectile damage
 	projectile_to_fire.damage_falloff	= round(projectile_to_fire.damage * damage_falloff_mult) 	// Apply gun damage bleed multiplier to projectile damage bleed
 
 	projectile_to_fire.shot_from = src
-	projectile_to_fire.scatter += gun_scatter					//Add gun scatter value to projectile's scatter value
 
 	if(user) //The gun only messages when fired by a user.
 		projectile_to_fire.firer = user
@@ -895,7 +914,6 @@ and you're good to go.
 				if(bullets_fired == 1)
 					user << "<span class='warning'>You fire [src][reflex ? "by reflex":""]! [flags_gun_features & GUN_AMMO_COUNTER && current_mag ? "<B>[current_mag.current_rounds-1]</b>/[current_mag.max_rounds]" : ""]</span>"
 	return 1
-
 
 /obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_angle = 0, mob/user, burst_scatter_mod = 0, bullets_fired = 1)
 

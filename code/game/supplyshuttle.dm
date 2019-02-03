@@ -119,6 +119,9 @@ var/list/mechtoys = list(
 /obj/machinery/computer/supply_drop_console/attack_hand(mob/user)
 	if(..())  //Checks for power outages
 		return
+	if(!allowed(user))
+		user << "<span class='warning'>Access denied.</span>"
+		return 1
 	user.set_interaction(src)
 	var/dat = "<head><title>Supply Drop Console Console</title></head><body>"
 

@@ -340,7 +340,7 @@
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0
-	wield_delay = 8
+	wield_delay = WIELD_DELAY_SLOW
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	var/list/grenades = new/list()
@@ -460,7 +460,7 @@
 	throw_speed = 2
 	throw_range = 10
 	force = 5.0
-	wield_delay = WIELD_DELAY_VERY_FAST
+	wield_delay = WIELD_DELAY_SLOW
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
@@ -596,7 +596,8 @@
 	flags_equip_slot = NOFLAGS
 	w_class = 5
 	force = 15
-	wield_delay = 12
+	wield_delay = WIELD_DELAY_HORRIBLE
+	delay_style	= WEAPON_DELAY_NO_FIRE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(
 						/obj/item/attachable/magnetic_harness,

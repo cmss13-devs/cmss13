@@ -1268,7 +1268,7 @@
 	spawn(0)
 		regenerate_icons()
 		restore_blood()
-		update_body(1,1)
+		update_body(1,0)
 		update_hair()
 
 

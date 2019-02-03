@@ -182,7 +182,6 @@ var/global/list/damage_icon_parts = list()
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/proc/update_body(var/update_icons = 1, var/force_cache_update = 0)
-
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 	var/necrosis_color_mod = rgb(10,50,0)

@@ -182,13 +182,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 
 		switch(hit_area)
-			if("head")//Harder to score a stun but if you do it lasts a bit longer
-				if(!isYautja(user))
-					if(prob(I.force))
-						apply_effect(20, PARALYZE, armor)
-						visible_message("<span class='danger'>[src] has been knocked unconscious!</span>",
-						"<span class='danger'>You have been knocked unconscious!</span>", null, 5)
-
+			if("head")
 				if(bloody)//Apply blood
 					if(wear_mask)
 						wear_mask.add_mob_blood(src)

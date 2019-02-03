@@ -69,7 +69,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	blood_overlay_type = "armor"
-	armor = list(melee = 50, bullet = 40, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 60, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	allowed = list(/obj/item/weapon/gun/,
@@ -99,13 +99,13 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	time_to_unequip = 20
 	time_to_equip = 20
 
-/obj/item/clothing/suit/storage/marine/New(loc,expected_type 		= /obj/item/clothing/suit/storage/marine,
+/obj/item/clothing/suit/storage/marine/New(loc,
 	new_name[] 			= list(MAP_ICE_COLONY = "\improper M3 pattern marine snow armor"))
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
 		icon_state = "[armor_variation]"
 
-	select_gamemode_skin(expected_type,,new_name)
+	select_gamemode_skin(type,,new_name)
 	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
@@ -224,18 +224,16 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/skull
 	name = "\improper M3 pattern marine armor (skull)"
 	icon_state = "5"
-
+	
 /obj/item/clothing/suit/storage/marine/smooth
 	name = "\improper M3 pattern marine armor (smooth)"
 	icon_state = "6"
-
-
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "mp"
-	armor = list(melee = 40, bullet = 70, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 40, bullet = 80, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -295,7 +293,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
-	armor = list(melee = 55, bullet = 75, laser = 35, energy = 35, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 55, bullet = 87.5, laser = 35, energy = 35, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/tank/emergency_oxygen,
 					/obj/item/device/flashlight,
@@ -314,7 +312,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper B12 pattern leader armor"
 	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. Use it to toggle the built-in flashlight."
 	icon_state = "7"
-	armor = list(melee = 50, bullet = 60, laser = 45, energy = 40, bomb = 20, bio = 15, rad = 15)
+	armor = list(melee = 50, bullet = 75, laser = 45, energy = 40, bomb = 20, bio = 15, rad = 15)
 
 	New(loc,expected_type 	= type,
 		new_name[] 		= list(MAP_ICE_COLONY = "\improper B12 pattern leader snow armor"))
@@ -383,7 +381,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3-T light armor"
 	desc = "A custom set of M3 armor designed for users of long ranged explosive weaponry."
 	icon_state = "demolitionist"
-	armor = list(melee = 70, bullet = 45, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	armor = list(melee = 70, bullet = 55, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun/launcher/rocket)
 
@@ -395,7 +393,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3-S light armor"
 	desc = "A custom set of M3 armor designed for USCM Scouts."
 	icon_state = "scout_armor"
-	armor = list(melee = 75, bullet = 45, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 75, bullet = 55, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 	New()
@@ -434,7 +432,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3 pattern recon armor"
 	desc = "A custom modified set of M3 armor designed for recon missions."
 	icon_state = "marine_sniper"
-	armor = list(melee = 70, bullet = 45, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 70, bullet = 55, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	//uniform_restricted = list(/obj/item/clothing/under/marine/sniper) //TODO : This item exists, but isn't implemented yet. Makes sense otherwise
 
@@ -462,7 +460,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M4 pattern PMC armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind."
 	icon_state = "pmc_armor"
-	armor = list(melee = 55, bullet = 62, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
+	armor = list(melee = 55, bullet = 80, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -487,7 +485,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/sniper
 	name = "\improper M4 pattern PMC sniper armor"
 	icon_state = "pmc_sniper"
-	armor = list(melee = 60, bullet = 70, laser = 50, energy = 60, bomb = 20, bio = 10, rad = 10)
+	armor = list(melee = 60, bullet = 80, laser = 50, energy = 60, bomb = 20, bio = 10, rad = 10)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDELOWHAIR
 
@@ -496,7 +494,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
 	icon_state = "heavy_armor"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
-	armor = list(melee = 85, bullet = 85, laser = 55, energy = 65, bomb = 20, bio = 20, rad = 20)
+	armor = list(melee = 85, bullet = 90, laser = 55, energy = 65, bomb = 20, bio = 20, rad = 20)
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/commando
 	name = "\improper PMC commando armor"
@@ -515,7 +513,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A protective vest worn by Iron Bears mercenaries."
 	icon_state = "bear_armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 70, bullet = 70, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
+	armor = list(melee = 70, bullet = 80, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/bear)
 
@@ -524,7 +522,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A protective vest worn by some seriously experienced mercs."
 	icon_state = "dutch_armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 70, bullet = 85, laser = 55,energy = 65, bomb = 30, bio = 10, rad = 10)
+	armor = list(melee = 70, bullet = 90, laser = 55,energy = 65, bomb = 30, bio = 10, rad = 10)
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
@@ -544,7 +542,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	blood_overlay_type = "armor"
-	armor = list(melee = 50, bullet = 40, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 60, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	allowed = list(/obj/item/weapon/gun,
@@ -647,7 +645,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "upp_armor"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 60, bullet = 60, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
+	armor = list(melee = 60, bullet = 80, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
 
 /obj/item/clothing/suit/storage/faction/UPP/commando
@@ -662,7 +660,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "upp_armor_heavy"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	armor = list(melee = 85, bullet = 85, laser = 50, energy = 60, bomb = 40, bio = 10, rad = 10)
+	armor = list(melee = 85, bullet = 92, laser = 50, energy = 60, bomb = 40, bio = 10, rad = 10)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/UPP
 	name = "\improper UH7 heavy plated armor"
@@ -670,7 +668,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "upp_armor_heavy"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	armor = list(melee = 85, bullet = 85, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
+	armor = list(melee = 85, bullet = 90, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
 
 //===========================//FREELANCER\\================================\\
@@ -682,7 +680,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "freelancer_armor"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
-	armor = list(melee = 60, bullet = 60, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
+	armor = list(melee = 60, bullet = 80, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/freelancer)
 
 //this one is for CLF
@@ -694,7 +692,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	sprite_sheet_id = 1
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 30, bomb = 10, bio = 30, rad = 30)
+	armor = list(melee = 40, bullet = 60, laser = 40, energy = 30, bomb = 10, bio = 30, rad = 30)
 	uniform_restricted = list(/obj/item/clothing/under/colonist)
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -731,7 +729,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper K12 ceramic plated armor"
 	desc = "A set of grey, heavy ceramic armor with dark blue highlights. It is the standard uniform of a unknown mercenary group working in the sector"
 	icon_state = "mercenary_heavy_armor"
-	armor = list(melee = 75, bullet = 62, laser = 42, energy = 38, bomb = 10, bio = 15, rad = 15)
+	armor = list(melee = 75, bullet = 80, laser = 42, energy = 38, bomb = 10, bio = 15, rad = 15)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -751,7 +749,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper Y8 armored miner vest"
 	desc = "A set of beige, light armor built for protection while mining. It is a specialized uniform of a unknown mercenary group working in the sector"
 	icon_state = "mercenary_miner_armor"
-	armor = list(melee = 50, bullet = 42, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
+	armor = list(melee = 50, bullet = 65, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
@@ -771,7 +769,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper Z7 armored engineer vest"
 	desc = "A set of blue armor with yellow highlights built for protection while building in highly dangerous environments. It is a specialized uniform of a unknown mercenary group working in the sector"
 	icon_state = "mercenary_engineer_armor"
-	armor = list(melee = 55, bullet = 52, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
+	armor = list(melee = 55, bullet = 70, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,

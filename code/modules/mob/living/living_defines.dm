@@ -66,3 +66,6 @@
 
 	var/datum/event/event_zoomout = null
 	var/datum/event/event_movement = null
+	var/blood_type = "X*"
+	var/dna_sequence = "beefdeadbeefdeadbeefdeadbeefdead"
+	var/fingerprint = "deadbeefdeadbeefdeadbeefdeadbeef"

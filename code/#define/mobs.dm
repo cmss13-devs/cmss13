@@ -98,9 +98,6 @@
 
 // String identifiers for associative list lookup
 
-// mob/var/list/mutations
-var/list/global_mutations = list() // list of hidden mutation things
-
 #define STRUCDNASIZE 27
 #define UNIDNASIZE 13
 

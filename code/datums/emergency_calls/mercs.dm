@@ -32,7 +32,6 @@
 
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	mob.name = mob.real_name
-	mob.dna.ready_dna(mob)
 	mob.key = M.key
 	if(mob.client) mob.client.change_view(world.view)
 	mob.mind.assigned_role = "MODE"

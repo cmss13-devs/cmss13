@@ -32,9 +32,6 @@
 		cdel(M)
 		return
 
-	if(src.dna)
-		M.dna = src.dna.Clone()
-
 	if(mind)
 		mind.transfer_to(M)
 	else

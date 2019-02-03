@@ -1,9 +1,9 @@
 
-/proc/gibs(atom/location, var/list/viruses, var/datum/dna/MobDNA)		//CARN MARKER
-	new /obj/effect/spawner/gibspawner/generic(get_turf(location),viruses,MobDNA)
+/proc/gibs(atom/location, var/list/viruses, var/mob/living/ml)		//CARN MARKER
+	new /obj/effect/spawner/gibspawner/generic(get_turf(location),viruses,ml)
 
-/proc/hgibs(atom/location, var/list/viruses, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor)
-	new /obj/effect/spawner/gibspawner/human(get_turf(location),viruses,MobDNA,fleshcolor,bloodcolor)
+/proc/hgibs(atom/location, var/list/viruses, var/mob/living/ml, var/fleshcolor, var/bloodcolor)
+	new /obj/effect/spawner/gibspawner/human(get_turf(location),viruses,ml,fleshcolor,bloodcolor)
 
 /proc/xgibs(atom/location, var/list/viruses)
 	new /obj/effect/spawner/gibspawner/xeno(get_turf(location),viruses)
@@ -20,16 +20,16 @@
 	var/fleshcolor //Used for gibbed humans.
 	var/bloodcolor //Used for gibbed humans.
 
-	New(location, var/list/viruses, var/datum/dna/MobDNA, var/fleshcolor, var/bloodcolor)
+	New(location, var/list/viruses, var/mob/living/ml, var/fleshcolor, var/bloodcolor)
 		..()
 
 		if(fleshcolor) src.fleshcolor = fleshcolor
 		if(bloodcolor) src.bloodcolor = bloodcolor
 
 		if(istype(loc,/turf)) //basically if a badmin spawns it
-			Gib(loc,viruses,MobDNA)
+			Gib(loc,viruses,ml)
 
-	proc/Gib(atom/location, var/list/viruses = list(), var/datum/dna/MobDNA = null)
+	proc/Gib(atom/location, var/list/viruses = list(), var/mob/living/ml = null)
 		if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
 			world << "\red Gib list length mismatch!"
 			return
@@ -67,8 +67,8 @@
 								viruus.holder = gib
 
 					gib.blood_DNA = list()
-					if(MobDNA)
-						gib.blood_DNA[MobDNA.unique_enzymes] = MobDNA.b_type
+					if(ml)
+						gib.blood_DNA[ml.dna_sequence] = ml.blood_type
 					else if(istype(src, /obj/effect/spawner/gibspawner/xeno))
 						gib.blood_DNA["UNKNOWN DNA"] = "X*"
 					else if(istype(src, /obj/effect/spawner/gibspawner/human)) // Probably a monkey

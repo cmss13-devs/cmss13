@@ -4,6 +4,7 @@
 #define SUPPLY_STATION_AREATYPE "/area/supply/station" //Type of the supply shuttle area for station
 #define SUPPLY_DOCK_AREATYPE "/area/supply/dock"	//Type of the supply shuttle area for dock
 #define SUPPLY_COST_MULTIPLIER 1.08
+#define ASRS_COST_MULTIPLIER 1.2
 
 var/datum/controller/supply/supply_controller = new()
 
@@ -102,6 +103,190 @@ var/list/mechtoys = list(
 	var/reqtime = 0 //Cooldown for requisitions - Quarxink
 	var/last_viewed_group = "categories"
 
+/obj/machinery/computer/supply_drop_console
+	name = "Supply Drop Console"
+	desc = "An old fashioned computer hooked into the nearby Supply Drop system."
+	icon_state = "security_cam"
+	circuit = null
+	req_access = list(ACCESS_MARINE_CARGO)
+	var/x_supply = 0
+	var/y_supply = 0
+	var/datum/squad/current_squad = null
+	var/busy = 0 //The computer is busy launching a drop, lock controls
+	var/drop_cooldown = 5000
+	var/can_pick_squad = TRUE
+
+/obj/machinery/computer/supply_drop_console/attack_hand(mob/user)
+	if(..())  //Checks for power outages
+		return
+	user.set_interaction(src)
+	var/dat = "<head><title>Supply Drop Console Console</title></head><body>"
+
+	if(can_pick_squad)
+		if(!current_squad) //No squad has been set yet. Pick one.
+			dat += "Current Squad: <A href='?src=\ref[src];operation=pick_squad'>----------</A><BR>"
+		else
+			dat += "Current Squad: [current_squad.name] Squad</A><A href='?src=\ref[src];operation=pick_squad'>\[Change\]</A><BR>"
+
+	dat += "<BR><B>Supply Drop Control</B><BR><BR>"
+	if(!current_squad)
+		dat += "No squad selected!"
+	else
+		dat += "<B>Current Supply Drop Status:</B> "
+		var/cooldown_left = (current_squad.supply_cooldown + drop_cooldown) - world.time
+		if(cooldown_left > 0)
+			dat += "Launch tubes resetting ([round(cooldown_left/10)] seconds)<br>"
+		else
+			dat += "<font color='green'>Ready!</font><br>"
+		dat += "<B>Launch Pad Status:</b> "
+		var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc
+		if(C)
+			dat += "<font color='green'>Supply crate loaded</font><BR>"
+		else
+			dat += "Empty<BR>"
+		dat += "<B>Longitude:</B> [x_supply] <A href='?src=\ref[src];operation=supply_x'>\[Change\]</a><BR>"
+		dat += "<B>Latitude:</B> [y_supply] <A href='?src=\ref[src];operation=supply_y'>\[Change\]</a><BR><BR>"
+		dat += "<A href='?src=\ref[src];operation=dropsupply'>\[LAUNCH!\]</a>"
+	dat += "<BR><BR>----------------------<br>"
+	dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
+
+	user << browse(dat, "window=overwatch;size=550x550")
+	return
+
+/obj/machinery/computer/supply_drop_console/Topic(href, href_list)
+	if(..())  //Checks for power outages
+		return
+	if(!href_list["operation"])
+		return
+	switch(href_list["operation"])
+		if("pick_squad")
+			if(can_pick_squad)
+				var/list/squad_list = list()
+				for(var/datum/squad/S in RoleAuthority.squads)
+					if(S.usable)
+						squad_list += S.name
+
+				var/name_sel = input("Which squad would you like to claim for Overwatch?") as null|anything in squad_list
+				if(!name_sel) return
+				var/datum/squad/selected = get_squad_by_name(name_sel)
+				if(selected)
+					current_squad = selected
+					attack_hand(usr)
+					if(!current_squad.drop_pad) //Why the hell did this not link?
+						for(var/obj/structure/supply_drop/S in item_list)
+							S.force_link() //LINK THEM ALL!
+				else
+					usr << "\icon[src] <span class='warning'>Invalid input. Aborting.</span>"
+		if("supply_x")
+			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Longitude is now [input].</span>"
+			x_supply = input
+		if("supply_y")
+			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
+			usr << "\icon[src] <span class='notice'>Latitude is now [input].</span>"
+			y_supply = input
+		if("refresh")
+			src.attack_hand(usr)
+		if("dropsupply")
+			if(current_squad)
+				if((current_squad.supply_cooldown + drop_cooldown) > world.time)
+					usr << "\icon[src] <span class='warning'>Supply drop not yet available!</span>"
+				else
+					handle_supplydrop()
+	src.attack_hand(usr) //Refresh
+
+/obj/machinery/computer/supply_drop_console/proc/handle_supplydrop()
+	if(busy)
+		usr << "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>"
+		return
+
+	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
+	if(!istype(C))
+		usr << "\icon[src] <span class='warning'>No crate was detected on the drop pad. Get Requisitions on the line!</span>"
+		return
+
+	var/x_coord = deobfuscate_x(x_supply)
+	var/y_coord = deobfuscate_y(y_supply)
+
+	var/turf/T = locate(x_coord, y_coord, 1)
+	if(!T)
+		usr << "\icon[src] <span class='warning'>Error, invalid coordinates.</span>"
+		return
+
+	var/area/A = get_area(T)
+	if(A && A.ceiling >= CEILING_UNDERGROUND)
+		usr << "\icon[src] <span class='warning'>The landing zone is underground. The supply drop cannot reach here.</span>"
+		return
+
+	if(istype(T, /turf/open/space) || T.density)
+		usr << "\icon[src] <span class='warning'>The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.</span>"
+		return
+
+	busy = 1
+
+	visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop is now loading into the launch tube! Stand by!</span>")
+	C.visible_message("<span class='warning'>\The [C] begins to load into a launch tube. Stand clear!</span>")
+	C.anchored = TRUE //To avoid accidental pushes
+	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
+	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
+	spawn(100)
+		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
+			if(C) C.anchored = FALSE
+			usr << "\icon[src] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>"
+			return
+		S.supply_cooldown = world.time
+
+		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
+		C.anchored = FALSE
+		C.z = T.z
+		C.x = T.x
+		C.y = T.y
+		var/turf/TC = get_turf(C)
+		TC.ceiling_debris_check(3)
+		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
+		C.visible_message("\icon[C] <span class='boldnotice'>The '[C.name]' supply drop falls from the sky!</span>")
+		visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop launched! Another launch will be available in five minutes.</span>")
+		busy = 0
+
+
+//Sends a string to our currently selected squad.
+/obj/machinery/computer/supply_drop_console/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
+	if(txt == "" || !current_squad) return //Logic
+
+	var/text = copytext(sanitize(txt), 1, MAX_MESSAGE_LEN)
+	var/nametext = ""
+	if(plus_name)
+		nametext = "[usr.name] transmits: "
+		text = "<font size='3'><b>[text]<b></font>"
+
+	for(var/mob/living/carbon/human/M in current_squad.marines_list)
+		if(!M.stat && M.client) //Only living and connected people in our squad
+			if(!only_leader)
+				if(plus_name)
+					M << sound('sound/effects/radiostatic.ogg')
+				M << "\icon[src] <font color='blue'><B>\[Overwatch\]:</b> [nametext][text]</font>"
+			else
+				if(current_squad.squad_leader == M)
+					if(plus_name)
+						M << sound('sound/effects/radiostatic.ogg')
+					M << "\icon[src] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>"
+					return
+
+//A limited version of the above console
+//Can't pick squads, drops less often
+//Uses Echo squad as a placeholder to access its own drop pad
+/obj/machinery/computer/supply_drop_console/limited
+	drop_cooldown = 10000 //higher cooldown than usual
+	can_pick_squad = FALSE//Can't pick squads
+
+/obj/machinery/computer/supply_drop_console/limited/New()
+	current_squad = get_squad_by_name("Echo") //Hardwired into Echo
+
+/obj/machinery/computer/supply_drop_console/limited/attack_hand(mob/user)
+	if(!current_squad)
+		current_squad = get_squad_by_name("Echo") //Hardwired into Echo
+	. = ..()
+
 /*
 /obj/effect/marker/supplymarker
 	icon_state = "X"
@@ -124,9 +309,13 @@ var/list/mechtoys = list(
 	var/iteration = 0
 	//supply points
 	var/points = 120
-	var/points_per_process = 2
+	var/points_per_process = 0
 	var/points_per_slip = 1
-	var/points_per_crate = 5
+	var/points_per_crate = 1
+	var/min_random_crate_amount = 0 //Minimum amount of crates spawned.
+	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
+	var/xeno_per_crate = 2 //Amount of xenos needed to spawn a crate
+	var/crate_iteration = 0
 	var/points_per_platinum = 5
 	var/points_per_phoron = 0
 	//control
@@ -134,6 +323,7 @@ var/list/mechtoys = list(
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()
 	var/list/supply_packs = list()
+	var/list/random_supply_packs = list()
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
 
@@ -143,143 +333,204 @@ var/list/mechtoys = list(
 	New()
 		ordernum = rand(1,9000)
 
-	//Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
-	proc/process()
-		for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs))
-			var/datum/supply_packs/P = new typepath()
-			supply_packs[P.name] = P
+//Supply shuttle ticker - handles supply point regenertion and shuttle travelling between centcomm and the station
+/datum/controller/supply/proc/process()
+	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
+		var/datum/supply_packs/P = new typepath()
+		supply_packs[P.name] = P
+	for(var/typepath in (typesof(/datum/supply_packs) - /datum/supply_packs - /datum/supply_packs/asrs))
+		var/datum/supply_packs/P = new typepath()
+		if(P.cost > 1 && P.buyable == 0)
+			random_supply_packs[P.name] = P
 
-		spawn(0)
-			set background = 1
-			while(1)
-				if(processing)
-					iteration++
-					points += points_per_process
+	spawn(0)
+		set background = 1
+		while(1)
+			if(processing)
+				iteration++
+				points += points_per_process
+				if(iteration == 1 || iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
+					add_random_crates()
+					crate_iteration += 1
+			sleep(processing_interval)
+//This adds function adds the amount of crates that calculate_crate_amount returns
+/datum/controller/supply/proc/add_random_crates()
+	for(var/I=0, I<calculate_crate_amount(), I++)
+		add_random_crate()
+//Here we calculate the amount of crates to spawn. 
+//Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate. 
+//They always get the mincrates amount.
+/datum/controller/supply/proc/calculate_crate_amount()
+	//Please never ever tell anyone this is based upon xeno amounts.
+	var/crate_amount = round(max(min_random_crate_amount,(ticker.mode.count_xenos(SURFACE_Z_LEVELS)/xeno_per_crate)))
+	//if it's not yet the 6th wave you only get 5 crates
+	if(crate_iteration<=5)
+		crate_amount = 5
+	return crate_amount
+//Here we pick what crate type to send to the marines.
+/datum/controller/supply/proc/add_random_crate()
+	var/randpick = rand(1,100)
+	switch(randpick)
+		if(1 to 35)
+			pickcrate("Defence")
+		if(36 to 65)
+			pickcrate("Munition")
+		if(66 to 85)
+			pickcrate("Offence")
+		if(86 to 90)
+			pickcrate("Utility")
+		if(91 to 100)
+			pickcrate("Everything")
+//Here we pick the exact crate from the crate types to send to the marines.
+//This is a weighted pick based upon their cost.
+//Their cost will go up if the crate is picked
+/datum/controller/supply/proc/pickcrate(var/T = "Everything")
+	var/list/pickfrom = list()
+	for(var/supply_name in supply_controller.random_supply_packs)
+		var/datum/supply_packs/N = supply_controller.random_supply_packs[supply_name]
+		if((T == "Everything" || N.group == T)  && !N.buyable)
+			pickfrom += N
+	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(pickfrom)
+	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
+	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
+	var/datum/supply_order/O = new /datum/supply_order()
+	O.ordernum = supply_controller.ordernum
+	O.object = C
+	O.orderedby = "ASRS"
+	//We add the order to the shopping list
+	supply_controller.shoppinglist += O
+//Here we weigh the crate based upon it's cost
+/datum/controller/supply/proc/pick_weighted_crate(list/cratelist)
+	var/weighted_crate_list[]
+	for(var/datum/supply_packs/crate in cratelist)
+		var/crate_to_add[0]
+		var/weight = (round(10000/crate.cost))
+		if(iteration > crate.iteration_needed)
+			crate_to_add[crate] = weight
+			weighted_crate_list += crate_to_add	
+	return pickweight(weighted_crate_list)
+//To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
+/datum/controller/supply/proc/forbidden_atoms_check(atom/A)
+	if(istype(A,/mob/living))
+		return 1
+	if(istype(A,/obj/item/disk/nuclear))
+		return 1
+	if(istype(A,/obj/item/device/radio/beacon))
+		return 1
+	if(istype(A,/obj/item/stack/sheet/mineral/phoron))
+		return 1
 
-				sleep(processing_interval)
-
-	//To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
-	proc/forbidden_atoms_check(atom/A)
-		if(istype(A,/mob/living))
+	for(var/i=1, i<=A.contents.len, i++)
+		var/atom/B = A.contents[i]
+		if(.(B))
 			return 1
-		if(istype(A,/obj/item/disk/nuclear))
-			return 1
-		if(istype(A,/obj/item/device/radio/beacon))
-			return 1
-		if(istype(A,/obj/item/stack/sheet/mineral/phoron))
-			return 1
 
-		for(var/i=1, i<=A.contents.len, i++)
-			var/atom/B = A.contents[i]
-			if(.(B))
-				return 1
+//Sellin
+/datum/controller/supply/proc/sell()
+	var/area/area_shuttle = shuttle.get_location_area()
+	if(!area_shuttle)	return
 
-	//Sellin
-	proc/sell()
-		var/area/area_shuttle = shuttle.get_location_area()
-		if(!area_shuttle)	return
+	var/phoron_count = 0
+	var/plat_count = 0
 
-		var/phoron_count = 0
-		var/plat_count = 0
+	for(var/atom/movable/MA in area_shuttle)
+		if(MA.anchored)	continue
 
-		for(var/atom/movable/MA in area_shuttle)
-			if(MA.anchored)	continue
+		// Must be in a crate!
+		if(istype(MA,/obj/structure/closet/crate))
+			callHook("sell_crate", list(MA, area_shuttle))
 
-			// Must be in a crate!
-			if(istype(MA,/obj/structure/closet/crate))
-				callHook("sell_crate", list(MA, area_shuttle))
+			points += points_per_crate
+			var/find_slip = 1
 
-				points += points_per_crate
-				var/find_slip = 1
+			for(var/atom in MA)
+				// Sell manifests
+				var/atom/A = atom
+				if(find_slip && istype(A,/obj/item/paper/manifest))
+					var/obj/item/paper/slip = A
+					if(slip.stamped && slip.stamped.len) //yes, the clown stamp will work. clown is the highest authority on the station, it makes sense
+						points += points_per_slip
+						find_slip = 0
+					continue
 
-				for(var/atom in MA)
-					// Sell manifests
-					var/atom/A = atom
-					if(find_slip && istype(A,/obj/item/paper/manifest))
-						var/obj/item/paper/slip = A
-						if(slip.stamped && slip.stamped.len) //yes, the clown stamp will work. clown is the highest authority on the station, it makes sense
-							points += points_per_slip
-							find_slip = 0
-						continue
+				// Sell phoron
+			/*	if(istype(A, /obj/item/stack/sheet/mineral/phoron))
+					var/obj/item/stack/sheet/mineral/phoron/P = A
+					phoron_count += P.get_amount()*/
 
-					// Sell phoron
-				/*	if(istype(A, /obj/item/stack/sheet/mineral/phoron))
-						var/obj/item/stack/sheet/mineral/phoron/P = A
-						phoron_count += P.get_amount()*/
+				// Sell platinum
+				if(istype(A, /obj/item/stack/sheet/mineral/platinum))
+					var/obj/item/stack/sheet/mineral/platinum/P = A
+					plat_count += P.get_amount()
 
-					// Sell platinum
-					if(istype(A, /obj/item/stack/sheet/mineral/platinum))
-						var/obj/item/stack/sheet/mineral/platinum/P = A
-						plat_count += P.get_amount()
+		cdel(MA)
 
-			cdel(MA)
+	if(phoron_count)
+		points += phoron_count * points_per_phoron
 
-		if(phoron_count)
-			points += phoron_count * points_per_phoron
+	if(plat_count)
+		points += plat_count * points_per_platinum
 
-		if(plat_count)
-			points += plat_count * points_per_platinum
+//Buyin
+/datum/controller/supply/proc/buy()
+	if(!shoppinglist.len) return
 
-	//Buyin
-	proc/buy()
-		if(!shoppinglist.len) return
+	var/area/area_shuttle = shuttle.get_location_area()
+	if(!area_shuttle)	return
 
-		var/area/area_shuttle = shuttle.get_location_area()
-		if(!area_shuttle)	return
+	var/list/clear_turfs = list()
 
-		var/list/clear_turfs = list()
+	for(var/turf/T in area_shuttle)
+		if(T.density || T.contents.len)	continue
+		clear_turfs += T
 
-		for(var/turf/T in area_shuttle)
-			if(T.density || T.contents.len)	continue
-			clear_turfs += T
+	for(var/S in shoppinglist)
+		if(!clear_turfs.len)	break
+		var/i = rand(1,clear_turfs.len)
+		var/turf/pickedloc = clear_turfs[i]
+		clear_turfs.Cut(i,i+1)
 
-		for(var/S in shoppinglist)
-			if(!clear_turfs.len)	break
-			var/i = rand(1,clear_turfs.len)
-			var/turf/pickedloc = clear_turfs[i]
-			clear_turfs.Cut(i,i+1)
+		var/datum/supply_order/SO = S
+		var/datum/supply_packs/SP = SO.object
 
-			var/datum/supply_order/SO = S
-			var/datum/supply_packs/SP = SO.object
+		var/atom/A = new SP.containertype(pickedloc)
+		A.name = "[SP.containername][SO.comment ? " ([SO.comment])" : ""]"
 
-			var/atom/A = new SP.containertype(pickedloc)
-			A.name = "[SP.containername][SO.comment ? " ([SO.comment])" : ""]"
+		//supply manifest generation begin
 
-			//supply manifest generation begin
+		var/obj/item/paper/manifest/slip = new /obj/item/paper/manifest(A)
+		slip.info = "<h3>Automatic Storage Retrieval Manifest</h3><hr><br>"
+		slip.info +="Order #[SO.ordernum]<br>"
+		slip.info +="[shoppinglist.len] PACKAGES IN THIS SHIPMENT<br>"
+		slip.info +="CONTENTS:<br><ul>"
 
-			var/obj/item/paper/manifest/slip = new /obj/item/paper/manifest(A)
-			slip.info = "<h3>Automatic Storage Retrieval Manifest</h3><hr><br>"
-			slip.info +="Order #[SO.ordernum]<br>"
-			slip.info +="[shoppinglist.len] PACKAGES IN THIS SHIPMENT<br>"
-			slip.info +="CONTENTS:<br><ul>"
+		//spawn the stuff, finish generating the manifest while you're at it
+		if(SP.access)
+			A:req_access = list()
+			A:req_access += text2num(SP.access)
 
-			//spawn the stuff, finish generating the manifest while you're at it
-			if(SP.access)
-				A:req_access = list()
-				A:req_access += text2num(SP.access)
+		var/list/contains
+		if(SP.randomised_num_contained)
+			contains = list()
+			if(SP.contains.len)
+				for(var/j=1,j<=SP.randomised_num_contained,j++)
+					contains += pick(SP.contains)
+		else
+			contains = SP.contains
 
-			var/list/contains
-			if(SP.randomised_num_contained)
-				contains = list()
-				if(SP.contains.len)
-					for(var/j=1,j<=SP.randomised_num_contained,j++)
-						contains += pick(SP.contains)
-			else
-				contains = SP.contains
+		for(var/typepath in contains)
+			if(!typepath)	continue
+			var/atom/B2 = new typepath(A)
+			if(SP.amount && B2:amount) B2:amount = SP.amount
+			slip.info += "<li>[B2.name]</li>" //add the item to the manifest
 
-			for(var/typepath in contains)
-				if(!typepath)	continue
-				var/atom/B2 = new typepath(A)
-				if(SP.amount && B2:amount) B2:amount = SP.amount
-				slip.info += "<li>[B2.name]</li>" //add the item to the manifest
+		//manifest finalisation
+		slip.info += "</ul><br>"
+		slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
+		if (SP.contraband) slip.loc = null	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
 
-			//manifest finalisation
-			slip.info += "</ul><br>"
-			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
-			if (SP.contraband) slip.loc = null	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
-
-		shoppinglist.Cut()
-		return
+	shoppinglist.Cut()
+	return
 
 /obj/item/paper/manifest
 	name = "Supply Manifest"
@@ -343,7 +594,7 @@ var/list/mechtoys = list(
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if(N.special || N.hidden || N.contraband || N.group != last_viewed_group) continue								//Have to send the type instead of a reference to
+				if(N.hidden || N.contraband || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [round(N.cost)]<BR>"		//the obj because it would get caught by the garbage
 
 	else if (href_list["doorder"])
@@ -543,7 +794,7 @@ var/list/mechtoys = list(
 			temp += "<b>Request from: [last_viewed_group]</b><BR><BR>"
 			for(var/supply_name in supply_controller.supply_packs )
 				var/datum/supply_packs/N = supply_controller.supply_packs[supply_name]
-				if(N.special || (N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group) continue								//Have to send the type instead of a reference to
+				if((N.hidden && !hacked) || (N.contraband && !can_order_contraband) || N.group != last_viewed_group || !N.buyable) continue								//Have to send the type instead of a reference to
 				temp += "<A href='?src=\ref[src];doorder=[supply_name]'>[supply_name]</A> Cost: [round(N.cost)]<BR>"		//the obj because it would get caught by the garbage
 
 		/*temp = "Supply points: [supply_controller.points]<BR><HR><BR>Request what?<BR><BR>"

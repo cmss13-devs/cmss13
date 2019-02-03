@@ -782,7 +782,6 @@ var/list/admin_verbs_mentor = list(
 			M.gender = FEMALE
 	M.update_hair()
 	M.update_body()
-	M.check_dna(M)
 
 /client/proc/player_notes_list()
 	set name = "Player Notes List"

@@ -58,6 +58,7 @@
 	new /obj/item/ammo_magazine/smg/m39/ap (src)
 	new /obj/item/ammo_magazine/smg/m39/ap (src)
 	new /obj/item/ammo_magazine/smg/m39/ap (src)
+
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
 	desc = "A pouch for your knives."

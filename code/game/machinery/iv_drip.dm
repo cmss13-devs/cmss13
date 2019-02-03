@@ -120,10 +120,6 @@
 			var/mob/living/carbon/human/T = attached
 
 			if(!istype(T)) return
-			if(!T.dna)
-				return
-			if(NOCLONE in T.mutations)
-				return
 
 			if(T.species && T.species.flags & NO_BLOOD)
 				return

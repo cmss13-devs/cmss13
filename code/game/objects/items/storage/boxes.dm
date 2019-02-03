@@ -124,21 +124,6 @@
 		new /obj/item/reagent_container/glass/beaker( src )
 		new /obj/item/reagent_container/glass/beaker( src )
 
-/obj/item/storage/box/injectors
-	name = "box of DNA injectors"
-	desc = "This box contains injectors it seems."
-	can_hold = list(/obj/item/dnainjector)
-	w_class = 3
-
-	New()
-		..()
-		new /obj/item/dnainjector/h2m(src)
-		new /obj/item/dnainjector/h2m(src)
-		new /obj/item/dnainjector/h2m(src)
-		new /obj/item/dnainjector/m2h(src)
-		new /obj/item/dnainjector/m2h(src)
-		new /obj/item/dnainjector/m2h(src)
-
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"

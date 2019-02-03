@@ -1423,7 +1423,6 @@ datum/preferences
 
 	character.real_name = real_name
 	character.name = character.real_name
-	if(character.dna) character.dna.real_name = character.real_name
 
 	character.flavor_texts["general"] = flavor_texts["general"]
 	character.flavor_texts["head"] = flavor_texts["head"]
@@ -1510,8 +1509,6 @@ datum/preferences
 		if(isliving(src)) //Ghosts get neuter by default
 			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
-
-	character.update_body(0,1)
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"

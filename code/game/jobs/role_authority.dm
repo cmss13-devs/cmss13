@@ -471,8 +471,11 @@ roles willy nilly.
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/squads_copy = squads.Copy()
 	var/list/mixed_squads = list()
+	
 	for(var/i= 1 to squads_copy.len)
-		mixed_squads += pick_n_take(squads_copy)
+		var/datum/squad/S = pick_n_take(squads_copy)
+		if (S.usable)
+			mixed_squads += S
 
 	var/datum/squad/lowest = pick(squads)
 
@@ -522,8 +525,11 @@ roles willy nilly.
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/squads_copy = squads.Copy()
 	var/list/mixed_squads = list()
+	// The following code removes non useable squads from the lists of squads we assign marines too.
 	for(var/i= 1 to squads_copy.len)
-		mixed_squads += pick_n_take(squads_copy)
+		var/datum/squad/S = pick_n_take(squads_copy)
+		if (S.usable)
+			mixed_squads += S
 
 	//Deal with non-standards first.
 	//Non-standards are distributed regardless of squad population.

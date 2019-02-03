@@ -332,6 +332,14 @@ Count up surviving humans and aliens.
 Can't be in a locker, in space, in the thunderdome, or distress.
 Only checks living mobs with a client attached.
 */
+
+/datum/game_mode/proc/count_xenos(list/z_levels = GAME_PLAY_Z_LEVELS)
+	var/num_xenos = 0
+	for(var/mob/M in player_list)
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
+			if(isXeno(M)) num_xenos++
+	return num_xenos
+	
 /datum/game_mode/proc/count_humans_and_xenos(list/z_levels = GAME_PLAY_Z_LEVELS)
 	var/num_humans = 0
 	var/num_xenos = 0

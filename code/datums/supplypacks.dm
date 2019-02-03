@@ -5,7 +5,7 @@
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
 //We are now moving the price of RO orders to defines, try to respect it.
-
+#define RO_PRICE_FREE		0
 #define RO_PRICE_WORTHLESS	10
 #define RO_PRICE_VERY_CHEAP	20
 #define RO_PRICE_CHEAP		30
@@ -37,11 +37,12 @@ var/list/all_supply_groups = list(
 	var/containername = null
 	var/access = null
 	var/hidden = 0 //Hidden packs only show up when the computer has been hacked
-	var/special = 0 //Special packs don't show up at all - they have to be spawned externally (fe: DEFCON)
 	var/contraband = 0
 	var/group = null
+	var/buyable = 1 //Can this pack be bought? These packs don't show up at all - they have to be spawned externally (fe: DEFCON ASRS)
 	var/randomised_num_contained = 0 //Randomly picks X of items out of the contains list instead of using all.
-
+	var/iteration_needed = 0
+	
 /datum/supply_packs/New()
 	if(randomised_num_contained)
 		manifest += "Contains any [randomised_num_contained] of:"
@@ -104,6 +105,18 @@ OPERATIONS
 	containername = "flare pack crate"
 	group = "Operations"
 
+
+/datum/supply_packs/motiondetector
+	name = "Motion Detector (x2)"
+	contains = list(
+		/obj/item/device/motiondetector,
+		/obj/item/device/motiondetector
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/supply
+	containername = "Motion Detector crate"
+	group = "Operations"
+
 /datum/supply_packs/contraband
 	randomised_num_contained = 5
 	contains = list(
@@ -141,8 +154,9 @@ OPERATIONS
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ammo
 	containername = "OB Ammo Crate (Incendiary x2)"
-	special = 1
+	buyable = 0
 	group = "Operations"
+	iteration_needed = null
 
 /datum/supply_packs/ob_explosive
 	contains = list(
@@ -165,8 +179,9 @@ OPERATIONS
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ammo
 	containername = "OB Ammo Crate (HE x2)"
-	special = 1
+	buyable = 0
 	group = "Operations"
+	iteration_needed = null
 
 /datum/supply_packs/ob_cluster
 	contains = list(
@@ -189,14 +204,23 @@ OPERATIONS
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ammo
 	containername = "OB Ammo Crate (Cluster x2)"
-	special = 1
+	buyable = 0
 	group = "Operations"
+	iteration_needed = null
 
 
 /*******************************************************************************
 WEAPONS
 *******************************************************************************/
 
+
+/datum/supply_packs/m56_system
+	name = "m56 system crate (x1)"
+	contains = list()
+	cost = RO_PRICE_VERY_PRICY
+	containertype = /obj/item/storage/box/m56_system
+	containername = "m56 system crate"
+	group = "Weapons"
 
 /datum/supply_packs/flamethrower
 	name = "M240 Flamethrower crate (M240 x2)"
@@ -216,6 +240,15 @@ WEAPONS
 	containertype = /obj/item/storage/box/sentry
 	containername = "sentry crate"
 	group = "Weapons"
+
+/datum/supply_packs/m56d_hmg
+	name = "m56d crate (x1)"
+	contains = list()
+	cost = RO_PRICE_VERY_PRICY
+	containertype = /obj/item/storage/box/m56d_hmg
+	containername = "m56d crate"
+	group = "Weapons"
+
 
 /datum/supply_packs/gun/pistols
 	contains = list(
@@ -298,6 +331,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate
 	containername = "\improper M41AE2 HPR Ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/gun/merc
 	contains = list()
@@ -354,6 +388,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosives crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_mines
 	name = "claymore mines crate (x8)"
@@ -365,6 +400,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive mine boxes crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_m15
 	name = "M15 fragmentation grenades crate (x5)"
@@ -379,6 +415,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M15 grenades crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_plastique
 	name = "plastique explosives crate (x2)"
@@ -390,6 +427,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper plastique explosives crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_incendiary
 	name = "M40 HIDP incendiary grenades crate (x5)"
@@ -404,6 +442,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HIDP incendiary grenades crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_M40_HEDP
 	name = "M40 HEDP blast grenades crate (x5)"
@@ -418,6 +457,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEDP grenades crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_hedp
 	name = "M40 HEDP blast grenade box crate (x25)"
@@ -428,6 +468,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_M40_HEDP
 	name = "M40 HEFA fragmentation grenades crate (x5)"
@@ -442,6 +483,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M40 HEFA grenades crate (WARNING)"
 	group = "Weapons"
+	
 
 /datum/supply_packs/explosives_hefa
 	name = "M40 HEFA fragmentation grenade box crate (x25)"
@@ -452,7 +494,7 @@ WEAPONS
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive HEDP grenade crate (WARNING)"
 	group = "Weapons"
-
+	
 
 /datum/supply_packs/mortar
 	name = "M402 mortar crate (x1)"
@@ -1074,6 +1116,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_smg_mag_box
 	name = "magazine box (M39, 12xregular mags)"
@@ -1084,6 +1127,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_mag_box_ext
 	name = "magazine box (M41A, 8xextended mags)"
@@ -1094,6 +1138,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_smg_mag_box_ext
 	name = "magazine box (M39, 10xextended mags)"
@@ -1104,6 +1149,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_mag_box_ap
 	name = "magazine box (M41A, 10xAP mags)"
@@ -1114,6 +1160,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_smg_mag_box_ap
 	name = "magazine box (M39, 12xAP mags)"
@@ -1124,6 +1171,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_shell_box
 	name = "shell box (100xslug shells)"
@@ -1134,6 +1182,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_shell_box_buck
 	name = "shell box (100xbuckshot shells)"
@@ -1144,6 +1193,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_regular
 	name = "regular magazines crate (M41A x5, M4A3 x2, M44 x2, M39 x2, M37A2 x1 each)"
@@ -1166,6 +1216,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_regular_m41a
 	name = "regular M41A magazines crate (x8)"
@@ -1183,6 +1234,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M41A regular ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_regular_m4a3
 	name = "regular M4A3 magazines crate (x10)"
@@ -1202,6 +1254,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4A3 regular ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_regular_m44
 	name = "regular M44 magazines crate (x10)"
@@ -1221,6 +1274,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M44 regular ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_regular_m39
 	name = "regular M39 magazines crate (x10)"
@@ -1240,6 +1294,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M39 regular ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_regular_m37a2
 	name = "regular M37A2 shells crate (x5 slugs, x5 buckshot)"
@@ -1259,6 +1314,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M37A2 ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_extended
 	name = "extended magazines crate (M41A x2, M4A3 x2, M39 x2)"
@@ -1274,6 +1330,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "extended ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_extended_m41a
 	name = "extended M41A magazines crate (x6)"
@@ -1289,6 +1346,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M41A extended ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_extended_m4a3
 	name = "extended M4A3 magazines crate (x8)"
@@ -1306,6 +1364,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4A3 extended ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_extended_m39
 	name = "extended M39 magazines crate (x6)"
@@ -1321,6 +1380,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M39 extended ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_ap
 	name = "armor piercing magazines crate (M41A x2, M4A3 x2, M39 x2)"
@@ -1336,6 +1396,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "armor piercing ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_ap_m41a
 	name = "armor piercing M41A magazines crate (x6)"
@@ -1351,6 +1412,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M41A armor piercing ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_ap_m4a3
 	name = "armor piercing M4A3 magazines crate (x8)"
@@ -1368,6 +1430,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M4A3 armor piercing ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_ap_m39
 	name = "armor piercing M39 magazines crate (x6)"
@@ -1383,6 +1446,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M39 armor piercing ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_scout_regular
 	name = "M4RA scout magazines crate (regular x3, incendiary x1, impact x1)"
@@ -1508,6 +1572,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_box_rifle_ap
 	name = "large armor piercing M41A ammo box crate (x400 AP rounds)"
@@ -1516,6 +1581,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_box_smg
 	name = "large M39 ammo box crate (x400 rounds)"
@@ -1524,6 +1590,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_black_market
 	name = "black market ammo crate"
@@ -1599,6 +1666,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "surplus ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_smartgun
 	name = "M56 smartgun powerpack crate (x2)"
@@ -1610,6 +1678,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "smartgun powerpack crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/ammo_sentry
 	name = "UA 571-C sentry ammunition (x2)"
@@ -1621,6 +1690,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/napalm
 	name = "UT-Napthal Fuel (x6)"
@@ -1634,6 +1704,7 @@ AMMO
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "napthal fuel crate"
 	group = "Ammo"
+	
 
 /datum/supply_packs/mortar_ammo_he
 	name = "M402 mortar ammo crate (x8 HE)"
@@ -2031,6 +2102,7 @@ ENGINEERING
 	containertype = "/obj/structure/closet/crate/supply"
 	containername = "empty sandbags crate"
 	group = "Engineering"
+	
 
 /datum/supply_packs/metal50
 	name = "50 metal sheets (x50)"
@@ -2040,6 +2112,7 @@ ENGINEERING
 	containertype = /obj/structure/closet/crate/supply
 	containername = "metal sheets crate"
 	group = "Engineering"
+	
 
 /datum/supply_packs/plas50
 	name = "plasteel sheets (x30)"
@@ -2049,6 +2122,7 @@ ENGINEERING
 	containertype = /obj/structure/closet/crate/supply
 	containername = "plasteel sheets crate"
 	group = "Engineering"
+	
 
 /datum/supply_packs/glass50
 	name = "50 glass sheets (x50)"

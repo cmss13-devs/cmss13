@@ -1,7 +1,7 @@
 //MARINE VENDING - APOPHIS775 - LAST UPDATE - 25JAN2015
 
 
-///******MARINE VENDOR******///
+///******MARINE VENDOR******/
 
 /obj/machinery/vending/marine
 	name = "ColMarTech Automated Weapons rack"
@@ -29,7 +29,6 @@
 		/obj/item/weapon/gun/smg/m39 = round(scale * 30),
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 30),
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 15),
-
 		/obj/item/ammo_magazine/pistol = round(scale * 30),
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 30),
@@ -37,11 +36,9 @@
 		/obj/item/ammo_magazine/rifle/ap = 0,
 		/obj/item/ammo_magazine/shotgun = round(scale * 10),
 		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10),
-
 		/obj/item/weapon/combat_knife = round(scale * 30),
 		/obj/item/weapon/throwing_knife = round(scale * 10),
 		/obj/item/storage/box/m94 = round(scale * 10),
-
 		/obj/item/attachable/flashlight = round(scale * 25),
 		/obj/item/attachable/bayonet = round(scale * 25),
 	)
@@ -123,16 +120,13 @@
 		/obj/item/storage/backpack/marine/engineerpack = round(scale * 2),
 		/obj/item/storage/belt/marine = round(scale * 15),
 		/obj/item/storage/belt/shotgun = round(scale * 10),
-
 		/obj/item/clothing/tie/storage/webbing = round(scale * 5),
 		/obj/item/clothing/tie/storage/brown_vest = round(scale * 2),
-		///obj/item/clothing/tie/holster = 0,
-
+		//obj/item/clothing/tie/holster = 0,
 		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
+		/obj/item/storage/sparepouch = round(scale * 2),
 		/obj/item/storage/belt/gun/m44 = round(scale * 5),
 		/obj/item/storage/large_holster/m39 = round(scale * 5),
-
-		/obj/item/storage/sparepouch = round(scale * 2),
 		/obj/item/storage/pouch/general/medium = round(scale * 2),
 		/obj/item/storage/pouch/construction = round(scale * 2),
 		/obj/item/storage/pouch/document = round(scale * 2),
@@ -146,30 +140,26 @@
 		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
 		/obj/item/storage/pouch/pistol = round(scale * 15),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 5),
-
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 20),
 		/obj/item/weapon/gun/pistol/m1911 = round(scale * 2),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 10),
-
 		/obj/item/weapon/gun/smg/m39 = round(scale * 15),
-		///obj/item/weapon/gun/smg/m39/elite = 0,
-		///obj/item/weapon/gun/rifle/m41aMK1 = 0,
+		//obj/item/weapon/gun/smg/m39/elite = 0,
+		//obj/item/weapon/gun/rifle/m41aMK1 = 0,
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 20),
-		///obj/item/weapon/gun/rifle/m41a/elite = 0,
-		///obj/item/weapon/gun/rifle/lmg = 0,
+		//obj/item/weapon/gun/rifle/m41a/elite = 0,
+		//obj/item/weapon/gun/rifle/lmg = 0,
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 10),
-		///obj/item/weapon/gun/shotgun/combat = 0,
-
+		//obj/item/weapon/gun/shotgun/combat = 0,
 		/obj/item/explosive/mine = round(scale * 2),
 		/obj/item/storage/box/nade_box = round(scale * 2),
 		/obj/item/storage/box/nade_box/frag = round(scale * 2),
-		///obj/item/explosive/grenade/HE = 0,
-		///obj/item/explosive/grenade/HE/frag = 0,
+		//obj/item/explosive/grenade/HE = 0,
+		//obj/item/explosive/grenade/HE/frag = 0,
 		/obj/item/explosive/grenade/HE/m15 = round(scale * 2),
 		/obj/item/explosive/grenade/incendiary = round(scale * 2),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 5),
-		///obj/item/explosive/grenade/phosphorus = 0,
-
+		//obj/item/explosive/grenade/phosphorus = 0,
 		/obj/item/storage/box/m94 = round(scale * 10),
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/clothing/mask/gas = round(scale * 10)
@@ -225,29 +215,30 @@
 		/obj/item/storage/pouch/flare/full = round(scale * 5),
 		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
 		/obj/item/storage/pouch/pistol = round(scale * 10),
+		/obj/item/storage/pouch/bayonet = round(scale * 1),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 3),
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 5),
 		/obj/item/weapon/gun/pistol/m1911 = round(scale * 3),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 5),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 10),
-		/obj/item/weapon/gun/smg/m39/elite = round(scale * 0),
+		//obj/item/weapon/gun/smg/m39/elite = round(0),
 		/obj/item/weapon/gun/rifle/m41aMK1 = round(scale * 5),
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 10),
-		/obj/item/weapon/gun/rifle/m41a/elite = round(scale * 0),
-		/obj/item/weapon/gun/rifle/lmg = round(scale * 3),
+		//obj/item/weapon/gun/rifle/m41a/elite = round(0),
+		//obj/item/weapon/gun/rifle/lmg = round(0),
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 5),
 		/obj/item/weapon/gun/shotgun/combat = round(scale * 3),
 		/obj/item/explosive/mine = round(scale * 5),
-		/obj/item/storage/box/nade_box = round(scale * 5),
+		//obj/item/storage/box/nade_box = round(0),
 		/obj/item/explosive/grenade/HE = round(scale * 1),
-		/obj/item/explosive/grenade/HE/m15 = round(scale * 1),
+		//obj/item/explosive/grenade/HE/m15 = round(0),
 		/obj/item/explosive/grenade/HE = round(scale * 1),
-		/obj/item/explosive/grenade/HE/m15 = round(scale * 1),
+		//obj/item/explosive/grenade/HE/m15 = round(0),
 		/obj/item/explosive/grenade/incendiary = round(scale * 1),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 1),
-		/obj/item/explosive/grenade/phosphorus = round(scale * 0),
+		//obj/item/explosive/grenade/phosphorus = round(0),
 		/obj/item/storage/box/m94 = round(scale * 10),
-		/obj/item/storage/box/zipcuffs = round(scale * 0),
+		//obj/item/storage/box/zipcuffs = round(0),
 		/obj/item/device/flashlight/combat = round(scale * 15),
 		/obj/item/clothing/mask/gas = round(scale * 10),
 	)
@@ -306,37 +297,37 @@
 	products = list(
 		/obj/item/storage/large_holster/machete/full = round(scale * 10),
 		/obj/item/ammo_magazine/pistol = round(scale * 20),
-		///obj/item/ammo_magazine/pistol/hp = 0,
+		//obj/item/ammo_magazine/pistol/hp = 0,
 		/obj/item/ammo_magazine/pistol/ap = round(scale * 5),
-		///obj/item/ammo_magazine/pistol/incendiary = 0,
+		//obj/item/ammo_magazine/pistol/incendiary = 0,
 		/obj/item/ammo_magazine/pistol/extended = round(scale * 10),
 		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 5),
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 5),
 		/obj/item/magazine_box/smg = round(scale * 20 / 12),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 20) % 12,
-		/obj/item/magazine_box/smg/ap = round(scale * 5 / 12),
+		//obj/item/magazine_box/smg/ap = round(scale * 0),
 		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
-		/obj/item/magazine_box/smg/extended = round(scale * 10 / 10),
+		//obj/item/magazine_box/smg/extended = round(scale * 0),
 		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
-		/obj/item/magazine_box = round(scale * 30 / 10),
+		//obj/item/magazine_box = round(scale * 0),
 		/obj/item/ammo_magazine/rifle = round(scale * 30) % 10,
-		/obj/item/magazine_box/rifle_extended = round(scale * 10 / 8),
+		//obj/item/magazine_box/rifle_extended = round(scale * 0),
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 10) % 8,
-		///obj/item/ammo_magazine/rifle/incendiary = 0,
-		/obj/item/magazine_box/rifle_ap = round(scale * 10 / 10),
+		//obj/item/ammo_magazine/rifle/incendiary = 0,
+		//obj/item/magazine_box/rifle_ap = round(scale * 0),
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 10) % 10,
-		///obj/item/ammo_magazine/rifle/m4ra = 0,
-		///obj/item/ammo_magazine/rifle/m41aMK1 = 0,
-		///obj/item/ammo_magazine/rifle/lmg = 0,
+		//obj/item/ammo_magazine/rifle/m4ra = 0,
+		//obj/item/ammo_magazine/rifle/m41aMK1 = 0,
+		//obj/item/ammo_magazine/rifle/lmg = 0,
 		/obj/item/ammo_magazine/shotgun = round(scale * 15) % 3,
-		/obj/item/magazine_box/shotgun = round(scale * 10 / 3),
+		//obj/item/magazine_box/shotgun = round(scale * 0),
 		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10) % 3,
-		/obj/item/magazine_box/shotgun/buckshot = round(scale * 10 / 3),
+		//obj/item/magazine_box/shotgun/buckshot = round(scale * 0),
 		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 10),
-		///obj/item/ammo_magazine/sniper = 0,
-		///obj/item/ammo_magazine/sniper/incendiary = 0,
-		///obj/item/ammo_magazine/sniper/flak = 0,
+		//obj/item/ammo_magazine/sniper = 0,
+		//obj/item/ammo_magazine/sniper/incendiary = 0,
+		//obj/item/ammo_magazine/sniper/flak = 0,
 		/obj/item/smartgun_powerpack = round(scale * 2),
 		/obj/item/ammo_magazine/flamer_tank = round(scale * 2)
 	)
@@ -554,7 +545,7 @@
 						/obj/item/explosive/grenade/incendiary = 2,
 //						/obj/item/weapon/gun/flamer = 1,
 //						/obj/item/tank/phoron/m240 = 3,
-						///obj/item/weapon/shield/riot = 1,
+						/obj/item/weapon/shield/riot = 1,
 						/obj/item/storage/pouch/magazine/large = 1,
 						/obj/item/storage/pouch/general/medium = 1,
 						/obj/item/clothing/mask/gas = 1
@@ -797,24 +788,32 @@
 
 /obj/machinery/vending/uniform_supply/New()
 	..()
-	var/products2[]
-	if(squad_tag != null) //probably some better way to slide this in but no sleep is no sleep.
-		switch(squad_tag)
-			if("Alpha")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/alpha = 20,
-								/obj/item/clothing/gloves/marine/alpha = 10)
-			if("Bravo")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/bravo = 20,
-								/obj/item/clothing/gloves/marine/bravo = 10)
-			if("Charlie")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/charlie = 20,
-								/obj/item/clothing/gloves/marine/charlie = 10)
-			if("Delta")
-				products2 = list(/obj/item/device/radio/headset/almayer/marine/delta = 20,
-								/obj/item/clothing/gloves/marine/delta = 10)
-	else
-		products2 = list(/obj/item/device/radio/headset/almayer = 10,
-						/obj/item/clothing/gloves/marine = 10)
+	var/products2 = list(
+		/obj/item/device/radio/headset/almayer = 10,
+		/obj/item/clothing/gloves/marine = 10,
+		//Encryption keys to slow into the headset, for customization
+		/obj/item/device/encryptionkey/alpha = 5,
+		/obj/item/device/encryptionkey/bravo = 5,
+		/obj/item/device/encryptionkey/charlie = 5,
+		/obj/item/device/encryptionkey/delta = 5,
+		/obj/item/device/encryptionkey/req = 5,
+		/obj/item/device/encryptionkey/engi = 5,
+	)
+
+	switch(squad_tag)
+		if("Alpha")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/alpha = 20,
+							/obj/item/clothing/gloves/marine/alpha = 10)
+		if("Bravo")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/bravo = 20,
+							/obj/item/clothing/gloves/marine/bravo = 10)
+		if("Charlie")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/charlie = 20,
+							/obj/item/clothing/gloves/marine/charlie = 10)
+		if("Delta")
+			products2 = list(/obj/item/device/radio/headset/almayer/marine/delta = 20,
+							/obj/item/clothing/gloves/marine/delta = 10)
+
 	build_inventory(products2)
 	marine_vendors.Add(src)
 

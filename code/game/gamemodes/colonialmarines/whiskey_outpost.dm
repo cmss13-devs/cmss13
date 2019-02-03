@@ -504,7 +504,7 @@ var/global/spawn_next_wo_wave = 0
 					/mob/living/carbon/Xenomorph/Crusher/ancient)
 	number_of_xenos = 15
 
-/datum/game_mode/whiskey_outpost/proc/count_xenos()//Counts braindead too
+/datum/game_mode/whiskey_outpost/count_xenos()//Counts braindead too
 	var/xeno_count = 0
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X) //Prevent any runtime errors

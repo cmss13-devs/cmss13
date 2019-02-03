@@ -15,6 +15,8 @@
 	if(status_flags & GODMODE)
 		return 0 //Godmode
 
+	//TODO: remove once we confirm shadows don't need this
+	/*
 	if(dna && dna.mutantrace == "shadow")
 		var/light_amount = 0
 		if(isturf(loc))
@@ -29,6 +31,7 @@
 			take_overall_damage(1, 1)
 		else if(light_amount < 2) //Heal in the dark
 			heal_overall_damage(1, 1)
+	*/
 
 	if(!(species.flags & IS_SYNTHETIC))
 		//Nutrition decrease

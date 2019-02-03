@@ -6,7 +6,6 @@ datum/controller/process/world/setup()
 
 	populate_spawn_points()
 
-	setupgenetics()
 	setup_economy()
 
 	lighting_controller.Initialize()

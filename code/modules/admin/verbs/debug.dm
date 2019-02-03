@@ -341,12 +341,21 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set name = "Change Their Name"
 
 	var/newname = input(usr, "What do you want to name them?", "Name:") as null|text
+	if(!newname)
+		return
 
 	if(!X)
 		usr << "This mob no longer exists"
 		return
 
 	X.name = newname
+	X.real_name = newname
+	if(istype(X, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = X
+		if(H.wear_id)
+			H.wear_id.name = "[H.real_name]'s ID Card"
+			if(H.wear_id.assignment)
+				H.wear_id.name += " ([H.wear_id.assignment])"
 	feedback_add_details("admin_verb","CHTN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	message_admins("\blue [key_name(src)] changed name of [X] to [newname].", 1)
 

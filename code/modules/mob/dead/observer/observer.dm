@@ -277,14 +277,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	usr.loc = pick(L)
 	following = null
 
-/mob/dead/observer/verb/follow()
+/mob/dead/observer/verb/follow(var/mob/target)
 	set category = "Ghost"
 	set name = "Follow" // "Haunt"
 	set desc = "Follow and haunt a mob."
 
 	var/list/mobs = getmobs()
-	var/input = input("Please select a mob:", "Haunt", null, null) as null|anything in mobs
-	var/mob/target = mobs[input]
+	if(!target)
+		var/input = input("Please select a mob:", "Haunt", null, null) as null|anything in mobs
+		target = mobs[input]
 	ManualFollow(target)
 
 /mob/dead/observer/verb/follow_xeno()

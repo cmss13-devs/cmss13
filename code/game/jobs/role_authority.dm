@@ -477,13 +477,13 @@ roles willy nilly.
 		if (S.usable)
 			mixed_squads += S
 
-	var/datum/squad/lowest = pick(squads)
+	var/datum/squad/lowest = pick(mixed_squads)
 
 	var/datum/pref_squad_name
 	if(H && H.client && H.client.prefs.preferred_squad && H.client.prefs.preferred_squad != "None")
 		pref_squad_name = H.client.prefs.preferred_squad
 
-	for(var/datum/squad/L in squads)
+	for(var/datum/squad/L in mixed_squads)
 		if(L.usable)
 			if(pref_squad_name && L.name == pref_squad_name)
 				lowest = L

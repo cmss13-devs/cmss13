@@ -700,12 +700,12 @@
 	plasma_cost = 200
 
 /datum/action/xeno_action/build_tunnel/can_use_action()
-	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
+	var/mob/living/carbon/Xenomorph/X = owner
 	if(X.tunnel_delay) return FALSE
 	return ..()
 
 /datum/action/xeno_action/build_tunnel/action_activate()
-	var/mob/living/carbon/Xenomorph/Hivelord/X = owner
+	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
 

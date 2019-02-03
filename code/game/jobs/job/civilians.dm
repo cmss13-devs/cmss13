@@ -88,7 +88,7 @@ Your role involves a lot of roleplaying, but you can perform the function of a r
 	supervisors = "the W-Y corporate office"
 	selection_color = "#ffeedd"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
-	gear_preset = "USCM Corporate Liaison"
+	gear_preset = "USCM Corporate Liaison (CL)"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"As a representative of Weyland-Yutani Corporation, your job requires you to stay in character at all times.

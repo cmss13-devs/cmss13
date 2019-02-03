@@ -293,10 +293,6 @@
 	return blood_data
 
 
-
-
-
-
 //returns the mob's dna info as a list, to be inserted in an object's blood_DNA list
 /mob/living/proc/get_blood_dna_list()
 	if(!get_blood_id())
@@ -310,17 +306,15 @@
 
 	switch(b_id)
 		if("blood")
-			return list(dna_sequence = blood_type)
+			return list("[dna_sequence]" = blood_type)
 		if("whiteblood")
 			return list("SYNTHETIC BLOOD" = "S*")
 		if("greyblood")
-			return list(dna_sequence = "Z*")
+			return list("[dna_sequence]" = "Z*")
 		if("greenblood")
 			return list("UNKNOWN DNA" = "Y*")
 		if("xenoblood")
 			return list("UNKNOWN DNA" = "X*")
-
-
 
 
 //returns the color of the mob's blood

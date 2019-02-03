@@ -1,4 +1,3 @@
-
 /*
  * effect/alien
  */
@@ -905,13 +904,12 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 
 		X << "<span class='xenonotice'>You begin moving to your destination.</span>"
 
-		var/tunnel_time = 40
+		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
 		if(X.mob_size == MOB_SIZE_BIG) //Big xenos take WAY longer
-			tunnel_time = 120
-
-		if(isXenoLarva(X)) //Larva can zip through near-instantly, they are wormlike after all
-			tunnel_time = 5
+			tunnel_time = TUNNEL_MOVEMENT_BIG_XENO_DELAY
+		else if(isXenoLarva(X)) //Larva can zip through near-instantly, they are wormlike after all
+			tunnel_time = TUNNEL_MOVEMENT_LARVA_DELAY
 
 		if(do_after(X, tunnel_time, FALSE, 5, 0))
 			for(var/obj/structure/tunnel/T in global_tunnel_list)
@@ -947,6 +945,9 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	..()
 
 
+/obj/structure/tunnel/attack_larva(mob/living/carbon/Xenomorph/M)
+	. = attack_alien(M)
+
 /obj/structure/tunnel/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!istype(M) || M.stat || M.lying)
 		return
@@ -973,6 +974,13 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		M << "<span class='warning'>The tunnel is too crowded, wait for others to exit!</span>"
 		return
 
+	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
+
+	if(M.mob_size == MOB_SIZE_BIG) //Big xenos take WAY longer
+		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
+	else if(isXenoLarva(M)) //Larva can zip through near-instantly, they are wormlike after all
+		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
+
 	if(M.mob_size == MOB_SIZE_BIG)
 		M.visible_message("<span class='xenonotice'>[M] begins heaving their huge bulk down into \the [src].</span>", \
 		"<span class='xenonotice'>You begin heaving your monstrous bulk into \the [src]</b>.</span>")
@@ -980,7 +988,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		M.visible_message("<span class='xenonotice'>\The [M] begins crawling down into \the [src].</span>", \
 		"<span class='xenonotice'>You begin crawling down into \the [src]</b>.</span>")
 
-	if(do_after(M, 20, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(M, tunnel_time, FALSE, 5, BUSY_ICON_GENERIC))
 		if(global_tunnel_list.len) //Make sure other tunnels exist
 			M.forceMove(src) //become one with the tunnel
 			M << "<span class='xenonotice'>Alt click the tunnel to exit, ctrl click to choose a destination.</span>"

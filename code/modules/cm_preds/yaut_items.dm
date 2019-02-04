@@ -1000,7 +1000,7 @@
 	
 	if(combistick_cooldown)
 		spawn(30)
-		    combistick_cooldown = 0
+		combistick_cooldown = 0
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"

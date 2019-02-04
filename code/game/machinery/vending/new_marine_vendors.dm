@@ -998,6 +998,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Sandbags x25", 15, /obj/item/stack/sandbags_empty/half, null, "black"),
 		list("Smoke grenade", 2, /obj/item/explosive/grenade/smokebomb, null, "black"),
 		list("Whistle", 5, /obj/item/device/whistle, null, "black"),
+		list("MedHUD", 5, /obj/item/clothing/glasses/hud/health/, null, "black")
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("HP M4A3 magazine", 5, /obj/item/ammo_magazine/pistol/hp, null, "black"),

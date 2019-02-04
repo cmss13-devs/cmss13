@@ -720,11 +720,17 @@ var/global/list/gear_datums = list()
 /datum/gear/cmPgoggles
 	display_name = "Prescription Goggles"
 	path = /obj/item/clothing/glasses/mgoggles/prescription
-	cost = 3
+	cost = 2
 	slot = WEAR_EYES
 
 /datum/gear/aviators
 	display_name = "Aviator Shades"
 	path = /obj/item/clothing/glasses/sunglasses/aviator
-	cost = 3
+	cost = 2
+	slot = WEAR_EYES
+
+/datum/gear/prescglasses
+	display_name = "Prescription Glasses"
+	path = /obj/item/clothing/glasses/regular/hipster
+	cost = 2
 	slot = WEAR_EYES

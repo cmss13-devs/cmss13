@@ -216,6 +216,9 @@
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
+				if(world.time = (devour_timer - 30))
+					usr << "<span class='warning'>You're about to regurgitate [M]...</span>"
+					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || H.stat == DEAD)
 					regurgitate(H, 0)

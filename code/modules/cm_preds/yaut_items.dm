@@ -980,19 +980,27 @@
 		usr << "<span class='warning'>Wait a bit before yanking the chain again!</span>"
 		return
 
-	if(!drain_power(usr,70)) return
-	combistick_cooldown = 1
-	spawn(30)
-		combistick_cooldown = 0
+
 
 	for(var/obj/item/weapon/combistick/C in range(7))
-		if(C in usr.loc) return
-		usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
-		new /obj/item/weapon/combistick(C.loc)
-		cdel(C)
-
-	for(var/obj/item/weapon/combistick/A in range(10))
-		A.throw_at(usr,10,1,usr)
+		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
+			continue
+		else if(usr.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...
+			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
+				return
+			usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
+			combistick_cooldown = 1
+		else if(usr.put_in_inactive_hand(C))///...Try putting it in our inactive hand.
+			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
+				return
+			usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
+			combistick_cooldown = 1
+		else //If neither hand can hold it, you must not have a free hand.
+			usr << "<span class='warning'>You need a free hand to do this!</b></span>"
+	
+	if(combistick_cooldown)
+		spawn(30)
+		combistick_cooldown = 0
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"

@@ -923,3 +923,4 @@
 		if("focus")
 			message = pick(";FOCUS FIRE!", ";PICK YOUR TARGETS!", ";CENTER MASS!", ";CONTROLLED BURSTS!", ";AIM YOUR SHOTS!")
 			say(message)
+

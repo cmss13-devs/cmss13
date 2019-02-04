@@ -138,6 +138,8 @@
 
 		if(command_aura_cooldown > 0)
 			command_aura_cooldown--
+		if(command_aura_cooldown == 0)
+			src << "<span class='notice'>You can issue an order again.</span>"
 		if(command_aura)
 			command_aura_tick--
 			if(command_aura_tick < 1)

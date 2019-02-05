@@ -731,13 +731,14 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/activated = TRUE
 	var/collapsed_stock_scatter = 0
-	wield_delay_mod = WIELD_DELAY_FAST
+	
 	New()
 		..()
 		//it makes stuff much better when two-handed
 		accuracy_mod = config.low_hit_accuracy_mult
 		recoil_mod = -config.low_recoil_value
 		scatter_mod = -config.low_scatter_value
+		wield_delay_mod = WIELD_DELAY_FAST
 		delay_mod = 0
 		movement_acc_penalty_mod = -1
 		//it makes stuff much worse when one handed
@@ -761,7 +762,7 @@ Defined in conflicts.dm of the #defines folder.
 		G.accuracy_mult += accuracy_mod * multiplier
 		G.recoil += recoil_mod * multiplier
 		G.scatter += scatter_mod * multiplier
-		G.fire_delay += delay_mod * multiplier		
+		G.wield_delay += wield_delay_mod * multiplier		
 		G.movement_acc_penalty_mult = movement_acc_penalty_mod * multiplier
 		//it makes stuff much worse when one handed
 		G.accuracy_mult_unwielded += accuracy_unwielded_mod * multiplier

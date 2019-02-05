@@ -1,80 +1,769 @@
-"alG" = (/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"alP" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"alI" = (/turf/open/gm/grass{icon_state = "grass2"},/area/lv624/ground/jungle7)
-"anH" = (/obj/structure/sign/botany,/turf/closed/wall,/area/lv624/lazarus/hydroponics)
-"anI" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"anJ" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 1; name = "\improper Hydroponics Dome"},/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"anG" = (/turf/closed/wall,/area/lv624/lazarus/hydroponics)
-"anT" = (/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"anU" = (/obj/item/tool/shovel,/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"anV" = (/obj/structure/window_frame/colony,/obj/item/shard,/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"aof" = (/obj/structure/table,/obj/item/clothing/suit/apron/overalls,/obj/item/clothing/under/colonist,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aog" = (/obj/structure/table,/obj/item/clothing/gloves/botanic_leather,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoh" = (/obj/structure/table,/obj/machinery/light{dir = 1},/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoi" = (/obj/machinery/smartfridge/seeds,/obj/structure/extinguisher_cabinet{pixel_y = 30},/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoj" = (/obj/machinery/biogenerator,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aok" = (/obj/machinery/seed_extractor,/obj/machinery/light{dir = 1},/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aol" = (/obj/machinery/smartfridge,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aom" = (/obj/structure/table,/obj/item/device/analyzer/plant_analyzer{pixel_x = 2; pixel_y = 1},/obj/item/device/analyzer/plant_analyzer,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoy" = (/obj/structure/table,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoz" = (/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoA" = (/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoB" = (/obj/item/tool/minihoe,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoC" = (/obj/structure/table,/obj/item/clothing/gloves/botanic_leather,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoM" = (/obj/structure/table,/obj/item/reagent_container/glass/bucket{pixel_x = 6; pixel_y = 6},/obj/item/reagent_container/glass/bucket,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoN" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoO" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoP" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoR" = (/obj/structure/table,/obj/item/storage/box/donkpockets,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aoW" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"api" = (/obj/structure/window/framed/colony/reinforced,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"; layer = 2.44},/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"apj" = (/obj/structure/sign/botany,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/closed/wall,/area/lv624/lazarus/hydroponics)
-"apk" = (/obj/machinery/power/apc{dir = 1; name = "Hydroponics APC"; pixel_y = 30; start_charge = 0},/obj/structure/cable/yellow{d2 = 8; icon_state = "0-8"},/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"apG" = (/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"apH" = (/obj/effect/decal/remains/human,/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"apI" = (/obj/effect/landmark{name = "good_item"},/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"apJ" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 4; name = "\improper Hydroponics Dome"},/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqa" = (/obj/machinery/door/airlock/multi_tile/almayer/generic{dir = 1; name = "\improper Hydroponics Dome"},/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqb" = (/obj/structure/largecrate/cow,/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqp" = (/obj/item/device/radio/intercom{anyai = 1; freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = -30; pixel_y = 0},/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqi" = (/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"aqB" = (/obj/structure/closet/crate/hydroponics/prespawned,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqC" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqD" = (/obj/structure/table,/obj/item/reagent_container/spray/plantbgone{pixel_x = 12},/obj/item/reagent_container/spray/plantbgone,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqT" = (/obj/structure/largecrate/random,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aqU" = (/obj/structure/table,/obj/item/clothing/suit/apron,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"arp" = (/obj/structure/table,/obj/item/tool/hatchet{pixel_x = 6; pixel_y = 4},/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"arq" = (/obj/structure/table,/obj/item/clothing/shoes/sandal,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"arr" = (/obj/structure/table,/obj/item/reagent_container/food/drinks/flask/vacuumflask,/obj/machinery/light,/turf/open/floor{dir = 9; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ars" = (/obj/structure/table,/obj/item/tool/crowbar,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"art" = (/obj/structure/table,/obj/machinery/light,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aru" = (/obj/structure/table,/obj/item/tool/shovel/spade,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"arv" = (/obj/structure/table,/obj/item/tool/extinguisher,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"arE" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"arF" = (/obj/structure/window_frame/colony,/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"asa" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder,/area/lv624/ground/compound/n)
-"asb" = (/turf/open/gm/dirtgrassborder,/area/lv624/ground/compound/n)
-"asc" = (/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/ground/compound/n)
-"arP" = (/turf/open/gm/dirt,/area/lv624/ground/compound/n)
-"asd" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner2"},/area/lv624/ground/compound/n)
-"ase" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder,/area/lv624/ground/compound/ne)
-(1,1,1) = {"
-alGalGalGalGalPalGalGalGalGalPalGalGalGalGalGalGalG
-alGalIalGalGalGalGalGalGalGalGalGalGalGalPalGalGalG
-alGalGalGalGalGalGanHanIanJanIanHalGalGalGalGalGalG
-alGalGanGanIanIanGanGanTanTanUanGanGanIanVanGalGalP
-alGalGanIaofaogaohaoianTanTanTaojaokaolaomanIalGalG
-alGalGanIaoyaozaozaozanTanTanTaoAaoBaoAaoCanIalGalG
-alGalGanIaoMaozaoNaozaoOanTaoOaoAaoPaoAaoRanIalGalG
-alGanGanGaozaozaozaozanTaoWanTaoAaoAaoAaoAanGanHalG
-apiapjapkanTanTaoOanTaoOanTaoOanTaoOaoWanTanTanIalG
-apGanTanTapHapIanTanTanTanTanTanTanTanTanTanTapJalG
-apGaqaanTanTanTaoOanTaoOanTaoOanTaoOanTanTaqbanIalG
-anIanHanGaqpaoAaoAaoAanTanTanTaozaozaozaozanGanHalG
-aqiaqianIaqBaoAaoPaoAaoOanTaoOaozaoNaqCaqDanIalGalG
-aqiaqianIaqTaoAaoAaoAanTanTanTaozaozaozaqUanIalGalG
-aqiaqianIaqBarparqarranTaoWanTarsartaruarvanIalGalG
-arEaqianGanIanIanGanGanTanTanTanGanGanIarFanGalGalG
-asaasaasaasbascarPanHanIanJanIanHarPasdasbasaasaase
-"}
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"alG" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"alI" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle7)
+"alP" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"anG" = (
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
+"anH" = (
+/obj/structure/sign/botany,
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
+"anI" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"anJ" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Hydroponics Dome"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"anT" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"anU" = (
+/obj/item/tool/shovel,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"anV" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"aof" = (
+/obj/structure/table,
+/obj/item/clothing/suit/apron/overalls,
+/obj/item/clothing/under/colonist,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aog" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/botanic_leather,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoh" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoi" = (
+/obj/machinery/smartfridge/seeds,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoj" = (
+/obj/machinery/biogenerator,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aok" = (
+/obj/machinery/seed_extractor,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aol" = (
+/obj/machinery/smartfridge,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aom" = (
+/obj/structure/table,
+/obj/item/device/analyzer/plant_analyzer{
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/item/device/analyzer/plant_analyzer,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoy" = (
+/obj/structure/table,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoz" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoA" = (
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoB" = (
+/obj/item/tool/minihoe,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoC" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/botanic_leather,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoM" = (
+/obj/structure/table,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/glass/bucket,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoN" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoO" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoP" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoR" = (
+/obj/structure/table,
+/obj/item/storage/box/donkpockets,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aoW" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"api" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	layer = 2.44
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"apj" = (
+/obj/structure/sign/botany,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
+"apk" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Hydroponics APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/obj/structure/cable/yellow{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"apG" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"apH" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"apI" = (
+/obj/effect/landmark{
+	name = "good_item"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"apJ" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 4;
+	name = "\improper Hydroponics Dome"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqa" = (
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Hydroponics Dome"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqb" = (
+/obj/structure/largecrate/cow,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqi" = (
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"aqp" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30;
+	pixel_y = 0
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqB" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqC" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqD" = (
+/obj/structure/table,
+/obj/item/reagent_container/spray/plantbgone{
+	pixel_x = 12
+	},
+/obj/item/reagent_container/spray/plantbgone,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqT" = (
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aqU" = (
+/obj/structure/table,
+/obj/item/clothing/suit/apron,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"arp" = (
+/obj/structure/table,
+/obj/item/tool/hatchet{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"arq" = (
+/obj/structure/table,
+/obj/item/clothing/shoes/sandal,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"arr" = (
+/obj/structure/table,
+/obj/item/reagent_container/food/drinks/flask/vacuumflask,
+/obj/machinery/light,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ars" = (
+/obj/structure/table,
+/obj/item/tool/crowbar,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"art" = (
+/obj/structure/table,
+/obj/machinery/light,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aru" = (
+/obj/structure/table,
+/obj/item/tool/shovel/spade,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"arv" = (
+/obj/structure/table,
+/obj/item/tool/extinguisher,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"arE" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"arF" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"arP" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/compound/n)
+"asa" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/compound/n)
+"asb" = (
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/compound/n)
+"asc" = (
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/compound/n)
+"asd" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/compound/n)
+"ase" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/compound/ne)
 
+(1,1,1) = {"
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+api
+apG
+apG
+anI
+aqi
+aqi
+aqi
+arE
+asa
+"}
+(2,1,1) = {"
+alG
+alI
+alG
+alG
+alG
+alG
+alG
+anG
+apj
+anT
+aqa
+anH
+aqi
+aqi
+aqi
+aqi
+asa
+"}
+(3,1,1) = {"
+alG
+alG
+alG
+anG
+anI
+anI
+anI
+anG
+apk
+anT
+anT
+anG
+anI
+anI
+anI
+anG
+asa
+"}
+(4,1,1) = {"
+alG
+alG
+alG
+anI
+aof
+aoy
+aoM
+aoz
+anT
+apH
+anT
+aqp
+aqB
+aqT
+aqB
+anI
+asb
+"}
+(5,1,1) = {"
+alP
+alG
+alG
+anI
+aog
+aoz
+aoz
+aoz
+anT
+apI
+anT
+aoA
+aoA
+aoA
+arp
+anI
+asc
+"}
+(6,1,1) = {"
+alG
+alG
+alG
+anG
+aoh
+aoz
+aoN
+aoz
+aoO
+anT
+aoO
+aoA
+aoP
+aoA
+arq
+anG
+arP
+"}
+(7,1,1) = {"
+alG
+alG
+anH
+anG
+aoi
+aoz
+aoz
+aoz
+anT
+anT
+anT
+aoA
+aoA
+aoA
+arr
+anG
+anH
+"}
+(8,1,1) = {"
+alG
+alG
+anI
+anT
+anT
+anT
+aoO
+anT
+aoO
+anT
+aoO
+anT
+aoO
+anT
+anT
+anT
+anI
+"}
+(9,1,1) = {"
+alG
+alG
+anJ
+anT
+anT
+anT
+anT
+aoW
+anT
+anT
+anT
+anT
+anT
+anT
+aoW
+anT
+anJ
+"}
+(10,1,1) = {"
+alP
+alG
+anI
+anU
+anT
+anT
+aoO
+anT
+aoO
+anT
+aoO
+anT
+aoO
+anT
+anT
+anT
+anI
+"}
+(11,1,1) = {"
+alG
+alG
+anH
+anG
+aoj
+aoA
+aoA
+aoA
+anT
+anT
+anT
+aoz
+aoz
+aoz
+ars
+anG
+anH
+"}
+(12,1,1) = {"
+alG
+alG
+alG
+anG
+aok
+aoB
+aoP
+aoA
+aoO
+anT
+aoO
+aoz
+aoN
+aoz
+art
+anG
+arP
+"}
+(13,1,1) = {"
+alG
+alG
+alG
+anI
+aol
+aoA
+aoA
+aoA
+aoW
+anT
+anT
+aoz
+aqC
+aoz
+aru
+anI
+asd
+"}
+(14,1,1) = {"
+alG
+alP
+alG
+anV
+aom
+aoC
+aoR
+aoA
+anT
+anT
+anT
+aoz
+aqD
+aqU
+arv
+arF
+asb
+"}
+(15,1,1) = {"
+alG
+alG
+alG
+anG
+anI
+anI
+anI
+anG
+anT
+anT
+aqb
+anG
+anI
+anI
+anI
+anG
+asa
+"}
+(16,1,1) = {"
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+anH
+anI
+apJ
+anI
+anH
+alG
+alG
+alG
+alG
+asa
+"}
+(17,1,1) = {"
+alG
+alG
+alG
+alP
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+alG
+ase
+"}

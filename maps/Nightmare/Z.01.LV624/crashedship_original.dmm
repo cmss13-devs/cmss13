@@ -1,93 +1,1257 @@
-"abl" = (/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
-"abm" = (/turf/closed/mineral,/area/lv624/ground/caves/central1)
-"abv" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
-"acf" = (/turf/closed/mineral,/area/lv624/ground/caves/east1)
-"abr" = (/obj/structure/mineral_door/resin,/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
-"abw" = (/obj/structure/mineral_door/resin,/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/caves/central1)
-"abT" = (/turf/closed/mineral,/area/lv624/ground/sand6)
-"acw" = (/obj/structure/foamedmetal,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acx" = (/turf/closed/wall/r_wall,/area/lv624/ground/sand6)
-"acB" = (/obj/structure/foamedmetal{layer = 4},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acD" = (/obj/effect/spider/stickyweb,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acE" = (/obj/effect/decal/remains/human,/obj/item/explosive/grenade/HE,/obj/effect/landmark{name = "good_item"},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acF" = (/turf/closed/wall/sulaco,/area/lv624/ground/sand6)
-"acH" = (/obj/machinery/constructable_frame{icon_state = "box_1"},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acJ" = (/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acL" = (/obj/structure/foamedmetal{layer = 3.5},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acM" = (/obj/structure/bed/chair{dir = 4},/obj/effect/spider/stickyweb,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acN" = (/obj/effect/spider/stickyweb,/obj/item/explosive/grenade/HE,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acQ" = (/obj/structure/bed/chair{dir = 4},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acT" = (/obj/effect/decal/remains/human,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acU" = (/obj/structure/foamedmetal,/obj/structure/bed/chair{dir = 8},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acV" = (/obj/effect/landmark/corpsespawner/security{corpsebelt = null; corpsesuit = /obj/item/clothing/suit/storage/CMB; corpseuniform = /obj/item/clothing/under/CM_uniform; name = "Deputy Edgar Nogi"},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acW" = (/obj/effect/spawner/random/toolbox,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acX" = (/obj/structure/foamedmetal,/obj/structure/bed/chair{dir = 8},/obj/item/explosive/grenade/HE,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"ada" = (/obj/item/tool/crowbar,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"adb" = (/obj/structure/bed/chair{dir = 8},/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acA" = (/turf/open/gm/dirt,/area/lv624/ground/sand5)
-"add" = (/obj/item/ammo_casing,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"adf" = (/obj/structure/bed/chair{dir = 4},/obj/item/weapon/gun/shotgun/pump/cmb,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"adg" = (/obj/item/stack/cable_coil/random,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"acI" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/sand5)
-"adh" = (/obj/item/storage/firstaid/adv,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"adi" = (/obj/structure/girder,/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"adj" = (/obj/item/clothing/suit/armor/bulletproof,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"adk" = (/obj/structure/girder,/turf/open/shuttle{icon_state = "floor4"},/area/lv624/ground/sand6)
-"adl" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/dirt,/area/lv624/ground/sand5)
-"acR" = (/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"adn" = (/obj/structure/girder/displaced,/turf/closed/shuttle{icon_state = "wall3"},/area/lv624/ground/sand6)
-"ads" = (/obj/structure/foamedmetal,/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"adu" = (/obj/structure/girder,/turf/closed/shuttle{icon_state = "wall3"},/area/lv624/ground/sand6)
-"adw" = (/obj/structure/foamedmetal{layer = 4},/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"adx" = (/obj/structure/foamedmetal,/obj/effect/decal/remains/human{layer = 2.9},/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"acg" = (/turf/open/gm/dirt,/area/lv624/ground/caves/east1)
-"adz" = (/turf/closed/wall,/area/lv624/ground/sand5)
-"adA" = (/turf/open/floor/airless{dir = 5; icon_state = "asteroidfloor"},/area/lv624/ground/sand6)
-"aaN" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/caves/east1)
-"acP" = (/turf/closed/mineral,/area/lv624/ground/sand5)
-"adC" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/gold{amount = 2},/obj/item/stack/sheet/mineral/platinum{pixel_x = -6},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adD" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/diamond{amount = 2},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adE" = (/obj/structure/rack,/obj/item/stack/sheet/metal{amount = 50; pixel_x = 4; pixel_y = 4},/obj/item/stack/sheet/metal{amount = 30},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adF" = (/obj/structure/rack,/obj/item/tool/shovel,/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adI" = (/obj/machinery/door/airlock/almayer/secure{dir = 4; icon_state = "door_locked"; id = ""; locked = 1; name = "Mining Storage"},/turf/open/floor{icon_state = "dark"},/area/lv624/ground/sand5)
-"adM" = (/turf/open/floor{icon_state = "dark"},/area/lv624/ground/sand5)
-"adN" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/iron{amount = 5},/obj/item/stack/sheet/mineral/platinum,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adq" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"adQ" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/tritium{pixel_x = -4},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adR" = (/obj/structure/rack,/obj/item/stack/sheet/mineral/silver{amount = 20},/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adS" = (/obj/structure/rack,/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adT" = (/obj/structure/rack,/obj/item/tool/pickaxe,/turf/open/floor{icon_state = "vault"; dir = 8},/area/lv624/ground/sand5)
-"adU" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor/airless{dir = 5; icon_state = "asteroidfloor"},/area/lv624/ground/sand6)
-"adV" = (/obj/effect/decal/remains/human,/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"adW" = (/obj/structure/shuttle/engine/propulsion,/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"aea" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/dirt,/area/lv624/ground/sand6)
-"aef" = (/obj/effect/landmark{name = "hunter_secondary"},/turf/open/gm/dirt,/area/lv624/ground/sand5)
-(1,1,1) = {"
-ablabmabmablablablablablablablablabvablablablablabmabmabmabmabmabmabmabmabmabmacfacfacfacf
-abmabmabmabrabwabrabrabmabmabmabmablablablabmabmabmabmabmabmabmabmabmabmabmabmacfacfacfacf
-abmabmabmablablablablabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmacfacfacfacf
-abmabmabmabmablablablablabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmabmacfacfacfacf
-abmabmabmabmablablablablablablabmabmabmabmabmabmabTabTabTacwacwacxabTabTabTabTacfacfacfacf
-abmabmabmabmablablablablablablabmabmabmabmabmabmabTabTacBacDacEabTabTabTabTabTacfacfacfacf
-abmabmabmabmablablablabvabmabmabmabmabmabmabmabmacFacwacHacJacJabTabTacLacFabTacfacfacfacf
-abmabmabmablablablablablabmabmabmabmabmabmabmabmacFacFacMacJacJacNabTacwacFacFacfacfacfacf
-abmabmabmablablablablabmabmabmabmabmabmabmabmabmacFacFacQacTacJacJacLacUacFacFacfacfacfacf
-abmabmabmablablablablablablabmabmabmabmabmabmabmacFacFacQacJacJacVacWacXacFacFacfacfacfacf
-abmabmabmablabvablablablablablabmabmabmabmabmabmacFacFacQadaacJacJacJadbacFacFacfacfacfacf
-abmabmabmablablablablablablablabmabmabmabmacAacAacFacFacQaddacJacJacTadbacFacFacfacfacfacf
-abmabmabmablablablablablablabmabmabmacAacAacAacAacFacFadfadgacJaddacJadbacFacFacfacfacfacf
-abmabmabmabmablablablablablabmabmacAacAacIacAacAacFacFacQacTaddacJadhadbacFacFacfacfacfacf
-abmabmabmabmablablablablabmabmacAacAacAacAacAacAadiacFacQadjacJacwacJadkacFadiacfacfacfacf
-abmabmabmablablablacAacAadlacAacAacAacAacAacAacAacRacFacFacFacwacwacFacFacFadiacfacfacfacf
-abmabmabmablablacAacIacAacAacAacAacAacAacAacAacAacRadnacFadsadsadsacFaduacFacRacfacfacfacf
-abmabmabmabmacAacAacAacAacAacAacAacAacAacAacAacAacRacRadwadxadiadsadsacRacRacRacRacRacRacg
-abmabmabmacAacAacAacAadzadzadzadzadzadzadzacAacAacRacRacRadsadsadxacRadAacRacRacRacRacRaaN
-acPacPacAacAacAacAacAadzadCadDadEadFadFadzacIacAacFacFacRacRacRacRadAacJacFacRacRacRacRacg
-acAacAacAacAacAacAacAadIadMadMadMadMadNadzacAacAacRacRacRacRacRadqacRacRacRacRacRacRacRacg
-acAacAacAacAacIacAacAadzadQadRadSadTadSadzacAacAacRacFadUacRacRadVacRadiacRadWacRacRacRacf
-acPacAacAacAacAacAacAadzadzadzadzadzadzadzacAacAacRacRacJadAacRacRacRacRacRaeaacRacRacRacf
-acAacAacAacAacAacAacAacAacAacAacAacAacAacAacAacAacRacRadqacRacRacRadAacRacRacRacRacRabTacf
-acAacAacAacAacAacAacAacAacAacAacAacIacAacAacAacAacRacRacRadiacRacRacJacFacRacRadqacRabTabT
-acAacAacAacAaefacAacAacAacAacAacAacAacAacAacAacAacRacRacRacRacRacRacRacRacRacRacRacRabTabT
-"}
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaN" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east1)
+"abl" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"abm" = (
+/turf/closed/mineral,
+/area/lv624/ground/caves/central1)
+"abr" = (
+/obj/structure/mineral_door/resin,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"abv" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"abw" = (
+/obj/structure/mineral_door/resin,
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"abT" = (
+/turf/closed/mineral,
+/area/lv624/ground/sand6)
+"acf" = (
+/turf/closed/mineral,
+/area/lv624/ground/caves/east1)
+"acg" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east1)
+"acw" = (
+/obj/structure/foamedmetal,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acx" = (
+/turf/closed/wall/r_wall,
+/area/lv624/ground/sand6)
+"acA" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/sand5)
+"acB" = (
+/obj/structure/foamedmetal{
+	layer = 4
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acD" = (
+/obj/effect/spider/stickyweb,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acE" = (
+/obj/effect/decal/remains/human,
+/obj/item/explosive/grenade/HE,
+/obj/effect/landmark{
+	name = "good_item"
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acF" = (
+/turf/closed/wall/sulaco,
+/area/lv624/ground/sand6)
+"acH" = (
+/obj/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acI" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand5)
+"acJ" = (
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acL" = (
+/obj/structure/foamedmetal{
+	layer = 3.5
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acM" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/spider/stickyweb,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acN" = (
+/obj/effect/spider/stickyweb,
+/obj/item/explosive/grenade/HE,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acP" = (
+/turf/closed/mineral,
+/area/lv624/ground/sand5)
+"acQ" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acR" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"acT" = (
+/obj/effect/decal/remains/human,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acU" = (
+/obj/structure/foamedmetal,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acV" = (
+/obj/effect/landmark/corpsespawner/security{
+	corpsebelt = null;
+	corpsesuit = /obj/item/clothing/suit/storage/CMB;
+	corpseuniform = /obj/item/clothing/under/CM_uniform;
+	name = "Deputy Edgar Nogi"
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acW" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"acX" = (
+/obj/structure/foamedmetal,
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/explosive/grenade/HE,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"ada" = (
+/obj/item/tool/crowbar,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adb" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"add" = (
+/obj/item/ammo_casing,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adf" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adg" = (
+/obj/item/stack/cable_coil/random,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adh" = (
+/obj/item/storage/firstaid/adv,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adi" = (
+/obj/structure/girder,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"adj" = (
+/obj/item/clothing/suit/armor/bulletproof,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adk" = (
+/obj/structure/girder,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
+"adl" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/sand5)
+"adn" = (
+/obj/structure/girder/displaced,
+/turf/closed/shuttle{
+	icon_state = "wall3"
+	},
+/area/lv624/ground/sand6)
+"adq" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"ads" = (
+/obj/structure/foamedmetal,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"adu" = (
+/obj/structure/girder,
+/turf/closed/shuttle{
+	icon_state = "wall3"
+	},
+/area/lv624/ground/sand6)
+"adw" = (
+/obj/structure/foamedmetal{
+	layer = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"adx" = (
+/obj/structure/foamedmetal,
+/obj/effect/decal/remains/human{
+	layer = 2.9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"adz" = (
+/turf/closed/wall,
+/area/lv624/ground/sand5)
+"adA" = (
+/turf/open/floor/airless{
+	dir = 5;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/sand6)
+"adC" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 2
+	},
+/obj/item/stack/sheet/mineral/platinum{
+	pixel_x = -6
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adD" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 2
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adE" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adF" = (
+/obj/structure/rack,
+/obj/item/tool/shovel,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adI" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 4;
+	icon_state = "door_locked";
+	id = "";
+	locked = 1;
+	name = "Mining Storage"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/ground/sand5)
+"adM" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/ground/sand5)
+"adN" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/iron{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/platinum,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adQ" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/tritium{
+	pixel_x = -4
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adR" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/silver{
+	amount = 20
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adS" = (
+/obj/structure/rack,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adT" = (
+/obj/structure/rack,
+/obj/item/tool/pickaxe,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/lv624/ground/sand5)
+"adU" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor/airless{
+	dir = 5;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/sand6)
+"adV" = (
+/obj/effect/decal/remains/human,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"adW" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"aea" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/sand6)
+"aef" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/sand5)
 
+(1,1,1) = {"
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acP
+acA
+acA
+acP
+acA
+acA
+acA
+"}
+(2,1,1) = {"
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acP
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(3,1,1) = {"
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(4,1,1) = {"
+abl
+abr
+abl
+abm
+abm
+abm
+abm
+abl
+abl
+abl
+abl
+abl
+abl
+abm
+abm
+abl
+abl
+abm
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(5,1,1) = {"
+abl
+abw
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abv
+abl
+abl
+abl
+abl
+abl
+abl
+acA
+acA
+acA
+acA
+acI
+acA
+acA
+acA
+aef
+"}
+(6,1,1) = {"
+abl
+abr
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(7,1,1) = {"
+abl
+abr
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+abl
+acA
+acI
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(8,1,1) = {"
+abl
+abm
+abm
+abl
+abl
+abl
+abv
+abl
+abm
+abl
+abl
+abl
+abl
+abl
+abl
+acA
+acA
+acA
+adz
+adz
+adI
+adz
+adz
+acA
+acA
+acA
+"}
+(9,1,1) = {"
+abl
+abm
+abm
+abm
+abl
+abl
+abm
+abm
+abm
+abl
+abl
+abl
+abl
+abl
+abm
+adl
+acA
+acA
+adz
+adC
+adM
+adQ
+adz
+acA
+acA
+acA
+"}
+(10,1,1) = {"
+abl
+abm
+abm
+abm
+abl
+abl
+abm
+abm
+abm
+abm
+abl
+abl
+abm
+abm
+abm
+acA
+acA
+acA
+adz
+adD
+adM
+adR
+adz
+acA
+acA
+acA
+"}
+(11,1,1) = {"
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acA
+acA
+acA
+adz
+adE
+adM
+adS
+adz
+acA
+acA
+acA
+"}
+(12,1,1) = {"
+abv
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acA
+acA
+acA
+acA
+adz
+adF
+adM
+adT
+adz
+acA
+acI
+acA
+"}
+(13,1,1) = {"
+abl
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acA
+acA
+acA
+acA
+acA
+adz
+adF
+adN
+adS
+adz
+acA
+acA
+acA
+"}
+(14,1,1) = {"
+abl
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acI
+acA
+acA
+acA
+acA
+adz
+adz
+adz
+adz
+adz
+acA
+acA
+acA
+"}
+(15,1,1) = {"
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acI
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(16,1,1) = {"
+abl
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+abm
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+acA
+"}
+(17,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+abT
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+adi
+acR
+acR
+acR
+acR
+acF
+acR
+acR
+acR
+acR
+acR
+acR
+"}
+(18,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+abT
+acw
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+adn
+acR
+acR
+acF
+acR
+acF
+acR
+acR
+acR
+acR
+"}
+(19,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+acB
+acH
+acM
+acQ
+acQ
+acQ
+acQ
+adf
+acQ
+acQ
+acF
+acF
+adw
+acR
+acR
+acR
+adU
+acJ
+adq
+acR
+acR
+"}
+(20,1,1) = {"
+abm
+abm
+abm
+abm
+acw
+acD
+acJ
+acJ
+acT
+acJ
+ada
+add
+adg
+acT
+adj
+acF
+ads
+adx
+ads
+acR
+acR
+acR
+adA
+acR
+adi
+acR
+"}
+(21,1,1) = {"
+abm
+abm
+abm
+abm
+acw
+acE
+acJ
+acJ
+acJ
+acJ
+acJ
+acJ
+acJ
+add
+acJ
+acw
+ads
+adi
+ads
+acR
+acR
+acR
+acR
+acR
+acR
+acR
+"}
+(22,1,1) = {"
+abm
+abm
+abm
+abm
+acx
+abT
+abT
+acN
+acJ
+acV
+acJ
+acJ
+add
+acJ
+acw
+acw
+ads
+ads
+adx
+acR
+adq
+adV
+acR
+acR
+acR
+acR
+"}
+(23,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+abT
+abT
+abT
+acL
+acW
+acJ
+acT
+acJ
+adh
+acJ
+acF
+acF
+ads
+acR
+adA
+acR
+acR
+acR
+adA
+acJ
+acR
+"}
+(24,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+abT
+acL
+acw
+acU
+acX
+adb
+adb
+adb
+adb
+adk
+acF
+adu
+acR
+adA
+acJ
+acR
+adi
+acR
+acR
+acF
+acR
+"}
+(25,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+abT
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+acR
+acR
+acF
+acR
+acR
+acR
+acR
+acR
+acR
+"}
+(26,1,1) = {"
+abm
+abm
+abm
+abm
+abT
+abT
+abT
+acF
+acF
+acF
+acF
+acF
+acF
+acF
+adi
+adi
+acR
+acR
+acR
+acR
+acR
+adW
+aea
+acR
+acR
+acR
+"}
+(27,1,1) = {"
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acR
+acR
+acR
+acR
+acR
+acR
+acR
+adq
+acR
+"}
+(28,1,1) = {"
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acR
+acR
+acR
+acR
+acR
+acR
+acR
+acR
+acR
+"}
+(29,1,1) = {"
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acR
+acR
+acR
+acR
+acR
+acR
+abT
+abT
+abT
+"}
+(30,1,1) = {"
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acf
+acg
+aaN
+acg
+acg
+acf
+acf
+acf
+abT
+abT
+"}

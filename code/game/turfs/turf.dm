@@ -30,7 +30,7 @@
 	icon = 'icons/turf/floors.dmi'
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
-	var/oldTurf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
+	var/old_turf = "" //The previous turf's path as text. Used when deconning on LV --MadSnailDisease
 
 
 
@@ -46,8 +46,8 @@
 
 /turf/Dispose()
 	stop_processing()
-	if(oldTurf != "")
-		ChangeTurf(text2path(oldTurf), TRUE)
+	if(old_turf != "")
+		ChangeTurf(text2path(old_turf), TRUE)
 	else
 		ChangeTurf(/turf/open/floor/plating, TRUE)
 	..()
@@ -188,13 +188,10 @@ spookydonut august 2018
 				step(M, M.inertia_dir)
 	return
 
-
-
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
 		if(O.level == 1)
 			O.hide(intact_tile)
-
 
 //Creates a new turf. this is called by every code that changes a turf ("spawn atom" verb, cdel, build mode stuff, etc)
 /turf/proc/ChangeTurf(new_turf_path, forget_old_turf)
@@ -206,9 +203,13 @@ spookydonut august 2018
 	//world << "Replacing [src.type] with [new_turf_path]"
 
 	var/path = "[src.type]"
+	if(istype(src, /turf/open/snow))
+		var/turf/open/snow/s = src
+		//This is so we revert back to a proper snow layer
+		path = "/turf/open/snow/layer[s.slayer]"
 	var/turf/W = new new_turf_path( locate(src.x, src.y, src.z) )
 	if(!forget_old_turf)	//e.g. if an admin spawn a new wall on a wall tile, we don't
-		W.oldTurf = path	//want the new wall to change into the old wall when destroyed
+		W.old_turf = path	//want the new wall to change into the old wall when destroyed
 	W.lighting_lumcount += old_lumcount
 	if(old_lumcount != W.lighting_lumcount)
 		W.lighting_changed = 1
@@ -221,9 +222,6 @@ spookydonut august 2018
 /turf/proc/ReplaceWithLattice()
 	src.ChangeTurf(/turf/open/space)
 	new /obj/structure/lattice( locate(src.x, src.y, src.z) )
-
-
-
 
 /turf/proc/AdjacentTurfs()
 	var/L[] = new()
@@ -241,15 +239,12 @@ spookydonut august 2018
 				L.Add(t)
 	return L
 
-
-
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)
 		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
 		return cost
 	else
 		return get_dist(src,t)
-
 
 //Blood stuff------------
 /turf/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor="#A10808")
@@ -259,12 +254,6 @@ spookydonut august 2018
 	if(!tracks)
 		tracks = new typepath(src)
 	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
-
-
-
-
-
-
 
 //for xeno corrosive acid, 0 for unmeltable, 1 for regular, 2 for strong walls that require strong acid and more time.
 /turf/proc/can_be_dissolved()
@@ -333,20 +322,10 @@ spookydonut august 2018
 		if(CEILING_DEEP_UNDERGROUND_METAL)
 			user << "It is deep underground. The ceiling above is metal."
 
-
-
 /turf/proc/wet_floor()
 	return
 
-
-
-
-
 //////////////////////////////////////////////////////////
-
-
-
-
 
 //Check if you can plant weeds on that turf.
 //Does NOT return a message, just a 0 or 1.
@@ -383,14 +362,8 @@ spookydonut august 2018
 	else
 		return TRUE
 
-
 /turf/closed/wall/is_weedable()
 	return TRUE //so we can spawn weeds on the walls
-
-
-
-
-
 
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE
@@ -419,7 +392,8 @@ spookydonut august 2018
 /turf/open/desert/rock/can_dig_xeno_tunnel()
 	return TRUE
 
-
+/turf/open/floor/ice/can_dig_xeno_tunnel()
+	return TRUE
 
 //what dirt type you can dig from this turf if any.
 /turf/proc/get_dirt_type()
@@ -436,10 +410,6 @@ spookydonut august 2018
 
 /turf/open/desert/dirt/get_dirt_type()
 	return DIRT_TYPE_MARS
-
-
-
-
 
 /turf/CanPass(atom/movable/mover, turf/target)
 	if(!target) return 0

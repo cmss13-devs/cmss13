@@ -27,6 +27,7 @@
 	var/active = 0
 	var/recycletime = 120
 	var/long_range_cooldown = 2
+	actions_types = list(/datum/action/item_action)
 
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"

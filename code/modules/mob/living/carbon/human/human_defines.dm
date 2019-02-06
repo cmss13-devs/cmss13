@@ -106,6 +106,7 @@
 	var/command_aura_allowed = list("move", "hold", "focus") //Auras we can create. Leadership checked separately
 	var/command_aura_tick = 0 //How many ticks left before we cut out your command aura
 	var/command_aura_cooldown = 0 //Cooldown on our command aura
+	var/command_aura_notified = FALSE
 
 	var/mobility_aura = 0
 	var/protection_aura = 0

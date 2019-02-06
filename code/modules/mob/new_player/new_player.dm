@@ -336,7 +336,6 @@
 
 		var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
 		RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
-		UpdateFactionList(character)
 		EquipCustomItems(character)
 
 		ticker.mode.latespawn(character)

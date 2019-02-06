@@ -118,7 +118,7 @@
 		break
 
 /proc/viral_outbreak(var/virus = null)
-//	command_alert("Confirmed outbreak of level 7 viral biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert")
+//	command_alert("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert")
 //	world << sound('sound/AI/outbreak7.ogg')
 	var/virus_type
 	if(!virus)
@@ -161,10 +161,10 @@
 		H.AddDisease(D)
 		break
 	spawn(rand(1500, 3000)) //Delayed announcements to keep the crew on their toes.
-		command_announcement.Announce("Confirmed outbreak of level 7 viral biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
+		command_announcement.Announce("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
 /*
 /proc/alien_infestation(var/spawncount = 1) // -- TLE
-	//command_alert("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert")
+	//command_alert("Unidentified lifesigns detected coming aboard [station_name]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert")
 	//world << sound('sound/AI/aliens.ogg')
 	var/list/vents = list()
 	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in machines)
@@ -188,7 +188,7 @@
 		spawncount--
 
 	spawn(rand(5000, 6000)) //Delayed announcements to keep the crew on their toes.
-		command_announcement.Announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
+		command_announcement.Announce("Unidentified lifesigns detected coming aboard [station_name]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')
 */
 /proc/high_radiation_event()
 
@@ -257,7 +257,7 @@
 				temp_timer.releasetime = 1
 
 		sleep(150)
-		command_announcement.Announce("Malignant trojan detected in [station_name()] Brig subroutines.", "Security Alert")
+		command_announcement.Announce("Malignant trojan detected in [station_name] Brig subroutines.", "Security Alert")
 	else
 		world.log << "ERROR: Could not initate grey-tide. Unable find prison or brig area."
 
@@ -267,7 +267,7 @@
 			new /mob/living/simple_animal/hostile/carp(C.loc)
 	//sleep(100)
 	spawn(rand(300, 600)) //Delayed announcements to keep the crew on their toes.
-		command_announcement.Announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert", new_sound = 'sound/AI/commandreport.ogg')
+		command_announcement.Announce("Unknown biological entities have been detected near [station_name], please stand-by.", "Lifesign Alert", new_sound = 'sound/AI/commandreport.ogg')
 
 /proc/lightsout(isEvent = 0, lightsoutAmount = 1,lightsoutRange = 25) //leave lightsoutAmount as 0 to break ALL lights
 	if(isEvent)

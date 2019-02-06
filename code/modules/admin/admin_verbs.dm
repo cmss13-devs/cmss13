@@ -600,22 +600,6 @@ var/list/admin_verbs_mentor = list(
 	message_admins("\blue [ckey] used 'Drop Bomb' at [epicenter.loc].")
 	feedback_add_details("admin_verb","DB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/give_spell(mob/T as mob in mob_list) // -- Urist
-	set category = "Fun"
-	set name = "Give Spell"
-	set desc = "Gives a spell to a mob."
-	var/list/spell_names = list()
-	for(var/v in spells)
-	//	"/obj/effect/proc_holder/spell/" 30 symbols ~Intercross21
-		spell_names.Add(copytext("[v]", 31, 0))
-	var/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in spell_names
-	if(!S) return
-	var/path = text2path("/obj/effect/proc_holder/spell/[S]")
-	T.spell_list += new path
-	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] gave [key_name(T)] the spell [S].")
-	message_admins("\blue [key_name_admin(usr)] gave [key_name(T)] the spell [S].", 1)
-
 /client/proc/give_disease(mob/T as mob in mob_list) // -- Giacom
 	set category = "Fun"
 	set name = "Give Disease (old)"

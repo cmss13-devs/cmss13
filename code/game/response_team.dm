@@ -68,7 +68,7 @@ client/verb/JoinResponseTeam()
 			new_commando.mind.key = usr.key
 			new_commando.key = usr.key
 
-			new_commando << "\blue You are [!leader_selected?"a member":"the <B>LEADER</B>"] of an Emergency Response Team, a type of military division, under CentComm's service. There is a code red alert on [station_name()], you are tasked to go and fix the problem."
+			new_commando << "\blue You are [!leader_selected?"a member":"the <B>LEADER</B>"] of an Emergency Response Team, a type of military division, under CentComm's service. There is a code red alert on [station_name], you are tasked to go and fix the problem."
 			new_commando << "<b>You should first gear up and discuss a plan with your team. More members may be joining, don't move out before you're ready."
 			if(!leader_selected)
 				new_commando << "<b>As member of the Emergency Response Team, you answer only to your leader and CentComm officials.</b>"
@@ -133,11 +133,11 @@ proc/trigger_armed_response_team(var/force = 0)
 
 	// there's only a certain chance a team will be sent
 	if(!prob(send_team_chance))
-		command_announcement.Announce("It would appear that an emergency response team was requested for [station_name()]. Unfortunately, we were unable to send one at this time.", "Central Command")
+		command_announcement.Announce("It would appear that an emergency response team was requested for [station_name]. Unfortunately, we were unable to send one at this time.", "Central Command")
 		can_call_ert = 0 // Only one call per round, ladies.
 		return
 
-	command_announcement.Announce("It would appear that an emergency response team was requested for [station_name()]. We will prepare and send one as soon as possible.", "Central Command")
+	command_announcement.Announce("It would appear that an emergency response team was requested for [station_name]. We will prepare and send one as soon as possible.", "Central Command")
 
 	can_call_ert = 0 // Only one call per round, gentleman.
 	send_emergency_team = 1

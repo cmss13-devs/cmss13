@@ -63,19 +63,7 @@ var/list/be_special_flags = list(
 	"Responder" = BE_RESPONDER,
 	"Predator" = BE_PREDATOR,
 	"Queen" = BE_QUEEN
-
-/*
-	"Malf AI" = BE_MALF,
-	"Revolutionary" = BE_REV,
-	"Traitor" = BE_TRAITOR,
-	"Operative" = BE_OPERATIVE,
-	"Cultist" = BE_CULTIST,
-	"Monkey" = BE_MONKEY,
-	"Ninja" = BE_NINJA,
-	"Raider" = BE_RAIDER,
-	"Mutineer" = BE_MUTINEER,
-	"Changeling" = BE_CHANGELING*/
-	)
+)
 
 #define AGE_MIN 17			//youngest a character can be
 #define AGE_MAX 160			//oldest a character can be

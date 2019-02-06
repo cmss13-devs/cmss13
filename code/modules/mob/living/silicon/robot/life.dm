@@ -183,20 +183,6 @@
 		else
 			hud_used.healths.icon_state = "health7"
 
-	if (src.syndicate && src.client)
-		if(ticker.mode.name == "traitor")
-			for(var/datum/mind/tra in ticker.mode.traitors)
-				if(tra.current)
-					var/I = image('icons/mob/mob.dmi', loc = tra.current, icon_state = "traitor")
-					src.client.images += I
-		if(src.connected_ai)
-			src.connected_ai.connected_robots -= src
-			src.connected_ai = null
-		if(src.mind)
-			if(!src.mind.special_role)
-				src.mind.special_role = "traitor"
-				ticker.mode.traitors += src.mind
-
 	if (src.cells)
 		if (src.cell)
 			var/cellcharge = src.cell.charge/src.cell.maxcharge

@@ -67,8 +67,6 @@ var/global/datum/global_init/init = new ()
 		RoleAuthority = new /datum/authority/branch/role()
 		world << "\red \b Job setup complete"
 
-	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
 	world.tick_lag = config.Ticklag

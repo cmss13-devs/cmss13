@@ -352,16 +352,6 @@
 					log_admin("[key_name_admin(usr)] has traitor'ed [current].")
 					show_objectives()
 
-					if(issilicon(current))
-						var/mob/living/silicon/A = current
-						call(/datum/game_mode/proc/add_law_zero)(A)
-						A.show_laws()
-
-			if("autoobjectives")
-				if (!config.objectives_disabled)
-					ticker.mode.forge_traitor_objectives(src)
-					usr << "\blue The objectives for traitor [key] have been generated. You can edit them and anounce manually."
-
 	else if (href_list["common"])
 		switch(href_list["common"])
 			if("undress")
@@ -381,10 +371,6 @@
 	if(!(src in ticker.mode.traitors))
 		ticker.mode.traitors += src
 		special_role = "traitor"
-		if (!config.objectives_disabled)
-			ticker.mode.forge_traitor_objectives(src)
-		ticker.mode.finalize_traitor(src)
-		ticker.mode.greet_traitor(src)
 
 // check whether this mind's mob has been brigged for the given duration
 // have to call this periodically for the duration to work properly

@@ -94,18 +94,22 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	var/armor_overlays[]
 	actions_types = list(/datum/action/item_action/toggle)
 	var/flags_marine_armor = ARMOR_SQUAD_OVERLAY|ARMOR_LAMP_OVERLAY
+	var/specialty = "M3 pattern marine" //Same thing here. Give them a specialty so that they show up correctly in vendors.
 	w_class = 5
 	uniform_restricted = list(/obj/item/clothing/under/marine)
 	time_to_unequip = 20
 	time_to_equip = 20
 
-/obj/item/clothing/suit/storage/marine/New(loc,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper M3 pattern marine snow armor"))
+/obj/item/clothing/suit/storage/marine/New(loc)
+	if(!(flags_atom & UNIQUE_ITEM_TYPE))
+		name = "[specialty]"
+		if(map_tag == MAP_ICE_COLONY) name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+		else name += " armor"
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
 		icon_state = "[armor_variation]"
 
-	select_gamemode_skin(type,,new_name)
+	select_gamemode_skin(type)
 	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
@@ -205,29 +209,35 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 			M.visible_message("<span class ='danger'>Your programming prevents you from wearing this!</span>")
 			return 0
 
-/obj/item/clothing/suit/storage/marine/pad
-	name = "\improper M3 pattern marine armor (pads)"
+/obj/item/clothing/suit/storage/marine/padded
+	name = "M3 pattern padded marine armor"
 	icon_state = "1"
+	specialty = "M3 pattern padded marine"
 
 /obj/item/clothing/suit/storage/marine/padless
-	name = "\improper M3 pattern marine armor (padless)"
+	name = "M3 pattern padless marine armor"
 	icon_state = "2"
+	specialty = "M3 pattern padless marine"
 
 /obj/item/clothing/suit/storage/marine/padless_lines
-	name = "\improper M3 pattern marine armor (ridges)"
+	name = "M3 pattern ridged marine armor"
 	icon_state = "3"
+	specialty = "M3 pattern ridged marine"
 
 /obj/item/clothing/suit/storage/marine/carrier
-	name = "\improper M3 pattern marine armor (carrier)"
+	name = "M3 pattern carrier marine armor"
 	icon_state = "4"
+	specialty = "M3 pattern carrier marine"
 
 /obj/item/clothing/suit/storage/marine/skull
-	name = "\improper M3 pattern marine armor (skull)"
+	name = "M3 pattern skull marine armor"
 	icon_state = "5"
+	specialty = "M3 pattern skull marine"
 	
 /obj/item/clothing/suit/storage/marine/smooth
-	name = "\improper M3 pattern marine armor (smooth)"
+	name = "M3 pattern smooth marine armor"
 	icon_state = "6"
+	specialty = "M3 pattern smooth marine"
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
@@ -251,13 +261,15 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/storage/belt/gun,
 		/obj/item/weapon/claymore/mercsword/commander)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
+	specialty = "M2 pattern MP"
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
-	name = "\improper M3 pattern MP armor"
+	name = "\improper M3 pattern chief MP armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
 	armor = list(melee = 50, bullet = 80, laser = 40, energy = 25, bomb = 20, bio = 0, rad = 0)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
+	specialty = "M3 pattern chief MP"
 
 /obj/item/clothing/suit/storage/marine/MP/admiral
 	icon_state = "admiral"
@@ -266,16 +278,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	w_class = 3
 	armor = list(melee = 50, bullet = 80, laser = 40, energy = 25, bomb = 20, bio = 0, rad = 0)
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/admiral)
+	specialty = "M3 pattern admiral"
 
 /obj/item/clothing/suit/storage/marine/MP/RO
 	icon_state = "officer"
-	name = "\improper M3 pattern officer armor"
+	name = "\improper M3 pattern officer"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 
-/obj/item/clothing/suit/storage/marine/MP/RO/New()
-	select_gamemode_skin(/obj/item/clothing/suit/storage/marine/MP/RO)
-	..()
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
 /obj/item/clothing/suit/storage/marine/MP/CO
@@ -283,13 +293,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3 pattern captain armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
-
-/obj/item/clothing/suit/storage/marine/MP/CO/New()
-	select_gamemode_skin(/obj/item/clothing/suit/storage/marine/MP/CO)
-	..()
+	specialty = "M3 pattern captain"
 
 /obj/item/clothing/suit/storage/marine/smartgunner
-	name = "M56 combat harness"
+	name = "M56"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
@@ -303,30 +310,24 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 					/obj/item/weapon/gun/smartgun,
 					/obj/item/storage/sparepouch)
 
-/obj/item/clothing/suit/storage/marine/smartgunner/New()
-	select_gamemode_skin(/obj/item/clothing/suit/storage/marine/smartgunner)
-	..()
-
+/obj/item/clothing/suit/storage/marine/smartgunner/New(loc)
+	if(map_tag == MAP_ICE_COLONY) name += " snow combat harness"
+	else name += " combat harness"
+	select_gamemode_skin(type)
 
 /obj/item/clothing/suit/storage/marine/leader
-	name = "\improper B12 pattern leader armor"
+	name = "\improper B12 pattern leader marine armor"
 	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. Use it to toggle the built-in flashlight."
 	icon_state = "7"
 	armor = list(melee = 50, bullet = 75, laser = 45, energy = 40, bomb = 20, bio = 15, rad = 15)
-
-	New(loc,expected_type 	= type,
-		new_name[] 		= list(MAP_ICE_COLONY = "\improper B12 pattern leader snow armor"))
-		..(loc,expected_type,new_name)
+	specialty = "B12 pattern leader marine"
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
 	desc = "A modified and refashioned suit of M3 Pattern armor designed to be worn by the loader of a USCM vehicle crew. While the suit is a bit more encumbering to wear with the crewman uniform, it offers the loader a degree of protection that would otherwise not be enjoyed."
 	icon_state = "tanker"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/tanker)
-
-	New()
-		select_gamemode_skin(type)
-		..()
+	specialty = "M3 pattern tanker"
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\
@@ -342,10 +343,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	slowdown = SLOWDOWN_ARMOR_HEAVY
 	var/injections = 4
 	unacidable = 1
-
-	New(loc,expected_type 	= type,
-		new_name[] 		= list(MAP_ICE_COLONY = "\improper B18 defensive snow armor"))
-		..(loc,expected_type,new_name)
+	specialty = "B18 defensive"
 
 /obj/item/clothing/suit/storage/marine/specialist/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
@@ -384,10 +382,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor = list(melee = 70, bullet = 55, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun/launcher/rocket)
-
-	New()
-		select_gamemode_skin(type)
-		..()
+	specialty = "M3-T light"
 
 /obj/item/clothing/suit/storage/marine/M3S
 	name = "\improper M3-S light armor"
@@ -395,10 +390,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "scout_armor"
 	armor = list(melee = 75, bullet = 55, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-
-	New()
-		select_gamemode_skin(type)
-		..()
+	specialty = "M3-S light"
 
 /obj/item/clothing/suit/storage/marine/M3S/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
@@ -408,7 +400,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 			return 0
 
 /obj/item/clothing/suit/storage/marine/M35
-	name = "\improper M35 armor"
+	name = "\improper M35 pyrotechnician armor"
 	desc = "A custom set of M35 armor designed for use by USCM Pyrotechnicians."
 	icon_state = "pyro_armor"
 	armor = list(melee = 85, bullet = 90, laser = 60, energy = 60, bomb = 10, bio = 0, rad = 0)
@@ -416,10 +408,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
-
-	New()
-		select_gamemode_skin(type)
-		..()
+	specialty = "M35 pyrotechnician"
 
 /obj/item/clothing/suit/storage/marine/M35/mob_can_equip(mob/M, slot, disable_warning = 0)
 	. = ..()
@@ -429,26 +418,19 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 			return 0
 
 /obj/item/clothing/suit/storage/marine/sniper
-	name = "\improper M3 pattern recon armor"
+	name = "\improper M3 pattern sniper armor"
 	desc = "A custom modified set of M3 armor designed for recon missions."
 	icon_state = "marine_sniper"
 	armor = list(melee = 70, bullet = 55, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	specialty = "M3 pattern sniper"
 	//uniform_restricted = list(/obj/item/clothing/under/marine/sniper) //TODO : This item exists, but isn't implemented yet. Makes sense otherwise
 
-	New(loc,expected_type 	= type,
-		new_name[] 		= list(MAP_ICE_COLONY = "\improper M3 pattern sniper snow armor"))
-		..(loc,expected_type,,new_name)
-
 /obj/item/clothing/suit/storage/marine/sniper/jungle
-	name = "\improper M3 pattern marksman armor"
+	name = "\improper M3 pattern jungle sniper armor"
 	icon_state = "marine_sniperm"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-
-	New(loc,expected_type 	= type,
-		new_name[] 		= list(MAP_ICE_COLONY = "\improper M3 pattern marksman snow armor"))
-		..(loc,expected_type,,new_name)
-
+	specialty = "M3 pattern jungle sniper"
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

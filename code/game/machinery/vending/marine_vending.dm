@@ -774,7 +774,7 @@
 					/obj/item/storage/belt/marine = 10,
 					/obj/item/clothing/shoes/marine = 20,
 					/obj/item/clothing/under/marine = 20,
-					/obj/item/clothing/suit/storage/marine/pad = 20,
+					/obj/item/clothing/suit/storage/marine/padded = 20,
 					/obj/item/clothing/suit/storage/marine/padless = 20,
 					/obj/item/clothing/suit/storage/marine/padless_lines = 20,
 					/obj/item/clothing/suit/storage/marine/carrier = 20,

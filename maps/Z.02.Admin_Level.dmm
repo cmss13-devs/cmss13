@@ -839,7 +839,9 @@
 /turf/open/space,
 /area/space)
 "cf" = (
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "cg" = (
 /turf/closed/shuttle{
@@ -923,7 +925,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "cs" = (
 /obj/structure/cable{
@@ -937,7 +941,9 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "ct" = (
 /obj/structure/cable{
@@ -945,7 +951,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "cu" = (
 /obj/machinery/door/airlock/secure{
@@ -3012,11 +3020,9 @@
 	},
 /area/yautja)
 "gH" = (
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
+/obj/structure/window/framed/colony/reinforced/hull{
+	color = "#686245"
 	},
-/obj/structure/grille,
 /turf/open/floor/holofloor{
 	icon_state = "cult";
 	dir = 2
@@ -3036,7 +3042,9 @@
 /obj/machinery/door_display/research_cell{
 	id = "Prisoner Cell 1"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "gK" = (
 /obj/machinery/door/airlock/glass{
@@ -3052,7 +3060,9 @@
 /obj/machinery/door_display/research_cell{
 	id = "Prisoner Cell 2"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "gM" = (
 /obj/machinery/door/airlock/glass{
@@ -3068,7 +3078,9 @@
 /obj/machinery/door_display/research_cell{
 	id = "Prisoner Cell 3"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "gO" = (
 /obj/structure/closet,
@@ -3237,7 +3249,9 @@
 /obj/machinery/door_display/research_cell{
 	id = "Prisoner Cell 4"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "hl" = (
 /obj/machinery/door/airlock/glass{
@@ -3253,7 +3267,9 @@
 /obj/machinery/door_display/research_cell{
 	id = "Prisoner Cell 5"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "hn" = (
 /obj/machinery/door/airlock/glass{
@@ -3269,7 +3285,9 @@
 /obj/machinery/door_display/research_cell{
 	id = "Prisoner Cell 6"
 	},
-/turf/closed/wall/r_wall/dense,
+/turf/closed/wall/indestructible/other{
+	color = "#686245"
+	},
 /area/yautja)
 "hp" = (
 /turf/closed/wall/indestructible,
@@ -4258,14 +4276,6 @@
 	opacity = 0
 	},
 /area/shuttle/distress/start_upp)
-"jZ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
-	},
-/turf/open/floor/plating,
-/area/yautja)
 "ka" = (
 /obj/structure/bed/chair/wood/normal{
 	icon_state = "echair0"
@@ -5752,22 +5762,6 @@
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
-/area/yautja)
-"mS" = (
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
-	},
-/obj/structure/grille,
-/turf/closed/wall/r_wall/dense,
-/area/yautja)
-"mT" = (
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
-	},
-/obj/structure/grille,
-/turf/open/space,
 /area/yautja)
 "mU" = (
 /obj/machinery/light/small{
@@ -24164,9 +24158,9 @@ cf
 cf
 cf
 cf
-jZ
-jZ
-jZ
+gH
+gH
+gH
 aa
 aa
 "}
@@ -24318,7 +24312,7 @@ cK
 dc
 cK
 cK
-jZ
+gH
 aa
 aa
 "}
@@ -24470,7 +24464,7 @@ cK
 cK
 cK
 cK
-jZ
+gH
 aa
 aa
 "}
@@ -24606,7 +24600,7 @@ dP
 cf
 cM
 dV
-mS
+gH
 gH
 gX
 gH
@@ -24622,7 +24616,7 @@ cM
 cK
 cK
 kv
-jZ
+gH
 aa
 aa
 "}
@@ -24774,7 +24768,7 @@ cK
 cK
 cK
 kv
-jZ
+gH
 aa
 aa
 "}
@@ -24910,11 +24904,11 @@ cL
 gC
 cL
 cL
-mT
+gH
 cK
 cK
 cK
-mT
+gH
 cL
 cL
 iJ
@@ -24926,7 +24920,7 @@ cK
 cK
 ka
 kw
-jZ
+gH
 aa
 aa
 "}
@@ -25078,7 +25072,7 @@ cK
 cK
 cK
 kv
-jZ
+gH
 aa
 aa
 "}
@@ -25230,7 +25224,7 @@ cM
 cK
 cK
 kv
-jZ
+gH
 aa
 aa
 "}
@@ -25382,7 +25376,7 @@ cK
 cK
 cK
 cK
-jZ
+gH
 aa
 aa
 "}
@@ -25534,7 +25528,7 @@ cK
 dd
 cK
 cK
-jZ
+gH
 aa
 aa
 "}
@@ -25684,9 +25678,9 @@ cf
 cf
 cf
 cf
-jZ
-jZ
-jZ
+gH
+gH
+gH
 aa
 aa
 "}

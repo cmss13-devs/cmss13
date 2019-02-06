@@ -1097,8 +1097,11 @@ datum/preferences
 						var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
 						if( !(species in S.species_allowed))
 							continue
+						if(!S.selectable)
+							continue
 
 						valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+					valid_hairstyles = sortList(valid_hairstyles)
 
 					var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_hairstyles
 					if(new_h_style)
@@ -1133,8 +1136,11 @@ datum/preferences
 							continue
 						if( !(species in S.species_allowed))
 							continue
+						if(!S.selectable)
+							continue
 
 						valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+					valid_facialhairstyles = sortList(valid_facialhairstyles)
 
 					var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in valid_facialhairstyles
 					if(new_f_style)

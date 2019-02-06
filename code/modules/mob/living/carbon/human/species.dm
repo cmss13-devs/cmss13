@@ -277,42 +277,6 @@
 	H.set_languages(list("Drrrrrrr"))
 	return ..()
 
-/datum/species/machine
-	name = "Machine"
-	name_plural = "machines"
-
-	icobase = 'icons/mob/human_races/r_machine.dmi'
-	deform = 'icons/mob/human_races/r_machine.dmi'
-	unarmed_type = /datum/unarmed_attack/punch
-	rarity_value = 2
-
-	eyes = "blank_eyes"
-	brute_mod = 0.25
-	burn_mod = 1.1
-
-	warning_low_pressure = 0
-	hazard_low_pressure = 0
-
-	cold_level_1 = -1
-	cold_level_2 = -1
-	cold_level_3 = -1
-
-	heat_level_1 = 500
-	heat_level_2 = 1000
-	heat_level_3 = 2000
-
-	body_temperature = 350
-
-	flags = IS_WHITELISTED|NO_BREATHE|NO_SCAN|NO_BLOOD|NO_POISON|NO_PAIN|IS_SYNTHETIC|NO_CHEM_METABOLIZATION
-
-	blood_color = "#EEEEEE"
-	flesh_color = "#272757"
-
-	has_organ = list(
-		"heart" =    /datum/internal_organ/heart,
-		"brain" =    /datum/internal_organ/brain,
-		)
-
 /datum/species/synthetic
 	name = "Synthetic"
 	name_plural = "synthetics"
@@ -748,20 +712,20 @@
 
 	if(WEAR_WAIST in equip_slots)
 		equip_slots |= WEAR_IN_BELT
-	
+
 	if(WEAR_J_STORE in equip_slots)
 		equip_slots |= WEAR_IN_J_STORE
 
 	if(WEAR_L_STORE in equip_slots)
 		equip_slots |= WEAR_IN_L_STORE
-		
+
 	if(WEAR_R_STORE in equip_slots)
 		equip_slots |= WEAR_IN_R_STORE
-	
+
 	if(WEAR_BODY in equip_slots)
 		equip_slots |= WEAR_ACCESSORY
 		equip_slots |= WEAR_IN_ACCESSORY
-	
+
 	if(WEAR_JACKET in equip_slots)
 		equip_slots |= WEAR_IN_JACKET
 

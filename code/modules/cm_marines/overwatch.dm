@@ -912,6 +912,7 @@
 	command_aura = choice
 	command_aura_cooldown = 45 //45 ticks
 	command_aura_tick = 10 //10 ticks
+	command_aura_notified = FALSE
 	var/message = ""
 	switch(command_aura)
 		if("move")

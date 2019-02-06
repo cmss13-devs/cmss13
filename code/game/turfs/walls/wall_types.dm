@@ -393,7 +393,7 @@
 
 //this one is only for map use
 /turf/closed/wall/resin/ondirt
-	oldTurf = "/turf/open/gm/dirt"
+	old_turf = "/turf/open/gm/dirt"
 
 /turf/closed/wall/resin/thick
 	name = "thick resin wall"
@@ -413,7 +413,7 @@
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
-	oldTurf = "/turf/open/gm/dirt"
+	old_turf = "/turf/open/gm/dirt"
 
 /turf/closed/wall/resin/membrane/thick
 	name = "thick resin membrane"

@@ -1015,17 +1015,17 @@
 				if(WR.walltype == "resin")
 					visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and thickens [WR].</span>", \
 					"<span class='xenonotice'>You regurgitate some resin and thicken [WR].</span>", null, 5)
-					var/prev_oldturf = WR.oldTurf
+					var/prev_old_turf = WR.old_turf
 					WR.ChangeTurf(/turf/closed/wall/resin/thick)
-					WR.oldTurf = prev_oldturf
+					WR.old_turf = prev_old_turf
 					use_plasma(resin_plasma_cost)
 					playsound(loc, "alien_resin_build", 25)
 				else if(WR.walltype == "membrane")
 					visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and thickens [WR].</span>", \
 					"<span class='xenonotice'>You regurgitate some resin and thicken [WR].</span>", null, 5)
-					var/prev_oldturf = WR.oldTurf
+					var/prev_old_turf = WR.old_turf
 					WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-					WR.oldTurf = prev_oldturf
+					WR.old_turf = prev_old_turf
 					use_plasma(resin_plasma_cost)
 					playsound(loc, "alien_resin_build", 25)
 				else

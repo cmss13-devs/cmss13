@@ -306,24 +306,6 @@
 	else
 		X.burrow()
 
-/*/datum/action/xeno_action/activable/burrow/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_burrow
-
-// Burrower Tunnel
-/datum/action/xeno_action/activable/tunnel
-	name = "Tunnel"
-	action_icon_state = "punch"
-	ability_name = "tunnel"
-
-/datum/action/xeno_action/activable/tunnel/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-	X.tunnel(get_turf(A))
-
-/datum/action/xeno_action/activable/tunnel/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	return !X.used_tunnel*/
-
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt
 	name = "Headbutt"

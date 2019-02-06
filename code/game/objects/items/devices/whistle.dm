@@ -5,6 +5,7 @@
 	w_class = 1.0
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_FACE
+	actions_types = list(/datum/action/item_action)
 
 	var/volume = 60
 	var/spamcheck = 0

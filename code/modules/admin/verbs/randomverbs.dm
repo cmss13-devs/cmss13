@@ -435,11 +435,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/admin = key_name_admin(src)
 	var/player_key = G_found.key
 
-	//Now for special roles and equipment.
-	switch(new_character.mind.special_role)
-		if("traitor")
-			ticker.mode.equip_traitor(new_character)
-
 	RoleAuthority.equip_role(new_character, RoleAuthority.roles_for_mode[new_character.mind.assigned_role], pick(latejoin))//Or we simply equip them.
 	//Announces the character on all the systems, based on the record.
 	if(!issilicon(new_character))//If they are not a cyborg/AI.
@@ -546,10 +541,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	for (var/obj/machinery/computer/communications/C in machines)
 		if(! (C.stat & (BROKEN|NOPOWER) ) )
 			var/obj/item/paper/P = new /obj/item/paper( C.loc )
-			P.name = "'[command_name()] Update.'"
+			P.name = "'[command_name] Update.'"
 			P.info = input
 			P.update_icon()
-			C.messagetitle.Add("[command_name()] Update")
+			C.messagetitle.Add("[command_name] Update")
 			C.messagetext.Add(P.info)
 
 	switch(alert("Should this be announced to the general population?",,"Yes","No"))

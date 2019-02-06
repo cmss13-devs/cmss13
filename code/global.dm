@@ -100,6 +100,7 @@ var/diary = null
 var/diaryofmeanpeople = null
 var/round_stats = null
 var/href_logfile = null
+var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
 var/changelog_hash = ""

@@ -10,18 +10,6 @@ var/global/list/special_roles = list(
 	"Responder" = 1,
 	"Predator" = 1,
 	"WO Commander" = 1
-
-	// "wizard" = IS_MODE_COMPILED("wizard"),               // 3
-	// "malf AI" = IS_MODE_COMPILED("malfunction"),         // 4
-	// "revolutionary" = IS_MODE_COMPILED("revolution"),    // 5
- 	// "traitor" = IS_MODE_COMPILED("traitor"),             // 0
-	// "operative" = IS_MODE_COMPILED("nuclear"),           // 1
-	// "cultist" = IS_MODE_COMPILED("cult"),                // 8
-	// "infested monkey" = IS_MODE_COMPILED("monkey"),      // 9
-	// "ninja" = "true",                                    // 10
-	// "vox raider" = IS_MODE_COMPILED("heist"),            // 11
-	// "mutineer" = IS_MODE_COMPILED("mutiny"),             // 13
-	// "changeling" = IS_MODE_COMPILED("changeling"),       // 2
 )
 
 var/const/MAX_SAVE_SLOTS = 10
@@ -1291,30 +1279,11 @@ datum/preferences
 						return
 					spawnpoint = choice
 
-				if("home_system")
-					var/choice = input(user, "Please choose a home system.") as null|anything in home_system_choices + list("Unset","Other")
-					if(!choice)
-						return
-					if(choice == "Other")
-						var/raw_choice = input(user, "Please enter a home system.")  as text|null
-						if(raw_choice)
-							home_system = sanitize(copytext(raw_choice,1,MAX_MESSAGE_LEN))
-						return
-					home_system = choice
 				if("citizenship")
 					var/choice = input(user, "Please choose your current citizenship.") as null|anything in citizenship_choices
 					if(choice)
 						citizenship = choice
-				if("faction")
-					var/choice = input(user, "Please choose a faction to work for.") as null|anything in faction_choices + list("None","Other")
-					if(!choice)
-						return
-					if(choice == "Other")
-						var/raw_choice = input(user, "Please enter a faction.")  as text|null
-						if(raw_choice)
-							faction = sanitize(copytext(raw_choice,1,MAX_MESSAGE_LEN))
-						return
-					faction = choice
+
 				if("religion")
 					var/choice = input(user, "Please choose a religion.") as null|anything in religion_choices + list("None","Other")
 					if(!choice)

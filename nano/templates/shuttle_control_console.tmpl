@@ -47,7 +47,13 @@
 				</div>
 			{{else}}
 				<div class="line">
-					The Bluespace Drive is currently under use.
+					The Bluespace Drive is currently under use.&nbsp;
+					{{if data.flight_seconds}}
+						Flight time left: {{:data.flight_seconds}}&nbsp;				
+					{{/if}}
+					{{if data.can_return_home}}
+						{{:helper.link('Abort Flyby', 'cancel', {'cancel_flyby' : '1'}, null , null)}}
+					{{/if}}
 				</div>	
 			{{/if}}
 		{{/if}}

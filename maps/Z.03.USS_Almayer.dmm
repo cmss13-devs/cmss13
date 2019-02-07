@@ -60727,7 +60727,6 @@
 	},
 /area/almayer/shipboard/port_missiles)
 "cfH" = (
-/obj/structure/dropship_equipment/weapon/minirocket_pod,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-E";
 	icon_state = "E"
@@ -60735,26 +60734,6 @@
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
-	},
-/area/almayer/hallways/repair_bay)
-"cfI" = (
-/obj/structure/dropship_equipment/weapon/minirocket_pod,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/repair_bay)
-"cfJ" = (
-/obj/structure/dropship_equipment/weapon/heavygun,
-/turf/open/floor/almayer{
-	tag = "icon-orangecorner (EAST)";
-	icon_state = "orangecorner";
-	dir = 4
-	},
-/area/almayer/hallways/repair_bay)
-"cfK" = (
-/obj/structure/dropship_equipment/weapon/heavygun,
-/turf/open/floor/almayer{
-	tag = "icon-orange (NORTH)";
-	icon_state = "orange";
-	dir = 1
 	},
 /area/almayer/hallways/repair_bay)
 "cfL" = (
@@ -61296,17 +61275,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/stern_hallway)
-"cgK" = (
-/obj/structure/dropship_equipment/sentry_holder,
-/obj/effect/decal/warning_stripes{
-	tag = "icon-E";
-	icon_state = "E"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/repair_bay)
 "cgL" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/plating/plating_catwalk,
@@ -62276,7 +62244,6 @@
 	},
 /area/almayer/evacuation/pod2)
 "ciF" = (
-/obj/structure/dropship_equipment/sentry_holder,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
 	tag = "icon-NE-out"
@@ -62287,17 +62254,6 @@
 	},
 /area/almayer/hallways/repair_bay)
 "ciG" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-N";
-	icon_state = "N"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/repair_bay)
-"ciH" = (
-/obj/structure/dropship_equipment/electronics/spotlights,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
 	icon_state = "N"
@@ -62330,17 +62286,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/repair_bay)
-"ciK" = (
-/obj/structure/dropship_equipment/weapon/rocket_pod,
-/obj/effect/decal/warning_stripes{
-	tag = "icon-N";
-	icon_state = "N"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/repair_bay)
 "ciL" = (
 /obj/structure/dropship_equipment/mg_holder,
 /obj/effect/decal/warning_stripes{
@@ -62354,17 +62299,6 @@
 /area/almayer/hallways/repair_bay)
 "ciM" = (
 /obj/structure/dropship_equipment/medevac_system,
-/obj/effect/decal/warning_stripes{
-	tag = "icon-N";
-	icon_state = "N"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/repair_bay)
-"ciN" = (
-/obj/structure/dropship_equipment/electronics/targeting_system,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
 	icon_state = "N"
@@ -65221,7 +65155,6 @@
 /turf/open/floor/wood,
 /area/almayer/living/tankerbunks)
 "coq" = (
-/obj/structure/dropship_equipment/sentry_holder,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-E";
 	icon_state = "E"
@@ -65657,6 +65590,14 @@
 	dir = 6
 	},
 /area/almayer/medical/lower_medical)
+"lyG" = (
+/obj/structure/ship_ammo/minirocket,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_regular_floor = "cargo_arrow";
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/hallways/hangar)
 "lMJ" = (
 /obj/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -85623,8 +85564,8 @@ aKY
 aLd
 aRu
 aSp
-bow
-bow
+lyG
+lyG
 aSp
 aSp
 aSp
@@ -89516,7 +89457,7 @@ bLR
 bJo
 cde
 cfH
-cgK
+cfH
 coq
 ciF
 bJo
@@ -89718,7 +89659,7 @@ bIz
 bKo
 bJo
 cdf
-cfI
+cfO
 cfO
 cfO
 ciG
@@ -89921,10 +89862,10 @@ bIz
 bLR
 bJo
 cdf
-cfJ
+cfN
 cfO
 cgS
-ciH
+ciG
 bIO
 bRG
 aKW
@@ -90124,10 +90065,10 @@ bIz
 cde
 bIO
 ceL
-cfK
+ceW
 bZG
 chv
-ciH
+ciG
 bJo
 bRE
 aKW
@@ -90736,7 +90677,7 @@ ceO
 bKl
 cgL
 chv
-ciK
+ciG
 bJo
 bRE
 aKW
@@ -90939,7 +90880,7 @@ ceN
 cfM
 ceU
 chw
-ciK
+ciG
 bJo
 bRE
 aKW
@@ -91548,7 +91489,7 @@ ceR
 cfP
 cgM
 cgS
-ciN
+ciG
 bJo
 bRE
 aKW

@@ -338,6 +338,7 @@
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
 		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
+		list("Signal Flare", 15, /obj/item/device/flashlight/flare/signal, null, "black"),		
 		list("Medical pamphlet", 45, /obj/item/pamphlet/medical, null, "black"),
 		list("Engineering pamphlet", 45, /obj/item/pamphlet/engineering, null, "black"),
 		list("Construction pamphlet", 45, /obj/item/pamphlet/construction, null, "black"),
@@ -1011,6 +1012,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
+		list("Signal Flare", 5, /obj/item/device/flashlight/flare/signal, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Extended barrel", 0, /obj/item/attachable/extended_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),

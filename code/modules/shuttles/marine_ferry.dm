@@ -42,6 +42,7 @@
 	var/list/main_doors = list() //Used to check failure
 	var/fail_flavortext = "<span class='warning'>Could not launch the dropship due to blockage in the rear door.</span>"
 
+
 //Full documentation 650-700 lines down by the copy for elevators
 /datum/shuttle/ferry/marine/preflight_checks()
 
@@ -92,6 +93,7 @@
 	Please ensure that long_jump() and short_jump() are only called from here. This applies to subtypes as well.
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
 */
+
 /datum/shuttle/ferry/marine/process()
 
 	switch(process_state)
@@ -179,7 +181,12 @@
 
 	var/travel_time = 0
 	if(transit_gun_mission)
-		travel_time = move_time * 10 //fire missions not made shorter by optimization.
+		travel_time = move_time * 15 //fire missions not made shorter by optimization.
+		for(var/X in equipments)
+			var/obj/structure/dropship_equipment/E = X
+			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
+				travel_time  = round(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
+				break
 	else
 		if(transit_optimized)
 			travel_time = move_time * 10 * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
@@ -229,7 +236,12 @@
 		if(F.id == shuttle_tag)
 			F.turn_off()
 
-	sleep(travel_time) //Wait while we fly
+	in_transit_time_left = travel_time
+	while(in_transit_time_left>0)
+		in_transit_time_left-=10
+		sleep(10)
+
+	in_transit_time_left = 0
 
 	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS) r_FAL //If a nuke is in progress, don't attempt a landing.
 
@@ -295,7 +307,6 @@
 	set waitfor = 0
 
 	if(moving_status != SHUTTLE_IDLE) return
-
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
 		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
@@ -401,7 +412,12 @@
 					cdel(larva)
 				potential_host.death()
 
-	sleep(travel_time) //Wait while we fly, but give extra time for crashing announcements etc
+	in_transit_time_left = travel_time
+	while(in_transit_time_left>0)
+		in_transit_time_left-=10
+		sleep(10)
+
+	in_transit_time_left = 0
 
 	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS) r_FAL //If a nuke is in progress, don't attempt a landing.
 

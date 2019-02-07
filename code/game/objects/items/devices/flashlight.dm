@@ -299,3 +299,58 @@
 	icon_state = "lantern"
 	desc = "A mining lantern."
 	brightness_on = 6			// luminosity when on
+
+
+//Signal Flare
+/obj/item/device/flashlight/flare/signal
+	name = "signal flare"
+	desc = "A green USCM issued signal flare. The telemetry computer works on chemical reaction that releases smoke and light and thus works only while the flare is burning."
+	icon_state = "cas_flare"
+	item_state = "cas_flare"
+	layer = ABOVE_FLY_LAYER
+	var/faction = ""
+	var/datum/cas_signal/signal
+
+/obj/item/device/flashlight/flare/signal/New()
+	fuel = rand(120, 200)
+	..()
+
+
+/obj/item/device/flashlight/flare/signal/attack_self(mob/user)
+
+	// Usual checks
+	if(!fuel)
+		user << "<span class='notice'>It's out of fuel.</span>"
+		return
+	if(on)
+		return
+
+	if(!isturf(user.loc))
+		user << "You cannot turn the light on while in [user.loc]." //To prevent some lighting anomalities.
+		return 0
+	on = !on
+	update_brightness(user)
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+	// All good, turn it on.
+	user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
+	force = on_damage
+	heat_source = 1500
+	damtype = "fire"
+	processing_objects += src
+	faction = user.faction
+	if(faction && cas_groups[faction])
+		var/target_id = rand(1,100000)
+		signal = new()
+		signal.loc = src
+		signal.name = name
+		signal.target_id = target_id
+		cas_groups[user.faction].add_signal(signal)
+
+
+/obj/item/device/flashlight/flare/signal/Dispose()
+	if(signal)
+		cas_groups[faction].remove_signal(signal)
+		cdel(signal)
+	..()

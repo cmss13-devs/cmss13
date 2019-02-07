@@ -76,9 +76,6 @@ var/global/list/gun_cabinets = list()
 
 var/global/list/cm_objectives = list()
 
-//used by binoculars for dropship bombardment
-var/list/global/active_laser_targets = list()
-
 //Languages/species/whitelist.
 var/global/list/all_species[0]
 var/global/list/all_languages[0]

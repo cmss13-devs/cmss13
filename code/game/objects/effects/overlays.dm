@@ -96,25 +96,38 @@
 	effect_duration = 600
 	var/target_id
 	var/obj/item/device/binoculars/tactical/source_binoc
-	var/obj/machinery/camera/laser_cam/linked_cam
+	var/datum/cas_signal/signal
+	var/mob/living/carbon/human/user
 
-	New(loc, squad_name)
-		..()
-		if(squad_name)
-			name = "[squad_name] laser"
-		target_id = rand(1,1000) //giving it a pseudo unique id.
-		active_laser_targets += src
-		linked_cam = new(loc, name)
+/obj/effect/overlay/temp/laser_target/New(loc, squad_name, _user)
+	..()
+	user = _user
+	if(squad_name)
+		name = "[squad_name] laser"
+	target_id = rand(1,100000) //giving it a pseudo unique id.
+	if(user && user.faction && cas_groups[user.faction])
+		signal = new()
+		signal.loc = src
+		signal.name = name
+		signal.target_id = target_id
+		signal.linked_cam = new(loc, name)
+		signal.linked_cam.invisibility = 101
+		signal.linked_cam.unacidable = 1
+		cas_groups[user.faction].add_signal(signal)
+			
 
 /obj/effect/overlay/temp/laser_target/Dispose()
-	active_laser_targets -= src
+	if(signal)
+		cas_groups[user.faction].remove_signal(signal)
+		if(signal.linked_cam)
+			cdel(signal.linked_cam)
+			signal.linked_cam = null
+		cdel(signal)
 	if(source_binoc)
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.laser = null
 		source_binoc = null
-	if(linked_cam)
-		cdel(linked_cam)
-		linked_cam = null
+	
 	SetLuminosity(0)
 	. = ..()
 

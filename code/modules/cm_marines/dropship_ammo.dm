@@ -10,6 +10,7 @@
 	anchored = TRUE
 	throwpass = TRUE
 	climbable = TRUE
+	var/fire_mission_delay = 4 // from 1 to 4 (or more if ya want)
 	var/travelling_time = 100 //time to impact
 	var/equipment_type //type of equipment that accept this type of ammo.
 	var/ammo_count
@@ -80,6 +81,7 @@
 	transferable_ammo = TRUE
 	ammo_used_per_firing = 20
 	point_cost = 150
+	fire_mission_delay = 2
 	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
 
 	examine(mob/user)
@@ -127,7 +129,7 @@
 	ammo_used_per_firing = 40
 	bullet_spread_range = 5
 	point_cost = 300
-
+	fire_mission_delay = 2
 
 
 //laser battery
@@ -147,7 +149,8 @@
 	ammo_used_per_firing = 10
 	max_inaccuracy = 1
 	warning_sound = 'sound/effects/nightvision.ogg'
-	point_cost = 300
+	point_cost = 100
+	fire_mission_delay = 4 //very good but long cooldown
 
 
 /obj/structure/ship_ammo/laser_battery/examine(mob/user)
@@ -165,18 +168,13 @@
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact)
 	set waitfor = 0
 	var/list/turf_list = list()
-	for(var/turf/T in range(impact, 3))
+	for(var/turf/T in range(impact, 2))
 		turf_list += T
-	var/soundplaycooldown = 0
-	for(var/i=1 to 20)
+	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
+	for(var/i=1 to 10)
 		var/turf/U = pick(turf_list)
 		turf_list -= U
-		sleep(1)
 		laser_burn(U)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, 'sound/effects/pred_vision.ogg', 20, 1)
-			soundplaycooldown = 3
-		soundplaycooldown--
 
 	if(!ammo_count && !disposed)
 		cdel(src) //deleted after last laser beam is fired and impact the ground.
@@ -185,8 +183,8 @@
 
 /obj/structure/ship_ammo/laser_battery/proc/laser_burn(turf/T)
 	for(var/mob/living/L in T)
-		L.adjustFireLoss(120)
-		L.adjust_fire_stacks(20)
+		L.adjustFireLoss(60)
+		L.adjust_fire_stacks(10)
 		L.IgniteMob()
 	if(!locate(/obj/flamer_fire) in T)
 		new/obj/flamer_fire(T, 5, 30) //short but intense
@@ -221,6 +219,7 @@
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
 	point_cost = 300
+	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 	detonate_on(turf/impact)
 		impact.ceiling_debris_check(3)
@@ -234,6 +233,7 @@
 	icon_state = "banshee"
 	ammo_id = "b"
 	point_cost = 300
+	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 	detonate_on(turf/impact)
 		impact.ceiling_debris_check(3)
@@ -247,6 +247,7 @@
 	icon_state = "paveway"
 	ammo_id = "k"
 	point_cost = 300
+	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
 
 	detonate_on(turf/impact)
 		impact.ceiling_debris_check(3)
@@ -263,6 +264,7 @@
 	travelling_time = 70 //slower but deadly accurate, even if laser guidance is stopped mid-travel.
 	max_inaccuracy = 1
 	point_cost = 450
+	fire_mission_delay = 0 //0 means unusable
 
 	detonate_on(turf/impact)
 		set waitfor = 0
@@ -287,6 +289,7 @@
 	icon_state = "napalm"
 	ammo_id = "n"
 	point_cost = 500
+	fire_mission_delay = 0 //0 means unusable
 
 	detonate_on(turf/impact)
 		impact.ceiling_debris_check(3)
@@ -313,6 +316,7 @@
 	travelling_time = 80 //faster than 30mm cannon, slower than real rockets
 	transferable_ammo = TRUE
 	point_cost = 300
+	fire_mission_delay = 3 //high cooldown
 
 	detonate_on(turf/impact)
 		impact.ceiling_debris_check(2)
@@ -342,6 +346,7 @@
 	desc = "A pack of laser guided incendiary mini rockets."
 	icon_state = "minirocket_inc"
 	point_cost = 500
+	fire_mission_delay = 3 //high cooldown
 
 	detonate_on(turf/impact)
 		..()

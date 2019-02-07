@@ -338,6 +338,9 @@
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
 		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
+		list("Medical pamphlet", 45, /obj/item/pamphlet/medical, null, "black"),
+		list("Engineering pamphlet", 45, /obj/item/pamphlet/engineering, null, "black"),
+		list("Construction pamphlet", 45, /obj/item/pamphlet/construction, null, "black"),
 	)
 
 

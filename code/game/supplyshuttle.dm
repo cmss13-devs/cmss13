@@ -331,7 +331,7 @@ var/list/mechtoys = list(
 	var/datum/shuttle/ferry/supply/shuttle
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
-	var/dropship_points = 0 //gains roughly 18 points per minute
+	var/dropship_points = 5000 //gains roughly 18 points per minute
 
 	New()
 		ordernum = rand(1,9000)

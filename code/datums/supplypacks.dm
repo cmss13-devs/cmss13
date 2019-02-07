@@ -116,6 +116,19 @@ OPERATIONS
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"
 	group = "Operations"
+	
+/datum/supply_packs/signal_flares
+	name = "signal flare packs crate (x4)"
+	contains = list(
+					/obj/item/storage/box/m94/signal,
+					/obj/item/storage/box/m94/signal,
+					/obj/item/storage/box/m94/signal,
+					/obj/item/storage/box/m94/signal
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "signal flare pack crate"
+	group = "Operations"
 
 /datum/supply_packs/contraband
 	randomised_num_contained = 5

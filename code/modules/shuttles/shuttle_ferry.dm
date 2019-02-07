@@ -22,6 +22,8 @@
 	var/last_locked = 0 //world.time value to determine if it can be contested
 	var/door_override = 0 //similar to queen_locked, but only affects doors
 	var/last_door_override = 0 //world.time value to determine if it can be contested
+	
+	var/in_transit_time_left = 0
 
 /datum/shuttle/ferry/short_jump(var/area/origin,var/area/destination)
 	if(isnull(location))

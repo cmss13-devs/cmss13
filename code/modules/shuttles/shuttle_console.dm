@@ -11,6 +11,8 @@
 	var/skip_time_lock = 0	// Allows admins to var edit the time lock away.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
+	var/can_abort_flyby = TRUE
+	var/abort_timer = 100 //10 seconds
 
 /obj/machinery/computer/shuttle_control/attack_hand(mob/user)
 	if(..(user))
@@ -112,6 +114,8 @@
 		"shuttle_status_message" = shuttle_status_message,
 		"recharging" = shuttle.recharging,
 		"recharging_seconds" = round(shuttle.recharging/10),
+		"flight_seconds" = round(shuttle.in_transit_time_left/10),
+		"can_return_home" = shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer,
 		"recharge_time" = effective_recharge_time,
 		"recharge_status" = recharge_status,
 		"human_user" = ishuman(user),
@@ -322,6 +326,14 @@
 				usr << "<span class='warning'>You hear the rear door lock.</span>"
 		else
 			usr << "<span class='warning'>The console flashes a warning about the rear door not being present.</span>"
+
+	if(href_list["cancel_flyby"])
+		var/mob/M = usr
+		if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.pilot)
+			usr << "<span class='warning'>Need Pilot level access to return the Dropship.</span>"
+			return
+		if(shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer)
+			shuttle.in_transit_time_left = abort_timer
 
 	ui_interact(usr)
 

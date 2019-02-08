@@ -1136,6 +1136,9 @@ About the new airlock wires panel:
 	// fix smoothing
 	spawn(10)
 		relativewall_neighbours()
+		for(var/turf/closed/wall/W in orange(1))
+			W.update_connections(1)
+			W.update_icon()
 
 /obj/machinery/door/airlock/proc/randomize_wires()
 	var/wire_assignments = CreateRandomAirlockWires()

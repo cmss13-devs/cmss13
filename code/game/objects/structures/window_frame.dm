@@ -45,6 +45,9 @@
 	spawn(0)
 		relativewall()
 		relativewall_neighbours()
+		for(var/turf/closed/wall/W in orange(1))
+			W.update_connections(1)
+			W.update_icon()
 		if(weed_found)
 			new /obj/effect/alien/weeds/weedwall/frame(loc) //after smoothing to get the correct junction value
 

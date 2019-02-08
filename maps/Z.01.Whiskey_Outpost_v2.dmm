@@ -71,7 +71,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker)
 "ak" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/whiskey_outpost)
 "al" = (
 /obj/machinery/door/airlock/almayer/command{
@@ -3556,7 +3556,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_south)
 "hc" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/whiskey_outpost/outside/lane/four_south)
 "hd" = (
 /obj/structure/table/reinforced/prison,
@@ -3701,7 +3701,7 @@
 /area/whiskey_outpost/inside/caves/tunnel)
 "hw" = (
 /obj/structure/sign/poster,
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/whiskey_outpost/outside/mortar_pit)
 "hx" = (
 /obj/effect/landmark/start/whiskey{
@@ -5228,7 +5228,7 @@
 	},
 /area/whiskey_outpost/outside/river/east)
 "li" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/whiskey_outpost/inside/caves)
 "lj" = (
 /obj/structure/cargo_container{
@@ -5961,7 +5961,7 @@
 /obj/effect/landmark/map_tag{
 	name = "Whiskey Outpost"
 	},
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/whiskey_outpost/inside/caves)
 "mU" = (
 /turf/open/gm/dirtgrassborder{
@@ -13259,7 +13259,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south/very_far)
 "BV" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/whiskey_outpost/outside/south/very_far)
 "BW" = (
 /turf/open/gm/dirtgrassborder{

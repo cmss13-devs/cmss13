@@ -12,13 +12,13 @@
 	},
 /area/space)
 "ad" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west2)
 "ae" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central2)
 "af" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east2)
 "ag" = (
 /turf/open/gm/dirt,
@@ -175,7 +175,7 @@
 /obj/effect/landmark/map_tag{
 	name = "LV-624"
 	},
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west1)
 "aN" = (
 /obj/effect/alien/weeds/node,
@@ -304,7 +304,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "bm" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central1)
 "bn" = (
 /obj/structure/bed/nest,
@@ -415,7 +415,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "bD" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand4)
 "bE" = (
 /obj/structure/bed/nest,
@@ -485,7 +485,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "bM" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/west1)
 "bN" = (
 /turf/open/gm/dirt,
@@ -517,10 +517,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "bS" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central3)
 "bT" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand6)
 "bU" = (
 /obj/effect/alien/weeds/node,
@@ -615,7 +615,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "cf" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east1)
 "cg" = (
 /turf/open/gm/dirt,
@@ -857,7 +857,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central3)
 "cP" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand5)
 "cQ" = (
 /obj/structure/bed/chair{
@@ -1552,7 +1552,7 @@
 /turf/open/floor,
 /area/lv624/ground/sand5)
 "eM" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand2)
 "eN" = (
 /obj/effect/landmark{
@@ -1625,7 +1625,7 @@
 /turf/open/floor,
 /area/lv624/ground/sand2)
 "eZ" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand3)
 "fa" = (
 /obj/structure/mineral_door/resin,
@@ -2265,7 +2265,7 @@
 	},
 /area/lv624/ground/sand2)
 "gX" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand8)
 "gY" = (
 /turf/open/gm/coast{
@@ -2402,7 +2402,7 @@
 	},
 /area/lv624/ground/river2)
 "hv" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand9)
 "hw" = (
 /obj/structure/jungle/plantbot1{
@@ -3652,7 +3652,7 @@
 /area/lv624/ground/river3)
 "lf" = (
 /obj/effect/alien/weeds/node,
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand1)
 "lg" = (
 /obj/structure/ore_box,
@@ -3774,7 +3774,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river3)
 "lB" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand1)
 "lC" = (
 /turf/open/gm/coast{
@@ -4254,7 +4254,7 @@
 	},
 /area/lv624/ground/river3)
 "ne" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand7)
 "nf" = (
 /obj/machinery/constructable_frame{
@@ -7296,7 +7296,7 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "vf" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/jungle6)
 "vg" = (
 /obj/structure/rack{

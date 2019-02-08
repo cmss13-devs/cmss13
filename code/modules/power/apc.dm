@@ -1309,7 +1309,10 @@
 	area.power_change()
 	. = ..()
 
-
+/obj/machinery/power/apc/antag
+	cell_type = /obj/item/cell/apc/full
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE)
+	
 
 //------Almayer APCs ------//
 

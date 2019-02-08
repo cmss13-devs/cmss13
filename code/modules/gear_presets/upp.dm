@@ -1,10 +1,12 @@
-
-
 /datum/equipment_preset/upp
 	name = "UPP"
 
 	languages = list("Russian", "English")
 	faction = "UPP"
+
+/datum/equipment_preset/upp/New()
+	. = ..()
+	access = get_antagonist_access()
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
@@ -251,6 +253,7 @@
 	paygrade = "E4"
 	special_role = "UPP"
 	role_comm_title = "Cpl"
+	
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

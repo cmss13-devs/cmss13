@@ -72,8 +72,11 @@
 	contraband = list(/obj/item/reagent_container/food/drinks/ice = 10)
 	prices = list()
 
-
-
+/obj/machinery/vending/coffee/simple
+	name = "Hot Coffee Machine"
+	product_ads = ""
+	products = list(/obj/item/reagent_container/food/drinks/coffee = 40)
+	contraband = list(/obj/item/reagent_container/food/drinks/h_chocolate = 25)
 
 /obj/machinery/vending/snack
 	name = "Hot Foods Machine"
@@ -92,7 +95,13 @@
 
 	prices = list()
 
-
+/obj/machinery/vending/snack/packaged
+	product_slogans = ""
+	product_ads = ""
+	products = list(/obj/item/reagent_container/food/snacks/packaged_burger = 40,
+					/obj/item/reagent_container/food/snacks/packaged_burrito = 40,
+					/obj/item/reagent_container/food/snacks/packaged_hdogs = 40
+					)
 
 /obj/machinery/vending/cola
 	name = "Souto Softdrinks"
@@ -165,6 +174,16 @@
 					/obj/item/tool/lighter/random = 2,
 					/obj/item/tool/lighter/zippo = 20)
 
+/obj/machinery/vending/cigarette/free
+	product_slogans = ""
+	product_ads = ""
+	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
+					/obj/item/storage/box/matches = 15,
+					/obj/item/tool/lighter/random = 25,
+					/obj/item/tool/lighter/zippo = 10)
+	premium = list()
+	prices = list()
+
 /obj/machinery/vending/cigarette/colony
 	product_slogans = "Koorlander Gold, for the refined palate.;Lady Fingers, for the dainty smoker.;Lady Fingers, treat your palete with pink!;The big blue K means a cool fresh day!;For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
 	product_ads = "For the taste that cools your mood, look for the big blue K!;Refined smokers go for Gold!;Lady Fingers are preferred by women who appreciate a cool smoke.;Lady Fingers are the number one cigarette this side of Gateway!;The tobacco connoisseur prefers Koorlander Gold.;For the cool, filtered feel, Lady Finger Cigarettes provide the smoothest draw of any cigarette on the market.;For the man who knows his place is at the top, Koorlander Gold shows the world that you're the best and no-one can say otherwise.;The Colonial Administration Bureau would like to remind you that smoking kills."
@@ -224,6 +243,28 @@
 
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
+/obj/machinery/vending/medical/antag
+	name = "Medical Equipment Vendor"
+	desc = "A vending machine dispensing various pieces of medical equipment."
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	products = list(/obj/item/device/defibrillator = 20,
+					/obj/item/device/healthanalyzer = 20,
+					/obj/item/clothing/glasses/hud/health = 20,
+					/obj/item/storage/belt/medical/combatLifesaver = 20,
+					/obj/item/storage/belt/medical = 20,
+					/obj/item/reagent_container/glass/bottle/bicaridine = 10,
+					/obj/item/reagent_container/glass/bottle/dexalin = 10,
+					/obj/item/reagent_container/glass/bottle/antitoxin = 10,
+					/obj/item/reagent_container/glass/bottle/inaprovaline = 10,
+					/obj/item/reagent_container/glass/bottle/kelotane = 10,
+					/obj/item/reagent_container/glass/bottle/oxycodone = 10,
+					/obj/item/reagent_container/glass/bottle/peridaxon = 10,
+					/obj/item/reagent_container/glass/bottle/stoxin = 10,
+					/obj/item/reagent_container/glass/bottle/spaceacillin = 10,
+					/obj/item/reagent_container/glass/bottle/tramadol = 10,
+					/obj/item/reagent_container/hypospray = 20,
+					/obj/item/reagent_container/syringe = 20
+					)
 
 //This one's from bay12
 /obj/machinery/vending/phoronresearch
@@ -353,6 +394,20 @@
 	contraband = list(/obj/item/tool/weldingtool/hugetank = 2,/obj/item/clothing/gloves/fyellow = 2)
 	premium = list(/obj/item/clothing/gloves/yellow = 1)
 
+/obj/machinery/vending/tool/antag
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	products = list(/obj/item/stack/cable_coil/random = 40,
+					/obj/item/tool/crowbar = 20,
+					/obj/item/device/multitool = 20,
+					/obj/item/tool/screwdriver = 20,
+					/obj/item/tool/weldingtool = 20,
+					/obj/item/tool/wirecutters = 20,
+					/obj/item/tool/wrench = 20,
+					/obj/item/clothing/tie/storage/brown_vest = 20,
+					/obj/item/clothing/gloves/yellow = 20,
+					/obj/item/storage/belt/utility/full = 20)	
+	contraband = list(/obj/item/tool/weldingtool/hugetank = 10)
+	
 /obj/machinery/vending/engivend
 	name = "Engi-Vend"
 	desc = "Spare tool vending. What? Did you expect some witty description?"
@@ -362,6 +417,13 @@
 	products = list(/obj/item/clothing/glasses/meson = 2,/obj/item/device/multitool = 4,/obj/item/circuitboard/airlock = 10,/obj/item/circuitboard/apc = 10,/obj/item/circuitboard/airalarm = 10,/obj/item/cell/high = 10)
 	contraband = list(/obj/item/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3)
+
+/obj/machinery/vending/engivend/antag
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	products = list(/obj/item/circuitboard/airlock = 20,
+					/obj/item/circuitboard/apc = 20,
+					/obj/item/cell/high = 20)
+	contraband = list(/obj/item/cell/super = 10)
 
 //This one's from bay12
 /obj/machinery/vending/engineering

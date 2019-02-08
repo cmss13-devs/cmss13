@@ -398,3 +398,6 @@
 	name = "\improper yautja autolathe"
 	desc = "It produces items using metal and glass."
 	icon = 'icons/obj/machines/predautolathe.dmi'
+
+/obj/machinery/autolathe/full
+	stored_material =  list("metal" = 75000, "glass" = 37500)

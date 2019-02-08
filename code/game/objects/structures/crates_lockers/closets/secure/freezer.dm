@@ -96,10 +96,12 @@
 			new /obj/item/spacecash/c200(src)
 		return
 
-
-
-
-
-
-
-
+/obj/structure/closet/secure_closet/freezer/fridge/full
+	New()
+		..()
+		sleep(2)
+		for(var/i = 0, i < 2, i++)
+			new /obj/item/reagent_container/food/condiment/sugar(src)		
+		for(var/i = 0, i < 6, i++)
+			new /obj/item/reagent_container/food/snacks/flour(src)
+		return

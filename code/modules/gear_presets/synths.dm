@@ -111,3 +111,76 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/combat_knife(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/synth/survivor
+	name = "Survivor - Synthetic"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/lanyard
+	assignment = "Survivor"
+	special_role = "MODE"
+
+/datum/equipment_preset/synth/survivor/New()
+	. = ..()
+	access = get_all_civilian_accesses() //crappy access!
+
+/datum/equipment_preset/synth/survivor/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/industrial
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
+	add_random_survivor_equipment(H)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/synth/working_joe
+	name = "Working Joe"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/lanyard
+	assignment = "Survivor"
+	special_role = "MODE"
+
+/datum/equipment_preset/synth/working_joe/New()
+	. = ..()
+	access = get_all_civilian_accesses() //crappy access!
+
+/datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/marine/satchel
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/industrial
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
+	add_random_survivor_equipment(H)
+
+/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
+	. = ..()
+	H.r_eyes = 255
+	H.g_eyes = 255
+	H.b_eyes = 255
+	H.h_style = "Bald"
+	H.r_hair = 255
+	H.g_hair = 255
+	H.b_hair = 255
+	H.f_style = "Shaved"
+	H.r_facial = 255
+	H.g_facial = 255
+	H.b_facial = 255
+
+/datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
+	H.real_name = "Working Joe"//You don't have a name, you are a Working Joe
+	if(H.mind)
+		H.mind.name = H.real_name

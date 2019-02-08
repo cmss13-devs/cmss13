@@ -7,9 +7,9 @@ var/global/list/special_roles = list(
 	"Xenomorph after<br>unrevivably dead" = 1,
 	"Xenomorph Queen" = 1,
 	"Survivor" = 1,
+	"Synth Survivor" = 1,
 	"Responder" = 1,
 	"Predator" = 1,
-	"WO Commander" = 1
 )
 
 var/const/MAX_SAVE_SLOTS = 10
@@ -317,8 +317,8 @@ datum/preferences
 			if ("Predator")
 				ban_check_name = "Predator"
 
-			if ("WO Commander")
-				ban_check_name = "WO Commander"
+			if ("Synth Survivor")
+				ban_check_name = "Synth Survivor"
 
 		if(jobban_isbanned(user, ban_check_name))
 			dat += "<b>Be [i]:</b> <font color=red><b> \[BANNED]</b></font><br>"
@@ -384,9 +384,7 @@ datum/preferences
 
 	dat += "<div id='right'>"
 	dat += "<big><b><u>Background Information:</u></b></big><br>"
-	//dat += "<b>Home system</b>: <a href='byond://?src=\ref[user];preference=home_system;task=input'>[home_system]</a><br/>"
 	dat += "<b>Citizenship</b>: <a href='byond://?src=\ref[user];preference=citizenship;task=input'>[citizenship]</a><br/>"
-	// dat += "<b>Faction</b>: <a href='byond://?src=\ref[user];preference=faction;task=input'>[faction]</a><br/>"
 	dat += "<b>Religion</b>: <a href='byond://?src=\ref[user];preference=religion;task=input'>[religion]</a><br/>"
 
 	dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
@@ -472,14 +470,6 @@ datum/preferences
 		HTML += "</td><td width='40%'>"
 
 		HTML += "<a href='?_src_=prefs;preference=job;task=input;text=[job.title]'>"
-
-//		if(rank == "Assistant")//Assistant is special
-//			if(job_civilian_low & ASSISTANT)
-//				HTML += " <font color=green>\[Yes]</font>"
-//			else
-//				HTML += " <font color=red>\[No]</font>"
-//			HTML += "</a></td></tr>"
-//			continue
 
 		if(GetJobDepartment(job, 1) & job.flag)
 			HTML += " <font color=blue>\[High]</font>"
@@ -589,32 +579,6 @@ datum/preferences
 	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
-	/*
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=head'>Head:</a> "
-	HTML += TextPreview(flavor_texts["head"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=face'>Face:</a> "
-	HTML += TextPreview(flavor_texts["face"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=eyes'>Eyes:</a> "
-	HTML += TextPreview(flavor_texts["eyes"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=torso'>Body:</a> "
-	HTML += TextPreview(flavor_texts["torso"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=arms'>Arms:</a> "
-	HTML += TextPreview(flavor_texts["arms"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=hands'>Hands:</a> "
-	HTML += TextPreview(flavor_texts["hands"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=legs'>Legs:</a> "
-	HTML += TextPreview(flavor_texts["legs"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=feet'>Feet:</a> "
-	HTML += TextPreview(flavor_texts["feet"])
-	HTML += "<br>"
-	*/
 	HTML += "<hr />"
 	HTML +="<a href='?src=\ref[user];preference=flavor_text;task=done'>\[Done\]</a>"
 	HTML += "<tt>"
@@ -640,14 +604,6 @@ datum/preferences
 		ShowChoices(user)
 		return
 
-//	if(role == "Assistant")
-//		if(job_civilian_low & job.flag)
-//			job_civilian_low &= ~job.flag
-//		else
-//			job_civilian_low |= job.flag
-//		SetChoices(user)
-//		return 1
-
 	if(GetJobDepartment(job, 1) & job.flag)
 		SetJobDepartment(job, 1)
 	else if(GetJobDepartment(job, 2) & job.flag)
@@ -657,7 +613,6 @@ datum/preferences
 	else//job = Never
 		SetJobDepartment(job, 4)
 
-	//var/list/L = list(ROLEGROUP_MARINE_COMMAND, ROLEGROUP_MARINE_ENGINEERING, ROLEGROUP_MARINE_MED_SCIENCE, ROLEGROUP_MARINE_SQUAD_MARINES)
 	SetChoices(user)
 	return 1
 

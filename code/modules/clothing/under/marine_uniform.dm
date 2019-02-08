@@ -334,3 +334,8 @@
 
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
+
+/obj/item/clothing/under/rank/synthetic/joe
+	name = "\improper Working Joe Uniform"
+	desc = "A cheap uniform made for Synthetic labor."
+	icon_state = "working_joe"

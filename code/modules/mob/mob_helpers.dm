@@ -261,6 +261,13 @@ proc/isSynth(A)
 			return 1
 	return 0
 
+proc/isEarlySynthetic(A)
+	if(ishuman(A))
+		var/mob/living/carbon/human/H = A
+		if(H.species.name == "Early Synthetic")
+			return 1
+	return 0
+
 proc/ismaintdrone(A)
 	if(istype(A,/mob/living/silicon/robot/drone))
 		return 1

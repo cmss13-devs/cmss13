@@ -43,17 +43,7 @@
 #define BE_RESPONDER			16
 #define BE_PREDATOR				32
 
-
-#define BE_REV        			64
-#define BE_TRAITOR   			128
-#define BE_OPERATIVE 			256
-#define BE_MONKEY    			512
-#define BE_RAIDER    			1024
-#define BE_PLANT     			2048
-#define BE_MUTINEER   			4096
-#define BE_CHANGELING 			8192
-
-#define BE_WO_COM 				16384
+#define BE_SYNTH_SURVIVOR 		64
 //=================================================
 
 var/list/be_special_flags = list(
@@ -62,7 +52,8 @@ var/list/be_special_flags = list(
 	"Survivor" = BE_SURVIVOR,
 	"Responder" = BE_RESPONDER,
 	"Predator" = BE_PREDATOR,
-	"Queen" = BE_QUEEN
+	"Queen" = BE_QUEEN,
+	"Synth Survivor" = BE_SYNTH_SURVIVOR,
 )
 
 #define AGE_MIN 17			//youngest a character can be

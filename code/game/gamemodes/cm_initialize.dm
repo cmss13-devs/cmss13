@@ -41,6 +41,7 @@ Additional game mode variables.
 /datum/game_mode
 	var/datum/mind/xenomorphs[] = list() //These are our basic lists to keep track of who is in the game.
 	var/datum/mind/survivors[] = list()
+	var/datum/mind/synth_survivor = null
 	var/datum/mind/predators[] = list()
 	var/datum/mind/hellhounds[] = list() //Hellhound spawning is not supported at round start.
 	var/pred_keys[] = list() //People who are playing predators, we can later reference who was a predator during the round.
@@ -453,7 +454,20 @@ datum/game_mode/proc/initialize_special_clamps()
 
 //We don't actually need survivors to play, so long as aliens are present.
 /datum/game_mode/proc/initialize_starting_survivor_list()
-	var/list/datum/mind/possible_survivors = get_players_for_role(BE_SURVIVOR)
+	var/list/datum/mind/possible_human_survivors = get_players_for_role(BE_SURVIVOR)
+	var/list/datum/mind/possible_synth_survivors = get_players_for_role(BE_SYNTH_SURVIVOR)
+
+	var/list/datum/mind/possible_survivors = possible_human_survivors.Copy() //making a copy so we'd be able to distinguish between survivor types
+
+	for(var/datum/mind/A in possible_synth_survivors)
+		if(RoleAuthority.roles_whitelist[A.key] & WHITELIST_SYNTHETIC)
+			if(A in possible_survivors)
+				continue //they are already applying to be a survivor
+			else
+				possible_survivors += A
+		else
+			possible_synth_survivors -= A//Not whitelisted, get them out of here!
+
 	if(possible_survivors.len) //We have some, it looks like.
 		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
 			if(A.assigned_role == "MODE")
@@ -463,16 +477,26 @@ datum/game_mode/proc/initialize_special_clamps()
 			var/i = surv_starting_num
 			var/datum/mind/new_survivor
 			while(i > 0)
-				if(!possible_survivors.len) break  //Ran out of candidates! Can't have a null pick(), so just stick with what we have.
+				if(!possible_survivors.len)
+					break  //Ran out of candidates! Can't have a null pick(), so just stick with what we have.
 				new_survivor = pick(possible_survivors)
-				if(!new_survivor) break  //We ran out of survivors!
-				new_survivor.assigned_role = "MODE"
-				new_survivor.special_role = "Survivor"
-				possible_survivors -= new_survivor
-				survivors += new_survivor
-				i--
+				if(!new_survivor)
+					break  //We ran out of survivors!
+				if(!synth_survivor && new_survivor in possible_synth_survivors)
+					synth_survivor = new_survivor
+					new_survivor.assigned_role = "MODE"
+					new_survivor.special_role = "Survivor"
+					monkey_amount += 5 //Extra smallhosts will be spawned to compensate the xenos for this survivor
+				else if(new_survivor in possible_human_survivors) //so we don't draft people that want to be synth survivors but not normal survivors
+					new_survivor.assigned_role = "MODE"
+					new_survivor.special_role = "Survivor"
+					survivors += new_survivor
+					i--
+				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
 
 /datum/game_mode/proc/initialize_post_survivor_list()
+	if(synth_survivor)
+		transform_survivor(synth_survivor)
 	for(var/datum/mind/survivor in survivors)
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
@@ -480,81 +504,86 @@ datum/game_mode/proc/initialize_special_clamps()
 
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
-/datum/game_mode/proc/transform_survivor(var/datum/mind/ghost)
+/datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE)
 	var/picked_spawn = pick(surv_spawn)
 	var/obj/effect/landmark/survivor_spawner/surv_datum
 	surv_datum = picked_spawn;
 	if(istype(surv_datum))
-		return survivor_event_transform(ghost.current, surv_datum)
+		return survivor_event_transform(ghost.current, surv_datum, is_synth)
 		//deleting datum is on us
 		surv_spawn -= picked_spawn
 		cdel(picked_spawn)
 	else
-		return survivor_non_event_transform(ghost.current, picked_spawn)
+		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth)
 
-/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H)
+/datum/game_mode/proc/survivor_old_equipment(var/mob/living/carbon/human/H, var/is_synth = FALSE)
 	var/list/survivor_types
 
-	switch(map_tag)
-		if(MAP_PRISON_STATION)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Corporate",
-				"Survivor - Security",
-				"Survivor - Prisoner",
-				"Survivor - Prisoner",
-				"Survivor - Prisoner",
+	if(is_synth)
+		survivor_types = list(
+				"Survivor - Synthetic", //to be expanded later
 			)
-		if(MAP_LV_624,MAP_BIG_RED,MAP_DESERT_DAM)
-			survivor_types = list(
-				"Survivor - Assistant",
-				"Survivor - Civilian",
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Chef",
-				"Survivor - Botanist",
-				"Survivor - Atmos Tech",
-				"Survivor - Chaplain",
-				"Survivor - Miner",
-				"Survivor - Salesman",
-				"Survivor - Colonial Marshall",
-			)
-		if(MAP_ICE_COLONY)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Salesman",
-				"Survivor - Security",
-			)
-		else
-			survivor_types = list(
-				"Survivor - Assistant",
-				"Survivor - Civilian",
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Chef",
-				"Survivor - Botanist",
-				"Survivor - Atmos Tech",
-				"Survivor - Chaplain",
-				"Survivor - Miner",
-				"Survivor - Salesman",
-				"Survivor - Colonial Marshall",
-			)
+	else
+		switch(map_tag)
+			if(MAP_PRISON_STATION)
+				survivor_types = list(
+					"Survivor - Scientist",
+					"Survivor - Doctor",
+					"Survivor - Corporate",
+					"Survivor - Security",
+					"Survivor - Prisoner",
+					"Survivor - Prisoner",
+					"Survivor - Prisoner",
+				)
+			if(MAP_LV_624,MAP_BIG_RED,MAP_DESERT_DAM)
+				survivor_types = list(
+					"Survivor - Assistant",
+					"Survivor - Civilian",
+					"Survivor - Scientist",
+					"Survivor - Doctor",
+					"Survivor - Chef",
+					"Survivor - Botanist",
+					"Survivor - Atmos Tech",
+					"Survivor - Chaplain",
+					"Survivor - Miner",
+					"Survivor - Salesman",
+					"Survivor - Colonial Marshall",
+				)
+			if(MAP_ICE_COLONY)
+				survivor_types = list(
+					"Survivor - Scientist",
+					"Survivor - Doctor",
+					"Survivor - Salesman",
+					"Survivor - Security",
+				)
+			else
+				survivor_types = list(
+					"Survivor - Assistant",
+					"Survivor - Civilian",
+					"Survivor - Scientist",
+					"Survivor - Doctor",
+					"Survivor - Chef",
+					"Survivor - Botanist",
+					"Survivor - Atmos Tech",
+					"Survivor - Chaplain",
+					"Survivor - Miner",
+					"Survivor - Salesman",
+					"Survivor - Colonial Marshall",
+				)
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)
 	arm_equipment(H, randjob, FALSE)
 
 
-/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner)
+/datum/game_mode/proc/survivor_event_transform(var/mob/living/carbon/human/H, var/obj/effect/landmark/survivor_spawner/spawner, var/is_synth = FALSE)
 	H.loc = spawner.loc
 	if(spawner.roundstart_damage_max>0)
 		while(spawner.roundstart_damage_times>0)
 			H.take_limb_damage(rand(spawner.roundstart_damage_min,spawner.roundstart_damage_max), 0)
 			spawner.roundstart_damage_times--
-	if(!spawner.equipment)
-		survivor_old_equipment(H)
+	if(!spawner.equipment || is_synth)
+		survivor_old_equipment(H, is_synth)
 	else
 		if(arm_equipment(H,spawner.equipment) == -1)
 			H << "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor."
@@ -588,11 +617,11 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(spawner.make_objective)
 		new /datum/cm_objective/move_mob/almayer/survivor(H)
 
-/datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc)	
+/datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)	
 	H.loc = loc
 	//Damage them for realism purposes
 	H.take_limb_damage(rand(0,15), rand(0,15))
-	survivor_old_equipment(H)
+	survivor_old_equipment(H, is_synth)
 	H.name = H.get_visible_name()
 	new /datum/cm_objective/move_mob/almayer/survivor(H)	
 

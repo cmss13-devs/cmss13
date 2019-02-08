@@ -196,11 +196,11 @@
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
 
 
-/obj/item/clothing/head/helmet/marine/New(loc,expected_type 		= /obj/item/clothing/head/helmet/marine,
+/obj/item/clothing/head/helmet/marine/New(loc, 
 	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(MAP_ICE_COLONY) name += " snow helmet"
+		if(map_tag == MAP_ICE_COLONY) name += " snow helmet"
 		else name += " helmet"
 	select_gamemode_skin(type,null,new_protection)
 	..()

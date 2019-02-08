@@ -95,10 +95,6 @@
 	icon_state = "BO_jumpsuit"
 	specialty = "marine officer"
 
-/obj/item/clothing/under/marine/officer/logistics/New()
-	..()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/logistics)
-
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
 	desc = "A bodysuit worn by pilot officers of the USCM, and is meant for survival in inhospitable conditions. Fly the marines onwards to glory. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
@@ -123,30 +119,17 @@
 	icon_state = "BO_jumpsuit"
 	specialty = "staff officer"
 
-/obj/item/clothing/under/marine/officer/bridge/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/bridge)
-	..()
-
-
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
 	desc = "A uniform typically worn by a first-lieutenant Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "XO_jumpsuit"
 	specialty = "executive officer"
 
-/obj/item/clothing/under/marine/officer/exec/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/exec)
-	..()
-
 /obj/item/clothing/under/marine/officer/command
 	name = "commanding officer uniform"
 	desc = "The well-ironed uniform of a USCM commanding officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "CO_jumpsuit"
 	specialty = "commanding officer"
-
-/obj/item/clothing/under/marine/officer/command/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/command)
-	..()
 
 /obj/item/clothing/under/marine/officer/admiral
 	name = "admiral uniform"

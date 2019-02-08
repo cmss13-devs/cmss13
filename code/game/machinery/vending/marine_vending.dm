@@ -242,7 +242,7 @@
 		/obj/item/device/flashlight/combat = round(scale * 15),
 		/obj/item/clothing/mask/gas = round(scale * 10),
 	)
-					
+
 
 
 	contraband = list(
@@ -525,74 +525,6 @@
 					)
 	contraband = list(/obj/item/reagent_container/blood/OMinus = 1)
 
-
-/obj/machinery/vending/marine_special
-	name = "\improper ColMarTech Specialist Vendor"
-	desc = "A marine specialist equipment vendor"
-	hacking_safety = 1
-	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"
-	req_access = list(ACCESS_MARINE_SPECPREP)
-	icon_state = "boozeomat"
-	icon_deny = "boozeomat-deny"
-	wrenchable = FALSE
-
-	products = list(
-						/obj/item/coin/marine = 1,
-						/obj/item/clothing/tie/storage/webbing = 1,
-						/obj/item/explosive/plastique = 2,
-						/obj/item/explosive/grenade/HE = 2,
-						/obj/item/explosive/grenade/HE/frag = 2,
-						/obj/item/explosive/grenade/incendiary = 2,
-//						/obj/item/weapon/gun/flamer = 1,
-//						/obj/item/tank/phoron/m240 = 3,
-						/obj/item/weapon/shield/riot = 1,
-						/obj/item/storage/pouch/magazine/large = 1,
-						/obj/item/storage/pouch/general/medium = 1,
-						/obj/item/clothing/mask/gas = 1
-			)
-	contraband = list()
-	premium = list(
-					/obj/item/storage/box/spec/demolitionist = 1,
-					/obj/item/storage/box/spec/heavy_grenadier = 1,
-					/obj/item/storage/box/m42c_system = 1,
-					/obj/item/storage/box/m42c_system_Jungle = 1,
-					/obj/item/storage/box/spec/pyro = 1
-			)
-	prices = list()
-
-
-/obj/machinery/vending/shared_vending/marine_special
-	name = "\improper ColMarTech Specialist Vendor"
-	desc = "A marine specialist equipment vendor"
-	hacking_safety = 1
-	product_ads = "If it moves, it's hostile!;How many enemies have you killed today?;Shoot first, perform autopsy later!;Your ammo is right here.;Guns!;Die, scumbag!;Don't shoot me bro!;Shoot them, bro.;Why not have a donut?"
-	req_access = list(ACCESS_MARINE_SPECPREP)
-	icon_state = "boozeomat"
-	icon_deny = "boozeomat-deny"
-	wrenchable = FALSE
-
-	products = list(
-						/obj/item/coin/marine = 1,
-			)
-	contraband = list()
-	//premium = list(/obj/item/weapon/shield/riot = 1)	//NOTE: This needs to be re-worked so we don't have to have a riot shield in here at all. ~Bmc777
-	shared = list(
-					/obj/item/storage/box/spec/demolitionist = 1,
-					/obj/item/storage/box/spec/heavy_grenadier = 1,
-					/obj/item/storage/box/spec/sniper = 1,
-					/obj/item/storage/box/spec/scout = 1,
-					/obj/item/storage/box/spec/pyro = 1
-			)
-	prices = list()
-
-/obj/machinery/vending/shared_vending/marine_special/New()
-
-	if(shared_products.len == 0)
-		var/i
-
-		for(i in shared)
-			shared_products.Add(new /datum/data/vending_product())
-	..()
 
 /obj/machinery/vending/shared_vending/marine_engi
 	name = "\improper ColMarTech Engineer System Vendor"

@@ -319,6 +319,13 @@
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 
+		list("KITS", 0, null, null, null),
+		list("Mini Constructor Kit", 45, /obj/item/storage/box/kit/mini_constructor, MARINE_CAN_BUY_ESSENTIALS, "black"),
+		list("Mini Engineer Kit", 45, /obj/item/storage/box/kit/mini_engineer, MARINE_CAN_BUY_ESSENTIALS, "black"),
+		list("Mini Medic Kit", 45, /obj/item/storage/box/kit/mini_medic, MARINE_CAN_BUY_ESSENTIALS, "black"),
+		list("Mini Pyro Kit", 45, /obj/item/storage/box/kit/mini_pyro, MARINE_CAN_BUY_ESSENTIALS, "black"),
+		list("Mini Sniper Kit", 45, /obj/item/storage/box/kit/mini_sniper, MARINE_CAN_BUY_ESSENTIALS, "black"),
+
 		list("EXTRAS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),
 		list("Box of flechette shells", 15, /obj/item/ammo_magazine/shotgun/flechette, null, "black"),
@@ -338,10 +345,7 @@
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
 		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
-		list("Signal Flare", 15, /obj/item/device/flashlight/flare/signal, null, "black"),		
-		list("Medical pamphlet", 45, /obj/item/pamphlet/medical, null, "black"),
-		list("Engineering pamphlet", 45, /obj/item/pamphlet/engineering, null, "black"),
-		list("Construction pamphlet", 45, /obj/item/pamphlet/construction, null, "black"),
+		list("Signal Flare", 15, /obj/item/device/flashlight/flare/signal, null, "black"),
 	)
 
 

@@ -328,3 +328,6 @@
 /obj/machinery/door/firedoor/multi_tile
 	icon = 'icons/obj/doors/DoorHazard2x1.dmi'
 	width = 2
+
+/obj/machinery/door/firedoor/border_only/almayer/antag
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE)

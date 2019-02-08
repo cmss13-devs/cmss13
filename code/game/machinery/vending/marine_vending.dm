@@ -466,7 +466,37 @@
 
 	contraband = list(/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate =3)
 
-
+/obj/machinery/vending/MarineMed/antag
+	name = "\improper Medical Supply Vendor"
+	desc = "Medical vending machine, dispensing various pieces of equipment for both doctors and medics."
+	product_ads = ""
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	products = list(/obj/item/reagent_container/hypospray/autoinjector/Bicard = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/dexP = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/Dylovene = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/Kelo = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/Oxycodone = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/quickclot = 10,
+					/obj/item/reagent_container/hypospray/autoinjector/tricord = 10,					
+					/obj/item/storage/pill_bottle/bicaridine = 10,
+					/obj/item/storage/pill_bottle/dexalin = 10,
+					/obj/item/storage/pill_bottle/antitox = 10,									
+					/obj/item/storage/pill_bottle/inaprovaline = 10,
+					/obj/item/storage/pill_bottle/kelotane = 10,
+					/obj/item/storage/pill_bottle/spaceacillin = 10,										
+					/obj/item/storage/pill_bottle/peridaxon = 10,
+					/obj/item/storage/pill_bottle/quickclot = 10,
+					/obj/item/storage/pill_bottle/russianRed = 10,
+					/obj/item/storage/pill_bottle/tramadol = 10,
+					/obj/item/stack/medical/bruise_pack = 20,					
+					/obj/item/stack/medical/ointment = 20,
+					/obj/item/stack/medical/advanced/bruise_pack = 20,
+					/obj/item/stack/medical/advanced/ointment = 20,
+					/obj/item/stack/medical/splint = 20,
+					/obj/item/bodybag/cryobag = 10,
+					/obj/item/device/healthanalyzer = 20)
+	contraband = list()
 
 //NEW BLOOD VENDOR CODE - APOPHIS775 22JAN2015
 /obj/machinery/vending/MarineMed/Blood
@@ -496,6 +526,9 @@
 			temp_list -= R.product_path
 			if(!temp_list.len) break
 
+/obj/machinery/vending/MarineMed/Blood/antag
+	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	
 /obj/machinery/vending/marine_medic
 	name = "\improper ColMarTech Medic Vendor"
 	desc = "A marine medic equipment vendor"

@@ -127,7 +127,6 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless (src)
 	new /obj/item/stack/medical/bruise_pack (src)
 
-
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
 	desc = "It can contain a pistol. Useful for emergencies."

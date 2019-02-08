@@ -190,7 +190,8 @@
 	opacity = 0
 
 /turf/closed/wall/indestructible/splashscreen
-	name = "Space Station 13"
+	name = "Lobby Art"
+	desc = "Assorted artworks by NicBoone & Triiodine. Holiday artwork by Monkeyfist."
 	icon = 'icons/misc/title.dmi'
 	icon_state = "title_painting1"
 //	icon_state = "title_holiday"
@@ -200,7 +201,7 @@
 /turf/closed/wall/indestructible/splashscreen/New()
 	..()
 	if(icon_state == "title_painting1") // default
-		icon_state = "title_painting[rand(1,5)]"
+		icon_state = "title_painting[rand(1,6)]"
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"

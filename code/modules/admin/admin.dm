@@ -51,7 +51,6 @@ var/global/floorIsLava = 0
 				var/msg = rendered
 				C << msg
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
 /datum/admins/proc/show_player_panel(var/mob/M in mob_list)
@@ -192,7 +191,7 @@ var/global/floorIsLava = 0
 		<A href='?src=\ref[src];tdomeadmin=\ref[M]'>Thunderdome Admin</A> |
 		<A href='?src=\ref[src];tdomeobserve=\ref[M]'>Thunderdome Observer</A>
 	"}
-	
+
 	if(ishuman(M))
 		body += {"
 		<br><A href='?src=\ref[src];zombieinfect=\ref[M]'>Infect with zombie virus</A>

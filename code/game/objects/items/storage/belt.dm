@@ -149,7 +149,7 @@
 /obj/item/storage/belt/medical/combatLifesaver
 	name = "\improper M276 pattern lifesaver bag"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies and is common among medics."
-	icon_state = "medicalbag"
+	icon_state = "medicbag"
 	item_state = "medicbag"
 	storage_slots = 21 //can hold 3 "rows" of very limited medical equipment, but it *should* give a decent boost to squad medics.
 	max_storage_space = 42
@@ -180,7 +180,7 @@
 		select_gamemode_skin(type)
 
 /obj/item/storage/belt/medical/combatLifesaver/upp
-	icon_state = "medicalbag_u"
+	icon_state = "medicbag_u"
 	item_state = "medicbag_u"
 	has_gamemode_skin = FALSE
 	storage_slots = 42

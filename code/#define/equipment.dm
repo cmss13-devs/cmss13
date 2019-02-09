@@ -29,6 +29,7 @@
 #define RELAY_CLICK				256		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs + Sentries ~Art
 #define ITEM_UNCATCHABLE		512 	// The item can't be caught out of the air.
 #define UNIQUE_ITEM_TYPE		1024 	// Used for donor items to exclude them for checks.
+#define NO_SNOW_TYPE			2048	// Used for armors or uniforms that don't have a snow icon state.
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1

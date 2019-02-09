@@ -202,8 +202,10 @@
 		name = "[specialty]"
 		if(map_tag == MAP_ICE_COLONY) name += " snow helmet"
 		else name += " helmet"
-	select_gamemode_skin(type,null,new_protection)
-	..()
+	
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type,null,new_protection)
+		..()
 	helmet_overlays = list("damage","band","item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 2
@@ -346,9 +348,7 @@
 //=======================================================================\\
 
 /obj/item/clothing/head/helmet/marine/veteran
-
-/obj/item/clothing/head/helmet/marine/veteran/New()
-	return //Return early so that veteran gear keeps its original name (caps, covers...). They don't change sprites either.
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE //Let's make these keep their name and icon.
 
 /obj/item/clothing/head/helmet/marine/veteran/PMC
 	name = "\improper PMC tactical cap"

@@ -311,9 +311,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 					/obj/item/storage/sparepouch)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/New(loc)
+	. = ..()
 	if(map_tag == MAP_ICE_COLONY) name += " snow combat harness"
 	else name += " combat harness"
-	select_gamemode_skin(type)
+	//select_gamemode_skin(type)
 
 /obj/item/clothing/suit/storage/marine/leader
 	name = "\improper B12 pattern leader marine armor"

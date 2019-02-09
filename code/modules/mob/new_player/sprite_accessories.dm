@@ -125,7 +125,6 @@
 	name = "Ponytail 4"
 	icon_state = "hair_ponytail4"
 	gender = FEMALE
-	selectable = 0
 
 /datum/sprite_accessory/hair/sideponytail
 	name = "Side Ponytail"
@@ -544,7 +543,7 @@
 	icon_state = "bald"
 
 /datum/sprite_accessory/hair/ponytail6
-	name = "Poinytail 6"
+	name = "Ponytail 5"
 	icon_state = "hair_ponytail6"
 	gender = FEMALE
 

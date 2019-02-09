@@ -316,11 +316,13 @@
 	name = "Floorlength Braid"
 	icon_state = "hair_braid"
 	gender = FEMALE
+	selectable = 0
 
 /datum/sprite_accessory/hair/mbraid
 	name = "Medium Braid"
 	icon_state = "hair_shortbraid"
 	gender = FEMALE
+	selectable = 0
 
 /datum/sprite_accessory/hair/braid2
 	name = "Long Braid"

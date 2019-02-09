@@ -108,9 +108,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
 		icon_state = "[armor_variation]"
-
-	select_gamemode_skin(type)
-	..()
+	
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type)
+		..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
 	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.
@@ -245,6 +246,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "mp"
 	armor = list(melee = 40, bullet = 80, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_atom = NO_SNOW_TYPE
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -284,6 +286,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "officer"
 	name = "\improper M3 pattern officer"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
+	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 
 //Making a new object because we might want to edit armor values and such.
@@ -293,10 +296,11 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "\improper M3 pattern captain armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
+	flags_atom = null
 	specialty = "M3 pattern captain"
 
 /obj/item/clothing/suit/storage/marine/smartgunner
-	name = "M56"
+	name = "M56 combat harness"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
 	icon_state = "8"
 	item_state = "armor"
@@ -312,8 +316,8 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/marine/smartgunner/New(loc)
 	. = ..()
-	if(map_tag == MAP_ICE_COLONY) name += " snow combat harness"
-	else name += " combat harness"
+	if(map_tag == MAP_ICE_COLONY) name = "M56 snow combat harness"
+	else name = "M56 combat harness"
 	//select_gamemode_skin(type)
 
 /obj/item/clothing/suit/storage/marine/leader
@@ -437,7 +441,8 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/veteran
-	flags_marine_armor = ARMOR_LAMP_OVERLAY
+	flags_marine_armor = ARMOR_LAMP_OVERLAY 
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE //Let's make these keep their name and icon.
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC
 	name = "\improper M4 pattern PMC armor"

@@ -24,8 +24,6 @@
 	var/hostility //For ERTs who are either hostile or friendly by random chance.
 	var/list/datum/mind/members = list() //Currently-joined members.
 	var/list/datum/mind/candidates = list() //Potential candidates for enlisting.
-//	var/waiting_for_candidates = 0 //Are we waiting on people to join?
-	var/role_needed = BE_RESPONDER //Obsolete
 	var/name_of_spawn = "Distress" //If we want to set up different spawn locations
 	var/mob/living/carbon/leader = null //Who's leading these miscreants
 	var/medics = 0
@@ -83,7 +81,6 @@
 	if(!mob_max || !ticker || !ticker.mode) //Just a supply drop, don't bother.
 		return
 
-//	var/list/datum/mind/possible_joiners = ticker.mode.get_players_for_role(role_needed) //Default role_needed is BE_RESPONDER
 	for(var/mob/dead/observer/M in player_list)
 		if(M.client)
 			M << "\n<font size='3'><span class='attack'>An emergency beacon has been activated. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"

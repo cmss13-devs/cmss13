@@ -218,7 +218,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		//TODO: add carbine here later
 		new /obj/item/weapon/gun/rifle/m41a(src)
 		new /obj/item/attachable/scope(src)
-		new /obj/item/attachable/lasersight(src)
+		new /obj/item/attachable/bipod(src)
 		new /obj/item/attachable/stock/rifle(src)
 		new /obj/item/attachable/extended_barrel(src)
 		new /obj/item/ammo_magazine/rifle/ap(src)
@@ -260,6 +260,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	..()
 	spawn(1)
 		new /obj/item/pamphlet/medical(src)
-		new /obj/item/storage/belt/medical(src)
+		new /obj/item/storage/firstaid/adv(src)
+		new /obj/item/storage/pouch/medical/full(src)
 		new /obj/item/clothing/glasses/hud/health(src)
 		new /obj/item/device/healthanalyzer(src)

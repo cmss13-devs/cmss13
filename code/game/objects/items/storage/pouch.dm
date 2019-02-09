@@ -304,6 +304,11 @@
 	    /obj/item/reagent_container/hypospray
 	)
 
+/obj/item/storage/pouch/medical/full/New()
+	..()
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
 
 /obj/item/storage/pouch/autoinjector
 	name = "auto-injector pouch"

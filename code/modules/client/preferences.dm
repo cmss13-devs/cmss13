@@ -8,7 +8,6 @@ var/global/list/special_roles = list(
 	"Xenomorph Queen" = 1,
 	"Survivor" = 1,
 	"Synth Survivor" = 1,
-	"Responder" = 1,
 	"Predator" = 1,
 )
 

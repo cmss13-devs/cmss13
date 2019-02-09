@@ -121,7 +121,7 @@
 /mob/living/proc/rejuvenate()
 
 	heal_all_damage()
-	
+
 	// shut down ongoing problems
 	radiation = 0
 	nutrition = 400
@@ -179,3 +179,6 @@
 	med_hud_set_status()
 	med_hud_set_health()
 	reload_fullscreens()
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		H.update_body()

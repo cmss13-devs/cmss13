@@ -40,7 +40,6 @@
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
-
 	var/datum/announcement/priority/command/crew_announcement = new
 
 /obj/machinery/computer/communications/New()
@@ -323,6 +322,16 @@
 		if("changeseclevel")
 			state = STATE_ALERT_LEVEL
 
+		if("selectlz")
+			if(!ticker.mode.active_lz)
+				var/lz_choices = list()
+				for(var/obj/machinery/computer/shuttle_control/console in machines)
+					if(console.z == 1 && !console.onboard)
+						lz_choices += console
+				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
+				if(new_lz)
+					ticker.mode.select_lz(new_lz)
+
 		else r_FAL
 
 	updateUsrDialog()
@@ -372,6 +381,12 @@
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)
+					dat += "<BR>Primary LZ"
+					if(ticker.mode.active_lz)
+						dat += "<BR>[ticker.mode.active_lz.loc.loc]"
+					else
+						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=selectlz'>Select primary LZ</A> \]"
+					dat += "<BR><hr>"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make an announcement</A> \]"
 					dat += admins.len > 0 ? "<BR>\[ <A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A> \]" : "<BR>\[ USCM communication offline \]"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=award'>Award a medal</A> \]"

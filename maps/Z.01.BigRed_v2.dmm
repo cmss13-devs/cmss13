@@ -31145,6 +31145,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/effect/spawner/random/tool,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bla" = (
@@ -40536,6 +40537,21 @@
 	icon_state = "mars_cave_10"
 	},
 /area/bigredv2/caves_east)
+"tgk" = (
+/obj/structure/table,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/computer/shuttle_control/dropship2,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
 "tgL" = (
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_6";
@@ -50121,7 +50137,7 @@ aZu
 bbM
 bjq
 bjP
-bkj
+tgk
 bkj
 bkZ
 aXK

@@ -439,17 +439,17 @@
 	name = "\improper Virology Caves"
 	icon_state = "caves_virology"
 	ceiling = CEILING_UNDERGROUND
-	
+
 /area/bigredv2/caves_sw
 	name = "\improper Southwestern Caves"
 	icon_state = "caves_sw"
 	ceiling = CEILING_UNDERGROUND
-	
+
 /area/bigredv2/caves_research
 	name = "\improper W-Y Research Lab Caves"
 	icon_state = "caves_research"
 	ceiling = CEILING_UNDERGROUND
-	
+
 /area/bigredv2/caves_se
 	name = "\improper Southeastern Caves"
 	icon_state = "caves_se"
@@ -459,13 +459,23 @@
 	name = "\improper Eastern Caves"
 	icon_state = "caves_east"
 	ceiling = CEILING_UNDERGROUND
-	
+
 /area/bigredv2/caves_lambda
 	name = "\improper Lambda Lab Caves"
 	icon_state = "caves_lambda"
 	ceiling = CEILING_UNDERGROUND
-	
+
 /area/bigredv2/caves_north
 	name = "\improper Northern Caves"
 	icon_state = "caves_north"
 	ceiling = CEILING_UNDERGROUND
+
+/area/bigredv2/landing/console
+	name = "\improper LZ1 'Telecomms'"
+	icon_state = "tcomsatcham"
+	requires_power = 0
+
+/area/bigredv2/landing/console2
+	name = "\improper LZ2 'Cargo'"
+	icon_state = "tcomsatcham"
+	requires_power = 0

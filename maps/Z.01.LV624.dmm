@@ -12464,7 +12464,7 @@
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/lv624/lazarus/console)
+/area/lv624/landing/console)
 "Hu" = (
 /turf/open/floor{
 	icon_state = "warningcorner";
@@ -20704,7 +20704,7 @@
 /obj/structure/table,
 /obj/machinery/computer/shuttle_control/dropship2,
 /turf/open/gm/dirt,
-/area/shuttle/drop2/lz2)
+/area/lv624/landing/console2)
 
 (1,1,1) = {"
 ac

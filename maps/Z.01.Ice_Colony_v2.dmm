@@ -1653,7 +1653,7 @@
 	id_tag = "st_5";
 	locked = 1;
 	name = "Storage Unit";
-	req_one_access = list(100, 101, 102, 103)
+	req_one_access = list(100,101,102,103)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
@@ -29039,13 +29039,12 @@
 /area/ice_colony/underground/maintenance/north)
 "bgR" = (
 /obj/machinery/door/airlock/almayer/maint{
-	icon_state = "door_locked";
-	id = "undergroundhangarwest";
-	locked = 1;
 	name = "\improper Underground Maintenance";
+	icon_state = "door_locked";
+	dir = 4;
 	req_access = list(100);
 	req_one_access = list();
-	unacidable = 1
+	locked = 1
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -29694,6 +29693,8 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/structure/table/reinforced,
+/obj/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bij" = (
@@ -30431,12 +30432,10 @@
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	icon_state = "door_locked";
-	id = "undergroundhangarpower";
 	locked = 1;
 	name = "\improper Underground Maintenance";
 	req_access = list(100);
-	req_one_access = list();
-	unacidable = 1
+	req_one_access = list()
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
@@ -30510,18 +30509,6 @@
 	pixel_x = -24
 	},
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/underground/hangar)
-"bjJ" = (
-/obj/machinery/door/airlock/almayer/maint{
-	icon_state = "door_locked";
-	id = "undergroundhangarsouth";
-	locked = 1;
-	name = "\improper Underground Maintenance";
-	req_access = list(100);
-	req_one_access = list();
-	unacidable = 1
-	},
-/turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
 "bjK" = (
 /obj/machinery/light/small{
@@ -71472,7 +71459,7 @@ aZW
 aZW
 bjf
 aZG
-bjJ
+bgR
 aZG
 beB
 bkt

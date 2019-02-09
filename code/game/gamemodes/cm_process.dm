@@ -215,6 +215,15 @@ var/lastHumanBioscan = 18000//30 minutes in (we will add to that!)
 var/nextPredatorBioscan = 3000//5 minutes in
 var/nextAdminBioscan = 18000//30 minutes in
 
+/datum/game_mode/proc/select_lz(var/obj/machinery/computer/shuttle_control/console)
+	if(active_lz)
+		return
+	active_lz = console
+	// The announcement to all Humans.
+	var/name = "[MAIN_AI_SYSTEM] Operation Staging Order"
+	var/input = "Command Order Issued.\n\n[active_lz.loc.loc] has been designated as the primary landing zone."
+	command_announcement.Announce(input, name)
+
 //Delta is the randomness interval, in +/-. Might not be the exact mathematical definition
 /datum/game_mode/proc/announce_bioscans(var/delta = 2)
 	var/numHostsPlanet	= 0
@@ -339,7 +348,7 @@ Only checks living mobs with a client attached.
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
 			if(isXeno(M)) num_xenos++
 	return num_xenos
-	
+
 /datum/game_mode/proc/count_humans_and_xenos(list/z_levels = GAME_PLAY_Z_LEVELS)
 	var/num_humans = 0
 	var/num_xenos = 0

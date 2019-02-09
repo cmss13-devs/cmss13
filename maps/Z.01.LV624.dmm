@@ -20700,6 +20700,11 @@
 /obj/item/device/reagent_scanner/adv/objective,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
+"ZS" = (
+/obj/structure/table,
+/obj/machinery/computer/shuttle_control/dropship2,
+/turf/open/gm/dirt,
+/area/shuttle/drop2/lz2)
 
 (1,1,1) = {"
 ac
@@ -32058,7 +32063,7 @@ zY
 Et
 Dv
 Dv
-Dv
+ZS
 Gi
 tf
 tf

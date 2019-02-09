@@ -179,6 +179,12 @@
 		for(var/datum/hive_status/hive in hive_datum)
 			if(hive.xeno_queen_timer && --hive.xeno_queen_timer <= 1) xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
+		if(!active_lz && world.time > lz_selection_timer)
+			for(var/obj/machinery/computer/shuttle_control/dropship1/default_console in machines)
+				if(default_console.z == 1 && !default_console.onboard)
+					select_lz(default_console)
+					break
+
 		// Automated bioscan / Queen Mother message
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
 			announce_bioscans() //Announce the results of the bioscan to both sides.

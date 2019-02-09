@@ -73149,6 +73149,15 @@
 	icon_state = "wood_siding1"
 	},
 /area/prison/residential/south)
+"oZx" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/shuttle_control/dropship2,
+/turf/open/floor/prison{
+	tag = "icon-floor_marked (SOUTHWEST)";
+	icon_state = "floor_marked";
+	dir = 10
+	},
+/area/prison/hanger/research)
 
 (1,1,1) = {"
 aaa
@@ -118723,7 +118732,7 @@ aAF
 aDQ
 aDQ
 aAF
-aDQ
+oZx
 atT
 aun
 auH

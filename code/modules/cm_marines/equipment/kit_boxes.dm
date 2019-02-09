@@ -229,27 +229,14 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_engineer/New()
 	..()
 	spawn(1)
-		new /obj/item/pamphlet/engineering(src)
-		new /obj/item/storage/belt/utility/full(src)
-		new /obj/item/clothing/glasses/welding(src)
-		new /obj/item/clothing/gloves/yellow(src)
-
-/obj/item/storage/box/kit/mini_constructor
-	name = "\improper Mini Constructor Kit"
-
-/obj/item/storage/box/kit/mini_constructor/New()
-	..()
-	spawn(1)
-		new /obj/item/pamphlet/construction(src)
+		new /obj/item/pamphlet/engineer(src)
 		new /obj/item/storage/pouch/construction(src)
 		new /obj/item/storage/pouch/tools/full(src)
 		new /obj/item/clothing/gloves/yellow(src)
 		new /obj/item/tool/shovel/etool(src)
 
-		var/obj/item/stack/sheet/plasteel/PLAS = new /obj/item/stack/sheet/plasteel(src)
-		PLAS.amount = 10
 		var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)
-		MET.amount = 10
+		MET.amount = 20
 		var/obj/item/stack/sandbags_empty/SND1 = new /obj/item/stack/sandbags_empty(src)
 		SND1.amount = 15
 
@@ -264,3 +251,14 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/storage/pouch/medical/full(src)
 		new /obj/item/clothing/glasses/hud/health(src)
 		new /obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/box/kit/mini_jtac
+	name = "\improper Mini JTAC Kit"
+
+/obj/item/storage/box/mini_jtac/New()
+	..()
+	spawn(1)
+		new /obj/item/storage/box/m94/signal(src)
+		new /obj/item/storage/box/m94/signal(src)
+		new /obj/item/device/binoculars/tactical(src)
+

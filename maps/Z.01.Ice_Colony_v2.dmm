@@ -25655,7 +25655,7 @@
 	icon_state = "warnplate";
 	dir = 1
 	},
-/area/lv624/lazarus/console)
+/area/ice_colony/landing/console)
 "aZh" = (
 /obj/machinery/floodlight/landing,
 /turf/open/floor/plating/icefloor{
@@ -29689,14 +29689,10 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "bii" = (
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/underground/hangar)
+/area/ice_colony/landing/console2)
 "bij" = (
 /obj/machinery/constructable_frame{
 	icon_state = "box_1"
@@ -51275,6 +51271,17 @@
 	icon_state = "floor7"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"uBf" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/plating/icefloor{
+	tag = "icon-warnplate (SOUTHEAST)";
+	icon_state = "warnplate";
+	dir = 6
+	},
+/area/ice_colony/underground/hangar)
 
 (1,1,1) = {"
 aaa
@@ -71735,7 +71742,7 @@ baN
 baN
 baN
 baG
-bhu
+uBf
 bii
 bab
 biO

@@ -454,3 +454,18 @@
 /area/prison/secret
 	name = "\improper Secret Room"
 	icon_state = "tcomsatcham"
+
+/area/prison/landing/console
+	name = "\improper LZ1 'Admin'"
+	icon_state = "tcomsatcham"
+	requires_power = 0
+
+/area/prison/landing/console2
+	name = "\improper LZ2 'Research'"
+	icon_state = "tcomsatcham"
+	requires_power = 0
+
+/area/prison/landing/console3
+	name = "\improper LZ1 'Civilian'"
+	icon_state = "tcomsatcham"
+	requires_power = 0

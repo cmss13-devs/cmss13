@@ -33,6 +33,7 @@
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	var/list/datum/mind/traitors = list()
+	var/obj/machinery/computer/shuttle_control/active_lz = null
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	world << "<B>Notice</B>: [src] did not define announce()"

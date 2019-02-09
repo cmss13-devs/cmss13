@@ -70,6 +70,9 @@
 		stat("Tank Pressure", internal.pressure)
 		stat("Distribution Pressure", internal.distribute_pressure)
 
+	if(ticker.mode.active_lz)
+		stat("Primary LZ: ", ticker.mode.active_lz.loc.loc)
+
 	if(assigned_squad)
 		if(assigned_squad.primary_objective)
 			stat("Primary Objective: ", assigned_squad.primary_objective)

@@ -82,6 +82,8 @@ Additional game mode variables.
 	var/bioscan_current_interval = 3000//5 minutes in
 	var/bioscan_ongoing_interval = 600//every 1 minute
 
+	var/lz_selection_timer = 15000 //25 minutes in
+
 	var/flags_round_type = NOFLAGS
 
 //===================================================\\
@@ -247,7 +249,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			new_predator << "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>"
 			new_predator << "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>"
 			new_predator << "<span class='notice'>You come equipped as an Elder should, with a bonus glaive and heavy armor.</span>"
-	
+
 	else if(wants_leader)
 		new_predator.real_name = "Councillor [new_predator.real_name]"
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
@@ -374,7 +376,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			xeno_candidate << "<span class='warning'>That xenomorph has been occupied.</span>"
 			return 0
 
-		if(!xeno_candidate) // 
+		if(!xeno_candidate) //
 			return 0
 
 		if(!xeno_bypass_timer)
@@ -623,7 +625,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	H.take_limb_damage(rand(0,15), rand(0,15))
 	survivor_old_equipment(H, is_synth)
 	H.name = H.get_visible_name()
-	new /datum/cm_objective/move_mob/almayer/survivor(H)	
+	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 	//Give them some information
 	spawn(4)

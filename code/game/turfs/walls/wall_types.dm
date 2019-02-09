@@ -21,7 +21,7 @@
 
 /turf/closed/wall/almayer/update_icon()
 	..()
-	if(neighbors_list in list(EAST|WEST, EAST|WEST|NORTH))
+	if(neighbors_list in list(EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		var/r2 = rand(0,3) // Which wall if we do choose it
 		if(r1 >= 9)
@@ -347,7 +347,7 @@
 
 /turf/closed/wall/wood/update_icon()
 	..()
-	if(neighbors_list in list(EAST|WEST, EAST|WEST|NORTH))
+	if(neighbors_list in list(EAST|WEST))
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")

@@ -40,20 +40,18 @@
 #define BE_ALIEN_AFTER_DEATH	2
 #define BE_QUEEN				4
 #define BE_SURVIVOR				8
-#define BE_RESPONDER			16
+#define BE_SYNTH_SURVIVOR		16
 #define BE_PREDATOR				32
 
-#define BE_SYNTH_SURVIVOR 		64
 //=================================================
 
 var/list/be_special_flags = list(
 	"Xenomorph" = BE_ALIEN,
 	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
 	"Survivor" = BE_SURVIVOR,
-	"Responder" = BE_RESPONDER,
+	"Synth Survivor" = BE_SYNTH_SURVIVOR,
 	"Predator" = BE_PREDATOR,
 	"Queen" = BE_QUEEN,
-	"Synth Survivor" = BE_SYNTH_SURVIVOR,
 )
 
 #define AGE_MIN 17			//youngest a character can be

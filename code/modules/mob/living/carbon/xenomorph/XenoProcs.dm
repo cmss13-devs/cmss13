@@ -343,6 +343,7 @@
 
 			visible_message("<span class='xenowarning'>\The [src] hurls out the contents of their stomach!</span>", \
 			"<span class='xenowarning'>You hurl out the contents of your stomach!</span>", null, 5)
+			playsound(usr.loc, 'sound/voice/alien_drool2.ogg', 50, 1)
 
 			if(!stunned)
 				victim.SetStunned(0)

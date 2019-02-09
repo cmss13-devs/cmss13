@@ -3,7 +3,7 @@
 //Note these should never show up to buy and some will only show up later in the round. 
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //We use the cost to determine the spawn chance this equals out the crates that spawn later in the round.
-#define ASRS_HIGHEST_WEIGHT		0
+#define ASRS_HIGHEST_WEIGHT		0 //warning this weight wont change.
 #define ASRS_VERY_HIGH_WEIGHT	5
 #define ASRS_HIGH_WEIGHT		15
 #define ASRS_MEDIUM_WEIGHT		25
@@ -26,36 +26,22 @@
 /datum/supply_packs/heavyweapons_ammo/asrs
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_LOWEST_WEIGHT
 
 /datum/supply_packs/explosives/asrs
 	buyable = 0
 	group = "Offence"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/explosives_mines/asrs/
 	buyable = 0
 	group = "Defence"
 
-/datum/supply_packs/explosives_m15/asrs/
-	buyable = 0
-	group = "Offence"
-
 /datum/supply_packs/explosives_plastique/asrs/
 	buyable = 0
 	group = "Utility"
 
-/datum/supply_packs/explosives_incendiary/asrs/
-	buyable = 0
-	group = "Offence"
-
-/datum/supply_packs/explosives_M40_HEDP/asrs/
-	buyable = 0
-	group = "Offence"
-
 /datum/supply_packs/explosives_hedp/asrs/
-	buyable = 0
-	group = "Offence"
-
-/datum/supply_packs/explosives_M40_HEDP/asrs/
 	buyable = 0
 	group = "Offence"
 
@@ -74,10 +60,12 @@
 /datum/supply_packs/ammo_mag_box_ext/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_smg_mag_box_ext/asrs/
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs/ammo_mag_box_ap/asrs/
 	buyable = 0
@@ -103,34 +91,6 @@
 	buyable = 0
 	group = "Munition"
 
-/datum/supply_packs/ammo_regular_m4a3/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_regular_m44/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_regular_m39/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_regular_m37a2/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_extended/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_extended_m41a/asrs/
-	buyable = 0
-	group = "Munition"
-
-/datum/supply_packs/ammo_extended_m4a3/asrs/
-	buyable = 0
-	group = "Munition"
-
 /datum/supply_packs/ammo_extended_m39/asrs/
 	buyable = 0
 	group = "Munition"
@@ -143,10 +103,6 @@
 	buyable = 0
 	group = "Munition"
 	
-/datum/supply_packs/ammo_ap_m4a3/asrs/
-	buyable = 0
-	group = "Munition"
-
 /datum/supply_packs/ammo_ap_m39/asrs/
 	buyable = 0
 	group = "Munition"
@@ -192,22 +148,7 @@
 	buyable = 0
 
 /datum/supply_packs/m56d_hmg/asrs/
-	name = "m56d crate (x1)"
-	contains = list()
-	cost = ASRS_MEDIUM_WEIGHT
-	containertype = /obj/item/storage/box/m56d_hmg
-	containername = "m56d crate"
 	group = "Defence"
-	buyable = 0
-
-/datum/supply_packs/m56_system/asrs/
-	name = "m56 system crate (x1)"
-	contains = list()
-	cost = ASRS_MEDIUM_WEIGHT
-	containertype = /obj/item/storage/box/m56_system
-	containername = "m56 system crate"
-	group = "Offence"
-	iteration_needed = 30
 	buyable = 0
 		
 /datum/supply_packs/motiondetector/asrs/

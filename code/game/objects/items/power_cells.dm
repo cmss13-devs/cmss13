@@ -49,6 +49,9 @@
 	maxcharge = 5000
 	matter = list("metal" = 700, "glass" = 50)
 
+/obj/item/cell/apc/full
+	charge = 5000
+	
 /obj/item/cell/high
 	name = "high-capacity power cell"
 	origin_tech = "powerstorage=2"

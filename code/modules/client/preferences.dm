@@ -7,21 +7,9 @@ var/global/list/special_roles = list(
 	"Xenomorph after<br>unrevivably dead" = 1,
 	"Xenomorph Queen" = 1,
 	"Survivor" = 1,
+	"Synth Survivor" = 1,
 	"Responder" = 1,
 	"Predator" = 1,
-	"WO Commander" = 1
-
-	// "wizard" = IS_MODE_COMPILED("wizard"),               // 3
-	// "malf AI" = IS_MODE_COMPILED("malfunction"),         // 4
-	// "revolutionary" = IS_MODE_COMPILED("revolution"),    // 5
- 	// "traitor" = IS_MODE_COMPILED("traitor"),             // 0
-	// "operative" = IS_MODE_COMPILED("nuclear"),           // 1
-	// "cultist" = IS_MODE_COMPILED("cult"),                // 8
-	// "infested monkey" = IS_MODE_COMPILED("monkey"),      // 9
-	// "ninja" = "true",                                    // 10
-	// "vox raider" = IS_MODE_COMPILED("heist"),            // 11
-	// "mutineer" = IS_MODE_COMPILED("mutiny"),             // 13
-	// "changeling" = IS_MODE_COMPILED("changeling"),       // 2
 )
 
 var/const/MAX_SAVE_SLOTS = 10
@@ -329,8 +317,8 @@ datum/preferences
 			if ("Predator")
 				ban_check_name = "Predator"
 
-			if ("WO Commander")
-				ban_check_name = "WO Commander"
+			if ("Synth Survivor")
+				ban_check_name = "Synth Survivor"
 
 		if(jobban_isbanned(user, ban_check_name))
 			dat += "<b>Be [i]:</b> <font color=red><b> \[BANNED]</b></font><br>"
@@ -396,9 +384,7 @@ datum/preferences
 
 	dat += "<div id='right'>"
 	dat += "<big><b><u>Background Information:</u></b></big><br>"
-	//dat += "<b>Home system</b>: <a href='byond://?src=\ref[user];preference=home_system;task=input'>[home_system]</a><br/>"
 	dat += "<b>Citizenship</b>: <a href='byond://?src=\ref[user];preference=citizenship;task=input'>[citizenship]</a><br/>"
-	// dat += "<b>Faction</b>: <a href='byond://?src=\ref[user];preference=faction;task=input'>[faction]</a><br/>"
 	dat += "<b>Religion</b>: <a href='byond://?src=\ref[user];preference=religion;task=input'>[religion]</a><br/>"
 
 	dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
@@ -484,14 +470,6 @@ datum/preferences
 		HTML += "</td><td width='40%'>"
 
 		HTML += "<a href='?_src_=prefs;preference=job;task=input;text=[job.title]'>"
-
-//		if(rank == "Assistant")//Assistant is special
-//			if(job_civilian_low & ASSISTANT)
-//				HTML += " <font color=green>\[Yes]</font>"
-//			else
-//				HTML += " <font color=red>\[No]</font>"
-//			HTML += "</a></td></tr>"
-//			continue
 
 		if(GetJobDepartment(job, 1) & job.flag)
 			HTML += " <font color=blue>\[High]</font>"
@@ -601,32 +579,6 @@ datum/preferences
 	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
-	/*
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=head'>Head:</a> "
-	HTML += TextPreview(flavor_texts["head"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=face'>Face:</a> "
-	HTML += TextPreview(flavor_texts["face"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=eyes'>Eyes:</a> "
-	HTML += TextPreview(flavor_texts["eyes"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=torso'>Body:</a> "
-	HTML += TextPreview(flavor_texts["torso"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=arms'>Arms:</a> "
-	HTML += TextPreview(flavor_texts["arms"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=hands'>Hands:</a> "
-	HTML += TextPreview(flavor_texts["hands"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=legs'>Legs:</a> "
-	HTML += TextPreview(flavor_texts["legs"])
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=feet'>Feet:</a> "
-	HTML += TextPreview(flavor_texts["feet"])
-	HTML += "<br>"
-	*/
 	HTML += "<hr />"
 	HTML +="<a href='?src=\ref[user];preference=flavor_text;task=done'>\[Done\]</a>"
 	HTML += "<tt>"
@@ -652,14 +604,6 @@ datum/preferences
 		ShowChoices(user)
 		return
 
-//	if(role == "Assistant")
-//		if(job_civilian_low & job.flag)
-//			job_civilian_low &= ~job.flag
-//		else
-//			job_civilian_low |= job.flag
-//		SetChoices(user)
-//		return 1
-
 	if(GetJobDepartment(job, 1) & job.flag)
 		SetJobDepartment(job, 1)
 	else if(GetJobDepartment(job, 2) & job.flag)
@@ -669,7 +613,6 @@ datum/preferences
 	else//job = Never
 		SetJobDepartment(job, 4)
 
-	//var/list/L = list(ROLEGROUP_MARINE_COMMAND, ROLEGROUP_MARINE_ENGINEERING, ROLEGROUP_MARINE_MED_SCIENCE, ROLEGROUP_MARINE_SQUAD_MARINES)
 	SetChoices(user)
 	return 1
 
@@ -1097,8 +1040,11 @@ datum/preferences
 						var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
 						if( !(species in S.species_allowed))
 							continue
+						if(!S.selectable)
+							continue
 
 						valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+					valid_hairstyles = sortList(valid_hairstyles)
 
 					var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_hairstyles
 					if(new_h_style)
@@ -1133,8 +1079,11 @@ datum/preferences
 							continue
 						if( !(species in S.species_allowed))
 							continue
+						if(!S.selectable)
+							continue
 
 						valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+					valid_facialhairstyles = sortList(valid_facialhairstyles)
 
 					var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in valid_facialhairstyles
 					if(new_f_style)
@@ -1285,30 +1234,11 @@ datum/preferences
 						return
 					spawnpoint = choice
 
-				if("home_system")
-					var/choice = input(user, "Please choose a home system.") as null|anything in home_system_choices + list("Unset","Other")
-					if(!choice)
-						return
-					if(choice == "Other")
-						var/raw_choice = input(user, "Please enter a home system.")  as text|null
-						if(raw_choice)
-							home_system = sanitize(copytext(raw_choice,1,MAX_MESSAGE_LEN))
-						return
-					home_system = choice
 				if("citizenship")
 					var/choice = input(user, "Please choose your current citizenship.") as null|anything in citizenship_choices
 					if(choice)
 						citizenship = choice
-				if("faction")
-					var/choice = input(user, "Please choose a faction to work for.") as null|anything in faction_choices + list("None","Other")
-					if(!choice)
-						return
-					if(choice == "Other")
-						var/raw_choice = input(user, "Please enter a faction.")  as text|null
-						if(raw_choice)
-							faction = sanitize(copytext(raw_choice,1,MAX_MESSAGE_LEN))
-						return
-					faction = choice
+
 				if("religion")
 					var/choice = input(user, "Please choose a religion.") as null|anything in religion_choices + list("None","Other")
 					if(!choice)

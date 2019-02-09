@@ -38,12 +38,14 @@
 		usr << "You can't afford any more mutators."
 	var/pick = input("Which mutator would you like to purchase?") as null|anything in mutators_for_purchase
 	if(!pick)
-		return
+		return FALSE
 	if(xeno_mutator_list[pick].apply_mutator(src))
 		usr << "Mutation complete!"
+		return TRUE
 	else
 		usr << "Mutation failed!"
-	return
+		return FALSE
+	return FALSE
 
 /datum/mutator_set/proc/can_purchase_mutator(var/mutator_name)
 	var/datum/xeno_mutator/XM = xeno_mutator_list[mutator_name]
@@ -95,6 +97,9 @@
 		usr << "You must be in Ovipositor to purchase Hive Mutators."
 		return
 	. = ..()
+	if (. == TRUE && purchased_mutators.len)
+		var/m = purchased_mutators[purchased_mutators.len]
+		log_mutator("[hive.living_xeno_queen.name] purchased Hive Mutator '[m]'")
 
 /datum/mutator_set/hive_mutators/proc/user_levelled_up(var/new_level)
 	if(user_level == new_level || new_level == -1) //-1 is for Predaliens
@@ -197,7 +202,6 @@
 			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
 			X.xeno_jitter(15)
 
-
 //Mutators applying to an individual xeno
 /datum/mutator_set/individual_mutators
 	var/mob/living/carbon/Xenomorph/xeno
@@ -211,6 +215,12 @@
 	var/charge_speed_buildup_multiplier = 1.0
 	var/charge_turfs_to_charge_delta = 0
 	var/gas_life_multiplier = 1.0
+
+/datum/mutator_set/individual_mutators/list_and_purchase_mutators()
+	. = ..()
+	if (. == TRUE && purchased_mutators.len)
+		var/m = purchased_mutators[purchased_mutators.len]
+		log_mutator("[xeno.name] purchased Mutator '[m]'")
 
 /datum/mutator_set/individual_mutators/proc/user_levelled_up(var/new_level)
 	if(xeno.hardcore)

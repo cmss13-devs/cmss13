@@ -367,7 +367,7 @@ var/global/list/damage_icon_parts = list()
 		return
 
 	//base icons
-	var/icon/face_standing	= new /icon('icons/mob/human_face.dmi',"bald_s")
+	var/icon/face_standing	= new /icon('icons/mob/human_hair.dmi',"bald_s")
 
 	if(f_style && !(wear_suit && (wear_suit.flags_inv_hide & HIDELOWHAIR)) && !(wear_mask && (wear_mask.flags_inv_hide & HIDELOWHAIR)))
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
@@ -833,7 +833,7 @@ var/global/list/damage_icon_parts = list()
 //	if (gender == FEMALE)	g = "f"
 
 	//base icons
-	var/icon/face_lying		= new /icon('icons/mob/human_face.dmi',"bald_l")
+	var/icon/face_lying		= new /icon('icons/mob/human_hair.dmi',"bald_l")
 
 	if(f_style)
 		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]

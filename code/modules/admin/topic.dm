@@ -280,7 +280,7 @@
 			if("queen")				M.change_mob_type( /mob/living/carbon/Xenomorph/Queen , null, null, delmob )
 			if("ravenger")			M.change_mob_type( /mob/living/carbon/Xenomorph/Ravager/ravenger , null, null, delmob )
 			if("predalien")			M.change_mob_type( /mob/living/carbon/Xenomorph/Predalien , null, null, delmob )
-			
+
 			if("human")				M.change_mob_type( /mob/living/carbon/human , null, null, delmob, href_list["species"])
 			if("monkey")			M.change_mob_type( /mob/living/carbon/monkey , null, null, delmob )
 			if("robot")				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
@@ -1017,9 +1017,9 @@
 		var/datum/disease/black_goo/bg = new()
 		if(alert(usr, "Make them non-symptomatic carrier?", "Message", "Yes", "No") == "Yes")
 			bg.carrier = TRUE
-		else 
+		else
 			bg.carrier = FALSE
-		
+
 		H.AddDisease(bg, FALSE)
 
 		log_admin("[key_name(usr)] infected [key_name(H)] with a ZOMBIE VIRUS")
@@ -1033,7 +1033,7 @@
 
 		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
 			return
-		
+
 		var/list/namelist = list("Normal","Corrupted","Alpha","Beta","Zeta")
 		var/newhive = input(usr,"Select a hive.", null, null) in namelist
 
@@ -1942,39 +1942,6 @@
 					log_admin("[key_name(usr)] toggled gravity off.", 1)
 					message_admins("\blue [key_name_admin(usr)] toggled gravity off.", 1)
 					command_announcement.Announce("Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
-			if("traitor_all")
-				if(!ticker)
-					alert("The game hasn't started yet!")
-					return
-				var/objective = copytext(sanitize(input("Enter an objective")),1,MAX_MESSAGE_LEN)
-				if(!objective)
-					return
-				feedback_inc("admin_secrets_fun_used",1)
-				feedback_add_details("admin_secrets_fun_used","TA([objective])")
-				for(var/mob/living/carbon/human/H in player_list)
-					if(H.stat == 2 || !H.client || !H.mind) continue
-					if(is_special_character(H)) continue
-					//traitorize(H, objective, 0)
-					ticker.mode.traitors += H.mind
-					H.mind.special_role = "traitor"
-					var/datum/objective/new_objective = new
-					new_objective.owner = H
-					new_objective.explanation_text = objective
-					H.mind.objectives += new_objective
-					ticker.mode.greet_traitor(H.mind)
-					//ticker.mode.forge_traitor_objectives(H.mind)
-					ticker.mode.finalize_traitor(H.mind)
-				for(var/mob/living/silicon/A in player_list)
-					ticker.mode.traitors += A.mind
-					A.mind.special_role = "traitor"
-					var/datum/objective/new_objective = new
-					new_objective.owner = A
-					new_objective.explanation_text = objective
-					A.mind.objectives += new_objective
-					ticker.mode.greet_traitor(A.mind)
-					ticker.mode.finalize_traitor(A.mind)
-				message_admins("\blue [key_name_admin(usr)] used everyone is a traitor secret. Objective is [objective]", 1)
-				log_admin("[key_name(usr)] used 'everyone is a traitor' secret. Objective: [objective]")
 			if("spiders")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","SL")

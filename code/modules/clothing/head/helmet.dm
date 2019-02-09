@@ -193,12 +193,16 @@
 						/obj/item/clothing/glasses/mgoggles = "goggles",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles",
 						/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector")
+	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
 
 
-/obj/item/clothing/head/helmet/marine/New(loc,expected_type 		= /obj/item/clothing/head/helmet/marine,
-	new_name[] 			= list(MAP_ICE_COLONY =  "\improper M10 pattern marine snow helmet"),
+/obj/item/clothing/head/helmet/marine/New(loc, 
 	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	select_gamemode_skin(expected_type,null,new_name,new_protection)
+	if(!(flags_atom & UNIQUE_ITEM_TYPE))
+		name = "[specialty]"
+		if(map_tag == MAP_ICE_COLONY) name += " snow helmet"
+		else name += " helmet"
+	select_gamemode_skin(type,null,new_protection)
 	..()
 	helmet_overlays = list("damage","band","item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
@@ -276,30 +280,17 @@
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
-
-/obj/item/clothing/head/helmet/marine/tech/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper M10 technician snow helmet"),
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	..(loc,expected_type,new_name,new_protection)
+	specialty = "M10 technician"
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 medic helmet"
-
-/obj/item/clothing/head/helmet/marine/medic/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper M10 medic snow helmet"),
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	..(loc,expected_type,new_name,new_protection)
-
+	specialty = "M10 medic"
 
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern leader helmet"
 	desc = "A slightly fancier helmet for marine leaders. This one contains a small built-in camera and has cushioning to project your fragile brain."
 	armor = list(melee = 75, bullet = 45, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10)
-
-/obj/item/clothing/head/helmet/marine/leader/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper M11 pattern leader snow helmet"),
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	..(loc,expected_type,new_name,new_protection)
+	specialty = "M11 pattern leader"
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
@@ -309,34 +300,24 @@
 	armor = list(melee = 95, bullet = 105, laser = 75, energy = 65, bomb = 40, bio = 15, rad = 15)
 	unacidable = 1
 	anti_hug = 6
-
-/obj/item/clothing/head/helmet/marine/specialist/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper B18 snow helmet"),
-	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	..(loc,expected_type,new_name,new_protection)
+	specialty = "B18"
 
 /obj/item/clothing/head/helmet/marine/scout
-	name = "\improper M3-S helmet"
+	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
 	desc = "A custom helmet designed for USCM Scouts."
 	armor = list(melee = 75, bullet = 45, laser = 40, energy = 40, bomb = 10, bio = 10, rad = 10)
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-
-	New()
-		select_gamemode_skin(type)
-		..()
+	specialty = "M3-S light"
 
 /obj/item/clothing/head/helmet/marine/pyro
-	name = "\improper M35 helmet"
+	name = "\improper M35 pyrotechnician helmet"
 	icon_state = "pyro_helmet"
 	desc = "A helmet designed for USCM Pyrotechnicians."
 	armor = list(melee = 85, bullet = 75, laser = 60, energy = 50, bomb = 10, bio = 10, rad = 10)
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
-
-	New()
-		select_gamemode_skin(type)
-		..()
+	specialty = "M35 pyrotechnician"
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"
@@ -347,9 +328,7 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = NOFLAGS
-	New()
-		select_gamemode_skin(/obj/item/clothing/head/helmet/marine/pilot)
-		..()
+	specialty = "M30 tactical"
 
 /obj/item/clothing/head/helmet/marine/tanker
 	name = "\improper M50 tanker helmet"
@@ -360,14 +339,16 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = NOFLAGS
-	New()
-		select_gamemode_skin(/obj/item/clothing/head/helmet/marine/tanker)
-		..()
+	specialty = "M50 tanker"
+
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\
 
 /obj/item/clothing/head/helmet/marine/veteran
+
+/obj/item/clothing/head/helmet/marine/veteran/New()
+	return //Return early so that veteran gear keeps its original name (caps, covers...). They don't change sprites either.
 
 /obj/item/clothing/head/helmet/marine/veteran/PMC
 	name = "\improper PMC tactical cap"
@@ -500,10 +481,9 @@
 	desc = "A cowl worn to conceal the face of a marksman in the jungle."
 	icon_state = "duragm"
 
-/obj/item/clothing/head/helmet/durag/jungle/New(loc,expected_type 	= type,
-	new_name[] 		= list(MAP_ICE_COLONY = "\improper M6 marksman hood"),
+/obj/item/clothing/head/helmet/durag/jungle/New(loc, type,
 	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	select_gamemode_skin(expected_type,,new_name,new_protection)
+	select_gamemode_skin(type,, new_protection)
 	..()
 	switch(icon_state)
 		if("s_duragm")

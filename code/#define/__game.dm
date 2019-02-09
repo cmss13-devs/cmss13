@@ -218,3 +218,25 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define WEAPON_DELAY_SCATTER_AND_ACCURACY 6
 
 #define WEAPON_GUARANTEED_DELAY 0.1
+
+//Defines for dropship weapon gimbals
+#define GIMBAL_LEFT -1
+#define GIMBAL_CENTER 0
+#define GIMBAL_RIGHT 1
+
+//Defines for dropship firemission status
+#define FIRE_MISSION_ALL_GOOD 0
+#define FIRE_MISSION_CODE_ERROR 1
+#define FIRE_MISSION_BAD_COOLDOWN 2
+#define FIRE_MISSION_BAD_OFFSET 4
+#define FIRE_MISSION_WEAPON_REMOVED 8
+#define FIRE_MISSION_WEAPON_UNUSABLE 16
+#define FIRE_MISSION_WEAPON_OUT_OF_AMMO 32
+
+//Defines for firemission state
+#define FIRE_MISSION_STATE_IDLE 0
+#define FIRE_MISSION_STATE_IN_TRANSIT 1
+#define FIRE_MISSION_STATE_ON_TARGET 2
+#define FIRE_MISSION_STATE_FIRING 4
+#define FIRE_MISSION_STATE_OFF_TARGET 8
+#define FIRE_MISSION_STATE_COOLDOWN 16

@@ -321,12 +321,12 @@
 	ceiling = CEILING_UNDERGROUND
 
 /area/bigredv2/outside/weyland_lab/outside
-	name = "\improper Weyland Yutani Compound"
+	name = "\improper W-Y Compound"
 	icon_state = "yellow"
 	ceiling = CEILING_NONE
 
 /area/bigredv2/outside/weyland_lab/inside
-	name = "\improper Weyland Yutani Research Lab"
+	name = "\improper W-Y Research Lab"
 	icon_state = "engine"
 	ceiling = CEILING_UNDERGROUND_METAL
 
@@ -434,3 +434,38 @@
 	name = "\improper General Offices"
 	icon_state = "storage"
 	ceiling = CEILING_METAL
+
+/area/bigredv2/caves_virology
+	name = "\improper Virology Caves"
+	icon_state = "caves_virology"
+	ceiling = CEILING_UNDERGROUND
+	
+/area/bigredv2/caves_sw
+	name = "\improper Southwestern Caves"
+	icon_state = "caves_sw"
+	ceiling = CEILING_UNDERGROUND
+	
+/area/bigredv2/caves_research
+	name = "\improper W-Y Research Lab Caves"
+	icon_state = "caves_research"
+	ceiling = CEILING_UNDERGROUND
+	
+/area/bigredv2/caves_se
+	name = "\improper Southeastern Caves"
+	icon_state = "caves_se"
+	ceiling = CEILING_UNDERGROUND
+
+/area/bigredv2/caves_east
+	name = "\improper Eastern Caves"
+	icon_state = "caves_east"
+	ceiling = CEILING_UNDERGROUND
+	
+/area/bigredv2/caves_lambda
+	name = "\improper Lambda Lab Caves"
+	icon_state = "caves_lambda"
+	ceiling = CEILING_UNDERGROUND
+	
+/area/bigredv2/caves_north
+	name = "\improper Northern Caves"
+	icon_state = "caves_north"
+	ceiling = CEILING_UNDERGROUND

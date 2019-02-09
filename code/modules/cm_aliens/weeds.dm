@@ -186,14 +186,17 @@
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER
 	icon_state = "weedwall"
+	var/list/wall_connections = list("0", "0", "0", "0")
 
 /obj/effect/alien/weeds/weedwall/update_sprite()
 	if(istype(loc, /turf/closed/wall))
 		var/turf/closed/wall/W = loc
-		if(W.junctiontype)
-			icon_state = "weedwall[W.junctiontype]"
-
-
+		wall_connections = W.wall_connections
+		icon_state = ""
+		var/image/I
+		for(var/i = 1 to 4)
+			I = image(icon, "weedwall[wall_connections[i]]", dir = 1<<(i-1))
+			overlays += I
 
 /obj/effect/alien/weeds/weedwall/window
 	layer = ABOVE_TABLE_LAYER

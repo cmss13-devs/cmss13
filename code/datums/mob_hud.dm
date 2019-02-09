@@ -369,6 +369,11 @@ var/datum/mob_hud/huds = list(
 	hud_list[QUEEN_OVERWATCH_HUD] = holder
 
 
+/mob/living/carbon/Xenomorph/proc/hud_update()
+	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
+	if(upgrade)
+		var/image/J = image('icons/mob/hud.dmi',src, "hudxenoupgrade[upgrade]")
+		holder.overlays += J
 
 //Sec HUDs
 

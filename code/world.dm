@@ -34,6 +34,8 @@ var/global/datum/global_init/init = new ()
 	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
 	round_stats = file("data/logs/[year_string]/round_stats.log")
 	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
+	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
+	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	if(byond_version < RECOMMENDED_VERSION)
@@ -67,8 +69,6 @@ var/global/datum/global_init/init = new ()
 		RoleAuthority = new /datum/authority/branch/role()
 		world << "\red \b Job setup complete"
 
-	if(!syndicate_code_phrase)		syndicate_code_phrase	= generate_code_phrase()
-	if(!syndicate_code_response)	syndicate_code_response	= generate_code_phrase()
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
 	world.tick_lag = config.Ticklag

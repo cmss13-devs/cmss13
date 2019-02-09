@@ -180,7 +180,6 @@ client
 		body += "<option value>---</option>"
 
 		if(ismob(D))
-			body += "<option value='?_src_=vars;give_spell=\ref[D]'>Give Spell</option>"
 			body += "<option value='?_src_=vars;give_disease=\ref[D]'>Give TG-style Disease</option>"
 			body += "<option value='?_src_=vars;godmode=\ref[D]'>Toggle Godmode</option>"
 			body += "<option value='?_src_=vars;build_mode=\ref[D]'>Toggle Build Mode</option>"
@@ -421,17 +420,6 @@ client
 		src.admin_holder.show_player_panel(M)
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
 
-	else if(href_list["give_spell"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
-
-		var/mob/M = locate(href_list["give_spell"])
-		if(!istype(M))
-			usr << "This can only be used on instances of type /mob"
-			return
-
-		src.give_spell(M)
-		href_list["datumrefresh"] = href_list["give_spell"]
-
 	else if(href_list["give_disease"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
 
@@ -441,7 +429,7 @@ client
 			return
 
 		src.give_disease(M)
-		href_list["datumrefresh"] = href_list["give_spell"]
+		href_list["datumrefresh"] = href_list["give_disease"]
 
 	else if(href_list["godmode"])
 		if(!check_rights(R_REJUVINATE))	return

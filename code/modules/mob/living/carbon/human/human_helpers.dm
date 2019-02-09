@@ -258,3 +258,26 @@
 			src << "<span class='notice'>Your sources of light short out.</span>"
 		else
 			src << "<span class='notice'>Your source of light shorts out.</span>"
+
+
+/mob/living/carbon/human/a_intent_change(input as text)
+	. = ..(input)
+	if(isEarlySynthetic(src)) //1st gen synths change eye colour based on intent
+		switch(input)
+			if("help") //Green, defalt
+				r_eyes = 0
+				g_eyes = 255
+				b_eyes = 0
+			if("disarm") //Blue
+				r_eyes = 0
+				g_eyes = 0
+				b_eyes = 255
+			if("grab") //Orange, since yellow doesn't show at all!
+				r_eyes = 248
+				g_eyes = 243
+				b_eyes = 43
+			if("hurt") //RED!
+				r_eyes = 255
+				g_eyes = 0
+				b_eyes = 0
+		update_body()

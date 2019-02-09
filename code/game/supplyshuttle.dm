@@ -314,10 +314,10 @@ var/list/mechtoys = list(
 	var/points = 120
 	var/points_per_process = 0
 	var/points_per_slip = 1
-	var/points_per_crate = 1
+	var/points_per_crate = 2
 	var/min_random_crate_amount = 0 //Minimum amount of crates spawned.
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
-	var/xeno_per_crate = 2 //Amount of xenos needed to spawn a crate
+	var/xeno_per_crate = 3 //Amount of xenos needed to spawn a crate
 	var/crate_iteration = 0
 	var/points_per_platinum = 5
 	var/points_per_phoron = 0
@@ -331,7 +331,7 @@ var/list/mechtoys = list(
 	var/datum/shuttle/ferry/supply/shuttle
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
-	var/dropship_points = 0 //gains roughly 18 points per minute
+	var/dropship_points = 5000 //gains roughly 18 points per minute
 
 	New()
 		ordernum = rand(1,9000)
@@ -374,13 +374,13 @@ var/list/mechtoys = list(
 /datum/controller/supply/proc/add_random_crate()
 	var/randpick = rand(1,100)
 	switch(randpick)
-		if(1 to 35)
+		if(1 to 30)
 			pickcrate("Defence")
-		if(36 to 65)
+		if(30 to 50)
 			pickcrate("Munition")
-		if(66 to 85)
+		if(50 to 75)
 			pickcrate("Offence")
-		if(86 to 90)
+		if(75 to 90)
 			pickcrate("Utility")
 		if(91 to 100)
 			pickcrate("Everything")

@@ -200,10 +200,6 @@
 					U.ai_cancel_tracking(1)
 					return
 
-			if(istype(target.loc,/obj/effect/dummy))
-				U.ai_cancel_tracking()
-				return
-
 			if (!near_camera(target))
 				U << "Target is not near any active cameras."
 				sleep(100)

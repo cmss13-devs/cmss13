@@ -109,3 +109,8 @@
 /proc/log_misc(text)
 	diary << html_decode("\[[time_stamp()]]MISC: [text][log_end]")
 	STUI.debug.Add("\[[time_stamp()]]MISC: [text]<br>")
+
+/proc/log_mutator(text)
+	if(!mutator_logs)
+		return
+	mutator_logs << text + "[log_end]"

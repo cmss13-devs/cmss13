@@ -516,3 +516,17 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)
 	evolution_threshold =  round(caste.evolution_threshold * hive.mutators.maturation_multiplier)
+
+/mob/living/carbon/Xenomorph/rejuvenate()
+	if(stat == DEAD)
+		living_xeno_list += src
+		switch(tier)
+			if(2)
+				hive.tier_2_xenos += src
+			if(3)
+				hive.tier_3_xenos += src
+		hive.totalXenos += src
+		if(caste_name == "Queen")
+			New()
+	..()
+	hud_update()

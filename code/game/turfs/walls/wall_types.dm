@@ -7,8 +7,8 @@
 /turf/closed/wall/almayer
 	name = "hull"
 	desc = "A metal wall used to seperate rooms and make up the ship."
-	icon = 'icons/turf/almayer.dmi'
-	icon_state = "testwall0"
+	icon = 'icons/turf/walls/almayer.dmi'
+	icon_state = "testwall"
 	walltype = "testwall"
 
 	damage = 0
@@ -19,21 +19,13 @@
 	opacity = 1
 	density = 1
 
-/turf/closed/wall/almayer/handle_icon_junction(junction)
-	if (!walltype)
-		return
-	//lets make some detailed randomized shit happen.
-	var/r1 = rand(0,10) //Make a random chance for this to happen
-	var/r2 = rand(0,3) // Which wall if we do choose it
-	if(junction == 12)
-		switch(r1)
-			if(0 to 8)
-				icon_state = "[walltype]12"
-			if(9 to 10)
-				icon_state = "almayer_deco_wall[r2]"
-	else
-		icon_state = "[walltype][junction]"
-	junctiontype = junction
+/turf/closed/wall/almayer/update_icon()
+	..()
+	if(neighbors_list in list(EAST|WEST, EAST|WEST|NORTH))
+		var/r1 = rand(0,10) //Make a random chance for this to happen
+		var/r2 = rand(0,3) // Which wall if we do choose it
+		if(r1 >= 9)
+			overlays += image(icon, icon_state = "almayer_deco_wall[r2]")
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
@@ -45,21 +37,18 @@
 
 /turf/closed/wall/almayer/white
 	walltype = "wwall"
-	icon_state = "wwall0"
-
-/turf/closed/wall/almayer/white/handle_icon_junction(junction)
-	icon_state = "[walltype][junction]"
-	junctiontype = junction
-
-
+	icon = 'icons/turf/walls/almayer_white.dmi'
+	icon_state = "wwall"
 
 /turf/closed/wall/almayer/research/can_be_dissolved()
 	return 0
 
 /turf/closed/wall/almayer/research/containment/wall
 	name = "cell wall"
+	icon = 'icons/turf/almayer.dmi'
 	tiles_with = null
 	walltype = null
+	special_icon = 1
 
 /turf/closed/wall/almayer/research/containment/wall/corner
 	icon_state = "containment_wall_corner"
@@ -114,7 +103,7 @@
 	name = "spaceship hull"
 	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
 	icon = 'icons/turf/walls.dmi'
-	icon_state = "sulaco0"
+	icon_state = "sulaco"
 	hull = 0 //Can't be deconstructed
 
 	damage_cap = 1000 //As tough as R_walls.
@@ -201,16 +190,18 @@
 	opacity = 0
 
 /turf/closed/wall/indestructible/splashscreen
-	name = "Space Station 13"
+	name = "Lobby Art"
+	desc = "Assorted artworks by NicBoone & Triiodine. Holiday artwork by Monkeyfist."
 	icon = 'icons/misc/title.dmi'
 	icon_state = "title_painting1"
 //	icon_state = "title_holiday"
 	layer = FLY_LAYER
+	special_icon = 1
 
 /turf/closed/wall/indestructible/splashscreen/New()
 	..()
 	if(icon_state == "title_painting1") // default
-		icon_state = "title_painting[rand(1,5)]"
+		icon_state = "title_painting[rand(1,6)]"
 
 /turf/closed/wall/indestructible/other
 	icon_state = "r_wall"
@@ -227,7 +218,9 @@
 /turf/closed/wall/mineral
 	name = "mineral wall"
 	desc = "This shouldn't exist"
-	icon_state = ""
+	icon = 'icons/turf/walls/stone.dmi'
+	icon_state = "stone"
+	walltype = "stone"
 	var/mineral
 	var/last_event = 0
 	var/active = null
@@ -236,6 +229,7 @@
 /turf/closed/wall/mineral/gold
 	name = "gold wall"
 	desc = "A wall with gold plating. Swag!"
+	icon = 'icons/turf/walls.dmi'
 	icon_state = "gold0"
 	walltype = "gold"
 	mineral = "gold"
@@ -245,18 +239,16 @@
 /turf/closed/wall/mineral/silver
 	name = "silver wall"
 	desc = "A wall with silver plating. Shiny!"
-	icon_state = "silver0"
-	walltype = "silver"
 	mineral = "silver"
+	color = "#e5e5e5"
 	//var/electro = 0.75
 	//var/shocked = null
 
 /turf/closed/wall/mineral/diamond
 	name = "diamond wall"
 	desc = "A wall with diamond plating. You monster."
-	icon_state = "diamond0"
-	walltype = "diamond"
 	mineral = "diamond"
+	color = "#3d9191"
 
 /turf/closed/wall/mineral/diamond/thermitemelt(mob/user)
 	return
@@ -265,16 +257,14 @@
 /turf/closed/wall/mineral/sandstone
 	name = "sandstone wall"
 	desc = "A wall with sandstone plating."
-	icon_state = "sandstone0"
-	walltype = "sandstone"
 	mineral = "sandstone"
+	color = "#c6a480"
 
 /turf/closed/wall/mineral/uranium
 	name = "uranium wall"
 	desc = "A wall with uranium plating. This is probably a bad idea."
-	icon_state = "uranium0"
-	walltype = "uranium"
 	mineral = "uranium"
+	color = "#1b4506"
 
 /turf/closed/wall/mineral/uranium/proc/radiate()
 	if(!active)
@@ -304,9 +294,8 @@
 /turf/closed/wall/mineral/phoron
 	name = "phoron wall"
 	desc = "A wall with phoron plating. This is definately a bad idea."
-	icon_state = "phoron0"
-	walltype = "phoron"
 	mineral = "phoron"
+	color = "#9635aa"
 
 
 
@@ -317,8 +306,10 @@
 /turf/closed/wall/cult
 	name = "wall"
 	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick"
-	icon_state = "cult0"
+	icon = 'icons/turf/walls/cult.dmi'
+	icon_state = "cult"
 	walltype = "cult"
+	color = "#3c3434"
 
 
 /turf/closed/wall/vault
@@ -333,7 +324,7 @@
 /turf/closed/wall/hangar
 	name = "hangar wall"
 	icon = 'icons/turf/walls/hangar.dmi'
-	icon_state = "hangar0"
+	icon_state = "hangar"
 	walltype = "hangar"
 
 //Prison wall
@@ -341,7 +332,7 @@
 /turf/closed/wall/prison
 	name = "metal wall"
 	icon = 'icons/turf/walls/prison.dmi'
-	icon_state = "metal0"
+	icon_state = "metal"
 	walltype = "metal"
 
 
@@ -350,26 +341,41 @@
 
 /turf/closed/wall/wood
 	name = "wood wall"
-	icon = 'icons/turf/wood.dmi'
-	icon_state = "wood0"
+	icon = 'icons/turf/walls/wood.dmi'
+	icon_state = "wood"
 	walltype = "wood"
 
-/turf/closed/wall/wood/handle_icon_junction(junction)
-	if (!walltype)
-		return
-
-	var/r1 = rand(0,10) //Make a random chance for this to happen
-	if(junction == 12)
-		switch(r1)
-			if(0 to 8)
-				icon_state = "[walltype]12"
-			if(9 to 10)
-				icon_state = "wood_variant"
-	else
-		icon_state = "[walltype][junction]"
+/turf/closed/wall/wood/update_icon()
+	..()
+	if(neighbors_list in list(EAST|WEST, EAST|WEST|NORTH))
+		var/r1 = rand(0,10) //Make a random chance for this to happen
+		if(r1 >= 9)
+			overlays += image(icon, icon_state = "wood_variant")
 
 
+/turf/closed/wall/rock
+	name = "rock wall"
+	icon = 'icons/turf/walls/cave.dmi'
+	icon_state = "cavewall"
+	walltype = "cavewall"
+	hull = 1
+	color = "#535963"
 
+/turf/closed/wall/rock/brown
+	color = "#826161"
+
+/turf/closed/wall/rock/orange
+	color = "#994a16"
+
+/turf/closed/wall/rock/red
+	color = "#822d21"
+
+/turf/closed/wall/rock/ice
+	name = "dense ice wall"
+	color = "#4b94b3"
+
+/turf/closed/wall/rock/ice/thin
+	alpha = 166
 
 //Xenomorph's Resin Walls
 
@@ -377,11 +383,12 @@
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
 	icon = 'icons/Xeno/structures.dmi'
-	icon_state = "resin0"
+	icon_state = "resin"
 	walltype = "resin"
 	damage_cap = 200
 	layer = RESIN_STRUCTURE_LAYER
-	tiles_with = list(/turf/closed/wall/resin, /turf/closed/wall/resin/membrane, /obj/structure/mineral_door/resin)
+	blend_turfs = list(/turf/closed/wall/resin)
+	blend_objects = list(/obj/structure/mineral_door/resin)
 
 /turf/closed/wall/resin/New()
 	..()
@@ -393,19 +400,19 @@
 
 //this one is only for map use
 /turf/closed/wall/resin/ondirt
-	oldTurf = "/turf/open/gm/dirt"
+	old_turf = "/turf/open/gm/dirt"
 
 /turf/closed/wall/resin/thick
 	name = "thick resin wall"
 	desc = "Weird slime solidified into a thick wall."
 	damage_cap = 400
-	icon_state = "thickresin0"
+	icon_state = "thickresin"
 	walltype = "thickresin"
 
 /turf/closed/wall/resin/membrane
 	name = "resin membrane"
 	desc = "Weird slime translucent enough to let light pass through."
-	icon_state = "membrane0"
+	icon_state = "membrane"
 	walltype = "membrane"
 	damage_cap = 120
 	opacity = 0
@@ -413,13 +420,13 @@
 
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
-	oldTurf = "/turf/open/gm/dirt"
+	old_turf = "/turf/open/gm/dirt"
 
 /turf/closed/wall/resin/membrane/thick
 	name = "thick resin membrane"
 	desc = "Weird thick slime just translucent enough to let light pass through."
 	damage_cap = 240
-	icon_state = "thickmembrane0"
+	icon_state = "thickmembrane"
 	walltype = "thickmembrane"
 	alpha = 210
 

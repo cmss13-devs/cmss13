@@ -990,7 +990,8 @@
 	// loop through potential hairs
 	for(var/x in all_hairs)
 		var/datum/sprite_accessory/hair/H = new x // create new hair datum based on type x
-		hairs.Add(H.name) // add hair name to hairs
+		if(H.selectable)
+			hairs.Add(H.name) // add hair name to hairs
 		cdel(H) // delete the hair after it's all done
 
 	var/new_style = input("Please select hair style", "Character Generation",h_style)  as null|anything in hairs
@@ -1005,7 +1006,8 @@
 
 	for(var/x in all_fhairs)
 		var/datum/sprite_accessory/facial_hair/H = new x
-		fhairs.Add(H.name)
+		if(H.selectable)
+			fhairs.Add(H.name)
 		cdel(H)
 
 	new_style = input("Please select facial style", "Character Generation",f_style)  as null|anything in fhairs

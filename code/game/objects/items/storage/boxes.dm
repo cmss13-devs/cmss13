@@ -533,7 +533,7 @@
 	icon_state = "m94"
 	w_class = 3
 	max_storage_space = 10
-	can_hold = list(/obj/item/device/flashlight/flare)
+	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
 /obj/item/storage/box/m94/New()
 	..()
@@ -550,6 +550,24 @@
 		icon_state = "m94_e"
 	else
 		icon_state = "m94"
+
+
+/obj/item/storage/box/m94/signal
+	name = "\improper M94-S signal flare pack"
+	desc = "A packet of five M94-S Signal Marking Flares."
+	icon_state = "m94"
+	w_class = 3
+	max_storage_space = 10
+	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
+
+/obj/item/storage/box/m94/signal/New()
+	..()
+	contents = list()
+	new /obj/item/device/flashlight/flare/signal(src)
+	new /obj/item/device/flashlight/flare/signal(src)
+	new /obj/item/device/flashlight/flare/signal(src)
+	new /obj/item/device/flashlight/flare/signal(src)
+	new /obj/item/device/flashlight/flare/signal(src)
 
 
 /obj/item/storage/box/nade_box

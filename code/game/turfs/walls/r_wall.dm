@@ -286,32 +286,24 @@
 
 /turf/closed/wall/r_wall/chigusa
 	name = "facility wall"
-	icon = 'icons/turf/chigusa.dmi'
-	icon_state = "chigusa0"
+	icon = 'icons/turf/walls/chigusa.dmi'
+	icon_state = "chigusa"
 	walltype = "chigusa"
 
-/turf/closed/wall/r_wall/chigusa/handle_icon_junction(junction)
-	if (!walltype)
-		return
-	//lets make some detailed randomized shit happen.
-	var/r1 = rand(0,10) //Make a random chance for this to happen
-	var/r2 = rand(0,2) // Which wall if we do choose it
-	if(junction == 12)
-		switch(r1)
-			if(0 to 8)
-				icon_state = "[walltype]12"
-			if(9 to 10)
-				icon_state = "deco_wall[r2]"
-	else
-		icon_state = "[walltype][junction]"
-
+/turf/closed/wall/r_wall/chigusa/update_icon()
+	..()
+	if(neighbors_list in list(EAST|WEST, EAST|WEST|NORTH))
+		var/r1 = rand(0,10) //Make a random chance for this to happen
+		var/r2 = rand(0,3) // Which wall if we do choose it
+		if(r1 >= 9)
+			overlays += image(icon, icon_state = "deco_wall[r2]")
 
 //Bunker Walls
 
 /turf/closed/wall/r_wall/bunker
 	name = "bunker wall"
 	icon = 'icons/turf/walls/bunker.dmi'
-	icon_state = "bunker0"
+	icon_state = "bunker"
 	walltype = "bunker"
 
 //Prison
@@ -319,14 +311,14 @@
 /turf/closed/wall/r_wall/prison
 	name = "reinforced metal wall"
 	icon = 'icons/turf/walls/prison.dmi'
-	icon_state = "rwall0"
+	icon_state = "rwall"
 	walltype = "rwall"
 
 /turf/closed/wall/r_wall/prison_unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
-	icon_state = "rwall0"
+	icon_state = "rwall"
 	walltype = "rwall"
 	hull = 1
 

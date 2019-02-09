@@ -1,114 +1,1221 @@
-"aa" = (/obj/effect/landmark/lv624/fog_blocker,/turf/open/gm/grass,/area/lv624/ground/jungle6)
-"ab" = (/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"ac" = (/turf/open/gm/grass,/area/lv624/ground/jungle6)
-"ad" = (/obj/machinery/colony_floodlight,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"ae" = (/obj/structure/sign/redcross,/turf/closed/wall,/area/lv624/lazarus/medbay)
-"af" = (/turf/closed/wall,/area/lv624/lazarus/medbay)
-"ag" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/plating,/area/lv624/lazarus/medbay)
-"ah" = (/obj/structure/window_frame/colony,/obj/item/shard,/turf/open/floor/plating,/area/lv624/lazarus/medbay)
-"ai" = (/obj/structure/table,/obj/item/clothing/glasses/hud/health,/obj/item/stack/medical/splint,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aj" = (/obj/structure/table,/obj/item/tool/surgery/retractor,/obj/item/tool/surgery/FixOVein,/obj/item/tool/surgery/circular_saw{pixel_y = 12},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ak" = (/turf/closed/wall{damage = 500},/area/lv624/lazarus/medbay)
-"al" = (/obj/structure/jungle/planttop1,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"am" = (/obj/machinery/vending/medical,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"an" = (/obj/item/storage/firstaid/adv,/obj/item/reagent_container/hypospray/autoinjector/quickclot,/obj/structure/table,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ao" = (/obj/item/reagent_container/spray,/obj/item/device/healthanalyzer,/obj/item/tool/surgery/FixOVein,/obj/structure/table,/obj/item/storage/box/syringes,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ap" = (/obj/structure/table,/obj/item/clothing/mask/facehugger{desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?"; icon_state = "facehugger_impregnated"; name = "????"; stat = 2},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aq" = (/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ar" = (/obj/structure/table,/obj/item/clothing/mask/surgical{pixel_x = 3; pixel_y = 5},/obj/item/clothing/mask/surgical{pixel_x = 1; pixel_y = 2},/obj/item/clothing/mask/surgical,/obj/item/storage/box/masks,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"as" = (/obj/structure/table,/obj/item/clothing/under/colonist,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"at" = (/obj/structure/table,/obj/item/stack/medical/ointment,/obj/item/stack/medical/bruise_pack,/obj/item/stack/medical/bruise_pack{pixel_x = 3; pixel_y = 3},/obj/item/reagent_container/hypospray/autoinjector/quickclot,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"au" = (/obj/structure/jungle/plantbot1,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"av" = (/obj/structure/closet/crate/medical,/obj/machinery/light{dir = 4; icon_state = "tube1"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aw" = (/obj/machinery/light{icon_state = "tube1"; dir = 8},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ax" = (/obj/machinery/optable,/obj/item/tool/surgery/scalpel/manager,/obj/effect/landmark/corpsespawner/scientist{corpseback = null; corpsehelmet = /obj/item/clothing/head/cmcap/req; corpseshoes = /obj/item/clothing/shoes/black; corpsesuit = /obj/item/clothing/suit/storage/labcoat; corpseuniform = /obj/item/clothing/under/colonist; name = "Colonist Lee Hesto"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ay" = (/obj/machinery/light{dir = 4},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"az" = (/obj/structure/mirror{pixel_y = 30},/turf/closed/wall,/area/lv624/lazarus/medbay)
-"aA" = (/obj/machinery/light{dir = 8; icon_state = "tube1"; pixel_y = 0},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aB" = (/obj/structure/bed/chair{dir = 4},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aC" = (/obj/structure/table,/obj/item/stack/medical/bruise_pack,/obj/item/tool/surgery/hemostat,/obj/item/storage/box/syringes,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aD" = (/obj/structure/table,/obj/item/stack/sheet/plasteel{amount = 10},/obj/item/stack/sheet/metal{amount = 30},/obj/item/stack/sheet/metal{amount = 30},/obj/item/stack/rods{amount = 40},/obj/item/stack/rods{amount = 40},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aE" = (/obj/structure/closet/crate/medical,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aF" = (/turf/open/gm/grass,/area/lv624/lazarus/medbay)
-"aG" = (/obj/item/device/radio/intercom{anyai = 1; freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = -30; pixel_y = 0},/turf/closed/wall,/area/lv624/lazarus/medbay)
-"aH" = (/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aI" = (/obj/effect/landmark/corpsespawner/doctor{corpseback = null; corpsegloves = /obj/item/clothing/gloves/latex; corpseuniform = /obj/item/clothing/under/colonist; mobname = ""; name = "Colonist Mio Linno"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aJ" = (/obj/effect/decal/cleanable/blood/gibs/xeno/body,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aK" = (/obj/structure/cable/yellow{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/closed/wall,/area/lv624/lazarus/medbay)
-"aL" = (/obj/structure/sign/redcross,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/closed/wall,/area/lv624/lazarus/medbay)
-"aM" = (/obj/structure/window/framed/colony/reinforced,/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"; layer = 2.44},/turf/open/floor/plating,/area/lv624/lazarus/medbay)
-"aN" = (/obj/machinery/vending/medical,/obj/machinery/light{dir = 1},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aO" = (/obj/structure/table,/obj/item/stack/medical/bruise_pack,/obj/item/stack/medical/ointment,/obj/item/tool/surgery/bonegel,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aP" = (/obj/item/storage/firstaid/toxin,/obj/structure/table,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aQ" = (/obj/machinery/bioprinter,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aR" = (/obj/machinery/iv_drip,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aS" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 1; locked = 1; name = "\improper Medical Dome Locker"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aT" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 1; locked = 1; name = "\improper Medical Dome Surgery"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aU" = (/obj/structure/table,/obj/item/clothing/glasses/hud/health,/obj/item/storage/firstaid,/obj/item/storage/firstaid,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aV" = (/obj/structure/table,/obj/item/reagent_container/glass/beaker/large,/obj/item/reagent_container/glass/beaker{pixel_x = 4},/obj/structure/extinguisher_cabinet{pixel_y = 30},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aW" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 1; locked = 1; name = "\improper Medical Dome Storage"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aX" = (/turf/open/floor/plating,/area/lv624/lazarus/medbay)
-"aY" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"aZ" = (/obj/structure/cable/yellow{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"; layer = 2.1},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"ba" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bb" = (/obj/item/ammo_casing/bullet,/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bc" = (/obj/machinery/door/airlock/multi_tile/almayer/medidoor{dir = 1; name = "\improper Medical Dome"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bd" = (/obj/machinery/bodyscanner,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"be" = (/obj/machinery/body_scanconsole,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bf" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bg" = (/obj/machinery/sleeper,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bh" = (/obj/machinery/sleep_console{density = 0},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bi" = (/obj/item/device/radio/intercom{anyai = 1; freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = -30; pixel_y = 0},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bj" = (/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"bk" = (/obj/machinery/light{dir = 1},/obj/structure/table,/obj/item/ammo_magazine/pistol/b92fs,/obj/item/ammo_magazine/pistol/b92fs,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bl" = (/obj/machinery/power/apc{dir = 1; name = "Medbay APC"; pixel_y = 30; start_charge = 0},/obj/structure/cable/yellow{d2 = 2; icon_state = "0-2"},/obj/structure/table,/obj/item/ammo_magazine/pistol/b92fs,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bm" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"; layer = 2.1},/obj/machinery/light{dir = 1},/obj/structure/barricade/metal{dir = 4},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bn" = (/obj/structure/jungle/planttop1,/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"bo" = (/obj/item/shard,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bp" = (/obj/machinery/light,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bq" = (/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"br" = (/obj/structure/cable/yellow{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/barricade/metal{dir = 4},/obj/item/ammo_casing/bullet,/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bs" = (/obj/item/ammo_magazine/pistol/b92fs{current_rounds = 0},/obj/item/ammo_magazine/pistol/b92fs{current_rounds = 0},/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bt" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/light,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bu" = (/obj/effect/decal/cleanable/blood/splatter,/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bv" = (/obj/structure/jungle/plantbot1,/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"bw" = (/obj/structure/window_frame/colony,/turf/open/floor/plating,/area/lv624/lazarus/medbay)
-"bx" = (/obj/item/weapon/gun/pistol/b92fs,/obj/effect/decal/cleanable/blood/splatter,/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"by" = (/obj/structure/bed/chair,/obj/effect/decal/cleanable/blood/splatter,/obj/item/ammo_casing/bullet,/obj/item/ammo_casing/bullet,/obj/item/ammo_casing/bullet,/obj/effect/landmark/corpsespawner/security{corpsehelmet = /obj/item/clothing/head/helmet/riot; corpseuniform = /obj/item/clothing/under/colonist; name = "Colonist Fors Ilin"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bz" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/closed/wall,/area/lv624/lazarus/medbay)
-"bA" = (/obj/structure/table/reinforced{dir = 4; flipped = 1},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bB" = (/obj/machinery/door/window/southright,/obj/effect/decal/cleanable/blood/splatter,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bC" = (/obj/structure/table{flipped = 1},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bD" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder,/area/lv624/ground/compound/n)
-"bE" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder{dir = 4},/area/lv624/ground/compound/n)
-"bF" = (/turf/open/gm/dirt,/area/lv624/ground/compound/n)
-"bG" = (/obj/machinery/door/airlock/almayer/medical/glass{dir = 1; name = "\improper Medical Dome"},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bH" = (/obj/structure/sign/redcross,/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/closed/wall,/area/lv624/lazarus/medbay)
-"bI" = (/obj/item/trash/cigbutt,/turf/open/gm/dirt,/area/lv624/ground/compound/n)
-"bJ" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"; layer = 2.44},/turf/open/gm/dirt,/area/lv624/ground/compound/n)
-"bK" = (/obj/effect/landmark{name = "crap_item"},/turf/open/gm/dirt,/area/lv624/ground/compound/n)
-"bL" = (/obj/machinery/door/window/southleft,/obj/item/ammo_casing/bullet,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bM" = (/obj/item/shard,/obj/item/shard,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bN" = (/obj/item/device/radio/intercom{anyai = 1; freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = -30; pixel_y = 0},/obj/effect/decal/cleanable/blood/gibs/xeno/core,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bO" = (/obj/effect/decal/cleanable/blood/gibs/xeno/body,/obj/structure/barricade/metal{health = 50},/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
-"bP" = (/obj/structure/barricade/metal,/turf/open/floor{dir = 2; icon_state = "whitebluecorner"; tag = "icon-whitebluecorner"},/area/lv624/lazarus/medbay)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"ab" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"ac" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle6)
+"ad" = (
+/obj/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"ae" = (
+/obj/structure/sign/redcross,
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"af" = (
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"ag" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/medbay)
+"ah" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv624/lazarus/medbay)
+"ai" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/stack/medical/splint,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aj" = (
+/obj/structure/table,
+/obj/item/tool/surgery/retractor,
+/obj/item/tool/surgery/FixOVein,
+/obj/item/tool/surgery/circular_saw{
+	pixel_y = 12
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ak" = (
+/turf/closed/wall{
+	damage = 500
+	},
+/area/lv624/lazarus/medbay)
+"al" = (
+/obj/structure/jungle/planttop1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"am" = (
+/obj/machinery/vending/medical,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"an" = (
+/obj/item/storage/firstaid/adv,
+/obj/item/reagent_container/hypospray/autoinjector/quickclot,
+/obj/structure/table,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ao" = (
+/obj/item/reagent_container/spray,
+/obj/item/device/healthanalyzer,
+/obj/item/tool/surgery/FixOVein,
+/obj/structure/table,
+/obj/item/storage/box/syringes,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ap" = (
+/obj/structure/table,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aq" = (
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ar" = (
+/obj/structure/table,
+/obj/item/clothing/mask/surgical{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/clothing/mask/surgical{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/clothing/mask/surgical,
+/obj/item/storage/box/masks,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"as" = (
+/obj/structure/table,
+/obj/item/clothing/under/colonist,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"at" = (
+/obj/structure/table,
+/obj/item/stack/medical/ointment,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/bruise_pack{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/hypospray/autoinjector/quickclot,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"au" = (
+/obj/structure/jungle/plantbot1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"av" = (
+/obj/structure/closet/crate/medical,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aw" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ax" = (
+/obj/machinery/optable,
+/obj/item/tool/surgery/scalpel/manager,
+/obj/effect/landmark/corpsespawner/scientist{
+	corpseback = null;
+	corpsehelmet = /obj/item/clothing/head/cmcap/req;
+	corpseshoes = /obj/item/clothing/shoes/black;
+	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
+	corpseuniform = /obj/item/clothing/under/colonist;
+	name = "Colonist Lee Hesto"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ay" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"az" = (
+/obj/structure/mirror{
+	pixel_y = 30
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"aA" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aB" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aC" = (
+/obj/structure/table,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/tool/surgery/hemostat,
+/obj/item/storage/box/syringes,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aD" = (
+/obj/structure/table,
+/obj/item/stack/sheet/plasteel{
+	amount = 10
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/obj/item/stack/rods{
+	amount = 40
+	},
+/obj/item/stack/rods{
+	amount = 40
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aE" = (
+/obj/structure/closet/crate/medical,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aF" = (
+/turf/open/gm/grass,
+/area/lv624/lazarus/medbay)
+"aG" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30;
+	pixel_y = 0
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"aH" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aI" = (
+/obj/effect/landmark/corpsespawner/doctor{
+	corpseback = null;
+	corpsegloves = /obj/item/clothing/gloves/latex;
+	corpseuniform = /obj/item/clothing/under/colonist;
+	mobname = "";
+	name = "Colonist Mio Linno"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aJ" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aK" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"aL" = (
+/obj/structure/sign/redcross,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"aM" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	layer = 2.44
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/medbay)
+"aN" = (
+/obj/machinery/vending/medical,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aO" = (
+/obj/structure/table,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment,
+/obj/item/tool/surgery/bonegel,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aP" = (
+/obj/item/storage/firstaid/toxin,
+/obj/structure/table,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aQ" = (
+/obj/machinery/bioprinter,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aR" = (
+/obj/machinery/iv_drip,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aS" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	locked = 1;
+	name = "\improper Medical Dome Locker"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aT" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	locked = 1;
+	name = "\improper Medical Dome Surgery"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aU" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/storage/firstaid,
+/obj/item/storage/firstaid,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aV" = (
+/obj/structure/table,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker{
+	pixel_x = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aW" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	locked = 1;
+	name = "\improper Medical Dome Storage"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aX" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/medbay)
+"aY" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"aZ" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	layer = 2.1
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"ba" = (
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bb" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bc" = (
+/obj/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Medical Dome"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bd" = (
+/obj/machinery/bodyscanner,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"be" = (
+/obj/machinery/body_scanconsole,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bf" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bg" = (
+/obj/machinery/sleeper,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bh" = (
+/obj/machinery/sleep_console{
+	density = 0
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bi" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30;
+	pixel_y = 0
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bj" = (
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"bk" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/ammo_magazine/pistol/b92fs,
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bl" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Medbay APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/table,
+/obj/item/ammo_magazine/pistol/b92fs,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bm" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	layer = 2.1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bn" = (
+/obj/structure/jungle/planttop1,
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"bo" = (
+/obj/item/shard,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bp" = (
+/obj/machinery/light,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bq" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"br" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/barricade/metal{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bs" = (
+/obj/item/ammo_magazine/pistol/b92fs{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/pistol/b92fs{
+	current_rounds = 0
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bt" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bu" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bv" = (
+/obj/structure/jungle/plantbot1,
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"bw" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/medbay)
+"bx" = (
+/obj/item/weapon/gun/pistol/b92fs,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"by" = (
+/obj/structure/bed/chair,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/corpsespawner/security{
+	corpsehelmet = /obj/item/clothing/head/helmet/riot;
+	corpseuniform = /obj/item/clothing/under/colonist;
+	name = "Colonist Fors Ilin"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bz" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"bA" = (
+/obj/structure/table/reinforced{
+	dir = 4;
+	flipped = 1
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bB" = (
+/obj/machinery/door/window/southright,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bC" = (
+/obj/structure/table{
+	flipped = 1
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bD" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/ground/compound/n)
+"bE" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/compound/n)
+"bF" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/compound/n)
+"bG" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Medical Dome"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bH" = (
+/obj/structure/sign/redcross,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/closed/wall,
+/area/lv624/lazarus/medbay)
+"bI" = (
+/obj/item/trash/cigbutt,
+/turf/open/gm/dirt,
+/area/lv624/ground/compound/n)
+"bJ" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	layer = 2.44
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/compound/n)
+"bK" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/compound/n)
+"bL" = (
+/obj/machinery/door/window/southleft,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bM" = (
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bN" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno/core,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bO" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/structure/barricade/metal{
+	health = 50
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
+"bP" = (
+/obj/structure/barricade/metal,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "whitebluecorner";
+	tag = "icon-whitebluecorner"
+	},
+/area/lv624/lazarus/medbay)
 
 (1,1,1) = {"
-aaabababababababababababababababab
-acadababababaeafakafaeabababababab
-acabafagahagafaiajapafagagagafabal
-acabagamanaoafbiaqaqafarasatagabau
-acabagaqaqavafawaxayazaAaBaCagabab
-acabagaDaqaqafaHaIaJafaqaqaEagaFab
-acaeafafaGaSafafaTafafaWafafaKaLaM
-acagaNaOaPaqaQaRbbbkblaqaUaVbmaqaX
-acahbobqaqaqaqaqaYaqaZbabababrbcaX
-acagbdbeaqaqaqbqbqaqbfaqaqbgbhaeag
-acaeafafbiaYbqbsbubqbfaYaqafafafbj
-acacbwboaqaqbqbxbybubfaqaqbAagbjbn
-acacbwboaqbobpbBbCbLbtaqaqbAagbjbv
-acacbwbMboboafbNaqaqbzaqaqbAagbjbj
-acacafbwbwbwafaqbObPbzahahagafbDbD
-acacacbEbFbFaeahbGahbHbFbFbFbFbFbF
-acacacbEbFbFbFbFbFbIbJbFbFbFbFbFbK
+aa
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(2,1,1) = {"
+ab
+ad
+ab
+ab
+ab
+ab
+ae
+ag
+ah
+ag
+ae
+ac
+ac
+ac
+ac
+ac
+ac
+"}
+(3,1,1) = {"
+ab
+ab
+af
+ag
+ag
+ag
+af
+aN
+bo
+bd
+af
+bw
+bw
+bw
+af
+ac
+ac
+"}
+(4,1,1) = {"
+ab
+ab
+ag
+am
+aq
+aD
+af
+aO
+bq
+be
+af
+bo
+bo
+bM
+bw
+bE
+bE
+"}
+(5,1,1) = {"
+ab
+ab
+ah
+an
+aq
+aq
+aG
+aP
+aq
+aq
+bi
+aq
+aq
+bo
+bw
+bF
+bF
+"}
+(6,1,1) = {"
+ab
+ab
+ag
+ao
+av
+aq
+aS
+aq
+aq
+aq
+aY
+aq
+bo
+bo
+bw
+bF
+bF
+"}
+(7,1,1) = {"
+ab
+ae
+af
+af
+af
+af
+af
+aQ
+aq
+aq
+bq
+bq
+bp
+af
+af
+ae
+bF
+"}
+(8,1,1) = {"
+ab
+af
+ai
+bi
+aw
+aH
+af
+aR
+aq
+bq
+bs
+bx
+bB
+bN
+aq
+ah
+bF
+"}
+(9,1,1) = {"
+ab
+ak
+aj
+aq
+ax
+aI
+aT
+bb
+aY
+bq
+bu
+by
+bC
+aq
+bO
+bG
+bF
+"}
+(10,1,1) = {"
+ab
+af
+ap
+aq
+ay
+aJ
+af
+bk
+aq
+aq
+bq
+bu
+bL
+aq
+bP
+ah
+bI
+"}
+(11,1,1) = {"
+ab
+ae
+af
+af
+az
+af
+af
+bl
+aZ
+bf
+bf
+bf
+bt
+bz
+bz
+bH
+bJ
+"}
+(12,1,1) = {"
+ab
+ab
+ag
+ar
+aA
+aq
+aW
+aq
+ba
+aq
+aY
+aq
+aq
+aq
+ah
+bF
+bF
+"}
+(13,1,1) = {"
+ab
+ab
+ag
+as
+aB
+aq
+af
+aU
+ba
+aq
+aq
+aq
+aq
+aq
+ah
+bF
+bF
+"}
+(14,1,1) = {"
+ab
+ab
+ag
+at
+aC
+aE
+af
+aV
+ba
+bg
+af
+bA
+bA
+bA
+ag
+bF
+bF
+"}
+(15,1,1) = {"
+ab
+ab
+af
+ag
+ag
+ag
+aK
+bm
+br
+bh
+af
+ag
+ag
+ag
+af
+bF
+bF
+"}
+(16,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+aF
+aL
+aq
+bc
+ae
+af
+bj
+bj
+bj
+bD
+bF
+bF
+"}
+(17,1,1) = {"
+ab
+ab
+al
+au
+ab
+ab
+aM
+aX
+aX
+ag
+bj
+bn
+bv
+bj
+bD
+bF
+bK
 "}

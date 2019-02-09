@@ -100,15 +100,15 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(playerTurf.z != 2)
-						Player << "<span class='round_body'>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</span>"
+						Player << "<span class='round_body'>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</span>"
 					else
 						Player << "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>"
 				else if(playerTurf.z == 2)
-					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>"
 				else if(issilicon(Player))
-					Player << "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>"
 				else
-					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>"
 			else
 
 	if(xenomorphs.len)

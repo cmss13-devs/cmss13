@@ -116,6 +116,19 @@ OPERATIONS
 	containertype = /obj/structure/closet/crate/supply
 	containername = "Motion Detector crate"
 	group = "Operations"
+	
+/datum/supply_packs/signal_flares
+	name = "signal flare packs crate (x4)"
+	contains = list(
+					/obj/item/storage/box/m94/signal,
+					/obj/item/storage/box/m94/signal,
+					/obj/item/storage/box/m94/signal,
+					/obj/item/storage/box/m94/signal
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "signal flare pack crate"
+	group = "Operations"
 
 /datum/supply_packs/contraband
 	randomised_num_contained = 5
@@ -241,6 +254,14 @@ WEAPONS
 	containername = "sentry crate"
 	group = "Weapons"
 
+/datum/supply_packs/m56_system/
+	name = "m56 system crate (x1)"
+	contains = list()
+	cost = RO_PRICE_VERY_PRICY
+	containertype = /obj/item/storage/box/m56_system
+	containername = "m56 system crate"
+	group = "Weapons"
+
 /datum/supply_packs/m56d_hmg
 	name = "m56d crate (x1)"
 	contains = list()
@@ -248,7 +269,6 @@ WEAPONS
 	containertype = /obj/item/storage/box/m56d_hmg
 	containername = "m56d crate"
 	group = "Weapons"
-
 
 /datum/supply_packs/gun/pistols
 	contains = list(

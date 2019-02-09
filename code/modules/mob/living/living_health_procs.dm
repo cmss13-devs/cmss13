@@ -120,31 +120,14 @@
 
 /mob/living/proc/rejuvenate()
 
-	// shut down various types of badness
-	setToxLoss(0)
-	setOxyLoss(0)
-	setCloneLoss(0)
-	setBrainLoss(0)
-	SetKnockedout(0)
-	SetStunned(0)
-	SetKnockeddown(0)
-	ExtinguishMob()
-	fire_stacks = 0
-
+	heal_all_damage()
+	
 	// shut down ongoing problems
 	radiation = 0
 	nutrition = 400
 	bodytemperature = T20C
 	sdisabilities = 0
 	disabilities = 0
-
-	// fix blindness and deafness
-	blinded = 0
-	eye_blind = 0
-	eye_blurry = 0
-	ear_deaf = 0
-	ear_damage = 0
-	heal_overall_damage(getBruteLoss(), getFireLoss())
 
 	// restore all of a human's blood
 	if(ishuman(src))
@@ -167,7 +150,30 @@
 
 	// restore us to conciousness
 	stat = CONSCIOUS
+	regenerate_all_icons()
 
+
+/mob/living/proc/heal_all_damage()
+	// shut down various types of badness
+	setToxLoss(0)
+	setOxyLoss(0)
+	setCloneLoss(0)
+	setBrainLoss(0)
+	SetKnockedout(0)
+	SetStunned(0)
+	SetKnockeddown(0)
+	ExtinguishMob()
+	fire_stacks = 0
+
+	// fix blindness and deafness
+	blinded = 0
+	eye_blind = 0
+	eye_blurry = 0
+	ear_deaf = 0
+	ear_damage = 0
+	heal_overall_damage(getBruteLoss(), getFireLoss())
+
+/mob/living/proc/regenerate_all_icons()
 	// make the icons look correct
 	regenerate_icons()
 	med_hud_set_status()

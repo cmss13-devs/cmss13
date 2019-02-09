@@ -5,7 +5,6 @@
 #define DROPSHIP_FUEL_EQP "dropship_fuel_equipment"
 #define DROPSHIP_COMPUTER "dropship_computer"
 
-
 //the bases onto which you attach dropship equipments.
 
 /obj/effect/attach_point
@@ -13,10 +12,11 @@
 	desc = "A place where heavy equipment can be installed with a powerloader."
 	unacidable = TRUE
 	anchored = TRUE
+	var/gimbal = GIMBAL_CENTER//which way it is gimballed
 	icon = 'icons/Marine/almayer_props.dmi'
 	icon_state = "equip_base"
 	var/base_category //what kind of equipment this base accepts.
-	var/ship_tag//used to associate the base to a dropship.
+	var/ship_tag //used to associate the base to a dropship.
 	var/obj/structure/dropship_equipment/installed_equipment
 
 	Dispose()
@@ -77,7 +77,6 @@
 
 /obj/effect/attach_point/crew_weapon/dropship2
 	ship_tag = "USS Almayer Dropship 2"
-
 
 /obj/effect/attach_point/electronics
 	name = "electronic system attach point"
@@ -575,7 +574,7 @@
 	var/last_fired //used for weapon cooldown after use.
 	var/firing_sound
 	var/firing_delay = 20 //delay between firing. 2 seconds by default
-	var/fire_mission_only = TRUE //whether the weapon can only be fire in fire mission mode.
+	var/fire_mission_only = TRUE //whether the weapon can only be fire in fly-by mode (sic).
 
 	update_equipment()
 		if(ship_base)
@@ -643,6 +642,31 @@
 		playsound(impact, ammo_warn_sound, 70, 1)
 	new /obj/effect/overlay/temp/blinking_laser (impact)
 	sleep(10)
+	SA.detonate_on(impact)
+
+/obj/structure/dropship_equipment/weapon/proc/open_fire_firemission(obj/selected_target)
+	set waitfor = 0
+	var/turf/target_turf = get_turf(selected_target)
+	if(firing_sound)
+		playsound(loc, firing_sound, 70, 1)
+		playsound(target_turf, firing_sound, 70, 1)
+	var/obj/structure/ship_ammo/SA = ammo_equipped //necessary because we nullify ammo_equipped when firing big rockets
+	var/ammo_accuracy_range = SA.accuracy_range
+	// no warning sound and no travel time
+	deplete_ammo()
+	last_fired = world.time
+	if(linked_shuttle)
+		for(var/obj/structure/dropship_equipment/electronics/targeting_system/TS in linked_shuttle.equipments)
+			ammo_accuracy_range = max(ammo_accuracy_range-2, 0) //targeting system increase accuracy and reduce travelling time.
+			break
+
+	ammo_accuracy_range /= 2 //buff for basically pointblanking the ground
+
+	var/list/possible_turfs = list()
+	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
+		possible_turfs += TU
+	var/turf/impact = pick(possible_turfs)
+	sleep(3)
 	SA.detonate_on(impact)
 
 /obj/structure/dropship_equipment/weapon/heavygun

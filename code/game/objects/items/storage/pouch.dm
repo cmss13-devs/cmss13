@@ -127,7 +127,6 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless (src)
 	new /obj/item/stack/medical/bruise_pack (src)
 
-
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
 	desc = "It can contain a pistol. Useful for emergencies."
@@ -364,7 +363,7 @@
 	storage_slots = 5
 	draw_mode = 1
 	icon_state = "flare"
-	can_hold = list(/obj/item/device/flashlight/flare)
+	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
 /obj/item/storage/pouch/flare/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))

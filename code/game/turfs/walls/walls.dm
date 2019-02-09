@@ -28,25 +28,34 @@
 	var/bullethole_increment = 1
 	var/bullethole_state = 0
 	var/image/reusable/bullethole_overlay
-
+	var/list/wall_connections = list("0", "0", "0", "0")
+	var/neighbors_list = 0
 	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
 	var/obj/effect/acid_hole/acided_hole //the acid hole inside the wall
 
+	var/special_icon = 0
+	var/list/blend_turfs = list(/turf/closed/wall)
+	var/list/blend_objects = list(/obj/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
+	var/list/noblend_objects = list(/obj/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
 
 
 /turf/closed/wall/New()
 	..()
 	//smooth wall stuff
-	relativewall()
-	relativewall_neighbours()
+	if(!special_icon)
+		icon_state = "blank"
 
 	for(var/obj/item/explosive/mine/M in src)
 		if(M)
 			visible_message("<span class='warning'>\The [M] is sealed inside the wall as it is built</span>")
 			cdel(M)
+	spawn(10)
+		update_connections(1)
+		update_icon()
+
 
 
 /turf/closed/wall/ChangeTurf(newtype)
@@ -60,10 +69,6 @@
 		var/turf/T
 		for(var/i in cardinal)
 			T = get_step(src, i)
-
-			//update junction type of nearby walls
-			if(istype(T, /turf/closed/wall))
-				T.relativewall()
 
 			//nearby glowshrooms updated
 			for(var/obj/effect/glowshroom/shroom in T)
@@ -135,71 +140,6 @@
 			user << "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>"
 		if(7)
 			user << "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>"
-
-#define BULLETHOLE_STATES 10 //How many variations of bullethole patterns there are
-#define BULLETHOLE_MAX 8 * 3 //Maximum possible bullet holes.
-//Formulas. These don't need to be defines, but helpful green. Should likely reuse these for a base 8 icon system.
-#define cur_increment(v) round((v-1)/8)+1
-#define base_dir(v,i) v-(i-1)*8
-#define cur_dir(v) round(v+round(v)/3)
-
-/turf/closed/wall/update_icon()
-	if(!damage_overlays[1]) //list hasn't been populated
-		generate_overlays()
-
-	if(!damage) //If the thing was healed for damage; otherwise update_icon() won't run at all, unless it was strictly damaged.
-		overlays.Cut()
-		damage_overlay = initial(damage_overlay)
-		current_bulletholes = initial(current_bulletholes)
-		bullethole_increment = initial(current_bulletholes)
-		bullethole_state = initial(current_bulletholes)
-		cdel(bullethole_overlay)
-		bullethole_overlay = null
-		return
-
-	var/overlay = round(damage / damage_cap * damage_overlays.len) + 1
-	if(overlay > damage_overlays.len) overlay = damage_overlays.len
-
-	if(!damage_overlay || overlay != damage_overlay)
-		overlays -= damage_overlays[damage_overlay]
-		damage_overlay = overlay
-		overlays += damage_overlays[damage_overlay]
-
-		if(current_bulletholes > BULLETHOLE_MAX) //Could probably get away with a unique layer, but let's keep it standardized.
-			overlays -= bullethole_overlay //We need this to be the top layer, no matter what, but only if the layer is at max bulletholes.
-			overlays += bullethole_overlay
-
-	if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
-		overlays -= bullethole_overlay
-		if(!bullethole_overlay)
-			bullethole_state = rand(1, BULLETHOLE_STATES)
-			bullethole_overlay = rnew(/image/reusable, list('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]"))
-			//for(var/mob/M in view(7)) M << bullethole_overlay
-		if(cur_increment(current_bulletholes) > bullethole_increment) bullethole_overlay.icon_state = "bhole_[bullethole_state]_[++bullethole_increment]"
-
-		var/base_direction = base_dir(current_bulletholes,bullethole_increment)
-		var/current_direction = cur_dir(base_direction)
-		dir = current_direction
-		/*Hack. Image overlays behave as the parent object, so that means they are also attached to it and follow its directional.
-		Luckily, it doesn't matter what direction the walls are set to, they link together via icon_state it seems.
-		But I haven't thoroughly tested it.*/
-		overlays += bullethole_overlay
-		//world << "<span class='debuginfo'>Increment: <b>[bullethole_increment]</b>, Direction: <b>[current_direction]</b></span>"
-
-#undef BULLETHOLE_STATES
-#undef BULLETHOLE_MAX
-#undef cur_increment
-#undef base_dir
-#undef cur_dir
-
-/turf/closed/wall/proc/generate_overlays()
-	var/alpha_inc = 256 / damage_overlays.len
-
-	for(var/i = 1; i <= damage_overlays.len; i++)
-		var/image/img = image(icon = 'icons/turf/walls.dmi', icon_state = "overlay_damage")
-		img.blend_mode = BLEND_MULTIPLY
-		img.alpha = (i * alpha_inc) - 1
-		damage_overlays[i] = img
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam)

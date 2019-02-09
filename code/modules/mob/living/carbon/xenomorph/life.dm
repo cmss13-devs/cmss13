@@ -146,7 +146,7 @@
 	if(health <= 0) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
 		if(istype(T))
-			if(need_weeds && !locate(/obj/effect/alien/weeds) in T) //In crit, damage is maximal if you're caught off weeds
+			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 				adjustBruteLoss(2.5 - warding_aura*0.5) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 			else
 				adjustBruteLoss(-warding_aura*0.5) //Warding pheromones provides 0.25 HP per second per step, up to 2.5 HP per tick.
@@ -216,6 +216,9 @@
 	if(stomach_contents.len)
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
+				if(world.time == (devour_timer - 30))
+					usr << "<span class='warning'>You're about to regurgitate [M]...</span>"
+					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || H.stat == DEAD)
 					regurgitate(H, 0)
@@ -376,7 +379,7 @@ updatehealth()
 		is_runner_hiding = 1
 
 	if(!caste.is_robotic && !hardcore) //Robot no heal
-		if(caste.innate_healing || !need_weeds || (locate(/obj/effect/alien/weeds) in T))
+		if(caste.innate_healing || check_weeds_for_healing())
 			plasma_stored += plasma_gain
 			if(recovery_aura)
 				plasma_stored += round(plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
@@ -413,7 +416,7 @@ updatehealth()
 
 	//START HARDCORE //This needs to be removed.
 	else if(!caste.is_robotic && hardcore)//Robot no heal
-		if(!need_weeds || locate(/obj/effect/alien/weeds) in T)
+		if(check_weeds_for_healing())
 			if(health > 0)
 				plasma_stored += plasma_gain
 				if(recovery_aura)
@@ -501,3 +504,15 @@ updatehealth()
 	if(knocked_down)
 		knocked_down = max(knocked_down-2,0)
 	return knocked_down
+
+//Returns TRUE if xeno is on weeds
+//Returns TRUE if xeno is off weeds AND doesn't need weeds for healing AND is not on Almayer UNLESS Queen is also on Almayer (aka - no solo Lurker Almayer hero)
+/mob/living/carbon/Xenomorph/proc/check_weeds_for_healing()
+	var/turf/T = loc
+	if(locate(/obj/effect/alien/weeds) in T)
+		return TRUE //weeds, yes!
+	if(need_weeds)
+		return FALSE //needs weeds, doesn't have any
+	if(hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z != MAIN_SHIP_Z_LEVEL && loc.z == MAIN_SHIP_Z_LEVEL)
+		return FALSE //We are on the ship, but the Queen isn't
+	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!

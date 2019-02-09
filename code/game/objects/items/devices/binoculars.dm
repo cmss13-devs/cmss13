@@ -136,7 +136,7 @@
 	if(!do_after(user, acquisition_time, TRUE, 5, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
 		return
 	if(mode)
-		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, laz_name)
+		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, laz_name, user)
 		coord = LT
 		user << "<span class='notice'>SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</span>"
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
@@ -148,7 +148,7 @@
 				break
 	else
 		user << "<span class='notice'>TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE.</span>"
-		var/obj/effect/overlay/temp/laser_target/LT = new (TU, laz_name)
+		var/obj/effect/overlay/temp/laser_target/LT = new (TU, laz_name, user)
 		laser = LT
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)

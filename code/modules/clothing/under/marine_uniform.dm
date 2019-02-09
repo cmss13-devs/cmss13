@@ -11,54 +11,42 @@
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 0, bio = 5, rad = 5)
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine)
 	rollable_sleeves = TRUE
+	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
 
-/obj/item/clothing/under/marine/New(loc,expected_type 		= /obj/item/clothing/under/marine,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper USCM snow uniform"),
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature),
-	override_icon_state[] 	= null
-	)
-	select_gamemode_skin(expected_type,override_icon_state,new_name,new_protection)
-	..()
+/obj/item/clothing/under/marine/New(loc,
+	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)
+	if(!(flags_atom & UNIQUE_ITEM_TYPE))
+		name = "[specialty]"
+		if(map_tag == MAP_ICE_COLONY) name += " snow uniform"
+		else name += " uniform"
+	select_gamemode_skin(type, override_icon_state, new_protection)
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	user << "<span class='warning'>The sensors in your uniform can't be modified.</span>"
 	return
 
 /obj/item/clothing/under/marine/medic
-	name = "\improper USCM medic fatigues"
+	name = "\improper USCM medic uniform"
 	desc = "A standard-issue Marine Medic fatigues It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "marine_medic"
-
-/obj/item/clothing/under/marine/medic/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper USCM medic snow uniform"),
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	..(loc,expected_type, new_name, new_protection)
+	specialty = "USCM medic"
 
 /obj/item/clothing/under/marine/engineer
-	name = "\improper USCM engineer fatigues"
+	name = "\improper USCM engineer uniform"
 	desc = "A standard-issue Marine Engineer fatigues It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "marine_engineer"
-
-/obj/item/clothing/under/marine/engineer/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper USCM engineer snow uniform"),
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
-	..(loc,expected_type, new_name, new_protection)
+	specialty = "USCM engineer"
 
 /obj/item/clothing/under/marine/sniper
 	name = "\improper USCM sniper uniform"
 	rollable_sleeves = FALSE
-
-/obj/item/clothing/under/marine/sniper/New(loc,expected_type 		= type,
-	new_name[] 			= list(MAP_ICE_COLONY = "\improper USCM sniper snow uniform"),
-	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature),
-	override_icon_state[]		= list(MAP_ICE_COLONY = "s_marine_sniper")
-	)
-	..(loc,expected_type, override_icon_state, new_name, new_protection)
+	specialty = "USCM sniper"
 
 /obj/item/clothing/under/marine/tanker
 	name = "\improper USCM tanker uniform"
 	icon_state = "marine_tanker"
 	rollable_sleeves = FALSE
+	specialty = "USCM tanker"
 
 /*
 /obj/item/clothing/under/marine/tanker/New(loc,expected_type 		= type,
@@ -76,6 +64,7 @@
 	icon_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
 	rollable_sleeves = FALSE
+	specialty = "military police"
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
@@ -84,6 +73,7 @@
 	item_state = "officertanclothes"
 	suit_restricted = null //so most officers can wear whatever suit they want
 	rollable_sleeves = FALSE
+	specialty = "marine officer"
 
 /obj/item/clothing/under/marine/officer/warrant
 	name = "\improper chief MP uniform"
@@ -91,20 +81,19 @@
 	icon_state = "WO_jumpsuit"
 	item_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	specialty = "chief MP"
 
 
 /obj/item/clothing/under/marine/officer/technical
 	name = "technical officer uniform"
 	icon_state = "johnny"
+	specialty = "technical officer"
 
 /obj/item/clothing/under/marine/officer/logistics
 	name = "marine officer uniform"
 	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "BO_jumpsuit"
-
-	New()
-		..()
-		select_gamemode_skin(/obj/item/clothing/under/marine/officer/logistics)
+	specialty = "marine officer"
 
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
@@ -114,71 +103,69 @@
 	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot)
 
 /obj/item/clothing/under/marine/officer/pilot/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/pilot)
-	..()
+	select_gamemode_skin(type)
+	return //This way we keep it as a bodysuit across all maps.
 
 /obj/item/clothing/under/marine/officer/tanker
 	name = "tank crewman officer uniform"
 	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "marine_tanker"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
+	specialty = "tank crewman officer"
 
 /obj/item/clothing/under/marine/officer/bridge
 	name = "staff officer uniform"
 	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "BO_jumpsuit"
-
-/obj/item/clothing/under/marine/officer/bridge/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/bridge)
-	..()
-
+	specialty = "staff officer"
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
 	desc = "A uniform typically worn by a first-lieutenant Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "XO_jumpsuit"
-
-/obj/item/clothing/under/marine/officer/exec/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/exec)
-	..()
+	specialty = "executive officer"
 
 /obj/item/clothing/under/marine/officer/command
 	name = "commanding officer uniform"
 	desc = "The well-ironed uniform of a USCM commanding officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "CO_jumpsuit"
-
-/obj/item/clothing/under/marine/officer/command/New()
-	select_gamemode_skin(/obj/item/clothing/under/marine/officer/command)
-	..()
+	specialty = "commanding officer"
 
 /obj/item/clothing/under/marine/officer/admiral
 	name = "admiral uniform"
 	desc = "A uniform worn by a fleet admiral. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
 	item_state = "admiral_jumpsuit"
+	specialty = "admiral"
 
 /obj/item/clothing/under/marine/officer/ce
 	name = "chief engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	armor = list(melee = 5, bullet = 5, laser = 25, energy = 5, bomb = 0, bio = 5, rad = 25)
 	icon_state = "EC_jumpsuit"
+	specialty = "chief engineer"
 
 /obj/item/clothing/under/marine/officer/engi
 	name = "engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	armor = list(melee = 5, bullet = 5, laser = 15, energy = 5, bomb = 0, bio = 5, rad = 10)
 	icon_state = "E_jumpsuit"
+	specialty = "engineer"
 
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"
 	desc = "A simple set of civilian clothes worn by researchers. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 10, bomb = 0, bio = 10, rad = 5)
 	icon_state = "research_jumpsuit"
+	specialty = "researcher"
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
 
 /obj/item/clothing/under/marine/veteran
 	rollable_sleeves = FALSE
+
+/obj/item/clothing/under/marine/veteran/New()
+	return //Keep them as fatigues. They don't need snow icons either.
 
 /obj/item/clothing/under/marine/veteran/PMC
 	name = "\improper PMC fatigues"
@@ -330,3 +317,8 @@
 
 /obj/item/clothing/under/rank/synthetic/old
 	icon_state = "rdalt_s"
+
+/obj/item/clothing/under/rank/synthetic/joe
+	name = "\improper Working Joe Uniform"
+	desc = "A cheap uniform made for Synthetic labor."
+	icon_state = "working_joe"

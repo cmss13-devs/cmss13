@@ -231,7 +231,6 @@ var/global/datum/controller/gameticker/ticker
 					captainless=0
 				if(player.mind.assigned_role != "MODE")
 					RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.mind.assigned_role])
-					UpdateFactionList(player)
 					EquipCustomItems(player)
 		if(captainless)
 			for(var/mob/M in player_list)
@@ -310,22 +309,22 @@ var/global/datum/controller/gameticker/ticker
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(playerTurf.z != 2)
-						Player << "<font color='blue'><b>You managed to survive, but were marooned on [station_name()] as [Player.real_name]...</b></font>"
+						Player << "<font color='blue'><b>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</b></font>"
 					else
-						Player << "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></font>"
+						Player << "<font color='green'><b>You managed to survive the events on [station_name] as [Player.real_name].</b></font>"
 				else if(playerTurf.z == 2)
-					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>"
 				else if(issilicon(Player))
-					Player << "<font color='green'><b>You remain operational after the events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>"
 				else
-					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name()] as [Player.real_name].</b></font>"
+					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>"
 			else
 				if(istype(Player,/mob/dead/observer))
 					var/mob/dead/observer/O = Player
 					if(!O.started_as_observer)
-						Player << "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>"
+						Player << "<font color='red'><b>You did not survive the events on [station_name]...</b></font>"
 				else
-					Player << "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>"
+					Player << "<font color='red'><b>You did not survive the events on [station_name]...</b></font>"
 	world << "<br>" */
 
 	for (var/mob/living/silicon/ai/aiPlayer in mob_list)

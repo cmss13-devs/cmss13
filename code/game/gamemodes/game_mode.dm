@@ -32,6 +32,7 @@
 	var/force_end_at = 0
 	var/xeno_evo_speed = 0 // if not 0 - gives xeno an evo boost/nerf
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
+	var/list/datum/mind/traitors = list()
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	world << "<B>Notice</B>: [src] did not define announce()"
@@ -166,12 +167,12 @@
 
 	var/roletext
 	switch(role)
-		if(BE_RESPONDER)	roletext = "Responder"
-		if(BE_ALIEN)		roletext = "Alien"
-		if(BE_QUEEN)		roletext = "Queen"
-		if(BE_SURVIVOR)		roletext = "Survivor"
-		if(BE_PREDATOR)		roletext = "Predator"
-		if(BE_WO_COM)		roletext = "WO Commander"
+		if(BE_RESPONDER)			roletext = "Responder"
+		if(BE_ALIEN)				roletext = "Alien"
+		if(BE_QUEEN)				roletext = "Queen"
+		if(BE_SURVIVOR)				roletext = "Survivor"
+		if(BE_PREDATOR)				roletext = "Predator"
+		if(BE_SYNTH_SURVIVOR)		roletext = "Synth Survivor"
 
 	//Assemble a list of active players without jobbans.
 	for(var/mob/new_player/player in player_list)

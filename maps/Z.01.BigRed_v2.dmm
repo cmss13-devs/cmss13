@@ -663,7 +663,7 @@
 	icon_state = "dark";
 	dir = 2
 	},
-/area/lv624/lazarus/console)
+/area/bigredv2/landing/console)
 "abz" = (
 /obj/structure/table,
 /obj/effect/spawner/random/powercell,
@@ -40551,7 +40551,7 @@
 	},
 /obj/machinery/computer/shuttle_control/dropship2,
 /turf/open/floor,
-/area/bigredv2/outside/cargo)
+/area/bigredv2/landing/console2)
 "tgL" = (
 /turf/open/mars_cave{
 	tag = "icon-mars_cave_6";

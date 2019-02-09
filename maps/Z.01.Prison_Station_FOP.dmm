@@ -46435,7 +46435,7 @@
 	icon_state = "darkredfull2";
 	dir = 10
 	},
-/area/prison/console)
+/area/prison/landing/console)
 "bEP" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/prison{
@@ -73157,7 +73157,7 @@
 	icon_state = "floor_marked";
 	dir = 10
 	},
-/area/prison/hanger/research)
+/area/prison/landing/console2)
 
 (1,1,1) = {"
 aaa

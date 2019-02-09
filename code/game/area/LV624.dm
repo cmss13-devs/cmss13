@@ -322,9 +322,15 @@
 	name = "\improper Secret Relay Room"
 	icon_state = "tcomsatcham"
 
-/area/lv624/lazarus/console
-	name = "\improper Shuttle Console"
+/area/lv624/landing/console
+	name = "\improper LZ1 'Nexus'"
 	icon_state = "tcomsatcham"
+	requires_power = 0
+
+/area/lv624/landing/console2
+	name = "\improper LZ2 'Robotics'"
+	icon_state = "tcomsatcham"
+	requires_power = 0
 
 /area/lv624/lazarus/crashed_ship
 	name = "\improper Crashed Ship"

@@ -797,3 +797,13 @@
 /area/shuttle/elevator4/transit
 	name = "\improper Elevator IV"
 	icon_state = "shuttle2"
+
+/area/ice_colony/landing/console
+	name = "\improper LZ1 'Lazarus'"
+	icon_state = "tcomsatcham"
+	requires_power = 0
+
+/area/ice_colony/landing/console2
+	name = "\improper LZ2 'Underground'"
+	icon_state = "tcomsatcham"
+	requires_power = 0

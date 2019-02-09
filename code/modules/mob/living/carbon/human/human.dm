@@ -71,7 +71,7 @@
 		stat("Distribution Pressure", internal.distribute_pressure)
 
 	if(ticker.mode.active_lz)
-		stat("Primary LZ: ", ticker.mode.active_lz.loc.loc)
+		stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
 
 	if(assigned_squad)
 		if(assigned_squad.primary_objective)

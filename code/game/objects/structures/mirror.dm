@@ -39,7 +39,8 @@
 				for(var/i in facial_hair_styles_list)
 					var/datum/sprite_accessory/facial_hair/tmp_facial = facial_hair_styles_list[i]
 					if(H.species.name in tmp_facial.species_allowed)
-						species_facial_hair += i
+						if(tmp_facial.selectable)
+							species_facial_hair += i
 			else
 				species_facial_hair = facial_hair_styles_list
 
@@ -54,7 +55,8 @@
 			for(var/i in hair_styles_list)
 				var/datum/sprite_accessory/hair/tmp_hair = hair_styles_list[i]
 				if(H.species.name in tmp_hair.species_allowed)
-					species_hair += i
+					if(tmp_hair.selectable)
+						species_hair += i
 		else
 			species_hair = hair_styles_list
 

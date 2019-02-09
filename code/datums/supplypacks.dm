@@ -1419,16 +1419,11 @@ AMMO
 	
 
 /datum/supply_packs/ammo_ap_m41a
-	name = "armor piercing M41A magazines crate (x6)"
+	name = "armor piercing M41A magazines crate (x10)"
 	contains = list(
-					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/rifle/ap,
-					/obj/item/ammo_magazine/rifle/ap
+					/obj/item/magazine_box/rifle_ap,
 					)
-	cost = RO_PRICE_NORMAL
+	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "M41A armor piercing ammo crate"
 	group = "Ammo"

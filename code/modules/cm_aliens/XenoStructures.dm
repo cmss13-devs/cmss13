@@ -973,7 +973,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_FOG_ACTIVATED)
 		if(isXenoQueen(M))
 			M << "<span class='xenowarning'>There is no reason to leave the safety of the caves yet.</span>"
-		return FALSE
+			return FALSE
 
 	if(M.anchored)
 		M << "<span class='xenowarning'>You can't climb through a tunnel while immobile.</span>"

@@ -123,8 +123,8 @@ proc/listclearnulls(list/list)
 		total -=L [item]
 		if (total <= 0)
 			return item
-
 	return null
+
 //Picks an element based upon its weight
 proc/pick_element_by_weight_byindex(list/L)
   var/totalweight = 0

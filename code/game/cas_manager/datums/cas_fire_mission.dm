@@ -74,10 +74,10 @@
 				return FIRE_MISSION_BAD_OFFSET
 			if(cd > 0)
 				return FIRE_MISSION_BAD_COOLDOWN
-			if(record.weapon.ammo_equipped.fire_mission_delay == 0)
-				return FIRE_MISSION_WEAPON_UNUSABLE
 			if(!record.weapon.ammo_equipped)
 				return FIRE_MISSION_WEAPON_OUT_OF_AMMO
+			if(record.weapon.ammo_equipped.fire_mission_delay == 0)
+				return FIRE_MISSION_WEAPON_UNUSABLE
 			ammo_left -= record.weapon.ammo_equipped.ammo_used_per_firing
 			if(ammo_left < 0)
 				return FIRE_MISSION_WEAPON_OUT_OF_AMMO

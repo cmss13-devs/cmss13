@@ -159,8 +159,8 @@
 	)
 
 	upp_products = list(
-		/obj/item/ammo_magazine/rifle/type71 = 40,
-		/obj/item/ammo_magazine/smg/skorpion = 40,
+		/obj/item/ammo_magazine/rifle/type71 = 80,
+		/obj/item/ammo_magazine/smg/skorpion = 80,
 		/obj/item/ammo_magazine/pistol/c99 = 40,
 		/obj/item/explosive/grenade/empgrenade = 40,
 		/obj/item/explosive/grenade/smokebomb = 40,

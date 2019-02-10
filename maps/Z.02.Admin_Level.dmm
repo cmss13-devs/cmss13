@@ -6039,6 +6039,9 @@
 	pixel_x = 0;
 	pixel_y = -10
 	},
+/obj/structure/mirror{
+	pixel_y = -28
+	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
 	icon_state = "sterile_white";
@@ -6423,6 +6426,9 @@
 	req_access = list(201)
 	},
 /obj/machinery/light,
+/obj/item/storage/pouch/magazine/upp,
+/obj/item/storage/pouch/magazine/upp,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/carpet{
 	icon_state = "carpetside"
 	},
@@ -9681,6 +9687,23 @@
 /obj/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/medbay)
+"wB" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (WEST)";
+	icon_state = "map-supply";
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
 "zz" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/firealarm{
@@ -29305,7 +29328,7 @@ pi
 py
 pO
 pY
-pY
+wB
 pY
 pY
 pO

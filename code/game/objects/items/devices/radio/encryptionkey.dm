@@ -84,6 +84,10 @@
 /obj/item/device/encryptionkey/mcom/ai //AI only.
 	channels = list("Command" = 1, "MP" = 1, "Alpha" = 1, "Bravo" = 1, "Charlie" = 1, "Delta" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1 )
 
+/obj/item/device/encryptionkey/jtac
+	name = "\improper JTAC radio encryption key"
+	icon_state = sec_key
+	channels = list("JTAC" = 1)
 
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader encryption key"

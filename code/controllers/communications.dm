@@ -116,6 +116,7 @@ var/const/MED_FREQ 		= 1355
 var/const/ENG_FREQ 		= 1357
 var/const/SEC_FREQ 		= 1359
 var/const/SUP_FREQ 		= 1354
+var/const/JTAC_FREQ 	= 1358
 
 var/const/DS1_FREQ		= 1441
 var/const/DS2_FREQ		= 1443
@@ -148,6 +149,7 @@ var/list/radiochannels = list(
 	"Engi"			= ENG_FREQ,
 	"MP"			= SEC_FREQ,
 	"Req"			= SUP_FREQ,
+	"JTAC"		= JTAC_FREQ,
 
 	"Alpha"			= ALPHA_FREQ,
 	"Bravo"			= BRAVO_FREQ,

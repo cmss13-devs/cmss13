@@ -185,7 +185,6 @@
 
 	//Get a list of all the people who want to be the antagonist for this round
 	for(var/mob/new_player/player in players)
-		world << "player.client.prefs.be_special - [player.client.prefs.be_special] vs [role]"
 		if(player.client.prefs.be_special & role)
 			log_debug("[player.key] had [roletext] enabled, so we are drafting them.")
 			candidates += player.mind

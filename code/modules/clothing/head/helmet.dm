@@ -205,7 +205,7 @@
 	
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type,null,new_protection)
-		..()
+	..()
 	helmet_overlays = list("damage","band","item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 2

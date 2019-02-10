@@ -4,7 +4,7 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/decal/cleanable/blood
 	name = "blood"
-	desc = "It's thick and gooey. Perhaps it's the chef's cooking?"
+	desc = "It's thick and gooey. This probably isn't a safe place to be."
 	gender = PLURAL
 	density = 0
 	anchored = 1
@@ -15,7 +15,7 @@ var/global/list/image/splatter_cache=list()
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses = list()
 	blood_DNA = list()
-	var/basecolor="#ff3b00" // Color when wet.
+	var/basecolor="#830303" // Color when wet.
 	var/amount = 5
 
 /obj/effect/decal/cleanable/blood/Dispose()
@@ -141,7 +141,7 @@ var/global/list/image/splatter_cache=list()
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "gibbl5"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
-	var/fleshcolor = "#FFC896"
+	var/fleshcolor = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
 

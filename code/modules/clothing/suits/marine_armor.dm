@@ -111,7 +111,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
-		..()
+	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
 	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.

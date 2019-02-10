@@ -36,5 +36,6 @@ changes:
   - tweak: "The engineering and construction pamphlets have been merged into one."
   - tweak: "The constructor kit no longer has plasteel that the constructors can't use. Instead, it has ten more metal sheets."
   - tweak: "You can no longer use more than one pamphlet. Don't hog them all."
-  - rscadd: "Added a new PFC kit: the JTAC kit. It contains two packs of signal flares and a shiny pair of tactical binoculars."
+  - rscadd: "Added a new PFC kit: the JTAC kit. It contains two packs of signal flares and a shiny pair of tactical binoculars. These ONLY spawn in Requisitions and cannot be bought at vendors."
+  - rscadd: "Alongside the JTAC kits, a new frequency has been added, the JTAC frequency. Command radio headsets and SL headsets spawn with this by default. Squad Leaders also get the JTAC frequency, and the JTAC kits get its encryption key. Talk on it with the :j prefix."
   - tweak: "Squad Marines can now select M39 holsters and buy gyroscopic stabilizers from their vendor."

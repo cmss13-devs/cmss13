@@ -261,4 +261,5 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/device/binoculars/tactical(src)
+		new /obj/item/device/encryptionkey/jtac(src)
 

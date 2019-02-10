@@ -274,13 +274,13 @@
 
 /obj/item/device/radio/headset/almayer/ce
 	name = "chief engineer's headset"
-	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions"
+	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "ce_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
-	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions"
+	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "cmo_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
@@ -304,7 +304,7 @@
 
 /obj/item/device/radio/headset/almayer/ro
 	name = "supply radio headset"
-	desc = "A headset used by the RO for controlling his or her slave(s). Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions"
+	desc = "A headset used by the RO for controlling his or her slave(s). Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "ro_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
@@ -316,25 +316,25 @@
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
-	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions"
+	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "sec_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/cmpcom
 
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"
-	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions"
+	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "mcom_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"
-	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions"
+	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "wy_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine commanding officer headset"
-	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions"
+	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC"
 	icon_state = "mco_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/cmpcom/cdrcom
 

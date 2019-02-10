@@ -301,13 +301,13 @@
 	icon_broken = "secure_locked_staff"
 	icon_off = "secure_closed_staff"
 
+/obj/structure/closet/secure_closet/staff_officer/gear
 	New()
 		..()
 		new /obj/item/clothing/head/beret/cm(src)
 		new /obj/item/clothing/head/beret/cm(src)
 		new /obj/item/clothing/head/beret/cm/tan(src)
 		new /obj/item/clothing/head/beret/cm/tan(src)
-		new /obj/item/clothing/head/cmcap/ro(src)
 		new /obj/item/clothing/head/cmcap/ro(src)
 		new /obj/item/clothing/head/cmcap/ro(src)
 		new /obj/item/device/radio/headset/almayer/mcom(src)
@@ -321,14 +321,27 @@
 		new /obj/item/storage/backpack/marine(src)
 
 /obj/structure/closet/secure_closet/staff_officer/armory
+	name = "staff officer's armory locker"
 	New()
 		..()
+		new /obj/item/clothing/head/helmet/marine(src)
+		new /obj/item/clothing/head/helmet/marine(src)
 		new /obj/item/clothing/suit/storage/marine/MP/RO(src)
 		new /obj/item/clothing/suit/storage/marine/MP/RO(src)
 		new /obj/item/device/radio/headset/almayer/mcom(src)
 		new /obj/item/device/radio/headset/almayer/mcom(src)
+
+/obj/structure/closet/secure_closet/staff_officer/armory/m4a1
+	New()
+		..()
 		new /obj/item/storage/belt/marine(src)
 		new /obj/item/storage/belt/marine(src)
+		
+/obj/structure/closet/secure_closet/staff_officer/armory/shotgun
+	New()
+		..()
+		new /obj/item/storage/belt/shotgun(src)
+		new /obj/item/storage/belt/shotgun(src)
 
 /obj/structure/closet/secure_closet/pilot_officer
 	name = "pilot officer's locker"

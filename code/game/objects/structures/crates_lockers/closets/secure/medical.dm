@@ -19,11 +19,8 @@
 		new /obj/item/reagent_container/glass/beaker(src)
 		new /obj/item/reagent_container/glass/beaker(src)
 		new /obj/item/reagent_container/glass/bottle/inaprovaline(src)
-		new /obj/item/reagent_container/glass/bottle/inaprovaline(src)
 		new /obj/item/reagent_container/glass/bottle/antitoxin(src)
-		new /obj/item/reagent_container/glass/bottle/antitoxin(src)
-		new /obj/item/reagent_container/glass/bottle/spaceacillin(src)
-		new /obj/item/reagent_container/glass/bottle/kelotane(src)
+		new /obj/item/storage/box/pillbottles(src)
 		new /obj/item/storage/box/pillbottles(src)
 		return
 

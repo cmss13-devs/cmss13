@@ -10193,7 +10193,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/stern_hallway)
 "ato" = (
-/obj/structure/closet/secure_closet/staff_officer/armory,
+/obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -23719,7 +23719,7 @@
 	},
 /area/almayer/hallways/stern_hallway)
 "aRq" = (
-/obj/structure/closet/secure_closet/staff_officer,
+/obj/structure/closet/secure_closet/staff_officer/gear,
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "aRr" = (
@@ -40474,6 +40474,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/roller/medevac,
+/obj/item/roller/medevac,
+/obj/item/roller/medevac,
+/obj/item/roller/medevac,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
 	icon_state = "sterile_green_side";
@@ -47342,7 +47346,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/closet/secure_closet/staff_officer,
+/obj/structure/closet/secure_closet/staff_officer/gear,
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "bHH" = (
@@ -65434,16 +65438,13 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/medical/morgue)
-"fkQ" = (
-/obj/machinery/camera/autoname/almayer{
-	dir = 2;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = ""
+"fvB" = (
+/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
 	},
-/turf/open/space,
-/area/space)
+/area/almayer/command/cic)
 "fzq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -65530,16 +65531,6 @@
 	dir = 2
 	},
 /area/almayer/shipboard/brig)
-"jgJ" = (
-/obj/machinery/camera/autoname/almayer{
-	dir = 1;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = "icon-camera (NORTH)"
-	},
-/turf/open/space,
-/area/space)
 "jGN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -65598,16 +65589,6 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/hangar)
-"lMJ" = (
-/obj/machinery/camera/autoname/almayer{
-	dir = 4;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = "icon-camera (NORTH)"
-	},
-/turf/open/space,
-/area/space)
 "mCr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -65843,16 +65824,6 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig)
-"vJU" = (
-/obj/machinery/camera/autoname/almayer{
-	dir = 8;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = "icon-camera (EAST)"
-	},
-/turf/open/space,
-/area/space)
 "wfC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment{
@@ -75333,7 +75304,7 @@ aaa
 aaa
 aaa
 aaa
-lMJ
+aaa
 aaa
 aaa
 aaa
@@ -75535,9 +75506,9 @@ aaa
 aaa
 aaa
 aaa
-jgJ
 aaa
-fkQ
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -75739,7 +75710,7 @@ aaa
 aaa
 aaa
 aaa
-vJU
+aaa
 aaa
 aaa
 aaa
@@ -83658,9 +83629,9 @@ aIl
 alX
 akh
 bay
-ato
-ato
-ato
+fvB
+fvB
+fvB
 asS
 akh
 aKn
@@ -100903,7 +100874,7 @@ aar
 amP
 avj
 alH
-amo
+ajo
 atd
 aoM
 apR
@@ -100915,7 +100886,7 @@ awR
 apR
 aoM
 aMj
-aqQ
+ajo
 alH
 ajq
 akU
@@ -101106,7 +101077,7 @@ aiv
 amQ
 avj
 alH
-amo
+ajo
 ate
 aoM
 apS
@@ -101118,7 +101089,7 @@ awS
 apS
 aoM
 aMk
-aqQ
+ajo
 alH
 ajq
 akU

@@ -967,29 +967,25 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!istype(M) || M.stat || M.lying)
-		return
+		return FALSE
 
 	//Prevents using tunnels by the queen to bypass the fog.
 	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_FOG_ACTIVATED)
-		var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-		if(!hive.living_xeno_queen)
-			M << "<span class='xenowarning'>There is no Queen. You must choose a queen first.</span>"
-			r_FAL
-		else if(isXenoQueen(M))
+		if(isXenoQueen(M))
 			M << "<span class='xenowarning'>There is no reason to leave the safety of the caves yet.</span>"
-			r_FAL
+		return FALSE
 
 	if(M.anchored)
 		M << "<span class='xenowarning'>You can't climb through a tunnel while immobile.</span>"
-		r_FAL
+		return FALSE
 
 	if(!global_tunnel_list.len)
 		M << "<span class='warning'>\The [src] doesn't seem to lead anywhere.</span>"
-		return
+		return FALSE
 
 	if(contents.len > 2)
 		M << "<span class='warning'>The tunnel is too crowded, wait for others to exit!</span>"
-		return
+		return FALSE
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 

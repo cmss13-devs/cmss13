@@ -356,10 +356,12 @@ var/list/mechtoys = list(
 					add_random_crates()
 					crate_iteration += 1
 			sleep(processing_interval)
+
 //This adds function adds the amount of crates that calculate_crate_amount returns
 /datum/controller/supply/proc/add_random_crates()
 	for(var/I=0, I<calculate_crate_amount(), I++)
 		add_random_crate()
+
 //Here we calculate the amount of crates to spawn. 
 //Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate. 
 //They always get the mincrates amount.
@@ -370,6 +372,7 @@ var/list/mechtoys = list(
 	if(crate_iteration<=5)
 		crate_amount = 5
 	return crate_amount
+
 //Here we pick what crate type to send to the marines.
 /datum/controller/supply/proc/add_random_crate()
 	var/randpick = rand(1,100)
@@ -384,6 +387,7 @@ var/list/mechtoys = list(
 			pickcrate("Utility")
 		if(91 to 100)
 			pickcrate("Everything")
+
 //Here we pick the exact crate from the crate types to send to the marines.
 //This is a weighted pick based upon their cost.
 //Their cost will go up if the crate is picked
@@ -394,6 +398,8 @@ var/list/mechtoys = list(
 		if((T == "Everything" || N.group == T)  && !N.buyable)
 			pickfrom += N
 	var/datum/supply_packs/C = supply_controller.pick_weighted_crate(pickfrom)
+	if(C == null)
+		return
 	C.cost = round(C.cost * ASRS_COST_MULTIPLIER) //We still do this to raise the weight
 	//We have to create a supply order to make the system spawn it. Here we transform a crate into an order.
 	var/datum/supply_order/O = new /datum/supply_order()
@@ -402,6 +408,7 @@ var/list/mechtoys = list(
 	O.orderedby = "ASRS"
 	//We add the order to the shopping list
 	supply_controller.shoppinglist += O
+
 //Here we weigh the crate based upon it's cost
 /datum/controller/supply/proc/pick_weighted_crate(list/cratelist)
 	var/weighted_crate_list[]
@@ -412,6 +419,7 @@ var/list/mechtoys = list(
 			crate_to_add[crate] = weight
 			weighted_crate_list += crate_to_add	
 	return pickweight(weighted_crate_list)
+
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.
 /datum/controller/supply/proc/forbidden_atoms_check(atom/A)
 	if(istype(A,/mob/living))

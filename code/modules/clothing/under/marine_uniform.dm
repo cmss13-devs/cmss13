@@ -19,7 +19,8 @@
 		name = "[specialty]"
 		if(map_tag == MAP_ICE_COLONY) name += " snow uniform"
 		else name += " uniform"
-	select_gamemode_skin(type, override_icon_state, new_protection)
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type, override_icon_state, new_protection)
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	user << "<span class='warning'>The sensors in your uniform can't be modified.</span>"
@@ -47,6 +48,7 @@
 	icon_state = "marine_tanker"
 	rollable_sleeves = FALSE
 	specialty = "USCM tanker"
+	flags_atom = NO_SNOW_TYPE
 
 /*
 /obj/item/clothing/under/marine/tanker/New(loc,expected_type 		= type,
@@ -65,6 +67,7 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
 	rollable_sleeves = FALSE
 	specialty = "military police"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
@@ -82,18 +85,20 @@
 	item_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
 	specialty = "chief MP"
-
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/technical
 	name = "technical officer uniform"
 	icon_state = "johnny"
 	specialty = "technical officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/logistics
 	name = "marine officer uniform"
 	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "BO_jumpsuit"
 	specialty = "marine officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
@@ -112,6 +117,7 @@
 	icon_state = "marine_tanker"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
 	specialty = "tank crewman officer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/bridge
 	name = "staff officer uniform"
@@ -136,6 +142,7 @@
 	desc = "A uniform worn by a fleet admiral. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
 	item_state = "admiral_jumpsuit"
 	specialty = "admiral"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/ce
 	name = "chief engineer uniform"
@@ -157,15 +164,14 @@
 	armor = list(melee = 5, bullet = 5, laser = 5, energy = 10, bomb = 0, bio = 10, rad = 5)
 	icon_state = "research_jumpsuit"
 	specialty = "researcher"
+	flags_atom = NO_SNOW_TYPE
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
 
 /obj/item/clothing/under/marine/veteran
 	rollable_sleeves = FALSE
-
-/obj/item/clothing/under/marine/veteran/New()
-	return //Keep them as fatigues. They don't need snow icons either.
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE //Let's make them keep their original name.
 
 /obj/item/clothing/under/marine/veteran/PMC
 	name = "\improper PMC fatigues"

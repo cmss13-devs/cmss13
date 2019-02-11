@@ -345,7 +345,6 @@ var/list/mechtoys = list(
 		var/datum/supply_packs/P = new typepath()
 		if(P.cost > 1 && P.buyable == 0)
 			random_supply_packs[P.name] = P
-
 	spawn(0)
 		set background = 1
 		while(1)

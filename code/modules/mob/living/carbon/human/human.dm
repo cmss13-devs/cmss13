@@ -70,7 +70,7 @@
 		stat("Tank Pressure", internal.pressure)
 		stat("Distribution Pressure", internal.distribute_pressure)
 
-	if(ticker.mode.active_lz)
+	if(ticker && ticker.mode && ticker.mode.active_lz)
 		stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
 
 	if(assigned_squad)

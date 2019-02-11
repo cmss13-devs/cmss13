@@ -10,16 +10,16 @@
 	var/current_faction = ""
 
 /obj/machinery/vending/antag/attack_hand(var/mob/living/carbon/human/H)
-	if(!istype(H) ||!H.mind || !H.mind.faction) //TODO: convert mind.faction into ID faction when ID has factions...
+	if(!istype(H) ||!H.wear_id || !H.wear_id.faction) //TODO: convert mind.faction into ID faction when ID has factions...
 		H << "<span class='warning'>Access denied.</span>"
 		return
-	if(!(H.mind.faction=="CLF") && !(H.mind.faction=="UPP"))
+	if(!(H.wear_id.faction=="CLF") && !(H.wear_id.faction=="UPP"))
 		H << "<span class='warning'>Access denied, you imperialist pig!</span>"
 		return
 
-	if(current_faction != H.mind.faction)
+	if(current_faction != H.wear_id.faction)
 		product_records = list()
-		switch(H.mind.faction)
+		switch(H.wear_id.faction)
 			if("CLF")
 				products = clf_products
 			if("UPP")

@@ -75,18 +75,25 @@
 /client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in mob_list)
 	set category = null
 	set name = "Select Equipment"
-	if(!ishuman(M))
-		alert("Invalid mob")
-		return
 
 	var/dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
 	if (isnull(dresscode))
 		return
+
 	feedback_add_details("admin_verb","SEQ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	for (var/obj/item/I in M)
 		if (istype(I, /obj/item/implant))
 			continue
 		cdel(I)
+
+	if(!ishuman(M))
+		//If the mob is not human, we're transforming them into a human
+		//To speed up the setup process
+		M = M.change_mob_type( /mob/living/carbon/human , null, null, TRUE, "Human")
+		if(!ishuman(M))
+			usr << "Something went wrong with mob transformation..."
+			return
+
 	arm_equipment(M, dresscode)
 	M.regenerate_icons()
 	log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")

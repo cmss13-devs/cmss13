@@ -48,6 +48,8 @@
 	H.hud_set_special_role()
 	H.hud_set_squad()
 
+	data_core.manifest_inject(H) //Put people in crew manifest
+
 datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"
 	mob_min = 8

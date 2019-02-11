@@ -259,6 +259,9 @@
 	name = "\improper Sulaco Maintenance Hub"
 	icon_state = "yellow"
 
+/area/shuttle
+	ceiling = CEILING_METAL
+
 //Drop Pods
 /area/shuttle/drop1
 	ambience = list('sound/ambience/ambigen10.ogg','sound/ambience/ambispace.ogg','sound/ambience/ambisin4.ogg','sound/ambience/signal.ogg')

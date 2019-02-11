@@ -161,6 +161,7 @@
 		/obj/item/explosive/grenade/smokebomb = round(scale * 5),
 		//obj/item/explosive/grenade/phosphorus = 0,
 		/obj/item/storage/box/m94 = round(scale * 10),
+		/obj/item/storage/box/m94/signal = round(scale * 2),
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/clothing/mask/gas = round(scale * 10)
 	)

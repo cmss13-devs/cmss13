@@ -246,12 +246,6 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		adjustBruteLoss(damage)
 
-/mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)
-	if(!Proj || Proj.damage <= 0)
-		return 0
-
-	adjustBruteLoss(Proj.damage)
-	return 1
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
 	..()
@@ -292,30 +286,19 @@
 					for(var/mob/M in viewers(src, null))
 						if ((M.client && !( M.blinded )))
 							M.show_message("\blue [user] applies the [MED] on [src]")
+					return
 		else
 			user << "\blue this [src] is dead, medical items won't bring it back to life."
+			return
 	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
 			new meat_type (get_turf(src))
 			if(prob(95))
 				cdel(src)
-				return
-			gib()
-	else
-		if(O.force)
-			var/damage = O.force
-			if (O.damtype == HALLOSS)
-				damage = 0
-			adjustBruteLoss(damage)
-			for(var/mob/M in viewers(src, null))
-				if ((M.client && !( M.blinded )))
-					M.show_message("\red \b [src] has been attacked with the [O] by [user]. ")
-		else
-			usr << "\red This weapon is ineffective, it does no damage."
-			for(var/mob/M in viewers(src, null))
-				if ((M.client && !( M.blinded )))
-					M.show_message("\red [user] gently taps [src] with the [O]. ")
-
+			else
+				gib()
+			return
+	..()
 
 
 /mob/living/simple_animal/movement_delay()

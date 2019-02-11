@@ -233,7 +233,7 @@
 /obj/item/weapon/gun/rifle/m46c/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.mhigh_burst_value
-	burst_delay = config.low_fire_delay
+	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult + config.hmed_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
 	scatter = config.low_scatter_value

@@ -42,7 +42,7 @@
 	assignment = "Weyland-Yutani PMC (Standard)"
 	rank = "PMC Standard"
 	paygrade = "PMC1"
-	skills = /datum/skills/pfc
+	skills = /datum/skills/pmc
 
 /datum/equipment_preset/wy/pmc_standard/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -88,7 +88,7 @@
 	rank = "PMC Leader"
 	paygrade = "PMC4"
 	role_comm_title = "SL"
-	skills = /datum/skills/SL/pmc
+	skills = /datum/skills/pmc/SL
 
 /datum/equipment_preset/wy/pmc_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -116,7 +116,7 @@
 	rank = "PMC Gunner"
 	paygrade = "PMC3"
 	role_comm_title = "Spc"
-	skills = /datum/skills/smartgunner/pmc
+	skills = /datum/skills/pmc/smartgunner
 
 /datum/equipment_preset/wy/pmc_gunner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -144,7 +144,7 @@
 	rank = "PMC Sharpshooter"
 	paygrade = "PMC3"
 	role_comm_title = "Spc"
-	skills = /datum/skills/specialist/pmc
+	skills = /datum/skills/pmc/specialist
 
 /datum/equipment_preset/wy/pmc_sniper/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

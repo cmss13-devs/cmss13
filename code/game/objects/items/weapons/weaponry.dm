@@ -170,14 +170,14 @@
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
 	force = 4444
-	throwforce = 4444
+	throwforce = 44
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = 3
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_speed = 1
 
-	var/kill_delay = 50
+	var/kill_delay = 25
 	var/number_of_cuts = 8
 	var/list/already_dead = list()
 
@@ -240,9 +240,9 @@
 		user.flick_attack_overlay(M, "punch")
 		M.animation_attack_on(user)
 		M.flick_attack_overlay(user, "punch")
-		spawn(10)
-			user.Stun((kill_delay-10)/15)
-			M.Stun((kill_delay-10)/15)
+		spawn(5)
+			user.Stun((kill_delay-5)/15)
+			M.Stun((kill_delay-5)/15)
 
 	else //No katana
 

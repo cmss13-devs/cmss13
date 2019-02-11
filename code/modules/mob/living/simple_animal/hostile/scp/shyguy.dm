@@ -11,8 +11,8 @@
 	emote_see = list("shuffles around aimlessly", "shivers")
 	layer = BELOW_MOB_LAYER
 
-	health = 600
-	maxHealth = 600
+	health = 3000
+	maxHealth = 3000
 	var/move_to_delay = 2
 
 	var/murder_sound = list('sound/voice/scream_horror2.ogg')
@@ -153,19 +153,19 @@
 		if(will_scream)
 			if(!buckled) dir = 2
 			visible_message("<span class='danger'>[src] SCREAMS!</span>")
-			playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+			playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 			screaming = 1
 			will_scream = 0
 			for(var/mob/M in viewers(src, null))
 				shake_camera(M, 19, 2)
 			spawn(100)
 				visible_message("<span class='danger'>[src] SCREAMS!</span>")
-				playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+				playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 				for(var/mob/M in viewers(src, null))
 					shake_camera(M, 19, 2)
 			spawn(200)
 				visible_message("<span class='danger'>[src] SCREAMS!</span>")
-				playsound(get_turf(src), 'sound/voice/scream_horror1.ogg', 50, 1)
+				playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 				for(var/mob/M in viewers(src, null))
 					shake_camera(M, 19, 2)
 			spawn(300)
@@ -200,7 +200,7 @@
 		chasing_message_played = 1
 
 	if(!scare_played) //Let's minimize the spam
-		playsound(get_turf(src), pick(scare_sound), 50, 1)
+		playsound(src, pick(scare_sound), 50, 1)
 		scare_played = 1
 		for(var/mob/M in viewers(src, null))
 			shake_camera(M, 19, 1)
@@ -216,25 +216,34 @@
 	var/limit = 100
 	spawn()
 		chasing = 1
-		while(target && get_turf(src) != target_turf && limit > 0)
+		while(target && target.stat != DEAD && get_turf(src) != target_turf && limit > 0)
 			if(murdering <= 0)
 				target_turf = get_turf(target)
+
+				playsound(loc, "alien_footstep_large", 30)
 
 				for(var/obj/machinery/door/D in next_turf)
 					if(D.density)
 						D.open()
+						playsound(src, 'sound/effects/metal_creaking.ogg', 50, 1)
 						sleep(10)
 						if(D.density)
+							playsound(src, 'sound/effects/meteorimpact.ogg', 50, 1)
 							D.ex_act(EXPLOSION_THRESHOLD_HIGH)
 				for(var/obj/structure/S in next_turf)
 					if(S.density)
 						S.ex_act(EXPLOSION_THRESHOLD_MEDIUM)
+						playsound(src, 'sound/effects/meteorimpact.ogg', 50, 1)
 						sleep(5)
 						if(S && S.density)
 							S.ex_act(1000000)
 				if(istype(next_turf, /turf/closed))
+					if(istype(next_turf, /turf/closed/wall))
+						playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
+					else
+						playsound(src, 'sound/effects/thud.ogg', 50, 1)
 					next_turf.ex_act(EXPLOSION_THRESHOLD_HIGH)
-					sleep(10)
+					sleep(20)
 					if(next_turf && istype(next_turf, /turf/closed))
 						next_turf.ex_act(1000000)
 
@@ -339,6 +348,7 @@
 		visible_message("<span class='danger'>[src] grabs [T]!</span>")
 		animation_flash_color(T)
 		dir = 2
+		T.buckled = null
 		T.KnockDown(10)
 		T.anchored = 1
 		var/original_y = T.pixel_y
@@ -346,7 +356,11 @@
 		murdering = 1
 
 		for(var/mob/M in viewers(src, null))
-			shake_camera(M, 30, 1)
+			shake_camera(M, 40, 1)
+
+		if(ishuman(T))
+			T.emote("scream")
+		playsound(T.loc, pick(murder_sound), 50, 1)
 
 		sleep(20)
 
@@ -355,7 +369,6 @@
 		T.pixel_y = original_y
 		if(ishuman(T))
 			T.emote("scream")
-		playsound(T.loc, pick(murder_sound), 50, 1)
 		murdering = 0
 
 		//Warn everyone
@@ -452,26 +465,22 @@
 		else
 			entry_vent = null
 
-/mob/living/simple_animal/scp/shyguy/bullet_act(var/obj/item/projectile/Proj)
-	if(!Proj || Proj.damage <= 0)
-		return 0
-
-	visible_message("<span class='danger'>[src] is staggered by [Proj]!</span>")
-	adjustBruteLoss(Proj.damage)
-	return 1
-
 /mob/living/simple_animal/scp/shyguy/adjustBruteLoss(var/damage)
 
-	health = Clamp(health - damage, 0, maxHealth)
+	health = Clamp(health - damage, 1, maxHealth)
 
 	if(damage > 0)
 		staggered += damage
+		if(damage >= config.low_hit_damage)
+			visible_message("<span class='danger'>[src] is staggered!</span>")
 
 	var/old_damage_state = damage_state
 	damage_state = round( (1-health/maxHealth) * 3.99 )
 	icon_state = "shyguy_dam[damage_state]"
 
 	if(old_damage_state < damage_state)
+		var/damaged_sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
+		playsound(src, damaged_sound, 100, 1)
 		visible_message("<span class='danger'>Chunks of flesh and bone are torn out of [src]!</span>")
 	else if(old_damage_state > damage_state)
 		visible_message("<span class='danger'>[src] regenerates some of its missing pieces!</span>")
@@ -484,14 +493,7 @@
 /mob/living/simple_animal/scp/shyguy/Bumped(atom/movable/AM as mob, yes)
 	..()
 
-//You cannot destroy us, fool!
 /mob/living/simple_animal/scp/shyguy/ex_act(var/severity)
-	visible_message("<span class='danger'>[src] is staggered by the explosion!</span>")
+	visible_message("<span class='danger'>[src] is caught in the explosion!</span>")
 	adjustBruteLoss(severity)
 	return 1
-
-/mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
-	..()
-	if(O.force)
-		visible_message("<span class='danger'>[src] is staggered by [O]!</span>")
-		adjustBruteLoss(O.force)

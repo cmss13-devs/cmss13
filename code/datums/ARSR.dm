@@ -19,7 +19,7 @@
 	buyable = 0
 	group = "Defence"
 
-/datum/supply_packs/heavyweapons_ammo/asrs
+/datum/supply_packs/gun/heavyweapons_ammo/asrs
 	buyable = 0
 	group = "Munition"
 	cost = ASRS_LOWEST_WEIGHT
@@ -159,7 +159,7 @@
 	group = "Utility"
 	buyable = 0
 
-/datum/supply_packs/spec_kit/asrs/
+/datum/supply_packs/spec_kit/
 	name = "Specialist gear crate (x1)"
 	contains = list(/obj/item/spec_kit/asrs)
 	cost = ASRS_LOWEST_WEIGHT

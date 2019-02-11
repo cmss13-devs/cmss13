@@ -40,7 +40,7 @@
 	name = "Freelancer (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/pfc
+	skills = /datum/skills/freelancer
 
 /datum/equipment_preset/other/freelancer/standard/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -66,7 +66,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Medic"
 
-	skills = /datum/skills/combat_medic
+	skills = /datum/skills/freelancer/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -98,7 +98,7 @@
 	assignment = "Freelancer Warlord"
 	languages = list("English", "Russian", "Tradeband", "Sainja")
 
-	skills = /datum/skills/SL
+	skills = /datum/skills/freelancer/SL
 
 /datum/equipment_preset/other/freelancer/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

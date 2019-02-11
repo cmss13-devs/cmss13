@@ -37,7 +37,7 @@
 	name = "CLF Fighter (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/pfc
+	skills = /datum/skills/clf
 
 /datum/equipment_preset/clf/fighter/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -84,7 +84,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "Colonist Medic"
-	skills = /datum/skills/combat_medic
+	skills = /datum/skills/clf/combat_medic
 
 /datum/equipment_preset/clf/fighter_medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -119,7 +119,7 @@
 
 	assignment = "Colonist Leader"
 	role_comm_title = "Lead"
-	skills = /datum/skills/SL
+	skills = /datum/skills/clf/leader
 
 /datum/equipment_preset/clf/fighter_leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

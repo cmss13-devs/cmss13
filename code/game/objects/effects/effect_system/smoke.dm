@@ -43,6 +43,9 @@
 		amount = 0
 		SetOpacity(0)
 
+/obj/effect/particle_effect/smoke/ex_act(severity)
+	if( prob(severity/EXPLOSION_THRESHOLD_LOW * 100) )
+		cdel(src)
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)
 	..()

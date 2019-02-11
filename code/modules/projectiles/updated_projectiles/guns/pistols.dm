@@ -339,7 +339,7 @@
 /obj/item/weapon/gun/pistol/vp70/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay
 	burst_amount = config.med_burst_value
-	burst_delay = config.low_fire_delay
+	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
@@ -367,7 +367,7 @@
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	fire_delay = config.max_fire_delay
 	burst_amount = config.med_burst_value
-	burst_delay = config.low_fire_delay
+	burst_delay = config.mlow_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value

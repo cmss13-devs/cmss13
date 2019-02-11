@@ -1,0 +1,12 @@
+author: RavingManiac
+
+delete-after: True
+
+changes: 
+  - rscadd: "Acid spray will now reduce or extinguish fires, depending on fire intensity."
+  - rscadd: "Explosions will clear smoke clouds."
+  - tweak: "Reduced burst delay of some automatic pistols, as well as the M46C."
+  - tweak: "Refactored attacks on simple animals. Such attacks now have the save audio/visual effects as attacks on regular mobs."
+  - tweak: "Quintupled line-of-sight embryo incubation bonus. As before, light is not neccessary for it to work."
+  - tweak: "Scary thing made scarier."
+  - tweak: "Adjusted skillsets of human factions:<br>- The CLF have poor firearms training, but make up for it with resourcefulness, plus diverse skillsets from their civilian backgrounds.<br>- The Freelancers and the UPP have roughly the same training as the USCM, but with additional construction/engineering skills.<br>- Private Military Contractors have superior firearms training, as well as security and construction/engineering skills."

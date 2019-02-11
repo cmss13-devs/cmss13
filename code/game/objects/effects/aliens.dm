@@ -52,6 +52,21 @@
 
 /obj/effect/xenomorph/spray/New(loc, var/acid_level = 1) //Self-deletes
 	..(loc)
+	for(var/atom/atm in loc)
+		if(istype(atm, /obj/flamer_fire))
+			var/obj/flamer_fire/FF = atm
+			if(FF.firelevel > 13)
+				FF.firelevel -= 13
+				FF.updateicon()
+			else
+				cdel(atm)
+			continue
+		if(isliving(atm)) //For extinguishing mobs on fire
+			var/mob/living/M = atm
+			M.ExtinguishMob()
+			for(var/obj/item/clothing/mask/cigarette/C in M.contents)
+				if(C.item_state == C.icon_on)
+					C.die()
 	acid_strength = acid_level
 	processing_objects.Add(src)
 	spawn(30 + rand(0, 20))

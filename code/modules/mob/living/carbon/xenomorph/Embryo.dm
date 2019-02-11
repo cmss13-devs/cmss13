@@ -85,7 +85,7 @@
 				if(H.stat == DEAD)
 					continue
 				if( (H.status_flags & XENO_HOST) && istype(H.buckled, /obj/structure/bed/nest) )
-					counter += 0.1 * hive.larva_gestation_multiplier
+					counter += 0.5 * hive.larva_gestation_multiplier
 	else
 		if(stage < 5)
 			counter += 1.0 * hive.larva_gestation_multiplier

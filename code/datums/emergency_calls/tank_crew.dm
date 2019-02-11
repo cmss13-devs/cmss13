@@ -29,3 +29,5 @@
 	sleep(10)
 	H << "<B>Objectives:</b> [objectives]"
 
+	data_core.manifest_inject(H) //Put people in crew manifest
+

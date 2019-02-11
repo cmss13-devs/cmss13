@@ -163,7 +163,7 @@ var/global/datum/defcon/defcon_controller = new
 	if(. == 0)
 		return
 
-	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", TRUE, FALSE)
+	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Squad)", FALSE, FALSE)
 
 /datum/defcon_reward/emergency_squad
 	name = "Emergency troop reinforcements"
@@ -180,7 +180,7 @@ var/global/datum/defcon/defcon_controller = new
 	if(. == 0)
 		return
 
-	ticker.mode.get_specific_call("Marine Reinforcements (Squad) (Cryo)", TRUE, FALSE)
+	ticker.mode.get_specific_call("Marine Reinforcements (Squad) (Cryo)", FALSE, FALSE)
 
 /datum/defcon_reward/tank_crew
 	name = "Deploy the tank"
@@ -194,7 +194,7 @@ var/global/datum/defcon/defcon_controller = new
 	if(. == 0)
 		return
 
-	ticker.mode.get_specific_call("Tank Crew Cryo Reinforcements", TRUE, FALSE)
+	ticker.mode.get_specific_call("Tank Crew Cryo Reinforcements", FALSE, FALSE)
 
 /datum/defcon_reward/ob_he
 	name = "Additional OB projectiles - HE x2"

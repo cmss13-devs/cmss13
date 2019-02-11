@@ -41,6 +41,7 @@
 	if(assignment)
 		W.name += " ([assignment])"
 	W.access = access.Copy(1, 0)
+	W.faction = faction
 	W.assignment = assignment
 	W.rank = rank
 	W.registered_name = H.real_name

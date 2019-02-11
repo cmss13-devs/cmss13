@@ -125,6 +125,7 @@
 	icon_state = "id"
 	item_state = "card-id"
 	var/access = list()
+	var/faction = "neutral"
 	var/registered_name = "Unknown" // The name registered_name on the card
 	flags_equip_slot = SLOT_ID
 

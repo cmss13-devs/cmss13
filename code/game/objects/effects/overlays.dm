@@ -106,8 +106,7 @@
 		name = "[squad_name] laser"
 	target_id = rand(1,100000) //giving it a pseudo unique id.
 	if(user && user.faction && cas_groups[user.faction])
-		signal = new()
-		signal.loc = src
+		signal = new(src)
 		signal.name = name
 		signal.target_id = target_id
 		signal.linked_cam = new(loc, name)

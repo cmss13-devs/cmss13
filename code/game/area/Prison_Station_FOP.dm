@@ -169,6 +169,9 @@
 /area/prison/maintenance
 	icon_state = "asmaint"
 
+/area/prison/maintenance/residential
+	ceiling = CEILING_UNDERGROUND_METAL
+
 /area/prison/maintenance/residential/nw
 	name = "\improper Northwest Civilian Residences Maintenance"
 

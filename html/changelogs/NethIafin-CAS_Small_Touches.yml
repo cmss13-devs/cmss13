@@ -1,0 +1,17 @@
+author: "Neth Iafin"
+
+delete-after: True
+
+changes:
+  - tweak: "Most of the tweaks are directed at signal flares that were found a bit too much when used but at the same time rarely used."
+  - tweak: "Signal Flares now take time (5 seconds) before they become fully active. After that they can't be picked up. You can still push them with explosives, but why."
+  - tweak: "Signal Flare lifetime is now cut in half."
+  - tweak: "You can't use Signal Flare that was activated on a different level."
+  - tweak: "Dropship roofs are now metal, instead of nothing, making pilots unable to see the target in another dropship."
+  - tweak: "Prison Civ Quarters now has heavy metal roof. Pilots can't see there directly either."
+  - tweak: "Removed Signal Flares from PFCs and SLs. Added Pack of Signal Flares (5 flares in it) to SL vendor for 15 points."
+  - tweak: "Added few packs of Signal Flares to 'ColMarTech automated armaments vendor'. Bother your local RO to get some."
+  - tweak: "Changed sprite of Signal Flare Pack, thanks to Triiodine. Now Sig-Flare Pack is called H-89S."
+  - tweak: "Removed 2 roundstart mini-rocket stacks that were added last week."
+  - bugfix: "Fixed bug that forced view to reset on ladders, cameras and CAS."
+  - bugfix: "Fixed lost gimbals on Dropships."

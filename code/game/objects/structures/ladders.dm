@@ -114,10 +114,10 @@
 
 	//Are ladder cameras ok?
 	else if (is_watching == 1)
-		if (istype(down) && down.cam && down.cam.can_use()) //Camera doesn't work or is gone
+		if (istype(down) && down.cam && !down.cam.can_use()) //Camera doesn't work or is gone
 			user.unset_interaction()
 	else if (is_watching == 2)
-		if (istype(up) && up.cam && up.cam.can_use()) //Camera doesn't work or is gone
+		if (istype(up) && up.cam && !up.cam.can_use()) //Camera doesn't work or is gone
 			user.unset_interaction()
 
 

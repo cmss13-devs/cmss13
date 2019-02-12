@@ -383,6 +383,9 @@ spookydonut august 2018
 /turf/open/mars_cave/can_dig_xeno_tunnel()
 	return TRUE
 
+/turf/open/organic/can_dig_xeno_tunnel()
+	return TRUE
+
 /turf/open/floor/prison/can_dig_xeno_tunnel()
 	return TRUE
 
@@ -400,6 +403,9 @@ spookydonut august 2018
 	return NO_DIRT
 
 /turf/open/gm/get_dirt_type()
+	return DIRT_TYPE_GROUND
+
+/turf/open/organic/grass/get_dirt_type()
 	return DIRT_TYPE_GROUND
 
 /turf/open/mars/get_dirt_type()

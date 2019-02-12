@@ -1,7 +1,7 @@
 //Base Instance
 /area/prison
 	name = "Fiorina Orbital Penitentiary"
-	ceiling = CEILING_METAL
+	ceiling = CEILING_GLASS
 
 //SECURITY
 /area/prison/security
@@ -52,7 +52,6 @@
 
 /area/prison/security/monitoring/maxsec/panopticon
 	name = "\improper Panopticon Monitoring"
-	ceiling = CEILING_GLASS
 
 /area/prison/security/monitoring/protective
 	name = "\improper Protective Custody Monitoring"
@@ -141,7 +140,6 @@
 /area/prison/command/office
 	name = "\improper Warden's Office"
 	icon_state = "Warden"
-	ceiling = CEILING_GLASS
 
 /area/prison/command/secretary_office
 	name = "\improper Warden's Secretary's Office"
@@ -170,7 +168,6 @@
 	icon_state = "asmaint"
 
 /area/prison/maintenance/residential
-	ceiling = CEILING_UNDERGROUND_METAL
 
 /area/prison/maintenance/residential/nw
 	name = "\improper Northwest Civilian Residences Maintenance"
@@ -201,7 +198,6 @@
 /area/prison/maintenance/hangar_barracks
 	name = "\improper Hangar-Barracks Maintenance"
 	icon_state = "maint_e_shuttle"
-
 
 /area/prison/canteen
 	name = "\improper Canteen"
@@ -246,17 +242,14 @@
 /area/prison/yard
 	name = "\improper Yard"
 	icon_state = "thunder"
-	ceiling = CEILING_GLASS
 
 /area/prison/hallway/entrance
 	name = "\improper Entrance Hallway"
 	icon_state = "entry"
-	ceiling = CEILING_GLASS
 
 /area/prison/hallway/central
 	name = "\improper Central Ring"
 	icon_state = "hallC1"
-	ceiling = CEILING_GLASS
 
 /area/prison/hallway/east
 	name = "\improper East Hallway"
@@ -281,8 +274,6 @@
 /area/prison/quarters/research
 	name = "\improper Research Dorms"
 	icon_state = "purple"
-
-/area/prison/cellblock/
 
 /area/prison/cellblock/lowsec/nw
 	name = "\improper Northwest Low-Security Cellblock"
@@ -343,7 +334,6 @@
 /area/prison/cellblock/maxsec/south
 	name = "\improper Maximum-Security Suspended Cellblock"
 	icon_state = "cells_max_s"
-	ceiling = CEILING_GLASS
 
 /area/prison/cellblock/vip
 	name = "\improper VIP Cells"
@@ -405,9 +395,6 @@
 	name = "\improper Biological Testing"
 	icon_state = "toxtest"
 
-/area/prison/residential
-	ceiling = CEILING_GLASS
-
 /area/prison/residential/central
 	name = "\improper Civilian Residences Central"
 	icon_state = "blue-red2"
@@ -422,7 +409,6 @@
 
 /area/prison/monorail
 	icon_state = "purple"
-	ceiling = CEILING_GLASS
 
 /area/prison/monorail/east
 	name = "\improper East Monorail Station"

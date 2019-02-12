@@ -150,6 +150,7 @@
 	armor = list(melee = 5, bullet = 5, laser = 25, energy = 5, bomb = 0, bio = 5, rad = 25)
 	icon_state = "EC_jumpsuit"
 	specialty = "chief engineer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/engi
 	name = "engineer uniform"
@@ -157,6 +158,7 @@
 	armor = list(melee = 5, bullet = 5, laser = 15, energy = 5, bomb = 0, bio = 5, rad = 10)
 	icon_state = "E_jumpsuit"
 	specialty = "engineer"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"

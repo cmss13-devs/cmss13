@@ -162,7 +162,7 @@
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/Halloween/process()
-
+	. = ..()
 	if(queen_death_timer && !finished)
 		queen_death_timer--
 		if(queen_death_timer == 1)

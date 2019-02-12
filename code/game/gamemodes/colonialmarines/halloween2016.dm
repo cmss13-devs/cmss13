@@ -207,7 +207,7 @@
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines_halloween_2016/process()
-
+	. = ..()
 	if(--round_started > 0) return
 	if(!round_finished && ++round_checkwin >= 5)
 		if(world.time >= (FOG_DELAY_INTERVAL + lobby_time) && fog_blockers.len)

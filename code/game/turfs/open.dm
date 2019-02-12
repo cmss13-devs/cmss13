@@ -67,8 +67,11 @@
 /turf/open/river
 	can_bloody = FALSE
 
-
-
+// Prison grass
+/turf/open/organic/grass
+	name = "grass"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "grass1"
 
 // Mars grounds
 

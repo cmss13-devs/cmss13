@@ -1,1 +1,10 @@
-#Blank for now.
+image: tgstation/byond:latest
+
+stages:
+  - build
+  - deploy
+
+build:
+    stage: build
+    script:
+      - DreamMaker ColonialMarinesALPHA.dme

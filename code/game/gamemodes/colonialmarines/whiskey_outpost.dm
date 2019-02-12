@@ -116,6 +116,7 @@ var/global/spawn_next_wo_wave = 0
 
 //PROCCESS
 /datum/game_mode/whiskey_outpost/process()
+	. = ..()
 	checkwin_counter++
 	ticks_passed++
 	wave_ticks_passed++

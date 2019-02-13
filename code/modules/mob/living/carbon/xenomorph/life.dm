@@ -46,7 +46,7 @@
 	if(ticker && ticker.mode && ticker.mode.xeno_evo_speed)
 		progress_amount = ticker.mode.xeno_evo_speed
 
-	if(upgrade != -1 && upgrade != 3) //upgrade possible
+	if(upgrade != -1 && upgrade < 3) //upgrade possible
 		if(!hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
 			upgrade_stored = min(upgrade_stored + progress_amount, upgrade_threshold)
 

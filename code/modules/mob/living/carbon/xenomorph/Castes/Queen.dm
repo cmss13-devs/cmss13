@@ -74,6 +74,20 @@
 	speed = 0.3
 	aura_strength = 5
 
+/datum/caste_datum/queen/primordial
+	upgrade_name = "Primordial"
+	caste_desc = "Natural selection's masterwork, each brush stroke of genetics, deadly, each trait, glorious, every detail, minutely crafted. The perfect being, the perfect queen."
+	upgrade = 4
+	melee_damage_lower = 80
+	melee_damage_upper = 90
+	max_health = 450
+	plasma_gain = 0.07
+	plasma_max = 1200
+	armor_deflection = 70
+	tackle_chance = 65
+	speed = -0.1
+	aura_strength = 6
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		for(var/datum/hive_status/hive in hive_datum)

@@ -7,17 +7,17 @@
 	melee_damage_upper = 30
 	tackle_chance = 40
 	plasma_gain = 0.032
-	plasma_max = 250
+	plasma_max = 300
 	evolution_allowed = FALSE
 	caste_desc = "A carrier of huggies."
 	deevolves_to = "Drone"
-	max_health = 175
-	speed = 0.0
+	max_health = 200
+	speed = -0.1
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
-	huggers_max = 8
+	huggers_max = 9
+	eggs_max = 4
 	throwspeed = 1
 	hugger_delay = 30
-	eggs_max = 3
 	can_hold_facehuggers = 1
 	armor_deflection = 10
 	can_hold_eggs = CAN_HOLD_ONE_HAND
@@ -34,14 +34,10 @@
 	tacklemax = 4
 	tackle_chance = 45
 	plasma_gain = 0.034
-	plasma_max = 300
+	plasma_max = 350
 	armor_deflection = 15
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
-	max_health = 200
-	speed = -0.1
 	aura_strength = 1.5
-	huggers_max = 9
-	eggs_max = 4
 
 /datum/caste_datum/carrier/elder
 	upgrade_name = "Elder"
@@ -52,7 +48,6 @@
 	tacklemax = 5
 	tackle_chance = 50
 	plasma_gain = 0.035
-	plasma_max = 350
 	armor_deflection = 20
 	caste_desc = "A portable Love transport. It looks pretty strong."
 	max_health = 225
@@ -65,21 +60,7 @@
 /datum/caste_datum/carrier/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	tacklemin = 5
-	tacklemax = 6
-	tackle_chance = 55
-	plasma_gain = 0.0375
-	plasma_max = 400
-	armor_deflection = 25
 	caste_desc = "It's literally crawling with 10 huggers."
-	max_health = 250
-	speed = -0.3
-	aura_strength = 2.5
-	huggers_max = 11
-	hugger_delay = 10
-	eggs_max = 6
 
 /mob/living/carbon/Xenomorph/Carrier
 	caste_name = "Carrier"

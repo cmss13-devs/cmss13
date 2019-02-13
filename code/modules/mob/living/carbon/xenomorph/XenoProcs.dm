@@ -28,7 +28,7 @@
 	else
 		stat(null, "Evolve Progress: [round(evolution_stored)]/[evolution_threshold]")
 
-	if(upgrade != -1 && upgrade != 3) //upgrade possible
+	if(upgrade != -1 && upgrade < 3) //upgrade possible
 		stat(null, "Upgrade Progress: [round(upgrade_stored)]/[upgrade_threshold]")
 	else //Upgrade process finished or impossible
 		stat(null, "Upgrade Progress (FINISHED)")
@@ -235,7 +235,10 @@
 						update_canmove()
 
 				if(3) //Ravagers get a free attack if they charge into someone. This will tackle if disarm is set instead.
-					var/extra_dam = min(melee_damage_lower, rand(melee_damage_lower, melee_damage_upper) / (4 - upgrade)) //About 12.5 to 80 extra damage depending on upgrade level.
+					var/primordial_bonus = 0
+					if(upgrade == 4)
+						primordial_bonus = 1
+					var/extra_dam = min(melee_damage_lower, rand(melee_damage_lower, melee_damage_upper) / (4 - upgrade + primordial_bonus)) //About 12.5 to 80 extra damage depending on upgrade level.
 					M.attack_alien(src,  extra_dam) //Ancients deal about twice as much damage on a charge as a regular slash.
 					M.KnockDown(2)
 

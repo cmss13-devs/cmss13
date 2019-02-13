@@ -3,35 +3,36 @@
 	upgrade_name = "Young"
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 10
-	melee_damage_upper = 20
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	plasma_gain = 0.02
-	plasma_max = 100
+	plasma_max = 150
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
-	max_health = 100
-	speed = -1.8
+	armor_deflection = 5
+	max_health = 120
+	speed = -1.9
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
+	pounce_delay = 35
 	xeno_explosion_resistance = 20
 
 /datum/caste_datum/runner/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 15
-	melee_damage_upper = 25
+	melee_damage_lower = 20
+	melee_damage_upper = 30
 	plasma_gain = 0.02
 	plasma_max = 150
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
 	armor_deflection = 5
-	max_health = 120
+	max_health = 140
 	speed = -1.9
-	pounce_delay = 35
 
 /datum/caste_datum/runner/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 20
+	melee_damage_lower = 25
 	melee_damage_upper = 30
 	tacklemin = 3
 	tacklemax = 4
@@ -40,7 +41,7 @@
 	plasma_max = 200
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
 	armor_deflection = 10
-	max_health = 140
+	max_health = 160
 	speed = -2.0
 	pounce_delay = 30
 

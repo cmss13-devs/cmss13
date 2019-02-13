@@ -3,25 +3,22 @@
 	upgrade_name = "Young"
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 15
-	melee_damage_upper = 25
-	max_health = 175
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	max_health = 200
 	plasma_gain = 0.08
 	plasma_max = 100
 	caste_desc = "A sturdy front line combatant."
 	speed = -0.2
 	charge_type = 2 //Pounce - Hunter
-	armor_deflection = 20
 	evolves_to = list("Warrior")
 	can_vent_crawl = 0
-	xeno_explosion_resistance = 40
 
 /datum/caste_datum/defender/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	max_health = 200
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
 	speed = -0.3
 	armor_deflection = 25
@@ -29,8 +26,6 @@
 /datum/caste_datum/defender/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 25
-	melee_damage_upper = 35
 	max_health = 225
 	caste_desc = "An alien with an armored head crest. It looks pretty strong."
 	speed = -0.4
@@ -41,7 +36,6 @@
 	upgrade = 3
 	max_health = 250
 	caste_desc = "An unstoppable force that remains when others would fall."
-	speed = -0.4
 	armor_deflection = 35
 
 /mob/living/carbon/Xenomorph/Defender

@@ -15,6 +15,7 @@ var/list/department_radio_keys = list(
 	  ":d" = "Delta",		"#d" = "Delta",			".d" = "Delta",
 	  ":p" = "MP",			"#p" = "MP",			".p" = "MP",
 	  ":u" = "Req",			"#u" = "Req",			".u" = "Req",
+	  ":j" = "JTAC",		"#j" = "JTAC",			".j" = "JTAC",
 
 	  ":R" = "right ear",	"#R" = "right ear",		".R" = "right ear",
 	  ":L" = "left ear",	"#L" = "left ear",		".L" = "left ear",
@@ -33,6 +34,7 @@ var/list/department_radio_keys = list(
 	  ":D" = "Delta",		"#D" = "Delta",			".D" = "Delta",
 	  ":P" = "MP",			"#P" = "MP",			".P" = "MP",
 	  ":U" = "Req",			"#U" = "Req",			".U" = "Req",
+	  ":J" = "JTAC",		"#J" = "JTAC",			".J" = "JTAC",
 
 	  //kinda localization -- rastaf0
 	  //same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.

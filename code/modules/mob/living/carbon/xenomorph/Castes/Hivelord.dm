@@ -5,18 +5,19 @@
 	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	max_health = 200
+	max_health = 220
 	plasma_gain = 0.044
-	plasma_max = 800
+	plasma_max = 900
 	evolution_allowed = FALSE
-	caste_desc = "A builder of REALLY BIG hives."
-	speed = 0.4
+	caste_desc = "A builder of really big hives."
+	speed = 0.3
 	aura_strength = 1 //Hivelord's aura is not extremely strong, but better than Drones. At the top, it's just a bit above a young Queen. Climbs by 0.5 to 2.5
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	can_denest_hosts = 1
 	xeno_explosion_resistance = 40
 	acid_level = 2
+	aura_strength = 1.5
 	weed_level = 2 //Starts with wider weeds by default
 
 /datum/caste_datum/hivelord/mature
@@ -24,53 +25,38 @@
 	upgrade = 1
 	melee_damage_lower = 20
 	melee_damage_upper = 25
-	max_health = 220
+	max_health = 230
 	plasma_gain = 0.045
 	plasma_max = 900
-	caste_desc = "A builder of REALLY BIG hives. It looks a little more dangerous."
+	caste_desc = "A builder of really big hives hives. It looks a little more dangerous."
 	armor_deflection = 10
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	speed = 0.3
-	aura_strength = 1.5
+	aura_strength = 2
 
 /datum/caste_datum/hivelord/elder
 	upgrade_name = "Elder"
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	max_health = 240
 	plasma_gain = 0.05
 	plasma_max = 1000
-	caste_desc = "A builder of REALLY BIG hives. It looks pretty strong."
+	caste_desc = "A builder of really big hives. It looks pretty strong."
 	armor_deflection = 15
-	tacklemin = 4
-	tacklemax = 5
 	tackle_chance = 45
 	speed = 0.2
-	aura_strength = 2
+	aura_strength = 2.5
 
 /datum/caste_datum/hivelord/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 30
-	melee_damage_upper = 35
-	max_health = 260
-	plasma_gain = 0.059
-	plasma_max = 1200
 	caste_desc = "An extreme construction machine. It seems to be building walls..."
-	armor_deflection = 20
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 50
-	aura_strength = 2.5
-	speed = 0.1
 
 /mob/living/carbon/Xenomorph/Hivelord
 	caste_name = "Hivelord"
 	name = "Hivelord"
-	desc = "A huge ass xeno covered in weeds! Oh shit!"
+	desc = "A builder of really big hives."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Hivelord Walking"
 	pixel_x = -16

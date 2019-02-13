@@ -8,16 +8,16 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	max_health = 200
+	max_health = 225
 	plasma_gain = 0.08
 	plasma_max = 100
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
-	speed = -0.7 //Not as fast as runners, but faster than other xenos.
+	speed = -0.8 //Not as fast as runners, but faster than other xenos.
 	charge_type = 3 //Claw at end of charge
 	fire_immune = 1
-	armor_deflection = 35
+	armor_deflection = 40
 	xeno_explosion_resistance = 60
 	attack_delay = -2
 	pounce_delay = 120
@@ -29,12 +29,9 @@
 	upgrade = 1
 	melee_damage_lower = 40
 	melee_damage_upper = 50
-	max_health = 225
 	plasma_gain = 0.067
 	plasma_max = 150
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
-	speed = -0.8
-	armor_deflection = 40
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
@@ -42,27 +39,26 @@
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 50
-	melee_damage_upper = 60
-	max_health = 250
-	plasma_gain = 0.075
-	plasma_max = 200
+	melee_damage_lower = 45
+	melee_damage_upper = 55
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	speed = -0.9
 	armor_deflection = 45
-	tacklemin = 5
-	tacklemax = 6
-	tackle_chance = 50
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 60
-	melee_damage_upper = 70
-	max_health = 275
 	caste_desc = "As I walk through the valley of the shadow of death."
-	speed = -1.0
-	armor_deflection = 50
+
+/datum/caste_datum/ravager/primordial
+	upgrade_name = "Primordial"
+	caste_desc = "This thing's scythes are bigger than a fucking building!"
+	upgrade = 4
+	melee_damage_lower = 100
+	melee_damage_upper = 110
+	max_health = 300
+	speed = -1.3
+	armor_deflection = 60
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 55

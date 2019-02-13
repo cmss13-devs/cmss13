@@ -3,15 +3,15 @@
 	upgrade_name = "Young"
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 10
-	melee_damage_upper = 20
-	max_health = 125
+	melee_damage_lower = 20
+	melee_damage_upper = 30
+	max_health = 150
 	plasma_gain = 0.034
-	plasma_max = 300
-	spit_delay = 30
+	plasma_max = 400
+	spit_delay = 25
 	caste_desc = "A weak ranged combat alien."
 	tackle_chance = 40
-	armor_deflection = 10
+	armor_deflection = 15
 	speed = -0.8
 	spit_types = list(/datum/ammo/xeno/toxin)
 	evolves_to = list("Spitter")
@@ -21,30 +21,25 @@
 /datum/caste_datum/sentinel/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 15
-	melee_damage_upper = 25
-	max_health = 150
+	max_health = 175
+	plasma_max = 450
 	plasma_gain = 0.038
-	plasma_max = 400
-	spit_delay = 25
 	caste_desc = "A ranged combat alien. It looks a little more dangerous."
+	armor_deflection = 20
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	armor_deflection = 15
 	speed = -0.9
 
 /datum/caste_datum/sentinel/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	max_health = 175
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	plasma_gain = 0.04
 	plasma_max = 500
 	spit_delay = 20
 	caste_desc = "A ranged combat alien. It looks pretty strong."
-	armor_deflection = 20
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
@@ -53,8 +48,6 @@
 /datum/caste_datum/sentinel/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 25
-	melee_damage_upper = 35
 	max_health = 200
 	plasma_gain = 0.042
 	plasma_max = 600

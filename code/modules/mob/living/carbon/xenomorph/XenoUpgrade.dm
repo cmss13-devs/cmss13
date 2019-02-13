@@ -28,15 +28,15 @@
 				if ("Warrior")
 					src << "<span class='xenoannounce'>None can stand before you. You will annihilate all weaklings who try.</span>"
 				if("Crusher")
-					src << "<span class='xenoannounce'>You are the physical manifestation of a Tank. Almost nothing can harm you.</span>"
+					src << "<span class='xenoannounce'>You are the physical manifestation of a tank. Almost nothing can harm you.</span>"
 				if("Sentinel")
 					src << "<span class='xenoannounce'>You are the stun master. Your stunning is legendary and causes massive quantities of salt.</span>"
 				if("Spitter")
-					src << "<span class='xenoannounce'>You are a master of ranged stuns and damage. Go fourth and generate salt.</span>"
+					src << "<span class='xenoannounce'>You are a master of ranged stuns and damage. Go forth and generate salt.</span>"
 				if("Boiler")
 					src << "<span class='xenoannounce'>You are the master of ranged artillery. Bring death from above.</span>"
 				if("Praetorian")
-					src << "<span class='xenoannounce'>You are the strongest range fighter around. Your spit is devestating and you can fire nearly a constant stream.</span>"
+					src << "<span class='xenoannounce'>You are the strongest ranged fighter around. Your spit is devestating and you can fire nearly a constant stream.</span>"
 				if("Drone")
 					src <<"<span class='xenoannounce'>You are the ultimate worker of the Hive. Time to clock in, and clock the tallhosts out.</span>"
 				if("Hivelord")
@@ -47,6 +47,20 @@
 					src << "<span class='xenoannounce'>You are the master of traps. You are the bane of marine pushes!</span>"
 				if("Queen")
 					src << "<span class='xenoannounce'>You are the Alpha and the Omega. The beginning and the end.</span>"
+		if(4)
+			switch(caste.caste_name)
+				if("Queen")
+					src << "<span class ='xenoannounce'>Your sheer presence causes the world to tremble, your existence makes your opponents wish they didn't exist. Go forth, and destroy all that there is.</span>"
+				if("Praetorian")
+					src << "<span class='xenoannounce'>Merely looking at someone causes them to freeze in terror and run at your majestic presence. You're second only to the Queen in your aura's sheer strength.</span>"
+				if("Ravager")
+					src << "<span class='xenoannounce'>Being the incarnation of death itself is an understatement, your scythes could tear an entire spaceship in half with a single fell swoop.</span>"
+				if("Crusher")
+					src << "<span class='xenoannounce'>Your mere footsteps cause buildings to crumble, your defenses are impenetrable. Go forth and become the Queen's unbreakable shield.</span>"
+				if("Lurker")
+					src << "<span class='xenoannounce'>You've become a killing machine, the closest thing to staring at death in the eye. Your claws rend metal like butter.</span>"
+				if("Warrior")
+					src << "<span class='xenoannounce'>Your muscles could deadlift a military base without flinching. You've become the true definition of a one xeno army.</span>"
 
 	update_caste()
 
@@ -56,7 +70,6 @@
 
 	//One last shake for the sake of it
 	xeno_jitter(25)
-
 
 //Tiered spawns.
 /mob/living/carbon/Xenomorph/Runner/mature/New()
@@ -119,6 +132,10 @@
 	..()
 	upgrade_xeno(3)
 
+/mob/living/carbon/Xenomorph/Praetorian/primordial/New()
+	..()
+	upgrade_xeno(4)
+
 /mob/living/carbon/Xenomorph/Ravager/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -130,6 +147,10 @@
 /mob/living/carbon/Xenomorph/Ravager/ancient/New()
 	..()
 	upgrade_xeno(3)
+
+/mob/living/carbon/Xenomorph/Ravager/primordial/New()
+	..()
+	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Sentinel/mature/New()
 	..()
@@ -167,6 +188,10 @@
 	..()
 	upgrade_xeno(3)
 
+/mob/living/carbon/Xenomorph/Lurker/primordial/New()
+	..()
+	upgrade_xeno(4)
+
 /mob/living/carbon/Xenomorph/Queen/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -179,6 +204,10 @@
 	..()
 	upgrade_xeno(3)
 
+/mob/living/carbon/Xenomorph/Queen/primordial/New()
+	..()
+	upgrade_xeno(4)
+
 /mob/living/carbon/Xenomorph/Crusher/mature/New()
 	..()
 	upgrade_xeno(1)
@@ -190,6 +219,10 @@
 /mob/living/carbon/Xenomorph/Crusher/ancient/New()
 	..()
 	upgrade_xeno(3)
+
+/mob/living/carbon/Xenomorph/Crusher/primordial/New()
+	..()
+	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Boiler/mature/New()
 	..()
@@ -229,6 +262,10 @@
 /mob/living/carbon/Xenomorph/Warrior/ancient/New()
 	..()
 	upgrade_xeno(3)
+
+/mob/living/carbon/Xenomorph/Warrior/primordial/New()
+	..()
+	upgrade_xeno(4)
 
 /mob/living/carbon/Xenomorph/Burrower/mature/New()
 	..()

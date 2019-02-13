@@ -36,22 +36,24 @@
 	melee_damage_upper = 40
 	tackle_chance = 25
 	plasma_gain = 0.075
-	plasma_max = 400
 	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
-	armor_deflection = 70
-	max_health = 325
 
 /datum/caste_datum/crusher/ancient
-	upgrade_name = "Ancient"
 	upgrade = 3
+	upgrade_name = "Ancient"
+	caste_desc = "It always has the right of way."
+
+/datum/caste_datum/crusher/primordial
+	upgrade_name = "Primordial"
+	caste_desc = "This thing could cause a tsunami just by walking. It's a literal freight train."
+	upgrade = 4
 	melee_damage_lower = 35
 	melee_damage_upper = 45
 	tackle_chance = 30
-	plasma_gain = 0.075
-	plasma_max = 400
-	caste_desc = "It always has the right of way."
-	armor_deflection = 80
-	max_health = 350
+	plasma_gain = 0.080
+	plasma_max = 600
+	armor_deflection = 90
+	max_health = 400
 
 /mob/living/carbon/Xenomorph/Crusher
 	caste_name = "Crusher"

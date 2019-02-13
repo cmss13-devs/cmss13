@@ -3,8 +3,8 @@
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 30
-	melee_damage_upper = 35
+	melee_damage_lower = 35
+	melee_damage_upper = 40
 	evolves_to = list("Praetorian", "Crusher")
 	deevolves_to = "Defender"
 	tackle_chance = 40
@@ -13,25 +13,21 @@
 	caste_desc = "A powerful front line combatant."
 	armor_deflection = 30
 	max_health = 200
-	speed = -0.4
+	speed = -0.5
 	agility_speed_increase = -0.5
 	can_vent_crawl = 0
 	xeno_explosion_resistance = 40
 
 /datum/caste_datum/warrior/mature
-
 	upgrade_name = "Mature"
 	tier = 2
 	upgrade = 1
-	melee_damage_lower = 35
-	melee_damage_upper = 40
 	caste_desc = "An alien with an armored carapace. It looks a little more dangerous."
 	armor_deflection = 35
-	max_health = 225
-	speed = -0.5
+	max_health = 250
+	speed = -0.6
 
 /datum/caste_datum/warrior/elder
-
 	upgrade_name = "Elder"
 	tier = 2
 	upgrade = 2
@@ -39,21 +35,25 @@
 	melee_damage_upper = 45
 	caste_desc = "An alien with an armored carapace. It looks pretty strong."
 	armor_deflection = 40
-	max_health = 250
-	speed = -0.6
 
 /datum/caste_datum/warrior/ancient
-
 	upgrade_name = "Ancient"
 	tier = 2
 	upgrade = 3
-	melee_damage_lower = 45
-	melee_damage_upper = 50
 	caste_desc = "An hulking beast capable of effortlessly breaking and tearing through its enemies."
-	armor_deflection = 45
-	max_health = 275
-	speed = -0.7
 
+/datum/caste_datum/warrior/primordial
+	upgrade_name = "Primordial"
+	upgrade = 4
+	melee_damage_lower = 70
+	melee_damage_upper = 80
+	max_health = 300
+	armor_deflection = 50
+	plasma_max = 300
+	speed = -0.7
+	agility_speed_increase = -0.7
+	caste_desc = "10G punches right in your groin."
+	
 /mob/living/carbon/Xenomorph/Warrior
 	caste_name = "Warrior"
 	name = "Warrior"

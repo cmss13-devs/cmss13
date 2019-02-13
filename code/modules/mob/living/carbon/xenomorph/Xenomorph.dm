@@ -226,6 +226,7 @@
 			if(1) name = "\improper [name_prefix]Elder Queen"	 //Mature
 			if(2) name = "\improper [name_prefix]Elder Empress"	 //Elite
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
+			if(4) name = "\improper [name_prefix]Primordial Empress" //Primordial
 	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([nicknumber])"
 	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([nicknumber])"
 

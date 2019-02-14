@@ -351,7 +351,7 @@
 
 /obj/item/device/radio/headset/almayer/marine/alpha/lead
 	name = "marine alpha leader radio headset"
-	desc = "This is used by the marine alpha squad leader. Channels are as follows: :v - marine command."
+	desc = "This is used by the marine alpha squad leader. Channels are as follows: :v - marine command, :j - JTAC."
 	keyslot2 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/alpha/engi
@@ -374,7 +374,7 @@
 
 /obj/item/device/radio/headset/almayer/marine/bravo/lead
 	name = "marine bravo leader radio headset"
-	desc = "This is used by the marine bravo squad leader. Channels are as follows: :v - marine command."
+	desc = "This is used by the marine bravo squad leader. Channels are as follows: :v - marine command, :j - JTAC."
 	keyslot2 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/bravo/engi
@@ -397,7 +397,7 @@
 
 /obj/item/device/radio/headset/almayer/marine/charlie/lead
 	name = "marine charlie leader radio headset"
-	desc = "This is used by the marine charlie squad leader. Channels are as follows: :v - marine command."
+	desc = "This is used by the marine charlie squad leader. Channels are as follows: :v - marine command, :j - JTAC."
 	keyslot2 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/charlie/engi
@@ -420,7 +420,7 @@
 
 /obj/item/device/radio/headset/almayer/marine/delta/lead
 	name = "marine delta leader radio headset"
-	desc = "This is used by the marine delta squad leader. Channels are as follows: :v - marine command."
+	desc = "This is used by the marine delta squad leader. Channels are as follows: :v - marine command, :j - JTAC."
 	keyslot2 = new /obj/item/device/encryptionkey/squadlead
 
 /obj/item/device/radio/headset/almayer/marine/delta/engi

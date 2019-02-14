@@ -48,6 +48,7 @@
 /datum/caste_datum/spitter/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "A ranged destruction machine."
+	upgrade = 3
 
 /mob/living/carbon/Xenomorph/Spitter
 	caste_name = "Spitter"

@@ -255,7 +255,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_jtac
 	name = "\improper Mini JTAC Kit"
 
-/obj/item/storage/box/mini_jtac/New()
+/obj/item/storage/box/kit/mini_jtac/New()
 	..()
 	spawn(1)
 		new /obj/item/storage/box/m94/signal(src)

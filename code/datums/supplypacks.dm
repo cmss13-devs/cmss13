@@ -28,11 +28,11 @@ var/list/all_supply_groups = list(
 )
 
 /datum/supply_packs
-	var/name = null
+	var/name = "Basic supply pack."
 	var/list/contains = list()
 	var/manifest = ""
 	var/amount = null
-	var/cost = null
+	var/cost = RO_PRICE_NORMAL
 	var/containertype = null
 	var/containername = null
 	var/access = null
@@ -328,6 +328,19 @@ WEAPONS
 	containername = "\improper rifles crate"
 	group = "Weapons"
 
+/datum/supply_packs/gun/
+	contains = list(
+					/obj/item/weapon/gun/rifle/m41aMK1,
+					/obj/item/weapon/gun/rifle/m41aMK1,
+					/obj/item/ammo_magazine/rifle/m41aMK1,
+					/obj/item/ammo_magazine/rifle/m41aMK1
+					)
+	name = "surplus rifles crate (M41A x2, M41A ammo x2)"
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate
+	containername = "\improper rifles crate"
+	group = "Weapons"
+	
 /datum/supply_packs/gun/heavyweapons
 	contains = list(
 					/obj/item/weapon/gun/rifle/lmg,

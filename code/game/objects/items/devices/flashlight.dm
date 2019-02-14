@@ -312,7 +312,7 @@
 	var/datum/cas_signal/signal
 
 /obj/item/device/flashlight/flare/signal/New()
-	fuel = rand(120, 200)
+	fuel = rand(80, 100)
 	..()
 
 
@@ -340,17 +340,36 @@
 	damtype = "fire"
 	processing_objects += src
 	faction = user.faction
+	activate_signal(user)
+	
+
+/obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/user)
+	set waitfor = 0
+	sleep(50)
 	if(faction && cas_groups[faction])
 		var/target_id = rand(1,100000)
-		signal = new()
-		signal.loc = src
+		signal = new(src)
 		signal.name = name
 		signal.target_id = target_id
 		cas_groups[user.faction].add_signal(signal)
+		anchored = TRUE
+		visible_message("<span class='danger'>[src]'s flame reaches full strength. It's fully active now.</span>", null, 5)
 
+/obj/item/attack_hand(mob/user)
+	if (!user) return
+
+	if(anchored)
+		user << "[src] is too hot. You will burn your hand if you pick it up."
+		return
+
+	..()
 
 /obj/item/device/flashlight/flare/signal/Dispose()
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		cdel(signal)
+		cdel(signal)		
+	..()
+
+/obj/item/device/flashlight/flare/signal/turn_off()
+	anchored = FALSE
 	..()

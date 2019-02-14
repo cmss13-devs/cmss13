@@ -31735,7 +31735,8 @@
 /area/almayer/hallways/hangar)
 "bfM" = (
 /obj/effect/attach_point/weapon/dropship2{
-	dir = 1
+	dir = 1;
+	gimbal = -1
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "84"
@@ -31810,7 +31811,8 @@
 /area/shuttle/drop2/sulaco)
 "bfU" = (
 /obj/effect/attach_point/weapon/dropship2{
-	dir = 1
+	dir = 1;
+	gimbal = 1
 	},
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "91"
@@ -36151,6 +36153,7 @@
 "bnv" = (
 /obj/effect/attach_point/weapon/dropship2{
 	dir = 8;
+	gimbal = -1;
 	icon_state = "equip_base_l_wing"
 	},
 /turf/closed/shuttle/dropship2/transparent{
@@ -36175,6 +36178,7 @@
 "bnz" = (
 /obj/effect/attach_point/weapon/dropship2{
 	dir = 4;
+	gimbal = 1;
 	icon_state = "equip_base_r_wing"
 	},
 /turf/closed/shuttle/dropship2/transparent{
@@ -39375,7 +39379,8 @@
 "bti" = (
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
-	dir = 1
+	dir = 1;
+	gimbal = -1
 	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "84"
@@ -53694,7 +53699,8 @@
 "bSO" = (
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
-	dir = 1
+	dir = 1;
+	gimbal = 1
 	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "91"
@@ -53704,6 +53710,7 @@
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
 	dir = 8;
+	gimbal = -1;
 	icon_state = "equip_base_l_wing"
 	},
 /turf/closed/shuttle/dropship1/transparent{
@@ -54011,6 +54018,7 @@
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
 	dir = 4;
+	gimbal = 1;
 	icon_state = "equip_base_r_wing"
 	},
 /turf/closed/shuttle/dropship1/transparent{
@@ -65589,6 +65597,16 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/hangar)
+"lMJ" = (
+/obj/machinery/camera/autoname/almayer{
+	dir = 4;
+	icon_state = "camera";
+	name = "ship-grade camera";
+	network = list("almayer");
+	tag = "icon-camera (NORTH)"
+	},
+/turf/open/space,
+/area/space)
 "mCr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -85535,8 +85553,8 @@ aKY
 aLd
 aRu
 aSp
-lyG
-lyG
+bow
+bow
 aSp
 aSp
 aSp

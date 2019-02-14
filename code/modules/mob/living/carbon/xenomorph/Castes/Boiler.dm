@@ -3,8 +3,8 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	plasma_gain = 0.0375
 	plasma_max = 800
 	evolution_allowed = FALSE
@@ -21,14 +21,12 @@
 /datum/caste_datum/boiler/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 20
-	melee_damage_upper = 25
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
 	plasma_gain = 0.039
 	plasma_max = 900
-	spit_delay = 30
+	spit_delay = 35
 	caste_desc = "Some sort of abomination. It looks a little more dangerous."
 	armor_deflection = 25
 	max_health = 200
@@ -44,30 +42,15 @@
 	tacklemax = 4
 	tackle_chance = 45
 	plasma_gain = 0.040
-	plasma_max = 1000
-	spit_delay = 20
 	caste_desc = "Some sort of abomination. It looks pretty strong."
 	armor_deflection = 30
 	max_health = 220
-	speed = 0.5
 	bomb_strength = 2
 
 /datum/caste_datum/boiler/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-	tacklemin = 4
-	tacklemax = 5
-	tackle_chance = 50
-	plasma_gain = 0.041
-	plasma_max = 1100
-	spit_delay = 10
 	caste_desc = "A devestating piece of alien artillery."
-	armor_deflection = 35
-	max_health = 240
-	speed = 0.4
-	bomb_strength = 2.5
 
 /mob/living/carbon/Xenomorph/Boiler
 	caste_name = "Boiler"

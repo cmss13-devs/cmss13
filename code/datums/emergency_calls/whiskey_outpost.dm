@@ -47,7 +47,7 @@
 	else
 		arm_equipment(mob,"Dust Raider Private", TRUE)
 		mob << "<font size='3'>\red You are a private in the USCM, your squad is here to assist in the defence of [map_tag]. Listen to [leader.name] they are your (acting) squad leader. </B>"
-		
+
 	sleep(10)
 	mob << "<B>Objectives:</b> [objectives]"
 	RoleAuthority.randomize_squad(mob)
@@ -55,6 +55,8 @@
 	mob.sec_hud_set_implants()
 	mob.hud_set_special_role()
 	mob.hud_set_squad()
+
+	data_core.manifest_inject(mob) //Put people in crew manifest
 
 
 /datum/game_mode/whiskey_outpost/activate_distress()

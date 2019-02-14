@@ -3,16 +3,16 @@
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	melee_damage_lower = 25
+	melee_damage_upper = 35
 	tackle_chance = 40
 	plasma_gain = 0.032
-	plasma_max = 250
+	plasma_max = 300
 	deevolves_to = "Drone"
 	caste_desc = "A digger and shaper."
 	max_health = 175
-	speed = 0.0
-	armor_deflection = 10
+	speed = -0.1
+	armor_deflection = 15
 	xeno_explosion_resistance = 60
 	burrow_cooldown = 50
 	tunnel_cooldown = 100
@@ -23,17 +23,17 @@
 /datum/caste_datum/burrower/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 25
-	melee_damage_upper = 35
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
+	plasma_max = 350
 	plasma_gain = 0.034
-	plasma_max = 300
-	armor_deflection = 15
+	armor_deflection = 20
 	caste_desc = "A digger and shaper. It looks a little more dangerous."
 	max_health = 200
-	speed = -0.1
+	speed = -0.2
 	burrow_cooldown = 40
 	tunnel_cooldown = 90
 	widen_cooldown = 90
@@ -41,38 +41,24 @@
 /datum/caste_datum/burrower/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 30
-	melee_damage_upper = 40
 	tacklemin = 4
 	tacklemax = 5
-	tackle_chance = 50
-	plasma_gain = 0.035
-	plasma_max = 350
-	armor_deflection = 20
-	caste_desc = "A digger and shaper. It looks pretty strong."
-	max_health = 225
-	speed = -0.2
-	burrow_cooldown = 30
-	tunnel_cooldown = 80
-	widen_cooldown = 80
-
-/datum/caste_datum/burrower/ancient
-	upgrade_name = "Ancient"
-	upgrade = 3
 	melee_damage_lower = 35
 	melee_damage_upper = 45
-	tacklemin = 5
-	tacklemax = 6
-	tackle_chance = 55
-	plasma_gain = 0.0375
-	plasma_max = 400
+	tackle_chance = 50
+	plasma_gain = 0.035
 	armor_deflection = 25
-	caste_desc = "A digger and shaper. It looks extremely strong."
-	max_health = 250
+	caste_desc = "A digger and shaper. It looks pretty strong."
+	max_health = 225
 	speed = -0.3
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70
+
+/datum/caste_datum/burrower/ancient
+	upgrade_name = "Ancient"
+	upgrade = 3
+	caste_desc = "A digger and shaper. It looks extremely strong."
 
 /mob/living/carbon/Xenomorph/Burrower
 	caste_name = "Burrower"

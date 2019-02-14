@@ -311,7 +311,7 @@ var/waiting_for_drop_votes = 0
 		sleep(5000)
 
 /datum/game_mode/huntergames/process()
-
+	. = ..()
 	checkwin_counter++
 	ticks_passed++
 	if(prob(2)) dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.

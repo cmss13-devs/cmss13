@@ -91,6 +91,7 @@
 
 //End-Game
 /datum/game_mode/infestation/process() //Check to see if there's a winner
+	. = ..()
 	humansurvivors = 0
 	aliensurvivors = 0
 
@@ -103,6 +104,7 @@
 
 // Add dead/alive aliens/humans every few seconds to see if there's a winner
 /datum/game_mode/infestation/process()
+	. = ..()
 	//Reset the survivor count to zero per process call.
 	humansurvivors = 0
 	aliensurvivors = 0

@@ -8,6 +8,7 @@
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/regenZ = 1 //Temp zombie thing until I write a better method ~Apop
 	var/allow_gun_usage = FALSE //False by default, so that synthetics can't use guns.
+	var/has_used_pamphlet = FALSE //Has this person used a pamphlet?
 
 /mob/living/carbon/human/New(var/new_loc, var/new_species = null)
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
@@ -70,7 +71,7 @@
 		stat("Tank Pressure", internal.pressure)
 		stat("Distribution Pressure", internal.distribute_pressure)
 
-	if(ticker.mode.active_lz)
+	if(ticker && ticker.mode && ticker.mode.active_lz)
 		stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
 
 	if(assigned_squad)

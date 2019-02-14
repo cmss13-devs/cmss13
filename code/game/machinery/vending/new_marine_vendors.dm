@@ -303,6 +303,7 @@
 		list("BELT (choose 1)", 0, null, null, null),
 		list("Standard ammo belt", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, "orange"),
 		list("Shotgun ammo belt", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, "black"),
+		list("M39 holster belt", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, "black"),
 		list("Knives belt", 0, /obj/item/storage/belt/knifepouch, MARINE_CAN_BUY_BELT, "black"),
 		list("Pistol belt", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
 		list("Revolver belt", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, "black"),
@@ -320,7 +321,6 @@
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 
 		list("KITS", 0, null, null, null),
-		list("Mini Constructor Kit", 45, /obj/item/storage/box/kit/mini_constructor, MARINE_CAN_BUY_ESSENTIALS, "black"),
 		list("Mini Engineer Kit", 45, /obj/item/storage/box/kit/mini_engineer, MARINE_CAN_BUY_ESSENTIALS, "black"),
 		list("Mini Medic Kit", 45, /obj/item/storage/box/kit/mini_medic, MARINE_CAN_BUY_ESSENTIALS, "black"),
 		list("Mini Pyro Kit", 45, /obj/item/storage/box/kit/mini_pyro, MARINE_CAN_BUY_ESSENTIALS, "black"),
@@ -328,6 +328,7 @@
 
 		list("EXTRAS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),
+		list("Gyroscopic stabilizer", 15, /obj/item/attachable/gyro, null, "black"),
 		list("Box of flechette shells", 15, /obj/item/ammo_magazine/shotgun/flechette, null, "black"),
 		list("Fire extinguisher (portable)", 15, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Laser sight", 15, /obj/item/attachable/lasersight, null, "black"),
@@ -345,7 +346,6 @@
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
 		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
-		list("Signal Flare", 15, /obj/item/device/flashlight/flare/signal, null, "black"),
 	)
 
 
@@ -1016,7 +1016,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
-		list("Signal Flare", 5, /obj/item/device/flashlight/flare/signal, null, "black"),
+		list("Signal Flare Pack", 15, /obj/item/storage/box/m94/signal, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Extended barrel", 0, /obj/item/attachable/extended_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),

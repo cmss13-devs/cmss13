@@ -35,7 +35,7 @@
 	name = "UPP Soldier (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/pfc/crafty
+	skills = /datum/skills/upp
 	assignment = "UPP Soldier"
 	rank = "MODE"
 	paygrade = "E1"
@@ -92,7 +92,7 @@
 	name = "UPP Soldier (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/combat_medic/crafty
+	skills = /datum/skills/upp/combat_medic
 	assignment = "UPP Medic"
 	rank = "MODE"
 	paygrade = "E4"
@@ -131,7 +131,7 @@
 	name = "UPP Soldier (Heavy)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/specialist/upp
+	skills = /datum/skills/upp/specialist
 	assignment = "UPP Specialist"
 	rank = "MODE"
 	paygrade = "E5"
@@ -168,7 +168,7 @@
 	name = "UPP Soldier (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/SL/upp
+	skills = /datum/skills/upp/SL
 	assignment = "UPP Leader"
 	rank = "MODE"
 	paygrade = "E5"

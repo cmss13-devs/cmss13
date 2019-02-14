@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 45
-	max_health = 225
+	max_health = 250
 	plasma_gain = 0.032
 	plasma_max = 800
 	evolution_allowed = FALSE
@@ -25,7 +25,6 @@
 	upgrade = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	max_health = 250
 	plasma_gain = 0.034
 	plasma_max = 900
 	spit_delay = 15
@@ -40,30 +39,31 @@
 	upgrade = 2
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	max_health = 275
 	plasma_gain = 0.04
 	plasma_max = 1000
-	spit_delay = 10
 	caste_desc = "A giant ranged monster. It looks pretty strong."
-	armor_deflection = 45
 	tackle_chance = 55
-	speed = -0.7
 	aura_strength = 3.5
 
 /datum/caste_datum/praetorian/ancient
 	upgrade_name = "Ancient"
 	upgrade = 3
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	max_health = 300
-	plasma_gain = 0.05
-	plasma_max = 1000
-	spit_delay = 5
 	caste_desc = "Its mouth looks like a minigun."
-	armor_deflection = 50
+
+/datum/caste_datum/praetorian/primordial
+	upgrade_name = "Primordial"
+	caste_desc = "Why is this thing bigger than a dropship?!"
+	upgrade = 4
+	melee_damage_lower = 50
+	melee_damage_upper = 60
+	max_health = 350
+	plasma_gain = 0.05
+	plasma_max = 1500
+	spit_delay = 0 
+	armor_deflection = 60
 	tackle_chance = 60
-	speed = -0.8
-	aura_strength = 4.5
+	speed = -0.9
+	aura_strength = 5
 
 /mob/living/carbon/Xenomorph/Praetorian
 	caste_name = "Praetorian"

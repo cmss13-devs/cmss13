@@ -1,1 +1,25 @@
-#Blank for now.
+image: i386/ubuntu:xenial
+
+stages:
+  - build
+  - deploy
+
+variables:
+  BYOND_MAJOR: "512"
+  BYOND_MINOR: "1463"
+
+before_script:
+  - apt-get update -qq
+  - apt-get --yes install build-essential unzip libc6:i386 libgcc1:i386 libstdc++6:i386 curl -qq
+  - curl "http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip
+  - unzip byond.zip
+  - cd byond
+  - make install
+  - cd ..
+
+
+install:
+    stage: build
+    script:
+      - DreamMaker ColonialMarinesALPHA.dme
+    allow_failure: true

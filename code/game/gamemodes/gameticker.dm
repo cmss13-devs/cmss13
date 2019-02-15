@@ -54,7 +54,6 @@ var/global/datum/controller/gameticker/ticker
 //	'sound/music/ColonialHalloween.ogg'
 //	'sound/music/Suspense_Explore.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
-	'sound/music/DeadSpace_Ring_Around_the_Rosie.ogg',
 	'sound/music/DeadSpace_Twinkle_Twinkle_Little_Star.ogg'
 	'sound/music/fortunate_son.ogg',
 	'sound/music/buffalo_springfield.ogg',

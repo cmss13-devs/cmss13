@@ -388,8 +388,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	health = 100
 	maxhealth = 100
 	layer = OBJ_LAYER
-	climbable = FALSE
-	throwpass = FALSE
 	stack_type = /obj/item/stack/sheet/wood
 	debris = list(/obj/item/stack/sheet/wood)
 	stack_amount = 5

@@ -13,6 +13,8 @@
 	var/basestate = "window"
 	var/junction = 0
 	var/reinforced = FALSE
+	var/buildstacktype = /obj/item/stack/sheet/metal
+	var/buildstackamount = 2
 
 	tiles_with = list(
 		/turf/closed/wall)
@@ -80,6 +82,16 @@
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
 			cdel(src)
+			
+	else if(istype(W, /obj/item/tool/wrench))
+		if(buildstacktype)
+			user << "\blue You start to deconstruct [src]."
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+			if(do_after(user, 30, TRUE, 5, BUSY_ICON_BUILD))	// takes 3 seconds to deconstruct
+				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+				new buildstacktype(loc, buildstackamount)
+				user << "\blue You deconstruct [src]."
+				cdel(src)
 
 	else if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W

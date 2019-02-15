@@ -76,6 +76,7 @@
 
 //Explosion level thresholds. Upper bounds
 #define EXPLOSION_THRESHOLD_LOW		100
+#define EXPLOSION_THRESHOLD_MLOW	150
 #define EXPLOSION_THRESHOLD_MEDIUM	200
 #define EXPLOSION_THRESHOLD_HIGH	300
 

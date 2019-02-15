@@ -82,7 +82,7 @@
 	ammo_used_per_firing = 20
 	point_cost = 150
 	fire_mission_delay = 2
-	var/bullet_spread_range = 4 //how far from the real impact turf can bullets land
+	var/bullet_spread_range = 3 //how far from the real impact turf can bullets land
 
 	examine(mob/user)
 		..()
@@ -102,12 +102,11 @@
 		var/soundplaycooldown = 0
 		var/debriscooldown = 0
 		for(var/i=1, i<=ammo_used_per_firing, i++)
-			var/turf/U = pick(turf_list)
-			turf_list -= U
+			var/turf/U = pick(turf_list)			
 			sleep(1)
-			U.ex_act(EXPLOSION_THRESHOLD_LOW)
+			U.ex_act(EXPLOSION_THRESHOLD_MLOW)
 			for(var/atom/movable/AM in U)
-				AM.ex_act(EXPLOSION_THRESHOLD_LOW)
+				AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
 			if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
 				playsound(U, get_sfx("explosion"), 40, 1, 20, falloff = 3)
 				soundplaycooldown = 3
@@ -127,7 +126,7 @@
 	ammo_count = 400
 	max_ammo_count = 400
 	ammo_used_per_firing = 40
-	bullet_spread_range = 5
+	bullet_spread_range = 4
 	point_cost = 300
 	fire_mission_delay = 2
 

@@ -82,7 +82,7 @@
 			user.visible_message("<span class='notice'>[user] starts disarming [src].</span>", \
 			"<span class='notice'>You start disarming [src].</span>")
 			disarming = 1
-			if(!do_after(user, 80, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='warning'>[user] stops disarming [src].", \
 				"<span class='warning'>You stop disarming [src].")
 				disarming = 0

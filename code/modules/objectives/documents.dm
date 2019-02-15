@@ -91,7 +91,7 @@
 		if(C.is_complete())
 			user << "<span class='warning'>You aren't entirely sure what you're meant to be looking for in this document.</span>"
 			return
-	user << "<span class='notice'>You don't notice anything useful.</span>"
+	user << "<span class='notice'>You don't notice anything useful. You probably need to find its instructions on a paper scrap.</span>"
 
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
 	switch(skill_required)
@@ -146,7 +146,7 @@
 	icon_state = "folder"
 	reading_time = 100
 	objective_type = /datum/cm_objective/document/folder
-	w_class = 2
+	w_class = 1
 
 /obj/item/document_objective/folder/New()
 	..()

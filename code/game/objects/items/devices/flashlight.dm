@@ -311,9 +311,9 @@
 	var/faction = ""
 	var/datum/cas_signal/signal
 
-/obj/item/device/flashlight/flare/signal/New()
-	fuel = rand(80, 100)
+/obj/item/device/flashlight/flare/signal/New()	
 	..()
+	fuel = rand(80, 100)
 
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/user)
@@ -372,4 +372,7 @@
 
 /obj/item/device/flashlight/flare/signal/turn_off()
 	anchored = FALSE
+	if(signal)
+		cas_groups[faction].remove_signal(signal)
+		cdel(signal)
 	..()

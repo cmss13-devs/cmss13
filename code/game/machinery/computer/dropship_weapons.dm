@@ -593,7 +593,7 @@
 	var/turf/shootloc = locate(tt_turf.x + sx*firemission_envelope.recorded_offset, tt_turf.y + sy*firemission_envelope.recorded_offset,tt_turf.z)
 	if(!shootloc)
 		return
-	var/area/laser_area = get_area(loc)
+	var/area/laser_area = get_area(shootloc)
 	if(!istype(laser_area) || laser_area.ceiling > CEILING_GLASS)
 		if(firemission_envelope.user_is_guided(usr))
 			usr << "<span class='warning'>Vision Obstructed. You have to go in blind.</span>"

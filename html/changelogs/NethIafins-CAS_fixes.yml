@@ -1,0 +1,9 @@
+author: "Neth Iafin"
+
+delete-after: True
+
+changes: 
+  - tweak: "Both GAU ammunitions now deal +50% damage and have tighter spread."
+  - tweak: "GAU can now hit same tile multiple times during fire"
+  - bugfix: "Signal Flares now actually expire"
+  - bugfix: "CAS camera works again, HUZZAH!"

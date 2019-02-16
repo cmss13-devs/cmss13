@@ -16,7 +16,7 @@
 	item_state = "grenade"
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/explosion_power = 100
+	var/explosion_power = 120
 	var/explosion_falloff = 20
 	var/shrapnel_count = 0
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
@@ -51,7 +51,7 @@
 	icon_state = "grenade_pmc"
 	item_state = "grenade_ex"
 	underslug_launchable = FALSE
-	explosion_power = 120
+	explosion_power = 130
 
 
 
@@ -92,7 +92,7 @@
 	throw_speed = 2
 	throw_range = 6
 	underslug_launchable = FALSE
-	explosion_power = 100
+	explosion_power = 120
 	shrapnel_count = 48
 
 

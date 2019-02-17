@@ -74,7 +74,7 @@
 			G.Die()
 			drop_inv_item_on_ground(G)
 		if(!caste.fire_immune)
-			adjustFireLoss(fire_stacks + 3)
+			adjustFireLoss(fire_stacks + 6)
 
 	else
 		if(isXenoBoiler(src))

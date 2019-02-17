@@ -298,6 +298,9 @@
 				F.hivenumber = hivenumber
 				X.put_in_active_hand(F)
 				X << "<span class='xenonotice'>You remove the facehugger from [src].</span>"
+			else
+				X << "<span class='xenonotice'>This one is occupied with a child.</span>"
+				return
 
 		if(!X.acid_level || trap_type == RESIN_TRAP_GAS)
 			if(trap_type != RESIN_TRAP_EMPTY)

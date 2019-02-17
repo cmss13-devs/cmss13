@@ -503,7 +503,7 @@ WEAPONS
 	group = "Weapons"
 	
 
-/datum/supply_packs/explosives_M40_HEDP
+/datum/supply_packs/explosives_M40_HEFA
 	name = "M40 HEFA fragmentation grenades crate (x5)"
 	contains = list(
 					/obj/item/explosive/grenade/HE/frag,
@@ -525,7 +525,7 @@ WEAPONS
 					)
 	cost = RO_PRICE_VERY_PRICY
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper explosive HEDP grenade crate (WARNING)"
+	containername = "\improper explosive HEFA grenade crate (WARNING)"
 	group = "Weapons"
 	
 
@@ -851,7 +851,7 @@ ATTACHMENTS
 	group = "Attachments"
 
 /datum/supply_packs/rail_quickfire
-	name = "quickfire adaptor attachment crate (x2)"
+	name = "quickfire adapter attachment crate (x2)"
 	contains = list(
 					/obj/item/attachable/quickfire,
 					/obj/item/attachable/quickfire
@@ -1594,7 +1594,7 @@ AMMO
 	group = "Ammo"
 
 /datum/supply_packs/ammo_box_rifle
-	name = "large M41A ammo box crate (x400 rounds)"
+	name = "large M41A ammo box crate (x600 rounds)"
 	contains = list(/obj/item/big_ammo_box)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
@@ -1612,7 +1612,7 @@ AMMO
 	
 
 /datum/supply_packs/ammo_box_smg
-	name = "large M39 ammo box crate (x400 rounds)"
+	name = "large M39 ammo box crate (x600 rounds)"
 	contains = list(/obj/item/big_ammo_box/smg)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/ammo

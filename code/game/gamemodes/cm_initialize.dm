@@ -476,6 +476,7 @@ datum/game_mode/proc/initialize_special_clamps()
 		else
 			possible_synth_survivors -= A//Not whitelisted, get them out of here!
 
+	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
 	if(possible_survivors.len) //We have some, it looks like.
 		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
 			if(A.assigned_role == "MODE")

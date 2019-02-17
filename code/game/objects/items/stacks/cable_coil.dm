@@ -332,14 +332,20 @@
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")
 			return ..()
 
+		var/self_fixing = FALSE
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
 				if(M == user)
-					user << "\red You can't repair damage to your own body - it's against OH&S."
-					return
+					self_fixing = TRUE
 
 		if(S.burn_dam > 0 && use(1))
+			if(self_fixing)
+				user.visible_message("<span class='warning'>\The [user] begins fixing some burn damage on their [S.display_name].</span>", \
+					"<span class='warning'>You begin to carefully patch some burn damage on your [S.display_name] so as not to void your warranty.</span>")
+				if(!do_after(user,60, FALSE, 5, BUSY_ICON_FRIENDLY))
+					return
+
 			S.heal_damage(0,15,0,1)
 			user.visible_message("\red \The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src].")
 			return

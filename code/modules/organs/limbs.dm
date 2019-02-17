@@ -728,6 +728,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				owner.drop_inv_item_on_ground(owner.head, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
+				owner.update_hair()
 			if(ARM_RIGHT)
 				if(status & LIMB_ROBOT) 	organ = new /obj/item/robot_parts/r_arm(owner.loc)
 				else 						organ = new /obj/item/limb/r_arm(owner.loc, owner)

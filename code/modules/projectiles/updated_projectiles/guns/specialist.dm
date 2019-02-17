@@ -62,6 +62,49 @@
 	icon_state = "m_m42a" //NO BACK STATE
 	item_state = "m_m42a"
 
+/obj/item/weapon/gun/rifle/sniper/M42B
+	name = "\improper XM42B experimental anti-tank rifle"
+	desc = "An experimental anti-tank rifle produced by Armat Systems, currently undergoing field testing. Chambered in 10x99mm Caseless."
+	icon_state = "xm42b"
+	item_state = "xm42b"
+	unacidable = 1
+	origin_tech = "combat=6;materials=5"
+	fire_sound = 'sound/weapons/sniper_heavy.ogg'
+	current_mag = /obj/item/ammo_magazine/sniper/anti_tank
+	force = 12
+	wield_delay = 12 //Ends up being 1.6 seconds due to scope
+	zoomdevicename = "scope"
+	attachable_allowed = list(/obj/item/attachable/bipod)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/rifle/sniper/M42B/New()
+	..()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
+	var/obj/item/attachable/scope/S = new(src)
+	S.icon_state = "pmcscope"
+	S.attach_icon = "pmcscope"
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	var/obj/item/attachable/sniperbarrel/Q = new(src)
+	Q.Attach(src)
+	update_attachables()
+
+/obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
+	fire_delay = config.max_fire_delay * 8 //Big boy damage, but it takes a lot of time to fire a shot.
+	burst_amount = config.min_burst_value
+	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
+	scatter = config.min_scatter_value
+	damage_mult = config.base_hit_damage_mult
+	recoil = config.max_recoil_value
+
+/obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
+	if(able_to_fire(user))
+		if(get_dist(target,user) <= 8)
+			user << "<span class='warning'>The [src] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire.</span>"
+			return
+		else ..()
+		
+
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
 	desc = "A high end mag-rail heavy sniper rifle from Weyland-Armat chambered in the heaviest ammo available, 10x99mm Caseless."

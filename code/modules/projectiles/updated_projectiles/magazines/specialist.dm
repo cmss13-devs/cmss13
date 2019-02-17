@@ -22,6 +22,14 @@
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	icon_state = "m42c_flak"
 
+//M42B Magazine
+/obj/item/ammo_magazine/sniper/anti_tank
+	name = "\improper XM42B marksman magazine (10x99mm)"
+	desc = "A magazine of anti-tank sniper rifle ammunition."
+	max_rounds = 5
+	caliber = "10x99mm"
+	default_ammo = /datum/ammo/bullet/sniper/anti_tank
+	gun_type = /obj/item/weapon/gun/rifle/sniper/M42B
 
 //M42C magazine
 

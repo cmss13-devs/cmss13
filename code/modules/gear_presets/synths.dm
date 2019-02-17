@@ -3,14 +3,16 @@
 	name = "Synth"
 	uses_special_name = TRUE
 	languages = list("English", "Russian", "Tradeband", "Sainja", "Xenomorph")
-	skills = /datum/skills/early_synthetic
+	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/New()
 	. = ..()
 	access = get_all_accesses()
 
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
-	H.set_species("Early Synthetic")
+	if(!H.client || !H.client.prefs)
+		H.set_species("Early Synthetic")
+	H.set_species(H.client.prefs.synthetic_type)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.real_name = "David"
@@ -20,6 +22,12 @@
 			H.real_name = "David"
 	if(H.mind)
 		H.mind.name = H.real_name
+
+/datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
+	. = ..()
+	if(isEarlySynthetic(H))
+		if(H.mind)
+			H.mind.set_cm_skills(/datum/skills/early_synthetic)
 
 /*****************************************************************************************************/
 
@@ -32,17 +40,6 @@
 	rank = "Synthetic"
 	paygrade = "???"
 	role_comm_title = "Syn"
-
-/datum/equipment_preset/synth/uscm/load_race(mob/living/carbon/human/H)
-	if(!H.client || !H.client.prefs)
-		H.set_species("Early Synthetic")
-	H.set_species(H.client.prefs.synthetic_type)
-
-/datum/equipment_preset/synth/uscm/load_skills(mob/living/carbon/human/H)
-	..()
-	if(H.client && H.client.prefs && H.mind)
-		if(H.client.prefs.synthetic_type == "Synthetic")
-			H.mind.set_cm_skills(/datum/skills/synthetic)
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -92,6 +89,13 @@
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
+/datum/equipment_preset/synth/combat_smartgunner/load_race(mob/living/carbon/human/H)
+	H.set_species("Early Synthetic")
+
+/datum/equipment_preset/synth/combat_smartgunner/load_skills(mob/living/carbon/human/H)
+	if(H.mind)
+		H.mind.set_cm_skills(skills)
+
 /datum/equipment_preset/synth/combat_smartgunner/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/J = new(H)
 	J.icon_state = ""
@@ -121,6 +125,10 @@
 	idtype = /obj/item/card/id/lanyard
 	assignment = "Survivor"
 	special_role = "MODE"
+	skills = /datum/skills/early_synthetic
+
+/datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/H)
+	H.set_species("Early Synthetic")
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()
@@ -136,6 +144,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(H), WEAR_L_HAND)
 
 	add_random_survivor_equipment(H)
 
@@ -148,10 +157,14 @@
 	idtype = /obj/item/card/id/lanyard
 	assignment = "Survivor"
 	special_role = "MODE"
+	skills = /datum/skills/early_synthetic
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
 	access = get_all_civilian_accesses() //crappy access!
+
+/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
+	H.set_species("Early Synthetic")
 
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
@@ -181,6 +194,12 @@
 	H.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/H, var/randomise)
-	H.real_name = "Working Joe"//You don't have a name, you are a Working Joe
+	H.real_name = "Working Joe"
+	if(H.client && H.client.prefs)
+		H.real_name = H.client.prefs.synthetic_name
+		if(!H.real_name || H.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
+			H.real_name = "Working Joe"
+		else
+			H.real_name = "Working [H.real_name]"
 	if(H.mind)
-		H.mind.name = H.real_name
+		H.mind.name = "Working [H.real_name]"

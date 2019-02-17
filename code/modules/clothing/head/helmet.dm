@@ -13,7 +13,7 @@
 	min_cold_protection_temperature = HELMET_min_cold_protection_temperature
 	max_heat_protection_temperature = HELMET_max_heat_protection_temperature
 	siemens_coefficient = 0.7
-	w_class = 4
+	w_class = 3
 
 
 

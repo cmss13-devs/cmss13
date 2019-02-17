@@ -388,8 +388,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	health = 100
 	maxhealth = 100
 	layer = OBJ_LAYER
-	climbable = FALSE
-	throwpass = FALSE
 	stack_type = /obj/item/stack/sheet/wood
 	debris = list(/obj/item/stack/sheet/wood)
 	stack_amount = 5
@@ -442,8 +440,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	name = "metal barricade"
 	desc = "A sturdy and easily assembled barricade made of metal plates, often used for quick fortifications. Use a blowtorch to repair."
 	icon_state = "metal_0"
-	health = 200
-	maxhealth = 200
+	health = 400
+	maxhealth = 400
 	crusher_resistant = TRUE
 	barricade_resistance = 10
 	stack_type = /obj/item/stack/sheet/metal

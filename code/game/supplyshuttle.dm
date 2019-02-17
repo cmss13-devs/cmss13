@@ -318,6 +318,7 @@ var/list/mechtoys = list(
 	var/min_random_crate_amount = 0 //Minimum amount of crates spawned.
 	var/base_random_crate_interval = 10 //Every how many processing intervals do we get a random crates.
 	var/xeno_per_crate = 3 //Amount of xenos needed to spawn a crate
+	var/marines_per_crate = 12 //amount of marines needed per crate only works on extended.
 	var/crate_iteration = 0
 	var/points_per_platinum = 5
 	var/points_per_phoron = 0
@@ -367,6 +368,8 @@ var/list/mechtoys = list(
 /datum/controller/supply/proc/calculate_crate_amount()
 	//Please never ever tell anyone this is based upon xeno amounts.
 	var/crate_amount = round(max(min_random_crate_amount,(ticker.mode.count_xenos(SURFACE_Z_LEVELS)/xeno_per_crate)))
+	if(ticker.mode != /datum/game_mode/colonialmarines)
+		crate_amount = round(max(min_random_crate_amount,(ticker.mode.count_marines(SURFACE_Z_LEVELS)/marines_per_crate)))
 	//if it's not yet the 6th wave you only get 5 crates
 	if(crate_iteration<=5)
 		crate_amount = 5

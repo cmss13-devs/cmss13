@@ -136,6 +136,7 @@
 	var/letters = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
 	name = "computer disk [pick(letters)]-[rand(100,999)]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
+	w_class = 1
 
 /obj/item/disk/objective/Dispose()
 	if(objective)

@@ -198,17 +198,23 @@
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")
 			return ..()
 
+		var/self_fixing = FALSE
 		if(H.species.flags & IS_SYNTHETIC)
 			if(M == user)
-				user << "\red You can't repair damage to your own body - it's against OH&S."
-				return
+				self_fixing = TRUE
 
 		if(S.brute_dam && welding)
+			remove_fuel(1,user)
+			if(self_fixing)
+				user.visible_message("<span class='warning'>\The [user] begins fixing some dents on their [S.display_name].</span>", \
+					"<span class='warning'>You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty.</span>")
+				if(!do_after(user,60, FALSE, 5, BUSY_ICON_FRIENDLY))
+					return
+
 			S.heal_damage(15,0,0,1)
 			H.UpdateDamageIcon()
 			user.visible_message("<span class='warning'>\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src].</span>", \
 								"<span class='warning'>You patch some dents on \the [H]'s [S.display_name] with \the [src].</span>")
-			remove_fuel(1,user)
 			return
 		else
 			user << "<span class='warning'>Nothing to fix!</span>"

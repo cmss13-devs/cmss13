@@ -1194,7 +1194,7 @@
 			var/obj/structure/window_frame/WF = O
 			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
 				src << "<span class='warning'>This [O.name] is too tough to be melted by your weak acid.</span>"
-			return
+				return
 
 		if(O.density || istype(O, /obj/structure))
 			wait_time = 40 //dense objects are big, so takes longer to melt.

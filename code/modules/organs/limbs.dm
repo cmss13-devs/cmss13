@@ -160,11 +160,12 @@
 		burn *= bumod //~2/3 damage for ROBOLIMBS
 
 	//High brute damage or sharp objects may damage internal organs
-	if(internal_organs && ((sharp && brute >= 10) || brute >= 20) && prob(5))
-		//Damage an internal organ
-		var/datum/internal_organ/I = pick(internal_organs)
-		I.take_damage(brute / 2)
-		brute -= brute / 2
+	if(istype(owner,/mob/living/carbon/human))
+		if(internal_organs && ((sharp && brute >= 10) || brute >= 20) && prob(5) && brute_dam > 25)
+			//Damage an internal organ
+			var/datum/internal_organ/I = pick(internal_organs)
+			I.take_damage(brute / 2)
+			brute -= brute / 2
 
 	if(status & LIMB_BROKEN && prob(40) && brute)
 		if(!(owner.species && (owner.species.flags & NO_PAIN)))
@@ -302,7 +303,7 @@ This function completely restores a damaged organ to perfect condition.
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
-	if(damage > 15 && type != BURN && local_damage > 30 && prob(damage*0.5) && !(status & LIMB_ROBOT))
+	if(damage > 15 && type != BURN && local_damage > 40 && prob(damage*0.5) && !(status & LIMB_ROBOT) && brute_dam > 25)
 		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
@@ -727,6 +728,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				owner.drop_inv_item_on_ground(owner.head, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
+				owner.update_hair()
 			if(ARM_RIGHT)
 				if(status & LIMB_ROBOT) 	organ = new /obj/item/robot_parts/r_arm(owner.loc)
 				else 						organ = new /obj/item/limb/r_arm(owner.loc, owner)

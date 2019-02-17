@@ -547,6 +547,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_BACK)
 
 	living_human_list -= H
 	H.universal_understand = 1
@@ -576,6 +577,7 @@
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)
 	H.set_languages(list("Sainja"))
+	H.mind.set_cm_skills(/datum/skills/yautja/warrior)
 
 	return ..()
 

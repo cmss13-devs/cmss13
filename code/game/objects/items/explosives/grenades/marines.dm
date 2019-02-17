@@ -16,7 +16,7 @@
 	item_state = "grenade"
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/explosion_power = 100
+	var/explosion_power = 120
 	var/explosion_falloff = 20
 	var/shrapnel_count = 0
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
@@ -33,8 +33,18 @@
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, , ,shrapnel_type)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+		apply_explosion_overlay()
 		explosion_rec(loc, explosion_power, explosion_falloff)
 		cdel(src)
+	return
+
+/obj/item/explosive/grenade/HE/proc/apply_explosion_overlay()
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	spawn(7)
+		cdel(O)
 	return
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
@@ -43,15 +53,13 @@
 		spawn(rand(10,50))
 			prime()
 
-
-
 /obj/item/explosive/grenade/HE/PMC
 	name = "\improper M12 blast grenade"
 	desc = "A high-explosive grenade produced for private security firms. It explodes 3 seconds after the pin has been pulled."
 	icon_state = "grenade_pmc"
 	item_state = "grenade_ex"
 	underslug_launchable = FALSE
-	explosion_power = 120
+	explosion_power = 130
 
 
 
@@ -92,7 +100,7 @@
 	throw_speed = 2
 	throw_range = 6
 	underslug_launchable = FALSE
-	explosion_power = 100
+	explosion_power = 120
 	shrapnel_count = 48
 
 

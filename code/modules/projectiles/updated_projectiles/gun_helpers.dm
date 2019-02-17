@@ -440,7 +440,7 @@ should be alright.
 	set name = "Holster"
 	set category = "Object"
 	set hidden = 1
-	if(usr.is_mob_incapacitated(TRUE))
+	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
 		src << "<span class='warning'>You can't draw a weapon in your current state.</span>"
 		return
 

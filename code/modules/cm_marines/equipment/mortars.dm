@@ -402,6 +402,8 @@
 	new /obj/item/mortal_shell/smoke(src)
 	new /obj/item/device/encryptionkey/engi(src)
 	new /obj/item/device/encryptionkey/engi(src)
+	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/device/encryptionkey/jtac(src)
 	new /obj/item/device/binoculars/tactical/range(src)
 
 /obj/structure/mortar/wo

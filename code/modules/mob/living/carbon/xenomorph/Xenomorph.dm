@@ -531,3 +531,4 @@
 			New()
 	..()
 	hud_update()
+	plasma_stored = plasma_max

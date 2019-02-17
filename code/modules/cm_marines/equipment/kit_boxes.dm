@@ -12,7 +12,7 @@
 
 /obj/item/storage/box/spec/demolitionist
 	name = "\improper Demolitionist equipment crate"
-	desc = "A large case containing light armor, a heavy-caliber antitank missile launcher, missiles, C4, and claymore mines. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	desc = "A large case containing light armor, a heavy-caliber antitank missile launcher, missiles, C4, and claymore mines. Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
 	icon_state = "rocket_case"
 	spec_set = "demolitionist"
 
@@ -35,7 +35,7 @@
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment"
-	desc = "A large case containing your very own long-range sniper rifle. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	desc = "A large case containing your very own long-range sniper rifle. Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
 	icon_state = "sniper_case"
 	spec_set = "sniper"
 
@@ -68,7 +68,7 @@
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment"
-	desc = "A large case containing Scout equipment. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	desc = "A large case containing Scout equipment. Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
 	icon_state = "sniper_case"
 	spec_set = "scout"
 
@@ -93,6 +93,7 @@
 		new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 		new /obj/item/explosive/plastique(src)
 		new /obj/item/explosive/plastique(src)
+		new /obj/item/device/encryptionkey/jtac(src)
 		if(Check_WO())
 			new /obj/item/device/binoculars/designator(src)
 		else
@@ -101,7 +102,7 @@
 
 /obj/item/storage/box/spec/pyro
 	name = "\improper Pyrotechnician equipment"
-	desc = "A large case containing Pyrotechnician equipment. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	desc = "A large case containing Pyrotechnician equipment. Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
 	icon_state = "armor_case"
 	spec_set = "pyro"
 
@@ -121,8 +122,8 @@
 
 
 /obj/item/storage/box/spec/heavy_grenadier
-	name = "\improper Heavy Grenadier case"
-	desc = "A large case containing M50 Heavy Armor and a heavy-duty multi-shot grenade launcher, the Armat Systems M92. Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	name = "\improper Heavy Grenadier equipment"
+	desc = "A large case containing M50 Heavy Armor and a heavy-duty multi-shot grenade launcher, the Armat Systems M92. Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
 	icon_state = "grenade_case"
 	spec_set = "heavy grenadier"
 
@@ -135,6 +136,25 @@
 		new /obj/item/clothing/suit/storage/marine/specialist(src)
 		new /obj/item/clothing/head/helmet/marine/specialist(src)
 
+/obj/item/storage/box/spec/antitank_rifle
+	name = "\improper XM42B anti-tank rifle case"
+	desc = "A large case containing sniper armour, a Mod 88, binoculars, a sniper smock and an experimental M42B anti-tank rifle. Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
+	icon_state = "sniper_case"
+	spec_set = "sniper"
+
+/obj/item/storage/box/spec/antitank_rifle/New()
+	..()
+	spawn(1)
+		new /obj/item/clothing/suit/storage/marine/sniper(src)
+		new /obj/item/device/binoculars(src)
+		new /obj/item/storage/backpack/marine/smock(src)
+		new /obj/item/weapon/gun/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/weapon/gun/rifle/sniper/M42B(src)
+		new /obj/item/ammo_magazine/sniper/anti_tank(src)
+		new /obj/item/ammo_magazine/sniper/anti_tank(src)
+		new /obj/item/ammo_magazine/sniper/anti_tank(src)
 
 var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "Demo" = 2)
 
@@ -193,7 +213,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = null
-	desc = "Drag this sprite into you to open it up!\nNOTE: You cannot put items back inside this case."
+	desc = "Drag this sprite onto you to open it up!\nNOTE: You cannot put items back inside this case."
 
 
 /obj/item/storage/box/kit/mini_pyro

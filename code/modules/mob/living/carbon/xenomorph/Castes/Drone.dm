@@ -61,6 +61,7 @@
 	tacklemax = 5
 	tackle_chance = 50
 	speed = -1.1
+	aura_strength = 2
 
 /mob/living/carbon/Xenomorph/Drone
 	caste_name = "Drone"

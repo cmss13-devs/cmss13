@@ -243,6 +243,8 @@ datum/game_mode/proc/initialize_special_clamps()
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number, 1), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number, 1), WEAR_FACE)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(new_predator, armor_number), WEAR_BACK)
+		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
+		new_predator.mind.set_cm_skills(/datum/skills/yautja/warrior)
 
 		spawn(10)
 			new_predator << "<span class='notice'><B> Welcome Elder!</B></span>"
@@ -254,6 +256,8 @@ datum/game_mode/proc/initialize_special_clamps()
 		new_predator.real_name = "Councillor [new_predator.real_name]"
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
+		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
+		new_predator.mind.set_cm_skills(/datum/skills/yautja/warrior)
 
 		spawn(10)
 			new_predator << "<span class='notice'><B> Welcome Councillor!</B></span>"
@@ -262,6 +266,8 @@ datum/game_mode/proc/initialize_special_clamps()
 	else
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
+		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
+		new_predator.mind.set_cm_skills(/datum/skills/yautja/warrior)
 
 		spawn(12)
 			new_predator << "<span class='notice'>You are <B>Yautja</b>, a great and noble predator!</span>"

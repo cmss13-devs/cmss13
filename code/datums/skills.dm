@@ -511,3 +511,15 @@ MISCELLANEOUS
 /datum/skills/gladiator/champion/leader
 	name = "Gladiator Leader"
 	leadership = SKILL_LEAD_MASTER //Spartacus!
+
+/datum/skills/yautja/warrior
+	name = "Yautja Warrior"
+	cqc = SKILL_CQC_MASTER
+	engineer = SKILL_ENGINEER_MT
+	construction = SKILL_CONSTRUCTION_MASTER
+	medical = SKILL_MEDICAL_CMO
+	surgery = SKILL_SURGERY_EXPERT
+	pistols = SKILL_PISTOLS_TRAINED
+	smgs = SKILL_SMGS_TRAINED
+	rifles = SKILL_RIFLES_TRAINED
+	police = SKILL_POLICE_MP

@@ -35,16 +35,4 @@
 	..()
 	deploy(user)
 
-/obj/item/stool/attack(mob/M as mob, mob/user as mob)
-	if (prob(25) && istype(M,/mob/living))
-		user.visible_message("\red [user] breaks [src] over [M]'s back!")
-		user.temp_drop_inv_item(src)
-		var/obj/item/stack/sheet/metal/m = new/obj/item/stack/sheet/metal
-		m.loc = get_turf(src)
-		var/mob/living/T = M
-		if(istype(T) && !isXeno(T))
-			T.KnockDown(10)
-		T.apply_damage(20)
-		cdel(src)
-		return
-	..()
+

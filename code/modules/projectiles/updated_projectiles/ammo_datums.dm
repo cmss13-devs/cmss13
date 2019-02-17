@@ -691,6 +691,17 @@
 	name = "crude sniper bullet"
 	iff_signal = null
 
+/datum/ammo/bullet/sniper/anti_tank
+	name = "anti-tank sniper bullet"
+	iff_signal = ACCESS_IFF_MARINE
+
+/datum/ammo/bullet/sniper/anti_tank/New()
+	..()
+	accuracy = config.max_hit_accuracy
+	damage = config.super_hit_damage
+	shell_speed = config.ultra_shell_speed
+
+
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
 	iff_signal = ACCESS_IFF_PMC

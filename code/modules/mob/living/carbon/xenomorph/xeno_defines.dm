@@ -125,15 +125,15 @@
 		if(1)
 			switch(upgrade)
 				if(0)
-					upgrade_threshold = 100
-				if(1)
 					upgrade_threshold = 200
-				if(2)
+				if(1)
 					upgrade_threshold = 400
+				if(2)
+					upgrade_threshold = 800
 		if(2)
 			switch(upgrade)
 				if(0)
-					upgrade_threshold = 250
+					upgrade_threshold = 500
 				if(1)
 					upgrade_threshold = 800
 				if(2)

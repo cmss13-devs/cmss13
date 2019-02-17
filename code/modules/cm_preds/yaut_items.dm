@@ -297,19 +297,6 @@
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
-/obj/item/clothing/under/chainshirt/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/under/chainshirt/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/under/chainshirt/Dispose()
-	remove_from_missing_pred_gear(src)
-	..()
-
 /obj/item/clothing/gloves/yautja
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
@@ -1084,19 +1071,6 @@
 /obj/item/device/radio/headset/yautja/attackby()
 	return
 
-/obj/item/device/radio/headset/yautja/Dispose()
-	remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/device/radio/headset/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/device/radio/headset/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
@@ -1153,19 +1127,6 @@
 	throwforce = 1
 	unacidable = 1
 	var/timer = 0
-
-/obj/item/device/yautja_teleporter/Dispose()
-	remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/device/yautja_teleporter/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/device/yautja_teleporter/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
 	set waitfor = 0
@@ -1284,19 +1245,6 @@
 	unacidable = 1
 	sharp = IS_SHARP_ITEM_BIG
 
-/obj/item/weapon/harpoon/yautja/Dispose()
-	remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/harpoon/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/harpoon/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
@@ -1393,19 +1341,6 @@
 			target.KnockDown(5)
 	return ..()
 
-/obj/item/weapon/yautja_chain/Dispose()
-	remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/yautja_chain/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/yautja_chain/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
 /obj/item/weapon/yautja_knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
@@ -1424,19 +1359,6 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action)
 	unacidable = 1
-
-/obj/item/weapon/yautja_knife/Dispose()
-	remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/yautja_knife/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/yautja_knife/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/weapon/yautja_knife/attack_self(mob/living/carbon/human/user)
 	if(!isYautja(user)) return

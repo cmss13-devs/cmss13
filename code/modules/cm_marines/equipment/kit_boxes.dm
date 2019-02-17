@@ -93,6 +93,7 @@
 		new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 		new /obj/item/explosive/plastique(src)
 		new /obj/item/explosive/plastique(src)
+		new /obj/item/device/encryptionkey/jtac(src)
 		if(Check_WO())
 			new /obj/item/device/binoculars/designator(src)
 		else

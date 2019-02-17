@@ -33,8 +33,18 @@
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, , ,shrapnel_type)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
+		apply_explosion_overlay()
 		explosion_rec(loc, explosion_power, explosion_falloff)
 		cdel(src)
+	return
+
+/obj/item/explosive/grenade/HE/proc/apply_explosion_overlay()
+	var/obj/effect/overlay/O = new /obj/effect/overlay(loc)
+	O.name = "grenade"
+	O.icon = 'icons/effects/explosion.dmi'
+	flick("grenade", O)
+	spawn(7)
+		cdel(O)
 	return
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
@@ -42,8 +52,6 @@
 	if(fire_resistance<=0)
 		spawn(rand(10,50))
 			prime()
-
-
 
 /obj/item/explosive/grenade/HE/PMC
 	name = "\improper M12 blast grenade"

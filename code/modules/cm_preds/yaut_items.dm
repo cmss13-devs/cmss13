@@ -1318,7 +1318,7 @@
 /obj/item/weapon/yautja_chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
-	icon = 'icons/obj/items/predator.dmi'
+	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "whip"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST

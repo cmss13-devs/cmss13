@@ -32,58 +32,6 @@
 	MS.purchased_mutators += name
 	return 1
 
-/datum/xeno_mutator/health
-	//Boosts xeno health
-	name = "Boost health"
-	description = "Your internals harden and grow stronger."
-	cost = MUTATOR_COST_EXPENSIVE
-
-/datum/xeno_mutator/health/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.health_multiplier *= 1.1
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/health_flaw
-	name = "FLAW - Weaken health"
-	description = "Your internals weaken."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-
-/datum/xeno_mutator/health_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.health_multiplier *= 0.9
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/plasma
-	//Boosts xeno plasma
-	name = "Boost plasma"
-	description = "Your bile sacks expand."
-	cost = MUTATOR_COST_EXPENSIVE
-
-/datum/xeno_mutator/plasma/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.plasma_multiplier *= 1.2
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/plasma_flaw
-	name = "FLAW - Weaken plasma"
-	description = "Your bile sacks contract."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-
-/datum/xeno_mutator/plasma_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.plasma_multiplier *= 0.85
-	MS.recalculate_stats(description)
-
 /datum/xeno_mutator/larva
 	//Gives hive an infusion of larva
 	name = "Get an infusion of larva"
@@ -101,132 +49,6 @@
 		return
 	MS.hive.stored_larva += 5
 	MS.give_feedback(description)
-
-/datum/xeno_mutator/damage
-	//Stronger claws
-	name = "Boost damage"
-	description = "Your claws sharpen."
-	cost = MUTATOR_COST_EXPENSIVE
-
-/datum/xeno_mutator/damage/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.damage_multiplier *= 1.075
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/damage_flaw
-	//Stronger claws
-	name = "FLAW - Weaken damage"
-	description = "Your claws become dull."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-
-/datum/xeno_mutator/damage_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.damage_multiplier *= 0.93
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/armor
-	//Strong armour
-	name = "Boost armor"
-	description = "Your hide thickens."
-	cost = MUTATOR_COST_EXPENSIVE
-
-/datum/xeno_mutator/armor/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.armor_multiplier *= 0.90
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/armor_flaw
-	//Strong armour
-	name = "FLAW - Weaken armor"
-	description = "Your hide thins."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-
-/datum/xeno_mutator/armor_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.armor_multiplier *= 1.1
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/speed
-	//Faster xenos
-	name = "Boost speed"
-	description = "Your tendons grow stronger."
-	unique = TRUE //You can only buy it once, otherwise it would be too OP - SS13 combat is too reliant on speed
-	cost = MUTATOR_COST_EXPENSIVE
-
-/datum/xeno_mutator/speed/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.speed_multiplier *= 0.9
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/speed_flaw
-	//Faster xenos
-	name = "FLAW - Weaken speed"
-	description = "Your tendons grow weaker."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-
-/datum/xeno_mutator/speed_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.speed_multiplier *= 1.1
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/acid
-	//Stronger acid
-	name = "Boost acid"
-	description = "Your acid strengthens."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list("Burrower", "Drone", "Hivelord", "Praetorian", "Queen", "Sentinel", "Spitter") //Only for acid classes, except for Boiler
-
-/datum/xeno_mutator/acid/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.acid_boost_level += 1 //acid is one step stronger
-	MS.recalculate_actions(description)
-
-/datum/xeno_mutator/pheromones
-	//Stronger pheromones
-	name = "Boost pheromones"
-	description = "Your pheromones strengthen."
-	cost = MUTATOR_COST_EXPENSIVE
-	unique = TRUE //Can only buy once
-	caste_whitelist = list("Carrier", "Drone", "Hivelord", "Praetorian", "Queen") //Only for pheromone-givers
-
-/datum/xeno_mutator/pheromones/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.pheromones_boost_level += 0.5
-	MS.recalculate_pheromones(description)
-
-/datum/xeno_mutator/pheromones_flaw
-	name = "FLAW - Weaken pheromones"
-	description = "Your pheromones weaken."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-	caste_whitelist = list("Carrier", "Drone", "Hivelord", "Praetorian", "Queen") //Only for pheromone-givers
-
-/datum/xeno_mutator/pheromones_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.pheromones_boost_level -= 0.5
-	MS.recalculate_pheromones(description)
 
 /datum/xeno_mutator/hardy_weeds
 	//Weeds spread further, faster, and are tougher
@@ -316,21 +138,6 @@
 	MS.maturation_multiplier *= 0.9
 	MS.recalculate_maturation(description)
 
-/datum/xeno_mutator/faster_maturation_flaw
-	name = "FLAW - Slower maturation"
-	description = "The Hive matures slower."
-	cost = -MUTATOR_COST_EXPENSIVE
-	hive_only = TRUE
-	flaw = TRUE
-
-/datum/xeno_mutator/faster_maturation_flaw/apply_mutator(datum/mutator_set/hive_mutators/MS)
-	if(!istype(MS))
-		return 0
-	. = ..()
-	if(. == 0)
-		return
-	MS.maturation_multiplier *= 1.1
-	MS.recalculate_maturation(description)
 /*
 /datum/xeno_mutator/more_tier_slots
 	//Faster evolution and maturation
@@ -349,22 +156,6 @@
 	MS.tier_slot_multiplier *= 0.9
 	MS.recalculate_hive(description)
 */
-/datum/xeno_mutator/faster_pulling
-	//Boiler gas spreads further
-	name = "Faster pulling"
-	description = "You can now pull faster."
-	cost = MUTATOR_COST_EXPENSIVE
-	unique = TRUE //Can only buy once
-	individual_only = TRUE //Only for individuals
-
-/datum/xeno_mutator/faster_pulling/apply_mutator(datum/mutator_set/individual_mutators/MS)
-	if(!istype(MS))
-		return 0
-	. = ..()
-	if(. == 0)
-		return
-	MS.pull_multiplier *= 0.75 //0.75 felt a bit too weak to be worth it, 0.5 is definitely noticeable
-	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/more_carrier_capacity
 	//Gives Carrier more carry capacity
@@ -421,35 +212,6 @@
 		return
 	MS.pounce_boost += 2
 	MS.recalculate_actions(description)
-
-/datum/xeno_mutator/better_tackle
-	//Increases tackle chance and so on
-	name = "Boost tackle"
-	description = "You grow better at tackling."
-	cost = MUTATOR_COST_EXPENSIVE
-	unique = TRUE //Can only buy once
-
-/datum/xeno_mutator/better_tackle/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.tackle_chance_multiplier *= 1.1
-	MS.tackle_strength_bonus += 1
-	MS.recalculate_stats(description)
-
-/datum/xeno_mutator/better_tackle_flaw
-	name = "FLAW - Weaker tackle"
-	description = "You grow worse at tackling."
-	cost = -MUTATOR_COST_EXPENSIVE
-	flaw = TRUE
-
-/datum/xeno_mutator/better_tackle_flaw/apply_mutator(datum/mutator_set/MS)
-	. = ..()
-	if(. == 0)
-		return
-	MS.tackle_chance_multiplier *= 0.9
-	MS.tackle_strength_bonus -= 1
-	MS.recalculate_stats(description)
 
 /datum/xeno_mutator/resilient_larva
 	//Larva grows faster and can burst more larva

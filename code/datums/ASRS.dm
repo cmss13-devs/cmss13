@@ -17,33 +17,16 @@
 
 /datum/supply_packs/weapons_sentry/asrs
 	buyable = 0
-	group = "Defence"
+	group = "Utility"
 
 /datum/supply_packs/gun/heavyweapons_ammo/asrs
 	buyable = 0
 	group = "Munition"
 	cost = ASRS_LOWEST_WEIGHT
 
-/datum/supply_packs/explosives/asrs
-	buyable = 0
-	group = "Offence"
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs/explosives_mines/asrs/
-	buyable = 0
-	group = "Defence"
-
 /datum/supply_packs/explosives_plastique/asrs/
 	buyable = 0
 	group = "Utility"
-
-/datum/supply_packs/explosives_hedp/asrs/
-	buyable = 0
-	group = "Offence"
-
-/datum/supply_packs/explosives_hefa/asrs/
-	buyable = 0
-	group = "Offence"
 
 /datum/supply_packs/ammo_mag_box/asrs/
 	buyable = 0
@@ -133,18 +116,18 @@
 
 /datum/supply_packs/sandbags/asrs/
 	buyable = 0
-	group = "Defence"
+	group = "Utility"
 
 /datum/supply_packs/metal50/asrs/
-	group = "Defence"
+	group = "Utility"
 	buyable = 0
 
 /datum/supply_packs/plas50/asrs/
-	group = "Defence"
+	group = "Utility"
 	buyable = 0
 
 /datum/supply_packs/m56d_hmg/asrs/
-	group = "Defence"
+	group = "Utility"
 	buyable = 0
 		
 /datum/supply_packs/motiondetector/asrs/
@@ -165,6 +148,6 @@
 	cost = ASRS_LOWEST_WEIGHT
 	containertype = /obj/structure/closet/crate/supply
 	containername = "specialist gear crate"
-	group = "Offence"
+	group = "Utility"
 	iteration_needed = 300
 	buyable = 0

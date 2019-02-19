@@ -352,7 +352,7 @@ var/list/mechtoys = list(
 			if(processing)
 				iteration++
 				points += points_per_process
-				if(iteration == 1 || iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
+				if(iteration >= 20 || iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
 					add_random_crates()
 					crate_iteration += 1
 			sleep(processing_interval)
@@ -379,15 +379,11 @@ var/list/mechtoys = list(
 /datum/controller/supply/proc/add_random_crate()
 	var/randpick = rand(1,100)
 	switch(randpick)
-		if(1 to 30)
-			pickcrate("Defence")
-		if(30 to 50)
+		if(1 to 40)
 			pickcrate("Munition")
-		if(50 to 75)
-			pickcrate("Offence")
-		if(75 to 90)
+		if(41 to 81)
 			pickcrate("Utility")
-		if(91 to 100)
+		if(81 to 100)
 			pickcrate("Everything")
 
 //Here we pick the exact crate from the crate types to send to the marines.

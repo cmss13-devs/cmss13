@@ -577,7 +577,6 @@
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.remove_from_hud(H)
 	H.set_languages(list("Sainja"))
-	H.mind.set_cm_skills(/datum/skills/yautja/warrior)
 
 	return ..()
 

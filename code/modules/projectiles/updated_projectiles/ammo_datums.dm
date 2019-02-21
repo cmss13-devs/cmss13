@@ -353,7 +353,7 @@
 	name = "submachinegun bullet"
 	New()
 		..()
-		damage = config.lmed_hit_damage
+		damage = config.hlow_hit_damage
 		accurate_range = config.near_shell_range
 		damage_falloff = config.reg_damage_falloff
 
@@ -362,8 +362,8 @@
 	New()
 		..()
 		scatter = config.min_scatter_value
-		damage = config.med_hit_damage
-		penetration = config.low_armor_penetration
+		damage = config.low_hit_damage
+		penetration = config.hlow_armor_penetration
 		shell_speed = config.fast_shell_speed
 		damage_falloff = config.reg_damage_falloff
 
@@ -378,14 +378,14 @@
 	New()
 		..()
 		accurate_range = config.norm_shell_range
-		damage = config.med_hit_damage
+		damage = config.hlmed_hit_damage
 		accuracy = config.med_hit_accuracy
 		scatter = -config.low_scatter_value
 		shell_speed = config.ultra_shell_speed
 		damage_falloff = config.tactical_damage_falloff
 
 /datum/ammo/bullet/rifle/explosive
-	name = "rifle bullet"
+	name = "explosive rifle bullet"
 	New()
 		..()
 		accurate_range = config.norm_shell_range
@@ -409,7 +409,7 @@
 	New()
 		..()
 		damage = config.lmed_hit_damage
-		penetration = config.med_armor_penetration
+		penetration = config.hmed_armor_penetration
 		shell_speed = config.super_shell_speed
 		damage_falloff = config.reg_damage_falloff
 
@@ -421,7 +421,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
 	New()
 		..()
-		damage = config.lmed_hit_damage
+		damage = config.hlmed_hit_damage
 		shell_speed = config.super_shell_speed
 		accuracy = -config.low_hit_accuracy
 		damage_falloff = config.reg_damage_falloff

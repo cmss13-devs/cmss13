@@ -16,8 +16,8 @@
 	item_state = "grenade"
 	dangerous = 1
 	underslug_launchable = TRUE
-	var/explosion_power = 120
-	var/explosion_falloff = 20
+	var/explosion_power = 100
+	var/explosion_falloff = 15
 	var/shrapnel_count = 0
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
 	var/fire_resistance = 30 //to prevent highly controlled massive explosions

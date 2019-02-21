@@ -41,6 +41,7 @@
 	melee_damage_upper = 40
 	plasma_gain = 0.04
 	plasma_max = 1000
+	speed = -0.7
 	caste_desc = "A giant ranged monster. It looks pretty strong."
 	tackle_chance = 55
 	aura_strength = 3.5

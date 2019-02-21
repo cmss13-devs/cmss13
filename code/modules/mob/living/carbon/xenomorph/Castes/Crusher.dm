@@ -35,6 +35,8 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	tackle_chance = 25
+	armor_deflection = 65
+	max_health = 335
 	plasma_gain = 0.075
 	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
 

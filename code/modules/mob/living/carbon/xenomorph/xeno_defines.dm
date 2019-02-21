@@ -125,27 +125,27 @@
 		if(1)
 			switch(upgrade)
 				if(0)
-					upgrade_threshold = 200
+					upgrade_threshold = 100
 				if(1)
-					upgrade_threshold = 400
+					upgrade_threshold = 200
 				if(2)
-					upgrade_threshold = 800
+					upgrade_threshold = 400
 		if(2)
 			switch(upgrade)
 				if(0)
-					upgrade_threshold = 500
+					upgrade_threshold = 250
 				if(1)
-					upgrade_threshold = 800
+					upgrade_threshold = 500
 				if(2)
-					upgrade_threshold = 1600
+					upgrade_threshold = 1000
 		if(3)
 			switch(upgrade)
 				if(0)
-					upgrade_threshold = 800
+					upgrade_threshold = 400
 				if(1)
-					upgrade_threshold = 1600
+					upgrade_threshold = 800
 				if(2)
-					upgrade_threshold = 3200
+					upgrade_threshold = 1600
 	if(caste_name == "Queen")
 		switch(upgrade)
 			if(0)

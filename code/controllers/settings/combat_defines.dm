@@ -31,7 +31,9 @@
 	var/min_hit_damage = 16
 	var/mlow_hit_damage = 22
 	var/low_hit_damage = 29
+	var/hlow_hit_damage = 32
 	var/lmed_hit_damage = 38
+	var/hlmed_hit_damage = 40
 	var/med_hit_damage = 47
 	var/hmed_hit_damage = 56
 	var/high_hit_damage = 68
@@ -110,7 +112,9 @@
 	var/min_armor_penetration = 5
 	var/mlow_armor_penetration = 12
 	var/low_armor_penetration = 23
+	var/hlow_armor_penetration = 26
 	var/med_armor_penetration = 31
+	var/hmed_armor_penetration = 36
 	var/high_armor_penetration = 48
 	var/mhigh_armor_penetration = 66
 	var/max_armor_penetration = 87

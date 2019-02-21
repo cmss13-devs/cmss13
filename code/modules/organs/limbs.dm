@@ -161,7 +161,7 @@
 
 	//High brute damage or sharp objects may damage internal organs
 	if(istype(owner,/mob/living/carbon/human))
-		if(internal_organs && ((sharp && brute >= 10) || brute >= 20) && prob(5) && brute_dam > 25)
+		if(internal_organs && ((sharp && brute >= 10) || brute >= 20) && prob(5) && brute_dam > 15)
 			//Damage an internal organ
 			var/datum/internal_organ/I = pick(internal_organs)
 			I.take_damage(brute / 2)
@@ -303,7 +303,7 @@ This function completely restores a damaged organ to perfect condition.
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
-	if(damage > 15 && type != BURN && local_damage > 40 && prob(damage*0.5) && !(status & LIMB_ROBOT) && brute_dam > 25)
+	if(damage > 15 && type != BURN && local_damage > 40 && prob(damage*0.5) && !(status & LIMB_ROBOT) && brute_dam > 15)
 		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)

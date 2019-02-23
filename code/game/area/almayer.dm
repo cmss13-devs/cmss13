@@ -468,6 +468,8 @@
 /area/almayer/evacuation/pod14
 /area/almayer/evacuation/pod15
 /area/almayer/evacuation/pod16
+/area/almayer/evacuation/pod17
+/area/almayer/evacuation/pod18
 
 /area/almayer/evacuation/stranded
 
@@ -488,3 +490,5 @@
 /area/almayer/evacuation/stranded/pod14
 /area/almayer/evacuation/stranded/pod15
 /area/almayer/evacuation/stranded/pod16
+/area/almayer/evacuation/stranded/pod17
+/area/almayer/evacuation/stranded/pod18

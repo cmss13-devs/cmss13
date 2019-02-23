@@ -9808,6 +9808,9 @@
 	dir = 2
 	},
 /area/adminlevel/bunker01/kitchen)
+"HB" = (
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/almayer/evacuation/stranded/pod18)
 "It" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -9830,6 +9833,22 @@
 	dir = 8
 	},
 /area/adminlevel/bunker01/hydroponics)
+"Sk" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "17"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "Sz" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/firealarm{
@@ -9841,6 +9860,25 @@
 /obj/machinery/vending/antag/weapons,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
+"TF" = (
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/almayer/evacuation/stranded/pod17)
+"Vp" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation{
+	name = "18"
+	},
+/turf/open/space/transit/north/shuttlespace_ns4,
+/area/space)
 "Wu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -15704,6 +15742,12 @@ ay
 aX
 bz
 bz
+aX
+aX
+aX
+aX
+aX
+Sk
 bz
 bz
 bz
@@ -15723,18 +15767,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+aX
+aX
+aX
+aX
+Vp
 bz
 bz
 aX
@@ -15856,6 +15894,12 @@ ay
 aX
 bz
 bz
+aX
+TF
+TF
+TF
+TF
+aX
 bz
 bz
 bz
@@ -15875,18 +15919,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+HB
+HB
+HB
+HB
+aX
 bz
 bz
 aX
@@ -16008,6 +16046,12 @@ ay
 aX
 bz
 bz
+aX
+TF
+TF
+TF
+TF
+aX
 bz
 bz
 bz
@@ -16027,18 +16071,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+HB
+HB
+HB
+HB
+aX
 bz
 bz
 aX
@@ -16160,6 +16198,12 @@ ay
 aX
 bz
 bz
+aX
+TF
+TF
+TF
+TF
+aX
 bz
 bz
 bz
@@ -16179,18 +16223,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+HB
+HB
+HB
+HB
+aX
 bz
 bz
 aX
@@ -16312,6 +16350,12 @@ ay
 aX
 bz
 bz
+aX
+TF
+TF
+TF
+TF
+aX
 bz
 bz
 bz
@@ -16331,18 +16375,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+HB
+HB
+HB
+HB
+aX
 bz
 bz
 aX
@@ -16464,6 +16502,12 @@ ay
 aX
 bz
 bz
+aX
+TF
+TF
+TF
+TF
+aX
 bz
 bz
 bz
@@ -16483,18 +16527,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+HB
+HB
+HB
+HB
+aX
 bz
 bz
 aX
@@ -16616,6 +16654,12 @@ ay
 aX
 bz
 bz
+aX
+aX
+aX
+aX
+aX
+aX
 bz
 bz
 bz
@@ -16635,18 +16679,12 @@ bz
 bz
 bz
 bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
-bz
+aX
+aX
+aX
+aX
+aX
+aX
 bz
 bz
 aX

@@ -3,8 +3,8 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	melee_damage_lower = 40
+	melee_damage_upper = 50
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
@@ -27,8 +27,8 @@
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
 	upgrade = 1
-	melee_damage_lower = 40
-	melee_damage_upper = 50
+	melee_damage_lower = 45
+	melee_damage_upper = 55
 	plasma_gain = 0.067
 	plasma_max = 150
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
@@ -39,8 +39,8 @@
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 45
-	melee_damage_upper = 55
+	melee_damage_lower = 60
+	melee_damage_upper = 70
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	speed = -0.9
 	armor_deflection = 45
@@ -115,9 +115,9 @@
 
 //Chance of insta limb amputation after a melee attack.
 /mob/living/carbon/Xenomorph/Ravager/proc/delimb(var/mob/living/carbon/human/H, var/datum/limb/O)
-	if (!iszombie(H) && prob(isYautja(H)?10:20)) // lets halve this for preds
+	if (!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
 		O = H.get_limb(check_zone(zone_selected))
-		if (O.body_part != UPPER_TORSO && O.body_part != LOWER_TORSO && O.body_part != HEAD && O.brute_dam > 25) //Only limbs.
+		if (O.body_part != UPPER_TORSO && O.body_part != LOWER_TORSO && O.body_part != HEAD && O.brute_dam >= 5) //Only limbs.
 			visible_message("<span class='danger'>The limb is sliced clean off!</span>","<span class='danger'>You slice off a limb!</span>")
 			O.droplimb()
 			return 1

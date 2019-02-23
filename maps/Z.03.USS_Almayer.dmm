@@ -60504,12 +60504,12 @@
 "gCd" = (
 /obj/structure/table/almayer,
 /obj/item/book/manual/marine_law{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/item/book/manual/marine_law{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
@@ -62960,12 +62960,12 @@
 "oAc" = (
 /obj/structure/table/almayer,
 /obj/item/book/manual/marine_law{
-	step_x = 9;
-	step_y = 10
+	pixel_x = 9;
+	pixel_y = 10
 	},
 /obj/item/book/manual/marine_law{
-	step_x = 1;
-	step_y = 2
+	pixel_x = 1;
+	pixel_y = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (SOUTHWEST)";
@@ -63916,28 +63916,28 @@
 "rzG" = (
 /obj/structure/table/almayer,
 /obj/item/device/radio{
-	step_x = 8;
-	step_y = 12
+	pixel_x = 8;
+	pixel_y = 12
 	},
 /obj/item/device/radio{
-	step_x = 3;
-	step_y = 9
+	pixel_x = 3;
+	pixel_y = 9
 	},
 /obj/item/device/radio{
-	step_x = 0;
-	step_y = 10;
+	pixel_x = 0;
+	pixel_y = 10;
 	pixel_x = -1;
 	pixel_y = -1
 	},
 /obj/item/device/radio{
-	step_x = 14;
-	step_y = 3;
+	pixel_x = 14;
+	pixel_y = 3;
 	pixel_x = -1;
 	pixel_y = -1
 	},
 /obj/item/device/radio{
-	step_x = 6;
-	step_y = 3;
+	pixel_x = 6;
+	pixel_y = 3;
 	pixel_x = -1;
 	pixel_y = -1
 	},
@@ -64926,16 +64926,16 @@
 "uiB" = (
 /obj/structure/table/almayer,
 /obj/item/book/manual/marine_law{
-	step_x = 7;
-	step_y = 10
+	pixel_x = 7;
+	pixel_y = 10
 	},
 /obj/item/book/manual/marine_law{
-	step_x = 3;
-	step_y = 8
+	pixel_x = 3;
+	pixel_y = 8
 	},
 /obj/item/book/manual/marine_law{
-	step_x = 8;
-	step_y = 1
+	pixel_x = 8;
+	pixel_y = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
@@ -65458,12 +65458,12 @@
 "vOQ" = (
 /obj/structure/table/almayer,
 /obj/item/tool/stamp/denied{
-	step_x = 5;
-	step_y = 4
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /obj/item/tool/stamp{
-	step_x = 2;
-	step_y = 0
+	pixel_x = 2;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
@@ -65515,24 +65515,24 @@
 "vXq" = (
 /obj/structure/table/almayer,
 /obj/item/tool/taperoll/police{
-	step_x = 14;
-	step_y = 19
+	pixel_x = 14;
+	pixel_y = 19
 	},
 /obj/item/tool/taperoll/police{
-	step_x = 5;
-	step_y = 15
+	pixel_x = 5;
+	pixel_y = 15
 	},
 /obj/item/tool/taperoll/police{
-	step_x = 13;
-	step_y = 8
+	pixel_x = 13;
+	pixel_y = 8
 	},
 /obj/item/tool/taperoll/police{
-	step_x = 4;
-	step_y = 6
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /obj/item/clipboard{
-	step_x = 1;
-	step_y = 4;
+	pixel_x = 1;
+	pixel_y = 4;
 	pixel_x = -1
 	},
 /turf/open/floor/almayer,
@@ -65705,8 +65705,8 @@
 "wsg" = (
 /obj/structure/table/almayer,
 /obj/item/book/manual/marine_law{
-	step_x = 28;
-	step_y = 31
+	pixel_x = 28;
+	pixel_y = 31
 	},
 /obj/item/paper_bin,
 /obj/item/tool/pen,
@@ -66033,8 +66033,8 @@
 /area/almayer/shipboard/brig_cells)
 "xDD" = (
 /obj/item/tool/taperoll/police{
-	step_x = 31;
-	step_y = 17
+	pixel_x = 31;
+	pixel_y = 17
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1

@@ -490,3 +490,5 @@
 /area/almayer/evacuation/stranded/pod14
 /area/almayer/evacuation/stranded/pod15
 /area/almayer/evacuation/stranded/pod16
+/area/almayer/evacuation/stranded/pod17
+/area/almayer/evacuation/stranded/pod18

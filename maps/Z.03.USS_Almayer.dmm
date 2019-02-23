@@ -54456,12 +54456,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/port_umbilical)
-"cey" = (
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation{
-	name = "14"
-	},
-/turf/closed/wall/almayer,
-/area/almayer/hull/lower_hull)
 "cez" = (
 /turf/closed/shuttle/escapepod{
 	tag = "icon-wall6";
@@ -59940,6 +59934,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+"eON" = (
+/obj/effect/landmark/shuttle_loc/marine_src/evacuation{
+	name = "14"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hallways/starboard_hallway)
 "ePA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -64986,6 +64986,12 @@
 	dir = 4
 	},
 /area/almayer/shipboard/brig_cells)
+"uuf" = (
+/obj/effect/landmark/shuttle_loc/marine_src/evacuation{
+	name = "18"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hull/lower_hull)
 "uuW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -65406,6 +65412,12 @@
 	},
 /turf/open/floor/wood,
 /area/almayer/shipboard/chief_mp_office)
+"vIT" = (
+/obj/effect/landmark/shuttle_loc/marine_src/evacuation{
+	name = "17"
+	},
+/turf/closed/wall/almayer,
+/area/almayer/hallways/starboard_hallway)
 "vJo" = (
 /obj/machinery/computer/security/almayer_network,
 /obj/structure/table/almayer,
@@ -102246,7 +102258,7 @@ aLd
 aLd
 aLd
 aLd
-cey
+aLd
 aLF
 aKZ
 bzG
@@ -102315,7 +102327,7 @@ aLd
 aLd
 aLd
 aLd
-cip
+aLd
 aKY
 aKW
 aaa
@@ -102855,7 +102867,7 @@ aLd
 aLd
 aLd
 aLd
-aLB
+vIT
 wgR
 nYr
 jJs
@@ -102924,7 +102936,7 @@ aLd
 aLd
 aLd
 aLd
-aLd
+uuf
 aKZ
 aKW
 aaa
@@ -104073,7 +104085,7 @@ aLd
 aLd
 aLd
 aLd
-aLB
+eON
 wgR
 nYr
 jJs
@@ -104142,7 +104154,7 @@ aLd
 aLd
 aLd
 aLd
-aLd
+cip
 aKY
 aKW
 aaa

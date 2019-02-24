@@ -352,7 +352,7 @@ var/list/mechtoys = list(
 			if(processing)
 				iteration++
 				points += points_per_process
-				if(iteration >= 20 || iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
+				if(iteration >= 20 && iteration % base_random_crate_interval == 0 && supply_controller.shoppinglist.len <= 20)
 					add_random_crates()
 					crate_iteration += 1
 			sleep(processing_interval)

@@ -278,3 +278,7 @@
 /mob/living/carbon/Xenomorph/Burrower/ancient/New()
 	..()
 	upgrade_xeno(3)
+
+/mob/living/carbon/Xenomorph/Predalien/primordial/New()
+	..()
+	upgrade_xeno(4)

@@ -20,6 +20,26 @@
 	xeno_explosion_resistance = 100
 	upgrade = -1
 
+/datum/caste_datum/predalien/primordial
+	upgrade_name = "Primordial"
+	display_name = "Primordial Abomination"
+	caste_desc = "This is it. This is the final boss. There's nothing more powerful than this."
+	max_health = 1000
+	plasma_gain = 0.084
+	plasma_max = 400
+	evolution_allowed = FALSE
+	melee_damage_lower = 150
+	melee_damage_upper = 175
+	tackle_chance = 90
+	is_intelligent = TRUE
+	charge_type = 4
+	armor_deflection = 60
+	bite_chance = 50
+	tail_chance = 40
+	attack_delay = -3
+	speed = -2.3
+	upgrade = 4
+
 /mob/living/carbon/Xenomorph/Predalien
 	caste_name = "Predalien"
 	name = "Abomination"
@@ -66,9 +86,23 @@
 		var/datum/mind/M
 		for(var/i in ticker.mode.predators)
 			M = i
-			if(M.current && M.current.stat != DEAD)
+			if(M.current && M.current.stat != DEAD && z != ADMIN_Z_LEVEL)
 				M.current << "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>"
 				M.current.emote("roar")
+	if(upgrade == 4)
+		desc = "Nothing matches this force of destruction. Good luck killing it, mortal."
+		color = "#FE0202"
+		if(z != ADMIN_Z_LEVEL)
+			xeno_message("<span class='xenoannounce'>A Primordial Abomination has risen! Rejoice!")
+			for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+				if(X && X.stat != DEAD)
+					X.emote("roar")
+			for(var/mob/living/carbon/human/H in living_mob_list)
+				if(z == H.z)
+					H << "<span class='xenoannounce'>The ground shakes beneath your feet... Echoes of imminent doom tickle your conscious like ripples on a pond...</span>"
+					playsound(H, 'sound/voice/predalien_roar.ogg', 100, 75)
+					if(H.client)
+						shake_camera(H, 25, 5)
 
 	src << {"
 <span class='role_body'>|______________________|</span>

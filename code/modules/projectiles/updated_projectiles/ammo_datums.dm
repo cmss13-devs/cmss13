@@ -726,7 +726,7 @@
 		..()
 		accurate_range = config.short_shell_range
 		damage_falloff = config.tactical_damage_falloff
-		damage = config.low_hit_damage
+		damage = config.lmed_hit_damage
 		penetration = config.low_armor_penetration
 
 /datum/ammo/bullet/smartgun/lethal

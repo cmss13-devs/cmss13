@@ -39,11 +39,10 @@
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	upgrade = 2
-	melee_damage_lower = 60
-	melee_damage_upper = 70
+	melee_damage_lower = 50
+	melee_damage_upper = 60
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	speed = -0.9
-	armor_deflection = 45
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"

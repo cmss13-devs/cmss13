@@ -230,6 +230,7 @@
 				cdel(M)
 
 /mob/living/carbon/Xenomorph/proc/handle_regular_hud_updates()
+	if(!mind) return
 
 	if(hud_used && hud_used.healths)
 		if(stat != DEAD)

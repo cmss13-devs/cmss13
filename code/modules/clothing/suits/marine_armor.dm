@@ -437,6 +437,21 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3 pattern jungle sniper"
 
+/obj/item/clothing/suit/storage/marine/ghillie
+	name = "\improper M45 pattern ghillie armor"
+	desc = "A lightweight ghillie camouflage suit, used by USCM snipers on recon missions. Very lightweight, but doesn't protect much."
+	icon_state = "ghillie_armor"
+	armor = list(melee = 45, bullet = 45, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	specialty = "M45 pattern ghillie"
+
+/obj/item/clothing/suit/storage/marine/ghillie/mob_can_equip(mob/M, slot, disable_warning = 0)
+	. = ..()
+	if(.)
+		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_SNIPER)
+			M << "<span class='warning'>You are not trained to use [src]!</span>"
+			return 0
+
 //=============================//PMCS\\==================================\\
 //=======================================================================\\
 

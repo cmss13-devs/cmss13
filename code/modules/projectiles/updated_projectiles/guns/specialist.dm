@@ -92,7 +92,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42B/set_gun_config_values()
 	fire_delay = config.max_fire_delay * 8 //Big boy damage, but it takes a lot of time to fire a shot.
 	burst_amount = config.min_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + 2*config.max_hit_accuracy_mult
 	scatter = config.min_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.max_recoil_value

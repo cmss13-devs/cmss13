@@ -1,0 +1,10 @@
+author: Miraviel
+
+delete-after: True
+
+changes: 
+  - tweak: "Almayer. Medical. Moved the sleeper to the bottom right corner, added another body scanner in its former place. Cryotubes were changed to eject patients whichever direction they face (west on the Almayer). Removed a cryotube for the sake of visuals. Might re-add it later if we really need it."
+  - bugfix: "Almayer. Medical. Fixed the medical-to-hangar airlock access issues, added a missing dropper to the chemistry. Added an access requirement to the CMO's personal cabinet and shutters to his office. Moved a wall sign from below a light tube."
+  - tweak: "Almayer. Brig. Isolation cell windows were made super strong. Removed an extra potted plant and an APC from processing. Added lights to the security office, shutters to the armory. Added access requirements to the shutters and the wall-mounted flashes. Moved the fire alarm in the main room."
+  - bugfix: "Almayer. Brig. Fixed the entry and the two pairs of exit shutters not reacting to their buttons."
+  - bugfix: "Almayer. Fixed the lack of lights in the conference room."

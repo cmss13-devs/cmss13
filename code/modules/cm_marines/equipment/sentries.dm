@@ -270,7 +270,6 @@
 	flags_atom = RELAY_CLICK
 	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_ENGPREP, ACCESS_MARINE_LEADER)
 	var/iff_signal = ACCESS_IFF_MARINE
-	var/safety_off = 0
 	var/rounds = 500
 	var/rounds_max = 500
 	var/burst_size = 6
@@ -382,7 +381,6 @@
 		"cell_maxcharge" = cell ? cell.maxcharge : 0,
 		"dir" = dir,
 		"burst_fire" = burst_fire,
-		"safety_toggle" = !safety_off,
 		"manual_override" = manual_override,
 		"angle" = angle_list[angle],
 	)
@@ -422,21 +420,6 @@
 				user.visible_message("<span class='notice'>[user] activates [src]'s burst fire mode.</span>",
 				"<span class='notice'>You activate [src]'s burst fire mode.</span>")
 				visible_message("\icon[src] <span class='notice'>A green light on [src] blinks rapidly.</span>")
-
-		if("safety")
-			if(!cell || cell.charge <= 0 || !anchored || immobile || !on || stat)
-				return
-
-			if(!safety_off)
-				safety_off = 1
-				user.visible_message("<span class='warning'>[user] deactivates [src]'s safety lock.</span>",
-				"<span class='warning'>You deactivate [src]'s safety lock.</span>")
-				visible_message("\icon[src] <span class='warning'>A red light on [src] blinks brightly!")
-			else
-				safety_off = 0
-				user.visible_message("<span class='notice'>[user] activates [src]'s safety lock.</span>",
-				"<span class='notice'>You activate [src]'s safety lock.</span>")
-				visible_message("\icon[src] <span class='notice'>A red light on [src] blinks rapidly.</span>")
 
 		/*if("manual") //Alright so to clean this up, fuck that manual control pop up. Its a good idea but its not working out in practice.
 			if(user.interactee != src) //Make sure if we're using a machine we can't use another one (ironically now impossible due to handle_click())

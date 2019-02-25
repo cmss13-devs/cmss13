@@ -343,6 +343,15 @@
 	flags_marine_helmet = NOFLAGS
 	specialty = "M50 tanker"
 
+/obj/item/clothing/head/helmet/marine/ghillie
+	name = "\improper M45 ghillie coif"
+	desc = "A lightweight, armored ghillie coif used by USCM snipers on recon missions."
+	icon_state = "ghillie_coif"
+	armor = list(melee = 45, bullet = 45, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	flags_marine_helmet = NOFLAGS
+
 
 //=============================//PMCS\\==================================\\
 //=======================================================================\\

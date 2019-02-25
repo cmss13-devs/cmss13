@@ -152,6 +152,7 @@
 		new /obj/item/ammo_magazine/pistol/vp70(src)
 		new /obj/item/ammo_magazine/pistol/vp70(src)
 		new /obj/item/weapon/gun/rifle/sniper/M42B(src)
+		new /obj/item/clothing/suit/storage/marine/ghillie(src)
 		new /obj/item/ammo_magazine/sniper/anti_tank(src)
 		new /obj/item/ammo_magazine/sniper/anti_tank(src)
 		new /obj/item/ammo_magazine/sniper/anti_tank(src)
@@ -251,9 +252,10 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	spawn(1)
 		new /obj/item/pamphlet/engineer(src)
 		new /obj/item/storage/pouch/construction(src)
-		new /obj/item/storage/pouch/tools/full(src)
 		new /obj/item/clothing/gloves/yellow(src)
 		new /obj/item/tool/shovel/etool(src)
+		new /obj/item/clothing/glasses/welding(src)
+		new /obj/item/storage/pouch/tools/pfc(src)
 
 		var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)
 		MET.amount = 20

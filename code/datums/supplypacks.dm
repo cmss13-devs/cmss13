@@ -1535,6 +1535,19 @@ AMMO
 	containername = "incendiary sniper ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_anti_tank
+	name = "XM42B sniper anti-tank magazines crate (x4)"
+	contains = list(
+					/obj/item/ammo_magazine/sniper/anti_tank,
+					/obj/item/ammo_magazine/sniper/anti_tank,
+					/obj/item/ammo_magazine/sniper/anti_tank,
+					/obj/item/ammo_magazine/sniper/anti_tank
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "anti-tank ammo crate"
+	group = "Ammo"
+
 /datum/supply_packs/pyro
 	name = "M240-T fuel crate (extended x2, type-B x1, type-X x1)"
 	contains = list(

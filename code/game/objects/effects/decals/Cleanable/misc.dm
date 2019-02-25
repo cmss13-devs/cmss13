@@ -24,7 +24,7 @@
 
 	New()
 		..()
-		spawn(1200)// 2 minutes
+		spawn(MINUTES_2)// 2 minutes
 			cdel(src)
 
 /obj/effect/decal/cleanable/dirt

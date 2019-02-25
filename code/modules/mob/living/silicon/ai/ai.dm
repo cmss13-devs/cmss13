@@ -298,7 +298,7 @@ var/list/ai_verbs_default = list(
 
 	announcement.Announce(input)
 	message_cooldown = 1
-	spawn(600)//One minute cooldown
+	spawn(MINUTES_1)//One minute cooldown
 		message_cooldown = 0
 
 /mob/living/silicon/ai/check_eye(mob/user)

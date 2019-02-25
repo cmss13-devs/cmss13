@@ -110,7 +110,7 @@
 			total_silenced++
 			message_admins("A player has silenced the currently playing midi. Total: [total_silenced] player(s).", 1)
 			src.mob.client.midi_silenced = 1
-			spawn(300) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
+			spawn(SECONDS_30) // Prevents message_admins() spam. Should match with the midi_playing_timer spawn() in playsound.dm
 				src.mob.client.midi_silenced = 0
 	else
 		src << "You have 'Play Admin Midis' disabled in your Character Setup, so this verb is useless to you."

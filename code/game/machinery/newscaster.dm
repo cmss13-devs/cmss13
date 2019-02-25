@@ -954,7 +954,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 			O.show_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Breaking news from [channel]!\"</span>",2)
 		src.alert = 1
 		src.update_icon()
-		spawn(300)
+		spawn(SECONDS_30)
 			src.alert = 0
 			src.update_icon()
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)

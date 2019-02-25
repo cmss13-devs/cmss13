@@ -10,9 +10,9 @@
 #define STATE_ALERT_LEVEL 9
 #define STATE_CONFIRM_LEVEL 10
 
-#define COOLDOWN_COMM_MESSAGE 600
-#define COOLDOWN_COMM_REQUEST 3000
-#define COOLDOWN_COMM_CENTRAL 300
+#define COOLDOWN_COMM_MESSAGE MINUTES_1
+#define COOLDOWN_COMM_REQUEST MINUTES_5
+#define COOLDOWN_COMM_CENTRAL SECONDS_30
 
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
@@ -150,7 +150,7 @@
 			if(state == STATE_EVACUATION)
 
 				if(world.time < EVACUATION_TIME_LOCK || !ticker || !ticker.mode || !ticker.mode.force_end_at) //Cannot call it early in the round.
-					usr << "<span class='warning'>USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/600)] minutes before trying again.</span>"
+					usr << "<span class='warning'>USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>"
 					r_FAL
 
 				//if(!ticker || !ticker.mode || !ticker.mode.has_called_emergency)
@@ -202,7 +202,7 @@
 
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
-					usr << "<span class='warning'>The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/600)] minutes before trying again.</span>"
+					usr << "<span class='warning'>The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>"
 					r_FAL
 
 				if(!ticker || !ticker.mode) r_FAL //Not a game mode?
@@ -242,7 +242,7 @@
 				usr << "<span class='notice'>A distress beacon request has been sent to USCM Central Command.</span>"
 						//unanswered_distress += usr
 
-				//spawn(600) //1 minute in deciseconds
+				//spawn(MINUTES_1) //1 minute in deciseconds
 					//if(usr in unanswered_distress)
 						//unanswered_distress -= usr
 						//ticker.mode.activate_distress()

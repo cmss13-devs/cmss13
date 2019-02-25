@@ -1,7 +1,8 @@
-#define EVENT_MAJOR_INTERVAL 	3000 // 5 minutes
-#define EVENT_MINOR_INTERVAL 	900 // 1.5 minutes
-#define FOG_DELAY_INTERVAL		6000 // 8 minutes
-#define BATTLEFIELD_END			36000 // 60 minutes
+#define EVENT_MAJOR_INTERVAL 	MINUTES_5 // 5 minutes
+#define EVENT_MINOR_INTERVAL 	SECONDS_90 // 1.5 minutes
+#define FOG_DELAY_INTERVAL		MINUTES_10 // 10 minutes
+#define BATTLEFIELD_END			HOURS_1 // 60 minutes
+
 #define MAX_BLOOD_ATTUNED		5
 #define BATTLEFIELD_DEBUG		0
 

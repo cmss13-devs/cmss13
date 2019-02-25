@@ -115,7 +115,7 @@
 	examine_urge = min(examine_urge+1, 5)
 	examine_urge_values[index] = examine_urge
 
-	spawn(300)
+	spawn(SECONDS_30)
 		if(H)
 			reduce_examine_urge(H)
 
@@ -168,7 +168,7 @@
 				playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 				for(var/mob/M in viewers(src, null))
 					shake_camera(M, 19, 2)
-			spawn(300)
+			spawn(SECONDS_30)
 				screaming = 0
 		return
 	..()

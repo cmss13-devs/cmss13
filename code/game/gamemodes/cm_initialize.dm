@@ -79,10 +79,10 @@ Additional game mode variables.
 	var/roles_for_mode[] //Won't have a list if the instruction is set to 0.
 
 	//Bioscan related.
-	var/bioscan_current_interval = 3000//5 minutes in
-	var/bioscan_ongoing_interval = 600//every 1 minute
+	var/bioscan_current_interval = MINUTES_5//5 minutes in
+	var/bioscan_ongoing_interval = MINUTES_1//every 1 minute
 
-	var/lz_selection_timer = 15000 //25 minutes in
+	var/lz_selection_timer = MINUTES_25 //25 minutes in
 
 	var/flags_round_type = NOFLAGS
 
@@ -386,15 +386,15 @@ datum/game_mode/proc/initialize_special_clamps()
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
-				deathtime = 3000 //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			var/deathtimeminutes = round(deathtime / 600)
-			var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-			if(deathtime < 3000 && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
+				deathtime = MINUTES_5 //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+			var/deathtimeminutes = round(deathtime / MINUTES_1)
+			var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
+			if(deathtime < MINUTES_5 && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
 				xeno_candidate << "<span class='warning'>You have been dead for [deathtimeminutes >= 1 ? "[deathtimeminutes] minute\s and " : ""][deathtimeseconds] second\s.</span>"
 				xeno_candidate << "<span class='warning'>You must wait 5 minutes before rejoining the game!</span>"
 				return 0
-			if(new_xeno.away_timer < 300) //We do not want to occupy them if they've only been gone for a little bit.
-				xeno_candidate << "<span class='warning'>That player hasn't been away long enough. Please wait [300 - new_xeno.away_timer] second\s longer.</span>"
+			if(new_xeno.away_timer < SECONDS_30) //We do not want to occupy them if they've only been gone for a little bit.
+				xeno_candidate << "<span class='warning'>That player hasn't been away long enough. Please wait [SECONDS_30 - new_xeno.away_timer] second\s longer.</span>"
 				return 0
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")

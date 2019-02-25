@@ -11,7 +11,7 @@ var/global/datum/objectives_controller/objectives_controller
 	var/datum/cm_objective/recover_corpses/marines/marines
 	var/datum/cm_objective/recover_corpses/xenos/xenos
 
-	var/nextDChatAnnouncement = 3000 //5 minutes in
+	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
 
 /datum/objectives_controller/New()
 	for(var/datum/cm_objective/C in cm_objectives)
@@ -222,7 +222,7 @@ var/global/datum/objectives_controller/objectives_controller
 	answer["total_points"] = total_points
 
 	if(world.time > nextDChatAnnouncement)
-		nextDChatAnnouncement += 3000 //5 minutes
+		nextDChatAnnouncement += MINUTES_5 //5 minutes
 
 		for(var/mob/M in player_list)
 			//Announce the numbers to deadchat

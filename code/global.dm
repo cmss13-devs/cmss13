@@ -246,8 +246,8 @@ var/list/AAlarmWireColorToIndex
 #define MAX_BOOK_MESSAGE_LEN 9216
 #define MAX_NAME_LEN 26
 
-#define shuttle_time_in_station 1800 // 3 minutes in the station
-#define shuttle_time_to_arrive 6000 // 10 minutes to arrive
+#define shuttle_time_in_station MINUTES_3 // 3 minutes in the station
+#define shuttle_time_to_arrive MINUTES_10 // 10 minutes to arrive
 
 	//away missions
 var/list/awaydestinations = list()	//a list of landmarks that the warpgate can take you to

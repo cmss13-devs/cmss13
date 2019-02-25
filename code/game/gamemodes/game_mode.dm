@@ -35,8 +35,8 @@
 	var/list/datum/mind/traitors = list()
 	var/obj/machinery/computer/shuttle_control/active_lz = null
 
-	var/scheduler_logging_current_interval = 18000//30 minutes in
-	var/scheduler_logging_ongoing_interval = 18000//every 30 minutes
+	var/scheduler_logging_current_interval = MINUTES_30//30 minutes in
+	var/scheduler_logging_ongoing_interval = MINUTES_30//every 30 minutes
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	world << "<B>Notice</B>: [src] did not define announce()"

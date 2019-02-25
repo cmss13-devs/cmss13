@@ -170,7 +170,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define FOG_DELAY_INTERVAL		18000 // 30 minutes
+#define FOG_DELAY_INTERVAL		MINUTES_30 // 30 minutes
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
 	. = ..()

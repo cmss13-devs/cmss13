@@ -8,7 +8,7 @@
 	world << "Departed is [emergency_shuttle.departed]"
 
 */
-#define QUEEN_DEATH_COUNTDOWN 			 6000 //20 minutes. Can be changed into a variable if it needs to be manipulated later.
+#define QUEEN_DEATH_COUNTDOWN 			 MINUTES_10 //10 minutes. Can be changed into a variable if it needs to be manipulated later.
 
 #define MODE_INFESTATION_X_MAJOR		"Xenomorph Major Victory"
 #define MODE_INFESTATION_M_MAJOR		"Marine Major Victory"
@@ -210,10 +210,10 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 var/peakHumans = 1
 var/peakXenos = 1
 
-var/lastXenoBioscan = 18000//30 minutes in (we will add to that!)
-var/lastHumanBioscan = 18000//30 minutes in (we will add to that!)
-var/nextPredatorBioscan = 3000//5 minutes in
-var/nextAdminBioscan = 18000//30 minutes in
+var/lastXenoBioscan = MINUTES_30//30 minutes in (we will add to that!)
+var/lastHumanBioscan = MINUTES_30//30 minutes in (we will add to that!)
+var/nextPredatorBioscan = MINUTES_5//5 minutes in
+var/nextAdminBioscan = MINUTES_30//30 minutes in
 
 /datum/game_mode/proc/select_lz(var/obj/machinery/computer/shuttle_control/console)
 	if(active_lz)
@@ -275,7 +275,7 @@ var/nextAdminBioscan = 18000//30 minutes in
 			else numHostsPlanet++ //Elsewhere, nullspace, transit
 
 	if (world.time > nextAdminBioscan)
-		nextAdminBioscan += 18000//every 30 minutes, straight
+		nextAdminBioscan += MINUTES_30//every 30 minutes, straight
 		//Message the admins first before we tweak the numbers
 		log_admin("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.")
 		message_admins("A bioscan/Queen Mother message has completed. Humans: [numHostsPlanet] on the planet and [numHostsShip] on the ship. Xenos: [numXenosPlanet] on the planet and [numXenosShip] on the ship.", 1)
@@ -295,7 +295,7 @@ var/nextAdminBioscan = 18000//30 minutes in
 		RandomXenosShipLocation = get_area(xenosShipLocations[rand(1, xenosShipLocations.len)]).name
 
 	if(world.time > nextPredatorBioscan)
-		nextPredatorBioscan += 3000//5 minutes, straight
+		nextPredatorBioscan += MINUTES_5//5 minutes, straight
 		for(var/mob/M in player_list)
 			//Announce the numbers to Yautja, they have good scanners
 			if (isYautja(M))
@@ -316,8 +316,8 @@ var/nextAdminBioscan = 18000//30 minutes in
 	//So if you have peak 30 xenos, if you still have 30 xenos, humans will have to wait 30 minutes between bioscans
 	//But if you fall down to 15 xenos, humans will get them every 15 minutes
 	//But never more often than 5 minutes apart
-	var/nextXenoBioscan = lastXenoBioscan + max(18000 * living_human_list.len / peakHumans, 3000)
-	var/nextHumanBioscan = lastHumanBioscan + max(18000 * living_xeno_list.len / peakXenos, 3000)
+	var/nextXenoBioscan = lastXenoBioscan + max(MINUTES_30 * living_human_list.len / peakHumans, MINUTES_5)
+	var/nextHumanBioscan = lastHumanBioscan + max(MINUTES_30 * living_xeno_list.len / peakXenos, MINUTES_5)
 
 	if(world.time > nextXenoBioscan)
 		lastXenoBioscan = world.time

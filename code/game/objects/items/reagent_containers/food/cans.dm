@@ -55,7 +55,7 @@
 				var/mob/living/silicon/robot/bro = user
 				bro.cell.use(30)
 				var/refill = R.get_master_reagent_id()
-				spawn(600)
+				spawn(MINUTES_1)
 					R.add_reagent(refill, fillevel)
 
 			playsound(M.loc,'sound/items/drink.ogg', 15, 1)

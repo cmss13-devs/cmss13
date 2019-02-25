@@ -329,7 +329,7 @@
 		src << "<span class='warning'>You must wait a bit before you can toggle this again.</span>"
 		return
 
-	spawn(300)
+	spawn(SECONDS_30)
 		pslash_delay = 0
 
 	pslash_delay = 1
@@ -553,7 +553,7 @@
 		recalculate_actions()
 
 		egg_amount = 0
-		ovipositor_cooldown = world.time + 3000 //5 minutes
+		ovipositor_cooldown = world.time + MINUTES_5 //5 minutes
 		anchored = FALSE
 		update_canmove()
 

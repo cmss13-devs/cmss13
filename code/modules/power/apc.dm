@@ -879,7 +879,7 @@
 	switch(wireIndex)
 		if(APC_WIRE_IDSCAN) //Unlocks the APC for 30 seconds, if you have a better way to hack an APC I'm all ears
 			locked = 0
-			spawn(300)
+			spawn(SECONDS_30)
 				locked = 1
 				updateDialog()
 		if(APC_WIRE_MAIN_POWER1)
@@ -1254,7 +1254,7 @@
 	lighting = 0
 	equipment = 0
 	environ = 0
-	spawn(600)
+	spawn(MINUTES_1)
 		equipment = 3
 		environ = 3
 	..()

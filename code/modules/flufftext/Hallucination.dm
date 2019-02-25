@@ -257,7 +257,7 @@ proc/check_panel(mob/M)
 
 	New()
 		..()
-		spawn(300)
+		spawn(SECONDS_30)
 			if(my_target)
 				my_target.hallucinations -= src
 			cdel(src)
@@ -343,7 +343,7 @@ proc/check_panel(mob/M)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
 	target << I
-	spawn(300)
+	spawn(SECONDS_30)
 		cdel(O)
 	return
 

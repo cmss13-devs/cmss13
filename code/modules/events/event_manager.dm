@@ -2,8 +2,8 @@ var/list/allEvents = typesof(/datum/event) - /datum/event
 var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event
 //var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event - /datum/event/spider_infestation - /datum/event/alien_infestation
 
-var/eventTimeLower = 12000	//20 minutes
-var/eventTimeUpper = 24000	//40 minutes
+var/eventTimeLower = MINUTES_20	//20 minutes
+var/eventTimeUpper = MINUTES_40	//40 minutes
 var/scheduledEvent = null
 
 
@@ -33,7 +33,7 @@ var/scheduledEvent = null
 
 		var/next_event_delay = rand(eventTimeLower, eventTimeUpper) * playercount_modifier
 		scheduledEvent = world.timeofday + next_event_delay
-		log_debug("Next event in [next_event_delay/600] minutes.")
+		log_debug("Next event in [next_event_delay/MINUTES_1] minutes.")
 
 	else if(world.timeofday > scheduledEvent)
 		spawn_dynamic_event()

@@ -241,7 +241,7 @@
 					inj.name = "Unique Enzymes + Unique Identifiers"
 			if(inj)
 				injectorready = 0
-				spawn(300)
+				spawn(SECONDS_30)
 					injectorready = 1
 				var/label = input(usr, "Enter a label", "Label [inj.name] Injector", buffer.real_name) as null|text
 				if(label && inj) // it's possible it was deleted before we get here, input suspends execution
@@ -1019,7 +1019,7 @@
 			temp_html = "Injector created."
 
 			injectorready = 0
-			spawn(300)
+			spawn(SECONDS_30)
 				injectorready = 1
 		else
 			temp_html = "Replicator not ready yet."
@@ -1035,7 +1035,7 @@
 			temp_html = "Injector created."
 
 			injectorready = 0
-			spawn(300)
+			spawn(SECONDS_30)
 				injectorready = 1
 		else
 			temp_html = "Replicator not ready yet."
@@ -1051,7 +1051,7 @@
 			temp_html = "Injector created."
 
 			injectorready = 0
-			spawn(300)
+			spawn(SECONDS_30)
 				injectorready = 1
 		else
 			temp_html = "Replicator not ready yet."

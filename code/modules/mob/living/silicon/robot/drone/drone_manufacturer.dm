@@ -111,7 +111,7 @@
 //			usr << "\blue <B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"
 //			return
 
-	var/deathtimeminutes = round(deathtime / 600)
+	var/deathtimeminutes = round(deathtime / MINUTES_1)
 	var/pluralcheck = "minute"
 	if(deathtimeminutes == 0)
 		pluralcheck = ""
@@ -119,9 +119,9 @@
 		pluralcheck = " [deathtimeminutes] minute and"
 	else if(deathtimeminutes > 1)
 		pluralcheck = " [deathtimeminutes] minutes and"
-	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
+	var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
 
-	if (deathtime < 6000)
+	if (deathtime < MINUTES_10)
 		usr << "You have been dead for[pluralcheck] [deathtimeseconds] seconds."
 		usr << "You must wait 10 minutes to respawn as a drone!"
 		return

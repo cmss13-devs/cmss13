@@ -29,7 +29,7 @@
 	return
 
 /obj/effect/portal/New()
-	spawn(300)
+	spawn(SECONDS_30)
 		cdel(src)
 		return
 	return

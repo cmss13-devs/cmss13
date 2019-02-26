@@ -1,0 +1,16 @@
+<div class="item" style="padding-top: 10px">
+	<span class='white'>NUCLEAR FISSION EXPLOSIVE</span>
+</div>
+
+<div class="itemContent" style="padding-top: 2px; width: 100%">
+	<h2>Time Until Detonation: {{:data.timeleft}}</h2>
+</div>
+<div class="itemContent" style="padding-top: 2px; width: 100%">		
+	<h2>{{:helper.link(data.timing ? 'STOP TIMER' : 'START TIMER', 'alert', {'command' : 'toggleNuke'})}}</h2>
+</div>
+<div class="itemContent" style="padding-top: 2px; width: 100%">
+	Safety: {{:helper.link(data.safety ? 'Safe' : 'Engaged', 'alert', {'command' : 'toggleSafety'})}}
+</div>
+<div class="itemContent" style="padding-top: 2px; width: 100%">
+	Anchor: {{:helper.link(data.anchor ? 'Engaged' : 'Off', 'alert', {'command' : 'toggleAnchor'})}}
+</div>

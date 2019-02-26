@@ -347,19 +347,21 @@
 	name = "document pouch"
 	desc = "It can contain papers and clipboards."
 	icon_state = "document"
-	storage_slots = 7
+	storage_slots = 21
 	max_w_class = 3
 	max_storage_space = 21
 	can_hold = list(
 		/obj/item/paper,
 		/obj/item/clipboard,
 		/obj/item/document_objective/paper,
-		/obj/item/document_objective/paper/report,
+		/obj/item/document_objective/report,
 		/obj/item/document_objective/folder,
 		/obj/item/disk/objective,
 		/obj/item/document_objective/technical_manual
 	)
 
+/obj/item/storage/pouch/document/ui_action_click(mob/living/user)
+	//ui_interact(user)
 
 /obj/item/storage/pouch/flare
 	name = "flare pouch"

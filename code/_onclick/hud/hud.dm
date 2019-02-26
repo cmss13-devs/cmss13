@@ -20,6 +20,7 @@
 	var/obj/screen/move_intent
 	var/obj/screen/alien_plasma_display
 	var/obj/screen/locate_leader
+	var/obj/screen/locate_nuke
 	var/obj/screen/pred_power_icon
 
 	var/obj/screen/module_store_icon
@@ -203,9 +204,6 @@
 
 /datum/hud/proc/persistant_inventory_update()
 	return
-
-
-
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()

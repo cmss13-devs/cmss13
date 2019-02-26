@@ -333,6 +333,7 @@ var/list/mechtoys = list(
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 5000 //gains roughly 18 points per minute
+	var/tank_points = 0
 
 	New()
 		ordernum = rand(1,9000)
@@ -362,8 +363,8 @@ var/list/mechtoys = list(
 	for(var/I=0, I<calculate_crate_amount(), I++)
 		add_random_crate()
 
-//Here we calculate the amount of crates to spawn. 
-//Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate. 
+//Here we calculate the amount of crates to spawn.
+//Marines get one crate for each the amount of marines on the surface devided by the amount of marines per crate.
 //They always get the mincrates amount.
 /datum/controller/supply/proc/calculate_crate_amount()
 	//Please never ever tell anyone this is based upon xeno amounts.
@@ -415,7 +416,7 @@ var/list/mechtoys = list(
 		var/weight = (round(10000/crate.cost))
 		if(iteration > crate.iteration_needed)
 			crate_to_add[crate] = weight
-			weighted_crate_list += crate_to_add	
+			weighted_crate_list += crate_to_add
 	return pickweight(weighted_crate_list)
 
 //To stop things being sent to centcomm which should not be sent to centcomm. Recursively checks for these types.

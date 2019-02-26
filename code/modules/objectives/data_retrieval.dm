@@ -85,7 +85,7 @@
 // --------------------------------------------
 /datum/cm_objective/retrieve_data/disk
 	var/obj/item/disk/objective/disk
-	priority = OBJECTIVE_MEDIUM_VALUE
+	priority = OBJECTIVE_HIGH_VALUE
 	prerequisites_required = PREREQUISITES_ONE
 
 /datum/cm_objective/retrieve_data/disk/New(var/obj/item/disk/objective/O)
@@ -102,12 +102,13 @@
 			reader.visible_message("\The [reader] pings softly as the upload finishes and ejects the disk.")
 			playsound(reader, 'sound/machines/ping.ogg', 25, 1)
 			disk.forceMove(reader.loc)
+			disk.name = "[disk.name] (complete)"
 			reader.disk = null
 		return 1
 	return 0
 
 /datum/cm_objective/retrieve_data/disk/get_clue()
-	return "retrieving disk [disk] in [initial_location], decryption password is [decryption_password]"
+	return "\blue Retrieving	 [disk] in [initial_location], decryption password is [decryption_password]"
 
 /datum/cm_objective/retrieve_data/disk/data_is_avaliable()
 	. = ..()
@@ -120,7 +121,7 @@
 		return 0
 
 // --------------------------------------------
-// *** Mapping objects *** 
+// *** Mapping objects ***
 // *** Retrieve a disk and upload it ***
 // --------------------------------------------
 /obj/item/disk/objective
@@ -217,7 +218,7 @@
 				user << "<span class='notice'>Data is currently being uploaded to ARES.</span>"
 				return
 		user << "<span class='notice'>No data is being uploaded.</span>"
-		
+
 /obj/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/disk/objective))
 		if(istype(disk))

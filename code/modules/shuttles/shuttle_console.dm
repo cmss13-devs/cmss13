@@ -179,6 +179,9 @@
 					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
 					xeno_message("<span class='xenoannounce'>The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!</span>",3,Q.hivenumber)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
+					if(bomb_set)
+						for(var/obj/machinery/nuclearbomb/bomb in world)
+							bomb.end_round = FALSE
 				else if(i == "No")
 					return
 				else

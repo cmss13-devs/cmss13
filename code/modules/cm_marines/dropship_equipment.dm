@@ -1000,3 +1000,120 @@
 	medevac_cooldown = world.time + 600
 	linked_stretcher.linked_medevac = null
 	linked_stretcher = null
+
+// Fulton extraction system
+
+/obj/structure/dropship_equipment/fulton_system
+	name = "fulton recovery system"
+	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
+	equip_category = DROPSHIP_CREW_WEAPON
+	icon_state = "fulton_system"
+	point_cost = 500
+	is_interactable = TRUE
+	var/fulton_cooldown
+	var/busy_winch
+
+/obj/structure/dropship_equipment/fulton_system/update_equipment()
+	if(ship_base)
+		icon_state = "fulton_system_deployed"
+	else
+		icon_state = "fulton_system"
+
+
+/obj/structure/dropship_equipment/fulton_system/equipment_interact(mob/user)
+	if(!linked_shuttle)
+		return
+
+	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+		user << "<span class='warning'>[src] can only be used while in flight.</span>"
+		return
+
+	if(busy_winch)
+		user << "<span class='warning'> The winch is already in motion.</span>"
+		return
+
+	if(world.time < fulton_cooldown)
+		user << "<span class='warning'>[src] was just used, you need to wait a bit before using it again.</span>"
+		return
+
+	var/list/possible_fultons = list()
+	for(var/obj/item/stack/fulton/F in deployed_fultons)
+		var/recovery_object
+		if(F.attached_atom)
+			recovery_object = F.attached_atom.name
+		else
+			recovery_object = "Empty"
+		possible_fultons["[recovery_object]"] = F
+
+	if(!possible_fultons.len)
+		user << "<span class='warning'>No active balloons detected.</span>"
+		return
+
+	var/fulton_choice = input("Which balloon would you like to link with?", "Available balloons") as null|anything in possible_fultons
+	if(!fulton_choice)
+		return
+
+	var/obj/item/stack/fulton/F = possible_fultons[fulton_choice]
+	if(!fulton_choice)
+		return
+
+	if(!ship_base) //system was uninstalled midway
+		return
+
+	if(F.z == 1) //in case the fulton popped during our input()
+		return
+
+	if(!F.attached_atom)
+		user << "<span class='warning'>This balloon stretcher is empty.</span>"
+		return
+
+	if(!linked_shuttle)
+		return
+
+	if(linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+		user << "<span class='warning'>[src] can only be used while in flight.</span>"
+		return
+
+	if(busy_winch)
+		user << "<span class='warning'> The winch is already in motion.</span>"
+		return
+
+	if(world.time < fulton_cooldown)
+		user << "<span class='warning'>[src] was just used, you need to wait a bit before using it again.</span>"
+		return
+
+	user << "<span class='notice'> You move your dropship above the selected balloon's beacon.</span>"
+
+	activate_winch(user, F)
+
+/obj/structure/dropship_equipment/fulton_system/proc/activate_winch(mob/user, var/obj/item/stack/fulton/linked_fulton)
+	set waitfor = 0
+	busy_winch = TRUE
+	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
+	flick("fulton_system_active", src)
+	user.visible_message("<span class='notice'>[user] activates [src]'s winch.</span>", \
+						"<span class='notice'>You activate [src]'s winch.</span>")
+	sleep(30)
+
+	busy_winch = FALSE
+	var/fail
+	if(!linked_fulton || linked_fulton.z == 1)
+		fail = TRUE
+
+	else if(!ship_base) //uninstalled midway
+		fail = TRUE
+
+	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
+		fail = TRUE
+
+	if(fail)
+		user << "<span class='warning'>The winch finishes lifting but there seems to be no balloon connected to [src].</span>"
+		return
+
+	if(linked_fulton.attached_atom)
+		linked_fulton.return_fulton(get_turf(src))
+	else
+		user << "<span class='warning'>The winch finishes lifting the medevac stretcher but it's empty!</span>"
+		return
+
+	fulton_cooldown = world.time + 50

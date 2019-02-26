@@ -348,6 +348,7 @@
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
 		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
+		list("Fulton recovery device",30, /obj/item/stack/fulton, null, "black"),
 	)
 
 
@@ -1114,14 +1115,14 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 //fuck it
 	listed_products = list(
 		list("PRIMARY WEAPON", 0, null, null, null),
-		list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/gatling, MARINE_CAN_BUY_EAR, "black"),
-		list("LTB Cannon", 0, /obj/effect/essentials_set/ltb, MARINE_CAN_BUY_EAR, "black"),
+		list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, MARINE_CAN_BUY_EAR, "black"),
+		list("LTB Cannon", 0, /obj/effect/essentials_set/tank/ltb, MARINE_CAN_BUY_EAR, "black"),
 
 		list("SECONDARY WEAPON", 0, null, null, null),
-		list("Grenade Launcher", 0, /obj/effect/essentials_set/tankgl, MARINE_CAN_BUY_GLOVES, "black"),
-		list("M56 Cupola", 0, /obj/effect/essentials_set/tank56, MARINE_CAN_BUY_GLOVES, "black"),
-		list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tankflamer, MARINE_CAN_BUY_GLOVES, "black"),
-		list("TOW Launcher", 0, /obj/effect/essentials_set/tow, MARINE_CAN_BUY_GLOVES, "black"),
+		list("Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, MARINE_CAN_BUY_GLOVES, "black"),
+		list("M56 Cupola", 0, /obj/effect/essentials_set/tank/tank56, MARINE_CAN_BUY_GLOVES, "black"),
+		list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, MARINE_CAN_BUY_GLOVES, "black"),
+		list("TOW Launcher", 0, /obj/effect/essentials_set/tank/tow, MARINE_CAN_BUY_GLOVES, "black"),
 
 		list("SUPPORT MODULE", 0, null, null, null),
 		list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, MARINE_CAN_BUY_ATTACHMENT, "black"),
@@ -1190,7 +1191,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 
 //Not essentials sets but fuck it the code's here
-/obj/effect/essentials_set/ltb
+/obj/effect/essentials_set/tank/ltb
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/cannon,
 		/obj/item/ammo_magazine/tank/ltb_cannon,
@@ -1200,7 +1201,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/ammo_magazine/tank/ltb_cannon
 	)
 
-/obj/effect/essentials_set/gatling
+/obj/effect/essentials_set/tank/gatling
 	spawned_gear_list = list(
 		/obj/item/hardpoint/primary/minigun,
 		/obj/item/ammo_magazine/tank/ltaaap_minigun,
@@ -1208,14 +1209,14 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/ammo_magazine/tank/ltaaap_minigun
 	)
 
-/obj/effect/essentials_set/tankflamer
+/obj/effect/essentials_set/tank/tankflamer
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/flamer,
 		/obj/item/ammo_magazine/tank/flamer,
 		/obj/item/ammo_magazine/tank/flamer
 	)
 
-/obj/effect/essentials_set/tow
+/obj/effect/essentials_set/tank/tow
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
 		/obj/item/hardpoint/secondary/grenade_launcher,
@@ -1223,13 +1224,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/ammo_magazine/tank/towlauncher
 	)
 
-/obj/effect/essentials_set/tank56
+/obj/effect/essentials_set/tank/tank56
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/m56cupola,
 		/obj/item/ammo_magazine/tank/m56_cupola
 	)
 
-/obj/effect/essentials_set/tankgl
+/obj/effect/essentials_set/tank/tankgl
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/tank/tank_glauncher,

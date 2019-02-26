@@ -2,6 +2,7 @@
 /area/desert_dam
 	name = "\improper Desert Dam"
 	icon_state = "cliff_blocked"
+	can_nuke_area = TRUE
 
 
 /area/ice_colony/surface/requesitions
@@ -153,7 +154,7 @@
 /area/desert_dam/interior/dam_interior
 	name = "\improper Engineering"
 	icon_state = ""
-	
+
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance
 	name = "\improper Engineering North Tunnel Entrance"
 	icon_state = "yellow"
@@ -197,7 +198,7 @@
 /area/desert_dam/building/substation
 	name = "Substation"
 	icon = 'icons/turf/dam_areas.dmi'
-	
+
 /area/desert_dam/building/substation/northwest
 	name = "\improper Command Substation"
 	icon_state = "northewestern_ss"

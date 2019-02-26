@@ -7080,7 +7080,7 @@
 /area/lv624/lazarus/hydroponics)
 "uC" = (
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -9605,7 +9605,7 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -10760,7 +10760,7 @@
 "Dr" = (
 /obj/structure/table,
 /obj/item/disk/objective,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -12311,7 +12311,7 @@
 /obj/structure/table,
 /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
 /obj/item/disk/objective,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -14924,7 +14924,7 @@
 "Nd" = (
 /obj/structure/closet,
 /obj/item/clothing/shoes/mime,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "purple"
@@ -14962,7 +14962,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/device/flashlight/lamp,
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "bluecorner"
@@ -15852,7 +15852,7 @@
 	},
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -15970,7 +15970,7 @@
 	pixel_x = 0;
 	pixel_y = 30
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
@@ -17727,7 +17727,6 @@
 /obj/structure/safe{
 	spawnkey = 0
 	},
-/obj/item/document_objective/folder,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "ST" = (
@@ -18456,7 +18455,7 @@
 	id = "nexus_blast";
 	name = "Nexus Lockdown"
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "red";
 	dir = 4
@@ -18626,7 +18625,7 @@
 /area/lv624/lazarus/kitchen)
 "UK" = (
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -20496,7 +20495,7 @@
 "Zo" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/device/megaphone,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -20598,7 +20597,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood{
 	icon_state = "wood-broken4"
 	},
@@ -20636,7 +20635,7 @@
 /area/lv624/lazarus/kitchen)
 "ZE" = (
 /obj/structure/filingcabinet,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
@@ -20705,6 +20704,10 @@
 /obj/machinery/computer/shuttle_control/dropship2,
 /turf/open/gm/dirt,
 /area/lv624/landing/console2)
+"ZZ" = (
+/obj/item/document_objective/folder,
+/turf/open/floor/bluegrid,
+/area/lv624/lazarus/internal_affairs)
 
 (1,1,1) = {"
 ac
@@ -31841,7 +31844,7 @@ tf
 tf
 Hz
 IC
-Jn
+ZZ
 JW
 Kz
 KR

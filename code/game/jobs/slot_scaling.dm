@@ -38,7 +38,5 @@
 /proc/ct_slot_formula(var/playercount)
 	return job_slot_formula(playercount,30,0,2,3)
 
-/proc/tc_slot_formula(var/playercount)
-	if(map_tag == MAP_DESERT_DAM)
-		return 2
-	return 0
+/proc/int_slot_formula(var/playercount)
+	return job_slot_formula(playercount,30,1,1,3)

@@ -172,7 +172,7 @@
 /obj/structure/sign/safety/vent{
 	pixel_x = -32
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -2131,7 +2131,7 @@
 /area/bigredv2/outside/marshall_office)
 "aeR" = (
 /obj/structure/filingcabinet/security,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -7842,7 +7842,7 @@
 /area/bigredv2/outside/medical)
 "aqC" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-whitepurple (EAST)";
 	icon_state = "whitepurple";
@@ -16322,14 +16322,14 @@
 /obj/structure/table,
 /obj/machinery/atmospherics/unary/vent_pump,
 /obj/item/device/flashlight/lamp,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/bigredv2/outside/medical)
 "aHc" = (
 /obj/structure/table/holotable/wood,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda_lab)
 "aHd" = (
@@ -23190,7 +23190,7 @@
 /area/bigredv2/outside/general_store)
 "aTT" = (
 /obj/structure/filingcabinet,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda_lab)
 "aTU" = (
@@ -31693,7 +31693,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (NORTHWEST)";
 	icon_state = "darkgreen2";
@@ -35914,7 +35914,7 @@
 /area/bigredv2/outside/s)
 "bwi" = (
 /obj/structure/filingcabinet/medical,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -35942,7 +35942,7 @@
 "bwl" = (
 /obj/structure/table,
 /obj/item/tool/weedkiller/D24,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -36709,7 +36709,7 @@
 /area/bigredv2/outside/weyland_lab/inside)
 "byd" = (
 /obj/structure/filingcabinet,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bye" = (
@@ -39922,7 +39922,7 @@
 /obj/structure/table,
 /obj/item/paper_bin,
 /obj/item/disk/nuclear,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkblue2";
@@ -40029,7 +40029,7 @@
 "bFg" = (
 /obj/structure/table,
 /obj/item/stock_parts/smes_coil,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -40044,7 +40044,7 @@
 "bFi" = (
 /obj/structure/table,
 /obj/item/changestone,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "wood"
 	},

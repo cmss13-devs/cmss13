@@ -2567,7 +2567,7 @@
 /area/prison/research/secret/testing)
 "agc" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
 	icon_state = "sterile_white";
@@ -18617,7 +18617,7 @@
 /obj/item/tool/soap{
 	pixel_x = 5
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -23933,7 +23933,7 @@
 /area/prison/command/office)
 "aRP" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -41433,7 +41433,7 @@
 /area/prison/security/checkpoint/highsec/s)
 "bwO" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
 "bwP" = (
@@ -58198,7 +58198,7 @@
 /area/prison/security/head)
 "caS" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood,
 /area/prison/parole/main)
 "caT" = (
@@ -67653,7 +67653,7 @@
 /area/space)
 "csS" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -72648,7 +72648,7 @@
 /area/prison/cellblock/mediumsec/south)
 "cBF" = (
 /obj/structure/rack,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkred2"

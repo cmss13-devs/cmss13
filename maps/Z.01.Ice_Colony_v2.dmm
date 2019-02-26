@@ -851,7 +851,7 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "acO" = (
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
 "acP" = (
@@ -2803,7 +2803,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (EAST)";
 	icon_state = "darkyellow2";
@@ -5863,7 +5863,7 @@
 /obj/structure/table/reinforced,
 /obj/item/explosive/grenade/chem_grenade/metalfoam,
 /obj/item/explosive/grenade/chem_grenade/metalfoam,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (SOUTHWEST)";
 	icon_state = "darkyellow2";
@@ -9321,7 +9321,7 @@
 /area/ice_colony/surface/dorms)
 "atn" = (
 /obj/structure/table/woodentable/poor,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/plating,
 /area/ice_colony/surface/mining)
 "ato" = (
@@ -17260,7 +17260,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkgreencorners2 (EAST)";
 	icon_state = "darkgreencorners2";
@@ -19083,7 +19083,7 @@
 /obj/structure/table,
 /obj/item/device/lightreplacer,
 /obj/item/clothing/mask/rebreather,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkbrown2";
 	icon_state = "darkbrown2"
@@ -19827,7 +19827,7 @@
 /area/ice_colony/exterior/surface/cliff)
 "aOv" = (
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (EAST)";
 	icon_state = "darkyellow2";
@@ -24323,7 +24323,7 @@
 	pixel_x = 24;
 	pixel_y = 0
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (EAST)";
 	icon_state = "darkgreen2";
@@ -29645,7 +29645,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -36758,7 +36758,7 @@
 	icon_state = "tube1";
 	dir = 1
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/canteen)
 "bwl" = (
@@ -41582,7 +41582,7 @@
 /area/ice_colony/underground/research/storage)
 "bFS" = (
 /obj/structure/filingcabinet,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkred2 (SOUTHEAST)";
 	icon_state = "darkred2";
@@ -41638,7 +41638,7 @@
 	pixel_x = -24
 	},
 /obj/structure/closet/secure_closet/freezer/kitchen,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
@@ -43198,7 +43198,7 @@
 "bJf" = (
 /obj/structure/table,
 /obj/effect/spawner/random/tech_supply,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTH)";
 	icon_state = "darkyellow2";
@@ -48169,7 +48169,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkbrown2 (EAST)";
 	icon_state = "darkbrown2";
@@ -50822,7 +50822,7 @@
 /area/ice_colony/underground/security/armory)
 "bXC" = (
 /obj/structure/table/woodentable,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
 "bXD" = (
@@ -50837,7 +50837,7 @@
 "bXE" = (
 /obj/structure/table,
 /obj/item/device/camera,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -50853,7 +50853,7 @@
 /area/ice_colony/underground/engineering)
 "bXG" = (
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -50921,7 +50921,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-whitered (NORTH)";
 	icon_state = "whitered";
@@ -51007,7 +51007,7 @@
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -51028,7 +51028,7 @@
 	pixel_y = 0
 	},
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkblue2";
@@ -51086,7 +51086,7 @@
 /area/ice_colony/underground/hallway/north_west)
 "bYa" = (
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"
@@ -51098,7 +51098,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkpurple2";
@@ -51196,7 +51196,7 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor{
 	tag = "icon-darkyellow2";
 	icon_state = "darkyellow2"
@@ -51204,7 +51204,7 @@
 /area/ice_colony/underground/security/brig)
 "bYm" = (
 /obj/structure/table/reinforced,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
 "bYn" = (
@@ -51236,7 +51236,7 @@
 "bYq" = (
 /obj/structure/table,
 /obj/item/device/camera,
-/obj/item/document_objective/paper/report,
+/obj/item/document_objective/report,
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves/open)
 "bYr" = (

@@ -20,34 +20,33 @@ var/datum/announcement/minor/captain_announcement = new(do_newscast = 1)
 	gear_preset = "USCM Commander (CO)"
 	gear_preset_council = "USCM Commodore (CO+)"
 
-	generate_entry_message()
-		. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.
+/datum/job/command/commander/generate_entry_message()
+	. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.
 While you support Weyland-Yutani, you report to the USCM High Command, not the corporate office.
 Your primary task is the safety of the ship and her crew, and ensuring the survival and success of the marines.
 Your first order of business should be briefing the marines on the mission they are about to undertake.
 If you require any help, use adminhelp to talk to game staff about what you're supposed to do.
 Godspeed, commander!"}
 
-	announce_entry_message(mob/living/carbon/human/H)
-		sleep(15)
-		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
-			captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
-			for(var/obj/structure/closet/secure_closet/securecom/S in world)
-				var/obj/item/weapon/gun/rifle/m46c/I = new/obj/item/weapon/gun/rifle/m46c/
-				if(S.opened == 0)
-					I.loc = S
-				if(S.opened == 1)
-					I.loc = S.loc
-				if(istype(I))
-					call(/obj/item/weapon/gun/rifle/m46c/proc/name_after_co)(H, I)
-		..()
-
+/datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
+	sleep(15)
+	if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
+		captain_announcement.Announce("All hands, [H.get_paygrade(0)] [H.real_name] on deck!")
+		for(var/obj/structure/closet/secure_closet/securecom/S in world)
+			var/obj/item/weapon/gun/rifle/m46c/I = new/obj/item/weapon/gun/rifle/m46c/
+			if(S.opened == 0)
+				I.loc = S
+			if(S.opened == 1)
+				I.loc = S.loc
+			if(istype(I))
+				call(/obj/item/weapon/gun/rifle/m46c/proc/name_after_co)(H, I)
+	..()
 
 /datum/job/command/commander/nightmare
 	flags_startup_parameters = ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 
-	generate_entry_message()
-		. = {"What the hell did you do to get assigned on this mission? Maybe someone is looking to bump you off for a promotion. Regardless...
+/datum/job/command/commander/nightmare/generate_entry_message()
+	. = {"What the hell did you do to get assigned on this mission? Maybe someone is looking to bump you off for a promotion. Regardless...
 The marines need a leader to inspire them and lead them to victory. You'll settle for telling them which side of the gun the bullets come from.
 You are a vet, a real badass in your day, but now you're in the thick of it with the grunts. You're plenty sure they are going to die in droves.
 Come hell or high water, you are going to be there for them."}
@@ -59,8 +58,8 @@ Come hell or high water, you are going to be there for them."}
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADMIN_NOTIFY
 	gear_preset = "USCM Executive Officer (XO)"
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"You are second in command aboard the ship, and are in next in the chain of command after the commander.
+/datum/job/command/executive/generate_entry_message(mob/living/carbon/human/H)
+	. = {"You are second in command aboard the ship, and are in next in the chain of command after the commander.
 You may need to fill in for other duties if areas are understaffed, and you are given access to do so.
 Make the USCM proud!"}
 
@@ -75,14 +74,14 @@ Make the USCM proud!"}
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Staff Officer (SO)"
 
-	set_spawn_positions(var/count)
-		spawn_positions = so_slot_formula(count)
+/datum/job/command/bridge/set_spawn_positions(var/count)
+	spawn_positions = so_slot_formula(count)
 
-	get_total_positions(var/latejoin = 0)
-		return (latejoin ? so_slot_formula(get_total_marines()) : spawn_positions)
+/datum/job/command/bridge/get_total_positions(var/latejoin = 0)
+	return (latejoin ? so_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to monitor the marines, man the CIC, and listen to your superior officers.
+/datum/job/command/bridge/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to monitor the marines, man the CIC, and listen to your superior officers.
 You are in charge of logistics and the overwatch system. You are also in line to take command after the executive officer."}
 
 //Pilot Officer
@@ -96,37 +95,51 @@ You are in charge of logistics and the overwatch system. You are also in line to
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Pilot Officer (PO)"
 
-	set_spawn_positions(var/count)
-		spawn_positions = po_slot_formula(count)
+/datum/job/command/pilot/set_spawn_positions(var/count)
+	spawn_positions = po_slot_formula(count)
 
-	get_total_positions(var/latejoin = 0)
-		return (latejoin ? po_slot_formula(get_total_marines()) : spawn_positions)
+/datum/job/command/pilot/get_total_positions(var/latejoin = 0)
+	return (latejoin ? po_slot_formula(get_total_marines()) : spawn_positions)
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to fly, protect, and maintain the ship's dropship.
+/datum/job/command/pilot/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to fly, protect, and maintain the ship's dropship.
 While you are an officer, your authority is limited to the dropship, where you have authority over the enlisted personnel.
 If you are not piloting, there is an autopilot fallback for command, but don't leave the dropship without reason."}
 
 //Tank Crewmen //For now, straight up copied from the pilot officers until their role is more solidified
 /datum/job/command/tank_crew
-	title = "USCM Tank Crewman (TC)"
+	title = "Tank Crewman"
 	flag = ROLE_TANK_OFFICER
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 2
+	spawn_positions = 2
 	allow_additional = 1
-	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Tank Crewman (TC)"
 
-	set_spawn_positions(var/count)
-		spawn_positions = tc_slot_formula(count)
+/datum/job/command/tank_crew/generate_entry_message(mob/living/carbon/human/H)
+		. = {"Your job is to operate and maintain the ship's armored vehicles.
+You are in charge of representing the armored presence amongst the marines during the operation, as well as maintaining and repairing your own tank."}
 
-	get_total_positions(var/latejoin = 0)
-		return tc_slot_formula()
+//Intelligence Officer
+/datum/job/command/intel
+	title = "Intelligence Officer"
+	flag = ROLE_INTEL_OFFICER
+	total_positions = 3
+	spawn_positions = 3
+	allow_additional = 1
+	scaled = 1
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	gear_preset = "USCM Intelligence Officer (IO)"
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"Your job is to operate and maintain thee ship's armored vehicles.
-While you are an officer, your authority is limited to your own vehicle, where you have authority over the enlisted personnel. You will need MTs to repair and replace hardpoints."}
+/datum/job/command/intel/generate_entry_message(mob/living/carbon/human/H)
+	. = {"Your job is to assist the marines in collecting intelligence related to the current operation to better inform command of their opposition.
+You are in charge of gathering any data disks, folders, and notes you may find on the operational grounds in order to decrypt any data in order to further the DEFCON status."}
+
+/datum/job/command/intel/set_spawn_positions(var/count)
+	spawn_positions = int_slot_formula(count)
+
+/datum/job/command/intel/get_total_positions(var/latejoin = 0)
+	return (latejoin ? int_slot_formula(get_total_marines()) : spawn_positions)
 
 //Military Police
 /datum/job/command/police
@@ -140,15 +153,15 @@ While you are an officer, your authority is limited to your own vehicle, where y
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Military Police (MP)"
 
-	set_spawn_positions(var/count)
-		spawn_positions = mp_slot_formula(count)
+/datum/job/command/police/set_spawn_positions(var/count)
+	spawn_positions = mp_slot_formula(count)
 
-	get_total_positions(var/latejoin = 0)
-		return (latejoin ? mp_slot_formula(get_total_marines()) : spawn_positions)
+/datum/job/command/police/get_total_positions(var/latejoin = 0)
+	return (latejoin ? mp_slot_formula(get_total_marines()) : spawn_positions)
 
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
+/datum/job/command/police/generate_entry_message(mob/living/carbon/human/H)
+	. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
 Failure to do so may result in a job ban or server ban.
 Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep!
 In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"}
@@ -161,8 +174,8 @@ In addition, you are tasked with the security of high-ranking personnel, includi
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Chief MP (CMP)"
 
-	generate_entry_message(mob/living/carbon/human/H)
-		. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
+/datum/job/command/warrant/generate_entry_message(mob/living/carbon/human/H)
+	. = {"You are held by a higher standard and are required to obey not only the server rules but the <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a>.
 Failure to do so may result in a job ban or server ban.
 You lead the Military Police, ensure your officers maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep!
 In addition, you are tasked with the security of high-ranking personnel, including the command staff. Keep them safe!"}

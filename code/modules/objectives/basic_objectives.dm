@@ -31,7 +31,7 @@
 
 /datum/cm_objective/retrieve_item/almayer
 	target_area = /area/almayer/command/securestorage
-	priority = OBJECTIVE_LOW_VALUE
+	priority = OBJECTIVE_EXTREME_VALUE
 
 // --------------------------------------------
 // *** Get communications up ***

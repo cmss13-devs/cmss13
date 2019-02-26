@@ -251,6 +251,7 @@
 	else if((world.time > BATTLEFIELD_END + lobby_time))
 		if(mcguffin && mcguffin.loc) round_finished												= MODE_BATTLEFIELD_W_MAJOR
 		else round_finished 																	= MODE_BATTLEFIELD_DRAW_STALEMATE
+	else if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED) round_finished 	= MODE_BATTLEFIELD_M_MINOR
 	else if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) round_finished 			= MODE_GENERIC_DRAW_NUKE
 
 ///////////////////////////////

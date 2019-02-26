@@ -210,7 +210,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		trigger_self_destruct(,,override)
 		r_TRU
 
-/datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = list(MAIN_SHIP_Z_LEVEL), origin = dest_master, override)
+/datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = list(MAIN_SHIP_Z_LEVEL), origin = dest_master, override = FALSE, end_type = NUKE_EXPLOSION_FINISHED, play_anim = TRUE, end_round = TRUE)
 	set waitfor = 0
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS) //One more check for good measure, in case it's triggered through a bomb instead of the destruct mechanism/admin panel.
 		enter_allowed = 0 //Do not want baldies spawning in as everything is exploding.
@@ -230,13 +230,11 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		var/turf/T
 		for(M in player_list) //This only does something cool for the people about to die, but should prove pretty interesting.
 			if(!M || !M.loc) continue //In case something changes when we sleep().
-			T = get_turf(M)
-			if(T.z in z_levels)
-				if(M.stat == DEAD)
-					L2 |= M
-				else
-					L1 |= M
-					shake_camera(M, 110, 4)
+			if(M.stat == DEAD)
+				L2 |= M
+			else if(M.z in z_levels)
+				L1 |= M
+				shake_camera(M, 110, 4)
 
 
 		sleep(100)
@@ -244,12 +242,13 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		Would ideally use a better system for showing cutscenes.*/
 		var/obj/screen/cinematic/explosion/C = new
 
-		for(M in L1 + L2)
-			if(M && M.loc && M.client)
-				M.client.screen |= C //They may have disconnected in the mean time.
+		if(play_anim)
+			for(M in L1 + L2)
+				if(M && M.loc && M.client)
+					M.client.screen |= C //They may have disconnected in the mean time.
 
-		sleep(15) //Extra 1.5 seconds to look at the ship.
-		flick(override ? "intro_override" : "intro_nuke", C)
+			sleep(15) //Extra 1.5 seconds to look at the ship.
+			flick(override ? "intro_override" : "intro_nuke", C)
 		sleep(35)
 		for(M in L1)
 			if(M && M.loc) //Who knows, maybe they escaped, or don't exist anymore.
@@ -257,19 +256,26 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				if(T.z in z_levels)
 					M.death()
 				else
-					M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
-		flick(ship_status ? "ship_spared" : "ship_destroyed", C)
+					if(play_anim)
+						M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.
+		if(play_anim)
+			flick(ship_status ? "ship_spared" : "ship_destroyed", C)
+			C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
 		world << sound('sound/effects/explosionfar.ogg')
-		C.icon_state = ship_status ? "summary_spared" : "summary_destroyed"
 
-		dest_status = NUKE_EXPLOSION_FINISHED
+		if(end_round)
+			dest_status = end_type
 
-		if(!ticker || !ticker.mode) //Just a safety, just in case a mode isn't running, somehow.
-			world << "<span class='round_body'>Resetting in 30 seconds!</span>"
-			sleep(300)
-			log_game("Rebooting due to nuclear detonation.")
-			world.Reboot()
-		r_TRU
+			sleep(5)
+			if(ticker && ticker.mode)
+				ticker.mode.check_win()
+
+			if(!ticker || !ticker.mode) //Just a safety, just in case a mode isn't running, somehow.
+				world << "<span class='round_body'>Resetting in 30 seconds!</span>"
+				sleep(300)
+				log_game("Rebooting due to nuclear detonation.")
+				world.Reboot()
+			r_TRU
 
 /datum/authority/branch/evacuation/proc/process_self_destruct()
 	set background = 1

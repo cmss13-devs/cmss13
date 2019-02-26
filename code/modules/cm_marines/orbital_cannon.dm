@@ -161,7 +161,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(last_orbital_firing) //fired at least once
-		var/cooldown_left = (last_orbital_firing + 5000) - world.time
+		var/cooldown_left = (last_orbital_firing + 2500) - world.time
 		if(cooldown_left > 0)
 			if(user)
 				user << "<span class='warning'>[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds.</span>"

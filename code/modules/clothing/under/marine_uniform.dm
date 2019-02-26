@@ -112,11 +112,11 @@
 	return //This way we keep it as a bodysuit across all maps.
 
 /obj/item/clothing/under/marine/officer/tanker
-	name = "tank crewman officer uniform"
-	desc = "A uniform worn by commissioned officers of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	name = "tank crewman uniform"
+	desc = "A uniform worn by tank crewmen of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "marine_tanker"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
-	specialty = "tank crewman officer"
+	specialty = "tank crewman"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/officer/bridge

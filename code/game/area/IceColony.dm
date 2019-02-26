@@ -13,6 +13,7 @@
 	name = "\improper Ice Colony"
 	icon_state = "ice_colony"
 	icon_state = "cliff_blocked"
+	can_nuke_area = TRUE
 
 /*
  *  ----------------

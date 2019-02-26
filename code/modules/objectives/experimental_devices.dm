@@ -15,7 +15,7 @@
 
 /datum/cm_objective/retrieve_item/device/get_clue()
 	var/obj/item/device/D = target_item
-	return "Retrieve [target_item] with serial number [D.serial_number] in [initial_location]"
+	return "\green Retrieve [target_item] with serial number [D.serial_number] in [initial_location]"
 
 // --------------------------------------------
 // *** Experimental devices ***

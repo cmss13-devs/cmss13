@@ -16,7 +16,7 @@
 	name = "motion detector"
 	desc = "A device that detects movement, but ignores marines. It has a mode selection button on the side."
 	icon = 'icons/Marine/marine-items.dmi'
-	icon_state = "detector_off"
+	icon_state = "detector"
 	item_state = "electronic"
 	flags_atom = FPRINT| CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -27,6 +27,7 @@
 	var/active = 0
 	var/recycletime = 120
 	var/long_range_cooldown = 2
+	var/blip_type = "detector"
 	actions_types = list(/datum/action/item_action)
 
 /obj/item/device/motiondetector/verb/toggle_range_mode()
@@ -40,19 +41,19 @@
 		usr << "<span class='notice'>You switch [src] to long range mode.</span>"
 		detector_range = 14
 	if(active)
-		icon_state = "detector_on_[detector_mode]"
+		icon_state = "[initial(icon_state)]_on_[detector_mode]"
 
 
 /obj/item/device/motiondetector/attack_self(mob/user)
 	if(ishuman(user))
 		active = !active
 		if(active)
-			icon_state = "detector_on_[detector_mode]"
+			icon_state = "[initial(icon_state)]_on_[detector_mode]"
 			user << "<span class='notice'>You activate [src].</span>"
 			processing_objects.Add(src)
 
 		else
-			icon_state = "detector_off"
+			icon_state = "[initial(icon_state)]"
 			user << "<span class='notice'>You deactivate [src].</span>"
 			processing_objects.Remove(src)
 
@@ -81,13 +82,16 @@
 		else long_range_cooldown = initial(long_range_cooldown)
 
 	playsound(loc, 'sound/items/detector.ogg', 60, 0, 7, 2)
+	scan()
 
+/obj/item/device/motiondetector/proc/scan()
 	var/mob/living/carbon/human/human_user
 	if(ishuman(loc))
 		human_user = loc
 
-	var/detected
 	for(var/mob/M in living_mob_list)
+		var/detected
+
 		if(loc == null || M == null) continue
 		if(loc.z != M.z) continue
 		if(get_dist(M, src) > detector_range) continue
@@ -131,10 +135,10 @@
 		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
 		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
 		if(diff_dir_x || diff_dir_y)
-			DB.icon_state = "detector_blip_dir"
+			DB.icon_state = "[blip_type]_blip_dir"
 			DB.dir = diff_dir_x + diff_dir_y
 		else
-			DB.icon_state = initial(DB.icon_state)
+			DB.icon_state = "[blip_type]_blip"
 			DB.dir = initial(DB.dir)
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
@@ -142,3 +146,59 @@
 		sleep(12)
 		if(user.client)
 			user.client.screen -= DB
+
+/obj/item/device/motiondetector/intel
+	name = "data detector"
+	desc = "A device that detects objects that may be useful for intel gathering. It has a mode selection button on the side."
+	icon_state = "datadetector"
+	blip_type = "data"
+	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective)
+
+/obj/item/device/motiondetector/intel/scan()
+	var/mob/living/carbon/human/human_user
+	if(ishuman(loc))
+		human_user = loc
+
+	for(var/obj/I in orange(detector_range, loc))
+		var/detected
+		for(var/DT in objects_to_detect)
+			if(istype(I, DT))
+				detected = TRUE
+			if(I.contents)
+				for(var/obj/item/CI in I.contents)
+					if(istype(CI, DT))
+						detected = TRUE
+						break
+			if(human_user && detected)
+				show_blip(human_user, I)
+			if(detected)
+				break
+
+		if(detected)
+			playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
+
+	for(var/mob/M in orange(detector_range, loc))
+		var/detected
+		if(loc == null || M == null) continue
+		if(loc.z != M.z) continue
+		if(M == loc) continue //device user isn't detected
+		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
+			detected = TRUE
+
+			if(human_user)
+				show_blip(human_user, M)
+		if(ishuman(M) && M.stat == DEAD && M.contents)
+			for(var/obj/I in M.contents)
+				for(var/DT in objects_to_detect)
+					if(istype(I, DT))
+						detected = TRUE
+						break
+					else if(I.contents)
+						for(var/obj/CI in I.contents)
+							if(istype(CI, DT))
+								detected = TRUE
+								break
+			if(detected)
+				show_blip(human_user, M)
+		if(detected)
+			playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)

@@ -89,7 +89,7 @@
 		if(isrobot(user))
 			return
 		user.drop_inv_item_to_loc(W, loc)
-	else if(istype(W, /obj/item/packageWrap))
+	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/stack/fulton))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W

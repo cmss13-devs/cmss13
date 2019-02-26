@@ -108,7 +108,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	if(type == /obj/item/clothing/suit/storage/marine)
 		var/armor_variation = rand(1,6)
 		icon_state = "[armor_variation]"
-	
+
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 	..()
@@ -234,7 +234,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	name = "M3 pattern skull marine armor"
 	icon_state = "5"
 	specialty = "M3 pattern skull marine"
-	
+
 /obj/item/clothing/suit/storage/marine/smooth
 	name = "M3 pattern smooth marine armor"
 	icon_state = "6"
@@ -284,10 +284,18 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/marine/MP/RO
 	icon_state = "officer"
-	name = "\improper M3 pattern officer"
+	name = "\improper M3 pattern officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field"
 	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
+	specialty = "M2 pattern officer"
+
+/obj/item/clothing/suit/storage/marine/MP/intel
+	icon_state = "officer"
+	name = "\improper M3 pattern intel officer armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of intelligence officers. Useful for letting your men know who is in charge of collecting intel when taking to the field"
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
+	specialty = "M2 pattern intel officer"
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
@@ -456,7 +464,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/veteran
-	flags_marine_armor = ARMOR_LAMP_OVERLAY 
+	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE //Let's make these keep their name and icon.
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC

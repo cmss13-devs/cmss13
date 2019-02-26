@@ -19,7 +19,7 @@
 	for(var/obj/machinery/power/smes/colony_smes in machines)
 		if(!(colony_smes.loc.z in SURFACE_Z_LEVELS))
 			continue
-		if(colony_smes.charge <= 0) 
+		if(colony_smes.charge <= 0)
 			continue
 		if(!colony_smes.online)
 			continue
@@ -53,7 +53,7 @@
 	var/total_apcs = 0
 	var/last_functioning = 0
 	var/points_per_apc = 5
-	priority = OBJECTIVE_ABSOLUTE_VALUE
+	priority = OBJECTIVE_LOW_VALUE
 
 /datum/cm_objective/repair_apcs/pre_round_start()
 	for(var/obj/machinery/power/apc/colony_apc in machines)

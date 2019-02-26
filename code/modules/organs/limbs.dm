@@ -229,6 +229,10 @@
 
 	//If limb took enough damage, try to cut or tear it off
 	if(body_part != UPPER_TORSO && body_part != LOWER_TORSO && !no_limb_loss)
+		var/obj/item/clothing/head/helmet/H = owner.head
+		if(body_part == HEAD && istype(H, /obj/item/clothing/head/helmet) && !isSynth(owner))
+			owner.updatehealth()
+			return update_icon()
 		if(config.limbs_can_break && brute_dam >= max_damage * config.organ_health_multiplier)
 			var/cut_prob = brute/max_damage * 10
 			if(prob(cut_prob))

@@ -21292,6 +21292,9 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
+/obj/effect/landmark/start{
+	name = "Intelligence Officer"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "aRj" = (
@@ -58151,6 +58154,9 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
+/obj/effect/landmark/start{
+	name = "Intelligence Officer"
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "cnr" = (
@@ -58286,6 +58292,9 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_x = 0
+	},
+/obj/effect/landmark/start{
+	name = "Intelligence Officer"
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
@@ -63321,6 +63330,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"pGA" = (
+/obj/effect/landmark/start{
+	name = "Intelligence Officer"
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/securestorage)
 "pHx" = (
 /obj/structure/curtain/medical,
 /obj/structure/disposalpipe/segment{
@@ -64111,6 +64126,12 @@
 	dir = 4
 	},
 /area/almayer/medical/upper_medical)
+"rRO" = (
+/obj/effect/landmark/start{
+	name = "Intelligence Officer"
+	},
+/turf/open/floor/almayer,
+/area/almayer/command/computerlab)
 "rRU" = (
 /obj/machinery/alarm/almayer{
 	dir = 1
@@ -105382,7 +105403,7 @@ agb
 agb
 aar
 aqc
-cmK
+pGA
 baE
 cnp
 cnu
@@ -105790,7 +105811,7 @@ aar
 aqW
 cmK
 cmK
-cmK
+pGA
 cnL
 aar
 cnE
@@ -106404,7 +106425,7 @@ baE
 aar
 aGN
 cbn
-aGN
+rRO
 cbn
 aar
 aDt

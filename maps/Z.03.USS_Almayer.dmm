@@ -21292,9 +21292,6 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "aRj" = (
@@ -58154,9 +58151,6 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "cnr" = (
@@ -58293,9 +58287,6 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "cnE" = (
@@ -58316,6 +58307,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/rack,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "cnG" = (
@@ -58414,6 +58406,7 @@
 /area/almayer/command/computerlab)
 "cnP" = (
 /obj/machinery/light,
+/obj/structure/rack,
 /turf/open/floor/almayer,
 /area/almayer/command/computerlab)
 "cnQ" = (
@@ -63330,12 +63323,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
-"pGA" = (
-/obj/effect/landmark/start{
-	name = "Intelligence Officer"
-	},
-/turf/open/floor/almayer,
-/area/almayer/command/securestorage)
 "pHx" = (
 /obj/structure/curtain/medical,
 /obj/structure/disposalpipe/segment{
@@ -64596,6 +64583,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_four)
+"tnT" = (
+/obj/structure/closet/secure_closet/staff_officer/intel,
+/turf/open/floor/almayer,
+/area/almayer/command/computerlab)
 "toH" = (
 /obj/structure/closet/secure_closet/warrant_officer,
 /obj/item/reagent_container/spray/pepper,
@@ -105403,7 +105394,7 @@ agb
 agb
 aar
 aqc
-pGA
+cmK
 baE
 cnp
 cnu
@@ -105811,13 +105802,13 @@ aar
 aqW
 cmK
 cmK
-pGA
+cmK
 cnL
 aar
 cnE
+cbn
 aGN
-aGN
-aGN
+cbn
 aar
 anC
 aiC
@@ -106423,10 +106414,10 @@ baE
 cmK
 baE
 aar
-aGN
-cbn
 rRO
-cbn
+rRO
+rRO
+rRO
 aar
 aDt
 aiC
@@ -106626,10 +106617,10 @@ baE
 cnK
 baE
 aar
-aGN
-cbn
-aGN
-cbn
+tnT
+tnT
+tnT
+tnT
 aar
 aDt
 aiC

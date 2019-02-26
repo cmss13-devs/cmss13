@@ -327,7 +327,6 @@
 	debilitate = list(0,2,0,0,0,1,0,0)
 	New()
 		..()
-		accuracy_var_high = config.max_proj_variance
 		damage = config.high_hit_damage
 		damage_var_low = config.low_proj_variance
 		damage_var_high = config.med_proj_variance

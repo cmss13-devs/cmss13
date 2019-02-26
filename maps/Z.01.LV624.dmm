@@ -307,15 +307,8 @@
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central1)
 "bn" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Kegan Mills"
-	},
-/turf/open/gm/dirt,
+/obj/effect/alien/weeds/node,
+/turf/closed/wall/resin/membrane/ondirt,
 /area/lv624/ground/caves/east1)
 "bo" = (
 /obj/effect/landmark{
@@ -363,9 +356,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "bx" = (
-/obj/structure/bed/nest,
-/obj/item/weapon/gun/pistol/holdout,
 /obj/effect/alien/weeds/node,
+/obj/structure/mineral_door/resin,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "by" = (
@@ -403,14 +395,14 @@
 /area/lv624/ground/caves/west1)
 "bC" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Lee Hesto"
+/obj/effect/landmark/corpsespawner/security{
+	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
+	corpsesuit = /obj/item/clothing/suit/storage/CMB;
+	corpseuniform = /obj/item/clothing/under/CM_uniform;
+	name = "Deputy Maxwell Ligis"
 	},
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/effect/alien/weeds/node,
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
@@ -473,15 +465,8 @@
 	},
 /area/lv624/ground/caves/central1)
 "bL" = (
+/obj/effect/alien/weeds/node,
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsebelt = /obj/item/weapon/gun/pistol/holdout;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Luther Yovin"
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "bM" = (
@@ -498,14 +483,14 @@
 /area/lv624/ground/caves/west1)
 "bP" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
+/obj/effect/landmark/corpsespawner/engineer{
+	corpseback = /obj/item/storage/backpack;
+	corpseidjob = "Engineer";
 	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
 	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Chang Lin"
+	name = "Colonist Everett Mison"
 	},
-/obj/item/weapon/gun/pistol/holdout,
+/obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "bQ" = (
@@ -556,16 +541,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "bY" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	mobname = "";
-	name = "Colonist Ben Harris"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage)
 "bZ" = (
 /turf/closed/wall/resin/ondirt,
 /area/lv624/ground/caves/west1)
@@ -573,32 +551,27 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central3)
 "cb" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	mobname = "";
-	name = "Colonist Mio Linno"
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating{
+	icon_state = "platebotc"
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/area/lv624/lazarus/quartstorage)
 "cc" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Ethan Peser"
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/chapel)
 "cd" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/engineer{
-	corpseback = /obj/item/storage/backpack;
-	corpseidjob = "Engineer";
+/obj/effect/landmark/corpsespawner/scientist{
+	corpseback = null;
+	corpsehelmet = /obj/item/clothing/head/cmcap/req;
 	corpseshoes = /obj/item/clothing/shoes/black;
+	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
 	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Everett Mison"
+	name = "Colonist Lee Hesto"
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
@@ -625,70 +598,45 @@
 /area/lv624/ground/caves/west1)
 "ci" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/miner{
-	corpseback = /obj/item/storage/backpack;
-	corpsehelmet = /obj/item/clothing/head/flatcap;
-	corpseidjob = "Laborer";
+/obj/effect/landmark/corpsespawner/scientist{
+	corpseback = null;
+	corpseshoes = /obj/item/clothing/shoes/black;
+	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
 	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Terrin Yin"
+	name = "Colonist Chang Lin"
 	},
+/obj/item/weapon/gun/pistol/holdout,
+/obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west1)
 "cj" = (
 /obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Marko Quin"
-	},
+/obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/area/lv624/ground/caves/central1)
 "ck" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/flatcap;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Jackson Martin"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/obj/effect/alien/weeds/node,
+/turf/closed/wall/resin/membrane/ondirt,
+/area/lv624/ground/caves/central1)
 "cl" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsehelmet = /obj/item/clothing/head/cmcap/req;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Olin Berus"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/chapel)
 "cm" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Deputy Maxwell Ligis"
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	icon_state = "bar"
 	},
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/area/lv624/lazarus/canteen)
 "cn" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpsehelmet = /obj/item/clothing/head/soft/grey;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Innio Morris"
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Nexus Dome Canteen";
+	req_access = list(100)
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/turf/open/floor{
+	icon_state = "bar"
+	},
+/area/lv624/lazarus/canteen)
 "co" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -703,37 +651,33 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central3)
 "cr" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Braxton Oxto"
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	icon_state = "bar"
+	},
+/area/lv624/lazarus/canteen)
 "cs" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/miner{
-	corpseback = null;
-	corpseidjob = "Laborer";
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Kira Von"
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Nexus Dome Canteen";
+	req_access = list(100);
+	req_one_access = list()
 	},
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/turf/open/floor{
+	icon_state = "bar"
+	},
+/area/lv624/lazarus/canteen)
 "ct" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/miner{
-	corpseback = null;
-	corpseidjob = "Laborer";
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Bren Foras"
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	icon_state = "bar"
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/area/lv624/lazarus/kitchen)
 "cu" = (
 /turf/open/floor{
 	icon_state = "cult";
@@ -741,14 +685,15 @@
 	},
 /area/lv624/ground/caves/west1)
 "cv" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsehelmet = /obj/item/clothing/head/helmet/riot;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Fors Ilin"
+/obj/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Nexus Dome Canteen";
+	req_access = list(100);
+	req_one_access = list()
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/turf/open/floor{
+	icon_state = "bar"
+	},
+/area/lv624/lazarus/kitchen)
 "cw" = (
 /obj/structure/foamedmetal,
 /turf/open/shuttle{
@@ -1014,36 +959,21 @@
 	},
 /area/lv624/ground/sand6)
 "do" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/security{
-	corpsebelt = /obj/item/weapon/gun/revolver/cmb;
-	corpsesuit = /obj/item/clothing/suit/storage/CMB;
-	corpseuniform = /obj/item/clothing/under/CM_uniform;
-	name = "Marshal Logan Bills"
-	},
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/robotics)
 "dp" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/scientist{
-	corpseback = null;
-	corpseshoes = /obj/item/clothing/shoes/black;
-	corpsesuit = /obj/item/clothing/suit/storage/labcoat;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	name = "Colonist Harry Trent"
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
 "dq" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
 "dr" = (
-/obj/structure/bed/nest,
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/research)
 "ds" = (
 /obj/structure/foamedmetal,
 /turf/open/gm/dirt,
@@ -1061,16 +991,14 @@
 	},
 /area/lv624/ground/sand6)
 "dv" = (
-/obj/structure/bed/nest,
-/obj/effect/landmark/corpsespawner/doctor{
-	corpseback = null;
-	corpsegloves = /obj/item/clothing/gloves/latex;
-	corpseuniform = /obj/item/clothing/under/colonist;
-	mobname = "";
-	name = "Colonist Redo Koster"
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east1)
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/research)
 "dw" = (
 /obj/structure/foamedmetal{
 	layer = 4
@@ -2569,7 +2497,7 @@
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "hY" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/colony,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -2823,7 +2751,7 @@
 	},
 /area/lv624/ground/sand8)
 "iK" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/colony,
 /turf/open/floor{
 	tag = "icon-platebot";
 	icon_state = "platebot"
@@ -2919,19 +2847,17 @@
 	},
 /area/lv624/ground/sand8)
 "iV" = (
-/obj/structure/girder,
 /turf/open/floor/plating{
 	icon_state = "warnplate";
 	dir = 6
 	},
 /area/lv624/ground/sand8)
 "iW" = (
-/obj/structure/window/framed/colony/reinforced{
-	tiles_special = list(/obj/machinery/door/airlock,/obj/structure/window/framed,/obj/structure/window_frame)
-	},
-/turf/open/floor{
-	icon_state = "vault";
-	dir = 8
+/obj/structure/disposalpipe/segment,
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "warnplate"
 	},
 /area/lv624/ground/sand8)
 "iX" = (
@@ -2984,14 +2910,6 @@
 	icon_state = "beachcorner2"
 	},
 /area/lv624/ground/river2)
-"jg" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "warnplate"
-	},
-/area/lv624/ground/sand8)
 "jh" = (
 /obj/structure/jungle/planttop1,
 /turf/closed/wall,
@@ -3304,13 +3222,23 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river3)
 "kh" = (
-/obj/structure/jungle/vines/heavy{
-	icon_state = "Hvy2";
-	pixel_x = 0
+/obj/item/trash/candy,
+/obj/machinery/door_control{
+	dir = 1;
+	id = "nexus_blast";
+	name = "Nexus Lockdown";
+	pixel_x = 25
 	},
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass,
-/area/lv624/ground/jungle8)
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Corporate Lobby APC"
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/open/floor/wood,
+/area/lv624/lazarus/hop)
 "ki" = (
 /obj/structure/jungle/vines/heavy,
 /turf/open/gm/grass{
@@ -3598,9 +3526,14 @@
 /turf/open/gm/river,
 /area/lv624/ground/river2)
 "kY" = (
-/obj/structure/bed/nest,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west1)
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
 "kZ" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/gm/coast{
@@ -4422,7 +4355,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
 "nI" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
 "nJ" = (
@@ -4529,7 +4462,7 @@
 	},
 /area/lv624/ground/jungle7)
 "nY" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
 "nZ" = (
@@ -5078,26 +5011,6 @@
 	},
 /turf/closed/wall,
 /area/lv624/lazarus/medbay)
-"ph" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	layer = 2.44
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
-"pi" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	layer = 2.44
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
 "pj" = (
 /obj/structure/sign/botany,
 /obj/structure/cable/yellow{
@@ -5693,13 +5606,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"qE" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/obj/structure/jungle/vines{
-	icon_state = "Light2"
-	},
-/turf/open/gm/grass,
-/area/lv624/ground/jungle7)
 "qF" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -6550,10 +6456,6 @@
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
-"te" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv624/lazarus/quartstorage)
 "tf" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
@@ -7424,12 +7326,6 @@
 	icon_state = "platebotc"
 	},
 /area/lv624/lazarus/quartstorage/outdoors)
-"vy" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating{
-	icon_state = "platebotc"
-	},
-/area/lv624/lazarus/quartstorage)
 "vz" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -7507,10 +7403,6 @@
 "vH" = (
 /turf/closed/wall,
 /area/lv624/lazarus/robotics)
-"vI" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv624/lazarus/robotics)
 "vJ" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
@@ -7519,10 +7411,6 @@
 	dir = 5;
 	icon_state = "whitepurple"
 	},
-/area/lv624/lazarus/research)
-"vK" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
 /area/lv624/lazarus/research)
 "vL" = (
 /obj/structure/closet/lasertag/blue,
@@ -8144,24 +8032,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/research)
-"xo" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/research)
-"xp" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/fitness)
 "xq" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -11335,13 +11205,6 @@
 	icon_state = "chapel"
 	},
 /area/lv624/lazarus/chapel)
-"EM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv624/lazarus/chapel)
 "EN" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -11700,10 +11563,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
-"Fz" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/lv624/lazarus/chapel)
 "FA" = (
 /obj/structure/rack{
 	layer = 2.5
@@ -14121,39 +13980,13 @@
 "Lp" = (
 /turf/closed/wall,
 /area/lv624/lazarus/canteen)
-"Lq" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/lv624/lazarus/canteen)
 "Lr" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Nexus Dome Canteen";
-	req_access = list(100)
+/obj/effect/landmark{
+	name = "xeno_spawn";
+	pixel_x = -1
 	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/canteen)
-"Ls" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/canteen)
-"Lt" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/lv624/lazarus/canteen)
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west1)
 "Lu" = (
 /turf/open/gm/grass{
 	icon_state = "grass2"
@@ -14992,17 +14825,6 @@
 	icon_state = "bar"
 	},
 /area/lv624/lazarus/canteen)
-"Nn" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
-	dir = 1;
-	name = "\improper Nexus Dome Canteen";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/canteen)
 "No" = (
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/canteen)
@@ -15287,13 +15109,6 @@
 	},
 /turf/open/floor,
 /area/lv624/lazarus/security)
-"NU" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/lv624/lazarus/kitchen)
 "NV" = (
 /obj/structure/table,
 /obj/machinery/chem_dispenser/soda{
@@ -15707,17 +15522,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
-"ON" = (
-/obj/machinery/door/airlock/almayer/medical/glass{
-	name = "\improper Nexus Dome Canteen";
-	req_access = list(100);
-	req_one_access = list()
-	},
-/turf/open/floor{
-	dir = 8;
-	icon_state = "barber"
-	},
-/area/lv624/lazarus/kitchen)
 "OO" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -16560,23 +16364,6 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/lv624/lazarus/hop)
-"QL" = (
-/obj/item/trash/candy,
-/obj/machinery/door_control{
-	dir = 1;
-	id = "nexus_blast";
-	name = "Nexus Lockdown";
-	pixel_x = 25
-	},
-/obj/machinery/power/apc{
-	name = "Corporate Lobby APC"
-	},
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "QM" = (
 /turf/closed/wall/r_wall,
@@ -20699,6 +20486,13 @@
 /obj/item/device/reagent_scanner/adv/objective,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
+"ZO" = (
+/obj/effect/landmark{
+	name = "xeno_spawn";
+	pixel_x = -1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east1)
 "ZS" = (
 /obj/structure/table,
 /obj/machinery/computer/shuttle_control/dropship2,
@@ -23961,17 +23755,17 @@ bM
 bM
 bM
 bZ
-by
+bQ
+bR
 bP
-kY
-cd
-ce
+bR
+bQ
+bR
 ci
-kY
-cj
-cl
-cn
+bR
+bQ
 bZ
+bM
 bM
 bM
 bM
@@ -24189,17 +23983,17 @@ bM
 bM
 bM
 bZ
-bz
-bU
+bR
+bF
 ch
+bE
+bR
+cd
 ch
-ch
-ch
-ch
-ch
-ch
-kY
+bB
+bR
 bZ
+bM
 bM
 bM
 bM
@@ -24417,17 +24211,17 @@ bM
 bM
 bM
 bZ
-bB
+bC
 ch
-bN
-bN
-bN
-bN
-bN
-bN
+bU
 ch
-cr
+bU
+ch
+bU
+ch
+ce
 bZ
+bM
 bM
 bM
 bM
@@ -24645,17 +24439,17 @@ bM
 bM
 bM
 bZ
-bC
+bR
+bV
 ch
-bN
-bN
-bQ
-bN
-bN
-bN
-bU
-cs
+bX
+bR
+by
+ch
+bz
+bR
 bZ
+bM
 bM
 bM
 bM
@@ -24873,17 +24667,17 @@ bM
 bM
 bM
 bZ
-bE
-ch
-ch
-ch
 bN
+bR
+ch
+bR
 bN
+bR
 ch
-ch
-ch
-ct
+bR
+bN
 bZ
+bM
 bM
 bM
 bM
@@ -25101,17 +24895,17 @@ bM
 bM
 bM
 bZ
-bF
-bV
-bX
-ch
 bN
 bN
-ch
-ck
-cm
-cv
+bQ
+bN
+bN
+bN
+bQ
+bN
+bN
 bZ
+bM
 bM
 bM
 bM
@@ -25339,7 +25133,7 @@ bZ
 bZ
 bZ
 bZ
-bZ
+bM
 bM
 bM
 bM
@@ -26471,11 +26265,11 @@ bN
 cS
 bN
 bN
+Lr
 bN
+Lr
 bN
-bN
-bN
-bN
+Lr
 bN
 bN
 bR
@@ -30605,7 +30399,7 @@ bN
 bN
 bN
 bN
-ch
+bN
 bN
 cp
 ch
@@ -30913,9 +30707,9 @@ mN
 mN
 mN
 vH
-vI
+do
 zE
-vI
+do
 vH
 tf
 tf
@@ -31137,17 +30931,17 @@ mN
 mN
 mN
 vH
-vI
-vI
-vI
+do
+do
+do
 vH
 yW
 zF
 Ah
 vH
-vI
-vI
-vI
+do
+do
+do
 vH
 tf
 tf
@@ -31296,7 +31090,7 @@ bN
 bN
 bN
 bN
-ch
+bN
 cp
 bM
 bM
@@ -31364,7 +31158,7 @@ mN
 mN
 mN
 mN
-vI
+do
 xe
 CZ
 yg
@@ -31376,7 +31170,7 @@ vH
 Bp
 BR
 Ck
-vI
+do
 tf
 tf
 DZ
@@ -31524,7 +31318,7 @@ bN
 bN
 bZ
 bN
-ch
+bN
 cp
 bM
 bM
@@ -31592,7 +31386,7 @@ mN
 mN
 mN
 mN
-vI
+do
 xf
 xA
 xe
@@ -31604,7 +31398,7 @@ yF
 xe
 xe
 Ck
-vI
+do
 tf
 tf
 DZ
@@ -31820,7 +31614,7 @@ pU
 mN
 mN
 mN
-vI
+do
 xg
 xe
 yj
@@ -31832,7 +31626,7 @@ vH
 Bq
 xe
 Cl
-vI
+do
 tf
 tf
 DZ
@@ -31977,7 +31771,7 @@ bN
 bN
 bN
 bN
-bZ
+bN
 bQ
 bN
 bN
@@ -32172,7 +31966,7 @@ bN
 bN
 bN
 bR
-bN
+bQ
 bN
 bN
 bN
@@ -32275,7 +32069,7 @@ mN
 ux
 mN
 mN
-vI
+do
 wD
 xh
 xC
@@ -32289,7 +32083,7 @@ xj
 yG
 xj
 CK
-vI
+do
 Dv
 Eu
 Dv
@@ -32731,7 +32525,7 @@ mN
 mN
 mN
 mN
-vI
+do
 wE
 xj
 xj
@@ -32745,7 +32539,7 @@ Bs
 xj
 Cm
 CL
-vI
+do
 Dv
 Ev
 EN
@@ -32858,11 +32652,11 @@ bl
 br
 bl
 bl
+bv
 bl
 bl
 bl
-bp
-bp
+bv
 bl
 bl
 bl
@@ -33188,7 +32982,7 @@ mN
 mN
 mN
 mN
-vI
+do
 xk
 xe
 yn
@@ -33200,7 +32994,7 @@ vH
 Bt
 xe
 Cn
-vI
+do
 tf
 tf
 Ex
@@ -33316,10 +33110,10 @@ bA
 bl
 bl
 bl
-bA
 bl
 bl
-bp
+bl
+bl
 bl
 bl
 bl
@@ -33416,7 +33210,7 @@ mN
 mN
 mN
 mN
-vI
+do
 xe
 xe
 xe
@@ -33428,7 +33222,7 @@ yF
 xe
 xA
 Ck
-vI
+do
 tf
 tf
 tf
@@ -33547,8 +33341,8 @@ bl
 bl
 bl
 bl
-bp
 bl
+bv
 bl
 bl
 bm
@@ -33644,7 +33438,7 @@ mN
 mN
 mN
 mN
-vI
+do
 xl
 xf
 Dr
@@ -33656,7 +33450,7 @@ vH
 Hc
 xf
 Ck
-vI
+do
 tf
 th
 th
@@ -33771,11 +33565,11 @@ bJ
 bp
 bp
 bp
-br
-br
-br
-bp
-bp
+bl
+bv
+bl
+bl
+bl
 bl
 bl
 bm
@@ -33873,17 +33667,17 @@ mN
 mN
 mN
 vH
-vI
-vI
-vI
+do
+do
+do
 vH
 zf
 zJ
 zJ
 vH
-vI
-vI
-vI
+do
+do
+do
 vH
 tf
 tf
@@ -34105,9 +33899,9 @@ mN
 mN
 mN
 vH
-vI
+do
 zK
-vI
+do
 vH
 tf
 tf
@@ -35587,7 +35381,7 @@ bm
 bA
 bA
 bl
-bl
+bv
 bl
 bH
 bl
@@ -35595,7 +35389,7 @@ bl
 bl
 bl
 bl
-bl
+bv
 bl
 bl
 bm
@@ -36952,9 +36746,9 @@ bm
 bm
 bm
 bm
-br
 bl
 bl
+bv
 bl
 bl
 bl
@@ -37039,7 +36833,7 @@ mK
 mO
 mV
 ni
-ni
+mN
 mN
 mN
 mN
@@ -37178,10 +36972,10 @@ bm
 bm
 bm
 bm
-bm
 br
-bc
+cj
 br
+bl
 bl
 bl
 bl
@@ -37406,11 +37200,11 @@ bm
 bm
 bm
 bm
-br
+bc
+bp
 bc
 br
-bc
-br
+bl
 bl
 bl
 bl
@@ -37634,10 +37428,10 @@ bm
 bm
 bm
 bm
-bl
-bw
-bc
 br
+bp
+bp
+bp
 bl
 bl
 bl
@@ -37862,18 +37656,18 @@ bm
 bm
 bm
 bm
-br
+bc
+ck
 bc
 br
-bc
-br
-bl
 bl
 bI
 bl
-bI
 bl
-bI
+bl
+bl
+bl
+bl
 bl
 bl
 bl
@@ -38090,10 +37884,10 @@ bm
 bm
 bm
 bm
-bl
 br
-bc
-br
+bp
+bp
+bp
 bl
 bv
 bl
@@ -38318,18 +38112,18 @@ bm
 bm
 bm
 bm
-br
+bc
+bp
 bc
 br
-bc
-br
-bl
 bl
 bI
 bl
-bI
 bl
-bI
+bv
+bl
+bl
+bl
 bv
 bp
 bp
@@ -38546,10 +38340,10 @@ bm
 bm
 bm
 bm
-bm
 br
-bc
+cj
 br
+bl
 bl
 bl
 bl
@@ -38775,24 +38569,24 @@ bm
 bm
 bm
 bm
-bl
-br
-bl
-bl
+bp
+bv
 bl
 bl
 bI
 bl
-bI
 bl
-bI
+bl
+bl
+bl
+bl
 bp
 bp
 bA
 bA
 bp
 bl
-bl
+bv
 bl
 bl
 bl
@@ -40026,10 +39820,10 @@ qR
 rn
 qi
 qi
-vK
+dr
 wt
 wN
-xo
+dv
 xs
 tf
 tf
@@ -40254,10 +40048,10 @@ qi
 ro
 qi
 qi
-tx
+dp
 wu
 wO
-xp
+kY
 tf
 tf
 tf
@@ -40693,7 +40487,7 @@ mt
 mF
 lG
 lG
-ph
+nY
 pt
 pt
 nY
@@ -40707,16 +40501,16 @@ sK
 rP
 sZ
 tw
-tx
-tx
-tx
+dp
+dp
+dp
 tw
 ww
 wQ
 xr
 xM
-tx
-tx
+dp
+dp
 tz
 tw
 tf
@@ -40921,7 +40715,7 @@ oe
 lG
 lG
 lG
-ph
+nY
 pt
 pt
 nY
@@ -40934,7 +40728,7 @@ rP
 rP
 rP
 sX
-tx
+dp
 uz
 tX
 vu
@@ -41149,7 +40943,7 @@ lG
 lG
 lG
 lG
-pi
+nI
 pG
 pG
 nI
@@ -41162,7 +40956,7 @@ rP
 rP
 rP
 tu
-tx
+dp
 uA
 tX
 tX
@@ -41174,7 +40968,7 @@ xO
 yt
 yt
 zj
-tx
+dp
 tf
 tf
 tf
@@ -41845,7 +41639,7 @@ sb
 rP
 rP
 rP
-tx
+dp
 tX
 uD
 tX
@@ -41859,7 +41653,7 @@ tX
 tX
 tX
 zL
-tx
+dp
 yN
 yN
 yN
@@ -42315,7 +42109,7 @@ yy
 tX
 tX
 zM
-tx
+dp
 yN
 yN
 yN
@@ -42998,7 +42792,7 @@ xR
 tX
 tX
 zo
-tx
+dp
 tf
 tf
 tf
@@ -43226,7 +43020,7 @@ xS
 yz
 yO
 uz
-tx
+dp
 tf
 tf
 tf
@@ -43444,16 +43238,16 @@ sZ
 tB
 tw
 tz
-tx
-tx
+dp
+dp
 tw
 wy
 tX
 tX
 xq
-tx
-tx
-tx
+dp
+dp
+dp
 tw
 tf
 tf
@@ -43675,9 +43469,9 @@ ui
 tf
 tf
 tw
-tx
+dp
 wU
-tx
+dp
 xT
 yb
 yb
@@ -45749,7 +45543,7 @@ FR
 Fn
 FR
 Fn
-Fz
+cl
 Ii
 IV
 JG
@@ -46674,7 +46468,7 @@ NS
 OK
 Zz
 Ll
-QL
+kh
 RI
 SA
 SA
@@ -46850,7 +46644,7 @@ nB
 nb
 nv
 nr
-nx
+nb
 nn
 lP
 nr
@@ -46883,10 +46677,10 @@ zP
 zP
 zP
 zP
-EM
+cc
 Fq
-Fz
-Fz
+cl
+cl
 Gs
 Hf
 zt
@@ -47281,7 +47075,7 @@ gP
 hY
 iy
 iO
-jg
+iW
 ju
 jF
 jG
@@ -47509,7 +47303,7 @@ gP
 hY
 iz
 iP
-jg
+iW
 ju
 jF
 jZ
@@ -47534,7 +47328,7 @@ nB
 nB
 nX
 nw
-nx
+nb
 lP
 nn
 nr
@@ -47765,7 +47559,7 @@ lP
 nr
 nn
 nr
-qE
+nw
 lP
 lP
 lG
@@ -48722,11 +48516,11 @@ JK
 zt
 Mf
 Nk
-NU
-ON
-NU
-NU
-NU
+ct
+cv
+ct
+ct
+ct
 RQ
 Nk
 Nk
@@ -49403,7 +49197,7 @@ zt
 zt
 zt
 Ip
-Lq
+cm
 Mj
 Nl
 NX
@@ -49561,7 +49355,7 @@ hY
 io
 iE
 iS
-jg
+iW
 ju
 jG
 ha
@@ -49631,7 +49425,7 @@ Jg
 JB
 HZ
 Ii
-Lq
+cm
 Mk
 Nl
 NY
@@ -49789,7 +49583,7 @@ hY
 io
 iE
 iT
-jg
+iW
 ju
 jG
 ha
@@ -49859,7 +49653,7 @@ Jh
 JL
 Kv
 zt
-Lr
+cn
 Ml
 Nl
 NZ
@@ -50087,7 +49881,7 @@ Jh
 JM
 Kv
 Ie
-Ls
+Ml
 Ml
 Nl
 Oa
@@ -50315,7 +50109,7 @@ Jh
 JN
 Kv
 zt
-Lq
+cm
 Ml
 Ml
 Ob
@@ -50472,7 +50266,7 @@ gP
 hP
 hY
 iK
-iW
+hY
 hP
 jr
 jH
@@ -50543,7 +50337,7 @@ Ji
 JO
 Kw
 KN
-Lt
+cr
 Mm
 Nm
 Nm
@@ -50748,9 +50542,9 @@ ri
 ri
 ri
 sN
-te
-te
-te
+bY
+bY
+bY
 sN
 ti
 zR
@@ -50975,7 +50769,7 @@ rK
 rK
 ri
 ri
-te
+bY
 ti
 ti
 ub
@@ -51203,7 +50997,7 @@ sk
 rK
 rK
 ri
-te
+bY
 ub
 ti
 ti
@@ -51229,7 +51023,7 @@ zt
 zt
 zt
 zt
-Lq
+cm
 Ml
 OQ
 PC
@@ -51431,7 +51225,7 @@ sk
 sk
 rK
 xY
-te
+bY
 tH
 ti
 ti
@@ -51457,7 +51251,7 @@ zt
 zt
 zt
 zt
-Nn
+cs
 Ml
 OR
 PD
@@ -51685,7 +51479,7 @@ zt
 zt
 AY
 HL
-Lq
+cm
 Ml
 Ml
 PE
@@ -53027,7 +52821,7 @@ td
 rK
 rK
 ya
-te
+bY
 ti
 ti
 ti
@@ -53039,7 +52833,7 @@ vd
 ti
 ti
 Eh
-te
+bY
 FI
 FI
 FI
@@ -53255,7 +53049,7 @@ rK
 rK
 ri
 ri
-te
+bY
 ti
 ti
 ti
@@ -53267,7 +53061,7 @@ vg
 ti
 ti
 Ei
-te
+bY
 FI
 FI
 FI
@@ -53483,7 +53277,7 @@ rK
 vP
 ri
 ri
-te
+bY
 ti
 tH
 tH
@@ -53495,7 +53289,7 @@ ti
 ti
 ti
 ti
-te
+bY
 FI
 FI
 FI
@@ -53712,17 +53506,17 @@ vP
 qJ
 ri
 sN
-te
-te
-te
+bY
+bY
+bY
 sN
 ti
 ti
 ti
 sN
-te
-te
-te
+bY
+bY
+bY
 sN
 FJ
 Gd
@@ -53944,9 +53738,9 @@ yU
 ri
 ri
 sN
-vy
+cb
 vS
-vy
+cb
 sN
 Dg
 DG
@@ -54161,9 +53955,9 @@ tk
 qW
 qW
 sN
-vy
+cb
 vS
-vy
+cb
 sN
 ri
 ri
@@ -54385,17 +54179,17 @@ mt
 mF
 ri
 sN
-te
-te
-te
+bY
+bY
+bY
 sN
 ti
 ti
 ti
 sN
-te
-te
-te
+bY
+bY
+bY
 sN
 ri
 ri
@@ -54539,7 +54333,7 @@ cf
 cg
 cg
 cf
-cg
+aL
 cg
 cg
 cg
@@ -54612,7 +54406,7 @@ lG
 lG
 lG
 ri
-te
+bY
 ti
 ti
 ti
@@ -54624,7 +54418,7 @@ wW
 ti
 ti
 yD
-te
+bY
 ri
 ri
 qG
@@ -54766,8 +54560,8 @@ cf
 cg
 cg
 cg
-aL
-aL
+cg
+cg
 aL
 cg
 cg
@@ -54840,7 +54634,7 @@ lG
 lG
 lG
 ri
-te
+bY
 ti
 ti
 ti
@@ -54852,7 +54646,7 @@ wX
 ti
 ti
 ti
-te
+bY
 ri
 ri
 qG
@@ -55068,7 +54862,7 @@ lG
 lP
 lG
 ri
-te
+bY
 tE
 ti
 ti
@@ -55080,7 +54874,7 @@ vd
 ti
 ti
 tE
-te
+bY
 ri
 ri
 qG
@@ -55537,7 +55331,7 @@ ti
 ti
 ti
 ti
-vy
+cb
 qW
 qW
 qW
@@ -55906,7 +55700,7 @@ cg
 cg
 cg
 cg
-cg
+aN
 cg
 aL
 cg
@@ -55993,7 +55787,7 @@ ti
 ti
 ti
 ti
-vy
+cb
 qW
 qW
 qW
@@ -56136,7 +55930,7 @@ cg
 cg
 cg
 cg
-bt
+aL
 cg
 cZ
 cf
@@ -56361,10 +56155,10 @@ cf
 cf
 cf
 cf
-aL
-aL
-aL
-aL
+cg
+cg
+cg
+bt
 cg
 cg
 cf
@@ -56436,7 +56230,7 @@ qc
 pK
 sB
 pK
-te
+bY
 tH
 ti
 ti
@@ -56448,7 +56242,7 @@ vd
 ti
 ti
 ub
-te
+bY
 pK
 pK
 pK
@@ -56590,8 +56384,8 @@ cf
 cf
 cf
 cf
-cg
-cg
+aL
+aL
 cg
 cg
 cg
@@ -56664,7 +56458,7 @@ rM
 pK
 pK
 pK
-te
+bY
 tH
 ti
 ti
@@ -56676,7 +56470,7 @@ xa
 ti
 ti
 ti
-te
+bY
 pK
 pK
 pK
@@ -56817,13 +56611,13 @@ cf
 cf
 cf
 cf
-cC
-cG
-aL
+cg
+cg
+cg
 cg
 cg
 aN
-cg
+aL
 cf
 cf
 cf
@@ -56860,7 +56654,7 @@ hD
 hD
 jA
 jP
-kh
+kG
 jN
 jc
 jn
@@ -56892,7 +56686,7 @@ qZ
 pK
 sD
 pK
-te
+bY
 ti
 ti
 ti
@@ -56904,7 +56698,7 @@ xb
 ti
 ti
 ti
-te
+bY
 pK
 pK
 vk
@@ -57045,13 +56839,13 @@ cf
 cf
 cf
 cf
-cC
+cg
+aN
+cg
+cg
+cg
 aL
-cg
-cg
-cg
-cg
-cg
+cG
 cf
 cf
 cf
@@ -57122,16 +56916,16 @@ pK
 sQ
 sN
 tI
-te
-te
+bY
+bY
 sN
 ti
 ti
 ti
 sN
-te
-te
-te
+bY
+bY
+bY
 sN
 pK
 pK
@@ -57272,15 +57066,15 @@ cf
 cf
 cf
 cf
-cC
-cG
 aL
 cg
 cg
 cg
 cg
-aL
-cG
+cg
+cg
+cZ
+bn
 cf
 cf
 ee
@@ -57353,9 +57147,9 @@ pK
 pK
 uL
 sN
-vy
+cb
 vS
-vy
+cb
 sN
 pK
 pK
@@ -57500,15 +57294,15 @@ cf
 cf
 cf
 cf
-cC
+cG
 aL
 cg
 cg
 cg
 cg
 cg
-cg
 aL
+cG
 cf
 cf
 cf
@@ -57728,15 +57522,15 @@ cf
 cf
 cf
 cf
-cC
+cZ
+cZ
+cg
 aN
 cg
 cg
 cg
-cg
-cg
-cg
-cg
+aN
+aL
 cf
 cf
 cf
@@ -57930,11 +57724,11 @@ cC
 cC
 cg
 cg
-cg
+ZO
 aN
+ZO
 cg
-cg
-cg
+ZO
 cg
 cg
 cg
@@ -57955,8 +57749,8 @@ cf
 cf
 cf
 cf
-cC
-cG
+cZ
+bL
 aL
 cg
 cg
@@ -57964,8 +57758,8 @@ cg
 bo
 cg
 cg
+cg
 aL
-cG
 cf
 cf
 bT
@@ -58183,7 +57977,7 @@ cf
 cf
 cf
 cf
-cC
+cZ
 aL
 cg
 cg
@@ -58192,8 +57986,8 @@ cg
 aN
 cg
 cg
-cg
-aL
+bx
+cG
 cf
 cf
 bT
@@ -58413,15 +58207,15 @@ cf
 cf
 cf
 cG
+cZ
 aL
 cg
 cg
 cg
 cg
 cg
-cg
-aL
-cG
+cZ
+cZ
 cf
 cf
 bT
@@ -58613,13 +58407,13 @@ aN
 cg
 cg
 cC
-bn
-cZ
+cG
+aL
 cg
 cg
 cg
-cZ
-bY
+aL
+cG
 cC
 cf
 cf
@@ -58641,14 +58435,14 @@ cf
 cf
 cf
 cf
-cg
-cg
+cZ
+cG
+bx
+cZ
 aL
 cg
 aL
-cg
-aL
-cg
+cG
 cf
 cf
 cf
@@ -58841,13 +58635,13 @@ cg
 cg
 cg
 cC
-do
-cZ
-co
-aN
+bn
 cg
-cZ
-dr
+cg
+cg
+cg
+cg
+bn
 cC
 cf
 cf
@@ -58870,12 +58664,12 @@ cf
 cf
 cf
 cf
-aL
+cZ
+cG
+cZ
 cG
 aL
-cG
-aL
-cG
+cZ
 cf
 cf
 cf
@@ -59069,13 +58863,13 @@ cf
 cg
 cg
 cC
-dp
+cG
+aL
 cZ
+cg
 cZ
-cZ
-cZ
-cZ
-cb
+aL
+cG
 cC
 cf
 cf
@@ -59101,7 +58895,7 @@ cf
 cf
 cf
 cf
-aL
+cZ
 cf
 cf
 cf
@@ -59297,13 +59091,13 @@ cf
 cg
 cg
 cC
-dr
+cZ
 cG
-dv
-bx
-bL
+aL
+aN
+aL
 cG
-cc
+cZ
 cC
 cf
 cf

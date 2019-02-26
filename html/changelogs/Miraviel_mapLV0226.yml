@@ -1,0 +1,7 @@
+author: Miraviel
+
+delete-after: True
+
+changes: 
+  - tweak: "LV. Added more larva spawnpoints. Some pre-spawned resin structures were changed."
+  - bugfix: "LV. Reinforced window frames were swapped to normal ones where the wall is not reinforced, so acid-users can melt in. Deleted some awkward fog parts (#4092). Fixed a floating APC (#4091)."

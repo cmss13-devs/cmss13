@@ -12,6 +12,7 @@
 	var/gas_type = GAS_TYPE_AIR
 	var/temperature = T20C
 	var/pressure = ONE_ATMOSPHERE
+	var/can_nuke_area = FALSE
 
 
 /area/New()

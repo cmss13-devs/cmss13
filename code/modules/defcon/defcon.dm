@@ -4,7 +4,7 @@
 #define DEFCON_COST_MODERATE 3
 #define DEFCON_COST_EXPENSIVE 6
 
-#define DEFCON_POINT_GAIN_PER_LEVEL 6
+#define DEFCON_POINT_GAIN_PER_LEVEL 2
 
 var/global/datum/defcon/defcon_controller = new
 
@@ -16,7 +16,7 @@ var/global/datum/defcon/defcon_controller = new
 
 	//Percentage of objectives needed to reach the next DEFCON level
 	//(ordered by DEFCON number, so things will be going in the opposite order!)
-	var/list/defcon_level_triggers = list(0.7, 0.5, 0.3, 0.1, 0.0)
+	var/list/defcon_level_triggers = list(0.5, 0.3, 0.2, 0.1, 0.0)
 
 	var/list/purchased_rewards = list()
 
@@ -26,7 +26,7 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon/proc/check_defcon_level()
 	var/list/objectives_status = objectives_controller.get_objective_completion_stats()
-	
+
 	last_objectives_scored_points = objectives_status["scored_points"]
 	last_objectives_total_points = objectives_status["total_points"]
 	last_objectives_completion_percentage = last_objectives_scored_points / last_objectives_total_points
@@ -36,7 +36,7 @@ var/global/datum/defcon/defcon_controller = new
 			current_defcon_level--
 			remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL
 			announce_defcon_level()
-			
+
 	round_statistics.defcon_level = current_defcon_level
 	round_statistics.objective_points = last_objectives_scored_points
 	round_statistics.total_objective_points = last_objectives_total_points
@@ -47,12 +47,6 @@ var/global/datum/defcon/defcon_controller = new
 	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO [last_objectives_completion_percentage*100]%.\n\nShip DEFCON level lowered to [current_defcon_level]. Additional assets have been authorised to handle the situation."
 	command_announcement.Announce(input, name, new_sound = 'sound/AI/commandreport.ogg')
 
-/datum/defcon/proc/announce_reward(var/announcement_message)
-	//Send ARES message about special asset authorisation
-	var/name = "ALMAYER SPECIAL ASSETS AUTHORISED"
-	var/input = announcement_message
-	command_announcement.Announce(input, name, new_sound = 'sound/misc/notice2.ogg')
-
 /datum/defcon/proc/list_and_purchase_rewards()
 	var/list/rewards_for_purchase = available_rewards()
 	if(rewards_for_purchase.len == 0)
@@ -62,7 +56,7 @@ var/global/datum/defcon/defcon_controller = new
 		return
 	if(defcon_reward_list[pick].apply_reward(src))
 		usr << "Asset granted!"
-		announce_reward(defcon_reward_list[pick].announcement_message)
+		defcon_reward_list[pick].announce_reward()
 	else
 		usr << "Asset granting failed!"
 	return
@@ -102,9 +96,14 @@ var/global/datum/defcon/defcon_controller = new
 	var/unique = FALSE //Whether the reward is unique or not
 	var/announcement_message = "YOU SHOULD NOT BE SEEING THIS MESSAGE. TELL A DEV." //Message to be shared after a reward is purchased
 
+/datum/defcon_reward/proc/announce_reward()
+	//Send ARES message about special asset authorisation
+	var/name = "ALMAYER SPECIAL ASSETS AUTHORISED"
+	command_announcement.Announce(announcement_message, name, new_sound = 'sound/misc/notice2.ogg')
+
 /datum/defcon_reward/New()
 	. = ..()
-	name = "[name] ([cost] points)"
+	name = "([cost] points) [name]"
 
 /datum/defcon_reward/proc/apply_reward(var/datum/defcon/d)
 	if(d.remaining_reward_points < cost)
@@ -113,20 +112,9 @@ var/global/datum/defcon/defcon_controller = new
 	d.purchased_rewards += name
 	return 1
 
-/datum/defcon_reward/proc/announce_reward()
-
-
-
-
-
-
-
-
-
-
 /datum/defcon_reward/supply_points
 	name = "Additional Supply Points"
-	cost = DEFCON_COST_EXPENSIVE
+	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
 	announcement_message = "Additional Supply Points have been authorised for this operation."
 
@@ -138,7 +126,7 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/dropship_part_fabricator_points
 	name = "Additional Dropship Part Fabricator Points"
-	cost = DEFCON_COST_EXPENSIVE
+	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
 	announcement_message = "Additional Dropship Part Fabricator Points have been authorised for this operation."
 
@@ -150,7 +138,7 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/cryo_squad
 	name = "Wake up additional troops"
-	cost = DEFCON_COST_EXPENSIVE
+	cost = DEFCON_COST_MODERATE
 	minimum_defcon_level = 4
 	unique = TRUE
 	announcement_message = "Additional troops are being taken out of cryo."
@@ -182,25 +170,24 @@ var/global/datum/defcon/defcon_controller = new
 
 	ticker.mode.get_specific_call("Marine Reinforcements (Squad) (Cryo)", FALSE, FALSE)
 
-/datum/defcon_reward/tank_crew
-	name = "Deploy the tank"
+/datum/defcon_reward/tank_points
+	name = "Additional Tank Part Fabricator Points"
 	cost = DEFCON_COST_EXPENSIVE
 	minimum_defcon_level = 2
 	unique = TRUE
-	announcement_message = "The tank has been authorised for this operation."
+	announcement_message = "Additional Tank Part Fabricator Points have been authorised for this operation."
 
-/datum/defcon_reward/tank_crew/apply_reward(var/datum/defcon/d)
+/datum/defcon_reward/tank_points/apply_reward(var/datum/defcon/d)
 	. = ..()
 	if(. == 0)
 		return
-
-	ticker.mode.get_specific_call("Tank Crew Cryo Reinforcements", FALSE, FALSE)
+	supply_controller.tank_points += 3000 //Enough for full kit + ammo
 
 /datum/defcon_reward/ob_he
 	name = "Additional OB projectiles - HE x2"
-	cost = DEFCON_COST_EXPENSIVE
+	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
-	unique = TRUE
+	unique = FALSE
 	announcement_message = "Additional Orbital Bombardment ornaments (HE, count:2) have been delivered to Requisitions' ASRS."
 
 /datum/defcon_reward/ob_he/apply_reward(var/datum/defcon/d)
@@ -218,9 +205,9 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/ob_cluster
 	name = "Additional OB projectiles - Cluster x2"
-	cost = DEFCON_COST_EXPENSIVE
+	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
-	unique = TRUE
+	unique = FALSE
 	announcement_message = "Additional Orbital Bombardment ornaments (Cluster, count:2) have been delivered to Requisitions' ASRS."
 
 /datum/defcon_reward/ob_cluster/apply_reward(var/datum/defcon/d)
@@ -238,9 +225,9 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/ob_incendiary
 	name = "Additional OB projectiles - Incendiary x2"
-	cost = DEFCON_COST_EXPENSIVE
+	cost = DEFCON_COST_CHEAP
 	minimum_defcon_level = 5
-	unique = TRUE
+	unique = FALSE
 	announcement_message = "Additional Orbital Bombardment ornaments (Incendiary, count:2) have been delivered to Requisitions' ASRS."
 
 /datum/defcon_reward/ob_incendiary/apply_reward(var/datum/defcon/d)
@@ -255,3 +242,28 @@ var/global/datum/defcon/defcon_controller = new
 	O.orderedby = MAIN_AI_SYSTEM
 
 	supply_controller.shoppinglist += O
+
+/datum/defcon_reward/nuke
+	name = "Planetary nuke"
+	cost = DEFCON_COST_CHEAP
+	minimum_defcon_level = 1
+	unique = TRUE
+	announcement_message = "Planetary nuke has been been delivered to Requisitions' ASRS."
+
+/datum/defcon_reward/nuke/apply_reward(var/datum/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+
+	var/datum/supply_order/O = new /datum/supply_order()
+	O.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	O.object = /obj/machinery/nuclearbomb
+	O.orderedby = MAIN_AI_SYSTEM
+
+	supply_controller.shoppinglist += O
+
+/datum/defcon_reward/nuke/announce_reward(var/announcement_message)
+	//Send ARES message about special asset authorisation
+	var/name = "STRATEGIC NUKE AUTHORISED"
+	command_announcement.Announce(announcement_message, name, new_sound = 'sound/misc/notice1.ogg')

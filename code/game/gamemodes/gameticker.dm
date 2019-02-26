@@ -188,7 +188,7 @@ var/global/datum/controller/gameticker/ticker
 	//for(var/obj/multiz/ladder/L in object_list) L.connect() //Lazy hackfix for ladders. TODO: move this to an actual controller. ~ Z
 
 	if(config.sql_enabled)
-		spawn(3000)
+		spawn(MINUTES_5)
 		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
 		for(var/obj/structure/closet/C in structure_list) //Set up special equipment for lockers and vendors, depending on gamemode
 			C.select_gamemode_equipment(mode.type)
@@ -246,7 +246,7 @@ var/global/datum/controller/gameticker/ticker
 		var/game_finished = 0
 		var/mode_finished = 0
 		if (config.continous_rounds)
-			if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) game_finished = 1
+			if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED) game_finished = 1
 			mode_finished = (!post_game && mode.check_finished())
 		else
 			game_finished = (mode.check_finished() /* || (emergency_shuttle.returned() && emergency_shuttle.evac == 1)*/)
@@ -261,7 +261,7 @@ var/global/datum/controller/gameticker/ticker
 			spawn(50)
 				callHook("roundend")
 
-				if (EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
+				if (EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED)
 					feedback_set_details("end_proper","nuke")
 				else
 					feedback_set_details("end_proper","proper completion")

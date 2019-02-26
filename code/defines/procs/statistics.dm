@@ -114,9 +114,9 @@ proc/statistic_cycle()
 		return
 	while(1)
 		sql_poll_players()
-		sleep(600)
+		sleep(MINUTES_1)
 		sql_poll_admins()
-		sleep(6000) // Poll every ten minutes
+		sleep(MINUTES_10) // Poll every ten minutes
 
 //This proc is used for feedback. It is executed at round end.
 proc/sql_commit_feedback()

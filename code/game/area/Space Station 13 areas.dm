@@ -80,7 +80,7 @@ var/list/ghostteleportlocs = list()
 	for(var/area/AR in all_areas)
 		if(ghostteleportlocs.Find(AR.name)) continue
 		if(istype(AR, /area/turret_protected/aisat) || istype(AR, /area/tdome) || istype(AR, /area/shuttle/specops/centcom) || istype(AR, /area/adminlevel/bunker01/mainroom))
-			ghostteleportlocs += AR.name	
+			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
 		if (picked.z == 1 || picked.z == 3 || picked.z == 4 || picked.z == 5)
@@ -119,7 +119,10 @@ var/list/ghostteleportlocs = list()
 	name = "\improper Admin room"
 	icon_state = "start"
 
-
+//Defined for fulton recovery storage
+/area/space/highalt
+	name = "High Altitude"
+	icon_state = "blue"
 
 //These are shuttle areas, they must contain two areas in a subgroup if you want to move a shuttle from one
 //place to another. Look at escape shuttle for example.

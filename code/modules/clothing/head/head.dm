@@ -141,7 +141,6 @@
 	select_gamemode_skin(/obj/item/clothing/head/cmcap/ro)
 	..()
 
-
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."

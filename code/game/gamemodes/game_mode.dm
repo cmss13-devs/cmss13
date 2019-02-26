@@ -35,8 +35,8 @@
 	var/list/datum/mind/traitors = list()
 	var/obj/machinery/computer/shuttle_control/active_lz = null
 
-	var/scheduler_logging_current_interval = 18000//30 minutes in
-	var/scheduler_logging_ongoing_interval = 18000//every 30 minutes
+	var/scheduler_logging_current_interval = MINUTES_30//30 minutes in
+	var/scheduler_logging_ongoing_interval = MINUTES_30//every 30 minutes
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	world << "<B>Notice</B>: [src] did not define announce()"
@@ -87,7 +87,7 @@
 
 
 /datum/game_mode/proc/check_finished() //to be called by ticker
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) r_TRU
+	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED || EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED ) r_TRU
 
 /datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return

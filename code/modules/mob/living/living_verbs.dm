@@ -89,7 +89,7 @@
 
 
 		spawn(0)
-			if(do_after(usr,(breakout_time*60*10), FALSE)) //minutes * 60seconds * 10deciseconds
+			if(do_after(usr,(breakout_time*MINUTES_1), FALSE))
 				if(!C || !L || L.stat != CONSCIOUS || L.loc != C || C.opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
 					return
 

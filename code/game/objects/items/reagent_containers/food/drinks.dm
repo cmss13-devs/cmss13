@@ -66,7 +66,7 @@
 				var/mob/living/silicon/robot/bro = user
 				bro.cell.use(30)
 				var/refill = R.get_master_reagent_id()
-				spawn(600)
+				spawn(MINUTES_1)
 					R.add_reagent(refill, fillevel)
 
 			playsound(M.loc,'sound/items/drink.ogg', 15, 1)
@@ -118,7 +118,7 @@
 				user << "Now synthesizing [trans] units of [refillName]..."
 
 
-				spawn(300)
+				spawn(SECONDS_30)
 					reagents.add_reagent(refill, trans)
 					user << "Cyborg [src] refilled."
 

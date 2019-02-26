@@ -7,6 +7,7 @@
 	var/obj/item/document_objective/document
 	var/area/initial_area
 	var/important = 0
+	priority = OBJECTIVE_LOW_VALUE
 	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_FAILABLE
 	display_flags = OBJ_DISPLAY_HIDDEN
 	prerequisites_required = PREREQUISITES_NONE
@@ -40,13 +41,13 @@
 		return 0
 
 /datum/cm_objective/document/folder
-	priority = OBJECTIVE_LOW_VALUE
+	priority = OBJECTIVE_MEDIUM_VALUE
 	prerequisites_required = PREREQUISITES_ONE
 	display_flags = 0
 	var/color
 
 /datum/cm_objective/document/folder/get_clue()
-	return "a [color] folder in [initial_area], labelled [document.label]"
+	return "\red A [color] folder in [initial_area], labelled [document.label]"
 
 /datum/cm_objective/document/technical_manual
 	priority = OBJECTIVE_MEDIUM_VALUE
@@ -111,7 +112,7 @@
 	if(!do_after(user, reading_time, TRUE, 5, BUSY_ICON_GENERIC))
 		user << "<span class='warning'>You get distracted and lose your train of thought, you'll have to start over reading this.</span>"
 		return 0
-	if(!objective.is_active() && !objective.is_prerequisites_completed())
+	if(!objective.is_active())
 		display_fail_message(user)
 		return 0
 	read = 1
@@ -134,17 +135,25 @@
 		user << "<span class='notice'>You make out something about [D.get_clue()].</span>"
 	user << "<span class='information'>You finish examining \the [src].</span>"
 
-/obj/item/document_objective/paper/report
+/obj/item/document_objective/report
 	name = "Progress report"
 	desc = "A written report from someone for their supervisor about the status of some kind of project."
-	reading_time = 50
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_words"
+	w_class = 1.0
+
+/obj/item/document_objective/report/display_read_message(mob/living/user)
+	..()
+	for(var/datum/cm_objective/retrieve_item/device/D in objective.enables_objectives)
+		user << "<span class='notice'>You make out something about [D.get_clue()].</span>"
+	user << "<span class='information'>You finish examining \the [src].</span>"
 
 /obj/item/document_objective/folder
-	name = "folder"
+	name = "intel folder"
 	desc = "A folder with some documents inside."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
-	reading_time = 100
+	reading_time = 50
 	objective_type = /datum/cm_objective/document/folder
 	w_class = 1
 
@@ -155,6 +164,7 @@
 	icon_state = "folder_[col]"
 	if(istype(F))
 		F.color = col
+	name = "[initial(name)] ([label])"
 
 /obj/item/document_objective/folder/examine(mob/living/user)
 	..()

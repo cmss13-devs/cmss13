@@ -374,6 +374,15 @@
 
 	isSlotOpen = FALSE
 
+/datum/hive_status/proc/handle_nuke_alert(var/timing)
+	if (!totalXenos.len) //sanity check!
+		return
+
+	if(timing)
+		xeno_message("<span class='xenoannounce'>The tallhosts have deployed a hive killer! Stop it at all costs!</span>",2, hivenumber)
+	else
+		xeno_message("<span class='xenoannounce'>The hive killer has been disabled! Rejoice!</span>",2, hivenumber)
+
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "

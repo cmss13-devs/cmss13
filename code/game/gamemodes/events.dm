@@ -4,7 +4,7 @@
 	//changed to a while(1) loop since they are more efficient.
 	//Moved the spawn in here to allow it to be called with advance proc call if it crashes.
 	//and also to stop spawn copying variables from the game ticker
-	spawn(3000)
+	spawn(MINUTES_5)
 		while(1)
 			if(prob(50))//Every 120 seconds and prob 50 2-4 weak spacedusts will hit the station
 				spawn(1)
@@ -61,7 +61,7 @@
 					turfs += T
 			for(var/turf/open/floor/T in turfs)
 				if(prob(20))
-					spawn(50+rand(0,3000))
+					spawn(50+rand(0,MINUTES_5))
 						picked = pick(turfs)
 						var/obj/effect/portal/P = new /obj/effect/portal( T )
 						P.target = picked
@@ -160,7 +160,7 @@
 		D.carrier = 1
 		H.AddDisease(D)
 		break
-	spawn(rand(1500, 3000)) //Delayed announcements to keep the crew on their toes.
+	spawn(rand(SECONDS_150, MINUTES_5)) //Delayed announcements to keep the crew on their toes.
 		command_announcement.Announce("Confirmed outbreak of level 7 viral biohazard aboard [station_name]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
 /*
 /proc/alien_infestation(var/spawncount = 1) // -- TLE

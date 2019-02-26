@@ -28,14 +28,14 @@
 	if(!isXeno(user) && (onboard || z == 1) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(world.time < shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN)
-				user << "<span class='warning'>You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [round((shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN - world.time)/600)] minutes before trying again.</span>"
+				user << "<span class='warning'>You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [round((shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>"
 			else
 				user << "<span class='notice'>You interact with the pilot's console and re-enable remote control.</span>"
 				shuttle.last_locked = world.time
 				shuttle.queen_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN)
-				user << "<span class='warning'>You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN - world.time)/600)] minutes before trying again.</span>"
+				user << "<span class='warning'>You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>"
 			else
 				user << "<span class='notice'>You reverse the door override.</span>"
 				shuttle.last_door_override = world.time
@@ -179,6 +179,9 @@
 					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
 					xeno_message("<span class='xenoannounce'>The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!</span>",3,Q.hivenumber)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
+					if(bomb_set)
+						for(var/obj/machinery/nuclearbomb/bomb in world)
+							bomb.end_round = FALSE
 				else if(i == "No")
 					return
 				else

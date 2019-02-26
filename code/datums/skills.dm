@@ -285,6 +285,14 @@ United States Colonial Marines
 	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_CHEM
 
+/datum/skills/intel
+	name = "Intelligence Officer"
+	construction = SKILL_ENGINEER_ENGI
+	leadership = SKILL_LEAD_TRAINED
+	cqc = SKILL_CQC_TRAINED
+	melee_weapons = SKILL_MELEE_TRAINED
+
+
 /*
 -------------------------
 COLONIAL LIBERATION FRONT
@@ -490,7 +498,9 @@ MISCELLANEOUS
 /datum/skills/tank_crew
 	name = "Tank Crew"
 	large_vehicle = SKILL_LARGE_VEHICLE_TRAINED
+	leadership = SKILL_LEAD_EXPERT
 	powerloader = SKILL_POWERLOADER_DABBLING
+	engineer = SKILL_ENGINEER_MT
 	leadership = SKILL_LEAD_TRAINED
 
 /datum/skills/gladiator

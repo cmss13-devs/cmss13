@@ -116,7 +116,7 @@
 //returns the ETA in minutes
 /datum/shuttle/ferry/supply/proc/eta_minutes()
 	var/ticksleft = arrive_time - world.time
-	return round(ticksleft/600,1)
+	return round(ticksleft/MINUTES_1,1)
 
 /datum/shuttle/ferry/supply/proc/raise_railings()
 	var/effective = 0

@@ -88,7 +88,7 @@ Implant Specifics:<BR>"}
 				if(prob(60))
 					meltdown()
 			if(2)
-				delay = rand(5*60*10,15*60*10)	//from 5 to 15 minutes of free time
+				delay = rand(MINUTES_5, MINUTES_15)	//from 5 to 15 minutes of free time
 
 		spawn(delay)
 			malfunction--

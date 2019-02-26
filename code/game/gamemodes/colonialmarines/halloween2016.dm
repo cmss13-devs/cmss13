@@ -1,7 +1,8 @@
-#define EVENT_MAJOR_INTERVAL 	3000 // 5 minutes
-#define EVENT_MINOR_INTERVAL 	900 // 1.5 minutes
-#define FOG_DELAY_INTERVAL		6000 // 8 minutes
-#define BATTLEFIELD_END			36000 // 60 minutes
+#define EVENT_MAJOR_INTERVAL 	MINUTES_5 // 5 minutes
+#define EVENT_MINOR_INTERVAL 	SECONDS_90 // 1.5 minutes
+#define FOG_DELAY_INTERVAL		MINUTES_10 // 10 minutes
+#define BATTLEFIELD_END			HOURS_1 // 60 minutes
+
 #define MAX_BLOOD_ATTUNED		5
 #define BATTLEFIELD_DEBUG		0
 
@@ -250,6 +251,7 @@
 	else if((world.time > BATTLEFIELD_END + lobby_time))
 		if(mcguffin && mcguffin.loc) round_finished												= MODE_BATTLEFIELD_W_MAJOR
 		else round_finished 																	= MODE_BATTLEFIELD_DRAW_STALEMATE
+	else if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_GROUND_FINISHED) round_finished 	= MODE_BATTLEFIELD_M_MINOR
 	else if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) round_finished 			= MODE_GENERIC_DRAW_NUKE
 
 ///////////////////////////////

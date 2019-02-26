@@ -189,9 +189,9 @@
 				break
 	else
 		if(transit_optimized)
-			travel_time = move_time * 10 * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
+			travel_time = move_time * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
 		else
-			travel_time = move_time * 10
+			travel_time = move_time
 
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
@@ -205,7 +205,7 @@
 
 	playsound(turfs_src[sound_target], sound_takeoff, 60, 0)
 
-	sleep(warmup_time*10) //Warming up
+	sleep(warmup_time) //Warming up
 
 	moving_status = SHUTTLE_INTRANSIT
 
@@ -343,7 +343,7 @@
 		return	//someone canceled the launch
 
 	var/travel_time = 0
-	travel_time = DROPSHIP_CRASH_TRANSIT_DURATION * 10
+	travel_time = DROPSHIP_CRASH_TRANSIT_DURATION
 
 	//START: Heavy lifting backend
 

@@ -1213,7 +1213,7 @@
 		..()
 		l_color = "#FFFF0C" //Yeller
 		SetLuminosity(4)
-		spawn(3000)
+		spawn(MINUTES_5)
 			if(ticker && istype(ticker.mode,/datum/game_mode/huntergames)) loop_firetick()
 
 

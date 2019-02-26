@@ -1408,7 +1408,23 @@
 		hud_used.locate_leader.icon_state = "trackon"
 
 
+/mob/living/carbon/proc/locate_nearest_nuke()
+	if(!bomb_set) return
+	var/obj/machinery/nuclearbomb/N
+	for(var/obj/machinery/nuclearbomb/bomb in world)
+		if(!N && bomb.z == src.z )
+			N = bomb
+		if(bomb.z == src.z && get_dist(src,bomb) < get_dist(src,N))
+			N = bomb
+	if(N.z != src.z || !N)
+		hud_used.locate_nuke.icon_state = "trackoff"
+		return
 
+	if(get_dist(src,N) < 1)
+		hud_used.locate_nuke.icon_state = "nuke_trackondirect"
+	else
+		hud_used.locate_nuke.dir = get_dir(src,N)
+		hud_used.locate_nuke.icon_state = "nuke_trackon"
 
 
 

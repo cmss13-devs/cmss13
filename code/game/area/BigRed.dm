@@ -1,9 +1,12 @@
 //Areas for BigRed - Minijar
-/area/bigred/ground/
+/area/bigred
+	can_nuke_area = TRUE
+
+/area/bigred/ground
 	name = "ground"
 	icon_state = "blue"
 
-/area/bigred/uground/
+/area/bigred/uground
 	name = "uground"
 	icon_state = "blue"
 
@@ -273,6 +276,8 @@
 
 
 //Big Red V2
+/area/bigredv2
+	can_nuke_area = TRUE
 
 /area/bigredv2/outside
 	name = "\improper Colony Grounds"

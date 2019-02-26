@@ -915,6 +915,9 @@
 			X << "<span class='xenowarning'>You currently have [hive.xeno_leader_list.len] promoted leaders. You may not maintain additional leaders until your power grows.</span>"
 			return
 		var/mob/living/carbon/Xenomorph/T = X.observed_xeno
+		if(T == X)
+			X << "<span class='xenowarning'>You cannot add yourself as a leader!</span>"
+			return
 		X.queen_ability_cooldown = world.time + 150 //15 seconds
 		if(!T.queen_chosen_lead)
 			if(!hive.add_hive_leader(T))

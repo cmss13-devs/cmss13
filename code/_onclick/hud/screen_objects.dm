@@ -686,6 +686,11 @@
 	name = "queen locator"
 	screen_loc = ui_queen_locator
 
+/obj/screen/nuke_locator
+	icon = 'icons/mob/screen1_Midnight.dmi'
+	icon_state = "trackoff"
+	name = "nuke locator"
+	screen_loc = ui_nuke_locator
 
 /obj/screen/xenonightvision
 	icon = 'icons/mob/screen1_alien.dmi'

@@ -1,5 +1,8 @@
 //Areas for prison - Minijar
 
+/area/prison
+	can_nuke_area = TRUE
+
 //SECURITY
 /area/prison/security
 	name = "\improper security department"

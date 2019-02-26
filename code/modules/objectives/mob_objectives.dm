@@ -95,7 +95,7 @@
 /datum/cm_objective/move_mob/almayer/survivor
 	name = "Rescue the Survivor"
 	mob_can_die = MOB_ALIVE_TO_COMPLETE
-	priority = OBJECTIVE_HIGH_VALUE
+	priority = OBJECTIVE_LOW_VALUE
 	display_category = "Rescue the Survivors"
 
 /datum/cm_objective/move_mob/almayer/vip
@@ -189,7 +189,7 @@
 	return "[get_loss_percentage()]% Losses"
 
 /datum/cm_objective/minimise_losses/get_point_value()
-	if(world.time < 18000)
+	if(world.time < MINUTES_30)
 		//We don't count this objective for the first 30 minures
 		//Otherwise LV might get a lot of points before Marines drop due to tcomms being given for free...
 		return 0
@@ -206,7 +206,7 @@
 	name = "Recover the Dead"
 	var/list/corpses = list()
 	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_DO_NOT_TREE
-	var/points_per_corpse = 5
+	var/points_per_corpse = 0
 	var/area/recovery_area = /area/almayer/medical/morgue
 
 /datum/cm_objective/recover_corpses/get_point_value()
@@ -229,7 +229,7 @@
 
 /datum/cm_objective/recover_corpses/colonists
 	name = "Recover Colonist Bodies"
-	points_per_corpse = 10
+	points_per_corpse = 5
 	display_flags = OBJ_DISPLAY_AT_END
 
 /datum/cm_objective/recover_corpses/colonists/post_round_start()
@@ -268,6 +268,7 @@
 /datum/cm_objective/recover_corpses/xenos
 	name = "Recover Xeno corpse specimens"
 	display_flags = OBJ_DISPLAY_AT_END
+	points_per_corpse = 50
 	recovery_area = /area/almayer/medical/medical_science
 
 /datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)

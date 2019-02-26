@@ -489,7 +489,7 @@
 	switch(wireIndex)
 		if(AALARM_WIRE_IDSCAN)			//unlocks for 30 seconds, if you have a better way to hack I'm all ears
 			locked = 0
-			spawn(300)
+			spawn(SECONDS_30)
 				locked = 1
 
 		if (AALARM_WIRE_POWER)

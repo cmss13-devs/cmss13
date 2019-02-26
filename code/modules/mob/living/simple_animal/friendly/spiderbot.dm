@@ -131,7 +131,7 @@
 			user << "\blue You short out the security protocols and overload [src]'s cell, priming it to explode in a short time."
 			spawn(100)	src << "\red Your cell seems to be outputting a lot of power..."
 			spawn(200)	src << "\red Internal heat sensors are spiking! Something is badly wrong with your cell!"
-			spawn(300)	src.explode()
+			spawn(SECONDS_30)	src.explode()
 
 	else
 		if(O.force)

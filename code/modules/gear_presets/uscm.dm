@@ -127,6 +127,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tanker(H), WEAR_HEAD)
 
+	H.hud_set_squad()
+
 /datum/equipment_preset/uscm/tank/load_status()
 	return //No cryo munchies
 

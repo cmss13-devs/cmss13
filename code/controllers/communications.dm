@@ -117,6 +117,7 @@ var/const/ENG_FREQ 		= 1357
 var/const/SEC_FREQ 		= 1359
 var/const/SUP_FREQ 		= 1354
 var/const/JTAC_FREQ 	= 1358
+var/const/INTEL_FREQ	= 1356
 
 var/const/DS1_FREQ		= 1441
 var/const/DS2_FREQ		= 1443
@@ -149,7 +150,8 @@ var/list/radiochannels = list(
 	"Engi"			= ENG_FREQ,
 	"MP"			= SEC_FREQ,
 	"Req"			= SUP_FREQ,
-	"JTAC"		= JTAC_FREQ,
+	"JTAC"			= JTAC_FREQ,
+	"Intel" 		= INTEL_FREQ,
 
 	"Alpha"			= ALPHA_FREQ,
 	"Bravo"			= BRAVO_FREQ,
@@ -169,7 +171,7 @@ var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
 var/list/ANTAG_FREQS = list(SYND_FREQ, RUS_FREQ)
 
 //Depts - just used for colors in headset.dm
-var/list/DEPT_FREQS = list(MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, SYND_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ,CHARLIE_FREQ, DELTA_FREQ, SUP_FREQ, JTAC_FREQ)
+var/list/DEPT_FREQS = list(MED_FREQ, ENG_FREQ, SEC_FREQ, ERT_FREQ, SYND_FREQ, DTH_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, ALPHA_FREQ, BRAVO_FREQ,CHARLIE_FREQ, DELTA_FREQ, SUP_FREQ, JTAC_FREQ, INTEL_FREQ)
 
 #define TRANSMISSION_WIRE	0
 #define TRANSMISSION_RADIO	1

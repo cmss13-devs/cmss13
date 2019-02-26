@@ -81,7 +81,7 @@
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 	New()
@@ -114,7 +114,7 @@
 /obj/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/machinery/telecomms/bus/preset_four
@@ -198,7 +198,7 @@
 
 /obj/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ)
+	freq_listening = list(COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ)
 	autolinkers = list("command")
 
 /obj/machinery/telecomms/server/presets/engineering

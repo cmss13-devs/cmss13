@@ -22,9 +22,10 @@ var/global/list/deployed_fultons = list()
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
 
-/obj/item/stack/fulton/New(loc, var/atom_to_attach, var/starting_amount = 5)
+/obj/item/stack/fulton/New(loc, amount, var/atom_to_attach)
 	..()
-	src.amount = starting_amount
+	if(amount)
+		src.amount = amount
 	attached_atom = atom_to_attach
 	update_icon()
 
@@ -86,9 +87,11 @@ var/global/list/deployed_fultons = list()
 			var/mob/living/carbon/human/H = target_atom
 			if(isYautja(H) && H.stat == DEAD)
 				can_attach = TRUE
-			else if(H.check_tod() && H.is_revivable())
+			else if(H.mind && H.check_tod() && H.is_revivable())
 				user << "<span class='warning'>You can't attach [src] to [target_atom], they still have a chance!</span>"
 				return
+			else
+				can_attach = TRUE
 		else if(isXeno(target_atom))
 			var/mob/living/carbon/Xenomorph/X = target_atom
 			if(X.stat != DEAD)
@@ -114,7 +117,7 @@ var/global/list/deployed_fultons = list()
 				return
 			for(var/obj/item/stack/fulton/F in get_turf(target_atom))
 				return
-			var/obj/item/stack/fulton/F = new /obj/item/stack/fulton(get_turf(target_atom), target_atom, 1)
+			var/obj/item/stack/fulton/F = new /obj/item/stack/fulton(get_turf(target_atom), 1, target_atom)
 			F.copy_evidences(src)
 			src.add_fingerprint(user)
 			F.add_fingerprint(user)

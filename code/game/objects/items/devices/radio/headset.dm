@@ -274,19 +274,19 @@
 
 /obj/item/device/radio/headset/almayer/ce
 	name = "chief engineer's headset"
-	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :v - marine command, :e - engineering"
 	icon_state = "ce_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom
+	keyslot1 = new /obj/item/device/encryptionkey/ce
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
-	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :v - marine command, :e - medical"
 	icon_state = "cmo_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom
+	keyslot1 = new /obj/item/device/encryptionkey/cmo
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
-	desc = "Useful for coorinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :e. "
+	desc = "Useful for coorinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :e."
 	icon_state = "eng_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/engi
 
@@ -304,9 +304,9 @@
 
 /obj/item/device/radio/headset/almayer/ro
 	name = "supply radio headset"
-	desc = "A headset used by the RO for controlling his or her slave(s). Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "A headset used by the RO for controlling his or her slave(s). Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :u - requisitions"
 	icon_state = "ro_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom
+	keyslot1 = new /obj/item/device/encryptionkey/ro
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
@@ -316,15 +316,25 @@
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
-	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence"
 	icon_state = "sec_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/cmpcom
 
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"
-	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence"
 	icon_state = "mcom_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
+
+/obj/item/device/radio/headset/almayer/po
+	name = "marine pilot radio headset"
+	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :z - intelligence"
+	keyslot1 = new /obj/item/device/encryptionkey/po
+
+/obj/item/device/radio/headset/almayer/intel
+	name = "marine intel radio headset"
+	desc = "Used by Intelligence Officers.. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :z - intelligence"
+	keyslot1 = new /obj/item/device/encryptionkey/po
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"

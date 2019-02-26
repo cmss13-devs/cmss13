@@ -29,7 +29,7 @@
 	name = "AI Integrated Encryption Key"
 	desc = "Integrated encryption key"
 	icon_state = "cap_key"
-	channels = list("Almayer" = 1, "Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "Alpha" = 1, "Bravo" = 1, "Charlie" = 1, "Delta" = 1)
+	channels = list("Almayer" = 1, "Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "Alpha" = 1, "Bravo" = 1, "Charlie" = 1, "Delta" = 1, "JTAC" = 1, "Intel" = 1)
 
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"
@@ -56,6 +56,11 @@
 	icon_state = "cmo_key"
 	channels = list("MedSci" = 1, "Command" = 1)
 
+/obj/item/device/encryptionkey/ro
+	name = "Requisition Officer's Encryption Key"
+	icon_state = "ce_key"
+	channels = list("Req" = 1, "Command" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0)
+
 /obj/item/device/encryptionkey/req
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
@@ -71,23 +76,39 @@
 /obj/item/device/encryptionkey/cmpcom
 	name = "\improper Marine Chief MP radio encryption key"
 	icon_state = "cmp_key"
-	channels = list("Command" = 1, "MP" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1 )
+	channels = list("Command" = 1, "MP" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0)
 
 /obj/item/device/encryptionkey/cmpcom/cdrcom
 	name = "\improper Marine Commanding Officer radio encryption key"
+	channels = list("Command" = 1, "MP" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1)
 
 /obj/item/device/encryptionkey/mcom
 	name = "\improper Marine Command radio encryption key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1 )
+	channels = list("Command" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1)
+
+/obj/item/device/encryptionkey/po
+	name = "\improper Marine Pilot Officer radio encryption key"
+	icon_state = "cap_key"
+	channels = list("Command" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "JTAC" = 1, "Intel" = 1)
+
+/obj/item/device/encryptionkey/io
+	name = "\improper Marine Intelligence Officer radio encryption key"
+	icon_state = "cap_key"
+	channels = list("Command" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0, "Intel" = 1)
 
 /obj/item/device/encryptionkey/mcom/ai //AI only.
-	channels = list("Command" = 1, "MP" = 1, "Alpha" = 1, "Bravo" = 1, "Charlie" = 1, "Delta" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1 )
+	channels = list("Command" = 1, "MP" = 1, "Alpha" = 1, "Bravo" = 1, "Charlie" = 1, "Delta" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1)
 
 /obj/item/device/encryptionkey/jtac
 	name = "\improper JTAC radio encryption key"
 	icon_state = "jtac_key"
 	channels = list("JTAC" = 1)
+
+/obj/item/device/encryptionkey/intel
+	name = "\improper Intel radio encryption key"
+	icon_state = "jtac_key"
+	channels = list("Intel" = 1)
 
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader encryption key"

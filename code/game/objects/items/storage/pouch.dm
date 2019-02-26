@@ -360,8 +360,8 @@
 		/obj/item/document_objective/technical_manual
 	)
 
-/obj/item/storage/pouch/document/ui_action_click(mob/living/user)
-	//ui_interact(user)
+/obj/item/storage/pouch/document/small
+	storage_slots = 7
 
 /obj/item/storage/pouch/flare
 	name = "flare pouch"

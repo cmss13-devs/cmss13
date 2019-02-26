@@ -129,7 +129,7 @@
 		/obj/item/storage/large_holster/m39 = round(scale * 5),
 		/obj/item/storage/pouch/general/medium = round(scale * 2),
 		/obj/item/storage/pouch/construction = round(scale * 2),
-		/obj/item/storage/pouch/document = round(scale * 2),
+		/obj/item/storage/pouch/document/small = round(scale * 2),
 		/obj/item/storage/pouch/tools = round(scale * 2),
 		/obj/item/storage/pouch/explosive = round(scale * 2),
 		/obj/item/storage/pouch/syringe = round(scale * 2),
@@ -164,7 +164,8 @@
 		/obj/item/storage/box/m94/signal = round(scale * 2),
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/clothing/mask/gas = round(scale * 10),
-		/obj/item/storage/box/kit/mini_jtac = 4
+		/obj/item/storage/box/kit/mini_jtac = 4,
+		/obj/item/storage/box/kit/mini_intel = 4
 	)
 
 	contraband = list(
@@ -207,7 +208,7 @@
 		/obj/item/storage/large_holster/m39 = round(scale * 5),
 		/obj/item/storage/pouch/general/medium = round(scale * 3),
 		/obj/item/storage/pouch/construction = round(scale * 3),
-		/obj/item/storage/pouch/document = round(scale * 3),
+		/obj/item/storage/pouch/document/small = round(scale * 3),
 		/obj/item/storage/pouch/tools = round(scale * 3),
 		/obj/item/storage/pouch/explosive = round(scale * 1),
 		/obj/item/storage/pouch/syringe = round(scale * 1),
@@ -480,18 +481,18 @@
 					/obj/item/reagent_container/hypospray/autoinjector/Kelo = 10,
 					/obj/item/reagent_container/hypospray/autoinjector/Oxycodone = 10,
 					/obj/item/reagent_container/hypospray/autoinjector/quickclot = 10,
-					/obj/item/reagent_container/hypospray/autoinjector/tricord = 10,					
+					/obj/item/reagent_container/hypospray/autoinjector/tricord = 10,
 					/obj/item/storage/pill_bottle/bicaridine = 10,
 					/obj/item/storage/pill_bottle/dexalin = 10,
-					/obj/item/storage/pill_bottle/antitox = 10,									
+					/obj/item/storage/pill_bottle/antitox = 10,
 					/obj/item/storage/pill_bottle/inaprovaline = 10,
 					/obj/item/storage/pill_bottle/kelotane = 10,
-					/obj/item/storage/pill_bottle/spaceacillin = 10,										
+					/obj/item/storage/pill_bottle/spaceacillin = 10,
 					/obj/item/storage/pill_bottle/peridaxon = 10,
 					/obj/item/storage/pill_bottle/quickclot = 10,
 					/obj/item/storage/pill_bottle/russianRed = 10,
 					/obj/item/storage/pill_bottle/tramadol = 10,
-					/obj/item/stack/medical/bruise_pack = 20,					
+					/obj/item/stack/medical/bruise_pack = 20,
 					/obj/item/stack/medical/ointment = 20,
 					/obj/item/stack/medical/advanced/bruise_pack = 20,
 					/obj/item/stack/medical/advanced/ointment = 20,
@@ -530,7 +531,7 @@
 
 /obj/machinery/vending/MarineMed/Blood/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
-	
+
 /obj/machinery/vending/marine_medic
 	name = "\improper ColMarTech Medic Vendor"
 	desc = "A marine medic equipment vendor"

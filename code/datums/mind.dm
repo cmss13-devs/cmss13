@@ -114,7 +114,7 @@
 //and we want to store the objective clues generated based on it -spookydonut
 /datum/mind/proc/store_objective(var/datum/cm_objective/O)
 	for(var/datum/cm_objective/R in O.enables_objectives)
-		if(!(R in objective_memory))
+		if(!(R in objective_memory) && R.is_active())
 			objective_memory += R
 
 /datum/mind/proc/view_objective_memories(mob/recipient)

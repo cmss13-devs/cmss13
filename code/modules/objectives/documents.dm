@@ -113,8 +113,13 @@
 		user << "<span class='warning'>You get distracted and lose your train of thought, you'll have to start over reading this.</span>"
 		return 0
 	if(!objective.is_active())
-		display_fail_message(user)
-		return 0
+		var/fail = TRUE
+		for(var/datum/cm_objective/OJ in objective.enables_objectives)
+			if(OJ.is_active())
+				fail = FALSE
+		if(fail)
+			display_fail_message(user)
+			return 0
 	read = 1
 	objective.check_completion()
 	display_read_message(user)

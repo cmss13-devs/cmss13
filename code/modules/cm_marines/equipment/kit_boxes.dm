@@ -196,7 +196,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/spec_kit/asrs
 	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
-	
+
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	if(user.mind && user.mind.assigned_role == "Squad Marine")
 		user.mind.cm_skills.spec_weapons = SKILL_SPEC_TRAINED
@@ -284,4 +284,15 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/device/binoculars/tactical(src)
 		new /obj/item/device/encryptionkey/jtac(src)
+
+/obj/item/storage/box/kit/mini_intel
+	name = "\improper Mini Intel Kit"
+
+/obj/item/storage/box/kit/mini_intel/New()
+	..()
+	spawn(1)
+		new /obj/item/stack/fulton(src)
+		new /obj/item/storage/pouch/document/small(src)
+		new /obj/item/device/motiondetector/intel(src)
+		new /obj/item/device/encryptionkey/intel(src)
 

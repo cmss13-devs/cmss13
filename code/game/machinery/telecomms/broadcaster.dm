@@ -346,6 +346,8 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		else if (display_freq == JTAC_FREQ)
 			part_a = "<span class='jtacradio'><span class='name'>"
 
+		else if (display_freq == INTEL_FREQ)
+			part_a = "<span class='intelradio'><span class='name'>"
 
 
 		else if (display_freq == ALPHA_FREQ)

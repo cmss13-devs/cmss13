@@ -498,11 +498,19 @@ var/datum/mob_hud/huds = list(
 			if("Squad Specialist") marine_rk = "spec"
 			if("Squad Medic") marine_rk = "med"
 			if("Squad Smartgunner") marine_rk = "gun"
+			if("Executive Officer") marine_rk = "xo"
+			if("Commanding Officer") marine_rk = "co"
+			if("Pilot Officer") marine_rk = "po"
+			if("Intelligence Officer") marine_rk = "io"
+			if("Tank Crewman") marine_rk = "tc"
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud.dmi',src, "hudmarinesquad")
-			IMG.color = squad_clr
+			if(squad_clr)
+				IMG.color = squad_clr
+			else
+				IMG.color = "#5A934A"
 			holder.overlays += IMG
 			holder.overlays += image('icons/mob/hud.dmi',src, "hudmarinesquad[marine_rk]")
 		if(I && I.assigned_fireteam)

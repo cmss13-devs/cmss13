@@ -4,11 +4,6 @@
 	icon_state = "cliff_blocked"
 	can_nuke_area = TRUE
 
-
-/area/ice_colony/surface/requesitions
-	name = "\improper Surface Requesition Warehouse"
-	icon_state = "quartstorage"
-
 //INTERIOR
 // areas under rock
 /area/desert_dam/interior/
@@ -756,3 +751,13 @@
 /area/desert_dam/exterior/river_mouth/eastern
 	name = "\improper eastern river mouth"
 	icon_state = "purple"
+
+/area/desert_dam/landing/console
+	name = "\improper LZ1 'Nexus'"
+	icon_state = "tcomsatcham"
+	requires_power = 0
+
+/area/desert_dam/landing/console2
+	name = "\improper LZ2 'Robotics'"
+	icon_state = "tcomsatcham"
+	requires_power = 0

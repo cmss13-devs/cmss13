@@ -16,26 +16,31 @@
 
 /datum/caste_datum/defender/mature
 	upgrade_name = "Mature"
+	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
 	upgrade = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
 	speed = -0.3
 	armor_deflection = 25
 
 /datum/caste_datum/defender/elder
 	upgrade_name = "Elder"
-	upgrade = 2
-	max_health = 225
 	caste_desc = "An alien with an armored head crest. It looks pretty strong."
+	upgrade = 2
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	max_health = 225
 	speed = -0.4
 	armor_deflection = 30
 
 /datum/caste_datum/defender/ancient
 	upgrade_name = "Ancient"
-	upgrade = 3
-	max_health = 250
 	caste_desc = "An unstoppable force that remains when others would fall."
+	upgrade = 3
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	max_health = 250
+	speed = -0.5
 	armor_deflection = 35
 
 /mob/living/carbon/Xenomorph/Defender

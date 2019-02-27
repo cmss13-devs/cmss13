@@ -1083,7 +1083,6 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A custom-built improved foregrip for better accuracy, less recoil, and less scatter, especially during burst fire. \nHowever, it also increases weapon size."
 	icon_state = "verticalgrip"
 	attach_icon = "verticalgrip_a"
-	wield_delay_mod = WIELD_DELAY_FAST
 	size_mod = 1
 	slot = "under"
 	pixel_shift_x = 20

@@ -330,9 +330,10 @@
 
 		list("EXTRAS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),
-		list("Gyroscopic stabilizer", 15, /obj/item/attachable/gyro, null, "black"),
 		list("Box of flechette shells", 15, /obj/item/ammo_magazine/shotgun/flechette, null, "black"),
+		list("Extended barrel", 15, /obj/item/attachable/extended_barrel, null, "black"),
 		list("Fire extinguisher (portable)", 15, /obj/item/tool/extinguisher/mini, null, "black"),
+		list("Gyroscopic stabilizer", 15, /obj/item/attachable/gyro, null, "black"),
 		list("Laser sight", 15, /obj/item/attachable/lasersight, null, "black"),
 		list("M37 wooden stock", 15, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("M39 AP magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
@@ -344,8 +345,10 @@
 		list("M41A skeleton stock", 15, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
 		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
+		list("Recoil compensator", 15, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 15, /obj/item/attachable/reddot, null, "black"),
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
+		list("Suppressor", 15, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
 		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
 	)

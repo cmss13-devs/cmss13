@@ -110,17 +110,6 @@
 /obj/item/weapon/gun/minigun/toggle_burst()
 	usr << "<span class='warning'>This weapon can only fire in bursts!</span>"
 
-//-------------------------------------------------------
-//Toy rocket launcher.
-
-/obj/item/weapon/gun/launcher/rocket/nobugs //Fires dummy rockets, like a toy gun
-	name = "\improper BUG ROCKER rocket launcher"
-	desc = "Where did this come from? <b>NO BUGS</b>"
-	current_mag = /obj/item/ammo_magazine/internal/launcher/rocket/nobugs
-	gun_skill_category = GUN_SKILL_FIREARMS
-
-
-
 //Spike launcher
 
 /obj/item/weapon/gun/launcher/spike

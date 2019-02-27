@@ -17,17 +17,6 @@
 
 //rocket launchers
 
-/obj/item/ammo_magazine/rocket/nobugs
-	name = "\improper BUG ROCKER rocket tube"
-	desc = "Where did this come from? <b>NO BUGS</b>"
-	default_ammo = /datum/ammo/rocket/nobugs
-	caliber = "toy rocket"
-
-/obj/item/ammo_magazine/internal/launcher/rocket/nobugs
-	default_ammo = /datum/ammo/rocket/nobugs
-	gun_type = /obj/item/weapon/gun/launcher/rocket/nobugs
-
-
 /obj/item/ammo_magazine/rifle/grenadespawner
 	name = "\improper GRENADE SPAWNER AMMO"
 	desc = "OH GOD OH FUCK"

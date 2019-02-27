@@ -19,46 +19,46 @@
 
 /datum/caste_datum/runner/mature
 	upgrade_name = "Mature"
+	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
 	upgrade = 1
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	plasma_gain = 0.02
 	plasma_max = 150
-	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
 	armor_deflection = 5
 	max_health = 140
 	speed = -1.9
 
 /datum/caste_datum/runner/elder
 	upgrade_name = "Elder"
+	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 40
 	plasma_gain = 0.02
 	plasma_max = 200
-	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
 	armor_deflection = 10
 	max_health = 160
 	speed = -2.0
+	tacklemin = 3
+	tacklemax = 4
+	tackle_chance = 40
 	pounce_delay = 30
 
 /datum/caste_datum/runner/ancient
 	upgrade_name = "Ancient"
+	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."
 	upgrade = 3
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	tacklemin = 3
-	tacklemax = 4
-	tackle_chance = 45
 	plasma_gain = 0.02
 	plasma_max = 250
-	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."
 	armor_deflection = 15
 	max_health = 160
 	speed = -2.1
+	tacklemin = 3
+	tacklemax = 4
+	tackle_chance = 45
 	pounce_delay = 25
 
 /mob/living/carbon/Xenomorph/Runner

@@ -19,31 +19,42 @@
 
 /datum/caste_datum/crusher/mature
 	upgrade_name = "Mature"
+	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
 	upgrade = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	tackle_chance = 20
 	plasma_gain = 0.05
 	plasma_max = 300
-	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
 	armor_deflection = 60
 	max_health = 300
+	speed = 0.05
 
 /datum/caste_datum/crusher/elder
 	upgrade_name = "Elder"
+	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
 	upgrade = 2
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	tackle_chance = 25
+	plasma_gain = 0.075
+	plasma_max = 300
 	armor_deflection = 65
 	max_health = 335
-	plasma_gain = 0.075
-	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
+	speed = -0.05
 
 /datum/caste_datum/crusher/ancient
-	upgrade = 3
 	upgrade_name = "Ancient"
 	caste_desc = "It always has the right of way."
+	upgrade = 3
+	melee_damage_lower = 35
+	melee_damage_upper = 45
+	tackle_chance = 28
+	plasma_gain = 0.08
+	plasma_max = 400
+	armor_deflection = 68
+	max_health = 350
+	speed = -0.1
 
 /datum/caste_datum/crusher/primordial
 	upgrade_name = "Primordial"
@@ -56,6 +67,7 @@
 	plasma_max = 600
 	armor_deflection = 90
 	max_health = 400
+	speed = -0.5
 
 /mob/living/carbon/Xenomorph/Crusher
 	caste_name = "Crusher"

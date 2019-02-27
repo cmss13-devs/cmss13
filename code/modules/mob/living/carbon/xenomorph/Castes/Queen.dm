@@ -29,6 +29,7 @@
 
 /datum/caste_datum/queen/mature
 	upgrade_name = "Mature"
+	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	upgrade = 1
 	melee_damage_lower = 40
 	melee_damage_upper = 50
@@ -36,7 +37,6 @@
 	plasma_gain = 0.05
 	plasma_max = 800
 	spit_delay = 20
-	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	armor_deflection = 50
 	tackle_chance = 45
 	speed = 0.5
@@ -44,6 +44,7 @@
 
 /datum/caste_datum/queen/elder
 	upgrade_name = "Elder"
+	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	upgrade = 2
 	melee_damage_lower = 50
 	melee_damage_upper = 60
@@ -51,16 +52,16 @@
 	plasma_gain = 0.056
 	plasma_max = 900
 	spit_delay = 15
-	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	armor_deflection = 55
-	tacklemin = 5
-	tacklemax = 6
 	tackle_chance = 50
 	speed = 0.4
 	aura_strength = 4
+	tacklemin = 5
+	tacklemax = 6
 
 /datum/caste_datum/queen/ancient
 	upgrade_name = "Ancient"
+	caste_desc = "The most perfect Xeno form imaginable."
 	upgrade = 3
 	melee_damage_lower = 60
 	melee_damage_upper = 70
@@ -68,11 +69,12 @@
 	plasma_gain = 0.06
 	plasma_max = 1000
 	spit_delay = 10
-	caste_desc = "The most perfect Xeno form imaginable."
 	armor_deflection = 55
 	tackle_chance = 55
 	speed = 0.3
 	aura_strength = 5
+	tacklemin = 6
+	tacklemax = 7
 
 /datum/caste_datum/queen/primordial
 	upgrade_name = "Primordial"
@@ -83,10 +85,13 @@
 	max_health = 450
 	plasma_gain = 0.07
 	plasma_max = 1200
+	spit_delay = 10
 	armor_deflection = 70
 	tackle_chance = 65
 	speed = -0.1
 	aura_strength = 6
+	tacklemin = 6
+	tacklemax = 7
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:

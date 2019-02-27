@@ -19,9 +19,11 @@
 	widen_cooldown = 100
 	acid_level = 2
 	weed_level = 1
+	evolution_allowed = FALSE
 
 /datum/caste_datum/burrower/mature
 	upgrade_name = "Mature"
+	caste_desc = "A digger and shaper. It looks a little more dangerous."
 	upgrade = 1
 	melee_damage_lower = 30
 	melee_damage_upper = 40
@@ -31,7 +33,6 @@
 	plasma_max = 350
 	plasma_gain = 0.034
 	armor_deflection = 20
-	caste_desc = "A digger and shaper. It looks a little more dangerous."
 	max_health = 200
 	speed = -0.2
 	burrow_cooldown = 40
@@ -40,6 +41,7 @@
 
 /datum/caste_datum/burrower/elder
 	upgrade_name = "Elder"
+	caste_desc = "A digger and shaper. It looks pretty strong."
 	upgrade = 2
 	tacklemin = 4
 	tacklemax = 5
@@ -48,17 +50,30 @@
 	tackle_chance = 50
 	plasma_gain = 0.035
 	armor_deflection = 25
-	caste_desc = "A digger and shaper. It looks pretty strong."
 	max_health = 225
 	speed = -0.3
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70
+	plasma_max = 350
 
 /datum/caste_datum/burrower/ancient
 	upgrade_name = "Ancient"
-	upgrade = 3
 	caste_desc = "A digger and shaper. It looks extremely strong."
+	upgrade = 3
+	tacklemin = 4
+	tacklemax = 5
+	melee_damage_lower = 35
+	melee_damage_upper = 45
+	tackle_chance = 50
+	plasma_gain = 0.035
+	armor_deflection = 25
+	max_health = 225
+	speed = -0.3
+	burrow_cooldown = 20
+	tunnel_cooldown = 70
+	widen_cooldown = 70
+	plasma_max = 350
 
 /mob/living/carbon/Xenomorph/Burrower
 	caste_name = "Burrower"

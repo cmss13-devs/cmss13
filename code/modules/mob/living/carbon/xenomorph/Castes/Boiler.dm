@@ -35,6 +35,7 @@
 
 /datum/caste_datum/boiler/elder
 	upgrade_name = "Elder"
+	caste_desc = "Some sort of abomination. It looks pretty strong."
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 30
@@ -42,15 +43,29 @@
 	tacklemax = 4
 	tackle_chance = 45
 	plasma_gain = 0.040
-	caste_desc = "Some sort of abomination. It looks pretty strong."
+	plasma_max = 900
 	armor_deflection = 30
+	spit_delay = 35
 	max_health = 220
+	speed = 0.6
 	bomb_strength = 2
 
 /datum/caste_datum/boiler/ancient
 	upgrade_name = "Ancient"
-	upgrade = 3
 	caste_desc = "A devestating piece of alien artillery."
+	upgrade = 3
+	melee_damage_lower = 25
+	melee_damage_upper = 30
+	tacklemin = 3
+	tacklemax = 4
+	tackle_chance = 45
+	plasma_gain = 0.040
+	plasma_max = 900
+	armor_deflection = 30
+	spit_delay = 35
+	max_health = 220
+	speed = 0.6
+	bomb_strength = 2
 
 /mob/living/carbon/Xenomorph/Boiler
 	caste_name = "Boiler"

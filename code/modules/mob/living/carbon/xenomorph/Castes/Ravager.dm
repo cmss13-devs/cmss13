@@ -26,28 +26,41 @@
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
+	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	upgrade = 1
 	melee_damage_lower = 45
 	melee_damage_upper = 55
 	plasma_gain = 0.067
 	plasma_max = 150
-	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
 
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
+	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	upgrade = 2
 	melee_damage_lower = 50
 	melee_damage_upper = 60
-	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
+	plasma_gain = 0.068
+	plasma_max = 170
+	tacklemin = 5
+	tacklemax = 6
+	tackle_chance = 58
 	speed = -0.9
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
-	upgrade = 3
 	caste_desc = "As I walk through the valley of the shadow of death."
+	upgrade = 3
+	melee_damage_lower = 55
+	melee_damage_upper = 65
+	plasma_gain = 0.07
+	plasma_max = 180
+	tacklemin = 6
+	tacklemax = 7
+	tackle_chance = 60
+	speed = -1
 
 /datum/caste_datum/ravager/primordial
 	upgrade_name = "Primordial"
@@ -55,12 +68,15 @@
 	upgrade = 4
 	melee_damage_lower = 100
 	melee_damage_upper = 110
+	plasma_gain = 0.1
+	plasma_max = 200
 	max_health = 300
 	speed = -1.3
 	armor_deflection = 60
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 55
+	speed = -1.5
 
 /mob/living/carbon/Xenomorph/Ravager
 	caste_name = "Ravager"

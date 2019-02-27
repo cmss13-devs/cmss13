@@ -1,6 +1,7 @@
 /datum/caste_datum/carrier
 	caste_name = "Carrier"
 	upgrade_name = "Young"
+	caste_desc = "A carrier of huggies."
 	tier = 2
 	upgrade = 0
 	melee_damage_lower = 20
@@ -9,7 +10,6 @@
 	plasma_gain = 0.032
 	plasma_max = 300
 	evolution_allowed = FALSE
-	caste_desc = "A carrier of huggies."
 	deevolves_to = "Drone"
 	max_health = 200
 	speed = -0.1
@@ -27,7 +27,9 @@
 
 /datum/caste_datum/carrier/mature
 	upgrade_name = "Mature"
+	caste_desc = "A portable Love transport. It looks a little more dangerous."
 	upgrade = 1
+	max_health = 210
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	tacklemin = 3
@@ -35,12 +37,15 @@
 	tackle_chance = 45
 	plasma_gain = 0.034
 	plasma_max = 350
+	speed = -0.1
 	armor_deflection = 15
-	caste_desc = "A portable Love transport. It looks a little more dangerous."
+	throwspeed = 1
+	hugger_delay = 30
 	aura_strength = 1.5
 
 /datum/caste_datum/carrier/elder
 	upgrade_name = "Elder"
+	caste_desc = "A portable Love transport. It looks pretty strong."
 	upgrade = 2
 	melee_damage_lower = 30
 	melee_damage_upper = 40
@@ -49,7 +54,6 @@
 	tackle_chance = 50
 	plasma_gain = 0.035
 	armor_deflection = 20
-	caste_desc = "A portable Love transport. It looks pretty strong."
 	max_health = 225
 	speed = -0.2
 	aura_strength = 2
@@ -61,6 +65,19 @@
 	upgrade_name = "Ancient"
 	upgrade = 3
 	caste_desc = "It's literally crawling with 10 huggers."
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	tacklemin = 4
+	tacklemax = 5
+	tackle_chance = 50
+	plasma_gain = 0.035
+	armor_deflection = 20
+	max_health = 225
+	speed = -0.2
+	aura_strength = 2
+	huggers_max = 10
+	hugger_delay = 20
+	eggs_max = 5
 
 /mob/living/carbon/Xenomorph/Carrier
 	caste_name = "Carrier"

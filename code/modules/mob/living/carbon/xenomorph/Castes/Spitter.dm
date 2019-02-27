@@ -20,26 +20,30 @@
 
 /datum/caste_datum/spitter/mature
 	upgrade_name = "Mature"
+	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	upgrade = 1
 	max_health = 200
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	plasma_gain = 0.036
 	plasma_max = 700
-	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	armor_deflection = 20
+	spit_delay = 20
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
 
 /datum/caste_datum/spitter/elder
 	upgrade_name = "Elder"
+	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	upgrade = 2
+	max_health = 220
+	melee_damage_lower = 28
+	melee_damage_upper = 38
 	plasma_gain = 0.038
 	plasma_max = 800
-	spit_delay = 15
-	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	armor_deflection = 25
+	spit_delay = 15
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
@@ -49,6 +53,17 @@
 	upgrade_name = "Ancient"
 	caste_desc = "A ranged destruction machine."
 	upgrade = 3
+	max_health = 250
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	plasma_gain = 0.04
+	plasma_max = 850
+	armor_deflection = 28
+	spit_delay = 12
+	tacklemin = 4
+	tacklemax = 5
+	tackle_chance = 48
+	speed = -0.8
 
 /mob/living/carbon/Xenomorph/Spitter
 	caste_name = "Spitter"

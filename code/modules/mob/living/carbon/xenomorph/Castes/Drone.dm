@@ -22,6 +22,7 @@
 
 /datum/caste_datum/drone/mature
 	upgrade_name = "Mature"
+	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	upgrade = 1
 	max_health = 170
 	melee_damage_lower = 20
@@ -29,7 +30,6 @@
 	plasma_gain = 0.032
 	plasma_max = 850
 	armor_deflection = 10
-	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
@@ -38,12 +38,14 @@
 
 /datum/caste_datum/drone/elder
 	upgrade_name = "Elder"
+	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	upgrade = 2
+	max_health = 180
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	plasma_gain = 0.04	
+	plasma_gain = 0.04
 	plasma_max = 900
-	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
+	armor_deflection = 12
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
@@ -52,16 +54,19 @@
 
 /datum/caste_datum/drone/ancient
 	upgrade_name = "Ancient"
+	caste_desc = "A very mean architect."
 	upgrade = 3
 	max_health = 195
+	melee_damage_lower = 30
+	melee_damage_upper = 40
+	plasma_gain = 0.05
 	plasma_max = 1000
-	caste_desc = "A very mean architect."
 	armor_deflection = 15
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	speed = -1.1
-	aura_strength = 2
+	speed = -1.0
+	aura_strength = 2.2
 
 /mob/living/carbon/Xenomorph/Drone
 	caste_name = "Drone"

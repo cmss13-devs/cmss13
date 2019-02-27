@@ -49,7 +49,7 @@
 /obj/item/device/encryptionkey/ce
 	name = "Chief Engineer's Encryption Key"
 	icon_state = "ce_key"
-	channels = list("Engi" = 1, "Command" = 1)
+	channels = list("Engi" = 1, "Command" = 1, "MedSci" = 1, "Req" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0)
 
 /obj/item/device/encryptionkey/cmo
 	name = "Chief Medical Officer's Encryption Key"
@@ -76,7 +76,7 @@
 /obj/item/device/encryptionkey/cmpcom
 	name = "\improper Marine Chief MP radio encryption key"
 	icon_state = "cmp_key"
-	channels = list("Command" = 1, "MP" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0)
+	channels = list("Command" = 1, "MP" = 1, "MedSci" = 1, "Engi" = 1, "Alpha" = 0, "Bravo" = 0, "Charlie" = 0, "Delta" = 0)
 
 /obj/item/device/encryptionkey/cmpcom/cdrcom
 	name = "\improper Marine Commanding Officer radio encryption key"

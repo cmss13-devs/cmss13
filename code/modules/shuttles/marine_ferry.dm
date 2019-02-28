@@ -181,7 +181,7 @@
 
 	var/travel_time = 0
 	if(transit_gun_mission)
-		travel_time = move_time * 15 //fire missions not made shorter by optimization.
+		travel_time = move_time * 1.5 //fire missions not made shorter by optimization.
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))

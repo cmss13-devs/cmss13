@@ -8,6 +8,7 @@
 #define SECONDS_4 		40
 #define SECONDS_5 		50
 #define SECONDS_15 		150
+#define SECONDS_20      200
 #define SECONDS_30 		300
 #define SECONDS_90 		900
 #define SECONDS_100 	1000

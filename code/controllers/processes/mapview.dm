@@ -13,11 +13,13 @@ datum/controller/process/mapview/doWork()
 
 	if(world.time > next_map_gen)
 		generate_xeno_mapview()
-		next_map_gen = world.time + 6000
+		individual_ticks++
+		next_map_gen = world.time + MINUTES_10
 
 	for(var/mob/living/carbon/Xenomorph/Queen/Q in living_xeno_list)
 		if(Q.map_view)
 			overlay_xeno_mapview(Q.hivenumber)
+			individual_ticks++
 			break
 
 	if(RoleAuthority)
@@ -29,17 +31,20 @@ datum/controller/process/mapview/doWork()
 				overlay_marine_mapview()
 				update = 1
 				C.update_mapview()
+				individual_ticks++
 
 		for(var/obj/machinery/prop/almayer/CICmap/M in machines)
 			if(M.current_viewers.len)
 				if(!update)
 					overlay_marine_mapview()
 				M.update_mapview()
+				individual_ticks++
 
 		for(var/obj/machinery/computer/overwatch/O in machines)
 			if(O.current_squad && O.current_mapviewer) // only actually update if someone is using it
 				//world << "overlay_marine_mapview([O.current_squad.name])"
 				overlay_marine_mapview(O.current_squad)
 				O.update_mapview()
+				individual_ticks++
 	//current_squad_overlay++
 	//if(current_squad_overlay > 5) current_squad_overlay = 1

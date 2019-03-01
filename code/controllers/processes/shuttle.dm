@@ -9,3 +9,4 @@ datum/controller/process/shuttle/setup()
 
 datum/controller/process/shuttle/doWork()
 	shuttle_controller.process()
+	individual_ticks++

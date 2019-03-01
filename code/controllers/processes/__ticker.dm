@@ -12,3 +12,4 @@ datum/controller/process/ticker/setup()
 
 datum/controller/process/ticker/doWork()
 	ticker.process()
+	individual_ticks++

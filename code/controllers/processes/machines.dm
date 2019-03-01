@@ -13,6 +13,7 @@ datum/controller/process/machines/doWork()
 datum/controller/process/machines/proc/process_machines_process()
 	for(var/obj/machinery/M in processing_machines)
 		if(istype(M) && M.process())// != PROCESS_KILL) //Doesn't actually have a process, just remove it.
+			individual_ticks++
 			continue
 
 
@@ -30,6 +31,7 @@ datum/controller/process/machines/proc/process_machines_power()
 						//check if the area has power for M's channel
 						//this will keep stat updated in case the machine is moved from one area to another.
 						M.power_change(A)	//we've already made sure A is a master area, above.
+						individual_ticks++
 
 						if(!(M.stat & NOPOWER) && M.use_power)
 							M.auto_use_power()
@@ -50,6 +52,7 @@ datum/controller/process/machines/proc/process_powernet()
 		var/datum/powernet/Powernet = powernets[i]
 		if(Powernet)
 			Powernet.process()
+			individual_ticks++
 			i++
 			continue
 		powernets.Cut(i,i+1)

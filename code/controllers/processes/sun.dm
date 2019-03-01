@@ -11,5 +11,6 @@ datum/controller/process/sun/doWork()
 	for(var/mob/living/carbon/Xenomorph/X in xeno_mob_list)
 		if(X)
 			X.Life()
+			individual_ticks++
 			continue
 		xeno_mob_list -= X

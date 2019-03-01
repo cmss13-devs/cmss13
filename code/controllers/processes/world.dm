@@ -14,3 +14,4 @@ datum/controller/process/world/doWork()
 
 	TrashAuthority.EmptyTrash()
 	vote.process()
+	individual_ticks++

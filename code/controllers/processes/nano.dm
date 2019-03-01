@@ -11,6 +11,7 @@ datum/controller/process/nano/doWork()
 		var/datum/nanoui/ui = nanomanager.processing_uis[i]
 		if(ui)
 			ui.process()
+			individual_ticks++
 			i++
 			continue
 		nanomanager.processing_uis.Cut(i,i+1)

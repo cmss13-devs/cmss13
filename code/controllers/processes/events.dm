@@ -11,6 +11,7 @@ datum/controller/process/events/doWork()
 		var/datum/event/Event = events[i]
 		if(Event)
 			Event.process()
+			individual_ticks++
 			i++
 			continue
 		events.Cut(i,i+1)

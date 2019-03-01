@@ -10,7 +10,9 @@
 		dat += ",[num2text(data["lastRunTime"]/10,3)]"
 		dat += ",[num2text(data["highestRunTime"]/10,3)]"
 		dat += ",[num2text(data["ticks"],4)]"
-		dat += ",[data["schedule"]]\n"
+		dat += ",[data["schedule"]]"
+		dat += ",[data["individualTicks"]]"
+		dat += ",[data["totalRunTime"]]\n"
 	dat += "world.cpu,[world.cpu]\n"
 	dat += "[log_end]"
 	round_scheduler_stats << dat

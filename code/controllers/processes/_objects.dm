@@ -16,6 +16,7 @@ datum/controller/process/objects/doWork()
 		var/obj/Object = processing_objects[i]
 		if(Object)
 			Object.process()
+			individual_ticks++
 			i++
 			continue
 		processing_objects.Cut(i,i+1)

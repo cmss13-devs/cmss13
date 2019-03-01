@@ -9,5 +9,6 @@ datum/controller/process/mobs/doWork()
 	for(var/mob/living/L in living_misc_mobs)
 		if(L)
 			L.Life()
+			individual_ticks++
 			continue
 		living_misc_mobs -= L

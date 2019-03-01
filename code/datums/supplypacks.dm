@@ -1504,6 +1504,14 @@ AMMO
 	containername = "ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_box_smg_ap
+	name = "large M39 ammo box crate (x400 AP rounds)"
+	contains = list(/obj/item/big_ammo_box/smg/ap)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
 
 /datum/supply_packs/ammo_black_market
 	name = "black market ammo crate"

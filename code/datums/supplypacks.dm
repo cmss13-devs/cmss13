@@ -1099,7 +1099,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_shell_box
-	name = "shell box (100xslug shells)"
+	name = "shell box (100x slug shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun
 					)
@@ -1110,7 +1110,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_shell_box_buck
-	name = "shell box (100xbuckshot shells)"
+	name = "shell box (100x buckshot shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun/buckshot
 					)
@@ -1119,6 +1119,15 @@ AMMO
 	containername = "ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_shell_box_flechette
+	name = "shell box (100x flechette shells)"
+	contains = list(
+					/obj/item/magazine_box/shotgun/flechette
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
 
 /datum/supply_packs/ammo_regular
 	name = "regular magazines crate (M41A x5, M4A3 x2, M44 x2, M39 x2, M37A2 x1 each)"

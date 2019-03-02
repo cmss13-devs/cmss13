@@ -62,6 +62,10 @@
 	buyable = 0
 	group = "Munition"
 
+/datum/supply_packs/ammo_shell_box_flechette/asrs/
+	buyable = 0
+	group = "Munition"
+
 /datum/supply_packs/ammo_regular/asrs/
 	buyable = 0
 	group = "Munition"

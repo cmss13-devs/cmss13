@@ -3,7 +3,7 @@ var/bomb_set = FALSE
 /obj/machinery/nuclearbomb
 	name = "\improper Nuclear Fission Explosive"
 	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/nuclearbomb.dmi'
 	icon_state = "nuclearbomb0"
 	density = 1
 	unacidable = 1
@@ -13,6 +13,7 @@ var/bomb_set = FALSE
 	var/safety = TRUE
 	var/being_used = FALSE
 	var/end_round = TRUE
+	pixel_x = -16
 	use_power = 0
 	req_access = list(ACCESS_MARINE_PREP)
 	flags_atom = FPRINT

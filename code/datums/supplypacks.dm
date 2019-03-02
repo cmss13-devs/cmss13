@@ -130,6 +130,19 @@ OPERATIONS
 	containername = "signal flare pack crate"
 	group = "Operations"
 
+/datum/supply_packs/fulton
+	name = "fulton recovery device crate (x4)"
+	contains = list(
+					/obj/item/stack/fulton,
+					/obj/item/stack/fulton,
+					/obj/item/stack/fulton,
+					/obj/item/stack/fulton
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "fulton recovery device crate"
+	group = "Operations"
+
 /datum/supply_packs/contraband
 	randomised_num_contained = 5
 	contains = list(
@@ -221,6 +234,13 @@ OPERATIONS
 	group = "Operations"
 	iteration_needed = null
 
+/datum/supply_packs/nuclearbomb
+	name = "Operational Nuke"
+	cost = 0
+	containertype = /obj/machinery/nuclearbomb
+	buyable = 0
+	group = "Operations"
+	iteration_needed = null
 
 /*******************************************************************************
 WEAPONS

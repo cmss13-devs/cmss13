@@ -1,10 +1,14 @@
 //A class that holds the current DEFCON level and its associated uses
 
-#define DEFCON_COST_CHEAP 2
-#define DEFCON_COST_MODERATE 3
+#define DEFCON_COST_CHEAP 1
+#define DEFCON_COST_MODERATE 2
+#define DEFCON_COST_PRICEY 4
 #define DEFCON_COST_EXPENSIVE 6
+#define DEFCON_COST_LUDICROUS 10
+#define DEFCON_COST_MAX 12
 
 #define DEFCON_POINT_GAIN_PER_LEVEL 2
+#define DEFCON_MAX_LEVEL 5
 
 var/global/datum/defcon/defcon_controller = new
 
@@ -24,6 +28,13 @@ var/global/datum/defcon/defcon_controller = new
 	//Starts with a few points to enable a bit of fun
 	var/remaining_reward_points = DEFCON_POINT_GAIN_PER_LEVEL
 
+/datum/defcon/proc/check_defcon_percentage()
+	if(current_defcon_level == 1)
+		return "MAXIMUM"
+	else
+		var/percentage = ((last_objectives_completion_percentage - defcon_level_triggers[current_defcon_level - 1]) / (defcon_level_triggers[current_defcon_level] - defcon_level_triggers[current_defcon_level - 1]) * 100)
+		return percentage
+
 /datum/defcon/proc/check_defcon_level()
 	var/list/objectives_status = objectives_controller.get_objective_completion_stats()
 
@@ -34,7 +45,7 @@ var/global/datum/defcon/defcon_controller = new
 	if(current_defcon_level > 1)
 		if(last_objectives_completion_percentage > defcon_level_triggers[current_defcon_level - 1])
 			current_defcon_level--
-			remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL
+			remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL + (DEFCON_POINT_GAIN_PER_LEVEL * (DEFCON_MAX_LEVEL - current_defcon_level))
 			announce_defcon_level()
 
 	round_statistics.defcon_level = current_defcon_level
@@ -68,7 +79,7 @@ var/global/datum/defcon/defcon_controller = new
 	if(!remaining_reward_points) //No points - can't buy anything
 		return can_purchase
 
-	for(var/str in defcon_reward_list)
+	for(var/datum/defcon_reward/str in defcon_reward_list)
 		if (can_purchase_reward(str))
 			can_purchase += str //can purchase!
 
@@ -85,13 +96,10 @@ var/global/datum/defcon/defcon_controller = new
 			return FALSE //unique reward already purchased
 	return TRUE
 
-
-
-
 //A class for rewarding the next DEFCON level being reached
 /datum/defcon_reward
 	var/name = "Reward"
-	var/cost = DEFCON_COST_EXPENSIVE //Cost to get this reward
+	var/cost = null //Cost to get this reward
 	var/minimum_defcon_level = 5 //DEFCON needs to be at this level or LOWER
 	var/unique = FALSE //Whether the reward is unique or not
 	var/announcement_message = "YOU SHOULD NOT BE SEEING THIS MESSAGE. TELL A DEV." //Message to be shared after a reward is purchased
@@ -114,7 +122,7 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/supply_points
 	name = "Additional Supply Points"
-	cost = DEFCON_COST_CHEAP
+	cost = DEFCON_COST_MODERATE
 	minimum_defcon_level = 5
 	announcement_message = "Additional Supply Points have been authorised for this operation."
 
@@ -126,7 +134,7 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/dropship_part_fabricator_points
 	name = "Additional Dropship Part Fabricator Points"
-	cost = DEFCON_COST_CHEAP
+	cost = DEFCON_COST_MODERATE
 	minimum_defcon_level = 5
 	announcement_message = "Additional Dropship Part Fabricator Points have been authorised for this operation."
 
@@ -136,9 +144,59 @@ var/global/datum/defcon/defcon_controller = new
 		return
 	supply_controller.dropship_points += 1600 //Enough for both fuel enhancers, or about 3.5 fatties
 
+/datum/defcon_reward/tank_points/apply_reward(var/datum/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+	supply_controller.tank_points += 3000 //Enough for full kit + ammo
+
+/datum/defcon_reward/ob_he
+	name = "Additional OB projectiles - HE x2"
+	cost = DEFCON_COST_CHEAP
+	minimum_defcon_level = 5
+	announcement_message = "Additional Orbital Bombardment ornaments (HE, count:2) have been delivered to Requisitions' ASRS."
+
+/datum/defcon_reward/ob_he/apply_reward(var/datum/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+
+	var/datum/supply_order/O = new /datum/supply_order()
+	O.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	O.object = supply_controller.supply_packs["OB HE Crate"]
+	O.orderedby = MAIN_AI_SYSTEM
+
+	supply_controller.shoppinglist += O
+
+/datum/defcon_reward/ob_cluster
+	name = "Additional OB projectiles - Cluster x2"
+	cost = DEFCON_COST_CHEAP
+	minimum_defcon_level = 5
+	announcement_message = "Additional Orbital Bombardment ornaments (Cluster, count:2) have been delivered to Requisitions' ASRS."
+
+/datum/defcon_reward/ob_cluster/apply_reward(var/datum/defcon/d)
+	. = ..()
+	if(. == 0)
+		return
+
+	var/datum/supply_order/O = new /datum/supply_order()
+	O.ordernum = supply_controller.ordernum
+	supply_controller.ordernum++
+	O.object = supply_controller.supply_packs["OB Cluster Crate"]
+	O.orderedby = MAIN_AI_SYSTEM
+
+	supply_controller.shoppinglist += O
+
+/datum/defcon_reward/ob_incendiary
+	name = "Additional OB projectiles - Incendiary x2"
+	cost = DEFCON_COST_CHEAP
+	minimum_defcon_level = 5
+	announcement_message = "Additional Orbital Bombardment ornaments (Incendiary, count:2) have been delivered to Requisitions' ASRS."
+
 /datum/defcon_reward/cryo_squad
 	name = "Wake up additional troops"
-	cost = DEFCON_COST_MODERATE
+	cost = DEFCON_COST_PRICEY
 	minimum_defcon_level = 4
 	unique = TRUE
 	announcement_message = "Additional troops are being taken out of cryo."
@@ -177,59 +235,6 @@ var/global/datum/defcon/defcon_controller = new
 	unique = TRUE
 	announcement_message = "Additional Tank Part Fabricator Points have been authorised for this operation."
 
-/datum/defcon_reward/tank_points/apply_reward(var/datum/defcon/d)
-	. = ..()
-	if(. == 0)
-		return
-	supply_controller.tank_points += 3000 //Enough for full kit + ammo
-
-/datum/defcon_reward/ob_he
-	name = "Additional OB projectiles - HE x2"
-	cost = DEFCON_COST_CHEAP
-	minimum_defcon_level = 5
-	unique = FALSE
-	announcement_message = "Additional Orbital Bombardment ornaments (HE, count:2) have been delivered to Requisitions' ASRS."
-
-/datum/defcon_reward/ob_he/apply_reward(var/datum/defcon/d)
-	. = ..()
-	if(. == 0)
-		return
-
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs["OB HE Crate"]
-	O.orderedby = MAIN_AI_SYSTEM
-
-	supply_controller.shoppinglist += O
-
-/datum/defcon_reward/ob_cluster
-	name = "Additional OB projectiles - Cluster x2"
-	cost = DEFCON_COST_CHEAP
-	minimum_defcon_level = 5
-	unique = FALSE
-	announcement_message = "Additional Orbital Bombardment ornaments (Cluster, count:2) have been delivered to Requisitions' ASRS."
-
-/datum/defcon_reward/ob_cluster/apply_reward(var/datum/defcon/d)
-	. = ..()
-	if(. == 0)
-		return
-
-	var/datum/supply_order/O = new /datum/supply_order()
-	O.ordernum = supply_controller.ordernum
-	supply_controller.ordernum++
-	O.object = supply_controller.supply_packs["OB Cluster Crate"]
-	O.orderedby = MAIN_AI_SYSTEM
-
-	supply_controller.shoppinglist += O
-
-/datum/defcon_reward/ob_incendiary
-	name = "Additional OB projectiles - Incendiary x2"
-	cost = DEFCON_COST_CHEAP
-	minimum_defcon_level = 5
-	unique = FALSE
-	announcement_message = "Additional Orbital Bombardment ornaments (Incendiary, count:2) have been delivered to Requisitions' ASRS."
-
 /datum/defcon_reward/ob_incendiary/apply_reward(var/datum/defcon/d)
 	. = ..()
 	if(. == 0)
@@ -245,7 +250,7 @@ var/global/datum/defcon/defcon_controller = new
 
 /datum/defcon_reward/nuke
 	name = "Planetary nuke"
-	cost = DEFCON_COST_CHEAP
+	cost = DEFCON_COST_LUDICROUS
 	minimum_defcon_level = 1
 	unique = TRUE
 	announcement_message = "Planetary nuke has been been delivered to Requisitions' ASRS."
@@ -258,7 +263,7 @@ var/global/datum/defcon/defcon_controller = new
 	var/datum/supply_order/O = new /datum/supply_order()
 	O.ordernum = supply_controller.ordernum
 	supply_controller.ordernum++
-	O.object = /obj/machinery/nuclearbomb
+	O.object = supply_controller.supply_packs["Operational Nuke"]
 	O.orderedby = MAIN_AI_SYSTEM
 
 	supply_controller.shoppinglist += O

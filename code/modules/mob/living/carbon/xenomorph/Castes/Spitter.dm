@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	max_health = 180
+	max_health = 210
 	plasma_gain = 0.034
 	plasma_max = 600
 	spit_delay = 20
@@ -22,7 +22,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	upgrade = 1
-	max_health = 200
+	max_health = 225
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	plasma_gain = 0.036
@@ -37,7 +37,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	upgrade = 2
-	max_health = 220
+	max_health = 235
 	melee_damage_lower = 28
 	melee_damage_upper = 38
 	plasma_gain = 0.038

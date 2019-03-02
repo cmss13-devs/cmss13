@@ -9,7 +9,7 @@
 	plasma_max = 150
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	armor_deflection = 5
-	max_health = 120
+	max_health = 140
 	speed = -1.9
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
@@ -24,7 +24,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	plasma_gain = 0.02
-	plasma_max = 150
+	plasma_max = 160
 	armor_deflection = 5
 	max_health = 140
 	speed = -1.9

@@ -10,7 +10,7 @@
 	plasma_max = 300
 	deevolves_to = "Drone"
 	caste_desc = "A digger and shaper."
-	max_health = 175
+	max_health = 200
 	speed = -0.1
 	armor_deflection = 15
 	xeno_explosion_resistance = 60
@@ -33,7 +33,7 @@
 	plasma_max = 350
 	plasma_gain = 0.034
 	armor_deflection = 20
-	max_health = 200
+	max_health = 210
 	speed = -0.2
 	burrow_cooldown = 40
 	tunnel_cooldown = 90

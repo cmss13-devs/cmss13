@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	max_health = 160
+	max_health = 175
 	plasma_gain = 0.1
 	plasma_max = 100
 	deevolves_to = "Runner"
@@ -24,7 +24,7 @@
 	upgrade = 1
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	max_health = 170
+	max_health = 180
 	plasma_gain = 0.107
 	plasma_max = 150
 	speed = -1.7
@@ -40,7 +40,7 @@
 	upgrade = 2
 	melee_damage_lower = 35
 	melee_damage_upper = 45
-	max_health = 175
+	max_health = 185
 	plasma_gain = 0.114
 	plasma_max = 175
 	speed = -1.8

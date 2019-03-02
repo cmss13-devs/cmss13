@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	max_health = 200
+	max_health = 220
 	plasma_gain = 0.08
 	plasma_max = 100
 	caste_desc = "A sturdy front line combatant."
@@ -29,7 +29,7 @@
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	max_health = 225
+	max_health = 235
 	speed = -0.4
 	armor_deflection = 30
 

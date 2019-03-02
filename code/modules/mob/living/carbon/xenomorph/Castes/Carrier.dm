@@ -11,7 +11,7 @@
 	plasma_max = 300
 	evolution_allowed = FALSE
 	deevolves_to = "Drone"
-	max_health = 200
+	max_health = 210
 	speed = -0.1
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
 	huggers_max = 9

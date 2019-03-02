@@ -31,11 +31,11 @@
 	var/min_hit_damage = 16
 	var/mlow_hit_damage = 22
 	var/low_hit_damage = 29
-	var/hlow_hit_damage = 32
+	var/hlow_hit_damage = 31
+	var/hlmed_hit_damage = 34
 	var/lmed_hit_damage = 38
-	var/hlmed_hit_damage = 40
 	var/med_hit_damage = 47
-	var/hmed_hit_damage = 56
+	var/hmed_hit_damage = 51
 	var/high_hit_damage = 68
 	var/mhigh_hit_damage = 76
 	var/max_hit_damage = 88

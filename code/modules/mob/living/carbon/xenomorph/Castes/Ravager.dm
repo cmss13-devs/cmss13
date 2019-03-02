@@ -8,7 +8,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	max_health = 225
+	max_health = 240
 	plasma_gain = 0.08
 	plasma_max = 100
 	evolution_allowed = FALSE

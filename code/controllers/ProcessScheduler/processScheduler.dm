@@ -29,6 +29,9 @@ var/global/datum/controller/processScheduler/processScheduler
 	// Process highest run time
 	var/tmp/datum/controller/process/list/highest_run_time = new
 
+	// Process total, aggregated run duration
+	var/tmp/datum/controller/process/list/total_run_time = new
+
 	// Sleep 1 tick -- This may be too aggressive.
 	var/tmp/scheduler_sleep_interval = 1
 
@@ -250,6 +253,7 @@ var/global/datum/controller/processScheduler/processScheduler
 	last_run_time[process] = time
 	if(time > highest_run_time[process])
 		highest_run_time[process] = time
+	total_run_time[process] += time
 
 	var/list/lastTwenty = last_twenty_run_times[process]
 	if (lastTwenty.len == 20)

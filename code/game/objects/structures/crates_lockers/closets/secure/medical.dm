@@ -96,6 +96,7 @@
 		new /obj/item/clothing/suit/storage/labcoat(src)
 		new /obj/item/clothing/mask/surgical(src)
 		new /obj/item/clothing/mask/breath(src)
+		new /obj/item/clothing/head/cmo(src)
 		new /obj/item/device/radio/headset/almayer/cmo(src)
 		new /obj/item/reagent_container/hypospray/tricordrazine(src)
 		new /obj/item/device/flash(src)
@@ -136,12 +137,12 @@
 		..()
 		sleep(2)
 		for(var/i = 0, i < 4, i++)
-			new /obj/item/storage/box/pillbottles(src)	
+			new /obj/item/storage/box/pillbottles(src)
 		return
 
 /obj/structure/closet/secure_closet/chemical/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
-	
+
 /obj/structure/closet/secure_closet/medical_wall
 	name = "first aid closet"
 	desc = "It's a secure wall-mounted storage unit for first aid supplies."

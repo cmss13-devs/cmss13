@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 25
-	max_health = 145
+	max_health = 160
 	armor_deflection = 5
 	plasma_gain = 0.027
 	plasma_max = 800

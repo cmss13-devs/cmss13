@@ -130,6 +130,19 @@ OPERATIONS
 	containername = "signal flare pack crate"
 	group = "Operations"
 
+/datum/supply_packs/fulton
+	name = "fulton recovery device crate (x4)"
+	contains = list(
+					/obj/item/stack/fulton,
+					/obj/item/stack/fulton,
+					/obj/item/stack/fulton,
+					/obj/item/stack/fulton
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "fulton recovery device crate"
+	group = "Operations"
+
 /datum/supply_packs/contraband
 	randomised_num_contained = 5
 	contains = list(
@@ -221,6 +234,13 @@ OPERATIONS
 	group = "Operations"
 	iteration_needed = null
 
+/datum/supply_packs/nuclearbomb
+	name = "Operational Nuke"
+	cost = 0
+	containertype = /obj/machinery/nuclearbomb
+	buyable = 0
+	group = "Operations"
+	iteration_needed = null
 
 /*******************************************************************************
 WEAPONS
@@ -947,6 +967,9 @@ ATTACHMENTS
 					/obj/item/attachable/stock/smg,
 					/obj/item/attachable/stock/smg,
 					/obj/item/attachable/stock/smg,
+					/obj/item/attachable/stock/carbine,
+					/obj/item/attachable/stock/carbine,
+					/obj/item/attachable/stock/carbine,
 					/obj/item/attachable/stock/smg/collapsible,
 					)
 	cost = RO_PRICE_PRICY
@@ -1079,7 +1102,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_shell_box
-	name = "shell box (100xslug shells)"
+	name = "shell box (100x slug shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun
 					)
@@ -1090,7 +1113,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_shell_box_buck
-	name = "shell box (100xbuckshot shells)"
+	name = "shell box (100x buckshot shells)"
 	contains = list(
 					/obj/item/magazine_box/shotgun/buckshot
 					)
@@ -1099,6 +1122,15 @@ AMMO
 	containername = "ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_shell_box_flechette
+	name = "shell box (100x flechette shells)"
+	contains = list(
+					/obj/item/magazine_box/shotgun/flechette
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
 
 /datum/supply_packs/ammo_regular
 	name = "regular magazines crate (M41A x5, M4A3 x2, M44 x2, M39 x2, M37A2 x1 each)"
@@ -1500,6 +1532,14 @@ AMMO
 	name = "large M39 ammo box crate (x600 rounds)"
 	contains = list(/obj/item/big_ammo_box/smg)
 	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_box_smg_ap
+	name = "large M39 ammo box crate (x400 AP rounds)"
+	contains = list(/obj/item/big_ammo_box/smg/ap)
+	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "ammo crate"
 	group = "Ammo"
@@ -2053,6 +2093,19 @@ ENGINEERING
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/supply
 	containername = "wooden planks crate"
+	group = "Engineering"
+
+/datum/supply_packs/folding_barricades
+	contains = list(
+					/obj/item/folding_barricade,
+					/obj/item/folding_barricade,
+					/obj/item/folding_barricade,
+					/obj/item/folding_barricade
+					)
+	name = "Folding Barricades (x4)"
+	cost = RO_PRICE_VERY_PRICY
+	containertype = /obj/structure/closet/crate/supply
+	containername = "\improper folding barricades crate"
 	group = "Engineering"
 
 /datum/supply_packs/smescoil

@@ -11,6 +11,7 @@ datum/controller/process/diseases/doWork()
 		var/datum/disease/Disease = active_diseases[i]
 		if(Disease)
 			Disease.process()
+			individual_ticks++
 			i++
 			continue
 		active_diseases.Cut(i,i+1)

@@ -23,7 +23,7 @@ var/global/datum/process_ui/proc_scheduler = new()
 			display_ui()
 
 /datum/process_ui/proc/process_table()
-	var/dat = "<table class=\"table table-striped\"><thead><tr><td>Name</td><td>Avg(s)</td><td>Last(s)</td><td>Highest(s)</td><td>Tickcount</td><td>Tickrate</td><td>State</td><td>Action</td></tr></thead><tbody>"
+	var/dat = "<table class=\"table table-striped\"><thead><tr><td>Name</td><td>Avg(s)</td><td>Last(s)</td><td>Highest(s)</td><td>Total(s)</td><td>Tickcount</td><td>Individual tickcount</td><td>Tickrate</td><td>State</td><td>Action</td></tr></thead><tbody>"
 	// and the context of each
 	for (var/list/data in processScheduler.getStatusData())
 		dat += "<tr>"
@@ -31,7 +31,9 @@ var/global/datum/process_ui/proc_scheduler = new()
 		dat += "<td>[num2text(data["averageRunTime"]/10,3)]</td>"
 		dat += "<td>[num2text(data["lastRunTime"]/10,3)]</td>"
 		dat += "<td>[num2text(data["highestRunTime"]/10,3)]</td>"
+		dat += "<td>[num2text(data["totalRunTime"]/10,3)]</td>"
 		dat += "<td>[num2text(data["ticks"],4)]</td>"
+		dat += "<td>[num2text(data["individualTicks"],4)]</td>"
 		dat += "<td>[data["schedule"]]</td>"
 		dat += "<td>[data["status"]]</td>"
 		dat += "<td><a href='?src=\ref[src];action=kill;target=[data["name"]]'>\[Kill]</a>"

@@ -432,7 +432,7 @@
 
 /obj/item/storage/pouch/construction
 	name = "construction pouch"
-	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has a hook for an entrenching tool."
+	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has two hooks for an entrenching tool and light replacer."
 	storage_slots = 3
 	max_w_class = 3
 	icon_state = "construction"
@@ -442,7 +442,8 @@
 		/obj/item/stack/rods,
 		/obj/item/stack/cable_coil,
 		/obj/item/tool/shovel/etool,
-		/obj/item/stack/sandbags_empty
+		/obj/item/stack/sandbags_empty,
+		/obj/item/device/lightreplacer,
 	)
 
 /obj/item/storage/pouch/construction/full/New()

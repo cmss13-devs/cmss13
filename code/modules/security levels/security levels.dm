@@ -71,7 +71,10 @@
 					if(SD.z == MAIN_SHIP_Z_LEVEL)
 						SD.set_picture("redalert")
 			if(SEC_LEVEL_DELTA)
-				if(announce) ai_system.Announce("Attention! Delta security level reached! " + config.alert_desc_delta)
+				if(announce)
+					var/name = "SELF DESTRUCT SYSTEMS ACTIVE"
+					var/input = "DANGER, THE EMERGENCY DESTRUCT SYSTEM IS NOW ACTIVATED. PROCEED TO THE SELF DESTRUCT CHAMBER FOR CONTROL ROD INSERTION."
+					command_announcement.Announce(input, name, new_sound = 'sound/AI/ARES_Self_Destruct.ogg')
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z == MAIN_SHIP_Z_LEVEL)
@@ -80,6 +83,7 @@
 				for(var/obj/machinery/status_display/SD in machines)
 					if(SD.z == MAIN_SHIP_Z_LEVEL)
 						SD.set_picture("redalert")
+				EvacuationAuthority.enable_self_destruct()
 	else
 		return
 

@@ -48,6 +48,8 @@
 	var/distance_travelled = 0
 	var/in_flight = 0
 
+	var/projectile_override_flags = 0
+
 	New()
 		..()
 		path = list()
@@ -80,7 +82,7 @@
 
 	ex_act() r_FAL //We do not want anything to delete these, simply to make sure that all the bullet references are not runtiming. Otherwise, constantly need to check if the bullet exists.
 
-/obj/item/projectile/proc/generate_bullet(ammo_datum, bonus_damage = 0)
+/obj/item/projectile/proc/generate_bullet(ammo_datum, bonus_damage = 0, special_flags = 0)
 	ammo 		= ammo_datum
 	name 		= ammo.name
 	icon_state 	= ammo.icon_state
@@ -90,6 +92,7 @@
 	accuracy   *= rand(config.proj_variance_low-ammo.accuracy_var_low, config.proj_variance_high+ammo.accuracy_var_high) * config.proj_base_accuracy_mult//Rand only works with integers.
 	damage     *= rand(config.proj_variance_low-ammo.damage_var_low, config.proj_variance_high+ammo.damage_var_high) * config.proj_base_damage_mult
 	damage_falloff = ammo.damage_falloff
+	projectile_override_flags = special_flags
 
 //Target, firer, shot from. Ie the gun
 /obj/item/projectile/proc/fire_at(atom/target,atom/F, atom/S, range = 30,speed = 1)
@@ -110,7 +113,8 @@
 	dir = get_dir(loc, target_turf)
 
 	round_statistics.total_projectiles_fired++
-	if(ammo.flags_ammo_behavior & AMMO_BALLISTIC)
+	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+	if(ammo_flags & AMMO_BALLISTIC)
 		round_statistics.total_bullets_fired++
 		if(ammo.bonus_projectiles_amount)
 			round_statistics.total_bullets_fired += ammo.bonus_projectiles_amount
@@ -136,7 +140,8 @@
 	distance_travelled++
 	if(invisibility && distance_travelled > 1) invisibility = 0 //Let there be light (visibility).
 	if(distance_travelled == round(ammo.max_range / 2) && loc) ammo.do_at_half_range(src)
-	if(ammo.flags_ammo_behavior & AMMO_ROCKET) //Just rockets for now. Not all explosive ammo will travel like this.
+	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+	if(ammo_flags & AMMO_ROCKET) //Just rockets for now. Not all explosive ammo will travel like this.
 		switch(speed) //Get more speed the longer it travels. Travels pretty quick at full swing.
 			if(1)
 				if(distance_travelled > 2) new_speed++
@@ -219,9 +224,9 @@
 	// Firer's turf, keep moving
 	if(firer && T == firer.loc)
 		return 0
-
+	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	// Explosive ammo always explodes on the turf of the clicked target
-	if(ammo.flags_ammo_behavior & AMMO_EXPLOSIVE && T == target_turf)
+	if(ammo_flags & AMMO_EXPLOSIVE && T == target_turf)
 		ammo.on_hit_turf(T,src)
 
 		if(T && T.loc)
@@ -229,7 +234,7 @@
 
 		return 1
 
-	if(ammo.flags_ammo_behavior & AMMO_SCANS_NEARBY && proj_dir)
+	if(ammo_flags & AMMO_SCANS_NEARBY && proj_dir)
 		//this thing scans depending on dir
 		var/cardinal_dir = get_perpen_dir(proj_dir)
 		if(!cardinal_dir)
@@ -249,9 +254,9 @@
 				var/mob/living/dL = dA
 				if(dL.is_dead())
 					continue
-				if(ammo.flags_ammo_behavior & AMMO_SKIPS_HUMANS && ishuman(dL))
+				if(ammo_flags & AMMO_SKIPS_HUMANS && ishuman(dL))
 					continue
-				if(ammo.flags_ammo_behavior & AMMO_SKIPS_ALIENS && isXeno(dL))
+				if(ammo_flags & AMMO_SKIPS_ALIENS && isXeno(dL))
 					continue
 				remote_detonation = 1
 				kill_proj = ammo.on_near_target(T, src)
@@ -274,7 +279,7 @@
 			continue
 		permutated += O
 
-		hit_chance = O.get_projectile_hit_chance(src)
+		hit_chance = O.get_projectile_hit_boolean(src)
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			ammo.on_hit_obj(O,src)
 			if(O && O.loc)
@@ -332,18 +337,184 @@
 //----------------------------------------------------------
 
 
-//returns probability for the projectile to hit us.
-/atom/movable/proc/get_projectile_hit_chance(obj/item/projectile/P)
-	return 0
+/proc/get_effective_accuracy(obj/item/projectile/P)
 
-//obj version just returns true or false.
-/obj/get_projectile_hit_chance(obj/item/projectile/P)
+	var/effective_accuracy = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
+	#if DEBUG_HIT_CHANCE
+	world << "<span class='debuginfo'>Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b></span>"
+	#endif
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if (P.distance_travelled <= P.ammo.accurate_range + rand(0, 2))
+	// If bullet stays within max accurate range + random variance
+		if (P.distance_travelled <= P.ammo.point_blank_range)
+			//If bullet within point blank range, big accuracy buff
+			effective_accuracy += 25
+		else if (P.distance_travelled <= P.ammo.accurate_range_min)
+			// Snipers have accuracy falloff at closer range before point blank
+			effective_accuracy -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
+	else
+		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (P.distance_travelled * 3) : (P.distance_travelled * 5)
+		// Snipers have a smaller falloff constant due to longer max range
+
+
+	#if DEBUG_HIT_CHANCE
+	world << "<span class='debuginfo'>Final accuracy is <b>[.]</b></span>"
+	#endif
+
+	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
+
+	if(isliving(P.firer))
+		var/mob/living/shooter_living = P.firer
+		effective_accuracy -= round((shooter_living.maxHealth - shooter_living.health) / 4) //Less chance to hit when injured.
+
+	if(ishuman(P.firer))
+		var/mob/living/carbon/human/shooter_human = P.firer
+		if(shooter_human.marskman_aura)
+			effective_accuracy += shooter_human.marskman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
+			effective_accuracy += P.distance_travelled * 0.35 * shooter_human.marskman_aura //Flat buff to accuracy per tile travelled
+
+	return effective_accuracy
+
+
+//objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance
+
+/obj/proc/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
+
+
+/obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
+
+	if( istype(P.shot_from, /obj/item/hardpoint) ) //anything shot from a tank gets a bonus to bypassing cover
+		distance -= 3
+
+	if(distance < 1)
+		return FALSE
+
+	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
+	var/effective_accuracy = get_effective_accuracy(P)
+	var/distance_limit = 6 //number of tiles needed to max out block probability
+	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
+
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
+	#if DEBUG_HIT_CHANCE
+	world << "<span class='debuginfo'>([src.name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+	#endif
+	return prob(hitchance)
+
+
+/obj/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
+		var/hitchance = get_effective_accuracy(P)
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
 	if(!density)
 		return FALSE
 
-	if(layer >= OBJ_LAYER || src == P.original)
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	if(!throwpass)
+		return TRUE
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_IGNORE_COVER)
+		return FALSE
+
+	var/distance = P.distance_travelled
+
+	if(flags_atom & ON_BORDER) //windoors
+		if(P.dir & reverse_direction(dir))
+			distance-- //no bias towards "inner" side
+		else if( !(P.dir & dir) )
+			return FALSE //no effect if bullet direction is perpendicular to barricade
+	else
+		distance--
+
+	return calculate_cover_hit_boolean(P, distance)
+
+
+/obj/structure/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
+		var/hitchance = get_effective_accuracy(P)
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
+	if(!density)
+		return FALSE
+
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	if(!throwpass)
 		return TRUE
 
+	//At this point, all that's left is window frames, tables, and barricades
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_IGNORE_COVER)
+		return FALSE
+
+	var/distance = P.distance_travelled
+
+	if(flags_atom & ON_BORDER) //barricades, flipped tables
+		if(P.dir & reverse_direction(dir))
+			distance-- //no bias towards "inner" side
+		else if( !(P.dir & dir) )
+			return FALSE //no effect if bullet direction is perpendicular to barricade
+
+	else
+		distance--
+		if(climbable)
+			for(var/obj/structure/S in get_turf(P))
+				if(S && S.climbable && !(S.flags_atom & ON_BORDER)) //if a projectile is coming from a window frame or table, it's guaranteed to pass the next window frame/table
+					return FALSE
+
+	return calculate_cover_hit_boolean(P, distance)
+
+
+/obj/item/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original) //clicking on the object itself. Code copied from mob get_projectile_hit_chance
+
+		var/hitchance = get_effective_accuracy(P)
+
+		switch(w_class) //smaller items are harder to hit
+			if(1)
+				hitchance -= 50
+			if(2)
+				hitchance -= 30
+			if(3)
+				hitchance -= 20
+			if(4)
+				hitchance -= 10
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
+	if(!density)
+		return FALSE
+
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	return TRUE
+
+/*
 /obj/structure/get_projectile_hit_chance(obj/item/projectile/P)
 	if(!density) //structure is passable
 		return FALSE
@@ -357,100 +528,83 @@
 	if(!throwpass)
 		return TRUE
 
-	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_BARRICADES)
+	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_COVER)
 		return FALSE
 
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank bypasses cover
 		return FALSE
 
-	if(!(flags_atom & ON_BORDER))
-		return FALSE //window frames, unflipped tables
-
 	var/distance = P.distance_travelled
-
-	if(P.dir & reverse_direction(dir))
-		distance-- //no bias towards "inner" side
-	else if (!(P.dir & dir))
-		return FALSE //no effect if bullet direction is perpendicular to barricade
 
 	if(distance < 1)
 		return FALSE
 
-	var/coverage = 90 //maximum probability of blocking projectile
+
+	if(flags_atom & ON_BORDER) //barricades, flipped tables
+		if(P.dir & reverse_direction(dir))
+			distance-- //no bias towards "inner" side
+		else if (!(P.dir & dir))
+			return FALSE //no effect if bullet direction is perpendicular to barricade
+
+	else //window frames, unflipped tables
+		for(var/obj/structure/S in get_turf(P))
+			if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable) //if a projectile is coming from a window frame/table, it's guaranteed to pass the next window frame/table
+				return FALSE
+
+
+	//a structure's "projectile_coverage" var indicates the maximum probability of blocking a projectile
 	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
-	var/hitchance = min(coverage, (coverage * distance/distance_limit) + accuracy_factor * (1 - P.accuracy/100))
-	//world << "Distance travelled: [distance]  |  Accuracy: [P.accuracy]  |  Hit chance: [hitchance]"
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - P.accuracy/100))
+	world << "Distance travelled: [distance]  |  Accuracy: [P.accuracy]  |  Hit chance: [hitchance]"
 	return prob(hitchance)
+*/
 
-/obj/structure/window/get_projectile_hit_chance(obj/item/projectile/P)
-	if(P.ammo.flags_ammo_behavior & AMMO_ENERGY)
+/obj/structure/window/get_projectile_hit_boolean(obj/item/projectile/P)
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_ENERGY)
 		return FALSE
 	else if(!(flags_atom & ON_BORDER) || (P.dir & dir) || (P.dir & reverse_direction(dir)))
 		return TRUE
 
-/obj/machinery/door/poddoor/railing/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/machinery/door/poddoor/railing/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/obj/effect/alien/egg/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/effect/alien/egg/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/obj/effect/alien/resin/trap/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/effect/alien/resin/trap/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/obj/item/clothing/mask/facehugger/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/item/clothing/mask/facehugger/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/mob/living/get_projectile_hit_chance(obj/item/projectile/P)
+
+
+//mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
+
+/mob/living/proc/get_projectile_hit_chance(obj/item/projectile/P)
 
 	if(lying && src != P.original)
 		return 0
-
-	if(P.ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
 		if((status_flags & XENO_HOST) && istype(buckled, /obj/structure/bed/nest))
 			return 0
 
-	. = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
-	#if DEBUG_HIT_CHANCE
-	world << "<span class='debuginfo'>Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b></span>"
-	#endif
+	. = get_effective_accuracy(P)
 
-	if (P.distance_travelled <= P.ammo.accurate_range + rand(0, 2))
-	// If bullet stays within max accurate range + random variance
-		if (P.distance_travelled <= P.ammo.point_blank_range)
-			//If bullet within point blank range, big accuracy buff
-			. += 25
-		else if (P.distance_travelled <= P.ammo.accurate_range_min)
-			// Snipers have accuracy falloff at closer range before point blank
-			. -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
-	else
-		. -= (P.ammo.flags_ammo_behavior & AMMO_SNIPER) ? (P.distance_travelled * 3) : (P.distance_travelled * 5)
-		// Snipers have a smaller falloff constant due to longer max range
-
-
-	#if DEBUG_HIT_CHANCE
-	world << "<span class='debuginfo'>Final accuracy is <b>[.]</b></span>"
-	#endif
-
-	. = max(5, .) //default hit chance is at least 5%.
 	if(lying && stat) . += 15 //Bonus hit against unconscious people.
 
 	if(isliving(P.firer))
 		var/mob/living/shooter_living = P.firer
 		if( !can_see(shooter_living,src) ) . -= 15 //Can't see the target (Opaque thing between shooter and target)
-		. -= round((shooter_living.maxHealth - shooter_living.health) / 4) //Less chance to hit when injured.
-
-	if(ishuman(P.firer))
-		var/mob/living/carbon/human/shooter_human = P.firer
-		if(shooter_human.marskman_aura)
-			. += shooter_human.marskman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
-			. += P.distance_travelled * 0.35 * shooter_human.marskman_aura //Flat buff to accuracy per tile travelled
 
 /mob/living/carbon/human/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
 	if(.)
-		if(P.ammo.flags_ammo_behavior & AMMO_SKIPS_HUMANS && get_target_lock(P.ammo.iff_signal))
+		if((P.ammo.flags_ammo_behavior & AMMO_SKIPS_HUMANS && get_target_lock(P.ammo.iff_signal)) || (P.projectile_override_flags & AMMO_SKIPS_HUMANS) && get_target_lock(ACCESS_IFF_MARINE))
 			return 0
 		if(mobility_aura)
 			. -= mobility_aura * 5
@@ -466,7 +620,8 @@
 /mob/living/carbon/Xenomorph/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
 	if(.)
-		if(P.ammo.flags_ammo_behavior & AMMO_SKIPS_ALIENS)
+		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+		if(ammo_flags & AMMO_SKIPS_ALIENS)
 			return 0
 		if(mob_size == MOB_SIZE_BIG)	. += 10
 		else							. -= 10
@@ -488,24 +643,24 @@
 //----------------------------------------------------------
 
 /atom/proc/bullet_act(obj/item/projectile/P)
-	return density
+	return 0
 
 /mob/dead/bullet_act(/obj/item/projectile/P)
-	return
+	return 0
 
 /mob/living/bullet_act(obj/item/projectile/P)
 	if(!P) return
 
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff))
-	if(P.ammo.debilitate && stat != DEAD && ( damage || (P.ammo.flags_ammo_behavior & AMMO_IGNORE_RESIST) ) )
+	if(P.ammo.debilitate && stat != DEAD && ( damage || (ammo_flags & AMMO_IGNORE_RESIST) ) )
 		apply_effects(arglist(P.ammo.debilitate))
 
 	if(damage)
 		bullet_message(P)
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, 0, P)
 		P.play_damage_effect(src)
-
-		if(P.ammo.flags_ammo_behavior & AMMO_INCENDIARY)
+		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,10))
 			IgniteMob()
 			emote("scream")
@@ -522,8 +677,8 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	if(!P) return
 
 	flash_weak_pain()
-
-	if(P.ammo.flags_ammo_behavior & AMMO_BALLISTIC)
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_BALLISTIC)
 		round_statistics.total_bullet_hits_on_humans++
 
 	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff))
@@ -535,7 +690,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	if(gloves)
 		var/obj/item/clothing/gloves/yautja/Y = gloves
 		if(istype(Y) && Y.cloaked)
-			if( P.ammo.flags_ammo_behavior & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID) ) //<--- These will auto uncloak.
+			if( ammo_flags & (AMMO_ROCKET|AMMO_ENERGY|AMMO_XENO_ACID) ) //<--- These will auto uncloak.
 				Y.decloak(src) //Continue on to damage.
 			else if(rand(0,100) < 20)
 				Y.decloak(src)
@@ -543,7 +698,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 			//Else we're moving on to damage.
 
 	//Shields
-	if( !(P.ammo.flags_ammo_behavior & AMMO_ROCKET) ) //No, you can't block rockets.
+	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
 		if( P.dir == reverse_direction(dir) && check_shields(damage * 0.65, "[P]") )
 			P.ammo.on_shield_block(src)
 			bullet_ping(P)
@@ -553,11 +708,11 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	if(!organ) return//Nope. Gotta shoot something!
 
 	//Run armor check. We won't bother if there is no damage being done.
-	if( damage > 0 && !(P.ammo.flags_ammo_behavior & AMMO_IGNORE_ARMOR) )
+	if( damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR) )
 		var/armor //Damage types don't correspond to armor types. We are thus merging them.
 		switch(P.ammo.damage_type)
-			if(BRUTE) armor = P.ammo.flags_ammo_behavior & AMMO_ROCKET ? getarmor_organ(organ, "bomb") : getarmor_organ(organ, "bullet")
-			if(BURN) armor = P.ammo.flags_ammo_behavior & AMMO_ENERGY ? getarmor_organ(organ, "energy") : getarmor_organ(organ, "laser")
+			if(BRUTE) armor = ammo_flags & AMMO_ROCKET ? getarmor_organ(organ, "bomb") : getarmor_organ(organ, "bullet")
+			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, "energy") : getarmor_organ(organ, "laser")
 			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, "bio")
 			else armor = getarmor_organ(organ, "energy") //Won't be used, but just in case.
 		#if DEBUG_HUMAN_DEFENSE
@@ -597,7 +752,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 				damage = 0
 				if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
 
-	if(P.ammo.debilitate && stat != DEAD && ( damage || (P.ammo.flags_ammo_behavior & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
+	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
 		if(species.name != "Yautja" && !(species.flags & IS_SYNTHETIC)) apply_effects(arglist(P.ammo.debilitate))
 
@@ -619,7 +774,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 				emote("scream")
 				src << "<span class='highdanger'>You scream in pain as the impact sends <B>shrapnel</b> into the wound!</span>"
 
-		if(P.ammo.flags_ammo_behavior & AMMO_INCENDIARY)
+		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,11))
 			IgniteMob()
 			if(!stat && !(species.flags & NO_PAIN))
@@ -630,21 +785,22 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 //Deal with xeno bullets.
 /mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)
 	if(!P || !istype(P)) return
-	if(P.ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX) ) //Aliens won't be harming aliens.
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX) ) //Aliens won't be harming aliens.
 		bullet_ping(P)
 		return
 
-	if(P.ammo.flags_ammo_behavior & AMMO_BALLISTIC)
+	if(ammo_flags & AMMO_BALLISTIC)
 		round_statistics.total_bullet_hits_on_xenos++
 
 	flash_weak_pain()
 
-	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff)) //Has to be at least zero, no negatives.
+	var/damage = max(0, P.damage - round(P.distance_travelled * P.damage_falloff)) //Has to be at least zero, no negatives.
 	#if DEBUG_XENO_DEFENSE
 	world << "<span class='debuginfo'>Initial damage is: <b>[damage]</b></span>"
 	#endif
 
-	if(damage > 0 && !(P.ammo.flags_ammo_behavior & AMMO_IGNORE_ARMOR))
+	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
 		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
 			var/mob/living/carbon/Xenomorph/charger = src
@@ -695,7 +851,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		if(!stat && prob(5 + round(damage / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)
-		if(P.ammo.flags_ammo_behavior & AMMO_INCENDIARY)
+		if(ammo_flags & AMMO_INCENDIARY)
 			if(caste.fire_immune)
 				if(!stat) src << "<span class='avoidharm'>You shrug off some persistent flames.</span>"
 			else
@@ -722,7 +878,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 
 	if(mobs_list.len)
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
-		if(istype(picked_mob) && P.firer && prob(P.get_projectile_hit_chance(P.firer,picked_mob)))
+		if(istype(picked_mob) && P.firer && prob(P.get_projectile_hit_boolean(P.firer,picked_mob)))
 			picked_mob.bullet_act(P)
 			return 1
 	return 1
@@ -733,20 +889,22 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		return
 	var/damage = P.damage
 	if(damage < 1) return
-
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	switch(P.ammo.damage_type)
-		if(BRUTE) 	damage = P.ammo.flags_ammo_behavior & AMMO_ROCKET ? round(damage * 10) : damage //Bullets do much less to walls and such.
-		if(BURN)	damage = P.ammo.flags_ammo_behavior & (AMMO_ENERGY) ? round(damage * 7) : damage
+		if(BRUTE) 	damage = ammo_flags & AMMO_ROCKET ? round(damage * 10) : damage //Bullets do much less to walls and such.
+		if(BURN)	damage = ammo_flags & (AMMO_ENERGY) ? round(damage * 7) : damage
 		else return
-	if(P.ammo.flags_ammo_behavior & AMMO_BALLISTIC) current_bulletholes++
+	if(ammo_flags & AMMO_BALLISTIC) current_bulletholes++
 	take_damage(damage)
 	if(prob(30 + damage)) P.visible_message("<span class='warning'>[src] is damaged by [P]!</span>")
 	return 1
 
 
 /turf/closed/wall/almayer/research/containment/bullet_act(obj/item/projectile/P)
-	if(P && P.ammo.flags_ammo_behavior & AMMO_XENO_ACID)
-		return //immune to acid spit
+	if(P)
+		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+		if(ammo_flags & AMMO_XENO_ACID)
+			return //immune to acid spit
 	. = ..()
 
 
@@ -755,9 +913,14 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 //Hitting an object. These are too numerous so they're staying in their files.
 //Why are there special cases listed here? Oh well, whatever. ~N
 /obj/bullet_act(obj/item/projectile/P)
-	if(!CanPass(P, get_turf(src)) && density)
-		bullet_ping(P)
-		return 1
+	bullet_ping(P)
+	return 1
+
+/obj/item/bullet_act(obj/item/projectile/P)
+	bullet_ping(P)
+	if(P.ammo.damage_type == BRUTE)
+		explosion_throw(P.damage/2, P.dir, 4)
+	return 1
 
 /obj/structure/table/bullet_act(obj/item/projectile/P)
 	src.bullet_ping(P)
@@ -794,8 +957,8 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P) return
-
-	if(P.ammo.flags_ammo_behavior & AMMO_IS_SILENCED)
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & AMMO_IS_SILENCED)
 		src << "[isXeno(src) ? "<span class='xenodanger'>" : "<span class='highdanger'>" ]You've been shot in the [parse_zone(P.def_zone)] by [P.name]!</span>"
 	else
 		visible_message("<span class='danger'>[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!</span>", \

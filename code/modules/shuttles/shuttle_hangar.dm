@@ -88,7 +88,6 @@
 			origin = get_location_area(location)
 		move(origin, destination)
 	moving_status = SHUTTLE_CRASHED
-	set_security_level(SEC_LEVEL_DELTA, 0, 1)
 
 /datum/shuttle/ferry/hangar/short_jump(var/area/origin,var/area/destination)
 	if(moving_status != SHUTTLE_IDLE)

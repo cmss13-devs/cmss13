@@ -44,7 +44,7 @@
 /obj/item/stack/medical/bruise_pack
 	name = "roll of gauze"
 	singular_name = "medical gauze"
-	desc = "Some sterile gauze to wrap around bloody stumps."
+	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
 	icon_state = "brutepack"
 	origin_tech = "biotech=1"
 	stack_id = "bruise pack"
@@ -127,24 +127,6 @@
 			else
 				user << "<span class='notice'>The [affecting.display_name] is cut open, you'll need more than a bandage!</span>"
 
-/obj/item/stack/medical/bruise_pack/tajaran
-	name = "\improper S'rendarr's Hand leaf"
-	singular_name = "S'rendarr's Hand leaf"
-	desc = "A poultice made of soft leaves that is rubbed on bruises."
-	icon = 'icons/obj/items/harvest.dmi'
-	icon_state = "shandp"
-	heal_brute = 7
-	stack_id = "Hand leaf"
-
-/obj/item/stack/medical/ointment/tajaran
-	name = "\improper Messa's Tear petals"
-	singular_name = "Messa's Tear petal"
-	desc = "A poultice made of cold, blue petals that is rubbed on burns."
-	icon = 'icons/obj/items/harvest.dmi'
-	icon_state = "mtearp"
-	heal_burn = 7
-	stack_id = "Tear petals"
-
 
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "advanced trauma kit"
@@ -154,6 +136,8 @@
 	heal_brute = 12
 	origin_tech = "biotech=1"
 	stack_id = "advanced bruise pack"
+
+
 
 /obj/item/stack/medical/advanced/bruise_pack/attack(mob/living/carbon/M, mob/user)
 	if(..())
@@ -202,6 +186,24 @@
 			else
 				user << "<span class='notice'>The [affecting.display_name] is cut open, you'll need more than a bandage!</span>"
 
+/obj/item/stack/medical/bruise_pack/tajaran
+	name = "\improper S'rendarr's Hand leaf"
+	singular_name = "S'rendarr's Hand leaf"
+	desc = "A poultice made of soft leaves that is rubbed on bruises."
+	icon = 'icons/obj/items/harvest.dmi'
+	icon_state = "shandp"
+	heal_brute = 7
+	stack_id = "Hand leaf"
+
+/obj/item/stack/medical/ointment/tajaran
+	name = "\improper Messa's Tear petals"
+	singular_name = "Messa's Tear petal"
+	desc = "A poultice made of cold, blue petals that is rubbed on burns."
+	icon = 'icons/obj/items/harvest.dmi'
+	icon_state = "mtearp"
+	heal_burn = 7
+	stack_id = "Tear petals"
+
 /obj/item/stack/medical/advanced/ointment
 	name = "advanced burn kit"
 	singular_name = "advanced burn kit"
@@ -247,6 +249,7 @@
 /obj/item/stack/medical/splint
 	name = "medical splints"
 	singular_name = "medical splint"
+	desc = "A collection of different splints and securing gauze. What, did you think we only broke legs out here?"
 	icon_state = "splint"
 	amount = 5
 	max_amount = 5

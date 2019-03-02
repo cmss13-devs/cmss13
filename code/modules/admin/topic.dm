@@ -2637,3 +2637,31 @@
 			log_game("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]")
 			message_admins("[key_name_admin(usr)] has sent a randomized distress beacon, requested by [key_name_admin(ref_person)]", 1)
 		//unanswered_distress -= ref_person
+
+	if(href_list["destroyship"]) //Distress Beacon, sends a random distress beacon when pressed
+		destroy_cancel = 0
+		message_staff("[key_name_admin(usr)] has opted to GRANT the self destruct! Starting in 10 seconds... (<A HREF='?_src_=admin_holder;sdcancel=\ref[usr]'>CANCEL</A>)")
+		spawn(100)
+			if(distress_cancel) return
+			var/mob/ref_person = locate(href_list["destroy"])
+			set_security_level(SEC_LEVEL_DELTA)
+			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")
+			message_admins("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)
+
+	if(href_list["sddeny"]) // CentComm-deny. The self destruct is denied, without any further conditions
+		var/mob/ref_person = locate(href_list["sddeny"])
+		command_announcement.Announce("The self destruct request has not received a response, ARES is now recalculating statistics.", "Self Destruct System")
+		log_game("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]")
+		message_mods("[key_name_admin(usr)] has denied self destruct, requested by [key_name_admin(ref_person)]", 1)
+
+	if(href_list["sdcancel"])
+		if(destroy_cancel)
+			usr << "The self destruct was already canceled."
+			return
+		if(get_security_level() == "delta")
+			usr << "Too late! The self destruct was started."
+			return
+		log_game("[key_name_admin(usr)] has canceled the self destruct.")
+		message_staff("[key_name_admin(usr)] has canceled the self destruct.")
+		destroy_cancel = 1
+		return

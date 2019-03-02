@@ -26,6 +26,7 @@
 	var/is_wired = 0
 	var/image/wired_overlay
 	flags_barrier = HANDLE_BARRIER_CHANCE
+	projectile_coverage = 90 //maximum of 90% chance of blocking a projectile
 
 	New()
 		..()
@@ -587,6 +588,121 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	return 1
 
 /*----------------------*/
+// DEPLOYABLE
+/*----------------------*/
+
+/obj/structure/barricade/deployable
+	name = "portable composite barricade"
+	desc = "A plasteel-carbon composite barricade. Resistant to most acids while being simple to repair. There are two pushplates that allow this barricade to fold into a neat package. Use a blowtorch to repair."
+	icon_state = "folding_0"
+	health = 400
+	maxhealth = 400
+	crusher_resistant = TRUE
+	barricade_resistance = 15
+	barricade_hitsound = "sound/effects/metalhit.ogg"
+	barricade_type = "folding"
+	can_wire = 0
+	can_change_dmg_state = 1
+	climbable = FALSE
+	unacidable = 1
+	anchored = TRUE
+
+/obj/structure/barricade/deployable/examine(mob/user)
+	..()
+	user << "<span class='info'>Drag its sprite onto yourself to undeploy.</span>"
+
+/obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
+
+	if(iswelder(W))
+		if(user.action_busy)
+			return		
+		var/obj/item/tool/weldingtool/WT = W
+		if(health == maxhealth)
+			user << "<span class='warning'>[src] doesn't need repairs.</span>"
+			return
+
+		var/old_loc = loc
+
+		if(WT.remove_fuel(0, user))
+			user.visible_message("<span class='notice'>[user] begins repairing damage to [src].</span>",
+			"<span class='notice'>You begin repairing the damage to [src].</span>")
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			if(do_after(user, 100, TRUE, 5, BUSY_ICON_FRIENDLY) && old_loc == loc)
+				user.visible_message("<span class='notice'>[user] repairs some damage on [src].</span>",
+				"<span class='notice'>You repair [src].</span>")
+				health += maxhealth*0.4
+				if(health < maxhealth)
+					maxhealth -= 50
+					user.visible_message("<span class='notice'>[src]'s structural integrity weakens.</span>")
+
+				update_health()
+				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		return	
+
+	. = ..()
+
+/obj/structure/barricade/deployable/MouseDrop(obj/over_object as obj)
+	if(!ishuman(usr))
+		return
+
+	if(usr.lying)
+		return
+
+	if(over_object == usr && Adjacent(usr))
+		collapse(usr)
+
+/obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	user.visible_message("<span class='notice'>[user] starts collapsing [src].</span>",
+			"<span class='notice'>You begin collapsing [src].</span>")
+	playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+	var/old_loc = loc
+	if(do_after(user, 100, TRUE, 5, BUSY_ICON_FRIENDLY) && old_loc == loc)
+		var/obj/item/folding_barricade/f = new(loc)
+		f.health = health
+		f.maxhealth = maxhealth
+		user.put_in_active_hand(f)
+		cdel(src)
+
+/obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
+	bullet_ping(P)
+	take_damage( round(P.damage/10) )
+
+	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage( 50 )
+
+	return 1
+
+//CADE IN HANDS
+/obj/item/folding_barricade	
+	name = "MB-6 Folding Barricade"
+	desc = "A folding barricade that can be used to quickly deploy an all-round resistant barricade."
+	health = 400
+	var/maxhealth = 400
+	w_class = 4
+	flags_equip_slot = SLOT_BACK
+	icon_state = "folding"
+	icon = 'icons/Marine/marine-items.dmi'
+
+/obj/item/folding_barricade/attack_self(mob/user as mob)
+	for(var/obj/structure/barricade/B in loc)
+		if(B != src && B.dir == dir)
+			user << "<span class='warning'>There's already a barricade here.</span>"
+			return
+	user.visible_message("<span class='notice'>[user] begins deploying [src].</span>",
+			"<span class='notice'>You begin deploying [src].</span>")
+	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+	if(!do_after(user, 25, TRUE, 5, BUSY_ICON_BUILD)) return
+	user.visible_message("<span class='notice'>[user] has finished deploying [src].</span>",
+			"<span class='notice'>You finish deploying [src].</span>")
+	var/obj/structure/barricade/deployable/cade = new(user.loc)
+	cade.dir = user.dir
+	cade.health = health
+	cade.maxhealth = maxhealth
+	cdel(src)
+
+/*----------------------*/
 // PLASTEEL
 /*----------------------*/
 
@@ -850,9 +966,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	is_wired = 1
 	climbable = FALSE
 	. = ..()
-	
 
-/obj/structure/barricade/plasteel/wired/New()	
+
+/obj/structure/barricade/plasteel/wired/New()
 	if(!closed)
 		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
 	else

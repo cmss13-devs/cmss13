@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	max_health = 150
+	max_health = 175
 	plasma_gain = 0.034
 	plasma_max = 400
 	spit_delay = 25
@@ -22,7 +22,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A ranged combat alien. It looks a little more dangerous."
 	upgrade = 1
-	max_health = 175
+	max_health = 185
 	plasma_max = 450
 	plasma_gain = 0.038
 	armor_deflection = 20
@@ -35,7 +35,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A ranged combat alien. It looks pretty strong."
 	upgrade = 2
-	max_health = 180
+	max_health = 190
 	plasma_max = 500
 	plasma_gain = 0.04
 	armor_deflection = 22

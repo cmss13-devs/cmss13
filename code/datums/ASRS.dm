@@ -1,6 +1,6 @@
-//ARSR packs 
-//These are non orderable packs that get in automaticly though the ARSR system. 
-//Note these should never show up to buy and some will only show up later in the round. 
+//ARSR packs
+//These are non orderable packs that get in automaticly though the ARSR system.
+//Note these should never show up to buy and some will only show up later in the round.
 //BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
 //We use the cost to determine the spawn chance this equals out the crates that spawn later in the round.
 #define ASRS_HIGHEST_WEIGHT		0 //warning this weight wont change.
@@ -62,6 +62,10 @@
 	buyable = 0
 	group = "Munition"
 
+/datum/supply_packs/ammo_shell_box_flechette/asrs/
+	buyable = 0
+	group = "Munition"
+
 /datum/supply_packs/ammo_regular/asrs/
 	buyable = 0
 	group = "Munition"
@@ -81,7 +85,7 @@
 /datum/supply_packs/ammo_ap_m41a/asrs/
 	buyable = 0
 	group = "Munition"
-	
+
 /datum/supply_packs/ammo_ap_m39/asrs/
 	buyable = 0
 	group = "Munition"
@@ -98,6 +102,10 @@
 	buyable = 0
 	group = "Munition"
 
+/datum/supply_packs/ammo_box_smg_ap/asrs/
+	buyable = 0
+	group = "Munition"
+
 /datum/supply_packs/surplus/asrs/
 	buyable = 0
 	group = "Munition"
@@ -105,11 +113,11 @@
 /datum/supply_packs/ammo_smartgun/asrs/
 	buyable = 0
 	group = "Munition"
-	
+
 /datum/supply_packs/ammo_sentry/asrs/
 	buyable = 0
 	group = "Munition"
-	
+
 /datum/supply_packs/napalm/asrs/
 	buyable = 0
 	group = "Munition"
@@ -129,7 +137,7 @@
 /datum/supply_packs/m56d_hmg/asrs/
 	group = "Utility"
 	buyable = 0
-		
+
 /datum/supply_packs/motiondetector/asrs/
 	name = "Motion Detector (x2)"
 	contains = list(

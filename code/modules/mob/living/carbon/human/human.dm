@@ -1412,7 +1412,7 @@
 	if(!bomb_set) return
 	var/obj/machinery/nuclearbomb/N
 	for(var/obj/machinery/nuclearbomb/bomb in world)
-		if(!N && bomb.z == src.z )
+		if(!istype(N) || N.z != src.z )
 			N = bomb
 		if(bomb.z == src.z && get_dist(src,bomb) < get_dist(src,N))
 			N = bomb

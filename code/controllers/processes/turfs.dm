@@ -9,3 +9,4 @@ datum/controller/process/turfs/doWork()
 	if(processing_turfs.len)
 		for(var/turf/T in processing_turfs)
 			T.process()
+			individual_ticks++

@@ -17,6 +17,7 @@
 /obj/item/ammo_magazine/rifle/extended
 	name = "\improper M41A extended magazine (10x24mm)"
 	desc = "A 10mm assault extended rifle magazine."
+	icon_state = "m41a_extended"
 	max_rounds = 60
 	bonus_overlay = "m41a_ex"
 
@@ -107,4 +108,37 @@
 	default_ammo = /datum/ammo/bullet/rifle/mar40
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/rifle/type71
+	w_class = 3
+
+//-------------------------------------------------------
+//USCM L41A Battle Rifle
+
+/obj/item/ammo_magazine/carbine
+	name = "\improper L41A magazine (10x24mm)"
+	desc = "A 10mm battle rifle magazine."
+	caliber = "10x24mm"
+	icon_state = "l41a"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/carbine
+	w_class = 3
+
+/obj/item/ammo_magazine/carbine/ap
+	name = "\improper L41A AP magazine (10x24mm)"
+	desc = "A 10mm battle rifle armor piercing magazine."
+	caliber = "10x24mm"
+	icon_state = "l41a_ap"
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/carbine
+	w_class = 3
+
+/obj/item/ammo_magazine/carbine/extended
+	name = "\improper L41A extended magazine (10x24mm)"
+	desc = "A 10mm battle rifle extended magazine."
+	caliber = "10x24mm"
+	icon_state = "l41a_extended"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 35
+	gun_type = /obj/item/weapon/gun/rifle/carbine
 	w_class = 3

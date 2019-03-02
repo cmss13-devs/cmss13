@@ -80,6 +80,9 @@
 	// Tick count
 	var/tmp/ticks = 0
 
+	// Counts individual tics (number of sub-functions called)
+	var/tmp/individual_ticks = 0
+
 	var/tmp/last_task = ""
 
 	var/tmp/last_object
@@ -243,7 +246,9 @@ datum/controller/process/proc/getContextData()
 	"averageRunTime" = main.averageRunTime(src),
 	"lastRunTime" = main.last_run_time[src],
 	"highestRunTime" = main.highest_run_time[src],
+	"totalRunTime" = main.total_run_time[src],
 	"ticks" = ticks,
+	"individualTicks" = individual_ticks,
 	"schedule" = schedule_interval,
 	"status" = getStatusText(),
 	"disabled" = disabled

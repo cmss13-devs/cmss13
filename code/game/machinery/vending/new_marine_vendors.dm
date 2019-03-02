@@ -297,6 +297,10 @@
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
 
+		list("ARMOR (choose 1)", 0, null, null, null),
+		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
+		list("Heavy armor", 0, /obj/item/clothing/suit/storage/marine/class/heavy, MARINE_CAN_BUY_ARMOR, "white"),
+
 		list("BACKPACK (choose 1)", 0, null, null, null),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel, MARINE_CAN_BUY_BACKPACK, "orange"),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
@@ -330,27 +334,28 @@
 
 		list("EXTRAS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),
-		list("Box of flechette shells", 15, /obj/item/ammo_magazine/shotgun/flechette, null, "black"),
 		list("Extended barrel", 15, /obj/item/attachable/extended_barrel, null, "black"),
-		list("Fire extinguisher (portable)", 15, /obj/item/tool/extinguisher/mini, null, "black"),
+		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Gyroscopic stabilizer", 15, /obj/item/attachable/gyro, null, "black"),
 		list("Laser sight", 15, /obj/item/attachable/lasersight, null, "black"),
 		list("M37 wooden stock", 15, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("M39 AP magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
 		list("M39 extended magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
-		list("M40 HEDP grenade", 15, /obj/item/explosive/grenade/HE, null, "black"),
-		list("M40 HEFA grenade", 15, /obj/item/explosive/grenade/HE/frag , null, "black"),
+		list("M40 HEDP grenade", 10, /obj/item/explosive/grenade/HE, null, "black"),
+		list("M40 HEFA grenade", 10, /obj/item/explosive/grenade/HE/frag , null, "black"),
 		list("M41A AP magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/ap , null, "black"),
 		list("M41A extended magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("M41A skeleton stock", 15, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
-		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
+		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),		
+		list("L41A extended Magazine (10x24mm)", 10, /obj/item/ammo_magazine/carbine/extended, null, "black"),
+		list("L41A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/carbine/ap, null, "black"),
 		list("Recoil compensator", 15, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 15, /obj/item/attachable/reddot, null, "black"),
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 15, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
-		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
+		list("Webbing", 30, /obj/item/clothing/tie/storage/webbing, null, "black"),
 	)
 
 
@@ -751,6 +756,7 @@
 		list("Shoes, white", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, "orange"),
 
 		list("HELMET (choose 1)", 0, null, null, null),
+		list("Expedition cap)", 0, /obj/item/clothing/head/cmflapcap, MARINE_CAN_BUY_HELMET, "black"),
 		list("Hard hat, orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, "black"),
 		list("Surgical cap, green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, "black"),
 		list("Welding helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, "black"),
@@ -858,6 +864,7 @@
 		list("Gyroscopic stabilizer", 0, /obj/item/attachable/gyro, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Laser sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Submachinegun stock", 0, /obj/item/attachable/stock/smg, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Collimator Sight", 0, /obj/item/attachable/scope/collimator, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 
@@ -898,6 +905,7 @@
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Collimator Sight", 0, /obj/item/attachable/scope/collimator, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 
@@ -1040,6 +1048,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Collimator Sight", 0, /obj/item/attachable/scope/collimator, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 

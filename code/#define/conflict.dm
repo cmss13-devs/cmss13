@@ -18,7 +18,7 @@
 #define AMMO_IGNORE_ARMOR		1024
 #define AMMO_IGNORE_RESIST		2048
 #define AMMO_BALLISTIC			4096
-#define AMMO_IGNORE_BARRICADES		8192
+#define AMMO_IGNORE_COVER		8192
 #define AMMO_SCANS_NEARBY		16384 //ammo that is scanning stuff nearby - VERY resource intensive
 
 //Gun defines for gun related thing. More in the projectile folder.
@@ -86,3 +86,6 @@
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 //=================================================
+
+#define FALLOFF_PER_TILE 0.01 //1 % per 1 tile per 1 normalcy
+#define FALLOFF_DISTANCE_POWER 1.4

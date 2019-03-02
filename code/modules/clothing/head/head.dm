@@ -146,9 +146,22 @@
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
 
+/obj/item/clothing/head/cmflapcap
+	name = "\improper USCM expedition cap"
+	desc = "It's a cap, with flaps. ALMAYER reads across a patch stitched to the front."
+	sprite_sheet_id = 1
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon_state = "flapcap"
+
+/obj/item/clothing/head/cmflapcap/New()
+	select_gamemode_skin(/obj/item/clothing/head/cmflapcap, list(MAP_ICE_COLONY = "s_flapcap"))
+	..()
+
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical hat"
 	desc = "A somewhat fancy hat, typically worn by those who wish to command medical respect."
+	sprite_sheet_id = 1
+	icon = 'icons/obj/clothing/cm_hats.dmi'
 	icon_state = "cmohat"
 
 
@@ -157,7 +170,7 @@
 //Berets have armor, so they have their own category. PMC caps are helmets, so they're in helmets.dm.
 /obj/item/clothing/head/beret/marine
 	name = "marine officer beret"
-	desc = "A beret with the ensign insignia emblazoned on it. It radiates respect and authority."
+	desc = "A beret with the USCM insignia emblazoned on it. It radiates respect and authority."
 	icon_state = "beret_badge"
 	armor = list(melee = 40, bullet = 40, laser = 40,energy = 20, bomb = 5, bio = 0, rad = 0)
 	flags_inventory = BLOCKSHARPOBJ
@@ -165,11 +178,23 @@
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
 	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
-	icon_state = "centcomcaptain"
+	sprite_sheet_id = 1
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon_state = "coberet"
 
 /obj/item/clothing/head/beret/marine/commander/cdre
-	name = "marine commodore beret"
-	desc = "A beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	name = "marine commodore bere"
+	desc = "A navy beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	sprite_sheet_id = 1
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon_state = "cdreberet"
+
+/obj/item/clothing/head/beret/marine/commander/peaked
+	name = "marine commodore peaked cap"
+	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	sprite_sheet_id = 1
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon_state = "copeaked"
 
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"
@@ -184,7 +209,7 @@
 /obj/item/clothing/head/beret/marine/logisticsofficer
 	name = "logistics officer beret"
 	desc = "A beret with the lieutenant insignia emblazoned on it. It inspires a feeling of respect."
-	icon_state = "hosberet"
+	icon_state = "beret_badge"
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\

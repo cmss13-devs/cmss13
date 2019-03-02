@@ -55,6 +55,7 @@ datum/controller/process/whiskey/doWork()
 					current_wave = new /datum/whiskey_outpost_wave/random/wave3
 
 		spawn_whiskey_outpost_xenos(current_wave)
+		individual_ticks++
 
 		if(wo_game_mode.wave_times_delayed)
 			wo_game_mode.wave_times_delayed = 0
@@ -84,3 +85,4 @@ datum/controller/process/whiskey/doWork()
 		var/i = 1
 		while(i++ < 5 && dead_hardcore_xeno_list.len) // nibble away at the dead over time
 			cdel(pick(dead_hardcore_xeno_list))
+			individual_ticks++

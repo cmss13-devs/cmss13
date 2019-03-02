@@ -368,6 +368,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_base_name = "shell_box_buck"
 	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
 
+/obj/item/magazine_box/shotgun/flechette
+	name = "shotgun shell box (flechette x 100)"
+	icon_state = "shell_box_flechette_closed"
+	icon_base_name = "shell_box_flechette"
+	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
+
 /obj/item/magazine_box/rifle_ap
 	name = "magazine box (AP M41A x 10)"
 	icon_state = "mag_box_m41_ap_closed"
@@ -593,3 +599,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	base_icon_state = "big_ammo_box_m39"
 	item_state = "big_ammo_box_m39"
 	default_ammo = /datum/ammo/bullet/smg
+
+/obj/item/big_ammo_box/smg/ap
+	name = "big ammo box (10x20mm AP)"
+	caliber = "10x20mm"
+	icon_state = "big_ammo_box_ap_m39"
+	base_icon_state = "big_ammo_box_ap_m39"
+	item_state = "big_ammo_box_m39"
+	default_ammo = /datum/ammo/bullet/smg/ap
+	bullet_amount = 400
+	max_bullet_amount = 400

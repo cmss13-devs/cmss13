@@ -504,40 +504,41 @@ var/list/mechtoys = list(
 		var/datum/supply_packs/SP = SO.object
 
 		var/atom/A = new SP.containertype(pickedloc)
-		A.name = "[SP.containername][SO.comment ? " ([SO.comment])" : ""]"
+		if(istype(SP.containertype, /obj/structure/closet))
+			A.name = "[SP.containername][SO.comment ? " ([SO.comment])" : ""]"
 
-		//supply manifest generation begin
+			//supply manifest generation begin
 
-		var/obj/item/paper/manifest/slip = new /obj/item/paper/manifest(A)
-		slip.info = "<h3>Automatic Storage Retrieval Manifest</h3><hr><br>"
-		slip.info +="Order #[SO.ordernum]<br>"
-		slip.info +="[shoppinglist.len] PACKAGES IN THIS SHIPMENT<br>"
-		slip.info +="CONTENTS:<br><ul>"
+			var/obj/item/paper/manifest/slip = new /obj/item/paper/manifest(A)
+			slip.info = "<h3>Automatic Storage Retrieval Manifest</h3><hr><br>"
+			slip.info +="Order #[SO.ordernum]<br>"
+			slip.info +="[shoppinglist.len] PACKAGES IN THIS SHIPMENT<br>"
+			slip.info +="CONTENTS:<br><ul>"
 
-		//spawn the stuff, finish generating the manifest while you're at it
-		if(SP.access)
-			A:req_access = list()
-			A:req_access += text2num(SP.access)
+			//spawn the stuff, finish generating the manifest while you're at it
+			if(SP.access)
+				A:req_access = list()
+				A:req_access += text2num(SP.access)
 
-		var/list/contains
-		if(SP.randomised_num_contained)
-			contains = list()
-			if(SP.contains.len)
-				for(var/j=1,j<=SP.randomised_num_contained,j++)
-					contains += pick(SP.contains)
-		else
-			contains = SP.contains
+			var/list/contains
+			if(SP.randomised_num_contained)
+				contains = list()
+				if(SP.contains.len)
+					for(var/j=1,j<=SP.randomised_num_contained,j++)
+						contains += pick(SP.contains)
+			else
+				contains = SP.contains
 
-		for(var/typepath in contains)
-			if(!typepath)	continue
-			var/atom/B2 = new typepath(A)
-			if(SP.amount && B2:amount) B2:amount = SP.amount
-			slip.info += "<li>[B2.name]</li>" //add the item to the manifest
+			for(var/typepath in contains)
+				if(!typepath)	continue
+				var/atom/B2 = new typepath(A)
+				if(SP.amount && B2:amount) B2:amount = SP.amount
+				slip.info += "<li>[B2.name]</li>" //add the item to the manifest
 
-		//manifest finalisation
-		slip.info += "</ul><br>"
-		slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
-		if (SP.contraband) slip.loc = null	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
+			//manifest finalisation
+			slip.info += "</ul><br>"
+			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
+			if (SP.contraband) slip.loc = null	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
 
 	shoppinglist.Cut()
 	return

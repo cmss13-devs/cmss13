@@ -114,7 +114,7 @@ These are used with cdel (clean delete). For example, cdel(atom, TA_REVIVE_ME) w
 // and the time before it leaves again
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
-#define DOCK_ATTEMPT_TIMEOUT 			SECONDS_200	//how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DOCK_ATTEMPT_TIMEOUT 			SECONDS_20	//how long in ticks we wait before assuming the docking controller is broken or blown up.
 #define DROPSHIP_TRANSIT_DURATION		SECONDS_100	// 100 seconds
 #define ELEVATOR_TRANSIT_DURATION		SECONDS_5	// 5 seconds
 #define DROPSHIP_CRASH_TRANSIT_DURATION	MINUTES_3	// 180 seconds. 3 minutes

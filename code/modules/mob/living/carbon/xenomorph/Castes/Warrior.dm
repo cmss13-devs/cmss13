@@ -12,7 +12,7 @@
 	plasma_max = 100
 	caste_desc = "A powerful front line combatant."
 	armor_deflection = 30
-	max_health = 200
+	max_health = 235
 	speed = -0.5
 	agility_speed_increase = -0.5
 	can_vent_crawl = 0
@@ -42,7 +42,7 @@
 	plasma_gain = 0.09
 	plasma_max = 125
 	agility_speed_increase = -0.7
-	max_health = 250
+	max_health = 265
 	speed = -0.7
 	armor_deflection = 40
 

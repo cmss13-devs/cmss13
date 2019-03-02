@@ -15,6 +15,7 @@
 	sprite_sheet_id = 1
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
+	var/iff_enabled = FALSE
 	var/accepted_ammo = list()
 	var/muzzle_flash 	= "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
@@ -491,8 +492,9 @@ and you're good to go.
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
 		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
-	var/obj/item/projectile/P = rnew(/obj/item/projectile, src)
-	P.generate_bullet(chambered)
+	var/obj/item/projectile/P = rnew(/obj/item/projectile, src)	
+	P.generate_bullet(chambered, 0, iff_enabled?AMMO_SKIPS_HUMANS:0)
+
 	return P
 
 //This proc is needed for firearms that chamber rounds after firing.
@@ -732,7 +734,7 @@ and you're good to go.
 						var/i
 						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
 							BP = rnew(/obj/item/projectile, M.loc)
-							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type])
+							BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled?AMMO_SKIPS_HUMANS:0)
 							BP.damage *= damage_buff
 							BP.ammo.on_hit_mob(M, BP)
 							M.bullet_act(BP)
@@ -883,7 +885,7 @@ and you're good to go.
 			projectile_to_fire.scatter *= scatter_debuff
 
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) 		// Apply gun damage multiplier to projectile damage
-	projectile_to_fire.damage_falloff	= round(projectile_to_fire.damage * damage_falloff_mult) 	// Apply gun damage bleed multiplier to projectile damage bleed
+	projectile_to_fire.damage_falloff	= damage_falloff_mult * projectile_to_fire.ammo.damage_falloff	// Apply gun damage bleed multiplier to projectile damage bleed
 
 	projectile_to_fire.shot_from = src
 

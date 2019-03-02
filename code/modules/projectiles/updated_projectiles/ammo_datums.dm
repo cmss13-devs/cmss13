@@ -667,11 +667,11 @@
 	damage_falloff = 0
 	iff_signal = ACCESS_IFF_MARINE
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
-	accurate_range_min = 10
-
+	accurate_range_min = 4
+	
 /datum/ammo/bullet/sniper/New()
 	..()
-	accurate_range = config.min_shell_range
+	accurate_range = config.max_shell_range
 	max_range = config.max_shell_range
 	scatter = -config.med_scatter_value
 	damage = config.mhigh_hit_damage
@@ -703,16 +703,16 @@
 	accuracy = -config.low_hit_accuracy
 	max_range = config.norm_shell_range
 	scatter = config.low_scatter_value
-	damage = config.hmed_hit_damage
+	damage = config.mhigh_hit_damage
 	damage_var_high = config.low_proj_variance
-	penetration= -config.min_armor_penetration
+	penetration= 0
 
 /datum/ammo/bullet/sniper/flak/on_hit_mob(mob/M,obj/item/projectile/P)
-	burst(get_turf(M),P,damage_type, 2 , 4)
+	burst(get_turf(M),P,damage_type, 2 , 2)
 	burst(get_turf(M),P,damage_type, 1 , 2 , 0)
 
 /datum/ammo/bullet/sniper/flak/on_near_target(turf/T, obj/item/projectile/P)
-	burst(T,P,damage_type, 2 , 4)
+	burst(T,P,damage_type, 2 , 2)
 	burst(T,P,damage_type, 1 , 2, 0)
 	return 1
 

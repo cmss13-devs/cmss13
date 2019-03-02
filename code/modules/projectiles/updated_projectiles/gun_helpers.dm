@@ -319,10 +319,24 @@ should be alright.
 	if(istype(rail,A)) return 1
 	if(istype(stock,A)) return 1
 
-/obj/item/weapon/gun/proc/attach_to_gun(mob/user, obj/item/attachable/attachment)
+/obj/item/weapon/gun/proc/check_iff()
+	iff_enabled = FALSE
+	if(muzzle && muzzle.has_marine_iff)
+		iff_enabled = TRUE
+	if(under && under.has_marine_iff)
+		iff_enabled = TRUE
+	if(rail && rail.has_marine_iff)
+		iff_enabled = TRUE
+	if(stock && stock.has_marine_iff)
+		iff_enabled = TRUE
+	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
+		cdel(in_chamber)
+		in_chamber = create_bullet(ammo) //OK
+
+/obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(attachable_allowed && !(attachment.type in attachable_allowed) )
 		user << "<span class='warning'>[attachment] doesn't fit on [src]!</span>"
-		return
+		return 0
 
 	//Checks if they can attach the thing in the first place, like with fixed attachments.
 	var/can_attach = 1
@@ -338,6 +352,11 @@ should be alright.
 
 	if(!can_attach)
 		user << "<span class='warning'>The attachment on [src]'s [attachment.slot] cannot be removed!</span>"
+		return 0
+	return 1
+
+/obj/item/weapon/gun/proc/attach_to_gun(mob/user, obj/item/attachable/attachment)
+	if(!can_attach_to_gun(user, attachment))
 		return
 
 	user.visible_message("<span class='notice'>[user] begins attaching [attachment] to [src].</span>",

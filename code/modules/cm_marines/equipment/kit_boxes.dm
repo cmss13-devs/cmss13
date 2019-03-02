@@ -254,13 +254,27 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	..()
 	overlays += image('icons/Marine/pro_case.dmi', "+sniper")
 	spawn(1)
-		//TODO: add carbine here later
-		new /obj/item/weapon/gun/rifle/m41a(src)
-		new /obj/item/attachable/scope(src)
-		new /obj/item/attachable/bipod(src)
-		new /obj/item/attachable/stock/rifle(src)
+		new /obj/item/weapon/gun/rifle/carbine(src)
+		new /obj/item/attachable/scope/collimator(src)
+		new /obj/item/attachable/stock/carbine(src)
+		new /obj/item/attachable/suppressor(src)
 		new /obj/item/attachable/extended_barrel(src)
-		new /obj/item/ammo_magazine/rifle/ap(src)
+		new /obj/item/ammo_magazine/carbine/ap(src)
+		new /obj/item/ammo_magazine/carbine/ap(src)
+
+/obj/item/storage/box/kit/heavy_support
+	name = "\improper Heavy Support Kit"
+
+/obj/item/storage/box/kit/heavy_support/New()
+	..()
+	spawn(1)
+		new /obj/item/weapon/gun/rifle/lmg(src)
+		new /obj/item/ammo_magazine/rifle/lmg(src)
+		new /obj/item/attachable/bipod(src)
+		new /obj/item/folding_barricade(src)
+		new /obj/item/clothing/glasses/welding(src)
+		new /obj/item/tool/weldingtool(src)
+
 
 /obj/item/storage/box/kit/mini_engineer
 	name = "\improper Mini Engineer Kit"

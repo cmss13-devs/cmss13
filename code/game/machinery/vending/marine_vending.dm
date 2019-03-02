@@ -28,14 +28,18 @@
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 25),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 30),
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 30),
+		/obj/item/weapon/gun/rifle/carbine = round(scale * 10),
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 15),
 		/obj/item/ammo_magazine/pistol = round(scale * 30),
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 30),
 		/obj/item/ammo_magazine/rifle = round(scale * 25),
 		/obj/item/ammo_magazine/rifle/ap = 0,
+		/obj/item/ammo_magazine/carbine = round(scale * 15),
+		/obj/item/ammo_magazine/carbine/ap = 0,
 		/obj/item/ammo_magazine/shotgun = round(scale * 10),
 		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10),
+		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 4),
 		/obj/item/weapon/combat_knife = round(scale * 30),
 		/obj/item/weapon/throwing_knife = round(scale * 10),
 		/obj/item/storage/box/m94 = round(scale * 10),
@@ -167,6 +171,7 @@
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/clothing/mask/gas = round(scale * 10),
 		/obj/item/storage/box/kit/mini_jtac = 4,
+		/obj/item/storage/box/kit/heavy_support = 4,
 		/obj/item/storage/box/kit/mini_intel = 4
 	)
 
@@ -321,6 +326,8 @@
 		/obj/item/ammo_magazine/rifle = round(scale * 30) % 10,
 		/obj/item/magazine_box/rifle_extended = round(scale * 10 / 8),
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 10) % 8,
+		/obj/item/ammo_magazine/carbine/ap = round(scale * 5),
+		/obj/item/ammo_magazine/carbine/extended = round(scale * 8),
 		//obj/item/ammo_magazine/rifle/incendiary = 0,
 		/obj/item/magazine_box/rifle_ap = round(scale * 10 / 10),
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 10) % 10,
@@ -711,6 +718,7 @@
 		/obj/item/attachable/stock/smg = round(scale * 4),
 		/obj/item/attachable/stock/smg/collapsible = round(scale * 1) + 1,
 		/obj/item/attachable/stock/smg/brace = round(scale * 1) + 1,
+		/obj/item/attachable/stock/carbine = round(scale * 4) ,
 
 		/obj/item/attachable/attached_gun/grenade = round(scale * 10),
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),

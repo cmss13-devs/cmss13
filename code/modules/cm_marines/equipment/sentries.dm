@@ -764,8 +764,8 @@
 
 /obj/machinery/marine_turret/bullet_act(var/obj/item/projectile/Proj) //Nope.
 	visible_message("[src] is hit by the [Proj.name]!")
-
-	if(Proj.ammo.flags_ammo_behavior & AMMO_XENO_ACID) //Fix for xenomorph spit doing baby damage.
+	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
+	if(ammo_flags & AMMO_XENO_ACID) //Fix for xenomorph spit doing baby damage.
 		update_health(round(Proj.damage/3))
 	else
 		update_health(round(Proj.damage/10))

@@ -86,3 +86,6 @@
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 //=================================================
+
+#define FALLOFF_PER_TILE 0.01 //1 % per 1 tile per 1 normalcy
+#define FALLOFF_DISTANCE_POWER 1.4

@@ -967,6 +967,9 @@ ATTACHMENTS
 					/obj/item/attachable/stock/smg,
 					/obj/item/attachable/stock/smg,
 					/obj/item/attachable/stock/smg,
+					/obj/item/attachable/stock/carbine,
+					/obj/item/attachable/stock/carbine,
+					/obj/item/attachable/stock/carbine,
 					/obj/item/attachable/stock/smg/collapsible,
 					)
 	cost = RO_PRICE_PRICY
@@ -2090,6 +2093,19 @@ ENGINEERING
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/supply
 	containername = "wooden planks crate"
+	group = "Engineering"
+
+/datum/supply_packs/folding_barricades
+	contains = list(
+					/obj/item/folding_barricade,
+					/obj/item/folding_barricade,
+					/obj/item/folding_barricade,
+					/obj/item/folding_barricade
+					)
+	name = "Folding Barricades (x4)"
+	cost = RO_PRICE_VERY_PRICY
+	containertype = /obj/structure/closet/crate/supply
+	containername = "\improper folding barricades crate"
 	group = "Engineering"
 
 /datum/supply_packs/smescoil

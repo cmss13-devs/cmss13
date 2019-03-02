@@ -503,3 +503,150 @@
 	recoil_unwielded = config.high_recoil_value
 
 //-------------------------------------------------------
+//-------------------------------------------------------
+//L41A BATTLE RIFLE
+
+/obj/item/weapon/gun/rifle/carbine
+	name = "\improper L41A Battle Rifle"
+	desc = "The L41A Battle Rifle. Rechambered onto 10x24mm caseless and adopted by the Colonial Marines recently. It has seen limited use by Colonial Marshalls and extensive use by police forces within inner systems. Its shape and furniture echoes a different era."
+	icon_state = "l41a"
+	item_state = "l41a"
+	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	current_mag = /obj/item/ammo_magazine/carbine
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/quickfire,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/stock/carbine,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/scope/collimator)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	wield_delay = WIELD_DELAY_VERY_FAST
+	aim_slowdown = 0
+
+/obj/item/weapon/gun/rifle/carbine/New()
+	select_gamemode_skin(/obj/item/weapon/gun/rifle/carbine)
+	..()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 17,"rail_x" = 16, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 33, "stock_y" = 9)
+
+/obj/item/weapon/gun/rifle/carbine/set_gun_config_values()
+	fire_delay = config.high_fire_delay
+	burst_amount = 0
+	burst_delay = 1
+	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	damage_mult = config.base_hit_damage_mult
+	recoil_unwielded = config.low_recoil_value
+	damage_falloff_mult = 0.4
+
+/obj/item/weapon/gun/rifle/carbine/attach_to_gun(mob/user, obj/item/attachable/attachment)
+	if(!can_attach_to_gun(user, attachment))
+		return
+
+	var/timer = 20
+	if(attachment.slot == "muzzle")
+		timer = 5
+
+	user.visible_message("<span class='notice'>[user] begins attaching [attachment] to [src].</span>",
+	"<span class='notice'>You begin attaching [attachment] to [src].</span>", null, 4)
+	if(do_after(user, timer, TRUE, 2, BUSY_ICON_FRIENDLY))
+		if(attachment && attachment.loc)
+			user.visible_message("<span class='notice'>[user] attaches [attachment] to [src].</span>",
+			"<span class='notice'>You attach [attachment] to [src].</span>", null, 4)
+			user.temp_drop_inv_item(attachment)
+			attachment.Attach(src)
+			update_attachable(attachment.slot)
+			playsound(user, 'sound/machines/click.ogg', 15, 1, 4)
+
+/obj/item/weapon/gun/rifle/carbine/field_strip()
+	set category = "Weapons"
+	set name = "Field Strip Weapon"
+	set desc = "Remove all attachables from a weapon."
+	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
+
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+
+	if(!G)
+		return
+
+	src = G
+
+	if(usr.action_busy)
+		return
+
+	if(zoom)
+		usr << "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>"
+		return
+
+	if(!rail && !muzzle && !under && !stock)
+		usr << "<span class='warning'>This weapon has no attachables. You can only field strip enhanced weapons!</span>"
+		return
+
+	var/list/possible_attachments = list()
+
+	if(rail && (rail.flags_attach_features & ATTACH_REMOVABLE))
+		possible_attachments += rail
+	if(muzzle && (muzzle.flags_attach_features & ATTACH_REMOVABLE))
+		possible_attachments += muzzle
+	if(under && (under.flags_attach_features & ATTACH_REMOVABLE))
+		possible_attachments += under
+	if(stock && (stock.flags_attach_features & ATTACH_REMOVABLE))
+		possible_attachments += stock
+
+	if(!possible_attachments.len)
+		usr << "<span class='warning'>[src] has no removable attachments.</span>"
+		return
+
+	var/obj/item/attachable/A
+	if(possible_attachments.len == 1)
+		A = possible_attachments[1]
+	else
+		A = input("Which attachment to remove?") as null|anything in possible_attachments
+
+	if(!A)
+		return
+
+	if(get_active_firearm(usr) != src)//dropped the gun
+		return
+
+	if(usr.action_busy)
+		return
+
+	if(zoom)
+		return
+
+	if(A != rail && A != muzzle && A != under && A != stock)
+		return
+	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
+		return
+
+	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
+	"<span class='notice'>You begin stripping [A] from [src].</span>", null, 4)
+
+	var/timer = 35
+	if(A == muzzle)
+		timer = 10
+
+	if(!do_after(usr,timer, TRUE, 5, BUSY_ICON_FRIENDLY))
+		return
+
+	if(A != rail && A != muzzle && A != under && A != stock)
+		return
+	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
+		return
+
+	if(zoom)
+		return
+
+	usr.visible_message("<span class='notice'>[usr] strips [A] from [src].</span>",
+	"<span class='notice'>You strip [A] from [src].</span>", null, 4)
+	A.Detach(src)
+
+	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
+	update_attachables()

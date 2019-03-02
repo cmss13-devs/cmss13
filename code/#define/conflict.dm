@@ -18,7 +18,7 @@
 #define AMMO_IGNORE_ARMOR		1024
 #define AMMO_IGNORE_RESIST		2048
 #define AMMO_BALLISTIC			4096
-#define AMMO_IGNORE_BARRICADES		8192
+#define AMMO_IGNORE_COVER		8192
 #define AMMO_SCANS_NEARBY		16384 //ammo that is scanning stuff nearby - VERY resource intensive
 
 //Gun defines for gun related thing. More in the projectile folder.

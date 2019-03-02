@@ -26,6 +26,7 @@
 	var/is_wired = 0
 	var/image/wired_overlay
 	flags_barrier = HANDLE_BARRIER_CHANCE
+	projectile_coverage = 90 //maximum of 90% chance of blocking a projectile
 
 	New()
 		..()
@@ -850,9 +851,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	is_wired = 1
 	climbable = FALSE
 	. = ..()
-	
 
-/obj/structure/barricade/plasteel/wired/New()	
+
+/obj/structure/barricade/plasteel/wired/New()
 	if(!closed)
 		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
 	else

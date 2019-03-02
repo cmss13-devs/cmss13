@@ -222,7 +222,7 @@
 
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
-	
+
 /datum/ammo/bullet/pistol/hollow/New()
 	..()
 	accuracy = -config.med_hit_accuracy
@@ -230,7 +230,7 @@
 
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
-	
+
 /datum/ammo/bullet/pistol/ap/New()
 	..()
 	accuracy = config.low_hit_accuracy
@@ -239,7 +239,7 @@
 
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
-	
+
 /datum/ammo/bullet/pistol/heavy/New()
 	..()
 	accuracy = -config.med_hit_accuracy
@@ -253,7 +253,7 @@
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
-	
+
 /datum/ammo/bullet/pistol/incendiary/New()
 	..()
 	accuracy = config.med_hit_accuracy
@@ -262,7 +262,7 @@
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
 	debilitate = list(0,0,0,0,0,0,0,2)
-	
+
 /datum/ammo/bullet/pistol/squash/New()
 	..()
 	accuracy = config.med_hit_accuracy
@@ -277,7 +277,7 @@
 	damage_type = BURN
 	debilitate = list(4,4,0,0,0,0,0,0)
 	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR
-	
+
 /datum/ammo/bullet/pistol/mankey/New()
 	..()
 	damage = config.min_hit_damage
@@ -298,7 +298,7 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	debilitate = list(1,0,0,0,0,0,0,0)
-	
+
 /datum/ammo/bullet/revolver/New()
 	..()
 	accuracy = -config.med_hit_accuracy
@@ -307,7 +307,7 @@
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
-	
+
 /datum/ammo/bullet/revolver/small/New()
 	..()
 	damage = config.lmed_hit_damage
@@ -316,7 +316,7 @@
 	name = "slimline revolver bullet"
 	shrapnel_chance = 0
 	damage_falloff = 0
-	
+
 /datum/ammo/bullet/revolver/marksman/New()
 	..()
 	accuracy = config.med_hit_accuracy
@@ -336,7 +336,7 @@
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
-	
+
 /datum/ammo/bullet/revolver/highimpact/New()
 	..()
 	damage = config.high_hit_damage
@@ -362,7 +362,7 @@
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"
-	
+
 /datum/ammo/bullet/smg/New()
 		..()
 		damage = config.hlow_hit_damage
@@ -371,7 +371,7 @@
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
-	
+
 /datum/ammo/bullet/smg/ap/New()
 	..()
 	scatter = config.min_scatter_value
@@ -388,7 +388,7 @@
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
-	
+
 /datum/ammo/bullet/rifle/New()
 	..()
 	accurate_range = config.norm_shell_range
@@ -400,7 +400,7 @@
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
-	
+
 /datum/ammo/bullet/rifle/explosive/New()
 	..()
 	accurate_range = config.norm_shell_range
@@ -421,7 +421,7 @@
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
-	
+
 /datum/ammo/bullet/rifle/ap/New()
 	..()
 	damage = config.lmed_hit_damage
@@ -435,7 +435,7 @@
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
-	
+
 /datum/ammo/bullet/rifle/incendiary/New()
 	..()
 	damage = config.hlmed_hit_damage
@@ -461,7 +461,7 @@
 /datum/ammo/bullet/rifle/m4ra/incendiary
 	name = "A19 high velocity incendiary bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
-	
+
 /datum/ammo/bullet/rifle/m4ra/incendiary/New()
 	..()
 	damage = config.hmed_hit_damage
@@ -487,7 +487,7 @@
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
-	
+
 /datum/ammo/bullet/rifle/mar40/New()
 	..()
 	accuracy = -config.low_hit_accuracy
@@ -504,7 +504,7 @@
 
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
-	
+
 /datum/ammo/bullet/shotgun/slug/New()
 	..()
 	max_range = config.short_shell_range
@@ -518,7 +518,7 @@
 	name = "beanbag slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	
+
 /datum/ammo/bullet/shotgun/beanbag/New()
 	..()
 	max_range = config.short_shell_range
@@ -542,7 +542,7 @@
 	name = "incendiary slug"
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
-	
+
 /datum/ammo/bullet/shotgun/incendiary/New()
 	..()
 	accuracy = -config.low_hit_accuracy
@@ -580,7 +580,7 @@
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
 	icon_state = "flechette"
-	
+
 /datum/ammo/bullet/shotgun/flechette_spread/New()
 	..()
 	accuracy_var_low = config.med_proj_variance
@@ -625,7 +625,7 @@
 /datum/ammo/bullet/shotgun/spread
 	name = "additional buckshot"
 	icon_state = "buckshot"
-	
+
 /datum/ammo/bullet/shotgun/spread/New()
 	..()
 	accuracy_var_low = config.med_proj_variance
@@ -638,7 +638,7 @@
 	damage_falloff = config.buckshot_v2_damage_falloff
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
-	
+
 /datum/ammo/bullet/shotgun/spread/masterkey/New()
 	..()
 	damage = config.mlow_hit_damage
@@ -654,9 +654,9 @@
 	name = "sniper bullet"
 	damage_falloff = 0
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
 	accurate_range_min = 10
-	
+
 /datum/ammo/bullet/sniper/New()
 	..()
 	accurate_range = config.min_shell_range
@@ -671,7 +671,7 @@
 	accuracy = 0
 	damage_type = BURN
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
 
 /datum/ammo/bullet/sniper/incendiary/New()
 	..()
@@ -684,8 +684,8 @@
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES|AMMO_SCANS_NEARBY
-	
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER|AMMO_SCANS_NEARBY
+
 /datum/ammo/bullet/sniper/flak/New()
 	..()
 	accuracy = -config.low_hit_accuracy
@@ -723,7 +723,7 @@
 /datum/ammo/bullet/sniper/elite
 	name = "supersonic sniper bullet"
 	iff_signal = ACCESS_IFF_PMC
-	
+
 /datum/ammo/bullet/sniper/elite/New()
 	..()
 	accuracy = config.max_hit_accuracy
@@ -751,7 +751,7 @@
 /datum/ammo/bullet/smartgun/lethal
 	flags_ammo_behavior = AMMO_BALLISTIC
 	icon_state 	= "bullet"
-	
+
 /datum/ammo/bullet/smartgun/lethal/New()
 	..()
 	damage = config.lmed_hit_damage
@@ -761,7 +761,7 @@
 	name = "irradiated smartgun bullet"
 	iff_signal = ACCESS_IFF_PMC
 	debilitate = list(0,0,0,3,0,0,0,1)
-	
+
 /datum/ammo/bullet/smartgun/dirty/New()
 	..()
 	shrapnel_chance = config.max_shrapnel_chance
@@ -769,7 +769,7 @@
 /datum/ammo/bullet/smartgun/dirty/lethal
 	flags_ammo_behavior = AMMO_BALLISTIC
 	icon_state 	= "bullet"
-	
+
 /datum/ammo/bullet/smartgun/dirty/lethal/New()
 	..()
 	damage = config.lmed_hit_damage
@@ -779,8 +779,8 @@
 	name = "autocannon bullet"
 	icon_state 	= "redbullet" //Red bullets to indicate friendly fire restriction
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS|AMMO_IGNORE_BARRICADES
-	
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
+
 /datum/ammo/bullet/turret/New()
 	..()
 	accurate_range = config.norm_shell_range
@@ -799,7 +799,7 @@
 /datum/ammo/bullet/machinegun //Adding this for the MG Nests (~Art)
 	name = "machinegun bullet"
 	icon_state 	= "bullet" // Keeping it bog standard with the turret but allows it to be changed. Had to remove IFF so you have to watch out.
-	
+
 /datum/ammo/bullet/machinegun/New()
 	..()
 	accurate_range = config.short_shell_range
@@ -809,7 +809,7 @@
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
-	
+
 /datum/ammo/bullet/minigun/New()
 	..()
 	accuracy = -config.low_hit_accuracy
@@ -832,7 +832,7 @@
 	ping = null //no bounce off.
 	sound_bounce	= "rocket_bounce"
 	damage_falloff = 0
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_IGNORE_BARRICADES
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
 	var/datum/effect_system/smoke_spread/smoke
 
 /datum/ammo/rocket/New()
@@ -937,7 +937,7 @@
 /datum/ammo/rocket/ltb
 	name = "cannon round"
 	icon_state = "ltb"
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_IGNORE_BARRICADES
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
 
 /datum/ammo/rocket/ltb/New()
 	..()
@@ -961,9 +961,9 @@
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
-	flags_ammo_behavior = AMMO_ROCKET|AMMO_INCENDIARY|AMMO_EXPLOSIVE|AMMO_IGNORE_BARRICADES
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_INCENDIARY|AMMO_EXPLOSIVE
 	damage_type = BURN
-	
+
 /datum/ammo/rocket/wp/New()
 	..()
 	accuracy_var_low = config.med_proj_variance
@@ -998,7 +998,7 @@
 /datum/ammo/rocket/wp/quad
 	name = "thermobaric rocket"
 	flags_ammo_behavior = AMMO_ROCKET
-	
+
 /datum/ammo/rocket/wp/quad/New()
 	..()
 	damage = config.ultra_hit_damage
@@ -1034,7 +1034,7 @@
 
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_ENERGY
-	
+
 /datum/ammo/energy/New()
 	..()
 	accuracy = config.hmed_hit_accuracy
@@ -1043,7 +1043,7 @@
 	name = "emitter bolt"
 	icon_state = "emitter"
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_ARMOR
-	
+
 /datum/ammo/energy/emitter/New()
 	..()
 	accurate_range 	= config.near_shell_range
@@ -1067,7 +1067,7 @@
 	name = "plasma pistol bolt"
 	icon_state = "ion"
 	flags_ammo_behavior = AMMO_ENERGY
-	
+
 /datum/ammo/energy/yautja/pistol/New()
 	..()
 	damage = config.lmed_hit_damage
@@ -1078,7 +1078,7 @@
 	icon_state = "ion"
 	debilitate = list(2,2,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
-	
+
 /datum/ammo/energy/yautja/caster/bolt/New()
 	..()
 	damage = config.base_hit_damage
@@ -1096,7 +1096,7 @@
 	name = "plasma eradication sphere"
 	icon_state = "bluespace"
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_EXPLOSIVE
-	
+
 /datum/ammo/energy/yautja/caster/sphere/New()
 	..()
 	damage = config.lmed_hit_damage
@@ -1181,7 +1181,7 @@
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
 	debilitate = list(2,3,0,0,1,2,0,0)
-	
+
 /datum/ammo/xeno/toxin/medium/New()
 	..()
 	shell_speed = config.fast_shell_speed
@@ -1269,7 +1269,7 @@
 
 /datum/ammo/xeno/acid/medium
 	name = "acid spatter"
-	
+
 /datum/ammo/xeno/acid/medium/New()
 	..()
 	damage = config.low_hit_damage
@@ -1385,7 +1385,7 @@
 	name = "shrapnel"
 	icon_state = "buckshot"
 	accurate_range_min = 5
-	
+
 /datum/ammo/bullet/shrapnel/New()
 	..()
 	accuracy = config.med_hit_accuracy

@@ -274,7 +274,7 @@
 			continue
 		permutated += O
 
-		hit_chance = O.get_projectile_hit_chance(src)
+		hit_chance = O.get_projectile_hit_boolean(src)
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			ammo.on_hit_obj(O,src)
 			if(O && O.loc)
@@ -332,18 +332,184 @@
 //----------------------------------------------------------
 
 
-//returns probability for the projectile to hit us.
-/atom/movable/proc/get_projectile_hit_chance(obj/item/projectile/P)
-	return 0
+/proc/get_effective_accuracy(obj/item/projectile/P)
 
-//obj version just returns true or false.
-/obj/get_projectile_hit_chance(obj/item/projectile/P)
+	var/effective_accuracy = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
+	#if DEBUG_HIT_CHANCE
+	world << "<span class='debuginfo'>Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b></span>"
+	#endif
+
+	if (P.distance_travelled <= P.ammo.accurate_range + rand(0, 2))
+	// If bullet stays within max accurate range + random variance
+		if (P.distance_travelled <= P.ammo.point_blank_range)
+			//If bullet within point blank range, big accuracy buff
+			effective_accuracy += 25
+		else if (P.distance_travelled <= P.ammo.accurate_range_min)
+			// Snipers have accuracy falloff at closer range before point blank
+			effective_accuracy -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
+	else
+		effective_accuracy -= (P.ammo.flags_ammo_behavior & AMMO_SNIPER) ? (P.distance_travelled * 3) : (P.distance_travelled * 5)
+		// Snipers have a smaller falloff constant due to longer max range
+
+
+	#if DEBUG_HIT_CHANCE
+	world << "<span class='debuginfo'>Final accuracy is <b>[.]</b></span>"
+	#endif
+
+	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
+
+	if(isliving(P.firer))
+		var/mob/living/shooter_living = P.firer
+		effective_accuracy -= round((shooter_living.maxHealth - shooter_living.health) / 4) //Less chance to hit when injured.
+
+	if(ishuman(P.firer))
+		var/mob/living/carbon/human/shooter_human = P.firer
+		if(shooter_human.marskman_aura)
+			effective_accuracy += shooter_human.marskman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
+			effective_accuracy += P.distance_travelled * 0.35 * shooter_human.marskman_aura //Flat buff to accuracy per tile travelled
+
+	return effective_accuracy
+
+
+//objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance
+
+/obj/proc/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
+
+
+/obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
+
+	if( istype(P.shot_from, /obj/item/hardpoint) ) //anything shot from a tank gets a bonus to bypassing cover
+		distance -= 3
+
+	if(distance < 1)
+		return FALSE
+
+	//an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile
+	var/effective_accuracy = get_effective_accuracy(P)
+	var/distance_limit = 6 //number of tiles needed to max out block probability
+	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
+
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
+	#if DEBUG_HIT_CHANCE
+	world << "<span class='debuginfo'>([src.name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+	#endif
+	return prob(hitchance)
+
+
+/obj/machinery/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
+		var/hitchance = get_effective_accuracy(P)
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
 	if(!density)
 		return FALSE
 
-	if(layer >= OBJ_LAYER || src == P.original)
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	if(!throwpass)
 		return TRUE
 
+	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_COVER)
+		return FALSE
+
+	var/distance = P.distance_travelled
+
+	if(flags_atom & ON_BORDER) //windoors
+		if(P.dir & reverse_direction(dir))
+			distance-- //no bias towards "inner" side
+		else if( !(P.dir & dir) )
+			return FALSE //no effect if bullet direction is perpendicular to barricade
+	else
+		distance--
+
+	return calculate_cover_hit_boolean(P, distance)
+
+
+/obj/structure/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
+		var/hitchance = get_effective_accuracy(P)
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
+	if(!density)
+		return FALSE
+
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	if(!throwpass)
+		return TRUE
+
+	//At this point, all that's left is window frames, tables, and barricades
+
+	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_COVER)
+		return FALSE
+
+	var/distance = P.distance_travelled
+
+	if(flags_atom & ON_BORDER) //barricades, flipped tables
+		if(P.dir & reverse_direction(dir))
+			distance-- //no bias towards "inner" side
+		else if( !(P.dir & dir) )
+			return FALSE //no effect if bullet direction is perpendicular to barricade
+
+	else
+		distance--
+		if(climbable)
+			for(var/obj/structure/S in get_turf(P))
+				if(S && S.climbable && !(S.flags_atom & ON_BORDER)) //if a projectile is coming from a window frame or table, it's guaranteed to pass the next window frame/table
+					return FALSE
+
+	return calculate_cover_hit_boolean(P, distance)
+
+
+/obj/item/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original) //clicking on the object itself. Code copied from mob get_projectile_hit_chance
+
+		var/hitchance = get_effective_accuracy(P)
+
+		switch(w_class) //smaller items are harder to hit
+			if(1)
+				hitchance -= 50
+			if(2)
+				hitchance -= 30
+			if(3)
+				hitchance -= 20
+			if(4)
+				hitchance -= 10
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
+	if(!density)
+		return FALSE
+
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	return TRUE
+
+/*
 /obj/structure/get_projectile_hit_chance(obj/item/projectile/P)
 	if(!density) //structure is passable
 		return FALSE
@@ -357,52 +523,62 @@
 	if(!throwpass)
 		return TRUE
 
-	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_BARRICADES)
+	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_COVER)
 		return FALSE
 
 	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank bypasses cover
 		return FALSE
 
-	if(!(flags_atom & ON_BORDER))
-		return FALSE //window frames, unflipped tables
-
 	var/distance = P.distance_travelled
-
-	if(P.dir & reverse_direction(dir))
-		distance-- //no bias towards "inner" side
-	else if (!(P.dir & dir))
-		return FALSE //no effect if bullet direction is perpendicular to barricade
 
 	if(distance < 1)
 		return FALSE
 
-	var/coverage = 90 //maximum probability of blocking projectile
+
+	if(flags_atom & ON_BORDER) //barricades, flipped tables
+		if(P.dir & reverse_direction(dir))
+			distance-- //no bias towards "inner" side
+		else if (!(P.dir & dir))
+			return FALSE //no effect if bullet direction is perpendicular to barricade
+
+	else //window frames, unflipped tables
+		for(var/obj/structure/S in get_turf(P))
+			if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable) //if a projectile is coming from a window frame/table, it's guaranteed to pass the next window frame/table
+				return FALSE
+
+
+	//a structure's "projectile_coverage" var indicates the maximum probability of blocking a projectile
 	var/distance_limit = 6 //number of tiles needed to max out block probability
 	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
 
-	var/hitchance = min(coverage, (coverage * distance/distance_limit) + accuracy_factor * (1 - P.accuracy/100))
-	//world << "Distance travelled: [distance]  |  Accuracy: [P.accuracy]  |  Hit chance: [hitchance]"
+	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - P.accuracy/100))
+	world << "Distance travelled: [distance]  |  Accuracy: [P.accuracy]  |  Hit chance: [hitchance]"
 	return prob(hitchance)
+*/
 
-/obj/structure/window/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/structure/window/get_projectile_hit_boolean(obj/item/projectile/P)
 	if(P.ammo.flags_ammo_behavior & AMMO_ENERGY)
 		return FALSE
 	else if(!(flags_atom & ON_BORDER) || (P.dir & dir) || (P.dir & reverse_direction(dir)))
 		return TRUE
 
-/obj/machinery/door/poddoor/railing/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/machinery/door/poddoor/railing/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/obj/effect/alien/egg/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/effect/alien/egg/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/obj/effect/alien/resin/trap/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/effect/alien/resin/trap/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/obj/item/clothing/mask/facehugger/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/item/clothing/mask/facehugger/get_projectile_hit_boolean(obj/item/projectile/P)
 	return src == P.original
 
-/mob/living/get_projectile_hit_chance(obj/item/projectile/P)
+
+
+//mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
+
+/mob/living/proc/get_projectile_hit_chance(obj/item/projectile/P)
 
 	if(lying && src != P.original)
 		return 0
@@ -411,41 +587,13 @@
 		if((status_flags & XENO_HOST) && istype(buckled, /obj/structure/bed/nest))
 			return 0
 
-	. = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
-	#if DEBUG_HIT_CHANCE
-	world << "<span class='debuginfo'>Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b></span>"
-	#endif
+	. = get_effective_accuracy(P)
 
-	if (P.distance_travelled <= P.ammo.accurate_range + rand(0, 2))
-	// If bullet stays within max accurate range + random variance
-		if (P.distance_travelled <= P.ammo.point_blank_range)
-			//If bullet within point blank range, big accuracy buff
-			. += 25
-		else if (P.distance_travelled <= P.ammo.accurate_range_min)
-			// Snipers have accuracy falloff at closer range before point blank
-			. -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
-	else
-		. -= (P.ammo.flags_ammo_behavior & AMMO_SNIPER) ? (P.distance_travelled * 3) : (P.distance_travelled * 5)
-		// Snipers have a smaller falloff constant due to longer max range
-
-
-	#if DEBUG_HIT_CHANCE
-	world << "<span class='debuginfo'>Final accuracy is <b>[.]</b></span>"
-	#endif
-
-	. = max(5, .) //default hit chance is at least 5%.
 	if(lying && stat) . += 15 //Bonus hit against unconscious people.
 
 	if(isliving(P.firer))
 		var/mob/living/shooter_living = P.firer
 		if( !can_see(shooter_living,src) ) . -= 15 //Can't see the target (Opaque thing between shooter and target)
-		. -= round((shooter_living.maxHealth - shooter_living.health) / 4) //Less chance to hit when injured.
-
-	if(ishuman(P.firer))
-		var/mob/living/carbon/human/shooter_human = P.firer
-		if(shooter_human.marskman_aura)
-			. += shooter_human.marskman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
-			. += P.distance_travelled * 0.35 * shooter_human.marskman_aura //Flat buff to accuracy per tile travelled
 
 /mob/living/carbon/human/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
@@ -488,10 +636,10 @@
 //----------------------------------------------------------
 
 /atom/proc/bullet_act(obj/item/projectile/P)
-	return density
+	return 0
 
 /mob/dead/bullet_act(/obj/item/projectile/P)
-	return
+	return 0
 
 /mob/living/bullet_act(obj/item/projectile/P)
 	if(!P) return
@@ -722,7 +870,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 
 	if(mobs_list.len)
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
-		if(istype(picked_mob) && P.firer && prob(P.get_projectile_hit_chance(P.firer,picked_mob)))
+		if(istype(picked_mob) && P.firer && prob(P.get_projectile_hit_boolean(P.firer,picked_mob)))
 			picked_mob.bullet_act(P)
 			return 1
 	return 1
@@ -755,9 +903,14 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 //Hitting an object. These are too numerous so they're staying in their files.
 //Why are there special cases listed here? Oh well, whatever. ~N
 /obj/bullet_act(obj/item/projectile/P)
-	if(!CanPass(P, get_turf(src)) && density)
-		bullet_ping(P)
-		return 1
+	bullet_ping(P)
+	return 1
+
+/obj/item/bullet_act(obj/item/projectile/P)
+	bullet_ping(P)
+	if(P.ammo.damage_type == BRUTE)
+		explosion_throw(P.damage/2, P.dir, 4)
+	return 1
 
 /obj/structure/table/bullet_act(obj/item/projectile/P)
 	src.bullet_ping(P)

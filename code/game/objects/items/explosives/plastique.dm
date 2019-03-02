@@ -53,11 +53,7 @@
 
 	if(do_mob(user, target, 50, BUSY_ICON_HOSTILE))
 		user.drop_held_item()
-		plant_target = target
 		loc = null
-		var/location
-		if (isturf(target)) location = target
-		if (isobj(target)) location = target.loc
 
 		if(ismob(target))
 			user.attack_log += "\[[time_stamp()]\] <font color='red'> [user.real_name] successfully planted [name] on [target:real_name] ([target:ckey])</font>"
@@ -71,14 +67,11 @@
 		user.visible_message("<span class='warning'>[user] plants [name] on [target]!</span>",
 		"<span class='warning'>You plant [name] on [target]! Timer counting down from [timer].</span>")
 		spawn(timer*10)
-			if(plant_target && !plant_target.disposed)
-				explosion(location, -1, -1, 2, 3)
-				plant_target.ex_act(1000000)
-				if(plant_target && !plant_target.disposed)
-					if(isobj(plant_target))
-						cdel(plant_target)
-					else
-						plant_target.overlays -= image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
+			if(target && !target.disposed)
+				explosion_rec(get_turf(target), 120, 30)
+				target.ex_act(1000)
+				if(target && !target.disposed)
+					target.overlays -= image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
 			cdel(src)
 
 /obj/item/explosive/plastique/attack(mob/M as mob, mob/user as mob, def_zone)

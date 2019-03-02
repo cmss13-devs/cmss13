@@ -1,0 +1,7 @@
+author: RavingManiac
+
+delete-after: True
+
+changes:   
+  - rscadd: Projectile changes:<br>- Most machines and structures, including window frames, can serve as cover<br>- Any item can be hit if specifically clicked on. Unanchored items will be thrown about by force of the bullet. Smaller items are harder to hit<br>- Lights can be shot out
+  - bugfix: Plastic explosives will cause a proper explosion when planted on mobs

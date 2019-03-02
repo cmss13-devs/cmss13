@@ -7,6 +7,7 @@
 	anchored = 1
 	opacity = 1
 	density = 1
+	throwpass = 0
 	layer = DOOR_OPEN_LAYER
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER

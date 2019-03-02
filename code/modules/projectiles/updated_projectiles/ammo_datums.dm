@@ -1284,7 +1284,7 @@
 
 /datum/ammo/xeno/acid/medium/New()
 	..()
-	damage = config.low_hit_damage
+	damage = config.hlow_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.med_proj_variance
 	shell_speed = config.fast_shell_speed

@@ -160,7 +160,6 @@
 /obj/item/storage/box/spec/antitank_rifle/New()
 	..()
 	spawn(1)
-		new /obj/item/clothing/suit/storage/marine/sniper(src)
 		new /obj/item/device/binoculars(src)
 		new /obj/item/storage/backpack/marine/smock(src)
 		new /obj/item/weapon/gun/pistol/vp70(src)
@@ -168,6 +167,7 @@
 		new /obj/item/ammo_magazine/pistol/vp70(src)
 		new /obj/item/weapon/gun/rifle/sniper/M42B(src)
 		new /obj/item/clothing/suit/storage/marine/ghillie(src)
+		new /obj/item/clothing/head/helmet/marine/ghillie(src)
 		new /obj/item/ammo_magazine/sniper/anti_tank(src)
 		new /obj/item/ammo_magazine/sniper/anti_tank(src)
 		new /obj/item/ammo_magazine/sniper/anti_tank(src)
@@ -222,8 +222,8 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /******************************************PFC Kits****************************************************************/
 
 /obj/item/storage/box/kit
-	icon = 'icons/Marine/marine-weapons.dmi'
-	icon_state = "kit_case"
+	icon = 'icons/Marine/pro_case.dmi'
+	icon_state = "pro_case_mini"
 	w_class = 5
 	storage_slots = 12
 	slowdown = 1
@@ -234,9 +234,11 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_pyro
 	name = "\improper Mini Pyro Kit"
+	icon_state = "pro_case_mini"
 
 /obj/item/storage/box/kit/mini_pyro/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+flamer")
 	spawn(1)
 		new /obj/item/storage/backpack/marine/engineerpack(src)
 		new /obj/item/attachable/attached_gun/flamer(src)
@@ -250,6 +252,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_sniper/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+sniper")
 	spawn(1)
 		//TODO: add carbine here later
 		new /obj/item/weapon/gun/rifle/m41a(src)
@@ -264,6 +267,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_engineer/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+engi")
 	spawn(1)
 		new /obj/item/pamphlet/engineer(src)
 		new /obj/item/storage/pouch/construction(src)
@@ -282,6 +286,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_medic/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+medic")
 	spawn(1)
 		new /obj/item/pamphlet/medical(src)
 		new /obj/item/storage/firstaid/adv(src)
@@ -294,6 +299,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_jtac/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+jtac")
 	spawn(1)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/storage/box/m94/signal(src)

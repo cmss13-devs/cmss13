@@ -799,15 +799,32 @@ Defined in conflicts.dm of the #defines folder.
 			return 1
 
 		if(activated)
-			user << "<span class='notice'>You extended [src].</span>"
+			user << "<span class='notice'>You extend [src].</span>"
 		else
-			user << "<span class='notice'>You collapsed [src].</span>"
+			user << "<span class='notice'>You collapse [src].</span>"
 
+/obj/item/attachable/stock/smg/brace
+	name = "\improper M39 submachinegun arm brace stock"
+	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing perfectly accurate at the expense of fire rate. Wielding guns with this stock is very uncomfortable and inaccurate."
+	size_mod = 1
+	icon_state = "smg_brace"
+	pixel_shift_x = 39
+	pixel_shift_y = 11
+	flags_attach_features = ATTACH_REMOVABLE
 
+/obj/item/attachable/stock/smg/brace/New()
+	..()
+	//Makes stuff better when one handed by a LOT.
+	accuracy_unwielded_mod = config.high_hit_accuracy_mult
+	recoil_unwielded_mod = -config.max_recoil_value
+	delay_mod = config.mlow_fire_delay
+	//But... it makes wielding something really, really bad.
+	accuracy_mod = config.low_hit_accuracy_mult
+	recoil_mod = config.high_recoil_value
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"
-	desc = "A wooden stock modified for use on a 44-magnum. Increases accuracy and reduces recoil at the expense of handling and agility. Less effective in melee as well"
+	desc = "A wooden stock modified for use on a 44-magnum. Increases accuracy and reduces recoil at the expense of handling and agility. Less effective in melee as well."
 	slot = "stock"
 	melee_mod = -5
 	size_mod = 1

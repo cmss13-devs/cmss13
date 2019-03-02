@@ -751,6 +751,7 @@
 		list("Shoes, white", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, "orange"),
 
 		list("HELMET (choose 1)", 0, null, null, null),
+		list("Expedition cap)", 0, /obj/item/clothing/head/cmflapcap, MARINE_CAN_BUY_HELMET, "black"),
 		list("Hard hat, orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, "black"),
 		list("Surgical cap, green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, "black"),
 		list("Welding helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, "black"),

@@ -12,7 +12,7 @@
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
 	armor_deflection = 50
-	max_health = 275
+	max_health = 285
 	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
 	xeno_explosion_resistance = 180
@@ -27,7 +27,7 @@
 	plasma_gain = 0.05
 	plasma_max = 300
 	armor_deflection = 60
-	max_health = 300
+	max_health = 310
 	speed = 0.05
 
 /datum/caste_datum/crusher/elder

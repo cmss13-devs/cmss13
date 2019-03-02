@@ -342,6 +342,54 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/tanker)
 	specialty = "M3 pattern tanker"
 
+//===========================//PFC ARMOR CLASSES\\================================\\
+//=================================================================================\\
+/obj/item/clothing/suit/storage/marine/class //We need a separate type to handle the special icon states.
+	name = "\improper M3 pattern classed armor"
+	desc = "You shouldn't be seeing this."
+	icon_state = "1" //This should be the default icon state.
+
+	var/class = "H" //This variable should be what comes before the variation number (H6 -> H).
+	
+/obj/item/clothing/suit/storage/marine/class/New()
+	if(!(flags_atom & UNIQUE_ITEM_TYPE))
+		name = "[specialty]"
+		if(map_tag == MAP_ICE_COLONY) name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
+		else name += " armor"
+	if(type == /obj/item/clothing/suit/storage/marine/class)
+		var/armor_variation = rand(1,6)
+		icon_state = class + armor_variation
+	..()
+	armor_overlays = list("lamp") //Just one for now, can add more later.
+	update_icon()
+	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.
+	pockets.bypass_w_limit = list(
+	/obj/item/ammo_magazine/rifle,
+	/obj/item/ammo_magazine/smg,
+	/obj/item/ammo_magazine/sniper,
+	 )
+	pockets.max_storage_space = 8
+
+/obj/item/clothing/suit/storage/marine/class/light
+	name = "\improper M3-L pattern light armor"
+	desc = "A lighter, cut down version of the standard M3 pattern armor. It sacrifices durability for more speed."
+	specialty = "\improper M3-H pattern light"
+	icon_state = "L1"
+	class = "L"
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor = list(melee = 35, bullet = 40, laser = 15, energy = 15, bomb = 5, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/storage/marine/class/heavy
+	name = "\improper M3-H pattern heavy armor"
+	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates. It sacrifices speed for more durability."
+	specialty = "\improper M3-H pattern heavy"
+	icon_state = "H1"
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|HANDS|FEET
+	class = "H"
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	armor = list(melee = 60, bullet = 80, laser = 50, energy = 40, bomb = 40, bio = 10, rad = 10)
+
+
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\
 

@@ -289,6 +289,18 @@
 		P.visible_message("<span class='danger'>The [src] chimpers furiously!</span>")
 		new /mob/living/carbon/monkey(P.loc)
 
+/datum/ammo/bullet/pistol/smart
+	name = "smartpistol bullet"
+	iff_signal = ACCESS_IFF_MARINE
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS
+
+/datum/ammo/bullet/pistol/smart/New()
+	..()
+	accuracy = config.med_hit_accuracy
+	damage = config.low_hit_damage
+	penetration= config.hlow_armor_penetration
+	shrapnel_chance = config.med_shrapnel_chance
+
 /*
 //================================================
 					Revolver Ammo

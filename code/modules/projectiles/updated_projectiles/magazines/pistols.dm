@@ -180,3 +180,13 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/pistol/chimp
 
+//-------------------------------------------------------
+//Smartpistol IFF magazine.
+
+/obj/item/ammo_magazine/pistol/smart
+	name = "\improper M5A6 magazine (.45)"
+	default_ammo = /datum/ammo/bullet/pistol/smart
+	caliber = ".45"
+	icon_state = "smartpistol"
+	max_rounds = 15
+	gun_type = /obj/item/weapon/gun/pistol/smart

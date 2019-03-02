@@ -676,3 +676,22 @@
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new /obj/item/ammo_magazine/pistol/c99(src)
 	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/smartpistol
+	name = "\improper M276 pattern smartpistol holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M5A6 smartpistol."
+	icon_state = "spbelt"
+	item_state = "spbelt"
+	can_hold = list(
+		/obj/item/weapon/gun/pistol/smart,
+		/obj/item/ammo_magazine/pistol/smart
+	)
+
+/obj/item/storage/belt/gun/smartpistol/full/New()
+	..()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new /obj/item/ammo_magazine/pistol/smart(src)
+	new_gun.on_enter_storage(src)

@@ -262,6 +262,7 @@
 		/obj/item/weapon/combat_knife,
 		/obj/item/device/flashlight/flare,
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
@@ -273,6 +274,7 @@
 	)
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg/m39
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.

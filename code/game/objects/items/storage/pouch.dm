@@ -35,6 +35,7 @@
 	draw_mode = 1
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
@@ -148,10 +149,12 @@
 	draw_mode = 0
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg/m39
 	)
 	can_hold = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,

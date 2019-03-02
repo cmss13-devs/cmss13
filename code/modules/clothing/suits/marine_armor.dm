@@ -358,13 +358,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	unacidable = 1
 	specialty = "B18 defensive"
 
-/obj/item/clothing/suit/storage/marine/specialist/mob_can_equip(mob/M, slot, disable_warning = 0)
-	. = ..()
-	if(.)
-		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
-			M << "<span class='warning'>You are not trained to use [src]!</span>"
-			return 0
-
 /obj/item/clothing/suit/storage/marine/specialist/verb/inject()
 	set name = "Create Injector"
 	set category = "Object"
@@ -388,6 +381,26 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	playsound(src,'sound/machines/click.ogg', 15, 1)
 	return
 
+/obj/item/clothing/suit/storage/marine/M3G
+	name = "\improper M3-G4 grenadier armor"
+	desc = "A custom set of M3 armor packed to the brim with padding, plating, and every form of ballistic protection under the sun. Used exclusively by USCM Grenadiers."
+	icon_state = "grenadier"
+	armor = list(melee = 95, bullet = 110, laser = 80, energy = 80, bomb = 95, bio = 0, rad = 0)
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
+	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
+	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
+	slowdown = SLOWDOWN_ARMOR_HEAVY
+	unacidable = 1
+	specialty = "M3-G4 grenadier"
+
+/obj/item/clothing/suit/storage/marine/M3G/mob_can_equip(mob/M, slot, disable_warning = 0)
+	. = ..()
+	if(.)
+		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
+			M << "<span class='warning'>You are not trained to use [src]!</span>"
+			return 0
+
+
 /obj/item/clothing/suit/storage/marine/M3T
 	name = "\improper M3-T light armor"
 	desc = "A custom set of M3 armor designed for users of long ranged explosive weaponry."
@@ -395,6 +408,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor = list(melee = 70, bullet = 55, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	allowed = list(/obj/item/weapon/gun/launcher/rocket)
+	unacidable = 1
 	specialty = "M3-T light"
 
 /obj/item/clothing/suit/storage/marine/M3S
@@ -403,6 +417,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "scout_armor"
 	armor = list(melee = 75, bullet = 55, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	unacidable = 1
 	specialty = "M3-S light"
 
 /obj/item/clothing/suit/storage/marine/M3S/mob_can_equip(mob/M, slot, disable_warning = 0)
@@ -421,6 +436,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
+	unacidable = 1
 	specialty = "M35 pyrotechnician"
 
 /obj/item/clothing/suit/storage/marine/M35/mob_can_equip(mob/M, slot, disable_warning = 0)

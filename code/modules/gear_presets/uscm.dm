@@ -191,7 +191,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec/full_armor
-	name = "USCM Specialist (Armor)"
+	name = "USCM Specialist (B18 Armor)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm/spec/full_armor/load_gear(mob/living/carbon/human/H)

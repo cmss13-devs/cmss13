@@ -196,13 +196,13 @@
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
 
 
-/obj/item/clothing/head/helmet/marine/New(loc, 
+/obj/item/clothing/head/helmet/marine/New(loc,
 	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
 		if(map_tag == MAP_ICE_COLONY) name += " snow helmet"
 		else name += " helmet"
-	
+
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type,null,new_protection)
 	..()
@@ -303,6 +303,16 @@
 	unacidable = 1
 	anti_hug = 6
 	specialty = "B18"
+
+/obj/item/clothing/head/helmet/marine/grenadier
+	name = "\improper M3-G4 grenadier helmet"
+	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet."
+	icon_state = "grenadier_helmet"
+	item_state = "grenadier_helmet"
+	armor = list(melee = 95, bullet = 105, laser = 75, energy = 65, bomb = 40, bio = 15, rad = 15)
+	unacidable = 1
+	anti_hug = 6
+	specialty = "M3-G4 grenadier"
 
 /obj/item/clothing/head/helmet/marine/scout
 	name = "\improper M3-S light helmet"

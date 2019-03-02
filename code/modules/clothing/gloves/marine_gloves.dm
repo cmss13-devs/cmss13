@@ -89,6 +89,14 @@
 	armor = list(melee = 90, bullet = 95, laser = 75, energy = 60, bomb = 40, bio = 15, rad = 15)
 	unacidable = 1
 
+/obj/item/clothing/gloves/marine/M3G
+	name = "\improper M3-G4 Grenadier gloves"
+	desc = "A pair of plated, but nimble, gloves."
+	icon_state = "black"
+	item_state = "bgloves"
+	armor = list(melee = 90, bullet = 95, laser = 75, energy = 60, bomb = 40, bio = 15, rad = 15)
+	unacidable = 1
+
 /obj/item/clothing/gloves/marine/veteran/PMC
 	name = "armored gloves"
 	desc = "Armored gloves used in special operations. They are also insulated against electrical shock."

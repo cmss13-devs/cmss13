@@ -113,6 +113,8 @@ Class Procs:
 	var/global/gl_uid = 1
 	layer = OBJ_LAYER
 	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
+	throwpass = 1
+	projectile_coverage = 50
 
 /obj/machinery/New()
 	..()

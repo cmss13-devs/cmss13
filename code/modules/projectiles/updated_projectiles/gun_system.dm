@@ -275,7 +275,7 @@
 
 	if((flags_item|TWOHANDED|WIELDED) != flags_item)
 		return //Have to be actually a twohander and wielded.
-		
+
 	on_unwield()
 
 	flags_item ^= WIELDED
@@ -654,7 +654,7 @@ and you're good to go.
 			break //Nothing else to do here, time to cancel out.
 
 		if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
-			extra_delay = min(extra_delay+(burst_delay*2), fire_delay*3) // The more bullets you shoot, the more delay there is, but no more than thrice the regular delay.
+			extra_delay = fire_delay * 0.5
 			sleep(burst_delay)
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done.

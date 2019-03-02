@@ -580,6 +580,15 @@
 	if(prob(max(0, exposed_temperature - 673)))   //0% at <400C, 100% at >500C
 		broken()
 
+/obj/machinery/light/bullet_act(obj/item/projectile/P)
+	src.bullet_ping(P)
+	if(P.ammo.damage_type == BRUTE)
+		if(P.damage > config.base_hit_damage)
+			broken()
+		else
+			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+	return 1
+
 // explode the light
 
 /obj/machinery/light/proc/explode()

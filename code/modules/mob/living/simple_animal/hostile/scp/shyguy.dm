@@ -20,7 +20,7 @@
 	var/list/shitlist = list() //list of folks this guy is about to murder
 	var/list/examine_urge_list = list() //tracks urge to examine
 	var/list/examine_urge_values = list()
-	var/target //current dude this guy is targeting
+	var/atom/target //current dude this guy is targeting
 	var/screaming = 0 //are we currently screaming?
 	var/will_scream = 1 //will we scream when examined?
 	var/staggered = 0
@@ -43,28 +43,34 @@
 	if(screaming) //we're still screaming
 		return
 
-	//Pick the next target
-	if(!target && shitlist.len)
-		var/mob/living/carbon/H
-		for(var/i = 1, i <= shitlist.len, i++) //start from the first guy
-			H = shitlist[1]
-			if(!H || H.stat == DEAD || !istype(H))
-				shitlist -= H
-				chasing_message_played = 0
-				doom_message_played = 0
-				murdering = 0
-			else
-				target = H
-				continue
-	else
-		will_scream = 1
+	if(!target && shitlist.len) //No current target, and at least one person is on the shitlist. Pick the next target
+
+		//reset, just in case
 		chasing_message_played = 0
 		doom_message_played = 0
 		murdering = 0
+		chasing = 0
+
+		var/mob/living/carbon/H
+		for(var/i = 1, i <= shitlist.len, i++) //First round. Start from the first person who examined. Select only a target on the same z-level
+			H = shitlist[1]
+			if(!H || H.stat == DEAD || !istype(H))
+				shitlist -= H
+			else if ( is_same_level(get_turf(target)) )
+				target = H
+				continue
+		if(!target)
+			for(var/i = 1, i <= shitlist.len, i++) //Second round. Targets on other z-levels are now eligible
+				H = shitlist[1]
+				if(!H || H.stat == DEAD || !istype(H))
+					shitlist -= H
+				else
+					target = H
+					continue
 
 	if(target)
 		handle_target(target)
-	else
+	else //No target, and nobody left on the shitlist. Reset and idle
 		chasing_message_played = 0
 		doom_message_played = 0
 		murdering = 0
@@ -256,7 +262,7 @@
 
 				forceMove(next_turf)
 
-				if(is_different_level(target_turf))
+				if(!is_same_level(target_turf))
 					next_turf = target_turf
 					target << "<span class='danger'>DID YOU THINK YOU COULD HIDE?</span>"
 				else
@@ -266,11 +272,11 @@
 			sleep(move_to_delay + round(staggered/8))
 		chasing = 0
 
-/mob/living/simple_animal/scp/shyguy/proc/is_different_level(var/turf/target_turf)
+/mob/living/simple_animal/scp/shyguy/proc/is_same_level(var/turf/target_turf)
 	if(!target_turf || !istype(target_turf))
-		return 0
-	if(target_turf.z != z)
 		return 1
+	if(target_turf.z != z)
+		return 0
 
 	var/source_level = 0 //0 means lower level or left side, depending on map, 1 means upper level or right side
 	var/target_level = 0
@@ -304,9 +310,9 @@
 					target_level = 1
 
 	if(source_level != target_level)
-		return 1
+		return 0
 
-	return 0
+	return 1
 
 //This performs an immediate murder check, meant to avoid people cheesing us by just running faster than Life() refresh
 /mob/living/simple_animal/scp/shyguy/proc/check_murder()
@@ -369,7 +375,13 @@
 		T.pixel_y = original_y
 		if(ishuman(T))
 			T.emote("scream")
+
 		murdering = 0
+		if (target == T)
+			target = null
+			chasing_message_played = 0
+			doom_message_played = 0
+		shitlist -= T
 
 		//Warn everyone
 		visible_message("<span class='danger'>[src] tears [T] apart!</span>")
@@ -380,12 +392,6 @@
 		T.attack_log += text("\[[time_stamp()]\] <font color='red'>has been torn apart by [src]!</font>")
 		log_admin("[T] ([T.ckey]) has been torn apart by an active [src].")
 		message_admins("ALERT: <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[T.real_name]</a> has been torn apart by an active [src].")
-		shitlist -= T
-
-		if (target == T)
-			target = null
-			chasing_message_played = 0
-			doom_message_played = 0
 
 /mob/living/simple_animal/scp/shyguy/proc/handle_idle()
 

@@ -69,7 +69,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	falloff = max(falloff, power/100) //prevent explosions with a range larger than 100 tiles
 	minimum_spread_power = -power * reflection_amplification_limit
 
-	message_admins("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z])")
+	message_admins("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 	log_game("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ")
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 75, 1, max(round(2*power,1),14) ) //haven't rweaked these values yet
@@ -271,7 +271,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			return 40
 	return 0
 
-/obj/item/proc/explosion_throw(severity, direction)
+/obj/item/proc/explosion_throw(severity, direction, var/scatter_multiplier = 1)
 
 	if(anchored)
 		return
@@ -285,7 +285,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	if(!direction)
 		range = round( range/2 ,1)
 
-	if(range <= 0)
+	if(range < 1)
 		return
 
 
@@ -293,7 +293,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	var/atom/target = get_ranged_target_turf(src, direction, range)
 
 	if(range >= 2)
-		var/scatter = range/4
+		var/scatter = range/4 * scatter_multiplier
 		var/scatter_x = rand(-scatter,scatter)
 		var/scatter_y = rand(-scatter,scatter)
 		target = locate(target.x + round( scatter_x , 1),target.y + round( scatter_y , 1),target.z) //Locate an adjacent turf.

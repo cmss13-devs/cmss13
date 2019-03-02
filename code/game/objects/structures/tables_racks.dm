@@ -30,6 +30,9 @@
 	var/flipped = 0
 	var/flip_cooldown = 0 //If flip cooldown exists, don't allow flipping or putting back. This carries a WORLD.TIME value
 	var/health = 100
+	projectile_coverage = 20 //maximum chance of blocking a projectile
+	var/flipped_projectile_coverage = 90
+	var/upright_projectile_coverage = 20
 
 /obj/structure/table/destroy(deconstruct)
 	if(deconstruct)
@@ -54,6 +57,10 @@
 	for(var/obj/structure/table/T in src.loc)
 		if(T != src)
 			cdel(T)
+	if(flipped)
+		projectile_coverage = flipped_projectile_coverage
+	else
+		projectile_coverage = upright_projectile_coverage
 	update_icon()
 	update_adjacent()
 
@@ -229,9 +236,9 @@
 /obj/structure/table/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
-		return 1
+	for(var/obj/structure/S in get_turf(mover))
+		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
+			return 1
 	if(flipped)
 		if(get_dir(loc, target) & dir)
 			return !density
@@ -415,6 +422,8 @@
 			spawn(0)
 				A.throw_at(pick(targets), 1, 1)
 
+	projectile_coverage = flipped_projectile_coverage
+
 	dir = direction
 	if(dir != NORTH)
 		layer = FLY_LAYER
@@ -433,6 +442,8 @@
 
 	verbs -=/obj/structure/table/proc/do_put
 	verbs +=/obj/structure/table/verb/do_flip
+
+	projectile_coverage = upright_projectile_coverage
 
 	layer = initial(layer)
 	flipped = 0

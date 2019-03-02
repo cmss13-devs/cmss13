@@ -247,6 +247,11 @@
 /mob/living/simple_animal/scp/sculpture/ex_act(var/severity)
 	lash_out()
 
+/mob/living/simple_animal/scp/sculpture/bullet_act(obj/item/projectile/P)
+	if(!P) return
+	bullet_ping(P)
+	return 1
+
 //Periodically disable lights
 /mob/living/simple_animal/scp/sculpture/proc/snuff_out_light()
 	if(hardcore && prob(5))

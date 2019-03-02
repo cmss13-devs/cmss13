@@ -87,7 +87,7 @@
 	"<span class='danger'>You nudge your head against [src].</span>")
 
 // Density override
-/obj/ovipositor/get_projectile_hit_chance(obj/item/projectile/P)
+/obj/ovipositor/get_projectile_hit_boolean(obj/item/projectile/P)
 	return TRUE
 
 /obj/ovipositor/bullet_act(var/obj/item/projectile/Proj)

@@ -15,6 +15,7 @@
 	var/reinforced = FALSE
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 2
+	projectile_coverage = 50
 
 	tiles_with = list(
 		/turf/closed/wall)
@@ -27,9 +28,9 @@
 /obj/structure/window_frame/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
-		return 1
+	for(var/obj/structure/S in get_turf(mover))
+		if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable non-border objects allow you to universally climb over others
+			return 1
 	return 0
 
 /obj/structure/window_frame/CheckExit(atom/movable/O as mob|obj, target as turf)

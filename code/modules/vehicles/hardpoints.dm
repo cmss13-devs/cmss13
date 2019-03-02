@@ -384,7 +384,7 @@ Currently only has the tank hardpoints
 		T = get_step(T, pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(T, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
 	playsound(get_turf(src), pick(list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')), 60, 1)
 	ammo.current_rounds--
 

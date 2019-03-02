@@ -1305,4 +1305,21 @@ var/global/floorIsLava = 0
 	log_admin("[key_name(usr)] force launched a distress shuttle ([tag])")
 	message_admins("\blue [key_name_admin(usr)] force launched a distress shuttle ([tag])", 1)
 
+/datum/admins/proc/admin_force_selfdestruct()
+	set category = "Admin"
+	set name = "Self Destruct"
+	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
 
+	if (!ticker  || !ticker.mode)
+		return
+
+	if(!check_rights(R_ADMIN))	return
+
+	if(get_security_level() == "delta")
+		return
+
+	set_security_level(SEC_LEVEL_DELTA)
+
+	feedback_add_details("admin_verb","DESTR")
+	log_admin("[key_name(usr)] admin-started self destruct stystem.")
+	message_admins("\blue [key_name_admin(usr)] admin-started self destruct stystem.", 1)

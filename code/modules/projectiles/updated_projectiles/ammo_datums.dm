@@ -816,8 +816,8 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	accurate_range = config.short_shell_range
-	damage = config.med_hit_damage
-	penetration= config.low_armor_penetration
+	damage = config.high_hit_damage
+	penetration= config.hmed_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
 /*

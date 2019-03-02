@@ -9,6 +9,8 @@
 #define STATE_STATUSDISPLAY 8
 #define STATE_ALERT_LEVEL 9
 #define STATE_CONFIRM_LEVEL 10
+#define STATE_DESTROY 11
+#define STATE_DEFCONLIST 12
 
 #define COOLDOWN_COMM_MESSAGE MINUTES_1
 #define COOLDOWN_COMM_REQUEST MINUTES_5
@@ -34,6 +36,7 @@
 	var/aistate = STATE_DEFAULT
 	var/cooldown_message = 0 //Based on world.time.
 	var/cooldown_request = 0
+	var/cooldown_destruct = 0
 	var/cooldown_central = 0
 	var/tmp_alertlevel = 0
 
@@ -79,6 +82,8 @@
 		if("defcon")
 			defcon_controller.list_and_purchase_rewards()
 			return
+
+		if("defconlist") state = STATE_DEFCONLIST
 
 		if("main") state = STATE_DEFAULT
 
@@ -224,35 +229,44 @@
 					usr << "<span class='warning'>The distress beacon has recently broadcast a message. Please wait.</span>"
 					r_FAL
 
-				//Currently only counts aliens, but this will likely need to change with human opponents.
-				//I think this should instead count human losses, so that a distress beacon is available when a certain number of dead pile up.
-				//Comment block to test
-				/*var/L[] = ticker.mode.count_humans_and_xenos(list(MAIN_SHIP_Z_LEVEL))
-
-				if(L[2] < round(L[1] * 0.5))
-					log_game("[key_name(usr)] has attemped to call a distress beacon, but it was denied due to lack of threat on the ship.")
-					message_admins("[key_name(usr)] has attemped to call a distress beacon, but it was denied due to lack of threat on the ship.", 1)
-					usr << "<span class='warning'>The sensors aren't picking up enough of a threat on the ship to warrant a distress beacon.</span>"
-					r_FAL*/
-
 				for(var/client/C in admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
 				message_mods("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
 				usr << "<span class='notice'>A distress beacon request has been sent to USCM Central Command.</span>"
-						//unanswered_distress += usr
-
-				//spawn(MINUTES_1) //1 minute in deciseconds
-					//if(usr in unanswered_distress)
-						//unanswered_distress -= usr
-						//ticker.mode.activate_distress()
-						//log_game("A distress beacon requested by [key_name_admin(usr)] was automatically sent due to not receiving an answer within a minute.")
-						//message_admins("A distress beacon requested by [key_name_admin(usr)] was automatically sent due to not receiving an answer within a minute.", 1)
 
 				cooldown_request = world.time
 				r_TRU
 
 			state = STATE_DISTRESS
+
+		if("destroy")
+			if(state == STATE_DESTROY)
+
+				//Comment to test
+				if(world.time < DISTRESS_TIME_LOCK)
+					usr << "<span class='warning'>The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>"
+					r_FAL
+
+				if(!ticker || !ticker.mode) r_FAL //Not a game mode?
+
+				if(ticker.mode.force_end_at == 0)
+					usr << "<span class='warning'>ARES has denied your request for operational security reasons.</span>"
+					return FALSE
+
+				if(get_security_level() == "delta")
+					usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s self destruct is already activated.</span>"
+					r_FAL
+
+				for(var/client/C in admins)
+					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+						C << 'sound/effects/sos-morse-code.ogg'
+				message_mods("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
+				usr << "<span class='notice'>A self destruct request has been sent to USCM Central Command.</span>"
+				cooldown_destruct = world.time
+				r_TRU
+
+			state = STATE_DESTROY
 
 		if("messagelist")
 			currmsg = 0
@@ -372,9 +386,10 @@
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set status display</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message list</A> \]"
 				dat += "<BR>\[ <A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A> \]"
+				dat += "<BR>\[ <A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A> \]"
 				dat += "<BR>\[ <A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A> \]"
 				dat += "<BR><hr>"
-				dat += "<BR>DEFCON [defcon_controller.current_defcon_level]"
+				dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
 				dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
 				dat += "<BR>Remaining DEFCON asset points: [defcon_controller.remaining_reward_points]."
 				dat += "<BR>\[ <A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A> \]"
@@ -391,6 +406,7 @@
 					dat += admins.len > 0 ? "<BR>\[ <A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A> \]" : "<BR>\[ USCM communication offline \]"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=award'>Award a medal</A> \]"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A> \]"
+					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=destroy'>Activate Self Destruct</A> \]"
 					switch(EvacuationAuthority.evac_status)
 						if(EVACUATION_STATUS_STANDING_BY) dat += "<BR>\[ <A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A> \]"
 						if(EVACUATION_STATUS_INITIATING) dat += "<BR>\[ <A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A> \]"
@@ -406,6 +422,9 @@
 
 		if(STATE_DISTRESS)
 			dat += "Are you sure you want to trigger a distress signal? The signal can be picked up by anyone listening, friendly or not. \[ <A HREF='?src=\ref[src];operation=distress'>Confirm</A>\]"
+
+		if(STATE_DESTROY)
+			dat += "Are you sure you want to trigger the self destruct? This would mean abandoning ship. \[ <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>\]"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
@@ -463,6 +482,13 @@
 			dat += "Current alert level: [get_security_level()]<BR>"
 			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
 			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>Swipe ID</A> to confirm change.<BR>"
+
+		if(STATE_DEFCONLIST)
+			for(var/str in typesof(/datum/defcon_reward))
+				var/datum/defcon_reward/DR = new str
+				if(!DR.cost)
+					continue
+				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
 
 	dat += "<BR>\[ [(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	user << browse(dat, "window=communications;size=400x500")

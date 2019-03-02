@@ -301,6 +301,7 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 //Used for autocall procs on ERT
 //var/global/list/unanswered_distress = list()
 var/distress_cancel = 0
+var/destroy_cancel = 0
 
 //Coordinate obsfucator
 //Used by the tactical binoculars and linked systems to prevent coords collection/prefiring

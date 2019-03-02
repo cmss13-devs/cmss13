@@ -194,7 +194,8 @@
 	..()
 
 /obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
-	if(P.ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX))
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX))
 		return
 	. = ..()
 
@@ -715,7 +716,8 @@
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()
-	if(P.ammo.flags_ammo_behavior & (AMMO_XENO_ACID|AMMO_XENO_TOX)) return
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX)) return
 	health -= P.ammo.damage_type == BURN ? P.damage * 1.3 : P.damage
 	healthcheck()
 	P.ammo.on_hit_obj(src,P)

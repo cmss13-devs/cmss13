@@ -74,6 +74,8 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/attachment_action_type
 
+	var/has_marine_iff = FALSE //adds IFF to bullets
+
 
 
 	attackby(obj/item/I, mob/user)
@@ -150,6 +152,8 @@ Defined in conflicts.dm of the #defines folder.
 			var/mob/living/L = G.loc
 			if(G == L.l_hand || G == L.r_hand)
 				A.give_action(G.loc)
+	
+	G.check_iff()
 
 
 
@@ -199,7 +203,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	loc = get_turf(G)
 
-
+	G.check_iff()
 
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
@@ -574,7 +578,43 @@ Defined in conflicts.dm of the #defines folder.
 				G.slowdown += dynamic_aim_slowdown
 			
 				user.add_zoomout_handler(handler)
+
+
+/obj/item/attachable/scope/collimator
+	name = "IFTS Mini-Scope"
+	icon_state = "collisight"
+	attach_icon = "collisight_a"
+	desc = "A rail mounted collimator mini-scope with an integrated friendly-fire avoidance system."
+	slot = "rail"
+	zoom_offset = 6
+	zoom_viewsize = 7
+	pixel_shift_y = 15
+	has_marine_iff = TRUE
+	var/dynamic_aim_slowdown = 0.4
+
+	New()
+		..()		
+		delay_mod = 2
+		accuracy_mod = 0
+		movement_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+
+		accuracy_scoped_buff = config.min_hit_accuracy_mult
+		delay_scoped_nerf = 0
+		damage_falloff_scoped_buff = 0
+
+	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+		if(do_after(user, 8, FALSE, 5, BUSY_ICON_HOSTILE))
+			allows_movement	= 1
+			. = ..()
+			if(user && G.zoom)
+				var/datum/event_handler/miniscope_zoomout/handler = new /datum/event_handler/miniscope_zoomout(src)
+				handler.G = G
+				handler.aim_slowdown = dynamic_aim_slowdown
+
+				G.slowdown += dynamic_aim_slowdown
 			
+				user.add_zoomout_handler(handler)
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"
@@ -680,6 +720,29 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = config.low_scatter_value
 		//but at the same time you are slow when 2 handed
 		aim_speed_mod = 0.25
+
+/obj/item/attachable/stock/carbine
+	name = "\improper L41A carbon stock"
+	desc = "A specially issued stock made completely out of composite lightweight material specifically for L41 battle rifle and adapted for its USCM counterpart - L41A. It's ligther, easier to move with, but it's not as good in a brawl as stocks for other weapons."
+	slot = "stock"
+	size_mod = 1
+	icon_state = "BRstock"
+	attach_icon = "BRstock_a"
+	pixel_shift_x = 41
+	pixel_shift_y = 10
+	wield_delay_mod = WIELD_DELAY_NORMAL
+
+	New()
+		..()
+		//it makes stuff much better when two-handed
+		accuracy_mod = config.med_hit_accuracy_mult
+		recoil_mod = -config.low_recoil_value
+		scatter_mod = -config.low_scatter_value
+		movement_acc_penalty_mod = -1
+		//it makes stuff much worse when one handed
+		accuracy_unwielded_mod = -config.low_hit_accuracy_mult
+		recoil_unwielded_mod = config.low_recoil_value
+		scatter_unwielded_mod = config.low_scatter_value
 
 
 /obj/item/attachable/stock/rifle/marksman

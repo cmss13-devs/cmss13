@@ -85,7 +85,7 @@
 		attack_hand(user)//Not a carrier, or already full? Just pick it up.
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
-	if(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled))
+	if(CanHug(M) && (M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M)))
 		Attach(M)
 		user.update_icons()
 	else

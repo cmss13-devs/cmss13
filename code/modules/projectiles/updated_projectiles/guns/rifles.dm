@@ -533,7 +533,7 @@
 /obj/item/weapon/gun/rifle/carbine/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/carbine)
 	..()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 33, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 31, "stock_y" = 7)
 
 /obj/item/weapon/gun/rifle/carbine/set_gun_config_values()
 	fire_delay = config.high_fire_delay

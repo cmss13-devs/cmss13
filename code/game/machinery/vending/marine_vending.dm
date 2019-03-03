@@ -153,6 +153,7 @@
 		//obj/item/weapon/gun/smg/m39/elite = 0,
 		//obj/item/weapon/gun/rifle/m41aMK1 = 0,
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 20),
+		/obj/item/weapon/gun/rifle/carbine = round(scale * 20),
 		//obj/item/weapon/gun/rifle/m41a/elite = 0,
 		//obj/item/weapon/gun/rifle/lmg = 0,
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 10),

@@ -355,7 +355,7 @@
 		list("Submachinegun stock", 15, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 15, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 15, /obj/item/attachable/verticalgrip, null, "black"),
-		list("Webbing", 30, /obj/item/clothing/tie/storage/webbing, null, "black"),
+		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
 	)
 
 
@@ -859,12 +859,14 @@
 		list("Extended M4A3 magazine", 3, /obj/item/ammo_magazine/pistol/extended, null, "black"),
 		list("AP M39 magazine", 6, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
 		list("Extended M39 magazine", 6, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
+		list("Extended L41A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/carbine/extended, null, "black"),
+		list("AP L41A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/carbine/ap, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Gyroscopic stabilizer", 0, /obj/item/attachable/gyro, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Laser sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Submachinegun stock", 0, /obj/item/attachable/stock/smg, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Collimator Sight", 0, /obj/item/attachable/scope/collimator, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("L41A Carbon stock", 0, /obj/item/attachable/stock/carbine, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 
@@ -899,13 +901,16 @@
 		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
+		list("Extended L41A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/carbine/extended, null, "black"),
+		list("AP L41A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/carbine/ap, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Mini Flamethrower", 0, /obj/item/attachable/attached_gun/flamer, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Collimator Sight", 0, /obj/item/attachable/scope/collimator, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("L41A Carbon stock", 0, /obj/item/attachable/stock/carbine, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		
 	)
 
 
@@ -1034,6 +1039,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("AP M41A magazine", 6, /obj/item/ammo_magazine/rifle/ap, null, "black"),
 		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("Extended L41A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/carbine/extended, null, "black"),
+		list("AP L41A Magazine (10x24mm)", 4, /obj/item/ammo_magazine/carbine/ap, null, "black"),
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 		list("Signal Flare Pack", 15, /obj/item/storage/box/m94/signal, null, "black"),
 
@@ -1048,7 +1055,6 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Suppressor", 0, /obj/item/attachable/suppressor, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Collimator Sight", 0, /obj/item/attachable/scope/collimator, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 

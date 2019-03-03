@@ -594,10 +594,9 @@ Defined in conflicts.dm of the #defines folder.
 
 	New()
 		..()
-		delay_mod = 2
-		accuracy_mod = 0
 		movement_acc_penalty_mod = 0
 		accuracy_unwielded_mod = 0
+		damage_mod = -config.min_hit_damage_mult
 
 		accuracy_scoped_buff = config.min_hit_accuracy_mult
 		delay_scoped_nerf = 0
@@ -615,6 +614,7 @@ Defined in conflicts.dm of the #defines folder.
 				G.slowdown += dynamic_aim_slowdown
 
 				user.add_zoomout_handler(handler)
+
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

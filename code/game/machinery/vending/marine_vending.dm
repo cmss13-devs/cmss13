@@ -173,7 +173,8 @@
 		/obj/item/clothing/mask/gas = round(scale * 10),
 		/obj/item/storage/box/kit/mini_jtac = 4,
 		/obj/item/storage/box/kit/heavy_support = 4,
-		/obj/item/storage/box/kit/mini_intel = 4
+		/obj/item/storage/box/kit/mini_intel = 4,
+		/obj/item/folding_barricade = 4
 	)
 
 	contraband = list(
@@ -701,6 +702,7 @@
 
 		/obj/item/attachable/scope = round(scale * 4),
 		/obj/item/attachable/scope/mini = round(scale * 4),
+		/obj/item/attachable/scope/collimator = round(scale * 2)+1,
 		/obj/item/attachable/flashlight = round(scale * 14),
 		/obj/item/attachable/reddot = round(scale * 14),
 		/obj/item/attachable/magnetic_harness = round(scale * 10),

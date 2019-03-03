@@ -255,7 +255,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	overlays += image('icons/Marine/pro_case.dmi', "+sniper")
 	spawn(1)
 		new /obj/item/weapon/gun/rifle/carbine(src)
-		new /obj/item/attachable/scope/collimator(src)
+		new /obj/item/attachable/scope/mini(src)
 		new /obj/item/attachable/stock/carbine(src)
 		new /obj/item/attachable/suppressor(src)
 		new /obj/item/attachable/extended_barrel(src)

@@ -190,7 +190,7 @@
 	icon_state = "cdreberet"
 
 /obj/item/clothing/head/beret/marine/commander/peaked
-	name = "marine commodore peaked cap"
+	name = "marine captain peaked cap"
 	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
 	sprite_sheet_id = 1
 	icon = 'icons/obj/clothing/cm_hats.dmi'

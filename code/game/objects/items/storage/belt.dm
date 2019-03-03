@@ -262,6 +262,7 @@
 		/obj/item/weapon/combat_knife,
 		/obj/item/device/flashlight/flare,
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/revolver,
@@ -273,6 +274,7 @@
 	)
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg/m39
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
@@ -678,10 +680,10 @@
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/smartpistol
-	name = "\improper M276 pattern smartpistol holster rig"
+	name = "\improper M276 pattern SU-6 Smartpistol holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M5A6 smartpistol."
-	icon_state = "spbelt"
-	item_state = "spbelt"
+	icon_state = "smartpistol_holster"
+	item_state = "smartpistol_holster"
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart

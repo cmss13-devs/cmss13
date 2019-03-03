@@ -184,7 +184,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 //Smartpistol IFF magazine.
 
 /obj/item/ammo_magazine/pistol/smart
-	name = "\improper M5A6 magazine (.45)"
+	name = "\improper SU-6 Smartpistol magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/smart
 	caliber = ".45"
 	icon_state = "smartpistol"

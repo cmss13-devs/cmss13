@@ -885,7 +885,7 @@ and you're good to go.
 			projectile_to_fire.scatter *= scatter_debuff
 
 	projectile_to_fire.damage = round(projectile_to_fire.damage * damage_mult) 		// Apply gun damage multiplier to projectile damage
-	projectile_to_fire.damage_falloff	= damage_falloff_mult * projectile_to_fire.ammo.damage_falloff	// Apply gun damage bleed multiplier to projectile damage bleed
+	projectile_to_fire.damage_falloff	= (damage_falloff_mult>0?damage_falloff_mult : 0) * projectile_to_fire.ammo.damage_falloff	// Apply gun damage bleed multiplier to projectile damage bleed
 
 	projectile_to_fire.shot_from = src
 

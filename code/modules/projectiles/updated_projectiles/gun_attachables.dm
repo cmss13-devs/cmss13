@@ -152,7 +152,7 @@ Defined in conflicts.dm of the #defines folder.
 			var/mob/living/L = G.loc
 			if(G == L.l_hand || G == L.r_hand)
 				A.give_action(G.loc)
-	
+
 	G.check_iff()
 
 
@@ -559,15 +559,15 @@ Defined in conflicts.dm of the #defines folder.
 	var/dynamic_aim_slowdown = 2
 
 	New()
-		..()		
+		..()
 		damage_falloff_scoped_buff = -0.2 //has to be negative
 
 	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-		if(istype(G, /obj/item/weapon/gun/launcher/rocket))	
+		if(istype(G, /obj/item/weapon/gun/launcher/rocket))
 			allows_movement	= 0
 			if(do_after(user, 25, FALSE, 5, BUSY_ICON_HOSTILE))
 				. = ..()
-		else			
+		else
 			allows_movement	= 1
 			. = ..()
 			if(user && G.zoom)
@@ -576,7 +576,7 @@ Defined in conflicts.dm of the #defines folder.
 				handler.aim_slowdown = dynamic_aim_slowdown
 
 				G.slowdown += dynamic_aim_slowdown
-			
+
 				user.add_zoomout_handler(handler)
 
 
@@ -593,7 +593,7 @@ Defined in conflicts.dm of the #defines folder.
 	var/dynamic_aim_slowdown = 0.4
 
 	New()
-		..()		
+		..()
 		delay_mod = 2
 		accuracy_mod = 0
 		movement_acc_penalty_mod = 0
@@ -613,7 +613,7 @@ Defined in conflicts.dm of the #defines folder.
 				handler.aim_slowdown = dynamic_aim_slowdown
 
 				G.slowdown += dynamic_aim_slowdown
-			
+
 				user.add_zoomout_handler(handler)
 
 /obj/item/attachable/scope/slavic
@@ -794,7 +794,7 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/activated = TRUE
 	var/collapsed_stock_scatter = 0
-	
+
 	New()
 		..()
 		//it makes stuff much better when two-handed
@@ -825,7 +825,7 @@ Defined in conflicts.dm of the #defines folder.
 		G.accuracy_mult += accuracy_mod * multiplier
 		G.recoil += recoil_mod * multiplier
 		G.scatter += scatter_mod * multiplier
-		G.wield_delay += wield_delay_mod * multiplier		
+		G.wield_delay += wield_delay_mod * multiplier
 		G.movement_acc_penalty_mult = movement_acc_penalty_mod * multiplier
 		//it makes stuff much worse when one handed
 		G.accuracy_mult_unwielded += accuracy_unwielded_mod * multiplier
@@ -845,7 +845,7 @@ Defined in conflicts.dm of the #defines folder.
 			G.w_class -= size_mod
 			icon_state = "smgstockcc"
 			attach_icon = "smgstockcc_a"
-		
+
 		G.update_overlays(src, "stock")
 
 	activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
@@ -867,12 +867,13 @@ Defined in conflicts.dm of the #defines folder.
 			user << "<span class='notice'>You collapse [src].</span>"
 
 /obj/item/attachable/stock/smg/brace
-	name = "\improper M39 submachinegun arm brace stock"
+	name = "\improper  submachinegun arm brace"
 	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing perfectly accurate at the expense of fire rate. Wielding guns with this stock is very uncomfortable and inaccurate."
 	size_mod = 1
 	icon_state = "smg_brace"
+	attach_icon = "smg_brace_a"
 	pixel_shift_x = 39
-	pixel_shift_y = 11
+	pixel_shift_y = 16
 	flags_attach_features = ATTACH_REMOVABLE
 
 /obj/item/attachable/stock/smg/brace/New()
@@ -881,9 +882,11 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = config.high_hit_accuracy_mult
 	recoil_unwielded_mod = -config.max_recoil_value
 	delay_mod = config.mlow_fire_delay
+	burst_scatter_mod = -6
 	//But... it makes wielding something really, really bad.
 	accuracy_mod = config.low_hit_accuracy_mult
 	recoil_mod = config.high_recoil_value
+	scatter_unwielded_mod = -7
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"
@@ -1254,7 +1257,7 @@ Defined in conflicts.dm of the #defines folder.
 	New()
 		..()
 		delay_mod = config.mlow_fire_delay
-	
+
 	Detach(obj/item/weapon/gun/G)
 		if(bipod_deployed)
 			undeploy_bipod(G)
@@ -1284,7 +1287,7 @@ Defined in conflicts.dm of the #defines folder.
 				return
 			bipod_deployed = !bipod_deployed
 			if(user)
-				if(bipod_deployed)					
+				if(bipod_deployed)
 					user << "<span class='notice'>You deploy [src][support ? " on [support]" : ""].</span>"
 					G.aim_slowdown += SLOWDOWN_ADS_SCOPE
 					G.wield_delay += WIELD_DELAY_FAST
@@ -1332,7 +1335,7 @@ Defined in conflicts.dm of the #defines folder.
 		if(O.throwpass && O.density && O.dir == user.dir && O.flags_atom & ON_BORDER)
 			return O
 	var/turf/T2 = get_step(T, user.dir)
-	
+
 	for(var/obj/O2 in T2)
 		if(O2.throwpass && O2.density)
 			return O2

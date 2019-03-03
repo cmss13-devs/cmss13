@@ -28793,7 +28793,11 @@
 	},
 /area/almayer/shipboard/firing_range)
 "bhR" = (
-/obj/structure/largecrate/random/case/double,
+/obj/structure/table/almayer,
+/obj/item/ammo_magazine/carbine,
+/obj/item/ammo_magazine/carbine,
+/obj/item/ammo_magazine/carbine,
+/obj/item/weapon/gun/rifle/carbine,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
@@ -65261,6 +65265,18 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod18)
+"vfY" = (
+/obj/machinery/light/small{
+	tag = "icon-bulb1 (NORTH)";
+	icon_state = "bulb1";
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull)
 "vhX" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
@@ -94938,7 +94954,7 @@ aaa
 aKW
 aKY
 aLd
-aSm
+bbx
 dnX
 aLd
 aLJ
@@ -95141,7 +95157,7 @@ aaa
 aKW
 aKY
 aLd
-aSm
+bPW
 dnX
 aLd
 aLJ
@@ -95344,7 +95360,7 @@ aaa
 aKW
 aKY
 aLd
-bhC
+vfY
 dnX
 aLd
 aLJ

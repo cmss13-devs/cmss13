@@ -292,12 +292,12 @@
 		list("Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, "white"),
 		list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "white"),
 		list("Helmet", 0, /obj/item/clothing/head/helmet/marine, MARINE_CAN_BUY_HELMET, "white"),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine, MARINE_CAN_BUY_ARMOR, "white"),
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
 
 		list("ARMOR (choose 1)", 0, null, null, null),
+		list("Standard armor", 0, /obj/item/clothing/suit/storage/marine, MARINE_CAN_BUY_ARMOR, "white"),
 		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
 		list("Heavy armor", 0, /obj/item/clothing/suit/storage/marine/class/heavy, MARINE_CAN_BUY_ARMOR, "white"),
 
@@ -347,7 +347,7 @@
 		list("M41A extended magazine (10x24mm)", 15, /obj/item/ammo_magazine/rifle/extended , null, "black"),
 		list("M41A skeleton stock", 15, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
-		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),		
+		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
 		list("L41A extended Magazine (10x24mm)", 10, /obj/item/ammo_magazine/carbine/extended, null, "black"),
 		list("L41A AP Magazine (10x24mm)", 10, /obj/item/ammo_magazine/carbine/ap, null, "black"),
 		list("Recoil compensator", 15, /obj/item/attachable/compensator, null, "black"),

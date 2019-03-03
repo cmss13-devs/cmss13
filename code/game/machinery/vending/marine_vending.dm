@@ -171,10 +171,12 @@
 		/obj/item/storage/box/m94/signal = round(scale * 2),
 		/obj/item/device/flashlight/combat = round(scale * 5),
 		/obj/item/clothing/mask/gas = round(scale * 10),
-		/obj/item/storage/box/kit/mini_jtac = 4,
-		/obj/item/storage/box/kit/heavy_support = 4,
-		/obj/item/storage/box/kit/mini_intel = 4,
-		/obj/item/folding_barricade = 4
+		/obj/item/storage/box/kit/mini_jtac = round(scale * 4),
+		/obj/item/storage/box/kit/mini_sniper = round(scale * 4),
+		/obj/item/storage/box/kit/heavy_support = round(scale * 4),
+		/obj/item/storage/box/kit/mini_intel = round(scale * 4),
+		/obj/item/storage/box/kit/pursuit = round(scale * 4),
+		/obj/item/folding_barricade = round(scale * 4),
 	)
 
 	contraband = list(

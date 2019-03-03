@@ -297,8 +297,8 @@
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
 
 		list("ARMOR (choose 1)", 0, null, null, null),
-		list("Standard armor", 0, /obj/item/clothing/suit/storage/marine, MARINE_CAN_BUY_ARMOR, "white"),
 		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
+		list("Medium armor", 0, /obj/item/clothing/suit/storage/marine, MARINE_CAN_BUY_ARMOR, "white"),
 		list("Heavy armor", 0, /obj/item/clothing/suit/storage/marine/class/heavy, MARINE_CAN_BUY_ARMOR, "white"),
 
 		list("BACKPACK (choose 1)", 0, null, null, null),
@@ -330,7 +330,6 @@
 		list("Mini Engineer Kit", 45, /obj/item/storage/box/kit/mini_engineer, MARINE_CAN_BUY_ESSENTIALS, "black"),
 		list("Mini Medic Kit", 45, /obj/item/storage/box/kit/mini_medic, MARINE_CAN_BUY_ESSENTIALS, "black"),
 		list("Mini Pyro Kit", 45, /obj/item/storage/box/kit/mini_pyro, MARINE_CAN_BUY_ESSENTIALS, "black"),
-		list("Mini Sniper Kit", 45, /obj/item/storage/box/kit/mini_sniper, MARINE_CAN_BUY_ESSENTIALS, "black"),
 
 		list("EXTRAS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),
@@ -919,7 +918,7 @@
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Shotgun stock", 0, /obj/item/attachable/stock/shotgun, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("L41A Carbon stock", 0, /obj/item/attachable/stock/carbine, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		
+
 	)
 
 

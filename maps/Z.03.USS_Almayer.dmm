@@ -13654,7 +13654,10 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aCi" = (
 /turf/open/floor/almayer{
@@ -16627,7 +16630,10 @@
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/living/commandbunks)
 "aIC" = (
 /obj/structure/table/almayer,
@@ -50348,7 +50354,10 @@
 	dir = 2;
 	name = "\improper Combat Information Center"
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "bYZ" = (
 /obj/machinery/light{
@@ -61893,35 +61902,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood,
 /area/almayer/command/cichallway)
-"mGY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/airlock/almayer/command{
-	name = "\improper Combat Information Center"
-	},
-/turf/open/floor/almayer{
-	tag = "icon-silver (NORTH)";
-	icon_state = "silver";
-	dir = 1
-	},
-/area/almayer/command/cichallway)
 "mID" = (
 /obj/machinery/photocopier,
 /obj/machinery/light,
@@ -64686,9 +64666,8 @@
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer{
-	tag = "icon-silver";
-	icon_state = "silver";
-	dir = 2
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/command/cichallway)
 "tQY" = (
@@ -65662,9 +65641,8 @@
 	name = "\improper Combat Information Center"
 	},
 /turf/open/floor/almayer{
-	tag = "icon-silver (NORTH)";
-	icon_state = "silver";
-	dir = 1
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/command/cichallway)
 "waD" = (
@@ -66184,16 +66162,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/chief_mp_office)
-"xBr" = (
-/obj/machinery/door/airlock/almayer/command{
-	name = "\improper Combat Information Center"
-	},
-/turf/open/floor/almayer{
-	tag = "icon-silver";
-	icon_state = "silver";
-	dir = 2
-	},
-/area/almayer/command/cichallway)
 "xDn" = (
 /obj/machinery/vending/MarineMed/Blood,
 /obj/machinery/camera/autoname/almayer{
@@ -84738,8 +84706,8 @@ vMI
 aAx
 oPy
 akh
-mGY
-xBr
+tPb
+vYM
 aar
 awC
 aVP

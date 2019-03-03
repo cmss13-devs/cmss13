@@ -533,7 +533,7 @@
 /obj/item/weapon/gun/rifle/carbine/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/carbine)
 	..()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 33, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 31, "stock_y" = 7)
 
 /obj/item/weapon/gun/rifle/carbine/set_gun_config_values()
 	fire_delay = config.high_fire_delay
@@ -543,7 +543,7 @@
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
-	damage_falloff_mult = 0.4
+	damage_falloff_mult = 0
 
 /obj/item/weapon/gun/rifle/carbine/attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(!can_attach_to_gun(user, attachment))
@@ -650,3 +650,71 @@
 
 	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
 	update_attachables()
+
+/obj/item/weapon/gun/rifle/carbine/verb/remove_barrel()
+	set category = "Weapons"
+	set name = "Remove Barrel from Weapon"
+	set desc = "Removes Barrel from Weapon"
+	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
+
+	var/obj/item/weapon/gun/G = get_active_firearm(usr)
+
+	if(!G)
+		return
+
+	src = G
+
+	if(usr.action_busy)
+		return
+
+	if(zoom)
+		usr << "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>"
+		return
+
+	if(!muzzle)
+		usr << "<span class='warning'>This weapon has no barrel attachaments to remove!</span>"
+		return
+
+	var/obj/item/attachable/A = muzzle
+
+	if(!A)
+		return
+
+	if(get_active_firearm(usr) != src)//dropped the gun
+		return
+
+	if(usr.action_busy)
+		return
+
+	if(zoom)
+		return
+
+	if(A != muzzle)
+		return
+	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
+		return
+
+	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
+	"<span class='notice'>You begin stripping [A] from [src].</span>", null, 4)
+
+	var/timer = 10
+
+	if(!do_after(usr,timer, TRUE, 5, BUSY_ICON_FRIENDLY))
+		return
+
+	if(A != muzzle)
+		return
+	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
+		return
+
+	if(zoom)
+		return
+
+	usr.visible_message("<span class='notice'>[usr] strips [A] from [src].</span>",
+	"<span class='notice'>You strip [A] from [src].</span>", null, 4)
+	A.Detach(src)
+
+	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
+	update_attachables()
+
+	

@@ -233,8 +233,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 
 /obj/item/storage/box/kit/mini_pyro
-	name = "\improper Mini Pyro Kit"
-	icon_state = "pro_case_mini"
+	name = "\improper M240 Pyrotechnician Support Kit"
 
 /obj/item/storage/box/kit/mini_pyro/New()
 	..()
@@ -248,7 +247,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/ammo_magazine/flamer_tank(src)
 
 /obj/item/storage/box/kit/mini_sniper
-	name = "\improper Mini Sniper Kit"
+	name = "\improper IFTS Rifleman Kit"
 
 /obj/item/storage/box/kit/mini_sniper/New()
 	..()
@@ -263,10 +262,11 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/ammo_magazine/carbine/ap(src)
 
 /obj/item/storage/box/kit/heavy_support
-	name = "\improper Heavy Support Kit"
+	name = "\improper First Defense Combat Kit"
 
 /obj/item/storage/box/kit/heavy_support/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+shield")
 	spawn(1)
 		new /obj/item/weapon/gun/rifle/lmg(src)
 		new /obj/item/ammo_magazine/rifle/lmg(src)
@@ -275,9 +275,21 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/clothing/glasses/welding(src)
 		new /obj/item/tool/weldingtool(src)
 
+/obj/item/storage/box/kit/pursuit
+	name = "\improper M39 Point Man Kit"
+
+/obj/item/storage/box/kit/pursuit/New()
+	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+pursuit")
+	spawn(1)
+		new /obj/item/weapon/gun/smg/m39(src)
+		new /obj/item/attachable/stock/smg/brace(src)
+		new /obj/item/attachable/magnetic_harness(src)
+		new /obj/item/storage/large_holster/machete/full(src)
+		new /obj/item/ammo_magazine/smg/m39/extended(src)
 
 /obj/item/storage/box/kit/mini_engineer
-	name = "\improper Mini Engineer Kit"
+	name = "\improper Combat Technician Support Kit"
 
 /obj/item/storage/box/kit/mini_engineer/New()
 	..()
@@ -296,7 +308,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		SND1.amount = 15
 
 /obj/item/storage/box/kit/mini_medic
-	name = "\improper Mini Medic Kit"
+	name = "\improper First Response Medical Support Kit"
 
 /obj/item/storage/box/kit/mini_medic/New()
 	..()
@@ -309,7 +321,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/device/healthanalyzer(src)
 
 /obj/item/storage/box/kit/mini_jtac
-	name = "\improper Mini JTAC Kit"
+	name = "\improper JTAC Radio Kit"
 
 /obj/item/storage/box/kit/mini_jtac/New()
 	..()
@@ -321,7 +333,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/device/encryptionkey/jtac(src)
 
 /obj/item/storage/box/kit/mini_intel
-	name = "\improper Mini Intel Kit"
+	name = "\improper Field Intelligence Support Kit"
 
 /obj/item/storage/box/kit/mini_intel/New()
 	..()

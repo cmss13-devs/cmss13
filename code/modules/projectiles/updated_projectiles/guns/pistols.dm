@@ -466,4 +466,4 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
-	recoil_unwielded = config.med_recoil_value
+	recoil_unwielded = config.low_recoil_value

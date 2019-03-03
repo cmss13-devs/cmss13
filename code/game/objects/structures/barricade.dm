@@ -627,7 +627,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			user.visible_message("<span class='notice'>[user] begins repairing damage to [src].</span>",
 			"<span class='notice'>You begin repairing the damage to [src].</span>")
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 100, TRUE, 5, BUSY_ICON_FRIENDLY) && old_loc == loc)
+			if(do_after(user, 50, TRUE, 5, BUSY_ICON_FRIENDLY) && old_loc == loc)
 				user.visible_message("<span class='notice'>[user] repairs some damage on [src].</span>",
 				"<span class='notice'>You repair [src].</span>")
 				health += maxhealth*0.4
@@ -658,7 +658,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			"<span class='notice'>You begin collapsing [src].</span>")
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 	var/old_loc = loc
-	if(do_after(user, 100, TRUE, 5, BUSY_ICON_FRIENDLY) && old_loc == loc)
+	if(do_after(user, 80, TRUE, 5, BUSY_ICON_FRIENDLY) && old_loc == loc)
 		var/obj/item/folding_barricade/f = new(loc)
 		f.health = health
 		f.maxhealth = maxhealth
@@ -693,7 +693,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	user.visible_message("<span class='notice'>[user] begins deploying [src].</span>",
 			"<span class='notice'>You begin deploying [src].</span>")
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	if(!do_after(user, 25, TRUE, 5, BUSY_ICON_BUILD)) return
+	if(!do_after(user, 10, TRUE, 5, BUSY_ICON_BUILD)) return
 	user.visible_message("<span class='notice'>[user] has finished deploying [src].</span>",
 			"<span class='notice'>You finish deploying [src].</span>")
 	var/obj/structure/barricade/deployable/cade = new(user.loc)

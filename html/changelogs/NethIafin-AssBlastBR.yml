@@ -1,0 +1,14 @@
+author: Neth Iafin
+
+delete-after: True
+
+changes:
+  - tweak: "Mini-sniper kit now has miniscope insted of IFF scope."
+  - tweak: "IFF Scope is a Requisition Only attachment."
+  - tweak: "IFF Scope reduces gun damage and also reduces fire rate."
+  - tweak: "L41A has no damage falloff at all now."
+  - tweak: "Carbon Stocks for L41A can now be picked by Medics and Engies as their free attachment." 
+  - tweak: "Webbing costs 15 again."
+  - tweak: "Medics, Engineers and Squad Leads now have access to L41A AP and Extended mags."
+  - tweak: "Folding Barricades are now MUCH quicker to deploy and repair."
+  - rscadd: "Added ability for Developer+ staff to change ratio of roundstart xeno and survivors to give more control over rounds when features are tested or added for one side."

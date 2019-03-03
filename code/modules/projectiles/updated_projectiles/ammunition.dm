@@ -370,8 +370,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/magazine_box/shotgun/flechette
 	name = "shotgun shell box (flechette x 100)"
-	icon_state = "shell_box_flechette_closed"
-	icon_base_name = "shell_box_flechette"
+	icon_state = "shell_box_flech_closed"
+	icon_base_name = "shell_box_flech"
 	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
 
 /obj/item/magazine_box/rifle_ap

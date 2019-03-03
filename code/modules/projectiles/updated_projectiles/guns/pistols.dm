@@ -442,8 +442,8 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 //Smartpistol. An IFF pistol, pretty much.
 
 /obj/item/weapon/gun/pistol/smart
-	name = "\improper M5A6 smartpistol"
-	desc = "The M5A6 smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts."
+	name = "\improper SU-6 Smartpistol"
+	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts."
 	icon_state = "smartpistol"
 	item_state = "smartpistol"
 	force = 8
@@ -453,7 +453,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/smart/New()
 	..()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 22, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 20, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/smart/set_gun_config_values()
 	fire_delay = config.low_fire_delay

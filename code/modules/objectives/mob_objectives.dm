@@ -206,7 +206,7 @@
 	name = "Recover the Dead"
 	var/list/corpses = list()
 	objective_flags = OBJ_PROCESS_ON_DEMAND | OBJ_DO_NOT_TREE
-	var/points_per_corpse = 0
+	var/points_per_corpse = 5
 	var/area/recovery_area = /area/almayer/medical/morgue
 
 /datum/cm_objective/recover_corpses/get_point_value()

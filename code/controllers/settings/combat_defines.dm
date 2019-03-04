@@ -136,8 +136,8 @@
 	var/weapon_settle_scatter_multiplier = 2
 
 	//roundstart stuff
-	var/xeno_number_divider = 6
-	var/surv_number_divider = 25
+	var/xeno_number_divider = 5
+	var/surv_number_divider = 20
 
 /datum/configuration/proc/initialize_combat_defines(name,value)
 	value = text2num(value)

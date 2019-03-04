@@ -358,9 +358,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		name = "[specialty]"
 		if(map_tag == MAP_ICE_COLONY) name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
 		else name += " armor"
-	if(type == /obj/item/clothing/suit/storage/marine/class)
+	if(istype(src, /obj/item/clothing/suit/storage/marine/class))
 		var/armor_variation = rand(1,6)
-		icon_state = class + armor_variation
+		icon_state = "[class]" + "[armor_variation]"
 	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
@@ -376,7 +376,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/marine/class/light
 	name = "\improper M3-L pattern light armor"
 	desc = "A lighter, cut down version of the standard M3 pattern armor. It sacrifices durability for more speed."
-	specialty = "\improper M3-H pattern light"
+	specialty = "\improper M3-L pattern light"
 	icon_state = "L1"
 	class = "L"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -389,9 +389,8 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "H1"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|HANDS|FEET
 	class = "H"
-	slowdown = SLOWDOWN_ARMOR_HEAVY
+	slowdown = SLOWDOWN_ARMOR_HEAVIER
 	armor = list(melee = 60, bullet = 80, laser = 50, energy = 40, bomb = 40, bio = 10, rad = 10)
-
 
 //===========================//SPECIALIST\\================================\\
 //=======================================================================\\
@@ -540,6 +539,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "pmc_armor"
 	armor = list(melee = 55, bullet = 80, laser = 42, energy = 38, bomb = 20, bio = 15, rad = 15)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -572,6 +572,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
 	icon_state = "heavy_armor"
 	slowdown = SLOWDOWN_ARMOR_HEAVY
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
 	armor = list(melee = 85, bullet = 90, laser = 55, energy = 65, bomb = 20, bio = 20, rad = 20)
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/commando

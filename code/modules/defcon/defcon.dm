@@ -79,14 +79,13 @@ var/global/datum/defcon/defcon_controller = new
 	if(!remaining_reward_points) //No points - can't buy anything
 		return can_purchase
 
-	for(var/datum/defcon_reward/str in defcon_reward_list)
-		if (can_purchase_reward(str))
+	for(var/str in defcon_reward_list)
+		if (can_purchase_reward(defcon_reward_list[str]))
 			can_purchase += str //can purchase!
 
 	return can_purchase
 
-/datum/defcon/proc/can_purchase_reward(var/reward_name)
-	var/datum/defcon_reward/dr = defcon_reward_list[reward_name]
+/datum/defcon/proc/can_purchase_reward(var/datum/defcon_reward/dr)
 	if(current_defcon_level > dr.minimum_defcon_level)
 		return FALSE //required DEFCON level not reached
 	if(remaining_reward_points < dr.cost)

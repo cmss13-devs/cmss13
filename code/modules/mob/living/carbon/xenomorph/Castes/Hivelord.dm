@@ -7,7 +7,7 @@
 	melee_damage_upper = 20
 	max_health = 220
 	plasma_gain = 0.044
-	plasma_max = 900
+	plasma_max = 1000
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
 	deevolves_to = "Drone"
@@ -29,7 +29,7 @@
 	melee_damage_upper = 25
 	max_health = 230
 	plasma_gain = 0.045
-	plasma_max = 900
+	plasma_max = 1100
 	armor_deflection = 10
 	tacklemin = 3
 	tacklemax = 4
@@ -44,7 +44,7 @@
 	melee_damage_upper = 30
 	max_health = 250
 	plasma_gain = 0.05
-	plasma_max = 1000
+	plasma_max = 1100
 	armor_deflection = 15
 	tacklemin = 4
 	tacklemax = 5
@@ -60,7 +60,7 @@
 	melee_damage_upper = 35
 	max_health = 280
 	plasma_gain = 0.08
-	plasma_max = 1100
+	plasma_max = 1200
 	armor_deflection = 18
 	tacklemin = 5
 	tacklemax = 6

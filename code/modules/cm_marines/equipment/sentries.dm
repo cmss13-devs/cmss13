@@ -21,17 +21,17 @@
 	storage_slots = 6
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 
-	New()
-		..()
-		spawn(1)
-			var/obj/item/stack/sheet/plasteel/plasteel_stack = new(src)
-			plasteel_stack.amount = 20
-			var/obj/item/stack/sheet/metal/metal_stack = new(src)
-			metal_stack.amount = 10
-			new /obj/item/device/turret_top(src)
-			new /obj/item/device/turret_sensor(src)
-			new /obj/item/cell(src)
-			new /obj/item/ammo_magazine/sentry(src)
+/obj/item/storage/box/sentry/New()
+	..()
+	spawn(1)
+		var/obj/item/stack/sheet/plasteel/plasteel_stack = new(src)
+		plasteel_stack.amount = 20
+		var/obj/item/stack/sheet/metal/metal_stack = new(src)
+		metal_stack.amount = 10
+		new /obj/item/device/turret_top(src)
+		new /obj/item/device/turret_sensor(src)
+		new /obj/item/cell/high(src)
+		new /obj/item/ammo_magazine/sentry(src)
 
 /obj/machinery/marine_turret_frame
 	name = "\improper UA 571-C turret frame"
@@ -281,7 +281,7 @@
 	var/health_max = 200
 	stat = 0 //Used just like mob.stat
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?
-	var/obj/item/cell/cell = null
+	var/obj/item/cell/high/cell = null
 	var/burst_fire = 0
 	var/burst_scatter_mult = 4
 	var/obj/machinery/camera/camera = null
@@ -297,36 +297,36 @@
 	var/angle = 1
 	var/list/angle_list = list(180,135,90,60,30)
 
-	New()
-		spark_system = new /datum/effect_system/spark_spread
-		spark_system.set_up(5, 0, src)
-		spark_system.attach(src)
-		burst_scatter_mult = config.lmed_scatter_value
-		cell = new (src)
-		camera = new (src)
-		camera.network = list("military")
-		camera.c_tag = "[name] ([rand(0, 1000)])"
-		spawn(2)
-			stat = 0
-			//processing_objects.Add(src)
-		ammo = ammo_list[ammo]
-		start_processing()
+/obj/machinery/marine_turret/New()
+	spark_system = new /datum/effect_system/spark_spread
+	spark_system.set_up(5, 0, src)
+	spark_system.attach(src)
+	burst_scatter_mult = config.lmed_scatter_value
+	cell = new (src)
+	camera = new (src)
+	camera.network = list("military")
+	camera.c_tag = "[name] ([rand(0, 1000)])"
+	spawn(2)
+		stat = 0
+		//processing_objects.Add(src)
+	ammo = ammo_list[ammo]
+	start_processing()
 
-	Dispose() //Clear these for safety's sake.
-		if(operator)
-			operator.unset_interaction()
-			operator = null
-		if(camera)
-			cdel(camera)
-			camera = null
-		if(cell)
-			cdel(cell)
-			cell = null
-		if(target)
-			target = null
-		SetLuminosity(0)
-		//processing_objects.Remove(src)
-		. = ..()
+/obj/machinery/marine_turret/Dispose() //Clear these for safety's sake.
+	if(operator)
+		operator.unset_interaction()
+		operator = null
+	if(camera)
+		cdel(camera)
+		camera = null
+	if(cell)
+		cdel(cell)
+		cell = null
+	if(target)
+		target = null
+	SetLuminosity(0)
+	//processing_objects.Remove(src)
+	. = ..()
 
 /obj/machinery/marine_turret/attack_hand(mob/user as mob)
 	if(isYautja(user))

@@ -1,6 +1,0 @@
-author: NGGJamie
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed the ability to call in DEFCON assets."

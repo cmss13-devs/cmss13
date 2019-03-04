@@ -72,7 +72,7 @@ Additional game mode variables.
 	var/monkey_amount		= 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types	= list() //What type of monkeys do we spawn
 	var/latejoin_tally		= 0 //How many people latejoined Marines
-	var/latejoin_larva_drop = 12 //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	var/latejoin_larva_drop = 4 //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 
 	//Role Authority set up.
 	var/role_instruction 	= 0 // 1 is to replace, 2 is to add, 3 is to remove.

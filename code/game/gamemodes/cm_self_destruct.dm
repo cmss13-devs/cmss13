@@ -254,6 +254,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if(M && M.loc) //Who knows, maybe they escaped, or don't exist anymore.
 				T = get_turf(M)
 				if(T.z in z_levels)
+					if(istype(M.loc, /obj/structure/closet/secure_closet/freezer/fridge))
+						continue
 					M.death()
 				else
 					if(play_anim)

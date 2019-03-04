@@ -3,30 +3,29 @@
 /turf/open/space,
 /area/space)
 "ab" = (
-/turf/closed/wall/indestructible,
+/turf/closed/wall/almayer/outer,
 /area/tdome)
 "ac" = (
 /obj/structure/closet/secure_closet/bar,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "ad" = (
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "ae" = (
 /obj/machinery/gibber,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "af" = (
 /obj/machinery/vending/cigarette,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ag" = (
@@ -36,9 +35,8 @@
 /obj/item/reagent_container/food/drinks/cans/beer,
 /obj/item/tool/lighter/zippo,
 /obj/item/storage/fancy/cigarettes,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ah" = (
@@ -47,49 +45,44 @@
 /obj/item/reagent_container/food/drinks/cans/cola,
 /obj/structure/table,
 /obj/item/ashtray/glass,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ai" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "aj" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /obj/item/storage/box/drinkingglasses,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ak" = (
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "al" = (
 /obj/machinery/vending/coffee,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "am" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "an" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "ao" = (
@@ -97,24 +90,21 @@
 /obj/effect/landmark{
 	name = "tdomeobserve"
 	},
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ap" = (
 /obj/structure/disposalpipe/trunk,
 /obj/structure/disposaloutlet,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "aq" = (
 /obj/machinery/vending/snack,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ar" = (
@@ -135,42 +125,39 @@
 	pixel_y = 3
 	},
 /obj/structure/table,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "as" = (
 /obj/structure/table,
 /obj/machinery/microwave,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "at" = (
 /obj/structure/table/reinforced,
-/turf/open/floor{
-	icon_state = "white"
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile_old"
 	},
 /area/tdome)
 "au" = (
 /obj/machinery/computer/security/telescreen,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "av" = (
 /obj/item/device/camera,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "aw" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ax" = (
@@ -179,9 +166,8 @@
 /obj/effect/landmark{
 	name = "tdomeobserve"
 	},
-/turf/open/floor{
-	icon_state = "redbluefull";
-	dir = 8
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeobserve)
 "ay" = (
@@ -191,24 +177,18 @@
 	},
 /area/space)
 "az" = (
-/turf/open/floor{
-	icon_state = "plating";
-	name = "plating"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/tdome)
 "aA" = (
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
-	},
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor,
 /area/tdome)
 "aB" = (
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
-	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/window/framed/almayer/hull,
 /turf/open/floor,
 /area/tdome)
 "aC" = (
@@ -226,14 +206,20 @@
 /area/space)
 "aD" = (
 /obj/machinery/igniter,
-/turf/open/floor,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
 /area/tdome)
 "aE" = (
-/turf/open/floor,
+/turf/open/floor/almayer,
 /area/tdome)
 "aF" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
 /area/tdome)
 "aG" = (
 /turf/open/space/transit/north/shuttlespace_ns10,
@@ -245,30 +231,34 @@
 /obj/effect/landmark{
 	name = "tdome2"
 	},
-/turf/open/floor{
-	icon_state = "plating";
-	name = "plating"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/tdome/tdome2)
 "aJ" = (
 /obj/machinery/door/poddoor{
-	id = "thunderdome";
-	name = "Thunderdome Blast Door"
+	name = "Thunderdome Blast Door";
+	icon_state = "pdoor1";
+	dir = 8;
+	id = "thunderdome"
 	},
-/turf/open/floor{
-	icon_state = "plating";
-	name = "plating"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/tdome)
 "aK" = (
-/turf/open/floor{
+/turf/open/floor/almayer{
+	tag = "icon-red (WEST)";
 	icon_state = "red";
 	dir = 8
 	},
 /area/tdome)
 "aL" = (
-/turf/open/floor{
-	icon_state = "green";
+/turf/open/floor/almayer{
+	tag = "icon-blue (EAST)";
+	icon_state = "blue";
 	dir = 4
 	},
 /area/tdome)
@@ -276,9 +266,9 @@
 /obj/effect/landmark{
 	name = "tdome1"
 	},
-/turf/open/floor{
-	icon_state = "plating";
-	name = "plating"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/tdome/tdome1)
 "aN" = (
@@ -389,7 +379,10 @@
 	icon_state = "intact";
 	dir = 5
 	},
-/turf/open/floor,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
 /area/tdome)
 "bc" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
@@ -397,7 +390,10 @@
 	icon_state = "map";
 	tag = "icon-manifold (NORTH)"
 	},
-/turf/open/floor,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
 /area/tdome)
 "bd" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -405,7 +401,10 @@
 	icon_state = "intact";
 	dir = 9
 	},
-/turf/open/floor,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
 /area/tdome)
 "be" = (
 /obj/effect/step_trigger/teleporter/random{
@@ -422,7 +421,7 @@
 /area/space)
 "bf" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/turf/open/floor,
+/turf/open/floor/almayer,
 /area/tdome)
 "bg" = (
 /turf/open/space/transit/north/shuttlespace_ns9,
@@ -464,10 +463,7 @@
 /turf/open/floor,
 /area/tdome)
 "bl" = (
-/obj/structure/window/reinforced{
-	dir = 5;
-	health = 80
-	},
+/obj/structure/window/framed/almayer/hull,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/open/floor,
 /area/tdome)
@@ -475,9 +471,8 @@
 /turf/open/space/transit/north/shuttlespace_ns7,
 /area/space)
 "bn" = (
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bo" = (
@@ -487,23 +482,20 @@
 /obj/effect/landmark{
 	name = "tdomeadmin"
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bp" = (
 /obj/item/tool/extinguisher,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bq" = (
 /obj/machinery/atmospherics/valve,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "br" = (
@@ -514,9 +506,8 @@
 /obj/effect/landmark{
 	name = "tdomeadmin"
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bs" = (
@@ -524,9 +515,8 @@
 /area/space)
 "bt" = (
 /obj/machinery/computer/security/telescreen,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bu" = (
@@ -536,16 +526,14 @@
 /obj/machinery/portable_atmospherics/canister/sleeping_agent{
 	pixel_x = 1
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bv" = (
 /obj/item/tool/wrench,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bw" = (
@@ -553,9 +541,8 @@
 	dir = 1
 	},
 /obj/machinery/disposal,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bx" = (
@@ -563,9 +550,8 @@
 /area/space)
 "by" = (
 /obj/structure/bed/chair,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bz" = (
@@ -586,9 +572,8 @@
 /area/space)
 "bB" = (
 /obj/structure/table,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bC" = (
@@ -603,9 +588,8 @@
 /obj/item/explosive/grenade/chem_grenade/cleaner,
 /obj/item/explosive/grenade/chem_grenade/cleaner,
 /obj/structure/table,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bD" = (
@@ -613,9 +597,8 @@
 	id = "thunderdomeaxe";
 	name = "Thunderdome Axe Supply"
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bE" = (
@@ -623,9 +606,8 @@
 	id = "thunderdomegen";
 	name = "Thunderdome General Supply"
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bF" = (
@@ -633,9 +615,8 @@
 	id = "thunderdomehea";
 	name = "Thunderdome Heavy Supply"
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bG" = (
@@ -643,9 +624,8 @@
 	id = "thunderdome";
 	name = "Thunderdome Blast Door Control"
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bH" = (
@@ -656,9 +636,8 @@
 	icon_state = "tabledir";
 	dir = 9
 	},
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bI" = (
@@ -666,33 +645,29 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/bruise_pack,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bJ" = (
 /obj/structure/table,
 /obj/item/storage/box/handcuffs,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bK" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bL" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
-/turf/open/floor{
-	icon_state = "redyellowfull";
-	dir = 5
+/turf/open/floor/prison{
+	icon_state = "kitchen"
 	},
 /area/tdome/tdomeadmin)
 "bM" = (
@@ -1738,7 +1713,9 @@
 /turf/open/floor/plating,
 /area/centcom/living)
 "dY" = (
-/turf/closed/wall/indestructible,
+/turf/closed/wall/almayer/outer{
+	name = "reinforced hull"
+	},
 /area/space)
 "dZ" = (
 /obj/item/clothing/mask/gas/yautja,
@@ -2365,11 +2342,10 @@
 /turf/open/floor/almayer,
 /area/centcom/living)
 "fn" = (
-/turf/closed/wall/indestructible,
+/turf/closed/wall/almayer/outer{
+	name = "reinforced hull"
+	},
 /area/centcom/control)
-"fo" = (
-/turf/closed/wall/indestructible,
-/area/centcom/living)
 "fp" = (
 /obj/structure/table/reinforced,
 /obj/effect/decal/warning_stripes,
@@ -2437,39 +2413,39 @@
 /area/centcom/living)
 "fz" = (
 /obj/machinery/telecomms/receiver/preset_cent,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 9
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fA" = (
 /obj/machinery/telecomms/bus/preset_cent,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 1
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fB" = (
 /obj/machinery/telecomms/processor/preset_cent,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 1
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fC" = (
 /obj/machinery/telecomms/server/presets/centcomm,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 1
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fD" = (
 /obj/machinery/account_database{
 	name = "CentComm Accounts database"
 	},
-/turf/open/floor{
-	icon_state = "green";
-	dir = 5
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fE" = (
@@ -2557,14 +2533,15 @@
 /area/centcom/living)
 "fQ" = (
 /obj/machinery/telecomms/relay/preset/centcom,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 8
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fR" = (
-/turf/open/floor{
-	icon_state = "floor"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "fS" = (
@@ -2634,12 +2611,6 @@
 "fY" = (
 /turf/closed/mineral,
 /area/adminlevel/bunker01/caves)
-"fZ" = (
-/turf/open/floor{
-	icon_state = "green";
-	dir = 8
-	},
-/area/centcom/control)
 "ga" = (
 /obj/machinery/door/airlock/secure{
 	name = "\improper Meeting Chamber"
@@ -2663,21 +2634,23 @@
 /area/adminlevel/bunker01/caves)
 "gd" = (
 /obj/machinery/telecomms/allinone/interceptor,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 10
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "ge" = (
 /obj/machinery/telecomms/broadcaster/preset_cent,
-/turf/open/floor{
-	icon_state = "green"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "gf" = (
 /obj/machinery/telecomms/hub/preset_cent,
-/turf/open/floor{
-	icon_state = "green"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "gg" = (
@@ -2685,15 +2658,16 @@
 	badmin = 1;
 	name = "Master R&amp;D Server Controller"
 	},
-/turf/open/floor{
-	icon_state = "green"
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "gh" = (
 /obj/machinery/r_n_d/server/centcom,
-/turf/open/floor{
-	icon_state = "green";
-	dir = 6
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
 	},
 /area/centcom/control)
 "gi" = (
@@ -9704,6 +9678,11 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
+"wR" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor,
+/area/tdome)
 "zz" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/firealarm{
@@ -9811,6 +9790,12 @@
 "HB" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod18)
+"Iq" = (
+/obj/effect/landmark{
+	name = "tdome1"
+	},
+/turf/open/floor/almayer,
+/area/tdome/tdome1)
 "It" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -9833,6 +9818,40 @@
 	dir = 8
 	},
 /area/adminlevel/bunker01/hydroponics)
+"KZ" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer,
+/area/tdome)
+"Lu" = (
+/obj/effect/landmark{
+	name = "tdome2"
+	},
+/turf/open/floor/almayer,
+/area/tdome/tdome2)
+"Lv" = (
+/turf/open/floor/almayer{
+	tag = "icon-bluefull";
+	icon_state = "bluefull"
+	},
+/area/tdome)
+"Mq" = (
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/centcom/living)
+"NL" = (
+/obj/machinery/door/poddoor{
+	name = "Thunderdome Blast Door";
+	icon_state = "pdoor1";
+	dir = 4;
+	id = "thunderdome"
+	},
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/tdome)
 "Sk" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -9863,6 +9882,19 @@
 "TF" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod17)
+"TO" = (
+/obj/machinery/atmospherics/pipe/simple/visible,
+/turf/open/floor/almayer{
+	icon_regular_floor = "mono";
+	icon_state = "mono"
+	},
+/area/tdome)
+"Vk" = (
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
+	},
+/area/tdome)
 "Vp" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -10154,14 +10186,14 @@ aX
 aX
 ay
 ds
-dv
-dv
-dv
+Mq
+Mq
+Mq
 ds
+Mq
 dv
 dv
-dv
-dv
+Mq
 ds
 fa
 fj
@@ -10172,9 +10204,9 @@ dv
 dv
 eX
 ds
-dv
-dv
-dv
+Mq
+Mq
+Mq
 ds
 aa
 hp
@@ -10253,12 +10285,12 @@ am
 ab
 ab
 ab
-az
-az
-az
-az
-az
-az
+Vk
+Vk
+Vk
+Vk
+Vk
+Vk
 ab
 ab
 ab
@@ -10310,10 +10342,10 @@ dv
 dv
 dv
 ds
-dv
+Mq
 dM
 dv
-dv
+Mq
 ds
 fb
 fk
@@ -10404,14 +10436,14 @@ ad
 ar
 ab
 az
-az
+Vk
 aI
 aI
 aI
 aI
 aI
 aI
-az
+Vk
 az
 ab
 aa
@@ -10462,10 +10494,10 @@ dv
 dv
 dv
 ds
+Mq
 dv
 dv
-dv
-dv
+Mq
 ds
 fd
 fb
@@ -10556,14 +10588,14 @@ ad
 as
 ab
 az
-az
+Vk
 aI
+Lu
+Lu
+Lu
+Lu
 aI
-aI
-aI
-aI
-aI
-az
+Vk
 az
 ab
 aa
@@ -10708,14 +10740,14 @@ ad
 as
 ab
 az
-az
+Vk
 aI
+Lu
+Lu
+Lu
+Lu
 aI
-aI
-aI
-aI
-aI
-az
+Vk
 az
 ab
 aa
@@ -10860,14 +10892,14 @@ ad
 ad
 ab
 az
-az
+Vk
 aI
+Lu
+Lu
+Lu
+Lu
 aI
-aI
-aI
-aI
-aI
-az
+Vk
 az
 ab
 aa
@@ -11012,14 +11044,14 @@ an
 ad
 ab
 az
-az
+Vk
 aI
+Lu
+Lu
+Lu
+Lu
 aI
-aI
-aI
-aI
-aI
-az
+Vk
 az
 ab
 aa
@@ -11468,14 +11500,14 @@ ao
 ak
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bn
@@ -11620,14 +11652,14 @@ ao
 au
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bt
@@ -11772,14 +11804,14 @@ ao
 av
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bn
@@ -11924,14 +11956,14 @@ ao
 au
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bt
@@ -12076,14 +12108,14 @@ ao
 ak
 ao
 aA
-aE
-aE
-aE
-aE
-aE
-aE
-aE
-aE
+az
+az
+az
+az
+az
+az
+az
+az
 aA
 bo
 bn
@@ -12228,14 +12260,14 @@ ak
 ak
 ak
 aA
+az
 aE
-aE
-aE
+az
 aR
 aV
 bb
 aE
-aE
+az
 bk
 bp
 bn
@@ -12380,14 +12412,14 @@ ak
 ak
 ak
 aA
+az
 aE
-aE
-aE
+az
 aS
 aW
 bc
 bf
-bf
+TO
 bl
 bq
 bu
@@ -12532,14 +12564,14 @@ ak
 ak
 ak
 aA
+az
 aE
-aE
-aE
+az
 aR
 aV
 bd
 aE
-aE
+az
 bk
 bn
 bv
@@ -12684,14 +12716,14 @@ ao
 ak
 ao
 aA
-aE
-aE
-aE
-aE
-aE
-aE
-aE
-aE
+az
+az
+az
+az
+az
+az
+az
+az
 aA
 bo
 bn
@@ -12836,14 +12868,14 @@ ao
 au
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bt
@@ -12988,14 +13020,14 @@ ao
 av
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bn
@@ -13140,14 +13172,14 @@ ao
 au
 ao
 aA
+az
 aE
 aE
 aE
 aE
 aE
 aE
-aE
-aE
+az
 aA
 bo
 bt
@@ -13293,14 +13325,14 @@ aw
 ax
 aB
 aF
+KZ
+KZ
+KZ
+KZ
+KZ
+KZ
 aF
-aF
-aF
-aF
-aF
-aF
-aF
-aB
+wR
 br
 bw
 by
@@ -13350,19 +13382,19 @@ dv
 dv
 dv
 ds
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
 ds
 dv
 dv
@@ -13597,12 +13629,12 @@ ab
 ab
 ab
 ab
-aJ
-aJ
-aJ
-aJ
-aJ
-aJ
+NL
+NL
+NL
+NL
+NL
+NL
 ab
 ab
 ab
@@ -13748,14 +13780,14 @@ aa
 aa
 ab
 az
-az
+Lv
 aM
+Iq
+Iq
+Iq
+Iq
 aM
-aM
-aM
-aM
-aM
-az
+Lv
 az
 ab
 aa
@@ -13900,14 +13932,14 @@ aa
 aa
 ab
 az
-az
+Lv
 aM
+Iq
+Iq
+Iq
+Iq
 aM
-aM
-aM
-aM
-aM
-az
+Lv
 az
 ab
 aa
@@ -14052,14 +14084,14 @@ aa
 aa
 ab
 az
-az
+Lv
 aM
+Iq
+Iq
+Iq
+Iq
 aM
-aM
-aM
-aM
-aM
-az
+Lv
 az
 ab
 aa
@@ -14204,14 +14236,14 @@ aa
 aa
 ab
 az
-az
+Lv
 aM
+Iq
+Iq
+Iq
+Iq
 aM
-aM
-aM
-aM
-aM
-az
+Lv
 az
 ab
 aa
@@ -14356,14 +14388,14 @@ aa
 aa
 ab
 az
-az
+Lv
 aM
 aM
 aM
 aM
 aM
 aM
-az
+Lv
 az
 ab
 aa
@@ -14509,12 +14541,12 @@ aa
 ab
 ab
 ab
-az
-az
-az
-az
-az
-az
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 ab
 ab
 ab
@@ -15474,27 +15506,27 @@ bz
 aX
 ay
 ds
-dv
-dv
-dv
+Mq
+Mq
+Mq
 ds
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
-dy
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
+Mq
 ds
-dv
-dv
-dv
+Mq
+Mq
+Mq
 ds
 aa
 hq
@@ -16093,7 +16125,7 @@ aa
 fn
 fz
 fQ
-fZ
+fR
 gd
 fn
 aa
@@ -16850,10 +16882,10 @@ dY
 dY
 dY
 aa
-fo
-fo
-fo
-fo
+ds
+ds
+ds
+ds
 fn
 fn
 aa

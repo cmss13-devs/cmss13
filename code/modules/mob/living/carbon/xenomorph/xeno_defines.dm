@@ -374,12 +374,12 @@
 
 	isSlotOpen = FALSE
 
-/datum/hive_status/proc/handle_nuke_alert(var/timing)
+/datum/hive_status/proc/handle_nuke_alert(var/timing, var/area/loc)
 	if (!totalXenos.len) //sanity check!
 		return
 
 	if(timing)
-		xeno_message("<span class='xenoannounce'>The tallhosts have deployed a hive killer! Stop it at all costs!</span>",2, hivenumber)
+		xeno_message("<span class='xenoannounce'>The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!</span>",2, hivenumber)
 	else
 		xeno_message("<span class='xenoannounce'>The hive killer has been disabled! Rejoice!</span>",2, hivenumber)
 

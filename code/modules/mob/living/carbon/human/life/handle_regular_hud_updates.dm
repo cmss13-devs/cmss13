@@ -90,11 +90,6 @@
 			if(hud_used.locate_leader && hud_used.locate_leader.alpha && prob(25)) //not invisible, 25% to not call it all the time
 				locate_squad_leader()
 
-			if(hud_used.locate_nuke && bomb_set && prob(25))
-				locate_nearest_nuke()
-			else if(!bomb_set)
-				hud_used.locate_nuke.icon_state = "temp0"
-
 			if(hud_used.healths)
 				if(analgesic)
 					hud_used.healths.icon_state = "health_health_numb"

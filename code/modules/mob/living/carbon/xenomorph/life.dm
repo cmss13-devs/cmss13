@@ -330,12 +330,6 @@
 	if(!stat && prob(25)) //Only a 25% chance of proccing the queen locator, since it is expensive and we don't want it firing every tick
 		queen_locator()
 
-	if(hud_used.locate_nuke && prob(25))
-		if(bomb_set)
-			locate_nearest_nuke()
-		else
-			hud_used.locate_nuke.icon_state = "temp0"
-
 	if(stat != DEAD) //Ladders have cameras now.
 		if(interactee)
 			interactee.check_eye(src)

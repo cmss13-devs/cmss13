@@ -206,7 +206,7 @@ var/bomb_set = FALSE
 
 /obj/machinery/nuclearbomb/proc/announce_xenos()
 	for(var/datum/hive_status/hive in hive_datum)
-		hive.handle_nuke_alert(timing)
+		hive.handle_nuke_alert(timing, get_area(loc))
 
 /obj/machinery/nuclearbomb/ex_act(severity)
 	return
@@ -233,7 +233,7 @@ var/bomb_set = FALSE
 	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
 
 	sleep(100)
-	explosion_rec(loc, 500, 50)
+	explosion_rec(loc, 500, 150)
 	cdel(src)
 	r_TRU
 

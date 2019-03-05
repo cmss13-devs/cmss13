@@ -280,7 +280,8 @@
 	var/txt = copytext(sanitize(input("Set the hive's orders to what? Leave blank to clear it.", "Hive Orders","")), 1, MAX_MESSAGE_LEN)
 
 	if(txt)
-		xeno_message("<B>The Queen has given a new order. Check Status panel for details.</B>",3,hivenumber)
+		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
+		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
 		hive.hive_orders = txt
 	else
 		hive.hive_orders = ""

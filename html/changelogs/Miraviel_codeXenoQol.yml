@@ -1,0 +1,8 @@
+author: Miraviel
+
+delete-after: True
+
+changes: 
+  - rscadd: "The last xenomorph now gets a warning that they are the last one."
+  - rscadd: "Larvae get the last hive order in the chat upon bursting."
+  - rscadd: "The hive order now displays in the chat."

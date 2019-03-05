@@ -539,19 +539,26 @@ Note that amputating the affected organ does in fact remove the infection from t
 			// let the GC handle the deletion of the wound
 
 		// Internal wounds get worse over time. Low temperatures (cryo) stop them.
-		if(W.internal && owner.bodytemperature >= 170 && !(owner.in_stasis == STASIS_IN_BAG))
-			var/bicardose = owner.reagents.get_reagent_amount("bicaridine")
-			var/inaprovaline = owner.reagents.get_reagent_amount("inaprovaline")
-			if(!(W.can_autoheal() || (bicardose && inaprovaline) || owner.reagents.get_reagent_amount("quickclot")))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
-				W.open_wound(0.1 * wound_update_accuracy)
-			if(bicardose >= 30)	//overdose of bicaridine begins healing IB
-				W.damage = max(0, W.damage - 0.2)
-
-			if(!owner.reagents.get_reagent_amount("quickclot")) //Quickclot stops bleeding, magic!
-				owner.blood_volume = max(0, owner.blood_volume - wound_update_accuracy * W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
-				if(prob(1 * wound_update_accuracy))
-					owner.custom_pain("You feel a stabbing pain in your [display_name]!", 1)
-
+		if(W.internal && !(owner.in_stasis == STASIS_IN_BAG))
+			if(owner.bodytemperature >= 170)
+				var/bicardose = owner.reagents.get_reagent_amount("bicaridine")
+				var/inaprovaline = owner.reagents.get_reagent_amount("inaprovaline")
+				if(!(W.can_autoheal() || (bicardose && inaprovaline) || owner.reagents.get_reagent_amount("quickclot")))	//bicaridine and inaprovaline stop internal wounds from growing bigger with time, unless it is so small that it is already healing
+					W.open_wound(0.1 * wound_update_accuracy)
+				if(bicardose >= 30)	//overdose of bicaridine begins healing IB
+					W.damage = max(0, W.damage - 0.2)
+				if(!owner.reagents.get_reagent_amount("quickclot")) //Quickclot stops bleeding, magic!
+					owner.blood_volume = max(0, owner.blood_volume - wound_update_accuracy * W.damage/40) //line should possibly be moved to handle_blood, so all the bleeding stuff is in one place.
+					if(prob(1 * wound_update_accuracy))
+						owner.custom_pain("You feel a stabbing pain in your [display_name]!", 1)
+			if(owner.bodytemperature < T0C && (owner.reagents.get_reagent_amount("cryoxadone") || owner.reagents.get_reagent_amount("clonexadone"))) // IB is healed in cryotubes
+				W.damage = max(0, W.damage - 0.5)
+				if(W.damage <= 0 && W.created + MINUTES_2 <= world.time)	// sped up healing due to cryo magics
+					wounds -= W
+					if(istype(owner.loc, /obj/machinery/atmospherics/unary/cryo_cell))	// check in case they cheesed the location
+						var/obj/machinery/atmospherics/unary/cryo_cell/cell = owner.loc
+						cell.display_message("internal bleeding is")
+					
 		if(owner.reagents.get_reagent_amount("thwei") >= 0.05) //Note: This used to turn internal wounds into external wounds, for QC's effect
 			W.internal = 0
 

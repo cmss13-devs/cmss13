@@ -229,8 +229,9 @@
 		if(beaker && !has_cryo_medicine)
 			beaker.reagents.trans_to(occupant, 1, 10)
 			beaker.reagents.reaction(occupant)
-
-
+		if(occupant.health >= 100)
+			display_message("external wounds are")
+			sleep(300)	// spam prevention
 
 /obj/machinery/atmospherics/unary/cryo_cell/proc/go_out()
 	if(!( occupant ))
@@ -253,6 +254,7 @@
 	update_use_power(1)
 	update_icon()
 	return
+	
 /obj/machinery/atmospherics/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if (stat & (NOPOWER|BROKEN))
 		usr << "\red The cryo cell is not functioning."
@@ -279,6 +281,10 @@
 	update_icon()
 	return 1
 
+/obj/machinery/atmospherics/unary/cryo_cell/proc/display_message(msg)
+	playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
+	visible_message("\icon[src] <span class='notice'>\The [src] pings: Patient's " + msg + " healed.</span>")
+	
 /obj/machinery/atmospherics/unary/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
 	set category = "Object"

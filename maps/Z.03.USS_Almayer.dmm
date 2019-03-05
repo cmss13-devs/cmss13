@@ -4949,6 +4949,8 @@
 	},
 /area/almayer/hull/upper_hull)
 "akf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	tag = "icon-redcorner (NORTH)";
 	icon_state = "redcorner";
@@ -11365,6 +11367,10 @@
 	},
 /area/almayer/medical/upper_medical)
 "axk" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 4;
+	on = 1
+	},
 /turf/open/floor/almayer{
 	tag = "icon-redcorner (WEST)";
 	icon_state = "redcorner";
@@ -12649,11 +12655,6 @@
 /turf/open/floor/wood,
 /area/almayer/medical/upper_medical)
 "aAi" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "aAj" = (
@@ -22385,7 +22386,6 @@
 /area/almayer/engineering/port_atmos)
 "aUL" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
 "aUM" = (
@@ -23042,6 +23042,7 @@
 	tag = ""
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/firing_range)
 "aWz" = (
@@ -23541,6 +23542,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "aXC" = (
@@ -23983,10 +23985,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (SOUTHEAST)";
-	icon_state = "intact-scrubbers";
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (WEST)";
+	icon_state = "map-scrubbers";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (WEST)";
+	icon_state = "map-supply";
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -24000,6 +24007,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -24017,6 +24029,11 @@
 	dir = 4
 	},
 /obj/structure/largecrate/random/barrel/red,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "aYy" = (
@@ -24030,6 +24047,11 @@
 	tag = "icon-map-scrubbers (NORTH)";
 	icon_state = "map-scrubbers";
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -24050,6 +24072,11 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "aYA" = (
@@ -24063,12 +24090,9 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/hangar)
-"aYB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -24085,6 +24109,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -24117,6 +24146,11 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -24145,21 +24179,9 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/hallways/aft_hallway)
-"aYH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/starboard_hallway)
 "aYI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
 "aYJ" = (
@@ -24735,6 +24757,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/bridgebunks)
+"aZB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_umbilical)
 "aZC" = (
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
@@ -24797,6 +24824,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "aZL" = (
@@ -25407,6 +25435,8 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bbc" = (
@@ -26683,24 +26713,17 @@
 	icon_state = "map-scrubbers";
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bdM" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hallways/hangar)
-"bdN" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
-/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bdO" = (
 /obj/machinery/landinglight/ds2/delayone{
@@ -26946,7 +26969,6 @@
 "beu" = (
 /obj/machinery/optable,
 /obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -27937,11 +27959,6 @@
 "bgs" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/surgery,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
-	},
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -28016,11 +28033,6 @@
 "bgy" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/surgery,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
-	},
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -29041,6 +29053,11 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
 	icon_state = "sterile_green_corner";
@@ -29381,6 +29398,11 @@
 	icon_state = "intact-supply";
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
 /turf/open/floor/almayer{
 	tag = "icon-green (WEST)";
 	icon_state = "green";
@@ -29397,6 +29419,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -29433,6 +29460,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -29483,6 +29515,11 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -29497,6 +29534,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -29514,6 +29556,11 @@
 	tag = "icon-intact-supply (NORTHWEST)";
 	icon_state = "intact-supply";
 	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -30344,6 +30391,7 @@
 /area/almayer/engineering/engineering_workshop)
 "bla" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-green (WEST)";
 	icon_state = "green";
@@ -31195,6 +31243,7 @@
 	req_one_access = list(2,3,12,19);
 	throw_range = 15
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-greencorner (NORTH)";
 	icon_state = "greencorner";
@@ -31965,6 +32014,23 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/surgery_hallway)
+"bok" = (
+/obj/structure/bed/stool,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/grunt_rnr)
 "bom" = (
 /obj/structure/table/almayer,
 /obj/item/facepaint/green,
@@ -32290,6 +32356,7 @@
 	icon_state = "door_open";
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -32555,7 +32622,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bps" = (
-/obj/structure/table/almayer,
+/obj/machinery/computer/crew,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -33022,6 +33089,7 @@
 	icon_state = "W"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-greencorner (WEST)";
 	icon_state = "greencorner";
@@ -33040,15 +33108,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/corporateliason)
-"bqC" = (
-/obj/machinery/light{
-	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "bqD" = (
 /obj/machinery/light{
 	tag = "icon-tube1 (WEST)";
@@ -33402,7 +33461,6 @@
 "bru" = (
 /obj/machinery/optable,
 /obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -33868,6 +33926,11 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-redcorner (WEST)";
 	icon_state = "redcorner";
@@ -33894,6 +33957,11 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/firing_range)
@@ -34263,6 +34331,16 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHWEST)";
+	icon_state = "intact-supply";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_umbilical)
 "btr" = (
@@ -34328,6 +34406,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-redcorner";
 	icon_state = "redcorner"
@@ -34376,25 +34455,6 @@
 	dir = 5
 	},
 /area/almayer/shipboard/port_missiles)
-"btE" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/hangar)
-"btF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHWEST)";
-	icon_state = "intact-supply";
-	dir = 9
-	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "btG" = (
 /obj/machinery/status_display{
 	pixel_y = 30
@@ -34460,6 +34520,11 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -34618,6 +34683,7 @@
 	icon_state = "W"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-greencorner (NORTH)";
 	icon_state = "greencorner";
@@ -35416,6 +35482,8 @@
 	icon_state = "door_open";
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -35433,6 +35501,7 @@
 	name = "\improper North West Ladders Shutters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -35610,14 +35679,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/engineering/lower_engineering)
-"bwk" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/hangar)
 "bwl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -35816,6 +35877,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -35914,6 +35978,11 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -35927,6 +35996,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -36045,6 +36119,7 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
 "bxm" = (
@@ -36421,8 +36496,10 @@
 "byb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/disposalpipe/junction{
+	tag = "icon-pipe-j1 (WEST)";
+	icon_state = "pipe-j1";
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
@@ -36554,6 +36631,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -38308,11 +38390,6 @@
 "bCf" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/surgery,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
-	},
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -38362,11 +38439,6 @@
 "bCj" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/surgery,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
-	},
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1";
@@ -38901,6 +38973,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -39484,6 +39561,11 @@
 	icon_state = "intact-supply";
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/weapon_room)
 "bEx" = (
@@ -39572,11 +39654,6 @@
 	},
 /area/almayer/hallways/hangar)
 "bEF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHEAST)";
-	icon_state = "intact-supply";
-	dir = 6
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -39586,6 +39663,16 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	tag = "icon-redcorner";
@@ -39838,6 +39925,11 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red";
 	icon_state = "red"
@@ -39930,6 +40022,11 @@
 	dir = 4
 	},
 /obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red";
 	icon_state = "red"
@@ -39944,6 +40041,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (EAST)";
+	icon_state = "map-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/almayer,
@@ -40253,19 +40355,6 @@
 	icon_state = "6"
 	},
 /area/shuttle/drop1/sulaco)
-"bFZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/almayer{
-	tag = "icon-red (EAST)";
-	icon_state = "red";
-	dir = 4
-	},
-/area/almayer/shipboard/weapon_room)
 "bGb" = (
 /turf/closed/wall/almayer,
 /area/almayer/hallways/port_hallway)
@@ -40972,6 +41061,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -41096,15 +41186,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHEAST)";
-	icon_state = "intact-supply";
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (WEST)";
+	icon_state = "map-supply";
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (NORTHEAST)";
-	icon_state = "intact-scrubbers";
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (WEST)";
+	icon_state = "map-scrubbers";
+	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -41242,10 +41332,10 @@
 	icon_state = "map-supply";
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (NORTH)";
+	icon_state = "map-scrubbers";
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
@@ -41486,11 +41576,15 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHWEST)";
-	icon_state = "intact-supply";
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (EAST)";
+	icon_state = "map-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (EAST)";
+	icon_state = "map-supply";
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
@@ -41592,6 +41686,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
 "bIn" = (
@@ -41852,6 +41947,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "bIH" = (
@@ -41888,16 +41984,6 @@
 	pixel_x = 0
 	},
 /obj/machinery/light,
-/turf/open/floor/almayer,
-/area/almayer/hallways/port_hallway)
-"bIK" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "bIM" = (
@@ -42051,7 +42137,10 @@
 	},
 /area/almayer/squads/req)
 "bJa" = (
-/obj/machinery/computer/crew,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -42257,15 +42346,6 @@
 	icon_state = "door_open";
 	dir = 2
 	},
-/turf/open/floor/almayer,
-/area/almayer/living/grunt_rnr)
-"bJv" = (
-/obj/machinery/door/firedoor/border_only/almayer{
-	tag = "icon-door_open";
-	icon_state = "door_open";
-	dir = 2
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "bJw" = (
@@ -42518,6 +42598,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bJY" = (
@@ -42560,20 +42641,12 @@
 	icon_state = "door_open";
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"
 	},
-/area/almayer/shipboard/weapon_room)
-"bKc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
 /area/almayer/shipboard/weapon_room)
 "bKd" = (
 /obj/structure/table/almayer,
@@ -42605,6 +42678,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "bKf" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTHEAST)";
 	icon_state = "red";
@@ -42645,7 +42719,9 @@
 	},
 /area/almayer/squads/delta)
 "bKl" = (
-/turf/open/floor/almayer,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/repair_bay)
 "bKm" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -42677,7 +42753,6 @@
 	},
 /area/almayer/hallways/repair_bay)
 "bKp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -42721,6 +42796,11 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 5
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
@@ -42853,13 +42933,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/grunt_rnr)
-"bKH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/grunt_rnr)
 "bKI" = (
 /obj/item/device/radio/intercom{
 	anyai = 1;
@@ -42876,6 +42949,7 @@
 "bKJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43180,6 +43254,11 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bLi" = (
@@ -43193,6 +43272,11 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
@@ -43220,7 +43304,6 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bLl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -43291,6 +43374,11 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (WEST)";
+	icon_state = "map-scrubbers";
+	dir = 8
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTHEAST)";
 	icon_state = "red";
@@ -43310,16 +43398,21 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (NORTH)";
+	icon_state = "map-supply";
+	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
@@ -43338,6 +43431,11 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
 "bLu" = (
@@ -43355,15 +43453,15 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/vehiclehangar)
 "bLv" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
 	dir = 4
 	},
 /obj/structure/cable{
@@ -43372,6 +43470,8 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43505,10 +43605,6 @@
 	},
 /area/almayer/medical/surgery_hallway)
 "bLH" = (
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 4;
-	on = 1
-	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
 	icon_state = "red";
@@ -43537,11 +43633,6 @@
 	tag = "icon-tube1 (EAST)";
 	icon_state = "tube1";
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHWEST)";
-	icon_state = "intact-supply";
-	dir = 9
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -44194,9 +44285,6 @@
 	dir = 4;
 	on = 1
 	},
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
 "bMQ" = (
@@ -44215,17 +44303,14 @@
 	},
 /area/almayer/engineering/engine_core)
 "bMR" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	tag = "icon-map-supply (EAST)";
-	icon_state = "map-supply";
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	tag = ""
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	tag = "icon-red (EAST)";
 	icon_state = "red";
@@ -44348,6 +44433,7 @@
 	icon_state = "1-2";
 	tag = ""
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-red (SOUTHEAST)";
 	icon_state = "red";
@@ -44361,6 +44447,16 @@
 	name = "\improper Pilot Workshop Shutters"
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -44406,6 +44502,11 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bNg" = (
@@ -44419,6 +44520,11 @@
 	d2 = 8;
 	icon_state = "1-8";
 	tag = ""
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
@@ -45057,6 +45163,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -45082,6 +45189,16 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	tag = "icon-redcorner (EAST)";
@@ -45203,6 +45320,16 @@
 /obj/machinery/alarm/almayer{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTH)";
 	icon_state = "red";
@@ -45218,6 +45345,16 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTH)";
@@ -45235,6 +45372,16 @@
 /obj/machinery/firealarm{
 	pixel_y = 28
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTH)";
 	icon_state = "red";
@@ -45242,11 +45389,20 @@
 	},
 /area/almayer/shipboard/weapon_room)
 "bOP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (EAST)";
+	icon_state = "map-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (EAST)";
+	icon_state = "map-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/weapon_room)
@@ -45507,6 +45663,11 @@
 	icon_state = "intact-supply";
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/weapon_room)
 "bPr" = (
@@ -45641,6 +45802,16 @@
 /area/almayer/squads/req)
 "bPE" = (
 /obj/effect/multitile_spawner/cm_armored/tank/decrepit,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHEAST)";
+	icon_state = "intact-supply";
+	dir = 5
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -47008,6 +47179,8 @@
 	icon_state = "1-2";
 	tag = ""
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -47644,6 +47817,8 @@
 	icon_state = "1-2";
 	tag = ""
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "bTJ" = (
@@ -47733,6 +47908,16 @@
 /area/almayer/living/tankerbunks)
 "bTW" = (
 /obj/structure/bed/chair,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -48297,6 +48482,11 @@
 	pixel_x = 0;
 	pixel_y = 28
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHEAST)";
+	icon_state = "intact-supply";
+	dir = 6
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "bVi" = (
@@ -48327,6 +48517,11 @@
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
@@ -48381,6 +48576,11 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -48402,6 +48602,11 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
@@ -48435,6 +48640,11 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "bVv" = (
@@ -48443,6 +48653,16 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
@@ -48743,6 +48963,16 @@
 	d2 = 8;
 	icon_state = "1-8";
 	tag = ""
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
@@ -49141,6 +49371,9 @@
 /area/almayer/living/tankerbunks)
 "bWS" = (
 /obj/machinery/light,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -49280,6 +49513,9 @@
 	name = "ship-grade camera";
 	network = list("almayer");
 	tag = ""
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -49982,6 +50218,11 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
 	icon_state = "sterile_green_corner";
@@ -50098,12 +50339,14 @@
 /area/almayer/hallways/stern_hallway)
 "bYD" = (
 /obj/machinery/light{
+	tag = "icon-tube1 (NORTH)";
+	icon_state = "tube1";
 	dir = 1
 	},
+/obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer{
-	tag = "icon-bluecorner (NORTH)";
-	icon_state = "cargo";
-	dir = 2
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/hallways/repair_bay)
 "bYE" = (
@@ -50698,7 +50941,11 @@
 /area/almayer/engineering/lower_engine_monitoring)
 "bZG" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/plating/plating_catwalk,
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 4;
+	on = 1
+	},
+/turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "bZH" = (
 /obj/machinery/firealarm{
@@ -51109,6 +51356,11 @@
 	id = "Hangar Lockdown";
 	name = "\improper Hangar Lockdown Blast Door";
 	opacity = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
@@ -52232,6 +52484,8 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "ccI" = (
@@ -52251,9 +52505,15 @@
 	},
 /area/almayer/hallways/hangar)
 "ccJ" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-NW-out";
-	icon_state = "NW-out"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
@@ -52269,6 +52529,16 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,12,19,22);
 	throw_range = 15
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -52424,6 +52694,12 @@
 	network = list("almayer");
 	tag = "icon-camera (EAST)"
 	},
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 8;
+	frequency = 1379;
+	id_tag = "mining_outpost_pump";
+	on = 1
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
 	icon_state = "red";
@@ -52519,6 +52795,8 @@
 	icon_state = "door_open";
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -52567,6 +52845,7 @@
 	name = "\improper South West Ladders Shutters"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -52748,6 +53027,16 @@
 	icon_state = "2-4";
 	layer = 2.1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_umbilical)
 "cdz" = (
@@ -52771,23 +53060,17 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "cdB" = (
-/obj/machinery/part_fabricator/dropship,
+/obj/machinery/autolathe,
 /turf/open/floor/almayer{
-	tag = "icon-bluecorner (NORTH)";
-	icon_state = "cargo";
-	dir = 2
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/hallways/repair_bay)
 "cdD" = (
 /obj/structure/closet/toolcloset,
-/obj/effect/decal/warning_stripes{
-	tag = "icon-W";
-	icon_state = "W"
-	},
 /turf/open/floor/almayer{
-	tag = "icon-orange (EAST)";
-	icon_state = "orange";
-	dir = 4
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
 /area/almayer/hallways/repair_bay)
 "cdE" = (
@@ -52874,6 +53157,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-greencorner (WEST)";
 	icon_state = "greencorner";
@@ -53331,6 +53615,10 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (WEST)";
 	icon_state = "orange";
@@ -53357,6 +53645,8 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "ceP" = (
@@ -53364,17 +53654,17 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/turf/open/floor/almayer{
-	tag = "icon-orange (EAST)";
-	icon_state = "orange";
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	tag = "icon-E";
+	icon_state = "E"
 	},
+/turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "ceQ" = (
 /obj/machinery/status_display{
 	pixel_y = 30
 	},
-/obj/machinery/autolathe,
+/obj/machinery/part_fabricator/dropship,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -53384,7 +53674,6 @@
 /obj/machinery/prop/almayer/computer{
 	pixel_y = 20
 	},
-/obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -53411,17 +53700,6 @@
 /turf/open/floor/almayer{
 	icon_regular_floor = "cargo_arrow";
 	icon_state = "cargo_arrow"
-	},
-/area/almayer/hallways/repair_bay)
-"ceV" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-W";
-	icon_state = "W"
-	},
-/turf/open/floor/almayer{
-	tag = "icon-orangecorner (EAST)";
-	icon_state = "orangecorner";
-	dir = 4
 	},
 /area/almayer/hallways/repair_bay)
 "ceW" = (
@@ -53534,6 +53812,7 @@
 "cfl" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cfm" = (
@@ -53713,6 +53992,10 @@
 	},
 /area/almayer/hallways/repair_bay)
 "cfL" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-NW-out";
+	icon_state = "NW-out"
+	},
 /turf/open/floor/almayer{
 	tag = "icon-orangecorner (NORTH)";
 	icon_state = "orangecorner";
@@ -53728,13 +54011,23 @@
 	},
 /area/almayer/hallways/repair_bay)
 "cfN" = (
-/turf/open/floor/almayer{
-	tag = "icon-orangecorner (EAST)";
-	icon_state = "orangecorner";
-	dir = 4
+/obj/effect/decal/warning_stripes{
+	tag = "icon-E";
+	icon_state = "E"
 	},
+/turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "cfO" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (NORTH)";
+	icon_state = "map-supply";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/repair_bay)
 "cfP" = (
@@ -53744,9 +54037,8 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	tag = "icon-orange (EAST)";
-	icon_state = "orange";
-	dir = 4
+	icon_regular_floor = "cargo_arrow";
+	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/repair_bay)
 "cfQ" = (
@@ -53761,6 +54053,16 @@
 	pixel_y = 30;
 	req_one_access = list(2,3,12,19,22);
 	throw_range = 15
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -53793,6 +54095,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-greencorner (NORTH)";
 	icon_state = "greencorner";
@@ -53864,14 +54167,25 @@
 "cgc" = (
 /obj/structure/table/almayer,
 /obj/item/storage/fancy/cigarettes,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cgd" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (NORTHEAST)";
-	icon_state = "intact-scrubbers";
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
 	},
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
@@ -54238,19 +54552,45 @@
 /area/almayer/hallways/stern_hallway)
 "cgL" = (
 /obj/item/tool/crowbar,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (WEST)";
+	icon_state = "map-scrubbers";
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/repair_bay)
 "cgM" = (
 /obj/item/trash/cigbutt,
-/turf/open/floor/almayer{
-	tag = "icon-orangecorner (EAST)";
-	icon_state = "orangecorner";
+/obj/effect/decal/warning_stripes{
+	tag = "icon-N";
+	icon_state = "N"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "cgN" = (
 /obj/machinery/firealarm{
 	pixel_y = 28
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
@@ -54266,6 +54606,16 @@
 	pixel_x = 0;
 	pixel_y = 28
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -54277,6 +54627,16 @@
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
@@ -54305,6 +54665,16 @@
 	},
 /area/almayer/hallways/repair_bay)
 "cgS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
+	},
 /turf/open/floor/almayer{
 	tag = "icon-orangecorner";
 	icon_state = "orangecorner"
@@ -54315,13 +54685,6 @@
 	dir = 2;
 	icon_state = "orange";
 	tag = "icon-orange (NORTH)"
-	},
-/area/almayer/hallways/repair_bay)
-"cgU" = (
-/turf/open/floor/almayer{
-	tag = "icon-orangecorner (WEST)";
-	icon_state = "orangecorner";
-	dir = 8
 	},
 /area/almayer/hallways/repair_bay)
 "cgV" = (
@@ -54344,6 +54707,7 @@
 	icon_state = "door_open";
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -54609,6 +54973,7 @@
 "chE" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-redcorner";
 	icon_state = "redcorner"
@@ -55270,7 +55635,12 @@
 /area/almayer/hallways/port_hallway)
 "ciT" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHEAST)";
+	icon_state = "intact-supply";
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-red (EAST)";
 	icon_state = "red";
@@ -55315,15 +55685,6 @@
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/living/grunt_rnr)
-"ciY" = (
-/obj/structure/bed/chair/wood/normal{
-	tag = "icon-wooden_chair (EAST)";
-	icon_state = "wooden_chair";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "ciZ" = (
 /obj/structure/table/almayer,
@@ -55471,16 +55832,12 @@
 /area/almayer/shipboard/brig_cells)
 "cjw" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (NORTHEAST)";
-	icon_state = "intact-supply";
-	dir = 5
-	},
 /obj/machinery/light{
 	tag = "icon-tube1 (WEST)";
 	icon_state = "tube1";
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-red (EAST)";
 	icon_state = "red";
@@ -55492,12 +55849,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8;
-	frequency = 1379;
-	id_tag = "mining_outpost_pump";
-	on = 1
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -55595,6 +55946,11 @@
 /obj/item/clothing/suit/chef/classic,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/clothing/head/chefhat,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -55602,6 +55958,16 @@
 "cjI" = (
 /obj/structure/table/almayer,
 /obj/item/storage/donut_box,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "cjJ" = (
@@ -55628,6 +55994,11 @@
 /area/almayer/hallways/port_umbilical)
 "cjS" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (EAST)";
 	icon_state = "red";
@@ -55643,6 +56014,9 @@
 /obj/effect/decal/warning_stripes{
 	tag = "icon-SE-out";
 	icon_state = "SE-out"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -55915,6 +56289,7 @@
 /area/almayer/living/grunt_rnr)
 "ckN" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -56862,6 +57237,8 @@
 	icon_state = "door_open";
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/living/tankerbunks)
 "cmH" = (
@@ -56900,6 +57277,11 @@
 	pixel_x = 0
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
 "cmJ" = (
@@ -56972,16 +57354,6 @@
 	icon_state = "floor5"
 	},
 /area/almayer/evacuation/pod16)
-"cmV" = (
-/obj/machinery/camera/autoname/almayer{
-	dir = 2;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = ""
-	},
-/turf/closed/wall/almayer/outer,
-/area/almayer/hull/lower_hull)
 "cmW" = (
 /turf/open/shuttle/escapepod{
 	tag = "icon-floor12";
@@ -57881,6 +58253,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "ctO" = (
@@ -58015,6 +58388,22 @@
 	dir = 5
 	},
 /area/almayer/shipboard/brig)
+"cFh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHEAST)";
+	icon_state = "intact-supply";
+	dir = 5
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/weapon_room)
 "cFZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -58022,6 +58411,17 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/chief_mp_office)
+"cHm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_regular_floor = "cargo_arrow";
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/hallways/repair_bay)
 "cHJ" = (
 /obj/structure/table/almayer,
 /obj/machinery/prop/almayer/computer,
@@ -58052,6 +58452,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"cKQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 "cRb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -58082,6 +58493,19 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/chief_mp_office)
+"cRr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/tankerbunks)
 "cSr" = (
 /obj/structure/closet/secure_closet/brig{
 	name = "Isolation Locker"
@@ -58163,6 +58587,23 @@
 	icon_state = "floor9"
 	},
 /area/almayer/evacuation/pod18)
+"cYH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_umbilical)
+"cZY" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/hallways/vehiclehangar)
 "daj" = (
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
@@ -58440,6 +58881,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
+"dDR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/tankerbunks)
 "dHv" = (
 /obj/machinery/computer/security/almayer_network,
 /obj/structure/table/almayer,
@@ -58456,6 +58905,18 @@
 	dir = 4
 	},
 /area/almayer/shipboard/chief_mp_office)
+"dJt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/port_hallway)
 "dLV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -58472,6 +58933,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical)
+"dNZ" = (
+/obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
+	},
+/area/almayer/command/cic)
 "dOl" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/storage/fancy/cigar,
@@ -58495,6 +58966,13 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/vehiclehangar)
+"dSK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/tankerbunks)
 "dSX" = (
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
@@ -58519,6 +58997,25 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"dTv" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/tankerbunks)
 "dVd" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -58551,6 +59048,21 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig_cells)
+"ean" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/surgery_hallway)
 "eas" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -58644,6 +59156,14 @@
 	dir = 5
 	},
 /area/almayer/shipboard/brig_cells)
+"ejp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/repair_bay)
 "eko" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -58748,6 +59268,11 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -58765,6 +59290,11 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/almayer/medical/morgue)
+"erS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_umbilical)
 "esF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTH)";
@@ -58814,6 +59344,19 @@
 	dir = 10
 	},
 /area/almayer/shipboard/chief_mp_office)
+"eBC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHWEST)";
+	icon_state = "intact-supply";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_umbilical)
 "eGC" = (
 /obj/structure/window/framed/almayer/requisitions,
 /turf/open/floor/plating,
@@ -59090,6 +59633,26 @@
 	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
+"fya" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHEAST)";
+	icon_state = "intact-supply";
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/weapon_room)
 "fyD" = (
 /obj/machinery/vending/wallmed1{
 	pixel_y = 25
@@ -59308,6 +59871,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+"gbf" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	tag = ""
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (WEST)";
+	icon_state = "map-supply";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (WEST)";
+	icon_state = "map-scrubbers";
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/tankerbunks)
 "gdW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -59460,6 +60042,10 @@
 	},
 /area/almayer/shipboard/brig_cells)
 "grG" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (SOUTHWEST)";
 	icon_state = "red";
@@ -59871,6 +60457,15 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig_cells)
+"hEA" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-red";
+	icon_state = "red"
+	},
+/area/almayer/shipboard/firing_range)
 "hER" = (
 /obj/structure/toilet{
 	tag = "icon-toilet00 (WEST)";
@@ -59927,6 +60522,15 @@
 	dir = 5
 	},
 /area/almayer/shipboard/brig)
+"hLE" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	on = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/tankerbunks)
 "hMu" = (
 /obj/machinery/cryopod,
 /obj/machinery/light,
@@ -59946,6 +60550,12 @@
 	dir = 4
 	},
 /area/almayer/medical/operating_room_four)
+"hPy" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
 "hPN" = (
 /obj/machinery/computer/crew,
 /turf/open/floor/almayer{
@@ -60027,6 +60637,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"hZH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_umbilical)
 "iah" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -60105,6 +60723,15 @@
 	dir = 5
 	},
 /area/space)
+"iru" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (EAST)";
+	icon_state = "map-supply";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
 "iss" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
@@ -60134,6 +60761,19 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cic)
+"ivM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/repair_bay)
 "ixv" = (
 /obj/structure/bed/chair/comfy/black{
 	tag = "icon-comfychair (EAST)";
@@ -60193,6 +60833,12 @@
 	icon_state = "wall2"
 	},
 /area/almayer/evacuation/pod17)
+"iLq" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/navigation)
 "iLs" = (
 /obj/machinery/door_control{
 	dir = 1;
@@ -60281,6 +60927,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_one)
+"iRr" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-green (NORTH)";
+	icon_state = "green";
+	dir = 1
+	},
+/area/almayer/hallways/port_hallway)
 "iRx" = (
 /obj/machinery/light{
 	tag = "icon-tube1 (NORTH)";
@@ -60292,6 +60948,7 @@
 "iYJ" = (
 /obj/structure/table/almayer,
 /obj/effect/landmark/map_item,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-bluecorner (EAST)";
 	icon_state = "bluecorner";
@@ -60336,6 +60993,15 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig_cells)
+"jbX" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (EAST)";
+	icon_state = "map-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
 "jck" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -60344,6 +61010,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
 	dir = 4
 	},
 /turf/open/floor/almayer{
@@ -60383,6 +61054,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"jdk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHEAST)";
+	icon_state = "intact-supply";
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_umbilical)
 "jdC" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -60399,12 +61083,37 @@
 /obj/structure/rack,
 /turf/open/floor/almayer,
 /area/almayer/medical/upper_medical)
+"jeo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	tag = "icon-bluecorner";
+	icon_state = "bluecorner"
+	},
+/area/almayer/hallways/port_hallway)
+"jgl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-E-corner"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/vehiclehangar)
 "jgU" = (
 /obj/machinery/vending/wallmed1{
 	pixel_y = 25
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
+"jha" = (
+/obj/structure/closet/secure_closet/staff_officer/armory/shotgun,
+/obj/machinery/light,
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
+	},
+/area/almayer/command/cic)
 "jiO" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -60445,6 +61154,18 @@
 	},
 /turf/open/floor/wood,
 /area/almayer/living/captain_mess)
+"joN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/surgery_hallway)
 "jss" = (
 /obj/structure/bed/chair/wood/wings{
 	tag = "icon-wooden_chair_wings (WEST)";
@@ -60623,6 +61344,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
+"jMK" = (
+/turf/open/floor/almayer{
+	tag = "icon-orange (NORTHWEST)";
+	icon_state = "orange";
+	dir = 9
+	},
+/area/almayer/hallways/repair_bay)
 "jNj" = (
 /obj/machinery/camera/autoname/almayer{
 	dir = 2;
@@ -60689,6 +61417,17 @@
 	dir = 5
 	},
 /area/almayer/shipboard/brig)
+"jXk" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 8;
+	on = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/vehiclehangar)
 "jXJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -60761,7 +61500,7 @@
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
 	name = "\improper Millitary Police Armory";
-	req_access = list(24)
+	req_access = list(3)
 	},
 /obj/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
@@ -60781,14 +61520,14 @@
 	icon_state = "1-2";
 	tag = ""
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (SOUTHEAST)";
-	icon_state = "intact-supply";
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	tag = "icon-map-scrubbers (NORTH)";
 	icon_state = "map-scrubbers";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (NORTH)";
+	icon_state = "map-supply";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -60799,6 +61538,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"kkE" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (NORTH)";
+	icon_state = "map-scrubbers";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/repair_bay)
 "koB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -60858,6 +61610,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "kyC" = (
@@ -60870,6 +61623,19 @@
 	dir = 2
 	},
 /area/almayer/shipboard/brig_cells)
+"kyZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHEAST)";
+	icon_state = "intact-supply";
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_umbilical)
 "kzP" = (
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -60943,6 +61709,24 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
+"kGh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/navigation)
 "kGB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -60994,6 +61778,17 @@
 	dir = 2
 	},
 /area/almayer/command/cic)
+"kIm" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 4;
+	on = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-orange (WEST)";
+	icon_state = "orange";
+	dir = 8
+	},
+/area/almayer/hallways/starboard_umbilical)
 "kIW" = (
 /obj/structure/flora/pottedplant{
 	tag = "icon-plant-10";
@@ -61005,6 +61800,11 @@
 	dir = 4
 	},
 /area/almayer/shipboard/brig_cells)
+"kNY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
 "kPx" = (
 /obj/structure/table/almayer,
 /obj/item/storage/belt/medical/combatLifesaver,
@@ -61100,6 +61900,10 @@
 	dir = 2
 	},
 /area/almayer/shipboard/brig_cells)
+"kUH" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer,
+/area/almayer/hallways/starboard_hallway)
 "kVO" = (
 /obj/structure/table/almayer,
 /obj/item/device/flashlight/lamp,
@@ -61126,6 +61930,15 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/brig_cells)
+"lbU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/surgery_hallway)
 "ldi" = (
 /obj/structure/rack,
 /obj/item/tool/crowbar,
@@ -61206,17 +62019,14 @@
 /area/almayer/shipboard/brig_cells)
 "lpF" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/weapon/gun/shotgun/combat,
-/obj/machinery/camera/autoname/almayer{
-	dir = 2;
-	icon_state = "camera";
-	name = "ship-grade camera";
-	network = list("almayer");
-	tag = ""
-	},
+/obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig)
 "lsp" = (
@@ -61242,6 +62052,11 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
@@ -61439,6 +62254,10 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/chief_mp_office)
+"lKz" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/navigation)
 "lKW" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
@@ -61592,6 +62411,15 @@
 	dir = 8
 	},
 /area/almayer/hallways/port_hallway)
+"maM" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-orange";
+	icon_state = "orange"
+	},
+/area/almayer/hallways/repair_bay)
 "mco" = (
 /obj/structure/table/almayer,
 /obj/item/trash/USCMtray,
@@ -61786,6 +62614,23 @@
 	icon_state = "floor7"
 	},
 /area/almayer/evacuation/pod18)
+"mxT" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-N";
+	icon_state = "N"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/repair_bay)
 "myp" = (
 /obj/structure/table/almayer,
 /obj/item/device/camera,
@@ -61825,6 +62670,17 @@
 	dir = 2
 	},
 /area/almayer/command/cic)
+"mAS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 "mBj" = (
 /obj/machinery/flasher{
 	id = "Holding Flash";
@@ -61916,6 +62772,15 @@
 	icon_state = "floor11"
 	},
 /area/almayer/evacuation/pod17)
+"mLu" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-N";
+	icon_state = "N"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_umbilical)
 "mPI" = (
 /obj/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (EAST)";
@@ -61995,6 +62860,17 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/cryo_cells)
+"mWD" = (
+/obj/structure/closet/secure_closet/guncabinet/red,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/machinery/light,
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
+	},
+/area/almayer/command/cic)
 "mXV" = (
 /obj/machinery/door/airlock/almayer/generic{
 	dir = 2;
@@ -62031,6 +62907,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"mZM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer{
+	tag = "icon-red (WEST)";
+	icon_state = "red";
+	dir = 8
+	},
+/area/almayer/shipboard/navigation)
 "ndp" = (
 /obj/structure/table/almayer,
 /obj/item/device/taperecorder,
@@ -62073,12 +62957,34 @@
 	dir = 1
 	},
 /area/almayer/shipboard/brig_cells)
+"nig" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/tankerbunks)
 "niP" = (
 /obj/structure/table/almayer,
 /obj/item/storage/donut_box,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"nki" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 4;
+	on = 1
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "nlB" = (
 /obj/structure/table/almayer,
 /obj/item/storage/box/uscm_mre,
@@ -62222,6 +63128,19 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig_cells)
+"nEs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_umbilical)
 "nEZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -62276,6 +63195,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"nLN" = (
+/obj/machinery/light,
+/turf/open/floor/almayer{
+	tag = "icon-green";
+	icon_state = "green";
+	dir = 2
+	},
+/area/almayer/hallways/port_hallway)
 "nMm" = (
 /obj/structure/flora/pottedplant{
 	tag = "icon-plant-10";
@@ -62290,6 +63217,20 @@
 	dir = 1
 	},
 /area/almayer/hallways/port_hallway)
+"nOf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
+/turf/open/floor/almayer{
+	dir = 2;
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
+	},
+/area/almayer/hallways/repair_bay)
 "nUx" = (
 /obj/machinery/vending/MarineMed/Blood,
 /obj/machinery/light{
@@ -62328,6 +63269,25 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_hallway)
+"nYW" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 2;
+	name = "\improper Particle Cannon Systems Room";
+	req_access = list();
+	req_one_access = list(7,19)
+	},
+/obj/machinery/door/firedoor/border_only/almayer{
+	tag = "icon-door_open";
+	icon_state = "door_open";
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
+	},
+/area/almayer/shipboard/weapon_room)
 "obQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -62344,6 +63304,18 @@
 	dir = 9
 	},
 /area/almayer/shipboard/brig)
+"ohA" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/weapon_room)
 "oja" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -62431,9 +63403,15 @@
 	},
 /area/almayer/command/cichallway)
 "omN" = (
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 9
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
@@ -62510,6 +63488,11 @@
 	icon_state = "1-8";
 	tag = ""
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (EAST)";
+	icon_state = "map-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "oAc" = (
@@ -62549,6 +63532,19 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/chief_mp_office)
+"oJp" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (NORTH)";
+	icon_state = "map-supply";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (NORTH)";
+	icon_state = "map-scrubbers";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "oMs" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -62703,6 +63699,38 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/repair_bay)
+"pdS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHEAST)";
+	icon_state = "intact-supply";
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/repair_bay)
+"pfa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (NORTH)";
+	icon_state = "map-scrubbers";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
 "pfM" = (
 /obj/structure/bed/chair{
 	tag = "icon-chair (NORTH)";
@@ -62747,6 +63775,22 @@
 	dir = 8
 	},
 /area/almayer/medical/lower_medical)
+"pjn" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 1;
+	icon_state = "shutter0";
+	id = "vehicle1door";
+	name = "Vehicle Bay One";
+	opacity = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 "pnC" = (
 /obj/machinery/body_scanconsole,
 /turf/open/floor/almayer{
@@ -62862,6 +63906,45 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
+"pzw" = (
+/obj/machinery/door/poddoor/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "pdoor0";
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door";
+	opacity = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-test_floor4";
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/repair_bay)
+"pAR" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	tag = "icon-orange (EAST)";
+	icon_state = "orange";
+	dir = 4
+	},
+/area/almayer/hallways/starboard_umbilical)
 "pBg" = (
 /obj/machinery/light/small{
 	tag = "icon-bulb1 (NORTH)";
@@ -63124,8 +64207,26 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"pZo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_umbilical)
 "qcr" = (
 /obj/structure/foamedmetal,
 /turf/open/floor/plating,
@@ -63136,6 +64237,14 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/captain_mess)
+"qff" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "qfA" = (
 /turf/open/floor/almayer{
 	tag = "icon-silvercorner";
@@ -63155,6 +64264,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/cryo_cells)
+"qiB" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/chapel)
+"qld" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer,
+/area/almayer/hallways/starboard_umbilical)
 "qly" = (
 /obj/structure/table/almayer,
 /obj/item/clipboard,
@@ -63448,6 +64572,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"qTZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/starboard_umbilical)
 "qVC" = (
 /obj/structure/table/woodentable/fancy,
 /turf/open/floor/wood,
@@ -63536,6 +64673,11 @@
 	icon_state = "1-4";
 	tag = ""
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -63580,6 +64722,21 @@
 	dir = 1
 	},
 /area/almayer/medical/upper_medical)
+"rxK" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
 "ryt" = (
 /obj/machinery/door/poddoor/shutters/almayer{
 	dir = 1;
@@ -63644,6 +64801,18 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/weapon_room)
+"rBk" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 4;
+	on = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-orange (WEST)";
+	icon_state = "orange";
+	dir = 8
+	},
+/area/almayer/hallways/port_umbilical)
 "rBx" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	tag = "icon-map-scrubbers (EAST)";
@@ -63699,6 +64868,13 @@
 	icon_state = "redfull"
 	},
 /area/almayer/shipboard/brig)
+"rDG" = (
+/turf/open/floor/almayer{
+	tag = "icon-orange (WEST)";
+	icon_state = "orange";
+	dir = 8
+	},
+/area/almayer/hallways/repair_bay)
 "rDW" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light{
@@ -63811,6 +64987,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cic)
+"rPi" = (
+/obj/structure/table/almayer,
+/obj/item/spacecash/c10,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "rRh" = (
 /obj/structure/flora/pottedplant{
 	tag = "icon-plant-10";
@@ -63940,9 +65131,9 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	tag = "icon-orangecorner (WEST)";
-	icon_state = "orangecorner";
-	dir = 8
+	dir = 2;
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/hallways/port_hallway)
 "skl" = (
@@ -64054,6 +65245,41 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/starboard_hallway)
+"ssE" = (
+/obj/machinery/light{
+	tag = "icon-tube1 (NORTH)";
+	icon_state = "tube1";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-green (NORTH)";
+	icon_state = "green";
+	dir = 1
+	},
+/area/almayer/hallways/starboard_hallway)
+"ssP" = (
+/turf/open/floor/almayer{
+	tag = "icon-orange (SOUTHWEST)";
+	icon_state = "orange";
+	dir = 10
+	},
+/area/almayer/hallways/repair_bay)
+"ssW" = (
+/obj/structure/closet/secure_closet/guncabinet/red,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/combat,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	tag = "icon-redfull";
+	icon_state = "redfull"
+	},
+/area/almayer/command/cic)
+"sta" = (
+/obj/machinery/atmospherics/unary/vent_pump,
+/turf/open/floor/almayer,
+/area/almayer/shipboard/navigation)
 "swH" = (
 /obj/structure/table/almayer,
 /obj/item/device/radio/intercom{
@@ -64082,6 +65308,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig)
+"sym" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/weapon_room)
 "szj" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
@@ -64089,6 +65327,11 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
 	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (WEST)";
@@ -64182,6 +65425,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -64197,6 +65441,35 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"sJe" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
+"sJV" = (
+/obj/structure/bed/chair/wood/normal{
+	tag = "icon-wooden_chair (EAST)";
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (NORTH)";
+	icon_state = "map-supply";
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "sMc" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -64214,6 +65487,21 @@
 	icon_state = "wall1"
 	},
 /area/almayer/evacuation/pod17)
+"sNP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "sNR" = (
 /obj/structure/table/almayer,
 /obj/item/circuitboard/airlock,
@@ -64230,6 +65518,23 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/port_hallway)
+"sOS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-orange (NORTH)";
+	icon_state = "orange";
+	dir = 1
+	},
+/area/almayer/hallways/repair_bay)
 "sPQ" = (
 /obj/structure/window/framed/almayer/requisitions,
 /obj/machinery/door/poddoor/shutters/almayer{
@@ -64270,6 +65575,21 @@
 	dir = 4
 	},
 /area/almayer/shipboard/brig_cells)
+"sSY" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	tag = "icon-orange (EAST)";
+	icon_state = "orange";
+	dir = 4
+	},
+/area/almayer/hallways/port_umbilical)
 "sUE" = (
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -64342,6 +65662,12 @@
 	icon_state = "red"
 	},
 /area/almayer/shipboard/chief_mp_office)
+"tkq" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/weapon_room)
 "tnf" = (
 /obj/structure/foamedmetal,
 /turf/open/floor/plating,
@@ -64384,6 +65710,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"tqo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "tsy" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/almayer{
@@ -64391,6 +65732,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cichallway)
+"tuZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	tag = "icon-redcorner (WEST)";
+	icon_state = "redcorner";
+	dir = 8
+	},
+/area/almayer/shipboard/weapon_room)
 "tvF" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -64501,6 +65851,9 @@
 	layer = 2.1
 	},
 /obj/machinery/light/small,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -64561,6 +65914,31 @@
 	dir = 4
 	},
 /area/almayer/shipboard/brig)
+"tLL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 2;
+	icon_state = "orange";
+	tag = "icon-orange (NORTH)"
+	},
+/area/almayer/hallways/repair_bay)
+"tMa" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/hallways/port_hallway)
 "tMg" = (
 /obj/machinery/autodoc,
 /turf/open/floor/almayer{
@@ -64671,9 +66049,7 @@
 	},
 /area/almayer/command/cichallway)
 "tQY" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
+/obj/machinery/vending/MarineMed,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -64779,6 +66155,22 @@
 	dir = 5
 	},
 /area/almayer/shipboard/chief_mp_office)
+"ubs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (SOUTHEAST)";
+	icon_state = "intact-supply";
+	dir = 6
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 "ucL" = (
 /obj/machinery/flasher_button{
 	dir = 1;
@@ -64944,6 +66336,14 @@
 	icon_state = "cargo_arrow"
 	},
 /area/almayer/hallways/vehiclehangar)
+"uBw" = (
+/obj/machinery/light,
+/turf/open/floor/almayer{
+	tag = "icon-green";
+	icon_state = "green";
+	dir = 2
+	},
+/area/almayer/hallways/starboard_hallway)
 "uCU" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/almayer{
@@ -65011,6 +66411,11 @@
 	d2 = 4;
 	icon_state = "1-4";
 	tag = ""
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -65229,6 +66634,24 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/hallways/port_hallway)
+"vdW" = (
+/obj/structure/disposalpipe/junction{
+	tag = "icon-pipe-j1 (EAST)";
+	icon_state = "pipe-j1";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	tag = "icon-map-scrubbers (NORTH)";
+	icon_state = "map-scrubbers";
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	tag = "icon-map-supply (NORTH)";
+	icon_state = "map-supply";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/port_hallway)
 "vek" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -65282,9 +66705,9 @@
 	dir = 4
 	},
 /turf/open/floor/almayer{
-	tag = "icon-orange (EAST)";
+	tag = "icon-orange (SOUTHEAST)";
 	icon_state = "orange";
-	dir = 4
+	dir = 6
 	},
 /area/almayer/hallways/port_hallway)
 "vme" = (
@@ -65299,20 +66722,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/starboard_point_defense)
-"vnH" = (
-/obj/structure/window/framed/almayer,
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "bot_armory";
-	name = "\improper Armory Shutters"
-	},
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "bot_armory";
-	name = "\improper Armory Shutters"
-	},
-/turf/open/floor/plating,
-/area/almayer/shipboard/brig)
 "voX" = (
 /obj/machinery/light{
 	dir = 1
@@ -65328,6 +66737,11 @@
 	icon_state = "intact-supply";
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 6
+	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -65341,6 +66755,22 @@
 	tag = "icon-emerald (NORTHWEST)"
 	},
 /area/almayer/command/cic)
+"vql" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_regular_floor = "cargo_arrow";
+	icon_state = "cargo_arrow"
+	},
+/area/almayer/hallways/repair_bay)
 "vrr" = (
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull)
@@ -65386,6 +66816,16 @@
 	dir = 8
 	},
 /area/almayer/hallways/port_hallway)
+"vuZ" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-redcorner (NORTH)";
+	icon_state = "redcorner";
+	dir = 1
+	},
+/area/almayer/shipboard/weapon_room)
 "vyg" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -65516,6 +66956,17 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/command/cichallway)
+"vOm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-test_floor4";
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/vehiclehangar)
 "vOQ" = (
 /obj/structure/table/almayer,
 /obj/item/tool/stamp/denied{
@@ -65538,6 +66989,19 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig_cells)
+"vQl" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "vRK" = (
 /obj/structure/closet/secure_closet/military_police,
 /obj/item/reagent_container/spray/pepper,
@@ -65586,6 +67050,21 @@
 	dir = 5
 	},
 /area/almayer/command/cic)
+"vTx" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/starboard_hallway)
 "vWm" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -65667,10 +67146,16 @@
 	dir = 2
 	},
 /area/almayer/hallways/port_hallway)
+"wdQ" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/tankerbunks)
 "wev" = (
 /obj/machinery/optable,
 /obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -65796,7 +67281,6 @@
 "wkp" = (
 /obj/machinery/optable,
 /obj/item/tank/anesthetic,
-/obj/item/clothing/mask/breath/medical,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -65831,11 +67315,23 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/surgery_hallway)
+"wmS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-test_floor4";
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/vehiclehangar)
 "wqk" = (
 /obj/structure/bed/chair,
 /turf/open/floor/almayer,
@@ -65927,6 +67423,23 @@
 	icon_state = "redcorner"
 	},
 /area/almayer/shipboard/brig_cells)
+"wDa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/repair_bay)
 "wDb" = (
 /obj/machinery/bodyscanner,
 /obj/machinery/light/small,
@@ -65973,9 +67486,13 @@
 /area/almayer/hallways/vehiclehangar)
 "wJT" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/combat,
 /obj/item/weapon/gun/shotgun/combat,
 /obj/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
@@ -65999,6 +67516,24 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/chemistry)
+"wRH" = (
+/obj/structure/bed/chair/wood/normal{
+	tag = "icon-wooden_chair (WEST)";
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "wUz" = (
 /obj/structure/window/framed/almayer/requisitions,
 /obj/machinery/door/poddoor/shutters/almayer{
@@ -66020,6 +67555,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTH)";
 	icon_state = "blue";
@@ -66039,6 +67575,19 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/cryo_cells)
+"xbF" = (
+/obj/machinery/door/firedoor/border_only/almayer{
+	tag = "icon-door_open";
+	icon_state = "door_open";
+	dir = 2
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	tag = "icon-test_floor4";
+	icon_state = "test_floor4"
+	},
+/area/almayer/hallways/repair_bay)
 "xds" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -66063,6 +67612,22 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_two)
+"xmC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (NORTHWEST)";
+	icon_state = "intact-supply";
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/tankerbunks)
 "xnB" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -66076,6 +67641,16 @@
 	dir = 5
 	},
 /area/almayer/shipboard/brig_cells)
+"xpT" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 8;
+	on = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/hangar)
 "xqy" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
@@ -66206,6 +67781,17 @@
 	dir = 4
 	},
 /area/almayer/shipboard/brig_cells)
+"xFZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	tag = "icon-red";
+	icon_state = "red"
+	},
+/area/almayer/shipboard/firing_range)
 "xGJ" = (
 /obj/structure/curtain/medical,
 /turf/open/floor/almayer{
@@ -66214,6 +67800,14 @@
 	dir = 4
 	},
 /area/almayer/shipboard/brig_cells)
+"xGN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 "xHE" = (
 /turf/closed/shuttle/escapepod{
 	tag = "icon-wall15";
@@ -66226,6 +67820,26 @@
 	icon_state = "wall4"
 	},
 /area/almayer/evacuation/pod17)
+"xLC" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light{
+	tag = "icon-tube1 (NORTH)";
+	icon_state = "tube1";
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/starboard_hallway)
 "xLO" = (
 /turf/closed/shuttle/escapepod{
 	tag = "icon-wall14";
@@ -66277,6 +67891,15 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"xTq" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-N";
+	icon_state = "N"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/almayer/hallways/vehiclehangar)
 "xTR" = (
 /obj/structure/window/framed/almayer,
 /obj/machinery/door/poddoor/almayer{
@@ -66340,6 +67963,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"ycH" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/repair_bay)
 "ydM" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
@@ -66376,6 +68011,22 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"yll" = (
+/obj/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "vehicle1door";
+	name = "Vehicle Bay Two";
+	opacity = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hallways/vehiclehangar)
 
 (1,1,1) = {"
 aaa
@@ -76882,7 +78533,7 @@ avw
 akb
 axk
 bLH
-akf
+vuZ
 ald
 avw
 bHP
@@ -77077,21 +78728,21 @@ bAs
 bAO
 bCZ
 bDW
-bDW
-bDW
-bDW
-bDW
+fya
+ohA
+ohA
+ohA
 bKb
 akf
-amg
-aoa
-amg
-axk
-bKb
-bDW
-bDW
-bDW
-bDW
+iru
+kNY
+jbX
+tuZ
+nYW
+sym
+sym
+sym
+cFh
 bDW
 bPJ
 ald
@@ -77281,10 +78932,10 @@ bAP
 bDa
 bDa
 bEF
-bFZ
-bFZ
-bFZ
-bKc
+bNm
+bNm
+bNm
+bNh
 bKp
 bLl
 bLJ
@@ -77888,7 +79539,7 @@ aag
 bAs
 bBv
 aqu
-aqu
+tkq
 bFa
 alU
 amX
@@ -77904,7 +79555,7 @@ aoi
 azA
 alU
 bOO
-aqu
+tkq
 aqu
 bQG
 bAs
@@ -78502,13 +80153,13 @@ bQt
 alU
 bIw
 bJY
-aoi
-bLh
+sta
+rxK
 amX
 aAi
 azA
-bLh
-aoi
+pfa
+iLq
 bNo
 bNS
 alU
@@ -79114,8 +80765,8 @@ alU
 bXo
 oCi
 bLs
-bKq
-aoi
+mZM
+lKz
 grG
 bXY
 alU
@@ -79316,7 +80967,7 @@ bIA
 alU
 uDn
 bKf
-bLs
+kGh
 bLj
 aoi
 bNk
@@ -79512,7 +81163,7 @@ bzA
 bAt
 bBC
 bBC
-bBC
+jgl
 bBC
 bBC
 bIF
@@ -79528,7 +81179,7 @@ alU
 bOe
 nrt
 qyF
-bBC
+jgl
 bBC
 bBC
 apA
@@ -79715,7 +81366,7 @@ bzA
 bAu
 bBD
 bBD
-bBD
+vOm
 bBD
 bBD
 bJl
@@ -79731,7 +81382,7 @@ bNp
 bAu
 bBD
 bBD
-bBD
+vOm
 bBD
 cas
 bRb
@@ -79918,7 +81569,7 @@ bzH
 bAu
 bzA
 bzA
-bzA
+cKQ
 bzA
 bHC
 bJl
@@ -79934,7 +81585,7 @@ bNp
 bAu
 bzA
 bzA
-bzA
+cKQ
 bDD
 bzA
 bJl
@@ -80121,7 +81772,7 @@ bzO
 bAu
 bzA
 bDl
-bzA
+cKQ
 bFr
 bzA
 bJl
@@ -80137,7 +81788,7 @@ bNp
 bAu
 bzA
 bDl
-bzA
+cKQ
 bPX
 bzA
 bJl
@@ -80324,22 +81975,22 @@ bzZ
 bAu
 bzA
 bzA
-bzA
-bzA
-bzA
-bJl
-bKa
-bzA
-bzA
+ubs
+xGN
+xGN
+xTq
+yll
+xGN
+xGN
 bLv
-bzA
-bzA
-bzA
-bzA
-bNp
-bAu
-bzA
-bzA
+xGN
+xGN
+xGN
+xGN
+pjn
+cZY
+xGN
+xGN
 bPE
 bzA
 bzA
@@ -80527,7 +82178,7 @@ bAe
 bAu
 bzA
 bDl
-bzA
+mAS
 bDl
 bzA
 bJl
@@ -80543,7 +82194,7 @@ bNp
 bAu
 bzA
 bDl
-bzA
+mAS
 bDl
 bzA
 bJl
@@ -80730,7 +82381,7 @@ bAg
 bAu
 bzA
 bDD
-bzA
+mAS
 bFw
 bzA
 bJl
@@ -80746,7 +82397,7 @@ bNp
 bAu
 bzA
 bzA
-bzA
+mAS
 bzA
 bzA
 bJl
@@ -80933,7 +82584,7 @@ bAg
 bAu
 bBD
 bBD
-bBD
+wmS
 bFx
 bBD
 bJl
@@ -80949,7 +82600,7 @@ bNp
 bAu
 bBD
 bBD
-bBD
+wmS
 bBD
 bBD
 bJl
@@ -81136,7 +82787,7 @@ bAr
 bAI
 bBE
 bBE
-bBE
+jXk
 bBE
 bBE
 bJm
@@ -81152,7 +82803,7 @@ bzy
 bAI
 bBE
 bBE
-bBE
+jXk
 bBE
 bBE
 bJm
@@ -81938,7 +83589,7 @@ aPZ
 bhh
 bjL
 bmw
-bmw
+kIm
 bmw
 brO
 bmx
@@ -81974,7 +83625,7 @@ cdb
 cdw
 bGp
 cfy
-cfy
+rBk
 cfy
 cim
 cjl
@@ -82141,10 +83792,10 @@ aPZ
 bhh
 bjM
 bmx
-bmx
-bmx
-brP
-bmx
+eBC
+aZB
+qld
+kyZ
 bvT
 btO
 aYt
@@ -82174,10 +83825,10 @@ aYt
 aYt
 btO
 cdc
-cdx
-cev
-cdx
-cdx
+jdk
+mLu
+erS
+pZo
 cdx
 cin
 cjm
@@ -82344,10 +83995,10 @@ aPZ
 bhh
 bjM
 bmx
-bmx
+hZH
 bmx
 brP
-bmx
+qTZ
 bvT
 btO
 aYu
@@ -82377,10 +84028,10 @@ aYu
 aYu
 btO
 cdc
-cdx
+nEs
 cev
 cdx
-cdx
+cYH
 cdx
 cin
 cjm
@@ -82547,12 +84198,12 @@ aQa
 biR
 bjN
 bmy
-bmy
+pAR
 bmy
 brQ
 btp
 bvV
-bwk
+bvf
 aYv
 aZK
 aZK
@@ -82566,14 +84217,14 @@ aZK
 aZK
 bIe
 bKr
+aZK
+bvf
+bvf
+bvf
+bvf
+bvf
+bvf
 bPi
-bvf
-bvf
-bvf
-bvf
-bvf
-bvf
-bvf
 bvf
 bvf
 bvf
@@ -82583,7 +84234,7 @@ cdd
 cdy
 cew
 cfz
-cfz
+sSY
 cfz
 cio
 cjn
@@ -82769,7 +84420,6 @@ aTc
 aTc
 aTc
 aTc
-btE
 aTc
 aTc
 aTc
@@ -82777,6 +84427,7 @@ aTc
 aTc
 aTc
 aTc
+xpT
 aTc
 aTc
 aTc
@@ -82963,16 +84614,16 @@ aYw
 aTc
 aYt
 aYt
-bdN
 aYt
 aYt
 aYt
 aYt
 aYt
-bpj
-bqC
-brY
-btF
+aYt
+aYt
+blU
+aYt
+aYt
 aYt
 aYt
 bfY
@@ -83803,7 +85454,7 @@ bSv
 bSv
 bSv
 bVh
-bTH
+wdQ
 bSv
 bRF
 aKW
@@ -84005,7 +85656,7 @@ bSv
 bTn
 bTU
 bSv
-bTH
+dDR
 bTL
 bSv
 bRE
@@ -84208,7 +85859,7 @@ bSv
 con
 bTU
 bTY
-bTH
+dDR
 bTL
 bSv
 bRE
@@ -85629,7 +87280,7 @@ bSv
 bTH
 bTL
 bTL
-bVv
+dTv
 bTH
 bSv
 bRE
@@ -85825,12 +87476,12 @@ baI
 baI
 baI
 bGH
-bHB
+oJp
 bbb
 bSr
 cmG
 bTI
-bTI
+gbf
 bTI
 bVX
 bTH
@@ -86033,7 +87684,7 @@ bIz
 aTc
 bSv
 bTL
-bTL
+cRr
 bTL
 tpp
 rdb
@@ -86236,7 +87887,7 @@ bIz
 aTc
 bSv
 bTH
-bTL
+cRr
 bSv
 bSv
 bSv
@@ -86439,7 +88090,7 @@ bIz
 aTc
 bSv
 bTH
-bTL
+cRr
 bSv
 bWJ
 bWT
@@ -86642,7 +88293,7 @@ bIz
 aTc
 bSv
 bTR
-bTH
+nig
 bUb
 bWK
 bWU
@@ -86845,7 +88496,7 @@ bIz
 aTc
 bSv
 bTH
-bTH
+nig
 bSv
 bWM
 bXb
@@ -87048,7 +88699,7 @@ bIz
 aTc
 bSv
 bTH
-bTH
+nig
 bSv
 bSv
 bSv
@@ -87534,7 +89185,7 @@ aov
 akh
 atx
 qEk
-ato
+jha
 akh
 aKF
 ayI
@@ -87546,7 +89197,7 @@ awk
 akh
 fvB
 qEk
-auR
+mWD
 buX
 aKn
 aKz
@@ -87656,10 +89307,10 @@ btC
 bIz
 aTc
 bSv
-bTS
-bTS
-bTS
-bTS
+hLE
+xmC
+dSK
+dSK
 bXd
 bSv
 bRE
@@ -87735,7 +89386,7 @@ acX
 aic
 aov
 akh
-atx
+ssW
 qEk
 ato
 akh
@@ -87747,7 +89398,7 @@ aqN
 aDv
 aEC
 akh
-fvB
+dNZ
 qEk
 auR
 ceE
@@ -88034,7 +89685,7 @@ aRu
 aRu
 aSp
 aXn
-aYB
+bHB
 aZU
 baS
 bcq
@@ -88237,7 +89888,7 @@ aSp
 aRu
 aSp
 bCC
-aYB
+bHB
 aZV
 baI
 baI
@@ -88440,7 +90091,7 @@ aSp
 aRu
 aSp
 bLP
-aYB
+bHB
 aZW
 baI
 baI
@@ -88469,9 +90120,9 @@ bIz
 bLR
 bJo
 cdf
-cfO
-cfO
-cfO
+jMK
+rDG
+ssP
 ciG
 bIO
 bRG
@@ -88643,7 +90294,7 @@ aSp
 aRu
 aSp
 aXq
-aYB
+bHB
 aZX
 baI
 baI
@@ -88672,9 +90323,9 @@ bIz
 cde
 bIO
 cdf
-cfN
+ceW
 bZG
-cgS
+chv
 ciG
 bJo
 bRE
@@ -88846,7 +90497,7 @@ aSp
 aRu
 aSp
 aXn
-aYB
+bHB
 aZY
 baT
 bcr
@@ -88876,7 +90527,7 @@ cdf
 bJp
 ceM
 cfL
-cfO
+ejp
 chv
 ciI
 bJo
@@ -89049,7 +90700,7 @@ aSp
 aRu
 aSp
 aXn
-aYB
+bHB
 aZV
 baU
 bcs
@@ -89079,7 +90730,7 @@ cdf
 bJp
 ceN
 cfM
-ceU
+cHm
 chv
 ciJ
 bJo
@@ -89252,7 +90903,7 @@ aSp
 aRu
 aSp
 aXr
-aYB
+bHB
 aZW
 baV
 bct
@@ -89276,14 +90927,14 @@ bDs
 baI
 baI
 bGN
-btC
-bIz
-cdf
-bJp
+oJp
+sJe
+ycH
+xbF
 ceO
 bKl
 cgL
-chv
+maM
 ciG
 bJo
 bRE
@@ -89455,7 +91106,7 @@ aSp
 aSp
 aSp
 bwY
-aYB
+bHB
 aZX
 baU
 bcu
@@ -89485,7 +91136,7 @@ cdf
 bJp
 ceN
 cfM
-ceU
+vql
 chw
 ciG
 bJo
@@ -89658,7 +91309,7 @@ brU
 aVv
 aUy
 bwZ
-aYB
+bHB
 aZY
 baW
 bcv
@@ -89688,8 +91339,8 @@ cdf
 bJp
 ceP
 cfN
-cfO
-cgU
+wDa
+chv
 ciL
 bJo
 bRE
@@ -89861,7 +91512,7 @@ brU
 aVv
 aUy
 bwZ
-aYB
+bHB
 aZV
 baI
 baI
@@ -89890,9 +91541,9 @@ bIz
 cdg
 bJo
 ceQ
-cfO
-cfO
-cfO
+ceU
+mxT
+chv
 ciM
 bJo
 bRE
@@ -90064,7 +91715,7 @@ bsu
 aVv
 aUB
 bwZ
-aYB
+bHB
 aZW
 baI
 baI
@@ -90095,7 +91746,7 @@ bJo
 ceR
 cfP
 cgM
-cgS
+chv
 ciG
 bJo
 bRE
@@ -90267,7 +91918,7 @@ aSp
 aSp
 aSp
 bxa
-aYB
+bHB
 aZX
 baI
 baI
@@ -90470,7 +92121,7 @@ aSp
 aRu
 aSp
 aXr
-aYB
+bHB
 aZL
 baX
 bcw
@@ -90673,7 +92324,7 @@ aSp
 aRu
 aSp
 aXn
-aYB
+bHB
 aZM
 aTc
 bcc
@@ -90703,7 +92354,7 @@ aTc
 cdA
 ceS
 bJo
-bMZ
+pzw
 bMZ
 aLd
 bzF
@@ -90876,7 +92527,7 @@ aSp
 aRu
 aSp
 aXs
-aYB
+bHB
 aZU
 baO
 bcx
@@ -91079,7 +92730,7 @@ aSp
 aRu
 aSp
 aXt
-aYB
+bHB
 aTc
 baY
 baY
@@ -91109,7 +92760,7 @@ aTc
 cdA
 ceT
 bJo
-ceW
+sOS
 cgT
 aLd
 bPU
@@ -91919,10 +93570,10 @@ cbQ
 ccq
 bJo
 cdB
-ceU
-ceO
-bKl
-cgS
+jMK
+rDG
+ccJ
+cgT
 aLd
 aLd
 aLd
@@ -92094,7 +93745,7 @@ bsD
 btr
 aNd
 aXN
-aYH
+aYJ
 aNO
 baZ
 bcC
@@ -92122,8 +93773,8 @@ bHH
 bIC
 bJo
 bYD
-ceU
-ceO
+ceW
+pdS
 cgS
 chz
 aLd
@@ -92297,7 +93948,7 @@ bsw
 bts
 aWw
 aQh
-aYH
+aYJ
 aLG
 baZ
 bcD
@@ -92325,7 +93976,7 @@ cbR
 ccr
 bJo
 cdD
-ceV
+ceW
 ccJ
 sko
 chA
@@ -92496,11 +94147,11 @@ beE
 bgE
 boP
 bsv
-bsw
+hEA
 btr
 aWw
 aQh
-aYH
+aYJ
 bad
 baZ
 bBO
@@ -92530,7 +94181,7 @@ bJo
 cdE
 ceW
 cfO
-fzq
+nOf
 chB
 aLd
 aLJ
@@ -92699,11 +94350,11 @@ beF
 bmz
 boK
 bqq
-bsw
+xFZ
 btw
 aNd
 aQh
-aYH
+aYJ
 aLG
 noI
 bpv
@@ -92732,7 +94383,7 @@ bIE
 bJo
 cdF
 ceW
-cfO
+ivM
 fzq
 chC
 aLd
@@ -92902,11 +94553,11 @@ bkT
 bmF
 boK
 bqq
-bsw
+xFZ
 btx
 aWw
 bxj
-aYH
+aYJ
 aLG
 ott
 bpv
@@ -92935,8 +94586,8 @@ bIE
 bJo
 cdG
 ceW
-cfO
-fzq
+kkE
+tLL
 aLd
 aLd
 aLd
@@ -93138,7 +94789,7 @@ fSn
 bGb
 cdH
 ceX
-bHa
+bHc
 shc
 aLd
 aLf
@@ -93933,10 +95584,10 @@ bme
 bnU
 mkg
 fnm
-fnm
-fnm
+joN
+lbU
 wmQ
-bnU
+ean
 byb
 dld
 bAJ
@@ -94560,8 +96211,8 @@ sGr
 wVh
 ovo
 iYJ
-bUF
-bHW
+jeo
+dJt
 oVU
 bGb
 aLJ
@@ -96150,7 +97801,7 @@ bla
 bmL
 boR
 bqz
-aPd
+aQt
 bum
 bvW
 aXB
@@ -96182,7 +97833,7 @@ bHM
 bIG
 cdh
 cdM
-cbx
+hPy
 cfV
 cgX
 chE
@@ -96762,7 +98413,7 @@ aQF
 aQF
 aQF
 aQF
-bxu
+xLC
 byy
 rjV
 aXc
@@ -96965,7 +98616,7 @@ bra
 bsI
 bup
 aQF
-aXz
+vTx
 vhX
 tBF
 dyY
@@ -97161,7 +98812,7 @@ aNk
 bhx
 biL
 bjq
-aOR
+qiB
 bhx
 aNi
 brb
@@ -97198,7 +98849,7 @@ bIE
 bJw
 cfZ
 chG
-chG
+nki
 chG
 chG
 chG
@@ -97604,9 +99255,9 @@ bIE
 bJw
 cgb
 chG
-chG
+tqo
 ckN
-chG
+qff
 chG
 aLd
 aLd
@@ -97807,7 +99458,7 @@ bIE
 bJt
 cgb
 chG
-chG
+sNP
 chG
 cpZ
 chG
@@ -98213,7 +99864,7 @@ bIE
 bJw
 bKG
 ciX
-ciX
+bok
 ciX
 cqw
 bKG
@@ -98388,7 +100039,7 @@ buB
 aQF
 aXI
 aYN
-aLG
+kUH
 aXc
 bcV
 krz
@@ -98416,7 +100067,7 @@ bIE
 bJu
 bKG
 cff
-cff
+vQl
 cff
 cff
 bQh
@@ -98614,13 +100265,13 @@ pof
 wDb
 aXc
 buH
-bHM
-bIK
-bJv
-bKH
-ciY
-cjV
+bHN
+bIE
+cfe
+bKG
 cfh
+sJV
+cjV
 cff
 bQl
 aLd
@@ -98822,7 +100473,7 @@ bIE
 bJt
 bKI
 cfi
-cfj
+rPi
 cfn
 cff
 bQj
@@ -99228,7 +100879,7 @@ bIE
 bJt
 bKK
 cfk
-cfk
+wRH
 cfk
 cff
 bQn
@@ -99426,8 +101077,8 @@ dQs
 cjq
 lnT
 buH
-ufh
-sMc
+vdW
+tMa
 csl
 bKJ
 cfl
@@ -100036,7 +101687,7 @@ scR
 lnT
 buH
 bHN
-bIE
+bIJ
 bJt
 bKM
 cfn
@@ -100857,7 +102508,7 @@ bNv
 bKG
 bQj
 aLd
-vnH
+sax
 lhX
 keP
 blt
@@ -102497,7 +104148,7 @@ aLd
 aLd
 aLd
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -102700,7 +104351,7 @@ aLJ
 aLJ
 aLJ
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -102903,7 +104554,7 @@ aLJ
 aLJ
 aLJ
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -103037,7 +104688,7 @@ aLd
 aLd
 aLd
 udF
-wgR
+ssE
 nYr
 jJs
 aLB
@@ -103099,14 +104750,14 @@ bKR
 bGb
 pJJ
 pgW
-hrF
+nLN
 bGb
 aLd
 aLd
 aLd
 aLd
 lXO
-aKZ
+bRG
 aKW
 aaa
 aaa
@@ -103309,7 +104960,7 @@ eqv
 eqv
 txi
 aLd
-aKZ
+bRG
 aKW
 aaa
 aaa
@@ -103445,7 +105096,7 @@ xHE
 aLB
 rYj
 nYr
-jJs
+uBw
 aLB
 aNx
 aNC
@@ -103503,7 +105154,7 @@ cld
 cpg
 bKR
 bGb
-pJJ
+iRr
 pgW
 maL
 bGb
@@ -103715,7 +105366,7 @@ jIY
 fjB
 evo
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -103918,7 +105569,7 @@ cYn
 fjB
 evo
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -104052,7 +105703,7 @@ xHJ
 xHJ
 ewo
 aLB
-wgR
+ssE
 nYr
 jJs
 aLB
@@ -104114,14 +105765,14 @@ bKR
 bGb
 pJJ
 pgW
-hrF
+nLN
 bGb
 jSU
 ltL
 ltL
 guS
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -104324,7 +105975,7 @@ aLd
 aLd
 aLd
 cip
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -104460,7 +106111,7 @@ cmA
 aLB
 wgR
 nYr
-jJs
+uBw
 aLB
 aNx
 aNx
@@ -104518,7 +106169,7 @@ cle
 bKR
 bKR
 bGb
-pJJ
+iRr
 pgW
 hrF
 bGb
@@ -104527,7 +106178,7 @@ cng
 cng
 cnm
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -104730,7 +106381,7 @@ cnh
 cnl
 cnn
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -104933,7 +106584,7 @@ cni
 cnl
 cnn
 aLd
-aKZ
+bRG
 aKW
 aaa
 aaa
@@ -105136,7 +106787,7 @@ cnj
 cnl
 cnn
 aLd
-aKZ
+bRG
 aKW
 aaa
 aaa
@@ -105339,7 +106990,7 @@ cnk
 cnk
 cno
 aLd
-aKZ
+bRG
 aKW
 aaa
 aaa
@@ -105542,7 +107193,7 @@ aLd
 aLd
 aLd
 aLd
-aKY
+bRE
 aKW
 aaa
 aaa
@@ -113648,7 +115299,7 @@ cgD
 ceb
 aLd
 aKY
-cmV
+aKW
 aaa
 aaa
 aaa

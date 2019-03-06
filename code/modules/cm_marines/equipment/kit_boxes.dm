@@ -319,6 +319,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/storage/pouch/medical/full(src)
 		new /obj/item/clothing/glasses/hud/health(src)
 		new /obj/item/device/healthanalyzer(src)
+		new /obj/item/roller(src)
 
 /obj/item/storage/box/kit/mini_jtac
 	name = "\improper JTAC Radio Kit"

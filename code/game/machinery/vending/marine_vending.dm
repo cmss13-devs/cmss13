@@ -176,6 +176,7 @@
 		/obj/item/storage/box/kit/mini_intel = round(scale * 4),
 		/obj/item/storage/box/kit/pursuit = round(scale * 4),
 		/obj/item/folding_barricade = round(scale * 4),
+		/obj/item/tool/shovel/etool = round(scale * 4)
 	)
 
 	contraband = list(

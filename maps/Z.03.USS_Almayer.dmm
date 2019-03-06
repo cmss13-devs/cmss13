@@ -28812,10 +28812,10 @@
 /area/almayer/shipboard/firing_range)
 "bhR" = (
 /obj/structure/table/almayer,
-/obj/item/ammo_magazine/carbine,
-/obj/item/ammo_magazine/carbine,
-/obj/item/ammo_magazine/carbine,
-/obj/item/weapon/gun/rifle/carbine,
+/obj/item/ammo_magazine/rifle/l42mk1,
+/obj/item/ammo_magazine/rifle/l42mk1,
+/obj/item/ammo_magazine/rifle/l42mk1,
+/obj/item/weapon/gun/rifle/l42mk1,
 /turf/open/floor/almayer{
 	tag = "icon-redfull";
 	icon_state = "redfull"

@@ -397,7 +397,6 @@
 	..()
 	hold.bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/carbine,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
 		 )

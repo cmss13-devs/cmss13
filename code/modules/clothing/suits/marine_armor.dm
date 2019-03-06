@@ -118,7 +118,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
 	/obj/item/ammo_magazine/rifle,
-	/obj/item/ammo_magazine/carbine,
 	/obj/item/ammo_magazine/smg,
 	/obj/item/ammo_magazine/sniper,
 	 )
@@ -352,7 +351,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "1" //This should be the default icon state.
 
 	var/class = "H" //This variable should be what comes before the variation number (H6 -> H).
-	
+
 /obj/item/clothing/suit/storage/marine/class/New()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
@@ -367,7 +366,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	pockets.max_w_class = 2 //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
 	/obj/item/ammo_magazine/rifle,
-	/obj/item/ammo_magazine/carbine,
 	/obj/item/ammo_magazine/smg,
 	/obj/item/ammo_magazine/sniper,
 	 )

@@ -722,8 +722,8 @@ Defined in conflicts.dm of the #defines folder.
 		aim_speed_mod = 0.25
 
 /obj/item/attachable/stock/carbine
-	name = "\improper L41A carbon stock"
-	desc = "A specially issued stock made completely out of composite lightweight material specifically for L41 battle rifle and adapted for its USCM counterpart - L41A. It's ligther, easier to move with, but it's not as good in a brawl as stocks for other weapons."
+	name = "\improper L42-MK1 synthetic stock"
+	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42-MK1 Pulse Carbine. Not effective as a blunt force weapon."
 	slot = "stock"
 	size_mod = 1
 	icon_state = "BRstock"

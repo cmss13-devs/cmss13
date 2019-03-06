@@ -155,7 +155,7 @@
 		if(!skip_time_lock && world.time < SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
 			usr << "<span class='warning'>The shuttle is still undergoing pre-flight fuelling and cannot depart yet. Please wait another [round((SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again.</span>"
 			return
-		if(!ticker.mode.active_lz == src && !onboard && isXenoQueen(usr))
+		if(ticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
 			usr << "<span class='warning'>The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle.</span>"
 			return
 		spawn(0)

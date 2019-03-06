@@ -463,7 +463,7 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
 	name = "\improper Type 71 'Commando' pulse carbine"
-	desc = "An much rarer variant of the standard Type 71, this version contains an integrated supressor, a scope, and lots of fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen issued outside of commando units and officer cadres."
+	desc = "A much rarer variant of the standard Type 71, this version contains an integrated supressor, a scope, and lots of fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen issued outside of commando units and officer cadres."
 	icon_state = "type73"
 	item_state = "type73"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
@@ -504,15 +504,15 @@
 
 //-------------------------------------------------------
 //-------------------------------------------------------
-//L41A BATTLE RIFLE
+//L42 MK1 Pulse Carbine
 
-/obj/item/weapon/gun/rifle/carbine
-	name = "\improper L41A Battle Rifle"
-	desc = "The L41A Battle Rifle. Rechambered onto 10x24mm caseless and adopted by the Colonial Marines recently. It has seen limited use by Colonial Marshalls and extensive use by police forces within inner systems. Its shape and furniture echoes a different era."
-	icon_state = "l41a"
-	item_state = "l41a"
+/obj/item/weapon/gun/rifle/l42mk1
+	name = "\improper L42-MK1 Pulse Carbine"
+	desc = "A L42-MK1 Pulse Carbine. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy, but usually overlooked in favor of firearms with better stopping power. Chambered in 10x24mm caseless."
+	icon_state = "l42mk1"
+	item_state = "l42mk1"
 	fire_sound = 'sound/weapons/gun_carbine.ogg'
-	current_mag = /obj/item/ammo_magazine/carbine
+	current_mag = /obj/item/ammo_magazine/rifle/l42mk1
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
@@ -530,12 +530,12 @@
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = 0
 
-/obj/item/weapon/gun/rifle/carbine/New()
-	select_gamemode_skin(/obj/item/weapon/gun/rifle/carbine)
+/obj/item/weapon/gun/rifle/l42mk1/New()
+	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 19,"rail_x" = 16, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 31, "stock_y" = 7)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 17, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 26, "stock_y" = 9)
 
-/obj/item/weapon/gun/rifle/carbine/set_gun_config_values()
+/obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	fire_delay = config.high_fire_delay
 	burst_amount = 0
 	burst_delay = 1
@@ -545,7 +545,7 @@
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
 
-/obj/item/weapon/gun/rifle/carbine/attach_to_gun(mob/user, obj/item/attachable/attachment)
+/obj/item/weapon/gun/rifle/l42mk1/attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(!can_attach_to_gun(user, attachment))
 		return
 
@@ -564,7 +564,7 @@
 			update_attachable(attachment.slot)
 			playsound(user, 'sound/machines/click.ogg', 15, 1, 4)
 
-/obj/item/weapon/gun/rifle/carbine/field_strip()
+/obj/item/weapon/gun/rifle/l42mk1/field_strip()
 	set category = "Weapons"
 	set name = "Field Strip Weapon"
 	set desc = "Remove all attachables from a weapon."
@@ -651,7 +651,7 @@
 	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
 	update_attachables()
 
-/obj/item/weapon/gun/rifle/carbine/verb/remove_barrel()
+/obj/item/weapon/gun/rifle/l42mk1/verb/remove_barrel()
 	set category = "Weapons"
 	set name = "Remove Barrel from Weapon"
 	set desc = "Removes Barrel from Weapon"
@@ -717,4 +717,3 @@
 	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
 	update_attachables()
 
-	

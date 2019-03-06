@@ -54,6 +54,18 @@
 	buyable = 0
 	group = "Munition"
 
+/datum/supply_packs/ammo_l42_mag_box/asrs
+	buyable = 0
+	group = "Munition"
+
+/datum/supply_packs/ammo_l42_mag_box_ext/asrs
+	buyable = 0
+	group = "Munition"
+
+/datum/supply_packs/ammo_l42_mag_box_ap/asrs
+	buyable = 0
+	group = "Munition"
+
 /datum/supply_packs/ammo_shell_box/asrs/
 	buyable = 0
 	group = "Munition"

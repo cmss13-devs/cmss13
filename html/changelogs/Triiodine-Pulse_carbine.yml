@@ -1,0 +1,45 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Triiodine
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - imageadd: "Re-did the L41A visuals. The inhands & mob sprites are unchanged."
+  - spellcheck: "Renamed the L41A Battle Rifle to the L42-MK1 Pulse Carbine."
+  - tweak: "Moved the Mini-Sniper kit back to the PFC vendors."
+  - spellcheck: "Renamed the IFTS Rifleman Kit to the L42-MK1 Sniper kit."
+  - tweak: "The L42-MK1 Sniper Kit kit no longer contains an IFTS Mini-scope."
+  - spellcheck: "Renamed the First Defense Combat kit to the Forward HPR Shield kit."
+  - spellcheck: "Removed all name references to miniature roles."
+  - rscadd: "Added L42-MK1 Magazine boxes to ASRS, requisitions vendors."
+  - rscadd: "Added M44 PW-MX speed loaders to requisitions vendors."
+  - imageadd: "Tweaked the IFTS Mini-Scope visuals."

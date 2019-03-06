@@ -214,9 +214,12 @@
 		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
-			hive.stored_larva++
+			hive.stored_larva++	
 			cdel(L)
 
+		L << "<span class='xenohighdanger'>The Queen's will overwhelms your instincts..."
+		L << "<span class='xenohighdanger'>\""+hive.hive_orders+"\"</span>"
+		
 	for(var/obj/item/alien_embryo/AE in victim)
 		cdel(AE)
 

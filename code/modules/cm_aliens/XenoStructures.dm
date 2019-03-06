@@ -61,14 +61,18 @@
 /obj/effect/alien/resin/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return 0
-	M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
-	"<span class='xenonotice'>You claw \the [src].</span>")
-	if(istype(src, /obj/effect/alien/resin/sticky))
-		playsound(loc, "alien_resin_move", 25)
+	if(M.a_intent == "help")
+		M.visible_message("<span class='warning'>\The [M] creepily taps on [src] with its huge claw.</span>", \
+		"<span class='warning'>You creepily tap on [src].</span>",5)
 	else
-		playsound(loc, "alien_resin_break", 25)
-	health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
-	healthcheck()
+		M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
+		"<span class='xenonotice'>You claw \the [src].</span>")
+		if(istype(src, /obj/effect/alien/resin/sticky))
+			playsound(loc, "alien_resin_move", 25)
+		else
+			playsound(loc, "alien_resin_break", 25)
+		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
+		healthcheck()
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
 	M.visible_message("<span class='danger'>[M] tears \the [src]!</span>", \

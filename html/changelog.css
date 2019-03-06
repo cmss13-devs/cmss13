@@ -11,6 +11,7 @@ a img {border:none;}
 }
 .bugfix {background-image:url(bug-minus.png)}
 .wip {background-image:url(hard-hat-exclamation.png)}
+.maptweak {background-image:url(hard-hat-exclamation.png)}
 .tweak {background-image:url(wrench-screwdriver.png)}
 .soundadd {background-image:url(music-plus.png)}
 .sounddel {background-image:url(music-minus.png)}

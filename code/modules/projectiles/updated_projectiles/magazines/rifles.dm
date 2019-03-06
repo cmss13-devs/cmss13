@@ -111,34 +111,34 @@
 	w_class = 3
 
 //-------------------------------------------------------
-//USCM L41A Battle Rifle
+//USCM L42-MK1 Pulse Carbine
 
-/obj/item/ammo_magazine/carbine
-	name = "\improper L41A magazine (10x24mm)"
-	desc = "A 10mm battle rifle magazine."
+/obj/item/ammo_magazine/rifle/l42mk1
+	name = "\improper L42-MK1 magazine (10x24mm)"
+	desc = "A 10mm pulse carbine magazine."
 	caliber = "10x24mm"
-	icon_state = "l41a"
+	icon_state = "l42mk1"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 20
-	gun_type = /obj/item/weapon/gun/rifle/carbine
+	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = 3
 
-/obj/item/ammo_magazine/carbine/ap
-	name = "\improper L41A AP magazine (10x24mm)"
-	desc = "A 10mm battle rifle armor piercing magazine."
+/obj/item/ammo_magazine/rifle/l42mk1/ap
+	name = "\improper L42-MK1 AP magazine (10x24mm)"
+	desc = "A 10mm pulse carbine armor piercing magazine."
 	caliber = "10x24mm"
-	icon_state = "l41a_ap"
+	icon_state = "l42mk1_ap"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 20
-	gun_type = /obj/item/weapon/gun/rifle/carbine
+	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = 3
 
-/obj/item/ammo_magazine/carbine/extended
-	name = "\improper L41A extended magazine (10x24mm)"
-	desc = "A 10mm battle rifle extended magazine."
+/obj/item/ammo_magazine/rifle/l42mk1/extended
+	name = "\improper L42-MK1 extended magazine (10x24mm)"
+	desc = "A 10mm pulse carbine extended magazine."
 	caliber = "10x24mm"
-	icon_state = "l41a_extended"
+	icon_state = "l42mk1_extended"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 35
-	gun_type = /obj/item/weapon/gun/rifle/carbine
+	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = 3

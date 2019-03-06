@@ -83,12 +83,11 @@
 
 	hive.totalXenos -= src
 	hive.handle_evolution_alert()
-
+	
+	if(hive.totalXenos.len == 1)
+		xeno_message("<span class='xenoannounce'>Your carapace rattles with dread. You are all that remains of the hive!</span>",3, hivenumber)
+		
 	callHook("death", list(src, gibbed))
-
-
-
-
 
 /mob/living/carbon/Xenomorph/gib()
 

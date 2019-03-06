@@ -169,7 +169,7 @@ MILITARY NONCOMBATANT
 	pilot = SKILL_PILOT_TRAINED
 	powerloader = SKILL_POWERLOADER_DABBLING
 	leadership = SKILL_LEAD_TRAINED
-	medical = SKILL_MEDICAL_CHEM
+	medical = SKILL_MEDICAL_MEDIC
 
 /datum/skills/MP
 	name = "Military Police"

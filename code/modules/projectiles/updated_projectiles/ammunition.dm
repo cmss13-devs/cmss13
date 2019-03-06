@@ -419,6 +419,28 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
 
+/obj/item/magazine_box/rifle/l42mk1
+	name = "magazine box (L42-MK1 x 16)"
+	icon_state = "mag_box_l42_ap_closed"
+	icon_base_name = "mag_box_l42_ap"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1
+
+/obj/item/magazine_box/rifle/l42mk1/ap
+	name = "magazine box (AP L42-MK1 x 16)"
+	icon_state = "mag_box_l42_ap_closed"
+	icon_base_name = "mag_box_l42_ap"
+	num_of_magazines = 16 //less ammo per mag, a smart RO will buy M41 AP.
+	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/ap
+
+/obj/item/magazine_box/rifle/l42mk1/ext
+	name = "magazine box (AP L42-MK1 x 16)"
+	icon_state = "mag_box_l42_ext_closed"
+	icon_base_name = "mag_box_l42_ext"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/extended
+
+
 /obj/structure/magazine_box
 	name = "magazine_box"
 	desc = "a box for holding many magazines, this one is open and needs to be closed before you can pick it up."

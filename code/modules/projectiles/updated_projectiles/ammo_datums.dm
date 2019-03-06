@@ -363,6 +363,9 @@
 		if(do_after(user, 10, FALSE, 5, BUSY_ICON_HOSTILE))
 			if(user.Adjacent(H))
 				H.apply_damage(500,BRUTE,"head") //not coming back
+				for(var/datum/limb/L in H.limbs)
+					if(L.name == "head")
+						L.droplimb()
 				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
 		else
 			return -1

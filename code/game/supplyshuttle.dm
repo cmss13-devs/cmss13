@@ -279,7 +279,7 @@ var/list/mechtoys = list(
 //Can't pick squads, drops less often
 //Uses Echo squad as a placeholder to access its own drop pad
 /obj/machinery/computer/supply_drop_console/limited
-	drop_cooldown = 10000 //higher cooldown than usual
+	drop_cooldown = 5 MINUTES //higher cooldown than usual
 	can_pick_squad = FALSE//Can't pick squads
 
 /obj/machinery/computer/supply_drop_console/limited/New()

@@ -2127,7 +2127,18 @@ ENGINEERING
 	containertype = "/obj/structure/closet/crate/supply"
 	containername = "empty sandbags crate"
 	group = "Engineering"
+	
 
+/datum/supply_packs/sandbagskit
+	name = "sandbags construction kit (sandbags x50, etool x2)"
+	contains = list(
+					/obj/item/stack/sandbags_empty/full,
+					/obj/item/tool/shovel/etool,
+					/obj/item/tool/shovel/etool)
+	cost = RO_PRICE_CHEAP
+	containertype = "/obj/structure/closet/crate/supply"
+	containername = "sandbags construction kit"
+	group = "Engineering"
 
 /datum/supply_packs/metal50
 	name = "50 metal sheets (x50)"

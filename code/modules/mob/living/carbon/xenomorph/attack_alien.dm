@@ -622,18 +622,15 @@
 	if(M.a_intent != "hurt")
 		TryToSwitchState(M)
 		return 1
-
-	M.visible_message("<span class='warning'>\The [M] digs into \the [src] and begins ripping it down.</span>", \
-	"<span class='warning'>You dig into \the [src] and begin ripping it down.</span>", null, 5)
-	playsound(src, "alien_resin_break", 25)
-	if(do_after(M, 80, FALSE, 5, BUSY_ICON_HOSTILE))
-		if(!loc)
-			return 0 //Someone already destroyed it, do_after should check this but best to be safe
-		if(M.loc != cur_loc)
-			return 0 //Make sure we're still there
-		M.visible_message("<span class='danger'>[M] rips down \the [src]!</span>", \
-		 "<span class='danger'>You rip down \the [src]!</span>", null, 5)
-		cdel(src)
+	else
+		if(isXenoLarva(M))
+			return
+		else
+			M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
+			"<span class='xenonotice'>You claw \the [src].</span>")
+			playsound(loc, "alien_resin_break", 25)
+			health -= rand(35,45) // takes two or three hits
+			healthcheck()
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power

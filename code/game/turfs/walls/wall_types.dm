@@ -458,11 +458,14 @@
 /turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return 0
-	M.animation_attack_on(src)
-	M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
-	"<span class='xenonotice'>You claw \the [src].</span>")
-	playsound(src, "alien_resin_break", 25)
-	take_damage((M.melee_damage_upper + 50)) //Beef up the damage a bit
+	else if(M.a_intent == "help")
+		return 0
+	else
+		M.animation_attack_on(src)
+		M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
+		"<span class='xenonotice'>You claw \the [src].</span>")
+		playsound(src, "alien_resin_break", 25)
+		take_damage((M.melee_damage_upper + 50)) //Beef up the damage a bit
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)

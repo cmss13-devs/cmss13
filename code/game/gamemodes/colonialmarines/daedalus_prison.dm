@@ -186,7 +186,7 @@
 		H << "<h2>You are a survivor!</h2>"
 		H << "\blue You are a survivor of the attack on the Daedalus Prison facility. You worked or lived in the prison, and managed to avoid the alien attacks.. until now."
 		H << "\blue You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."
-		H << "\blue You are NOT aware of the marines or their intentions, and lingering around arrival zones will get you survivor-banned."
+		H << "\blue You are NOT aware of the marines or their intentions."
 	return 1
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.

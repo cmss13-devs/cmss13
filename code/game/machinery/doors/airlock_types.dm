@@ -215,14 +215,13 @@
 	icon = 'icons/obj/doors/almayer/comdoor.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
-		/turf/closed/wall,
 		/obj/structure/window/framed/almayer,
 		/obj/machinery/door/airlock)
 
-	New()
-		spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
-			relativewall_neighbours()
-		..()
+/obj/machinery/door/airlock/almayer/New()
+	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
+		relativewall_neighbours()
+	..()
 
 
 /obj/machinery/door/airlock/almayer/security

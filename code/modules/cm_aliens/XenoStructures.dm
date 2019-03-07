@@ -458,7 +458,7 @@
 	var/health = 80
 	var/close_delay = 100
 
-	tiles_with = list(/turf/closed, /obj/structure/mineral_door/resin)
+	tiles_with = list(/obj/structure/mineral_door/resin)
 
 /obj/structure/mineral_door/resin/New()
 	spawn(0)
@@ -466,6 +466,10 @@
 		relativewall_neighbours()
 		if(!locate(/obj/effect/alien/weeds) in loc)
 			new /obj/effect/alien/weeds(loc)
+
+		for(var/turf/closed/wall/W in orange(1))
+			W.update_connections(1)
+			W.update_icon()
 	..()
 
 /obj/structure/mineral_door/resin/attack_paw(mob/user as mob)

@@ -431,8 +431,8 @@
 
 	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED) r_FAL //If a nuke finished, don't land.
 
-	if(security_level < SEC_LEVEL_DELTA) //automatically set security level to red.
-		set_security_level(SEC_LEVEL_DELTA, TRUE)
+	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
+		set_security_level(SEC_LEVEL_RED, TRUE)
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 

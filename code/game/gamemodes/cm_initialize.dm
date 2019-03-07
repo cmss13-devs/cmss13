@@ -605,13 +605,13 @@ datum/game_mode/proc/initialize_special_clamps()
 			H << "<h2>You are a survivor!</h2>"
 			switch(map_tag)
 				if(MAP_PRISON_STATION)
-					H << "\blue You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now."
+					H << "<span class='notice'> You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.</span>"
 				if(MAP_ICE_COLONY)
-					H << "\blue You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now."
+					H << "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now.</span>"
 				else
-					H << "\blue You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now."
-			H << "\blue You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."
-			H << "\blue You are NOT aware of the marines or their intentions, and lingering around arrival zones will get you survivor-banned."
+					H << "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now.</span>"
+			H << "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>"
+			H << "<span class='notice'>You are NOT aware of the marines or their intentions. </span>"
 	if(spawner.story_text)
 		. = 1
 		spawn(6)
@@ -637,13 +637,13 @@ datum/game_mode/proc/initialize_special_clamps()
 		H << "<h2>You are a survivor!</h2>"
 		switch(map_tag)
 			if(MAP_PRISON_STATION)
-				H << "\blue You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now."
+				H << "<span class='notice'>You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now.</span>"
 			if(MAP_ICE_COLONY)
-				H << "\blue You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now."
+				H << "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now.</span>"
 			else
-				H << "\blue You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now."
-		H << "\blue You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."
-		H << "\blue You are NOT aware of the marines or their intentions, and lingering around arrival zones will get you survivor-banned."
+				H << "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>"
+		H << "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>"
+		H << "<span class='notice'>You are NOT aware of the marines or their intentions.</span>"
 	return 1
 
 /datum/game_mode/proc/tell_survivor_story()

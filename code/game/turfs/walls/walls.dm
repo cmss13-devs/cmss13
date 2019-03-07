@@ -52,11 +52,9 @@
 		if(M)
 			visible_message("<span class='warning'>\The [M] is sealed inside the wall as it is built</span>")
 			cdel(M)
-	spawn(10)
+	spawn(0)
 		update_connections(1)
 		update_icon()
-
-
 
 /turf/closed/wall/ChangeTurf(newtype)
 	if(acided_hole)

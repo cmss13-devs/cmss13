@@ -236,23 +236,3 @@
 			health -= 1
 			healthcheck()
 	..()
-
-
-
-//ALMAYER GRILLE
-
-/obj/structure/grille/almayer
-	icon = 'icons/turf/almayer.dmi'
-	icon_state = "grille0"
-	tiles_with = list(
-		/turf/closed/wall,
-		/obj/machinery/door/airlock,
-		/obj/structure/grille/almayer)
-
-/obj/structure/grille/almayer/New()
-	spawn(0)
-		relativewall()
-		relativewall_neighbours()
-
-/obj/structure/grille/almayer/update_icon()
-	relativewall()

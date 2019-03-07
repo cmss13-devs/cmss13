@@ -17,9 +17,6 @@
 	var/buildstackamount = 2
 	projectile_coverage = 50
 
-	tiles_with = list(
-		/turf/closed/wall)
-
 	var/tiles_special[] = list(/obj/machinery/door/airlock,
 		/obj/structure/window/framed,
 		/obj/structure/girder,
@@ -83,7 +80,7 @@
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
 			cdel(src)
-			
+
 	else if(istype(W, /obj/item/tool/wrench))
 		if(buildstacktype)
 			user << "\blue You start to deconstruct [src]."

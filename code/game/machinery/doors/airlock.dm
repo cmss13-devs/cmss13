@@ -110,9 +110,6 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/no_panel = 0 //the airlock has no panel that can be screwdrivered open
 	var/not_weldable = 0 // stops people welding the door if true
 
-	tiles_with = list(
-		/turf/closed/wall)
-
 /obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(!issilicon(usr))
 		if(src.isElectrified())
@@ -1135,7 +1132,6 @@ About the new airlock wires panel:
 					break
 	// fix smoothing
 	spawn(10)
-		relativewall_neighbours()
 		for(var/turf/closed/wall/W in orange(1))
 			W.update_connections(1)
 			W.update_icon()
@@ -1152,7 +1148,3 @@ About the new airlock wires panel:
 	src.open()
 	src.lock()
 	return
-
-
-/obj/machinery/door/airlock/proc/update_nearby_icons()
-	relativewall_neighbours()

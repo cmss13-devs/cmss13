@@ -347,7 +347,7 @@
 		/obj/item/magazine_box/shotgun/buckshot = round(scale * 10 / 3),
 		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10) % 3,
 		/obj/item/magazine_box/shotgun/flechette = round(scale * 5 / 12),
-		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 10),
+		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 5) % 12,
 		//obj/item/ammo_magazine/sniper = 0,
 		//obj/item/ammo_magazine/sniper/incendiary = 0,
 		//obj/item/ammo_magazine/sniper/flak = 0,

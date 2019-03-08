@@ -157,7 +157,7 @@
 	if(is_emergency) //non-emergency ERTs don't count as emergency
 		ticker.mode.has_called_emergency = TRUE
 
-	sleep(600) //If after 60 seconds we aren't full, abort
+	sleep(SECONDS_60) //If after 60 seconds we aren't full, abort
 	if(candidates.len < mob_min)
 		message_admins("Aborting distress beacon, not enough candidates: found [candidates.len].", 1)
 		ticker.mode.waiting_for_candidates = FALSE
@@ -170,7 +170,7 @@
 
 		ticker.mode.distress_cooldown = 1
 		ticker.mode.picked_call = null
-		sleep(1200)
+		sleep(MINUTES_2)
 		ticker.mode.distress_cooldown = 0
 	else //We've got enough!
 		//Trim down the list

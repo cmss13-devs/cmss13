@@ -105,7 +105,7 @@
 
 	//it would be cool to play a sound here
 	moving_status = SHUTTLE_WARMUP
-	spawn(warmup_time*10)
+	spawn(warmup_time)
 		if (moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
 

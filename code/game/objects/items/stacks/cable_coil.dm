@@ -327,11 +327,12 @@
 
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(hasorgans(M))
-
 		var/datum/limb/S = M:get_limb(user.zone_selected)
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")
 			return ..()
 
+		if(user.action_busy)
+			return
 		var/self_fixing = FALSE
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

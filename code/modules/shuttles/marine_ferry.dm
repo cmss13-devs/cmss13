@@ -350,7 +350,7 @@
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
 	playsound(turfs_src[sound_target], sound_takeoff, 60, 0)
 
-	sleep(warmup_time*10) //Warming up
+	sleep(warmup_time) //Warming up
 
 	moving_status = SHUTTLE_INTRANSIT
 
@@ -530,7 +530,7 @@
 
 	moving_status = SHUTTLE_WARMUP
 
-	sleep(warmup_time*10)
+	sleep(warmup_time)
 
 	if (moving_status == SHUTTLE_IDLE)
 		return	//someone cancelled the launch

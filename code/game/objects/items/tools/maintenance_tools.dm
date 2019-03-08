@@ -198,6 +198,8 @@
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != "help")
 			return ..()
 
+		if(user.action_busy)
+			return
 		var/self_fixing = FALSE
 		if(H.species.flags & IS_SYNTHETIC)
 			if(M == user)

@@ -35,3 +35,5 @@ delete-after: True
 changes: 
   - bugfix: "The Self Destruct no longer automatically starts on ship crash."
   - bugfix: "Fixed the containment windows being black voids."
+  - bugfix: "Fixed dropship and tank point stores not referencing correctly."
+

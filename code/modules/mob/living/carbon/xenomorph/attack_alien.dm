@@ -699,8 +699,9 @@
 				return
 
 		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-		shuttle.hijack(M)
 		shuttle.door_override(M)
+		if(do_after(usr, 50, TRUE, 5, BUSY_ICON_HOSTILE))
+			shuttle.hijack(M)
 	else
 		..()
 

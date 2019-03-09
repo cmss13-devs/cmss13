@@ -60,14 +60,6 @@
 	a_intent = "help" //Forces help intent for all interactions.
 	. = ..()
 
-/mob/living/carbon/Xenomorph/Larva/Stat()
-	if (!..())
-		return 0
-
-	stat(null, "Progress: [amount_grown]/[max_grown]")
-	return 1
-
-
 //Larva Progression.. Most of this stuff is obsolete.
 /mob/living/carbon/Xenomorph/Larva/update_progression()
 	if(amount_grown < max_grown)
@@ -75,7 +67,11 @@
 	if(!isnull(src.loc) && amount_grown < max_grown)
 		if(locate(/obj/effect/alien/weeds) in loc)
 			amount_grown++ //Double growth on weeds.
-
+	if(amount_grown >= max_grown)	// to avoid spam
+		if(upgrade < 0)
+			src << "<span class='xenodanger'>Strength ripples through your small form. You are ready to be shaped to the Queen's will.</span>"
+			src << sound('sound/effects/xeno_evolveready.ogg')
+			upgrade++
 
 //Larva code is just a mess, so let's get it over with
 /mob/living/carbon/Xenomorph/Larva/update_icons()

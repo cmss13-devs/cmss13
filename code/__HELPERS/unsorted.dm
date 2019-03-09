@@ -517,6 +517,84 @@ Turf and target are seperate in case you want to teleport some distance from a t
 
 	return creatures
 
+/proc/getsurvivors()
+	var/list/mobs = sortsurvivors()
+	var/list/names = list()
+	var/list/creatures = list()
+	var/list/namecounts = list()
+	for(var/mob/M in mobs)
+		if(isYautja(M)) continue
+		if(iszombie(M))	continue
+		var/name = M.name
+		if (name in names)
+			namecounts[name]++
+			name = "[name] ([namecounts[name]])"
+		else
+			names.Add(name)
+			namecounts[name] = 1
+		if (M.real_name && M.real_name != M.name)
+			name += " \[[M.real_name]\]"
+		if (M.stat == 2)
+			if(istype(M, /mob/dead/observer/))
+				name += " \[ghost\]"
+			else
+				name += " \[dead\]"
+		creatures[name] = M
+
+	return creatures
+
+/proc/getertmembers()
+	var/list/mobs = sortertmembers()
+	var/list/names = list()
+	var/list/creatures = list()
+	var/list/namecounts = list()
+	for(var/mob/M in mobs)
+		if(isYautja(M)) continue
+		if(iszombie(M))	continue
+		var/name = M.name
+		if (name in names)
+			namecounts[name]++
+			name = "[name] ([namecounts[name]])"
+		else
+			names.Add(name)
+			namecounts[name] = 1
+		if (M.real_name && M.real_name != M.name)
+			name += " \[[M.real_name]\]"
+		if (M.stat == 2)
+			if(istype(M, /mob/dead/observer/))
+				name += " \[ghost\]"
+			else
+				name += " \[dead\]"
+		creatures[name] = M
+
+	return creatures
+
+/proc/getsynths()
+	var/list/mobs = sortsynths()
+	var/list/names = list()
+	var/list/creatures = list()
+	var/list/namecounts = list()
+	for(var/mob/M in mobs)
+		if(isYautja(M)) continue
+		if(iszombie(M))	continue
+		var/name = M.name
+		if (name in names)
+			namecounts[name]++
+			name = "[name] ([namecounts[name]])"
+		else
+			names.Add(name)
+			namecounts[name] = 1
+		if (M.real_name && M.real_name != M.name)
+			name += " \[[M.real_name]\]"
+		if (M.stat == 2)
+			if(istype(M, /mob/dead/observer/))
+				name += " \[ghost\]"
+			else
+				name += " \[dead\]"
+		creatures[name] = M
+
+	return creatures
+
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
@@ -569,6 +647,34 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			continue
 		humanlist.Add(M)
 	return humanlist
+
+/proc/sortsurvivors()
+	var/list/survivorlist = list()
+	var/list/sortmob = sortAtom(mob_list)
+	for(var/mob/living/carbon/human/M in sortmob)
+		if(!M.client || M.species.name == "Yautja")
+			continue
+		if (M.mind.special_role == "Survivor")
+			survivorlist.Add(M)
+	return survivorlist
+
+/proc/sortertmembers()
+	var/list/ertmemberlist = list()
+	var/list/sortmob = sortAtom(mob_list)
+	for(var/mob/living/carbon/human/M in sortmob)
+		if(!M.client || !M.mind.special_role || M.mind.special_role == "Survivor" || M.mind.special_role == "Xenomorph" || M.mind.assigned_role == "Corporate Liaison" || M.species.name == "Yautja")
+			continue
+		ertmemberlist.Add(M)
+	return ertmemberlist
+
+/proc/sortsynths()
+	var/list/synthlist = list()
+	var/list/sortmob = sortAtom(mob_list)
+	for(var/mob/living/carbon/human/M in sortmob)
+		if(!M.client || M.species.name == "Yautja" || !isSynth(M))
+			continue
+		synthlist.Add(M)
+	return synthlist
 
 //E = MC^2
 /proc/convert2energy(var/M)

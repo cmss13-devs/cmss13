@@ -73,7 +73,7 @@
 	..()
 	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_PREDATOR)
 		spawn(20)
-			src << "\red This is a <b>PREDATOR ROUND</b>! If you are whitelisted, you may Join the Hunt!"
+			src << "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>"
 			return
 
 
@@ -208,10 +208,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Re-enter Corpse"
 	if(!client)	return
 	if(!mind || !mind.current || mind.current.disposed || !can_reenter_corpse)
-		src << "<span class='warning'>You have no body.</span>"
+		src << "<span style='color: red;'>You have no body.</span>"
 		return
 	if(mind.current.key && copytext(mind.current.key,1,2)!="@")	//makes sure we don't accidentally kick any clients
-		usr << "<span class='warning'>Another consciousness is in your body...It is resisting you.</span>"
+		src << "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>"
 		return
 	mind.current.key = key
 	if(mind.current.client) mind.current.client.change_view(world.view)
@@ -247,11 +247,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
 		H.remove_hud_from(src)
-		src << "\blue <B>[hud_choice] Disabled</B>"
+		src << "<span class='info'><B>[hud_choice] Disabled</B></span>"
 	else
 		HUD_toggled[HUD_nbr] = 1
 		H.add_hud_to(src)
-		src << "\blue <B>[hud_choice] Enabled</B>"
+		src << "<span class='info'><B>[hud_choice] Enabled</B></span>"
 
 
 
@@ -260,7 +260,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Teleport"
 	set desc= "Teleport to a location"
 	if(!istype(usr, /mob/dead/observer))
-		usr << "Not when you're not dead!"
+		src << "<span style='color: red;'>Not when you're not dead!</span>"
 		return
 	var/A
 	A = input("Area to jump to", "BOOYEA", A) as null|anything in ghostteleportlocs
@@ -272,7 +272,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		L+=T
 
 	if(!L || !L.len)
-		usr << "No area available."
+		src << "<span style='color: red;'>No area available.</span>"
 
 	usr.loc = pick(L)
 	following = null
@@ -289,8 +289,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/follow_them(var/mob/target)
 	set category = "Ghost"
-	set name = "Follow Them" // "Haunt"
-	set desc = "Follow and haunt a mob."
+	set name = "Follow Local" // "Haunt"
+	set desc = "Follow and haunt an on-screen mob."
 
 	ManualFollow(target)
 
@@ -303,7 +303,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/input = input("Please select a living Xeno:", "Haunt", null, null) as null|anything in mobs
 
 	if(mobs.len == 0)
-		usr << "\red There aren't any living Xenos."
+		src << "<span style='color: red;'>There aren't any living Xenos.</span>"
 		return
 
 	var/mob/target = mobs[input]
@@ -318,7 +318,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/input = input("Please select a living Predator:", "Haunt", null, null) as null|anything in mobs
 
 	if(mobs.len == 0)
-		usr << "\red There aren't any living Predators."
+		src << "<span style='color: red;'>There aren't any living Predators.</span>"
 		return
 
 	var/mob/target = mobs[input]
@@ -333,7 +333,52 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/input = input("Please select a living Human:", "Haunt", null, null) as null|anything in mobs
 
 	if(mobs.len == 0)
-		usr << "\red There aren't any living Humans."
+		src << "<span style='color: red;'>There aren't any living Humans.</span>"
+		return
+
+	var/mob/target = mobs[input]
+	ManualFollow(target)
+
+/mob/dead/observer/verb/follow_survivor()
+	set category = "Ghost"
+	set name = "Follow Survivor" // "Haunt"
+	set desc = "Follow a living survivor."
+
+	var/list/mobs = getsurvivors()
+	var/input = input("Please select a living survivor:", "Haunt", null, null) as null|anything in mobs
+
+	if(mobs.len == 0)
+		src << "<span style='color: red;'>There aren't any living survivors.</span>"
+		return
+
+	var/mob/target = mobs[input]
+	ManualFollow(target)
+
+/mob/dead/observer/verb/follow_ert()
+	set category = "Ghost"
+	set name = "Follow ERT" // "Haunt"
+	set desc = "Follow a living ERT member."
+
+	var/list/mobs = getertmembers()
+	var/input = input("Please select a living ERT member (UPP,CLF etc.):", "Haunt", null, null) as null|anything in mobs
+
+	if(mobs.len == 0)
+		src << "<span style='color: red;'>There aren't any living ERT members.</span>"
+		return
+
+	var/mob/target = mobs[input]
+	ManualFollow(target)
+
+/mob/dead/observer/verb/follow_synth()
+	set category = "Ghost"
+	set name = "Follow Synth" // "Haunt"
+	set desc = "Follow a 'living' Synth."
+
+	var/list/mobs = getsynths()
+	var/input = input("Please select a 'living' Synth:", "Haunt", null, null) as null|anything in mobs
+
+	if(mobs.len == 0)
+		src << "<span style='color: red;'>There aren't any 'living' Synths.</span>"
 		return
 
 	var/mob/target = mobs[input]
@@ -381,7 +426,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				A.loc = T
 				following = null
 			else
-				A << "This mob is not located in the game world."
+				A << "<span style='color: red;'>This mob is not located in the game world.</span>"
 /*
 /mob/dead/observer/verb/boo()
 	set category = "Ghost"
@@ -400,11 +445,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/memory()
 	set hidden = 1
-	src << "\red You are dead! You have no mind to store memory!"
+	src << "<span style='color: red;'>You are dead! You have no mind to store memory!</span>"
 
 /mob/dead/observer/add_memory()
 	set hidden = 1
-	src << "\red You are dead! You have no mind to store memory!"
+	src << "<span style='color: red;'>You are dead! You have no mind to store memory!</span>"
 
 /mob/dead/observer/verb/analyze_air()
 	set name = "Analyze Air"
@@ -422,14 +467,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/env_temperature = T.return_temperature()
 	var/env_gas = T.return_gas()
 
-	src << "\blue <B>Results:</B>"
+	src << "<span class='info'><B>Results:</B></span>"
 	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		src << "\blue Pressure: [round(pressure,0.1)] kPa"
+		src << "<span style='color: blue;'>Pressure: [round(pressure,0.1)] kPa</span>"
 	else
-		src << "\red Pressure: [round(pressure,0.1)] kPa"
+		src << "<span style='color: red;'>Pressure: [round(pressure,0.1)] kPa</span>"
 
-	src << "\blue Gas type: [env_gas]"
-	src << "\blue Temperature: [round(env_temperature-T0C,0.1)]&deg;C"
+	src << "<span style='color: blue;'>Gas type: [env_gas]</span>"
+	src << "<span style='color: blue;'>Temperature: [round(env_temperature-T0C,0.1)]&deg;C</span>"
 
 
 /mob/dead/observer/verb/toggle_zoom()
@@ -636,7 +681,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 
 	if(zombie_list.len == 0)
-		src << "\green There are no available zombies or all empty zombies have been fed the cure."
+		src << "<span style='color: green;'>There are no available zombies or all empty zombies have been fed the cure.</span>"
 		return
 
 	var/choice = input("Pick a Zombie:") as null|anything in zombie_list
@@ -714,7 +759,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			hellhound_list += A.real_name
 
 	if(hellhound_list.len == 0)
-		usr << "\red There aren't any available Hellhounds."
+		usr << "<span style='color: red;'>There aren't any available Hellhounds.</span>"
 		return
 
 	var/choice = input("Pick a Hellhound:") as null|anything in hellhound_list
@@ -727,25 +772,25 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			break
 
 	if(!L || L.disposed)
-		usr << "Not a valid mob!"
+		usr << "<span style='color: red;'>Not a valid mob!</span>"
 		return
 
 	if(!istype(L, /mob/living/carbon/hellhound))
-		usr << "\red That's not a Hellhound."
+		usr << "<span style='color: red;'>That's not a Hellhound.</span>"
 		return
 
 	if(L.stat == DEAD)  // DEAD
-		usr << "\red It's dead."
+		usr << "<span style='color: red;'>It's dead.</span>"
 		return
 
 	if(L.client) // Larva player is still online
-		usr << "\red That player is still connected."
+		usr << "<span style='color: red;'>That player is still connected.</span>"
 		return
 
 	if (alert(usr, "Everything checks out. Are you sure you want to transfer yourself into this hellhound?", "Confirmation", "Yes", "No") == "Yes")
 
 		if(L.client || L.stat == DEAD) // Do it again, just in case
-			usr << "\red Oops. That mob can no longer be controlled. Sorry."
+			usr << "<span style='color: red;'>Oops. That mob can no longer be controlled. Sorry.</span>"
 			return
 
 		var/mob/ghostmob = usr.client.mob
@@ -757,13 +802,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if( isobserver(ghostmob) )
 			cdel(ghostmob)
 		spawn(15)
-			L << "\red <B>Attention!! You are playing as a hellhound. You can get server banned if you are shitty so listen up!</b>"
-			L << "\red You MUST listen to and obey the Predator's commands at all times. Die if they demand it. Not following them is unthinkable to a hellhound."
-			L << "\red You are not here to go hog wild rambo. You're here to be part of something rare, a Predator hunt."
-			L << "\red The Predator players must follow a strict code of role-play and you are expected to as well."
-			L << "\red The Predators cannot understand your speech. They can only give you orders and expect you to follow them. They have a camera that allows them to see you remotely, so you are excellent for scouting missions."
-			L << "\red Hellhounds are fiercely protective of their masters and will never leave their side if under attack."
-			L << "\red Note that ANY Predator can give you orders. If they conflict, follow the latest one. If they dislike your performance they can ask for another ghost and everyone will mock you. So do a good job!"
+			L << "<span style='font-weight: bold; color: red;'>Attention!! You are playing as a hellhound. You can get server banned if you are shitty so listen up!</span>"
+			L << "<span style='color: red;'>You MUST listen to and obey the Predator's commands at all times. Die if they demand it. Not following them is unthinkable to a hellhound.</span>"
+			L << "<span style='color: red;'>You are not here to go hog wild rambo. You're here to be part of something rare, a Predator hunt.</span>"
+			L << "<span style='color: red;'>The Predator players must follow a strict code of role-play and you are expected to as well.</span>"
+			L << "<span style='color: red;'>The Predators cannot understand your speech. They can only give you orders and expect you to follow them. They have a camera that allows them to see you remotely, so you are excellent for scouting missions.</span>"
+			L << "<span style='color: red;'>Hellhounds are fiercely protective of their masters and will never leave their side if under attack.</span>"
+			L << "<span style='color: red;'>Note that ANY Predator can give you orders. If they conflict, follow the latest one. If they dislike your performance they can ask for another ghost and everyone will mock you. So do a good job!</span>"
 	return
 
 /mob/dead/verb/join_as_yautja()
@@ -787,19 +832,19 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "If it's on Hunter Games gamemode, vote on who gets a supply drop!"
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		usr << "\red The game hasn't started yet!"
+		src << "<span class='warning'>The game hasn't started yet!</span>"
 		return
 
 	if(!istype(ticker.mode,/datum/game_mode/huntergames))
-		usr << "Wrong game mode. You have to be observing a Hunter Games round."
+		src << "<span class='info'>Wrong game mode. You have to be observing a Hunter Games round.</span>"
 		return
 
 	if(!waiting_for_drop_votes)
-		usr << "There's no drop vote currently in progress. Wait for a supply drop to be announced!"
+		src << "<span class='info'>There's no drop vote currently in progress. Wait for a supply drop to be announced!</span>"
 		return
 
 	if(voted_this_drop)
-		usr << "You voted for this one already. Only one please!"
+		src << "<span class='info'>You voted for this one already. Only one please!</span>"
 		return
 
 	var/list/mobs = living_mob_list
@@ -814,7 +859,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!target)//Make sure we actually have a target
 		return
 	else
-		usr << "Your vote for [target] has been counted!"
+		src << "<span class='info'>Your vote for [target] has been counted!</span>"
 		ticker.mode:supply_votes += target
 		voted_this_drop = 1
 		spawn(200)

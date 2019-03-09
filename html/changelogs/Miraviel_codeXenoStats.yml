@@ -1,8 +1,0 @@
-author: Miraviel
-
-delete-after: True
-
-changes:
-  - rscadd: "Larvae now get a notification once they are ready to evolve."
-  - tweak: "The Stats panel for Xenomorphs was tweaked to give more important information in a less cluttered way."
-  - tweak: "The Stats panel now notifies the Queen of available leader slots and the number of leftover larvae."

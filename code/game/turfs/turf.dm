@@ -150,7 +150,7 @@ spookydonut august 2018
 		else if(!istype(src, /turf/open/space))
 			M.inertia_dir = 0
 			M.make_floating(0)
-	..()
+		..()
 
 
 

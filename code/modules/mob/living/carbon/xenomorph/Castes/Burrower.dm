@@ -20,6 +20,7 @@
 	acid_level = 2
 	weed_level = 1
 	evolution_allowed = FALSE
+	tremor_cooldown = 450
 
 /datum/caste_datum/burrower/mature
 	upgrade_name = "Mature"
@@ -38,6 +39,7 @@
 	burrow_cooldown = 40
 	tunnel_cooldown = 90
 	widen_cooldown = 90
+	tremor_cooldown = 450
 
 /datum/caste_datum/burrower/elder
 	upgrade_name = "Elder"
@@ -56,6 +58,7 @@
 	tunnel_cooldown = 70
 	widen_cooldown = 70
 	plasma_max = 350
+	tremor_cooldown = 450
 
 /datum/caste_datum/burrower/ancient
 	upgrade_name = "Ancient"
@@ -74,6 +77,7 @@
 	tunnel_cooldown = 70
 	widen_cooldown = 70
 	plasma_max = 350
+	tremor_cooldown = 420
 
 /mob/living/carbon/Xenomorph/Burrower
 	caste_name = "Burrower"
@@ -100,6 +104,10 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+	
+	new_actions = list(
+		/datum/action/xeno_action/activable/tremor,
+	)
 
 /mob/living/carbon/Xenomorph/Burrower/New()
 	. = ..()

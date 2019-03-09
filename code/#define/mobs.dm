@@ -416,6 +416,7 @@
 // xeno abilities cooldown
 
 #define CRUSHER_STOMP_COOLDOWN 200
+#define CRUSHER_EARTHQUAKE_COOLDOWN 400
 
 #define CANNOT_HOLD_EGGS 0
 #define CAN_HOLD_TWO_HANDS 1

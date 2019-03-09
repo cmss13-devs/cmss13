@@ -105,6 +105,58 @@
 			continue
 		Crossed(M)
 
+/obj/effect/xenomorph/spray/weak //Weaker spitter acid spray.
+	name = "weak splatter"
+	desc = "It burns! It burns, but not as much!"
+	icon_state = "acid2-weak"
+	density = 0
+	opacity = 0
+	anchored = 1
+	layer = ABOVE_OBJ_LAYER
+	mouse_opacity = 0
+	flags_pass = PASSTABLE|PASSMOB|PASSGRILLE
+
+/obj/effect/xenomorph/spray/weak/New(loc, var/acid_level = 1) //Self-deletes
+	..(loc)
+	for(var/atom/atm in loc)
+		if(istype(atm, /obj/flamer_fire))
+			var/obj/flamer_fire/FF = atm
+			if(FF.firelevel > 6)
+				FF.firelevel -= 6
+				FF.updateicon()
+			else
+				cdel(atm)
+			continue
+		if(isliving(atm)) //For extinguishing mobs on fire
+			var/mob/living/M = atm
+			M.ExtinguishMob()
+			for(var/obj/item/clothing/mask/cigarette/C in M.contents)
+				if(C.item_state == C.icon_on)
+					C.die()
+	acid_strength = acid_level
+	processing_objects.Add(src)
+	spawn(30 + rand(0, 20))
+		processing_objects.Remove(src)
+		cdel(src)
+		return
+
+/obj/effect/xenomorph/spray/weak/Crossed(AM as mob|obj)
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if(!H.lying)
+			H << "<span class='danger'>Your feet scald and burn!</span>"
+			H.emote("pain")
+			var/datum/limb/affecting = H.get_limb("l_foot")
+			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+				H.UpdateDamageIcon()
+			affecting = H.get_limb("r_foot")
+			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+				H.UpdateDamageIcon()
+			H.updatehealth()
+		else
+			H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
+			H << "<span class='danger'>You are scalded by the hot acid!</span>"
+
 //Medium-strength acid
 /obj/effect/xenomorph/acid
 	name = "acid"

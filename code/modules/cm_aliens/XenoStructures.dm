@@ -350,7 +350,7 @@
 			B.visible_message("<span class='xenowarning'>\The [B] pressurises the resin hole with acid gas!</span>", \
 			"<span class='xenowarning'>You pressurise the resin hole with acid gas!</span>", null, 5)
 
-			spawn(B.caste.bomb_delay)
+			spawn(B.bomb_delay)
 				B.bomb_cooldown = 0
 				B << "<span class='notice'>You have produced enough acid to bombard again.</span>"
 			hivenumber = X.hivenumber //Taking over the hole

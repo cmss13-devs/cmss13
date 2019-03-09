@@ -83,6 +83,8 @@
 	pixel_x = -16
 	old_x = -16
 	tier = 2
+
+
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
@@ -91,6 +93,10 @@
 		/datum/action/xeno_action/activable/lunge,
 		/datum/action/xeno_action/activable/punch
 		)
+
+	new_actions = list(
+		/datum/action/xeno_action/activable/jab,
+	)
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)

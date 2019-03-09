@@ -3343,6 +3343,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/living/officer_study)
+"ahA" = (
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	tag = "icon-tube1 (EAST)"
+	},
+/obj/machinery/vending/cigarette/colony{
+	desc = "A selection of exquisite cigarettes chosen specifically for command."
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/command/cichallway)
 "ahB" = (
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
@@ -3988,7 +4002,7 @@
 	dir = 8
 	},
 /area/almayer/shipboard/starboard_missiles)
-"aiM" = (
+"aiL" = (
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
 	dir = 1;
@@ -3996,6 +4010,15 @@
 	},
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "84"
+	},
+/area/shuttle/drop1/sulaco)
+"aiM" = (
+/turf/open/floor/plating,
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1
+	},
+/turf/closed/shuttle/dropship1/transparent{
+	icon_state = "85"
 	},
 /area/shuttle/drop1/sulaco)
 "aiN" = (
@@ -4240,7 +4263,7 @@
 	dir = 1
 	},
 /turf/closed/shuttle/dropship1/transparent{
-	icon_state = "85"
+	icon_state = "90"
 	},
 /area/shuttle/drop1/sulaco)
 "ajo" = (
@@ -4845,11 +4868,12 @@
 /area/almayer/living/cafeteria_officer)
 "ajU" = (
 /turf/open/floor/plating,
-/obj/effect/attach_point/electronics/dropship1{
-	dir = 1
+/obj/effect/attach_point/weapon/dropship1{
+	dir = 1;
+	gimbal = 1
 	},
 /turf/closed/shuttle/dropship1/transparent{
-	icon_state = "90"
+	icon_state = "91"
 	},
 /area/shuttle/drop1/sulaco)
 "ajV" = (
@@ -5170,11 +5194,12 @@
 "akD" = (
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
-	dir = 1;
-	gimbal = 1
+	dir = 8;
+	gimbal = -1;
+	icon_state = "equip_base_l_wing"
 	},
 /turf/closed/shuttle/dropship1/transparent{
-	icon_state = "91"
+	icon_state = "61"
 	},
 /area/shuttle/drop1/sulaco)
 "akE" = (
@@ -5191,12 +5216,12 @@
 "akG" = (
 /turf/open/floor/plating,
 /obj/effect/attach_point/weapon/dropship1{
-	dir = 8;
-	gimbal = -1;
-	icon_state = "equip_base_l_wing"
+	dir = 4;
+	gimbal = 1;
+	icon_state = "equip_base_r_wing"
 	},
 /turf/closed/shuttle/dropship1/transparent{
-	icon_state = "61"
+	icon_state = "65"
 	},
 /area/shuttle/drop1/sulaco)
 "akH" = (
@@ -5303,16 +5328,15 @@
 	},
 /area/almayer/shipboard/brig_cells)
 "akO" = (
-/turf/open/floor/plating,
-/obj/effect/attach_point/weapon/dropship1{
-	dir = 4;
-	gimbal = 1;
-	icon_state = "equip_base_r_wing"
+/obj/machinery/vending/cigarette/colony{
+	desc = "A selection of exquisite cigarettes chosen specifically for command."
 	},
-/turf/closed/shuttle/dropship1/transparent{
-	icon_state = "65"
+/turf/open/floor/almayer{
+	tag = "icon-red (EAST)";
+	icon_state = "red";
+	dir = 4
 	},
-/area/shuttle/drop1/sulaco)
+/area/almayer/shipboard/brig_cells)
 "akP" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
@@ -60474,31 +60498,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/medical/upper_medical)
-"hFi" = (
-/obj/machinery/door_control{
-	id = "holdinglockdown";
-	name = "Holding Cell Lockdown";
-	pixel_x = 25;
-	pixel_y = 5;
-	req_one_access = list(2,3,12,19)
-	},
-/obj/machinery/flasher_button{
-	dir = 1;
-	id = "Holding Flash";
-	name = "Holding Cell Flash";
-	pixel_x = 25;
-	pixel_y = -6;
-	req_one_access = list(2,3,12,19)
-	},
-/obj/machinery/vending/cigarette,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/open/floor/almayer{
-	tag = "icon-red (EAST)";
-	icon_state = "red";
-	dir = 4
-	},
-/area/almayer/shipboard/brig_cells)
 "hKy" = (
 /obj/structure/closet/secure_closet/guncabinet/blue{
 	name = "sidearm storage"
@@ -67230,18 +67229,6 @@
 	dir = 4;
 	icon_state = "silver";
 	tag = "icon-silver (WEST)"
-	},
-/area/almayer/command/cichallway)
-"wgH" = (
-/obj/machinery/vending/cigarette,
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	tag = "icon-tube1 (EAST)"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
 	},
 /area/almayer/command/cichallway)
 "wgR" = (
@@ -84119,7 +84106,7 @@ aJp
 egH
 aJp
 aJp
-wgH
+ahA
 ayq
 aag
 aag
@@ -89897,7 +89884,7 @@ baI
 baI
 bki
 blN
-akG
+akD
 baI
 baI
 baI
@@ -90096,7 +90083,7 @@ aZW
 baI
 baI
 baI
-aiM
+aiL
 bii
 bkj
 blO
@@ -90299,7 +90286,7 @@ aZX
 baI
 baI
 baI
-ajn
+aiM
 bij
 bkk
 bkk
@@ -91517,7 +91504,7 @@ aZV
 baI
 baI
 baI
-ajU
+ajn
 bij
 bkp
 blR
@@ -91720,7 +91707,7 @@ aZW
 baI
 baI
 baI
-akD
+ajU
 bip
 bkq
 blS
@@ -91927,7 +91914,7 @@ baI
 baI
 bkr
 blT
-akO
+akG
 baI
 baI
 baI
@@ -101271,7 +101258,7 @@ axv
 lKW
 wCs
 feU
-hFi
+akO
 rHF
 une
 une

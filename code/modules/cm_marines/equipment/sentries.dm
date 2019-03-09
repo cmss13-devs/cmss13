@@ -811,35 +811,33 @@
 
 	if(!ammo) return
 
-	if(burst_fire && target && !last_fired)
-		if(rounds >= burst_size)
-			for(var/i = 1 to burst_size)
-				is_bursting = 1
-				if(fire_shot(i))
-					sleep(1)
-				else
-					break
-			spawn(0)
-				last_fired = 1
-			spawn(fire_delay)
-				last_fired = 0
-		else
-			burst_fire = 0
-		is_bursting = 0
+	if(target && world.time-last_fired >= fire_delay)
 
-	if(!burst_fire && target && !last_fired)
-		fire_shot()
+		if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
+			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+			sleep(3)
+
+		last_fired = world.time
+
+		if(burst_fire)
+			if(rounds >= burst_size)
+				for(var/i = 1 to burst_size)
+					is_bursting = 1
+					if(fire_shot(i))
+						sleep(1)
+					else
+						break
+			else
+				burst_fire = 0
+			is_bursting = 0
+
+		else
+			fire_shot()
 
 	target = null
 
 /obj/machinery/marine_turret/proc/fire_shot(shots_fired = 1)
 	if(!target || !on || !ammo) return
-	if(last_fired) return
-
-	if(!is_bursting)
-		last_fired = 1
-		spawn(fire_delay)
-			last_fired = 0
 
 	var/turf/my_loc = get_turf(src)
 	var/turf/targloc = get_turf(target)
@@ -878,8 +876,7 @@
 			//Shoot at the thing
 			playsound(loc, 'sound/weapons/gun_rifle.ogg', 75, 1)
 			in_chamber.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
-			if(target)
-				muzzle_flash(final_angle)
+			muzzle_flash(final_angle)
 			in_chamber = null
 			rounds--
 			if(rounds == 0)

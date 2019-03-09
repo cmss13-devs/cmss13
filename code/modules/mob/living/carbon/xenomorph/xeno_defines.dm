@@ -57,6 +57,7 @@
 	var/lunge_cooldown = 40
 	var/fling_cooldown = 40
 	var/punch_cooldown = 40
+	var/jab_cooldown = 40
 	var/toggle_agility_cooldown = 5
 
 	//Boiler vars
@@ -67,6 +68,7 @@
 	var/throwspeed = 0
 	var/hugger_delay = 0
 	var/eggs_max = 0
+	var/egg_cooldown = 30
 
 	var/xeno_explosion_resistance = 0 //0 to 3. how explosions affects the xeno, can it stun it, etc...
 
@@ -82,6 +84,7 @@
 	var/burrow_cooldown = 50
 	var/tunnel_cooldown = 100
 	var/widen_cooldown = 100
+	var/tremor_cooldown = 450 //Big strong ability, big cooldown.
 
 	var/acid_spray_range = 3
 	var/acid_spray_cooldown = 150
@@ -94,7 +97,6 @@
 	var/innate_healing = FALSE //whether the xeno slowly heals even outside weeds.
 
 	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
-	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
 	var/acid_level = 0
 	var/weed_level = 0
 
@@ -243,6 +245,9 @@
 	var/weedwalking_activated = 0 //Hivelord's weedwalking
 	var/last_charge_move = 0 //Time of the last time the Crusher moved while charging. If it's too far apart, the charge is broken
 
+	//Burrower Vars
+	var/used_tremor = 0
+
 
 	//Pounce vars
 	var/used_pounce = 0
@@ -255,6 +260,8 @@
 	var/used_fling = 0
 	var/used_punch = 0
 	var/used_toggle_agility = 0
+
+	var/used_jab = 0
 
 	// Defender vars
 	var/fortify = 0
@@ -281,6 +288,7 @@
 	var/eggs_cur = 0
 	var/huggers_max = 0
 	var/eggs_max = 0
+	var/laid_egg = 0
 
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen

@@ -86,8 +86,26 @@
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
 	var/charge_speed = 0 //Modifier on base move delay as charge builds up
-	var/charge_roar = 0 //Did we roar in our charge yet ?
+	var/charge_roar = 0 //Did we roar in our charge yet?
 
+	//Strain Variables
+	//Boiler
+	var/bombard_cooldown = 30
+	var/acid_cooldown = 0 //Spitter too.
+
+	//Praetorian
+	var/acid_spray_cooldown = 12
+
+	//Defender
+	var/spiked = FALSE
+
+	//Warrior
+	var/boxer = FALSE
+
+	//Pouncing Castes
+	var/pounce_slash = FALSE
+
+	
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
 	if(oldXeno)
@@ -480,6 +498,7 @@
 		huggers_max = mutators.carry_boost_level + caste.huggers_max
 		eggs_max = mutators.carry_boost_level + caste.eggs_max
 	need_weeds = mutators.need_weeds
+	actions -= mutators.action_to_remove
 
 /mob/living/carbon/Xenomorph/proc/recalculate_acid()
 	acid_level = caste.acid_level
@@ -513,6 +532,7 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_gas()
 	gas_level = mutators.gas_boost_level
 	gas_life_multiplier = mutators.gas_life_multiplier
+	bombard_cooldown = mutators.bombard_cooldown
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)
@@ -532,3 +552,9 @@
 	..()
 	hud_update()
 	plasma_stored = plasma_max
+
+/mob/living/carbon/Xenomorph/proc/remove_action(var/action as text)
+	for(var/X in actions)
+		var/datum/action/A = X
+		if(A.name == action)
+			A.remove_action(src)

@@ -94,6 +94,10 @@
 		/datum/action/xeno_action/ready_charge,
 		)
 
+	new_actions = list(
+		/datum/action/xeno_action/activable/earthquake,
+	)
+
 /mob/living/carbon/Xenomorph/Crusher/proc/stomp()
 
 	if(!check_state()) return
@@ -134,6 +138,56 @@
 				M << "<span class='highdanger'>You are stomped on by [src]!</span>"
 			shake_camera(M, 2, 2)
 		i--
+
+/mob/living/carbon/Xenomorph/Crusher/proc/earthquake()
+
+	if(!check_state()) return
+
+	if(world.time < has_screeched + CRUSHER_EARTHQUAKE_COOLDOWN) //Sure, let's use this.
+		src << "<span class='xenowarning'>You are not ready to cause an earthquake yet.</span>"
+		r_FAL
+
+	if(legcuffed)
+		src << "<span class='xenodanger'>You can't rear up to stomp the ground with that thing on your leg!</span>"
+		return
+
+	if(!check_plasma(100)) return
+	has_screeched = world.time
+	use_plasma(100)
+
+	round_statistics.crusher_stomps++
+
+	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
+	visible_message("<span class='xenodanger'>[src] smashes into the ground, causing a violent earthquake!</span>", \
+	"<span class='xenodanger'>You smash into the ground, causing a violent earthquake!</span>")
+	create_stomp() //Adds the visual effect. Wom wom wom
+
+	var/i = 5
+	for(var/mob/living/M in range(1,loc))
+		if(!i) break
+		if(!isXeno(M))
+			if(M.loc == loc)
+				if(M.stat == DEAD)
+					continue
+				if(!(M.status_flags & XENO_HOST) && !istype(M.buckled, /obj/structure/bed/nest))
+					round_statistics.crusher_stomp_victims++
+					M.take_overall_damage(40) //The same as a full charge, but no more than that.
+					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was xeno stomped by [src] ([ckey])</font>")
+					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
+					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
+				M.KnockDown(rand(2, 3))
+				M << "<span class='highdanger'>You are stomped on by [src]!</span>"
+			shake_camera(M, 2, 2)
+		i--
+
+	for(var/mob/living/carbon/human/M in range(5, loc))
+		M << "<span class='warning'>You struggle to remain on your feet as the ground shakes beneath your feet!</span>"
+		shake_camera(M, 3, 3)
+
+	for(var/mob/living/carbon/human/H in range(2, loc))
+		H << "<span class='warning'>You are knocked down by the violent earthquake beneath your feet!</span>"
+		H.KnockDown(3)
+
 
 //The atom collided with is passed to this proc, all types of collisions are dealt with here.
 //The atom does not tell the Crusher how to handle a collision, the Crusher is an independant

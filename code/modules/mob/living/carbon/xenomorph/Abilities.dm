@@ -222,8 +222,7 @@
 		X.acid_spray_cone(A)
 		return
 
-	var/mob/living/carbon/Xenomorph/Boiler/B = X
-	B.acid_spray(A)
+	X.acid_spray(A)
 
 /datum/action/xeno_action/activable/spray_acid/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -231,8 +230,7 @@
 	if (isXenoPraetorian(owner))
 		return !X.used_acid_spray
 
-	var/mob/living/carbon/Xenomorph/Boiler/B = X
-	return !B.acid_cooldown
+	return !X.acid_cooldown
 
 // Warrior Agility
 /datum/action/xeno_action/activable/toggle_agility
@@ -293,7 +291,21 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	return !X.used_punch
 
-// Burrower Burrow
+//Warrior Jab (Boxer Ability)
+/datum/action/xeno_action/activable/jab
+	name = "Jab"
+	action_icon_state = "pounce"
+	ability_name = "jab"
+
+/datum/action/xeno_action/activable/jab/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.jab(A)
+
+/datum/action/xeno_action/activable/jab/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_jab
+
+// Burrower Abilities
 /datum/action/xeno_action/activable/burrow
 	name = "Burrow"
 	action_icon_state = "agility_on"
@@ -305,6 +317,19 @@
 		X.tunnel(get_turf(A))
 	else
 		X.burrow()
+
+/datum/action/xeno_action/activable/tremor
+	name = "Tremor (100)"
+	action_icon_state = "screech"
+	ability_name = "screech"
+
+/datum/action/xeno_action/activable/tremor/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/X = owner
+	return !X.used_tremor
+
+/datum/action/xeno_action/activable/tremor/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.tremor()
 
 // Defender Headbutt
 /datum/action/xeno_action/activable/headbutt
@@ -521,6 +546,7 @@
 
 /datum/action/xeno_action/bombard/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
+	var/bombard_time = X.bombard_cooldown
 
 	if(X.is_bombarding)
 		if(X.client)
@@ -539,7 +565,7 @@
 
 	X.visible_message("<span class='notice'>\The [X] begins digging their claws into the ground.</span>", \
 	"<span class='notice'>You begin digging yourself into place.</span>", null, 5)
-	if(do_after(X, 30, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(X, bombard_time, FALSE, 5, BUSY_ICON_GENERIC))
 		if(X.is_bombarding) return
 		X.is_bombarding = 1
 		X.visible_message("<span class='notice'>\The [X] digs itself into the ground!</span>", \
@@ -617,6 +643,18 @@
 	new /obj/effect/alien/resin/trap(X.loc, X)
 	X << "<span class='xenonotice'>You place a resin hole on the weeds, it still needs a sister to fill it with acid.</span>"
 
+/datum/action/xeno_action/activable/lay_egg
+	name = "Lay Egg (50)"
+	action_icon_state = "lay_egg"
+	ability_name = "lay egg"
+
+/datum/action/xeno_action/activable/lay_egg/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	return !X.laid_egg
+
+/datum/action/xeno_action/activable/lay_egg/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Carrier/X = owner
+	X.lay_egg(A)
 
 //Crusher abilities
 /datum/action/xeno_action/activable/stomp
@@ -647,6 +685,20 @@
 	else
 		X.is_charging = !X.is_charging
 		X << "<span class='xenonotice'>You will [X.is_charging ? "now" : "no longer"] charge when moving.</span>"
+
+/datum/action/xeno_action/activable/earthquake
+	name = "Earthquake (100)"
+	action_icon_state = "stomp"
+	ability_name = "stomp"
+
+/datum/action/xeno_action/activable/earthquake/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Crusher/X = owner
+	if(world.time >= X.has_screeched + CRUSHER_STOMP_COOLDOWN)
+		return TRUE
+
+/datum/action/xeno_action/activable/earthquake/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Crusher/X = owner
+	X.earthquake()
 
 //Hivelord Abilities
 
@@ -1165,6 +1217,19 @@
 /datum/action/xeno_action/activable/charge/action_cooldown_check()
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
 	return !X.used_pounce
+
+//Drone Abilities
+/datum/action/xeno_action/activable/transfer_health
+	name = "Transfer Health"
+	action_icon_state = "transfer_health"
+	ability_name = "transfer health"
+	var/health_transfer_amount = 25
+	var/transfer_delay = 50
+	var/max_range = 1
+
+/datum/action/xeno_action/activable/transfer_health/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.xeno_transfer_health(A, health_transfer_amount, transfer_delay, max_range)
 
 //Ravenger
 

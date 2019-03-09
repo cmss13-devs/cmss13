@@ -98,3 +98,7 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/spray_acid
 		)
+	
+	new_actions = list(
+		/datum/action/xeno_action/activable/tail_sweep,
+	)

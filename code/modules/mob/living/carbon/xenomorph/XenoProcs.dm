@@ -125,6 +125,14 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+/mob/living/carbon/Xenomorph/proc/gain_health(value)
+	if(bruteloss == 0) return
+	if(bruteloss < value) value = bruteloss
+	bruteloss -= value
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+
 
 
 
@@ -239,6 +247,8 @@
 					step_to(src, M)
 					canmove = FALSE
 					frozen = TRUE
+					if(pounce_slash)
+						M.attack_alien(src)
 					if(!caste.is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 					spawn(caste.charge_type == 1 ? 5 : 15)
 						frozen = FALSE

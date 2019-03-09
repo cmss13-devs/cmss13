@@ -61,6 +61,7 @@
 		/datum/action/xeno_action/activable/tail_sweep
 	)
 
+
 /mob/living/carbon/Xenomorph/Defender/update_icons()
 	if (stat == DEAD)
 		icon_state = "Defender Dead"

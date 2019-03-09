@@ -350,7 +350,7 @@
 			B.visible_message("<span class='xenowarning'>\The [B] pressurises the resin hole with acid gas!</span>", \
 			"<span class='xenowarning'>You pressurise the resin hole with acid gas!</span>", null, 5)
 
-			spawn(B.caste.bomb_delay)
+			spawn(B.bomb_delay)
 				B.bomb_cooldown = 0
 				B << "<span class='notice'>You have produced enough acid to bombard again.</span>"
 			hivenumber = X.hivenumber //Taking over the hole
@@ -458,7 +458,7 @@
 	var/health = 80
 	var/close_delay = 100
 
-	tiles_with = list(/turf/closed, /obj/structure/mineral_door/resin)
+	tiles_with = list(/obj/structure/mineral_door/resin)
 
 /obj/structure/mineral_door/resin/New()
 	spawn(0)
@@ -466,6 +466,10 @@
 		relativewall_neighbours()
 		if(!locate(/obj/effect/alien/weeds) in loc)
 			new /obj/effect/alien/weeds(loc)
+
+		for(var/turf/closed/wall/W in orange(1))
+			W.update_connections(1)
+			W.update_icon()
 	..()
 
 /obj/structure/mineral_door/resin/attack_paw(mob/user as mob)

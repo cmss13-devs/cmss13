@@ -5,11 +5,14 @@
 #define MINUTES *600
 
 #define SECONDS_1 		10
+#define SECONDS_2 		20
 #define SECONDS_4 		40
 #define SECONDS_5 		50
+#define SECONDS_10 		100
 #define SECONDS_15 		150
 #define SECONDS_20      200
 #define SECONDS_30 		300
+#define SECONDS_60 		600
 #define SECONDS_90 		900
 #define SECONDS_100 	1000
 #define SECONDS_150 	1500

@@ -87,7 +87,7 @@ var/global/list/deployed_fultons = list()
 			var/mob/living/carbon/human/H = target_atom
 			if(isYautja(H) && H.stat == DEAD)
 				can_attach = TRUE
-			else if(H.mind && H.check_tod() && H.is_revivable())
+			else if((H.mind && H.check_tod() && H.is_revivable()) || H.stat != DEAD)
 				user << "<span class='warning'>You can't attach [src] to [target_atom], they still have a chance!</span>"
 				return
 			else

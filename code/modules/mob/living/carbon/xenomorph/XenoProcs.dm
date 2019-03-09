@@ -19,66 +19,76 @@
 	if (!..())
 		return 0
 
-	if(!caste.evolution_allowed)
-		stat(null, "Evolve Progress (FINISHED)")
+	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
+		stat("Evolve Progress:", "[round(amount_grown)]/[max_grown]")
 	else if(!hive.living_xeno_queen)
-		stat(null, "Evolve Progress (HALTED - NO QUEEN)")
-	else if(!hive.living_xeno_queen.ovipositor)
-		stat(null, "Evolve Progress (HALTED - QUEEN HAS NO OVIPOSITOR)")
-	else
-		stat(null, "Evolve Progress: [round(evolution_stored)]/[evolution_threshold]")
+		stat("Evolve Progress:", "NO QUEEN")
+	else if(!hive.living_xeno_queen.ovipositor && !caste_name == "Queen")
+		stat("Evolve Progress:", "NO OVIPOSITOR")
+	else if(caste.evolution_allowed)
+		stat("Evolve Progress:", "[round(evolution_stored)]/[evolution_threshold]")
 
 	if(upgrade != -1 && upgrade < 3) //upgrade possible
-		stat(null, "Upgrade Progress: [round(upgrade_stored)]/[upgrade_threshold]")
-	else //Upgrade process finished or impossible
-		stat(null, "Upgrade Progress (FINISHED)")
+		stat("Upgrade Progress:", "[round(upgrade_stored)]/[upgrade_threshold]")
 
-	if(plasma_max > 0)
-		if(caste.is_robotic)
-			stat(null, "Charge: [plasma_stored]/[plasma_max]")
-		else
-			stat(null, "Plasma: [plasma_stored]/[plasma_max]")
-
-	stat(null, "Mutator points: [mutators.remaining_points]")
-	if(isXenoQueenLeadingHive(src))
-		stat(null, "Hive Mutator points: [hive.mutators.remaining_points]")
-	if(hive.slashing_allowed == 1)
-		stat(null,"Slashing of hosts is currently: PERMITTED.")
-	else if(hive.slashing_allowed == 2)
-		stat(null,"Slashing of hosts is currently: LIMITED.")
-	else
-		stat(null,"Slashing of hosts is currently: FORBIDDEN.")
-
+	if(mutators.remaining_points > 0)
+		stat("Mutator Points:", "[mutators.remaining_points]")
+	if(isXenoQueenLeadingHive(src) && hive.mutators.remaining_points > 0)
+		stat("Hive Mutator Points:", "[hive.mutators.remaining_points]")
+		
+	stat("")
 	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
-	var/msg_holder = ""
+	var/msg_holder = "-"
+	
 	if(frenzy_aura)
 		switch(frenzy_aura)
-			if(-INFINITY to 1.0) msg_holder = "very weak "
-			if(1.1 to 2.0) msg_holder = "weak "
-			if(2.1 to 2.9) msg_holder = ""
-			if(3.0 to 3.9) msg_holder = "strong "
-			if(4.0 to INFINITY) msg_holder = "very strong "
-		stat(null,"You are affected by a [msg_holder]FRENZY pheromone.")
+			if(-INFINITY to 1.0) msg_holder = "Very Weak"
+			if(1.1 to 2.0) msg_holder = "Weak"
+			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(3.0 to 3.9) msg_holder = "Strong"
+			if(4.0 to INFINITY) msg_holder = "Very Strong"
+	stat("Frenzy:", "[msg_holder]")
+	msg_holder = "-"
+	
 	if(warding_aura)
 		switch(warding_aura)
-			if(-INFINITY to 1.0) msg_holder = "very weak "
-			if(1.1 to 2.0) msg_holder = "weak "
-			if(2.1 to 2.9) msg_holder = ""
-			if(3.0 to 3.9) msg_holder = "strong "
-			if(4.0 to INFINITY) msg_holder = "very strong "
-		stat(null,"You are affected by a [msg_holder]WARDING pheromone.")
+			if(-INFINITY to 1.0) msg_holder = "Very Weak"
+			if(1.1 to 2.0) msg_holder = "Weak"
+			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(3.0 to 3.9) msg_holder = "Strong"
+			if(4.0 to INFINITY) msg_holder = "Very Strong"
+	stat("Warding:", "[msg_holder]")
+	msg_holder = "-"
+	
 	if(recovery_aura)
 		switch(recovery_aura)
-			if(-INFINITY to 1.0) msg_holder = "very weak "
-			if(1.1 to 2.0) msg_holder = "weak "
-			if(2.1 to 2.9) msg_holder = ""
-			if(3.0 to 3.9) msg_holder = "strong "
-			if(4.0 to INFINITY) msg_holder = "very strong "
-		stat(null,"You are affected by a [msg_holder]RECOVERY pheromone.")
+			if(-INFINITY to 1.0) msg_holder = "Very Weak"
+			if(1.1 to 2.0) msg_holder = "Weak"
+			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(3.0 to 3.9) msg_holder = "Strong"
+			if(4.0 to INFINITY) msg_holder = "Very Strong"
+	stat("Recovery:", "[msg_holder]")
 
-	if(hive.hive_orders && hive.hive_orders != "")
-		stat(null,"Hive Orders: [hive.hive_orders]")
+	stat(null,"")
 
+	if(!hive.living_xeno_queen)
+		stat("Queen's Location:", "NO QUEEN")
+	else if(!(caste_name == "Queen"))
+		stat("Queen's Location:", "[hive.living_xeno_queen.loc.loc.name]")
+
+	if(hive.slashing_allowed == 1)
+		stat("Slashing:", "PERMITTED")
+	else if(hive.slashing_allowed == 2)
+		stat("Slashing:", "LIMITED")
+	else
+		stat("Slashing:", "FORBIDDEN")
+
+	if(!hive.hive_orders)
+		stat("Hive Orders:", "-")
+	else
+		stat("Hive Orders:", "[hive.hive_orders]")
+
+	stat("")
 	return 1
 
 //A simple handler for checking your state. Used in pretty much all the procs.
@@ -111,6 +121,14 @@
 
 /mob/living/carbon/Xenomorph/proc/gain_plasma(value)
 	plasma_stored = min(plasma_stored + value, plasma_max)
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+
+/mob/living/carbon/Xenomorph/proc/gain_health(value)
+	if(bruteloss == 0) return
+	if(bruteloss < value) value = bruteloss
+	bruteloss -= value
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
@@ -229,6 +247,8 @@
 					step_to(src, M)
 					canmove = FALSE
 					frozen = TRUE
+					if(pounce_slash)
+						M.attack_alien(src)
 					if(!caste.is_robotic) playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 					spawn(caste.charge_type == 1 ? 5 : 15)
 						frozen = FALSE

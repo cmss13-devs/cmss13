@@ -66,14 +66,13 @@
 	icon = 'icons/obj/doors/almayer/blastdoors_shutters.dmi'
 	openspeed = 4 //shorter open animation.
 	tiles_with = list(
-		/turf/closed/wall,
 		/obj/structure/window/framed/almayer,
 		/obj/machinery/door/airlock)
 
-	New()
-		spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
-			relativewall_neighbours()
-		..()
+/obj/machinery/door/poddoor/shutters/almayer/New()
+	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
+		relativewall_neighbours()
+	..()
 
 
 //transit shutters used by marine dropships

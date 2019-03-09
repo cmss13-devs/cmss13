@@ -240,6 +240,14 @@
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
 				spawn_buried_larva(pick(players_with_xeno_pref))
 
+/mob/living/carbon/Xenomorph/Queen/Stat()
+	..()
+	var/stored_larvae = hive_datum[hivenumber].stored_larva
+	
+	stat("Burrowed Larvae:", "[stored_larvae]")
+	stat("Leaders:", "[hive.xeno_leader_list.len] / [hive.queen_leader_limit]")
+	return 1
+
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Queen/Bump(atom/A, yes)
 	set waitfor = 0

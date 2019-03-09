@@ -379,7 +379,14 @@
 //objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance
 
 /obj/proc/get_projectile_hit_boolean(obj/item/projectile/P)
-	return FALSE
+
+	if(!density)
+		return FALSE
+
+	if(!anchored) //unanchored objects offer no protection.
+		return FALSE
+
+	return TRUE
 
 
 /obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
@@ -514,52 +521,27 @@
 
 	return TRUE
 
-/*
-/obj/structure/get_projectile_hit_chance(obj/item/projectile/P)
-	if(!density) //structure is passable
+
+/obj/vehicle/get_projectile_hit_boolean(obj/item/projectile/P)
+
+	if(src == P.original) //clicking on the object itself hits the object
+		var/hitchance = get_effective_accuracy(P)
+
+		#if DEBUG_HIT_CHANCE
+		world << "<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"
+		#endif
+
+		if( prob(hitchance) )
+			return TRUE
+
+	if(!density)
 		return FALSE
 
-	if(src == P.original) //clicking on the structure itself hits the structure
-		return TRUE
-
-	if(!anchored) //unanchored structure offers no protection.
+	if(!anchored) //unanchored objects offer no protection.
 		return FALSE
 
-	if(!throwpass)
-		return TRUE
+	return TRUE
 
-	if(P.ammo.flags_ammo_behavior & AMMO_IGNORE_COVER)
-		return FALSE
-
-	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank bypasses cover
-		return FALSE
-
-	var/distance = P.distance_travelled
-
-	if(distance < 1)
-		return FALSE
-
-
-	if(flags_atom & ON_BORDER) //barricades, flipped tables
-		if(P.dir & reverse_direction(dir))
-			distance-- //no bias towards "inner" side
-		else if (!(P.dir & dir))
-			return FALSE //no effect if bullet direction is perpendicular to barricade
-
-	else //window frames, unflipped tables
-		for(var/obj/structure/S in get_turf(P))
-			if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable) //if a projectile is coming from a window frame/table, it's guaranteed to pass the next window frame/table
-				return FALSE
-
-
-	//a structure's "projectile_coverage" var indicates the maximum probability of blocking a projectile
-	var/distance_limit = 6 //number of tiles needed to max out block probability
-	var/accuracy_factor = 50 //degree to which accuracy affects probability   (if accuracy is 100, probability is unaffected. Lower accuracies will increase block chance)
-
-	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - P.accuracy/100))
-	world << "Distance travelled: [distance]  |  Accuracy: [P.accuracy]  |  Hit chance: [hitchance]"
-	return prob(hitchance)
-*/
 
 /obj/structure/window/get_projectile_hit_boolean(obj/item/projectile/P)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags

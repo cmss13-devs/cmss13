@@ -21,6 +21,9 @@
 	var/tackle_chance_multiplier = 1.0
 	var/tackle_strength_bonus = 0
 
+	//Strain Variables
+	//Boiler
+
 //Functions to be overloaded to call for when something gets updated on the xenos
 /datum/mutator_set/proc/recalculate_everything(var/description)
 /datum/mutator_set/proc/recalculate_stats(var/description)
@@ -215,6 +218,12 @@
 	var/charge_speed_buildup_multiplier = 1.0
 	var/charge_turfs_to_charge_delta = 0
 	var/gas_life_multiplier = 1.0
+	var/datum/action_to_remove = null //The ability that we want to remove from a xeno.
+	//Strains Below
+	//Boiler
+	var/bombard_cooldown = 30
+	var/datum/new_ammo_type = /datum/ammo/xeno/boiler_gas
+	
 
 /datum/mutator_set/individual_mutators/list_and_purchase_mutators()
 	. = ..()

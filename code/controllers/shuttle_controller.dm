@@ -25,58 +25,11 @@ var/global/datum/shuttle_controller/shuttle_controller
 	locs_crash = list()
 
 	var/datum/shuttle/ferry/shuttle
-/*
-	// Hangar Elevator
-	shuttle = new/datum/shuttle/ferry/hangar()
-	shuttle.location = 1
-	shuttle.warmup_time = 3
-	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/almayer/elevator_hangar/lowerdeck)
-			shuttle.area_offsite = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/almayer/elevator_hangar/underdeck)
-			shuttle.area_station = A
-			break
-
-	var/datum/shuttle/ferry/hangar/hangarelevator = shuttle
-	hangarelevator.lower_railings() // to deal with railings being up
-
-	shuttles["Hangar"] = shuttle
-	process_shuttles += shuttle
-
-	supply_controller.shuttle = shuttle
-
-	// Maintenance Elevator
-	shuttle = new/datum/shuttle/ferry/hangar/maintenance()
-	shuttle.location = 1
-	shuttle.warmup_time = 3
-	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/almayer/elevator_maintenance/upperdeck)
-			shuttle.area_offsite = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/shuttle/almayer/elevator_maintenance/lowerdeck)
-			shuttle.area_station = A
-			break
-
-	var/datum/shuttle/ferry/hangar/maintenance/maintenance_elevator = shuttle
-	maintenance_elevator.lower_railings() // to deal with railings being up
-
-	shuttles["Maintenance"] = shuttle
-	process_shuttles += shuttle
-
-	supply_controller.shuttle = shuttle
-*/
 
 	// Supply shuttle
 	shuttle = new/datum/shuttle/ferry/supply()
 	shuttle.location = 1
-	shuttle.warmup_time = 1
+	shuttle.warmup_time = SECONDS_1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
 	for(var/area/A in all_areas)
 		if(A.type == /area/supply/dock)
@@ -97,7 +50,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	//ALMAYER DROPSHIP 1
 	shuttle1 = new
 	shuttle1.location = 0
-	shuttle1.warmup_time = 10
+	shuttle1.warmup_time = SECONDS_10
 	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
 	shuttle1.shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
 	shuttle1.info_tag = "Almayer Dropship"
@@ -110,7 +63,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	//ALMAYER DROPSHIP 2
 	shuttle1 = new
 	shuttle1.location = 0
-	shuttle1.warmup_time = 10
+	shuttle1.warmup_time = SECONDS_10
 	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
 	shuttle1.shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
 	shuttle1.info_tag = "Almayer Dropship"
@@ -239,7 +192,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	// Elevator I
 	shuttle = new /datum/shuttle/ferry/elevator()
 	shuttle.location = 0
-	shuttle.warmup_time = 10
+	shuttle.warmup_time = SECONDS_10
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 
 	for(var/area/A in all_areas)
@@ -265,7 +218,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	// Elevator II
 	shuttle = new /datum/shuttle/ferry/elevator()
 	shuttle.location = 0
-	shuttle.warmup_time = 10
+	shuttle.warmup_time = SECONDS_10
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 
 	for(var/area/A in all_areas)
@@ -292,7 +245,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	// Elevator III
 	shuttle = new /datum/shuttle/ferry/elevator()
 	shuttle.location = 0
-	shuttle.warmup_time = 10
+	shuttle.warmup_time = SECONDS_10
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 	for(var/area/A in all_areas)
 		if(A.type == /area/shuttle/elevator3/underground)
@@ -317,7 +270,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	// Elevator IV
 	shuttle = new /datum/shuttle/ferry/elevator()
 	shuttle.location = 0
-	shuttle.warmup_time = 10
+	shuttle.warmup_time = SECONDS_10
 	shuttle.recharge_time = ELEVATOR_RECHARGE
 	for(var/area/A in all_areas)
 		if(A.type == /area/shuttle/elevator4/underground)

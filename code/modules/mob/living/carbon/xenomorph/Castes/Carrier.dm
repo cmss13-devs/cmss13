@@ -24,6 +24,7 @@
 	can_denest_hosts = 1
 	xeno_explosion_resistance = 60
 	weed_level = 1
+	egg_cooldown = 300
 
 /datum/caste_datum/carrier/mature
 	upgrade_name = "Mature"
@@ -42,6 +43,7 @@
 	throwspeed = 1
 	hugger_delay = 30
 	aura_strength = 1.5
+	egg_cooldown = 300
 
 /datum/caste_datum/carrier/elder
 	upgrade_name = "Elder"
@@ -60,6 +62,7 @@
 	huggers_max = 10
 	hugger_delay = 20
 	eggs_max = 5
+	egg_cooldown = 250
 
 /datum/caste_datum/carrier/ancient
 	upgrade_name = "Ancient"
@@ -78,6 +81,7 @@
 	huggers_max = 10
 	hugger_delay = 20
 	eggs_max = 5
+	egg_cooldown = 220
 
 /mob/living/carbon/Xenomorph/Carrier
 	caste_name = "Carrier"
@@ -102,6 +106,10 @@
 		/datum/action/xeno_action/activable/retrieve_egg,
 		/datum/action/xeno_action/place_trap
 		)
+
+	new_actions = list(
+		/datum/action/xeno_action/activable/lay_egg,
+	)
 
 	death(gibbed)
 		if(..(gibbed))
@@ -128,8 +136,8 @@
 	if (!..())
 		return 0
 
-	stat(null, "Stored Huggers: [huggers_cur] / [huggers_max]")
-	stat(null, "Stored Eggs: [eggs_cur] / [eggs_max]")
+	stat("Stored Huggers:", "[huggers_cur] / [huggers_max]")
+	stat("Stored Eggs:", "[eggs_cur] / [eggs_max]")
 	return 1
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
@@ -239,3 +247,33 @@
 	if(!istype(E)) //something else in our hand
 		src << "<span class='warning'>You need an empty hand to grab one of your stored eggs!</span>"
 		return
+
+/mob/living/carbon/Xenomorph/Carrier/proc/lay_egg()
+
+	if(!check_state())
+		return
+
+	if(laid_egg)
+		src << "<span class='xenowarning'>You must wait before laying another egg.</span>"
+		return
+
+	if(!check_plasma(50))
+		return
+
+	var/obj/item/xeno_egg/E = get_active_hand()
+	if(!E)
+		E = new()
+		E.hivenumber = hivenumber
+		put_in_active_hand(E)
+		use_plasma(50)
+		src << "<span class='xenonotice'>You produce an egg.</span>"
+		playsound(loc, "alien_resin_build", 25)
+		laid_egg = TRUE
+		spawn(caste.egg_cooldown)
+			laid_egg = FALSE
+			src << "<span class='xenonotice'>You can produce an egg again.</span>"
+			for(var/X in actions)
+				var/datum/action/A = X
+				A.update_button_icon()
+
+	return 1

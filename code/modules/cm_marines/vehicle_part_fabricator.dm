@@ -1,6 +1,4 @@
 
-
-
 /obj/machinery/part_fabricator
 	name = "part fabricator"
 	desc = "A large automated 3D printer for producing runtime errors."
@@ -11,12 +9,20 @@
 	icon = 'icons/obj/machines/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
 	var/busy = FALSE
-	var/point_store = null
 	var/generate_points = TRUE
 
 /obj/machinery/part_fabricator/New()
 	..()
 	start_processing()
+
+/obj/machinery/part_fabricator/proc/get_point_store()
+    return 0
+    
+/obj/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
+    return
+    
+/obj/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
+    return
 
 /obj/machinery/part_fabricator/power_change()
 	..()
@@ -35,16 +41,16 @@
 	else
 		icon_state = "drone_fab_idle"
 	if(generate_points)
-		supply_controller.dropship_points++
+		add_to_point_store()
 
 /obj/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = 0
 	if(stat & NOPOWER) return
-	if(point_store < text2num(cost))
+	if(get_point_store() < text2num(cost))
 		user << "<span class='warning'>You don't have enough points to build that.</span>"
 		return
 	visible_message("<span class='notice'>[src] starts printing something.</span>")
-	point_store -= text2num(cost)
+	spend_point_store(text2num(cost))
 	icon_state = "drone_fab_active"
 	busy = TRUE
 	sleep(100)
@@ -79,16 +85,21 @@
 	name = "dropship part fabricator"
 	desc = "A large automated 3D printer for producing dropship parts."
 
-/obj/machinery/part_fabricator/dropship/New()
-	..()
-	point_store = supply_controller.dropship_points
+/obj/machinery/part_fabricator/dropship/get_point_store()
+    return supply_controller.dropship_points
+    
+/obj/machinery/part_fabricator/dropship/add_to_point_store(var/number = 1)
+    supply_controller.dropship_points += number
+
+/obj/machinery/part_fabricator/dropship/spend_point_store(var/number = 1)
+    supply_controller.dropship_points -= number
 
 /obj/machinery/part_fabricator/dropship/attack_hand(mob/user)
 	if(..())
 		return
 	user.set_interaction(src)
 	var/dat = "<center><h2>Dropship Part Fabricator</h2></center><hr/>"
-	dat += "<h4>Points Available: [point_store]</h4>"
+	dat += "<h4>Points Available: [get_point_store()]</h4>"
 	dat += "<h3>Dropship Equipment:</h3>"
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/DE = build_type
@@ -115,16 +126,21 @@
 	desc = "A large automated 3D printer for producing tank parts."
 	generate_points = FALSE
 
-/obj/machinery/part_fabricator/tank/New()
-	..()
-	point_store = supply_controller.tank_points
+/obj/machinery/part_fabricator/tank/get_point_store()
+    return supply_controller.tank_points
+    
+/obj/machinery/part_fabricator/tank/add_to_point_store(var/number = 1)
+    supply_controller.tank_points += number
+
+/obj/machinery/part_fabricator/tank/spend_point_store(var/number = 1)
+    supply_controller.tank_points -= number
 
 /obj/machinery/part_fabricator/tank/attack_hand(mob/user)
 	if(..())
 		return
 	user.set_interaction(src)
 	var/dat = "<center><h2>Tank Part Fabricator</h2></center><hr/>"
-	dat += "<h4>Points Available: [point_store]</h4>"
+	dat += "<h4>Points Available: [get_point_store()]</h4>"
 	dat += "<h3>Tank Equipment:</h3>"
 	for(var/build_type in typesof(/obj/item/hardpoint))
 		var/obj/item/hardpoint/TE = build_type

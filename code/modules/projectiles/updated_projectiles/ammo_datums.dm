@@ -671,7 +671,7 @@
 	iff_signal = ACCESS_IFF_MARINE
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_SKIPS_HUMANS|AMMO_IGNORE_COVER
 	accurate_range_min = 4
-	
+
 /datum/ammo/bullet/sniper/New()
 	..()
 	accurate_range = config.max_shell_range
@@ -1390,6 +1390,30 @@
 	smoke_system.lifetime = 6 * lifetime_mult
 	smoke_system.start()
 	T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into corrosive bile!</span>")
+
+/datum/ammo/xeno/railgun_glob
+	name = "railgun glob of acid"
+	icon_state = "boiler_gas"
+	sound_hit = "acid_hit"
+	sound_bounce = "acid_bounce"
+	debilitate = list(1,1,0,0,1,1,0,0)
+	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR
+
+/datum/ammo/xeno/railgun_glob/New()
+	..()
+	accurate_range = config.max_shell_range
+	damage = config.mhigh_hit_damage
+	damage_var_high = config.min_proj_variance
+	damage_type = BURN
+	scatter = config.min_scatter_value
+	accuracy = config.max_hit_accuracy
+	max_range = config.long_shell_range
+
+/datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
+	if(istype(O, /obj/structure/barricade))
+		var/obj/structure/barricade/B = O
+		B.health -= rand(50, 75)
+		B.update_health(1)
 
 /*
 //================================================

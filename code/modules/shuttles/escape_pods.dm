@@ -127,30 +127,33 @@ for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 				D.lock()
 
 /datum/shuttle/ferry/marine/evacuation_pod/proc/prepare_for_launch()
-	if(!can_launch()) r_FAL //Can't launch in some circumstances.
-	evacuation_program.dock_state = STATE_LAUNCHING
-	spawn()
-		D.unlock()
-		D.close()
-		D.lock()
-	evacuation_program.prepare_for_undocking()
-	sleep(31)
-	if(!check_passengers())
-		evacuation_program.dock_state = STATE_BROKEN
-		explosion(evacuation_program.master, -1, -1, 3, 4)
-		sleep(25)
-		staging_area.initialize_power_and_lighting(TRUE) //We want to reinitilize power usage and turn off everything.
-
-		MOVE_MOB_OUTSIDE
-		//evacuation_program.open_door()
+	if (passengers > 0)
+		if(!can_launch()) r_FAL //Can't launch in some circumstances.
+		evacuation_program.dock_state = STATE_LAUNCHING
 		spawn()
 			D.unlock()
-			D.open()
+			D.close()
 			D.lock()
-		evacuation_program.master.state("<span class='warning'>WARNING: Maximum weight limit reached, pod unable to launch. Warning: Thruster failure detected.</span>")
-		r_FAL
-	launch()
-	r_TRU
+		evacuation_program.prepare_for_undocking()
+		sleep(31)
+		if(!check_passengers())
+			evacuation_program.dock_state = STATE_BROKEN
+			explosion(evacuation_program.master, -1, -1, 3, 4)
+			sleep(25)
+			staging_area.initialize_power_and_lighting(TRUE) //We want to reinitilize power usage and turn off everything.
+
+			MOVE_MOB_OUTSIDE
+			//evacuation_program.open_door()
+			spawn()
+				D.unlock()
+				D.open()
+				D.lock()
+			evacuation_program.master.state("<span class='warning'>WARNING: Maximum weight limit reached, pod unable to launch. Warning: Thruster failure detected.</span>")
+			r_FAL
+		launch()
+		r_TRU
+	else
+		evacuation_program.dock_state = STATE_READY
 
 #undef MOVE_MOB_OUTSIDE
 

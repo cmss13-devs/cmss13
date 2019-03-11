@@ -135,7 +135,7 @@
 					C.die()
 	acid_strength = acid_level
 	processing_objects.Add(src)
-	spawn(30 + rand(0, 20))
+	spawn(25 + rand(0, 10))
 		processing_objects.Remove(src)
 		cdel(src)
 		return
@@ -146,11 +146,12 @@
 		if(!H.lying)
 			H << "<span class='danger'>Your feet scald and burn!</span>"
 			H.emote("pain")
+			H.KnockDown(0.1)
 			var/datum/limb/affecting = H.get_limb("l_foot")
-			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(2, 7)))
 				H.UpdateDamageIcon()
 			affecting = H.get_limb("r_foot")
-			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(5, 10)))
+			if(istype(affecting) && affecting.take_damage(0, acid_strength*rand(2, 7)))
 				H.UpdateDamageIcon()
 			H.updatehealth()
 		else

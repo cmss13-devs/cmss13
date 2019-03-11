@@ -302,6 +302,7 @@
 	bound_width = 128
 	bound_height = 64
 	bound_y = 64
+	unacidable = 1
 
 
 /obj/structure/prop/almayer/anti_air_cannon/ex_act()
@@ -319,6 +320,7 @@
 	density = 0
 	mouse_opacity = 0
 	layer = LADDER_LAYER
+	unacidable = 1
 
 /obj/structure/prop/almayer/cannon_cables/ex_act()
 	return
@@ -333,6 +335,7 @@
 	icon = 'icons/Marine/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
 	density = 1
+	unacidable = 1
 
 /obj/structure/prop/almayer/cannon_cable_connector/ex_act()
 	return

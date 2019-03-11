@@ -541,6 +541,12 @@
 	if(H.status_flags & XENO_HOST)
 		src << "<span class='xenowarning'>This would harm the embryo!</span>"
 		return
+
+	if (distance > 1)
+		step_towards(src, H, 1)
+
+	if (!Adjacent(H))
+		return
 	
 	round_statistics.warrior_punches++
 
@@ -551,7 +557,8 @@
 	used_jab = 1
 	use_plasma(10)
 
-	H.KnockDown(0.5)
+	if(!isYautja(H))
+		H.KnockDown(0.1)
 
 	if(agility)
 		toggle_agility()
@@ -830,7 +837,11 @@
 		round_statistics.defender_tail_sweep_hits++
 		shake_camera(H, 2, 1)
 
-		if (prob(50))
+		if(isXenoDefender(src))
+			if (prob(50))
+			H.KnockDown(2, 1)
+
+		if(isXenoPraetorian(src))
 			H.KnockDown(2, 1)
 
 		H << "<span class='xenowarning'>You are struck by \the [src]'s tail sweep!</span>"
@@ -865,8 +876,8 @@
 	if (crest_defense)
 		round_statistics.defender_crest_lowerings++
 		src << "<span class='xenowarning'>You lower your crest.</span>"
-		armor_deflection_buff += 25 + (spiked * 5)
-		ability_speed_modifier += 0.8	// This is actually a slowdown but speed is dumb
+		armor_deflection_buff += 25 + (spiked)
+		ability_speed_modifier += 0.7	// This is actually a slowdown but speed is dumb
 		update_icons()
 		do_crest_defense_cooldown()
 		return
@@ -918,7 +929,7 @@
 			anchored = 1
 			update_canmove()
 		if(spiked)
-			ability_speed_modifier += 2.3
+			ability_speed_modifier += 2.5
 		update_icons()
 		do_fortify_cooldown()
 		fortify_timer = world.timeofday + 90		// How long we can be fortified
@@ -1133,6 +1144,14 @@
 		H << "<span class='warning'>The violent tremors make you lose your footing!</span>"
 		H.KnockDown(1)
 
+	spawn(caste.tremor_cooldown)
+		used_tremor = 0
+		src << "<span class='notice'>You gather enough strength to cause more tremors again.</span>"
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+	
+
 // Vent Crawl
 /mob/living/carbon/Xenomorph/proc/vent_crawl()
 	set name = "Crawl through Vent"
@@ -1184,7 +1203,7 @@
 	src << "<span class='xenowarning'>You have transferred [amount] plasma to \the [target]. You now have [plasma_stored].</span>"
 	playsound(src, "alien_drool", 25)
 
-/mob/living/carbon/Xenomorph/proc/xeno_transfer_health(atom/A, amount = 25, transfer_delay = 50, max_range = 1)
+/mob/living/carbon/Xenomorph/proc/xeno_transfer_health(atom/A, amount = 40, transfer_delay = 50, max_range = 1)
 	if(!istype(A, /mob/living/carbon/Xenomorph))
 		return
 	var/mob/living/carbon/Xenomorph/target = A
@@ -1219,10 +1238,10 @@
 		src << "<span class='warning'>You need to be closer to [target].</span>"
 		return
 
-	bruteloss += amount * 3
+	bruteloss += amount * 1.5
 	target.gain_health(amount)
-	target << "<span class='xenowarning'>\The [src] has transfered [amount] health to you. You feel reinvigorated!</span>"
-	src << "<span class='xenowarning'>You have transferred [amount] health to \the [target]. You feel weakened...</span>"
+	target << "<span class='xenowarning'>\The [src] has transfered some of their health to you. You feel reinvigorated!</span>"
+	src << "<span class='xenowarning'>You have transferred some of your health to \the [target]. You feel weakened...</span>"
 	playsound(src, "alien_drool", 25)
 
 

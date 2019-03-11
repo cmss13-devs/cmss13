@@ -1,0 +1,12 @@
+author: Miraviel
+
+delete-after: True
+
+changes: 
+  - maptweak: "Big Red. Changed far East and Southeast Caves a bit to make them less of boring, straight corridors."
+  - maptweak: "Big Red. Lambda and Eta labs were split up into four areas (area-wise, the building is unchanged)."
+  - bugfix: "Big Red. Fixed a floating APC (#5709)."
+  - bugfix: "Made the OB and the Anti-Air cannon parts unacidable."
+  - bugfix: "Closed curtains can now be slashed by xenos (#5428)."
+  - bugfix: "Increased the nutriment values of MREs."
+  - bugfix: "Donuts are now tiny items (#5891)."

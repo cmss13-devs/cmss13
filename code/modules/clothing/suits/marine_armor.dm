@@ -378,7 +378,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "L1"
 	class = "L"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	armor = list(melee = 35, bullet = 40, laser = 15, energy = 15, bomb = 5, bio = 0, rad = 0)
+	armor = list(melee = 41, bullet = 60, laser = 15, energy = 15, bomb = 5, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/marine/class/heavy
 	name = "\improper M3-H pattern heavy armor"

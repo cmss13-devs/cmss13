@@ -218,9 +218,6 @@
 		locate_leader = new /obj/screen/squad_leader_locator()
 		infodisplay += locate_leader
 
-	locate_nuke = new /obj/screen/nuke_locator()
-	infodisplay += locate_nuke
-
 	use_attachment = new /obj/screen()
 	use_attachment.icon = ui_style
 	use_attachment.icon_state = "gun_attach"

@@ -839,7 +839,7 @@
 
 		if(isXenoDefender(src))
 			if (prob(50))
-			H.KnockDown(2, 1)
+				H.KnockDown(2, 1)
 
 		if(isXenoPraetorian(src))
 			H.KnockDown(2, 1)

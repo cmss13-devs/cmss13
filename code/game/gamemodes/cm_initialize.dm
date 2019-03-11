@@ -83,6 +83,8 @@ Additional game mode variables.
 	var/bioscan_ongoing_interval = MINUTES_1//every 1 minute
 
 	var/lz_selection_timer = MINUTES_25 //25 minutes in
+	var/round_time_resin = MINUTES_40	//Time for when resin placing is allowed close to LZs
+	var/resin_allow_finished
 
 	var/flags_round_type = NOFLAGS
 

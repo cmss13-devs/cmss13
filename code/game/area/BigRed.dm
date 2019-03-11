@@ -291,6 +291,7 @@
 /area/bigredv2/outside/nw
 	name = "\improper Northwest Colony Grounds"
 	icon_state = "northwest"
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/c
 	name = "\improper Central Colony Grounds"
@@ -303,6 +304,7 @@
 /area/bigredv2/outside/w
 	name = "\improper Western Colony Grounds"
 	icon_state = "west"
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/e
 	name = "\improper Eastern Colony Grounds"
@@ -319,6 +321,7 @@
 /area/bigredv2/outside/sw
 	name = "\improper Southwest Colony Grounds"
 	icon_state = "southwest"
+	is_resin_allowed = FALSE
 
 /area/bigredv2/caves
 	name = "\improper Unknown Area"
@@ -339,6 +342,7 @@
 	name = "\improper Cargo"
 	icon_state = "storage"
 	ceiling = CEILING_METAL
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/general_store
 	name = "\improper General Store"
@@ -404,11 +408,13 @@
 	name = "\improper Space Port"
 	icon_state = "green"
 	ceiling = CEILING_NONE
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/telecomm
 	name = "\improper Telecommunications"
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL
+	is_resin_allowed = FALSE
 
 /area/bigredv2/outside/engineering
 	name = "\improper Engineering Complex"

@@ -22,6 +22,12 @@
 		X << "<span class='warning'>There's a pod here already!</span>"
 		return
 
+	var/area/AR = get_area(T)
+	
+	if(!(AR.is_resin_allowed))
+		X << "<span class='xenowarning'>It's too early to spread the hive this far.</span>"
+		return
+	
 	if(X.check_plasma(plasma_cost))
 		X.use_plasma(plasma_cost)
 		X.visible_message("<span class='xenonotice'>\The [X] regurgitates a pulsating node and plants it on the ground!</span>", \
@@ -620,7 +626,8 @@
 		return
 
 	var/area/AR = get_area(T)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || istype(AR,/area/sulaco/hangar)) //Bandaid for atmospherics bug when Xenos build around the shuttles
+	
+	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2))
 		X << "<span class='warning'>You sense this is not a suitable area for creating a resin hole.</span>"
 		return
 
@@ -744,31 +751,37 @@
 		return
 
 	if(X.action_busy)
-		X << "<span class='warning'>You should finish up what you're doing before digging.</span>"
+		X << "<span class='xenowarning'>You should finish up what you're doing before digging.</span>"
 		return
 
 	var/turf/T = X.loc
 	if(!istype(T)) //logic
-		X << "<span class='warning'>You can't do that from there.</span>"
+		X << "<span class='xenowarning'>You can't do that from there.</span>"
 		return
 
 	if(!T.can_dig_xeno_tunnel())
-		X << "<span class='warning'>You scrape around, but you can't seem to dig through that kind of floor.</span>"
+		X << "<span class='xenowarning'>You scrape around, but you can't seem to dig through that kind of floor.</span>"
 		return
 
 	if(locate(/obj/structure/tunnel) in X.loc)
-		X << "<span class='warning'>There already is a tunnel here.</span>"
+		X << "<span class='xenowarning'>There already is a tunnel here.</span>"
 		return
 
 	if(X.tunnel_delay)
-		X << "<span class='warning'>You are not ready to dig a tunnel again.</span>"
+		X << "<span class='xenowarning'>You are not ready to dig a tunnel again.</span>"
 		return
 
 	if(X.get_active_hand())
 		X << "<span class='xenowarning'>You need an empty claw for this!</span>"
 		return
-
+		
 	if(!X.check_plasma(plasma_cost))
+		return
+
+	var/area/AR = get_area(T)
+	
+	if(!(AR.is_resin_allowed))
+		X << "<span class='xenowarning'>It's too early to spread the hive this far.</span>"
 		return
 
 	X.visible_message("<span class='xenonotice'>[X] begins digging out a tunnel entrance.</span>", \

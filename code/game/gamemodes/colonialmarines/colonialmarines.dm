@@ -198,6 +198,14 @@
 			if(round_should_check_for_win) check_win()
 			round_checkwin = 0
 
+		if(!(resin_allow_finished) && world.time >= round_time_resin)
+			for(var/area/A in all_areas)
+				if(!(A.is_resin_allowed))
+					A.is_resin_allowed = TRUE
+			resin_allow_finished = 1
+			msg_admin_niche("Areas close to landing zones are now weedable.")
+
+		   
 #undef FOG_DELAY_INTERVAL
 ///////////////////////////
 //Checks to see who won///

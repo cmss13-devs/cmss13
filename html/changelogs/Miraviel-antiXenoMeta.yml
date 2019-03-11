@@ -1,0 +1,6 @@
+author: Miraviel
+
+delete-after: True
+
+changes: 
+  - rscadd: "Areas close to the LZs on all four maps are now unable to be weeded, trapped, or be built on by xenomorphs during the first bit of the round (30-45 minutes)."

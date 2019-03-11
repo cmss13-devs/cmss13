@@ -85,9 +85,6 @@
 	locate_leader = new /obj/screen/queen_locator()
 	infodisplay += locate_leader
 
-	locate_nuke = new /obj/screen/nuke_locator()
-	infodisplay += locate_nuke
-
 	pull_icon = new /obj/screen/pull()
 	pull_icon.icon = 'icons/mob/screen1_alien.dmi'
 	pull_icon.screen_loc = ui_pull_resist

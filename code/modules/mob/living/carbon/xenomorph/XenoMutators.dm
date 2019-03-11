@@ -306,28 +306,6 @@
 	B.railgun = TRUE
 	MS.recalculate_actions(description)
 
-/datum/xeno_mutator/earthquake
-	name = "STRAIN: Crusher - Earthquake"
-	description = "In exchange for your ability to charge, your stomp is upgraded to a version that knocks down all humans around you, while also still damaging those under you."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list("Crusher") //Only crusher.
-	keystone = TRUE
-
-/datum/xeno_mutator/earthquake/apply_mutator(datum/mutator_set/individual_mutators/MS)
-	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/Xenomorph/Crusher/C = MS.xeno
-	C.remove_action("Toggle Charging")
-	C.remove_action("Stomp (50)")
-	C.is_charging = 0 //Remove charging from the crusher.
-	for(var/path in C.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(C)
-	MS.recalculate_actions(description)
-
 /datum/xeno_mutator/royal_guard
 	name = "STRAIN: Praetorian - Royal Guard"
 	description = "In exchange for your ability to spit, you gain better pheromones, a lower activation time on acid spray and tail sweep."
@@ -349,24 +327,6 @@
 		A.give_action(P)
 	P.acid_spray_cooldown = 6
 	MS.pheromones_boost_level = 1
-	MS.recalculate_actions(description)
-
-/datum/xeno_mutator/harasser
-	name = "STRAIN: Runner - Harasser"
-	description = "In exchange for some of your speed, your pounce now automatically attacks based on your intent."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list("Runner") //Only runner.
-	keystone = TRUE
-
-/datum/xeno_mutator/harasser/apply_mutator(datum/mutator_set/individual_mutators/MS)
-	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/Xenomorph/Runner/R = MS.xeno
-	MS.speed_multiplier *= 0.8
-	R.pounce_slash = TRUE
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/healer
@@ -470,6 +430,7 @@
 	for(var/path in B.new_actions)
 		var/datum/action/xeno_action/A = new path()
 		A.give_action(B)
+	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/boxer
 	name = "STRAIN: Warrior - Boxer"
@@ -486,6 +447,7 @@
 
 	var/mob/living/carbon/Xenomorph/Warrior/W = MS.xeno
 	W.remove_action("Fling")
+	W.remove_action("Lunge")
 	for(var/path in W.new_actions)
 		var/datum/action/xeno_action/A = new path()
 		A.give_action(W)

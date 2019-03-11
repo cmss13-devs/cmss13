@@ -56,6 +56,7 @@
 /area/ice_colony/exterior/surface/landing_pad
 	name = "\improper Aerodrome Landing Pad"
 	icon_state = "landing_pad"
+	is_resin_allowed = FALSE
 
 //Landing Pad for the Vindi. THIS IS NOT THE SHUTTLE AREA
 /area/ice_colony/exterior/surface/landing_pad2
@@ -67,6 +68,7 @@
 /area/ice_colony/exterior/surface/landing_pad_external
 	name = "\improper Aerodrome Landing Valley"
 	icon_state = "landing_pad_ext"
+	is_resin_allowed = FALSE
 
 //Aerodrome Container Yard
 /area/ice_colony/exterior/surface/container_yard
@@ -339,6 +341,7 @@
 
 /area/ice_colony/surface/hangar/hallway
 	name = "\improper Aerodrome Hangar Hallway"
+	is_resin_allowed = FALSE
 
 /area/ice_colony/surface/hangar/alpha
 	name = "\improper Aerodrome Hangar 'Alpha'"
@@ -347,6 +350,7 @@
 /area/ice_colony/surface/hangar/beta
 	name = "\improper Aerodrome Hangar 'Beta'"
 	icon_state = "hangar_beta"
+	is_resin_allowed = FALSE
 
 /area/ice_colony/surface/hangar/checkpoint
 	name = "\improper Aerodrome Hangar Security Checkpoint"
@@ -601,6 +605,7 @@
 /area/ice_colony/underground/maintenance/north
 	name = "\improper Underground Northern Maintenance"
 	icon_state = "asmaint"
+	is_resin_allowed = FALSE
 
 /*
  * Underground - Medbay
@@ -660,6 +665,7 @@
 /area/ice_colony/underground/requesition
 	name = "\improper Underground Requesitions"
 	icon_state = "quart"
+	is_resin_allowed = FALSE
 
 /area/ice_colony/underground/requesition/lobby
 	name = "\improper Underground Requesitions Lobby"
@@ -672,6 +678,7 @@
 /area/ice_colony/underground/requesition/sec_storage
 	name = "\improper Underground Requesitions Secure Storage"
 	icon_state = "storage"
+	is_resin_allowed = TRUE
 
 /*
  * Underground - Research
@@ -737,6 +744,7 @@
 	name = "\improper Underground Hangar"
 	icon_state = "hangar"
 	ceiling = CEILING_NONE
+	is_resin_allowed = FALSE
 
 /*
  * Underground - Storage

@@ -7,6 +7,7 @@
 /area/prison/security
 	name = "\improper Security Department"
 	icon_state = "security"
+	is_resin_allowed = FALSE
 
 /area/prison/security/briefing
 	name = "\improper Briefing"
@@ -82,6 +83,7 @@
 
 /area/prison/security/checkpoint/hangar
 	name = "\improper Main Hangar Traffic Control"
+	is_resin_allowed = FALSE
 
 /area/prison/storage
 	icon_state = "engine_storage"
@@ -157,6 +159,7 @@
 
 /area/prison/toilet/security
 	name = "\improper Security Restooms"
+	is_resin_allowed = FALSE
 
 /area/prison/toilet/research
 	name = "\improper Research Restooms"
@@ -190,6 +193,7 @@
 /area/prison/maintenance/staff_research
 	name = "\improper Staff-Research Maintenance"
 	icon_state = "maint_research_starboard"
+	is_resin_allowed = FALSE
 
 /area/prison/maintenance/research_medbay
 	name = "\improper Research-Infirmary Maintenance"
@@ -198,6 +202,7 @@
 /area/prison/maintenance/hangar_barracks
 	name = "\improper Hangar-Barracks Maintenance"
 	icon_state = "maint_e_shuttle"
+	is_resin_allowed = FALSE
 
 /area/prison/canteen
 	name = "\improper Canteen"
@@ -246,6 +251,7 @@
 /area/prison/hallway/entrance
 	name = "\improper Entrance Hallway"
 	icon_state = "entry"
+	is_resin_allowed = FALSE
 
 /area/prison/hallway/central
 	name = "\improper Central Ring"
@@ -366,14 +372,17 @@
 /area/prison/research/
 	name = "\improper Biological Research Department"
 	icon_state = "research"
+	is_resin_allowed = FALSE
 
 /area/prison/research/RD
 	name = "\improper Research Director's office"
 	icon_state = "disposal"
+	is_resin_allowed = FALSE
 
 /area/prison/research/secret/
 	name = "\improper Classified Research"
 	icon_state = "toxlab"
+	is_resin_allowed = TRUE
 
 /area/prison/research/secret/dissection
 	name = "\improper Dissection"
@@ -412,9 +421,13 @@
 
 /area/prison/monorail/east
 	name = "\improper East Monorail Station"
+	is_resin_allowed = FALSE
 
 /area/prison/monorail/west
 	name = "\improper West Monorail Station"
+
+/area/prison/hanger
+	is_resin_allowed = FALSE
 
 /area/prison/hanger/main
 	name = "\improper Main Hanger"
@@ -431,10 +444,12 @@
 /area/prison/hangar_storage/research
 	name = "\improper Research Hangar Storage"
 	icon_state = "toxstorage"
+	is_resin_allowed = FALSE
 
 /area/prison/telecomms
 	name = "\improper Telecommunications"
 	icon_state = "tcomsatcham"
+	is_resin_allowed = FALSE
 
 /area/prison/pirate
 	name = "Tramp Freighter \"Rocinante\""

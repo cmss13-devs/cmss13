@@ -229,21 +229,19 @@
 	name = "\improper Kitchen"
 	icon_state = "kitchen"
 	can_hellhound_enter = 0
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/canteen
 	name = "\improper Canteen"
 	icon_state = "cafeteria"
 	can_hellhound_enter = 0
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/main_hall
 	name = "\improper Main Hallway"
 	icon_state = "hallC1"
 	can_hellhound_enter = 0
-
-/area/lv624/lazarus/main_hall
-	name = "\improper Main Hallway"
-	icon_state = "hallC1"
-	can_hellhound_enter = 0
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
@@ -270,21 +268,25 @@
 	name = "\improper Female Dorm"
 	icon_state = "Sleep"
 	can_hellhound_enter = 0
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/quart
 	name = "\improper Quartermasters"
 	icon_state = "quart"
 	can_hellhound_enter = 0
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/quartstorage
 	name = "\improper Cargo Bay"
 	icon_state = "quartstorage"
 	can_hellhound_enter = 0
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/quartstorage/outdoors
 	name = "\improper Cargo Bay Area"
 	icon_state = "purple"
 	ceiling = CEILING_NONE
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/engineering
 	name = "\improper Engineering"
@@ -301,10 +303,12 @@
 /area/lv624/lazarus/internal_affairs
 	name = "\improper Internal Affairs"
 	icon_state = "law"
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/robotics
 	name = "\improper Robotics"
 	icon_state = "ass_line"
+	is_resin_allowed = FALSE
 
 /area/lv624/lazarus/research
 	name = "\improper Research Lab"

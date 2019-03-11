@@ -265,7 +265,8 @@
 //Drop Pods
 /area/shuttle/drop1
 	ambience = list('sound/ambience/ambigen10.ogg','sound/ambience/ambispace.ogg','sound/ambience/ambisin4.ogg','sound/ambience/signal.ogg')
-
+	is_resin_allowed = FALSE
+	
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
 		return 0
@@ -311,6 +312,9 @@
 	if(istype(O, /obj/structure/barricade))
 		return 0
 	return 1
+
+/area/shuttle/drop2
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"

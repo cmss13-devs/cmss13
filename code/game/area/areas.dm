@@ -13,6 +13,7 @@
 	var/temperature = T20C
 	var/pressure = ONE_ATMOSPHERE
 	var/can_nuke_area = FALSE
+	var/is_resin_allowed = TRUE	// can xenos weed, place resin holes or dig tunnels at said areas
 
 
 /area/New()

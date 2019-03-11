@@ -20,6 +20,12 @@
 	playsound(get_turf(loc), "rustle", 15, 1, 6)
 	toggle()
 	..()
+	
+/obj/structure/curtain/attack_alien(mob/living/carbon/Xenomorph/M)
+	M.animation_attack_on(src)
+	M.visible_message("<span class='danger'>\The [M] slices [src] apart!</span>", \
+	"<span class='danger'>You slice [src] apart!</span>", null, 5)
+	cdel(src)
 
 /obj/structure/curtain/proc/toggle()
 	opacity = !opacity

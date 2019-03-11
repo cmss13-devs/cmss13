@@ -380,6 +380,7 @@
 	icon_state = "donut1"
 	filling_color = "#D9C386"
 	var/overlay_state = "donut"
+	w_class = 1
 
 /obj/item/reagent_container/food/snacks/donut/normal
 	name = "donut"
@@ -3098,20 +3099,20 @@
 	switch(newflavor)
 		if("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
 			icon_state = "entree"
-			reagents.add_reagent("nutriment", 5)
-			reagents.add_reagent("sodiumchloride", 1)
+			reagents.add_reagent("nutriment", 14)
+			reagents.add_reagent("sodiumchloride", 6)
 		if("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
 			icon_state = "side"
-			reagents.add_reagent("nutriment", 3)
-			reagents.add_reagent("sodiumchloride", 1)
+			reagents.add_reagent("nutriment", 6)
+			reagents.add_reagent("sodiumchloride", 2)
 		if("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
 			icon_state = "snack"
-			reagents.add_reagent("nutriment", 2)
-			reagents.add_reagent("sodiumchloride", 1)
+			reagents.add_reagent("nutriment", 4)
+			reagents.add_reagent("sodiumchloride", 2)
 		if("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
 			icon_state = "dessert"
-			reagents.add_reagent("nutriment", 1)
-			reagents.add_reagent("sugar", 1)
+			reagents.add_reagent("nutriment", 2)
+			reagents.add_reagent("sugar", 2)
 			reagents.add_reagent("coco", 1)
 
 

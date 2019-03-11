@@ -328,15 +328,29 @@
 	icon_state = "bluenew"
 	ceiling = CEILING_UNDERGROUND
 
-/area/bigredv2/outside/weyland_lab/outside
-	name = "\improper W-Y Compound"
+/area/bigredv2/caves/eta
+	ceiling = CEILING_UNDERGROUND_METAL
+
+/area/bigredv2/outside/eta
+	name = "\improper Eta Labs Compound"
 	icon_state = "yellow"
 	ceiling = CEILING_NONE
 
-/area/bigredv2/outside/weyland_lab/inside
-	name = "\improper W-Y Research Lab"
-	icon_state = "engine"
-	ceiling = CEILING_UNDERGROUND_METAL
+/area/bigredv2/caves/eta/living
+	name = "\improper Eta Living Quarters"
+	icon_state = "eta_living"
+
+/area/bigredv2/caves/eta/xenobiology
+	name = "\improper Eta Xenobiology"
+	icon_state = "eta_xeno"
+
+/area/bigredv2/caves/eta/storage
+	name = "\improper Eta Storage"
+	icon_state = "eta_storage"
+
+/area/bigredv2/caves/eta/research
+	name = "\improper Eta Research"
+	icon_state = "eta_research"
 
 /area/bigredv2/outside/cargo
 	name = "\improper Cargo"
@@ -436,11 +450,25 @@
 	icon_state = "party"
 	ceiling = CEILING_METAL
 
-/area/bigredv2/caves/lambda_lab
-	name = "\improper Lambda Lab"
-	icon_state = "party"
+/area/bigredv2/caves/lambda
 	ceiling = CEILING_UNDERGROUND_METAL
 
+/area/bigredv2/caves/lambda/virology
+	name = "\improper Lambda Virology"
+	icon_state = "lam_virology"
+
+/area/bigredv2/caves/lambda/research
+	name = "\improper Lambda Research"
+	icon_state = "lam_research"
+
+/area/bigredv2/caves/lambda/breakroom
+	name = "\improper Lambda Breakroom"
+	icon_state = "lam_break"
+	
+/area/bigredv2/caves/lambda/xenobiology
+	name = "\improper Lambda Xenobiology"
+	icon_state = "lam_xeno"
+	
 /area/bigredv2/outside/general_offices
 	name = "\improper General Offices"
 	icon_state = "storage"

@@ -127,6 +127,7 @@ for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 				D.lock()
 
 /datum/shuttle/ferry/marine/evacuation_pod/proc/prepare_for_launch()
+	var/passenger_check = check_passengers()
 	if (passengers > 0)
 		if(!can_launch()) r_FAL //Can't launch in some circumstances.
 		evacuation_program.dock_state = STATE_LAUNCHING
@@ -136,7 +137,7 @@ for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 			D.lock()
 		evacuation_program.prepare_for_undocking()
 		sleep(31)
-		if(!check_passengers())
+		if(!passenger_check)
 			evacuation_program.dock_state = STATE_BROKEN
 			explosion(evacuation_program.master, -1, -1, 3, 4)
 			sleep(25)
@@ -154,6 +155,9 @@ for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 		r_TRU
 	else
 		evacuation_program.dock_state = STATE_READY
+		D.unlock()
+		D.open()
+		D.lock()
 
 #undef MOVE_MOB_OUTSIDE
 
@@ -188,8 +192,8 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 			n++
 			if(X.stat != DEAD && msg) X << msg
 	if(n > cryo_cells.len)  . = FALSE //Default is 3 cryo cells and three people inside the pod.
+	passengers += n //Return the total number of occupants instead if it successfully launched.
 	if(msg)
-		passengers += n //Return the total number of occupants instead if it successfully launched.
 		r_TRU
 
 //=========================================================================================

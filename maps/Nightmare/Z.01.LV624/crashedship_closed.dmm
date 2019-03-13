@@ -3,17 +3,17 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "ab" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/central1)
 "ac" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "ad" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east1)
 "ae" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand6)
 "af" = (
 /obj/structure/foamedmetal,
@@ -257,7 +257,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "aS" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand5)
 "aT" = (
 /obj/structure/rack,

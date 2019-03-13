@@ -65,6 +65,7 @@
 		if (!..())
 			return 0
 
+		stat("Time:","[worldtime2text()]")
 		stat("Map:", "[map_tag]")
 		if(ticker.hide_mode)
 			stat("Game Mode:", "Colonial Marines")

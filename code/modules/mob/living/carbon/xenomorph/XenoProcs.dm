@@ -19,6 +19,8 @@
 	if (!..())
 		return 0
 
+	stat("Time:","[worldtime2text()]")
+
 	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
 		stat("Evolve Progress:", "[round(amount_grown)]/[max_grown]")
 	else if(!hive.living_xeno_queen)

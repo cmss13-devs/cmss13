@@ -428,6 +428,7 @@
 		/obj/structure/window/framed,
 		/obj/structure/girder,
 		/obj/structure/window_frame)
+	tiles_with = list(/turf/closed/wall)
 
 /obj/structure/window/framed/New()
 	spawn(0)

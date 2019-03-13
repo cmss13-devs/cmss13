@@ -174,8 +174,6 @@
 					usr << "<span class='warning'>You are unable to initiate an evacuation procedure right now!</span>"
 					r_FAL
 
-				//EvacuationAuthority.enable_self_destruct()
-
 				log_game("[key_name(usr)] has called for an emergency evacuation.")
 				message_admins("[key_name_admin(usr)] has called for an emergency evacuation.", 1)
 				post_status("shuttle")
@@ -229,6 +227,10 @@
 					usr << "<span class='warning'>The distress beacon has recently broadcast a message. Please wait.</span>"
 					r_FAL
 
+				if(security_level == SEC_LEVEL_DELTA)
+					usr << "<span class='warning'>The ship is already undergoing self destruct procedures!</span>"
+					r_FAL
+
 				for(var/client/C in admins)
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
@@ -256,6 +258,10 @@
 
 				if(get_security_level() == "delta")
 					usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s self destruct is already activated.</span>"
+					r_FAL
+
+				if(ticker.mode.has_called_emergency)
+					usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon is active!</span>"
 					r_FAL
 
 				for(var/client/C in admins)

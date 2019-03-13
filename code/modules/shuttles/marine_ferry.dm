@@ -502,7 +502,7 @@
 
 	if(ticker && ticker.mode)
 		ticker.mode.is_in_endgame = TRUE
-		ticker.mode.force_end_at = world.time + 12000 // 20 mins
+		ticker.mode.force_end_at = world.time + 15000 // 25 mins
 
 
 /datum/shuttle/ferry/marine/short_jump()

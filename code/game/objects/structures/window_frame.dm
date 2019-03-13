@@ -17,6 +17,7 @@
 	var/buildstackamount = 2
 	projectile_coverage = 50
 
+	tiles_with = list(/turf/closed/wall)
 	var/tiles_special[] = list(/obj/machinery/door/airlock,
 		/obj/structure/window/framed,
 		/obj/structure/girder,

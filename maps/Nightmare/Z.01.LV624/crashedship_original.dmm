@@ -1,49 +1,52 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aaN" = (
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+"aa" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/central1)
+"ab" = (
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east1)
-"abl" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central1)
-"abm" = (
-/turf/closed/mineral,
-/area/lv624/ground/caves/central1)
-"abr" = (
-/obj/structure/mineral_door/resin,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central1)
-"abv" = (
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central1)
-"abw" = (
-/obj/structure/mineral_door/resin,
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central1)
-"abT" = (
-/turf/closed/mineral,
+"ac" = (
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand6)
-"acf" = (
-/turf/closed/mineral,
-/area/lv624/ground/caves/east1)
-"acg" = (
+"ad" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/sand5)
+"aN" = (
+/obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
-"acw" = (
+"bl" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"br" = (
+/obj/structure/mineral_door/resin,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"bv" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"bw" = (
+/obj/structure/mineral_door/resin,
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central1)
+"cg" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east1)
+"cw" = (
 /obj/structure/foamedmetal,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acx" = (
+"cx" = (
 /turf/closed/wall/r_wall,
 /area/lv624/ground/sand6)
-"acA" = (
+"cA" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
-"acB" = (
+"cB" = (
 /obj/structure/foamedmetal{
 	layer = 4
 	},
@@ -51,13 +54,13 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acD" = (
+"cD" = (
 /obj/effect/spider/stickyweb,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acE" = (
+"cE" = (
 /obj/effect/decal/remains/human,
 /obj/item/explosive/grenade/HE,
 /obj/effect/landmark{
@@ -67,10 +70,10 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acF" = (
+"cF" = (
 /turf/closed/wall/sulaco,
 /area/lv624/ground/sand6)
-"acH" = (
+"cH" = (
 /obj/machinery/constructable_frame{
 	icon_state = "box_1"
 	},
@@ -78,16 +81,16 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acI" = (
+"cI" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
-"acJ" = (
+"cJ" = (
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acL" = (
+"cL" = (
 /obj/structure/foamedmetal{
 	layer = 3.5
 	},
@@ -95,7 +98,7 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acM" = (
+"cM" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -104,17 +107,14 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acN" = (
+"cN" = (
 /obj/effect/spider/stickyweb,
 /obj/item/explosive/grenade/HE,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acP" = (
-/turf/closed/mineral,
-/area/lv624/ground/sand5)
-"acQ" = (
+"cQ" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -122,16 +122,16 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acR" = (
+"cR" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"acT" = (
+"cT" = (
 /obj/effect/decal/remains/human,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acU" = (
+"cU" = (
 /obj/structure/foamedmetal,
 /obj/structure/bed/chair{
 	dir = 8
@@ -140,7 +140,7 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acV" = (
+"cV" = (
 /obj/effect/landmark/corpsespawner/security{
 	corpsebelt = null;
 	corpsesuit = /obj/item/clothing/suit/storage/CMB;
@@ -151,13 +151,13 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acW" = (
+"cW" = (
 /obj/effect/spawner/random/toolbox,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"acX" = (
+"cX" = (
 /obj/structure/foamedmetal,
 /obj/structure/bed/chair{
 	dir = 8
@@ -167,13 +167,13 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"ada" = (
+"da" = (
 /obj/item/tool/crowbar,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adb" = (
+"db" = (
 /obj/structure/bed/chair{
 	dir = 8
 	},
@@ -181,13 +181,13 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"add" = (
+"dd" = (
 /obj/item/ammo_casing,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adf" = (
+"df" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -196,83 +196,83 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adg" = (
+"dg" = (
 /obj/item/stack/cable_coil/random,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adh" = (
+"dh" = (
 /obj/item/storage/firstaid/adv,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adi" = (
+"di" = (
 /obj/structure/girder,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"adj" = (
+"dj" = (
 /obj/item/clothing/suit/armor/bulletproof,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adk" = (
+"dk" = (
 /obj/structure/girder,
 /turf/open/shuttle{
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"adl" = (
+"dl" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand5)
-"adn" = (
+"dn" = (
 /obj/structure/girder/displaced,
 /turf/closed/shuttle{
 	icon_state = "wall3"
 	},
 /area/lv624/ground/sand6)
-"adq" = (
+"dq" = (
 /obj/effect/alien/weeds/node,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"ads" = (
+"ds" = (
 /obj/structure/foamedmetal,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"adu" = (
+"du" = (
 /obj/structure/girder,
 /turf/closed/shuttle{
 	icon_state = "wall3"
 	},
 /area/lv624/ground/sand6)
-"adw" = (
+"dw" = (
 /obj/structure/foamedmetal{
 	layer = 4
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"adx" = (
+"dx" = (
 /obj/structure/foamedmetal,
 /obj/effect/decal/remains/human{
 	layer = 2.9
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"adz" = (
+"dz" = (
 /turf/closed/wall,
 /area/lv624/ground/sand5)
-"adA" = (
+"dA" = (
 /turf/open/floor/airless{
 	dir = 5;
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/sand6)
-"adC" = (
+"dC" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/mineral/gold{
 	amount = 2
@@ -285,7 +285,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adD" = (
+"dD" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 2
@@ -295,7 +295,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adE" = (
+"dE" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/metal{
 	amount = 50;
@@ -310,7 +310,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adF" = (
+"dF" = (
 /obj/structure/rack,
 /obj/item/tool/shovel,
 /turf/open/floor{
@@ -318,7 +318,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adI" = (
+"dI" = (
 /obj/machinery/door/airlock/almayer/secure{
 	dir = 4;
 	icon_state = "door_locked";
@@ -330,12 +330,12 @@
 	icon_state = "dark"
 	},
 /area/lv624/ground/sand5)
-"adM" = (
+"dM" = (
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/lv624/ground/sand5)
-"adN" = (
+"dN" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/mineral/iron{
 	amount = 5
@@ -350,7 +350,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adQ" = (
+"dQ" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/mineral/tritium{
 	pixel_x = -4
@@ -360,7 +360,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adR" = (
+"dR" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/mineral/silver{
 	amount = 20
@@ -370,14 +370,14 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adS" = (
+"dS" = (
 /obj/structure/rack,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adT" = (
+"dT" = (
 /obj/structure/rack,
 /obj/item/tool/pickaxe,
 /turf/open/floor{
@@ -385,7 +385,7 @@
 	dir = 8
 	},
 /area/lv624/ground/sand5)
-"adU" = (
+"dU" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -394,21 +394,21 @@
 	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/sand6)
-"adV" = (
+"dV" = (
 /obj/effect/decal/remains/human,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"adW" = (
+"dW" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"aea" = (
+"ea" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/sand6)
-"aef" = (
+"ef" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
 	},
@@ -416,842 +416,842 @@
 /area/lv624/ground/sand5)
 
 (1,1,1) = {"
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acP
-acA
-acA
-acP
-acA
-acA
-acA
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+cA
+cA
+ad
+cA
+cA
+cA
 "}
 (2,1,1) = {"
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acP
-acA
-acA
-acA
-acA
-acA
-acA
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ad
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (3,1,1) = {"
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (4,1,1) = {"
-abl
-abr
-abl
-abm
-abm
-abm
-abm
-abl
-abl
-abl
-abl
-abl
-abl
-abm
-abm
-abl
-abl
-abm
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+bl
+br
+bl
+aa
+aa
+aa
+aa
+bl
+bl
+bl
+bl
+bl
+bl
+aa
+aa
+bl
+bl
+aa
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (5,1,1) = {"
-abl
-abw
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abv
-abl
-abl
-abl
-abl
-abl
-abl
-acA
-acA
-acA
-acA
-acI
-acA
-acA
-acA
-aef
+bl
+bw
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bv
+bl
+bl
+bl
+bl
+bl
+bl
+cA
+cA
+cA
+cA
+cI
+cA
+cA
+cA
+ef
 "}
 (6,1,1) = {"
-abl
-abr
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+bl
+br
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (7,1,1) = {"
-abl
-abr
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-abl
-acA
-acI
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+bl
+br
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+cA
+cI
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (8,1,1) = {"
-abl
-abm
-abm
-abl
-abl
-abl
-abv
-abl
-abm
-abl
-abl
-abl
-abl
-abl
-abl
-acA
-acA
-acA
-adz
-adz
-adI
-adz
-adz
-acA
-acA
-acA
+bl
+aa
+aa
+bl
+bl
+bl
+bv
+bl
+aa
+bl
+bl
+bl
+bl
+bl
+bl
+cA
+cA
+cA
+dz
+dz
+dI
+dz
+dz
+cA
+cA
+cA
 "}
 (9,1,1) = {"
-abl
-abm
-abm
-abm
-abl
-abl
-abm
-abm
-abm
-abl
-abl
-abl
-abl
-abl
-abm
-adl
-acA
-acA
-adz
-adC
-adM
-adQ
-adz
-acA
-acA
-acA
+bl
+aa
+aa
+aa
+bl
+bl
+aa
+aa
+aa
+bl
+bl
+bl
+bl
+bl
+aa
+dl
+cA
+cA
+dz
+dC
+dM
+dQ
+dz
+cA
+cA
+cA
 "}
 (10,1,1) = {"
-abl
-abm
-abm
-abm
-abl
-abl
-abm
-abm
-abm
-abm
-abl
-abl
-abm
-abm
-abm
-acA
-acA
-acA
-adz
-adD
-adM
-adR
-adz
-acA
-acA
-acA
+bl
+aa
+aa
+aa
+bl
+bl
+aa
+aa
+aa
+aa
+bl
+bl
+aa
+aa
+aa
+cA
+cA
+cA
+dz
+dD
+dM
+dR
+dz
+cA
+cA
+cA
 "}
 (11,1,1) = {"
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acA
-acA
-acA
-adz
-adE
-adM
-adS
-adz
-acA
-acA
-acA
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cA
+cA
+cA
+dz
+dE
+dM
+dS
+dz
+cA
+cA
+cA
 "}
 (12,1,1) = {"
-abv
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acA
-acA
-acA
-acA
-adz
-adF
-adM
-adT
-adz
-acA
-acI
-acA
+bv
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cA
+cA
+cA
+cA
+dz
+dF
+dM
+dT
+dz
+cA
+cI
+cA
 "}
 (13,1,1) = {"
-abl
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acA
-acA
-acA
-acA
-acA
-adz
-adF
-adN
-adS
-adz
-acA
-acA
-acA
+bl
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cA
+cA
+cA
+cA
+cA
+dz
+dF
+dN
+dS
+dz
+cA
+cA
+cA
 "}
 (14,1,1) = {"
-abl
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acI
-acA
-acA
-acA
-acA
-adz
-adz
-adz
-adz
-adz
-acA
-acA
-acA
+bl
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cI
+cA
+cA
+cA
+cA
+dz
+dz
+dz
+dz
+dz
+cA
+cA
+cA
 "}
 (15,1,1) = {"
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acI
-acA
-acA
-acA
-acA
-acA
-acA
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cI
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (16,1,1) = {"
-abl
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-abm
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
-acA
+bl
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
+cA
 "}
 (17,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-abT
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-adi
-acR
-acR
-acR
-acR
-acF
-acR
-acR
-acR
-acR
-acR
-acR
+aa
+aa
+aa
+aa
+ac
+ac
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+di
+cR
+cR
+cR
+cR
+cF
+cR
+cR
+cR
+cR
+cR
+cR
 "}
 (18,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-abT
-acw
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-adn
-acR
-acR
-acF
-acR
-acF
-acR
-acR
-acR
-acR
+aa
+aa
+aa
+aa
+ac
+ac
+cw
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+dn
+cR
+cR
+cF
+cR
+cF
+cR
+cR
+cR
+cR
 "}
 (19,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-acB
-acH
-acM
-acQ
-acQ
-acQ
-acQ
-adf
-acQ
-acQ
-acF
-acF
-adw
-acR
-acR
-acR
-adU
-acJ
-adq
-acR
-acR
+aa
+aa
+aa
+aa
+ac
+cB
+cH
+cM
+cQ
+cQ
+cQ
+cQ
+df
+cQ
+cQ
+cF
+cF
+dw
+cR
+cR
+cR
+dU
+cJ
+dq
+cR
+cR
 "}
 (20,1,1) = {"
-abm
-abm
-abm
-abm
-acw
-acD
-acJ
-acJ
-acT
-acJ
-ada
-add
-adg
-acT
-adj
-acF
-ads
-adx
-ads
-acR
-acR
-acR
-adA
-acR
-adi
-acR
+aa
+aa
+aa
+aa
+cw
+cD
+cJ
+cJ
+cT
+cJ
+da
+dd
+dg
+cT
+dj
+cF
+ds
+dx
+ds
+cR
+cR
+cR
+dA
+cR
+di
+cR
 "}
 (21,1,1) = {"
-abm
-abm
-abm
-abm
-acw
-acE
-acJ
-acJ
-acJ
-acJ
-acJ
-acJ
-acJ
-add
-acJ
-acw
-ads
-adi
-ads
-acR
-acR
-acR
-acR
-acR
-acR
-acR
+aa
+aa
+aa
+aa
+cw
+cE
+cJ
+cJ
+cJ
+cJ
+cJ
+cJ
+cJ
+dd
+cJ
+cw
+ds
+di
+ds
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 "}
 (22,1,1) = {"
-abm
-abm
-abm
-abm
-acx
-abT
-abT
-acN
-acJ
-acV
-acJ
-acJ
-add
-acJ
-acw
-acw
-ads
-ads
-adx
-acR
-adq
-adV
-acR
-acR
-acR
-acR
+aa
+aa
+aa
+aa
+cx
+ac
+ac
+cN
+cJ
+cV
+cJ
+cJ
+dd
+cJ
+cw
+cw
+ds
+ds
+dx
+cR
+dq
+dV
+cR
+cR
+cR
+cR
 "}
 (23,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-abT
-abT
-abT
-acL
-acW
-acJ
-acT
-acJ
-adh
-acJ
-acF
-acF
-ads
-acR
-adA
-acR
-acR
-acR
-adA
-acJ
-acR
+aa
+aa
+aa
+aa
+ac
+ac
+ac
+ac
+cL
+cW
+cJ
+cT
+cJ
+dh
+cJ
+cF
+cF
+ds
+cR
+dA
+cR
+cR
+cR
+dA
+cJ
+cR
 "}
 (24,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-abT
-acL
-acw
-acU
-acX
-adb
-adb
-adb
-adb
-adk
-acF
-adu
-acR
-adA
-acJ
-acR
-adi
-acR
-acR
-acF
-acR
+aa
+aa
+aa
+aa
+ac
+ac
+cL
+cw
+cU
+cX
+db
+db
+db
+db
+dk
+cF
+du
+cR
+dA
+cJ
+cR
+di
+cR
+cR
+cF
+cR
 "}
 (25,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-abT
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-acR
-acR
-acF
-acR
-acR
-acR
-acR
-acR
-acR
+aa
+aa
+aa
+aa
+ac
+ac
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+cR
+cR
+cF
+cR
+cR
+cR
+cR
+cR
+cR
 "}
 (26,1,1) = {"
-abm
-abm
-abm
-abm
-abT
-abT
-abT
-acF
-acF
-acF
-acF
-acF
-acF
-acF
-adi
-adi
-acR
-acR
-acR
-acR
-acR
-adW
-aea
-acR
-acR
-acR
+aa
+aa
+aa
+aa
+ac
+ac
+ac
+cF
+cF
+cF
+cF
+cF
+cF
+cF
+di
+di
+cR
+cR
+cR
+cR
+cR
+dW
+ea
+cR
+cR
+cR
 "}
 (27,1,1) = {"
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acR
-acR
-acR
-acR
-acR
-acR
-acR
-adq
-acR
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+dq
+cR
 "}
 (28,1,1) = {"
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acR
-acR
-acR
-acR
-acR
-acR
-acR
-acR
-acR
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
+cR
 "}
 (29,1,1) = {"
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acR
-acR
-acR
-acR
-acR
-acR
-abT
-abT
-abT
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cR
+cR
+cR
+cR
+cR
+cR
+ac
+ac
+ac
 "}
 (30,1,1) = {"
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acf
-acg
-aaN
-acg
-acg
-acf
-acf
-acf
-abT
-abT
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cg
+aN
+cg
+cg
+ab
+ab
+ab
+ac
+ac
 "}

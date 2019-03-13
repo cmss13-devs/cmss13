@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand7)
 "ab" = (
 /turf/open/gm/dirt,
@@ -171,7 +171,7 @@
 	},
 /area/lv624/ground/jungle6)
 "aI" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/jungle6)
 "aJ" = (
 /obj/structure/jungle/vines/heavy{

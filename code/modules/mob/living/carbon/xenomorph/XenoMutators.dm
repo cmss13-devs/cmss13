@@ -411,6 +411,8 @@
 		var/datum/action/xeno_action/A = new path()
 		A.give_action(C)
 	MS.recalculate_actions(description)
+	C.huggers_cur = 0
+	C.huggers_max = 0
 
 /datum/xeno_mutator/tremor 
 	name = "STRAIN: Burrower - Tremor"

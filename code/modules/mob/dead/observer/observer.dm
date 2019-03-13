@@ -197,6 +197,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!..())
 		return 0
 
+	stat("Time:","[worldtime2text()]")
+
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
 		if(eta_status)

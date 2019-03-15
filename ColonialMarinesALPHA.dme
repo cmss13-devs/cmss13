@@ -424,6 +424,7 @@
 #include "code\game\machinery\vending\antag_vendors.dm"
 #include "code\game\machinery\vending\marine_vending.dm"
 #include "code\game\machinery\vending\new_marine_vendors.dm"
+#include "code\game\machinery\vending\snowflake_vendor.dm"
 #include "code\game\machinery\vending\vending.dm"
 #include "code\game\machinery\vending\vending_types.dm"
 #include "code\game\mecha\mech_bay.dm"

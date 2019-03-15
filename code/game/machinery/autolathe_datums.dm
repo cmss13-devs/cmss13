@@ -114,11 +114,6 @@
 	path = /obj/item/circuitboard/airlock
 	category = "Engineering"
 
-/datum/autolathe/recipe/airalarm
-	name = "air alarm electronics"
-	path = /obj/item/circuitboard/airalarm
-	category = "Engineering"
-
 /datum/autolathe/recipe/firealarm
 	name = "fire alarm electronics"
 	path = /obj/item/circuitboard/firealarm

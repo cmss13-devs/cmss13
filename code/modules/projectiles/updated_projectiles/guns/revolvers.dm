@@ -27,10 +27,10 @@
 	replace_cylinder(current_mag.current_rounds)
 
 /obj/item/weapon/gun/revolver/set_gun_config_values()
-	fire_delay = config.max_fire_delay
+	fire_delay = config.mhigh_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
-	scatter = config.med_scatter_value
+	scatter = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value
@@ -286,9 +286,9 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/scope/mini)
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 21,"rail_x" = 17, "rail_y" = 23, "under_x" = 22, "under_y" = 17, "stock_x" = 22, "stock_y" = 19)
+/obj/item/weapon/gun/revolver/m44/New()
+	..()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 21,"rail_x" = 17, "rail_y" = 23, "under_x" = 22, "under_y" = 17, "stock_x" = 22, "stock_y" = 19)
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
@@ -306,9 +306,9 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
+/obj/item/weapon/gun/revolver/upp/New()
+	..()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
 
 /obj/item/weapon/gun/revolver/upp/set_gun_config_values()
 	fire_delay = config.low_fire_delay

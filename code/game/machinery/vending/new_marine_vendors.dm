@@ -22,9 +22,18 @@
 
 #define MARINE_CAN_BUY_ALL			32767
 
-#define MARINE_TOTAL_BUY_POINTS		45
+#define MARINE_TOTAL_BUY_POINTS			45
+
+//TODO: initialise it on a per-role basis and make it random.
+//Few marines should have enough points to buy a single item
+//unless we make the snowflake gear lore-friendly, in which case - one lore friendly item per marine, with a chance to have enough for a non-lore friendly
+//Higher up roles should get a few more points
+//Whitelisted roles should get full 60 since we can punish them for LRP
+//And probably donors should get full points as well to replace their system one day maybe?
+#define MARINE_TOTAL_SNOWFLAKE_POINTS	60
 
 /obj/item/card/id/var/marine_points = MARINE_TOTAL_BUY_POINTS
+/obj/item/card/id/var/marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
 /obj/item/card/id/var/marine_buy_flags = MARINE_CAN_BUY_ALL
 
 
@@ -45,6 +54,7 @@
 	var/vendor_role = "" //to be compared with assigned_role to only allow those to use that machine.
 	var/squad_tag = ""
 	var/use_points = FALSE
+	var/use_snowflake_points = FALSE
 
 	var/list/listed_products
 
@@ -95,7 +105,10 @@
 	var/buy_flags = NOFLAGS
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I)) //wearing an ID
-		m_points = I.marine_points
+		if(use_snowflake_points)
+			m_points = I.marine_snowflake_points
+		else
+			m_points = I.marine_points
 		buy_flags = I.marine_buy_flags
 
 
@@ -164,9 +177,11 @@
 				H << "<span class='warning'>This machine isn't for you.</span>"
 				return
 
-			if(use_points && I.marine_points < cost)
-				H << "<span class='warning'>Not enough points.</span>"
-				return
+			if(use_points)
+				if((!use_snowflake_points && I.marine_points < cost) && (use_snowflake_points && I.marine_snowflake_points < cost))
+					H << "<span class='warning'>Not enough points.</span>"
+					return
+
 
 			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
 				H << "<span class='warning'>This machine isn't for you.</span>"
@@ -273,7 +288,10 @@
 						if(t.treads_list.Find(t_name))
 							t.treads_list.Cut()
 			if(use_points)
-				I.marine_points -= cost
+				if(use_snowflake_points)
+					I.marine_snowflake_points -= cost
+				else
+					I.marine_points -= cost
 
 		src.add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window

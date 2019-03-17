@@ -713,6 +713,7 @@
 		/obj/item/attachable/scope = round(scale * 4),
 		/obj/item/attachable/flashlight = round(scale * 14),
 		/obj/item/attachable/reddot = round(scale * 14),
+		/obj/item/attachable/reflex = round(scale * 6),
 
 		/obj/item/attachable/angledgrip = round(scale * 14),
 		/obj/item/attachable/bipod = round(scale * 8),		

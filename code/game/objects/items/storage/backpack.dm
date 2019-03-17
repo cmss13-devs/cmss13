@@ -560,3 +560,10 @@
 	icon_state = "marinepack"
 	storage_slots = null
 	max_storage_space = 30
+
+/obj/item/storage/backpack/ivan
+	name = "The Armory"
+	desc = "From the formless void, there springs an entity - More primordial than the elements themselves. In it's wake, there will follow a storm."
+	icon_state = "ivan_bag"
+	storage_slots = null
+	max_storage_space = 30

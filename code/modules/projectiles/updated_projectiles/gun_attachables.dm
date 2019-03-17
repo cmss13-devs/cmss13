@@ -301,7 +301,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/heavy_barrel
 	name = "barrel charger"
-	desc = "A fitted barrel extender that goes on the muzzle, with a small shaped charge that propels a bullet much faster.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
+	desc = "A hyper threaded barrel extender that fits to the muzzle of most firearms. Increases bullet speed and velocity.\nGreatly increases projectile damage at the cost of accuracy and firing speed."
 	slot = "muzzle"
 	icon_state = "hbarrel"
 	attach_icon = "hbarrel_a"
@@ -376,8 +376,8 @@ Defined in conflicts.dm of the #defines folder.
 ///////////// Rail attachments ////////////////////////
 
 /obj/item/attachable/reddot
-	name = "red-dot sight"
-	desc = "A red-dot sight for short to medium range. Does not have a zoom feature, but does increase weapon accuracy by a good amount. \nNo drawbacks."
+	name = "S5 red-dot sight"
+	desc = "An ARMAT S5 red-dot sight. A zero magnification optic that offers faster, and more accurate target aquisition."
 	icon_state = "reddot"
 	attach_icon = "reddot_a"
 	slot = "rail"
@@ -388,10 +388,25 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_unwielded_mod = config.min_hit_accuracy_mult
 		movement_acc_penalty_mod = 1
 
+/obj/item/attachable/reflex
+	name = "S6 reflex sight"
+	desc = "An ARMAT S6 reflex sight. A zero magnification alternative to iron sights with a more open optic window when compared to the S5 red-dot. Helps to reduce scatter during automated fire."
+	icon_state = "reflex"
+	attach_icon = "reflex_a"
+	slot = "rail"
+
+	New()
+		..()
+		accuracy_mod = config.low_hit_accuracy_mult
+		accuracy_unwielded_mod = config.min_hit_accuracy_mult
+		scatter_mod = -config.min_scatter_value
+		burst_scatter_mod = -1
+		movement_acc_penalty_mod = 1
+
 
 /obj/item/attachable/flashlight
 	name = "rail flashlight"
-	desc = "A simple flashlight used for mounting on a firearm. \nHas no drawbacks, but isn't particuraly useful outside of providing a light source."
+	desc = "A flashlight, for rails, on guns. Can be toggled on and off. A better light source than standard M3 pattern armor lights."
 	icon_state = "flashlight"
 	attach_icon = "flashlight_a"
 	light_mod = 7
@@ -426,7 +441,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
-		user << "<span class='notice'>You modify the rail flashlight back into a normal flashlight.</span>"
+		user << "<span class='notice'>You strip the the rail flashlight of its mount, converting it to a normal flashlight.</span>"
 		if(istype(loc, /obj/item/storage))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
@@ -438,16 +453,26 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. = ..()
 
-/obj/item/attachable/flashlight/grip
-	name = "underbarrel flashlight"
-	desc = "A simple flashlight used for mounting under a firearm's barrel. \nHas no drawbacks, but isn't particularly useful outside of providing a light source."
-	icon_state = "flashlight"
-	attach_icon = "flashlight_a"
-	light_mod = 7
+/obj/item/attachable/flashlight/grip //Grip Light is here because it is a child object. Having it further down might cause a future coder a headache.
+	name = "underbarrel flashlight grip"
+	desc = "Holy smokes RO man, they put a grip on a flashlight! \nReduces recoil and scatter by a tiny amount. Boosts accuracy by a tiny amount. Works as a light source."
+	icon_state = "flashgrip"
+	attach_icon = "flashgrip_a"
+	light_mod = 6
 	slot = "under"
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 
+/obj/item/attachable/flashlight/grip/New()
+	..()
+	accuracy_mod = config.min_hit_accuracy_mult
+	recoil_mod = -config.min_recoil_value
+	scatter_mod = -config.min_scatter_value
+
+/obj/item/attachable/flashlight/grip/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/tool/screwdriver))
+		user << "<span class='notice'>Hold on there cowboy, that grip is bolted on. You are unable to modify it.</span>"
+	return
 
 /obj/item/attachable/quickfire
 	name = "quickfire adapter"
@@ -468,7 +493,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"
-	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to a USCM armor."
+	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."
 	icon_state = "magnetic"
 	attach_icon = "magnetic_a"
 	slot = "rail"
@@ -496,10 +521,10 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/scope
-	name = "rail scope"
+	name = "S8 telescoping sight"
 	icon_state = "sniperscope"
 	attach_icon = "sniperscope_a"
-	desc = "A rail mounted zoom sight scope. Allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
+	desc = "An ARMAT S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	slot = "rail"
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when aiming
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -558,10 +583,10 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/scope/mini
-	name = "mini rail scope"
+	name = "S4 telescoping sight"
 	icon_state = "miniscope"
 	attach_icon = "miniscope_a"
-	desc = "A small rail mounted zoom sight scope. Allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
+	desc = "An ARMAT S4 telescoping eye piece. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -590,10 +615,10 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/scope/collimator
-	name = "IFTS Mini-Scope"
+	name = "IFTX B8 Smart-Scope"
 	icon_state = "collisight"
 	attach_icon = "collisight_a"
-	desc = "A rail mounted collimator mini-scope with an integrated friendly-fire avoidance system."
+	desc = "An experimental IFTX brand B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. However, it only attaches to the L42-MK1 Pulse Carbine."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -627,6 +652,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"
+	desc = "Oppa! How did you get this off glorious Stalin weapon? Blyat, put back on and do job tovarish. Yankee is not shoot self no?"
 
 
 
@@ -635,7 +661,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock //Generic stock parent and related things.
 	name = "default stock"
-	desc = "Default parent object, not meant for use."
+	desc = "If you can read this, someone screwed up. Go Gitlab this and bug a coder."
 	icon_state = "stock"
 	slot = "stock"
 	wield_delay_mod = WIELD_DELAY_VERY_FAST
@@ -650,7 +676,7 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST
-	
+
 /obj/item/attachable/stock/shotgun/New()
 	..()
 	//it makes stuff much better when two-handed
@@ -1127,10 +1153,10 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/attached_gun/shotgun
-	name = "masterkey shotgun"
+	name = "U7 underbarrel shotgun"
 	icon_state = "masterkey"
 	attach_icon = "masterkey_a"
-	desc = "A weapon-mounted, three-shot shotgun. Reloadable with buckshot. The short barrel reduces the ammo's effectiveness."
+	desc = "An ARMAT U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to three buckshot shells."
 	w_class = 3
 	max_rounds = 3
 	current_rounds = 3
@@ -1174,7 +1200,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/verticalgrip
 	name = "vertical grip"
-	desc = "A custom-built improved foregrip for better accuracy, less recoil, and less scatter, especially during burst fire. \nHowever, it also increases weapon size."
+	desc = "A vertical foregrip that offers better accuracy, less recoil, and less scatter, especially during burst fire. \nHowever, it also increases weapon size."
 	icon_state = "verticalgrip"
 	attach_icon = "verticalgrip_a"
 	size_mod = 1
@@ -1194,7 +1220,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/angledgrip
 	name = "angled grip"
-	desc = "A custom-built improved foregrip for less recoil, and faster wielding time. \nHowever, it also increases weapon size."
+	desc = "An angled foregrip that improves weapon ergonomics and offers less recoil, and faster wielding time. \nHowever, it also increases weapon size."
 	icon_state = "angledgrip"
 	attach_icon = "angledgrip_a"
 	wield_delay_mod = -WIELD_DELAY_FAST
@@ -1214,7 +1240,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/gyro
 	name = "gyroscopic stabilizer"
-	desc = "A set of weights and balances to stabilize the weapon when fired with one hand. Slightly decrease firing speed."
+	desc = "A set of weights and balances to stabilize the weapon when fired with one hand. Slightly decreases firing speed."
 	icon_state = "gyro"
 	attach_icon = "gyro_a"
 	slot = "under"
@@ -1231,7 +1257,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/lasersight
 	name = "laser sight"
-	desc = "A laser sight placed under the barrel. Increases accuracy, and decrease scatter when firing one-handed."
+	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy, and decreases scatter when firing one-handed."
 	icon_state = "lasersight"
 	attach_icon = "lasersight_a"
 	slot = "under"
@@ -1357,7 +1383,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"
-	desc = "A mechanism re-assembly kit that allows for automatic fire, or more shots per burst if the weapon already has the ability. \nJust don't mind the increased scatter."
+	desc = "A small angled piece of fine machinery that increases the burst count on some weapons, and grants the ability to others. \nIncreases weapon scatter."
 	icon_state = "rapidfire"
 	attach_icon = "rapidfire_a"
 	slot = "under"

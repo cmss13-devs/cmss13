@@ -192,6 +192,8 @@
 						/obj/item/reagent_container/food/snacks/packaged_burrito = "helmet_snack_burrito",
 						/obj/item/clothing/glasses/mgoggles = "goggles",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles",
+						/obj/item/clothing/head/headband/tan = "headbandtan",
+						/obj/item/clothing/head/headband/red = "headbandred",
 						/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector")
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
 

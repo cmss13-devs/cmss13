@@ -87,6 +87,9 @@
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
 
+/obj/item/clothing/head/headband/tan
+	icon_state = "headbandtan"
+
 /obj/item/clothing/head/headband/rambo
 	name = "headband"
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -332,6 +335,10 @@
 	icon_state = "booniehat"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
+
+/obj/item/clothing/head/booniehat/tan
+	icon_state = "booniehattan"
+	icon = 'icons/obj/clothing/cm_hats.dmi'
 
 /obj/item/clothing/head/booniehat/New()
 	select_gamemode_skin(type)

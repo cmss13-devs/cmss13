@@ -250,6 +250,18 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
+/obj/item/clothing/head/ivanberet
+	name = "\improper Black Beret"
+	desc = "Worn by officers of special units."
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon_state = "ivan_beret"
+	siemens_coefficient = 2.0
+	flags_armor_protection = HEAD
+	armor = list(melee = 90, bullet = 120, laser = 80, energy = 70, bomb = 40, bio = 30, rad = 30)
+	flags_cold_protection = HEAD
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/uppcap
 	name = "\improper armored UPP cap"

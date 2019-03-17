@@ -748,6 +748,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor = list(melee = 85, bullet = 90, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
 
+/obj/item/clothing/suit/storage/faction/UPP/ivan
+	name = "\improper UM6 Camo Jacket"
+	desc = "An experimental heavily armored variant of the UM5 given to only the most elite units."
+	icon_state = "ivan_jacket"
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
+	armor = list(melee = 90, bullet = 120, laser = 80, energy = 70, bomb = 40, bio = 30, rad = 30)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
 //===========================//FREELANCER\\================================\\
 //=====================================================================\\
 

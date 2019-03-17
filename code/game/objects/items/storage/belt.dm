@@ -322,7 +322,15 @@
 	new /obj/item/ammo_magazine/rifle/type71(src)
 	new /obj/item/ammo_magazine/rifle/type71(src)
 
-
+//Crazy Ivan's belt reskin
+/obj/item/storage/belt/marine/upp/ivan
+	name = "\improper Type 42 pattern load rig"
+	desc = "A modified variant of the standard-issue 41 pattern load rig."
+	icon_state = "korovin_holster"
+	item_state = "upp_belt"
+	storage_slots = 15
+	max_storage_space = 40
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/shotgun
 	name = "\improper shotgun shell load rig"

@@ -26,7 +26,7 @@
 	var/is_wired = 0
 	var/image/wired_overlay
 	flags_barrier = HANDLE_BARRIER_CHANCE
-	projectile_coverage = 90 //maximum of 90% chance of blocking a projectile
+	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 
 	New()
 		..()
@@ -615,7 +615,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	if(iswelder(W))
 		if(user.action_busy)
-			return		
+			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(health == maxhealth)
 			user << "<span class='warning'>[src] doesn't need repairs.</span>"
@@ -637,7 +637,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 				update_health()
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-		return	
+		return
 
 	. = ..()
 
@@ -675,7 +675,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	return 1
 
 //CADE IN HANDS
-/obj/item/folding_barricade	
+/obj/item/folding_barricade
 	name = "MB-6 Folding Barricade"
 	desc = "A folding barricade that can be used to quickly deploy an all-round resistant barricade."
 	health = 400

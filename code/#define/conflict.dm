@@ -86,6 +86,11 @@
 //Explosion damage multipliers for different objects
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
+
+//Projectile block probabilities for different types of cover
+#define PROJECTILE_COVERAGE_LOW			35
+#define PROJECTILE_COVERAGE_MEDIUM		60
+#define PROJECTILE_COVERAGE_HIGH		85
 //=================================================
 
 #define FALLOFF_PER_TILE 0.01 //1 % per 1 tile per 1 normalcy

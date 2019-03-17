@@ -7,7 +7,7 @@
 	var/list/debris = list()
 	var/flags_barrier = 0
 	anchored = 1
-	projectile_coverage = 50
+	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 /obj/structure/New()
 	..()

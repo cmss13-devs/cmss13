@@ -15,7 +15,7 @@
 	var/reinforced = FALSE
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 2
-	projectile_coverage = 50
+	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 	tiles_with = list(/turf/closed/wall)
 	var/tiles_special[] = list(/obj/machinery/door/airlock,

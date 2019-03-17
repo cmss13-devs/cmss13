@@ -31,8 +31,8 @@
 	var/flip_cooldown = 0 //If flip cooldown exists, don't allow flipping or putting back. This carries a WORLD.TIME value
 	var/health = 100
 	projectile_coverage = 20 //maximum chance of blocking a projectile
-	var/flipped_projectile_coverage = 90
-	var/upright_projectile_coverage = 20
+	var/flipped_projectile_coverage = PROJECTILE_COVERAGE_HIGH
+	var/upright_projectile_coverage = PROJECTILE_COVERAGE_LOW
 
 /obj/structure/table/destroy(deconstruct)
 	if(deconstruct)

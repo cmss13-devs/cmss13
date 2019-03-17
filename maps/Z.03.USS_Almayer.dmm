@@ -32578,12 +32578,6 @@
 /area/almayer/hallways/hangar)
 "bpk" = (
 /obj/machinery/door/airlock/dropship_hatch/two,
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -32604,12 +32598,6 @@
 /obj/machinery/door/airlock/dropship_hatch/two{
 	dir = 8
 	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -32626,12 +32614,6 @@
 /area/almayer/living/offices)
 "bpp" = (
 /obj/machinery/door/airlock/dropship_hatch,
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -32646,12 +32628,6 @@
 "bpr" = (
 /obj/machinery/door/airlock/dropship_hatch{
 	dir = 8
-	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	opacity = 0
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -38953,24 +38929,6 @@
 /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2{
 	id = ""
 	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
-"bDf" = (
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -39057,24 +39015,6 @@
 "bDr" = (
 /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1{
 	id = ""
-	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bDs" = (
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -86447,8 +86387,8 @@ bAn
 blJ
 blJ
 blJ
-blJ
-bDf
+bAn
+bpl
 baI
 baI
 bGG
@@ -86651,7 +86591,7 @@ blJ
 blJ
 blJ
 blJ
-bDf
+bpl
 baI
 baI
 bGH
@@ -90913,8 +90853,8 @@ bAy
 blP
 blP
 blP
-blP
-bDs
+bAy
+bpq
 baI
 baI
 bGN
@@ -91117,7 +91057,7 @@ blP
 blP
 blP
 blP
-bDs
+bpq
 baI
 baI
 bGO

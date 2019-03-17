@@ -293,19 +293,33 @@
 
 /obj/item/weapon/gun/rifle/mar40/carbine
 	name = "\improper MAR-30 battle carbine"
-	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries. This is the carbine variant."
+	desc = "A cheap, reliable carbine chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries."
 	icon_state = "mar30"
 	item_state = "mar30"
 	fire_sound = 'sound/weapons/gun_ak47.ogg' //Change
+	attachable_allowed = list(
+					/obj/item/attachable/suppressor,
+					/obj/item/attachable/bayonet,
+					/obj/item/attachable/reddot,
+					/obj/item/attachable/verticalgrip,
+					/obj/item/attachable/angledgrip,
+					/obj/item/attachable/lasersight,
+					/obj/item/attachable/flashlight,
+					/obj/item/attachable/bipod,
+					/obj/item/attachable/extended_barrel,
+					/obj/item/attachable/heavy_barrel,
+					/obj/item/attachable/magnetic_harness,
+					/obj/item/attachable/attached_gun/grenade,
+					/obj/item/attachable/attached_gun/flamer,
+					/obj/item/attachable/attached_gun/shotgun,
+					/obj/item/attachable/scope,
+					/obj/item/attachable/scope/mini)
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
-	fire_delay = config.high_fire_delay
-	burst_amount = config.high_burst_value
-	burst_delay = config.mlow_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult + config.min_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult + config.min_hit_accuracy_mult - config.high_hit_accuracy_mult
-	scatter = config.med_scatter_value
-	burst_scatter_mult = config.med_scatter_value
+	fire_delay = config.low_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.min_hit_accuracy_mult
+	scatter = config.low_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value

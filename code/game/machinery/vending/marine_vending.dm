@@ -700,38 +700,39 @@
 	product_records = list()
 
 	products = list(
-		/obj/item/attachable/suppressor = round(scale * 14),
-		/obj/item/attachable/bayonet = round(scale * 14),
-		/obj/item/attachable/compensator = round(scale * 10),
-		/obj/item/attachable/extended_barrel = round(scale * 10),
 		/obj/item/attachable/heavy_barrel = round(scale * 4),
+		/obj/item/attachable/bayonet = round(scale * 14),
+		/obj/item/attachable/extended_barrel = round(scale * 10),
+		/obj/item/attachable/compensator = round(scale * 10),
+		/obj/item/attachable/suppressor = round(scale * 14),
 
-		/obj/item/attachable/scope = round(scale * 4),
-		/obj/item/attachable/scope/mini = round(scale * 4),
 		/obj/item/attachable/scope/collimator = round(scale * 2)+1,
+		/obj/item/attachable/magnetic_harness = round(scale * 10),
+		/obj/item/attachable/scope/mini = round(scale * 4),
+		/obj/item/attachable/quickfire = round(scale * 3),
+		/obj/item/attachable/scope = round(scale * 4),
 		/obj/item/attachable/flashlight = round(scale * 14),
 		/obj/item/attachable/reddot = round(scale * 14),
-		/obj/item/attachable/magnetic_harness = round(scale * 10),
-		/obj/item/attachable/quickfire = round(scale * 3),
 
-		/obj/item/attachable/verticalgrip = round(scale * 14),
 		/obj/item/attachable/angledgrip = round(scale * 14),
-		/obj/item/attachable/lasersight = round(scale * 14),
-		/obj/item/attachable/gyro = round(scale * 4),
-		/obj/item/attachable/bipod = round(scale * 8),
+		/obj/item/attachable/bipod = round(scale * 8),		
 		/obj/item/attachable/burstfire_assembly = round(scale * 4),
+		/obj/item/attachable/gyro = round(scale * 4),
+		/obj/item/attachable/lasersight = round(scale * 14),
+		/obj/item/attachable/flashlight/grip = round(scale * 14),
+		/obj/item/attachable/verticalgrip = round(scale * 14),
 
+		/obj/item/attachable/stock/carbine = round(scale * 4),
 		/obj/item/attachable/stock/shotgun = round(scale * 4),
 		/obj/item/attachable/stock/rifle = round(scale * 4),
 		/obj/item/attachable/stock/revolver = round(scale * 4),
-		/obj/item/attachable/stock/smg = round(scale * 4),
 		/obj/item/attachable/stock/smg/collapsible = round(scale * 1) + 1,
 		/obj/item/attachable/stock/smg/brace = round(scale * 1) + 1,
-		/obj/item/attachable/stock/carbine = round(scale * 4) ,
+		/obj/item/attachable/stock/smg = round(scale * 4),
 
-		/obj/item/attachable/attached_gun/grenade = round(scale * 10),
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),
-		/obj/item/attachable/attached_gun/flamer = round(scale * 4)
+		/obj/item/attachable/attached_gun/flamer = round(scale * 4),
+		/obj/item/attachable/attached_gun/grenade = round(scale * 10)
 	)
 
 	//Rebuild the vendor's inventory to make our changes apply

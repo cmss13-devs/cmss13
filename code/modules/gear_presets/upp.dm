@@ -60,6 +60,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
@@ -120,6 +121,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp_smg, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
@@ -155,6 +157,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
@@ -195,6 +198,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/upp(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
@@ -235,6 +239,7 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/chameleon	(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/upp(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 
@@ -276,6 +281,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/upp(H), WEAR_R_STORE)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp(H.back), WEAR_IN_BACK)
@@ -320,6 +326,7 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/chameleon	(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/upp(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp(H), WEAR_L_STORE)
 

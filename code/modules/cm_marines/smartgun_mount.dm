@@ -10,7 +10,7 @@
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
 	name = "M56D drum magazine (10x28mm Caseless)"
-	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D mounted smartgun system. Just click the M56D with this to reload it."
+	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
 	w_class = 3
 	icon_state = "ammo_drum"
 	flags_magazine = NOFLAGS //can't be refilled or emptied by hand
@@ -23,7 +23,7 @@
 // Now we need a box for this.
 /obj/item/storage/box/m56d_hmg
 	name = "\improper M56D crate"
-	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D smartgun, it clearly has various labeled warnings. The most major one is that this does not have IFF features due to specialized ammo."
+	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings. The most major one is that this does not have IFF features due to specialized ammo."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_case" // I guess a placeholder? Not actually going to show up ingame for now.
 	w_class = 5
@@ -42,8 +42,8 @@
 
 // The actual gun itself.
 /obj/item/device/m56d_gun
-	name = "\improper M56D Mounted Smartgun"
-	desc = "The top half of a M56D Machinegun post. However it ain't much use without the tripod."
+	name = "\improper M56D heavy machine gun"
+	desc = "The top half of a M56D heavy machine gun post. However it ain't much use without the tripod."
 	unacidable = 1
 	w_class = 5
 	icon = 'icons/turf/whiskeyoutpost.dmi'
@@ -109,6 +109,7 @@
 	anchored = 0
 	density = 1
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/gun_mounted = 0 //Has the gun been mounted?
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	var/health = 100
@@ -128,7 +129,7 @@
 	if(!anchored)
 		user << "It must be <B>screwed</b> to the floor."
 	else if(!gun_mounted)
-		user << "The <b>M56D Mounted Smartgun</b> is not yet mounted."
+		user << "The <b>M56D heavy machine gun</b> is not yet mounted."
 	else
 		user << "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
 
@@ -212,7 +213,7 @@
 			user << "You're securing the M56D into place"
 			if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message("\blue [user] screws the M56D into the mount.","\blue You finalize the M56D mounted smartgun system.")
+				user.visible_message("\blue [user] screws the M56D into the mount.","\blue You finalize the M56D heavy machine gun.")
 				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
 				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
@@ -251,8 +252,8 @@
 
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/machinery/m56d_hmg
-	name = "\improper M56D mounted smartgun"
-	desc = "A deployable, mounted smartgun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	name = "\improper M56D heavy machine gun"
+	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
 	anchored = 1
@@ -260,6 +261,7 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER //no hiding the hmg beind corpse
 	use_power = 0
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/rounds = 0 //Have it be empty upon spawn.
 	var/rounds_max = 700
 	var/fire_delay = 4 //Gotta have rounds down quick.
@@ -333,7 +335,7 @@
 		if(locked)
 			user << "This one cannot be disassembled."
 		else
-			user << "You begin disassembling the M56D mounted smartgun"
+			user << "You begin disassembling [src]"
 			if(do_after(user,15, TRUE, 5, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'> [user] disassembles [src]! </span>","<span class='notice'> You disassemble [src]!</span>")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -381,10 +383,8 @@
 	update_icon()
 
 /obj/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/Proj) //Nope.
-	if(prob(30)) // What the fuck is this from sentry gun code. Sorta keeping it because it does make sense that this is just a gun, unlike the sentry.
-		return 0
-
-	visible_message("\The [src] is hit by the [Proj.name]!")
+	bullet_ping(Proj)
+	visible_message("<span class='warning'>[src] is hit by the [Proj.name]!</span>")
 	update_health(round(Proj.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
@@ -566,7 +566,21 @@
 	flags_atom |= RELAY_CLICK
 	user.reset_view(src)
 	if(zoom)
-		user.client.change_view(12)
+		var/tilesize = 32
+		var/viewoffset = tilesize * 5
+		switch(dir)
+			if(NORTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = viewoffset
+			if(SOUTH)
+				user.client.pixel_x = 0
+				user.client.pixel_y = -viewoffset
+			if(EAST)
+				user.client.pixel_x = viewoffset
+				user.client.pixel_y = 0
+			if(WEST)
+				user.client.pixel_x = -viewoffset
+				user.client.pixel_y = 0
 	operator = user
 
 /obj/machinery/m56d_hmg/on_unset_interaction(mob/user)
@@ -574,6 +588,8 @@
 	user.reset_view(null)
 	if(zoom && user.client)
 		user.client.change_view(world.view)
+		user.client.pixel_x = 0
+		user.client.pixel_y = 0
 	if(operator == user)
 		operator = null
 
@@ -593,14 +609,28 @@
 	return ..()
 
 /obj/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
-	name = "M56D Smartgun Nest"
-	desc = "A M56D smartgun mounted upon a small reinforced post with sandbags to provide a small machinegun nest for all your defense purpose needs.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	name = "\improper scoped M56D heavy machine gun nest"
+	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machinegun nest for all your defensive needs.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	burst_fire = 1
 	fire_delay = 2
 	rounds = 1500
 	rounds_max = 1500
 	locked = 1
+	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_full = "towergun"
 	icon_empty = "towergun"
 	zoom = 1
+
+/obj/machinery/m56d_hmg/mg_turret/dropship
+	name = "\improper scoped M56D heavy machine gun"
+	desc = "A scoped M56D heavy machine gun mounted behind a metal shield.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	icon_full = "towergun_folding"
+	icon_empty = "towergun_folding"
+	var/obj/structure/dropship_equipment/mg_holder/deployment_system
+
+	Dispose()
+		if(deployment_system)
+			deployment_system.deployed_mg = null
+			deployment_system = null
+		. = ..()

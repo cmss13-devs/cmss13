@@ -762,8 +762,9 @@
 			new /obj/effect/decal/cleanable/blood/oil(loc)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
-/obj/machinery/marine_turret/bullet_act(var/obj/item/projectile/Proj) //Nope.
-	visible_message("[src] is hit by the [Proj.name]!")
+/obj/machinery/marine_turret/bullet_act(var/obj/item/projectile/Proj)
+	bullet_ping(Proj)
+	visible_message("<span class='warning'>[src] is hit by the [Proj.name]!</span>")
 	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
 	if(ammo_flags & AMMO_XENO_ACID) //Fix for xenomorph spit doing baby damage.
 		update_health(round(Proj.damage/3))
@@ -1108,7 +1109,7 @@
 
 //the turret inside the sentry deployment system
 /obj/machinery/marine_turret/premade/dropship
-	density = 0
+	density = 1
 	angle = -1
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 

@@ -579,44 +579,22 @@
 		//Elevators
 		if (iselevator)
 			for(var/obj/machinery/door/airlock/A in T)
-				if(!istype(A)) continue
-				if(!A.density)
-					spawn(0)
-						A.close()
-						A.lock()
-				else
-					A.lock() //We need this here since it's important to lock and update AFTER its closed
-				break
+				spawn(0)
+					A.unlock()
+					A.close(1)
+					A.lock()
 		else
 			for(var/obj/machinery/door/airlock/dropship_hatch/M in T)
-				if(M.locked && M.density)
-					continue // jobs done
-				else if(!M.locked && M.density)
-					M.lock() // closed but not locked yet
-					continue
-				else
-					spawn(0)
-						M.unlock()
-						sleep(1)
-						M.close(1)
-						sleep(M.openspeed + 1)
-						M.lock()
+				spawn(0)
+					M.unlock()
+					M.close(1)
+					M.lock()
 
 			for(var/obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
-				if(!D.locked && D.density)
-					D.lock() // closed but not locked yet
-				else if(D.locked && !D.density)
-					spawn(0)
-						D.unlock()
-						sleep(1)
-						D.close()
-						sleep(D.openspeed + 1) // let it close
-						D.lock() // THEN lock it
-				else
-					spawn(0)
-						D.close()
-						sleep(D.openspeed + 1)
-						D.lock()
+				spawn(0)
+					D.unlock()
+					D.close(1)
+					D.lock()
 
 /datum/shuttle/ferry/marine/open_doors(var/list/L)
 	var/i //iterator

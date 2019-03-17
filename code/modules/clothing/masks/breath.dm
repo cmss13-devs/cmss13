@@ -62,3 +62,25 @@
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask
+	name = "Tactical Bandana"
+	desc = "A tactical bandana used by soldiers to conceal their face."
+	icon_state = "tacticalmask"
+	item_state = "tacticalmask"
+	flags_inventory = COVERMOUTH|ALLOWREBREATH
+	flags_inv_hide = HIDEFACE|HIDELOWHAIR
+	flags_cold_protection = HEAD
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
+	icon_state = "tacticalmask_tan"
+	item_state = "tacticalmask_tan"
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	icon_state = "tacticalmask_green"
+	item_state = "tacticalmask_green"
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	icon_state = "tacticalmask_black"
+	item_state = "tacticalmask_black"

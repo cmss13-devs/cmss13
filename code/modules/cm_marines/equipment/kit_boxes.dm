@@ -344,3 +344,49 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/device/motiondetector/intel(src)
 		new /obj/item/device/encryptionkey/intel(src)
 
+/obj/item/storage/box/kit/veteran_enlist
+	name = "\improper Veteran Enlist Assault Kit"
+
+/obj/item/storage/box/kit/veteran_enlist/New()
+	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+veteran")
+	spawn(1)
+		new /obj/item/weapon/gun/rifle/m41aMK1(src)
+		new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+		new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+		new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+		new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+		new /obj/item/ammo_magazine/rifle/m41aMK1(src)
+		new /obj/item/attachable/attached_gun/flamer(src)
+		new /obj/item/attachable/attached_gun/shotgun(src)
+		new /obj/item/storage/pouch/magazine/large(src)
+
+/obj/item/storage/box/kit/mini_grenadier
+	name = "\improper Frontline M40 Grenadier Kit"
+
+/obj/item/storage/box/kit/mini_grenadier/New()
+	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+grenadier")
+	spawn(1)
+		new /obj/item/storage/belt/grenade(src)
+		new /obj/item/storage/pouch/explosive(src)
+		new /obj/item/explosive/grenade/HE/frag(src)
+		new /obj/item/explosive/grenade/HE/frag(src)
+		new /obj/item/explosive/grenade/HE/frag(src)
+
+/obj/item/storage/box/kit/self_defense
+	name = "\improper Personal Self Defense Kit"
+
+/obj/item/storage/box/kit/self_defense/New()
+	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+defense")
+	spawn(1)
+		new /obj/item/weapon/gun/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/ammo_magazine/pistol/vp70(src)
+		new /obj/item/attachable/reddot(src)
+		new /obj/item/attachable/lasersight(src)
+		new /obj/item/storage/belt/gun/m4a3(src)

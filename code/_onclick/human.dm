@@ -89,7 +89,6 @@
 				next_move += 10
 			if(16 to 128)
 				return
-		A.attack_tk(src)
 
 /atom/movable/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
 	return HANDLE_CLICK_PASS_THRU

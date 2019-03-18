@@ -123,11 +123,6 @@
 /obj/machinery/door/attack_hand(mob/user)
 	return try_to_activate_door(user)
 
-/obj/machinery/door/attack_tk(mob/user)
-	if(requiresID() && !allowed(null))
-		return
-	..()
-
 /obj/machinery/door/proc/try_to_activate_door(mob/user)
 	add_fingerprint(user)
 	if(operating || emagged)

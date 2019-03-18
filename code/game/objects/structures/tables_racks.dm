@@ -229,10 +229,6 @@
 	else
 		dir = SOUTH
 
-
-/obj/structure/table/attack_tk() // no telehulk sorry
-	return
-
 /obj/structure/table/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1

@@ -1,0 +1,76 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Triiodine
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - imagedel: "Removed ERT backpacks."
+  - imagedel: "Removed the Captain's satchel & backpacks."
+  - imagedel: "Removed Toddlers (I don't know either)."
+  - imagedel: "Removed old M94 Flare packs."
+  - imagedel: "Removed old Marine box packs."
+  - imagedel: "Removed the King in Yellow and other bible variants."
+  - imagedel: "Removed most Cult Gamemode image content."
+  - imagedel: "Removed old busy status sprites."
+  - imagedel: "Removed PAI image content."
+  - imagedel: "Removed all species mob sprites. (Vox, Unathi, Skrell, Tajara)."
+  - imagedel: "Removed apiary image content."
+  - imagedel: "Removed magic."
+  - imagedel: "Removed meteors."
+  - imagedel: "Removed air alarms."
+  - imagedel: "Removed Nar'sie."
+  - imagedel: "Removed old SMES units."
+  - imagedel: "Removed legacy rechargers."
+  - imagedel: "Removed legacy powerloaders."
+  - imagedel: "Removed legacy cameras."
+  - imagedel: "Removed legacy surgery cases and sterile satchels."
+  - imagedel: "Removed laser machinery coder sprites."
+  - imagedel: "Removed all image archives."
+  - imageadd: "Redid all legacy backpacks for colonists (The chaplain pack is unaffected)."
+  - imageadd: "Redid the Syndicate toolbox."
+  - imageadd: "Redid the Syndicate cardboard box."
+  - imageadd: "Redid USCM medical satchels."
+  - imageadd: "USCM Technician satchels have been turned into USCM Technician chestrigs (This is a purely cosmetic change)."
+  - imageadd: "Added a placeholder M40 HEFA ice variant box."
+  - imageadd: "Redid leather satchels."
+  - imageadd: "Redid secure briefcases."
+  - imageadd: "Redid plant bags."
+  - imageadd: "Added ice variants to the welding backpack. Got that one squared away."
+  - tweak: "Sorted satchels into colony & USCM variants backend wise."
+  - tweak: "Re-wrote Giggles Von Honkerton's description to be more accurate."
+  - tweak: "Replaced the Captain's satchel and backpack with a leather satchel."
+  - tweak: "The G8 Utility Pouch can now attach to the belt slot."
+  - bugfix: "Re-added L42MK1 back sprites."
+  - bugfix: "Sorted some uniforms into the proper sprite sheet"."
+  - bugfix: "Cleaned up the IV icon tree."
+  - rscdel: "Gutted botany bees."
+  - rscdel: "Gutted telekinetics.""

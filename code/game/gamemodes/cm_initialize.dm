@@ -421,7 +421,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	new_xeno.ghostize(0) //Make sure they're not getting a free respawn.
 	new_xeno.key = xeno_candidate
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
-	message_admins("[new_xeno.key] has joined as [new_xeno].")
+	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	log_admin("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
 		var/mob/living/carbon/Xenomorph/X = new_xeno

@@ -12,6 +12,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness)
 
@@ -39,6 +40,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/stock/smg,
 						/obj/item/attachable/stock/smg/collapsible,
@@ -115,6 +117,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope)
@@ -154,6 +157,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope)

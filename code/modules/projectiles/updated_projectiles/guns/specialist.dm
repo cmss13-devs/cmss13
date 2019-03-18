@@ -103,7 +103,7 @@
 			user << "<span class='warning'>The [src] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire.</span>"
 			return
 		else ..()
-		
+
 
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
@@ -159,6 +159,7 @@
 	type_of_casings = "cartridge"
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,

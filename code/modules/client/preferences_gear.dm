@@ -72,25 +72,25 @@ var/global/list/gear_datums = list()
 	slot = WEAR_HEAD
 
 /datum/gear/booniehat
-	display_name = "USCM Boonie Hat"
+	display_name = "USCM Boonie Hat (Olive)"
 	path = /obj/item/clothing/head/booniehat
 	cost = 3
 	slot = WEAR_HEAD
 
-	/datum/gear/booniehattan
-	display_name = "USCM Boonie Hat"
+/datum/gear/booniehattan
+	display_name = "USCM Boonie Hat (Tan)"
 	path = /obj/item/clothing/head/booniehat/tan
 	cost = 3
 	slot = WEAR_HEAD
 /*
 /datum/gear/gbandana
-	display_name = "bandana, green"
+	display_name = "Bandana, (Green)"
 	path = /obj/item/clothing/head/greenbandana
 	cost = 2
 	slot = WEAR_HEAD
 
 /datum/gear/bandana
-	display_name = "bandana, pirate-red"
+	display_name = "Bandana, (Red)"
 	path = /obj/item/clothing/head/bandana
 	cost = 2
 	slot = WEAR_HEAD

@@ -742,3 +742,44 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			usr << list2text(dead_mob_list,",")
 		if("Clients")
 			usr << list2text(clients,",")
+
+
+/client/proc/cmd_debug_list_processing_items()
+	set category = "Debug"
+	set name = "List Processing Items"
+	set desc = "For scheduler debugging"
+
+	var/list/individual_counts = list()
+	for(var/obj/machinery/M in processing_machines)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in processing_objects)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in machines)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in active_diseases)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in human_mob_list)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in processing_turfs)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in xeno_mob_list)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in objectives_controller.active_objectives)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in objectives_controller.inactive_objectives)
+		individual_counts["[M]"]++
+	for(var/obj/machinery/M in living_misc_mobs)
+		individual_counts["[M]"]++
+
+	for(var/area/A in active_areas)
+		if(A.master == A)
+			if(A.powerupdate)
+				for(var/obj/machinery/M in A.area_machines)
+					individual_counts["[M]"]++
+
+	var/str = ""
+	for(var/tmp in individual_counts)
+		str += "[tmp],[individual_counts[tmp]]<BR>"
+
+
+	usr << browse("<HEAD><TITLE>Ticker count</TITLE></HEAD><TT>[str]</TT>", "window=tickercount")

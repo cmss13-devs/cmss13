@@ -404,6 +404,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/compensator,

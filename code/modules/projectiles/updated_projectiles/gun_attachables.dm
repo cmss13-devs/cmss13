@@ -469,10 +469,33 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -config.min_recoil_value
 	scatter_mod = -config.min_scatter_value
 
+/obj/item/attachable/flashlight/grip/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
+	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
+		return
+	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? -1 : 1
+	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
+	light_source.SetLuminosity(light_mod * flashlight_on)
+	G.flags_gun_features ^= GUN_FLASHLIGHT_ON
+
+	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
+		icon_state = "flashgrip-on"
+		attach_icon = "flashgrip_a-on"
+	else
+		icon_state = "flashgrip"
+		attach_icon = "flashgrip_a"
+	playsound(user, activation_sound, 15, 1)
+	G.update_attachable(slot)
+
+	for(var/X in G.actions)
+		var/datum/action/A = X
+		A.update_button_icon()
+	return 1
+
 /obj/item/attachable/flashlight/grip/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
 		user << "<span class='notice'>Hold on there cowboy, that grip is bolted on. You are unable to modify it.</span>"
 	return
+
 
 /obj/item/attachable/quickfire
 	name = "quickfire adapter"

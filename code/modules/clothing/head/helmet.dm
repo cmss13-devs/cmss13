@@ -212,7 +212,7 @@
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 2
 	pockets.max_w_class = 1 //can hold tiny items only, EXCEPT for glasses & metal flask.
-	pockets.bypass_w_limit = list(/obj/item/clothing/glasses, /obj/item/reagent_container/food/drinks/flask, /obj/item/reagent_container/hypospray/autoinjector)
+	pockets.bypass_w_limit = allowed_helmet_items
 	pockets.max_storage_space = 3
 
 	camera = new /obj/machinery/camera(src)

@@ -18,6 +18,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/lasersight,
@@ -136,6 +137,7 @@
 
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
@@ -180,6 +182,7 @@
 	current_mag = /obj/item/ammo_magazine/pistol/c99
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/quickfire,
 						/obj/item/attachable/lasersight,

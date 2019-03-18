@@ -72,18 +72,6 @@
 	sprite_sheet_id = 1
 	icon_state = "headband"
 
-/obj/item/clothing/head/headband/New()
-	select_gamemode_skin(type, list(MAP_ICE_COLONY = "ushanka") )
-	..()
-	switch(icon_state)
-		if("ushanka") //Weird case, since the item basically transforms into another item.
-			name = "\improper USCM ushanka"
-			desc = "Worn during cold operations by idiots."
-			flags_cold_protection = HEAD
-			min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-			flags_inventory = BLOCKSHARPOBJ
-			flags_inv_hide = HIDEEARS|HIDETOPHAIR
-
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
 

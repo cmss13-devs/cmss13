@@ -1,7 +1,0 @@
-author: Miraviel
-
-delete-after: True
-
-changes: 
-  - bugfix: "Re-added the time to the stat panel. Whoops."
-  - bugfix: "Egg layer carriers no longer see the stored huggers line on the stats panel."

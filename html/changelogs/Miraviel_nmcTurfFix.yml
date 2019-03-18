@@ -1,6 +1,0 @@
-author: Miraviel
-
-delete-after: True
-
-changes:
-  - bugfix: "LV-624. Replaced the old cave turf sprites on the nightmare variants with the new ones."

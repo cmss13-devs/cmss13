@@ -276,6 +276,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/quickfire,
@@ -365,6 +366,7 @@
 	force = 15
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/quickfire,
@@ -418,6 +420,7 @@
 	force = 12
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,

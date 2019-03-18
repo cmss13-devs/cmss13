@@ -45,8 +45,10 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
@@ -130,6 +132,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun)
@@ -175,11 +178,18 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope/mini)
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/attached_gun/shotgun)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
@@ -206,18 +216,10 @@
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 10, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
-	var/obj/item/attachable/attached_gun/grenade/G = new(src)
-	G.flags_attach_features &= ~ATTACH_REMOVABLE
-	G.attach_icon = ""
-	G.icon_state = ""
-	G.Attach(src)
-	update_attachable(G.slot)
-	G.icon_state = initial(G.icon_state)
-
 	var/obj/item/attachable/stock/rifle/S = new(src)
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.attach_icon = ""
@@ -259,6 +261,7 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/bipod,
@@ -301,6 +304,7 @@
 					/obj/item/attachable/suppressor,
 					/obj/item/attachable/bayonet,
 					/obj/item/attachable/reddot,
+					/obj/item/attachable/reflex,
 					/obj/item/attachable/verticalgrip,
 					/obj/item/attachable/angledgrip,
 					/obj/item/attachable/lasersight,
@@ -341,8 +345,10 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/bipod,
@@ -387,8 +393,10 @@
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/heavy_barrel,
@@ -531,6 +539,7 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/quickfire,
@@ -547,7 +556,7 @@
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 17, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 26, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 17, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 26, "stock_y" = 9)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	fire_delay = config.high_fire_delay

@@ -207,6 +207,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/compensator,
@@ -260,6 +261,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness)
@@ -396,8 +398,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
@@ -498,6 +502,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/pump/CMB
 	attachable_allowed = list(
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/compensator,

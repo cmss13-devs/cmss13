@@ -43,9 +43,6 @@
 /obj/structure/attack_paw(mob/user)
 	if(breakable) attack_hand(user)
 
-/obj/structure/attack_tk()
-	return
-
 /obj/structure/ex_act(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)

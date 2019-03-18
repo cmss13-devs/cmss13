@@ -17,13 +17,6 @@
 		handle_rotation()
 	return
 
-/obj/structure/bed/chair/attack_tk(mob/user as mob)
-	if(buckled_mob)
-		..()
-	else
-		rotate()
-	return
-
 /obj/structure/bed/chair/handle_rotation() //Making this into a seperate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
 		src.layer = FLY_LAYER

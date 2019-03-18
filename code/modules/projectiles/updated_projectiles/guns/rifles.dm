@@ -216,7 +216,7 @@
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 10, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17, "rail_x" = 12, "rail_y" = 18, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/m46c/New()
 	..()

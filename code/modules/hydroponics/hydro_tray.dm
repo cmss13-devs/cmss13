@@ -656,29 +656,6 @@
 		anchored = !anchored
 		user << "You [anchored ? "wrench" : "unwrench"] \the [src]."
 
-	else if(istype(O, /obj/item/frame/apiary))
-
-		if(seed)
-			user << "\red [src] is already occupied!"
-		else
-			user.drop_held_item()
-			cdel(O)
-
-			var/obj/machinery/apiary/A = new(src.loc)
-			A.icon = src.icon
-			A.icon_state = src.icon_state
-			A.hydrotray_type = src.type
-			cdel(src)
-	return
-
-/obj/machinery/portable_atmospherics/hydroponics/attack_tk(mob/user as mob)
-
-	if(harvest)
-		harvest(user)
-
-	else if(dead)
-		remove_dead(user)
-
 /obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
 
 	if(istype(usr,/mob/living/silicon))

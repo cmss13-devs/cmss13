@@ -4994,12 +4994,18 @@
 /turf/closed/wall/almayer,
 /area/almayer/command/cic)
 "aki" = (
-/obj/machinery/marine_selector/gear/synth,
-/turf/open/floor/almayer,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "akj" = (
-/obj/machinery/marine_selector/clothes/synth,
-/turf/open/floor/almayer,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "akk" = (
 /obj/structure/window/reinforced/tinted/frosted,
@@ -5955,10 +5961,11 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/command/self_destruct)
 "alT" = (
-/obj/machinery/door/airlock/almayer/maint{
-	dir = 2
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
 	},
-/turf/open/floor/almayer,
 /area/almayer/hull/upper_hull)
 "alU" = (
 /turf/closed/wall/almayer,
@@ -8221,8 +8228,8 @@
 	},
 /area/almayer/medical/medical_science)
 "apF" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/open/floor/grass,
+/obj/machinery/marine_selector/snowflake/synth,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "apG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11329,8 +11336,8 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "awW" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/grass,
+/obj/machinery/marine_selector/gear/synth,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "awX" = (
 /obj/structure/table/almayer,
@@ -12070,11 +12077,18 @@
 	},
 /area/almayer/command/cic)
 "ayN" = (
-/obj/machinery/light/small{
+/obj/effect/landmark/start{
+	name = "Synthetic"
+	},
+/obj/machinery/light{
+	icon_state = "tube1";
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/open/floor/grass,
+/turf/open/floor/almayer{
+	tag = "icon-bluecorner (NORTH)";
+	icon_state = "cargo";
+	dir = 2
+	},
 /area/almayer/command/cichallway)
 "ayQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -14733,11 +14747,8 @@
 	},
 /area/almayer/command/cic)
 "aDL" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/open/floor/grass,
+/obj/machinery/marine_selector/clothes/synth,
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "aDM" = (
 /obj/structure/cable/yellow{
@@ -22817,8 +22828,10 @@
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
 "aVW" = (
-/obj/structure/window/framed/almayer,
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/almayer/maint{
+	dir = 2
+	},
+/turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "aVX" = (
 /obj/structure/flora/pottedplant{
@@ -32565,12 +32578,6 @@
 /area/almayer/hallways/hangar)
 "bpk" = (
 /obj/machinery/door/airlock/dropship_hatch/two,
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -32591,12 +32598,6 @@
 /obj/machinery/door/airlock/dropship_hatch/two{
 	dir = 8
 	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -32613,12 +32614,6 @@
 /area/almayer/living/offices)
 "bpp" = (
 /obj/machinery/door/airlock/dropship_hatch,
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 8;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -32633,12 +32628,6 @@
 "bpr" = (
 /obj/machinery/door/airlock/dropship_hatch{
 	dir = 8
-	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	opacity = 0
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -38940,24 +38929,6 @@
 /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2{
 	id = ""
 	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
-"bDf" = (
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
-	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -39044,24 +39015,6 @@
 "bDr" = (
 /obj/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1{
 	id = ""
-	},
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop1/sulaco)
-"bDs" = (
-/obj/machinery/door/poddoor/shutters/transit{
-	density = 0;
-	dir = 1;
-	icon_state = "shutter0";
-	opacity = 0
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -57901,21 +57854,12 @@
 	},
 /area/almayer/medical/morgue)
 "coc" = (
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "cod" = (
-/obj/effect/landmark/start{
-	name = "Synthetic"
-	},
-/turf/open/floor/almayer{
-	tag = "icon-bluecorner (NORTH)";
-	icon_state = "cargo";
-	dir = 2
-	},
+/obj/structure/flora/ausbushes/brflowers,
+/turf/open/floor/grass,
 /area/almayer/hull/upper_hull)
 "coe" = (
 /obj/machinery/vending/uniform_supply,
@@ -86443,8 +86387,8 @@ bAn
 blJ
 blJ
 blJ
-blJ
-bDf
+bAn
+bpl
 baI
 baI
 bGG
@@ -86647,7 +86591,7 @@ blJ
 blJ
 blJ
 blJ
-bDf
+bpl
 baI
 baI
 bGH
@@ -87136,7 +87080,7 @@ ahX
 aar
 akj
 cod
-aar
+alT
 amI
 apC
 akh
@@ -90178,9 +90122,9 @@ aag
 aag
 aag
 aai
-apF
+aKa
 ayN
-awW
+aKa
 aVW
 aic
 aBH
@@ -90384,7 +90328,7 @@ aai
 awW
 aDL
 apF
-aVW
+ceE
 bYz
 aBX
 aBX
@@ -90909,8 +90853,8 @@ bAy
 blP
 blP
 blP
-blP
-bDs
+bAy
+bpq
 baI
 baI
 bGN
@@ -91113,7 +91057,7 @@ blP
 blP
 blP
 blP
-bDs
+bpq
 baI
 baI
 bGO

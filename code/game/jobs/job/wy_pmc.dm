@@ -113,7 +113,8 @@
 				WEAR_IN_BACK = /obj/item/stack/sheet/plasteel,
 				WEAR_IN_BACK = /obj/item/explosive/grenade/HE/PMC,
 				WEAR_IN_BACK = /obj/item/explosive/grenade/incendiary,
-				WEAR_IN_BACK = /obj/item/stack/sheet/plasteel
+				WEAR_IN_BACK = /obj/item/stack/sheet/plasteel,
+				WEAR_IN_BACK = /obj/item/tool/crowbar
 				)
 
 	equip(mob/living/carbon/human/H, L[] = generate_wearable_equipment() + generate_stored_equipment() + generate_random_pmc_primary())
@@ -151,6 +152,7 @@
 				WEAR_IN_BACK = /obj/item/storage/firstaid/adv,
 				WEAR_IN_BACK = /obj/item/device/defibrillator,
 				WEAR_IN_BACK = /obj/item/bodybag,
+				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_IN_BACK = /obj/item/storage/pill_bottle/inaprovaline,
 				WEAR_IN_BACK = /obj/item/storage/pill_bottle/tramadol
 				)
@@ -190,6 +192,7 @@
 				WEAR_J_STORE = /obj/item/weapon/gun/smartgun/dirty,
 				WEAR_L_STORE = /obj/item/storage/pouch/magazine/pistol/pmc_vp70,
 				WEAR_IN_BACK = /obj/item/explosive/plastique,
+				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/webbing,
 				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/phosphorus,
 				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/smokebomb,
@@ -222,6 +225,7 @@
 				WEAR_IN_BACK = /obj/item/device/flashlight,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/black_vest,
 				WEAR_IN_BACK = /obj/item/ammo_magazine/pistol/vp70,
+				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_IN_ACCESSORY = /obj/item/device/flashlight/flare,
 				WEAR_IN_ACCESSORY = /obj/item/device/flashlight/flare,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/quickclot,
@@ -251,6 +255,7 @@
 				WEAR_J_STORE = /obj/item/weapon/gun/rifle/m41a/elite,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/black_vest,
 				WEAR_IN_BACK = /obj/item/ammo_magazine/rifle/extended,
+				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/HE/PMC,
 				WEAR_IN_ACCESSORY = /obj/item/device/flashlight,
 				WEAR_IN_JACKET = /obj/item/reagent_container/hypospray/autoinjector/quickclot,
@@ -281,7 +286,8 @@
 				WEAR_IN_BACK = /obj/item/explosive/plastique,
 				WEAR_IN_BACK = /obj/item/explosive/plastique,
 				WEAR_IN_BACK = /obj/item/storage/firstaid/regular,
-				WEAR_IN_BACK = /obj/item/device/flashlight
+				WEAR_IN_BACK = /obj/item/device/flashlight,
+				WEAR_IN_BACK = /obj/item/tool/crowbar
 				)
 
 	equip(mob/living/carbon/human/H, L[] = generate_wearable_equipment() + generate_stored_equipment() + generate_random_pmc_primary())
@@ -324,6 +330,7 @@
 				WEAR_IN_BACK = /obj/item/weapon/baton,
 				WEAR_IN_BACK = /obj/item/device/flashlight,
 				WEAR_IN_BACK = /obj/item/explosive/grenade/HE/PMC,
+				WEAR_IN_BACK = /obj/item/tool/crowbar,
 				WEAR_ACCESSORY = /obj/item/clothing/tie/storage/webbing,
 				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,
 				WEAR_IN_ACCESSORY = /obj/item/ammo_magazine/pistol/vp70,

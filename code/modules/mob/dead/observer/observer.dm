@@ -157,7 +157,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		resting = 1
 		var/turf/location = get_turf(src)
 		if(location) //to avoid runtime when a mob ends up in nullspace
-			message_admins("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
+			msg_admin_niche("[key_name_admin(usr)] has ghosted. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(usr)] has ghosted.")
 		var/mob/dead/observer/ghost = ghostize(0)						//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		if(ghost) //Could be null if no key
@@ -196,6 +196,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/Stat()
 	if (!..())
 		return 0
+
+	stat("Time:","[worldtime2text()]")
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()
@@ -718,7 +720,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(Z.client) //so players don't keep their ghost zoom view.
 				Z.client.change_view(world.view)
 
-			message_admins("[ckey] has joined as a [Z].")
+			msg_admin_niche("[ckey] has joined as a [Z].")
 			log_admin("[ckey] has joined as a [Z].")
 
 			if(isobserver(ghostmob) )
@@ -794,7 +796,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return
 
 		var/mob/ghostmob = usr.client.mob
-		message_admins("[usr.ckey] has joined as a [L].")
+		msg_admin_niche("[usr.ckey] has joined as a [L].")
 		log_admin("[usr.ckey] has joined as a [L].")
 		L.ckey = usr.ckey
 		if(L.client) L.client.change_view(world.view)

@@ -113,6 +113,8 @@
 			icon_state = "brokenpack"
 
 
+//==========================//JOKE PACKS\\================================\\
+
 /obj/item/storage/backpack/santabag
 	name = "Santa's Gift Bag"
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
@@ -123,6 +125,7 @@
 	max_w_class = 3
 	max_storage_space = 400 // can store a ton of shit!
 
+
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
 	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
@@ -130,27 +133,24 @@
 
 /obj/item/storage/backpack/clown
 	name = "Giggles von Honkerton"
-	desc = "It's a backpack made by Honk! Co."
+	desc = "This, this thing. It fills you with the dread of a bygone age. A land of grey coveralls and mentally unstable crewmen. Of traitors and hooligans. Thank god you're in the marines now."
 	icon_state = "clownpack"
+
+//==========================//COLONY/CIVILIAN PACKS\\================================\\
 
 /obj/item/storage/backpack/medic
 	name = "medical backpack"
 	desc = "It's a backpack especially designed for use in a sterile environment."
 	icon_state = "medicalpack"
 
-/obj/item/storage/backpack/security
+/obj/item/storage/backpack/security //Universal between USCM MPs & Colony, should be split at some point.
 	name = "security backpack"
 	desc = "It's a very robust backpack."
 	icon_state = "securitypack"
 
-/obj/item/storage/backpack/captain
-	name = "captain's backpack"
-	desc = "It's a special backpack made exclusively for officers."
-	icon_state = "captainpack"
-
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
-	desc = "It's a tough backpack for the daily grind of station life."
+	desc = "It's a tough backpack lookin' backpack used by engineers and the like."
 	icon_state = "engiepack"
 
 /obj/item/storage/backpack/toxins
@@ -184,7 +184,7 @@
 
 /obj/item/storage/backpack/satchel
 	name = "leather satchel"
-	desc = "It's a very fancy satchel made with fine leather."
+	desc = "A very fancy satchel made of fine leather. Looks pretty pricey."
 	icon_state = "satchel"
 	worn_accessible = TRUE
 	storage_slots = null
@@ -230,9 +230,9 @@
 	desc = "Useful for holding research materials."
 	icon_state = "satchel-tox"
 
-/obj/item/storage/backpack/satchel/sec
+/obj/item/storage/backpack/satchel/sec //Universal between USCM MPs & Colony, should be split at some point.
 	name = "security satchel"
-	desc = "A robust satchel for security related needs."
+	desc = "A robust satchel composed of two drop pouches, and a large internal pocket. Made of a stiff fabric. It isn't very comfy to wear."
 	icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/hyd
@@ -240,50 +240,12 @@
 	desc = "A green satchel for plant related work."
 	icon_state = "satchel_hyd"
 
-/obj/item/storage/backpack/satchel/cap
-	name = "captain's satchel"
-	desc = "An exclusive satchel for officers."
-	icon_state = "satchel-cap"
-
-//ERT backpacks.
-/obj/item/storage/backpack/ert
-	name = "emergency response team backpack"
-	desc = "A spacious backpack with lots of pockets, used by members of the Emergency Response Team."
-	icon_state = "ert_commander"
-
-//Commander
-/obj/item/storage/backpack/ert/commander
-	name = "emergency response team commander backpack"
-	desc = "A spacious backpack with lots of pockets, worn by the commander of a Emergency Response Team."
-
-//Security
-/obj/item/storage/backpack/ert/security
-	name = "emergency response team security backpack"
-	desc = "A spacious backpack with lots of pockets, worn by security members of a Emergency Response Team."
-	icon_state = "ert_security"
-
-//Engineering
-/obj/item/storage/backpack/ert/engineer
-	name = "emergency response team engineer backpack"
-	desc = "A spacious backpack with lots of pockets, worn by engineering members of a Emergency Response Team."
-	icon_state = "ert_engineering"
-
-//Medical
-/obj/item/storage/backpack/ert/medical
-	name = "emergency response team medical backpack"
-	desc = "A spacious backpack with lots of pockets, worn by medical members of a Emergency Response Team."
-	icon_state = "ert_medical"
-
-
-
-
-
 //==========================// MARINE BACKPACKS\\================================\\
 //=======================================================================\\
 
 /obj/item/storage/backpack/marine
 	name = "\improper lightweight IMP backpack"
-	desc = "The standard-issue pack of the USCM forces. Designed to slug gear into the battlefield."
+	desc = "The standard-issue pack of the USCM forces. Designed to lug gear into the battlefield."
 	icon_state = "marinepack"
 	var/has_gamemode_skin = TRUE
 
@@ -294,18 +256,18 @@
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM medic backpack"
-	desc = "The standard-issue backpack worn by USCM medics."
-	icon_state = "marinepackm"
+	desc = "A standard-issue backpack worn by USCM medics."
+	icon_state = "marinepack_medic"
 
 /obj/item/storage/backpack/marine/tech
 	name = "\improper USCM technician backpack"
-	desc = "The standard-issue backpack worn by USCM technicians."
-	icon_state = "marinepackt"
+	desc = "A standard-issue backpack worn by USCM technicians."
+	icon_state = "marinepack_techi"
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
 	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."
-	icon_state = "marinesat"
+	icon_state = "marinesatch"
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
@@ -313,13 +275,13 @@
 
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM medic satchel"
-	desc = "A heavy-duty satchel carried by some USCM medics."
-	icon_state = "marinesatm"
+	desc = "A heavy-duty satchel used by USCM medics. It sacrifices capacity for usability. A small patch is sown to the top flap."
+	icon_state = "marinesatch_medic"
 
 /obj/item/storage/backpack/marine/satchel/tech
-	name = "\improper USCM technician satchel"
-	desc = "A heavy-duty satchel carried by some USCM technicians."
-	icon_state = "marinesatt"
+	name = "\improper USCM technician chestrig"
+	desc = "A heavy-duty chestrig used by some USCM technicians."
+	icon_state = "marinesatch_techi"
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"
@@ -445,11 +407,10 @@
 /obj/item/storage/backpack/marine/engineerpack
 	name = "\improper USCM technician welderpack"
 	desc = "A specialized backpack worn by USCM technicians. It carries a fueltank for quick welder refueling and use,"
-	icon_state = "engineerpack"
+	icon_state = "welderbackpack"
 	var/max_fuel = 260
 	max_storage_space = 15
 	storage_slots = null
-	has_gamemode_skin = FALSE //same sprites for all gamemodes
 
 /obj/item/storage/backpack/marine/engineerpack/New()
 	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills
@@ -558,5 +519,12 @@
 	name = "marine commanding officer backpack"
 	desc = "The contents of this backpack are top secret."
 	icon_state = "marinepack"
+	storage_slots = null
+	max_storage_space = 30
+
+/obj/item/storage/backpack/ivan
+	name = "The Armory"
+	desc = "From the formless void, there springs an entity - More primordial than the elements themselves. In it's wake, there will follow a storm."
+	icon_state = "ivan_bag"
 	storage_slots = null
 	max_storage_space = 30

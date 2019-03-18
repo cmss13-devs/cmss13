@@ -9,7 +9,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east1)
 "c" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/east1)
 "d" = (
 /turf/closed/wall/mineral/sandstone,
@@ -70,7 +70,7 @@
 	},
 /area/lv624/ground/caves/east1)
 "k" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand6)
 "l" = (
 /turf/open/floor{
@@ -192,7 +192,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "A" = (
-/turf/closed/mineral,
+/turf/closed/wall/rock/brown,
 /area/lv624/ground/sand3)
 "B" = (
 /turf/open/floor{

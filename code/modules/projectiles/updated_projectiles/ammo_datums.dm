@@ -313,7 +313,7 @@
 
 /datum/ammo/bullet/revolver/New()
 	..()
-	accuracy = -config.med_hit_accuracy
+	accuracy = config.med_hit_accuracy
 	damage = config.med_hit_damage
 	penetration = config.low_armor_penetration
 

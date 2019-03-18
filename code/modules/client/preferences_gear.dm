@@ -53,6 +53,12 @@ var/global/list/gear_datums = list()
 	cost = 3
 	slot = WEAR_HEAD
 
+/datum/gear/cmheadbandtan
+	display_name = "USCM Headband (Tan)"
+	path = /obj/item/clothing/head/headband/tan
+	cost = 3
+	slot = WEAR_HEAD
+
 /datum/gear/cmheadset
 	display_name = "USCM Earpiece"
 	path = /obj/item/clothing/head/headset
@@ -68,6 +74,12 @@ var/global/list/gear_datums = list()
 /datum/gear/booniehat
 	display_name = "USCM Boonie Hat"
 	path = /obj/item/clothing/head/booniehat
+	cost = 3
+	slot = WEAR_HEAD
+
+	/datum/gear/booniehattan
+	display_name = "USCM Boonie Hat"
+	path = /obj/item/clothing/head/booniehat/tan
 	cost = 3
 	slot = WEAR_HEAD
 /*
@@ -734,3 +746,27 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/glasses/regular/hipster
 	cost = 2
 	slot = WEAR_EYES
+
+/datum/gear/tacticalmask
+	display_name = "Tactical Mask"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tacticalmasktan
+	display_name = "Tactical Mask (Tan)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tacticalmaskgreen
+	display_name = "Tactical Mask (Green)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	slot = WEAR_FACE
+	cost = 2
+
+/datum/gear/tacticalmaskblack
+	display_name = "Tactical Mask (Black)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	slot = WEAR_FACE
+	cost = 2

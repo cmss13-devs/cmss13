@@ -87,6 +87,9 @@
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
 
+/obj/item/clothing/head/headband/tan
+	icon_state = "headbandtan"
+
 /obj/item/clothing/head/headband/rambo
 	name = "headband"
 	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
@@ -250,6 +253,18 @@
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
+/obj/item/clothing/head/ivanberet
+	name = "\improper Black Beret"
+	desc = "Worn by officers of special units."
+	icon = 'icons/obj/clothing/cm_hats.dmi'
+	icon_state = "ivan_beret"
+	siemens_coefficient = 2.0
+	flags_armor_protection = HEAD
+	armor = list(melee = 90, bullet = 120, laser = 80, energy = 70, bomb = 40, bio = 30, rad = 30)
+	flags_cold_protection = HEAD
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/uppcap
 	name = "\improper armored UPP cap"
@@ -320,6 +335,10 @@
 	icon_state = "booniehat"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
+
+/obj/item/clothing/head/booniehat/tan
+	icon_state = "booniehattan"
+	icon = 'icons/obj/clothing/cm_hats.dmi'
 
 /obj/item/clothing/head/booniehat/New()
 	select_gamemode_skin(type)

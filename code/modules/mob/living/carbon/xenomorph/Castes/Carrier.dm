@@ -135,8 +135,8 @@
 /mob/living/carbon/Xenomorph/Carrier/Stat()
 	if (!..())
 		return 0
-
-	stat("Stored Huggers:", "[huggers_cur] / [huggers_max]")
+	if(huggers_max > 0)
+		stat("Stored Huggers:", "[huggers_cur] / [huggers_max]")
 	stat("Stored Eggs:", "[eggs_cur] / [eggs_max]")
 	return 1
 

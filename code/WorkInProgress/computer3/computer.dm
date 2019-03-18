@@ -4,6 +4,7 @@
 	icon_state = "frame"
 	density = 1
 	anchored = 1.0
+	projectile_coverage = PROJECTILE_COVERAGE_LOW
 
 	idle_power_usage	= 20
 	active_power_usage	= 50

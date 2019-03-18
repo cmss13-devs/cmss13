@@ -114,7 +114,7 @@ Class Procs:
 	layer = OBJ_LAYER
 	var/machine_processing = 0 // whether the machine is busy and requires process() calls in scheduler.
 	throwpass = 1
-	projectile_coverage = 50
+	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 /obj/machinery/New()
 	..()
@@ -208,18 +208,6 @@ Class Procs:
 			istype(usr, /mob/living/carbon/monkey)) )
 		usr << "\red You don't have the dexterity to do this!"
 		return 1
-
-	var/norange = 0
-	if(istype(usr, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		if(istype(H.l_hand, /obj/item/tk_grab))
-			norange = 1
-		else if(istype(H.r_hand, /obj/item/tk_grab))
-			norange = 1
-
-	if(!norange)
-		if ((!in_range(src, usr) || !istype(src.loc, /turf)) && !issilicon(usr))
-			return 1
 
 	src.add_fingerprint(usr)
 

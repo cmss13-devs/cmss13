@@ -183,7 +183,7 @@
 /obj/item/weapon/gun/rifle/sniper/svd/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay*2
 	burst_amount = config.low_burst_value
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult
 	scatter = config.low_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.min_recoil_value

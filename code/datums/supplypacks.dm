@@ -1370,6 +1370,50 @@ AMMO
 	group = "Ammo"
 
 
+/datum/supply_packs/ammo_smartpistol
+	name = "SU-6 smartpistol magazines crate (x12)"
+	contains = list(
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart,
+					/obj/item/ammo_magazine/pistol/smart
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "smartpistol ammo crate"
+	group = "Ammo"
+
+
+/datum/supply_packs/ammo_m1911
+	name = "M4A3 .45 magazines crate (x12)"
+	contains = list(
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911,
+					/obj/item/ammo_magazine/pistol/m1911
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "M4A3 .45 ammo crate"
+	group = "Ammo"
+
+
 /datum/supply_packs/ammo_extended_m39
 	name = "extended M39 magazines crate (x6)"
 	contains = list(

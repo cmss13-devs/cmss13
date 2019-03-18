@@ -133,10 +133,6 @@
 			step(src, get_dir(AM, src))
 	healthcheck()
 
-/obj/structure/window/attack_tk(mob/user as mob)
-	user.visible_message("<span class='notice'>Something knocks on [src].</span>")
-	playsound(loc, 'sound/effects/glassknock.ogg', 15, 1)
-
 /obj/structure/window/attack_hand(mob/user as mob)
 	if(HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
@@ -428,6 +424,7 @@
 		/obj/structure/window/framed,
 		/obj/structure/girder,
 		/obj/structure/window_frame)
+	tiles_with = list(/turf/closed/wall)
 
 /obj/structure/window/framed/New()
 	spawn(0)

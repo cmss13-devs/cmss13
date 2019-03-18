@@ -72,7 +72,7 @@ Additional game mode variables.
 	var/monkey_amount		= 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types	= list() //What type of monkeys do we spawn
 	var/latejoin_tally		= 0 //How many people latejoined Marines
-	var/latejoin_larva_drop = 4 //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
+	var/latejoin_larva_drop = 8 //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 
 	//Role Authority set up.
 	var/role_instruction 	= 0 // 1 is to replace, 2 is to add, 3 is to remove.
@@ -421,7 +421,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	new_xeno.ghostize(0) //Make sure they're not getting a free respawn.
 	new_xeno.key = xeno_candidate
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
-	message_admins("[new_xeno.key] has joined as [new_xeno].")
+	msg_admin_niche("[new_xeno.key] has joined as [new_xeno].")
 	log_admin("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
 		var/mob/living/carbon/Xenomorph/X = new_xeno

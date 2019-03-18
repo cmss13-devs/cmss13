@@ -414,7 +414,11 @@
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access = list(ACCESS_MARINE_ENGINEERING) //Engineering Equipment access
-	products = list(/obj/item/clothing/glasses/meson = 2,/obj/item/device/multitool = 4,/obj/item/circuitboard/airlock = 10,/obj/item/circuitboard/apc = 10,/obj/item/circuitboard/airalarm = 10,/obj/item/cell/high = 10)
+	products = list(/obj/item/clothing/glasses/meson = 2,
+					/obj/item/device/multitool = 4,
+					/obj/item/circuitboard/airlock = 10,
+					/obj/item/circuitboard/apc = 10,
+					/obj/item/cell/high = 10)
 	contraband = list(/obj/item/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3)
 

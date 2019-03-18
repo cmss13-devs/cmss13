@@ -30,7 +30,7 @@
 			var/obj/item/powerloader_clamp/PC = I
 			if(istype(PC.loaded, /obj/structure/dropship_equipment))
 				var/obj/structure/dropship_equipment/SE = PC.loaded
-				if(SE.equip_category != base_category)
+				if( !(base_category in SE.equip_categories) )
 					user << "<span class='warning'>[SE] doesn't fit on [src].</span>"
 					return TRUE
 				if(installed_equipment) return TRUE
@@ -69,7 +69,7 @@
 
 
 /obj/effect/attach_point/crew_weapon
-	name = "rear attach point"
+	name = "crew compartment attach point"
 	base_category = DROPSHIP_CREW_WEAPON
 
 /obj/effect/attach_point/crew_weapon/dropship1
@@ -124,7 +124,7 @@
 	icon = 'icons/Marine/almayer_props.dmi'
 	climbable = TRUE
 	layer = ABOVE_OBJ_LAYER //so they always appear above attach points when installed
-	var/equip_category //on what kind of base this can be installed.
+	var/list/equip_categories //on what kind of base this can be installed.
 	var/obj/effect/attach_point/ship_base //the ship base the equipment is currently installed on.
 	var/uses_ammo = FALSE //whether it uses ammo
 	var/obj/structure/ship_ammo/ammo_equipped //the ammo currently equipped.
@@ -237,9 +237,10 @@
 //////////////////////////////////// turret holders //////////////////////////////////////
 
 /obj/structure/dropship_equipment/sentry_holder
-	equip_category = DROPSHIP_WEAPON
+	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	name = "sentry deployment system"
-	desc = "A box that deploys a sentry turret. Fits on the weapon attach points of dropships. You need a powerloader to lift it."
+	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
+	density = 0
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 500
@@ -264,7 +265,8 @@
 			user << "Its turret is missing."
 
 	on_launch()
-		undeploy_sentry()
+		if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external sentires are automatically undeployed
+			undeploy_sentry()
 
 	equipment_interact(mob/user)
 		if(deployed_turret)
@@ -272,7 +274,7 @@
 				user << "<span class='warning'>[src] is busy.</span>"
 				return //prevents spamming deployment/undeployment
 			if(deployed_turret.loc == src) //not deployed
-				if(z == LOW_ORBIT_Z_LEVEL)
+				if(z == LOW_ORBIT_Z_LEVEL && ship_base.base_category == DROPSHIP_WEAPON)
 					user << "<span class='warning'>[src] can't deploy mid-flight.</span>"
 				else
 					user << "<span class='notice'>You deploy [src].</span>"
@@ -294,11 +296,23 @@
 						deployed_turret.camera.network.Add("dropship1") //accessible via the dropship camera console
 					else
 						deployed_turret.camera.network.Add("dropship2")
-				switch(dir)
-					if(SOUTH) deployed_turret.pixel_y = 8
-					if(NORTH) deployed_turret.pixel_y = -8
-					if(EAST) deployed_turret.pixel_x = -8
-					if(WEST) deployed_turret.pixel_x = 8
+				if(ship_base.base_category == DROPSHIP_WEAPON)
+					switch(dir)
+						if(SOUTH)
+							deployed_turret.pixel_x = 0
+							deployed_turret.pixel_y = 8
+						if(NORTH)
+							deployed_turret.pixel_x = 0
+							deployed_turret.pixel_y = -8
+						if(EAST)
+							deployed_turret.pixel_x = -8
+							deployed_turret.pixel_y = 0
+						if(WEST)
+							deployed_turret.pixel_x = 8
+							deployed_turret.pixel_y = 0
+				else
+					deployed_turret.pixel_x = 0
+					deployed_turret.pixel_y = 0
 		else
 			dir = initial(dir)
 			if(deployed_turret)
@@ -321,8 +335,17 @@
 		playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 		deployment_cooldown = world.time + 50
 		deployed_turret.on = 1
-		deployed_turret.loc = get_step(src, dir)
+		if(ship_base.base_category == DROPSHIP_WEAPON)
+			deployed_turret.loc = get_step(src, dir)
+		else
+			deployed_turret.loc = src.loc
 		icon_state = "sentry_system_deployed"
+
+		for(var/mob/M in deployed_turret.loc)
+			if(deployed_turret.loc == src.loc)
+				step( M, deployed_turret.dir )
+			else
+				step( M, get_dir(src,deployed_turret) )
 
 /obj/structure/dropship_equipment/sentry_holder/proc/undeploy_sentry()
 	if(deployed_turret)
@@ -338,18 +361,24 @@
 
 /obj/structure/dropship_equipment/mg_holder
 	name = "machinegun deployment system"
-	desc = "A box that deploys a modified M56D crewserved machine gun. Fits on the crewserved weapon attach points of dropships. You need a powerloader to lift it."
-	equip_category = DROPSHIP_CREW_WEAPON
+	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
+	density = 0
+	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
 	point_cost = 300
-	var/obj/machinery/m56d_hmg/mg_turret/deployed_mg
+	var/deployment_cooldown
+	var/obj/machinery/m56d_hmg/mg_turret/dropship/deployed_mg
 
 	initialize()
-		if(!deployed_mg) deployed_mg = new(src)
+		if(!deployed_mg)
+			deployed_mg = new(src)
+			deployed_mg.deployment_system = src
 		..()
 
 	New()
-		if(!deployed_mg) deployed_mg = new(src)
+		if(!deployed_mg)
+			deployed_mg = new(src)
+			deployed_mg.deployment_system = src
 		..()
 
 	examine(mob/user)
@@ -357,21 +386,104 @@
 		if(!deployed_mg)
 			user << "Its machine gun is missing."
 
-	update_equipment()
-		if(deployed_mg)
-			if(ship_base)
-				deployed_mg.loc = loc
-				icon_state = "mg_system_deployed"
+	on_launch()
+		if(ship_base && ship_base.base_category == DROPSHIP_WEAPON) //only external mgs are automatically undeployed
+			undeploy_mg()
+
+	attack_hand(user as mob)
+		if(ship_base)
+			if(deployed_mg)
+				if(deployment_cooldown > world.time)
+					user << "<span class='warning'>[src] is not ready.</span>"
+					return //prevents spamming deployment/undeployment
+				if(deployed_mg.loc == src) //not deployed
+					if(z == LOW_ORBIT_Z_LEVEL && ship_base.base_category == DROPSHIP_WEAPON)
+						user << "<span class='warning'>[src] can't be deployed mid-flight.</span>"
+					else
+						user << "<span class='notice'>You pull out [deployed_mg].</span>"
+						deploy_mg(user)
+				else
+					user << "<span class='notice'>You stow [deployed_mg].</span>"
+					undeploy_mg()
 			else
-				deployed_mg.loc = src
+				user << "<span class='warning'>[src] is empty.</span>"
+			return
+
+		..()
+
+	update_equipment()
+		if(ship_base)
+			dir = ship_base.dir
+			icon_state = "mg_system_installed"
+			if(deployed_mg)
+				deployed_mg.dir = dir
+				if(ship_base.base_category == DROPSHIP_WEAPON)
+					switch(dir)
+						if(NORTH)
+							if(	istype(get_step(src, WEST), /turf/open) )
+								deployed_mg.pixel_x = 5
+							else if ( istype(get_step(src, EAST), /turf/open) )
+								deployed_mg.pixel_x = -5
+						if(EAST)
+							deployed_mg.pixel_y = 9
+						if(WEST)
+							deployed_mg.pixel_y = 9
+				else
+					deployed_mg.pixel_x = 0
+					deployed_mg.pixel_y = 0
+		else
+			dir = initial(dir)
+			if(deployed_mg)
 				icon_state = "mg_system"
+				deployed_mg.pixel_y = 0
+				deployed_mg.pixel_x = 0
+				deployed_mg.loc = src
+				deployed_mg.dir = dir
+			else
+				icon_state = "mg_system_destroyed"
+
+/obj/structure/dropship_equipment/mg_holder/proc/deploy_mg(mob/user)
+	if(deployed_mg)
+		playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
+		deployment_cooldown = world.time + 20
+		if(ship_base.base_category == DROPSHIP_WEAPON)
+			switch(dir)
+				if(NORTH)
+					if( istype(get_step(src, WEST), /turf/open) )
+						deployed_mg.loc = get_step(src, WEST)
+					else if ( istype(get_step(src, EAST), /turf/open) )
+						deployed_mg.loc = get_step(src, EAST)
+					else
+						deployed_mg.loc = get_step(src, NORTH)
+				if(EAST)
+					deployed_mg.loc = get_step(src, SOUTH)
+				if(WEST)
+					deployed_mg.loc = get_step(src, SOUTH)
+		else
+			deployed_mg.loc = src.loc
+		icon_state = "mg_system_deployed"
+
+		for(var/mob/M in deployed_mg.loc)
+			if(M == user || deployed_mg.loc == src.loc)
+				step( M, turn(deployed_mg.dir,180) )
+			else
+				step( M, get_dir(src,deployed_mg) )
+
+/obj/structure/dropship_equipment/mg_holder/proc/undeploy_mg()
+	if(deployed_mg)
+		if(deployed_mg.operator)
+			deployed_mg.operator.unset_interaction()
+		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
+		deployment_cooldown = world.time + 10
+		deployed_mg.loc = src
+		icon_state = "mg_system_installed"
 
 
 ////////////////////////////////// FUEL EQUIPMENT /////////////////////////////////
 
 /obj/structure/dropship_equipment/fuel
 	icon = 'icons/Marine/almayer_props64.dmi'
-	equip_category = DROPSHIP_FUEL_EQP
+	equip_categories = list(DROPSHIP_FUEL_EQP)
 
 
 	update_equipment()
@@ -403,7 +515,7 @@
 ///////////////////////////////////// ELECTRONICS /////////////////////////////////////////
 
 /obj/structure/dropship_equipment/electronics
-	equip_category = DROPSHIP_ELECTRONICS
+	equip_categories = list(DROPSHIP_ELECTRONICS)
 
 /obj/structure/dropship_equipment/electronics/chaff_launcher
 	name = "chaff launcher"
@@ -543,7 +655,7 @@
 
 //unfinished and unused
 /obj/structure/dropship_equipment/adv_comp
-	equip_category = DROPSHIP_COMPUTER
+	equip_categories = list(DROPSHIP_COMPUTER)
 	point_cost = 0
 
 	update_equipment()
@@ -564,7 +676,7 @@
 /obj/structure/dropship_equipment/weapon
 	name = "abstract weapon"
 	icon = 'icons/Marine/almayer_props64.dmi'
-	equip_category = DROPSHIP_WEAPON
+	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
 	bound_height = 64
 	uses_ammo = TRUE
@@ -752,7 +864,7 @@
 	icon = 'icons/Marine/almayer_props.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
-	equip_category = DROPSHIP_CREW_WEAPON //fits inside the central spot of the dropship
+	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
 	point_cost = 0
 
 	update_icon()
@@ -772,7 +884,7 @@
 /obj/structure/dropship_equipment/medevac_system
 	name = "medevac system"
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
-	equip_category = DROPSHIP_CREW_WEAPON
+	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
 	point_cost = 500
 	is_interactable = TRUE
@@ -1006,7 +1118,7 @@
 /obj/structure/dropship_equipment/fulton_system
 	name = "fulton recovery system"
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
-	equip_category = DROPSHIP_CREW_WEAPON
+	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
 	point_cost = 500
 	is_interactable = TRUE

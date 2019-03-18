@@ -7,7 +7,7 @@
 	var/list/debris = list()
 	var/flags_barrier = 0
 	anchored = 1
-	projectile_coverage = 50
+	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 
 /obj/structure/New()
 	..()
@@ -42,9 +42,6 @@
 
 /obj/structure/attack_paw(mob/user)
 	if(breakable) attack_hand(user)
-
-/obj/structure/attack_tk()
-	return
 
 /obj/structure/ex_act(severity, direction)
 	switch(severity)

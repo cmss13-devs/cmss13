@@ -700,9 +700,6 @@
 	icon_state = "floor4"
 	},
 /area/lv624/ground/sand6)
-"cx" = (
-/turf/closed/wall/r_wall,
-/area/lv624/ground/sand6)
 "cy" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor{
@@ -5606,6 +5603,13 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
+"qE" = (
+/obj/machinery/computer/objective,
+/obj/structure/table,
+/turf/open/shuttle{
+	icon_state = "floor4"
+	},
+/area/lv624/ground/sand6)
 "qF" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -17750,7 +17754,6 @@
 /obj/structure/bookcase,
 /obj/item/book/manual/chef_recipes,
 /obj/item/book/manual/nuclear,
-/obj/item/disk/objective,
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "Ty" = (
@@ -19768,7 +19771,6 @@
 	icon_state = "2-4"
 	},
 /obj/item/tool/crowbar,
-/obj/item/disk/objective,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -20175,7 +20177,6 @@
 	pixel_x = -30;
 	pixel_y = 0
 	},
-/obj/item/disk/objective,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -20186,7 +20187,6 @@
 /obj/item/book/manual/engineering_guide,
 /obj/item/book/manual/engineering_hacking,
 /obj/item/book/manual/atmospipes,
-/obj/item/disk/objective,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -48397,7 +48397,7 @@ bm
 cw
 cE
 cJ
-cJ
+cN
 cJ
 cJ
 cJ
@@ -48622,10 +48622,10 @@ bm
 bm
 bm
 bm
-cx
+cF
 bT
 bT
-cN
+qE
 cJ
 cV
 cJ

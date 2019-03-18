@@ -146,8 +146,8 @@
 		/obj/item/storage/pouch/pistol = round(scale * 15),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 5),
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 20),
-		/obj/item/weapon/gun/pistol/m1911 = round(scale * 2),
-		/obj/item/weapon/gun/pistol/smart = round(scale * 3),
+		/obj/item/weapon/gun/pistol/m1911 = round(scale * 6),
+		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 10),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 15),
 		//obj/item/weapon/gun/smg/m39/elite = 0,
@@ -175,6 +175,7 @@
 		/obj/item/storage/box/kit/heavy_support = round(scale * 4),
 		/obj/item/storage/box/kit/mini_intel = round(scale * 4),
 		/obj/item/storage/box/kit/pursuit = round(scale * 4),
+		/obj/item/storage/box/kit/veteran_enlist = round(scale * 4),
 		/obj/item/folding_barricade = round(scale * 4),
 		/obj/item/tool/shovel/etool = round(scale * 4)
 	)
@@ -232,8 +233,8 @@
 		/obj/item/storage/pouch/bayonet = round(scale * 1),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 3),
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 5),
-		/obj/item/weapon/gun/pistol/m1911 = round(scale * 3),
-		/obj/item/weapon/gun/pistol/smart = round(scale * 3),
+		/obj/item/weapon/gun/pistol/m1911 = round(scale * 6),
+		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 5),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 10),
 		//obj/item/weapon/gun/smg/m39/elite = round(0),
@@ -316,8 +317,8 @@
 		/obj/item/ammo_magazine/pistol/ap = round(scale * 5),
 		//obj/item/ammo_magazine/pistol/incendiary = 0,
 		/obj/item/ammo_magazine/pistol/extended = round(scale * 10),
-		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 5),
-		/obj/item/ammo_magazine/pistol/smart = round(scale * 5),
+		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 12),
+		/obj/item/ammo_magazine/pistol/smart = round(scale * 12),
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 5),
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 10),
@@ -700,38 +701,40 @@
 	product_records = list()
 
 	products = list(
-		/obj/item/attachable/suppressor = round(scale * 14),
-		/obj/item/attachable/bayonet = round(scale * 14),
-		/obj/item/attachable/compensator = round(scale * 10),
-		/obj/item/attachable/extended_barrel = round(scale * 10),
 		/obj/item/attachable/heavy_barrel = round(scale * 4),
+		/obj/item/attachable/bayonet = round(scale * 14),
+		/obj/item/attachable/extended_barrel = round(scale * 10),
+		/obj/item/attachable/compensator = round(scale * 10),
+		/obj/item/attachable/suppressor = round(scale * 14),
 
-		/obj/item/attachable/scope = round(scale * 4),
-		/obj/item/attachable/scope/mini = round(scale * 4),
 		/obj/item/attachable/scope/collimator = round(scale * 2)+1,
+		/obj/item/attachable/magnetic_harness = round(scale * 10),
+		/obj/item/attachable/scope/mini = round(scale * 4),
+		/obj/item/attachable/quickfire = round(scale * 3),
+		/obj/item/attachable/scope = round(scale * 4),
 		/obj/item/attachable/flashlight = round(scale * 14),
 		/obj/item/attachable/reddot = round(scale * 14),
-		/obj/item/attachable/magnetic_harness = round(scale * 10),
-		/obj/item/attachable/quickfire = round(scale * 3),
+		/obj/item/attachable/reflex = round(scale * 6),
 
-		/obj/item/attachable/verticalgrip = round(scale * 14),
 		/obj/item/attachable/angledgrip = round(scale * 14),
-		/obj/item/attachable/lasersight = round(scale * 14),
-		/obj/item/attachable/gyro = round(scale * 4),
-		/obj/item/attachable/bipod = round(scale * 8),
+		/obj/item/attachable/bipod = round(scale * 8),		
 		/obj/item/attachable/burstfire_assembly = round(scale * 4),
+		/obj/item/attachable/gyro = round(scale * 4),
+		/obj/item/attachable/lasersight = round(scale * 14),
+		/obj/item/attachable/flashlight/grip = round(scale * 14),
+		/obj/item/attachable/verticalgrip = round(scale * 14),
 
+		/obj/item/attachable/stock/carbine = round(scale * 4),
 		/obj/item/attachable/stock/shotgun = round(scale * 4),
 		/obj/item/attachable/stock/rifle = round(scale * 4),
 		/obj/item/attachable/stock/revolver = round(scale * 4),
-		/obj/item/attachable/stock/smg = round(scale * 4),
 		/obj/item/attachable/stock/smg/collapsible = round(scale * 1) + 1,
 		/obj/item/attachable/stock/smg/brace = round(scale * 1) + 1,
-		/obj/item/attachable/stock/carbine = round(scale * 4) ,
+		/obj/item/attachable/stock/smg = round(scale * 4),
 
-		/obj/item/attachable/attached_gun/grenade = round(scale * 10),
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),
-		/obj/item/attachable/attached_gun/flamer = round(scale * 4)
+		/obj/item/attachable/attached_gun/flamer = round(scale * 4),
+		/obj/item/attachable/attached_gun/grenade = round(scale * 10)
 	)
 
 	//Rebuild the vendor's inventory to make our changes apply

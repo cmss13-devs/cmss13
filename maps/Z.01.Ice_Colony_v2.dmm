@@ -818,6 +818,8 @@
 	},
 /area/ice_colony/surface/engineering/electric)
 "acL" = (
+/obj/machinery/computer/objective,
+/obj/structure/table,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (NORTH)";
 	icon_state = "darkyellow2";
@@ -4068,6 +4070,7 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
+/obj/item/document_objective/folder,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkyellow2";
@@ -8708,6 +8711,7 @@
 	dir = 4
 	},
 /obj/structure/closet/jcloset,
+/obj/item/disk/objective,
 /turf/open/floor/plating,
 /area/ice_colony/surface/dorms)
 "arV" = (
@@ -10173,6 +10177,7 @@
 /area/ice_colony/exterior/surface/clearing/north)
 "auS" = (
 /obj/structure/table,
+/obj/item/disk/objective,
 /turf/open/floor{
 	tag = "icon-whitered (SOUTHWEST)";
 	icon_state = "whitered";
@@ -11344,6 +11349,7 @@
 /area/ice_colony/surface/disposals)
 "axe" = (
 /obj/item/trash/semki,
+/obj/item/document_objective/folder,
 /turf/open/floor/plating,
 /area/ice_colony/surface/disposals)
 "axf" = (
@@ -13836,6 +13842,7 @@
 /area/ice_colony/surface/garage/two)
 "aBZ" = (
 /obj/structure/filingcabinet,
+/obj/item/disk/objective,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkblue2";
@@ -14692,6 +14699,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/item/document_objective/folder,
 /turf/open/floor{
 	tag = "icon-darkgreen2 (NORTHEAST)";
 	icon_state = "darkgreen2";
@@ -15571,6 +15579,7 @@
 "aEY" = (
 /obj/structure/table,
 /obj/item/clothing/mask/rebreather,
+/obj/item/document_objective/folder,
 /turf/open/floor{
 	dir = 10;
 	icon_state = "darkbrown2";
@@ -17769,6 +17778,7 @@
 	},
 /area/shuttle/elevator1/ground)
 "aJv" = (
+/obj/item/document_objective/folder,
 /turf/open/floor{
 	icon_state = "vault";
 	dir = 8
@@ -21935,6 +21945,7 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/document_objective/folder,
 /turf/open/floor{
 	tag = "icon-freezerfloor";
 	icon_state = "freezerfloor"
@@ -27188,6 +27199,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/disk/objective,
 /turf/open/floor{
 	tag = "icon-darkbrown2 (NORTH)";
 	icon_state = "darkbrown2";
@@ -34817,6 +34829,7 @@
 /area/ice_colony/underground/maintenance/central)
 "bsA" = (
 /obj/machinery/computer/security,
+/obj/structure/table,
 /turf/open/floor{
 	tag = "icon-darkred2 (NORTHWEST)";
 	icon_state = "darkred2";
@@ -34919,6 +34932,7 @@
 /area/ice_colony/underground/maintenance/engineering)
 "bsK" = (
 /obj/structure/filingcabinet,
+/obj/item/disk/objective,
 /turf/open/floor{
 	tag = "icon-darkyellow2 (SOUTHWEST)";
 	icon_state = "darkyellow2";
@@ -38522,6 +38536,7 @@
 /obj/effect/landmark{
 	name = "crap_item"
 	},
+/obj/item/disk/objective,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkblue2";
@@ -38852,6 +38867,7 @@
 /area/ice_colony/underground/security/marshal)
 "bAz" = (
 /obj/structure/filingcabinet/security,
+/obj/item/document_objective/folder,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
 "bAA" = (
@@ -39039,6 +39055,7 @@
 	pixel_y = -1
 	},
 /obj/item/tool/pen/blue,
+/obj/item/document_objective/folder,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "bAU" = (
@@ -41709,6 +41726,7 @@
 /obj/structure/table/woodentable/fancy,
 /obj/item/paper_bin,
 /obj/item/tool/stamp,
+/obj/item/document_objective/folder,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "bGh" = (
@@ -51271,6 +51289,111 @@
 	icon_state = "floor7"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"cBK" = (
+/obj/structure/filingcabinet,
+/obj/item/document_objective/folder,
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv2)
+"cVM" = (
+/obj/machinery/light/small{
+	tag = "icon-bulb1 (WEST)";
+	icon_state = "bulb1";
+	dir = 8
+	},
+/obj/item/disk/objective,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
+"fsu" = (
+/obj/structure/table,
+/obj/item/disk/objective,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/underground/crew/canteen)
+"gDb" = (
+/obj/machinery/computer/objective,
+/obj/structure/table,
+/turf/open/floor{
+	tag = "icon-darkred2 (NORTH)";
+	icon_state = "darkred2";
+	dir = 1
+	},
+/area/ice_colony/underground/reception/checkpoint_north)
+"lok" = (
+/obj/item/document_objective/folder,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/engineering/electric)
+"lut" = (
+/obj/structure/table/woodentable,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	layer = 2.44
+	},
+/obj/item/disk/objective,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/ice_colony/underground/crew/library)
+"mQa" = (
+/obj/structure/closet/radiation,
+/obj/item/disk/objective,
+/turf/open/floor{
+	tag = "icon-darkpurple2 (EAST)";
+	icon_state = "darkpurple2";
+	dir = 4
+	},
+/area/ice_colony/underground/research/storage)
+"qny" = (
+/obj/structure/table/woodentable,
+/obj/item/document_objective/folder,
+/turf/open/floor/wood,
+/area/ice_colony/surface/bar/bar)
+"rbg" = (
+/obj/structure/closet/emcloset,
+/obj/item/disk/objective,
+/turf/open/floor{
+	tag = "icon-darkyellow2 (NORTH)";
+	icon_state = "darkyellow2";
+	dir = 1
+	},
+/area/ice_colony/underground/storage)
+"rvL" = (
+/obj/structure/table/reinforced,
+/obj/item/document_objective/folder,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkpurple2";
+	tag = "icon-darkpurple2 (EAST)"
+	},
+/area/ice_colony/underground/research)
+"tgY" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/under/colonist,
+/obj/item/disk/objective,
+/turf/open/floor/wood,
+/area/ice_colony/surface/dorms)
+"ttN" = (
+/obj/machinery/light,
+/obj/item/document_objective/folder,
+/turf/open/shuttle{
+	tag = "icon-floor6";
+	icon_state = "floor6"
+	},
+/area/ice_colony/surface/hangar/alpha)
+"tGb" = (
+/obj/structure/table/reinforced,
+/obj/item/disk/objective,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/underground/research)
 "uBf" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -51282,6 +51405,30 @@
 	dir = 6
 	},
 /area/ice_colony/underground/hangar)
+"uQx" = (
+/obj/structure/rack,
+/obj/item/disk/objective,
+/turf/open/floor/plating,
+/area/ice_colony/underground/maintenance/research)
+"waD" = (
+/obj/structure/table,
+/obj/item/document_objective/folder,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/excavation)
+"wbO" = (
+/obj/item/document_objective/folder,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hydroponics/north)
+"xri" = (
+/obj/item/document_objective/folder,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/requesitions)
 
 (1,1,1) = {"
 aaa
@@ -54683,7 +54830,7 @@ aaI
 aaI
 abD
 abm
-adB
+cVM
 adV
 abD
 abm
@@ -55721,7 +55868,7 @@ bEn
 bFM
 bXW
 bFM
-bFM
+rvL
 bCo
 bCk
 bBD
@@ -56550,7 +56697,7 @@ bkJ
 bwG
 bxb
 blc
-ble
+uQx
 byv
 byM
 byM
@@ -57124,7 +57271,7 @@ byM
 bBa
 bBH
 bCn
-bCM
+tGb
 bCM
 bEn
 bBE
@@ -59385,7 +59532,7 @@ bCt
 bEu
 bEu
 bFR
-bFR
+mQa
 bHh
 bBg
 bBc
@@ -60887,7 +61034,7 @@ abE
 abm
 abD
 abm
-abE
+xri
 adV
 abD
 abm
@@ -65872,7 +66019,7 @@ bEy
 bDE
 bFW
 bCu
-bHm
+rbg
 bIg
 bII
 bIg
@@ -71626,7 +71773,7 @@ alN
 amf
 amE
 anj
-ajm
+wbO
 ajm
 aoS
 aif
@@ -73742,7 +73889,7 @@ bpF
 bkr
 bqq
 brN
-bsB
+gDb
 btp
 btT
 brM
@@ -74894,7 +75041,7 @@ buL
 btm
 bEH
 bFr
-bFr
+cBK
 bGL
 bHI
 bEH
@@ -77679,7 +77826,7 @@ bkZ
 blq
 blI
 bmd
-bmI
+lut
 bnf
 bnB
 bkZ
@@ -78833,7 +78980,7 @@ byI
 byZ
 bzt
 bzO
-bAm
+fsu
 bAN
 bzt
 bBX
@@ -80392,7 +80539,7 @@ aqS
 arF
 arQ
 arQ
-asu
+tgY
 axl
 axJ
 ayv
@@ -80473,7 +80620,7 @@ bci
 bcJ
 bdn
 bec
-beL
+waD
 bfd
 bfy
 bci
@@ -87481,7 +87628,7 @@ aLh
 aLi
 aMa
 aML
-aNC
+qny
 aNC
 aOD
 aNC
@@ -94818,7 +94965,7 @@ aOf
 aOK
 aPK
 aQD
-aRz
+ttN
 aSj
 aSW
 aTA
@@ -95571,7 +95718,7 @@ abR
 abR
 acB
 acL
-adg
+lok
 adu
 adQ
 aee

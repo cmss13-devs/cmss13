@@ -11,10 +11,7 @@
 	New()
 		..()
 		sleep(2)
-		if(prob(50))
-			new /obj/item/storage/backpack/captain(src)
-		else
-			new /obj/item/storage/backpack/satchel/cap(src)
+		new /obj/item/storage/backpack/satchel(src)
 		new /obj/item/clothing/suit/captunic(src)
 		new /obj/item/clothing/suit/captunic/capjacket(src)
 		new /obj/item/clothing/head/helmet/cap(src)

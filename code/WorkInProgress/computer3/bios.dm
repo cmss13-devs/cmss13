@@ -35,17 +35,6 @@
 					user << "\red You need a free hand!"
 					return 0
 
-			if(!in_range(src,user))
-				// telekinesis check
-				if(ishuman(user) && istype(user.get_active_hand(),/obj/item/tk_grab))
-					if(program.human_controls)
-						user << "\red It's too complicated to work at a distance!"
-						return 0
-					add_fingerprint(user)
-					user.set_interaction(src)
-					return 1
-				return 0
-
 		add_fingerprint(user)
 		user.set_interaction(src)
 		return 1

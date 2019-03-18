@@ -349,6 +349,8 @@
 		list("First Response Medical Support Kit", 45, /obj/item/storage/box/kit/mini_medic, null, "black"),
 		list("M240 Pyrotechnician Support Kit", 45, /obj/item/storage/box/kit/mini_pyro, null, "black"),
 		list("L42-MK1 Sniper Kit", 45, /obj/item/storage/box/kit/mini_sniper, null, "black"),
+		list("Personal Self Defense Kit", 45, /obj/item/storage/box/kit/self_defense, "black"),
+		list("Frontline M40 Grenadier Kit", 45, /obj/item/storage/box/kit/mini_grenadier, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled grip", 15, /obj/item/attachable/angledgrip, null, "black"),

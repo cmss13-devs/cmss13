@@ -246,6 +246,7 @@
 	desc = "Worn by officers of special units."
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	icon_state = "ivan_beret"
+	item_state = "ivan_beret"
 	siemens_coefficient = 2.0
 	flags_armor_protection = HEAD
 	armor = list(melee = 90, bullet = 120, laser = 80, energy = 70, bomb = 40, bio = 30, rad = 30)

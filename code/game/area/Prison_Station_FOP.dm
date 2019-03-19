@@ -31,6 +31,7 @@
 
 /area/prison/security/monitoring
 	icon_state = "sec_prison"
+	is_resin_allowed = TRUE
 
 /area/prison/security/monitoring/lowsec/ne
 	name = "\improper Northeast Low-Security Monitoring"
@@ -59,6 +60,7 @@
 
 /area/prison/security/checkpoint
 	icon_state = "checkpoint1"
+	is_resin_allowed = TRUE
 
 /area/prison/security/checkpoint/medsec
 	name = "\improper Medium-Security Checkpoint"

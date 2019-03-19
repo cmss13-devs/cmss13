@@ -751,31 +751,31 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	var/list/individual_counts = list()
 	for(var/obj/machinery/M in processing_machines)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in processing_objects)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in machines)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in active_diseases)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in human_mob_list)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in processing_turfs)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in xeno_mob_list)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in objectives_controller.active_objectives)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in objectives_controller.inactive_objectives)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in living_misc_mobs)
-		individual_counts["[M]"]++
+		individual_counts["[M.type]"]++
 
 	for(var/area/A in active_areas)
 		if(A.master == A)
 			if(A.powerupdate)
 				for(var/obj/machinery/M in A.area_machines)
-					individual_counts["[M]"]++
+					individual_counts["[M.type]"]++
 
 	var/str = ""
 	for(var/tmp in individual_counts)

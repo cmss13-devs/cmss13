@@ -68328,7 +68328,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/lattice,
 /turf/open/space,
-/area/prison/disposal)
+/area/space)
 "ctC" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
@@ -68336,7 +68336,7 @@
 	on = 1
 	},
 /turf/open/floor/plating,
-/area/prison/disposal)
+/area/space)
 "ctD" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
@@ -68568,14 +68568,6 @@
 	icon_state = "yellowcorner"
 	},
 /area/prison/cellblock/mediumsec/east)
-"cuf" = (
-/obj/structure/disposaloutlet,
-/obj/structure/disposalpipe/up{
-	dir = 1
-	},
-/obj/structure/lattice,
-/turf/open/space,
-/area/prison/disposal)
 "cug" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -118884,7 +118876,7 @@ cry
 csd
 csO
 ctB
-cuf
+czd
 aab
 aab
 aab

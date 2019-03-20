@@ -21,7 +21,7 @@
 				return 1								// seems legit.
 
 		// Things you might plausibly want to follow
-		if((ismob(A) && A != src) || istype(A,/obj/machinery/bot) || istype(A,/obj/machinery/singularity))
+		if((ismob(A) && A != src) || istype(A,/obj/machinery/bot))
 			ManualFollow(A)
 
 		// Otherwise jump

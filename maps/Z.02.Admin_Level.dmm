@@ -2248,7 +2248,6 @@
 	},
 /area/centcom/living)
 "fa" = (
-/obj/machinery/power/am_control_unit,
 /turf/open/floor/almayer{
 	icon_state = "ai_floors";
 	tag = "icon-sterile"

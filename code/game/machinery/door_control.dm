@@ -169,13 +169,6 @@
 				spawn()
 					M.close()
 
-/obj/machinery/door_control/proc/handle_emitters(mob/user as mob)
-	for(var/obj/machinery/power/emitter/E in range(range))
-		if(E.id == src.id)
-			spawn(0)
-				E.activate(user)
-				return
-
 /obj/machinery/door_control/verb/push_button()
 	set name = "Push Button"
 	set category = "Object"
@@ -205,8 +198,6 @@
 			handle_door()
 		if(CONTROL_POD_DOORS)
 			handle_pod()
-		if(CONTROL_EMITTERS)
-			handle_emitters(user)
 		if(CONTROL_DROPSHIP)
 			handle_dropship(id)
 
@@ -283,7 +274,7 @@
 		..()
 		trigger_time = world.time + trigger_delay*600
 		processing_objects.Add(src)
-		//start_processing()  // should really be using this -spookydonut
+		start_processing()  // should really be using this -spookydonut
 
 /obj/machinery/door_control/timed_automatic/process()
 	if (!triggered && world.time >= trigger_time)
@@ -294,8 +285,6 @@
 				handle_door()
 			if(CONTROL_POD_DOORS)
 				handle_pod()
-			if(CONTROL_EMITTERS)
-				handle_emitters()
 			if(CONTROL_DROPSHIP)
 				handle_dropship(id)
 

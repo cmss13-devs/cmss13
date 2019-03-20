@@ -101,13 +101,6 @@
 					M.close()
 					return
 
-/datum/file/program/door_control/proc/handle_emitters()
-	for(var/obj/machinery/power/emitter/E in range(range))
-		if(E.id == src.id)
-			spawn(0)
-				E.activate()
-				return
-
 /datum/file/program/door_control/Topic(href, list/href_list)
 	if(!interactable() || ..(href,href_list))
 		return

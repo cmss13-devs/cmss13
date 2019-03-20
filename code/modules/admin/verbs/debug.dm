@@ -607,122 +607,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				for(var/turf/T in C)
 					T.color = "#ff0000"
 
-/client/proc/startSinglo()
-
-	set category = "Debug"
-	set name = "Start Singularity"
-	set desc = "Sets up the singularity and all machines to get power flowing through the station"
-
-	if(alert("Are you sure? This will start up the engine. Should only be used during debug!",,"Yes","No") != "Yes")
-		return
-
-	for(var/obj/machinery/power/emitter/E in machines)
-		if(E.anchored)
-			E.active = 1
-
-	for(var/obj/machinery/field_generator/F in machines)
-		if(F.anchored)
-			F.Varedit_start = 1
-	spawn(30)
-		for(var/obj/machinery/the_singularitygen/G in machines)
-			if(G.anchored)
-				var/obj/machinery/singularity/S = new /obj/machinery/singularity(get_turf(G), 50)
-				spawn(0)
-					cdel(G)
-				S.energy = 1750
-				S.current_size = 7
-				S.icon = 'icons/effects/224x224.dmi'
-				S.icon_state = "singularity_s7"
-				S.pixel_x = -96
-				S.pixel_y = -96
-				S.grav_pull = 0
-				S.dissipate = 0
-
-	for(var/obj/machinery/power/rad_collector/Rad in machines)
-		if(Rad.anchored)
-			if(!Rad.P)
-				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.gas_type = GAS_TYPE_PHORON
-				Phoron.pressure = ONE_ATMOSPHERE * 3
-				Rad.drainratio = 0
-				Rad.P = Phoron
-				Phoron.loc = Rad
-
-			if(!Rad.active)
-				Rad.toggle_power()
-
-	for(var/obj/machinery/power/smes/SMES in machines)
-		if(SMES.anchored)
-			SMES.chargemode = 1
-
-/client/proc/setup_supermatter_engine()
-	set category = "Debug"
-	set name = "Setup supermatter"
-	set desc = "Sets up the supermatter engine"
-
-	if(!check_rights(R_DEBUG|R_ADMIN))      return
-
-	var/response = alert("Are you sure? This will start up the engine. Should only be used during debug!",,"Setup Completely","Setup except coolant","No")
-
-	if(response == "No")
-		return
-
-	var/found_the_pump = 0
-	var/obj/machinery/power/supermatter/SM
-
-	for(var/obj/machinery/M in machines)
-		if(!M)
-			continue
-		if(!M.loc)
-			continue
-		if(!M.loc.loc)
-			continue
-
-		if(istype(M.loc.loc,/area/sulaco/engineering/engine))
-			if(istype(M,/obj/machinery/power/rad_collector))
-				var/obj/machinery/power/rad_collector/Rad = M
-				Rad.anchored = 1
-				Rad.connect_to_network()
-
-				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-
-				Phoron.pressure = ONE_ATMOSPHERE * 4
-				Rad.P = Phoron
-
-				Phoron.loc = Rad
-
-				if(!Rad.active)
-					Rad.toggle_power()
-				Rad.update_icon()
-
-			else if(istype(M,/obj/machinery/power/supermatter))
-				SM = M
-				spawn(50)
-					SM.power = 320
-
-			else if(istype(M,/obj/machinery/power/smes))	//This is the SMES inside the engine room.  We don't need much power.
-				var/obj/machinery/power/smes/SMES = M
-				SMES.chargemode = 1
-				SMES.chargelevel = 200000
-				SMES.output = 75000
-
-		else if(istype(M.loc.loc,/area/sulaco/engineering/smes))	//Set every SMES to charge and spit out 300,000 power between the 4 of them.
-			if(istype(M,/obj/machinery/power/smes))
-				var/obj/machinery/power/smes/SMES = M
-				SMES.chargemode = 1
-				SMES.chargelevel = 200000
-				SMES.output = 75000
-
-	if(!found_the_pump && response == "Setup Completely")
-		src << "\red Unable to locate air supply to fill up with coolant, adding some coolant around the supermatter"
-
-
-
-	log_admin("[key_name(usr)] setup the supermatter engine [response == "Setup except coolant" ? "without coolant" : ""]")
-	message_admins("\blue [key_name_admin(usr)] setup the supermatter engine  [response == "Setup except coolant" ? "without coolant": ""]", 1)
-	return
-
-
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"
@@ -742,3 +626,44 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			usr << list2text(dead_mob_list,",")
 		if("Clients")
 			usr << list2text(clients,",")
+
+
+/client/proc/cmd_debug_list_processing_items()
+	set category = "Debug"
+	set name = "List Processing Items"
+	set desc = "For scheduler debugging"
+
+	var/list/individual_counts = list()
+	for(var/obj/machinery/M in processing_machines)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in processing_objects)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in machines)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in active_diseases)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in human_mob_list)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in processing_turfs)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in xeno_mob_list)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in objectives_controller.active_objectives)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in objectives_controller.inactive_objectives)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in living_misc_mobs)
+		individual_counts["[M.type]"]++
+
+	for(var/area/A in active_areas)
+		if(A.master == A)
+			if(A.powerupdate)
+				for(var/obj/machinery/M in A.area_machines)
+					individual_counts["[M.type]"]++
+
+	var/str = ""
+	for(var/tmp in individual_counts)
+		str += "[tmp],[individual_counts[tmp]]<BR>"
+
+
+	usr << browse("<HEAD><TITLE>Ticker count</TITLE></HEAD><TT>[str]</TT>", "window=tickercount")

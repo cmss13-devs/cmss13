@@ -2,11 +2,6 @@
 	set name = "Possess Obj"
 	set category = "Object"
 
-	if(istype(O,/obj/machinery/singularity))
-		if(config.forbid_singulo_possession)
-			usr << "It is forbidden to possess singularities."
-			return
-
 	var/turf/T = get_turf(O)
 
 	if(T)

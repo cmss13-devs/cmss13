@@ -75,7 +75,7 @@
 									/obj/structure/filingcabinet,		/obj/machinery/teleport, \
 									/obj/machinery/computer,			/obj/machinery/suit_storage_unit, \
 									/obj/machinery/telecomms, \
-									/obj/machinery/smartfridge,			/obj/machinery/particle_accelerator, \
+									/obj/machinery/smartfridge, \
 									/obj/machinery/recharge_station)
 
 	//Parrots are kleptomaniacs. This variable ... stores the item a parrot is holding.

@@ -204,6 +204,10 @@
 		return
 	var/turf/prev_turf
 	var/distance = 0
+	var/distance_max = 5
+
+	if(isXenoBoiler(src))
+		distance_max = 7
 
 	turf_loop:
 		for(var/turf/T in turflist)
@@ -215,7 +219,7 @@
 
 			if(T.density || istype(T, /turf/open/space))
 				break
-			if(distance > 7)
+			if(distance > distance_max)
 				break
 
 			if(locate(/obj/structure/girder, T))

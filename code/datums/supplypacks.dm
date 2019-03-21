@@ -1618,7 +1618,7 @@ AMMO
 					/obj/item/ammo_magazine/rocket/wp,
 					/obj/item/ammo_magazine/rocket/wp
 					)
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "white phosphorus M5 RPG ammo crate"
 	group = "Ammo"

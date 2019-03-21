@@ -983,15 +983,16 @@
 	..()
 	accuracy_var_low = config.med_proj_variance
 	accurate_range = config.short_shell_range
-	damage = config.super_hit_damage
+	damage = config.ultra_hit_damage
 	max_range = config.norm_shell_range
 
 /datum/ammo/rocket/wp/drop_flame(turf/T)
+	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, pick(15, 20, 25, 30), 15, fire_spread_amount = 2)
+	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
 	landingSmoke.set_up(3, 0, T, null, 6)
@@ -1412,7 +1413,7 @@
 /datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/structure/barricade))
 		var/obj/structure/barricade/B = O
-		B.health -= rand(50, 75)
+		B.health -= rand(70, 75)
 		B.update_health(1)
 
 /*

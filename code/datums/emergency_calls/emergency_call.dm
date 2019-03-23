@@ -101,7 +101,7 @@
 	set desc = "Join an ongoing distress call response. You must be ghosted to do this."
 
 	if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team"))
-		usr << "<span class='danger'>You are jobbanned from the emergency reponse team!</span>"
+		usr << "<span class='danger'>You are jobbanned from the emergency response team!</span>"
 		return
 	if(!ticker || !ticker.mode || isnull(ticker.mode.picked_call))
 		usr << "<span class='warning'>No distress beacons are active. You will be notified if this changes.</span>"

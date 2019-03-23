@@ -867,6 +867,19 @@
 	penetration= config.hmed_armor_penetration
 	shrapnel_chance = config.med_shrapnel_chance
 
+/datum/ammo/bullet/m60
+	name = "M60 bullet"
+
+/datum/ammo/bullet/m60/New()
+	..()
+	accuracy = -config.med_hit_accuracy
+	accuracy_var_low = config.low_proj_variance
+	accuracy_var_high = config.med_proj_variance
+	accurate_range = config.short_shell_range
+	damage = config.low_hit_damage
+	penetration= config.med_armor_penetration
+	shrapnel_chance = config.med_shrapnel_chance
+
 /*
 //================================================
 					Rocket Ammo

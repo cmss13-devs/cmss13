@@ -59605,7 +59605,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door_control{
 	id = "brignorth";
-	name = "Exit Shutters";
+	name = "Brig Shutters";
 	pixel_x = -27;
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19)
@@ -64145,7 +64145,7 @@
 /area/almayer/shipboard/brig_cells)
 "pQo" = (
 /obj/machinery/door_control{
-	id = "brigentry";
+	id = "brigsouth";
 	name = "Brig Shutters";
 	pixel_y = 25;
 	req_one_access = list(2,3,12,19)
@@ -64634,7 +64634,7 @@
 /area/almayer/medical/upper_medical)
 "rjV" = (
 /obj/machinery/door_control{
-	id = "brigentry";
+	id = "brignorth";
 	name = "Brig Shutters";
 	pixel_y = -25;
 	req_one_access = list(2,3,12,19)
@@ -66766,7 +66766,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door_control{
 	id = "brigsouth";
-	name = "Exit Shutters";
+	name = "Brig Shutters";
 	pixel_x = -27;
 	pixel_y = 0;
 	req_one_access = list(2,3,12,19)

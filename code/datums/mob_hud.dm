@@ -227,7 +227,8 @@ var/datum/mob_hud/huds = list(
 			if(13 to 17) holder.icon_state = "hudhealth15"
 			if(3 to 13) holder.icon_state = "hudhealth10"
 			if(0 to 3) holder.icon_state = "hudhealth0"
-			if(-99 to 0) holder.icon_state = "hudhealth-0"
+			if(-49 to 0) holder.icon_state = "hudhealth-0"
+			if(-99 to -50) holder.icon_state = "hudhealth-50"
 			else holder.icon_state = "hudhealth-100"
 
 
@@ -276,11 +277,26 @@ var/datum/mob_hud/huds = list(
 
 		if(stat == DEAD)
 			if(revive_enabled)
-				holder.icon_state = "huddeaddefib"
-				if(!holder2_set)
-					holder2.icon_state = "huddeaddefib"
-					holder3.icon_state = "huddead"
-					holder2_set = 1
+				var/mob/dead/observer/G = get_ghost()
+				if(client || istype(G))
+					if(world.time > timeofdeath + revive_grace_period - SECONDS_60)
+						holder.icon_state = "huddeadalmost"
+						if(!holder2_set)
+							holder2.icon_state = "huddeadalmost"
+							holder3.icon_state = "huddead"
+							holder2_set = 1
+					else
+						holder.icon_state = "huddeaddefib"
+						if(!holder2_set)
+							holder2.icon_state = "huddeaddefib"
+							holder3.icon_state = "huddead"
+							holder2_set = 1
+				else
+					holder.icon_state = "huddeaddnr"
+					if(!holder2_set)
+						holder2.icon_state = "huddeaddnr"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
 			else
 				holder.icon_state = "huddead"
 				if(!holder2_set)

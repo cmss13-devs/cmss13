@@ -1,6 +1,5 @@
 
 
-
 /////////////////////////////////////////////////////////////
 
 
@@ -384,7 +383,7 @@
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
 		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
-		
+
 	)
 
 
@@ -1201,7 +1200,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	desc = "An automated weapons storage unit hooked up to the underbelly of the ship, allowing the tank crew to choose one set of free equipment for their tank. "
 	icon_state = "armory"
 	vendor_role = "Tank Crewman"
-	var/list/primary_list = list("LTB Cannon", "LTAA-AP Minigun")
+	var/list/primary_list = list("DRG-NF Flamethrower", "LTAA-AP Minigun", "AC3-E Autocannon")
 	var/list/secondary_list = list("Grenade Launcher", "M56 Cupola", "Secondary Flamer Unit", "TOW Launcher")
 	var/list/support_list = list("Artillery Module", "Integrated Weapons Sensor Array", "Overdrive Enhancer", "Smoke Launcher")
 	var/list/armor_list = list("Ballistic Armor", "Caustic Armor", "Concussive Armor", "Paladin Armor")
@@ -1211,18 +1210,16 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	listed_products = list(
 		list("PRIMARY WEAPON", 0, null, null, null),
 		list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, MARINE_CAN_BUY_EAR, "black"),
-		list("LTB Cannon", 0, /obj/effect/essentials_set/tank/ltb, MARINE_CAN_BUY_EAR, "black"),
+		list("DRG-NF Flamethrower", 0, /obj/effect/essentials_set/tank/dragonflamer, MARINE_CAN_BUY_EAR, "black"),
+		list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, MARINE_CAN_BUY_EAR, "black"),
 
 		list("SECONDARY WEAPON", 0, null, null, null),
 		list("Grenade Launcher", 0, /obj/effect/essentials_set/tank/tankgl, MARINE_CAN_BUY_GLOVES, "black"),
 		list("M56 Cupola", 0, /obj/effect/essentials_set/tank/tank56, MARINE_CAN_BUY_GLOVES, "black"),
 		list("Secondary Flamer Unit", 0, /obj/effect/essentials_set/tank/tankflamer, MARINE_CAN_BUY_GLOVES, "black"),
-		list("TOW Launcher", 0, /obj/effect/essentials_set/tank/tow, MARINE_CAN_BUY_GLOVES, "black"),
 
 		list("SUPPORT MODULE", 0, null, null, null),
-		list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/support/weapons_sensor, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Smoke Launcher", 0, /obj/item/hardpoint/support/smoke_launcher, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("ARMOR", 0, null, null, null),
@@ -1304,6 +1301,23 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/ammo_magazine/tank/ltaaap_minigun
 	)
 
+/obj/effect/essentials_set/tank/dragonflamer
+	spawned_gear_list = list(
+		/obj/item/hardpoint/primary/flamer,
+		/obj/item/ammo_magazine/tank/drgn_flamer,
+		/obj/item/ammo_magazine/tank/drgn_flamer,
+		/obj/item/ammo_magazine/tank/drgn_flamer
+	)
+
+/obj/effect/essentials_set/tank/autocannon
+	spawned_gear_list = list(
+		/obj/item/hardpoint/primary/autocannon,
+		/obj/item/ammo_magazine/tank/ace_autocannon,
+		/obj/item/ammo_magazine/tank/ace_autocannon,
+		/obj/item/ammo_magazine/tank/ace_autocannon,
+		/obj/item/ammo_magazine/tank/ace_autocannon
+	)
+
 /obj/effect/essentials_set/tank/tankflamer
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/flamer,
@@ -1314,7 +1328,6 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/effect/essentials_set/tank/tow
 	spawned_gear_list = list(
 		/obj/item/hardpoint/secondary/towlauncher,
-		/obj/item/hardpoint/secondary/grenade_launcher,
 		/obj/item/ammo_magazine/tank/towlauncher,
 		/obj/item/ammo_magazine/tank/towlauncher
 	)

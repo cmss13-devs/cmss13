@@ -91,6 +91,12 @@
 		if(self_message && M==src)
 			msg = self_message
 		M.show_message( msg, 1, blind_message, 2)
+	for(var/obj/vehicle/V in orange(max_distance))
+		for(var/mob/M in V.contents)
+			var/msg = message
+			if(self_message && M==src)
+				msg = self_message
+			M.show_message( msg, 1, blind_message, 2)
 
 // Show a message to all mobs in sight of this atom
 // Use for objects performing visible actions

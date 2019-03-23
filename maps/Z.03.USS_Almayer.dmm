@@ -8775,18 +8775,6 @@
 	dir = 8
 	},
 /area/almayer/hallways/aft_hallway)
-"aqL" = (
-/obj/structure/rack,
-/obj/item/ammo_magazine/tank/tank_slauncher,
-/obj/item/ammo_magazine/tank/tank_slauncher,
-/obj/item/ammo_magazine/tank/tank_slauncher,
-/obj/item/ammo_magazine/tank/tank_slauncher,
-/obj/item/hardpoint/support/smoke_launcher,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/vehiclehangar)
 "aqM" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -46706,19 +46694,7 @@
 	},
 /area/almayer/engineering/engine_core)
 "bRt" = (
-/obj/structure/rack,
-/obj/item/ammo_magazine/tank/ltaaap_minigun,
-/obj/item/ammo_magazine/tank/ltaaap_minigun,
-/obj/item/ammo_magazine/tank/ltaaap_minigun,
-/obj/item/hardpoint/primary/minigun,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/vehiclehangar)
-"bRu" = (
-/obj/structure/rack,
-/obj/item/hardpoint/armor/ballistic,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -46732,7 +46708,6 @@
 /area/almayer/living/cafeteria_port)
 "bRx" = (
 /obj/machinery/light,
-/obj/structure/largecrate/random/barrel/yellow,
 /obj/machinery/camera/autoname/almayer{
 	dir = 2;
 	icon_state = "camera";
@@ -64912,8 +64887,7 @@
 	},
 /area/almayer/shipboard/brig_cells)
 "rEu" = (
-/obj/structure/rack,
-/obj/item/hardpoint/treads/standard,
+/obj/machinery/marine_selector/tank,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -66847,19 +66821,6 @@
 /obj/machinery/cryopod/evacuation,
 /turf/open/shuttle/escapepod,
 /area/almayer/evacuation/pod17)
-"vAF" = (
-/obj/structure/rack,
-/obj/item/ammo_magazine/tank/tank_glauncher,
-/obj/item/ammo_magazine/tank/tank_glauncher,
-/obj/item/ammo_magazine/tank/tank_glauncher,
-/obj/item/ammo_magazine/tank/tank_glauncher,
-/obj/item/ammo_magazine/tank/tank_glauncher,
-/obj/item/hardpoint/secondary/grenade_launcher,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/vehiclehangar)
 "vAT" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -81586,7 +81547,7 @@ cKQ
 bDD
 bzA
 bJl
-bRu
+bzA
 bzv
 aaa
 aaa
@@ -81789,7 +81750,7 @@ cKQ
 bPX
 bzA
 bJl
-aqL
+bzA
 bRJ
 aKW
 aKW
@@ -82398,7 +82359,7 @@ mAS
 bzA
 bzA
 bJl
-vAF
+bzH
 bzy
 bUc
 bUc

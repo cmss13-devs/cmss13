@@ -719,6 +719,38 @@
 	burst(T,P,damage_type, 1 , 2, 0)
 	return 1
 
+/datum/ammo/bullet/tank/flak
+	name = "flak autocannon bullet"
+	icon_state 	= "autocannon"
+	damage_falloff = 0
+	flags_ammo_behavior = AMMO_BALLISTIC
+	accurate_range_min = 4
+
+/datum/ammo/bullet/tank/flak/New()
+	..()
+	accuracy = -config.low_hit_accuracy
+	max_range = config.norm_shell_range
+	scatter = config.low_scatter_value
+	damage = config.mhigh_hit_damage
+	damage_var_high = config.low_proj_variance
+	penetration= 0
+
+/datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/item/projectile/P)
+	burst(get_turf(M),P,damage_type, 2 , 2)
+	burst(get_turf(M),P,damage_type, 1 , 2 , 0)
+
+/datum/ammo/bullet/tank/flak/on_near_target(turf/T, obj/item/projectile/P)
+	burst(get_turf(T),P,damage_type, 2 , 2)
+	burst(get_turf(T),P,damage_type, 1 , 2, 0)
+	return 1
+
+/datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/item/projectile/P)
+	burst(get_turf(P),P,damage_type, 2 , 2)
+	burst(get_turf(P),P,damage_type, 1 , 2 , 0)
+
+/datum/ammo/bullet/tank/flak/on_hit_turf(turf/T,obj/item/projectile/P)
+	burst(get_turf(T),P,damage_type, 2 , 2)
+	burst(get_turf(T),P,damage_type, 1 , 2 , 0)
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"

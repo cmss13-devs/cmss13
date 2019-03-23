@@ -2556,3 +2556,17 @@ SUPPLIES
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper Janitorial supplies crate"
 	group = "Supplies"
+
+/datum/supply_packs/poster
+	name = "posters"
+	contains = list(
+					/obj/item/contraband/poster,
+					/obj/item/contraband/poster,
+					/obj/item/contraband/poster,
+					/obj/item/contraband/poster,
+					/obj/item/contraband/poster
+					)
+	cost = RO_PRICE_WORTHLESS
+	containertype = /obj/structure/closet/crate/supply
+	containername = "\improper posters crate"
+	group = "Supplies"

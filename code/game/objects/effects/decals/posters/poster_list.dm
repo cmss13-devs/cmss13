@@ -28,3 +28,28 @@
 	icon_state="poster6"
 	name = "Art?"
 	desc = "Hell, you could have painted that and been rich."
+
+/datum/poster/poster_7
+	icon_state="poster7"
+	name = "EAT"
+	desc = "This is less of a poster and more of an advertisement for those gross power bars."
+
+/datum/poster/poster_8
+	icon_state="poster8"
+	name = "Arious Motion Tracker"
+	desc = "It's an ad for a civilian brand motion tracker, less reliable than the M314, but about half of the weight."
+
+/datum/poster/poster_9
+	icon_state="poster9"
+	name = "Vintage Seegson Poster"
+	desc = "Hey, Seegson! That's a blast from the past. They went out of business when one of their stations fell into a planet after a system failure."
+
+/datum/poster/poster_10
+	icon_state="poster10"
+	name = "Koorlander Gold"
+	desc = "Koorlander Golds, lovingly machine rolled for YOUR pleasure."
+
+/datum/poster/poster_11
+	icon_state="poster11"
+	name = "YOU ALWAYS KNOW A WORKING JOE."
+	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE."

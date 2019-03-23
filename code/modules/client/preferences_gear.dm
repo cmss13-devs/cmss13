@@ -748,7 +748,7 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/tacticalmask
-	display_name = "Tactical Mask"
+	display_name = "Tactical Mask (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 	slot = WEAR_FACE
 	cost = 2
@@ -760,13 +760,13 @@ var/global/list/gear_datums = list()
 	cost = 2
 
 /datum/gear/tacticalmaskgreen
-	display_name = "Tactical Mask (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	display_name = "Tactical Mask (Red)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Black)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	display_name = "Tactical Mask (Green)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2

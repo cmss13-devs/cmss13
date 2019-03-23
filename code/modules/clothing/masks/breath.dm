@@ -64,23 +64,46 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask
-	name = "Tactical Bandana"
+	name = "tactical bandana"
 	desc = "A tactical bandana used by soldiers to conceal their face."
-	icon_state = "tacticalmask"
-	item_state = "tacticalmask"
+	icon_state = "scarf_gray"
+	item_state = "scarf_gray"
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	var/pulled = FALSE
+	var/original_state = "scarf_gray"
 
-/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
-	icon_state = "tacticalmask_tan"
-	item_state = "tacticalmask_tan"
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/verb/pull_down()
+	set name = "Pull Up/Down"
+	set category = "Object"
+
+	if(usr.stat == DEAD)
+		return
+
+	if(pulled == FALSE)
+		pulled = TRUE
+		usr << "<span class='notice'>You pull \the [src] down.</span>"
+		icon_state += "_down"
+	else
+		pulled = FALSE
+		usr << "<span class='notice'>You pull \the [src] up.</span>"
+		icon_state = original_state
+
+	update_clothing_icon(src) //Update the on-mob icon.
+
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
+	icon_state = "scarf_red"
+	item_state = "scarf_red"
+	original_state = "scarf_red"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
-	icon_state = "tacticalmask_green"
-	item_state = "tacticalmask_green"
+	icon_state = "scarf_green"
+	item_state = "scarf_green"
+	original_state = "scarf_green"
 
-/obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
-	icon_state = "tacticalmask_black"
-	item_state = "tacticalmask_black"
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/tan
+	icon_state = "scarf_tan"
+	item_state = "scarf_tan"
+	original_state = "scarf_tan"

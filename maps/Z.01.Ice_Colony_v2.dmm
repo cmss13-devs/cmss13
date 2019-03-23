@@ -39982,7 +39982,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/shield_gen,
+/obj/structure/closet/crate/solar,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkpurple2";
@@ -41572,7 +41572,7 @@
 	},
 /area/ice_colony/underground/research)
 "bFP" = (
-/obj/machinery/field_generator,
+/obj/structure/closet/crate/solar,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkpurple2";

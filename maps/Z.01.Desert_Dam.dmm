@@ -11935,14 +11935,14 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "aCM" = (
-/obj/machinery/field_generator,
+/obj/structure/closet/crate/solar,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 9
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "aCN" = (
-/obj/machinery/field_generator,
+/obj/structure/closet/crate/solar,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 1

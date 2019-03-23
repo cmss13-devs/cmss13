@@ -91,6 +91,13 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+2 = disarm-intent
 \tCtrl+3 = grab-intent
 \tCtrl+4 = harm-intent
+\tNum1 = swap target between right leg and right foot
+\tNum2 = target groin
+\tNum3 swap target between left leg and left foot
+\tNum4 swap target between right arm and right hand
+\tNum5 target chest
+\tNum6 swap target between left arm and left hand
+\tNum8 swap target between head, eyes, and mouth
 \tDEL = pull
 \tINS = cycle-intents-right
 \tHOME = drop

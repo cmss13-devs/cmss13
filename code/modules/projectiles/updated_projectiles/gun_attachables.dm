@@ -361,6 +361,18 @@ Defined in conflicts.dm of the #defines folder.
 		accuracy_mod = config.low_hit_accuracy_mult
 		scatter_mod = -config.low_scatter_value
 
+/obj/item/attachable/m60barrel
+	name = "M60 barrel"
+	icon_state = "m60barrel"
+	desc = "A heavy barrel. CANNOT BE REMOVED."
+	slot = "muzzle"
+	flags_attach_features = NOFLAGS
+
+	New()
+		..()
+		accuracy_mod = config.low_hit_accuracy_mult
+		scatter_mod = -config.low_scatter_value
+
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
 	icon_state = "smartbarrel"

@@ -599,7 +599,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "A protective vest worn by some seriously experienced mercs."
 	icon_state = "dutch_armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 70, bullet = 90, laser = 55,energy = 65, bomb = 30, bio = 10, rad = 10)
+	armor = list(melee = 70, bullet = 90, laser = 80, energy = 80, bomb = 80, bio = 10, rad = 10)
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 

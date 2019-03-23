@@ -380,6 +380,54 @@
 	recoil_unwielded = config.high_recoil_value
 
 //-------------------------------------------------------
+//DUTCH'S GEAR
+
+/obj/item/weapon/gun/rifle/m16/dutch
+	name = "\improper Dutch's M16A2"
+	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
+	icon_state = "m16"
+	item_state = "m16"
+	fire_sound = 'sound/weapons/gun_mar40.ogg'
+	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
+	type_of_casings = "cartridge"
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/burstfire_assembly,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/attached_gun/shotgun
+						)
+
+	flags_gun_features = GUN_CAN_POINTBLANK
+
+/obj/item/weapon/gun/rifle/m16/dutch/New()
+	..()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+
+/obj/item/weapon/gun/rifle/m16/set_gun_config_values()
+	fire_delay = config.mlow_fire_delay
+	burst_amount = config.high_burst_value
+	burst_delay = config.mlow_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.high_hit_accuracy_mult
+	scatter = config.min_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.max_scatter_value
+	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult
+	recoil_unwielded = config.high_recoil_value
+
+//-------------------------------------------------------
 //M41AE2 HEAVY PULSE RIFLE
 
 /obj/item/weapon/gun/rifle/lmg

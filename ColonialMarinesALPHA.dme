@@ -189,6 +189,7 @@
 #include "code\datums\emergency_calls\cryo_marines.dm"
 #include "code\datums\emergency_calls\deathsquad.dm"
 #include "code\datums\emergency_calls\deus_vult.dm"
+#include "code\datums\emergency_calls\dutch.dm"
 #include "code\datums\emergency_calls\emergency_call.dm"
 #include "code\datums\emergency_calls\mercs.dm"
 #include "code\datums\emergency_calls\pirates.dm"

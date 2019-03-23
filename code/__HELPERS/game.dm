@@ -181,8 +181,8 @@
 		else if(istype(A, /obj/item/device/radio))
 			hear += A
 
-		if(isobj(A) || ismob(A))
-			hear |= recursive_mob_check(A, hear, 3, 1, 0, 1)
+		// if(isobj(A) || ismob(A))
+		// 	hear |= recursive_mob_check(A, hear, 3, 1, 0, 1)
 
 	return hear
 

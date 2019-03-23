@@ -152,7 +152,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		user << "<span class='warning'>The target is not within your firing arc.</span>"
 		return
 
-	HP.active_effect(get_turf(A))
+	HP.active_effect(A)
 
 //Used by the gunner to swap which module they are using
 //e.g. from the minigun to the smoke launcher

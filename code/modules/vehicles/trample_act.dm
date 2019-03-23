@@ -46,25 +46,25 @@
 			var/obj/item/hardpoint/H = CA.hardpoints[slot]
 			if(!H) continue
 			H.livingmob_interact(L)
-
-	else if(istype(A, /obj) && !istype(A, /obj/vehicle))
+	else if(istype(A, /obj/structure/barricade/plasteel))
+		var/obj/structure/barricade/plasteel/cade = A
+		cade.close(cade)
+	else if(isobj(A) && !istype(A, /obj/vehicle))
 		var/obj/O = A
 		if(istype(O, /obj/structure/mortar)) //Mortars are unacidable so we need to do them here
 			var/obj/structure/mortar/M = O //Attackby code for mortars requires a mob so...
 			new /obj/item/mortar_kit (M.loc)
 			CA.take_damage_type(5, "blunt", O)
 			visible_message("<span class='danger'>[src] crushes [O]!</span>",
-			"<span class='xenodanger'>You crush [O]!</span>")
+			"<span class='danger'>You crush [O]!</span>")
 			cdel(M)
 			return
+
 		if(O.unacidable)
 			return
 		CA.take_damage_type(5, "blunt", O)
 		visible_message("<span class='danger'>[src] crushes [O]!</span>",
 		"<span class='danger'>You crush [O]!</span>")
-		if(O.contents.len) //Hopefully won't auto-delete things inside crushed stuff.
-			var/turf/L = get_turf(O)
-			for(var/atom/movable/S in O.contents) S.loc = L
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
 		cdel(O)
 		return

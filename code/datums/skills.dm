@@ -494,6 +494,7 @@ MISCELLANEOUS
 	rifles = SKILL_RIFLES_TRAINED
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
+	spec_weapons = SKILL_SPEC_TRAINED
 
 /datum/skills/tank_crew
 	name = "Tank Crew"
@@ -533,3 +534,19 @@ MISCELLANEOUS
 	smgs = SKILL_SMGS_TRAINED
 	rifles = SKILL_RIFLES_TRAINED
 	police = SKILL_POLICE_MP
+
+/datum/skills/dutch
+	name = "Dutch"
+	cqc = SKILL_CQC_MASTER
+	melee_weapons = SKILL_MELEE_SUPER
+	engineer = SKILL_ENGINEER_ENGI
+	construction = SKILL_CONSTRUCTION_PLASTEEL
+	firearms = SKILL_FIREARMS_TRAINED
+	leadership = SKILL_LEAD_EXPERT
+	medical = SKILL_MEDICAL_CHEM
+	pistols = SKILL_PISTOLS_TRAINED
+	smgs = SKILL_SMGS_TRAINED
+	rifles = SKILL_RIFLES_TRAINED
+	shotguns = SKILL_SHOTGUNS_TRAINED
+	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
+	spec_weapons = SKILL_SPEC_TRAINED

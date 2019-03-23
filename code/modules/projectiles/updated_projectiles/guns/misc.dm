@@ -99,7 +99,7 @@
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.max_burst_value
 	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.lmed_scatter_value

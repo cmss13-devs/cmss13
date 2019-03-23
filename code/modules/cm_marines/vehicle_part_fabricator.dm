@@ -80,10 +80,16 @@
 			return //Someone's trying to href exploit most likely.
 		build_part(printed, cost, usr)
 		return
+/obj/machinery/part_fabricator/attack_hand(mob/user)
+	if(!allowed(user))
+		user << "<span class='warning'>Access denied.</span>"
+		return 1
+	return . = ..()
 
 /obj/machinery/part_fabricator/dropship
 	name = "dropship part fabricator"
 	desc = "A large automated 3D printer for producing dropship parts."
+	req_access = list(ACCESS_MARINE_DROPSHIP)
 
 /obj/machinery/part_fabricator/dropship/get_point_store()
     return supply_controller.dropship_points
@@ -124,6 +130,7 @@
 /obj/machinery/part_fabricator/tank
 	name = "tank part fabricator"
 	desc = "A large automated 3D printer for producing tank parts."
+	req_access = list(ACCESS_MARINE_TANK)
 	generate_points = FALSE
 
 /obj/machinery/part_fabricator/tank/get_point_store()

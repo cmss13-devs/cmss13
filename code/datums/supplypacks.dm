@@ -953,7 +953,7 @@ ATTACHMENTS
 	group = "Attachments"
 
 /datum/supply_packs/s_attachables
-	name = "stock attachments crate (x3 each + 1 paratrooper's)"
+	name = "stock attachments crate (x3 each , 1 paratroopers)"
 	contains = list(
 					/obj/item/attachable/stock/revolver,
 					/obj/item/attachable/stock/revolver,
@@ -970,7 +970,7 @@ ATTACHMENTS
 					/obj/item/attachable/stock/carbine,
 					/obj/item/attachable/stock/carbine,
 					/obj/item/attachable/stock/carbine,
-					/obj/item/attachable/stock/smg/collapsible,
+					/obj/item/attachable/stock/smg/collapsible
 					)
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate

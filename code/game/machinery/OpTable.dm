@@ -84,6 +84,7 @@
 	if(!istype(H)) return
 	if(H == user) return
 	if(H.buckled) return
+	if(user.stat) return
 	if(H != victim)
 		user << "<span class='warning'>Lay the patient on the table first!</span>"
 		return

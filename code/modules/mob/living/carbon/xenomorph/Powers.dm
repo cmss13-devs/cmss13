@@ -960,7 +960,7 @@
 	frozen = 0
 	anchored = 0
 	if(spiked)
-		ability_speed_modifier -= 2.3
+		ability_speed_modifier -= 2.5
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 	update_canmove()
 	update_icons()

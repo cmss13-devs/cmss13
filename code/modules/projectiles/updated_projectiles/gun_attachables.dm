@@ -423,6 +423,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "flashlight_a"
 	light_mod = 7
 	slot = "rail"
+	matter = list("metal" = 50,"glass" = 20)
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 

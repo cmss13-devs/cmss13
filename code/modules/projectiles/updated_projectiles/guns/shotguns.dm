@@ -318,8 +318,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag.chamber_closed) //Has to be closed.
 		if(current_mag.current_rounds) //We want to empty out the bullets.
 			var/i
-			for(i = 1 to current_mag.current_rounds)
+			//"i" is here to watch over potential fuckery with current rounds
+			while(current_mag.current_rounds>0 && i<50) 
 				unload_shell(user)
+				i++
 		make_casing(type_of_casings)
 
 	current_mag.chamber_closed = !current_mag.chamber_closed

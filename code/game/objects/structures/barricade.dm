@@ -24,7 +24,6 @@
 	var/closed = 0
 	var/can_wire = 0
 	var/is_wired = 0
-	var/image/wired_overlay
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 
@@ -101,11 +100,6 @@
 				return 0
 		return 1
 
-	if(istype(mover, /obj/vehicle/multitile))
-		visible_message("<span class='danger'>[mover] drives over and destroys [src]!</span>")
-		destroy(0)
-		return 0
-
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
 	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
 		return 1
@@ -145,12 +139,8 @@
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] sets up [W.name] on [src].</span>",
 				"<span class='notice'>You set up [W.name] on [src].</span>")
-				if(!closed)
-					wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
-				else
-					wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
 				B.use(1)
-				overlays += wired_overlay
+				update_icon()
 				maxhealth += 50
 				health += 50
 				update_health()
@@ -167,13 +157,13 @@
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] removes the barbed wire on [src].</span>",
 				"<span class='notice'>You remove the barbed wire on [src].</span>")
-				overlays -= wired_overlay
 				maxhealth -= 50
 				health -= 50
 				update_health()
 				can_wire = 1
 				is_wired = 0
 				climbable = TRUE
+				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
@@ -216,6 +206,7 @@
 
 
 /obj/structure/barricade/update_icon()
+	overlays.Cut()
 	if(!closed)
 		if(can_change_dmg_state)
 			icon_state = "[barricade_type]_[damage_state]"
@@ -234,16 +225,11 @@
 			icon_state = "[barricade_type]_closed"
 		layer = OBJ_LAYER
 
-/obj/structure/barricade/proc/update_overlay()
-	if(!is_wired)
-		return
-
-	overlays -= wired_overlay
-	if(!closed)
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
-	else
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
-	overlays += wired_overlay
+	if(is_wired)
+		if(!closed)
+			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+		else
+			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
 
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	if(istype(I, /obj/item/weapon/zombie_claws))
@@ -727,6 +713,20 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	var/build_state = 2 //2 is fully secured, 1 is after screw, 0 is after wrench. Crowbar disassembles
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
 	var/busy = 0 //Standard busy check
+	var/linked = 0
+
+/obj/structure/barricade/plasteel/update_icon()
+	..()
+	if(linked)
+		for(var/direction in cardinal)
+			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
+				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade.linked && cade.closed == src.closed)
+					if(closed)
+						overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
+					else
+						overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_connection_[get_dir(src, cade)]")
+					continue
+
 
 /obj/structure/barricade/plasteel/handle_barrier_chance(mob/living/M)
 	if(closed)
@@ -746,7 +746,6 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			user << "<span class='info'>The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.</span>"
 
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
-
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
 			user << "You can't get near that, it's melting!"
@@ -803,7 +802,22 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = 1
 				return
-
+			if(iscrowbar(W))
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+					user << "<span class='warning'>You are not trained to modify [src]...</span>"
+					return
+				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+				if(linked)
+					user.visible_message("<span class='notice'>[user] removes the linking on [src].</span>",
+					"<span class='notice'>You remove the linking on [src].</span>")
+				else
+					user.visible_message("<span class='notice'>[user] sets up [src] for linking.</span>",
+					"<span class='notice'>You set up [src] for linking.</span>")
+				linked = !linked
+				for(var/direction in cardinal)
+					for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
+						cade.update_icon()
+				update_icon()
 		if(1) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
 			if(isscrewdriver(W))
 				if(busy || tool_cooldown > world.time)
@@ -873,19 +887,40 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	if(isXeno(user))
 		return
 
-	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	closed = !closed
-	density = !density
-
 	if(closed)
 		user.visible_message("<span class='notice'>[user] flips [src] open.</span>",
 		"<span class='notice'>You flip [src] open.</span>")
+		open(src)
 	else
 		user.visible_message("<span class='notice'>[user] flips [src] closed.</span>",
 		"<span class='notice'>You flip [src] closed.</span>")
+		close(src)
 
+/obj/structure/barricade/plasteel/proc/open(var/obj/structure/barricade/plasteel/origin)
+	if(!closed)
+		return
+	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+	closed = 0
+	density = 0
+	if(linked)
+		for(var/direction in cardinal)
+			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
+				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade != origin && cade.linked)
+					cade.open(src)
 	update_icon()
-	update_overlay()
+
+/obj/structure/barricade/plasteel/proc/close(var/obj/structure/barricade/plasteel/origin)
+	if(closed)
+		return
+	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+	closed = 1
+	density = 1
+	if(linked)
+		for(var/direction in cardinal)
+			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
+				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade != origin && cade.linked)
+					cade.close(src)
+	update_icon()
 
 /obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
@@ -954,43 +989,31 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	return 1
 
 /obj/structure/barricade/sandbags/wired/New()
-	if(!closed)
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
-	else
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
-	overlays += wired_overlay
 	maxhealth += 50
 	health += 50
 	update_health()
 	can_wire = 0
 	is_wired = 1
+	update_icon()
 	climbable = FALSE
 	. = ..()
 
 
 /obj/structure/barricade/plasteel/wired/New()
-	if(!closed)
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
-	else
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
-	overlays += wired_overlay
 	maxhealth += 50
 	health += 50
 	update_health()
 	can_wire = 0
 	is_wired = 1
 	climbable = FALSE
+	update_icon()
 	. = ..()
 /obj/structure/barricade/metal/wired/New()
-	if(!closed)
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_wire")
-	else
-		wired_overlay = image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
-	overlays += wired_overlay
 	maxhealth += 50
 	health += 50
 	update_health()
 	can_wire = 0
 	is_wired = 1
 	climbable = FALSE
+	update_icon()
 	. = ..()

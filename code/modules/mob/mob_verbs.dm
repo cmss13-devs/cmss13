@@ -186,16 +186,6 @@
 				namecounts[name] = 1
 			creatures[name] = O
 
-		if(istype(O, /obj/machinery/singularity))
-			var/name = "Singularity"
-			if (names.Find(name))
-				namecounts[name]++
-				name = "[name] ([namecounts[name]])"
-			else
-				names.Add(name)
-				namecounts[name] = 1
-			creatures[name] = O
-
 		if(istype(O, /obj/machinery/bot))
 			var/name = "BOT: [O.name]"
 			if (names.Find(name))

@@ -39,7 +39,7 @@ Currently only has the tank hardpoints
 
 //Called when you want to activate the hardpoint, such as a gun
 //This can also be used for some type of temporary buff, up to you
-/obj/item/hardpoint/proc/active_effect(var/turf/T)
+/obj/item/hardpoint/proc/active_effect(var/atom/A)
 	return
 
 /obj/item/hardpoint/proc/deactivate()
@@ -118,6 +118,20 @@ Currently only has the tank hardpoints
 	if(nx < 0) angle += 180
 	return abs(angle) <= max_angle
 
+/obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
+	if(iswelder(O) && health < initial(health))
+		var/obj/item/tool/weldingtool/WT = O
+		if(!WT.isOn())
+			user << "<span class='warning'>You need to light your [WT] first.</span>"
+			return
+		if(do_after(user, 100, needhand = FALSE, show_busy_icon = TRUE))
+			WT.remove_fuel(10, user)
+			health += 10
+			health = Clamp(health, 0, initial(health))
+			user << "<span class='warning'>You repair [src]. Integrity now at [health]%.</span>"
+		return
+	..()
+
 //Delineating between slots
 /obj/item/hardpoint/primary
 	slot = HDPT_PRIMARY
@@ -169,17 +183,17 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/primary/cannon/active_effect(var/turf/T)
+/obj/item/hardpoint/primary/cannon/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
 	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), pick('sound/weapons/tank_cannon_fire1.ogg', 'sound/weapons/tank_cannon_fire2.ogg'), 60, 1)
 	ammo.current_rounds--
 
@@ -197,6 +211,7 @@ Currently only has the tank hardpoints
 	ammo = new /obj/item/ammo_magazine/tank/ltaaap_minigun
 	max_angle = 45
 	point_cost = 600
+	max_clips = 2
 
 	//Miniguns don't use a conventional cooldown
 	//If you fire quickly enough, the cooldown decreases according to chain_delays
@@ -227,7 +242,7 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/primary/minigun/active_effect(var/turf/T)
+/obj/item/hardpoint/primary/minigun/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
 		return
@@ -245,12 +260,122 @@ Currently only has the tank hardpoints
 
 	next_use = world.time + (chained > chain_delays.len ? 0.5 : chain_delays[chained]) * owner.misc_ratios["prim_cool"]
 	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 
 	playsound(get_turf(src), S, 60)
+	ammo.current_rounds--
+
+/obj/item/hardpoint/primary/flamer
+	name = "DRG-NF Flamethrower"
+	desc = "A primary weapon for tanks that spews hot fire. Hotter than your mixtape."
+
+	health = 350
+
+	icon_state = "drgn_flamer"
+
+	disp_icon = "tank"
+	disp_icon_state = "drgn_flamer"
+
+	ammo = new /obj/item/ammo_magazine/tank/drgn_flamer
+	max_angle = 45
+	point_cost = 600
+	var/max_range = 7
+
+/obj/item/hardpoint/primary/flamer/apply_buff()
+	owner.cooldowns["primary"] = 50
+	owner.accuracies["primary"] = 0.68
+
+/obj/item/hardpoint/primary/flamer/is_ready()
+	if(world.time < next_use)
+		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		return 0
+	if(health <= 0)
+		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		return 0
+	return 1
+
+/obj/item/hardpoint/primary/flamer/active_effect(var/atom/A)
+	if(ammo.current_rounds <= 0)
+		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		return
+
+	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
+	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
+		A = get_step(get_turf(A), pick(cardinal))
+	unleash_flame(A)
+
+/obj/item/hardpoint/primary/flamer/proc/unleash_flame(atom/target)
+	set waitfor = 0
+	var/turf/spawn_tile = get_step(get_step(owner, owner.dir), owner.dir)
+	var/list/turf/turfs = getline2(spawn_tile, target)
+	var/distance = 0
+	var/turf/prev_T
+	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
+	for(var/turf/T in turfs)
+		if(T == src.loc)
+			prev_T = T
+			continue
+		if(!ammo.current_rounds) 	break
+		if(distance >= max_range) 	break
+		if(prev_T && LinkBlocked(prev_T, T))
+			break
+		ammo.current_rounds--
+		flame_turf(T)
+		distance++
+		prev_T = T
+		sleep(1)
+
+
+/obj/item/hardpoint/primary/flamer/proc/flame_turf(turf/T)
+	if(!istype(T)) return
+
+	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
+		new/obj/flamer_fire(T, 40, 50, "blue")
+
+/obj/item/hardpoint/primary/autocannon
+	name = "AC3-E Autocannon"
+	desc = "A primary autocannon for tanks that shoots explosive flak rounds"
+
+	health = 500
+
+	icon_state = "ace_autocannon"
+
+	disp_icon = "tank"
+	disp_icon_state = "ace_autocannon"
+
+	ammo = new /obj/item/ammo_magazine/tank/ace_autocannon
+	max_clips = 2
+	max_angle = 45
+	point_cost = 600
+
+/obj/item/hardpoint/primary/autocannon/apply_buff()
+	owner.cooldowns["primary"] = 10
+	owner.accuracies["primary"] = 0.98
+
+/obj/item/hardpoint/primary/autocannon/is_ready()
+	if(world.time < next_use)
+		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		return 0
+	if(health <= 0)
+		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		return 0
+	return 1
+
+/obj/item/hardpoint/primary/autocannon/active_effect(var/atom/A)
+	if(ammo.current_rounds <= 0)
+		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		return
+
+	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
+	if(!prob(owner.accuracies["primary"] * 100 * owner.misc_ratios["prim_acc"]))
+		A = get_step(get_turf(A), pick(cardinal))
+	var/obj/item/projectile/P = new
+	P.generate_bullet(new ammo.default_ammo)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	playsound(get_turf(src), 'sound/weapons/tank_autocannon_fire.ogg', 60, 1)
 	ammo.current_rounds--
 
 ////////////////////
@@ -289,17 +414,17 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/secondary/flamer/active_effect(var/turf/T)
+/obj/item/hardpoint/secondary/flamer/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), 'sound/weapons/tank_flamethrower.ogg', 60, 1)
 	ammo.current_rounds--
 
@@ -332,17 +457,17 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/secondary/towlauncher/active_effect(var/turf/T)
+/obj/item/hardpoint/secondary/towlauncher/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	ammo.current_rounds--
 
 /obj/item/hardpoint/secondary/m56cupola
@@ -374,17 +499,17 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/secondary/m56cupola/active_effect(var/turf/T)
+/obj/item/hardpoint/secondary/m56cupola/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
 	playsound(get_turf(src), pick(list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')), 60, 1)
 	ammo.current_rounds--
 
@@ -417,17 +542,17 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/secondary/grenade_launcher/active_effect(var/turf/T)
+/obj/item/hardpoint/secondary/grenade_launcher/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
 	if(!prob(owner.accuracies["secondary"] * 100 * owner.misc_ratios["secd_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), 'sound/weapons/gun_m92_attachable.ogg', 60, 1)
 	ammo.current_rounds--
 
@@ -468,7 +593,7 @@ Currently only has the tank hardpoints
 		return 0
 	return 1
 
-/obj/item/hardpoint/support/smoke_launcher/active_effect(var/turf/T)
+/obj/item/hardpoint/support/smoke_launcher/active_effect(var/atom/A)
 
 	if(ammo.current_rounds <= 0)
 		usr << "<span class='warning'>This module does not have any ammo.</span>"
@@ -476,10 +601,10 @@ Currently only has the tank hardpoints
 
 	next_use = world.time + owner.cooldowns["support"] * owner.misc_ratios["supp_cool"]
 	if(!prob(owner.accuracies["support"] * 100 * owner.misc_ratios["supp_acc"]))
-		T = get_step(T, pick(cardinal))
+		A = get_step(get_turf(A), pick(cardinal))
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
-	P.fire_at(T, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
 	playsound(get_turf(src), 'sound/weapons/tank_smokelauncher_fire.ogg', 60, 1)
 	ammo.current_rounds--
 
@@ -563,7 +688,7 @@ Currently only has the tank hardpoints
 	disp_icon_state = "artillerymod"
 	point_cost = 600
 
-/obj/item/hardpoint/support/artillery_module/active_effect(var/turf/T)
+/obj/item/hardpoint/support/artillery_module/active_effect(var/atom/A)
 	var/obj/vehicle/multitile/root/cm_armored/tank/C = owner
 	if(!C.gunner) return
 	var/mob/M = C.gunner
@@ -787,7 +912,7 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 
 
 /obj/item/ammo_magazine/tank/flamer
-	name = "Flamer Magazine"
+	name = "Tank Mini-Flamer Magazine"
 	desc = "A secondary armament flamethrower magazine"
 	caliber = "UT-Napthal Fuel" //correlates to flamer mags
 	icon_state = "flametank_large"
@@ -797,6 +922,38 @@ obj/item/hardpoint/armor/ballistic/remove_buff()
 	gun_type = /obj/item/hardpoint/secondary/flamer
 	point_cost = 100
 
+/obj/item/ammo_magazine/tank/drgn_flamer
+	name = "Tank Flamer Magazine"
+	desc = "A primary armament flamethrower magazine"
+	caliber = "Napalm B" //correlates to flamer mags
+	icon_state = "drgn_flametank"
+	w_class = 12
+	max_rounds = 100
+	gun_type = /obj/item/hardpoint/primary/flamer
+	point_cost = 200
+
+/obj/item/ammo_magazine/tank/ace_autocannon/update_icon()
+	if(current_rounds > 0)
+		icon_state = "drgn_flametank"
+	else
+		icon_state = "drgn_flametank_empty"
+
+/obj/item/ammo_magazine/tank/ace_autocannon
+	name = "Tank Autocannon Magazine"
+	desc = "A primary armament autocannon magazine"
+	caliber = "20mm"
+	icon_state = "ace_autocannon"
+	w_class = 12
+	default_ammo = /datum/ammo/bullet/tank/flak
+	max_rounds = 40
+	gun_type = /obj/item/hardpoint/primary/autocannon
+	point_cost = 200
+
+/obj/item/ammo_magazine/tank/ace_autocannon/update_icon()
+	if(current_rounds > 0)
+		icon_state = "ace_autocannon"
+	else
+		icon_state = "ace_autocannon_empty"
 
 /obj/item/ammo_magazine/tank/towlauncher
 	name = "TOW Launcher Magazine"

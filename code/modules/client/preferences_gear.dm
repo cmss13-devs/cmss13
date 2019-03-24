@@ -72,25 +72,25 @@ var/global/list/gear_datums = list()
 	slot = WEAR_HEAD
 
 /datum/gear/booniehat
-	display_name = "USCM Boonie Hat"
+	display_name = "USCM Boonie Hat (Olive)"
 	path = /obj/item/clothing/head/booniehat
 	cost = 3
 	slot = WEAR_HEAD
 
-	/datum/gear/booniehattan
-	display_name = "USCM Boonie Hat"
+/datum/gear/booniehattan
+	display_name = "USCM Boonie Hat (Tan)"
 	path = /obj/item/clothing/head/booniehat/tan
 	cost = 3
 	slot = WEAR_HEAD
 /*
 /datum/gear/gbandana
-	display_name = "bandana, green"
+	display_name = "Bandana, (Green)"
 	path = /obj/item/clothing/head/greenbandana
 	cost = 2
 	slot = WEAR_HEAD
 
 /datum/gear/bandana
-	display_name = "bandana, pirate-red"
+	display_name = "Bandana, (Red)"
 	path = /obj/item/clothing/head/bandana
 	cost = 2
 	slot = WEAR_HEAD
@@ -748,7 +748,7 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/tacticalmask
-	display_name = "Tactical Mask"
+	display_name = "Tactical Mask (Gray)"
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask
 	slot = WEAR_FACE
 	cost = 2
@@ -760,13 +760,13 @@ var/global/list/gear_datums = list()
 	cost = 2
 
 /datum/gear/tacticalmaskgreen
-	display_name = "Tactical Mask (Green)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
+	display_name = "Tactical Mask (Red)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	slot = WEAR_FACE
 	cost = 2
 
 /datum/gear/tacticalmaskblack
-	display_name = "Tactical Mask (Black)"
-	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black
+	display_name = "Tactical Mask (Green)"
+	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2

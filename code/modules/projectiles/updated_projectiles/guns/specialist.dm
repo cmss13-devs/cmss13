@@ -682,6 +682,8 @@
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_ROCKET)
 			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
 			return 0
+		if(src.current_mag.current_rounds > 0)
+			src.make_rocket(user, 0, 1)
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
 //	if(active_attachable) active_attachable = null
@@ -695,6 +697,16 @@
 	cdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
+
+/obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
+	var/obj/item/ammo_magazine/rocket/r  = new
+	r.default_ammo = src.ammo.type
+	if (empty == 1)
+		r.current_rounds = 0
+	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
+		r.forceMove(get_turf(src)) //Drop it on the ground.
+	else user.put_in_hands(r)
+	r.update_icon()
 
 /obj/item/weapon/gun/launcher/rocket/reload(mob/user, obj/item/ammo_magazine/rocket)
 	if(flags_gun_features & GUN_BURST_FIRING) return
@@ -714,10 +726,8 @@
 	if(user)
 		user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
 		if(do_after(user,current_mag.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY))
-			user.drop_inv_item_on_ground(rocket)
 			replace_ammo(user,rocket)
 			current_mag.current_rounds = current_mag.max_rounds
-			rocket.current_rounds = 0
 			user << "<span class='notice'>You load [rocket] into [src].</span>"
 			if(reload_sound) playsound(user, reload_sound, 25, 1)
 			else playsound(user,'sound/machines/click.ogg', 25, 1)
@@ -725,17 +735,24 @@
 			user << "<span class='warning'>Your reload was interrupted!</span>"
 			return
 	else
-		rocket.loc = get_turf(src)
 		replace_ammo(,rocket)
 		current_mag.current_rounds = current_mag.max_rounds
-		rocket.current_rounds = 0
-	rocket.update_icon()
+	cdel(rocket)
 	return 1
 
-/obj/item/weapon/gun/launcher/rocket/unload(mob/user)
+/obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
 	if(user)
-		if(!current_mag.current_rounds) user << "<span class='warning'>[src] is already empty!</span>"
-		else 							user << "<span class='warning'>It would be too much trouble to unload [src] now. Should have thought ahead!</span>"
+		if(current_mag.current_rounds == 0)
+			user << "<span class='warning'>[src] is already empty!</span>"
+			return
+		user << "<span class='notice'>You begin unloading [src]. Hold still...</span>"
+		if(do_after(user,current_mag.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY))
+			playsound(user, unload_sound, 25, 1)
+			user.visible_message("<span class='notice'>[user] unloads [ammo] from [src].</span>",
+			"<span class='notice'>You unload [ammo] from [src].</span>")
+			src.make_rocket(user, drop_override, 0)
+			current_mag.current_rounds = 0
+			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
@@ -743,6 +760,7 @@
 	var/backblast_loc = get_turf(get_step(user.loc, turn(user.dir, 180)))
 	smoke.set_up(1, 0, backblast_loc, turn(user.dir, 180))
 	smoke.start()
+	playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 100, 1, 7)
 	for(var/mob/living/carbon/C in backblast_loc)
 		if(!C.lying) //Have to be standing up to get the fun stuff
 			C.adjustBruteLoss(15) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life

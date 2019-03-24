@@ -13428,7 +13428,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aCz" = (
-/obj/machinery/power/emitter{
+/obj/machinery/power/solar{
 	anchored = 1;
 	dir = 1;
 	icon_state = "emitter";
@@ -34478,7 +34478,7 @@
 	},
 /area/bigredv2/outside/sw)
 "buD" = (
-/obj/machinery/power/turbinemotor,
+/obj/machinery/power/solar,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "buE" = (
@@ -34903,7 +34903,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bvG" = (
-/obj/machinery/power/turbinemotor,
+/obj/machinery/power/solar,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)

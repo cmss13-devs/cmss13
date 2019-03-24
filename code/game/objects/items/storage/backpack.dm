@@ -411,6 +411,7 @@
 	var/max_fuel = 260
 	max_storage_space = 15
 	storage_slots = null
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/backpack/marine/engineerpack/New()
 	var/datum/reagents/R = new/datum/reagents(max_fuel) //Lotsa refills

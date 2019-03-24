@@ -148,10 +148,7 @@ Buildable meters
 			src.color = PIPE_COLOR_RED
 		else if(istype(make_from, /obj/machinery/atmospherics/pipe/cap))
 			src.pipe_type = PIPE_CAP
-		else if(istype(make_from, /obj/machinery/atmospherics/omni/mixer))
-			src.pipe_type = PIPE_OMNI_MIXER
-		else if(istype(make_from, /obj/machinery/atmospherics/omni/filter))
-			src.pipe_type = PIPE_OMNI_FILTER
+
 	else
 		src.pipe_type = pipe_type
 		src.dir = dir
@@ -962,19 +959,6 @@ Buildable meters
 			if (C.node)
 				C.node.initialize()
 				C.node.build_network()
-
-		if(PIPE_OMNI_MIXER)
-			var/obj/machinery/atmospherics/omni/mixer/P = new(loc)
-
-			P.level = pipelevel
-			P.initialize()
-			P.build_network()
-		if(PIPE_OMNI_FILTER)
-			var/obj/machinery/atmospherics/omni/filter/P = new(loc)
-
-			P.level = pipelevel
-			P.initialize()
-			P.build_network()
 
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message( \

@@ -1,6 +1,5 @@
 
 
-
 //-------------------------------------------------------
 /obj/item/weapon/gun/flare
 	name = "flare gun"
@@ -99,7 +98,7 @@
 	fire_delay = config.mlow_fire_delay
 	burst_amount = config.max_burst_value
 	burst_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.lmed_scatter_value
@@ -110,6 +109,46 @@
 /obj/item/weapon/gun/minigun/toggle_burst()
 	usr << "<span class='warning'>This weapon can only fire in bursts!</span>"
 
+//M60
+/obj/item/weapon/gun/m60
+	name = "\improper M60 General Purpose Machine Gun"
+	desc = "The M60. The Pig. The Action Hero's wet dream."
+	icon_state = "m60"
+	item_state = "m60"
+	origin_tech = "combat=7;materials=5"
+	fire_sound = 'sound/weapons/gun_m60.ogg'
+	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
+	current_mag = /obj/item/ammo_magazine/m60
+	type_of_casings = "cartridge"
+	w_class = 4
+	force = 20
+	flags_gun_features = GUN_BURST_ON|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/m60/New(loc, spawn_empty)
+	..()
+	attachable_allowed = list(/obj/item/attachable/m60barrel)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 16)
+	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+	var/obj/item/attachable/m60barrel/Q = new(src)
+	Q.Attach(src)
+	update_attachables()
+
+/obj/item/weapon/gun/m60/set_gun_config_values()
+	fire_delay = config.low_fire_delay
+	burst_amount = 5
+	burst_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult
+	scatter = config.min_scatter_value
+	burst_scatter_mult = config.low_scatter_value
+	scatter_unwielded = config.min_scatter_value
+	damage_mult = config.base_hit_damage_mult
+	recoil = config.min_recoil_value
+	empty_sound = 'sound/weapons/gun_empty.ogg'
+
+/obj/item/weapon/gun/m60/toggle_burst()
+	usr << "<span class='warning'>This weapon can only fire in bursts!</span>"
+	
 //Spike launcher
 
 /obj/item/weapon/gun/launcher/spike

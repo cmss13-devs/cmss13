@@ -134,8 +134,9 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
+	var/should_neckgrab = isHumanStrict(L)
 
-	if(!isXeno(AM))
+	if(!isXeno(L))
 		if (used_lunge && !lunge)
 			src << "<span class='xenowarning'>You must gather your strength before neckgrabbing again.</span>"
 			return FALSE
@@ -143,13 +144,11 @@
 		if (!check_plasma(10))
 			return FALSE
 
-	. = ..(AM, lunge, TRUE) //no_msg = true because we don't want to show the defaul pull message
+	. = ..(L, lunge, should_neckgrab) //no_msg = true because we don't want to show the defaul pull message
 
 	if(.) //successful pull
-		if(!isXeno(AM))
+		if(should_neckgrab)
 			use_plasma(10)
-
-		if(!isXeno(L) && !isYautja(L))
 			round_statistics.warrior_grabs++
 			used_lunge = 1
 			grab_level = GRAB_NECK

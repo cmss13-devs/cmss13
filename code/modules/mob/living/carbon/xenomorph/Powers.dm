@@ -599,7 +599,7 @@
 	if (!check_plasma(10))
 		return
 
-	if(!ishuman(A))
+	if(!isHumanStrict(A) && !ismonkey(A))
 		used_lunge = 1
 		spawn(15)
 			used_lunge = 0

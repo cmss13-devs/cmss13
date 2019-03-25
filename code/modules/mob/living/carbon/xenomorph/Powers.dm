@@ -703,7 +703,7 @@
 
 // Warrior Agility
 /mob/living/carbon/Xenomorph/proc/toggle_agility()
-	if (!check_state())
+	if (!check_state(1))
 		return
 
 	if (used_toggle_agility)

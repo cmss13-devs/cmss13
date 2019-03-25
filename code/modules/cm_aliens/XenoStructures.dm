@@ -184,7 +184,7 @@
 /obj/effect/alien/resin/trap/flamer_fire_act()
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			trigger_trap(TRUE)
+			burn_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trigger_trap(TRUE)
 	..()
@@ -192,7 +192,7 @@
 /obj/effect/alien/resin/trap/fire_act()
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			trigger_trap(TRUE)
+			burn_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trigger_trap(TRUE)
 	..()
@@ -241,6 +241,14 @@
 		if(RESIN_TRAP_GAS)
 			trap_type = RESIN_TRAP_GAS
 			icon_state = "trapgas"
+
+/obj/effect/alien/resin/trap/proc/burn_trap()
+	var/area/A = get_area(src)
+	facehugger_die()
+	clear_tripwires()
+	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+		if((istype(X, /mob/living/carbon/Xenomorph)) && (X.hivenumber == hivenumber))
+			X << "<span class='xenoannounce'>You sense one of your Hive's hugger traps at [A.name] has been burnt!</span>"
 
 /obj/effect/alien/resin/trap/proc/trigger_trap(var/destroyed = FALSE)
 	set waitfor = 0

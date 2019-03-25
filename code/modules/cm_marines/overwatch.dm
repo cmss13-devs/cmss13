@@ -909,6 +909,11 @@
 		src << "<span class='notice'><br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br></span>"
 		return
 	if(choice == "cancel") return
+
+	if(command_aura_cooldown > 0)
+		src << "<span class='warning'>You have recently given an order. Calm down.</span>"
+		return
+
 	command_aura = choice
 	command_aura_cooldown = 45 //45 ticks
 	command_aura_tick = 10 //10 ticks

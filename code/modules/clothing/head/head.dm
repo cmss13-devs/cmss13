@@ -328,7 +328,10 @@
 /obj/item/clothing/head/booniehat/tan
 	icon_state = "booniehattan"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/booniehat/New()
+	if(flags_atom & NO_SNOW_TYPE)
+		return
 	select_gamemode_skin(type)
 	..()

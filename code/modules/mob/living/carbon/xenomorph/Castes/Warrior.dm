@@ -136,6 +136,10 @@
 	var/mob/living/L = AM
 	var/should_neckgrab = isHumanStrict(L)
 
+	if(L.pulledby && L) //override pull of other mobs
+		visible_message("<span class='warning'>[src] has broken [L.pulledby]'s grip on [L]!</span>", null, null, 5)
+		L.pulledby.stop_pulling()
+
 	if(!isXeno(L))
 		if (used_lunge && !lunge)
 			src << "<span class='xenowarning'>You must gather your strength before neckgrabbing again.</span>"
@@ -154,6 +158,7 @@
 			grab_level = GRAB_NECK
 			L.drop_held_items()
 			L.Stun(5)
+			L.pulledby = src
 			visible_message("<span class='xenowarning'>\The [src] grabs [L] by the throat!</span>", \
 			"<span class='xenowarning'>You grab [L] by the throat!</span>")
 

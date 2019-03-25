@@ -55,7 +55,7 @@
 				var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
 				if(L)
 					L.chest_burst(affected_mob)
-				processing_objects.Remove(src)
+				Dispose()
 				r_FAL
 		else
 			var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob

@@ -94,10 +94,15 @@
 	return 1
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/Xenomorph/proc/check_state()
-	if(is_mob_incapacitated() || lying || buckled)
-		src << "<span class='warning'>You cannot do this in your current state.</span>"
-		return 0
+/mob/living/carbon/Xenomorph/proc/check_state(var/whilelying = 0)
+	if(!whilelying)
+		if(is_mob_incapacitated() || lying || buckled)
+			src << "<span class='warning'>You cannot do this in your current state.</span>"
+			return 0
+	else
+		if(is_mob_incapacitated() || buckled)
+			src << "<span class='warning'>You cannot do this in your current state.</span>"
+			return 0
 	return 1
 
 //Checks your plasma levels and gives a handy message.

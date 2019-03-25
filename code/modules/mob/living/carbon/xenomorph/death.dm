@@ -34,9 +34,19 @@
 			if(hive_datum[hivenumber].stored_larva)
 				hive_datum[hivenumber].stored_larva = round(hive_datum[hivenumber].stored_larva * ((upgrade+1)/6.0)) // 83/66/50/33 for ancient/elite emp/elite queen/queen
 				var/turf/larva_spawn
+				var/list/players_with_xeno_pref = get_alien_candidates()
 				while(hive_datum[hivenumber].stored_larva > 0) // stil some left
 					larva_spawn = pick(xeno_spawn)
-					new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
+					if(players_with_xeno_pref && players_with_xeno_pref.len)	
+						var/client/xeno_candidate = pick(players_with_xeno_pref)
+						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
+						if(!ticker.mode.transfer_xeno(xeno_candidate.key, new_xeno))
+							cdel(new_xeno)
+							return
+						new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
+						"<span class='xenodanger'>You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence...</span>")
+						new_xeno << sound('sound/effects/xeno_newlarva.ogg')
+
 					hive_datum[hivenumber].stored_larva--
 
 			if(hive.living_xeno_queen == src)

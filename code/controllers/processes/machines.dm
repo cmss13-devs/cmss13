@@ -3,7 +3,8 @@ datum/controller/process/machines
 
 datum/controller/process/machines/setup()
 	name = "Machines"
-	schedule_interval = 100
+	schedule_interval = 35
+	own_data = processing_machines
 
 datum/controller/process/machines/doWork()
 	process_machines_process()
@@ -12,7 +13,7 @@ datum/controller/process/machines/doWork()
 
 datum/controller/process/machines/proc/process_machines_process()
 	for(var/obj/machinery/M in processing_machines)
-		if(istype(M) && M.process())// != PROCESS_KILL) //Doesn't actually have a process, just remove it.
+		if(istype(M) && M.processable && M.process())// != PROCESS_KILL) //Doesn't actually have a process, just remove it.
 			individual_ticks++
 			continue
 
@@ -27,7 +28,7 @@ datum/controller/process/machines/proc/process_machines_power()
 				A.powerupdate -= 1
 				A.clear_usage()
 				for(var/obj/machinery/M in A.area_machines) // should take it to O(n^2) and hopefully less expensive.
-					if(M)
+					if(M && M.use_power)
 						//check if the area has power for M's channel
 						//this will keep stat updated in case the machine is moved from one area to another.
 						M.power_change(A)	//we've already made sure A is a master area, above.

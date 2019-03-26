@@ -2,10 +2,16 @@
 /var/global/next_map_gen = 0
 
 datum/controller/process/mapview
+	var/list/map_machines
 
 datum/controller/process/mapview/setup()
 	name = "Mapview"
 	schedule_interval = 20 //1 seconds
+	map_machines = list()
+	for(var/obj/machinery/C in machines)
+		if(istype(C, /obj/machinery/computer/communications) || istype(C, /obj/machinery/prop/almayer/CICmap) || istype(C, /obj/machinery/computer/overwatch))
+			map_machines += C
+
 	generate_marine_mapview()
 	generate_xeno_mapview()
 
@@ -26,25 +32,23 @@ datum/controller/process/mapview/doWork()
 		//if(current_squad_overlay == 5)
 		//world << "overlay_marine_mapview(all squads)"
 		var/update = 0
-		for(var/obj/machinery/computer/communications/C in machines)
-			if(C.current_mapviewer)
+		for(var/obj/machinery/MM in map_machines)
+			var/obj/machinery/computer/communications/C = MM
+			if(istype(C) && C.current_mapviewer)
 				overlay_marine_mapview()
 				update = 1
 				C.update_mapview()
 				individual_ticks++
 
-		for(var/obj/machinery/prop/almayer/CICmap/M in machines)
-			if(M.current_viewers.len)
+			var/obj/machinery/prop/almayer/CICmap/M = MM
+			if(istype(M) && M.current_viewers.len)
 				if(!update)
 					overlay_marine_mapview()
 				M.update_mapview()
 				individual_ticks++
 
-		for(var/obj/machinery/computer/overwatch/O in machines)
-			if(O.current_squad && O.current_mapviewer) // only actually update if someone is using it
-				//world << "overlay_marine_mapview([O.current_squad.name])"
+			var/obj/machinery/computer/overwatch/O = MM
+			if(istype(O) && O.current_squad && O.current_mapviewer)
 				overlay_marine_mapview(O.current_squad)
 				O.update_mapview()
 				individual_ticks++
-	//current_squad_overlay++
-	//if(current_squad_overlay > 5) current_squad_overlay = 1

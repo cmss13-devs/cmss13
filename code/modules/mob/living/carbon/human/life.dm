@@ -24,7 +24,7 @@
 	//update the current life tick, can be used to e.g. only do something every 4 ticks
 	life_tick++
 
-	voice = GetVoice()
+	voice = real_name
 	if(stat == DEAD && species.name == "Zombie" && regenZ)
 		handle_chemicals_in_body()
 		return
@@ -34,25 +34,20 @@
 			if(life_tick % 2 == 0 || failed_last_breath || (health < config.health_threshold_crit)) //First, resolve location and get a breath
 				breathe() //Only try to take a breath every 4 ticks, unless suffocating
 
-			else //Still give containing object the chance to interact
-				if(istype(loc, /obj/))
-					var/obj/location_as_object = loc
-					location_as_object.handle_internal_lifeform(src)
-
 			// Moved this from /mob/living/carbon/Life()
 			// Increase germ_level regularly
-			if(germ_level < GERM_LEVEL_AMBIENT && prob(30))	//if you're just standing there, you shouldn't get more germs beyond an ambient level
-				germ_level++
+			if(germ_level < GERM_LEVEL_AMBIENT)	//if you're just standing there, you shouldn't get more germs beyond an ambient level
+				germ_level += 0.3
 
 			//Mutations and radiation
-			handle_mutations_and_radiation()
+			if(radiation>0) //moved check to here because fuck byond call optimization
+				handle_mutations_and_radiation()
 
 			//Chemicals in the body
 			handle_chemicals_in_body()
 
-			//Disabilities
-			handle_disabilities()
-
+			//Disabilities ARE NOT HANDLED, NOT NEEDED
+			
 			//Organs and blood
 			handle_organs()
 			handle_blood()

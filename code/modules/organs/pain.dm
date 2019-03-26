@@ -97,6 +97,10 @@ mob/living/carbon/human/proc/handle_pain()
 		if(dam > maxdam && (maxdam == 0 || prob(70)) )
 			damaged_organ = E
 			maxdam = dam
+	
+	if(maxdam == 0)
+		return
+
 	if(damaged_organ)
 		pain(damaged_organ.display_name, maxdam, 0)
 

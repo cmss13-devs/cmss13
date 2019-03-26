@@ -3,6 +3,7 @@ datum/controller/process/diseases
 datum/controller/process/diseases/setup()
 	name = "Diseases"
 	schedule_interval = 23 //2.3 seconds
+	own_data = active_diseases
 
 datum/controller/process/diseases/doWork()
 

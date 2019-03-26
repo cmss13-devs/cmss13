@@ -3,6 +3,7 @@ datum/controller/process/humanlife
 datum/controller/process/humanlife/setup()
 	name = "Human Life"
 	schedule_interval = 20 //2 seconds
+	own_data = human_mob_list
 
 datum/controller/process/humanlife/doWork()
 

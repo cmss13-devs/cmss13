@@ -6,6 +6,9 @@ var/global/datum/process_ui/proc_scheduler = new()
 	if (!href_list["action"])
 		return
 
+	if(!check_rights(R_DEBUG))
+		return
+
 	switch (href_list["action"])
 		if ("kill")
 			var/kill = href_list["target"]
@@ -21,6 +24,10 @@ var/global/datum/process_ui/proc_scheduler = new()
 			display_ui()
 		if ("refresh")
 			display_ui()
+		if ("view_var")
+			var/vv = href_list["target"]
+			if(processScheduler.hasProcess(vv))			
+				usr.client.debug_variables(processScheduler.nameToProcessMap[vv])
 
 /datum/process_ui/proc/process_table()
 	var/dat = "<table class=\"table table-striped\"><thead><tr><td>Name</td><td>Avg(s)</td><td>Last(s)</td><td>Highest(s)</td><td>Total(s)</td><td>Tickcount</td><td>Individual tickcount</td><td>Tickrate</td><td>State</td><td>Action</td></tr></thead><tbody>"
@@ -41,6 +48,7 @@ var/global/datum/process_ui/proc_scheduler = new()
 			dat += "<a href='?src=\ref[src];action=enable;target=[data["name"]]'>\[Enable]</a>"
 		else
 			dat += "<a href='?src=\ref[src];action=disable;target=[data["name"]]'>\[Disable]</a>"
+		dat += "<a href='?src=\ref[src];action=view_var;target=[data["name"]]'>\[VV]</a>"
 		dat += "</td>"
 		dat += "</tr>"
 

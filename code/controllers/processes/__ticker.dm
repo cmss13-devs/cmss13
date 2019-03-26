@@ -1,3 +1,4 @@
+datum/controller/process/var/own_data
 datum/controller/process/ticker
 
 datum/controller/process/ticker/setup()
@@ -6,6 +7,7 @@ datum/controller/process/ticker/setup()
 
 	if(!ticker)
 		ticker = new /datum/controller/gameticker()
+		own_data = ticker
 
 	spawn(1)
 		ticker.pregame()

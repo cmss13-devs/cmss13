@@ -3,6 +3,7 @@ datum/controller/process/nano
 datum/controller/process/nano/setup()
 	name = "Nano UI"
 	schedule_interval = 60 //6 seconds
+	own_data = nanomanager
 
 datum/controller/process/nano/doWork()
 

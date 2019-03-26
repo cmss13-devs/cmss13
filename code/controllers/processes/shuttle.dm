@@ -6,6 +6,7 @@ datum/controller/process/shuttle/setup()
 
 	if(!shuttle_controller)
 		shuttle_controller = new /datum/shuttle_controller()
+	own_data = shuttle_controller
 
 datum/controller/process/shuttle/doWork()
 	shuttle_controller.process()

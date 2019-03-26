@@ -199,8 +199,8 @@ var/list/ai_verbs_default = list(
 		return
 	loc = powered_ai.loc
 	use_power(1) // Just incase we need to wake up the power system.
-	start_processing()
-	..()
+	//start_processing()
+	//..()
 
 /obj/machinery/ai_powersupply/process()
 	if(!powered_ai || powered_ai.stat & DEAD)

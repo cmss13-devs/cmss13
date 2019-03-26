@@ -166,14 +166,6 @@
 	return ..()
 
 /mob/living/carbon/human/GetVoice()
-	if(istype(src.wear_mask, /obj/item/clothing/mask/gas/voice))
-		var/obj/item/clothing/mask/gas/voice/V = src.wear_mask
-		if(V.vchange)
-			return V.voice
-		else
-			return name
-	if(GetSpecialVoice())
-		return GetSpecialVoice()
 	return real_name
 
 /mob/living/carbon/human/proc/SetSpecialVoice(var/new_voice)

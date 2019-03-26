@@ -3,6 +3,7 @@ datum/controller/process/mobs
 datum/controller/process/mobs/setup()
 	name = "Other Mobs"
 	schedule_interval = 20 //2 seconds
+	own_data = living_misc_mobs
 
 datum/controller/process/mobs/doWork()
 

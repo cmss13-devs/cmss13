@@ -65,12 +65,17 @@
 	return parent.return_network(reference)
 
 /obj/machinery/atmospherics/pipe/Dispose()
-	if(!disposed) //not already cdel'd
+	if(!disposed) //not already cdel'd		
 		if(contents.len)
 			for(var/atom/movable/A in contents)
 				A.forceMove(loc)
 		if(parent)
 			cdel(parent)
+		for(var/obj/machinery/atmospherics/pipe/node in pipeline_expansion())
+			if(istype(node) && !node.disposed && !node.parent)
+				node.parent = new /datum/pipeline()
+				node.parent.build_pipeline(node)
+				node.build_network()
 	. = ..()
 	//build_network()
 

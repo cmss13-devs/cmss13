@@ -8,6 +8,7 @@ datum/controller/process/objects/setup()
 	sleep(-1)
 	for(var/atom/movable/object in world)
 		object.initialize()
+	own_data = processing_objects
 
 datum/controller/process/objects/doWork()
 

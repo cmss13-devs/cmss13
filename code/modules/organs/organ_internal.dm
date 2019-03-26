@@ -68,6 +68,8 @@
 
 /datum/internal_organ/process()
 
+	if(germ_level == 0)
+		return
 	//Process infections
 	if (robotic >= 2 || (owner.species && owner.species.flags & IS_PLANT))	//TODO make robotic internal and external organs separate types of organ instead of a flag
 		germ_level = 0
@@ -177,14 +179,13 @@
 		if(prob(5))
 			owner.emote("cough")		//respitory tract infection
 
-	if(!owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
-		if(is_bruised())
-			if(prob(2))
-				spawn owner.emote("me", 1, "coughs up blood!")
-				owner.drip(10)
-			if(prob(4))
-				spawn owner.emote("me", 1, "gasps for air!")
-				owner.losebreath += 15
+	if(is_bruised() && !owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
+		if(prob(2))
+			spawn owner.emote("me", 1, "coughs up blood!")
+			owner.drip(10)
+		if(prob(4))
+			spawn owner.emote("me", 1, "gasps for air!")
+			owner.losebreath += 15
 
 /datum/internal_organ/lungs/prosthetic
 	robotic = ORGAN_ROBOT
@@ -244,11 +245,6 @@
 				if(filter_effect < 3)
 					owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
 				owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
-			// Can't cope with toxins at all
-			else if(istype(R, /datum/reagent/toxin))
-				if(filter_effect < 3)
-					owner.adjustToxLoss(0.3 * PROCESS_ACCURACY)
-				owner.reagents.remove_reagent(R.id, ALCOHOL_METABOLISM*filter_effect)
 
 		//Heal toxin damage slowly if not damaged
 		if(damage < 5 && prob(25))
@@ -273,17 +269,6 @@
 
 /datum/internal_organ/kidneys/process()
 	..()
-
-	// Coffee is really bad for you with busted kidneys.
-	// This should probably be expanded in some way, but fucked if I know
-	// what else kidneys can process in our reagent list.
-	var/datum/reagent/coffee = locate(/datum/reagent/drink/coffee) in owner.reagents.reagent_list
-	if(coffee && !owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
-		if(is_bruised())
-			owner.adjustToxLoss(0.1 * PROCESS_ACCURACY)
-		else if(is_broken())
-			owner.adjustToxLoss(0.3 * PROCESS_ACCURACY)
-
 	//Deal toxin damage if damaged
 	if(!owner.reagents.get_reagent_amount("peridaxon") >= 0.05)
 		if(is_bruised() && prob(25))

@@ -3,6 +3,7 @@
 /datum/controller/process/objectives/setup()
 	name = "Objectives"
 	schedule_interval = 20 //2 seconds
+	own_data = objectives_controller
 
 /datum/controller/process/objectives/doWork()
 

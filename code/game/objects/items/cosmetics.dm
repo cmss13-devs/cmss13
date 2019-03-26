@@ -25,9 +25,14 @@
 	icon_state = "black_cammo"
 
 /obj/item/facepaint/sniper
-	name = "Fullbody paint"
+	name = "fullbody paint"
 	colour = "full"
 	icon_state = "full_cammo"
+
+/obj/item/facepaint/skull
+	name = "skull paint"
+	colour = "skull"
+	icon_state = "skull_cammo"
 
 
 /obj/item/facepaint/attack(mob/M as mob, mob/user as mob)

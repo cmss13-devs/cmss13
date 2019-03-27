@@ -93,7 +93,7 @@
 	name = "UPP Combat Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/upp
+	skills = /datum/skills/synthetic
 	assignment = "UPP Combat Synthetic"
 	rank = "MODE"
 	paygrade = "SYN"
@@ -117,8 +117,11 @@
 	H.b_eyes = 19
 	idtype = /obj/item/card/id/dogtag
 
+/datum/equipment_preset/upp/synth/load_race(mob/living/carbon/human/H)
+	H.set_species("Synthetic")
+
 /datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
+	load_name(H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/faction/UPP(H), WEAR_JACKET)
@@ -137,7 +140,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth(H), WEAR_L_STORE)
 
 	H.allow_gun_usage = TRUE
 

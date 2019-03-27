@@ -136,20 +136,20 @@
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
 
 /obj/structure/dropship_equipment/Dispose()
-		if(ammo_equipped)
-			cdel(ammo_equipped)
-			ammo_equipped = null
-		if(linked_shuttle)
-			linked_shuttle.equipments -= src
-			linked_shuttle = null
-		if(ship_base)
-			ship_base.installed_equipment = null
-			ship_base = null
-		if(linked_console)
-			if(linked_console.selected_equipment && linked_console.selected_equipment == src)
-				linked_console.selected_equipment = null
-			linked_console = null
-		. = ..()
+	if(ammo_equipped)
+		cdel(ammo_equipped)
+		ammo_equipped = null
+	if(linked_shuttle)
+		linked_shuttle.equipments -= src
+		linked_shuttle = null
+	if(ship_base)
+		ship_base.installed_equipment = null
+		ship_base = null
+	if(linked_console)
+		if(linked_console.selected_equipment && linked_console.selected_equipment == src)
+			linked_console.selected_equipment = null
+		linked_console = null
+	. = ..()
 
 /obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/powerloader_clamp))

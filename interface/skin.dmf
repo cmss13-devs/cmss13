@@ -222,7 +222,10 @@ macro "hotkeymode"
 		command = ".east"
 	elem 
 		name = "E"
-		command = "holster"
+		command = "holster none"
+	elem
+		name = "SHIFT+E"
+		command = "holster shift"
 	elem 
 		name = "Q"
 		command = ".northwest"

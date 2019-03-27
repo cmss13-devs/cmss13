@@ -390,7 +390,8 @@
 	var/list/grenades = new/list()
 	var/max_grenades = 6
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
+	attachable_allowed = list(/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/scope/mini)
 
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_skill_category = GUN_SKILL_SPEC
@@ -403,9 +404,9 @@
 	sleep(1)
 	grenades += new /obj/item/explosive/grenade/HE(src)
 	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/incendiary(src)
-	grenades += new /obj/item/explosive/grenade/HE/frag(src)
-	grenades += new /obj/item/explosive/grenade/HE/frag(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
+	grenades += new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
 	fire_delay = config.max_fire_delay*3

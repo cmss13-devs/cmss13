@@ -89,6 +89,59 @@
 
 /*****************************************************************************************************/
 
+/datum/equipment_preset/upp/synth
+	name = "UPP Combat Synthetic"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp
+	assignment = "UPP Combat Synthetic"
+	rank = "MODE"
+	paygrade = "SYN"
+	special_role = "UPP"
+
+/datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = pick(50;MALE,50;FEMALE)
+	var/datum/preferences/A = new()
+	A.randomize_appearance_for(H)
+	if(H.gender == MALE)
+		H.real_name = "[pick(first_names_male_upp)]"
+		H.f_style = "5 O'clock Shadow"
+	else
+		H.real_name = "[pick(first_names_female_upp)]"
+	H.name = H.real_name
+	H.r_hair = 15
+	H.g_hair = 15
+	H.b_hair = 25
+	H.r_eyes = 139
+	H.g_eyes = 62
+	H.b_eyes = 19
+	idtype = /obj/item/card/id/dogtag
+
+/datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/H)
+	//TODO: add backpacks and satchels
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/faction/UPP(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/combatLifesaver/upp(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71(H), WEAR_J_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/plastique(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_L_STORE)
+
+	H.allow_gun_usage = TRUE
+
+/*****************************************************************************************************/
 /datum/equipment_preset/upp/soldier_medic
 	name = "UPP Soldier (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA

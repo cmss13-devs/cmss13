@@ -19005,7 +19005,7 @@
 	name = "Dome Access";
 	pixel_x = 25;
 	pixel_y = 0;
-	req_access = list(101)
+	req_access = newlist()
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
@@ -20498,6 +20498,12 @@
 /obj/machinery/computer/shuttle_control/dropship2,
 /turf/open/gm/dirt,
 /area/lv624/landing/console2)
+"ZV" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle5)
 "ZZ" = (
 /obj/item/document_objective/folder,
 /turf/open/floor/bluegrid,
@@ -28685,7 +28691,7 @@ KY
 KY
 KY
 KY
-KY
+KX
 KY
 KY
 Tf
@@ -28912,7 +28918,7 @@ Gi
 KY
 KY
 KY
-KX
+KY
 KY
 KX
 KY
@@ -29368,8 +29374,8 @@ Gi
 KX
 KY
 KY
-PP
 KY
+PP
 KY
 KY
 Tf
@@ -29598,7 +29604,7 @@ KY
 KY
 KY
 KY
-KY
+KX
 KY
 Tf
 Tf
@@ -30053,7 +30059,7 @@ KX
 KY
 KY
 KY
-KX
+KY
 KY
 KY
 KY
@@ -30064,7 +30070,7 @@ Vy
 Wb
 UQ
 UQ
-UQ
+ZH
 UQ
 UQ
 Tf
@@ -30510,7 +30516,7 @@ KY
 KX
 KY
 KY
-KX
+KY
 KY
 KY
 KY
@@ -30519,7 +30525,7 @@ UT
 VA
 Wc
 UQ
-ZH
+UQ
 UQ
 Tf
 Tf
@@ -30968,7 +30974,7 @@ KY
 KY
 KY
 KY
-KX
+KY
 KY
 KY
 UV
@@ -31422,7 +31428,7 @@ OY
 Xr
 Hz
 KY
-KX
+KY
 KY
 KY
 PP
@@ -42756,7 +42762,7 @@ hw
 ht
 hp
 mD
-lP
+mB
 lG
 lG
 lG
@@ -42987,7 +42993,7 @@ lu
 mB
 lG
 lG
-lP
+lG
 lG
 nI
 nU
@@ -43900,7 +43906,7 @@ lG
 mB
 lG
 lG
-lP
+lG
 lG
 nV
 om
@@ -55136,7 +55142,7 @@ Ek
 RZ
 Mq
 FI
-LW
+LV
 LV
 LV
 Vv
@@ -55595,7 +55601,7 @@ FI
 LV
 LV
 LV
-LV
+LW
 LV
 LV
 LV
@@ -57385,7 +57391,7 @@ qc
 pK
 pK
 pK
-sD
+pK
 pK
 pK
 pK
@@ -57619,7 +57625,7 @@ pK
 pK
 pK
 pK
-qc
+pK
 pK
 pK
 pK
@@ -57842,12 +57848,12 @@ pK
 pK
 pK
 pK
-pK
-pK
-qc
-pK
+sD
 pK
 qc
+pK
+pK
+pK
 pK
 pK
 pK
@@ -58055,7 +58061,7 @@ pn
 qd
 pL
 pK
-pK
+sD
 pK
 pK
 pK
@@ -58064,7 +58070,7 @@ pK
 pK
 pK
 pK
-pK
+qc
 pK
 pK
 pK
@@ -58283,7 +58289,6 @@ lJ
 pm
 pL
 pL
-sD
 pK
 pK
 pK
@@ -58297,7 +58302,8 @@ pK
 pK
 pK
 pK
-qc
+pK
+pK
 pK
 pK
 pK
@@ -58520,7 +58526,7 @@ pK
 pK
 pK
 pK
-qc
+pK
 pK
 pK
 pK
@@ -59876,9 +59882,9 @@ pp
 pp
 pp
 sn
-qc
-qc
-qc
+ZV
+pK
+pL
 qc
 qc
 qc

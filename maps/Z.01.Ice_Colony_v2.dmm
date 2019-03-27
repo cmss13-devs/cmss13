@@ -12592,6 +12592,11 @@
 /turf/open/gm/grass,
 /area/ice_colony/surface/hydroponics/south)
 "azM" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Colony Dormitories";
+	req_access = list(100);
+	req_one_access = list()
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkbrown2";
@@ -12935,15 +12940,10 @@
 	},
 /area/ice_colony/surface/hydroponics/south)
 "aAw" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Colony Dormitories";
-	req_access = list(100)
-	},
+/obj/structure/window/framed/colony,
 /turf/open/floor{
-	dir = 10;
-	icon_state = "darkblue2";
-	tag = "icon-darkblue2"
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAx" = (
@@ -12958,9 +12958,8 @@
 	dir = 5
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAz" = (
@@ -12974,27 +12973,8 @@
 	layer = 2.4
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
-	},
-/area/ice_colony/surface/dorms)
-"aAA" = (
-/obj/machinery/light,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAB" = (
@@ -13009,9 +12989,8 @@
 	layer = 2.4
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAC" = (
@@ -13023,9 +13002,8 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/green,
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAD" = (
@@ -13045,9 +13023,8 @@
 	pixel_x = 0
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAE" = (
@@ -13062,9 +13039,8 @@
 	pixel_x = 0
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAF" = (
@@ -13084,27 +13060,8 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
-	},
-/area/ice_colony/surface/dorms)
-"aAG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/obj/machinery/light,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAH" = (
@@ -13123,9 +13080,8 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAI" = (
@@ -13169,26 +13125,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
-"aAK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor{
-	tag = "icon-darkblue2";
-	icon_state = "darkblue2";
-	dir = 2
-	},
-/area/ice_colony/surface/dorms)
 "aAL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
@@ -13203,15 +13139,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 1;
-	name = "\improper Colony Dormitories";
-	req_access = list(100)
-	},
+/obj/structure/window/framed/colony,
 /turf/open/floor{
-	dir = 6;
-	icon_state = "darkblue2";
-	tag = "icon-darkblue2"
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/dorms)
 "aAM" = (
@@ -20032,29 +19963,18 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aOO" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor{
-	tag = "icon-darkbrowncorners2 (WEST)";
-	icon_state = "darkbrowncorners2";
-	dir = 8
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aOP" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor{
-	tag = "icon-darkbrowncorners2 (EAST)";
+	tag = "icon-darkbrowncorners2 (WEST)";
 	icon_state = "darkbrowncorners2";
-	dir = 4
+	dir = 8
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aOQ" = (
@@ -20087,17 +20007,15 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aOS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor{
-	tag = "icon-darkbrown2 (EAST)";
-	icon_state = "darkbrown2";
-	dir = 4
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aOT" = (
@@ -20122,25 +20040,11 @@
 	tag = "icon-darkbrown2"
 	},
 /area/ice_colony/surface/hangar/beta)
-"aOU" = (
+"aOV" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
-	},
-/turf/open/floor{
-	tag = "icon-darkbrowncorners2 (NORTH)";
-	icon_state = "darkbrowncorners2";
-	dir = 1
-	},
-/area/ice_colony/surface/hangar/beta)
-"aOV" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
 	},
 /turf/open/floor{
 	tag = "icon-darkbrowncorners2";
@@ -20569,14 +20473,6 @@
 	dir = 8
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aPN" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/hangar/alpha)
 "aPO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -20599,14 +20495,6 @@
 	tag = "icon-darkbrown2 (WEST)";
 	icon_state = "darkbrown2";
 	dir = 8
-	},
-/area/ice_colony/surface/hangar/beta)
-"aPQ" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/beta)
 "aPR" = (
@@ -21051,18 +20939,6 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aQE" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-W";
-	icon_state = "W"
-	},
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aQF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -21070,9 +20946,14 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
 	},
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
 /turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aQG" = (
@@ -21142,9 +21023,8 @@
 	dir = 4
 	},
 /turf/open/floor{
-	tag = "icon-darkbrown2 (EAST)";
-	icon_state = "darkbrown2";
-	dir = 4
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aQK" = (
@@ -21586,23 +21466,6 @@
 	dir = 4
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aRC" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
-	},
-/turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
-	},
-/area/ice_colony/surface/hangar/hallway)
 "aRD" = (
 /obj/machinery/space_heater,
 /obj/structure/cable{
@@ -22060,14 +21923,6 @@
 	icon_state = "swall11"
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aSl" = (
-/obj/structure/largecrate/random,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/hangar/alpha)
 "aSm" = (
 /turf/open/floor{
 	tag = "icon-darkbrown2 (EAST)";
@@ -22442,14 +22297,6 @@
 /turf/open/shuttle{
 	tag = "icon-floor6";
 	icon_state = "floor6"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aSX" = (
-/obj/machinery/space_heater,
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aSY" = (
@@ -23145,18 +22992,6 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/command/control/office)
-"aUl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/turf/open/floor{
-	tag = "icon-darkbrown2 (EAST)";
-	icon_state = "darkbrown2";
-	dir = 4
-	},
-/area/ice_colony/surface/hangar/hallway)
 "aUm" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -23380,20 +23215,14 @@
 	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aUH" = (
@@ -23456,24 +23285,13 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/beta)
-"aUK" = (
+"aUL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 4
-	},
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aUL" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	tag = "icon-W"
 	},
 /turf/open/floor{
 	tag = "icon-darkbrown2 (EAST)";
@@ -23613,24 +23431,17 @@
 	icon_state = "pipe-c";
 	dir = 1
 	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24;
-	pixel_y = 0
-	},
 /turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aVc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/disposalpipe/junction,
 /turf/open/floor{
-	tag = "icon-darkbrown2 (EAST)";
-	icon_state = "darkbrown2";
-	dir = 4
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aVd" = (
@@ -23849,9 +23660,8 @@
 	on = 1
 	},
 /turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aVB" = (
@@ -23860,9 +23670,8 @@
 	dir = 4
 	},
 /turf/open/floor{
-	tag = "icon-darkbrown2 (EAST)";
-	icon_state = "darkbrown2";
-	dir = 4
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aVC" = (
@@ -24150,18 +23959,16 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aWh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
-	tag = "icon-darkbrown2 (EAST)";
-	icon_state = "darkbrown2";
-	dir = 4
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hangar/hallway)
 "aWi" = (
@@ -24688,35 +24495,13 @@
 	},
 /area/ice_colony/surface/hangar/alpha)
 "aXo" = (
-/turf/open/floor{
-	tag = "icon-darkbrowncorners2";
-	icon_state = "darkbrowncorners2"
-	},
-/area/ice_colony/surface/hangar/alpha)
-"aXp" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
-	dir = 6;
+	tag = "icon-darkbrown2 (EAST)";
 	icon_state = "darkbrown2";
-	tag = "icon-darkbrown2"
+	dir = 4
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aXq" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
-/turf/open/floor{
-	tag = "icon-darkbrown2 (WEST)";
-	icon_state = "darkbrown2";
-	dir = 8
-	},
-/area/ice_colony/surface/hangar/hallway)
 "aXr" = (
 /obj/structure/table,
 /obj/item/device/flashlight,
@@ -24724,13 +24509,6 @@
 	dir = 10;
 	icon_state = "darkbrown2";
 	tag = "icon-darkbrown2"
-	},
-/area/ice_colony/surface/hangar/beta)
-"aXs" = (
-/turf/open/floor{
-	tag = "icon-darkbrowncorners2 (WEST)";
-	icon_state = "darkbrowncorners2";
-	dir = 8
 	},
 /area/ice_colony/surface/hangar/beta)
 "aXt" = (
@@ -25204,10 +24982,6 @@
 	dir = 1
 	},
 /area/ice_colony/surface/hangar/alpha)
-"aYm" = (
-/obj/machinery/colony_floodlight,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/exterior/surface/landing_pad)
 "aYn" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -29618,13 +29392,6 @@
 	dir = 10
 	},
 /area/ice_colony/underground/hangar)
-"bhW" = (
-/obj/machinery/light,
-/turf/open/floor/plating/icefloor{
-	tag = "icon-warnplate";
-	icon_state = "warnplate"
-	},
-/area/ice_colony/underground/hangar)
 "bhX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/snow/layer0,
@@ -30244,10 +30011,6 @@
 	dir = 2
 	},
 /area/ice_colony/underground/hangar)
-"bjh" = (
-/obj/structure/closet/toolcloset,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/underground/hangar)
 "bji" = (
 /obj/structure/table/reinforced,
 /obj/item/device/flashlight,
@@ -30510,14 +30273,6 @@
 	dir = 4
 	},
 /area/ice_colony/underground/requesition/lobby)
-"bjI" = (
-/obj/machinery/door_control{
-	id = "undergroundhangarsouth";
-	name = "Underground Hangar Lock";
-	pixel_x = -24
-	},
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/underground/hangar)
 "bjK" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -51303,6 +51058,26 @@
 /obj/item/disk/objective,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"dxl" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	tag = "icon-darkbrown2 (EAST)";
+	icon_state = "darkbrown2";
+	dir = 4
+	},
+/area/ice_colony/surface/hangar/beta)
+"ecS" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (EAST)";
+	icon_state = "darkbrown2";
+	dir = 4
+	},
+/area/ice_colony/surface/hangar/beta)
 "fsu" = (
 /obj/structure/table,
 /obj/item/disk/objective,
@@ -51311,6 +51086,29 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/crew/canteen)
+"fUW" = (
+/obj/structure/largecrate/random,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/alpha)
+"gxg" = (
+/obj/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
 "gDb" = (
 /obj/machinery/computer/objective,
 /obj/structure/table,
@@ -51320,6 +51118,32 @@
 	dir = 1
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"jCk" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
+"kKZ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/dorms)
 "lok" = (
 /obj/item/document_objective/folder,
 /turf/open/floor{
@@ -51340,6 +51164,43 @@
 	icon_state = "wood"
 	},
 /area/ice_colony/underground/crew/library)
+"lyE" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (EAST)";
+	icon_state = "darkbrown2";
+	dir = 4
+	},
+/area/ice_colony/surface/hangar/beta)
+"mog" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/beta)
+"mHc" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "darkbrown2";
+	tag = "icon-darkbrown2"
+	},
+/area/ice_colony/surface/hangar/beta)
 "mQa" = (
 /obj/structure/closet/radiation,
 /obj/item/disk/objective,
@@ -51349,11 +51210,51 @@
 	dir = 4
 	},
 /area/ice_colony/underground/research/storage)
+"neZ" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Colony Dormitories";
+	req_access = list(100);
+	req_one_access = list()
+	},
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkblue2";
+	tag = "icon-darkblue2"
+	},
+/area/ice_colony/surface/dorms)
+"oHs" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/hangar/alpha)
+"oZq" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor{
+	dir = 10;
+	icon_state = "darkbrown2";
+	tag = "icon-darkbrown2"
+	},
+/area/ice_colony/surface/hangar/alpha)
+"paK" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/surface/hangar/beta)
 "qny" = (
 /obj/structure/table/woodentable,
 /obj/item/document_objective/folder,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
+"qRy" = (
+/obj/structure/closet/toolcloset,
+/obj/machinery/door_control{
+	id = "undergroundhangarsouth";
+	name = "Underground Hangar Lock";
+	pixel_x = -24
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 "rbg" = (
 /obj/structure/closet/emcloset,
 /obj/item/disk/objective,
@@ -51372,12 +51273,70 @@
 	tag = "icon-darkpurple2 (EAST)"
 	},
 /area/ice_colony/underground/research)
+"rKz" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
+"rNB" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
+"sTY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	tag = "icon-darkbrown2 (EAST)";
+	icon_state = "darkbrown2";
+	dir = 4
+	},
+/area/ice_colony/surface/hangar/beta)
+"tbZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
 "tgY" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/under/colonist,
 /obj/item/disk/objective,
 /turf/open/floor/wood,
 /area/ice_colony/surface/dorms)
+"tly" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
 "ttN" = (
 /obj/machinery/light,
 /obj/item/document_objective/folder,
@@ -51386,6 +51345,45 @@
 	icon_state = "floor6"
 	},
 /area/ice_colony/surface/hangar/alpha)
+"tue" = (
+/obj/machinery/light,
+/turf/open/floor{
+	tag = "icon-darkblue2";
+	icon_state = "darkblue2";
+	dir = 2
+	},
+/area/ice_colony/surface/dorms)
+"tAk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/alpha)
+"tFy" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Colony Dormitories";
+	req_access = list(100);
+	req_one_access = list()
+	},
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkblue2";
+	tag = "icon-darkblue2"
+	},
+/area/ice_colony/surface/dorms)
 "tGb" = (
 /obj/structure/table/reinforced,
 /obj/item/disk/objective,
@@ -51394,6 +51392,29 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/underground/research)
+"tIv" = (
+/turf/open/snow/layer2,
+/area/ice_colony/surface/command/control)
+"umI" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Colony Dormitories";
+	req_access = list(100);
+	req_one_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-darkgreen2 (NORTHEAST)";
+	icon_state = "darkgreen2";
+	dir = 5
+	},
+/area/ice_colony/surface/dorms)
+"urm" = (
+/obj/machinery/colony_floodlight,
+/turf/open/floor/plating/icefloor{
+	tag = "icon-warnplate (NORTH)";
+	icon_state = "warnplate";
+	dir = 1
+	},
+/area/ice_colony/exterior/surface/landing_pad)
 "uBf" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -51405,11 +51426,30 @@
 	dir = 6
 	},
 /area/ice_colony/underground/hangar)
+"uPr" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "darkbrown2";
+	tag = "icon-darkbrown2"
+	},
+/area/ice_colony/surface/hangar/beta)
 "uQx" = (
 /obj/structure/rack,
 /obj/item/disk/objective,
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/research)
+"vtU" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-W";
+	icon_state = "W"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	tag = "icon-darkbrown2 (WEST)";
+	icon_state = "darkbrown2";
+	dir = 8
+	},
+/area/ice_colony/surface/hangar/alpha)
 "waD" = (
 /obj/structure/table,
 /obj/item/document_objective/folder,
@@ -51425,10 +51465,25 @@
 	icon_state = "dark2"
 	},
 /area/ice_colony/surface/hydroponics/north)
+"wcI" = (
+/obj/machinery/space_heater,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
+	},
+/area/ice_colony/surface/hangar/alpha)
 "xri" = (
 /obj/item/document_objective/folder,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/surface/requesitions)
+"xHY" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/icefloor,
+/area/ice_colony/underground/hangar)
 
 (1,1,1) = {"
 aaa
@@ -65972,8 +66027,8 @@ bgH
 bgH
 bgH
 bgH
-bgH
-bgH
+bic
+bic
 bhj
 bgH
 bgH
@@ -66529,10 +66584,10 @@ bdg
 bgG
 bgH
 bhk
+bgQ
 bgH
 bgH
-bgH
-bgH
+bkf
 bgH
 bgH
 bgH
@@ -66811,7 +66866,7 @@ beB
 bgH
 bgH
 bhj
-bgH
+bgI
 bgH
 bgH
 bgH
@@ -67096,7 +67151,7 @@ bhj
 bgH
 bgH
 bgH
-bgH
+bkf
 bgH
 bgH
 bgH
@@ -67375,10 +67430,10 @@ aZG
 bgH
 bgH
 bhj
+bhD
+bhD
 bgH
-bgH
-bgH
-bgH
+bkg
 bgH
 bgH
 bgH
@@ -67660,13 +67715,13 @@ aZG
 aZG
 aZG
 bgR
+aZG
+aZG
 bid
 bit
 biG
 bjc
 aZG
-bhj
-bhj
 bgH
 bgH
 bkE
@@ -67942,13 +67997,13 @@ baJ
 baJ
 bhE
 bhV
+xHY
+xHY
 bie
 biu
 biH
 biH
 aZG
-bic
-bic
 bgH
 bgH
 bkF
@@ -68224,13 +68279,13 @@ bcc
 bcx
 aZW
 bht
+aZW
+aZW
 bif
 aZW
 biI
 bjd
 aZG
-bgH
-bgH
 bgH
 bgH
 bkE
@@ -68506,13 +68561,13 @@ baJ
 bhr
 bhF
 bht
+aZW
+aZW
 big
 aZW
 biJ
 bje
 bjz
-bgH
-bgH
 bgH
 bgH
 bkE
@@ -68788,13 +68843,13 @@ aZW
 bhs
 bhG
 bht
+aZW
+aZW
 bif
 aZW
 bTE
 bjf
 aZG
-bgH
-bgH
 bgH
 bgH
 bkE
@@ -69069,15 +69124,15 @@ baP
 aZW
 bhs
 bhH
-bhW
+bht
+aZW
+bjf
 beB
 biv
 biL
 bjg
 aZG
-bgQ
 bgH
-bkf
 bgH
 bkE
 bkT
@@ -69352,13 +69407,13 @@ baP
 bhs
 bhI
 bht
+aZW
+aZW
 beB
 biw
 biw
 biw
 aZG
-bgI
-bgH
 bgH
 bgH
 bkE
@@ -69634,14 +69689,14 @@ aZW
 bht
 bhF
 bht
+aZW
+aZW
 beB
 beB
 beB
 beB
 aZG
 bgH
-bgH
-bkf
 bgH
 bkE
 bkT
@@ -69917,13 +69972,13 @@ bht
 bhG
 bht
 aZW
+aZW
+aZW
 bix
 biM
-bjh
+qRy
 aZG
-bhD
-bhD
-bkg
+bgH
 bgH
 bkE
 bkV
@@ -70201,9 +70256,9 @@ bht
 aZW
 aZW
 aZW
+aZW
+aZW
 bjf
-aZG
-aZG
 aZG
 beB
 bkp
@@ -70485,7 +70540,7 @@ aZW
 aZW
 aZW
 aZW
-bjI
+aZW
 bjU
 bkh
 bkq
@@ -78029,8 +78084,8 @@ aCX
 aCX
 aCX
 aaC
-acj
-aag
+aba
+abb
 acS
 aar
 aca
@@ -78291,7 +78346,7 @@ aax
 aij
 akF
 akF
-aax
+akF
 aax
 aax
 abL
@@ -78310,10 +78365,10 @@ aCX
 aCX
 aCX
 aCX
-aCW
-aca
+aCX
+aiS
+aaR
 abb
-acj
 acS
 aaG
 aaG
@@ -78573,10 +78628,10 @@ aof
 aij
 akF
 akF
+akF
 aof
 aax
 aax
-aax
 aCX
 aBG
 aBG
@@ -78593,11 +78648,11 @@ aCX
 aCX
 aCX
 aCX
-aCW
+aCX
+aiS
 aaR
 abb
 acm
-aac
 aac
 aac
 aac
@@ -78855,7 +78910,7 @@ aax
 aax
 akF
 akF
-aax
+akF
 aax
 abL
 abL
@@ -78876,10 +78931,10 @@ aCX
 aCX
 aCX
 aCX
-aGC
+aCX
+bga
 aaQ
 acm
-aac
 aac
 aac
 aac
@@ -79137,6 +79192,7 @@ axk
 axk
 azM
 aAw
+neZ
 aBc
 aBc
 aBc
@@ -79158,10 +79214,9 @@ aGL
 aGL
 aCX
 aCX
-aGD
+bcb
 aaQ
 acm
-aac
 aac
 aac
 aac
@@ -79418,6 +79473,7 @@ ays
 ayY
 axl
 azN
+apZ
 aAx
 aBc
 aBv
@@ -79440,10 +79496,9 @@ aII
 aGL
 aCX
 aCX
-aGD
+bcb
 aaQ
 acm
-aac
 aac
 aac
 aac
@@ -79700,6 +79755,7 @@ ayt
 ayZ
 axl
 azN
+apZ
 aAx
 aBc
 aBw
@@ -79722,10 +79778,9 @@ aHh
 aGL
 aCX
 aCX
-aGD
+bcb
 aaQ
 acm
-aac
 aac
 aac
 aac
@@ -79982,6 +80037,7 @@ ayt
 aza
 axl
 azN
+apZ
 aAx
 aBc
 aBw
@@ -80004,11 +80060,10 @@ aIV
 aGL
 aCX
 aCX
-aGE
+aiS
 abc
 acj
 acD
-aac
 aac
 aac
 aac
@@ -80265,6 +80320,7 @@ azb
 azy
 arH
 aAy
+aAx
 aBc
 aBw
 aCc
@@ -80287,10 +80343,9 @@ aGL
 aCX
 aCX
 aCX
-aGC
+bga
 aaS
 acm
-aac
 aac
 aac
 aac
@@ -80547,6 +80602,7 @@ ayv
 ayv
 arI
 aAz
+aAx
 aBc
 aBx
 aCa
@@ -80569,10 +80625,9 @@ aGL
 aCX
 aCX
 aCX
-aGE
+aiS
 aaQ
 acm
-aac
 aac
 aac
 aac
@@ -80828,7 +80883,8 @@ ayt
 azc
 axl
 azN
-aAA
+aAB
+tue
 aBc
 aBw
 aCd
@@ -80851,10 +80907,9 @@ aGL
 aCX
 aCX
 aCX
-aCX
+aJw
 abc
 acm
-aac
 aac
 aac
 aac
@@ -81111,6 +81166,7 @@ azc
 axl
 azN
 aAB
+aAx
 aBc
 aNM
 aCe
@@ -81134,9 +81190,8 @@ aCX
 aCX
 aCX
 aCX
-aGC
+bga
 acm
-aac
 aac
 aac
 aac
@@ -81393,6 +81448,7 @@ azd
 axl
 azN
 aAB
+aAx
 aBc
 aBx
 aCa
@@ -81416,9 +81472,8 @@ aCX
 aCX
 aCX
 aCX
-aGD
+bcb
 acj
-aag
 acD
 aac
 aac
@@ -81675,6 +81730,7 @@ axl
 axl
 azN
 aAB
+aAx
 aBc
 aBw
 aCb
@@ -81694,7 +81750,6 @@ boc
 aIK
 aHh
 aGL
-aCX
 aCX
 aBG
 aCX
@@ -81957,6 +82012,7 @@ axN
 axN
 azO
 aAB
+aAx
 aBc
 aBw
 aCc
@@ -81976,7 +82032,6 @@ aIa
 aHh
 aHh
 aGL
-aBG
 aBG
 aCX
 aHa
@@ -82239,6 +82294,7 @@ arH
 arH
 arH
 aAC
+aAx
 aBc
 aBw
 aCa
@@ -82258,7 +82314,6 @@ aHh
 aIN
 aIY
 aGL
-aCX
 aBG
 aBH
 aCX
@@ -82521,6 +82576,7 @@ arI
 arI
 arI
 aAD
+aAx
 aBc
 aBy
 aCf
@@ -82540,7 +82596,6 @@ aIx
 aIO
 aIZ
 aGL
-aBG
 aBH
 aBG
 aBG
@@ -82803,6 +82858,7 @@ aws
 aws
 aqa
 aAE
+aAx
 aBd
 aBd
 aBd
@@ -82822,7 +82878,6 @@ aGL
 aGL
 aGL
 aGL
-aCX
 aBG
 aBH
 aBJ
@@ -83085,6 +83140,7 @@ axn
 axn
 apC
 aAE
+aAx
 aBd
 aBz
 aCg
@@ -83104,7 +83160,6 @@ aIy
 aIP
 aCX
 aCX
-aBG
 aBG
 aBH
 aBJ
@@ -83367,6 +83422,7 @@ aze
 axn
 apC
 aAE
+aAx
 aBd
 aBA
 aCh
@@ -83384,7 +83440,6 @@ aHK
 aId
 aIz
 aIP
-aBG
 aBG
 aBG
 aBH
@@ -83649,6 +83704,7 @@ azf
 azz
 azP
 aAF
+aAx
 aBd
 aBB
 aCi
@@ -83668,7 +83724,6 @@ aIA
 aIP
 aCX
 aBG
-aBH
 aBH
 aBG
 aBJ
@@ -83930,7 +83985,8 @@ ayz
 azg
 azA
 apC
-aAG
+aAE
+tue
 aBd
 aBd
 aCj
@@ -83950,7 +84006,6 @@ aIf
 aIP
 aBG
 aBG
-aBH
 aBH
 aBH
 aBJ
@@ -84213,6 +84268,7 @@ azh
 azB
 azQ
 aAH
+aAx
 aBe
 aBC
 aCk
@@ -84232,7 +84288,6 @@ aGR
 aIP
 aBG
 aCJ
-aBG
 aBH
 aBH
 aBJ
@@ -84495,6 +84550,7 @@ azi
 azC
 arH
 aAI
+kKZ
 aBf
 aBD
 aCl
@@ -84513,7 +84569,6 @@ boa
 aIB
 aGV
 aCX
-aBG
 aBG
 aBH
 aBG
@@ -84777,6 +84832,7 @@ azj
 azA
 apC
 aAJ
+apZ
 aBg
 aBg
 aBg
@@ -84796,7 +84852,6 @@ aIC
 aGV
 aCX
 aBG
-aBH
 aBH
 aBH
 aBJ
@@ -85058,7 +85113,8 @@ ayz
 azj
 azA
 apC
-aAK
+aAJ
+aAx
 aBh
 aBE
 aBg
@@ -85077,7 +85133,6 @@ aIi
 aID
 aGV
 aCX
-aBG
 aBG
 aBH
 aBJ
@@ -85340,7 +85395,8 @@ ayB
 azk
 axn
 apC
-aAK
+aAJ
+aAx
 aBd
 aBF
 aCm
@@ -85358,7 +85414,6 @@ aHN
 aIj
 aIj
 aGV
-aBG
 aBG
 aBG
 aBG
@@ -85621,8 +85676,9 @@ axo
 axo
 axo
 axo
-apD
+umI
 aAL
+tFy
 aBd
 aBd
 aBd
@@ -85641,7 +85697,6 @@ aGV
 aGV
 aGV
 aCX
-aBG
 aBG
 aBH
 aBJ
@@ -85905,8 +85960,8 @@ aax
 aij
 akF
 aAM
-aij
-aBG
+akF
+aBH
 aBG
 aBG
 aBG
@@ -85916,7 +85971,7 @@ aBG
 aCX
 aBG
 aBG
-aBG
+tIv
 aCX
 aCX
 aBG
@@ -86187,8 +86242,8 @@ aij
 aij
 akF
 aAM
-aij
-aBG
+akF
+aBH
 aBG
 aBH
 aBG
@@ -86469,7 +86524,7 @@ aij
 aij
 akF
 aAM
-aij
+akF
 aBH
 aBG
 aBG
@@ -86751,9 +86806,9 @@ akF
 avw
 akF
 aAM
-aij
+akF
 aBH
-aBG
+aBH
 aBG
 aCX
 aBG
@@ -87033,9 +87088,9 @@ akF
 akF
 akF
 aAM
-aij
-aBG
-aBG
+akF
+aBH
+aBH
 aBG
 aBG
 aBG
@@ -87315,7 +87370,7 @@ akF
 akF
 akF
 aAM
-aax
+akF
 aBG
 aBG
 aCJ
@@ -87597,9 +87652,9 @@ akF
 akF
 akF
 aAN
-aax
-aBG
-aBG
+akF
+aBH
+aBH
 aBG
 aBH
 aBG
@@ -87879,7 +87934,7 @@ awt
 awt
 akG
 aAO
-avx
+akG
 aBI
 aCn
 aCn
@@ -95529,8 +95584,8 @@ aOf
 aON
 aPH
 aPH
-aPH
-aPH
+fUW
+wcI
 aPK
 aTB
 aTW
@@ -96091,18 +96146,18 @@ aKj
 bBS
 aOf
 aOO
-aPM
+jCk
 aQE
-aPM
-aPM
-aPM
-aPM
-aPM
-aPM
-aPM
-aPM
-aPM
-aPM
+tbZ
+vtU
+vtU
+tbZ
+tbZ
+tbZ
+tbZ
+tbZ
+tbZ
+rKz
 aPM
 aPM
 aXP
@@ -96372,20 +96427,20 @@ aMl
 aLD
 bFS
 aOf
-aOP
-aPN
-aQF
-aQz
-aSl
-aSX
-aQz
-aQz
-aQz
-aQz
-aQz
-aQz
-aWa
-aPH
+aOQ
+aPO
+aQG
+aRB
+aSm
+aSm
+aSm
+aSm
+bIy
+aRB
+aSm
+aVz
+aWf
+aWK
 aXo
 aXQ
 aOf
@@ -96654,24 +96709,24 @@ aMm
 aMU
 aKh
 aOf
-aOQ
-aPO
-aQG
-aRB
-aSm
-aSm
-aSm
-aSm
-bIy
-aRB
-aSm
-aVz
-aWf
-aWK
-aXp
 aOf
 aOf
-aYB
+aQH
+aOf
+aSn
+aSn
+aSn
+aSn
+aOf
+aOf
+aOf
+aSn
+aSn
+aSn
+aOf
+aOf
+aOf
+urm
 aYC
 aZb
 aYC
@@ -96935,24 +96990,24 @@ aLE
 aMn
 aMV
 aNN
-aOf
-aOf
-aOf
-aQH
-aOf
-aSn
-aSn
-aSn
-aSn
-aOf
-aOf
-aOf
-aSn
-aSn
-aSn
-aOf
-aOf
-aYm
+oHs
+aOH
+aPD
+tAk
+tly
+aPD
+aPD
+aPD
+aPD
+aPD
+gxg
+rNB
+aPD
+aPD
+aPD
+oZq
+oHs
+aYC
 aYE
 aYC
 aZb
@@ -97221,7 +97276,7 @@ aOh
 aOR
 aOR
 aQI
-aRC
+aOR
 aOR
 aOR
 aOR
@@ -97232,7 +97287,7 @@ aVb
 aVA
 aWg
 aWg
-aXq
+aWg
 aXR
 aYn
 aYF
@@ -97508,7 +97563,7 @@ aOS
 aOS
 aOS
 aOS
-aUl
+aOS
 aUH
 aVc
 aVB
@@ -97781,24 +97836,24 @@ aKj
 aMq
 aKj
 aNO
-aOj
-aOj
-aOj
-aOj
-aOj
-aSo
-aSo
-aSo
-aSo
-aOj
-aUI
-aOj
-aSo
-aSo
-aSo
-aOj
-aOj
-aYm
+paK
+mHc
+aTb
+aTb
+aTb
+aTb
+aTb
+aTb
+aTb
+ecS
+mog
+aTb
+aTb
+aTb
+aTb
+uPr
+paK
+aYC
 aYH
 aYC
 aYC
@@ -98064,24 +98119,24 @@ aMr
 aKj
 aNO
 aOj
-aOT
-aPP
-aPP
-aRD
-aPP
-aPP
-aPP
-aPP
-aUm
-aUJ
-aVd
-aVC
-aWi
-aWL
-aXr
 aOj
 aOj
-aYB
+aOj
+aOj
+aSo
+aSo
+aSo
+aSo
+aOj
+aUI
+aOj
+aSo
+aSo
+aSo
+aOj
+aOj
+aOj
+urm
 aYC
 aYC
 aYC
@@ -98346,21 +98401,21 @@ aKj
 aKj
 aNO
 aOj
-aOU
-aPQ
-aPQ
-aPQ
-aPQ
-aPQ
-aPQ
-aPQ
-aPQ
-aUK
-aPZ
-aPZ
-aWj
-aPT
-aXs
+aOT
+aPP
+aPP
+aRD
+aPP
+aPP
+aPP
+aPP
+aUm
+aUJ
+aVd
+aVC
+aWi
+aWL
+aXr
 aXT
 aOj
 aYB
@@ -98629,18 +98684,18 @@ aMX
 aKP
 aOj
 aOV
-aPR
-aPR
-aPR
-aPR
-aPR
-aPR
-aPR
-aPR
+dxl
+dxl
+dxl
+dxl
+dxl
+dxl
+dxl
+dxl
 aUL
-aPR
-aPR
-aPR
+sTY
+sTY
+lyE
 aWM
 aPR
 aXU

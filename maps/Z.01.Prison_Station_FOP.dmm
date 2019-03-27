@@ -24321,8 +24321,11 @@
 /area/prison/command/office)
 "aSM" = (
 /obj/structure/table/woodentable/fancy,
-/obj/item/tool/pen{
-	pixel_y = 4
+/obj/machinery/door_control{
+	id = "central";
+	name = "Station Lockdown Shutter Control";
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor/carpet,
 /area/prison/command/secretary_office)
@@ -24957,6 +24960,9 @@
 "aUb" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/document_objective/paper,
+/obj/item/tool/pen{
+	pixel_y = 4
+	},
 /turf/open/floor/carpet,
 /area/prison/command/secretary_office)
 "aUc" = (

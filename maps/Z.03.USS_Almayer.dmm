@@ -56281,7 +56281,6 @@
 	},
 /area/almayer/living/grunt_rnr)
 "ckN" = (
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -61965,6 +61964,12 @@
 	dir = 5
 	},
 /area/almayer/shipboard/brig)
+"liG" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "liU" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -98808,7 +98813,7 @@ bJw
 cfZ
 chG
 nki
-chG
+liG
 chG
 chG
 aLd

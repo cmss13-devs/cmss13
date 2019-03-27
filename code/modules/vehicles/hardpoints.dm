@@ -122,13 +122,16 @@ Currently only has the tank hardpoints
 	if(iswelder(O) && health < initial(health))
 		var/obj/item/tool/weldingtool/WT = O
 		if(!WT.isOn())
-			user << "<span class='warning'>You need to light your [WT] first.</span>"
+			user << "<span class='warning'>You need to light \the [WT] first.</span>"
+			return
+		if(WT.get_fuel() < 10)
+			user << "<span class='warning'>You need to refill \the [WT] first.</span>"
 			return
 		if(do_after(user, 100, needhand = FALSE, show_busy_icon = TRUE))
 			WT.remove_fuel(10, user)
 			health += 10
 			health = Clamp(health, 0, initial(health))
-			user << "<span class='warning'>You repair [src]. Integrity now at [health]%.</span>"
+			user << "<span class='warning'>You repair [src]. Integrity now at [(health / initial(health)) * 100]%.</span>"
 		return
 	..()
 

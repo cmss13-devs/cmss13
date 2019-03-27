@@ -66,6 +66,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tw = up
 \tq = drop
 \te = equip
+\tshift+e = sidearm equip
 \tr = throw
 \tt = say
 \tx = swap-hand

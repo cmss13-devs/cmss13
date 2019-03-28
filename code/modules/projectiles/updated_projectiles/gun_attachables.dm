@@ -78,15 +78,15 @@ Defined in conflicts.dm of the #defines folder.
 
 
 
-	attackby(obj/item/I, mob/user)
-		if(flags_attach_features & ATTACH_RELOADABLE)
-			if(user.get_inactive_hand() != src)
-				user << "<span class='warning'>You have to hold [src] to do that!</span>"
-			else
-				reload_attachment(I, user)
-			return TRUE
+/obj/item/attachable/attackby(obj/item/I, mob/user)
+	if(flags_attach_features & ATTACH_RELOADABLE)
+		if(user.get_inactive_hand() != src)
+			user << "<span class='warning'>You have to hold [src] to do that!</span>"
 		else
-			. = ..()
+			reload_attachment(I, user)
+		return TRUE
+	else
+		. = ..()
 
 
 
@@ -237,17 +237,17 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 16
 	attach_icon = "suppressor_a"
 
-	New()
-		..()
-		accuracy_mod = config.low_hit_accuracy_mult
-		damage_mod = -config.min_hit_damage_mult
-		recoil_mod = -config.min_recoil_value
-		scatter_mod = -config.min_scatter_value
-		attach_icon = pick("suppressor_a","suppressor2_a")
+/obj/item/attachable/suppressor/New()
+	..()
+	accuracy_mod = config.low_hit_accuracy_mult
+	damage_mod = -config.min_hit_damage_mult
+	recoil_mod = -config.min_recoil_value
+	scatter_mod = -config.min_scatter_value
+	attach_icon = pick("suppressor_a","suppressor2_a")
 
-		recoil_unwielded_mod = -config.min_recoil_value
-		scatter_unwielded_mod = -config.min_scatter_value
-		damage_falloff_mod = 0.4
+	recoil_unwielded_mod = -config.min_recoil_value
+	scatter_unwielded_mod = -config.min_scatter_value
+	damage_falloff_mod = 0.4
 
 /obj/item/attachable/bayonet
 	name = "bayonet"
@@ -262,27 +262,27 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_x = 14 //Below the muzzle.
 	pixel_shift_y = 18
 
-	attackby(obj/item/I, mob/user)
-		if(istype(I,/obj/item/tool/screwdriver))
-			user << "<span class='notice'>You modify the bayonet back into a combat knife.</span>"
-			if(istype(loc, /obj/item/storage))
-				var/obj/item/storage/S = loc
-				S.remove_from_storage(src)
-			if(loc == user)
-				user.drop_inv_item_on_ground(src)
-			var/obj/item/weapon/combat_knife/F = new(src.loc)
-			user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-			if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
-				F.loc = src.loc
-			cdel(src) //Delete da old bayonet
-		else
-			. = ..()
+/obj/item/attachable/bayonet/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/tool/screwdriver))
+		user << "<span class='notice'>You modify the bayonet back into a combat knife.</span>"
+		if(istype(loc, /obj/item/storage))
+			var/obj/item/storage/S = loc
+			S.remove_from_storage(src)
+		if(loc == user)
+			user.drop_inv_item_on_ground(src)
+		var/obj/item/weapon/combat_knife/F = new(src.loc)
+		user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
+		if(F.loc != user) //It ended up on the floor, put it whereever the old flashlight is.
+			F.loc = src.loc
+		cdel(src) //Delete da old bayonet
+	else
+		. = ..()
 
-	New()
-		..()
-		accuracy_mod = -config.min_hit_accuracy_mult
+/obj/item/attachable/bayonet/New()
+	..()
+	accuracy_mod = -config.min_hit_accuracy_mult
 
-		accuracy_unwielded_mod = -config.min_hit_accuracy_mult
+	accuracy_unwielded_mod = -config.min_hit_accuracy_mult
 
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"
@@ -291,10 +291,10 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "ebarrel"
 	attach_icon = "ebarrel_a"
 
-	New()
-		..()
-		accuracy_mod = config.med_hit_accuracy_mult
-		damage_mod = -config.min_hit_damage_mult
+/obj/item/attachable/extended_barrel/New()
+	..()
+	accuracy_mod = config.med_hit_accuracy_mult
+	damage_mod = -config.min_hit_damage_mult
 
 
 
@@ -306,13 +306,13 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "hbarrel"
 	attach_icon = "hbarrel_a"
 
-	New()
-		..()
-		accuracy_mod = -config.hmed_hit_accuracy_mult
-		damage_mod = config.hmed_hit_damage_mult
-		delay_mod = config.low_fire_delay
+/obj/item/attachable/heavy_barrel/New()
+	..()
+	accuracy_mod = -config.hmed_hit_accuracy_mult
+	damage_mod = config.hmed_hit_damage_mult
+	delay_mod = config.low_fire_delay
 
-		accuracy_unwielded_mod = -config.high_hit_accuracy_mult
+	accuracy_unwielded_mod = -config.high_hit_accuracy_mult
 
 
 /obj/item/attachable/compensator
@@ -323,15 +323,15 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "comp_a"
 	pixel_shift_x = 17
 
-	New()
-		..()
-		accuracy_mod = config.med_hit_accuracy_mult
-		damage_mod = -config.low_hit_damage_mult
-		recoil_mod = -config.med_recoil_value
+/obj/item/attachable/compensator/New()
+	..()
+	accuracy_mod = config.med_hit_accuracy_mult
+	damage_mod = -config.low_hit_damage_mult
+	recoil_mod = -config.med_recoil_value
 
-		damage_falloff_mod = 0.4
-		accuracy_unwielded_mod = config.med_hit_accuracy_mult
-		recoil_unwielded_mod = -config.low_recoil_value
+	damage_falloff_mod = 0.4
+	accuracy_unwielded_mod = config.med_hit_accuracy_mult
+	recoil_unwielded_mod = -config.low_recoil_value
 
 
 /obj/item/attachable/slavicbarrel
@@ -344,10 +344,10 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 16
 	flags_attach_features = NOFLAGS
 
-	New()
-		..()
-		accuracy_mod = config.min_hit_accuracy_mult
-		scatter_mod = -config.low_scatter_value
+/obj/item/attachable/slavicbarrel/New()
+	..()
+	accuracy_mod = config.min_hit_accuracy_mult
+	scatter_mod = -config.low_scatter_value
 
 /obj/item/attachable/sniperbarrel
 	name = "sniper barrel"
@@ -356,10 +356,10 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "muzzle"
 	flags_attach_features = NOFLAGS
 
-	New()
-		..()
-		accuracy_mod = config.low_hit_accuracy_mult
-		scatter_mod = -config.low_scatter_value
+/obj/item/attachable/sniperbarrel/New()
+	..()
+	accuracy_mod = config.low_hit_accuracy_mult
+	scatter_mod = -config.low_scatter_value
 
 /obj/item/attachable/m60barrel
 	name = "M60 barrel"
@@ -368,10 +368,10 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "muzzle"
 	flags_attach_features = NOFLAGS
 
-	New()
-		..()
-		accuracy_mod = config.low_hit_accuracy_mult
-		scatter_mod = -config.low_scatter_value
+/obj/item/attachable/m60barrel/New()
+	..()
+	accuracy_mod = config.low_hit_accuracy_mult
+	scatter_mod = -config.low_scatter_value
 
 /obj/item/attachable/smartbarrel
 	name = "smartgun barrel"
@@ -394,11 +394,11 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "reddot_a"
 	slot = "rail"
 
-	New()
-		..()
-		accuracy_mod = config.med_hit_accuracy_mult
-		accuracy_unwielded_mod = config.min_hit_accuracy_mult
-		movement_acc_penalty_mod = 1
+/obj/item/attachable/reddot/New()
+	..()
+	accuracy_mod = config.med_hit_accuracy_mult
+	accuracy_unwielded_mod = config.min_hit_accuracy_mult
+	movement_acc_penalty_mod = 1
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
@@ -407,13 +407,13 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "reflex_a"
 	slot = "rail"
 
-	New()
-		..()
-		accuracy_mod = config.low_hit_accuracy_mult
-		accuracy_unwielded_mod = config.min_hit_accuracy_mult
-		scatter_mod = -config.min_scatter_value
-		burst_scatter_mod = -1
-		movement_acc_penalty_mod = 1
+/obj/item/attachable/reflex/New()
+	..()
+	accuracy_mod = config.low_hit_accuracy_mult
+	accuracy_unwielded_mod = config.min_hit_accuracy_mult
+	scatter_mod = -config.min_scatter_value
+	burst_scatter_mod = -1
+	movement_acc_penalty_mod = 1
 
 
 /obj/item/attachable/flashlight

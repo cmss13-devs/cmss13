@@ -1,4 +1,3 @@
-
 // --------------------------------------------
 // *** Slightly more complicated data retrieval ***
 // --------------------------------------------
@@ -134,9 +133,31 @@
 
 /obj/item/disk/objective/New()
 	..()
+	var/diskcol
 	var/letters = list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega")
-	name = "computer disk [pick(letters)]-[rand(100,999)]"
+	var/diskvar = rand(1,15)
+	icon_state = "disk_[diskvar]"
+
+	switch(diskvar)
+		if (1,2)
+			diskcol = "grey"
+		if (3 to 5)
+			diskcol = "white"	
+		if (6,7)
+			diskcol = "green"
+		if (8 to 10)
+			diskcol = "red"
+		if (11 to 13)
+			diskcol = "blue"
+		if (14)
+			diskcol = "cracked blue"
+		if (15)
+			diskcol = "bloddied blue"
+
+	name = "[diskcol] computer disk [pick(letters)]-[rand(100,999)]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
+	pixel_y = rand(-8, 8)
+	pixel_x = rand(-9, 9)
 	w_class = 1
 
 /obj/item/disk/objective/Dispose()

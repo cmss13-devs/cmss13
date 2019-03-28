@@ -199,21 +199,34 @@
 		dy = NORTH
 	else
 		dy = SOUTH
+	var/stepx = 0
+	var/stepy = 0
+	var/stepdiag = 0
 	var/dist_travelled = 0
+	var/completed = 0
 	var/dist_since_sleep = 0
 	var/area/a = get_area(src.loc)
 	if(dist_x > dist_y)
 		var/error = dist_x/2 - dist_y
-		while(src && !disposed && target &&((((src.x < target.x && dx == EAST) || (src.x > target.x && dx == WEST)) && dist_travelled < range) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
+		while(src && !disposed && target &&((((src.x < target.x && dx == EAST) || (src.x > target.x && dx == WEST)) && !completed) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
 			// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
 			if(error < 0)
 				var/atom/step = get_step(src, dy)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepx) // if moving parallel to last move
+						break
 				Move(step)
 				hit_check(speed)
 				error += dist_x
-				dist_travelled++
+				stepy++
+				if(stepx)
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
@@ -222,27 +235,45 @@
 				var/atom/step = get_step(src, dx)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepy) // if moving parallel to last move
+						break
 				Move(step)
 				hit_check(speed)
 				error -= dist_y
-				dist_travelled++
+				stepx++
+				if(stepy) // diagonal throwing is a lattice problem
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
 					sleep(1)
 			a = get_area(src.loc)
-	else
+	else //dist_travelled < range
 		var/error = dist_y/2 - dist_x
-		while(src && !disposed && target &&((((src.y < target.y && dy == NORTH) || (src.y > target.y && dy == SOUTH)) && dist_travelled < range) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
+		while(src && !disposed && target &&((((src.y < target.y && dy == NORTH) || (src.y > target.y && dy == SOUTH)) && !completed) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
 			// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
 			if(error < 0)
 				var/atom/step = get_step(src, dx)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepy) // if moving parallel to last move
+						break
 				Move(step)
 				hit_check(speed)
 				error += dist_y
-				dist_travelled++
+				stepx++
+				if(stepy) 
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
@@ -251,10 +282,19 @@
 				var/atom/step = get_step(src, dy)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepx) // if moving parallel to last move
+						break
 				Move(step)
 				hit_check(speed)
 				error -= dist_x
-				dist_travelled++
+				stepy++
+				if(stepx)
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0

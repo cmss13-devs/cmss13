@@ -211,6 +211,9 @@
 //Checks to see who won///
 //////////////////////////
 /datum/game_mode/colonialmarines/check_win()
+	if(ticker.current_state != GAME_STATE_PLAYING)
+		return
+
 	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]

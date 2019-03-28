@@ -1,56 +1,29 @@
 var/global/datum/controller/gameticker/ticker
-
-#define GAME_STATE_PREGAME		1
-#define GAME_STATE_SETTING_UP	2
-#define GAME_STATE_PLAYING		3
-#define GAME_STATE_FINISHED		4
-
-
 /datum/controller/gameticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
 
-	var/hide_mode = 0
+	var/hide_mode = FALSE
 	var/datum/game_mode/mode = null
-	var/post_game = 0
+	var/post_game = FALSE
 	var/event_time = null
-	var/event = 0
+	var/event = FALSE
 
 	var/login_music			// music played in pregame lobby
 
 	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
 
-	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
-	var/Bible_item_state	// item_state the chaplain has chosen for his bible
-	var/Bible_name			// name of the bible
-	var/Bible_deity_name
-
 	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
 
-	var/list/syndicate_coalition = list() // list of traitor-compatible factions
-	var/list/factions = list()			  // list of all factions
-	var/list/availablefactions = list()	  // list of factions with openings
-
 	var/pregame_timeleft = 0
-	var/toweractive = 0
-	var/delay_end = 0	//if set to nonzero, the round will not restart on it's own
+	var/toweractive = FALSE
+	var/delay_end = FALSE	//if set to nonzero, the round will not restart on it's own
 
-	var/triai = 0//Global holder for Triumvirate
-
-	var/round_end_announced = 0 // Spam Prevention. Announce round end only once.
+	var/round_end_announced = FALSE // Spam Prevention. Announce round end only once.
 	var/datum/mind/liaison = null
 
 /datum/controller/gameticker/proc/pregame()
-	//MURICA DAY.  DEAL WITH IT.
-/*	login_music = pick('sound/music/America_fuck_yeah.ogg',
-	'sound/music/America_The_Beautiful.ogg',
-	'sound/music/God_Bless_the_U.ogg',
-	'sound/music/Made_In_The_USA.ogg',
-	'sound/music/Stars_and_strips_fly.ogg',
-	'sound/music/Red_White_and_Blue.ogg')
-*/
-
-	login_music = pick('sound/music/good_day_to_die.ogg',//It's a Good Day to Die
+	login_music = pick('sound/music/good_day_to_die.ogg',
 //	'sound/music/ColonialHalloween.ogg'
 //	'sound/music/Suspense_Explore.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
@@ -64,9 +37,8 @@ var/global/datum/controller/gameticker/ticker
 
 	do
 		pregame_timeleft = 180
-		world << "<B><FONT color='blue'>Welcome to the pre-game lobby of Colonial Marines!</FONT></B>"
-		world << "Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds"
-//		world << "HAPPY MURICA DAY 2017."
+		world << "<center><B><span class='notice'>Welcome to the pre-game lobby of Colonial Marines!<span class='notice'></B></center>"
+		world << "<center><span class='notice'>Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds.</span></center>"
 		while(current_state == GAME_STATE_PREGAME)
 			for(var/i=0, i<10, i++)
 				sleep(1)
@@ -165,7 +137,6 @@ var/global/datum/controller/gameticker/ticker
 			if (S.name != "AI")
 				cdel(S)
 		world << "<FONT color='blue'><B>Enjoy the game!</B></FONT>"
-		//world << sound('sound/AI/welcome.ogg') // Skie
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
@@ -176,16 +147,7 @@ var/global/datum/controller/gameticker/ticker
 		world << "\red <B>The OOC channel has been globally disabled due to round start!</B>"
 		ooc_allowed = !( ooc_allowed )
 
-//	var/admins_number = 0
-//	for(var/client/C)
-//		if(C.admin_holder)
-//			admins_number++
-//	if(admins_number == 0)
-//		send2adminirc("Round has started with no admins online.")
-
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
-
-	//for(var/obj/multiz/ladder/L in object_list) L.connect() //Lazy hackfix for ladders. TODO: move this to an actual controller. ~ Z
 
 	if(config.sql_enabled)
 		spawn(MINUTES_5)
@@ -287,45 +249,20 @@ var/global/datum/controller/gameticker/ticker
 					world << "<hr>"
 
 		else if (mode_finished)
-			post_game = 1
+			post_game = TRUE
 
 			mode.cleanup()
 
 			//call a transfer shuttle vote
 			spawn(50)
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
-					world << "\red The round has ended!"
-					round_end_announced = 1
+					world << "<span class='warning'>The round has ended!</span>"
+					round_end_announced = TRUE
 
 		return 1
 
 
 /datum/controller/gameticker/proc/declare_completion()
-/* 	world << "<br><br><br><font size=3><b>The round has ended.</b></font>"
-	for(var/mob/Player in player_list)
-		if(Player.mind && !isnewplayer(Player))
-			if(Player.stat != DEAD)
-				var/turf/playerTurf = get_turf(Player)
-				if(emergency_shuttle.departed && emergency_shuttle.evac)
-					if(playerTurf.z != 2)
-						Player << "<font color='blue'><b>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</b></font>"
-					else
-						Player << "<font color='green'><b>You managed to survive the events on [station_name] as [Player.real_name].</b></font>"
-				else if(playerTurf.z == 2)
-					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>"
-				else if(issilicon(Player))
-					Player << "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>"
-				else
-					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>"
-			else
-				if(istype(Player,/mob/dead/observer))
-					var/mob/dead/observer/O = Player
-					if(!O.started_as_observer)
-						Player << "<font color='red'><b>You did not survive the events on [station_name]...</b></font>"
-				else
-					Player << "<font color='red'><b>You did not survive the events on [station_name]...</b></font>"
-	world << "<br>" */
-
 	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
 		if (aiPlayer.stat != 2)
 			world << "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>"

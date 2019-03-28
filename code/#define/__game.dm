@@ -235,3 +235,9 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define FIRE_MISSION_STATE_FIRING 4
 #define FIRE_MISSION_STATE_OFF_TARGET 8
 #define FIRE_MISSION_STATE_COOLDOWN 16
+
+//Defines for the ticker
+#define GAME_STATE_PREGAME		1
+#define GAME_STATE_SETTING_UP	2
+#define GAME_STATE_PLAYING		3
+#define GAME_STATE_FINISHED		4

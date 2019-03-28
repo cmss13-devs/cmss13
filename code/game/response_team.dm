@@ -18,7 +18,7 @@ var/can_call_ert
 	if(!ticker)
 		usr << "\red The game hasn't started yet!"
 		return
-	if(ticker.current_state == 1)
+	if(ticker.current_state == GAME_STATE_PREGAME)
 		usr << "\red The round hasn't started yet!"
 		return
 	if(send_emergency_team)

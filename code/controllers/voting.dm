@@ -25,7 +25,7 @@ datum/controller/vote
 		if(mode)
 			// No more change mode votes after the game has started.
 			// 3 is GAME_STATE_PLAYING, but that #define is undefined for some reason
-			if(mode == "gamemode" && ticker.current_state >= 2)
+			if(mode == "gamemode" && ticker.current_state >= GAME_STATE_SETTING_UP)
 				world << "<b>Voting aborted due to game start.</b>"
 				src.reset()
 				return
@@ -186,7 +186,7 @@ datum/controller/vote
 				if("restart")
 					choices.Add("Restart Round","Continue Playing")
 				if("gamemode")
-					if(ticker.current_state >= 2)
+					if(ticker.current_state == GAME_STATE_SETTING_UP)
 						return 0
 					choices.Add(config.votable_modes)
 					var/list/L = typesof(/datum/game_mode) - /datum/game_mode

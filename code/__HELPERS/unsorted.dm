@@ -662,7 +662,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/ertmemberlist = list()
 	var/list/sortmob = sortAtom(mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !M.mind.special_role || M.mind.faction == "Survivor" || M.mind.special_role == "Xenomorph" || M.mind.assigned_role == "Corporate Liaison" || M.species.name == "Yautja")
+		if(!M.client || !M.mind.special_role || isSynth(M) || M.mind.faction == "Survivor" || M.mind.special_role == "Xenomorph" || M.mind.assigned_role == "Corporate Liaison" || M.species.name == "Yautja")
 			continue
 		ertmemberlist.Add(M)
 	return ertmemberlist

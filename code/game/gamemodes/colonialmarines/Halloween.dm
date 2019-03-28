@@ -101,7 +101,7 @@
 
 	new_xeno << "<B>You are now an alien!</B>"
 	new_xeno << "<B>Your job is to spread the hive and protect the Queen. You can become the Queen yourself by evolving into a drone.</B>"
-	new_xeno << "Use say :a to talk to the hive."
+	new_xeno << "Use 'say ;' to talk to the hive."
 
 	new_xeno.update_icons()
 

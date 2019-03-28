@@ -444,11 +444,11 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(is_queen)
 		new_xeno << "<B>You are now the alien queen!</B>"
 		new_xeno << "<B>Your job is to spread the hive.</B>"
-		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ':aMy life for the queen!')"
+		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')"
 	else
 		new_xeno << "<B>You are now an alien!</B>"
 		new_xeno << "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>"
-		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ':aMy life for the queen!')"
+		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')"
 
 	new_xeno.update_icons()
 
@@ -626,7 +626,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(spawner.make_objective)
 		new /datum/cm_objective/move_mob/almayer/survivor(H)
 
-/datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)	
+/datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)
 	H.loc = loc
 	//Damage them for realism purposes
 	H.take_limb_damage(rand(0,15), rand(0,15))

@@ -215,7 +215,7 @@
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
 	new_xeno << "<b>You are an alien!</b>"
-	new_xeno << "<b>Use Say \":a message\" to communicate with other aliens.</b>"
+	new_xeno << "<b>Use Say \"; message\" to communicate with other aliens.</b>"
 	spawn(0)//To prevent the proc from returning null.
 		cdel(src)
 	return

@@ -628,8 +628,6 @@ datum/game_mode/proc/initialize_special_clamps()
 
 /datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)
 	H.loc = loc
-	//Damage them for realism purposes
-	H.take_limb_damage(rand(0,15), rand(0,15))
 	survivor_old_equipment(H, is_synth)
 	H.name = H.get_visible_name()
 	new /datum/cm_objective/move_mob/almayer/survivor(H)

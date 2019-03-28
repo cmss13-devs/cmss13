@@ -1443,7 +1443,7 @@
 	sound_hit = "acid_hit"
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
 
 /datum/ammo/xeno/railgun_glob/New()
 	..()
@@ -1454,6 +1454,7 @@
 	scatter = config.min_scatter_value
 	accuracy = config.max_hit_accuracy
 	max_range = config.long_shell_range
+	shell_speed = config.ultra_shell_speed
 
 /datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/structure/barricade))

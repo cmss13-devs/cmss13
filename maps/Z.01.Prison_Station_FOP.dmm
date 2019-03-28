@@ -2810,6 +2810,19 @@
 /obj/structure/toilet,
 /turf/open/floor/prison,
 /area/prison/cellblock/maxsec/north)
+"agD" = (
+/turf/open/floor{
+	icon_state = "asteroid"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (SOUTHWEST)";
+	icon_state = "intact-scrubbers";
+	dir = 10
+	},
+/turf/open/floor{
+	icon_state = "wood_siding8"
+	},
+/area/prison/residential/north)
 "agE" = (
 /turf/open/floor/prison,
 /area/prison/security/monitoring/maxsec/panopticon)
@@ -4742,6 +4755,22 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
+"akm" = (
+/turf/open/floor{
+	icon_state = "asteroid"
+	},
+/turf/open/floor{
+	icon_state = "siding2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "wood_siding4"
+	},
+/area/prison/residential/north)
 "akn" = (
 /obj/machinery/light{
 	dir = 4;
@@ -5090,6 +5119,57 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
+"akH" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood_siding2"
+	},
+/area/prison/residential/central)
+"akI" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (NORTHEAST)";
+	icon_state = "intact-scrubbers";
+	dir = 5
+	},
+/turf/open/floor{
+	icon_state = "wood_siding2"
+	},
+/area/prison/residential/central)
+"akJ" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood_siding2"
+	},
+/area/prison/residential/central)
 "akK" = (
 /turf/closed/wall/r_wall/prison,
 /area/prison/cellblock/maxsec/south)
@@ -5283,6 +5363,29 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
+"ala" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood_siding2"
+	},
+/area/prison/residential/central)
 "alb" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -5297,6 +5400,18 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
+"alc" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/open/floor{
+	icon_state = "siding2"
+	},
+/area/prison/residential/central)
 "ald" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10;
@@ -5433,6 +5548,38 @@
 	dir = 10
 	},
 /area/prison/cellblock/maxsec/north)
+"alq" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "siding2"
+	},
+/area/prison/residential/central)
+"alr" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/turf/open/floor{
+	icon_state = "wood_siding2"
+	},
+/area/prison/residential/central)
 "als" = (
 /obj/machinery/light{
 	dir = 1
@@ -7071,6 +7218,34 @@
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
+"aoH" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
+/turf/open/floor{
+	icon_state = "wood_siding6"
+	},
+/area/prison/residential/central)
+"aoI" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor{
+	icon_state = "wood_siding8"
+	},
+/area/prison/residential/central)
 "aoJ" = (
 /obj/effect/landmark/corpsespawner/prison_security,
 /obj/item/reagent_container/food/drinks/bottle/whiskey,
@@ -9581,6 +9756,18 @@
 	icon_state = "darkred2"
 	},
 /area/prison/security/checkpoint/maxsec_highsec)
+"asW" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor{
+	icon_state = "wood_siding8"
+	},
+/area/prison/residential/central)
 "asX" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17995,6 +18182,18 @@
 	dir = 10
 	},
 /area/prison/residential/north)
+"aHt" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/open/floor{
+	icon_state = "siding8"
+	},
+/area/prison/residential/central)
 "aHu" = (
 /obj/structure/bed/chair,
 /obj/machinery/alarm/almayer{
@@ -18587,10 +18786,12 @@
 	icon_state = "sterile_white";
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
 /turf/open/floor{
-	icon_state = "wood_siding2"
+	icon_state = "wood_siding4"
 	},
 /area/prison/residential/central)
 "aIB" = (
@@ -20046,16 +20247,13 @@
 /area/prison/residential/north)
 "aLd" = (
 /turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
+	dir = 1;
+	icon_state = "rampbottom"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor{
-	icon_state = "wood_siding8"
+	icon_state = "siding8"
 	},
 /area/prison/residential/central)
 "aLe" = (
@@ -23809,6 +24007,21 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/prison/command/secretary_office)
+"aRH" = (
+/turf/open/floor/prison,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/security/monitoring/highsec)
 "aRI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6;
@@ -24247,6 +24460,26 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/staff)
+"aSC" = (
+/turf/open/floor/prison,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/security/monitoring/highsec)
 "aSD" = (
 /obj/item/document_objective/paper,
 /turf/open/floor/prison{
@@ -28949,17 +29182,20 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
 "baU" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
+/turf/open/floor/prison,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/open/floor{
-	icon_state = "wood_siding8"
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
-/area/prison/residential/central)
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/security/monitoring/highsec)
 "baV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -29315,18 +29551,27 @@
 /turf/open/floor/plating,
 /area/prison/hanger/main)
 "bbG" = (
-/turf/open/floor{
-	icon_state = "asteroid"
+/turf/open/floor/prison,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (SOUTHWEST)";
-	icon_state = "intact-scrubbers";
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/security/monitoring/highsec)
+"bbH" = (
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
 	dir = 10
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	icon_state = "wood_siding8"
+	icon_state = "wood_siding2"
 	},
-/area/prison/residential/north)
+/area/prison/yard)
 "bbI" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -30127,6 +30372,17 @@
 	dir = 2
 	},
 /area/prison/residential/south)
+"bdv" = (
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
+	},
+/obj/item/frame/table/reinforced,
+/turf/open/floor{
+	icon_state = "wood_siding4"
+	},
+/area/prison/yard)
 "bdw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5;
@@ -30695,6 +30951,22 @@
 /obj/machinery/recharge_station,
 /turf/open/floor/plating,
 /area/prison/hanger/main)
+"bev" = (
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/landmark{
+	name = "good_item"
+	},
+/turf/open/floor{
+	icon_state = "wood_siding8"
+	},
+/area/prison/yard)
 "bew" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -30769,88 +31041,67 @@
 /area/prison/residential/south)
 "beD" = (
 /turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
+/obj/structure/table/reinforced,
 /turf/open/floor{
-	icon_state = "wood_siding2"
+	icon_state = "wood_siding4"
 	},
-/area/prison/residential/central)
+/area/prison/yard)
 "beE" = (
 /turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
 	dir = 10
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/table/reinforced,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor{
+	icon_state = "wood_siding1"
+	},
+/area/prison/yard)
+"beF" = (
+/turf/open/floor/prison,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (NORTHEAST)";
 	icon_state = "intact-scrubbers";
 	dir = 5
 	},
-/turf/open/floor{
-	icon_state = "wood_siding2"
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
-/area/prison/residential/central)
-"beF" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "wood_siding2"
-	},
-/area/prison/residential/central)
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/security/monitoring/highsec)
 "beG" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/machinery/light{
+/turf/open/floor/prison,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/turf/open/floor{
-	icon_state = "wood_siding2"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
 	},
-/area/prison/residential/central)
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/security/monitoring/highsec)
 "beH" = (
 /turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
+	icon_state = "rampbottom"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor{
-	icon_state = "siding2"
+	icon_state = "siding8"
 	},
 /area/prison/residential/central)
 "beI" = (
@@ -31619,6 +31870,19 @@
 	dir = 10
 	},
 /area/prison/residential/central)
+"bfZ" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/unary/vent_pump{
+	on = 1
+	},
+/turf/open/floor{
+	icon_state = "wood_siding5"
+	},
+/area/prison/residential/central)
 "bga" = (
 /obj/structure/window/framed/prison/reinforced,
 /turf/open/floor/plating,
@@ -31629,16 +31893,53 @@
 	icon_state = "sterile_white";
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
 	},
 /turf/open/floor{
-	icon_state = "wood_siding6"
+	icon_state = "wood_siding1"
 	},
 /area/prison/residential/central)
 "bgc" = (
 /turf/open/organic/grass,
+/area/prison/residential/central)
+"bgd" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/open/floor{
+	icon_state = "wood_siding1"
+	},
+/area/prison/residential/central)
+"bge" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "wood_siding1"
+	},
 /area/prison/residential/central)
 "bgf" = (
 /turf/open/floor{
@@ -32369,6 +32670,27 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop1/prison)
+"bhz" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/open/floor{
+	icon_state = "wood_siding1"
+	},
+/area/prison/residential/central)
 "bhA" = (
 /obj/machinery/light{
 	dir = 4
@@ -32381,9 +32703,61 @@
 	icon_state = "red"
 	},
 /area/prison/security/monitoring/highsec)
+"bhB" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "siding1"
+	},
+/area/prison/residential/central)
 "bhC" = (
 /turf/open/floor{
 	icon_state = "asteroid"
+	},
+/area/prison/residential/central)
+"bhD" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "siding1"
+	},
+/area/prison/residential/central)
+"bhE" = (
+/turf/open/floor/prison{
+	tag = "icon-sterile_white (SOUTHWEST)";
+	icon_state = "sterile_white";
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "wood_siding1"
 	},
 /area/prison/residential/central)
 "bhF" = (
@@ -33961,19 +34335,76 @@
 	},
 /area/prison/hanger/main)
 "bjK" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/central)
+"bjL" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/prison/hallway/central)
+"bjM" = (
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
+	dir = 10;
+	icon_state = "damaged1";
+	tag = "icon-bright_clean (SOUTHWEST)"
 	},
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
+/area/prison/hallway/central)
+"bjN" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/open/floor{
-	icon_state = "wood_siding4"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "damaged2";
+	tag = "icon-bright_clean (SOUTHWEST)"
 	},
-/area/prison/residential/central)
+/area/prison/hallway/central)
 "bjO" = (
 /obj/machinery/light{
 	dir = 4
@@ -34583,6 +35014,22 @@
 	icon_state = "darkyellow2"
 	},
 /area/prison/hanger/main)
+"bkL" = (
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "damaged2";
+	tag = "icon-bright_clean2 (SOUTHWEST)"
+	},
+/area/prison/laundry)
+"bkM" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "damaged5";
+	tag = "icon-bright_clean2 (SOUTHWEST)"
+	},
+/area/prison/laundry)
 "bkN" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -35497,6 +35944,22 @@
 	icon_state = "rampbottom"
 	},
 /area/prison/yard)
+"bmz" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "damaged4";
+	tag = "icon-bright_clean2 (SOUTHWEST)"
+	},
+/area/prison/laundry)
 "bmA" = (
 /obj/structure/table/reinforced,
 /obj/item/ammo_casing,
@@ -35669,6 +36132,19 @@
 	icon_state = "darkyellow2"
 	},
 /area/prison/hanger/main)
+"bmV" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/camera/autoname{
+	dir = 2;
+	network = list("PRISON")
+	},
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
+	},
+/area/prison/laundry)
 "bmW" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating,
@@ -35685,6 +36161,11 @@
 	icon_state = "red"
 	},
 /area/prison/security/monitoring/highsec)
+"bmY" = (
+/obj/structure/window_frame/prison/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/prison/laundry)
 "bmZ" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
@@ -35907,21 +36388,14 @@
 	},
 /area/prison/yard)
 "bnz" = (
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	icon_state = "door_closed";
+	locked = 1
+	},
 /turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
+	icon_state = "damaged3"
 	},
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/decal/cleanable/blood/gibs,
-/obj/effect/landmark{
-	name = "good_item"
-	},
-/turf/open/floor{
-	icon_state = "wood_siding8"
-	},
-/area/prison/yard)
+/area/prison/laundry)
 "bnA" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark{
@@ -36064,21 +36538,18 @@
 	},
 /area/prison/residential/central)
 "bnS" = (
-/turf/open/floor{
-	icon_state = "asteroid"
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/open/floor{
-	icon_state = "siding2"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	icon_state = "damaged2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
-	},
-/turf/open/floor{
-	icon_state = "wood_siding4"
-	},
-/area/prison/residential/north)
+/area/prison/laundry)
 "bnT" = (
 /obj/machinery/light{
 	dir = 1
@@ -36105,6 +36576,14 @@
 	},
 /turf/open/organic/grass,
 /area/prison/residential/north)
+"bnW" = (
+/obj/item/shard,
+/turf/open/floor/prison{
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
+	},
+/area/prison/laundry)
 "bnX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
@@ -37448,16 +37927,11 @@
 /area/prison/storage/vip)
 "bpG" = (
 /turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
+	dir = 10;
+	icon_state = "damaged1";
+	tag = "icon-bright_clean (SOUTHWEST)"
 	},
-/obj/structure/table/reinforced,
-/obj/item/weapon/gun/shotgun/pump/cmb,
-/turf/open/floor{
-	icon_state = "wood_siding1"
-	},
-/area/prison/yard)
+/area/prison/laundry)
 "bpH" = (
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison{
@@ -39286,18 +39760,19 @@
 	},
 /area/prison/hanger/main)
 "bsU" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/item/shard,
 /turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	on = 1
-	},
-/turf/open/floor{
-	icon_state = "wood_siding5"
-	},
-/area/prison/residential/central)
+/area/prison/laundry)
 "bsV" = (
 /turf/open/floor{
 	icon_state = "asteroid"
@@ -39590,58 +40065,44 @@
 	},
 /area/prison/residential/central)
 "bty" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
 /turf/open/floor{
-	icon_state = "wood_siding1"
-	},
-/area/prison/residential/central)
-"btz" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/machinery/light,
-/turf/open/floor{
-	icon_state = "wood_siding1"
-	},
-/area/prison/residential/central)
-"btA" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+	icon_state = "asteroid"
 	},
 /turf/open/floor{
 	icon_state = "siding1"
 	},
-/area/prison/residential/central)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "wood_siding8"
+	},
+/area/prison/residential/south)
+"btz" = (
+/turf/open/floor{
+	icon_state = "asteroid"
+	},
+/turf/open/floor{
+	icon_state = "siding1"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "wood_siding4"
+	},
+/area/prison/residential/south)
+"btA" = (
+/turf/open/floor{
+	icon_state = "asteroid"
+	},
+/obj/item/document_objective/paper,
+/turf/open/floor{
+	icon_state = "wood_siding6"
+	},
+/area/prison/residential/south)
 "btB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -51744,42 +52205,6 @@
 "bOs" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/laundry)
-"bOt" = (
-/obj/machinery/door/poddoor/almayer{
-	dir = 2;
-	id = "central";
-	name = "Timed Emergency Blast Door";
-	unacidable = 1;
-	use_power = 0
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean2 (SOUTHWEST)";
-	icon_state = "bright_clean2";
-	dir = 10
-	},
-/area/prison/laundry)
-"bOu" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/poddoor/almayer{
-	dir = 2;
-	id = "central";
-	name = "Timed Emergency Blast Door";
-	unacidable = 1;
-	use_power = 0
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean2 (SOUTHWEST)";
-	icon_state = "bright_clean2";
-	dir = 10
-	},
-/area/prison/laundry)
 "bOv" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/security/checkpoint/medsec)
@@ -52291,34 +52716,8 @@
 	dir = 10
 	},
 /area/prison/laundry)
-"bPv" = (
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/laundry)
 "bPw" = (
 /turf/closed/wall/prison,
-/area/prison/laundry)
-"bPx" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "Laundry"
-	},
-/turf/open/floor/prison,
-/area/prison/laundry)
-"bPy" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison,
 /area/prison/laundry)
 "bPz" = (
 /turf/closed/wall/r_wall/prison,
@@ -53005,17 +53404,6 @@
 	dir = 10
 	},
 /area/prison/laundry)
-"bQZ" = (
-/obj/machinery/camera/autoname{
-	dir = 2;
-	network = list("PRISON")
-	},
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/laundry)
 "bRa" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -53025,19 +53413,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/area/prison/laundry)
-"bRb" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
@@ -54462,56 +54837,6 @@
 "bTL" = (
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
-"bTM" = (
-/turf/open/floor/prison,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/security/monitoring/highsec)
-"bTN" = (
-/turf/open/floor/prison,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/security/monitoring/highsec)
-"bTO" = (
-/turf/open/floor/prison,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/security/monitoring/highsec)
 "bTP" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	on = 1
@@ -55913,17 +56238,6 @@
 	dir = 10
 	},
 /area/prison/residential/south)
-"bWD" = (
-/turf/open/floor/prison,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/security/monitoring/highsec)
 "bWE" = (
 /obj/structure/flora/pottedplant{
 	tag = "icon-plant-10";
@@ -55947,38 +56261,6 @@
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
-"bWH" = (
-/turf/open/floor/prison,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (NORTHEAST)";
-	icon_state = "intact-scrubbers";
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/security/monitoring/highsec)
-"bWI" = (
-/turf/open/floor/prison,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/prison/security/monitoring/highsec)
 "bWJ" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -72277,20 +72559,6 @@
 	icon_state = "darkredcorners2"
 	},
 /area/prison/security/monitoring/medsec/south)
-"cAV" = (
-/turf/open/floor{
-	icon_state = "asteroid"
-	},
-/turf/open/floor{
-	icon_state = "siding1"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/turf/open/floor{
-	icon_state = "wood_siding8"
-	},
-/area/prison/residential/south)
 "cAW" = (
 /obj/structure/window/framed/prison/reinforced/hull,
 /turf/open/floor/plating,
@@ -72508,22 +72776,6 @@
 	},
 /turf/open/organic/grass,
 /area/prison/residential/south)
-"cBo" = (
-/turf/open/floor{
-	icon_state = "asteroid"
-	},
-/turf/open/floor{
-	icon_state = "siding1"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5;
-	icon_state = "intact-supply";
-	tag = "icon-intact-supply (EAST)"
-	},
-/turf/open/floor{
-	icon_state = "wood_siding4"
-	},
-/area/prison/residential/south)
 "cBp" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
@@ -72540,15 +72792,6 @@
 	dir = 10
 	},
 /area/prison/security)
-"cBr" = (
-/turf/open/floor{
-	icon_state = "asteroid"
-	},
-/obj/item/document_objective/paper,
-/turf/open/floor{
-	icon_state = "wood_siding6"
-	},
-/area/prison/residential/south)
 "cBs" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -72711,42 +72954,6 @@
 	dir = 10
 	},
 /area/prison/medbay)
-"dPX" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/turf/open/floor{
-	icon_state = "wood_siding1"
-	},
-/area/prison/residential/central)
-"dSj" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "siding2"
-	},
-/area/prison/residential/central)
 "eld" = (
 /turf/open/floor{
 	icon_state = "asteroid"
@@ -72760,17 +72967,6 @@
 /obj/item/document_objective/folder,
 /turf/open/floor/wood,
 /area/prison/residential/north)
-"eUH" = (
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "wood_siding2"
-	},
-/area/prison/yard)
 "fby" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/organic/grass,
@@ -72842,41 +73038,10 @@
 /obj/item/document_objective/paper,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
-"gJE" = (
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor{
-	icon_state = "wood_siding4"
-	},
-/area/prison/yard)
 "gJR" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
-"hoj" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "siding1"
-	},
-/area/prison/residential/central)
 "hVd" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/blood,
@@ -72894,21 +73059,6 @@
 /obj/structure/bookcase,
 /obj/item/disk/objective,
 /turf/open/floor/wood,
-/area/prison/residential/central)
-"iKE" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "wood_siding1"
-	},
 /area/prison/residential/central)
 "iLf" = (
 /obj/structure/closet,
@@ -73100,28 +73250,6 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/organic/grass,
 /area/prison/yard)
-"oEb" = (
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
-	},
-/obj/item/frame/table/reinforced,
-/turf/open/floor{
-	icon_state = "wood_siding4"
-	},
-/area/prison/yard)
-"oHO" = (
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "rampbottom"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/open/floor{
-	icon_state = "siding8"
-	},
-/area/prison/residential/central)
 "oRM" = (
 /turf/open/floor{
 	icon_state = "asteroid"
@@ -73156,26 +73284,6 @@
 	dir = 10
 	},
 /area/prison/execution)
-"pjo" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "wood_siding1"
-	},
-/area/prison/residential/central)
 "pqi" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -73191,16 +73299,6 @@
 	},
 /turf/open/floor{
 	icon_state = "wood_siding4"
-	},
-/area/prison/residential/central)
-"qhB" = (
-/turf/open/floor/prison{
-	icon_state = "rampbottom"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/open/floor{
-	icon_state = "siding8"
 	},
 /area/prison/residential/central)
 "qna" = (
@@ -73311,18 +73409,6 @@
 	icon_state = "darkred2"
 	},
 /area/prison/security/briefing)
-"vHS" = (
-/turf/open/floor/prison{
-	tag = "icon-sterile_white (SOUTHWEST)";
-	icon_state = "sterile_white";
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/open/floor{
-	icon_state = "siding8"
-	},
-/area/prison/residential/central)
 "wmW" = (
 /turf/open/floor{
 	icon_state = "asteroid"
@@ -80270,14 +80356,14 @@ aWr
 beJ
 xki
 xki
-bjK
+aIA
 xki
 xki
 ghD
 ghD
 xki
 xki
-bjK
+aIA
 xki
 xki
 beJ
@@ -80524,7 +80610,7 @@ bbJ
 bbJ
 aWr
 aHj
-bgb
+aoH
 bgc
 bgc
 bxO
@@ -80537,7 +80623,7 @@ bgc
 bgc
 bgc
 bLY
-bsU
+bfZ
 btx
 aWr
 bbJ
@@ -80780,7 +80866,7 @@ baL
 bbI
 bbI
 aWr
-beD
+akH
 bgc
 bgc
 bkN
@@ -80795,7 +80881,7 @@ bxO
 bkN
 bgc
 bgc
-iKE
+bgb
 aWr
 bbI
 bbI
@@ -81037,7 +81123,7 @@ baM
 bbJ
 bbJ
 aWr
-beD
+akH
 bgc
 bgc
 bLY
@@ -81052,7 +81138,7 @@ bLY
 bgc
 bgc
 bgc
-iKE
+bgb
 aWr
 bbJ
 bbJ
@@ -81294,7 +81380,7 @@ baN
 bbK
 bbK
 bdx
-beE
+akI
 bgc
 bgc
 bkN
@@ -81309,7 +81395,7 @@ bgc
 bkN
 bgc
 bgc
-bty
+bgd
 bdx
 bbK
 bbK
@@ -81551,7 +81637,7 @@ aZS
 aZS
 aZS
 aWr
-beF
+akJ
 bxO
 bgc
 bgc
@@ -81566,7 +81652,7 @@ bgc
 bgc
 bgc
 bgc
-pjo
+bge
 aWr
 aZS
 aZS
@@ -81808,7 +81894,7 @@ baO
 bbM
 bcO
 aWr
-beF
+akJ
 bgc
 bgc
 bgc
@@ -81823,7 +81909,7 @@ bgc
 bgc
 bLY
 bgc
-pjo
+bge
 aWr
 bcO
 bbM
@@ -82065,7 +82151,7 @@ aWr
 aWr
 aWr
 aWr
-beG
+ala
 bgc
 bgc
 bLY
@@ -82080,7 +82166,7 @@ bLY
 bgc
 bgc
 bgc
-btz
+bhz
 aWr
 aWr
 aWr
@@ -82297,7 +82383,7 @@ avm
 aDE
 aBX
 ljy
-bbG
+agD
 aFY
 aHq
 aIz
@@ -82322,7 +82408,7 @@ aWv
 aWv
 aWv
 aFE
-beF
+akJ
 bgc
 bgc
 bgc
@@ -82337,7 +82423,7 @@ bgc
 bgc
 bgc
 bgc
-pjo
+bge
 aIv
 aWv
 aWv
@@ -82362,7 +82448,7 @@ bCb
 bPc
 bQH
 bSh
-cAV
+bty
 bVp
 lig
 cBK
@@ -82579,7 +82665,7 @@ aWw
 aWw
 aEM
 aFH
-beH
+alc
 mAH
 mAH
 mAH
@@ -82594,7 +82680,7 @@ mAH
 mAH
 mAH
 mAH
-btA
+bhB
 aVq
 aEM
 aWw
@@ -82811,7 +82897,7 @@ avm
 aDE
 cWd
 oRM
-bnS
+akm
 aFZ
 aHs
 aIx
@@ -82836,7 +82922,7 @@ aWv
 aWv
 aWv
 aFE
-dSj
+alq
 pwK
 pwK
 bhC
@@ -82851,7 +82937,7 @@ bhC
 bhC
 pwK
 pwK
-hoj
+bhD
 aIv
 aWv
 aWv
@@ -82876,9 +82962,9 @@ bCb
 bPa
 aYV
 bSi
-cBo
+btz
 wmW
-cBr
+btA
 cBK
 bGQ
 aab
@@ -83093,7 +83179,7 @@ aWr
 aWr
 aWr
 aWr
-beG
+ala
 bgc
 bgc
 eld
@@ -83108,7 +83194,7 @@ eld
 qYc
 bgc
 bgc
-btz
+bhz
 aWr
 aWr
 aWr
@@ -83350,7 +83436,7 @@ baO
 bbM
 bcO
 aWr
-beF
+akJ
 bgc
 bgc
 eld
@@ -83365,7 +83451,7 @@ eld
 qYc
 bLY
 bgc
-pjo
+bge
 aWr
 bcO
 bbM
@@ -83607,7 +83693,7 @@ aZS
 aZS
 aZS
 aWr
-beF
+akJ
 bLY
 bgc
 eld
@@ -83622,7 +83708,7 @@ eld
 qYc
 bgc
 bgc
-pjo
+bge
 aWr
 aZS
 aZS
@@ -83864,7 +83950,7 @@ baP
 bbK
 bbK
 bdx
-aIA
+alr
 bgc
 bgc
 eld
@@ -83879,7 +83965,7 @@ eld
 qYc
 bgc
 bxO
-dPX
+bhE
 bdx
 bbK
 bbK
@@ -84121,7 +84207,7 @@ baM
 bbJ
 bbJ
 aWr
-beF
+akJ
 bgc
 bxO
 eld
@@ -84136,7 +84222,7 @@ eld
 qYc
 bgc
 bgc
-pjo
+bge
 aWr
 bbJ
 bbJ
@@ -84378,7 +84464,7 @@ baL
 bbO
 bbO
 aWr
-beF
+akJ
 bgc
 bgc
 eld
@@ -84393,7 +84479,7 @@ bgf
 qYc
 bLY
 bgc
-pjo
+bge
 aWr
 bbO
 bbO
@@ -84636,20 +84722,20 @@ bbJ
 bbJ
 aWr
 aIB
+aoI
+asW
+aHt
 aLd
-baU
-vHS
-oHO
 bbN
 bel
 beK
 bfY
 bgj
 bbN
-qhB
-vHS
-baU
-aLd
+beH
+aHt
+asW
+aoI
 biL
 aWr
 bbJ
@@ -89009,12 +89095,12 @@ bgq
 aZY
 baa
 bjR
-bTM
-bWD
+aRH
+bbG
 bnf
 boh
-bWD
-bWH
+bbG
+beF
 bqK
 aWz
 bsn
@@ -89266,12 +89352,12 @@ aZY
 aZY
 bdC
 bjR
-bTN
+aSC
 beI
 biK
 blJ
 blM
-bTN
+aSC
 bqK
 aWz
 bsn
@@ -89523,12 +89609,12 @@ aZY
 aZY
 bdC
 bjR
-bTN
+aSC
 bdI
 bdI
 bdI
 bdI
-bTN
+aSC
 bqK
 aWz
 bsn
@@ -89780,12 +89866,12 @@ aZY
 aZY
 baa
 bjR
-bTN
+aSC
 bdI
 bng
 bng
 bdI
-bTN
+aSC
 bqK
 aWz
 bsn
@@ -90037,12 +90123,12 @@ bgr
 bgr
 baa
 bjR
-bTN
+aSC
 blX
 bnh
 bnh
 blX
-bTN
+aSC
 bqK
 aYX
 acL
@@ -90294,12 +90380,12 @@ baa
 baa
 baa
 bjS
-bTN
+aSC
 bdI
 bnh
 bng
 bdI
-bTN
+aSC
 bqL
 aWz
 aWz
@@ -90551,12 +90637,12 @@ bgs
 bhI
 baa
 bkZ
-bTN
+aSC
 bdI
 bng
 bng
 bdI
-bTN
+aSC
 bqK
 baa
 bso
@@ -90808,12 +90894,12 @@ aYY
 bbV
 baa
 bjR
-bTN
+aSC
 bdI
 bng
 bng
 bdI
-bTN
+aSC
 bqK
 baa
 buZ
@@ -91065,12 +91151,12 @@ aYY
 bhJ
 biR
 bjT
-bTO
+baU
 bdI
 bng
 bng
 bdI
-bWI
+beG
 bqM
 biR
 bsq
@@ -103690,7 +103776,7 @@ bzR
 bzR
 bzR
 bOs
-bPv
+bmV
 bQX
 bSD
 bUj
@@ -104203,9 +104289,9 @@ aMd
 aMd
 bMO
 aKN
-bOt
-bPw
-bQZ
+bkL
+bmY
+bnW
 bSA
 bUl
 bQV
@@ -104459,10 +104545,10 @@ aNu
 aMe
 aMe
 aLs
-aKP
-bOt
-bPx
-bQV
+bjM
+bkM
+bnz
+bpG
 bSF
 bUm
 bQV
@@ -104716,9 +104802,9 @@ aNt
 aKN
 aMe
 bMP
-aTD
-bOu
-bPy
+bjN
+bmz
+bnS
 bRa
 bSG
 bUn
@@ -104972,11 +105058,11 @@ bFk
 bFk
 aKN
 aMj
-aLs
+bjK
 aKN
-bOt
-bPw
-bRb
+bkL
+bmY
+bsU
 bSA
 bSA
 bQV
@@ -105229,7 +105315,7 @@ bJM
 bFk
 aKN
 aMf
-aLs
+bjL
 aOj
 bOs
 bPw
@@ -110599,8 +110685,8 @@ bgQ
 bku
 aWR
 bmB
-oEb
-gJE
+bdv
+beD
 aWR
 bqq
 aWR
@@ -110855,10 +110941,10 @@ aWR
 aWR
 aWR
 blm
-eUH
+bbH
 xwL
 boP
-bpG
+beE
 aWR
 bri
 bjj
@@ -111370,7 +111456,7 @@ bjk
 aWR
 bln
 aWR
-bnz
+bev
 fta
 aWR
 bny

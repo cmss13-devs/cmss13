@@ -245,7 +245,7 @@ var/world_topic_spam_protect_time = world.timeofday
 				world << text
 				world << 'sound/voice/start_your_voting.ogg'
 
-			ticker.delay_end = 1
+			ticker.delay_end = TRUE
 			log_admin("World/Topic() call (likely MapDaemon.exe) has delayed the round end.")
 			message_admins("World/Topic() call (likely MapDaemon.exe) has delayed the round end.", 1)
 			return "SUCCESS"
@@ -254,7 +254,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 			if(!ticker) return "ERROR"
 
-			ticker.delay_end = 0
+			ticker.delay_end = FALSE
 			message_admins("World/Topic() call (likely MapDaemon.exe) has resumed the round end.", 1)
 
 			//So admins have a chance to make EORG bans and do whatever

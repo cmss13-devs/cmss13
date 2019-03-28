@@ -92,6 +92,16 @@
 /datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
 
+/datum/game_mode/proc/announce_ending()
+	round_statistics.count_end_of_round_mobs_for_statistics()
+	world << "<span class='round_header'>|Round Complete|</span>"
+	feedback_set_details("round_end_result",round_finished)
+
+	world << "<span class='round_body'>Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag].</span>"
+	world << "<span class='round_body'>The game-mode was: [master_mode]!</span>"
+	world << "<span class='round_body'>End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details.</span>"
+
+
 /datum/game_mode/proc/declare_completion()
 	round_statistics.count_end_of_round_mobs_for_statistics()
 	var/clients = 0

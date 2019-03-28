@@ -18,7 +18,7 @@
 	var/heal_burn = 0
 	var/heal_toxin = 0
 	var/automaticmode = 0
-	var/event = 0
+	var/event = FALSE
 
 	var/obj/machinery/autodoc_console/connected
 
@@ -1054,4 +1054,4 @@
 		add_fingerprint(usr)
 
 /obj/machinery/autodoc/event
-	event = 1
+	event = TRUE

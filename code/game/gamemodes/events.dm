@@ -18,11 +18,11 @@
 					else
 						Holiday_Random_Event()
 			else
-				event = 0
+				event = FALSE
 			sleep(1200)
 
 /proc/event()
-	event = 1
+	event = TRUE
 
 	var/eventNumbersToPickFrom = list(1,2,4,5,6,7,8,9,10,11,12,13,14, 15) //so ninjas don't cause "empty" events.
 

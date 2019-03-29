@@ -329,11 +329,6 @@
 	on_mob_life(mob/living/M,alien)
 		. = ..()
 		if(!.) return
-		if(volume > overdose)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-				E.damage += rand(2, 4)
 		if(!alien)
 			M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
 			M.drowsyness = max(M.drowsyness- 2 * REM, 0)
@@ -345,7 +340,7 @@
 			var/mob/living/carbon/human/H = M
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 			if(E)
-				E.damage += 0.5
+				E.damage += 0.41 //blurry after slightly more than 10u of overdose, blindness after ~15 or so
 
 	on_overdose_critical(mob/living/M)
 		M.apply_damages(3, 3) //Starts detoxing, hard
@@ -353,7 +348,7 @@
 			var/mob/living/carbon/human/H = M
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 			if(E)
-				E.damage += 2
+				E.damage += 0.82
 
 /datum/reagent/adminordrazine //An OP chemical for admins
 	name = "Adminordrazine"
@@ -558,8 +553,6 @@
 	on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
-		if(volume >= overdose)
-			M.adjustBrainLoss(2)
 		M.radiation = max(M.radiation - 10 * REM, 0)
 		M.adjustToxLoss(-1*REM)
 		if(prob(50))

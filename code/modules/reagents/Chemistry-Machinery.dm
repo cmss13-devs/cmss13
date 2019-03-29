@@ -245,7 +245,7 @@
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
-	var/pillamount = 10
+	var/pillamount = 16
 	var/bottlesprite = "1" //yes, strings
 	var/pillsprite = "1"
 	var/client/has_sprites = list()

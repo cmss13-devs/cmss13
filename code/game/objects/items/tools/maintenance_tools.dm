@@ -361,20 +361,17 @@
 				E.damage += rand(12, 16)
 		if(safety<2)
 
-			if(E.damage > 10)
-				H << "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>"
-
 			if (E.damage >= E.min_broken_damage)
-				H << "<span class='warning'>You go blind!</span>"
-				H.sdisabilities |= BLIND
-			else if (E.damage >= E.min_bruised_damage)
-				H << "<span class='warning'>You go blind!</span>"
-				H.eye_blind = 5
-				H.eye_blurry = 5
-				H.disabilities |= NEARSIGHTED
-				spawn(100)
-					H.disabilities &= ~NEARSIGHTED
+				H << "<span class='warning'>You go blind! Maybe welding without protection wasn't such a great idea...</span>"
+				return
 
+			if (E.damage >= E.min_bruised_damage)
+				H << "<span class='warning'>Your vision starts blurring and your eyes hurt terribly!</span>"
+				return
+
+			if(E.damage > 5)
+				H << "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>"
+				return
 
 
 

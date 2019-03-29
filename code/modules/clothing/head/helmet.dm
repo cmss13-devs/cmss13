@@ -167,6 +167,9 @@
 	icon_state = "helmet"
 	armor = list(melee = 65, bullet = 35, laser = 30, energy = 20, bomb = 10, bio = 0, rad = 0)
 	health = 5
+	force = 15
+	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
+	attack_verb = list("whacked", "hit", "smacked", "beaten", "battered")
 	var/obj/machinery/camera/camera
 	var/helmet_overlays[]
 	flags_inventory = BLOCKSHARPOBJ
@@ -304,6 +307,7 @@
 	armor = list(melee = 95, bullet = 105, laser = 75, energy = 65, bomb = 40, bio = 15, rad = 15)
 	unacidable = 1
 	anti_hug = 6
+	force = 20
 	specialty = "B18"
 
 /obj/item/clothing/head/helmet/marine/grenadier

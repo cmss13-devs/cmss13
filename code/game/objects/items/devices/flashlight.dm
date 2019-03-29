@@ -258,6 +258,9 @@
 		heat_source = 1500
 		damtype = "fire"
 		processing_objects += src
+		if(iscarbon(user))
+			var/mob/living/carbon/U = user
+			U.throw_mode_on()
 
 /obj/item/device/flashlight/flare/on
 

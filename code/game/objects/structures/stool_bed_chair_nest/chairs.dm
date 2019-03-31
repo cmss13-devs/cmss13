@@ -135,12 +135,15 @@
 /obj/structure/bed/chair/dropship/passenger
 	name = "passenger seat"
 	desc = "Holds you in place during high altitude drops."
-	icon_state = "shuttle_chair"
+	icon_state = "hotseat"
 	var/image/chairbar = null
 	var/chair_state = DROPSHIP_CHAIR_UNFOLDED
 	buildstacktype = 0
 	unacidable = 1
 	var/is_animating = 0
+
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair
+	icon_state = "shuttle_chair"
 
 /obj/structure/bed/chair/dropship/passenger/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED && istype(mover, /obj/vehicle/multitile) && !is_animating)
@@ -154,18 +157,26 @@
 	return
 
 /obj/structure/bed/chair/dropship/passenger/New()
-	chairbar = image("icons/obj/objects.dmi", "shuttle_bars")
+	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 	return ..()
 
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/New()
+	. = ..()
+
+	chairbar = image("icons/obj/objects.dmi", "shuttle_bars")
+	chairbar.layer = ABOVE_MOB_LAYER
+
+
 /obj/structure/bed/chair/dropship/passenger/afterbuckle()
 	if(buckled_mob)
-		icon_state = "shuttle_chair_buckled"
+		icon_state = initial(icon_state) + "_buckled"
 		overlays += chairbar
 	else
-		icon_state = "shuttle_chair"
+		icon_state = initial(icon_state)
 		overlays -= chairbar
+
 
 /obj/structure/bed/chair/dropship/passenger/buckle_mob(mob/M, mob/user)
 	if(chair_state != DROPSHIP_CHAIR_UNFOLDED)
@@ -175,7 +186,7 @@
 /obj/structure/bed/chair/dropship/passenger/proc/fold_down(var/break_it = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		is_animating = 1
-		flick("shuttle_chair_new_folding", src)
+		flick("hotseat_new_folding", src)
 		is_animating = 0
 		unbuckle()
 		if(break_it)
@@ -183,17 +194,28 @@
 		else
 			chair_state = DROPSHIP_CHAIR_FOLDED
 		sleep(5) // animation length
-		icon_state = "shuttle_chair_new_folded"
+		icon_state = "hotseat_new_folded"
+
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/fold_down(var/break_it = 1)
+	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
+		unbuckle()
+		chair_state = DROPSHIP_CHAIR_BROKEN
+		icon_state = "shuttle_chair_destroyed"
 
 /obj/structure/bed/chair/dropship/passenger/proc/unfold_up()
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
 		return
 	is_animating = 1
-	flick("shuttle_chair_new_unfolding", src)
+	flick("hotseat_new_unfolding", src)
 	is_animating = 0
 	chair_state = DROPSHIP_CHAIR_UNFOLDED
 	sleep(5)
-	icon_state = "shuttle_chair"
+	icon_state = "hotseat_chair"
+
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/unfold_up()
+	if(chair_state == DROPSHIP_CHAIR_BROKEN)
+		chair_state = DROPSHIP_CHAIR_UNFOLDED
+		icon_state = "shuttle_chair"
 
 /obj/structure/bed/chair/dropship/passenger/rotate()
 	return // no
@@ -208,6 +230,24 @@
 		user.visible_message("<span class='warning'>[user] smashes \the [src], shearing the bolts!</span>",
 		"<span class='warning'>You smash \the [src], shearing the bolts!</span>")
 		fold_down(1)
+
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/attackby(obj/item/W, mob/living/user)
+	if(istype(W,/obj/item/tool/wrench) && chair_state == DROPSHIP_CHAIR_BROKEN)
+		user << "<span class='warning'>\The [src] appears to be broken and needs welding.</span>"
+		return
+	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
+		var/obj/item/tool/weldingtool/C = W
+		if(C.remove_fuel(0,user))
+			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
+			user.visible_message("<span class='warning'>[user] begins repairing \the [src].</span>",
+			"<span class='warning'>You begin repairing \the [src].</span>")
+			if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				user.visible_message("<span class='warning'>[user] repairs \the [src].</span>",
+				"<span class='warning'>You repair \the [src].</span>")
+				unfold_up()
+				return
+	else
+		return
 
 /obj/structure/bed/chair/dropship/passenger/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/tool/wrench))

@@ -29907,9 +29907,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bjV" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (EAST)";
-	icon_state = "shuttle_chair";
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
@@ -29963,9 +29961,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bka" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 8
 	},
 /turf/open/shuttle/dropship{
@@ -30053,9 +30049,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bkk" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (EAST)";
-	icon_state = "shuttle_chair";
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4
 	},
 /turf/open/shuttle/dropship{
@@ -30110,9 +30104,7 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bkp" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 8
 	},
 /turf/open/shuttle/dropship{
@@ -30754,15 +30746,13 @@
 	},
 /area/shuttle/drop2/sulaco)
 "blI" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (EAST)";
-	icon_state = "shuttle_chair";
-	dir = 4
-	},
 /obj/machinery/camera/autoname/almayer/dropship_two{
 	dir = 4;
 	pixel_x = -16;
 	pixel_y = 0
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -30814,14 +30804,12 @@
 	},
 /area/shuttle/drop1/sulaco)
 "blR" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
-	dir = 8
-	},
 /obj/machinery/camera/autoname/almayer/dropship_one{
 	dir = 8;
 	pixel_x = 16
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 8
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -35765,27 +35753,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bwr" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (EAST)";
-	icon_state = "shuttle_chair";
-	dir = 4
-	},
 /obj/machinery/vending/wallmed1{
 	pixel_x = -30
 	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin15"
-	},
-/area/shuttle/drop2/sulaco)
-"bws" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
-	dir = 8
-	},
-/obj/machinery/vending/wallmed1{
-	pixel_x = 30
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -35850,13 +35822,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bwC" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (EAST)";
-	icon_state = "shuttle_chair";
-	dir = 4
-	},
 /obj/machinery/vending/wallmed1{
 	pixel_x = -30
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -35864,13 +35834,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bwD" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
-	dir = 8
-	},
 /obj/machinery/vending/wallmed1{
 	pixel_x = 30
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 8
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -36451,14 +36419,12 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bxN" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (WEST)";
-	icon_state = "shuttle_chair";
-	dir = 8
-	},
 /obj/machinery/camera/autoname/almayer/dropship_two{
 	dir = 8;
 	pixel_x = 16
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 8
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -36491,14 +36457,12 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bxT" = (
-/obj/structure/bed/chair/dropship/passenger{
-	tag = "icon-shuttle_chair (EAST)";
-	icon_state = "shuttle_chair";
-	dir = 4
-	},
 /obj/machinery/camera/autoname/almayer/dropship_one{
 	dir = 4;
 	pixel_x = -16
+	},
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
@@ -86821,7 +86785,7 @@ blJ
 blJ
 btK
 bka
-bws
+bka
 bxN
 bka
 bka

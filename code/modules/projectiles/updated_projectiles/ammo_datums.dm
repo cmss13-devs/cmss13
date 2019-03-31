@@ -331,19 +331,17 @@
 
 /datum/ammo/bullet/revolver/marksman/New()
 	..()
-	accuracy = config.med_hit_accuracy
 	accurate_range = config.short_shell_range
-	scatter = config.low_scatter_value
-	penetration = config.med_armor_penetration
+	penetration = config.hmed_armor_penetration
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
 
 /datum/ammo/bullet/revolver/heavy/New()
 	..()
-	damage = config.med_hit_damage
+	damage = config.high_hit_damage
 	penetration = config.min_armor_penetration
-	accuracy = -config.med_hit_accuracy
+	accuracy = config.min_hit_accuracy
 
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"

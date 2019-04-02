@@ -42,7 +42,7 @@
 	if(health > 0)
 		if(istype(W, /obj/item/tool/wrench))
 			if(!anchored)
-				if(istype(get_area(src.loc),/area/shuttle || istype(get_area(src.loc),/area/sulaco/hangar)))
+				if(istype(get_area(src.loc),/area/shuttle))
 					user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
 					return
 				if(!istype(loc, /turf/open/floor))
@@ -100,7 +100,7 @@
 				cdel(src)
 
 		else if(istype(W, /obj/item/stack/sheet) && buildctr %2 == 0)
-			if(istype(get_area(src.loc),/area/shuttle || istype(get_area(src.loc),/area/sulaco/hangar)))
+			if(istype(get_area(src.loc),/area/shuttle))
 				user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
 				return
 

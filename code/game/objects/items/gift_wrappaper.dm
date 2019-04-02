@@ -77,7 +77,6 @@
 		/obj/item/book/manual/chef_recipes,
 		/obj/item/toy/bikehorn,
 		/obj/item/toy/beach_ball,
-		/obj/item/toy/beach_ball/holoball,
 		/obj/item/weapon/banhammer,
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,

@@ -124,9 +124,6 @@
 				usr << "<span class='warning'>You need more [name] to build \the [R.title]!</span>"
 			return
 
-		if(istype(get_area(usr.loc), /area/sulaco/hangar))  //HANGAR BUILDING
-			usr << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
-			return
 		//1 is absolute one per tile, 2 is directional one per tile. Hacky way to get around it without adding more vars
 		if(R.one_per_turf)
 			if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))

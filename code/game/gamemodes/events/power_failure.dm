@@ -1,10 +1,7 @@
 
 /proc/power_failure(var/announce = 1)
-	var/list/skipped_areas = list(/area/turret_protected/ai)
-
 	for(var/obj/machinery/power/smes/S in machines)
-		var/area/current_area = get_area(S)
-		if(current_area.type in skipped_areas || S.z != 3) // Ship only
+		if(S.z != 3) // Ship only
 			continue
 		S.last_charge = S.charge
 		S.last_output = S.output
@@ -26,11 +23,8 @@
 		command_announcement.Announce("Abnormal activity detected in the ship power system. As a precaution, power must be shut down for an indefinite duration.", "Critical Power Failure", new_sound = 'sound/AI/poweroff.ogg')
 
 /proc/power_restore(var/announce = 1)
-	var/list/skipped_areas = list(/area/turret_protected/ai)
-
 	for(var/obj/machinery/power/smes/S in machines)
-		var/area/current_area = get_area(S)
-		if(current_area.type in skipped_areas || S.z != 3)
+		if(S.z != 3)
 			continue
 		S.charge = S.capacity
 		S.output = S.output_level_max

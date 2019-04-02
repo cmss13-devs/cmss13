@@ -86,7 +86,6 @@
 		/obj/structure/closet/secure_closet,
 		/obj/machinery/computer,
 		/obj/machinery/power,
-		/obj/machinery/zero_point_emitter,
 		/obj/machinery/deployable,
 		/obj/machinery/door_control,
 		/obj/machinery/turretid,

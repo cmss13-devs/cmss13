@@ -21,11 +21,6 @@
 		for (var/mob/target in motionTargets)
 			if (target.stat == 2) lostTarget(target)
 			// If not detecting with motion camera...
-			if (!area_motion)
-				// See if the camera is still in range
-				if(!in_range(src, target))
-					// If they aren't in range, lose the target.
-					lostTarget(target)
 
 /obj/machinery/camera/proc/newTarget(var/mob/target)
 	if (isAI(target)) return 0
@@ -58,10 +53,3 @@
 		aiPlayer.triggerAlarm("Motion", get_area(src), list(src), src)
 	detectTime = -1
 	return 1
-
-/obj/machinery/camera/HasProximity(atom/movable/AM as mob|obj)
-	// Motion cameras outside of an "ai monitored" area will use this to detect stuff.
-	if (!area_motion)
-		if(isliving(AM))
-			newTarget(AM)
-

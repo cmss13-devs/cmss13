@@ -464,7 +464,7 @@
 	playsound(H,S, 50, 1)
 	used_punch = 1
 	use_plasma(10)
-	
+
 	if(!boxer)
 
 		if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
@@ -488,10 +488,10 @@
 			L.take_damage(rand(15,25), 0, 0)
 			if(prob(fracture_chance))
 				L.fracture()
-		
+
 		shake_camera(H, 2, 1)
 		step_away(H, src, 2)
-	
+
 	if(boxer)
 		if(isYautja(H))
 			L.take_damage(rand(12, 16))
@@ -551,7 +551,7 @@
 
 	if (!Adjacent(H))
 		return
-	
+
 	round_statistics.warrior_punches++
 
 	visible_message("<span class='xenowarning'>\The [src] hits [H] with a powerful jab!</span>", \
@@ -1123,14 +1123,14 @@
 	if(burrow)
 		src << "<span class='notice'>You must be above ground to do this.</span>"
 		return
-	
+
 	if(!check_state())
 		return
 
 	if(used_tremor)
 		src << "<span class='xenowarning'>Your aren't ready to cause more tremors yet!</span>"
 		return
-	
+
 	if(!check_plasma(100)) return
 
 	use_plasma(100)
@@ -1154,7 +1154,7 @@
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
-	
+
 
 // Vent Crawl
 /mob/living/carbon/Xenomorph/proc/vent_crawl()
@@ -1359,7 +1359,7 @@
 		return
 
 	var/area/AR = get_area(current_turf)
-	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2) || istype(AR,/area/sulaco/hangar)) //Bandaid for atmospherics bug when Xenos build around the shuttles
+	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2)) //Bandaid for atmospherics bug when Xenos build around the shuttles
 		src << "<span class='warning'>You sense this is not a suitable area for expanding the hive.</span>"
 		return
 
@@ -1407,7 +1407,7 @@
 		return
 
 	AR = get_area(current_turf)
-	if(istype(AR,/area/shuttle/drop1/lz1 || istype(AR,/area/shuttle/drop2/lz2)) || istype(AR,/area/sulaco/hangar)) //Bandaid for atmospherics bug when Xenos build around the shuttles
+	if(istype(AR,/area/shuttle/drop1/lz1 || istype(AR,/area/shuttle/drop2/lz2))) //Bandaid for atmospherics bug when Xenos build around the shuttles
 		return
 
 	alien_weeds = locate() in current_turf

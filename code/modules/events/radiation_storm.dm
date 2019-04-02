@@ -24,8 +24,6 @@
 					continue
 				if(T.z != 3 || T.z != 4)
 					continue
-				if(istype(T.loc, /area/sulaco/maintenance))
-					continue
 
 				if(istype(H,/mob/living/carbon/human))
 					H.apply_effect((rand(15,35)),IRRADIATE,0)

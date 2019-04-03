@@ -105,7 +105,7 @@
 	force = 15
 	w_class = 6
 	sharp = 1
-	attack_verb = list("slashed", "bite", "tore", "scraped", "nibbled")
+	attack_verb = list("slashed", "bitten", "torn", "scraped", "nibbled")
 	pry_capable = IS_PRY_CAPABLE_FORCE
 
 /obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user, def_zone)

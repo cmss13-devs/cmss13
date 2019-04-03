@@ -407,7 +407,10 @@
 /datum/species/zombie/handle_unique_behavior(var/mob/living/carbon/human/H)
 	if(prob(5))
 		playsound(H.loc, 'sound/voice/alien_talk3.ogg', 25, 1)
-
+	else if(prob(5))
+		playsound(H.loc, 'sound/hallucinations/far_noise.ogg', 15, 1)
+	else if(prob(5))
+		playsound(H.loc, 'sound/hallucinations/veryfar_noise.ogg', 15, 1)
 
 /datum/species/zombie/handle_death(var/mob/living/carbon/human/H, gibbed)
 	set waitfor = 0

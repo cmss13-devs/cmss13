@@ -354,6 +354,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		var/mob/living/carbon/human/H = X
 		if(H.wear_id)
 			H.wear_id.name = "[H.real_name]'s ID Card"
+			H.wear_id.registered_name = "[H.real_name]"
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
 	feedback_add_details("admin_verb","CHTN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

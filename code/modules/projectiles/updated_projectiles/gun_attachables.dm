@@ -734,6 +734,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
+	desc = "A metal stock made for the MK221 tactical shotgun."
 	icon_state = "tactical_stock"
 
 /obj/item/attachable/stock/tactical/New()
@@ -741,7 +742,6 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = config.min_hit_accuracy_mult
 	recoil_mod = -config.min_recoil_value
 	scatter_mod = -config.min_scatter_value
-	delay_mod = config.high_fire_delay
 	movement_acc_penalty_mod = -1
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
 	recoil_unwielded_mod = -config.min_recoil_value

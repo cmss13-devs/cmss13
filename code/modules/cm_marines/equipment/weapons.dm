@@ -70,7 +70,7 @@
 		return
 
 	reloading = 1
-	user.visible_message("[user.name] begin feeding an ammo belt into the M56 Smartgun.","You begin feeding a fresh ammo belt into the M56 Smartgun. Don't move or you'll be interrupted.")
+	user.visible_message("[user.name] begins feeding an ammo belt into the M56 Smartgun.","You begin feeding a fresh ammo belt into the M56 Smartgun. Don't move or you'll be interrupted.")
 	var/reload_duration = 50
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.smartgun>0)
 		reload_duration = max(reload_duration - 10*user.mind.cm_skills.smartgun,30)

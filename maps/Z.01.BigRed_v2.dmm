@@ -13428,12 +13428,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aCz" = (
-/obj/machinery/power/solar{
-	anchored = 1;
-	dir = 1;
-	icon_state = "emitter";
-	tag = "icon-emitter (NORTH)"
-	},
+/obj/machinery/power/port_gen/pacman,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-U-N";
 	icon_state = "U-N"
@@ -34444,7 +34439,7 @@
 	},
 /area/bigredv2/outside/sw)
 "buD" = (
-/obj/machinery/power/solar,
+/obj/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "buE" = (
@@ -34869,7 +34864,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bvG" = (
-/obj/machinery/power/solar,
+/obj/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)

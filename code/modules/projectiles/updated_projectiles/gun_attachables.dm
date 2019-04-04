@@ -314,6 +314,12 @@ Defined in conflicts.dm of the #defines folder.
 
 	accuracy_unwielded_mod = -config.high_hit_accuracy_mult
 
+/obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
+	if(istype(G, /obj/item/weapon/gun/shotgun))
+		damage_mod = config.min_hit_damage_mult
+	else
+		damage_mod = config.hmed_hit_damage_mult
+	..()
 
 /obj/item/attachable/compensator
 	name = "recoil compensator"

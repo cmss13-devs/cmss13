@@ -434,10 +434,13 @@
 		return FALSE
 
 	var/distance = P.distance_travelled
+	
 
 	if(flags_atom & ON_BORDER) //windoors
 		if(P.dir & reverse_direction(dir))
 			distance-- //no bias towards "inner" side
+			if(ammo_flags & AMMO_STOPPED_BY_COVER)
+				return TRUE
 		else if( !(P.dir & dir) )
 			return FALSE //no effect if bullet direction is perpendicular to barricade
 	else
@@ -476,6 +479,8 @@
 
 	if(flags_atom & ON_BORDER) //barricades, flipped tables
 		if(P.dir & reverse_direction(dir))
+			if(ammo_flags & AMMO_STOPPED_BY_COVER)
+				return TRUE
 			distance-- //no bias towards "inner" side
 		else if( !(P.dir & dir) )
 			return FALSE //no effect if bullet direction is perpendicular to barricade

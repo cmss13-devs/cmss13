@@ -159,18 +159,18 @@
 				M.turf_collision(T, speed)
 
 //decided whether a movable atom being thrown can pass through the turf it is in.
-/atom/movable/proc/hit_check(var/speed)
+/atom/movable/proc/hit_check(var/speed, hit_living=TRUE)
 	if(src.throwing)
 		for(var/atom/A in get_turf(src))
 			if(A == src) continue
 			if(istype(A,/mob/living))
-				if(A:lying) continue
+				if(!hit_living || A:lying) continue
 				src.throw_impact(A,speed)
 			if(isobj(A))
 				if(A.density && !(A.flags_atom & ON_BORDER) && (!A.throwpass || istype(src,/mob/living/carbon)))
 					src.throw_impact(A,speed)
 
-/atom/movable/proc/throw_at(atom/target, range, speed, thrower, spin)
+/atom/movable/proc/throw_at(atom/target, range, speed, thrower, spin, hit_living=TRUE)
 	if(!target || !src)	return 0
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
 
@@ -219,7 +219,7 @@
 					if(!stepx) // if moving parallel to last move
 						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error += dist_x
 				stepy++
 				if(stepx)
@@ -240,7 +240,7 @@
 					if(!stepy) // if moving parallel to last move
 						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error -= dist_y
 				stepx++
 				if(stepy) // diagonal throwing is a lattice problem
@@ -266,7 +266,7 @@
 					if(!stepy) // if moving parallel to last move
 						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error += dist_y
 				stepx++
 				if(stepy) 
@@ -287,7 +287,7 @@
 					if(!stepx) // if moving parallel to last move
 						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error -= dist_x
 				stepy++
 				if(stepx)

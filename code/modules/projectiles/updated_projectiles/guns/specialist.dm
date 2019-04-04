@@ -389,6 +389,7 @@
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	var/list/grenades = new/list()
 	var/max_grenades = 6
+	var/is_lobbing = TRUE
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/scope/mini)
@@ -483,7 +484,7 @@
 	grenades -= F
 	F.loc = user.loc
 	F.throw_range = 20
-	F.throw_at(target, 20, 2, user)
+	F.throw_at(target, 20, 2, user, null, !is_lobbing)
 	if(F && F.loc) //Apparently it can get deleted before the next thing takes place, so it runtimes.
 		message_admins("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 		log_game("[key_name_admin(user)] used a grenade ([name]).")

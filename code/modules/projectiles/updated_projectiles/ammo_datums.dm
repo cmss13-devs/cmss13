@@ -618,7 +618,7 @@
 	max_range = config.close_shell_range
 	damage = config.hmed_hit_damage
 	damage_var_low = -config.low_proj_variance
-	damage_var_high = config.low_proj_variance
+	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	penetration	= 0
 	bonus_projectiles_amount = config.low_proj_extra
@@ -647,7 +647,7 @@
 	max_range = config.close_shell_range
 	damage = config.hmed_hit_damage
 	damage_var_low = -config.low_proj_variance
-	damage_var_high = config.low_proj_variance
+	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
@@ -1469,6 +1469,7 @@
 	name = "shrapnel"
 	icon_state = "buckshot"
 	accurate_range_min = 5
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
 
 /datum/ammo/bullet/shrapnel/New()
 	..()
@@ -1483,6 +1484,12 @@
 	penetration = config.med_armor_penetration
 	shell_speed = config.reg_shell_speed
 	shrapnel_chance = 5
+
+/datum/ammo/bullet/shrapnel/on_hit_obj(obj/O, obj/item/projectile/P)
+	if(istype(O, /obj/structure/barricade))
+		var/obj/structure/barricade/B = O
+		B.health -= rand(2, 5)
+		B.update_health(1)
 
 /*
 //================================================

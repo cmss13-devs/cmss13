@@ -9,7 +9,7 @@ var/list/active_tracking_beacons = list()	//List of all active squad tracking be
 
 //Names of maps that can be compiled on
 var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_ICE_COLONY, MAP_BIG_RED, MAP_PRISON_STATION, MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM)
-var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM)
+var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_PRISON_STATION, MAP_ICE_COLONY)
 var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy() - NOTVOTABLE_MAPS
 
 //List of player votes. Name of the map from NEXT_MAP_CANDIADATES indexed by ckey

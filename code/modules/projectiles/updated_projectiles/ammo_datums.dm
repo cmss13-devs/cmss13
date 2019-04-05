@@ -1026,7 +1026,7 @@
 	..()
 	accuracy_var_low = config.med_proj_variance
 	accurate_range = config.short_shell_range
-	damage = config.ultra_hit_damage
+	damage = config.super_hit_damage
 	max_range = config.norm_shell_range
 
 /datum/ammo/rocket/wp/drop_flame(turf/T)
@@ -1035,7 +1035,7 @@
 	smoke.set_up(1, T)
 	smoke.start()
 	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
+	new /obj/flamer_fire(T, pick(45, 50), pick(35, 40), "blue", fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
 	landingSmoke.set_up(3, 0, T, null, 6)

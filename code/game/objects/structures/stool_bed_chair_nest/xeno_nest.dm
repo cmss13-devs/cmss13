@@ -183,14 +183,14 @@
 /obj/structure/bed/nest/proc/healthcheck()
 	if(health <= 0)
 		density = 0
-		cdel(src)
+		qdel(src)
 
 /obj/structure/bed/nest/fire_act()
 	on_fire = 1
 	if(on_fire)
 		update_icon()
 		spawn(rand(225, 400))
-			cdel(src)
+			qdel(src)
 
 
 /obj/structure/bed/nest/attack_alien(mob/living/carbon/Xenomorph/M)
@@ -213,4 +213,4 @@
 	healthcheck()
 
 /obj/structure/bed/nest/flamer_fire_act()
-	cdel(src)
+	qdel(src)

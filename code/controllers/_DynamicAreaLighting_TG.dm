@@ -32,7 +32,7 @@
 #define LIGHTING_CIRCULAR 1									//comment this out to use old square lighting effects.
 #define LIGHTING_LAYER 10									//Drawing layer for lighting overlays
 #define LIGHTING_ICON 'icons/effects/ss13_dark_alpha6.dmi'	//Icon used for lighting shading effects
-
+var/global/list/global_changed_lights = list()
 datum/light_source
 	var/atom/owner
 	var/changed = 1
@@ -57,7 +57,7 @@ datum/light_source
 		__y = owner.y
 		__z = owner.z
 		// the lighting object maintains a list of all light sources
-		lighting_controller.changed_lights.Add(src)
+		global_changed_lights.Add(src)
 
 
 	//Check a light to see if its effect needs reprocessing. If it does, remove any old effect and create a new one
@@ -93,7 +93,7 @@ datum/light_source
 
 		if(!changed)
 			changed = 1
-			lighting_controller.changed_lights.Add(src)
+			global_changed_lights.Add(src)
 
 	proc/remove_effect()
 		// before we apply the effect we remove the light's current effect.
@@ -375,9 +375,14 @@ area
 		if(light <= 0)
 			light = 0
 			luminosity = 0
-		else
+		if(lighting_controller)
 			if(light > lighting_controller.lighting_states)
 				light = lighting_controller.lighting_states
+			luminosity = 1
+		else
+			var/max_states =  max( 0, length(icon_states(LIGHTING_ICON))-1 )
+			if(light > max_states)
+				light = max_states
 			luminosity = 1
 
 		if(lighting_overlay)

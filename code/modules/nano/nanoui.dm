@@ -141,6 +141,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/update_status(var/push_update = 0)
+	set waitfor = 0
 	//To make STUI useable from the lobby
 	if (isnewplayer(user) && check_rights(R_ADMIN|R_MOD))
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
@@ -153,7 +154,6 @@ nanoui is used to open and update nano browser uis
 			set_status(STATUS_DISABLED, push_update) // no updates, completely disabled (red visibility)
 	else
 		var/dist = get_dist(src_object, user)
-
 		if (dist > 4)
 			close()
 			return
@@ -517,6 +517,7 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/update(var/force_open = 0)
+	set waitfor = 0
 	if(ui_key == "STUI")
 		STUI.ui_interact(user, ui_key, src, force_open)
 	else

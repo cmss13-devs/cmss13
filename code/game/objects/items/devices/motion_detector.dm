@@ -60,7 +60,7 @@
 /obj/item/device/motiondetector/Dispose()
 	processing_objects.Remove(src)
 	for(var/obj/X in blip_pool)
-		cdel(X)
+		qdel(X)
 	blip_pool = list()
 	..()
 
@@ -73,7 +73,7 @@
 		recycletime = initial(recycletime)
 		for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
 			if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
-				cdel(blip_pool[X]) //the blips are garbage-collected and reused via rnew() below
+				qdel(blip_pool[X])
 		blip_pool = list()
 
 	if(!detector_mode)
@@ -116,7 +116,7 @@
 	if(user.client)
 
 		if(!blip_pool[target])
-			blip_pool[target] = rnew(/obj/effect/detector_blip)
+			blip_pool[target] = new /obj/effect/detector_blip
 
 		var/obj/effect/detector_blip/DB = blip_pool[target]
 		var/c_view = user.client.view

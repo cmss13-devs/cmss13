@@ -23,7 +23,7 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			new /obj/item/shard( src.loc )
 			Break()
-			cdel(src)
+			qdel(src)
 
 
 /obj/structure/lamarr/bullet_act(var/obj/item/projectile/Proj)

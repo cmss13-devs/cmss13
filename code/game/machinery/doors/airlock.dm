@@ -1009,7 +1009,7 @@ About the new airlock wires panel:
 					ae.icon_state = "door_electronics_smoked"
 					operating = 0
 
-				cdel(src)
+				qdel(src)
 				return
 
 		else if(arePowerSystemsOn() && C.pry_capable != IS_PRY_CAPABLE_FORCE)

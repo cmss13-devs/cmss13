@@ -234,7 +234,7 @@ var/bomb_set = FALSE
 
 	sleep(100)
 	explosion_rec(loc, 500, 150)
-	cdel(src)
+	qdel(src)
 	r_TRU
 
 /obj/item/disk/nuclear/Dispose()

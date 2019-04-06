@@ -105,4 +105,4 @@
 	visible_message("<span class='danger'>[name] has been contained!</span>")
 	log_admin("[name] has been contained!.")
 	message_admins("ALERT: <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>[name] has been contained!.")
-	cdel(src)
+	qdel(src)

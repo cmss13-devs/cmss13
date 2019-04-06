@@ -18,9 +18,11 @@
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
+	var/hard_deleted = 0
+
 //===========================================================================
 /atom/movable/Dispose()
-	for(var/atom/movable/I in contents) cdel(I)
+	for(var/atom/movable/I in contents) qdel(I)
 	if(pulledby) pulledby.stop_pulling()
 	if(throw_source) throw_source = null
 
@@ -30,13 +32,7 @@
 	. = ..()
 	loc = null //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 
-
-/atom/movable/Recycle()
-	return
 //===========================================================================
-
-/atom/movable/proc/initialize()
-	return
 
 /atom/movable/Move(NewLoc, direct)
 	/*
@@ -426,3 +422,4 @@
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
 	. = return_air()
 
+/datum/var/being_sent_to_past

@@ -75,7 +75,7 @@ var/list/department_radio_keys = list(
 		if(client) client.images -= speech_bubble
 		for(var/mob/M in hear)
 			if(M.client) M.client.images -= speech_bubble
-		cdel(speech_bubble)
+		qdel(speech_bubble)
 
 
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world.view, var/sound/speech_sound, var/sound_vol, var/nolog = 0)
@@ -145,7 +145,7 @@ var/list/department_radio_keys = list(
 		if(not_dead_speaker)
 			for(var/mob/M in listening)
 				if(M.client) M.client.images -= speech_bubble
-		cdel(speech_bubble)
+		qdel(speech_bubble)
 
 
 	for(var/obj/O in listening_obj)

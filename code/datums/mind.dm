@@ -374,7 +374,7 @@
 
 /datum/mind/proc/set_cm_skills(skills_path)
 	if(cm_skills)
-		cdel(cm_skills)
+		qdel(cm_skills)
 	if(!skills_path)
 		cm_skills = null
 	else
@@ -411,7 +411,7 @@
 	if(!mind.assigned_role)
 		mind.assigned_role = "Squad Marine"	//default
 		if(mind.cm_skills)
-			cdel(mind.cm_skills)
+			qdel(mind.cm_skills)
 		mind.cm_skills = null //no restriction on what we can do.
 
 //MONKEY

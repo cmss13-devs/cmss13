@@ -45,15 +45,15 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
 				new /obj/effect/particle_effect/water(src.loc)
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				new /obj/effect/particle_effect/water(src.loc)
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -169,7 +169,7 @@
 	else
 		explosion(src.loc,0,0,1, flame_range = 2)
 	if(src)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(temperature, volume)
 	if(temperature > T0C+500)

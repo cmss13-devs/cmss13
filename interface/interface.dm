@@ -53,6 +53,17 @@
 	src << link("https://gitlab.com/cmdevs/ColonialMarines/issues")
 	return
 
+/client/verb/set_fps()
+	set name = "Set FPS"
+	set desc = "Set client FPS. 20 is the default"
+	set category = "Preferences"
+	var/fps = input(usr,"New FPS Value. 0 is server-sync. Higher values cause more desync. Values over 30 not recommended.","Set FPS") as num
+	if(world.byond_version >= 511 && byond_version >= 511 && fps >= MIN_FPS && fps <= MAX_FPS)
+		vars["fps"] = fps
+		prefs.fps = fps
+		prefs.save_preferences()
+	return
+
 /client/verb/hotkeys_help()
 	set name = "hotkeys-help"
 	set category = "OOC"

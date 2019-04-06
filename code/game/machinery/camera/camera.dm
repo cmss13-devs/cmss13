@@ -122,7 +122,7 @@
 			if(assembly)
 				assembly.loc = src.loc
 				assembly.state = 1
-			cdel(src)
+			qdel(src)
 
 
 	// OTHER

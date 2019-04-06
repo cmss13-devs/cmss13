@@ -24,7 +24,7 @@
 		current_bulletholes = initial(current_bulletholes)
 		bullethole_increment = initial(current_bulletholes)
 		bullethole_state = initial(current_bulletholes)
-		cdel(bullethole_overlay)
+		qdel(bullethole_overlay)
 		bullethole_overlay = null
 	else
 		var/overlay = round(damage / damage_cap * damage_overlays.len) + 1
@@ -43,7 +43,7 @@
 			overlays -= bullethole_overlay
 			if(!bullethole_overlay)
 				bullethole_state = rand(1, BULLETHOLE_STATES)
-				bullethole_overlay = rnew(/image/reusable, list('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]"))
+				bullethole_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]")
 			if(cur_increment(current_bulletholes) > bullethole_increment) bullethole_overlay.icon_state = "bhole_[bullethole_state]_[++bullethole_increment]"
 			overlays += bullethole_overlay
 

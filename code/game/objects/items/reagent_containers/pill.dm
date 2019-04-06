@@ -50,7 +50,7 @@ var/global/list/randomized_pill_icons
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, reagents.total_volume)
 
-			cdel(src)
+			qdel(src)
 			return 1
 
 		else if(istype(M, /mob/living/carbon/human) )
@@ -80,9 +80,9 @@ var/global/list/randomized_pill_icons
 
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, reagents.total_volume)
-				cdel(src)
+				qdel(src)
 			else
-				cdel(src)
+				qdel(src)
 
 			return 1
 
@@ -107,7 +107,7 @@ var/global/list/randomized_pill_icons
 				O.show_message("\red [user] puts something in \the [target].", 1)
 
 			spawn(5)
-				cdel(src)
+				qdel(src)
 
 		return
 

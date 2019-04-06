@@ -43,7 +43,7 @@
 								if(!SA.ammo_count)
 									PC.loaded = null
 									PC.update_icon()
-									cdel(SA)
+									qdel(SA)
 				else
 					forceMove(PC.linked_powerloader)
 					PC.loaded = src
@@ -176,7 +176,7 @@
 		laser_burn(U)
 
 	if(!ammo_count && !disposed)
-		cdel(src) //deleted after last laser beam is fired and impact the ground.
+		qdel(src) //deleted after last laser beam is fired and impact the ground.
 
 
 
@@ -207,7 +207,7 @@
 	point_cost = 0
 
 	detonate_on(turf/impact)
-		cdel(src)
+		qdel(src)
 
 
 //this one is air-to-air only
@@ -224,7 +224,7 @@
 		impact.ceiling_debris_check(3)
 		spawn(5)
 			explosion(impact,1,3,5)
-			cdel(src)
+			qdel(src)
 
 /obj/structure/ship_ammo/rocket/banshee
 	name = "\improper AGM-227 'Banshee'"
@@ -238,7 +238,7 @@
 		impact.ceiling_debris_check(3)
 		spawn(5)
 			explosion(impact,1,3,6,6,1,0,7) //more spread out, with flames
-			cdel(src)
+			qdel(src)
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
@@ -252,7 +252,7 @@
 		impact.ceiling_debris_check(3)
 		spawn(5)
 			explosion(impact,3,4,4,6) //tighter blast radius, but more devastating near center
-			cdel(src)
+			qdel(src)
 
 
 /obj/structure/ship_ammo/rocket/fatty
@@ -280,7 +280,7 @@
 			T.ceiling_debris_check(2)
 			spawn(5)
 				explosion(T,1,2,3)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper XN-99 'Napalm'"
@@ -297,7 +297,7 @@
 			for(var/turf/T in range(4,impact))
 				if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 					new/obj/flamer_fire(T, 60, 30) //cooking for a long time
-			cdel(src)
+			qdel(src)
 
 
 
@@ -329,7 +329,7 @@
 				S.set_up(1,0,impact,null)
 				S.start()
 			if(!ammo_count && loc)
-				cdel(src) //deleted after last minirocket is fired and impact the ground.
+				qdel(src) //deleted after last minirocket is fired and impact the ground.
 
 	show_loaded_desc(mob/user)
 		if(ammo_count)

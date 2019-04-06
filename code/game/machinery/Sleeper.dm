@@ -24,10 +24,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -40,7 +40,7 @@
 		if(dir == WEST || dir == NORTH)
 			connected = locate(/obj/machinery/sleeper,get_step(src, EAST))
 		if(!connected)
-			cdel(src)
+			qdel(src)
 		else
 			connected.connected = src
 
@@ -260,12 +260,12 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(25))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 
 /obj/machinery/sleeper/emp_act(severity)
@@ -405,5 +405,5 @@
 			icon_state = "sleeper_1-r"
 
 		for(var/obj/O in src)
-			cdel(O)
+			qdel(O)
 		add_fingerprint(user)

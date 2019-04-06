@@ -127,7 +127,7 @@ obj/structure/bed/Dispose()
 				H.put_in_hands(I)
 				H.visible_message("<span class='warning'>[H] grabs [src] from the floor!</span>",
 				"<span class='warning'>You grab [src] from the floor!</span>")
-				cdel(src)
+				qdel(src)
 
 
 /obj/structure/bed/attackby(obj/item/W, mob/user)
@@ -135,7 +135,7 @@ obj/structure/bed/Dispose()
 		if(buildstacktype)
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			new buildstacktype(loc, buildstackamount)
-			cdel(src)
+			qdel(src)
 
 	else if(istype(W, /obj/item/grab) && !buckled_mob)
 		var/obj/item/grab/G = W
@@ -178,7 +178,7 @@ obj/structure/bed/Dispose()
 		else
 			visible_message("<span class='notice'>[user] collapses [name].</span>")
 			new/obj/item/roller(get_turf(src))
-			cdel(src)
+			qdel(src)
 		return
 	. = ..()
 
@@ -223,7 +223,7 @@ obj/structure/bed/Dispose()
 	var/obj/structure/bed/roller/R = new rollertype(location)
 	R.add_fingerprint(user)
 	user.temp_drop_inv_item(src)
-	cdel(src)
+	qdel(src)
 
 /obj/item/roller_holder
 	name = "roller bed rack"
@@ -245,7 +245,7 @@ obj/structure/bed/Dispose()
 	var/obj/structure/bed/roller/R = new(user.loc)
 	user << "<span class='notice'>You deploy [R].</span>"
 	R.add_fingerprint(user)
-	cdel(held)
+	qdel(held)
 	held = null
 
 ////////////////////////////////////////////

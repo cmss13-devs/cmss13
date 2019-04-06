@@ -229,7 +229,7 @@
 				for(var/datum/data/record/R in data_core.medical)
 					//R = null
 					data_core.medical -= R
-					cdel(R)
+					qdel(R)
 					//Foreach goto(494)
 				src.temp = "All records deleted."
 
@@ -383,7 +383,7 @@
 			if (href_list["del_r2"])
 				if (src.active2)
 					//src.active2 = null
-					cdel(src.active2)
+					qdel(src.active2)
 					active2 = null
 
 			if (href_list["d_rec"])

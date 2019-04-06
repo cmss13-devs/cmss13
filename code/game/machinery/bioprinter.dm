@@ -55,7 +55,7 @@
 		user << "\blue \The [src] processes \the [W]."
 		stored_matter += 50
 		user.drop_held_item()
-		cdel(W)
+		qdel(W)
 		return
 //Metal
 	else if(istype(W, /obj/item/stack/sheet/metal))
@@ -63,7 +63,7 @@
 		user << "\blue \The [src] processes \the [W]."
 		stored_metal += M.amount * 100
 		user.drop_held_item()
-		cdel(W)
+		qdel(W)
 		return
 	else
 		return..()

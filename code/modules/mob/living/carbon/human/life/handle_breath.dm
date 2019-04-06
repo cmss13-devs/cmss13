@@ -75,7 +75,7 @@
 	return null
 
 /mob/living/carbon/human/proc/handle_breath(list/air_info)
-
+	oxygen_alert = 0 // so unless no air info is returned (which happens only when gasping or lack of atmosphere) it'll always be 0
 	if(status_flags & GODMODE)
 		return
 

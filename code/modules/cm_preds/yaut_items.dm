@@ -78,18 +78,18 @@
 			M << "<span class='warning'>You need to remove your glasses first. Why are you even wearing these?</span>"
 			return
 		M.temp_drop_inv_item(G) //Get rid of ye existinge gogglors
-		cdel(G)
+		qdel(G)
 	switch(current_goggles)
 		if(0)
-			M.equip_to_slot_or_del(rnew(/obj/item/clothing/glasses/night/yautja,M), WEAR_EYES)
+			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(M), WEAR_EYES)
 			M << "<span class='notice'>Low-light vision module: activated.</span>"
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(1)
-			M.equip_to_slot_or_del(rnew(/obj/item/clothing/glasses/thermal/yautja,M), WEAR_EYES)
+			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(M), WEAR_EYES)
 			M << "<span class='notice'>Thermal sight module: activated.</span>"
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(2)
-			M.equip_to_slot_or_del(rnew(/obj/item/clothing/glasses/meson/yautja,M), WEAR_EYES)
+			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(M), WEAR_EYES)
 			M << "<span class='notice'>Material vision module: activated.</span>"
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(3)
@@ -112,7 +112,7 @@
 		if(G)
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
 				mob.temp_drop_inv_item(G)
-				cdel(G)
+				qdel(G)
 				mob.update_inv_glasses()
 		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
 		H.remove_hud_from(mob)
@@ -528,7 +528,7 @@
 		user << "<span class='notice'>You retract your wrist blades.</span>"
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
-		cdel(R)
+		qdel(R)
 		return
 	else
 		if(!drain_power(user,50)) return
@@ -543,7 +543,7 @@
 			return
 
 		var/obj/item/weapon/wristblades/W
-		W =  rnew(upgrades > 2 ? /obj/item/weapon/wristblades/scimitar : /obj/item/weapon/wristblades, user)
+		W =  new(upgrades > 2 ? /obj/item/weapon/wristblades/scimitar : /obj/item/weapon/wristblades, user)
 
 		user.put_in_active_hand(W)
 		blades_active = 1
@@ -938,7 +938,7 @@
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
 		usr << "<span class='warning'>The [S] skips back towards you!</span>"
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(S.loc)
-		cdel(S)
+		qdel(S)
 
 	for(var/obj/item/explosive/grenade/spawnergrenade/smartdisc/D in range(10))
 		D.throw_at(usr,10,1,usr)
@@ -1054,7 +1054,7 @@
 
 /obj/item/device/radio/headset/yautja/New()
 	..()
-	cdel(keyslot1)
+	qdel(keyslot1)
 	keyslot1 = new /obj/item/device/encryptionkey/yautja
 	recalculateChannels()
 
@@ -1169,7 +1169,7 @@
 			if(ismob(loc))
 				user = loc
 				user.temp_drop_inv_item(src)
-			cdel(src)
+			qdel(src)
 		return
 
 	if(sure == "No" || !sure) return
@@ -1273,10 +1273,6 @@
 /obj/item/weapon/wristblades/Dispose()
 	. = ..()
 	return TA_REVIVE_ME
-
-/obj/item/weapon/wristblades/Recycle()
-	var/blacklist[] = list("attack_verb")
-	. = ..() + blacklist
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
@@ -1690,7 +1686,7 @@
 			var/turf/T = get_turf(src)
 			if(ispath(spawner_type))
 				new spawner_type(T)
-//		cdel(src)
+//		qdel(src)
 		return
 
 	check_eye(mob/user)

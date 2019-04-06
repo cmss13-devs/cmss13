@@ -25,6 +25,7 @@
 	power_channel = ENVIRON
 	use_power = 1
 	idle_power_usage = 5
+	processable = 0
 	
 	var/blocked = 0
 	var/lockdown = 0 // When the door has detected a problem, it locks.
@@ -50,7 +51,7 @@
 		for(var/obj/machinery/door/firedoor/F in loc)
 			if(F != src)
 				spawn(1)
-					cdel(src)
+					qdel(src)
 				return .
 		var/area/A = get_area(src)
 		ASSERT(istype(A))

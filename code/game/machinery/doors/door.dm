@@ -175,7 +175,7 @@
 					s.set_up(2, 1, src)
 					s.start()
 			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
-				cdel(src)
+				qdel(src)
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
@@ -184,7 +184,7 @@
 					s.set_up(2, 1, src)
 					s.start()
 			else
-				cdel(src)
+				qdel(src)
 	return
 
 

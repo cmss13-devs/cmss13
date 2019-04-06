@@ -122,7 +122,7 @@
 				var/obj/item/stack/sheet/metal/M = new(get_turf(user))
 				M.amount = 2
 				user.drop_held_item()
-				cdel(src)
+				qdel(src)
 		else user << "Not with a missile inside!"
 
 	update_icon()

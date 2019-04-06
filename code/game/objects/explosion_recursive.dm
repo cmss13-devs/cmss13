@@ -127,7 +127,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		if(explosion_in_progress)
 			explosion_damage()
 			spawn(20)
-				cdel(src)
+				qdel(src)
 
 
 
@@ -253,7 +253,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			makepowernets()
 			defer_powernet_rebuild = 0
 
-		cdel(src)
+		qdel(src)
 
 
 /atom/proc/get_explosion_resistance()

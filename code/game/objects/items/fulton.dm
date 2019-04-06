@@ -164,6 +164,6 @@ var/global/list/deployed_fultons = list()
 		attached_atom.x = return_turf.x
 		attached_atom.y = return_turf.y
 		playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
-	cdel(src)
+	qdel(src)
 	return
 

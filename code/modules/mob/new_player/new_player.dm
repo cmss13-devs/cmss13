@@ -67,21 +67,21 @@
 
 		stat("Time:","[worldtime2text()]")
 		stat("Map:", "[map_tag]")
-		if(ticker.hide_mode)
-			stat("Game Mode:", "Colonial Marines")
-		else
-			if(ticker.hide_mode == 0)
+		if(ticker)
+			if(ticker.hide_mode)
+				stat("Game Mode:", "Colonial Marines")
+			else if(ticker.hide_mode == 0)
 				stat("Game Mode:", "[master_mode]") // Old setting for showing the game mode
 
-		if(ticker.current_state == GAME_STATE_PREGAME)
-			stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
-			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
-			totalPlayers = 0
-			totalPlayersReady = 0
-			for(var/mob/new_player/player in player_list)
-				stat("[player.key]", (player.ready)?("(Playing)"):(null))
-				totalPlayers++
-				if(player.ready)totalPlayersReady++
+			if(ticker.current_state == GAME_STATE_PREGAME)
+				stat("Time To Start:", "[ticker.pregame_timeleft][going ? "" : " (DELAYED)"]")
+				stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+				totalPlayers = 0
+				totalPlayersReady = 0
+				for(var/mob/new_player/player in player_list)
+					stat("[player.key]", (player.ready)?("(Playing)"):(null))
+					totalPlayers++
+					if(player.ready)totalPlayersReady++
 
 		return 1
 
@@ -133,7 +133,7 @@
 					observer.key = key
 					observer.timeofdeath = 0
 					if(observer.client) observer.client.change_view(world.view)
-					cdel(src)
+					qdel(src)
 
 					return 1
 
@@ -357,14 +357,14 @@
 				if(hs.living_xeno_queen) //Only give larva to hives that actually exist not to throw off the bioscans for dchat
 					hs.stored_larva++
 
-		cdel(src)
+		qdel(src)
 
 	proc/AnnounceArrival(var/mob/living/carbon/human/character, var/rank, var/join_message)
 		if (ticker.current_state == GAME_STATE_PLAYING)
 			var/obj/item/device/radio/intercom/a = new /obj/item/device/radio/intercom(null)// BS12 EDIT Arrivals Announcement Computer, rather than the AI.
 			if(character.mind.role_alt_title) rank = character.mind.role_alt_title
 			a.autosay("[character.real_name],[rank ? " [rank]," : " visitor," ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
-			cdel(a)
+			qdel(a)
 
 	proc/LateChoices()
 		var/mills = world.time // 1/10 of a second, not real milliseconds but whatever

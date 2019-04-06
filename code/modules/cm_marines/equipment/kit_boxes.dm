@@ -207,7 +207,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		if("Demo")
 			new /obj/item/storage/box/spec/demolitionist (T)
 			kits["Demo"] --
-	cdel(src)
+	qdel(src)
 
 /obj/item/spec_kit/asrs
 	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."

@@ -27,7 +27,7 @@
 	handle.events -= src
 	for(var/datum/event/ev in handle.events)
 		ev.handlers -= src
-	cdel(handle)
+	qdel(handle)
 
 /datum/event/proc/clean()
 	for(var/datum/event_handler/hdl in handlers)

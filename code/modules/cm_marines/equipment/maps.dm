@@ -92,7 +92,7 @@
 /obj/item/map/current_map/New()
 	..()
 	if(!map_tag)
-		cdel(src)
+		qdel(src)
 		return
 	switch(map_tag)
 		if(MAP_LV_624)
@@ -122,7 +122,7 @@
 			color = "#cec13f"
 			//did only the basics todo change later
 		else
-			cdel(src)
+			qdel(src)
 
 
 

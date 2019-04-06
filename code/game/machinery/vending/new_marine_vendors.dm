@@ -1248,7 +1248,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 			new typepath(loc, spawned_gear_list[typepath])
 		else
 			new typepath(loc)
-	cdel(src)
+	qdel(src)
 
 
 

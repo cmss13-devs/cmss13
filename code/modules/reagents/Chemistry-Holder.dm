@@ -149,7 +149,7 @@ var/const/INGEST = 2
 		BR.reaction(target, INGEST)
 		spawn(5)
 			BR.trans_to(target, BR.total_volume)
-			cdel(B)
+			qdel(B)
 
 	return amount
 
@@ -316,7 +316,7 @@ var/const/INGEST = 2
 		var/datum/reagent/R = A
 		if (R.id == reagent)
 			reagent_list -= A
-			cdel(A)
+			qdel(A)
 			update_total()
 			my_atom.on_reagent_change()
 			return 0

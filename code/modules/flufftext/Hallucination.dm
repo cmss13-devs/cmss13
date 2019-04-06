@@ -260,7 +260,7 @@ proc/check_panel(mob/M)
 		spawn(SECONDS_30)
 			if(my_target)
 				my_target.hallucinations -= src
-			cdel(src)
+			qdel(src)
 		step_away(src,my_target,2)
 		spawn attack_loop()
 
@@ -270,35 +270,35 @@ proc/check_panel(mob/M)
 			my_target = null
 		weap = null
 		if(currentimage)
-			cdel(currentimage)
+			qdel(currentimage)
 			currentimage = null
 		if(left)
-			cdel(left)
+			qdel(left)
 			left = null
 		if(right)
-			cdel(right)
+			qdel(right)
 			right = null
 		if(up)
-			cdel(up)
+			qdel(up)
 			up = null
 		if(down)
-			cdel(down)
+			qdel(down)
 			down = null
 		. = ..()
 
 	proc/updateimage()
 
 		if(src.dir == NORTH)
-			cdel(src.currentimage)
+			qdel(src.currentimage)
 			src.currentimage = new /image(up,src)
 		else if(src.dir == SOUTH)
-			cdel(src.currentimage)
+			qdel(src.currentimage)
 			src.currentimage = new /image(down,src)
 		else if(src.dir == EAST)
-			cdel(src.currentimage)
+			qdel(src.currentimage)
 			src.currentimage = new /image(right,src)
 		else if(src.dir == WEST)
-			cdel(src.currentimage)
+			qdel(src.currentimage)
 			src.currentimage = new /image(left,src)
 		my_target << currentimage
 
@@ -344,7 +344,7 @@ proc/check_panel(mob/M)
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
 	target << I
 	spawn(SECONDS_30)
-		cdel(O)
+		qdel(O)
 	return
 
 var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\

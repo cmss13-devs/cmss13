@@ -145,7 +145,7 @@
 		if(F.stat == CONSCIOUS && !F.sterile)
 			huggers_cur++
 			src << "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max].</span>"
-			cdel(F)
+			qdel(F)
 		else
 			src << "<span class='warning'>This [F.name] looks too unhealthy.</span>"
 	else
@@ -211,7 +211,7 @@
 		if(stat == CONSCIOUS)
 			eggs_cur++
 			src << "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max].</span>"
-			cdel(E)
+			qdel(E)
 		else
 			src << "<span class='warning'>This [E.name] looks too unhealthy.</span>"
 	else

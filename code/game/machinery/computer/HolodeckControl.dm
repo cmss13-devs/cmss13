@@ -1,3 +1,13 @@
+/obj/machinery/computer/HolodeckControl
+	name = "Holodeck Control Computer"
+	desc = "A computer used to control a nearby holodeck."
+	icon_state = "holocontrol"
+	var/area/linkedholodeck = null
+	var/area/target = null
+	var/active = 0
+	var/list/holographic_items = list()
+	var/damaged = 0
+	var/last_change = 0
 
 // Holographic Items!
 
@@ -170,3 +180,94 @@
 		return 0
 	else
 		return ..()
+
+
+/obj/machinery/readybutton
+	name = "Ready Declaration Device"
+	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
+	icon = 'icons/obj/monitors.dmi'
+	icon_state = "auth_off"
+	var/ready = 0
+	var/area/currentarea = null
+	var/eventstarted = 0
+
+	anchored = 1.0
+	use_power = 1
+	idle_power_usage = 2
+	active_power_usage = 6
+	power_channel = ENVIRON
+
+/obj/machinery/readybutton/attack_ai(mob/user as mob)
+	user << "The station AI is not to interact with these devices!"
+	return
+
+/obj/machinery/readybutton/attack_paw(mob/user as mob)
+	user << "You are too primitive to use this device."
+	return
+
+/obj/machinery/readybutton/New()
+	..()
+
+
+/obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
+	user << "The device is a solid button, there's nothing you can do with it!"
+
+/obj/machinery/readybutton/attack_hand(mob/user as mob)
+	if(user.stat || stat & (NOPOWER|BROKEN))
+		user << "This device is not powered."
+		return
+
+	currentarea = get_area(src.loc)
+	if(!currentarea)
+		qdel(src)
+
+	if(eventstarted)
+		usr << "The event has already begun!"
+		return
+
+	ready = !ready
+
+	update_icon()
+
+	var/numbuttons = 0
+	var/numready = 0
+	for(var/obj/machinery/readybutton/button in currentarea)
+		numbuttons++
+		if (button.ready)
+			numready++
+
+	if(numbuttons == numready)
+		begin_event()
+
+/obj/machinery/readybutton/update_icon()
+	if(ready)
+		icon_state = "auth_on"
+	else
+		icon_state = "auth_off"
+
+/obj/machinery/readybutton/proc/begin_event()
+
+	eventstarted = 1
+
+	for(var/obj/structure/holowindow/W in currentarea)
+		currentarea -= W
+		qdel(W)
+
+	for(var/mob/M in currentarea)
+		M << "FIGHT!"
+
+//Holorack
+
+/obj/structure/rack/holorack
+	name = "rack"
+	desc = "Different from the Middle Ages version."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "rack"
+
+/obj/structure/rack/holorack/attack_hand(mob/user as mob)
+	return
+
+/obj/structure/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/tool/wrench))
+		user << "It's a holorack!  You can't unwrench it!"
+		return

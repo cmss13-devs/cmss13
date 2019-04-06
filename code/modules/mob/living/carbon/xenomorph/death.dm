@@ -41,7 +41,7 @@
 						var/client/xeno_candidate = pick(players_with_xeno_pref)
 						var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(larva_spawn)
 						if(!ticker.mode.transfer_xeno(xeno_candidate.key, new_xeno))
-							cdel(new_xeno)
+							qdel(new_xeno)
 							return
 						new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
 						"<span class='xenodanger'>You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence...</span>")
@@ -148,5 +148,5 @@
 		src.ghostize()
 		src.KnockDown(1)
 		sleep(50)
-		cdel(src)
+		qdel(src)
 	. = ..()

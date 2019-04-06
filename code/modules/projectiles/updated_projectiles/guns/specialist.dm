@@ -325,7 +325,7 @@
 	return current_mag.current_rounds
 
 /obj/item/weapon/gun/smartgun/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	cdel(projectile_to_fire)
+	qdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 
@@ -696,7 +696,7 @@
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-	cdel(projectile_to_fire)
+	qdel(projectile_to_fire)
 	if(refund) current_mag.current_rounds++
 	return 1
 
@@ -739,7 +739,7 @@
 	else
 		replace_ammo(,rocket)
 		current_mag.current_rounds = current_mag.max_rounds
-	cdel(rocket)
+	qdel(rocket)
 	return 1
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)

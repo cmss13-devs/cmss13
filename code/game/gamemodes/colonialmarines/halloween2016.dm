@@ -153,7 +153,7 @@
 			if("blood idol")
 				blood_idol_spawns += L.loc
 			else L = null //So we are not deleting all landmarks that still may exist, like observer spawn.
-		cdel(L)
+		qdel(L)
 
 	world << "<span class='round_setup'>Generating treasures...</span>"
 
@@ -216,7 +216,7 @@
 			var/obj/O
 			for(O in fog_blockers)
 				fog_blockers -= O
-				cdel(O)
+				qdel(O)
 		if(world.time <= FOG_DELAY_INTERVAL && world.time >= (event_time_minor + lobby_time) )
 			handle_event_minor_spooky()
 			event_time_minor = world.time + EVENT_MINOR_INTERVAL
@@ -349,7 +349,7 @@
 		var/datum/game_mode/colonialmarines_halloween_2016/M = ticker.mode
 		M.mcguffin = null
 	var/detonate_location = get_turf(src)
-	cdel(src)
+	qdel(src)
 	explosion(detonate_location,2,3,4)
 
 /obj/item/device/omega_array/control
@@ -392,7 +392,7 @@
 				var/obj/effect/step_trigger/jason/J
 				for(J in T.jason_triggers)
 					T.jason_triggers -= J
-					cdel(J)
+					qdel(J)
 				T.jason_triggers = null
 				T.handle_event_major_spooky(0,0,1)
 
@@ -436,7 +436,7 @@
 /obj/effect/rune/attunement/attack_hand(mob/living/user) //Special snowflake rune, do not steal 2016.
 	user << "<span class='notice'>You touch the rune, feeling it glow beneath your fingertip. It feels warm, somehow pleasant. The rune soon fades and disappears, as you feel a new sense of understanding about the world.</span>"
 	//TODO: force 1 mutation - HULKBLOCK,XRAYBLOCK,FIREBLOCK,TELEBLOCK,NOBREATHBLOCK,REMOTEVIEWBLOCK
-	cdel(src)
+	qdel(src)
 
 /datum/game_mode/colonialmarines_halloween_2016/proc/spawn_battlefield_player(mob/M,given_role,shuffle_override1,shuffle_override2)
 	var/mob/living/carbon/human/H
@@ -491,7 +491,7 @@
 		for(var/i in H.contents)
 			if(istype(i,/obj/item))
 				H.temp_drop_inv_item(i)
-				cdel(i)
+				qdel(i)
 	if(I) H.equip_to_slot_or_del(ID, WEAR_ID) //Put it back on.
 
 	//PMC. We want to set up these guys first.
@@ -699,7 +699,7 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine(H), WEAR_JACKET)
 				I = H.gloves
 				H.temp_drop_inv_item(I)
-				cdel(I)
+				qdel(I)
 				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 				H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 				if(prob(50)) H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/tech(H), WEAR_BACK)
@@ -807,7 +807,7 @@
 						H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/specialist(H), WEAR_JACKET)
 						I = H.gloves
 						H.temp_drop_inv_item(I)
-						cdel(I)
+						qdel(I)
 						H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/specialist(H), WEAR_HANDS)
 						H.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/full(H), WEAR_BACK)
 						H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/full(H), WEAR_WAIST)
@@ -992,7 +992,7 @@
 			horror = R
 			special_role = BE_ALIEN
 			recruit_msg = "terrible, fire breathing monster and haunt the living?"
-			animation_teleport_spooky_in(R)
+			//animation_teleport_spooky_in(R)
 		if(5 to 15)
 			var/mob/living/carbon/human/H
 			var/obj/item/I
@@ -1048,7 +1048,7 @@
 			horror = H
 			special_role = BE_SURVIVOR
 			recruit_msg = "a horror and kill the living?"
-			animation_teleport_spooky_in(H)
+			//animation_teleport_spooky_in(H)
 		else
 			var/mob/living/carbon/human/H = new(pick(horror_spawns))
 			switch(shuffle2)
@@ -1176,7 +1176,7 @@
 			horror = H
 			special_role = BE_SURVIVOR
 			recruit_msg = "a hero and fight together with the remaining mortal souls?"
-			animation_teleport_magic_in(H)
+			//animation_teleport_magic_in(H)
 
 	var/horror_key
 	var/mob/candidate_mob
@@ -1186,7 +1186,7 @@
 			if(!G.can_reenter_corpse || !(G.mind && G.mind.current && G.mind.current.stat != DEAD)) candidates += G
 
 	if(!candidates.len)
-		cdel(horror)
+		qdel(horror)
 		return
 	candidates = shuffle(candidates)
 
@@ -1197,7 +1197,7 @@
 		else candidates -= candidate_mob
 
 	if(!horror_key)
-		cdel(horror)
+		qdel(horror)
 		return
 
 	horror.key = horror_key
@@ -1471,7 +1471,7 @@
 
 	Dispose()
 		. = ..()
-		for(var/mob/W in shadow_wights) cdel(W)
+		for(var/mob/W in shadow_wights) qdel(W)
 		shadow_wights = null
 		processing_objects -= src
 
@@ -1513,7 +1513,7 @@
 			stored_blood += blood_absorbed
 			maximum_blood += blood_absorbed
 			current_consume = world.time
-			cdel(B,,animation_destruction_fade(B))
+			qdel(B,,animation_destruction_fade(B))
 
 	switch(stored_blood)
 		if(10 to INFINITY)
@@ -1539,9 +1539,9 @@
 	//Check the shadow wights and auto-remove them if they get too far.
 	for(var/mob/W in shadow_wights)
 		if(get_dist(W, src) > 10)
-			cdel(W)
+			qdel(W)
 
-	if(maximum_blood >= 100) cdel(src,,animation_destruction_long_fade(src))
+	//if(maximum_blood >= 100) qdel(src,,animation_destruction_long_fade(src))
 
 /obj/item/vampiric/proc/get_teleport_loc()
 	var/i = 1
@@ -1556,9 +1556,9 @@
 	set waitfor = 0
 	var/L = locate(location.x + rand(-1,1), location.y + rand(-1,1), location.z)
 	location = L ? L : location
-	sleep(animation_teleport_spooky_out(src)) // We need to sleep so that the animation has a chance to finish.
+	//sleep(animation_teleport_spooky_out(src)) // We need to sleep so that the animation has a chance to finish.
 	loc = location
-	animation_teleport_spooky_in(src)
+	//animation_teleport_spooky_in(src)
 
 /obj/item/vampiric/hear_talk(mob/M)
 	..()
@@ -1576,7 +1576,7 @@
 		B.blood_DNA = new
 		B.blood_DNA[H.dna_sequence] = H.blood_type
 		H.blood_volume = max(0, H.blood_volume - rand(25,50))
-		animation_blood_spatter(H)
+		//animation_blood_spatter(H)
 	current_bloodcall = world.time
 
 //animated blood 2 SPOOKY
@@ -1624,7 +1624,7 @@
 		if(master_doll && master_doll.loc) master_doll.shadow_wights -= src
 
 /obj/effect/shadow_wight/New()
-	animation_teleport_spooky_in(src)
+	//animation_teleport_spooky_in(src)
 	processing_objects += src
 
 /obj/effect/shadow_wight/process()
@@ -1647,7 +1647,7 @@
 			'sound/hallucinations/turn_around2.ogg',\
 			), 25, 1, 12)
 			M.sleeping = max(M.sleeping,rand(5,10))
-			cdel(src,,animation_destruction_fade(src))
+			qdel(src,,animation_destruction_fade(src))
 
 /obj/effect/shadow_wight/Bump(atom/A)
 	A << "<span class='warning'>You feel a chill run down your spine!</span>"

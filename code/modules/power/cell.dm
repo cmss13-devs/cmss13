@@ -115,7 +115,7 @@
 	explosion(T, devastation_range, heavy_impact_range, light_impact_range, flash_range)
 
 	spawn(1)
-		cdel(src)
+		qdel(src)
 
 /obj/item/cell/proc/corrupt()
 	charge /= 2
@@ -136,18 +136,18 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(25))
 				corrupt()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				corrupt()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 	return
 

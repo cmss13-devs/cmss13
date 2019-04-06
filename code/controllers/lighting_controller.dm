@@ -1,4 +1,4 @@
-var/datum/controller/lighting/lighting_controller = new ()
+var/global/datum/controller/lighting/lighting_controller
 
 datum/controller/lighting
 	var/processing = 0
@@ -11,7 +11,6 @@ datum/controller/lighting
 	var/list/lights = list()
 	var/lights_workload_max = 0
 
-	var/list/changed_lights = list()		//TODO: possibly implement this to reduce on overheads?
 
 	var/list/changed_turfs = list()
 	var/changed_turfs_workload_max = 0
@@ -22,8 +21,9 @@ datum/controller/lighting/New()
 	if(lighting_controller != src)
 		if(istype(lighting_controller,/datum/controller/lighting))
 			Recover()	//if we are replacing an existing lighting_controller (due to a crash) we attempt to preserve as much as we can
-			cdel(lighting_controller)
+			qdel(lighting_controller)
 		lighting_controller = src
+	lighting_controller.Initialize()
 
 
 //Workhorse of lighting. It cycles through each light to see which ones need their effects updating. It updates their
@@ -68,13 +68,13 @@ datum/controller/lighting/proc/process()
 		iteration++
 		var/thing
 		var/datum/light_source/L
-		for(thing in changed_lights)
+		for(thing in global_changed_lights)
 			L = thing
 			if(L)
 				L.check()
 
 		//Operating under the assumpting that Cut() is O(n) because DM is dumb
-		changed_lights = list()
+		global_changed_lights = list()
 
 		var/turf/T
 		for(thing in changed_turfs)
@@ -94,10 +94,11 @@ datum/controller/lighting/proc/process()
 datum/controller/lighting/proc/Initialize(var/z_level)
 	processing = 0
 
-	for(var/thing in changed_lights)
+	for(var/thing in global_changed_lights)
 		var/datum/light_source/L = thing
-		L.check()
-	changed_lights.Cut()
+		if(L)
+			L.check()
+	global_changed_lights.Cut()
 
 
 	var/z_start = 1
@@ -122,7 +123,8 @@ datum/controller/lighting/proc/Initialize(var/z_level)
 */
 	changed_turfs.Cut()		// reset the changed list
 	processing = 1
-	process() //Start the processor loop
+	spawn(1) //gvd is this what they forgot
+		process() //Start the processor loop
 
 //Used to strip valid information from an existing controller and transfer it to a replacement
 //It works by using spawn(-1) to transfer the data, if there is a runtime the data does not get transfered but the loop
@@ -131,9 +133,8 @@ datum/controller/lighting/proc/Recover()
 	if(!istype(lighting_controller.changed_turfs,/list))
 		lighting_controller.changed_turfs = null
 		lighting_controller.changed_turfs = list()
-	if(!istype(lighting_controller.changed_lights,/list))
-		lighting_controller.changed_lights = null
-		lighting_controller.changed_lights = list()
+	global_changed_lights = null
+	global_changed_lights = list()
 
 
 /*

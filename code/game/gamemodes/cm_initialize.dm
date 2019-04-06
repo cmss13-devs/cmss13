@@ -452,7 +452,7 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	new_xeno.update_icons()
 
-	if(original) cdel(original) //Just to be sure.
+	if(original) qdel(original) //Just to be sure.
 
 //===================================================\\
 
@@ -521,7 +521,7 @@ datum/game_mode/proc/initialize_special_clamps()
 		return survivor_event_transform(ghost.current, surv_datum, is_synth)
 		//deleting datum is on us
 		surv_spawn -= picked_spawn
-		cdel(picked_spawn)
+		qdel(picked_spawn)
 	else
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth)
 

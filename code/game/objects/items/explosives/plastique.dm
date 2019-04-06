@@ -72,7 +72,7 @@
 				target.ex_act(1000)
 				if(target && !target.disposed)
 					target.overlays -= image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
-			cdel(src)
+			qdel(src)
 
 /obj/item/explosive/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
 	return

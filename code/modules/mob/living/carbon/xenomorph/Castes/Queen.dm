@@ -192,7 +192,7 @@
 			"<span class='xenodanger'>You burrow out of the ground and awaken from your slumber. For the Hive!</span>")
 			new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 			if(!ticker.mode.transfer_xeno(xeno_candidate.key, new_xeno))
-				cdel(new_xeno)
+				qdel(new_xeno)
 				return
 
 			new_xeno << "<span class='xenoannounce'>You are a xenomorph larva awakened from slumber!</span>"
@@ -232,7 +232,7 @@
 				visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 				hive_datum[hivenumber].stored_larva++
 				round_statistics.total_xenos_created-- // keep stats sane
-				cdel(L)
+				qdel(L)
 
 		if((last_larva_time + 600) < world.time) // every minute
 			last_larva_time = world.time
@@ -488,7 +488,7 @@
 	ovipositor = TRUE
 
 	for(var/datum/action/A in actions)
-		cdel(A)
+		qdel(A)
 
 	var/list/immobile_abilities = list(\
 		/datum/action/xeno_action/regurgitate,\
@@ -543,7 +543,7 @@
 		zoom_out()
 
 		for(var/datum/action/A in actions)
-			cdel(A)
+			qdel(A)
 
 		var/list/mobile_abilities = list(
 			/datum/action/xeno_action/xeno_resting,
@@ -665,7 +665,7 @@
 		observed_xeno = target
 		if(old_xeno)
 			old_xeno.hud_set_queen_overwatch()
-	if(!target.disposed) //not cdel'd
+	if(!target.disposed) //not qdel'd
 		target.hud_set_queen_overwatch()
 	reset_view()
 

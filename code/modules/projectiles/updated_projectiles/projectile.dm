@@ -67,10 +67,6 @@
 		path = null
 		return TA_REVIVE_ME
 
-	Recycle()
-		var/blacklist[] = list("ammo","name","desc","icon_state","damage","in_flight","shot_from","original","target_turf","starting", "permutated","path")
-		. = ..() + blacklist
-
 	Bumped(atom/A as mob|obj|turf|area)
 		if(A && !A in permutated)
 			scan_a_turf(A.loc)
@@ -102,7 +98,7 @@
 	if(starting != loc) loc = starting //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
 	if(!target_turf || target_turf == starting) //This shouldn't happen, but it can.
-		cdel(src)
+		qdel(src)
 		return
 	firer = F
 	if(F) permutated += F //Don't hit the shooter (firer)
@@ -163,7 +159,7 @@
 
 		if(distance_travelled >= range)
 			ammo.do_at_max_range(src)
-			cdel(src)
+			qdel(src)
 			return
 
 		var/proj_dir = get_dir(current_turf, next_turf)
@@ -173,13 +169,13 @@
 				current_turf.bullet_act(src)
 				in_flight = 0
 				sleep(0)
-				cdel(src)
+				qdel(src)
 				return
 
 		if(scan_a_turf(next_turf, proj_dir)) //We hit something! Get out of all of this.
 			in_flight = 0
 			sleep(0)
-			cdel(src)
+			qdel(src)
 			return
 
 		loc = next_turf
@@ -202,10 +198,10 @@
 					distance_travelled-- //because the new follow_flightpath() repeats the last step.
 					follow_flightpath(speed, change_x, change_y, range) //Onwards!
 				else
-					cdel(src)
+					qdel(src)
 					return
 			else //To prevent bullets from getting stuck in maps like WO.
-				cdel(src)
+				qdel(src)
 				return
 
 /obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
@@ -931,7 +927,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	if(!P || !P.ammo.ping) return
 	if(prob(65))
 		if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
-		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/projectiles.dmi',src,P.ammo.ping,10))
+		var/image/I = image('icons/obj/items/projectiles.dmi',src,P.ammo.ping,10)
 		var/angle = (P.firer && prob(60)) ? round(Get_Angle(P.firer,src)) : round(rand(1,359))
 		I.pixel_x += rand(-6,6)
 		I.pixel_y += rand(-6,6)
@@ -940,7 +936,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		rotate.Turn(angle)
 		I.transform = rotate
 
-		I.flick_overlay(src, 3)
+		//I.flick_overlay(src, 3) // TODO: fix this -spookydonut
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P) return

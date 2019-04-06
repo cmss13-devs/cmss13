@@ -4,7 +4,7 @@
 #define DISTRESS_TIME_LOCK 				MINUTES_6
 #define SHUTTLE_TIME_LOCK 				MINUTES_15
 #define SHUTTLE_LOCK_COOLDOWN 			MINUTES_10
-#define SHUTTLE_LOCK_TIME_LOCK 			MINUTES_45
+#define SHUTTLE_LOCK_TIME_LOCK 			MINUTES_1
 #define EVACUATION_AUTOMATIC_DEPARTURE 	MINUTES_10 //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
 #define EVACUATION_ESTIMATE_DEPARTURE 	((evac_time + EVACUATION_AUTOMATIC_DEPARTURE - world.time) * 0.1)
 

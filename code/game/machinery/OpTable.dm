@@ -36,10 +36,10 @@
 				src.density = 0
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -49,7 +49,7 @@
 		usr << text("\blue You destroy the operating table.")
 		visible_message("\red [usr] destroys the operating table!")
 		src.density = 0
-		cdel(src)
+		qdel(src)
 	if (!( locate(/obj/machinery/optable, user.loc) ))
 		step(user, get_dir(user, src))
 		if (user.loc == src.loc)
@@ -69,7 +69,7 @@
 		usr << text("\blue You destroy the table.")
 		visible_message("\red [usr] destroys the operating table!")
 		src.density = 0
-		cdel(src)
+		qdel(src)
 		return
 	if(buckled_mob)
 		unbuckle(user)
@@ -108,7 +108,7 @@
 	var/obj/item/clothing/mask/breath/medical/B = new()
 	if(!H.equip_if_possible(B, WEAR_FACE))
 		user << "<span class='danger'>You can't fit the gas mask over their face!</span>"
-		cdel(B)
+		qdel(B)
 		return
 	H.internal = anes_tank
 	H.visible_message("<span class='notice'>[user] fits the mask over [H]'s face and turns on the anesthetic.</span>'")
@@ -124,7 +124,7 @@
 		H.internal = null
 		var/obj/item/M = H.wear_mask
 		H.drop_inv_item_on_ground(M)
-		cdel(M)
+		qdel(M)
 		H.visible_message("<span class='notice'>[user] turns off the anesthetic and removes the mask from [H].</span>")
 		..()
 

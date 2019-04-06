@@ -77,7 +77,7 @@
 	if(istype(O,/obj/item/ammo_magazine/m56d)) //lets equip it with ammo
 		if(!rounds)
 			rounds = 700
-			cdel(O)
+			qdel(O)
 			update_icon()
 			return
 		else
@@ -96,7 +96,7 @@
 	if(!ishuman(usr)) return
 	user << "<span class='notice'>You deploy [src].</span>"
 	new /obj/machinery/m56d_post(user.loc)
-	cdel(src)
+	qdel(src)
 
 
 
@@ -120,7 +120,7 @@
 	if(health <= 0)
 		if(prob(30))
 			new /obj/item/device/m56d_post (src)
-		cdel(src)
+		qdel(src)
 
 
 
@@ -153,7 +153,7 @@
 		user << "<span class='notice'>You fold [src].</span>"
 		var/obj/item/device/m56d_post/P = new(loc)
 		user.put_in_hands(P)
-		cdel(src)
+		qdel(src)
 
 
 
@@ -191,7 +191,7 @@
 			else
 				icon_state = "M56D" // otherwise we're a empty gun on a mount.
 			user.temp_drop_inv_item(MG)
-			cdel(MG)
+			qdel(MG)
 		return
 
 	if(istype(O,/obj/item/tool/crowbar))
@@ -218,7 +218,7 @@
 				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
-				cdel(src)
+				qdel(src)
 		else
 
 			if(!anchored)
@@ -342,7 +342,7 @@
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
 				new /obj/item/device/m56d_post(src.loc)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-				cdel(src) //Now we clean up the constructed gun.
+				qdel(src) //Now we clean up the constructed gun.
 				return
 
 	if(istype(O, /obj/item/ammo_magazine/m56d)) // RELOADING DOCTOR FREEMAN.
@@ -362,7 +362,7 @@
 		rounds = min(rounds + M.current_rounds, rounds_max)
 		update_icon()
 		user.temp_drop_inv_item(O)
-		cdel(O)
+		qdel(O)
 		return
 	return ..()
 
@@ -375,7 +375,7 @@
 		else
 			var/obj/item/device/m56d_gun/HMG = new(loc)
 			HMG.rounds = src.rounds //Inherent the amount of ammo we had.
-		cdel(src)
+		qdel(src)
 		return
 
 	if(health > health_max)
@@ -403,7 +403,7 @@
 		update_icon() //make sure the user can see the lack of ammo.
 		return 0 //Out of ammo.
 
-	in_chamber = rnew(/obj/item/projectile, loc) //New bullet!
+	in_chamber = new /obj/item/projectile(loc) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
@@ -525,13 +525,13 @@
 	if(prob(65))
 		var/img_layer = layer + 0.1
 
-		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/projectiles.dmi', src, "muzzle_flash",img_layer))
+		var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",img_layer)
 		var/matrix/rotate = matrix() //Change the flash angle.
 		rotate.Translate(0,5)
 		rotate.Turn(angle)
 		I.transform = rotate
 
-		I.flick_overlay(src, 3)
+		//I.flick_overlay(src, 3) TODO: fix this -spookydonut
 
 /obj/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	if(!ishuman(usr)) return

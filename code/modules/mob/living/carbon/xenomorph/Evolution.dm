@@ -61,7 +61,7 @@
 	if(!castepick) //Changed my mind
 		return
 
-	if(!isturf(loc)) //cdel'd or inside something
+	if(!isturf(loc)) //qdel'd or inside something
 		return
 
 	if(is_mob_incapacitated(TRUE))
@@ -86,8 +86,8 @@
 				src << "<span class='warning'>You require more plasma! Currently at: [plasma_stored] / 500.</span>"
 				return
 
-			if(hivenumber == 1 && ticker && ticker.mode && hive.xeno_queen_timer)
-				src << "<span class='warning'>You must wait about [round(hive.xeno_queen_timer / 60)] minutes for the hive to recover from the previous Queen's death.<span>"
+			if(hivenumber == 1 && ticker && ticker.mode && hive.xeno_queen_timer>world.time)
+				src << "<span class='warning'>You must wait about [round((hive.xeno_queen_timer-world.time) / (60 SECONDS))] minutes for the hive to recover from the previous Queen's death.<span>"
 				return
 		else
 			src << "<span class='warning'>Nuh-uhh.</span>"
@@ -184,7 +184,7 @@
 	"<span class='xenonotice'>You begin to twist and contort.</span>")
 	xeno_jitter(25)
 	if(do_after(src, 25, FALSE, 5, BUSY_ICON_HOSTILE))
-		if(!isturf(loc)) //cdel'd or moved into something
+		if(!isturf(loc)) //qdel'd or moved into something
 			return
 		if(castepick == "Queen") //Do another check after the tick.
 			if(jobban_isbanned(src, "Queen"))
@@ -201,7 +201,7 @@
 			//Something went horribly wrong!
 			usr << "<span class='warning'>Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!</span>"
 			if(new_xeno)
-				cdel(new_xeno)
+				qdel(new_xeno)
 			return
 		switch(new_xeno.tier) //They have evolved, add them to the slot count
 			if(2)
@@ -232,7 +232,7 @@
 
 		if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
 			hive.living_xeno_queen.set_queen_overwatch(new_xeno)
-		cdel(src)
+		qdel(src)
 		new_xeno.xeno_jitter(25)
 	else
 		src << "<span class='warning'>You quiver, but nothing happens. Hold still while evolving.</span>"

@@ -56,7 +56,7 @@
 
 /obj/item/proc/place_offhand(var/mob/user,item_name)
 	user << "<span class='notice'>You grab [item_name] with both hands.</span>"
-	var/obj/item/weapon/twohanded/offhand/offhand = rnew(/obj/item/weapon/twohanded/offhand, user)
+	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
 	offhand.flags_item |= WIELDED
@@ -103,18 +103,14 @@
 		if(flags_item & WIELDED)
 			flags_item &= ~WIELDED
 			user.temp_drop_inv_item(src)
-			cdel(src)
+			qdel(src)
 
 	wield()
-		cdel(src) //This shouldn't even happen.
+		qdel(src) //This shouldn't even happen.
 
 	Dispose()
 		..()
 		return TA_REVIVE_ME //So we can recycle this garbage.
-
-	Recycle()
-		var/blacklist[] = list("name","w_class","desc","flags","icon_state")
-		. = ..() + blacklist
 
 	dropped(mob/user)
 		..()
@@ -161,7 +157,7 @@
 	if(!proximity) return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
-		cdel(A)
+		qdel(A)
 
 /obj/item/weapon/twohanded/sledgehammer
 	name = "sledgehammer"
@@ -183,7 +179,7 @@
 	if(!proximity) return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
-		cdel(A)
+		qdel(A)
 
 /*
  * Double-Bladed Energy Swords - Cheridan

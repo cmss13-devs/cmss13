@@ -22,7 +22,7 @@
 
 	if(savefile_version < 12) //we've split toggles into toggles_sound and toggles_chat
 //		if(S["toggles"])
-//			cdel(S["toggles"])
+//			qdel(S["toggles"])
 		S["toggles_chat"] << TOGGLES_SOUND_DEFAULT
 		S["toggles_chat"] << TOGGLES_CHAT_DEFAULT
 
@@ -60,6 +60,7 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
+	S["fps"]			>> fps
 
 	S["synth_name"]			>> synthetic_name
 	S["synth_type"]			>> synthetic_type
@@ -89,6 +90,7 @@
 	predator_mask_type 	= sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
+	vars["fps"] = fps
 
 	return 1
 
@@ -108,6 +110,7 @@
 	S["default_slot"]		<< default_slot
 	S["toggles_chat"]		<< toggles_chat
 	S["toggles_sound"]		<< toggles_sound
+	S["fps"]			<< fps
 
 	S["synth_name"] 		<< synthetic_name
 	S["synth_type"]			<< synthetic_type

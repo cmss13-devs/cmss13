@@ -141,7 +141,7 @@
 
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = rnew(/obj/item/projectile, original_P.shot_from)
+		var/obj/item/projectile/P = new /obj/item/projectile(original_P.shot_from)
 		P.generate_bullet(ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 
@@ -903,7 +903,7 @@
 	shell_speed = config.slow_shell_speed
 
 /datum/ammo/rocket/Dispose()
-	cdel(smoke)
+	qdel(smoke)
 	smoke = null
 	. = ..()
 
@@ -1034,8 +1034,9 @@
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	if(locate(/obj/flamer_fire) in T) return
-	new /obj/flamer_fire(T, pick(45, 50), pick(35, 40), "blue", fire_spread_amount = 3)
+	for(var/obj/flamer_fire/F in T)
+		qdel(F)
+	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
 	landingSmoke.set_up(3, 0, T, null, 6)
@@ -1365,7 +1366,7 @@
 	max_range = config.long_shell_range
 
 /datum/ammo/xeno/boiler_gas/Dispose()
-	cdel(smoke_system)
+	qdel(smoke_system)
 	smoke_system = null
 	. = ..()
 

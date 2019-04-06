@@ -35,7 +35,7 @@
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		apply_explosion_overlay()
 		explosion_rec(loc, explosion_power, explosion_falloff)
-		cdel(src)
+		qdel(src)
 	return
 
 /obj/item/explosive/grenade/HE/proc/apply_explosion_overlay()
@@ -44,7 +44,7 @@
 	O.icon = 'icons/effects/explosion.dmi'
 	flick("grenade", O)
 	spawn(7)
-		cdel(O)
+		qdel(O)
 	return
 
 /obj/item/explosive/grenade/HE/flamer_fire_act()
@@ -137,7 +137,7 @@
 		spawn(0)
 			flame_radius(2, get_turf(src))
 			playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
-			cdel(src)
+			qdel(src)
 		return
 
 proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
@@ -163,7 +163,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 			playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 35, 1, 4)
 			flame_radius(2, get_turf(src))
 			playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 30, 1, 4)
-			cdel(src)
+			qdel(src)
 		return
 
 
@@ -185,7 +185,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 		smoke.set_up(3, 0, usr.loc, null, 6)
 		smoke.start()
-		cdel(src)
+		qdel(src)
 
 /obj/item/explosive/grenade/phosphorus
 	name = "\improper M40 HPDP grenade"
@@ -206,7 +206,7 @@ proc/flame_radius(radius = 1, turf/turf) //~Art updated fire.
 		playsound(src.loc, 'sound/effects/smoke.ogg', 25, 1, 4)
 		smoke.set_up(3, 0, usr.loc)
 		smoke.start()
-		cdel(src)
+		qdel(src)
 
 /obj/item/explosive/grenade/phosphorus/upp
 	name = "\improper Type 8 WP grenade"

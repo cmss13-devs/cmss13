@@ -194,7 +194,7 @@ var/const/RADIO_SECBOT = "radio_secbot"
 var/const/RADIO_MULEBOT = "radio_mulebot"
 var/const/RADIO_MAGNETS = "radio_magnet"
 
-var/global/datum/controller/radio/radio_controller
+var/global/datum/controller/radio/radio_controller = new()
 
 /hook/startup/proc/createRadioController()
 	radio_controller = new /datum/controller/radio()
@@ -228,7 +228,7 @@ var/global/datum/controller/radio/radio_controller
 		frequency.remove_listener(device)
 
 		if(frequency.devices.len == 0)
-			cdel(frequency)
+			qdel(frequency)
 			frequencies -= f_text
 
 	return 1
@@ -253,7 +253,7 @@ var/global/datum/controller/radio/radio_controller
 	if(range)
 		start_point = get_turf(source)
 		if(!start_point)
-			cdel(signal)
+			qdel(signal)
 			return 0
 	if (filter)
 		send_to_filter(source, signal, filter, start_point, range)
@@ -302,7 +302,7 @@ var/global/datum/controller/radio/radio_controller
 			devices_line -= null
 		if (devices_line.len==0)
 			devices -= devices_filter
-			cdel(devices_line)
+			qdel(devices_line)
 
 /datum/signal
 	var/obj/source

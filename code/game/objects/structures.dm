@@ -21,7 +21,7 @@
 	if(parts)
 		new parts(loc)
 	density = 0
-	cdel(src)
+	qdel(src)
 
 /obj/structure/proc/handle_barrier_chance(mob/living/M)
 	return 0
@@ -50,11 +50,11 @@
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob( severity-EXPLOSION_THRESHOLD_LOW ))
 				handle_debris(severity, direction)
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			handle_debris(severity, direction)
-			cdel(src)
+			qdel(src)
 			return
 
 /obj/structure/proc/handle_debris(severity = 0, direction = 0)

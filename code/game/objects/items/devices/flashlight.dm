@@ -83,7 +83,7 @@
 		user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
 		user << "<span class='notice'>You modify [src]. It can now be mounted on a weapon.</span>"
 		user << "<span class='notice'>Use a screwdriver on [F] to change it back.</span>"
-		cdel(src) //Delete da old flashlight
+		qdel(src) //Delete da old flashlight
 		return
 	else
 		..()
@@ -370,12 +370,12 @@
 /obj/item/device/flashlight/flare/signal/Dispose()
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		cdel(signal)		
+		qdel(signal)		
 	..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()
 	anchored = FALSE
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		cdel(signal)
+		qdel(signal)
 	..()

@@ -28,7 +28,7 @@
 				usr.put_in_hands(TrashItem)
 			else if(istype(trash,/obj/item))
 				usr.put_in_hands(trash)
-		cdel(src)
+		qdel(src)
 	return
 
 /obj/item/reagent_container/food/snacks/attack_self(mob/user as mob)
@@ -38,7 +38,7 @@
 	if(!reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
 		user << "\red None of [src] left, oh no!"
 		M.drop_inv_item_on_ground(src)	//so icons update :[
-		cdel(src)
+		qdel(src)
 		return 0
 
 	if(package)
@@ -158,7 +158,7 @@
 		reagents.trans_to(U,min(reagents.total_volume,5))
 
 		if (reagents.total_volume <= 0)
-			cdel(src)
+			qdel(src)
 		return
 
 	if((slices_num <= 0 || !slices_num) || !slice_path)
@@ -202,7 +202,7 @@
 	for(var/i=1 to (slices_num-slices_lost))
 		var/obj/slice = new slice_path (src.loc)
 		reagents.trans_to(slice,reagents_per_slice)
-	cdel(src)
+	qdel(src)
 
 	return
 
@@ -222,7 +222,7 @@
 				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where the [src] was")
 				if(sattisfaction_text)
 					M.emote("[sattisfaction_text]")
-				cdel(src)
+				qdel(src)
 		if(ismouse(M))
 			var/mob/living/simple_animal/mouse/N = M
 			N << text("\blue You nibble away at [src].")
@@ -488,7 +488,7 @@
 	if(reagents)
 		reagents.reaction(hit_atom, TOUCH)
 	visible_message("<span class='warning'>[name] has been squashed.</span>","<span class='warning'>You hear a smack.</span>")
-	cdel(src)
+	qdel(src)
 
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype( W, /obj/item/toy/crayon ))
@@ -722,7 +722,7 @@
 	proc/cooltime() //Not working, derp?
 		if(warm)
 			spawn( 4200 )
-				if(!disposed) //not cdel'd
+				if(!disposed) //not qdel'd
 					warm = 0
 					reagents.del_reagent("tricordrazine")
 					name = "donk-pocket"
@@ -912,7 +912,7 @@
 	..()
 	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
 	src.visible_message("\red [src.name] splats.","\red You hear a splat.")
-	cdel(src)
+	qdel(src)
 
 /obj/item/reagent_container/food/snacks/berryclafoutis
 	name = "Berry Clafoutis"
@@ -1556,7 +1556,7 @@
 		var/turf/T = get_turf(src)
 		if(T)
 			new monkey_type(T)
-		cdel(src)
+		qdel(src)
 
 
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped
@@ -2729,16 +2729,16 @@
 	if(istype(W,/obj/item/reagent_container/food/snacks/egg))
 		new /obj/item/reagent_container/food/snacks/dough(src)
 		user << "You make some dough."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 
 // Egg + flour = dough
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food/snacks/flour))
 		new /obj/item/reagent_container/food/snacks/dough(src)
 		user << "You make some dough."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 
 /obj/item/reagent_container/food/snacks/dough
 	name = "dough"
@@ -2755,7 +2755,7 @@
 	if(istype(W,/obj/item/tool/kitchen/rollingpin))
 		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(src)
 		user << "You flatten the dough."
-		cdel(src)
+		qdel(src)
 
 // slicable into 3xdoughslices
 /obj/item/reagent_container/food/snacks/sliceable/flatdough
@@ -2794,30 +2794,30 @@
 	if(istype(W,/obj/item/reagent_container/food/snacks/meatball))
 		new /obj/item/reagent_container/food/snacks/monkeyburger(src)
 		user << "You make a burger."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 
 	// Bun + cutlet = hamburger
 	else if(istype(W,/obj/item/reagent_container/food/snacks/cutlet))
 		new /obj/item/reagent_container/food/snacks/monkeyburger(src)
 		user << "You make a burger."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 
 	// Bun + sausage = hotdog
 	else if(istype(W,/obj/item/reagent_container/food/snacks/sausage))
 		new /obj/item/reagent_container/food/snacks/hotdog(src)
 		user << "You make a hotdog."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 
 // Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/monkeyburger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))// && !istype(src,/obj/item/reagent_container/food/snacks/cheesewedge))
 		new /obj/item/reagent_container/food/snacks/cheeseburger(src)
 		user << "You make a cheeseburger."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 		return
 	else
 		..()
@@ -2827,8 +2827,8 @@
 	if(istype(W))
 		new /obj/item/reagent_container/food/snacks/cheeseburger(src)
 		user << "You make a cheeseburger."
-		cdel(W)
-		cdel(src)
+		qdel(W)
+		qdel(src)
 		return
 	else
 		..()
@@ -2896,7 +2896,7 @@
 	if(istype(W,/obj/item/tool/kitchen/utensil/knife))
 		new /obj/item/reagent_container/food/snacks/rawsticks(src)
 		user << "You cut the potato."
-		cdel(src)
+		qdel(src)
 	else
 		..()
 

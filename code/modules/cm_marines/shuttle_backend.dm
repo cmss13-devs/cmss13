@@ -299,9 +299,16 @@ x_pos = 0 1 2 3 4 5 6
 	icon_state = "spawn_shuttle"
 	var/rotation = 0 //When loading to this landmark, how much to rotate the turfs. See /proc/rotate_shuttle_turfs()
 
-	New()
-		set waitfor = 0
-		..()
+/obj/effect/landmark/shuttle_loc/New()
+	set waitfor = 0
+	shuttle_landmarks += src
+	..()
+
+/obj/effect/landmark/shuttle_loc/proc/initialize_marker()
+	return
+
+/obj/effect/landmark/shuttle_loc/proc/link_loc()
+	set waitfor = 0
 
 /obj/effect/landmark/shuttle_loc/marine_src
 	icon_state = "spawn_shuttle_dock"
@@ -313,48 +320,44 @@ x_pos = 0 1 2 3 4 5 6
 	icon_state = "spawn_shuttle_crash"
 
 #define SHUTTLE_LINK_LOCATIONS(T, L) \
-sleep(50); \
 ..(); \
 var/datum/shuttle/ferry/marine/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] [T] [name]"]; \
 if(!S) {log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] [T] [name]"]."); \
 r_FAL}; \
 L[get_turf(src)] = rotation; \
-cdel(src)
+qdel(src)
 
-/obj/effect/landmark/shuttle_loc/marine_src/dropship //Name these "1" or "2", etc.
-	New()
-		SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
+/obj/effect/landmark/shuttle_loc/marine_src/dropship/initialize_marker() //Name these "1" or "2", etc.
+	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
 
 /obj/effect/landmark/shuttle_loc/marine_src/evacuation
-	New()
-		sleep(50)
-		..()
-		var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
-		if(!S)
-			log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
-			r_FAL
-		S.locs_dock[get_turf(src)] = rotation
-		S.link_support_units(get_turf(src)) //Process links.
-		cdel(src)
 
-/obj/effect/landmark/shuttle_loc/marine_int/dropship
-	New()
-		SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)
+/obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()
+	sleep(50)
+	..()
+	var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
+	if(!S)
+		log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
+		r_FAL
+	S.locs_dock[get_turf(src)] = rotation
+	S.link_support_units(get_turf(src)) //Process links.
 
-/obj/effect/landmark/shuttle_loc/marine_trg/landing
-	New()
-		SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_land)
+/obj/effect/landmark/shuttle_loc/marine_int/dropship/link_loc()
+	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)
 
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation
-	New()
-		SHUTTLE_LINK_LOCATIONS("Evac", S.locs_land)
+/obj/effect/landmark/shuttle_loc/marine_trg/landing/link_loc()
+	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_land)
+
+/obj/effect/landmark/shuttle_loc/marine_trg/evacuation/link_loc()
+	SHUTTLE_LINK_LOCATIONS("Evac", S.locs_land)
 
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship
-	New()
-		sleep(50)
-		..()
-		shuttle_controller.locs_crash[get_turf(src)] = rotation
-		cdel(src)
+	
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship/link_loc()
+	sleep(50)
+	..()
+	shuttle_controller.locs_crash[get_turf(src)] = rotation
+	qdel(src)
 
 #undef SHUTTLE_LINK_LOCATIONS
 
@@ -431,7 +434,7 @@ cdel(src)
 		// Delete objects and gib living things in the destination
 		for (var/atom/A in target)
 			if (isobj(A) && A.loc == target)
-				cdel(A)
+				qdel(A)
 				continue
 
 			if (isliving(A))

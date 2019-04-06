@@ -25,7 +25,7 @@
 			if(secondary_skill)
 				user.mind.cm_skills.vars["[secondary_skill]"] = skill_increment
 			user.has_used_pamphlet = TRUE
-			cdel(src)
+			qdel(src)
 
 /obj/item/pamphlet/medical
 	name = "medical instructional pamphlet"

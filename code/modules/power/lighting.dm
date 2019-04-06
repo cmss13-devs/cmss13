@@ -51,7 +51,7 @@
 			user.visible_message("[user.name] deconstructs [src].", \
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			cdel(src)
+			qdel(src)
 		if (src.stage == 2)
 			usr << "You have to remove the wires first."
 			return
@@ -109,7 +109,7 @@
 
 			newlight.dir = src.dir
 			src.transfer_fingerprints_to(newlight)
-			cdel(src)
+			qdel(src)
 			return
 	..()
 
@@ -135,6 +135,7 @@
 	use_power = 2
 	idle_power_usage = 2
 	active_power_usage = 20
+	processable = 0
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	var/on = 0					// 1 if on, 0 if off
 	var/on_gs = 0
@@ -243,7 +244,7 @@
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(var/trigger = 1)
-
+	global_changed_lights.Add(light)
 	update_icon()
 	if(on)
 		if(luminosity != brightness)
@@ -271,7 +272,6 @@
 	active_power_usage = (luminosity * 10)
 	if(on != on_gs)
 		on_gs = on
-
 
 // attempt to set the light's on/off status
 // will not switch on if broken/burned/empty
@@ -325,7 +325,7 @@
 				update()
 
 				if(user.temp_drop_inv_item(L))
-					cdel(L)
+					qdel(L)
 
 					if(on && rigged)
 
@@ -379,7 +379,7 @@
 			newlight.fingerprints = src.fingerprints
 			newlight.fingerprintshidden = src.fingerprintshidden
 			newlight.fingerprintslast = src.fingerprintslast
-			cdel(src)
+			qdel(src)
 			return
 
 		user << "You stick \the [W] into the light socket!"
@@ -527,7 +527,7 @@
 			if (prob(75))
 				broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 	return
 
@@ -573,7 +573,7 @@
 		sleep(2)
 		explosion(T, 0, 0, 2, 2)
 		sleep(1)
-		cdel(src)
+		qdel(src)
 
 // the light item
 // can be tube or bulb subtypes

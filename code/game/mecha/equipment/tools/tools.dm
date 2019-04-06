@@ -72,7 +72,7 @@
 	icon_state = "mecha_drill"
 	equip_cooldown = 30
 	energy_drain = 10
-	force = 55
+	force = 15
 	required_type = list(/obj/mecha/working, /obj/mecha/combat)
 
 	action(atom/target)
@@ -191,7 +191,7 @@
 							W.reagents.reaction(atm)
 						if(W.loc == my_target) break
 						sleep(2)
-					cdel(W)
+					qdel(W)
 			return 1
 
 	get_equip_info()
@@ -251,7 +251,7 @@
 						if(disabled) return
 						chassis.spark_system.start()
 						playsound(target, 'sound/items/Deconstruct.ogg', 25, 1)
-						cdel(target)
+						qdel(target)
 						chassis.use_power(energy_drain)
 			if(1)
 				if(istype(target, /turf/open/space))
@@ -373,7 +373,7 @@
 		do_after_cooldown()
 		src = null
 		spawn(rand(150,300))
-			cdel(P)
+			qdel(P)
 		return
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult

@@ -34,7 +34,7 @@ obj/effect/landmark/desertdam/river_blocker
 	var/i
 	for(i in round_toxic_river)
 		round_toxic_river -= i
-		cdel(i)
+		qdel(i)
 		sleep(1)
 	round_toxic_river = null
 */

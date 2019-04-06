@@ -111,7 +111,7 @@ Programs are a file that can be executed
 	update_icon()
 	if(popup)
 		popup.close()
-		cdel(popup)
+		qdel(popup)
 		popup = null
 	return
 

@@ -294,7 +294,7 @@
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
 			new meat_type (get_turf(src))
 			if(prob(95))
-				cdel(src)
+				qdel(src)
 			else
 				gib()
 			return
@@ -352,7 +352,7 @@
 //Call when target overlay should be added/removed
 /mob/living/simple_animal/update_targeted()
 	if(!targeted_by && target_locked)
-		cdel(target_locked)
+		qdel(target_locked)
 		target_locked = null
 	overlays = null
 	if (targeted_by && target_locked)

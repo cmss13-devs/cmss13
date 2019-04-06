@@ -13,7 +13,7 @@
 		else if((!severity || severity == FS.severity) && (!client || FS.screen_loc != "CENTER-7,CENTER-7" || FS.fs_view == client.view))
 			return null
 	else
-		FS = rnew(type)
+		FS = new type()
 
 	FS.icon_state = "[initial(FS.icon_state)][severity]"
 	FS.severity = severity
@@ -38,7 +38,7 @@
 
 	if(client)
 		client.screen -= FS
-	cdel(FS)
+	qdel(FS)
 
 
 /mob/proc/clear_fullscreens()

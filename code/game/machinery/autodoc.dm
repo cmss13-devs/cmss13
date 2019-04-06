@@ -453,7 +453,7 @@
 								if(!is_type_in_list(I,known_implants))
 									sleep(HEMOSTAT_REMOVE_MAX_DURATION*surgery_mod)
 									S.limb_ref.implants -= I
-									cdel(I)
+									qdel(I)
 						if(S.limb_ref.name == "chest" || S.limb_ref.name == "head")
 							close_encased(H,S.limb_ref)
 						if(!surgery) break
@@ -639,7 +639,7 @@
 			usr << "Autodoc not properly connected"
 
 		for(var/obj/O in src)
-			cdel(O)
+			qdel(O)
 		add_fingerprint(usr)
 
 /obj/machinery/autodoc/proc/go_out()
@@ -664,7 +664,7 @@
 		user << "<span class='notice'>\The [src] processes \the [W].</span>"
 		stored_metal += M.amount * 100
 		user.drop_held_item()
-		cdel(W)
+		qdel(W)
 		return
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
@@ -725,7 +725,7 @@
 		if(dir == WEST || dir == NORTH)
 			connected = locate(/obj/machinery/autodoc,get_step(src, EAST))
 		if(!connected)
-			cdel(src)
+			qdel(src)
 		else
 			connected.connected = src
 

@@ -182,7 +182,7 @@
 		else stack_amt = round(stack_amount * (health/maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 
 		if(stack_amt) new stack_type (loc, stack_amt)
-	cdel(src)
+	qdel(src)
 
 
 /obj/structure/barricade/ex_act(severity, direction)
@@ -194,7 +194,7 @@
 	health -= severity
 	if(health <= 0)
 		handle_debris(severity, direction)
-		cdel(src)
+		qdel(src)
 	else
 		update_health()
 
@@ -649,7 +649,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		f.health = health
 		f.maxhealth = maxhealth
 		user.put_in_active_hand(f)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
@@ -686,7 +686,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	cade.dir = user.dir
 	cade.health = health
 	cade.maxhealth = maxhealth
-	cdel(src)
+	qdel(src)
 
 /*----------------------*/
 // PLASTEEL

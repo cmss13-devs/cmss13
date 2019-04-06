@@ -21,7 +21,7 @@
 			var/mob/living/carbon/C = affected_mob
 			C.med_hud_set_status()
 	else
-		cdel(src)
+		qdel(src)
 
 /obj/item/alien_embryo/Dispose()
 	if(affected_mob)
@@ -36,7 +36,7 @@
 /obj/item/alien_embryo/process()
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		r_FAL
 
 	if(loc != affected_mob) //Our location is not the host
@@ -219,15 +219,15 @@
 		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
-			hive.stored_larva++
-			cdel(L)
+			hive.stored_larva++	
+			qdel(L)
 
 		if(!victim.first_xeno)
 			L << "<span class='xenohighdanger'>The Queen's will overwhelms your instincts..."
 			L << "<span class='xenohighdanger'>\""+hive.hive_orders+"\"</span>"
 
 	for(var/obj/item/alien_embryo/AE in victim)
-		cdel(AE)
+		qdel(AE)
 
 	if(burstcount >= 4)
 		victim.gib()

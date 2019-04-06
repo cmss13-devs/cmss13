@@ -6,7 +6,7 @@ var/global/datum/global_init/init = new ()
 /datum/global_init/New()
 	load_configuration()
 	makeDatumRefLists()
-	cdel(src)
+	qdel(src)
 
 
 /world
@@ -75,17 +75,8 @@ var/global/datum/global_init/init = new ()
 
 	world.tick_lag = config.Ticklag
 
-	// Process Scheduler
-	src << "\red \b Scheduler initialized."
-	processScheduler = new
-
-	spawn(0)
-		processScheduler.setup()
-
-	src << "\red \b Scheduler setup complete."
-
-	spawn(0)
-		processScheduler.start()
+	spawn(1)
+		Master.Setup()
 
 //	master_controller = new /datum/controller/game_controller()
 
@@ -99,8 +90,6 @@ var/global/datum/global_init/init = new ()
 	spawn(3000)		//so we aren't adding to the round-start lag
 		if(config.ToRban)
 			ToRban_autoupdate()
-		if(config.kick_inactive)
-			KickInactiveClients()
 
 #undef RECOMMENDED_VERSION
 
@@ -328,6 +317,9 @@ var/world_topic_spam_protect_time = world.timeofday
 	/*spawn(0)
 		world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg')) // random end sounds!! - LastyBatsy
 		*/
+
+	Master.Shutdown()
+	
 	// Notify helper daemon of reboot, regardless of reason.
 	world.Export("http://127.0.0.1:8888/?rebooting=1")
 	for(var/client/C in clients)
@@ -337,21 +329,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	..(reason)
 
 
-#define INACTIVITY_KICK	6000	//10 minutes in ticks (approx.)
-/world/proc/KickInactiveClients()
-	spawn(-1)
-		set background = 1
-		while(1)
-			sleep(INACTIVITY_KICK)
-			for(var/client/C in clients)
-				if(C.admin_holder && C.admin_holder.rights & R_ADMIN) //Skip admins.
-					continue
-				if(C.is_afk(INACTIVITY_KICK))
-					if(!istype(C.mob, /mob/dead))
-						log_access("AFK: [key_name(C)]")
-						C << "\red You have been inactive for more than 10 minutes and have been disconnected."
-						cdel(C)
-#undef INACTIVITY_KICK
 
 
 /hook/startup/proc/loadMode()

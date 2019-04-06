@@ -48,12 +48,12 @@
 		density = 0
 		destroyed = 1
 		handle_debris()
-		cdel(src)
+		qdel(src)
 	return
 
 /obj/structure/grille/ex_act(severity,direction)
 	handle_debris(severity, direction)
-	cdel(src)
+	qdel(src)
 
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
@@ -129,7 +129,7 @@
 		if(!shock(user, 100))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			handle_debris()
-			cdel(src)
+			qdel(src)
 	else if(isscrewdriver(W) && istype(loc, /turf/open))
 		if(!shock(user, 90))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -203,7 +203,7 @@
 		else
 			if(health <= -6)
 				handle_debris()
-				cdel(src)
+				qdel(src)
 				return
 	return
 

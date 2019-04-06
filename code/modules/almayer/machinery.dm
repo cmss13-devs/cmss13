@@ -89,12 +89,12 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 			return
@@ -135,12 +135,12 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 			return
@@ -160,8 +160,8 @@
 		icon_state += "b"
 	if(stat & NOPOWER)
 		icon_state = initial(icon_state)
-		icon_state += "0"		
-		
+		icon_state += "0"
+
 /obj/machinery/prop/almayer/NavCon2
 	name = "NavCon 2"
 	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in system curse corrections and orbital maneuvers. Don't touch it!"
@@ -181,12 +181,12 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 			return
@@ -206,7 +206,7 @@
 		icon_state += "b"
 	if(stat & NOPOWER)
 		icon_state = initial(icon_state)
-		icon_state += "0"			
+		icon_state += "0"
 
 /obj/machinery/prop/almayer/CICmap
 	name = "map table"
@@ -338,7 +338,7 @@
 			if(!fallen_list)
 				fallen_list = list()
 			fallen_list += D.fallen_names
-			cdel(D)
+			qdel(D)
 		return TRUE
 	else
 		. = ..()
@@ -465,7 +465,7 @@
 			var/obj/item/bodybag/cryobag/R = new /obj/item/bodybag/cryobag //lets give them the bag considering having it unfolded would be a pain in the ass.
 			R.add_fingerprint(user)
 			user.temp_drop_inv_item(W)
-			cdel(W)
+			qdel(W)
 			user.put_in_hands(R)
 			r_TRU
 	..()

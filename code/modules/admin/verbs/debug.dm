@@ -401,7 +401,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 						for(var/atom/O in world)
 							if(istype(O, hsbitem))
 								del_amt++
-								cdel(O)
+								qdel(O)
 						log_admin("[key_name(src)] has deleted all instances of [hsbitem] ([del_amt]).")
 						message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
@@ -492,7 +492,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	M.ckey = src.ckey
 	if(M.client) M.client.change_view(world.view)
 	if( isobserver(adminmob) )
-		cdel(adminmob)
+		qdel(adminmob)
 	feedback_add_details("admin_verb","ADC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -607,7 +607,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			else
 				for(var/turf/T in C)
 					T.color = "#ff0000"
-
 
 /client/proc/cmd_debug_mob_lists()
 	set category = "Debug"

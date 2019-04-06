@@ -10,7 +10,7 @@
 #define DEFCON_POINT_GAIN_PER_LEVEL 2
 #define DEFCON_MAX_LEVEL 5
 
-var/global/datum/defcon/defcon_controller = new
+var/global/datum/defcon/defcon_controller
 
 /datum/defcon
 	var/current_defcon_level = 5 //IRL DEFCON goes from 5 to 1, so we preserve it here

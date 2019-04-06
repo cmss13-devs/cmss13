@@ -82,7 +82,7 @@
 					D.reagents.reaction(A_turf)
 				sleep(2)
 			sleep(3)
-		cdel(D)
+		qdel(D)
 
 
 /obj/item/reagent_container/spray/attack_self(var/mob/user)
@@ -209,7 +209,7 @@
 				for(var/atom/t in get_turf(D))
 					D.reagents.reaction(t)
 				sleep(2)
-			cdel(D)
+			qdel(D)
 
 	return
 

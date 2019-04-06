@@ -1,12 +1,9 @@
-var/global/datum/shuttle_controller/shuttle_controller
-
-
-/datum/shuttle_controller
+/datum/controller/shuttle_controller
 	var/list/shuttles	//maps shuttle tags to shuttle datums, so that they can be looked up.
 	var/list/process_shuttles	//simple list of shuttles, for processing
 	var/list/locs_crash
 
-/datum/shuttle_controller/proc/process()
+/datum/controller/shuttle_controller/proc/process()
 	//process ferry shuttles
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
 
@@ -18,8 +15,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 		if (shuttle.process_state)
 			shuttle.process()
 
-
-/datum/shuttle_controller/New()
+/datum/controller/shuttle_controller/New()
 	shuttles = list()
 	process_shuttles = list()
 	locs_crash = list()
@@ -29,7 +25,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	// Supply shuttle
 	shuttle = new/datum/shuttle/ferry/supply()
 	shuttle.location = 1
-	shuttle.warmup_time = SECONDS_1
+	shuttle.warmup_time = 1
 	shuttle.move_time = ELEVATOR_TRANSIT_DURATION
 	for(var/area/A in all_areas)
 		if(A.type == /area/supply/dock)
@@ -293,7 +289,7 @@ var/global/datum/shuttle_controller/shuttle_controller
 	process_shuttles += shuttle
 
 //This is called by gameticker after all the machines and radio frequencies have been properly initialized
-/datum/shuttle_controller/proc/setup_shuttle_docks()
+/datum/controller/shuttle_controller/proc/setup_shuttle_docks()
 	var/datum/shuttle/shuttle
 	var/list/dock_controller_map = list()	//so we only have to iterate once through each list
 

@@ -16,7 +16,7 @@
 				for(var/i = 1, i <= amount, i++)
 					new s (pick(T))
 		sleep(-1)
-	cdel(src)
+	qdel(src)
 
 
 /obj/effect/landmark/supplyspawner/weapons

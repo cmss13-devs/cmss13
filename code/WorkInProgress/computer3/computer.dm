@@ -215,14 +215,14 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				for(var/x in verbs)
 					verbs -= x
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return

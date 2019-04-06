@@ -43,14 +43,14 @@
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 			if (prob(50))
 				for(var/x in verbs)
 					verbs -= x
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 		else
 	return
@@ -117,7 +117,7 @@
 				A.state = 4
 				A.icon_state = "4"
 			M.deconstruct(src)
-			cdel(src)
+			qdel(src)
 	else
 		if(isXeno(user))
 			src.attack_alien(user)

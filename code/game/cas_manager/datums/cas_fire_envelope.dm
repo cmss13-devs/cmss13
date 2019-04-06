@@ -152,7 +152,7 @@
 		for(var/mob/M in guidance.users)
 			if(istype(M) && M.client)
 				M.reset_view()
-		cdel(guidance)			
+		qdel(guidance)			
 		return
 	if(!guidance)
 		guidance = new /obj/effect/firemission_guidance()			
@@ -266,7 +266,7 @@
 		return -1
 	var/mission = missions[mission_id]
 	missions -= mission
-	cdel(mission)
+	qdel(mission)
 	return 1
 
 /datum/cas_fire_envelope/uscm_dropship

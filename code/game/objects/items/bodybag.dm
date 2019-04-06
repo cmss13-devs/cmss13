@@ -24,7 +24,7 @@
 	R.add_fingerprint(user)
 	R.open(user)
 	user.temp_drop_inv_item(src)
-	cdel(src)
+	qdel(src)
 
 
 /obj/item/bodybag/cryobag
@@ -151,7 +151,7 @@
 		visible_message("<span class='notice'>[usr] folds up [name].</span>")
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)
-		cdel(src)
+		qdel(src)
 
 
 
@@ -227,7 +227,7 @@
 	. = ..()
 	if(used > max_uses)
 		new /obj/item/trash/used_stasis_bag(loc)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/closet/bodybag/cryobag/store_mobs(var/stored_units) // overriding this
 	var/list/mobs_can_store = list()

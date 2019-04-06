@@ -5,7 +5,7 @@
 	gib_animation()
 	if (map_tag != MAP_WHISKEY_OUTPOST)
 		spawn_gibs()
-	cdel(src)
+	qdel(src)
 
 
 /mob/proc/gib_animation()
@@ -25,7 +25,7 @@
 	death(1)
 	dust_animation()
 	spawn_dust_remains()
-	cdel(src)
+	qdel(src)
 
 
 /mob/proc/spawn_dust_remains()

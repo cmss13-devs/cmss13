@@ -1,4 +1,11 @@
-var/global/datum/controller/gameticker/ticker
+var/global/datum/controller/gameticker/ticker = new()
+
+#define GAME_STATE_PREGAME		1
+#define GAME_STATE_SETTING_UP	2
+#define GAME_STATE_PLAYING		3
+#define GAME_STATE_FINISHED		4
+
+
 /datum/controller/gameticker
 	var/const/restart_timeout = 600
 	var/current_state = GAME_STATE_PREGAME
@@ -85,7 +92,7 @@ var/global/datum/controller/gameticker/ticker
 			src.mode = config.pick_mode(master_mode)
 	if (!src.mode.can_start())
 		world << "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby."
-		cdel(mode)
+		qdel(mode)
 		mode = null
 		current_state = GAME_STATE_PREGAME
 		RoleAuthority.reset_roles()
@@ -93,7 +100,7 @@ var/global/datum/controller/gameticker/ticker
 
 	var/can_continue = src.mode.pre_setup()//Setup special modes
 	if(!can_continue)
-		cdel(mode)
+		qdel(mode)
 		mode = null
 		current_state = GAME_STATE_PREGAME
 		world << "<B>Error setting up [master_mode].</B> Reverting to pre-game lobby."
@@ -135,7 +142,7 @@ var/global/datum/controller/gameticker/ticker
 		for(var/obj/effect/landmark/start/S in landmarks_list)
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
-				cdel(S)
+				qdel(S)
 		world << "<FONT color='blue'><B>Enjoy the game!</B></FONT>"
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
@@ -148,6 +155,10 @@ var/global/datum/controller/gameticker/ticker
 		ooc_allowed = !( ooc_allowed )
 
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
+
+	//for(var/obj/multiz/ladder/L in object_list) L.connect() //Lazy hackfix for ladders. TODO: move this to an actual controller. ~ Z
+
+	Master.RoundStart()
 
 	if(config.sql_enabled)
 		spawn(MINUTES_5)
@@ -169,7 +180,7 @@ var/global/datum/controller/gameticker/ticker
 					continue
 				else
 					player.create_character()
-					cdel(player)
+					qdel(player)
 
 
 	proc/collect_minds()
@@ -321,3 +332,6 @@ var/global/datum/controller/gameticker/ticker
 		log_game("[i]s[total_antagonists[i]].")
 
 	return 1
+
+/world/proc/has_round_started()
+	return ticker && ticker.current_state >= GAME_STATE_PLAYING

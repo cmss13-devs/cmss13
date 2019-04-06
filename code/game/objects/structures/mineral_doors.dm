@@ -135,7 +135,7 @@
 			var/ore = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
-	cdel(src)
+	qdel(src)
 
 /obj/structure/mineral_door/ex_act(severity)
 	if(unacidable) return
@@ -145,13 +145,13 @@
 			if(0 to EXPLOSION_THRESHOLD_LOW)
 				//nothing
 			if(EXPLOSION_THRESHOLD_LOW to INFINITY)
-				cdel(src)
+				qdel(src)
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_MEDIUM)
 				//nothing
 			else
-				cdel(src)
+				qdel(src)
 	return
 
 
@@ -246,7 +246,7 @@
 	if(!devastated)
 		for(var/i = 1, i <= oreAmount, i++)
 			new/obj/item/stack/sheet/wood(get_turf(src))
-	cdel(src)
+	qdel(src)
 
 //Mapping instance
 /obj/structure/mineral_door/wood/open

@@ -408,7 +408,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 					H.update_icon()
 					break
 			if(!found_handful)
-				var/obj/item/ammo_magazine/handful/new_handful = rnew(/obj/item/ammo_magazine/handful)
+				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 				new_handful.generate_handful(current_mag.default_ammo, current_mag.caliber, 8, 1, type)
 				new_handful.loc = get_turf(src)
 		else
@@ -492,7 +492,7 @@ and you're good to go.
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
 		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
-	var/obj/item/projectile/P = rnew(/obj/item/projectile, src)	
+	var/obj/item/projectile/P = new /obj/item/projectile(src)
 	P.generate_bullet(chambered, 0, iff_enabled?AMMO_SKIPS_HUMANS:0)
 
 	return P
@@ -521,7 +521,7 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/delete_bullet(var/obj/item/projectile/projectile_to_fire, var/refund = 0)
 	if(active_attachable) //Attachables don't chamber rounds, so we want to delete it right away.
-		cdel(projectile_to_fire) //Getting rid of it. Attachables only use ammo after the cycle is over.
+		qdel(projectile_to_fire) //Getting rid of it. Attachables only use ammo after the cycle is over.
 		if(refund)
 			active_attachable.current_rounds++ //Refund the bullet.
 		return 1
@@ -701,7 +701,7 @@ and you're good to go.
 						last_fired = world.time
 
 						projectile_to_fire.play_damage_effect(user)
-						if(!delete_bullet(projectile_to_fire)) cdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
+						if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire) //If this proc DIDN'T delete the bullet, we're going to do so here.
 
 						reload_into_chamber(user) //Reload the sucker.
 
@@ -744,12 +744,12 @@ and you're good to go.
 						var/i
 						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
 							if(accuracy_debuff==0 || prob(hitchance))
-								BP = rnew(/obj/item/projectile, M.loc)
+								BP = new /obj/item/projectile(M.loc)
 								BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled?AMMO_SKIPS_HUMANS:0)
 								BP.damage *= damage_buff							
 								BP.ammo.on_hit_mob(M, BP)
 								M.bullet_act(BP)								
-								cdel(BP)
+								qdel(BP)
 							else
 								missed_once=TRUE
 
@@ -761,7 +761,7 @@ and you're good to go.
 
 					last_fired = world.time
 
-					if(!delete_bullet(projectile_to_fire)) cdel(projectile_to_fire)
+					if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
 					if(missed_once)
 						user.visible_message("<span class='notice'>Some bullets miss due to [user] firing from the hip.</span>")
 					reload_into_chamber(user) //Reload into the chamber if the gun supports it.
@@ -1024,10 +1024,10 @@ and you're good to go.
 
 	if(prob(65)) //Not all the time.
 		var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
-		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer))
+		var/image/I = image('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer)
 		var/matrix/rotate = matrix() //Change the flash angle.
 		rotate.Translate(x,y)
 		rotate.Turn(angle)
 		I.transform = rotate
 
-		I.flick_overlay(user, 3)
+		//I.flick_overlay(user, 3) // TODO: fix this -spookydonut

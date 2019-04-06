@@ -7,7 +7,7 @@
 	. = ..()
 
 	loc.overlays += src
-	cdel(src)
+	qdel(src)
 
 /obj/effect/decal/warning_stripes/asteroid
 	icon_state = "warning"

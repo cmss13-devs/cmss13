@@ -44,10 +44,10 @@
 
 /obj/item/device/binoculars/tactical/Dispose()
 	if(laser)
-		cdel(laser)
+		qdel(laser)
 		laser = null
 	if(coord)
-		cdel(coord)
+		qdel(coord)
 		coord = null
 	. = ..()
 
@@ -57,9 +57,9 @@
 	if (user && (laser || coord))
 		if (!zoom)
 			if(laser)
-				cdel(laser)
+				qdel(laser)
 			if(coord)
-				cdel(coord)
+				qdel(coord)
 
 /obj/item/device/binoculars/tactical/update_icon()
 	..()
@@ -143,7 +143,7 @@
 		while(coord)
 			if(!do_after(user, 50, TRUE, 5, BUSY_ICON_GENERIC))
 				if(coord)
-					cdel(coord)
+					qdel(coord)
 					coord = null
 				break
 	else
@@ -154,7 +154,7 @@
 		while(laser)
 			if(!do_after(user, 50, TRUE, 5, BUSY_ICON_GENERIC))
 				if(laser)
-					cdel(laser)
+					qdel(laser)
 					laser = null
 				break
 
@@ -326,7 +326,7 @@
 		flame_radius(3,target_4)
 		explosion(target_4,  -1, 2, 3, 5)
 		sleep(1)
-		cdel(lasertarget)
+		qdel(lasertarget)
 		lazing = 0
 		laz_r = 1
 		sleep(6000)
@@ -354,7 +354,7 @@
 		var/turf/target_2 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		var/turf/target_3 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		if(target && istype(target))
-			cdel(lasertarget)
+			qdel(lasertarget)
 			explosion(target, -1, HE_power, con_power, con_power) //Kaboom!
 			sleep(rand(15,30)) //This is all better done in a for loop, but I am mad lazy
 			explosion(target_2, -1, HE_power, con_power, con_power)

@@ -47,7 +47,7 @@
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 		if(exFancy > 15)
 			M << "\blue Oh, just what I needed... Fucking HEFA's."
@@ -56,7 +56,7 @@
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 		else
 			gift_type = pick(
@@ -74,12 +74,12 @@
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
 			I.add_fingerprint(M)
-			cdel(src)
+			qdel(src)
 			return
 	else if (fancy <=5)
 		M << "\blue It's fucking EMPTY.  Man, Fuck CM."
 		M.temp_drop_inv_item(src)
-		cdel(src)
+		qdel(src)
 		return
 
 
@@ -127,5 +127,5 @@
 	M.temp_drop_inv_item(src)
 	M.put_in_hands(I)
 	I.add_fingerprint(M)
-	cdel(src)
+	qdel(src)
 	return

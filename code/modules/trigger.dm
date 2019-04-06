@@ -12,7 +12,7 @@
 	if(M.client)
 		M << "<span class='info'>[message]</span>"
 		if(once)
-			cdel(src)
+			qdel(src)
 
 /obj/effect/step_trigger/teleport_fancy
 	var/locationx
@@ -50,4 +50,4 @@
 
 	uses--
 	if(uses == 0)
-		cdel(src)
+		qdel(src)

@@ -96,7 +96,7 @@
 			for(var/mob/O in oviewers())
 				if ((O.client && !( O.blinded )))
 					O << "\red [src] breaks into tiny pieces and collapses!"
-			cdel(src)
+			qdel(src)
 
 		// Create a temporary object to represent the damage
 		var/obj/bmark = new

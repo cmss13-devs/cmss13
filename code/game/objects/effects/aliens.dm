@@ -21,7 +21,7 @@
 /obj/effect/xenomorph/splatter/New() //Self-deletes after creation & animation
 	..()
 	spawn(8)
-		cdel(src)
+		qdel(src)
 
 
 /obj/effect/xenomorph/splatterblob
@@ -35,7 +35,7 @@
 /obj/effect/xenomorph/splatterblob/New() //Self-deletes after creation & animation
 	..()
 	spawn(40)
-		cdel(src)
+		qdel(src)
 
 
 /obj/effect/xenomorph/spray
@@ -59,7 +59,7 @@
 				FF.firelevel -= 13
 				FF.updateicon()
 			else
-				cdel(atm)
+				qdel(atm)
 			continue
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
@@ -71,7 +71,7 @@
 	processing_objects.Add(src)
 	spawn(30 + rand(0, 20))
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		return
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
@@ -97,7 +97,7 @@
 	var/turf/T = loc
 	if(!istype(T))
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		return
 
 	for(var/mob/living/carbon/M in loc)
@@ -125,7 +125,7 @@
 				FF.firelevel -= 6
 				FF.updateicon()
 			else
-				cdel(atm)
+				qdel(atm)
 			continue
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
@@ -137,7 +137,7 @@
 	processing_objects.Add(src)
 	spawn(25 + rand(0, 10))
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		return
 
 /obj/effect/xenomorph/spray/weak/Crossed(AM as mob|obj)
@@ -196,7 +196,7 @@
 /obj/effect/xenomorph/acid/proc/tick(strength_t)
 	set waitfor = 0
 	if(!acid_t || !acid_t.loc)
-		cdel(src)
+		qdel(src)
 		return
 	if(++ticks >= strength_t)
 		visible_message("<span class='xenodanger'>[acid_t] collapses under its own weight into a puddle of goop and undigested debris!</span>")
@@ -220,10 +220,10 @@
 			if(acid_t.contents.len) //Hopefully won't auto-delete things inside melted stuff..
 				for(var/mob/M in acid_t.contents)
 					if(acid_t.loc) M.forceMove(acid_t.loc)
-			cdel(acid_t)
+			qdel(acid_t)
 			acid_t = null
 
-		cdel(src)
+		qdel(src)
 		return
 
 	switch(strength_t - ticks)

@@ -162,7 +162,7 @@
 		M.update_inv_shoes()
 /obj/item/clothing/shoes/Dispose()
 	if(stored_item)
-		cdel(stored_item)
+		qdel(stored_item)
 		stored_item = null
 	. = ..()
 

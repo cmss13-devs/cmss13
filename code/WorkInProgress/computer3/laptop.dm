@@ -52,7 +52,7 @@
 					O.loc = loc
 			usr << "\The [src] crumbles to pieces."
 			spawn(5)
-				cdel(src)
+				qdel(src)
 			return
 
 		if(!stored_computer.manipulating)
@@ -65,7 +65,7 @@
 
 			spawn(5)
 				stored_computer.manipulating = 0
-				cdel(src)
+				qdel(src)
 		else
 			usr << "\red You are already opening the computer!"
 
@@ -205,7 +205,7 @@
 			var/obj/O = loc
 			spawn(5)
 				if(O)
-					cdel(O)
+					qdel(O)
 		. = ..()
 
 

@@ -159,7 +159,7 @@
 	new /obj/effect/spawner/gibspawner/robot(Tsec)
 	new /obj/effect/decal/cleanable/blood/oil(src.loc)
 
-	cdel(src)
+	qdel(src)
 
 /obj/vehicle/proc/healthcheck()
 	if(health <= 0)

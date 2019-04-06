@@ -40,7 +40,7 @@
 
 		flick("[icon_state]-disolve", src)
 		sleep(5)
-		cdel(src)
+		qdel(src)
 
 
 // transfer any reagents to the floor
@@ -85,7 +85,7 @@
 		flick("[icon_state]-disolve", src)
 
 		spawn(5)
-			cdel(src)
+			qdel(src)
 
 
 /obj/effect/particle_effect/foam/Crossed(var/atom/movable/AM)
@@ -174,11 +174,11 @@
 
 
 	ex_act(severity)
-		cdel(src)
+		qdel(src)
 
 	bullet_act()
 		if(metal==1 || prob(50))
-			cdel(src)
+			qdel(src)
 		return 1
 
 	attack_paw(var/mob/user)
@@ -192,7 +192,7 @@
 				if ((O.client && !( O.blinded )))
 					O << "\red [user] smashes through the foamed metal."
 
-			cdel(src)
+			qdel(src)
 		else
 			user << "\blue You hit the metal foam but bounce off it."
 		return
@@ -205,7 +205,7 @@
 			for(var/mob/O in oviewers(user))
 				if ((O.client && !( O.blinded )))
 					O << "\red [user] smashes through the foamed metal."
-			cdel(src)
+			qdel(src)
 		else
 			user << "\blue You hit the metal foam to no effect."
 

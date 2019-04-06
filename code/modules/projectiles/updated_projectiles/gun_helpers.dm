@@ -330,7 +330,7 @@ should be alright.
 	if(stock && stock.has_marine_iff)
 		iff_enabled = TRUE
 	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
-		cdel(in_chamber)
+		qdel(in_chamber)
 		in_chamber = create_bullet(ammo) //OK
 
 /obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
@@ -387,14 +387,14 @@ should be alright.
 			if("rail") update_overlays(rail, attachable)
 
 /obj/item/weapon/gun/proc/update_overlays(obj/item/attachable/A, slot)
-	var/image/reusable/I = attachable_overlays[slot]
+	var/image/I = attachable_overlays[slot]
 	overlays -= I
-	cdel(I)
+	qdel(I)
 	if(A) //Only updates if the attachment exists for that slot.
 		var/item_icon = A.icon_state
 		if(A.attach_icon)
 			item_icon = A.attach_icon
-		I = rnew(/image/reusable, list(A.icon,src, item_icon))
+		I = image(A.icon,src, item_icon)
 		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x
 		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y
 		attachable_overlays[slot] = I
@@ -402,19 +402,19 @@ should be alright.
 	else attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
-	var/image/reusable/I = attachable_overlays["mag"]
+	var/image/I = attachable_overlays["mag"]
 	overlays -= I
-	cdel(I)
+	qdel(I)
 	if(current_mag && current_mag.bonus_overlay)
-		I = rnew(/image/reusable, list(current_mag.icon,src,current_mag.bonus_overlay))
+		I = image(current_mag.icon,src,current_mag.bonus_overlay)
 		attachable_overlays["mag"] = I
 		overlays += I
 	else attachable_overlays["mag"] = null
 
 /obj/item/weapon/gun/proc/update_special_overlay(new_icon_state)
 	overlays -= attachable_overlays["special"]
-	cdel(attachable_overlays["special"])
-	var/image/reusable/I = rnew(/image/reusable, list(icon,src,new_icon_state))
+	qdel(attachable_overlays["special"])
+	var/image/I = image(icon,src,new_icon_state)
 	attachable_overlays["special"] = I
 	overlays += I
 
@@ -450,14 +450,12 @@ should be alright.
 
 //For the holster hotkey
 /mob/living/silicon/robot/verb/holster_verb(keymod as text)
-	set name = "Holster"
-	set category = "Object"
+	set name = "holster"
 	set hidden = 1
 	src.uneq_active()
 
 /mob/living/carbon/human/verb/holster_verb(keymod as text)
-	set name = "Holster"
-	set category = "Object"
+	set name = "holster"
 	set hidden = 1
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
 		src << "<span class='warning'>You can't draw a weapon in your current state.</span>"

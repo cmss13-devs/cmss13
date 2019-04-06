@@ -37,7 +37,7 @@
 /obj/effect/particle_effect/smoke/process()
 	time_to_live--
 	if(time_to_live <= 0)
-		cdel(src)
+		qdel(src)
 	else if(time_to_live == 1)
 		alpha = 180
 		amount = 0
@@ -45,7 +45,7 @@
 
 /obj/effect/particle_effect/smoke/ex_act(severity)
 	if( prob(severity/EXPLOSION_THRESHOLD_LOW * 100) )
-		cdel(src)
+		qdel(src)
 
 /obj/effect/particle_effect/smoke/Crossed(atom/movable/M)
 	..()

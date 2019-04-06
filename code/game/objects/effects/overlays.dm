@@ -10,7 +10,7 @@
 	var/tmp/atom/BeamSource
 	New()
 		..()
-		spawn(10) cdel(src)
+		spawn(10) qdel(src)
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
@@ -53,7 +53,7 @@
 /obj/effect/overlay/temp/proc/start_countdown()
 	set waitfor = 0
 	sleep(effect_duration)
-	cdel(src)
+	qdel(src)
 
 /obj/effect/overlay/temp/point
 	name = "arrow"
@@ -119,9 +119,9 @@
 	if(signal)
 		cas_groups[user.faction].remove_signal(signal)
 		if(signal.linked_cam)
-			cdel(signal.linked_cam)
+			qdel(signal.linked_cam)
 			signal.linked_cam = null
-		cdel(signal)
+		qdel(signal)
 	if(source_binoc)
 		source_binoc.laser_cooldown = world.time + source_binoc.cooldown_duration
 		source_binoc.laser = null

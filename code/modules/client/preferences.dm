@@ -23,6 +23,7 @@ datum/preferences
 	var/warns = 0
 	var/muted = 0
 	var/last_ip
+	var/fps = 20
 	var/last_id
 	var/updating_icon = 0
 

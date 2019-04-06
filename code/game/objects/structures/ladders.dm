@@ -44,7 +44,7 @@
 			up.down = null
 		up = null
 	if(cam)
-		cdel(cam)
+		qdel(cam)
 		cam = null
 	. = ..()
 

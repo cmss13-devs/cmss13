@@ -510,7 +510,7 @@
 	if(prob(33))
 		M.visible_message("<span class='danger'>\The [M] slices [src] apart!</span>", \
 		"<span class='danger'>You slice [src] apart!</span>", null, 5)
-		cdel(src)
+		qdel(src)
 		return 1
 	else
 		M.visible_message("<span class='danger'>\The [M] tears some shreds off [src]!</span>", \
@@ -630,7 +630,7 @@
 			"<span class='xenonotice'>You claw \the [src].</span>")
 			playsound(loc, "alien_resin_break", 25)
 			health -= rand(35,45) // takes two or three hits
-			healthcheck()
+		qdel(src)
 
 //Xenomorphs can't use machinery, not even the "intelligent" ones
 //Exception is Queen and shuttles, because plot power
@@ -800,7 +800,7 @@
 	M.visible_message("<span class='danger'>\The [M] smashes \the [src] apart!</span>", \
 	"<span class='danger'>You smash \the [src] apart!</span>", \
 	"<span class='danger'>You hear splitting wood!</span>", 5)
-	cdel(src)
+	qdel(src)
 
 /obj/structure/closet/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.a_intent == "hurt" && !unacidable)

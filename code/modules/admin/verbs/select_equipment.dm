@@ -84,7 +84,7 @@
 	for (var/obj/item/I in M)
 		if (istype(I, /obj/item/implant))
 			continue
-		cdel(I)
+		qdel(I)
 
 	if(!ishuman(M))
 		//If the mob is not human, we're transforming them into a human

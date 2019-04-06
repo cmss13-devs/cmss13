@@ -1208,7 +1208,7 @@
 			//Something went horribly wrong!
 			X << "<span class='warning'>Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!</span>"
 			if(new_xeno)
-				cdel(new_xeno)
+				qdel(new_xeno)
 			return
 
 		if(T.mind)
@@ -1235,7 +1235,7 @@
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 
 		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
-		cdel(T)
+		qdel(T)
 		X.use_plasma(plasma_cost)
 
 	else

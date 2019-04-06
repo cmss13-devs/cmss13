@@ -1,6 +1,7 @@
 //SULACO AREAS--------------------------------------//
 /area/shuttle
 	ceiling = CEILING_METAL
+	requires_power = 0
 
 //Drop Pods
 /area/shuttle/drop1

@@ -135,7 +135,7 @@
 								FF.firelevel -= 7
 								FF.updateicon()
 							else
-								cdel(atm)
+								qdel(atm)
 							continue
 						if(isliving(atm)) //For extinguishing mobs on fire
 							var/mob/living/M = atm
@@ -145,7 +145,7 @@
 									C.die()
 					if(W.loc == my_target) break
 					sleep(2)
-				cdel(W)
+				qdel(W)
 
 		if((istype(usr.loc, /turf/open/space)) || (usr.lastarea.has_gravity == 0))
 			user.inertia_dir = get_dir(target, user)

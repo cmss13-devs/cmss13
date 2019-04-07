@@ -244,6 +244,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "6"
 	specialty = "M3 pattern smooth marine"
 
+/obj/item/clothing/suit/storage/marine/intel
+	icon_state = "io"
+	name = "\improper XM4 pattern intelligence officer plate armor"
+	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches."
+	armor = list(melee = 60, bullet = 90, laser = 35, energy = 35, bomb = 10, bio = 0, rad = 0) //slightly beefier than SG armor by a few numerals.
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/marine/officer/intel,)
+	specialty = "XM4 pattern intel"
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
@@ -293,13 +301,6 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 	specialty = "M2 pattern officer"
-
-/obj/item/clothing/suit/storage/marine/MP/intel
-	icon_state = "officer"
-	name = "\improper M3 pattern intel officer armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of intelligence officers. Useful for letting your men know who is in charge of collecting intel when taking to the field"
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
-	specialty = "M2 pattern intel officer"
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.

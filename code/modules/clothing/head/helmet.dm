@@ -299,6 +299,14 @@
 	armor = list(melee = 75, bullet = 45, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10)
 	specialty = "M11 pattern leader"
 
+/obj/item/clothing/head/helmet/marine/intel
+	name = "\improper XM12 pattern intelligence helmet"
+	desc = "An experimental brain-bucket that works better as a brain-plate. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	icon_state = "io"
+	item_state = "io"
+	armor = list(melee = 80, bullet = 50, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10) //Just a touch beefier than an SL helmet, gotta keep our IO's alive.
+	specialty = "XM12 pattern intel"
+
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."

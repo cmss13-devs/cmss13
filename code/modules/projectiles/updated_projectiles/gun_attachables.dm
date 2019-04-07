@@ -656,11 +656,11 @@ Defined in conflicts.dm of the #defines folder.
 			user.add_zoomout_handler(handler)
 
 
-/obj/item/attachable/scope/collimator
-	name = "IFTX B8 Smart-Scope"
-	icon_state = "collisight"
-	attach_icon = "collisight_a"
-	desc = "An experimental IFTX brand B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. However, it only attaches to the L42-MK1 Pulse Carbine."
+/obj/item/attachable/scope/mini_iff
+	name = "B8 Smart-Scope"
+	icon_state = "iffbarrel"
+	attach_icon = "iffbarrel_a"
+	desc = "An experimental B8 Smart-Scope. Based on the technologies used in the Smart Gun by ARMAT, this sight has integrated IFF systems. Due to the calculations involved, it only attaches to the L42MK1 Pulse Carbine and the M44 Magnum."
 	slot = "rail"
 	zoom_offset = 6
 	zoom_viewsize = 7
@@ -668,7 +668,7 @@ Defined in conflicts.dm of the #defines folder.
 	has_marine_iff = TRUE
 	var/dynamic_aim_slowdown = 0.4
 
-/obj/item/attachable/scope/collimator/New()
+/obj/item/attachable/scope/mini_iff/New()
 	..()
 	movement_acc_penalty_mod = 0
 	accuracy_unwielded_mod = 0
@@ -678,7 +678,7 @@ Defined in conflicts.dm of the #defines folder.
 	delay_scoped_nerf = 0
 	damage_falloff_scoped_buff = 0
 
-/obj/item/attachable/scope/collimator/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
+/obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(do_after(user, 8, FALSE, 5, BUSY_ICON_HOSTILE))
 		allows_movement	= 1
 		. = ..()

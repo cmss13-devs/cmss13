@@ -347,6 +347,11 @@
 	else
 		. = ..()
 
+/obj/structure/jungle/vines/tallgrass/fire_act()
+	if(!disposed)
+		spawn(rand(100,175))
+			qdel(src)
+
 /obj/structure/jungle/vines/New()
 	..()
 	icon_state = pick("Light1","Light2","Light3")

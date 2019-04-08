@@ -20009,7 +20009,8 @@
 /area/desert_dam/building/water_treatment_two/purification)
 "aXk" = (
 /obj/structure/filtration/machine_64x96{
-	icon_state = "sedementation_1"
+	icon_state = "sedementation_1";
+	pixel_y = -16
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -20028,7 +20029,8 @@
 /area/desert_dam/building/security/staffroom)
 "aXm" = (
 /obj/structure/filtration/machine_96x96{
-	icon_state = "sedementation_A_1"
+	icon_state = "sedementation_A_1";
+	pixel_y = -16
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -73464,6 +73466,13 @@
 	dir = 2
 	},
 /area/desert_dam/building/dorms/restroom)
+"dHH" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "darkpurple2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "dHI" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/snacks/candy,
@@ -81890,6 +81899,13 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"fLp" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 4
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "fTk" = (
 /obj/structure/sink/kitchen,
 /obj/structure/table/reinforced,
@@ -82042,6 +82058,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"hTA" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 1
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "hWz" = (
 /obj/structure/table/reinforced,
 /obj/item/document_objective/paper,
@@ -82102,6 +82125,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"iWK" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "iXt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -82362,6 +82392,13 @@
 	dir = 4
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"nnO" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "nqF" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -82571,6 +82608,10 @@
 /obj/machinery/computer/objective,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
+"qvt" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "qDe" = (
 /obj/item/document_objective/paper,
 /turf/open/desert/dirt,
@@ -82796,6 +82837,13 @@
 	dir = 10
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
+"tKE" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 1
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "tNj" = (
 /obj/structure/table,
 /obj/item/device/healthanalyzer/objective,
@@ -83114,6 +83162,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/desert_dam/interior/dam_interior/break_room)
+"xuQ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "xzc" = (
 /obj/structure/table,
 /obj/machinery/computer/objective,
@@ -117258,7 +117313,7 @@ dTs
 dTs
 apm
 arb
-ayZ
+xuQ
 ayZ
 axr
 ati
@@ -117786,7 +117841,7 @@ ayZ
 ayZ
 ayZ
 ayZ
-ayZ
+xuQ
 avk
 ayZ
 awz
@@ -119093,14 +119148,14 @@ ajz
 apD
 arL
 arL
-atk
+nnO
 atk
 arL
 avy
 arJ
 ayK
 atD
-ayZ
+xuQ
 axh
 avG
 avG
@@ -120672,7 +120727,7 @@ atQ
 awF
 ayM
 atD
-ayZ
+xuQ
 azp
 avG
 avG
@@ -121188,7 +121243,7 @@ agL
 afG
 arH
 arL
-atk
+nnO
 atQ
 arL
 aul
@@ -121433,7 +121488,7 @@ afG
 agR
 ahf
 ahr
-ahr
+aiz
 aiB
 afG
 afJ
@@ -122234,7 +122289,7 @@ aju
 ahr
 anO
 akO
-akO
+aiq
 akO
 aoP
 akO
@@ -122251,7 +122306,7 @@ ayZ
 ayZ
 ayZ
 ayZ
-ayZ
+xuQ
 ayZ
 ayZ
 azx
@@ -122487,7 +122542,7 @@ ahr
 ajv
 ahr
 aju
-ahr
+aiz
 ahr
 ahr
 aju
@@ -122769,7 +122824,7 @@ ayO
 ayZ
 ayZ
 ayZ
-ayZ
+xuQ
 axQ
 azc
 azc
@@ -123004,7 +123059,7 @@ afN
 agL
 aha
 ahr
-ahr
+aiz
 ahr
 agQ
 afG
@@ -123016,7 +123071,7 @@ afG
 afG
 agQ
 ahr
-ahr
+aiz
 aiB
 afG
 amr
@@ -123546,7 +123601,7 @@ agH
 amr
 aol
 akO
-api
+iWK
 akL
 dTs
 dTs
@@ -123825,7 +123880,7 @@ dTs
 dTs
 avG
 ayK
-ayX
+xuQ
 ayZ
 azp
 avG
@@ -124325,7 +124380,7 @@ afN
 amd
 agH
 agQ
-ahr
+aiz
 ahr
 agQ
 agH
@@ -124594,7 +124649,7 @@ agH
 amr
 aol
 akO
-api
+iWK
 aug
 aun
 auq
@@ -124853,7 +124908,7 @@ ahr
 anf
 aiB
 afG
-amr
+tKE
 aol
 akO
 api
@@ -125136,7 +125191,7 @@ ayy
 avH
 ayK
 ayX
-ayZ
+xuQ
 azp
 avG
 dTs
@@ -127213,7 +127268,7 @@ afG
 aqI
 amr
 aot
-akO
+aiq
 api
 akL
 dTs
@@ -128769,7 +128824,7 @@ akM
 alD
 akO
 akO
-akO
+aiq
 akO
 apf
 ajO
@@ -129298,6 +129353,7 @@ akO
 akO
 akO
 akO
+aiq
 akO
 akO
 akO
@@ -129306,8 +129362,7 @@ akO
 akO
 akO
 akO
-akO
-akO
+aiq
 akO
 akO
 akO
@@ -129574,12 +129629,12 @@ akO
 akO
 akO
 aph
-ajP
+fLp
 apv
 ajP
 alE
 aot
-akO
+aiq
 aqa
 aqr
 dTs
@@ -131912,7 +131967,7 @@ dTs
 dqd
 dqj
 amu
-akO
+aiq
 aom
 apf
 ajl
@@ -132983,7 +133038,7 @@ apk
 apg
 apy
 afP
-amx
+hTA
 are
 amz
 aiH
@@ -133746,7 +133801,7 @@ alI
 alI
 alI
 akO
-akO
+aiq
 aom
 api
 afP
@@ -133771,7 +133826,7 @@ afP
 afP
 amx
 are
-amz
+ant
 arX
 aIw
 asW
@@ -134002,7 +134057,7 @@ dTs
 afP
 agU
 ahJ
-aiI
+dHH
 alI
 alI
 akQ
@@ -135848,7 +135903,7 @@ amz
 amz
 amz
 amz
-amz
+ant
 amz
 amz
 amz
@@ -136624,7 +136679,7 @@ acO
 acR
 aiI
 ajs
-alI
+als
 akT
 afo
 aga
@@ -138213,7 +138268,7 @@ akJ
 alQ
 alU
 anr
-amz
+ant
 anD
 anP
 anT
@@ -138993,7 +139048,7 @@ ade
 akk
 ako
 akK
-akK
+qvt
 akK
 alG
 akk
@@ -140573,7 +140628,7 @@ amz
 amS
 amz
 aoq
-amz
+ant
 amz
 amz
 amz
@@ -144509,7 +144564,7 @@ avu
 add
 add
 add
-add
+cjc
 add
 bGp
 bFc
@@ -145846,7 +145901,7 @@ add
 add
 add
 add
-add
+cjc
 acY
 acY
 acY

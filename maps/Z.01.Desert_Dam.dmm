@@ -253,12 +253,6 @@
 	dir = 1
 	},
 /area/desert_dam/interior/caves/northern_caves)
-"aaM" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_central_north)
 "aaN" = (
 /turf/open/desert/desert_shore/shore_corner2{
 	icon_state = "shore_corner2";
@@ -508,18 +502,10 @@
 /obj/structure/platform{
 	dir = 4
 	},
+/obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge{
 	icon_state = "shallow_edge";
 	dir = 5
-	},
-/area/desert_dam/exterior/river/riverside_central_north)
-"abD" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/gm/river/desert/shallow_edge{
-	icon_state = "shallow_edge";
-	dir = 4
 	},
 /area/desert_dam/exterior/river/riverside_central_north)
 "abE" = (
@@ -542,6 +528,7 @@
 /obj/structure/platform{
 	dir = 4
 	},
+/obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge{
 	icon_state = "shallow_edge";
 	dir = 6
@@ -3129,6 +3116,9 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aiR" = (
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_corner1";
 	dir = 8
@@ -9470,13 +9460,17 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "awU" = (
-/obj/structure/table/reinforced,
-/obj/item/document_objective/folder,
 /turf/open/floor/prison{
-	icon_state = "bright_clean2";
-	dir = 2
+	tag = "icon-floor_plate (SOUTHWEST)";
+	icon_state = "floor_plate";
+	dir = 10
 	},
-/area/desert_dam/interior/lab_northeast/east_lab_biology)
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/shuttle{
+	tag = "icon-swall_f6";
+	icon_state = "swall_f6"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
 "awV" = (
 /obj/structure/sink{
 	dir = 4;
@@ -12212,13 +12206,15 @@
 /turf/closed/wall/indestructible,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aDP" = (
-/obj/structure/closet/secure_closet/security,
-/obj/item/disk/objective,
+/obj/structure/table,
+/obj/item/stack/medical/bruise_pack,
+/obj/item/document_objective/folder,
 /turf/open/floor/prison{
-	icon_state = "darkred2";
-	dir = 5
+	tag = "icon-bright_clean (SOUTHWEST)";
+	icon_state = "bright_clean";
+	dir = 10
 	},
-/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
+/area/desert_dam/exterior/rock)
 "aDQ" = (
 /obj/structure/table,
 /obj/item/tool/pickaxe/drill,
@@ -12560,20 +12556,23 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aEI" = (
-/obj/structure/table,
-/obj/item/disk/objective,
-/turf/open/floor{
-	icon_state = "wood"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,7"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aEJ" = (
-/obj/structure/filingcabinet,
-/obj/item/disk/objective,
-/turf/open/floor{
-	tag = "icon-dark2";
-	icon_state = "dark2"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/administration/archives)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "3,7"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aEK" = (
 /obj/effect/decal/sand_overlay/sand1,
 /turf/open/desert/dirt{
@@ -12744,10 +12743,14 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aFg" = (
-/obj/structure/table/woodentable,
-/obj/item/disk/objective,
-/turf/open/floor/wood,
-/area/desert_dam/building/administration/meetingrooom)
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
+	},
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "5,7"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aFh" = (
 /obj/machinery/light{
 	dir = 4
@@ -15516,15 +15519,14 @@
 	},
 /area/desert_dam/building/water_treatment_two)
 "aMs" = (
-/obj/structure/table,
-/obj/item/stack/medical/bruise_pack,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	tag = "icon-bright_clean (SOUTHWEST)";
-	icon_state = "bright_clean";
-	dir = 10
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/exterior/rock)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "4,7"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aMt" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -15816,17 +15818,14 @@
 	},
 /area/desert_dam/building/substation/northeast)
 "aMY" = (
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/shuttle{
-	tag = "icon-swall_f6";
-	icon_state = "swall_f6"
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,7-2"
 	},
-/area/desert_dam/interior/dam_interior/hanger)
+/area/desert_dam/building/water_treatment_two)
 "aMZ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8;
@@ -16240,18 +16239,14 @@
 /turf/closed/wall,
 /area/desert_dam/building/substation/northwest)
 "aOd" = (
-/obj/structure/table/reinforced,
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	tag = "icon-tube1 (EAST)"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "blue"
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,6"
 	},
-/area/desert_dam/interior/dam_interior/tech_storage)
+/area/desert_dam/building/water_treatment_two)
 "aOe" = (
 /turf/open/desert/rock/deep{
 	icon_state = "rock3"
@@ -16377,19 +16372,14 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "aOv" = (
-/obj/structure/table,
-/obj/item/stack/rods{
-	amount = 25
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 15
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,6"
 	},
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkyellow2"
-	},
-/area/desert_dam/interior/dam_interior/smes_main)
+/area/desert_dam/building/water_treatment_two)
 "aOw" = (
 /obj/machinery/light{
 	dir = 1
@@ -16457,16 +16447,14 @@
 	},
 /area/desert_dam/building/security/staffroom)
 "aOD" = (
-/obj/structure/table,
-/obj/machinery/light{
-	dir = 4
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkyellow2"
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "7,6"
 	},
-/area/desert_dam/interior/dam_interior/engine_east_wing)
+/area/desert_dam/building/water_treatment_two)
 "aOE" = (
 /obj/machinery/light{
 	dir = 1
@@ -16717,13 +16705,14 @@
 	},
 /area/desert_dam/building/water_treatment_two)
 "aPm" = (
-/obj/structure/table,
-/obj/machinery/light,
-/obj/item/disk/objective,
-/turf/open/floor/prison{
-	icon_state = "darkyellow2"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/interior/dam_interior/engine_east_wing)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "1,2"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aPn" = (
 /turf/open/floor/coagulation{
 	icon_state = "4,8"
@@ -16912,13 +16901,14 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aPL" = (
-/obj/structure/rack,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkyellow2"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/interior/dam_interior/primary_tool_storage)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "7,2"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aPM" = (
 /obj/structure/filtration/collector_pipes{
 	icon_state = "lower_2";
@@ -17751,15 +17741,14 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aRG" = (
-/obj/structure/rack,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/disk/objective,
-/turf/open/floor/prison,
-/area/desert_dam/exterior/valley/valley_dam)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,1"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aRH" = (
 /obj/structure/stairs{
 	dir = 8
@@ -17776,13 +17765,14 @@
 	},
 /area/desert_dam/building/water_treatment_two/purification)
 "aRJ" = (
-/obj/structure/table/woodentable,
-/obj/effect/landmark{
-	name = "good_item"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/disk/objective,
-/turf/open/floor/interior/wood,
-/area/desert_dam/building/bar/backroom)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,1"
+	},
+/area/desert_dam/building/water_treatment_two)
 "aRK" = (
 /obj/structure/prop/dam/large_boulder/boulder2,
 /turf/open/desert/dirt,
@@ -17953,14 +17943,14 @@
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "aSh" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/turf/open/floor/plating,
+/obj/machinery/shower{
+	tag = "icon-shower (NORTH)";
+	icon_state = "shower";
+	dir = 1
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/water_treatment_two/equipment)
 "aSi" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8;
@@ -18007,14 +17997,15 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "aSm" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/turf/open/floor/plating,
+/obj/machinery/shower{
+	tag = "icon-shower (NORTH)";
+	icon_state = "shower";
+	dir = 1
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "3,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/water_treatment_two/equipment)
 "aSn" = (
 /obj/structure/cable{
 	tag = "icon-4-8";
@@ -18062,12 +18053,12 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "aSq" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "5,7"
+	icon_state = "2,7"
 	},
 /area/desert_dam/building/water_treatment_two)
 "aSr" = (
@@ -18333,7 +18324,25 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
 "aSZ" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
+	},
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "3,7"
+	},
+/area/desert_dam/building/water_treatment_two)
+"aTa" = (
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
+	},
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "5,7"
+	},
+/area/desert_dam/building/water_treatment_two)
+"aTb" = (
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
@@ -18341,27 +18350,13 @@
 	icon_state = "4,7"
 	},
 /area/desert_dam/building/water_treatment_two)
-"aTa" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,7-2"
-	},
-/area/desert_dam/building/water_treatment_two)
-"aTb" = (
-/obj/structure/table/woodentable/fancy,
-/obj/item/disk/objective,
-/turf/open/floor/interior/wood/alt,
-/area/desert_dam/building/security/office)
 "aTc" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "2,6"
+	icon_state = "6,7"
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTd" = (
@@ -18669,12 +18664,12 @@
 	},
 /area/desert_dam/interior/dam_interior/western_dam_cave)
 "aTR" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "6,6"
+	icon_state = "2,6"
 	},
 /area/desert_dam/building/water_treatment_two)
 "aTS" = (
@@ -19775,7 +19770,16 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "aWI" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
+	},
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,6"
+	},
+/area/desert_dam/building/water_treatment_two)
+"aWJ" = (
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
@@ -19783,20 +19787,6 @@
 	icon_state = "7,6"
 	},
 /area/desert_dam/building/water_treatment_two)
-"aWJ" = (
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
-	},
-/obj/machinery/light,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/desert_dam/building/security/lobby)
 "aWK" = (
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/evidence)
@@ -19970,14 +19960,16 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_telecoms)
 "aXg" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "1,2"
-	},
-/area/desert_dam/building/water_treatment_two)
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison,
+/area/desert_dam/building/water_treatment_two/control_room)
 "aXh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -20019,14 +20011,14 @@
 	},
 /area/desert_dam/building/water_treatment_two/purification)
 "aXl" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/turf/open/floor/plating,
+/obj/machinery/shower{
+	tag = "icon-shower (NORTH)";
+	icon_state = "shower";
+	dir = 1
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "7,2"
-	},
-/area/desert_dam/building/water_treatment_two)
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/security/staffroom)
 "aXm" = (
 /obj/structure/filtration/machine_96x96{
 	icon_state = "sedementation_A_1";
@@ -20935,12 +20927,12 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "aZi" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "2,1"
+	icon_state = "1,2"
 	},
 /area/desert_dam/building/water_treatment_two)
 "aZj" = (
@@ -22133,12 +22125,12 @@
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_central_north)
 "bbN" = (
-/turf/open/gm/river/desert/deep{
+/turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "6,1"
+	icon_state = "7,2"
 	},
 /area/desert_dam/building/water_treatment_two)
 "bbO" = (
@@ -22592,16 +22584,14 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "bcM" = (
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_two/control_room)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,1"
+	},
+/area/desert_dam/building/water_treatment_two)
 "bcN" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/dirt{
@@ -23988,14 +23978,14 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "bgd" = (
-/turf/open/floor/plating,
-/obj/machinery/shower{
-	tag = "icon-shower (NORTH)";
-	icon_state = "shower";
-	dir = 1
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/water_treatment_two/equipment)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,1"
+	},
+/area/desert_dam/building/water_treatment_two)
 "bge" = (
 /obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/dirt{
@@ -24044,14 +24034,13 @@
 /area/desert_dam/exterior/valley/valley_dam)
 "bgk" = (
 /turf/open/floor/plating,
-/obj/machinery/shower{
-	tag = "icon-shower (NORTH)";
-	icon_state = "shower";
-	dir = 1
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/machinery/shower,
 /turf/open/floor/plating/catwalk,
-/area/desert_dam/building/water_treatment_two/equipment)
+/area/desert_dam/building/medical/virology_wing)
 "bgl" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -24081,14 +24070,14 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "bgq" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/turf/open/floor/plating,
+/obj/machinery/shower{
+	tag = "icon-shower (NORTH)";
+	icon_state = "shower";
+	dir = 1
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/security/prison)
 "bgr" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -24114,14 +24103,11 @@
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
 "bgu" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "3,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/turf/open/floor/plating,
+/obj/machinery/shower,
+/obj/structure/curtain/open/shower,
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/water_treatment_one/breakroom)
 "bgv" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -24149,14 +24135,11 @@
 	},
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "bgy" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "5,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/turf/open/floor/plating,
+/obj/structure/curtain/open/shower,
+/obj/machinery/shower,
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/water_treatment_one/breakroom)
 "bgz" = (
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/security/courtroom)
@@ -25987,14 +25970,14 @@
 	},
 /area/desert_dam/building/bar/bar)
 "bkM" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/obj/structure/table,
+/obj/item/tool/stamp,
+/obj/item/disk/objective,
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "red"
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "4,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/building/water_treatment_two/lobby)
 "bkN" = (
 /obj/machinery/vending/security,
 /turf/open/floor/prison{
@@ -26188,14 +26171,14 @@
 	},
 /area/desert_dam/building/water_treatment_two/lobby)
 "blm" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/turf/open/floor/plating,
+/obj/machinery/shower{
+	tag = "icon-shower (NORTH)";
+	icon_state = "shower";
+	dir = 1
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,7"
-	},
-/area/desert_dam/building/water_treatment_two)
+/turf/open/floor/plating/catwalk,
+/area/desert_dam/building/water_treatment_one/equipment)
 "bln" = (
 /obj/structure/cargo_container{
 	icon_state = "HD 2,0";
@@ -26209,44 +26192,45 @@
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "2,6"
+	icon_state = "2,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blp" = (
 /turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "6,6"
+	icon_state = "3,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blq" = (
 /turf/open/gm/river/desert/shallow{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "7,6"
+	icon_state = "5,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blr" = (
-/turf/open/floor/plating,
-/obj/machinery/shower{
-	tag = "icon-shower (NORTH)";
-	icon_state = "shower";
-	dir = 1
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/security/staffroom)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "4,7"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bls" = (
-/obj/structure/closet,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	icon_state = "whitered";
-	dir = 5
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/medical/office2)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,7"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "blt" = (
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1";
@@ -26254,23 +26238,23 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "blu" = (
-/turf/open/gm/river/desert/shallow{
+/turf/open/gm/river/desert/deep{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "1,2"
+	icon_state = "2,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blv" = (
-/turf/open/gm/river/desert/shallow{
+/turf/open/gm/river/desert/deep{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "7,2"
+	icon_state = "3,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -26435,31 +26419,32 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "blQ" = (
-/turf/open/gm/river/desert/shallow{
+/turf/open/gm/river/desert/deep{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "2,1"
+	icon_state = "5,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blR" = (
-/turf/open/gm/river/desert/shallow{
+/turf/open/gm/river/desert/deep{
 	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
 /obj/effect/blocker/toxic_water,
 /turf/open/floor/coagulation{
-	icon_state = "6,1"
+	icon_state = "4,7"
 	},
-/area/desert_dam/building/water_treatment_two)
+/area/desert_dam/exterior/river/filtration_a)
 "blS" = (
-/obj/structure/table/woodentable,
-/obj/item/document_objective/folder,
-/turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/security/courtroom)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,7-2"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "blT" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -26473,24 +26458,23 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "blU" = (
-/obj/structure/table,
-/obj/item/tool/stamp,
-/obj/item/disk/objective,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "red"
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/water_treatment_two/lobby)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,6"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "blV" = (
-/obj/structure/rack,
-/obj/item/explosive/grenade/incendiary,
-/obj/item/explosive/grenade/incendiary{
-	pixel_x = -4;
-	pixel_y = -2
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/disk/objective,
-/turf/open/floor/prison,
-/area/desert_dam/building/security/armory)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,6"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "blW" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -26506,13 +26490,18 @@
 /area/desert_dam/building/security/lobby)
 "blX" = (
 /obj/structure/table/reinforced,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/disk/objective,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "vault"
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
 	},
-/area/desert_dam/building/security/prison)
+/obj/machinery/light,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	tag = "icon-floor_plate (SOUTHWEST)";
+	icon_state = "floor_plate";
+	dir = 10
+	},
+/area/desert_dam/building/security/lobby)
 "blY" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -26568,14 +26557,14 @@
 	},
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "bme" = (
-/turf/open/floor/plating,
-/obj/structure/window/reinforced{
-	dir = 4;
-	health = 80
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/machinery/shower,
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/medical/virology_wing)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "7,6"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bmf" = (
 /turf/open/asphalt/cement{
 	icon_state = "cement12"
@@ -26594,22 +26583,23 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_dam)
 "bmi" = (
-/obj/structure/table,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "whitegreen"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/medical/virology_isolation)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,6"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bmj" = (
-/turf/open/floor/plating,
-/obj/machinery/shower{
-	tag = "icon-shower (NORTH)";
-	icon_state = "shower";
-	dir = 1
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/security/prison)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,6"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bmk" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -26867,12 +26857,14 @@
 /turf/open/floor/interior/wood,
 /area/desert_dam/building/security/detective)
 "bmN" = (
-/obj/structure/rack{
-	layer = 2.5
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/disk/objective,
-/turf/open/floor/plating,
-/area/desert_dam/building/cafeteria/backroom)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "7,6"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bmO" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -26901,35 +26893,32 @@
 	},
 /area/desert_dam/building/mining/workshop_foyer)
 "bmR" = (
-/obj/structure/rack,
-/obj/item/stack/sheet/mineral/phoron{
-	amount = 50
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/disk/objective,
-/turf/open/floor/prison{
-	dir = 6;
-	icon_state = "darkyellow2"
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "1,2"
 	},
-/area/desert_dam/building/telecommunication)
+/area/desert_dam/exterior/river/filtration_a)
 "bmS" = (
-/obj/structure/closet/crate/hydroponics/prespawned,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	tag = "icon-floor_marked (SOUTHWEST)";
-	icon_state = "floor_marked";
-	dir = 10
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/hydroponics/hydroponics_loading)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "7,2"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bmT" = (
-/obj/structure/table,
-/obj/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/document_objective/folder,
-/turf/open/floor/prison,
-/area/desert_dam/building/hydroponics/hydroponics)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "1,2"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bmU" = (
 /obj/structure/flora/desert/cactus/multiple{
 	icon_state = "cacti_10"
@@ -27192,14 +27181,14 @@
 	},
 /area/desert_dam/building/mining/workshop_foyer)
 "bnx" = (
-/obj/structure/table,
-/obj/item/disk/objective,
-/turf/open/floor/prison{
-	tag = "icon-sterile_white";
-	icon_state = "sterile_white";
-	dir = 2
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/cafeteria/loading)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "7,2"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bny" = (
 /obj/structure/flora/desert/grass{
 	icon_state = "lightgrass_8"
@@ -27298,13 +27287,14 @@
 	},
 /area/desert_dam/interior/dam_interior/hanger)
 "bnK" = (
-/obj/structure/table/woodentable/fancy,
-/obj/machinery/light{
-	dir = 4
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/obj/item/disk/objective,
-/turf/open/floor/wood,
-/area/desert_dam/building/water_treatment_one/hallway)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,1"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bnL" = (
 /obj/structure/table,
 /obj/item/tool/lighter/zippo,
@@ -27376,12 +27366,14 @@
 	},
 /area/desert_dam/building/administration/control_room)
 "bnS" = (
-/obj/structure/table,
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	icon_state = "darkyellow2"
+/turf/open/gm/river/desert/shallow{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/warehouse/breakroom)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,1"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "bnT" = (
 /obj/structure/rack,
 /obj/item/circuitboard/computer/powermonitor,
@@ -27508,35 +27500,23 @@
 	},
 /area/desert_dam/building/security/northern_hallway)
 "boi" = (
-/obj/structure/table,
-/obj/item/disk/objective,
-/turf/open/floor/prison{
-	tag = "icon-cell_stripe";
-	icon_state = "cell_stripe";
-	dir = 2
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/warehouse/loading)
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "2,1"
+	},
+/area/desert_dam/exterior/river/filtration_a)
 "boj" = (
-/obj/structure/closet/cabinet,
-/obj/item/disk/objective,
-/turf/open/floor{
-	icon_state = "wood"
+/turf/open/gm/river/desert/deep{
+	icon = 'icons/turf/desert_water_toxic.dmi'
 	},
-/area/desert_dam/building/dorms/hallway_northwing)
-"bok" = (
-/obj/structure/table,
-/obj/machinery/computer/shuttle_control/dropship2,
-/turf/open/floor/prison{
-	dir = 8;
-	icon_state = "darkbrown2"
+/obj/effect/blocker/toxic_water,
+/turf/open/floor/coagulation{
+	icon_state = "6,1"
 	},
-/area/desert_dam/landing/console2)
-"bol" = (
-/turf/open/floor/plating,
-/obj/machinery/shower,
-/obj/structure/curtain/open/shower,
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/water_treatment_one/breakroom)
+/area/desert_dam/exterior/river/filtration_a)
 "bom" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -27545,11 +27525,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/security/northern_hallway)
-"bon" = (
-/obj/structure/rack,
-/obj/item/disk/objective,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/floodgate_control)
 "boo" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/deep,
@@ -27883,30 +27858,6 @@
 	icon_state = "redcorner"
 	},
 /area/desert_dam/building/security/northern_hallway)
-"boX" = (
-/turf/open/floor/plating,
-/obj/structure/curtain/open/shower,
-/obj/machinery/shower,
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/water_treatment_one/breakroom)
-"boY" = (
-/turf/open/floor/plating,
-/obj/machinery/shower{
-	tag = "icon-shower (NORTH)";
-	icon_state = "shower";
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk,
-/area/desert_dam/building/water_treatment_one/equipment)
-"boZ" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bpa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -27932,15 +27883,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/security/northern_hallway)
-"bpd" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "3,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bpe" = (
 /turf/open/floor/prison{
 	icon_state = "redcorner";
@@ -28030,42 +27972,6 @@
 	icon_state = "warnplate"
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
-"bpm" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "5,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bpn" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "4,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bpo" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bpp" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bpq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -28154,14 +28060,18 @@
 	},
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage)
 "bpy" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/obj/structure/table/reinforced,
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	tag = "icon-tube1 (EAST)"
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "3,7"
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "blue"
 	},
-/area/desert_dam/exterior/river/filtration_a)
+/area/desert_dam/interior/dam_interior/tech_storage)
 "bpz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
@@ -28360,14 +28270,19 @@
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "bpW" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
+/obj/structure/table,
+/obj/item/stack/rods{
+	amount = 25
 	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "5,7"
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 15
 	},
-/area/desert_dam/exterior/river/filtration_a)
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/smes_main)
 "bpX" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 5;
@@ -28384,30 +28299,12 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/breakroom)
-"bpZ" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "4,7"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bqa" = (
 /obj/effect/decal/sand_overlay/sand2,
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/interior/caves/central_caves)
-"bqb" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,7-2"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bqc" = (
 /turf/open/desert/dirt{
 	icon_state = "desert_transition_edge1";
@@ -28463,15 +28360,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
-"bqj" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,6"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bqk" = (
 /obj/machinery/floodlight/landing,
 /obj/machinery/landinglight/ds1/delaytwo{
@@ -28578,15 +28466,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/security/northern_hallway)
-"bqs" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,6"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bqt" = (
 /obj/structure/cable{
 	tag = "icon-4-8";
@@ -28764,66 +28643,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/security/northern_hallway)
-"bqB" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "7,6"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bqC" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,6"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bqD" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,6"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bqE" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/machinery/light/small{
-	tag = "icon-bulb1 (EAST)";
-	icon_state = "bulb1";
-	dir = 4
-	},
-/obj/item/document_objective/folder,
-/turf/open/floor/prison{
-	icon_state = "bright_clean2";
-	dir = 2
-	},
-/area/desert_dam/building/dorms/restroom)
-"bqF" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "7,6"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bqG" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "1,2"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "bqH" = (
 /obj/structure/table,
 /obj/effect/spawner/random/toolbox,
@@ -29050,24 +28869,6 @@
 	dir = 1
 	},
 /area/desert_dam/exterior/valley/valley_mining)
-"brk" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "7,2"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"brl" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "1,2"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "brm" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/prison{
@@ -29155,42 +28956,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/security/northern_hallway)
-"brv" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "7,2"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"brw" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,1"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"brx" = (
-/turf/open/gm/river/desert/shallow{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,1"
-	},
-/area/desert_dam/exterior/river/filtration_a)
-"bry" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "2,1"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "brz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/yellow{
@@ -29820,29 +29585,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
-"bsU" = (
-/obj/structure/closet/athletic_mixed,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/item/disk/objective,
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "blue"
-	},
-/area/desert_dam/building/dorms/pool)
-"bsV" = (
-/turf/open/gm/river/desert/deep{
-	icon = 'icons/turf/desert_water_toxic.dmi'
-	},
-/obj/effect/blocker/toxic_water,
-/turf/open/floor/coagulation{
-	icon_state = "6,1"
-	},
-/area/desert_dam/exterior/river/filtration_a)
 "btc" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
@@ -30210,6 +29952,17 @@
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";
 	dir = 10
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
+"btV" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	dir = 4;
+	icon_state = "darkyellow2"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "btW" = (
@@ -33591,6 +33344,14 @@
 	icon_state = "darkyellowcorners2"
 	},
 /area/desert_dam/interior/dam_interior/engine_east_wing)
+"bBG" = (
+/obj/structure/table,
+/obj/machinery/light,
+/obj/item/disk/objective,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/engine_east_wing)
 "bBH" = (
 /obj/structure/table,
 /turf/open/floor/prison{
@@ -36922,6 +36683,14 @@
 	dir = 6
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
+"bIV" = (
+/obj/structure/table/woodentable,
+/obj/effect/landmark{
+	name = "good_item"
+	},
+/obj/item/disk/objective,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
 "bIW" = (
 /turf/open/floor/prison{
 	icon_state = "darkred2"
@@ -43635,6 +43404,16 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
+"bYQ" = (
+/obj/structure/rack,
+/obj/item/explosive/grenade/incendiary,
+/obj/item/explosive/grenade/incendiary{
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/obj/item/disk/objective,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
 "bYR" = (
 /turf/open/floor{
 	dir = 10;
@@ -49898,6 +49677,14 @@
 /obj/structure/prop/dam/large_boulder/boulder1,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
+"cnS" = (
+/obj/structure/table,
+/obj/machinery/computer/shuttle_control/dropship2,
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkbrown2"
+	},
+/area/desert_dam/landing/console2)
 "cnT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -54076,6 +53863,17 @@
 	dir = 6
 	},
 /area/desert_dam/exterior/valley/valley_telecoms)
+"cxo" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 50
+	},
+/obj/item/disk/objective,
+/turf/open/floor/prison{
+	dir = 6;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/building/telecommunication)
 "cxp" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -55655,6 +55453,14 @@
 "cAB" = (
 /turf/closed/wall,
 /area/desert_dam/building/medical/office1)
+"cAC" = (
+/obj/structure/closet,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	icon_state = "whitered";
+	dir = 5
+	},
+/area/desert_dam/building/medical/office2)
 "cAD" = (
 /obj/machinery/computer/med_data,
 /turf/open/floor/prison{
@@ -68264,6 +68070,16 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/hydroponics/hydroponics)
+"dfU" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/item/document_objective/folder,
+/turf/open/floor/prison,
+/area/desert_dam/building/hydroponics/hydroponics)
 "dfW" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -69616,6 +69432,12 @@
 	dir = 2
 	},
 /area/desert_dam/building/cafeteria/loading)
+"dmj" = (
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_dam)
 "dmz" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/desertdam/decals/road_edge{
@@ -70233,6 +70055,14 @@
 	dir = 2
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
+"drw" = (
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
+/turf/open/desert/rock/deep{
+	icon_state = "rock3"
+	},
+/area/desert_dam/exterior/valley/valley_wilderness)
 "drL" = (
 /obj/structure/flora/desert/tallgrass/tallgrass_corner{
 	icon_state = "tallgrass_corner";
@@ -73267,6 +73097,15 @@
 	dir = 10
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
+"dGf" = (
+/obj/structure/table,
+/obj/item/disk/objective,
+/turf/open/floor/prison{
+	tag = "icon-cell_stripe";
+	icon_state = "cell_stripe";
+	dir = 2
+	},
+/area/desert_dam/building/warehouse/loading)
 "dGr" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8;
@@ -73643,13 +73482,6 @@
 	dir = 2
 	},
 /area/desert_dam/building/dorms/restroom)
-"dHH" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison{
-	icon_state = "darkpurple2";
-	dir = 2
-	},
-/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "dHI" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/snacks/candy,
@@ -74028,6 +73860,20 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/desert_dam/building/dorms/pool)
+"dIP" = (
+/obj/structure/closet/athletic_mixed,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/disk/objective,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "blue"
@@ -80457,6 +80303,14 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
+"eaW" = (
+/obj/structure/table/woodentable/fancy,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/disk/objective,
+/turf/open/floor/wood,
+/area/desert_dam/building/water_treatment_one/hallway)
 "eaX" = (
 /obj/machinery/light,
 /turf/open/asphalt/cement_sunbleached{
@@ -81387,9 +81241,7 @@
 /area/desert_dam/exterior/river_mouth/southern)
 "eeo" = (
 /obj/structure/window/framed/hangar,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
+/turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/control_room)
 "eeq" = (
 /obj/structure/window/framed/hangar,
@@ -82056,13 +81908,14 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"fLp" = (
-/obj/effect/alien/weeds/node,
+"fPK" = (
+/obj/structure/table,
+/obj/item/document_objective/folder,
 /turf/open/floor/prison{
-	icon_state = "whitepurple";
-	dir = 4
+	dir = 8;
+	icon_state = "whitegreen"
 	},
-/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+/area/desert_dam/building/medical/virology_isolation)
 "fTk" = (
 /obj/structure/sink/kitchen,
 /obj/structure/table/reinforced,
@@ -82101,6 +81954,20 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
+"glq" = (
+/obj/structure/table/woodentable,
+/obj/item/disk/objective,
+/turf/open/floor/wood,
+/area/desert_dam/building/administration/meetingrooom)
+"glJ" = (
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1";
+	dir = 9
+	},
+/area/desert_dam/exterior/valley/valley_northwest)
 "glV" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -82133,6 +82000,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"gvU" = (
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "gBV" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -82215,13 +82088,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"hTA" = (
+"hSs" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
-	icon_state = "whitepurple";
-	dir = 1
+	icon_state = "bright_clean2";
+	dir = 2
 	},
-/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "hWz" = (
 /obj/structure/table/reinforced,
 /obj/item/document_objective/paper,
@@ -82267,6 +82140,13 @@
 /obj/item/document_objective/report,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northwest)
+"irz" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "ivr" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal5"
@@ -82274,6 +82154,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
+"izZ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison,
+/area/desert_dam/interior/lab_northeast/east_lab_excavation)
 "iAf" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
@@ -82282,13 +82166,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"iWK" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison{
-	icon_state = "whitepurple";
-	dir = 2
-	},
-/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "iXt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -82298,6 +82175,15 @@
 	dir = 10
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"iXQ" = (
+/obj/structure/closet/crate/hydroponics/prespawned,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	tag = "icon-floor_marked (SOUTHWEST)";
+	icon_state = "floor_marked";
+	dir = 10
+	},
+/area/desert_dam/building/hydroponics/hydroponics_loading)
 "iYy" = (
 /obj/structure/table,
 /obj/item/device/lightreplacer,
@@ -82315,6 +82201,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_south)
+"jBs" = (
+/obj/structure/rack,
+/obj/item/disk/objective,
+/turf/open/floor/prison,
+/area/desert_dam/building/water_treatment_one/floodgate_control)
 "jFm" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -82339,10 +82230,34 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
+"jMq" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/disk/objective,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "vault"
+	},
+/area/desert_dam/building/security/prison)
 "jNB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
+"jRo" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	tag = "icon-bulb1 (EAST)";
+	icon_state = "bulb1";
+	dir = 4
+	},
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2";
+	dir = 2
+	},
+/area/desert_dam/building/dorms/restroom)
 "jTF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -82372,6 +82287,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
+"kIx" = (
+/obj/structure/table,
+/obj/item/disk/objective,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "kKc" = (
 /obj/structure/table,
 /obj/item/document_objective/paper,
@@ -82463,6 +82385,13 @@
 	dir = 8
 	},
 /area/desert_dam/building/administration/office)
+"lZk" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 4
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "mbl" = (
 /obj/structure/table,
 /obj/machinery/light{
@@ -82549,13 +82478,6 @@
 	dir = 4
 	},
 /area/desert_dam/interior/dam_interior/hanger)
-"nnO" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison{
-	icon_state = "bright_clean2";
-	dir = 2
-	},
-/area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "nqF" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -82644,6 +82566,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"nVQ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 1
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "nYZ" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/effect/decal/cleanable/dirt,
@@ -82688,6 +82617,14 @@
 	icon_state = "cement_sunbleached2"
 	},
 /area/desert_dam/exterior/landing_pad_one)
+"oGo" = (
+/obj/structure/table/reinforced,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
 "oHA" = (
 /obj/structure/desertdam/decals/road_stop{
 	dir = 4;
@@ -82708,6 +82645,15 @@
 	dir = 10
 	},
 /area/desert_dam/building/cafeteria/loading)
+"oTE" = (
+/obj/structure/table,
+/obj/item/disk/objective,
+/turf/open/floor/prison{
+	tag = "icon-sterile_white";
+	icon_state = "sterile_white";
+	dir = 2
+	},
+/area/desert_dam/building/cafeteria/loading)
 "oVs" = (
 /obj/structure/table,
 /obj/item/document_objective/folder,
@@ -82715,6 +82661,13 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
+"oXe" = (
+/obj/structure/table,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/building/warehouse/breakroom)
 "pbC" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -82753,6 +82706,14 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/building/water_treatment_one/hallway)
+"pUD" = (
+/obj/structure/table/woodentable,
+/obj/item/document_objective/folder,
+/turf/open/floor{
+	icon_state = "cult";
+	dir = 2
+	},
+/area/desert_dam/building/security/courtroom)
 "pUR" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -82760,15 +82721,24 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"pWR" = (
+/obj/structure/rack{
+	layer = 2.5
+	},
+/obj/item/disk/objective,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
 "qbC" = (
 /obj/structure/table/woodentable,
 /obj/machinery/computer/objective,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
-"qvt" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison,
-/area/desert_dam/interior/lab_northeast/east_lab_excavation)
+"qgE" = (
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "qDe" = (
 /obj/item/document_objective/paper,
 /turf/open/desert/dirt,
@@ -82900,6 +82870,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
+"sry" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "darkpurple2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_biology)
+"stM" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "whitepurple";
+	dir = 1
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "syi" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -82941,6 +82925,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"sRc" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor/prison{
+	icon_state = "bright_clean2";
+	dir = 2
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "sWS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -82994,13 +82985,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
-"tKE" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison{
-	icon_state = "whitepurple";
-	dir = 1
-	},
-/area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "tNj" = (
 /obj/structure/table,
 /obj/item/device/healthanalyzer/objective,
@@ -83030,6 +83014,14 @@
 /obj/item/document_objective/paper,
 /turf/open/floor/greengrid,
 /area/desert_dam/interior/dam_interior/tech_storage)
+"ulT" = (
+/obj/structure/rack,
+/obj/item/document_objective/folder,
+/turf/open/floor/prison{
+	dir = 1;
+	icon_state = "darkyellow2"
+	},
+/area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ute" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5"
@@ -83078,6 +83070,13 @@
 	tag = "icon-whiteredcorner (NORTH)"
 	},
 /area/desert_dam/interior/dam_interior/lobby)
+"vmr" = (
+/obj/structure/closet/cabinet,
+/obj/item/disk/objective,
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/desert_dam/building/dorms/hallway_northwing)
 "vox" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
@@ -83102,6 +83101,16 @@
 /obj/item/document_objective/paper,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
+"vCR" = (
+/obj/structure/rack,
+/obj/structure/cable{
+	tag = "icon-4-8";
+	icon_state = "4-8";
+	d2 = 8
+	},
+/obj/item/disk/objective,
+/turf/open/floor/prison,
+/area/desert_dam/exterior/valley/valley_dam)
 "vHj" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-N";
@@ -83231,6 +83240,11 @@
 	icon_state = "cement_sunbleached12"
 	},
 /area/desert_dam/exterior/valley/valley_northwest)
+"wDR" = (
+/obj/structure/table/woodentable/fancy,
+/obj/item/disk/objective,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/security/office)
 "wFv" = (
 /obj/structure/table/reinforced,
 /obj/item/disk/objective,
@@ -83319,13 +83333,14 @@
 	icon_state = "freezerfloor"
 	},
 /area/desert_dam/interior/dam_interior/break_room)
-"xuQ" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/prison{
-	icon_state = "bright_clean2";
-	dir = 2
+"xvk" = (
+/obj/structure/filingcabinet,
+/obj/item/disk/objective,
+/turf/open/floor{
+	tag = "icon-dark2";
+	icon_state = "dark2"
 	},
-/area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+/area/desert_dam/building/administration/archives)
 "xzc" = (
 /obj/structure/table,
 /obj/machinery/computer/objective,
@@ -83367,6 +83382,14 @@
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/building/substation/southwest)
+"xSw" = (
+/obj/structure/closet/secure_closet/security,
+/obj/item/disk/objective,
+/turf/open/floor/prison{
+	icon_state = "darkred2";
+	dir = 5
+	},
+/area/desert_dam/interior/lab_northeast/east_lab_security_armory)
 "yfq" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -87512,7 +87535,7 @@ cst
 clw
 cuD
 cwk
-bmR
+cxo
 cjH
 dTs
 dTs
@@ -87721,7 +87744,7 @@ ceA
 aya
 aWF
 aZj
-aTb
+wDR
 aZp
 aWF
 bnD
@@ -88262,7 +88285,7 @@ biF
 biF
 bKZ
 bgz
-blS
+pUD
 bNO
 aTZ
 ceA
@@ -89743,7 +89766,7 @@ aQV
 bdD
 bhQ
 bhP
-aMY
+awU
 bja
 bjl
 bjz
@@ -90367,13 +90390,13 @@ bSb
 bTn
 bSz
 bYT
-blX
+jMq
 bSz
 bTn
 cdt
 cdN
 cdN
-bmj
+bgq
 bNE
 dTs
 cQm
@@ -90635,7 +90658,7 @@ bYl
 bNE
 chd
 cdN
-bmj
+bgq
 bNE
 dTs
 cQm
@@ -91915,7 +91938,7 @@ aSU
 aVp
 bdz
 bjj
-aWJ
+blX
 bnF
 bpi
 bqr
@@ -92510,7 +92533,7 @@ dTs
 bvA
 cdf
 cmO
-bok
+cnS
 coB
 cNo
 cHo
@@ -96117,7 +96140,7 @@ aNH
 aTy
 boq
 aOC
-blr
+aXl
 aNH
 byU
 bBV
@@ -96379,7 +96402,7 @@ aNH
 aTy
 aOC
 aOC
-blr
+aXl
 aNH
 bvS
 bBV
@@ -96641,7 +96664,7 @@ aNH
 aTy
 aOC
 aOC
-blr
+aXl
 aNH
 bAa
 bDH
@@ -97355,7 +97378,7 @@ blZ
 bnj
 bnP
 boC
-aOd
+bpy
 bqJ
 dDv
 blZ
@@ -98486,7 +98509,7 @@ bNw
 bNw
 bSy
 bRF
-blV
+bYQ
 cGP
 bNw
 bNw
@@ -99847,7 +99870,7 @@ cat
 brL
 cne
 brL
-bnS
+oXe
 bpY
 cIt
 cjf
@@ -100373,7 +100396,7 @@ cnf
 boP
 boP
 boP
-boi
+dGf
 cjf
 cNj
 bQt
@@ -102390,7 +102413,7 @@ dTs
 adt
 adx
 aqc
-aRJ
+bIV
 adt
 cec
 cgy
@@ -103398,7 +103421,7 @@ bDg
 cbm
 cbU
 bPx
-aPL
+ulT
 bJm
 ciT
 bLm
@@ -104650,7 +104673,7 @@ dTs
 dTs
 dTs
 aZC
-aEJ
+xvk
 aZY
 aZY
 aZY
@@ -105618,7 +105641,7 @@ ciG
 dtp
 dto
 dyb
-bol
+bgu
 ebJ
 dWM
 dyb
@@ -105880,7 +105903,7 @@ dWg
 dtp
 dto
 dyb
-boX
+bgy
 dAn
 dAn
 dyb
@@ -106494,7 +106517,7 @@ bbZ
 bcs
 ame
 bcU
-aFg
+glq
 bdj
 bei
 bey
@@ -108752,7 +108775,7 @@ cTC
 doH
 dpy
 dqh
-bnK
+eaW
 drU
 dqf
 edO
@@ -109120,7 +109143,7 @@ aJm
 aiZ
 aiZ
 bfg
-aqy
+glJ
 ars
 ars
 aja
@@ -111646,7 +111669,7 @@ doH
 dzj
 dAt
 dzg
-boY
+blm
 dCL
 dTs
 dTs
@@ -111879,7 +111902,7 @@ daK
 ddT
 dex
 dex
-bmT
+dfU
 dew
 dWj
 daK
@@ -111908,7 +111931,7 @@ dpB
 ebF
 dAt
 dzg
-boY
+blm
 dCL
 dTs
 dTs
@@ -112170,7 +112193,7 @@ dpB
 dzj
 dAt
 dzg
-boY
+blm
 dCL
 dTs
 dTs
@@ -112289,7 +112312,7 @@ bje
 bjo
 blM
 btc
-aOv
+bpW
 bra
 bra
 lmq
@@ -114269,11 +114292,11 @@ cYZ
 cQm
 dCN
 dDt
-boZ
-bqj
+blo
+blU
 aZv
 aZv
-bqG
+bmR
 dHt
 dHU
 crr
@@ -114530,13 +114553,13 @@ cXR
 cYZ
 cQm
 dCN
-boZ
-bqj
+blo
+blU
 aZv
 aZv
 aZv
 aZv
-brw
+bnK
 dHV
 doE
 cxV
@@ -114592,13 +114615,13 @@ ard
 asy
 bek
 bfP
-aaM
-aaM
+bWq
+bWq
 abC
-abD
+cby
 abG
-aaM
-aaM
+bWq
+bWq
 bMu
 bMv
 bNt
@@ -114792,7 +114815,7 @@ dAw
 cYZ
 cQm
 dCN
-bpd
+blp
 aZv
 aZv
 aZv
@@ -115054,7 +115077,7 @@ cXX
 cYZ
 cQm
 dCO
-bpm
+blq
 aZv
 aZv
 aZv
@@ -115316,7 +115339,7 @@ cXX
 cYZ
 cQm
 dCN
-bpn
+blr
 aZv
 aZv
 aZv
@@ -115578,13 +115601,13 @@ cXX
 cYZ
 cQm
 dCP
-bpo
-bqs
+bls
+blV
 aZv
 aZv
 aZv
 aZv
-brx
+bnS
 dHY
 dTs
 dTs
@@ -115841,11 +115864,11 @@ cYZ
 cQm
 dCQ
 dDz
-bqB
-bqs
+bme
+blV
 aZv
 aZv
-brk
+bmS
 dHw
 dHZ
 dTs
@@ -117151,11 +117174,11 @@ cYZ
 cQm
 dCN
 dDt
-bpp
-bqC
+blu
+bmi
 ber
 ber
-brl
+bmT
 dHt
 dHU
 doE
@@ -117412,13 +117435,13 @@ cXX
 cYZ
 cQm
 dCN
-bpp
-bqC
+blu
+bmi
 ber
 ber
 ber
 ber
-bry
+boi
 dHV
 cxU
 czA
@@ -117470,7 +117493,7 @@ dTs
 dTs
 apm
 arb
-xuQ
+hSs
 ayZ
 axr
 ati
@@ -117674,7 +117697,7 @@ cXX
 cYZ
 cQm
 dCN
-bpy
+blv
 ber
 ber
 ber
@@ -117936,7 +117959,7 @@ cXR
 cYZ
 cQm
 dCO
-bpW
+blQ
 ber
 ber
 boK
@@ -117998,7 +118021,7 @@ ayZ
 ayZ
 ayZ
 ayZ
-xuQ
+hSs
 avk
 ayZ
 awz
@@ -118198,7 +118221,7 @@ cXR
 cYZ
 cQm
 dCN
-bpZ
+blR
 ber
 ber
 ber
@@ -118460,13 +118483,13 @@ cXX
 cYZ
 cQm
 dCS
-bqb
-bqD
+blS
+bmj
 ber
 ber
 ber
 ber
-bsV
+boj
 dHW
 crr
 cwB
@@ -118723,11 +118746,11 @@ cYZ
 cQm
 dCT
 dDG
-bqF
-bqD
+bmN
+bmj
 ber
 ber
-brv
+bnx
 dHw
 dId
 doE
@@ -119214,7 +119237,7 @@ cQm
 dde
 dea
 dea
-bmS
+iXQ
 dea
 vMp
 xjY
@@ -119305,14 +119328,14 @@ ajz
 apD
 arL
 arL
-nnO
+sRc
 atk
 arL
 avy
 arJ
 ayK
 atD
-xuQ
+hSs
 axh
 avG
 avG
@@ -119629,14 +119652,14 @@ bhi
 brg
 bsf
 bsO
-aOD
+btV
 bvo
 bse
 bsN
 bsN
 brf
 bxQ
-aPm
+bBG
 brh
 bDx
 bEX
@@ -120884,7 +120907,7 @@ atQ
 awF
 ayM
 atD
-xuQ
+hSs
 azp
 avG
 avG
@@ -121400,7 +121423,7 @@ agL
 afG
 arH
 arL
-nnO
+sRc
 atQ
 arL
 aul
@@ -121601,7 +121624,7 @@ din
 dWu
 dWy
 dzm
-bon
+jBs
 din
 cQm
 dsT
@@ -122463,7 +122486,7 @@ ayZ
 ayZ
 ayZ
 ayZ
-xuQ
+hSs
 ayZ
 ayZ
 azx
@@ -122981,7 +123004,7 @@ ayO
 ayZ
 ayZ
 ayZ
-xuQ
+hSs
 axQ
 azc
 azc
@@ -123278,7 +123301,7 @@ aeE
 aeE
 ayD
 aam
-aam
+drw
 ayp
 aeE
 azI
@@ -123758,7 +123781,7 @@ agH
 amr
 aol
 akO
-iWK
+irz
 akL
 dTs
 dTs
@@ -124037,7 +124060,7 @@ dTs
 dTs
 avG
 ayK
-xuQ
+hSs
 ayZ
 azp
 avG
@@ -124558,7 +124581,7 @@ avG
 axW
 ayi
 aye
-aEI
+kIx
 avH
 ayL
 ayX
@@ -124806,7 +124829,7 @@ agH
 amr
 aol
 akO
-iWK
+irz
 aug
 aun
 auq
@@ -125065,7 +125088,7 @@ ahr
 anf
 aiB
 afG
-tKE
+nVQ
 aol
 akO
 api
@@ -125348,7 +125371,7 @@ ayy
 avH
 ayK
 ayX
-xuQ
+hSs
 azp
 avG
 dTs
@@ -125739,7 +125762,7 @@ cKy
 cJG
 cMQ
 cNE
-bmi
+fPK
 cOI
 cMP
 dTs
@@ -126200,7 +126223,7 @@ aFz
 aGI
 aeT
 bgQ
-bhi
+dmj
 bQo
 bir
 bSl
@@ -127198,7 +127221,7 @@ aCq
 aCT
 aDm
 aDA
-aMs
+aDP
 aEa
 bgr
 aXW
@@ -128516,7 +128539,7 @@ bkE
 aWB
 aZk
 bAN
-aeE
+gvU
 aeE
 bgH
 dTs
@@ -128881,7 +128904,7 @@ cIT
 cIT
 cLo
 cHN
-bme
+bgk
 cNM
 cLp
 dTm
@@ -129143,7 +129166,7 @@ cJI
 cKD
 cLp
 cHN
-bme
+bgk
 dSY
 cLp
 dTn
@@ -129350,7 +129373,7 @@ abk
 adm
 abU
 abU
-aRG
+vCR
 aVE
 abo
 dEW
@@ -129679,7 +129702,7 @@ clW
 cmH
 cmH
 cmH
-cmH
+qgE
 cpZ
 dTs
 dTs
@@ -129786,7 +129809,7 @@ akO
 akO
 akO
 aph
-fLp
+lZk
 apv
 ajP
 alE
@@ -132075,7 +132098,7 @@ cmN
 cnW
 cmH
 duC
-boj
+vmr
 dwF
 duC
 dym
@@ -132657,7 +132680,7 @@ alI
 alI
 alI
 amo
-awU
+oGo
 amo
 amo
 alI
@@ -132835,7 +132858,7 @@ dao
 daM
 dbw
 dcr
-bmN
+pWR
 dao
 deE
 dcw
@@ -133059,7 +133082,7 @@ dTs
 dTs
 dTs
 czP
-bls
+cAC
 cBH
 cCE
 cDA
@@ -133195,7 +133218,7 @@ apk
 apg
 apy
 afP
-hTA
+stM
 are
 amz
 aiH
@@ -134214,7 +134237,7 @@ dTs
 afP
 agU
 ahJ
-dHH
+sry
 alI
 alI
 akQ
@@ -135236,7 +135259,7 @@ dBy
 dBy
 dBy
 dIk
-bsU
+dIP
 dJj
 ebo
 dZN
@@ -135412,7 +135435,7 @@ aOH
 aQw
 aTG
 aUZ
-bcM
+aXg
 bgV
 aUZ
 aTG
@@ -135948,7 +135971,7 @@ bgo
 bgD
 biY
 bkl
-blU
+bkM
 bgl
 bXB
 bTV
@@ -135969,7 +135992,7 @@ cBQ
 cmH
 cmH
 cmH
-cmH
+qgE
 cpT
 dMX
 dNz
@@ -136804,7 +136827,7 @@ dCg
 dBy
 dCg
 dBy
-bqE
+jRo
 dBy
 dCg
 dIk
@@ -137510,7 +137533,7 @@ aUc
 aWx
 bgJ
 aWG
-bgd
+aSh
 aUU
 baL
 bcQ
@@ -137772,7 +137795,7 @@ aUc
 aWx
 bgJ
 bgJ
-bgk
+aSm
 aUU
 baM
 bcQ
@@ -138034,7 +138057,7 @@ aUc
 aWx
 bgL
 bgJ
-bgd
+aSh
 aUU
 baN
 bcR
@@ -139205,7 +139228,7 @@ ade
 akk
 ako
 akK
-qvt
+izZ
 akK
 alG
 akk
@@ -140186,7 +140209,7 @@ dkM
 dlS
 dlS
 dme
-bnx
+oTE
 dgo
 cUc
 cCH
@@ -141319,7 +141342,7 @@ aqD
 aqd
 aqW
 anP
-aDP
+xSw
 aqd
 aqW
 anP
@@ -141693,21 +141716,21 @@ bvz
 bnA
 alx
 ano
-aSh
-aTc
+aEI
+aOd
 aMx
 aMx
-aXg
+aPm
 aPl
 aPf
 bnA
 alx
 ano
-bgq
-blo
+aSq
+aTR
 aUT
 aUT
-blu
+aZi
 aPl
 aPf
 bnA
@@ -141954,23 +141977,23 @@ aSH
 bvz
 bnA
 alx
-aSh
-aTc
+aEI
+aOd
 aMx
 aMx
 aMx
 aMx
-aZi
+aRG
 aPf
 bnA
 alx
-bgq
-blo
+aSq
+aTR
 aUT
 aUT
 aUT
 aUT
-blQ
+bcM
 aPf
 bnA
 aSH
@@ -142216,7 +142239,7 @@ aSH
 bvz
 bnA
 alx
-aSm
+aEJ
 aMx
 aMx
 aMx
@@ -142226,7 +142249,7 @@ aMx
 aPf
 bnA
 alx
-bgu
+aSZ
 aUT
 aUT
 aUT
@@ -142478,7 +142501,7 @@ aSH
 bvz
 bnA
 alY
-aSq
+aFg
 aMx
 aMx
 aOl
@@ -142488,7 +142511,7 @@ aMx
 aPf
 bnA
 alY
-bgy
+aTa
 aUT
 aUT
 aUT
@@ -142740,7 +142763,7 @@ aSH
 bvz
 bnA
 alx
-aSZ
+aMs
 aMx
 aMx
 aMx
@@ -142750,7 +142773,7 @@ aMx
 aPf
 bnA
 alx
-bkM
+aTb
 aUT
 aUT
 aUT
@@ -143002,23 +143025,23 @@ atc
 aie
 bnA
 amh
-aTa
-aTR
+aMY
+aOv
 aMx
 aMx
 aMx
 aMx
-bbN
+aRJ
 aPf
 bnA
 aQL
-blm
-blp
+aTc
+aWI
 aUT
 aUT
 aUT
 aUT
-blR
+bgd
 bAY
 bjV
 brj
@@ -143265,21 +143288,21 @@ aiy
 bnA
 ami
 aMr
-aWI
-aTR
+aOD
+aOv
 aMx
 aMx
-aXl
+aPL
 aRW
 aPf
 bnA
 aQM
 aTB
-blq
-blp
+aWJ
+aWI
 aUT
 aUT
-blv
+bbN
 aRW
 byW
 bjV

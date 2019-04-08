@@ -753,11 +753,11 @@
 	icon_state = "purple"
 
 /area/desert_dam/landing/console
-	name = "\improper LZ1 'Nexus'"
+	name = "\improper LZ1 'Admin'"
 	icon_state = "tcomsatcham"
 	requires_power = 0
 
 /area/desert_dam/landing/console2
-	name = "\improper LZ2 'Robotics'"
+	name = "\improper LZ2 'Supply'"
 	icon_state = "tcomsatcham"
 	requires_power = 0

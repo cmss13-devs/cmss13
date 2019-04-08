@@ -800,12 +800,12 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = 0.25
 
 /obj/item/attachable/stock/carbine
-	name = "\improper L42-MK1 synthetic stock"
+	name = "\improper L42 synthetic stock"
 	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42-MK1 Pulse Carbine. Not effective as a blunt force weapon."
 	slot = "stock"
 	size_mod = 1
-	icon_state = "BRstock"
-	attach_icon = "BRstock_a"
+	icon_state = "l42stock"
+	attach_icon = "l42stock_a"
 	pixel_shift_x = 41
 	pixel_shift_y = 10
 	wield_delay_mod = WIELD_DELAY_NORMAL

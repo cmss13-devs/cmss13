@@ -578,7 +578,7 @@
 
 /obj/item/weapon/gun/rifle/l42mk1
 	name = "\improper L42 pulse carbine MK1"
-	desc = "A L42-MK1 Pulse Carbine. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy, but usually overlooked in favor of firearms with better stopping power. Chambered in 10x24mm caseless."
+	desc = "A L42 pulse carbine MK1. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy, but usually overlooked in favor of firearms with better stopping power. Chambered in 10x24mm caseless."
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
 	fire_sound = 'sound/weapons/gun_carbine.ogg'
@@ -604,7 +604,7 @@
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 17, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 10)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	fire_delay = config.high_fire_delay

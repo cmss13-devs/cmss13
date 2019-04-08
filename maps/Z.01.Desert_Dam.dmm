@@ -12550,7 +12550,8 @@
 "aEG" = (
 /obj/machinery/door/poddoor/four_tile_hor{
 	explosion_resistance = 9999;
-	name = "\improper Entrance Gate Alpha"
+	name = "\improper Entrance Gate Alpha";
+	unacidable = 1
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)

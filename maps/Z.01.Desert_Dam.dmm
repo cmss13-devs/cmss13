@@ -15453,12 +15453,6 @@
 /obj/machinery/mill,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"aMl" = (
-/turf/open/desert/dirt{
-	icon_state = "rock1";
-	dir = 2
-	},
-/area/desert_dam/interior/caves/central_caves)
 "aMm" = (
 /obj/structure/platform{
 	dir = 1
@@ -69563,6 +69557,13 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
+"dnW" = (
+/obj/structure/fence,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1";
+	dir = 10
+	},
+/area/desert_dam/exterior/valley/valley_dam)
 "doa" = (
 /obj/structure/flora/desert/tallgrass/center,
 /turf/open/desert/dirt,
@@ -70300,13 +70301,6 @@
 "dtr" = (
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
-"dts" = (
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/floor/filtrationside{
-	icon_state = "filtrationside";
-	dir = 9
-	},
-/area/desert_dam/exterior/valley/valley_medical)
 "dtt" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -82117,6 +82111,13 @@
 /obj/item/document_objective/report,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/northwest)
+"iqV" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor/filtrationside{
+	icon_state = "filtrationside";
+	dir = 9
+	},
+/area/desert_dam/exterior/valley/valley_medical)
 "irz" = (
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
@@ -82257,6 +82258,13 @@
 	icon_state = "vault"
 	},
 /area/desert_dam/building/substation/northwest)
+"krj" = (
+/obj/structure/fence,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_corner1";
+	dir = 4
+	},
+/area/desert_dam/exterior/valley/valley_dam)
 "kxd" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -82386,6 +82394,9 @@
 	dir = 2
 	},
 /area/desert_dam/interior/dam_interior/workshop)
+"mjF" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/exterior/rock)
 "mAm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/desert/dirt,
@@ -82638,6 +82649,13 @@
 	icon_state = "wood"
 	},
 /area/desert_dam/building/dorms/hallway_northwing)
+"oWV" = (
+/obj/structure/fence,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1";
+	dir = 6
+	},
+/area/desert_dam/exterior/valley/valley_dam)
 "oXe" = (
 /obj/structure/table,
 /obj/item/document_objective/folder,
@@ -82674,6 +82692,9 @@
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/asphalt,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
+"pLw" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/interior/caves/central_caves)
 "pSV" = (
 /obj/item/tool/pen,
 /obj/item/paper_bundle,
@@ -82716,6 +82737,13 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_civilian)
+"qrw" = (
+/obj/structure/fence,
+/turf/open/desert/dirt{
+	icon_state = "desert_transition_edge1";
+	dir = 2
+	},
+/area/desert_dam/exterior/valley/valley_dam)
 "qDe" = (
 /obj/item/document_objective/paper,
 /turf/open/desert/dirt,
@@ -125937,7 +125965,7 @@ dTs
 dTs
 dTs
 aeT
-dTs
+mjF
 bhi
 bQo
 bir
@@ -126199,7 +126227,7 @@ dTs
 aFz
 aGI
 aeT
-bgQ
+qrw
 dmj
 bQo
 bir
@@ -126461,7 +126489,7 @@ dTs
 azW
 aGg
 bgR
-bhj
+oWV
 bhi
 bQo
 bir
@@ -126723,7 +126751,7 @@ aFz
 aFz
 aFz
 aIz
-bhi
+bVE
 bix
 bQo
 bir
@@ -126985,7 +127013,7 @@ aKB
 aFz
 aFz
 bfh
-bgP
+dnW
 bhi
 bQo
 bir
@@ -127247,7 +127275,7 @@ aKc
 aKB
 aFz
 aGI
-bgA
+krj
 bgP
 bQo
 bis
@@ -127509,7 +127537,7 @@ aJQ
 aKd
 aFz
 aGI
-dTs
+mjF
 bhj
 bhD
 bit
@@ -135911,7 +135939,7 @@ dib
 dib
 dMq
 caH
-dts
+iqV
 aDf
 aDf
 aDf
@@ -139307,7 +139335,7 @@ aGg
 aGX
 dTs
 dTs
-aMl
+pLw
 dTs
 cAg
 dJT
@@ -139567,9 +139595,9 @@ aFz
 aFz
 aFz
 aFz
-aGg
 aGX
-aGs
+pLw
+pLw
 dTs
 dTs
 dLj
@@ -139829,9 +139857,9 @@ aFz
 aFz
 aGO
 aHL
-aFz
 aAv
-aGI
+pLw
+pLw
 dTs
 dTs
 cEW
@@ -140091,9 +140119,9 @@ aHF
 aFz
 aGb
 aGO
-aFz
 bfh
-bfi
+pLw
+pLw
 dTs
 dTs
 abm
@@ -140353,8 +140381,8 @@ aFz
 aFz
 aHL
 bfh
-beB
 bfi
+pLw
 dTs
 dTs
 dTs

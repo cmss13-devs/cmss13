@@ -243,34 +243,21 @@
 //TALLGRASS
 /obj/structure/flora/desert/tallgrass
 	name = "tallgrass"
-	opacity = 1
 	unacidable = 1
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/flora/desert/tallgrass/fire_act()
+	if(!disposed)
+		spawn(rand(100,175))
+			qdel(src)
+
 /obj/structure/flora/desert/tallgrass/center
 	icon_state = "tallgrass"
 	icon_tag = "tallgrass"
-/obj/structure/flora/desert/tallgrass/center/New()
-	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay","layer"=ABOVE_MOB_LAYER)
+
 /obj/structure/flora/desert/tallgrass/tallgrass_corner
 	icon_state = "tallgrass_corner"
 	icon_tag = "tallgrass"
-/obj/structure/flora/desert/tallgrass/tallgrass_corner/New()
-	switch(dir)
-		//if (NORTH)
-		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTH)
-		//if (NORTHEAST)
-		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTHEAST)
-		if (EAST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = EAST)
-		if (SOUTHEAST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTHEAST)
-		if (SOUTH)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTH)
-		if (SOUTHWEST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTHWEST)
-		if (WEST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = WEST)
-		//if (NORTHWEST)
-		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTHWEST)
 
 //BUSHES
 /obj/structure/flora/desert/bush

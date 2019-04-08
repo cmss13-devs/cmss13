@@ -7530,16 +7530,6 @@
 /obj/machinery/computer/emails,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/floodgate_control)
-"asR" = (
-/obj/effect/blocker/toxic_water/Group_2,
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/gm/river/desert/deep,
-/area/desert_dam/exterior/river/riverside_east)
 "asS" = (
 /obj/structure/table,
 /obj/machinery/computer/atmos_alert,
@@ -7852,12 +7842,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
-"atA" = (
-/turf/open/floor/filtrationside{
-	icon_state = "filtrationside";
-	dir = 9
-	},
-/area/desert_dam/exterior/valley/valley_medical)
 "atB" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /obj/structure/platform{
@@ -7867,12 +7851,14 @@
 /area/desert_dam/exterior/river/riverside_east)
 "atC" = (
 /obj/structure/filtration/machine/distribution,
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/platform{
+	dir = 1
+	},
 /obj/structure/platform{
 	dir = 8
 	},
-/turf/open/asphalt{
-	icon_state = "tile"
-	},
+/turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/valley/valley_mining)
 "atD" = (
 /obj/structure/cable{
@@ -33176,12 +33162,6 @@
 "bBm" = (
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
-"bBn" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "bBo" = (
 /obj/structure/platform_decoration{
 	tag = "icon-platform_deco (EAST)";
@@ -33213,6 +33193,9 @@
 "bBs" = (
 /obj/structure/stairs{
 	dir = 8
+	},
+/obj/structure/platform{
+	dir = 1
 	},
 /turf/open/asphalt/cement,
 /area/desert_dam/interior/dam_interior/north_tunnel)
@@ -68578,12 +68561,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/building/cafeteria/loading)
-"dhl" = (
-/obj/structure/window/framed/hangar/reinforced,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/building/water_treatment_one/hallway)
 "dhs" = (
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
@@ -68688,9 +68665,7 @@
 /area/desert_dam/exterior/valley/valley_dam)
 "dil" = (
 /obj/structure/window/framed/hangar/reinforced,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
+/turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/garage)
 "dim" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -70325,6 +70300,13 @@
 "dtr" = (
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
+"dts" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/floor/filtrationside{
+	icon_state = "filtrationside";
+	dir = 9
+	},
+/area/desert_dam/exterior/valley/valley_medical)
 "dtt" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -74840,9 +74822,10 @@
 /area/desert_dam/exterior/river/riverside_east)
 "dMf" = (
 /obj/effect/blocker/toxic_water/Group_2,
-/turf/open/asphalt{
-	icon_state = "tile"
+/obj/structure/platform{
+	dir = 1
 	},
+/turf/open/gm/river/desert/deep,
 /area/desert_dam/exterior/valley/valley_mining)
 "dMg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
@@ -81140,12 +81123,6 @@
 	dir = 9
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
-"edN" = (
-/obj/structure/window/framed/hangar,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/building/water_treatment_one/hallway)
 "edO" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
@@ -93983,7 +93960,7 @@ bwY
 bhu
 bzu
 bzt
-bBn
+bHR
 bCh
 bCT
 bzu
@@ -107464,8 +107441,8 @@ csG
 cTC
 doH
 doH
-edN
-edN
+edO
+edO
 doH
 doH
 dsM
@@ -107731,10 +107708,10 @@ dBJ
 ebf
 doH
 doH
-edN
+edO
 dVT
 ecg
-edN
+edO
 dyb
 dyb
 dyb
@@ -107986,7 +107963,7 @@ crx
 dbl
 csG
 cTC
-dhl
+dhs
 dpv
 dqe
 dqO
@@ -108248,7 +108225,7 @@ crx
 dbl
 csG
 cTC
-dhl
+dhs
 dpw
 dqf
 dWJ
@@ -135934,8 +135911,8 @@ dib
 dib
 dMq
 caH
-anm
-atA
+dts
+aDf
 aDf
 aDf
 aME
@@ -136196,7 +136173,7 @@ dib
 dib
 dMq
 bnA
-dMf
+arx
 atC
 aeH
 aft
@@ -136458,7 +136435,7 @@ dib
 dib
 adG
 bnA
-bnA
+aOo
 dMf
 dib
 atW
@@ -136720,8 +136697,8 @@ dib
 dib
 adH
 bnA
-bnA
-bnA
+aOo
+dMf
 dib
 atW
 ahA
@@ -136983,7 +136960,7 @@ dib
 adH
 aof
 arx
-asR
+asT
 dib
 atW
 ahA

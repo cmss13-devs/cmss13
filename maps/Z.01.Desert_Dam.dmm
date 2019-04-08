@@ -7877,6 +7877,9 @@
 /area/desert_dam/exterior/river/riverside_east)
 "atC" = (
 /obj/structure/filtration/machine/distribution,
+/obj/structure/platform{
+	dir = 8
+	},
 /turf/open/asphalt{
 	icon_state = "tile"
 	},

@@ -72,6 +72,10 @@
 	sprite_sheet_id = 1
 	icon_state = "headband"
 
+/obj/item/clothing/head/headband/New()
+	select_gamemode_skin(type, list(MAP_ICE_COLONY = "s_headband"))
+	..()
+
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
 

@@ -36,6 +36,6 @@ changes:
   - experiment: "Trijent has been added back into rotation. It has been shrunk and changed slightly to better suit gameplay and stability."
   - bugfix: "Stairs and boulders are now unmeltable."
   - bugfix: "Larger xenos will no longer clip and overlap with water."
-  - bugfix: "Stairs will now sit below flames and hiding Runners.
+  - bugfix: "Stairs will now sit below flames and hidden Runners.
   - tweak: "Synths and Preds now take considerably less burn damage from toxic water."
   - tweak: "Xenos now take minor damage from toxic water."

@@ -101,5 +101,5 @@
 				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
-
+	adjustOxyLoss(-5)
 	return 1

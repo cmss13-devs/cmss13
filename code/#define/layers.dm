@@ -81,6 +81,7 @@
 //#define MOB_LAYER 4
 
 #define ABOVE_MOB_LAYER 4.1
+#define ABOVE_XENO_LAYER 5.1
 
 //#define FLY_LAYER 5
 

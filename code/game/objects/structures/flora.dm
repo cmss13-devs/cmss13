@@ -244,7 +244,18 @@
 /obj/structure/flora/desert/tallgrass
 	name = "tallgrass"
 	unacidable = 1
-	layer = ABOVE_MOB_LAYER
+	var/overlay_type = "tallgrass_overlay"
+
+/obj/structure/flora/desert/tallgrass/New()
+	update_icon()
+
+/obj/structure/flora/desert/tallgrass/update_icon()
+	..()
+	overlays.Cut()
+	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
+
+/obj/structure/flora/desert/tallgrass/flamer_fire_act()
+	fire_act()
 
 /obj/structure/flora/desert/tallgrass/fire_act()
 	if(!disposed)
@@ -258,6 +269,7 @@
 /obj/structure/flora/desert/tallgrass/tallgrass_corner
 	icon_state = "tallgrass_corner"
 	icon_tag = "tallgrass"
+	overlay_type = "tallgrass_overlay_corner"
 
 //BUSHES
 /obj/structure/flora/desert/bush
@@ -265,7 +277,7 @@
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
 	icon_tag = "tree"
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
 	//variations = 4
 
 //CACTUS
@@ -294,7 +306,7 @@
 	density = 0
 	anchored = 1
 	unacidable = 1 // can toggle it off anyway
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/jungle/shrub
 	name = "jungle foliage"
@@ -347,7 +359,10 @@
 	else
 		. = ..()
 
-/obj/structure/jungle/vines/tallgrass/fire_act()
+/obj/structure/jungle/vines/flamer_fire_act()
+	fire_act()
+
+/obj/structure/jungle/vines/fire_act()
 	if(!disposed)
 		spawn(rand(100,175))
 			qdel(src)

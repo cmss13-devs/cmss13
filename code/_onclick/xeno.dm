@@ -3,6 +3,15 @@
 	Xenomorph
 */
 
+/mob/living/carbon/Xenomorph //Makes larger aliens layer 5, so they don't overlap with Trijent's water
+	layer = 5
+/mob/living/carbon/Xenomorph/Burrower //These three are small enough not to overlap
+	layer = 4
+/mob/living/carbon/Xenomorph/Runner
+	layer = 4
+/mob/living/carbon/Xenomorph/Larva
+	layer = 4
+
 /mob/living/carbon/Xenomorph/UnarmedAttack(var/atom/A)
 
 	if(lying || burrow) //No attacks while laying down

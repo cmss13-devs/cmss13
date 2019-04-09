@@ -259,7 +259,20 @@
 
 /obj/structure/flora/desert/tallgrass/fire_act()
 	if(!disposed)
-		spawn(rand(100,175))
+		spawn(rand(75,150))
+			for(var/D in cardinal) //Spread fire
+				var/turf/T = get_step(src.loc, D)
+				if(T && T.contents)
+					for(var/obj/structure/flora/desert/tallgrass/G in T.contents)
+						if(istype(G,/obj/structure/flora/desert/tallgrass))
+							new /obj/flamer_fire(T)
+							G.fire_act()
+		spawn(rand(125,225))
+			if(istype(src,/obj/structure/flora/desert/tallgrass/center))
+				new /obj/effect/decal/cleanable/dirt(src.loc) //Produces more ash at the center
+				new /obj/effect/decal/cleanable/dirt(src.loc)
+			else
+				new /obj/effect/decal/cleanable/dirt(src.loc)
 			qdel(src)
 
 /obj/structure/flora/desert/tallgrass/center

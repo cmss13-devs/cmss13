@@ -39,3 +39,5 @@ changes:
   - bugfix: "Stairs will now sit below flames and hidden Runners.
   - tweak: "Synths and Preds now take considerably less burn damage from toxic water."
   - tweak: "Xenos now take minor damage from toxic water."
+  - rscadd: "Grass and vines will now catch fire and burn."
+  - rscadd: "Fire can now spread across patches of grass."

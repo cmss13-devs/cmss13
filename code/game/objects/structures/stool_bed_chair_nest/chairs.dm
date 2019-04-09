@@ -143,7 +143,7 @@
 	var/is_animating = 0
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair
-	icon_state = "shuttle_chair"
+	icon_state = "hotseat"
 
 /obj/structure/bed/chair/dropship/passenger/CanPass(var/atom/movable/mover, var/turf/target, var/height = 0, var/air_group = 0)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED && istype(mover, /obj/vehicle/multitile) && !is_animating)
@@ -165,7 +165,7 @@
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/New()
 	. = ..()
 
-	chairbar = image("icons/obj/objects.dmi", "shuttle_bars")
+	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 
@@ -200,7 +200,7 @@
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
 		unbuckle()
 		chair_state = DROPSHIP_CHAIR_BROKEN
-		icon_state = "shuttle_chair_destroyed"
+		icon_state = "hotseat_destroyed"
 
 /obj/structure/bed/chair/dropship/passenger/proc/unfold_up()
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
@@ -215,7 +215,7 @@
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/unfold_up()
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
-		icon_state = "shuttle_chair"
+		icon_state = "hotseat_chair"
 
 /obj/structure/bed/chair/dropship/passenger/rotate()
 	return // no

@@ -125,5 +125,7 @@ obj/item/alienjar
 	icon = 'icons/obj/structures/structures.dmi'
 	desc = "Stairs.  You walk up and down them."
 	icon_state = "rampbottom"
+	unacidable = 1
+	layer = 2
 	density = 0
 	opacity = 0

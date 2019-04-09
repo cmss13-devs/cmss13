@@ -45,8 +45,8 @@
 /area/desert_dam/interior/lab_northeast/east_lab_biology
 	name = "\improper East Lab Biology"
 	icon_state = "purple"
-/area/desert_dam/interior/lab_northeast/east_lab_surgury
-	name = "\improper East Lab Surgury"
+/area/desert_dam/interior/lab_northeast/east_lab_surgery
+	name = "\improper East Lab Surgery"
 	icon_state = "red"
 /area/desert_dam/interior/lab_northeast/east_lab_excavation
 	name = "\improper East Lab Excavation Prep"
@@ -753,11 +753,11 @@
 	icon_state = "purple"
 
 /area/desert_dam/landing/console
-	name = "\improper LZ1 'Nexus'"
+	name = "\improper LZ1 'Admin'"
 	icon_state = "tcomsatcham"
 	requires_power = 0
 
 /area/desert_dam/landing/console2
-	name = "\improper LZ2 'Robotics'"
+	name = "\improper LZ2 'Supply'"
 	icon_state = "tcomsatcham"
 	requires_power = 0

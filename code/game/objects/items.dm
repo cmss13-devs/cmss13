@@ -170,6 +170,9 @@ cases. Override_icon_state should be a list.*/
 			if(MAP_WHISKEY_OUTPOST) //Can easily add other states if needed.
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				if(new_protection) min_cold_protection_temperature = new_protection
+			if(MAP_DESERT_DAM)
+				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+				if(new_protection) min_cold_protection_temperature = new_protection
 		item_state = icon_state
 	else return
 

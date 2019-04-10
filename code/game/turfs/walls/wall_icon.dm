@@ -27,17 +27,16 @@
 		qdel(bullethole_overlay)
 		bullethole_overlay = null
 	else
-		var/overlay = round(damage / damage_cap * damage_overlays.len) + 1
-		if(overlay > damage_overlays.len) overlay = damage_overlays.len
+		var/dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
+		if(dmg_overlay > damage_overlays.len) dmg_overlay = damage_overlays.len
 
-		if(!damage_overlay || overlay != damage_overlay)
-			overlays -= damage_overlays[damage_overlay]
-			damage_overlay = overlay
-			overlays += damage_overlays[damage_overlay]
+		overlays -= damage_overlays[damage_overlay]
+		damage_overlay = dmg_overlay
+		overlays += damage_overlays[damage_overlay]
 
-			if(current_bulletholes > BULLETHOLE_MAX) //Could probably get away with a unique layer, but let's keep it standardized.
-				overlays -= bullethole_overlay //We need this to be the top layer, no matter what, but only if the layer is at max bulletholes.
-				overlays += bullethole_overlay
+		if(current_bulletholes > BULLETHOLE_MAX) //Could probably get away with a unique layer, but let's keep it standardized.
+			overlays -= bullethole_overlay //We need this to be the top layer, no matter what, but only if the layer is at max bulletholes.
+			overlays += bullethole_overlay
 
 		if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
 			overlays -= bullethole_overlay

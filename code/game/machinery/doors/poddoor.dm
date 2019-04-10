@@ -424,3 +424,11 @@
 	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
 		relativewall_neighbours()
 	..()
+
+/obj/machinery/door/poddoor/almayer/locked
+	unacidable = 1
+
+/obj/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
+	if(iscrowbar(C))
+		return
+	..()

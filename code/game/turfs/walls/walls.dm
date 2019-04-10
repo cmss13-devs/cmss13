@@ -1,5 +1,3 @@
-
-
 /turf/closed/wall
 	name = "wall"
 	desc = "A huge chunk of metal used to seperate rooms."
@@ -42,19 +40,10 @@
 	var/list/noblend_objects = list(/obj/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
 
 
-/turf/closed/wall/New()
+/turf/closed/wall/initialize()
 	..()
-	//smooth wall stuff
-	if(!special_icon)
-		icon_state = "blank"
-
-	for(var/obj/item/explosive/mine/M in src)
-		if(M)
-			visible_message("<span class='warning'>\The [M] is sealed inside the wall as it is built</span>")
-			qdel(M)
-	spawn(0)
-		update_connections(1)
-		update_icon()
+	update_connections(1)
+	update_icon()
 
 /turf/closed/wall/ChangeTurf(newtype)
 	if(acided_hole)

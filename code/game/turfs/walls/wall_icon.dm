@@ -3,8 +3,16 @@
 //Formulas. These don't need to be defines, but helpful green. Should likely reuse these for a base 8 icon system.
 #define cur_increment(v) round((v-1)/8)+1
 /turf/closed/wall/update_icon()
+	..()
+	if(disposed)
+		return
+	
+	//smooth wall stuff
+	if(!special_icon)
+		icon_state = "blank"
+	
 	if(!damage_overlays[1]) //list hasn't been populated
-		generate_overlays()
+		generate_damage_overlays()
 
 	overlays.Cut()
 	if(!special_icon)
@@ -50,7 +58,7 @@
 #undef BULLETHOLE_MAX
 #undef cur_increment
 
-/turf/closed/wall/proc/generate_overlays()
+/turf/closed/wall/proc/generate_damage_overlays()
 	var/alpha_inc = 256 / damage_overlays.len
 
 	for(var/i = 1; i <= damage_overlays.len; i++)

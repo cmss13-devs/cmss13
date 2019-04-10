@@ -699,6 +699,7 @@
 #include "code\game\objects\structures\bedsheet_bin.dm"
 #include "code\game\objects\structures\bookcase.dm"
 #include "code\game\objects\structures\cargo_container.dm"
+#include "code\game\objects\structures\catwalk.dm"
 #include "code\game\objects\structures\coathanger.dm"
 #include "code\game\objects\structures\curtains.dm"
 #include "code\game\objects\structures\desertdam.dm"

@@ -34,3 +34,12 @@
 /obj/effect/decal/halftile/warning
 	name = "warning stripes half tile"
 	icon_state = "halftile_w"
+
+/obj/effect/decal/siding
+	name = "siding"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "siding1"
+
+/obj/effect/decal/siding/wood_siding
+	name = "wood siding"
+	icon_state = "wood_siding1"

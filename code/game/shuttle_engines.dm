@@ -56,4 +56,4 @@
 	icon = 'icons/turf/shuttle.dmi'
 	icon_state = "diagonalWall"
 	name = "wall"
-	layer = TURF_LAYER
+	layer = ABOVE_TURF_LAYER

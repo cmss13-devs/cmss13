@@ -13,7 +13,7 @@
 	overlays.Cut()
 	//smooth wall stuff
 	if(!special_icon)
-	    icon_state = "blank"
+		icon_state = "blank"
 		var/image/I
 
 		if(!density)

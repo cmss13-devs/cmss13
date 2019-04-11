@@ -18,11 +18,11 @@
 					else
 						Holiday_Random_Event()
 			else
-				event = 0
+				event = FALSE
 			sleep(1200)
 
 /proc/event()
-	event = 1
+	event = TRUE
 
 	var/eventNumbersToPickFrom = list(1,2,4,5,6,7,8,9,10,11,12,13,14, 15) //so ninjas don't cause "empty" events.
 
@@ -49,7 +49,7 @@
 			var/turf/T = pick(blobstart)
 			var/obj/effect/bhole/bh = new /obj/effect/bhole( T.loc, 30 )
 			spawn(rand(50, 300))
-				cdel(bh)
+				qdel(bh)
 		/*
 		if(3) //Leaving the code in so someone can try and delag it, but this event can no longer occur randomly, per SoS's request. --NEO
 			command_alert("Space-time anomalies detected on the station. There is no additional data.", "Anomaly Alert")
@@ -71,7 +71,7 @@
 						P.icon_state = "anom"
 						P.name = "wormhole"
 						spawn(rand(300,600))
-							cdel(P)
+							qdel(P)
 		*/
 		if(3)
 			if((world.time/10)>=3600 && toggle_space_ninja && !sent_ninja_to_station)//If an hour has passed, relatively speaking. Also, if ninjas are allowed to spawn and if there is not already a ninja for the round.
@@ -220,46 +220,6 @@
 	sleep(100)
 	command_announcement.Announce("High levels of radiation have been detected. Report to the Medical Bay if you begin to feel symptoms such as disorientation, nausea, or halucinations.", "Anomaly Alert", new_sound = 'sound/AI/radiation.ogg')
 
-
-
-//Changing this to affect the main station. Blame Urist. --Pete
-/proc/prison_break() // -- Callagan
-
-
-	var/list/area/areas = list()
-	for(var/area/A in all_areas)
-		if(istype(A, /area/sulaco/brig))
-			areas += A
-
-	if(areas && areas.len > 0)
-
-		for(var/area/A in areas)
-			for(var/obj/machinery/light/L in A)
-				L.flicker(10)
-
-		sleep(100)
-
-		for(var/area/A in areas)
-			for (var/obj/machinery/power/apc/temp_apc in A)
-				temp_apc.overload_lighting()
-
-			for (var/obj/structure/closet/secure_closet/brig/temp_closet in A)
-				temp_closet.locked = 0
-				temp_closet.icon_state = temp_closet.icon_closed
-
-			for (var/obj/machinery/door/airlock/security/temp_airlock in A)
-				spawn(0) temp_airlock.prison_open()
-
-			for (var/obj/machinery/door/airlock/glass_security/temp_glassairlock in A)
-				spawn(0) temp_glassairlock.prison_open()
-
-			for (var/obj/machinery/door_timer/temp_timer in A)
-				temp_timer.releasetime = 1
-
-		sleep(150)
-		command_announcement.Announce("Malignant trojan detected in [station_name] Brig subroutines.", "Security Alert")
-	else
-		world.log << "ERROR: Could not initate grey-tide. Unable find prison or brig area."
 
 /proc/carp_migration() // -- Darem
 	for(var/obj/effect/landmark/C in landmarks_list)

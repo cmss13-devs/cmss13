@@ -10,7 +10,7 @@
 
 /obj/effect/alien/flamer_fire_act()
 	health -= 50
-	if(health < 0) cdel(src)
+	if(health < 0) qdel(src)
 
 /*
  * Resin
@@ -27,7 +27,7 @@
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
 		density = 0
-		cdel(src)
+		qdel(src)
 
 /obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage/2
@@ -184,7 +184,7 @@
 /obj/effect/alien/resin/trap/flamer_fire_act()
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			trigger_trap(TRUE)
+			burn_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trigger_trap(TRUE)
 	..()
@@ -192,7 +192,7 @@
 /obj/effect/alien/resin/trap/fire_act()
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			trigger_trap(TRUE)
+			burn_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			trigger_trap(TRUE)
 	..()
@@ -242,6 +242,14 @@
 			trap_type = RESIN_TRAP_GAS
 			icon_state = "trapgas"
 
+/obj/effect/alien/resin/trap/proc/burn_trap()
+	var/area/A = get_area(src)
+	facehugger_die()
+	clear_tripwires()
+	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
+		if((istype(X, /mob/living/carbon/Xenomorph)) && (X.hivenumber == hivenumber))
+			X << "<span class='xenoannounce'>You sense one of your Hive's hugger traps at [A.name] has been burnt!</span>"
+
 /obj/effect/alien/resin/trap/proc/trigger_trap(var/destroyed = FALSE)
 	set waitfor = 0
 	var/area/A = get_area(src)
@@ -289,7 +297,7 @@
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
 	for(var/obj/effect/hole_tripwire/HT in tripwires)
-		cdel(HT)
+		qdel(HT)
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
 	var/trap_acid_level = 0
@@ -407,7 +415,7 @@
 			hivenumber = FH.hivenumber //Taking over the hole
 			set_state(RESIN_TRAP_HUGGER)
 			user << "<span class='xenonotice'>You place a facehugger in [src].</span>"
-			cdel(FH)
+			qdel(FH)
 	else
 		. = ..()
 
@@ -419,7 +427,7 @@
 	if(trap_type != RESIN_TRAP_EMPTY && loc)
 		trigger_trap()
 	for(var/obj/effect/hole_tripwire/HT in tripwires)
-		cdel(HT)
+		qdel(HT)
 	. = ..()
 
 /obj/effect/hole_tripwire
@@ -438,11 +446,11 @@
 
 /obj/effect/hole_tripwire/Crossed(atom/A)
 	if(!linked_trap)
-		cdel(src)
+		qdel(src)
 		return
 
 	if(linked_trap.trap_type == RESIN_TRAP_EMPTY)
-		cdel(src)
+		qdel(src)
 		return
 
 	if(ishuman(A))
@@ -535,7 +543,7 @@
 			return
 
 /obj/structure/mineral_door/resin/Dismantle(devastated = 0)
-	cdel(src)
+	qdel(src)
 
 /obj/structure/mineral_door/resin/CheckHardness()
 	playsound(loc, "alien_resin_move", 25)
@@ -592,7 +600,7 @@
 			break
 	if(!.)
 		visible_message("<span class = 'notice'>[src] collapses from the lack of support.</span>")
-		cdel(src)
+		qdel(src)
 
 
 
@@ -658,7 +666,7 @@
 				"<span class='xenonotice'>You clear the hatched egg.</span>")
 				playsound(src.loc, "alien_resin_break", 25)
 				M.plasma_stored++
-				cdel(src)
+				qdel(src)
 		if(GROWING)
 			M << "<span class='xenowarning'>The child is not developed yet.</span>"
 		if(GROWN)
@@ -697,7 +705,7 @@
 /obj/effect/alien/egg/proc/delete_egg_triggers()
 	for(var/atom/trigger in egg_triggers)
 		egg_triggers -= trigger
-		cdel(trigger)
+		qdel(trigger)
 
 /obj/effect/alien/egg/proc/Burst(kill = 1) //drops and kills the hugger if any is remaining
 	set waitfor = 0
@@ -745,7 +753,7 @@
 	if(on_fire)
 		update_icon()
 		spawn(rand(125, 200))
-			cdel(src)
+			qdel(src)
 
 /obj/effect/alien/egg/attackby(obj/item/W, mob/living/user)
 	if(health <= 0)
@@ -763,7 +771,7 @@
 						visible_message("<span class='xenowarning'>[F] crawls back into [src]!</span>") //Not sure how, but let's roll with it for now.
 					status = GROWN
 					icon_state = "Egg"
-					cdel(F)
+					qdel(F)
 				if(DESTROYED) user << "<span class='xenowarning'>This egg is no longer usable.</span>"
 				if(GROWING,GROWN) user << "<span class='xenowarning'>This one is occupied with a child.</span>"
 		else user << "<span class='xenowarning'>This child is dead.</span>"
@@ -823,7 +831,7 @@
 
 /obj/effect/egg_trigger/Crossed(atom/A)
 	if(!linked_egg) //something went very wrong
-		cdel(src)
+		qdel(src)
 	else if(get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc)) //something went wrong
 		loc = linked_egg
 	else if(iscarbon(A))
@@ -882,7 +890,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 /obj/structure/tunnel/proc/healthcheck()
 	if(health <= 0)
 		visible_message("<span class='danger'>[src] suddenly collapses!</span>")
-		cdel(src)
+		qdel(src)
 
 /obj/structure/tunnel/bullet_act(var/obj/item/projectile/Proj)
 	return 0

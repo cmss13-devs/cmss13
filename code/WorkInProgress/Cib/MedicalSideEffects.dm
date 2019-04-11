@@ -53,7 +53,7 @@
 
 /mob/living/carbon/human/proc/handle_medical_side_effects()
 	//Going to handle those things only every few ticks.
-	if(life_tick % 15 != 0)
+	if(life_tick % 30 != 0)
 		return 0
 
 	var/list/L = typesof(/datum/medical_effect)-/datum/medical_effect
@@ -73,10 +73,10 @@
 				side_effects -= M
 				M = null
 			else
-				if(life_tick % 45 == 0)
+				if(life_tick % 60 == 0)
 					M.on_life(src, strength_percent*M.strength)
 				// Effect slowly growing stronger
-				M.strength+=0.08
+				M.strength+=0.16
 
 // HEADACHE
 // ========

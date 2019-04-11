@@ -25,9 +25,14 @@
 	icon_state = "black_cammo"
 
 /obj/item/facepaint/sniper
-	name = "Fullbody paint"
+	name = "fullbody paint"
 	colour = "full"
 	icon_state = "full_cammo"
+
+/obj/item/facepaint/skull
+	name = "skull paint"
+	colour = "skull"
+	icon_state = "skull_cammo"
 
 
 /obj/item/facepaint/attack(mob/M as mob, mob/user as mob)
@@ -63,6 +68,6 @@
 		user.temp_drop_inv_item(src)
 		user.update_inv_l_hand(0)
 		user.update_inv_r_hand()
-		cdel(src)
+		qdel(src)
 
 //you can wipe off lipstick with paper! see code/modules/paperwork/paper.dm, paper/attack()

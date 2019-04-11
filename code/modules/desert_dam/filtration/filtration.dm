@@ -34,7 +34,7 @@ obj/effect/landmark/desertdam/river_blocker
 	var/i
 	for(i in round_toxic_river)
 		round_toxic_river -= i
-		cdel(i)
+		qdel(i)
 		sleep(1)
 	round_toxic_river = null
 */
@@ -161,14 +161,10 @@ var/global/east_riverstart = 0
 	for(var/turf/open/floor/F in range(0, src))
 		return
 
-	if( isYautja(M) )
-		return
-
 	if( isXeno(M) )
 		if(M.pulling)
 			M << "<span class='warning'>The current forces you to release [M.pulling]!</span>"
 			M.stop_pulling()
-		return
 
 	cause_damage(M)
 	processing_objects.Add(src)
@@ -189,8 +185,6 @@ var/global/east_riverstart = 0
 
 	var/mobs_present = 0
 	for(var/mob/living/carbon/M in range(0, src))
-		if( isXeno(M) || isYautja(M) )
-			continue
 		mobs_present++
 		cause_damage(M)
 	if(mobs_present < 1)
@@ -200,20 +194,28 @@ var/global/east_riverstart = 0
 /obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
-	if(M.lying)
-		M.apply_damage(4,BURN)
-		M.apply_damage(4,BURN)
-		M.apply_damage(4,BURN)
-		M.apply_damage(4,BURN)
-		M.apply_damage(4,BURN)
+	if( isXeno(M) )
+		M.apply_damage(2,BURN)
+	else if( isYautja(M) )
+		M.apply_damage(0.5,BURN)
 	else
-		M.apply_damage(4,BURN,"l_leg")
-		M.apply_damage(4,BURN,"l_foot")
-		M.apply_damage(4,BURN,"r_leg")
-		M.apply_damage(4,BURN,"r_foot")
-		M.apply_damage(4,BURN,"groin")
-	M.apply_effect(20,IRRADIATE,0)
-	M << "<span class='danger'>The water burns!</span>"
+		var/dam_amount = 4
+		if(istype(M,/mob/living/carbon/human/synthetic_old)) dam_amount = 0.5
+		else if(istype(M,/mob/living/carbon/human/synthetic) || istype(M,/mob/living/carbon/human/synthetic_2nd_gen)) dam_amount = 1
+		if(M.lying)
+			M.apply_damage(dam_amount,BURN)
+			M.apply_damage(dam_amount,BURN)
+			M.apply_damage(dam_amount,BURN)
+			M.apply_damage(dam_amount,BURN)
+			M.apply_damage(dam_amount,BURN)
+		else
+			M.apply_damage(dam_amount,BURN,"l_leg")
+			M.apply_damage(dam_amount,BURN,"l_foot")
+			M.apply_damage(dam_amount,BURN,"r_leg")
+			M.apply_damage(dam_amount,BURN,"r_foot")
+			M.apply_damage(dam_amount,BURN,"groin")
+		M.apply_effect(20,IRRADIATE,0)
+		if( !isSynth(M) ) M << "<span class='danger'>The water burns!</span>"
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 

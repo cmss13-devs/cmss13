@@ -1,5 +1,3 @@
-
-
 /turf/closed/wall
 	name = "wall"
 	desc = "A huge chunk of metal used to seperate rooms."
@@ -27,7 +25,7 @@
 	var/current_bulletholes = 0
 	var/bullethole_increment = 1
 	var/bullethole_state = 0
-	var/image/reusable/bullethole_overlay
+	var/image/bullethole_overlay
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
 	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
@@ -42,23 +40,14 @@
 	var/list/noblend_objects = list(/obj/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
 
 
-/turf/closed/wall/New()
+/turf/closed/wall/initialize()
 	..()
-	//smooth wall stuff
-	if(!special_icon)
-		icon_state = "blank"
-
-	for(var/obj/item/explosive/mine/M in src)
-		if(M)
-			visible_message("<span class='warning'>\The [M] is sealed inside the wall as it is built</span>")
-			cdel(M)
-	spawn(0)
-		update_connections(1)
-		update_icon()
+	update_connections(1)
+	update_icon()
 
 /turf/closed/wall/ChangeTurf(newtype)
 	if(acided_hole)
-		cdel(acided_hole)
+		qdel(acided_hole)
 		acided_hole = null
 
 	. = ..()
@@ -81,7 +70,7 @@
 				var/obj/structure/sign/poster/P = O
 				P.roll_and_drop(src)
 			if(istype(O, /obj/effect/alien/weeds))
-				cdel(O)
+				qdel(O)
 
 
 
@@ -181,7 +170,7 @@
 	else
 		make_girder(FALSE)
 
-	cdel(src)
+	qdel(src)
 
 /turf/closed/wall/ex_act(severity)
 	if(hull)
@@ -190,7 +179,7 @@
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 	if ( damage + exp_damage > damage_cap*2 )
-		cdel(src)
+		qdel(src)
 	else
 		take_damage(exp_damage)
 
@@ -219,7 +208,7 @@
 		dismantle_wall()
 
 	spawn(50)
-		if(O) cdel(O)
+		if(O) qdel(O)
 	return
 
 

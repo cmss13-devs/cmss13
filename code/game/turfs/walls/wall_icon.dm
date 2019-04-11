@@ -3,11 +3,17 @@
 //Formulas. These don't need to be defines, but helpful green. Should likely reuse these for a base 8 icon system.
 #define cur_increment(v) round((v-1)/8)+1
 /turf/closed/wall/update_icon()
+	..()
+	if(disposed)
+		return
+	
 	if(!damage_overlays[1]) //list hasn't been populated
-		generate_overlays()
+		generate_damage_overlays()
 
 	overlays.Cut()
+	//smooth wall stuff
 	if(!special_icon)
+		icon_state = "blank"
 		var/image/I
 
 		if(!density)
@@ -24,26 +30,20 @@
 		current_bulletholes = initial(current_bulletholes)
 		bullethole_increment = initial(current_bulletholes)
 		bullethole_state = initial(current_bulletholes)
-		cdel(bullethole_overlay)
-		bullethole_overlay = null
 	else
-		var/overlay = round(damage / damage_cap * damage_overlays.len) + 1
-		if(overlay > damage_overlays.len) overlay = damage_overlays.len
+		var/dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
+		if(dmg_overlay > damage_overlays.len) dmg_overlay = damage_overlays.len
 
-		if(!damage_overlay || overlay != damage_overlay)
-			overlays -= damage_overlays[damage_overlay]
-			damage_overlay = overlay
-			overlays += damage_overlays[damage_overlay]
+		damage_overlay = dmg_overlay
+		overlays += damage_overlays[damage_overlay]
 
-			if(current_bulletholes > BULLETHOLE_MAX) //Could probably get away with a unique layer, but let's keep it standardized.
-				overlays -= bullethole_overlay //We need this to be the top layer, no matter what, but only if the layer is at max bulletholes.
-				overlays += bullethole_overlay
+		if(current_bulletholes > BULLETHOLE_MAX) //Could probably get away with a unique layer, but let's keep it standardized.
+			overlays += bullethole_overlay
 
-		if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
-			overlays -= bullethole_overlay
+		else if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
 			if(!bullethole_overlay)
 				bullethole_state = rand(1, BULLETHOLE_STATES)
-				bullethole_overlay = rnew(/image/reusable, list('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]"))
+				bullethole_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]")
 			if(cur_increment(current_bulletholes) > bullethole_increment) bullethole_overlay.icon_state = "bhole_[bullethole_state]_[++bullethole_increment]"
 			overlays += bullethole_overlay
 
@@ -51,7 +51,7 @@
 #undef BULLETHOLE_MAX
 #undef cur_increment
 
-/turf/closed/wall/proc/generate_overlays()
+/turf/closed/wall/proc/generate_damage_overlays()
 	var/alpha_inc = 256 / damage_overlays.len
 
 	for(var/i = 1; i <= damage_overlays.len; i++)

@@ -42,18 +42,18 @@
 	if(health > 0)
 		if(istype(W, /obj/item/tool/wrench))
 			if(!anchored)
-				if(istype(get_area(src.loc),/area/shuttle || istype(get_area(src.loc),/area/sulaco/hangar)))
+				if(istype(get_area(src.loc),/area/shuttle))
 					user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
 					return
-				if(!istype(loc, /turf/open/floor/plating))
-					user << "<span class='warning'>You can't secure that here, it needs steel plating beneath it!</span>"
+				if(!istype(loc, /turf/open/floor))
+					user << "<span class='warning'>You can't secure that here, it needs sufficiently solid ground beneath it!</span>"
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				user << "\blue Now securing the girder"
 				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
 					user << "\blue You secured the girder!"
 					new/obj/structure/girder( src.loc )
-					cdel(src)
+					qdel(src)
 			else if (dismantlectr %2 == 0)
 				if(do_after(user,15, TRUE, 5, BUSY_ICON_BUILD))
 					dismantlectr++
@@ -88,7 +88,7 @@
 				if(!src) return
 				user << "\blue You removed the support struts!"
 				new/obj/structure/girder( src.loc )
-				cdel(src)
+				qdel(src)
 
 		else if(istype(W, /obj/item/tool/crowbar) && state == 0 && anchored )
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -97,10 +97,10 @@
 				if(!src) return
 				user << "\blue You dislodged the girder!"
 				new/obj/structure/girder/displaced( src.loc )
-				cdel(src)
+				qdel(src)
 
 		else if(istype(W, /obj/item/stack/sheet) && buildctr %2 == 0)
-			if(istype(get_area(src.loc),/area/shuttle || istype(get_area(src.loc),/area/sulaco/hangar)))
+			if(istype(get_area(src.loc),/area/shuttle))
 				user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
 				return
 
@@ -136,7 +136,7 @@
 						Tsrc.ChangeTurf(text2path("/turf/closed/wall/mineral/[M]"))
 						for(var/turf/closed/wall/mineral/X in Tsrc.loc)
 							if(X)	X.add_hiddenprint(usr)
-						cdel(src)
+						qdel(src)
 					return
 
 			add_hiddenprint(usr)
@@ -203,7 +203,7 @@
 			Tsrc.ChangeTurf(/turf/closed/wall)
 		for(var/turf/closed/wall/X in Tsrc.loc)
 			if(X)	X.add_hiddenprint(usr)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/girder/examine(mob/user)
 	..()
@@ -274,7 +274,7 @@
 	health -= severity
 	if(health <= 0)
 		handle_debris(severity, direction)
-		cdel(src)
+		qdel(src)
 	else
 		update_state()
 

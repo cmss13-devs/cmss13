@@ -12,7 +12,7 @@
 			for(var/i = 1, i <= amt, i++)
 				new s (src.loc)
 	sleep(-1)
-	cdel(src)
+	qdel(src)
 
 /obj/effect/landmark/wo_supplies/attachments/standard
 	amount = list(10,15)

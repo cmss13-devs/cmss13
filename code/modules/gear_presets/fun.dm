@@ -156,7 +156,6 @@
 
 /datum/equipment_preset/fun/dutch/arnie/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
-	var/datum/preferences/A = new()
 	H.real_name = "Arnold 'Dutch' Schaefer"
 	H.f_style = "5 O'clock Shadow"
 	H.h_style = "Mulder"

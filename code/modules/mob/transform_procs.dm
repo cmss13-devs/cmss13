@@ -12,7 +12,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		cdel(t)
+		qdel(t)
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
 	animation.icon_state = "blank"
 	animation.icon = 'icons/mob/mob.dmi'
@@ -46,8 +46,8 @@
 	O << "<B>You are now [O]. </B>"
 
 	spawn(0)//To prevent the proc from returning null.
-		cdel(src)
-	cdel(animation)
+		qdel(src)
+	qdel(animation)
 
 	return O
 
@@ -59,7 +59,7 @@
 	if (monkeyizing)
 		return
 	for(var/t in limbs)
-		cdel(t)
+		qdel(t)
 
 	return ..()
 
@@ -110,7 +110,7 @@
 
 		O.rename_self("ai",1)
 		. = O
-		cdel(src)
+		qdel(src)
 
 
 //human -> robot
@@ -125,7 +125,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		cdel(t)
+		qdel(t)
 
 	var/mob/living/silicon/robot/O = new /mob/living/silicon/robot( loc )
 
@@ -164,7 +164,7 @@
 	O.Namepick()
 
 	spawn(0)//To prevent the proc from returning null.
-		cdel(src)
+		qdel(src)
 	return O
 
 //human -> alien
@@ -179,7 +179,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		cdel(t)
+		qdel(t)
 
 //	var/alien_caste = "larva"
 	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(loc)
@@ -190,7 +190,7 @@
 
 	new_xeno << "<B>You are now an alien.</B>"
 	spawn(0)//To prevent the proc from returning null.
-		cdel(src)
+		qdel(src)
 	return
 
 //human -> alien drone
@@ -205,7 +205,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)
-		cdel(t)
+		qdel(t)
 
 //	var/alien_caste = "Drone"
 	var/mob/living/carbon/Xenomorph/Drone/new_xeno = new /mob/living/carbon/Xenomorph/Drone(loc)
@@ -215,9 +215,9 @@
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
 	new_xeno << "<b>You are an alien!</b>"
-	new_xeno << "<b>Use Say \":a message\" to communicate with other aliens.</b>"
+	new_xeno << "<b>Use Say \"; message\" to communicate with other aliens.</b>"
 	spawn(0)//To prevent the proc from returning null.
-		cdel(src)
+		qdel(src)
 	return
 
 /mob/living/carbon/human/proc/corgize()
@@ -231,7 +231,7 @@
 	icon = null
 	invisibility = 101
 	for(var/t in limbs)	//this really should not be necessary
-		cdel(t)
+		qdel(t)
 
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
 	new_corgi.a_intent = "hurt"
@@ -240,7 +240,7 @@
 
 	new_corgi << "<B>You are now a Corgi. Yap Yap!</B>"
 	spawn(0)//To prevent the proc from returning null.
-		cdel(src)
+		qdel(src)
 	return
 
 /mob/living/carbon/human/Animalize()
@@ -264,7 +264,7 @@
 	invisibility = 101
 
 	for(var/t in limbs)
-		cdel(t)
+		qdel(t)
 
 	var/mob/new_mob = new mobpath(src.loc)
 
@@ -275,7 +275,7 @@
 
 	new_mob << "You suddenly feel more... animalistic."
 	spawn()
-		cdel(src)
+		qdel(src)
 	return
 
 /mob/proc/Animalize()
@@ -294,7 +294,7 @@
 	new_mob.a_intent = "hurt"
 	new_mob << "You feel more... animalistic"
 
-	cdel(src)
+	qdel(src)
 
 /* Certain mob types have problems and should not be allowed to be controlled by players.
  *

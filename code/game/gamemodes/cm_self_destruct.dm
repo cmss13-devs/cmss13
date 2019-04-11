@@ -46,7 +46,7 @@ All of the necessary difines are stored under mode.dm in defines.
 var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initited elsewhere so that the world has a chance to load in.
 
 /datum/authority/branch/evacuation
-	name = "Evacuation Authority"
+	var/name = "Evacuation Authority"
 	var/evac_time	//Time the evacuation was initiated.
 	var/evac_status = EVACUATION_STATUS_STANDING_BY //What it's doing now? It can be standing by, getting ready to launch, or finished.
 
@@ -71,7 +71,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(!dest_rods.len)
 			log_debug("ERROR CODE SD2: could not find any self destruct rods")
 			world << "<span class='debuginfo'>ERROR CODE SD2: could not find any self destruct rods</span>"
-			cdel(dest_master)
+			qdel(dest_master)
 			dest_master = null
 			r_FAL
 		dest_cooldown = SELF_DESTRUCT_ROD_STARTUP_TIME / dest_rods.len

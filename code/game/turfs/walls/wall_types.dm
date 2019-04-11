@@ -1,7 +1,5 @@
 
 
-
-
 //-----USS Almayer Walls ---//
 
 /turf/closed/wall/almayer
@@ -200,7 +198,7 @@
 	layer = FLY_LAYER
 	special_icon = 1
 
-/turf/closed/wall/indestructible/splashscreen/New()
+/turf/closed/wall/indestructible/splashscreen/initialize()
 	..()
 	if(icon_state == "title_painting1") // default
 		icon_state = "title_painting[rand(1,6)]"
@@ -317,7 +315,7 @@
 /turf/closed/wall/vault
 	icon_state = "rockvault"
 
-/turf/closed/wall/vault/New(location,type)
+/turf/closed/wall/vault/initialize()
 	..()
 	icon_state = "[type]vault"
 
@@ -394,7 +392,7 @@
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
 
-/turf/closed/wall/resin/New()
+/turf/closed/wall/resin/initialize()
 	..()
 	if(!locate(/obj/effect/alien/weeds) in loc)
 		new /obj/effect/alien/weeds(loc)
@@ -502,7 +500,7 @@
 	return !density
 
 /turf/closed/wall/resin/dismantle_wall(devastated = 0, explode = 0)
-	cdel(src) //ChangeTurf is called by Dispose()
+	qdel(src) //ChangeTurf is called by Dispose()
 
 
 

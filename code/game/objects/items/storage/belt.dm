@@ -457,7 +457,7 @@
 	var/holds_guns_now = 0 //Generic variable to determine if the holster already holds a gun.
 	var/holds_guns_max = 1 //How many guns can it hold? I think this can be any thing from 1 to whatever. Should calculate properly.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
-	var/image/reusable/gun_underlay //The underlay we will use.
+	var/image/gun_underlay //The underlay we will use.
 	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
 	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
 	can_hold = list(
@@ -467,10 +467,10 @@
 
 /obj/item/storage/belt/gun/Dispose()
 	if(gun_underlay)
-		cdel(gun_underlay)
+		qdel(gun_underlay)
 		gun_underlay = null
 	if(current_gun)
-		cdel(current_gun)
+		qdel(current_gun)
 		current_gun = null
 	. = ..()
 
@@ -493,7 +493,7 @@
 		sure that we don't have to do any extra calculations.
 		*/
 		playsound(src,drawSound, 15, 1)
-		gun_underlay = rnew(/image/reusable,list(icon, src, current_gun.icon_state))
+		gun_underlay = image(icon, src, current_gun.icon_state)
 		icon_state += "_g"
 		item_state = icon_state
 		underlays += gun_underlay
@@ -502,7 +502,7 @@
 		underlays -= gun_underlay
 		icon_state = copytext(icon_state,1,-2)
 		item_state = icon_state
-		cdel(gun_underlay)
+		qdel(gun_underlay)
 		gun_underlay = null
 	if(istype(user)) user.update_inv_belt()
 	if(istype(user)) user.update_inv_s_store()
@@ -540,6 +540,7 @@
 /obj/item/storage/belt/gun/m4a3
 	name = "\improper M276 pattern M4A3 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the M4A3 comfortably secure. It also contains side pouches that can store 9mm or .45 magazines."
+	storage_slots = 8
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol
@@ -556,6 +557,9 @@
 	new /obj/item/ammo_magazine/pistol/extended(src)
 	new /obj/item/ammo_magazine/pistol/extended(src)
 	new /obj/item/ammo_magazine/pistol/extended(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
+	new /obj/item/ammo_magazine/pistol(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/commander/New()
@@ -565,11 +569,17 @@
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
 	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/extended(src)
+	new /obj/item/ammo_magazine/pistol/extended(src)
+	new /obj/item/ammo_magazine/pistol/extended(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m4a3/vp70/New()
 	..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/vp70(src)
+	new /obj/item/ammo_magazine/pistol/vp70(src)
+	new /obj/item/ammo_magazine/pistol/vp70(src)
+	new /obj/item/ammo_magazine/pistol/vp70(src)
 	new /obj/item/ammo_magazine/pistol/vp70(src)
 	new /obj/item/ammo_magazine/pistol/vp70(src)
 	new /obj/item/ammo_magazine/pistol/vp70(src)
@@ -583,6 +593,9 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m44
@@ -590,6 +603,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M44 magnum revolver, along with three pouches for speedloaders. It faintly smells of hay."
 	icon_state = "m44_holster"
 	item_state = "m44_holster"
+	storage_slots = 8
 	max_w_class = 7
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44,
@@ -602,6 +616,9 @@
 /obj/item/storage/belt/gun/m44/full/New()
 	..()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
+	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)

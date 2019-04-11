@@ -46,18 +46,18 @@
 			if (prob(50))
 				for(var/obj/item/book/b in contents)
 					b.loc = (get_turf(src))
-				cdel(src)
+				qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			for(var/obj/item/book/b in contents)
 				if (prob(50)) b.loc = (get_turf(src))
-				else cdel(b)
-			cdel(src)
+				else qdel(b)
+			qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			for(var/obj/item/book/b in contents)
-				cdel(b)
-			cdel(src)
+				qdel(b)
+			qdel(src)
 			return
 		else
 	return

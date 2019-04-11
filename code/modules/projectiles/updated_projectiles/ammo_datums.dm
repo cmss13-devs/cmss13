@@ -141,7 +141,7 @@
 
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = rnew(/obj/item/projectile, original_P.shot_from)
+		var/obj/item/projectile/P = new /obj/item/projectile(original_P.shot_from)
 		P.generate_bullet(ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
 
@@ -331,19 +331,17 @@
 
 /datum/ammo/bullet/revolver/marksman/New()
 	..()
-	accuracy = config.med_hit_accuracy
 	accurate_range = config.short_shell_range
-	scatter = config.low_scatter_value
-	penetration = config.med_armor_penetration
+	penetration = config.hmed_armor_penetration
 
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
 
 /datum/ammo/bullet/revolver/heavy/New()
 	..()
-	damage = config.med_hit_damage
+	damage = config.high_hit_damage
 	penetration = config.min_armor_penetration
-	accuracy = -config.med_hit_accuracy
+	accuracy = config.min_hit_accuracy
 
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"
@@ -620,7 +618,7 @@
 	max_range = config.close_shell_range
 	damage = config.hmed_hit_damage
 	damage_var_low = -config.low_proj_variance
-	damage_var_high = config.low_proj_variance
+	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	penetration	= 0
 	bonus_projectiles_amount = config.low_proj_extra
@@ -649,7 +647,7 @@
 	max_range = config.close_shell_range
 	damage = config.hmed_hit_damage
 	damage_var_low = -config.low_proj_variance
-	damage_var_high = config.low_proj_variance
+	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
@@ -733,7 +731,7 @@
 	scatter = config.low_scatter_value
 	damage = config.mhigh_hit_damage
 	damage_var_high = config.low_proj_variance
-	penetration= 0
+	penetration	= config.med_armor_penetration
 
 /datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/item/projectile/P)
 	burst(get_turf(M),P,damage_type, 2 , 2)
@@ -905,7 +903,7 @@
 	shell_speed = config.slow_shell_speed
 
 /datum/ammo/rocket/Dispose()
-	cdel(smoke)
+	qdel(smoke)
 	smoke = null
 	. = ..()
 
@@ -1028,7 +1026,7 @@
 	..()
 	accuracy_var_low = config.med_proj_variance
 	accurate_range = config.short_shell_range
-	damage = config.ultra_hit_damage
+	damage = config.super_hit_damage
 	max_range = config.norm_shell_range
 
 /datum/ammo/rocket/wp/drop_flame(turf/T)
@@ -1036,7 +1034,8 @@
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	if(locate(/obj/flamer_fire) in T) return
+	for(var/obj/flamer_fire/F in T)
+		qdel(F)
 	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
 	var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
@@ -1367,7 +1366,7 @@
 	max_range = config.long_shell_range
 
 /datum/ammo/xeno/boiler_gas/Dispose()
-	cdel(smoke_system)
+	qdel(smoke_system)
 	smoke_system = null
 	. = ..()
 
@@ -1443,7 +1442,7 @@
 	sound_hit = "acid_hit"
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
 
 /datum/ammo/xeno/railgun_glob/New()
 	..()
@@ -1454,6 +1453,7 @@
 	scatter = config.min_scatter_value
 	accuracy = config.max_hit_accuracy
 	max_range = config.long_shell_range
+	shell_speed = config.ultra_shell_speed
 
 /datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/structure/barricade))
@@ -1470,6 +1470,7 @@
 	name = "shrapnel"
 	icon_state = "buckshot"
 	accurate_range_min = 5
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
 
 /datum/ammo/bullet/shrapnel/New()
 	..()
@@ -1484,6 +1485,12 @@
 	penetration = config.med_armor_penetration
 	shell_speed = config.reg_shell_speed
 	shrapnel_chance = 5
+
+/datum/ammo/bullet/shrapnel/on_hit_obj(obj/O, obj/item/projectile/P)
+	if(istype(O, /obj/structure/barricade))
+		var/obj/structure/barricade/B = O
+		B.health -= rand(2, 5)
+		B.update_health(1)
 
 /*
 //================================================

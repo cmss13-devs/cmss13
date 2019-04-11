@@ -75,10 +75,10 @@
 		if(-2000 to 0)
 			playsound(src, "shatter", 50, 1)
 			handle_debris(severity,explosion_direction)
-			cdel(src)
+			qdel(src)
 		else
 			handle_debris(severity,explosion_direction)
-			cdel(src)
+			qdel(src)
 	return
 
 /obj/structure/window/get_explosion_resistance(direction)
@@ -252,13 +252,13 @@
 		new /obj/item/stack/sheet/glass/reinforced(loc, 2)
 	else
 		new /obj/item/stack/sheet/glass/reinforced(loc, 2)
-	cdel(src)
+	qdel(src)
 
 
 /obj/structure/window/proc/shatter_window(create_debris)
 	if(create_debris)
 		handle_debris()
-	cdel(src)
+	qdel(src)
 
 
 /obj/structure/window/verb/rotate()
@@ -434,7 +434,7 @@
 
 /obj/structure/window/framed/Dispose()
 	for(var/obj/effect/alien/weeds/weedwall/window/WW in loc)
-		cdel(WW)
+		qdel(WW)
 	. = ..()
 
 
@@ -464,7 +464,7 @@
 			handle_debris(severity,explosion_direction)
 			shatter_window(0)
 		else
-			cdel(src)
+			qdel(src)
 	return
 
 
@@ -488,7 +488,7 @@
 		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
 		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
 		new_window_frame.dir = dir
-	cdel(src)
+	qdel(src)
 
 /obj/structure/window/framed/almayer
 	name = "reinforced window"

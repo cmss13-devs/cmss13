@@ -72,6 +72,10 @@
 	sprite_sheet_id = 1
 	icon_state = "headband"
 
+/obj/item/clothing/head/headband/New()
+	select_gamemode_skin(type, list(MAP_ICE_COLONY = "s_headband"))
+	..()
+
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
 
@@ -328,7 +332,10 @@
 /obj/item/clothing/head/booniehat/tan
 	icon_state = "booniehattan"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/booniehat/New()
+	if(flags_atom & NO_SNOW_TYPE)
+		return
 	select_gamemode_skin(type)
 	..()

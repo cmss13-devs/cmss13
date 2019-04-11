@@ -651,13 +651,39 @@ HARDPOINT MODULES (and their ammo)
 	group = "Hardpoint Modules"
 
 /datum/supply_packs/tank_flamer_ammo
-	name = "Flamer Magazines (x5)"
+	name = "Secondary Flamer Magazines (x5)"
 	contains = list(
 					/obj/item/ammo_magazine/tank/flamer,
 					/obj/item/ammo_magazine/tank/flamer,
 					/obj/item/ammo_magazine/tank/flamer,
 					/obj/item/ammo_magazine/tank/flamer,
 					/obj/item/ammo_magazine/tank/flamer)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "tank ammo crate"
+	group = "Hardpoint Modules"
+
+/datum/supply_packs/tank_aceautocannon_ammo
+	name = "AC3-E Autocannon Ammunition (x6)"
+	contains = list(
+					/obj/item/ammo_magazine/tank/ace_autocannon,
+					/obj/item/ammo_magazine/tank/ace_autocannon,
+					/obj/item/ammo_magazine/tank/ace_autocannon,
+					/obj/item/ammo_magazine/tank/ace_autocannon,
+					/obj/item/ammo_magazine/tank/ace_autocannon,
+					/obj/item/ammo_magazine/tank/ace_autocannon)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "tank ammo crate"
+	group = "Hardpoint Modules"
+
+/datum/supply_packs/tank_drgflamer_ammo
+	name = "DRG-NF Flamethrower Tanks (x4)"
+	contains = list(
+					/obj/item/ammo_magazine/tank/drgn_flamer,
+					/obj/item/ammo_magazine/tank/drgn_flamer,
+					/obj/item/ammo_magazine/tank/drgn_flamer,
+					/obj/item/ammo_magazine/tank/drgn_flamer)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "tank ammo crate"
@@ -2171,7 +2197,7 @@ ENGINEERING
 	containertype = "/obj/structure/closet/crate/supply"
 	containername = "empty sandbags crate"
 	group = "Engineering"
-	
+
 
 /datum/supply_packs/sandbagskit
 	name = "sandbags construction kit (sandbags x50, etool x2)"

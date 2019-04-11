@@ -19,6 +19,27 @@
 
 
 /mob/Stat()
+	if(client && client.admin_holder && client.inactivity < 1200)
+		if(client.admin_holder && client.admin_holder.rights & R_DEBUG) //Skip admins.
+			if(statpanel("MC"))
+				stat("Location:", "([x], [y], [z])")
+				stat("CPU:", "[world.cpu]")
+				stat("Instances:", "[world.contents.len]")
+
+				stat(null)
+				if(Master)
+					Master.stat_entry()
+				else
+					stat("Master Controller:", "ERROR")
+				if(Failsafe)
+					Failsafe.stat_entry()
+				else
+					stat("Failsafe Controller:", "ERROR")
+				if(Master)
+					stat(null)
+					for(var/datum/subsystem/SS in Master.subsystems)
+						SS.stat_entry()
+
 	// Looking at contents of a tile
 	if (tile_contents_change)
 		tile_contents_change = 0
@@ -43,6 +64,8 @@
 
 	if (statpanel("Stats"))
 		return 1
+
+	sleep(world.tick_lag * 2)
 
 	return 0
 
@@ -153,7 +176,7 @@
 	if(!istype(W)) return
 
 	if(!W.mob_can_equip(src, slot, disable_warning))
-		if(del_on_fail) cdel(W)
+		if(del_on_fail) qdel(W)
 		else
 			if(!disable_warning) src << "<span class='warning'>You are unable to equip that.</span>" //Only print if del_on_fail is false
 		return
@@ -364,9 +387,8 @@
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
 
-	if(AM.pulledby && AM.pulledby.grab_level < GRAB_NECK)
-		if(M)
-			visible_message("<span class='warning'>[src] has broken [AM.pulledby]'s grip on [M]!</span>", null, null, 5)
+	if(AM.pulledby && M)
+		visible_message("<span class='warning'>[src] has broken [AM.pulledby]'s grip on [M]!</span>", null, null, 5)
 		AM.pulledby.stop_pulling()
 
 	pulling = AM

@@ -243,34 +243,46 @@
 //TALLGRASS
 /obj/structure/flora/desert/tallgrass
 	name = "tallgrass"
-	opacity = 1
 	unacidable = 1
+	var/overlay_type = "tallgrass_overlay"
+
+/obj/structure/flora/desert/tallgrass/New()
+	update_icon()
+
+/obj/structure/flora/desert/tallgrass/update_icon()
+	..()
+	overlays.Cut()
+	overlays += image("icon"=src.icon,"icon_state"=overlay_type,"layer"=ABOVE_XENO_LAYER,"dir"=dir)
+
+/obj/structure/flora/desert/tallgrass/flamer_fire_act()
+	fire_act()
+
+/obj/structure/flora/desert/tallgrass/fire_act()
+	if(!disposed)
+		spawn(rand(75,150))
+			for(var/D in cardinal) //Spread fire
+				var/turf/T = get_step(src.loc, D)
+				if(T && T.contents)
+					for(var/obj/structure/flora/desert/tallgrass/G in T.contents)
+						if(istype(G,/obj/structure/flora/desert/tallgrass))
+							new /obj/flamer_fire(T)
+							G.fire_act()
+		spawn(rand(125,225))
+			if(istype(src,/obj/structure/flora/desert/tallgrass/center))
+				new /obj/effect/decal/cleanable/dirt(src.loc) //Produces more ash at the center
+				new /obj/effect/decal/cleanable/dirt(src.loc)
+			else
+				new /obj/effect/decal/cleanable/dirt(src.loc)
+			qdel(src)
+
 /obj/structure/flora/desert/tallgrass/center
 	icon_state = "tallgrass"
 	icon_tag = "tallgrass"
-/obj/structure/flora/desert/tallgrass/center/New()
-	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay","layer"=ABOVE_MOB_LAYER)
+
 /obj/structure/flora/desert/tallgrass/tallgrass_corner
 	icon_state = "tallgrass_corner"
 	icon_tag = "tallgrass"
-/obj/structure/flora/desert/tallgrass/tallgrass_corner/New()
-	switch(dir)
-		//if (NORTH)
-		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTH)
-		//if (NORTHEAST)
-		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTHEAST)
-		if (EAST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = EAST)
-		if (SOUTHEAST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTHEAST)
-		if (SOUTH)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTH)
-		if (SOUTHWEST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = SOUTHWEST)
-		if (WEST)
-			overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = WEST)
-		//if (NORTHWEST)
-		//	overlays += image("icon"=src.icon,"icon_state"="tallgrass_overlay_corner","layer"=ABOVE_MOB_LAYER, "dir" = NORTHWEST)
+	overlay_type = "tallgrass_overlay_corner"
 
 //BUSHES
 /obj/structure/flora/desert/bush
@@ -278,7 +290,7 @@
 	desc = "A small, leafy bush."
 	icon_state = "tree_1"
 	icon_tag = "tree"
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
 	//variations = 4
 
 //CACTUS
@@ -307,7 +319,7 @@
 	density = 0
 	anchored = 1
 	unacidable = 1 // can toggle it off anyway
-	layer = ABOVE_MOB_LAYER
+	layer = ABOVE_XENO_LAYER
 
 /obj/structure/jungle/shrub
 	name = "jungle foliage"
@@ -356,9 +368,17 @@
 		user << "<span class='warning'>You cut \the [src] away with \the [W].</span>"
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
-		cdel(src)
+		qdel(src)
 	else
 		. = ..()
+
+/obj/structure/jungle/vines/flamer_fire_act()
+	fire_act()
+
+/obj/structure/jungle/vines/fire_act()
+	if(!disposed)
+		spawn(rand(100,175))
+			qdel(src)
 
 /obj/structure/jungle/vines/New()
 	..()

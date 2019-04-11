@@ -1,5 +1,6 @@
 
 /proc/log_scheduler()
+/*
 	if(!round_scheduler_stats)
 		return
 	var/dat = "[worldtime2text(world.time)]\n"
@@ -16,3 +17,4 @@
 	dat += "world.cpu,[world.cpu]\n"
 	dat += "[log_end]"
 	round_scheduler_stats << dat
+*/

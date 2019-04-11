@@ -81,8 +81,3 @@
 /obj/item/clothing/glasses/night/yautja/Dispose()
 	..()
 	return TA_REVIVE_ME
-
-/obj/item/clothing/glasses/night/yautja/Recycle()
-	var/blacklist[] = list("overlay","icon_state","item_state","name","desc","darkness_view","can_remove")
-	. = ..() + blacklist
-

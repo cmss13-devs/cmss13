@@ -51,10 +51,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 
 
@@ -245,7 +245,7 @@
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
-	var/pillamount = 10
+	var/pillamount = 16
 	var/bottlesprite = "1" //yes, strings
 	var/pillsprite = "1"
 	var/client/has_sprites = list()
@@ -261,10 +261,10 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 
 /obj/machinery/chem_master/attackby(obj/item/B, mob/living/user)
@@ -1027,7 +1027,7 @@
 
 /obj/machinery/reagentgrinder/proc/remove_object(var/obj/item/O)
 	holdingitems -= O
-	cdel(O)
+	qdel(O)
 
 /obj/machinery/reagentgrinder/proc/juice()
 	power_change()

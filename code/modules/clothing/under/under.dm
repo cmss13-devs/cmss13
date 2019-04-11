@@ -27,7 +27,7 @@
 
 /obj/item/clothing/under/Dispose()
 	if(hastie)
-		cdel(hastie)
+		qdel(hastie)
 		hastie = null
 	. = ..()
 

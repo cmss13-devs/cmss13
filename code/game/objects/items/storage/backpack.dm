@@ -97,7 +97,7 @@
 			return
 		if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
 			user << "\red The Bluespace interfaces of the two devices conflict and malfunction."
-			cdel(W)
+			qdel(W)
 			return
 		..()
 
@@ -108,7 +108,7 @@
 		else
 			user << "\red The Bluespace generator malfunctions!"
 			for (var/obj/O in src.contents) //it broke, delete what was in it
-				cdel(O)
+				qdel(O)
 			crit_fail = 1
 			icon_state = "brokenpack"
 
@@ -282,6 +282,12 @@
 	name = "\improper USCM technician chestrig"
 	desc = "A heavy-duty chestrig used by some USCM technicians."
 	icon_state = "marinesatch_techi"
+
+/obj/item/storage/backpack/marine/satchel/intel
+	name = "\improper USCM intelligence officer pack"
+	desc = "A heavy-duty backpack that slings around easily, and can quickly be accessed with only one hand. Issued only to USCM Intelligence Officers."
+	icon_state = "marinesatch_io"
+	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"

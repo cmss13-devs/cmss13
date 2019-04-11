@@ -175,7 +175,7 @@
 		return 1
 
 	delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
-		cdel(projectile_to_fire)
+		qdel(projectile_to_fire)
 		if(refund) current_mag.current_rounds++
 		return 1
 
@@ -285,7 +285,8 @@
 						/obj/item/attachable/stock/revolver,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/lasersight,
-						/obj/item/attachable/scope/mini)
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/scope/mini_iff)
 
 /obj/item/weapon/gun/revolver/m44/New()
 	..()

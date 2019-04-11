@@ -53,37 +53,37 @@
 	for(var/obj/effect/landmark/L in landmarks_list)
 		switch(L.name)
 			if("hunter_primary")
-				cdel(L)
+				qdel(L)
 			if("hunter_secondary")
-				cdel(L)
+				qdel(L)
 			if("crap_item")
-				cdel(L)
+				qdel(L)
 			if("good_item")
-				cdel(L)
+				qdel(L)
 			if("block_hellhound")
-				cdel(L)
+				qdel(L)
 			if("fog blocker")
 				F = new(L.loc)
 				round_fog += F
-				cdel(L)
+				qdel(L)
 			if("fog time extender")
 				var/obj/effect/landmark/lv624/fog_time_extender/fte = L
 				if(istype(fte))
 					fog_timer += fte.time_to_extend
-					cdel(L)
+					qdel(L)
 			if("toxic river blocker")
 				F = new(L.loc)
 				round_toxic_river += F
-				cdel(L)
+				qdel(L)
 			if("xeno tunnel")
 				xeno_tunnels += L.loc
-				cdel(L)
+				qdel(L)
 			if("monkey_spawn")
 				monkey_spawns += L.loc
-				cdel(L)
+				qdel(L)
 			if("map item")
 				map_items += L.loc
-				cdel(L)
+				qdel(L)
 
 	// Spawn gamemode-specific map items
 	for(var/turf/T in map_items)
@@ -178,7 +178,7 @@
 
 	if(!round_finished)
 		for(var/datum/hive_status/hive in hive_datum)
-			if(hive.xeno_queen_timer && --hive.xeno_queen_timer <= 1) xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+			if(!hive.living_xeno_queen && hive.xeno_queen_timer && world.time>hive.xeno_queen_timer) xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/machinery/computer/shuttle_control/dropship1/default_console in machines)
@@ -190,8 +190,6 @@
 		if(world.time > bioscan_current_interval) //If world time is greater than required bioscan time.
 			announce_bioscans() //Announce the results of the bioscan to both sides.
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
-
-			defcon_controller.check_defcon_level() //Might as well check it at a similar interval
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
 			if(flags_round_type & MODE_FOG_ACTIVATED && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog)) disperse_fog()//Some RNG thrown in.
@@ -211,6 +209,9 @@
 //Checks to see who won///
 //////////////////////////
 /datum/game_mode/colonialmarines/check_win()
+	if(ticker.current_state != GAME_STATE_PLAYING)
+		return
+
 	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
@@ -238,7 +239,7 @@
 /datum/game_mode/colonialmarines/check_queen_status(var/queen_time, var/hivenumber)
 	set waitfor = 0
 	var/datum/hive_status/hive = hive_datum[hivenumber]
-	hive.xeno_queen_timer = queen_time
+	hive.xeno_queen_timer = world.time + queen_time SECONDS
 	if(!(flags_round_type & MODE_INFESTATION)) return
 	xeno_queen_deaths += 1
 	var/num_last_deaths = xeno_queen_deaths
@@ -262,22 +263,15 @@
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/colonialmarines/declare_completion()
-	round_statistics.count_end_of_round_mobs_for_statistics()
-	//world << "<span class='round_header'>[round_finished]</span>"
-	world << "<span class='round_header'>|Round Complete|</span>"
-	feedback_set_details("round_end_result",round_finished)
-
-	world << "<span class='round_body'>Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag].</span>"
-	world << "<span class='round_body'>End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details.</span>"
+	announce_ending()
 	var/musical_track
 	switch(round_finished)
 		if(MODE_INFESTATION_X_MAJOR) musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 		if(MODE_INFESTATION_M_MAJOR) musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 		if(MODE_INFESTATION_X_MINOR) musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 		if(MODE_INFESTATION_M_MINOR) musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
-		if(MODE_INFESTATION_DRAW_DEATH) musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg') //This one is unlikely to play.
+		if(MODE_INFESTATION_DRAW_DEATH) musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
 	world << musical_track
-
 	round_statistics.round_finished = round_finished
 	round_statistics.game_mode = name
 	round_statistics.round_time = duration2text()

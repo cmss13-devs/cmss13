@@ -19,7 +19,7 @@
 /datum/action/Dispose()
 	if(owner)
 		remove_action(owner)
-	cdel(button)
+	qdel(button)
 	button = null
 	target = null
 

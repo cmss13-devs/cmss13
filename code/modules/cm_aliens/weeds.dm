@@ -135,12 +135,12 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(70))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 /obj/effect/alien/weeds/attackby(obj/item/W, mob/living/user)
 	if(!W || !user || isnull(W) || (W.flags_item & NOBLUDGEON))
@@ -172,7 +172,7 @@
 
 /obj/effect/alien/weeds/proc/healthcheck()
 	if(health <= 0)
-		cdel(src)
+		qdel(src)
 
 /obj/effect/alien/weeds/update_icon()
 	return
@@ -180,7 +180,7 @@
 /obj/effect/alien/weeds/fire_act()
 	if(!disposed)
 		spawn(rand(100,175))
-			cdel(src)
+			qdel(src)
 
 
 /obj/effect/alien/weeds/weedwall
@@ -231,7 +231,7 @@
 /obj/effect/alien/weeds/node/New(loc, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X)
 	for(var/obj/effect/alien/weeds/W in loc)
 		if(W != src)
-			cdel(W) //replaces the previous weed
+			qdel(W) //replaces the previous weed
 			break
 
 	overlays += "weednode"

@@ -53,3 +53,13 @@
 	icon_state="poster11"
 	name = "YOU ALWAYS KNOW A WORKING JOE."
 	desc = "YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE. YOU ALWAYS KNOW A WORKING JOE."
+	
+/datum/poster/poster_12
+	icon_state="poster12"
+	name = "Beach Babe"
+	desc = "One of those hot, tanned babes back on good old Earths beaches."
+	
+/datum/poster/poster_13
+	icon_state="poster13"
+	name = "F-100"
+	desc = "The new F-100 smartwatch ad from a well known asian company."		

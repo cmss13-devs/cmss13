@@ -99,6 +99,7 @@ Class Procs:
 	var/stat = 0
 	var/emagged = 0
 	var/use_power = 1
+	var/processable = 1
 		//0 = dont run the auto
 		//1 = run auto, use idle
 		//2 = run auto, use active
@@ -120,7 +121,7 @@ Class Procs:
 	..()
 	machines += src
 	var/area/A = get_area(src)
-	if(A)
+	if(processable && A)
 		A.master.area_machines += src
 
 /obj/machinery/Dispose()
@@ -155,14 +156,14 @@ Class Procs:
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 				return
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 	return
 
@@ -301,5 +302,5 @@ Class Procs:
 		if(I.reliability != 100 && crit_fail)
 			I.crit_fail = 1
 		I.loc = loc
-	cdel(src)
+	qdel(src)
 	return 1

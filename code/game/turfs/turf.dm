@@ -46,11 +46,14 @@
 
 /turf/Dispose()
 	stop_processing()
+	//world << "Disposing [src.type]"
 	if(old_turf != "")
+		//world << "Old turf : [old_turf]"
 		ChangeTurf(text2path(old_turf), TRUE)
 	else
+		//world << "Defaulting to Plating"
 		ChangeTurf(/turf/open/floor/plating, TRUE)
-	..()
+	//..()
 	return TA_PURGE_ME_NOW
 
 /turf/ex_act(severity)
@@ -193,21 +196,25 @@ spookydonut august 2018
 		if(O.level == 1)
 			O.hide(intact_tile)
 
-//Creates a new turf. this is called by every code that changes a turf ("spawn atom" verb, cdel, build mode stuff, etc)
+//Creates a new turf. this is called by every code that changes a turf ("spawn atom" verb, qdel, build mode stuff, etc)
 /turf/proc/ChangeTurf(new_turf_path, forget_old_turf)
 	if (!new_turf_path)
 		return
 
 	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
 
-	//world << "Replacing [src.type] with [new_turf_path]"
-
 	var/path = "[src.type]"
 	if(istype(src, /turf/open/snow))
 		var/turf/open/snow/s = src
 		//This is so we revert back to a proper snow layer
 		path = "/turf/open/snow/layer[s.slayer]"
+
+	if(src.type == new_turf_path)
+		return
+
 	var/turf/W = new new_turf_path( locate(src.x, src.y, src.z) )
+
+
 	if(!forget_old_turf)	//e.g. if an admin spawn a new wall on a wall tile, we don't
 		W.old_turf = path	//want the new wall to change into the old wall when destroyed
 	W.lighting_lumcount += old_lumcount

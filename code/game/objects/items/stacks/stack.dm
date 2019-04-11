@@ -103,7 +103,7 @@
 		list_recipes(usr, text2num(href_list["sublist"]))
 
 	if(href_list["make"])
-		if(amount < 1) cdel(src) //Never should happen
+		if(amount < 1) qdel(src) //Never should happen
 
 		var/list/recipes_list = recipes
 		if(href_list["sublist"])
@@ -124,9 +124,6 @@
 				usr << "<span class='warning'>You need more [name] to build \the [R.title]!</span>"
 			return
 
-		if(istype(get_area(usr.loc), /area/sulaco/hangar))  //HANGAR BUILDING
-			usr << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
-			return
 		//1 is absolute one per tile, 2 is directional one per tile. Hacky way to get around it without adding more vars
 		if(R.one_per_turf)
 			if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
@@ -174,16 +171,16 @@
 		amount -= R.req_amount * multiplier
 		if(amount <= 0)
 			var/oldsrc = src
-			src = null //dont kill proc after cdel()
+			src = null //dont kill proc after qdel()
 			usr.drop_inv_item_on_ground(oldsrc)
-			cdel(oldsrc)
+			qdel(oldsrc)
 			if(istype(O,/obj/item) && istype(usr,/mob/living/carbon))
 				usr.put_in_hands(O)
 		O.add_fingerprint(usr)
 		//BubbleWrap - so newly formed boxes are empty
 		if(istype(O, /obj/item/storage))
 			for (var/obj/item/I in O)
-				cdel(I)
+				qdel(I)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
 		spawn()
@@ -198,7 +195,7 @@
 	if(amount <= 0)
 		if(usr && loc == usr)
 			usr.temp_drop_inv_item(src)
-		cdel(src)
+		qdel(src)
 	return 1
 
 /obj/item/stack/proc/add(var/extra)

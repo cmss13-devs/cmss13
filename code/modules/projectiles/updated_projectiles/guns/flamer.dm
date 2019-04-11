@@ -48,7 +48,7 @@
 	else
 		overlays += "[current_mag.icon_state]"
 	if(lit)
-		var/image/reusable/I = rnew(/image/reusable, list('icons/obj/items/gun.dmi', src, "+lit"))
+		var/image/I = image('icons/obj/items/gun.dmi', src, "+lit")
 		I.pixel_x += 3
 		overlays += I
 
@@ -457,13 +457,13 @@
 	var/turf/T = loc
 	firelevel = max(0, firelevel)
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
-		cdel(src)
+		qdel(src)
 		return
 
 	updateicon()
 
 	if(!firelevel)
-		cdel(src)
+		qdel(src)
 		return
 
 	var/j = 0

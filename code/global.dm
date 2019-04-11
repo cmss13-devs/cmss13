@@ -91,7 +91,7 @@ var/SMALLSIZEBLOCK = 0
 var/skipupdate = 0
 	///////////////
 var/eventchance = 10 //% per 5 mins
-var/event = 0
+var/event = FALSE
 var/hadevent = 0
 var/blobevent = 0
 	///////////////
@@ -191,9 +191,6 @@ var/list/combatlog = list()
 var/list/IClog = list()
 var/list/OOClog = list()
 var/list/adminlog = list()
-
-
-var/list/powernets = list()
 
 var/Debug = 0	// global debug switch
 var/Debug2 = 0

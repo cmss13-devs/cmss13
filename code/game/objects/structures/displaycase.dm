@@ -24,7 +24,7 @@
 			new /obj/item/shard( src.loc )
 			if (occupied)
 				occupied = 0
-			cdel(src)
+			qdel(src)
 
 
 /obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)

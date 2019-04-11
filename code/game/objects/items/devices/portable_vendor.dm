@@ -219,12 +219,12 @@
 				malfunction()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 				return
 			else
 				malfunction()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 			return
 
 

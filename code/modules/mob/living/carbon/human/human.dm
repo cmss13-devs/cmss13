@@ -1000,7 +1000,7 @@
 		var/datum/sprite_accessory/hair/H = new x // create new hair datum based on type x
 		if(H.selectable)
 			hairs.Add(H.name) // add hair name to hairs
-		cdel(H) // delete the hair after it's all done
+		qdel(H) // delete the hair after it's all done
 
 	var/new_style = input("Please select hair style", "Character Generation",h_style)  as null|anything in hairs
 
@@ -1016,7 +1016,7 @@
 		var/datum/sprite_accessory/facial_hair/H = new x
 		if(H.selectable)
 			fhairs.Add(H.name)
-		cdel(H)
+		qdel(H)
 
 	new_style = input("Please select facial style", "Character Generation",f_style)  as null|anything in fhairs
 
@@ -1137,7 +1137,7 @@
 				if(H.brainmob.real_name == src.real_name)
 					if(H.brainmob.mind)
 						H.brainmob.mind.transfer_to(src)
-						cdel(H)
+						qdel(H)
 
 	for(var/datum/internal_organ/I in internal_organs)
 		I.damage = 0

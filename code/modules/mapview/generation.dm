@@ -1,6 +1,6 @@
 
 /var/global/icon/marine_mapview
-/var/global/list/marine_mapview_overlay_1 // yes because need to cdel each one cleanly
+/var/global/list/marine_mapview_overlay_1 // yes because need to qdel each one cleanly
 /var/global/list/marine_mapview_overlay_2
 /var/global/list/marine_mapview_overlay_3
 /var/global/list/marine_mapview_overlay_4
@@ -50,7 +50,7 @@
 			newoverlay.DrawBox(rgb(51,204,51),H.x-1,H.y-1,H.x+1,H.y+1)
 	newoverlay.Crop(1,1,map_sizes[1][1],map_sizes[1][2])
 	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
-	cdel(xeno_mapview_overlay)
+	qdel(xeno_mapview_overlay)
 	xeno_mapview_overlay = newoverlay
 	return newoverlay
 
@@ -113,7 +113,7 @@
 			minimap.DrawBox(rgb(241,230,255),T.x,T.y)
 	minimap.Crop(1,1,max_x,max_y)
 	map_sizes[1] = list(max_x,max_y,min_x,min_y)
-	cdel(xeno_mapview)
+	qdel(xeno_mapview)
 	xeno_mapview = minimap
 	return minimap
 
@@ -260,19 +260,19 @@
 	if(selected)
 		switch(selected)
 			if(1)
-				cdel(marine_mapview_overlay_1)
+				qdel(marine_mapview_overlay_1)
 				marine_mapview_overlay_1 = newoverlay
 			if(2)
-				cdel(marine_mapview_overlay_2)
+				qdel(marine_mapview_overlay_2)
 				marine_mapview_overlay_2 = newoverlay
 			if(3)
-				cdel(marine_mapview_overlay_3)
+				qdel(marine_mapview_overlay_3)
 				marine_mapview_overlay_3 = newoverlay
 			if(4)
-				cdel(marine_mapview_overlay_4)
+				qdel(marine_mapview_overlay_4)
 				marine_mapview_overlay_4 = newoverlay
 	else
-		cdel(marine_mapview_overlay_5)
+		qdel(marine_mapview_overlay_5)
 		marine_mapview_overlay_5 = newoverlay
 
 	return newoverlay

@@ -45,9 +45,9 @@
 			health -= severity/2
 			healthcheck(0, 1)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			cdel(src)
+			qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src) //Nope
+			qdel(src) //Nope
 
 /obj/structure/fence/hitby(AM as mob|obj)
 	..()

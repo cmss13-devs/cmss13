@@ -14,6 +14,10 @@
 	name = "coagulation"
 	icon = 'icons/obj/filtration/coagulation.dmi'
 
+/obj/structure/filtration/coagulation
+	name = "coagulation"
+	icon = 'icons/obj/filtration/coagulation.dmi'
+
 
 
 /obj/structure/filtration

@@ -6,7 +6,7 @@
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
-	cdel(src)
+	qdel(src)
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
@@ -19,7 +19,7 @@
 		//var/icon/I = icon('icons/obj/decals.dmi', icon_state)
 		//S.icon = I.Scale(24, 24)
 		S.sign_state = icon_state
-		cdel(src)
+		qdel(src)
 	else ..()
 
 /obj/item/sign
@@ -48,7 +48,7 @@
 		S.desc = desc
 		S.icon_state = sign_state
 		user << "You fasten \the [S] with your [tool]."
-		cdel(src)
+		qdel(src)
 	else ..()
 
 /obj/structure/sign/double/map

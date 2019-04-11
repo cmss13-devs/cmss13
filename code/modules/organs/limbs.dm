@@ -532,8 +532,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	for(var/datum/wound/W in wounds)
-		// wounds can disappear after 10 minutes at the earliest
-		if(W.damage <= 0 && W.created + MINUTES_10 <= world.time)
+		// we don't care about wounds after we heal them. We are not an antag simulator
+		if(W.damage <= 0)
 			wounds -= W
 			continue
 			// let the GC handle the deletion of the wound
@@ -566,10 +566,10 @@ Note that amputating the affected organ does in fact remove the infection from t
 		var/heal_amt = 0
 
 		// if damage >= 50 AFTER treatment then it's probably too severe to heal within the timeframe of a round.
-		if (W.can_autoheal() && W.wound_damage() < 50 && prob(35) && owner.health >= 0 && !W.is_treated() && owner.bodytemperature > owner.species.cold_level_1)
-			heal_amt += 0.3 //They can't autoheal if in critical
-		else if (W.is_treated() && W.wound_damage() < 50 && prob(75))
-			heal_amt += 0.5 //Treated wounds heal faster
+		if (W.can_autoheal() && owner.health >= 0 && !W.is_treated() && owner.bodytemperature > owner.species.cold_level_1)
+			heal_amt += 0.3 * 0.35 //They can't autoheal if in critical
+		else if (W.is_treated())
+			heal_amt += 0.5 * 0.75 //Treated wounds heal faster
 
 		if(heal_amt)
 			//we only update wounds once in [wound_update_accuracy] ticks so have to emulate realtime
@@ -704,7 +704,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			status = LIMB_DESTROYED
 		for(var/i in implants)
 			implants -= i
-			cdel(i)
+			qdel(i)
 
 		germ_level = 0
 		if(hidden)
@@ -768,7 +768,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				owner.drop_inv_item_on_ground(owner.shoes, null, TRUE)
 
 		if(delete_limb)
-			cdel(organ)
+			qdel(organ)
 		else
 			owner.visible_message("<span class='warning'>[owner.name]'s [display_name] flies off in an arc!</span>",
 			"<span class='highdanger'><b>Your [display_name] goes flying off!</b></span>",
@@ -1001,7 +1001,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			spark_system.attach(owner)
 			spark_system.start()
 			spawn(10)
-				cdel(spark_system)
+				qdel(spark_system)
 				spark_system = null
 
 /datum/limb/proc/embed(var/obj/item/W, var/silent = 0)

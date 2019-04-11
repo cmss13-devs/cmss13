@@ -14,7 +14,7 @@
 /obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
 	. = ..()
 	if (.)
-		if(isSynth(M) && M.allow_gun_usage == 0)
+		if(isSynth(M) && M.allow_gun_usage == FALSE)
 			M.visible_message("<span class ='danger'>Your programming prevents you from wearing this!</span>")
 			return 0
 

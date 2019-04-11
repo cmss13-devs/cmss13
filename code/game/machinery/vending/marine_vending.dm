@@ -100,9 +100,9 @@
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 /obj/machinery/vending/marine/cargo_guns
 	name = "\improper ColMarTech automated armaments vendor"
@@ -706,7 +706,7 @@
 		/obj/item/attachable/compensator = round(scale * 10),
 		/obj/item/attachable/suppressor = round(scale * 14),
 
-		/obj/item/attachable/scope/collimator = round(scale * 2)+1,
+		/obj/item/attachable/scope/mini_iff = round(scale * 2)+1,
 		/obj/item/attachable/magnetic_harness = round(scale * 10),
 		/obj/item/attachable/scope/mini = round(scale * 4),
 		/obj/item/attachable/quickfire = round(scale * 3),
@@ -716,7 +716,7 @@
 		/obj/item/attachable/reflex = round(scale * 6),
 
 		/obj/item/attachable/angledgrip = round(scale * 14),
-		/obj/item/attachable/bipod = round(scale * 8),		
+		/obj/item/attachable/bipod = round(scale * 8),
 		/obj/item/attachable/burstfire_assembly = round(scale * 4),
 		/obj/item/attachable/gyro = round(scale * 4),
 		/obj/item/attachable/lasersight = round(scale * 14),

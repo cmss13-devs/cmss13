@@ -91,9 +91,14 @@
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
 
+/datum/action/xeno_action/shift_spits/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated() && !X.buckled)
+		return TRUE
+
 /datum/action/xeno_action/shift_spits/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state())
+	if(!X.check_state(1))
 		return
 	for(var/i in 1 to X.caste.spit_types.len)
 		if(X.ammo == ammo_list[X.caste.spit_types[i]])
@@ -243,6 +248,11 @@
 	name = "Toggle Agility"
 	action_icon_state = "agility_on"
 	ability_name = "toggle agility"
+
+/datum/action/xeno_action/activable/toggle_agility/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated() && !X.buckled)
+		return TRUE
 
 /datum/action/xeno_action/activable/toggle_agility/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
@@ -429,9 +439,14 @@
 	action_icon_state = "xenohide"
 	plasma_cost = 0
 
+/datum/action/xeno_action/xenohide/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated() && !X.buckled)
+		return TRUE
+
 /datum/action/xeno_action/xenohide/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state())
+	if(!X.check_state(1))
 		return
 	if(X.layer != XENO_HIDING_LAYER)
 		X.layer = XENO_HIDING_LAYER
@@ -447,12 +462,12 @@
 
 /datum/action/xeno_action/emit_pheromones/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !X.lying && !X.buckled && (!X.current_aura || X.plasma_stored >= plasma_cost))
+	if(X && !X.is_mob_incapacitated() && !X.buckled && (!X.current_aura || X.plasma_stored >= plasma_cost))
 		return TRUE
 
 /datum/action/xeno_action/emit_pheromones/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state())
+	if(!X.check_state(1))
 		return
 
 	if(X.current_aura)
@@ -467,7 +482,7 @@
 			X << "<span class='notice'><br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br></span>"
 			return
 		if(choice == "cancel") return
-		if(!X.check_state()) return
+		if(!X.check_state(1)) return
 		if(X.current_aura) //If they are stacking windows, disable all input
 			return
 		if(!X.check_plasma(plasma_cost))
@@ -529,6 +544,11 @@
 	name = "Toggle Bombard Type"
 	action_icon_state = "toggle_bomb0"
 	plasma_cost = 0
+
+/datum/action/xeno_action/toggle_bomb/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated() && !X.buckled)
+		return TRUE
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
@@ -683,9 +703,14 @@
 	action_icon_state = "ready_charge"
 	plasma_cost = 0
 
+/datum/action/xeno_action/ready_charge/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.is_mob_incapacitated() && !X.buckled)
+		return TRUE
+
 /datum/action/xeno_action/ready_charge/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X.check_state()) r_FAL
+	if(!X.check_state(1)) r_FAL
 	if(X.legcuffed)
 		src << "<span class='xenodanger'>You can't charge with that thing on your leg!</span>"
 		X.is_charging = 0
@@ -1183,7 +1208,7 @@
 			//Something went horribly wrong!
 			X << "<span class='warning'>Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!</span>"
 			if(new_xeno)
-				cdel(new_xeno)
+				qdel(new_xeno)
 			return
 
 		if(T.mind)
@@ -1210,7 +1235,7 @@
 		log_admin("[key_name_admin(X)] has deevolved [key_name_admin(T)]. Reason: [reason]")
 
 		round_statistics.total_xenos_created-- //so an evolved xeno doesn't count as two.
-		cdel(T)
+		qdel(T)
 		X.use_plasma(plasma_cost)
 
 	else

@@ -86,7 +86,7 @@
 	w_class = 3
 
 /obj/item/ammo_magazine/rifle/m16/ap
-	name = "\improper Dutch's M16A2 'yautja killer killer' magazine (5.56x45mm AP)"
+	name = "\improper Dutch's M16A2 'yautja killer' magazine (5.56x45mm AP)"
 	desc = "An AP 5.56x45mm magazine for a modified M16A2 assault rifle."
 	caliber = "5.56x45mm"
 	icon_state = "mar40"

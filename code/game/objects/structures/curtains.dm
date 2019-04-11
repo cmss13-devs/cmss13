@@ -13,19 +13,19 @@
 /obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
 	if(P.damage)
 		visible_message("<span class='warning'>[P] tears [src] down!</span>")
-		cdel(src)
+		qdel(src)
 	return 0
 
 /obj/structure/curtain/attack_hand(mob/user)
 	playsound(get_turf(loc), "rustle", 15, 1, 6)
 	toggle()
 	..()
-	
+
 /obj/structure/curtain/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
 	M.visible_message("<span class='danger'>\The [M] slices [src] apart!</span>", \
 	"<span class='danger'>You slice [src] apart!</span>", null, 5)
-	cdel(src)
+	qdel(src)
 
 /obj/structure/curtain/proc/toggle()
 	opacity = !opacity

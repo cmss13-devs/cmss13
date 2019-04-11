@@ -124,7 +124,7 @@
 
 			user.put_in_hands(W)
 			user << "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>"
-			cdel(src)
+			qdel(src)
 			update_icon(user)
 
 
@@ -187,5 +187,5 @@
 				C.handcuffed = new /obj/item/restraints(C)
 				C.handcuff_update()
 				C.visible_message("\red [C] has been successfully restrained by [user]!")
-				cdel(src)
+				qdel(src)
 	return

@@ -141,7 +141,7 @@
 		log_admin("[key_name(user)] cut a wire at ([x],[y],[z])")
 		message_admins("[key_name(user)](<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[user]'>?</A>) cut a wire at ([x],[y],[z]) - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>")
 
-		cdel(src)
+		qdel(src)
 
 		return	// not needed, but for clarity
 
@@ -197,13 +197,13 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, color)
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 	return
 
 

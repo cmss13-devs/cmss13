@@ -724,7 +724,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			log_admin("[ckey] has joined as a [Z].")
 
 			if(isobserver(ghostmob) )
-				cdel(ghostmob)
+				qdel(ghostmob)
 			return
 
 
@@ -802,7 +802,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(L.client) L.client.change_view(world.view)
 
 		if( isobserver(ghostmob) )
-			cdel(ghostmob)
+			qdel(ghostmob)
 		spawn(15)
 			L << "<span style='font-weight: bold; color: red;'>Attention!! You are playing as a hellhound. You can get server banned if you are shitty so listen up!</span>"
 			L << "<span style='color: red;'>You MUST listen to and obey the Predator's commands at all times. Die if they demand it. Not following them is unthinkable to a hellhound.</span>"

@@ -1,14 +1,6 @@
 //Refer to life.dm for caller
 
 /mob/living/carbon/human/proc/handle_mutations_and_radiation()
-
-	if(species.flags & IS_SYNTHETIC) //Robots don't suffer from mutations or radloss.
-		return
-
-	if(getFireLoss())
-		if((COLD_RESISTANCE in mutations) || (prob(1)))
-			heal_limb_damage(0, 1)
-
 	radiation = Clamp(radiation,0,100)
 
 	if(radiation)

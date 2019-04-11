@@ -95,9 +95,9 @@
 					malfunction()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 /obj/machinery/vending/proc/select_gamemode_equipment(gamemode)
 	return
@@ -504,10 +504,10 @@
 				user << "\blue You successfully pull the coin out before the [src] could swallow it."
 			else
 				user << "\blue You weren't able to pull the coin out fast enough, the machine ate it, string and all."
-				cdel(coin)
+				qdel(coin)
 				coin = null
 		else
-			cdel(coin)
+			qdel(coin)
 			coin = null
 
 	vend_ready = 0 //One thing at a time!!
@@ -576,7 +576,7 @@
 				var/obj/item/storage/S = item_to_stock.loc
 				S.remove_from_storage(item_to_stock, user.loc)
 
-			cdel(item_to_stock)
+			qdel(item_to_stock)
 			user.visible_message("<span class='notice'>[user] stocks [src] with \a [R.product_name].</span>",
 			"<span class='notice'>You stock [src] with \a [R.product_name].</span>")
 			R.amount++

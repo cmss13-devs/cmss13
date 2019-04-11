@@ -18,9 +18,11 @@
 
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
 
+	var/hard_deleted = 0
+
 //===========================================================================
 /atom/movable/Dispose()
-	for(var/atom/movable/I in contents) cdel(I)
+	for(var/atom/movable/I in contents) qdel(I)
 	if(pulledby) pulledby.stop_pulling()
 	if(throw_source) throw_source = null
 
@@ -30,13 +32,7 @@
 	. = ..()
 	loc = null //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 
-
-/atom/movable/Recycle()
-	return
 //===========================================================================
-
-/atom/movable/proc/initialize()
-	return
 
 /atom/movable/Move(NewLoc, direct)
 	/*
@@ -159,18 +155,18 @@
 				M.turf_collision(T, speed)
 
 //decided whether a movable atom being thrown can pass through the turf it is in.
-/atom/movable/proc/hit_check(var/speed)
+/atom/movable/proc/hit_check(var/speed, hit_living=TRUE)
 	if(src.throwing)
 		for(var/atom/A in get_turf(src))
 			if(A == src) continue
 			if(istype(A,/mob/living))
-				if(A:lying) continue
+				if(!hit_living || A:lying) continue
 				src.throw_impact(A,speed)
 			if(isobj(A))
 				if(A.density && !(A.flags_atom & ON_BORDER) && (!A.throwpass || istype(src,/mob/living/carbon)))
 					src.throw_impact(A,speed)
 
-/atom/movable/proc/throw_at(atom/target, range, speed, thrower, spin)
+/atom/movable/proc/throw_at(atom/target, range, speed, thrower, spin, hit_living=TRUE)
 	if(!target || !src)	return 0
 	//use a modified version of Bresenham's algorithm to get from the atom's current position to that of the target
 
@@ -199,21 +195,34 @@
 		dy = NORTH
 	else
 		dy = SOUTH
+	var/stepx = 0
+	var/stepy = 0
+	var/stepdiag = 0
 	var/dist_travelled = 0
+	var/completed = 0
 	var/dist_since_sleep = 0
 	var/area/a = get_area(src.loc)
 	if(dist_x > dist_y)
 		var/error = dist_x/2 - dist_y
-		while(src && !disposed && target &&((((src.x < target.x && dx == EAST) || (src.x > target.x && dx == WEST)) && dist_travelled < range) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
+		while(src && !disposed && target &&((((src.x < target.x && dx == EAST) || (src.x > target.x && dx == WEST)) && !completed) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
 			// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
 			if(error < 0)
 				var/atom/step = get_step(src, dy)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepx) // if moving parallel to last move
+						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error += dist_x
-				dist_travelled++
+				stepy++
+				if(stepx)
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
@@ -222,27 +231,45 @@
 				var/atom/step = get_step(src, dx)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepy) // if moving parallel to last move
+						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error -= dist_y
-				dist_travelled++
+				stepx++
+				if(stepy) // diagonal throwing is a lattice problem
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
 					sleep(1)
 			a = get_area(src.loc)
-	else
+	else //dist_travelled < range
 		var/error = dist_y/2 - dist_x
-		while(src && !disposed && target &&((((src.y < target.y && dy == NORTH) || (src.y > target.y && dy == SOUTH)) && dist_travelled < range) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
+		while(src && !disposed && target &&((((src.y < target.y && dy == NORTH) || (src.y > target.y && dy == SOUTH)) && !completed) || (a && a.has_gravity == 0)  || istype(src.loc, /turf/open/space)) && src.throwing && istype(src.loc, /turf))
 			// only stop when we've gone the whole distance (or max throw range) and are on a non-space tile, or hit something, or hit the end of the map, or someone picks it up
 			if(error < 0)
 				var/atom/step = get_step(src, dx)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepy) // if moving parallel to last move
+						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error += dist_y
-				dist_travelled++
+				stepx++
+				if(stepy) 
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
@@ -251,10 +278,19 @@
 				var/atom/step = get_step(src, dy)
 				if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
 					break
+				if(dist_travelled == range)
+					completed = 1
+					if(!stepx) // if moving parallel to last move
+						break
 				Move(step)
-				hit_check(speed)
+				hit_check(speed,hit_living)
 				error -= dist_x
-				dist_travelled++
+				stepy++
+				if(stepx)
+					stepx--
+					stepy--
+					stepdiag++
+				dist_travelled = stepdiag + stepx + stepy
 				dist_since_sleep++
 				if(dist_since_sleep >= speed)
 					dist_since_sleep = 0
@@ -386,3 +422,4 @@
 /atom/movable/proc/handle_internal_lifeform(mob/lifeform_inside_me)
 	. = return_air()
 
+/datum/var/being_sent_to_past

@@ -168,7 +168,7 @@
 				T.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
 				src << "\blue You finish butchering!"
-				cdel(T)
+				qdel(T)
 			else
 				src << "You pause your butchering for later."
 	else

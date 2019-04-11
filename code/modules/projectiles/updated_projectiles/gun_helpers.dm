@@ -330,7 +330,7 @@ should be alright.
 	if(stock && stock.has_marine_iff)
 		iff_enabled = TRUE
 	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
-		cdel(in_chamber)
+		qdel(in_chamber)
 		in_chamber = create_bullet(ammo) //OK
 
 /obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
@@ -387,14 +387,14 @@ should be alright.
 			if("rail") update_overlays(rail, attachable)
 
 /obj/item/weapon/gun/proc/update_overlays(obj/item/attachable/A, slot)
-	var/image/reusable/I = attachable_overlays[slot]
+	var/image/I = attachable_overlays[slot]
 	overlays -= I
-	cdel(I)
+	qdel(I)
 	if(A) //Only updates if the attachment exists for that slot.
 		var/item_icon = A.icon_state
 		if(A.attach_icon)
 			item_icon = A.attach_icon
-		I = rnew(/image/reusable, list(A.icon,src, item_icon))
+		I = image(A.icon,src, item_icon)
 		I.pixel_x = attachable_offset["[slot]_x"] - A.pixel_shift_x
 		I.pixel_y = attachable_offset["[slot]_y"] - A.pixel_shift_y
 		attachable_overlays[slot] = I
@@ -402,19 +402,19 @@ should be alright.
 	else attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/update_mag_overlay()
-	var/image/reusable/I = attachable_overlays["mag"]
+	var/image/I = attachable_overlays["mag"]
 	overlays -= I
-	cdel(I)
+	qdel(I)
 	if(current_mag && current_mag.bonus_overlay)
-		I = rnew(/image/reusable, list(current_mag.icon,src,current_mag.bonus_overlay))
+		I = image(current_mag.icon,src,current_mag.bonus_overlay)
 		attachable_overlays["mag"] = I
 		overlays += I
 	else attachable_overlays["mag"] = null
 
 /obj/item/weapon/gun/proc/update_special_overlay(new_icon_state)
 	overlays -= attachable_overlays["special"]
-	cdel(attachable_overlays["special"])
-	var/image/reusable/I = rnew(/image/reusable, list(icon,src,new_icon_state))
+	qdel(attachable_overlays["special"])
+	var/image/I = image(icon,src,new_icon_state)
 	attachable_overlays["special"] = I
 	overlays += I
 
@@ -449,15 +449,13 @@ should be alright.
 //----------------------------------------------------------
 
 //For the holster hotkey
-/mob/living/silicon/robot/verb/holster_verb()
-	set name = "Holster"
-	set category = "Object"
+/mob/living/silicon/robot/verb/holster_verb(var/keymod = "none" as text)
+	set name = "holster"
 	set hidden = 1
 	src.uneq_active()
 
-/mob/living/carbon/human/verb/holster_verb()
-	set name = "Holster"
-	set category = "Object"
+/mob/living/carbon/human/verb/holster_verb(var/keymod = "none" as text)
+	set name = "holster"
 	set hidden = 1
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
 		src << "<span class='warning'>You can't draw a weapon in your current state.</span>"
@@ -473,49 +471,137 @@ should be alright.
 			T.holster(W, src)
 		else
 			src.quick_equip()
-	else
-		if(src.w_uniform)
-			if(src.w_uniform.hastie)
-				if(istype(T) && T.holstered)
-					src.w_uniform.attack_hand(src)
-					return
-		if(src.s_store)
-			if(istype(src.s_store, /obj/item/storage))
-				var/obj/item/storage/S = src.s_store
-				for(var/obj/item/weapon/wep in S.return_inv())
-					src.s_store.attack_hand(src)
-					return
-			else if(istype(src.s_store, /obj/item/weapon))
-				src.s_store.attack_hand(src)
-				return
-		if(src.belt)
-			if(istype(src.belt, /obj/item/storage/belt/gun/) || istype(src.belt, /obj/item/storage/large_holster))
-				var/obj/item/storage/G = src.belt
-				for(var/obj/item/weapon/gun in G.return_inv())
-					src.belt.attack_hand(src)
-					return
-		if(src.back)
-			if(istype(src.back, /obj/item/storage/large_holster))
-				var/obj/item/storage/large_holster/B = src.back
-				if(B.return_inv().len)
-					src.back.attack_hand(src)
-					return
-			if(istype(src.back,/obj/item/weapon))
-				src.back.attack_hand(src)
-		
-		if(src.shoes)
-			if(istype(src.shoes, /obj/item/clothing/shoes))
-				var/obj/item/clothing/shoes/S = src.shoes
-				if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
-					src.shoes.attack_hand(src)
-					return
+	else //empty hand, start checking slots and holsters
+		switch(keymod)
+			if("none") //default order: uniform, suit, belt, back, pockets, shoes
+				if(src.w_uniform)
+					if(src.w_uniform.hastie)
+						if(istype(T) && T.holstered)
+							src.w_uniform.attack_hand(src)
+							return
 
-		
-	
-	
-	
-	
+				if(src.s_store)
+					if(istype(src.s_store, /obj/item/storage)) //check storages(?)
+						var/obj/item/storage/S = src.s_store
+						for(var/obj/item/weapon/wep in S.return_inv())
+							src.s_store.attack_hand(src)
+							return
+					else if(istype(src.s_store, /obj/item/weapon)) //then check for weapons
+						src.s_store.attack_hand(src)
+						return
 
+				if(src.belt)
+					if(istype(src.belt, /obj/item/storage/belt/gun/) || istype(src.belt, /obj/item/storage/large_holster)) //check belts and holsters
+						var/obj/item/storage/G = src.belt
+						for(var/obj/item/weapon/gun in G.return_inv())
+							src.belt.attack_hand(src)
+							return
+					if(istype(src.belt, /obj/item/weapon/)) //then check for weapons
+						src.belt.attack_hand(src)
+						return
+
+				if(src.back)
+					if(istype(src.back, /obj/item/storage/large_holster)) //check holsters
+						var/obj/item/storage/large_holster/B = src.back
+						if(B.return_inv().len)
+							src.back.attack_hand(src)
+							return
+					if(istype(src.back,/obj/item/weapon)) //then check for weapons
+						src.back.attack_hand(src)
+						return
+				
+				if(src.l_store)
+					if(istype(src.l_store, /obj/item/storage/pouch))  //check pouches
+						var/obj/item/storage/pouch/P = src.l_store
+						for(var/obj/item/weapon/wep in P.return_inv())
+							src.l_store.attack_hand(src)
+							return
+					if(istype(src.l_store, /obj/item/weapon)) //then check for weapons
+						src.l_store.attack_hand(src)
+						return
+
+				if(src.r_store)
+					if(istype(src.r_store, /obj/item/storage/pouch))  //check pouches
+						var/obj/item/storage/pouch/P = src.r_store
+						for(var/obj/item/weapon/wep in P.return_inv())
+							src.r_store.attack_hand(src)
+							return
+					if(istype(src.r_store, /obj/item/weapon)) //then check for weapons
+						src.r_store.attack_hand(src)
+						return
+				
+				if(src.shoes)
+					if(istype(src.shoes, /obj/item/clothing/shoes))
+						var/obj/item/clothing/shoes/S = src.shoes
+						if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
+							src.shoes.attack_hand(src)
+							return
+
+			if("shift") //shift keymod, do common secondary weapon locations first. order: belt, back, pockets, shoes, uniform, suit.
+				if(src.belt)
+					if(istype(src.belt, /obj/item/storage/belt/gun/) || istype(src.belt, /obj/item/storage/large_holster))
+						var/obj/item/storage/G = src.belt
+						for(var/obj/item/weapon/gun in G.return_inv())
+							src.belt.attack_hand(src)
+							return
+					if(istype(src.belt, /obj/item/weapon/))
+						src.belt.attack_hand(src)
+						return
+
+				if(src.back)
+					if(istype(src.back, /obj/item/storage/large_holster))
+						var/obj/item/storage/large_holster/B = src.back
+						if(B.return_inv().len)
+							src.back.attack_hand(src)
+							return
+					if(istype(src.back,/obj/item/weapon))
+						src.back.attack_hand(src)
+						return
+
+				if(src.l_store)
+					if(istype(src.l_store, /obj/item/storage/pouch))
+						var/obj/item/storage/pouch/P = src.l_store
+						for(var/obj/item/weapon/wep in P.return_inv())
+							src.l_store.attack_hand(src)
+							return
+					if(istype(src.l_store, /obj/item/weapon))
+						src.l_store.attack_hand(src)
+						return
+
+				if(src.r_store)
+					if(istype(src.r_store, /obj/item/storage/pouch))
+						var/obj/item/storage/pouch/P = src.r_store
+						for(var/obj/item/weapon/wep in P.return_inv())
+							src.r_store.attack_hand(src)
+							return
+					if(istype(src.r_store, /obj/item/weapon))
+						src.r_store.attack_hand(src)
+						return
+
+				if(src.shoes)
+					if(istype(src.shoes, /obj/item/clothing/shoes))
+						var/obj/item/clothing/shoes/S = src.shoes
+						if(S.stored_item && istype(S.stored_item, /obj/item/weapon))
+							src.shoes.attack_hand(src)
+							return
+
+				if(src.w_uniform)
+					if(src.w_uniform.hastie)
+						if(istype(T) && T.holstered)
+							src.w_uniform.attack_hand(src)
+							return
+
+				if(src.s_store)
+					if(istype(src.s_store, /obj/item/storage))
+						var/obj/item/storage/S = src.s_store
+						for(var/obj/item/weapon/wep in S.return_inv())
+							src.s_store.attack_hand(src)
+							return
+					else if(istype(src.s_store, /obj/item/weapon))
+						src.s_store.attack_hand(src)
+						return
+				
+							
 
 /obj/item/weapon/gun/verb/field_strip()
 	set category = "Weapons"

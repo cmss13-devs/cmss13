@@ -108,7 +108,7 @@
 			M.update_canmove()
 			N.buckled_mob = M
 			N.afterbuckle(M)
-	cdel(src)
+	qdel(src)
 
 
 

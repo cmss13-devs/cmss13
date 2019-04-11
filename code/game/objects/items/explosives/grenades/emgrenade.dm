@@ -7,7 +7,7 @@
 /obj/item/explosive/grenade/empgrenade/prime()
 	..()
 	if(empulse(src, 4, 10))
-		cdel(src)
+		qdel(src)
 	return
 
 /obj/item/explosive/grenade/empgrenade/dutch
@@ -19,5 +19,5 @@
 /obj/item/explosive/grenade/empgrenade/dutch/prime()
 	..()
 	if(empulse(src, 15, 20))
-		cdel(src)
+		qdel(src)
 	return

@@ -59,10 +59,10 @@ macro "macro"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent hurt"
-	elem
+	elem 
 		name = "CTRL+5"
 		command = "Toggle-Move-Intent"
-	elem
+	elem 
 		name = "CTRL+A+REP"
 		command = ".west"
 	elem 
@@ -202,13 +202,13 @@ macro "hotkeymode"
 	elem 
 		name = "CTRL+4"
 		command = "a-intent hurt"
-	elem
+	elem 
 		name = "5"
 		command = "Toggle-Move-Intent"
-	elem
+	elem 
 		name = "CTRL+5"
 		command = "Toggle-Move-Intent"
-	elem
+	elem 
 		name = "A+REP"
 		command = ".west"
 	elem 
@@ -222,7 +222,10 @@ macro "hotkeymode"
 		command = ".east"
 	elem 
 		name = "E"
-		command = "holster"
+		command = "holster none"
+	elem 
+		name = "SHIFT+E"
+		command = "holster shift"
 	elem 
 		name = "Q"
 		command = ".northwest"
@@ -304,7 +307,7 @@ macro "hotkeymode"
 	elem 
 		name = "F12"
 		command = "F12"
-    elem 
+	elem 
 		name = "Numpad8"
 		command = "a-select-zone head"
 	elem 
@@ -326,6 +329,7 @@ macro "hotkeymode"
 		name = "Numpad3"
 		command = "a-select-zone lleg"
 
+
 menu "menu"
 	elem 
 		name = "&File"
@@ -344,6 +348,11 @@ menu "menu"
 	elem 
 		name = ""
 		command = ""
+		category = "&File"
+		saved-params = "is-checked"
+	elem 
+		name = "&Reconnect"
+		command = ".reconnect"
 		category = "&File"
 		saved-params = "is-checked"
 	elem 
@@ -387,6 +396,31 @@ menu "menu"
 		command = ".winset \"menu.textmode.is-checked=true?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\""
 		category = "&Icons"
 		can-check = true
+		saved-params = "is-checked"
+	elem 
+		name = "Rendering"
+		command = ""
+		saved-params = "is-checked"
+	elem 
+		name = "&Nearest Neighbor"
+		command = ".winset \"mapwindow.map.zoom-mode=distort\""
+		category = "Rendering"
+		can-check = true
+		group = "RM"
+		saved-params = "is-checked"
+	elem 
+		name = "&Point Sampling"
+		command = ".winset \"mapwindow.map.zoom-mode=normal\""
+		category = "Rendering"
+		can-check = true
+		group = "RM"
+		saved-params = "is-checked"
+	elem 
+		name = "&Bilinear"
+		command = ".winset \"mapwindow.map.zoom-mode=blur\""
+		category = "Rendering"
+		can-check = true
+		group = "RM"
 		saved-params = "is-checked"
 	elem 
 		name = "&Help"
@@ -720,7 +754,6 @@ window "rpane"
 		size = 859x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "rpanewindow"
@@ -729,7 +762,6 @@ window "rpane"
 		size = 859x499
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
@@ -739,7 +771,6 @@ window "rpane"
 		size = 106x20
 		anchor1 = 67,0
 		anchor2 = 79,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Submit Bug"
 		command = "submit-bug"
@@ -761,7 +792,6 @@ window "rpane"
 		size = 106x20
 		anchor1 = 30,0
 		anchor2 = 42,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Rules"
 		command = "rules"
@@ -772,7 +802,6 @@ window "rpane"
 		size = 111x20
 		anchor1 = 18,0
 		anchor2 = 31,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Changelog"
 		command = "Changelog"
@@ -783,7 +812,6 @@ window "rpane"
 		size = 106x20
 		anchor1 = 55,0
 		anchor2 = 67,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Forum"
 		command = "forum"
@@ -794,7 +822,6 @@ window "rpane"
 		size = 106x20
 		anchor1 = 42,0
 		anchor2 = 55,0
-		background-color = none
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
@@ -805,7 +832,6 @@ window "rpane"
 		size = 67x20
 		anchor1 = 0,0
 		anchor2 = 8,0
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -819,7 +845,6 @@ window "rpane"
 		size = 70x20
 		anchor1 = 8,0
 		anchor2 = 15,0
-		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"

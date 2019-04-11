@@ -69,22 +69,25 @@
 			var/datum/job/J = RoleAuthority.roles_by_name[newskillset]
 			H.mind.set_cm_skills(J.get_skills())
 
-
-
-
 /client/proc/cmd_admin_dress(var/mob/living/carbon/human/M in mob_list)
 	set category = null
 	set name = "Select Equipment"
 
-	var/dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
-	if (isnull(dresscode))
+	src.cmd_admin_dress_human(M)
+
+/client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0)
+	
+	if (!no_logs)
+		dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
+
+	if(isnull(dresscode))
 		return
 
 	feedback_add_details("admin_verb","SEQ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	for (var/obj/item/I in M)
 		if (istype(I, /obj/item/implant))
 			continue
-		cdel(I)
+		qdel(I)
 
 	if(!ishuman(M))
 		//If the mob is not human, we're transforming them into a human
@@ -96,10 +99,27 @@
 
 	arm_equipment(M, dresscode)
 	M.regenerate_icons()
-	log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")
-	message_admins("\blue [key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].", 1)
+	if(!no_logs)
+		log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")
+		message_admins("\blue [key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].", 1)
 	return
 
+/client/proc/cmd_admin_dress_all()
+	set category = "Debug"
+	set name = "Select Equipment - All Humans"
+	set desc = "Applies an equipment preset to all humans in the world."
+
+	var/datum/equipment_preset/dresscode = input("Select dress for ALL HUMANS", "Robust quick dress shop") as null|anything in gear_presets_list
+	if (isnull(dresscode))
+		return
+
+	if(alert("Are you sure you want to change the equipment of ALL humans in the world to [dresscode]?",, "Yes", "No") == "No") return
+
+	for(var/mob/living/carbon/human/M in mob_list)
+		src.cmd_admin_dress_human(M, dresscode, 1)
+
+	log_admin("[key_name(usr)] changed the equipment of ALL HUMANS to [dresscode].")
+	message_admins("\blue [key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode].", 1)
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.

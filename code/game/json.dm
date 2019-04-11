@@ -19,7 +19,7 @@ proc/makejson()
 		return
 	var/mode
 	if(ticker)
-		if(ticker.current_state == 1)
+		if(ticker.current_state == GAME_STATE_PREGAME)
 			mode = "Round Setup"
 		else if(ticker.hide_mode)
 			mode = "SECRET"

@@ -292,9 +292,9 @@
 		f2.SetOpacity(opacity)
 
 	Dispose()
-		cdel(f1)
+		qdel(f1)
 		f1 = null
-		cdel(f2)
+		qdel(f2)
 		f2 = null
 		. = ..()
 
@@ -313,9 +313,9 @@
 		f2.SetOpacity(opacity)
 
 	Dispose()
-		cdel(f1)
+		qdel(f1)
 		f1 = null
-		cdel(f2)
+		qdel(f2)
 		f2 = null
 		. = ..()
 
@@ -342,13 +342,13 @@
 		f3.SetOpacity(opacity)
 
 	Dispose()
-		cdel(f1)
+		qdel(f1)
 		f1 = null
-		cdel(f2)
+		qdel(f2)
 		f2 = null
-		cdel(f3)
+		qdel(f3)
 		f3 = null
-		cdel(f4)
+		qdel(f4)
 		f4 = null
 		. = ..()
 
@@ -375,13 +375,13 @@
 		f3.SetOpacity(opacity)
 
 	Dispose()
-		cdel(f1)
+		qdel(f1)
 		f1 = null
-		cdel(f2)
+		qdel(f2)
 		f2 = null
-		cdel(f3)
+		qdel(f3)
 		f3 = null
-		cdel(f4)
+		qdel(f4)
 		f4 = null
 		. = ..()
 
@@ -423,4 +423,12 @@
 /obj/machinery/door/poddoor/almayer/New()
 	spawn(10) // No fucken idea but this somehow makes it work. What the actual fuck.
 		relativewall_neighbours()
+	..()
+
+/obj/machinery/door/poddoor/almayer/locked
+	unacidable = 1
+
+/obj/machinery/door/poddoor/almayer/locked/attackby(obj/item/C as obj, mob/user as mob)
+	if(iscrowbar(C))
+		return
 	..()

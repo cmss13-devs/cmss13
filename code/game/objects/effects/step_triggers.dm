@@ -109,27 +109,27 @@
 			return
 
 		if(teleport_x && teleport_y && teleport_z)
-
+			/* TODO: replace this -spookydonut
 			switch(teleportation_type)
 				if(1)
 					sleep(animation_teleport_quick_out(A)) //Sleep for the duration of the animation.
 				if(2)
 					sleep(animation_teleport_magic_out(A))
 				if(3)
-					sleep(animation_teleport_spooky_out(A))
+					sleep(animation_teleport_spooky_out(A))*/
 
 			if(A && A.loc)
 				A.x = teleport_x
 				A.y = teleport_y
 				A.z = teleport_z
-
+				/*
 				switch(teleportation_type)
 					if(1)
 						animation_teleport_quick_in(A)
 					if(2)
 						animation_teleport_magic_in(A)
 					if(3)
-						animation_teleport_spooky_in(A)
+						animation_teleport_spooky_in(A)*/
 
 /* Predator Ship Teleporter - set in each individual gamemode */
 
@@ -154,8 +154,8 @@
 	Trigger(var/atom/movable/A)
 		if(istype(A, /obj)) //mobs and objects only.
 			if(istype(A, /obj/effect)) return
-			cdel(A)
+			qdel(A)
 		else if(isliving(A)) //Hacked it up so it just deletes it
 			A << "<span class='danger'>You get lost into the depths of space, never to be seen again.</span>"
-			cdel(A)
+			qdel(A)
 

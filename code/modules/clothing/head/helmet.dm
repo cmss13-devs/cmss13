@@ -167,6 +167,9 @@
 	icon_state = "helmet"
 	armor = list(melee = 65, bullet = 35, laser = 30, energy = 20, bomb = 10, bio = 0, rad = 0)
 	health = 5
+	force = 15
+	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
+	attack_verb = list("whacked", "hit", "smacked", "beaten", "battered")
 	var/obj/machinery/camera/camera
 	var/helmet_overlays[]
 	flags_inventory = BLOCKSHARPOBJ
@@ -239,24 +242,24 @@
 /obj/item/clothing/head/helmet/marine/update_icon()
 	if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		if(!helmet_overlays["band"])
-			var/image/reusable/I = rnew(/image/reusable, list('icons/obj/clothing/cm_hats.dmi', src, "helmet_band"))
+			var/image/I = image('icons/obj/clothing/cm_hats.dmi', src, "helmet_band")
 			helmet_overlays["band"] = I
 
 		if(!helmet_overlays["item"])
 			var/obj/O = pockets.contents[1]
 			if(O.type in allowed_helmet_items)
-				var/image/reusable/I = rnew(/image/reusable, list('icons/obj/clothing/cm_hats.dmi', src, "[allowed_helmet_items[O.type]][O.type == /obj/item/tool/lighter/random ? O:clr : ""]"))
+				var/image/I = image('icons/obj/clothing/cm_hats.dmi', src, "[allowed_helmet_items[O.type]][O.type == /obj/item/tool/lighter/random ? O:clr : ""]")
 				helmet_overlays["item"] = I
 
 	else
 		if(helmet_overlays["item"])
-			var/image/reusable/RI = helmet_overlays["item"]
+			var/image/RI = helmet_overlays["item"]
 			helmet_overlays["item"] = null
-			cdel(RI)
+			qdel(RI)
 		if(helmet_overlays["band"])
-			var/image/reusable/J = helmet_overlays["band"]
+			var/image/J = helmet_overlays["band"]
 			helmet_overlays["band"] = null
-			cdel(J)
+			qdel(J)
 
 	if(ismob(loc))
 		var/mob/M = loc
@@ -296,6 +299,14 @@
 	armor = list(melee = 75, bullet = 45, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10)
 	specialty = "M11 pattern leader"
 
+/obj/item/clothing/head/helmet/marine/intel
+	name = "\improper XM12 pattern intelligence helmet"
+	desc = "An experimental brain-bucket that works better as a brain-plate. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	icon_state = "io"
+	item_state = "io"
+	armor = list(melee = 80, bullet = 50, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10) //Just a touch beefier than an SL helmet, gotta keep our IO's alive.
+	specialty = "XM12 pattern intel"
+
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
@@ -304,6 +315,7 @@
 	armor = list(melee = 95, bullet = 105, laser = 75, energy = 65, bomb = 40, bio = 15, rad = 15)
 	unacidable = 1
 	anti_hug = 6
+	force = 20
 	specialty = "B18"
 
 /obj/item/clothing/head/helmet/marine/grenadier

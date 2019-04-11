@@ -21,7 +21,7 @@
 			var/mob/living/carbon/C = affected_mob
 			C.med_hud_set_status()
 	else
-		cdel(src)
+		qdel(src)
 
 /obj/item/alien_embryo/Dispose()
 	if(affected_mob)
@@ -36,7 +36,7 @@
 /obj/item/alien_embryo/process()
 	if(!affected_mob) //The mob we were gestating in is straight up gone, we shouldn't be here
 		processing_objects.Remove(src)
-		cdel(src)
+		qdel(src)
 		r_FAL
 
 	if(loc != affected_mob) //Our location is not the host
@@ -55,7 +55,7 @@
 				var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
 				if(L)
 					L.chest_burst(affected_mob)
-				processing_objects.Remove(src)
+				Dispose()
 				r_FAL
 		else
 			var/mob/living/carbon/Xenomorph/Larva/L = locate() in affected_mob
@@ -139,15 +139,18 @@
 
 	var/client/picked
 
-	// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
-	if (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))
-		picked = affected_mob.client
-	else
-		// Get a candidate from observers
-		var/list/candidates = get_alien_candidates()
+	if(!affected_mob.first_xeno)
+		// If the bursted person themselves has Xeno enabled, they get the honor of first dibs on the new larva
+		if (affected_mob.client && affected_mob.client.prefs && (affected_mob.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) && !jobban_isbanned(affected_mob, "Alien"))
+			picked = affected_mob.client
+		else
+			// Get a candidate from observers
+			var/list/candidates = get_alien_candidates()
 
-		if (candidates && candidates.len)
-			picked = pick(candidates)
+			if (candidates && candidates.len)
+				picked = pick(candidates)
+	else
+		picked = affected_mob.client
 
 	// Spawn the larva
 	var/mob/living/carbon/Xenomorph/Larva/new_xeno
@@ -168,6 +171,8 @@
 			new_xeno.client.change_view(world.view)
 
 		new_xeno << "<span class='xenoannounce'>You are a xenomorph larva inside a host! Move to burst out of it!</span>"
+		new_xeno << "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>"
+		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ':aMy life for the queen!')"
 		new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 	stage = 6
@@ -215,13 +220,14 @@
 			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
 			hive.stored_larva++	
-			cdel(L)
+			qdel(L)
 
-		L << "<span class='xenohighdanger'>The Queen's will overwhelms your instincts..."
-		L << "<span class='xenohighdanger'>\""+hive.hive_orders+"\"</span>"
-		
+		if(!victim.first_xeno)
+			L << "<span class='xenohighdanger'>The Queen's will overwhelms your instincts..."
+			L << "<span class='xenohighdanger'>\""+hive.hive_orders+"\"</span>"
+
 	for(var/obj/item/alien_embryo/AE in victim)
-		cdel(AE)
+		qdel(AE)
 
 	if(burstcount >= 4)
 		victim.gib()

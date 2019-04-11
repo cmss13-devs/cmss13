@@ -662,7 +662,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/list/ertmemberlist = list()
 	var/list/sortmob = sortAtom(mob_list)
 	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !M.mind.special_role || M.mind.faction == "Survivor" || M.mind.special_role == "Xenomorph" || M.mind.assigned_role == "Corporate Liaison" || M.species.name == "Yautja")
+		if(!M.client || !M.mind.special_role || isSynth(M) || M.mind.faction == "Survivor" || M.mind.special_role == "Xenomorph" || M.mind.assigned_role == "Corporate Liaison" || M.species.name == "Yautja")
 			continue
 		ertmemberlist.Add(M)
 	return ertmemberlist
@@ -877,7 +877,7 @@ proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as te
 		animation.master = target
 		flick(flick_anim, animation)
 	sleep(max(sleeptime, 15))
-	cdel(animation)
+	qdel(animation)
 
 //Will return the contents of an atom recursivly to a depth of 'searchDepth'
 /atom/proc/GetAllContents(searchDepth = 5)
@@ -1221,7 +1221,7 @@ var/global/image/busy_indicator_hostile
 							X.icon = 'icons/turf/shuttle.dmi'
 							X.icon_state = oldreplacetext(O.icon_state, "_f", "_s") // revert the turf to the old icon_state
 							X.name = "wall"
-							cdel(O) // prevents multiple shuttle corners from stacking
+							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
 						if(!istype(O,/obj)) continue
 						O.loc = X
@@ -1816,3 +1816,18 @@ var/list/WALLITEMS = list(
 
 	y -= obfs_y
 	return y
+
+//Increases delay as the server gets more overloaded,
+//as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
+#define DELTA_CALC max(((max(world.tick_usage, world.cpu) / 100) * max(Master.sleep_delta,1)), 1)
+
+/proc/stoplag()
+	. = 0
+	var/i = 1
+	do
+		. += round(i*DELTA_CALC)
+		sleep(i*world.tick_lag*DELTA_CALC)
+		i *= 2
+	while (world.tick_usage > min(TICK_LIMIT_TO_RUN, CURRENT_TICKLIMIT))
+
+#undef DELTA_CALC

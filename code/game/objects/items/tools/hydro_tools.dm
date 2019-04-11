@@ -143,5 +143,5 @@
 	if(istype(A, /obj/effect/plantsegment))
 		for(var/obj/effect/plantsegment/B in orange(A,1))
 			if(prob(80))
-				cdel(B)
-		cdel(A)
+				qdel(B)
+		qdel(A)

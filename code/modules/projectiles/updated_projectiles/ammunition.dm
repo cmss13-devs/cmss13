@@ -89,7 +89,7 @@ They're all essentially identical when it comes to getting the job done.
 	if(source.current_rounds <= 0 && istype(source, /obj/item/ammo_magazine/handful)) //We want to delete it if it's a handful.
 		if(user)
 			user.temp_drop_inv_item(source)
-		cdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
+		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
 	else source.update_icon()
 	update_icon(S)
 	return S // We return the number transferred if it was successful.
@@ -98,7 +98,7 @@ They're all essentially identical when it comes to getting the job done.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
 	var/R
 	if (current_rounds > 0)
-		var/obj/item/ammo_magazine/handful/new_handful = rnew(/obj/item/ammo_magazine/handful)
+		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 		var/MR = caliber == "12g" ? 5 : 8
 		R = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, MR)
 		new_handful.generate_handful(default_ammo, caliber, MR, R, gun_type)
@@ -124,7 +124,7 @@ They're all essentially identical when it comes to getting the job done.
 		if(0) return
 		if(1 to 100) explosion(loc,  -1, -1, 0, 2) //blow it up.
 		else explosion(loc,  -1, -1, 1, 2) //blow it up HARDER
-	cdel(src)
+	qdel(src)
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
 /obj/item/ammo_magazine/internal
@@ -166,10 +166,6 @@ bullets/shells. ~N
 /obj/item/ammo_magazine/handful/Dispose()
 	..()
 	return TA_REVIVE_ME
-
-/obj/item/ammo_magazine/handful/Recycle()
-	var/blacklist[] = list("name","desc","icon_state","caliber","max_rounds","current_rounds","default_ammo","icon_type","gun_type")
-	. = ..() + blacklist
 
 /obj/item/ammo_magazine/handful/update_icon() //Handles the icon itself as well as some bonus things.
 	if(max_rounds >= current_rounds)
@@ -344,7 +340,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		contents -= AM
 	M.update_icon()
 	user.drop_inv_item_on_ground(src)
-	cdel(src)
+	qdel(src)
 
 /obj/item/magazine_box/afterattack(atom/target, mob/living/user, proximity)
 	if(!proximity)
@@ -468,7 +464,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			MB.contents += AM
 			contents -= AM
 		usr.put_in_hands(MB)
-		cdel(src)
+		qdel(src)
 
 /obj/structure/magazine_box/examine(mob/user)
 	..()
@@ -593,7 +589,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			user << "<span class='notice'>You put [S] rounds in [src].</span>"
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
-				cdel(AM)
+				qdel(AM)
 
 //explosion when using flamer procs.
 /obj/item/big_ammo_box/flamer_fire_act()
@@ -601,7 +597,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		if(0) return
 		if(1 to 100) explosion(loc,  0, 0, 1, 2) //blow it up.
 		else explosion(loc,  0, 0, 2, 3) //blow it up HARDER
-	cdel(src)
+	qdel(src)
 
 
 

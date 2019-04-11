@@ -28,6 +28,23 @@
 	if(NO_BLOOD in species.flags)
 		return
 
+	//Bleeding out
+	var/blood_max = 0
+	if(stat != DEAD)
+		for(var/datum/limb/temp in limbs)
+			if(!(temp.status & LIMB_BLEEDING) || temp.status & LIMB_ROBOT)
+				continue
+			for(var/datum/wound/W in temp.wounds)
+				if(W.bleeding())
+					blood_max += (W.damage / 40)
+			if(temp.status & LIMB_DESTROYED && !(temp.status & LIMB_AMPUTATED))
+				blood_max += 5 //Yer missing a fucking limb.
+			if (temp.surgery_open_stage)
+				blood_max += 0.6  //Yer stomach is cut open
+	
+	if(blood_max == 0 && blood_volume == BLOOD_VOLUME_NORMAL)
+		return
+
 	if(stat != DEAD && bodytemperature >= 170)	//Dead or cryosleep people do not pump the blood.
 
 
@@ -93,19 +110,6 @@
 				nutrition -= 10
 			else if(nutrition >= 200)
 				nutrition -= 3
-
-		//Bleeding out
-		var/blood_max = 0
-		for(var/datum/limb/temp in limbs)
-			if(!(temp.status & LIMB_BLEEDING) || temp.status & LIMB_ROBOT)
-				continue
-			for(var/datum/wound/W in temp.wounds)
-				if(W.bleeding())
-					blood_max += (W.damage / 40)
-			if(temp.status & LIMB_DESTROYED && !(temp.status & LIMB_AMPUTATED))
-				blood_max += 5 //Yer missing a fucking limb.
-			if (temp.surgery_open_stage)
-				blood_max += 0.6  //Yer stomach is cut open
 
 		if(blood_max)
 			drip(blood_max)
@@ -425,7 +429,7 @@
 			else
 				temp_blood_DNA = list()
 				temp_blood_DNA |= drop.blood_DNA.Copy() //we transfer the dna from the drip to the splatter
-				cdel(drop)//the drip is replaced by a bigger splatter
+				qdel(drop)//the drip is replaced by a bigger splatter
 		else
 			drop = new(T)
 			drop.transfer_mob_blood_dna(src)

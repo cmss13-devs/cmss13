@@ -88,7 +88,7 @@
 	var/mob/M
 	for(var/obj/effect/landmark/start/S in world)
 		if(!istype(S, /obj/effect/landmark/start/whiskey))
-			cdel(S)
+			qdel(S)
 
 	if(config) config.remove_gun_restrictions = 1
 
@@ -839,7 +839,7 @@ var/global/spawn_next_wo_wave = 0
 	var/turf/T = get_turf(src) //Make sure we get the turf we're tossing this on.
 	drop_supplies(T, supply_drop)
 	playsound(src,'sound/effects/bamf.ogg', 50, 1)
-	cdel(src)
+	qdel(src)
 	return
 
 /obj/item/device/whiskey_supply_beacon/verb/switch_supplies()
@@ -976,5 +976,5 @@ var/global/spawn_next_wo_wave = 0
 		var/turf/T = get_turf(src)
 		if(T)
 			new /obj/item/paper/crumpled(T)
-		cdel(src)
+		qdel(src)
 

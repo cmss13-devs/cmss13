@@ -24,7 +24,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 
 
 /datum/authority/branch/role
-	name = "Role Authority"
+	var/name = "Role Authority"
 
 	var/roles_by_path[] //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
 	var/roles_by_name[] //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.

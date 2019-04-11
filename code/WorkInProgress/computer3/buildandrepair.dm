@@ -95,7 +95,7 @@
 					if(!src || !WT.isOn()) return
 					user << "\blue You deconstruct the frame."
 					new /obj/item/stack/sheet/metal( src.loc, 5 )
-					cdel(src)
+					qdel(src)
 		if(1)
 			if(istype(P, /obj/item/tool/wrench))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -156,7 +156,7 @@
 					if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
 						if(P)
 							P:amount -= 5
-							if(!P:amount) cdel(P)
+							if(!P:amount) qdel(P)
 							user << "\blue You add cables to the frame."
 							src.state = 3
 							src.icon_state = "3"
@@ -208,7 +208,7 @@
 				if(circuit.OS)
 					circuit.OS.computer = B
 				B.RefreshParts()		// todo
-				cdel(src)
+				qdel(src)
 
 /*
 	This will remove peripherals if you specify one, but the main function is to

@@ -51,3 +51,9 @@
 /obj/structure/shuttle/engine/router
 	name = "router"
 	icon_state = "router"
+
+/obj/structure/shuttle/diagonal
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "diagonalWall"
+	name = "wall"
+	layer = ABOVE_TURF_LAYER

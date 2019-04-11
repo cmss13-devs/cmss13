@@ -390,6 +390,8 @@
 	MS.speed_multiplier *= 0.8
 	MS.damage_multiplier *= 0.8
 	D.spiked = TRUE
+	if(D.fortify)
+		D.ability_speed_modifier += 2.5
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/egg_sacs 

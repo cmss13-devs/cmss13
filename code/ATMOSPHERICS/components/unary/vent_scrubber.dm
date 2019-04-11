@@ -43,7 +43,7 @@
 	if (!id_tag)
 		assign_uid()
 		id_tag = num2text(uid)
-	if(ticker && ticker.current_state == 3)//if the game is running
+	if(ticker && ticker.current_state == GAME_STATE_PLAYING)//if the game is running
 		src.initialize()
 		src.broadcast_status()
 
@@ -265,7 +265,7 @@
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
 		new /obj/item/pipe(loc, make_from = src)
-		cdel(src)
+		qdel(src)
 
 /obj/machinery/atmospherics/unary/vent_scrubber/examine(mob/user)
 	..()

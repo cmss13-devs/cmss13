@@ -57,7 +57,7 @@
 	if(stat == DEAD) return
 	living_human_list -= src
 	if(!gibbed) disable_lights()
-	if(pulledby)
+	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.
 	if(species) species.handle_death(src, gibbed)
@@ -67,7 +67,7 @@
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 
-	if(ticker && ticker.current_state == 3) //game has started, to ignore the map placed corpses.
+	if(ticker && ticker.current_state == GAME_STATE_PLAYING) //game has started, to ignore the map placed corpses.
 		round_statistics.total_human_deaths++
 
 	return ..(gibbed,species.death_message)

@@ -372,40 +372,9 @@
 		ticker.mode.traitors += src
 		special_role = "traitor"
 
-// check whether this mind's mob has been brigged for the given duration
-// have to call this periodically for the duration to work properly
-/datum/mind/proc/is_brigged(duration)
-	var/turf/T = current.loc
-	if(!istype(T))
-		brigged_since = -1
-		return 0
-
-	var/is_currently_brigged = 0
-
-	if(istype(T.loc,/area/sulaco/brig))
-		is_currently_brigged = 1
-		for(var/obj/item/card/id/card in current)
-			is_currently_brigged = 0
-			break // if they still have ID they're not brigged
-		for(var/obj/item/device/pda/P in current)
-			if(P.id)
-				is_currently_brigged = 0
-				break // if they still have ID they're not brigged
-
-	if(!is_currently_brigged)
-		brigged_since = -1
-		return 0
-
-	if(brigged_since == -1)
-		brigged_since = world.time
-
-	return (duration <= world.time - brigged_since)
-
-
-
 /datum/mind/proc/set_cm_skills(skills_path)
 	if(cm_skills)
-		cdel(cm_skills)
+		qdel(cm_skills)
 	if(!skills_path)
 		cm_skills = null
 	else
@@ -442,7 +411,7 @@
 	if(!mind.assigned_role)
 		mind.assigned_role = "Squad Marine"	//default
 		if(mind.cm_skills)
-			cdel(mind.cm_skills)
+			qdel(mind.cm_skills)
 		mind.cm_skills = null //no restriction on what we can do.
 
 //MONKEY

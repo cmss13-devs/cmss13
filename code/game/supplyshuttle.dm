@@ -69,12 +69,12 @@ var/list/mechtoys = list(
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(5))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
-				cdel(src)
+				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"
@@ -473,7 +473,7 @@ var/list/mechtoys = list(
 					var/obj/item/stack/sheet/mineral/platinum/P = A
 					plat_count += P.get_amount()
 
-		cdel(MA)
+		qdel(MA)
 
 	if(phoron_count)
 		points += phoron_count * points_per_phoron

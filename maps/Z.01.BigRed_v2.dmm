@@ -13428,12 +13428,7 @@
 	},
 /area/bigredv2/caves/lambda/research)
 "aCz" = (
-/obj/machinery/power/solar{
-	anchored = 1;
-	dir = 1;
-	icon_state = "emitter";
-	tag = "icon-emitter (NORTH)"
-	},
+/obj/machinery/power/port_gen/pacman,
 /obj/effect/decal/warning_stripes{
 	tag = "icon-U-N";
 	icon_state = "U-N"
@@ -25507,20 +25502,6 @@
 	dir = 2
 	},
 /area/bigredv2/outside/chapel)
-"bav" = (
-/turf/open/floor/plating{
-	tag = "icon-warnplate (WEST)";
-	icon_state = "warnplate";
-	dir = 8
-	},
-/area/bigredv2/outside/virology)
-"baw" = (
-/turf/open/floor/plating{
-	tag = "icon-warnplate (EAST)";
-	icon_state = "warnplate";
-	dir = 4
-	},
-/area/bigredv2/outside/virology)
 "bax" = (
 /turf/open/mars{
 	tag = "icon-mars_dirt_11";
@@ -25721,26 +25702,6 @@
 	icon_state = "chapel"
 	},
 /area/bigredv2/outside/chapel)
-"baX" = (
-/turf/open/floor/plating{
-	tag = "icon-warnplate (SOUTHWEST)";
-	icon_state = "warnplate";
-	dir = 10
-	},
-/area/bigredv2/outside/virology)
-"baY" = (
-/turf/open/floor/plating{
-	tag = "icon-warnplate";
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/virology)
-"baZ" = (
-/turf/open/floor/plating{
-	tag = "icon-warnplate (SOUTHEAST)";
-	icon_state = "warnplate";
-	dir = 6
-	},
-/area/bigredv2/outside/virology)
 "bba" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
@@ -34478,7 +34439,7 @@
 	},
 /area/bigredv2/outside/sw)
 "buD" = (
-/obj/machinery/power/solar,
+/obj/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "buE" = (
@@ -34903,7 +34864,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bvG" = (
-/obj/machinery/power/solar,
+/obj/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
@@ -40350,6 +40311,9 @@
 	dir = 2
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"lAy" = (
+/turf/closed/wall/rock/red,
+/area/bigredv2/outside/w)
 "lBP" = (
 /turf/closed/wall,
 /area/bigredv2/caves/eta/xenobiology)
@@ -44711,9 +44675,9 @@ aYD
 aYD
 aYD
 aDv
-aYF
-aYF
-aYF
+lAy
+lAy
+lAy
 aac
 aac
 aac
@@ -44929,9 +44893,9 @@ aYD
 aYD
 aDv
 aDv
-aYF
-aYF
-aYF
+lAy
+lAy
+lAy
 aac
 aac
 aac
@@ -45136,19 +45100,19 @@ aMz
 aRD
 aRD
 aMz
-aFv
-aFv
-aFv
 aYD
 aYD
 aYD
 aYD
-aFv
+aYD
+aYD
+aYD
+aYD
 aDv
-aYF
-aYF
-aYF
-aYF
+lAy
+lAy
+lAy
+lAy
 aac
 aac
 aac
@@ -45353,19 +45317,19 @@ aMz
 bws
 aRE
 aMz
-bav
-baX
-aFv
-aFv
 aYD
 aYD
 aYD
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
-aYF
-aYF
-aYF
-aYF
+lAy
+lAy
+lAy
+lAy
 aac
 aac
 aac
@@ -45570,14 +45534,14 @@ aMz
 aYA
 aWe
 aMz
-aRE
-baY
-aFv
-aFv
 aYD
 aYD
 aYD
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
 aDv
 bfS
@@ -45787,14 +45751,14 @@ aMz
 aYB
 aZj
 aMz
-baw
-baZ
-aFv
-aFv
-aFv
 aYD
 aYD
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -46004,14 +45968,14 @@ aMz
 aYA
 aRH
 aMz
-aFv
-aFv
-aFv
-aFv
 aYD
 aYD
-aFv
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -46221,14 +46185,14 @@ aMz
 aMz
 aZk
 aMz
-aFv
-aFv
-aFv
-aFv
-aFv
 aYD
-aFv
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
 aDv
 aYF
@@ -46438,14 +46402,14 @@ aWd
 aNc
 aRH
 aMz
-aFv
-aFv
-aFv
-aFv
-aFv
-aFv
-aFv
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -46462,7 +46426,7 @@ aYF
 aYF
 biG
 aEu
-aac
+aEu
 aEu
 aEu
 aEu
@@ -46655,14 +46619,14 @@ aRF
 aNc
 aRH
 aMz
-aFv
-aFv
-aFv
-aFv
-aFv
-aFv
-aFv
-aFv
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -46678,9 +46642,9 @@ bax
 bax
 bax
 aSB
-aEu
-aEu
-biG
+aSB
+aSB
+bht
 aSB
 aSB
 aSB
@@ -46878,8 +46842,8 @@ aMz
 aMz
 aMz
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aDv
 aYF
@@ -46896,7 +46860,7 @@ aWk
 aWk
 aWk
 aWk
-bht
+aWk
 aWk
 aWk
 aWk
@@ -46912,7 +46876,7 @@ aWk
 biG
 aEu
 aEu
-aac
+aEu
 aac
 aac
 aac
@@ -47095,8 +47059,8 @@ aNc
 bco
 aNc
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -47312,8 +47276,8 @@ aNc
 aNc
 aNc
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -47529,8 +47493,8 @@ aNc
 aNc
 aNc
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aDv
 aYF
@@ -47746,8 +47710,8 @@ aMz
 aWj
 aXx
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -47963,8 +47927,8 @@ aWj
 aYC
 aNi
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -48180,8 +48144,8 @@ aWj
 aWT
 aXy
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aDv
 aYF
@@ -48397,8 +48361,8 @@ aWj
 aWU
 aXz
 aMz
-aFv
-aFv
+aYD
+aYD
 aDv
 aYF
 aYF
@@ -50368,7 +50332,7 @@ bdf
 bdf
 bdf
 bdf
-bhB
+bmN
 bmN
 bmN
 bmN
@@ -50586,7 +50550,7 @@ aZy
 aZy
 aXK
 bmc
-bmc
+bhB
 bmc
 blJ
 bmi
@@ -50802,9 +50766,9 @@ tgk
 bkj
 bkZ
 aXK
-bmd
-bmd
-bmd
+bmc
+bmc
+bmc
 bnP
 bmi
 boE
@@ -58355,7 +58319,7 @@ aIj
 apC
 aKn
 aLe
-aMe
+aKn
 aMe
 aNy
 aOG
@@ -59006,7 +58970,7 @@ aqz
 apC
 aKn
 aLh
-aMe
+aKn
 aMe
 aNB
 aOG

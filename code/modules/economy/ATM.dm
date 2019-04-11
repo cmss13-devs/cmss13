@@ -110,7 +110,7 @@ log transactions
 
 			user << "<span class='info'>You insert [I] into [src].</span>"
 			src.attack_hand(user)
-			cdel(I)
+			qdel(I)
 	else
 		..()
 

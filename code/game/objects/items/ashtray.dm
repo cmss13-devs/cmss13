@@ -17,7 +17,7 @@
 /obj/item/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health < 1)
 		return
-	if (istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/clothing/mask/cigarette) || istype(W, /obj/item/tool/match))
+	if (istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/trash/ucigbutt) || istype(W,/obj/item/clothing/mask/cigarette) || istype(W, /obj/item/tool/match))
 		if (contents.len >= max_butts)
 			user << "This ashtray is full."
 			return
@@ -30,7 +30,7 @@
 				processing_objects.Remove(cig)
 				var/obj/item/butt = new cig.type_butt(src)
 				cig.transfer_fingerprints_to(butt)
-				cdel(cig)
+				qdel(cig)
 				W = butt
 			else if (cig.heat_source == 0)
 				user << "You place [cig] in [src] without even smoking it. Why would you do that?"

@@ -208,11 +208,6 @@
 		else
 			clear_fullscreen("blind")
 
-			if (disabilities & NEARSIGHTED)
-				overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
-			else
-				clear_fullscreen("nearsighted")
-
 			if(eye_blurry)
 				overlay_fullscreen("blurry", /obj/screen/fullscreen/blurry)
 			else

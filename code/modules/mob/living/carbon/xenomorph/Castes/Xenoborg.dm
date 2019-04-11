@@ -115,7 +115,7 @@
 			if(plasma_stored > plasma_max)
 				plasma_stored = plasma_max
 			src << "<span class='notice'>Your power supply suddenly updates. New charge: [plasma_stored]/[plasma_max]"
-			cdel(O)
+			qdel(O)
 			user.update_inv_l_hand(0) //Update the user sprites after the del, just to be safe.
 			user.update_inv_r_hand()
 	return ..() //Just do normal stuff then.

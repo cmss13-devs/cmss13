@@ -107,7 +107,7 @@
 	flags_item &= ~NODROP //so the item is properly unequipped if on a mob.
 	for(var/X in actions)
 		actions -= X
-		cdel(X)
+		qdel(X)
 	master = null
 	item_list -= src
 	. = ..()
@@ -116,16 +116,16 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
-				cdel(src)
+				qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
-				cdel(src)
+				qdel(src)
 			else
 				explosion_throw(severity, explosion_direction)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			cdel(src)
+			qdel(src)
 
 
 
@@ -168,6 +168,9 @@ cases. Override_icon_state should be a list.*/
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				if(new_protection) min_cold_protection_temperature = new_protection
 			if(MAP_WHISKEY_OUTPOST) //Can easily add other states if needed.
+				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+				if(new_protection) min_cold_protection_temperature = new_protection
+			if(MAP_DESERT_DAM)
 				icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
 				if(new_protection) min_cold_protection_temperature = new_protection
 		item_state = icon_state
@@ -217,7 +220,7 @@ cases. Override_icon_state should be a list.*/
 			return
 	else
 		user.next_move = max(user.next_move+2,world.time + 2)
-	if(!disposed) //item may have been cdel'd by the drop above.
+	if(!disposed) //item may have been qdel'd by the drop above.
 		pickup(user)
 		add_fingerprint(user)
 		if(!user.put_in_active_hand(src))
@@ -240,7 +243,7 @@ cases. Override_icon_state should be a list.*/
 			return
 	else
 		user.next_move = max(user.next_move+2,world.time + 2)
-	if(!disposed) //item may have been cdel'd by the drop above.
+	if(!disposed) //item may have been qdel'd by the drop above.
 		pickup(user)
 		if(!user.put_in_active_hand(src))
 			dropped(user)
@@ -293,7 +296,7 @@ cases. Override_icon_state should be a list.*/
 		A.remove_action(user)
 
 	if(flags_item & DELONDROP)
-		cdel(src)
+		qdel(src)
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
@@ -684,7 +687,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 			user.remove_movement_handler(zoom_event_handler)
 			remove_dropped_handler(zoom_event_handler)
 			remove_unwield_handler(zoom_event_handler)
-			cdel(zoom_event_handler)
+			qdel(zoom_event_handler)
 	else //Otherwise we want to zoom in.
 		if(world.time <= user.zoom_cooldown) //If we are spamming the zoom, cut it out
 			return
@@ -710,7 +713,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 					user.client.pixel_x = -viewoffset
 					user.client.pixel_y = 0
 			if(zoom_event_handler)
-				cdel(zoom_event_handler)
+				qdel(zoom_event_handler)
 			zoom_event_handler = new /datum/event_handler/event_gun_zoom(src, user)
 			if(!keep_zoom)
 				user.add_movement_handler(zoom_event_handler)

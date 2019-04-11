@@ -57,7 +57,7 @@
 			CA.take_damage_type(5, "blunt", O)
 			visible_message("<span class='danger'>[src] crushes [O]!</span>",
 			"<span class='danger'>You crush [O]!</span>")
-			cdel(M)
+			qdel(M)
 			return
 
 		if(O.unacidable)
@@ -66,7 +66,7 @@
 		visible_message("<span class='danger'>[src] crushes [O]!</span>",
 		"<span class='danger'>You crush [O]!</span>")
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
-		cdel(O)
+		qdel(O)
 		return
 	else if(istype(A, /turf/closed/wall))
 		var/turf/closed/wall/W = A

@@ -86,7 +86,6 @@
 		/obj/structure/closet/secure_closet,
 		/obj/machinery/computer,
 		/obj/machinery/power,
-		/obj/machinery/zero_point_emitter,
 		/obj/machinery/deployable,
 		/obj/machinery/door_control,
 		/obj/machinery/turretid,
@@ -111,7 +110,7 @@
 		user.drop_held_item()
 		var/obj/item/card/emag_broken/junk = new(user.loc)
 		junk.add_fingerprint(user)
-		cdel(src)
+		qdel(src)
 		return
 
 	..()
@@ -381,7 +380,7 @@
 			if(!fallen_names)
 				fallen_names = list()
 			fallen_names += D.fallen_names
-		cdel(D)
+		qdel(D)
 		return TRUE
 	else
 		. = ..()

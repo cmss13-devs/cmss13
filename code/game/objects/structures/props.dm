@@ -160,7 +160,8 @@
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/flora/dam.dmi'
-	density = 1
+	density = 0
+	unacidable = 1
 /obj/structure/prop/dam/boulder/boulder1
 	icon_state = "boulder1"
 /obj/structure/prop/dam/boulder/boulder2
@@ -175,6 +176,7 @@
 	icon = 'icons/obj/structures/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
+	unacidable = 1
 /obj/structure/prop/dam/large_boulder/boulder1
 	icon_state = "boulder_large1"
 /obj/structure/prop/dam/large_boulder/boulder2

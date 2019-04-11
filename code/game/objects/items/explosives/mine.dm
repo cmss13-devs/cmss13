@@ -32,7 +32,7 @@
 
 /obj/item/explosive/mine/Dispose()
 	if(tripwire)
-		cdel(tripwire)
+		qdel(tripwire)
 		tripwire = null
 	. = ..()
 
@@ -94,7 +94,7 @@
 			disarming = 0
 			icon_state = copytext(icon_state,1,-6)
 			if(tripwire)
-				cdel(tripwire)
+				qdel(tripwire)
 				tripwire = null
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
@@ -126,7 +126,7 @@
 			create_shrapnel(loc, 12, dir, 60)
 			sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
 			explosion_rec(src.loc, 60, 20)
-			cdel(src)
+			qdel(src)
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(triggered) //Mine is already set to go off
@@ -164,7 +164,7 @@
 
 /obj/effect/mine_tripwire/Crossed(atom/A)
 	if(!linked_claymore)
-		cdel(src)
+		qdel(src)
 		return
 
 	if(linked_claymore.triggered) //Mine is already set to go off

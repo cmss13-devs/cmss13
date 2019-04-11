@@ -66665,7 +66665,6 @@
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
 "ddd" = (
-/obj/structure/window/framed/colony/reinforced,
 /turf/open/floor{
 	tag = "icon-dark2";
 	icon_state = "dark2"

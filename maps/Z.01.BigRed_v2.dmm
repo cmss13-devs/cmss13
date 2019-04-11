@@ -25618,14 +25618,14 @@
 	},
 /area/bigredv2/outside/office_complex)
 "baN" = (
-/turf/open/gm/river,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/turf/open/floor/plating/catwalk,
+/obj/structure/catwalk/bigred,
+/turf/open/gm/river/desert/shallow/covered,
 /area/bigredv2/outside/engineering)
 "baO" = (
 /obj/machinery/light{
@@ -34791,8 +34791,8 @@
 	},
 /area/bigredv2/outside/sw)
 "bvx" = (
-/turf/open/gm/river,
-/turf/open/floor/plating/catwalk,
+/obj/structure/catwalk/bigred,
+/turf/open/gm/river/desert/shallow/covered,
 /area/bigredv2/outside/engineering)
 "bvy" = (
 /obj/item/device/multitool,

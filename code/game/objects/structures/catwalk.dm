@@ -36,3 +36,8 @@
 /obj/structure/catwalk/prison
 	icon = 'icons/turf/prison.dmi'
 	icon_state = "catwalk"
+
+/obj/structure/catwalk/bigred
+	icon = 'icons/turf/catwalks.dmi'
+	icon_state = "catwalk0"
+	base_state = "catwalk0"

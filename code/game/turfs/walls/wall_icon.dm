@@ -7,15 +7,13 @@
 	if(disposed)
 		return
 	
-	//smooth wall stuff
-	if(!special_icon)
-		icon_state = "blank"
-	
 	if(!damage_overlays[1]) //list hasn't been populated
 		generate_damage_overlays()
 
 	overlays.Cut()
+	//smooth wall stuff
 	if(!special_icon)
+	    icon_state = "blank"
 		var/image/I
 
 		if(!density)
@@ -32,22 +30,17 @@
 		current_bulletholes = initial(current_bulletholes)
 		bullethole_increment = initial(current_bulletholes)
 		bullethole_state = initial(current_bulletholes)
-		qdel(bullethole_overlay)
-		bullethole_overlay = null
 	else
 		var/dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
 		if(dmg_overlay > damage_overlays.len) dmg_overlay = damage_overlays.len
 
-		overlays -= damage_overlays[damage_overlay]
 		damage_overlay = dmg_overlay
 		overlays += damage_overlays[damage_overlay]
 
 		if(current_bulletholes > BULLETHOLE_MAX) //Could probably get away with a unique layer, but let's keep it standardized.
-			overlays -= bullethole_overlay //We need this to be the top layer, no matter what, but only if the layer is at max bulletholes.
 			overlays += bullethole_overlay
 
-		if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
-			overlays -= bullethole_overlay
+		else if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
 			if(!bullethole_overlay)
 				bullethole_state = rand(1, BULLETHOLE_STATES)
 				bullethole_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]")

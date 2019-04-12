@@ -186,6 +186,9 @@
 			break
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
+		var/obj/flamer_fire/foundflame = locate() in T
+		if(foundflame)
+			qdel(foundflame) //No stacking
 		current_mag.current_rounds--
 		flame_turf(T,user, burntime, burnlevel, fire_color)
 		distance++
@@ -194,10 +197,6 @@
 
 /obj/item/weapon/gun/flamer/proc/flame_turf(turf/T, mob/living/user, heat, burn, f_color = "red")
 	if(!istype(T))
-		return
-
-	// No stacking flames
-	if (locate(/obj/flamer_fire) in T)
 		return
 
 	new /obj/flamer_fire(T, heat, burn, f_color, 0, user)
@@ -352,7 +351,9 @@
 		for(var/dirn in cardinal)
 			T = get_step(loc, dirn)
 			if(istype(T,/turf/open/space)) continue
-			if(locate(/obj/flamer_fire) in T) continue //No stacking
+			var/obj/flamer_fire/foundflame = locate() in T
+			if(foundflame)
+				qdel(foundflame) //No stacking
 			var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
 			if(new_spread_amt)
 				for(var/obj/O in T)

@@ -14,6 +14,7 @@
 	var/amount = 2
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 4
+	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -71,9 +72,12 @@
 		var/turf/T = get_step(U, i)
 		if(check_airblock(U,T)) //smoke can't spread that way
 			continue
-		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in T //Don't spread smoke where there's already smoke!
-		if(foundsmoke)
-			continue
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in T // Check for existing smoke and act accordingly
+		if(foundsmoke) 
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+			else
+				continue
 		var/obj/effect/particle_effect/smoke/S = new type(T, amount)
 		S.dir = pick(cardinal)
 		S.time_to_live = time_to_live
@@ -103,6 +107,7 @@
 
 /obj/effect/particle_effect/smoke/bad
 	time_to_live = 5
+	smokeranking = SMOKE_RANK_LOW
 
 /obj/effect/particle_effect/smoke/bad/Move()
 	..()
@@ -129,6 +134,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/sleepy
+	smokeranking = SMOKE_RANK_MED
 
 /obj/effect/particle_effect/smoke/sleepy/Move()
 	..()
@@ -155,6 +161,7 @@
 /obj/effect/particle_effect/smoke/mustard
 	name = "mustard gas"
 	icon_state = "mustard"
+	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/mustard/Move()
 	..()
@@ -179,6 +186,7 @@
 
 /obj/effect/particle_effect/smoke/phosphorus
 	time_to_live = 5
+	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
 	..()
@@ -215,6 +223,7 @@
 	opacity = 0
 	icon_state = "sparks"
 	icon = 'icons/effects/effects.dmi'
+	smokeranking = SMOKE_RANK_MED
 
 /////////////////////////////////////////
 // BOILER SMOKES
@@ -227,6 +236,7 @@
 	anchored = 1
 	spread_speed = 7
 	amount = 1 //Amount depends on Boiler upgrade!
+	smokeranking = SMOKE_RANK_BOILER
 
 /obj/effect/particle_effect/smoke/xeno_burn/apply_smoke_effect(turf/T)
 	for(var/mob/living/L in T)
@@ -281,6 +291,7 @@
 	color = "#ffbf58" //Mustard orange?
 	spread_speed = 7
 	amount = 1 //Amount depends on Boiler upgrade!
+	smokeranking = SMOKE_RANK_BOILER
 
 //No effect when merely entering the smoke turf, for balance reasons
 /obj/effect/particle_effect/smoke/xeno_weak/Crossed(mob/living/carbon/M as mob)

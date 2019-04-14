@@ -37,6 +37,8 @@
 /turf/New()
 	..()
 	turfs += src
+	if(src.z == 1)
+		z1turfs += src
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn(0)
 			Entered(AM)

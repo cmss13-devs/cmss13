@@ -97,36 +97,36 @@
 
 	if(!damage)
 		if (acided_hole)
-			user << "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>"
+			to_chat(user, "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>")
 		else
-			user << "<span class='notice'>It looks fully intact.</span>"
+			to_chat(user, "<span class='notice'>It looks fully intact.</span>")
 	else
 		var/dam = damage / damage_cap
 		if(dam <= 0.3)
-			user << "<span class='warning'>It looks slightly damaged.</span>"
+			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
 		else if(dam <= 0.6)
-			user << "<span class='warning'>It looks moderately damaged.</span>"
+			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
 		else
-			user << "<span class='danger'>It looks heavily damaged.</span>"
+			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
 
 		if (acided_hole)
-			user << "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>"
+			to_chat(user, "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>")
 
 	switch(d_state)
 		if(1)
-			user << "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>"
+			to_chat(user, "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>")
 		if(2)
-			user << "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>"
+			to_chat(user, "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>")
 		if(3)
-			user << "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>"
+			to_chat(user, "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>")
 		if(4)
-			user << "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>"
+			to_chat(user, "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>")
 		if(5)
-			user << "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>"
+			to_chat(user, "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>")
 		if(6)
-			user << "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>"
+			to_chat(user, "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>")
 		if(7)
-			user << "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>"
+			to_chat(user, "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>")
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam)
@@ -203,7 +203,7 @@
 	O.density = 1
 	O.layer = FLY_LAYER
 
-	user << "<span class='warning'>The thermite starts melting through [src].</span>"
+	to_chat(user, "<span class='warning'>The thermite starts melting through [src].</span>")
 	spawn(50)
 		dismantle_wall()
 
@@ -233,7 +233,7 @@
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((istype(src, /turf/closed/wall/r_wall)) || hull)
-			M << "<span class='warning'>This [name] is far too strong for you to destroy.</span>"
+			to_chat(M, "<span class='warning'>This [name] is far too strong for you to destroy.</span>")
 			return
 		else
 			if((prob(40)))
@@ -268,14 +268,14 @@
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 
 	if(!ishuman(user) && !isrobot(user))
-		user << "<span class='warning'>You don't have the dexterity to do this!</span>"
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
 		if(W.heat_source >= 1000)
 			if(hull)
-				user << "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>."
+				to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
 			else
 				if(istype(W, /obj/item/tool/weldingtool))
 					var/obj/item/tool/weldingtool/WT = W
@@ -314,7 +314,7 @@
 		return
 
 	if(hull)
-		user << "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>."
+		to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
 		return
 
 	if(damage && istype(W, /obj/item/tool/weldingtool))
@@ -329,7 +329,7 @@
 				take_damage(-damage)
 			return
 		else
-			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return
 
 	//DECONSTRUCTION

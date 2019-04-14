@@ -137,7 +137,7 @@
 
 	if(src && ishuman(usr))
 		mode = !mode
-		usr << "<span class='notice'>You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"].</span>"
+		to_chat(usr, "<span class='notice'>You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"].</span>")
 
 /obj/item/storage/belt/medical/with_defib_and_analyzer
 
@@ -513,12 +513,12 @@
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
 		if(istype(W,/obj/item/weapon/gun)) //Is it a gun?
 			if(holds_guns_now == holds_guns_max) //Are we at our gun capacity?
-				if(!stop_messages) usr << "<span class='warning'>[src] already holds a gun.</span>"
+				if(!stop_messages) to_chat(usr, "<span class='warning'>[src] already holds a gun.</span>")
 				return //Nothing else to do.
 		else //Must be ammo.
 		//We have slots open for the gun, so in total we should have storage_slots - guns_max in slots, plus whatever is already in the belt.
 			if(( (storage_slots - holds_guns_max) + holds_guns_now) <= contents.len) // We're over capacity, and the space is reserved for a gun.
-				if(!stop_messages) usr << "<span class='warning'>[src] can't hold any more magazines.</span>"
+				if(!stop_messages) to_chat(usr, "<span class='warning'>[src] can't hold any more magazines.</span>")
 				return
 		return 1
 

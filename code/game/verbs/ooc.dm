@@ -6,53 +6,53 @@ var/global/normal_ooc_colour = "#002eb8"
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	if(usr.talked == 2)
-		usr << "\red Your spam has been consumed for it's nutritional value."
+		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
-		usr << "\red You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"
+		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
 		if(usr.chatWarn >10)
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			usr << "\blue You may now speak again."
+			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		usr << "\blue You just said something, take a breath."
+		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
 		usr.chatWarn++
 		return
 
 
 	if(!mob)	return
 	if(IsGuestKey(key))
-		src << "Guests may not use OOC."
+		to_chat(src, "Guests may not use OOC.")
 		return
 
 	msg = trim(copytext(sanitize(msg), 1, MAX_MESSAGE_LEN))
 	if(!msg)	return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
-		src << "\red You have OOC muted."
+		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
 		return
 
 	if(!admin_holder)
 		if(!ooc_allowed)
-			src << "\red OOC is globally muted"
+			to_chat(src, "<span class='danger'>OOC is globally muted</span>")
 			return
 		if(!dooc_allowed && (mob.stat == DEAD))
-			usr << "\red OOC for dead mobs has been turned off."
+			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "\red You cannot use OOC (muted)."
+			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			src << "<B>Advertising other servers is not allowed.</B>"
+			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
@@ -84,22 +84,23 @@ var/global/normal_ooc_colour = "#002eb8"
 						display_name = "[admin_holder.fakekey]/([src.key])"
 					else
 						display_name = admin_holder.fakekey
-			C << "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
+			var/message = "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
+			to_chat(C, message)
 
 			/*
 			if(admin_holder)
 				if(!admin_holder.fakekey || C.admin_holder)
 					if(admin_holder.rights & R_ADMIN)
-						C << "<font color=[config.allow_admin_ooccolor ? src.prefs.ooccolor :"#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[key][admin_holder.fakekey ? "/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
+						to_chat(C, "<font color=[config.allow_admin_ooccolor ? src.prefs.ooccolor :")#b82e00" ]><b><span class='prefix'>OOC:</span> <EM>[key][admin_holder.fakekey ? "/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
 					else if(admin_holder.rights & R_MOD)
-						C << "<font color=#184880><b><span class='prefix'>OOC:</span> <EM>[src.key][admin_holder.fakekey ? "/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
+						to_chat(C, "<font color=#184880><b><span class='prefix'>OOC:</span> <EM>[src.key][admin_holder.fakekey ? ")/([admin_holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></b></font>"
 					else
-						C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>"
+						to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>")
 
 				else
-					C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[admin_holder.fakekey ? admin_holder.fakekey : src.key]:</EM> <span class='message'>[msg]</span></span></font>"
+					to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[admin_holder.fakekey ? admin_holder.fakekey : src.key]:</EM> <span class='message'>[msg]</span></span></font>")
 			else
-				C << "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>"
+				to_chat(C, "<font color='[normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[src.key]:</EM> <span class='message'>[msg]</span></span></font>")
 			*/
 	usr.talked = 1
 	spawn (5)
@@ -120,53 +121,53 @@ var/global/normal_ooc_colour = "#002eb8"
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	if(usr.talked == 2)
-		usr << "\red Your spam has been consumed for it's nutritional value."
+		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
-		usr << "\red You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"
+		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
 		if(usr.chatWarn >10)
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			usr << "\blue You may now speak again."
+			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		usr << "\blue You just said something, take a breath."
+		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
 		usr.chatWarn++
 		return
 
 
 	if(!mob)	return
 	if(IsGuestKey(key))
-		src << "Guests may not use LOOC."
+		to_chat(src, "Guests may not use LOOC.")
 		return
 
 	msg = trim(copytext(sanitize(msg), 1, MAX_MESSAGE_LEN))
 	if(!msg)	return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
-		src << "\red You have LOOC muted."
+		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
 		return
 
 	if(!admin_holder)
 		if(!looc_allowed)
-			src << "\red LOOC is globally muted"
+			to_chat(src, "<span class='danger'>LOOC is globally muted</span>")
 			return
 		if(!dlooc_allowed && (mob.stat == DEAD))
-			usr << "\red LOOC for dead mobs has been turned off."
+			to_chat(usr, "<span class='danger'>LOOC for dead mobs has been turned off.</span>")
 			return
 		if(prefs.muted & MUTE_OOC)
-			src << "\red You cannot use LOOC (muted)."
+			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			src << "<B>Advertising other servers is not allowed.</B>"
+			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			message_admins("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
 			return
@@ -196,7 +197,7 @@ var/global/normal_ooc_colour = "#002eb8"
 						display_name = "[admin_holder.fakekey]/([src.key])"
 					else
 						display_name = admin_holder.fakekey
-			C << "<font color='#6699CC'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
+			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
 	// Now handle admins
 	display_name = S.key
@@ -208,7 +209,7 @@ var/global/normal_ooc_colour = "#002eb8"
 			var/prefix = "(R)LOOC"
 			if (C.mob in heard)
 				prefix = "LOOC"
-			C << "<font color='#6699CC'><span class='ooc'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>"
+			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 	usr.talked = 1
 	spawn (5)
 		if (usr.talked ==2)
@@ -219,4 +220,4 @@ var/global/normal_ooc_colour = "#002eb8"
 	set name = "round_info" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set desc = "Information about the current round"
 	set category = "OOC"
-	usr << "The current map is [map_tag]"
+	to_chat(usr, "The current map is [map_tag]")

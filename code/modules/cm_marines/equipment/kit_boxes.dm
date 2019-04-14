@@ -182,13 +182,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/spec_kit/attack_self(mob/user)
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED)
-		user << "<span class='notice'>This box is not for you, give it to a specialist!</span>"
+		to_chat(user, "<span class='notice'>This box is not for you, give it to a specialist!</span>")
 		return
 	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
 	if(!selection)
 		return
 	if(!kits[selection])
-		user << "<span class='notice'>No more kits of this type may be chosen!!</span>"
+		to_chat(user, "<span class='notice'>No more kits of this type may be chosen!!</span>")
 		return
 	var/turf/T = get_turf(loc)
 	switch(selection)
@@ -216,7 +216,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	if(user.mind && user.mind.assigned_role == "Squad Marine")
 		user.mind.cm_skills.spec_weapons = SKILL_SPEC_TRAINED
 	else
-		user << "<span class='notice'>This box is not for you, give it to a squad marine!</span>"
+		to_chat(user, "<span class='notice'>This box is not for you, give it to a squad marine!</span>")
 	..()
 
 /******************************************PFC Kits****************************************************************/

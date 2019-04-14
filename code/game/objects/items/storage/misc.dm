@@ -30,7 +30,8 @@
 	return
 
 /obj/item/storage/donut_box/attack_self(mob/user as mob)
-	user << "You [open ? "close [src]. Another time, then." : "open [src]. Mmmmm... donuts."]"
+	var/message = "You [open ? "close [src]. Another time, then." : "open [src]. Mmmmm... donuts."]"
+	to_chat(user, message)
 	open = !open
 	update_icon()
 	if(!contents.len)

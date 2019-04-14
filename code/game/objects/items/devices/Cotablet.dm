@@ -47,7 +47,7 @@
     if(src.allowed(user))
         user.set_interaction(src)
         interact(user)
-    else user << "\red Access denied."
+    else to_chat(user, "<span class='danger'>Access denied.</span>")
 
 /obj/item/device/cotablet/interact(mob/user as mob)
     if(!on)
@@ -256,17 +256,17 @@
                             if(SEC_LEVEL_GREEN) feedback_inc("alert_comms_green",1)
                             if(SEC_LEVEL_BLUE) feedback_inc("alert_comms_blue",1)
                 else
-                    usr << "<span class='warning'>You are not authorized to do this.</span>"
+                    to_chat(usr, "<span class='warning'>You are not authorized to do this.</span>")
                 tmp_alertlevel = SEC_LEVEL_GREEN //Reset to green.
                 state = STATE_DEFAULT
                 interact(usr)
             else
-                usr << "<span class='warning'>You need to swipe your ID.</span>"
+                to_chat(usr, "<span class='warning'>You need to swipe your ID.</span>")
 
         if("announce")
             if(authenticated == 2)
                 if(world.time < cooldown_message + COOLDOWN_COMM_MESSAGE)
-                    usr << "<span class='warning'>Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements.</span>"
+                    to_chat(usr, "<span class='warning'>Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements.</span>")
                     r_FAL
                 var/input = input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "") as message|null
                 if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE) r_FAL
@@ -278,19 +278,19 @@
             if(state == STATE_EVACUATION)
 
                 if(world.time < EVACUATION_TIME_LOCK || !ticker || !ticker.mode || !ticker.mode.force_end_at) //Cannot call it early in the round.
-                    usr << "<span class='warning'>USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>"
+                    to_chat(usr, "<span class='warning'>USCM protocol does not allow immediate evacuation. Please wait another [round((EVACUATION_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>")
                     r_FAL
 
                 if(security_level < SEC_LEVEL_RED)
-                    usr << "<span class='warning'>The ship must be under red alert in order to enact evacuation procedures.</span>"
+                    to_chat(usr, "<span class='warning'>The ship must be under red alert in order to enact evacuation procedures.</span>")
                     r_FAL
 
                 if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
-                    usr << "<span class='warning'>The USCM has placed a lock on deploying the evacuation pods.</span>"
+                    to_chat(usr, "<span class='warning'>The USCM has placed a lock on deploying the evacuation pods.</span>")
                     r_FAL
 
                 if(!EvacuationAuthority.initiate_evacuation())
-                    usr << "<span class='warning'>You are unable to initiate an evacuation procedure right now!</span>"
+                    to_chat(usr, "<span class='warning'>You are unable to initiate an evacuation procedure right now!</span>")
                     r_FAL
 
                 log_game("[key_name(usr)] has called for an emergency evacuation.")
@@ -302,7 +302,7 @@
         if("evacuation_cancel")
             if(state == STATE_EVACUATION_CANCEL)
                 if(!EvacuationAuthority.cancel_evacuation())
-                    usr << "<span class='warning'>You are unable to cancel the evacuation right now!</span>"
+                    to_chat(usr, "<span class='warning'>You are unable to cancel the evacuation right now!</span>")
                     r_FAL
 
                 spawn(35)//some time between AI announcements for evac cancel and SD cancel.
@@ -323,37 +323,37 @@
 
                 //Comment to test
                 if(world.time < DISTRESS_TIME_LOCK)
-                    usr << "<span class='warning'>The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>"
+                    to_chat(usr, "<span class='warning'>The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again.</span>")
                     r_FAL
 
                 if(!ticker || !ticker.mode) r_FAL //Not a game mode?
 
                 if(ticker.mode.force_end_at == 0)
-                    usr << "<span class='warning'>ARES has denied your request for operational security reasons.</span>"
+                    to_chat(usr, "<span class='warning'>ARES has denied your request for operational security reasons.</span>")
                     return FALSE
 
                 if(ticker.mode.has_called_emergency)
-                    usr << "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting.</span>"
+                    to_chat(usr, "<span class='warning'>The [MAIN_SHIP_NAME]'s distress beacon is already broadcasting.</span>")
                     r_FAL
 
                 if(ticker.mode.distress_cooldown)
-                    usr << "<span class='warning'>The distress beacon is currently recalibrating.</span>"
+                    to_chat(usr, "<span class='warning'>The distress beacon is currently recalibrating.</span>")
                     r_FAL
 
                 //Comment block to test
                 if(world.time < cooldown_request + COOLDOWN_COMM_REQUEST)
-                    usr << "<span class='warning'>The distress beacon has recently broadcast a message. Please wait.</span>"
+                    to_chat(usr, "<span class='warning'>The distress beacon has recently broadcast a message. Please wait.</span>")
                     r_FAL
 
                 if(security_level == SEC_LEVEL_DELTA)
-                    usr << "<span class='warning'>The ship is already undergoing self destruct procedures!</span>"
+                    to_chat(usr, "<span class='warning'>The ship is already undergoing self destruct procedures!</span>")
                     r_FAL
 
                 for(var/client/C in admins)
                     if((R_ADMIN|R_MOD) & C.admin_holder.rights)
                         C << 'sound/effects/sos-morse-code.ogg'
                 message_mods("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
-                usr << "<span class='notice'>A distress beacon request has been sent to USCM Central Command.</span>"
+                to_chat(usr, "<span class='notice'>A distress beacon request has been sent to USCM Central Command.</span>")
 
                 cooldown_request = world.time
                 r_TRU
@@ -363,7 +363,7 @@
 
         if("award")
             if(!usr.mind || usr.mind.assigned_role != "Commander")
-                usr << "<span class='warning'>Only the Commander can award medals.</span>"
+                to_chat(usr, "<span class='warning'>Only the Commander can award medals.</span>")
                 interact(usr)
                 return
             if(give_medal_award(usr.loc))
@@ -415,13 +415,13 @@
         if("messageUSCM")
             if(authenticated == 2)
                 if(world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
-                    usr << "<span class='warning'>Arrays recycling.  Please stand by.</span>"
+                    to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
                     r_FAL
                 var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
                 if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) r_FAL
 
                 Centcomm_announce(input, usr)
-                usr << "<span class='notice'>Message transmitted.</span>"
+                to_chat(usr, "<span class='notice'>Message transmitted.</span>")
                 log_say("[key_name(usr)] has made an USCM announcement: [input]")
                 cooldown_central = world.time
 

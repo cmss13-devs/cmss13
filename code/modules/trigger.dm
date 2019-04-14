@@ -10,7 +10,7 @@
 	if(!istype(M) || !M)
 		return
 	if(M.client)
-		M << "<span class='info'>[message]</span>"
+		to_chat(M, "<span class='info'>[message]</span>")
 		if(once)
 			qdel(src)
 

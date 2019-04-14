@@ -11,7 +11,7 @@
 		for(var/datum/mind/L in ticker.mode.xenomorphs)
 			var/mob/living/carbon/Xenomorph/M = L.current
 			if(M && istype(M) && !M.stat && M.client && hivenumber == M.hivenumber) //Only living and connected xenos
-				M << "<span class='xenodanger'><font size=[size]> [message]</font></span>"
+				to_chat(M, "<span class='xenodanger'><font size=[size]> [message]</font></span>")
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
 //Those are dealt with in their caste files.
@@ -97,26 +97,26 @@
 /mob/living/carbon/Xenomorph/proc/check_state(var/whilelying = 0)
 	if(!whilelying)
 		if(is_mob_incapacitated() || lying || buckled)
-			src << "<span class='warning'>You cannot do this in your current state.</span>"
+			to_chat(src, "<span class='warning'>You cannot do this in your current state.</span>")
 			return 0
 	else
 		if(is_mob_incapacitated() || buckled)
-			src << "<span class='warning'>You cannot do this in your current state.</span>"
+			to_chat(src, "<span class='warning'>You cannot do this in your current state.</span>")
 			return 0
 	return 1
 
 //Checks your plasma levels and gives a handy message.
 /mob/living/carbon/Xenomorph/proc/check_plasma(value)
 	if(stat)
-		src << "<span class='warning'>You cannot do this in your current state.</span>"
+		to_chat(src, "<span class='warning'>You cannot do this in your current state.</span>")
 		return 0
 
 	if(value)
 		if(plasma_stored < value)
 			if(caste.is_robotic)
-				src << "<span class='warning'>Beep. You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored.</span>"
+				to_chat(src, "<span class='warning'>Beep. You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored.</span>")
 			else
-				src << "<span class='warning'>You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored.</span>"
+				to_chat(src, "<span class='warning'>You do not have enough plasma to do this. You require [value] plasma but have only [plasma_stored] stored.</span>")
 			return 0
 	return 1
 
@@ -173,7 +173,7 @@
 		if(legcuffed)
 			is_charging = 0
 			stop_momentum()
-			src << "<span class='xenodanger'>You can't charge with that thing on your leg!</span>"
+			to_chat(src, "<span class='xenodanger'>You can't charge with that thing on your leg!</span>")
 		else
 			. -= charge_speed
 			charge_timer = 2
@@ -379,7 +379,7 @@
 				victim.SetStunned(0)
 				victim.SetKnockeddown(0)
 	else
-		src << "<span class='warning'>There's nothing in your belly that needs regurgitating.</span>"
+		to_chat(src, "<span class='warning'>There's nothing in your belly that needs regurgitating.</span>")
 
 /mob/living/carbon/Xenomorph/proc/zoom_in(var/tileoffset = 5, var/viewsize = 12)
 	if(stat || resting)
@@ -423,10 +423,10 @@
 	var/has_obstacle
 	for(var/obj/O in current_turf)
 		if(istype(O, /obj/item/clothing/mask/facehugger))
-			src << "<span class='warning'>There is a little one here already. Best move it.</span>"
+			to_chat(src, "<span class='warning'>There is a little one here already. Best move it.</span>")
 			return
 		if(istype(O, /obj/effect/alien/egg))
-			src << "<span class='warning'>There's already an egg.</span>"
+			to_chat(src, "<span class='warning'>There's already an egg.</span>")
 			return
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
 			has_obstacle = TRUE
@@ -449,7 +449,7 @@
 			break
 
 	if(current_turf.density || has_obstacle)
-		src << "<span class='warning'>There's something built here already.</span>"
+		to_chat(src, "<span class='warning'>There's something built here already.</span>")
 		return
 
 	return 1
@@ -458,7 +458,7 @@
 	var/obj/item/clothing/mask/facehugger/F = get_active_hand()
 	if(istype(F))
 		if(locate(/turf/closed/wall/resin) in loc)
-			src << "<span class='warning'>You decide not to drop [F] after all.</span>"
+			to_chat(src, "<span class='warning'>You decide not to drop [F] after all.</span>")
 			return
 
 	. = ..()
@@ -570,11 +570,11 @@
 	if(!Q || !Q.anchored || !queen_chosen_lead || !Q.current_aura || Q.loc.z != loc.z) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
-		src << "<span class='xenowarning'>Your pheromones wane. The Queen is no longer granting you her pheromones.</span>"
+		to_chat(src, "<span class='xenowarning'>Your pheromones wane. The Queen is no longer granting you her pheromones.</span>")
 	else
 		leader_aura_strength = Q.aura_strength
 		leader_current_aura = Q.current_aura
-		src << "<span class='xenowarning'>Your pheromones have changed. The Queen has new plans for the Hive.</span>"
+		to_chat(src, "<span class='xenowarning'>Your pheromones have changed. The Queen has new plans for the Hive.</span>")
 
 /mob/living/carbon/Xenomorph/proc/nocrit(var/wowave)
 	if(map_tag == MAP_WHISKEY_OUTPOST)

@@ -39,7 +39,7 @@
 	var/scheduler_logging_ongoing_interval = MINUTES_30//every 30 minutes
 
 /datum/game_mode/proc/announce() //to be calles when round starts
-	world << "<B>Notice</B>: [src] did not define announce()"
+	to_world("<B>Notice</B>: [src] did not define announce()")
 
 ///can_start()
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
@@ -94,12 +94,12 @@
 
 /datum/game_mode/proc/announce_ending()
 	round_statistics.count_end_of_round_mobs_for_statistics()
-	world << "<span class='round_header'>|Round Complete|</span>"
+	to_world("<span class='round_header'>|Round Complete|</span>")
 	feedback_set_details("round_end_result",round_finished)
 
-	world << "<span class='round_body'>Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag].</span>"
-	world << "<span class='round_body'>The game-mode was: [master_mode]!</span>"
-	world << "<span class='round_body'>End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details.</span>"
+	to_world("<span class='round_body'>Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag].</span>")
+	to_world("<span class='round_body'>The game-mode was: [master_mode]!</span>")
+	to_world("<span class='round_body'>End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details.</span>")
 
 
 /datum/game_mode/proc/declare_completion()
@@ -211,7 +211,7 @@
 			if(applicant)
 				candidates += applicant
 				drafted.Remove(applicant)
-				world << "\red [applicant.key] was force-drafted as [roletext], because there aren't enough candidates."
+				to_world("<span class='danger'>[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.</span>")
 				log_debug("[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.")
 
 		else //Not enough scrubs, ABORT ABORT ABORT
@@ -257,14 +257,14 @@
 
 /datum/game_mode/New()
 	if(!map_tag)
-		world << "MT001: No mapping tag set, tell a coder. [map_tag]"
+		to_world("MT001: No mapping tag set, tell a coder. [map_tag]")
 	newscaster_announcements = pick(newscaster_standard_feeds)
 
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
 proc/display_roundstart_logout_report()
-	var/msg = "\blue <b>Roundstart logout report\n\n"
+	var/msg = "<span class='notice'><b>Roundstart logout report\n\n</span>"
 	for(var/mob/living/L in mob_list)
 
 		if(L.ckey)
@@ -282,9 +282,6 @@ proc/display_roundstart_logout_report()
 				msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
 				continue //AFK client
 			if(L.stat)
-				if(L.suiciding)	//Suicider
-					msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (<font color='red'><b>Suicide</b></font>)\n"
-					continue //Disconnected client
 				if(L.stat == UNCONSCIOUS)
 					msg += "<b>[L.name]</b> ([L.ckey]), the [L.job] (Dying)\n"
 					continue //Unconscious
@@ -296,12 +293,8 @@ proc/display_roundstart_logout_report()
 		for(var/mob/dead/observer/D in mob_list)
 			if(D.mind && (D.mind.original == L || D.mind.current == L))
 				if(L.stat == DEAD)
-					if(L.suiciding)	//Suicider
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>Suicide</b></font>)\n"
-						continue //Disconnected client
-					else
-						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
-						continue //Dead mob, ghost abandoned
+					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+					continue //Dead mob, ghost abandoned
 				else
 					if(D.can_reenter_corpse)
 						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (<font color='red'><b>This shouldn't appear.</b></font>)\n"
@@ -348,9 +341,9 @@ proc/get_nt_opposed()
 		return
 
 	var/obj_count = 1
-	player.current << "\blue Your current objectives:"
+	player.to_chat(current, "<span class='notice'> Your current objectives:</span>")
 	for(var/datum/objective/objective in player.objectives)
-		player.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 
 /datum/game_mode/proc/printplayer(var/datum/mind/ply)

@@ -406,7 +406,7 @@
 				if((L.status & LIMB_SPLINTED) && L.knitting_time == -1)
 					L.knitting_time = L.time_to_knit + world.time
 					L.start_processing()
-					Y << "<span class='notice'>You feel the bones in your [L.display_name] start to knit together.</span>"
+					to_chat(Y, "<span class='notice'>You feel the bones in your [L.display_name] start to knit together.</span>")
 					break
 
 		if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(1*REM,0)
@@ -916,11 +916,11 @@
 		if(!.) return
 		if(src.volume <= 0.1) if(data != -1)
 			data = -1
-			M << "<span class='warning'>You lose focus.</span>"
+			to_chat(M, "<span class='warning'>You lose focus.</span>")
 		else
 			if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 				data = world.time
-				M << "<span class='notice'>Your mind feels focused and undivided.</span>"
+				to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
 
 /datum/reagent/antidepressant/citalopram
 	name = "Citalopram"
@@ -936,11 +936,11 @@
 		if(!.) return
 		if(volume <= 0.1) if(data != -1)
 			data = -1
-			M << "<span class='warning'>Your mind feels a little less stable...</span>"
+			to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
 		else
 			if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 				data = world.time
-				M << "<span class='notice'>Your mind feels stable.. a little stable.</span>"
+				to_chat(M, "<span class='notice'>Your mind feels stable.. a little stable.</span>")
 
 
 /datum/reagent/antidepressant/paroxetine
@@ -957,14 +957,14 @@
 		if(!.) return
 		if(volume <= 0.1) if(data != -1)
 			data = -1
-			M << "<span class='warning'>Your mind feels much less stable...</span>"
+			to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
 		else
 			if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 				data = world.time
 				if(prob(90))
-					M << "<span class='notice'>Your mind feels much more stable.</span>"
+					to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
 				else
-					M << "<span class='warning'>Your mind breaks apart...</span>"
+					to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
 					M.hallucination += 200
 
 /datum/reagent/antized

@@ -134,9 +134,9 @@
 				chest = W
 				updateicon()
 		else if(!W:wires)
-			user << "\blue You need to attach wires to it first!"
+			to_chat(user, "<span class='notice'> You need to attach wires to it first!</span>")
 		else
-			user << "\blue You need to attach a cell to it first!"
+			to_chat(user, "<span class='notice'> You need to attach a cell to it first!</span>")
 
 	if(istype(W, /obj/item/robot_parts/head))
 		if(head)	return
@@ -145,16 +145,16 @@
 				head = W
 				updateicon()
 		else
-			user << "\blue You need to attach a flash to it first!"
+			to_chat(user, "<span class='notice'> You need to attach a flash to it first!</span>")
 
 	if(istype(W, /obj/item/device/mmi))
 		var/obj/item/device/mmi/M = W
 		if(check_completion())
 			if(!istype(loc,/turf))
-				user << "\red You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise."
+				to_chat(user, "<span class='danger'>You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise.</span>")
 				return
 			if(!M.brainmob)
-				user << "\red Sticking an empty [W] into the frame would sort of defeat the purpose."
+				to_chat(user, "<span class='danger'>Sticking an empty [W] into the frame would sort of defeat the purpose.</span>")
 				return
 			if(!M.brainmob.key)
 				var/ghost_can_reenter = 0
@@ -164,15 +164,15 @@
 							ghost_can_reenter = 1
 							break
 				if(!ghost_can_reenter)
-					user << "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>"
+					to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>")
 					return
 
 			if(M.brainmob.stat == DEAD)
-				user << "\red Sticking a dead [W] into the frame would sort of defeat the purpose."
+				to_chat(user, "<span class='danger'>Sticking a dead [W] into the frame would sort of defeat the purpose.</span>")
 				return
 
 			if(jobban_isbanned(M.brainmob, "Cyborg"))
-				user << "\red This [W] does not seem to fit."
+				to_chat(user, "<span class='danger'>This [W] does not seem to fit.</span>")
 				return
 
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot(get_turf(loc), unfinished = 1)
@@ -208,7 +208,7 @@
 
 			qdel(src)
 		else
-			user << "\blue The MMI must go in after everything else!"
+			to_chat(user, "<span class='notice'> The MMI must go in after everything else!</span>")
 
 	if (istype(W, /obj/item/tool/pen))
 		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name, MAX_NAME_LEN)
@@ -225,42 +225,42 @@
 	..()
 	if(istype(W, /obj/item/cell))
 		if(src.cell)
-			user << "\blue You have already inserted a cell!"
+			to_chat(user, "<span class='notice'> You have already inserted a cell!</span>")
 			return
 		else
 			if(user.drop_inv_item_to_loc(W, src))
 				cell = W
-				user << "\blue You insert the cell!"
+				to_chat(user, "<span class='notice'> You insert the cell!</span>")
 	if(istype(W, /obj/item/stack/cable_coil))
 		if(src.wires)
-			user << "\blue You have already inserted wire!"
+			to_chat(user, "<span class='notice'> You have already inserted wire!</span>")
 			return
 		else
 			var/obj/item/stack/cable_coil/coil = W
 			coil.use(1)
 			src.wires = 1.0
-			user << "\blue You insert the wire!"
+			to_chat(user, "<span class='notice'> You insert the wire!</span>")
 	return
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/device/flash))
 		if(istype(user,/mob/living/silicon/robot))
-			user << "\red How do you propose to do that?"
+			to_chat(user, "<span class='danger'>How do you propose to do that?</span>")
 			return
 		else if(src.flash1 && src.flash2)
-			user << "\blue You have already inserted the eyes!"
+			to_chat(user, "<span class='notice'> You have already inserted the eyes!</span>")
 			return
 		else if(src.flash1)
 			if(user.drop_inv_item_to_loc(W, src))
 				flash2 = W
-				user << "\blue You insert the flash into the eye socket!"
+				to_chat(user, "<span class='notice'> You insert the flash into the eye socket!</span>")
 		else
 			user.drop_inv_item_to_loc(W, src)
 			flash1 = W
-			user << "\blue You insert the flash into the eye socket!"
+			to_chat(user, "<span class='notice'> You insert the flash into the eye socket!</span>")
 	else if(istype(W, /obj/item/stock_parts/manipulator))
-		user << "\blue You install some manipulators and modify the head, creating a functional spider-bot!"
+		to_chat(user, "<span class='notice'> You install some manipulators and modify the head, creating a functional spider-bot!</span>")
 		new /mob/living/simple_animal/spiderbot(get_turf(loc))
 		user.temp_drop_inv_item(W)
 		qdel(W)

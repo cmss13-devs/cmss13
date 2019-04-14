@@ -6,9 +6,9 @@
 	if(!client) return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
-		src << "\blue You will now examine everything you click on."
+		to_chat(src, "<span class='notice'> You will now examine everything you click on.</span>")
 	else
-		src << "\blue You will no longer examine things you click on."
+		to_chat(src, "<span class='notice'> You will no longer examine things you click on.</span>")
 
 /mob/dead/observer/click(var/atom/A, var/list/mods)
 	if (..())
@@ -99,7 +99,7 @@
 		return
 
 	if(!can_mind_transfer) //away_timer is not high enough. Number below should match number in mob.dm.
-		user << "That player hasn't been away long enough. Please wait [60 - away_timer] more seconds."
+		to_chat(user, "That player hasn't been away long enough. Please wait [60 - away_timer] more seconds.")
 		return
 
 	if (alert(user, "Are you sure you want to transfer yourself into this Alien Larva?", "Confirmation", "Yes", "No") == "Yes")

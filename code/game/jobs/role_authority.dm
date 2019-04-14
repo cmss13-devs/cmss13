@@ -47,12 +47,12 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 		var/squads_all[] = typesof(/datum/squad) - /datum/squad
 
 		if(!roles_all.len)
-			world << "<span class='debug'>Error setting up jobs, no job datums found.</span>"
+			to_world("<span class='debug'>Error setting up jobs, no job datums found.</span>")
 			log_debug("Error setting up jobs, no job datums found.")
 			return //No real reason this should be length zero, so we'll just return instead.
 
 		if(!squads_all.len)
-			world << "<span class='debug'>Error setting up squads, no squad datums found.</span>"
+			to_world("<span class='debug'>Error setting up squads, no squad datums found.</span>")
 			log_debug("Error setting up squads, no squad datums found.")
 			return
 
@@ -71,7 +71,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 			J = new i
 
 			if(!J.title) //In case you forget to subtract one of those variable holder jobs.
-				world << "<span class='debug'>Error setting up jobs, blank title job: [J.type].</span>"
+				to_world("<span class='debug'>Error setting up jobs, blank title job: [J.type].</span>")
 				log_debug("Error setting up jobs, blank title job: [J.type].")
 				continue
 
@@ -255,7 +255,7 @@ var/list/departments = list("Command", "Medical", "Engineering", "Security", "Ci
 			if(RETURN_TO_LOBBY) M.ready = 0
 		unassigned_players -= M
 	if(unassigned_players.len)
-		world << "<span class='debug'>Error setting up jobs, unassigned_players still has players left. Length of: [unassigned_players.len].</span>"
+		to_world("<span class='debug'>Error setting up jobs, unassigned_players still has players left. Length of: [unassigned_players.len].</span>")
 		log_debug("Error setting up jobs, unassigned_players still has players left. Length of: [unassigned_players.len].")
 
 	unassigned_players = null
@@ -284,7 +284,7 @@ roles willy nilly.
 		for(j in roles_to_iterate)
 			J = roles_to_iterate[j]
 			if(!istype(J)) //Shouldn't happen, but who knows.
-				world << "<span class='debug'>Error setting up jobs, no job datum set for: [j].</span>"
+				to_world("<span class='debug'>Error setting up jobs, no job datum set for: [j].</span>")
 				log_debug("Error setting up jobs, no job datum set for: [j].")
 				continue
 
@@ -313,7 +313,7 @@ roles willy nilly.
 			J = roles_to_iterate[j]
 
 			if(!istype(J))
-				world << "<span class='debug'>Error setting up jobs, no job datum set for: [j].</span>"
+				to_world("<span class='debug'>Error setting up jobs, no job datum set for: [j].</span>")
 				log_debug("Error setting up jobs, no job datum set for: [j].")
 				continue
 
@@ -332,7 +332,7 @@ roles willy nilly.
 			M.mind.role_alt_title 		= J.get_alternative_title(M)
 			M.mind.role_comm_title 		= J.get_comm_title()
 			J.current_positions++
-			//world << "[J.title]: [J.current_positions] current positions filled." //TODO DEBUG
+			//to_world("[J.title]: [J.current_positions] current positions filled.") //TODO DEBUG
 			return 1
 
 /datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=0)
@@ -418,7 +418,7 @@ roles willy nilly.
 		if(!S) S = locate("start*[J.title]") //Old type spawn.
 		if(istype(S) && istype(S.loc, /turf)) M.loc = S.loc
 		else
-			world << "<span class='debug'>Error setting up character. No spawn location could be found.</span>"
+			to_world("<span class='debug'>Error setting up character. No spawn location could be found.</span>")
 			log_debug("Error setting up character. No spawn location could be found.")
 
 	if(ishuman(M))
@@ -464,7 +464,7 @@ roles willy nilly.
 //Find which squad has the least population. If all 4 squads are equal it should just use a random one
 /datum/authority/branch/role/proc/get_lowest_squad(mob/living/carbon/human/H)
 	if(!squads.len) //Something went wrong, our squads aren't set up.
-		world << "Warning, something messed up in get_lowest_squad(). No squads set up!"
+		to_world("Warning, something messed up in get_lowest_squad(). No squads set up!")
 		return null
 
 
@@ -491,7 +491,7 @@ roles willy nilly.
 
 
 	if(!lowest)
-		world << "Warning! Bug in get_random_squad()!"
+		to_world("Warning! Bug in get_random_squad()!")
 		return null
 
 	var/lowest_count = lowest.count
@@ -501,7 +501,7 @@ roles willy nilly.
 		//Loop through squads.
 		for(var/datum/squad/S in mixed_squads)
 			if(!S)
-				world << "Warning: Null squad in get_lowest_squad. Call a coder!"
+				to_world("Warning: Null squad in get_lowest_squad. Call a coder!")
 				break //null squad somehow, let's just abort
 			current_count = S.count //Grab our current squad's #
 			if(current_count >= (lowest_count - 2)) //Current squad count is not much lower than the chosen one. Skip it.
@@ -516,7 +516,7 @@ roles willy nilly.
 	if(!H || !H.mind) return
 
 	if(!squads.len)
-		H << "Something went wrong with your squad randomizer! Tell a coder!"
+		to_chat(H, "Something went wrong with your squad randomizer! Tell a coder!")
 		return //Shit, where's our squad data
 
 	if(H.assigned_squad) //Wait, we already have a squad. Get outta here!
@@ -611,12 +611,12 @@ roles willy nilly.
 			var/ranpick = rand(1,4)
 			lowest = mixed_squads[ranpick]
 		if(lowest)	lowest.put_marine_in_squad(H)
-		else H << "Something went badly with randomize_squad()! Tell a coder!"
+		else to_chat(H, "Something went badly with randomize_squad()! Tell a coder!")
 
 	else
 		//Deal with marines. They get distributed to the lowest populated squad.
 		var/datum/squad/given_squad = get_lowest_squad(H)
 		if(!given_squad || !istype(given_squad)) //Something went horribly wrong!
-			H << "Something went wrong with randomize_squad()! Tell a coder!"
+			to_chat(H, "Something went wrong with randomize_squad()! Tell a coder!")
 			return
 		given_squad.put_marine_in_squad(H) //Found one, finish up

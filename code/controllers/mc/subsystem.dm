@@ -155,7 +155,7 @@
 /datum/subsystem/proc/Initialize(start_timeofday)
 	var/time = (world.timeofday - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] seconds!"
-	world << "<span class='danger'>[msg]</span>"
+	to_world("<span class='danger'>[msg]</span>")
 	initialized = TRUE
 	return time
 

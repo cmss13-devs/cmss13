@@ -36,7 +36,7 @@ mob/Login()
 	var/list/servers = list()
 	for(var/x in global.servers)
 
-		world << "[x] [servernames[ global.servers.Find(x) ]]"
+		to_world("[x] [servernames[ global.servers.Find(x) ]]")
 
 		var/info = world.Export("[x]?status")
 		var/datum/server/S = new()

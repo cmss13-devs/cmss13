@@ -94,12 +94,12 @@
 				var/mob/living/carbon/Xenomorph/target = M
 				if(target.mob_size == MOB_SIZE_BIG) return //Big xenos are not affected.
 				target.apply_effects(0,1) //Smaller ones just get shaken.
-				target << "<span class='xenodanger'>You are shaken by the sudden impact!</span>"
+				to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
 			else
 				if(!isYautja(M)) //Not predators.
 					var/mob/living/target = M
 					target.apply_effects(1,2) //Humans get stunned a bit.
-					target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
+					to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
 		step_away(M,P)
 
 /datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 2) //crazier version of knockback, for PB use
@@ -108,7 +108,7 @@
 	if(isliving(M)) //This is pretty ugly, but what can you do.
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			target << "<span class='xenodanger'>You are shaken by the sudden impact!</span>"
+			to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
 			if(target.mob_size == MOB_SIZE_BIG)
 				target.apply_effects(0,0.1)
 				return
@@ -117,7 +117,7 @@
 			if(!isYautja(M)) //Not predators.
 				var/mob/living/target = M
 				target.apply_effects(4,6) //Humans get heavily.
-				target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
+				to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
 	step_away(M,P)
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage

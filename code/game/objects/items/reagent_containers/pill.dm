@@ -42,10 +42,10 @@ var/global/list/randomized_pill_icons
 			if(istype(M, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.species.flags & IS_SYNTHETIC)
-					H << "\red You can't eat pills."
+					to_chat(H, "<span class='danger'>You can't eat pills.</span>")
 					return
 
-			M << "\blue You swallow [src]."
+			to_chat(M, "<span class='notice'> You swallow [src].</span>")
 			M.drop_inv_item_on_ground(src) //icon update
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, reagents.total_volume)
@@ -57,7 +57,7 @@ var/global/list/randomized_pill_icons
 
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				H << "\red They have a monitor for a head, where do you think you're going to put that?"
+				to_chat(H, "<span class='danger'>They have a monitor for a head, where do you think you're going to put that?</span>")
 				return
 
 			user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow [src].</span>")
@@ -70,7 +70,7 @@ var/global/list/randomized_pill_icons
 
 			user.drop_inv_item_on_ground(src) //icon update
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message("\red [user] forces [M] to swallow [src].", 1)
+				O.show_message("<span class='danger'>[user] forces [M] to swallow [src].</span>", 1)
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -93,9 +93,9 @@ var/global/list/randomized_pill_icons
 
 		if(target.is_open_container() != 0 && target.reagents)
 			if(!target.reagents.total_volume)
-				user << "\red [target] is empty. Cant dissolve pill."
+				to_chat(user, "<span class='danger'>[target] is empty. Cant dissolve pill.</span>")
 				return
-			user << "\blue You dissolve the pill in [target]"
+			to_chat(user, "<span class='notice'> You dissolve the pill in [target]</span>")
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -104,7 +104,7 @@ var/global/list/randomized_pill_icons
 
 			reagents.trans_to(target, reagents.total_volume)
 			for(var/mob/O in viewers(2, user))
-				O.show_message("\red [user] puts something in \the [target].", 1)
+				O.show_message("<span class='danger'>[user] puts something in \the [target].</span>", 1)
 
 			spawn(5)
 				qdel(src)

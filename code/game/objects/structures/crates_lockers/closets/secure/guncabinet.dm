@@ -14,7 +14,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/examine()
 	..()
-	usr << "<span class='notice'>[src] will only open on [num2seclevel(req_level)] security level.</span>"
+	to_chat(usr, "<span class='notice'>[src] will only open on [num2seclevel(req_level)] security level.</span>")
 
 /obj/structure/closet/secure_closet/guncabinet/New()
 	..()
@@ -48,7 +48,7 @@
 	if(alert != req_level && alert < req_level)
 		for(var/mob/living/L in contents)
 			L.loc = src.loc
-			L << "<span class='warning'>You are forced out of [src]!</span>"
+			to_chat(L, "<span class='warning'>You are forced out of [src]!</span>")
 		if(!locked)
 			locked = 1
 			state_change = 1
@@ -59,7 +59,7 @@
 	if(state_change)
 		for(var/mob/O in viewers(src, 3))
 			if((O.client && !( O.blinded )))
-				O << "<span class='notice'>[src] [locked ? "locks" : "unlocks"] itself.</span>"
+				to_chat(O, "<span class='notice'>[src] [locked ? "locks" : "unlocks"] itself.</span>")
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory

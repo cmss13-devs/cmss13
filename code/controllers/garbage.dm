@@ -19,7 +19,7 @@ var/soft_dels = 0
 	for(var/A in ghdel_profiling)
 		L += "<br>[A] = [ghdel_profiling[A]]"
 	if(L.len == 1)
-		usr << "No garbage collector deletions this round"
+		to_chat(usr, "No garbage collector deletions this round")
 		return
 	usr << browse(jointext(L,""),"window=harddellogs")
 

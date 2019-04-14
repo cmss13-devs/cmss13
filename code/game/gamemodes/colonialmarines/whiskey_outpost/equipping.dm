@@ -269,13 +269,13 @@ You just gotta get out of this jungle to tell the tale!"}
 
 	//Give them some information
 	sleep(40)
-	H << "________________________"
-	H << "<span class='boldnotice'>You are the [H.mind.assigned_role]!</span>"
-	H << "Gear up, prepare defenses, work as a team. Protect your doctors and commander!"
-	H << "Motion trackers have detected movement from local creatures, and they are heading towards the outpost!"
-	H << "Hold the outpost for one hour until the signal can be established!"
-	H << "Ensure the Dust Raiders don't lose their foothold on LV-624 so you can alert the main forces."
-	H << "________________________"
+	to_chat(H, "________________________")
+	to_chat(H, "<span class='boldnotice'>You are the [H.mind.assigned_role]!</span>")
+	to_chat(H, "Gear up, prepare defenses, work as a team. Protect your doctors and commander!")
+	to_chat(H, "Motion trackers have detected movement from local creatures, and they are heading towards the outpost!")
+	to_chat(H, "Hold the outpost for one hour until the signal can be established!")
+	to_chat(H, "Ensure the Dust Raiders don't lose their foothold on LV-624 so you can alert the main forces.")
+	to_chat(H, "________________________")
 
 	return 1
 

@@ -144,12 +144,12 @@
 	if(huggers_cur < huggers_max)
 		if(F.stat == CONSCIOUS && !F.sterile)
 			huggers_cur++
-			src << "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max].</span>"
+			to_chat(src, "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max].</span>")
 			qdel(F)
 		else
-			src << "<span class='warning'>This [F.name] looks too unhealthy.</span>"
+			to_chat(src, "<span class='warning'>This [F.name] looks too unhealthy.</span>")
 	else
-		src << "<span class='warning'>You can't carry more facehuggers on you.</span>"
+		to_chat(src, "<span class='warning'>You can't carry more facehuggers on you.</span>")
 
 
 /mob/living/carbon/Xenomorph/Carrier/proc/throw_hugger(atom/T)
@@ -163,7 +163,7 @@
 		var/obj/item/clothing/mask/facehugger/F = T
 		if(isturf(F.loc) && Adjacent(F))
 			if(F.hivenumber != hivenumber)
-				src << "<span class='warning'>That facehugger is tainted!</span>"
+				to_chat(src, "<span class='warning'>That facehugger is tainted!</span>")
 				drop_inv_item_on_ground(F)
 				return
 			store_hugger(F)
@@ -173,17 +173,17 @@
 	if(!F) //empty active hand
 		//if no hugger in active hand, we take one from our storage
 		if(huggers_cur <= 0)
-			src << "<span class='warning'>You don't have any facehuggers to use!</span>"
+			to_chat(src, "<span class='warning'>You don't have any facehuggers to use!</span>")
 			return
 		F = new()
 		F.hivenumber = hivenumber
 		huggers_cur--
 		put_in_active_hand(F)
-		src << "<span class='xenonotice'>You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [huggers_max].</span>"
+		to_chat(src, "<span class='xenonotice'>You grab one of the facehugger in your storage. Now sheltering: [huggers_cur] / [huggers_max].</span>")
 		return
 
 	if(!istype(F)) //something else in our hand
-		src << "<span class='warning'>You need a facehugger in your hand to throw one!</span>"
+		to_chat(src, "<span class='warning'>You need a facehugger in your hand to throw one!</span>")
 		return
 
 	if(!threw_a_hugger)
@@ -205,17 +205,17 @@
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_egg(obj/item/xeno_egg/E)
 	if(E.hivenumber != hivenumber)
-		src << "<span class='warning'>That egg is tainted!</span>"
+		to_chat(src, "<span class='warning'>That egg is tainted!</span>")
 		return
 	if(eggs_cur < eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
-			src << "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max].</span>"
+			to_chat(src, "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max].</span>")
 			qdel(E)
 		else
-			src << "<span class='warning'>This [E.name] looks too unhealthy.</span>"
+			to_chat(src, "<span class='warning'>This [E.name] looks too unhealthy.</span>")
 	else
-		src << "<span class='warning'>You can't carry more eggs on you.</span>"
+		to_chat(src, "<span class='warning'>You can't carry more eggs on you.</span>")
 
 
 /mob/living/carbon/Xenomorph/Carrier/proc/retrieve_egg(atom/T)
@@ -235,17 +235,17 @@
 	if(!E) //empty active hand
 		//if no hugger in active hand, we take one from our storage
 		if(eggs_cur <= 0)
-			src << "<span class='warning'>You don't have any egg to use!</span>"
+			to_chat(src, "<span class='warning'>You don't have any egg to use!</span>")
 			return
 		E = new()
 		E.hivenumber = hivenumber
 		eggs_cur--
 		put_in_active_hand(E)
-		src << "<span class='xenonotice'>You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [eggs_max].</span>"
+		to_chat(src, "<span class='xenonotice'>You grab one of the eggs in your storage. Now sheltering: [eggs_cur] / [eggs_max].</span>")
 		return
 
 	if(!istype(E)) //something else in our hand
-		src << "<span class='warning'>You need an empty hand to grab one of your stored eggs!</span>"
+		to_chat(src, "<span class='warning'>You need an empty hand to grab one of your stored eggs!</span>")
 		return
 
 /mob/living/carbon/Xenomorph/Carrier/proc/lay_egg()
@@ -254,7 +254,7 @@
 		return
 
 	if(laid_egg)
-		src << "<span class='xenowarning'>You must wait before laying another egg.</span>"
+		to_chat(src, "<span class='xenowarning'>You must wait before laying another egg.</span>")
 		return
 
 	if(!check_plasma(50))
@@ -266,12 +266,12 @@
 		E.hivenumber = hivenumber
 		put_in_active_hand(E)
 		use_plasma(50)
-		src << "<span class='xenonotice'>You produce an egg.</span>"
+		to_chat(src, "<span class='xenonotice'>You produce an egg.</span>")
 		playsound(loc, "alien_resin_build", 25)
 		laid_egg = TRUE
 		spawn(caste.egg_cooldown)
 			laid_egg = FALSE
-			src << "<span class='xenonotice'>You can produce an egg again.</span>"
+			to_chat(src, "<span class='xenonotice'>You can produce an egg again.</span>")
 			for(var/X in actions)
 				var/datum/action/A = X
 				A.update_button_icon()

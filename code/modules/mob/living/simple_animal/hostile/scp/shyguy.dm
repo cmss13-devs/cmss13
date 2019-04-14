@@ -89,7 +89,7 @@
 	. = ..()
 	if(. == TRUE) //would be false if we add blinking or something
 		if(!(H in shitlist))
-			H << "<span class='alert'>You are facing it, and it is facing you...</span>"
+			to_chat(H, "<span class='alert'>You are facing it, and it is facing you...</span>")
 			add_examine_urge(H)
 
 
@@ -110,11 +110,11 @@
 
 	switch(examine_urge)
 		if(1)
-			H << "<span class='alert'>You feel the urge to examine it...</span>"
+			to_chat(H, "<span class='alert'>You feel the urge to examine it...</span>")
 		if(3)
-			H << "<span class='alert'>It is becoming difficult to resist the urge to examine it ...</span>"
+			to_chat(H, "<span class='alert'>It is becoming difficult to resist the urge to examine it ...</span>")
 		if(5)
-			H << "<span class='alert'>Unable to resist the urge, you look closely...</span>"
+			to_chat(H, "<span class='alert'>Unable to resist the urge, you look closely...</span>")
 			spawn(10)
 				examine(H)
 
@@ -137,7 +137,7 @@
 	else return
 
 	if (examine_urge == 1 && !(H in shitlist))
-		H << "<span class='notice'>The urge fades away...</span>"
+		to_chat(H, "<span class='notice'>The urge fades away...</span>")
 
 	examine_urge = max(examine_urge-1, 0)
 
@@ -150,10 +150,10 @@
 			shitlist += userguy
 			spawn(20)
 				if(userguy)
-					userguy << "<span class='alert'>Run</span>"
+					to_chat(userguy, "<span class='alert'>Run</span>")
 			spawn(30)
 				if(userguy)
-					userguy << "<span class='danger'>RUN</span>"
+					to_chat(userguy, "<span class='danger'>RUN</span>")
 		else
 			userguy << target_desc_2
 		if(will_scream)
@@ -202,7 +202,7 @@
 	target_turf = get_turf(target)
 
 	if(!chasing_message_played)
-		target << "<span class='danger'>You saw its face</span>"
+		to_chat(target, "<span class='danger'>You saw its face</span>")
 		chasing_message_played = 1
 
 	if(!scare_played) //Let's minimize the spam
@@ -257,14 +257,14 @@
 					sleep(10)
 
 				if(doom_message_played == 0 && get_dist(src,target) < 7)
-					target << "<span class='danger'>YOU SAW ITS FACE</span>"
+					to_chat(target, "<span class='danger'>YOU SAW ITS FACE</span>")
 					doom_message_played = 1
 
 				forceMove(next_turf)
 
 				if(!is_same_level(target_turf))
 					next_turf = target_turf
-					target << "<span class='danger'>DID YOU THINK YOU COULD HIDE?</span>"
+					to_chat(target, "<span class='danger'>DID YOU THINK YOU COULD HIDE?</span>")
 				else
 					dir = get_dir(src, target)
 					next_turf = get_step(src, get_dir(next_turf,target))

@@ -33,7 +33,7 @@
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "You're not able to do that right now."
+		to_chat(src, "You're not able to do that right now.")
 		return
 
 	var/list/choices = list()
@@ -54,19 +54,19 @@
 	var/mob/living/carbon/human/victim
 
 	if(!T || !src || !T.stat)
-		src << "Nope."
+		to_chat(src, "Nope.")
 		return
 
 	if(!Adjacent(T))
-		src << "You have to be next to your target."
+		to_chat(src, "You have to be next to your target.")
 		return
 
 	if(istype(T,/mob/living/carbon/Xenomorph/Larva))
-		src << "This tiny worm is not even worth using your tools on."
+		to_chat(src, "This tiny worm is not even worth using your tools on.")
 		return
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "Not right now."
+		to_chat(src, "Not right now.")
 		return
 
 	if(!T) return
@@ -107,7 +107,7 @@
 				T.butchery_progress = 2
 				playsound(loc, 'sound/weapons/slash.ogg', 25)
 			else
-				src << "You pause your butchering for later."
+				to_chat(src, "You pause your butchering for later.")
 
 		if(T.butchery_progress == 2)
 			if(do_after(src,65, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
@@ -122,7 +122,7 @@
 				T.butchery_progress = 3
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 			else
-				src << "You pause your butchering for later."
+				to_chat(src, "You pause your butchering for later.")
 
 		if(T.butchery_progress == 3)
 			if(do_after(src,70, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
@@ -138,7 +138,7 @@
 				T.butchery_progress = 4
 				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			else
-				src << "You pause your butchering for later."
+				to_chat(src, "You pause your butchering for later.")
 
 		if(T.butchery_progress == 4)
 			if(do_after(src,90, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
@@ -167,15 +167,15 @@
 					T.drop_inv_item_on_ground(T.legcuffed)
 				T.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
-				src << "\blue You finish butchering!"
+				to_chat(src, "<span class='notice'> You finish butchering!</span>")
 				qdel(T)
 			else
-				src << "You pause your butchering for later."
+				to_chat(src, "You pause your butchering for later.")
 	else
 		var/limb = ""
 		switch(procedure)
 			if ("")
-				src << "You pause your butchering for later."
+				to_chat(src, "You pause your butchering for later.")
 				return
 			if ("Behead")
 				limb = "head"
@@ -199,7 +199,7 @@
 		var/limbName = parse_zone(limb)
 		var/mob/living/carbon/human/H = T
 		if(H.get_limb(limb).status & LIMB_DESTROYED)
-			src << "The victim lacks a [limbName]."
+			to_chat(src, "The victim lacks a [limbName].")
 			return
 		if(limb == "head")
 			visible_message("<b>[src] reaches down and starts beheading [T].</b>","<b>You reach down and start beheading [T].</b>")
@@ -207,12 +207,12 @@
 			visible_message("<b>[src] reaches down and starts removing [T]'s [limbName].</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
 		if(do_after(src,90, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(T))
 			if(H.get_limb(limb).status & LIMB_DESTROYED)
-				src << "The victim lacks a [limbName]."
+				to_chat(src, "The victim lacks a [limbName].")
 				return
 			H.get_limb(limb).droplimb(1)
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			H.butchery_progress = 0
-			src << "\blue You finish butchering!"
+			to_chat(src, "<span class='notice'> You finish butchering!</span>")
 
 	return
 
@@ -227,15 +227,15 @@
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "You're not able to do that right now."
+		to_chat(src, "You're not able to do that right now.")
 		return
 
 	if(!isYautja(src))
-		src << "How did you get this verb?"
+		to_chat(src, "How did you get this verb?")
 		return
 
 	if(!istype(get_area(src),/area/yautja))
-		src << "Not here. Only on the ship."
+		to_chat(src, "Not here. Only on the ship.")
 		return
 
 	var/obj/item/clothing/gloves/yautja/Y = src.gloves
@@ -290,10 +290,10 @@
 			choice = mother_1
 
 		if(Y.upgrades > 1)
-			src << "<span class='notice'>Your [Y] hums as it receives a battery and translator upgrade.</span>"
+			to_chat(src, "<span class='notice'>Your [Y] hums as it receives a battery and translator upgrade.</span>")
 			var/newverb = /obj/item/clothing/gloves/yautja/proc/translate
 			Y.verbs |= newverb
 		if(Y.upgrades > 2)
-			src << "<span class='notice'>Your [Y] can now translate to xenomorph hives as well.</span>"
-			src << "<span class='notice'>Your [Y] has been upgraded to carry a scimitar instead of blades.</span>"
+			to_chat(src, "<span class='notice'>Your [Y] can now translate to xenomorph hives as well.</span>")
+			to_chat(src, "<span class='notice'>Your [Y] has been upgraded to carry a scimitar instead of blades.</span>")
 		verbs -= /mob/living/carbon/human/proc/pred_buy

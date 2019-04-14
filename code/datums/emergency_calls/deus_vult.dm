@@ -23,22 +23,22 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
 		arm_equipment(mob, "Gladiator Leader", TRUE)
-		mob << "<font size='3'>\red You are the leader of these holy warriors!</font>"
-		mob << "<B> You must clear out any traces of the unholy from this wretched place!</b>"
-		mob << "<B> Follow any orders directly from the Higher Power!</b>"
+		to_chat(mob, "<font size='3'>\red You are the leader of these holy warriors!</font>")
+		to_chat(mob, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
+		to_chat(mob, "<B> Follow any orders directly from the Higher Power!</b>")
 	else if(heavies < max_heavies)
 		arm_equipment(mob, "Gladiator Champion", TRUE)
-		mob << "<font size='3'>\red You are a champion of the holy warriors!</font>"
-		mob << "<B> You must clear out any traces of the unholy from this wretched place!</b>"
-		mob << "<B> Follow any orders directly from the Higher Power!</b>"
+		to_chat(mob, "<font size='3'>\red You are a champion of the holy warriors!</font>")
+		to_chat(mob, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
+		to_chat(mob, "<B> Follow any orders directly from the Higher Power!</b>")
 		heavies++
 	else
 		arm_equipment(mob, "Gladiator", TRUE)
-		mob << "<font size='3'>\red You are a holy warrior!</font>"
-		mob << "<B> You must clear out any traces of the unholy from this wretched place!</b>"
-		mob << "<B> Follow any orders directly from the Higher Power!</b>"
+		to_chat(mob, "<font size='3'>\red You are a holy warrior!</font>")
+		to_chat(mob, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
+		to_chat(mob, "<B> Follow any orders directly from the Higher Power!</b>")
 
 	sleep(10)
-	M << "<B>Objectives:</b> [objectives]"
+	to_chat(M, "<B>Objectives:</b> [objectives]")
 
 	return

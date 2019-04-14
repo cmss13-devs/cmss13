@@ -50,7 +50,7 @@ won't recognize the older one, as an example.
 
 		if(!banned_jobs.Find(title))
 			banned_jobs[title] = list()
-			world << "New job found in list [title]"
+			to_world("New job found in list [title]")
 
 		if(!reason) banned_jobs[title][ckey] = "Reason Unspecified"
 		else banned_jobs[title][ckey] = reason

@@ -10,27 +10,27 @@
 	set name = "Say"
 	set category = "IC"
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	if(message == "*dance")
 		set_typing_indicator(0)
 		usr.say(message)
 		return
 	if(usr.talked == 2)
-		usr << "\red Your spam has been consumed for it's nutritional value."
+		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
-		usr << "\red You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"
+		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
 		if(usr.chatWarn >= 5)
 			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			usr << "\blue You may now speak again."
+			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		usr << "\blue You just said something, take a breath."
+		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
 		usr.chatWarn++
 		return
 
@@ -51,24 +51,24 @@
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	if(usr.talked == 2)
-		usr << "\red Your spam has been consumed for it's nutritional value."
+		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
 		return
 	if(((usr.talked == 1) && (usr.chatWarn >= 5)) || length(message) > MAX_EMOTE_LEN)
 		usr.talked = 2
-		usr << "\red You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"
+		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
 		if(usr.chatWarn >= 5)
 			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			usr << "\blue You may now speak again."
+			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		usr << "\blue You just said something, take a breath."
+		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
 		usr.chatWarn++
 		return
 
@@ -89,23 +89,23 @@
 	var/name = src.real_name
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	if(usr.talked == 2)
-		usr << "\red Your spam has been consumed for it's nutritional value."
+		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
-		usr << "\red You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"
+		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
 		if(usr.chatWarn >10)
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			usr << "\blue You may now speak again."
+			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		usr << "\blue You just said something, take a breath."
+		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
 		usr.chatWarn++
 		return
 
@@ -116,11 +116,11 @@
 
 	if(!src.client.admin_holder)
 		if(!dsay_allowed)
-			src << "\red Deadchat is globally muted"
+			to_chat(src, "<span class='danger'>Deadchat is globally muted</span>")
 			return
 
 	if(client && client.prefs && !(client.prefs.toggles_chat & CHAT_DEAD))
-		usr << "\red You have deadchat muted."
+		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
 		return
 /*
 	if(mind && mind.name)

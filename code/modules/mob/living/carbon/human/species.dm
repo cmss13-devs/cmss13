@@ -418,17 +418,17 @@
 	if(!H.regenZ) return  //Also in each check, in case they are hit with the stuff to stop the regenerating during timers.
 	sleep(5)
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		H << "\green You fall... but your body is slowly regenerating itself."
+		to_chat(H, "<span class='xenowarning'> You fall... but your body is slowly regenerating itself.</span>")
 	sleep(1200)
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		H << "\green Your body is half regenerated..."
+		to_chat(H, "<span class='xenowarning'> Your body is half regenerated...</span>")
 	sleep(1200)
 
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
 		H.revive(TRUE)
 		H.stunned = 4
 		H.make_jittery(500)
-		H.visible_message("<span class = 'warning'>[H] rises!", "\green YOU RISE AGAIN!")
+		H.visible_message("<span class = 'warning'>[H] rises!", "<span class='xenowarning'> YOU RISE AGAIN!</span>")
 		H.equip_to_slot(new /obj/item/clothing/glasses/zombie_eyes, WEAR_EYES, TRUE)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET, TRUE)
 

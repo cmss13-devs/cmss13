@@ -201,14 +201,14 @@
 			return
 		if(burst_amount == config.med_burst_value && (flags_gun_features & GUN_BURST_ON))
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			usr << "<span class='notice'>\icon[src] You set [src] to full auto mode.</span>"
+			to_chat(usr, "<span class='notice'>\icon[src] You set [src] to full auto mode.</span>")
 			burst_amount = config.mhigh_burst_value
 			burst_scatter_mult = config.high_scatter_value
 			return
 		if(burst_amount == config.mhigh_burst_value && !(flags_gun_features & GUN_BURST_ON))
 			flags_gun_features |= GUN_BURST_ON
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			usr << "<span class='notice'>\icon[src] You set [src] to semi auto mode.</span>"
+			to_chat(usr, "<span class='notice'>\icon[src] You set [src] to semi auto mode.</span>")
 			burst_amount = config.med_burst_value
 			burst_scatter_mult = config.low_scatter_value
 			return
@@ -508,7 +508,7 @@
 
 
 /obj/item/weapon/gun/rifle/type71/toggle_burst()
-	usr << "<span class='warning'>This weapon can only fire in bursts!</span>"
+	to_chat(usr, "<span class='warning'>This weapon can only fire in bursts!</span>")
 
 
 /obj/item/weapon/gun/rifle/type71/flamer
@@ -652,11 +652,11 @@
 		return
 
 	if(zoom)
-		usr << "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>"
+		to_chat(usr, "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>")
 		return
 
 	if(!rail && !muzzle && !under && !stock)
-		usr << "<span class='warning'>This weapon has no attachables. You can only field strip enhanced weapons!</span>"
+		to_chat(usr, "<span class='warning'>This weapon has no attachables. You can only field strip enhanced weapons!</span>")
 		return
 
 	var/list/possible_attachments = list()
@@ -671,7 +671,7 @@
 		possible_attachments += stock
 
 	if(!possible_attachments.len)
-		usr << "<span class='warning'>[src] has no removable attachments.</span>"
+		to_chat(usr, "<span class='warning'>[src] has no removable attachments.</span>")
 		return
 
 	var/obj/item/attachable/A
@@ -739,11 +739,11 @@
 		return
 
 	if(zoom)
-		usr << "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>"
+		to_chat(usr, "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>")
 		return
 
 	if(!muzzle)
-		usr << "<span class='warning'>This weapon has no barrel attachaments to remove!</span>"
+		to_chat(usr, "<span class='warning'>This weapon has no barrel attachaments to remove!</span>")
 		return
 
 	var/obj/item/attachable/A = muzzle

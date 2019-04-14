@@ -3,9 +3,9 @@
 	set name = "DEBUG EVAC SHUTTLE"
 	set category = "DEBUG"
 
-	world << "Location is [emergency_shuttle.shuttle.location]"
-	world << "Moving status is [emergency_shuttle.shuttle.moving_status]"
-	world << "Departed is [emergency_shuttle.departed]"
+	to_world("Location is [emergency_shuttle.shuttle.location]")
+	to_world("Moving status is [emergency_shuttle.shuttle.moving_status]")
+	to_world("Departed is [emergency_shuttle.departed]")
 
 */
 #define QUEEN_DEATH_COUNTDOWN 			 MINUTES_10 //10 minutes. Can be changed into a variable if it needs to be manipulated later.
@@ -100,15 +100,15 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(playerTurf.z != 2)
-						Player << "<span class='round_body'>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</span>"
+						to_chat(Player, "<span class='round_body'>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</span>")
 					else
-						Player << "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>"
+						to_chat(Player, "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>")
 				else if(playerTurf.z == 2)
-					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>"
+					to_chat(Player, "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>")
 				else if(issilicon(Player))
-					Player << "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>"
+					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>")
 				else
-					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>"
+					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>")
 			else
 
 	if(xenomorphs.len)
@@ -196,7 +196,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 //Disperses fog, doing so gradually.
 /datum/game_mode/proc/disperse_fog()
 	set waitfor = 0
-	//world << "<span class='boldnotice'>The fog north of the colony is starting to recede.</span>" //Let's try it without an announcement.
+	//to_world("<span class='boldnotice'>The fog north of the colony is starting to recede.</span>") //Let's try it without an announcement.
 	flags_round_type &= ~MODE_FOG_ACTIVATED
 	var/i
 	for(i in round_fog)
@@ -299,13 +299,13 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		for(var/mob/M in player_list)
 			//Announce the numbers to Yautja, they have good scanners
 			if (isYautja(M))
-				M << "<h2 class='alert'>Bioscan complete</h2>"
-				M << "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""], with [larva] larva.\n[numXenosShip] serpents present on the ooman ship[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]\n[numHostsPlanet] oomans present in the hunting ground[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]\n[numHostsShip] oomans present on the ooman ship[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]</span>"
+				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
+				to_chat(M, "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[RandomXenosPlanetLocation?"), including one in [RandomXenosPlanetLocation]":""], with [larva] larva.\n[numXenosShip] serpents present on the ooman ship[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]\n[numHostsPlanet] oomans present in the hunting ground[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]\n[numHostsShip] oomans present on the ooman ship[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]</span>")
 
 			//Let the ghosts know what's up, they also get good numbers
 			if (isobserver(M))
-				M << "<h2 class='alert'>Bioscan complete</h2>"
-				M << "<span class='alert'>[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship.</span>"
+				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
+				to_chat(M, "<span class='alert'>[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship.</span>")
 
 	//Adjust the randomness there so everyone gets the same thing
 	numHostsShip = max(0, numHostsShip + rand(-delta, delta))
@@ -325,8 +325,8 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		for(var/mob/M in player_list)
 			if(isXeno(M))
 				M << sound(get_sfx("queen"), wait = 0, volume = 50)
-				M << "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>"
-				M << "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? "approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""] and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""].</span>"
+				to_chat(M, "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>")
+				to_chat(M, "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? ")approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""] and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""].</span>")
 
 
 	if(world.time > nextHumanBioscan)

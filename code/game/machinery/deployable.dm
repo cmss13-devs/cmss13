@@ -32,47 +32,47 @@
 					src.anchored = !src.anchored
 					src.icon_state = "barrier[src.locked]"
 					if ((src.locked == 1.0) && (src.emagged < 2.0))
-						user << "Barrier lock toggled on."
+						to_chat(user, "Barrier lock toggled on.")
 						return
 					else if ((src.locked == 0.0) && (src.emagged < 2.0))
-						user << "Barrier lock toggled off."
+						to_chat(user, "Barrier lock toggled off.")
 						return
 				else
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(2, 1, src)
 					s.start()
-					visible_message("\red BZZzZZzZZzZT")
+					visible_message("<span class='danger'>BZZzZZzZZzZT</span>")
 					return
 			return
 		else if (istype(W, /obj/item/card/emag))
 			if (src.emagged == 0)
 				src.emagged = 1
 				src.req_access = null
-				user << "You break the ID authentication lock on \the [src]."
+				to_chat(user, "You break the ID authentication lock on \the [src].")
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
-				visible_message("\red BZZzZZzZZzZT")
+				visible_message("<span class='danger'>BZZzZZzZZzZT</span>")
 				return
 			else if (src.emagged == 1)
 				src.emagged = 2
-				user << "You short out the anchoring mechanism on \the [src]."
+				to_chat(user, "You short out the anchoring mechanism on \the [src].")
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(2, 1, src)
 				s.start()
-				visible_message("\red BZZzZZzZZzZT")
+				visible_message("<span class='danger'>BZZzZZzZZzZT</span>")
 				return
 		else if (istype(W, /obj/item/tool/wrench))
 			if (src.health < src.maxhealth)
 				src.health = src.maxhealth
 				src.emagged = 0
 				src.req_access = list(ACCESS_MARINE_PREP)
-				visible_message("\red [user] repairs \the [src]!")
+				visible_message("<span class='danger'>[user] repairs \the [src]!</span>")
 				return
 			else if (src.emagged > 0)
 				src.emagged = 0
 				src.req_access = list(ACCESS_MARINE_PREP)
-				visible_message("\red [user] repairs \the [src]!")
+				visible_message("<span class='danger'>[user] repairs \the [src]!</span>")
 				return
 			return
 		else
@@ -110,7 +110,7 @@
 
 	proc/explode()
 
-		visible_message("\red <B>[src] blows apart!</B>")
+		visible_message("<span class='danger'><B>[src] blows apart!</B></span>")
 		var/turf/Tsec = get_turf(src)
 
 	/*	var/obj/item/stack/rods/ =*/

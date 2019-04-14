@@ -271,7 +271,7 @@
 	if(not_deconstructable)
 		return 0
 	if(anchored)
-		usr << "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>"
+		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
 		return 0
 
 	dir = turn(dir, 90)
@@ -288,7 +288,7 @@
 	if(not_deconstructable)
 		return 0
 	if(anchored)
-		usr << "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>"
+		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
 		return 0
 
 	dir = turn(dir, 270)

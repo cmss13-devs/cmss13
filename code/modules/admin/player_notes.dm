@@ -116,7 +116,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 		if(usr.client && usr.client.admin_holder)
 			P.rank = usr.client.admin_holder.rank
 		else
-			usr << "NA01: Something went wrong, tell a coder."
+			to_chat(usr, "NA01: Something went wrong, tell a coder.")
 			return
 	else
 		P.author = "Adminbot"
@@ -127,7 +127,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	infos += P
 	info << infos
 
-	message_admins("\blue [key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
+	message_admins("<span class='notice'>[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]</span>")
 	log_admin("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
 
 	qdel(info)
@@ -152,7 +152,7 @@ datum/admins/proc/notes_gethtml(var/ckey)
 	infos.Remove(item)
 	info << infos
 
-	message_admins("\blue [key_name_admin(usr)] deleted one of [key]'s notes.")
+	message_admins("<span class='notice'>[key_name_admin(usr)] deleted one of [key]'s notes.</span>")
 	log_admin("[key_name_admin(usr)] deleted one of [key]'s notes.")
 
 	qdel(info)

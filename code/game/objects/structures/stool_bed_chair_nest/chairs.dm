@@ -233,7 +233,7 @@
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/attackby(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/wrench) && chair_state == DROPSHIP_CHAIR_BROKEN)
-		user << "<span class='warning'>\The [src] appears to be broken and needs welding.</span>"
+		to_chat(user, "<span class='warning'>\The [src] appears to be broken and needs welding.</span>")
 		return
 	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
 		var/obj/item/tool/weldingtool/C = W
@@ -271,7 +271,7 @@
 					unfold_up()
 					return
 			if(DROPSHIP_CHAIR_BROKEN)
-				user << "<span class='warning'>\The [src] appears to be broken and needs welding.</span>"
+				to_chat(user, "<span class='warning'>\The [src] appears to be broken and needs welding.</span>")
 				return
 	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
 		var/obj/item/tool/weldingtool/C = W

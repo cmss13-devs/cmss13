@@ -23,3 +23,7 @@
 #define SMOKE_RANK_MED			3
 #define SMOKE_RANK_HIGH			4
 #define SMOKE_RANK_BOILER		5
+
+//flag for skipping bioscans
+
+#define AREA_AVOID_BIOSCAN      1

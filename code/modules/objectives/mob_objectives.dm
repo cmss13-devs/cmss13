@@ -269,7 +269,7 @@
 	name = "Recover Xeno corpse specimens"
 	display_flags = OBJ_DISPLAY_AT_END
 	points_per_corpse = 50
-	recovery_area = /area/almayer/medical/medical_science
+	recovery_area = /area/almayer/medical/containment
 
 /datum/cm_objective/recover_corpses/xenos/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
 	if(!(X in corpses))

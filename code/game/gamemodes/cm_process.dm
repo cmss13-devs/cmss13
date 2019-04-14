@@ -230,6 +230,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	var/numHostsShip	= 0
 	var/numXenosPlanet	= 0
 	var/numXenosShip	= 0
+	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
 
 	//We're assembling a list of locations so we can give hint about a random one
 	var/list/hostsPlanetLocations = list()
@@ -249,12 +250,17 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		peakXenos = living_xeno_list.len
 
 	for(var/mob/M in living_xeno_list)
+		var/area/A = get_area(M)
+		if (A.flags_atom & AREA_AVOID_BIOSCAN)
+			numXenosShip++
+			continue
 		var/atom/where = M
 		if (where == 0 && M.loc)
 			where = M.loc
 		switch(where.z)
 			if(3)//On the ship
 				numXenosShip++
+				numXenosShipAres++
 				xenosShipLocations+=where
 			if(1)//planet
 				numXenosPlanet++
@@ -333,7 +339,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		lastHumanBioscan = world.time
 		// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShip ? "[numXenosShip]":"no"] unknown lifeform signature[!numXenosShip || numXenosShip > 1 ? "s":""] present on the ship[numXenosShip&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
+		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
 		command_announcement.Announce(input, name, new_sound = 'sound/AI/bioscan.ogg')
 
 /*
@@ -359,8 +365,16 @@ Only checks living mobs with a client attached.
 				var/mob/living/carbon/human/H = M
 				if(H.species && H.species.name == "Human") //only real humans count
 					num_humans++
-			else if(isXeno(M)) num_xenos++
-			else if(iszombie(M)) num_xenos++
+			else 
+				var/area/A = get_area(M)
+				if(isXeno(M))
+					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+						continue
+					num_xenos++
+				else if(iszombie(M))
+					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+						continue
+					num_xenos++
 
 	return list(num_humans,num_xenos)
 

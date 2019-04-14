@@ -401,6 +401,12 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical/containment
+	name = "\improper Medical Research containment"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+	flags_atom = AREA_AVOID_BIOSCAN
+
 /area/almayer/medical/chemistry
 	name = "\improper Medical Chemical laboratory"
 	icon_state = "chemistry"

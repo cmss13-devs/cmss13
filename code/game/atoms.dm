@@ -24,6 +24,11 @@ var/global/list/ghdel_profiling = list()
 	var/timestopped
 
 
+// Temporary call in place for preparation of implementing SSatoms.
+/atom/New()
+	. = ..()
+	initialize()
+
 /*
 We actually care what this returns, since it can return different directives.
 Not specifically here, but in other variations of this. As a general safety,

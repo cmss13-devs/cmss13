@@ -648,21 +648,7 @@ should be alright.
 	else
 		A = input("Which attachment to remove?") as null|anything in possible_attachments
 
-	if(!A)
-		return
-
-	if(get_active_firearm(usr) != src)//dropped the gun
-		return
-
-	if(usr.action_busy)
-		return
-
-	if(zoom)
-		return
-
-	if(A != rail && A != muzzle && A != under && A != stock)
-		return
-	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
+	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (A != rail && A != muzzle && A != under && A != stock) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return
 
 	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
@@ -684,7 +670,7 @@ should be alright.
 	A.Detach(src)
 
 	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
-	update_attachables()
+	update_icon()
 
 /obj/item/weapon/gun/verb/toggle_burst()
 	set category = "Weapons"

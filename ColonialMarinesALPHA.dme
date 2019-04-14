@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
 #include "code\stylesheet.dm"
@@ -177,7 +178,6 @@
 #include "code\datums\diseases\plasmatoid.dm"
 #include "code\datums\diseases\rhumba_beat.dm"
 #include "code\datums\diseases\robotic_transformation.dm"
-#include "code\datums\diseases\wizarditis.dm"
 #include "code\datums\diseases\xeno_transformation.dm"
 #include "code\datums\diseases\advance\advance.dm"
 #include "code\datums\diseases\advance\presets.dm"
@@ -787,7 +787,6 @@
 #include "code\game\turfs\walls\walls.dm"
 #include "code\game\verbs\atom_verbs.dm"
 #include "code\game\verbs\ooc.dm"
-#include "code\game\verbs\suicide.dm"
 #include "code\game\verbs\who.dm"
 #include "code\js\byjax.dm"
 #include "code\js\menus.dm"

@@ -28,7 +28,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				else 					drop_r_hand()
 				i++
 			if(i) msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
-			H << "<span class='warning'>[msg].</span>"
+			to_chat(H, "<span class='warning'>[msg].</span>")
 
 	if(burning)
 		switch(amount)

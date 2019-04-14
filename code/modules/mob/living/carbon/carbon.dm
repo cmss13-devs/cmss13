@@ -30,7 +30,7 @@
 		if(prob(30))
 			for(var/mob/M in hearers(4, src))
 				if(M.client)
-					M.show_message("\red You hear something rumbling inside [src]'s stomach...", 2)
+					M.show_message("<span class='danger'>You hear something rumbling inside [src]'s stomach...</span>", 2)
 		var/obj/item/I = user.get_active_hand()
 		if(I && I.force)
 			var/d = rand(round(I.force / 4), I.force)
@@ -46,7 +46,7 @@
 				src.take_limb_damage(d)
 			for(var/mob/M in viewers(user, null))
 				if(M.client)
-					M.show_message(text("\red <B>[user] attacks [src]'s stomach wall with the [I.name]!"), 2)
+					M.show_message(text("<span class='danger'><B>[user] attacks [src]'s stomach wall with the [I.name]!</span>"), 2)
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
@@ -140,9 +140,9 @@
 	playsound(loc, "sparks", 25, 1)
 	if (shock_damage > 10)
 		src.visible_message(
-			"\red [src] was shocked by the [source]!", \
-			"\red <B>You feel a powerful shock course through your body!</B>", \
-			"\red You hear a heavy electrical crack." \
+			"<span class='danger'>[src] was shocked by the [source]!</span>", \
+			"<span class='danger'><B>You feel a powerful shock course through your body!</B></span>", \
+			"<span class='danger'>You hear a heavy electrical crack.</span>" \
 		)
 		if(isXeno(src) && mob_size == MOB_SIZE_BIG)
 			Stun(1)//Sadly, something has to stop them from bumping them 10 times in a second
@@ -152,9 +152,9 @@
 			KnockDown(10)
 	else
 		src.visible_message(
-			"\red [src] was mildly shocked by the [source].", \
-			"\red You feel a mild shock course through your body.", \
-			"\red You hear a light zapping." \
+			"<span class='danger'>[src] was mildly shocked by the [source].</span>", \
+			"<span class='danger'>You feel a mild shock course through your body.</span>", \
+			"<span class='danger'>You hear a light zapping.</span>" \
 		)
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -169,7 +169,7 @@
 	if(wielded_item && (wielded_item.flags_item & WIELDED)) //this segment checks if the item in your hand is twohanded.
 		var/obj/item/weapon/twohanded/offhand/offhand = get_inactive_hand()
 		if(offhand && (offhand.flags_item & WIELDED))
-			src << "<span class='warning'>Your other hand is too busy holding \the [offhand.name]</span>" //So it's an offhand.
+			to_chat(src, "<span class='warning'>Your other hand is too busy holding \the [offhand.name]</span>") //So it's an offhand.
 			return
 		else wielded_item.unwield(src) //Get rid of it.
 	if(wielded_item && wielded_item.zoom) //Adding this here while we're at it
@@ -286,7 +286,7 @@
 					usr.attack_log += "\[[time_stamp()]\] <font color='red'>Has thrown [M.name] ([M.ckey]) from [start_T_descriptor] with the target [end_T_descriptor]</font>"
 					msg_admin_attack("[usr.name] ([usr.ckey]) has thrown [M.name] ([M.ckey]) from [start_T_descriptor] with the target [end_T_descriptor] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[usr.x];Y=[usr.y];Z=[usr.z]'>JMP</a>)")
 			else
-				src << "<span class='warning'>You need a better grip!</span>"
+				to_chat(src, "<span class='warning'>You need a better grip!</span>")
 
 	else //real item in hand, not a grab
 		thrown_thing = I
@@ -354,7 +354,7 @@
 	set category = "IC"
 
 	if(usr.sleeping)
-		usr << "\red You are already sleeping"
+		to_chat(usr, "<span class='danger'>You are already sleeping</span>")
 		return
 	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
 		usr.sleeping = 20 //Short nap
@@ -371,7 +371,7 @@
 	if(run_only && (m_intent != MOVE_INTENT_RUN)) return FALSE
 	if(lying) return FALSE //can't slip if already lying down.
 	stop_pulling()
-	src << "<span class='warning'>You slipped on \the [slip_source_name? slip_source_name : "floor"]!</span>"
+	to_chat(src, "<span class='warning'>You slipped on \the [slip_source_name? slip_source_name : "floor"]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 25, 1)
 	Stun(stun_level)
 	KnockDown(weaken_level)

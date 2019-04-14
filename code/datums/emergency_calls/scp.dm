@@ -30,30 +30,30 @@
 		mob.mind.special_role = "MODE"
 		if(prob(55)) //Randomize the heavy commandos and standard PMCs.
 			arm_equipment(mob, "Weyland-Yutani SCP PMC (Standard)", TRUE)
-			mob << "<font size='3'>\red You are a Weyland Yutani mercenary!</font>"
+			to_chat(mob, "<font size='3'>\red You are a Weyland Yutani mercenary!</font>")
 		else
 			if(prob(30))
 				arm_equipment(mob, "Weyland-Yutani SCP PMC (Sniper)", TRUE)
-				mob << "<font size='3'>\red You are a Weyland Yutani sniper!</font>"
+				to_chat(mob, "<font size='3'>\red You are a Weyland Yutani sniper!</font>")
 			else
 				arm_equipment(mob, "Weyland-Yutani SCP PMC (Gunner)", TRUE)
-				mob << "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>"
+				to_chat(mob, "<font size='3'>\red You are a Weyland Yutani heavy gunner!</font>")
 	print_backstory(mob)
 
 	sleep(10)
-	M << "<B>Objectives:</b> [objectives]"
+	to_chat(M, "<B>Objectives:</b> [objectives]")
 
 
 
 /datum/emergency_call/scp/print_backstory(mob/living/carbon/human/M)
-	M << "<B>You are part of Weyland Yutani Special Task Force Royal that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector.</b>"
-	M << "<B>Task-force Royal is stationed aboard the USCSS Lunalorne, a powerful Weyland-Yutani cruiser that patrols the outer edges of Tychon's Rift.</b>"
-	M << "<B>Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland Yutani science teams.</b>"
-	M << "<B>The USCSS Lunalorne contains a crew of roughly two hundred PMCs, and one hundred scientists and support personnel.</b>"
-	M << ""
-	M << ""
-	M << "<B>Sweep the [MAIN_SHIP_NAME], secure the speciment, get it safely back onto your shuttle and return.</b>"
-	M << "<B>Don't antagonise the crew or engage hostiles, unless they stand between you and your mission.</b>"
+	to_chat(M, "<B>You are part of Weyland Yutani Special Task Force Royal that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector.</b>")
+	to_chat(M, "<B>Task-force Royal is stationed aboard the USCSS Lunalorne, a powerful Weyland-Yutani cruiser that patrols the outer edges of Tychon's Rift.</b>")
+	to_chat(M, "<B>Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland Yutani science teams.</b>")
+	to_chat(M, "<B>The USCSS Lunalorne contains a crew of roughly two hundred PMCs, and one hundred scientists and support personnel.</b>")
+	to_chat(M, "")
+	to_chat(M, "")
+	to_chat(M, "<B>Sweep the [MAIN_SHIP_NAME], secure the speciment, get it safely back onto your shuttle and return.</b>")
+	to_chat(M, "<B>Don't antagonise the crew or engage hostiles, unless they stand between you and your mission.</b>")
 
 
 /datum/emergency_call/scp/spawn_items()

@@ -129,7 +129,7 @@
 		if(command_aura_cooldown > 0)
 			command_aura_cooldown--
 		if(command_aura_cooldown == 0 && !command_aura_notified)
-			src << "<span class='notice'>You can issue an order again.</span>"
+			to_chat(src, "<span class='notice'>You can issue an order again.</span>")
 			command_aura_notified = TRUE
 		if(command_aura)
 			command_aura_tick--

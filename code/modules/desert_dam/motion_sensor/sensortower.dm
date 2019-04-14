@@ -69,23 +69,23 @@
 	if(!anchored) return 0 //Shouldn't actually be possible
 	if(user.is_mob_incapacitated()) return 0
 	if(!ishuman(user))
-		user << "\red You have no idea how to use that." //No xenos or mankeys
+		to_chat(user, "<span class='danger'>You have no idea how to use that.</span>") //No xenos or mankeys
 		return 0
 
 	add_fingerprint(user)
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		user << "<span class='warning'>You have no clue how this thing works...</span>"
+		to_chat(user, "<span class='warning'>You have no clue how this thing works...</span>")
 		return 0
 
 	if(buildstate == 1)
-		usr << "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it."
+		to_chat(usr, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.")
 		return 0
 	else if (buildstate == 2)
-		usr << "<span class='info'>Use a wirecutters, then wrench to repair it."
+		to_chat(usr, "<span class='info'>Use a wirecutters, then wrench to repair it.")
 		return 0
 	else if (buildstate == 3)
-		usr << "<span class='info'>Use a wrench to repair it."
+		to_chat(usr, "<span class='info'>Use a wrench to repair it.")
 		return 0
 	if(is_on)
 		visible_message("\icon[src] <span class='warning'><b>[src]</b> goes dark as [usr] shuts the power off.")
@@ -105,7 +105,7 @@
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair this thing.</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
@@ -122,12 +122,12 @@
 					update_icon()
 					r_TRU
 			else
-				user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 				return
 	else if(iswirecutter(O))
 		if(buildstate == 2 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair this thing.</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] starts securing [src]'s wiring.</span>",
@@ -143,7 +143,7 @@
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair this thing.</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] starts repairing [src]'s tubing and plating.</span>",

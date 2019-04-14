@@ -23,7 +23,7 @@
 		select_gamemode_skin(type, override_icon_state, new_protection)
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
-	user << "<span class='warning'>The sensors in your uniform can't be modified.</span>"
+	to_chat(user, "<span class='warning'>The sensors in your uniform can't be modified.</span>")
 	return
 
 /obj/item/clothing/under/marine/medic

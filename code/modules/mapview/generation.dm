@@ -189,24 +189,24 @@
 			continue
 		if(H.stat == DEAD)
 			continue
-		//world << "found a human at [H.x],[H.y]"
+		//to_world("found a human at [H.x],[H.y]")
 		if(!H.assigned_squad)
 			marines_with_helmets[5] += H
-			//world << "put them in other"
+			//to_world("put them in other")
 			continue
 		switch(H.assigned_squad.color) // because string compares are expensive
 			if(1)
 				marines_with_helmets[1] += H
-				//world << "put them in alpha"
+				//to_world("put them in alpha")
 			if(2)
 				marines_with_helmets[2] += H
-				//world << "put them in bravo"
+				//to_world("put them in bravo")
 			if(3)
 				marines_with_helmets[3] += H
-				//world << "put them in charlie"
+				//to_world("put them in charlie")
 			if(4)
 				marines_with_helmets[4] += H
-				//world << "put them in delta"
+				//to_world("put them in delta")
 	var/list/colors = squad_colors.Copy()
 	colors += rgb(51,204,51)
 	var/selected = 0
@@ -220,10 +220,10 @@
 		colors[selected] = squad_colors[selected]
 	var/j
 	for(j=1,j<=marines_with_helmets.len,j++)
-		//world << "drawing squad [j]"
+		//to_world("drawing squad [j]")
 		if(j == selected) continue
 		for(var/mob/living/carbon/human/L in marines_with_helmets[j])
-			//world << "drawing [L]"
+			//to_world("drawing [L]")
 			newoverlay.DrawBox(colors[j],L.loc.x-1,L.loc.y-1,L.loc.x+1,L.loc.y+1)
 	if(selected)
 		for(var/mob/living/carbon/human/sel in marines_with_helmets[selected])

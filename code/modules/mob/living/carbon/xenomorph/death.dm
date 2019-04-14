@@ -72,7 +72,7 @@
 	if(src in hive.xeno_leader_list)	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.xeno_leader_list -= src
 		if(hive.living_xeno_queen)
-			hive.living_xeno_queen << "<span class='xenonotice'>A leader has fallen!</span>" //alert queens so they can choose another leader
+			to_chat(hive.living_xeno_queen, "<span class='xenonotice'>A leader has fallen!</span>") //alert queens so they can choose another leader
 
 	hud_set_queen_overwatch() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 

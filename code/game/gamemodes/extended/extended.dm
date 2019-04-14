@@ -8,7 +8,7 @@
 	uplink_uses = 10
 
 /datum/game_mode/announce()
-	world << "<B>The current game mode is - Extended!</B>"
+	to_world("<B>The current game mode is - Extended!</B>")
 
 /datum/game_mode/extended/pre_setup()
 	return 1

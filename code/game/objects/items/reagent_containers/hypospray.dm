@@ -20,7 +20,7 @@
 
 /obj/item/reagent_container/hypospray/attack(mob/M, mob/living/user)
 	if(!reagents.total_volume)
-		user << "\red [src] is empty."
+		to_chat(user, "<span class='danger'>[src] is empty.</span>")
 		return
 	if (!istype(M))
 		return
@@ -49,8 +49,8 @@
 			playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			return 0
 
-		user << "\blue You inject [M] with [src]."
-		M << "\red You feel a tiny prick!"
+		to_chat(user, "<span class='notice'> You inject [M] with [src].</span>")
+		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
 		playsound(loc, 'sound/items/hypospray.ogg', 50, 1)
 
 		src.reagents.reaction(M, INGEST)
@@ -65,7 +65,7 @@
 			msg_admin_attack("[user.name] ([user.ckey]) injected [M.name] ([M.key]) with [src.name]. Reagents: [contained] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 			var/trans = reagents.trans_to(M, amount_per_transfer_from_this)
-			user << "\blue [trans] units injected. [reagents.total_volume] units remaining in [src]."
+			to_chat(user, "<span class='notice'> [trans] units injected. [reagents.total_volume] units remaining in [src].</span>")
 
 	return 1
 

@@ -47,7 +47,7 @@
 	set waitfor = 0
 	if(stat & NOPOWER) return
 	if(get_point_store() < text2num(cost))
-		user << "<span class='warning'>You don't have enough points to build that.</span>"
+		to_chat(user, "<span class='warning'>You don't have enough points to build that.</span>")
 		return
 	visible_message("<span class='notice'>[src] starts printing something.</span>")
 	spend_point_store(text2num(cost))
@@ -68,7 +68,7 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		usr << "<span class='warning'>The autolathe is busy. Please wait for completion of previous operation.</span>"
+		to_chat(usr, "<span class='warning'>The autolathe is busy. Please wait for completion of previous operation.</span>")
 		return
 
 	if(href_list["produce"])
@@ -76,13 +76,13 @@
 		var/cost = href_list["cost"]
 		var/printed = produce
 		if(!cost || !printed)
-			world << "printed: [printed], cost: [cost]"
+			to_world("printed: [printed], cost: [cost]")
 			return //Someone's trying to href exploit most likely.
 		build_part(printed, cost, usr)
 		return
 /obj/machinery/part_fabricator/attack_hand(mob/user)
 	if(!allowed(user))
-		user << "<span class='warning'>Access denied.</span>"
+		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
 	return . = ..()
 

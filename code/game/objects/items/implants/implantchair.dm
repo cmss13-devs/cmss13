@@ -103,10 +103,10 @@
 
 	put_mob(mob/living/carbon/M)
 		if(!iscarbon(M))
-			usr << "\red <B>The [src.name] cannot hold this!</B>"
+			to_chat(usr, "<span class='danger'><B>The [src.name] cannot hold this!</B></span>")
 			return
 		if(src.occupant)
-			usr << "\red <B>The [src.name] is already occupied!</B>"
+			to_chat(usr, "<span class='danger'><B>The [src.name] is already occupied!</B></span>")
 			return
 		M.forceMove(src)
 		src.occupant = M
@@ -123,7 +123,7 @@
 			if(!imp)	continue
 			if(istype(imp, /obj/item/implant/loyalty))
 				for (var/mob/O in viewers(M, null))
-					O.show_message("\red [M] has been implanted by the [src.name].", 1)
+					O.show_message("<span class='danger'>[M] has been implanted by the [src.name].</span>", 1)
 
 				if(imp.implanted(M))
 					imp.loc = M

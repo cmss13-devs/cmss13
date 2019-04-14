@@ -180,10 +180,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			user << "There's already a [L]  at this position!"
+			to_chat(user, "There's already a [L]  at this position!")
 			return
 
-		user << "Now planting \the [L]."
+		to_chat(user, "Now planting \the [L].")
 		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 			return
 
@@ -286,7 +286,7 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja))
 					var/obj/item/clothing/gloves/yautja/Y = H.gloves
 					if(Y && istype(Y) && Y.cloaked)
-						H << "<span class='warning'> Your bracers hiss and spark as they short out!</span>"
+						to_chat(H, "<span class='warning'> Your bracers hiss and spark as they short out!</span>")
 						Y.decloak(H)
 
 		else if(isXeno(C))
@@ -445,7 +445,7 @@
 	if(probability <= 0)
 		return
 
-	//world << "\blue Spread([probability])"
+	//to_world("<span class='notice'> Spread([probability])</span>")
 	for(var/turf/open/jungle/J in orange(1, src))
 		if(!J.bushes_spawn)
 			continue
@@ -464,10 +464,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			user << "There's already a [L]  at this position!"
+			to_chat(user, "There's already a [L]  at this position!")
 			return
 
-		user << "Now planting \the [L]."
+		to_chat(user, "Now planting \the [L].")
 		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
 			return
 
@@ -533,36 +533,36 @@
 		var/mob/living/M = O
 		//slip in the murky water if we try to run through it
 		if(prob(10 + (M.m_intent == MOVE_INTENT_RUN ? 40 : 0)))
-			M << pick("\blue You slip on something slimy.","\blue You fall over into the murk.")
+			M << pick("<span class='notice'>You slip on something slimy.</span>","<span class='notice'>You fall over into the murk.</span>")
 			M.Stun(2)
 			M.KnockDown(1)
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
-			M << "\blue You feel something slithering around your legs."
+			to_chat(M, "<span class='notice'> You feel something slithering around your legs.</span>")
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
+						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
+						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
+						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("\red Something sharp bites you!","\red Sharp teeth grab hold of you!","\red You feel something take a chunk out of your leg!")
+						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 
 /turf/open/jungle/water/deep

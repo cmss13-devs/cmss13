@@ -260,53 +260,53 @@
 			if("Cancel")
 				return
 			else
-				user << "DERP! BUG! Report this (And what you were doing to cause it) to Agouri"
+				to_chat(user, "DERP! BUG! Report this (And what you were doing to cause it) to Agouri")
 	return
 
 /obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/card/emag))
 		if(emagged)
-			user << "Circuit lock is already removed."
+			to_chat(user, "Circuit lock is already removed.")
 			return
-		user << "\blue You override the circuit lock and open controls."
+		to_chat(user, "<span class='notice'> You override the circuit lock and open controls.</span>")
 		emagged = 1
 		locked = 0
 	else if(istype(I,/obj/item/card/id))
 		if(emagged)
-			user << "\red Circuit lock does not respond."
+			to_chat(user, "<span class='danger'>Circuit lock does not respond.</span>")
 			return
 		if(check_access(I))
 			locked = !locked
-			user << "\blue You [locked ? "" : "un"]lock the circuit controls."
+			to_chat(user, "<span class='notice'> You [locked ? "" : "un"]lock the circuit controls.</span>")
 		else
-			user << "\red Access denied."
+			to_chat(user, "<span class='danger'>Access denied.</span>")
 	else if(istype(I,/obj/item/device/multitool))
 		if(locked)
-			user << "\red Circuit controls are locked."
+			to_chat(user, "<span class='danger'>Circuit controls are locked.</span>")
 			return
 		var/existing_networks = list2text(network,",")
 		var/input = strip_html(input(usr, "Which networks would you like to connect this camera console circuit to? Seperate networks with a comma. No Spaces!\nFor example: military,Security,Secret ", "Multitool-Circuitboard interface", existing_networks))
 		if(!input)
-			usr << "No input found please hang up and try your call again."
+			to_chat(usr, "No input found please hang up and try your call again.")
 			return
 		var/list/tempnetwork = text2list(input, ",")
 		tempnetwork = difflist(tempnetwork,RESTRICTED_CAMERA_NETWORKS,1)
 		if(tempnetwork.len < 1)
-			usr << "No network found please hang up and try your call again."
+			to_chat(usr, "No network found please hang up and try your call again.")
 			return
 		network = tempnetwork
 	return
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/tool/screwdriver))
-		user.visible_message("\blue \the [user] adjusts the jumper on the [src]'s access protocol pins.", "\blue You adjust the jumper on the access protocol pins.")
+		user.visible_message("<span class='notice'>\the [user] adjusts the jumper on the [src]'s access protocol pins.</span>", "<span class='notice'>You adjust the jumper on the access protocol pins.</span>")
 		if(src.build_path == /obj/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"
 			src.build_path = /obj/machinery/computer/rdconsole/robotics
-			user << "\blue Access protocols set to robotics."
+			to_chat(user, "<span class='notice'> Access protocols set to robotics.</span>")
 		else
 			src.name = "Circuit Board (RD Console)"
 			src.build_path = /obj/machinery/computer/rdconsole/core
-			user << "\blue Access protocols set to default."
+			to_chat(user, "<span class='notice'> Access protocols set to default.</span>")
 
 

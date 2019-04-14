@@ -58,7 +58,7 @@ var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
-		user << "<span class='warning'>It's firmly secured to [attached_atom], and there's no way to remove it now!</span>"
+		to_chat(user, "<span class='warning'>It's firmly secured to [attached_atom], and there's no way to remove it now!</span>")
 		return
 	else
 		..()
@@ -68,16 +68,16 @@ var/global/list/deployed_fultons = list()
 		return
 
 	if(get_dist(target_atom,user) > 1)
-		user << "<span class='warning'>You can't attach [src] to something that far away.</span>"
+		to_chat(user, "<span class='warning'>You can't attach [src] to something that far away.</span>")
 		return
 
 	if(target_atom.z != 1)
-		user << "<span class='warning'>You can't attach [src] to something here.</span>"
+		to_chat(user, "<span class='warning'>You can't attach [src] to something here.</span>")
 		return
 
 	var/area/A = get_area(target_atom)
 	if(A && A.ceiling >= CEILING_UNDERGROUND)
-		usr << "<span class='warning'>You can't attach [src] to something when underground!</span>"
+		to_chat(usr, "<span class='warning'>You can't attach [src] to something when underground!</span>")
 		return
 
 	var/can_attach = FALSE
@@ -88,14 +88,14 @@ var/global/list/deployed_fultons = list()
 			if(isYautja(H) && H.stat == DEAD)
 				can_attach = TRUE
 			else if((H.mind && H.check_tod() && H.is_revivable()) || H.stat != DEAD)
-				user << "<span class='warning'>You can't attach [src] to [target_atom], they still have a chance!</span>"
+				to_chat(user, "<span class='warning'>You can't attach [src] to [target_atom], they still have a chance!</span>")
 				return
 			else
 				can_attach = TRUE
 		else if(isXeno(target_atom))
 			var/mob/living/carbon/Xenomorph/X = target_atom
 			if(X.stat != DEAD)
-				user << "<span class='warning'>You can't attach [src] to [target_atom], kill it first!</span>"
+				to_chat(user, "<span class='warning'>You can't attach [src] to [target_atom], kill it first!</span>")
 				return
 			else
 				can_attach = TRUE
@@ -124,7 +124,7 @@ var/global/list/deployed_fultons = list()
 			use(1)
 			F.deploy_fulton()
 	else
-		user << "<span class='warning'>You can't attach [src] to [target_atom].</span>"
+		to_chat(user, "<span class='warning'>You can't attach [src] to [target_atom].</span>")
 
 /obj/item/stack/fulton/proc/deploy_fulton()
 	if(!attached_atom)

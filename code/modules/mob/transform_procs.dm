@@ -43,7 +43,7 @@
 	if(mind)
 		mind.transfer_to(O)
 
-	O << "<B>You are now [O]. </B>"
+	to_chat(O, "<B>You are now [O]. </B>")
 
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
@@ -97,13 +97,13 @@
 		for (var/obj/item/device/radio/intercom/comm in O.loc)
 			comm.ai += O
 
-		O << "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
-		O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
-		O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
-		O << "To use something, simply click on it."
+		to_chat(O, "<B>You are playing the ship's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
+		to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
+		to_chat(O, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
+		to_chat(O, "To use something, simply click on it.")
 		O << {"Use :6 to speak to your cyborgs through binary."}
 		O.show_laws()
-		O << "<b>These laws may be changed by other players, or by you being the traitor.</b>"
+		to_chat(O, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
 
 		O.add_ai_verbs()
 		O.job = "AI"
@@ -188,7 +188,7 @@
 	new_xeno.key = key
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
-	new_xeno << "<B>You are now an alien.</B>"
+	to_chat(new_xeno, "<B>You are now an alien.</B>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return
@@ -214,8 +214,8 @@
 	new_xeno.key = key
 	if(new_xeno.client) new_xeno.client.change_view(world.view)
 
-	new_xeno << "<b>You are an alien!</b>"
-	new_xeno << "<b>Use Say \"; message\" to communicate with other aliens.</b>"
+	to_chat(new_xeno, "<b>You are an alien!</b>")
+	to_chat(new_xeno, "<b>Use Say \"; message\" to communicate with other aliens.</b>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return
@@ -238,7 +238,7 @@
 	new_corgi.key = key
 	if(new_corgi.client) new_corgi.client.change_view(world.view)
 
-	new_corgi << "<B>You are now a Corgi. Yap Yap!</B>"
+	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
 	spawn(0)//To prevent the proc from returning null.
 		qdel(src)
 	return
@@ -249,7 +249,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		usr << "\red Sorry but this mob type is currently unavailable."
+		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
 		return
 
 	if(monkeyizing)
@@ -273,7 +273,7 @@
 	new_mob.a_intent = "hurt"
 
 
-	new_mob << "You suddenly feel more... animalistic."
+	to_chat(new_mob, "You suddenly feel more... animalistic.")
 	spawn()
 		qdel(src)
 	return
@@ -284,7 +284,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		usr << "\red Sorry but this mob type is currently unavailable."
+		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
@@ -292,7 +292,7 @@
 	new_mob.key = key
 	if(new_mob.client) new_mob.client.change_view(world.view)
 	new_mob.a_intent = "hurt"
-	new_mob << "You feel more... animalistic"
+	to_chat(new_mob, "You feel more... animalistic")
 
 	qdel(src)
 

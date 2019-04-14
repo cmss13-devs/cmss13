@@ -48,7 +48,7 @@ obj/item/projectile/flareburst
 				playsound( user, 'gun_shotgun_shell_insert.ogg', 50,1 )
 				del(S)
 			else
-				usr << "<B><I>It's already loaded with [shell_name]."
+				to_chat(usr, "<B><I>It's already loaded with [shell_name].")
 		if( istype( S,/obj/item/flareround_sp ))
 			if(src.loaded_s == 0)
 				src.shell_name = S.name
@@ -58,7 +58,7 @@ obj/item/projectile/flareburst
 				playsound ( user, 'gun_shotgun_shell_insert.ogg', 50,1 )
 				del(S)
 			else
-				usr << "<B><I>It's already loaded with [shell_name]."
+				to_chat(usr, "<B><I>It's already loaded with [shell_name].")
 		else
 			..()
 
@@ -156,7 +156,7 @@ obj/item/projectile/flareburst
 						target.SetLuminosity(0)
 						user.client.screen-=global_hud.thermal
 			else
-				usr << "<B> Empty..."
+				to_chat(usr, "<B> Empty...")
 				playsound(user, 'sound/weapons/gun_empty.ogg', 100, 1)
 		else
 			..()

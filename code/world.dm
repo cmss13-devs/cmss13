@@ -69,7 +69,7 @@ var/global/datum/global_init/init = new ()
 
 	if(!RoleAuthority)
 		RoleAuthority = new /datum/authority/branch/role()
-		world << "\red \b Job setup complete"
+		to_world("<span class='danger'>\b Job setup complete</span>")
 
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
@@ -96,14 +96,14 @@ var/global/datum/global_init/init = new ()
 	return
 
 //world/Topic(href, href_list[])
-//		world << "Received a Topic() call!"
-//		world << "[href]"
+//		to_world("Received a Topic() call!")
+//		to_world("[href]")
 //		for(var/a in href_list)
-//			world << "[a]"
+//			to_world("[a]")
 //		if(href_list["hello"])
-//			world << "Hello world!"
+//			to_world("Hello world!")
 //			return "Hello world!"
-//		world << "End of Topic() call."
+//		to_world("End of Topic() call.")
 //		..()
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
@@ -480,7 +480,7 @@ proc/establish_old_db_connection()
 
 	if(ticker.delay_end) return
 
-	world << "\red <b>Restarting world!</b> \blue Initiated by MapDaemon.exe!"
+	to_world("<span class='danger'><b>Restarting world!</b> \blue Initiated by MapDaemon.exe!</span>")
 	log_admin("World/Topic() call (likely MapDaemon.exe) initiated a reboot.")
 
 	if(blackbox)

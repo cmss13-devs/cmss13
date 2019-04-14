@@ -1,6 +1,6 @@
 /mob/living/carbon/human/examine(mob/user)
 	if( user.sdisabilities & BLIND || user.blinded || user.stat==UNCONSCIOUS )
-		user << "<span class='notice'>Something is there but you can't see it.</span>"
+		to_chat(user, "<span class='notice'>Something is there but you can't see it.</span>")
 		return
 
 	if (isXeno(user))
@@ -224,9 +224,6 @@
 	if(holo_card_color)
 		msg += "[t_He] has a [holo_card_color] holo card on [t_his] chest.\n"
 
-	if(suiciding)
-		msg += "<span class='warning'>[t_He] appears to have commited suicide... there is no hope of recovery.</span>\n"
-
 	if(mSmallsize in mutations)
 		msg += "[t_He] [t_is] small halfling!\n"
 
@@ -242,9 +239,9 @@
 		spawn(15)
 			if(user && src && distance <= 1 && user.stat != 1)
 				if(pulse == PULSE_NONE)
-					user << "<span class='deadsay'>[t_He] has no pulse[src.client ? "" : " and [t_his] soul has departed"]...</span>"
+					to_chat(user, "<span class='deadsay'>[t_He] has no pulse[src.client ? "" : " and [t_his] soul has departed"]...</span>")
 				else
-					user << "<span class='deadsay'>[t_He] has a pulse!</span>"
+					to_chat(user, "<span class='deadsay'>[t_He] has a pulse!</span>")
 
 	msg += "<span class='warning'>"
 

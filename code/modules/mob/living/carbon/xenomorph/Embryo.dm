@@ -100,12 +100,14 @@
 	switch(stage)
 		if(2)
 			if(prob(2))
-				affected_mob << "<span class='warning'>[pick("Your chest hurts a little bit", "Your stomach hurts")].</span>"
+				var/message = "<span class='warning'>[pick("Your chest hurts a little bit", "Your stomach hurts")].</span>"
+				to_chat(affected_mob, message)
 		if(3)
 			if(prob(2))
-				affected_mob << "<span class='warning'>[pick("Your throat feels sore", "Mucous runs down the back of your throat")].</span>"
+				var/message = "<span class='warning'>[pick("Your throat feels sore", "Mucous runs down the back of your throat")].</span>"
+				to_chat(affected_mob, message)
 			else if(prob(1))
-				affected_mob << "<span class='warning'>Your muscles ache.</span>"
+				to_chat(affected_mob, "<span class='warning'>Your muscles ache.</span>")
 				if(prob(20))
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
@@ -119,7 +121,8 @@
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
-				affected_mob << "<span class='warning'>[pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")].</span>"
+				var/message = "<span class='warning'>[pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")].</span>"
+				to_chat(affected_mob, message)
 		if(5)
 			become_larva()
 		if(6)
@@ -170,9 +173,9 @@
 		if(new_xeno.client)
 			new_xeno.client.change_view(world.view)
 
-		new_xeno << "<span class='xenoannounce'>You are a xenomorph larva inside a host! Move to burst out of it!</span>"
-		new_xeno << "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>"
-		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ':aMy life for the queen!')"
+		to_chat(new_xeno, "<span class='xenoannounce'>You are a xenomorph larva inside a host! Move to burst out of it!</span>")
+		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>:a</strong> (e.g. ':aMy life for the queen!')")
 		new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 	stage = 6
@@ -181,7 +184,7 @@
 	set waitfor = 0
 	if(victim.chestburst || loc != victim) return
 	victim.chestburst = 1
-	src << "<span class='danger'>You start bursting out of [victim]'s chest!</span>"
+	to_chat(src, "<span class='danger'>You start bursting out of [victim]'s chest!</span>")
 	if(victim.knocked_out < 1)
 		victim.KnockOut(20)
 	victim.visible_message("<span class='danger'>\The [victim] starts shaking uncontrollably!</span>", \
@@ -219,12 +222,12 @@
 		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
 			round_statistics.total_xenos_created-- // keep stats sane
-			hive.stored_larva++	
+			hive.stored_larva++
 			qdel(L)
 
 		if(!victim.first_xeno)
-			L << "<span class='xenohighdanger'>The Queen's will overwhelms your instincts..."
-			L << "<span class='xenohighdanger'>\""+hive.hive_orders+"\"</span>"
+			to_chat(L, "<span class='xenohighdanger'>The Queen's will overwhelms your instincts...")
+			to_chat(L, "<span class='xenohighdanger'>\")"+hive.hive_orders+"\"</span>")
 
 	for(var/obj/item/alien_embryo/AE in victim)
 		qdel(AE)

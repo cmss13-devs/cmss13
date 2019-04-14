@@ -65,12 +65,12 @@
 			if (O.damtype == HALLOSS)
 				damage = 0
 			health -= damage
-			visible_message("\red \b [src] has been attacked with the [O] by [user]. ")
+			visible_message("<span class='danger'>\b [src] has been attacked with the [O] by [user]. </span>")
 		else
-			visible_message("\red \b [src] blocks the [O] with its shield! ")
+			visible_message("<span class='danger'>\b [src] blocks the [O] with its shield! </span>")
 	else
-		usr << "\red This weapon is ineffective, it does no damage."
-		visible_message("\red [user] gently taps [src] with the [O]. ")
+		to_chat(usr, "<span class='danger'>This weapon is ineffective, it does no damage.</span>")
+		visible_message("<span class='danger'>[user] gently taps [src] with the [O]. </span>")
 
 
 /mob/living/simple_animal/hostile/syndicate/melee/bullet_act(var/obj/item/projectile/Proj)
@@ -78,7 +78,7 @@
 	if(prob(65))
 		src.health -= Proj.damage
 	else
-		visible_message("\red <B>[src] blocks [Proj] with its shield!</B>")
+		visible_message("<span class='danger'><B>[src] blocks [Proj] with its shield!</B></span>")
 	return 0
 
 

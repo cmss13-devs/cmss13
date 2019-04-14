@@ -9,4 +9,4 @@
 	idle_power_usage = 40
 
 /obj/machinery/biogenerator/attack_hand(mob/user as mob)
-	usr << "<span class='notice'>It doesn't appear to be working...</span>"
+	to_chat(usr, "<span class='notice'>It doesn't appear to be working...</span>")

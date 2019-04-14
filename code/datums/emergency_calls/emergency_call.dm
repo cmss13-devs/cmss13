@@ -40,7 +40,7 @@
 
 	var/list/total_calls = typesof(/datum/emergency_call)
 	if(!total_calls.len)
-		world << "\red \b Error setting up emergency calls, no datums found."
+		to_world("<span class='danger'>\b Error setting up emergency calls, no datums found.</span>")
 		return 0
 	for(var/S in total_calls)
 		var/datum/emergency_call/C= new S()
@@ -83,8 +83,8 @@
 
 	for(var/mob/dead/observer/M in player_list)
 		if(M.client)
-			M << "\n<font size='3'><span class='attack'>An emergency beacon has been activated. Use the <B>Ghost > Join Response Team</b> verb to join!</span>"
-			M << "<span class='attack'>You cannot join if you have Ghosted recently.</span>\n"
+			to_chat(M, "\n<font size='3'><span class='attack'>An emergency beacon has been activated. Use the <B>Ghost > Join Response Team</b> verb to join!</span>")
+			to_chat(M, "<span class='attack'>You cannot join if you have Ghosted recently.</span>\n")
 
 /datum/game_mode/proc/activate_distress()
 	picked_call = get_random_call()
@@ -101,25 +101,25 @@
 	set desc = "Join an ongoing distress call response. You must be ghosted to do this."
 
 	if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team"))
-		usr << "<span class='danger'>You are jobbanned from the emergency response team!</span>"
+		to_chat(usr, "<span class='danger'>You are jobbanned from the emergency response team!</span>")
 		return
 	if(!ticker || !ticker.mode || isnull(ticker.mode.picked_call))
-		usr << "<span class='warning'>No distress beacons are active. You will be notified if this changes.</span>"
+		to_chat(usr, "<span class='warning'>No distress beacons are active. You will be notified if this changes.</span>")
 		return
 
 	var/datum/emergency_call/distress = ticker.mode.picked_call //Just to simplify things a bit
 	if(!istype(distress) || !distress.mob_max)
-		usr << "<span class='warning'>The emergency response team is already full!</span>"
+		to_chat(usr, "<span class='warning'>The emergency response team is already full!</span>")
 		return
 	var/deathtime = world.time - usr.timeofdeath
 
 	if(deathtime < 600) //Nice try, ghosting right after the announcement
 		if (map_tag != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
-			usr << "<span class='warning'>You ghosted too recently.</span>"
+			to_chat(usr, "<span class='warning'>You ghosted too recently.</span>")
 			return
 
 	if(!ticker.mode.waiting_for_candidates)
-		usr << "<span class='warning'>The emergency response team has already been selected.</span>"
+		to_chat(usr, "<span class='warning'>The emergency response team has already been selected.</span>")
 		return
 
 	if(!usr.mind) //How? Give them a new one anyway.
@@ -130,13 +130,13 @@
 
 	if(!usr.client || !usr.mind) return //Somehow
 	if(usr.mind in distress.candidates)
-		usr << "<span class='warning'>You are already a candidate for this emergency response team.</span>"
+		to_chat(usr, "<span class='warning'>You are already a candidate for this emergency response team.</span>")
 		return
 
 	if(distress.add_candidate(usr))
-		usr << "<span class='boldnotice'>You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team.</span>"
+		to_chat(usr, "<span class='boldnotice'>You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team.</span>")
 	else
-		usr << "<span class='warning'>You did not get enlisted in the response team. Better luck next time!</span>"
+		to_chat(usr, "<span class='warning'>You did not get enlisted in the response team. Better luck next time!</span>")
 
 /datum/emergency_call/proc/activate(announce = TRUE, is_emergency = FALSE)
 	set waitfor = 0
@@ -193,7 +193,7 @@
 			if(candidates.len)
 				for(var/datum/mind/I in candidates)
 					if(I.current)
-						I.current << "<span class='warning'>You didn't get selected to join the distress team. Better luck next time!</span>"
+						to_chat(I.current, "<span class='warning'>You didn't get selected to join the distress team. Better luck next time!</span>")
 
 		if (announce)
 			command_announcement.Announce(dispatch_message, "Distress Beacon", new_sound='sound/AI/distressreceived.ogg') //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT

@@ -44,8 +44,8 @@ var/global/datum/controller/gameticker/ticker = new()
 
 	do
 		pregame_timeleft = 180
-		world << "<center><B><span class='notice'>Welcome to the pre-game lobby of Colonial Marines!<span class='notice'></B></center>"
-		world << "<center><span class='notice'>Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds.</span></center>"
+		to_world("<center><B><span class='notice'>Welcome to the pre-game lobby of Colonial Marines!<span class='notice'></B></center>")
+		to_world("<center><span class='notice'>Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds.</span></center>")
 		while(current_state == GAME_STATE_PREGAME)
 			for(var/i=0, i<10, i++)
 				sleep(1)
@@ -73,7 +73,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		runnable_modes = config.get_runnable_modes()
 		if (runnable_modes.len==0)
 			current_state = GAME_STATE_PREGAME
-			world << "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby."
+			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
 			return 0
 		if(secret_force_mode != "secret")
 			var/datum/game_mode/M = config.pick_mode(secret_force_mode)
@@ -91,7 +91,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		else
 			src.mode = config.pick_mode(master_mode)
 	if (!src.mode.can_start())
-		world << "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby."
+		to_world("<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players needed. Reverting to pre-game lobby.")
 		qdel(mode)
 		mode = null
 		current_state = GAME_STATE_PREGAME
@@ -103,7 +103,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		qdel(mode)
 		mode = null
 		current_state = GAME_STATE_PREGAME
-		world << "<B>Error setting up [master_mode].</B> Reverting to pre-game lobby."
+		to_world("<B>Error setting up [master_mode].</B> Reverting to pre-game lobby.")
 		RoleAuthority.reset_roles()
 		return 0
 
@@ -112,8 +112,8 @@ var/global/datum/controller/gameticker/ticker = new()
 		for (var/datum/game_mode/M in runnable_modes)
 			modes+=M.name
 		modes = sortList(modes)
-		world << "<B>The current game mode is - Secret!</B>"
-		world << "<B>Possibilities:</B> [english_list(modes)]"
+		to_world("<B>The current game mode is - Secret!</B>")
+		to_world("<B>Possibilities:</B> [english_list(modes)]")
 	else
 		src.mode.announce()
 
@@ -143,7 +143,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			//Deleting Startpoints but we need the ai point to AI-ize people later
 			if (S.name != "AI")
 				qdel(S)
-		world << "<FONT color='blue'><B>Enjoy the game!</B></FONT>"
+		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
@@ -151,7 +151,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	//new random event system is handled from the MC.
 
 	if(config.autooocmute)
-		world << "\red <B>The OOC channel has been globally disabled due to round start!</B>"
+		to_world("<span class='danger'><B>The OOC channel has been globally disabled due to round start!</B></span>")
 		ooc_allowed = !( ooc_allowed )
 
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
@@ -207,7 +207,7 @@ var/global/datum/controller/gameticker/ticker = new()
 		if(captainless)
 			for(var/mob/M in player_list)
 				if(!istype(M,/mob/new_player))
-					M << "Marine commanding officer position not forced on anyone."
+					to_chat(M, "Marine commanding officer position not forced on anyone.")
 
 
 	proc/process()
@@ -240,7 +240,7 @@ var/global/datum/controller/gameticker/ticker = new()
 					feedback_set_details("end_proper","proper completion")
 
 				if(config.autooocmute && !ooc_allowed)
-					world << "\red <B>The OOC channel has been globally enabled due to round end!</B>"
+					to_world("<span class='danger'><B>The OOC channel has been globally enabled due to round end!</B></span>")
 					ooc_allowed = 1
 
 				if(blackbox)
@@ -251,13 +251,13 @@ var/global/datum/controller/gameticker/ticker = new()
 					if(!delay_end)
 						world.Reboot()
 					else
-						world << "<hr>"
-						world << "<span class='centerbold'><b>An admin has delayed the round end.</b></span>"
-						world << "<hr>"
+						to_world("<hr>")
+						to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
+						to_world("<hr>")
 				else
-					world << "<hr>"
-					world << "<span class='centerbold'><b>An admin has delayed the round end.</b></span>"
-					world << "<hr>"
+					to_world("<hr>")
+					to_world("<span class='centerbold'><b>An admin has delayed the round end.</b></span>")
+					to_world("<hr>")
 
 		else if (mode_finished)
 			post_game = TRUE
@@ -267,7 +267,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			//call a transfer shuttle vote
 			spawn(50)
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
-					world << "<span class='warning'>The round has ended!</span>"
+					to_world("<span class='warning'>The round has ended!</span>")
 					round_end_announced = TRUE
 
 		return 1
@@ -276,16 +276,16 @@ var/global/datum/controller/gameticker/ticker = new()
 /datum/controller/gameticker/proc/declare_completion()
 	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
 		if (aiPlayer.stat != 2)
-			world << "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>"
+			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
 		else
-			world << "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws when it was deactivated were:</b>"
+			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws when it was deactivated were:</b>")
 		aiPlayer.show_laws(1)
 
 		if (aiPlayer.connected_robots.len)
 			var/robolist = "<b>The AI's loyal minions were:</b> "
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
-			world << "[robolist]"
+			to_world("[robolist]")
 
 	var/dronecount = 0
 
@@ -297,15 +297,15 @@ var/global/datum/controller/gameticker/ticker = new()
 
 		if (!robo.connected_ai)
 			if (robo.stat != 2)
-				world << "<b>[robo.name] (Played by: [robo.key]) survived as an AI-less borg! Its laws were:</b>"
+				to_world("<b>[robo.name] (Played by: [robo.key]) survived as an AI-less borg! Its laws were:</b>")
 			else
-				world << "<b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a cyborg without an AI. Its laws were:</b>"
+				to_world("<b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a cyborg without an AI. Its laws were:</b>")
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				robo.laws.show_laws(world)
 
 	if(dronecount)
-		world << "<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round."
+		to_world("<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.")
 
 	mode.declare_completion()//To declare normal completion.
 

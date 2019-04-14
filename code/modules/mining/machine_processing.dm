@@ -30,7 +30,7 @@
 		return
 
 	if(!allowed(user))
-		user << "\red Access denied."
+		to_chat(user, "<span class='danger'>Access denied.</span>")
 		return
 
 	user.set_interaction(src)

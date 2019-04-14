@@ -122,7 +122,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 			else /*if(src.justzap)*/
 				return
 		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
-			user << "\red <B>You feel a powerful shock course through your body!</B>"
+			to_chat(user, "<span class='danger'><B>You feel a powerful shock course through your body!</B></span>")
 			user.halloss += 10
 			user.stunned += 10
 			return
@@ -548,43 +548,43 @@ About the new airlock wires panel:
 		src.aiHacking=1
 		spawn(20)
 			//TODO: Make this take a minute
-			user << "Airlock AI control has been blocked. Beginning fault-detection."
+			to_chat(user, "Airlock AI control has been blocked. Beginning fault-detection.")
 			sleep(50)
 			if(src.canAIControl())
-				user << "Alert cancelled. Airlock control has been restored without our assistance."
+				to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
 				src.aiHacking=0
 				return
 			else if(!src.canAIHack(user))
-				user << "We've lost our connection! Unable to hack airlock."
+				to_chat(user, "We've lost our connection! Unable to hack airlock.")
 				src.aiHacking=0
 				return
-			user << "Fault confirmed: airlock control wire disabled or cut."
+			to_chat(user, "Fault confirmed: airlock control wire disabled or cut.")
 			sleep(20)
-			user << "Attempting to hack into airlock. This may take some time."
+			to_chat(user, "Attempting to hack into airlock. This may take some time.")
 			sleep(200)
 			if(src.canAIControl())
-				user << "Alert cancelled. Airlock control has been restored without our assistance."
+				to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
 				src.aiHacking=0
 				return
 			else if(!src.canAIHack(user))
-				user << "We've lost our connection! Unable to hack airlock."
+				to_chat(user, "We've lost our connection! Unable to hack airlock.")
 				src.aiHacking=0
 				return
-			user << "Upload access confirmed. Loading control program into airlock software."
+			to_chat(user, "Upload access confirmed. Loading control program into airlock software.")
 			sleep(170)
 			if(src.canAIControl())
-				user << "Alert cancelled. Airlock control has been restored without our assistance."
+				to_chat(user, "Alert cancelled. Airlock control has been restored without our assistance.")
 				src.aiHacking=0
 				return
 			else if(!src.canAIHack(user))
-				user << "We've lost our connection! Unable to hack airlock."
+				to_chat(user, "We've lost our connection! Unable to hack airlock.")
 				src.aiHacking=0
 				return
-			user << "Transfer complete. Forcing airlock to execute program."
+			to_chat(user, "Transfer complete. Forcing airlock to execute program.")
 			sleep(50)
 			//disable blocked control
 			src.aiControlDisabled = 2
-			user << "Receiving control information from airlock."
+			to_chat(user, "Receiving control information from airlock.")
 			sleep(10)
 			//bring up airlock dialog
 			src.aiHacking = 0
@@ -647,16 +647,16 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/proc/check_synth_access(mob/user as mob)
 	if(operating < 0) //emagged
-		user << "<span class='warning'>Unable to interface: Internal error.</span>"
+		to_chat(user, "<span class='warning'>Unable to interface: Internal error.</span>")
 		return 0
 	if(!src.canAIControl())
 		if(src.canAIHack(user))
 			src.hack(user)
 		else
 			if (src.isAllPowerLoss()) //don't really like how this gets checked a second time, but not sure how else to do it.
-				user << "<span class='warning'>Unable to interface: Connection timed out.</span>"
+				to_chat(user, "<span class='warning'>Unable to interface: Connection timed out.</span>")
 			else
-				user << "<span class='warning'>Unable to interface: Connection refused.</span>"
+				to_chat(user, "<span class='warning'>Unable to interface: Connection refused.</span>")
 		return 0
 	return 1
 
@@ -675,12 +675,12 @@ About the new airlock wires panel:
 	if((in_range(src, usr) && istype(src.loc, /turf)) && src.p_open)
 		usr.set_interaction(src)
 		if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			usr << "<span class='warning'>You don't understand anything about [src]'s wiring...</span>"
+			to_chat(usr, "<span class='warning'>You don't understand anything about [src]'s wiring...</span>")
 			return 0
 		if(href_list["wires"])
 			var/t1 = text2num(href_list["wires"])
 			if(!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
-				usr << "You need wirecutters!"
+				to_chat(usr, "You need wirecutters!")
 				return
 			if(src.isWireColorCut(t1))
 				src.mend(t1)
@@ -689,24 +689,24 @@ About the new airlock wires panel:
 		else if(href_list["pulse"])
 			var/t1 = text2num(href_list["pulse"])
 			if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
-				usr << "You need a multitool!"
+				to_chat(usr, "You need a multitool!")
 				return
 			if(src.isWireColorCut(t1))
-				usr << "You can't pulse a cut wire."
+				to_chat(usr, "You can't pulse a cut wire.")
 				return
 			else
 				src.pulse(t1)
 		else if(href_list["signaler"])
 			var/wirenum = text2num(href_list["signaler"])
 			if(!istype(usr.get_active_hand(), /obj/item/device/assembly/signaler))
-				usr << "You need a signaller!"
+				to_chat(usr, "You need a signaller!")
 				return
 			if(src.isWireColorCut(wirenum))
-				usr << "You can't attach a signaller to a cut wire."
+				to_chat(usr, "You can't attach a signaller to a cut wire.")
 				return
 			var/obj/item/device/assembly/signaler/R = usr.get_active_hand()
 			if(R.secured)
-				usr << "This radio can't be attached!"
+				to_chat(usr, "This radio can't be attached!")
 				return
 			var/mob/M = usr
 			if(M.drop_held_item())
@@ -716,7 +716,7 @@ About the new airlock wires panel:
 		else if(href_list["remove-signaler"])
 			var/wirenum = text2num(href_list["remove-signaler"])
 			if(!(src.signalers[wirenum]))
-				usr << "There's no signaller attached to that wire!"
+				to_chat(usr, "There's no signaller attached to that wire!")
 				return
 			var/obj/item/device/assembly/signaler/R = src.signalers[wirenum]
 			R.loc = usr.loc
@@ -737,39 +737,39 @@ About the new airlock wires panel:
 				if(1)
 					//disable idscan
 					if(src.isWireCut(AIRLOCK_WIRE_IDSCAN))
-						usr << "The IdScan wire has been cut - The IdScan feature is already disabled."
+						to_chat(usr, "The IdScan wire has been cut - The IdScan feature is already disabled.")
 					else if(src.aiDisabledIdScanner)
-						usr << "The IdScan feature is already disabled."
+						to_chat(usr, "The IdScan feature is already disabled.")
 					else
-						usr << "The IdScan feature has been disabled."
+						to_chat(usr, "The IdScan feature has been disabled.")
 						src.aiDisabledIdScanner = 1
 				if(2)
 					//disrupt main power
 					if(src.secondsMainPowerLost == 0)
 						src.loseMainPower()
 					else
-						usr << "Main power is already offline."
+						to_chat(usr, "Main power is already offline.")
 				if(3)
 					//disrupt backup power
 					if(src.secondsBackupPowerLost == 0)
 						src.loseBackupPower()
 					else
-						usr << "Backup power is already offline."
+						to_chat(usr, "Backup power is already offline.")
 				if(4)
 					//drop door bolts
 					if(src.isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
-						usr << "The door bolt control wire has been cut - The door bolts are already dropped."
+						to_chat(usr, "The door bolt control wire has been cut - The door bolts are already dropped.")
 					else if(src.locked)
-						usr << "The door bolts are already dropped."
+						to_chat(usr, "The door bolts are already dropped.")
 					else
 						src.lock()
-						usr << "The door bolts have been dropped."
+						to_chat(usr, "The door bolts have been dropped.")
 				if(5)
 					//un-electrify door
 					if(src.isWireCut(AIRLOCK_WIRE_ELECTRIFY))
 						usr << text("The electrification wire is cut - Cannot un-electrify the door.")
 					else if(secondsElectrified != 0)
-						usr << "The door is now un-electrified."
+						to_chat(usr, "The door is now un-electrified.")
 						src.secondsElectrified = 0
 				if(7)
 					//close door
@@ -800,12 +800,12 @@ About the new airlock wires panel:
 				if(10)
 					// Bolt lights
 					if(src.isWireCut(AIRLOCK_WIRE_LIGHT))
-						usr << "The bolt lights wire has been cut - The door bolt lights are already disabled."
+						to_chat(usr, "The bolt lights wire has been cut - The door bolt lights are already disabled.")
 					else if (src.lights)
 						lights = 0
-						usr << "The door bolt lights have been disabled."
+						to_chat(usr, "The door bolt lights have been disabled.")
 					else
-						usr << "The door bolt lights are already disabled!"
+						to_chat(usr, "The door bolt lights are already disabled!")
 
 		else if(href_list["aiEnable"])
 			var/code = text2num(href_list["aiEnable"])
@@ -813,23 +813,23 @@ About the new airlock wires panel:
 				if(1)
 					//enable idscan
 					if(src.isWireCut(AIRLOCK_WIRE_IDSCAN))
-						usr << "The IdScan wire has been cut - The IdScan feature cannot be enabled."
+						to_chat(usr, "The IdScan wire has been cut - The IdScan feature cannot be enabled.")
 					else if(src.aiDisabledIdScanner)
-						usr << "The IdScan feature has been enabled."
+						to_chat(usr, "The IdScan feature has been enabled.")
 						src.aiDisabledIdScanner = 0
 					else
-						usr << "The IdScan feature is already enabled."
+						to_chat(usr, "The IdScan feature is already enabled.")
 				if(4)
 					//raise door bolts
 					if(src.isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
-						usr << "The door bolt control wire has been cut - The door bolts cannot be raised."
+						to_chat(usr, "The door bolt control wire has been cut - The door bolts cannot be raised.")
 					else if(!src.locked)
-						usr << "The door bolts are already raised."
+						to_chat(usr, "The door bolts are already raised.")
 					else
 						if(src.unlock())
-							usr << "The door bolts have been raised."
+							to_chat(usr, "The door bolts have been raised.")
 						else
-							usr << "Unable to raise door bolts."
+							to_chat(usr, "Unable to raise door bolts.")
 				if(5)
 					//electrify door for 30 seconds
 					if(src.isWireCut(AIRLOCK_WIRE_ELECTRIFY))
@@ -841,7 +841,7 @@ About the new airlock wires panel:
 					else
 						shockedby += text("\[[time_stamp()]\][usr](ckey:[usr.ckey])")
 						usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
-						usr << "The door is now electrified for thirty seconds."
+						to_chat(usr, "The door is now electrified for thirty seconds.")
 						src.secondsElectrified = 30
 						spawn(10)
 							while (src.secondsElectrified>0)
@@ -860,7 +860,7 @@ About the new airlock wires panel:
 					else
 						shockedby += text("\[[time_stamp()]\][usr](ckey:[usr.ckey])")
 						usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
-						usr << "The door is now electrified."
+						to_chat(usr, "The door is now electrified.")
 						src.secondsElectrified = -1
 				if(7)
 					//open door
@@ -891,12 +891,12 @@ About the new airlock wires panel:
 				if(10)
 					// Bolt lights
 					if(src.isWireCut(AIRLOCK_WIRE_LIGHT))
-						usr << "The bolt lights wire has been cut - The door bolt lights cannot be enabled."
+						to_chat(usr, "The bolt lights wire has been cut - The door bolt lights cannot be enabled.")
 					else if (!src.lights)
 						lights = 1
-						usr << "The door bolt lights have been enabled"
+						to_chat(usr, "The door bolt lights have been enabled")
 					else
-						usr << "The door bolt lights are already enabled!"
+						to_chat(usr, "The door bolt lights are already enabled!")
 
 	add_fingerprint(usr)
 	update_icon()
@@ -935,7 +935,7 @@ About the new airlock wires panel:
 		var/obj/item/tool/weldingtool/W = C
 
 		if(not_weldable)
-			user << "<span class='warning'>\The [src] would require something a lot stronger than [W] to weld!</span>"
+			to_chat(user, "<span class='warning'>\The [src] would require something a lot stronger than [W] to weld!</span>")
 			return
 
 		if(W.remove_fuel(0,user))
@@ -952,11 +952,11 @@ About the new airlock wires panel:
 		return
 	else if(istype(C, /obj/item/tool/screwdriver))
 		if(no_panel)
-			user << "<span class='warning'>\The [src] has no panel to open!</span>"
+			to_chat(user, "<span class='warning'>\The [src] has no panel to open!</span>")
 			return
 
 		p_open = !p_open
-		user << "<span class='notice'>You [p_open ? "open" : "close"] [src]'s panel.</span>"
+		to_chat(user, "<span class='notice'>You [p_open ? "open" : "close"] [src]'s panel.</span>")
 		update_icon()
 	else if(istype(C, /obj/item/tool/wirecutters))
 		return src.attack_hand(user)
@@ -967,15 +967,15 @@ About the new airlock wires panel:
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && src.p_open && (operating == -1 || (density && welded && operating != 1 && !src.arePowerSystemsOn() && !src.locked)) )
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You don't seem to know how to deconstruct machines.</span>"
+				to_chat(user, "<span class='warning'>You don't seem to know how to deconstruct machines.</span>")
 				return
 			if(width > 1)
-				user << "<span class='warning'>Large doors seem impossible to disassemble.</span>"
+				to_chat(user, "<span class='warning'>Large doors seem impossible to disassemble.</span>")
 				return
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
 			if(do_after(user,40, TRUE, 5, BUSY_ICON_BUILD))
-				user << "\blue You removed the airlock electronics!"
+				to_chat(user, "<span class='notice'> You removed the airlock electronics!</span>")
 
 				var/obj/structure/door_assembly/da = new assembly_type(src.loc)
 				if (istype(da, /obj/structure/door_assembly/multi_tile))
@@ -1013,11 +1013,11 @@ About the new airlock wires panel:
 				return
 
 		else if(arePowerSystemsOn() && C.pry_capable != IS_PRY_CAPABLE_FORCE)
-			user << "<span class='warning'>The airlock's motors resist your efforts to force it.</span>"
+			to_chat(user, "<span class='warning'>The airlock's motors resist your efforts to force it.</span>")
 		else if(locked)
-			user << "<span class='warning'>The airlock's bolts prevent it from being forced.</span>"
+			to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced.</span>")
 		else if(welded)
-			user << "<span class='warning'>The airlock is welded shut.</span>"
+			to_chat(user, "<span class='warning'>The airlock is welded shut.</span>")
 		else if(C.pry_capable == IS_PRY_CAPABLE_FORCE)
 			return FALSE //handled by the item's afterattack
 		else if(!operating )

@@ -11,10 +11,10 @@
 
 /obj/machinery/vending/antag/attack_hand(var/mob/living/carbon/human/H)
 	if(!istype(H) ||!H.wear_id || !H.wear_id.faction) //TODO: convert mind.faction into ID faction when ID has factions...
-		H << "<span class='warning'>Access denied.</span>"
+		to_chat(H, "<span class='warning'>Access denied.</span>")
 		return
 	if(!(H.wear_id.faction=="CLF") && !(H.wear_id.faction=="UPP"))
-		H << "<span class='warning'>Access denied, you imperialist pig!</span>"
+		to_chat(H, "<span class='warning'>Access denied, you imperialist pig!</span>")
 		return
 
 	if(current_faction != H.wear_id.faction)

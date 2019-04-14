@@ -33,7 +33,7 @@ var/bomb_set = FALSE
 
 /obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && bomb_set && iswirecutter(O))
-		user.visible_message("\red [user] begins to diffuse [src].", "\red You begin to diffuse [src]. This will take some time...")
+		user.visible_message("<span class='danger'>[user] begins to diffuse [src].</span>", "<span class='danger'>You begin to diffuse [src]. This will take some time...</span>")
 		if(do_after(user, 150, FALSE, 5, BUSY_ICON_HOSTILE))
 			disable()
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
@@ -50,12 +50,12 @@ var/bomb_set = FALSE
 	user.set_interaction(src)
 	if(deployable)
 		if (!ishuman(user) && !isXenoQueen(user))
-			usr << "\red You don't have the dexterity to do this!"
+			to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
 			return
 
 		if (isXenoQueen(user))
 			if(timing && bomb_set)
-				user.visible_message("\red [user] begins to diffuse [src].", "\red You begin to diffuse [src]. This will take some time...")
+				user.visible_message("<span class='danger'>[user] begins to diffuse [src].</span>", "<span class='danger'>You begin to diffuse [src]. This will take some time...</span>")
 				if(do_after(user, 150, FALSE, 5, BUSY_ICON_HOSTILE))
 					disable()
 			return
@@ -93,15 +93,15 @@ var/bomb_set = FALSE
 		return
 
 	if (!ishuman(usr))
-		usr << "\red You don't have the dexterity to do this!"
+		to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
 		return
 
 	var/area/A = get_area(src)
 	if (!A.can_nuke_area)
-		usr << "\red You don't want to deploy this here!"
+		to_chat(usr, "<span class='danger'>You don't want to deploy this here!</span>")
 		return
 
-	usr.visible_message("\red [usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"].", "\red you begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"].")
+	usr.visible_message("<span class='warning'>[usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"].</span>", "<span class='warning'>You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"].</span>")
 	being_used = TRUE
 	if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
 		if (deployable)
@@ -130,22 +130,22 @@ var/bomb_set = FALSE
 				return
 
 			if(!allowed(usr))
-				usr << "\red Access denied!"
+				to_chat(usr, "<span class='danger'>Access denied!</span>")
 				return
 
 			if (!anchored)
-				usr << "\red Engage anchors first!"
+				to_chat(usr, "<span class='danger'>Engage anchors first!</span>")
 				return
 
 			if (safety)
-				usr << "\red The safety is still on."
+				to_chat(usr, "<span class='danger'>The safety is still on.</span>")
 				return
 
 			if (!A.can_nuke_area)
-				usr << "\red You cannot deploy [src] here!"
+				to_chat(usr, "<span class='danger'>You cannot deploy [src] here!</span>")
 				return
 
-			usr.visible_message("\red [usr] begins to [timing ? "disengage" : "engage"] [src]!", "\red you begin to [timing ? "disengage" : "engage"] [src].")
+			usr.visible_message("<span class='warning'>[usr] begins to [timing ? "disengage" : "engage"] [src]!</span>", "<span class='warning'>You begin to [timing ? "disengage" : "engage"] [src].</span>")
 			being_used = TRUE
 			if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
 				timing = !timing
@@ -167,12 +167,12 @@ var/bomb_set = FALSE
 
 		if ("toggleSafety")
 			if (timing)
-				usr << "\red Disengage first!"
+				to_chat(usr, "<span class='danger'>Disengage first!</span>")
 				return
 			if (!A.can_nuke_area)
-				usr << "\red You cannot deploy [src] here!"
+				to_chat(usr, "<span class='danger'>You cannot deploy [src] here!</span>")
 				return
-			usr.visible_message("\red [usr] begins to [safety ? "disable" : "enable"] the safety on [src]!", "\red you begin to [safety ? "disable" : "enable"] the safety on [src].")
+			usr.visible_message("<span class='warning'>[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!</span>", "<span class='warning'>You begin to [safety ? "disable" : "enable"] the safety on [src].</span>")
 			being_used = TRUE
 			if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
 				safety = !safety
@@ -183,17 +183,17 @@ var/bomb_set = FALSE
 				bomb_set = FALSE
 		if ("toggleAnchor")
 			if (timing)
-				usr << "\red Disengage first!"
+				to_chat(usr, "<span class='danger'>Disengage first!</span>")
 				return
 			if (!A.can_nuke_area)
-				usr << "\red You cannot deploy [src] here!"
+				to_chat(usr, "<span class='danger'>You cannot deploy [src] here!</span>")
 				return
 			being_used = TRUE
 			if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
 				if(!anchored)
-					visible_message("\red With a steely snap, bolts slide out of [src] and anchor it to the flooring.")
+					visible_message("<span class='danger'>With a steely snap, bolts slide out of [src] and anchor it to the flooring.</span>")
 				else
-					visible_message("\red The anchoring bolts slide back into the depths of [src].")
+					visible_message("<span class='danger'>The anchoring bolts slide back into the depths of [src].</span>")
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 100, 1)
 				anchored = !anchored
 			being_used = FALSE

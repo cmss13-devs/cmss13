@@ -74,35 +74,35 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
-		user << "\red It's locked and running"
+		to_chat(user, "<span class='danger'>It's locked and running</span>")
 		return
 	else
 		src.startgibbing(user)
 
 /obj/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
 	if(src.occupant)
-		user << "<span class='warning'>The gibber is full, empty it first!</span>"
+		to_chat(user, "<span class='warning'>The gibber is full, empty it first!</span>")
 		return
 
 	if( !(istype(G, /obj/item/grab)) )
-		user << "<span class='warning'>This item is not suitable for the gibber!</span>"
+		to_chat(user, "<span class='warning'>This item is not suitable for the gibber!</span>")
 		return
 
 	if( !iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal) )
-		user << "<span class='warning'>This item is not suitable for the gibber!</span>"
+		to_chat(user, "<span class='warning'>This item is not suitable for the gibber!</span>")
 		return
 	if(istype(G.grabbed_thing, /mob/living/simple_animal/scp))
 		var/mob/living/simple_animal/scp/scp = G.grabbed_thing
 		scp.lash_out()
-		user << "<span class='warning'>This item is not suitable for the gibber!</span>"
+		to_chat(user, "<span class='warning'>This item is not suitable for the gibber!</span>")
 		return
 	var/mob/living/M = G.grabbed_thing
 	if(user.grab_level < GRAB_AGGRESSIVE)
-		user << "<span class='warning'>You need a better grip to do that!</span>"
+		to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 		return
 
 	if(M.abiotic(1))
-		user << "<span class='warning'>Subject may not have abiotic items on.</span>"
+		to_chat(user, "<span class='warning'>Subject may not have abiotic items on.</span>")
 		return
 
 	user.visible_message("<span class='danger'>[user] starts to put [M] into the gibber!</span>")
@@ -142,10 +142,10 @@
 	if(src.operating)
 		return
 	if(!src.occupant)
-		visible_message("\red You hear a loud metallic grinding sound.")
+		visible_message("<span class='danger'>You hear a loud metallic grinding sound.</span>")
 		return
 	use_power(1000)
-	visible_message("\red You hear a loud squelchy grinding sound.")
+	visible_message("<span class='danger'>You hear a loud squelchy grinding sound.</span>")
 	src.operating = 1
 	update_icon()
 

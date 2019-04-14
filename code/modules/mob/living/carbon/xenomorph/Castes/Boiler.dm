@@ -124,7 +124,7 @@
 
 /mob/living/carbon/Xenomorph/Boiler/proc/bomb_turf(var/turf/T)
 	if(!istype(T) || T.z != src.z || T == get_turf(src))
-		src << "<span class='warning'>This is not a valid target.</span>"
+		to_chat(src, "<span class='warning'>This is not a valid target.</span>")
 		return
 
 	if(!isturf(loc)) //In a locker
@@ -142,15 +142,15 @@
 		return
 
 	if(!is_bombarding)
-		src << "<span class='warning'>You must dig yourself in before you can do this.</span>"
+		to_chat(src, "<span class='warning'>You must dig yourself in before you can do this.</span>")
 		return
 
 	if(bomb_cooldown)
-		src << "<span class='warning'>You are still preparing another spit. Be patient!</span>"
+		to_chat(src, "<span class='warning'>You are still preparing another spit. Be patient!</span>")
 		return
 
 	if(get_dist(T, U) <= 5) //Magic number
-		src << "<span class='warning'>You are too close! You must be at least 7 meters from the target due to the trajectory arc.</span>"
+		to_chat(src, "<span class='warning'>You are too close! You must be at least 7 meters from the target due to the trajectory arc.</span>")
 		return
 
 	if(!check_plasma(200))
@@ -173,7 +173,7 @@
 	if(!istype(target))
 		return
 
-	src << "<span class='xenonotice'>You begin building up acid.</span>"
+	to_chat(src, "<span class='xenonotice'>You begin building up acid.</span>")
 	if(client)
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) //Reset the mouse pointer.
 	bomb_cooldown = 1
@@ -200,12 +200,12 @@
 
 		spawn(bomb_delay) //20 seconds cooldown. Halved if the boiler is a Railgun boiler.
 			bomb_cooldown = 0
-			src << "<span class='notice'>You feel your toxin glands swell. You are able to bombard an area again.</span>"
+			to_chat(src, "<span class='notice'>You feel your toxin glands swell. You are able to bombard an area again.</span>")
 			for(var/X in actions)
 				var/datum/action/A = X
 				A.update_button_icon()
 		return
 	else
 		bomb_cooldown = 0
-		src << "<span class='warning'>You decide not to launch any acid.</span>"
+		to_chat(src, "<span class='warning'>You decide not to launch any acid.</span>")
 	return

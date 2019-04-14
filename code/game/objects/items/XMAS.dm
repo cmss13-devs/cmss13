@@ -22,17 +22,17 @@
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(H.opened_gift == 1)
-			H << "\blue This is not your gift, opening it feels wrong."
+			to_chat(H, "<span class='notice'> This is not your gift, opening it feels wrong.</span>")
 		if(H.opened_gift == 2)
-			H << "\blue Santa knows of your treachery, yet you open another present."
+			to_chat(H, "<span class='notice'> Santa knows of your treachery, yet you open another present.</span>")
 		if(H.opened_gift == 3)
-			H << "\blue Even the Grinch glares with disguist..."
+			to_chat(H, "<span class='notice'> Even the Grinch glares with disguist...</span>")
 		if(H.opened_gift == 4)
-			H << "\blue You're ruining the Christmas magic, I hope you're happy."
+			to_chat(H, "<span class='notice'> You're ruining the Christmas magic, I hope you're happy.</span>")
 		if(H.opened_gift == 5)
-			H << "\red Ok, Congratulations, you've ruined Christmas for 5 marines now."
+			to_chat(H, "<span class='danger'>Ok, Congratulations, you've ruined Christmas for 5 marines now.</span>")
 		if(H.opened_gift > 5)
-			H << "\red You've ruined Christmas for [H.opened_gift] marines now..."
+			to_chat(H, "<span class='danger'>You've ruined Christmas for [H.opened_gift] marines now...</span>")
 		
 		H.opened_gift++
 	var fancy = rand(1,100) //Check if it has the possibility of being a FANCY present
@@ -41,7 +41,7 @@
 
 	if(fancy > 90)
 		if(exFancy == 1)
-			M << "\blue Just what the fuck is it???"
+			to_chat(M, "<span class='notice'> Just what the fuck is it???</span>")
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
@@ -50,7 +50,7 @@
 			qdel(src)
 			return
 		if(exFancy > 15)
-			M << "\blue Oh, just what I needed... Fucking HEFA's."
+			to_chat(M, "<span class='notice'> Oh, just what I needed... Fucking HEFA's.</span>")
 			gift_type = /obj/item/storage/box/nade_box/frag
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
@@ -69,7 +69,7 @@
 			/obj/item/attachable/extended_barrel,
 			/obj/item/attachable/burstfire_assembly,
 			)
-			M << "\blue It's a REAL gift!!!"
+			to_chat(M, "<span class='notice'> It's a REAL gift!!!</span>")
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
@@ -77,7 +77,7 @@
 			qdel(src)
 			return
 	else if (fancy <=5)
-		M << "\blue It's fucking EMPTY.  Man, Fuck CM."
+		to_chat(M, "<span class='notice'> It's fucking EMPTY.  Man, Fuck CM.</span>")
 		M.temp_drop_inv_item(src)
 		qdel(src)
 		return
@@ -122,7 +122,7 @@
 		/obj/item/attachable/scope)
 
 	if(!ispath(gift_type,/obj/item))	return
-	M << "\blue At least it's something..."
+	to_chat(M, "<span class='notice'> At least it's something...</span>")
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
 	M.put_in_hands(I)

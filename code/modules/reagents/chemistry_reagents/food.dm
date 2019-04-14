@@ -81,15 +81,15 @@
 			if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
 				switch(data)
 					if(1 to 2)
-						H << "\red <b>Your insides feel uncomfortably hot !</b>"
+						to_chat(H, "<span class='danger'><b>Your insides feel uncomfortably hot !</b></span>")
 					if(2 to 20)
 						if(prob(5))
-							H << "\red <b>Your insides feel uncomfortably hot !</b>"
+							to_chat(H, "<span class='danger'><b>Your insides feel uncomfortably hot !</b></span>")
 					if(20 to INFINITY)
 						H.apply_effect(2,AGONY,0)
 						if(prob(5))
 							H.visible_message("<span class='warning'>[H] [pick("dry heaves!","coughs!","splutters!")]</span>")
-							H << "\red <b>You feel like your insides are burning !</b>"
+							to_chat(H, "<span class='danger'><b>You feel like your insides are burning !</b></span>")
 		holder.remove_reagent("frostoil", 5)
 		holder.remove_reagent(src.id, FOOD_METABOLISM)
 		data++
@@ -129,16 +129,16 @@
 					if( !safe_thing )
 						safe_thing = victim.glasses
 				if( eyes_covered && mouth_covered )
-					victim << "\red Your [safe_thing.name] protects you from the pepperspray!"
+					to_chat(victim, "<span class='warning'>Your [safe_thing.name] protects you from the pepperspray!</span>")
 					return
 				else if( eyes_covered )	// Reduced effects if partially protected
-					victim << "\red Your [safe_thing] protect you from most of the pepperspray!"
+					to_chat(victim, "<span class='warning'>Your [safe_thing] protect you from most of the pepperspray!</span>")
 					victim.eye_blurry = max(M.eye_blurry, 5)
 					victim.Stun(5)
 					//victim.KnockOut(10)
 					return
 				else if( mouth_covered ) // Mouth cover is better than eye cover
-					victim << "\red Your [safe_thing] protects your face from the pepperspray!"
+					to_chat(victim, "<span class='warning'>Your [safe_thing] protects your face from the pepperspray!</span>")
 					if(!(victim.species && (victim.species.flags & NO_PAIN)))
 						victim.emote("scream")
 					victim.eye_blurry = max(M.eye_blurry, 25)
@@ -148,7 +148,7 @@
 				else // Oh dear :D
 					if(!(victim.species && (victim.species.flags & NO_PAIN)))
 						victim.emote("scream")
-					victim << "\red You're sprayed directly in the eyes with pepperspray!"
+					to_chat(victim, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
 					victim.eye_blurry = max(M.eye_blurry, 25)
 					victim.eye_blind = max(M.eye_blind, 10)
 					victim.Stun(5)
@@ -168,12 +168,12 @@
 			if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
 				switch(data)
 					if(1)
-						H << "\red <b>You feel like your insides are burning !</b>"
+						to_chat(H, "<span class='danger'><b>You feel like your insides are burning !</b></span>")
 					if(2 to INFINITY)
 						H.apply_effect(4,AGONY,0)
 						if(prob(5))
 							H.visible_message("<span class='warning'>[H] [pick("dry heaves!","coughs!","splutters!")]</span>")
-							H << "\red <b>You feel like your insides are burning !</b>"
+							to_chat(H, "<span class='danger'><b>You feel like your insides are burning !</b></span>")
 		holder.remove_reagent("frostoil", 5)
 		holder.remove_reagent(src.id, FOOD_METABOLISM)
 		data++

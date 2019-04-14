@@ -46,8 +46,8 @@
 			Stun(rand(1,5))
 	flash_eyes(1, TRUE, type = /obj/screen/fullscreen/flash/noise)
 
-	src << "\red <B>*BZZZT*</B>"
-	src << "\red Warning: Electromagnetic pulse detected."
+	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
+	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
 	..()
 
 /mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)
@@ -113,7 +113,7 @@
 //can't inject synths
 /mob/living/silicon/can_inject(var/mob/user, var/error_msg)
 	if(error_msg)
-		user << "<span class='alert'>The armoured plating is too tough.</span>"
+		to_chat(user, "<span class='alert'>The armoured plating is too tough.</span>")
 	return 0
 
 
@@ -173,11 +173,11 @@
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
 		H.remove_hud_from(src)
-		src << "\blue <B>[hud_choice] Disabled</B>"
+		to_chat(src, "<span class='notice'> <B>[hud_choice] Disabled</B></span>")
 	else
 		HUD_toggled[HUD_nbr] = 1
 		H.add_hud_to(src)
-		src << "\blue <B>[hud_choice] Enabled</B>"
+		to_chat(src, "<span class='notice'> <B>[hud_choice] Enabled</B></span>")
 
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"

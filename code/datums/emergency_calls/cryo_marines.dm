@@ -30,18 +30,18 @@
 	sleep(5)
 	if (medics < max_medics)
 		arm_equipment(H, "USCM (Cryo) Squad Medic", TRUE)
-		H << "<font size='3'>\red You are a medic in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>"
+		to_chat(H, "<font size='3'>\red You are a medic in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")
 		medics ++
 	else if (heavies < max_heavies)
 		arm_equipment(H, "USCM (Cryo) Squad Engineer", TRUE)
-		H << "<font size='3'>\red You are an engineer in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>"
+		to_chat(H, "<font size='3'>\red You are an engineer in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")
 		heavies ++
 	else
 		arm_equipment(H, "USCM (Cryo) Squad Marine (PFC)", TRUE)
-		H << "<font size='3'>\red You are a private in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>"
+		to_chat(H, "<font size='3'>\red You are a private in the USCM, you are here to assist in the defence of the [map_tag]. Listen to the chain of command. </B>")
 		
 	sleep(10)
-	H << "<B>Objectives:</b> [objectives]"
+	to_chat(H, "<B>Objectives:</b> [objectives]")
 	RoleAuthority.randomize_squad(H, TRUE) //we force put people in squads so even if we have a max amount of medics / engis we still give them a squad
 	H.sec_hud_set_ID()
 	H.sec_hud_set_implants()

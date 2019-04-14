@@ -24,15 +24,15 @@
 
 		if(istype(user,/mob/living/silicon))
 			if(!program.ai_allowed)
-				user << "\blue You are forbidden from accessing this program."
+				to_chat(user, "<span class='notice'> You are forbidden from accessing this program.</span>")
 				return 0
 		else
 			if(program.human_controls)
 				if(!ishuman(user))
-					user << "\red Your body can't work the controls!"
+					to_chat(user, "<span class='danger'>Your body can't work the controls!</span>")
 					return 0
 				if(user.is_mob_restrained())
-					user << "\red You need a free hand!"
+					to_chat(user, "<span class='danger'>You need a free hand!</span>")
 					return 0
 
 		add_fingerprint(user)
@@ -104,7 +104,7 @@
 		switch(errorcode)
 			if(PROG_CRASH)
 				if(usr)
-					usr << "\red The program crashed!"
+					to_chat(usr, "<span class='danger'>The program crashed!</span>")
 					usr << browse(null,"\ref[src]")
 					Reset()
 
@@ -137,7 +137,7 @@
 
 			else
 				if(usr)
-					usr << "\red The program crashed!"
+					to_chat(usr, "<span class='danger'>The program crashed!</span>")
 					usr << browse(null,"\ref[src]")
 					testing("computer/Crash() - unknown error code [errorcode]")
 					Reset()

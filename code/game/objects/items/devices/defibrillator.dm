@@ -57,7 +57,7 @@
 	//Job knowledge requirement
 	if (istype(user))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
 			return
 
 	defib_cooldown = world.time + 20 //2 seconds cooldown every time the defib is toggled
@@ -98,16 +98,16 @@
 	//job knowledge requirement
 	if(user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
 			return
 		else
 			defib_heal_amt *= user.mind.cm_skills.medical*0.5 //more healing power when used by a doctor
 
 	if(!ishuman(H) || isYautja(H))
-		user << "<span class='warning'>You can't defibrilate [H]. You don't even know where to put the paddles!</span>"
+		to_chat(user, "<span class='warning'>You can't defibrilate [H]. You don't even know where to put the paddles!</span>")
 		return
 	if(!ready)
-		user << "<span class='warning'>Take [src]'s paddles out first.</span>"
+		to_chat(user, "<span class='warning'>Take [src]'s paddles out first.</span>")
 		return
 	if(dcell.charge <= charge_cost)
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Internal battery depleted. Cannot analyze nor administer shock.</span>")
@@ -124,7 +124,7 @@
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring.</span>")
 		return
 
-	if((!H.check_tod() && !isSynth(H)) || H.suiciding) //synthetic species have no expiration date
+	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient is braindead.</span>")
 		return
 
@@ -166,7 +166,7 @@
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving.</span>")
 			return
 
-		if((!H.check_tod() && !isSynth(H)) || H.suiciding) //synthetic species have no expiration date
+		if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient's brain has decayed too much.</span>")
 			return
 
@@ -213,7 +213,7 @@
 			H.apply_effect(10, PARALYZE)
 			H.update_canmove()
 			H.updatehealth() //One more time, so it doesn't show the target as dead on HUDs
-			H << "<span class='notice'>You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane.</span>"
+			to_chat(H, "<span class='notice'>You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane.</span>")
 		else
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.</span>") //Freak case
 	else

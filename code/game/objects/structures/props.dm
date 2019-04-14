@@ -125,7 +125,7 @@
 		if(F.lit)
 			L = 1
 		else
-			user << "<span class='warning'>Turn on the pilot light first!</span>"
+			to_chat(user, "<span class='warning'>Turn on the pilot light first!</span>")
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W

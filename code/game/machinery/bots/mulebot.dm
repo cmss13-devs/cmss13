@@ -122,7 +122,7 @@
 /obj/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I,/obj/item/card/emag))
 		locked = !locked
-		user << "\blue You [locked ? "lock" : "unlock"] the mulebot's controls!"
+		to_chat(user, "<span class='notice'> You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
 		flick("mulebot-emagged", src)
 		playsound(src.loc, 'sound/effects/sparks1.ogg', 25, 0)
 	else if(istype(I,/obj/item/cell) && open && !cell)
@@ -132,16 +132,16 @@
 			updateDialog()
 	else if(istype(I,/obj/item/tool/screwdriver))
 		if(locked)
-			user << "\blue The maintenance hatch cannot be opened or closed while the controls are locked."
+			to_chat(user, "<span class='notice'> The maintenance hatch cannot be opened or closed while the controls are locked.</span>")
 			return
 
 		open = !open
 		if(open)
-			src.visible_message("[user] opens the maintenance hatch of [src]", "\blue You open [src]'s maintenance hatch.")
+			src.visible_message("[user] opens the maintenance hatch of [src]", "<span class='notice'>You open [src]'s maintenance hatch.</span>")
 			on = 0
 			icon_state="mulebot-hatch"
 		else
-			src.visible_message("[user] closes the maintenance hatch of [src]", "\blue You close [src]'s maintenance hatch.")
+			src.visible_message("[user] closes the maintenance hatch of [src]", "<span class='notice'>You close [src]'s maintenance hatch.</span>")
 			icon_state = "mulebot0"
 
 		updateDialog()
@@ -149,17 +149,17 @@
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
-				"\red [user] repairs [src]!",
-				"\blue You repair [src]!"
+				"<span class='danger'>[user] repairs [src]!</span>",
+				"<span class='notice'>You repair [src]!</span>"
 			)
 		else
-			user << "\blue [src] does not need a repair!"
+			to_chat(user, "<span class='notice'> [src] does not need a repair!</span>")
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
-			user.visible_message("\red [user] knocks [load] off [src] with \the [I]!", "\red You knock [load] off [src] with \the [I]!")
+			user.visible_message("<span class='danger'>[user] knocks [load] off [src] with \the [I]!</span>", "<span class='danger'>You knock [load] off [src] with \the [I]!</span>")
 		else
-			user << "You hit [src] with \the [I] but to no effect."
+			to_chat(user, "You hit [src] with \the [I] but to no effect.")
 	else
 		..()
 	return
@@ -181,7 +181,7 @@
 	if(prob(50) && !isnull(load))
 		unload(0)
 	if(prob(25))
-		src.visible_message("\red Something shorts out inside [src]!")
+		src.visible_message("<span class='danger'>Something shorts out inside [src]!</span>")
 		var/index = 1<< (rand(0,9))
 		if(wires & index)
 			wires &= ~index
@@ -298,14 +298,14 @@
 					locked = !locked
 					updateDialog()
 				else
-					usr << "\red Access denied."
+					to_chat(usr, "<span class='danger'>Access denied.</span>")
 					return
 			if("power")
 				if (src.on)
 					turn_off()
 				else if (cell && !open)
 					if (!turn_on())
-						usr << "\red You can't switch on [src]."
+						to_chat(usr, "<span class='danger'>You can't switch on [src].</span>")
 						return
 				else
 					return
@@ -320,7 +320,7 @@
 					cell.add_fingerprint(usr)
 					cell = null
 
-					usr.visible_message("\blue [usr] removes the power cell from [src].", "\blue You remove the power cell from [src].")
+					usr.visible_message("<span class='notice'>[usr] removes the power cell from [src].</span>", "<span class='notice'>You remove the power cell from [src].</span>")
 					updateDialog()
 
 			if("cellinsert")
@@ -332,7 +332,7 @@
 							C.forceMove(src)
 							C.add_fingerprint(usr)
 
-							usr.visible_message("\blue [usr] inserts a power cell into [src].", "\blue You insert the power cell into [src].")
+							usr.visible_message("<span class='notice'>[usr] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
 							updateDialog()
 
 
@@ -399,29 +399,29 @@
 					var/wirebit = text2num(href_list["wire"])
 					wires &= ~wirebit
 				else
-					usr << "\blue You need wirecutters!"
+					to_chat(usr, "<span class='notice'> You need wirecutters!</span>")
 			if("wiremend")
 				if(istype(usr.get_active_hand(), /obj/item/tool/wirecutters))
 					var/wirebit = text2num(href_list["wire"])
 					wires |= wirebit
 				else
-					usr << "\blue You need wirecutters!"
+					to_chat(usr, "<span class='notice'> You need wirecutters!</span>")
 
 			if("wirepulse")
 				if(istype(usr.get_active_hand(), /obj/item/device/multitool))
 					switch(href_list["wire"])
 						if("1","2")
-							usr << "\blue \icon[src] The charge light flickers."
+							to_chat(usr, "<span class='notice'> \icon[src] The charge light flickers.</span>")
 						if("4")
-							usr << "\blue \icon[src] The external warning lights flash briefly."
+							to_chat(usr, "<span class='notice'> \icon[src] The external warning lights flash briefly.</span>")
 						if("8")
-							usr << "\blue \icon[src] The load platform clunks."
+							to_chat(usr, "<span class='notice'> \icon[src] The load platform clunks.</span>")
 						if("16", "32")
-							usr << "\blue \icon[src] The drive motor whines briefly."
+							to_chat(usr, "<span class='notice'> \icon[src] The drive motor whines briefly.</span>")
 						else
-							usr << "\blue \icon[src] You hear a radio crackle."
+							to_chat(usr, "<span class='notice'> \icon[src] You hear a radio crackle.</span>")
 				else
-					usr << "\blue You need a multitool!"
+					to_chat(usr, "<span class='notice'> You need a multitool!</span>")
 
 
 
@@ -556,7 +556,7 @@
 		return
 	if(on)
 		var/speed = ((wires & wire_motor1) ? 1:0) + ((wires & wire_motor2) ? 2:0)
-		//world << "speed: [speed]"
+		//to_world("speed: [speed]")
 		switch(speed)
 			if(0)
 				// do nothing
@@ -580,7 +580,7 @@
 	if(refresh) updateDialog()
 
 /obj/machinery/bot/mulebot/proc/process_bot()
-	//if(mode) world << "Mode: [mode]"
+	//if(mode) to_world("Mode: [mode]")
 	switch(mode)
 		if(0)		// idle
 			icon_state = "mulebot0"
@@ -603,7 +603,7 @@
 
 
 				if(istype( next, /turf))
-					//world << "at ([x],[y]) moving to ([next.x],[next.y])"
+					//to_world("at ([x],[y]) moving to ([next.x],[next.y])")
 
 
 					if(bloodiness)
@@ -625,7 +625,7 @@
 					var/moved = step_towards(src, next)	// attempt to move
 					if(cell) cell.use(1)
 					if(moved)	// successful move
-						//world << "Successful move."
+						//to_world("Successful move.")
 						blockcount = 0
 						path -= loc
 
@@ -641,7 +641,7 @@
 
 					else		// failed to move
 
-						//world << "Unable to move."
+						//to_world("Unable to move.")
 
 
 
@@ -668,16 +668,16 @@
 				else
 					src.visible_message("[src] makes an annoyed buzzing sound", "You hear an electronic buzzing sound.")
 					playsound(src.loc, 'sound/machines/buzz-two.ogg', 25, 0)
-					//world << "Bad turf."
+					//to_world("Bad turf.")
 					mode = 5
 					return
 			else
-				//world << "No path."
+				//to_world("No path.")
 				mode = 5
 				return
 
 		if(5)		// calculate new path
-			//world << "Calc new path."
+			//to_world("Calc new path.")
 			mode = 6
 			spawn(0)
 
@@ -695,9 +695,9 @@
 
 					mode = 7
 		//if(6)
-			//world << "Pending path calc."
+			//to_world("Pending path calc.")
 		//if(7)
-			//world << "No dest / no route."
+			//to_world("No dest / no route.")
 	return
 
 
@@ -775,9 +775,9 @@
 		var/mob/M = obs
 		if(ismob(M))
 			if(isborg(M))
-				src.visible_message("\red [src] bumps into [M]!")
+				src.visible_message("<span class='danger'>[src] bumps into [M]!</span>")
 			else
-				src.visible_message("\red [src] knocks over [M]!")
+				src.visible_message("<span class='danger'>[src] knocks over [M]!</span>")
 				M.stop_pulling()
 				M.Stun(8)
 				M.KnockDown(5)
@@ -791,7 +791,7 @@
 // called from mob/living/carbon/human/Crossed()
 // when mulebot is in the same loc
 /obj/machinery/bot/mulebot/proc/RunOver(var/mob/living/carbon/human/H)
-	src.visible_message("\red [src] drives over [H]!")
+	src.visible_message("<span class='danger'>[src] drives over [H]!</span>")
 	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
 
 	var/damage = rand(5,15)
@@ -821,9 +821,9 @@
 		return
 
 	/*
-	world << "rec signal: [signal.source]"
+	to_world("rec signal: [signal.source]")
 	for(var/x in signal.data)
-		world << "* [x] = [signal.data[x]]"
+		to_world("* [x] = [signal.data[x]]")
 	*/
 	var/recv = signal.data["command"]
 	// process all-bot input
@@ -910,7 +910,7 @@
 	//for(var/key in keyval)
 	//	signal.data[key] = keyval[key]
 	signal.data = keyval
-		//world << "sent [key],[keyval[key]] on [freq]"
+		//to_world("sent [key],[keyval[key]] on [freq]")
 	if (signal.data["findbeacon"])
 		frequency.post_signal(src, signal, filter = RADIO_NAVBEACONS)
 	else if (signal.data["type"] == "mulebot")
@@ -943,7 +943,7 @@
 
 
 /obj/machinery/bot/mulebot/explode()
-	src.visible_message("\red <B>[src] blows apart!</B>", 1)
+	src.visible_message("<span class='danger'><B>[src] blows apart!</B></span>", 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/device/assembly/prox_sensor(Tsec)

@@ -19,16 +19,12 @@
 	desc = "A trap used to catch bears and other legged creatures."
 	var/armed = 0
 
-	suicide_act(mob/user)
-		viewers(user) << "\red <b>[user] is putting the [src.name] on \his head! It looks like \he's trying to commit suicide.</b>"
-		return (BRUTELOSS)
-
 /obj/item/legcuffs/beartrap/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		armed = !armed
 		icon_state = "beartrap[armed]"
-		user << "<span class='notice'>[src] is now [armed ? "armed" : "disarmed"]</span>"
+		to_chat(user, "<span class='notice'>[src] is now [armed ? "armed" : "disarmed"]</span>")
 
 /obj/item/legcuffs/beartrap/Crossed(atom/movable/AM)
 	if(armed)
@@ -46,12 +42,12 @@
 							armed = 0
 							icon_state = "beartrap0"
 							playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-							H << "\red <B>You step on \the [src]!</B>"
+							to_chat(H, "<span class='danger'><B>You step on \the [src]!</B></span>")
 							feedback_add_details("handcuffs","B") //Yes, I know they're legcuffs. Don't change this, no need for an extra variable. The "B" is used to tell them apart.
 							for(var/mob/O in viewers(H, null))
 								if(O == H)
 									continue
-								O.show_message("\red <B>[H] steps on \the [src].</B>", 1)
+								O.show_message("<span class='danger'><B>[H] steps on \the [src].</B></span>", 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade) && !istype(AM, /mob/living/simple_animal/hostile/viscerator))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
@@ -92,7 +88,7 @@
 		armed = 1
 		anchored = 1
 		icon_state = "yauttrap[armed]"
-		user << "<span class='notice'>[src] is now armed.</span>"
+		to_chat(user, "<span class='notice'>[src] is now armed.</span>")
 		user.drop_held_item()
 
 
@@ -101,11 +97,11 @@
 		armed = 0
 		anchored = 0
 		icon_state = "yauttrap[armed]"
-		user << "<span class='notice'>[src] is now disarmed.</span>"
+		to_chat(user, "<span class='notice'>[src] is now disarmed.</span>")
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user))
 		if(armed)
-			user << "You foolishly reach out for \the [src]..."
+			to_chat(user, "You foolishly reach out for \the [src]...")
 			trapMob(user)
 			return
 	. = ..()
@@ -119,7 +115,7 @@
 		src.loc = H
 		H.legcuff_update()
 		playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)
-		H << "\icon[src] \red <B>You get caught in \the [src]!</B>"
+		to_chat(H, "\icon[src] \red <B>You get caught in \the [src]!</B>")
 		H.KnockDown(4)
 		if(ishuman(H))
 			H.emote("pain")
@@ -134,7 +130,7 @@
 					if(isturf(src.loc))
 						var/mob/living/carbon/H = AM
 						if(isYautja(H))
-							H << "<span class='notice'>You carefully avoid stepping on the trap.</span>"
+							to_chat(H, "<span class='notice'>You carefully avoid stepping on the trap.</span>")
 							return
 						if(H.m_intent == MOVE_INTENT_RUN)
 							trapMob(H)

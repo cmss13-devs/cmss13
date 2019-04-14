@@ -41,7 +41,7 @@ var/datum/subsystem/mapview/SSmapview
 
 	if(RoleAuthority)
 		//if(current_squad_overlay == 5)
-		//world << "overlay_marine_mapview(all squads)"
+		//to_world("overlay_marine_mapview(all squads)")
 		var/update = 0
 		for(var/obj/machinery/MM in map_machines)
 			var/obj/machinery/computer/communications/C = MM

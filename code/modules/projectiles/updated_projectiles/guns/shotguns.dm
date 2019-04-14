@@ -66,7 +66,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			playsound(user, reload_sound, 25, 1)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) user << "<span class='warning'>[src] is already empty.</span>"
+			if(user) to_chat(user, "<span class='warning'>[src] is already empty.</span>")
 		return
 
 	unload_shell(user)
@@ -100,11 +100,11 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(flags_gun_features & GUN_BURST_FIRING) return
 
 		if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
-			user << "<span class='warning'>You can't use that to reload!</span>"
+			to_chat(user, "<span class='warning'>You can't use that to reload!</span>")
 			return
 
 		if(!check_chamber_position()) //For the double barrel.
-			user << "<span class='warning'>[src] has to be open!</span>"
+			to_chat(user, "<span class='warning'>[src] has to be open!</span>")
 			return
 
 		//From here we know they are using shotgun type ammo and reloading via handful.
@@ -150,7 +150,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons == SKILL_SPEC_SCOUT)
-			user << "<span class='warning'>Scout specialists can't use shotguns...</span>"
+			to_chat(user, "<span class='warning'>Scout specialists can't use shotguns...</span>")
 			return 0
 
 
@@ -191,7 +191,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/merc/examine(mob/user)
 	..()
-	if(in_chamber) user << "It has a chambered round."
+	if(in_chamber) to_chat(user, "It has a chambered round.")
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
@@ -240,7 +240,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat/examine(mob/user)
 	..()
-	if(in_chamber) user << "It has a chambered round."
+	if(in_chamber) to_chat(user, "It has a chambered round.")
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
@@ -287,8 +287,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/examine(mob/user)
 	..()
-	if(current_mag.chamber_closed) user << "It's closed."
-	else user << "It's open with [current_mag.current_rounds] shell\s loaded."
+	if(current_mag.chamber_closed) to_chat(user, "It's closed.")
+	else to_chat(user, "It's open with [current_mag.current_rounds] shell\s loaded.")
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	empty_chamber(user)
@@ -311,7 +311,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if(. && istype(user))
 		if(!current_mag.chamber_closed)
-			user << "\red Close the chamber!"
+			to_chat(user, "<span class='danger'>Close the chamber!</span>")
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
@@ -454,7 +454,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
 	if(pumped)
 		if (world.time > (message + pump_delay))
-			usr << "<span class='warning'><i>[src] already has a shell in the chamber!<i></span>"
+			to_chat(usr, "<span class='warning'><i>[src] already has a shell in the chamber!<i></span>")
 			message = world.time
 		return
 	if(in_chamber) //eject the chambered round

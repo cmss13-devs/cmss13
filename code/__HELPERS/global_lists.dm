@@ -56,6 +56,7 @@ var/global/list/active_areas = list()
 var/global/list/all_areas = list()
 
 var/global/list/turfs = list()
+var/global/list/z1turfs = list()
 var/global/list/processing_turfs = list()
 var/global/list/object_list = list()
 var/global/list/item_list = list()

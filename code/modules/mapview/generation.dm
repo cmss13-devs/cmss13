@@ -5,12 +5,22 @@
 /var/global/list/marine_mapview_overlay_3
 /var/global/list/marine_mapview_overlay_4
 /var/global/list/marine_mapview_overlay_5
+/var/global/squad1updated = FALSE
+/var/global/squad2updated = FALSE
+/var/global/squad3updated = FALSE
+/var/global/squad4updated = FALSE
+/var/global/squad0updated = FALSE // echo squad go away, none of this old spooky code handles you anyway
+/var/global/queenmapupdated = FALSE
+/var/global/refreshfrequency = MINUTES_1 // How often the map may update for each squad and the Queen. Anti-lag.
 /var/global/icon/xeno_mapview
 /var/global/icon/xeno_mapview_overlay
 /var/global/icon/xeno_almayer_mapview
 /var/global/list/map_sizes = list(list(),list(),list())
 
 /proc/overlay_xeno_mapview(var/hivenumber = XENO_HIVE_NORMAL)
+	if(queenmapupdated) // Return if updated too recently, anti-lag
+		return
+	
 	var/icon/newoverlay = icon(xeno_mapview)
 	var/list/hosts_in_sight = list()
 	var/list/tier_0 = list()
@@ -52,6 +62,11 @@
 	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
 	qdel(xeno_mapview_overlay)
 	xeno_mapview_overlay = newoverlay
+
+	queenmapupdated = TRUE
+	spawn(refreshfrequency)
+		queenmapupdated = FALSE
+		
 	return newoverlay
 
 /proc/generate_xeno_mapview()
@@ -61,8 +76,7 @@
 	var/max_x = 0
 	var/min_y = 1000
 	var/max_y = 0
-	for(var/turf/T in turfs)
-		if(T.z != 1) continue
+	for(var/turf/T in z1turfs)
 		if(T.x < min_x && !istype(T,/turf/open/space))
 			min_x = T.x
 		if(T.x > max_x && !istype(T,/turf/open/space))
@@ -123,8 +137,7 @@
 	var/max_x = 0
 	var/min_y = 1000
 	var/max_y = 0
-	for(var/turf/T in turfs)
-		if(T.z != 1) continue
+	for(var/turf/T in z1turfs)
 		if(T.x < min_x && !istype(T,/turf/open/space))
 			min_x = T.x
 		if(T.x > max_x && !istype(T,/turf/open/space))
@@ -133,7 +146,6 @@
 			min_y = T.y
 		if(T.y > max_y && !istype(T,/turf/open/space))
 			max_y = T.y
-		if(T.z != 1) continue
 		var/area/A = get_area(T)
 		if(map_tag != MAP_PRISON_STATION && istype(T,/turf/open/space))
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
@@ -171,6 +183,17 @@
 	return minimap
 
 /proc/overlay_marine_mapview(var/datum/squad/S = null)
+	if(istype(S)) // Update timer since this is a rather performance heavy proc
+		if(S.color == 1 && squad1updated)
+			return
+		if(S.color == 2 && squad2updated)
+			return
+		if(S.color == 3 && squad3updated)
+			return
+		if(S.color == 4 && squad4updated)
+			return
+	else if(squad0updated)
+		return
 	var/icon/newoverlay = icon(marine_mapview)
 	var/list/marines_with_helmets = list(list(),list(),list(),list(),list())
 	var/list/vehicles = list()
@@ -262,18 +285,33 @@
 			if(1)
 				qdel(marine_mapview_overlay_1)
 				marine_mapview_overlay_1 = newoverlay
+				squad1updated = TRUE
+				spawn(refreshfrequency)
+					squad1updated = FALSE
 			if(2)
 				qdel(marine_mapview_overlay_2)
 				marine_mapview_overlay_2 = newoverlay
+				squad2updated = TRUE
+				spawn(refreshfrequency)
+					squad2updated = FALSE
 			if(3)
 				qdel(marine_mapview_overlay_3)
 				marine_mapview_overlay_3 = newoverlay
+				squad3updated = TRUE
+				spawn(refreshfrequency)
+					squad3updated = FALSE
 			if(4)
 				qdel(marine_mapview_overlay_4)
 				marine_mapview_overlay_4 = newoverlay
+				squad4updated = TRUE
+				spawn(refreshfrequency)
+					squad4updated = FALSE
 	else
 		qdel(marine_mapview_overlay_5)
 		marine_mapview_overlay_5 = newoverlay
+		squad0updated = TRUE
+		spawn(refreshfrequency)
+			squad0updated = FALSE
 
 	return newoverlay
 

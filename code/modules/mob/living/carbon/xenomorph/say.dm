@@ -19,17 +19,14 @@
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 
-	var/datum/language/speaking = null
-
-	if(length(message) >= 1)
-		if(languages.len)
+	var/datum/language/speaking = null			
+	if(length(message) >= 2)
+		if(copytext(message,1,2) == ";" && languages.len)
 			for(var/datum/language/L in languages)
-				if(copytext(message,1,2) == ";")
+				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
-					
-	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1, 3)
 		if(languages.len)
 			for(var/datum/language/L in languages)

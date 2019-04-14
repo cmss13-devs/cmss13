@@ -9590,14 +9590,6 @@
 	icon_state = "redfull"
 	},
 /area/almayer/medical/upper_medical)
-"asv" = (
-/obj/machinery/light,
-/obj/structure/closet/secure_closet/guncabinet/red,
-/turf/open/floor/almayer{
-	tag = "icon-redfull";
-	icon_state = "redfull"
-	},
-/area/almayer/medical/upper_medical)
 "asw" = (
 /obj/machinery/light{
 	tag = "icon-tube1 (WEST)";
@@ -9757,13 +9749,6 @@
 	dir = 2;
 	icon_state = "orange";
 	tag = "icon-orange (NORTH)"
-	},
-/area/almayer/command/cic)
-"asS" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/turf/open/floor/almayer{
-	tag = "icon-redfull";
-	icon_state = "redfull"
 	},
 /area/almayer/command/cic)
 "asT" = (
@@ -46838,7 +46823,7 @@
 /area/almayer/living/briefing)
 "bRM" = (
 /obj/machinery/door/window/southleft{
-	opacity = 1;
+	opacity = 0;
 	req_access = list(19)
 	},
 /turf/open/floor/almayer{
@@ -89626,7 +89611,7 @@ acX
 aic
 aoA
 akh
-asS
+atx
 jvX
 ato
 akh
@@ -89640,7 +89625,7 @@ aED
 akh
 fvB
 jvX
-asS
+auR
 ceE
 aKn
 aKy
@@ -97143,7 +97128,7 @@ anq
 awn
 aoH
 axj
-asv
+asu
 ajl
 aCA
 awM

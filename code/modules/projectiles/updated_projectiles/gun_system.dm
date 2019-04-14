@@ -101,22 +101,22 @@
 				//					\\
 //----------------------------------------------------------
 
-	New(loc, spawn_empty) //You can pass on spawn_empty to make the sure the gun has no bullets or mag or anything when created.
-		..()					//This only affects guns you can get from vendors for now. Special guns spawn with their own things regardless.
-		base_gun_icon = icon_state
-		attachable_overlays = list("muzzle", "rail", "under", "stock", "mag", "special")
-		if(current_mag)
-			if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.
-				current_mag = null
-				update_icon()
-			else
-				current_mag = new current_mag(src, spawn_empty? 1:0)
-				ammo = current_mag.default_ammo ? ammo_list[current_mag.default_ammo] : ammo_list[/datum/ammo/bullet] //Latter should never happen, adding as a precaution.
-		else ammo = ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
-		set_gun_config_values()
-		update_force_list() //This gives the gun some unique verbs for attacking.
+/obj/item/weapon/gun/New(loc, spawn_empty) //You can pass on spawn_empty to make the sure the gun has no bullets or mag or anything when created.
+	..()					//This only affects guns you can get from vendors for now. Special guns spawn with their own things regardless.
+	base_gun_icon = icon_state
+	attachable_overlays = list("muzzle", "rail", "under", "stock", "mag", "special")
+	if(current_mag)
+		if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.
+			current_mag = null
+			update_icon()
+		else
+			current_mag = new current_mag(src, spawn_empty? 1:0)
+			ammo = current_mag.default_ammo ? ammo_list[current_mag.default_ammo] : ammo_list[/datum/ammo/bullet] //Latter should never happen, adding as a precaution.
+	else ammo = ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
+	set_gun_config_values()
+	update_force_list() //This gives the gun some unique verbs for attacking.
 
-		handle_starting_attachment()
+	handle_starting_attachment()
 
 
 //Called by the gun's New(), set the gun variables' values.
@@ -190,11 +190,13 @@
 	return ..()
 
 /obj/item/weapon/gun/update_icon()
+	..()
 	if(!current_mag || current_mag.current_rounds <= 0)
 		icon_state = base_gun_icon + "_e"
 	else
 		icon_state = base_gun_icon
 	update_mag_overlay()
+	update_attachables()
 
 /obj/item/weapon/gun/examine(mob/user)
 	..()

@@ -130,17 +130,44 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/proc/can_use_hp(var/mob/M)
 	return 1
 
+/obj/vehicle/multitile/root/cm_armored/proc/get_next_hp(var/hardpoint_to_use)
+	if(!hardpoints.Find(hardpoint_to_use))
+		return
+	switch(hardpoint_to_use)
+		if(HDPT_PRIMARY)
+			if(hardpoints.Find(HDPT_SECDGUN))
+				return hardpoints.Find(HDPT_SECDGUN)
+			else if(hardpoints.Find(HDPT_SUPPORT))
+				return hardpoints.Find(HDPT_SUPPORT)
+		if(HDPT_SECDGUN)
+			if(hardpoints.Find(HDPT_PRIMARY))
+				return hardpoints.Find(HDPT_PRIMARY)
+			else if(hardpoints.Find(HDPT_SUPPORT))
+				return hardpoints.Find(HDPT_SUPPORT)
+		if(HDPT_SUPPORT)
+			if(hardpoints.Find(HDPT_PRIMARY))
+				return hardpoints.Find(HDPT_PRIMARY)
+			else if(hardpoints.Find(HDPT_SECDGUN))
+				return hardpoints.Find(HDPT_SECDGUN)
+	return hardpoint_to_use
+
 //No one but the gunner can gun
 //And other checks to make sure you aren't breaking the law
 /obj/vehicle/multitile/root/cm_armored/tank/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
-
-	if(!can_use_hp(user)) return
+	if (mods["shift"] || mods["alt"] || !can_use_hp(user) || istype(A, /obj/screen))
+		return
 
 	if(!hardpoints.Find(active_hp))
 		to_chat(user, "<span class='warning'>Please select an active hardpoint first.</span>")
 		return
 
-	var/obj/item/hardpoint/HP = hardpoints[active_hp]
+	var/obj/item/hardpoint/HP
+	if (mods["middle"]&& !mods["ctrl"])
+		HP = hardpoints[get_next_hp(active_hp)]
+	else if(mods["ctrl"]&& !mods["middle"])
+		HP = hardpoints[get_next_hp(get_next_hp(active_hp))]
+	else
+		HP = hardpoints[active_hp]
 
 	if(!HP)
 		return
@@ -184,7 +211,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		M.set_interaction(src)
 
 /obj/vehicle/multitile/root/cm_armored/verb/reload_hp()
-	set name = "Reload Active Weapon"
+	set name = "Reload Tank Weapon"
 	set category = "Object"
 	set src in view(0)
 

@@ -131,7 +131,7 @@
 	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
 	var/obj/item/attachable/m60barrel/Q = new(src)
 	Q.Attach(src)
-	update_attachables()
+	update_icon()
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	fire_delay = config.low_fire_delay

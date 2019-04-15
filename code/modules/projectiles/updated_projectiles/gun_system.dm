@@ -74,8 +74,7 @@
 	var/tmp/lock_time 		= -100
 	var/automatic 			= 0					//Used to determine if you can target multiple people.
 	var/tmp/told_cant_shoot = 0					//So that it doesn't spam them with the fact they cannot hit them.
-	var/firerate 			= 0					//0 for keep shooting until aim is lowered
-												//1 for one bullet after target moves and aim is lowered
+
 	//Attachments.
 	var/attachable_overlays[] 		= null		//List of overlays so we can switch them in an out, instead of using Cut() on overlays.
 	var/attachable_offset[] 		= null		//Is a list, see examples of from the other files. Initiated on New() because lists don't initial() properly.
@@ -1015,7 +1014,7 @@ and you're good to go.
 		shake_camera(user, total_recoil + 1, total_recoil)
 		return 1
 
-/obj/item/weapon/gun/proc/muzzle_flash(angle,mob/user, var/x_offset = 0, var/y_offset = 5)
+/obj/item/weapon/gun/proc/muzzle_flash(angle,mob/user)
 	if(!muzzle_flash || flags_gun_features & GUN_SILENCED || isnull(angle)) return //We have to check for null angle here, as 0 can also be an angle.
 	if(!istype(user) || !istype(user.loc,/turf)) return
 
@@ -1024,12 +1023,12 @@ and you're good to go.
 		spawn(10)
 			user.SetLuminosity(-muzzle_flash_lum)
 
-	if(prob(65)) //Not all the time.
-		var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
-		var/image/I = image('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer)
-		var/matrix/rotate = matrix() //Change the flash angle.
-		rotate.Translate(x,y)
-		rotate.Turn(angle)
-		I.transform = rotate
+	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
+	var/offset = 5
 
-		//I.flick_overlay(user, 3) // TODO: fix this -spookydonut
+	var/image/I = image('icons/obj/items/projectiles.dmi',user,muzzle_flash,image_layer)
+	var/matrix/rotate = matrix() //Change the flash angle.
+	rotate.Translate(0, offset)
+	rotate.Turn(angle)
+	I.transform = rotate
+	I.flick_overlay(user, 3)

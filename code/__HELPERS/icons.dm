@@ -859,9 +859,3 @@ obj/proc/apply_overlay(var/icon = null, var/atom/A, var/icon_state = null, var/p
 	I.pixel_x = pixel_x
 	I.pixel_y = pixel_y
 	A.overlays += I
-
-/image/proc/flick_overlay(var/atom/A, var/duration) //originally code related to goonPS. This isn't the original code, but has the same effect
-	A.overlays.Add(src)
-	spawn(duration)
-		if(A)
-			A.overlays.Remove(src)

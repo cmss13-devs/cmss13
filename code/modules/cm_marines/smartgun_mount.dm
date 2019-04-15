@@ -253,7 +253,7 @@
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
-	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
 	anchored = 1
@@ -275,8 +275,7 @@
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
 	var/obj/item/projectile/in_chamber = null
 	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
-	var/is_bursting = 0
-	var/muzzle_flash_lum = 4
+	var/is_bursting = 0.
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
@@ -523,19 +522,16 @@
 /obj/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle)) return
 
-	SetLuminosity(muzzle_flash_lum)
-	spawn(10)
-		SetLuminosity(-muzzle_flash_lum)
+	if(prob(65))
+		var/img_layer = layer + 0.1
 
-	var/image_layer = layer + 0.1
-	var/offset = 8
+		var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",img_layer)
+		var/matrix/rotate = matrix() //Change the flash angle.
+		rotate.Translate(0,5)
+		rotate.Turn(angle)
+		I.transform = rotate
 
-	var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",image_layer)
-	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
-	rotate.Turn(angle)
-	I.transform = rotate
-	I.flick_overlay(src, 3)
+		//I.flick_overlay(src, 3) TODO: fix this -spookydonut
 
 /obj/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	if(!ishuman(usr)) return
@@ -614,7 +610,7 @@
 
 /obj/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
-	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machinegun nest for all your defensive needs.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	burst_fire = 1
 	fire_delay = 2
 	rounds = 1500
@@ -628,7 +624,7 @@
 
 /obj/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
-	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A scoped M56D heavy machine gun mounted behind a metal shield.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system

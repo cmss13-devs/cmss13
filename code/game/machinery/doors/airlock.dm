@@ -1115,6 +1115,8 @@ About the new airlock wires panel:
 /obj/machinery/door/airlock/New()
 	..()
 
+	wall_check()
+
 	//wires
 	if (!secured_wires)
 		airlockWireColorToFlag = globalAirlockWireColorToFlag

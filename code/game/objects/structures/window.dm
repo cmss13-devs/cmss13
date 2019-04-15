@@ -22,6 +22,7 @@
 	New()
 		..()
 		spawn(0)
+			wall_check()
 			update_icon()
 
 /obj/structure/window/update_icon(loc, direction)

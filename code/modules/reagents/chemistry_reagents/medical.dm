@@ -111,34 +111,8 @@
 /datum/reagent/tramadol/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
+	M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
 
-	var/has_addiction = 0
-	for(var/datum/disease/opioid_addiction/D in M.viruses)
-		has_addiction = 1
-
-		if(D.stage < 3) //addiction will not progress beyond stage 3, where tramadol is needed for net pain to be 0
-			D.addiction_progression++
-			if(D.addiction_progression > D.progression_threshold)
-				D.addiction_progression = 0
-				D.stage++
-		else
-			D.addiction_progression = min(D.addiction_progression+1, D.progression_threshold) //withdrawal buffer
-
-		switch(D.stage)
-			if(1)
-				M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
-			if(2)
-				M.reagent_pain_modifier += PAIN_REDUCTION_HEAVY
-			if(3)
-				M.reagent_pain_modifier += PAIN_REDUCTION_MEDIUM
-			if(4)
-				M.reagent_pain_modifier += PAIN_REDUCTION_LIGHT
-			if(5)
-				M.reagent_pain_modifier += PAIN_REDUCTION_VERY_LIGHT
-		break
-
-	if(!has_addiction)
-		M.contract_disease(new /datum/disease/opioid_addiction, 1)
 
 /datum/reagent/tramadol/on_overdose(mob/living/M)
 	M.apply_damage(1, OXY)
@@ -163,34 +137,7 @@
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-
-	var/has_addiction = 0
-	for(var/datum/disease/opioid_addiction/D in M.viruses)
-		has_addiction = 1
-
-		if(D.stage < D.max_stages)
-			D.addiction_progression += 5
-			if(D.addiction_progression > D.progression_threshold)
-				D.addiction_progression = 0
-				D.stage++
-		else
-			D.addiction_progression = min(D.addiction_progression+5, D.progression_threshold) //withdrawal buffer
-
-		switch(D.stage)
-			if(1)
-				M.reagent_pain_modifier += PAIN_REDUCTION_FULL
-			if(2)
-				M.reagent_pain_modifier += PAIN_REDUCTION_FULL
-			if(3)
-				M.reagent_pain_modifier += PAIN_REDUCTION_FULL
-			if(4)
-				M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
-			if(5)
-				M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
-		break
-
-	if(!has_addiction)
-		M.contract_disease(new /datum/disease/opioid_addiction, 1)
+	M.reagent_pain_modifier += PAIN_REDUCTION_FULL
 
 /datum/reagent/oxycodone/on_overdose(mob/living/M)
 	M.apply_damage(1, OXY)

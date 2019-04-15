@@ -17,8 +17,8 @@
 		reducible_tally += round(health_deficiency / 25)
 
 	if(!(species && (species.flags & NO_PAIN)))
-		if(halloss >= 10)
-			reducible_tally += round(halloss / 15) //halloss shouldn't slow you down if you can't even feel it
+		if(traumatic_shock >= 10)
+			reducible_tally += round(traumatic_shock / 15)
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
 	if(hungry >= 50) //Level where a yellow food pip shows up, aka hunger level 3 at 250 nutrition and under

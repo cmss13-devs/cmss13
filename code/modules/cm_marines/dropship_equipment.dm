@@ -359,7 +359,7 @@
 
 
 /obj/structure/dropship_equipment/mg_holder
-	name = "machinegun deployment system"
+	name = "machine gun deployment system"
 	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
 	density = 0
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)

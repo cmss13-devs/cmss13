@@ -12,6 +12,7 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine)
 	rollable_sleeves = TRUE
 	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
+	layer = UPPER_ITEM_LAYER
 
 /obj/item/clothing/under/marine/New(loc,
 	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)

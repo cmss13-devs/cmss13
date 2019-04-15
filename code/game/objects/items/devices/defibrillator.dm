@@ -49,6 +49,15 @@
 	else
 		icon_state += "_empty"
 
+/obj/item/device/defibrillator/examine(mob/user)
+	..()
+	var/maxuses = 0
+	var/currentuses = 0
+	maxuses = round(dcell.maxcharge / charge_cost)
+	currentuses = round(dcell.charge / charge_cost)
+	to_chat(user, "<span class='information'>It has [currentuses] out of [maxuses] uses left in its internal battery.</span>")
+
+
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
 
 	if(defib_cooldown > world.time)
@@ -163,6 +172,9 @@
 			heart.damage += 5 //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
 		if(!H.is_revivable())
+			if(heart.is_broken())
+				user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised.</span>")
+				return
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving.</span>")
 			return
 

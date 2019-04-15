@@ -999,13 +999,14 @@
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
-		//They always take it, might as well make it a default...
-		//It will only cost them all of their poitns and an attachment
-		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
+
+		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
+		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, null, "black"),
 	)
 
 

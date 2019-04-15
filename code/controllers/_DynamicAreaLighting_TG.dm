@@ -256,6 +256,7 @@ datum/light_source
 	var/lighting_lumcount = 0
 	var/lighting_changed = 0
 	var/color_lighting_lumcount = 0
+	var/chemexploded = FALSE
 
 	var/lumcount_r = 0
 	var/lumcount_g = 0

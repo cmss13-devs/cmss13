@@ -8,6 +8,7 @@
 	var/walltype = "metal"
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
 	var/thermite = 0
+	var/melting = FALSE
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -192,23 +193,42 @@
 	return (damage_cap - damage)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 /turf/closed/wall/proc/thermitemelt(mob/user)
+	if(melting)
+		to_chat(user, SPAN_WARNING("The wall is already burning with thermite!"))
+		return
 	if(hull)
 		return
+	melting = TRUE
+	
 	var/obj/effect/overlay/O = new/obj/effect/overlay(src)
 	O.name = "Thermite"
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
-	O.icon_state = "2"
+	O.icon_state = "red_3"
 	O.anchored = 1
 	O.density = 1
 	O.layer = FLY_LAYER
 
-	to_chat(user, "<span class='warning'>The thermite starts melting through [src].</span>")
-	spawn(50)
-		dismantle_wall()
+	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))
 
-	spawn(50)
-		if(O) qdel(O)
+	var/turf/closed/wall/W = src
+	while(W.thermite > 0)
+		if(!istype(src, /turf/closed/wall))
+			break
+
+		thermite -= 1
+		W.damage = W.damage + 100 // 100 damage per unit of thermite so 10u kills wall, 30u kills reinforced wall
+		update_icon()
+		if(damage >= damage_cap)
+			dismantle_wall(1)
+			break
+
+		sleep(20)
+		if(!istype(src, /turf/closed/wall)) // Extra check, needed against runtimes
+			break
+
+	if(O) 
+		qdel(O)
 	return
 
 

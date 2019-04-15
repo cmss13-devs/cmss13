@@ -209,6 +209,12 @@
 	path = /obj/item/ammo_magazine/c45r
 	category = "Arms and Ammunition"
 */
+
+/datum/autolathe/recipe/largegrenade
+	name = "large chem grenade"
+	path = /obj/item/explosive/grenade/chem_grenade/large
+	category = "Devices and Components"
+
 /datum/autolathe/recipe/consolescreen
 	name = "console screen"
 	path = /obj/item/stock_parts/console_screen

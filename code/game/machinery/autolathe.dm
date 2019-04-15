@@ -8,7 +8,7 @@
 	idle_power_usage = 10
 	active_power_usage = 100
 
-	var/list/stored_material =  list("metal" = 0, "glass" = 0)
+	var/list/stored_material =  list("metal" = 32500, "glass" = 20000)
 	var/list/storage_capacity = list("metal" = 0, "glass" = 0)
 	var/show_category = "All"
 

@@ -66,7 +66,7 @@
 	//Job knowledge requirement
 	if (istype(user))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 
 	defib_cooldown = world.time + 20 //2 seconds cooldown every time the defib is toggled
@@ -206,6 +206,14 @@
 		H.adjustCloneLoss(-defib_heal_amt)
 		H.adjustOxyLoss(-H.getOxyLoss())
 		H.updatehealth() //Needed for the check to register properly
+
+		if(H.reagents.has_reagent("adrenaline", 1)) //Adrenaline helps greatly at restarting the heart
+			H.reagents.remove_reagent("adrenaline", 1)
+			H.adjustBruteLoss(-defib_heal_amt)
+			H.adjustFireLoss(-defib_heal_amt)
+			H.adjustToxLoss(-defib_heal_amt)
+			H.updatehealth()
+
 		if(H.health > config.health_threshold_dead)
 			user.visible_message("<span class='notice'>\icon[src] \The [src] beeps: Defibrillation successful.</span>")
 			living_mob_list.Add(H)

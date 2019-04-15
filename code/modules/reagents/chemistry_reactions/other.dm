@@ -1,37 +1,60 @@
 
+// Defines for water/potassium
+#define MAXEXPOWER 		325
+#define MAXEXSHARDS 	128
+
+// Defines for napalm
+#define MINRADIUS 		1
+#define MAXRADIUS 		5
+#define MININTENSITY	5
+#define MAXINTENSITY	50
+#define MINDURATION		5
+#define MAXDURATION		45
 
 /datum/chemical_reaction/explosion_potassium
 	name = "Explosion"
 	id = "explosion_potassium"
 	result = null
 	required_reagents = list("water" = 1, "potassium" = 1)
-	result_amount = 2
-	on_reaction(var/datum/reagents/holder, var/created_volume)
-		var/atom/location = holder.my_atom.loc
-		if(holder.my_atom && location) //It exists outside of null space.
-			var/datum/effect_system/reagents_explosion/e = new()
-			e.set_up(round (created_volume/10, 1), holder.my_atom, 0, 0)
-			e.holder_damage(holder.my_atom)
-			if(isliving(holder.my_atom))
-				e.amount *= 0.5
-				var/mob/living/L = holder.my_atom
-				if(L.stat!=DEAD)
-					e.amount *= 0.5
-			if(e.start()) //Gets rid of doubling down on explosives for gameplay purposes. Hacky, but enough for now.
-			//Should be removed when we actually balance out chemistry.
-				var/obj/item/explosive/grenade/g
-				var/obj/item/storage/s
-				for(g in location) qdel(g) //Grab anything on our turf/something.
-				if(istype(location, /obj/item/storage) || ismob(location)) //If we're in a bag or person.
-					for(s in location) //Find all other containers.
-						for(g in s) qdel(g) //Delete all the grenades.
-				if(istype(location.loc, /obj/item/storage) || ismob(location.loc)) //If the container is in another container.
-					for(g in location.loc) qdel(g) //Delete all the grenades inside.
-					for(s in location.loc) //Search for more containers.
-						if(s == location) continue //Don't search the container we're in.
-						for(g in s) qdel(g) //Delete all the grenades inside.
-		holder.clear_reagents()
-		return
+	result_amount = 1
+
+/datum/chemical_reaction/explosion_potassium/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/atom/location = holder.my_atom.loc
+	var/turf/sourceturf = get_turf(holder.my_atom)
+	var/exfalloff
+	var/expower
+	var/shards = 4 // Because explosions are messy
+	var/shard_type = /datum/ammo/bullet/shrapnel
+	if(sourceturf.chemexploded)
+		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
+
+	if(holder.my_atom && location) //It exists outside of null space.
+		expower = created_volume*2 //60u slightly better than HEDP, 120u worse than holy hand grenade
+		if(exfalloff < 15) exfalloff = 15
+
+		for(var/datum/reagent/R in holder.reagent_list) // if you want to do extra stuff when other chems are present, do it here
+			if(R.id == "iron" || R.id == "aluminum")
+				shards += round(R.volume)
+			if(R.id == "phoron" && R.volume >= 10)
+				shard_type = /datum/ammo/bullet/shrapnel/incendiary
+		
+		// some upper limits
+		if(shards > MAXEXSHARDS)
+			shards = MAXEXSHARDS
+		if(expower > MAXEXPOWER)
+			expower = MAXEXPOWER
+		exfalloff = expower/6
+
+		create_shrapnel(location, shards, , ,shard_type)
+		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
+		explosion_rec(location, expower, exfalloff)
+
+		sourceturf.chemexploded = TRUE // to prevent grenade stacking
+		spawn(20)
+			sourceturf.chemexploded = FALSE
+		holder.exploded = TRUE // clears reagents after all reactions processed
+		
+	return
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
@@ -91,14 +114,14 @@
 	required_reagents = list("oxygen" = 1, "hydrogen" = 2)
 	result_amount = 1
 
-/*
+
 /datum/chemical_reaction/thermite
 	name = "Thermite"
 	id = "thermite"
 	result = "thermite"
 	required_reagents = list("aluminum" = 1, "iron" = 1, "oxygen" = 1)
 	result_amount = 3
-*/
+
 
 /datum/chemical_reaction/lexorin
 	name = "Lexorin"
@@ -200,27 +223,78 @@
 						M.Stun(5)
 
 
-/datum/chemical_reaction/napalm
-	name = "Napalm"
-	id = "napalm"
+/datum/chemical_reaction/chemfire
+	name = "Chemical Fire"
+	id = "chemical fire"
 	result = null
 	required_reagents = list("aluminum" = 1, "phoron" = 1, "sacid" = 1 )
 	result_amount = 1
 
-	on_reaction(var/datum/reagents/holder, var/created_volume, var/radius)
-		var/location = get_turf(holder.my_atom)
-		radius = round(created_volume/45)
-		if(radius < 0) radius = 0
-		if(radius > 3) radius = 3
+/datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/radius = 0
+	var/intensity = 0
+	var/duration = 0
+	var/location = get_turf(holder.my_atom)
+	var/firecolor = "red"
+	var/supplemented = 0 // for determining firecolor. Intensifying chems add, moderating chems remove. Net positive = blue, net negative = green.
+	if(!location)
+		return
 
-		for(var/turf/T in range(radius,location))
-			if(T.density) continue
-			if(istype(T,/turf/open/space)) continue
-			if(locate(/obj/flamer_fire) in T) continue //No stacking
-			new /obj/flamer_fire(T, 5 + rand(0,11))
+	radius = max(created_volume/10, 3)
+	intensity = max(created_volume/2, 30)
+	duration = max(created_volume, 20)
 
-		holder.del_reagent("napalm")
+	for(var/datum/reagent/R in holder.reagent_list)
+		if(R.chemfiresupp)
+			supplemented += R.intensitymod * R.volume
+			intensity += R.intensitymod * R.volume
+			duration += R.durationmod * R.volume
+			radius += R.radiusmod * R.volume
+			holder.del_reagent(R.id)
+			
+	// color
+	if(supplemented > 0 && intensity > 35)
+		firecolor = "blue"
+	if(supplemented < 0 && intensity < 20)
+		firecolor = "green"
 
+	// only integers please
+	radius = round(radius)
+	intensity = round(intensity)
+	duration = round(duration)
+
+	// some upper and lower limits
+	if(radius <= MINRADIUS)
+		radius = MINRADIUS
+	if(radius >= MAXRADIUS)
+		radius = MAXRADIUS
+	if(intensity <= MININTENSITY)
+		intensity = MININTENSITY
+	if(intensity >= MAXINTENSITY)
+		intensity = MAXINTENSITY
+	if(duration <= MINDURATION)
+		duration = MINDURATION
+	if(duration >= MAXDURATION)
+		duration = MAXDURATION
+
+	new /obj/flamer_fire(location, duration, intensity, firecolor, radius)
+	sleep(5)
+	playsound(location, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
+
+// Chemfire supplement chemicals.
+/datum/chemical_reaction/chlorinetrifluoride
+	name = "Chlorine Trifluoride"
+	id = "chlorine trifluoride"
+	result = "chlorine trifluoride"
+	required_reagents = list("chlorine" = 1, "fluorine" = 3)
+	result_amount = 1
+
+/datum/chemical_reaction/methane
+	name = "Methane"
+	id = "methane"
+	result = "methane"
+	required_reagents = list("carbon" = 1, "hydrogen" = 4)
+	result_amount = 1
 
 /datum/chemical_reaction/chemsmoke
 	name = "Chemsmoke"
@@ -439,3 +513,11 @@
 	required_reagents = list("toxin" = 1, "water" = 4)
 	result_amount = 5
 
+#undef MAXEXPOWER
+#undef MAXEXSHARDS
+#undef MINRADIUS
+#undef MAXRADIUS
+#undef MININTENSITY
+#undef MAXINTENSITY
+#undef MINDURATION
+#undef MAXDURATION

@@ -466,6 +466,7 @@
 					/obj/item/reagent_container/hypospray/autoinjector/dexP = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/Dylovene = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 6,
+					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 0,
 					/obj/item/reagent_container/hypospray/autoinjector/Kelo = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/Oxycodone = 4,
 					/obj/item/reagent_container/hypospray/autoinjector/tricord = 8,

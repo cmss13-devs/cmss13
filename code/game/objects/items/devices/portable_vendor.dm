@@ -245,6 +245,6 @@
 		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),
 
 		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
-		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland Yutani Aspen Beer, for a more catual night."),
+		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 	)

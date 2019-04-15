@@ -264,6 +264,7 @@ var/datum/mob_hud/huds = list(
 		holder3.icon_state = "hudsynth"
 	else
 		var/revive_enabled = check_tod() && is_revivable()
+		var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 
 		var/holder2_set = 0
 		if(status_flags & XENO_HOST)
@@ -298,6 +299,14 @@ var/datum/mob_hud/huds = list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
+				if(heart && (heart.is_broken() && check_tod())) // broken heart icon
+					holder.icon_state = "huddeadheart"
+					if(!holder2_set)
+						holder2.icon_state = "huddeadheart"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
+					return
+
 				holder.icon_state = "huddead"
 				if(!holder2_set)
 					holder2.icon_state = "huddead"

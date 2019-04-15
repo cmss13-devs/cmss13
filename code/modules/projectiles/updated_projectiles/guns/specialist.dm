@@ -269,7 +269,8 @@
 	gun_skill_category = GUN_SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/burstfire_assembly)
+						/obj/item/attachable/burstfire_assembly,
+						/obj/item/attachable/flashlight)
 
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
@@ -277,7 +278,7 @@
 /obj/item/weapon/gun/smartgun/New()
 	..()
 	ammo_secondary = ammo_list[ammo_secondary]
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 19, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/smartgun/set_gun_config_values()

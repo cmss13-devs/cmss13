@@ -714,6 +714,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
 	var/busy = 0 //Standard busy check
 	var/linked = 0
+	var/recentlyflipped = FALSE
 
 /obj/structure/barricade/plasteel/update_icon()
 	..()
@@ -888,13 +889,28 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return
 
 	if(closed)
+		if(recentlyflipped)
+			to_chat(user, "<span class='notice'>The [src] has been flipped too recently!</span>")
+			return
 		user.visible_message("<span class='notice'>[user] flips [src] open.</span>",
 		"<span class='notice'>You flip [src] open.</span>")
 		open(src)
+		recentlyflipped = TRUE
+		spawn(10)
+			if(istype(src, /obj/structure/barricade/plasteel))
+				recentlyflipped = FALSE
+
 	else
+		if(recentlyflipped)
+			to_chat(user, "<span class='notice'>The [src] has been flipped too recently!</span>")
+			return
 		user.visible_message("<span class='notice'>[user] flips [src] closed.</span>",
 		"<span class='notice'>You flip [src] closed.</span>")
 		close(src)
+		recentlyflipped = TRUE
+		spawn(10)
+			if(istype(src, /obj/structure/barricade/plasteel))
+				recentlyflipped = FALSE
 
 /obj/structure/barricade/plasteel/proc/open(var/obj/structure/barricade/plasteel/origin)
 	if(!closed)

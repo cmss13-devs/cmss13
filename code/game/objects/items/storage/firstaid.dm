@@ -22,23 +22,31 @@
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 
-	New()
-		..()
-		if(possible_icons_full)
-			icon_state = pick(possible_icons_full)
+/obj/item/storage/firstaid/New()
+	..()
+
+	if(possible_icons_full)
+		icon_full = pick(possible_icons_full)
+	else
 		icon_full = icon_state
-		if(empty)
-			icon_state = "kit_empty"
-		else
-			fill_firstaid_kit()
-
-
+	
+	if(!empty)
+		fill_firstaid_kit()
+		
 	update_icon()
-		if(!contents.len)
-			icon_state = "kit_empty"
-		else
-			icon_state = icon_full
 
+
+/obj/item/storage/firstaid/update_icon()
+	if(!contents.len  || empty)
+		icon_state = "kit_empty"
+	else
+		icon_state = icon_full
+
+/obj/item/storage/firstaid/attack_self(mob/living/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		C.swap_hand()
+		open(user)
 
 //to fill medkits with stuff when spawned
 /obj/item/storage/firstaid/proc/fill_firstaid_kit()

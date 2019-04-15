@@ -219,3 +219,14 @@
 	if(mover == buckled_mob) //can't collide with the thing you're buckled to
 		return TRUE
 	. = ..()
+
+/obj/proc/wall_check() //used at roundstart to automatically detect and remove walls that overlap. Called by windows and airlocks
+	spawn(10)
+		if(ticker.current_state == GAME_STATE_PREGAME)
+			var/turf/T = get_turf(src)
+			if( istype( T,/turf/closed/wall ) )
+				message_admins("Overlap of [src] with [T] detected and fixed in area [T.loc.name] ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
+				log_game("Overlap of [src] with [T] detected and fixed in area [T.loc.name] ([T.x],[T.y],[T.z])")
+				var/turf/closed/wall/W = T
+				if(!W.hull)
+					W.ChangeTurf(/turf/open/floor/plating, TRUE)

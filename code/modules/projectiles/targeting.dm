@@ -1,14 +1,3 @@
-/obj/item/weapon/gun/verb/toggle_firerate()
-	set name = "Toggle Firerate"
-	set category = "Object"
-
-	firerate = !firerate
-
-	if (firerate)
-		to_chat(loc, "You will now continue firing when your target moves.")
-	else
-		to_chat(loc, "You will now only fire once, then lower your aim, when your target moves.")
-
 /obj/item/weapon/gun/verb/lower_aim()
 	set name = "Lower Aim"
 	set category = "Object"
@@ -71,9 +60,6 @@
 		click_empty(M)
 
 	usr.dir = get_cardinal_dir(src, T)
-
-	if (!firerate) // If firerate is set to lower aim after one shot, untarget the target
-		T.NotTargeted(src)
 
 //Yay, math!
 

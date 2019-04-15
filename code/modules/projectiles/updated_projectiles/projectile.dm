@@ -879,7 +879,6 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		else return
 	if(ammo_flags & AMMO_BALLISTIC) current_bulletholes++
 	take_damage(damage)
-	if(prob(30 + damage)) P.visible_message("<span class='warning'>[src] is damaged by [P]!</span>")
 	return 1
 
 
@@ -925,18 +924,17 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 //This is where the bullet bounces off.
 /atom/proc/bullet_ping(obj/item/projectile/P)
 	if(!P || !P.ammo.ping) return
-	if(prob(65))
-		if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
-		var/image/I = image('icons/obj/items/projectiles.dmi',src,P.ammo.ping,10)
-		var/angle = (P.firer && prob(60)) ? round(Get_Angle(P.firer,src)) : round(rand(1,359))
-		I.pixel_x += rand(-6,6)
-		I.pixel_y += rand(-6,6)
 
-		var/matrix/rotate = matrix()
-		rotate.Turn(angle)
-		I.transform = rotate
+	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
+	var/image/I = image('icons/obj/items/projectiles.dmi',src,P.ammo.ping,10)
+	var/angle = (P.firer && prob(60)) ? round(Get_Angle(P.firer,src)) : round(rand(1,359))
+	I.pixel_x += rand(-6,6)
+	I.pixel_y += rand(-6,6)
 
-		//I.flick_overlay(src, 3) // TODO: fix this -spookydonut
+	var/matrix/rotate = matrix()
+	rotate.Turn(angle)
+	I.transform = rotate
+	I.flick_overlay(src, 3)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P) return

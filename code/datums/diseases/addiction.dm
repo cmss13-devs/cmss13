@@ -2,6 +2,7 @@
 	form = "Condition"
 	name = "Ultrazine Addiction"
 	max_stages = 4
+	spread = "Acute"
 	cure = "Withdrawal"
 	curable = 0
 	agent = "Ultrazine"
@@ -47,7 +48,7 @@
 				if(prob(20))
 					affected_mob.halloss = max(affected_mob.halloss, min(20, withdrawal_progression*0.5) )
 					if(prob(50))
-						var/message = SPAN_DANGER( pick("You could use another hit.", "More of that would be nice.", "Another dose would help.", "One more dose wouldn't hurt", "Why not take one more?") )
+						var/message = "<span class='danger'>[pick("You could use another hit.", "More of that would be nice.", "Another dose would help.", "One more dose wouldn't hurt", "Why not take one more?")]</span>"
 						to_chat(affected_mob, message)
 
 				affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 5)
@@ -60,7 +61,7 @@
 			if(prob(20))
 				affected_mob.halloss = max(affected_mob.halloss, min(40, withdrawal_progression) )
 				if(prob(50))
-					var/message = SPAN_DANGER( pick("It's just not the same without it.", "You could use another hit.", "You should take another.", "Just one more.", "Looks like you need another one.") )
+					var/message = "<span class='danger'>[pick("It's just not the same without it.", "You could use another hit.", "You should take another.", "Just one more.", "Looks like you need another one.")]</span>"
 					to_chat(affected_mob, message)
 				if(prob(25))
 					affected_mob.emote("me",1, pick("winces slightly.", "grimaces.") )
@@ -74,7 +75,7 @@
 			if(prob(20))
 				affected_mob.halloss = max(affected_mob.halloss, min(60, withdrawal_progression*1.5) )
 				if(prob(50))
-					var/message = SPAN_DANGER( pick("You need more.", "It's hard to go on like this.", "You want more. You need more.", "Just take another hit. Now.", "One more.") )
+					var/message = "<span class='danger'>[pick("You need more.", "It's hard to go on like this.", "You want more. You need more.", "Just take another hit. Now.", "One more.")]</span>"
 					to_chat(affected_mob, message)
 				if(prob(25))
 					affected_mob.emote("me",1, pick("winces.", "grimaces.", "groans!") )
@@ -88,91 +89,9 @@
 			if(prob(20))
 				affected_mob.halloss = max(affected_mob.halloss, min(80, withdrawal_progression*2) )
 				if(prob(50))
-					var/message = SPAN_DANGER( pick("You need another dose, now. NOW.", "You can't stand it. You have to go back. You have to go back.", "You need more. YOU NEED MORE.", "MORE", "TAKE MORE.") )
+					var/message = "<span class='danger'>[pick("You need another dose, now. NOW.", "You can't stand it. You have to go back. You have to go back.", "You need more. YOU NEED MORE.", "MORE", "TAKE MORE.")]</span>"
 					to_chat(affected_mob, message)
 				if(prob(25))
 					affected_mob.emote("me",1, pick("groans painfully!", "contorts with pain!"))
 
 			affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 10)
-
-
-
-/datum/disease/opioid_addiction
-	form = "Condition"
-	name = "Opioid Addiction"
-	max_stages = 5
-	cure = "Withdrawal"
-	curable = 0
-	agent = "Opioids"
-	affected_species = list("Human")
-	permeability_mod = 1
-	can_carry = 0
-	spread_type = NON_CONTAGIOUS
-	desc = "Use of opioids results in physiological and psychological dependency."
-	severity = "Medium"
-	longevity = 1000
-	hidden = list(1, 1) //hidden from med-huds and pandemic scanners
-	contagious_period = 900001 //additional safeguard to prevent spreading
-	stage_minimum_age = 900001 // advanced only by ultrazine
-	var/addiction_progression = 1
-	var/progression_threshold = 150 //how many life() ticks it takes to advance stage. At 750, a 15 unit tramadol pill should increase progression from 0 to just below the threshold
-	var/withdrawal_progression = 0 //how long the individual has been in withdrawal
-
-
-/datum/disease/opioid_addiction/stage_act()
-	..()
-
-	//to_world("stage: [stage], addiction_progression: [addiction_progression]")
-
-	//withdrawal process
-	if(affected_mob.reagents.has_reagent("tramadol") && stage <= 3)
-		withdrawal_progression = 0
-	else if (affected_mob.reagents.has_reagent("oxycodone"))
-		withdrawal_progression = 0
-	else
-		withdrawal_progression++
-		addiction_progression -= 0.2875 //about 20 minutes to get past each stage
-		if(addiction_progression < 0)
-			if(stage == 1)
-				cure(0)
-			else
-				stage = max(stage-1, 0)
-				addiction_progression = progression_threshold
-
-	//symptoms
-	switch(stage)
-		if(1) //no effects
-
-		if(2) //Reduced painkilling effect, slightly increased baseline pain
-			if(prob(20))
-				affected_mob.halloss = max(affected_mob.halloss, -PAIN_REDUCTION_LIGHT,)
-			if(withdrawal_progression && prob(5))
-				var/message = SPAN_DANGER( pick("You could use another hit.", "More of that would be nice.", "Another dose would help.", "One more dose wouldn't hurt", "Why not take one more?") )
-				to_chat(affected_mob, message)
-		if(3) //At this stage, constant tramadol intake is needed to have 0 net pain
-			if(prob(20))
-				affected_mob.halloss = max(affected_mob.halloss, -PAIN_REDUCTION_MEDIUM)
-			if(withdrawal_progression)
-				if(prob(3))
-					affected_mob.emote("me",1, pick("winces slightly.", "grimaces.") )
-				if(prob(5))
-					var/message = SPAN_DANGER( pick("It's just not the same without it.", "You could use another hit.", "You should take another.", "Just one more.", "Looks like you need another one.") )
-					to_chat(affected_mob, message)
-		if(4)
-			if(prob(20))
-				affected_mob.halloss = max(affected_mob.halloss, -PAIN_REDUCTION_HEAVY)
-			if(withdrawal_progression)
-				if(prob(3))
-					affected_mob.emote("me",1, pick("winces.", "grimaces.", "groans!") )
-				if(prob(5))
-					var/message = SPAN_DANGER( pick("You need more.", "It's hard to go on like this.", "You want more. You need more.", "Just take another hit. Now.", "One more.") )
-					to_chat(affected_mob, message)
-		if(5) //At this stage, constant oxycodone intake is needed to have 0 net pain
-			if(prob(20))
-				affected_mob.halloss = max(affected_mob.halloss, -PAIN_REDUCTION_VERY_HEAVY)
-			if(withdrawal_progression)
-				if(prob(3))
-					affected_mob.emote("me",1, pick("groans painfully!", "contorts with pain!") )
-				if(prob(5))
-					var/message = SPAN_DANGER( pick("You need another dose, now. NOW.", "You can't stand it. You have to go back. You have to go back.", "You need more. YOU NEED MORE.", "MORE", "TAKE MORE.") )
-					to_chat(affected_mob, message)

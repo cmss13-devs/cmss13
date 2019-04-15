@@ -886,22 +886,22 @@
 	return 1
 
 //Mostly taken from gun code.
-/obj/machinery/marine_turret/proc/muzzle_flash(var/angle)
-	if(isnull(angle)) return
+/obj/machinery/marine_turret/proc/muzzle_flash(var/target_angle)
+	if(isnull(target_angle)) return
 
 	SetLuminosity(muzzle_flash_lum)
 	spawn(10)
 		SetLuminosity(-muzzle_flash_lum)
 
-	var/image_layer = layer + 0.1
-	var/offset = 13
+	if(prob(65))
+		var/layer = MOB_LAYER - 0.1
 
-	var/image/I = image('icons/obj/items/projectiles.dmi',src,"muzzle_flash",image_layer)
-	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
-	rotate.Turn(angle)
-	I.transform = rotate
-	I.flick_overlay(src, 3)
+		var/image/I = image('icons/obj/items/projectiles.dmi',src,"muzzle_flash",layer)
+		var/matrix/rotate = matrix() //Change the flash angle.
+		rotate.Translate(0, 5)
+		rotate.Turn(target_angle)
+		I.transform = rotate
+		//I.flick_overlay(src, 3) // TODO: fix this -spookydonut
 
 /obj/machinery/marine_turret/proc/get_target()
 	var/list/targets = list()

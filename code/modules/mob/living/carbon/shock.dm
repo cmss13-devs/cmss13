@@ -44,7 +44,7 @@
 
 	traumatic_shock = max(0, traumatic_shock)	//stuff below this has the potential to mask damage
 
-	traumatic_shock += halloss //not affected by reagent shock reduction
+	traumatic_shock += 1.5 * halloss //not affected by reagent shock reduction
 	traumatic_shock += reagent_pain_modifier
 
 	return traumatic_shock

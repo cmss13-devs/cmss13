@@ -28,11 +28,6 @@ Currently only has the tank hardpoints
 	var/list/backup_clips = list()
 	var/max_clips = 1 //1 so they can reload their backups and actually reload once
 	var/point_cost
-	var/muzzle_flash_offset = 0
-	var/muzzle_flash_x_EW = 0
-	var/muzzle_flash_y_EW = 0
-	var/muzzle_flash_x_NS = 0
-	var/muzzle_flash_y_NS = 0
 
 //Called on attaching, for weapons sets the actual cooldowns
 /obj/item/hardpoint/proc/apply_buff()
@@ -140,39 +135,6 @@ Currently only has the tank hardpoints
 		return
 	..()
 
-/obj/item/hardpoint/proc/muzzle_flash(var/angle)
-	if(isnull(angle)) return
-
-	var/muzzle_flash_x
-	var/muzzle_flash_y
-	switch(owner.dir)
-		if(NORTH)
-			muzzle_flash_x = muzzle_flash_x_NS
-			muzzle_flash_y = muzzle_flash_y_NS
-		if(SOUTH)
-			if(istype(src, /obj/item/hardpoint/secondary))
-				muzzle_flash_x = muzzle_flash_x_NS - 16
-			else
-				muzzle_flash_x = muzzle_flash_x_NS
-			muzzle_flash_y = 123 - muzzle_flash_y_NS
-		if(EAST)
-			muzzle_flash_x = muzzle_flash_x_EW
-			muzzle_flash_y = muzzle_flash_y_EW
-		if(WEST)
-			muzzle_flash_x = 96 - muzzle_flash_x_EW
-			muzzle_flash_y = muzzle_flash_y_EW
-
-
-	var/image_layer = owner.layer + 0.1
-
-	var/image/I = image('icons/obj/items/projectiles.dmi',src,"muzzle_flash",image_layer)
-	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, muzzle_flash_offset)
-	rotate.Turn(angle)
-	rotate.Translate(muzzle_flash_x, muzzle_flash_y)
-	I.transform = rotate
-	I.flick_overlay(owner, 3)
-
 //Delineating between slots
 /obj/item/hardpoint/primary
 	slot = HDPT_PRIMARY
@@ -211,12 +173,6 @@ Currently only has the tank hardpoints
 	max_angle = 45
 	point_cost = 600
 
-	muzzle_flash_offset = -2
-	muzzle_flash_x_NS = 32
-	muzzle_flash_y_NS = 106
-	muzzle_flash_x_EW = 103
-	muzzle_flash_y_EW = 44
-
 /obj/item/hardpoint/primary/cannon/apply_buff()
 	owner.cooldowns["primary"] = 200
 	owner.accuracies["primary"] = 0.97
@@ -241,7 +197,6 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
-	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), pick('sound/weapons/tank_cannon_fire1.ogg', 'sound/weapons/tank_cannon_fire2.ogg'), 60, 1)
 	ammo.current_rounds--
 
@@ -260,12 +215,6 @@ Currently only has the tank hardpoints
 	max_angle = 45
 	point_cost = 600
 	max_clips = 2
-
-	muzzle_flash_offset = -2
-	muzzle_flash_x_NS = 32
-	muzzle_flash_y_NS = 102
-	muzzle_flash_x_EW = 93
-	muzzle_flash_y_EW = 44
 
 	//Miniguns don't use a conventional cooldown
 	//If you fire quickly enough, the cooldown decreases according to chain_delays
@@ -318,7 +267,6 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
-	muzzle_flash(Get_Angle(owner, A))
 
 	playsound(get_turf(src), S, 60)
 	ammo.current_rounds--
@@ -406,12 +354,6 @@ Currently only has the tank hardpoints
 	max_angle = 45
 	point_cost = 600
 
-	muzzle_flash_offset = -2
-	muzzle_flash_x_NS = 32
-	muzzle_flash_y_NS = 89
-	muzzle_flash_x_EW = 81
-	muzzle_flash_y_EW = 45
-
 /obj/item/hardpoint/primary/autocannon/apply_buff()
 	owner.cooldowns["primary"] = 10
 	owner.accuracies["primary"] = 0.98
@@ -436,7 +378,6 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
-	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), 'sound/weapons/tank_autocannon_fire.ogg', 60, 1)
 	ammo.current_rounds--
 
@@ -548,12 +489,6 @@ Currently only has the tank hardpoints
 	max_angle = 90
 	point_cost = 400
 
-	muzzle_flash_offset = 0
-	muzzle_flash_x_NS = 40
-	muzzle_flash_y_NS = 43
-	muzzle_flash_x_EW = 19
-	muzzle_flash_y_EW = 56
-
 /obj/item/hardpoint/secondary/m56cupola/apply_buff()
 	owner.cooldowns["secondary"] = 5
 	owner.accuracies["secondary"] = 0.7
@@ -578,7 +513,6 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
-	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), pick(list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')), 60, 1)
 	ammo.current_rounds--
 

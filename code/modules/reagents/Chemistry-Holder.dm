@@ -10,6 +10,7 @@ var/const/INGEST = 2
 	var/total_volume = 0
 	var/maximum_volume = 100
 	var/atom/my_atom = null
+	var/exploded = FALSE
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
@@ -142,6 +143,10 @@ var/const/INGEST = 2
 	amount = min(min(amount, src.total_volume), R.maximum_volume-R.total_volume)
 
 	src.trans_to(B, amount)
+
+	for(var/datum/reagent/RG in BR.reagent_list) // If it can't be ingested, remove it.
+		if(!RG.ingestible)
+			BR.del_reagent(RG.id)
 
 	spawn(95)
 		if(target.disposed)
@@ -291,13 +296,15 @@ var/const/INGEST = 2
 					for(var/mob/M in seen)
 						to_chat(M, "<span class='notice'> \icon[my_atom] The solution begins to bubble.</span>")
 
-					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 25, 1)
+					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
 					C.on_reaction(src, created_volume)
 					reaction_occured = 1
 					break
 
 	while(reaction_occured)
+	if(exploded) // clear reagents only when everything has reacted
+		clear_reagents()
 	update_total()
 	return 0
 

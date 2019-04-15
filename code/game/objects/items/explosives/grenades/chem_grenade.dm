@@ -169,6 +169,8 @@
 	allowed_containers = list(/obj/item/reagent_container/glass)
 	origin_tech = "combat=3;materials=3"
 	affected_area = 4
+	w_class = 3.0
+	matter = list("metal" = 5000)
 
 
 /obj/item/explosive/grenade/chem_grenade/metalfoam

@@ -10,7 +10,7 @@
 
 /obj/item/explosive/grenade/HE
 	name = "\improper M40 HEDP grenade"
-	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M50 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
+	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. Capable of being loaded in the M92 Launcher, or thrown by hand."
 	icon_state = "grenade"
 	det_time = 40
 	item_state = "grenade"

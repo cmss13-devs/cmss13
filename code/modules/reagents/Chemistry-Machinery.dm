@@ -401,6 +401,11 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
+			
+			for(var/datum/reagent/R in reagents.reagent_list)
+				if(!R.ingestible)
+					to_chat(user, SPAN_WARNING("[R.name] must be administered intravenously and cannot be made into a pill."))
+					return
 
 			var/amount_per_pill = reagents.total_volume/count
 			if (amount_per_pill > 60) amount_per_pill = 60

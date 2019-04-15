@@ -1491,6 +1491,11 @@
 		var/obj/structure/barricade/B = O
 		B.health -= rand(2, 5)
 		B.update_health(1)
+		
+/datum/ammo/bullet/shrapnel/incendiary
+	name = "flaming shrapnel"
+	flags_ammo_behavior = AMMO_INCENDIARY
+
 
 /*
 //================================================

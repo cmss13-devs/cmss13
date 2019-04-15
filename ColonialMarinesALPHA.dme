@@ -540,7 +540,7 @@
 #include "code\game\objects\items\devices\camera_bug.dm"
 #include "code\game\objects\items\devices\cloaking.dm"
 #include "code\game\objects\items\devices\coins.dm"
-#include "code\game\objects\items\devices\Cotablet.dm"
+#include "code\game\objects\items\devices\cotablet.dm"
 #include "code\game\objects\items\devices\debugger.dm"
 #include "code\game\objects\items\devices\defibrillator.dm"
 #include "code\game\objects\items\devices\device.dm"

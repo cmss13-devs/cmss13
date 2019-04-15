@@ -220,6 +220,9 @@
 	description = "A colorless, odorless gas."
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
+	chemfiresupp = TRUE
+	intensitymod = 0.75
+	radiusmod = -0.1
 
 	custom_metabolism = 0.01
 
@@ -247,6 +250,9 @@
 	description = "A colorless, odorless, nonmetallic, tasteless, highly combustible diatomic gas."
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
+	chemfiresupp = TRUE
+	durationmod = -0.75
+	radiusmod = 0.1
 
 	custom_metabolism = 0.01
 
@@ -358,6 +364,10 @@
 	description = "A chemical element, the backbone of biological energy carriers."
 	reagent_state = SOLID
 	color = "#832828" // rgb: 131, 40, 40
+	chemfiresupp = TRUE
+	intensitymod = 1.15
+	durationmod = 0.1
+	radiusmod = -0.14
 
 	custom_metabolism = 0.01
 
@@ -438,23 +448,26 @@
 /datum/reagent/thermite
 	name = "Thermite"
 	id = "thermite"
-	description = "Thermite produces an aluminothermic reaction known as a thermite reaction. Can be used to melt walls."
+	description = "Thermite produces an aluminothermic reaction known as a thermite reaction."
 	reagent_state = SOLID
 	color = "#673910" // rgb: 103, 57, 16
+	chemfiresupp = TRUE
+	intensitymod = 0.25
+	durationmod = 1
+	radiusmod = -0.14
 
-	reaction_turf(var/turf/T, var/volume)
-		src = null
-		if(volume >= 5)
-			if(istype(T, /turf/closed/wall))
-				var/turf/closed/wall/W = T
-				W.thermite = TRUE
-				W.overlays += image('icons/effects/effects.dmi',icon_state = "#673910")
-		return
-
-	on_mob_life(mob/living/M)
+/datum/reagent/thermite/on_mob_life(mob/living/M)
 		. = ..()
 		if(!.) return
 		M.adjustFireLoss(1)
+
+/datum/reagent/thermite/reaction_turf(turf/T, volume)
+	src = null
+	if(istype(T, /turf/closed/wall))
+		var/turf/closed/wall/W = T
+		W.thermite += volume
+		W.overlays += image('icons/effects/effects.dmi',icon_state = "#673910")
+	
 
 /datum/reagent/virus_food
 	name = "Virus Food"
@@ -550,6 +563,10 @@
 	color = "#660000" // rgb: 102, 0, 0
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemfiresupp = TRUE
+	intensitymod = 0.25
+	durationmod = 0.75
+	radiusmod = -0.075
 
 	reaction_obj(var/obj/O, var/volume)
 		var/turf/the_turf = get_turf(O)
@@ -777,3 +794,46 @@
 		if(volume < 3) return
 		if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 			new /obj/effect/decal/cleanable/blackgoo(T)
+
+
+// Chemfire supplements
+
+/datum/reagent/chlorinetrifluoride
+	name = "Chlorine Trifluoride"
+	id = "chlorine trifluoride"
+	description = "A highly reactive interhalogen compound, used for making things burn vigorously."
+	reagent_state = LIQUID
+	color = "#00FFFF"
+	custom_metabolism = 100
+	chemfiresupp = TRUE
+	intensitymod = 1.25
+	durationmod = -0.75
+
+/datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
+	. = ..()
+	M.adjust_fire_stacks(max(M.fire_stacks, 15))
+	M.IgniteMob()
+	M.adjustFireLoss(rand(20, 30))
+	M.adjustToxLoss(rand(10, 20))
+	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+
+/datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
+	var/mob/living/L = M
+	L.adjust_fire_stacks(max(L.fire_stacks, 10))
+	L.IgniteMob()
+
+/datum/reagent/methane
+	name = "Methane"
+	id = "methane"
+	description = "An easily combustible hydrocarbon that can very rapidly expand a fire, even explosively at the right concentrations."
+	reagent_state = LIQUID
+	color = "#0064C8"
+	custom_metabolism = 0.4
+	chemfiresupp = TRUE
+	intensitymod = -1
+	radiusmod = 0.1
+
+/datum/reagent/methane/on_mob_life(var/mob/living/M)
+	. = ..()
+	M.adjustToxLoss(1)
+	

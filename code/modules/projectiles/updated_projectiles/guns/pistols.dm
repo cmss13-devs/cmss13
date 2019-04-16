@@ -1,8 +1,8 @@
-//Base pistol and revolver for inheritance/
+//Base pistol for inheritance/
 //--------------------------------------------------
 
 /obj/item/weapon/gun/pistol
-	icon_state = "" //Defaults to revolver pistol when there's no sprite.
+	icon_state = "" //should return the honk-error sprite if there's no assigned icon.
 	reload_sound = 'sound/weapons/flipblade.ogg'
 	cocked_sound = 'sound/weapons/gun_pistol_cocked.ogg'
 	origin_tech = "combat=3;materials=2"
@@ -41,7 +41,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3
 	name = "\improper M4A3 service pistol"
-	desc = "An M4A3 Colt Service Pistol, the standard issue sidearm of the Colonial Marines. Uses 9mm pistol rounds."
+	desc = "An M4A3 Service Pistol, the standard issue sidearm of the Colonial Marines. Fires 9mm pistol rounds."
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
@@ -84,8 +84,8 @@
 //M4A3 45 //Inspired by the 1911
 
 /obj/item/weapon/gun/pistol/m1911
-	name = "\improper M4A3 service pistol (.45)"
-	desc = "A standard M4A3 chambered in .45. Has a smaller magazine capacity, but packs a better punch."
+	name = "\improper M1911 service pistol"
+	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. Unfortunately, due to the progression of IFF technology, M1911 .45 ACP is NOT compatible with the SU-6."
 	icon_state = "m4a345"
 	item_state = "m4a3"
 	origin_tech = "combat=4;materials=3"

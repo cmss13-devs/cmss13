@@ -604,7 +604,7 @@
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	fire_delay = config.high_fire_delay

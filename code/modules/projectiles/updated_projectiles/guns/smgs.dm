@@ -32,7 +32,7 @@
 
 /obj/item/weapon/gun/smg/m39
 	name = "\improper M39 submachinegun"
-	desc = "Armat Battlefield Systems M-39 submachinegun. Occasionally carried by light-infantry, scouts, engineers or medics. Uses 10x20mm rounds in a 48 round magazine."
+	desc = "The Armat Battlefield Systems M-39 submachinegun. Occasionally carried by light-infantry, scouts, engineers and medics. A lightweight, lower caliber alternative to the various Pulse weapons used the USCM. Fires 10x20mm rounds out of 48 round magazines."
 	icon_state = "m39"
 	item_state = "m39"
 	current_mag = /obj/item/ammo_magazine/smg/m39
@@ -58,14 +58,14 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/smg/m39/New()
-	select_gamemode_skin(/obj/item/weapon/gun/smg/m39, list(MAP_ICE_COLONY = "m39b2") )
+	select_gamemode_skin(/obj/item/weapon/gun/smg/m39)
 	..()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 24, "under_y" = 16, "stock_x" = 24, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
 	fire_delay = config.mlow_fire_delay * 1.1
-	burst_delay = config.mlow_fire_delay
-	burst_amount = config.med_burst_value
+	burst_delay = config.min_fire_delay
+	burst_amount = config.high_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
 	scatter = config.high_scatter_value

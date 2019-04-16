@@ -12,7 +12,7 @@
 	flags_equip_slot = SLOT_BACK
 	w_class = 4
 	force = 15
-	fire_sound = 'sound/weapons/gun_flamethrower2.ogg'
+	fire_sound = ""
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/max_range = 5
@@ -59,6 +59,13 @@
 	lit = !lit
 
 	update_icon()
+
+/obj/item/weapon/gun/flamer/proc/get_fire_sound()
+	var/list/fire_sounds = list(
+					 'sound/weapons/gun_flamethrower1.ogg',
+					 'sound/weapons/gun_flamethrower2.ogg',
+					 'sound/weapons/gun_flamethrower3.ogg')
+	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
 	set waitfor = 0
@@ -146,7 +153,7 @@
 			burnlevel = 10
 			burntime = 50
 			max_range = 4
-			playsound(user, fire_sound, 50, 1)
+			playsound(user, src.get_fire_sound(), 50, 1)
 			triangular_flame(target, user, burntime, burnlevel)
 			return
 
@@ -162,7 +169,7 @@
 		else return
 
 	var/list/turf/turfs = getline2(user,target)
-	playsound(user, fire_sound, 50, 1)
+	playsound(user, src.get_fire_sound(), 50, 1)
 	var/distance = 1
 	var/turf/prev_T
 
@@ -200,7 +207,7 @@
 
 	var/unleash_dir = user.dir //don't want the player to turn around mid-unleash to bend the fire.
 	var/list/turf/turfs = getline2(user,target)
-	playsound(user, fire_sound, 50, 1)
+	playsound(user, src.get_fire_sound(), 50, 1)
 	var/distance = 1
 	var/turf/prev_T
 

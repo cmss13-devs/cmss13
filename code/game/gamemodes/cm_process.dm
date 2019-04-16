@@ -332,7 +332,12 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 			if(isXeno(M))
 				M << sound(get_sfx("queen"), wait = 0, volume = 50)
 				to_chat(M, "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>")
-				to_chat(M, "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? ")approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""] and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""].</span>")
+				var/metalhive_hosts = "[numHostsShip ? "approximately [numHostsShip]":"no"]"
+				var/plural = "[!numHostsShip || numHostsShip > 1 ? "s":""]"
+				var/metalhive_location = "[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""]"
+				var/planet_hosts = "[numHostsPlanet ? "[numHostsPlanet]":"none"]"
+				var/planet_location = "[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""]"
+				to_chat(M, "<span class='xenoannounce'>To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].</span>")
 
 
 	if(world.time > nextHumanBioscan)

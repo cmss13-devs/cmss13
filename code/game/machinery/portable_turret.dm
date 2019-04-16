@@ -344,7 +344,7 @@ Status: []<BR>"},
 		// Behavior lock/unlock mangement
 		if (allowed(user))
 			locked = !src.locked
-			to_chat(user, "Controls are now [locked ? ")locked." : "unlocked."]"
+			to_chat(user, "Controls are now [locked ? "locked." : "unlocked."]"
 		else
 			to_chat(user, "<span class='danger'>Access denied.</span>")
 

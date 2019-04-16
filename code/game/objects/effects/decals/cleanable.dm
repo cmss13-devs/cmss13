@@ -10,6 +10,9 @@
 	if(map_tag == MAP_WHISKEY_OUTPOST)
 		sleep(100)
 		qdel(src)
+	else
+		sleep(MINUTES_35)
+		qdel(src)
 
 /obj/effect/decal/cleanable/attackby(obj/item/W, mob/user)
 	var/obj/effect/alien/weeds/A = locate() in loc

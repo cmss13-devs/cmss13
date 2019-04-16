@@ -26,28 +26,25 @@ var/global/datum/controller/lighting/lighting_controller
 	lighting_controller.Initialize()
 
 /datum/controller/lighting/proc/process()
-	while(processing)
-		iteration++
-		var/thing
-		var/datum/light_source/L
-		for(thing in global_changed_lights)
-			L = thing
-			if(L)
-				L.check()
+	iteration++
+	var/thing
+	var/datum/light_source/L
+	for(thing in global_changed_lights)
+		L = thing
+		if(L)
+			L.check()
 
-		//Operating under the assumpting that Cut() is O(n) because DM is dumb
-		global_changed_lights = list()
+	//Operating under the assumpting that Cut() is O(n) because DM is dumb
+	global_changed_lights = list()
 
-		var/turf/T
-		for(thing in changed_turfs)
-			T = thing
-			if(T)
-				if(T.lighting_changed)
-					T.shift_to_subarea()
+	var/turf/T
+	for(thing in changed_turfs)
+		T = thing
+		if(T)
+			if(T.lighting_changed)
+				T.shift_to_subarea()
 
-		changed_turfs = list()
-
-		sleep(processing_interval)
+	changed_turfs = list()
 
 //same as above except it attempts to shift ALL turfs in the world regardless of lighting_changed status
 //Does not loop. Should be run prior to process() being called for the first time.

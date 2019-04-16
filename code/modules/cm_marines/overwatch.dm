@@ -429,7 +429,7 @@
 		if("set_primary")
 			var/input = stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective")
 			if(input)
-				current_squad.primary_objective = input + " ([worldtime2text()])"
+				current_squad.primary_objective = "[input] ([worldtime2text()])"
 				send_to_squad("Your primary objective has changed. See Status pane for details.")
 				visible_message("\icon[src] <span class='boldnotice'>Primary objective of squad '[current_squad]' set.</span>")
 		if("set_secondary")
@@ -593,7 +593,7 @@
 		send_to_squad("Attention: A new Squad Leader has been set: [H.real_name].")
 		visible_message("\icon[src] <span class='boldnotice'>[H.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.</span>")
 
-	to_chat(H, "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == ")Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
+	to_chat(H, "\icon[src] <font size='3' color='blue'><B>\[Overwatch\]: You've been promoted to \'[H.mind.assigned_role == "Squad Leader" ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel (:v).</B></font>")
 	to_chat(usr, "\icon[src] [H.real_name] is [current_squad]'s new leader!")
 	current_squad.squad_leader = H
 	if(H.mind.assigned_role == "Squad Leader")//a real SL

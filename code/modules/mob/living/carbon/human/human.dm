@@ -63,7 +63,6 @@
 
 	if (statpanel("Stats"))
 		stat("Operation Time:","[worldtime2text()]")
-		return 1
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()

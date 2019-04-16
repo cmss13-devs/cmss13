@@ -15,7 +15,7 @@
 
 /datum/cm_objective/retrieve_item/device/get_clue()
 	var/obj/item/device/D = target_item
-	return "<span class='xenowarning'> Retrieve [target_item] with serial number [D.serial_number] in [initial_location]</span>"
+	return "Retrieve [target_item] with serial number [D.serial_number] in [initial_location]."
 
 // --------------------------------------------
 // *** Experimental devices ***

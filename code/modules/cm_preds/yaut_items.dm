@@ -541,11 +541,14 @@
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, "<span class='warning'>You can't hold that!</span>")
 			return
+		var/obj/item/weapon/wristblades/scimitar/W
+		var/obj/item/weapon/wristblades/N
+		W = new /obj/item/weapon/wristblades/scimitar
+		N = new /obj/item/weapon/wristblades
 
-		var/obj/item/weapon/wristblades/W
-		W =  new(upgrades > 2 ? /obj/item/weapon/wristblades/scimitar : /obj/item/weapon/wristblades, user)
-
-		user.put_in_active_hand(W)
+		if(upgrades > 2)
+			user.put_in_active_hand(W)
+		else user.put_in_active_hand(N)
 		blades_active = 1
 		to_chat(user, "<span class='notice'>You activate your wrist blades.</span>")
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
@@ -984,7 +987,7 @@
 			combistick_cooldown = 1
 		else //If neither hand can hold it, you must not have a free hand.
 			to_chat(usr, "<span class='warning'>You need a free hand to do this!</b></span>")
-	
+
 	if(combistick_cooldown)
 		spawn(30)
 		combistick_cooldown = 0

@@ -1067,8 +1067,7 @@ table tr:first-child th:first-child { border: none;}
 
 /obj/machinery/alarm/power_change()
 	..()
-	spawn(rand(0,15))
-		update_icon()
+	update_icon()
 
 /obj/machinery/alarm/examine(mob/user)
 	..()

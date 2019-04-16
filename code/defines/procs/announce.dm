@@ -44,8 +44,8 @@
 /datum/announcement/proc/Announce(var/message as text, var/new_title = "", var/new_sound = null, var/do_newscast = newscast, var/to_xenos = 0)
 	if(!message)
 		return
-	var/tmp/message_title = new_title ? new_title : title
-	var/tmp/message_sound = new_sound ? sound(new_sound) : sound
+	var/message_title = new_title ? new_title : title
+	var/message_sound = new_sound ? sound(new_sound) : sound
 
 	message = html_encode(message)
 	message_title = html_encode(message_title)

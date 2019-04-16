@@ -265,11 +265,11 @@
 	recent_trick = world.time //Turn on the delay for the next trick.
 
 //-------------------------------------------------------
-//M44 MAGNUM REVOLVER //Not actually cannon, but close enough.
+//M44 MAGNUM REVOLVER //Not actually canon, but close enough.
 
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
-	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well civilian law enforcement. Uses .44 Magnum rounds."
+	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well civilian law enforcement. Fires .44 Magnum rounds."
 	icon_state = "m44"
 	item_state = "m44"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
@@ -414,7 +414,7 @@
 
 /obj/item/weapon/gun/revolver/cmb
 	name = "\improper CMB Spearhead autorevolver"
-	desc = "An automatic revolver chambered in .357. Commonly issued to Colonial Marshals. It has a burst mode."
+	desc = "An automatic revolver chambered in .357. Commonly issued to Colonial Marshals. It has three select fire options, safe, single, and burst."
 	icon_state = "spearhead"
 	item_state = "spearhead"
 	fire_sound = 'sound/weapons/gun_44mag2.ogg'

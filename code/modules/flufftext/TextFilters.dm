@@ -66,9 +66,8 @@ proc/Ellipsis(original_msg, chance = 50)
 	if(chance <= 0) return "..."
 	if(chance >= 100) return original_msg
 
-	var/list
-		words = text2list(original_msg," ")
-		new_words = list()
+	var/list/words = text2list(original_msg," ")
+	var/list/new_words = list()
 
 	var/new_msg = ""
 

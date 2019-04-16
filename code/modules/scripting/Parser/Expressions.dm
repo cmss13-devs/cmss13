@@ -53,10 +53,9 @@
 				if(/token/word)
 					return new/node/expression/value/variable(T.value)
 				if(/token/accessor)
-					var
-						token/accessor/A=T
-						node/expression/value/variable/E//=new(A.member)
-						stack/S=new()
+					var/token/accessor/A=T
+					var/node/expression/value/variable/E//=new(A.member)
+					var/stack/S=new()
 					while(istype(A.object, /token/accessor))
 						S.Push(A)
 						A=A.object

@@ -44,7 +44,7 @@
 		for(var/datum/reagent/ethanol/A in holder.reagent_list)
 			if(isnum(A.data)) d += A.data
 
-		M.dizziness += dizzy_adj.
+		M.dizziness += dizzy_adj
 		if(d >= slur_start && d < pass_out)
 			if(!M:slurring) M:slurring = 1
 			M:slurring += slurr_adj

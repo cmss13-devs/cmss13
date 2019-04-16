@@ -1,9 +1,5 @@
 var/global/datum/controller/gameticker/ticker = new()
 
-#define GAME_STATE_PREGAME		1
-#define GAME_STATE_SETTING_UP	2
-#define GAME_STATE_PLAYING		3
-#define GAME_STATE_FINISHED		4
 
 
 /datum/controller/gameticker
@@ -34,7 +30,7 @@ var/global/datum/controller/gameticker/ticker = new()
 //	'sound/music/ColonialHalloween.ogg'
 //	'sound/music/Suspense_Explore.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
-	'sound/music/DeadSpace_Twinkle_Twinkle_Little_Star.ogg'
+	'sound/music/DeadSpace_Twinkle_Twinkle_Little_Star.ogg',
 	'sound/music/fortunate_son.ogg',
 	'sound/music/buffalo_springfield.ogg',
 	'sound/music/warrior_song.ogg')//The Warrior Song

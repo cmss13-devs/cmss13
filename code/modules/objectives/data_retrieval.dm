@@ -38,7 +38,7 @@
 /datum/cm_objective/retrieve_data/complete()
 	if(..())
 		var/name = "[MAIN_AI_SYSTEM]"
-		var/input = "Data Analysis Complete. The following leads have been generated:\n"
+		var/input = "Data analysis complete. The following leads have been generated:\n"
 		var/clues = 0
 		for(var/datum/cm_objective/O in enables_objectives)
 			if(O.is_prerequisites_completed())

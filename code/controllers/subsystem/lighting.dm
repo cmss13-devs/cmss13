@@ -6,7 +6,7 @@ var/datum/subsystem/lighting/SSlighting
 	init_order    = SS_INIT_LIGHTING
 	display_order = SS_DISPLAY_LIGHTING
 	priority      = SS_PRIORITY_LIGHTING
-	wait          = 5 SECONDS
+	wait          = 3
 	flags         = SS_NO_TICK_CHECK
 
 

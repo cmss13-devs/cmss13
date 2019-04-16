@@ -22,7 +22,7 @@
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	M.debug = !M.debug
-	to_chat(usr, "[M]: Debug messages toggled [M.debug? ")on" : "off"].")
+	to_chat(usr, "[M]: Debug messages toggled [M.debug? "on" : "off"].")
 
 
 //This proc handles power usages.

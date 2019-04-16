@@ -630,7 +630,7 @@
 					if(C.internal)
 						icon_state = "internal1"
 					else
-						to_chat(C, "<span class='notice'>You don't have a[breathes==")oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
+						to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
 	return 1
 
 

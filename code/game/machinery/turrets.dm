@@ -395,7 +395,7 @@
 				return
 
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? ")lock" : "unlock"] the panel.</span>"
+			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the panel.</span>"
 			if (locked)
 				if (user.machine==src)
 					user.unset_machine()

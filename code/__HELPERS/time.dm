@@ -28,6 +28,7 @@
 #define MINUTES_20 		12000
 #define MINUTES_25 		15000
 #define MINUTES_30 		18000
+#define MINUTES_35 		21000
 #define MINUTES_40 		24000
 #define MINUTES_45 		27000
 #define HOURS_1 		36000

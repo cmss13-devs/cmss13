@@ -31,7 +31,7 @@ Bonus
 		var/mob/living/carbon/M = A.affected_mob
 		switch(A.stage)
 			if(1, 2, 3, 4)
-				to_chat(M, "<span class='notice'>[pick(")You feel confused.", "You forgot what you were thinking about.")]</span>")
+				to_chat(M, "<span class='notice'>[pick("You feel confused.", "You forgot what you were thinking about.")]</span>")
 			else
 				to_chat(M, "<span class='notice'>You are unable to think straight!</span>")
 				M.confused = min(100, M.confused + 2)

@@ -60203,6 +60203,18 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/upper_medical)
+"gBT" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/surgery_hallway)
 "gCd" = (
 /obj/structure/table/almayer,
 /obj/item/book/manual/marine_law{
@@ -62176,6 +62188,19 @@
 /obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig)
+"lrh" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/almayer{
+	tag = "icon-sterile_green_side (NORTH)";
+	icon_state = "sterile_green_side";
+	dir = 1
+	},
+/area/almayer/medical/surgery_hallway)
 "lsp" = (
 /obj/machinery/door/airlock/almayer/command{
 	name = "\improper Conference Room"
@@ -96224,11 +96249,11 @@ biy
 yeJ
 bLF
 bnW
+beA
+beA
 bZn
 beA
 beA
-beA
-bZn
 bnW
 byd
 dld
@@ -96427,11 +96452,11 @@ bez
 yeJ
 bLG
 bnW
-bZn
-beA
 bLL
 beA
 bZn
+beA
+bLL
 bnW
 bye
 dld
@@ -96629,13 +96654,13 @@ biF
 biF
 biF
 pMI
-bnW
-bZn
-igG
+gBT
 tMg
 bZk
 bZn
-bnW
+igG
+tMg
+lrh
 vFV
 bsp
 bsp
@@ -96833,11 +96858,11 @@ szL
 bkC
 bmi
 bnW
-bZn
-beA
 pTt
 beA
 bZn
+beA
+pTt
 bnW
 byd
 bzq
@@ -97036,11 +97061,11 @@ xfT
 bkC
 rBQ
 bnW
+beA
+beA
 bZn
 beA
 beA
-beA
-bZn
 bnW
 bye
 bzq

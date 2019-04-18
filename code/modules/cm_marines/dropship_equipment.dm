@@ -930,20 +930,31 @@
 	var/list/possible_stretchers = list()
 	for(var/obj/structure/bed/medevac_stretcher/MS in activated_medevac_stretchers)
 		var/area/AR = get_area(MS)
-		var/evaccee
+		var/evaccee_name
+		var/evaccee_triagecard_color
 		if(MS.buckled_mob)
-			evaccee = MS.buckled_mob.real_name
+			evaccee_name = MS.buckled_mob.real_name
+			if (istype(MS.buckled_mob, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = MS.buckled_mob
+				evaccee_triagecard_color = H.holo_card_color
 		else if(MS.buckled_bodybag)
 			for(var/atom/movable/AM in MS.buckled_bodybag)
 				if(isliving(AM))
 					var/mob/living/L = AM
-					evaccee = "[MS.buckled_bodybag.name]: [L.real_name]"
+					evaccee_name = "[MS.buckled_bodybag.name]: [L.real_name]"
+					if (istype(L, /mob/living/carbon/human))
+						var/mob/living/carbon/human/H = L
+						evaccee_triagecard_color = H.holo_card_color
 					break
-			if(!evaccee)
-				evaccee = "Empty [MS.buckled_bodybag.name]"
+			if(!evaccee_name)
+				evaccee_name = "Empty [MS.buckled_bodybag.name]"
 		else
-			evaccee = "Empty"
-		possible_stretchers["[evaccee] ([AR.name])"] = MS
+			evaccee_name = "Empty"
+
+		if (evaccee_triagecard_color && evaccee_triagecard_color == "none")
+			evaccee_triagecard_color = null
+
+		possible_stretchers["[evaccee_name] [evaccee_triagecard_color ? "\[" + uppertext(evaccee_triagecard_color) + "\]" : ""] ([AR.name])"] = MS
 
 	if(!possible_stretchers.len)
 		to_chat(user, "<span class='warning'>No active medevac stretcher detected.</span>")

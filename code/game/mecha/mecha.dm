@@ -1470,7 +1470,7 @@
 		var/mob/occupant = P.occupant
 
 		user.visible_message("<span class='danger'>[user] begins opening the hatch on \the [P]...</span>", "<span class='danger'>You begin opening the hatch on \the [P]...</span>")
-		if (!do_after(user, 40, FALSE, 5, BUSY_ICON_GENERIC))
+		if (!do_after(user, 40, FALSE, BUSY_ICON_GENERIC))
 			return
 
 		user.visible_message("<span class='danger'>[user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='danger'>You open the hatch on \the [P] and remove [occupant]!</span>")

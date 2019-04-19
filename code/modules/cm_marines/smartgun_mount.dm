@@ -181,7 +181,7 @@
 			to_chat(user, "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>")
 			return
 		to_chat(user, "You begin mounting [MG]..")
-		if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD) && !gun_mounted && anchored)
+		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] installs [MG] into place.</span>","<span class='notice'>You install [MG] into place.</span>")
 			gun_mounted = 1
@@ -199,7 +199,7 @@
 			to_chat(user, "<span class='warning'>There is no gun mounted.</span>")
 			return
 		to_chat(user, "You begin dismounting [src]'s gun..")
-		if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD) && gun_mounted)
+		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] removes [src]'s gun.</span>","<span class='notice'>You remove [src]'s gun.</span>")
 			new /obj/item/device/m56d_gun(loc)
@@ -211,7 +211,7 @@
 	if(istype(O,/obj/item/tool/screwdriver))
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place")
-			if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] screws the M56D into the mount.</span>","<span class='notice'>You finalize the M56D heavy machine gun.</span>")
 				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
@@ -239,7 +239,7 @@
 			else
 				to_chat(user, "You begin screwing [src] into place..")
 			var/old_anchored = anchored
-			if(do_after(user,20, TRUE, 5, BUSY_ICON_BUILD) && anchored == old_anchored)
+			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(anchored)
@@ -337,7 +337,7 @@
 			to_chat(user, "This one cannot be disassembled.")
 		else
 			to_chat(user, "You begin disassembling [src]")
-			if(do_after(user,15, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'> [user] disassembles [src]! </span>","<span class='notice'> You disassemble [src]!</span>")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
@@ -353,7 +353,7 @@
 				to_chat(user, "<span class='warning'>You only know how to swap the ammo drum when it's empty.</span>")
 				return
 			if(user.action_busy) return
-			if(!do_after(user, 25, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
 		user.visible_message("<span class='notice'> [user] loads [src]! </span>","<span class='notice'> You load [src]!</span>")
 		playsound(loc, 'sound/weapons/gun_minigun_cocked.ogg', 25, 1)

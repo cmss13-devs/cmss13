@@ -111,7 +111,7 @@
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message("[user] starts welding [src]'s damage.</span>",
 			"You start welding [src]'s damage.</span>")
-			if(do_after(user, 200, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!src || !WT.isOn()) return
 				damaged = 0
@@ -146,7 +146,7 @@
 				r_FAL
 			user.visible_message("<span class='danger'>[user] starts to slash and claw away at [src]!</span>",
 			"<span class='danger'>You start slashing and clawing at [src]!</span>")
-			if(do_after(user, 50, TRUE, 5, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
+			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
 				if(!src) return 0
 				damaged = 1
 				SetLuminosity(0)

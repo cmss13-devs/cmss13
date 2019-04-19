@@ -150,7 +150,7 @@
 
 	user.visible_message("<span class='warning'>[user] starts [flags_atom & ON_BORDER ? "leaping over":"climbing onto"] \the [src]!</span>")
 
-	if(!do_after(user, climb_delay, FALSE, 5, BUSY_ICON_GENERIC))
+	if(!do_after(user, climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
 
 	if(!can_climb(user))

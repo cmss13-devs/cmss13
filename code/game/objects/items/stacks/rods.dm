@@ -60,7 +60,7 @@
 			return
 		to_chat(usr, "<span class='notice'> Assembling grille...</span>")
 		in_use = 1
-		if (!do_after(usr, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if (!do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			in_use = 0
 			return
 		var/obj/structure/grille/F = new /obj/structure/grille/ ( usr.loc )

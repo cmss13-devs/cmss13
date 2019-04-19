@@ -100,7 +100,7 @@
 			to_chat(user, "<span class='warning'>You don't know how to deconstruct [src]...</span>")
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 20, TRUE, BUSY_ICON_BUILD))
 			var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M

@@ -341,7 +341,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(user)
 		if(magazine.reload_delay > 1)
 			to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
-			if(do_after(user,magazine.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
+			if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 			else
 				to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
 				return
@@ -668,7 +668,7 @@ and you're good to go.
 			if(able_to_fire(user))
 				flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
 				M.visible_message("<span class='warning'>[user] sticks their gun in their mouth, ready to pull the trigger.</span>")
-				if(do_after(user, 40, TRUE, 5, BUSY_ICON_HOSTILE))
+				if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
 						active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
 					var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)

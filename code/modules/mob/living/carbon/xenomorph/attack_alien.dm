@@ -544,7 +544,7 @@
 	M.visible_message("<span class='warning'>\The [M] digs into \the [src] and begins to pry it open.</span>", \
 	"<span class='warning'>You dig into \the [src] and begin to pry it open.</span>", null, 5)
 
-	if(do_after(M, 40, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return 0 //Make sure we're still there
 		if(M.lying)
@@ -589,7 +589,7 @@
 	M.visible_message("<span class='warning'>\The [M] digs into \the [src] and begins to pry it open.</span>", \
 	"<span class='warning'>You dig into \the [src] and begin to pry it open.</span>", null, 5)
 
-	if(do_after(M, 30, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(M, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return 0 //Make sure we're still there
 		if(blocked)
@@ -700,7 +700,7 @@
 
 		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
 		shuttle.door_override(M)
-		if(do_after(usr, 50, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			shuttle.hijack(M)
 	else
 		..()
@@ -773,7 +773,7 @@
 	M.visible_message("<span class='notice'>\The [M] starts clearing out \the [src].</span>", \
 	"<span class='notice'>You start clearing out \the [src].</span>", null, 5)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-	if(!do_after(M, 25, FALSE, 5, BUSY_ICON_FRIENDLY))
+	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return 0
 
 	if(!slayer)
@@ -859,7 +859,7 @@
 		shove_time = 50
 	if(istype(M,/mob/living/carbon/Xenomorph/Crusher))
 		shove_time = 15
-	if(do_after(M, shove_time, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(M, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		M.visible_message("<span class='danger'>\The [M] knocks \the [src] down!</span>", \
 		"<span class='danger'>You knock \the [src] down!</span>", null, 5)
 		tip_over()

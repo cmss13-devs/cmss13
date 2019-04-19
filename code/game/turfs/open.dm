@@ -184,7 +184,7 @@
 			return
 
 		to_chat(user, "Now planting \the [L].")
-		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
+		if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")
@@ -468,7 +468,7 @@
 			return
 
 		to_chat(user, "Now planting \the [L].")
-		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
+		if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
 		user.visible_message("\blue[user.name] planted \the [L] into [src].")

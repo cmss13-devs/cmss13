@@ -4,6 +4,9 @@
 	var/obj/target = null
 	var/obj/screen/action_button/button = null
 	var/mob/living/owner
+	var/cooldown = 0 // By default an action has no cooldown
+	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
+	var/action_flags = 0 // Check out __game.dm for flags
 
 /datum/action/New(Target)
 	target = Target

@@ -729,7 +729,7 @@
 
 	if(user)
 		to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
-		if(do_after(user,current_mag.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY))
+		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			replace_ammo(user,rocket)
 			current_mag.current_rounds = current_mag.max_rounds
 			to_chat(user, "<span class='notice'>You load [rocket] into [src].</span>")
@@ -750,7 +750,7 @@
 			to_chat(user, "<span class='warning'>[src] is already empty!</span>")
 			return
 		to_chat(user, "<span class='notice'>You begin unloading [src]. Hold still...</span>")
-		if(do_after(user,current_mag.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY))
+		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			playsound(user, unload_sound, 25, 1)
 			user.visible_message("<span class='notice'>[user] unloads [ammo] from [src].</span>",
 			"<span class='notice'>You unload [ammo] from [src].</span>")

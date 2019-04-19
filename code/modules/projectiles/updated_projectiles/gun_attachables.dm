@@ -622,7 +622,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/scope/mini/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(istype(G, /obj/item/weapon/gun/launcher/rocket))
 		allows_movement	= 0
-		if(do_after(user, 25, FALSE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			. = ..()
 	else
 		allows_movement	= 1
@@ -659,7 +659,7 @@ Defined in conflicts.dm of the #defines folder.
 	damage_falloff_scoped_buff = 0
 
 /obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(do_after(user, 8, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		allows_movement	= 1
 		. = ..()
 		if(user && G.zoom)

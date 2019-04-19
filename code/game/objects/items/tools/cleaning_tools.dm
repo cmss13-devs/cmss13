@@ -36,7 +36,7 @@
 
 		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(A)].</span>")
 
-		if(do_after(user, 40, TRUE, 5, BUSY_ICON_GENERIC))
+		if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			var/turf/T = get_turf(A)
 			if(T)
 				T.clean(src)

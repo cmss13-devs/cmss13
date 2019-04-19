@@ -58,13 +58,13 @@
 
 	if(!armed)
 		user.visible_message("<span class='notice'>[user] starts deploying [src].</span>", \
-		"<span class='notice'>You start deploying [src].</span>")
-		if(!do_after(user, 40, TRUE, 5, BUSY_ICON_HOSTILE))
+			"<span class='notice'>You start deploying [src].</span>")
+		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			user.visible_message("<span class='notice'>[user] stops deploying [src].</span>", \
-		"<span class='notice'>You stop deploying \the [src].</span>")
+				"<span class='notice'>You stop deploying \the [src].</span>")
 			return
 		user.visible_message("<span class='notice'>[user] finishes deploying [src].</span>", \
-		"<span class='notice'>You finish deploying [src].</span>")
+			"<span class='notice'>You finish deploying [src].</span>")
 		anchored = 1
 		armed = 1
 		playsound(src.loc, 'sound/weapons/mine_armed.ogg', 25, 1)
@@ -82,7 +82,7 @@
 			user.visible_message("<span class='notice'>[user] starts disarming [src].</span>", \
 			"<span class='notice'>You start disarming [src].</span>")
 			disarming = 1
-			if(!do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='warning'>[user] stops disarming [src].", \
 				"<span class='warning'>You stop disarming [src].")
 				disarming = 0

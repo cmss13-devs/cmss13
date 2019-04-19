@@ -343,7 +343,7 @@
 			user.visible_message("<span class='notice'>[user] starts repairing the damage to [src].</span>",
 			"<span class='notice'>You start repairing the damage to [src].</span>")
 			playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			if(do_after(user, max(5, round(damage / 5)), TRUE, 5, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
+			if(do_after(user, max(5, round(damage / 5)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
 				user.visible_message("<span class='notice'>[user] finishes repairing the damage to [src].</span>",
 				"<span class='notice'>You finish repairing the damage to [src].</span>")
 				take_damage(-damage)
@@ -362,7 +362,7 @@
 				user.visible_message("<span class='notice'>[user] begins slicing through the outer plating.</span>",
 				"<span class='notice'>You begin slicing through the outer plating.</span>")
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(!d_state)
@@ -378,7 +378,7 @@
 				"<span class='notice'>You begin removing the support lines.</span>")
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 1)
@@ -395,7 +395,7 @@
 				"<span class='notice'>You begin slicing through the metal cover.</span>")
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(d_state == 2)
@@ -411,7 +411,7 @@
 				"<span class='notice'>You struggle to pry off the cover.</span>")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 3)
@@ -427,7 +427,7 @@
 				"<span class='notice'>You start loosening the anchoring bolts securing the support rods.</span>")
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 4)
@@ -443,7 +443,7 @@
 				"<span class='notice'>You begin uncrimping the hydraulic lines.</span>")
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 5)
@@ -459,7 +459,7 @@
 				"<span class='notice'>You struggle to pry off the inner sheath.</span>")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 6)
@@ -476,7 +476,7 @@
 				"<span class='notice'>You begin slicing through the final layer.</span>")
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(d_state == 7)

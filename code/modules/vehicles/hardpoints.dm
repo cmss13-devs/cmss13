@@ -80,7 +80,7 @@ Currently only has the tank hardpoints
 
 	to_chat(user, "<span class='notice'>Installing \the [A] in \the [owner].</span>")
 
-	if(!do_after(user, 10))
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		to_chat(user, "<span class='warning'>Something interrupted you while reloading [owner].</span>")
 		return 0
 
@@ -132,7 +132,7 @@ Currently only has the tank hardpoints
 		if(WT.get_fuel() < 10)
 			to_chat(user, "<span class='warning'>You need to refill \the [WT] first.</span>")
 			return
-		if(do_after(user, 100, needhand = FALSE, show_busy_icon = TRUE))
+		if(do_after(user, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			WT.remove_fuel(10, user)
 			health += 10
 			health = Clamp(health, 0, initial(health))

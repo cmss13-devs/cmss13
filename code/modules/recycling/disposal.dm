@@ -70,7 +70,7 @@
 			if(W.remove_fuel(0, user))
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, "<span class='notice'>You start slicing the floorweld off the disposal unit.</span>")
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !W.isOn()) return
 					to_chat(user, "<span class='notice'>You sliced the floorweld off the disposal unit.</span>")
 					var/obj/structure/disposalconstruct/C = new(loc)
@@ -102,7 +102,7 @@
 			var/mob/GM = G.grabbed_thing
 			user.visible_message("<span class='warning'>[user] starts putting [GM] into [src].</span>",
 			"<span class='warning'>You start putting [GM] into [src].</span>")
-			if(do_after(user, 20, TRUE, 5, BUSY_ICON_HOSTILE))
+			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				GM.forceMove(src)
 				user.visible_message("<span class='warning'>[user] puts [GM] into [src].</span>",
 				"<span class='warning'>[user] puts [GM] into [src].</span>")
@@ -138,7 +138,7 @@
 	else
 		if(user.is_mob_restrained()) return //can't stuff someone other than you if restrained.
 		visible_message("<span class ='warning'>[user] starts stuffing [target] into the disposal.</span>")
-	if(!do_after(user, 40, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 	if(target_loc != target.loc)
 		return
@@ -1363,7 +1363,7 @@
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			to_chat(user, "<span class='notice'>You start slicing the floorweld off the disposal outlet.</span>")
-			if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !W.isOn()) return
 				to_chat(user, "<span class='notice'>You sliced the floorweld off the disposal outlet.</span>")
 				var/obj/structure/disposalconstruct/C = new(loc)

@@ -83,7 +83,7 @@
 	if(action_busy)
 		return
 
-	if(!do_after(src, acid_spray_cooldown, TRUE, 5, BUSY_ICON_HOSTILE))
+	if(!do_after(src, acid_spray_cooldown, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 
 	if (used_acid_spray)
@@ -663,7 +663,7 @@
 	visible_message("<span class='xenowarning'>\The [src] begins pulling on [M]'s [L.display_name] with incredible strength!</span>", \
 	"<span class='xenowarning'>You begin to pull on [M]'s [L.display_name] with incredible strength!</span>")
 
-	if(!do_after(src, limb_time, TRUE, 5, BUSY_ICON_HOSTILE, 1) || M.stat == DEAD)
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || M.stat == DEAD)
 		to_chat(src, "<span class='notice'>You stop ripping off the limb.</span>")
 		return 0
 
@@ -683,7 +683,7 @@
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
 
-	if(!do_after(src, limb_time, TRUE, 5, BUSY_ICON_HOSTILE)  || M.stat == DEAD || iszombie(M))
+	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || M.stat == DEAD || iszombie(M))
 		to_chat(src, "<span class='notice'>You stop ripping off the limb.</span>")
 		return 0
 
@@ -994,7 +994,7 @@
 
 	if (!burrow)
 		to_chat(src, "<span class='xenowarning'>You begin burrowing yourself into the ground.</span>")
-		if(!do_after(src, 15, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(!do_after(src, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			do_burrow_cooldown()
 			return
 		// TODO Make immune to all damage here.
@@ -1185,7 +1185,7 @@
 		return
 
 	to_chat(src, "<span class='notice'>You start focusing your plasma towards [target].</span>")
-	if(!do_after(src, transfer_delay, TRUE, 5, BUSY_ICON_FRIENDLY))
+	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
 	if(!check_state())
@@ -1228,7 +1228,7 @@
 		return
 
 	to_chat(src, "<span class='notice'>You start transfering some of your health towards [target].</span>")
-	if(!do_after(src, transfer_delay, TRUE, 20, BUSY_ICON_FRIENDLY))
+	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 20))
 		return
 
 	if(!check_state())
@@ -1391,7 +1391,7 @@
 	if(isXenoDrone(src))
 		wait_time = 10
 
-	if(!do_after(src, wait_time, TRUE, 5, BUSY_ICON_BUILD))
+	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 
 	blocker = locate() in current_turf
@@ -1526,7 +1526,7 @@
 		to_chat(src, "<span class='warning'>You cannot dissolve \the [O].</span>")
 		return
 
-	if(!do_after(src, wait_time, TRUE, 5, BUSY_ICON_HOSTILE))
+	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 
 	if(!check_state())

@@ -250,13 +250,19 @@
 	if(.)
 		reset_view(destination)
 
-
+// TODO: look into this mess and probably refactor it. - TheDonkified
 /mob/living/Bump(atom/movable/AM, yes)
 	if(buckled || !yes || now_pushing)
 		return
 	now_pushing = 1
 	if(isliving(AM))
 		var/mob/living/L = AM
+
+		// For now a kind of hacky check for if you are performing an action that stops you from being pushed by teammates
+		if(L.status_flags & IMMOBILE_ACTION && areSameSpecies(src, L) && src.mob_size <= L.mob_size)
+			now_pushing = 0
+			return
+
 
 		//Leaping mobs just land on the tile, no pushing, no anything.
 		if(status_flags & LEAPING)

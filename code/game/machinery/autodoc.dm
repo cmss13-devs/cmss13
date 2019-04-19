@@ -610,7 +610,7 @@
 
 	usr.visible_message("<span class='notice'>[usr] starts climbing into \the [src].</span>",
 	"<span class='notice'>You start climbing into \the [src].</span>")
-	if(do_after(usr, 20, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(occupant)
 			to_chat(usr, "<span class='notice'>\The [src] is already occupied!</span>")
 			return
@@ -676,7 +676,7 @@
 
 		visible_message("[user] starts putting [M] into [src].", 3)
 
-		if(do_after(user, 20, FALSE, 5, BUSY_ICON_GENERIC))
+		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(src.occupant)
 				to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
 				return
@@ -766,14 +766,14 @@
 			dat += "<a href='?src=\ref[src];ejectify=1'>Eject Patient</a>"
 			dat += "<hr><b>Surgery Queue:</b><br>"
 
-			var/list/surgeryqueue = list()				
+			var/list/surgeryqueue = list()
 			var/datum/data/record/N = null
 			for(var/datum/data/record/R in data_core.medical)
 				if (R.fields["name"] == connected.occupant.real_name)
 					N = R
 			if(isnull(N))
 				N = create_medical_record(connected.occupant)
-			
+
 			if(!isnull(N.fields["autodoc_manual"]))
 				//to_world("AUTODOC DEBUG: non null autodoc data")
 				for(var/datum/autodoc_surgery/A in N.fields["autodoc_manual"])
@@ -850,7 +850,7 @@
 				if(isnull(surgeryqueue["internal"]))
 					dat += "<a href='?src=\ref[src];internal=1'>Internal Bleeding Surgery</a><br>"
 				if(isnull(surgeryqueue["limbgerm"]))
-					dat += "<a href='?src=\ref[src];limbgerm=1'>Limb Disinfection Procedure</a><br>"	
+					dat += "<a href='?src=\ref[src];limbgerm=1'>Limb Disinfection Procedure</a><br>"
 				if(isnull(surgeryqueue["shrapnel"]))
 					dat += "<a href='?src=\ref[src];shrapnel=1'>Shrapnel Removal Surgery</a><br>"
 				dat += "<b>Organ Surgeries</b>"

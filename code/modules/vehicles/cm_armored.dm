@@ -639,7 +639,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	user.visible_message("<span class='notice'>[user] starts repairing the [slot] slot on [src].</span>",
 		"<span class='notice'>You start repairing the [slot] slot on [src].</span>")
 
-	if(!do_after(user, 30*num_delays, TRUE, num_delays, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
 		user.visible_message("<span class='notice'>[user] stops repairing the [slot] slot on [src].</span>",
 			"<span class='notice'>You stop repairing the [slot] slot on [src].</span>")
 		return
@@ -703,7 +703,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, TRUE, num_delays, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
 		user.visible_message("<span class='warning'>[user] stops installing \the [HP] on [src].</span>", "<span class='warning'>You stop installing \the [HP] on [src].</span>")
 		return
 
@@ -741,7 +741,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, TRUE, num_delays, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
 		user.visible_message("<span class='warning'>[user] stops removing \the [old] on [src].</span>", "<span class='warning'>You stop removing \the [old] on [src].</span>")
 		return
 

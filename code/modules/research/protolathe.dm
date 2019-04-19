@@ -149,7 +149,7 @@ Note: Must be placed west/left of and R&D console to function.
 	use_power(max(1000, (3750*amount/10)))
 	var/stacktype = stack.type
 	stack.use(amount)
-	if(do_after(user, 15, TRUE, 5, BUSY_ICON_FRIENDLY))
+	if(do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		to_chat(user, "<span class='notice'> You add [amount] sheets to the [src.name].</span>")
 		icon_state = "protolathe"
 		switch(stacktype)

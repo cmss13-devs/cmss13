@@ -28,7 +28,7 @@
 		user.visible_message("<span class='warning'>[user] is attemping to implant [M].</span>", "<span class='notice'>You're attemping to implant [M].</span>")
 
 		var/turf/T1 = get_turf(M)
-		if (T1 && ((M == user) || do_after(user, 50, TRUE, 5, BUSY_ICON_GENERIC)))
+		if (T1 && ((M == user) || do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC)))
 			if(user && M && (get_turf(M) == T1) && src && src.imp)
 				if(src.imp.implanted(M, user))
 					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")

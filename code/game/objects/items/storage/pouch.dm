@@ -378,7 +378,7 @@
 		if(M.contents.len)
 			if(contents.len < storage_slots)
 				to_chat(user, "<span class='notice'>You start refilling [src] with [M].</span>")
-				if(!do_after(user, 15, TRUE, 5, BUSY_ICON_GENERIC)) return
+				if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/obj/item/I in M)
 					if(contents.len < storage_slots)
 						M.remove_from_storage(I)

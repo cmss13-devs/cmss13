@@ -53,7 +53,7 @@
 		return
 
 	playsound(src, 'sound/effects/metal_creaking.ogg', 25, 1)
-	if(do_after(user,60, FALSE, 5, BUSY_ICON_GENERIC) && !disposed && holed_wall && !user.lying && istype(holed_wall))
+	if(do_after(user, 60, INTERRUPT_ALL, BUSY_ICON_GENERIC) && !disposed && holed_wall && !user.lying && istype(holed_wall))
 		holed_wall.take_damage(rand(2000,3500))
 		user.emote("roar")
 
@@ -92,7 +92,7 @@
 
 	to_chat(user, "<span class='notice'>You start crawling through the hole.</span>")
 
-	if(do_after(user, 15, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(!user.is_mob_incapacitated() && !user.lying && !user.buckled)
 			if (T.density)
 				return
@@ -127,7 +127,7 @@
 			return
 
 		to_chat(user, "<span class='notice'>You take the position to throw [G].</span>")
-		if(do_after(user,10, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
 			user.visible_message("<span class='warning'>[user] throws [G] through [src]!</span>", \
@@ -149,7 +149,7 @@
 			return
 
 		to_chat(user, "<span class='notice'>You take the position to throw [F].</span>")
-		if(do_after(user,10, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
 			user.visible_message("<span class='warning'>[user] throws [F] through [src]!</span>", \

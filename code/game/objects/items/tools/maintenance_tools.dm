@@ -210,7 +210,7 @@
 			if(self_fixing)
 				user.visible_message("<span class='warning'>\The [user] begins fixing some dents on their [S.display_name].</span>", \
 					"<span class='warning'>You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty.</span>")
-				if(!do_after(user,60, FALSE, 5, BUSY_ICON_FRIENDLY))
+				if(!do_after(user,60, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
 			S.heal_damage(15,0,0,1)

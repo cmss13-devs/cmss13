@@ -81,7 +81,7 @@
 		if(0)
 			if(istype(P, /obj/item/tool/wrench))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, "<span class='notice'> You wrench the frame into place.</span>")
 					src.anchored = 1
 					src.state = 1
@@ -91,7 +91,7 @@
 					to_chat(user, "[WT] must be on to complete this task.")
 					return
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
 					to_chat(user, "<span class='notice'> You deconstruct the frame.</span>")
 					new /obj/item/stack/sheet/metal( src.loc, 5 )
@@ -99,7 +99,7 @@
 		if(1)
 			if(istype(P, /obj/item/tool/wrench))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, "<span class='notice'> You unfasten the frame.</span>")
 					src.anchored = 0
 					src.state = 0
@@ -132,7 +132,7 @@
 			if(istype(P, /obj/item/tool/crowbar))
 				if(battery)
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-					if(do_after(user, 10, TRUE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						battery.loc = loc
 						to_chat(user, "<span class='notice'> You remove [battery].</span>")
 						battery = null
@@ -142,7 +142,7 @@
 			if(istype(P, /obj/item/cell))
 				if(!battery)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					if(do_after(user, 5, TRUE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						battery = P
 						P.loc = src
 						to_chat(user, "<span class='notice'> You insert [battery].</span>")
@@ -153,7 +153,7 @@
 			if(istype(P, /obj/item/stack/cable_coil))
 				if(P:amount >= 5)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(P)
 							P:amount -= 5
 							if(!P:amount) qdel(P)
@@ -178,7 +178,7 @@
 			if(istype(P, /obj/item/stack/sheet/glass))
 				if(P:amount >= 2)
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(P)
 							P:use(2)
 							to_chat(user, "<span class='notice'> You put in the glass panel.</span>")
@@ -223,7 +223,7 @@
 
 	if(I)
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-		if(do_after(usr, 25, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(usr, 25, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(I==hdd)
 				components -= hdd
 				hdd.loc = loc

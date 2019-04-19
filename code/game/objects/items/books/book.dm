@@ -83,7 +83,7 @@
 	else if(istype(W, /obj/item/tool/kitchen/knife) || istype(W, /obj/item/tool/wirecutters))
 		if(carved)	return
 		to_chat(user, "<span class='notice'>You begin to carve out [title].</span>")
-		if(do_after(user, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")
 			carved = 1
 			return

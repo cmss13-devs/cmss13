@@ -181,7 +181,7 @@
 
 			to_chat(D, "<span class='danger'>You begin decompiling the other drone.</span>")
 
-			if(!do_after(D, 50, FALSE, 5, BUSY_ICON_GENERIC))
+			if(!do_after(D, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				to_chat(D, "<span class='danger'>You need to remain still while decompiling such a large object.</span>")
 				return
 

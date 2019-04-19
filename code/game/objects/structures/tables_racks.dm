@@ -547,6 +547,7 @@
 /obj/structure/table/almayer
 	icon_state = "almtable"
 	table_prefix = "alm"
+	parts = /obj/item/frame/table/almayer
 
 
 

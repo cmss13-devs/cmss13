@@ -518,7 +518,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		alert("Cannot revive a ghost")
 		return
 	if(config.allow_admin_rev)
-		M.revive()
+		M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
 
 		log_admin("[key_name(usr)] healed / revived [key_name(M)]")
 		message_admins("<span class='danger'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(M)]!</span>", 1)
@@ -664,10 +664,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(J.flags_startup_parameters & ROLE_ADD_TO_MODE) to_chat(src, "[J.title]: [J.get_total_positions(1)] / [J.current_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_changekey(mob/O in mob_list)
+/client/proc/cmd_admin_changekey(mob/O in mob_list, var/a_ckey = null)
 	set category = "Admin"
 	set name = "Change CKey"
-	var/new_ckey = null
+	var/new_ckey = a_ckey
 
 	if (!admin_holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -675,9 +675,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(O.disposed) return //mob was garbage collected
 
-	new_ckey = input("Enter new ckey:","CKey") as null|text
+	if(!new_ckey)
+		new_ckey = input("Enter new ckey:","CKey") as null|text
 
-	if(!new_ckey || new_ckey == null)
+	if(!new_ckey)
 		return
 
 	O.ghostize(0)
@@ -698,6 +699,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		log_admin("[usr.ckey] has put [O.name]/([O.ckey]) into [M.name].")
 		M.ckey = O.ckey
 	else return
+
+/client/proc/cmd_admin_takemob(mob/O in mob_list)
+	set category = "Admin"
+	set name = "Take Control of Mob"
+	
+	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG))) // Copied Matt's checks
+		return
+	cmd_admin_changekey(O, src.ckey)
 
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in world)
 	set category = "Special Verbs"

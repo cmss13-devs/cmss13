@@ -76,6 +76,8 @@
 
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
 
+#define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
+
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 
 #define SPAN_XENOWARNING(X) "<span class='xenowarning'>[X]</span>"

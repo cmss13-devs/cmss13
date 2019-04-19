@@ -102,7 +102,7 @@
 
 //drop the inventory item on the ground
 /mob/proc/drop_inv_item_on_ground(obj/item/I, nomoveupdate, force)
-	return u_equip(I, loc, nomoveupdate, force)
+	return u_equip(I, get_step(src, 0), nomoveupdate, force) // Drops on turf instead of loc
 
 //Never use this proc directly. nomoveupdate is used when we don't want the item to react to
 // its new loc (e.g.triggering mousetraps)

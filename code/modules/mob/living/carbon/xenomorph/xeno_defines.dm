@@ -59,6 +59,10 @@
 	var/punch_cooldown = 40
 	var/jab_cooldown = 40
 	var/toggle_agility_cooldown = 5
+	
+	// Resin building-related vars
+	var/build_time = 10 // Default build time and build distance
+	var/max_build_dist = 0
 
 	//Boiler vars
 	var/bomb_strength = 0 //Multiplier to the effectiveness of the boiler glob. Improves by 0.5 per upgrade
@@ -219,7 +223,7 @@
 	var/emotedown = 0
 
 	var/datum/action/xeno_action/activable/selected_ability
-	var/selected_resin = "resin wall" //which resin structure to build when we secrete resin
+	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
 
 	//Naming variables
 	var/caste_name = ""
@@ -252,7 +256,6 @@
 
 	//Burrower Vars
 	var/used_tremor = 0
-
 
 	//Pounce vars
 	var/used_pounce = 0

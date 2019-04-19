@@ -185,7 +185,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 //Only the active hardpoint module can be used
 /obj/vehicle/multitile/root/cm_armored/verb/switch_active_hp()
 	set name = "Change Active Weapon"
-	set category = "Object"
+	set category = "Vehicle"
 	set src in view(0)
 
 	if(!can_use_hp(usr))
@@ -211,7 +211,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 /obj/vehicle/multitile/root/cm_armored/verb/reload_hp()
 	set name = "Reload Tank Weapon"
-	set category = "Object"
+	set category = "Vehicle"
 	set src in view(0)
 
 	if(!can_use_hp(usr)) return

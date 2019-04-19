@@ -383,6 +383,7 @@
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
 		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
+		list("Motion detector", 15, /obj/item/device/motiondetector, null, "black")
 
 	)
 
@@ -1073,12 +1074,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Laser sight", 6, /obj/item/attachable/lasersight, null, "black"),
 		list("Magnetic Harness", 6, /obj/item/attachable/magnetic_harness, null, "black"),
 		list("Masterkey shotgun", 6, /obj/item/attachable/attached_gun/shotgun, null, "black"),
-		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("M41A skeleton stock", 6, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Paratrooper's submachinegun stock", 6, /obj/item/attachable/stock/smg/collapsible, null, "black"),
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),
+		list("S4 telescoping sight", 6, /obj/item/attachable/scope/mini, null, "black"),
+		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("Submachinegun stock", 6, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 6, /obj/item/attachable/verticalgrip, null, "black"),

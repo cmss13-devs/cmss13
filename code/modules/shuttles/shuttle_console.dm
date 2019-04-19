@@ -305,6 +305,8 @@
 					M.unlock()
 					to_chat(usr, "<span class='warning'>You hear a [sidename] door unlock.</span>") // yes this will give two messages but is important for when the two doors are out of sync
 				else
+					if(!M.density)
+						M.close()
 					M.lock()
 					to_chat(usr, "<span class='warning'>You hear a [sidename] door lock.</span>")
 
@@ -328,6 +330,8 @@
 				reardoor.unlock()
 				to_chat(usr, "<span class='warning'>You hear the rear door unlock.</span>")
 			else
+				if (!reardoor.density)
+					reardoor.close()
 				reardoor.lock()
 				to_chat(usr, "<span class='warning'>You hear the rear door lock.</span>")
 		else

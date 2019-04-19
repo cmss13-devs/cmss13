@@ -8,7 +8,7 @@
 	damage_cap = 3000
 	max_temperature = 6000
 
-	walltype = "rwall"
+	walltype = WALL_REINFORCED
 
 /turf/closed/wall/r_wall/attack_hand(mob/user)
 	if (HULK in user.mutations)
@@ -261,18 +261,18 @@
 //Just different looking wall
 /turf/closed/wall/r_wall/research
 	icon_state = "research"
-	walltype = "research"
+	walltype = WALL_REINFORCED_RESEARCH
 
 /turf/closed/wall/r_wall/dense
 	icon_state = "iron0"
-	walltype = "iron"
+	walltype = WALL_REINFORCED_IRON
 	hull = 1
 
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
 	icon_state = "r_wall"
-	walltype = "rwall"
+	walltype = WALL_REINFORCED
 	hull = 1
 
 /turf/closed/wall/r_wall/unmeltable/attackby() //This should fix everything else. No cables, etc
@@ -288,7 +288,7 @@
 	name = "facility wall"
 	icon = 'icons/turf/walls/chigusa.dmi'
 	icon_state = "chigusa"
-	walltype = "chigusa"
+	walltype = WALL_REINFORCED_CHIGUSA
 
 /turf/closed/wall/r_wall/chigusa/update_icon()
 	..()
@@ -306,7 +306,7 @@
 	name = "bunker wall"
 	icon = 'icons/turf/walls/bunker.dmi'
 	icon_state = "bunker"
-	walltype = "bunker"
+	walltype = WALL_REINFORCED_BUNKER
 
 //Prison
 
@@ -314,14 +314,14 @@
 	name = "reinforced metal wall"
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "rwall"
-	walltype = "rwall"
+	walltype = WALL_REINFORCED
 
 /turf/closed/wall/r_wall/prison_unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to seperate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "rwall"
-	walltype = "rwall"
+	walltype = WALL_REINFORCED
 	hull = 1
 
 /turf/closed/wall/r_wall/prison_unmeltable/ex_act(severity) //Should make it indestructable

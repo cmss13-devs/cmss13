@@ -144,7 +144,7 @@
  */
 /obj/item/frame/table/almayer
 	name = "gray table parts"
-	icon_state = "tableparts"
+	icon_state = "table_parts"
 	table_type = /obj/structure/table/almayer
 
 

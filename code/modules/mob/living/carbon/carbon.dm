@@ -254,10 +254,12 @@
 	return
 
 /mob/living/carbon/throw_item(atom/target)
-	src.throw_mode_off()
 	if(is_ventcrawling) //NOPE
 		return
 	if(usr.stat || !target)
+		return
+	if(!istype(src.loc, /turf)) // In some mob/object (i.e. devoured or tank)
+		to_chat(src, SPAN_WARNING("You cannot throw anything while inside of \the [src.loc.name]."))
 		return
 	if(target.type == /obj/screen)
 		return
@@ -265,7 +267,10 @@
 	var/atom/movable/thrown_thing
 	var/obj/item/I = get_active_hand()
 
-	if(!I || (I.flags_item & NODROP)) return
+	if(!I || (I.flags_item & NODROP)) 
+		return
+
+	src.throw_mode_off()
 
 	var/spin_throw = TRUE
 

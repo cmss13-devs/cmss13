@@ -141,16 +141,16 @@
 	if(!X.check_state())
 		return
 	switch(X.selected_resin)
-		if("resin door")
-			X.selected_resin = "resin wall"
-		if("resin wall")
-			X.selected_resin = "resin membrane"
-		if("resin membrane")
-			X.selected_resin = "resin nest"
-		if("resin nest")
-			X.selected_resin = "sticky resin"
-		if("sticky resin")
-			X.selected_resin = "resin door"
+		if(RESIN_DOOR)
+			X.selected_resin = RESIN_WALL
+		if(RESIN_WALL)
+			X.selected_resin = RESIN_MEMBRANE
+		if(RESIN_MEMBRANE)
+			X.selected_resin = RESIN_NEST
+		if(RESIN_NEST)
+			X.selected_resin = RESIN_STICKY
+		if(RESIN_STICKY)
+			X.selected_resin = RESIN_DOOR
 		else
 			return //something went wrong
 

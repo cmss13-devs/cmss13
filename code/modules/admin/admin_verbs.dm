@@ -80,6 +80,7 @@ var/list/admin_verbs_admin = list(
 	/datum/admins/proc/admin_force_ERT_shuttle,
 	/datum/admins/proc/admin_force_selfdestruct,
 	/client/proc/cmd_admin_changekey,
+	/client/proc/cmd_admin_takemob,
 	// /client/proc/response_team, // Response Teams admin verb
 	/client/proc/allow_character_respawn,    /* Allows a ghost to respawn */
 	/datum/admins/proc/viewCLFaxes,
@@ -278,6 +279,7 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/toggleoocdead,	/*toggles ooc on/off for everyone who is dead*/
 	/datum/admins/proc/toggleloocdead,	/*toggles looc on/off for everyone who is dead*/
 	/client/proc/cmd_admin_changekey,
+	/client/proc/cmd_admin_takemob,
 	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/proc/release,

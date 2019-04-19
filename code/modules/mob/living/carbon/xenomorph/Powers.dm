@@ -156,7 +156,7 @@
 		return
 
 	if(!isturf(loc) || istype(loc, /turf/open/space))
-		to_chat(src, "<span class='warning'>You can't do that from there.</span>")
+		to_chat(src, SPAN_WARNING("You can't do that from there.</span>"))
 		return
 
 	if(!check_plasma(10))
@@ -1300,79 +1300,77 @@
 
 
 /mob/living/carbon/Xenomorph/proc/build_resin(atom/A, resin_plasma_cost)
-	if(action_busy) return
-	if(!check_state())
+	if (action_busy)
 		return
-	if(!check_plasma(resin_plasma_cost))
+	if (!check_state())
 		return
-	var/turf/current_turf = loc
-	if (isXenoHivelord(src)) //hivelords can thicken existing resin structures.
-		if(get_dist(src,A) <= 1)
-			if(istype(A, /turf/closed/wall/resin))
-				var/turf/closed/wall/resin/WR = A
-				if(WR.walltype == "resin")
-					visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and thickens [WR].</span>", \
-					"<span class='xenonotice'>You regurgitate some resin and thicken [WR].</span>", null, 5)
-					var/prev_old_turf = WR.old_turf
-					WR.ChangeTurf(/turf/closed/wall/resin/thick)
-					WR.old_turf = prev_old_turf
-					use_plasma(resin_plasma_cost)
-					playsound(loc, "alien_resin_build", 25)
-				else if(WR.walltype == "membrane")
-					visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and thickens [WR].</span>", \
-					"<span class='xenonotice'>You regurgitate some resin and thicken [WR].</span>", null, 5)
-					var/prev_old_turf = WR.old_turf
-					WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-					WR.old_turf = prev_old_turf
-					use_plasma(resin_plasma_cost)
-					playsound(loc, "alien_resin_build", 25)
-				else
-					to_chat(src, "<span class='xenowarning'>[WR] can't be made thicker.</span>")
-				return
+	if (!check_plasma(resin_plasma_cost))
+		return
 
-			else if(istype(A, /obj/structure/mineral_door/resin))
-				var/obj/structure/mineral_door/resin/DR = A
-				if(DR.hardness == 1.5) //non thickened
-					var/oldloc = DR.loc
-					visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and thickens [DR].</span>", \
-						"<span class='xenonotice'>You regurgitate some resin and thicken [DR].</span>", null, 5)
-					qdel(DR)
-					new /obj/structure/mineral_door/resin/thick (oldloc)
-					playsound(loc, "alien_resin_build", 25)
-					use_plasma(resin_plasma_cost)
-				else
-					to_chat(src, "<span class='xenowarning'>[DR] can't be made thicker.</span>")
-				return
-
+	var/turf/current_turf = get_turf(A)
+	
+	if (get_dist(src, A) > src.caste.max_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
+		current_turf = get_turf(src)
+	else if (isXenoHivelord(src)) //hivelords can thicken existing resin structures.
+		var/thickened = FALSE
+		if(istype(A, /turf/closed/wall/resin))
+			var/turf/closed/wall/resin/WR = A
+			if(WR.walltype == WALL_RESIN)
+				var/prev_old_turf = WR.old_turf
+				WR.ChangeTurf(/turf/closed/wall/resin/thick)
+				WR.old_turf = prev_old_turf
+			else if(WR.walltype == WALL_MEMBRANE)
+				var/prev_old_turf = WR.old_turf
+				WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
+				WR.old_turf = prev_old_turf
 			else
-				current_turf = get_turf(A) //Hivelords can secrete resin on adjacent turfs.
+				to_chat(src, SPAN_XENOWARNING("[WR] can't be made thicker."))
+				return
+			thickened = TRUE
 
-
+		else if(istype(A, /obj/structure/mineral_door/resin))
+			var/obj/structure/mineral_door/resin/DR = A
+			if(DR.hardness == 1.5) //non thickened
+				var/oldloc = DR.loc
+				qdel(DR)
+				new /obj/structure/mineral_door/resin/thick (oldloc)
+			else
+				to_chat(src, SPAN_XENOWARNING("[DR] can't be made thicker."))
+				return
+			thickened = TRUE
+		
+		if (thickened)
+			visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and thickens [A]."), \
+				SPAN_XENONOTICE("You regurgitate some resin and thicken [A]."), null, 5)
+			use_plasma(resin_plasma_cost)
+			playsound(loc, "alien_resin_build", 25)
+			A.add_hiddenprint(src) //so admins know who thickened the walls
+			return
 
 	var/mob/living/carbon/Xenomorph/blocker = locate() in current_turf
 	if(blocker && blocker != src && blocker.stat != DEAD)
-		to_chat(src, "<span class='warning'>Can't do that with [blocker] in the way!</span>")
+		to_chat(src, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return
 
 	if(!istype(current_turf) || !current_turf.is_weedable())
-		to_chat(src, "<span class='warning'>You can't do that here.</span>")
+		to_chat(src, SPAN_WARNING("You can't do that here."))
 		return
 
 	var/area/AR = get_area(current_turf)
 	if(istype(AR,/area/shuttle/drop1/lz1) || istype(AR,/area/shuttle/drop2/lz2)) //Bandaid for atmospherics bug when Xenos build around the shuttles
-		to_chat(src, "<span class='warning'>You sense this is not a suitable area for expanding the hive.</span>")
+		to_chat(src, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
 
 	if(!alien_weeds)
-		to_chat(src, "<span class='warning'>You can only shape on weeds. Find some resin before you start building!</span>")
+		to_chat(src, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return
 
 	if(!check_alien_construction(current_turf))
 		return
 
-	if(selected_resin == "resin door")
+	if(selected_resin == RESIN_DOOR)
 		var/wall_support = FALSE
 		for(var/D in cardinal)
 			var/turf/T = get_step(current_turf,D)
@@ -1384,12 +1382,10 @@
 					wall_support = TRUE
 					break
 		if(!wall_support)
-			to_chat(src, "<span class='warning'>Resin doors need a wall or resin door next to them to stand up.</span>")
+			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 			return
 
-	var/wait_time = 5
-	if(isXenoDrone(src))
-		wait_time = 10
+	var/wait_time = src.caste.build_time
 
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -1417,7 +1413,7 @@
 	if(!check_alien_construction(current_turf))
 		return
 
-	if(selected_resin == "resin door")
+	if(selected_resin == RESIN_DOOR)
 		var/wall_support = FALSE
 		for(var/D in cardinal)
 			var/turf/T = get_step(current_turf,D)
@@ -1429,37 +1425,37 @@
 					wall_support = TRUE
 					break
 		if(!wall_support)
-			to_chat(src, "<span class='warning'>Resin doors need a wall or resin door next to them to stand up.</span>")
+			to_chat(src, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 			return
 
 	use_plasma(resin_plasma_cost)
-	visible_message("<span class='xenonotice'>\The [src] regurgitates a thick substance and shapes it into \a [selected_resin]!</span>", \
-	"<span class='xenonotice'>You regurgitate some resin and shape it into \a [selected_resin].</span>", null, 5)
+	visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin)]!"), \
+		SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin)]."), null, 5)
 	playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin
 
 	switch(selected_resin)
-		if("resin door")
+		if(RESIN_DOOR)
 			if (isXenoHivelord(src))
 				new_resin = new /obj/structure/mineral_door/resin/thick(current_turf)
 			else
 				new_resin = new /obj/structure/mineral_door/resin(current_turf)
-		if("resin wall")
+		if(RESIN_WALL)
 			if (isXenoHivelord(src))
 				current_turf.ChangeTurf(/turf/closed/wall/resin/thick)
 			else
 				current_turf.ChangeTurf(/turf/closed/wall/resin)
 			new_resin = current_turf
-		if("resin membrane")
+		if(RESIN_MEMBRANE)
 			if (isXenoHivelord(src))
 				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 			else
 				current_turf.ChangeTurf(/turf/closed/wall/resin/membrane)
 			new_resin = current_turf
-		if("resin nest")
+		if(RESIN_NEST)
 			new_resin = new /obj/structure/bed/nest(current_turf)
-		if("sticky resin")
+		if(RESIN_STICKY)
 			new_resin = new /obj/effect/alien/resin/sticky(current_turf)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it

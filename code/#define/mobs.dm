@@ -26,6 +26,7 @@
 // Reagent metabolism defines.
 #define FOOD_METABOLISM 0.4
 #define ALCOHOL_METABOLISM 0.1
+#define RAPID_METABOLISM 1.0
 
 // Factor of how fast mob nutrition decreases
 #define HUNGER_FACTOR 0.05

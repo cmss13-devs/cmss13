@@ -46,7 +46,7 @@
 
 	user.visible_message("<span class='notice'>[user] labels [A] as \"[label]\".</span>", \
 						 "<span class='notice'>You label [A] as \"[label]\".</span>")
-	message_mods("[user]/([user.ckey]) has labeled [A.name] with label \"[label]\".")
+	msg_admin_niche("[user]/([user.ckey]) has labeled [A.name] with label \"[label]\".")
 	A.name = "[A.name] ([label])"
 	labels_left--
 

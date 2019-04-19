@@ -587,3 +587,49 @@
 				if(prob(40)) M.emote(pick("twitch","giggle"))
 				if(prob(30)) M.adjustToxLoss(2)
 		holder.remove_reagent(src.id, 0.2)
+
+/datum/reagent/machosauce
+	name = "Macho Sauce"
+	id = "machosauce"
+	description = "A backalley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
+	reagent_state = LIQUID
+	color = "#d1001c" // rgb: 209, 0, 28
+
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+
+/datum/reagent/machosauce/on_overdose(mob/living/M)
+	M.confused = max(M.confused, 20)
+	if(prob(10))
+		M.emote(pick("sigh","grumble","frown"))
+
+/datum/reagent/machosauce/on_overdose_critical(mob/living/M)
+	M.make_jittery(5)
+	M.knocked_out = max(M.knocked_out, 20)
+	if(prob(10))
+		M.emote(pick("cry","moan","pain"))
+
+/datum/reagent/machosauce/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(!M)
+		M = holder.my_atom
+	if(!data)
+		data = 1
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
+			switch(data)
+				if(1)
+					to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
+					M.make_dizzy(10)
+				if(2 to INFINITY)
+					H.apply_effect(4,AGONY,0)
+					if(prob(5))
+						H.visible_message("<span class='warning'>[H] [pick("dry heaves!","coughs!","splutters!")]</span>")
+						to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
+						M.make_dizzy(20)
+	holder.remove_reagent("frostoil", 5)
+	holder.remove_reagent(src.id, RAPID_METABOLISM)
+	data++
+

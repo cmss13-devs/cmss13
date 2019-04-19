@@ -64,6 +64,25 @@
 	required_catalysts = list("phoron" = 5)
 	result_amount = 1
 
+/datum/chemical_reaction/machosauce
+	name = "Macho Sauce"
+	id = "machosauce"
+	result = "machosauce"
+	required_reagents = list("condensedcapsaicin" = 1, "souto_classic" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/machosauce/cherry
+	required_reagents = list("condensedcapsaicin" = 1, "souto_cherry" = 1)
+
+/datum/chemical_reaction/machosauce/blueraspberry
+	required_reagents = list("condensedcapsaicin" = 1, "blueraspberry" = 1)
+
+/datum/chemical_reaction/machosauce/peach
+	required_reagents = list("condensedcapsaicin" = 1, "peach" = 1)
+
+/datum/chemical_reaction/machosauce/cranberry
+	required_reagents = list("condensedcapsaicin" = 1, "cranberry" = 1)
+
 /datum/chemical_reaction/sodiumchloride
 	name = "Sodium Chloride"
 	id = "sodiumchloride"

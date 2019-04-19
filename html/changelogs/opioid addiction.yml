@@ -33,7 +33,6 @@ delete-after: True
 # Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
 # Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
 changes: 
-  - rscadd: "Opioid addiction added. Please exercise proper judgement when using tramadol and oxycodone."
   - rscadd: "Airlocks and windows will now check for overlapping walls at roundstart, and remove them while simultaneously reporting and logging their locations for mappers to fix."
   - rscadd: "Muzzle flash overlays readded. Tank weapons will also have muzzle flash."
   - tweak: "Slightly tweaked the way pain from stunning/addiction affects movement."

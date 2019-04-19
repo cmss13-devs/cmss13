@@ -1,5 +1,4 @@
 
-
 //NOT bitflags, just global constant values
 #define HDPT_PRIMARY "primary"
 #define HDPT_SECDGUN "secondary"
@@ -462,10 +461,18 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/bullet_act(var/obj/item/projectile/P)
 
 	var/dam_type = "bullet"
+	var/damage = P.damage
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	var/penetration = P.ammo.penetration
+	var/firer = P.firer
 
-	if(P.ammo.flags_ammo_behavior & AMMO_XENO_ACID) dam_type = "acid"
+	if(ammo_flags & AMMO_ANTISTRUCT)
+		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
+		damage = round(damage * 1.5)
+	if(ammo_flags & AMMO_XENO_ACID) 
+		dam_type = "acid"
 
-	take_damage_type(P.damage * (0.75 + P.ammo.penetration/100), dam_type, P.firer)
+	take_damage_type(damage * (0.75 + penetration/100), dam_type, firer)
 
 	healthcheck()
 

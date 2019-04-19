@@ -381,7 +381,7 @@
 	else
 		to_chat(src, "<span class='warning'>There's nothing in your belly that needs regurgitating.</span>")
 
-/mob/living/carbon/Xenomorph/proc/zoom_in(var/tileoffset = 5, var/viewsize = 12)
+/mob/living/carbon/Xenomorph/proc/zoom_in()
 	if(stat || resting)
 		if(is_zoomed)
 			is_zoomed = 0
@@ -394,8 +394,8 @@
 		return
 	zoom_turf = get_turf(src)
 	is_zoomed = 1
-	client.change_view(viewsize)
-	var/viewoffset = 32 * tileoffset
+	client.change_view(caste.viewsize)
+	var/viewoffset = 32 * caste.tileoffset
 	switch(dir)
 		if(NORTH)
 			client.pixel_x = 0

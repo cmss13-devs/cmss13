@@ -78,4 +78,8 @@
 
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 
+#define SPAN_XENOWARNING(X) "<span class='xenowarning'>[X]</span>"
+
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
+
+#define SPAN_DEBUG(X) "<span class='debuginfo'>[X]</span>"

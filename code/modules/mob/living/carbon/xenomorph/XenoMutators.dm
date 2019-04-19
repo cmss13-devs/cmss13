@@ -53,6 +53,8 @@
 	B.ammo = ammo_list[new_ammo]
 	B.bombard_speed = 15
 	B.railgun = TRUE
+	B.caste.tileoffset = 9
+	B.caste.viewsize = 14
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/royal_guard

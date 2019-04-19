@@ -274,7 +274,7 @@
 		if(O in permutated)
 			continue
 		permutated += O
-
+		
 		hit_chance = O.get_projectile_hit_boolean(src)
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			ammo.on_hit_obj(O,src)
@@ -336,6 +336,7 @@
 /proc/get_effective_accuracy(obj/item/projectile/P)
 
 	var/effective_accuracy = P.accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
+
 	#if DEBUG_HIT_CHANCE
 	to_world("<span class='debuginfo'>Base accuracy is <b>[P.accuracy]; scatter:[P.scatter]; distance:[P.distance_travelled]</b></span>")
 	#endif
@@ -446,12 +447,11 @@
 
 
 /obj/structure/get_projectile_hit_boolean(obj/item/projectile/P)
-
 	if(src == P.original && src.layer > ATMOS_DEVICE_LAYER) //clicking on the object itself hits the object
 		var/hitchance = get_effective_accuracy(P)
 
 		#if DEBUG_HIT_CHANCE
-		to_world("<span class='debuginfo'>([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]")
+		to_world(SPAN_DEBUG("([src.name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -468,7 +468,7 @@
 
 	//At this point, all that's left is window frames, tables, and barricades
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_IGNORE_COVER)
+	if(ammo_flags & AMMO_IGNORE_COVER && get_turf(src) != P.target_turf)
 		return FALSE
 
 	var/distance = P.distance_travelled
@@ -487,7 +487,6 @@
 			for(var/obj/structure/S in get_turf(P))
 				if(S && S.climbable && !(S.flags_atom & ON_BORDER)) //if a projectile is coming from a window frame or table, it's guaranteed to pass the next window frame/table
 					return FALSE
-
 	return calculate_cover_hit_boolean(P, distance)
 
 
@@ -871,13 +870,23 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	if(!..())
 		return
 	var/damage = P.damage
-	if(damage < 1) return
+	if(damage < 1) 
+		return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+
 	switch(P.ammo.damage_type)
-		if(BRUTE) 	damage = ammo_flags & AMMO_ROCKET ? round(damage * 10) : damage //Bullets do much less to walls and such.
-		if(BURN)	damage = ammo_flags & (AMMO_ENERGY) ? round(damage * 7) : damage
-		else return
-	if(ammo_flags & AMMO_BALLISTIC) current_bulletholes++
+		if(BRUTE) //Rockets do extra damage to walls.
+			if (ammo_flags & AMMO_ROCKET)
+				damage = round(damage * 10)
+		if(BURN)
+			if(ammo_flags & AMMO_ENERGY)
+				damage = round(damage * 7)
+			else if(ammo_flags & AMMO_ANTISTRUCT) // Railgun does extra damage to turfs
+				damage = round(damage * 2.5)
+		else 
+			return
+	if(ammo_flags & AMMO_BALLISTIC) 
+		current_bulletholes++
 	take_damage(damage)
 	return 1
 

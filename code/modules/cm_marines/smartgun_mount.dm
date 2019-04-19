@@ -56,9 +56,9 @@
 /obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.
 	..()
 	if(rounds)
-		usr << "It has [rounds] out of 700 rounds."
+		to_chat(usr, "It has [rounds] out of 700 rounds.")
 	else
-		usr << "It seems to be lacking a ammo drum."
+		to_chat(usr, "It seems to be lacking a ammo drum.")
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -81,7 +81,7 @@
 			update_icon()
 			return
 		else
-			usr << "The M56D already has a ammo drum mounted on it!"
+			to_chat(usr, "The M56D already has a ammo drum mounted on it!")
 		return
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/machinery in a box. Realized I couldn't take it out
@@ -94,7 +94,7 @@
 
 /obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
 	if(!ishuman(usr)) return
-	user << "<span class='notice'>You deploy [src].</span>"
+	to_chat(user, "<span class='notice'>You deploy [src].</span>")
 	new /obj/machinery/m56d_post(user.loc)
 	qdel(src)
 
@@ -127,11 +127,11 @@
 /obj/machinery/m56d_post/examine(mob/user)
 	..()
 	if(!anchored)
-		user << "It must be <B>screwed</b> to the floor."
+		to_chat(user, "It must be <B>screwed</b> to the floor.")
 	else if(!gun_mounted)
-		user << "The <b>M56D heavy machine gun</b> is not yet mounted."
+		to_chat(user, "The <b>M56D heavy machine gun</b> is not yet mounted.")
 	else
-		user << "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job."
+		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
 
 /obj/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
@@ -148,9 +148,9 @@
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored)
-			user << "<span class='warning'>[src] can't be folded while screwed to the floor. Unscrew it first.</span>"
+			to_chat(user, "<span class='warning'>[src] can't be folded while screwed to the floor. Unscrew it first.</span>")
 			return
-		user << "<span class='notice'>You fold [src].</span>"
+		to_chat(user, "<span class='notice'>You fold [src].</span>")
 		var/obj/item/device/m56d_post/P = new(loc)
 		user.put_in_hands(P)
 		qdel(src)
@@ -178,12 +178,12 @@
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
 		if(!anchored)
-			user << "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>"
+			to_chat(user, "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>")
 			return
-		user << "You begin mounting [MG].."
-		if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD) && !gun_mounted && anchored)
+		to_chat(user, "You begin mounting [MG]..")
+		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("\blue [user] installs [MG] into place.","\blue You install [MG] into place.")
+			user.visible_message("<span class='notice'>[user] installs [MG] into place.</span>","<span class='notice'>You install [MG] into place.</span>")
 			gun_mounted = 1
 			gun_rounds = MG.rounds
 			if(!gun_rounds)
@@ -196,12 +196,12 @@
 
 	if(istype(O,/obj/item/tool/crowbar))
 		if(!gun_mounted)
-			user << "<span class='warning'>There is no gun mounted.</span>"
+			to_chat(user, "<span class='warning'>There is no gun mounted.</span>")
 			return
-		user << "You begin dismounting [src]'s gun.."
-		if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD) && gun_mounted)
+		to_chat(user, "You begin dismounting [src]'s gun..")
+		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message("\blue [user] removes [src]'s gun.","\blue You remove [src]'s gun.")
+			user.visible_message("<span class='notice'>[user] removes [src]'s gun.</span>","<span class='notice'>You remove [src]'s gun.</span>")
 			new /obj/item/device/m56d_gun(loc)
 			gun_mounted = 0
 			gun_rounds = 0
@@ -210,10 +210,10 @@
 
 	if(istype(O,/obj/item/tool/screwdriver))
 		if(gun_mounted)
-			user << "You're securing the M56D into place"
-			if(do_after(user,30, TRUE, 5, BUSY_ICON_BUILD))
+			to_chat(user, "You're securing the M56D into place")
+			if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message("\blue [user] screws the M56D into the mount.","\blue You finalize the M56D heavy machine gun.")
+				user.visible_message("<span class='notice'>[user] screws the M56D into the mount.</span>","<span class='notice'>You finalize the M56D heavy machine gun.</span>")
 				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
 				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
@@ -232,20 +232,20 @@
 							fail = 1
 							break
 				if(fail)
-					user << "<span class='warning'>Can't install [src] here, something is in the way.</span>"
+					to_chat(user, "<span class='warning'>Can't install [src] here, something is in the way.</span>")
 					return
 			if(anchored)
-				user << "You begin unscrewing [src] from the ground.."
+				to_chat(user, "You begin unscrewing [src] from the ground..")
 			else
-				user << "You begin screwing [src] into place.."
+				to_chat(user, "You begin screwing [src] into place..")
 			var/old_anchored = anchored
-			if(do_after(user,20, TRUE, 5, BUSY_ICON_BUILD) && anchored == old_anchored)
+			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(anchored)
-					user.visible_message("\blue [user] anchors [src] into place.","\blue You anchor [src] into place.")
+					user.visible_message("<span class='notice'>[user] anchors [src] into place.</span>","<span class='notice'>You anchor [src] into place.</span>")
 				else
-					user.visible_message("\blue [user] unanchors [src].","\blue You unanchor [src].")
+					user.visible_message("<span class='notice'>[user] unanchors [src].</span>","<span class='notice'>You unanchor [src].</span>")
 		return
 
 	return ..()
@@ -253,7 +253,7 @@
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
-	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
 	anchored = 1
@@ -275,7 +275,8 @@
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun
 	var/obj/item/projectile/in_chamber = null
 	var/locked = 0 //1 means its locked inplace (this will be for sandbag MGs)
-	var/is_bursting = 0.
+	var/is_bursting = 0
+	var/muzzle_flash_lum = 4
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
@@ -295,9 +296,9 @@
 /obj/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
 	..()
 	if(rounds)
-		user << "It has [rounds] round\s out of [rounds_max]."
+		to_chat(user, "It has [rounds] round\s out of [rounds_max].")
 	else
-		user << "It seems to be lacking ammo"
+		to_chat(user, "It seems to be lacking ammo")
 
 /obj/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -315,7 +316,7 @@
 
 	if(istype(O,/obj/item/tool/wrench)) // Let us rotate this stuff.
 		if(locked)
-			user << "This one is anchored in place and cannot be rotated."
+			to_chat(user, "This one is anchored in place and cannot be rotated.")
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -333,10 +334,10 @@
 
 	if(istype(O, /obj/item/tool/screwdriver)) // Lets take it apart.
 		if(locked)
-			user << "This one cannot be disassembled."
+			to_chat(user, "This one cannot be disassembled.")
 		else
-			user << "You begin disassembling [src]"
-			if(do_after(user,15, TRUE, 5, BUSY_ICON_BUILD))
+			to_chat(user, "You begin disassembling [src]")
+			if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'> [user] disassembles [src]! </span>","<span class='notice'> You disassemble [src]!</span>")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
@@ -349,10 +350,10 @@
 		var/obj/item/ammo_magazine/m56d/M = O
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.heavy_weapons < SKILL_HEAVY_WEAPONS_TRAINED)
 			if(rounds)
-				user << "<span class='warning'>You only know how to swap the ammo drum when it's empty.</span>"
+				to_chat(user, "<span class='warning'>You only know how to swap the ammo drum when it's empty.</span>")
 				return
 			if(user.action_busy) return
-			if(!do_after(user, 25, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
 		user.visible_message("<span class='notice'> [user] loads [src]! </span>","<span class='notice'> You load [src]!</span>")
 		playsound(loc, 'sound/weapons/gun_minigun_cocked.ogg', 25, 1)
@@ -490,7 +491,7 @@
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand())
-		usr << "<span class='warning'>You need a free hand to shoot the [src].</span>"
+		to_chat(usr, "<span class='warning'>You need a free hand to shoot the [src].</span>")
 		return HANDLE_CLICK_UNHANDLED
 
 	target = A
@@ -511,7 +512,7 @@
 	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
 
 		if(!rounds)
-			user << "<span class='warning'><b>*click*</b></span>"
+			to_chat(user, "<span class='warning'><b>*click*</b></span>")
 			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		else
 			process_shot()
@@ -522,16 +523,19 @@
 /obj/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle)) return
 
-	if(prob(65))
-		var/img_layer = layer + 0.1
+	SetLuminosity(muzzle_flash_lum)
+	spawn(10)
+		SetLuminosity(-muzzle_flash_lum)
 
-		var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",img_layer)
-		var/matrix/rotate = matrix() //Change the flash angle.
-		rotate.Translate(0,5)
-		rotate.Turn(angle)
-		I.transform = rotate
+	var/image_layer = layer + 0.1
+	var/offset = 8
 
-		//I.flick_overlay(src, 3) TODO: fix this -spookydonut
+	var/image/I = image('icons/obj/items/projectiles.dmi', src, "muzzle_flash",image_layer)
+	var/matrix/rotate = matrix() //Change the flash angle.
+	rotate.Translate(0, offset)
+	rotate.Turn(angle)
+	I.transform = rotate
+	I.flick_overlay(src, 3)
 
 /obj/machinery/m56d_hmg/MouseDrop(over_object, src_location, over_location) //Drag the MG to us to man it.
 	if(!ishuman(usr)) return
@@ -542,23 +546,23 @@
 		if(user.interactee == src)
 			user.unset_interaction()
 			visible_message("\icon[src] <span class='notice'>[user] decided to let someone else have a go </span>")
-			usr << "<span class='notice'>You decided to let someone else have a go on the MG </span>"
+			to_chat(usr, "<span class='notice'>You decided to let someone else have a go on the MG </span>")
 			return
 		if(operator) //If there is already a operator then they're manning it.
 			if(operator.interactee == null)
 				operator = null //this shouldn't happen, but just in case
 			else
-				user << "Someone's already controlling it."
+				to_chat(user, "Someone's already controlling it.")
 				return
 		else
 			if(user.interactee) //Make sure we're not manning two guns at once, tentacle arms.
-				user << "You're already manning something!"
+				to_chat(user, "You're already manning something!")
 				return
 			if(user.get_active_hand() != null)
-				user << "<span class='warning'>You need a free hand to man the [src].</span>"
+				to_chat(user, "<span class='warning'>You need a free hand to man the [src].</span>")
 			else
 				visible_message("\icon[src] <span class='notice'>[user] mans the M56D!</span>")
-				user << "<span class='notice'>You man the gun!</span>"
+				to_chat(user, "<span class='notice'>You man the gun!</span>")
 				user.set_interaction(src)
 
 
@@ -603,14 +607,14 @@
 	if (mods["ctrl"])
 		if(operator != user) return //only the operatore can toggle fire mode
 		burst_fire = !burst_fire
-		user << "<span class='notice'>You set [src] to [burst_fire ? "burst fire" : "single fire"] mode.</span>"
+		to_chat(user, "<span class='notice'>You set [src] to [burst_fire ? "burst fire" : "single fire"] mode.</span>")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		return 1
 	return ..()
 
 /obj/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
-	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machinegun nest for all your defensive needs.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	burst_fire = 1
 	fire_delay = 2
 	rounds = 1500
@@ -624,7 +628,7 @@
 
 /obj/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
-	desc = "A scoped M56D heavy machine gun mounted behind a metal shield.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system

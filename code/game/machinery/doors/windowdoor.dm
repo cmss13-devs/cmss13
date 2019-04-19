@@ -144,15 +144,18 @@
 		return
 
 /obj/machinery/door/window/bullet_act(var/obj/item/projectile/Proj)
+	bullet_ping(Proj)
 	if(Proj.ammo.damage)
 		take_damage(round(Proj.ammo.damage / 2))
+		if(Proj.ammo.damage_type == BRUTE)
+			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return 1
 
 //When an object is thrown at the window
 /obj/machinery/door/window/hitby(AM as mob|obj)
 
 	..()
-	visible_message("\red <B>The glass door was hit by [AM].</B>", 1)
+	visible_message("<span class='danger'><B>The glass door was hit by [AM].</B></span>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
@@ -172,7 +175,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-			visible_message("\red <B>[user] smashes against the [src.name].</B>", 1)
+			visible_message("<span class='danger'><B>[user] smashes against the [src.name].</B></span>", 1)
 			take_damage(25)
 			return
 	return try_to_activate_door(user)
@@ -195,8 +198,8 @@
 	if (src.operating == -1 && istype(I, /obj/item/tool/crowbar))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 		user.visible_message("[user] removes the electronics from the windoor.", "You start to remove electronics from the windoor.")
-		if (do_after(user,40, TRUE, 5, BUSY_ICON_BUILD))
-			user << "\blue You removed the windoor electronics!"
+		if (do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			to_chat(user, "<span class='notice'> You removed the windoor electronics!</span>")
 
 			var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
 			if (istype(src, /obj/machinery/door/window/brigdoor))
@@ -233,7 +236,7 @@
 	if(!(I.flags_item & NOBLUDGEON) && I.force && density) //trying to smash windoor with item
 		var/aforce = I.force
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-		visible_message("\red <B>[src] was hit by [I].</B>")
+		visible_message("<span class='danger'><B>[src] was hit by [I].</B></span>")
 		if(I.damtype == BRUTE || I.damtype == BURN)
 			take_damage(aforce)
 		return 1

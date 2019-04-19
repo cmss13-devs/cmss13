@@ -87,7 +87,7 @@
 		for(var/i in ticker.mode.predators)
 			M = i
 			if(M.current && M.current.stat != DEAD && z != ADMIN_Z_LEVEL)
-				M.current << "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>"
+				to_chat(M.current, "<span class='event_announcement'>An abomination to your people has been brought onto the world at [get_area(src)]! Hunt it down and destroy it!</span>")
 				M.current.emote("roar")
 	if(upgrade == 4)
 		desc = "Nothing matches this force of destruction. Good luck killing it, mortal."
@@ -99,7 +99,7 @@
 					X.emote("roar")
 			for(var/mob/living/carbon/human/H in living_mob_list)
 				if(z == H.z)
-					H << "<span class='xenoannounce'>The ground shakes beneath your feet... Echoes of imminent doom tickle your conscious like ripples on a pond...</span>"
+					to_chat(H, "<span class='xenoannounce'>The ground shakes beneath your feet... Echoes of imminent doom tickle your conscious like ripples on a pond...</span>")
 					playsound(H, 'sound/voice/predalien_roar.ogg', 100, 75)
 					if(H.client)
 						shake_camera(H, 25, 5)
@@ -125,7 +125,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	set desc = "Butcher a corpse to attain a trophy from your kill."
 
 	if(is_mob_incapacitated()|| lying || buckled)
-		src << "<span class='xenowarning'>You're not able to do that right now.</span>"
+		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.</span>")
 		r_FAL
 
 	var/choices[] = new
@@ -137,26 +137,26 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	if(!H || !H.loc) r_FAL
 
 	if(is_mob_incapacitated() || lying || buckled)
-		src << "<span class='xenowarning'>You're not able to do that right now.<span>"
+		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.<span>")
 		r_FAL
 
 	if(!H.stat)
-		src << "<span class='xenowarning'>Your prey must be dead.</span>"
+		to_chat(src, "<span class='xenowarning'>Your prey must be dead.</span>")
 		r_FAL
 
 	if(!Adjacent(H))
-		src << "<span class='xenowarning'>You have to be next to your target.</span>"
+		to_chat(src, "<span class='xenowarning'>You have to be next to your target.</span>")
 		r_FAL
 
 	if(world.time <= butchered_last + PREDALIEN_BUTCHER_COOLDOWN)
-		src << "<span class='xenowarning'>You have recently attempted to butcher a carcass. Wait.</span>"
+		to_chat(src, "<span class='xenowarning'>You have recently attempted to butcher a carcass. Wait.</span>")
 		r_FAL
 
 	butchered_last = world.time
 
 	visible_message("<span class='danger'>[src] reaches down, angling its body toward [H], claws outstretched.</span>",
 	"<span class='xenonotice'>You stoop near the host's body, savoring the moment before you claim a trophy for your kill. You must stand still...</span>")
-	if(do_after(src, PREDALIEN_BUTCHER_WAIT_TIME, FALSE, 5, BUSY_ICON_HOSTILE) && Adjacent(H))
+	if(do_after(src, PREDALIEN_BUTCHER_WAIT_TIME, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && Adjacent(H))
 		var/datum/limb/head/O = H.get_limb("head")
 		if(!(O.status & LIMB_DESTROYED))
 			H.apply_damage(150, BRUTE, "head", FALSE, TRUE, TRUE)

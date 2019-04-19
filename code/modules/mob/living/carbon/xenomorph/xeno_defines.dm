@@ -59,6 +59,10 @@
 	var/punch_cooldown = 40
 	var/jab_cooldown = 40
 	var/toggle_agility_cooldown = 5
+	
+	// Resin building-related vars
+	var/build_time = 10 // Default build time and build distance
+	var/max_build_dist = 0
 
 	//Boiler vars
 	var/bomb_strength = 0 //Multiplier to the effectiveness of the boiler glob. Improves by 0.5 per upgrade
@@ -107,6 +111,11 @@
 	var/charge_speed_max = 2.1 //Can only gain this much speed before capping
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
+
+	// Related to zooming out (primarily queen and boiler)
+	// TODO: reexamine this because kinda iffy about where this var is stored - TheDonkified
+	var/tileoffset = 5
+	var/viewsize = 12
 
 /datum/caste_datum/New()
 	. = ..()
@@ -214,7 +223,7 @@
 	var/emotedown = 0
 
 	var/datum/action/xeno_action/activable/selected_ability
-	var/selected_resin = "resin wall" //which resin structure to build when we secrete resin
+	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
 
 	//Naming variables
 	var/caste_name = ""
@@ -247,7 +256,6 @@
 
 	//Burrower Vars
 	var/used_tremor = 0
-
 
 	//Pounce vars
 	var/used_pounce = 0

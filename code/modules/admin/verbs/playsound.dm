@@ -5,13 +5,13 @@
 	if(!check_rights(R_SOUNDS))	return
 
 	if(midi_playing)
-		usr << "No. An Admin already played a midi recently."
+		to_chat(usr, "No. An Admin already played a midi recently.")
 		return
 
 	var/sound/uploaded_sound = sound(S, repeat = 0, wait = 1, channel = 777)
 	uploaded_sound.priority = 250
 
-	switch( alert("Play sound globally or locally?", "Sound", "Global", "Local", "Cancel") )
+	switch( alert("Play sound globally or locally?", "Sound", "Global", "Local", "Individual", "Cancel") )
 		if("Global")
 			for(var/mob/M in player_list)
 				if(M.client.prefs.toggles_sound & SOUND_MIDI)
@@ -21,15 +21,29 @@
 			playsound(get_turf(src.mob), uploaded_sound, 50, 0)
 			for(var/mob/M in view())
 				heard_midi++
+		if("Individual")
+			var/mob/target = input("Select a mob to play sound to:", "List of All Mobs") as null|anything in mob_list
+			if(istype(target,/mob/))
+				if(target.client.prefs.toggles_sound & SOUND_MIDI)
+					target << uploaded_sound
+					heard_midi = "[target] ([target.key])"
+				else
+					heard_midi = 0
 		if("Cancel")
 			return
 
-	log_admin("[key_name(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
-	message_admins("[key_name_admin(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.", 1)
 	feedback_add_details("admin_verb","PCS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	if(isnum(heard_midi))
+		log_admin("[key_name(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.")
+		message_admins("[key_name_admin(src)] played sound `[S]` for [heard_midi] player(s). [clients.len - heard_midi] player(s) have disabled admin midis.", 1)
+	else
+		log_admin("[key_name(src)] played sound `[S]` for [heard_midi].")
+		message_admins("[key_name_admin(src)] played sound `[S]` for [heard_midi].", 1)
+		return
+		
 
 	// A 30 sec timer used to show Admins how many players are silencing the sound after it starts - see preferences_toggles.dm
-	var/midi_playing_timer = 300 // Should match with the midi_silenced spawn() in preferences_toggles.dm
+	var/midi_playing_timer = 30 SECONDS // Should match with the midi_silenced spawn() in preferences_toggles.dm
 	midi_playing = 1
 	spawn(midi_playing_timer)
 		midi_playing = 0

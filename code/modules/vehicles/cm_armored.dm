@@ -1,5 +1,4 @@
 
-
 //NOT bitflags, just global constant values
 #define HDPT_PRIMARY "primary"
 #define HDPT_SECDGUN "secondary"
@@ -130,17 +129,44 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/proc/can_use_hp(var/mob/M)
 	return 1
 
+/obj/vehicle/multitile/root/cm_armored/proc/get_next_hp(var/hardpoint_to_use)
+	if(!hardpoints.Find(hardpoint_to_use))
+		return
+	switch(hardpoint_to_use)
+		if(HDPT_PRIMARY)
+			if(hardpoints.Find(HDPT_SECDGUN))
+				return hardpoints.Find(HDPT_SECDGUN)
+			else if(hardpoints.Find(HDPT_SUPPORT))
+				return hardpoints.Find(HDPT_SUPPORT)
+		if(HDPT_SECDGUN)
+			if(hardpoints.Find(HDPT_PRIMARY))
+				return hardpoints.Find(HDPT_PRIMARY)
+			else if(hardpoints.Find(HDPT_SUPPORT))
+				return hardpoints.Find(HDPT_SUPPORT)
+		if(HDPT_SUPPORT)
+			if(hardpoints.Find(HDPT_PRIMARY))
+				return hardpoints.Find(HDPT_PRIMARY)
+			else if(hardpoints.Find(HDPT_SECDGUN))
+				return hardpoints.Find(HDPT_SECDGUN)
+	return hardpoint_to_use
+
 //No one but the gunner can gun
 //And other checks to make sure you aren't breaking the law
 /obj/vehicle/multitile/root/cm_armored/tank/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
-
-	if(!can_use_hp(user)) return
-
-	if(!hardpoints.Find(active_hp))
-		user << "<span class='warning'>Please select an active hardpoint first.</span>"
+	if (mods["shift"] || mods["alt"] || !can_use_hp(user) || istype(A, /obj/screen))
 		return
 
-	var/obj/item/hardpoint/HP = hardpoints[active_hp]
+	if(!hardpoints.Find(active_hp))
+		to_chat(user, "<span class='warning'>Please select an active hardpoint first.</span>")
+		return
+
+	var/obj/item/hardpoint/HP
+	if (mods["middle"]&& !mods["ctrl"])
+		HP = hardpoints[get_next_hp(active_hp)]
+	else if(mods["ctrl"]&& !mods["middle"])
+		HP = hardpoints[get_next_hp(get_next_hp(active_hp))]
+	else
+		HP = hardpoints[active_hp]
 
 	if(!HP)
 		return
@@ -149,7 +175,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		return
 
 	if(!HP.firing_arc(A))
-		user << "<span class='warning'>The target is not within your firing arc.</span>"
+		to_chat(user, "<span class='warning'>The target is not within your firing arc.</span>")
 		return
 
 	HP.active_effect(A)
@@ -159,7 +185,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 //Only the active hardpoint module can be used
 /obj/vehicle/multitile/root/cm_armored/verb/switch_active_hp()
 	set name = "Change Active Weapon"
-	set category = "Object"
+	set category = "Vehicle"
 	set src in view(0)
 
 	if(!can_use_hp(usr))
@@ -168,24 +194,24 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/list/slots = get_activatable_hardpoints()
 
 	if(!slots.len)
-		usr << "<span class='warning'>All of the modules can't be activated or are broken.</span>"
+		to_chat(usr, "<span class='warning'>All of the modules can't be activated or are broken.</span>")
 		return
 
 	var/slot = input("Select a slot.") in slots
 
 	var/obj/item/hardpoint/HP = hardpoints[slot]
 	if(!HP)
-		usr << "<span class='warning'>There's nothing installed on that hardpoint.</span>"
+		to_chat(usr, "<span class='warning'>There's nothing installed on that hardpoint.</span>")
 
 	active_hp = slot
-	usr << "<span class='notice'>You select the [slot] slot.</span>"
+	to_chat(usr, "<span class='notice'>You select the [slot] slot.</span>")
 	if(isliving(usr))
 		var/mob/living/M = usr
 		M.set_interaction(src)
 
 /obj/vehicle/multitile/root/cm_armored/verb/reload_hp()
-	set name = "Reload Active Weapon"
-	set category = "Object"
+	set name = "Reload Tank Weapon"
+	set category = "Vehicle"
 	set src in view(0)
 
 	if(!can_use_hp(usr)) return
@@ -194,22 +220,22 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/list/slots = get_activatable_hardpoints()
 
 	if(!slots.len)
-		usr << "<span class='warning'>All of the modules can't be reloaded or are broken.</span>"
+		to_chat(usr, "<span class='warning'>All of the modules can't be reloaded or are broken.</span>")
 		return
 
 	var/slot = input("Select a slot.") in slots
 
 	var/obj/item/hardpoint/HP = hardpoints[slot]
 	if(!HP.backup_clips.len)
-		usr << "<span class='warning'>That module has no remaining backup clips.</span>"
+		to_chat(usr, "<span class='warning'>That module has no remaining backup clips.</span>")
 		return
 
 	var/obj/item/ammo_magazine/A = HP.backup_clips[1] //LISTS START AT 1 REEEEEEEEEEEE
 	if(!A)
-		usr << "<span class='danger'>Something went wrong! PM a staff member! Code: T_RHPN</span>"
+		to_chat(usr, "<span class='danger'>Something went wrong! PM a staff member! Code: T_RHPN</span>")
 		return
 
-	usr << "<span class='notice'>You begin reloading the [slot] module.</span>"
+	to_chat(usr, "<span class='notice'>You begin reloading the [slot] module.</span>")
 
 	sleep(20)
 
@@ -218,7 +244,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	HP.ammo = A
 	HP.backup_clips.Remove(A)
 
-	usr << "<span class='notice'>You reload the [slot] module.</span>"
+	to_chat(usr, "<span class='notice'>You reload the [slot] module.</span>")
 
 
 /obj/vehicle/multitile/root/cm_armored/proc/get_activatable_hardpoints()
@@ -277,7 +303,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	for(var/i in hardpoints)
 		var/obj/item/hardpoint/HP = hardpoints[i]
 		if(!HP)
-			user << "There is nothing installed on the [i] hardpoint slot."
+			to_chat(user, "There is nothing installed on the [i] hardpoint slot.")
 		else
 			var/P = HP.get_integrity_percent()
 			var/msg = "There is a [HP] installed on the [i] hardpoint slot."
@@ -435,10 +461,18 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/bullet_act(var/obj/item/projectile/P)
 
 	var/dam_type = "bullet"
+	var/damage = P.damage
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	var/penetration = P.ammo.penetration
+	var/firer = P.firer
 
-	if(P.ammo.flags_ammo_behavior & AMMO_XENO_ACID) dam_type = "acid"
+	if(ammo_flags & AMMO_ANTISTRUCT)
+		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
+		damage = round(damage * 1.5)
+	if(ammo_flags & AMMO_XENO_ACID) 
+		dam_type = "acid"
 
-	take_damage_type(P.damage * (0.75 + P.ammo.penetration/100), dam_type, P.firer)
+	take_damage_type(damage * (0.75 + penetration/100), dam_type, firer)
 
 	healthcheck()
 
@@ -556,11 +590,11 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	//Need to the what the hell you're doing
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-		user << "<span class='warning'>You don't know what to do with [O] on [src].</span>"
+		to_chat(user, "<span class='warning'>You don't know what to do with [O] on [src].</span>")
 		return
 
 	if(!damaged_hps.len)
-		user << "<span class='notice'>All of the hardpoints are in working order.</span>"
+		to_chat(user, "<span class='notice'>All of the hardpoints are in working order.</span>")
 		return
 
 	//Pick what to repair
@@ -569,7 +603,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/obj/item/hardpoint/old = hardpoints[slot] //Is there something there already?
 
 	if(old) //If so, fuck you get it outta here
-		user << "<span class='warning'>Please remove the attached hardpoint module first.</span>"
+		to_chat(user, "<span class='warning'>Please remove the attached hardpoint module first.</span>")
 		return
 
 	//Determine how many 3 second intervals to wait and if you have the right tool
@@ -578,41 +612,41 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_PRIMARY)
 			num_delays = 5
 			if(!iswelder(O))
-				user << "<span class='warning'>That's the wrong tool. Use a welder.</span>"
+				to_chat(user, "<span class='warning'>That's the wrong tool. Use a welder.</span>")
 				return
 			var/obj/item/tool/weldingtool/WT = O
 			if(!WT.isOn())
-				user << "<span class='warning'>You need to light your [WT] first.</span>"
+				to_chat(user, "<span class='warning'>You need to light your [WT] first.</span>")
 				return
 			WT.remove_fuel(num_delays, user)
 
 		if(HDPT_SECDGUN)
 			num_delays = 3
 			if(!iswrench(O))
-				user << "<span class='warning'>That's the wrong tool. Use a wrench.</span>"
+				to_chat(user, "<span class='warning'>That's the wrong tool. Use a wrench.</span>")
 				return
 
 		if(HDPT_SUPPORT)
 			num_delays = 2
 			if(!iswrench(O))
-				user << "<span class='warning'>That's the wrong tool. Use a wrench.</span>"
+				to_chat(user, "<span class='warning'>That's the wrong tool. Use a wrench.</span>")
 				return
 
 		if(HDPT_ARMOR)
 			num_delays = 10
 			if(!iswelder(O))
-				user << "<span class='warning'>That's the wrong tool. Use a welder.</span>"
+				to_chat(user, "<span class='warning'>That's the wrong tool. Use a welder.</span>")
 				return
 			var/obj/item/tool/weldingtool/WT = O
 			if(!WT.isOn())
-				user << "<span class='warning'>You need to light your [WT] first.</span>"
+				to_chat(user, "<span class='warning'>You need to light your [WT] first.</span>")
 				return
 			WT.remove_fuel(num_delays, user)
 
 	user.visible_message("<span class='notice'>[user] starts repairing the [slot] slot on [src].</span>",
 		"<span class='notice'>You start repairing the [slot] slot on [src].</span>")
 
-	if(!do_after(user, 30*num_delays, TRUE, num_delays, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
 		user.visible_message("<span class='notice'>[user] stops repairing the [slot] slot on [src].</span>",
 			"<span class='notice'>You stop repairing the [slot] slot on [src].</span>")
 		return
@@ -641,7 +675,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/obj/item/hardpoint/HP = hardpoints[slot]
 
 	if(!HP)
-		user << "<span class='warning'>There is nothing installed on that slot.</span>"
+		to_chat(user, "<span class='warning'>There is nothing installed on that slot.</span>")
 		return
 
 	HP.try_add_clip(AM, user)
@@ -651,17 +685,17 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/proc/install_hardpoint(var/obj/item/hardpoint/HP, var/mob/user)
 
 	if(!user.mind || !(!user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_MT))
-		user << "<span class='warning'>You don't know what to do with [HP] on [src].</span>"
+		to_chat(user, "<span class='warning'>You don't know what to do with [HP] on [src].</span>")
 		return
 
 	if(damaged_hps.Find(HP.slot))
-		user << "<span class='warning'>You need to fix the hardpoint first.</span>"
+		to_chat(user, "<span class='warning'>You need to fix the hardpoint first.</span>")
 		return
 
 	var/obj/item/hardpoint/old = hardpoints[HP.slot]
 
 	if(old)
-		user << "<span class='warning'>Remove the previous hardpoint module first.</span>"
+		to_chat(user, "<span class='warning'>Remove the previous hardpoint module first.</span>")
 		return
 
 	user.visible_message("<span class='notice'>[user] begins installing [HP] on the [HP.slot] hardpoint slot on [src].</span>",
@@ -676,7 +710,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, TRUE, num_delays, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
 		user.visible_message("<span class='warning'>[user] stops installing \the [HP] on [src].</span>", "<span class='warning'>You stop installing \the [HP] on [src].</span>")
 		return
 
@@ -691,7 +725,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 /obj/vehicle/multitile/root/cm_armored/proc/uninstall_hardpoint(var/obj/item/O, var/mob/user)
 
 	if(!user.mind || !(!user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_MT))
-		user << "<span class='warning'>You don't know what to do with [O] on [src].</span>"
+		to_chat(user, "<span class='warning'>You don't know what to do with [O] on [src].</span>")
 		return
 
 	var/slot = input("Select a slot to try and remove") in hardpoints
@@ -699,7 +733,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	var/obj/item/hardpoint/old = hardpoints[slot]
 
 	if(!old)
-		user << "<span class='warning'>There is nothing installed there.</span>"
+		to_chat(user, "<span class='warning'>There is nothing installed there.</span>")
 		return
 
 	user.visible_message("<span class='notice'>[user] begins removing [old] on the [old.slot] hardpoint slot on [src].</span>",
@@ -714,7 +748,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, TRUE, num_delays, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
 		user.visible_message("<span class='warning'>[user] stops removing \the [old] on [src].</span>", "<span class='warning'>You stop removing \the [old] on [src].</span>")
 		return
 

@@ -13,10 +13,10 @@
 	var/const/waittime_h = 1800
 
 /datum/game_mode/infection/announce()
-	world << "<B>The current game mode is - ZOMBIES!</B>"
-	world << "<B>Just have fun and role-play!</B>"
-	world << "<B>If you die as a zombie, you come back.  NO MATTER HOW MUCH DAMAGE.</B>"
-	world << "<B>Don't ahelp asking for specific details, you won't get them.</B>"
+	to_world("<B>The current game mode is - ZOMBIES!</B>")
+	to_world("<B>Just have fun and role-play!</B>")
+	to_world("<B>If you die as a zombie, you come back.  NO MATTER HOW MUCH DAMAGE.</B>")
+	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
 /datum/game_mode/infection/pre_setup()
 	return 1
@@ -32,8 +32,8 @@
 	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/zed = living_player_list[2]
-//	world << "ZED: [zed]"
-//	world << "Humie: [num_humans]"
+//	to_world("ZED: [zed]")
+//	to_world("Humie: [num_humans]")
 
 	if(num_humans <=0 && zed >= 1)
 		round_finished = MODE_INFECTION_ZOMBIE_WIN

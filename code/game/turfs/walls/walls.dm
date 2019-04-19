@@ -5,9 +5,10 @@
 	icon_state = "0"
 	opacity = 1
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
-	var/walltype = "metal"
+	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
 	var/thermite = 0
+	var/melting = FALSE
 
 	tiles_with = list(
 		/turf/closed/wall,
@@ -97,36 +98,36 @@
 
 	if(!damage)
 		if (acided_hole)
-			user << "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>"
+			to_chat(user, "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>")
 		else
-			user << "<span class='notice'>It looks fully intact.</span>"
+			to_chat(user, "<span class='notice'>It looks fully intact.</span>")
 	else
 		var/dam = damage / damage_cap
 		if(dam <= 0.3)
-			user << "<span class='warning'>It looks slightly damaged.</span>"
+			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
 		else if(dam <= 0.6)
-			user << "<span class='warning'>It looks moderately damaged.</span>"
+			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
 		else
-			user << "<span class='danger'>It looks heavily damaged.</span>"
+			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
 
 		if (acided_hole)
-			user << "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>"
+			to_chat(user, "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>")
 
 	switch(d_state)
 		if(1)
-			user << "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>"
+			to_chat(user, "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>")
 		if(2)
-			user << "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>"
+			to_chat(user, "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>")
 		if(3)
-			user << "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>"
+			to_chat(user, "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>")
 		if(4)
-			user << "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>"
+			to_chat(user, "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>")
 		if(5)
-			user << "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>"
+			to_chat(user, "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>")
 		if(6)
-			user << "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>"
+			to_chat(user, "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>")
 		if(7)
-			user << "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>"
+			to_chat(user, "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>")
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam)
@@ -192,23 +193,42 @@
 	return (damage_cap - damage)/EXPLOSION_DAMAGE_MULTIPLIER_WALL
 
 /turf/closed/wall/proc/thermitemelt(mob/user)
+	if(melting)
+		to_chat(user, SPAN_WARNING("The wall is already burning with thermite!"))
+		return
 	if(hull)
 		return
+	melting = TRUE
+	
 	var/obj/effect/overlay/O = new/obj/effect/overlay(src)
 	O.name = "Thermite"
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
-	O.icon_state = "2"
+	O.icon_state = "red_3"
 	O.anchored = 1
 	O.density = 1
 	O.layer = FLY_LAYER
 
-	user << "<span class='warning'>The thermite starts melting through [src].</span>"
-	spawn(50)
-		dismantle_wall()
+	to_chat(user, SPAN_WARNING("The thermite starts melting through [src]."))
 
-	spawn(50)
-		if(O) qdel(O)
+	var/turf/closed/wall/W = src
+	while(W.thermite > 0)
+		if(!istype(src, /turf/closed/wall))
+			break
+
+		thermite -= 1
+		W.damage = W.damage + 100 // 100 damage per unit of thermite so 10u kills wall, 30u kills reinforced wall
+		update_icon()
+		if(damage >= damage_cap)
+			dismantle_wall(1)
+			break
+
+		sleep(20)
+		if(!istype(src, /turf/closed/wall)) // Extra check, needed against runtimes
+			break
+
+	if(O) 
+		qdel(O)
 	return
 
 
@@ -233,7 +253,7 @@
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((istype(src, /turf/closed/wall/r_wall)) || hull)
-			M << "<span class='warning'>This [name] is far too strong for you to destroy.</span>"
+			to_chat(M, "<span class='warning'>This [name] is far too strong for you to destroy.</span>")
 			return
 		else
 			if((prob(40)))
@@ -268,14 +288,14 @@
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 
 	if(!ishuman(user) && !isrobot(user))
-		user << "<span class='warning'>You don't have the dexterity to do this!</span>"
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
 	if(thermite)
 		if(W.heat_source >= 1000)
 			if(hull)
-				user << "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>."
+				to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
 			else
 				if(istype(W, /obj/item/tool/weldingtool))
 					var/obj/item/tool/weldingtool/WT = W
@@ -314,7 +334,7 @@
 		return
 
 	if(hull)
-		user << "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>."
+		to_chat(user, "<span class='warning'>[src] is much too tough for you to do anything to it with [W]</span>.")
 		return
 
 	if(damage && istype(W, /obj/item/tool/weldingtool))
@@ -323,13 +343,13 @@
 			user.visible_message("<span class='notice'>[user] starts repairing the damage to [src].</span>",
 			"<span class='notice'>You start repairing the damage to [src].</span>")
 			playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			if(do_after(user, max(5, round(damage / 5)), TRUE, 5, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
+			if(do_after(user, max(5, round(damage / 5)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
 				user.visible_message("<span class='notice'>[user] finishes repairing the damage to [src].</span>",
 				"<span class='notice'>You finish repairing the damage to [src].</span>")
 				take_damage(-damage)
 			return
 		else
-			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return
 
 	//DECONSTRUCTION
@@ -342,7 +362,7 @@
 				user.visible_message("<span class='notice'>[user] begins slicing through the outer plating.</span>",
 				"<span class='notice'>You begin slicing through the outer plating.</span>")
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(!d_state)
@@ -358,7 +378,7 @@
 				"<span class='notice'>You begin removing the support lines.</span>")
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 1)
@@ -375,7 +395,7 @@
 				"<span class='notice'>You begin slicing through the metal cover.</span>")
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(d_state == 2)
@@ -391,7 +411,7 @@
 				"<span class='notice'>You struggle to pry off the cover.</span>")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 3)
@@ -407,7 +427,7 @@
 				"<span class='notice'>You start loosening the anchoring bolts securing the support rods.</span>")
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 4)
@@ -423,7 +443,7 @@
 				"<span class='notice'>You begin uncrimping the hydraulic lines.</span>")
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 5)
@@ -439,7 +459,7 @@
 				"<span class='notice'>You struggle to pry off the inner sheath.</span>")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall)) return
 
 					if(d_state == 6)
@@ -456,7 +476,7 @@
 				"<span class='notice'>You begin slicing through the final layer.</span>")
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(d_state == 7)
@@ -470,3 +490,44 @@
 
 /turf/closed/wall/can_be_dissolved()
 	return !hull
+
+/turf/closed/wall/proc/wall2text(var/a_walltype)
+	switch(a_walltype)
+		if (WALL_METAL)
+			return "metal"
+		if (WALL_HULL)
+			return "testwall"
+		if (WALL_WHITE)
+			return "wwall"
+		if (WALL_SULACO)
+			return "sulaco"
+		if (WALL_HANGAR)
+			return "hangar"
+		if (WALL_REINFORCED)
+			return "rwall"
+		if (WALL_REINFORCED_RESEARCH)
+			return "research"
+		if (WALL_REINFORCED_IRON)
+			return "iron"
+		if (WALL_REINFORCED_CHIGUSA)
+			return "chigusa"
+		if (WALL_REINFORCED_BUNKER)
+			return "bunker"
+		if (WALL_RESIN)
+			return "resin"
+		if (WALL_THICKRESIN)
+			return "thickresin"
+		if (WALL_MEMBRANE)
+			return "membrane"
+		if (WALL_THICKMEMBRANE)
+			return "thickmembrane"
+		if (WALL_CAVE)
+			return "cavewall"
+		if (WALL_WOOD)
+			return "wood"
+		if (WALL_GOLD)
+			return "gold"
+		if (WALL_CULT)
+			return "cult"
+		if (WALL_STONE)
+			return "stone"

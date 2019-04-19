@@ -5,7 +5,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			src << "<span class='warning'>You cannot speak in IC (Muted).</span>"
+			to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
 			return
 
 	message =  trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -19,17 +19,14 @@
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 
-	var/datum/language/speaking = null
-
-	if(length(message) >= 1)
-		if(languages.len)
+	var/datum/language/speaking = null			
+	if(length(message) >= 2)
+		if(copytext(message,1,2) == ";" && languages.len)
 			for(var/datum/language/L in languages)
-				if(copytext(message,1,2) == ";")
+				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
-					
-	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1, 3)
 		if(languages.len)
 			for(var/datum/language/L in languages)
@@ -55,8 +52,11 @@
 					forced = 1
 					break
 
-	if(speaking && !forced)
-		message = trim(copytext(message,3))
+	if(speaking && !forced) 
+		if (copytext(message,1,2) == ";")
+			message = trim(copytext(message,2))
+		else if (copytext(message,1,3) == ":a")
+			message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))
 
@@ -89,7 +89,7 @@
 		return
 
 	if(!hive.living_xeno_queen && !Check_WO())
-		src << "<span class='warning'>There is no Queen. You are alone.</span>"
+		to_chat(src, "<span class='warning'>There is no Queen. You are alone.</span>")
 		return
 
 	var/rendered

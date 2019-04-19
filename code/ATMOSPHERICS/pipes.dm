@@ -92,13 +92,13 @@
 		return ..()
 	var/turf/T = src.loc
 	if(level == 1 && isturf(T) && T.intact_tile)
-		user << "<span class='warning'>You must remove the plating first.</span>"
+		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message("<span class='notice'>[user] begins unfastening [src].</span>",
 	"<span class='notice'>You begin unfastening [src].</span>")
-	if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
@@ -207,7 +207,7 @@
 	return 1
 
 /obj/machinery/atmospherics/pipe/simple/proc/burst()
-	src.visible_message("\red \bold [src] bursts!");
+	src.visible_message("<span class='danger'>\bold [src] bursts!</span>");
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
 	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(0,0, src.loc, 0)
@@ -1106,15 +1106,15 @@
 
 	if(istype(W, /obj/item/device/analyzer) && in_range(user, src))
 		for (var/mob/O in viewers(user, null))
-			O << "\red [user] has used the analyzer on \icon[icon]"
+			to_chat(O, "<span class='danger'>[user] has used the analyzer on \icon[icon]</span>")
 
-		user << "\blue Results of analysis of \icon[icon]"
+		to_chat(user, "<span class='notice'> Results of analysis of \icon[icon]</span>")
 		if (pressure>0)
-			user << "\blue Pressure: [round(pressure,0.1)] kPa"
-			user << "\blue [gas_type]: [100]%"
-			user << "\blue Temperature: [round(temperature-T0C)]&deg;C"
+			to_chat(user, "<span class='notice'> Pressure: [round(pressure,0.1)] kPa</span>")
+			to_chat(user, "<span class='notice'> [gas_type]: [100]%</span>")
+			to_chat(user, "<span class='notice'> Temperature: [round(temperature-T0C)]&deg;C</span>")
 		else
-			user << "\blue Tank is empty!"
+			to_chat(user, "<span class='notice'> Tank is empty!</span>")
 
 /obj/machinery/atmospherics/pipe/tank/air
 	name = "Pressure Tank (Air)"

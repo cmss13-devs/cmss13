@@ -18,10 +18,6 @@
 	var/construction_time=100
 	matter = list("metal" = 700, "glass" = 50)
 
-	suicide_act(mob/user)
-		viewers(user) << "\red <b>[user] is licking the electrodes of the [src.name]! It looks like \he's trying to commit suicide.</b>"
-		return (FIRELOSS)
-
 /obj/item/cell/crap
 	name = "\improper Yutani brand rechargable AA battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT

@@ -18,6 +18,13 @@
 	icon = 'icons/turf/overlays.dmi'
 	//layer = TURF_LAYER+0.5 //So it appears over other decals
 	layer = TURF_LAYER
+
+/obj/effect/decal/sand_overlay/New()
+	. = ..()
+
+	loc.overlays += src
+	qdel(src)
+
 /obj/effect/decal/sand_overlay/sand1
 	icon_state = "sand1_s"
 /obj/effect/decal/sand_overlay/sand1/corner1

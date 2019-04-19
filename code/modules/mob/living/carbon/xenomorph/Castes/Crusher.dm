@@ -103,11 +103,11 @@
 	if(!check_state()) return
 
 	if(world.time < has_screeched + CRUSHER_STOMP_COOLDOWN) //Sure, let's use this.
-		src << "<span class='xenowarning'>You are not ready to stomp again.</span>"
+		to_chat(src, "<span class='xenowarning'>You are not ready to stomp again.</span>")
 		r_FAL
 
 	if(legcuffed)
-		src << "<span class='xenodanger'>You can't rear up to stomp with that thing on your leg!</span>"
+		to_chat(src, "<span class='xenodanger'>You can't rear up to stomp with that thing on your leg!</span>")
 		return
 
 	if(!check_plasma(50)) return
@@ -135,7 +135,7 @@
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
 				M.KnockDown(rand(2, 3))
-				M << "<span class='highdanger'>You are stomped on by [src]!</span>"
+				to_chat(M, "<span class='highdanger'>You are stomped on by [src]!</span>")
 			shake_camera(M, 2, 2)
 		i--
 
@@ -144,11 +144,11 @@
 	if(!check_state()) return
 
 	if(world.time < has_screeched + CRUSHER_EARTHQUAKE_COOLDOWN) //Sure, let's use this.
-		src << "<span class='xenowarning'>You are not ready to cause an earthquake yet.</span>"
+		to_chat(src, "<span class='xenowarning'>You are not ready to cause an earthquake yet.</span>")
 		r_FAL
 
 	if(legcuffed)
-		src << "<span class='xenodanger'>You can't rear up to stomp the ground with that thing on your leg!</span>"
+		to_chat(src, "<span class='xenodanger'>You can't rear up to stomp the ground with that thing on your leg!</span>")
 		return
 
 	if(!check_plasma(100)) return
@@ -176,16 +176,16 @@
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
 				M.KnockDown(rand(2, 3))
-				M << "<span class='highdanger'>You are stomped on by [src]!</span>"
+				to_chat(M, "<span class='highdanger'>You are stomped on by [src]!</span>")
 			shake_camera(M, 2, 2)
 		i--
 
 	for(var/mob/living/carbon/human/M in range(5, loc))
-		M << "<span class='warning'>You struggle to remain on your feet as the ground shakes beneath your feet!</span>"
+		to_chat(M, "<span class='warning'>You struggle to remain on your feet as the ground shakes beneath your feet!</span>")
 		shake_camera(M, 3, 3)
 
 	for(var/mob/living/carbon/human/H in range(2, loc))
-		H << "<span class='warning'>You are knocked down by the violent earthquake beneath your feet!</span>"
+		to_chat(H, "<span class='warning'>You are knocked down by the violent earthquake beneath your feet!</span>")
 		H.KnockDown(3)
 
 

@@ -12,7 +12,7 @@
 	flags_equip_slot = SLOT_BACK
 	w_class = 4
 	force = 15
-	fire_sound = 'sound/weapons/gun_flamethrower2.ogg'
+	fire_sound = ""
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/max_range = 5
@@ -35,24 +35,18 @@
 
 	examine(mob/user)
 		..()
-		user << "It's turned [lit? "on" : "off"]."
+		to_chat(user, "It's turned [lit? "on" : "off"].")
 		if(current_mag)
-			user << "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!"
+			to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
 		else
-			user << "There's no tank in [src]!"
+			to_chat(user, "There's no tank in [src]!")
 
 /obj/item/weapon/gun/flamer/update_icon()
-	overlays.Cut()
-	if(!current_mag)
-		icon_state = base_gun_icon
-	else
-		overlays += "[current_mag.icon_state]"
+	..()
 	if(lit)
 		var/image/I = image('icons/obj/items/gun.dmi', src, "+lit")
 		I.pixel_x += 3
 		overlays += I
-
-	update_mag_overlay()
 
 /obj/item/weapon/gun/flamer/able_to_fire(mob/user)
 	. = ..()
@@ -66,6 +60,13 @@
 
 	update_icon()
 
+/obj/item/weapon/gun/flamer/proc/get_fire_sound()
+	var/list/fire_sounds = list(
+					 'sound/weapons/gun_flamethrower1.ogg',
+					 'sound/weapons/gun_flamethrower2.ogg',
+					 'sound/weapons/gun_flamethrower3.ogg')
+	return pick(fire_sounds)
+
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
 	set waitfor = 0
 	if(!able_to_fire(user)) return
@@ -74,7 +75,7 @@
 	if (!targloc || !curloc) return //Something has gone wrong...
 
 	if(!lit)
-		user << "<span class='alert'>The weapon isn't lit</span>"
+		to_chat(user, "<span class='alert'>The weapon isn't lit</span>")
 		return
 
 	if(!current_mag) return
@@ -85,32 +86,32 @@
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		user << "<span class='warning'>That's not a magazine!</span>"
+		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
 		return
 
 	if(magazine.current_rounds <= 0)
-		user << "<span class='warning'>That [magazine.name] is empty!</span>"
+		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
 		return
 
 	if(!istype(src, magazine.gun_type))
-		user << "<span class='warning'>That magazine doesn't fit in there!</span>"
+		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
 		return
 
 	if (istype(magazine, /obj/item/ammo_magazine/flamer_tank/large))
-		user << "<span class='warning'>That tank is too large for this model!</span>"
+		to_chat(user, "<span class='warning'>That tank is too large for this model!</span>")
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		user << "<span class='warning'>It's still got something loaded!</span>"
+		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
-				if(do_after(user,magazine.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
+				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
-					user << "<span class='warning'>Your reload was interrupted!</span>"
+					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -152,7 +153,7 @@
 			burnlevel = 10
 			burntime = 50
 			max_range = 4
-			playsound(user, fire_sound, 50, 1)
+			playsound(user, src.get_fire_sound(), 50, 1)
 			triangular_flame(target, user, burntime, burnlevel)
 			return
 
@@ -168,7 +169,7 @@
 		else return
 
 	var/list/turf/turfs = getline2(user,target)
-	playsound(user, fire_sound, 50, 1)
+	playsound(user, src.get_fire_sound(), 50, 1)
 	var/distance = 1
 	var/turf/prev_T
 
@@ -186,6 +187,9 @@
 			break
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
+		var/obj/flamer_fire/foundflame = locate() in T
+		if(foundflame)
+			qdel(foundflame) //No stacking
 		current_mag.current_rounds--
 		flame_turf(T,user, burntime, burnlevel, fire_color)
 		distance++
@@ -196,10 +200,6 @@
 	if(!istype(T))
 		return
 
-	// No stacking flames
-	if (locate(/obj/flamer_fire) in T)
-		return
-
 	new /obj/flamer_fire(T, heat, burn, f_color, 0, user)
 
 /obj/item/weapon/gun/flamer/proc/triangular_flame(var/atom/target, var/mob/living/user, var/burntime, var/burnlevel)
@@ -207,7 +207,7 @@
 
 	var/unleash_dir = user.dir //don't want the player to turn around mid-unleash to bend the fire.
 	var/list/turf/turfs = getline2(user,target)
-	playsound(user, fire_sound, 50, 1)
+	playsound(user, src.get_fire_sound(), 50, 1)
 	var/distance = 1
 	var/turf/prev_T
 
@@ -278,28 +278,28 @@
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		user << "<span class='warning'>That's not a magazine!</span>"
+		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
 		return
 
 	if(magazine.current_rounds <= 0)
-		user << "<span class='warning'>That [magazine.name] is empty!</span>"
+		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
 		return
 
 	if(!istype(src, magazine.gun_type))
-		user << "<span class='warning'>That magazine doesn't fit in there!</span>"
+		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		user << "<span class='warning'>It's still got something loaded!</span>"
+		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				user << "<span class='notice'>You begin reloading [src]. Hold still...</span>"
-				if(do_after(user,magazine.reload_delay, TRUE, 5, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
+				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
-					user << "<span class='warning'>Your reload was interrupted!</span>"
+					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -317,7 +317,7 @@
 			return
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
-			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
 			return 0
 
 
@@ -352,7 +352,9 @@
 		for(var/dirn in cardinal)
 			T = get_step(loc, dirn)
 			if(istype(T,/turf/open/space)) continue
-			if(locate(/obj/flamer_fire) in T) continue //No stacking
+			var/obj/flamer_fire/foundflame = locate() in T
+			if(foundflame)
+				qdel(foundflame) //No stacking
 			var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
 			if(new_spread_amt)
 				for(var/obj/O in T)
@@ -401,7 +403,7 @@
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
 		M.IgniteMob()
 		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.
-		M << "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!"
+		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
 
 
 /obj/flamer_fire/Dispose()
@@ -434,7 +436,7 @@
 			M.IgniteMob()
 
 		M.adjustFireLoss(round(burnlevel*0.5)) //This makes fire stronk.
-		M << "<span class='danger'>You are burned!</span>"
+		to_chat(M, "<span class='danger'>You are burned!</span>")
 		if(isXeno(M)) M.updatehealth()
 
 

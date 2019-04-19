@@ -45,26 +45,26 @@
 //Arming
 /obj/item/explosive/mine/attack_self(mob/living/user)
 	if(locate(/obj/item/explosive/mine) in get_turf(src))
-		user << "<span class='warning'>There already is a mine at this position!</span>"
+		to_chat(user, "<span class='warning'>There already is a mine at this position!</span>")
 		return
 
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
-		user << "<span class='warning'>You can't plant a mine here.</span>"
+		to_chat(user, "<span class='warning'>You can't plant a mine here.</span>")
 		return
 
 	/*if(user.z == MAIN_SHIP_Z_LEVEL || user.z == LOW_ORBIT_Z_LEVEL) // Almayer or dropship transit level
-		user << "<span class='warning'>You can't plant a mine on a spaceship!</span>"
+		to_chat(user, "<span class='warning'>You can't plant a mine on a spaceship!</span>")
 		return*/
 
 	if(!armed)
 		user.visible_message("<span class='notice'>[user] starts deploying [src].</span>", \
-		"<span class='notice'>You start deploying [src].</span>")
-		if(!do_after(user, 40, TRUE, 5, BUSY_ICON_HOSTILE))
+			"<span class='notice'>You start deploying [src].</span>")
+		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			user.visible_message("<span class='notice'>[user] stops deploying [src].</span>", \
-		"<span class='notice'>You stop deploying \the [src].</span>")
+				"<span class='notice'>You stop deploying \the [src].</span>")
 			return
 		user.visible_message("<span class='notice'>[user] finishes deploying [src].</span>", \
-		"<span class='notice'>You finish deploying [src].</span>")
+			"<span class='notice'>You finish deploying [src].</span>")
 		anchored = 1
 		armed = 1
 		playsound(src.loc, 'sound/weapons/mine_armed.ogg', 25, 1)
@@ -82,7 +82,7 @@
 			user.visible_message("<span class='notice'>[user] starts disarming [src].</span>", \
 			"<span class='notice'>You start disarming [src].</span>")
 			disarming = 1
-			if(!do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='warning'>[user] stops disarming [src].", \
 				"<span class='warning'>You stop disarming [src].")
 				disarming = 0

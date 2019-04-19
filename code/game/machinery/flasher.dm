@@ -42,9 +42,9 @@
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message("\red [user] has disconnected the [src]'s flashbulb!", "\red You disconnect the [src]'s flashbulb!")
+			user.visible_message("<span class='danger'>[user] has disconnected the [src]'s flashbulb!</span>", "<span class='danger'>You disconnect the [src]'s flashbulb!</span>")
 		if (!src.disable)
-			user.visible_message("\red [user] has connected the [src]'s flashbulb!", "\red You connect the [src]'s flashbulb!")
+			user.visible_message("<span class='danger'>[user] has connected the [src]'s flashbulb!</span>", "<span class='danger'>You connect the [src]'s flashbulb!</span>")
 
 //Let the AI trigger them directly.
 /obj/machinery/flasher/attack_ai()
@@ -111,11 +111,11 @@
 		src.anchored = !src.anchored
 
 		if (!src.anchored)
-			user.show_message(text("\red [src] can now be moved."))
+			user.show_message(text("<span class='danger'>[src] can now be moved.</span>"))
 			src.overlays.Cut()
 
 		else if (src.anchored)
-			user.show_message(text("\red [src] is now secured."))
+			user.show_message(text("<span class='danger'>[src] is now secured.</span>"))
 			src.overlays += "[base_state]-s"
 
 /obj/machinery/flasher_button/attack_ai(mob/user as mob)
@@ -135,7 +135,7 @@
 		return
 
 	if(!allowed(user))
-		user << "<span class='warning'>Access Denied.</span>"
+		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return
 
 	use_power(5)

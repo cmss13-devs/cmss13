@@ -24,7 +24,7 @@
 
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
-				O.show_message("\red <B>[user] has prodded [M] with an electrically-charged arm!</B>", 1, "\red You hear someone fall", 2)
+				O.show_message("<span class='danger'><B>[user] has prodded [M] with an electrically-charged arm!</B></span>", 1, "<span class='danger'>You hear someone fall</span>", 2)
 
 /obj/item/robot/overdrive
 	name = "overdrive"

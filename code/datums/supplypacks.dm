@@ -2554,7 +2554,7 @@ SUPPLIES
 					/obj/item/storage/box,
 					/obj/item/storage/box
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = RO_PRICE_WORTHLESS
 	containertype = "/obj/structure/closet/crate/supply"
 	containername = "empty box crate"
 	group = "Supplies"
@@ -2578,7 +2578,7 @@ SUPPLIES
 					/obj/structure/mopbucket,
 					/obj/item/paper/janitor
 					)
-	cost = RO_PRICE_VERY_CHEAP
+	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper Janitorial supplies crate"
 	group = "Supplies"

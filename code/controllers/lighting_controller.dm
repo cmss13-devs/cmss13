@@ -1,6 +1,6 @@
 var/global/datum/controller/lighting/lighting_controller
 
-datum/controller/lighting
+/datum/controller/lighting
 	var/processing = 0
 	var/processing_interval = 7	//setting this too low will probably kill the server. Don't be silly with it!
 	var/process_cost = 0
@@ -16,8 +16,8 @@ datum/controller/lighting
 	var/changed_turfs_workload_max = 0
 
 
-datum/controller/lighting/New()
-	lighting_states = max( 0, length(icon_states(LIGHTING_ICON))-1 )
+/datum/controller/lighting/New()
+	lighting_states = max(0, LIGHTING_STATES)
 	if(lighting_controller != src)
 		if(istype(lighting_controller,/datum/controller/lighting))
 			Recover()	//if we are replacing an existing lighting_controller (due to a crash) we attempt to preserve as much as we can
@@ -25,73 +25,32 @@ datum/controller/lighting/New()
 		lighting_controller = src
 	lighting_controller.Initialize()
 
+/datum/controller/lighting/proc/process()
+	iteration++
+	var/thing
+	var/datum/light_source/L
+	for(thing in global_changed_lights)
+		L = thing
+		if(L)
+			L.check()
 
-//Workhorse of lighting. It cycles through each light to see which ones need their effects updating. It updates their
-//effects and then processes every turf in the queue, moving the turfs to the corresponing lighting sub-area.
-//All queue lists prune themselves, which will cause lights with no luminosity to be garbage collected (cheaper and safer
-//than deleting them). Processing interval should be roughly half a second for best results.
-//By using queues we are ensuring we don't perform more updates than are necessary
-/*
-datum/controller/lighting/proc/process()
-	processing = 1
-	spawn(0)
-		set background = 1
-		while(1)
-			if(processing)
-				iteration++
-				var/started = world.timeofday
+	//Operating under the assumpting that Cut() is O(n) because DM is dumb
+	global_changed_lights = list()
 
-				lights_workload_max = max(lights_workload_max,lights.len)
-				for(var/i=1, i<=lights.len, i++)
-					var/datum/light_source/L = lights[i]
-					if(L && !L.check())
-						continue
-					lights.Cut(i,i+1)
-					i--
+	var/turf/T
+	for(thing in changed_turfs)
+		T = thing
+		if(T)
+			if(T.lighting_changed)
+				T.shift_to_subarea()
 
-				sleep(-1)
-
-				changed_turfs_workload_max = max(changed_turfs_workload_max,changed_turfs.len)
-				for(var/i=1, i<=changed_turfs.len, i++)
-					var/turf/T = changed_turfs[i]
-					if(T && T.lighting_changed)
-						T.shift_to_subarea()
-				changed_turfs.Cut()		// reset the changed list
-
-				process_cost = (world.timeofday - started)
-
-			sleep(processing_interval)
-*/
-
-datum/controller/lighting/proc/process()
-	while(processing)
-		iteration++
-		var/thing
-		var/datum/light_source/L
-		for(thing in global_changed_lights)
-			L = thing
-			if(L)
-				L.check()
-
-		//Operating under the assumpting that Cut() is O(n) because DM is dumb
-		global_changed_lights = list()
-
-		var/turf/T
-		for(thing in changed_turfs)
-			T = thing
-			if(T)
-				if(T.lighting_changed)
-					T.shift_to_subarea()
-
-		changed_turfs = list()
-
-		sleep(processing_interval)
+	changed_turfs = list()
 
 //same as above except it attempts to shift ALL turfs in the world regardless of lighting_changed status
 //Does not loop. Should be run prior to process() being called for the first time.
 //Note: if we get additional z-levels at runtime (e.g. if the gateway thin ever gets finished) we can initialize specific
 //z-levels with the z_level argument
-datum/controller/lighting/proc/Initialize(var/z_level)
+/datum/controller/lighting/proc/Initialize(var/z_level)
 	processing = 0
 
 	for(var/thing in global_changed_lights)
@@ -129,7 +88,7 @@ datum/controller/lighting/proc/Initialize(var/z_level)
 //Used to strip valid information from an existing controller and transfer it to a replacement
 //It works by using spawn(-1) to transfer the data, if there is a runtime the data does not get transfered but the loop
 //does not crash
-datum/controller/lighting/proc/Recover()
+/datum/controller/lighting/proc/Recover()
 	if(!istype(lighting_controller.changed_turfs,/list))
 		lighting_controller.changed_turfs = null
 		lighting_controller.changed_turfs = list()
@@ -166,3 +125,4 @@ datum/controller/lighting/proc/Recover()
 	world.log << msg
 
 #undef LIGHTING_ICON
+#undef LIGHTING_STATES

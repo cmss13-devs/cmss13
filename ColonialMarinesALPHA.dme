@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
 #include "code\stylesheet.dm"
@@ -177,7 +178,6 @@
 #include "code\datums\diseases\plasmatoid.dm"
 #include "code\datums\diseases\rhumba_beat.dm"
 #include "code\datums\diseases\robotic_transformation.dm"
-#include "code\datums\diseases\wizarditis.dm"
 #include "code\datums\diseases\xeno_transformation.dm"
 #include "code\datums\diseases\advance\advance.dm"
 #include "code\datums\diseases\advance\presets.dm"
@@ -199,6 +199,7 @@
 #include "code\datums\emergency_calls\clf.dm"
 #include "code\datums\emergency_calls\colonist.dm"
 #include "code\datums\emergency_calls\cryo_marines.dm"
+#include "code\datums\emergency_calls\cryo_marines_heavy.dm"
 #include "code\datums\emergency_calls\deathsquad.dm"
 #include "code\datums\emergency_calls\deus_vult.dm"
 #include "code\datums\emergency_calls\dutch.dm"
@@ -540,7 +541,7 @@
 #include "code\game\objects\items\devices\camera_bug.dm"
 #include "code\game\objects\items\devices\cloaking.dm"
 #include "code\game\objects\items\devices\coins.dm"
-#include "code\game\objects\items\devices\Cotablet.dm"
+#include "code\game\objects\items\devices\cotablet.dm"
 #include "code\game\objects\items\devices\debugger.dm"
 #include "code\game\objects\items\devices\defibrillator.dm"
 #include "code\game\objects\items\devices\device.dm"
@@ -787,7 +788,6 @@
 #include "code\game\turfs\walls\walls.dm"
 #include "code\game\verbs\atom_verbs.dm"
 #include "code\game\verbs\ooc.dm"
-#include "code\game\verbs\suicide.dm"
 #include "code\game\verbs\who.dm"
 #include "code\js\byjax.dm"
 #include "code\js\menus.dm"

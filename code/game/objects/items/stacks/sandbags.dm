@@ -75,13 +75,13 @@
 	if(!istype(user.loc,/turf)) return 0
 
 	if(istype(user.loc, /turf/open/shuttle))
-		user << "<span class='warning'>No. This area is needed for the dropships and personnel.</span>"
+		to_chat(user, "<span class='warning'>No. This area is needed for the dropships and personnel.</span>")
 		return
 
 	if(!istype(user.loc, /turf/open))
 		var/turf/open/OT = user.loc
 		if(!OT.allow_construction)
-			user << "<span class='warning'>The sandbag barricade must be constructed on a proper surface!</span>"
+			to_chat(user, "<span class='warning'>The sandbag barricade must be constructed on a proper surface!</span>")
 			return
 
 	//Using same safeties as other constructions
@@ -89,21 +89,21 @@
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				if(O.dir == user.dir)
-					user << "<span class='warning'>There is already \a [O.name] in this direction!</span>"
+					to_chat(user, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
 					return
 			else
-				user << "<span class='warning'>You need a clear, open area to build the sandbag barricade!</span>"
+				to_chat(user, "<span class='warning'>You need a clear, open area to build the sandbag barricade!</span>")
 				return
 
 	if(user.action_busy)
 		return
 	if(amount < 5)
-		user << "<span class='warning'>You need at least five [name] to do this.</span>"
+		to_chat(user, "<span class='warning'>You need at least five [name] to do this.</span>")
 		return
 	user.visible_message("<span class='notice'>[user] starts assembling a sandbag barricade.</span>",
 	"<span class='notice'>You start assembling a sandbag barricade.</span>")
 
-	if(!do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 		if(O.density)

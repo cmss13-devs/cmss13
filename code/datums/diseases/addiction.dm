@@ -2,7 +2,6 @@
 	form = "Condition"
 	name = "Ultrazine Addiction"
 	max_stages = 4
-	spread = "Acute"
 	cure = "Withdrawal"
 	curable = 0
 	agent = "Ultrazine"
@@ -23,7 +22,7 @@
 /datum/disease/ultrazine_addiction/stage_act()
 	..()
 
-	//world << "stage: [stage], addiction_progression: [addiction_progression]"
+	//to_world("stage: [stage], addiction_progression: [addiction_progression]")
 
 	//withdrawal process
 	if(affected_mob.reagents.has_reagent("ultrazine"))
@@ -48,7 +47,8 @@
 				if(prob(20))
 					affected_mob.halloss = max(affected_mob.halloss, min(20, withdrawal_progression*0.5) )
 					if(prob(50))
-						affected_mob << "<span class='danger'>[pick("You could use another hit.", "More of that would be nice.", "Another dose would help.", "One more dose wouldn't hurt", "Why not take one more?")]</span>"
+						var/message = SPAN_DANGER( pick("You could use another hit.", "More of that would be nice.", "Another dose would help.", "One more dose wouldn't hurt", "Why not take one more?") )
+						to_chat(affected_mob, message)
 
 				affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 5)
 
@@ -60,7 +60,8 @@
 			if(prob(20))
 				affected_mob.halloss = max(affected_mob.halloss, min(40, withdrawal_progression) )
 				if(prob(50))
-					affected_mob << "<span class='danger'>[pick("It's just not the same without it.", "You could use another hit.", "You should take another.", "Just one more.", "Looks like you need another one.")]</span>"
+					var/message = SPAN_DANGER( pick("It's just not the same without it.", "You could use another hit.", "You should take another.", "Just one more.", "Looks like you need another one.") )
+					to_chat(affected_mob, message)
 				if(prob(25))
 					affected_mob.emote("me",1, pick("winces slightly.", "grimaces.") )
 
@@ -73,7 +74,8 @@
 			if(prob(20))
 				affected_mob.halloss = max(affected_mob.halloss, min(60, withdrawal_progression*1.5) )
 				if(prob(50))
-					affected_mob << "<span class='danger'>[pick("You need more.", "It's hard to go on like this.", "You want more. You need more.", "Just take another hit. Now.", "One more.")]</span>"
+					var/message = SPAN_DANGER( pick("You need more.", "It's hard to go on like this.", "You want more. You need more.", "Just take another hit. Now.", "One more.") )
+					to_chat(affected_mob, message)
 				if(prob(25))
 					affected_mob.emote("me",1, pick("winces.", "grimaces.", "groans!") )
 
@@ -86,8 +88,9 @@
 			if(prob(20))
 				affected_mob.halloss = max(affected_mob.halloss, min(80, withdrawal_progression*2) )
 				if(prob(50))
-					affected_mob. << "<span class='danger'>[pick("You need another dose, now. NOW.", "You can't stand it. You have to go back. You have to go back.", "You need more. YOU NEED MORE.", "MORE", "TAKE MORE.")]</span>"
+					var/message = SPAN_DANGER( pick("You need another dose, now. NOW.", "You can't stand it. You have to go back. You have to go back.", "You need more. YOU NEED MORE.", "MORE", "TAKE MORE.") )
+					to_chat(affected_mob, message)
 				if(prob(25))
-					affected_mob.emote("me",1, pick("groans painfully!", "contorts with pain!") )
+					affected_mob.emote("me",1, pick("groans painfully!", "contorts with pain!"))
 
 			affected_mob.next_move_slowdown = max(affected_mob.next_move_slowdown, 10)

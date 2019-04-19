@@ -61,15 +61,15 @@ var/global/datum/defcon/defcon_controller
 /datum/defcon/proc/list_and_purchase_rewards()
 	var/list/rewards_for_purchase = available_rewards()
 	if(rewards_for_purchase.len == 0)
-		usr << "No additional assets have been authorised at this point. Increase the threat assessment level to enable further assets."
+		to_chat(usr, "No additional assets have been authorised at this point. Increase the threat assessment level to enable further assets.")
 	var/pick = input("Which asset would you like to enable?") as null|anything in rewards_for_purchase
 	if(!pick)
 		return
 	if(defcon_reward_list[pick].apply_reward(src))
-		usr << "Asset granted!"
+		to_chat(usr, "Asset granted!")
 		defcon_reward_list[pick].announce_reward()
 	else
-		usr << "Asset granting failed!"
+		to_chat(usr, "Asset granting failed!")
 	return
 
 
@@ -225,7 +225,7 @@ var/global/datum/defcon/defcon_controller
 	if(. == 0)
 		return
 
-	ticker.mode.get_specific_call("Marine Reinforcements (Squad) (Cryo)", FALSE, FALSE)
+	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Full Equipment) (Squad)", FALSE, FALSE)
 
 /datum/defcon_reward/tank_points
 	name = "Additional Tank Part Fabricator Points"

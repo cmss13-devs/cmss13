@@ -37,8 +37,8 @@
 		if(!anchored)//If planted
 			return
 
-		user << "You start pulling out \the [src]."
-		if(!do_after(user,20, TRUE, 5, BUSY_ICON_BUILD))
+		to_chat(user, "You start pulling out \the [src].")
+		if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
 		anchored = 0

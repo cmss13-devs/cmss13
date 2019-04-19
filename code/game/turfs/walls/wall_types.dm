@@ -7,7 +7,7 @@
 	desc = "A metal wall used to seperate rooms and make up the ship."
 	icon = 'icons/turf/walls/almayer.dmi'
 	icon_state = "testwall"
-	walltype = "testwall"
+	walltype = WALL_HULL
 
 	damage = 0
 	damage_cap = 1000 //Wall will break down to girders if damage reaches this point
@@ -32,11 +32,11 @@
 	desc = "A metal wall used to seperate space from the ship"
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
-	walltype = "testwall"
+	walltype = WALL_HULL
 	hull = 1 //Impossible to destroy or even damage. Used for outer walls that would breach into space, potentially some special walls
 
 /turf/closed/wall/almayer/white
-	walltype = "wwall"
+	walltype = WALL_WHITE
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
@@ -108,7 +108,7 @@
 
 	damage_cap = 1000 //As tough as R_walls.
 	max_temperature = 28000 //K, walls will take damage if they're next to a fire hotter than this
-	walltype = "sulaco" //Changes all the sprites and icons.
+	walltype = WALL_SULACO //Changes all the sprites and icons.
 
 
 /turf/closed/wall/sulaco/ex_act(severity)
@@ -129,7 +129,7 @@
 	desc = "A reinforced outer hull, probably to prevent breaches"
 	hull = 1
 	max_temperature = 50000 // Nearly impossible to melt
-	walltype = "sulaco"
+	walltype = WALL_SULACO
 
 
 /turf/closed/wall/sulaco/unmeltable
@@ -137,7 +137,7 @@
 	desc = "A reinforced outer hull, probably to prevent breaches"
 	hull = 1
 	max_temperature = 50000 // Nearly impossible to melt
-	walltype = "sulaco"
+	walltype = WALL_SULACO
 
 /turf/closed/wall/sulaco/unmeltable/ex_act(severity) //Should make it indestructable
 	return
@@ -220,7 +220,7 @@
 	desc = "This shouldn't exist"
 	icon = 'icons/turf/walls/stone.dmi'
 	icon_state = "stone"
-	walltype = "stone"
+	walltype = WALL_STONE
 	var/mineral
 	var/last_event = 0
 	var/active = null
@@ -231,7 +231,7 @@
 	desc = "A wall with gold plating. Swag!"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "gold0"
-	walltype = "gold"
+	walltype = WALL_GOLD
 	mineral = "gold"
 	//var/electro = 1
 	//var/shocked = null
@@ -308,7 +308,7 @@
 	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick"
 	icon = 'icons/turf/walls/cult.dmi'
 	icon_state = "cult"
-	walltype = "cult"
+	walltype = WALL_CULT
 	color = "#3c3434"
 
 
@@ -325,7 +325,7 @@
 	name = "hangar wall"
 	icon = 'icons/turf/walls/hangar.dmi'
 	icon_state = "hangar"
-	walltype = "hangar"
+	walltype = WALL_HANGAR
 
 //Prison wall
 
@@ -333,7 +333,7 @@
 	name = "metal wall"
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "metal"
-	walltype = "metal"
+	walltype = WALL_METAL
 
 
 
@@ -343,7 +343,7 @@
 	name = "wood wall"
 	icon = 'icons/turf/walls/wood.dmi'
 	icon_state = "wood"
-	walltype = "wood"
+	walltype = WALL_WOOD
 
 /turf/closed/wall/wood/update_icon()
 	..()
@@ -359,7 +359,7 @@
 	name = "rock wall"
 	icon = 'icons/turf/walls/cave.dmi'
 	icon_state = "cavewall"
-	walltype = "cavewall"
+	walltype = WALL_CAVE
 	hull = 1
 	color = "#535963"
 
@@ -386,7 +386,7 @@
 	desc = "Weird slime solidified into a wall."
 	icon = 'icons/Xeno/structures.dmi'
 	icon_state = "resin"
-	walltype = "resin"
+	walltype = WALL_RESIN
 	damage_cap = 200
 	layer = RESIN_STRUCTURE_LAYER
 	blend_turfs = list(/turf/closed/wall/resin)
@@ -409,13 +409,13 @@
 	desc = "Weird slime solidified into a thick wall."
 	damage_cap = 400
 	icon_state = "thickresin"
-	walltype = "thickresin"
+	walltype = WALL_THICKRESIN
 
 /turf/closed/wall/resin/membrane
 	name = "resin membrane"
 	desc = "Weird slime translucent enough to let light pass through."
 	icon_state = "membrane"
-	walltype = "membrane"
+	walltype = WALL_MEMBRANE
 	damage_cap = 120
 	opacity = 0
 	alpha = 180
@@ -429,7 +429,7 @@
 	desc = "Weird thick slime just translucent enough to let light pass through."
 	damage_cap = 240
 	icon_state = "thickmembrane"
-	walltype = "thickmembrane"
+	walltype = WALL_THICKMEMBRANE
 	alpha = 210
 
 /turf/closed/wall/resin/bullet_act(var/obj/item/projectile/Proj)
@@ -479,7 +479,7 @@
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
-	user << "<span class='warning'>You scrape ineffectively at \the [src].</span>"
+	to_chat(user, "<span class='warning'>You scrape ineffectively at \the [src].</span>")
 
 
 /turf/closed/wall/resin/attack_paw(mob/user)

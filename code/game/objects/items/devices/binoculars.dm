@@ -40,7 +40,7 @@
 
 /obj/item/device/binoculars/tactical/examine()
 	..()
-	usr << "<span class='notice'>They are currently set to [mode ? "range finder" : "CAS marking"] mode.</span>"
+	to_chat(usr, "<span class='notice'>They are currently set to [mode ? "range finder" : "CAS marking"] mode.</span>")
 
 /obj/item/device/binoculars/tactical/Dispose()
 	if(laser)
@@ -84,12 +84,12 @@
 		return
 
 	if(!changable)
-		user << "These binoculars only have one mode."
+		to_chat(user, "These binoculars only have one mode.")
 		return
 
 	if(!zoom)
 		mode = !mode
-		user << "<span class='notice'>You switch [src] to [mode? "range finder" : "CAS marking" ] mode.</span>"
+		to_chat(user, "<span class='notice'>You switch [src] to [mode? "range finder" : "CAS marking" ] mode.</span>")
 		update_icon()
 		playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
@@ -97,11 +97,11 @@
 	set waitfor = 0
 
 	if(laser || coord)
-		user << "<span class='warning'>You're already targeting something.</span>"
+		to_chat(user, "<span class='warning'>You're already targeting something.</span>")
 		return
 
 	if(world.time < laser_cooldown)
-		user << "<span class='warning'>[src]'s laser battery is recharging.</span>"
+		to_chat(user, "<span class='warning'>[src]'s laser battery is recharging.</span>")
 		return
 
 	if(!user.mind)
@@ -127,32 +127,32 @@
 			if(CEILING_GLASS)
 				is_outside = TRUE
 	if(!is_outside && !mode) //rangefinding works regardless of ceiling
-		user << "<span class='warning'>INVALID TARGET: target must be visible from high altitude.</span>"
+		to_chat(user, "<span class='warning'>INVALID TARGET: target must be visible from high altitude.</span>")
 		return
 	if(user.action_busy)
 		return
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
-	user << "<span class='notice'>INITIATING LASER TARGETING. Stand still.</span>"
-	if(!do_after(user, acquisition_time, TRUE, 5, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
+	to_chat(user, "<span class='notice'>INITIATING LASER TARGETING. Stand still.</span>")
+	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
 		return
 	if(mode)
 		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, laz_name, user)
 		coord = LT
-		user << "<span class='notice'>SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</span>"
+		to_chat(user, "<span class='notice'>SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</span>")
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
-			if(!do_after(user, 50, TRUE, 5, BUSY_ICON_GENERIC))
+			if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(coord)
 					qdel(coord)
 					coord = null
 				break
 	else
-		user << "<span class='notice'>TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE.</span>"
+		to_chat(user, "<span class='notice'>TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE.</span>")
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, laz_name, user)
 		laser = LT
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(laser)
-			if(!do_after(user, 50, TRUE, 5, BUSY_ICON_GENERIC))
+			if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(laser)
 					qdel(laser)
 					laser = null
@@ -215,17 +215,17 @@
 	switch(laz_mode)
 		if(0) //Actually adding descriptions so you can tell what the hell you've selected now.
 			laz_mode = 1
-			usr << "<span class='warning'>IR Laser enabled! You will now designate airstrikes!</span>"
+			to_chat(usr, "<span class='warning'>IR Laser enabled! You will now designate airstrikes!</span>")
 			update_icon()
 			return
 		if(1)
 			laz_mode = 2
-			usr << "<span class='warning'>UV Laser enabled! You will now designate mortars!</span>"
+			to_chat(usr, "<span class='warning'>UV Laser enabled! You will now designate mortars!</span>")
 			update_icon()
 			return
 		if(2)
 			laz_mode = 0
-			usr << "<span class='warning'> System offline, now this is just a pair of binoculars but heavier.</span>"
+			to_chat(usr, "<span class='warning'> System offline, now this is just a pair of binoculars but heavier.</span>")
 			update_icon()
 			return
 	return
@@ -241,11 +241,11 @@
 	switch(plane_toggle)
 		if(0)
 			plane_toggle = 1
-			usr << "<span class='warning'> Airstrike plane is now N-S! If using mortars its now HE rounds!</span>"
+			to_chat(usr, "<span class='warning'> Airstrike plane is now N-S! If using mortars its now HE rounds!</span>")
 			return
 		if(1)
 			plane_toggle = 0
-			usr << "<span class='warning'> Airstrike plane is now E-W! If using mortars its now concussion rounds!</span>"
+			to_chat(usr, "<span class='warning'> Airstrike plane is now E-W! If using mortars its now concussion rounds!</span>")
 			return
 	return
 
@@ -286,14 +286,14 @@
 	var/turf/T = get_turf(A)
 
 	if(!laz_mode)
-		user << "<span class='warning'>The Laser Designator is currently off!</span>"
+		to_chat(user, "<span class='warning'>The Laser Designator is currently off!</span>")
 		return 0
 
 	if(laz_r || laz_b) //Make sure we don't spam strikes
-		user << "<span class='warning'>The laser is currently cooling down. Please wait roughly 10 minutes from lasing the target.</span>"
+		to_chat(user, "<span class='warning'>The laser is currently cooling down. Please wait roughly 10 minutes from lasing the target.</span>")
 		return 0
 
-	user << "<span class='boldnotice'> You start lasing the target area.</span>"
+	to_chat(user, "<span class='boldnotice'> You start lasing the target area.</span>")
 	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LAZING A TARGET: CURRENT MODE [laz_mode], at ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>).") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
 	var/obj/effect/las_target/lasertarget = new(T.loc)
 	if(laz_mode == 1 && !laz_r) // Heres our IR bomb code.

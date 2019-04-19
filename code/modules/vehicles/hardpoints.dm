@@ -28,6 +28,11 @@ Currently only has the tank hardpoints
 	var/list/backup_clips = list()
 	var/max_clips = 1 //1 so they can reload their backups and actually reload once
 	var/point_cost
+	var/muzzle_flash_offset = 0
+	var/muzzle_flash_x_EW = 0
+	var/muzzle_flash_y_EW = 0
+	var/muzzle_flash_x_NS = 0
+	var/muzzle_flash_y_NS = 0
 
 //Called on attaching, for weapons sets the actual cooldowns
 /obj/item/hardpoint/proc/apply_buff()
@@ -55,32 +60,32 @@ Currently only has the tank hardpoints
 //If our cooldown has elapsed
 /obj/item/hardpoint/proc/is_ready()
 	if(owner.z == 2 || owner.z == 3)
-		usr << "<span class='warning'>Don't fire here, you'll blow a hole in the ship!</span>"
+		to_chat(usr, "<span class='warning'>Don't fire here, you'll blow a hole in the ship!</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/proc/try_add_clip(var/obj/item/ammo_magazine/A, var/mob/user)
 	if(max_clips == 0)
-		user << "<span class='warning'>This module does not have room for additional ammo.</span>"
+		to_chat(user, "<span class='warning'>This module does not have room for additional ammo.</span>")
 		return 0
 	else if(backup_clips.len >= max_clips)
-		user << "<span class='warning'>The reloader is full.</span>"
+		to_chat(user, "<span class='warning'>The reloader is full.</span>")
 		return 0
 	else if(!ammo)
-		user << "<span class='warning'>This module does not use ammo!</span>"
+		to_chat(user, "<span class='warning'>This module does not use ammo!</span>")
 		return 0
 	else if(!istype(A, ammo.type))
-		user << "<span class='warning'>That is the wrong ammo type.</span>"
+		to_chat(user, "<span class='warning'>That is the wrong ammo type.</span>")
 		return 0
 
-	user << "<span class='notice'>Installing \the [A] in \the [owner].</span>"
+	to_chat(user, "<span class='notice'>Installing \the [A] in \the [owner].</span>")
 
-	if(!do_after(user, 10))
-		user << "<span class='warning'>Something interrupted you while reloading [owner].</span>"
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		to_chat(user, "<span class='warning'>Something interrupted you while reloading [owner].</span>")
 		return 0
 
 	user.temp_drop_inv_item(A, 0)
-	user << "<span class='notice'>You install \the [A] in \the [owner].</span>"
+	to_chat(user, "<span class='notice'>You install \the [A] in \the [owner].</span>")
 	backup_clips += A
 	return 1
 
@@ -122,18 +127,51 @@ Currently only has the tank hardpoints
 	if(iswelder(O) && health < initial(health))
 		var/obj/item/tool/weldingtool/WT = O
 		if(!WT.isOn())
-			user << "<span class='warning'>You need to light \the [WT] first.</span>"
+			to_chat(user, "<span class='warning'>You need to light \the [WT] first.</span>")
 			return
 		if(WT.get_fuel() < 10)
-			user << "<span class='warning'>You need to refill \the [WT] first.</span>"
+			to_chat(user, "<span class='warning'>You need to refill \the [WT] first.</span>")
 			return
-		if(do_after(user, 100, needhand = FALSE, show_busy_icon = TRUE))
+		if(do_after(user, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			WT.remove_fuel(10, user)
 			health += 10
 			health = Clamp(health, 0, initial(health))
-			user << "<span class='warning'>You repair [src]. Integrity now at [(health / initial(health)) * 100]%.</span>"
+			to_chat(user, "<span class='warning'>You repair [src]. Integrity now at [(health / initial(health)) * 100]%.</span>")
 		return
 	..()
+
+/obj/item/hardpoint/proc/muzzle_flash(var/angle)
+	if(isnull(angle)) return
+
+	var/muzzle_flash_x
+	var/muzzle_flash_y
+	switch(owner.dir)
+		if(NORTH)
+			muzzle_flash_x = muzzle_flash_x_NS
+			muzzle_flash_y = muzzle_flash_y_NS
+		if(SOUTH)
+			if(istype(src, /obj/item/hardpoint/secondary))
+				muzzle_flash_x = muzzle_flash_x_NS - 16
+			else
+				muzzle_flash_x = muzzle_flash_x_NS
+			muzzle_flash_y = 123 - muzzle_flash_y_NS
+		if(EAST)
+			muzzle_flash_x = muzzle_flash_x_EW
+			muzzle_flash_y = muzzle_flash_y_EW
+		if(WEST)
+			muzzle_flash_x = 96 - muzzle_flash_x_EW
+			muzzle_flash_y = muzzle_flash_y_EW
+
+
+	var/image_layer = owner.layer + 0.1
+
+	var/image/I = image('icons/obj/items/projectiles.dmi',src,"muzzle_flash",image_layer)
+	var/matrix/rotate = matrix() //Change the flash angle.
+	rotate.Translate(0, muzzle_flash_offset)
+	rotate.Turn(angle)
+	rotate.Translate(muzzle_flash_x, muzzle_flash_y)
+	I.transform = rotate
+	I.flick_overlay(owner, 3)
 
 //Delineating between slots
 /obj/item/hardpoint/primary
@@ -173,22 +211,28 @@ Currently only has the tank hardpoints
 	max_angle = 45
 	point_cost = 600
 
+	muzzle_flash_offset = -2
+	muzzle_flash_x_NS = 32
+	muzzle_flash_y_NS = 106
+	muzzle_flash_x_EW = 103
+	muzzle_flash_y_EW = 44
+
 /obj/item/hardpoint/primary/cannon/apply_buff()
 	owner.cooldowns["primary"] = 200
 	owner.accuracies["primary"] = 0.97
 
 /obj/item/hardpoint/primary/cannon/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/cannon/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
@@ -197,6 +241,7 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), pick('sound/weapons/tank_cannon_fire1.ogg', 'sound/weapons/tank_cannon_fire2.ogg'), 60, 1)
 	ammo.current_rounds--
 
@@ -215,6 +260,12 @@ Currently only has the tank hardpoints
 	max_angle = 45
 	point_cost = 600
 	max_clips = 2
+
+	muzzle_flash_offset = -2
+	muzzle_flash_x_NS = 32
+	muzzle_flash_y_NS = 102
+	muzzle_flash_x_EW = 93
+	muzzle_flash_y_EW = 44
 
 	//Miniguns don't use a conventional cooldown
 	//If you fire quickly enough, the cooldown decreases according to chain_delays
@@ -238,16 +289,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/primary/minigun/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/minigun/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	var/S = 'sound/weapons/tank_minigun_start.ogg'
@@ -267,6 +318,7 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	muzzle_flash(Get_Angle(owner, A))
 
 	playsound(get_turf(src), S, 60)
 	ammo.current_rounds--
@@ -293,16 +345,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/primary/flamer/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/flamer/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
@@ -354,22 +406,28 @@ Currently only has the tank hardpoints
 	max_angle = 45
 	point_cost = 600
 
+	muzzle_flash_offset = -2
+	muzzle_flash_x_NS = 32
+	muzzle_flash_y_NS = 89
+	muzzle_flash_x_EW = 81
+	muzzle_flash_y_EW = 45
+
 /obj/item/hardpoint/primary/autocannon/apply_buff()
 	owner.cooldowns["primary"] = 10
 	owner.accuracies["primary"] = 0.98
 
 /obj/item/hardpoint/primary/autocannon/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/autocannon/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
@@ -378,6 +436,7 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range, P.ammo.shell_speed)
+	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), 'sound/weapons/tank_autocannon_fire.ogg', 60, 1)
 	ammo.current_rounds--
 
@@ -410,16 +469,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/flamer/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/flamer/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -453,16 +512,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/towlauncher/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/towlauncher/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -489,22 +548,28 @@ Currently only has the tank hardpoints
 	max_angle = 90
 	point_cost = 400
 
+	muzzle_flash_offset = 0
+	muzzle_flash_x_NS = 40
+	muzzle_flash_y_NS = 43
+	muzzle_flash_x_EW = 19
+	muzzle_flash_y_EW = 56
+
 /obj/item/hardpoint/secondary/m56cupola/apply_buff()
 	owner.cooldowns["secondary"] = 5
 	owner.accuracies["secondary"] = 0.7
 
 /obj/item/hardpoint/secondary/m56cupola/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/m56cupola/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -513,6 +578,7 @@ Currently only has the tank hardpoints
 	var/obj/item/projectile/P = new
 	P.generate_bullet(new ammo.default_ammo)
 	P.fire_at(A, owner, src, P.ammo.max_range * 3, P.ammo.shell_speed)
+	muzzle_flash(Get_Angle(owner, A))
 	playsound(get_turf(src), pick(list('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg')), 60, 1)
 	ammo.current_rounds--
 
@@ -538,16 +604,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/grenade_launcher/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/grenade_launcher/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -589,17 +655,17 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/support/smoke_launcher/is_ready()
 	if(world.time < next_use)
-		usr << "<span class='warning'>This module is not ready to be used yet.</span>"
+		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
 		return 0
 	if(health <= 0)
-		usr << "<span class='warning'>This module is too broken to be used.</span>"
+		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
 		return 0
 	return 1
 
 /obj/item/hardpoint/support/smoke_launcher/active_effect(var/atom/A)
 
 	if(ammo.current_rounds <= 0)
-		usr << "<span class='warning'>This module does not have any ammo.</span>"
+		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
 		return
 
 	next_use = world.time + owner.cooldowns["support"] * owner.misc_ratios["supp_cool"]

@@ -29,6 +29,6 @@
 	else
 		arm_equipment(mob, "Dutch's Dozen - Soldier", TRUE)
 	sleep(10)
-	M << "<B>Objectives:</b> [objectives]"
+	to_chat(M, "<B>Objectives:</b> [objectives]")
 
 	return

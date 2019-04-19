@@ -288,7 +288,7 @@
 			user.visible_message("<span class='notice'>[user] starts welding [src] with [WT].</span>", \
 			"<span class='notice'>You start welding [src] with [WT].</span>")
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-			if(do_after(user, 50, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !WT.isOn()) return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
@@ -306,26 +306,26 @@
 					update_icon()
 					return 1
 			else
-				user << "<span class='warning'>[W] needs to be on to start this task.</span>"
+				to_chat(user, "<span class='warning'>[W] needs to be on to start this task.</span>")
 				return 0
 		else
-			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return 1
 
 	if(!iswrench(W))
 		return ..()
 	if(!(stat & NOPOWER) && on)
-		user << "<span class='warning'>You cannot unwrench [src], turn it off first.</span>"
+		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first.</span>")
 		return 1
 	var/turf/T = src.loc
 	if(node && node.level == 1 && isturf(T) && T.intact_tile)
-		user << "<span class='warning'>You must remove the plating first.</span>"
+		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message("<span class='notice'>[user] begins unfastening [src].</span>",
 	"<span class='notice'>You begin unfastening [src].</span>")
-	if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")
@@ -335,11 +335,11 @@
 /obj/machinery/atmospherics/unary/vent_pump/examine(mob/user)
 	..()
 	if(get_dist(user, src) <= 1)
-		user << "<span class='info'>A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W.</span>"
+		to_chat(user, "<span class='info'>A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W.</span>")
 	else
-		user << "<span class='info'>You are too far away to read the gauge.</span>"
+		to_chat(user, "<span class='info'>You are too far away to read the gauge.</span>")
 	if(welded)
-		user << "<span class='info'>It seems welded shut.</span>"
+		to_chat(user, "<span class='info'>It seems welded shut.</span>")
 
 /obj/machinery/atmospherics/unary/vent_pump/power_change()
 	var/old_stat = stat

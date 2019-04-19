@@ -69,10 +69,10 @@
 	var/t = "A gas flow meter. "
 
 	if(get_dist(user, src) > 3 && !(isAI(user) || istype(user, /mob/dead)))
-		t += "\blue <B>You are too far away to read it.</B>"
+		t += "<span class='notice'><B>You are too far away to read it.</B></span>"
 
 	else if(stat & (NOPOWER|BROKEN))
-		t += "\red <B>The display is off.</B>"
+		t += "<span class='danger'><B>The display is off.</B></span>"
 
 	else if(target)
 		if(target.return_pressure())
@@ -97,7 +97,7 @@
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message("<span class='notice'>[user] begins to unfasten [src].</span>",
 	"<span class='notice'>You begin to unfasten [src].</span>")
-	if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")

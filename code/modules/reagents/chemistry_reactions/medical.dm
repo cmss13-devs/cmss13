@@ -7,6 +7,13 @@
 	result_amount = 2
 	mob_react = FALSE
 
+datum/chemical_reaction/adrenaline
+	name = "Epinephrine"
+	id = "adrenaline"
+	result = "adrenaline"
+	required_reagents = list("sugar" = 1, "nitrogen" = 1, "hydrogen" = 1)
+	result_amount = 1
+
 /datum/chemical_reaction/alkysine
 	name = "Alkysine"
 	id = "alkysine"

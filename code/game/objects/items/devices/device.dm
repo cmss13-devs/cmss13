@@ -12,5 +12,5 @@
 
 /obj/item/device/examine(mob/user)
 	..()
-	if(!isXeno(user) && (get_dist(user, src) < 1 || isobserver(user)))
-		user << "<span class='information'>The serial number is [serial_number].</span>"
+	if(!isXeno(user) && (get_dist(user, src) < 1 || isobserver(user)) && serial_number)
+		to_chat(user, "<span class='information'>The serial number is [serial_number].</span>")

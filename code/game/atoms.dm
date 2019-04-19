@@ -24,6 +24,11 @@ var/global/list/ghdel_profiling = list()
 	var/timestopped
 
 
+// Temporary call in place for preparation of implementing SSatoms.
+/atom/New()
+	. = ..()
+	initialize()
+
 /*
 We actually care what this returns, since it can return different directives.
 Not specifically here, but in other variations of this. As a general safety,
@@ -236,7 +241,7 @@ its easier to just keep the beam vertical.
 	examine(usr)
 
 /atom/proc/examine(mob/user)
-	user << "\icon[src] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
+	to_chat(user, "\icon[src] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
 		user << desc
 
@@ -422,7 +427,7 @@ its easier to just keep the beam vertical.
 		cur_y = y_arr.Find(src.z)
 		if(cur_y)
 			break
-//	world << "X = [cur_x]; Y = [cur_y]"
+//	to_world("X = [cur_x]; Y = [cur_y]")
 	if(cur_x && cur_y)
 		return list("x"=cur_x,"y"=cur_y)
 	else

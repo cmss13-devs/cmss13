@@ -4,6 +4,9 @@
 	var/obj/target = null
 	var/obj/screen/action_button/button = null
 	var/mob/living/owner
+	var/cooldown = 0 // By default an action has no cooldown
+	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
+	var/action_flags = 0 // Check out __game.dm for flags
 
 /datum/action/New(Target)
 	target = Target
@@ -136,12 +139,12 @@
 		if(!X.check_plasma(plasma_cost))
 			return
 	if(X.selected_ability == src)
-		X << "You will no longer use [ability_name] with [X.middle_mouse_toggle ? "middle-click" :"shift-click"]."
+		to_chat(X, "You will no longer use [ability_name] with [X.middle_mouse_toggle ? "middle-click" :"shift-click"].")
 		button.icon_state = "template"
 		X.selected_ability.on_deactivation()
 		X.selected_ability = null
 	else
-		X << "You will now use [ability_name] with [X.middle_mouse_toggle ? "middle-click" :"shift-click"]."
+		to_chat(X, "You will now use [ability_name] with [X.middle_mouse_toggle ? "middle-click" :"shift-click"].")
 		if(X.selected_ability)
 			X.selected_ability.button.icon_state = "template"
 			X.selected_ability.on_deactivation()

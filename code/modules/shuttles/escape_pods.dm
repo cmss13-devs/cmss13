@@ -69,7 +69,7 @@ suffice.
 	var/turf/T = locate(ref.x + C.x_pos, ref.y + C.y_pos, ref.z) //Get a turf from the coordinates.
 	if(!istype(T))
 		log_debug("ERROR CODE EV0: unable to find the first turf of [shuttle_tag].")
-		world << "<span class='debuginfo'>ERROR CODE EV0: unable to find the first turf of [shuttle_tag].</span>"
+		to_world("<span class='debuginfo'>ERROR CODE EV0: unable to find the first turf of [shuttle_tag].</span>")
 		r_FAL
 
 	staging_area = T.loc //Grab the area and store it on file.
@@ -78,7 +78,7 @@ suffice.
 	D = locate() in staging_area
 	if(!D)
 		log_debug("ERROR CODE EV1.5: could not find door in [shuttle_tag].")
-		world << "<span class='debuginfo'>ERROR CODE EV1: could not find door in [shuttle_tag].</span>"
+		to_world("<span class='debuginfo'>ERROR CODE EV1: could not find door in [shuttle_tag].</span>")
 		r_FAL
 	D.id_tag = shuttle_tag //So that the door can be operated via controller later.
 
@@ -86,7 +86,7 @@ suffice.
 	var/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/R = locate() in staging_area //Grab the controller.
 	if(!R)
 		log_debug("ERROR CODE EV1.5: could not find controller in [shuttle_tag].")
-		world << "<span class='debuginfo'>ERROR CODE EV1: could not find controller in [shuttle_tag].</span>"
+		to_world("<span class='debuginfo'>ERROR CODE EV1: could not find controller in [shuttle_tag].</span>")
 		r_FAL
 
 	//Set the tags.
@@ -103,7 +103,7 @@ suffice.
 		E.evacuation_program = evacuation_program
 	if(!cryo_cells.len)
 		log_debug("ERROR CODE EV2: could not find cryo pods in [shuttle_tag].")
-		world << "<span class='debuginfo'>ERROR CODE EV2: could not find cryo pods in [shuttle_tag].</span>"
+		to_world("<span class='debuginfo'>ERROR CODE EV2: could not find cryo pods in [shuttle_tag].</span>")
 		r_FAL
 
 #define MOVE_MOB_OUTSIDE \
@@ -296,15 +296,15 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	attackby(obj/item/grab/G, mob/user)
 		if(istype(G))
 			if(being_forced)
-				user << "<span class='warning'>There's something forcing it open!</span>"
+				to_chat(user, "<span class='warning'>There's something forcing it open!</span>")
 				r_FAL
 
 			if(occupant)
-				user << "<span class='warning'>There is someone in there already!</span>"
+				to_chat(user, "<span class='warning'>There is someone in there already!</span>")
 				r_FAL
 
 			if(evacuation_program.dock_state < STATE_READY)
-				user << "<span class='warning'>The cryo pod is not responding to commands!</span>"
+				to_chat(user, "<span class='warning'>The cryo pod is not responding to commands!</span>")
 				r_FAL
 
 			var/mob/living/carbon/human/M = G.grabbed_thing
@@ -312,7 +312,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 			visible_message("<span class='warning'>[user] starts putting [M.name] into the cryo pod.</span>", 3)
 
-			if(do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC))
+			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(!M || !G || !G.grabbed_thing || !G.grabbed_thing.loc || G.grabbed_thing != M) r_FAL
 				move_mob_inside(M)
 
@@ -325,7 +325,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 		if(occupant) //Once you're in, you cannot exit, and outside forces cannot eject you.
 			//The occupant is actually automatically ejected once the evac is canceled.
-			if(occupant != usr) usr << "<span class='warning'>You are unable to eject the occupant unless the evacuation is canceled.</span>"
+			if(occupant != usr) to_chat(usr, "<span class='warning'>You are unable to eject the occupant unless the evacuation is canceled.</span>")
 
 		add_fingerprint(usr)
 
@@ -346,45 +346,45 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		if(!istype(user) || user.stat || user.is_mob_restrained()) r_FAL
 
 		if(being_forced)
-			user << "<span class='warning'>You can't enter when it's being forced open!</span>"
+			to_chat(user, "<span class='warning'>You can't enter when it's being forced open!</span>")
 			r_FAL
 
 		if(occupant)
-			user << "<span class='warning'>The cryogenic pod is already in use! You will need to find another.</span>"
+			to_chat(user, "<span class='warning'>The cryogenic pod is already in use! You will need to find another.</span>")
 			r_FAL
 
 		if(evacuation_program.dock_state < STATE_READY)
-			user << "<span class='warning'>The cryo pod is not responding to commands!</span>"
+			to_chat(user, "<span class='warning'>The cryo pod is not responding to commands!</span>")
 			r_FAL
 
 		visible_message("<span class='warning'>[user] starts climbing into the cryo pod.</span>", 3)
 
-		if(do_after(user, 20, FALSE, 5, BUSY_ICON_GENERIC))
+		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			user.stop_pulling()
 			move_mob_inside(user)
 
 	attack_alien(mob/living/carbon/Xenomorph/user)
 		if(being_forced)
-			user << "<span class='xenowarning'>It's being forced open already!</span>"
+			to_chat(user, "<span class='xenowarning'>It's being forced open already!</span>")
 			r_FAL
 
 		if(!occupant)
-			user << "<span class='xenowarning'>There is nothing of interest in there.</span>"
+			to_chat(user, "<span class='xenowarning'>There is nothing of interest in there.</span>")
 			r_FAL
 
 		being_forced = !being_forced
 		visible_message("<span class='warning'>[user] begins to pry the [src]'s cover!</span>", 3)
 		playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
-		if(do_after(user, 20, FALSE, 5, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
 		being_forced = !being_forced
 
 /obj/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)
-		M << "<span class='warning'>The cryogenic pod is already in use. You will need to find another.</span>"
+		to_chat(M, "<span class='warning'>The cryogenic pod is already in use. You will need to find another.</span>")
 		r_FAL
 		return
 	M.forceMove(src)
-	M << "<span class='notice'>You feel cool air surround you as your mind goes blank and the pod locks.</span>"
+	to_chat(M, "<span class='notice'>You feel cool air surround you as your mind goes blank and the pod locks.</span>")
 	occupant = M
 	occupant.in_stasis = STASIS_IN_CRYO_CELL
 	add_fingerprint(M)

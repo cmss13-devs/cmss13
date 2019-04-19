@@ -98,23 +98,23 @@
 	if(!anchored) return 0 //Shouldn't actually be possible
 	if(user.is_mob_incapacitated()) return 0
 	if(!ishuman(user))
-		user << "\red You have no idea how to use that." //No xenos or mankeys
+		to_chat(user, "<span class='danger'>You have no idea how to use that.</span>") //No xenos or mankeys
 		return 0
 
 	add_fingerprint(user)
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		user << "<span class='warning'>You have no clue how this thing works...</span>"
+		to_chat(user, "<span class='warning'>You have no clue how this thing works...</span>")
 		return 0
 
 	if(buildstate == 1)
-		usr << "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it."
+		to_chat(usr, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.")
 		return 0
 	else if (buildstate == 2)
-		usr << "<span class='info'>Use a wirecutters, then wrench to repair it."
+		to_chat(usr, "<span class='info'>Use a wirecutters, then wrench to repair it.")
 		return 0
 	else if (buildstate == 3)
-		usr << "<span class='info'>Use a wrench to repair it."
+		to_chat(usr, "<span class='info'>Use a wrench to repair it.")
 		return 0
 	if(is_on)
 		visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")
@@ -135,7 +135,7 @@
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair this thing.</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
@@ -143,7 +143,7 @@
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 				user.visible_message("<span class='notice'>[user] starts welding [src]'s internal damage.</span>",
 				"<span class='notice'>You start welding [src]'s internal damage.</span>")
-				if(do_after(user, 200, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != 1 || is_on || !WT.isOn()) r_FAL
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
@@ -152,17 +152,17 @@
 					update_icon()
 					r_TRU
 			else
-				user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 				return
 	else if(iswirecutter(O))
 		if(buildstate == 2 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair this thing.</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] starts securing [src]'s wiring.</span>",
 			"<span class='notice'>You start securing [src]'s wiring.</span>")
-			if(do_after(user, 120, TRUE, 12, BUSY_ICON_BUILD))
+			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, 12))
 				if(buildstate != 2 || is_on) r_FAL
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
@@ -173,12 +173,12 @@
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair this thing.</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] starts repairing [src]'s tubing and plating.</span>",
 			"<span class='notice'>You start repairing [src]'s tubing and plating.</span>")
-			if(do_after(user, 150, TRUE, 15, BUSY_ICON_BUILD))
+			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 3 || is_on) r_FAL
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
@@ -256,10 +256,10 @@
 
 /obj/machinery/colony_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
-		user << "Nice try."
+		to_chat(user, "Nice try.")
 		return 0
 	if(!ispowered)
-		user << "Nothing happens."
+		to_chat(user, "Nothing happens.")
 		return 0
 	playsound(src,'sound/machines/click.ogg', 15, 1)
 	use_power(5)
@@ -310,14 +310,14 @@
 	if(damaged)
 		if(isscrewdriver(I))
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair [src].</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] starts unscrewing [src]'s maintenance hatch.</span>", \
 				"<span class='notice'>You start unscrewing [src]'s maintenance hatch.</span>")
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -329,7 +329,7 @@
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] starts screwing [src]'s maintenance hatch closed.</span>", \
 				"<span class='notice'>You start screwing [src]'s maintenance hatch closed.</span>")
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_SCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -345,14 +345,14 @@
 
 		else if(iscrowbar(I))
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair [src].</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] starts prying [src]'s maintenance hatch open.</span>",\
 				"<span class='notice'>You start prying [src]'s maintenance hatch open.</span>")
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -365,7 +365,7 @@
 			var/obj/item/tool/weldingtool/WT = I
 
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair [src].</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_WELD)
@@ -373,7 +373,7 @@
 					playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 					user.visible_message("<span class='notice'>[user] starts welding [src]'s damage.</span>",
 					"<span class='notice'>You start welding [src]'s damage.</span>")
-					if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(disposed || !WT.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
 							return
 						playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -382,23 +382,23 @@
 						"<span class='notice'>You weld [src]'s damage.</span>")
 						return 1
 				else
-					user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return TRUE
 
 		else if(iscoil(I))
 			var/obj/item/stack/cable_coil/C = I
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user << "<span class='warning'>You have no clue how to repair [src].</span>"
+				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_CABLE)
 				if(C.get_amount() < 2)
-					user << "<span class='warning'>You need two coils of wire to replace the damaged cables.</span>"
+					to_chat(user, "<span class='warning'>You need two coils of wire to replace the damaged cables.</span>")
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] starts replacing [src]'s damaged cables.</span>",\
 				"<span class='notice'>You start replacing [src]'s damaged cables.</span>")
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC))
+				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_CABLE)
 						return
 					if(C.use(2))
@@ -415,9 +415,9 @@
 /obj/machinery/colony_floodlight/attack_hand(mob/user)
 	if(ishuman(user))
 		if(damaged)
-			user << "<span class='warning'>[src] is damaged.</span>"
+			to_chat(user, "<span class='warning'>[src] is damaged.</span>")
 		else if(!is_lit)
-			user << "<span class='warning'>Nothing happens. Looks like it's powered elsewhere.</span>"
+			to_chat(user, "<span class='warning'>Nothing happens. Looks like it's powered elsewhere.</span>")
 		return 0
 	..()
 
@@ -425,16 +425,16 @@
 	..()
 	if(ishuman(user))
 		if(damaged)
-			user << "<span class='warning'>It is damaged.</span>"
+			to_chat(user, "<span class='warning'>It is damaged.</span>")
 			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI)
 				switch(repair_state)
-					if(FLOODLIGHT_REPAIR_UNSCREW) user << "<span class='info'>You must first unscrew its maintenance hatch.</span>"
-					if(FLOODLIGHT_REPAIR_CROWBAR) user << "<span class='info'>You must crowbar its maintenance hatch open.</span>"
-					if(FLOODLIGHT_REPAIR_WELD) user << "<span class='info'>You must weld the damage to it.</span>"
-					if(FLOODLIGHT_REPAIR_CABLE) user << "<span class='info'>You must replace its damaged cables.</span>"
-					if(FLOODLIGHT_REPAIR_SCREW) user << "<span class='info'>You must screw its maintenance hatch closed.</span>"
+					if(FLOODLIGHT_REPAIR_UNSCREW) to_chat(user, "<span class='info'>You must first unscrew its maintenance hatch.</span>")
+					if(FLOODLIGHT_REPAIR_CROWBAR) to_chat(user, "<span class='info'>You must crowbar its maintenance hatch open.</span>")
+					if(FLOODLIGHT_REPAIR_WELD) to_chat(user, "<span class='info'>You must weld the damage to it.</span>")
+					if(FLOODLIGHT_REPAIR_CABLE) to_chat(user, "<span class='info'>You must replace its damaged cables.</span>")
+					if(FLOODLIGHT_REPAIR_SCREW) to_chat(user, "<span class='info'>You must screw its maintenance hatch closed.</span>")
 		else if(!is_lit)
-			user << "<span class='info'>It doesn't seem powered.</span>"
+			to_chat(user, "<span class='info'>It doesn't seem powered.</span>")
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

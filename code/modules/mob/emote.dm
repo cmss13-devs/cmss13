@@ -3,7 +3,7 @@
 	var/comm_paygrade = ""
 	if(stat || (!use_me && player_caused))
 		if(player_caused)
-			src << "You are unable to emote."
+			to_chat(src, "You are unable to emote.")
 		return
 	if(istype(src, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = src
@@ -72,16 +72,16 @@
 /mob/proc/emote_dead(var/message)
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
-		src << "\red You cannot send deadchat emotes (muted)."
+		to_chat(src, "<span class='danger'>You cannot send deadchat emotes (muted).</span>")
 		return
 
 	if(!(client.prefs.toggles_chat & CHAT_DEAD))
-		src << "\red You have deadchat muted."
+		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
 		return
 
 	if(!src.client.admin_holder)
 		if(!dsay_allowed)
-			src << "\red Deadchat is globally muted"
+			to_chat(src, "<span class='danger'>Deadchat is globally muted</span>")
 			return
 
 

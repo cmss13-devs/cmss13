@@ -12,15 +12,16 @@
 #define AMMO_ROCKET				16
 #define AMMO_SNIPER				32
 #define AMMO_INCENDIARY			64
-#define AMMO_SKIPS_HUMANS		128
-#define AMMO_SKIPS_ALIENS 		256
-#define AMMO_IS_SILENCED 		512 //Unused right now.
-#define AMMO_IGNORE_ARMOR		1024
-#define AMMO_IGNORE_RESIST		2048
-#define AMMO_BALLISTIC			4096
-#define AMMO_IGNORE_COVER		8192
-#define AMMO_SCANS_NEARBY		16384 //ammo that is scanning stuff nearby - VERY resource intensive
-#define AMMO_STOPPED_BY_COVER	32768
+#define AMMO_ANTISTRUCT         128 // Primarily for railgun but can be implemented for other projectiles that are for antitank and antistructure (wall/machine)
+#define AMMO_SKIPS_HUMANS		256
+#define AMMO_SKIPS_ALIENS 		512
+#define AMMO_IS_SILENCED 		1024 //Unused right now.
+#define AMMO_IGNORE_ARMOR		2048
+#define AMMO_IGNORE_RESIST		4096
+#define AMMO_BALLISTIC			8192
+#define AMMO_IGNORE_COVER		16384
+#define AMMO_SCANS_NEARBY		32768 //ammo that is scanning stuff nearby - VERY resource intensive
+#define AMMO_STOPPED_BY_COVER	65536
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		1

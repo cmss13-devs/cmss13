@@ -18,8 +18,14 @@
 	var/overdose_dam = 1//Handeled by heart damage
 	var/scannable = 0 //shows up on health analyzers
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
+	var/ingestible = TRUE // Set this to FALSE if the reagent must be delivered through injection only
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
+	// For chemical fire
+	var/chemfiresupp = FALSE
+	var/intensitymod = 0
+	var/durationmod = 0
+	var/radiusmod = 0
 
 /datum/reagent/proc/reaction_mob(var/mob/M, var/method=TOUCH, var/volume) //By default we have a chance to transfer some
 	if(!istype(M, /mob/living))	return 0

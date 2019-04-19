@@ -53,17 +53,17 @@
 
 
 /mob/living/carbon/human/death(var/gibbed=0)
-
-	if(stat == DEAD) return
+	if(stat == DEAD) 
+		return
 	living_human_list -= src
 	if(!gibbed) disable_lights()
 	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.
-	if(species) species.handle_death(src, gibbed)
+	if(species) 
+		species.handle_death(src, gibbed)
 
 	callHook("death", list(src, gibbed))
-
 	if(!gibbed && species.death_sound)
 		playsound(loc, species.death_sound, 50, 1)
 

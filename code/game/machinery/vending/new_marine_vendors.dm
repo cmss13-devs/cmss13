@@ -70,20 +70,20 @@
 	var/mob/living/carbon/human/H = user
 
 	if(!allowed(user))
-		user << "<span class='warning'>Access denied.</span>"
+		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
-		H << "<span class='warning'>Access denied. No ID card detected</span>"
+		to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
 		return
 
 	if(I.registered_name != H.real_name)
-		H << "<span class='warning'>Wrong ID card owner detected.</span>"
+		to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
 		return
 
 	if(vendor_role && I.rank != vendor_role)
-		H << "<span class='warning'>This machine isn't for you.</span>"
+		to_chat(H, "<span class='warning'>This machine isn't for you.</span>")
 		return
 
 
@@ -154,7 +154,7 @@
 		if (href_list["vend"])
 
 			if(!allowed(usr))
-				usr << "<span class='warning'>Access denied.</span>"
+				to_chat(usr, "<span class='warning'>Access denied.</span>")
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -165,52 +165,52 @@
 
 			var/obj/item/card/id/I = H.wear_id
 			if(!istype(I)) //not wearing an ID
-				H << "<span class='warning'>Access denied. No ID card detected</span>"
+				to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
 				return
 
 			if(I.registered_name != H.real_name)
-				H << "<span class='warning'>Wrong ID card owner detected.</span>"
+				to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
 				return
 
 			if(vendor_role && I.rank != vendor_role)
-				H << "<span class='warning'>This machine isn't for you.</span>"
+				to_chat(H, "<span class='warning'>This machine isn't for you.</span>")
 				return
 
 			if(use_points)
 				if((!use_snowflake_points && I.marine_points < cost) && (use_snowflake_points && I.marine_snowflake_points < cost))
-					H << "<span class='warning'>Not enough points.</span>"
+					to_chat(H, "<span class='warning'>Not enough points.</span>")
 					return
 
 
 			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
-				H << "<span class='warning'>This machine isn't for you.</span>"
+				to_chat(H, "<span class='warning'>This machine isn't for you.</span>")
 				return
 
 
 			var/turf/T = loc
 			if(T.contents.len > 25)
-				H << "<span class='warning'>The floor is too cluttered, make some space.</span>"
+				to_chat(H, "<span class='warning'>The floor is too cluttered, make some space.</span>")
 				return
 
 			var/bitf = L[4]
 			if(bitf)
 				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role == "Squad Specialist")
 					if(!H.mind || H.mind.assigned_role != "Squad Specialist")
-						H << "<span class='warning'>Only specialists can take specialist sets.</span>"
+						to_chat(H, "<span class='warning'>Only specialists can take specialist sets.</span>")
 						return
 					else if(!H.mind.cm_skills || H.mind.cm_skills.spec_weapons != SKILL_SPEC_TRAINED)
-						H << "<span class='warning'>You already have a specialist specialization.</span>"
+						to_chat(H, "<span class='warning'>You already have a specialist specialization.</span>")
 						return
 					var/p_name = L[1]
 					if(!available_specialist_sets.Find(p_name))
-						H << "<span class='warning'>That set is already taken.</span>"
+						to_chat(H, "<span class='warning'>That set is already taken.</span>")
 						return
 
 				if(vendor_role == "Tank Crewman")
 					var/p_name = L[1]
 					var/obj/machinery/marine_selector/tank/t = src
 					if(!t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
-						H << "<span class='warning'>That equipment is already taken.</span>"
+						to_chat(H, "<span class='warning'>That equipment is already taken.</span>")
 						return
 
 				if(I.marine_buy_flags & bitf)
@@ -222,7 +222,7 @@
 					else
 						I.marine_buy_flags &= ~bitf
 				else
-					H << "<span class='warning'>You can't buy things from this category anymore.</span>"
+					to_chat(H, "<span class='warning'>You can't buy things from this category anymore.</span>")
 					return
 
 
@@ -265,7 +265,7 @@
 						if("Pyro Set")
 							H.mind.cm_skills.spec_weapons = SKILL_SPEC_PYRO
 						else
-							H << "<span class='warning'><b>Something bad occured with [src], tell a Dev.</b></span>"
+							to_chat(H, "<span class='warning'><b>Something bad occured with [src], tell a Dev.</b></span>")
 							return
 					available_specialist_sets -= p_name
 			if(vendor_role == "Tank Crewman")
@@ -274,7 +274,7 @@
 						var/obj/machinery/marine_selector/tank/t = src
 						var/t_name = L[1]
 						if(!t.primary_list.Find(t_name) && !t.secondary_list.Find(t_name) && !t.support_list.Find(t_name) && !t.armor_list.Find(t_name) &&!t.treads_list.Find(t_name))
-							H << "<span class='warning'>That equipment is already taken.</span>"
+							to_chat(H, "<span class='warning'>That equipment is already taken.</span>")
 							return
 						if(t.primary_list.Find(t_name))
 							t.primary_list.Cut()
@@ -383,6 +383,7 @@
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
 		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
+		list("Motion detector", 15, /obj/item/device/motiondetector, null, "black")
 
 	)
 
@@ -840,7 +841,7 @@
 	)
 
 
-////////////////////// Gear ////////////////////////////////////////////////////////
+////////////////////// Gear ///////////////////////////////////////////////////////
 
 
 
@@ -999,13 +1000,14 @@
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
-		//They always take it, might as well make it a default...
-		//It will only cost them all of their poitns and an attachment
-		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
+
+		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
+		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, null, "black"),
 	)
 
 
@@ -1072,12 +1074,13 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Laser sight", 6, /obj/item/attachable/lasersight, null, "black"),
 		list("Magnetic Harness", 6, /obj/item/attachable/magnetic_harness, null, "black"),
 		list("Masterkey shotgun", 6, /obj/item/attachable/attached_gun/shotgun, null, "black"),
-		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("M41A skeleton stock", 6, /obj/item/attachable/stock/rifle, null, "black"),
 		list("Paratrooper's submachinegun stock", 6, /obj/item/attachable/stock/smg/collapsible, null, "black"),
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),
+		list("S4 telescoping sight", 6, /obj/item/attachable/scope/mini, null, "black"),
+		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
 		list("Submachinegun stock", 6, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 6, /obj/item/attachable/verticalgrip, null, "black"),

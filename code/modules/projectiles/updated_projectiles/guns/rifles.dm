@@ -132,6 +132,7 @@
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
+						/obj/item/attachable/flashlight,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
@@ -201,14 +202,14 @@
 			return
 		if(burst_amount == config.med_burst_value && (flags_gun_features & GUN_BURST_ON))
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			usr << "<span class='notice'>\icon[src] You set [src] to full auto mode.</span>"
+			to_chat(usr, "<span class='notice'>\icon[src] You set [src] to full auto mode.</span>")
 			burst_amount = config.mhigh_burst_value
 			burst_scatter_mult = config.high_scatter_value
 			return
 		if(burst_amount == config.mhigh_burst_value && !(flags_gun_features & GUN_BURST_ON))
 			flags_gun_features |= GUN_BURST_ON
 			playsound(usr, 'sound/machines/click.ogg', 15, 1)
-			usr << "<span class='notice'>\icon[src] You set [src] to semi auto mode.</span>"
+			to_chat(usr, "<span class='notice'>\icon[src] You set [src] to semi auto mode.</span>")
 			burst_amount = config.med_burst_value
 			burst_scatter_mult = config.low_scatter_value
 			return
@@ -432,11 +433,11 @@
 
 /obj/item/weapon/gun/rifle/lmg
 	name = "\improper M41AE2 heavy pulse rifle"
-	desc = "A large weapon capable of laying down supressing fire. Currently undergoing field testing among USCM scout platoons and in mercenary companies. Like it's smaller brother, the M41A MK2, the M41AE2 is chambered in 10mm."
+	desc = "A large squad support weapon capable of laying down sustained supressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 	origin_tech = "combat=5;materials=4"
-	fire_sound = 'sound/weapons/gun_rifle.ogg' //Change
+	fire_sound = 'sound/weapons/gun_m41ae2.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -459,7 +460,7 @@
 
 	New()
 		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
+		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 16, "stock_x" = 24, "stock_y" = 12)
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	fire_delay = config.high_fire_delay
@@ -508,7 +509,7 @@
 
 
 /obj/item/weapon/gun/rifle/type71/toggle_burst()
-	usr << "<span class='warning'>This weapon can only fire in bursts!</span>"
+	to_chat(usr, "<span class='warning'>This weapon can only fire in bursts!</span>")
 
 
 /obj/item/weapon/gun/rifle/type71/flamer
@@ -604,7 +605,7 @@
 /obj/item/weapon/gun/rifle/l42mk1/New()
 	select_gamemode_skin(/obj/item/weapon/gun/rifle/l42mk1)
 	..()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 18, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 25, "stock_y" = 9)
 
 /obj/item/weapon/gun/rifle/l42mk1/set_gun_config_values()
 	fire_delay = config.high_fire_delay
@@ -615,176 +616,4 @@
 	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
-
-/obj/item/weapon/gun/rifle/l42mk1/attach_to_gun(mob/user, obj/item/attachable/attachment)
-	if(!can_attach_to_gun(user, attachment))
-		return
-
-	var/timer = 20
-	if(attachment.slot == "muzzle")
-		timer = 5
-
-	user.visible_message("<span class='notice'>[user] begins attaching [attachment] to [src].</span>",
-	"<span class='notice'>You begin attaching [attachment] to [src].</span>", null, 4)
-	if(do_after(user, timer, TRUE, 2, BUSY_ICON_FRIENDLY))
-		if(attachment && attachment.loc)
-			user.visible_message("<span class='notice'>[user] attaches [attachment] to [src].</span>",
-			"<span class='notice'>You attach [attachment] to [src].</span>", null, 4)
-			user.temp_drop_inv_item(attachment)
-			attachment.Attach(src)
-			update_attachable(attachment.slot)
-			playsound(user, 'sound/machines/click.ogg', 15, 1, 4)
-
-/obj/item/weapon/gun/rifle/l42mk1/field_strip()
-	set category = "Weapons"
-	set name = "Field Strip Weapon"
-	set desc = "Remove all attachables from a weapon."
-	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
-
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-
-	if(!G)
-		return
-
-	src = G
-
-	if(usr.action_busy)
-		return
-
-	if(zoom)
-		usr << "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>"
-		return
-
-	if(!rail && !muzzle && !under && !stock)
-		usr << "<span class='warning'>This weapon has no attachables. You can only field strip enhanced weapons!</span>"
-		return
-
-	var/list/possible_attachments = list()
-
-	if(rail && (rail.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += rail
-	if(muzzle && (muzzle.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += muzzle
-	if(under && (under.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += under
-	if(stock && (stock.flags_attach_features & ATTACH_REMOVABLE))
-		possible_attachments += stock
-
-	if(!possible_attachments.len)
-		usr << "<span class='warning'>[src] has no removable attachments.</span>"
-		return
-
-	var/obj/item/attachable/A
-	if(possible_attachments.len == 1)
-		A = possible_attachments[1]
-	else
-		A = input("Which attachment to remove?") as null|anything in possible_attachments
-
-	if(!A)
-		return
-
-	if(get_active_firearm(usr) != src)//dropped the gun
-		return
-
-	if(usr.action_busy)
-		return
-
-	if(zoom)
-		return
-
-	if(A != rail && A != muzzle && A != under && A != stock)
-		return
-	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
-		return
-
-	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
-	"<span class='notice'>You begin stripping [A] from [src].</span>", null, 4)
-
-	var/timer = 35
-	if(A == muzzle)
-		timer = 10
-
-	if(!do_after(usr,timer, TRUE, 5, BUSY_ICON_FRIENDLY))
-		return
-
-	if(A != rail && A != muzzle && A != under && A != stock)
-		return
-	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
-		return
-
-	if(zoom)
-		return
-
-	usr.visible_message("<span class='notice'>[usr] strips [A] from [src].</span>",
-	"<span class='notice'>You strip [A] from [src].</span>", null, 4)
-	A.Detach(src)
-
-	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
-	update_attachables()
-
-/obj/item/weapon/gun/rifle/l42mk1/verb/remove_barrel()
-	set category = "Weapons"
-	set name = "Remove Barrel from Weapon"
-	set desc = "Removes Barrel from Weapon"
-	set src = usr.contents //We want to make sure one is picked at random, hence it's not in a list.
-
-	var/obj/item/weapon/gun/G = get_active_firearm(usr)
-
-	if(!G)
-		return
-
-	src = G
-
-	if(usr.action_busy)
-		return
-
-	if(zoom)
-		usr << "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>"
-		return
-
-	if(!muzzle)
-		usr << "<span class='warning'>This weapon has no barrel attachaments to remove!</span>"
-		return
-
-	var/obj/item/attachable/A = muzzle
-
-	if(!A)
-		return
-
-	if(get_active_firearm(usr) != src)//dropped the gun
-		return
-
-	if(usr.action_busy)
-		return
-
-	if(zoom)
-		return
-
-	if(A != muzzle)
-		return
-	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
-		return
-
-	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
-	"<span class='notice'>You begin stripping [A] from [src].</span>", null, 4)
-
-	var/timer = 10
-
-	if(!do_after(usr,timer, TRUE, 5, BUSY_ICON_FRIENDLY))
-		return
-
-	if(A != muzzle)
-		return
-	if(!(A.flags_attach_features & ATTACH_REMOVABLE))
-		return
-
-	if(zoom)
-		return
-
-	usr.visible_message("<span class='notice'>[usr] strips [A] from [src].</span>",
-	"<span class='notice'>You strip [A] from [src].</span>", null, 4)
-	A.Detach(src)
-
-	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
-	update_attachables()
 

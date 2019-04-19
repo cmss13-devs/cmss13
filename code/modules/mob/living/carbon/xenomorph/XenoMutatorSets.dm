@@ -38,15 +38,15 @@
 /datum/mutator_set/proc/list_and_purchase_mutators()
 	var/list/mutators_for_purchase = available_mutators()
 	if(mutators_for_purchase.len == 0)
-		usr << "You can't afford any more mutators."
+		to_chat(usr, "You can't afford any more mutators.")
 	var/pick = input("Which mutator would you like to purchase?") as null|anything in mutators_for_purchase
 	if(!pick)
 		return FALSE
 	if(xeno_mutator_list[pick].apply_mutator(src))
-		usr << "Mutation complete!"
+		to_chat(usr, "Mutation complete!")
 		return TRUE
 	else
-		usr << "Mutation failed!"
+		to_chat(usr, "Mutation failed!")
 		return FALSE
 	return FALSE
 
@@ -94,10 +94,10 @@
 	if(hive.living_xeno_queen.is_dead())
 		return //Dead xenos can't mutate!
 	if(hive.living_xeno_queen.hardcore)
-		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
 		return
 	if(!hive.living_xeno_queen.ovipositor)
-		usr << "You must be in Ovipositor to purchase Hive Mutators."
+		to_chat(usr, "You must be in Ovipositor to purchase Hive Mutators.")
 		return
 	. = ..()
 	if (. == TRUE && purchased_mutators.len)
@@ -162,7 +162,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
-			X << "<span class='xenoannounce'>Queen's influence wanes. You feel weak!</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen's influence wanes. You feel weak!</span>")
 			playsound(X.loc, "alien_help", 25)
 			X.xeno_jitter(15)
 
@@ -170,31 +170,31 @@
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_stats(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_stats()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_actions(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_actions()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_pheromones(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_pheromones()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/proc/recalculate_maturation(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_maturation()
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/proc/recalculate_hive(var/description)
 	hive.recalculate_hive()
@@ -202,7 +202,7 @@
 /datum/mutator_set/hive_mutators/give_feedback(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
-			X << "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>"
+			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
 			X.xeno_jitter(15)
 
 //Mutators applying to an individual xeno
@@ -256,22 +256,22 @@
 
 /datum/mutator_set/individual_mutators/recalculate_everything(var/description)
 	xeno.recalculate_everything()
-	xeno << "<span class='xenoannounce'>[description]</span>"
+	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_stats(var/description)
 	xeno.recalculate_stats()
-	xeno << "<span class='xenoannounce'>[description]</span>"
+	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_actions(var/description)
 	xeno.recalculate_actions()
-	xeno << "<span class='xenoannounce'>[description]</span>"
+	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_pheromones(var/description)
 	xeno.recalculate_pheromones()
-	xeno << "<span class='xenoannounce'>[description]</span>"
+	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/give_feedback(var/description)
-	xeno << "<span class='xenoannounce'>[description]</span>"
+	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
 	xeno.xeno_jitter(15)
 
 /mob/living/carbon/Xenomorph/Queen/verb/purchase_hive_mutators()
@@ -279,7 +279,7 @@
 	set desc = "Purchase Mutators affecting the entire Hive."
 	set category = "Alien"
 	if(hardcore)
-		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
 		return
 	src.hive.mutators.list_and_purchase_mutators()
 
@@ -288,7 +288,7 @@
 	set desc = "Purchase Mutators for yourself."
 	set category = "Alien"
 	if(hardcore)
-		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
 		return
 	if(is_dead())
 		return //Dead xenos can't mutate!
@@ -299,19 +299,19 @@
 	set desc = "List Mutators that apply to you."
 	set category = "Alien"
 	if(hardcore)
-		usr << "<span class='warning'>No time for that, must KILL!</span>"
+		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
 		return
-	src << "<span class='xenoannounce'>Mutators</span>"
-	src << "Personal mutators:"
+	to_chat(src, "<span class='xenoannounce'>Mutators</span>")
+	to_chat(src, "Personal mutators:")
 	if(!src.mutators.purchased_mutators || !src.mutators.purchased_mutators.len)
-		src << "-"
+		to_chat(src, "-")
 	else
 		for(var/m in src.mutators.purchased_mutators)
 			src << m
-	src << ""
-	src << "Hive mutators:"
+	to_chat(src, "")
+	to_chat(src, "Hive mutators:")
 	if(!src.hive.mutators.purchased_mutators || !src.hive.mutators.purchased_mutators.len)
-		src << "-"
+		to_chat(src, "-")
 	else
 		for(var/m in src.hive.mutators.purchased_mutators)
 			src << m

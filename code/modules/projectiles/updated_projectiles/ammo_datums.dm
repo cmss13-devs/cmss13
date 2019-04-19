@@ -94,12 +94,12 @@
 				var/mob/living/carbon/Xenomorph/target = M
 				if(target.mob_size == MOB_SIZE_BIG) return //Big xenos are not affected.
 				target.apply_effects(0,1) //Smaller ones just get shaken.
-				target << "<span class='xenodanger'>You are shaken by the sudden impact!</span>"
+				to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
 			else
 				if(!isYautja(M)) //Not predators.
 					var/mob/living/target = M
 					target.apply_effects(1,2) //Humans get stunned a bit.
-					target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
+					to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
 		step_away(M,P)
 
 /datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 2) //crazier version of knockback, for PB use
@@ -108,7 +108,7 @@
 	if(isliving(M)) //This is pretty ugly, but what can you do.
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			target << "<span class='xenodanger'>You are shaken by the sudden impact!</span>"
+			to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
 			if(target.mob_size == MOB_SIZE_BIG)
 				target.apply_effects(0,0.1)
 				return
@@ -117,7 +117,7 @@
 			if(!isYautja(M)) //Not predators.
 				var/mob/living/target = M
 				target.apply_effects(4,6) //Humans get heavily.
-				target << "<span class='highdanger'>The blast knocks you off your feet!</span>"
+				to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
 	step_away(M,P)
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
@@ -358,7 +358,7 @@
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
 		user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
-		if(do_after(user, 10, FALSE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(user.Adjacent(H))
 				H.apply_damage(500,BRUTE,"head") //not coming back
 				for(var/datum/limb/L in H.limbs)
@@ -1442,7 +1442,7 @@
 	sound_hit = "acid_hit"
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_ANTISTRUCT
 
 /datum/ammo/xeno/railgun_glob/New()
 	..()
@@ -1453,12 +1453,13 @@
 	scatter = config.min_scatter_value
 	accuracy = config.max_hit_accuracy
 	max_range = config.long_shell_range
+	penetration = config.hmed_armor_penetration
 	shell_speed = config.ultra_shell_speed
 
 /datum/ammo/xeno/railgun_glob/on_hit_obj(obj/O, obj/item/projectile/P)
 	if(istype(O, /obj/structure/barricade))
 		var/obj/structure/barricade/B = O
-		B.health -= rand(70, 75)
+		B.health -= damage + rand(5)
 		B.update_health(1)
 
 /*
@@ -1491,6 +1492,11 @@
 		var/obj/structure/barricade/B = O
 		B.health -= rand(2, 5)
 		B.update_health(1)
+		
+/datum/ammo/bullet/shrapnel/incendiary
+	name = "flaming shrapnel"
+	flags_ammo_behavior = AMMO_INCENDIARY
+
 
 /*
 //================================================
@@ -1550,10 +1556,11 @@
 	flags_ammo_behavior = AMMO_INCENDIARY
 
 /datum/ammo/flare/New()
-		..()
-		damage = config.min_hit_damage
-		accuracy = config.med_hit_accuracy
-		max_range = config.short_shell_range
+	..()
+	damage = config.min_hit_damage
+	accuracy = config.med_hit_accuracy
+	max_range = 13
+	shell_speed = config.fast_shell_speed
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_nade(get_turf(P))

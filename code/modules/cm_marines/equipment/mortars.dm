@@ -26,16 +26,16 @@
 
 /obj/structure/mortar/attack_hand(mob/user as mob)
 	if(isYautja(user))
-		user << "<span class='warning'>You kick [src] but nothing happens.</span>"
+		to_chat(user, "<span class='warning'>You kick [src] but nothing happens.</span>")
 		return
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		user << "<span class='warning'>You don't have the training to use [src].</span>"
+		to_chat(user, "<span class='warning'>You don't have the training to use [src].</span>")
 		return
 	if(busy)
-		user << "<span class='warning'>Someone else is currently using [src].</span>"
+		to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
 		return
 	if(firing)
-		user << "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>"
+		to_chat(user, "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>")
 		return
 	add_fingerprint(user)
 
@@ -45,24 +45,24 @@
 	if(choice == "Target")
 		var/temp_targ_x = input("Set longitude of strike from 0 to [world.maxx].") as num
 		if(dial_x + deobfuscate_x(temp_targ_x) > world.maxx || dial_x + deobfuscate_x(temp_targ_x) < 0)
-			user << "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>"
+			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>")
 			return
 		var/temp_targ_y = input("Set latitude of strike from 0 to [world.maxy].") as num
 		if(dial_y + deobfuscate_y(temp_targ_y) > world.maxy || dial_y + deobfuscate_y(temp_targ_y) < 0)
-			user << "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>"
+			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is outside of the area of operations.</span>")
 			return
 		var/turf/T = locate(deobfuscate_x(temp_targ_x) + dial_x, deobfuscate_y(temp_targ_y) + dial_y, z)
 		if(get_dist(loc, T) < 10)
-			user << "<span class='warning'>You cannot aim at this coordinate, it is too close to your mortar.</span>"
+			to_chat(user, "<span class='warning'>You cannot aim at this coordinate, it is too close to your mortar.</span>")
 			return
 		if(busy)
-			user << "<span class='warning'>Someone else is currently using this mortar.</span>"
+			to_chat(user, "<span class='warning'>Someone else is currently using this mortar.</span>")
 			return
 		user.visible_message("<span class='notice'>[user] starts adjusting [src]'s firing angle and distance.</span>",
 		"<span class='notice'>You start adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
 		busy = 1
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			user.visible_message("<span class='notice'>[user] finishes adjusting [src]'s firing angle and distance.</span>",
 			"<span class='notice'>You finish adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
 			busy = 0
@@ -76,30 +76,30 @@
 	if(choice == "Dial")
 		var/temp_dial_x = input("Set longitude adjustement from -10 to 10.") as num
 		if(temp_dial_x + targ_x > world.maxx || temp_dial_x + targ_x < 0)
-			user << "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>"
+			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>")
 			return
 		if(temp_dial_x < -10 || temp_dial_x > 10)
-			user << "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>"
+			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>")
 			return
 		var/temp_dial_y = input("Set latitude adjustement from -10 to 10.") as num
 		if(temp_dial_y + targ_y > world.maxy || temp_dial_y + targ_y < 0)
-			user << "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>"
+			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is outside of the area of operations.</span>")
 			return
 		var/turf/T = locate(targ_x + temp_dial_x, targ_y + temp_dial_y, z)
 		if(get_dist(loc, T) < 10)
-			user << "<span class='warning'>You cannot dial to this coordinate, it is too close to your mortar.</span>"
+			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too close to your mortar.</span>")
 			return
 		if(temp_dial_y < -10 || temp_dial_y > 10)
-			user << "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>"
+			to_chat(user, "<span class='warning'>You cannot dial to this coordinate, it is too far away. You need to set [src] up instead.</span>")
 			return
 		if(busy)
-			user << "<span class='warning'>Someone else is currently using this mortar.</span>"
+			to_chat(user, "<span class='warning'>Someone else is currently using this mortar.</span>")
 			return
 		user.visible_message("<span class='notice'>[user] starts dialing [src]'s firing angle and distance.</span>",
 		"<span class='notice'>You start dialing [src]'s firing angle and distance to match the new coordinates.</span>")
 		busy = 1
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		if(do_after(user, 15, TRUE, 5, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			user.visible_message("<span class='notice'>[user] finishes dialing [src]'s firing angle and distance.</span>",
 			"<span class='notice'>You finish dialing [src]'s firing angle and distance to match the new coordinates.</span>")
 			busy = 0
@@ -113,31 +113,31 @@
 
 		var/obj/item/mortal_shell/mortar_shell = O
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			user << "<span class='warning'>You don't have the training to fire [src].</span>"
+			to_chat(user, "<span class='warning'>You don't have the training to fire [src].</span>")
 			return
 		if(busy)
-			user << "<span class='warning'>Someone else is currently using [src].</span>"
+			to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
 			return
 		if(z != 1)
-			user << "<span class='warning'>You cannot fire [src] here.</span>"
+			to_chat(user, "<span class='warning'>You cannot fire [src] here.</span>")
 			return
 		if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
-			user << "<span class='warning'>[src] needs to be aimed first.</span>"
+			to_chat(user, "<span class='warning'>[src] needs to be aimed first.</span>")
 			return
 		var/turf/T = locate(targ_x + dial_x + offset_x, targ_y + dial_y + offset_y, z)
 		if(!isturf(T))
-			user << "<span class='warning'>You cannot fire [src] to this target.</span>"
+			to_chat(user, "<span class='warning'>You cannot fire [src] to this target.</span>")
 			return
 		var/area/A = get_area(T)
 		if(istype(A) && A.ceiling >= CEILING_UNDERGROUND)
-			user << "<span class='warning'>You cannot hit the target. It is probably underground.</span>"
+			to_chat(user, "<span class='warning'>You cannot hit the target. It is probably underground.</span>")
 			return
 
 		user.visible_message("<span class='notice'>[user] starts loading \a [mortar_shell.name] into [src].</span>",
 		"<span class='notice'>You start loading \a [mortar_shell.name] into [src].</span>")
 		playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
 		busy = 1
-		if(do_after(user, 15, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			user.visible_message("<span class='notice'>[user] loads \a [mortar_shell.name] into [src].</span>",
 			"<span class='notice'>You load \a [mortar_shell.name] into [src].</span>")
 			visible_message("\icon[src] <span class='danger'>The [name] fires!</span>")
@@ -167,21 +167,21 @@
 
 	if(istype(O, /obj/item/tool/wrench))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			user << "<span class='warning'>You don't have the training to undeploy [src].</span>"
+			to_chat(user, "<span class='warning'>You don't have the training to undeploy [src].</span>")
 			return
 		if(fixed)
-			user << "<span class='warning'>[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there.</span>"
+			to_chat(user, "<span class='warning'>[src]'s supports are bolted and welded into the floor. It looks like it's going to be staying there.</span>")
 			return
 		if(busy)
-			user << "<span class='warning'>Someone else is currently using [src].</span>"
+			to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
 			return
 		if(firing)
-			user << "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>"
+			to_chat(user, "<span class='warning'>[src]'s barrel is still steaming hot. Wait a few seconds and stop firing it.</span>")
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] starts undeploying [src].",
 		"<span class='notice'>You start undeploying [src].")
-		if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message("<span class='notice'>[user] undeploys [src].",
 			"<span class='notice'>You undeploy [src].")
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -216,19 +216,19 @@
 /obj/item/mortar_kit/attack_self(mob/user)
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		user << "<span class='warning'>You don't have the training to deploy [src].</span>"
+		to_chat(user, "<span class='warning'>You don't have the training to deploy [src].</span>")
 		return
 	if(user.z != 1)
-		user << "<span class='warning'>You cannot deploy [src] here.</span>"
+		to_chat(user, "<span class='warning'>You cannot deploy [src] here.</span>")
 		return
 	var/area/A = get_area(src)
 	if(A.ceiling >= CEILING_METAL)
-		user << "<span class='warning'>You probably shouldn't deploy [src] indoors.</span>"
+		to_chat(user, "<span class='warning'>You probably shouldn't deploy [src] indoors.</span>")
 		return
 	user.visible_message("<span class='notice'>[user] starts deploying [src].",
 	"<span class='notice'>You start deploying [src].")
 	playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-	if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		user.visible_message("<span class='notice'>[user] deploys [src].",
 		"<span class='notice'>You deploy [src].")
 		playsound(loc, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
@@ -285,17 +285,10 @@
 	icon_state = "mortar_ammo_smk"
 	var/datum/effect_system/smoke_spread/bad/smoke
 
-	New()
-		..()
-		smoke = new /datum/effect_system/smoke_spread/bad
-		smoke.attach(src)
-
 /obj/item/mortal_shell/smoke/detonate(var/turf/T)
-
-	explosion(T, 0, 1, 2, 7)
 	playsound(T, 'sound/effects/smoke.ogg', 25, 1, 4)
-	forceMove(T) //AAAAAAAA
-	smoke.set_up(6, 0, T, null, 6)
+	smoke = new /datum/effect_system/smoke_spread/bad
+	smoke.set_up(7, 0, T.loc, null, 12)
 	smoke.start()
 	smoke = null
 	qdel(src)

@@ -8,7 +8,7 @@
 			return
 		src << link(config.wikiurl)
 	else
-		src << "\red The wiki URL is not set in the server configuration."
+		to_chat(src, "<span class='danger'>The wiki URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/forum()
@@ -20,7 +20,7 @@
 			return
 		src << link(config.forumurl)
 	else
-		src << "\red The forum URL is not set in the server configuration."
+		to_chat(src, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 	return
 
 /client/verb/rules()
@@ -32,15 +32,15 @@
 			return
 		src << link(config.rulesurl)
 	else
-		src << "\red The rules URL is not set in the server configuration."
+		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
 	return
 
-/client/verb/donate()
-	set name = "Donate"
-	set desc = "Like our server? Buy us a beer and get some custom-made items."
+/client/verb/discord()
+	set name = "Discord"
+	set desc = "Join our Discord! Meet and talk with other players in the server."
 	set hidden = 1
 
-	src << "<br>View our donation page for more info: https://cm-ss13.com/viewtopic.php?f=119&t=5978.<br>"
+	src << link("https://discordapp.com/invite/TByu8b5")
 	return
 
 /client/verb/submitbug()

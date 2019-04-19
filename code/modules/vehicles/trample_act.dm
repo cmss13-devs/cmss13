@@ -49,22 +49,17 @@
 	else if(istype(A, /obj/structure/barricade/plasteel))
 		var/obj/structure/barricade/plasteel/cade = A
 		cade.close(cade)
+	else if(istype(A, /obj/structure/barricade/deployable))
+		var/obj/structure/barricade/deployable/cade = A
+		visible_message("<span class='danger'>[src] crushes [cade]!</span>")
+		playsound(cade, 'sound/effects/metal_crash.ogg', 35)
+		cade.fold()
 	else if(isobj(A) && !istype(A, /obj/vehicle))
 		var/obj/O = A
-		if(istype(O, /obj/structure/mortar)) //Mortars are unacidable so we need to do them here
-			var/obj/structure/mortar/M = O //Attackby code for mortars requires a mob so...
-			new /obj/item/mortar_kit (M.loc)
-			CA.take_damage_type(5, "blunt", O)
-			visible_message("<span class='danger'>[src] crushes [O]!</span>",
-			"<span class='danger'>You crush [O]!</span>")
-			qdel(M)
-			return
-
 		if(O.unacidable)
 			return
 		CA.take_damage_type(5, "blunt", O)
-		visible_message("<span class='danger'>[src] crushes [O]!</span>",
-		"<span class='danger'>You crush [O]!</span>")
+		visible_message("<span class='danger'>[src] crushes [O]!</span>")
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
 		qdel(O)
 		return

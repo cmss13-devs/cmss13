@@ -25,13 +25,13 @@
 		return
 	var/turf/loc = get_turf(usr)
 	if (!istype(loc, /turf/open/floor))
-		usr << "\red [src.name] cannot be placed on this spot."
+		to_chat(usr, "<span class='danger'>[src.name] cannot be placed on this spot.</span>")
 		return
-	usr << "Attaching [src] to the wall."
+	to_chat(usr, "Attaching [src] to the wall.")
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	var/constrdir = usr.dir
 	var/constrloc = usr.loc
-	if (!do_after(usr, 30, TRUE, 5, BUSY_ICON_BUILD))
+	if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	switch(fixture_type)
 		if("bulb")

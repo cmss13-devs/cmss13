@@ -466,6 +466,7 @@
 					/obj/item/reagent_container/hypospray/autoinjector/dexP = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/Dylovene = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 6,
+					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 0,
 					/obj/item/reagent_container/hypospray/autoinjector/Kelo = 6,
 					/obj/item/reagent_container/hypospray/autoinjector/Oxycodone = 4,
 					/obj/item/reagent_container/hypospray/autoinjector/tricord = 8,
@@ -773,6 +774,8 @@
 					/obj/item/clothing/suit/storage/marine/carrier = 20,
 					/obj/item/clothing/suit/storage/marine/skull = 20,
 					/obj/item/clothing/suit/storage/marine/smooth = 20,
+					/obj/item/clothing/suit/storage/marine/class/heavy = 10,
+					/obj/item/clothing/suit/storage/marine/class/light = 10,
 					/obj/item/clothing/head/helmet/marine = 20,
 					/obj/item/clothing/mask/rebreather/scarf = 10,
 					)

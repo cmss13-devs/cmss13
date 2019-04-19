@@ -93,7 +93,7 @@
 
 	if(istype(W, /obj/item/stack/rods) && health < health_max)
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_PLASTEEL)
-			user << "<span class='warning'>You don't have the skill needed to fix [src]'s wiring."
+			to_chat(user, "<span class='warning'>You don't have the skill needed to fix [src]'s wiring.")
 			return
 		var/obj/item/stack/rods/R = W
 		var/amount_needed = 2
@@ -103,9 +103,9 @@
 			user.visible_message("<span class='notice'>[user] starts repairing [src] with [R].</span>",
 			"<span class='notice'>You start repairing [src] with [R]")
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			if(do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				if(R.amount < amount_needed)
-					user << "<span class='warning'>You need more metal rods to repair [src]."
+					to_chat(user, "<span class='warning'>You need more metal rods to repair [src].")
 					return
 				R.use(amount_needed)
 				health = health_max
@@ -117,7 +117,7 @@
 				"<span class='notice'>You repair [src] with [R]")
 				return
 		else
-			user << "<span class='warning'>You need more metal rods to repair [src]."
+			to_chat(user, "<span class='warning'>You need more metal rods to repair [src].")
 			return
 
 	if(cut) //Cut/brokn grilles can't be messed with further than this
@@ -154,7 +154,7 @@
 		user.visible_message("<span class='notice'>[user] starts cutting through [src] with [W].</span>",
 		"<span class='notice'>You start cutting through [src] with [W]")
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] cuts through [src] with [W].</span>",
 			"<span class='notice'>You cut through [src] with [W]")

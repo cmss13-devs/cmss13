@@ -140,16 +140,16 @@
 /*** DEBUG VERBS ***
 
 /datum/computer/file/embedded_program/docking/proc/print_state()
-	world << "id_tag: [id_tag]"
-	world << "dock_state: [dock_state]"
-	world << "control_mode: [control_mode]"
-	world << "tag_target: [tag_target]"
-	world << "response_sent: [response_sent]"
+	to_world("id_tag: [id_tag]")
+	to_world("dock_state: [dock_state]")
+	to_world("control_mode: [control_mode]")
+	to_world("tag_target: [tag_target]")
+	to_world("response_sent: [response_sent]")
 
 /datum/computer/file/embedded_program/docking/post_signal(datum/signal/signal, comm_line)
-	world << "Program [id_tag] sent a message!"
+	to_world("Program [id_tag] sent a message!")
 	print_state()
-	world << "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\""
+	to_world("[id_tag] sent command \")[signal.data["command"]]\" to \"[signal.data["recipient"]]\""
 	..(signal)
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port/verb/view_state()

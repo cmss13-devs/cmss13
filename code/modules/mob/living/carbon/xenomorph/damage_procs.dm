@@ -12,7 +12,7 @@
 	var/damage = severity
 
 	damage -= caste.xeno_explosion_resistance
-	//world << "damage: [damage]"
+	//to_world("damage: [damage]")
 
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
 		gib()
@@ -25,7 +25,7 @@
 		updatehealth()
 
 		var/knock_value = min( round( damage * 0.1 ,1) ,10) //unlike in humans, damage is used instead of severity to prevent t3 stunlocking
-		//world << "knock value: [knock_value]"
+		//to_world("knock value: [knock_value]")
 		if(knock_value > 0)
 			KnockDown(knock_value)
 			KnockOut(knock_value)

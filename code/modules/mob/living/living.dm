@@ -33,7 +33,7 @@
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(istype(src, /mob/living/carbon/human))
-		//world << "DEBUG: burn_skin(), mutations=[mutations]"
+		//to_world("DEBUG: burn_skin(), mutations=[mutations]")
 		if(mShock in src.mutations) //shockproof
 			return 0
 		if (COLD_RESISTANCE in src.mutations) //fireproof
@@ -74,7 +74,7 @@
 		if(actual < desired)
 			temperature = desired
 //	if(istype(src, /mob/living/carbon/human))
-//		world << "[src] ~ [src.bodytemperature] ~ [temperature]"
+//		to_world("[src] ~ [src.bodytemperature] ~ [temperature]")
 	return temperature
 
 
@@ -146,11 +146,11 @@
 
 	if(config.allow_Metadata)
 		if(client)
-			usr << "[src]'s Metainfo:<br>[client.prefs.metadata]"
+			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
 		else
-			usr << "[src] does not have any stored infomation!"
+			to_chat(usr, "[src] does not have any stored infomation!")
 	else
-		usr << "OOC Metadata is not supported by this server!"
+		to_chat(usr, "OOC Metadata is not supported by this server!")
 
 	return
 
@@ -250,13 +250,19 @@
 	if(.)
 		reset_view(destination)
 
-
+// TODO: look into this mess and probably refactor it. - TheDonkified
 /mob/living/Bump(atom/movable/AM, yes)
 	if(buckled || !yes || now_pushing)
 		return
 	now_pushing = 1
 	if(isliving(AM))
 		var/mob/living/L = AM
+
+		// For now a kind of hacky check for if you are performing an action that stops you from being pushed by teammates
+		if(L.status_flags & IMMOBILE_ACTION && areSameSpecies(src, L) && src.mob_size <= L.mob_size)
+			now_pushing = 0
+			return
+
 
 		//Leaping mobs just land on the tile, no pushing, no anything.
 		if(status_flags & LEAPING)
@@ -267,7 +273,7 @@
 
 		if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
 			if(!(world.time % 5))
-				src << "<span class='warning'>[L] is restrained, you cannot push past.</span>"
+				to_chat(src, "<span class='warning'>[L] is restrained, you cannot push past.</span>")
 			now_pushing = 0
 			return
 
@@ -282,7 +288,7 @@
  				var/mob/P = L.pulling
  				if(P.is_mob_restrained())
  					if(!(world.time % 5))
- 						src << "<span class='warning'>[L] is restraining [P], you cannot push past.</span>"
+ 						to_chat(src, "<span class='warning'>[L] is restraining [P], you cannot push past.</span>")
 					now_pushing = 0
 					return
 
@@ -290,7 +296,7 @@
 
 			if(HULK in L.mutations)
 				if(prob(70))
-					usr << "\red <B>You fail to push [L]'s fat ass out of the way.</B>"
+					to_chat(usr, "<span class='danger'><B>You fail to push [L]'s fat ass out of the way.</B></span>")
 					now_pushing = 0
 					return
 			if(!(L.status_flags & CANPUSH))
@@ -358,7 +364,8 @@
 
 
 /mob/living/throw_at(atom/target, range, speed, thrower)
-	if(!target || !src)	return 0
+	if(!target || !src)	
+		return 0
 	if(pulling) stop_pulling() //being thrown breaks pulls.
 	if(pulledby) pulledby.stop_pulling()
 	. = ..()

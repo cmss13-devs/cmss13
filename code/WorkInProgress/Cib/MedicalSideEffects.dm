@@ -24,7 +24,7 @@
 	for(var/R in cures)
 		if(H.reagents.has_reagent(R))
 			if (cure_message)
-				H <<"\blue [cure_message]"
+				H <<"<span class='notice'>[cure_message]</span>"
 			return 1
 	return 0
 

@@ -64,7 +64,7 @@
 /obj/structure/ladder/attack_hand(mob/user)
 	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying || user.buckled || user.anchored) return
 	if(busy)
-		user << "<span class='warning'>Someone else is currently using [src].</span>"
+		to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
 		return
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
@@ -87,7 +87,7 @@
 	user.visible_message("<span class='notice'>[user] starts climbing [ladder_dir_name] [src].</span>",
 	"<span class='notice'>You start climbing [ladder_dir_name] [src].</span>")
 	busy = 1
-	if(do_after(user, 20, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, DA_DEFAULT_NUM_TICKS, src))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && !user.lying && !user.buckled && !user.anchored)
 			//TODO: Using forceMove is desirable here, but this breaks the pull. If you know how to preserve the pull, this would be nice!
 			user.loc = ladder_dest.loc //Cannot use forceMove method on pulls! Move manually //Make sure we move before we broadcast the message
@@ -145,10 +145,10 @@
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
 		if(isXenoLarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
-			usr << "You can't do that in your current state."
+			to_chat(usr, "You can't do that in your current state.")
 			return
 		if(is_watching)
-			usr << "Someone's already looking through [src]."
+			to_chat(usr, "Someone's already looking through [src].")
 			return
 		if(up && down)
 			switch( alert("Look up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
@@ -212,7 +212,7 @@
 
 		user.visible_message("<span class='warning'>[user] takes position to throw [G] [ladder_dir_name] [src].</span>",
 		"<span class='warning'>You take position to throw [G] [ladder_dir_name] [src].</span>")
-		if(do_after(user, 10, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			user.visible_message("<span class='warning'>[user] throws [G] [ladder_dir_name] [src]!</span>",
 			"<span class='warning'>You throw [G] [ladder_dir_name] [src]</span>")
 			user.drop_held_item()
@@ -244,7 +244,7 @@
 
 		user.visible_message("<span class='warning'>[user] takes position to throw [F] [ladder_dir_name] [src].</span>",
 		"<span class='warning'>You take position to throw [F] [ladder_dir_name] [src].</span>")
-		if(do_after(user, 10, TRUE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			user.visible_message("<span class='warning'>[user] throws [F] [ladder_dir_name] [src]!</span>",
 			"<span class='warning'>You throw [F] [ladder_dir_name] [src]</span>")
 			user.drop_held_item()

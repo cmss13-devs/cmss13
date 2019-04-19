@@ -53,7 +53,7 @@
 	t += "<BR><HR><A href='?src=\ref[src];close=1'>Close</A>"
 
 	if(!powernet)
-		t += "\red No connection"
+		t += "<span class='danger'>No connection</span>"
 	else
 
 		var/list/L = list()
@@ -113,7 +113,7 @@
 /obj/machinery/power/monitor/attackby(I as obj, user as mob)
 	if(istype(I, /obj/item/tool/screwdriver) && circuit)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			var/obj/structure/computerframe/A = new( src.loc )
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M
@@ -121,12 +121,12 @@
 			for (var/obj/C in src)
 				C.loc = src.loc
 			if (src.stat & BROKEN)
-				user << "\blue The broken glass falls out."
+				to_chat(user, "<span class='notice'> The broken glass falls out.</span>")
 				new /obj/item/shard( src.loc )
 				A.state = 3
 				A.icon_state = "3"
 			else
-				user << "\blue You disconnect the monitor."
+				to_chat(user, "<span class='notice'> You disconnect the monitor.</span>")
 				A.state = 4
 				A.icon_state = "4"
 			M.deconstruct(src)

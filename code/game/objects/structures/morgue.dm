@@ -59,7 +59,7 @@
 	if(morgue_open)
 		for(var/mob/living/simple_animal/scp/scp in connected.loc)
 			scp.lash_out()
-			user << "<span class='warning'>Can't lock the [name] on [scp.name].</span>"
+			to_chat(user, "<span class='warning'>Can't lock the [name] on [scp.name].</span>")
 			return
 		for(var/atom/movable/A in connected.loc)
 			if(!A.anchored)
@@ -156,7 +156,7 @@
 	O.forceMove(loc)
 	if (user != O)
 		for(var/mob/B in viewers(user, 3))
-			B.show_message("\red [user] stuffs [O] into [src]!", 1)
+			B.show_message("<span class='danger'>[user] stuffs [O] into [src]!</span>", 1)
 
 
 
@@ -177,7 +177,7 @@
 
 /obj/structure/morgue/crematorium/toggle_morgue(mob/user)
 	if (cremating)
-		user << "<span class='warning'>It's locked.</span>"
+		to_chat(user, "<span class='warning'>It's locked.</span>")
 		return
 	..()
 
@@ -200,9 +200,9 @@
 		return
 
 	if(contents.len <= 1) //1 because the tray is inside.
-		visible_message("\red You hear a hollow crackle.")
+		visible_message("<span class='danger'>You hear a hollow crackle.</span>")
 	else
-		visible_message("\red You hear a roar as the crematorium activates.")
+		visible_message("<span class='danger'>You hear a roar as the crematorium activates.</span>")
 
 		cremating = 1
 
@@ -255,7 +255,7 @@
 				if(!C.cremating)
 					C.cremate(user)
 	else
-		user << "\red Access denied."
+		to_chat(user, "<span class='danger'>Access denied.</span>")
 
 
 

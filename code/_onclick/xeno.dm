@@ -1,4 +1,3 @@
-
 /*
 	Xenomorph
 */
@@ -13,29 +12,48 @@
 	layer = 4
 
 /mob/living/carbon/Xenomorph/UnarmedAttack(var/atom/A)
-
 	if(lying || burrow) //No attacks while laying down
 		return 0
 	var/atom/S = A.handle_barriers(src)
-	S.attack_alien(src)
+	var/mobfound = FALSE
+	if(isturf(A))
+		var/turf/T = A
+		for(var/mob/M in T)
+			M.attack_alien(src)
+			mobfound = TRUE
+			break
+	if(!mobfound)
+		S.attack_alien(src)
 	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
+	return 1
+
+/mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
+	..()
+	for(var/mob/M in get_turf(get_step(src, get_dir(src, A))))
+		if (M.Adjacent(src))
+			UnarmedAttack(M)
+			return
+	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
+	return 1
 
 //The parent proc, will default to attack_paw behaviour unless overriden
 /atom/proc/attack_alien(mob/user as mob)
 	return attack_paw(user)
 
 /mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
+	if(next_move >= world.time)
+		return 1
 
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && middle_mouse_toggle)
 			selected_ability.use_ability(A)
-			return 1
+		return 1
 
 	if(mods["shift"])
 		if(selected_ability && !middle_mouse_toggle)
 			selected_ability.use_ability(A)
-			return 1
-
+		return 1
+	
 	return ..()
 
 /mob/living/carbon/Xenomorph/Boiler/click(var/atom/A, var/list/mods)
@@ -113,3 +131,5 @@
 		if(selected_ability && !middle_mouse_toggle)
 			selected_ability.use_ability(A)
 			return 1
+	
+	return ..()

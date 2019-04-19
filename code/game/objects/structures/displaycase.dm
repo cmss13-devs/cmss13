@@ -64,16 +64,16 @@
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)
 	if (src.destroyed && src.occupied)
-		user << "\b You deactivate the hover field built into the case."
+		to_chat(user, "\b You deactivate the hover field built into the case.")
 		src.occupied = 0
 		src.add_fingerprint(user)
 		update_icon()
 		return
 	else
-		usr << text("\blue You kick the display case.")
+		usr << text("<span class='notice'>You kick the display case.</span>")
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
-				O << text("\red [] kicks the display case.", usr)
+				O << text("<span class='danger'>[] kicks the display case.</span>", usr)
 		src.health -= 2
 		healthcheck()
 		return

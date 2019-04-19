@@ -7,6 +7,7 @@
 	time_to_live = 300
 	flags_pass = PASSTABLE|PASSGRILLE|PASSGLASS		//PASSGLASS is fine here, it's just so the visual effect can "flow" around glass
 	anchored = 1
+	smokeranking = SMOKE_RANK_HIGH
 
 /obj/effect/particle_effect/smoke/chem/New()
 	..()

@@ -227,8 +227,8 @@ var/global/datum/objectives_controller/objectives_controller
 		for(var/mob/M in player_list)
 			//Announce the numbers to deadchat
 			if (isobserver(M))
-				M << "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>"
-				M << "<span class='alert'>Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%).</span>"
+				to_chat(M, "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>")
+				to_chat(M, "<span class='alert'>Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%).</span>")
 
 		log_admin("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].")
 		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].", 1)

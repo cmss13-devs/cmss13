@@ -120,7 +120,7 @@ var/list/mechtoys = list(
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
-		user << "<span class='warning'>Access denied.</span>"
+		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return 1
 	user.set_interaction(src)
 	var/dat = "<head><title>Supply Drop Console Console</title></head><body>"
@@ -179,33 +179,33 @@ var/list/mechtoys = list(
 						for(var/obj/structure/supply_drop/S in item_list)
 							S.force_link() //LINK THEM ALL!
 				else
-					usr << "\icon[src] <span class='warning'>Invalid input. Aborting.</span>"
+					to_chat(usr, "\icon[src] <span class='warning'>Invalid input. Aborting.</span>")
 		if("supply_x")
 			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			usr << "\icon[src] <span class='notice'>Longitude is now [input].</span>"
+			to_chat(usr, "\icon[src] <span class='notice'>Longitude is now [input].</span>")
 			x_supply = input
 		if("supply_y")
 			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			usr << "\icon[src] <span class='notice'>Latitude is now [input].</span>"
+			to_chat(usr, "\icon[src] <span class='notice'>Latitude is now [input].</span>")
 			y_supply = input
 		if("refresh")
 			src.attack_hand(usr)
 		if("dropsupply")
 			if(current_squad)
 				if((current_squad.supply_cooldown + drop_cooldown) > world.time)
-					usr << "\icon[src] <span class='warning'>Supply drop not yet available!</span>"
+					to_chat(usr, "\icon[src] <span class='warning'>Supply drop not yet available!</span>")
 				else
 					handle_supplydrop()
 	src.attack_hand(usr) //Refresh
 
 /obj/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
-		usr << "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>"
+		to_chat(usr, "\icon[src] <span class='warning'>The [name] is busy processing another action!</span>")
 		return
 
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
 	if(!istype(C))
-		usr << "\icon[src] <span class='warning'>No crate was detected on the drop pad. Get Requisitions on the line!</span>"
+		to_chat(usr, "\icon[src] <span class='warning'>No crate was detected on the drop pad. Get Requisitions on the line!</span>")
 		return
 
 	var/x_coord = deobfuscate_x(x_supply)
@@ -213,16 +213,16 @@ var/list/mechtoys = list(
 
 	var/turf/T = locate(x_coord, y_coord, 1)
 	if(!T)
-		usr << "\icon[src] <span class='warning'>Error, invalid coordinates.</span>"
+		to_chat(usr, "\icon[src] <span class='warning'>Error, invalid coordinates.</span>")
 		return
 
 	var/area/A = get_area(T)
 	if(A && A.ceiling >= CEILING_UNDERGROUND)
-		usr << "\icon[src] <span class='warning'>The landing zone is underground. The supply drop cannot reach here.</span>"
+		to_chat(usr, "\icon[src] <span class='warning'>The landing zone is underground. The supply drop cannot reach here.</span>")
 		return
 
 	if(istype(T, /turf/open/space) || T.density)
-		usr << "\icon[src] <span class='warning'>The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.</span>"
+		to_chat(usr, "\icon[src] <span class='warning'>The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.</span>")
 		return
 
 	busy = 1
@@ -235,7 +235,7 @@ var/list/mechtoys = list(
 	spawn(100)
 		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
 			if(C) C.anchored = FALSE
-			usr << "\icon[src] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>"
+			to_chat(usr, "\icon[src] <span class='warning'>Launch aborted! No crate detected on the drop pad.</span>")
 			return
 		S.supply_cooldown = world.time
 
@@ -267,12 +267,12 @@ var/list/mechtoys = list(
 			if(!only_leader)
 				if(plus_name)
 					M << sound('sound/effects/radiostatic.ogg')
-				M << "\icon[src] <font color='blue'><B>\[Overwatch\]:</b> [nametext][text]</font>"
+				to_chat(M, "\icon[src] <font color='blue'><B>\[Overwatch\]:</b> [nametext][text]</font>")
 			else
 				if(current_squad.squad_leader == M)
 					if(plus_name)
 						M << sound('sound/effects/radiostatic.ogg')
-					M << "\icon[src] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>"
+					to_chat(M, "\icon[src] <font color='blue'><B>\[SL Overwatch\]:</b> [nametext][text]</font>")
 					return
 
 //A limited version of the above console
@@ -684,7 +684,7 @@ var/list/mechtoys = list(
 /obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
 	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!allowed(user))
-		user << "\red Access Denied."
+		to_chat(user, "<span class='danger'>Access Denied.</span>")
 		return
 
 	if(..())
@@ -743,7 +743,7 @@ var/list/mechtoys = list(
 
 /obj/machinery/computer/supplycomp/attackby(I as obj, user as mob)
 	if(istype(I,/obj/item/card/emag) && !hacked)
-		user << "\blue Special supplies unlocked."
+		to_chat(user, "<span class='notice'> Special supplies unlocked.</span>")
 		hacked = 1
 		return
 	else
@@ -879,7 +879,7 @@ var/list/mechtoys = list(
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 		if(supply_controller.shoppinglist.len > 20)
-			usr << "\red Current retrieval load has reached maximum capacity."
+			to_chat(usr, "<span class='danger'>Current retrieval load has reached maximum capacity.</span>")
 			return
 
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)

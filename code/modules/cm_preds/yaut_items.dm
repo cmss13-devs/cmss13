@@ -66,34 +66,34 @@
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
 	if(M.species && M.species.name != "Yautja")
-		M << "<span class='warning'>You have no idea how to work these things!</span>"
+		to_chat(M, "<span class='warning'>You have no idea how to work these things!</span>")
 		return
 	var/obj/item/clothing/gloves/yautja/Y = M.gloves //Doesn't actually reduce power, but needs the bracers anyway.
 	if(!Y || !istype(Y))
-		M << "<span class='warning'>You must be wearing your bracers, as they have the power source.</span>"
+		to_chat(M, "<span class='warning'>You must be wearing your bracers, as they have the power source.</span>")
 		return
 	var/obj/item/G = M.glasses
 	if(G)
 		if(!istype(G,/obj/item/clothing/glasses/night/yautja) && !istype(G,/obj/item/clothing/glasses/meson/yautja) && !istype(G,/obj/item/clothing/glasses/thermal/yautja))
-			M << "<span class='warning'>You need to remove your glasses first. Why are you even wearing these?</span>"
+			to_chat(M, "<span class='warning'>You need to remove your glasses first. Why are you even wearing these?</span>")
 			return
 		M.temp_drop_inv_item(G) //Get rid of ye existinge gogglors
 		qdel(G)
 	switch(current_goggles)
 		if(0)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(M), WEAR_EYES)
-			M << "<span class='notice'>Low-light vision module: activated.</span>"
+			to_chat(M, "<span class='notice'>Low-light vision module: activated.</span>")
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(1)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(M), WEAR_EYES)
-			M << "<span class='notice'>Thermal sight module: activated.</span>"
+			to_chat(M, "<span class='notice'>Thermal sight module: activated.</span>")
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(2)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(M), WEAR_EYES)
-			M << "<span class='notice'>Material vision module: activated.</span>"
+			to_chat(M, "<span class='notice'>Material vision module: activated.</span>")
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(3)
-			M << "<span class='notice'>You deactivate your visor.</span>"
+			to_chat(M, "<span class='notice'>You deactivate your visor.</span>")
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 	M.update_inv_glasses()
 	current_goggles++
@@ -344,9 +344,9 @@
 		flags_item = NODROP
 		processing_objects.Add(src)
 		if(isYautja(user))
-			user << "<span class='warning'>The bracer clamps securely around your forearm and beeps in a comfortable, familiar way.</span>"
+			to_chat(user, "<span class='warning'>The bracer clamps securely around your forearm and beeps in a comfortable, familiar way.</span>")
 		else
-			user << "<span class='warning'>The bracer clamps painfully around your forearm and beeps angrily. It won't come off!</span>"
+			to_chat(user, "<span class='warning'>The bracer clamps painfully around your forearm and beeps angrily. It won't come off!</span>")
 
 /obj/item/clothing/gloves/yautja/Dispose()
 	processing_objects.Remove(src)
@@ -393,7 +393,7 @@
 /obj/item/clothing/gloves/yautja/proc/drain_power(var/mob/living/carbon/human/M, var/amount)
 	if(!M) return 0
 	if(charge < amount)
-		M << "<span class='warning'>Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>.</span>"
+		to_chat(M, "<span class='warning'>Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>.</span>")
 		return 0
 	charge -= amount
 	var/perc = (charge / charge_max * 100)
@@ -424,7 +424,7 @@
 
 /obj/item/clothing/gloves/yautja/examine(mob/user)
 	..()
-	user << "They currently have [charge] out of [charge_max] charge."
+	to_chat(user, "They currently have [charge] out of [charge_max] charge.")
 
 
 //We use this to activate random verbs for non-Yautja
@@ -474,10 +474,10 @@
 			randomProbability = 7
 
 
-	user << "<span class='notice'>You press a few buttons...</span>"
+	to_chat(user, "<span class='notice'>You press a few buttons...</span>")
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
-	if(do_after(usr, 3, FALSE, 1, BUSY_ICON_FRIENDLY))
+	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 1))
 		var/chance = rand(1, 100)
 		if(chance <= randomProbability)
 			return 1
@@ -498,7 +498,7 @@
 	O = user.get_limb(check_zone("l_arm"))
 	O.droplimb()
 
-	user << "<span class='notice'>The device emits a strange noise and falls off... Along with your arms!</span>"
+	to_chat(user, "<span class='notice'>The device emits a strange noise and falls off... Along with your arms!</span>")
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return 1
 
@@ -518,14 +518,14 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
 			return
 	var/obj/item/weapon/wristblades/R = user.get_active_hand()
 	if(R && istype(R)) //Turn it off.
-		user << "<span class='notice'>You retract your wrist blades.</span>"
+		to_chat(user, "<span class='notice'>You retract your wrist blades.</span>")
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
 		qdel(R)
@@ -534,20 +534,23 @@
 		if(!drain_power(user,50)) return
 
 		if(R)
-			user << "<span class='warning'>Your hand must be free to activate your wrist blade!</span>"
+			to_chat(user, "<span class='warning'>Your hand must be free to activate your wrist blade!</span>")
 			return
 
 		var/datum/limb/hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
 		if(!istype(hand) || !hand.is_usable())
-			user << "<span class='warning'>You can't hold that!</span>"
+			to_chat(user, "<span class='warning'>You can't hold that!</span>")
 			return
+		var/obj/item/weapon/wristblades/scimitar/W
+		var/obj/item/weapon/wristblades/N
+		W = new /obj/item/weapon/wristblades/scimitar
+		N = new /obj/item/weapon/wristblades
 
-		var/obj/item/weapon/wristblades/W
-		W =  new(upgrades > 2 ? /obj/item/weapon/wristblades/scimitar : /obj/item/weapon/wristblades, user)
-
-		user.put_in_active_hand(W)
+		if(upgrades > 2)
+			user.put_in_active_hand(W)
+		else user.put_in_active_hand(N)
 		blades_active = 1
-		user << "<span class='notice'>You activate your wrist blades.</span>"
+		to_chat(user, "<span class='notice'>You activate your wrist blades.</span>")
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 
 	return 1
@@ -565,7 +568,7 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
@@ -617,15 +620,15 @@
 	var/output = 0
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
 		output = 1
-		M << "<span class='notice'>Your bracer shows a readout of deceased Yautja bio signatures, [dead_on_planet] in the hunting grounds, [dead_on_almayer] in orbit, [dead_low_orbit] in low orbit.</span>"
+		to_chat(M, "<span class='notice'>Your bracer shows a readout of deceased Yautja bio signatures, [dead_on_planet] in the hunting grounds, [dead_on_almayer] in orbit, [dead_low_orbit] in low orbit.</span>")
 	if(gear_on_planet || gear_on_almayer || gear_low_orbit)
 		output = 1
-		M << "<span class='notice'>Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit.</span>"
+		to_chat(M, "<span class='notice'>Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit.</span>")
 	if(closest < 900)
 		var/areaName = get_area(areaLoc).name
-		M << "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName].</span>"
+		to_chat(M, "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName].</span>")
 	if(!output)
-		M << "<span class='notice'>There are no signatures that require your attention.</span>"
+		to_chat(M, "<span class='notice'>There are no signatures that require your attention.</span>")
 	return 1
 
 
@@ -648,7 +651,7 @@
 				//Since they couldn't turn it off in time afterwards with consistency
 				decloak(usr)
 				return 1
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
@@ -657,15 +660,15 @@
 		decloak(usr)
 	else //Turn it on!
 		if(exploding)
-			M << "<span class='warning'>Your bracer is much too busy violently exploding to activate the cloaking device.</span>"
+			to_chat(M, "<span class='warning'>Your bracer is much too busy violently exploding to activate the cloaking device.</span>")
 			return 0
 		if(cloak_timer)
 			if(prob(50))
-				M << "<span class='warning'>Your cloaking device is still recharging! Time left: <B>[cloak_timer]</b> ticks.</span>"
+				to_chat(M, "<span class='warning'>Your cloaking device is still recharging! Time left: <B>[cloak_timer]</b> ticks.</span>")
 			return 0
 		if(!drain_power(M,50)) return
 		cloaked = 1
-		M << "<span class='notice'>You are now invisible to normal detection.</span>"
+		to_chat(M, "<span class='notice'>You are now invisible to normal detection.</span>")
 		for(var/mob/O in oviewers(M))
 			O.show_message("[M] vanishes into thin air!",1)
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
@@ -682,7 +685,7 @@
 
 /obj/item/clothing/gloves/yautja/proc/decloak(var/mob/user)
 	if(!user) return
-	user << "Your cloaking device deactivates."
+	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0
 	for(var/mob/O in oviewers(user))
 		O.show_message("[user.name] shimmers into existence!",1)
@@ -714,7 +717,7 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
@@ -740,13 +743,13 @@
 				L.forceMove(src)
 			M.update_inv_l_hand()
 		if(found)
-			usr << "<span class='notice'>You deactivate your plasma caster.</span>"
+			to_chat(usr, "<span class='notice'>You deactivate your plasma caster.</span>")
 			playsound(src,'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 			caster_active = 0
 		return
 	else //Turn it on!
 		if(usr.get_active_hand())
-			usr << "<span class='warning'>Your hand must be free to activate your caster!</span>"
+			to_chat(usr, "<span class='warning'>Your hand must be free to activate your caster!</span>")
 			return
 		if(!drain_power(usr,50)) return
 
@@ -756,7 +759,7 @@
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
-		usr << "<span class='notice'>You activate your plasma caster.</span>"
+		to_chat(usr, "<span class='notice'>You activate your plasma caster.</span>")
 		playsound(src,'sound/weapons/pred_plasmacaster_on.ogg', 15, 1)
 	return 1
 
@@ -765,7 +768,7 @@
 	set waitfor = 0
 	exploding = 1
 	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
-	sleep(rand(65,85))
+	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 	var/turf/T = get_turf(victim)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
@@ -795,18 +798,18 @@
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
 	if(cloaked)
-		M << "<span class='warning'>Not while you're cloaked. It might disrupt the sequence.</span>"
+		to_chat(M, "<span class='warning'>Not while you're cloaked. It might disrupt the sequence.</span>")
 		return
 	if(!M.stat == CONSCIOUS)
-		M << "<span class='warning'>Not while you're unconcious...</span>"
+		to_chat(M, "<span class='warning'>Not while you're unconcious...</span>")
 		return
 	if(M.stat == DEAD)
-		M << "<span class='warning'>Little too late for that now!</span>"
+		to_chat(M, "<span class='warning'>Little too late for that now!</span>")
 		return
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
@@ -827,7 +830,7 @@
 						bracer.explodey(comrade)
 						M.visible_message("<span class='warning'>[M] presses a few buttons on [comrade]'s wrist bracer.</span>","<span class='danger'>You activate the timer. May [comrade]'s final hunt be swift.</span>")
 			else
-				M << "<span class='warning'>Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b></span>"
+				to_chat(M, "<span class='warning'>Your fallen comrade does not have a bracer. <b>Report this to your elder so that it's fixed.</b></span>")
 			return
 
 	if(M.gloves != src)
@@ -838,27 +841,27 @@
 			if(M.gloves != src)
 				return
 			if(M.stat == DEAD)
-				M << "<span class='warning'>Little too late for that now!</span>"
+				to_chat(M, "<span class='warning'>Little too late for that now!</span>")
 				return
 			if(!M.stat == CONSCIOUS)
-				M << "<span class='warning'>Not while you're unconcious...</span>"
+				to_chat(M, "<span class='warning'>Not while you're unconcious...</span>")
 				return
 			exploding = 0
-			M << "<span class='notice'>Your bracers stop beeping.</span>"
+			to_chat(M, "<span class='notice'>Your bracers stop beeping.</span>")
 		return
 	if((M.wear_mask && istype(M.wear_mask,/obj/item/clothing/mask/facehugger)) || M.status_flags & XENO_HOST)
-		M << "<span class='warning'>Strange...something seems to be interfering with your bracer functions...</span>"
+		to_chat(M, "<span class='warning'>Strange...something seems to be interfering with your bracer functions...</span>")
 		return
 	if(forced || alert("Detonate the bracers? Are you sure?","Explosive Bracers", "Yes", "No") == "Yes")
 		if(M.gloves != src)
 			return
 		if(M.stat == DEAD)
-			M << "<span class='warning'>Little too late for that now!</span>"
+			to_chat(M, "<span class='warning'>Little too late for that now!</span>")
 			return
 		if(!M.stat == CONSCIOUS)
-			M << "<span class='warning'>Not while you're unconcious...</span>"
+			to_chat(M, "<span class='warning'>Not while you're unconcious...</span>")
 			return
-		M << "<span class='userdanger'>You set the timer. May your journey to the great hunting grounds be swift.</span>"
+		to_chat(M, "<span class='userdanger'>You set the timer. May your journey to the great hunting grounds be swift.</span>")
 		explodey(M)
 	return 1
 
@@ -878,18 +881,18 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
 			return
 
 	if(usr.get_active_hand())
-		usr << "<span class='warning'>Your active hand must be empty!</span>"
+		to_chat(usr, "<span class='warning'>Your active hand must be empty!</span>")
 		return 0
 
 	if(inject_timer)
-		usr << "<span class='warning'>You recently activated the healing crystal. Be patient.</span>"
+		to_chat(usr, "<span class='warning'>You recently activated the healing crystal. Be patient.</span>")
 		return
 
 	if(!drain_power(usr,1000)) return
@@ -897,10 +900,10 @@
 	inject_timer = 1
 	spawn(1200)
 		if(usr && src.loc == usr)
-			usr << "\blue Your bracers beep faintly and inform you that a new healing crystal is ready to be created."
+			to_chat(usr, "<span class='notice'> Your bracers beep faintly and inform you that a new healing crystal is ready to be created.</span>")
 			inject_timer = 0
 
-	usr << "\blue You feel a faint hiss and a crystalline injector drops into your hand."
+	to_chat(usr, "<span class='notice'> You feel a faint hiss and a crystalline injector drops into your hand.</span>")
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(usr)
 	usr.put_in_active_hand(O)
 	playsound(src,'sound/machines/click.ogg', 15, 1)
@@ -920,14 +923,14 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
 			return
 
 	if(inject_timer)
-		usr << "<span class='warning'>Your bracers need some time to recuperate first.</span>"
+		to_chat(usr, "<span class='warning'>Your bracers need some time to recuperate first.</span>")
 		return 0
 
 	if(!drain_power(usr,70)) return
@@ -936,7 +939,7 @@
 		inject_timer = 0
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
-		usr << "<span class='warning'>The [S] skips back towards you!</span>"
+		to_chat(usr, "<span class='warning'>The [S] skips back towards you!</span>")
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(S.loc)
 		qdel(S)
 
@@ -957,14 +960,14 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
 			return
 
 	if(combistick_cooldown)
-		usr << "<span class='warning'>Wait a bit before yanking the chain again!</span>"
+		to_chat(usr, "<span class='warning'>Wait a bit before yanking the chain again!</span>")
 		return
 
 
@@ -983,8 +986,8 @@
 			usr.visible_message("<span class='warning'><b>[usr] yanks [C]'s chain back!</b></span>", "<span class='warning'><b>You yank [C]'s chain back!</b></span>")
 			combistick_cooldown = 1
 		else //If neither hand can hold it, you must not have a free hand.
-			usr << "<span class='warning'>You need a free hand to do this!</b></span>"
-	
+			to_chat(usr, "<span class='warning'>You need a free hand to do this!</b></span>")
+
 	if(combistick_cooldown)
 		spawn(30)
 		combistick_cooldown = 0
@@ -1001,7 +1004,7 @@
 	if(!forced && !isYautja(usr))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
-			usr << "<span class='warning'>You fiddle with the buttons but nothing happens...</span>"
+			to_chat(usr, "<span class='warning'>You fiddle with the buttons but nothing happens...</span>")
 			return
 		if (option == 1)
 			. = activate_random_verb()
@@ -1030,7 +1033,7 @@
 		for(Q in hearers(usr))
 			if(Q.stat == 1) continue //Unconscious
 			if(isXeno(Q) && upgrades != 2) continue
-			Q << "<span class='info'>A strange voice says,</span> <span class='rough'>'[msg]'.</span>"
+			to_chat(Q, "<span class='info'>A strange voice says,</span> <span class='rough'>'[msg]'.</span>")
 	return 1
 
 //=================//\\=================\\
@@ -1060,12 +1063,12 @@
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
 	if(!isYautja(M)) //Nope.
-		M << "<span class='warning'>You try to talk into the headset, but just get a horrible shrieking in your ears!</span>"
+		to_chat(M, "<span class='warning'>You try to talk into the headset, but just get a horrible shrieking in your ears!</span>")
 		return
 
 	for(var/mob/living/carbon/hellhound/H in player_list)
 		if(istype(H) && !H.stat)
-			H << "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'."
+			to_chat(H, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
 /obj/item/device/radio/headset/yautja/attackby()
@@ -1136,7 +1139,7 @@
 		playsound(src,'sound/ambience/signal.ogg', 25, 1)
 		timer = 1
 		user.visible_message("<span class='info'>[user] starts becoming shimmery and indistinct...</span>")
-		if(do_after(user,100, TRUE, 5, BUSY_ICON_GENERIC))
+		if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			// Teleport self.
 			user.visible_message("<span class='warning'>\icon[user][user] disappears!</span>")
 			var/tele_time = animation_teleport_quick_out(user)
@@ -1161,9 +1164,9 @@
 	var/mob/living/carbon/human/H = user
 	var/sure = alert("Really trigger it?","Sure?","Yes","No")
 	if(!isYautja(H))
-		user << "<span class='warning'>The screen angrily flashes three times!</span>"
+		to_chat(user, "<span class='warning'>The screen angrily flashes three times!</span>")
 		playsound(user, 'sound/effects/EMPulse.ogg', 25, 1)
-		sleep(30)
+		do_after(user, 30, INTERRUPT_NONE, 1)
 		explosion(loc,-1,-1,2)
 		if(loc)
 			if(ismob(loc))
@@ -1176,7 +1179,7 @@
 	playsound(src,'sound/ambience/signal.ogg', 25, 1)
 	timer = 1
 	user.visible_message("<span class='info'>[user] starts becoming shimmery and indistinct...</span>")
-	if(do_after(user,100, TRUE, 5, BUSY_ICON_GENERIC))
+	if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Teleport self.
 		user.visible_message("<span class='warning'>\icon[user][user] disappears!</span>")
 		var/tele_time = animation_teleport_quick_out(user)
@@ -1291,9 +1294,9 @@
 	if (istype(A, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/D = A
 		if(D.operating || !D.density) return
-		user << "<span class='notice'>You jam [src] into [D] and strain to rip it open.</span>"
+		to_chat(user, "<span class='notice'>You jam [src] into [D] and strain to rip it open.</span>")
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, 1)
-		if(do_after(user,30, TRUE, 5, BUSY_ICON_HOSTILE) && D.density)
+		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			D.open(1)
 
 /obj/item/weapon/wristblades/attack_self(mob/user)
@@ -1316,6 +1319,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "whip"
+	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 35
@@ -1362,13 +1366,13 @@
 
 	var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
 
-	user << "<span class='notice'>You begin using your knife to rip shrapnel out. Hold still. This will probably hurt...</span>"
+	to_chat(user, "<span class='notice'>You begin using your knife to rip shrapnel out. Hold still. This will probably hurt...</span>")
 
-	if(do_after(user,50, TRUE, 5, BUSY_ICON_FRIENDLY))
+	if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		var/obj/item/shard/shrapnel/S
 		for(var/datum/limb/O in user.limbs)
 			for(S in O.implants)
-				user << "<span class='notice'>You dig shrapnel out of your [O.name].</span>"
+				to_chat(user, "<span class='notice'>You dig shrapnel out of your [O.name].</span>")
 				S.loc = user.loc
 				O.implants -= S
 				pain_factor++
@@ -1382,11 +1386,11 @@
 				pain_factor += 3 //OWWW! No internal bleeding though.
 
 		switch(pain_factor)
-			if(0) user << "<span class='warning'>There was nothing to dig out!</span>"
-			if(1 to 4) user << "<span class='warning'>That hurt like hell!!</span>"
+			if(0) to_chat(user, "<span class='warning'>There was nothing to dig out!</span>")
+			if(1 to 4) to_chat(user, "<span class='warning'>That hurt like hell!!</span>")
 			if(5 to INFINITY) user.emote("roar")
 
-	else user << "<span class='warning'>You were interrupted!</span>"
+	else to_chat(user, "<span class='warning'>You were interrupted!</span>")
 
 /obj/item/weapon/yautja_sword
 	name = "clan sword"
@@ -1422,7 +1426,7 @@
 			target.KnockDown(3)
 			step_away(target,user,1)
 	else
-		user << "<span class='warning'>You aren't strong enough to swing the sword properly!</span>"
+		to_chat(user, "<span class='warning'>You aren't strong enough to swing the sword properly!</span>")
 		force = round(initial(force)/2)
 		if(prob(50)) user.make_dizzy(80)
 
@@ -1430,7 +1434,7 @@
 
 /obj/item/weapon/yautja_sword/pickup(mob/living/user as mob)
 	if(!isYautja(user))
-		user << "<span class='warning'>You struggle to pick up the huge, unwieldy sword. It makes you dizzy just trying to hold it!</span>"
+		to_chat(user, "<span class='warning'>You struggle to pick up the huge, unwieldy sword. It makes you dizzy just trying to hold it!</span>")
 		user.make_dizzy(50)
 	else
 		remove_from_missing_pred_gear(src)
@@ -1529,13 +1533,13 @@
 
 /obj/item/weapon/combistick/wield(var/mob/user)
 	..()
-	icon_state = initial(icon_state)
 	force = 35
+	update_icon()
 
 /obj/item/weapon/combistick/unwield(mob/user)
 	..()
-	icon_state = initial(icon_state)
 	force = 28
+	update_icon()
 
 /obj/item/weapon/combistick/verb/use_unique_action()
 	set category = "Weapons"
@@ -1550,7 +1554,12 @@
 		if(flags_item & WIELDED) unwield(user)
 		else 				wield(user)
 	else
-		user << "<span class='warning'>You need to extend the combi-stick before you can wield it.</span>"
+		to_chat(user, "<span class='warning'>You need to extend the combi-stick before you can wield it.</span>")
+
+/obj/item/weapon/combistick/update_icon()
+	if(flags_item & WIELDED)
+		item_state = "combistick_w"
+	else item_state = "combistick"
 
 /obj/item/weapon/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
@@ -1583,7 +1592,7 @@
 			overlays += blood_overlay
 	else
 		unwield(user)
-		user << "<span class='notice'>You collapse [src] for storage.</span>"
+		to_chat(user, "<span class='notice'>You collapse [src] for storage.</span>")
 		icon_state = initial(icon_state) + "_f"
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
@@ -1652,9 +1661,9 @@
 	attack_self(mob/user)
 		if(!active)
 			if(!isYautja(user))
-				user << "What's this thing?"
+				to_chat(user, "What's this thing?")
 				return
-			user << "<span class='warning'>You activate the hellhound beacon!</span>"
+			to_chat(user, "<span class='warning'>You activate the hellhound beacon!</span>")
 			activate(user)
 			add_fingerprint(user)
 			if(iscarbon(user))
@@ -1705,7 +1714,7 @@
 		var/choice = input(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View") as null|anything in L
 		if(!choice || choice == "Cancel" || isnull(choice))
 			user.unset_interaction()
-			user << "Stopping camera feed."
+			to_chat(user, "Stopping camera feed.")
 			return
 
 		for(var/mob/living/carbon/hellhound/Q in mob_list)
@@ -1714,11 +1723,11 @@
 				break
 
 		if(istype(current))
-			user << "Switching feed.."
+			to_chat(user, "Switching feed..")
 			user.set_interaction(current)
 
 		else
-			user << "Something went wrong with the camera feed."
+			to_chat(user, "Something went wrong with the camera feed.")
 		return
 
 

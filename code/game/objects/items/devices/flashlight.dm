@@ -19,10 +19,8 @@
 	..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		SetLuminosity(brightness_on)
 	else
 		icon_state = initial(icon_state)
-		SetLuminosity(0)
 
 /obj/item/device/flashlight/Dispose()
 	if(ismob(src.loc))
@@ -48,7 +46,7 @@
 
 /obj/item/device/flashlight/attack_self(mob/user)
 	if(!isturf(user.loc))
-		user << "You cannot turn the light on while in [user.loc]." //To prevent some lighting anomalities.
+		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
 		return 0
 	on = !on
 	update_brightness(user)
@@ -72,7 +70,7 @@
 		if(!raillight_compatible) //No fancy messages, just no
 			return
 		if(on)
-			user << "<span class='warning'>Turn off [src] first.</span>"
+			to_chat(user, "<span class='warning'>Turn off [src] first.</span>")
 			return
 		if(istype(loc, /obj/item/storage))
 			var/obj/item/storage/S = loc
@@ -81,8 +79,8 @@
 			user.drop_inv_item_on_ground(src) //This part is important to make sure our light sources update, as it calls dropped()
 		var/obj/item/attachable/flashlight/F = new(src.loc)
 		user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-		user << "<span class='notice'>You modify [src]. It can now be mounted on a weapon.</span>"
-		user << "<span class='notice'>Use a screwdriver on [F] to change it back.</span>"
+		to_chat(user, "<span class='notice'>You modify [src]. It can now be mounted on a weapon.</span>")
+		to_chat(user, "<span class='notice'>Use a screwdriver on [F] to change it back.</span>")
 		qdel(src) //Delete da old flashlight
 		return
 	else
@@ -96,12 +94,12 @@
 			return ..()	//just hit them in the head
 
 		if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")	//don't have dexterity
-			user << "<span class='notice'>You don't have the dexterity to do this!</span>"
+			to_chat(user, "<span class='notice'>You don't have the dexterity to do this!</span>")
 			return
 
 		var/mob/living/carbon/human/H = M	//mob has protective eyewear
 		if(istype(M, /mob/living/carbon/human) && ((H.head && H.head.flags_inventory & COVEREYES) || (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) || (H.glasses && H.glasses.flags_inventory & COVEREYES)))
-			user << "<span class='notice'>You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first.</span>"
+			to_chat(user, "<span class='notice'>You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first.</span>")
 			return
 
 		if(M == user)	//they're using it on themselves
@@ -115,13 +113,13 @@
 
 		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey))	//robots and aliens are unaffected
 			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
-				user << "<span class='notice'>[M] pupils does not react to the light!</span>"
+				to_chat(user, "<span class='notice'>[M] pupils does not react to the light!</span>")
 			else if(XRAY in M.mutations)	//mob has X-RAY vision
 				M.flash_eyes()
-				user << "<span class='notice'>[M] pupils give an eerie glow!</span>"
+				to_chat(user, "<span class='notice'>[M] pupils give an eerie glow!</span>")
 			else	//they're okay!
 				M.flash_eyes()
-				user << "<span class='notice'>[M]'s pupils narrow.</span>"
+				to_chat(user, "<span class='notice'>[M]'s pupils narrow.</span>")
 	else
 		return ..()
 
@@ -245,7 +243,7 @@
 
 	// Usual checks
 	if(!fuel)
-		user << "<span class='notice'>It's out of fuel.</span>"
+		to_chat(user, "<span class='notice'>It's out of fuel.</span>")
 		return
 	if(on)
 		return
@@ -314,7 +312,7 @@
 	var/faction = ""
 	var/datum/cas_signal/signal
 
-/obj/item/device/flashlight/flare/signal/New()	
+/obj/item/device/flashlight/flare/signal/New()
 	..()
 	fuel = rand(80, 100)
 
@@ -323,13 +321,13 @@
 
 	// Usual checks
 	if(!fuel)
-		user << "<span class='notice'>It's out of fuel.</span>"
+		to_chat(user, "<span class='notice'>It's out of fuel.</span>")
 		return
 	if(on)
 		return
 
 	if(!isturf(user.loc))
-		user << "You cannot turn the light on while in [user.loc]." //To prevent some lighting anomalities.
+		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
 		return 0
 	on = !on
 	update_brightness(user)
@@ -344,7 +342,7 @@
 	processing_objects += src
 	faction = user.faction
 	activate_signal(user)
-	
+
 
 /obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/user)
 	set waitfor = 0
@@ -362,7 +360,7 @@
 	if (!user) return
 
 	if(anchored)
-		user << "[src] is too hot. You will burn your hand if you pick it up."
+		to_chat(user, "[src] is too hot. You will burn your hand if you pick it up.")
 		return
 
 	..()
@@ -370,7 +368,7 @@
 /obj/item/device/flashlight/flare/signal/Dispose()
 	if(signal)
 		cas_groups[faction].remove_signal(signal)
-		qdel(signal)		
+		qdel(signal)
 	..()
 
 /obj/item/device/flashlight/flare/signal/turn_off()

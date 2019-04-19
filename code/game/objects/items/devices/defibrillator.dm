@@ -49,6 +49,15 @@
 	else
 		icon_state += "_empty"
 
+/obj/item/device/defibrillator/examine(mob/user)
+	..()
+	var/maxuses = 0
+	var/currentuses = 0
+	maxuses = round(dcell.maxcharge / charge_cost)
+	currentuses = round(dcell.charge / charge_cost)
+	to_chat(user, "<span class='information'>It has [currentuses] out of [maxuses] uses left in its internal battery.</span>")
+
+
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
 
 	if(defib_cooldown > world.time)
@@ -57,7 +66,7 @@
 	//Job knowledge requirement
 	if (istype(user))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 
 	defib_cooldown = world.time + 20 //2 seconds cooldown every time the defib is toggled
@@ -98,16 +107,16 @@
 	//job knowledge requirement
 	if(user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			user << "<span class='warning'>You don't seem to know how to use [src]...</span>"
+			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
 			return
 		else
 			defib_heal_amt *= user.mind.cm_skills.medical*0.5 //more healing power when used by a doctor
 
 	if(!ishuman(H) || isYautja(H))
-		user << "<span class='warning'>You can't defibrilate [H]. You don't even know where to put the paddles!</span>"
+		to_chat(user, "<span class='warning'>You can't defibrilate [H]. You don't even know where to put the paddles!</span>")
 		return
 	if(!ready)
-		user << "<span class='warning'>Take [src]'s paddles out first.</span>"
+		to_chat(user, "<span class='warning'>Take [src]'s paddles out first.</span>")
 		return
 	if(dcell.charge <= charge_cost)
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Internal battery depleted. Cannot analyze nor administer shock.</span>")
@@ -124,7 +133,7 @@
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring.</span>")
 		return
 
-	if((!H.check_tod() && !isSynth(H)) || H.suiciding) //synthetic species have no expiration date
+	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient is braindead.</span>")
 		return
 
@@ -163,10 +172,13 @@
 			heart.damage += 5 //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
 
 		if(!H.is_revivable())
+			if(heart.is_broken())
+				user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised.</span>")
+				return
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving.</span>")
 			return
 
-		if((!H.check_tod() && !isSynth(H)) || H.suiciding) //synthetic species have no expiration date
+		if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient's brain has decayed too much.</span>")
 			return
 
@@ -194,6 +206,14 @@
 		H.adjustCloneLoss(-defib_heal_amt)
 		H.adjustOxyLoss(-H.getOxyLoss())
 		H.updatehealth() //Needed for the check to register properly
+
+		if(H.reagents.has_reagent("adrenaline", 1)) //Adrenaline helps greatly at restarting the heart
+			H.reagents.remove_reagent("adrenaline", 1)
+			H.adjustBruteLoss(-defib_heal_amt)
+			H.adjustFireLoss(-defib_heal_amt)
+			H.adjustToxLoss(-defib_heal_amt)
+			H.updatehealth()
+
 		if(H.health > config.health_threshold_dead)
 			user.visible_message("<span class='notice'>\icon[src] \The [src] beeps: Defibrillation successful.</span>")
 			living_mob_list.Add(H)
@@ -213,7 +233,7 @@
 			H.apply_effect(10, PARALYZE)
 			H.update_canmove()
 			H.updatehealth() //One more time, so it doesn't show the target as dead on HUDs
-			H << "<span class='notice'>You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane.</span>"
+			to_chat(H, "<span class='notice'>You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane.</span>")
 		else
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.</span>") //Freak case
 	else

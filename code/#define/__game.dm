@@ -214,6 +214,37 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 
 #define WEAPON_GUARANTEED_DELAY 0.1
 
+// Defines for barricade states
+#define BARRICADE_DMG_NONE 0
+#define BARRICADE_DMG_SLIGHT 1
+#define BARRICADE_DMG_MODERATE 2
+#define BARRICADE_DMG_HEAVY 3
+
+#define BARRICADE_BSTATE_SECURED 2 // fresh barricade
+#define BARRICADE_BSTATE_UNSECURED 1 // intermediate state before cade is movable (no apparent effect on health)
+#define BARRICADE_BSTATE_MOVABLE 0 // ready to be deconstructed and can be moved
+
+// Defines for wall types
+#define WALL_METAL (1<<1)
+#define WALL_HULL (1<<2)
+#define WALL_WHITE (1<<3)
+#define WALL_SULACO (1<<4)
+#define WALL_HANGAR (1<<5)
+#define WALL_REINFORCED (1<<6)
+#define WALL_REINFORCED_RESEARCH (1<<7)
+#define WALL_REINFORCED_IRON (1<<8)
+#define WALL_REINFORCED_CHIGUSA (1<<9)
+#define WALL_REINFORCED_BUNKER (1<<10)
+#define WALL_RESIN (1<<11)
+#define WALL_THICKRESIN (1<<12)
+#define WALL_MEMBRANE (1<<13)
+#define WALL_THICKMEMBRANE (1<<14)
+#define WALL_CAVE (1<<15)
+#define WALL_WOOD (1<<16)
+#define WALL_GOLD (1<<17)
+#define WALL_CULT (1<<18)
+#define WALL_STONE (1<<19)
+
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1
 #define GIMBAL_CENTER 0
@@ -241,6 +272,7 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 #define GAME_STATE_SETTING_UP	2
 #define GAME_STATE_PLAYING		3
 #define GAME_STATE_FINISHED		4
+
 // Misc client defines
 #define MIN_FPS 0
 #define MAX_FPS 100

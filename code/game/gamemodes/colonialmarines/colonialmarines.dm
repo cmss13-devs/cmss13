@@ -19,7 +19,7 @@
 	return 1
 
 /datum/game_mode/colonialmarines/announce()
-	world << "<span class='round_header'>The current map is - [map_tag]!</span>"
+	to_world("<span class='round_header'>The current map is - [map_tag]!</span>")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.

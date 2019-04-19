@@ -23,7 +23,7 @@
 	flags_inv_hide = HIDETOPHAIR
 
 /obj/item/clothing/head/cmbandana/New()
-	select_gamemode_skin(type, list(MAP_ICE_COLONY = "s_band") )
+	select_gamemode_skin(/obj/item/clothing/head/cmbandana)
 	..()
 
 /obj/item/clothing/head/cmbandana/tan
@@ -47,7 +47,7 @@
 	icon_state = "beret"
 
 /obj/item/clothing/head/beret/cm/New()
-	select_gamemode_skin(/obj/item/clothing/head/beret/cm, list(MAP_ICE_COLONY = "s_beret"))
+	select_gamemode_skin(/obj/item/clothing/head/beret/cm)
 	..()
 
 /obj/item/clothing/head/beret/cm/tan
@@ -73,7 +73,7 @@
 	icon_state = "headband"
 
 /obj/item/clothing/head/headband/New()
-	select_gamemode_skin(type, list(MAP_ICE_COLONY = "s_headband"))
+	select_gamemode_skin(/obj/item/clothing/head/headband)
 	..()
 
 /obj/item/clothing/head/headband/red
@@ -119,10 +119,10 @@
 
 	flipped_cap = !flipped_cap
 	if(flipped_cap)
-		usr << "You spin the hat backwards! You look like a tool."
+		to_chat(usr, "You spin the hat backwards! You look like a tool.")
 		icon_state = base_cap_icon + "_b"
 	else
-		usr << "You spin the hat back forwards. That's better."
+		to_chat(usr, "You spin the hat back forwards. That's better.")
 		icon_state = base_cap_icon
 
 	update_clothing_icon()
@@ -149,12 +149,12 @@
 	icon_state = "flapcap"
 
 /obj/item/clothing/head/cmflapcap/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmflapcap, list(MAP_ICE_COLONY = "s_flapcap"))
+	select_gamemode_skin(/obj/item/clothing/head/cmflapcap)
 	..()
 
 /obj/item/clothing/head/cmo
-	name = "\improper Chief Medical hat"
-	desc = "A somewhat fancy hat, typically worn by those who wish to command medical respect."
+	name = "\improper Chief Medical Officer's Peaked Cap"
+	desc = "A peaked cap given to high ranking civilian medical officers. Looks just a touch silly."
 	sprite_sheet_id = 1
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	icon_state = "cmohat"
@@ -179,7 +179,7 @@
 
 /obj/item/clothing/head/beret/marine/commander/cdre
 	name = "marine commodore bere"
-	desc = "A navy beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "A navy beret with the commodore insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders. Often passed onto Captains by Commodores as sign of respect, promise, or any other multitude of reasoning."
 	sprite_sheet_id = 1
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	icon_state = "cdreberet"
@@ -225,11 +225,11 @@
 		if(src.icon_state == "ushankadown")
 			src.icon_state = "ushankaup"
 			src.item_state = "ushankaup"
-			user << "You raise the ear flaps on the ushanka."
+			to_chat(user, "You raise the ear flaps on the ushanka.")
 		else
 			src.icon_state = "ushankadown"
 			src.item_state = "ushankadown"
-			user << "You lower the ear flaps on the ushanka."
+			to_chat(user, "You lower the ear flaps on the ushanka.")
 
 
 /obj/item/clothing/head/bearpelt
@@ -332,10 +332,7 @@
 /obj/item/clothing/head/booniehat/tan
 	icon_state = "booniehattan"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
-	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/booniehat/New()
-	if(flags_atom & NO_SNOW_TYPE)
-		return
-	select_gamemode_skin(type)
+	select_gamemode_skin(/obj/item/clothing/head/booniehat)
 	..()

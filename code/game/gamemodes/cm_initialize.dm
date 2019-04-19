@@ -179,20 +179,20 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_PREDATOR))
-		if(show_warning) pred_candidate << "<span class='warning'>You are not whitelisted! You may apply on the forums to be whitelisted as a predator.</span>"
+		if(show_warning) to_chat(pred_candidate, "<span class='warning'>You are not whitelisted! You may apply on the forums to be whitelisted as a predator.</span>")
 		return
 
 	if(!(flags_round_type & MODE_PREDATOR))
-		if(show_warning) pred_candidate << "<span class='warning'>There is no Hunt this round! Maybe the next one.</span>"
+		if(show_warning) to_chat(pred_candidate, "<span class='warning'>There is no Hunt this round! Maybe the next one.</span>")
 		return
 
 	if(pred_candidate.ckey in pred_keys)
-		if(show_warning) pred_candidate << "<span class='warning'>You already were a Yautja! Give someone else a chance.</span>"
+		if(show_warning) to_chat(pred_candidate, "<span class='warning'>You already were a Yautja! Give someone else a chance.</span>")
 		return
 
 	if(!(RoleAuthority.roles_whitelist[pred_candidate.ckey] & (WHITELIST_YAUTJA_ELDER | WHITELIST_YAUTJA_COUNCIL)))
 		if(pred_current_num >= pred_maximum_num)
-			if(show_warning) pred_candidate << "<span class='warning'>Only [pred_maximum_num] predators may spawn this round, but Elders and Leaders do not count.</span>"
+			if(show_warning) to_chat(pred_candidate, "<span class='warning'>Only [pred_maximum_num] predators may spawn this round, but Elders and Leaders do not count.</span>")
 			return
 
 	return 1
@@ -233,7 +233,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	if(!new_predator.real_name || new_predator.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
 		new_predator.real_name = "Le'pro"
 		spawn(9)
-			new_predator << "<span class='warning'>You forgot to set your name in your preferences. Please do so next time.</span>"
+			to_chat(new_predator, "<span class='warning'>You forgot to set your name in your preferences. Please do so next time.</span>")
 
 	var/armor_number = new_predator.client.prefs.predator_armor_type
 	var/boot_number = new_predator.client.prefs.predator_boot_type
@@ -248,10 +248,10 @@ datum/game_mode/proc/initialize_special_clamps()
 		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
 
 		spawn(10)
-			new_predator << "<span class='notice'><B> Welcome Elder!</B></span>"
-			new_predator << "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>"
-			new_predator << "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>"
-			new_predator << "<span class='notice'>You come equipped as an Elder should, with a bonus glaive and heavy armor.</span>"
+			to_chat(new_predator, "<span class='notice'><B> Welcome Elder!</B></span>")
+			to_chat(new_predator, "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>")
+			to_chat(new_predator, "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>")
+			to_chat(new_predator, "<span class='notice'>You come equipped as an Elder should, with a bonus glaive and heavy armor.</span>")
 
 	else if(wants_leader)
 		new_predator.real_name = "Councillor [new_predator.real_name]"
@@ -260,19 +260,19 @@ datum/game_mode/proc/initialize_special_clamps()
 		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
 
 		spawn(10)
-			new_predator << "<span class='notice'><B> Welcome Councillor!</B></span>"
-			new_predator << "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>"
-			new_predator << "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>"
+			to_chat(new_predator, "<span class='notice'><B> Welcome Councillor!</B></span>")
+			to_chat(new_predator, "<span class='notice'>You are responsible for the well-being of your pupils. Hunting is secondary in priority.</span>")
+			to_chat(new_predator, "<span class='notice'>That does not mean you can't go out and show the youngsters how it's done.</span>")
 	else
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
 		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
 		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
 
 		spawn(12)
-			new_predator << "<span class='notice'>You are <B>Yautja</b>, a great and noble predator!</span>"
-			new_predator << "<span class='notice'>Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered.</span>"
-			new_predator << "<span class='notice'>Hunt at your discretion, yet be observant rather than violent.</span>"
-			new_predator << "<span class='notice'>And above all, listen to your Elders!</span>"
+			to_chat(new_predator, "<span class='notice'>You are <B>Yautja</b>, a great and noble predator!</span>")
+			to_chat(new_predator, "<span class='notice'>Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered.</span>")
+			to_chat(new_predator, "<span class='notice'>Hunt at your discretion, yet be observant rather than violent.</span>")
+			to_chat(new_predator, "<span class='notice'>And above all, listen to your Elders!</span>")
 
 	new_predator.update_icons()
 	initialize_predator(new_predator)
@@ -291,7 +291,7 @@ datum/game_mode/proc/initialize_special_clamps()
 /datum/game_mode/proc/initialize_starting_xenomorph_list()
 	var/list/datum/mind/possible_xenomorphs = get_players_for_role(BE_ALIEN)
 	if(possible_xenomorphs.len < xeno_required_num) //We don't have enough aliens.
-		world << "<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>"
+		to_world("<h2 style=\"color:red\">Not enough players have chosen to be a xenomorph in their character setup. <b>Aborting</b>.</h2>")
 		return
 
 	//Minds are not transferred at this point, so we have to clean out those who may be already picked to play.
@@ -320,7 +320,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	So they may have been removed from the list, oh well.
 	*/
 	if(xenomorphs.len < xeno_required_num)
-		world << "<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>"
+		to_world("<h2 style=\"color:red\">Could not find any candidates after initial alien list pass. <b>Aborting</b>.</h2>")
 		return
 
 	return 1
@@ -331,7 +331,7 @@ datum/game_mode/proc/initialize_special_clamps()
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, "Alien")) // User is jobbanned
-		xeno_candidate << "<span class='warning'>You are banned from playing aliens and cannot spawn as a xenomorph.</span>"
+		to_chat(xeno_candidate, "<span class='warning'>You are banned from playing aliens and cannot spawn as a xenomorph.</span>")
 		return
 	return 1
 
@@ -351,7 +351,7 @@ datum/game_mode/proc/initialize_special_clamps()
 		available_xenos += "buried larva"
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
-		xeno_candidate << "<span class='warning'>There aren't any available xenomorphs or buried larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy.</span>"
+		to_chat(xeno_candidate, "<span class='warning'>There aren't any available xenomorphs or buried larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy.</span>")
 		return 0
 
 	var/mob/living/carbon/Xenomorph/new_xeno
@@ -360,7 +360,7 @@ datum/game_mode/proc/initialize_special_clamps()
 
 		if(userInput == "buried larva")
 			if(!queen.ovipositor)
-				xeno_candidate << "<span class='warning'>The queen is not on her ovipositor. Try again later.</span>"
+				to_chat(xeno_candidate, "<span class='warning'>The queen is not on her ovipositor. Try again later.</span>")
 				return 0
 
 			if(queen.can_spawn_larva()) //check again incase it hit the 1 minute mark between checks
@@ -375,11 +375,11 @@ datum/game_mode/proc/initialize_special_clamps()
 		new_xeno = userInput
 
 		if(!(new_xeno in living_mob_list) || new_xeno.stat == DEAD)
-			xeno_candidate << "<span class='warning'>You cannot join if the xenomorph is dead.</span>"
+			to_chat(xeno_candidate, "<span class='warning'>You cannot join if the xenomorph is dead.</span>")
 			return 0
 
 		if(new_xeno.client)
-			xeno_candidate << "<span class='warning'>That xenomorph has been occupied.</span>"
+			to_chat(xeno_candidate, "<span class='warning'>That xenomorph has been occupied.</span>")
 			return 0
 
 		if(!xeno_candidate) //
@@ -392,16 +392,17 @@ datum/game_mode/proc/initialize_special_clamps()
 			var/deathtimeminutes = round(deathtime / MINUTES_1)
 			var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
 			if(deathtime < MINUTES_5 && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
-				xeno_candidate << "<span class='warning'>You have been dead for [deathtimeminutes >= 1 ? "[deathtimeminutes] minute\s and " : ""][deathtimeseconds] second\s.</span>"
-				xeno_candidate << "<span class='warning'>You must wait 5 minutes before rejoining the game!</span>"
+				var/message = "<span class='warning'>You have been dead for [deathtimeminutes >= 1 ? "[deathtimeminutes] minute\s and " : ""][deathtimeseconds] second\s.</span>"
+				to_chat(xeno_candidate, message)
+				to_chat(xeno_candidate, "<span class='warning'>You must wait 5 minutes before rejoining the game!</span>")
 				return 0
 			if(new_xeno.away_timer < SECONDS_30) //We do not want to occupy them if they've only been gone for a little bit.
-				xeno_candidate << "<span class='warning'>That player hasn't been away long enough. Please wait [SECONDS_30 - new_xeno.away_timer] second\s longer.</span>"
+				to_chat(xeno_candidate, "<span class='warning'>That player hasn't been away long enough. Please wait [SECONDS_30 - new_xeno.away_timer] second\s longer.</span>")
 				return 0
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
 			if(new_xeno.client || !(new_xeno in living_mob_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
-				xeno_candidate << "<span class='warning'>That xenomorph can no longer be controlled. Please try another.</span>"
+				to_chat(xeno_candidate, "<span class='warning'>That xenomorph can no longer be controlled. Please try another.</span>")
 				return 0
 		else return 0
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
@@ -411,7 +412,7 @@ datum/game_mode/proc/initialize_special_clamps()
 			N.close_spawn_windows()
 		if(transfer_xeno(xeno_candidate.key, new_xeno))
 			return 1
-	xeno_candidate << "JAS01: Something went wrong, tell a coder."
+	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
 
 /datum/game_mode/proc/transfer_xeno(var/xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate)
@@ -442,13 +443,13 @@ datum/game_mode/proc/initialize_special_clamps()
 	ghost_mind.name = ghost_mind.current.name
 
 	if(is_queen)
-		new_xeno << "<B>You are now the alien queen!</B>"
-		new_xeno << "<B>Your job is to spread the hive.</B>"
-		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')"
+		to_chat(new_xeno, "<B>You are now the alien queen!</B>")
+		to_chat(new_xeno, "<B>Your job is to spread the hive.</B>")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')")
 	else
-		new_xeno << "<B>You are now an alien!</B>"
-		new_xeno << "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>"
-		new_xeno << "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')"
+		to_chat(new_xeno, "<B>You are now an alien!</B>")
+		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')")
 
 	new_xeno.update_icons()
 
@@ -595,7 +596,7 @@ datum/game_mode/proc/initialize_special_clamps()
 		survivor_old_equipment(H, is_synth)
 	else
 		if(arm_equipment(H,spawner.equipment) == -1)
-			H << "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor."
+			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
 			return
 	H.name = H.get_visible_name()
 	if(spawner.intro_text && spawner.intro_text.len)
@@ -604,16 +605,16 @@ datum/game_mode/proc/initialize_special_clamps()
 				H << line
 	else
 		spawn(4)
-			H << "<h2>You are a survivor!</h2>"
+			to_chat(H, "<h2>You are a survivor!</h2>")
 			switch(map_tag)
 				if(MAP_PRISON_STATION)
-					H << "<span class='notice'> You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.</span>"
+					to_chat(H, "<span class='notice'> You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.</span>")
 				if(MAP_ICE_COLONY)
-					H << "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now.</span>"
+					to_chat(H, "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now.</span>")
 				else
-					H << "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now.</span>"
-			H << "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>"
-			H << "<span class='notice'>You are NOT aware of the marines or their intentions. </span>"
+					to_chat(H, "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now.</span>")
+			to_chat(H, "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>")
+			to_chat(H, "<span class='notice'>You are NOT aware of the marines or their intentions. </span>")
 	if(spawner.story_text)
 		. = 1
 		spawn(6)
@@ -634,16 +635,16 @@ datum/game_mode/proc/initialize_special_clamps()
 
 	//Give them some information
 	spawn(4)
-		H << "<h2>You are a survivor!</h2>"
+		to_chat(H, "<h2>You are a survivor!</h2>")
 		switch(map_tag)
 			if(MAP_PRISON_STATION)
-				H << "<span class='notice'>You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now.</span>"
+				to_chat(H, "<span class='notice'>You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now.</span>")
 			if(MAP_ICE_COLONY)
-				H << "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now.</span>"
+				to_chat(H, "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now.</span>")
 			else
-				H << "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>"
-		H << "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>"
-		H << "<span class='notice'>You are NOT aware of the marines or their intentions.</span>"
+				to_chat(H, "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>")
+		to_chat(H, "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>")
+		to_chat(H, "<span class='notice'>You are NOT aware of the marines or their intentions.</span>")
 	return 1
 
 /datum/game_mode/proc/tell_survivor_story()

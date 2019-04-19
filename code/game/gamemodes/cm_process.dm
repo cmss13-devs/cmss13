@@ -3,9 +3,9 @@
 	set name = "DEBUG EVAC SHUTTLE"
 	set category = "DEBUG"
 
-	world << "Location is [emergency_shuttle.shuttle.location]"
-	world << "Moving status is [emergency_shuttle.shuttle.moving_status]"
-	world << "Departed is [emergency_shuttle.departed]"
+	to_world("Location is [emergency_shuttle.shuttle.location]")
+	to_world("Moving status is [emergency_shuttle.shuttle.moving_status]")
+	to_world("Departed is [emergency_shuttle.departed]")
 
 */
 #define QUEEN_DEATH_COUNTDOWN 			 MINUTES_10 //10 minutes. Can be changed into a variable if it needs to be manipulated later.
@@ -100,15 +100,15 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 				var/turf/playerTurf = get_turf(Player)
 				if(emergency_shuttle.departed && emergency_shuttle.evac)
 					if(playerTurf.z != 2)
-						Player << "<span class='round_body'>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</span>"
+						to_chat(Player, "<span class='round_body'>You managed to survive, but were marooned on [station_name] as [Player.real_name]...</span>")
 					else
-						Player << "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>"
+						to_chat(Player, "<font color='green'><b>You managed to survive the events of [name] as [m.real_name].</b></font>")
 				else if(playerTurf.z == 2)
-					Player << "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>"
+					to_chat(Player, "<font color='green'><b>You successfully underwent crew transfer after events on [station_name] as [Player.real_name].</b></font>")
 				else if(issilicon(Player))
-					Player << "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>"
+					to_chat(Player, "<font color='green'><b>You remain operational after the events on [station_name] as [Player.real_name].</b></font>")
 				else
-					Player << "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>"
+					to_chat(Player, "<font color='blue'><b>You missed the crew transfer after the events on [station_name] as [Player.real_name].</b></font>")
 			else
 
 	if(xenomorphs.len)
@@ -196,7 +196,7 @@ dat += " You failed to evacuate \the [MAIN_SHIP_NAME]"
 //Disperses fog, doing so gradually.
 /datum/game_mode/proc/disperse_fog()
 	set waitfor = 0
-	//world << "<span class='boldnotice'>The fog north of the colony is starting to recede.</span>" //Let's try it without an announcement.
+	//to_world("<span class='boldnotice'>The fog north of the colony is starting to recede.</span>") //Let's try it without an announcement.
 	flags_round_type &= ~MODE_FOG_ACTIVATED
 	var/i
 	for(i in round_fog)
@@ -230,6 +230,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 	var/numHostsShip	= 0
 	var/numXenosPlanet	= 0
 	var/numXenosShip	= 0
+	var/numXenosShipAres = 0 //ARES scan doesn't count containment xenos
 
 	//We're assembling a list of locations so we can give hint about a random one
 	var/list/hostsPlanetLocations = list()
@@ -249,12 +250,17 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		peakXenos = living_xeno_list.len
 
 	for(var/mob/M in living_xeno_list)
+		var/area/A = get_area(M)
+		if (A.flags_atom & AREA_AVOID_BIOSCAN)
+			numXenosShip++
+			continue
 		var/atom/where = M
 		if (where == 0 && M.loc)
 			where = M.loc
 		switch(where.z)
 			if(3)//On the ship
 				numXenosShip++
+				numXenosShipAres++
 				xenosShipLocations+=where
 			if(1)//planet
 				numXenosPlanet++
@@ -299,13 +305,13 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		for(var/mob/M in player_list)
 			//Announce the numbers to Yautja, they have good scanners
 			if (isYautja(M))
-				M << "<h2 class='alert'>Bioscan complete</h2>"
-				M << "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""], with [larva] larva.\n[numXenosShip] serpents present on the ooman ship[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]\n[numHostsPlanet] oomans present in the hunting ground[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]\n[numHostsShip] oomans present on the ooman ship[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]</span>"
+				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
+				to_chat(M, "<span class='alert'>[numXenosPlanet] serpents present in the hunting ground[RandomXenosPlanetLocation?"), including one in [RandomXenosPlanetLocation]":""], with [larva] larva.\n[numXenosShip] serpents present on the ooman ship[RandomXenosShipLocation?", including one in [RandomXenosShipLocation].":"."]\n[numHostsPlanet] oomans present in the hunting ground[RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation].":"."]\n[numHostsShip] oomans present on the ooman ship[RandomHostsShipLocation?", including one in [RandomHostsShipLocation].":"."]</span>")
 
 			//Let the ghosts know what's up, they also get good numbers
 			if (isobserver(M))
-				M << "<h2 class='alert'>Bioscan complete</h2>"
-				M << "<span class='alert'>[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship.</span>"
+				to_chat(M, "<h2 class='alert'>Bioscan complete</h2>")
+				to_chat(M, "<span class='alert'>[numXenosPlanet] xenos on planet, with [larva] larva.\n[numXenosShip] xenos on the ship.\n[numHostsPlanet] humans on the planet.\n[numHostsShip] humans on the ship.</span>")
 
 	//Adjust the randomness there so everyone gets the same thing
 	numHostsShip = max(0, numHostsShip + rand(-delta, delta))
@@ -325,15 +331,20 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		for(var/mob/M in player_list)
 			if(isXeno(M))
 				M << sound(get_sfx("queen"), wait = 0, volume = 50)
-				M << "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>"
-				M << "<span class='xenoannounce'>To my children and their Queen. I sense [numHostsShip ? "approximately [numHostsShip]":"no"] host[!numHostsShip || numHostsShip > 1 ? "s":""] in the metal hive[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""] and [numHostsPlanet ? "[numHostsPlanet]":"none"] scattered elsewhere[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""].</span>"
+				to_chat(M, "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>")
+				var/metalhive_hosts = "[numHostsShip ? "approximately [numHostsShip]":"no"]"
+				var/plural = "[!numHostsShip || numHostsShip > 1 ? "s":""]"
+				var/metalhive_location = "[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""]"
+				var/planet_hosts = "[numHostsPlanet ? "[numHostsPlanet]":"none"]"
+				var/planet_location = "[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""]"
+				to_chat(M, "<span class='xenoannounce'>To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].</span>")
 
 
 	if(world.time > nextHumanBioscan)
 		lastHumanBioscan = world.time
 		// The announcement to all Humans. Slightly off for the planet and elsewhere, accurate for the ship.
 		var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShip ? "[numXenosShip]":"no"] unknown lifeform signature[!numXenosShip || numXenosShip > 1 ? "s":""] present on the ship[numXenosShip&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
+		var/input = "Bioscan complete.\n\nSensors indicate [numXenosShipAres ? "[numXenosShipAres]":"no"] unknown lifeform signature[!numXenosShipAres || numXenosShipAres > 1 ? "s":""] present on the ship[numXenosShipAres&&RandomXenosShipLocation?", including one in [RandomXenosShipLocation],":""] and [numXenosPlanet ? "approximately [numXenosPlanet]":"no"] signature[!numXenosPlanet || numXenosPlanet > 1 ? "s":""] located elsewhere[numXenosPlanet&&RandomXenosPlanetLocation?", including one in [RandomXenosPlanetLocation]":""]."
 		command_announcement.Announce(input, name, new_sound = 'sound/AI/bioscan.ogg')
 
 /*
@@ -359,8 +370,16 @@ Only checks living mobs with a client attached.
 				var/mob/living/carbon/human/H = M
 				if(H.species && H.species.name == "Human") //only real humans count
 					num_humans++
-			else if(isXeno(M)) num_xenos++
-			else if(iszombie(M)) num_xenos++
+			else 
+				var/area/A = get_area(M)
+				if(isXeno(M))
+					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+						continue
+					num_xenos++
+				else if(iszombie(M))
+					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+						continue
+					num_xenos++
 
 	return list(num_humans,num_xenos)
 

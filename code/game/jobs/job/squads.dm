@@ -76,11 +76,12 @@
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
 /datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M)
+	
 	if(!M || !istype(M,/mob/living/carbon/human)) return 0//Logic
 	if(!src.usable) return 0
 	if(!M.mind) return 0
-	if(!M.mind.assigned_role) return 0//Not yet
-	if(M.assigned_squad) return 0 //already in a squad
+	if(!M.mind.assigned_role) return 0 //Not yet
+	if(M.assigned_squad) return 0      //already in a squad
 
 	var/obj/item/card/id/C = null
 	C = M.wear_id
@@ -202,7 +203,7 @@
 	old_lead.hud_set_squad()
 	old_lead.update_inv_head() //updating marine helmet leader overlays
 	old_lead.update_inv_wear_suit()
-	old_lead << "<font size='3' color='blue'>You're no longer the Squad Leader for [src]!</font>"
+	to_chat(old_lead, "<font size='3' color='blue'>You're no longer the Squad Leader for [src]!</font>")
 
 
 //Not a safe proc. Returns null if squads or jobs aren't set up.

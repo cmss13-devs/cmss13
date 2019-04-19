@@ -23,9 +23,9 @@
 
 			for(k in T)
 				if(istype(k, j))
-					//world << "DEBUG: type is: [j], object is [k]. Checking successful."
+					//to_world("DEBUG: type is: [j], object is [k]. Checking successful.")
 					junction |= i
-					//world << "DEBUG: Junction is: [junction]."
+					//to_world("DEBUG: Junction is: [junction].")
 					break
 
 	handle_icon_junction(junction)
@@ -188,7 +188,7 @@
 
 
 /turf/closed/wall/handle_icon_junction(junction)
-	icon_state = "[walltype][junction]"
+	icon_state = "[wall2text(walltype)][junction]"
 	junctiontype = junction
 
 /obj/structure/grille/almayer/handle_icon_junction(junction)
@@ -229,9 +229,9 @@ turf/open/asphalt/cement/relativewall()
 
 			for(k in T)
 				if(istype(k, j))
-					//world << "DEBUG: type is: [j], object is [k]. Checking successful."
+					//to_world("DEBUG: type is: [j], object is [k]. Checking successful.")
 					junction |= i
-					//world << "DEBUG: Junction is: [junction]."
+					//to_world("DEBUG: Junction is: [junction].")
 					break
 
 	handle_icon_junction(junction)
@@ -253,9 +253,9 @@ turf/open/asphalt/cement_sunbleached/relativewall()
 
 			for(k in T)
 				if(istype(k, j))
-					//world << "DEBUG: type is: [j], object is [k]. Checking successful."
+					//to_world("DEBUG: type is: [j], object is [k]. Checking successful.")
 					junction |= i
-					//world << "DEBUG: Junction is: [junction]."
+					//to_world("DEBUG: Junction is: [junction].")
 					break
 
 	handle_icon_junction(junction)

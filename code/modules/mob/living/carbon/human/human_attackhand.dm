@@ -2,7 +2,7 @@
 	..()
 
 	if((M != src) && check_shields(0, M.name))
-		visible_message("\red <B>[M] attempted to touch [src]!</B>", null, null, 5)
+		visible_message("<span class='danger'><B>[M] attempted to touch [src]!</B></span>", null, null, 5)
 		return 0
 
 	M.next_move += 7 //Adds some lag to the 'attack'. This will add up to 10
@@ -26,25 +26,25 @@
 //			if(M.health < -75)	return 0
 
 			if((M.head && (M.head.flags_inventory & COVERMOUTH)) || (M.wear_mask && (M.wear_mask.flags_inventory & COVERMOUTH)))
-				M << "\blue <B>Remove your mask!</B>"
+				to_chat(M, "<span class='notice'> <B>Remove your mask!</B></span>")
 				return 0
 			if((head && (head.flags_inventory & COVERMOUTH)) || (wear_mask && (wear_mask.flags_inventory & COVERMOUTH)))
-				M << "\blue <B>Remove his mask!</B>"
+				to_chat(M, "<span class='notice'> <B>Remove his mask!</B></span>")
 				return 0
 
 			//CPR
 			if(M.action_busy)
 				return 1
-			M.visible_message("\red <B>[M] is trying perform CPR on [src]!</B>", null, null, 4)
+			M.visible_message("<span class='danger'><B>[M] is trying perform CPR on [src]!</B></span>", null, null, 4)
 
 			if(do_mob(M, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_MEDICAL))
 				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
 					var/suff = min(getOxyLoss(), 5) //Pre-merge level, less healing, more prevention of dieing.
 					adjustOxyLoss(-suff)
 					updatehealth()
-					visible_message("\red [M] performs CPR on [src]!", null, null, 3)
-					src << "\blue <b>You feel a breath of fresh air enter your lungs. It feels good.</b>"
-					M << "\red Repeat at least every 7 seconds."
+					visible_message("<span class='danger'>[M] performs CPR on [src]!</span>", null, null, 3)
+					to_chat(src, "<span class='notice'> <b>You feel a breath of fresh air enter your lungs. It feels good.</b></span>")
+					to_chat(M, "<span class='warning'>Repeat at least every 7 seconds.</span>")
 
 
 			return 1
@@ -73,7 +73,7 @@
 			M.flick_attack_overlay(src, "punch")
 
 			var/max_dmg = 5
-			if(M.mind. && M.mind.cm_skills)
+			if(M.mind && M.mind.cm_skills)
 				max_dmg += M.mind.cm_skills.cqc
 			var/damage = rand(0, max_dmg)
 			if(!damage)
@@ -142,23 +142,23 @@
 			if (randn <= 25)
 				apply_effect(3, WEAKEN, run_armor_check(affecting, "melee"))
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				visible_message("\red <B>[M] has pushed [src]!</B>", null, null, 5)
+				visible_message("<span class='danger'><B>[M] has pushed [src]!</B></span>", null, null, 5)
 				return
 
 			if(randn <= 60)
 				//BubbleWrap: Disarming breaks a pull
 				if(pulling)
-					visible_message("\red <b>[M] has broken [src]'s grip on [pulling]!</B>", null, null, 5)
+					visible_message("<span class='danger'><b>[M] has broken [src]'s grip on [pulling]!</B></span>", null, null, 5)
 					stop_pulling()
 				else
 					drop_held_item()
-					visible_message("\red <B>[M] has disarmed [src]!</B>", null, null, 5)
+					visible_message("<span class='danger'><B>[M] has disarmed [src]!</B></span>", null, null, 5)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				return
 
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
-			visible_message("\red <B>[M] attempted to disarm [src]!</B>", null, null, 5)
+			visible_message("<span class='danger'><B>[M] attempted to disarm [src]!</B></span>", null, null, 5)
 	return
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
@@ -210,7 +210,7 @@
 				if(org.status & LIMB_DESTROYED)
 					status = "MISSING!"
 
-				src << "\t [status=="OK"?"\blue ":"\red "]My [org.display_name] is [status]."
+				to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
 			if((SKELETON in mutations) && !w_uniform && !wear_suit)
 				play_xylophone()
 		else

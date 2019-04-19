@@ -66,7 +66,7 @@ var/list/solars_list = list()
 
 	if(iscrowbar(W))
 		playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-		if(do_after(user, 50, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			var/obj/item/frame/solar_assembly/S = locate() in src
 			if(S)
 				S.loc = src.loc
@@ -220,7 +220,7 @@ var/list/solars_list = list()
 				else
 					new /obj/machinery/power/solar(get_turf(src), src)
 			else
-				user << "<span class='warning'>You need two sheets of glass to put them on the solar assembly.</span>"
+				to_chat(user, "<span class='warning'>You need two sheets of glass to put them on the solar assembly.</span>")
 			return 1
 
 	if(!tracker)
@@ -314,9 +314,9 @@ var/list/solars_list = list()
 /obj/machinery/power/solar_control/attackby(I as obj, user as mob)
 	if(istype(I, /obj/item/tool/screwdriver))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if (src.stat & BROKEN)
-				user << "\blue The broken glass falls out."
+				to_chat(user, "<span class='notice'> The broken glass falls out.</span>")
 				var/obj/structure/computerframe/A = new( src.loc )
 				new /obj/item/shard( src.loc )
 				var/obj/item/circuitboard/computer/solar_control/M = new( A )
@@ -328,7 +328,7 @@ var/list/solars_list = list()
 				A.anchored = 1
 				qdel(src)
 			else
-				user << "\blue You disconnect the monitor."
+				to_chat(user, "<span class='notice'> You disconnect the monitor.</span>")
 				var/obj/structure/computerframe/A = new( src.loc )
 				var/obj/item/circuitboard/computer/solar_control/M = new( A )
 				for (var/obj/C in src)

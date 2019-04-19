@@ -264,6 +264,7 @@ var/datum/mob_hud/huds = list(
 		holder3.icon_state = "hudsynth"
 	else
 		var/revive_enabled = check_tod() && is_revivable()
+		var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 
 		var/holder2_set = 0
 		if(status_flags & XENO_HOST)
@@ -298,6 +299,14 @@ var/datum/mob_hud/huds = list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
+				if(heart && (heart.is_broken() && check_tod())) // broken heart icon
+					holder.icon_state = "huddeadheart"
+					if(!holder2_set)
+						holder2.icon_state = "huddeadheart"
+						holder3.icon_state = "huddead"
+						holder2_set = 1
+					return
+
 				holder.icon_state = "huddead"
 				if(!holder2_set)
 					holder2.icon_state = "huddead"
@@ -436,18 +445,19 @@ var/datum/mob_hud/huds = list(
 		if(I)
 			perpname = I.registered_name
 
-	for(var/datum/data/record/E in data_core.general)
-		if(E.fields["name"] == perpname)
-			for(var/datum/data/record/R in data_core.security)
-				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
-					holder.icon_state = "hudwanted"
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
-					holder.icon_state = "hudprisoner"
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
-					holder.icon_state = "hudreleased"
-					break
+	if(data_core)
+		for(var/datum/data/record/E in data_core.general)
+			if(E.fields["name"] == perpname)
+				for(var/datum/data/record/R in data_core.security)
+					if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
+						holder.icon_state = "hudwanted"
+						break
+					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
+						holder.icon_state = "hudprisoner"
+						break
+					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
+						holder.icon_state = "hudreleased"
+						break
 
 
 

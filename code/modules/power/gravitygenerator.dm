@@ -56,10 +56,10 @@
 /obj/machinery/computer/gravity_control_computer/proc/findgenerator()
 	var/obj/machinery/gravity_generator/foundgenerator = null
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		//world << "SEARCHING IN [dir]"
+		//to_world("SEARCHING IN [dir]")
 		foundgenerator = locate(/obj/machinery/gravity_generator/, get_step(src, dir))
 		if (!isnull(foundgenerator))
-			//world << "FOUND"
+			//to_world("FOUND")
 			break
 	return foundgenerator
 

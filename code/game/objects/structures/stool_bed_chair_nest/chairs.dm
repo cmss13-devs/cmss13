@@ -210,12 +210,12 @@
 	is_animating = 0
 	chair_state = DROPSHIP_CHAIR_UNFOLDED
 	sleep(5)
-	icon_state = "hotseat_chair"
+	icon_state = "hotseat"
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/unfold_up()
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
-		icon_state = "hotseat_chair"
+		icon_state = "hotseat"
 
 /obj/structure/bed/chair/dropship/passenger/rotate()
 	return // no
@@ -233,7 +233,7 @@
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/attackby(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/wrench) && chair_state == DROPSHIP_CHAIR_BROKEN)
-		user << "<span class='warning'>\The [src] appears to be broken and needs welding.</span>"
+		to_chat(user, "<span class='warning'>\The [src] appears to be broken and needs welding.</span>")
 		return
 	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
 		var/obj/item/tool/weldingtool/C = W
@@ -241,7 +241,7 @@
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message("<span class='warning'>[user] begins repairing \the [src].</span>",
 			"<span class='warning'>You begin repairing \the [src].</span>")
-			if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='warning'>[user] repairs \the [src].</span>",
 				"<span class='warning'>You repair \the [src].</span>")
 				unfold_up()
@@ -256,7 +256,7 @@
 				user.visible_message("<span class='warning'>[user] begins loosening the bolts on \the [src].</span>",
 				"<span class='warning'>You begin loosening the bolts on \the [src].</span>")
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					user.visible_message("<span class='warning'>[user] loosens the bolts on \the [src], folding it into the decking.</span>",
 					"<span class='warning'>You loosen the bolts on \the [src], folding it into the decking.</span>")
 					fold_down()
@@ -265,13 +265,13 @@
 				user.visible_message("<span class='warning'>[user] begins unfolding \the [src].</span>",
 				"<span class='warning'>You begin unfolding \the [src].</span>")
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					user.visible_message("<span class='warning'>[user] unfolds \the [src] from the floor and tightens the bolts.</span>",
 					"<span class='warning'>You unfold \the [src] from the floor and tighten the bolts.</span>")
 					unfold_up()
 					return
 			if(DROPSHIP_CHAIR_BROKEN)
-				user << "<span class='warning'>\The [src] appears to be broken and needs welding.</span>"
+				to_chat(user, "<span class='warning'>\The [src] appears to be broken and needs welding.</span>")
 				return
 	else if((istype(W, /obj/item/tool/weldingtool) && chair_state == DROPSHIP_CHAIR_BROKEN))
 		var/obj/item/tool/weldingtool/C = W
@@ -279,7 +279,7 @@
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message("<span class='warning'>[user] begins repairing \the [src].</span>",
 			"<span class='warning'>You begin repairing \the [src].</span>")
-			if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='warning'>[user] repairs \the [src].</span>",
 				"<span class='warning'>You repair \the [src].</span>")
 				chair_state = DROPSHIP_CHAIR_FOLDED

@@ -8,12 +8,12 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	set name = "Adminhelp"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "\red Speech is currently admin-disabled."
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP)
-		src << "<font color='red'>Error: Admin-PM: You cannot send adminhelps (Muted).</font>"
+		to_chat(src, "<font color='red'>Error: Admin-PM: You cannot send adminhelps (Muted).</font>")
 		return
 
 
@@ -139,7 +139,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 				X << msg
 
 	//show it to the person adminhelping too
-	src << "<br><font color='#009900'><b>PM to Staff ([selected_type]): <font color='#DA6200'>[original_msg]</b></font><br>"
+	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]): <font color='#DA6200'>[original_msg]</b></font><br>")
 
 	// Adminhelp cooldown
 	verbs -= /client/verb/adminhelp

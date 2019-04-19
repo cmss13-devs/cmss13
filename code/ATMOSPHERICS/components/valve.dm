@@ -242,7 +242,7 @@
 	if(!powered())
 		return
 	if(!src.allowed(user))
-		user << "\red Access denied."
+		to_chat(user, "<span class='danger'>Access denied.</span>")
 		return
 	..()
 
@@ -295,13 +295,13 @@
 	if(!iswrench(W))
 		return ..()
 	if(istype(src, /obj/machinery/atmospherics/valve/digital))
-		user << "<span class='warning'>You cannot unwrench [src], it's too complicated.</span>"
+		to_chat(user, "<span class='warning'>You cannot unwrench [src], it's too complicated.</span>")
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message("<span class='notice'>[user] begins unfastening [src].</span>",
 	"<span class='notice'>You begin unfastening [src].</span>")
-	if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")

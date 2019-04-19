@@ -22,14 +22,14 @@
 				gas_transfer_coefficient = 1 //gas is now escaping to the turf and vice versa
 				flags_inventory &= ~(COVERMOUTH|ALLOWINTERNALS)
 				icon_state = "breathdown"
-				usr << "Your mask is now hanging on your neck."
+				to_chat(usr, "Your mask is now hanging on your neck.")
 
 			else
 				src.hanging = !src.hanging
 				gas_transfer_coefficient = 0.10
 				flags_inventory |= COVERMOUTH|ALLOWINTERNALS
 				icon_state = "breath"
-				usr << "You pull the mask up to cover your face."
+				to_chat(usr, "You pull the mask up to cover your face.")
 			update_clothing_icon()
 
 /obj/item/clothing/mask/breath/medical
@@ -84,11 +84,11 @@
 
 	if(pulled == FALSE)
 		pulled = TRUE
-		usr << "<span class='notice'>You pull \the [src] down.</span>"
+		to_chat(usr, "<span class='notice'>You pull \the [src] down.</span>")
 		icon_state += "_down"
 	else
 		pulled = FALSE
-		usr << "<span class='notice'>You pull \the [src] up.</span>"
+		to_chat(usr, "<span class='notice'>You pull \the [src] up.</span>")
 		icon_state = original_state
 
 	update_clothing_icon(src) //Update the on-mob icon.

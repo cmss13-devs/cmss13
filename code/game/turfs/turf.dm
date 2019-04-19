@@ -37,6 +37,8 @@
 /turf/New()
 	..()
 	turfs += src
+	if(src.z == 1)
+		z1turfs += src
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn(0)
 			Entered(AM)
@@ -46,12 +48,12 @@
 
 /turf/Dispose()
 	stop_processing()
-	//world << "Disposing [src.type]"
+	//to_world("Disposing [src.type]")
 	if(old_turf != "")
-		//world << "Old turf : [old_turf]"
+		//to_world("Old turf : [old_turf]")
 		ChangeTurf(text2path(old_turf), TRUE)
 	else
-		//world << "Defaulting to Plating"
+		//to_world("Defaulting to Plating")
 		ChangeTurf(/turf/open/floor/plating, TRUE)
 	//..()
 	return TA_PURGE_ME_NOW
@@ -97,7 +99,7 @@ spookydonut august 2018
 
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		usr << "\red Movement is admin-disabled." //This is to identify lag problems
+		to_chat(usr, "<span class='danger'>Movement is admin-disabled.</span>") //This is to identify lag problems
 		return
 	if (!mover || !isturf(mover.loc))
 		return 1
@@ -315,19 +317,19 @@ spookydonut august 2018
 	var/area/A = get_area(src)
 	switch(A.ceiling)
 		if(CEILING_NONE)
-			user << "It is in the open."
+			to_chat(user, "It is in the open.")
 		if(CEILING_GLASS)
-			user << "The ceiling above is glass."
+			to_chat(user, "The ceiling above is glass.")
 		if(CEILING_METAL)
-			user << "The ceiling above is metal."
+			to_chat(user, "The ceiling above is metal.")
 		if(CEILING_UNDERGROUND)
-			user << "It is underground. The cavern roof lies above."
+			to_chat(user, "It is underground. The cavern roof lies above.")
 		if(CEILING_UNDERGROUND_METAL)
-			user << "It is underground. The ceiling above is metal."
+			to_chat(user, "It is underground. The ceiling above is metal.")
 		if(CEILING_DEEP_UNDERGROUND)
-			user << "It is deep underground. The cavern roof lies above."
+			to_chat(user, "It is deep underground. The cavern roof lies above.")
 		if(CEILING_DEEP_UNDERGROUND_METAL)
-			user << "It is deep underground. The ceiling above is metal."
+			to_chat(user, "It is deep underground. The ceiling above is metal.")
 
 /turf/proc/wet_floor()
 	return

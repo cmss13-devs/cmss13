@@ -12,13 +12,13 @@
 			slowdown = SHOES_SLOWDOWN
 			magpulse = 0
 			icon_state = "magboots0"
-			user << "You disable the mag-pulse traction system."
+			to_chat(user, "You disable the mag-pulse traction system.")
 		else
 			flags_inventory |= NOSLIPPING
 			slowdown = 2
 			magpulse = 1
 			icon_state = "magboots1"
-			user << "You enable the mag-pulse traction system."
+			to_chat(user, "You enable the mag-pulse traction system.")
 		user.update_inv_shoes()	//so our mob-overlays update
 
 		for(var/X in actions)
@@ -31,4 +31,4 @@
 		var/state = "disabled"
 		if(flags_inventory&NOSLIPPING)
 			state = "enabled"
-		user << "Its mag-pulse traction system appears to be [state]."
+		to_chat(user, "Its mag-pulse traction system appears to be [state].")

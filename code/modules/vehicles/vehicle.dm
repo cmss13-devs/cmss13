@@ -38,7 +38,7 @@
 		if(on && powered && cell && cell.charge < charge_use)
 			turn_off()
 		else if(!on && powered)
-			user << "<span class='warning'>Turn on the engine first.</span>"
+			to_chat(user, "<span class='warning'>Turn on the engine first.</span>")
 		else
 			. = step(src, direction)
 
@@ -48,7 +48,7 @@
 		if(!locked)
 			open = !open
 			update_icon()
-			user << "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>"
+			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
 	else if(istype(W, /obj/item/tool/crowbar) && cell && open)
 		remove_cell(user)
 
@@ -59,13 +59,13 @@
 		if(WT.remove_fuel(1, user))
 			if(health < maxhealth)
 				user.visible_message("<span class='notice'>[user] starts to repair [src].</span>","<span class='notice'>You start to repair [src]</span>")
-				if(do_after(user, 20, TRUE, 5, BUSY_ICON_FRIENDLY))
+				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					if(!src || !WT.isOn())
 						return
 					health = min(maxhealth, health+10)
 					user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
 			else
-				user << "<span class='notice'>[src] does not need repairs.</span>"
+				to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
 
 	else if(W.force)
 		switch(W.damtype)
@@ -82,14 +82,15 @@
 /obj/vehicle/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
-	src.visible_message("\red <B>[M] has [M.attacktext] [src]!</B>")
+	src.visible_message("<span class='danger'><B>[M] has [M.attacktext] [src]!</B></span>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
-/obj/vehicle/bullet_act(var/obj/item/projectile/Proj)
-	health -= Proj.damage
+/obj/vehicle/bullet_act(var/obj/item/projectile/P)
+	var/damage = P.damage
+	health -= damage
 	..()
 	healthcheck()
 	return 1
@@ -137,10 +138,10 @@
 
 	if(locked)
 		locked = 0
-		user << "<span class='warning'>You bypass [src]'s controls.</span>"
+		to_chat(user, "<span class='warning'>You bypass [src]'s controls.</span>")
 
 /obj/vehicle/proc/explode()
-	src.visible_message("\red <B>[src] blows apart!</B>", 1)
+	src.visible_message("<span class='danger'><B>[src] blows apart!</B></span>", 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/stack/rods(Tsec)
@@ -190,13 +191,13 @@
 	H.drop_inv_item_to_loc(C, src)
 	cell = C
 	powercheck()
-	usr << "<span class='notice'>You install [C] in [src].</span>"
+	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
 
 /obj/vehicle/proc/remove_cell(var/mob/living/carbon/human/H)
 	if(!cell)
 		return
 
-	usr << "<span class='notice'>You remove [cell] from [src].</span>"
+	to_chat(usr, "<span class='notice'>You remove [cell] from [src].</span>")
 	cell.forceMove(get_turf(H))
 	H.put_in_hands(cell)
 	cell = null

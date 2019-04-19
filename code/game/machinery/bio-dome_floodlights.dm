@@ -65,10 +65,10 @@
 
 /obj/machinery/hydro_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
-		user << "Nice try."
+		to_chat(user, "Nice try.")
 		return 0
 	if(!ispowered)
-		user << "Nothing happens."
+		to_chat(user, "Nothing happens.")
 		return 0
 	playsound(src,'sound/machines/click.ogg', 15, 1)
 	use_power(5)
@@ -111,7 +111,7 @@
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			user.visible_message("[user] starts welding [src]'s damage.</span>",
 			"You start welding [src]'s damage.</span>")
-			if(do_after(user, 200, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!src || !WT.isOn()) return
 				damaged = 0
@@ -122,31 +122,31 @@
 				update_icon()
 				return 1
 		else
-			user << "<span class='warning'>You need more welding fuel to complete this task.</span>"
+			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return 0
 	..()
 	return 0
 
 /obj/machinery/hydro_floodlight/attack_hand(mob/user as mob)
 	if(ishuman(user))
-		user << "<span class='warning'>Nothing happens. Looks like it's powered elsewhere.</span>"
+		to_chat(user, "<span class='warning'>Nothing happens. Looks like it's powered elsewhere.</span>")
 		return 0
 	else if(!is_lit)
-		user << "<span class='warning'>Why bother? It's just some weird metal thing.</span>"
+		to_chat(user, "<span class='warning'>Why bother? It's just some weird metal thing.</span>")
 		return 0
 	else
 		if(damaged)
-			user << "<span class='warning'>It's already damaged.</span>"
+			to_chat(user, "<span class='warning'>It's already damaged.</span>")
 			return 0
 		else
 			if(isXenoLarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
-				user << "<span class='warning'>You need your claws empty for this!</span>"
+				to_chat(user, "<span class='warning'>You need your claws empty for this!</span>")
 				r_FAL
 			user.visible_message("<span class='danger'>[user] starts to slash and claw away at [src]!</span>",
 			"<span class='danger'>You start slashing and clawing at [src]!</span>")
-			if(do_after(user, 50, TRUE, 5, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
+			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
 				if(!src) return 0
 				damaged = 1
 				SetLuminosity(0)

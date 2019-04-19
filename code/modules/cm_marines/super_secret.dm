@@ -11,13 +11,13 @@
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(istype(W,/obj/item/coin))
 			if(coins < 4 && !state)
-				user.visible_message("[user] inserts \the [W] into \the [src].","\blue You insert \the [W] inside \the [src].")
+				user.visible_message("[user] inserts \the [W] into \the [src].","<span class='notice'>You insert \the [W] inside \the [src].</span>")
 				coins++
 				qdel(W)
 			else
-				user << "\red \the [W] does not fit anymore."
+				to_chat(user, "<span class='danger'>\the [W] does not fit anymore.</span>")
 		else
-			user << "\red \the [W] does not fit inside that rectangular hole."
+			to_chat(user, "<span class='danger'>\the [W] does not fit inside that rectangular hole.</span>")
 
 	examine(mob/user)
 		desc = state?"<font size='4' color='red'>NO BUGS</font>":"A strange small metal object with a button in the middle and rectangular hole on the side..."
@@ -28,25 +28,25 @@
 			return
 		if(!state)
 			if(coins)
-				user.visible_message("You hear a click from somewhere near...","\blue You press the button and hear a click coming from inside...")
+				user.visible_message("You hear a click from somewhere near...","<span class='notice'>You press the button and hear a click coming from inside...</span>")
 				state = 1
 				spawn(rand(100,200))
 					switch(coins)
 						if(1)
 							for(var/mob/living/carbon/human/H in range(8))
 								if(!H || isnull(H) || H.stat) continue
-								H << "<font size=5 color=red>NO BUGS</font>"
+								to_chat(H, "<font size=5 color=red>NO BUGS</font>")
 
 						if(2)
 							for(var/mob/living/carbon/human/H in range(9))
 								if(!H || isnull(H) || H.stat) continue
-								H << "<font size=6 color=red>NO - BUGS</font>"
+								to_chat(H, "<font size=6 color=red>NO - BUGS</font>")
 								new /obj/item/reagent_container/food/snacks/sliceable/braincake(get_turf(H.loc))
 
 						if(3)
 							for(var/mob/living/carbon/human/H in range(10))
 								if(!H || isnull(H) || H.stat) continue
-								H << "<font size=7 color=red><b>NO<br>BUGS</b></font>"
+								to_chat(H, "<font size=7 color=red><b>NO<br>BUGS</b></font>")
 								new /obj/item/reagent_container/pill/happy(get_turf(H.loc))
 								new /obj/item/reagent_container/pill/happy(get_turf(H.loc))
 								new /obj/item/reagent_container/pill/happy(get_turf(H.loc))
@@ -61,6 +61,6 @@
 						layer = 2
 						coins = 0
 			else
-				usr << "\red Nothing happened..."
+				to_chat(usr, "<span class='danger'>Nothing happened...</span>")
 		else
-			usr << "\red Nothing happened..."
+			to_chat(usr, "<span class='danger'>Nothing happened...</span>")

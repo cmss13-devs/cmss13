@@ -775,16 +775,16 @@ window "rpane"
 		text = "Submit Bug"
 		command = "submit-bug"
 		group = "rpanemode"
-	elem "donate"
+	elem "discord"
 		type = BUTTON
 		pos = 682,0
 		size = 106x20
 		anchor1 = 79,0
 		anchor2 = 92,0
-		background-color = #8cffa4
+		background-color = #7289da
 		saved-params = "is-checked"
-		text = "Donate"
-		command = "donate"
+		text = "Discord"
+		command = "discord"
 		group = "rpanemode"
 	elem "rulesb"
 		type = BUTTON

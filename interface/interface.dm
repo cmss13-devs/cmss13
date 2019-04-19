@@ -35,12 +35,12 @@
 		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
 	return
 
-/client/verb/donate()
-	set name = "Donate"
-	set desc = "Like our server? Buy us a beer and get some custom-made items."
+/client/verb/discord()
+	set name = "Discord"
+	set desc = "Join our Discord! Meet and talk with other players in the server."
 	set hidden = 1
 
-	to_chat(src, "<br>View our donation page for more info: https://cm-ss13.com/viewtopic.php?f=119&t=5978.<br>")
+	src << link("https://discordapp.com/invite/TByu8b5")
 	return
 
 /client/verb/submitbug()

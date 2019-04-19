@@ -225,7 +225,7 @@ var/global/datum/defcon/defcon_controller
 	if(. == 0)
 		return
 
-	ticker.mode.get_specific_call("Marine Reinforcements (Squad) (Cryo)", FALSE, FALSE)
+	ticker.mode.get_specific_call("Marine Cryo Reinforcements (Full Equipment) (Squad)", FALSE, FALSE)
 
 /datum/defcon_reward/tank_points
 	name = "Additional Tank Part Fabricator Points"

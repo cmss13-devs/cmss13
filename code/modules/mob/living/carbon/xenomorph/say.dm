@@ -52,8 +52,11 @@
 					forced = 1
 					break
 
-	if(speaking && !forced)
-		message = trim(copytext(message,3))
+	if(speaking && !forced) 
+		if (copytext(message,1,2) == ";")
+			message = trim(copytext(message,2))
+		else if (copytext(message,1,3) == ":a")
+			message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))
 

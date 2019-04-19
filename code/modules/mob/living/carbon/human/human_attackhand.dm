@@ -210,7 +210,7 @@
 				if(org.status & LIMB_DESTROYED)
 					status = "MISSING!"
 
-				to_chat(src, "\t [status=="OK"?"<span class='notice'></span>":"<span class='danger'></span>"]My [org.display_name] is [status].")
+				to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
 			if((SKELETON in mutations) && !w_uniform && !wear_suit)
 				play_xylophone()
 		else

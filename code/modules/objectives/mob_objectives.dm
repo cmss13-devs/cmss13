@@ -257,6 +257,8 @@
 	if(!istype(H))
 		return 1
 	if(!istype(H.assigned_squad) || gibbed || !objectives_controller)
+		if(!istype(H.assigned_squad))
+		if(!objectives_controller)
 		return 1
 	objectives_controller.marines.add_marine(H)
 	return 1
@@ -280,6 +282,7 @@
 
 /hook/death/proc/handle_xeno_deaths(var/mob/living/carbon/Xenomorph/X, var/gibbed)
 	if(!istype(X) || gibbed || !objectives_controller)
+		if(!istype(X))
 		return 1
 	objectives_controller.xenos.add_xeno(X)
 	return 1

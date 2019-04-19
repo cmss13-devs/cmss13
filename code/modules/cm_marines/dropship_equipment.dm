@@ -934,7 +934,7 @@
 		var/evaccee_triagecard_color
 		if(MS.buckled_mob)
 			evaccee_name = MS.buckled_mob.real_name
-			if (istype(MS.buckled_mob, /mob/living/carbon/human))
+			if (ishuman(MS.buckled_mob)
 				var/mob/living/carbon/human/H = MS.buckled_mob
 				evaccee_triagecard_color = H.holo_card_color
 		else if(MS.buckled_bodybag)
@@ -942,7 +942,7 @@
 				if(isliving(AM))
 					var/mob/living/L = AM
 					evaccee_name = "[MS.buckled_bodybag.name]: [L.real_name]"
-					if (istype(L, /mob/living/carbon/human))
+					if (ishuman(L))
 						var/mob/living/carbon/human/H = L
 						evaccee_triagecard_color = H.holo_card_color
 					break

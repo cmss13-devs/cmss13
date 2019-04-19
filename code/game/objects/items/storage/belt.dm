@@ -277,10 +277,10 @@
 	)
 	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
 
-	New()
-		if(has_gamemode_skin)
-			select_gamemode_skin(type)
-		..()
+/obj/item/storage/belt/marine/New()
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
+	..()
 
 /obj/item/storage/belt/marine/m41a/New()
 	..()
@@ -342,9 +342,9 @@
 	max_storage_space = 20
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
-	New()
-		select_gamemode_skin(type)
-		..()
+/obj/item/storage/belt/shotgun/New()
+	select_gamemode_skin(type)
+	..()
 
 /obj/item/storage/belt/shotgun/full/New()
 	..()
@@ -363,18 +363,18 @@
 	storage_slots = 6
 	max_w_class = 1
 	max_storage_space = 6
-
 	can_hold=list(/obj/item/weapon/throwing_knife)
-	New()
-		select_gamemode_skin(type)
-		..()
-		item_state = "marinebelt" //PLACEHOLDER. Override, since it has no unique state.
-		new /obj/item/weapon/throwing_knife(src)
-		new /obj/item/weapon/throwing_knife(src)
-		new /obj/item/weapon/throwing_knife(src)
-		new /obj/item/weapon/throwing_knife(src)
-		new /obj/item/weapon/throwing_knife(src)
-		new /obj/item/weapon/throwing_knife(src)
+	
+/obj/item/storage/belt/knifepouch/New()
+	select_gamemode_skin(type)
+	..()
+	item_state = "marinebelt" //PLACEHOLDER. Override, since it has no unique state.
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
 
 /obj/item/storage/belt/grenade
 	name="\improper M276 pattern M40 HEDP rig"
@@ -546,9 +546,9 @@
 		/obj/item/ammo_magazine/pistol
 	)
 
-	New()
-		select_gamemode_skin(type)
-		..()
+/obj/item/storage/belt/gun/m4a3/New()
+	select_gamemode_skin(type)
+	..()
 
 /obj/item/storage/belt/gun/m4a3/full/New()
 	..()
@@ -609,9 +609,10 @@
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/ammo_magazine/revolver
 	)
-	New()
-		..()
-		select_gamemode_skin(type)
+
+/obj/item/storage/belt/gun/m44/New()
+	..()
+	select_gamemode_skin(type)
 
 /obj/item/storage/belt/gun/m44/full/New()
 	..()
@@ -650,9 +651,10 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with three pouches for speedloaders. Was included with the mail-in order for the USCM edition of the Mateba autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "cmateba_holster"
-	New()
-		..()
-		select_gamemode_skin(type)
+	
+/obj/item/storage/belt/gun/mateba/cmateba/New()
+	..()
+	select_gamemode_skin(type)
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/New()
 	..()
@@ -705,7 +707,7 @@
 
 /obj/item/storage/belt/gun/smartpistol
 	name = "\improper M276 pattern SU-6 Smartpistol holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M5A6 smartpistol."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the SU-6 smartpistol."
 	icon_state = "smartpistol_holster"
 	item_state = "smartpistol_holster"
 	can_hold = list(
@@ -721,3 +723,15 @@
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/flaregun
+	name = "\improper M276 pattern M82F flare gun holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M82F flare gun."
+	storage_slots = 15
+	max_storage_space = 20
+	icon_state = "m82f_holster"
+	item_state = "m82f_holster"
+	can_hold = list(
+		/obj/item/weapon/gun/flare,
+		/obj/item/device/flashlight/flare
+	)

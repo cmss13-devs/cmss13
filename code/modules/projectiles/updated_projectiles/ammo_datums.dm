@@ -1556,10 +1556,11 @@
 	flags_ammo_behavior = AMMO_INCENDIARY
 
 /datum/ammo/flare/New()
-		..()
-		damage = config.min_hit_damage
-		accuracy = config.med_hit_accuracy
-		max_range = config.short_shell_range
+	..()
+	damage = config.min_hit_damage
+	accuracy = config.med_hit_accuracy
+	max_range = 13
+	shell_speed = config.fast_shell_speed
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_nade(get_turf(P))

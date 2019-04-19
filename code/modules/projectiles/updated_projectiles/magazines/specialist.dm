@@ -99,6 +99,14 @@
 
 
 //-------------------------------------------------------
+//Flare gun. Close enough?
+/obj/item/ammo_magazine/internal/flare
+	name = "flare gun internal magazine"
+	caliber = "FL"
+	max_rounds = 1
+	default_ammo = /datum/ammo/flare
+
+//-------------------------------------------------------
 //M5 RPG
 
 /obj/item/ammo_magazine/rocket
@@ -184,4 +192,3 @@
 	caliber = "rocket array"
 	default_ammo = /datum/ammo/rocket/wp/quad
 	max_rounds = 4
-

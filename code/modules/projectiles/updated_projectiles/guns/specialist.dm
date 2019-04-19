@@ -788,3 +788,60 @@
 	scatter = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.med_recoil_value
+
+//-------------------------------------------------------
+//Flare gun. Close enough to a specialist gun?
+
+/obj/item/weapon/gun/flare
+	name = "\improper M82-F flare gun"
+	desc = "A flare gun issued to JTAC operators to use with standard flares. Cannot be used with signal flares. Comes with a miniscope. One shot, one... life saved?"
+	icon_state = "m82f"
+	item_state = "m82f"
+	current_mag = /obj/item/ammo_magazine/internal/flare
+	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
+	fire_sound = 'sound/weapons/gun_flare.ogg'
+	flags_gun_features = GUN_INTERNAL_MAG
+	attachable_allowed = list(/obj/item/attachable/scope/mini)
+	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
+
+/obj/item/weapon/gun/flare/set_gun_config_values()
+	fire_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult
+	scatter = 0
+	recoil = config.min_recoil_value
+	recoil_unwielded = config.low_recoil_value
+	recoil = config.min_recoil_value
+
+/obj/item/weapon/gun/flare/New()
+	..()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+	var/obj/item/attachable/scope/mini/S = new(src)
+	S.attach_icon = "" //Let's make it invisible, since the scope won't fit with the popped sprite anywho.
+	S.icon_state = ""
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachables()
+	S.icon_state = initial(S.icon_state)
+
+/obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)
+	. = ..()
+	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
+	icon_state = popped_state
+
+/obj/item/weapon/gun/flare/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/device/flashlight/flare))
+		var/obj/item/device/flashlight/flare/F = I
+		if(F.on)
+			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
+			return
+		if(istype(F, /obj/item/device/flashlight/flare/signal))
+			to_chat(user, SPAN_WARNING("You can't load a signal flare in [src]!"))
+			return
+		if(current_mag.current_rounds == 0)
+			playsound(user, reload_sound, 25, 1)
+			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
+			current_mag.current_rounds++
+			qdel(I)
+			icon_state = "m82f"
+		else to_chat(user, SPAN_WARNING("<span class='warning'>\The [src] is already loaded!"))
+	else to_chat(user, SPAN_WARNING("That's not a flare!"))

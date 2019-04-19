@@ -19,11 +19,11 @@
 	var/barricade_hitsound
 
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
-	var/can_change_dmg_state = 1
-	var/damage_state = 0
-	var/closed = 0
-	var/can_wire = 0
-	var/is_wired = 0
+	var/can_change_dmg_state = TRUE
+	var/damage_state = BARRICADE_DMG_NONE
+	var/closed = FALSE
+	var/can_wire = FALSE
+	var/is_wired = FALSE
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 
@@ -41,10 +41,10 @@
 	if(is_wired)
 		to_chat(user, "<span class='info'>There is a length of wire strewn across the top of this barricade.</span>")
 	switch(damage_state)
-		if(0) to_chat(user, "<span class='info'>It appears to be in good shape.</span>")
-		if(1) to_chat(user, "<span class='warning'>It's slightly damaged, but still very functional.</span>")
-		if(2) to_chat(user, "<span class='warning'>It's quite beat up, but it's holding together.</span>")
-		if(3) to_chat(user, "<span class='warning'>It's crumbling apart, just a few more blows will tear it apart.</span>")
+		if(BARRICADE_DMG_NONE) to_chat(user, "<span class='info'>It appears to be in good shape.</span>")
+		if(BARRICADE_DMG_SLIGHT) to_chat(user, "<span class='warning'>It's slightly damaged, but still very functional.</span>")
+		if(BARRICADE_DMG_MODERATE) to_chat(user, "<span class='warning'>It's quite beat up, but it's holding together.</span>")
+		if(BARRICADE_DMG_HEAVY) to_chat(user, "<span class='warning'>It's crumbling apart, just a few more blows will tear it apart.</span>")
 
 /obj/structure/barricade/hitby(atom/movable/AM)
 	if(AM.throwing && is_wired)
@@ -140,13 +140,13 @@
 				user.visible_message("<span class='notice'>[user] sets up [W.name] on [src].</span>",
 				"<span class='notice'>You set up [W.name] on [src].</span>")
 				B.use(1)
-				update_icon()
 				maxhealth += 50
 				health += 50
 				update_health()
-				can_wire = 0
-				is_wired = 1
+				can_wire = FALSE
+				is_wired = TRUE
 				climbable = FALSE
+				update_icon()
 		return
 
 	if(istype(W, /obj/item/tool/wirecutters))
@@ -160,8 +160,8 @@
 				maxhealth -= 50
 				health -= 50
 				update_health()
-				can_wire = 1
-				is_wired = 0
+				can_wire = TRUE
+				is_wired = FALSE
 				climbable = TRUE
 				update_icon()
 				new/obj/item/stack/barbed_wire( src.loc )
@@ -262,10 +262,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 /obj/structure/barricade/proc/update_damage_state()
 	var/health_percent = round(health/maxhealth * 100)
 	switch(health_percent)
-		if(0 to 25) damage_state = 3
-		if(25 to 50) damage_state = 2
-		if(50 to 75) damage_state = 1
-		if(75 to INFINITY) damage_state = 0
+		if(0 to 25) damage_state = BARRICADE_DMG_HEAVY
+		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
+		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
+		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
 
 
 /obj/structure/barricade/proc/acid_smoke_damage(var/obj/effect/particle_effect/smoke/S)
@@ -313,7 +313,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	debris = list(/obj/item/stack/snow)
 	stack_amount = 3
 	destroyed_stack_amount = 0
-	can_wire = 0
+	can_wire = FALSE
 
 /obj/structure/barricade/snow/New(loc, direction)
 	if(direction)
@@ -382,7 +382,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	barricade_hitsound = "sound/effects/woodhit.ogg"
 	can_change_dmg_state = 0
 	barricade_type = "wooden"
-	can_wire = 0
+	can_wire = FALSE
 
 /obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
@@ -437,17 +437,17 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	destroyed_stack_amount = 2
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "metal"
-	can_wire = 1
-	var/build_state = 2 //2 is fully secured, 1 is after screw, 0 is after wrench. Crowbar disassembles
+	can_wire = TRUE
+	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 
 /obj/structure/barricade/metal/examine(mob/user)
 	..()
 	switch(build_state)
-		if(2)
+		if(BARRICADE_BSTATE_SECURED)
 			to_chat(user, "<span class='info'>The protection panel is still tighly screwed in place.</span>")
-		if(1)
+		if(BARRICADE_BSTATE_UNSECURED)
 			to_chat(user, "<span class='info'>The protection panel has been removed, you can see the anchor bolts.</span>")
-		if(0)
+		if(BARRICADE_BSTATE_MOVABLE)
 			to_chat(user, "<span class='info'>The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.</span>")
 
 /obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
@@ -487,7 +487,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return
 
 	switch(build_state)
-		if(2) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
+		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
 			if(isscrewdriver(W))
 				if(user.action_busy)
 					return
@@ -498,9 +498,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 				user.visible_message("<span class='notice'>[user] removes [src]'s protection panel.</span>",
 				"<span class='notice'>You remove [src]'s protection panels, exposing the anchor bolts.</span>")
-				build_state = 1
+				build_state = BARRICADE_BSTATE_UNSECURED
 				return
-		if(1) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
+		if(BARRICADE_BSTATE_UNSECURED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
 			if(isscrewdriver(W))
 				if(user.action_busy)
 					return
@@ -511,7 +511,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 				user.visible_message("<span class='notice'>[user] set [src]'s protection panel back.</span>",
 				"<span class='notice'>You set [src]'s protection panel back.</span>")
-				build_state = 2
+				build_state = BARRICADE_BSTATE_SECURED
 				return
 			if(iswrench(W))
 				if(user.action_busy)
@@ -524,10 +524,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				user.visible_message("<span class='notice'>[user] loosens [src]'s anchor bolts.</span>",
 				"<span class='notice'>You loosen [src]'s anchor bolts.</span>")
 				anchored = FALSE
-				build_state = 0
+				build_state = BARRICADE_BSTATE_MOVABLE
 				update_icon() //unanchored changes layer
 				return
-		if(0) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
+		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
 			if(iswrench(W))
 				if(user.action_busy)
 					return
@@ -542,7 +542,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 				user.visible_message("<span class='notice'>[user] secures [src]'s anchor bolts.</span>",
 				"<span class='notice'>You secure [src]'s anchor bolts.</span>")
-				build_state = 1
+				build_state = BARRICADE_BSTATE_UNSECURED
 				anchored = TRUE
 				update_icon() //unanchored changes layer
 				return
@@ -587,7 +587,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	barricade_resistance = 15
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "folding"
-	can_wire = 0
+	can_wire = FALSE
 	can_change_dmg_state = 1
 	climbable = FALSE
 	unacidable = 1
@@ -645,11 +645,17 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 	var/old_loc = loc
 	if(do_after(user, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
-		var/obj/item/folding_barricade/f = new(loc)
+		fold(user)
+
+/obj/structure/barricade/deployable/proc/fold(mob/living/carbon/human/user)
+	var/obj/item/folding_barricade/f = new(loc)
+	f.health = health
+	f.maxhealth = maxhealth
+	if (user)
 		f.health = health
 		f.maxhealth = maxhealth
 		user.put_in_active_hand(f)
-		qdel(src)
+	qdel(src)
 
 /obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
@@ -679,7 +685,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	user.visible_message("<span class='notice'>[user] begins deploying [src].</span>",
 			"<span class='notice'>You begin deploying [src].</span>")
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) 
+	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	user.visible_message("<span class='notice'>[user] has finished deploying [src].</span>",
 			"<span class='notice'>You finish deploying [src].</span>")
@@ -708,10 +714,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "plasteel"
 	density = 0
-	closed = 1
-	can_wire = 1
+	closed = TRUE
+	can_wire = TRUE
 
-	var/build_state = 2 //2 is fully secured, 1 is after screw, 0 is after wrench. Crowbar disassembles
+	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
 	var/busy = 0 //Standard busy check
 	var/linked = 0
@@ -740,11 +746,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	..()
 
 	switch(build_state)
-		if(2)
+		if(BARRICADE_BSTATE_SECURED)
 			to_chat(user, "<span class='info'>The protection panel is still tighly screwed in place.</span>")
-		if(1)
+		if(BARRICADE_BSTATE_UNSECURED)
 			to_chat(user, "<span class='info'>The protection panel has been removed, you can see the anchor bolts.</span>")
-		if(0)
+		if(BARRICADE_BSTATE_MOVABLE)
 			to_chat(user, "<span class='info'>The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.</span>")
 
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
@@ -802,7 +808,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 				"<span class='notice'>You remove [src]'s protection panels, exposing the anchor bolts.</span>")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				build_state = 1
+				build_state = BARRICADE_BSTATE_UNSECURED
 				return
 			if(iscrowbar(W))
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
@@ -831,7 +837,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				user.visible_message("<span class='notice'>[user] set [src]'s protection panel back.</span>",
 				"<span class='notice'>You set [src]'s protection panel back.</span>")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				build_state = 2
+				build_state = BARRICADE_BSTATE_SECURED
 				return
 			if(iswrench(W))
 				if(busy || tool_cooldown > world.time)
@@ -844,7 +850,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				"<span class='notice'>You loosen [src]'s anchor bolts.</span>")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = FALSE
-				build_state = 0
+				build_state = BARRICADE_BSTATE_MOVABLE
 				update_icon() //unanchored changes layer
 				return
 
@@ -860,7 +866,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				"<span class='notice'>You secure [src]'s anchor bolts.</span>")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = TRUE
-				build_state = 1
+				build_state = BARRICADE_BSTATE_UNSECURED
 				update_icon() //unanchored changes layer
 				return
 			if(iscrowbar(W))
@@ -963,7 +969,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	debris = list(/obj/item/stack/sandbags, /obj/item/stack/sandbags)
 	barricade_hitsound = "sound/weapons/Genhit.ogg"
 	barricade_type = "sandbag"
-	can_wire = 1
+	can_wire = TRUE
 
 /obj/structure/barricade/sandbags/New(loc, direction)
 	if(direction)
@@ -1009,8 +1015,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	maxhealth += 50
 	health += 50
 	update_health()
-	can_wire = 0
-	is_wired = 1
+	can_wire = FALSE
+	is_wired = TRUE
 	update_icon()
 	climbable = FALSE
 	. = ..()
@@ -1020,8 +1026,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	maxhealth += 50
 	health += 50
 	update_health()
-	can_wire = 0
-	is_wired = 1
+	can_wire = FALSE
+	is_wired = TRUE
 	climbable = FALSE
 	update_icon()
 	. = ..()
@@ -1029,8 +1035,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	maxhealth += 50
 	health += 50
 	update_health()
-	can_wire = 0
-	is_wired = 1
+	can_wire = FALSE
+	is_wired = TRUE
 	climbable = FALSE
 	update_icon()
 	. = ..()

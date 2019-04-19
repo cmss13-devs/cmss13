@@ -1140,9 +1140,11 @@
 
 	for(var/datum/internal_organ/I in internal_organs)
 		I.damage = 0
-
-	if(!keep_viruses)
+		
+	if (!keep_viruses)
 		for (var/datum/disease/virus in viruses)
+			if (istype(virus, /datum/disease/black_goo))
+				continue
 			virus.cure(0)
 
 	undefibbable = FALSE

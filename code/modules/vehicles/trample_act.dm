@@ -49,6 +49,11 @@
 	else if(istype(A, /obj/structure/barricade/plasteel))
 		var/obj/structure/barricade/plasteel/cade = A
 		cade.close(cade)
+	else if(istype(A, /obj/structure/barricade/deployable))
+		var/obj/structure/barricade/deployable/cade = A
+		visible_message("<span class='danger'>[src] crushes [cade]!</span>")
+		playsound(cade, 'sound/effects/metal_crash.ogg', 35)
+		cade.fold()
 	else if(isobj(A) && !istype(A, /obj/vehicle))
 		var/obj/O = A
 		if(O.unacidable)

@@ -5,7 +5,7 @@
 	icon_state = "0"
 	opacity = 1
 	var/hull = 0 //1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
-	var/walltype = "metal"
+	var/walltype = WALL_METAL
 	var/junctiontype //when walls smooth with one another, the type of junction each wall is.
 	var/thermite = 0
 	var/melting = FALSE
@@ -490,3 +490,44 @@
 
 /turf/closed/wall/can_be_dissolved()
 	return !hull
+
+/turf/closed/wall/proc/wall2text(var/a_walltype)
+	switch(a_walltype)
+		if (WALL_METAL)
+			return "metal"
+		if (WALL_HULL)
+			return "testwall"
+		if (WALL_WHITE)
+			return "wwall"
+		if (WALL_SULACO)
+			return "sulaco"
+		if (WALL_HANGAR)
+			return "hangar"
+		if (WALL_REINFORCED)
+			return "rwall"
+		if (WALL_REINFORCED_RESEARCH)
+			return "research"
+		if (WALL_REINFORCED_IRON)
+			return "iron"
+		if (WALL_REINFORCED_CHIGUSA)
+			return "chigusa"
+		if (WALL_REINFORCED_BUNKER)
+			return "bunker"
+		if (WALL_RESIN)
+			return "resin"
+		if (WALL_THICKRESIN)
+			return "thickresin"
+		if (WALL_MEMBRANE)
+			return "membrane"
+		if (WALL_THICKMEMBRANE)
+			return "thickmembrane"
+		if (WALL_CAVE)
+			return "cavewall"
+		if (WALL_WOOD)
+			return "wood"
+		if (WALL_GOLD)
+			return "gold"
+		if (WALL_CULT)
+			return "cult"
+		if (WALL_STONE)
+			return "stone"

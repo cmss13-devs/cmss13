@@ -137,7 +137,16 @@
 /datum/reagent/oxycodone/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.) return
-	M.reagent_pain_modifier += PAIN_REDUCTION_FULL
+	M.reagent_pain_modifier += PAIN_REDUCTION_VERY_HEAVY
+
+/datum/reagent/oxycodone/on_overdose(mob/living/M)
+	M.apply_damage(1, OXY)
+	M.apply_damage(1, TOX)
+
+/datum/reagent/oxycodone/on_overdose_critical(mob/living/M)
+	M.apply_damage(3, OXY)
+	M.apply_damage(2, TOX)
+	M.adjustBrainLoss(1)
 
 /datum/reagent/oxycodone/on_overdose(mob/living/M)
 	M.apply_damage(1, OXY)

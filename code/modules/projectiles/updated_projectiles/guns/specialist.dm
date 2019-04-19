@@ -204,7 +204,7 @@
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/compensator)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
 	gun_skill_category = GUN_SKILL_SPEC
 
 /obj/item/weapon/gun/rifle/m4ra/New()

@@ -64,6 +64,9 @@
 		list("Cap", 12, /obj/item/clothing/head/cmcap, null, "black"),
 		list("Chef's hat", 12, /obj/item/clothing/head/chefhat, null, "black"),
 		list("Fez", 12, /obj/item/clothing/head/fez, null, "black"),
+		list("Olive Beret", 12, /obj/item/clothing/head/beret/cm, null, "black"),
+		list("Tan Beret", 12, /obj/item/clothing/head/beret/cm/tan, null, "black"),
+		list("Purple Beret", 12, /obj/item/clothing/head/beret/jan, null, "black"),
 		list("Hard hat, blue", 12, /obj/item/clothing/head/hardhat/dblue, null, "black"),
 		list("Hard hat, orange", 12, /obj/item/clothing/head/hardhat/orange, null, "black"),
 		list("Hard hat, red", 12, /obj/item/clothing/head/hardhat/red, null, "black"),
@@ -77,5 +80,5 @@
 		list("Hazard vest", 12, /obj/item/clothing/suit/storage/hazardvest, null, "black"),
 		list("Overalls", 12, /obj/item/clothing/suit/apron/overalls, null, "black"),
 		list("Chef's outfit", 12, /obj/item/clothing/suit/chef, null, "black"),
-		list("Chef's Apron", 12, /obj/item/clothing/suit/chef/classic, null, "black"),				
+		list("Chef's Apron", 12, /obj/item/clothing/suit/chef/classic, null, "black"),
 	)

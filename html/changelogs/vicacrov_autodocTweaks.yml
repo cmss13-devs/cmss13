@@ -1,9 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added a second autodoc to the Almayer."
-  - tweak: "The autodoc's interface has changed for better readability. Its functionality is the same. Its lines in the chat are more visible."
-  - rscdel: "Removed the autodoc's automatic mode."
-  - rscdel: "Removed some medical beds."

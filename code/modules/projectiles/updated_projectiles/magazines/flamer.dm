@@ -6,7 +6,6 @@
 	name = "incinerator tank"
 	desc = "A fuel tank of usually Ultra Thick Napthal Fuel,a sticky combustable liquid chemical, for use in the M240 incinerator unit. Handle with care."
 	icon_state = "flametank"
-	bonus_overlay = "flametank"
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	max_rounds = 60 //Per turf.
 	current_rounds = 60
@@ -44,7 +43,6 @@
 	name = "large incinerator tank"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel,a sticky combustable liquid chemical, for use in the M240-T incinerator unit. Handle with care."
 	icon_state = "flametank_large"
-	bonus_overlay = "flametank_large"
 	max_rounds = 100
 	current_rounds = 100
 	gun_type = /obj/item/weapon/gun/flamer/M240T
@@ -53,12 +51,10 @@
 	name = "large incinerator tank (B)"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type B,a wide-spreading sticky combustable liquid chemical, for use in the M240-T incinerator unit. Handle with care."
 	icon_state = "flametank_large_green"
-	bonus_overlay = "flametank_large_green"
 	caliber = "Napalm B"
 
 /obj/item/ammo_magazine/flamer_tank/large/X
 	name = "large incinerator tank (X)"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X,a sticky combustable liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with care."
 	icon_state = "flametank_large_blue"
-	bonus_overlay = "flametank_large_blue"
 	caliber = "Napalm X"

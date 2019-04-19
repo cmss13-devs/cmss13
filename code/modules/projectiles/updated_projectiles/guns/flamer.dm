@@ -403,7 +403,7 @@
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
 		M.IgniteMob()
 		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.
-		to_chat(M, "[isXeno(M)?")<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
+		to_chat(M, "[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!")
 
 
 /obj/flamer_fire/Dispose()

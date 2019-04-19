@@ -433,11 +433,11 @@
 
 /obj/item/weapon/gun/rifle/lmg
 	name = "\improper M41AE2 heavy pulse rifle"
-	desc = "A large weapon capable of laying down supressing fire. Currently undergoing field testing among USCM scout platoons and in mercenary companies. Like it's smaller brother, the M41A MK2, the M41AE2 is chambered in 10mm."
+	desc = "A large squad support weapon capable of laying down sustained supressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and L42 MK1, the M41AE2 is chambered in 10mm."
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 	origin_tech = "combat=5;materials=4"
-	fire_sound = 'sound/weapons/gun_rifle.ogg' //Change
+	fire_sound = 'sound/weapons/gun_m41ae2.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -460,7 +460,7 @@
 
 	New()
 		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 24, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
+		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 16, "stock_x" = 24, "stock_y" = 12)
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	fire_delay = config.high_fire_delay

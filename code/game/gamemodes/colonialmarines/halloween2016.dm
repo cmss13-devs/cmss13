@@ -794,7 +794,7 @@
 						new /obj/item/ammo_magazine/sniper(W.hold)
 						new /obj/item/ammo_magazine/sniper(W.hold)
 						new /obj/item/ammo_magazine/sniper/incendiary(W.hold)
-						H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/M42A/jungle(H), WEAR_J_STORE)
+						H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/M42A(H), WEAR_J_STORE)
 						H.equip_to_slot_or_del(new /obj/item/facepaint/sniper(H.back), WEAR_IN_BACK)
 						H.equip_to_slot_or_del(new /obj/item/bodybag/tarp(H.back), WEAR_IN_BACK)
 						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H.back), WEAR_IN_BACK)

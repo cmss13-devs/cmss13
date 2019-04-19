@@ -210,12 +210,12 @@
 	is_animating = 0
 	chair_state = DROPSHIP_CHAIR_UNFOLDED
 	sleep(5)
-	icon_state = "hotseat_chair"
+	icon_state = "hotseat"
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/unfold_up()
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)
 		chair_state = DROPSHIP_CHAIR_UNFOLDED
-		icon_state = "hotseat_chair"
+		icon_state = "hotseat"
 
 /obj/structure/bed/chair/dropship/passenger/rotate()
 	return // no

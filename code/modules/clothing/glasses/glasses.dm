@@ -51,17 +51,18 @@
 
 
 /obj/item/clothing/glasses/science
-	name = "science goggles"
-	desc = "The goggles do nothing! Can be used as safety googles."
+	name = "weird science goggles"
+	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy."
 	icon_state = "purple"
 	item_state = "glasses"
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
-	desc = "Yarr."
+	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
@@ -69,10 +70,11 @@
 	icon_state = "monocle"
 	item_state = "headset" // lol
 	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/material
 	name = "Optical Material Scanner"
-	desc = "Very confusing glasses."
+	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
 	icon_state = "material"
 	item_state = "glasses"
 	actions_types = list(/datum/action/item_action/toggle)
@@ -87,12 +89,14 @@
 	item_state = "mBCG"
 	prescription = 1
 	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/regular/hipster
-	name = "Prescription Glasses"
-	desc = "Made by Uncool. Co."
+	name = "Sunglasses"
+	desc = "They cut the sun and keep things fun. Why would you ever wear these indoors, or on a night operation. Are you trying to get yourself hurt?"
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses
 	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
@@ -100,6 +104,7 @@
 	icon_state = "3d"
 	item_state = "3d"
 	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/gglasses
 	name = "Green Glasses"
@@ -107,13 +112,13 @@
 	icon_state = "gglasses"
 	item_state = "gglasses"
 	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mgoggles
 	name = "marine ballistic goggles"
-	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet."
+	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
 	icon_state = "mgoggles"
 	item_state = "mgoggles"
-	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mgoggles/prescription
 	name = "prescription marine ballistic goggles"
@@ -121,13 +126,15 @@
 	icon_state = "mgoggles"
 	item_state = "mgoggles"
 	prescription = 1
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mbcg
-	name = "Marine RPG glasses"
-	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses."
+	name = "Prescription Marine RPG glasses"
+	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses. These ones actually have a proper prescribed lens."
 	icon_state = "mBCG"
 	item_state = "mBCG"
 	prescription = 1
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
@@ -210,6 +217,7 @@
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = -1
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
@@ -221,21 +229,24 @@
 /obj/item/clothing/glasses/sunglasses/prescription
 	name = "prescription sunglasses"
 	prescription = 1
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/aviator
 	name = "aviator shades"
-	desc = "A pair of tan tinted sunglasses. You faintly hear 80's music playing while wearing these."
+	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."
 	icon_state = "aviator"
 	item_state = "aviator"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/sechud
-	name = "HUDSunglasses"
-	desc = "Sunglasses with a HUD."
+	name = "Security HUD-Glasses"
+	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
 	icon_state = "sunhud"
 	eye_protection = 1
 	var/hud_type = MOB_HUD_SECURITY_ADVANCED
@@ -264,7 +275,7 @@
 
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
-	name = "tactical HUD"
+	name = "tactical SWAT HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"
 

@@ -75,7 +75,7 @@
 		user.visible_message("<span class='notice'>[user] starts installing a new glass window on the frame.</span>", \
 		"<span class='notice'>You start installing a new window on the frame.</span>")
 		playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message("<span class='notice'>[user] installs a new glass window on the frame.</span>", \
 			"<span class='notice'>You install a new window on the frame.</span>")
 			sheet.use(2)
@@ -86,7 +86,7 @@
 		if(buildstacktype)
 			to_chat(user, "<span class='notice'> You start to deconstruct [src].</span>")
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			if(do_after(user, 30, TRUE, 5, BUSY_ICON_BUILD))	// takes 3 seconds to deconstruct
+			if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))	// takes 3 seconds to deconstruct
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				new buildstacktype(loc, buildstackamount)
 				to_chat(user, "<span class='notice'> You deconstruct [src].</span>")

@@ -180,7 +180,7 @@
 	is_bombarding = 0
 	use_plasma(200)
 
-	if(do_after(src, bombard_speed, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(src, bombard_speed, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		if(!check_state())
 			bomb_cooldown = 0
 			return

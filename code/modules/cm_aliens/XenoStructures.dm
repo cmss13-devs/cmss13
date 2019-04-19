@@ -335,7 +335,7 @@
 				return
 
 			to_chat(X, "<span class='xenonotice'>You begin charging the resin hole with acid gas.</span>")
-			if(!do_after(B, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+			if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				return
 
 			if(trap_type != RESIN_TRAP_EMPTY)
@@ -376,7 +376,7 @@
 				return
 
 			to_chat(X, "<span class='xenonotice'>You begin charging the resin hole with acid.</span>")
-			if(!do_after(X, 30, TRUE, 5, BUSY_ICON_HOSTILE))
+			if(!do_after(X, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				return
 
 			if (!X.check_plasma(acid_cost))
@@ -949,7 +949,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		else if(isXenoLarva(X)) //Larva can zip through near-instantly, they are wormlike after all
 			tunnel_time = TUNNEL_MOVEMENT_LARVA_DELAY
 
-		if(do_after(X, tunnel_time, FALSE, 5, 0))
+		if(do_after(X, tunnel_time, INTERRUPT_NO_NEEDHAND, 0))
 			for(var/obj/structure/tunnel/T in global_tunnel_list)
 				if(T.tunnel_desc == pick)
 					if(T.contents.len > 2)// max 3 xenos in a tunnel
@@ -1022,7 +1022,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		M.visible_message("<span class='xenonotice'>\The [M] begins crawling down into \the [src].</span>", \
 		"<span class='xenonotice'>You begin crawling down into \the [src]</b>.</span>")
 
-	if(do_after(M, tunnel_time, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(global_tunnel_list.len) //Make sure other tunnels exist
 			M.forceMove(src) //become one with the tunnel
 			to_chat(M, "<span class='xenonotice'>Alt click the tunnel to exit, ctrl click to choose a destination.</span>")

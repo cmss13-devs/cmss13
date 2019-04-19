@@ -80,9 +80,10 @@
 					var/turf/open/snow/ST = T
 					if(!ST.slayer)
 						return
-				to_chat(user, "<span class='notice'>You start digging.</span>")
+				to_chat(user, SPAN_NOTICE("You start digging."))
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
-				if(!do_after(user, shovelspeed, TRUE, 5, BUSY_ICON_BUILD))
+				if(!do_after(user, shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					to_chat(user, SPAN_NOTICE("You stop digging."))
 					return
 				var/transf_amt = dirt_amt_per_dig
 				if(turfdirt == DIRT_TYPE_SNOW)

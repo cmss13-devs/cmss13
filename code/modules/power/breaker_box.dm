@@ -39,7 +39,7 @@
 
 	busy = 1
 	to_chat(user, "<span class='xenowarning'> Updating power settings..</span>")
-	if(do_after(user, 50, FALSE, 5, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
+	if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
 		set_state(!on)
 		to_chat(user, "<span class='xenowarning'> Update Completed. New setting:[on ? "on": "off"]</span>")
 	busy = 0
@@ -55,7 +55,7 @@
 	for(var/mob/O in viewers(user))
 		O.show_message(text("<span class='danger'>[user] started reprogramming [src]!</span>"), 1)
 
-	if(do_after(user, 300, FALSE, 5, BUSY_ICON_BUILD)) // 30s for non-AIs as humans have to manually reprogram it and rapid switching may cause some lag / powernet updates flood. If AIs spam it they can be easily traced.
+	if(do_after(user, 300, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // 30s for non-AIs as humans have to manually reprogram it and rapid switching may cause some lag / powernet updates flood. If AIs spam it they can be easily traced.
 		set_state(!on)
 		user.visible_message(\
 		"<span class='notice'>[user.name] [on ? "enabled" : "disabled"] the breaker box!</span>",\

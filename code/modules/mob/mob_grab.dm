@@ -105,7 +105,7 @@
 			return
 		X.visible_message("<span class='danger'>[X] starts to devour [pulled]!</span>", \
 		"<span class='danger'>You start to devour [pulled]!</span>", null, 5)
-		if(do_after(X, 50, FALSE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(isXeno(pulled.loc) && !X.stomach_contents.len)
 				to_chat(X, "<span class='warning'>Someone already ate \the [pulled].</span>")
 				return 0

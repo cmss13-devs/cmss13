@@ -272,7 +272,7 @@ should be alright.
 			var/tac_reload_time = 15
 			if(user.mind && user.mind.cm_skills)
 				tac_reload_time = max(15 - 5*user.mind.cm_skills.firearms, 5)
-			if(do_after(user,tac_reload_time, TRUE, 5, BUSY_ICON_FRIENDLY) && AM.loc == old_mag_loc && !current_mag)
+			if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && AM.loc == old_mag_loc && !current_mag)
 				if(istype(AM.loc, /obj/item/storage))
 					var/obj/item/storage/S = AM.loc
 					S.remove_from_storage(AM)
@@ -361,7 +361,7 @@ should be alright.
 
 	user.visible_message("<span class='notice'>[user] begins attaching [attachment] to [src].</span>",
 	"<span class='notice'>You begin attaching [attachment] to [src].</span>", null, 4)
-	if(do_after(user, 20, TRUE, 2, BUSY_ICON_FRIENDLY))
+	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 2))
 		if(attachment && attachment.loc)
 			user.visible_message("<span class='notice'>[user] attaches [attachment] to [src].</span>",
 			"<span class='notice'>You attach [attachment] to [src].</span>", null, 4)
@@ -654,7 +654,7 @@ should be alright.
 	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
 	"<span class='notice'>You begin stripping [A] from [src].</span>", null, 4)
 
-	if(!do_after(usr,35, TRUE, 5, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
 	if(A != rail && A != muzzle && A != under && A != stock)

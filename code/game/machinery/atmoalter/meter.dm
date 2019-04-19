@@ -97,7 +97,7 @@
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	user.visible_message("<span class='notice'>[user] begins to unfasten [src].</span>",
 	"<span class='notice'>You begin to unfasten [src].</span>")
-	if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
 		"<span class='notice'>You unfasten [src].</span>")

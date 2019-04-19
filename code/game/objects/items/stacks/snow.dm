@@ -29,16 +29,17 @@
 					ET.dirt_amt = 0
 					ET.update_icon()
 			else
-				to_chat(user, "<span class='notice'>You start taking snow from [src].</span>")
+				to_chat(user, SPAN_NOTICE("You start taking snow from [src]."))
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
-				if(!do_after(user, ET.shovelspeed, TRUE, 5, BUSY_ICON_BUILD))
+				if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					to_chat(user, SPAN_NOTICE("You stop taking snow from [src]."))
 					return
 				var/transf_amt = ET.dirt_amt_per_dig
 				if(amount < ET.dirt_amt_per_dig)
 					transf_amt = amount
 				ET.dirt_amt = transf_amt
 				ET.dirt_type = DIRT_TYPE_SNOW
-				user <<"<span class='notice'>You take snow from [src].</span>"
+				to_chat(user, SPAN_NOTICE("You take snow from [src]."))
 				ET.update_icon()
 				use(transf_amt)
 				return TRUE
@@ -59,7 +60,8 @@
 				to_chat(user, "This ground is already full of snow.")
 				return
 			to_chat(user, "You start putting some snow back on the ground.")
-			if(!do_after(user, 15, FALSE, 5, BUSY_ICON_BUILD))
+			if(!do_after(user, 15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				to_chat(user, "You stop putting some snow back on the ground.")
 				return
 			if(T.slayer >= 3)
 				return
@@ -92,9 +94,10 @@
 				to_chat(user, "<span class='warning'>You need a clear, open area to build the sandbag barricade!</span>")
 				return
 
-	user.visible_message("<span class='notice'>[user] starts assembling a snow barricade.</span>",
-	"<span class='notice'>You start assembling a snow barricade.</span>")
-	if(!do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+	user.visible_message(SPAN_NOTICE("[user] starts assembling a snow barricade."), \
+		SPAN_NOTICE("You start assembling a snow barricade."))
+	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		to_chat(user, "You stop assembling a snow barricade.")
 		return
 	if(amount < 3)
 		return

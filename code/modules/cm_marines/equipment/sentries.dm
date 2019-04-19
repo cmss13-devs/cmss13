@@ -110,7 +110,7 @@
 
 			user.visible_message("<span class='notice'>[user] begins securing [src] to the ground.</span>",
 			"<span class='notice'>You begin securing [src] to the ground.</span>")
-			if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				user.visible_message("<span class='notice'>[user] secures [src] to the ground.</span>",
 				"<span class='notice'>You secure [src] to the ground.</span>")
@@ -130,7 +130,7 @@
 			return
 		user.visible_message("<span class='notice'>[user] begins installing [src]'s wiring.</span>",
 		"<span class='notice'>You begin installing [src]'s wiring.</span>")
-		if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(CC.use(10))
 				has_cable = 1
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -151,7 +151,7 @@
 			return
 		user.visible_message("<span class='notice'>[user] begins installing [O] on [src].</span>",
 		"<span class='notice'>You begin installing [O] on [src].</span>")
-		if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] installs [O] on [src].</span>",
 			"<span class='notice'>You install [O] on [src].</span>")
@@ -178,7 +178,7 @@
 
 		user.visible_message("<span class='notice'>[user] begins installing [src]'s reinforced plating.</span>",
 		"<span class='notice'>You begin installing [src]'s reinforced plating.</span>")
-		if(do_after(user, 50, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!M) return
 			if(M.amount >= 10)
 				has_plates = 1
@@ -200,7 +200,7 @@
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		user.visible_message("<span class='notice'>[user] begins welding [src]'s parts together.</span>",
 		"<span class='notice'>You begin welding [src]'s parts together.</span>")
-		if(do_after(user,60, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user,60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src || !WT || !WT.isOn()) return
 			if(WT.remove_fuel(0, user))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -225,7 +225,7 @@
 
 		user.visible_message("<span class='notice'>[user] begins installing [O] on [src].</span>",
 		"<span class='notice'>You begin installing [O] on [src].</span>")
-		if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			has_sensor = 1
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] installs [O] on [src].</span>",
@@ -349,7 +349,7 @@
 	if(stat)
 		user.visible_message("<span class='notice'>[user] begins to set [src] upright.</span>",
 		"<span class='notice'>You begin to set [src] upright.</span>")
-		if(do_after(user,20, TRUE, 5, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			user.visible_message("<span class='notice'>[user] sets [src] upright.</span>",
 			"<span class='notice'>You set [src] upright.</span>")
 			stat = 0
@@ -525,7 +525,7 @@
 			user.visible_message("<span class='notice'>[user] begins unanchoring [src] from the ground.</span>",
 			"<span class='notice'>You begin unanchoring [src] from the ground.</span>")
 
-			if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'>[user] unanchors [src] from the ground.</span>",
 				"<span class='notice'>You unanchor [src] from the ground.</span>")
 				anchored = 0
@@ -537,7 +537,7 @@
 			user.visible_message("<span class='notice'>[user] begins securing [src] to the ground.</span>",
 			"<span class='notice'>You begin securing [src] to the ground.</span>")
 
-			if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'>[user] secures [src] to the ground.</span>",
 				"<span class='notice'>You secure [src] to the ground.</span>")
 				anchored = 1
@@ -583,7 +583,7 @@
 		if(WT.remove_fuel(0, user))
 			user.visible_message("<span class='notice'>[user] begins repairing [src].</span>",
 			"<span class='notice'>You begin repairing [src].</span>")
-			if(do_after(user, 50, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='notice'>[user] repairs [src].</span>",
 				"<span class='notice'>You repair [src].</span>")
 				update_health(-50)
@@ -602,7 +602,7 @@
 				user.visible_message("<span class='notice'>[user] begins removing [src]'s [cell.name].</span>",
 				"<span class='notice'>You begin removing [src]'s [cell.name].</span>")
 
-				if(do_after(user, 30, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					user.visible_message("<span class='notice'>[user] removes [src]'s [cell.name].</span>",
 					"<span class='notice'>You remove [src]'s [cell.name].</span>")
 					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -618,7 +618,7 @@
 
 		user.visible_message("<span class='notice'>[user] begins installing \a [O.name] into [src].</span>",
 		"<span class='notice'>You begin installing \a [O.name] into [src].</span>")
-		if(do_after(user, 30, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.drop_inv_item_to_loc(O, src)
 			user.visible_message("<span class='notice'>[user] installs \a [O.name] into [src].</span>",
 			"<span class='notice'>You install \a [O.name] into [src].</span>")
@@ -636,7 +636,7 @@
 			user.visible_message("<span class='notice'>[user] begins swapping a new [O.name] into [src].</span>",
 			"<span class='notice'>You begin swapping a new [O.name] into [src].</span>")
 			if(user.action_busy) return
-			if(!do_after(user, 70, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(!do_after(user, 70, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
 
 		playsound(loc, 'sound/weapons/unload.ogg', 25, 1)

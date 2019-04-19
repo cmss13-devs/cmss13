@@ -103,7 +103,7 @@
 			user.visible_message("<span class='notice'>[user] starts repairing [src] with [R].</span>",
 			"<span class='notice'>You start repairing [src] with [R]")
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			if(do_after(user, 30, TRUE, 5, BUSY_ICON_FRIENDLY))
+			if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				if(R.amount < amount_needed)
 					to_chat(user, "<span class='warning'>You need more metal rods to repair [src].")
 					return
@@ -154,7 +154,7 @@
 		user.visible_message("<span class='notice'>[user] starts cutting through [src] with [W].</span>",
 		"<span class='notice'>You start cutting through [src] with [W]")
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message("<span class='notice'>[user] cuts through [src] with [W].</span>",
 			"<span class='notice'>You cut through [src] with [W]")

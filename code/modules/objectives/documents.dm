@@ -112,7 +112,7 @@
 				to_chat(user, "<span class='warning'>You can't understand this.</span>")
 				return 0
 	to_chat(user, "<span class='notice'>You start reading \the [src].")
-	if(!do_after(user, reading_time, TRUE, 5, BUSY_ICON_GENERIC))
+	if(!do_after(user, reading_time, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
 		to_chat(user, "<span class='warning'>You get distracted and lose your train of thought, you'll have to start over reading this.</span>")
 		return 0
 	if(!objective.is_active())

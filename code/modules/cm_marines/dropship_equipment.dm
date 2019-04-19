@@ -35,7 +35,7 @@
 				return TRUE
 			if(installed_equipment) return TRUE
 			playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-			if(!do_after(user, 70, FALSE, 5, BUSY_ICON_BUILD)) return TRUE
+			if(!do_after(user, 70, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return TRUE
 			if(installed_equipment || PC.loaded != SE) return TRUE
 			to_chat(user, "<span class='notice'>You install [SE] on [src].</span>")
 			SE.forceMove(loc)
@@ -159,7 +159,7 @@
 				var/obj/structure/ship_ammo/SA = PC.loaded
 				if(SA.equipment_type == type)
 					playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
-					if(do_after(user, 30, FALSE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 30, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(!ammo_equipped && PC.loaded == SA && PC.linked_powerloader && PC.linked_powerloader.buckled_mob == user)
 							SA.forceMove(src)
 							PC.loaded = null
@@ -173,7 +173,7 @@
 
 		else if(uses_ammo && ammo_equipped)
 			playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-			if(do_after(user, 30, FALSE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, 30, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(ammo_equipped && PC.linked_powerloader && PC.linked_powerloader.buckled_mob == user)
 					playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 					if(!ammo_equipped.ammo_count)
@@ -191,7 +191,7 @@
 			playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 			var/duration_time = 10
 			if(ship_base) duration_time = 70 //uninstalling equipment takes more time
-			if(do_after(user, duration_time, FALSE, 5, BUSY_ICON_BUILD))
+			if(do_after(user, duration_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(PC.linked_powerloader && !PC.loaded && PC.linked_powerloader.buckled_mob == user)
 					forceMove(PC.linked_powerloader)
 					PC.loaded = src

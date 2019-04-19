@@ -35,7 +35,7 @@
 				sleeptoxin = 1
 				break
 		if(sleeptoxin)
-			if(!do_after(user, 20, TRUE, 5, BUSY_ICON_GENERIC, TRUE))
+			if(!do_after(user, 20, INTERRUPT_ALL, TRUE, BUSY_ICON_GENERIC))
 				return 0
 			if(!M.Adjacent(user))
 				return 0

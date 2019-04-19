@@ -101,7 +101,7 @@ RCD
 					if(checkResource(3, user))
 						to_chat(user, "Building Wall ...")
 						playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-						if(do_after(user, 20, TRUE, 5, BUSY_ICON_BUILD))
+						if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							if(!useResource(3, user)) return 0
 							activate()
 							A:ChangeTurf(/turf/closed/wall)
@@ -113,7 +113,7 @@ RCD
 					if(checkResource(10, user))
 						to_chat(user, "Building Airlock...")
 						playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-						if(do_after(user, 50, TRUE, 5, BUSY_ICON_BUILD))
+						if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							if(!useResource(10, user)) return 0
 							activate()
 							var/obj/machinery/door/airlock/T = new /obj/machinery/door/airlock( A )
@@ -132,7 +132,7 @@ RCD
 					if(checkResource(5, user))
 						to_chat(user, "Deconstructing Wall...")
 						playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-						if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+						if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							if(!useResource(5, user)) return 0
 							activate()
 							A:ChangeTurf(/turf/open/floor/plating/airless)
@@ -143,7 +143,7 @@ RCD
 					if(checkResource(5, user))
 						to_chat(user, "Deconstructing Floor...")
 						playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-						if(do_after(user, 50, TRUE, 5, BUSY_ICON_BUILD))
+						if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							if(!useResource(5, user)) return 0
 							activate()
 							A:ChangeTurf(/turf/open/floor/plating/airless)
@@ -154,7 +154,7 @@ RCD
 					if(checkResource(10, user))
 						to_chat(user, "Deconstructing Airlock...")
 						playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-						if(do_after(user, 50, TRUE, 5, BUSY_ICON_BUILD))
+						if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 							if(!useResource(10, user)) return 0
 							activate()
 							qdel(A)

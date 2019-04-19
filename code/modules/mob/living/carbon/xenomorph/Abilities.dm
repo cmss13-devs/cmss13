@@ -535,7 +535,7 @@
 	else
 		X.visible_message("<span class='notice'>[X] starts looking off into the distance.</span>", \
 			"<span class='notice'>You start focusing your sight to look off into the distance.</span>", null, 5)
-		if(!do_after(X, 20, FALSE)) return
+		if(!do_after(X, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
 		if(X.is_zoomed) return
 		X.zoom_in()
 		..()
@@ -591,7 +591,7 @@
 
 	X.visible_message("<span class='notice'>\The [X] begins digging their claws into the ground.</span>", \
 	"<span class='notice'>You begin digging yourself into place.</span>", null, 5)
-	if(do_after(X, bombard_time, FALSE, 5, BUSY_ICON_GENERIC))
+	if(do_after(X, bombard_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(X.is_bombarding) return
 		X.is_bombarding = 1
 		X.visible_message("<span class='notice'>\The [X] digs itself into the ground!</span>", \
@@ -812,7 +812,7 @@
 
 	X.visible_message("<span class='xenonotice'>[X] begins digging out a tunnel entrance.</span>", \
 	"<span class='xenonotice'>You begin digging out a tunnel entrance.</span>", null, 5)
-	if(!do_after(X, 100, TRUE, 5, BUSY_ICON_BUILD))
+	if(!do_after(X, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		to_chat(X, "<span class='warning'>Your tunnel caves in as you stop digging it.</span>")
 		return
 	if(!X.check_plasma(plasma_cost))
@@ -867,7 +867,7 @@
 	if(X.check_plasma(plasma_cost))
 		X.visible_message("<span class='xenowarning'>\The [X] starts to grow an ovipositor.</span>", \
 		"<span class='xenowarning'>You start to grow an ovipositor...(takes 20 seconds, hold still)</span>")
-		if(!do_after(X, 200, TRUE, 20, BUSY_ICON_FRIENDLY) && X.check_plasma(plasma_cost))
+		if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, 20) && X.check_plasma(plasma_cost))
 			return
 		if(!X.check_state()) return
 		if(!locate(/obj/effect/alien/weeds) in current_turf)
@@ -898,7 +898,7 @@
 		return
 	X.visible_message("<span class='xenowarning'>\The [X] starts detaching itself from its ovipositor!</span>", \
 		"<span class='xenowarning'>You start detaching yourself from your ovipositor.</span>")
-	if(!do_after(X, 50, FALSE, 10, BUSY_ICON_HOSTILE)) return
+	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, 10)) return
 	if(!X.check_state())
 		return
 	if(!X.ovipositor)

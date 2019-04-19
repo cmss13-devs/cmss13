@@ -51,7 +51,7 @@
 		if(WT.remove_fuel(0,user))
 			to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
 			playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			if(do_after(user, max(5, damage / 5, TRUE, 5, BUSY_ICON_FRIENDLY)) && WT && WT.isOn())
+			if(do_after(user, max(5, damage / 5), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && WT && WT.isOn())
 				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
 				take_damage(-damage)
 			return
@@ -75,7 +75,7 @@
 				to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 
-				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall/r_wall))
 						return
 
@@ -103,7 +103,7 @@
 					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
 					playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
-					if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+					if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(!istype(src, /turf/closed/wall/r_wall) || !WT || !WT.isOn())
 							return
 
@@ -120,7 +120,7 @@
 				to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
-				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall/r_wall))
 						return
 
@@ -135,7 +135,7 @@
 				to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
-				if(do_after(user, 100, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall/r_wall))
 						return
 					if(d_state == 3 )
@@ -149,7 +149,7 @@
 				to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 
-				if(do_after(user, 40, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall/r_wall))
 						return
 
@@ -165,7 +165,7 @@
 				"<span class='notice'>You begin uncrimping the hydraulic lines.</span>")
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 
-				if(do_after(user, 60, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall/r_wall)) return
 
 					if(d_state == 5)
@@ -180,7 +180,7 @@
 				to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
-				if(do_after(user, 100, TRUE, 5, BUSY_ICON_BUILD))
+				if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall/r_wall))
 						return
 
@@ -196,7 +196,7 @@
 
 		to_chat(user, "<span class='notice'>You begin to drill though the wall.</span>")
 
-		if(do_after(user, 200, TRUE, 5, BUSY_ICON_BUILD))
+		if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!istype(src, /turf/closed/wall/r_wall))
 				return
 			to_chat(user, "<span class='notice'>Your drill tears though the last of the reinforced plating.</span>")
@@ -208,7 +208,7 @@
 		user.visible_message("<span class='notice'>[user] starts repairing the damage to [src].</span>",
 		"<span class='notice'>You start repairing the damage to [src].</span>")
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
-		if(do_after(user, max(5, round(damage / 5)), TRUE, 5, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
+		if(do_after(user, max(5, round(damage / 5)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
 			user.visible_message("<span class='notice'>[user] finishes repairing the damage to [src].</span>",
 			"<span class='notice'>You finish repairing the damage to [src].</span>")
 			take_damage(-damage)

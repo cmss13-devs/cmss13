@@ -240,7 +240,7 @@
 
 	to_chat(M, "<span class='notice'>You start pulling [driver ? driver : gunner] out of their seat.</span>")
 
-	if(!do_after(M, 200, show_busy_icon = BUSY_ICON_HOSTILE))
+	if(!do_after(M, 200, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(M, "<span class='warning'>You stop pulling [driver ? driver : gunner] out of their seat.</span>")
 		return
 
@@ -294,7 +294,7 @@
 				to_chat(M, "<span class='notice'>That seat is already taken.</span>")
 				return
 
-			if(!do_after(M, 100, needhand = FALSE, show_busy_icon = TRUE))
+			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, TRUE))
 				to_chat(M, "<span class='notice'>Something interrupted you while getting in.</span>")
 				return
 
@@ -325,7 +325,7 @@
 				to_chat(M, "<span class='notice'>That seat is already taken.</span>")
 				return
 
-			if(!do_after(M, 100, needhand = FALSE, show_busy_icon = TRUE))
+			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, TRUE))
 				to_chat(M, "<span class='notice'>Something interrupted you while getting in.</span>")
 				return
 

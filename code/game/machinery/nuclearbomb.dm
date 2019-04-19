@@ -34,7 +34,7 @@ var/bomb_set = FALSE
 /obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && bomb_set && iswirecutter(O))
 		user.visible_message("<span class='danger'>[user] begins to diffuse [src].</span>", "<span class='danger'>You begin to diffuse [src]. This will take some time...</span>")
-		if(do_after(user, 150, FALSE, 5, BUSY_ICON_HOSTILE))
+		if(do_after(user, 150, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		return
@@ -56,7 +56,7 @@ var/bomb_set = FALSE
 		if (isXenoQueen(user))
 			if(timing && bomb_set)
 				user.visible_message("<span class='danger'>[user] begins to diffuse [src].</span>", "<span class='danger'>You begin to diffuse [src]. This will take some time...</span>")
-				if(do_after(user, 150, FALSE, 5, BUSY_ICON_HOSTILE))
+				if(do_after(user, 150, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return
 		ui_interact(user)
@@ -103,7 +103,7 @@ var/bomb_set = FALSE
 
 	usr.visible_message("<span class='warning'>[usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"].</span>", "<span class='warning'>You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"].</span>")
 	being_used = TRUE
-	if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		if (deployable)
 			deployable = FALSE
 			anchored = FALSE
@@ -147,7 +147,7 @@ var/bomb_set = FALSE
 
 			usr.visible_message("<span class='warning'>[usr] begins to [timing ? "disengage" : "engage"] [src]!</span>", "<span class='warning'>You begin to [timing ? "disengage" : "engage"] [src].</span>")
 			being_used = TRUE
-			if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
+			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				timing = !timing
 				if (timing)
 					icon_state = "nuclearbomb2"
@@ -174,7 +174,7 @@ var/bomb_set = FALSE
 				return
 			usr.visible_message("<span class='warning'>[usr] begins to [safety ? "disable" : "enable"] the safety on [src]!</span>", "<span class='warning'>You begin to [safety ? "disable" : "enable"] the safety on [src].</span>")
 			being_used = TRUE
-			if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
+			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				safety = !safety
 				playsound(src.loc, 'sound/items/poster_being_created.ogg', 100, 1)
 			being_used = FALSE
@@ -189,7 +189,7 @@ var/bomb_set = FALSE
 				to_chat(usr, "<span class='danger'>You cannot deploy [src] here!</span>")
 				return
 			being_used = TRUE
-			if(do_after(usr, 50, FALSE, 5, BUSY_ICON_HOSTILE))
+			if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(!anchored)
 					visible_message("<span class='danger'>With a steely snap, bolts slide out of [src] and anchor it to the flooring.</span>")
 				else

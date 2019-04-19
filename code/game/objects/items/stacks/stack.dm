@@ -143,9 +143,9 @@
 				return
 		if(R.time)
 			if(usr.action_busy) return
-			usr.visible_message("<span class='notice'>[usr] starts assembling \a [R.title].</span>",
-			"<span class='notice'>You start assembling \a [R.title].</span>")
-			if(!do_after(usr, R.time, TRUE, 5, BUSY_ICON_BUILD))
+			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
+				SPAN_NOTICE("You start assembling \a [R.title]."))
+			if(!do_after(usr, R.time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 		//We want to check this again for girder stacking
 		if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))

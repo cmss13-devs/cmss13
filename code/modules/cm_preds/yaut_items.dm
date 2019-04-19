@@ -477,7 +477,7 @@
 	to_chat(user, "<span class='notice'>You press a few buttons...</span>")
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
-	if(do_after(usr, 3, FALSE, 1, BUSY_ICON_FRIENDLY))
+	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 1))
 		var/chance = rand(1, 100)
 		if(chance <= randomProbability)
 			return 1
@@ -768,7 +768,7 @@
 	set waitfor = 0
 	exploding = 1
 	playsound(src.loc,'sound/effects/pred_countdown.ogg', 100, 0, 15, 10)
-	sleep(rand(65,85))
+	do_after(victim, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 	var/turf/T = get_turf(victim)
 	if(istype(T) && exploding)
 		victim.apply_damage(50,BRUTE,"chest")
@@ -1139,7 +1139,7 @@
 		playsound(src,'sound/ambience/signal.ogg', 25, 1)
 		timer = 1
 		user.visible_message("<span class='info'>[user] starts becoming shimmery and indistinct...</span>")
-		if(do_after(user,100, TRUE, 5, BUSY_ICON_GENERIC))
+		if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			// Teleport self.
 			user.visible_message("<span class='warning'>\icon[user][user] disappears!</span>")
 			var/tele_time = animation_teleport_quick_out(user)
@@ -1166,7 +1166,7 @@
 	if(!isYautja(H))
 		to_chat(user, "<span class='warning'>The screen angrily flashes three times!</span>")
 		playsound(user, 'sound/effects/EMPulse.ogg', 25, 1)
-		sleep(30)
+		do_after(user, 30, INTERRUPT_NONE, 1)
 		explosion(loc,-1,-1,2)
 		if(loc)
 			if(ismob(loc))
@@ -1179,7 +1179,7 @@
 	playsound(src,'sound/ambience/signal.ogg', 25, 1)
 	timer = 1
 	user.visible_message("<span class='info'>[user] starts becoming shimmery and indistinct...</span>")
-	if(do_after(user,100, TRUE, 5, BUSY_ICON_GENERIC))
+	if(do_after(user,100, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Teleport self.
 		user.visible_message("<span class='warning'>\icon[user][user] disappears!</span>")
 		var/tele_time = animation_teleport_quick_out(user)
@@ -1296,7 +1296,7 @@
 		if(D.operating || !D.density) return
 		to_chat(user, "<span class='notice'>You jam [src] into [D] and strain to rip it open.</span>")
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, 1)
-		if(do_after(user,30, TRUE, 5, BUSY_ICON_HOSTILE) && D.density)
+		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			D.open(1)
 
 /obj/item/weapon/wristblades/attack_self(mob/user)
@@ -1367,7 +1367,7 @@
 
 	to_chat(user, "<span class='notice'>You begin using your knife to rip shrapnel out. Hold still. This will probably hurt...</span>")
 
-	if(do_after(user,50, TRUE, 5, BUSY_ICON_FRIENDLY))
+	if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		var/obj/item/shard/shrapnel/S
 		for(var/datum/limb/O in user.limbs)
 			for(S in O.implants)

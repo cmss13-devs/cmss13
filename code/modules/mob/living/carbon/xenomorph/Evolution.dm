@@ -183,7 +183,7 @@
 	visible_message("<span class='xenonotice'>\The [src] begins to twist and contort.</span>", \
 	"<span class='xenonotice'>You begin to twist and contort.</span>")
 	xeno_jitter(25)
-	if(do_after(src, 25, FALSE, 5, BUSY_ICON_HOSTILE))
+	if(do_after(src, 25, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE)) // Can evolve while moving
 		if(!isturf(loc)) //qdel'd or moved into something
 			return
 		if(castepick == "Queen") //Do another check after the tick.

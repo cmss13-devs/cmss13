@@ -100,7 +100,7 @@
 	if(istype(W,/obj/item/tool/pickaxe))
 		var/obj/item/tool/pickaxe/digTool = W
 		to_chat(user, "You start digging the [name].")
-		if(do_after(user,digTool.digspeed*hardness, TRUE, 5, BUSY_ICON_GENERIC) && src)
+		if(do_after(user,digTool.digspeed*hardness, INTERRUPT_ALL, BUSY_ICON_GENERIC) && src)
 			to_chat(user, "You finished digging.")
 			Dismantle()
 	else if(!(W.flags_item & NOBLUDGEON) && W.force)

@@ -445,18 +445,19 @@ var/datum/mob_hud/huds = list(
 		if(I)
 			perpname = I.registered_name
 
-	for(var/datum/data/record/E in data_core.general)
-		if(E.fields["name"] == perpname)
-			for(var/datum/data/record/R in data_core.security)
-				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
-					holder.icon_state = "hudwanted"
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
-					holder.icon_state = "hudprisoner"
-					break
-				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
-					holder.icon_state = "hudreleased"
-					break
+	if(data_core)
+		for(var/datum/data/record/E in data_core.general)
+			if(E.fields["name"] == perpname)
+				for(var/datum/data/record/R in data_core.security)
+					if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
+						holder.icon_state = "hudwanted"
+						break
+					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
+						holder.icon_state = "hudprisoner"
+						break
+					else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
+						holder.icon_state = "hudreleased"
+						break
 
 
 

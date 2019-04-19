@@ -687,6 +687,18 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	O.ckey = new_ckey
 	if(O.client) O.client.change_view(world.view)
 
+/client/proc/cmd_admin_ghostchange(var/mob/living/M, var/mob/dead/observer/O)
+	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG)) || !M.ckey) //Let's add a few extra sanity checks.
+		return
+	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
+		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
+			return
+		if(M.client)
+			M.ghostize()
+		log_admin("[usr.ckey] has put [O.name]/([O.ckey]) into [M.name].")
+		M.ckey = O.ckey
+	else return
+
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in world)
 	set category = "Special Verbs"
 	set name = "Explosion"

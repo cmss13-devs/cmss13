@@ -19,10 +19,8 @@
 	..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
-		SetLuminosity(brightness_on)
 	else
 		icon_state = initial(icon_state)
-		SetLuminosity(0)
 
 /obj/item/device/flashlight/Dispose()
 	if(ismob(src.loc))

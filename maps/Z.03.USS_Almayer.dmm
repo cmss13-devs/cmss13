@@ -5525,6 +5525,7 @@
 	icon_state = "toilet00";
 	dir = 8
 	},
+/obj/item/device/cotablet,
 /turf/open/floor/almayer{
 	tag = "icon-sterile";
 	icon_state = "sterile"

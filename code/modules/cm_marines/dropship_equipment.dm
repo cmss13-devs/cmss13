@@ -934,7 +934,7 @@
 		var/evaccee_triagecard_color
 		if(MS.buckled_mob)
 			evaccee_name = MS.buckled_mob.real_name
-			if (ishuman(MS.buckled_mob)
+			if (ishuman(MS.buckled_mob))
 				var/mob/living/carbon/human/H = MS.buckled_mob
 				evaccee_triagecard_color = H.holo_card_color
 		else if(MS.buckled_bodybag)

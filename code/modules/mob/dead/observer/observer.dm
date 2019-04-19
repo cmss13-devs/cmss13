@@ -76,6 +76,15 @@
 			to_chat(src, "<span style='color: red;'>This is a <B>PREDATOR ROUND</B>! If you are whitelisted, you may Join the Hunt!</span>")
 			return
 
+/mob/dead/observer/MouseDrop(atom/A)
+	if(!usr || !A)
+		return
+	if(isobserver(usr) && usr.client && isliving(A))
+		var/mob/living/M = A
+		if(check_rights(R_ADMIN) || check_rights(R_DEBUG))
+			usr.client.cmd_admin_ghostchange(M, src)
+			return
+	else return ..()
 
 
 /mob/dead/observer/Topic(href, href_list)
@@ -100,29 +109,6 @@ Works together with spawning an observer, noted above.
 	if(!loc) return
 	if(!client) return 0
 
-//	if(antagHUD)
-//		var/list/target_list = list()
-//		for(var/mob/living/target in oview(src, 14))
-//			if(target.mind&&(target.mind.special_role||issilicon(target)) )
-//				target_list += target
-//		if(target_list.len)
-//			assess_targets(target_list, src)
-
-///mob/dead/proc/assess_targets(list/target_list, mob/dead/observer/U)
-//	var/client/C = U.client
-//	for(var/mob/living/carbon/human/target in target_list)
-//		C.images += target.hud_list[SPECIALROLE_HUD]
-
-
-/*
-		else//If the silicon mob has no law datum, no inherent laws, or a law zero, add them to the hud.
-			var/mob/living/silicon/silicon_target = target
-			if(!silicon_target.laws||(silicon_target.laws&&(silicon_target.laws.zeroth||!silicon_target.laws.inherent.len))||silicon_target.mind.special_role=="traitor")
-				if(isrobot(silicon_target))//Different icons for robutts and AI.
-					U.client.images += image(tempHud,silicon_target,"hudmalborg")
-				else
-					U.client.images += image(tempHud,silicon_target,"hudmalai")
-*/
 	return 1
 
 /mob/proc/ghostize(var/can_reenter_corpse = 1)
@@ -499,49 +485,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else
 		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
 
-/*/mob/dead/observer/verb/become_mouse()
-	set name = "Become mouse"
-	set category = "Ghost"
-
-//	if(config.disable_player_mice)
-	to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
-	return*/
-/*
-	var/mob/dead/observer/M = usr
-	if(config.antag_hud_restricted && M.has_enabled_antagHUD == 1)
-		to_chat(src, "<span class='warning'>antagHUD restrictions prevent you from spawning in as a mouse.</span>")
-		return
-
-	var/timedifference = world.time - client.time_died_as_mouse
-	if(client.time_died_as_mouse && timedifference <= mouse_respawn_time * 600)
-		var/timedifference_text
-		timedifference_text = time2text(mouse_respawn_time * 600 - timedifference,"mm:ss")
-		to_chat(src, "<span class='warning'>You may only spawn again as a mouse more than [mouse_respawn_time] minutes after your death. You have [timedifference_text] left.</span>")
-		return
-
-	var/response = alert(src, "Are you -sure- you want to become a mouse?","Are you sure you want to squeek?","Squeek!","Nope!")
-	if(response != "Squeek!") return  //Hit the wrong key...again.
-
-
-	//find a viable mouse candidate
-	var/mob/living/simple_animal/mouse/host
-	var/obj/machinery/atmospherics/unary/vent_pump/vent_found
-	var/list/found_vents = list()
-	for(var/obj/machinery/atmospherics/unary/vent_pump/v in machines)
-		if(!v.welded && v.z == src.z)
-			found_vents.Add(v)
-	if(found_vents.len)
-		vent_found = pick(found_vents)
-		host = new /mob/living/simple_animal/mouse(vent_found.loc)
-	else
-		to_chat(src, "<span class='warning'>Unable to find any unwelded vents to spawn mice at.</span>")
-
-	if(host)
-		if(config.uneducated_mice)
-			host.universal_understand = 0
-		host.ckey = src.ckey
-		to_chat(host, "<span class='info'>You are now a mouse. Try to avoid interaction with players, and do not give hints away that you are more than a simple rodent.</span>")
-*/
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"
 	set category = "Ghost"
@@ -551,82 +494,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	dat += data_core.get_manifest()
 
 	src << browse(dat, "window=manifest;size=370x420;can_close=1")
-
-//Used for drawing on walls with blood puddles as a spooky ghost.
-/*/mob/dead/verb/bloody_doodle()
-
-	set category = "Ghost"
-	set name = "Write in blood"
-	set desc = "If the round is sufficiently spooky, write a short message in blood on the floor or a wall. Remember, no IC in OOC or OOC in IC."
-
-	if(!(config.cult_ghostwriter))
-		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
-		return
-
-	if (!src.stat)
-		return
-
-	if (usr != src)
-		return 0 //something is terribly wrong
-
-	var/ghosts_can_write
-	if(ticker.mode.name == "cult")
-		var/datum/game_mode/cult/C = ticker.mode
-		if(C.cult.len > config.cult_ghostwriter_req_cultists)
-			ghosts_can_write = 1
-
-	if(!ghosts_can_write)
-		to_chat(src, "<span class='danger'>The veil is not thin enough for you to do that.</span>")
-		return
-
-	var/list/choices = list()
-	for(var/obj/effect/decal/cleanable/blood/B in view(1,src))
-		if(B.amount > 0)
-			choices += B
-
-	if(!choices.len)
-		to_chat(src, "<span class = 'warning'>There is no blood to use nearby.</span>")
-		return
-
-	var/obj/effect/decal/cleanable/blood/choice = input(src,"What blood would you like to use?") in null|choices
-
-	var/direction = input(src,"Which way?","Tile selection") as anything in list("Here","North","South","East","West")
-	var/turf/T = src.loc
-	if (direction != "Here")
-		T = get_step(T,text2dir(direction))
-
-	if (!istype(T))
-		to_chat(src, "<span class='warning'>You cannot doodle there.</span>")
-		return
-
-	if(!choice || choice.amount == 0 || !(src.Adjacent(choice)))
-		return
-
-	var/doodle_color = (choice.basecolor) ? choice.basecolor : "#A10808"
-
-	var/num_doodles = 0
-	for (var/obj/effect/decal/cleanable/blood/writing/W in T)
-		num_doodles++
-	if (num_doodles > 4)
-		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
-		return
-
-	var/max_length = 50
-
-	var/message = stripped_input(src,"Write a message. It cannot be longer than [max_length] characters.","Blood writing", "")
-
-	if (message)
-
-		if (length(message) > max_length)
-			message += "-"
-			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
-
-		var/obj/effect/decal/cleanable/blood/writing/W = new(T)
-		W.basecolor = doodle_color
-		W.update_icon()
-		W.message = message
-		W.add_hiddenprint(src)
-		W.visible_message("<span class='danger'>Invisible fingers crudely paint something in blood on [T]...</span>")*/
 
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"

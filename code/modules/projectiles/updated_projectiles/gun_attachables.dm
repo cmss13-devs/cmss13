@@ -544,7 +544,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/scope
-	name = "S8 telescoping sight"
+	name = "S8 4x telescopic scope"
 	icon_state = "sniperscope"
 	attach_icon = "sniperscope_a"
 	desc = "An ARMAT S8 telescopic eye piece. Fixed at 4x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."
@@ -606,7 +606,7 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/scope/mini
-	name = "S4 telescoping sight"
+	name = "S4 2x telescopic mini-scope"
 	icon_state = "miniscope"
 	attach_icon = "miniscope_a"
 	desc = "An ARMAT S4 telescoping eye piece. Fixed at a modest 2x zoom. Press the 'use rail attachment' HUD icon or use the verb of the same name to zoom."

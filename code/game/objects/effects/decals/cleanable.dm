@@ -8,7 +8,7 @@
 		src.icon_state = pick(src.random_icon_states)
 	..()
 	if(map_tag == MAP_WHISKEY_OUTPOST)
-		sleep(100)
+		sleep(SECONDS_10)
 		qdel(src)
 	else
 		sleep(MINUTES_35)

@@ -148,11 +148,28 @@
 		/datum/action/xeno_action/shift_spits,
 		/datum/action/xeno_action/activable/xeno_spit,
 		)
+
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/claw_toggle,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message
 		)
+
+	var/list/mobile_abilities = list(
+		/datum/action/xeno_action/xeno_resting,
+		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/plant_weeds,
+		/datum/action/xeno_action/choose_resin,
+		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/grow_ovipositor,
+		/datum/action/xeno_action/activable/screech,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/emit_pheromones,
+		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/psychic_whisper,
+		/datum/action/xeno_action/shift_spits,
+		/datum/action/xeno_action/activable/xeno_spit,
+			)
 
 /mob/living/carbon/Xenomorph/Queen/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -546,22 +563,6 @@
 
 		for(var/datum/action/A in actions)
 			qdel(A)
-
-		var/list/mobile_abilities = list(
-			/datum/action/xeno_action/xeno_resting,
-			/datum/action/xeno_action/regurgitate,
-			/datum/action/xeno_action/plant_weeds,
-			/datum/action/xeno_action/choose_resin,
-			/datum/action/xeno_action/activable/secrete_resin,
-			/datum/action/xeno_action/grow_ovipositor,
-			/datum/action/xeno_action/activable/screech,
-			/datum/action/xeno_action/activable/corrosive_acid,
-			/datum/action/xeno_action/emit_pheromones,
-			/datum/action/xeno_action/activable/gut,
-			/datum/action/xeno_action/psychic_whisper,
-			/datum/action/xeno_action/shift_spits,
-			/datum/action/xeno_action/activable/xeno_spit,
-			)
 
 		for(var/path in mobile_abilities)
 			var/datum/action/xeno_action/A = new path()

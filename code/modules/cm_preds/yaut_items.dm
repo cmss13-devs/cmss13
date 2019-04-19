@@ -1319,6 +1319,7 @@
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "whip"
+	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	force = 35
@@ -1532,13 +1533,13 @@
 
 /obj/item/weapon/combistick/wield(var/mob/user)
 	..()
-	icon_state = initial(icon_state)
 	force = 35
+	update_icon()
 
 /obj/item/weapon/combistick/unwield(mob/user)
 	..()
-	icon_state = initial(icon_state)
 	force = 28
+	update_icon()
 
 /obj/item/weapon/combistick/verb/use_unique_action()
 	set category = "Weapons"
@@ -1554,6 +1555,11 @@
 		else 				wield(user)
 	else
 		to_chat(user, "<span class='warning'>You need to extend the combi-stick before you can wield it.</span>")
+
+/obj/item/weapon/combistick/update_icon()
+	if(flags_item & WIELDED)
+		item_state = "combistick_w"
+	else item_state = "combistick"
 
 /obj/item/weapon/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)

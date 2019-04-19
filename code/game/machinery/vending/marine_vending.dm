@@ -774,6 +774,8 @@
 					/obj/item/clothing/suit/storage/marine/carrier = 20,
 					/obj/item/clothing/suit/storage/marine/skull = 20,
 					/obj/item/clothing/suit/storage/marine/smooth = 20,
+					/obj/item/clothing/suit/storage/marine/class/heavy = 10,
+					/obj/item/clothing/suit/storage/marine/class/light = 10,
 					/obj/item/clothing/head/helmet/marine = 20,
 					/obj/item/clothing/mask/rebreather/scarf = 10,
 					)

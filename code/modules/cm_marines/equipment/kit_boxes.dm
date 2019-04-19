@@ -295,12 +295,14 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	..()
 	overlays += image('icons/Marine/pro_case.dmi', "+engi")
 	spawn(1)
+		new /obj/item/storage/backpack/marine/engineerpack(src)
 		new /obj/item/pamphlet/engineer(src)
 		new /obj/item/storage/pouch/construction(src)
 		new /obj/item/clothing/gloves/yellow(src)
 		new /obj/item/tool/shovel/etool(src)
 		new /obj/item/clothing/glasses/welding(src)
 		new /obj/item/storage/pouch/tools/pfc(src)
+		new /obj/item/folding_barricade(src)
 
 		var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)
 		MET.amount = 20
@@ -328,6 +330,8 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	..()
 	overlays += image('icons/Marine/pro_case.dmi', "+jtac")
 	spawn(1)
+		new /obj/item/weapon/gun/flare(src)
+		new /obj/item/storage/belt/gun/flaregun(src)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/storage/box/m94/signal(src)
 		new /obj/item/device/binoculars/tactical(src)

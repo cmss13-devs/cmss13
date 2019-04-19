@@ -872,7 +872,6 @@
 		if(!X.check_state()) return
 		if(!locate(/obj/effect/alien/weeds) in current_turf)
 			return
-
 		X.use_plasma(plasma_cost)
 		X.visible_message("<span class='xenowarning'>\The [X] has grown an ovipositor!</span>", \
 		"<span class='xenowarning'>You have grown an ovipositor!</span>")
@@ -986,7 +985,7 @@
 	if(X.is_zoomed)
 		X.zoom_out()
 	else
-		X.zoom_in(0, 12)
+		X.zoom_in()
 
 /datum/action/xeno_action/set_xeno_lead
 	name = "Choose/Follow Xenomorph Leaders"

@@ -58872,6 +58872,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/cichallway)
+"dDc" = (
+/obj/machinery/door/firedoor/border_only/almayer{
+	tag = "icon-door_open";
+	icon_state = "door_open";
+	dir = 2
+	},
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer,
+/area/almayer/hull/lower_hull)
 "dDR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -59380,8 +59389,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/starboard_umbilical)
 "eGC" = (
-/obj/structure/window/framed/almayer/requisitions,
-/turf/open/floor/plating,
+/obj/structure/window/framed/almayer,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "eHx" = (
 /obj/structure/bookcase{
@@ -61762,6 +61771,15 @@
 	dir = 2
 	},
 /area/almayer/shipboard/brig_cells)
+"kyF" = (
+/obj/structure/window/framed/almayer,
+/obj/machinery/door/firedoor/border_only/almayer{
+	tag = "icon-door_open";
+	icon_state = "door_open";
+	dir = 2
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/lower_hull)
 "kyZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHEAST)";
@@ -62167,15 +62185,6 @@
 	name = "Cell 4"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/brig_cells)
-"lnT" = (
-/obj/structure/window/framed/almayer/requisitions,
-/obj/machinery/door/poddoor/shutters/almayer{
-	dir = 1;
-	id = "brigentry";
-	name = "\improper Brig Shutters"
-	},
-/turf/open/floor/plating,
 /area/almayer/shipboard/brig_cells)
 "lpF" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
@@ -62722,11 +62731,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
-"mmi" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/almayer/shipboard/brig_cells)
 "mng" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (SOUTHWEST)";
@@ -65779,18 +65783,6 @@
 	dir = 1
 	},
 /area/almayer/hallways/repair_bay)
-"sPQ" = (
-/obj/structure/window/framed/almayer/requisitions,
-/obj/machinery/door/poddoor/shutters/almayer{
-	density = 0;
-	dir = 4;
-	icon_state = "shutter0";
-	id = "holdinglockdown";
-	name = "\improper Privacy Shutters";
-	opacity = 0
-	},
-/turf/open/floor/plating,
-/area/almayer/shipboard/brig_cells)
 "sRz" = (
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
@@ -66582,10 +66574,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig)
-"uwb" = (
-/obj/structure/window/framed/almayer,
-/turf/closed/wall/almayer,
-/area/almayer/shipboard/brig_cells)
 "uwL" = (
 /turf/closed/shuttle/escapepod{
 	tag = "icon-wall1";
@@ -66896,13 +66884,13 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig_cells)
 "vcF" = (
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer,
 /obj/machinery/door/poddoor/shutters/almayer{
 	dir = 1;
 	id = "brignorth";
 	name = "\improper Brig Shutters"
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "vdJ" = (
 /obj/machinery/vending/coffee,
@@ -67797,13 +67785,13 @@
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "wUz" = (
-/obj/structure/window/framed/almayer/requisitions,
+/obj/structure/window/framed/almayer,
 /obj/machinery/door/poddoor/shutters/almayer{
 	dir = 1;
 	id = "brigsouth";
 	name = "\improper Brig Shutters"
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
 "wVh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -99287,7 +99275,7 @@ aQF
 aXz
 aYJ
 aLG
-mmi
+aXc
 lOH
 aTI
 aXc
@@ -99307,7 +99295,7 @@ aIX
 aRm
 akE
 dxu
-mmi
+aXc
 buH
 bHN
 bIE
@@ -99490,7 +99478,7 @@ aQF
 aXz
 aYJ
 aLG
-mmi
+aXc
 akE
 aSW
 aXc
@@ -99510,7 +99498,7 @@ aXc
 aXc
 qGF
 aXc
-mmi
+aXc
 buH
 bHN
 bIE
@@ -99693,7 +99681,7 @@ aWD
 aXz
 aYJ
 aLG
-mmi
+aXc
 akE
 aRl
 aXc
@@ -99713,7 +99701,7 @@ sYh
 mqU
 akE
 sYh
-mmi
+aXc
 buH
 bHN
 bIE
@@ -99896,7 +99884,7 @@ aWB
 aXG
 aYJ
 aLG
-mmi
+aXc
 bXw
 aSK
 aXc
@@ -99916,7 +99904,7 @@ nyW
 aXc
 eiw
 nyW
-mmi
+aXc
 bGd
 bHN
 bWI
@@ -100099,7 +100087,7 @@ aWC
 aXH
 arY
 aLG
-mmi
+aXc
 aXc
 aXc
 aXc
@@ -100119,7 +100107,7 @@ aXc
 aXc
 aXc
 aXc
-mmi
+aXc
 buH
 bHL
 bIE
@@ -100315,7 +100303,7 @@ akM
 mCQ
 snY
 lWY
-uwb
+eGC
 jjR
 tEW
 duY
@@ -100721,7 +100709,7 @@ wqk
 ndp
 pfM
 aDU
-uwb
+eGC
 pua
 fYj
 pIs
@@ -100931,7 +100919,7 @@ aXc
 aXc
 aXc
 aXc
-mmi
+aXc
 fyD
 ccs
 ccw
@@ -101134,7 +101122,7 @@ kyC
 iBm
 kyC
 hzD
-lnT
+eGC
 buH
 bHN
 bIE
@@ -101337,7 +101325,7 @@ dQs
 lRZ
 dQs
 cjq
-lnT
+eGC
 buH
 vdW
 tMa
@@ -101540,7 +101528,7 @@ une
 snb
 akE
 mBj
-mmi
+aXc
 buH
 bHN
 bIE
@@ -101743,7 +101731,7 @@ akN
 xEz
 akN
 fKR
-lnT
+eGC
 buH
 bHN
 bIE
@@ -101946,7 +101934,7 @@ xra
 iBm
 tMW
 scR
-lnT
+eGC
 buH
 bHN
 bIJ
@@ -102145,11 +102133,11 @@ sYh
 fAy
 aXc
 aXc
-sPQ
-sPQ
+eGC
+eGC
 aXc
 aXc
-mmi
+aXc
 buH
 bHN
 bIE
@@ -103570,7 +103558,7 @@ aLd
 bZo
 bNT
 fCE
-bbf
+kyF
 bGY
 bHQ
 bIM
@@ -103773,7 +103761,7 @@ aLd
 bZp
 bNU
 cbd
-bbf
+kyF
 bGZ
 bHR
 bIN
@@ -103976,7 +103964,7 @@ coh
 bGs
 bZY
 cbe
-bbf
+dDc
 bGY
 bHQ
 bIM

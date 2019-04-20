@@ -9859,9 +9859,7 @@
 /area/centcom/living)
 "tP" = (
 /obj/machinery/door/airlock/centcom,
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
+/turf/open/space,
 /area/centcom/living)
 "tQ" = (
 /obj/machinery/door/airlock/centcom,

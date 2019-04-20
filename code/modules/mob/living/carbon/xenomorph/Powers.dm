@@ -1387,9 +1387,10 @@
 
 	var/wait_time = src.caste.build_time
 
+	var/start_time = world.time
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-
+	to_world("<b>Time to build was: </b> [world.time - start_time]")
 	blocker = locate() in current_turf
 	if(blocker && blocker != src && blocker.stat != DEAD)
 		return
@@ -1429,7 +1430,7 @@
 			return
 
 	use_plasma(resin_plasma_cost)
-	visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin)]!"), \
+	visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin, isXenoHivelord(src))]!"), \
 		SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin)]."), null, 5)
 	playsound(loc, "alien_resin_build", 25)
 

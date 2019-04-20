@@ -51,6 +51,7 @@ NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc wh
 you will have to do something like if(client.admin_holder.rights & R_ADMIN) yourself.
 */
 /proc/check_rights(rights_required, show_msg=1)
+	to_world("right_required: [rights2text(rights_required,"")]")
 	if(usr && usr.client)
 		if(rights_required)
 			if(usr.client.admin_holder)

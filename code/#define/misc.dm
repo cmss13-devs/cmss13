@@ -28,7 +28,7 @@
 #define AREA_AVOID_BIOSCAN      1
 
 // Default number of ticks for do_after
-#define DA_DEFAULT_NUM_TICKS 10
+#define DA_DEFAULT_NUM_TICKS 5
 
 // *************************************** //
 // DO_AFTER FLAGS

@@ -38,14 +38,7 @@
 	if (!tile)
 		return 0
 
-
-	if(next_move > world.time)
-		return 0
-
 	if(recently_pointed_to > world.time)
-		return 0
-
-	if(isYautja(A))
 		return 0
 
 	next_move = world.time + 2

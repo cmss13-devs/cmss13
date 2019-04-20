@@ -37,10 +37,10 @@
 //M4A3 45 //Inspired by the 1911
 
 /obj/item/ammo_magazine/pistol/m1911
-	name = "\improper M4A3 magazine (.45)"
+	name = "\improper M1911 magazine (.45)"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
-	icon_state = "m4a345"
+	icon_state = "m4a345"//rename later
 	max_rounds = 14
 	gun_type = /obj/item/weapon/gun/pistol/m1911
 
@@ -51,7 +51,7 @@
 /obj/item/ammo_magazine/pistol/b92fs
 	name = "\improper Beretta 92FS magazine (9mm)"
 	caliber = "9mm"
-	icon_state = "m4a3"
+	icon_state = "m4a3" //PLACEHOLDER
 	max_rounds = 15
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/b92fs

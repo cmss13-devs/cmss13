@@ -1160,6 +1160,8 @@ Defined in conflicts.dm of the #defines folder.
 		if(distance >= max_range) 	break
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
+		if(T.density && !T.throwpass)
+			return
 		current_rounds--
 		flame_turf(T,user)
 		distance++

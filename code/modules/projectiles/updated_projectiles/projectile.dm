@@ -268,7 +268,7 @@
 		return 0
 
 	var/hit_chance = 0
-
+	
 	for(var/obj/O in T) //check objects before checking mobs, so that barricades protect
 		// If we've already handled this atom, don't do it again
 		if(O in permutated)
@@ -376,7 +376,6 @@
 //objects use get_projectile_hit_boolean unlike mobs, which use get_projectile_hit_chance
 
 /obj/proc/get_projectile_hit_boolean(obj/item/projectile/P)
-
 	if(!density)
 		return FALSE
 
@@ -387,7 +386,6 @@
 
 
 /obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
-
 	if( istype(P.shot_from, /obj/item/hardpoint) ) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
 
@@ -403,6 +401,7 @@
 	#if DEBUG_HIT_CHANCE
 	to_world("<span class='debuginfo'>([src.name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]")
 	#endif
+
 	return prob(hitchance)
 
 

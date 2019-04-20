@@ -735,15 +735,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			voted_this_drop = 0
 		return
 
+/mob/dead/observer/verb/go_dnr()
+	set category = "Ghost"
+	set name = "Go DNR"
+	set desc = "Prevent your character from being revived."
 
-
+	can_reenter_corpse = FALSE
 
 /mob/dead/observer/verb/edit_characters()
 	set category = "Ghost"
 	set name = "Edit Characters"
 	set desc = "Edit your characters in your preferences."
 
-	can_reenter_corpse = FALSE //no coming back if you edit your preferences.
 	client.prefs.ShowChoices(src)
 
 /mob/dead/observer/Topic(href, href_list)

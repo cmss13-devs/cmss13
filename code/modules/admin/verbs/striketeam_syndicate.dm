@@ -111,7 +111,7 @@ var/global/sent_syndicate_strike_team = 0
 	new_syndicate_commando.gender = pick(MALE, FEMALE)
 
 	var/datum/preferences/A = new()//Randomize appearance for the commando.
-	A.randomize_appearance_for(new_syndicate_commando)
+	A.randomize_appearance(new_syndicate_commando)
 
 	new_syndicate_commando.real_name = "[!syndicate_leader_selected ? syndicate_commando_rank : syndicate_commando_leader_rank] [syndicate_commando_name]"
 	new_syndicate_commando.age = !syndicate_leader_selected ? rand(23,35) : rand(35,45)

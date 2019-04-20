@@ -126,21 +126,6 @@
 				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
 				pulled.forceMove(X)
 				return 1
-			else // DEBUG - LOTHER
-				if (X.pulling == pulled)
-					to_world("<i><u>X.pulling == pulled failed</u></i>")
-					to_world("<i>X.pulling: [X.pulling]</i>")
-					to_world("<i>pulled: [pulled]</i>")
-				if (!pulled.buckled)
-					to_world("<i><u>X.pulling == pulled failed</u></i>")
-					to_world("<i>X.pulling: [X.pulling]</i>")
-					to_world("<i>pulled: [pulled]</i>")
-				if (!X.stomach_contents.len)
-					to_world("<i><u>X.pulling == pulled failed</u></i>")
-					to_world("<i>X.pulling: [X.pulling]</i>")
-					to_world("<i>pulled: [pulled]</i>")
-		else // DEBUG - LOTHER
-			to_world("<b>do_after failed</b>")
 		if(!(pulled in X.stomach_contents))
 			to_chat(X, "<span class='warning'>You stop devouring \the [pulled]. \He probably tasted gross anyways.</span>")
 		return 0

@@ -515,7 +515,6 @@
 				else if(usr.client.view != world.view)
 					to_chat(usr, "<span class='warning'>You're too busy peering through binoculars.</span>")
 				else
-					visible_message("\icon[src] <span class='boldnotice'>Searching for helmet cam of [cam_target]. Helmet cam found and linked.</span>")
 					cam = new_cam
 					usr.reset_view(cam)
 	attack_hand(usr) //The above doesn't ever seem to work.

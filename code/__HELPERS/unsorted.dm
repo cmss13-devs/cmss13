@@ -1063,56 +1063,42 @@ var/global/image/busy_indicator_hostile
 	for(var/i = 0 to numticks)
 		sleep(delayfraction)
 		if(!istype(L)) // Checks for L exists and is not dead
-			to_world("<b><i>!istype(L)</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_DIFF_LOC && L.loc != original_loc)
-			to_world("<b><i>INTERRUPT_DIFF_LOC</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_DIFF_TURF && get_turf(L) != original_turf)
-			to_world("<b><i>INTERRUPT_DIFF_TURF</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_UNCONSCIOUS && L.stat)
-			to_world("<b><i>INTERRUPT_UNCONSCIOUS</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_UNCONSCIOUS && L && L.health < config.health_threshold_crit)
 			//health check for catching mobs below crit level but haven't had their stat var updated
-			to_world("<b><i>INTERRUPT_UNCONSCIOUS</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down)
-			to_world("<b><i>INTERRUPT_KNOCKED_DOWN</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_STUNNED && L.stunned)
-			to_world("<b><i>INTERRUPT_STUNNED</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_NEEDHAND)
 			if(holding)
 				if(!holding.loc || L.get_active_hand() != holding) //no longer holding the required item
-					to_world("[INTERRUPT_NO_NEEDHAND]")
-					to_world("[INTERRUPT_ALL]")
-					to_world("[INTERRUPT_ALL & !INTERRUPT_NEEDHAND]")
-					to_world("<b><i>INTERRUPT_NEEDHAND</i></b>")
 					. = FALSE
 					break
 			else if(L.get_active_hand()) //something in active hand when we need it to stay empty
 				. = FALSE
 				break
 		if(do_after_flags & INTERRUPT_RESIST && L.resisting)
-			to_world("<b><i>INTERRUPT_RESIST</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_zone_sel != L.zone_selected) //changed the selected zone
-			to_world("<b><i>INTERRUPT_DIFF_SELECT_ZONE</i></b>")
 			. = FALSE
 			break
 		if(do_after_flags & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
-			to_world("<b><i>INTERRUPT_OUT_OF_RANGE</i></b>")
 			. = FALSE
 			break
 

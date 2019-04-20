@@ -1161,7 +1161,7 @@ Defined in conflicts.dm of the #defines folder.
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
 		if(T.density && !T.throwpass)
-			return
+			break
 		current_rounds--
 		flame_turf(T,user)
 		distance++

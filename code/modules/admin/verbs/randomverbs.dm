@@ -679,7 +679,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new_ckey = input("Enter new ckey:","CKey") as null|text
 
 	if(!new_ckey)
-		to_world("<b><i>!new_ckey</i></b>")
 		return
 
 	O.ghostize(0)

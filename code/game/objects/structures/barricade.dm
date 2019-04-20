@@ -231,6 +231,18 @@
 		else
 			overlays += image('icons/Marine/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
 
+// This proc is called whenever the cade is moved, so I thought it was appropriate,
+// especially since the barricade's direction needs to be handled when moving
+// diagonally.
+// However, will look into fixing bugs w/diagonal movement different if this is
+// to hacky.
+/obj/structure/barricade/handle_rotation()
+	if (dir & EAST)
+		dir = EAST
+	else if(dir & WEST)
+		dir = WEST
+	update_icon()
+
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	if(istype(I, /obj/item/weapon/zombie_claws))
 		take_damage( I.force * 0.5 )
@@ -737,7 +749,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 
 /obj/structure/barricade/plasteel/handle_barrier_chance(mob/living/M)
-	if(closed)
+	if(!closed) // Closed = gate down for plasteel for some reason
 		return ..()
 	else
 		return 0
@@ -924,7 +936,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	closed = 0
-	density = 0
+	density = 1
 	if(linked)
 		for(var/direction in cardinal)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
@@ -937,7 +949,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	closed = 1
-	density = 1
+	density = 0
 	if(linked)
 		for(var/direction in cardinal)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
@@ -992,13 +1004,36 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != "hurt")
 		var/obj/item/tool/shovel/ET = W
 		if(!ET.folded)
-			user.visible_message("<span class='notice'>[user] starts disassembling [src].</span>",
+			user.visible_message("<span class='notice'>[user] starts disassembling [src].</span>", \
 			"<span class='notice'>You start disassembling [src].</span>")
 			if(do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message("<span class='notice'>[user] disassembles [src].</span>",
 				"<span class='notice'>You disassemble [src].</span>")
 				destroy(TRUE)
 		return 1
+
+	if(istype(W, stack_type))
+		var/obj/item/stack/sandbags/SB = W
+		if(user.action_busy)
+			return
+		if(health <= maxhealth * 0.3)
+			to_chat(user, "<span class='warning'>[src] has sustained too much structural damage to be repaired.</span>")
+			return
+		if(health == maxhealth)
+			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			return
+		user.visible_message(SPAN_NOTICE("[user] starts repairing damage to [src]."), \
+			SPAN_NOTICE("You start repairing damage to [src]."))
+		if(do_after(user, 50, TRUE, 5, BUSY_ICON_FRIENDLY))
+			user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
+				SPAN_NOTICE("You repair [src]."))
+			var/amount = SB.amount
+			var/health_per_sandbag = maxhealth/5 // 5 sandbags to make a barricade
+			amount = Clamp(amount, 0, Ceiling((maxhealth-health)/health_per_sandbag))
+			SB.use(amount)
+			health += health_per_sandbag*amount
+			update_health()
+		return
 	else
 		. = ..()
 

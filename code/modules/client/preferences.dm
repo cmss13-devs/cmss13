@@ -5,8 +5,8 @@ var/list/preferences_datums = list()
 var/global/list/special_roles = list(
 	"Xenomorph" = 1,
 	"Xenomorph after<br>unrevivably dead" = 1,
-	"Xenomorph Queen" = 1,
-	"Survivor" = 1,
+	"Xenomorph Queen" = 0,
+	"Survivor" = 0,
 	"Synth Survivor" = 1,
 	"Predator" = 1,
 )
@@ -51,6 +51,7 @@ datum/preferences
 	//character preferences
 	var/real_name						//our character's name
 	var/be_random_name = 0				//whether we are a random name every round
+	var/be_random_body = 0				//whether we have a random appearance every round
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 18						//age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
@@ -274,7 +275,9 @@ datum/preferences
 	dat += "<a href='?_src_=prefs;preference=name;task=input'><b>[real_name]</b></a>"
 	dat += " (<a href='?_src_=prefs;preference=name;task=random'>&reg</A>)</big></big>"
 	dat += "<br>"
-	dat += "Always Pick Random Name: <a href='?_src_=prefs;preference=name'>[be_random_name ? "Yes" : "No"]</a>"
+	dat += "Always Pick Random Name: <a href='?_src_=prefs;preference=rand_name'>[be_random_name ? "Yes" : "No"]</a>"
+	dat += "<br>"
+	dat += "Always Pick Random Appearance: <a href='?_src_=prefs;preference=rand_body'>[be_random_body ? "Yes" : "No"]</a>"
 	dat += "<br><br>"
 
 
@@ -967,7 +970,7 @@ datum/preferences
 					backbag = rand(1,2)
 
 				if ("all")
-					randomize_appearance_for()	//no params needed
+					randomize_appearance()
 		if("input")
 			switch(href_list["preference"])
 				if("name")
@@ -1289,8 +1292,11 @@ datum/preferences
 					var/num = text2num(href_list["num"])
 					be_special ^= (1<<num)
 
-				if("name")
+				if("rand_name")
 					be_random_name = !be_random_name
+
+				if("rand_body")
+					be_random_body = !be_random_body
 
 				if("hear_midis")
 					toggles_sound ^= SOUND_MIDI
@@ -1336,7 +1342,8 @@ datum/preferences
 	ShowChoices(user)
 	return 1
 
-/datum/preferences/proc/copy_to(mob/living/carbon/human/character, safety = 0)
+// Transfers both physical characteristics and character information to character
+/datum/preferences/proc/copy_all_to(mob/living/carbon/human/character, safety = 0)
 	if(!istype(character))
 		return
 
@@ -1439,6 +1446,118 @@ datum/preferences
 		if(isliving(src)) //Ghosts get neuter by default
 			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
+
+// Transfers the character's physical characteristics (age, gender, ethnicity, etc) to the mob
+/datum/preferences/proc/copy_appearance_to(mob/living/carbon/human/character, safety = 0)
+	if(!istype(character))
+		return
+
+	character.age = age
+	character.gender = gender
+	character.ethnicity = ethnicity
+	character.body_type = body_type
+
+	character.r_eyes = r_eyes
+	character.g_eyes = g_eyes
+	character.b_eyes = b_eyes
+
+	character.r_hair = r_hair
+	character.g_hair = g_hair
+	character.b_hair = b_hair
+
+	character.r_facial = r_facial
+	character.g_facial = g_facial
+	character.b_facial = b_facial
+
+	character.r_skin = r_skin
+	character.g_skin = g_skin
+	character.b_skin = b_skin
+
+	character.h_style = h_style
+	character.f_style = f_style
+
+	// Destroy/cyborgize organs
+
+	for(var/name in organ_data)
+
+		var/status = organ_data[name]
+		var/datum/limb/O = character.get_limb(name)
+		if(O)
+//			if(status == "amputated")
+//				O.amputated = 1
+//				O.status |= LIMB_DESTROYED
+//				O.destspawn = 1
+			if(status == "cyborg")
+				O.status |= LIMB_ROBOT
+		else
+			var/datum/internal_organ/I = character.internal_organs_by_name[name]
+			if(I)
+				if(status == "assisted")
+					I.mechassist()
+				else if(status == "mechanical")
+					I.mechanize()
+
+	if(underwear > underwear_f.len || underwear < 1)
+		underwear = 0 //I'm sure this is 100% unnecessary, but I'm paranoid... sue me. //HAH NOW NO MORE MAGIC CLONING UNDIES
+	character.underwear = underwear
+
+	if(undershirt > undershirt_t.len || undershirt < 1)
+		undershirt = 0
+	character.undershirt = undershirt
+
+	if(backbag > 2 || backbag < 1)
+		backbag = 2 //Same as above
+	character.backbag = backbag
+	
+	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
+	if(character.gender in list(PLURAL, NEUTER))
+		if(isliving(src)) //Ghosts get neuter by default
+			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
+			character.gender = MALE
+	
+
+// Transfers the character's information (name, flavor text, records, roundstart clothes, etc.) to the mob
+/datum/preferences/proc/copy_information_to(mob/living/carbon/human/character, safety = 0)
+	if(!istype(character))
+		return
+
+	if(be_random_name)
+		real_name = random_name(gender)
+
+	if(config.humans_need_surnames)
+		var/firstspace = findtext(real_name, " ")
+		var/name_length = length(real_name)
+		if(!firstspace)	//we need a surname
+			real_name += " [pick(last_names)]"
+		else if(firstspace == name_length)
+			real_name += "[pick(last_names)]"
+
+	character.real_name = real_name
+	character.name = character.real_name
+
+	character.flavor_texts["general"] = flavor_texts["general"]
+	character.flavor_texts["head"] = flavor_texts["head"]
+	character.flavor_texts["face"] = flavor_texts["face"]
+	character.flavor_texts["eyes"] = flavor_texts["eyes"]
+	character.flavor_texts["torso"] = flavor_texts["torso"]
+	character.flavor_texts["arms"] = flavor_texts["arms"]
+	character.flavor_texts["hands"] = flavor_texts["hands"]
+	character.flavor_texts["legs"] = flavor_texts["legs"]
+	character.flavor_texts["feet"] = flavor_texts["feet"]
+
+	character.med_record = med_record
+	character.sec_record = sec_record
+	character.gen_record = gen_record
+	character.exploit_record = exploit_record
+
+	character.home_system = home_system
+	character.citizenship = citizenship
+	character.personal_faction = faction
+	character.religion = religion
+
+	character.skills = skills
+	character.used_skillpoints = used_skillpoints
+
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"

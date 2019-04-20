@@ -364,7 +364,7 @@
 	max_w_class = 1
 	max_storage_space = 6
 	can_hold=list(/obj/item/weapon/throwing_knife)
-	
+
 /obj/item/storage/belt/knifepouch/New()
 	select_gamemode_skin(type)
 	..()
@@ -651,7 +651,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with three pouches for speedloaders. Was included with the mail-in order for the USCM edition of the Mateba autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "cmateba_holster"
-	
+
 /obj/item/storage/belt/gun/mateba/cmateba/New()
 	..()
 	select_gamemode_skin(type)
@@ -714,6 +714,11 @@
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
 	)
+	var/has_gamemode_skin = TRUE
+
+/obj/item/storage/belt/gun/smartpistol/New()
+	..()
+	select_gamemode_skin(type)
 
 /obj/item/storage/belt/gun/smartpistol/full/New()
 	..()

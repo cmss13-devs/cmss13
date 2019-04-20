@@ -80,7 +80,7 @@
 /datum/equipment_preset/fun/dutch/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
-	A.randomize_appearance_for(H)
+	A.randomize_appearance(H)
 	if(H.gender == MALE)
 		H.real_name = "[pick(first_names_male_dutch)] [pick(last_names)]"
 		H.f_style = "5 O'clock Shadow"

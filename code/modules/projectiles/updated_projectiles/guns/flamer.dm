@@ -354,14 +354,17 @@
 			if(istype(T,/turf/open/space)) continue
 			var/obj/flamer_fire/foundflame = locate() in T
 			if(foundflame)
-				qdel(foundflame) //No stacking
+				foundflame.flame_color = f_color
+				foundflame.burnlevel = burn_lvl
+				foundflame.firelevel = fire_lvl
+				continue
 			var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
 			if(new_spread_amt)
 				for(var/obj/O in T)
 					if(!O.CanPass(src, loc))
 						new_spread_amt = 0
 						break
-			spawn(0) //delay so the newer flame don't block the spread of older flames
+			spawn(0) 
 				new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user)
 
 	//Apply fire effects onto everyone in the fire
@@ -399,7 +402,6 @@
 					msg_admin_attack("[user] ([user.ckey]) shot [H] ([H.ckey]) with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
 			if(istype(H.wear_suit, /obj/item/clothing/suit/fire)) continue
-
 		M.adjust_fire_stacks(rand(5,burn_lvl*2))
 		M.IgniteMob()
 		M.adjustFireLoss(rand(burn_lvl,(burn_lvl*2))) // Make it so its the amount of heat or twice it for the initial blast.

@@ -20,7 +20,7 @@
 	var/list/first_names_f = list("Madison","Jessica","Anna","Juliet", "Olivia", "Lea", "Diane", "Kaori", "Beatrice", "Riley", "Amy", "Natsue","Yumi", "Aiko", "Fujiko", "Jennifer", "Ashley", "Mary", "Hitomi", "Lisa")
 	var/list/last_names_mb = list("Bates","Shaw","Hansen","Black", "Chambers", "Hall", "Gibson", "Weiss", "Waller", "Burton", "Bakin", "Rohan", "Naomichi", "Yakumo", "Yosai", "Gallagher", "Hiles", "Bourdon", "Strassman", "Palau")
 	var/datum/preferences/A = new()
-	A.randomize_appearance_for(H)
+	A.randomize_appearance(H)
 	if(H.gender == MALE)
 		H.real_name = "PMC [pick(first_names_m)] [pick(last_names_mb)]"
 		H.f_style = "5 O'clock Shadow"
@@ -184,7 +184,7 @@
 /datum/equipment_preset/wy/deathsquad/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(MALE)
 	//var/datum/preferences/A = new()
-	//A.randomize_appearance_for(mob)
+	//A.randomize_appearance(mob)
 	if(H.gender == MALE)
 		H.real_name = "[pick(first_names_deathsquad)]"
 	else

@@ -111,7 +111,7 @@
 				return 0
 			if(X.pulling == pulled && !pulled.buckled && pulled.stat != DEAD && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
 				X.visible_message("<span class='warning'>[X] devours [pulled]!</span>", \
-				"<span class='warning'>You devour [pulled]!</span>", null, 5)
+					"<span class='warning'>You devour [pulled]!</span>", null, 5)
 				
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
 				//So we're just going to get the lights out of here by forceMoving them to a far-away place
@@ -126,6 +126,21 @@
 				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
 				pulled.forceMove(X)
 				return 1
+			else // DEBUG - LOTHER
+				if (X.pulling == pulled)
+					to_world("<i><u>X.pulling == pulled failed</u></i>")
+					to_world("<i>X.pulling: [X.pulling]</i>")
+					to_world("<i>pulled: [pulled]</i>")
+				if (!pulled.buckled)
+					to_world("<i><u>X.pulling == pulled failed</u></i>")
+					to_world("<i>X.pulling: [X.pulling]</i>")
+					to_world("<i>pulled: [pulled]</i>")
+				if (!X.stomach_contents.len)
+					to_world("<i><u>X.pulling == pulled failed</u></i>")
+					to_world("<i>X.pulling: [X.pulling]</i>")
+					to_world("<i>pulled: [pulled]</i>")
+		else // DEBUG - LOTHER
+			to_world("<b>do_after failed</b>")
 		if(!(pulled in X.stomach_contents))
 			to_chat(X, "<span class='warning'>You stop devouring \the [pulled]. \He probably tasted gross anyways.</span>")
 		return 0

@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscdel: "The searching for helmet cam message will now only appear upon a failed attempt, to reduce spam."

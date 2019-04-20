@@ -1387,10 +1387,8 @@
 
 	var/wait_time = src.caste.build_time
 
-	var/start_time = world.time
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	to_world("<b>Time to build was: </b> [world.time - start_time]")
 	blocker = locate() in current_turf
 	if(blocker && blocker != src && blocker.stat != DEAD)
 		return

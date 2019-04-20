@@ -378,8 +378,8 @@
 							DT.icon_state = "dogtag_taken"
 							var/obj/item/dogtag/D = new(loc)
 							D.fallen_names = list(DT.registered_name)
-							D.fallen_assgn = DT.assignment
-							D.fallen_blood_type = DT.blood_type
+							D.fallen_assgns = list(DT.assignment)
+							D.fallen_blood_types = list(DT.blood_type)
 							usr.put_in_hands(D)
 						else
 							to_chat(usr, "<span class='warning'>You can't take a dogtag's information tag while its owner is alive.</span>")
@@ -409,7 +409,7 @@
 			else
 				to_chat(usr, "<span class='notice'>You try to empty [src]'s pockets.</span>")
 
-			if(do_mob(usr, src, POCKET_STRIP_DELAY))
+			if(do_mob(usr, src, POCKET_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 				if(placing)
 					if(place_item && place_item == usr.get_active_hand())
 						if(place_item.mob_can_equip(src, WEAR_R_STORE, TRUE))
@@ -470,41 +470,8 @@
 					show_inv(usr)
 
 
-
 	if(href_list["splints"])
-
-		if(!usr.action_busy)
-			var/count = 0
-			for(var/X in limbs)
-				var/datum/limb/E = X
-				if(E.status & LIMB_SPLINTED)
-					count = 1
-					break
-			if(count)
-				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [usr.name] ([usr.ckey])</font>")
-				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [name]'s ([ckey]) splints</font>")
-
-				if(do_mob(usr, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
-					var/can_reach_splints = 1
-					if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
-						var/obj/item/clothing/suit/space/suit = wear_suit
-						if(suit.supporting_limbs && suit.supporting_limbs.len)
-							to_chat(usr, "You cannot remove the splints, [src]'s [suit] is supporting some of the breaks.")
-							can_reach_splints = 0
-
-					if(can_reach_splints)
-						var/obj/item/stack/W = new /obj/item/stack/medical/splint(loc)
-						W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
-						W.add_fingerprint(usr)
-						for(var/organ in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
-							var/datum/limb/o = get_limb(organ)
-							if (o && o.status & LIMB_SPLINTED)
-								o.status &= ~LIMB_SPLINTED
-								if(!W.add(1))
-									W = new /obj/item/stack/medical/splint(loc)//old stack is dropped, time for new one
-									W.amount = 0
-									W.add_fingerprint(usr)
-									W.add(1)
+		remove_splints(src, usr)
 
 	if(href_list["tie"])
 		if(!usr.action_busy)
@@ -1539,3 +1506,77 @@
 
 	src << browse(dat, "window=checkskills")
 	return
+
+/mob/living/carbon/human/verb/remove_your_splints()
+	set name = "Remove Your Splints"
+	set category = "Object"
+
+	remove_splints(src)
+
+// target = person whose splints are being removed
+// source = person removing the splints
+/mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/target, mob/living/carbon/human/source)
+	var/mob/living/carbon/human/HT = target
+	var/mob/living/carbon/human/HS = source
+
+	if (!istype(HS))
+		HS = target
+	if(!istype(HS) || !istype(HT))
+		return
+
+	var/cur_hand = "l_hand"
+	if(!HS.hand)
+		cur_hand = "r_hand"
+
+	if(!HS.action_busy)
+		var/list/datum/limb/to_splint = list()
+		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
+		if (HS.get_limb(cur_hand).status & LIMB_DESTROYED)
+			to_chat(HS, SPAN_WARNING("You cannot remove splints without a hand."))
+			return
+		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
+			var/datum/limb/l = HT.get_limb(bodypart)
+			if (l && l.status & LIMB_SPLINTED)
+				if (HS == HT)
+					if ((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
+						same_arm_side = TRUE
+						continue
+					if ((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
+						same_arm_side = TRUE
+						continue
+				to_splint.Add(l)
+		
+		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
+		if(to_splint.len)
+			if(do_mob(HS, HT, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+				var/can_reach_splints = TRUE
+				var/amount_removed = 0
+				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
+					var/obj/item/clothing/suit/space/suit = HT.wear_suit
+					if(suit.supporting_limbs && suit.supporting_limbs.len)
+						msg = "[HS == HT ? "your":"\proper [HT]'s"]"
+						to_chat(HS, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
+						can_reach_splints = FALSE
+				if(can_reach_splints)
+					var/obj/item/stack/W = new /obj/item/stack/medical/splint(HS.loc)
+					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
+					W.add_fingerprint(HS)
+					for (var/datum/limb/l in to_splint)
+						amount_removed += 1
+						l.status &= ~LIMB_SPLINTED
+						if(!W.add(1))
+							W = new /obj/item/stack/medical/splint(HS.loc)//old stack is dropped, time for new one
+							W.amount = 0
+							W.add_fingerprint(HS)
+							W.add(1)
+					msg = "[HS == HT ? "their own":"\proper [HT]'s"]"
+					HT.visible_message(SPAN_NOTICE("[HS] removes [msg] [amount_removed>1 ? "splints":"splint"]."), \
+						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
+			else
+				msg = "[HS == HT ? "your":"\proper [HT]'s"]"
+				to_chat(HS, SPAN_NOTICE("You stop trying to remove [msg] splints."))
+		else
+			if(same_arm_side)
+				to_chat(HS, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
+			else
+				to_chat(HS, SPAN_WARNING("There are no splints to remove."))

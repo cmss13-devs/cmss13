@@ -254,6 +254,8 @@
 	return
 
 /mob/living/carbon/throw_item(atom/target)
+	src.throw_mode_off() // This MUST be at the beginning, or else players will not recognize that throw is not toggled on (especially xenos)
+
 	if(is_ventcrawling) //NOPE
 		return
 	if(usr.stat || !target)
@@ -269,8 +271,6 @@
 
 	if(!I || (I.flags_item & NODROP)) 
 		return
-
-	src.throw_mode_off()
 
 	var/spin_throw = TRUE
 

@@ -11,7 +11,7 @@
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
-	A.randomize_appearance_for(H)
+	A.randomize_appearance(H)
 	if(H.gender == MALE)
 		H.real_name = "[pick(first_names_male_upp)] [pick(last_names_upp)]"
 		H.f_style = "5 O'clock Shadow"
@@ -102,7 +102,7 @@
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = pick(50;MALE,50;FEMALE)
 	var/datum/preferences/A = new()
-	A.randomize_appearance_for(H)
+	A.randomize_appearance(H)
 	if(H.gender == MALE)
 		H.real_name = "[pick(first_names_male_upp)]"
 		H.f_style = "5 O'clock Shadow"

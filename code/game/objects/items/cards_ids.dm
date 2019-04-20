@@ -368,18 +368,24 @@
 	icon = 'icons/obj/items/card.dmi'
 	w_class = 1
 	var/list/fallen_names
-	var/fallen_blood_type = ""
-	var/fallen_assgn = ""
+	var/list/fallen_blood_types
+	var/list/fallen_assgns
 
 /obj/item/dogtag/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
-		to_chat(user, "<span class='notice'>You join the two tags together.</span>")
+		to_chat(user, SPAN_NOTICE("You join the [fallen_names.len>1 ? "tags":"two tags"] together."))
 		name = "information dog tags"
 		if(D.fallen_names)
 			if(!fallen_names)
 				fallen_names = list()
+			if(!fallen_blood_types)
+				fallen_blood_types = list()
+			if(!fallen_assgns)
+				fallen_assgns = list()
 			fallen_names += D.fallen_names
+			fallen_blood_types += D.fallen_blood_types
+			fallen_assgns += D.fallen_assgns
 		qdel(D)
 		return TRUE
 	else
@@ -388,7 +394,9 @@
 /obj/item/dogtag/examine(mob/user)
 	..()
 	if(ishuman(user) && fallen_names && fallen_names.len)
-		if(fallen_names.len == 1)
-			to_chat(user, "<span class='notice'>It reads \"[fallen_names[1]] - [fallen_assgn] - [fallen_blood_type]\"</span>")
-		else
-			to_chat(user, "There's multiple tags joined together.")
+		var/msg = "There [fallen_names.len>1 ? \
+			"are [fallen_names.len] tags.<br>They read":\
+			"is one ID tag.<br>It reads"]:"
+		for (var/i=1 to fallen_names.len)
+			msg += "<br>[i]. \"[fallen_names[i]] - [fallen_assgns[i]] - [fallen_blood_types[i]]\""
+		to_chat(user, SPAN_NOTICE("[msg]"))

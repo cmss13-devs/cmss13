@@ -284,8 +284,9 @@
 			user.visible_message("<span class='warning'>[user] starts to apply [src] to [M]'s [limb].</span>",
 			"<span class='notice'>You start to apply [src] to [M]'s [limb], hold still.</span>")
 		else
-			if((!user.hand && affecting.name == "r_arm") || (user.hand && affecting.name == "l_arm"))
-				to_chat(user, "<span class='warning'>You can't apply a splint to the arm you're using!</span>")
+			if((!user.hand && affecting.name in list("r_arm", "r_hand")) || (user.hand && affecting.name in list("l_arm", "l_hand")))
+				to_chat(user, "<span class='warning'>You can't apply a splint to the \
+					[affecting.name == "r_hand"||affecting.name == "l_hand" ? "hand":"arm"] you're using!</span>")
 				return
 			user.visible_message("<span class='warning'>[user] starts to apply [src] to their [limb].</span>",
 			"<span class='notice'>You start to apply [src] to your [limb], hold still.</span>")

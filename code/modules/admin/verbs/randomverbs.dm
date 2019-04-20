@@ -405,7 +405,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else
 		new_character.gender = pick(MALE,FEMALE)
 		var/datum/preferences/A = new()
-		A.randomize_appearance_for(new_character)
+		A.randomize_appearance(new_character)
 		new_character.real_name = G_found.real_name
 
 	if(!new_character.real_name)
@@ -664,32 +664,33 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(J.flags_startup_parameters & ROLE_ADD_TO_MODE) to_chat(src, "[J.title]: [J.get_total_positions(1)] / [J.current_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_changekey(mob/O in mob_list, var/a_ckey = null)
-	set category = "Admin"
-	set name = "Change CKey"
+// Converted this into a proc. Verb will be separate
+/client/proc/change_ckey(mob/O in mob_list, var/a_ckey = null)
 	var/new_ckey = a_ckey
-
+	
 	if (!admin_holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	if(O.disposed) return //mob was garbage collected
+	if(O.disposed) 
+		return //mob was garbage collected
 
 	if(!new_ckey)
 		new_ckey = input("Enter new ckey:","CKey") as null|text
 
 	if(!new_ckey)
+		to_world("<b><i>!new_ckey</i></b>")
 		return
 
 	O.ghostize(0)
 	log_admin("[key_name(usr)] modified [O.name]'s ckey to [new_ckey]")
 	message_admins("[key_name_admin(usr)] modified [O.name]'s ckey to [new_ckey]", 1)
-	feedback_add_details("admin_verb","KEY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	feedback_add_details("admin_verb","CHANGEKEY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	O.ckey = new_ckey
 	if(O.client) O.client.change_view(world.view)
 
 /client/proc/cmd_admin_ghostchange(var/mob/living/M, var/mob/dead/observer/O)
-	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG)) || !M.ckey) //Let's add a few extra sanity checks.
+	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG))) //Let's add a few extra sanity checks.
 		return
 	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
 		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
@@ -697,16 +698,26 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(M.client)
 			M.ghostize()
 		log_admin("[usr.ckey] has put [O.name]/([O.ckey]) into [M.name].")
+		message_admins("[usr.ckey] has put [O.name]/([O.ckey]) into [M.name].", 1)
+		feedback_add_details("admin_verb","GHOSTCHANGE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		M.ckey = O.ckey
 	else return
+
+/client/proc/cmd_admin_changekey(mob/O in mob_list)
+	set category = "Admin"
+	set name = "Change CKey"
+
+	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG) && !check_rights(R_MOD))) // Copied Matt's checks
+		return
+	change_ckey(O)
 
 /client/proc/cmd_admin_takemob(mob/O in mob_list)
 	set category = "Admin"
 	set name = "Take Control of Mob"
 	
-	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG))) // Copied Matt's checks
+	if(!istype(O) || (!check_rights(R_ADMIN) && !check_rights(R_DEBUG) && !check_rights(R_MOD))) // Copied Matt's checks
 		return
-	cmd_admin_changekey(O, src.ckey)
+	change_ckey(O, src.ckey)
 
 /client/proc/cmd_admin_explosion(atom/O as obj|mob|turf in world)
 	set category = "Special Verbs"

@@ -140,6 +140,7 @@
 	S["OOC_Notes"]			>> metadata
 	S["real_name"]			>> real_name
 	S["name_is_always_random"] >> be_random_name
+	S["body_is_always_random"] >> be_random_body
 	S["gender"]				>> gender
 	S["age"]				>> age
 	S["ethnicity"]			>> ethnicity
@@ -229,6 +230,7 @@
 	if(isnull(nanotrasen_relation)) nanotrasen_relation = initial(nanotrasen_relation)
 	if(!real_name) real_name = random_name(gender)
 	be_random_name	= sanitize_integer(be_random_name, 0, 1, initial(be_random_name))
+	be_random_body	= sanitize_integer(be_random_body, 0, 1, initial(be_random_body))
 	gender			= sanitize_gender(gender)
 	age				= sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
 	ethnicity		= sanitize_ethnicity(ethnicity)
@@ -300,6 +302,7 @@
 	S["OOC_Notes"]			<< metadata
 	S["real_name"]			<< real_name
 	S["name_is_always_random"] << be_random_name
+	S["body_is_always_random"] << be_random_body
 	S["gender"]				<< gender
 	S["age"]				<< age
 	S["ethnicity"]			<< ethnicity

@@ -43,7 +43,7 @@
 		H.set_species(subspecies)
 
 	if(M.client && M.client.prefs)
-		M.client.prefs.copy_to(M)
+		M.client.prefs.copy_all_to(M)
 
 	if( istext(new_name) )
 		M.name = new_name

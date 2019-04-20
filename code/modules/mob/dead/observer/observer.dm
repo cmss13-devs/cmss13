@@ -81,9 +81,7 @@
 		return
 	if(isobserver(usr) && usr.client && isliving(A))
 		var/mob/living/M = A
-		if(check_rights(R_ADMIN) || check_rights(R_DEBUG))
-			usr.client.cmd_admin_ghostchange(M, src)
-			return
+		usr.client.cmd_admin_ghostchange(M, src)
 	else return ..()
 
 
@@ -740,7 +738,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Go DNR"
 	set desc = "Prevent your character from being revived."
 
-	can_reenter_corpse = FALSE
+	if(alert("Do you want to go DNR?", "Choose to go DNR", "Yes", "No") == "Yes")
+		can_reenter_corpse = FALSE
 
 /mob/dead/observer/verb/edit_characters()
 	set category = "Ghost"

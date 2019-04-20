@@ -305,6 +305,7 @@ var/const/INGEST = 2
 	while(reaction_occured)
 	if(exploded) // clear reagents only when everything has reacted
 		clear_reagents()
+		exploded = FALSE
 	update_total()
 	return 0
 

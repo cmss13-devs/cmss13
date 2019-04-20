@@ -484,7 +484,9 @@
 			to_chat(user, "<span class='notice'> Welder refilled!</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
-	to_chat(user, "<span class='notice'> The tank scoffs at your insolence.  It only provides services to welders.</span>")
+	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
+		return
+	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
 	return
 
 /obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)

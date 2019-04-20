@@ -154,10 +154,10 @@
 		else
 			return //something went wrong
 
-	to_chat(X, "<span class='notice'>You will now build <b>[X.selected_resin]\s</b> when secreting resin.</span>")
+	to_chat(X, "<span class='notice'>You will now build <b>[X.resin2text(X.selected_resin)]\s</b> when secreting resin.</span>")
 	//update the button's overlay with new choice
 	button.overlays.Cut()
-	button.overlays += image('icons/mob/actions.dmi', button, X.selected_resin)
+	button.overlays += image('icons/mob/actions.dmi', button, X.resin2text(X.selected_resin))
 
 
 // Secrete Resin

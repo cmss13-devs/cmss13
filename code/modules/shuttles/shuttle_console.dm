@@ -8,6 +8,7 @@
 	var/hacked = 0   // Has been emagged, no access restrictions.
 	var/shuttle_optimized = 0 //Have the shuttle's flight subroutines been generated ?
 	var/onboard = 0 //Wether or not the computer is on the physical ship. A bit hacky but that'll do.
+	var/shuttle_type = 0
 	var/skip_time_lock = 0	// Allows admins to var edit the time lock away.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
@@ -377,6 +378,7 @@
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "shuttle"
 
+	shuttle_type = SHUTTLE_DROPSHIP
 	unacidable = 1
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
@@ -397,6 +399,8 @@
 	desc = "The remote controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
 	unacidable = 1
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
@@ -422,6 +426,8 @@
 	name = "Elevator Console"
 	icon = 'icons/obj/machines/computer.dmi'
 	icon_state = "elevator_screen"
+
+	shuttle_type = SHUTTLE_ELEVATOR
 	unacidable = 1
 	exproof = 1
 	density = 0

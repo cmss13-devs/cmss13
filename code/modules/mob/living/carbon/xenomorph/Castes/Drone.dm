@@ -19,8 +19,6 @@
 	xeno_explosion_resistance = 20
 	acid_level = 1
 	weed_level = 1
-	build_time = 10
-	max_build_dist = 0
 
 /datum/caste_datum/drone/mature
 	upgrade_name = "Mature"

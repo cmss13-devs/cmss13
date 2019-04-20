@@ -931,7 +931,9 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 
 //This is where the bullet bounces off.
 /atom/proc/bullet_ping(obj/item/projectile/P)
-	if(!P || !P.ammo.ping) return
+	if(!P || !P.ammo.ping) 
+		to_world("\blue !P || !P.ammo.ping check failed")
+		return
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
 	var/image/I = image('icons/obj/items/projectiles.dmi',src,P.ammo.ping,10)
@@ -942,7 +944,8 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	var/matrix/rotate = matrix()
 	rotate.Turn(angle)
 	I.transform = rotate
-	I.flick_overlay(src, 3)
+	spawn(1) // Need to do this in order to prevent the ping from being deleted
+		I.flick_overlay(src, 3)
 
 /mob/proc/bullet_message(obj/item/projectile/P)
 	if(!P) return

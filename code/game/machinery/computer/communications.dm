@@ -347,7 +347,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			if(!ticker.mode.active_lz)
 				var/lz_choices = list()
 				for(var/obj/machinery/computer/shuttle_control/console in machines)
-					if(console.z == 1 && !console.onboard)
+					if(console.z == 1 && !console.onboard && console.shuttle_type & SHUTTLE_DROPSHIP)
 						lz_choices += console
 				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
 				if(new_lz)

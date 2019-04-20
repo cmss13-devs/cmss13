@@ -49,7 +49,7 @@
 			selected_ability.use_ability(A)
 		return 1
 
-	if(mods["shift"])
+	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && !middle_mouse_toggle)
 			selected_ability.use_ability(A)
 		return 1

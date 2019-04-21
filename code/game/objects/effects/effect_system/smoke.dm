@@ -210,7 +210,9 @@
 				M.coughedtime = 0
 	//if (M.wear_suit != null && !istype(M.wear_suit, /obj/item/clothing/suit/storage/labcoat) && !istype(M.wear_suit, /obj/item/clothing/suit/straight_jacket) && !istype(M.wear_suit, /obj/item/clothing/suit/straight_jacket && !istype(M.wear_suit, /obj/item/clothing/suit/armor)))
 		//return
-	M.burn_skin(0.75)
+	M.burn_skin(5)
+	M.adjust_fire_stacks(5)
+	M.IgniteMob()
 	M.updatehealth()
 
 //////////////////////////////////////

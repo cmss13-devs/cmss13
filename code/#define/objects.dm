@@ -135,3 +135,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 
 
 #define SELF_DESTRUCT_ROD_STARTUP_TIME 12000
+
+// Flamer fire shapes
+#define FLAMESHAPE_DEFAULT 			1
+#define FLAMESHAPE_STAR				2
+#define FLAMESHAPE_MINORSTAR		3
+#define FLAMESHAPE_IRREGULAR		4

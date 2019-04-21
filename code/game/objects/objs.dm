@@ -177,16 +177,18 @@
 			return
 	do_buckle(M, user)
 
-//the actual buckling proc
-/obj/proc/do_buckle(mob/M, mob/user)
-	send_buckling_message(M, user)
-	M.buckled = src
-	M.loc = src.loc
-	M.dir = src.dir
-	M.update_canmove()
-	src.buckled_mob = M
-	src.add_fingerprint(user)
-	afterbuckle(M)
+// the actual buckling proc
+// Yes I know this is not style but its unreadable otherwise
+/obj/proc/do_buckle(mob/target, mob/user)
+	send_buckling_message(target, user)
+	if (src && src.loc)
+		target.buckled = src
+		target.loc = src.loc
+		target.dir = src.dir
+		target.update_canmove()
+		src.buckled_mob = target
+		src.add_fingerprint(user)
+		afterbuckle(target)
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
 	if (M == user)

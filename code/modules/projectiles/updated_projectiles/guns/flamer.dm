@@ -336,11 +336,15 @@
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
+	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
 
-/obj/flamer_fire/New(turf/loc, fire_lvl, burn_lvl, f_color, fire_spread_amount, mob/living/user)
+/obj/flamer_fire/New(turf/loc, fire_lvl, burn_lvl, f_color, fire_spread_amount, mob/living/user, new_flameshape)
 	..()
-	if (f_color)
+	if(f_color)
 		flame_color = f_color
+	
+	if(new_flameshape)
+		flameshape = new_flameshape
 
 	icon_state = "[flame_color]_2"
 	if(fire_lvl) firelevel = fire_lvl
@@ -348,24 +352,64 @@
 	processing_objects.Add(src)
 
 	if(fire_spread_amount > 0)
-		var/turf/T
-		for(var/dirn in cardinal)
-			T = get_step(loc, dirn)
-			if(istype(T,/turf/open/space)) continue
-			var/obj/flamer_fire/foundflame = locate() in T
-			if(foundflame)
-				foundflame.flame_color = f_color
-				foundflame.burnlevel = burn_lvl
-				foundflame.firelevel = fire_lvl
-				continue
-			var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
-			if(new_spread_amt)
-				for(var/obj/O in T)
-					if(!O.CanPass(src, loc))
-						new_spread_amt = 0
+		if(flameshape == FLAMESHAPE_DEFAULT || flameshape == FLAMESHAPE_IRREGULAR) // Irregular 'stutters' in shape
+			var/turf/T
+			for(var/dirn in cardinal)
+				T = get_step(loc, dirn)
+				if(istype(T,/turf/open/space)) continue
+				var/obj/flamer_fire/foundflame = locate() in T
+				if(foundflame)
+					foundflame.flame_color = f_color
+					foundflame.burnlevel = burn_lvl
+					foundflame.firelevel = fire_lvl
+					continue
+				var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
+				if(new_spread_amt)
+					for(var/obj/O in T)
+						if(!O.CanPass(src, loc))
+							new_spread_amt = 0
+							break
+				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
+					continue
+				spawn(0) 
+					new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, flameshape)
+
+		if(flameshape == FLAMESHAPE_STAR || flameshape == FLAMESHAPE_MINORSTAR) // spread in a star-like pattern
+			fire_spread_amount = round(fire_spread_amount * 1.5) // branch 'length'
+			var/list/dirs = alldirs
+
+			if(flameshape == FLAMESHAPE_MINORSTAR)
+				if(prob(50))
+					dirs = cardinal
+				else
+					dirs = diagonals
+
+			for(var/dirn in dirs)
+				var/endturf = get_ranged_target_turf(src, dirn, fire_spread_amount)
+				var/list/turfs = getline2(src, endturf)
+				var/new_spread_amt = 0
+
+				for(var/turf/T in turfs)
+					if(istype(T,/turf/open/space)) continue
+					var/obj/flamer_fire/foundflame = locate() in T
+					if(foundflame)
+						foundflame.flame_color = f_color
+						foundflame.burnlevel = burn_lvl
+						foundflame.firelevel = fire_lvl
+						continue
+					if(T.density && !T.throwpass) // unpassable turfs stop the spread
 						break
-			spawn(0) 
-				new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user)
+					for(var/obj/O in T) // certain object block the spread
+						if(!O.CanPass(src, loc))
+							break
+					if(prob(15) && flameshape != "substar") // chance to branch a little
+						new_spread_amt = 1.5
+					spawn(0)
+						new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, FLAMESHAPE_MINORSTAR)
+					new_spread_amt = 0
+
+
+
 
 	//Apply fire effects onto everyone in the fire
 

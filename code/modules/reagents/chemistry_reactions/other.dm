@@ -7,9 +7,9 @@
 #define MINRADIUS 		1
 #define MAXRADIUS 		5
 #define MININTENSITY	5
-#define MAXINTENSITY	50
-#define MINDURATION		5
-#define MAXDURATION		45
+#define MAXINTENSITY	40
+#define MINDURATION		3
+#define MAXDURATION		40
 
 /datum/chemical_reaction/explosion_potassium
 	name = "Explosion"
@@ -33,7 +33,7 @@
 		if(exfalloff < 15) exfalloff = 15
 
 		for(var/datum/reagent/R in holder.reagent_list) // if you want to do extra stuff when other chems are present, do it here
-			if(R.id == "iron" || R.id == "aluminum")
+			if(R.id == "iron")
 				shards += round(R.volume)
 			if(R.id == "phoron" && R.volume >= 10)
 				shard_type = /datum/ammo/bullet/shrapnel/incendiary
@@ -41,6 +41,8 @@
 		// some upper limits
 		if(shards > MAXEXSHARDS)
 			shards = MAXEXSHARDS
+		if(istype(shard_type, /datum/ammo/bullet/shrapnel/incendiary) && shards > MAXEXSHARDS / 4) // less max incendiary shards
+			shards = MAXEXSHARDS / 4
 		if(expower > MAXEXPOWER)
 			expower = MAXEXPOWER
 		exfalloff = expower/6
@@ -231,17 +233,19 @@
 	result_amount = 1
 
 /datum/chemical_reaction/chemfire/on_reaction(var/datum/reagents/holder, var/created_volume)
+	var/flameshape = FLAMESHAPE_DEFAULT
 	var/radius = 0
 	var/intensity = 0
 	var/duration = 0
 	var/location = get_turf(holder.my_atom)
 	var/firecolor = "red"
+	var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus
 	var/supplemented = 0 // for determining firecolor. Intensifying chems add, moderating chems remove. Net positive = blue, net negative = green.
 	if(!location)
 		return
 
-	radius = max(created_volume/10, 3)
-	intensity = max(created_volume/2, 30)
+	radius = max(created_volume/12, 3)
+	intensity = max(created_volume/2.5, 30)
 	duration = max(created_volume, 20)
 
 	for(var/datum/reagent/R in holder.reagent_list)
@@ -252,11 +256,6 @@
 			radius += R.radiusmod * R.volume
 			holder.del_reagent(R.id)
 			
-	// color
-	if(supplemented > 0 && intensity > 35)
-		firecolor = "blue"
-	if(supplemented < 0 && intensity < 20)
-		firecolor = "green"
 
 	// only integers please
 	radius = round(radius)
@@ -276,8 +275,22 @@
 		duration = MINDURATION
 	if(duration >= MAXDURATION)
 		duration = MAXDURATION
+	
+	// color
+	if(supplemented > 0 && intensity > 30)
+		firecolor = "blue"
+		flameshape = FLAMESHAPE_STAR
 
-	new /obj/flamer_fire(location, duration, intensity, firecolor, radius)
+	if(supplemented < 0 && intensity < 15)
+		firecolor = "green"
+		flameshape = FLAMESHAPE_IRREGULAR
+		radius += 2 //  to make up for tiles lost to irregular shape
+
+	smoke.set_up(max(radius - 1, 1), 0, location, null, 6)
+	smoke.start()
+	smoke = null
+
+	new /obj/flamer_fire(location, duration, intensity, firecolor, radius, FALSE, flameshape)
 	sleep(5)
 	playsound(location, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
 

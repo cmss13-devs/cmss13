@@ -1034,13 +1034,16 @@
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	for(var/obj/flamer_fire/F in T)
-		qdel(F)
 	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
-	var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
+	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, T, null, 6)
 	landingSmoke.start()
+	landingSmoke = null
+
+	var/shard_type = /datum/ammo/bullet/shrapnel/incendiary
+	var/shard_amount = 12
+	create_shrapnel(T, shard_amount, , ,shard_type)
 
 
 /datum/ammo/rocket/wp/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1495,7 +1498,14 @@
 		
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
+	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_INCENDIARY
+
+/datum/ammo/bullet/shrapnel/incendiary/New()
+	..()
+	shell_speed = config.slow_shell_speed
+	damage = config.mlow_hit_damage
+	penetration = config.low_armor_penetration 
 
 
 /*

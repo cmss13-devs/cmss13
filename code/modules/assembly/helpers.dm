@@ -28,6 +28,11 @@
 		return 1
 	return 0
 
+/proc/ismousetrap(O)
+	if(istype(O,/obj/item/device/assembly/mousetrap))
+		return 1
+	return 0
+
 /*
 Name:	IsSpecialAssembly
 Desc:	If true is an object that can be attached to an assembly holder but is a special thing like a phoron can or door

@@ -26,7 +26,6 @@
 		special_assembly = null
 	. = ..()
 
-
 /obj/item/device/assembly_holder/proc/attach_special(var/obj/O, var/mob/user)
 	return
 
@@ -36,10 +35,8 @@
 /obj/item/device/assembly_holder/proc/detached()
 	return
 
-
 /obj/item/device/assembly_holder/IsAssemblyHolder()
 	return 1
-
 
 /obj/item/device/assembly_holder/proc/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
 	if((!D)||(!D2))	return 0
@@ -65,7 +62,6 @@
 
 	return 1
 
-
 /obj/item/device/assembly_holder/attach_special(var/obj/O, var/mob/user)
 	if(!O)	return
 	if(!O.IsSpecialAssembly())	return 0
@@ -83,7 +79,6 @@
 	if(master)
 		master.update_icon()
 
-
 /obj/item/device/assembly_holder/examine(mob/user)
 	..()
 	if (in_range(src, user) || loc == user)
@@ -91,8 +86,6 @@
 			to_chat(user, "[src] is ready!")
 		else
 			to_chat(user, "[src] can be attached!")
-
-
 
 /obj/item/device/assembly_holder/HasProximity(atom/movable/AM as mob|obj)
 	if(a_left)
@@ -102,7 +95,6 @@
 	if(special_assembly)
 		special_assembly.HasProximity(AM)
 
-
 /obj/item/device/assembly_holder/Crossed(atom/movable/AM as mob|obj)
 	if(a_left)
 		a_left.Crossed(AM)
@@ -110,7 +102,6 @@
 		a_right.Crossed(AM)
 	if(special_assembly)
 		special_assembly.Crossed(AM)
-
 
 /obj/item/device/assembly_holder/on_found(mob/finder as mob)
 	if(a_left)
@@ -122,13 +113,11 @@
 			var/obj/item/S = special_assembly
 			S.on_found(finder)
 
-
 /obj/item/device/assembly_holder/Move()
 	..()
 	if(a_left && a_right)
 		a_left.holder_movement()
 		a_right.holder_movement()
-
 
 /obj/item/device/assembly_holder/attack_hand()//Perhapse this should be a holder_pickup proc instead, can add if needbe I guess
 	if(a_left && a_right)
@@ -136,19 +125,18 @@
 		a_right.holder_movement()
 	..()
 
-
 /obj/item/device/assembly_holder/attackby(obj/item/W as obj, mob/user as mob)
 	if(isscrewdriver(W))
 		if(!a_left || !a_right)
-			to_chat(user, "<span class='danger'>BUG:Assembly part missing, please report this!</span>")
+			to_chat(user, SPAN_DANGER("BUG:Assembly part missing, please report this!"))
 			return
 		a_left.toggle_secure()
 		a_right.toggle_secure()
 		secured = !secured
 		if(secured)
-			to_chat(user, "<span class='notice'> \The [src] is ready!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is ready!"))
 		else
-			to_chat(user, "<span class='notice'> \The [src] can now be taken apart!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] can now be taken apart!"))
 		update_icon()
 		return
 	else if(W.IsSpecialAssembly())
@@ -157,12 +145,11 @@
 		..()
 	return
 
-
 /obj/item/device/assembly_holder/attack_self(mob/user)
 	src.add_fingerprint(user)
 	if(src.secured)
 		if(!a_left || !a_right)
-			to_chat(user, "<span class='danger'>Assembly part missing!</span>")
+			to_chat(user, SPAN_DANGER("Assembly part missing!"))
 			return
 		if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
 			switch(alert("Which side would you like to use?",,"Left","Right"))
@@ -188,8 +175,6 @@
 			a_right = null
 		qdel(src)
 
-
-
 /obj/item/device/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
 	if(!D)	return 0
 	if(!secured)
@@ -203,15 +188,11 @@
 		master.receive_signal()
 	return 1
 
-
 /obj/item/device/assembly_holder/hear_talk(mob/living/M as mob, msg)
 	if(a_right)
 		a_right.hear_talk(M,msg)
 	if(a_left)
 		a_left.hear_talk(M,msg)
-
-
-
 
 /obj/item/device/assembly_holder/timer_igniter
 	name = "timer-igniter assembly"
@@ -238,11 +219,9 @@
 
 	loc.verbs += /obj/item/device/assembly_holder/timer_igniter/verb/configure
 
-
 /obj/item/device/assembly_holder/timer_igniter/detached()
 	loc.verbs -= /obj/item/device/assembly_holder/timer_igniter/verb/configure
 	..()
-
 
 /obj/item/device/assembly_holder/timer_igniter/verb/configure()
 	set name = "Set Timer"
@@ -258,18 +237,18 @@
 		if(!istype(tmr,/obj/item/device/assembly/timer))
 			tmr = holder.a_right
 		if(!istype(tmr,/obj/item/device/assembly/timer))
-			to_chat(usr, "<span class='notice'>This detonator has no timer.</span>")
+			to_chat(usr, SPAN_NOTICE("This detonator has no timer."))
 			return
 
 		if(tmr.timing)
-			to_chat(usr, "<span class='notice'>Clock is ticking already.</span>")
+			to_chat(usr, SPAN_NOTICE("Clock is ticking already."))
 		else
 			var/ntime = input("Enter desired time in seconds", "Time", "5") as num
 			if (ntime>0 && ntime<1000)
 				tmr.time = ntime
 				name = initial(name) + "([tmr.time] secs)"
-				to_chat(usr, "<span class='notice'>Timer set to [tmr.time] seconds.</span>")
+				to_chat(usr, SPAN_NOTICE("Timer set to [tmr.time] seconds."))
 			else
-				to_chat(usr, "<span class='notice'>Timer can't be [ntime<=0?"negative":"more than 1000 seconds"].</span>")
+				to_chat(usr, SPAN_NOTICE("Timer can't be [ntime<=0?"negative":"more than 1000 seconds"]."))
 	else
-		to_chat(usr, "<span class='notice'>You cannot do this while [usr.stat?"unconscious/dead":"restrained"].</span>")
+		to_chat(usr, SPAN_NOTICE("You cannot do this while [usr.stat?"unconscious/dead":"restrained"]."))

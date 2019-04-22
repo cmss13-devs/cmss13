@@ -78,12 +78,12 @@
 		return ..()
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message("<span class='notice'>[user] begins unfastening [src].</span>",
-	"<span class='notice'>You begin unfastening [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),
+	SPAN_NOTICE("You begin unfastening [src]."))
 	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
-		"<span class='notice'>You unfasten [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+		SPAN_NOTICE("You unfasten [src]."))
 		new /obj/item/pipe(loc, make_from = src)
 		qdel(src)
 

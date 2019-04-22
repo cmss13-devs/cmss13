@@ -120,7 +120,7 @@
 					if(user.drop_inv_item_to_loc(W, src))
 						component_parts += W
 						RefreshParts()
-						to_chat(user, "<span class='notice'>You upgrade the [src] with [W.name].</span>")
+						to_chat(user, SPAN_NOTICE("You upgrade the [src] with [W.name]."))
 				else
 					to_chat(user, "<span class='warning'>Turn off the [src] before dismantling it.</span>")
 			else

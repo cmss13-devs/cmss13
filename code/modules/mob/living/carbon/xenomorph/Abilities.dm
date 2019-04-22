@@ -62,7 +62,7 @@
 		X.KnockDown(1) //so that the mob immediately falls over
 
 	X.resting = !X.resting
-	to_chat(X, "<span class='notice'> You are now [X.resting ? "resting" : "getting up"]. </span>")
+	to_chat(X, SPAN_NOTICE(" You are now [X.resting ? "resting" : "getting up"]. "))
 
 
 /datum/action/xeno_action/show_minimap
@@ -107,7 +107,7 @@
 			else
 				X.ammo = ammo_list[X.caste.spit_types[i+1]]
 			break
-	to_chat(X, "<span class='notice'>You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma).</span>")
+	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/actions.dmi', button, "shift_spit_[X.ammo.icon_state]")
 
@@ -154,7 +154,7 @@
 		else
 			return //something went wrong
 
-	to_chat(X, "<span class='notice'>You will now build <b>[X.resin2text(X.selected_resin)]\s</b> when secreting resin.</span>")
+	to_chat(X, SPAN_NOTICE("You will now build <b>[X.selected_resin]\s</b> when secreting resin."))
 	//update the button's overlay with new choice
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/actions.dmi', button, X.resin2text(X.selected_resin))
@@ -450,10 +450,10 @@
 		return
 	if(X.layer != XENO_HIDING_LAYER)
 		X.layer = XENO_HIDING_LAYER
-		to_chat(X, "<span class='notice'>You are now hiding.</span>")
+		to_chat(X, SPAN_NOTICE("You are now hiding."))
 	else
 		X.layer = MOB_LAYER
-		to_chat(X, "<span class='notice'>You have stopped hiding.</span>")
+		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
 
 /datum/action/xeno_action/emit_pheromones
 	name = "Emit Pheromones (30)"
@@ -479,7 +479,7 @@
 			return
 		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
-			to_chat(X, "<span class='notice'><br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br></span>")
+			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 			return
 		if(choice == "cancel") return
 		if(!X.check_state(1)) return
@@ -530,11 +530,11 @@
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
 	if(X.is_zoomed)
 		X.zoom_out()
-		X.visible_message("<span class='notice'>[X] stops looking off into the distance.</span>", \
-		"<span class='notice'>You stop looking off into the distance.</span>", null, 5)
+		X.visible_message(SPAN_NOTICE("[X] stops looking off into the distance."), \
+		SPAN_NOTICE("You stop looking off into the distance."), null, 5)
 	else
-		X.visible_message("<span class='notice'>[X] starts looking off into the distance.</span>", \
-			"<span class='notice'>You start focusing your sight to look off into the distance.</span>", null, 5)
+		X.visible_message(SPAN_NOTICE("[X] starts looking off into the distance."), \
+			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		if(!do_after(X, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) return
 		if(X.is_zoomed) return
 		X.zoom_in()
@@ -552,7 +552,8 @@
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-	to_chat(X, "<span class='notice'>You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? ")corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]</span>")
+	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? ")corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	to_chat(X, SPAN_NOTICE("[activation_msg]"))
 	button.overlays.Cut()
 	if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
 		X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
@@ -578,7 +579,7 @@
 		if(X.client)
 			X.client.mouse_pointer_icon = initial(X.client.mouse_pointer_icon) //Reset the mouse pointer.
 		X.is_bombarding = 0
-		to_chat(X, "<span class='notice'>You relax your stance.</span>")
+		to_chat(X, SPAN_NOTICE("You relax your stance."))
 		return
 
 	if(X.bomb_cooldown)
@@ -589,13 +590,14 @@
 		to_chat(X, "<span class='warning'>You can't do that from there.</span>")
 		return
 
-	X.visible_message("<span class='notice'>\The [X] begins digging their claws into the ground.</span>", \
-	"<span class='notice'>You begin digging yourself into place.</span>", null, 5)
+	if (bombard_time)
+		X.visible_message(SPAN_NOTICE("\The [X] begins digging their claws into the ground."), \
+			SPAN_NOTICE("You begin digging yourself into place."), null, 5)
 	if(do_after(X, bombard_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(X.is_bombarding) return
 		X.is_bombarding = 1
-		X.visible_message("<span class='notice'>\The [X] digs itself into the ground!</span>", \
-		"<span class='notice'>You dig yourself into place! If you move, you must wait again to fire.</span>", null, 5)
+		X.visible_message(SPAN_NOTICE("\The [X] digs itself into the ground!"), \
+		SPAN_NOTICE("You dig yourself into place! If you move, you must wait again to fire."), null, 5)
 		X.bomb_turf = get_turf(X)
 		if(X.client)
 			X.client.mouse_pointer_icon = file("icons/mecha/mecha_mouse.dmi")
@@ -759,7 +761,7 @@
 		return
 	X.weedwalking_activated = 1
 	X.use_plasma(plasma_cost)
-	to_chat(X, "<span class='notice'>You become one with the resin. You feel the urge to run!</span>")
+	to_chat(X, SPAN_NOTICE("You become one with the resin. You feel the urge to run!"))
 
 /datum/action/xeno_action/build_tunnel
 	name = "Dig Tunnel (200)"
@@ -822,7 +824,7 @@
 	X.start_dig = new /obj/structure/tunnel(T)
 	X.tunnel_delay = 1
 	spawn(2400)
-		to_chat(X, "<span class='notice'>You are ready to dig a tunnel again.</span>")
+		to_chat(X, SPAN_NOTICE("You are ready to dig a tunnel again."))
 		X.tunnel_delay = 0
 	var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
 	if(msg)

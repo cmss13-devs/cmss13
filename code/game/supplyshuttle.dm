@@ -743,7 +743,7 @@ var/list/mechtoys = list(
 
 /obj/machinery/computer/supplycomp/attackby(I as obj, user as mob)
 	if(istype(I,/obj/item/card/emag) && !hacked)
-		to_chat(user, "<span class='notice'> Special supplies unlocked.</span>")
+		to_chat(user, SPAN_NOTICE(" Special supplies unlocked."))
 		hacked = 1
 		return
 	else

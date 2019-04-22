@@ -256,7 +256,7 @@
 		src.access |= I.access
 		if(istype(user, /mob/living) && user.mind)
 			if(user.mind.special_role)
-				to_chat(usr, "<span class='notice'> The card's microscanners activate as you pass it over the ID, copying its access.</span>")
+				to_chat(usr, SPAN_NOTICE(" The card's microscanners activate as you pass it over the ID, copying its access."))
 
 /obj/item/card/id/syndicate/attack_self(mob/user as mob)
 	if(!src.registered_name)
@@ -274,7 +274,7 @@
 			return
 		src.assignment = u
 		src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-		to_chat(user, "<span class='notice'> You successfully forge the ID card.</span>")
+		to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
 		registered_user = user
 	else if(!registered_user || registered_user == user)
 
@@ -294,7 +294,7 @@
 					return
 				src.assignment = u
 				src.name = "[src.registered_name]'s ID Card ([src.assignment])"
-				to_chat(user, "<span class='notice'> You successfully forge the ID card.</span>")
+				to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
 				return
 			if("Show")
 				..()
@@ -358,7 +358,7 @@
 /obj/item/card/id/dogtag/examine(mob/user)
 	..()
 	if(ishuman(user))
-		to_chat(user, "<span class='notice'>It reads \"[registered_name] - [assignment] - [blood_type]\"</span>")
+		to_chat(user, SPAN_NOTICE("It reads \"[registered_name] - [assignment] - [blood_type]\""))
 
 
 /obj/item/dogtag

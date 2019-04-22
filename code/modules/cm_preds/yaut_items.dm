@@ -82,18 +82,18 @@
 	switch(current_goggles)
 		if(0)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(M), WEAR_EYES)
-			to_chat(M, "<span class='notice'>Low-light vision module: activated.</span>")
+			to_chat(M, SPAN_NOTICE("Low-light vision module: activated."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(1)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(M), WEAR_EYES)
-			to_chat(M, "<span class='notice'>Thermal sight module: activated.</span>")
+			to_chat(M, SPAN_NOTICE("Thermal sight module: activated."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(2)
 			M.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(M), WEAR_EYES)
-			to_chat(M, "<span class='notice'>Material vision module: activated.</span>")
+			to_chat(M, SPAN_NOTICE("Material vision module: activated."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(3)
-			to_chat(M, "<span class='notice'>You deactivate your visor.</span>")
+			to_chat(M, SPAN_NOTICE("You deactivate your visor."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 	M.update_inv_glasses()
 	current_goggles++
@@ -474,7 +474,7 @@
 			randomProbability = 7
 
 
-	to_chat(user, "<span class='notice'>You press a few buttons...</span>")
+	to_chat(user, SPAN_NOTICE("You press a few buttons..."))
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
 	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 1))
@@ -498,7 +498,7 @@
 	O = user.get_limb(check_zone("l_arm"))
 	O.droplimb()
 
-	to_chat(user, "<span class='notice'>The device emits a strange noise and falls off... Along with your arms!</span>")
+	to_chat(user, SPAN_NOTICE("The device emits a strange noise and falls off... Along with your arms!"))
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return 1
 
@@ -525,7 +525,7 @@
 			return
 	var/obj/item/weapon/wristblades/R = user.get_active_hand()
 	if(R && istype(R)) //Turn it off.
-		to_chat(user, "<span class='notice'>You retract your wrist blades.</span>")
+		to_chat(user, SPAN_NOTICE("You retract your wrist blades."))
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
 		qdel(R)
@@ -550,7 +550,7 @@
 			user.put_in_active_hand(W)
 		else user.put_in_active_hand(N)
 		blades_active = 1
-		to_chat(user, "<span class='notice'>You activate your wrist blades.</span>")
+		to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 
 	return 1
@@ -620,15 +620,15 @@
 	var/output = 0
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
 		output = 1
-		to_chat(M, "<span class='notice'>Your bracer shows a readout of deceased Yautja bio signatures, [dead_on_planet] in the hunting grounds, [dead_on_almayer] in orbit, [dead_low_orbit] in low orbit.</span>")
+		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of deceased Yautja bio signatures, [dead_on_planet] in the hunting grounds, [dead_on_almayer] in orbit, [dead_low_orbit] in low orbit."))
 	if(gear_on_planet || gear_on_almayer || gear_low_orbit)
 		output = 1
-		to_chat(M, "<span class='notice'>Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit.</span>")
+		to_chat(M, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures, [gear_on_planet] in the hunting grounds, [gear_on_almayer] in orbit, [gear_low_orbit] in low orbit."))
 	if(closest < 900)
 		var/areaName = get_area(areaLoc).name
-		to_chat(M, "<span class='notice'>The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName].</span>")
+		to_chat(M, SPAN_NOTICE("The closest signature is approximately [round(closest,10)] paces [dir2text(direction)] in [areaName]."))
 	if(!output)
-		to_chat(M, "<span class='notice'>There are no signatures that require your attention.</span>")
+		to_chat(M, SPAN_NOTICE("There are no signatures that require your attention."))
 	return 1
 
 
@@ -668,7 +668,7 @@
 			return 0
 		if(!drain_power(M,50)) return
 		cloaked = 1
-		to_chat(M, "<span class='notice'>You are now invisible to normal detection.</span>")
+		to_chat(M, SPAN_NOTICE("You are now invisible to normal detection."))
 		for(var/mob/O in oviewers(M))
 			O.show_message("[M] vanishes into thin air!",1)
 		playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
@@ -743,7 +743,7 @@
 				L.forceMove(src)
 			M.update_inv_l_hand()
 		if(found)
-			to_chat(usr, "<span class='notice'>You deactivate your plasma caster.</span>")
+			to_chat(usr, SPAN_NOTICE("You deactivate your plasma caster."))
 			playsound(src,'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
 			caster_active = 0
 		return
@@ -759,7 +759,7 @@
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
-		to_chat(usr, "<span class='notice'>You activate your plasma caster.</span>")
+		to_chat(usr, SPAN_NOTICE("You activate your plasma caster."))
 		playsound(src,'sound/weapons/pred_plasmacaster_on.ogg', 15, 1)
 	return 1
 
@@ -847,7 +847,7 @@
 				to_chat(M, "<span class='warning'>Not while you're unconcious...</span>")
 				return
 			exploding = 0
-			to_chat(M, "<span class='notice'>Your bracers stop beeping.</span>")
+			to_chat(M, SPAN_NOTICE("Your bracers stop beeping."))
 		return
 	if((M.wear_mask && istype(M.wear_mask,/obj/item/clothing/mask/facehugger)) || M.status_flags & XENO_HOST)
 		to_chat(M, "<span class='warning'>Strange...something seems to be interfering with your bracer functions...</span>")
@@ -900,10 +900,10 @@
 	inject_timer = 1
 	spawn(1200)
 		if(usr && src.loc == usr)
-			to_chat(usr, "<span class='notice'> Your bracers beep faintly and inform you that a new healing crystal is ready to be created.</span>")
+			to_chat(usr, SPAN_NOTICE(" Your bracers beep faintly and inform you that a new healing crystal is ready to be created."))
 			inject_timer = 0
 
-	to_chat(usr, "<span class='notice'> You feel a faint hiss and a crystalline injector drops into your hand.</span>")
+	to_chat(usr, SPAN_NOTICE(" You feel a faint hiss and a crystalline injector drops into your hand."))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(usr)
 	usr.put_in_active_hand(O)
 	playsound(src,'sound/machines/click.ogg', 15, 1)
@@ -1294,7 +1294,7 @@
 	if (istype(A, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/D = A
 		if(D.operating || !D.density) return
-		to_chat(user, "<span class='notice'>You jam [src] into [D] and strain to rip it open.</span>")
+		to_chat(user, SPAN_NOTICE("You jam [src] into [D] and strain to rip it open."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, 1)
 		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			D.open(1)
@@ -1366,13 +1366,13 @@
 
 	var/pain_factor = 0 //Preds don't normally feel pain. This is an exception.
 
-	to_chat(user, "<span class='notice'>You begin using your knife to rip shrapnel out. Hold still. This will probably hurt...</span>")
+	to_chat(user, SPAN_NOTICE("You begin using your knife to rip shrapnel out. Hold still. This will probably hurt..."))
 
 	if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		var/obj/item/shard/shrapnel/S
 		for(var/datum/limb/O in user.limbs)
 			for(S in O.implants)
-				to_chat(user, "<span class='notice'>You dig shrapnel out of your [O.name].</span>")
+				to_chat(user, SPAN_NOTICE("You dig shrapnel out of your [O.name]."))
 				S.loc = user.loc
 				O.implants -= S
 				pain_factor++
@@ -1568,7 +1568,7 @@
 	on = !on
 	if(on)
 		user.visible_message("<span class='info'>With a flick of their wrist, [user] extends [src].</span>",\
-		"<span class='notice'>You extend [src].</span>",\
+		SPAN_NOTICE("You extend [src]."),\
 		"You hear an ominous click.")
 		icon_state = initial(icon_state)
 		flags_equip_slot = initial(flags_equip_slot)
@@ -1592,7 +1592,7 @@
 			overlays += blood_overlay
 	else
 		unwield(user)
-		to_chat(user, "<span class='notice'>You collapse [src] for storage.</span>")
+		to_chat(user, SPAN_NOTICE("You collapse [src] for storage."))
 		icon_state = initial(icon_state) + "_f"
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
@@ -1626,7 +1626,7 @@
 	if(isYautja(hit_atom) && istype(hit_atom,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
-			hit_atom.visible_message("<span class='notice'> [hit_atom] expertly catches [src] out of the air. </span>","<span class='notice'> You easily catch [src]. </span>")
+			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),SPAN_NOTICE(" You easily catch [src]. "))
 			return
 	..()
 

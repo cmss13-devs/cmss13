@@ -23,29 +23,29 @@
 		return		// don't set a label
 
 	if(!labels_left)
-		to_chat(user, "<span class='notice'>No labels left.</span>")
+		to_chat(user, SPAN_NOTICE("No labels left."))
 		return
 	if(!label || !length(label))
-		to_chat(user, "<span class='notice'>No text set.</span>")
+		to_chat(user, SPAN_NOTICE("No text set."))
 		return
 	if(length(A.name) + length(label) > 64)
-		to_chat(user, "<span class='notice'>Label too big.</span>")
+		to_chat(user, SPAN_NOTICE("Label too big."))
 		return
 	if(isliving(A))
-		to_chat(user, "<span class='notice'>You can't label living beings.</span>")
+		to_chat(user, SPAN_NOTICE("You can't label living beings."))
 		return
 	if(istype(A, /obj/item/reagent_container/glass))
-		to_chat(user, "<span class='notice'>The label will not stick to [A]. Use a pen instead.</span>")
+		to_chat(user, SPAN_NOTICE("The label will not stick to [A]. Use a pen instead."))
 		return
 	if(istype(A, /obj/item/tool/surgery))
-		to_chat(user, "<span class='notice'>That wouldn't be sanitary.</span>")
+		to_chat(user, SPAN_NOTICE("That wouldn't be sanitary."))
 		return
 	if(isturf(A))
-		to_chat(user, "<span class='notice'>The label won't stick to that.</span>")
+		to_chat(user, SPAN_NOTICE("The label won't stick to that."))
 		return
 
-	user.visible_message("<span class='notice'>[user] labels [A] as \"[label]\".</span>", \
-						 "<span class='notice'>You label [A] as \"[label]\".</span>")
+	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."), \
+						 SPAN_NOTICE("You label [A] as \"[label]\"."))
 	msg_admin_niche("[user]/([user.ckey]) has labeled [A.name] with label \"[label]\".")
 	A.name = "[A.name] ([label])"
 	labels_left--
@@ -54,16 +54,16 @@
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)
-		to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You turn on \the [src]."))
 		//Now let them chose the text.
 		var/str = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
 		if(!str || !length(str))
-			to_chat(user, "<span class='notice'>Invalid text.</span>")
+			to_chat(user, SPAN_NOTICE("Invalid text."))
 			return
 		label = str
-		to_chat(user, "<span class='notice'>You set the text to '[str]'.</span>")
+		to_chat(user, SPAN_NOTICE("You set the text to '[str]'."))
 	else
-		to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You turn off \the [src]."))
 
 
 

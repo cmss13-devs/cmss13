@@ -222,6 +222,7 @@
 	//Strains Below
 	//Boiler
 	var/bombard_cooldown = 30
+	var/min_bombard_dist = 5
 	var/datum/new_ammo_type = /datum/ammo/xeno/boiler_gas
 	
 

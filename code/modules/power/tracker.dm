@@ -65,7 +65,7 @@
 				S.loc = src.loc
 				S.give_glass()
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] takes the glass off the tracker.</span>")
+			user.visible_message(SPAN_NOTICE("[user] takes the glass off the tracker."))
 			qdel(src)
 		return
 	..()

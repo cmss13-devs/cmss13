@@ -39,6 +39,12 @@
 
 	var/list/mods = params2list(params)
 
+	if(!clicked_something)
+		clicked_something = list()
+
+	for (var/mod in mods)
+		clicked_something[mod] = TRUE
+
 	// Don't allow any other clicks while dragging something
 	if (mods["drag"])
 		return

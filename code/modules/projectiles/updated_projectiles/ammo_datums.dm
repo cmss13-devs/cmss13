@@ -1441,7 +1441,8 @@
 
 /datum/ammo/xeno/railgun_glob
 	name = "railgun glob of acid"
-	icon_state = "boiler_gas"
+	icon_state = "boiler_railgun"
+	ping = "ping_x_railgun"
 	sound_hit = "acid_hit"
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)

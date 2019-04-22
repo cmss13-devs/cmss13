@@ -60,7 +60,7 @@
 						ghost_can_reenter = 1
 						break
 			if(!ghost_can_reenter)
-				to_chat(user, "<span class='notice'>[O] is completely unresponsive; there's no point.</span>")
+				to_chat(user, SPAN_NOTICE("[O] is completely unresponsive; there's no point."))
 				return
 
 		if(B.brainmob.stat == DEAD)
@@ -74,7 +74,7 @@
 
 
 		user.drop_inv_item_to_loc(O, src)
-		to_chat(user, "<span class='notice'> You install [O] in [src]!</span>")
+		to_chat(user, SPAN_NOTICE(" You install [O] in [src]!"))
 		mmi = O
 		transfer_personality(O)
 		update_icon()
@@ -91,7 +91,7 @@
 				for(var/mob/W in viewers(user, null))
 					W.show_message(text("<span class='danger'>[user] has spot-welded some of the damage to [src]!</span>"), 1)
 			else
-				to_chat(user, "<span class='notice'> [src] is undamaged!</span>")
+				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -109,7 +109,7 @@
 			id_card = pda.id
 
 		if(ACCESS_MARINE_RESEARCH in id_card.access)
-			to_chat(user, "<span class='notice'> You swipe your access card and pop the brain out of [src].</span>")
+			to_chat(user, SPAN_NOTICE(" You swipe your access card and pop the brain out of [src]."))
 			eject_brain()
 
 			if(held_item)
@@ -128,7 +128,7 @@
 			var/obj/item/card/emag/emag = O
 			emag.uses--
 			emagged = 1
-			to_chat(user, "<span class='notice'> You short out the security protocols and overload [src]'s cell, priming it to explode in a short time.</span>")
+			to_chat(user, SPAN_NOTICE(" You short out the security protocols and overload [src]'s cell, priming it to explode in a short time."))
 			spawn(100)	to_chat(src, "<span class='danger'>Your cell seems to be outputting a lot of power...</span>")
 			spawn(200)	to_chat(src, "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
 			spawn(SECONDS_30)	src.explode()
@@ -231,7 +231,7 @@
 		held_item = null
 		return 1
 
-	visible_message("<span class='notice'>[src] drops \the [held_item]!</span>", "<span class='notice'>You drop \the [held_item]!</span>", "You hear a skittering noise and a soft thump.")
+	visible_message(SPAN_NOTICE("[src] drops \the [held_item]!"), SPAN_NOTICE("You drop \the [held_item]!"), "You hear a skittering noise and a soft thump.")
 
 	held_item.forceMove(loc)
 	held_item = null
@@ -262,7 +262,7 @@
 			if(selection == I)
 				held_item = selection
 				selection.loc = src
-				visible_message("<span class='notice'>[src] scoops up \the [held_item]!</span>", "<span class='notice'>You grab \the [held_item]!</span>", "You hear a skittering noise and a clink.")
+				visible_message(SPAN_NOTICE("[src] scoops up \the [held_item]!"), SPAN_NOTICE("You grab \the [held_item]!"), "You hear a skittering noise and a clink.")
 				return held_item
 		to_chat(src, "<span class='danger'>\The [selection] is too far away.</span>")
 		return 0

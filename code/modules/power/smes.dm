@@ -179,7 +179,7 @@
 		if(tempLoc.intact_tile)
 			to_chat(user, "<span class='warning'>You must remove the floor plating first.</span>")
 			return 1
-	to_chat(user, "<span class='notice'>You start adding cable to the [src].</span>")
+	to_chat(user, SPAN_NOTICE("You start adding cable to the [src]."))
 	if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		terminal = new /obj/machinery/power/terminal(tempLoc)
 		terminal.dir = tempDir
@@ -210,11 +210,11 @@
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!open_hatch)
 			open_hatch = 1
-			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
+			to_chat(user, SPAN_NOTICE("You open the maintenance hatch of [src]."))
 			return 0
 		else
 			open_hatch = 0
-			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
+			to_chat(user, SPAN_NOTICE("You close the maintenance hatch of [src]."))
 			return 0
 
 	if (!open_hatch)
@@ -234,8 +234,8 @@
 		building_terminal = 0
 		CC.use(10)
 		user.visible_message(\
-				"<span class='notice'>[user.name] has added cables to the [src].</span>",\
-				"<span class='notice'>You added cables to the [src].</span>")
+				SPAN_NOTICE("[user.name] has added cables to the [src]."),\
+				SPAN_NOTICE("You added cables to the [src]."))
 		terminal.connect_to_network()
 		stat = 0
 		return 0
@@ -247,7 +247,7 @@
 			if(tempTDir.intact_tile)
 				to_chat(user, "<span class='warning'>You must remove the floor plating first.</span>")
 			else
-				to_chat(user, "<span class='notice'>You begin to cut the cables...</span>")
+				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if (prob(50) && electrocute_mob(usr, terminal.powernet, terminal))
@@ -258,8 +258,8 @@
 						return 0
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(\
-						"<span class='notice'>[user.name] cut the cables and dismantled the power terminal.</span>",\
-						"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
+						SPAN_NOTICE("[user.name] cut the cables and dismantled the power terminal."),\
+						SPAN_NOTICE("You cut the cables and dismantle the power terminal."))
 					qdel(terminal)
 					terminal = null
 		building_terminal = 0

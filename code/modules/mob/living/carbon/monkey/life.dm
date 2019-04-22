@@ -379,7 +379,7 @@
 					adjustOxyLoss(1)
 				KnockOut(3)
 			if(halloss > 100)
-				to_chat(src, "<span class='notice'>You're in too much pain to keep going...</span>")
+				to_chat(src, SPAN_NOTICE("You're in too much pain to keep going..."))
 				for(var/mob/O in oviewers(src, null))
 					O.show_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.", 1)
 				KnockOut(10)

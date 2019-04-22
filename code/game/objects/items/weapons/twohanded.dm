@@ -55,7 +55,7 @@
 	return 1
 
 /obj/item/proc/place_offhand(var/mob/user,item_name)
-	to_chat(user, "<span class='notice'>You grab [item_name] with both hands.</span>")
+	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
 	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
 	offhand.name = "[item_name] - offhand"
 	offhand.desc = "Your second grip on the [item_name]."
@@ -65,7 +65,7 @@
 	user.update_inv_r_hand()
 
 /obj/item/proc/remove_offhand(var/mob/user)
-	to_chat(user, "<span class='notice'>You are now carrying [name] with one hand.</span>")
+	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
 	if(istype(offhand)) offhand.unwield(user)
 	user.update_inv_l_hand(0)

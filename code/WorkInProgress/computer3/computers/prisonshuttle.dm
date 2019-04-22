@@ -46,19 +46,19 @@ var/prison_shuttle_timeleft = 0
 				A.anchored = 1
 
 				if (src.stat & BROKEN)
-					to_chat(user, "<span class='notice'> The broken glass falls out.</span>")
+					to_chat(user, SPAN_NOTICE(" The broken glass falls out."))
 					new /obj/item/trash/shard( src.loc )
 					A.state = 3
 					A.icon_state = "3"
 				else
-					to_chat(user, "<span class='notice'> You disconnect the monitor.</span>")
+					to_chat(user, SPAN_NOTICE(" You disconnect the monitor."))
 					A.state = 4
 					A.icon_state = "4"
 
 				qdel(src)
 		else if(istype(I,/obj/item/card/emag) && (!hacked))
 			hacked = 1
-			to_chat(user, "<span class='notice'> You disable the lock.</span>")
+			to_chat(user, SPAN_NOTICE(" You disable the lock."))
 		else
 			return src.attack_hand(user)
 
@@ -104,7 +104,7 @@ var/prison_shuttle_timeleft = 0
 				return
 			if(!prison_shuttle_at_station|| prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 			post_signal("prison")
-			to_chat(usr, "<span class='notice'> The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds.</span>")
+			to_chat(usr, SPAN_NOTICE(" The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds."))
 			src.temp += "Shuttle sent.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			src.updateUsrDialog()
 			prison_shuttle_moving_to_prison = 1
@@ -118,7 +118,7 @@ var/prison_shuttle_timeleft = 0
 				return
 			if(prison_shuttle_at_station || prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 			post_signal("prison")
-			to_chat(usr, "<span class='notice'> The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds.</span>")
+			to_chat(usr, SPAN_NOTICE(" The prison shuttle has been called and will arrive in [(PRISON_MOVETIME/10)] seconds."))
 			src.temp += "Shuttle sent.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 			src.updateUsrDialog()
 			prison_shuttle_moving_to_station = 1

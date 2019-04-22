@@ -169,7 +169,7 @@
 /obj/item/clothing/shoes/attack_hand(var/mob/living/M)
 	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
 		if(M.put_in_active_hand(stored_item))
-			to_chat(M, "<span class='notice'>You slide [stored_item] out of [src].</span>")
+			to_chat(M, SPAN_NOTICE("You slide [stored_item] out of [src]."))
 			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 			stored_item = 0
 			update_icon()

@@ -294,7 +294,7 @@ var/list/ob_type_fuel_requirements
 						else if(!warhead)
 							to_chat(user, "<span class='warning'>A warhead must be placed in [src] first.</span>")
 						else
-							to_chat(user, "<span class='notice'>You load [OA] into [src].</span>")
+							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
 							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 							fuel_amt++
 							PC.loaded = null
@@ -305,7 +305,7 @@ var/list/ob_type_fuel_requirements
 						if(warhead)
 							to_chat(user, "<span class='warning'>[src] already has a warhead.</span>")
 						else
-							to_chat(user, "<span class='notice'>You load [OA] into [src].</span>")
+							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
 							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 							warhead = OA
 							OA.forceMove(src)
@@ -327,7 +327,7 @@ var/list/ob_type_fuel_requirements
 					return TRUE
 				PC.update_icon()
 				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-				to_chat(user, "<span class='notice'>You grab [PC.loaded] with [PC].</span>")
+				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
 				update_icon()
 		return TRUE
 	else
@@ -354,7 +354,7 @@ var/list/ob_type_fuel_requirements
 				PC.loaded = src
 				playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 				PC.update_icon()
-				to_chat(user, "<span class='notice'>You grab [PC.loaded] with [PC].</span>")
+				to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
 				update_icon()
 		return TRUE
 	else

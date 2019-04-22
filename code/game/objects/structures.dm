@@ -236,12 +236,12 @@
 	if(!Adjacent(user) || !isturf(user.loc))
 		return 0
 	if(user.is_mob_restrained() || user.buckled)
-		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
+		to_chat(user, SPAN_NOTICE("You need your hands and legs free for this."))
 		return 0
 	if(user.is_mob_incapacitated(TRUE) || user.lying)
 		return 0
 	if(issilicon(user))
-		to_chat(user, "<span class='notice'>You need hands for this.</span>")
+		to_chat(user, SPAN_NOTICE("You need hands for this."))
 		return 0
 	return 1
 

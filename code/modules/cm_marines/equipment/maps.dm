@@ -12,12 +12,12 @@
 	var/window_size = "1280x720"
 
 /obj/item/map/attack_self(var/mob/usr as mob) //Open the map
-	usr.visible_message("<span class='notice'>[usr] opens the [src.name]. </span>")
+	usr.visible_message(SPAN_NOTICE("[usr] opens the [src.name]. "))
 	initialize_map()
 
 // /obj/item/map/attack(mob/living/carbon/human/M as mob, mob/living/carbon/human/usr as mob) //Show someone the map by hitting them with it
-//     usr.visible_message("<span class='notice'>You open up the [name] and show it to [M]. </span>", \
-//         "<span class='notice'>[usr] opens up the [name] and shows it to \the [M]. </span>")
+//     usr.visible_message(SPAN_NOTICE("You open up the [name] and show it to [M]. "), \
+//         SPAN_NOTICE("[usr] opens up the [name] and shows it to \the [M]. "))
 //     M << initialize_map()
 /obj/item/map/attack()
 	return

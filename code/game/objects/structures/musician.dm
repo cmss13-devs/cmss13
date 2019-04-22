@@ -434,20 +434,20 @@
 	if (istype(O, /obj/item/tool/wrench))
 		if (anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, "<span class='notice'> You begin to loosen \the [src]'s casters...</span>")
+			to_chat(user, SPAN_NOTICE(" You begin to loosen \the [src]'s casters..."))
 			if (do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
 					"[user] loosens \the [src]'s casters.", \
-					"<span class='notice'>You have loosened \the [src]. Now it can be pulled somewhere else.</span>", \
+					SPAN_NOTICE("You have loosened \the [src]. Now it can be pulled somewhere else."), \
 					"You hear ratchet.")
 				src.anchored = 0
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, "<span class='notice'> You begin to tighten \the [src] to the floor...</span>")
+			to_chat(user, SPAN_NOTICE(" You begin to tighten \the [src] to the floor..."))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
 					"[user] tightens \the [src]'s casters.", \
-					"<span class='notice'>You have tightened \the [src]'s casters. Now it can be played again.</span>", \
+					SPAN_NOTICE("You have tightened \the [src]'s casters. Now it can be played again."), \
 					"You hear ratchet.")
 				src.anchored = 1
 	else

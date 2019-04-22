@@ -230,8 +230,8 @@
 		if(!welding)
 			O.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
-			user.visible_message("<span class='notice'>[user] refills [src].</span>", \
-			"<span class='notice'>You refill [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
+			SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
@@ -270,7 +270,7 @@
 		return 1
 	else
 		if(M)
-			to_chat(M, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(M, SPAN_NOTICE("You need more welding fuel to complete this task."))
 		return 0
 
 //Returns whether or not the blowtorch is currently on.
@@ -295,7 +295,7 @@
 			playsound(loc, 'sound/items/weldingtool_on.ogg', 25)
 			welding = 1
 			if(M)
-				to_chat(M, "<span class='notice'>You switch [src] on.</span>")
+				to_chat(M, SPAN_NOTICE("You switch [src] on."))
 				M.SetLuminosity(2)
 			else
 				SetLuminosity(2)
@@ -320,7 +320,7 @@
 		heat_source = 0
 		if(M)
 			if(!message)
-				to_chat(M, "<span class='notice'>You switch [src] off.</span>")
+				to_chat(M, SPAN_NOTICE("You switch [src] off."))
 			else
 				to_chat(M, "<span class='warning'>[src] shuts off!</span>")
 			M.SetLuminosity(-2)
@@ -481,7 +481,7 @@
 			if(T.welding)
 				to_chat(user, "<span class='danger'>That was close!</span>")
 			src.reagents.trans_to(W, T.max_fuel)
-			to_chat(user, "<span class='notice'> Welder refilled!</span>")
+			to_chat(user, SPAN_NOTICE(" Welder refilled!"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			return
 	if(istype(W, /obj/item/ammo_magazine/flamer_tank))
@@ -494,11 +494,11 @@
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, "<span class='notice'> You crack the cap off the top of the pack and fill it back up again from the tank.</span>")
+		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, "<span class='notice'> The pack is already full!</span>")
+		to_chat(user, SPAN_NOTICE(" The pack is already full!"))
 		return
 
 /obj/item/tool/weldpack/examine(mob/user)

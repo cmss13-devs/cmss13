@@ -132,7 +132,7 @@
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
 	if(!(src.opened ? src.close() : src.open()))
-		to_chat(user, "<span class='notice'>It won't budge!</span>")
+		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 
 // this should probably use dump_contents()
@@ -191,11 +191,11 @@
 		if(istype(W, /obj/item/tool/weldingtool))
 			var/obj/item/tool/weldingtool/WT = W
 			if(!WT.remove_fuel(0,user))
-				to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 				return
 			new /obj/item/stack/sheet/metal(src.loc)
 			for(var/mob/M in viewers(src))
-				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with [WT].</span>", 3, "You hear welding.", 2)
+				M.show_message(SPAN_NOTICE("\The [src] has been cut apart by [user] with [WT]."), 3, "You hear welding.", 2)
 			qdel(src)
 			return
 		if(isrobot(user))
@@ -207,7 +207,7 @@
 	else if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.remove_fuel(0,user))
-			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return
 		welded = !welded
 		update_icon()
@@ -252,7 +252,7 @@
 	user.next_move = world.time + 5
 
 	if(!src.open())
-		to_chat(user, "<span class='notice'>It won't budge!</span>")
+		to_chat(user, SPAN_NOTICE("It won't budge!"))
 		if(!lastbang)
 			lastbang = 1
 			for (var/mob/M in hearers(src, null))

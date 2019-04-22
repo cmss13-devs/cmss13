@@ -223,22 +223,22 @@
 	if(iswelder(W))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
-			user.visible_message("<span class='notice'>[user] starts welding [src] with [WT].</span>", \
-			"<span class='notice'>You start welding [src] with [WT].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts welding [src] with [WT]."), \
+			SPAN_NOTICE("You start welding [src] with [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !WT.isOn())
 					return
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
-					user.visible_message("<span class='notice'>[user] welds [src] shut.</span>", \
-					"<span class='notice'>You weld [src] shut.</span>")
+					user.visible_message(SPAN_NOTICE("[user] welds [src] shut."), \
+					SPAN_NOTICE("You weld [src] shut."))
 					welded = 1
 					msg_admin_niche("[key_name(user)] welded a vent scrubber.")
 					update_icon()
 				else
-					user.visible_message("<span class='notice'>[user] welds [src] open.</span>", \
-					"<span class='notice'>You weld [src] open.</span>")
+					user.visible_message(SPAN_NOTICE("[user] welds [src] open."), \
+					SPAN_NOTICE("You weld [src] open."))
 					msg_admin_niche("[key_name(user)] un-welded a vent scrubber.")
 					welded = 0
 					update_icon()
@@ -258,12 +258,12 @@
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message("<span class='notice'>[user] begins unfastening [src].</span>",
-	"<span class='notice'>You begin unfastening [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),
+	SPAN_NOTICE("You begin unfastening [src]."))
 	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
-		"<span class='notice'>You unfasten [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+		SPAN_NOTICE("You unfasten [src]."))
 		new /obj/item/pipe(loc, make_from = src)
 		qdel(src)
 

@@ -82,13 +82,13 @@ var/const/HOLOPAD_MODE = 0
 	if(alert(user,"Would you like to request an AI's presence?",,"Yes","No") == "Yes")
 		if(last_request + 200 < world.time) //don't spam the AI with requests you jerk!
 			last_request = world.time
-			to_chat(user, "<span class='notice'>You request an AI's presence.</span>")
+			to_chat(user, SPAN_NOTICE("You request an AI's presence."))
 			var/area/area = get_area(src)
 			for(var/mob/living/silicon/ai/AI in living_mob_list)
 				if(!AI.client)	continue
 				to_chat(AI, "<span class='info'>Your presence is requested at <a href='?src=\ref[AI];jumptoholopad=\ref[src]'>\the [area]</a>.</span>")
 		else
-			to_chat(user, "<span class='notice'>A request for AI presence was already sent recently.</span>")
+			to_chat(user, SPAN_NOTICE("A request for AI presence was already sent recently."))
 
 /obj/machinery/hologram/holopad/attack_ai(mob/living/silicon/ai/user)
 	if (!istype(user))

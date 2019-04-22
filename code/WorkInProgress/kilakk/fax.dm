@@ -122,7 +122,7 @@ var/list/alldepartments = list()
 			else
 				tofax.loc = usr.loc
 				usr.put_in_hands(tofax)
-				to_chat(usr, "<span class='notice'>You take the paper out of \the [src].</span>")
+				to_chat(usr, SPAN_NOTICE("You take the paper out of \the [src]."))
 				tofax = null
 
 	if(href_list["scan"])
@@ -163,11 +163,11 @@ var/list/alldepartments = list()
 		if(!tofax)
 			user.drop_inv_item_to_loc(O, src)
 			tofax = O
-			to_chat(user, "<span class='notice'>You insert the paper into \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You insert the paper into \the [src]."))
 			flick("faxsend", src)
 			updateUsrDialog()
 		else
-			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
 
 	else if(istype(O, /obj/item/card/id))
 
@@ -179,14 +179,14 @@ var/list/alldepartments = list()
 	else if(istype(O, /obj/item/tool/wrench))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
-		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 	return
 
 /proc/Centcomm_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
 
-	var/msg_admin = "<span class='notice'><b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] </span>"
+	var/msg_admin = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font>[key_name(Sender, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[Sender]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) "
@@ -194,7 +194,7 @@ var/list/alldepartments = list()
 	msg_admin += "(<a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
-	var/msg_ghost = "<span class='notice'><b><font color='#006100'>USCM FAX: </font></b></span>"
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#006100'>USCM FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 
 	USCMFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;USCMFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
@@ -203,14 +203,14 @@ var/list/alldepartments = list()
 /proc/Solgov_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
-	var/msg_admin = "<span class='notice'><b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] </span>"
+	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[Sender]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) "
 	msg_admin += "(<a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-	var/msg_ghost = "<span class='notice'><b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b></span>"
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 	CLFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)

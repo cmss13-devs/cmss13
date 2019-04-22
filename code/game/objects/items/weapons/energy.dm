@@ -28,13 +28,13 @@
 /obj/item/weapon/energy/axe/attack_self(mob/user)
 	active = !active
 	if(active)
-		to_chat(user, "<span class='notice'> The axe is now energised.</span>")
+		to_chat(user, SPAN_NOTICE(" The axe is now energised."))
 		force = 150
 		icon_state = "axe1"
 		w_class = 5
 		heat_source = 3500
 	else
-		to_chat(user, "<span class='notice'> The axe can now be concealed.</span>")
+		to_chat(user, SPAN_NOTICE(" The axe can now be concealed."))
 		force = 40
 		icon_state = "axe0"
 		w_class = 5
@@ -84,7 +84,7 @@
 			icon_state = "sword[sword_color]"
 		w_class = 4
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, "<span class='notice'> [src] is now active.</span>")
+		to_chat(user, SPAN_NOTICE(" [src] is now active."))
 
 	else
 		force = 3
@@ -92,7 +92,7 @@
 		icon_state = "[base_sword_icon]0"
 		w_class = 2
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, "<span class='notice'> [src] can now be concealed.</span>")
+		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

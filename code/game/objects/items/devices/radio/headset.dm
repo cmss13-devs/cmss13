@@ -268,7 +268,7 @@
 				if(user.hud_used && user.hud_used.locate_leader)
 					user.hud_used.locate_leader.alpha = 0
 					user.hud_used.locate_leader.mouse_opacity = 0
-	to_chat(usr, "<span class='notice'>You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"].</span>")
+	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
 	playsound(src,'sound/machines/click.ogg', 20, 1)
 
 

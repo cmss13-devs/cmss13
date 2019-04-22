@@ -230,14 +230,14 @@
 			return
 
 		if(occupant)
-			to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
+			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 			return
 
 		visible_message("[user] starts putting [G.grabbed_thing] into the sleeper.", 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)
-				to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
+				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 				return
 			if(!G || !G.grabbed_thing) return
 			var/mob/M = G.grabbed_thing
@@ -306,7 +306,7 @@
 	if(occupant && occupant.reagents)
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= 20)
 			occupant.reagents.add_reagent(chemical, amount)
-			to_chat(user, "<span class='notice'>Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in his/her bloodstream.</span>")
+			to_chat(user, SPAN_NOTICE("Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in his/her bloodstream."))
 			return
 	to_chat(user, "<span class='warning'>There's no occupant in the sleeper or the subject has too many chemicals!</span>")
 	return
@@ -314,7 +314,8 @@
 
 /obj/machinery/sleeper/proc/check(mob/living/user)
 	if(occupant)
-		user << text("<span class='notice'><B>Occupant ([]) Statistics:</B></span>", occupant)
+		var/msg_occupant = "[occupant]"
+		to_chat(user, SPAN_NOTICE("<B>Occupant ([msg_occupant]) Statistics:</B>"))
 		var/t1
 		switch(occupant.stat)
 			if(0)
@@ -324,20 +325,20 @@
 			if(2)
 				t1 = "*dead*"
 			else
-		user << text("[]\t Health %: [] ([])", (occupant.health > 50 ? "<span class='notice'></span>" : "<span class='danger'></span>"), occupant.health, t1)
+		user << text("[]\t Health %: [] ([])", (occupant.health > 50 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.health, t1)
 		user << text("[]\t -Core Temperature: []&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
-		user << text("[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? "<span class='notice'></span>" : "<span class='danger'></span>"), occupant.getBruteLoss())
-		user << text("[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? "<span class='notice'></span>" : "<span class='danger'></span>"), occupant.getOxyLoss())
-		user << text("[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? "<span class='notice'></span>" : "<span class='danger'></span>"), occupant.getToxLoss())
-		user << text("[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? "<span class='notice'></span>" : "<span class='danger'></span>"), occupant.getFireLoss())
-		to_chat(user, "<span class='notice'> Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)</span>")
-		to_chat(user, "<span class='notice'> \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)</span>")
+		user << text("[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getBruteLoss())
+		user << text("[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getOxyLoss())
+		user << text("[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getToxLoss())
+		user << text("[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getFireLoss())
+		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)"))
+		to_chat(user, SPAN_NOTICE(" \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 		if(beaker)
-			to_chat(user, "<span class='notice'> \t Dialysis Output Beaker has [beaker.reagents.maximum_volume - beaker.reagents.total_volume] of free space remaining.</span>")
+			to_chat(user, SPAN_NOTICE(" \t Dialysis Output Beaker has [beaker.reagents.maximum_volume - beaker.reagents.total_volume] of free space remaining."))
 		else
-			to_chat(user, "<span class='notice'> No Dialysis Output Beaker loaded.</span>")
+			to_chat(user, SPAN_NOTICE(" No Dialysis Output Beaker loaded."))
 	else
-		to_chat(user, "<span class='notice'> There is no one inside!</span>")
+		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
 	return
 
 
@@ -378,7 +379,7 @@
 	var/mob/living/carbon/human/user = usr
 
 	if(occupant)
-		to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
+		to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 		return
 
 	visible_message("[user] starts climbing into the sleeper.", 3)
@@ -388,7 +389,7 @@
 			grabmob.stop_pulling()
 	if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(occupant)
-			to_chat(user, "<span class='notice'>The sleeper is already occupied!</span>")
+			to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 			return
 		user.stop_pulling()
 		if(user.pulledby)

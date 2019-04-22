@@ -211,7 +211,7 @@
 	if(!inserted_helmet && !inserted_mask && !inserted_suit) //shit's empty yo
 		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
 		return
-	to_chat(user, "<span class='notice'>You start the Unit's cauterisation cycle.</span>")
+	to_chat(user, SPAN_NOTICE("You start the Unit's cauterisation cycle."))
 	isUV = 1
 	update_icon()
 	updateUsrDialog()
@@ -247,7 +247,7 @@
 					to_chat(user, "<span class='warning'>The unit already contains a suit.</span>")
 					return
 				if(user.drop_inv_item_to_loc(S, src))
-					to_chat(user, "<span class='notice'>You load the [S.name] into the storage compartment.</span>")
+					to_chat(user, SPAN_NOTICE("You load the [S.name] into the storage compartment."))
 					inserted_suit = S
 					update_icon()
 					updateUsrDialog()
@@ -258,7 +258,7 @@
 				if(inserted_helmet)
 					to_chat(user, "<span class='warning'>The unit already contains a helmet.</span>")
 					return
-				to_chat(user, "<span class='notice'>You load the [H.name] into the storage compartment.</span>")
+				to_chat(user, SPAN_NOTICE("You load the [H.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(H, src))
 					inserted_helmet = H
 					update_icon()
@@ -270,7 +270,7 @@
 				if(inserted_mask)
 					to_chat(user, "<span class='warning'>The unit already contains a mask.</span>")
 					return
-				to_chat(user, "<span class='notice'>You load the [M.name] into the storage compartment.</span>")
+				to_chat(user, SPAN_NOTICE("You load the [M.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(M, src))
 					inserted_mask = M
 					update_icon()
@@ -282,7 +282,7 @@
 				if(inserted_tank)
 					to_chat(user, "<span class='warning'>The unit already contains a tank.</span>")
 					return
-				to_chat(user, "<span class='notice'>You load the [T.name] into the storage compartment.</span>")
+				to_chat(user, SPAN_NOTICE("You load the [T.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(T, src))
 					inserted_tank = T
 					update_icon()

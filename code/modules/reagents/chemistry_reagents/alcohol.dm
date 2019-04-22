@@ -26,66 +26,67 @@
 	var/blur_start = 600	//amount absorbed after which mob starts getting blurred vision
 	var/pass_out = 800	//amount absorbed after which mob starts passing out
 
-	on_mob_life(mob/living/M, alien)
-		. = ..()
-		if(!.) return
-		M:nutrition += nutriment_factor
-		holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
+/datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
+	. = ..()
+	if(!.) return
+	M:nutrition += nutriment_factor
+	holder.remove_reagent(src.id, (alien ? FOOD_METABOLISM : ALCOHOL_METABOLISM)) // Catch-all for creatures without livers.
 
-		if(adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
-		if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
+	if(adj_drowsy)	M.drowsyness = max(0,M.drowsyness + adj_drowsy)
+	if(adj_sleepy) M.sleeping = max(0,M.sleeping + adj_sleepy)
 
-		if(!src.data || (!isnum(src.data)  && src.data.len)) data = 1   //if it doesn't exist we set it.  if it's a list we're going to set it to 1 as well.  This is to
-		src.data += boozepwr						//avoid a runtime error associated with drinking blood mixed in drinks (demon's blood).
+	if(!src.data || (!isnum(src.data)  && src.data.len)) data = 1   //if it doesn't exist we set it.  if it's a list we're going to set it to 1 as well.  This is to
+	src.data += boozepwr						//avoid a runtime error associated with drinking blood mixed in drinks (demon's blood).
 
-		var/d = data
+	var/d = data
 
-		// make all the beverages work together
-		for(var/datum/reagent/ethanol/A in holder.reagent_list)
-			if(isnum(A.data)) d += A.data
+	// make all the beverages work together
+	for(var/datum/reagent/ethanol/A in holder.reagent_list)
+		if(isnum(A.data)) d += A.data
 
-		M.dizziness += dizzy_adj
-		if(d >= slur_start && d < pass_out)
-			if(!M:slurring) M:slurring = 1
-			M:slurring += slurr_adj
-		if(d >= confused_start && prob(33))
-			if(!M:confused) M:confused = 1
-			M.confused = max(M:confused+confused_adj,0)
-		if(d >= blur_start)
-			M.eye_blurry = max(M.eye_blurry, 10)
-			M:drowsyness  = max(M:drowsyness, 0)
-		if(d >= pass_out)
-			M:knocked_out = max(M:knocked_out, 20)
-			M:drowsyness  = max(M:drowsyness, 30)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-				if(!L)
-					H.adjustToxLoss(5)
-				else if(istype(L))
-					L.take_damage(0.1, 1)
-				H.adjustToxLoss(0.1)
+	M.dizziness += dizzy_adj
+	if(d >= slur_start && d < pass_out)
+		if(!M:slurring) M:slurring = 1
+		M:slurring += slurr_adj
+	if(d >= confused_start && prob(33))
+		if(!M:confused) M:confused = 1
+		M.confused = max(M:confused+confused_adj,0)
+	if(d >= blur_start)
+		M.eye_blurry = max(M.eye_blurry, 10)
+		M:drowsyness  = max(M:drowsyness, 0)
+	if(d >= pass_out)
+		M:knocked_out = max(M:knocked_out, 20)
+		M:drowsyness  = max(M:drowsyness, 30)
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
+			if(!L)
+				H.adjustToxLoss(5)
+			else if(istype(L))
+				L.take_damage(0.1, 1)
+			H.adjustToxLoss(0.1)
 
-	reaction_obj(var/obj/O, var/volume)
-		if(istype(O,/obj/item/paper))
-			var/obj/item/paper/paperaffected = O
-			paperaffected.clearpaper()
-			to_chat(usr, "The solution dissolves the ink on the paper.")
-		if(istype(O,/obj/item/book))
-			if(volume >= 5)
-				var/obj/item/book/affectedbook = O
-				affectedbook.dat = null
-				to_chat(usr, "The solution dissolves the ink on the book.")
-			else
-				to_chat(usr, "It wasn't enough...")
+/datum/reagent/ethanol/reaction_obj(var/obj/O, var/volume)
+	if(istype(O,/obj/item/paper))
+		var/obj/item/paper/paperaffected = O
+		paperaffected.clearpaper()
+		to_chat(usr, "The solution dissolves the ink on the paper.")
+	if(istype(O,/obj/item/book))
+		if(volume >= 5)
+			var/obj/item/book/affectedbook = O
+			affectedbook.dat = null
+			to_chat(usr, "The solution dissolves the ink on the book.")
+		else
+			to_chat(usr, "It wasn't enough...")
+	return
+
+/datum/reagent/ethanol/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with ethanol isn't quite as good as fuel.
+	if(!istype(M, /mob/living))
+		return
+	if(method == TOUCH)
+		M.adjust_fire_stacks(volume / 15)
 		return
 
-	reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with ethanol isn't quite as good as fuel.
-		if(!istype(M, /mob/living))
-			return
-		if(method == TOUCH)
-			M.adjust_fire_stacks(volume / 15)
-			return
 /datum/reagent/ethanol/beer
 	name = "Beer"
 	id = "beer"

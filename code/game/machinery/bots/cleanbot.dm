@@ -124,28 +124,28 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 			src.updateUsrDialog()
 		if("oddbutton")
 			src.oddbutton = !src.oddbutton
-			to_chat(usr, "<span class='notice'>You press the weird button.</span>")
+			to_chat(usr, SPAN_NOTICE("You press the weird button."))
 			src.updateUsrDialog()
 
 /obj/machinery/bot/cleanbot/attackby(obj/item/W, mob/user as mob)
 	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if(src.allowed(usr) && !open && !emagged)
 			src.locked = !src.locked
-			to_chat(user, "<span class='notice'>You [ src.locked ? "lock" : "unlock"] the [src] behaviour controls.</span>")
+			to_chat(user, SPAN_NOTICE("You [ src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
 		else
 			if(emagged)
 				to_chat(user, "<span class='warning'>ERROR</span>")
 			if(open)
 				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
 			else
-				to_chat(user, "<span class='notice'>This [src] doesn't seem to respect your authority.</span>")
+				to_chat(user, SPAN_NOTICE("This [src] doesn't seem to respect your authority."))
 	else
 		return ..()
 
 /obj/machinery/bot/cleanbot/Emag(mob/user as mob)
 	..()
 	if(open && !locked)
-		if(user) to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
+		if(user) to_chat(user, SPAN_NOTICE("The [src] buzzes and beeps."))
 		src.oddbutton = 1
 		src.screwloose = 1
 

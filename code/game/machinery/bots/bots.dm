@@ -69,16 +69,16 @@
 	if(istype(W, /obj/item/tool/screwdriver))
 		if(!locked)
 			open = !open
-			to_chat(user, "<span class='notice'>Maintenance panel is now [src.open ? "opened" : "closed"].</span>")
+			to_chat(user, SPAN_NOTICE("Maintenance panel is now [src.open ? "opened" : "closed"]."))
 	else if(istype(W, /obj/item/tool/weldingtool))
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)
-				user.visible_message("<span class='danger'>[user] repairs [src]!</span>","<span class='notice'>You repair [src]!</span>")
+				user.visible_message("<span class='danger'>[user] repairs [src]!</span>",SPAN_NOTICE("You repair [src]!"))
 			else
-				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
+				to_chat(user, SPAN_NOTICE("Unable to repair with the maintenance panel closed."))
 		else
-			to_chat(user, "<span class='notice'>[src] does not need a repair.</span>")
+			to_chat(user, SPAN_NOTICE("[src] does not need a repair."))
 	else if (istype(W, /obj/item/card/emag) && emagged < 2)
 		Emag(user)
 	else

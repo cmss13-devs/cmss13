@@ -223,7 +223,7 @@
 
 /obj/machinery/prop/almayer/CICmap/Dispose()
 	for(var/mob/living/L in current_viewers)
-		to_chat(L, "<span class='notice'>You stop looking at the map.</span>")
+		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
 		L << browse(null, "window=marineminimap")
 		current_viewers -= L
 		continue
@@ -232,14 +232,14 @@
 /obj/machinery/prop/almayer/CICmap/examine(mob/living/user)
 	if(ishuman(user) && get_dist(src,user) < 3 && powered())
 		if(user in current_viewers)
-			to_chat(user, "<span class='notice'>You stop looking at the map.</span>")
+			to_chat(user, SPAN_NOTICE("You stop looking at the map."))
 			user << browse(null, "window=marineminimap")
 			current_viewers -= user
 			return
 		current_viewers += user
 		if(!istype(marine_mapview_overlay_5))
 			overlay_marine_mapview()
-		to_chat(user, "<span class='notice'>You start looking at the map.</span>")
+		to_chat(user, SPAN_NOTICE("You start looking at the map."))
 		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
 		user << browse("<html><head><script type=\"text/javascript\">function ref() { document.body.innerHTML = '<img src=\"marine_minimap.png?'+Math.random()+'\">'; } setInterval('ref()',1000);</script></head><body><img src=marine_minimap.png></body></html>","window=marineminimap;size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 		return
@@ -250,7 +250,7 @@
 		overlay_marine_mapview()
 	for(var/mob/living/L in current_viewers)
 		if(!powered() || get_dist(src,L) > 2)
-			to_chat(L, "<span class='notice'>You stop looking at the map.</span>")
+			to_chat(L, SPAN_NOTICE("You stop looking at the map."))
 			L << browse(null, "window=marineminimap")
 			current_viewers -= L
 			continue
@@ -334,7 +334,7 @@
 	if(istype(I, /obj/item/dogtag))
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
-			to_chat(user, "<span class='notice'>You add [D] to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
 			if(!fallen_list)
 				fallen_list = list()
 			fallen_list += D.fallen_names

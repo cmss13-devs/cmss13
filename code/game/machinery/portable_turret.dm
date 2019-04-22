@@ -687,7 +687,7 @@ Status: []<BR>"},
 		if(0) // first step
 			if(istype(W, /obj/item/weapon/wrench) && !anchored)
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-				to_chat(user, "<span class='notice'> You secure the external bolts.</span>")
+				to_chat(user, SPAN_NOTICE(" You secure the external bolts."))
 				anchored = 1
 				build_step = 1
 				return
@@ -703,7 +703,7 @@ Status: []<BR>"},
 			if(istype(W, /obj/item/stack/sheet/metal))
 				var/obj/item/stack/sheet/metal/M = W
 				if (M.use(2))
-					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
+					to_chat(user, SPAN_NOTICE("You add some metal armor to the interior frame."))
 					build_step = 2
 					icon_state = "turret_frame2"
 				else
@@ -721,7 +721,7 @@ Status: []<BR>"},
 		if(2)
 			if(istype(W, /obj/item/weapon/wrench))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-				to_chat(user, "<span class='notice'> You bolt the metal armor into place.</span>")
+				to_chat(user, SPAN_NOTICE(" You bolt the metal armor into place."))
 				build_step = 3
 				return
 
@@ -747,7 +747,7 @@ Status: []<BR>"},
 				var/obj/item/weapon/gun/energy/E = W // typecasts the item to an energy gun
 				installation = W.type // installation becomes W.type
 				gun_charge = E.power_supply.charge // the gun's charge is stored in src.gun_charge
-				to_chat(user, "<span class='notice'> You add \the [W] to the turret.</span>")
+				to_chat(user, SPAN_NOTICE(" You add \the [W] to the turret."))
 				build_step = 4
 				del(W) // delete the gun :(
 				return
@@ -761,7 +761,7 @@ Status: []<BR>"},
 		if(4)
 			if(isprox(W))
 				build_step = 5
-				to_chat(user, "<span class='notice'> You add the prox sensor to the turret.</span>")
+				to_chat(user, SPAN_NOTICE(" You add the prox sensor to the turret."))
 				del(W)
 				return
 
@@ -771,7 +771,7 @@ Status: []<BR>"},
 			if(istype(W, /obj/item/weapon/screwdriver))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 				build_step = 6
-				to_chat(user, "<span class='notice'> You close the internal access hatch.</span>")
+				to_chat(user, SPAN_NOTICE(" You close the internal access hatch."))
 				return
 
 			// attack_hand() removes the prox sensor
@@ -780,7 +780,7 @@ Status: []<BR>"},
 			if(istype(W, /obj/item/stack/sheet/metal))
 				var/obj/item/stack/sheet/metal/M = W
 				if (M.use(2))
-					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")
+					to_chat(user, SPAN_NOTICE("You add some metal armor to the exterior frame."))
 					build_step = 7
 				else
 					to_chat(user, "<span class='warning'>You need two sheets of metal to add armor to the frame.</span>")
@@ -803,7 +803,7 @@ Status: []<BR>"},
 				if(do_after(user, 30))
 					if(!src || !WT.remove_fuel(5, user)) return
 					build_step = 8
-					to_chat(user, "<span class='notice'> You weld the turret's armor down.</span>")
+					to_chat(user, SPAN_NOTICE(" You weld the turret's armor down."))
 
 					// The final step: create a full turret
 					var/obj/machinery/porta_turret/Turret = new/obj/machinery/porta_turret(locate(x,y,z))

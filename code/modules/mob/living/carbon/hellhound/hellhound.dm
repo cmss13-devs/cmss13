@@ -252,20 +252,20 @@
 			message = trim(copytext(message,2))
 			if(!message) return
 			for(var/mob/living/carbon/hellhound/M in living_mob_list)
-				to_chat(M, "<span class='notice'> <B>\[RADIO\]</b>: [src.name] [verb_used], '<B>[message]<B>'.</span>")
+				to_chat(M, SPAN_NOTICE(" <B>\[RADIO\]</b>: [src.name] [verb_used], '<B>[message]<B>'."))
 			return
 
 	message = capitalize(trim_left(message))
 	if(!message || stat)
 		return
 
-	to_chat(src, "<span class='notice'> You say, '<B>[message]</b>'.</span>")
+	to_chat(src, SPAN_NOTICE(" You say, '<B>[message]</b>'."))
 	for(var/mob/living/carbon/hellhound/H in orange(9))
-		to_chat(H, "<span class='notice'> [src.name] [verb_used], '[message]'.</span>")
+		to_chat(H, SPAN_NOTICE(" [src.name] [verb_used], '[message]'."))
 
 	for(var/mob/living/carbon/C in orange(6))
 		if(!istype(C,/mob/living/carbon/hellhound))
-			to_chat(C, "<span class='notice'> [src.name] [verb_used].</span>")
+			to_chat(C, SPAN_NOTICE(" [src.name] [verb_used]."))
 	return
 
 /mob/living/carbon/hellhound/rejuvenate()

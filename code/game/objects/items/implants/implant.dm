@@ -335,7 +335,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		if(!ishuman(M))	return
 		if(isYautja(M)) return
 		var/mob/living/carbon/human/H = M
-		to_chat(H, "<span class='notice'>You are now tagged as a WY loyalist and will be monitored by their central headquarters. You retain your free will and mental faculties.</span>")
+		to_chat(H, SPAN_NOTICE("You are now tagged as a WY loyalist and will be monitored by their central headquarters. You retain your free will and mental faculties."))
 		return 1
 
 /obj/item/implant/adrenalin
@@ -361,7 +361,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		if (src.uses < 1)	return 0
 		if (emote == "pale")
 			src.uses--
-			to_chat(source, "<span class='notice'> You feel a sudden surge of energy!</span>")
+			to_chat(source, SPAN_NOTICE(" You feel a sudden surge of energy!"))
 			source.SetStunned(0)
 			source.SetKnockeddown(0)
 			source.SetKnockedout(0)

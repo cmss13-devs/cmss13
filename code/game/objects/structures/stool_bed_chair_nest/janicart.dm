@@ -30,14 +30,14 @@
 	if(istype(I, /obj/item/tool/mop))
 		if(reagents.total_volume > 1)
 			reagents.trans_to(I, 2)
-			to_chat(user, "<span class='notice'>You wet [I] in the [callme].</span>")
+			to_chat(user, SPAN_NOTICE("You wet [I] in the [callme]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else
-			to_chat(user, "<span class='notice'>This [callme] is out of water!</span>")
+			to_chat(user, SPAN_NOTICE("This [callme] is out of water!"))
 	else if(istype(I, /obj/item/key))
 		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
 	else if(istype(I, /obj/item/storage/bag/trash))
-		to_chat(user, "<span class='notice'>You hook the trashbag onto the [callme].</span>")
+		to_chat(user, SPAN_NOTICE("You hook the trashbag onto the [callme]."))
 		user.drop_held_item()
 		I.loc = src
 		mybag = I
@@ -62,13 +62,13 @@
 	if(istype(user.l_hand, /obj/item/key) || istype(user.r_hand, /obj/item/key))
 		step(src, direction)
 	else
-		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to drive this [callme].</span>")
+		to_chat(user, SPAN_NOTICE("You'll need the keys in one of your hands to drive this [callme]."))
 
 
 /obj/structure/bed/chair/janicart/send_buckling_message(mob/M, mob/user)
 	M.visible_message(\
-		"<span class='notice'>[M] climbs onto the [callme]!</span>",\
-		"<span class='notice'>You climb onto the [callme]!</span>")
+		SPAN_NOTICE("[M] climbs onto the [callme]!"),\
+		SPAN_NOTICE("You climb onto the [callme]!"))
 
 
 /obj/structure/bed/chair/janicart/handle_rotation()

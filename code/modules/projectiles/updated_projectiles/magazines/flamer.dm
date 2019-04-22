@@ -19,20 +19,20 @@
 	if(istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/tool/weldpack) && get_dist(user,target) <= 1)
 		var/obj/O = target
 		if(!O.reagents)
-			to_chat(user, "<span class='warning'>[O] is empty!</span>")
+			to_chat(user, SPAN_WARNING("[O] is empty!"))
 		if(current_rounds)
-			to_chat(user, "<span class='warning'>You can't mix fuel mixtures!</span>")
+			to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 			return
 		var/fuel_available = O.reagents.get_reagent_amount("fuel") < max_rounds ? O.reagents.get_reagent_amount("fuel") : max_rounds
 		if(!fuel_available)
-			to_chat(user, "<span class='warning'>[O] is empty!</span>")
+			to_chat(user, SPAN_WARNING("[O] is empty!"))
 			return
 
 		O.reagents.remove_reagent("fuel", fuel_available)
 		current_rounds = fuel_available
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		caliber = "Fuel"
-		to_chat(user, "<span class='notice'>You refill [src] with [lowertext(caliber)].</span>")
+		to_chat(user, SPAN_NOTICE("You refill [src] with [lowertext(caliber)]."))
 		update_icon()
 	else
 		..()

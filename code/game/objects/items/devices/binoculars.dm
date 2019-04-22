@@ -40,7 +40,7 @@
 
 /obj/item/device/binoculars/tactical/examine()
 	..()
-	to_chat(usr, "<span class='notice'>They are currently set to [mode ? "range finder" : "CAS marking"] mode.</span>")
+	to_chat(usr, SPAN_NOTICE("They are currently set to [mode ? "range finder" : "CAS marking"] mode."))
 
 /obj/item/device/binoculars/tactical/Dispose()
 	if(laser)
@@ -89,7 +89,7 @@
 
 	if(!zoom)
 		mode = !mode
-		to_chat(user, "<span class='notice'>You switch [src] to [mode? "range finder" : "CAS marking" ] mode.</span>")
+		to_chat(user, SPAN_NOTICE("You switch [src] to [mode? "range finder" : "CAS marking" ] mode."))
 		update_icon()
 		playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
@@ -132,13 +132,13 @@
 	if(user.action_busy)
 		return
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
-	to_chat(user, "<span class='notice'>INITIATING LASER TARGETING. Stand still.</span>")
+	to_chat(user, SPAN_NOTICE("INITIATING LASER TARGETING. Stand still."))
 	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
 		return
 	if(mode)
 		var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, laz_name, user)
 		coord = LT
-		to_chat(user, "<span class='notice'>SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)].</span>")
+		to_chat(user, SPAN_NOTICE("SIMPLIFIED COORDINATES OF TARGET. LONGITUDE [obfuscate_x(coord.x)]. LATITUDE [obfuscate_y(coord.y)]."))
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)
 		while(coord)
 			if(!do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -147,7 +147,7 @@
 					coord = null
 				break
 	else
-		to_chat(user, "<span class='notice'>TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE.</span>")
+		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, laz_name, user)
 		laser = LT
 		playsound(src, 'sound/effects/binoctarget.ogg', 35)

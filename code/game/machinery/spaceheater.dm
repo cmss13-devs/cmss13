@@ -65,13 +65,13 @@
 						cell = C
 						C.add_fingerprint(usr)
 
-						user.visible_message("<span class='notice'>[user] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
+						user.visible_message(SPAN_NOTICE("[user] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
 		else
 			to_chat(user, "The hatch must be open to insert a power cell.")
 			return
 	else if(istype(I, /obj/item/tool/screwdriver))
 		open = !open
-		user.visible_message("<span class='notice'>[user] [open ? "opens" : "closes"] the hatch on the [src].</span>", "<span class='notice'>You [open ? "open" : "close"] the hatch on the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on the [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on the [src]."))
 		update_icon()
 		if(!open && user.interactee == src)
 			user << browse(null, "window=spaceheater")
@@ -113,7 +113,7 @@
 			start_processing()
 		else
 			stop_processing()
-		user.visible_message("<span class='notice'>[user] switches [on ? "on" : "off"] the [src].</span>","<span class='notice'>You switch [on ? "on" : "off"] the [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] the [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] the [src]."))
 		update_icon()
 	return
 
@@ -134,7 +134,7 @@
 
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
-					usr.visible_message("<span class='notice'>[usr] removes \the [cell] from \the [src].</span>", "<span class='notice'>You remove \the [cell] from \the [src].</span>")
+					usr.visible_message(SPAN_NOTICE("[usr] removes \the [cell] from \the [src]."), SPAN_NOTICE("You remove \the [cell] from \the [src]."))
 					cell.updateicon()
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
@@ -150,7 +150,7 @@
 							C.forceMove(src)
 							C.add_fingerprint(usr)
 
-							usr.visible_message("<span class='notice'>[usr] inserts \the [C] into \the [src].</span>", "<span class='notice'>You insert \the [C] into \the [src].</span>")
+							usr.visible_message(SPAN_NOTICE("[usr] inserts \the [C] into \the [src]."), SPAN_NOTICE("You insert \the [C] into \the [src]."))
 
 		updateDialog()
 	else

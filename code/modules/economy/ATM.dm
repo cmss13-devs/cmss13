@@ -299,7 +299,7 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, "<span class='notice'> \icon[src] Access granted. Welcome user '[authenticated_account.owner_name].'</span>")
+						to_chat(usr, SPAN_NOTICE(" \icon[src] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
@@ -452,7 +452,7 @@ log transactions
 			if(I)
 				authenticated_account = attempt_account_access(I.associated_account_number)
 				if(authenticated_account)
-					to_chat(human_user, "<span class='notice'> \icon[src] Access granted. Welcome user '[authenticated_account.owner_name].'</span>")
+					to_chat(human_user, SPAN_NOTICE(" \icon[src] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
 					//create a transaction log entry
 					var/datum/transaction/T = new()

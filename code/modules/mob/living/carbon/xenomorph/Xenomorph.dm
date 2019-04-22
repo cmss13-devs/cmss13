@@ -91,6 +91,7 @@
 	//Strain Variables
 	//Boiler
 	var/bombard_cooldown = 30
+	var/min_bombard_dist = 5
 	var/acid_cooldown = 0 //Spitter too.
 
 	//Praetorian
@@ -533,6 +534,7 @@
 	gas_level = mutators.gas_boost_level
 	gas_life_multiplier = mutators.gas_life_multiplier
 	bombard_cooldown = mutators.bombard_cooldown
+	min_bombard_dist = mutators.min_bombard_dist
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
 	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)

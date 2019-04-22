@@ -41,7 +41,7 @@
 				else
 					playsound(user, 'sound/effects/Glasshit.ogg', 25, 1) //We don't want this playing every time
 				if(W.force < 15)
-					to_chat(user, "<span class='notice'> The cabinet's protective glass glances off the hit.</span>")
+					to_chat(user, SPAN_NOTICE(" The cabinet's protective glass glances off the hit."))
 				else
 					src.hitstaken++
 					if(src.hitstaken == 4)
@@ -59,7 +59,7 @@
 				fireaxe = O
 				user.drop_held_item()
 				src.contents += O
-				to_chat(user, "<span class='notice'> You place the fire axe back in the [src.name].</span>")
+				to_chat(user, SPAN_NOTICE(" You place the fire axe back in the [src.name]."))
 				update_icon()
 			else
 				if(src.smashed)
@@ -85,7 +85,7 @@
 					to_chat(user, "<span class='danger'>Resetting circuitry...</span>")
 					sleep(50)
 					src.locked = 1
-					to_chat(user, "<span class='notice'> You re-enable the locking modules.</span>")
+					to_chat(user, SPAN_NOTICE(" You re-enable the locking modules."))
 					playsound(user, 'sound/machines/lockenable.ogg', 25, 1)
 					if(do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 						src.locked = 1
@@ -116,7 +116,7 @@
 			if(fireaxe)
 				user.put_in_hands(fireaxe)
 				fireaxe = null
-				to_chat(user, "<span class='notice'> You take the fire axe from the [name].</span>")
+				to_chat(user, SPAN_NOTICE(" You take the fire axe from the [name]."))
 				src.add_fingerprint(user)
 				update_icon()
 			else
@@ -148,7 +148,7 @@
 			if(src.locked)
 				to_chat(usr, "<span class='danger'>The cabinet won't budge!</span>")
 			else if(src.smashed)
-				to_chat(usr, "<span class='notice'> The protective glass is broken!</span>")
+				to_chat(usr, SPAN_NOTICE(" The protective glass is broken!"))
 			return
 
 		localopened = !localopened
@@ -168,11 +168,11 @@
 			if(fireaxe)
 				usr.put_in_hands(fireaxe)
 				fireaxe = null
-				to_chat(usr, "<span class='notice'> You take the Fire axe from the [name].</span>")
+				to_chat(usr, SPAN_NOTICE(" You take the Fire axe from the [name]."))
 			else
-				to_chat(usr, "<span class='notice'> The [src.name] is empty.</span>")
+				to_chat(usr, SPAN_NOTICE(" The [src.name] is empty."))
 		else
-			to_chat(usr, "<span class='notice'> The [src.name] is closed.</span>")
+			to_chat(usr, SPAN_NOTICE(" The [src.name] is closed."))
 		update_icon()
 
 	attack_paw(mob/user as mob)
@@ -188,7 +188,7 @@
 			if(locked)
 				to_chat(user, "<span class='danger'>Cabinet locked.</span>")
 			else
-				to_chat(user, "<span class='notice'> Cabinet unlocked.</span>")
+				to_chat(user, SPAN_NOTICE(" Cabinet unlocked."))
 			return
 
 	update_icon() //Template: fireaxe[has fireaxe][is opened][hits taken][is smashed]. If you want the opening or closing animations, add "opening" or "closing" right after the numbers

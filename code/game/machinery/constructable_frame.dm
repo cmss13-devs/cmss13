@@ -40,24 +40,24 @@
 						to_chat(user, "<span class='warning'>You need five lengths of cable to add them to the frame.</span>")
 						return
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					user.visible_message("<span class='notice'>[user] starts adding cables to [src].</span>",
-					"<span class='notice'>You start adding cables to [src].</span>")
+					user.visible_message(SPAN_NOTICE("[user] starts adding cables to [src]."),
+					SPAN_NOTICE("You start adding cables to [src]."))
 					if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 1)
 						if(C && istype(C) && C.use(5))
-							user.visible_message("<span class='notice'>[user] adds cables to [src].</span>",
-							"<span class='notice'>You add cables to [src].</span>")
+							user.visible_message(SPAN_NOTICE("[user] adds cables to [src]."),
+							SPAN_NOTICE("You add cables to [src]."))
 							state = 2
 							icon_state = "box_1"
 				else
 					if(iswrench(P))
 						playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-						to_chat(user, "<span class='notice'> You dismantle the frame</span>")
+						to_chat(user, SPAN_NOTICE(" You dismantle the frame"))
 						new /obj/item/stack/sheet/metal(src.loc, 5)
 						qdel(src)
 			if(2)
 				if(istype(P, /obj/item/circuitboard/machine))
 					playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-					to_chat(user, "<span class='notice'> You add the circuit board to the frame.</span>")
+					to_chat(user, SPAN_NOTICE(" You add the circuit board to the frame."))
 					circuit = P
 					if(user.drop_inv_item_to_loc(P, src))
 						icon_state = "box_2"
@@ -80,7 +80,7 @@
 				else
 					if(istype(P, /obj/item/tool/wirecutters))
 						playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-						to_chat(user, "<span class='notice'> You remove the cables.</span>")
+						to_chat(user, SPAN_NOTICE(" You remove the cables."))
 						state = 1
 						icon_state = "box_0"
 						var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( src.loc )
@@ -93,9 +93,9 @@
 					circuit.loc = src.loc
 					circuit = null
 					if(components.len == 0)
-						to_chat(user, "<span class='notice'> You remove the circuit board.</span>")
+						to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
 					else
-						to_chat(user, "<span class='notice'> You remove the circuit board and other components.</span>")
+						to_chat(user, SPAN_NOTICE(" You remove the circuit board and other components."))
 						for(var/obj/item/W in components)
 							W.loc = src.loc
 					desc = initial(desc)

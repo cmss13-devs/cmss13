@@ -1,4 +1,3 @@
-
 //Some debug variables. Toggle them to 1 in order to see the related debug messages. Helpful when testing out formulas.
 #define DEBUG_HIT_CHANCE	0
 #define DEBUG_HUMAN_DEFENSE	0
@@ -350,7 +349,7 @@
 			// Snipers have accuracy falloff at closer range before point blank
 			effective_accuracy -= (P.ammo.accurate_range_min - P.distance_travelled) * 5
 	else
-		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (P.distance_travelled * 3) : (P.distance_travelled * 5)
+		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (P.distance_travelled * 1.5) : (P.distance_travelled * 5)
 		// Snipers have a smaller falloff constant due to longer max range
 
 
@@ -491,7 +490,7 @@
 
 /obj/item/get_projectile_hit_boolean(obj/item/projectile/P)
 
-	if(src == P.original) //clicking on the object itself. Code copied from mob get_projectile_hit_chance
+	if(P && src == P.original) //clicking on the object itself. Code copied from mob get_projectile_hit_chance
 
 		var/hitchance = get_effective_accuracy(P)
 
@@ -728,7 +727,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 						#endif
 					else break //If we failed to block the damage, it's time to get out of the loop.
 					i++
-			if(i || damage <= 5) to_chat(src, "<span class='notice'>Your armor [ i == 2 ? "absorbs the force of [P]!" : "softens the impact of [P]!" ]</span>")
+			if(i || damage <= 5) to_chat(src, SPAN_NOTICE("Your armor [ i == 2 ? "absorbs the force of [P]!" : "softens the impact of [P]!" ]"))
 			if(damage <= 0)
 				damage = 0
 				if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
@@ -859,7 +858,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 
 	if(mobs_list.len)
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
-		if(istype(picked_mob) && P.firer && prob(P.get_projectile_hit_boolean(P.firer,picked_mob)))
+		if(istype(picked_mob))
 			picked_mob.bullet_act(P)
 			return 1
 	return 1

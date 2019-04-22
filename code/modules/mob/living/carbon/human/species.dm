@@ -149,8 +149,8 @@
 		if(FEMALE)
 			t_him = "her"
 
-	H.visible_message("<span class='notice'>[H] hugs [target] to make [t_him] feel better!</span>", \
-					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>", null, 4)
+	H.visible_message(SPAN_NOTICE("[H] hugs [target] to make [t_him] feel better!"), \
+					SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
 
 //special things to change after we're no longer that species
 /datum/species/proc/post_species_loss(mob/living/carbon/human/H)
@@ -428,7 +428,7 @@
 		H.revive(TRUE)
 		H.stunned = 4
 		H.make_jittery(500)
-		H.visible_message("<span class = 'warning'>[H] rises!", "<span class='xenowarning'> YOU RISE AGAIN!</span>")
+		H.visible_message(SPAN_WARNING("[H] rises!"), SPAN_XENOWARNING("YOU RISE AGAIN!"))
 		H.equip_to_slot(new /obj/item/clothing/glasses/zombie_eyes, WEAR_EYES, TRUE)
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET, TRUE)
 

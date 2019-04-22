@@ -46,7 +46,7 @@
 
 /obj/machinery/optable/attack_paw(mob/user as mob)
 	if ((HULK in usr.mutations))
-		usr << text("<span class='notice'>You destroy the operating table.</span>")
+		usr << text(SPAN_NOTICE("You destroy the operating table."))
 		visible_message("<span class='danger'>[usr] destroys the operating table!</span>")
 		src.density = 0
 		qdel(src)
@@ -66,7 +66,7 @@
 
 /obj/machinery/optable/attack_hand(mob/living/user)
 	if (HULK in usr.mutations)
-		usr << text("<span class='notice'>You destroy the table.</span>")
+		usr << text(SPAN_NOTICE("You destroy the table."))
 		visible_message("<span class='danger'>[usr] destroys the operating table!</span>")
 		src.density = 0
 		qdel(src)
@@ -76,7 +76,7 @@
 		return
 	if(anes_tank)
 		user.put_in_active_hand(anes_tank)
-		to_chat(user, "<span class='notice'>You remove \the [anes_tank] from \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You remove \the [anes_tank] from \the [src]."))
 		anes_tank = null
 
 
@@ -91,13 +91,13 @@
 	if(!anes_tank)
 		to_chat(user, "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>")
 		return
-	H.visible_message("<span class='notice'>[user] begins to connect [H] to the anesthetic system.</span>")
+	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
 	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 		if(H.buckled) return
 		if(H != victim)
 			to_chat(user, "<span class='warning'>The patient must remain on the table!</span>")
 			return
-		to_chat(user, "<span class='notice'>You stop placing the mask on [H]'s face.</span>")
+		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
 		return
 	if(!anes_tank)
 		to_chat(user, "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>")
@@ -125,7 +125,7 @@
 		var/obj/item/M = H.wear_mask
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
-		H.visible_message("<span class='notice'>[user] turns off the anesthetic and removes the mask from [H].</span>")
+		H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
 		..()
 
 
@@ -166,9 +166,9 @@
 
 /obj/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message("<span class='notice'>[user] climbs on the operating table.","You climb on the operating table.</span>", null, null, 4)
+		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
-		visible_message("<span class='notice'>[C] has been laid on the operating table by [user].</span>", null, 4)
+		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
 	C.resting = 1
 	C.forceMove(loc)
 
@@ -196,7 +196,7 @@
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)
 			anes_tank = W
-			to_chat(user, "<span class='notice'>You connect \the [anes_tank] to \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You connect \the [anes_tank] to \the [src]."))
 			return
 	if (istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
@@ -224,11 +224,11 @@
 
 /obj/machinery/optable/proc/check_table(mob/living/carbon/patient as mob)
 	if(victim)
-		to_chat(usr, "<span class='notice'> <B>The table is already occupied!</B></span>")
+		to_chat(usr, SPAN_NOTICE(" <B>The table is already occupied!</B>"))
 		return 0
 
 	if(patient.buckled)
-		to_chat(usr, "<span class='notice'> <B>Unbuckle first!</B></span>")
+		to_chat(usr, SPAN_NOTICE(" <B>Unbuckle first!</B>"))
 		return 0
 
 	return 1

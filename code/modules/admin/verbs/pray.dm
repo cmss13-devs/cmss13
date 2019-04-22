@@ -22,9 +22,9 @@
 			liaison = 1
 
 	if(liaison)
-		msg = "<span class='notice'><b><font color=purple>LIAISON: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;ccmark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=admin_holder;adminspawncookie=\ref[src]'>SC</a>):</b> [msg]</span>"
+		msg = SPAN_NOTICE("<b><font color=purple>LIAISON: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;ccmark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=admin_holder;adminspawncookie=\ref[src]'>SC</a>):</b> [msg]")
 	else
-		msg = "<span class='notice'><b><font color=purple>PRAY: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=admin_holder;adminspawncookie=\ref[src]'>SC</a>):</b> [msg]</span>"
+		msg = SPAN_NOTICE("<b><font color=purple>PRAY: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=admin_holder;adminspawncookie=\ref[src]'>SC</a>):</b> [msg]")
 	log_admin(msg)
 	for(var/client/C in admins)
 		if(C.prefs.toggles_chat & CHAT_PRAYER)
@@ -48,7 +48,7 @@
 
 /proc/Syndicate_announce(var/text , var/mob/Sender)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
-	msg = "<span class='notice'><b><font color=crimson>SYNDICATE:</font>[key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=admin_holder;BlueSpaceArtillery=\ref[Sender]'>BSA</A>) (<A HREF='?_src_=admin_holder;SyndicateReply=\ref[Sender]'>RPLY</A>):</b> [msg]</span>"
+	msg = SPAN_NOTICE("<b><font color=crimson>SYNDICATE:</font>[key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;mark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;secretsadmin=check_antagonist'>CA</A>) (<A HREF='?_src_=admin_holder;BlueSpaceArtillery=\ref[Sender]'>BSA</A>) (<A HREF='?_src_=admin_holder;SyndicateReply=\ref[Sender]'>RPLY</A>):</b> [msg]")
 	log_admin(msg)
 	for(var/client/C in admins)
 		if(R_ADMIN & C.admin_holder.rights)

@@ -158,7 +158,7 @@ move an amendment</a> to the drawing.</p>
 	set_area_machinery_title(A,str,prevname)
 	for(var/area/RA in A.related)
 		RA.name = str
-	to_chat(usr, "<span class='notice'> You set the area '[prevname]' title to '[str]'.</span>")
+	to_chat(usr, SPAN_NOTICE(" You set the area '[prevname]' title to '[str]'."))
 	interact()
 	return
 

@@ -45,7 +45,7 @@ var/global/list/randomized_pill_icons
 					to_chat(H, "<span class='danger'>You can't eat pills.</span>")
 					return
 
-			to_chat(M, "<span class='notice'> You swallow [src].</span>")
+			to_chat(M, SPAN_NOTICE(" You swallow [src]."))
 			M.drop_inv_item_on_ground(src) //icon update
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, reagents.total_volume)
@@ -95,7 +95,7 @@ var/global/list/randomized_pill_icons
 			if(!target.reagents.total_volume)
 				to_chat(user, "<span class='danger'>[target] is empty. Cant dissolve pill.</span>")
 				return
-			to_chat(user, "<span class='notice'> You dissolve the pill in [target]</span>")
+			to_chat(user, SPAN_NOTICE(" You dissolve the pill in [target]"))
 
 			var/rgt_list_text = get_reagent_list_text()
 

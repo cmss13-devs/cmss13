@@ -39,7 +39,7 @@
 								ammo_count += transf_amt
 								SA.ammo_count -= transf_amt
 								playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-								to_chat(user, "<span class='notice'>You transfer [transf_amt] [ammo_name] to [src].</span>")
+								to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to [src]."))
 								if(!SA.ammo_count)
 									PC.loaded = null
 									PC.update_icon()
@@ -49,7 +49,7 @@
 					PC.loaded = src
 					playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 					PC.update_icon()
-					to_chat(user, "<span class='notice'>You grab [PC.loaded] with [PC].</span>")
+					to_chat(user, SPAN_NOTICE("You grab [PC.loaded] with [PC]."))
 					update_icon()
 			return TRUE
 		. = ..()

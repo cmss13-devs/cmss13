@@ -137,7 +137,7 @@
 
 	if(src && ishuman(usr))
 		mode = !mode
-		to_chat(usr, "<span class='notice'>You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"].</span>")
+		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
 
 /obj/item/storage/belt/medical/with_defib_and_analyzer
 

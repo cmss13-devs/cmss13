@@ -111,14 +111,14 @@
 			if(WT.remove_fuel(1, user))
 
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-				user.visible_message("<span class='notice'>[user] starts welding [src]'s internal damage.</span>",
-				"<span class='notice'>You start welding [src]'s internal damage.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
+				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != 1 || is_on || !WT.isOn()) r_FAL
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
-					user.visible_message("<span class='notice'>[user] welds [src]'s internal damage.</span>",
-					"<span class='notice'>You weld [src]'s internal damage.</span>")
+					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
+					SPAN_NOTICE("You weld [src]'s internal damage."))
 					update_icon()
 					r_TRU
 			else
@@ -130,14 +130,14 @@
 				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts securing [src]'s wiring.</span>",
-			"<span class='notice'>You start securing [src]'s wiring.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
+			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, 12))
 				if(buildstate != 2 || is_on) r_FAL
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
-				user.visible_message("<span class='notice'>[user] secures [src]'s wiring.</span>",
-				"<span class='notice'>You secure [src]'s wiring.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
+				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
 				r_TRU
 	else if(iswrench(O))
@@ -146,14 +146,14 @@
 				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts repairing [src]'s tubing and plating.</span>",
-			"<span class='notice'>You start repairing [src]'s tubing and plating.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
+			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 3 || is_on) r_FAL
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
-				user.visible_message("<span class='notice'>[user] repairs [src]'s tubing and plating.</span>",
-				"<span class='notice'>You repair [src]'s tubing and plating.</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
+				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
 				r_TRU
 	else

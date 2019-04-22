@@ -54,7 +54,7 @@ obj/structure/bed/Dispose()
 
 //Unsafe proc
 /obj/structure/bed/proc/do_buckle_bodybag(obj/structure/closet/bodybag/B, mob/user)
-	B.visible_message("<span class='notice'>[user] buckles [B] to [src]!</span>")
+	B.visible_message(SPAN_NOTICE("[user] buckles [B] to [src]!"))
 	B.roller_buckled = src
 	B.loc = loc
 	B.dir = dir
@@ -141,7 +141,7 @@ obj/structure/bed/Dispose()
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
-			to_chat(user, "<span class='notice'>You place [M] on [src].</span>")
+			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
 			M.forceMove(loc)
 		return TRUE
 
@@ -176,7 +176,7 @@ obj/structure/bed/Dispose()
 		if(buckled_mob || buckled_bodybag)
 			manual_unbuckle()
 		else
-			visible_message("<span class='notice'>[user] collapses [name].</span>")
+			visible_message(SPAN_NOTICE("[user] collapses [name]."))
 			new/obj/item/roller(get_turf(src))
 			qdel(src)
 		return
@@ -213,7 +213,7 @@ obj/structure/bed/Dispose()
 	if(istype(W, /obj/item/roller_holder) && rollertype == /obj/structure/bed/roller)
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
-			to_chat(user, "<span class='notice'>You pick up [src].</span>")
+			to_chat(user, SPAN_NOTICE("You pick up [src]."))
 			loc = RH
 			RH.held = src
 			return
@@ -243,7 +243,7 @@ obj/structure/bed/Dispose()
 		return
 
 	var/obj/structure/bed/roller/R = new(user.loc)
-	to_chat(user, "<span class='notice'>You deploy [R].</span>")
+	to_chat(user, SPAN_NOTICE("You deploy [R]."))
 	R.add_fingerprint(user)
 	qdel(held)
 	held = null
@@ -313,7 +313,7 @@ var/global/list/activated_medevac_stretchers = list()
 		if(linked_medevac)
 			linked_medevac.linked_stretcher = null
 			linked_medevac = null
-		to_chat(user, "<span class='notice'>You deactivate [src]'s beacon.</span>")
+		to_chat(user, SPAN_NOTICE("You deactivate [src]'s beacon."))
 		update_icon()
 
 	else
@@ -329,7 +329,7 @@ var/global/list/activated_medevac_stretchers = list()
 		if(buckled_mob || buckled_bodybag)
 			stretcher_activated = TRUE
 			activated_medevac_stretchers += src
-			to_chat(user, "<span class='notice'>You activate [src]'s beacon.</span>")
+			to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
 			update_icon()
 		else
 			to_chat(user, "<span class='warning'>You need to attach something to [src] before you can activate its beacon yet.</span>")

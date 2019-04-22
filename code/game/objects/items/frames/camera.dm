@@ -58,7 +58,7 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(2))
-					to_chat(user, "<span class='notice'>You add wires to the assembly.</span>")
+					to_chat(user, SPAN_NOTICE("You add wires to the assembly."))
 					state = 3
 				else
 					to_chat(user, "<span class='warning'>You need 2 coils of wire to wire the assembly.</span>")
@@ -161,7 +161,7 @@
 	if(!WT.isOn())
 		return 0
 
-	to_chat(user, "<span class='notice'>You start to weld the [src]..</span>")
+	to_chat(user, SPAN_NOTICE("You start to weld the [src].."))
 	playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 	WT.eyecheck(user)
 	if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

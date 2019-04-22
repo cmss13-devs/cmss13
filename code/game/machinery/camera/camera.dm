@@ -107,11 +107,11 @@
 
 	// DECONSTRUCTION
 	if(isscrewdriver(W))
-		//to_chat(user, "<span class='notice'>You start to [panel_open ? ")close" : "open"] the camera's panel.</span>"
+		//to_chat(user, SPAN_NOTICE("You start to [panel_open ? ")close" : "open"] the camera's panel.")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
-		"<span class='notice'>You screw the camera's panel [panel_open ? "open" : "closed"].</span>")
+		SPAN_NOTICE("You screw the camera's panel [panel_open ? "open" : "closed"]."))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
 	else if((iswirecutter(W) || ismultitool(W)) && panel_open)
@@ -155,13 +155,13 @@
 					O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
 	else if (istype(W, /obj/item/device/camera_bug))
 		if (!src.can_use())
-			to_chat(user, "<span class='notice'> Camera non-functional</span>")
+			to_chat(user, SPAN_NOTICE(" Camera non-functional"))
 			return
 		if (src.bugged)
-			to_chat(user, "<span class='notice'> Camera bug removed.</span>")
+			to_chat(user, SPAN_NOTICE(" Camera bug removed."))
 			src.bugged = 0
 		else
-			to_chat(user, "<span class='notice'> Camera bugged.</span>")
+			to_chat(user, SPAN_NOTICE(" Camera bugged."))
 			src.bugged = 1
 	else
 		..()
@@ -266,15 +266,15 @@
 		return 0
 
 	//Do after stuff here
-	user.visible_message("<span class='notice'>[user] starts to weld [src].</span>",
-	"<span class='notice'>You start to weld [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts to weld [src]."),
+	SPAN_NOTICE("You start to weld [src]."))
 	playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 	WT.eyecheck(user)
 	if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(!WT.isOn())
 			return 0
 		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] welds [src].</span>",
-		"<span class='notice'>You weld [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] welds [src]."),
+		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0

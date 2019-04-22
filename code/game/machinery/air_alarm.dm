@@ -968,7 +968,7 @@ table tr:first-child th:first-child { border: none;}
 			else
 				cut(t1)
 				if (AAlarmwires == 0)
-					to_chat(usr, "<span class='notice'>You cut last of wires inside [src]</span>")
+					to_chat(usr, SPAN_NOTICE("You cut last of wires inside [src]"))
 					update_icon()
 					buildstage = 1
 				return
@@ -1017,7 +1017,7 @@ table tr:first-child th:first-child { border: none;}
 				else
 					if(allowed(usr) && !isWireCut(AALARM_WIRE_IDSCAN))
 						locked = !locked
-						to_chat(user, "<span class='notice'> You [locked ? "lock" : "unlock"] the Air Alarm interface.</span>")
+						to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the Air Alarm interface."))
 						updateUsrDialog()
 					else
 						to_chat(user, "<span class='danger'>Access denied.</span>")
@@ -1027,7 +1027,7 @@ table tr:first-child th:first-child { border: none;}
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(5))
-					to_chat(user, "<span class='notice'>You wire \the [src].</span>")
+					to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 					buildstage = 2
 					update_icon()
 					first_run()
@@ -1037,12 +1037,12 @@ table tr:first-child th:first-child { border: none;}
 					return
 
 			else if(iscrowbar(W))
-				user.visible_message("<span class='notice'>[user] starts prying out [src]'s circuits.</span>",
-				"<span class='notice'>You start prying out [src]'s circuits.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts prying out [src]'s circuits."),
+				SPAN_NOTICE("You start prying out [src]'s circuits."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					user.visible_message("<span class='notice'>[user] pries out [src]'s circuits.</span>",
-					"<span class='notice'>You pry out [src]'s circuits.</span>")
+					user.visible_message(SPAN_NOTICE("[user] pries out [src]'s circuits."),
+					SPAN_NOTICE("You pry out [src]'s circuits."))
 					var/obj/item/circuitboard/airalarm/circuit = new()
 					circuit.loc = user.loc
 					buildstage = 0

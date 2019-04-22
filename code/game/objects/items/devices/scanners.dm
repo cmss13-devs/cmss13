@@ -86,10 +86,10 @@ REAGENT SCANNER
 		to_chat(user, "<span class='warning'>You try to analyze the floor's vitals!</span>")
 		for(var/mob/O in viewers(M, null))
 			O.show_message("<span class='warning'>[user] has analyzed the floor's vitals!</span>", 1)
-		user.show_message("<span class='notice'>Health Analyzer results for The floor:\n\t Overall Status: Healthy</span>", 1)
-		user.show_message("<span class='notice'>\t Damage Specifics: [0]-[0]-[0]-[0]</span>", 1)
-		user.show_message("<span class='notice'>Key: Suffocation/Toxin/Burns/Brute</span>", 1)
-		user.show_message("<span class='notice'>Body Temperature: ???</span>", 1)
+		user.show_message(SPAN_NOTICE("Health Analyzer results for The floor:\n\t Overall Status: Healthy"), 1)
+		user.show_message(SPAN_NOTICE("\t Damage Specifics: [0]-[0]-[0]-[0]"), 1)
+		user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
+		user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
 		return
 	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
@@ -112,9 +112,9 @@ REAGENT SCANNER
 		user.show_message("\n\blue Health Analyzer results for ERROR:\n\t Overall Status: ERROR")
 		user.show_message("\tType: <font color='blue'>Oxygen</font>-<font color='green'>Toxin</font>-<font color='#FFA500'>Burns</font>-<font color='red'>Brute</font>", 1)
 		user.show_message("\tDamage: <font color='blue'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>")
-		user.show_message("<span class='notice'>Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)</span>", 1)
+		user.show_message(SPAN_NOTICE("Body Temperature: [M.bodytemperature-T0C]&deg;C ([M.bodytemperature*1.8-459.67]&deg;F)"), 1)
 		user.show_message("<span class='danger'><b>Warning: Blood Level ERROR: --% --cl.\blue Type: ERROR</span>")
-		user.show_message("<span class='notice'>Subject's pulse: <font color='red'>-- bpm.</font></span>")
+		user.show_message(SPAN_NOTICE("Subject's pulse: <font color='red'>-- bpm.</font>"))
 		return
 
 	// Calculate damage amounts
@@ -401,14 +401,14 @@ REAGENT SCANNER
 	var/env_gas = location.return_gas()
 	var/env_temp = location.return_temperature()
 
-	user.show_message("<span class='notice'><B>Results:</B></span>", 1)
+	user.show_message(SPAN_NOTICE("<B>Results:</B>"), 1)
 	if(abs(env_pressure - ONE_ATMOSPHERE) < 10)
-		user.show_message("<span class='notice'>Pressure: [round(env_pressure,0.1)] kPa</span>", 1)
+		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa"), 1)
 	else
 		user.show_message("<span class='danger'>Pressure: [round(env_pressure,0.1)] kPa</span>", 1)
 	if(env_pressure > 0)
-		user.show_message("<span class='notice'>Gas Type: [env_gas]</span>", 1)
-		user.show_message("<span class='notice'>Temperature: [round(env_temp-T0C)]&deg;C</span>", 1)
+		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
+		user.show_message(SPAN_NOTICE("Temperature: [round(env_temp-T0C)]&deg;C"), 1)
 
 	src.add_fingerprint(user)
 	return
@@ -534,11 +534,11 @@ REAGENT SCANNER
 				else
 					recent_fail = 1
 		if(dat)
-			to_chat(user, "<span class='notice'> Chemicals found: [dat]</span>")
+			to_chat(user, SPAN_NOTICE(" Chemicals found: [dat]"))
 		else
-			to_chat(user, "<span class='notice'> No active chemical agents found in [O].</span>")
+			to_chat(user, SPAN_NOTICE(" No active chemical agents found in [O]."))
 	else
-		to_chat(user, "<span class='notice'> No significant chemical agents found in [O].</span>")
+		to_chat(user, SPAN_NOTICE(" No significant chemical agents found in [O]."))
 
 	return
 

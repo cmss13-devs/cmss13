@@ -166,7 +166,7 @@
 		used_lunge = 2 // sanity checking
 		spawn(caste.lunge_cooldown)
 			used_lunge = 0
-			to_chat(src, "<span class='notice'>You get ready to lunge again.</span>")
+			to_chat(src, SPAN_NOTICE("You get ready to lunge again."))
 			for(var/X in actions)
 				var/datum/action/act = X
 				act.update_button_icon()

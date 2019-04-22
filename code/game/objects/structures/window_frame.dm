@@ -72,24 +72,24 @@
 		if(sheet.get_amount() < 2)
 			to_chat(user, "<span class='warning'>You need more [W.name] to install a new window.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts installing a new glass window on the frame.</span>", \
-		"<span class='notice'>You start installing a new window on the frame.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."), \
+		SPAN_NOTICE("You start installing a new window on the frame."))
 		playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message("<span class='notice'>[user] installs a new glass window on the frame.</span>", \
-			"<span class='notice'>You install a new window on the frame.</span>")
+			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."), \
+			SPAN_NOTICE("You install a new window on the frame."))
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
 			qdel(src)
 
 	else if(istype(W, /obj/item/tool/wrench))
 		if(buildstacktype)
-			to_chat(user, "<span class='notice'> You start to deconstruct [src].</span>")
+			to_chat(user, SPAN_NOTICE(" You start to deconstruct [src]."))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))	// takes 3 seconds to deconstruct
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				new buildstacktype(loc, buildstackamount)
-				to_chat(user, "<span class='notice'> You deconstruct [src].</span>")
+				to_chat(user, SPAN_NOTICE(" You deconstruct [src]."))
 				qdel(src)
 
 	else if(istype(W, /obj/item/grab))
@@ -103,13 +103,13 @@
 				else
 					if(user.action_busy)
 						return
-					user.visible_message("<span class='notice'>[user] starts pulling [M] onto [src].</span>",
-					"<span class='notice'>You start pulling [M] onto [src]!</span>")
+					user.visible_message(SPAN_NOTICE("[user] starts pulling [M] onto [src]."),
+					SPAN_NOTICE("You start pulling [M] onto [src]!"))
 					var/oldloc = loc
 					if(!do_mob(user, M, 20, BUSY_ICON_GENERIC) || loc != oldloc) return
 					M.KnockDown(2)
 					user.visible_message("<span class='warning'>[user] pulls [M] onto [src].</span>",
-					"<span class='notice'>You pull [M] onto [src].</span>")
+					SPAN_NOTICE("You pull [M] onto [src]."))
 					M.forceMove(loc)
 			else
 				to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")

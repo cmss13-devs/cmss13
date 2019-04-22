@@ -340,7 +340,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	if(user)
 		if(magazine.reload_delay > 1)
-			to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+			to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 			if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 			else
 				to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
@@ -362,8 +362,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		ready_in_chamber()
 		cock_gun(user)
-	user.visible_message("<span class='notice'>[user] loads [magazine] into [src]!</span>",
-	"<span class='notice'>You load [magazine] into [src]!</span>", null, 3)
+	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
+	SPAN_NOTICE("You load [magazine] into [src]!"), null, 3)
 	if(reload_sound) playsound(user, reload_sound, 25, 1, 5)
 
 
@@ -381,8 +381,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	else user.put_in_hands(current_mag)
 
 	playsound(user, unload_sound, 25, 1, 5)
-	user.visible_message("<span class='notice'>[user] unloads [current_mag] from [src].</span>",
-	"<span class='notice'>You unload [current_mag] from [src].</span>", null, 4)
+	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4)
 	current_mag.update_icon()
 	current_mag = null
 
@@ -398,8 +398,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	cock_cooldown = world.time + cock_delay
 	cock_gun(user)
 	if(in_chamber)
-		user.visible_message("<span class='notice'>[user] cocks [src], clearing a [in_chamber.name] from its chamber.</span>",
-		"<span class='notice'>You cock [src], clearing a [in_chamber.name] from its chamber.</span>", null, 4)
+		user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
+		SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4)
 		if(current_mag)
 			var/found_handful
 			for(var/obj/item/ammo_magazine/handful/H in user.loc)
@@ -416,8 +416,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			make_casing(type_of_casings)
 		in_chamber = null
 	else
-		user.visible_message("<span class='notice'>[user] cocks [src].</span>",
-		"<span class='notice'>You cock [src].</span>", null, 4)
+		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
+		SPAN_NOTICE("You cock [src]."), null, 4)
 	ready_in_chamber() //This will already check for everything else, loading the next bullet.
 
 //Since reloading and casings are closely related, placing this here ~N
@@ -474,7 +474,7 @@ and you're good to go.
 			return create_bullet(active_attachable.ammo)
 		else
 			to_chat(user, "<span class='warning'>[active_attachable] is empty!</span>")
-			to_chat(user, "<span class='notice'>You disable [active_attachable].</span>")
+			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 			playsound(user, active_attachable.activation_sound, 15, 1)
 			active_attachable.activate_attachment(src, null, TRUE)
 	else
@@ -562,7 +562,7 @@ and you're good to go.
 			if(active_attachable.current_rounds <= 0)
 				click_empty(user) //If it's empty, let them know.
 				to_chat(user, "<span class='warning'>[active_attachable] is empty!</span>")
-				to_chat(user, "<span class='notice'>You disable [active_attachable].</span>")
+				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 				active_attachable.activate_attachment(src, null, TRUE)
 			else
 				active_attachable.fire_attachment(target,src,user) //Fire it.
@@ -673,7 +673,7 @@ and you're good to go.
 						active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
 					var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 					if(projectile_to_fire) //We actually have a projectile, let's move on.
-						user.visible_message("<span class = 'warning'>[user] pulls the trigger!</span>")
+						user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
 						var/actual_sound = (active_attachable && active_attachable.fire_sound) ? active_attachable.fire_sound : fire_sound
 						var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
 						playsound(user, actual_sound, sound_volume, 1)
@@ -689,7 +689,7 @@ and you're good to go.
 							user.ghostize(0) //No return.
 						else
 							if(projectile_to_fire.ammo.damage_type == HALLOSS)
-								to_chat(user, "<span class = 'notice'>Ow...</span>")
+								to_chat(user, SPAN_NOTICE("Ow..."))
 								user.apply_effect(110, AGONY, 0)
 							else
 								user.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", sharp = 1)
@@ -707,7 +707,7 @@ and you're good to go.
 						reload_into_chamber(user) //Reload the sucker.
 
 					else click_empty(user)//If there's no projectile, we can't do much.
-				else M.visible_message("<span class='notice'>[user] decided life was worth living.</span>")
+				else M.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 				flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 			return
 
@@ -764,7 +764,7 @@ and you're good to go.
 
 					if(!delete_bullet(projectile_to_fire)) qdel(projectile_to_fire)
 					if(missed_once)
-						user.visible_message("<span class='notice'>Some bullets miss due to [user] firing from the hip.</span>")
+						user.visible_message(SPAN_NOTICE("Some bullets miss due to [user] firing from the hip."))
 					reload_into_chamber(user) //Reload into the chamber if the gun supports it.
 					return TRUE
 

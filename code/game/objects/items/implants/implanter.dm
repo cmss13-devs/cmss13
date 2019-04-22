@@ -25,7 +25,7 @@
 	if(isYautja(M))
 		return
 	if (user && src.imp)
-		user.visible_message("<span class='warning'>[user] is attemping to implant [M].</span>", "<span class='notice'>You're attemping to implant [M].</span>")
+		user.visible_message("<span class='warning'>[user] is attemping to implant [M].</span>", SPAN_NOTICE("You're attemping to implant [M]."))
 
 		var/turf/T1 = get_turf(M)
 		if (T1 && ((M == user) || do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC)))
@@ -51,7 +51,7 @@
 					src.imp = null
 					update()
 				else
-					to_chat(user, "<span class='notice'> You failed to implant [M].</span>")
+					to_chat(user, SPAN_NOTICE(" You failed to implant [M]."))
 
 	return
 

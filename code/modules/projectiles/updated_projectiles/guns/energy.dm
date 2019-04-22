@@ -111,7 +111,7 @@
 	if(charge_time < 100)
 		charge_time++
 		if(charge_time == 99)
-			if(ismob(loc)) to_chat(loc, "<span class='notice'>[src] hums as it achieves maximum charge.</span>")
+			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 		update_icon()
 
 
@@ -172,13 +172,13 @@
 		return ..()
 
 	if(charge_time > 10)
-		user.visible_message("<span class='notice'>You feel a strange surge of energy in the area.</span>","<span class='notice'>You release the rifle battery's energy.</span>")
+		user.visible_message(SPAN_NOTICE("You feel a strange surge of energy in the area."),SPAN_NOTICE("You release the rifle battery's energy."))
 		var/obj/item/clothing/gloves/yautja/Y = user:gloves
 		if(Y && Y.charge < Y.charge_max)
 			Y.charge += charge_time * 2
 			if(Y.charge > Y.charge_max) Y.charge = Y.charge_max
 			charge_time = 0
-			to_chat(user, "<span class='notice'>Your bracers absorb some of the released energy.</span>")
+			to_chat(user, SPAN_NOTICE("Your bracers absorb some of the released energy."))
 			update_icon()
 	else to_chat(user, "<span class='warning'>The weapon's not charged enough with ambient energy!</span>")
 
@@ -221,7 +221,7 @@
 	if(charge_time < 40)
 		charge_time++
 		if(charge_time == 39)
-			if(ismob(loc)) to_chat(loc, "<span class='notice'>[src] hums as it achieves maximum charge.</span>")
+			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 
 
 
@@ -323,21 +323,21 @@
 			charge_cost = 100
 			fire_delay = config.med_fire_delay * 4
 			fire_sound = 'sound/weapons/emitter2.ogg'
-			to_chat(user, "<span class='notice'>[src] is now set to fire medium plasma blasts.</span>")
+			to_chat(user, SPAN_NOTICE("[src] is now set to fire medium plasma blasts."))
 			ammo = ammo_list[/datum/ammo/energy/yautja/caster/blast]
 		if(1)
 			mode = 2
 			charge_cost = 300
 			fire_delay = config.high_fire_delay * 20
 			fire_sound = 'sound/weapons/pulse.ogg'
-			to_chat(user, "<span class='notice'>[src] is now set to fire heavy plasma spheres.</span>")
+			to_chat(user, SPAN_NOTICE("[src] is now set to fire heavy plasma spheres."))
 			ammo = ammo_list[/datum/ammo/energy/yautja/caster/sphere]
 		if(2)
 			mode = 0
 			charge_cost = 30
 			fire_delay = config.high_fire_delay
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
-			to_chat(user, "<span class='notice'>[src] is now set to fire light plasma bolts.</span>")
+			to_chat(user, SPAN_NOTICE("[src] is now set to fire light plasma bolts."))
 			ammo = ammo_list[/datum/ammo/energy/yautja/caster/bolt]
 
 /obj/item/weapon/gun/energy/plasma_caster/dropped(mob/living/carbon/human/M)

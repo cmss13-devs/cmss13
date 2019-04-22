@@ -38,25 +38,34 @@
 // INTERRUPT FLAGS
 // These flags define whether specific actions will be interrupted by a given timed action
 #define INTERRUPT_NONE 0
-#define INTERRUPT_DIFF_LOC (1<<0)
-#define INTERRUPT_DIFF_TURF (1<<1) // Might want to consider adding a separate flag for DIFF_COORDS
-#define INTERRUPT_UNCONSCIOUS (1<<2) // Relevant to stat var for mobs
-#define INTERRUPT_KNOCKED_DOWN (1<<3)
-#define INTERRUPT_STUNNED (1<<4)
-#define INTERRUPT_NEEDHAND (1<<5)
-#define INTERRUPT_RESIST (1<<6) // Allows timed actions to be cancelled upon hitting resist, on by default
-#define INTERRUPT_DIFF_SELECT_ZONE (1<<7)   // By default not in INTERRUPT_ALL (too niche)
-#define INTERRUPT_OUT_OF_RANGE (1<<8)   // By default not in INTERRUPT_ALL, should not be used in conjunction with
-                                        // INTERRUPT_DIFF_TURF
-#define INTERRUPT_ALL (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
-#define INTERRUPT_ALL_OUT_OF_RANGE (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF))|INTERRUPT_OUT_OF_RANGE
-#define INTERRUPT_ALL_BUILD INTERRUPT_ALL
-#define INTERRUPT_NO_NEEDHAND (INTERRUPT_ALL & (~INTERRUPT_NEEDHAND))
-#define INTERRUPT_INCAPACITATED (INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED)
+#define INTERRUPT_DIFF_LOC          (1<<0)
+#define INTERRUPT_DIFF_TURF         (1<<1)  // Might want to consider adding a separate flag for DIFF_COORDS
+#define INTERRUPT_UNCONSCIOUS       (1<<2)  // Relevant to stat var for mobs
+#define INTERRUPT_KNOCKED_DOWN      (1<<3)
+#define INTERRUPT_STUNNED           (1<<4)
+#define INTERRUPT_NEEDHAND          (1<<5)
+#define INTERRUPT_RESIST            (1<<6)  // Allows timed actions to be cancelled upon hitting resist, on by default
+#define INTERRUPT_DIFF_SELECT_ZONE  (1<<7)  // By default not in INTERRUPT_ALL (too niche)
+#define INTERRUPT_OUT_OF_RANGE      (1<<8)  // By default not in INTERRUPT_ALL, should not be used in conjunction with
+                                            // INTERRUPT_DIFF_TURF
+#define INTERRUPT_LCLICK            (1<<9)  // Mainly for boiler globs
+#define INTERRUPT_RCLICK            (1<<10)
+#define INTERRUPT_SHIFTCLICK        (1<<11)
+#define INTERRUPT_ALTCLICK          (1<<12)
+#define INTERRUPT_CTRLCLICK         (1<<13)
+#define INTERRUPT_MIDDLECLICK       (1<<14)
+#define INTERRUPT_ALL               (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
+#define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF))|INTERRUPT_OUT_OF_RANGE
+#define INTERRUPT_NO_NEEDHAND       (INTERRUPT_ALL & (~INTERRUPT_NEEDHAND))
+#define INTERRUPT_INCAPACITATED     (INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED)
+#define INTERRUPT_CLICK             (INTERRUPT_LCLICK|INTERRUPT_RCLICK|INTERRUPT_SHIFTCLICK|INTERRUPT_ALTCLICK|INTERRUPT_CTRLCLICK|INTERRUPT_MIDDLECLICK)
 
 // BEHAVIOR FLAGS
 // These flags describe behaviors related to a given timed action.
 // These behaviors are either of the person performing the action or any targets.
-#define BEHAVIOR_IMMOBILE (1<<9) // You cannot move the person while this action is being performed
+// For now, only for person performing the action until do_after merges with do_mob
+#define BEHAVIOR_IMMOBILE           (1<<15) // You cannot move the person while this action is being performed
 
-// END DO_AFTER FLAGS //
+// *************************************** //
+//           END DO_AFTER FLAGS            //
+// *************************************** //

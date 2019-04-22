@@ -28,7 +28,7 @@
 		var/obj/item/stack/rods/R = W
 		if(R.use(4))
 			new /obj/item/frame/table/reinforced(get_turf(src))
-			to_chat(user, "<span class='notice'>You reinforce [src].</span>")
+			to_chat(user, SPAN_NOTICE("You reinforce [src]."))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 		else
@@ -39,7 +39,7 @@
 		if(S.use(2))
 			new /obj/item/frame/table/wood(get_turf(src))
 			new /obj/item/stack/sheet/metal(get_turf(src))
-			to_chat(user, "<span class='notice'>You replace the metal parts of [src].</span>")
+			to_chat(user, SPAN_NOTICE("You replace the metal parts of [src]."))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 		else
@@ -97,7 +97,7 @@
 	if(istype(W, /obj/item/stack/tile/carpet) && istype(src, /obj/item/frame/table/wood))
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
-			to_chat(user, "<span class='notice'>You put a layer of carpet on [src].</span>")
+			to_chat(user, SPAN_NOTICE("You put a layer of carpet on [src]."))
 			new /obj/item/frame/table/gambling(get_turf(src))
 			qdel(src)
 
@@ -134,7 +134,7 @@
 		qdel(src)
 
 	if(istype(W, /obj/item/tool/crowbar))
-		to_chat(user, "<span class='notice'>You pry the carpet out of [src].</span>")
+		to_chat(user, SPAN_NOTICE("You pry the carpet out of [src]."))
 		new /obj/item/stack/tile/carpet(get_turf(src))
 		new /obj/item/frame/table/wood(get_turf(src))
 		qdel(src)

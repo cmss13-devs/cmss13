@@ -299,12 +299,12 @@
 		return
 
 	if(istype(W, /obj/item/tool/wrench))
-		user.visible_message("<span class='notice'>[user] starts disassembling [src].</span>",
-		"<span class='notice'>You start disassembling [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
+		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user,50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message("<span class='notice'>[user] disassembles [src].</span>",
-			"<span class='notice'>You disassemble [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
+			SPAN_NOTICE("You disassemble [src]."))
 			destroy(1)
 		return
 
@@ -514,22 +514,22 @@
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			if(status == 2)
-				user.visible_message("<span class='notice'>[user] starts weakening [src].</span>",
-				"<span class='notice'>You start weakening [src]</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts weakening [src]."),
+				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
-					user.visible_message("<span class='notice'>[user] weakens [src].</span>",
-					"<span class='notice'>You weaken [src]</span>")
+					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
+					SPAN_NOTICE("You weaken [src]"))
 					src.status = 1
 			else
-				user.visible_message("<span class='notice'>[user] starts welding [src] back together.</span>",
-				"<span class='notice'>You start welding [src] back together.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts welding [src] back together."),
+				SPAN_NOTICE("You start welding [src] back together."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
-					user.visible_message("<span class='notice'>[user] welds [src] back together.</span>",
-					"<span class='notice'>You weld [src] back together.</span>")
+					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
+					SPAN_NOTICE("You weld [src] back together."))
 					status = 2
 			return
 		return

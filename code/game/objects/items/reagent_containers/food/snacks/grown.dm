@@ -88,7 +88,7 @@
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(C.use(5))
-			to_chat(user, "<span class='notice'>You add some cable to the potato and slide it inside the battery encasing.</span>")
+			to_chat(user, SPAN_NOTICE("You add some cable to the potato and slide it inside the battery encasing."))
 			var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(user.loc)
 			pocell.maxcharge = src.potency * 10
 			pocell.charge = pocell.maxcharge
@@ -162,7 +162,7 @@
 	poultice.heal_burn = potency
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>You mash the petals into a poultice.</span>")
+	to_chat(user, SPAN_NOTICE("You mash the petals into a poultice."))
 
 /obj/item/reagent_container/food/snacks/grown/shand/attack_self(mob/user as mob)
 	if(istype(user.loc,/turf/open/space))
@@ -172,7 +172,7 @@
 	poultice.heal_brute = potency
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>You mash the leaves into a poultice.</span>")
+	to_chat(user, SPAN_NOTICE("You mash the leaves into a poultice."))
 
 /obj/item/reagent_container/food/snacks/grown/glowberries
 	name = "bunch of glow-berries"
@@ -290,7 +290,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/pumpkin/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, "<span class='notice'>You carve a face into [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You carve a face into [src]!"))
 		new /obj/item/clothing/head/pumpkinhead (user.loc)
 		qdel(src)
 	else
@@ -371,7 +371,7 @@
 /obj/item/reagent_container/food/snacks/grown/tomato/throw_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/tomato_smudge(src.loc)
-	src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
 	qdel(src)
 	return
 
@@ -390,7 +390,7 @@
 	new /mob/living/simple_animal/tomato(user.loc)
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>You plant the killer-tomato.</span>")
+	to_chat(user, SPAN_NOTICE("You plant the killer-tomato."))
 
 /obj/item/reagent_container/food/snacks/grown/bloodtomato
 	name = "blood-tomato"
@@ -403,7 +403,7 @@
 /obj/item/reagent_container/food/snacks/grown/bloodtomato/throw_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/splatter(src.loc)
-	src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
@@ -421,7 +421,7 @@
 /obj/item/reagent_container/food/snacks/grown/bluetomato/throw_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
@@ -525,7 +525,7 @@
 	new /mob/living/simple_animal/mushroom(user.loc)
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
+	to_chat(user, SPAN_NOTICE("You plant the walking mushroom."))
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle
 	name = "chanterelle cluster"
@@ -552,7 +552,7 @@
 	planted.potency = potency
 	qdel(src)
 
-	to_chat(user, "<span class='notice'>You plant the glowshroom.</span>")
+	to_chat(user, SPAN_NOTICE("You plant the glowshroom."))
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/Dispose()
 	if(istype(loc,/mob))
@@ -591,7 +591,7 @@
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	if(inner_teleport_radius < 1) //Wasn't potent enough, it just splats.
 		new/obj/effect/decal/cleanable/blood/oil(src.loc)
-		src.visible_message("<span class='notice'>The [src.name] has been squashed.</span>","<span class='moderate'>You hear a smack.</span>")
+		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
 		qdel(src)
 		return
 	for(var/turf/T in orange(M,outer_teleport_radius))
@@ -628,6 +628,6 @@
 				s.set_up(3, 1, A)
 				s.start()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message("<span class='notice'>The [src.name] has been squashed, causing a distortion in space-time.</span>","<span class='moderate'>You hear a splat and a crackle.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),"<span class='moderate'>You hear a splat and a crackle.</span>")
 	qdel(src)
 	return

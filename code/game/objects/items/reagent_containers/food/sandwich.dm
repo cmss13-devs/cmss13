@@ -26,12 +26,12 @@
 		to_chat(user, "<span class='danger'>If you put anything else on \the [src] it's going to collapse.</span>")
 		return
 	else if(istype(W,/obj/item/shard))
-		to_chat(user, "<span class='notice'> You hide [W] in \the [src].</span>")
+		to_chat(user, SPAN_NOTICE(" You hide [W] in \the [src]."))
 		user.drop_inv_item_to_loc(W, src)
 		update()
 		return
 	else if(istype(W,/obj/item/reagent_container/food/snacks))
-		to_chat(user, "<span class='notice'> You layer [W] over \the [src].</span>")
+		to_chat(user, SPAN_NOTICE(" You layer [W] over \the [src]."))
 		var/obj/item/reagent_container/F = W
 		F.reagents.trans_to(src, F.reagents.total_volume)
 		user.drop_inv_item_to_loc(W, src)
@@ -79,7 +79,7 @@
 /obj/item/reagent_container/food/snacks/csandwich/examine(mob/user)
 	..()
 	var/obj/item/O = pick(contents)
-	to_chat(user, "<span class='notice'> You think you can see [O.name] in there.</span>")
+	to_chat(user, SPAN_NOTICE(" You think you can see [O.name] in there."))
 
 /obj/item/reagent_container/food/snacks/csandwich/attack(mob/M as mob, mob/user as mob, def_zone)
 

@@ -28,13 +28,13 @@
 	dmg_max = BONECHIPS_MAX_DAMAGE //need to use the FixOVein past this point
 
 /datum/surgery_step/brain/bone_chips/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts taking bone chips out of [target]'s brain with \the [tool].</span>", \
-	"<span class='notice'>You start taking bone chips out of [target]'s brain with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts taking bone chips out of [target]'s brain with \the [tool]."), \
+	SPAN_NOTICE("You start taking bone chips out of [target]'s brain with \the [tool]."))
 	..()
 
 /datum/surgery_step/brain/bone_chips/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] takes out all the bone chips in [target]'s brain with \the [tool].</span>",	\
-	"<span class='notice'>You take out all the bone chips in [target]'s brain with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] takes out all the bone chips in [target]'s brain with \the [tool]."),	\
+	SPAN_NOTICE("You take out all the bone chips in [target]'s brain with \the [tool]."))
 	var/datum/internal_organ/brain/sponge = target.internal_organs_by_name["brain"]
 	if(sponge)
 		sponge.damage = 0
@@ -59,13 +59,13 @@
 
 
 /datum/surgery_step/brain/hematoma/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts mending hematoma in [target]'s brain with \the [tool].</span>", \
-	"<span class='notice'>You start mending hematoma in [target]'s brain with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts mending hematoma in [target]'s brain with \the [tool]."), \
+	SPAN_NOTICE("You start mending hematoma in [target]'s brain with \the [tool]."))
 	..()
 
 /datum/surgery_step/brain/hematoma/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] mends hematoma in [target]'s brain with \the [tool].</span>",	\
-	"<span class='notice'>You mend hematoma in [target]'s brain with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] mends hematoma in [target]'s brain with \the [tool]."),	\
+	SPAN_NOTICE("You mend hematoma in [target]'s brain with \the [tool]."))
 	var/datum/internal_organ/brain/sponge = target.internal_organs_by_name["brain"]
 	if(sponge)
 		sponge.damage = BONECHIPS_MAX_DAMAGE

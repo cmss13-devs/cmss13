@@ -28,9 +28,9 @@
 /obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
 	..()
 	if(reagents && reagents.reagent_list.len)
-		to_chat(user, "<span class='notice'> It is currently loaded.</span>")
+		to_chat(user, SPAN_NOTICE(" It is currently loaded."))
 	else
-		to_chat(user, "<span class='notice'> It is spent.</span>")
+		to_chat(user, SPAN_NOTICE(" It is spent."))
 
 
 

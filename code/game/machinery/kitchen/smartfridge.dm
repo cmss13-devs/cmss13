@@ -80,12 +80,12 @@
 		return
 
 	if(!src.ispowered)
-		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is unpowered and useless."))
 		return
 
 	if(accept_check(O))
 		if(contents.len >= max_n_of_items)
-			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is full."))
 			return 1
 		else
 			if(user.drop_held_item())
@@ -106,7 +106,7 @@
 		for(var/obj/G in P.contents)
 			if(accept_check(G))
 				if(contents.len >= max_n_of_items)
-					to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+					to_chat(user, SPAN_NOTICE("\The [src] is full."))
 					return 1
 				else
 					P.remove_from_storage(G,src)
@@ -118,15 +118,15 @@
 		if(plants_loaded)
 
 			user.visible_message( \
-				"<span class='notice'>[user] loads \the [src] with \the [P].</span>", \
-				"<span class='notice'>You load \the [src] with \the [P].</span>")
+				SPAN_NOTICE("[user] loads \the [src] with \the [P]."), \
+				SPAN_NOTICE("You load \the [src] with \the [P]."))
 			if(P.contents.len > 0)
-				to_chat(user, "<span class='notice'>Some items are refused.</span>")
+				to_chat(user, SPAN_NOTICE("Some items are refused."))
 
 		nanomanager.update_uis(src)
 
 	else
-		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
 		return 1
 
 /obj/machinery/smartfridge/attack_paw(mob/user)

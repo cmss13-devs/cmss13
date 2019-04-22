@@ -18,8 +18,8 @@
 
 	if(!reagents.total_volume)
 		if(M == usr)
-			to_chat(usr, "<span class='notice'>You finish eating \the [src].</span>")
-		M.visible_message("<span class='notice'>[M] finishes eating \the [src].</span>")
+			to_chat(usr, SPAN_NOTICE("You finish eating \the [src]."))
+		M.visible_message(SPAN_NOTICE("[M] finishes eating \the [src]."))
 		usr.drop_inv_item_on_ground(src)	//so icons update :[
 
 		if(trash)
@@ -56,11 +56,11 @@
 			if (fullness <= 50)
 				to_chat(M, "<span class='warning'>You hungrily chew out a piece of [src] and gobble it!</span>")
 			if (fullness > 50 && fullness <= 150)
-				to_chat(M, "<span class='notice'> You hungrily begin to eat [src].</span>")
+				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
 			if (fullness > 150 && fullness <= 350)
-				to_chat(M, "<span class='notice'> You take a bite of [src].</span>")
+				to_chat(M, SPAN_NOTICE(" You take a bite of [src]."))
 			if (fullness > 350 && fullness <= 550)
-				to_chat(M, "<span class='notice'> You unwillingly chew a bit of [src].</span>")
+				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
 			if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
 				to_chat(M, "<span class='warning'>You cannot force any more of [src] to go down your throat.</span>")
 				return 0
@@ -120,11 +120,11 @@
 	if (bitecount==0)
 		return
 	else if (bitecount==1)
-		to_chat(user, "<span class='notice'> \The [src] was bitten by someone!</span>")
+		to_chat(user, SPAN_NOTICE(" \The [src] was bitten by someone!"))
 	else if (bitecount<=3)
-		to_chat(user, "<span class='notice'> \The [src] was bitten [bitecount] times!</span>")
+		to_chat(user, SPAN_NOTICE(" \The [src] was bitten [bitecount] times!"))
 	else
-		to_chat(user, "<span class='notice'> \The [src] was bitten multiple times!</span>")
+		to_chat(user, SPAN_NOTICE(" \The [src] was bitten multiple times!"))
 
 /obj/item/reagent_container/food/snacks/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/storage))
@@ -145,7 +145,7 @@
 
 		user.visible_message( \
 			"[user] scoops up some [src] with \the [U]!", \
-			"<span class='notice'>You scoop up some [src] with \the [U]!</span>" \
+			SPAN_NOTICE("You scoop up some [src] with \the [U]!") \
 		)
 
 		src.bitecount++
@@ -189,13 +189,13 @@
 	var/slices_lost = 0
 	if (!inaccurate)
 		user.visible_message( \
-			"<span class='notice'>[user] slices \the [src]!</span>", \
-			"<span class='notice'>You slice \the [src]!</span>" \
+			SPAN_NOTICE("[user] slices \the [src]!"), \
+			SPAN_NOTICE("You slice \the [src]!") \
 		)
 	else
 		user.visible_message( \
-			"<span class='notice'>[user] crudely slices \the [src] with [W]!</span>", \
-			"<span class='notice'>You crudely slice \the [src] with your [W]!</span>" \
+			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
+			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
 		)
 		slices_lost = rand(1,min(1,round(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num
@@ -225,7 +225,7 @@
 				qdel(src)
 		if(ismouse(M))
 			var/mob/living/simple_animal/mouse/N = M
-			N << text("<span class='notice'>You nibble away at [src].</span>")
+			N << text(SPAN_NOTICE("You nibble away at [src]."))
 			if(prob(50))
 				N.visible_message("[N] nibbles away at [src].", "")
 			//N.emote("nibbles away at the [src]")
@@ -496,10 +496,10 @@
 		var/clr = C.colourName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, "<span class='notice'> The egg refuses to take on this color!</span>")
+			to_chat(usr, SPAN_NOTICE(" The egg refuses to take on this color!"))
 			return
 
-		to_chat(usr, "<span class='notice'> You color \the [src] [clr]</span>")
+		to_chat(usr, SPAN_NOTICE(" You color \the [src] [clr]"))
 		icon_state = "egg-[clr]"
 		egg_color = clr
 	else
@@ -1517,7 +1517,7 @@
 			package = 0
 
 	On_Consume(var/mob/M)
-		to_chat(M, "<span class = 'warning'>Something inside of you suddently expands!</span>")
+		to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
 
 		if (istype(M, /mob/living/carbon/human))
 			//Do not try to understand.
@@ -2923,7 +2923,7 @@
 	attack_self(mob/user as mob)
 		if(package)
 			playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-			to_chat(user, "<span class='notice'>You pull off the wrapping from the squishy burrito!</span>")
+			to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
 			package = 0
 			icon_state = "openburrito"
 
@@ -2942,7 +2942,7 @@
 	attack_self(mob/user as mob)
 		if (package)
 			playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-			to_chat(user, "<span class='notice'>You pull off the wrapping from the squishy hamburger!</span>")
+			to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
 			package = 0
 			icon_state = "hburger"
 
@@ -2960,7 +2960,7 @@
 	attack_self(mob/user as mob)
 		if (package)
 			playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-			to_chat(user, "<span class='notice'>You pull off the wrapping from the squishy hotdog!</span>")
+			to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
 			package = 0
 			icon_state = "hotdog"
 
@@ -2978,7 +2978,7 @@
 	attack_self(mob/user as mob)
 		if (package)
 			playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-			to_chat(user, "<span class='notice'>You tear off the ration seal and pull out the contents!</span>")
+			to_chat(user, SPAN_NOTICE("You tear off the ration seal and pull out the contents!"))
 			package = 0
 			var/variation = rand(1,2)
 			desc = "An extremely dried item of food, with little flavoring or coloration. Looks to be prepped for long term storage, but will expire without the packaging. Best to eat it now to avoid waste. At least things are equal."
@@ -3024,7 +3024,7 @@
 
 /obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user as mob)
 	if (package)
-		to_chat(user, "<span class='notice'>You pull open the package of [src]!</span>")
+		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 		new wrapper (user.loc)
@@ -3084,7 +3084,7 @@
 
 	attack_self(mob/user as mob)
 		if (package)
-			to_chat(user, "<span class='notice'>You pull open the package of the meal!</span>")
+			to_chat(user, SPAN_NOTICE("You pull open the package of the meal!"))
 			playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 			name = "\improper" + flavor

@@ -79,8 +79,8 @@
 			user.drop_inv_item_on_ground(src) //This part is important to make sure our light sources update, as it calls dropped()
 		var/obj/item/attachable/flashlight/F = new(src.loc)
 		user.put_in_hands(F) //This proc tries right, left, then drops it all-in-one.
-		to_chat(user, "<span class='notice'>You modify [src]. It can now be mounted on a weapon.</span>")
-		to_chat(user, "<span class='notice'>Use a screwdriver on [F] to change it back.</span>")
+		to_chat(user, SPAN_NOTICE("You modify [src]. It can now be mounted on a weapon."))
+		to_chat(user, SPAN_NOTICE("Use a screwdriver on [F] to change it back."))
 		qdel(src) //Delete da old flashlight
 		return
 	else
@@ -94,32 +94,32 @@
 			return ..()	//just hit them in the head
 
 		if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")	//don't have dexterity
-			to_chat(user, "<span class='notice'>You don't have the dexterity to do this!</span>")
+			to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this!"))
 			return
 
 		var/mob/living/carbon/human/H = M	//mob has protective eyewear
 		if(istype(M, /mob/living/carbon/human) && ((H.head && H.head.flags_inventory & COVEREYES) || (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) || (H.glasses && H.glasses.flags_inventory & COVEREYES)))
-			to_chat(user, "<span class='notice'>You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first.</span>")
+			to_chat(user, SPAN_NOTICE("You're going to need to remove that [(H.head && H.head.flags_inventory & COVEREYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_inventory & COVEREYES) ? "mask": "glasses"] first."))
 			return
 
 		if(M == user)	//they're using it on themselves
 			M.flash_eyes()
-			M.visible_message("<span class='notice'>[M] directs [src] to \his eyes.</span>", \
-									 "<span class='notice'>You wave the light in front of your eyes! Trippy!</span>")
+			M.visible_message(SPAN_NOTICE("[M] directs [src] to \his eyes."), \
+									 SPAN_NOTICE("You wave the light in front of your eyes! Trippy!"))
 			return
 
-		user.visible_message("<span class='notice'>[user] directs [src] to [M]'s eyes.</span>", \
-							 "<span class='notice'>You direct [src] to [M]'s eyes.</span>")
+		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
+							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
 		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey))	//robots and aliens are unaffected
 			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
-				to_chat(user, "<span class='notice'>[M] pupils does not react to the light!</span>")
+				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
 			else if(XRAY in M.mutations)	//mob has X-RAY vision
 				M.flash_eyes()
-				to_chat(user, "<span class='notice'>[M] pupils give an eerie glow!</span>")
+				to_chat(user, SPAN_NOTICE("[M] pupils give an eerie glow!"))
 			else	//they're okay!
 				M.flash_eyes()
-				to_chat(user, "<span class='notice'>[M]'s pupils narrow.</span>")
+				to_chat(user, SPAN_NOTICE("[M]'s pupils narrow."))
 	else
 		return ..()
 
@@ -243,7 +243,7 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, "<span class='notice'>It's out of fuel.</span>")
+		to_chat(user, SPAN_NOTICE("It's out of fuel."))
 		return
 	if(on)
 		return
@@ -251,7 +251,7 @@
 	. = ..()
 	// All good, turn it on.
 	if(.)
-		user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
+		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		force = on_damage
 		heat_source = 1500
 		damtype = "fire"
@@ -321,7 +321,7 @@
 
 	// Usual checks
 	if(!fuel)
-		to_chat(user, "<span class='notice'>It's out of fuel.</span>")
+		to_chat(user, SPAN_NOTICE("It's out of fuel."))
 		return
 	if(on)
 		return
@@ -335,7 +335,7 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 	// All good, turn it on.
-	user.visible_message("<span class='notice'>[user] activates the flare.</span>", "<span class='notice'>You pull the cord on the flare, activating it!</span>")
+	user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 	force = on_damage
 	heat_source = 1500
 	damtype = "fire"

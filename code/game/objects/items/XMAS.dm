@@ -22,13 +22,13 @@
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(H.opened_gift == 1)
-			to_chat(H, "<span class='notice'> This is not your gift, opening it feels wrong.</span>")
+			to_chat(H, SPAN_NOTICE(" This is not your gift, opening it feels wrong."))
 		if(H.opened_gift == 2)
-			to_chat(H, "<span class='notice'> Santa knows of your treachery, yet you open another present.</span>")
+			to_chat(H, SPAN_NOTICE(" Santa knows of your treachery, yet you open another present."))
 		if(H.opened_gift == 3)
-			to_chat(H, "<span class='notice'> Even the Grinch glares with disguist...</span>")
+			to_chat(H, SPAN_NOTICE(" Even the Grinch glares with disguist..."))
 		if(H.opened_gift == 4)
-			to_chat(H, "<span class='notice'> You're ruining the Christmas magic, I hope you're happy.</span>")
+			to_chat(H, SPAN_NOTICE(" You're ruining the Christmas magic, I hope you're happy."))
 		if(H.opened_gift == 5)
 			to_chat(H, "<span class='danger'>Ok, Congratulations, you've ruined Christmas for 5 marines now.</span>")
 		if(H.opened_gift > 5)
@@ -41,7 +41,7 @@
 
 	if(fancy > 90)
 		if(exFancy == 1)
-			to_chat(M, "<span class='notice'> Just what the fuck is it???</span>")
+			to_chat(M, SPAN_NOTICE(" Just what the fuck is it???"))
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
@@ -50,7 +50,7 @@
 			qdel(src)
 			return
 		if(exFancy > 15)
-			to_chat(M, "<span class='notice'> Oh, just what I needed... Fucking HEFA's.</span>")
+			to_chat(M, SPAN_NOTICE(" Oh, just what I needed... Fucking HEFA's."))
 			gift_type = /obj/item/storage/box/nade_box/frag
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
@@ -69,7 +69,7 @@
 			/obj/item/attachable/extended_barrel,
 			/obj/item/attachable/burstfire_assembly,
 			)
-			to_chat(M, "<span class='notice'> It's a REAL gift!!!</span>")
+			to_chat(M, SPAN_NOTICE(" It's a REAL gift!!!"))
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
@@ -77,7 +77,7 @@
 			qdel(src)
 			return
 	else if (fancy <=5)
-		to_chat(M, "<span class='notice'> It's fucking EMPTY.  Man, Fuck CM.</span>")
+		to_chat(M, SPAN_NOTICE(" It's fucking EMPTY.  Man, Fuck CM."))
 		M.temp_drop_inv_item(src)
 		qdel(src)
 		return
@@ -122,7 +122,7 @@
 		/obj/item/attachable/scope)
 
 	if(!ispath(gift_type,/obj/item))	return
-	to_chat(M, "<span class='notice'> At least it's something...</span>")
+	to_chat(M, SPAN_NOTICE(" At least it's something..."))
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
 	M.put_in_hands(I)

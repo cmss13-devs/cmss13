@@ -170,7 +170,7 @@
 	else if(istype(W, /obj/item/coin))
 		if(user.drop_inv_item_to_loc(W, src))
 			coin = W
-			to_chat(user, "<span class='notice'> You insert the [W] into the [src]</span>")
+			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
 		return
 	else if(istype(W, /obj/item/card))
 		var/obj/item/card/I = W
@@ -179,7 +179,7 @@
 	else if (istype(W, /obj/item/spacecash/ewallet))
 		if(user.drop_inv_item_to_loc(W, src))
 			ewallet = W
-			to_chat(user, "<span class='notice'> You insert the [W] into the [src]</span>")
+			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
 		return
 
 	else if(istype(W, /obj/item/tool/wrench))
@@ -297,9 +297,9 @@
 /obj/machinery/vending/attack_hand(mob/user as mob)
 	if(tipped_level == 2)
 		tipped_level = 1
-		user.visible_message("<span class='notice'>[user] begins to heave the vending machine back into place!</span>","<span class='notice'>You start heaving the vending machine back into place..</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins to heave the vending machine back into place!"),SPAN_NOTICE("You start heaving the vending machine back into place.."))
 		if(do_after(user, 80, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message("<span class='notice'>[user] rights the [src]!</span>","<span class='notice'>You right the [src]!</span>")
+			user.visible_message(SPAN_NOTICE("[user] rights the [src]!"),SPAN_NOTICE("You right the [src]!"))
 			flip_back()
 			return
 		else
@@ -402,7 +402,7 @@
 		coin.loc = src.loc
 		if(!usr.get_active_hand())
 			usr.put_in_hands(coin)
-		to_chat(usr, "<span class='notice'> You remove the [coin] from the [src]</span>")
+		to_chat(usr, SPAN_NOTICE(" You remove the [coin] from the [src]"))
 		coin = null
 
 	if(href_list["remove_ewallet"] && !istype(usr,/mob/living/silicon))
@@ -412,7 +412,7 @@
 		ewallet.loc = src.loc
 		if(!usr.get_active_hand())
 			usr.put_in_hands(ewallet)
-		to_chat(usr, "<span class='notice'> You remove the [ewallet] from the [src]</span>")
+		to_chat(usr, SPAN_NOTICE(" You remove the [ewallet] from the [src]"))
 		ewallet = null
 
 	if (issilicon(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
@@ -497,13 +497,13 @@
 
 	if (R in coin_records)
 		if(!coin)
-			to_chat(user, "<span class='notice'> You need to insert a coin to get this item.</span>")
+			to_chat(user, SPAN_NOTICE(" You need to insert a coin to get this item."))
 			return
 		if(coin.string_attached)
 			if(prob(50))
-				to_chat(user, "<span class='notice'> You successfully pull the coin out before the [src] could swallow it.</span>")
+				to_chat(user, SPAN_NOTICE(" You successfully pull the coin out before the [src] could swallow it."))
 			else
-				to_chat(user, "<span class='notice'> You weren't able to pull the coin out fast enough, the machine ate it, string and all.</span>")
+				to_chat(user, SPAN_NOTICE(" You weren't able to pull the coin out fast enough, the machine ate it, string and all."))
 				qdel(coin)
 				coin = null
 		else
@@ -577,8 +577,8 @@
 				S.remove_from_storage(item_to_stock, user.loc)
 
 			qdel(item_to_stock)
-			user.visible_message("<span class='notice'>[user] stocks [src] with \a [R.product_name].</span>",
-			"<span class='notice'>You stock [src] with \a [R.product_name].</span>")
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R.product_name]."),
+			SPAN_NOTICE("You stock [src] with \a [R.product_name]."))
 			R.amount++
 			updateUsrDialog()
 			return //We found our item, no reason to go on.

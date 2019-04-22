@@ -35,10 +35,10 @@
 	set category = "Object"
 	detector_mode = !detector_mode
 	if(detector_mode)
-		to_chat(usr, "<span class='notice'>You switch [src] to short range mode.</span>")
+		to_chat(usr, SPAN_NOTICE("You switch [src] to short range mode."))
 		detector_range = 7
 	else
-		to_chat(usr, "<span class='notice'>You switch [src] to long range mode.</span>")
+		to_chat(usr, SPAN_NOTICE("You switch [src] to long range mode."))
 		detector_range = 14
 	if(active)
 		icon_state = "[initial(icon_state)]_on_[detector_mode]"
@@ -49,12 +49,12 @@
 		active = !active
 		if(active)
 			icon_state = "[initial(icon_state)]_on_[detector_mode]"
-			to_chat(user, "<span class='notice'>You activate [src].</span>")
+			to_chat(user, SPAN_NOTICE("You activate [src]."))
 			processing_objects.Add(src)
 
 		else
 			icon_state = "[initial(icon_state)]"
-			to_chat(user, "<span class='notice'>You deactivate [src].</span>")
+			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
 			processing_objects.Remove(src)
 
 /obj/item/device/motiondetector/Dispose()

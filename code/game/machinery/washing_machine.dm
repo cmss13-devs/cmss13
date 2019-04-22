@@ -73,7 +73,7 @@
 /obj/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
 	/*if(istype(W,/obj/item/tool/screwdriver))
 		panel = !panel
-		to_chat(user, "<span class='notice'> you [panel ? </span>")open" : "close"] the [src]'s maintenance panel"*/
+		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/
 	if(istype(W,/obj/item/toy/crayon) ||istype(W,/obj/item/tool/stamp))
 		if( state in list(	1, 3, 6 ) )
 			if(!crayon)
@@ -136,9 +136,9 @@
 				if(user.drop_inv_item_to_loc(W, src))
 					state = 3
 			else
-				to_chat(user, "<span class='notice'> You can't put the item in right now.</span>")
+				to_chat(user, SPAN_NOTICE(" You can't put the item in right now."))
 		else
-			to_chat(user, "<span class='notice'> The washing machine is full.</span>")
+			to_chat(user, SPAN_NOTICE(" The washing machine is full."))
 	else
 		..()
 	update_icon()

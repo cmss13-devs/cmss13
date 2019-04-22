@@ -236,7 +236,7 @@ should be alright.
 			if(istype(I,/obj/item/ammo_magazine))
 				var/obj/item/ammo_magazine/MG = I
 				if(istype(src, MG.gun_type))
-					to_chat(user, "<span class='notice'>You disable [active_attachable].</span>")
+					to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 					playsound(user, active_attachable.activation_sound, 15, 1)
 					active_attachable.activate_attachment(src, null, TRUE)
 					reload(user,MG)
@@ -267,7 +267,7 @@ should be alright.
 		if(istype(src, AM.gun_type))
 			if(current_mag)
 				unload(user,0,1)
-			to_chat(user, "<span class='notice'>You start a tactical reload.</span>")
+			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
 			var/old_mag_loc = AM.loc
 			var/tac_reload_time = 15
 			if(user.mind && user.mind.cm_skills)
@@ -359,12 +359,12 @@ should be alright.
 	if(!can_attach_to_gun(user, attachment))
 		return
 
-	user.visible_message("<span class='notice'>[user] begins attaching [attachment] to [src].</span>",
-	"<span class='notice'>You begin attaching [attachment] to [src].</span>", null, 4)
+	user.visible_message(SPAN_NOTICE("[user] begins attaching [attachment] to [src]."),
+	SPAN_NOTICE("You begin attaching [attachment] to [src]."), null, 4)
 	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 2))
 		if(attachment && attachment.loc)
-			user.visible_message("<span class='notice'>[user] attaches [attachment] to [src].</span>",
-			"<span class='notice'>You attach [attachment] to [src].</span>", null, 4)
+			user.visible_message(SPAN_NOTICE("[user] attaches [attachment] to [src]."),
+			SPAN_NOTICE("You attach [attachment] to [src]."), null, 4)
 			user.temp_drop_inv_item(attachment)
 			attachment.Attach(src)
 			update_attachable(attachment.slot)
@@ -651,8 +651,8 @@ should be alright.
 	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (A != rail && A != muzzle && A != under && A != stock) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return
 
-	usr.visible_message("<span class='notice'>[usr] begins stripping [A] from [src].</span>",
-	"<span class='notice'>You begin stripping [A] from [src].</span>", null, 4)
+	usr.visible_message(SPAN_NOTICE("[usr] begins stripping [A] from [src]."),
+	SPAN_NOTICE("You begin stripping [A] from [src]."), null, 4)
 
 	if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
@@ -665,8 +665,8 @@ should be alright.
 	if(zoom)
 		return
 
-	usr.visible_message("<span class='notice'>[usr] strips [A] from [src].</span>",
-	"<span class='notice'>You strip [A] from [src].</span>", null, 4)
+	usr.visible_message(SPAN_NOTICE("[usr] strips [A] from [src]."),
+	SPAN_NOTICE("You strip [A] from [src]."), null, 4)
 	A.Detach(src)
 
 	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
@@ -697,17 +697,17 @@ should be alright.
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				flags_gun_features &= ~GUN_FULL_AUTO_ON
 				flags_gun_features &= ~GUN_BURST_ON
-				to_chat(usr, "<span class='notice'>\icon[src] You set [src] to single fire mode.</span>")
+				to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to single fire mode."))
 			else
 				flags_gun_features|= GUN_FULL_AUTO_ON
-				to_chat(usr, "<span class='notice'>\icon[src] You set [src] to full auto mode.</span>")
+				to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to full auto mode."))
 		else
 			flags_gun_features |= GUN_BURST_ON
-			to_chat(usr, "<span class='notice'>\icon[src] You set [src] to burst fire mode.</span>")
+			to_chat(usr, SPAN_NOTICE("\icon[src] You set [src] to burst fire mode."))
 	else
 		flags_gun_features ^= GUN_BURST_ON
 
-		to_chat(usr, "<span class='notice'>\icon[src] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode.</span>")
+		to_chat(usr, SPAN_NOTICE("\icon[src] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
 
 /obj/item/weapon/gun/verb/empty_mag()
@@ -758,7 +758,7 @@ should be alright.
 		to_chat(usr, "Not right now.")
 		return
 
-	to_chat(usr, "<span class='notice'>You toggle the safety [flags_gun_features & GUN_TRIGGER_SAFETY ? "<b>off</b>" : "<b>on</b>"].</span>")
+	to_chat(usr, SPAN_NOTICE("You toggle the safety [flags_gun_features & GUN_TRIGGER_SAFETY ? "<b>off</b>" : "<b>on</b>"]."))
 	playsound(usr, 'sound/machines/click.ogg', 15, 1)
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
 

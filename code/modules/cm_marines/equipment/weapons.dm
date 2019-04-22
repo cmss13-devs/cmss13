@@ -42,7 +42,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.glasses && istype(H.glasses, /obj/item/clothing/glasses/night/m56_goggles))
 			if(H.back == src)
-				to_chat(H, "<span class='notice'>You remove \the [H.glasses].</span>")
+				to_chat(H, SPAN_NOTICE("You remove \the [H.glasses]."))
 				H.drop_inv_item_on_ground(H.glasses)
 	..()
 

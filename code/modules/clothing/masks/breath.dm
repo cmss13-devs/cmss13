@@ -84,11 +84,11 @@
 
 	if(pulled == FALSE)
 		pulled = TRUE
-		to_chat(usr, "<span class='notice'>You pull \the [src] down.</span>")
+		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
 		icon_state += "_down"
 	else
 		pulled = FALSE
-		to_chat(usr, "<span class='notice'>You pull \the [src] up.</span>")
+		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
 		icon_state = original_state
 
 	update_clothing_icon(src) //Update the on-mob icon.

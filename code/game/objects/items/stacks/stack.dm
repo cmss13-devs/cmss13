@@ -161,8 +161,8 @@
 		if(amount < R.req_amount * multiplier)
 			return
 		var/atom/O = new R.result_type(usr.loc)
-		usr.visible_message("<span class='notice'>[usr] assembles \a [O].</span>",
-		"<span class='notice'>You assemble \a [O].</span>")
+		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
+		SPAN_NOTICE("You assemble \a [O]."))
 		O.dir = usr.dir
 		if(R.max_res_amount > 1)
 			var/obj/item/stack/new_item = O
@@ -243,7 +243,7 @@
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if (S.amount >= max_amount)
-				to_chat(user, "<span class='notice'>That stack is full!</span>")
+				to_chat(user, SPAN_NOTICE("That stack is full!"))
 				return 1
 			var/to_transfer as num
 			if (user.get_inactive_hand()==src)

@@ -44,7 +44,7 @@
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class='notice'> You fill the balloon with the contents of [A].</span>")
+		to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [A]."))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -61,7 +61,7 @@
 					qdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, "<span class='notice'> You fill the balloon with the contents of [O].</span>")
+					to_chat(user, SPAN_NOTICE(" You fill the balloon with the contents of [O]."))
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
 	return
@@ -200,12 +200,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, "<span class='notice'> You refill your flower!</span>")
+		to_chat(user, SPAN_NOTICE(" You refill your flower!"))
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		to_chat(user, "<span class='notice'> Your flower has run dry!</span>")
+		to_chat(user, SPAN_NOTICE(" Your flower has run dry!"))
 		return
 
 	else
@@ -249,14 +249,14 @@
 //all credit to skasi for toy mech fun ideas
 /obj/item/toy/prize/attack_self(mob/user as mob)
 	if(cooldown < world.time - 8)
-		to_chat(user, "<span class='notice'>You play with [src].</span>")
+		to_chat(user, SPAN_NOTICE("You play with [src]."))
 		playsound(user, 'sound/mecha/mechstep.ogg', 15, 1)
 		cooldown = world.time
 
 /obj/item/toy/prize/attack_hand(mob/user as mob)
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			to_chat(user, "<span class='notice'>You play with [src].</span>")
+			to_chat(user, SPAN_NOTICE("You play with [src]."))
 			playsound(user, 'sound/mecha/mechturn.ogg', 15, 1)
 			cooldown = world.time
 			return
@@ -419,9 +419,9 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message("<span class='notice'>[user] has thrown [src]. It lands on [result]. [comment]</span>", \
-						 "<span class='notice'>You throw [src]. It lands on a [result]. [comment]</span>", \
-						 "<span class='notice'>You hear [src] landing on a [result]. [comment]</span>")
+	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
+						 SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+						 SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 
 
@@ -459,6 +459,6 @@
 
 /obj/item/toy/farwadoll/attack_self(mob/user)
 	if(world.time > last_hug_time)
-		user.visible_message("<span class='notice'>[user] hugs [src]! How cute! </span>", \
-							 "<span class='notice'>You hug [src]. Dawwww... </span>")
+		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
+							 SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown

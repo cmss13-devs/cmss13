@@ -41,7 +41,7 @@
 		spawn(50)
 			to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station."), 1)
 		feedback_add_details("admin_verb","PRISON") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in mob_list)
@@ -63,7 +63,7 @@
 				to_chat(M, "\bold You hear a voice in your head... \italic [msg]")
 
 	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	message_admins("<span class='notice'>\bold SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]</span>", 1)
+	message_admins(SPAN_NOTICE("\bold SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] : [msg]"), 1)
 	feedback_add_details("admin_verb","SMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
@@ -116,7 +116,7 @@
 		return
 	to_world("[msg]")
 	log_admin("GlobalNarrate: [key_name(usr)] : [msg]")
-	message_admins("<span class='notice'>\bold GlobalNarrate: [key_name_admin(usr)] : [msg]<BR></span>", 1)
+	message_admins(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]<BR>"), 1)
 	feedback_add_details("admin_verb","GLN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_direct_narrate(var/mob/M)	// Targetted narrate -- TLE
@@ -140,7 +140,7 @@
 
 	M << msg
 	log_admin("DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
-	message_admins("<span class='notice'>\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]<BR></span>", 1)
+	message_admins(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]<BR>"), 1)
 	feedback_add_details("admin_verb","DIRN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_godmode(mob/M as mob in mob_list)
@@ -150,7 +150,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 	M.status_flags ^= GODMODE
-	to_chat(usr, "<span class='notice'> Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]</span>")
+	to_chat(usr, SPAN_NOTICE(" Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]"))
 
 	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
 	message_admins("[key_name_admin(usr)] has toggled [key_name_admin(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]", 1)
@@ -280,7 +280,7 @@ Ccomp's first proc.
 //	G.has_enabled_antagHUD = 2
 	G.can_reenter_corpse = 1
 
-	G:show_message(text("<span class='notice'><B>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</B></span>"), 1)
+	G:show_message(text(SPAN_NOTICE("<B>You may now respawn.  You should roleplay as if you learned nothing about the round during your time with the dead.</B>")), 1)
 	log_admin("[key_name(usr)] allowed [key_name(G)] to bypass the 30 minute respawn limit")
 	message_admins("Admin [key_name_admin(usr)] allowed [key_name_admin(G)] to bypass the 30 minute respawn limit", 1)
 
@@ -308,10 +308,10 @@ Ccomp's first proc.
 		for(var/mob/dead/observer/g in get_ghosts())
 			if(!g.client.admin_holder)						// Add the verb back for all non-admin ghosts
 				g.verbs += /mob/dead/observer/verb/toggle_antagHUD
-			to_chat(g, "<span class='notice'> <B>The Administrator has enabled AntagHUD </B></span>")	// Notify all observers they can now use AntagHUD
+			to_chat(g, SPAN_NOTICE(" <B>The Administrator has enabled AntagHUD </B>"))	// Notify all observers they can now use AntagHUD
 		config.antag_hud_allowed = 1
 		action = "enabled"
-		to_chat(src, "<span class='notice'> <B>AntagHUD usage has been enabled</B></span>")
+		to_chat(src, SPAN_NOTICE(" <B>AntagHUD usage has been enabled</B>"))
 
 
 	log_admin("[key_name(usr)] has [action] antagHUD usage for observers")
@@ -328,10 +328,10 @@ Ccomp's first proc.
 	var/action=""
 	if(config.antag_hud_restricted)
 		for(var/mob/dead/observer/g in get_ghosts())
-			to_chat(g, "<span class='notice'> <B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B></span>")
+			to_chat(g, SPAN_NOTICE(" <B>The administrator has lifted restrictions on joining the round if you use AntagHUD</B>"))
 		action = "lifted restrictions"
 		config.antag_hud_restricted = 0
-		to_chat(src, "<span class='notice'> <B>AntagHUD restrictions have been lifted</B></span>")
+		to_chat(src, SPAN_NOTICE(" <B>AntagHUD restrictions have been lifted</B>"))
 	else
 		for(var/mob/dead/observer/g in get_ghosts())
 			to_chat(G, "<span class='danger'><B>The administrator has placed restrictions on joining the round if you use AntagHUD</B></span>")
@@ -381,7 +381,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				new_monkey.key = G_found.key
 				if(new_monkey.client) new_monkey.client.change_view(world.view)
 				to_chat(new_monkey, "You have been fully respawned. Enjoy the game.")
-				message_admins("<span class='notice'>[key_name_admin(usr)] has respawned [new_monkey.key] as a filthy xeno.</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] has respawned [new_monkey.key] as a filthy xeno."), 1)
 				return	//all done. The ghost is auto-deleted
 
 	//Ok, it's not a monkey. So, spawn a human.
@@ -446,7 +446,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			if(alert(new_character,"Would you like an active AI to announce this character?",,"No","Yes")=="Yes")
 				call(/mob/new_player/proc/AnnounceArrival)(new_character, new_character.mind.assigned_role)
 
-	message_admins("<span class='notice'>[admin] has respawned [player_key] as [new_character.real_name].</span>", 1)
+	message_admins(SPAN_NOTICE("[admin] has respawned [player_key] as [new_character.real_name]."), 1)
 
 	to_chat(new_character, "You have been fully respawned. Enjoy the game.")
 
@@ -475,7 +475,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	feedback_add_details("admin_verb","FPRED")
 	log_admin("[key_name(usr)] admin-forced a predator round.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] admin-forced a predator round.</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-forced a predator round."), 1)
 	return
 
 /client/proc/cmd_admin_add_freeform_ai_law()
@@ -795,7 +795,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			mob.gib()
 
 		log_admin("[key_name(usr)] used gibself.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] used gibself.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] used gibself."), 1)
 		feedback_add_details("admin_verb","GIBS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /*
 /client/proc/cmd_manual_ban()
@@ -912,7 +912,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		change_view(world.view)
 
 	log_admin("[key_name(usr)] changed their view range to [view].")
-	//message_admins("<span class='notice'>[key_name_admin(usr)] changed their view range to [view].</span>", 1)	//why? removed by order of XSI
+	//message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed their view range to [view]."), 1)	//why? removed by order of XSI
 
 	feedback_add_details("admin_verb","CVRA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -952,7 +952,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("Admin [key_name_admin(usr)] has forced the players to have random appearances.", 1)
 
 	if(notifyplayers == "Yes")
-		to_world("<span class='notice'> <b>Admin [usr.key] has forced the players to have completely random identities!</span>")
+		to_world(SPAN_NOTICE(" <b>Admin [usr.key] has forced the players to have completely random identities!"))
 
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
 

@@ -50,7 +50,7 @@
 
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(W.sharp == IS_SHARP_ITEM_BIG)
-			user.show_message("<span class='notice'>You make planks out of \the [src]!</span>", 1)
+			user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), 1)
 			for(var/i=0,i<2,i++)
 				var/obj/item/stack/sheet/wood/NG = new (user.loc)
 				for (var/obj/item/stack/sheet/wood/G in user.loc)
@@ -181,7 +181,7 @@
 
 /obj/item/corncob/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
-		to_chat(user, "<span class='notice'>You use [W] to fashion a pipe out of the corn cob!</span>")
+		to_chat(user, SPAN_NOTICE("You use [W] to fashion a pipe out of the corn cob!"))
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
 	else

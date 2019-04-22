@@ -24,7 +24,7 @@
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		armed = !armed
 		icon_state = "beartrap[armed]"
-		to_chat(user, "<span class='notice'>[src] is now [armed ? "armed" : "disarmed"]</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now [armed ? "armed" : "disarmed"]"))
 
 /obj/item/legcuffs/beartrap/Crossed(atom/movable/AM)
 	if(armed)
@@ -88,7 +88,7 @@
 		armed = 1
 		anchored = 1
 		icon_state = "yauttrap[armed]"
-		to_chat(user, "<span class='notice'>[src] is now armed.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now armed."))
 		user.drop_held_item()
 
 
@@ -97,7 +97,7 @@
 		armed = 0
 		anchored = 0
 		icon_state = "yauttrap[armed]"
-		to_chat(user, "<span class='notice'>[src] is now disarmed.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now disarmed."))
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user))
 		if(armed)
@@ -130,7 +130,7 @@
 					if(isturf(src.loc))
 						var/mob/living/carbon/H = AM
 						if(isYautja(H))
-							to_chat(H, "<span class='notice'>You carefully avoid stepping on the trap.</span>")
+							to_chat(H, SPAN_NOTICE("You carefully avoid stepping on the trap."))
 							return
 						if(H.m_intent == MOVE_INTENT_RUN)
 							trapMob(H)

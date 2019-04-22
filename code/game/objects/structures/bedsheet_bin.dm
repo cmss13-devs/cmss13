@@ -111,12 +111,12 @@ LINEN BINS
 			I.forceMove(src)
 			sheets.Add(I)
 			amount++
-			to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
 	else if(amount && !hidden && I.w_class < 4)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(user.drop_held_item())
 			I.forceMove(src)
 			hidden = I
-			to_chat(user, "<span class='notice'>You hide [I] among the sheets.</span>")
+			to_chat(user, SPAN_NOTICE("You hide [I] among the sheets."))
 
 
 
@@ -138,11 +138,11 @@ LINEN BINS
 
 		B.loc = user.loc
 		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>You take [B] out of [src].</span>")
+		to_chat(user, SPAN_NOTICE("You take [B] out of [src]."))
 
 		if(hidden)
 			hidden.loc = user.loc
-			to_chat(user, "<span class='notice'>[hidden] falls out of [B]!</span>")
+			to_chat(user, SPAN_NOTICE("[hidden] falls out of [B]!"))
 			hidden = null
 
 

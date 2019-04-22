@@ -391,11 +391,11 @@
 	else if( get_dist(src, user) == 0 )		// trying to unlock the interface
 		if (src.allowed(usr))
 			if(emagged)
-				to_chat(user, "<span class='notice'>The turret control is unresponsive.</span>")
+				to_chat(user, SPAN_NOTICE("The turret control is unresponsive."))
 				return
 
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the panel.</span>"
+			to_chat(user, SPAN_NOTICE("You [ locked ? "lock" : "unlock"] the panel.")
 			if (locked)
 				if (user.machine==src)
 					user.unset_machine()
@@ -410,12 +410,12 @@
 	if(!ailock)
 		return attack_hand(user)
 	else
-		to_chat(user, "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>")
+		to_chat(user, SPAN_NOTICE("There seems to be a firewall preventing you from accessing this device."))
 
 /obj/machinery/turretid/attack_hand(mob/user as mob)
 	if ( get_dist(src, user) > 0 )
 		if ( !issilicon(user) )
-			to_chat(user, "<span class='notice'>You are too far away.</span>")
+			to_chat(user, SPAN_NOTICE("You are too far away."))
 			user.unset_machine()
 			user << browse(null, "window=turretid")
 			return

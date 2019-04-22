@@ -260,7 +260,7 @@
 		grabbed_something = 1
 
 	if(grabbed_something)
-		to_chat(user, "<span class='notice'> You deploy your decompiler and clear out the contents of \the [T].</span>")
+		to_chat(user, SPAN_NOTICE(" You deploy your decompiler and clear out the contents of \the [T]."))
 	else
 		to_chat(user, "<span class='danger'>Nothing on \the [T] is useful to you.</span>")
 	return

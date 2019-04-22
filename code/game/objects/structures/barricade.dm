@@ -133,12 +133,12 @@
 	if(istype(W, /obj/item/stack/barbed_wire))
 		var/obj/item/stack/barbed_wire/B = W
 		if(can_wire)
-			user.visible_message("<span class='notice'>[user] starts setting up [W.name] on [src].</span>",
-			"<span class='notice'>You start setting up [W.name] on [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts setting up [W.name] on [src]."),
+			SPAN_NOTICE("You start setting up [W.name] on [src]."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && can_wire)
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] sets up [W.name] on [src].</span>",
-				"<span class='notice'>You set up [W.name] on [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
+				SPAN_NOTICE("You set up [W.name] on [src]."))
 				B.use(1)
 				maxhealth += 50
 				health += 50
@@ -151,12 +151,12 @@
 
 	if(istype(W, /obj/item/tool/wirecutters))
 		if(is_wired)
-			user.visible_message("<span class='notice'>[user] begin removing the barbed wire on [src].</span>",
-			"<span class='notice'>You begin removing the barbed wire on [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
+			SPAN_NOTICE("You begin removing the barbed wire on [src]."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] removes the barbed wire on [src].</span>",
-				"<span class='notice'>You remove the barbed wire on [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] removes the barbed wire on [src]."),
+				SPAN_NOTICE("You remove the barbed wire on [src]."))
 				maxhealth -= 50
 				health -= 50
 				update_health()
@@ -352,7 +352,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 		if(!ET.folded)
-			user.visible_message("<span class='notice'>\The [user] removes \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] removes \the [src]."))
 			destroy(TRUE)
 		return
 	else
@@ -407,11 +407,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			if(D.get_amount() < 1)
 				to_chat(user, "<span class='warning'>You need one plank of wood to repair [src].</span>")
 				return
-			visible_message("<span class='notice'>[user] begins to repair [src].</span>")
+			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
 			if(do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && health < maxhealth)
 				if (D.use(1))
 					health = maxhealth
-					visible_message("<span class='notice'>[user] repairs [src].</span>")
+					visible_message(SPAN_NOTICE("[user] repairs [src]."))
 		return
 	. = ..()
 
@@ -487,12 +487,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		var/old_loc = loc
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message("<span class='notice'>[user] begins repairing damage to [src].</span>",
-			"<span class='notice'>You begin repairing the damage to [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
-				user.visible_message("<span class='notice'>[user] repairs some damage on [src].</span>",
-				"<span class='notice'>You repair [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				SPAN_NOTICE("You repair [src]."))
 				health += 150
 				update_health()
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -508,8 +508,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
-				user.visible_message("<span class='notice'>[user] removes [src]'s protection panel.</span>",
-				"<span class='notice'>You remove [src]'s protection panels, exposing the anchor bolts.</span>")
+				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
+				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
 		if(BARRICADE_BSTATE_UNSECURED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
@@ -521,8 +521,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
-				user.visible_message("<span class='notice'>[user] set [src]'s protection panel back.</span>",
-				"<span class='notice'>You set [src]'s protection panel back.</span>")
+				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
+				SPAN_NOTICE("You set [src]'s protection panel back."))
 				build_state = BARRICADE_BSTATE_SECURED
 				return
 			if(iswrench(W))
@@ -533,8 +533,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
-				user.visible_message("<span class='notice'>[user] loosens [src]'s anchor bolts.</span>",
-				"<span class='notice'>You loosen [src]'s anchor bolts.</span>")
+				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
 				build_state = BARRICADE_BSTATE_MOVABLE
 				update_icon() //unanchored changes layer
@@ -552,8 +552,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 						return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
-				user.visible_message("<span class='notice'>[user] secures [src]'s anchor bolts.</span>",
-				"<span class='notice'>You secure [src]'s anchor bolts.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
+				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				anchored = TRUE
 				update_icon() //unanchored changes layer
@@ -564,12 +564,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
 					to_chat(user, "<span class='warning'>You are not trained to disassemble [src]...</span>")
 					return
-				user.visible_message("<span class='notice'>[user] starts unseating [src]'s panels.</span>",
-				"<span class='notice'>You start unseating [src]'s panels.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
+				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					user.visible_message("<span class='notice'>[user] takes [src]'s panels apart.</span>",
-					"<span class='notice'>You take [src]'s panels apart.</span>")
+					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
+					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					destroy(TRUE) //Note : Handles deconstruction too !
 				return
@@ -622,16 +622,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		var/old_loc = loc
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message("<span class='notice'>[user] begins repairing damage to [src].</span>",
-			"<span class='notice'>You begin repairing the damage to [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
-				user.visible_message("<span class='notice'>[user] repairs some damage on [src].</span>",
-				"<span class='notice'>You repair [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				SPAN_NOTICE("You repair [src]."))
 				health += maxhealth*0.4
 				if(health < maxhealth)
 					maxhealth -= 50
-					user.visible_message("<span class='notice'>[src]'s structural integrity weakens.</span>")
+					user.visible_message(SPAN_NOTICE("[src]'s structural integrity weakens."))
 
 				update_health()
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -652,8 +652,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	user.visible_message("<span class='notice'>[user] starts collapsing [src].</span>",
-			"<span class='notice'>You begin collapsing [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."),
+			SPAN_NOTICE("You begin collapsing [src]."))
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 	var/old_loc = loc
 	if(do_after(user, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
@@ -694,13 +694,13 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(B != src && B.dir == dir)
 			to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
 			return
-	user.visible_message("<span class='notice'>[user] begins deploying [src].</span>",
-			"<span class='notice'>You begin deploying [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
+			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-	user.visible_message("<span class='notice'>[user] has finished deploying [src].</span>",
-			"<span class='notice'>You finish deploying [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src]."),
+			SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/structure/barricade/deployable/cade = new(user.loc)
 	cade.dir = user.dir
 	cade.health = health
@@ -788,14 +788,14 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message("<span class='notice'>[user] begins repairing damage to [src].</span>",
-			"<span class='notice'>You begin repairing the damage to [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			busy = 1
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				busy = 0
-				user.visible_message("<span class='notice'>[user] repairs some damage on [src].</span>",
-				"<span class='notice'>You repair [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				SPAN_NOTICE("You repair [src]."))
 				health += 150
 				update_health()
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -816,9 +816,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					if(B != src && B.dir == dir)
 						to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
 						return
-				user.visible_message("<span class='notice'>[user] removes [src]'s protection panel.</span>",
+				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
 
-				"<span class='notice'>You remove [src]'s protection panels, exposing the anchor bolts.</span>")
+				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
@@ -828,11 +828,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(linked)
-					user.visible_message("<span class='notice'>[user] removes the linking on [src].</span>",
-					"<span class='notice'>You remove the linking on [src].</span>")
+					user.visible_message(SPAN_NOTICE("[user] removes the linking on [src]."),
+					SPAN_NOTICE("You remove the linking on [src]."))
 				else
-					user.visible_message("<span class='notice'>[user] sets up [src] for linking.</span>",
-					"<span class='notice'>You set up [src] for linking.</span>")
+					user.visible_message(SPAN_NOTICE("[user] sets up [src] for linking."),
+					SPAN_NOTICE("You set up [src] for linking."))
 				linked = !linked
 				for(var/direction in cardinal)
 					for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
@@ -846,8 +846,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
 					return
-				user.visible_message("<span class='notice'>[user] set [src]'s protection panel back.</span>",
-				"<span class='notice'>You set [src]'s protection panel back.</span>")
+				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
+				SPAN_NOTICE("You set [src]'s protection panel back."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_SECURED
 				return
@@ -858,8 +858,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
 					return
-				user.visible_message("<span class='notice'>[user] loosens [src]'s anchor bolts.</span>",
-				"<span class='notice'>You loosen [src]'s anchor bolts.</span>")
+				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = FALSE
 				build_state = BARRICADE_BSTATE_MOVABLE
@@ -874,8 +874,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
 					return
-				user.visible_message("<span class='notice'>[user] secures [src]'s anchor bolts.</span>",
-				"<span class='notice'>You secure [src]'s anchor bolts.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
+				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = TRUE
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -888,14 +888,14 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
 					return
-				user.visible_message("<span class='notice'>[user] starts unseating [src]'s panels.</span>",
-				"<span class='notice'>You start unseating [src]'s panels.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
+				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				busy = 1
 				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					busy = 0
-					user.visible_message("<span class='notice'>[user] takes [src]'s panels apart.</span>",
-					"<span class='notice'>You take [src]'s panels apart.</span>")
+					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
+					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					destroy(TRUE) //Note : Handles deconstruction too !
 				else busy = 0
@@ -909,10 +909,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	if(closed)
 		if(recentlyflipped)
-			to_chat(user, "<span class='notice'>The [src] has been flipped too recently!</span>")
+			to_chat(user, SPAN_NOTICE("The [src] has been flipped too recently!"))
 			return
-		user.visible_message("<span class='notice'>[user] flips [src] open.</span>",
-		"<span class='notice'>You flip [src] open.</span>")
+		user.visible_message(SPAN_NOTICE("[user] flips [src] open."),
+		SPAN_NOTICE("You flip [src] open."))
 		open(src)
 		recentlyflipped = TRUE
 		spawn(10)
@@ -921,10 +921,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	else
 		if(recentlyflipped)
-			to_chat(user, "<span class='notice'>The [src] has been flipped too recently!</span>")
+			to_chat(user, SPAN_NOTICE("The [src] has been flipped too recently!"))
 			return
-		user.visible_message("<span class='notice'>[user] flips [src] closed.</span>",
-		"<span class='notice'>You flip [src] closed.</span>")
+		user.visible_message(SPAN_NOTICE("[user] flips [src] closed."),
+		SPAN_NOTICE("You flip [src] closed."))
 		close(src)
 		recentlyflipped = TRUE
 		spawn(10)
@@ -1004,11 +1004,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != "hurt")
 		var/obj/item/tool/shovel/ET = W
 		if(!ET.folded)
-			user.visible_message("<span class='notice'>[user] starts disassembling [src].</span>", \
-			"<span class='notice'>You start disassembling [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."), \
+			SPAN_NOTICE("You start disassembling [src]."))
 			if(do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message("<span class='notice'>[user] disassembles [src].</span>",
-				"<span class='notice'>You disassemble [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
+				SPAN_NOTICE("You disassemble [src]."))
 				destroy(TRUE)
 		return 1
 

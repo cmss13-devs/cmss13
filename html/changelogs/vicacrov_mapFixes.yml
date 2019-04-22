@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - mapfix: "Fixed various overlapping turfs."
-  - mapfix: "Fixed the brig having random hull walls and windows. Cells are not affected by this."

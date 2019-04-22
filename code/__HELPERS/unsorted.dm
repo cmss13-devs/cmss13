@@ -333,9 +333,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if(isAI(src))
 				var/mob/living/silicon/ai/A = src
 				oldname = null//don't bother with the records update crap
-				//to_world("<b>[newname] is the AI!</b>")
-				//world << sound('sound/AI/newAI.ogg')
-				// Set eyeobj name
 				A.SetName(newname)
 
 
@@ -1034,9 +1031,13 @@ var/global/image/busy_indicator_hostile
 //	target is for INTERRUPT_OUT_OF_RANGE (aka reference point from user) and for a future(?) merge with do_mob
 //	max_dist is the max dist between them
 //	Interrupt flags found in code/#define/misc.dm
-/proc/do_after(mob/user, delay, do_after_flags = INTERRUPT_ALL, show_busy_icon, numticks = DA_DEFAULT_NUM_TICKS, target, max_dist = 1)
-	if(!istype(user) || delay <= 0)
+//	show_remaining_time will return the PERCENTAGE of time remaining in the action
+/proc/do_after(mob/user, delay, do_after_flags = INTERRUPT_ALL, show_busy_icon, numticks = DA_DEFAULT_NUM_TICKS, target, max_dist = 1, show_remaining_time = FALSE)
+	if(!istype(user) || delay < 0)
 		return FALSE
+
+	if(delay == 0) // Nothing to wait for, so action passes
+		return TRUE
 
 	var/mob/living/L = user
 	if(!istype(L))
@@ -1053,15 +1054,20 @@ var/global/image/busy_indicator_hostile
 
 	L.action_busy = TRUE
 	L.resisting = FALSE
+	for (var/mod in L.clicked_something)
+		L.clicked_something[mod] = FALSE
 
 	var/cur_zone_sel = L.zone_selected
 	var/delayfraction = round(delay/numticks)
 	var/original_loc = L.loc
 	var/original_turf = get_turf(L)
 	var/obj/holding = L.get_active_hand()
+	var/expected_total_time = delayfraction*(numticks+1)
+	var/time_remaining = expected_total_time
 	. = TRUE
 	for(var/i = 0 to numticks)
 		sleep(delayfraction)
+		time_remaining -= delayfraction
 		if(!istype(L)) // Checks for L exists and is not dead
 			. = FALSE
 			break
@@ -1101,14 +1107,36 @@ var/global/image/busy_indicator_hostile
 		if(do_after_flags & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
 			. = FALSE
 			break
+		if(do_after_flags & INTERRUPT_LCLICK && L.clicked_something["left"])
+			. = FALSE
+			break
+		if(do_after_flags & INTERRUPT_RCLICK && L.clicked_something["right"])
+			. = FALSE
+			break
+		if(do_after_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"])
+			. = FALSE
+			break
+		if(do_after_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"])
+			. = FALSE
+			break
+		if(do_after_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"])
+			. = FALSE
+			break
+		if(do_after_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"])
+			. = FALSE
+			break
 
 	if(L && busy_icon)
 		L.overlays -= busy_icon
 
 	L.action_busy = FALSE
 	L.resisting = FALSE
+	for (var/mod in L.clicked_something)
+		L.clicked_something[mod] = FALSE
 	L.status_flags &= ~IMMOBILE_ACTION
 
+	if (show_remaining_time)
+		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
 
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.

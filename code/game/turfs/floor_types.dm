@@ -311,8 +311,8 @@
 	if(!user)
 		return
 	if(istype(C, /obj/item/tool/wrench))
-		user.visible_message("<span class='notice'>[user] starts removing [src]'s protective cover.</span>",
-		"<span class='notice'>You start removing [src]'s protective cover.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
+		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			new /obj/item/stack/rods(src, 2)

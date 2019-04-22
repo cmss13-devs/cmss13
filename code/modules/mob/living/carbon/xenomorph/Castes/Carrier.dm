@@ -144,7 +144,7 @@
 	if(huggers_cur < huggers_max)
 		if(F.stat == CONSCIOUS && !F.sterile)
 			huggers_cur++
-			to_chat(src, "<span class='notice'>You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max].</span>")
+			to_chat(src, SPAN_NOTICE("You store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 			qdel(F)
 		else
 			to_chat(src, "<span class='warning'>This [F.name] looks too unhealthy.</span>")
@@ -210,7 +210,7 @@
 	if(eggs_cur < eggs_max)
 		if(stat == CONSCIOUS)
 			eggs_cur++
-			to_chat(src, "<span class='notice'>You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max].</span>")
+			to_chat(src, SPAN_NOTICE("You store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max]."))
 			qdel(E)
 		else
 			to_chat(src, "<span class='warning'>This [E.name] looks too unhealthy.</span>")

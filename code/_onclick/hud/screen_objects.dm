@@ -6,6 +6,7 @@
 	They are used with the client/screen list and the screen_loc var.
 	For more information, see the byond documentation on the screen_loc and screen vars.
 */
+
 /obj/screen
 	name = ""
 	icon = 'icons/mob/screen1.dmi'
@@ -517,7 +518,7 @@
 
 /mob/living/carbon/toggle_mov_intent()
 	if(legcuffed)
-		to_chat(src, "<span class='notice'>You are legcuffed! You cannot run until you get [legcuffed] removed!</span>")
+		to_chat(src, SPAN_NOTICE("You are legcuffed! You cannot run until you get [legcuffed] removed!"))
 		m_intent = MOVE_INTENT_WALK	//Just incase
 		if(hud_used && hud_used.move_intent)
 			hud_used.move_intent.icon_state = "walking"
@@ -570,11 +571,11 @@
 		if(!C.is_mob_incapacitated())
 			if(C.internal)
 				C.internal = null
-				to_chat(C, "<span class='notice'>No longer running on internals.</span>")
+				to_chat(C, SPAN_NOTICE("No longer running on internals."))
 				icon_state = "internal0"
 			else
 				if(!istype(C.wear_mask, /obj/item/clothing/mask))
-					to_chat(C, "<span class='notice'>You are not wearing a mask.</span>")
+					to_chat(C, SPAN_NOTICE("You are not wearing a mask."))
 					return 1
 				else
 					var/list/nicename = null
@@ -623,14 +624,14 @@
 					//We've determined the best container now we set it as our internals
 
 					if(best)
-						to_chat(C, "<span class='notice'>You are now running on internals from [tankcheck[best]] on your [nicename[best]].</span>")
+						to_chat(C, SPAN_NOTICE("You are now running on internals from [tankcheck[best]] on your [nicename[best]]."))
 						C.internal = tankcheck[best]
 
 
 					if(C.internal)
 						icon_state = "internal1"
 					else
-						to_chat(C, "<span class='notice'>You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank.</span>")
+						to_chat(C, SPAN_NOTICE("You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank."))
 	return 1
 
 

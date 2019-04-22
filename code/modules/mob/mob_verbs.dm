@@ -38,14 +38,7 @@
 	if (!tile)
 		return 0
 
-
-	if(next_move > world.time)
-		return 0
-
 	if(recently_pointed_to > world.time)
-		return 0
-
-	if(isYautja(A))
 		return 0
 
 	next_move = world.time + 2
@@ -96,20 +89,20 @@
 		is_admin = 1
 
 	if (!abandon_allowed && !is_admin)
-		to_chat(usr, "<span class='notice'> Respawn is disabled.</span>")
+		to_chat(usr, SPAN_NOTICE(" Respawn is disabled."))
 		return
 	if (stat != 2 || !ticker)
-		to_chat(usr, "<span class='notice'> <B>You must be dead to use this!</B></span>")
+		to_chat(usr, SPAN_NOTICE(" <B>You must be dead to use this!</B>"))
 		return
 	if (ticker && ticker.mode && (ticker.mode.name == "meteor" || ticker.mode.name == "epidemic")) //BS12 EDIT
-		to_chat(usr, "<span class='notice'> Respawn is disabled for this roundtype.</span>")
+		to_chat(usr, SPAN_NOTICE(" Respawn is disabled for this roundtype."))
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
 //		if(istype(src,/mob/dead/observer))
 //			var/mob/dead/observer/G = src
 //			if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-//				to_chat(usr, "<span class='notice'> <B>Upon using the antagHUD you forfeighted the ability to join the round.</B></span>")
+//				to_chat(usr, SPAN_NOTICE(" <B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"))
 //				return
 		var/deathtimeminutes = round(deathtime / 600)
 		var/pluralcheck = "minute"
@@ -130,7 +123,7 @@
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
-	to_chat(usr, "<span class='notice'> <B>Make sure to play a different character, and please roleplay correctly!</B></span>")
+	to_chat(usr, SPAN_NOTICE(" <B>Make sure to play a different character, and please roleplay correctly!</B>"))
 
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
@@ -163,7 +156,7 @@
 	if(client.admin_holder && (client.admin_holder.rights & R_ADMIN))
 		is_admin = 1
 	else if(stat != DEAD || istype(src, /mob/new_player))
-		to_chat(usr, "<span class='notice'> You must be observing to use this!</span>")
+		to_chat(usr, SPAN_NOTICE(" You must be observing to use this!"))
 		return
 
 	if(is_admin && stat == DEAD)

@@ -26,18 +26,18 @@
 	if(!active)
 
 		if(!user.IsAdvancedToolUser())
-			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 
 		add_fingerprint(user)
 		activate(user)
 		if((CLUMSY in user.mutations) && prob(50))
-			to_chat(user, "<span class='warning'>Huh? How does this thing work?</span>")
+			to_chat(user, SPAN_WARNING("Huh? How does this thing work?"))
 			spawn(5) prime()
 
 		else
-			user.visible_message("<span class='warning'>[user] primes \a [name]!</span>", \
-			"<span class='warning'>You prime \a [name]!</span>")
+			user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
+			SPAN_WARNING("You prime \a [name]!"))
 			if(initial(dangerous) && has_species(user, "Human"))
 				var/nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
 
@@ -80,16 +80,16 @@
 		switch(det_time)
 			if ("1")
 				det_time = 10
-				to_chat(user, "<span class='notice'>You set the [name] for 1 second detonation time.</span>")
+				to_chat(user, SPAN_NOTICE("You set the [name] for 1 second detonation time."))
 			if ("10")
 				det_time = 30
-				to_chat(user, "<span class='notice'>You set the [name] for 3 second detonation time.</span>")
+				to_chat(user, SPAN_NOTICE("You set the [name] for 3 second detonation time."))
 			if ("30")
 				det_time = 50
-				to_chat(user, "<span class='notice'>You set the [name] for 5 second detonation time.</span>")
+				to_chat(user, SPAN_NOTICE("You set the [name] for 5 second detonation time."))
 			if ("50")
 				det_time = 1
-				to_chat(user, "<span class='notice'>You set the [name] for instant detonation.</span>")
+				to_chat(user, SPAN_NOTICE("You set the [name] for instant detonation."))
 		add_fingerprint(user)
 	..()
 	return

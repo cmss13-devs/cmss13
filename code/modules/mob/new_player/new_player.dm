@@ -114,7 +114,7 @@
 				close_spawn_windows()
 				var/obj/O = locate("landmark*Observer-Start")
 				if(istype(O))
-					to_chat(src, "<span class='notice'>Now teleporting.</span>")
+					to_chat(src, SPAN_NOTICE("Now teleporting."))
 					observer.loc = O.loc
 				else
 					to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")

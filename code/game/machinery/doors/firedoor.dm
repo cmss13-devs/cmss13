@@ -157,7 +157,7 @@
 		to_chat(user, "<span class='warning'>Access denied.  Please wait for authorities to arrive, or for the alert to clear.</span>")
 		return
 	else
-		user.visible_message("<span class='notice'>\The [src] [density ? "open" : "close"]s for \the [user].</span>",\
+		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),\
 		"\The [src] [density ? "open" : "close"]s.",\
 		"You hear a beep, and a door opening.")
 
@@ -208,13 +208,13 @@
 			return
 
 		user.visible_message("<span class='danger'>\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-				"<span class='notice'>You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!</span>",\
+				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),\
 				"You hear metal strain.")
 		var/old_density = density
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(blocked || density != old_density) return
 			user.visible_message("<span class='danger'>\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!</span>",\
-				"<span class='notice'>You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!</span>",\
+				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),\
 				"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			spawn(0)
 				if(density)

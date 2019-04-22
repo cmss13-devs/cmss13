@@ -264,7 +264,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
-		to_chat(user, "<span class='notice'>You modify the bayonet back into a combat knife.</span>")
+		to_chat(user, SPAN_NOTICE("You modify the bayonet back into a combat knife."))
 		if(istype(loc, /obj/item/storage))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
@@ -462,7 +462,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
-		to_chat(user, "<span class='notice'>You strip the the rail flashlight of its mount, converting it to a normal flashlight.</span>")
+		to_chat(user, SPAN_NOTICE("You strip the the rail flashlight of its mount, converting it to a normal flashlight."))
 		if(istype(loc, /obj/item/storage))
 			var/obj/item/storage/S = loc
 			S.remove_from_storage(src)
@@ -494,7 +494,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/flashlight/grip/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/tool/screwdriver))
-		to_chat(user, "<span class='notice'>Hold on there cowboy, that grip is bolted on. You are unable to modify it.</span>")
+		to_chat(user, SPAN_NOTICE("Hold on there cowboy, that grip is bolted on. You are unable to modify it."))
 	return
 
 /obj/item/attachable/quickfire
@@ -909,9 +909,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/collapsible/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(G.flags_item & WIELDED)
 		if(activated)
-			to_chat(user, "<span class='notice'>You need a free hand to collapse [src].</span>")
+			to_chat(user, SPAN_NOTICE("You need a free hand to collapse [src]."))
 		else
-			to_chat(user, "<span class='notice'>You need a free hand to extend [src].</span>")
+			to_chat(user, SPAN_NOTICE("You need a free hand to extend [src]."))
 		return 0
 	activated = !activated
 	apply_on_weapon(G, activated)
@@ -920,9 +920,9 @@ Defined in conflicts.dm of the #defines folder.
 		return 1
 
 	if(activated)
-		to_chat(user, "<span class='notice'>You extend [src].</span>")
+		to_chat(user, SPAN_NOTICE("You extend [src]."))
 	else
-		to_chat(user, "<span class='notice'>You collapse [src].</span>")
+		to_chat(user, SPAN_NOTICE("You collapse [src]."))
 
 /obj/item/attachable/stock/smg/brace
 	name = "\improper  submachinegun arm brace"
@@ -1002,7 +1002,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(G.active_attachable == src)
 		if(user)
-			to_chat(user, "<span class='notice'>You are no longer using [src].</span>")
+			to_chat(user, SPAN_NOTICE("You are no longer using [src]."))
 		G.active_attachable = null
 		var/diff = G.damage_mult - 1 //so that if we buffed gun in process, it still does stuff
 		//yeah you can cheat by placing BC after switching to underbarrell, but that is one time and we can skip it for sake of optimization
@@ -1010,7 +1010,7 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = initial(icon_state)
 	else if(!turn_off)
 		if(user)
-			to_chat(user, "<span class='notice'>You are now using [src].</span>")
+			to_chat(user, SPAN_NOTICE("You are now using [src]."))
 		G.active_attachable = src
 		gun_original_damage_mult = G.damage_mult
 		G.damage_mult = 1
@@ -1071,7 +1071,7 @@ Defined in conflicts.dm of the #defines folder.
 			playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
 			current_rounds++
 			loaded_grenades += G.type
-			to_chat(user, "<span class='notice'>You load [G] in [src].</span>")
+			to_chat(user, SPAN_NOTICE("You load [G] in [src]."))
 			user.temp_drop_inv_item(G)
 			qdel(G)
 
@@ -1132,7 +1132,7 @@ Defined in conflicts.dm of the #defines folder.
 			to_chat(user, "<span class='warning'>[FT] is empty!</span>")
 		else
 			playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
-			to_chat(user, "<span class='notice'>You refill [src] with [FT].</span>")
+			to_chat(user, SPAN_NOTICE("You refill [src] with [FT]."))
 			var/transfered_rounds = min(max_rounds - current_rounds, FT.current_rounds)
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
@@ -1159,6 +1159,8 @@ Defined in conflicts.dm of the #defines folder.
 		if(!current_rounds) 		break
 		if(distance >= max_range) 	break
 		if(prev_T && LinkBlocked(prev_T, T))
+			break
+		if(T.density && !T.throwpass)
 			break
 		current_rounds--
 		flame_turf(T,user)
@@ -1210,7 +1212,7 @@ Defined in conflicts.dm of the #defines folder.
 				current_rounds++
 				mag.current_rounds--
 				mag.update_icon()
-				to_chat(user, "<span class='notice'>You load one shotgun shell in [src].</span>")
+				to_chat(user, SPAN_NOTICE("You load one shotgun shell in [src]."))
 				playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
 				if(mag.current_rounds <= 0)
 					user.temp_drop_inv_item(mag)
@@ -1342,12 +1344,12 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		var/obj/support = check_bipod_support(G, user)
 		if(!support&&!bipod_deployed)
-			to_chat(user, "<span class='notice'>You need a support to deploy bipod.</span>")
+			to_chat(user, SPAN_NOTICE("You need a support to deploy bipod."))
 			return
 		bipod_deployed = !bipod_deployed
 		if(user)
 			if(bipod_deployed)
-				to_chat(user, "<span class='notice'>You deploy [src][support ? " on [support]" : ""].</span>")
+				to_chat(user, SPAN_NOTICE("You deploy [src][support ? " on [support]" : ""]."))
 				G.aim_slowdown += SLOWDOWN_ADS_SCOPE
 				G.wield_delay += WIELD_DELAY_FAST
 				G.accuracy_mult += config.hmed_hit_accuracy_mult
@@ -1362,7 +1364,7 @@ Defined in conflicts.dm of the #defines folder.
 					user.add_movement_handler(bipod_movement)
 
 			else
-				to_chat(user, "<span class='notice'>You retract [src].</span>")
+				to_chat(user, SPAN_NOTICE("You retract [src]."))
 				undeploy_bipod(G,user)
 				if(bipod_movement)
 					user.remove_movement_handler(bipod_movement)

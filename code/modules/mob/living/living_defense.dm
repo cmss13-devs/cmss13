@@ -76,7 +76,7 @@
 			miss_chance = min(15*(distance-2), 0)
 
 		if (prob(miss_chance))
-			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>", null, null, 5)
+			visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 			return
 
 		src.visible_message("<span class='danger'>[src] has been hit by [O].</span>", null, null, 5)

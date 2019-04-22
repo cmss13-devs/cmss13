@@ -276,3 +276,7 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 // Misc client defines
 #define MIN_FPS 0
 #define MAX_FPS 100
+
+// Defines for shuttles (primarily to separate dropships and elevators)
+#define SHUTTLE_DROPSHIP 1
+#define SHUTTLE_ELEVATOR 2

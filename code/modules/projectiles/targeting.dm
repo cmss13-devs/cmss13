@@ -3,7 +3,7 @@
 	set category = "Object"
 	if(target)
 		stop_aim()
-		usr.visible_message("<span class='notice'>\The [usr] lowers \the [src]...</span>")
+		usr.visible_message(SPAN_NOTICE("\The [usr] lowers \the [src]..."))
 
 
 //Removes lock fro mall targets

@@ -336,7 +336,7 @@
 		return 0 //Means the item is already in the storage item
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
+			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 		return 0 //Storage item is full
 
 	if(can_hold.len)
@@ -349,13 +349,13 @@
 			if(!stop_messages)
 				if (istype(W, /obj/item/tool/hand_labeler))
 					return 0
-				to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 			return 0
 
 	for(var/A in cant_hold) //Check for specific items which this container can't hold.
 		if(istype(W, A))
 			if(!stop_messages)
-				to_chat(usr, "<span class='notice'>[src] cannot hold [W].</span>")
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 			return 0
 
 	var/w_limit_bypassed = 0
@@ -367,7 +367,7 @@
 
 	if (!w_limit_bypassed && W.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, "<span class='notice'>[W] is too long for this [src].</span>")
+			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
 		return 0
 
 	//calculate storage space only for containers that don't have slots
@@ -378,13 +378,13 @@
 
 		if(sum_storage_cost > max_storage_space)
 			if(!stop_messages)
-				to_chat(usr, "<span class='notice'>[src] is full, make some space.</span>")
+				to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
 			return 0
 
 	if(W.w_class >= src.w_class && (istype(W, /obj/item/storage)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, "<span class='notice'>[src] cannot hold [W] as it's a storage item of the same size.</span>")
+				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
 			return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -407,8 +407,8 @@
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message("<span class='notice'>[usr] puts [W] into [src].</span>",\
-								"<span class='notice'>You put \the [W] into [src].</span>",\
+			user.visible_message(SPAN_NOTICE("[usr] puts [W] into [src]."),\
+								SPAN_NOTICE("You put \the [W] into [src]."),\
 								null, visidist)
 	orient2hud()
 	for(var/mob/M in can_see_content())
@@ -451,7 +451,7 @@
 	..()
 
 	if(isrobot(user))
-		to_chat(user, "<span class='notice'> You're a robot. No.</span>")
+		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
 		return //Robots can't interact with storage items.
 
 	if(!can_be_inserted(W))
@@ -627,7 +627,7 @@
 		close(M)
 
 	// Now make the cardboard
-	to_chat(user, "<span class='notice'>You fold [src] flat.</span>")
+	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
 	new foldable(get_turf(src))
 	qdel(src)
 //BubbleWrap END

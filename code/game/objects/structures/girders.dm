@@ -49,53 +49,53 @@
 					to_chat(user, "<span class='warning'>You can't secure that here, it needs sufficiently solid ground beneath it!</span>")
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, "<span class='notice'> Now securing the girder</span>")
+				to_chat(user, SPAN_NOTICE(" Now securing the girder"))
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					to_chat(user, "<span class='notice'> You secured the girder!</span>")
+					to_chat(user, SPAN_NOTICE(" You secured the girder!"))
 					new/obj/structure/girder( src.loc )
 					qdel(src)
 			else if (dismantlectr %2 == 0)
 				if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					dismantlectr++
 					health -= 15
-					to_chat(user, "<span class='notice'> You unfasten a bolt from the girder!</span>")
+					to_chat(user, SPAN_NOTICE(" You unfasten a bolt from the girder!"))
 				return
 
 
 		else if(istype(W, /obj/item/tool/pickaxe/plasmacutter))
-			to_chat(user, "<span class='notice'> Now slicing apart the girder</span>")
+			to_chat(user, SPAN_NOTICE(" Now slicing apart the girder"))
 			if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				if(!src) return
-				to_chat(user, "<span class='notice'> You slice apart the girder!</span>")
+				to_chat(user, SPAN_NOTICE(" You slice apart the girder!"))
 				health = 0
 				update_state()
 		else if(istype(W, /obj/item/tool/pickaxe/diamonddrill))
-			to_chat(user, "<span class='notice'> You drill through the girder!</span>")
+			to_chat(user, SPAN_NOTICE(" You drill through the girder!"))
 			dismantle()
 
 		else if(istype(W, /obj/item/tool/screwdriver) && state == 2 && istype(src,/obj/structure/girder/reinforced))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			to_chat(user, "<span class='notice'> Now unsecuring support struts</span>")
+			to_chat(user, SPAN_NOTICE(" Now unsecuring support struts"))
 			if(do_after(user,40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src) return
-				to_chat(user, "<span class='notice'> You unsecured the support struts!</span>")
+				to_chat(user, SPAN_NOTICE(" You unsecured the support struts!"))
 				state = 1
 
 		else if(istype(W, /obj/item/tool/wirecutters) && istype(src,/obj/structure/girder/reinforced) && state == 1)
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			to_chat(user, "<span class='notice'> Now removing support struts</span>")
+			to_chat(user, SPAN_NOTICE(" Now removing support struts"))
 			if(do_after(user,40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src) return
-				to_chat(user, "<span class='notice'> You removed the support struts!</span>")
+				to_chat(user, SPAN_NOTICE(" You removed the support struts!"))
 				new/obj/structure/girder( src.loc )
 				qdel(src)
 
 		else if(istype(W, /obj/item/tool/crowbar) && state == 0 && anchored )
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			to_chat(user, "<span class='notice'> Now dislodging the girder...</span>")
+			to_chat(user, SPAN_NOTICE(" Now dislodging the girder..."))
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src) return
-				to_chat(user, "<span class='notice'> You dislodged the girder!</span>")
+				to_chat(user, SPAN_NOTICE(" You dislodged the girder!"))
 				new/obj/structure/girder/displaced( src.loc )
 				qdel(src)
 
@@ -110,16 +110,16 @@
 			if(S.stack_id == "metal")
 				if (anchored)
 					if(S.get_amount() < 1) return ..()
-					to_chat(user, "<span class='notice'>Now adding plating...</span>")
+					to_chat(user, SPAN_NOTICE("Now adding plating..."))
 					if (do_after(user,60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(disposed || buildctr != old_buildctr) return
 						if (S.use(1))
-							to_chat(user, "<span class='notice'>You added the plating!</span>")
+							to_chat(user, SPAN_NOTICE("You added the plating!"))
 							buildctr++
 					return
 			else if(S.stack_id == "plasteel")
 				if (anchored)
-					to_chat(user, "<span class='notice'>It doesn't look like the plasteel will do anything. Try metal.</span>")
+					to_chat(user, SPAN_NOTICE("It doesn't look like the plasteel will do anything. Try metal."))
 					return
 
 			if(S.sheettype)
@@ -127,11 +127,11 @@
 				if (anchored)
 					if(S.amount < 2)
 						return ..()
-					to_chat(user, "<span class='notice'>Now adding plating...</span>")
+					to_chat(user, SPAN_NOTICE("Now adding plating..."))
 					if (do_after(user,40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(disposed || buildctr != old_buildctr || S.amount < 2) return
 						S.use(2)
-						to_chat(user, "<span class='notice'>You added the plating!</span>")
+						to_chat(user, SPAN_NOTICE("You added the plating!"))
 						var/turf/Tsrc = get_turf(src)
 						Tsrc.ChangeTurf(text2path("/turf/closed/wall/mineral/[M]"))
 						for(var/turf/closed/wall/mineral/X in Tsrc.loc)
@@ -151,7 +151,7 @@
 						build_wall()
 						return
 					buildctr++
-					to_chat(user, "<span class='notice'> You weld the metal to the girder!</span>")
+					to_chat(user, SPAN_NOTICE(" You weld the metal to the girder!"))
 			return
 		else if(istype(W, /obj/item/tool/wirecutters) && dismantlectr %2 != 0)
 			if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -161,7 +161,7 @@
 					return
 				health -= 15
 				dismantlectr++
-				to_chat(user, "<span class='notice'> You cut away from structural piping!</span>")
+				to_chat(user, SPAN_NOTICE(" You cut away from structural piping!"))
 			return
 
 		else if(istype(W, /obj/item/pipe))
@@ -169,7 +169,7 @@
 			if (P.pipe_type in list(0, 1, 5))	//simple pipes, simple bends, and simple manifolds.
 				user.drop_held_item()
 				P.loc = src.loc
-				to_chat(user, "<span class='notice'> You fit the pipe into the [src]!</span>")
+				to_chat(user, SPAN_NOTICE(" You fit the pipe into the [src]!"))
 		else
 	else
 		if (repair_state == 0)
@@ -178,18 +178,18 @@
 				var/obj/item/stack/sheet/metal/M = W
 				if(M.amount < 2)
 					return ..()
-				to_chat(user, "<span class='notice'>Now adding plating...</span>")
+				to_chat(user, SPAN_NOTICE("Now adding plating..."))
 				if (do_after(user,40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != 0 || !M || M.amount < 2) return
 					M.use(2)
-					to_chat(user, "<span class='notice'>You added the metal to the girder!</span>")
+					to_chat(user, SPAN_NOTICE("You added the metal to the girder!"))
 					repair_state = 1
 				return
 		if (repair_state == 1)
 			if(istype(W, /obj/item/tool/weldingtool))
 				if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != 1) return
-					to_chat(user, "<span class='notice'> You weld the girder together!</span>")
+					to_chat(user, SPAN_NOTICE(" You weld the girder together!"))
 					repair()
 				return
 		..()

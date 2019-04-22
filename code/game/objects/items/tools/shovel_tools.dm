@@ -50,7 +50,7 @@
 	add_fingerprint(user)
 
 	if(dirt_amt)
-		to_chat(user, "<span class='notice'>You dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!</span>")
+		to_chat(user, SPAN_NOTICE("You dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!"))
 		if(dirt_type == DIRT_TYPE_SNOW)
 			var/turf/T = get_turf(user.loc)
 			var/obj/item/stack/snow/S = locate() in T
@@ -93,16 +93,16 @@
 					transf_amt = min(ST.slayer, dirt_amt_per_dig)
 					ST.slayer -= transf_amt
 					ST.update_icon(1,0)
-					to_chat(user, "<span class='notice'>You dig up some snow.</span>")
+					to_chat(user, SPAN_NOTICE("You dig up some snow."))
 				else
-					to_chat(user, "<span class='notice'>You dig up some dirt.</span>")
+					to_chat(user, SPAN_NOTICE("You dig up some dirt."))
 				dirt_amt = transf_amt
 				dirt_type = turfdirt
 				update_icon()
 
 		else
 			var/turf/T = target
-			to_chat(user, "<span class='notice'>you dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!</span>")
+			to_chat(user, SPAN_NOTICE("you dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!"))
 			playsound(user.loc, "rustle", 30, 1, 6)
 			if(dirt_type == DIRT_TYPE_SNOW)
 				var/obj/item/stack/snow/S = locate() in T

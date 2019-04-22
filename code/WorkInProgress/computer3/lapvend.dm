@@ -45,7 +45,7 @@
 			calc_reimburse(L)
 			usr.drop_inv_item_to_loc(L, src)
 			vendmode = 3
-			to_chat(usr, "<span class='notice'>You slot your [L.name] into \The [src.name]</span>")
+			to_chat(usr, SPAN_NOTICE("You slot your [L.name] into \The [src.name]"))
 	else
 		..()
 

@@ -30,13 +30,13 @@
 	face_step = 0
 
 /datum/surgery_step/face/cut_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] starts to cut open [target]'s face and neck with \the [tool].</span>", \
-	"<span class='notice'>You start to cut open [target]'s face and neck with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts to cut open [target]'s face and neck with \the [tool]."), \
+	SPAN_NOTICE("You start to cut open [target]'s face and neck with \the [tool]."))
 	..()
 
 /datum/surgery_step/face/cut_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] has cut open [target]'s face and neck with \the [tool].</span>" , \
-	"<span class='notice'>You have cut open [target]'s face and neck with \the [tool].</span>",)
+	user.visible_message(SPAN_NOTICE("[user] has cut open [target]'s face and neck with \the [tool].") , \
+	SPAN_NOTICE("You have cut open [target]'s face and neck with \the [tool]."),)
 	affected.face_surgery_stage = 1
 
 /datum/surgery_step/face/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
@@ -60,13 +60,13 @@
 	face_step = 1
 
 /datum/surgery_step/face/mend_vocal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] starts mending [target]'s vocal cords with \the [tool].</span>", \
-	"<span class='notice'>You start mending [target]'s vocal cords with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts mending [target]'s vocal cords with \the [tool]."), \
+	SPAN_NOTICE("You start mending [target]'s vocal cords with \the [tool]."))
 	..()
 
 /datum/surgery_step/face/mend_vocal/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] mends [target]'s vocal cords with \the [tool].</span>", \
-	"<span class='notice'>You mend [target]'s vocal cords with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] mends [target]'s vocal cords with \the [tool]."), \
+	SPAN_NOTICE("You mend [target]'s vocal cords with \the [tool]."))
 	affected.face_surgery_stage = 2
 
 /datum/surgery_step/face/mend_vocal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
@@ -88,13 +88,13 @@
 	face_step = 2
 
 /datum/surgery_step/face/fix_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] starts pulling the skin on [target]'s face back in place with \the [tool].</span>", \
-	"<span class='notice'>You start pulling the skin on [target]'s face back in place with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts pulling the skin on [target]'s face back in place with \the [tool]."), \
+	SPAN_NOTICE("You start pulling the skin on [target]'s face back in place with \the [tool]."))
 	..()
 
 /datum/surgery_step/face/fix_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] pulls the skin on [target]'s face back in place with \the [tool].</span>",	\
-	"<span class='notice'>You pull the skin on [target]'s face back in place with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] pulls the skin on [target]'s face back in place with \the [tool]."),	\
+	SPAN_NOTICE("You pull the skin on [target]'s face back in place with \the [tool]."))
 	affected.face_surgery_stage = 3
 
 /datum/surgery_step/face/fix_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
@@ -118,13 +118,13 @@
 
 
 /datum/surgery_step/face/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool].</span>" , \
-	"<span class='notice'>You are beginning to cauterize the incision on [target]'s face and neck with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool].") , \
+	SPAN_NOTICE("You are beginning to cauterize the incision on [target]'s face and neck with \the [tool]."))
 	..()
 
 /datum/surgery_step/face/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='notice'>[user] cauterizes the incision on [target]'s face and neck with \the [tool].</span>", \
-	"<span class='notice'>You cauterize the incision on [target]'s face and neck with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision on [target]'s face and neck with \the [tool]."), \
+	SPAN_NOTICE("You cauterize the incision on [target]'s face and neck with \the [tool]."))
 	affected.status &= ~LIMB_BLEEDING
 	affected.disfigured = 0
 	affected.owner.name = affected.owner.get_visible_name()

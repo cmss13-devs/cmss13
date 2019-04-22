@@ -70,7 +70,7 @@
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/A = P
 				if (A.use(5))
-					to_chat(user, "<span class='notice'>You insert the cables.</span>")
+					to_chat(user, SPAN_NOTICE("You insert the cables."))
 					construct_op--
 					stat &= ~BROKEN // the machine's not borked anymore!
 				else

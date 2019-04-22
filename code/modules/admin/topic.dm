@@ -174,14 +174,14 @@
 					to_chat(usr, "<span class='warning'>You are unable to initiate an evacuation right now!</span>")
 				else
 					log_admin("[key_name(usr)] called an evacuation.")
-					message_admins("<span class='notice'>[key_name_admin(usr)] called an evacuation.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] called an evacuation."), 1)
 
 			if("cancel_evac")
 				if(!EvacuationAuthority.cancel_evacuation())
 					to_chat(usr, "<span class='warning'>You are unable to cancel an evacuation right now!</span>")
 				else
 					log_admin("[key_name(usr)] canceled an evacuation.")
-					message_admins("<span class='notice'>[key_name_admin(usr)] canceled an evacuation.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] canceled an evacuation."), 1)
 
 			if("toggle_evac")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_EVACUATION_DENY
@@ -193,21 +193,21 @@
 					to_chat(usr, "<span class='warning'>You are unable to launch the pods directly right now!</span>")
 				else
 					log_admin("[key_name(usr)] force-launched the escape pods.")
-					message_admins("<span class='notice'>[key_name_admin(usr)] force-launched the escape pods.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] force-launched the escape pods."), 1)
 
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
 					to_chat(usr, "<span class='warning'>You are unable to authorize the self-destruct right now!</span>")
 				else
 					log_admin("[key_name(usr)] force-enabled the self-destruct system.")
-					message_admins("<span class='notice'>[key_name_admin(usr)] force-enabled the self-destruct system.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] force-enabled the self-destruct system."), 1)
 
 			if("cancel_dest")
 				if(!EvacuationAuthority.cancel_self_destruct(1))
 					to_chat(usr, "<span class='warning'>You are unable to cancel the self-destruct right now!</span>")
 				else
 					log_admin("[key_name(usr)] canceled the self-destruct system.")
-					message_admins("<span class='notice'>[key_name_admin(usr)] canceled the self-destruct system.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] canceled the self-destruct system."), 1)
 
 			if("use_dest")
 
@@ -221,7 +221,7 @@
 				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
 
 				log_admin("[key_name(usr)] forced the self-destruct system, destroying the [MAIN_SHIP_NAME].")
-				message_admins("<span class='notice'>[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME]."), 1)
 
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
@@ -239,7 +239,7 @@
 
 		ticker.delay_end = !ticker.delay_end
 		log_admin("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
-		message_admins("<span class='notice'>[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"].</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name(usr)] [ticker.delay_end ? "delayed the round end" : "has made the round end normally"]."), 1)
 		href_list["secretsadmin"] = "check_antagonist"
 
 	else if(href_list["simplemake"])
@@ -257,7 +257,7 @@
 			if("Yes")		delmob = 1
 
 		log_admin("[key_name(usr)] has used rudimentary transformation on [key_name(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]"), 1)
 
 		switch(href_list["simplemake"])
 			if("observer")		M.change_mob_type( /mob/dead/observer , null, null, delmob )
@@ -310,7 +310,7 @@
 				if(!check_rights(R_ADMIN)) return
 				log_admin("[key_name(usr)] removed [key]'s permaban.")
 				ban_unban_log_save("[key_name(usr)] removed [key]'s permaban.")
-				message_admins("<span class='notice'>[key_name_admin(usr)] removed [key]'s permaban.</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] removed [key]'s permaban."), 1)
 			if(RemoveBan(banfolder))
 				unbanpanel()
 			else
@@ -345,7 +345,7 @@
 
 		log_admin("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
 		ban_unban_log_save("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]"), 1)
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << 0
@@ -386,7 +386,7 @@
 
 		log_admin("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]"), 1)
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << temp
@@ -699,7 +699,7 @@
 			// 			else
 			// 				msg += ", [job]"
 			// 		notes_add(M.ckey, "Banned  from [msg] - [reason]")
-			// 		message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes</span>", 1)
+			// 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes"), 1)
 			// 		to_chat(M, "<span class='warning'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></span>")
 			// 		to_chat(M, "<span class='warning'><B>The reason is: [reason]</B></span>")
 			// 		to_chat(M, "<span class='warning'>This jobban will be lifted in [mins] minutes.</span>")
@@ -721,7 +721,7 @@
 					if(!msg)	msg = job
 					else		msg += ", [job]"
 				notes_add(M.ckey, "Banned  from [msg] - [reason]")
-				message_admins("<span class='notice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]"), 1)
 				to_chat(M, "<span class='warning'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></span>")
 				to_chat(M, "<span class='warning'><B>The reason is: [reason]</B></span>")
 				to_chat(M, "<span class='warning'>Jobban can be lifted only upon request.</span>")
@@ -755,7 +755,7 @@
 					else
 						continue
 			if(msg)
-				message_admins("<span class='notice'>[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]"), 1)
 				to_chat(M, "<span class='warning'><BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG></span>")
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 			jobban_savebanfile()
@@ -773,7 +773,7 @@
 			else
 				to_chat(M, "<span class='warning'>You have been kicked from the server: [reason]</span>")
 			log_admin("[key_name(usr)] booted [key_name(M)].")
-			message_admins("<span class='notice'>[key_name_admin(usr)] booted [key_name_admin(M)].</span>", 1)
+			message_admins(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
 			//M.client = null
 			qdel(M.client)
 /*
@@ -802,7 +802,7 @@
 		if(t)
 			if((alert("Do you want to unjobban [t]?","Unjobban confirmation", "Yes", "No") == "Yes") && t) //No more misclicks! Unless you do it twice.
 				log_admin("[key_name(usr)] removed [t]")
-				message_admins("<span class='notice'>[key_name_admin(usr)] removed [t]</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] removed [t]"), 1)
 				jobban_remove(t)
 				jobban_savebanfile()
 				href_list["ban"] = 1 // lets it fall through and refresh
@@ -884,12 +884,12 @@
 		ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
 		to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
 		to_chat(M, "<span class='warning'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
-		to_chat(M, "<span class='notice'> This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section.</span>")
-		to_chat(M, "<span class='notice'> If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you.</span>")
+		to_chat(M, SPAN_NOTICE(" This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section."))
+		to_chat(M, SPAN_NOTICE(" If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you."))
 		if(config.banappeals)
-			to_chat(M, "<span class='notice'> The ban appeal forums are located here: [config.banappeals]</span>")
+			to_chat(M, SPAN_NOTICE(" The ban appeal forums are located here: [config.banappeals]"))
 		else
-			to_chat(M, "<span class='notice'> Unfortunately, no ban appeals URL has been set.</span>")
+			to_chat(M, SPAN_NOTICE(" Unfortunately, no ban appeals URL has been set."))
 		feedback_inc("ban_tmp", 1)
 		DB_ban_record(BANTYPE_TEMP, M, mins, reason)
 		feedback_inc("ban_tmp_mins", mins)
@@ -946,8 +946,8 @@
 			return alert(usr, "The game has already started.", null, null, null, null)
 		master_mode = href_list["c_mode2"]
 		log_admin("[key_name(usr)] set the mode as [master_mode].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] set the mode as [master_mode].</span>", 1)
-		to_world("<span class='notice'><b><i>The mode is now: [master_mode]!</i></b></span>")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] set the mode as [master_mode]."), 1)
+		to_world(SPAN_NOTICE("<b><i>The mode is now: [master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		world.save_mode(master_mode)
 		.(href, list("c_mode"=1))
@@ -961,7 +961,7 @@
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		secret_force_mode = href_list["f_secret2"]
 		log_admin("[key_name(usr)] set the forced secret mode as [secret_force_mode].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode]."), 1)
 		Game() // updates the main game menu
 		.(href, list("f_secret"=1))
 
@@ -974,7 +974,7 @@
 			return
 
 		log_admin("[key_name(usr)] attempting to monkeyize [key_name(H)]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]"), 1)
 		H.monkeyize()
 
 	else if(href_list["corgione"])
@@ -986,7 +986,7 @@
 			return
 
 		log_admin("[key_name(usr)] attempting to corgize [key_name(H)]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]"), 1)
 		H.corgize()
 
 	else if(href_list["forcespeech"])
@@ -1002,7 +1002,7 @@
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
 		log_admin("[key_name(usr)] forced [key_name(M)] to say: [speech]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]</span>")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]"))
 
 	else if(href_list["zombieinfect"])
 		if(!check_rights(R_ADMIN))	return
@@ -1023,7 +1023,7 @@
 		H.AddDisease(bg, FALSE)
 
 		log_admin("[key_name(usr)] infected [key_name(H)] with a ZOMBIE VIRUS")
-		message_admins("<span class='notice'>[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS</span>")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS"))
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN))	return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
@@ -1057,7 +1057,7 @@
 		embryo.hivenumber = newhivenumber
 
 		log_admin("[key_name(usr)] infected [key_name(H)] with a xeno ([newhive]) larva.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.</span>")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return
 
@@ -1070,7 +1070,7 @@
 		M.custom_emote(1, speech, TRUE)
 		speech = sanitize(speech) // Nah, we don't trust them
 		log_admin("[key_name(usr)] forced [key_name(M)] to emote: [speech]")
-		message_admins("<span class='notice'>[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]</span>")
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]"))
 
 	else if(href_list["sendtoprison"])
 		if(!check_rights(R_ADMIN))	return
@@ -1110,7 +1110,7 @@
 
 		to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station."), 1)
 
 	else if(href_list["sendbacktolobby"])
 		if(!check_rights(R_MOD))
@@ -1119,7 +1119,7 @@
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
 		if(!isobserver(M))
-			to_chat(usr, "<span class='notice'>You can only send ghost players back to the Lobby.</span>")
+			to_chat(usr, SPAN_NOTICE("You can only send ghost players back to the Lobby."))
 			return
 
 		if(!M.client)
@@ -1158,7 +1158,7 @@
 		sleep(5)
 		M.loc = pick(tdome1)
 		spawn(50)
-			to_chat(M, "<span class='notice'> You have been sent to the Thunderdome.</span>")
+			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Team 1)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
@@ -1183,7 +1183,7 @@
 		sleep(5)
 		M.loc = pick(tdome2)
 		spawn(50)
-			to_chat(M, "<span class='notice'> You have been sent to the Thunderdome.</span>")
+			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Team 2)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
@@ -1205,7 +1205,7 @@
 		sleep(5)
 		M.loc = pick(tdomeadmin)
 		spawn(50)
-			to_chat(M, "<span class='notice'> You have been sent to the Thunderdome.</span>")
+			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Admin.)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
@@ -1234,7 +1234,7 @@
 		sleep(5)
 		M.loc = pick(tdomeobserve)
 		spawn(50)
-			to_chat(M, "<span class='notice'> You have been sent to the Thunderdome.</span>")
+			to_chat(M, SPAN_NOTICE(" You have been sent to the Thunderdome."))
 		log_admin("[key_name(usr)] has sent [key_name(M)] to the thunderdome. (Observer.)")
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
@@ -1284,7 +1284,7 @@
 			return
 
 		X.set_hivenumber_and_update(href_list["newhivenumber"])
-		message_admins("<span class='notice'>[key_name(usr)] changed hivenumber of [X] to [X.hivenumber].</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name(usr)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 
 	else if(href_list["makeyautja"])
 		if(!check_rights(R_SPAWN))	return
@@ -1515,7 +1515,7 @@
 		log_admin("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
 		feedback_inc("admin_cookies_spawned",1)
-		to_chat(H, "<span class='notice'> Your prayers have been answered!! You received the <b>best cookie</b>!</span>")
+		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["BlueSpaceArtillery"])
 		if(!check_rights(R_ADMIN|R_FUN))	return
@@ -1633,7 +1633,7 @@
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "<span class='notice'><b><font color='#1F66A0'>USCM FAX REPLY: </font></b> </span>"
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>USCM FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
@@ -1706,7 +1706,7 @@
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
-		var/msg_ghost = "<span class='notice'><b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> </span>"
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
@@ -1936,11 +1936,11 @@
 				feedback_add_details("admin_secrets_fun_used","Grav")
 				if(gravity_is_on)
 					log_admin("[key_name(usr)] toggled gravity on.", 1)
-					message_admins("<span class='notice'>[key_name_admin(usr)] toggled gravity on.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity on."), 1)
 					command_announcement.Announce("Gravity generators are again functioning within normal parameters. Sorry for any inconvenience.")
 				else
 					log_admin("[key_name(usr)] toggled gravity off.", 1)
-					message_admins("<span class='notice'>[key_name_admin(usr)] toggled gravity off.</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled gravity off."), 1)
 					command_announcement.Announce("Feedback surge detected in mass-distributions systems. Artifical gravity has been disabled whilst the system reinitializes. Further failures may result in a gravitational collapse and formation of blackholes. Have a nice day.")
 			if("spiders")
 				feedback_inc("admin_secrets_fun_used",1)
@@ -2008,49 +2008,49 @@
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","P")
 				log_admin("[key_name(usr)] powered all SMESs and APCs", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] powered all SMESs and APCs</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs"), 1)
 				power_restore()
 			if("unpower")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","UP")
 				log_admin("[key_name(usr)] unpowered all SMESs and APCs", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] unpowered all SMESs and APCs</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] unpowered all SMESs and APCs"), 1)
 				power_failure()
 			if("quickpower")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","QP")
 				log_admin("[key_name(usr)] powered all SMESs", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] powered all SMESs</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs"), 1)
 				power_restore_quick()
 			if("powereverything")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","PE")
 				log_admin("[key_name(usr)] powered all SMESs and APCs everywhere", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] powered all SMESs and APCs everywhere</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs everywhere"), 1)
 				power_restore_everything()
 			if("gethumans")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","GH")
 				log_admin("[key_name(usr)] mass-teleported all humans.", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] mass-teleported all humans.</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported all humans."), 1)
 				get_all_humans()
 			if("getxenos")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","GX")
 				log_admin("[key_name(usr)] mass-teleported all Xenos.", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] mass-teleported all Xenos.</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported all Xenos."), 1)
 				get_all_xenos()
 			if("getall")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","GA")
 				log_admin("[key_name(usr)] mass-teleported everyone.", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] mass-teleported everyone.</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-teleported everyone."), 1)
 				get_all()
 			if("rejuvall")
 				feedback_inc("admin_secrets_fun_used",1)
 				feedback_add_details("admin_secrets_fun_used","RA")
 				log_admin("[key_name(usr)] mass-rejuvenated everyone.", 1)
-				message_admins("<span class='notice'>[key_name_admin(usr)] mass-rejuvenated everyone.</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-rejuvenated everyone."), 1)
 				rejuv_all()
 		if(usr)
 			log_admin("[key_name(usr)] used secret [href_list["secretsfun"]]")
@@ -2129,7 +2129,7 @@
 				var/datum/shuttle/ferry/S = shuttle_controller.shuttles[shuttle_tag]
 				if (S.can_launch())
 					S.launch(usr)
-					message_admins("<span class='notice'>[key_name_admin(usr)] launched the [shuttle_tag] shuttle</span>", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] launched the [shuttle_tag] shuttle"), 1)
 					log_admin("[key_name(usr)] launched the [shuttle_tag] shuttle")
 				else
 					alert("The [shuttle_tag] shuttle cannot be launched at this time. It's probably busy.")
@@ -2157,7 +2157,7 @@
 				if (!destination_area) return
 
 				S.move(origin_area, destination_area)
-				message_admins("<span class='notice'>[key_name_admin(usr)] moved the [shuttle_tag] shuttle</span>", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] moved the [shuttle_tag] shuttle"), 1)
 				log_admin("[key_name(usr)] moved the [shuttle_tag] shuttle")
 
 		if (usr)
@@ -2432,7 +2432,7 @@
 	if(href_list["mark"])
 		var/mob/ref_person = locate(href_list["mark"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
+			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
 			return
 		if(ref_person && ref_person.adminhelp_marked)
 			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
@@ -2443,7 +2443,7 @@
 		log_admin("[usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].", 1)
 		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Mark' on the Adminhelp from [key_name_admin(ref_person)].<br>")
 		STUI.processing |= 3
-		var/msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b></span>"
+		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked your request and is preparing to respond...</b>")
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 
@@ -2458,7 +2458,7 @@
 	if(href_list["noresponse"])
 		var/mob/ref_person = locate(href_list["noresponse"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
+			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
 			return
 		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
 			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
@@ -2469,7 +2469,7 @@
 		log_admin("[usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].", 1)
 		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'No Response' on the Adminhelp from [key_name_admin(ref_person)].<br>")
 		STUI.processing |= 3
-		var/msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b></span>"
+		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your Adminhelp is being handled, it's fixed, or it's nonsensical.</font></b>")
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-error.ogg')
@@ -2484,7 +2484,7 @@
 	if(href_list["warning"])
 		var/mob/ref_person = locate(href_list["warning"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
+			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
 			return
 		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
 			to_chat(usr, "<b>This Adminhelp is already being handled.</b>")
@@ -2495,7 +2495,7 @@
 		log_admin("[usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].", 1)
 		STUI.staff.Add("\[[time_stamp()]][usr.key] has used 'Warn' on the Adminhelp from [key_name_admin(ref_person)].<br>")
 		STUI.processing |= 3
-		var/msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b></span>"
+		var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has given you a <font color=red>warning</font>. Adminhelps are for serious inquiries only. Please do not abuse this system.</b>")
 
 		ref_person << msgplayer //send a message to the player when the Admin clicks "Mark"
 		ref_person << sound('sound/effects/adminhelp-error.ogg')
@@ -2510,7 +2510,7 @@
 	if(href_list["autoresponse"]) // new verb on the Ahelp.  Will tell the person their message was received, and they probably won't get a response
 		var/mob/ref_person = locate(href_list["autoresponse"])
 		if(!istype(ref_person))
-			to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
+			to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
 			return
 		if(ref_person && ref_person.adminhelp_marked && ref_person.adminhelp_marked_admin != usr.key)
 			to_chat(usr, "<b>This Adminhelp is already being handled by another staff member. You can proceed but it's not recommended.</b>")
@@ -2527,37 +2527,37 @@
 		var/msgplayer
 		switch(choice)
 			if("IC Issue")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://cm-ss13.com/wiki/Rank'>Chain Of Command</a> about your issue if you believe <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a> has been broken.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This issue has been deemed an IC (In-Character) issue, and will not be handled by staff. In case it's relevant, you may wish to ask your <a href='http://cm-ss13.com/wiki/Rank'>Chain Of Command</a> about your issue if you believe <a href='http://cm-ss13.com/wiki/Marine_Law'>Marine Law</a> has been broken.</b>")
 			if("Being Handled")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already being dealt with.</b>")
 			if("Fixed")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The issue is already fixed.</b>")
 			if("Thanks")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>")
 			if("Marine Law")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a <a href='http://cm-ss13.com/wiki/Marine_Law'>marine law issue</a>. <a href='https://cm-ss13.com/viewforum.php?f=63'>Unless the MP's are breaking procedure in a significant way</a> we will not influence ic events. You do have the right to appeal your sentence and should try to appeal to the Captain first. </b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a <a href='http://cm-ss13.com/wiki/Marine_Law'>marine law issue</a>. <a href='https://cm-ss13.com/viewforum.php?f=63'>Unless the MP's are breaking procedure in a significant way</a> we will not influence ic events. You do have the right to appeal your sentence and should try to appeal to the Captain first. </b>")
 			if("L: Xeno Quickstart Guide")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Xeno_Quickstart_Guide'>Check it out here.</a></b>")
 			if("L: Marine quickstart guide")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a></b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Marine Quickstart Guide on our wiki. <a href='http://cm-ss13.com/wiki/Marine_Quickstart_Guide'>Check it out here.</a></b>")
 			if("L: Current Map")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you need a map to the current game, you can (usually) find them on the front page of our wiki in the 'Maps' section. <a href='http://cm-ss13.com/wiki/Main_Page'>Check it out here.</a> If the map is not listed, it's a new or rare map and the overview hasn't been finished yet.</b>")
 			if("A: No plasma regen")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone.</b>")
 			if("A: Devour as Xeno")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated, or only have them devoured for a short time. To release your target, click 'Regurgitate' on the HUD to throw them back up.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can resist by breaking out of your belly, so make sure your target is incapacitated, or only have them devoured for a short time. To release your target, click 'Regurgitate' on the HUD to throw them back up.</b>")
 			if("J: Job bans")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. All job bans, including xeno bans, are permenant until appealed. you can appeal it over on the forums at http://cm-ss13.com/viewforum.php?f=76</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. All job bans, including xeno bans, are permenant until appealed. you can appeal it over on the forums at http://cm-ss13.com/viewforum.php?f=76</b>")
 			if("E: Event in progress")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</b>")
 			if("R: Radios")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</b>")
 			if("D: Joining disabled")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b>")
 			if("M: Macros")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To set a macro right click the title bar, select Client->Macros. Binding unique-action to a key is useful for pumping shotguns etc; Binding load-from-attachment will activate any scopes etc; Binding resist and give to seperate keys is also handy. For more information on macros, head over to our guide, at: http://cm-ss13.com/wiki/Macros</b>")
 			if("C: Changelog")
-				msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit https://cm-ss13.com/changelog/ to open it in your browser instead.</b></span>"
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. The answer to your question can be found in the changelog. Click the changelog button at the top-right of the screen to view it in-game, or visit https://cm-ss13.com/changelog/ to open it in your browser instead.</b>")
 			else return
 		msgplayer += " <b><i>You may click on the staff member's name to ask more about this response.</i></b>"
 		message_staff("[usr.key] is autoresponding to [ref_person] with <font color='#009900'>'[choice]'</font>. They have been shown the following:\n[msgplayer]", 1)
@@ -2578,10 +2578,10 @@
 	// if(href_list["retarded"]) // Their message is fucking stupid
 	// 	var/mob/ref_person = locate(href_list["retarded"])
 	// 	if(!istype(ref_person))
-	// 		to_chat(usr, "<span class='notice'> Looks like that person stopped existing!</span>")
+	// 		to_chat(usr, SPAN_NOTICE(" Looks like that person stopped existing!"))
 	// 		return
-	// 	var/msg = "<span class='notice'><b>NOTICE: <font color=red>[usr.key]</font> has marked the Adminhelp from <font color=red>[ref_person.ckey]/([ref_person])</font> as 'Completely fucking retarded' - this Ahelp was written by someone whom, if they were any less intelligent, would need to be watered twice a day. The player has been nicely notified of this as 'No response necessary'.</b></span>"
-	// 	var/msgplayer = "<span class='notice'><b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your issue is being handled or it's fixed.</font></b></span>"
+	// 	var/msg = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has marked the Adminhelp from <font color=red>[ref_person.ckey]/([ref_person])</font> as 'Completely fucking retarded' - this Ahelp was written by someone whom, if they were any less intelligent, would need to be watered twice a day. The player has been nicely notified of this as 'No response necessary'.</b>")
+	// 	var/msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> has received your Adminhelp and marked it as 'No response necessary'. Either your issue is being handled or it's fixed.</font></b>")
 	//
 	// 	//send this msg to all admins
 	// 	for(var/client/X in admins)
@@ -2593,7 +2593,7 @@
 
 	if(href_list["ccmark"]) // CentComm-mark. We want to let all Admins know that something is "Marked", but not let the player know because it's not very RP-friendly.
 		var/mob/ref_person = locate(href_list["ccmark"])
-		var/msg = "<span class='notice'><b>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[ref_person.ckey]/([ref_person])</font>.</b></span>"
+		var/msg = SPAN_NOTICE("<b>NOTICE: <font color=red>[usr.key]</font> is responding to <font color=red>[ref_person.ckey]/([ref_person])</font>.</b>")
 
 		//send this msg to all admins
 		for(var/client/X in admins)

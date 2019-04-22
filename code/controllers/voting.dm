@@ -338,7 +338,7 @@ var/force_mapdaemon_vote = 0
 	set name = "Map Vote"
 
 	if(!ticker.mode || !ticker.mode.round_finished)
-		to_chat(src, "<span class='notice'>Please wait until the round ends.</span>")
+		to_chat(src, SPAN_NOTICE("Please wait until the round ends."))
 		return
 
 	var/list/L = list()
@@ -350,10 +350,10 @@ var/force_mapdaemon_vote = 0
 	if(!selection || !src) return
 
 	if(selection == "Don't care")
-		to_chat(src, "<span class='notice'>You have not voted.</span>")
+		to_chat(src, SPAN_NOTICE("You have not voted."))
 		return
 
-	to_chat(src, "<span class='notice'>You have voted for [selection].</span>")
+	to_chat(src, SPAN_NOTICE("You have voted for [selection]."))
 
 	player_votes[src.ckey] = selection
 
@@ -362,7 +362,7 @@ var/force_mapdaemon_vote = 0
 	set category = "Server"
 
 	force_mapdaemon_vote = !force_mapdaemon_vote
-	to_chat(src, "<span class='notice'>The server will [force_mapdaemon_vote ? "now" : "no longer"] tell Mapdaemon to start a vote the next time possible.</span>")
+	to_chat(src, SPAN_NOTICE("The server will [force_mapdaemon_vote ? "now" : "no longer"] tell Mapdaemon to start a vote the next time possible."))
 
 	message_admins("[src] is attempting to force a MapDaemon vote.")
 	log_admin("[src] is attempting to force a MapDaemon vote.")
@@ -380,7 +380,7 @@ var/force_mapdaemon_vote = 0
 
 	if(!selection || !src) return
 
-	to_chat(src, "<span class='notice'>You have forced the next map to be [selection]</span>")
+	to_chat(src, SPAN_NOTICE("You have forced the next map to be [selection]"))
 
 	log_admin("[src] just forced the next map to be [selection].")
 	message_admins("[src] just forced the next map to be [selection].")
@@ -397,8 +397,8 @@ var/enable_map_vote = 1
 
 	enable_map_vote = !enable_map_vote
 
-	to_world("<span class='notice'>[src] has toggled the map vote [enable_map_vote ? "on" : "off"]</span>")
-	to_chat(src, "<span class='notice'>You have toggled the map vote [enable_map_vote ? "on" : "off"]</span>")
+	to_world(SPAN_NOTICE("[src] has toggled the map vote [enable_map_vote ? "on" : "off"]"))
+	to_chat(src, SPAN_NOTICE("You have toggled the map vote [enable_map_vote ? "on" : "off"]"))
 
 	log_admin("[src] just toggled the map vote [enable_map_vote ? "on" : "off"].")
 	message_admins("[src] just toggled the map vote [enable_map_vote ? "on" : "off"].")

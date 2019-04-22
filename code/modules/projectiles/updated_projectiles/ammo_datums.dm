@@ -1034,13 +1034,16 @@
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
-	for(var/obj/flamer_fire/F in T)
-		qdel(F)
 	new /obj/flamer_fire(T, pick(40, 50), 50, "blue", fire_spread_amount = 3)
 
-	var/datum/effect_system/smoke_spread/bad/landingSmoke = new /datum/effect_system/smoke_spread/bad
+	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
 	landingSmoke.set_up(3, 0, T, null, 6)
 	landingSmoke.start()
+	landingSmoke = null
+
+	var/shard_type = /datum/ammo/bullet/shrapnel/incendiary
+	var/shard_amount = 12
+	create_shrapnel(T, shard_amount, , ,shard_type)
 
 
 /datum/ammo/rocket/wp/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1438,7 +1441,8 @@
 
 /datum/ammo/xeno/railgun_glob
 	name = "railgun glob of acid"
-	icon_state = "boiler_gas"
+	icon_state = "boiler_railgun"
+	ping = "ping_x_railgun"
 	sound_hit = "acid_hit"
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
@@ -1495,7 +1499,14 @@
 		
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
+	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_INCENDIARY
+
+/datum/ammo/bullet/shrapnel/incendiary/New()
+	..()
+	shell_speed = config.slow_shell_speed
+	damage = config.mlow_hit_damage
+	penetration = config.low_armor_penetration 
 
 
 /*

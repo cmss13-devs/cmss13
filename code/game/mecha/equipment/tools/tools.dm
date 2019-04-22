@@ -151,7 +151,7 @@
 			if( istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
 				var/obj/o = target
 				o.reagents.trans_to(src, 200)
-				occupant_message("<span class='notice'>\The [src] is now refilled</span>")
+				occupant_message(SPAN_NOTICE("\The [src] is now refilled"))
 				playsound(chassis, 'sound/effects/refill.ogg', 25, 1, 4)
 				return
 
@@ -540,7 +540,7 @@
 		if(!action_checks(src))
 			return chassis.dynbulletdamage(Proj)
 		if(prob(chassis.deflect_chance*deflect_coeff))
-			chassis.occupant_message("<span class='notice'>The armor deflects incoming projectile.</span>")
+			chassis.occupant_message(SPAN_NOTICE("The armor deflects incoming projectile."))
 			chassis.visible_message("The [chassis.name] armor deflects the projectile")
 			chassis.log_append_to_last("Armor saved.")
 		else
@@ -555,7 +555,7 @@
 		if(!action_checks(A))
 			return chassis.dynhitby(A)
 		if(prob(chassis.deflect_chance*deflect_coeff) || istype(A, /mob/living) || istype(A, /obj/item/mecha_parts/mecha_tracking))
-			chassis.occupant_message("<span class='notice'>The [A] bounces off the armor.</span>")
+			chassis.occupant_message(SPAN_NOTICE("The [A] bounces off the armor."))
 			chassis.visible_message("The [A] bounces off the [chassis] armor")
 			chassis.log_append_to_last("Armor saved.")
 			if(istype(A, /mob/living))
@@ -1024,7 +1024,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/move_inside(var/mob/user)
 	if (chassis)
-		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
+		chassis.visible_message(SPAN_NOTICE("[user] starts to climb into [chassis]."))
 
 	if(do_after(user, 40, FALSE, BUSY_ICON_GENERIC))
 		if(!src.occupant)

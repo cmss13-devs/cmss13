@@ -204,7 +204,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		to_chat(usr, "<span class='warning'>There's nothing installed on that hardpoint.</span>")
 
 	active_hp = slot
-	to_chat(usr, "<span class='notice'>You select the [slot] slot.</span>")
+	to_chat(usr, SPAN_NOTICE("You select the [slot] slot."))
 	if(isliving(usr))
 		var/mob/living/M = usr
 		M.set_interaction(src)
@@ -235,7 +235,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		to_chat(usr, "<span class='danger'>Something went wrong! PM a staff member! Code: T_RHPN</span>")
 		return
 
-	to_chat(usr, "<span class='notice'>You begin reloading the [slot] module.</span>")
+	to_chat(usr, SPAN_NOTICE("You begin reloading the [slot] module."))
 
 	sleep(20)
 
@@ -244,7 +244,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	HP.ammo = A
 	HP.backup_clips.Remove(A)
 
-	to_chat(usr, "<span class='notice'>You reload the [slot] module.</span>")
+	to_chat(usr, SPAN_NOTICE("You reload the [slot] module."))
 
 
 /obj/vehicle/multitile/root/cm_armored/proc/get_activatable_hardpoints()
@@ -594,7 +594,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		return
 
 	if(!damaged_hps.len)
-		to_chat(user, "<span class='notice'>All of the hardpoints are in working order.</span>")
+		to_chat(user, SPAN_NOTICE("All of the hardpoints are in working order."))
 		return
 
 	//Pick what to repair
@@ -643,21 +643,21 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 				return
 			WT.remove_fuel(num_delays, user)
 
-	user.visible_message("<span class='notice'>[user] starts repairing the [slot] slot on [src].</span>",
-		"<span class='notice'>You start repairing the [slot] slot on [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts repairing the [slot] slot on [src]."),
+		SPAN_NOTICE("You start repairing the [slot] slot on [src]."))
 
 	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
-		user.visible_message("<span class='notice'>[user] stops repairing the [slot] slot on [src].</span>",
-			"<span class='notice'>You stop repairing the [slot] slot on [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] stops repairing the [slot] slot on [src]."),
+			SPAN_NOTICE("You stop repairing the [slot] slot on [src]."))
 		return
 
 	if(!Adjacent(user))
-		user.visible_message("<span class='notice'>[user] stops repairing the [slot] slot on [src].</span>",
-			"<span class='notice'>You stop repairing the [slot] slot on [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] stops repairing the [slot] slot on [src]."),
+			SPAN_NOTICE("You stop repairing the [slot] slot on [src]."))
 		return
 
-	user.visible_message("<span class='notice'>[user] repairs the [slot] slot on [src].</span>",
-		"<span class='notice'>You repair the [slot] slot on [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] repairs the [slot] slot on [src]."),
+		SPAN_NOTICE("You repair the [slot] slot on [src]."))
 
 	damaged_hps -= slot //We repaired it, good job
 
@@ -698,8 +698,8 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		to_chat(user, "<span class='warning'>Remove the previous hardpoint module first.</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] begins installing [HP] on the [HP.slot] hardpoint slot on [src].</span>",
-		"<span class='notice'>You begin installing [HP] on the [HP.slot] hardpoint slot on [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins installing [HP] on the [HP.slot] hardpoint slot on [src]."),
+		SPAN_NOTICE("You begin installing [HP] on the [HP.slot] hardpoint slot on [src]."))
 
 	var/num_delays = 1
 
@@ -714,7 +714,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		user.visible_message("<span class='warning'>[user] stops installing \the [HP] on [src].</span>", "<span class='warning'>You stop installing \the [HP] on [src].</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] installs \the [HP] on [src].</span>", "<span class='notice'>You install \the [HP] on [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] installs \the [HP] on [src]."), SPAN_NOTICE("You install \the [HP] on [src]."))
 
 	user.temp_drop_inv_item(HP, 0)
 
@@ -736,8 +736,8 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		to_chat(user, "<span class='warning'>There is nothing installed there.</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] begins removing [old] on the [old.slot] hardpoint slot on [src].</span>",
-		"<span class='notice'>You begin removing [old] on the [old.slot] hardpoint slot on [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins removing [old] on the [old.slot] hardpoint slot on [src]."),
+		SPAN_NOTICE("You begin removing [old] on the [old.slot] hardpoint slot on [src]."))
 
 	var/num_delays = 1
 
@@ -752,7 +752,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		user.visible_message("<span class='warning'>[user] stops removing \the [old] on [src].</span>", "<span class='warning'>You stop removing \the [old] on [src].</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] removes \the [old] on [src].</span>", "<span class='notice'>You remove \the [old] on [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] removes \the [old] on [src]."), SPAN_NOTICE("You remove \the [old] on [src]."))
 
 	remove_hardpoint(old, user)
 

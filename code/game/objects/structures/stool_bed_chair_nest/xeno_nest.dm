@@ -24,7 +24,7 @@
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
-			to_chat(user, "<span class='notice'>You place [M] on [src].</span>")
+			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
 			M.forceMove(loc)
 		return TRUE
 	else
@@ -47,9 +47,9 @@
 					if(!X.caste.can_denest_hosts)
 						to_chat(X, "<span class='xenowarning'>You shouldn't interfere with the nest, leave that to the drones.</span>")
 						return
-				buckled_mob.visible_message("<span class='notice'>\The [user] pulls \the [buckled_mob] free from \the [src]!</span>",\
-				"<span class='notice'>\The [user] pulls you free from \the [src].</span>",\
-				"<span class='notice'>You hear squelching.</span>")
+				buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
+				SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
+				SPAN_NOTICE("You hear squelching."))
 				playsound(loc, "alien_resin_move", 50)
 				
 				if(ishuman(buckled_mob))
@@ -63,7 +63,7 @@
 				if(resisting_ready && buckled_mob == user && buckled_mob.stat != DEAD)
 					buckled_mob.visible_message("<span class='danger'>\The [buckled_mob] breaks free from \the [src]!</span>",\
 					"<span class='danger'>You pull yourself free from \the [src]!</span>",\
-					"<span class='notice'>You hear squelching.</span>")
+					SPAN_NOTICE("You hear squelching."))
 					unbuckle()
 					return
 				if(resisting)
@@ -72,7 +72,7 @@
 				if(buckled_mob && buckled_mob.name)
 					buckled_mob.visible_message("<span class='warning'>\The [buckled_mob] struggles to break free of \the [src].</span>",\
 					"<span class='warning'>You struggle to break free from \the [src].</span>",\
-					"<span class='notice'>You hear squelching.</span>")
+					SPAN_NOTICE("You hear squelching."))
 				resisting = 1
 				var/mob/oldbuckled = buckled_mob
 				spawn(nest_resist_time)
@@ -151,7 +151,7 @@
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message("<span class='xenonotice'>[user] secretes a thick, vile resin, securing [M] into [src]!</span>", \
 	"<span class='xenonotice'>[user] drenches you in a foul-smelling resin, trapping you in [src]!</span>", \
-	"<span class='notice'>You hear squelching.</span>")
+	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 
 /obj/structure/bed/nest/afterbuckle(mob/M)

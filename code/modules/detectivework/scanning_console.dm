@@ -61,7 +61,7 @@
 
 /obj/machinery/computer/forensic_scanning/proc/process_card(var/obj/item/f_card/card)
 	if(card.fingerprints)
-		to_chat(usr, "<span class='notice'>\The [src] sucks in \the [card] and whirrs, scanning it.</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] sucks in \the [card] and whirrs, scanning it."))
 		var/found = 0
 		for(var/id in files)
 			var/datum/data/record/forensic/rec = files[id]
@@ -71,9 +71,9 @@
 					prints[master_print] = master_print
 					found = 1
 		if(found)
-			to_chat(usr, "<span class='notice'>Complete match found.</span>")
+			to_chat(usr, SPAN_NOTICE("Complete match found."))
 		else
-			to_chat(usr, "<span class='notice'>No match found.</span>")
+			to_chat(usr, SPAN_NOTICE("No match found."))
 		return 1
 	else
 		to_chat(usr, "<span class='warning'>No fingerprints detected on [card].</span>")

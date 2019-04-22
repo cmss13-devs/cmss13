@@ -93,7 +93,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		busy = 1
 		loaded_item = O
 		user.drop_inv_item_to_loc(O, src)
-		to_chat(user, "<span class='notice'> You add the [O.name] to the machine!</span>")
+		to_chat(user, SPAN_NOTICE(" You add the [O.name] to the machine!"))
 		flick("d_analyzer_la", src)
 		spawn(10)
 			icon_state = "d_analyzer_l"

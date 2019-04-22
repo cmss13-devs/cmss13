@@ -137,14 +137,14 @@
 		if(buckled_mob.buckled == src)
 			if(buckled_mob != user)
 				buckled_mob.visible_message(\
-					"<span class='notice'>[buckled_mob.name] was unbuckled by [user.name]!</span>",\
-					"<span class='notice'>You were unbuckled from [src] by [user.name].</span>",\
-					"<span class='notice'>You hear metal clanking.</span>")
+					SPAN_NOTICE("[buckled_mob.name] was unbuckled by [user.name]!"),\
+					SPAN_NOTICE("You were unbuckled from [src] by [user.name]."),\
+					SPAN_NOTICE("You hear metal clanking."))
 			else
 				buckled_mob.visible_message(\
-					"<span class='notice'>[buckled_mob.name] unbuckled \himself!</span>",\
-					"<span class='notice'>You unbuckle yourself from [src].</span>",\
-					"<span class='notice'>You hear metal clanking</span>")
+					SPAN_NOTICE("[buckled_mob.name] unbuckled \himself!"),\
+					SPAN_NOTICE("You unbuckle yourself from [src]."),\
+					SPAN_NOTICE("You hear metal clanking"))
 			unbuckle()
 			src.add_fingerprint(user)
 			return 1
@@ -177,28 +177,30 @@
 			return
 	do_buckle(M, user)
 
-//the actual buckling proc
-/obj/proc/do_buckle(mob/M, mob/user)
-	send_buckling_message(M, user)
-	M.buckled = src
-	M.loc = src.loc
-	M.dir = src.dir
-	M.update_canmove()
-	src.buckled_mob = M
-	src.add_fingerprint(user)
-	afterbuckle(M)
+// the actual buckling proc
+// Yes I know this is not style but its unreadable otherwise
+/obj/proc/do_buckle(mob/target, mob/user)
+	send_buckling_message(target, user)
+	if (src && src.loc)
+		target.buckled = src
+		target.loc = src.loc
+		target.dir = src.dir
+		target.update_canmove()
+		src.buckled_mob = target
+		src.add_fingerprint(user)
+		afterbuckle(target)
 
 /obj/proc/send_buckling_message(mob/M, mob/user)
 	if (M == user)
 		M.visible_message(\
-			"<span class='notice'>[M] buckles in!</span>",\
-			"<span class='notice'>You buckle yourself to [src].</span>",\
-			"<span class='notice'>You hear metal clanking.</span>")
+			SPAN_NOTICE("[M] buckles in!"),\
+			SPAN_NOTICE("You buckle yourself to [src]."),\
+			SPAN_NOTICE("You hear metal clanking."))
 	else
 		M.visible_message(\
-			"<span class='notice'>[M] is buckled in to [src] by [user]!</span>",\
-			"<span class='notice'>You are buckled in to [src] by [user].</span>",\
-			"<span class='notice'>You hear metal clanking</span>")
+			SPAN_NOTICE("[M] is buckled in to [src] by [user]!"),\
+			SPAN_NOTICE("You are buckled in to [src] by [user]."),\
+			SPAN_NOTICE("You hear metal clanking"))
 
 /obj/Move(NewLoc, direct)
 	. = ..()

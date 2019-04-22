@@ -71,8 +71,8 @@
 
 	defib_cooldown = world.time + 20 //2 seconds cooldown every time the defib is toggled
 	ready = !ready
-	user.visible_message("<span class='notice'>[user] turns [src] [ready? "on and takes the paddles out" : "off and puts the paddles back in"].</span>",
-	"<span class='notice'>You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"].</span>")
+	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the paddles out" : "off and puts the paddles back in"]."),
+	SPAN_NOTICE("You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"]."))
 	playsound(get_turf(src), "sparks", 25, 1, 4)
 	update_icon()
 	add_fingerprint(user)
@@ -147,8 +147,8 @@
 		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient has a DNR.</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] starts setting up the paddles on [H]'s chest</span>", \
-	"<span class='notice'>You start setting up the paddles on [H]'s chest</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
+	SPAN_NOTICE("You start setting up the paddles on [H]'s chest"))
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	if(do_mob(user, H, 70, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
@@ -158,8 +158,8 @@
 		dcell.use(charge_cost)
 		update_icon()
 		playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] shocks [H] with the paddles.</span>",
-		"<span class='notice'>You shock [H] with the paddles.</span>")
+		user.visible_message(SPAN_NOTICE("[user] shocks [H] with the paddles."),
+		SPAN_NOTICE("You shock [H] with the paddles."))
 		H.visible_message("<span class='danger'>[H]'s body convulses a bit.</span>")
 		defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
@@ -215,7 +215,7 @@
 			H.updatehealth()
 
 		if(H.health > config.health_threshold_dead)
-			user.visible_message("<span class='notice'>\icon[src] \The [src] beeps: Defibrillation successful.</span>")
+			user.visible_message(SPAN_NOTICE("\icon[src] \The [src] beeps: Defibrillation successful."))
 			living_mob_list.Add(H)
 			callHook("clone", list(H))
 			if(!isSynth(H) && !isYautja(H))
@@ -233,7 +233,7 @@
 			H.apply_effect(10, PARALYZE)
 			H.update_canmove()
 			H.updatehealth() //One more time, so it doesn't show the target as dead on HUDs
-			to_chat(H, "<span class='notice'>You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane.</span>")
+			to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		else
 			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.</span>") //Freak case
 	else

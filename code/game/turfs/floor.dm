@@ -397,9 +397,9 @@ var/list/wood_icons = list("wood", "wood-broken")
 				qdel(C)
 				T.state = C //Fixing it by bashing it with a light bulb, fun eh?
 				update_icon()
-				to_chat(user, "<span class='notice'>You replace the light bulb.</span>")
+				to_chat(user, SPAN_NOTICE("You replace the light bulb."))
 			else
-				to_chat(user, "<span class='notice'>The lightbulb seems fine, no need to replace it.</span>")
+				to_chat(user, SPAN_NOTICE("The lightbulb seems fine, no need to replace it."))
 
 	if(istype(C, /obj/item/tool/crowbar) && (!(is_plating())))
 		if(broken || burnt)
@@ -433,7 +433,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 			if(R.get_amount() < 2)
 				to_chat(user, "<span class='warning'>You need more rods.</span>")
 				return
-			to_chat(user, "<span class='notice'>Reinforcing the floor.</span>")
+			to_chat(user, SPAN_NOTICE("Reinforcing the floor."))
 			if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && is_plating())
 				if(!R) return
 				if(R.use(2))
@@ -473,7 +473,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 				levelupdate()
 				playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 			else
-				to_chat(user, "<span class='notice'>This section is too damaged to support a tile. Use a welder to fix the damage.</span>")
+				to_chat(user, SPAN_NOTICE("This section is too damaged to support a tile. Use a welder to fix the damage."))
 
 
 	if(istype(C, /obj/item/stack/cable_coil))
@@ -487,7 +487,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		if(is_grass_floor())
 			new /obj/item/ore/glass(src)
 			new /obj/item/ore/glass(src) //Make some sand if you shovel grass
-			to_chat(user, "<span class='notice'>You shovel the grass.</span>")
+			to_chat(user, SPAN_NOTICE("You shovel the grass."))
 			make_plating()
 		else
 			to_chat(user, "<span class='warning'>You cannot shovel this.</span>")

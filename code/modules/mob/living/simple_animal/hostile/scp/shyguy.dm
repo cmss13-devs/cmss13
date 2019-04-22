@@ -137,7 +137,7 @@
 	else return
 
 	if (examine_urge == 1 && !(H in shitlist))
-		to_chat(H, "<span class='notice'>The urge fades away...</span>")
+		to_chat(H, SPAN_NOTICE("The urge fades away..."))
 
 	examine_urge = max(examine_urge-1, 0)
 

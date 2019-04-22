@@ -180,3 +180,5 @@
 
 	var/action_busy //whether the mob is currently doing an action that takes time (do_after or do_mob procs)
 	var/resisting // whether the mob is currently resisting (primarily for do_after or do_mob procs)
+	var/clicked_something 	// a list of booleans for if a mob did a specific click
+							// only left click, shift click, right click, and middle click

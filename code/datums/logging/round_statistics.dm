@@ -17,6 +17,7 @@ var/datum/round_statistics/round_statistics = new()
 	var/carrier_traps = 0
 	var/boiler_acid_smokes = 0
 	var/boiler_neuro_smokes = 0
+	var/boiler_railgun_shots = 0
 	var/crusher_stomps = 0
 	var/crusher_stomp_victims = 0
 	var/praetorian_acid_sprays = 0

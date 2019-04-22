@@ -37,7 +37,7 @@
 			playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 			if(!do_after(user, 70, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return TRUE
 			if(installed_equipment || PC.loaded != SE) return TRUE
-			to_chat(user, "<span class='notice'>You install [SE] on [src].</span>")
+			to_chat(user, SPAN_NOTICE("You install [SE] on [src]."))
 			SE.forceMove(loc)
 			PC.loaded = null
 			playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
@@ -165,7 +165,7 @@
 							PC.loaded = null
 							playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 							PC.update_icon()
-							to_chat(user, "<span class='notice'>You load [SA] into [src].</span>")
+							to_chat(user, SPAN_NOTICE("You load [SA] into [src]."))
 							ammo_equipped = SA
 							update_equipment()
 				else
@@ -178,13 +178,13 @@
 					playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 					if(!ammo_equipped.ammo_count)
 						ammo_equipped.loc = null
-						to_chat(user, "<span class='notice'>You discard the empty [ammo_equipped.name] in [src].</span>")
+						to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in [src]."))
 						qdel(ammo_equipped)
 					else
 						ammo_equipped.forceMove(PC.linked_powerloader)
 						PC.loaded = ammo_equipped
 						PC.update_icon()
-						to_chat(user, "<span class='notice'>You remove [ammo_equipped] from [src] and load it into [PC].</span>")
+						to_chat(user, SPAN_NOTICE("You remove [ammo_equipped] from [src] and load it into [PC]."))
 					ammo_equipped = null
 					update_icon()
 		else
@@ -197,7 +197,7 @@
 					PC.loaded = src
 					playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 					PC.update_icon()
-					to_chat(user, "<span class='notice'>You've [ship_base ? "uninstalled" : "grabbed"] [PC.loaded] with [PC].</span>")
+					to_chat(user, SPAN_NOTICE("You've [ship_base ? "uninstalled" : "grabbed"] [PC.loaded] with [PC]."))
 					if(ship_base)
 						ship_base.installed_equipment = null
 						ship_base = null
@@ -229,7 +229,7 @@
 	if(is_interactable)
 		if(linked_console.selected_equipment) return
 		linked_console.selected_equipment = src
-		to_chat(user, "<span class='notice'>You select [src].</span>")
+		to_chat(user, SPAN_NOTICE("You select [src]."))
 
 
 
@@ -276,10 +276,10 @@
 			if(z == LOW_ORBIT_Z_LEVEL && ship_base.base_category == DROPSHIP_WEAPON)
 				to_chat(user, "<span class='warning'>[src] can't deploy mid-flight.</span>")
 			else
-				to_chat(user, "<span class='notice'>You deploy [src].</span>")
+				to_chat(user, SPAN_NOTICE("You deploy [src]."))
 				deploy_sentry()
 		else
-			to_chat(user, "<span class='notice'>You retract [src].</span>")
+			to_chat(user, SPAN_NOTICE("You retract [src]."))
 			undeploy_sentry()
 	else
 		to_chat(user, "<span class='warning'>[src] is unresponsive.</span>")
@@ -399,10 +399,10 @@
 				if(z == LOW_ORBIT_Z_LEVEL && ship_base.base_category == DROPSHIP_WEAPON)
 					to_chat(user, "<span class='warning'>[src] can't be deployed mid-flight.</span>")
 				else
-					to_chat(user, "<span class='notice'>You pull out [deployed_mg].</span>")
+					to_chat(user, SPAN_NOTICE("You pull out [deployed_mg]."))
 					deploy_mg(user)
 			else
-				to_chat(user, "<span class='notice'>You stow [deployed_mg].</span>")
+				to_chat(user, SPAN_NOTICE("You stow [deployed_mg]."))
 				undeploy_mg()
 		else
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")
@@ -543,11 +543,11 @@
 	if(luminosity != brightness)
 		SetLuminosity(brightness)
 		icon_state = "spotlights_on"
-		to_chat(user, "<span class='notice'>You turn on [src].</span>")
+		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 	else
 		SetLuminosity(0)
 		icon_state = "spotlights_off"
-		to_chat(user, "<span class='notice'>You turn off [src].</span>")
+		to_chat(user, SPAN_NOTICE("You turn off [src]."))
 	spotlights_cooldown = world.time + 50
 
 /obj/structure/dropship_equipment/electronics/spotlights/update_equipment()
@@ -1005,21 +1005,21 @@
 		return
 
 	if(selected_stretcher == linked_stretcher) //already linked to us, unlink it
-		to_chat(user, "<span class='notice'> You move your dropship away from that stretcher's beacon.</span>")
-		linked_stretcher.visible_message("<span class='notice'>[linked_stretcher] detects a dropship is no longer overhead.</span>")
+		to_chat(user, SPAN_NOTICE(" You move your dropship away from that stretcher's beacon."))
+		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
 		return
 
-	to_chat(user, "<span class='notice'> You move your dropship above the selected stretcher's beacon.</span>")
+	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected stretcher's beacon."))
 
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null
-		linked_stretcher.visible_message("<span class='notice'>[linked_stretcher] detects a dropship is no longer overhead.</span>")
+		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
 
 	linked_stretcher = selected_stretcher
 	linked_stretcher.linked_medevac = src
-	linked_stretcher.visible_message("<span class='notice'>[linked_stretcher] detects a dropship overhead.</span>")
+	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
 
 
 
@@ -1078,8 +1078,8 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("medevac_system_active", src)
-	user.visible_message("<span class='notice'>[user] activates [src]'s winch.</span>", \
-						"<span class='notice'>You activate [src]'s winch.</span>")
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
 	busy_winch = FALSE
@@ -1117,7 +1117,7 @@
 		return
 
 	flick("winched_stretcher", linked_stretcher)
-	linked_stretcher.visible_message("<span class='notice'>A winch hook falls from the sky and starts lifting [linked_stretcher] up.</span>")
+	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
 
 	medevac_cooldown = world.time + 600
 	linked_stretcher.linked_medevac = null
@@ -1204,7 +1204,7 @@
 		to_chat(user, "<span class='warning'>[src] was just used, you need to wait a bit before using it again.</span>")
 		return
 
-	to_chat(user, "<span class='notice'> You move your dropship above the selected balloon's beacon.</span>")
+	to_chat(user, SPAN_NOTICE(" You move your dropship above the selected balloon's beacon."))
 
 	activate_winch(user, F)
 
@@ -1213,8 +1213,8 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("fulton_system_active", src)
-	user.visible_message("<span class='notice'>[user] activates [src]'s winch.</span>", \
-						"<span class='notice'>You activate [src]'s winch.</span>")
+	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."), \
+						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
 	busy_winch = FALSE

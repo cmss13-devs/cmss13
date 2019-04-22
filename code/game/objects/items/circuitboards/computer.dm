@@ -268,7 +268,7 @@
 		if(emagged)
 			to_chat(user, "Circuit lock is already removed.")
 			return
-		to_chat(user, "<span class='notice'> You override the circuit lock and open controls.</span>")
+		to_chat(user, SPAN_NOTICE(" You override the circuit lock and open controls."))
 		emagged = 1
 		locked = 0
 	else if(istype(I,/obj/item/card/id))
@@ -277,7 +277,7 @@
 			return
 		if(check_access(I))
 			locked = !locked
-			to_chat(user, "<span class='notice'> You [locked ? "" : "un"]lock the circuit controls.</span>")
+			to_chat(user, SPAN_NOTICE(" You [locked ? "" : "un"]lock the circuit controls."))
 		else
 			to_chat(user, "<span class='danger'>Access denied.</span>")
 	else if(istype(I,/obj/item/device/multitool))
@@ -299,14 +299,14 @@
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I,/obj/item/tool/screwdriver))
-		user.visible_message("<span class='notice'>\the [user] adjusts the jumper on the [src]'s access protocol pins.</span>", "<span class='notice'>You adjust the jumper on the access protocol pins.</span>")
+		user.visible_message(SPAN_NOTICE("\the [user] adjusts the jumper on the [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
 		if(src.build_path == /obj/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"
 			src.build_path = /obj/machinery/computer/rdconsole/robotics
-			to_chat(user, "<span class='notice'> Access protocols set to robotics.</span>")
+			to_chat(user, SPAN_NOTICE(" Access protocols set to robotics."))
 		else
 			src.name = "Circuit Board (RD Console)"
 			src.build_path = /obj/machinery/computer/rdconsole/core
-			to_chat(user, "<span class='notice'> Access protocols set to default.</span>")
+			to_chat(user, SPAN_NOTICE(" Access protocols set to default."))
 
 

@@ -150,7 +150,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				to_chat(usr, "<span class='warning'>Only the Commander can award medals.</span>")
 				return
 			if(give_medal_award(loc))
-				visible_message("<span class='notice'>[src] prints a medal.</span>")
+				visible_message(SPAN_NOTICE("[src] prints a medal."))
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
@@ -236,7 +236,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
 				message_mods("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
-				to_chat(usr, "<span class='notice'>A distress beacon request has been sent to USCM Central Command.</span>")
+				to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 
 				cooldown_request = world.time
 				r_TRU
@@ -269,7 +269,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 					if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 						C << 'sound/effects/sos-morse-code.ogg'
 				message_mods("[key_name(usr)] has requested Self Destruct! (<A HREF='?_src_=admin_holder;ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;destroyship=\ref[usr]'>GRANT</A>) (<A HREF='?_src_=admin_holder;sddeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;CentcommReply=\ref[usr]'>RPLY</A>)")
-				to_chat(usr, "<span class='notice'>A self destruct request has been sent to USCM Central Command.</span>")
+				to_chat(usr, SPAN_NOTICE("A self destruct request has been sent to USCM Central Command."))
 				cooldown_destruct = world.time
 				r_TRU
 
@@ -331,7 +331,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) r_FAL
 
 				Centcomm_announce(input, usr)
-				to_chat(usr, "<span class='notice'>Message transmitted.</span>")
+				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_say("[key_name(usr)] has made an USCM announcement: [input]")
 				cooldown_central = world.time
 
@@ -347,7 +347,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 			if(!ticker.mode.active_lz)
 				var/lz_choices = list()
 				for(var/obj/machinery/computer/shuttle_control/console in machines)
-					if(console.z == 1 && !console.onboard)
+					if(console.z == 1 && !console.onboard && console.shuttle_type & SHUTTLE_DROPSHIP)
 						lz_choices += console
 				var/new_lz = input(usr, "Choose the primary LZ for this operation", "Operation Staging")  as null|anything in lz_choices
 				if(new_lz)

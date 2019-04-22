@@ -66,7 +66,7 @@
 
 /datum/cm_objective/retrieve_data/terminal/complete()
 	if(..())
-		data_source.visible_message("<span class='notice'>[data_source] pings softly as it finishes the upload.</span>")
+		data_source.visible_message(SPAN_NOTICE("[data_source] pings softly as it finishes the upload."))
 		playsound(data_source, 'sound/machines/ping.ogg', 25, 1)
 
 /datum/cm_objective/retrieve_data/terminal/get_clue()
@@ -107,7 +107,7 @@
 	return 0
 
 /datum/cm_objective/retrieve_data/disk/get_clue()
-	return "<span class='notice'>Retrieving	 [disk] in [initial_location], decryption password is [decryption_password]</span>"
+	return SPAN_NOTICE("Retrieving	 [disk] in [initial_location], decryption password is [decryption_password]")
 
 /datum/cm_objective/retrieve_data/disk/data_is_avaliable()
 	. = ..()
@@ -217,7 +217,7 @@
 		to_chat(user, "<span class='warning'>Looks like the terminal is already uploading, better make sure nothing interupts it!</span>")
 		return 1
 	uploading = 1
-	to_chat(user, "<span class='notice'>You start uploading the data.</span>")
+	to_chat(user, SPAN_NOTICE("You start uploading the data."))
 
 // --------------------------------------------
 // *** Upload data from an inserted disk ***
@@ -233,12 +233,12 @@
 	if(isXeno(user))
 		return
 	if(disk)
-		to_chat(user, "<span class='notice'>[disk] is currently loaded into the machine.</span>")
+		to_chat(user, SPAN_NOTICE("[disk] is currently loaded into the machine."))
 		if(disk.objective)
 			if(disk.objective.is_active() && !disk.objective.is_complete() && disk.objective.data_is_avaliable())
-				to_chat(user, "<span class='notice'>Data is currently being uploaded to ARES.</span>")
+				to_chat(user, SPAN_NOTICE("Data is currently being uploaded to ARES."))
 				return
-		to_chat(user, "<span class='notice'>No data is being uploaded.</span>")
+		to_chat(user, SPAN_NOTICE("No data is being uploaded."))
 
 /obj/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/disk/objective))
@@ -263,4 +263,4 @@
 
 		user.drop_inv_item_to_loc(W, src)
 		disk = W
-		to_chat(user, "<span class='notice'>You insert \the [W] and enter the decryption key.</span>")
+		to_chat(user, SPAN_NOTICE("You insert \the [W] and enter the decryption key."))

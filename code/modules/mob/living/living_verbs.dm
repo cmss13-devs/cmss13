@@ -60,7 +60,7 @@
 					if(!C.buckled)
 						return
 					C.visible_message("<span class='danger'><B>[C] manages to unbuckle themself!</B></span>",\
-								"<span class='notice'>You successfully unbuckle yourself.</span>")
+								SPAN_NOTICE("You successfully unbuckle yourself."))
 					C.buckled.manual_unbuckle(C)
 			else
 				C.buckled.manual_unbuckle(C)
@@ -144,10 +144,10 @@
 				X.fire_stacks = max(X.fire_stacks - rand(3, 6), 0)
 				X.KnockDown(4, TRUE)
 				X.visible_message("<span class='danger'>[X] rolls on the floor, trying to put themselves out!</span>", \
-					"<span class='notice'>You stop, drop, and roll!</span>", null, 5)
+					SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 				if (fire_stacks <= 0)
 					X.visible_message("<span class='danger'>[X] has successfully extinguished themselves!</span>", \
-					"<span class='notice'>You extinguish yourself.</span>", null, 5)
+					SPAN_NOTICE("You extinguish yourself."), null, 5)
 					ExtinguishMob()
 				return
 
@@ -157,15 +157,15 @@
 				CM.fire_stacks = max(CM.fire_stacks - rand(6,10), 0)
 				CM.KnockDown(1, TRUE) // actually 0.5
 				CM.visible_message("<span class='danger'>[CM] expertly rolls on the floor, greatly reducing the amount of flames!</span>", \
-					"<span class='notice'>You expertly roll to extinguish the flames!</span>", null, 5)
+					SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 			else
 				CM.fire_stacks = max(CM.fire_stacks - rand(3,6), 0)
 				CM.KnockDown(4, TRUE)
 				CM.visible_message("<span class='danger'>[CM] rolls on the floor, trying to put themselves out!</span>", \
-					"<span class='notice'>You stop, drop, and roll!</span>", null, 5)
+					SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 			if(fire_stacks <= 0)
 				CM.visible_message("<span class='danger'>[CM] has successfully extinguished themselves!</span>", \
-					"<span class='notice'>You extinguish yourself.</span>", null, 5)
+					SPAN_NOTICE("You extinguish yourself."), null, 5)
 				ExtinguishMob()
 			return
 		if(CM.handcuffed && CM.canmove && (CM.last_special <= world.time))
@@ -179,13 +179,13 @@
 				can_break_cuffs = 1
 			else if(iszombie(CM))
 				CM.visible_message("<span class='danger'>[CM] is attempting to break out of [HC]...</span>", \
-				"<span class='notice'>You use your superior zombie strength to start breaking [HC]...</span>")
+				SPAN_NOTICE("You use your superior zombie strength to start breaking [HC]..."))
 				spawn(0)
 					if(do_after(CM, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 						if(!CM.handcuffed || CM.buckled)
 							return
 						CM.visible_message("<span class='danger'>[CM] tears [HC] in half!</span>", \
-							"<span class='notice'>You tear [HC] in half!</span>")
+							SPAN_NOTICE("You tear [HC] in half!"))
 						qdel(CM.handcuffed)
 						CM.handcuffed = null
 						CM.handcuff_update()
@@ -220,7 +220,7 @@
 					spawn (breakouttime)
 						for(var/mob/O in viewers(CM))//                                         lags so hard that 40s isn't lenient enough - Quarxink
 							O.show_message("<span class='danger'><B>[CM] manages to remove the handcuffs!</B></span>", 1)
-						Cto_chat(M, "<span class='notice'> You successfully remove \the [CM.handcuffed].</span>")
+						Cto_chat(M, SPAN_NOTICE(" You successfully remove \the [CM.handcuffed]."))
 						CM.drop_inv_item_on_ground(CM.handcuffed)
 						return*/ //Commented by Apop
 
@@ -236,7 +236,7 @@
 							return // time leniency for lag which also might make this whole thing pointless but the server
 						for(var/mob/O in viewers(CM))//                                         lags so hard that 40s isn't lenient enough - Quarxink
 							O.show_message("<span class='danger'><B>[CM] manages to remove [HC]!</B></span>", 1)
-						to_chat(CM, "<span class='notice'> You successfully remove [HC].</span>")
+						to_chat(CM, SPAN_NOTICE(" You successfully remove [HC]."))
 						CM.drop_inv_item_on_ground(CM.handcuffed)
 		else if(CM.legcuffed && CM.canmove && (CM.last_special <= world.time))
 			var/obj/item/legcuffs/LC = CM.legcuffed
@@ -282,7 +282,7 @@
 							return // time leniency for lag which also might make this whole thing pointless but the server
 						for(var/mob/O in viewers(CM))//                                         lags so hard that 40s isn't lenient enough - Quarxink
 							O.show_message("<span class='danger'><B>[CM] manages to remove the legcuffs!</B></span>", 1)
-						to_chat(CM, "<span class='notice'> You successfully remove \the [CM.legcuffed].</span>")
+						to_chat(CM, SPAN_NOTICE(" You successfully remove \the [CM.legcuffed]."))
 						CM.drop_inv_item_on_ground(CM.legcuffed)
 						CM.legcuff_update()
 
@@ -295,4 +295,4 @@
 
 	resting = !resting
 
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting." : "getting up."]</span>")
+	to_chat(src, SPAN_NOTICE("You are now [resting ? "resting." : "getting up."]"))

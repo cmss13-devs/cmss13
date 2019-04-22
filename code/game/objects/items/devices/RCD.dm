@@ -40,13 +40,13 @@ RCD
 		..()
 		if(istype(W, /obj/item/ammo_rcd))
 			if((stored_matter + 10) > 30)
-				to_chat(user, "<span class='notice'>The RCD cant hold any more matter-units.</span>")
+				to_chat(user, SPAN_NOTICE("The RCD cant hold any more matter-units."))
 				return
 			user.drop_held_item()
 			qdel(W)
 			stored_matter += 10
 			playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
-			to_chat(user, "<span class='notice'>The RCD now holds [stored_matter]/30 matter-units.</span>")
+			to_chat(user, SPAN_NOTICE("The RCD now holds [stored_matter]/30 matter-units."))
 			desc = "A RCD. It currently holds [stored_matter]/30 matter-units."
 			return
 
@@ -57,19 +57,19 @@ RCD
 		switch(mode)
 			if(1)
 				mode = 2
-				to_chat(user, "<span class='notice'>Changed mode to 'Airlock'</span>")
+				to_chat(user, SPAN_NOTICE("Changed mode to 'Airlock'"))
 				if(prob(20))
 					src.spark_system.start()
 				return
 			if(2)
 				mode = 3
-				to_chat(user, "<span class='notice'>Changed mode to 'Deconstruct'</span>")
+				to_chat(user, SPAN_NOTICE("Changed mode to 'Deconstruct'"))
 				if(prob(20))
 					src.spark_system.start()
 				return
 			if(3)
 				mode = 1
-				to_chat(user, "<span class='notice'>Changed mode to 'Floor & Walls'</span>")
+				to_chat(user, SPAN_NOTICE("Changed mode to 'Floor & Walls'"))
 				if(prob(20))
 					src.spark_system.start()
 				return

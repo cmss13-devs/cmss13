@@ -14,7 +14,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/examine()
 	..()
-	to_chat(usr, "<span class='notice'>[src] will only open on [num2seclevel(req_level)] security level.</span>")
+	to_chat(usr, SPAN_NOTICE("[src] will only open on [num2seclevel(req_level)] security level."))
 
 /obj/structure/closet/secure_closet/guncabinet/New()
 	..()
@@ -59,7 +59,7 @@
 	if(state_change)
 		for(var/mob/O in viewers(src, 3))
 			if((O.client && !( O.blinded )))
-				to_chat(O, "<span class='notice'>[src] [locked ? "locks" : "unlocks"] itself.</span>")
+				to_chat(O, SPAN_NOTICE("[src] [locked ? "locks" : "unlocks"] itself."))
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/mp_armory

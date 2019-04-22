@@ -259,4 +259,4 @@
 	set category = "Robot Commands"
 	if(resting)
 		resting = 0
-		to_chat(src, "<span class='notice'>You begin powering up.</span>")
+		to_chat(src, SPAN_NOTICE("You begin powering up."))

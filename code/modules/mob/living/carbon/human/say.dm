@@ -108,7 +108,7 @@
 
 		for(var/mob/living/M in hearers(message_range, src))
 			if(M != src)
-				M.show_message("<span class='notice'>[src] talks into [used_radios.len ? used_radios[1] : "the radio."]</span>")
+				M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"))
 		if(isHumanSynthStrict(src))
 			playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 

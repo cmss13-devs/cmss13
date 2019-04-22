@@ -65,7 +65,7 @@
 	if (src.destroyed)
 		return
 	else
-		usr << text("<span class='notice'>You kick the lab cage.</span>")
+		usr << text(SPAN_NOTICE("You kick the lab cage."))
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
 				O << text("<span class='danger'>[] kicks the lab cage.</span>", usr)

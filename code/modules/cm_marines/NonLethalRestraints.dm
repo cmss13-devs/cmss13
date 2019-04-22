@@ -30,7 +30,7 @@
 		return
 	if(charges > 0)
 		status = !status
-		to_chat(user, "<span class='notice'>\The [src] is now [status ? "on" : "off"].</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is now [status ? "on" : "off"]."))
 		playsound(src.loc, "sparks", 15, 1)
 		update_icon()
 	else
@@ -100,4 +100,4 @@
 
 	examine(mob/user)
 		..()
-		to_chat(user, "<span class='notice'>It has [charges] charges left.</span>")
+		to_chat(user, SPAN_NOTICE("It has [charges] charges left."))

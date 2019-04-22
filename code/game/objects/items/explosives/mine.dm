@@ -57,14 +57,14 @@
 		return*/
 
 	if(!armed)
-		user.visible_message("<span class='notice'>[user] starts deploying [src].</span>", \
-			"<span class='notice'>You start deploying [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+			SPAN_NOTICE("You start deploying [src]."))
 		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='notice'>[user] stops deploying [src].</span>", \
-				"<span class='notice'>You stop deploying \the [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
+				SPAN_NOTICE("You stop deploying \the [src]."))
 			return
-		user.visible_message("<span class='notice'>[user] finishes deploying [src].</span>", \
-			"<span class='notice'>You finish deploying [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
+			SPAN_NOTICE("You finish deploying [src]."))
 		anchored = 1
 		armed = 1
 		playsound(src.loc, 'sound/weapons/mine_armed.ogg', 25, 1)
@@ -79,8 +79,8 @@
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/device/multitool))
 		if(anchored && !disarming)
-			user.visible_message("<span class='notice'>[user] starts disarming [src].</span>", \
-			"<span class='notice'>You start disarming [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+			SPAN_NOTICE("You start disarming [src]."))
 			disarming = 1
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message("<span class='warning'>[user] stops disarming [src].", \

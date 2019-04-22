@@ -418,7 +418,7 @@
 	..()
 	if(grenades.len)
 		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, "<span class='notice'> It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades.</span>")
+		to_chat(user, SPAN_NOTICE(" It is loaded with <b>[grenades.len] / [max_grenades]</b> grenades."))
 
 /obj/item/weapon/gun/launcher/m92/attackby(obj/item/I, mob/user)
 	if(allowed_ammo_type(I))
@@ -426,7 +426,7 @@
 			if(grenades.len < max_grenades)
 				if(user.drop_inv_item_to_loc(I, src))
 					grenades += I
-					to_chat(user, "<span class='notice'>You put [I] in the grenade launcher.</span>")
+					to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
 					to_chat(user, "<span class='info'>Now storing: [grenades.len] / [max_grenades] grenades.</span>")
 			else
 				to_chat(user, "<span class='warning'>The grenade launcher cannot hold more grenades!</span>")
@@ -533,7 +533,7 @@
 	..()
 	if(grenade)
 		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, "<span class='notice'> It is loaded with a grenade.</span>")
+		to_chat(user, SPAN_NOTICE(" It is loaded with a grenade."))
 
 /obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
 	if(allowed_ammo_type(I))
@@ -542,7 +542,7 @@
 				if(!grenade)
 					if(user.drop_inv_item_to_loc(I, src))
 						grenade = I
-						to_chat(user, "<span class='notice'>You put [I] in the grenade launcher.</span>")
+						to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
 				else
 					to_chat(user, "<span class='warning'>The grenade launcher cannot hold more grenades!</span>")
 			else
@@ -722,11 +722,11 @@
 		return
 
 	if(user)
-		to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+		to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			replace_ammo(user,rocket)
 			current_mag.current_rounds = current_mag.max_rounds
-			to_chat(user, "<span class='notice'>You load [rocket] into [src].</span>")
+			to_chat(user, SPAN_NOTICE("You load [rocket] into [src]."))
 			if(reload_sound) playsound(user, reload_sound, 25, 1)
 			else playsound(user,'sound/machines/click.ogg', 25, 1)
 		else
@@ -743,11 +743,11 @@
 		if(current_mag.current_rounds == 0)
 			to_chat(user, "<span class='warning'>[src] is already empty!</span>")
 			return
-		to_chat(user, "<span class='notice'>You begin unloading [src]. Hold still...</span>")
+		to_chat(user, SPAN_NOTICE("You begin unloading [src]. Hold still..."))
 		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			playsound(user, unload_sound, 25, 1)
-			user.visible_message("<span class='notice'>[user] unloads [ammo] from [src].</span>",
-			"<span class='notice'>You unload [ammo] from [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] unloads [ammo] from [src]."),
+			SPAN_NOTICE("You unload [ammo] from [src]."))
 			src.make_rocket(user, drop_override, 0)
 			current_mag.current_rounds = 0
 			update_icon()

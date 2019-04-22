@@ -86,8 +86,8 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 					if(src.action_busy)
 						to_chat(src, "<span class='warning'>You are already busy with something.</span>")
 						return
-					visible_message("<span class='notice'>[src] begins climbing into [vent_found].</span>", \
-					"<span class='notice'>You begin climbing into [vent_found].</span>")
+					visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), \
+						SPAN_NOTICE("You begin climbing into [vent_found]."))
 
 					if(!do_after(src, 45, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 						return

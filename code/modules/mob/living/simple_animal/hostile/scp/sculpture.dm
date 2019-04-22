@@ -262,21 +262,21 @@
 	var/obj/machinery/light/light //wall lights
 	for(light in stuff)
 		if(light.luminosity != 0)
-			visible_message("<span class='notice'>[light.name] breaks suddenly.</span>")
+			visible_message(SPAN_NOTICE("[light.name] breaks suddenly."))
 			light.broken()
 			return TRUE
 
 	var/obj/item/device/flashlight/flashlight
 	for(flashlight in stuff)
 		if(flashlight.on)
-			visible_message("<span class='notice'>[flashlight.name] goes off for some reason.</span>")
+			visible_message(SPAN_NOTICE("[flashlight.name] goes off for some reason."))
 			flashlight.turn_off_light(wearer)
 			return TRUE
 
 	var/obj/item/clothing/suit/storage/marine/armor
 	for(armor in stuff)
 		if(armor.is_light_on())
-			visible_message("<span class='notice'>[armor.name]'s light turns off for some reason.</span>")
+			visible_message(SPAN_NOTICE("[armor.name]'s light turns off for some reason."))
 			armor.toggle_armor_light(wearer)
 			return TRUE
 

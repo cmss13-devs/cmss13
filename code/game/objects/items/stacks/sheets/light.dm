@@ -27,7 +27,7 @@
 		if (M.use(1))
 			new/obj/item/stack/tile/light(user.loc, 1)
 			use(1)
-			to_chat(user, "<span class='notice'>You make a light tile.</span>")
+			to_chat(user, SPAN_NOTICE("You make a light tile."))
 		else
 			to_chat(user, "<span class='warning'>You need one metal sheet to finish the light tile.</span>")
 		return

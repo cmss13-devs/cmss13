@@ -85,7 +85,7 @@ Note: Must be placed within 3 tiles of the WY Research Console
 		loaded_item = O
 		user.drop_held_item()
 		O.loc = src
-		to_chat(user, "<span class='notice'> You add the [O.name] to the machine!</span>")
+		to_chat(user, SPAN_NOTICE(" You add the [O.name] to the machine!"))
 		flick("d_analyzer_la", src)
 		spawn(10)
 			icon_state = "d_analyzer_l"

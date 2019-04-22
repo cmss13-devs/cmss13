@@ -377,7 +377,7 @@
 		var/obj/item/storage/box/m94/M = W
 		if(M.contents.len)
 			if(contents.len < storage_slots)
-				to_chat(user, "<span class='notice'>You start refilling [src] with [M].</span>")
+				to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
 				if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 				for(var/obj/item/I in M)
 					if(contents.len < storage_slots)

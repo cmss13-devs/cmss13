@@ -212,7 +212,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				lst[i] = temp.loc
 
 	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
-	message_admins("<span class='notice'>[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].</span>")
+	message_admins(SPAN_NOTICE("[key_name_admin(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."))
 	returnval = call(A,procname)(arglist(lst)) // Pass the lst as an argument list to the proc
 	to_chat(usr, "<font color='blue'>[procname] returned: [returnval ? returnval : "null"]</font>")
 	feedback_add_details("admin_verb","AAPC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -232,10 +232,10 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	var/list/air_info = T.return_air()
 
-	var/t = "<span class='notice'>Coordinates: [T.x],[T.y],[T.z]\n</span>"
+	var/t = SPAN_NOTICE("Coordinates: [T.x],[T.y],[T.z]\n")
 	t += "<span class='danger'>Temperature: [air_info[2]]\n</span>"
 	t += "<span class='danger'>Pressure: [air_info[3]]kPa\n</span>"
-	t += "<span class='notice'>Gas Type: [air_info[1]]\n</span>"
+	t += SPAN_NOTICE("Gas Type: [air_info[1]]\n")
 
 	usr.show_message(t, 1)
 	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -288,7 +288,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			M:Alienize()
 			feedback_add_details("admin_verb","MKAL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		log_admin("[key_name(usr)] made [key_name(M)] into an alien.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] made [key_name(M)] into an alien.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
 	else
 		alert("Invalid mob")
 
@@ -333,7 +333,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 
 	X.set_hivenumber_and_update(newhivenumber)
 	feedback_add_details("admin_verb","CHHN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	message_admins("<span class='notice'>[key_name(src)] changed hivenumber of [X] to [X.hivenumber].</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name(src)] changed hivenumber of [X] to [X.hivenumber]."), 1)
 
 
 /client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
@@ -358,7 +358,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
 	feedback_add_details("admin_verb","CHTN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	message_admins("<span class='notice'>[key_name(src)] changed name of [X] to [newname].</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name(src)] changed name of [X] to [newname]."), 1)
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"
@@ -370,9 +370,9 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
-		message_admins("<span class='notice'>[key_name(src)] enabled checking for round-end.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name(src)] enabled checking for round-end."), 1)
 	else
-		message_admins("<span class='notice'>[key_name(src)] disabled checking for round-end.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name(src)] disabled checking for round-end."), 1)
 
 
 
@@ -388,7 +388,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		chosen_deletion = text2path(chosen_deletion)
 		if(ispath(chosen_deletion))
 			if(!ispath(/mob) && !ispath(/obj))
-				to_chat(usr, "<span class = 'warning'>Only works for types of /obj or /mob.</span>")
+				to_chat(usr, SPAN_WARNING("Only works for types of /obj or /mob."))
 			else
 				var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(chosen_deletion)
 				if(hsbitem)
@@ -405,7 +405,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 						log_admin("[key_name(src)] has deleted all instances of [hsbitem] ([del_amt]).")
 						message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
-			to_chat(usr, "<span class = 'warning'>Not a valid type path.</span>")
+			to_chat(usr, SPAN_WARNING("Not a valid type path."))
 	feedback_add_details("admin_verb","DELA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_debug_make_powernets()
@@ -455,7 +455,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		alert("Invalid mob")
 	feedback_add_details("admin_verb","GFA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(src)] has granted [M.key] full access.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] has granted [M.key] full access.</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in mob_list)
 	set category = "Admin"
@@ -470,7 +470,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		alert("Invalid mob")
 	feedback_add_details("admin_verb","GAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(src)] has granted [M.key] all skills.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] has granted [M.key] all skills.</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
 
 /client/proc/cmd_assume_direct_control(var/mob/M in mob_list)
 	set category = "Admin"
@@ -486,7 +486,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			var/mob/dead/observer/ghost = new/mob/dead/observer(M,1)
 			ghost.ckey = M.ckey
 			if(ghost.client) ghost.client.change_view(world.view)
-	message_admins("<span class='notice'>[key_name_admin(usr)] assumed direct control of [M].</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob
 	M.ckey = src.ckey

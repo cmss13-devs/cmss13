@@ -93,9 +93,9 @@
 			to_chat(user, "<span class='warning'>You aren't entirely sure what you're meant to be looking for in this document.</span>")
 			return
 	if(objective)
-		to_chat(user, "<span class='notice'>You don't notice anything useful. You probably need to find its instructions on a paper scrap.</span>")
+		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
 	else
-		to_chat(user, "<span class='notice'>You don't notice anything useful.</span>")
+		to_chat(user, SPAN_NOTICE("You don't notice anything useful."))
 
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
 	switch(skill_required)
@@ -127,7 +127,7 @@
 	objective.check_completion()
 	display_read_message(user)
 	if(objective.important && objective.is_complete())
-		to_chat(user, "<span class='notice'>You feel this document is important and should be returned to the [MAIN_SHIP_NAME].</span>")
+		to_chat(user, SPAN_NOTICE("You feel this document is important and should be returned to the [MAIN_SHIP_NAME]."))
 	return 1
 
 /obj/item/document_objective/paper
@@ -140,7 +140,7 @@
 /obj/item/document_objective/paper/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/document/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You make out something about [D.get_clue()].</span>")
+		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
 	to_chat(user, "<span class='information'>You finish examining \the [src].</span>")
 
 /obj/item/document_objective/report
@@ -153,7 +153,7 @@
 /obj/item/document_objective/report/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/retrieve_item/device/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You make out something about [D.get_clue()].</span>")
+		to_chat(user, SPAN_NOTICE("You make out something about [D.get_clue()]."))
 	to_chat(user, "<span class='information'>You finish examining \the [src].</span>")
 
 /obj/item/document_objective/folder
@@ -182,7 +182,7 @@
 /obj/item/document_objective/folder/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You see a reference to [D.get_clue()].</span>")
+		to_chat(user, SPAN_NOTICE("You see a reference to [D.get_clue()]."))
 	to_chat(user, "<span class='information'>You finish sifting through the documents.</span>")
 
 /obj/item/document_objective/technical_manual
@@ -196,5 +196,5 @@
 /obj/item/document_objective/technical_manual/display_read_message(mob/living/user)
 	..()
 	for(var/datum/cm_objective/document/D in objective.enables_objectives)
-		to_chat(user, "<span class='notice'>You see a reference to [D.get_clue()].</span>")
+		to_chat(user, SPAN_NOTICE("You see a reference to [D.get_clue()]."))
 	to_chat(user, "<span class='information'>You finish reading the technical manual.</span>")

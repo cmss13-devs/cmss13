@@ -269,11 +269,11 @@ cases. Override_icon_state should be a list.*/
 					success = 1
 					S.handle_item_insertion(I, TRUE, user)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
-					to_chat(user, "<span class='notice'>You put everything in [S].</span>")
+					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
 				else if(success)
-					to_chat(user, "<span class='notice'>You put some things in [S].</span>")
+					to_chat(user, SPAN_NOTICE("You put some things in [S]."))
 				else
-					to_chat(user, "<span class='notice'>You fail to pick anything up with [S].</span>")
+					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [S]."))
 
 			else if(S.can_be_inserted(src))
 				S.handle_item_insertion(src, FALSE, user)
@@ -678,8 +678,8 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	else if(!zoom && user.client && user.update_tint()) 			to_chat(user, "<span class='warning'>Your welding equipment gets in the way of you looking through \the [zoom_device].</span>")
 	else if(!zoom && user.get_active_hand() != src)					to_chat(user, "<span class='warning'>You need to hold \the [zoom_device] to look through it.</span>")
 	else if(zoom) //If we are zoomed out, reset that parameter.
-		user.visible_message("<span class='notice'>[user] looks up from [zoom_device].</span>",
-		"<span class='notice'>You look up from [zoom_device].</span>")
+		user.visible_message(SPAN_NOTICE("[user] looks up from [zoom_device]."),
+		SPAN_NOTICE("You look up from [zoom_device]."))
 		zoom = !zoom
 		user.zoom_cooldown = world.time + 20
 		user.on_zoomout(src, new /datum/event_args())
@@ -720,8 +720,8 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 			add_dropped_handler(zoom_event_handler)
 			add_unwield_handler(zoom_event_handler)
 
-		user.visible_message("<span class='notice'>[user] peers through \the [zoom_device].</span>",
-		"<span class='notice'>You peer through \the [zoom_device].</span>")
+		user.visible_message(SPAN_NOTICE("[user] peers through \the [zoom_device]."),
+		SPAN_NOTICE("You peer through \the [zoom_device]."))
 		zoom = !zoom
 		if(user.interactee)
 			user.unset_interaction()

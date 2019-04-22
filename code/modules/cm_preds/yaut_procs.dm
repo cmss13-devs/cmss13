@@ -167,7 +167,7 @@
 					T.drop_inv_item_on_ground(T.legcuffed)
 				T.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
-				to_chat(src, "<span class='notice'> You finish butchering!</span>")
+				to_chat(src, SPAN_NOTICE(" You finish butchering!"))
 				qdel(T)
 			else
 				to_chat(src, "You pause your butchering for later.")
@@ -212,7 +212,7 @@
 			H.get_limb(limb).droplimb(1)
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			H.butchery_progress = 0
-			to_chat(src, "<span class='notice'> You finish butchering!</span>")
+			to_chat(src, SPAN_NOTICE(" You finish butchering!"))
 
 	return
 
@@ -290,10 +290,10 @@
 			choice = mother_1
 
 		if(Y.upgrades > 1)
-			to_chat(src, "<span class='notice'>Your [Y] hums as it receives a battery and translator upgrade.</span>")
+			to_chat(src, SPAN_NOTICE("Your [Y] hums as it receives a battery and translator upgrade."))
 			var/newverb = /obj/item/clothing/gloves/yautja/proc/translate
 			Y.verbs |= newverb
 		if(Y.upgrades > 2)
-			to_chat(src, "<span class='notice'>Your [Y] can now translate to xenomorph hives as well.</span>")
-			to_chat(src, "<span class='notice'>Your [Y] has been upgraded to carry a scimitar instead of blades.</span>")
+			to_chat(src, SPAN_NOTICE("Your [Y] can now translate to xenomorph hives as well."))
+			to_chat(src, SPAN_NOTICE("Your [Y] has been upgraded to carry a scimitar instead of blades."))
 		verbs -= /mob/living/carbon/human/proc/pred_buy

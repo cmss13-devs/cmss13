@@ -59,8 +59,8 @@
 /obj/ovipositor/attack_alien(mob/living/carbon/Xenomorph/M)
 	switch(M.a_intent)
 		if("help")
-			M.visible_message("<span class='notice'>\The [M] caresses [src] with its scythe-like arm.</span>", \
-			"<span class='notice'>You caress [src] with your scythe-like arm.</span>")
+			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+			SPAN_NOTICE("You caress [src] with your scythe-like arm."))
 			return 0
 
 		if("grab")

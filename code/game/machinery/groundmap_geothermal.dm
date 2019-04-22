@@ -141,14 +141,14 @@
 			if(WT.remove_fuel(1, user))
 
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-				user.visible_message("<span class='notice'>[user] starts welding [src]'s internal damage.</span>",
-				"<span class='notice'>You start welding [src]'s internal damage.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
+				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != 1 || is_on || !WT.isOn()) r_FAL
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
-					user.visible_message("<span class='notice'>[user] welds [src]'s internal damage.</span>",
-					"<span class='notice'>You weld [src]'s internal damage.</span>")
+					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
+					SPAN_NOTICE("You weld [src]'s internal damage."))
 					update_icon()
 					r_TRU
 			else
@@ -160,14 +160,14 @@
 				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts securing [src]'s wiring.</span>",
-			"<span class='notice'>You start securing [src]'s wiring.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
+			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, 12))
 				if(buildstate != 2 || is_on) r_FAL
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
-				user.visible_message("<span class='notice'>[user] secures [src]'s wiring.</span>",
-				"<span class='notice'>You secure [src]'s wiring.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
+				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
 				r_TRU
 	else if(iswrench(O))
@@ -176,14 +176,14 @@
 				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts repairing [src]'s tubing and plating.</span>",
-			"<span class='notice'>You start repairing [src]'s tubing and plating.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
+			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 3 || is_on) r_FAL
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
-				user.visible_message("<span class='notice'>[user] repairs [src]'s tubing and plating.</span>",
-				"<span class='notice'>You repair [src]'s tubing and plating.</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
+				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
 				r_TRU
 	else
@@ -315,20 +315,20 @@
 
 			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] starts unscrewing [src]'s maintenance hatch.</span>", \
-				"<span class='notice'>You start unscrewing [src]'s maintenance hatch.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s maintenance hatch."), \
+				SPAN_NOTICE("You start unscrewing [src]'s maintenance hatch."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_UNSCREW)
 						return
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_CROWBAR
-					user.visible_message("<span class='notice'>[user] unscrews [src]'s maintenance hatch.</span>", \
-					"<span class='notice'>You unscrew [src]'s maintenance hatch.</span>")
+					user.visible_message(SPAN_NOTICE("[user] unscrews [src]'s maintenance hatch."), \
+					SPAN_NOTICE("You unscrew [src]'s maintenance hatch."))
 
 			else if(repair_state == FLOODLIGHT_REPAIR_SCREW)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] starts screwing [src]'s maintenance hatch closed.</span>", \
-				"<span class='notice'>You start screwing [src]'s maintenance hatch closed.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts screwing [src]'s maintenance hatch closed."), \
+				SPAN_NOTICE("You start screwing [src]'s maintenance hatch closed."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_SCREW)
 						return
@@ -336,8 +336,8 @@
 					damaged = 0
 					repair_state = FLOODLIGHT_REPAIR_UNSCREW
 					health = initial(health)
-					user.visible_message("<span class='notice'>[user] screws [src]'s maintenance hatch closed.</span>", \
-					"<span class='notice'>You screw [src]'s maintenance hatch closed.</span>")
+					user.visible_message(SPAN_NOTICE("[user] screws [src]'s maintenance hatch closed."), \
+					SPAN_NOTICE("You screw [src]'s maintenance hatch closed."))
 					if(is_lit)
 						SetLuminosity(lum_value)
 					update_icon()
@@ -350,15 +350,15 @@
 
 			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] starts prying [src]'s maintenance hatch open.</span>",\
-				"<span class='notice'>You start prying [src]'s maintenance hatch open.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s maintenance hatch open."),\
+				SPAN_NOTICE("You start prying [src]'s maintenance hatch open."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_CROWBAR)
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					repair_state = FLOODLIGHT_REPAIR_WELD
-					user.visible_message("<span class='notice'>[user] pries [src]'s maintenance hatch open.</span>",\
-					"<span class='notice'>You pry [src]'s maintenance hatch open.</span>")
+					user.visible_message(SPAN_NOTICE("[user] pries [src]'s maintenance hatch open."),\
+					SPAN_NOTICE("You pry [src]'s maintenance hatch open."))
 			return TRUE
 
 		else if(iswelder(I))
@@ -371,15 +371,15 @@
 			if(repair_state == FLOODLIGHT_REPAIR_WELD)
 				if(WT.remove_fuel(1, user))
 					playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-					user.visible_message("<span class='notice'>[user] starts welding [src]'s damage.</span>",
-					"<span class='notice'>You start welding [src]'s damage.</span>")
+					user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s damage."),
+					SPAN_NOTICE("You start welding [src]'s damage."))
 					if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						if(disposed || !WT.isOn() || repair_state != FLOODLIGHT_REPAIR_WELD)
 							return
 						playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_CABLE
-						user.visible_message("<span class='notice'>[user] welds [src]'s damage.</span>",
-						"<span class='notice'>You weld [src]'s damage.</span>")
+						user.visible_message(SPAN_NOTICE("[user] welds [src]'s damage."),
+						SPAN_NOTICE("You weld [src]'s damage."))
 						return 1
 				else
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
@@ -396,16 +396,16 @@
 					to_chat(user, "<span class='warning'>You need two coils of wire to replace the damaged cables.</span>")
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] starts replacing [src]'s damaged cables.</span>",\
-				"<span class='notice'>You start replacing [src]'s damaged cables.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
+				SPAN_NOTICE("You start replacing [src]'s damaged cables."))
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					if(disposed || repair_state != FLOODLIGHT_REPAIR_CABLE)
 						return
 					if(C.use(2))
 						playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 						repair_state = FLOODLIGHT_REPAIR_SCREW
-						user.visible_message("<span class='notice'>[user] starts replaces [src]'s damaged cables.</span>",\
-						"<span class='notice'>You replace [src]'s damaged cables.</span>")
+						user.visible_message(SPAN_NOTICE("[user] starts replaces [src]'s damaged cables."),\
+						SPAN_NOTICE("You replace [src]'s damaged cables."))
 			return TRUE
 
 

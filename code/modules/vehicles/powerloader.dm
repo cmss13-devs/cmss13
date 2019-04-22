@@ -162,8 +162,8 @@
 						if(AM.density)
 							to_chat(user, "<span class='warning'>You can't drop [loaded] here, [AM] blocks the way.</span>")
 							return
-				user.visible_message("<span class='notice'>[user] drops [loaded] on [T] with [src].</span>",
-				"<span class='notice'>You drop [loaded] on [T] with [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] drops [loaded] on [T] with [src]."),
+				SPAN_NOTICE("You drop [loaded] on [T] with [src]."))
 				loaded.forceMove(T)
 				loaded = null
 				playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -181,8 +181,8 @@
 				loaded = C
 				playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 				update_icon()
-				user.visible_message("<span class='notice'>[user] grabs [loaded] with [src].</span>",
-				"<span class='notice'>You grab [loaded] with [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] grabs [loaded] with [src]."),
+				SPAN_NOTICE("You grab [loaded] with [src]."))
 		else
 			to_chat(user, "<span class='warning'>Can't grab [loaded].</span>")
 
@@ -194,8 +194,8 @@
 				loaded = LC
 				playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 				update_icon()
-				user.visible_message("<span class='notice'>[user] grabs [loaded] with [src].</span>",
-				"<span class='notice'>You grab [loaded] with [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] grabs [loaded] with [src]."),
+				SPAN_NOTICE("You grab [loaded] with [src]."))
 		else
 			to_chat(user, "<span class='warning'>Can't grab [loaded].</span>")
 

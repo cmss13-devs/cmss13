@@ -246,7 +246,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			zone = get_zone_with_miss_chance(zone, src, 15)
 
 		if(!zone)
-			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>", null, null, 5)
+			visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 			return
 
 		O.throwing = 0		//it hit, so stop moving

@@ -55,12 +55,12 @@
 			if(mode == 0) //It's off but still not unscrewed
 				mode = -1 //Set it to doubleoff
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, "<span class='notice'>You remove the screws around the power connection.</span>")
+				to_chat(user, SPAN_NOTICE("You remove the screws around the power connection."))
 				return
 			else if(mode == -1)
 				mode = 0
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, "<span class='notice'>You attach the screws around the power connection.</span>")
+				to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 				return
 		else if(istype(I, /obj/item/tool/weldingtool) && mode == -1)
 			if(contents.len > 0)
@@ -69,10 +69,10 @@
 			var/obj/item/tool/weldingtool/W = I
 			if(W.remove_fuel(0, user))
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-				to_chat(user, "<span class='notice'>You start slicing the floorweld off the disposal unit.</span>")
+				to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal unit."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !W.isOn()) return
-					to_chat(user, "<span class='notice'>You sliced the floorweld off the disposal unit.</span>")
+					to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal unit."))
 					var/obj/structure/disposalconstruct/C = new(loc)
 					transfer_fingerprints_to(C)
 					C.ptype = 6 //6 = disposal unit
@@ -86,7 +86,7 @@
 
 	if(istype(I, /obj/item/storage/bag/trash))
 		var/obj/item/storage/bag/trash/T = I
-		to_chat(user, "<span class='notice'>You empty the bag into [src].</span>")
+		to_chat(user, SPAN_NOTICE("You empty the bag into [src]."))
 		for(var/obj/item/O in T.contents)
 			T.remove_from_storage(O, src)
 		T.update_icon()
@@ -118,8 +118,8 @@
 		return
 
 	if(user.drop_inv_item_to_loc(I, src))
-		user.visible_message("<span class='notice'>[user] places [I] into [src].</span>",
-		"<span class='notice'>You place [I] into [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] places [I] into [src]."),
+		SPAN_NOTICE("You place [I] into [src]."))
 	update()
 
 //Mouse drop another mob or self
@@ -134,7 +134,7 @@
 	var/target_loc = target.loc
 
 	if(target == user)
-		visible_message("<span class='notice'>[user] starts climbing into the disposal.</span>")
+		visible_message(SPAN_NOTICE("[user] starts climbing into the disposal."))
 	else
 		if(user.is_mob_restrained()) return //can't stuff someone other than you if restrained.
 		visible_message("<span class ='warning'>[user] starts stuffing [target] into the disposal.</span>")
@@ -144,8 +144,8 @@
 		return
 	if(target == user)
 		if(user.is_mob_incapacitated(TRUE)) return
-		user.visible_message("<span class='notice'>[user] climbs into [src].</span>",
-		"<span class ='notice'>You climb into [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] climbs into [src]."),
+		SPAN_NOTICE("You climb into [src]."))
 	else
 		if(user.is_mob_incapacitated()) return
 		user.visible_message("<span class ='danger'>[user] stuffs [target] into [src]!</span>",
@@ -432,7 +432,7 @@
 			return
 		if(prob(75))
 			I.loc = src
-			visible_message("<span class='notice'>[I] lands into [src].</span>")
+			visible_message(SPAN_NOTICE("[I] lands into [src]."))
 		else
 			visible_message("<span class='warning'>[I] bounces off of [src]'s rim!</span>")
 		return 0
@@ -796,8 +796,8 @@
 			//Check if anything changed over 2 seconds
 			var/turf/uloc = user.loc
 			var/atom/wloc = W.loc
-			user.visible_message("<span class='notice'>[user] starts slicing [src].</span>",
-			"<span class='notice'>You start slicing [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
+			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
 			if(!W.isOn()) return
 			if(user.loc == uloc && wloc == W.loc)
@@ -1085,7 +1085,7 @@
 		if(O.currTag) //Tag set
 			sort_tag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>Changed tag to '[sort_tag]'.</span>")
+			to_chat(user, SPAN_NOTICE("Changed tag to '[sort_tag]'."))
 			updatename()
 			updatedesc()
 
@@ -1154,7 +1154,7 @@
 		if(O.currTag) //Tag set
 			sortType = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>Changed filter to '[sortType]'.</span>")
+			to_chat(user, SPAN_NOTICE("Changed filter to '[sortType]'."))
 			updatename()
 			updatedesc()
 
@@ -1257,8 +1257,8 @@
 			//Check if anything changed over 2 seconds
 			var/turf/uloc = user.loc
 			var/atom/wloc = W.loc
-			user.visible_message("<span class='notice'>[user] starts slicing [src].</span>",
-			"<span class='notice'>You start slicing [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
+			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
 			if(!W.isOn()) return
 			if(user.loc == uloc && wloc == W.loc)
@@ -1353,19 +1353,19 @@
 		if(mode == 0)
 			mode = 1
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>You remove the screws around the power connection.</span>")
+			to_chat(user, SPAN_NOTICE("You remove the screws around the power connection."))
 		else if(mode == 1)
 			mode = 0
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>You attach the screws around the power connection.</span>")
+			to_chat(user, SPAN_NOTICE("You attach the screws around the power connection."))
 	else if(istype(I, /obj/item/tool/weldingtool) && mode == 1)
 		var/obj/item/tool/weldingtool/W = I
 		if(W.remove_fuel(0, user))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-			to_chat(user, "<span class='notice'>You start slicing the floorweld off the disposal outlet.</span>")
+			to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal outlet."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(!src || !W.isOn()) return
-				to_chat(user, "<span class='notice'>You sliced the floorweld off the disposal outlet.</span>")
+				to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal outlet."))
 				var/obj/structure/disposalconstruct/C = new(loc)
 				transfer_fingerprints_to(C)
 				C.ptype = 7 //7 =  outlet

@@ -515,7 +515,6 @@
 				else if(usr.client.view != world.view)
 					to_chat(usr, "<span class='warning'>You're too busy peering through binoculars.</span>")
 				else
-					visible_message("\icon[src] <span class='boldnotice'>Searching for helmet cam of [cam_target]. Helmet cam found and linked.</span>")
 					cam = new_cam
 					usr.reset_view(cam)
 	attack_hand(usr) //The above doesn't ever seem to work.
@@ -906,7 +905,7 @@
 
 	var/choice = input(src, "Choose an order") in command_aura_allowed + "help" + "cancel"
 	if(choice == "help")
-		to_chat(src, "<span class='notice'><br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br></span>")
+		to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
 		return
 	if(choice == "cancel") return
 

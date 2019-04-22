@@ -168,7 +168,7 @@
 		if(C)
 			remove_from_storage(C, get_turf(user))
 			user.equip_to_slot_if_possible(C, WEAR_FACE)
-			to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")
+			to_chat(user, SPAN_NOTICE("You take a cigarette out of the pack."))
 			update_icon()
 	else
 		..()
@@ -253,7 +253,7 @@
 		if(C)
 			remove_from_storage(C, get_turf(user))
 			user.equip_to_slot_if_possible(C, WEAR_FACE)
-			to_chat(user, "<span class='notice'>You take a cigar out of the case.</span>")
+			to_chat(user, SPAN_NOTICE("You take a cigar out of the case."))
 			update_icon()
 	else
 		..()

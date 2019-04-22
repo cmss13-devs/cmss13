@@ -739,7 +739,7 @@ var/global/floorIsLava = 0
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = adminscrub(message,500)
-		to_world("<span class='notice'> <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]</span>")
+		to_world(SPAN_NOTICE(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -838,7 +838,7 @@ var/global/floorIsLava = 0
 	else
 		to_world("<B>New players may now join the game.</B>")
 	log_admin("[key_name(usr)] toggled new player game joining.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] toggled new player game joining.</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled new player game joining."), 1)
 	world.update_status()
 	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -864,7 +864,7 @@ var/global/floorIsLava = 0
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_admins("<span class='notice'>[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"]."), 1)
 	log_admin("[key_name(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -880,7 +880,7 @@ var/global/floorIsLava = 0
 		if(confirm != "Yes") return
 		ticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
 		log_admin("[key_name(usr)] has made the round end early.")
-		message_admins("<span class='notice'>[key_name(usr)] has made the round end early.</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name(usr)] has made the round end early."), 1)
 		for(var/client/C in admins)
 			to_chat(C, "<hr>")
 			to_chat(C, "<span class='centerbold'>Staff-Only Alert: <EM>[usr.key]</EM> has made the round end early")
@@ -940,7 +940,7 @@ var/global/floorIsLava = 0
 	set desc="Toggle admin jumping"
 	set name="Toggle Jump"
 	config.allow_admin_jump = !(config.allow_admin_jump)
-	message_admins("<span class='notice'>Toggled admin jumping to [config.allow_admin_jump].</span>")
+	message_admins(SPAN_NOTICE("Toggled admin jumping to [config.allow_admin_jump]."))
 	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adspawn()
@@ -948,7 +948,7 @@ var/global/floorIsLava = 0
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
 	config.allow_admin_spawning = !(config.allow_admin_spawning)
-	message_admins("<span class='notice'>Toggled admin item spawning to [config.allow_admin_spawning].</span>")
+	message_admins(SPAN_NOTICE("Toggled admin item spawning to [config.allow_admin_spawning]."))
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
@@ -956,7 +956,7 @@ var/global/floorIsLava = 0
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
 	config.allow_admin_rev = !(config.allow_admin_rev)
-	message_admins("<span class='notice'>Toggled reviving to [config.allow_admin_rev].</span>")
+	message_admins(SPAN_NOTICE("Toggled reviving to [config.allow_admin_rev]."))
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/immreboot()
@@ -1077,7 +1077,7 @@ var/global/floorIsLava = 0
 	else
 		to_world("<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [guests_allowed?"":"dis"]allowed.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed.</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()
@@ -1250,7 +1250,7 @@ var/global/floorIsLava = 0
 
 	feedback_add_details("admin_verb","DISTR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]")
-	message_admins("<span class='notice'>[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [ticker.mode.picked_call.name]"), 1)
 
 /datum/admins/proc/admin_force_ERT_shuttle()
 	set category = "Admin"
@@ -1303,7 +1303,7 @@ var/global/floorIsLava = 0
 
 	feedback_add_details("admin_verb","LNCHERTSHTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_admin("[key_name(usr)] force launched a distress shuttle ([tag])")
-	message_admins("<span class='notice'>[key_name_admin(usr)] force launched a distress shuttle ([tag])</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
 
 /datum/admins/proc/admin_force_selfdestruct()
 	set category = "Admin"
@@ -1322,4 +1322,4 @@ var/global/floorIsLava = 0
 
 	feedback_add_details("admin_verb","DESTR")
 	log_admin("[key_name(usr)] admin-started self destruct stystem.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] admin-started self destruct stystem.</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)

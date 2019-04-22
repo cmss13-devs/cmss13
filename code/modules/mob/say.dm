@@ -26,11 +26,11 @@
 			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
+			to_chat(usr, SPAN_NOTICE(" You may now speak again."))
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
+		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
 		usr.chatWarn++
 		return
 
@@ -64,11 +64,11 @@
 			message_admins("[key_name(usr, usr.client)] is spamming like crazy. Their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
+			to_chat(usr, SPAN_NOTICE(" You may now speak again."))
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
+		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
 		usr.chatWarn++
 		return
 
@@ -101,11 +101,11 @@
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
 			usr.talked = 0
-			to_chat(usr, "<span class='notice'> You may now speak again.</span>")
+			to_chat(usr, SPAN_NOTICE(" You may now speak again."))
 			usr.chatWarn++
 		return
 	else if(usr.talked == 1)
-		to_chat(usr, "<span class='notice'> You just said something, take a breath.</span>")
+		to_chat(usr, SPAN_NOTICE(" You just said something, take a breath."))
 		usr.chatWarn++
 		return
 

@@ -46,13 +46,13 @@
 
 /obj/structure/closet/secure_closet/proc/togglelock(mob/living/user)
 	if(src.opened)
-		to_chat(user, "<span class='notice'>Close the locker first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the locker first."))
 		return
 	if(src.broken)
 		to_chat(user, "<span class='warning'>The locker appears to be broken.</span>")
 		return
 	if(user.loc == src)
-		to_chat(user, "<span class='notice'>You can't reach the lock from inside.</span>")
+		to_chat(user, SPAN_NOTICE("You can't reach the lock from inside."))
 		return
 	if(src.allowed(user))
 		if(slotlocked && ishuman(user))
@@ -75,10 +75,10 @@
 		src.locked = !src.locked
 		for(var/mob/O in viewers(user, 3))
 			if((O.client && !( O.blinded )))
-				to_chat(O, "<span class='notice'>The locker has been [locked ? null : "un"]locked by [user].</span>")
+				to_chat(O, SPAN_NOTICE("The locker has been [locked ? null : "un"]locked by [user]."))
 		update_icon()
 	else
-		to_chat(user, "<span class='notice'>Access Denied</span>")
+		to_chat(user, SPAN_NOTICE("Access Denied"))
 
 /obj/structure/closet/secure_closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
@@ -88,7 +88,7 @@
 				if(src.large)
 					src.MouseDrop_T(G.grabbed_thing, user)	//act like they were dragged onto the closet
 				else
-					to_chat(user, "<span class='notice'>The locker is too small to stuff [W:affecting] into!</span>")
+					to_chat(user, SPAN_NOTICE("The locker is too small to stuff [W:affecting] into!"))
 			return
 		if(isrobot(user) || iszombie(user))
 			return

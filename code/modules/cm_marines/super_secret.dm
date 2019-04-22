@@ -11,7 +11,7 @@
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(istype(W,/obj/item/coin))
 			if(coins < 4 && !state)
-				user.visible_message("[user] inserts \the [W] into \the [src].","<span class='notice'>You insert \the [W] inside \the [src].</span>")
+				user.visible_message("[user] inserts \the [W] into \the [src].",SPAN_NOTICE("You insert \the [W] inside \the [src]."))
 				coins++
 				qdel(W)
 			else
@@ -28,7 +28,7 @@
 			return
 		if(!state)
 			if(coins)
-				user.visible_message("You hear a click from somewhere near...","<span class='notice'>You press the button and hear a click coming from inside...</span>")
+				user.visible_message("You hear a click from somewhere near...",SPAN_NOTICE("You press the button and hear a click coming from inside..."))
 				state = 1
 				spawn(rand(100,200))
 					switch(coins)

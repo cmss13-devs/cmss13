@@ -4,13 +4,15 @@
 #define cur_increment(v) round((v-1)/8)+1
 /turf/closed/wall/update_icon()
 	..()
+
+	overlays.Cut()
+
 	if(disposed)
 		return
 	
 	if(!damage_overlays[1]) //list hasn't been populated
 		generate_damage_overlays()
 
-	overlays.Cut()
 	//smooth wall stuff
 	if(!special_icon)
 		icon_state = "blank"
@@ -43,7 +45,7 @@
 		else if(current_bulletholes && current_bulletholes <= BULLETHOLE_MAX)
 			if(!bullethole_overlay)
 				bullethole_state = rand(1, BULLETHOLE_STATES)
-				bullethole_overlay = image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]")
+				bullethole_overlay += image('icons/effects/bulletholes.dmi', src, "bhole_[bullethole_state]_[bullethole_increment]")
 			if(cur_increment(current_bulletholes) > bullethole_increment) bullethole_overlay.icon_state = "bhole_[bullethole_state]_[++bullethole_increment]"
 			overlays += bullethole_overlay
 

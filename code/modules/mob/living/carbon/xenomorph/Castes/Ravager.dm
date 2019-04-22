@@ -122,7 +122,7 @@
 	throw_at(T, caste.charge_distance + mutators.pounce_boost, caste.charge_speed, src)
 	spawn(caste.pounce_delay)
 		used_pounce = 0
-		to_chat(src, "<span class='notice'>Your exoskeleton quivers as you get ready to charge again.</span>")
+		to_chat(src, SPAN_NOTICE("Your exoskeleton quivers as you get ready to charge again."))
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()

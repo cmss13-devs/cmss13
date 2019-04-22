@@ -222,7 +222,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemfiresupp = TRUE
 	intensitymod = 0.75
-	radiusmod = -0.1
+	radiusmod = -0.075
 
 	custom_metabolism = 0.01
 
@@ -251,8 +251,9 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	chemfiresupp = TRUE
-	durationmod = -0.75
-	radiusmod = 0.1
+	durationmod = -0.5
+	radiusmod = 0.14
+	intensitymod = -0.75
 
 	custom_metabolism = 0.01
 
@@ -367,7 +368,7 @@
 	chemfiresupp = TRUE
 	intensitymod = 1.15
 	durationmod = 0.1
-	radiusmod = -0.14
+	radiusmod = -0.12
 
 	custom_metabolism = 0.01
 
@@ -454,7 +455,7 @@
 	chemfiresupp = TRUE
 	intensitymod = 0.25
 	durationmod = 1
-	radiusmod = -0.14
+	radiusmod = -0.10
 
 /datum/reagent/thermite/on_mob_life(mob/living/M)
 		. = ..()
@@ -808,6 +809,7 @@
 	chemfiresupp = TRUE
 	intensitymod = 1.25
 	durationmod = -0.75
+	radiusmod = -0.075
 
 /datum/reagent/chlorinetrifluoride/on_mob_life(var/mob/living/M) // Not a good idea, instantly messes you up from the inside out.
 	. = ..()

@@ -101,7 +101,7 @@
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
 	else if(istype(W, /obj/item/tool/wirecutters))
-		to_chat(user, "<span class='notice'>You cut the tag off the bodybag.</span>")
+		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
 		src.name = "body bag"
 		src.overlays.Cut()
 		return
@@ -148,7 +148,7 @@
 	if(over_object == usr && Adjacent(usr) && !roller_buckled)
 		if(!ishuman(usr))	return
 		if(contents.len)	return 0
-		visible_message("<span class='notice'>[usr] folds up [name].</span>")
+		visible_message(SPAN_NOTICE("[usr] folds up [name]."))
 		var/obj/item/I = new item_path(get_turf(src), src)
 		usr.put_in_hands(I)
 		qdel(src)
@@ -261,7 +261,7 @@
 	if(stasis_mob.stat == DEAD)// || !stasis_mob.key || !stasis_mob.client) // stop using cryobags for corpses and SSD/Ghosted
 		processing_objects.Remove(src)
 		open()
-		visible_message("<span class='notice'>\The [src] rejects the corpse.</span>")
+		visible_message(SPAN_NOTICE("\The [src] rejects the corpse."))
 		return
 	if(used > last_use) //cryostasis takes a couple seconds to kick in.
 		if(!stasis_mob.in_stasis)

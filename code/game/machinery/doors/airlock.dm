@@ -917,13 +917,13 @@ About the new airlock wires panel:
 				return
 	add_fingerprint(user)
 	if(istype(C, /obj/item/weapon/zombie_claws) && (src.welded || src.locked))
-		user.visible_message("<span class='notice'>[user] starts tearing into the door on the [src]!</span>", \
-			"<span class='notice'>You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds.</span>", \
-			"<span class='notice'>You hear tearing noises!</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on the [src]!"), \
+			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
+			SPAN_NOTICE("You hear tearing noises!"))
 		if(do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='notice'>[user] slams the door open [src]!</span>", \
-			"<span class='notice'>You slam the door open!</span>", \
-			"<span class='notice'>You hear metal screeching!</span>")
+			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"), \
+			SPAN_NOTICE("You slam the door open!"), \
+			SPAN_NOTICE("You hear metal screeching!"))
 			src.locked = 0
 			src.welded = 0
 			src.update_icon()
@@ -939,9 +939,9 @@ About the new airlock wires panel:
 			return
 
 		if(W.remove_fuel(0,user))
-			user.visible_message("<span class='notice'>[user] starts working on \the [src] with [W].</span>", \
-			"<span class='notice'>You start working on \the [src] with [W].</span>", \
-			"<span class='notice'>You hear welding.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with [W]."), \
+			SPAN_NOTICE("You start working on \the [src] with [W]."), \
+			SPAN_NOTICE("You hear welding."))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
 				if(!src.welded)
@@ -956,7 +956,7 @@ About the new airlock wires panel:
 			return
 
 		p_open = !p_open
-		to_chat(user, "<span class='notice'>You [p_open ? "open" : "close"] [src]'s panel.</span>")
+		to_chat(user, SPAN_NOTICE("You [p_open ? "open" : "close"] [src]'s panel."))
 		update_icon()
 	else if(istype(C, /obj/item/tool/wirecutters))
 		return src.attack_hand(user)
@@ -975,7 +975,7 @@ About the new airlock wires panel:
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				to_chat(user, "<span class='notice'> You removed the airlock electronics!</span>")
+				to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
 
 				var/obj/structure/door_assembly/da = new assembly_type(src.loc)
 				if (istype(da, /obj/structure/door_assembly/multi_tile))

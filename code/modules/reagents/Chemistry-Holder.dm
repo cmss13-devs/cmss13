@@ -294,7 +294,7 @@ var/const/INGEST = 2
 
 					var/list/seen = viewers(4, get_turf(my_atom))
 					for(var/mob/M in seen)
-						to_chat(M, "<span class='notice'> \icon[my_atom] The solution begins to bubble.</span>")
+						to_chat(M, SPAN_NOTICE(" \icon[my_atom] The solution begins to bubble."))
 
 					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 
@@ -305,6 +305,7 @@ var/const/INGEST = 2
 	while(reaction_occured)
 	if(exploded) // clear reagents only when everything has reacted
 		clear_reagents()
+		exploded = FALSE
 	update_total()
 	return 0
 

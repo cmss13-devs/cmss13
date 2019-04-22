@@ -101,7 +101,7 @@
 	M.regenerate_icons()
 	if(!no_logs)
 		log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].</span>", 1)
+		message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode]."), 1)
 	return
 
 /client/proc/cmd_admin_dress_all()
@@ -119,7 +119,7 @@
 		src.cmd_admin_dress_human(M, dresscode, 1)
 
 	log_admin("[key_name(usr)] changed the equipment of ALL HUMANS to [dresscode].")
-	message_admins("<span class='notice'>[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode].</span>", 1)
+	message_admins(SPAN_NOTICE("[key_name_admin(usr)] changed the equipment of ALL HUMANS to [dresscode]."), 1)
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.

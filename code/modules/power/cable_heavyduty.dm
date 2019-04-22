@@ -16,10 +16,10 @@
 		return
 
 	if(istype(W, /obj/item/tool/wirecutters))
-		to_chat(usr, "<span class='notice'> These cables are too tough to be cut with those [W.name].</span>")
+		to_chat(usr, SPAN_NOTICE(" These cables are too tough to be cut with those [W.name]."))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
-		to_chat(usr, "<span class='notice'> You will need heavier cables to connect to these.</span>")
+		to_chat(usr, SPAN_NOTICE(" You will need heavier cables to connect to these."))
 		return
 	else
 		..()

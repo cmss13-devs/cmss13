@@ -79,7 +79,7 @@
 
 	for(var/atom/movable/A in stomach_contents)
 		stomach_contents.Remove(A)
-		A.forceMove(loc)
+		A.forceMove(get_turf(loc))
 		A.acid_damage = 0 //Reset the acid damage
 		if(ismob(A))
 			visible_message("<span class='danger'>[A] bursts out of [src]!</span>")
@@ -222,8 +222,8 @@
 				if(istype(H))
 					H.species.hug(H,src)
 				else
-					M.visible_message("<span class='notice'>[M] hugs [src] to make [t_him] feel better!</span>", \
-								"<span class='notice'>You hug [src] to make [t_him] feel better!</span>", null, 4)
+					M.visible_message(SPAN_NOTICE("[M] hugs [src] to make [t_him] feel better!"), \
+								SPAN_NOTICE("You hug [src] to make [t_him] feel better!"), null, 4)
 
 			AdjustKnockedout(-3)
 			AdjustStunned(-3)

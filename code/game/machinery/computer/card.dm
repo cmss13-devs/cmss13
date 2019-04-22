@@ -235,7 +235,7 @@
 					if(temp_name)
 						modify.registered_name = temp_name
 					else
-						src.visible_message("<span class='notice'>[src] buzzes rudely.</span>")
+						src.visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 			nanomanager.update_uis(src)
 
 		if ("account")

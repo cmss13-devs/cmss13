@@ -30,7 +30,7 @@
 	has_suit.overlays += inv_overlay
 
 	if(user)
-		to_chat(user, "<span class='notice'>You attach [src] to [has_suit].</span>")
+		to_chat(user, SPAN_NOTICE("You attach [src] to [has_suit]."))
 		src.add_fingerprint(user)
 
 /obj/item/clothing/tie/proc/on_removed()
@@ -135,7 +135,7 @@
 					return
 				if(user != H)
 					user.visible_message("[user] starts pinning [src] on [H]'s [U.name].", \
-					"<span class='notice'>You start pinning [src] on [H]'s [U.name].</span>")
+					SPAN_NOTICE("You start pinning [src] on [H]'s [U.name]."))
 					if(user.action_busy)
 						return
 					if(!do_mob(user, H, 20, BUSY_ICON_FRIENDLY))
@@ -145,11 +145,11 @@
 				on_attached(U, user)
 				H.update_inv_w_uniform()
 				if(user == H)
-					user.visible_message("<span class='notice'>[user] pins [src] to \his [U.name].</span>",
-					"<span class='notice'>You pin [src] to your [U.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
+					SPAN_NOTICE("You pin [src] to your [U.name]."))
 				else
 					user.visible_message("[user] pins [src] on [H]'s [U.name].", \
-					"<span class='notice'>You pin [src] on [H]'s [U.name].</span>")
+					SPAN_NOTICE("You pin [src] on [H]'s [U.name]."))
 		else
 			to_chat(user, "<span class='warning'>[src] needs a uniform to be pinned to.</span>")
 	else
@@ -275,7 +275,7 @@
 	holstered = W
 	user.drop_inv_item_to_loc(holstered, src)
 	holstered.add_fingerprint(user)
-	user.visible_message("<span class='notice'>[user] holsters the [holstered].</span>", "You holster the [holstered].")
+	user.visible_message(SPAN_NOTICE("[user] holsters the [holstered]."), "You holster the [holstered].")
 
 /obj/item/clothing/tie/holster/proc/unholster(mob/user as mob)
 	if(!holstered)
@@ -288,8 +288,8 @@
 			usr.visible_message("<span class='danger'>[user] draws the [holstered], ready to shoot!</span>", \
 			"<span class='danger'>You draw [holstered], ready to shoot!</span>")
 		else
-			user.visible_message("<span class='notice'>[user] draws the [holstered], pointing it at the ground.</span>", \
-			"<span class='notice'>You draw the [holstered], pointing it at the ground.</span>")
+			user.visible_message(SPAN_NOTICE("[user] draws the [holstered], pointing it at the ground."), \
+			SPAN_NOTICE("You draw the [holstered], pointing it at the ground."))
 		user.put_in_hands(holstered)
 		holstered.add_fingerprint(user)
 		holstered = null
@@ -380,7 +380,7 @@
 	..()
 
 /obj/item/clothing/tie/storage/attack_self(mob/user as mob)
-	to_chat(user, "<span class='notice'>You empty [src].</span>")
+	to_chat(user, SPAN_NOTICE("You empty [src]."))
 	var/turf/T = get_turf(src)
 	hold.hide_from(usr)
 	for(var/obj/item/I in hold.contents)

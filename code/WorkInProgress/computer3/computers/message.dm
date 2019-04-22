@@ -20,14 +20,14 @@
 	//Messages - Saves me time if I want to change something.
 	var/noserver = "<span class='alert'>ALERT: No server detected.</span>"
 	var/incorrectkey = "<span class='warning'>ALERT: Incorrect decryption key!</span>"
-	var/defaultmsg = "<span class='notice'>Welcome. Please select an option.</span>"
+	var/defaultmsg = SPAN_NOTICE("Welcome. Please select an option.")
 	var/rebootmsg = "<span class='warning'>%$&(�: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!</span>"
 
 	//Computer properties
 	var/screen = 0 		// 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
 	var/hacking = 0		// Is it being hacked into by the AI/Cyborg
 	var/emag = 0		// When it is emagged.
-	var/message = "<span class='notice'>System bootup complete. Please select an option.</span>"	// The message that shows on the main menu.
+	var/message = SPAN_NOTICE("System bootup complete. Please select an option.")	// The message that shows on the main menu.
 	var/auth = 0 // Are they authenticated?
 	var/optioncount = 7
 
@@ -264,7 +264,7 @@
 				message = "<span class='alert'>NOTICE: Server selected.</span>"
 			else if(message_servers && message_servers.len > 0)
 				linkedServer = message_servers[1]
-				message =  "<span class='notice'>NOTICE: Only Single Server Detected - Server selected.</span>"
+				message =  SPAN_NOTICE("NOTICE: Only Single Server Detected - Server selected.")
 			else
 				message = noserver
 
@@ -283,7 +283,7 @@
 			else
 				if(auth)
 					src.linkedServer.pda_msgs = list()
-					message = "<span class='notice'>NOTICE: Logs cleared.</span>"
+					message = SPAN_NOTICE("NOTICE: Logs cleared.")
 		//Clears the request console logs - KEY REQUIRED
 		if ("clearr" in href_list)
 			if(!linkedServer || (src.linkedServer.stat & (NOPOWER|BROKEN)))
@@ -291,7 +291,7 @@
 			else
 				if(auth)
 					src.linkedServer.rc_msgs = list()
-					message = "<span class='notice'>NOTICE: Logs cleared.</span>"
+					message = SPAN_NOTICE("NOTICE: Logs cleared.")
 		//Change the password - KEY REQUIRED
 		if ("pass" in href_list)
 			if(!linkedServer || (src.linkedServer.stat & (NOPOWER|BROKEN)))
@@ -303,12 +303,12 @@
 						if(src.linkedServer.decryptkey == dkey)
 							var/newkey = trim(input(usr,"Please enter the new key (3 - 16 characters max):"))
 							if(length(newkey) <= 3)
-								message = "<span class='notice'>NOTICE: Decryption key too short!</span>"
+								message = SPAN_NOTICE("NOTICE: Decryption key too short!")
 							else if(length(newkey) > 16)
-								message = "<span class='notice'>NOTICE: Decryption key too long!</span>"
+								message = SPAN_NOTICE("NOTICE: Decryption key too long!")
 							else if(newkey && newkey != "")
 								src.linkedServer.decryptkey = newkey
-							message = "<span class='notice'>NOTICE: Decryption key set.</span>"
+							message = SPAN_NOTICE("NOTICE: Decryption key set.")
 						else
 							message = incorrectkey
 
@@ -330,7 +330,7 @@
 					message = noserver
 				else //if(istype(href_list["delete"], /datum/data_pda_msg))
 					src.linkedServer.pda_msgs -= locate(href_list["delete"])
-					message = "<span class='notice'>NOTICE: Log Deleted!</span>"
+					message = SPAN_NOTICE("NOTICE: Log Deleted!")
 		//Delete the request console log.
 		if ("deleter" in href_list)
 			//Are they on the view logs screen?
@@ -339,7 +339,7 @@
 					message = noserver
 				else //if(istype(href_list["delete"], /datum/data_pda_msg))
 					src.linkedServer.rc_msgs -= locate(href_list["deleter"])
-					message = "<span class='notice'>NOTICE: Log Deleted!</span>"
+					message = SPAN_NOTICE("NOTICE: Log Deleted!")
 		//Create a custom message
 		if ("msg" in href_list)
 			if(src.linkedServer == null || (src.linkedServer.stat & (NOPOWER|BROKEN)))
@@ -392,11 +392,11 @@
 							customsender = "UNKNOWN"
 
 						if(isnull(customrecepient))
-							message = "<span class='notice'>NOTICE: No recepient selected!</span>"
+							message = SPAN_NOTICE("NOTICE: No recepient selected!")
 							return src.attack_hand(usr)
 
 						if(isnull(custommessage) || custommessage == "")
-							message = "<span class='notice'>NOTICE: No message entered!</span>"
+							message = SPAN_NOTICE("NOTICE: No message entered!")
 							return src.attack_hand(usr)
 
 						var/obj/item/device/pda/PDARec = null

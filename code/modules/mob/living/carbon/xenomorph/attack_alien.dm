@@ -16,8 +16,8 @@
 	switch(M.a_intent)
 
 		if("help")
-			M.visible_message("<span class='notice'>\The [M] caresses [src] with its scythe-like arm.</span>", \
-			"<span class='notice'>You caress [src] with your scythe-like arm.</span>", null, 5)
+			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5)
 
 		if("grab")
 			if(M == src || anchored || buckled)
@@ -216,8 +216,8 @@
 
 	switch(M.a_intent)
 		if("help")
-			M.visible_message("<span class='notice'>\The [M] caresses [src] with its scythe-like arm.</span>", \
-			"<span class='notice'>You caress [src] with your scythe-like arm.</span>", null, 5)
+			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5)
 			return 0
 
 		if("grab")
@@ -770,8 +770,8 @@
 		to_chat(M, "<span class='warning'>There is nothing to clear out!</span>")
 		return 0
 
-	M.visible_message("<span class='notice'>\The [M] starts clearing out \the [src].</span>", \
-	"<span class='notice'>You start clearing out \the [src].</span>", null, 5)
+	M.visible_message(SPAN_NOTICE("\The [M] starts clearing out \the [src]."), \
+	SPAN_NOTICE("You start clearing out \the [src]."), null, 5)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return 0
@@ -780,8 +780,8 @@
 		M  << "<span class='warning'>There is nothing to clear out!</span>"
 		return
 
-	M.visible_message("<span class='notice'>\The [M] clears out \the [src].</span>", \
-	"<span class='notice'>You clear out \the [src].</span>", null, 5)
+	M.visible_message(SPAN_NOTICE("\The [M] clears out \the [src]."), \
+	SPAN_NOTICE("You clear out \the [src]."), null, 5)
 	slayer -= 1
 	update_icon(1, 0)
 

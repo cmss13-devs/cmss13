@@ -172,7 +172,7 @@
 
 	log_say("[key_name(src)] communed to [key_name(M)]: [text]")
 
-	to_chat(M, "<span class='notice'> Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]</span>")
+	to_chat(M, SPAN_NOTICE(" Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)

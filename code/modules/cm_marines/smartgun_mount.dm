@@ -94,7 +94,7 @@
 
 /obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
 	if(!ishuman(usr)) return
-	to_chat(user, "<span class='notice'>You deploy [src].</span>")
+	to_chat(user, SPAN_NOTICE("You deploy [src]."))
 	new /obj/machinery/m56d_post(user.loc)
 	qdel(src)
 
@@ -150,7 +150,7 @@
 		if(anchored)
 			to_chat(user, "<span class='warning'>[src] can't be folded while screwed to the floor. Unscrew it first.</span>")
 			return
-		to_chat(user, "<span class='notice'>You fold [src].</span>")
+		to_chat(user, SPAN_NOTICE("You fold [src]."))
 		var/obj/item/device/m56d_post/P = new(loc)
 		user.put_in_hands(P)
 		qdel(src)
@@ -163,7 +163,7 @@
 
 	if(istype(O,/obj/item/tool/wrench)) //rotate the mount
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] rotates [src].</span>","<span class='notice'>You rotate [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] rotates [src]."),SPAN_NOTICE("You rotate [src]."))
 		switch(dir)
 			if(NORTH)
 				dir = EAST
@@ -183,7 +183,7 @@
 		to_chat(user, "You begin mounting [MG]..")
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] installs [MG] into place.</span>","<span class='notice'>You install [MG] into place.</span>")
+			user.visible_message(SPAN_NOTICE("[user] installs [MG] into place."),SPAN_NOTICE("You install [MG] into place."))
 			gun_mounted = 1
 			gun_rounds = MG.rounds
 			if(!gun_rounds)
@@ -201,7 +201,7 @@
 		to_chat(user, "You begin dismounting [src]'s gun..")
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] removes [src]'s gun.</span>","<span class='notice'>You remove [src]'s gun.</span>")
+			user.visible_message(SPAN_NOTICE("[user] removes [src]'s gun."),SPAN_NOTICE("You remove [src]'s gun."))
 			new /obj/item/device/m56d_gun(loc)
 			gun_mounted = 0
 			gun_rounds = 0
@@ -213,7 +213,7 @@
 			to_chat(user, "You're securing the M56D into place")
 			if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] screws the M56D into the mount.</span>","<span class='notice'>You finalize the M56D heavy machine gun.</span>")
+				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
 				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
@@ -243,9 +243,9 @@
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(anchored)
-					user.visible_message("<span class='notice'>[user] anchors [src] into place.</span>","<span class='notice'>You anchor [src] into place.</span>")
+					user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
 				else
-					user.visible_message("<span class='notice'>[user] unanchors [src].</span>","<span class='notice'>You unanchor [src].</span>")
+					user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
 		return
 
 	return ..()
@@ -338,7 +338,7 @@
 		else
 			to_chat(user, "You begin disassembling [src]")
 			if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message("<span class='notice'> [user] disassembles [src]! </span>","<span class='notice'> You disassemble [src]!</span>")
+				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
 				new /obj/item/device/m56d_post(src.loc)
@@ -355,7 +355,7 @@
 			if(user.action_busy) return
 			if(!do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
-		user.visible_message("<span class='notice'> [user] loads [src]! </span>","<span class='notice'> You load [src]!</span>")
+		user.visible_message(SPAN_NOTICE(" [user] loads [src]! "),SPAN_NOTICE(" You load [src]!"))
 		playsound(loc, 'sound/weapons/gun_minigun_cocked.ogg', 25, 1)
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
@@ -476,7 +476,7 @@
 			in_chamber = null
 			rounds--
 			if(!rounds)
-				visible_message("<span class='notice'> \icon[src] \The M56D beeps steadily and its ammo light blinks red.</span>")
+				visible_message(SPAN_NOTICE(" \icon[src] \The M56D beeps steadily and its ammo light blinks red."))
 				playsound(src.loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
 				update_icon() //final safeguard.
 	return
@@ -546,7 +546,7 @@
 		if(user.interactee == src)
 			user.unset_interaction()
 			visible_message("\icon[src] <span class='notice'>[user] decided to let someone else have a go </span>")
-			to_chat(usr, "<span class='notice'>You decided to let someone else have a go on the MG </span>")
+			to_chat(usr, SPAN_NOTICE("You decided to let someone else have a go on the MG "))
 			return
 		if(operator) //If there is already a operator then they're manning it.
 			if(operator.interactee == null)
@@ -562,7 +562,7 @@
 				to_chat(user, "<span class='warning'>You need a free hand to man the [src].</span>")
 			else
 				visible_message("\icon[src] <span class='notice'>[user] mans the M56D!</span>")
-				to_chat(user, "<span class='notice'>You man the gun!</span>")
+				to_chat(user, SPAN_NOTICE("You man the gun!"))
 				user.set_interaction(src)
 
 
@@ -607,7 +607,7 @@
 	if (mods["ctrl"])
 		if(operator != user) return //only the operatore can toggle fire mode
 		burst_fire = !burst_fire
-		to_chat(user, "<span class='notice'>You set [src] to [burst_fire ? "burst fire" : "single fire"] mode.</span>")
+		to_chat(user, SPAN_NOTICE("You set [src] to [burst_fire ? "burst fire" : "single fire"] mode."))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		return 1
 	return ..()

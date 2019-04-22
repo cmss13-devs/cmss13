@@ -6,7 +6,7 @@
 		var/mob/living/carbon/human/H = src
 		var/obj/item/I = H.get_active_hand()
 		if(!I)
-			to_chat(H, "<span class='notice'>You are not holding anything to equip.</span>")
+			to_chat(H, SPAN_NOTICE("You are not holding anything to equip."))
 			return
 		if(H.equip_to_appropriate_slot(I, 0))
 			if(hand)
@@ -458,7 +458,7 @@
 		if(!I.mob_can_equip(M, slot_to_process, TRUE))
 			to_chat(src, "<span class='warning'>You can't put \the [I.name] on [M]!</span>")
 			return
-		visible_message("<span class='notice'>[src] tries to put [I] on [M].</span>", null, 5)
+		visible_message(SPAN_NOTICE("[src] tries to put [I] on [M]."), null, 5)
 		if(do_mob(src, M, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 			if(I == get_active_hand() && !M.get_item_by_slot(slot_to_process) && Adjacent(M))
 				if(I.mob_can_equip(M, slot_to_process, TRUE))//Placing an item on the mob

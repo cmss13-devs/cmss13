@@ -86,32 +86,32 @@
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
+		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
 		return
 
 	if (istype(magazine, /obj/item/ammo_magazine/flamer_tank/large))
-		to_chat(user, "<span class='warning'>That tank is too large for this model!</span>")
+		to_chat(user, SPAN_WARNING("That tank is too large for this model!"))
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
+		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
-					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -129,8 +129,8 @@
 	else user.put_in_hands(current_mag)
 
 	playsound(user, unload_sound, 25, 1)
-	user.visible_message("<span class='notice'>[user] unloads [current_mag] from [src].</span>",
-	"<span class='notice'>You unload [current_mag] from [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+	SPAN_NOTICE("You unload [current_mag] from [src]."))
 	current_mag.update_icon()
 	current_mag = null
 
@@ -278,28 +278,28 @@
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
+		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
+		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
-					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -317,7 +317,7 @@
 			return
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
 
@@ -336,11 +336,15 @@
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 	var/flame_color = "red"
+	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
 
-/obj/flamer_fire/New(turf/loc, fire_lvl, burn_lvl, f_color, fire_spread_amount, mob/living/user)
+/obj/flamer_fire/New(turf/loc, fire_lvl, burn_lvl, f_color, fire_spread_amount, mob/living/user, new_flameshape)
 	..()
-	if (f_color)
+	if(f_color)
 		flame_color = f_color
+	
+	if(new_flameshape)
+		flameshape = new_flameshape
 
 	icon_state = "[flame_color]_2"
 	if(fire_lvl) firelevel = fire_lvl
@@ -348,24 +352,64 @@
 	processing_objects.Add(src)
 
 	if(fire_spread_amount > 0)
-		var/turf/T
-		for(var/dirn in cardinal)
-			T = get_step(loc, dirn)
-			if(istype(T,/turf/open/space)) continue
-			var/obj/flamer_fire/foundflame = locate() in T
-			if(foundflame)
-				foundflame.flame_color = f_color
-				foundflame.burnlevel = burn_lvl
-				foundflame.firelevel = fire_lvl
-				continue
-			var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
-			if(new_spread_amt)
-				for(var/obj/O in T)
-					if(!O.CanPass(src, loc))
-						new_spread_amt = 0
+		if(flameshape == FLAMESHAPE_DEFAULT || flameshape == FLAMESHAPE_IRREGULAR) // Irregular 'stutters' in shape
+			var/turf/T
+			for(var/dirn in cardinal)
+				T = get_step(loc, dirn)
+				if(istype(T,/turf/open/space)) continue
+				var/obj/flamer_fire/foundflame = locate() in T
+				if(foundflame)
+					foundflame.flame_color = f_color
+					foundflame.burnlevel = burn_lvl
+					foundflame.firelevel = fire_lvl
+					continue
+				var/new_spread_amt = T.density ? 0 : fire_spread_amount - 1 //walls stop the spread
+				if(new_spread_amt)
+					for(var/obj/O in T)
+						if(!O.CanPass(src, loc))
+							new_spread_amt = 0
+							break
+				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
+					continue
+				spawn(0) 
+					new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, flameshape)
+
+		if(flameshape == FLAMESHAPE_STAR || flameshape == FLAMESHAPE_MINORSTAR) // spread in a star-like pattern
+			fire_spread_amount = round(fire_spread_amount * 1.5) // branch 'length'
+			var/list/dirs = alldirs
+
+			if(flameshape == FLAMESHAPE_MINORSTAR)
+				if(prob(50))
+					dirs = cardinal
+				else
+					dirs = diagonals
+
+			for(var/dirn in dirs)
+				var/endturf = get_ranged_target_turf(src, dirn, fire_spread_amount)
+				var/list/turfs = getline2(src, endturf)
+				var/new_spread_amt = 0
+
+				for(var/turf/T in turfs)
+					if(istype(T,/turf/open/space)) continue
+					var/obj/flamer_fire/foundflame = locate() in T
+					if(foundflame)
+						foundflame.flame_color = f_color
+						foundflame.burnlevel = burn_lvl
+						foundflame.firelevel = fire_lvl
+						continue
+					if(T.density && !T.throwpass) // unpassable turfs stop the spread
 						break
-			spawn(0) 
-				new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user)
+					for(var/obj/O in T) // certain object block the spread
+						if(!O.CanPass(src, loc))
+							break
+					if(prob(15) && flameshape != "substar") // chance to branch a little
+						new_spread_amt = 1.5
+					spawn(0)
+						new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, FLAMESHAPE_MINORSTAR)
+					new_spread_amt = 0
+
+
+
 
 	//Apply fire effects onto everyone in the fire
 
@@ -500,7 +544,7 @@
 			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
 			if(prob(firelevel)) I.IgniteMob()
 			//I.adjustFireLoss(rand(10 ,burnlevel)) //Including the fire should be way stronger.
-			I.show_message(text("<span class='warning'>You are burned!</span>"),1)
+			I.show_message(text(SPAN_WARNING("You are burned!")),1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
 				var/mob/living/carbon/Xenomorph/X = I
 				X.updatehealth()

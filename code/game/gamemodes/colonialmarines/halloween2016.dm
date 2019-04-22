@@ -377,7 +377,7 @@
 		dir  = pick(CARDINAL_DIRS)
 
 	attack_hand(mob/M)
-		to_chat(M, "<span class='notice'>You peer through the fog, but it's impossible to tell what's on the other side...</span>")
+		to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
 
 	attack_alien(M)
 		return attack_hand(M)
@@ -404,7 +404,7 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(b_type.len && H.b_type in b_type)
-				to_chat(H, "<span class='notice'>You feel a sudden sense of relief wash over you...</span>")
+				to_chat(H, SPAN_NOTICE("You feel a sudden sense of relief wash over you..."))
 				return
 
 		switch(rand(1,3))
@@ -434,7 +434,7 @@
 			to_world("<span class='event_announcement'>A blood seal has broken! [--T.total_attuned ? T.total_attuned : "None"] remain!</span>")
 
 /obj/effect/rune/attunement/attack_hand(mob/living/user) //Special snowflake rune, do not steal 2016.
-	to_chat(user, "<span class='notice'>You touch the rune, feeling it glow beneath your fingertip. It feels warm, somehow pleasant. The rune soon fades and disappears, as you feel a new sense of understanding about the world.</span>")
+	to_chat(user, SPAN_NOTICE("You touch the rune, feeling it glow beneath your fingertip. It feels warm, somehow pleasant. The rune soon fades and disappears, as you feel a new sense of understanding about the world."))
 	//TODO: force 1 mutation - HULKBLOCK,XRAYBLOCK,FIREBLOCK,TELEBLOCK,NOBREATHBLOCK,REMOTEVIEWBLOCK
 	qdel(src)
 
@@ -1209,7 +1209,7 @@
 	switch(shuffle1)
 		if(1 to 4) horror << "<span class='alien'>You must baptize everything in fire! The world will burn! ROAR!</span>"
 		if(5 to 15) horror << "<span class='rough'>You hunger for blood of the living! Murder! Death! KILL!</span>"
-		else horror << "<span class='notice'>You have been transported to who-knows where from elsewhere! Fight the horrors of this place!</span>"
+		else horror << SPAN_NOTICE("You have been transported to who-knows where from elsewhere! Fight the horrors of this place!")
 	if(entry_sound) world << entry_sound
 
 /datum/game_mode/colonialmarines_halloween_2016/proc/generate_supply_crate(turf/supply_spawn[], supply_manifest[], crate_name = "supplies", crate_desc = "A crate of supplies. Surely the contents will help, somehow.")

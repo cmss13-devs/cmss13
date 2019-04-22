@@ -169,7 +169,7 @@
 			src.reagent_glass.loc = get_turf(src)
 			src.reagent_glass = null
 		else
-			to_chat(usr, "<span class='notice'>You cannot eject the beaker because the panel is locked.</span>")
+			to_chat(usr, SPAN_NOTICE("You cannot eject the beaker because the panel is locked."))
 
 	else if ((href_list["togglevoice"]) && (!src.locked || issilicon(usr)))
 		src.shut_up = !src.shut_up
@@ -184,7 +184,7 @@
 	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if (src.allowed(user) && !open && !emagged)
 			src.locked = !src.locked
-			to_chat(user, "<span class='notice'>Controls are now [src.locked ? "locked." : "unlocked."]</span>")
+			to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked." : "unlocked."]"))
 			src.updateUsrDialog()
 		else
 			if(emagged)
@@ -196,15 +196,15 @@
 
 	else if (istype(W, /obj/item/reagent_container/glass))
 		if(src.locked)
-			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
+			to_chat(user, SPAN_NOTICE("You cannot insert a beaker because the panel is locked."))
 			return
 		if(!isnull(src.reagent_glass))
-			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
+			to_chat(user, SPAN_NOTICE("There is already a beaker loaded."))
 			return
 
 		if(user.drop_inv_item_to_loc(W, src))
 			reagent_glass = W
-			to_chat(user, "<span class='notice'>You insert [W].</span>")
+			to_chat(user, SPAN_NOTICE("You insert [W]."))
 			src.updateUsrDialog()
 		return
 
@@ -517,7 +517,7 @@
 
 	//Making a medibot!
 	if(src.contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
+		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
 		return
 
 	var/obj/item/frame/firstaid_arm_assembly/A = new /obj/item/frame/firstaid_arm_assembly
@@ -530,6 +530,6 @@
 
 	qdel(S)
 	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
+	to_chat(user, SPAN_NOTICE("You add the robot arm to the first aid kit."))
 	user.temp_drop_inv_item(src)
 	qdel(src)

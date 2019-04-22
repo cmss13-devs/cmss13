@@ -297,9 +297,9 @@
 	if (flavor_text && flavor_text != "")
 		var/msg = oldreplacetext(flavor_text, "\n", " ")
 		if(lentext(msg) <= 40)
-			return "<span class='notice'>[msg]</span>"
+			return SPAN_NOTICE("[msg]")
 		else
-			return "<span class='notice'>[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a></span>"
+			return SPAN_NOTICE("[copytext(msg, 1, 37)]... <a href='byond://?src=\ref[src];flavor_more=1'>More...</a>")
 
 
 

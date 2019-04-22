@@ -154,7 +154,7 @@
 		return
 	if(istype(B, /obj/item/reagent_container/glass) || istype(B, /obj/item/reagent_container/food))
 		if(!accept_glass && istype(B,/obj/item/reagent_container/food))
-			to_chat(user, "<span class='notice'>This machine only accepts beakers</span>")
+			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 		if(user.drop_inv_item_to_loc(B, src))
 			beaker =  B
 			to_chat(user, "You set [B] on the machine.")
@@ -276,7 +276,7 @@
 			return
 		beaker = B
 		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, "<span class='notice'>You add the beaker to the machine!</span>")
+		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
 		icon_state = "mixer1"
 
@@ -288,7 +288,7 @@
 
 		loaded_pill_bottle = B
 		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, "<span class='notice'>You add the pill bottle into the dispenser slot!</span>")
+		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		updateUsrDialog()
 	return
 
@@ -797,7 +797,7 @@
 
 		beaker =  I
 		user.drop_inv_item_to_loc(I, src)
-		to_chat(user, "<span class='notice'>You add the beaker to the machine!</span>")
+		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
 		icon_state = "mixer1"
 

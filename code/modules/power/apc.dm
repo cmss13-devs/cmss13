@@ -398,16 +398,16 @@
 				to_chat(user, "<span class='warning'>Disconnect the terminal first.</span>")
 				return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts removing [src]'s power control board.</span>",
-			"<span class='notice'>You start removing [src]'s power control board.</span>") //lpeters - fixed grammar issues
+			user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s power control board."),
+			SPAN_NOTICE("You start removing [src]'s power control board.")) //lpeters - fixed grammar issues
 			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && has_electronics == 1)
 				has_electronics = 0
 				if((stat & BROKEN))
-					user.visible_message("<span class='notice'>[user] breaks [src]'s charred power control board and removes the remains.</span>",
-					"<span class='notice'>You break [src]'s charred power control board and remove the remains.</span>")
+					user.visible_message(SPAN_NOTICE("[user] breaks [src]'s charred power control board and removes the remains."),
+					SPAN_NOTICE("You break [src]'s charred power control board and remove the remains."))
 				else
-					user.visible_message("<span class='notice'>[user] removes [src]'s power control board.</span>",
-					"<span class='notice'>You remove [src]'s power control board.</span>")
+					user.visible_message(SPAN_NOTICE("[user] removes [src]'s power control board."),
+					SPAN_NOTICE("You remove [src]'s power control board."))
 					new /obj/item/circuitboard/apc(loc)
 		else if(opened != 2) //Cover isn't removed
 			opened = 0
@@ -449,14 +449,14 @@
 					has_electronics = 2
 					stat &= ~MAINT
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-					user.visible_message("<span class='notice'>[user] screws [src]'s circuit electronics into place.</span>",
-					"<span class='notice'>You screw [src]'s circuit electronics into place.</span>")
+					user.visible_message(SPAN_NOTICE("[user] screws [src]'s circuit electronics into place."),
+					SPAN_NOTICE("You screw [src]'s circuit electronics into place."))
 				else if(has_electronics == 2)
 					has_electronics = 1
 					stat |= MAINT
 					playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-					user.visible_message("<span class='notice'>[user] unfastens [src]'s circuit electronics.</span>",
-					"<span class='notice'>You unfasten [src]'s circuit electronics.</span>")
+					user.visible_message(SPAN_NOTICE("[user] unfastens [src]'s circuit electronics."),
+					SPAN_NOTICE("You unfasten [src]'s circuit electronics."))
 				else
 					to_chat(user, "<span class='warning'>There is nothing to secure.</span>")
 					return
@@ -465,8 +465,8 @@
 			to_chat(user, "<span class='warning'>The interface is broken.</span>")
 		else
 			wiresexposed = !wiresexposed
-			user.visible_message("<span class='notice'>[user] [wiresexposed ? "exposes" : "unexposes"] [src]'s wiring.</span>",
-			"<span class='notice'>You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring.</span>")
+			user.visible_message(SPAN_NOTICE("[user] [wiresexposed ? "exposes" : "unexposes"] [src]'s wiring."),
+			SPAN_NOTICE("You [wiresexposed ? "expose" : "unexpose"] [src]'s wiring."))
 			update_icon()
 
 	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/device/pda)) //Trying to unlock the interface with an ID card
@@ -484,8 +484,8 @@
 		else
 			if(allowed(usr))
 				locked = !locked
-				user.visible_message("<span class='notice'>[user] [locked ? "locks" : "unlocks"] [src]'s interface.</span>",
-				"<span class='notice'>You [locked ? "lock" : "unlock"] [src]'s interface.</span>")
+				user.visible_message(SPAN_NOTICE("[user] [locked ? "locks" : "unlocks"] [src]'s interface."),
+				SPAN_NOTICE("You [locked ? "lock" : "unlock"] [src]'s interface."))
 				update_icon()
 			else
 				to_chat(user, "<span class='warning'>Access denied.</span>")
@@ -517,8 +517,8 @@
 		if(C.get_amount() < 10)
 			to_chat(user, "<span class='warning'>You need more wires.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts wiring [src]'s frame.</span>",
-		"<span class='notice'>You start wiring [src]'s frame.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts wiring [src]'s frame."),
+		SPAN_NOTICE("You start wiring [src]'s frame."))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !terminal && opened && has_electronics != 2)
 			var/turf/T = get_turf(src)
@@ -529,8 +529,8 @@
 				s.start()
 				return
 			if(C.use(10))
-				user.visible_message("<span class='notice'>[user] wires [src]'s frame.</span>",
-				"<span class='notice'>You wire [src]'s frame.</span>")
+				user.visible_message(SPAN_NOTICE("[user] wires [src]'s frame."),
+				SPAN_NOTICE("You wire [src]'s frame."))
 				make_terminal()
 				terminal.connect_to_network()
 	else if(iswirecutter(W) && terminal && opened && has_electronics != 2)
@@ -540,8 +540,8 @@
 		if(loc:intact_tile)
 			to_chat(user, "<span class='warning'>You must remove the floor plating in front of the APC first.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts removing [src]'s wiring and terminal.</span>",
-		"<span class='notice'>You start removing [src]'s wiring and terminal.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s wiring and terminal."),
+		SPAN_NOTICE("You start removing [src]'s wiring and terminal."))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if (prob(50) && electrocute_mob(user, terminal.powernet, terminal))
@@ -550,21 +550,21 @@
 				s.start()
 				return
 			new /obj/item/stack/cable_coil(loc,10)
-			user.visible_message("<span class='notice'>[user] removes [src]'s wiring and terminal.</span>",
-			"<span class='notice'>You remove [src]'s wiring and terminal.</span>")
+			user.visible_message(SPAN_NOTICE("[user] removes [src]'s wiring and terminal."),
+			SPAN_NOTICE("You remove [src]'s wiring and terminal."))
 			qdel(terminal)
 			terminal = null
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && !(stat & BROKEN))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, "<span class='warning'>You have no idea what to do with [W].</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts inserting the power control board into [src].</span>",
-		"<span class='notice'>You start inserting the power control board into [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts inserting the power control board into [src]."),
+		SPAN_NOTICE("You start inserting the power control board into [src]."))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			has_electronics = 1
-			user.visible_message("<span class='notice'>[user] inserts the power control board into [src].</span>",
-			"<span class='notice'>You insert the power control board into [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] inserts the power control board into [src]."),
+			SPAN_NOTICE("You insert the power control board into [src]."))
 			qdel(W)
 	else if(istype(W, /obj/item/circuitboard/apc) && opened && has_electronics == 0 && (stat & BROKEN))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
@@ -580,19 +580,19 @@
 		if(WT.get_fuel() < 3)
 			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts welding [src]'s frame.</span>",
-		"<span class='notice'>You start welding [src]'s frame.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s frame."),
+		SPAN_NOTICE("You start welding [src]'s frame."))
 		playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src || !WT.remove_fuel(3, user)) return
 			if(emagged || (stat & BROKEN) || opened == 2)
 				new /obj/item/stack/sheet/metal(loc)
-				user.visible_message("<span class='notice'>[user] welds [src]'s frame apart.</span>",
-				"<span class='notice'>You weld [src]'s frame apart.</span>")
+				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."),
+				SPAN_NOTICE("You weld [src]'s frame apart."))
 			else
 				new /obj/item/frame/apc(loc)
-				user.visible_message("<span class='notice'>[user] welds [src]'s frame off the wall.</span>",
-				"<span class='notice'>You weld [src]'s frame off the wall.</span>")
+				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame off the wall."),
+				SPAN_NOTICE("You weld [src]'s frame off the wall."))
 			qdel(src)
 			return
 	else if(istype(W, /obj/item/frame/apc) && opened && emagged)
@@ -602,8 +602,8 @@
 		emagged = 0
 		if(opened == 2)
 			opened = 1
-		user.visible_message("<span class='notice'>[user] replaces [src]'s damaged frontal panel with a new one.</span>",
-		"<span class='notice'>You replace [src]'s damaged frontal panel with a new one.</span>")
+		user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged frontal panel with a new one."),
+		SPAN_NOTICE("You replace [src]'s damaged frontal panel with a new one."))
 		qdel(W)
 		update_icon()
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
@@ -613,11 +613,11 @@
 		if(has_electronics)
 			to_chat(user, "<span class='warning'>You cannot repair this APC until you remove the electronics still inside.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] begins replacing [src]'s damaged frontal panel with a new one.</span>",
-		"<span class='notice'>You begin replacing [src]'s damaged frontal panel with a new one.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins replacing [src]'s damaged frontal panel with a new one."),
+		SPAN_NOTICE("You begin replacing [src]'s damaged frontal panel with a new one."))
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message("<span class='notice'>[user] replaces [src]'s damaged frontal panel with a new one.</span>",
-			"<span class='notice'>You replace [src]'s damaged frontal panel with a new one.</span>")
+			user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged frontal panel with a new one."),
+			SPAN_NOTICE("You replace [src]'s damaged frontal panel with a new one."))
 			qdel(W)
 			stat &= ~BROKEN
 			if(opened == 2)
@@ -665,7 +665,7 @@
 						H.nutrition += cell.charge/10
 						cell.charge = 0
 
-					to_chat(user, "<span class='notice'>You slot your fingers into the APC interface and siphon off some of the stored charge for your own use.</span>")
+					to_chat(user, SPAN_NOTICE("You slot your fingers into the APC interface and siphon off some of the stored charge for your own use."))
 					if(cell.charge < 0) cell.charge = 0
 					if(H.nutrition > 500) H.nutrition = 500
 					charging = 1
@@ -709,8 +709,8 @@
 			cell.updateicon()
 
 			src.cell = null
-			user.visible_message("<span class='notice'>[user] removes the power cell from [src]!</span>",
-			"<span class='notice'>You remove the power cell from [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] removes the power cell from [src]!"),
+			SPAN_NOTICE("You remove the power cell from [src]."))
 			charging = 0
 			update_icon()
 		return

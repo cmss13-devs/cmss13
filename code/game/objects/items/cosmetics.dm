@@ -47,8 +47,8 @@
 			paint_face(H, user)
 			return 1
 		else
-			to_chat(user, "<span class='notice'>You attempt to apply [src] on [H]...</span>")
-			to_chat(H, "<span class='notice'>[user] is trying to apply [src] on your face...</span>")
+			to_chat(user, SPAN_NOTICE("You attempt to apply [src] on [H]..."))
+			to_chat(H, SPAN_NOTICE("[user] is trying to apply [src] on your face..."))
 			if(alert(H,"Will you allow [user] to paint your face?",,"Sure","No") == "Sure")
 				if( user && loc == user && (user in range(1,H)) ) //Have to be close and hold the thing.
 					paint_face(H, user)
@@ -59,8 +59,8 @@
 
 /obj/item/facepaint/proc/paint_face(var/mob/living/carbon/human/H, var/mob/user)
 	if(!H || !user) return //In case they're passed as null.
-	user.visible_message("<span class='notice'>[user] carefully applies [src] on [H]'s face.</span>", \
-						 "<span class='notice'>You apply [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
+						 SPAN_NOTICE("You apply [src]."))
 	H.lip_style = colour
 	H.update_body()
 	uses--

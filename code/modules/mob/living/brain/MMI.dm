@@ -33,7 +33,7 @@
 				return
 
 			for(var/mob/V in viewers(src, null))
-				V.show_message(text("<span class='notice'>[user] sticks \a [O] into \the [src].</span>"))
+				V.show_message(text(SPAN_NOTICE("[user] sticks \a [O] into \the [src].")))
 
 			brainmob = O:brainmob
 			O:brainmob = null
@@ -58,7 +58,7 @@
 		if((istype(O,/obj/item/card/id)||istype(O,/obj/item/device/pda)) && brainmob)
 			if(allowed(user))
 				locked = !locked
-				to_chat(user, "<span class='notice'> You [locked ? "lock" : "unlock"] the brain holder.</span>")
+				to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the brain holder."))
 			else
 				to_chat(user, "<span class='danger'>Access denied.</span>")
 			return
@@ -74,7 +74,7 @@
 		else if(locked)
 			to_chat(user, "<span class='danger'>You upend the MMI, but the brain is clamped into place.</span>")
 		else
-			to_chat(user, "<span class='notice'> You upend the MMI, spilling the brain onto the floor.</span>")
+			to_chat(user, SPAN_NOTICE(" You upend the MMI, spilling the brain onto the floor."))
 			var/obj/item/organ/brain/brain = new(user.loc)
 			brainmob.container = null//Reset brainmob mmi var.
 			brainmob.loc = brain//Throw mob into brain.
@@ -124,7 +124,7 @@
 				to_chat(brainmob, "Can't do that while incapacitated or dead.")
 
 			radio.broadcasting = radio.broadcasting==1 ? 0 : 1
-			to_chat(brainmob, "<span class='notice'> Radio is [radio.broadcasting==1 ? "now" : "no longer"] broadcasting.</span>")
+			to_chat(brainmob, SPAN_NOTICE(" Radio is [radio.broadcasting==1 ? "now" : "no longer"] broadcasting."))
 
 		Toggle_Listening()
 			set name = "Toggle Listening"
@@ -137,7 +137,7 @@
 				to_chat(brainmob, "Can't do that while incapacitated or dead.")
 
 			radio.listening = radio.listening==1 ? 0 : 1
-			to_chat(brainmob, "<span class='notice'> Radio is [radio.listening==1 ? "now" : "no longer"] receiving broadcast. </span>")
+			to_chat(brainmob, SPAN_NOTICE(" Radio is [radio.listening==1 ? "now" : "no longer"] receiving broadcast. "))
 
 /obj/item/device/mmi/emp_act(severity)
 	if(!brainmob)

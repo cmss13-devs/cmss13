@@ -518,7 +518,7 @@
 				m_type = 1
 				playsound(src.loc, 'sound/voice/pred_turnaround.ogg', 25, 0)
 		else
-			to_chat(src, "<span class='notice'> Unusable emote '[act]'. Say *help for a list of emotes.</span>")
+			to_chat(src, SPAN_NOTICE(" Unusable emote '[act]'. Say *help for a list of emotes."))
 
 	if (message)
 		log_emote("[name]/[key] : [message]")

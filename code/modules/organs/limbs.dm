@@ -471,7 +471,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if (prob(15))	//adjust this to tweak how fast people take toxin damage from infections
 				owner.adjustToxLoss(1)
 			if (prob(1) && (germ_level <= INFECTION_LEVEL_TWO))
-				to_chat(owner, "<span class='notice'>You have a slight fever...</span>")
+				to_chat(owner, SPAN_NOTICE("You have a slight fever..."))
 //LEVEL II
 	if(germ_level >= INFECTION_LEVEL_TWO && antibiotics < 3)
 		//spread the infection to internal organs
@@ -485,7 +485,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if (antibiotics < MIN_ANTIBIOTICS)
 				germ_level++
 		if (prob(1) && (germ_level <= INFECTION_LEVEL_THREE))
-			to_chat(owner, "<span class='notice'>Your infected wound itches and badly hurts!</span>")
+			to_chat(owner, SPAN_NOTICE("Your infected wound itches and badly hurts!"))
 
 		if (prob(25))	//adjust this to tweak how fast people take toxin damage from infections
 			owner.adjustToxLoss(1)
@@ -517,14 +517,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(germ_level >= INFECTION_LEVEL_THREE && antibiotics < 25)	//overdosing is necessary to stop severe infections
 		if (!(status & LIMB_NECROTIZED))
 			status |= LIMB_NECROTIZED
-			to_chat(owner, "<span class='notice'>You can't feel your [display_name] anymore...</span>")
+			to_chat(owner, SPAN_NOTICE("You can't feel your [display_name] anymore..."))
 			owner.update_body(1)
 
 		germ_level++
 		if (prob(50))	//adjust this to tweak how fast people take toxin damage from infections
 			owner.adjustToxLoss(1)
 		if (prob(1))
-			to_chat(owner, "<span class='notice'>You have a high fever!</span>")
+			to_chat(owner, SPAN_NOTICE("You have a high fever!"))
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /datum/limb/proc/update_wounds()
 
@@ -1026,7 +1026,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(do_mob(user, target, 50, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 				user.visible_message(
 				"<span class='warning'>[user] finishes applying [S] to [target]'s [display_name].</span>",
-				"<span class='notice'>You finish applying [S] to [target]'s [display_name].</span>")
+				SPAN_NOTICE("You finish applying [S] to [target]'s [display_name]."))
 				status |= LIMB_SPLINTED
 				. = 1
 		else 
@@ -1034,7 +1034,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(do_mob(user, target, 150, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
 				user.visible_message(
 				"<span class='warning'>[user] successfully applies [S] to their [display_name].</span>",
-				"<span class='notice'>You successfully apply [S] to your [display_name].</span>")
+				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))
 				status |= LIMB_SPLINTED
 				. = 1
 

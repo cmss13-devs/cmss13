@@ -384,7 +384,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		r_FAL
 		return
 	M.forceMove(src)
-	to_chat(M, "<span class='notice'>You feel cool air surround you as your mind goes blank and the pod locks.</span>")
+	to_chat(M, SPAN_NOTICE("You feel cool air surround you as your mind goes blank and the pod locks."))
 	occupant = M
 	occupant.in_stasis = STASIS_IN_CRYO_CELL
 	add_fingerprint(M)

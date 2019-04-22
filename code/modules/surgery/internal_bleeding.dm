@@ -22,14 +22,14 @@
 				return 1
 
 /datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts patching the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>" , \
-	"<span class='notice'>You start patching the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts patching the damaged vein in [target]'s [affected.display_name] with \the [tool].") , \
+	SPAN_NOTICE("You start patching the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("The pain in [affected.display_name] is unbearable!",1)
 	..()
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has patched the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>", \
-		"<span class='notice'>You have patched the damaged vein in [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."), \
+		SPAN_NOTICE("You have patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
 
 	for(var/datum/wound/W in affected.wounds)
 		if(W.internal)

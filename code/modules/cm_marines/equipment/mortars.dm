@@ -58,13 +58,13 @@
 		if(busy)
 			to_chat(user, "<span class='warning'>Someone else is currently using this mortar.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts adjusting [src]'s firing angle and distance.</span>",
-		"<span class='notice'>You start adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts adjusting [src]'s firing angle and distance."),
+		SPAN_NOTICE("You start adjusting [src]'s firing angle and distance to match the new coordinates."))
 		busy = 1
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message("<span class='notice'>[user] finishes adjusting [src]'s firing angle and distance.</span>",
-			"<span class='notice'>You finish adjusting [src]'s firing angle and distance to match the new coordinates.</span>")
+			user.visible_message(SPAN_NOTICE("[user] finishes adjusting [src]'s firing angle and distance."),
+			SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 			busy = 0
 			targ_x = deobfuscate_x(temp_targ_x)
 			targ_y = deobfuscate_y(temp_targ_y)
@@ -95,13 +95,13 @@
 		if(busy)
 			to_chat(user, "<span class='warning'>Someone else is currently using this mortar.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts dialing [src]'s firing angle and distance.</span>",
-		"<span class='notice'>You start dialing [src]'s firing angle and distance to match the new coordinates.</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts dialing [src]'s firing angle and distance."),
+		SPAN_NOTICE("You start dialing [src]'s firing angle and distance to match the new coordinates."))
 		busy = 1
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message("<span class='notice'>[user] finishes dialing [src]'s firing angle and distance.</span>",
-			"<span class='notice'>You finish dialing [src]'s firing angle and distance to match the new coordinates.</span>")
+			user.visible_message(SPAN_NOTICE("[user] finishes dialing [src]'s firing angle and distance."),
+			SPAN_NOTICE("You finish dialing [src]'s firing angle and distance to match the new coordinates."))
 			busy = 0
 			dial_x = temp_dial_x
 			dial_y = temp_dial_y
@@ -133,13 +133,13 @@
 			to_chat(user, "<span class='warning'>You cannot hit the target. It is probably underground.</span>")
 			return
 
-		user.visible_message("<span class='notice'>[user] starts loading \a [mortar_shell.name] into [src].</span>",
-		"<span class='notice'>You start loading \a [mortar_shell.name] into [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts loading \a [mortar_shell.name] into [src]."),
+		SPAN_NOTICE("You start loading \a [mortar_shell.name] into [src]."))
 		playsound(loc, 'sound/weapons/gun_mortar_reload.ogg', 50, 1)
 		busy = 1
 		if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='notice'>[user] loads \a [mortar_shell.name] into [src].</span>",
-			"<span class='notice'>You load \a [mortar_shell.name] into [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] loads \a [mortar_shell.name] into [src]."),
+			SPAN_NOTICE("You load \a [mortar_shell.name] into [src]."))
 			visible_message("\icon[src] <span class='danger'>The [name] fires!</span>")
 			user.drop_inv_item_to_loc(mortar_shell, src)
 			playsound(loc, 'sound/weapons/gun_mortar_fire.ogg', 50, 1)

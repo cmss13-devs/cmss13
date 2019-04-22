@@ -90,7 +90,7 @@
 	if(user.action_busy)
 		return
 
-	to_chat(user, "<span class='notice'>You start crawling through the hole.</span>")
+	to_chat(user, SPAN_NOTICE("You start crawling through the hole."))
 
 	if(do_after(user, 15, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(!user.is_mob_incapacitated() && !user.lying && !user.buckled)
@@ -126,7 +126,7 @@
 			to_chat(user, "<span class='warning'>This hole leads nowhere!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>You take the position to throw [G].</span>")
+		to_chat(user, SPAN_NOTICE("You take the position to throw [G]."))
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
@@ -148,7 +148,7 @@
 			to_chat(user, "<span class='warning'>This hole leads nowhere!</span>")
 			return
 
-		to_chat(user, "<span class='notice'>You take the position to throw [F].</span>")
+		to_chat(user, SPAN_NOTICE("You take the position to throw [F]."))
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return

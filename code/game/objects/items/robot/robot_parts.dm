@@ -134,9 +134,9 @@
 				chest = W
 				updateicon()
 		else if(!W:wires)
-			to_chat(user, "<span class='notice'> You need to attach wires to it first!</span>")
+			to_chat(user, SPAN_NOTICE(" You need to attach wires to it first!"))
 		else
-			to_chat(user, "<span class='notice'> You need to attach a cell to it first!</span>")
+			to_chat(user, SPAN_NOTICE(" You need to attach a cell to it first!"))
 
 	if(istype(W, /obj/item/robot_parts/head))
 		if(head)	return
@@ -145,7 +145,7 @@
 				head = W
 				updateicon()
 		else
-			to_chat(user, "<span class='notice'> You need to attach a flash to it first!</span>")
+			to_chat(user, SPAN_NOTICE(" You need to attach a flash to it first!"))
 
 	if(istype(W, /obj/item/device/mmi))
 		var/obj/item/device/mmi/M = W
@@ -164,7 +164,7 @@
 							ghost_can_reenter = 1
 							break
 				if(!ghost_can_reenter)
-					to_chat(user, "<span class='notice'>\The [W] is completely unresponsive; there's no point.</span>")
+					to_chat(user, SPAN_NOTICE("\The [W] is completely unresponsive; there's no point."))
 					return
 
 			if(M.brainmob.stat == DEAD)
@@ -208,7 +208,7 @@
 
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'> The MMI must go in after everything else!</span>")
+			to_chat(user, SPAN_NOTICE(" The MMI must go in after everything else!"))
 
 	if (istype(W, /obj/item/tool/pen))
 		var/t = stripped_input(user, "Enter new robot name", src.name, src.created_name, MAX_NAME_LEN)
@@ -225,21 +225,21 @@
 	..()
 	if(istype(W, /obj/item/cell))
 		if(src.cell)
-			to_chat(user, "<span class='notice'> You have already inserted a cell!</span>")
+			to_chat(user, SPAN_NOTICE(" You have already inserted a cell!"))
 			return
 		else
 			if(user.drop_inv_item_to_loc(W, src))
 				cell = W
-				to_chat(user, "<span class='notice'> You insert the cell!</span>")
+				to_chat(user, SPAN_NOTICE(" You insert the cell!"))
 	if(istype(W, /obj/item/stack/cable_coil))
 		if(src.wires)
-			to_chat(user, "<span class='notice'> You have already inserted wire!</span>")
+			to_chat(user, SPAN_NOTICE(" You have already inserted wire!"))
 			return
 		else
 			var/obj/item/stack/cable_coil/coil = W
 			coil.use(1)
 			src.wires = 1.0
-			to_chat(user, "<span class='notice'> You insert the wire!</span>")
+			to_chat(user, SPAN_NOTICE(" You insert the wire!"))
 	return
 
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
@@ -249,18 +249,18 @@
 			to_chat(user, "<span class='danger'>How do you propose to do that?</span>")
 			return
 		else if(src.flash1 && src.flash2)
-			to_chat(user, "<span class='notice'> You have already inserted the eyes!</span>")
+			to_chat(user, SPAN_NOTICE(" You have already inserted the eyes!"))
 			return
 		else if(src.flash1)
 			if(user.drop_inv_item_to_loc(W, src))
 				flash2 = W
-				to_chat(user, "<span class='notice'> You insert the flash into the eye socket!</span>")
+				to_chat(user, SPAN_NOTICE(" You insert the flash into the eye socket!"))
 		else
 			user.drop_inv_item_to_loc(W, src)
 			flash1 = W
-			to_chat(user, "<span class='notice'> You insert the flash into the eye socket!</span>")
+			to_chat(user, SPAN_NOTICE(" You insert the flash into the eye socket!"))
 	else if(istype(W, /obj/item/stock_parts/manipulator))
-		to_chat(user, "<span class='notice'> You install some manipulators and modify the head, creating a functional spider-bot!</span>")
+		to_chat(user, SPAN_NOTICE(" You install some manipulators and modify the head, creating a functional spider-bot!"))
 		new /mob/living/simple_animal/spiderbot(get_turf(loc))
 		user.temp_drop_inv_item(W)
 		qdel(W)

@@ -92,8 +92,8 @@
 	if(istype(O,/obj/item/tool/wrench))
 		if(anchored)
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] rotates [src].</span>",
-			"<span class='notice'>You rotate [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] rotates [src]."),
+			SPAN_NOTICE("You rotate [src]."))
 			switch(dir)
 				if(SOUTH)
 					dir = WEST
@@ -108,12 +108,12 @@
 				to_chat(user, "<span class='warning'>There already is a turret in this position.</span>")
 				return
 
-			user.visible_message("<span class='notice'>[user] begins securing [src] to the ground.</span>",
-			"<span class='notice'>You begin securing [src] to the ground.</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
+			SPAN_NOTICE("You begin securing [src] to the ground."))
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] secures [src] to the ground.</span>",
-				"<span class='notice'>You secure [src] to the ground.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src] to the ground."),
+				SPAN_NOTICE("You secure [src] to the ground."))
 				anchored = 1
 		return
 
@@ -128,14 +128,14 @@
 		if(has_cable)
 			to_chat(user, "<span class='warning'>[src]'s wiring is already installed.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] begins installing [src]'s wiring.</span>",
-		"<span class='notice'>You begin installing [src]'s wiring.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins installing [src]'s wiring."),
+		SPAN_NOTICE("You begin installing [src]'s wiring."))
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(CC.use(10))
 				has_cable = 1
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] installs [src]'s wiring.</span>",
-				"<span class='notice'>You install [src]'s wiring.</span>")
+				user.visible_message(SPAN_NOTICE("[user] installs [src]'s wiring."),
+				SPAN_NOTICE("You install [src]'s wiring."))
 				icon_state = "sentry_base_wired"
 				return
 			else
@@ -149,12 +149,12 @@
 		if(has_top)
 			to_chat(user, "<span class='warning'>[src] already has a turret installed.</span>")
 			return
-		user.visible_message("<span class='notice'>[user] begins installing [O] on [src].</span>",
-		"<span class='notice'>You begin installing [O] on [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins installing [O] on [src]."),
+		SPAN_NOTICE("You begin installing [O] on [src]."))
 		if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] installs [O] on [src].</span>",
-			"<span class='notice'>You install [O] on [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] installs [O] on [src]."),
+			SPAN_NOTICE("You install [O] on [src]."))
 			has_top = 1
 			icon_state = "sentry_armorless"
 			user.drop_held_item()
@@ -176,15 +176,15 @@
 			to_chat(user, "<span class='warning'>[src]'s plating will require at least ten sheets of metal.</span>")
 			return
 
-		user.visible_message("<span class='notice'>[user] begins installing [src]'s reinforced plating.</span>",
-		"<span class='notice'>You begin installing [src]'s reinforced plating.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins installing [src]'s reinforced plating."),
+		SPAN_NOTICE("You begin installing [src]'s reinforced plating."))
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!M) return
 			if(M.amount >= 10)
 				has_plates = 1
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] installs [src]'s reinforced plating.</span>",
-				"<span class='notice'>You install [src]'s reinforced plating.</span>")
+				user.visible_message(SPAN_NOTICE("[user] installs [src]'s reinforced plating."),
+				SPAN_NOTICE("You install [src]'s reinforced plating."))
 				M.use(10)
 				return
 			else
@@ -198,14 +198,14 @@
 			return
 		var/obj/item/tool/weldingtool/WT = O
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] begins welding [src]'s parts together.</span>",
-		"<span class='notice'>You begin welding [src]'s parts together.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins welding [src]'s parts together."),
+		SPAN_NOTICE("You begin welding [src]'s parts together."))
 		if(do_after(user,60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src || !WT || !WT.isOn()) return
 			if(WT.remove_fuel(0, user))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] welds [src]'s plating to the frame.</span>",
-				"<span class='notice'>You weld [src]'s plating to the frame.</span>")
+				user.visible_message(SPAN_NOTICE("[user] welds [src]'s plating to the frame."),
+				SPAN_NOTICE("You weld [src]'s plating to the frame."))
 				is_welded = 1
 				icon_state = "sentry_sensor_none"
 				return
@@ -223,13 +223,13 @@
 			to_chat(user, "<span class='warning'>[src] already has a sensor installed.</span>")
 			return
 
-		user.visible_message("<span class='notice'>[user] begins installing [O] on [src].</span>",
-		"<span class='notice'>You begin installing [O] on [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins installing [O] on [src]."),
+		SPAN_NOTICE("You begin installing [O] on [src]."))
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			has_sensor = 1
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] installs [O] on [src].</span>",
-			"<span class='notice'>You install [O] on [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] installs [O] on [src]."),
+			SPAN_NOTICE("You install [O] on [src]."))
 			icon_state = "sentry_off"
 			user.drop_held_item()
 			qdel(O)
@@ -347,11 +347,11 @@
 		return
 
 	if(stat)
-		user.visible_message("<span class='notice'>[user] begins to set [src] upright.</span>",
-		"<span class='notice'>You begin to set [src] upright.</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins to set [src] upright."),
+		SPAN_NOTICE("You begin to set [src] upright."))
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			user.visible_message("<span class='notice'>[user] sets [src] upright.</span>",
-			"<span class='notice'>You set [src] upright.</span>")
+			user.visible_message(SPAN_NOTICE("[user] sets [src] upright."),
+			SPAN_NOTICE("You set [src] upright."))
 			stat = 0
 			update_icon()
 			update_health()
@@ -413,12 +413,12 @@
 			if(burst_fire)
 				burst_fire = 0
 				visible_message("\icon[src] A green light on [src] blinks slowly.")
-				to_chat(usr, "<span class='notice'> You deactivate the burst fire mode.</span>")
+				to_chat(usr, SPAN_NOTICE(" You deactivate the burst fire mode."))
 			else
 				burst_fire = 1
 				fire_delay = 15
-				user.visible_message("<span class='notice'>[user] activates [src]'s burst fire mode.</span>",
-				"<span class='notice'>You activate [src]'s burst fire mode.</span>")
+				user.visible_message(SPAN_NOTICE("[user] activates [src]'s burst fire mode."),
+				SPAN_NOTICE("You activate [src]'s burst fire mode."))
 				visible_message("\icon[src] <span class='notice'>A green light on [src] blinks rapidly.</span>")
 
 		/*if("manual") //Alright so to clean this up, fuck that manual control pop up. Its a good idea but its not working out in practice.
@@ -430,15 +430,15 @@
 				return
 			if(!operator) //Make sure we can use it.
 				operator = user
-				user.visible_message("<span class='notice'>[user] takes manual control of [src]</span>",
-				"<span class='notice'>You take manual control of [src]</span>")
+				user.visible_message(SPAN_NOTICE("[user] takes manual control of [src]"),
+				SPAN_NOTICE("You take manual control of [src]"))
 				visible_message("\icon[src] <span class='warning'>The [name] buzzes: <B>WARNING!</B> MANUAL OVERRIDE INITIATED.</span>")
 				user.set_interaction(src)
 				manual_override = 1
 			else
 				if(user.interactee)
-					user.visible_message("<span class='notice'>[user] lets go of [src]</span>",
-					"<span class='notice'>You let go of [src]</span>")
+					user.visible_message(SPAN_NOTICE("[user] lets go of [src]"),
+					SPAN_NOTICE("You let go of [src]"))
 					visible_message("\icon[src] <span class='notice'>The [name] buzzes: AI targeting re-initialized.</span>")
 					user.unset_interaction()
 				else
@@ -454,8 +454,8 @@
 
 		if("power")
 			if(!on)
-				user.visible_message("<span class='notice'>[user] activates [src].</span>",
-				"<span class='notice'>You activate [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] activates [src]."),
+				SPAN_NOTICE("You activate [src]."))
 				visible_message("\icon[src] <span class='notice'>The [name] hums to life and emits several beeps.</span>")
 				visible_message("\icon[src] <span class='notice'>The [name] buzzes in a monotone voice: 'Default systems initiated'.</span>'")
 				target = null
@@ -468,8 +468,8 @@
 				update_icon()
 			else
 				on = 0
-				user.visible_message("<span class='notice'>[user] deactivates [src].</span>",
-				"<span class='notice'>You deactivate [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] deactivates [src]."),
+				SPAN_NOTICE("You deactivate [src]."))
 				visible_message("\icon[src] <span class='notice'>The [name] powers down and goes silent.</span>")
 				update_icon()
 
@@ -496,8 +496,8 @@
 	if(istype(O, /obj/item/card/id))
 		if(allowed(user))
 			locked = !locked
-			user.visible_message("<span class='notice'>[user] [locked ? "locks" : "unlocks"] [src]'s panel.</span>",
-			"<span class='notice'>You [locked ? "lock" : "unlock"] [src]'s panel.</span>")
+			user.visible_message(SPAN_NOTICE("[user] [locked ? "locks" : "unlocks"] [src]'s panel."),
+			SPAN_NOTICE("You [locked ? "lock" : "unlock"] [src]'s panel."))
 			if(locked)
 				if(user.interactee == src)
 					user.unset_interaction()
@@ -522,24 +522,24 @@
 				to_chat(user, "<span class='warning'>[src] is currently active. The motors will prevent you from unanchoring it safely.</span>")
 				return
 
-			user.visible_message("<span class='notice'>[user] begins unanchoring [src] from the ground.</span>",
-			"<span class='notice'>You begin unanchoring [src] from the ground.</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins unanchoring [src] from the ground."),
+			SPAN_NOTICE("You begin unanchoring [src] from the ground."))
 
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message("<span class='notice'>[user] unanchors [src] from the ground.</span>",
-				"<span class='notice'>You unanchor [src] from the ground.</span>")
+				user.visible_message(SPAN_NOTICE("[user] unanchors [src] from the ground."),
+				SPAN_NOTICE("You unanchor [src] from the ground."))
 				anchored = 0
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
 
 		//Secure
 		if(loc) //Just to be safe.
-			user.visible_message("<span class='notice'>[user] begins securing [src] to the ground.</span>",
-			"<span class='notice'>You begin securing [src] to the ground.</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins securing [src] to the ground."),
+			SPAN_NOTICE("You begin securing [src] to the ground."))
 
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message("<span class='notice'>[user] secures [src] to the ground.</span>",
-				"<span class='notice'>You secure [src] to the ground.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src] to the ground."),
+				SPAN_NOTICE("You secure [src] to the ground."))
 				anchored = 1
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			return
@@ -557,8 +557,8 @@
 			return
 
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] rotates [src].</span>",
-		"<span class='notice'>You rotate [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] rotates [src]."),
+		SPAN_NOTICE("You rotate [src]."))
 		if(dir == NORTH)
 			dir = EAST
 		else if(dir == EAST)
@@ -581,11 +581,11 @@
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message("<span class='notice'>[user] begins repairing [src].</span>",
-			"<span class='notice'>You begin repairing [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins repairing [src]."),
+			SPAN_NOTICE("You begin repairing [src]."))
 			if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY))
-				user.visible_message("<span class='notice'>[user] repairs [src].</span>",
-				"<span class='notice'>You repair [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs [src]."),
+				SPAN_NOTICE("You repair [src]."))
 				update_health(-50)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
@@ -599,12 +599,12 @@
 					to_chat(user, "<span class='warning'>Turn off [src] before attempting to remove the battery!</span>")
 					return
 
-				user.visible_message("<span class='notice'>[user] begins removing [src]'s [cell.name].</span>",
-				"<span class='notice'>You begin removing [src]'s [cell.name].</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins removing [src]'s [cell.name]."),
+				SPAN_NOTICE("You begin removing [src]'s [cell.name]."))
 
 				if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					user.visible_message("<span class='notice'>[user] removes [src]'s [cell.name].</span>",
-					"<span class='notice'>You remove [src]'s [cell.name].</span>")
+					user.visible_message(SPAN_NOTICE("[user] removes [src]'s [cell.name]."),
+					SPAN_NOTICE("You remove [src]'s [cell.name]."))
 					playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 					user.put_in_hands(cell)
 					cell = null
@@ -616,12 +616,12 @@
 			to_chat(user, "<span class='warning'>There is already \a [cell.name] installed in [src]! Remove it with a crowbar first!</span>")
 			return
 
-		user.visible_message("<span class='notice'>[user] begins installing \a [O.name] into [src].</span>",
-		"<span class='notice'>You begin installing \a [O.name] into [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] begins installing \a [O.name] into [src]."),
+		SPAN_NOTICE("You begin installing \a [O.name] into [src]."))
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.drop_inv_item_to_loc(O, src)
-			user.visible_message("<span class='notice'>[user] installs \a [O.name] into [src].</span>",
-			"<span class='notice'>You install \a [O.name] into [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] installs \a [O.name] into [src]."),
+			SPAN_NOTICE("You install \a [O.name] into [src]."))
 			cell = O
 			update_icon()
 		return
@@ -633,15 +633,15 @@
 			if(rounds)
 				to_chat(user, "<span class='warning'>You only know how to swap the box magazine when it's empty.</span>")
 				return
-			user.visible_message("<span class='notice'>[user] begins swapping a new [O.name] into [src].</span>",
-			"<span class='notice'>You begin swapping a new [O.name] into [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] begins swapping a new [O.name] into [src]."),
+			SPAN_NOTICE("You begin swapping a new [O.name] into [src]."))
 			if(user.action_busy) return
 			if(!do_after(user, 70, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
 
 		playsound(loc, 'sound/weapons/unload.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] swaps a new [O.name] into [src].</span>",
-		"<span class='notice'>You swap a new [O.name] into [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] swaps a new [O.name] into [src]."),
+		SPAN_NOTICE("You swap a new [O.name] into [src]."))
 		user.drop_held_item()
 		update_icon()
 
@@ -978,8 +978,8 @@
 	if(operator.interactee != src) return HANDLE_CLICK_UNHANDLED
 	if(is_bursting) return
 	if(get_dist(user, src) > 1 || user.is_mob_incapacitated())
-		user.visible_message("<span class='notice'>[user] lets go of [src]</span>",
-		"<span class='notice'>You let go of [src]</span>")
+		user.visible_message(SPAN_NOTICE("[user] lets go of [src]"),
+		SPAN_NOTICE("You let go of [src]"))
 		visible_message("\icon[src] <span class='notice'>The [name] buzzes: AI targeting re-initialized.</span>")
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
@@ -1090,7 +1090,7 @@
 
 		if(!on)
 			to_chat(user, "You turn on the [src].")
-			visible_message("<span class='notice'>[src] hums to life and emits several beeps.</span>")
+			visible_message(SPAN_NOTICE("[src] hums to life and emits several beeps."))
 			visible_message("\icon[src] [src] buzzes in a monotone: 'Default systems initiated.'")
 			target = null
 			on = 1
@@ -1102,8 +1102,8 @@
 			update_icon()
 		else
 			on = 0
-			user.visible_message("<span class='notice'>[user] deactivates [src].</span>",
-			"<span class='notice'>You deactivate [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] deactivates [src]."),
+			SPAN_NOTICE("You deactivate [src]."))
 			visible_message("\icon[src] <span class='notice'>The [name] powers down and goes silent.</span>")
 			update_icon()
 

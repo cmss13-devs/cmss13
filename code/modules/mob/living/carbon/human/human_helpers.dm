@@ -247,17 +247,17 @@
 			if(Z.turn_off(src))
 				goes_out++
 	if(goes_out && light_off)
-		to_chat(src, "<span class='notice'>Your sources of light short and fizzle out.</span>")
+		to_chat(src, SPAN_NOTICE("Your sources of light short and fizzle out."))
 	else if(goes_out)
 		if(goes_out > 1)
-			to_chat(src, "<span class='notice'>Your sources of light fizzle out.</span>")
+			to_chat(src, SPAN_NOTICE("Your sources of light fizzle out."))
 		else
-			to_chat(src, "<span class='notice'>Your source of light fizzles out.</span>")
+			to_chat(src, SPAN_NOTICE("Your source of light fizzles out."))
 	else if(light_off)
 		if(light_off > 1)
-			to_chat(src, "<span class='notice'>Your sources of light short out.</span>")
+			to_chat(src, SPAN_NOTICE("Your sources of light short out."))
 		else
-			to_chat(src, "<span class='notice'>Your source of light shorts out.</span>")
+			to_chat(src, SPAN_NOTICE("Your source of light shorts out."))
 
 
 /mob/living/carbon/human/a_intent_change(input as text)

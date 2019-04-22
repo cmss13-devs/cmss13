@@ -34,7 +34,7 @@
 
 	var/obj/item/clothing/I = O
 	if (!istype(I) || !allowed)
-		to_chat(user, "<span class='notice'>[src] is unable to modify that.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is unable to modify that."))
 		return
 
 	if(!isturf(O.loc))

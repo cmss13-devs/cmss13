@@ -50,7 +50,7 @@
 
 		feedback_add_details("handcuffs","H")
 
-		user.visible_message("<span class='notice'>[user] tries to put [src] on [H].</span>")
+		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [H]."))
 		if(do_mob(user, H, cuff_delay, BUSY_ICON_HOSTILE, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !H.handcuffed && Adjacent(user))
 				if(iscarbon(H))
@@ -62,7 +62,7 @@
 					H.equip_to_slot_if_possible(src, WEAR_HANDCUFFS, 1, 0, 1, 1)
 
 	else if (ismonkey(target))
-		user.visible_message("<span class='notice'>[user] tries to put [src] on [target].</span>")
+		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
 		if(do_mob(user, target, 30, BUSY_ICON_HOSTILE, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !target.handcuffed && Adjacent(user))
 				user.drop_inv_item_on_ground(src)
@@ -123,7 +123,7 @@
 			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
 
 			user.put_in_hands(W)
-			to_chat(user, "<span class='notice'>You wrap the cable restraint around the top of the rod.</span>")
+			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))
 			qdel(src)
 			update_icon(user)
 

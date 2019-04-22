@@ -34,7 +34,7 @@
 					to_chat(H, "<span class='danger'>You have a monitor for a head, where do you think you're going to put that?</span>")
 					return
 
-			to_chat(M, "<span class='notice'> You swallow a gulp from \the [src].</span>")
+			to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, gulp_size)
 
@@ -89,7 +89,7 @@
 				return
 
 			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-			to_chat(user, "<span class='notice'> You fill [src] with [trans] units of the contents of [target].</span>")
+			to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
 
 		else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
 			if(!reagents.total_volume)
@@ -109,7 +109,7 @@
 				refillName = reagents.get_master_reagent_name()
 
 			var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-			to_chat(user, "<span class='notice'> You transfer [trans] units of the solution to [target].</span>")
+			to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution to [target]."))
 
 			if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
 				var/mob/living/silicon/robot/bro = user
@@ -128,15 +128,15 @@
 		..()
 		if (get_dist(user, src) > 1 && user != loc) return
 		if(!reagents || reagents.total_volume==0)
-			to_chat(user, "<span class='notice'> \The [src] is empty!</span>")
+			to_chat(user, SPAN_NOTICE(" \The [src] is empty!"))
 		else if (reagents.total_volume<=src.volume/4)
-			to_chat(user, "<span class='notice'> \The [src] is almost empty!</span>")
+			to_chat(user, SPAN_NOTICE(" \The [src] is almost empty!"))
 		else if (reagents.total_volume<=src.volume*0.66)
-			to_chat(user, "<span class='notice'> \The [src] is half full!</span>")
+			to_chat(user, SPAN_NOTICE(" \The [src] is half full!"))
 		else if (reagents.total_volume<=src.volume*0.90)
-			to_chat(user, "<span class='notice'> \The [src] is almost full!</span>")
+			to_chat(user, SPAN_NOTICE(" \The [src] is almost full!"))
 		else
-			to_chat(user, "<span class='notice'> \The [src] is full!</span>")
+			to_chat(user, SPAN_NOTICE(" \The [src] is full!"))
 
 
 ////////////////////////////////////////////////////////////////////////////////

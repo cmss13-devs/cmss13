@@ -350,8 +350,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(..()) r_TRU
 		switch(href_list["command"])
 			if("dest_start")
-				to_chat(usr, "<span class='notice'>You press a few keys on the panel.</span>")
-				to_chat(usr, "<span class='notice'>The system must be booting up the self-destruct sequence now.</span>")
+				to_chat(usr, SPAN_NOTICE("You press a few keys on the panel."))
+				to_chat(usr, SPAN_NOTICE("The system must be booting up the self-destruct sequence now."))
 				ai_system.Announce("Danger. The emergency destruct system is now activated. The ship will detonate in T-minus 20 minutes. Automatic detonation is unavailable. Manual detonation is required.", 'sound/AI/selfdestruct.ogg')
 				active_state = SELF_DESTRUCT_MACHINE_ARMED //Arm it here so the process can execute it later.
 				var/obj/machinery/self_destruct/rod/I = EvacuationAuthority.dest_rods[EvacuationAuthority.dest_index]
@@ -366,7 +366,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 			if("dest_cancel")
 				var/list/allowed_officers = list("Commander", "Executive Officer", "Staff Officer", "Chief MP","Chief Medical Officer","Chief Engineer")
 				if(!usr.mind || !allowed_officers.Find(usr.mind.assigned_role))
-					to_chat(usr, "<span class='notice'>You don't have the necessary clearance to cancel the emergency destruct system.</span>")
+					to_chat(usr, SPAN_NOTICE("You don't have the necessary clearance to cancel the emergency destruct system."))
 					return
 				if(EvacuationAuthority.cancel_self_destruct()) nanomanager.close_user_uis(usr, src, "main")
 
@@ -408,12 +408,12 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		if(..())
 			switch(active_state)
 				if(SELF_DESTRUCT_MACHINE_ACTIVE)
-					to_chat(user, "<span class='notice'>You twist and release the control rod, arming it.</span>")
+					to_chat(user, SPAN_NOTICE("You twist and release the control rod, arming it."))
 					playsound(src, 'sound/machines/switch.ogg', 25, 1)
 					icon_state = "rod_4"
 					active_state = SELF_DESTRUCT_MACHINE_ARMED
 				if(SELF_DESTRUCT_MACHINE_ARMED)
-					to_chat(user, "<span class='notice'>You twist and release the control rod, disarming it.</span>")
+					to_chat(user, SPAN_NOTICE("You twist and release the control rod, disarming it."))
 					playsound(src, 'sound/machines/switch.ogg', 25, 1)
 					icon_state = "rod_3"
 					active_state = SELF_DESTRUCT_MACHINE_ACTIVE

@@ -22,7 +22,7 @@
 		if (istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
 			if (!C.iscopy && !C.copied)
-				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
+				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
 		if(loc == user)
@@ -39,7 +39,7 @@
 			user.drop_inv_item_on_ground(W)
 			for(var/obj/O in W)
 				attach_doc(O, user, TRUE)
-			to_chat(user, "<span class='notice'>You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
+			to_chat(user, SPAN_NOTICE("You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name]."))
 			qdel(W)
 	else
 		if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/toy/crayon))
@@ -80,7 +80,7 @@
 	if(in_range(user, src))
 		src.attack_self(user)
 	else
-		to_chat(user, "<span class='notice'>It is too far away.</span>")
+		to_chat(user, SPAN_NOTICE("It is too far away."))
 
 /obj/item/paper_bundle/attack_self(mob/user as mob)
 	if(ishuman(user))
@@ -144,7 +144,7 @@
 		if(href_list["remove"])
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
-			to_chat(usr, "<span class='notice'>You remove the [W.name] from the bundle.</span>")
+			to_chat(usr, SPAN_NOTICE("You remove the [W.name] from the bundle."))
 			amount--
 			if(amount == 1)
 				var/obj/item/paper/P = contents[1]
@@ -163,7 +163,7 @@
 		src.attack_self(src.loc)
 		updateUsrDialog()
 	else
-		to_chat(usr, "<span class='notice'>You need to hold it in hands!</span>")
+		to_chat(usr, SPAN_NOTICE("You need to hold it in hands!"))
 
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
@@ -180,7 +180,7 @@
 	set category = "Object"
 	set src in usr
 
-	to_chat(usr, "<span class='notice'>You loosen the bundle.</span>")
+	to_chat(usr, SPAN_NOTICE("You loosen the bundle."))
 	for(var/obj/O in src)
 		O.forceMove(usr.loc)
 		O.add_fingerprint(usr)
@@ -225,7 +225,7 @@
 	I.add_fingerprint(user)
 	amount++
 	if(!no_message)
-		to_chat(user, "<span class='notice'>You add [I] to [src].</span>")
+		to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
 	if(screen == 2)
 		screen = 1
 	update_icon()

@@ -41,8 +41,8 @@
 				else
 					if(usr.drop_held_item())
 						if(put_in_hands(I))
-							usr.visible_message("<span class='notice'>[usr] hands [I] to [src].</span>",
-							"<span class='notice'>You hand [I] to [src].</span>", null, 4)
+							usr.visible_message(SPAN_NOTICE("[usr] hands [I] to [src]."),
+							SPAN_NOTICE("You hand [I] to [src]."), null, 4)
 			if("No")
 				return
 	else

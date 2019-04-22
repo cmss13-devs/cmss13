@@ -19,10 +19,10 @@
 			R.adjustFireLoss(-15)
 			R.updatehealth()
 			use(1)
-			user.visible_message("<span class='notice'>\The [user] applied some [src] at [R]'s damaged areas.</span>",\
-				"<span class='notice'>You apply some [src] at [R]'s damaged areas.</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] applied some [src] at [R]'s damaged areas."),\
+				SPAN_NOTICE("You apply some [src] at [R]'s damaged areas."))
 		else
-			to_chat(user, "<span class='notice'>All [R]'s systems are nominal.</span>")
+			to_chat(user, SPAN_NOTICE("All [R]'s systems are nominal."))
 
 	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
 		if(isSynth(M) && M == user)
@@ -36,13 +36,15 @@
 					S.heal_damage(15, 15, robo_repair = 1)
 					H.updatehealth()
 					use(1)
-					user.visible_message("<span class='notice'>\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src].</span>",\
-					"<span class='notice'>You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name].</span>")
+					var/others_msg = "\The [user] applies some nanite paste at[user != M ? " \the [M]'s" : " \the"] [S.display_name] with \the [src]." // Needs to create vars for these messages because macro doesn't work otherwise
+					var/user_msg = "You apply some nanite paste at [user == M ? "your" : "[M]'s"] [S.display_name]."
+					user.visible_message(SPAN_NOTICE("[others_msg]"),\
+						SPAN_NOTICE("[user_msg]"))
 				else
-					to_chat(user, "<span class='notice'>Nothing to fix here.</span>")
+					to_chat(user, SPAN_NOTICE("Nothing to fix here."))
 		else
 			if (H.can_be_operated_on())
 				if (do_surgery(H,user,src))
 					return
 			else
-				to_chat(user, "<span class='notice'>Nothing to fix in here.</span>")
+				to_chat(user, SPAN_NOTICE("Nothing to fix in here."))

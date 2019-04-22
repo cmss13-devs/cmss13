@@ -13,12 +13,12 @@
 /turf/closed/wall/r_wall/attack_hand(mob/user)
 	if (HULK in user.mutations)
 		if (prob(10))
-			usr << text("<span class='notice'>You smash through the wall.</span>")
+			usr << text(SPAN_NOTICE("You smash through the wall."))
 			usr.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 			dismantle_wall(1)
 			return
 		else
-			to_chat(user, "<span class='notice'> You punch the wall.</span>")
+			to_chat(user, SPAN_NOTICE(" You punch the wall."))
 			return
 
 	add_fingerprint(user)
@@ -49,10 +49,10 @@
 	if(damage && istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0,user))
-			to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
+			to_chat(user, SPAN_NOTICE("You start repairing the damage to [src]."))
 			playsound(src, 'sound/items/Welder.ogg', 25, 1)
 			if(do_after(user, max(5, damage / 5), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && WT && WT.isOn())
-				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
+				to_chat(user, SPAN_NOTICE("You finish repairing the damage to [src]."))
 				take_damage(-damage)
 			return
 		else
@@ -67,12 +67,12 @@
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 				src.d_state = 1
 				new /obj/item/stack/rods( src )
-				to_chat(user, "<span class='notice'>You cut the outer grille.</span>")
+				to_chat(user, SPAN_NOTICE("You cut the outer grille."))
 				return
 
 		if(1)
 			if (istype(W, /obj/item/tool/screwdriver))
-				to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
+				to_chat(user, SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -81,14 +81,14 @@
 
 					if(d_state == 1)
 						d_state = 2
-						to_chat(user, "<span class='notice'>You remove the support lines.</span>")
+						to_chat(user, SPAN_NOTICE("You remove the support lines."))
 				return
 
 			//REPAIRING (replacing the outer grille for cosmetic damage)
 			else if( istype(W, /obj/item/stack/rods) )
 				var/obj/item/stack/O = W
 				d_state = 0
-				to_chat(user, "<span class='notice'>You replace the outer grille.</span>")
+				to_chat(user, SPAN_NOTICE("You replace the outer grille."))
 				if (O.amount > 1)
 					O.amount--
 				else
@@ -100,7 +100,7 @@
 				var/obj/item/tool/weldingtool/WT = W
 				if( WT.remove_fuel(0,user) )
 
-					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
+					to_chat(user, SPAN_NOTICE("You begin slicing through the metal cover."))
 					playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
 					if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -110,14 +110,14 @@
 
 						if( d_state == 2)
 							d_state = 3
-							to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
+							to_chat(user, SPAN_NOTICE("You press firmly on the cover, dislodging it."))
 				else
-					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
+					to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 				return
 
 			if( istype(W, /obj/item/tool/pickaxe/plasmacutter) )
 
-				to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
+				to_chat(user, SPAN_NOTICE("You begin slicing through the metal cover."))
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -126,13 +126,13 @@
 
 					if(d_state == 2 )
 						d_state = 3
-						to_chat(user, "<span class='notice'>You press firmly on the cover, dislodging it.</span>")
+						to_chat(user, SPAN_NOTICE("You press firmly on the cover, dislodging it."))
 				return
 
 		if(3)
 			if (istype(W, /obj/item/tool/crowbar))
 
-				to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
+				to_chat(user, SPAN_NOTICE("You struggle to pry off the cover."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
 				if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -140,13 +140,13 @@
 						return
 					if(d_state == 3 )
 						d_state = 4
-						to_chat(user, "<span class='notice'>You pry off the cover.</span>")
+						to_chat(user, SPAN_NOTICE("You pry off the cover."))
 				return
 
 		if(4)
 			if (istype(W, /obj/item/tool/wrench))
 
-				to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
+				to_chat(user, SPAN_NOTICE("You start loosening the anchoring bolts which secure the support rods to their frame."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -155,14 +155,14 @@
 
 					if(d_state == 4)
 						d_state = 5
-						to_chat(user, "<span class='notice'>You remove the bolts anchoring the support rods.</span>")
+						to_chat(user, SPAN_NOTICE("You remove the bolts anchoring the support rods."))
 				return
 
 		if(5)
 			if(istype(W, /obj/item/tool/wirecutters))
 
-				user.visible_message("<span class='notice'>[user] begins uncrimping the hydraulic lines.</span>",
-				"<span class='notice'>You begin uncrimping the hydraulic lines.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
+				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -170,14 +170,14 @@
 
 					if(d_state == 5)
 						d_state++
-						user.visible_message("<span class='notice'>[user] finishes uncrimping the hydraulic lines.</span>",
-						"<span class='notice'>You finish uncrimping the hydraulic lines.</span>")
+						user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."),
+						SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
 				return
 
 		if(6)
 			if( istype(W, /obj/item/tool/crowbar) )
 
-				to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")
+				to_chat(user, SPAN_NOTICE("You struggle to pry off the outer sheath."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
 				if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -185,7 +185,7 @@
 						return
 
 					if(d_state == 6)
-						to_chat(user, "<span class='notice'>You pry off the outer sheath.</span>")
+						to_chat(user, SPAN_NOTICE("You pry off the outer sheath."))
 						dismantle_wall()
 				return
 
@@ -194,23 +194,23 @@
 	//DRILLING
 	if (istype(W, /obj/item/tool/pickaxe/diamonddrill))
 
-		to_chat(user, "<span class='notice'>You begin to drill though the wall.</span>")
+		to_chat(user, SPAN_NOTICE("You begin to drill though the wall."))
 
 		if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!istype(src, /turf/closed/wall/r_wall))
 				return
-			to_chat(user, "<span class='notice'>Your drill tears though the last of the reinforced plating.</span>")
+			to_chat(user, SPAN_NOTICE("Your drill tears though the last of the reinforced plating."))
 			dismantle_wall()
 
 	//REPAIRING
 	else if(damage && istype(W, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/MS = W
-		user.visible_message("<span class='notice'>[user] starts repairing the damage to [src].</span>",
-		"<span class='notice'>You start repairing the damage to [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
+		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(do_after(user, max(5, round(damage / 5)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
-			user.visible_message("<span class='notice'>[user] finishes repairing the damage to [src].</span>",
-			"<span class='notice'>You finish repairing the damage to [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
+			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
 			MS.use(1)
 

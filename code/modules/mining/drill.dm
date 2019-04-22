@@ -137,7 +137,7 @@
 	if(istype(W,/obj/item/tool/screwdriver))
 		if(active) return
 		open = !open
-		to_chat(user, "<span class='notice'> You [open ? </span>")open" : "close"] the maintenance panel." //TODO: Sprite.
+		to_chat(user, SPAN_NOTICE(" You [open ? "))open" : "close"] the maintenance panel." //TODO: Sprite.
 		return
 	else
 		if(!open || active) return ..()
@@ -208,14 +208,14 @@
 		if(use_cell_power())
 			active = !active
 			if(active)
-				to_chat(user, "<span class='notice'> You engage \the [src] and it lurches downwards, grinding noisily.</span>")
+				to_chat(user, SPAN_NOTICE(" You engage \the [src] and it lurches downwards, grinding noisily."))
 				need_update_field = 1
 			else
-				to_chat(user, "<span class='notice'> You disengage \the [src] and it shudders to a grinding halt.</span>")
+				to_chat(user, SPAN_NOTICE(" You disengage \the [src] and it shudders to a grinding halt."))
 		else
-			to_chat(user, "<span class='notice'> The drill is unpowered.</span>")
+			to_chat(user, SPAN_NOTICE(" The drill is unpowered."))
 	else
-		to_chat(user, "<span class='notice'> Turning on a piece of industrial machinery without sufficient bracing is a bad idea.</span>")
+		to_chat(user, SPAN_NOTICE(" Turning on a piece of industrial machinery without sufficient bracing is a bad idea."))
 
 	update_icon()
 
@@ -318,15 +318,15 @@
 	if(istype(W,/obj/item/tool/wrench))
 
 		if(istype(get_turf(src),/turf/space))
-			to_chat(user, "<span class='notice'> You can't anchor something to empty space. Idiot.</span>")
+			to_chat(user, SPAN_NOTICE(" You can't anchor something to empty space. Idiot."))
 			return
 
 		if(connected && connected.active)
-			to_chat(user, "<span class='notice'> You can't unanchor the brace of a running drill!</span>")
+			to_chat(user, SPAN_NOTICE(" You can't unanchor the brace of a running drill!"))
 			return
 
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		to_chat(user, "<span class='notice'> You [anchored ? </span>")un" : ""]anchor the brace."
+		to_chat(user, SPAN_NOTICE(" You [anchored ? "))un" : ""]anchor the brace."
 
 		anchored = !anchored
 		if(anchored)

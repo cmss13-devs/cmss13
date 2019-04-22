@@ -36,14 +36,14 @@
 	open_step = 0
 
 /datum/surgery_step/generic/incision_manager/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts to construct a prepared incision on and within [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You start to construct a prepared incision on and within [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts to construct a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You start to construct a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("You feel a horrible, searing pain in your [affected.display_name] as it is pushed apart!",1)
 	..()
 
 /datum/surgery_step/generic/incision_manager/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You have constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool].</span>",)
+	user.visible_message(SPAN_NOTICE("[user] has constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You have constructed a prepared incision on and within [target]'s [affected.display_name] with \the [tool]."),)
 	affected.surgery_open_stage = 1
 
 	if(istype(target) && !(target.species.flags & NO_BLOOD))
@@ -77,14 +77,14 @@
 	open_step = 0
 
 /datum/surgery_step/generic/cut_with_laser/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts the bloodless incision on [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You start the bloodless incision on [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts the bloodless incision on [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You start the bloodless incision on [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("You feel a horrible, searing pain in your [affected.display_name]!", 1)
 	..()
 
 /datum/surgery_step/generic/cut_with_laser/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has made a bloodless incision on [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You have made a bloodless incision on [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has made a bloodless incision on [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You have made a bloodless incision on [target]'s [affected.display_name] with \the [tool]."))
 	//Could be cleaner
 	affected.surgery_open_stage = 1
 
@@ -120,14 +120,14 @@
 	open_step = 0
 
 /datum/surgery_step/generic/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts the incision on [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You start the incision on [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts the incision on [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You start the incision on [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("You feel a horrible pain as if from a sharp knife in your [affected.display_name]!", 1)
 	..()
 
 /datum/surgery_step/generic/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has made an incision on [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You have made an incision on [target]'s [affected.display_name] with \the [tool].</span>",)
+	user.visible_message(SPAN_NOTICE("[user] has made an incision on [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You have made an incision on [target]'s [affected.display_name] with \the [tool]."),)
 	affected.surgery_open_stage = 1
 
 	if(istype(target) && !(target.species.flags & NO_BLOOD))
@@ -159,14 +159,14 @@
 		return affected.surgery_open_stage && (affected.status & LIMB_BLEEDING)
 
 /datum/surgery_step/generic/clamp_bleeders/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts clamping bleeders in [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You start clamping bleeders in [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts clamping bleeders in [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You start clamping bleeders in [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("The pain in your [affected.display_name] is maddening!", 1)
 	..()
 
 /datum/surgery_step/generic/clamp_bleeders/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] clamps bleeders in [target]'s [affected.display_name] with \the [tool].</span>",	\
-	"<span class='notice'>You clamp bleeders in [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] clamps bleeders in [target]'s [affected.display_name] with \the [tool]."),	\
+	SPAN_NOTICE("You clamp bleeders in [target]'s [affected.display_name] with \the [tool]."))
 	affected.clamp()
 	spread_germs_to_organ(affected, user)
 
@@ -191,24 +191,24 @@
 
 /datum/surgery_step/generic/retract_skin/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(target_zone == "groin")
-		user.visible_message("<span class='notice'>[user] starts to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool].</span>", \
-		"<span class='notice'>You start to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool]."), \
+		SPAN_NOTICE("You start to pry open the incision and rearrange the organs in [target]'s lower abdomen with \the [tool]."))
 	else
-		user.visible_message("<span class='notice'>[user] starts to pry open the incision on [target]'s [affected.display_name] with \the [tool].</span>", \
-		"<span class='notice'>You start to pry open the incision on [target]'s [affected.display_name] with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] starts to pry open the incision on [target]'s [affected.display_name] with \the [tool]."), \
+		SPAN_NOTICE("You start to pry open the incision on [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("It feels like the skin on your [affected.display_name] is on fire!", 1)
 	..()
 
 /datum/surgery_step/generic/retract_skin/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(target_zone == "chest")
-		user.visible_message("<span class='notice'>[user] keeps the ribcage open on [target]'s torso with \the [tool].</span>", \
-		"<span class='notice'>You keep the ribcage open on [target]'s torso with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] keeps the ribcage open on [target]'s torso with \the [tool]."), \
+		SPAN_NOTICE("You keep the ribcage open on [target]'s torso with \the [tool]."))
 	else if(target_zone == "groin")
-		user.visible_message("<span class='notice'>[user] keeps the incision open on [target]'s lower abdomen with \the [tool].</span>", \
-		"<span class='notice'>You keep the incision open on [target]'s lower abdomen with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] keeps the incision open on [target]'s lower abdomen with \the [tool]."), \
+		SPAN_NOTICE("You keep the incision open on [target]'s lower abdomen with \the [tool]."))
 	else
-		user.visible_message("<span class='notice'>[user] keeps the incision open on [target]'s [affected.display_name] with \the [tool].</span>", \
-		"<span class='notice'>You keep the incision open on [target]'s [affected.display_name] with \the [tool].</span>")
+		user.visible_message(SPAN_NOTICE("[user] keeps the incision open on [target]'s [affected.display_name] with \the [tool]."), \
+		SPAN_NOTICE("You keep the incision open on [target]'s [affected.display_name] with \the [tool]."))
 	affected.surgery_open_stage = 2
 
 /datum/surgery_step/generic/retract_skin/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -241,14 +241,14 @@
 		return affected.surgery_open_stage == 1 || affected.surgery_open_stage == 2
 
 /datum/surgery_step/generic/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] is beginning to cauterize the incision on [target]'s [affected.display_name] with \the [tool].</span>" , \
-	"<span class='notice'>You are beginning to cauterize the incision on [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] is beginning to cauterize the incision on [target]'s [affected.display_name] with \the [tool].") , \
+	SPAN_NOTICE("You are beginning to cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
 	target.custom_pain("Your [affected.display_name] is being burned!", 1)
 	..()
 
 /datum/surgery_step/generic/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] cauterizes the incision on [target]'s [affected.display_name] with \the [tool].</span>", \
-	"<span class='notice'>You cauterize the incision on [target]'s [affected.display_name] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision on [target]'s [affected.display_name] with \the [tool]."), \
+	SPAN_NOTICE("You cauterize the incision on [target]'s [affected.display_name] with \the [tool]."))
 	affected.surgery_open_stage = 0
 	affected.germ_level = 0
 	affected.status &= ~LIMB_BLEEDING

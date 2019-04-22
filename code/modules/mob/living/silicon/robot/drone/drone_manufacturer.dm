@@ -108,7 +108,7 @@
 //	if(istype(src,/mob/dead/observer))
 //		var/mob/dead/observer/G = src
 //		if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-//			to_chat(usr, "<span class='notice'> <B>Upon using the antagHUD you forfeighted the ability to join the round.</B></span>")
+//			to_chat(usr, SPAN_NOTICE(" <B>Upon using the antagHUD you forfeighted the ability to join the round.</B>"))
 //			return
 
 	var/deathtimeminutes = round(deathtime / MINUTES_1)

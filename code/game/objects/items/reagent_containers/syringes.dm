@@ -121,7 +121,7 @@
 					on_reagent_change()
 					reagents.handle_reactions()
 					user.visible_message("<span clas='warning'>[user] takes a blood sample from [target].</span>",
-										"<span class='notice'>You take a blood sample from [target].</span>", null, 4)
+										SPAN_NOTICE("You take a blood sample from [target]."), null, 4)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
@@ -134,7 +134,7 @@
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
 
-				to_chat(user, "<span class='notice'> You fill the syringe with [trans] units of the solution.</span>")
+				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
 			if (reagents.total_volume >= reagents.maximum_volume)
 				mode=!mode
 				update_icon()
@@ -200,7 +200,7 @@
 			else
 				trans = reagents.trans_to(target, amount_per_transfer_from_this)
 
-			to_chat(user, "<span class='notice'> You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
+			to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
 			if (reagents.total_volume <= 0 && mode==SYRINGE_INJECT)
 				mode = SYRINGE_DRAW
 				update_icon()
@@ -345,7 +345,7 @@
 
 					var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
 
-					to_chat(user, "<span class='notice'> You fill the syringe with [trans] units of the solution.</span>")
+					to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
 				if (reagents.total_volume >= reagents.maximum_volume)
 					mode=!mode
 					update_icon()
@@ -372,7 +372,7 @@
 					src.reagents.reaction(target, INGEST)
 				spawn(5)
 					var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-					to_chat(user, "<span class='notice'> You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
+					to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
 					if (reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
 						mode = SYRINGE_DRAW
 						update_icon()

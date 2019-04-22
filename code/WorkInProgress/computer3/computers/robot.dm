@@ -118,8 +118,8 @@
 			if (istype(I))
 				if(src.check_access(I))
 					if (!status)
-						message_admins("<span class='notice'>[key_name_admin(usr)] has initiated the global cyborg killswitch!</span>")
-						log_game("<span class='notice'>[key_name(usr)] has initiated the global cyborg killswitch!</span>")
+						message_admins(SPAN_NOTICE("[key_name_admin(usr)] has initiated the global cyborg killswitch!"))
+						log_game(SPAN_NOTICE("[key_name(usr)] has initiated the global cyborg killswitch!"))
 						src.status = 1
 						src.start_sequence()
 						src.temp = null
@@ -163,8 +163,8 @@
 								R.ResetSecurityCodes()
 
 							else
-								message_admins("<span class='notice'>[key_name_admin(usr)] detonated [R.name]!</span>")
-								log_game("<span class='notice'>[key_name_admin(usr)] detonated [R.name]!</span>")
+								message_admins(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
+								log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
 								R.self_destruct()
 			else
 				to_chat(usr, "<span class='danger'>Access Denied.</span>")
@@ -176,8 +176,8 @@
 					var/choice = input("Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")
 						if(R && istype(R))
-							message_admins("<span class='notice'>[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!</span>")
-							log_game("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
+							message_admins(SPAN_NOTICE("[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!"))
+							log_game(SPAN_NOTICE("[key_name(usr)] [R.canmove ? "locked down" : "released"] [R.name]!"))
 							R.canmove = !R.canmove
 							if (R.lockcharge)
 							//	R.cell.charge = R.lockcharge
@@ -198,7 +198,7 @@
 					var/choice = input("Are you certain you wish to hack [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")
 						if(R && istype(R))
-//							message_admins("<span class='notice'>[key_name_admin(usr)] emagged [R.name] using robotic console!</span>")
+//							message_admins(SPAN_NOTICE("[key_name_admin(usr)] emagged [R.name] using robotic console!"))
 							log_game("[key_name(usr)] emagged [R.name] using robotic console!")
 							R.emagged = 1
 							if(R.mind.special_role)

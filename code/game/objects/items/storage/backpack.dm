@@ -23,7 +23,7 @@
 				if(!user.put_in_active_hand(src))
 					dropped(user)
 */
-			to_chat(H, "<span class='notice'>You can't look in [src] while it's on your back.</span>")
+			to_chat(H, SPAN_NOTICE("You can't look in [src] while it's on your back."))
 			return
 	..()
 
@@ -31,7 +31,7 @@
 /*	if(!worn_accessible && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.back == src)
-			to_chat(H, "<span class='notice'>You can't access [src] while it's on your back.</span>")
+			to_chat(H, SPAN_NOTICE("You can't access [src] while it's on your back."))
 			return TRUE
 */
 	if (use_sound)
@@ -75,7 +75,7 @@
 	if(!worn_accessible && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.back == src)
-			to_chat(H, "<span class='notice'>You can't access [src] while it's on your back.</span>")
+			to_chat(H, SPAN_NOTICE("You can't access [src] while it's on your back."))
 			return
 	..()
 
@@ -343,7 +343,7 @@
 
 	camo_ready = 0
 	camo_active = 1
-	to_chat(M, "<span class='notice'>You activate your cloak's camouflage.</span>")
+	to_chat(M, SPAN_NOTICE("You activate your cloak's camouflage."))
 
 	for (var/mob/O in oviewers(M))
 		O.show_message("[M] vanishes into thin air!", 1)
@@ -436,7 +436,7 @@
 				return
 			if(!(T.get_fuel()==T.max_fuel) && reagents.total_volume)
 				reagents.trans_to(W, T.max_fuel)
-				to_chat(user, "<span class='notice'>Welder refilled!</span>")
+				to_chat(user, SPAN_NOTICE("Welder refilled!"))
 				playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 				return
 		else if(istype(W, /obj/item/ammo_magazine/flamer_tank))
@@ -447,7 +447,7 @@
 				FT.current_rounds = fuel_available
 				playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 				FT.caliber = "Fuel"
-				to_chat(user, "<span class='notice'>You refill [FT] with [lowertext(FT.caliber)].</span>")
+				to_chat(user, SPAN_NOTICE("You refill [FT] with [lowertext(FT.caliber)]."))
 				FT.update_icon()
 				return
 		else if(istype(W, /obj/item/weapon/gun))
@@ -461,7 +461,7 @@
 					reagents.remove_reagent("fuel", to_transfer)
 					F.current_rounds += to_transfer
 					playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-					to_chat(user, "<span class='notice'>You refill [F] with Fuel.</span>")
+					to_chat(user, SPAN_NOTICE("You refill [F] with Fuel."))
 				else
 					to_chat(user, "<span class='warning'>[F] is full.</span>")
 			else
@@ -473,11 +473,11 @@
 		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, "<span class='notice'> You crack the cap off the top of the pack and fill it back up again from the tank.</span>")
+		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of the pack and fill it back up again from the tank."))
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, "<span class='notice'> The pack is already full!</span>")
+		to_chat(user, SPAN_NOTICE(" The pack is already full!"))
 		return
 	..()
 
@@ -505,7 +505,7 @@
 			FTL.current_rounds = FTL.current_rounds + fuel_available
 			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 			FTL.caliber = "UT-Napthal Fuel"
-			to_chat(user, "<span class='notice'>You refill [FTL] with [FTL.caliber].</span>")
+			to_chat(user, SPAN_NOTICE("You refill [FTL] with [FTL.caliber]."))
 			FTL.update_icon()
 	. = ..()
 

@@ -42,8 +42,8 @@
 		if (!istype(O,/obj/machinery/light/small))
 			to_chat(user, "<span class='warning'>The floor needs to be clear to plant this!</span>")
 			return
-	user.visible_message("<span class='notice'>[user] starts planting [src].</span>", \
-					"<span class='notice'>You start planting [src].</span>", null, 5)
+	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
+					SPAN_NOTICE("You start planting [src]."), null, 5)
 	if(!do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	for (var/obj/O in T)

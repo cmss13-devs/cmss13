@@ -33,7 +33,7 @@
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user as mob)
 	if(src.opened)
-		to_chat(user, "<span class='notice'>Close the crate first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the crate first."))
 		return
 	if(src.broken)
 		to_chat(user, "<span class='warning'>The crate appears to be broken.</span>")
@@ -42,10 +42,10 @@
 		src.locked = !src.locked
 		for(var/mob/O in viewers(user, 3))
 			if((O.client && !( O.blinded )))
-				to_chat(O, "<span class='notice'>The crate has been [locked ? null : "un"]locked by [user].</span>")
+				to_chat(O, SPAN_NOTICE("The crate has been [locked ? null : "un"]locked by [user]."))
 		icon_state = locked ? icon_locked : icon_unlocked
 	else
-		to_chat(user, "<span class='notice'>Access Denied</span>")
+		to_chat(user, SPAN_NOTICE("Access Denied"))
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
 	set src in oview(1) // One square distance
@@ -80,7 +80,7 @@
 		locked = 0
 		broken = 1
 		update_icon()
-		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
+		to_chat(user, SPAN_NOTICE("You unlock \the [src]."))
 		return
 	if(!opened)
 		src.togglelock(user)

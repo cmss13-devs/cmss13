@@ -42,7 +42,7 @@
 	src.add_fingerprint(usr)
 
 	if(broken)
-		to_chat(user, "<span class='notice'>[src] is irrepairably broken.</span>")
+		to_chat(user, SPAN_NOTICE("[src] is irrepairably broken."))
 		return
 
 	if(!allowed(user))

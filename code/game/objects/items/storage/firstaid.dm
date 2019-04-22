@@ -235,7 +235,7 @@
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
 	if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-		to_chat(user, "<span class='notice'>It must have some kind of ID lock...</span>")
+		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	if(user.get_inactive_hand())
 		to_chat(user, "<span class='warning'>You need an empty hand to take out a pill.</span>")
@@ -244,7 +244,7 @@
 		var/obj/item/I = contents[1]
 		if(user.put_in_inactive_hand(I))
 			remove_from_storage(I,user)
-			to_chat(user, "<span class='notice'>You take a pill out of \the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.swap_hand()
@@ -256,7 +256,7 @@
 
 /obj/item/storage/pill_bottle/open(mob/user)
 	if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-		to_chat(user, "<span class='notice'>It must have some kind of ID lock...</span>")
+		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	..()
 
@@ -266,7 +266,7 @@
 	. = ..()
 	if(.)
 		if(skilllock && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-			to_chat(usr, "<span class='notice'>You can't open [src], it has some kind of lock.</span>")
+			to_chat(usr, SPAN_NOTICE("You can't open [src], it has some kind of lock."))
 			return 0
 
 /obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
@@ -277,7 +277,7 @@
 			var/obj/item/storage/belt/medical/M = loc
 			if(M.mode)
 				if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-					to_chat(user, "<span class='notice'>It must have some kind of ID lock...</span>")
+					to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 					return 0
 				if(user.get_active_hand())
 					return 0
@@ -285,7 +285,7 @@
 					var/obj/item/I = contents[1]
 					if(user.put_in_active_hand(I))
 						remove_from_storage(I,user)
-						to_chat(user, "<span class='notice'>You take a pill out of \the [src].</span>")
+						to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
 						return 1
 				else
 					to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
@@ -405,12 +405,12 @@
 	var/mob/living/carbon/human/H = user
 
 	if(!allowed(user))
-		to_chat(user, "<span class='notice'>It must have some kind of ID lock...</span>")
+		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return 0
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
-		to_chat(H, "<span class='notice'>It must have some kind of ID lock...</span>")
+		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return 0
 
 	if(I.registered_name != H.real_name)
@@ -418,7 +418,7 @@
 		return 0
 
 	if(req_role && I.rank != req_role)
-		to_chat(H, "<span class='notice'>It must have some kind of ID lock...</span>")
+		to_chat(H, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return 0
 
 	return 1

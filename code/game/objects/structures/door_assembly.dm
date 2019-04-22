@@ -154,7 +154,7 @@ obj/structure/door_assembly
 				user.visible_message("[user] welds the [glass] plating off the airlock assembly.", "You start to weld the [glass] plating off the airlock assembly.")
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'> You welded the [glass] plating off!</span>")
+					to_chat(user, SPAN_NOTICE(" You welded the [glass] plating off!"))
 					var/M = text2path("/obj/item/stack/sheet/mineral/[glass]")
 					new M(src.loc, 2)
 					glass = 0
@@ -162,18 +162,18 @@ obj/structure/door_assembly
 				user.visible_message("[user] welds the glass panel out of the airlock assembly.", "You start to weld the glass panel out of the airlock assembly.")
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'> You welded the glass panel out!</span>")
+					to_chat(user, SPAN_NOTICE(" You welded the glass panel out!"))
 					new /obj/item/stack/sheet/glass/reinforced(src.loc)
 					glass = 0
 			else if(!anchored)
 				user.visible_message("[user] dissassembles the airlock assembly.", "You start to dissassemble the airlock assembly.")
 				if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'> You dissasembled the airlock assembly!</span>")
+					to_chat(user, SPAN_NOTICE(" You dissasembled the airlock assembly!"))
 					new /obj/item/stack/sheet/metal(src.loc, 4)
 					qdel(src)
 		else
-			to_chat(user, "<span class='notice'> You need more welding fuel.</span>")
+			to_chat(user, SPAN_NOTICE(" You need more welding fuel."))
 			return
 
 	else if(istype(W, /obj/item/tool/wrench) && state == 0)
@@ -185,7 +185,7 @@ obj/structure/door_assembly
 
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
-			to_chat(user, "<span class='notice'> You [anchored? "un" : ""]secured the airlock assembly!</span>")
+			to_chat(user, SPAN_NOTICE(" You [anchored? "un" : ""]secured the airlock assembly!"))
 			anchored = !anchored
 
 	else if(istype(W, /obj/item/stack/cable_coil) && state == 0 && anchored)
@@ -197,7 +197,7 @@ obj/structure/door_assembly
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0 && anchored)
 			if (C.use(1))
 				src.state = 1
-				to_chat(user, "<span class='notice'>You wire the airlock.</span>")
+				to_chat(user, SPAN_NOTICE("You wire the airlock."))
 
 	else if(istype(W, /obj/item/tool/wirecutters) && state == 1 )
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -205,7 +205,7 @@ obj/structure/door_assembly
 
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
-			to_chat(user, "<span class='notice'> You cut the airlock wires.!</span>")
+			to_chat(user, SPAN_NOTICE(" You cut the airlock wires.!"))
 			new/obj/item/stack/cable_coil(src.loc, 1)
 			src.state = 0
 
@@ -217,7 +217,7 @@ obj/structure/door_assembly
 			if(!src) return
 			user.drop_held_item()
 			W.loc = src
-			to_chat(user, "<span class='notice'> You installed the airlock electronics!</span>")
+			to_chat(user, SPAN_NOTICE(" You installed the airlock electronics!"))
 			src.state = 2
 			src.name = "Near finished Airlock Assembly"
 			src.electronics = W
@@ -228,7 +228,7 @@ obj/structure/door_assembly
 
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
-			to_chat(user, "<span class='notice'> You removed the airlock electronics!</span>")
+			to_chat(user, SPAN_NOTICE(" You removed the airlock electronics!"))
 			src.state = 1
 			src.name = "Wired Airlock Assembly"
 			var/obj/item/circuitboard/airlock/ae
@@ -248,7 +248,7 @@ obj/structure/door_assembly
 					user.visible_message("[user] adds [S.name] to the airlock assembly.", "You start to install [S.name] into the airlock assembly.")
 					if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !glass)
 						if (S.use(1))
-							to_chat(user, "<span class='notice'>You installed reinforced glass windows into the airlock assembly.</span>")
+							to_chat(user, SPAN_NOTICE("You installed reinforced glass windows into the airlock assembly."))
 							glass = 1
 				else if(istype(S, /obj/item/stack/sheet/mineral) && S.sheettype)
 					var/M = S.sheettype
@@ -257,16 +257,16 @@ obj/structure/door_assembly
 						user.visible_message("[user] adds [S.name] to the airlock assembly.", "You start to install [S.name] into the airlock assembly.")
 						if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !glass)
 							if (S.use(2))
-								to_chat(user, "<span class='notice'>You installed [M] plating into the airlock assembly.</span>")
+								to_chat(user, SPAN_NOTICE("You installed [M] plating into the airlock assembly."))
 								glass = "[M]"
 
 	else if(istype(W, /obj/item/tool/screwdriver) && state == 2 )
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		to_chat(user, "<span class='notice'> Now finishing the airlock.</span>")
+		to_chat(user, SPAN_NOTICE(" Now finishing the airlock."))
 
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src) return
-			to_chat(user, "<span class='notice'> You finish the airlock!</span>")
+			to_chat(user, SPAN_NOTICE(" You finish the airlock!"))
 			var/path
 			if(istext(glass))
 				path = text2path("/obj/machinery/door/airlock/[glass]")

@@ -1,6 +1,6 @@
 /mob/living/carbon/human/examine(mob/user)
 	if( user.sdisabilities & BLIND || user.blinded || user.stat==UNCONSCIOUS )
-		to_chat(user, "<span class='notice'>Something is there but you can't see it.</span>")
+		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return
 
 	if (isXeno(user))

@@ -101,30 +101,24 @@
 		/datum/action/xeno_action/activable/spray_acid,
 		)
 
-	New()
-		..()
-		SetLuminosity(3)
-		smoke = new /datum/effect_system/smoke_spread/xeno_acid
-		smoke.attach(src)
-		see_in_dark = 20
-		ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
+/mob/living/carbon/Xenomorph/Boiler/New()
+	..()
+	SetLuminosity(3)
+	smoke = new /datum/effect_system/smoke_spread/xeno_acid
+	smoke.attach(src)
+	see_in_dark = 20
+	ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
 
-	Dispose()
-		SetLuminosity(0)
-		if(smoke)
-			qdel(smoke)
-			smoke = null
-		. = ..()
-
-
-
-
-
-
+/mob/living/carbon/Xenomorph/Boiler/Dispose()
+	SetLuminosity(0)
+	if(smoke)
+		qdel(smoke)
+		smoke = null
+	. = ..()
 
 /mob/living/carbon/Xenomorph/Boiler/proc/bomb_turf(var/turf/T)
 	if(!istype(T) || T.z != src.z || T == get_turf(src))
-		to_chat(src, "<span class='warning'>This is not a valid target.</span>")
+		to_chat(src, SPAN_WARNING("This is not a valid target."))
 		return
 
 	if(!isturf(loc)) //In a locker
@@ -142,15 +136,15 @@
 		return
 
 	if(!is_bombarding)
-		to_chat(src, "<span class='warning'>You must dig yourself in before you can do this.</span>")
+		to_chat(src, SPAN_WARNING("You must dig yourself in before you can do this."))
 		return
 
 	if(bomb_cooldown)
-		to_chat(src, "<span class='warning'>You are still preparing another spit. Be patient!</span>")
+		to_chat(src, SPAN_WARNING("You are still preparing another spit. Be patient!"))
 		return
 
-	if(get_dist(T, U) <= 5) //Magic number
-		to_chat(src, "<span class='warning'>You are too close! You must be at least 7 meters from the target due to the trajectory arc.</span>")
+	if(get_dist(T, U) <= min_bombard_dist)
+		to_chat(src, SPAN_WARNING("You are too close! You must be at least [round(min_bombard_dist*7/5)] meters from the target due to the trajectory arc."))
 		return
 
 	if(!check_plasma(200))
@@ -173,39 +167,49 @@
 	if(!istype(target))
 		return
 
-	to_chat(src, "<span class='xenonotice'>You begin building up acid.</span>")
 	if(client)
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) //Reset the mouse pointer.
 	bomb_cooldown = 1
 	is_bombarding = 0
 	use_plasma(200)
 
-	if(do_after(src, bombard_speed, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		if(!check_state())
-			bomb_cooldown = 0
-			return
-		bomb_turf = null
-		visible_message("<span class='xenowarning'>\The [src] launches a huge glob of acid hurling into the distance!</span>", \
-		"<span class='xenowarning'>You launch a huge glob of acid hurling into the distance!</span>", null, 5)
+	var/time_remaining = do_after(src, bombard_speed, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE)
+	var/temp_damage = ammo.damage // stores the damage so that it can be reverted
 
-		var/obj/item/projectile/P = new /obj/item/projectile(loc)
-		P.generate_bullet(ammo)
-		P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
-		playsound(src, 'sound/effects/blobattack.ogg', 25, 1)
+	if(time_remaining && !railgun)
+		bomb_cooldown = 0
+		to_chat(src, SPAN_WARNING("You decide not to launch any acid."))
+		return
+	else
+		ammo.damage -= (0.75 * ammo.damage * time_remaining)
+
+	if(!check_state())
+		bomb_cooldown = 0
+		return
+
+	bomb_turf = null
+	visible_message(SPAN_WARNING("\The [src] launches a huge glob of acid hurling into the distance!"), \
+	SPAN_WARNING("You launch a huge glob of acid hurling into the distance!"), null, 5)
+
+	var/obj/item/projectile/P = new /obj/item/projectile(loc)
+	P.generate_bullet(ammo)
+	P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
+	playsound(src, 'sound/effects/blobattack.ogg', 25, 1)
+
+	if(railgun)
+		round_statistics.boiler_railgun_shots++
+	else
 		if(ammo.type == /datum/ammo/xeno/boiler_gas/corrosive)
 			round_statistics.boiler_acid_smokes++
 		else
 			round_statistics.boiler_neuro_smokes++
 
+	ammo.damage = temp_damage // Restore damage to its original value
 
-		spawn(bomb_delay) //20 seconds cooldown. Halved if the boiler is a Railgun boiler.
-			bomb_cooldown = 0
-			to_chat(src, "<span class='notice'>You feel your toxin glands swell. You are able to bombard an area again.</span>")
-			for(var/X in actions)
-				var/datum/action/A = X
-				A.update_button_icon()
-		return
-	else
+	spawn(bomb_delay)
 		bomb_cooldown = 0
-		to_chat(src, "<span class='warning'>You decide not to launch any acid.</span>")
+		to_chat(src, SPAN_NOTICE("You feel your toxin glands swell. You are able to bombard an area again."))
+		for(var/X in actions)
+			var/datum/action/A = X
+			A.update_button_icon()
 	return

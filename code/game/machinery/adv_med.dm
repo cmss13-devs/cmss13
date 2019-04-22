@@ -41,10 +41,10 @@
 	if (usr.stat || !(ishuman(usr) || ismonkey(usr)))
 		return
 	if (src.occupant)
-		to_chat(usr, "<span class='notice'> <B>The scanner is already occupied!</B></span>")
+		to_chat(usr, SPAN_NOTICE(" <B>The scanner is already occupied!</B>"))
 		return
 	if (usr.abiotic())
-		to_chat(usr, "<span class='notice'> <B>Subject cannot have abiotic items on.</B></span>")
+		to_chat(usr, SPAN_NOTICE(" <B>Subject cannot have abiotic items on.</B>"))
 		return
 	usr.forceMove(src)
 	src.occupant = usr
@@ -233,7 +233,7 @@
 			N.fields["last_scan_time"] = od["stationtime"]
 			N.fields["last_scan_result"] = dat
 			N.fields["autodoc_data"] = generate_autodoc_surgery_list(H)
-			visible_message("<span class='notice'>\The [src] pings as it stores the scan report of [connected.occupant.real_name]</span>")
+			visible_message(SPAN_NOTICE("\The [src] pings as it stores the scan report of [connected.occupant.real_name]"))
 			playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
 			//dat += "<HR><A href='?src=\ref[src];print=1'>Print</A><BR>" // no more printing
 		else

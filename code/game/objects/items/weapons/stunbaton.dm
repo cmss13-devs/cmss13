@@ -55,7 +55,7 @@
 /obj/item/weapon/baton/examine(mob/user)
 	..()
 	if(bcell)
-		user <<"<span class='notice'>The baton is [round(bcell.percent())]% charged.</span>"
+		user <<SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
 	else
 		user <<"<span class='warning'>The baton does not have a power source installed.</span>"
 
@@ -77,7 +77,7 @@
 	if(istype(H))
 		var/obj/item/card/id/I = H.wear_id
 		if(!istype(I) || !check_access(I))
-			H.visible_message("<span class='notice'>[src] beeeps as [H] picks it up</span>", "<span class='danger'>WARNING: Unauthorized user detected. Denying access...</span>")
+			H.visible_message(SPAN_NOTICE("[src] beeeps as [H] picks it up"), "<span class='danger'>WARNING: Unauthorized user detected. Denying access...</span>")
 			H.KnockDown(20)
 			H.visible_message("<span class='warning'>[src] beeps and sends a shock through [H]'s body!</span>")
 			deductcharge(hitcost)
@@ -95,17 +95,17 @@
 			if(user.drop_held_item())
 				W.forceMove(src)
 				bcell = W
-				to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
+				to_chat(user, SPAN_NOTICE("You install a cell in [src]."))
 				update_icon()
 		else
-			to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
+			to_chat(user, SPAN_NOTICE("[src] already has a cell."))
 
 	else if(istype(W, /obj/item/tool/screwdriver))
 		if(bcell)
 			bcell.updateicon()
 			bcell.loc = get_turf(src.loc)
 			bcell = null
-			to_chat(user, "<span class='notice'>You remove the cell from the [src].</span>")
+			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			status = 0
 			update_icon()
 			return
@@ -117,7 +117,7 @@
 		return
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		to_chat(user, "<span class='notice'>[src] is now [status ? "on" : "off"].</span>")
+		to_chat(user, SPAN_NOTICE("[src] is now [status ? "on" : "off"]."))
 		playsound(loc, "sparks", 25, 1, 6)
 		update_icon()
 	else

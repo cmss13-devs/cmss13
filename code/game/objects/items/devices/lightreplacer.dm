@@ -78,7 +78,7 @@
 			return
 		else if(G.use(1))
 			AddUses(5)
-			to_chat(user, "<span class='notice'>You insert a piece of glass into the [src.name]. You have [uses] lights remaining.</span>")
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src.name]. You have [uses] lights remaining."))
 			return
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
@@ -133,7 +133,7 @@
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
 			if(!Use(U)) return
-			to_chat(U, "<span class='notice'>You replace the [target.fitting] with the [src].</span>")
+			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with the [src]."))
 
 			if(target.status != LIGHT_EMPTY)
 

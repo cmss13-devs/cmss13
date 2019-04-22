@@ -256,7 +256,7 @@
 			if (health > 0)
 				for(var/mob/O in viewers(src, null))
 					if ((O.client && !( O.blinded )))
-						O.show_message("<span class='notice'>[M] [response_help] [src]</span>")
+						O.show_message(SPAN_NOTICE("[M] [response_help] [src]"))
 
 		if("grab")
 			if(M == src || anchored)
@@ -285,10 +285,10 @@
 					MED.use(1)
 					for(var/mob/M in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message("<span class='notice'>[user] applies the [MED] on [src]</span>")
+							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"))
 					return
 		else
-			to_chat(user, "<span class='notice'> this [src] is dead, medical items won't bring it back to life.</span>")
+			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))
 			return
 	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))

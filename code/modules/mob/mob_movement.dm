@@ -58,7 +58,7 @@
 	set hidden = 1
 
 	if(!usr.pulling)
-		to_chat(usr, "<span class='notice'> You are not pulling anything.</span>")
+		to_chat(usr, SPAN_NOTICE(" You are not pulling anything."))
 		return
 	usr.stop_pulling()
 
@@ -208,7 +208,7 @@
 
 	//Check to see if we slipped
 	if(prob(Process_Spaceslipping(5)))
-		to_chat(src, "<span class='notice'> <B>You slipped!</B></span>")
+		to_chat(src, SPAN_NOTICE(" <B>You slipped!</B>"))
 		src.inertia_dir = src.last_move_dir
 		step(src, src.inertia_dir)
 		return 0

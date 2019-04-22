@@ -94,10 +94,10 @@
 			to_chat(user, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>")
 			r_FAL
 		if(2)
-			to_chat(user, "<span class='notice'>Use a wirecutters, then wrench to repair it.</span>")
+			to_chat(user, SPAN_NOTICE("Use a wirecutters, then wrench to repair it."))
 			r_FAL
 		if(3)
-			to_chat(user, "<span class='notice'>Use a wrench to repair it.</span>")
+			to_chat(user, SPAN_NOTICE("Use a wrench to repair it."))
 			r_FAL
 	if(is_on)
 		visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.</span>")
@@ -109,7 +109,7 @@
 		r_TRU
 
 	if(!fusion_cell)
-		to_chat(user, "<span class='notice'>The reactor requires a fuel cell before you can turn it on.</span>")
+		to_chat(user, SPAN_NOTICE("The reactor requires a fuel cell before you can turn it on."))
 		r_FAL
 
 	if(!powernet)
@@ -137,7 +137,7 @@
 			if(user.drop_inv_item_to_loc(O, src))
 				fusion_cell = O
 				update_icon()
-				to_chat(user, "<span class='notice'>You load the [src] with the [O].</span>")
+				to_chat(user, SPAN_NOTICE("You load the [src] with the [O]."))
 			r_TRU
 		else
 			to_chat(user, "<span class='warning'>You need to remove the fuel cell from [src] first.</span>")
@@ -148,19 +148,19 @@
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-					user.visible_message("<span class='notice'>[user] fumbles around figuring out [src]'s internals.</span>",
-					"<span class='notice'>You fumble around figuring out [src]'s internals.</span>")
+					user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s internals."),
+					SPAN_NOTICE("You fumble around figuring out [src]'s internals."))
 					var/fumbling_time = 100 - 20 * user.mind.cm_skills.engineer
 					if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-				user.visible_message("<span class='notice'>[user] starts welding [src]'s internal damage.</span>",
-				"<span class='notice'>You start welding [src]'s internal damage.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
+				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != 1 || is_on || !WT.isOn()) r_FAL
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
-					user.visible_message("<span class='notice'>[user] welds [src]'s internal damage.</span>",
-					"<span class='notice'>You weld [src]'s internal damage.</span>")
+					user.visible_message(SPAN_NOTICE("[user] welds [src]'s internal damage."),
+					SPAN_NOTICE("You weld [src]'s internal damage."))
 					update_icon()
 					r_TRU
 			else
@@ -169,37 +169,37 @@
 	else if(istype(O,/obj/item/tool/wirecutters))
 		if(buildstate == 2 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user.visible_message("<span class='notice'>[user] fumbles around figuring out [src]'s wiring.</span>",
-				"<span class='notice'>You fumble around figuring out [src]'s wiring.</span>")
+				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s wiring."),
+				SPAN_NOTICE("You fumble around figuring out [src]'s wiring."))
 				var/fumbling_time = 100 - 20 * user.mind.cm_skills.engineer
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts securing [src]'s wiring.</span>",
-			"<span class='notice'>You start securing [src]'s wiring.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
+			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, 12))
 				if(buildstate != 2 || is_on) r_FAL
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
-				user.visible_message("<span class='notice'>[user] secures [src]'s wiring.</span>",
-				"<span class='notice'>You secure [src]'s wiring.</span>")
+				user.visible_message(SPAN_NOTICE("[user] secures [src]'s wiring."),
+				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
 				r_TRU
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user.visible_message("<span class='notice'>[user] fumbles around figuring out [src]'s tubing and plating.</span>",
-				"<span class='notice'>You fumble around figuring out [src]'s tubing and plating.</span>")
+				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s tubing and plating."),
+				SPAN_NOTICE("You fumble around figuring out [src]'s tubing and plating."))
 				var/fumbling_time = 100 - 20 * user.mind.cm_skills.engineer
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts repairing [src]'s tubing and plating.</span>",
-			"<span class='notice'>You start repairing [src]'s tubing and plating.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
+			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 3 || is_on) r_FAL
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
-				user.visible_message("<span class='notice'>[user] repairs [src]'s tubing and plating.</span>",
-				"<span class='notice'>You repair [src]'s tubing and plating.</span>")
+				user.visible_message(SPAN_NOTICE("[user] repairs [src]'s tubing and plating."),
+				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
 				r_TRU
 	else if(iscrowbar(O))
@@ -218,12 +218,12 @@
 				var/fumbling_time = 100 - 20 * user.mind.cm_skills.engineer
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] starts prying [src]'s fuel receptacle open.</span>",
-			"<span class='notice'>You start prying [src]'s fuel receptacle open.</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s fuel receptacle open."),
+			SPAN_NOTICE("You start prying [src]'s fuel receptacle open."))
 			if(do_after(user, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != 0 || is_on || !fusion_cell) r_FAL
-				user.visible_message("<span class='notice'>[user] pries [src]'s fuel receptacle open and removes the cell.</span>",
-				"<span class='notice'>You pry [src]'s fuel receptacle open and remove the cell..</span>")
+				user.visible_message(SPAN_NOTICE("[user] pries [src]'s fuel receptacle open and removes the cell."),
+				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell.."))
 				fusion_cell.update_icon()
 				user.put_in_hands(fusion_cell)
 				fusion_cell = null

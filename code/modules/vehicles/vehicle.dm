@@ -48,7 +48,7 @@
 		if(!locked)
 			open = !open
 			update_icon()
-			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
+			to_chat(user, SPAN_NOTICE("Maintenance panel is now [open ? "opened" : "closed"]."))
 	else if(istype(W, /obj/item/tool/crowbar) && cell && open)
 		remove_cell(user)
 
@@ -58,14 +58,14 @@
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
 			if(health < maxhealth)
-				user.visible_message("<span class='notice'>[user] starts to repair [src].</span>","<span class='notice'>You start to repair [src]</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts to repair [src]."),SPAN_NOTICE("You start to repair [src]"))
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					if(!src || !WT.isOn())
 						return
 					health = min(maxhealth, health+10)
-					user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
+					user.visible_message(SPAN_NOTICE("[user] repairs [src]."),SPAN_NOTICE("You repair [src]."))
 			else
-				to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
+				to_chat(user, SPAN_NOTICE("[src] does not need repairs."))
 
 	else if(W.force)
 		switch(W.damtype)
@@ -191,13 +191,13 @@
 	H.drop_inv_item_to_loc(C, src)
 	cell = C
 	powercheck()
-	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
+	to_chat(usr, SPAN_NOTICE("You install [C] in [src]."))
 
 /obj/vehicle/proc/remove_cell(var/mob/living/carbon/human/H)
 	if(!cell)
 		return
 
-	to_chat(usr, "<span class='notice'>You remove [cell] from [src].</span>")
+	to_chat(usr, SPAN_NOTICE("You remove [cell] from [src]."))
 	cell.forceMove(get_turf(H))
 	H.put_in_hands(cell)
 	cell = null

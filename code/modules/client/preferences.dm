@@ -829,7 +829,7 @@ datum/preferences
 						total_cost += C.cost
 						if(C && total_cost <= MAX_GEAR_COST)
 							gear += choice
-							to_chat(user, "<span class='notice'>Added \the '[choice]' for [C.cost] points ([MAX_GEAR_COST - total_cost] points remaining).</span>")
+							to_chat(user, SPAN_NOTICE("Added \the '[choice]' for [C.cost] points ([MAX_GEAR_COST - total_cost] points remaining)."))
 						else
 							to_chat(user, "<span class='warning'>Adding \the '[choice]' will exceed the maximum loadout cost of [MAX_GEAR_COST] points.</span>")
 

@@ -105,7 +105,7 @@
 	dir = lead.dir
 
 	if(user)
-		to_chat(user, "<span class='notice'> You hitch [src] to [T].</span>")
+		to_chat(user, SPAN_NOTICE(" You hitch [src] to [T]."))
 
 	update_stats()
 
@@ -119,7 +119,7 @@
 	lead.tow = null
 	lead.update_stats()
 
-	to_chat(user, "<span class='notice'> You unhitch [src] from [lead].</span>")
+	to_chat(user, SPAN_NOTICE(" You unhitch [src] from [lead]."))
 	lead = null
 
 	update_stats()

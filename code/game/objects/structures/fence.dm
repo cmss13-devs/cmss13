@@ -100,7 +100,7 @@
 		if(health)
 			amount_needed = 1
 		if(R.amount >= amount_needed)
-			user.visible_message("<span class='notice'>[user] starts repairing [src] with [R].</span>",
+			user.visible_message(SPAN_NOTICE("[user] starts repairing [src] with [R]."),
 			"<span class='notice'>You start repairing [src] with [R]")
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -113,7 +113,7 @@
 				density = 1
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] repairs [src] with [R].</span>",
+				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [R]."),
 				"<span class='notice'>You repair [src] with [R]")
 				return
 		else
@@ -151,12 +151,12 @@
 	if(W.flags_item & NOBLUDGEON) return
 
 	if(istype(W, /obj/item/tool/wirecutters))
-		user.visible_message("<span class='notice'>[user] starts cutting through [src] with [W].</span>",
+		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
 		"<span class='notice'>You start cutting through [src] with [W]")
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message("<span class='notice'>[user] cuts through [src] with [W].</span>",
+			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
 			"<span class='notice'>You cut through [src] with [W]")
 			cut_grille()
 		return

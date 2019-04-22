@@ -191,18 +191,18 @@
 	//But all of the other code about those two would look like shit
 	if(usr == gunner)
 		if(driver)
-			to_chat(usr, "<span class='notice'>There's already someone in the other seat.</span>")
+			to_chat(usr, SPAN_NOTICE("There's already someone in the other seat."))
 			return
 
-		to_chat(usr, "<span class='notice'>You start getting into the other seat.</span>")
+		to_chat(usr, SPAN_NOTICE("You start getting into the other seat."))
 
 		sleep(30)
 
 		if(driver)
-			to_chat(usr, "<span class='notice'>Someone beat you to the other seat!</span>")
+			to_chat(usr, SPAN_NOTICE("Someone beat you to the other seat!"))
 			return
 
-		to_chat(usr, "<span class='notice'>You switch seats.</span>")
+		to_chat(usr, SPAN_NOTICE("You switch seats."))
 
 		deactivate_all_hardpoints()
 
@@ -211,18 +211,18 @@
 
 	else if(usr == driver)
 		if(gunner)
-			to_chat(usr, "<span class='notice'>There's already someone in the other seat.</span>")
+			to_chat(usr, SPAN_NOTICE("There's already someone in the other seat."))
 			return
 
-		to_chat(usr, "<span class='notice'>You start getting into the other seat.</span>")
+		to_chat(usr, SPAN_NOTICE("You start getting into the other seat."))
 
 		sleep(30)
 
 		if(gunner)
-			to_chat(usr, "<span class='notice'>Someone beat you to the other seat!</span>")
+			to_chat(usr, SPAN_NOTICE("Someone beat you to the other seat!"))
 			return
 
-		to_chat(usr, "<span class='notice'>You switch seats.</span>")
+		to_chat(usr, SPAN_NOTICE("You switch seats."))
 
 		gunner = driver
 		driver = null
@@ -238,7 +238,7 @@
 		to_chat(M, "<span class='warning'>There is no one in the vehicle.</span>")
 		return
 
-	to_chat(M, "<span class='notice'>You start pulling [driver ? driver : gunner] out of their seat.</span>")
+	to_chat(M, SPAN_NOTICE("You start pulling [driver ? driver : gunner] out of their seat."))
 
 	if(!do_after(M, 200, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(M, "<span class='warning'>You stop pulling [driver ? driver : gunner] out of their seat.</span>")
@@ -251,7 +251,7 @@
 		return
 
 	M.visible_message("<span class='warning'>[M] pulls [driver ? driver : gunner] out of their seat in [src].</span>",
-		"<span class='notice'>You pull [driver ? driver : gunner] out of their seat.</span>")
+		SPAN_NOTICE("You pull [driver ? driver : gunner] out of their seat."))
 
 	var/mob/targ
 	if(driver)
@@ -275,7 +275,7 @@
 	if(!M || M.client == null) return
 
 	if(!M.mind || !(!M.mind.cm_skills || M.mind.cm_skills.large_vehicle >= SKILL_LARGE_VEHICLE_TRAINED))
-		to_chat(M, "<span class='notice'>You have no idea how to operate this thing.</span>")
+		to_chat(M, SPAN_NOTICE("You have no idea how to operate this thing."))
 		return
 
 	for(var/obj/item/clothing/glasses/night/goggle in M.contents)
@@ -283,7 +283,7 @@
 			to_chat(M, "<span class='warning'>You can't use the tank with nightvision goggles.</span>")
 			return
 
-	to_chat(M, "<span class='notice'>You start climbing into [src].</span>")
+	to_chat(M, SPAN_NOTICE("You start climbing into [src]."))
 	for(var/obj/item/I in M.contents)
 		if(I.zoom)
 			I.zoom() // cancel zoom.
@@ -291,11 +291,11 @@
 		if("Driver")
 
 			if(driver != null)
-				to_chat(M, "<span class='notice'>That seat is already taken.</span>")
+				to_chat(M, SPAN_NOTICE("That seat is already taken."))
 				return
 
 			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, TRUE))
-				to_chat(M, "<span class='notice'>Something interrupted you while getting in.</span>")
+				to_chat(M, SPAN_NOTICE("Something interrupted you while getting in."))
 				return
 
 			for(var/obj/item/clothing/glasses/night/goggle in M.contents)
@@ -304,29 +304,29 @@
 					return
 
 			if(M.loc != entrance.loc)
-				to_chat(M, "<span class='notice'>You stop getting in.</span>")
+				to_chat(M, SPAN_NOTICE("You stop getting in."))
 				return
 
 			if(driver != null)
-				to_chat(M, "<span class='notice'>Someone got into that seat before you could.</span>")
+				to_chat(M, SPAN_NOTICE("Someone got into that seat before you could."))
 				return
 			for(var/obj/item/I in M.contents)
 				if(I.zoom)
 					I.zoom() // cancel zoom.
 			driver = M
 			M.loc = src
-			to_chat(M, "<span class='notice'>You enter the driver's seat.</span>")
+			to_chat(M, SPAN_NOTICE("You enter the driver's seat."))
 			M.set_interaction(src)
 			return
 
 		if("Gunner")
 
 			if(gunner != null)
-				to_chat(M, "<span class='notice'>That seat is already taken.</span>")
+				to_chat(M, SPAN_NOTICE("That seat is already taken."))
 				return
 
 			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, TRUE))
-				to_chat(M, "<span class='notice'>Something interrupted you while getting in.</span>")
+				to_chat(M, SPAN_NOTICE("Something interrupted you while getting in."))
 				return
 
 			for(var/obj/item/clothing/glasses/night/goggle in M.contents)
@@ -335,11 +335,11 @@
 					return
 
 			if(M.loc != entrance.loc)
-				to_chat(M, "<span class='notice'>You stop getting in.</span>")
+				to_chat(M, SPAN_NOTICE("You stop getting in."))
 				return
 
 			if(gunner != null)
-				to_chat(M, "<span class='notice'>Someone got into that seat before you could.</span>")
+				to_chat(M, SPAN_NOTICE("Someone got into that seat before you could."))
 				return
 
 			if(!M.client) return //Disconnected while getting in
@@ -348,7 +348,7 @@
 					I.zoom() // cancel zoom.
 			gunner = M
 			M.loc = src
-			to_chat(M, "<span class='notice'>You enter the gunner's seat.</span>")
+			to_chat(M, SPAN_NOTICE("You enter the gunner's seat."))
 			M.set_interaction(src)
 
 			return
@@ -361,24 +361,24 @@
 	if(M != gunner && M != driver) return
 
 	if(occupant_exiting)
-		to_chat(M, "<span class='notice'>Someone is already getting out of the vehicle.</span>")
+		to_chat(M, SPAN_NOTICE("Someone is already getting out of the vehicle."))
 		return
 
-	to_chat(M, "<span class='notice'>You start climbing out of [src].</span>")
+	to_chat(M, SPAN_NOTICE("You start climbing out of [src]."))
 
 	occupant_exiting = 1
 	sleep(50)
 	occupant_exiting = 0
 
 	if(!M.Move(entrance.loc))
-		to_chat(M, "<span class='notice'>Something is blocking you from exiting.</span>")
+		to_chat(M, SPAN_NOTICE("Something is blocking you from exiting."))
 	else
 		if(M == gunner)
 			deactivate_all_hardpoints()
 			gunner = null
 		else if(M == driver) driver = null
 		M.unset_interaction()
-		to_chat(M, "<span class='notice'>You climb out of [src].</span>")
+		to_chat(M, SPAN_NOTICE("You climb out of [src]."))
 
 //No one but the driver can drive
 /obj/vehicle/multitile/root/cm_armored/tank/relaymove(var/mob/user, var/direction)

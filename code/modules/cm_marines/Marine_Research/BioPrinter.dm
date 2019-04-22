@@ -103,7 +103,7 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 	busy = 1
 	use_power(max(1000, (3750)))
 	if (do_after(user, 16, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, "<span class='notice'> You add a [O] to the [src.name].</span>")
+		to_chat(user, SPAN_NOTICE(" You add a [O] to the [src.name]."))
 		icon_state = "protolathe"
 		if(istype(O, /obj/item/XenoBio/Blood))
 			blood_amount++

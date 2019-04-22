@@ -74,17 +74,17 @@
 			return
 		var/obj/item/handcuffs/cable/B = new /obj/item/handcuffs/cable(usr.loc)
 		B.color = color
-		to_chat(usr, "<span class='notice'>You wind some cable together to make some restraints.</span>")
+		to_chat(usr, SPAN_NOTICE("You wind some cable together to make some restraints."))
 		src.use(15)
 	else
-		to_chat(usr, "<span class='notice'>\blue You cannot do that.</span>")
+		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
 	..()
 
 /obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
 	if( istype(W, /obj/item/tool/wirecutters) && src.amount > 1)
 		src.amount--
 		new/obj/item/stack/cable_coil(user.loc, 1,color)
-		to_chat(user, "<span class='notice'>You cut a piece off the cable coil.</span>")
+		to_chat(user, SPAN_NOTICE("You cut a piece off the cable coil."))
 		src.updateicon()
 		src.update_wclass()
 		return

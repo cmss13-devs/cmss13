@@ -122,7 +122,7 @@
 /obj/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I,/obj/item/card/emag))
 		locked = !locked
-		to_chat(user, "<span class='notice'> You [locked ? "lock" : "unlock"] the mulebot's controls!</span>")
+		to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the mulebot's controls!"))
 		flick("mulebot-emagged", src)
 		playsound(src.loc, 'sound/effects/sparks1.ogg', 25, 0)
 	else if(istype(I,/obj/item/cell) && open && !cell)
@@ -132,16 +132,16 @@
 			updateDialog()
 	else if(istype(I,/obj/item/tool/screwdriver))
 		if(locked)
-			to_chat(user, "<span class='notice'> The maintenance hatch cannot be opened or closed while the controls are locked.</span>")
+			to_chat(user, SPAN_NOTICE(" The maintenance hatch cannot be opened or closed while the controls are locked."))
 			return
 
 		open = !open
 		if(open)
-			src.visible_message("[user] opens the maintenance hatch of [src]", "<span class='notice'>You open [src]'s maintenance hatch.</span>")
+			src.visible_message("[user] opens the maintenance hatch of [src]", SPAN_NOTICE("You open [src]'s maintenance hatch."))
 			on = 0
 			icon_state="mulebot-hatch"
 		else
-			src.visible_message("[user] closes the maintenance hatch of [src]", "<span class='notice'>You close [src]'s maintenance hatch.</span>")
+			src.visible_message("[user] closes the maintenance hatch of [src]", SPAN_NOTICE("You close [src]'s maintenance hatch."))
 			icon_state = "mulebot0"
 
 		updateDialog()
@@ -150,10 +150,10 @@
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
 				"<span class='danger'>[user] repairs [src]!</span>",
-				"<span class='notice'>You repair [src]!</span>"
+				SPAN_NOTICE("You repair [src]!")
 			)
 		else
-			to_chat(user, "<span class='notice'> [src] does not need a repair!</span>")
+			to_chat(user, SPAN_NOTICE(" [src] does not need a repair!"))
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
@@ -320,7 +320,7 @@
 					cell.add_fingerprint(usr)
 					cell = null
 
-					usr.visible_message("<span class='notice'>[usr] removes the power cell from [src].</span>", "<span class='notice'>You remove the power cell from [src].</span>")
+					usr.visible_message(SPAN_NOTICE("[usr] removes the power cell from [src]."), SPAN_NOTICE("You remove the power cell from [src]."))
 					updateDialog()
 
 			if("cellinsert")
@@ -332,7 +332,7 @@
 							C.forceMove(src)
 							C.add_fingerprint(usr)
 
-							usr.visible_message("<span class='notice'>[usr] inserts a power cell into [src].</span>", "<span class='notice'>You insert the power cell into [src].</span>")
+							usr.visible_message(SPAN_NOTICE("[usr] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
 							updateDialog()
 
 
@@ -399,29 +399,29 @@
 					var/wirebit = text2num(href_list["wire"])
 					wires &= ~wirebit
 				else
-					to_chat(usr, "<span class='notice'> You need wirecutters!</span>")
+					to_chat(usr, SPAN_NOTICE(" You need wirecutters!"))
 			if("wiremend")
 				if(istype(usr.get_active_hand(), /obj/item/tool/wirecutters))
 					var/wirebit = text2num(href_list["wire"])
 					wires |= wirebit
 				else
-					to_chat(usr, "<span class='notice'> You need wirecutters!</span>")
+					to_chat(usr, SPAN_NOTICE(" You need wirecutters!"))
 
 			if("wirepulse")
 				if(istype(usr.get_active_hand(), /obj/item/device/multitool))
 					switch(href_list["wire"])
 						if("1","2")
-							to_chat(usr, "<span class='notice'> \icon[src] The charge light flickers.</span>")
+							to_chat(usr, SPAN_NOTICE(" \icon[src] The charge light flickers."))
 						if("4")
-							to_chat(usr, "<span class='notice'> \icon[src] The external warning lights flash briefly.</span>")
+							to_chat(usr, SPAN_NOTICE(" \icon[src] The external warning lights flash briefly."))
 						if("8")
-							to_chat(usr, "<span class='notice'> \icon[src] The load platform clunks.</span>")
+							to_chat(usr, SPAN_NOTICE(" \icon[src] The load platform clunks."))
 						if("16", "32")
-							to_chat(usr, "<span class='notice'> \icon[src] The drive motor whines briefly.</span>")
+							to_chat(usr, SPAN_NOTICE(" \icon[src] The drive motor whines briefly."))
 						else
-							to_chat(usr, "<span class='notice'> \icon[src] You hear a radio crackle.</span>")
+							to_chat(usr, SPAN_NOTICE(" \icon[src] You hear a radio crackle."))
 				else
-					to_chat(usr, "<span class='notice'> You need a multitool!</span>")
+					to_chat(usr, SPAN_NOTICE(" You need a multitool!"))
 
 
 

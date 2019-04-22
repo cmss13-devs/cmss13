@@ -55,10 +55,10 @@
 /obj/item/reagent_container/glass/attack_self()
 	..()
 	if(is_open_container())
-		to_chat(usr, "<span class='notice'>You put the lid on \the [src].</span>")
+		to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
 		flags_atom ^= OPENCONTAINER
 	else
-		to_chat(usr, "<span class='notice'>You take the lid off \the [src].</span>")
+		to_chat(usr, SPAN_NOTICE("You take the lid off \the [src]."))
 		flags_atom |= OPENCONTAINER
 	update_icon()
 
@@ -72,7 +72,7 @@
 			return
 
 	if(ismob(target) && target.reagents && reagents.total_volume)
-		to_chat(user, "<span class='notice'>You splash the solution onto [target].</span>")
+		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 
 		var/mob/living/M = target
@@ -100,7 +100,7 @@
 			return
 
 		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
+		to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
 
 	else if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
 
@@ -113,13 +113,13 @@
 			return
 
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
+		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the solution to [target]."))
 
 	else if(istype(target, /obj/machinery/smartfridge))
 		return
 
 	else if(reagents.total_volume)
-		to_chat(user, "<span class='notice'>You splash the solution onto [target].</span>")
+		to_chat(user, SPAN_NOTICE("You splash the solution onto [target]."))
 		playsound(target, 'sound/effects/slosh.ogg', 25, 1)
 		reagents.reaction(target, TOUCH)
 		spawn(5) src.reagents.clear_reagents()
@@ -131,8 +131,8 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, "<span class='warning'>The label can be at most [MAX_NAME_LEN] characters long.</span>")
 		else
-			user.visible_message("<span class='notice'>[user] labels [src] as \"[tmp_label]\".</span>", \
-								 "<span class='notice'>You label [src] as \"[tmp_label]\".</span>")
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+								 SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			label_text = tmp_label
 			update_name_label()
 
@@ -271,7 +271,7 @@
 			to_chat(user, "[src] is out of water!</span>")
 		else
 			reagents.trans_to(I, 5)
-			to_chat(user, "<span class='notice'>You wet [I] in [src].</span>")
+			to_chat(user, SPAN_NOTICE("You wet [I] in [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 	else

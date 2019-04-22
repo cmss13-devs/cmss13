@@ -421,7 +421,7 @@
 			if((L.status & LIMB_SPLINTED) && L.knitting_time == -1)
 				L.knitting_time = L.time_to_knit + world.time
 				L.start_processing()
-				to_chat(Y, "<span class='notice'>You feel the bones in your [L.display_name] start to knit together.</span>")
+				to_chat(Y, SPAN_NOTICE("You feel the bones in your [L.display_name] start to knit together."))
 				break
 
 	if(M.getBruteLoss() && prob(80)) M.heal_limb_damage(1*REM,0)
@@ -966,7 +966,7 @@
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
+			to_chat(M, SPAN_NOTICE("Your mind feels focused and undivided."))
 
 /datum/reagent/antidepressant/citalopram
 	name = "Citalopram"
@@ -986,7 +986,7 @@
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
-			to_chat(M, "<span class='notice'>Your mind feels stable.. a little stable.</span>")
+			to_chat(M, SPAN_NOTICE("Your mind feels stable.. a little stable."))
 
 
 /datum/reagent/antidepressant/paroxetine
@@ -1008,7 +1008,7 @@
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
 			if(prob(90))
-				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
+				to_chat(M, SPAN_NOTICE("Your mind feels much more stable."))
 			else
 				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
 				M.hallucination += 200

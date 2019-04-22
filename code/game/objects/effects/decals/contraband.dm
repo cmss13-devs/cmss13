@@ -52,10 +52,10 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/wirecutters))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(ruined)
-			to_chat(user, "<span class='notice'>You remove the remnants of the poster.</span>")
+			to_chat(user, SPAN_NOTICE("You remove the remnants of the poster."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='notice'>You carefully remove the poster from the wall.</span>")
+			to_chat(user, SPAN_NOTICE("You carefully remove the poster from the wall."))
 			roll_and_drop(user.loc)
 		return
 
@@ -95,14 +95,14 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	var/stuff_on_wall = 0
 	for(var/obj/O in contents) //Let's see if it already has a poster on it or too much stuff
 		if(istype(O,/obj/structure/sign/poster))
-			to_chat(user, "<span class='notice'>The wall is far too cluttered to place a poster!</span>")
+			to_chat(user, SPAN_NOTICE("The wall is far too cluttered to place a poster!"))
 			return
 		stuff_on_wall++
 		if(stuff_on_wall == 3)
-			to_chat(user, "<span class='notice'>The wall is far too cluttered to place a poster!</span>")
+			to_chat(user, SPAN_NOTICE("The wall is far too cluttered to place a poster!"))
 			return
 
-	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>") //Looks like it's uncluttered enough. Place the poster.
+	to_chat(user, SPAN_NOTICE("You start placing the poster on the wall...")) //Looks like it's uncluttered enough. Place the poster.
 
 	//declaring D because otherwise if P gets 'deconstructed' we lose our reference to P.resulting_poster
 	var/obj/structure/sign/poster/D = new(P.serial_number)
@@ -117,7 +117,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	if(!D)	return
 
 	if(istype(src,/turf/closed/wall) && user && user.loc == temp_loc)//Let's check if everything is still there
-		to_chat(user, "<span class='notice'>You place the poster!</span>")
+		to_chat(user, SPAN_NOTICE("You place the poster!"))
 	else
 		D.roll_and_drop(temp_loc)
 	return

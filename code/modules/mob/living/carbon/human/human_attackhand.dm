@@ -16,7 +16,7 @@
 					"<span class='warning'>You try to put out the fire on [src]!</span>", null, 5)
 				if(fire_stacks <= 0)
 					M.visible_message("<span class='danger'>[M] has successfully extinguished the fire on [src]!</span>", \
-						"<span class='notice'>You extinguished the fire on [src].</span>", null, 5)
+						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 					ExtinguishMob()
 				return 1
 
@@ -26,10 +26,10 @@
 //			if(M.health < -75)	return 0
 
 			if((M.head && (M.head.flags_inventory & COVERMOUTH)) || (M.wear_mask && (M.wear_mask.flags_inventory & COVERMOUTH)))
-				to_chat(M, "<span class='notice'> <B>Remove your mask!</B></span>")
+				to_chat(M, SPAN_NOTICE(" <B>Remove your mask!</B>"))
 				return 0
 			if((head && (head.flags_inventory & COVERMOUTH)) || (wear_mask && (wear_mask.flags_inventory & COVERMOUTH)))
-				to_chat(M, "<span class='notice'> <B>Remove his mask!</B></span>")
+				to_chat(M, SPAN_NOTICE(" <B>Remove his mask!</B>"))
 				return 0
 
 			//CPR
@@ -43,7 +43,7 @@
 					adjustOxyLoss(-suff)
 					updatehealth()
 					visible_message("<span class='danger'>[M] performs CPR on [src]!</span>", null, null, 3)
-					to_chat(src, "<span class='notice'> <b>You feel a breath of fresh air enter your lungs. It feels good.</b></span>")
+					to_chat(src, SPAN_NOTICE(" <b>You feel a breath of fresh air enter your lungs. It feels good.</b>"))
 					to_chat(M, "<span class='warning'>Repeat at least every 7 seconds.</span>")
 
 
@@ -173,11 +173,11 @@
 			if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
 				holo_card_color = null
 				update_targeted()
-				visible_message("<span class='notice'>[src] removes the holo card on [gender==MALE?"himself":"herself"].</span>", \
-					"<span class='notice'>You remove the holo card on yourself.</span>", null, 3)
+				visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
+					SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
 				return
-			visible_message("<span class='notice'>[src] examines [gender==MALE?"himself":"herself"].</span>", \
-				"<span class='notice'>You check yourself for injuries.</span>", null, 3)
+			visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
+				SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
 			for(var/datum/limb/org in limbs)
 				var/status = ""
@@ -236,8 +236,8 @@
 				if(istype(H))
 					H.species.hug(H,src)
 				else
-					M.visible_message("<span class='notice'>[M] hugs [src] to make [t_him] feel better!</span>", \
-								"<span class='notice'>You hug [src] to make [t_him] feel better!</span>", null, 4)
+					M.visible_message(SPAN_NOTICE("[M] hugs [src] to make [t_him] feel better!"), \
+								SPAN_NOTICE("You hug [src] to make [t_him] feel better!"), null, 4)
 
 			AdjustKnockedout(-3)
 			AdjustStunned(-3)

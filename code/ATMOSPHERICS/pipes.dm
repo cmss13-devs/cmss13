@@ -96,12 +96,12 @@
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message("<span class='notice'>[user] begins unfastening [src].</span>",
-	"<span class='notice'>You begin unfastening [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),
+	SPAN_NOTICE("You begin unfastening [src]."))
 	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
-		"<span class='notice'>You unfasten [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+		SPAN_NOTICE("You unfasten [src]."))
 		new /obj/item/pipe(loc, make_from = src)
 		for(var/obj/machinery/meter/meter in T)
 			if(meter.target == src)
@@ -1108,13 +1108,13 @@
 		for (var/mob/O in viewers(user, null))
 			to_chat(O, "<span class='danger'>[user] has used the analyzer on \icon[icon]</span>")
 
-		to_chat(user, "<span class='notice'> Results of analysis of \icon[icon]</span>")
+		to_chat(user, SPAN_NOTICE(" Results of analysis of \icon[icon]"))
 		if (pressure>0)
-			to_chat(user, "<span class='notice'> Pressure: [round(pressure,0.1)] kPa</span>")
-			to_chat(user, "<span class='notice'> [gas_type]: [100]%</span>")
-			to_chat(user, "<span class='notice'> Temperature: [round(temperature-T0C)]&deg;C</span>")
+			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
+			to_chat(user, SPAN_NOTICE(" [gas_type]: [100]%"))
+			to_chat(user, SPAN_NOTICE(" Temperature: [round(temperature-T0C)]&deg;C"))
 		else
-			to_chat(user, "<span class='notice'> Tank is empty!</span>")
+			to_chat(user, SPAN_NOTICE(" Tank is empty!"))
 
 /obj/machinery/atmospherics/pipe/tank/air
 	name = "Pressure Tank (Air)"

@@ -114,7 +114,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			to_chat(user, "<span class='warning'>[I] is no longer in storage.</span>")
 			return
 
-		visible_message("<span class='notice'>[src] beeps happily as it disgorges [I].</span>")
+		visible_message(SPAN_NOTICE("[src] beeps happily as it disgorges [I]."))
 
 		I.loc = get_turf(src)
 		frozen_items_for_type -= I
@@ -125,7 +125,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			to_chat(user, "<span class='warning'>There is nothing to recover from storage.</span>")
 			return
 
-		visible_message("<span class='notice'>[src] beeps happily as it disgorges the desired objects.</span>")
+		visible_message(SPAN_NOTICE("[src] beeps happily as it disgorges the desired objects."))
 
 		for(var/obj/item/I in frozen_items_for_type)
 			I.loc = get_turf(src)
@@ -403,7 +403,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			frozen_crew += "[occupant.real_name]"
 
 			announce.autosay("[occupant.real_name] has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.", "Hypersleep Storage System")
-			visible_message("<span class='notice'>[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage.</span>")
+			visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
 
 			//Delete the mob.
 
@@ -444,8 +444,8 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 		if(willing)
 
-			visible_message("<span class='notice'>[user] starts putting [M] into [src].</span>",
-			"<span class='notice'>You start putting [M] into [src].</span>")
+			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
+			SPAN_NOTICE("You start putting [M] into [src]."))
 
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
 			if(!M || !G || !G.grabbed_thing) return
@@ -458,7 +458,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			else
 				icon_state = "body_scanner_1"
 
-			to_chat(M, "<span class='notice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
+			to_chat(M, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
 			to_chat(M, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
 			occupant = M
 			start_processing()
@@ -467,7 +467,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 			//Book keeping!
 			var/turf/location = get_turf(src)
 			log_admin("[key_name_admin(M)] has entered a stasis pod. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
-			message_admins("<span class='notice'>[key_name_admin(M)] has entered a stasis pod.</span>")
+			message_admins(SPAN_NOTICE("[key_name_admin(M)] has entered a stasis pod."))
 
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(M)
@@ -517,8 +517,8 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		to_chat(usr, "<span class='warning'>There is no way [src] will accept you!</span>")
 		return
 
-	usr.visible_message("<span class='notice'>[usr] starts climbing into [src].</span>",
-	"<span class='notice'>You start climbing into [src].</span>")
+	usr.visible_message(SPAN_NOTICE("[usr] starts climbing into [src]."),
+	SPAN_NOTICE("You start climbing into [src]."))
 
 	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 
@@ -537,7 +537,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 		else
 			icon_state = "body_scanner_1"
 
-		to_chat(usr, "<span class='notice'>You feel cool air surround you. You go numb as your senses turn inward.</span>")
+		to_chat(usr, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
 		to_chat(usr, "<span class='boldnotice'>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</span>")
 		time_entered = world.time
 		start_processing()

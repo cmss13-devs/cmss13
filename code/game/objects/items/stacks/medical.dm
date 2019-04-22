@@ -72,21 +72,21 @@
 					if (W.internal)
 						continue
 					if (W.current_stage <= W.max_bleeding_stage)
-						user.visible_message("<span class='notice'>[user] bandages [W.desc] on [M]'s [affecting.display_name].</span>",
-						"<span class='notice'>You bandage [W.desc] on [M]'s [affecting.display_name].</span>" )
+						user.visible_message(SPAN_NOTICE("[user] bandages [W.desc] on [M]'s [affecting.display_name]."),
+						SPAN_NOTICE("You bandage [W.desc] on [M]'s [affecting.display_name].") )
 					else if (istype(W,/datum/wound/bruise))
-						user.visible_message("<span class='notice'>[user] places bruise patch over [W.desc] on [M]'s [affecting.display_name].</span>",
-						"<span class='notice'>You place bruise patch over [W.desc] on [M]'s [affecting.display_name].</span>" )
+						user.visible_message(SPAN_NOTICE("[user] places bruise patch over [W.desc] on [M]'s [affecting.display_name]."),
+						SPAN_NOTICE("You place bruise patch over [W.desc] on [M]'s [affecting.display_name].") )
 					else
-						user.visible_message("<span class='notice'>[user] places bandaid over [W.desc] on [M]'s [affecting.display_name].</span>",
-						"<span class='notice'>You place bandaid over [W.desc] on [M]'s [affecting.display_name].</span>" )
+						user.visible_message(SPAN_NOTICE("[user] places bandaid over [W.desc] on [M]'s [affecting.display_name]."),
+						SPAN_NOTICE("You place bandaid over [W.desc] on [M]'s [affecting.display_name].") )
 				use(1)
 		else
 			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery
 				if(do_surgery(H,user,src))
 					return
 			else
-				to_chat(user, "<span class='notice'>The [affecting.display_name] is cut open, you'll need more than a bandage!</span>")
+				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
@@ -117,15 +117,15 @@
 				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been salved.</span>")
 				return 1
 			else
-				user.visible_message("<span class='notice'>[user] salves wounds on [M]'s [affecting.display_name].</span>",
-				"<span class='notice'>You salve wounds on [M]'s [affecting.display_name].</span>")
+				user.visible_message(SPAN_NOTICE("[user] salves wounds on [M]'s [affecting.display_name]."),
+				SPAN_NOTICE("You salve wounds on [M]'s [affecting.display_name]."))
 				use(1)
 		else
 			if (H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
 				if (do_surgery(H,user,src))
 					return
 			else
-				to_chat(user, "<span class='notice'>The [affecting.display_name] is cut open, you'll need more than a bandage!</span>")
+				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
 
 /obj/item/stack/medical/advanced/bruise_pack
@@ -168,14 +168,14 @@
 					if(W.internal)
 						continue
 					if(W.current_stage <= W.max_bleeding_stage)
-						user.visible_message("<span class='notice'>[user] cleans [W.desc] on [M]'s [affecting.display_name] and seals edges with bioglue.</span>",
-						"<span class='notice'>You clean and seal [W.desc] on [M]'s [affecting.display_name].</span>")
+						user.visible_message(SPAN_NOTICE("[user] cleans [W.desc] on [M]'s [affecting.display_name] and seals edges with bioglue."),
+						SPAN_NOTICE("You clean and seal [W.desc] on [M]'s [affecting.display_name]."))
 					else if (istype(W,/datum/wound/bruise))
-						user.visible_message("<span class='notice'>[user] places medicine patch over [W.desc] on [M]'s [affecting.display_name].</span>",
-						"<span class='notice'>You place medicine patch over [W.desc] on [M]'s [affecting.display_name].</span>")
+						user.visible_message(SPAN_NOTICE("[user] places medicine patch over [W.desc] on [M]'s [affecting.display_name]."),
+						SPAN_NOTICE("You place medicine patch over [W.desc] on [M]'s [affecting.display_name]."))
 					else
-						user.visible_message("<span class='notice'>[user] smears some bioglue over [W.desc] on [M]'s [affecting.display_name].</span>",
-						"<span class='notice'>You smear some bioglue over [W.desc] on [M]'s [affecting.display_name].</span>")
+						user.visible_message(SPAN_NOTICE("[user] smears some bioglue over [W.desc] on [M]'s [affecting.display_name]."),
+						SPAN_NOTICE("You smear some bioglue over [W.desc] on [M]'s [affecting.display_name]."))
 				if(bandaged)
 					affecting.heal_damage(heal_amt, 0)
 				use(1)
@@ -184,7 +184,7 @@
 				if(do_surgery(H, user, src))
 					return
 			else
-				to_chat(user, "<span class='notice'>The [affecting.display_name] is cut open, you'll need more than a bandage!</span>")
+				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
 /obj/item/stack/medical/bruise_pack/tajaran
 	name = "\improper S'rendarr's Hand leaf"
@@ -235,8 +235,8 @@
 				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been salved.")
 				return 1
 			else
-				user.visible_message("<span class='notice'>[user] covers wounds on [M]'s [affecting.display_name] with regenerative membrane.</span>",
-				"<span class='notice'>You cover wounds on [M]'s [affecting.display_name] with regenerative membrane.</span>")
+				user.visible_message(SPAN_NOTICE("[user] covers wounds on [M]'s [affecting.display_name] with regenerative membrane."),
+				SPAN_NOTICE("You cover wounds on [M]'s [affecting.display_name] with regenerative membrane."))
 				affecting.heal_damage(0, heal_amt)
 				use(1)
 		else
@@ -244,7 +244,7 @@
 				if(do_surgery(H,user,src))
 					return
 			else
-				to_chat(user, "<span class='notice'>The [affecting.display_name] is cut open, you'll need more than a bandage!</span>")
+				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
 /obj/item/stack/medical/splint
 	name = "medical splints"
@@ -282,14 +282,14 @@
 
 		if(M != user)
 			user.visible_message("<span class='warning'>[user] starts to apply [src] to [M]'s [limb].</span>",
-			"<span class='notice'>You start to apply [src] to [M]'s [limb], hold still.</span>")
+			SPAN_NOTICE("You start to apply [src] to [M]'s [limb], hold still."))
 		else
 			if((!user.hand && affecting.name in list("r_arm", "r_hand")) || (user.hand && affecting.name in list("l_arm", "l_hand")))
 				to_chat(user, "<span class='warning'>You can't apply a splint to the \
 					[affecting.name == "r_hand"||affecting.name == "l_hand" ? "hand":"arm"] you're using!</span>")
 				return
 			user.visible_message("<span class='warning'>[user] starts to apply [src] to their [limb].</span>",
-			"<span class='notice'>You start to apply [src] to your [limb], hold still.</span>")
+			SPAN_NOTICE("You start to apply [src] to your [limb], hold still."))
 
 		if(affecting.apply_splints(src, user, M)) // Referenced in external organ helpers.
 			use(1)

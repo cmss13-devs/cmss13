@@ -91,7 +91,7 @@ FIRE ALARM
 				if(istype(W, /obj/item/stack/cable_coil))
 					var/obj/item/stack/cable_coil/C = W
 					if (C.use(5))
-						to_chat(user, "<span class='notice'>You wire \the [src].</span>")
+						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
 						buildstage = 2
 						return
 					else

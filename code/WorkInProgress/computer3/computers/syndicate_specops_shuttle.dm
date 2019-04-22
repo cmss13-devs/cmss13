@@ -183,7 +183,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 
 /obj/machinery/computer3/syndicate_elite_shuttle/attackby(I as obj, user as mob)
 	if(istype(I,/obj/item/card/emag))
-		to_chat(user, "<span class='notice'> The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
+		to_chat(user, SPAN_NOTICE(" The electronic systems in this console are far too advanced for your primitive hacking peripherals."))
 	else
 		return attack_hand(user)
 
@@ -226,7 +226,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 	if (href_list["sendtodock"])
 		if(!syndicate_elite_shuttle_at_station|| syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return
 
-		to_chat(usr, "<span class='notice'> The Syndicate will not allow the Elite Squad shuttle to return.</span>")
+		to_chat(usr, SPAN_NOTICE(" The Syndicate will not allow the Elite Squad shuttle to return."))
 		return
 
 	else if (href_list["sendtostation"])
@@ -236,7 +236,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 			to_chat(usr, "<span class='danger'>The Syndicate Elite shuttle is unable to leave.</span>")
 			return
 
-		to_chat(usr, "<span class='notice'> The Syndicate Elite shuttle will arrive on [station_name] in [(SYNDICATE_ELITE_MOVETIME/10)] seconds.</span>")
+		to_chat(usr, SPAN_NOTICE(" The Syndicate Elite shuttle will arrive on [station_name] in [(SYNDICATE_ELITE_MOVETIME/10)] seconds."))
 
 		temp  = "Shuttle departing.<BR><BR><A href='?src=\ref[src];mainmenu=1'>OK</A>"
 		updateUsrDialog()

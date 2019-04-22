@@ -45,7 +45,7 @@
 
 	spawn(caste.pounce_delay)
 		used_pounce = 0
-		to_chat(src, "<span class='notice'>You get ready to pounce again.</span>")
+		to_chat(src, SPAN_NOTICE("You get ready to pounce again."))
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.update_button_icon()
@@ -107,7 +107,7 @@
 
 	spawn(caste.acid_spray_cooldown)
 		used_acid_spray = 0
-		to_chat(src, "<span class='notice'>You have produced enough acid to spray again.</span>")
+		to_chat(src, SPAN_NOTICE("You have produced enough acid to spray again."))
 
 /mob/living/carbon/Xenomorph/proc/do_acid_spray_cone(var/turf/T)
 	set waitfor = 0
@@ -423,7 +423,7 @@
 
 	spawn(caste.fling_cooldown)
 		used_fling = 0
-		to_chat(src, "<span class='notice'>You gather enough strength to fling something again.</span>")
+		to_chat(src, SPAN_NOTICE("You gather enough strength to fling something again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -514,7 +514,7 @@
 
 	spawn(caste.punch_cooldown)
 		used_punch = 0
-		to_chat(src, "<span class='notice'>You gather enough strength to punch again.</span>")
+		to_chat(src, SPAN_NOTICE("You gather enough strength to punch again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -575,7 +575,7 @@
 
 	spawn(caste.jab_cooldown)
 		used_jab = 0
-		to_chat(src, "<span class='notice'>You gather enough strength to jab again.</span>")
+		to_chat(src, SPAN_NOTICE("You gather enough strength to jab again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -621,7 +621,7 @@
 	if(used_lunge == 1)
 		spawn(caste.lunge_cooldown)
 			used_lunge = 0
-			to_chat(src, "<span class='notice'>You get ready to lunge again.</span>")
+			to_chat(src, SPAN_NOTICE("You get ready to lunge again."))
 			for(var/X in actions)
 				var/datum/action/act = X
 				act.update_button_icon()
@@ -664,7 +664,7 @@
 	"<span class='xenowarning'>You begin to pull on [M]'s [L.display_name] with incredible strength!</span>")
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || M.stat == DEAD)
-		to_chat(src, "<span class='notice'>You stop ripping off the limb.</span>")
+		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
 		return 0
 
 	if(L.status & LIMB_DESTROYED)
@@ -684,7 +684,7 @@
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || M.stat == DEAD || iszombie(M))
-		to_chat(src, "<span class='notice'>You stop ripping off the limb.</span>")
+		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
 		return 0
 
 	if(L.status & LIMB_DESTROYED)
@@ -723,7 +723,7 @@
 /mob/living/carbon/Xenomorph/proc/do_agility_cooldown()
 	spawn(caste.toggle_agility_cooldown)
 		used_toggle_agility = 0
-		to_chat(src, "<span class='notice'>You can [agility ? "raise yourself back up" : "lower yourself back down"] again.</span>")
+		to_chat(src, SPAN_NOTICE("You can [agility ? "raise yourself back up" : "lower yourself back down"] again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -797,7 +797,7 @@
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	spawn(caste.headbutt_cooldown)
 		used_headbutt = 0
-		to_chat(src, "<span class='notice'>You gather enough strength to headbutt again.</span>")
+		to_chat(src, SPAN_NOTICE("You gather enough strength to headbutt again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -855,7 +855,7 @@
 
 	spawn(caste.tail_sweep_cooldown)
 		used_tail_sweep = 0
-		to_chat(src, "<span class='notice'>You gather enough strength to tail sweep again.</span>")
+		to_chat(src, SPAN_NOTICE("You gather enough strength to tail sweep again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -896,7 +896,7 @@
 /mob/living/carbon/Xenomorph/proc/do_crest_defense_cooldown()
 	spawn(caste.crest_defense_cooldown)
 		used_crest_defense = 0
-		to_chat(src, "<span class='notice'>You can [crest_defense ? "raise" : "lower"] your crest.</span>")
+		to_chat(src, SPAN_NOTICE("You can [crest_defense ? "raise" : "lower"] your crest."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -968,7 +968,7 @@
 /mob/living/carbon/Xenomorph/proc/do_fortify_cooldown()
 	spawn(caste.fortify_cooldown)
 		used_fortify = 0
-		to_chat(src, "<span class='notice'>You can [fortify ? "stand up" : "fortify"] again.</span>")
+		to_chat(src, SPAN_NOTICE("You can [fortify ? "stand up" : "fortify"] again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -1024,7 +1024,7 @@
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 
-	to_chat(src, "<span class='notice'>You resurface.</span>")
+	to_chat(src, SPAN_NOTICE("You resurface."))
 	frozen = 0
 	invisibility = 0
 	anchored = 0
@@ -1038,7 +1038,7 @@
 /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown()
 	spawn(caste.burrow_cooldown)
 		used_burrow = 0
-		to_chat(src, "<span class='notice'>You can now surface.</span>")
+		to_chat(src, SPAN_NOTICE("You can now surface."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -1046,15 +1046,15 @@
 
 /mob/living/carbon/Xenomorph/proc/tunnel(var/turf/T)
 	if (!burrow)
-		to_chat(src, "<span class='notice'>You must be burrowed to do this.</span>")
+		to_chat(src, SPAN_NOTICE("You must be burrowed to do this."))
 		return
 
 	if (used_tunnel)
-		to_chat(src, "<span class='notice'>You must wait some time to do this.</span>")
+		to_chat(src, SPAN_NOTICE("You must wait some time to do this."))
 		return
 
 	if (!T) //Not sure how we'd end up here, but we did have this happen, so sanity check!
-		to_chat(src, "<span class='notice'>You can't tunnel there!</span>")
+		to_chat(src, SPAN_NOTICE("You can't tunnel there!"))
 		return
 
 	if(!(T.z in SURFACE_Z_LEVELS)) //Can't burrow on Almayer or in the dropships, also not in the admin level. Pretty much only surface!
@@ -1078,16 +1078,16 @@
 
 	if (tunnel)
 		tunnel = 0
-		to_chat(src, "<span class='notice'>You stop tunneling.</span>")
+		to_chat(src, SPAN_NOTICE("You stop tunneling."))
 		used_tunnel = 1
 		do_tunnel_cooldown()
 		return
 
 	if (!T || T.density)
-		to_chat(src, "<span class='notice'>You cannot tunnel to there!</span>")
+		to_chat(src, SPAN_NOTICE("You cannot tunnel to there!"))
 	//to_world("process_tunnel")
 	tunnel = 1
-	to_chat(src, "<span class='notice'>You start tunneling!</span>")
+	to_chat(src, SPAN_NOTICE("You start tunneling!"))
 	tunnel_timer = (get_dist(src, T)*10) + world.timeofday
 	process_tunnel(T)
 
@@ -1102,7 +1102,7 @@
 		sleep(10)	// Process every second.
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
-	to_chat(src, "<span class='notice'>You tunnel to your destination.</span>")
+	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
 	anchored = 0
 	frozen = 0
 	update_canmove()
@@ -1114,14 +1114,14 @@
 /mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown()
 	spawn(caste.tunnel_cooldown)
 		used_tunnel = 0
-		to_chat(src, "<span class='notice'>You can now tunnel while burrowed.</span>")
+		to_chat(src, SPAN_NOTICE("You can now tunnel while burrowed."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
 
 /mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
 	if(burrow)
-		to_chat(src, "<span class='notice'>You must be above ground to do this.</span>")
+		to_chat(src, SPAN_NOTICE("You must be above ground to do this."))
 		return
 
 	if(!check_state())
@@ -1150,7 +1150,7 @@
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0
-		to_chat(src, "<span class='notice'>You gather enough strength to cause more tremors again.</span>")
+		to_chat(src, SPAN_NOTICE("You gather enough strength to cause more tremors again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -1184,7 +1184,7 @@
 		to_chat(src, "<span class='warning'>You need to be closer to [target].</span>")
 		return
 
-	to_chat(src, "<span class='notice'>You start focusing your plasma towards [target].</span>")
+	to_chat(src, SPAN_NOTICE("You start focusing your plasma towards [target]."))
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
@@ -1227,7 +1227,7 @@
 		to_chat(src, "<span class='warning'>You need to be closer to [target].</span>")
 		return
 
-	to_chat(src, "<span class='notice'>You start transfering some of your health towards [target].</span>")
+	to_chat(src, SPAN_NOTICE("You start transfering some of your health towards [target]."))
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 20))
 		return
 
@@ -1292,7 +1292,7 @@
 	sleep(cooldown)
 	switch(message)
 		if("spit")
-			to_chat(src, "<span class='notice'>You feel your neurotoxin glands swell with ichor. You can spit again.</span>")
+			to_chat(src, SPAN_NOTICE("You feel your neurotoxin glands swell with ichor. You can spit again."))
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
@@ -1745,6 +1745,6 @@
 
 	middle_mouse_toggle = !middle_mouse_toggle
 	if(!middle_mouse_toggle)
-		to_chat(src, "<span class='notice'>The selected xeno ability will now be activated with shift clicking.</span>")
+		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
 	else
-		to_chat(src, "<span class='notice'>The selected xeno ability will now be activated with middle mouse clicking.</span>")
+		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))

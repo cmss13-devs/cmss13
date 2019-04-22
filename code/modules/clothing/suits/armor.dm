@@ -196,11 +196,11 @@
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
 	src.active = !( src.active )
 	if (src.active)
-		to_chat(user, "<span class='notice'> The reactive armor is now active.</span>")
+		to_chat(user, SPAN_NOTICE(" The reactive armor is now active."))
 		src.icon_state = "reactive"
 		src.item_state = "reactive"
 	else
-		to_chat(user, "<span class='notice'> The reactive armor is now inactive.</span>")
+		to_chat(user, SPAN_NOTICE(" The reactive armor is now inactive."))
 		src.icon_state = "reactiveoff"
 		src.item_state = "reactiveoff"
 		src.add_fingerprint(user)
@@ -284,7 +284,7 @@
 
 	if(!holstered)
 		if(!istype(usr.get_active_hand(), /obj/item/weapon/gun))
-			to_chat(usr, "<span class='notice'> You need your gun equiped to holster it.</span>")
+			to_chat(usr, SPAN_NOTICE(" You need your gun equiped to holster it."))
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
 		if (W.w_class > 3)
@@ -293,7 +293,7 @@
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()
 		holstered.loc = src
-		usr.visible_message("<span class='notice'>\The [usr] holsters \the [holstered].</span>", "You holster \the [holstered].")
+		usr.visible_message(SPAN_NOTICE("\The [usr] holsters \the [holstered]."), "You holster \the [holstered].")
 	else
 		if(istype(usr.get_active_hand(),/obj) && istype(usr.get_inactive_hand(),/obj))
 			to_chat(usr, "<span class='danger'>You need an empty hand to draw the gun!</span>")
@@ -302,8 +302,8 @@
 				usr.visible_message("<span class='danger'>\The [usr] draws \the [holstered], ready to shoot!</span>", \
 				"<span class='danger'>You draw \the [holstered], ready to shoot!</span>")
 			else
-				usr.visible_message("<span class='notice'>\The [usr] draws \the [holstered], pointing it at the ground.</span>", \
-				"<span class='notice'>You draw \the [holstered], pointing it at the ground.</span>")
+				usr.visible_message(SPAN_NOTICE("\The [usr] draws \the [holstered], pointing it at the ground."), \
+				SPAN_NOTICE("You draw \the [holstered], pointing it at the ground."))
 			usr.put_in_hands(holstered)
 		holstered = null
 

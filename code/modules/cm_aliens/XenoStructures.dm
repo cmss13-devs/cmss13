@@ -360,7 +360,7 @@
 
 			spawn(B.bomb_delay)
 				B.bomb_cooldown = 0
-				to_chat(B, "<span class='notice'>You have produced enough acid to bombard again.</span>")
+				to_chat(B, SPAN_NOTICE("You have produced enough acid to bombard again."))
 			hivenumber = X.hivenumber //Taking over the hole
 			return
 		else
@@ -599,7 +599,7 @@
 			. = 1
 			break
 	if(!.)
-		visible_message("<span class = 'notice'>[src] collapses from the lack of support.</span>")
+		visible_message(SPAN_NOTICE("[src] collapses from the lack of support."))
 		qdel(src)
 
 

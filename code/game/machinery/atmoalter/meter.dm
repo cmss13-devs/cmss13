@@ -69,7 +69,7 @@
 	var/t = "A gas flow meter. "
 
 	if(get_dist(user, src) > 3 && !(isAI(user) || istype(user, /mob/dead)))
-		t += "<span class='notice'><B>You are too far away to read it.</B></span>"
+		t += SPAN_NOTICE("<B>You are too far away to read it.</B>")
 
 	else if(stat & (NOPOWER|BROKEN))
 		t += "<span class='danger'><B>The display is off.</B></span>"
@@ -95,12 +95,12 @@
 	if (!istype(W, /obj/item/tool/wrench))
 		return ..()
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message("<span class='notice'>[user] begins to unfasten [src].</span>",
-	"<span class='notice'>You begin to unfasten [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins to unfasten [src]."),
+	SPAN_NOTICE("You begin to unfasten [src]."))
 	if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
-		"<span class='notice'>You unfasten [src].</span>")
+		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+		SPAN_NOTICE("You unfasten [src]."))
 		new /obj/item/pipe_meter(loc)
 		qdel(src)
 

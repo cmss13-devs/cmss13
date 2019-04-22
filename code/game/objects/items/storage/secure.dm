@@ -49,7 +49,8 @@
 			if (istype(W, /obj/item/tool/screwdriver))
 				if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					src.open =! src.open
-					user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
+					var/msg_open_status = "[src.open ? "open" : "close"]"
+					user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."))
 				return
 			if ((istype(W, /obj/item/device/multitool)) && (src.open == 1)&& (!src.l_hacking))
 				user.show_message(text("<span class='danger'>Now attempting to reset internal memory, please hold.</span>"), 1)

@@ -22,7 +22,7 @@
 		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	to_chat(usr, "<span class='notice'>You [flags_marine_armor & ARMOR_SQUAD_OVERLAY? "hide" : "show"] the squad markings.</span>")
+	to_chat(usr, SPAN_NOTICE("You [flags_marine_armor & ARMOR_SQUAD_OVERLAY? "hide" : "show"] the squad markings."))
 	flags_marine_armor ^= ARMOR_SQUAD_OVERLAY
 	usr.update_inv_wear_suit()
 
@@ -33,7 +33,7 @@
 		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	to_chat(usr, "<span class='notice'>You [flags_marine_armor & ARMOR_LAMP_OVERLAY? "hide" : "show"] the shoulder lamp.</span>")
+	to_chat(usr, SPAN_NOTICE("You [flags_marine_armor & ARMOR_LAMP_OVERLAY? "hide" : "show"] the shoulder lamp."))
 	flags_marine_armor ^= ARMOR_LAMP_OVERLAY
 	update_icon(usr)
 
@@ -448,7 +448,7 @@
 		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	to_chat(usr, "<span class='notice'>You [flags_marine_helmet & HELMET_SQUAD_OVERLAY? "hide" : "show"] the squad markings.</span>")
+	to_chat(usr, SPAN_NOTICE("You [flags_marine_helmet & HELMET_SQUAD_OVERLAY? "hide" : "show"] the squad markings."))
 	flags_marine_helmet ^= HELMET_SQUAD_OVERLAY
 	usr.update_inv_head()
 
@@ -459,7 +459,7 @@
 		to_chat(usr, "<span class='warning'>Not right now!</span>")
 		return
 
-	to_chat(usr, "<span class='notice'>You [flags_marine_helmet & HELMET_GARB_OVERLAY? "hide" : "show"] the helmet garb.</span>")
+	to_chat(usr, SPAN_NOTICE("You [flags_marine_helmet & HELMET_GARB_OVERLAY? "hide" : "show"] the helmet garb."))
 	flags_marine_helmet ^= HELMET_GARB_OVERLAY
 	update_icon(usr, flags_marine_helmet & HELMET_GARB_OVERLAY? 0 : 2)
 
@@ -1319,4 +1319,4 @@ obj/item/clothing/gloves/marine/fluff/jedijas
 	if(istype(W, /obj/item/tool/lighter/zippo/fluff/ghost))
 		..()
 	else
-		to_chat(user, "<span class='notice'>\The [src] straight out REFUSES to be lit by anything other than a purple zippo.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] straight out REFUSES to be lit by anything other than a purple zippo."))

@@ -160,7 +160,7 @@
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>")
+		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
 		return
 
 /obj/structure/holohoop/CanPass(atom/movable/mover, turf/target)
@@ -174,7 +174,7 @@
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
-			visible_message("<span class='notice'>Swish! \the [I] lands in \the [src].</span>", 3)
+			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
 			visible_message("<span class='danger'>\the [I] bounces off of \the [src]'s rim!</span>", 3)
 		return 0

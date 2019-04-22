@@ -853,31 +853,31 @@ var/global/spawn_next_wo_wave = 0
 	switch(supply_drop)
 		if(0)
 			supply_drop = 1
-			to_chat(usr, "<span class='notice'>Rocket ammo will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("Rocket ammo will now drop!"))
 			return
 		if(1)
 			supply_drop = 2
-			to_chat(usr, "<span class='notice'>Smartgun ammo will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("Smartgun ammo will now drop!"))
 			return
 		if(2)
 			supply_drop = 3
-			to_chat(usr, "<span class='notice'>Sniper ammo will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
 			return
 		if(3)
 			supply_drop = 4
-			to_chat(usr, "<span class='notice'>Explosives and grenades will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
 			return
 		if(4)
 			supply_drop = 5
-			to_chat(usr, "<span class='notice'>Pyrotechnician tanks will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 			return
 		if(5)
 			supply_drop = 6
-			to_chat(usr, "<span class='notice'>Scout ammo will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
 			return
 		if(6)
 			supply_drop = 0
-			to_chat(usr, "<span class='notice'>10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!</span>")
+			to_chat(usr, SPAN_NOTICE("10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!"))
 			return
 	return
 

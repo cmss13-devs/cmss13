@@ -373,7 +373,7 @@
 					var/obj/item/card/id/dogtag/DT = wear_id
 					if(!DT.dogtag_taken)
 						if(stat == DEAD)
-							to_chat(usr, "<span class='notice'>You take [src]'s information tag, leaving the ID tag</span>")
+							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag"))
 							DT.dogtag_taken = TRUE
 							DT.icon_state = "dogtag_taken"
 							var/obj/item/dogtag/D = new(loc)
@@ -404,10 +404,10 @@
 			var/placing = FALSE
 
 			if(place_item && !(place_item.flags_item & ITEM_ABSTRACT) && (place_item.mob_can_equip(src, WEAR_L_STORE, TRUE) || place_item.mob_can_equip(src, WEAR_R_STORE, TRUE)))
-				to_chat(usr, "<span class='notice'>You try to place [place_item] into [src]'s pocket.</span>")
+				to_chat(usr, SPAN_NOTICE("You try to place [place_item] into [src]'s pocket."))
 				placing = TRUE
 			else
-				to_chat(usr, "<span class='notice'>You try to empty [src]'s pockets.</span>")
+				to_chat(usr, SPAN_NOTICE("You try to empty [src]'s pockets."))
 
 			if(do_mob(usr, src, POCKET_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
 				if(placing)
@@ -426,7 +426,7 @@
 						if(l_store && !(l_store.flags_item & NODROP) && !(l_store.flags_inventory & CANTSTRIP))
 							drop_inv_item_on_ground(l_store)
 					else
-						to_chat(usr, "<span class='notice'>[src]'s pockets are empty.</span>")
+						to_chat(usr, SPAN_NOTICE("[src]'s pockets are empty."))
 
 
 				// Update strip window
@@ -460,7 +460,7 @@
 						else if (istype(belt, /obj/item/tank))
 							internal = belt
 						if (internal)
-							visible_message("<span class='notice'>[src] is now running on internals.</span>", null, null, 1)
+							visible_message(SPAN_NOTICE("[src] is now running on internals."), null, null, 1)
 							internal.add_fingerprint(usr)
 							if (hud_used && hud_used.internals)
 								hud_used.internals.icon_state = "internal1"
@@ -793,10 +793,10 @@
 		if(newcolor == "none")
 			if(!holo_card_color) return
 			holo_card_color = null
-			to_chat(usr, "<span class='notice'>You remove the holo card on [src].</span>")
+			to_chat(usr, SPAN_NOTICE("You remove the holo card on [src]."))
 		else if(newcolor != holo_card_color)
 			holo_card_color = newcolor
-			to_chat(usr, "<span class='notice'>You add a [newcolor] holo card on [src].</span>")
+			to_chat(usr, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 		update_targeted()
 
 	if (href_list["scanreport"])
@@ -888,7 +888,7 @@
 
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
-		visible_message("<span class='danger'>[src] begins playing his ribcage like a xylophone. It's quite spooky.</span>","<span class='notice'>You begin to play a spooky refrain on your ribcage.</span>","<span class='danger'>You hear a spooky xylophone melody.</span>")
+		visible_message("<span class='danger'>[src] begins playing his ribcage like a xylophone. It's quite spooky.</span>",SPAN_NOTICE("You begin to play a spooky refrain on your ribcage."),"<span class='danger'>You hear a spooky xylophone melody.</span>")
 		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 		playsound(loc, song, 25, 1)
 		xylophone = 1
@@ -997,7 +997,9 @@
 			gender = FEMALE
 	regenerate_icons()
 
-	visible_message("<span class='notice'>\The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!</span>", "<span class='notice'>You change your appearance!</span>", "<span class='danger'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
+	visible_message(SPAN_NOTICE("\The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!"), \
+		SPAN_NOTICE("You change your appearance!"), \
+		"<span class='danger'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
 
 /mob/living/carbon/human/proc/remotesay()
 	set name = "Project mind"
@@ -1020,10 +1022,10 @@
 
 	var/say = input ("What do you wish to say")
 	if(mRemotetalk in target.mutations)
-		target.show_message("<span class='notice'>You hear [src.real_name]'s voice: [say]</span>")
+		target.show_message(SPAN_NOTICE("You hear [src.real_name]'s voice: [say]"))
 	else
-		target.show_message("<span class='notice'>You hear a voice that seems to echo around the room: [say]</span>")
-	usr.show_message("<span class='notice'>You project your mind into [target.real_name]: [say]</span>")
+		target.show_message(SPAN_NOTICE("You hear a voice that seems to echo around the room: [say]"))
+	usr.show_message(SPAN_NOTICE("You project your mind into [target.real_name]: [say]"))
 	log_say("[key_name(usr)] sent a telepathic message to [key_name(target)]: [say]")
 	for(var/mob/dead/observer/G in dead_mob_list)
 		G.show_message("<i>Telepathic message from <b>[src]</b> to <b>[target]</b>: [say]</i>")
@@ -1175,14 +1177,14 @@
 	if(usr == src)
 		self = 1
 	if(!self)
-		usr.visible_message("<span class='notice'>[usr] kneels down, puts \his hand on [src]'s wrist and begins counting their pulse.</span>",\
+		usr.visible_message(SPAN_NOTICE("[usr] kneels down, puts \his hand on [src]'s wrist and begins counting their pulse."),\
 		"You begin counting [src]'s pulse", null, 3)
 	else
-		usr.visible_message("<span class='notice'>[usr] begins counting their pulse.</span>",\
+		usr.visible_message(SPAN_NOTICE("[usr] begins counting their pulse."),\
 		"You begin counting your pulse.", null, 3)
 
 	if(src.pulse)
-		to_chat(usr, "<span class='notice'> [self ? "You have a" : "[src] has a"] pulse! Counting...</span>")
+		to_chat(usr, SPAN_NOTICE(" [self ? "You have a" : "[src] has a"] pulse! Counting..."))
 	else
 		to_chat(usr, "<span class='danger'>[src] has no pulse!</span>")	//it is REALLY UNLIKELY that a dead person would check his own pulse
 		return
@@ -1194,7 +1196,7 @@
 		to_chat(usr, "You moved while counting. Try again.")
 	else
 		var/pronoun = "[self ? "Your" : "[src]'s"]"
-		to_chat(usr, "<span class='notice'> [pronoun] pulse is [src.get_pulse(GETPULSE_HAND)].</span>")
+		to_chat(usr, SPAN_NOTICE(" [pronoun] pulse is [src.get_pulse(GETPULSE_HAND)]."))
 
 /mob/living/carbon/human/verb/view_manifest()
 	set name = "View Crew Manifest"

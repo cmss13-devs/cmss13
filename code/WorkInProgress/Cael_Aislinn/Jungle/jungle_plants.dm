@@ -80,7 +80,7 @@
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)
-				to_chat(user, "<span class='notice'> You clear away [src].</span>")
+				to_chat(user, SPAN_NOTICE(" You clear away [src]."))
 			healthcheck()
 	else
 		return ..()
@@ -169,7 +169,7 @@ var/jungle_plants_init = 0
 /obj/structure/jungle_plant/attack_hand(var/mob/user as mob)
 	if(fruits_left > 0)
 		fruits_left--
-		to_chat(user, "<span class='notice'> You pick a fruit off [src].</span>")
+		to_chat(user, SPAN_NOTICE(" You pick a fruit off [src]."))
 		overlays -= fruit_overlay
 		fruit_overlay = icon('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"fruit[fruits_left]")
 		if(norm)

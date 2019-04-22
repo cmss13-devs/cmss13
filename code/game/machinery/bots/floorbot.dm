@@ -83,12 +83,12 @@
 		var/loaded = min(50-src.amount, T.get_amount())
 		T.use(loaded)
 		src.amount += loaded
-		to_chat(user, "<span class='notice'>You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles.</span>")
+		to_chat(user, SPAN_NOTICE("You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles."))
 		src.updateicon()
 	else if(istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
 		if(src.allowed(usr) && !open && !emagged)
 			src.locked = !src.locked
-			to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the [src] behaviour controls.</span>")
+			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
 		else
 			if(emagged)
 				to_chat(user, "<span class='warning'>ERROR</span>")
@@ -103,7 +103,7 @@
 /obj/machinery/bot/floorbot/Emag(mob/user as mob)
 	..()
 	if(open && !locked)
-		if(user) to_chat(user, "<span class='notice'>The [src] buzzes and beeps.</span>")
+		if(user) to_chat(user, SPAN_NOTICE("The [src] buzzes and beeps."))
 
 /obj/machinery/bot/floorbot/Topic(href, href_list)
 	if(..())
@@ -373,14 +373,14 @@
 		..()
 		return
 	if(src.contents.len >= 1)
-		to_chat(user, "<span class='notice'>They wont fit in as there is already stuff inside.</span>")
+		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
 		return
 	if(user.s_active)
 		user.s_active.close(user)
 	if (T.use(10))
 		var/obj/item/frame/toolbox_tiles/B = new /obj/item/frame/toolbox_tiles
 		user.put_in_hands(B)
-		to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
+		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
 		user.temp_drop_inv_item(src)
 		qdel(src)
 	else

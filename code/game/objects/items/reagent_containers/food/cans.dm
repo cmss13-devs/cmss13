@@ -4,14 +4,14 @@
 	attack_self(mob/user as mob)
 		if (canopened == 0)
 			playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
-			to_chat(user, "<span class='notice'>You open the drink with an audible pop!</span>")
+			to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
 			canopened = 1
 		else
 			return
 
 	attack(mob/M as mob, mob/user as mob, def_zone)
 		if (canopened == 0)
-			to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 			return
 		var/datum/reagents/R = src.reagents
 		var/fillevel = gulp_size
@@ -21,7 +21,7 @@
 			return 0
 
 		if(M == user)
-			to_chat(M, "<span class='notice'> You swallow a gulp of [src].</span>")
+			to_chat(M, SPAN_NOTICE(" You swallow a gulp of [src]."))
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, gulp_size)
 				reagents.reaction(M, INGEST)
@@ -32,7 +32,7 @@
 			return 1
 		else if( istype(M, /mob/living/carbon/human) )
 			if (canopened == 0)
-				to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 				return
 
 		else if (canopened == 1)
@@ -69,19 +69,19 @@
 
 		if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 			if (canopened == 0)
-				to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 				return
 
 
 		else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
 			if (canopened == 0)
-				to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+				to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 				return
 
 			if (istype(target, /obj/item/reagent_container/food/drinks/cans))
 				var/obj/item/reagent_container/food/drinks/cans/cantarget = target
 				if(cantarget.canopened == 0)
-					to_chat(user, "<span class='notice'>You need to open the drink you want to pour into!</span>")
+					to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
 					return
 
 		return ..()

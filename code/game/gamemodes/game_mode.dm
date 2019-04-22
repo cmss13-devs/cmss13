@@ -264,7 +264,7 @@
 //Reports player logouts//
 //////////////////////////
 proc/display_roundstart_logout_report()
-	var/msg = "<span class='notice'><b>Roundstart logout report\n\n</span>"
+	var/msg = SPAN_NOTICE("<b>Roundstart logout report\n\n")
 	for(var/mob/living/L in mob_list)
 
 		if(L.ckey)
@@ -341,7 +341,7 @@ proc/get_nt_opposed()
 		return
 
 	var/obj_count = 1
-	player.to_chat(current, "<span class='notice'> Your current objectives:</span>")
+	player.to_chat(current, SPAN_NOTICE(" Your current objectives:"))
 	for(var/datum/objective/objective in player.objectives)
 		to_chat(player.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++

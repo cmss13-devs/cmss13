@@ -31,23 +31,23 @@
 
 	if(istype(A, /obj/structure/reagent_dispensers) && get_dist(src,A) <= 1) //this block copypasted from reagent_containers/glass, for lack of a better solution
 		if(!A.reagents.total_volume && A.reagents)
-			to_chat(user, "<span class='notice'>\The [A] is empty.</span>")
+			to_chat(user, SPAN_NOTICE("\The [A] is empty."))
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is full."))
 			return
 
 		var/trans = A.reagents.trans_to(src, A:amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You fill \the [src] with [trans] units of the contents of \the [A].</span>")
+		to_chat(user, SPAN_NOTICE("You fill \the [src] with [trans] units of the contents of \the [A]."))
 		return
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is empty!"))
 		return
 
 	if(safety)
-		to_chat(user, "<span class = 'warning'>The safety is on!</span>")
+		to_chat(user, SPAN_WARNING("The safety is on!"))
 		return
 
 	Spray_at(A)
@@ -90,7 +90,7 @@
 		return
 	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
 	spray_size = next_in_list(spray_size, spray_sizes)
-	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
+	to_chat(user, SPAN_NOTICE("You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray."))
 
 
 /obj/item/reagent_container/spray/examine(mob/user)
@@ -106,7 +106,7 @@
 	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
 		return
 	if(isturf(usr.loc))
-		to_chat(usr, "<span class='notice'>You empty \the [src] onto the floor.</span>")
+		to_chat(usr, SPAN_NOTICE("You empty \the [src] onto the floor."))
 		reagents.reaction(usr.loc)
 		spawn(5) src.reagents.clear_reagents()
 
@@ -145,7 +145,7 @@
 
 /obj/item/reagent_container/spray/pepper/attack_self(mob/user)
 	safety = !safety
-	to_chat(user, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
+	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 
 //water flower
 /obj/item/reagent_container/spray/waterflower

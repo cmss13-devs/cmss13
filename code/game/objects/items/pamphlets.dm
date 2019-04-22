@@ -20,7 +20,7 @@
 			to_chat(usr, "<span class='warning'>You don't need this, you're already trained!</span>")
 			return
 		else
-			to_chat(usr, "<span class='notice'>You read over the pamphlet a few times, learning a new skill.</span>")
+			to_chat(usr, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
 			user.mind.cm_skills.vars["[skill_to_increment]"] = skill_increment
 			if(secondary_skill)
 				user.mind.cm_skills.vars["[secondary_skill]"] = skill_increment

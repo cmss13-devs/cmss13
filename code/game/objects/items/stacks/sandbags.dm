@@ -100,8 +100,8 @@
 	if(amount < 5)
 		to_chat(user, "<span class='warning'>You need at least five [name] to do this.</span>")
 		return
-	user.visible_message("<span class='notice'>[user] starts assembling a sandbag barricade.</span>",
-	"<span class='notice'>You start assembling a sandbag barricade.</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts assembling a sandbag barricade."),
+	SPAN_NOTICE("You start assembling a sandbag barricade."))
 
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -110,8 +110,8 @@
 			if(!(O.flags_atom & ON_BORDER) || O.dir == user.dir)
 				return
 	var/obj/structure/barricade/sandbags/SB = new(user.loc, user.dir)
-	user.visible_message("<span class='notice'>[user] assembles a sandbag barricade.</span>",
-	"<span class='notice'>You assemble a sandbag barricade.</span>")
+	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
+	SPAN_NOTICE("You assemble a sandbag barricade."))
 	SB.dir = user.dir
 	SB.add_fingerprint(user)
 	use(5)

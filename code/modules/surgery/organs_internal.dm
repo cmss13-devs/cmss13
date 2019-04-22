@@ -31,8 +31,8 @@
 			return 1
 
 /datum/surgery_step/internal/remove_embryo/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts to pull something out from [target]'s ribcage with \the [tool].</span>", \
-					"<span class='notice'>You start to pull something out from [target]'s ribcage with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts to pull something out from [target]'s ribcage with \the [tool]."), \
+					SPAN_NOTICE("You start to pull something out from [target]'s ribcage with \the [tool]."))
 	target.custom_pain("Something hurts horribly in your chest!",1)
 	..()
 
@@ -87,8 +87,8 @@
 
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.visible_message("<span class='notice'>[user] starts treating damage to [target]'s [I.name] with [tool_name].</span>", \
-			"<span class='notice'>You start treating damage to [target]'s [I.name] with [tool_name].</span>" )
+			user.visible_message(SPAN_NOTICE("[user] starts treating damage to [target]'s [I.name] with [tool_name]."), \
+			SPAN_NOTICE("You start treating damage to [target]'s [I.name] with [tool_name].") )
 
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
@@ -102,8 +102,8 @@
 
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.visible_message("<span class='notice'>[user] treats damage to [target]'s [I.name] with [tool_name].</span>", \
-			"<span class='notice'>You treat damage to [target]'s [I.name] with [tool_name].</span>" )
+			user.visible_message(SPAN_NOTICE("[user] treats damage to [target]'s [I.name] with [tool_name]."), \
+			SPAN_NOTICE("You treat damage to [target]'s [I.name] with [tool_name].") )
 			I.damage = 0
 
 /datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -148,8 +148,8 @@
 /datum/surgery_step/internal/fix_organ_robotic/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
-			user.visible_message("<span class='notice'>[user] starts mending the damage to [target]'s [I.name]'s mechanisms.</span>", \
-			"<span class='notice'>You start mending the damage to [target]'s [I.name]'s mechanisms.</span>" )
+			user.visible_message(SPAN_NOTICE("[user] starts mending the damage to [target]'s [I.name]'s mechanisms."), \
+			SPAN_NOTICE("You start mending the damage to [target]'s [I.name]'s mechanisms.") )
 
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
@@ -157,8 +157,8 @@
 /datum/surgery_step/internal/fix_organ_robotic/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
-			user.visible_message("<span class='notice'>[user] repairs [target]'s [I.name] with [tool].</span>", \
-			"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
+			user.visible_message(SPAN_NOTICE("[user] repairs [target]'s [I.name] with [tool]."), \
+			SPAN_NOTICE("You repair [target]'s [I.name] with [tool].") )
 			I.damage = 0
 
 /datum/surgery_step/internal/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
@@ -217,14 +217,14 @@
 			return 1
 
 /datum/surgery_step/internal/detach_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts to separate [target]'s [affected.surgery_organ] with \the [tool].</span>", \
-	"<span class='notice'>You start to separate [target]'s [affected.surgery_organ] with \the [tool].</span>" )
+	user.visible_message(SPAN_NOTICE("[user] starts to separate [target]'s [affected.surgery_organ] with \the [tool]."), \
+	SPAN_NOTICE("You start to separate [target]'s [affected.surgery_organ] with \the [tool].") )
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
 
 /datum/surgery_step/internal/detach_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has separated [target]'s [affected.surgery_organ] with \the [tool].</span>" , \
-	"<span class='notice'>You have separated [target]'s [affected.surgery_organ] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has separated [target]'s [affected.surgery_organ] with \the [tool].") , \
+	SPAN_NOTICE("You have separated [target]'s [affected.surgery_organ] with \the [tool]."))
 
 	var/datum/internal_organ/I = target.internal_organs_by_name[affected.surgery_organ]
 	I.cut_away = TRUE
@@ -281,14 +281,14 @@
 			return 1
 
 /datum/surgery_step/internal/remove_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts removing [target]'s [affected.surgery_organ] with \the [tool].</span>", \
-	"<span class='notice'>You start removing [target]'s [affected.surgery_organ] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts removing [target]'s [affected.surgery_organ] with \the [tool]."), \
+	SPAN_NOTICE("You start removing [target]'s [affected.surgery_organ] with \the [tool]."))
 	target.custom_pain("Someone's ripping out your [affected.surgery_organ]!", 1)
 	..()
 
 /datum/surgery_step/internal/remove_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has removed [target]'s [affected.surgery_organ] with \the [tool].</span>", \
-	"<span class='notice'>You have removed [target]'s [affected.surgery_organ] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has removed [target]'s [affected.surgery_organ] with \the [tool]."), \
+	SPAN_NOTICE("You have removed [target]'s [affected.surgery_organ] with \the [tool]."))
 
 	//Extract the organ!
 	if(affected.surgery_organ)
@@ -374,14 +374,14 @@
 	return ..() && organ_missing && organ_compatible
 
 /datum/surgery_step/internal/replace_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] starts transplanting \the [tool] into [target]'s [affected.display_name].</span>", \
-	"<span class='notice'>You start transplanting \the [tool] into [target]'s [affected.display_name].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts transplanting \the [tool] into [target]'s [affected.display_name]."), \
+	SPAN_NOTICE("You start transplanting \the [tool] into [target]'s [affected.display_name]."))
 	target.custom_pain("Someone's rooting around in your [affected.display_name]!", 1)
 	..()
 
 /datum/surgery_step/internal/replace_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has transplanted \the [tool] into [target]'s [affected.display_name].</span>", \
-	"<span class='notice'>You have transplanted \the [tool] into [target]'s [affected.display_name].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has transplanted \the [tool] into [target]'s [affected.display_name]."), \
+	SPAN_NOTICE("You have transplanted \the [tool] into [target]'s [affected.display_name]."))
 	user.temp_drop_inv_item(tool)
 	var/obj/item/organ/O = tool
 
@@ -461,14 +461,14 @@
 			return 1
 
 /datum/surgery_step/internal/attach_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] begins reattaching [target]'s [affected.surgery_organ] with \the [tool].</span>", \
-	"<span class='notice'>You start reattaching [target]'s [affected.surgery_organ] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] begins reattaching [target]'s [affected.surgery_organ] with \the [tool]."), \
+	SPAN_NOTICE("You start reattaching [target]'s [affected.surgery_organ] with \the [tool]."))
 	target.custom_pain("Someone's digging needles into your [affected.surgery_organ]!", 1)
 	..()
 
 /datum/surgery_step/internal/attach_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='notice'>[user] has reattached [target]'s [affected.surgery_organ] with \the [tool].</span>" , \
-	"<span class='notice'>You have reattached [target]'s [affected.surgery_organ] with \the [tool].</span>")
+	user.visible_message(SPAN_NOTICE("[user] has reattached [target]'s [affected.surgery_organ] with \the [tool].") , \
+	SPAN_NOTICE("You have reattached [target]'s [affected.surgery_organ] with \the [tool]."))
 
 	var/datum/internal_organ/I = target.internal_organs_by_name[affected.surgery_organ]
 	I.cut_away = FALSE

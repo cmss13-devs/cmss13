@@ -273,7 +273,7 @@
 		return
 	M.forceMove(src)
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
-		to_chat(M, "<span class='notice'> <b>You feel a cold liquid surround you. Your skin starts to freeze up.</b></span>")
+		to_chat(M, SPAN_NOTICE(" <b>You feel a cold liquid surround you. Your skin starts to freeze up.</b>"))
 	occupant = M
 	update_use_power(2)
 //	M.metabslow = 1
@@ -292,7 +292,7 @@
 	if(usr == occupant)//If the user is inside the tube...
 		if (usr.stat == 2)//and he's not dead....
 			return
-		to_chat(usr, "<span class='notice'> Release sequence activated. This will take two minutes.</span>")
+		to_chat(usr, SPAN_NOTICE(" Release sequence activated. This will take two minutes."))
 		sleep(1200)
 		if(!src || !usr || !occupant || (occupant != usr)) //Check if someone's released/replaced/bombed him already
 			return

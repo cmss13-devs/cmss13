@@ -106,7 +106,7 @@ They're all essentially identical when it comes to getting the job done.
 
 		if(user)
 			user.put_in_hands(new_handful)
-			to_chat(user, "<span class='notice'>You grab <b>[R]</b> round\s from [obj_name].</span>")
+			to_chat(user, SPAN_NOTICE("You grab <b>[R]</b> round\s from [obj_name]."))
 
 		else new_handful.loc = get_turf(src)
 		update_icon(-R) //Update the other one.
@@ -451,7 +451,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	..()
 	if(over_object == usr && Adjacent(usr))
 		if(!ishuman(usr))	return
-		visible_message("<span class='notice'>[usr] picks up [name].</span>")
+		visible_message(SPAN_NOTICE("[usr] picks up [name]."))
 		var/obj/item/magazine_box/MB = new /obj/item/magazine_box/pickup
 		MB.icon_base_name = icon_base_name
 		MB.magazine_type = magazine_type
@@ -496,14 +496,14 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			var/obj/item/ammo_magazine/AM = pick(contents)
 			contents -= AM
 			user.put_in_hands(AM)
-			to_chat(user, "<span class='notice'>You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine.</span>")
+			to_chat(user, SPAN_NOTICE("You retrieve a [AM] from \the [src], it has [AM.current_rounds] rounds remaining in the magazine."))
 		else
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 			if(AM)
 				AM.create_handful(user, 5, src)
 		update_icon()
 	else
-		to_chat(user, "<span class='notice'>\The [src] is empty.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
@@ -512,7 +512,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			if(contents.len < num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				contents += W
-				to_chat(user, "<span class='notice'>You put a [W] in to \the [src]</span>")
+				to_chat(user, SPAN_NOTICE("You put a [W] in to \the [src]"))
 				update_icon()
 			else
 				to_chat(user, "<span class='warning'>\The [src] is full.</span>")
@@ -571,9 +571,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			AM.update_icon(S)
 			update_icon()
 			if(AM.current_rounds == AM.max_rounds)
-				to_chat(user, "<span class='notice'>You refill [AM].</span>")
+				to_chat(user, SPAN_NOTICE("You refill [AM]."))
 			else
-				to_chat(user, "<span class='notice'>You put [S] rounds in [AM].</span>")
+				to_chat(user, SPAN_NOTICE("You put [S] rounds in [AM]."))
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
 			if(caliber != AM.caliber)
 				to_chat(user, "<span class='warning'>The rounds don't match up. Better not mix them up.</span>")
@@ -586,7 +586,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			AM.current_rounds -= S
 			bullet_amount += S
 			AM.update_icon()
-			to_chat(user, "<span class='notice'>You put [S] rounds in [src].</span>")
+			to_chat(user, SPAN_NOTICE("You put [S] rounds in [src]."))
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
 				qdel(AM)

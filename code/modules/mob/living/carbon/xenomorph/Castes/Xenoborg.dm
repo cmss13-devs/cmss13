@@ -100,7 +100,7 @@
 				adjustFireLoss(-20)
 				updatehealth()
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
-				visible_message("<span class='notice'>\The [user] repairs some of the damage to \the [src].</span>")
+				visible_message(SPAN_NOTICE("\The [user] repairs some of the damage to \the [src]."))
 				return
 			else
 				to_chat(user, "<span class='warning'>\The [src] is not damaged.</span>")

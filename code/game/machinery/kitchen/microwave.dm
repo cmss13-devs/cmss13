@@ -56,24 +56,24 @@
 	if(src.broken > 0)
 		if(src.broken == 2 && istype(O, /obj/item/tool/screwdriver)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
-				"<span class='notice'>[user] starts to fix part of the microwave.</span>", \
-				"<span class='notice'>You start to fix part of the microwave.</span>" \
+				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
+				SPAN_NOTICE("You start to fix part of the microwave.") \
 			)
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
-					"<span class='notice'>[user] fixes part of the microwave.</span>", \
-					"<span class='notice'>You have fixed part of the microwave.</span>" \
+					SPAN_NOTICE("[user] fixes part of the microwave."), \
+					SPAN_NOTICE("You have fixed part of the microwave.") \
 				)
 				src.broken = 1 // Fix it a bit
 		else if(src.broken == 1 && istype(O, /obj/item/tool/wrench)) // If it's broken and they're doing the wrench
 			user.visible_message( \
-				"<span class='notice'>[user] starts to fix part of the microwave.</span>", \
-				"<span class='notice'>You start to fix part of the microwave.</span>" \
+				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
+				SPAN_NOTICE("You start to fix part of the microwave.") \
 			)
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
-					"<span class='notice'>[user] fixes the microwave.</span>", \
-					"<span class='notice'>You have fixed the microwave.</span>" \
+					SPAN_NOTICE("[user] fixes the microwave."), \
+					SPAN_NOTICE("You have fixed the microwave.") \
 				)
 				icon_state = "mw"
 				broken = 0 // Fix it!
@@ -85,13 +85,13 @@
 	else if(src.dirty==100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message( \
-				"<span class='notice'>[user] starts to clean the microwave.</span>", \
-				"<span class='notice'>You start to clean the microwave.</span>" \
+				SPAN_NOTICE("[user] starts to clean the microwave."), \
+				SPAN_NOTICE("You start to clean the microwave.") \
 			)
 			if (do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				user.visible_message( \
-					"<span class='notice'>[user]  has cleaned  the microwave.</span>", \
-					"<span class='notice'>You have cleaned the microwave.</span>" \
+					SPAN_NOTICE("[user]  has cleaned  the microwave."), \
+					SPAN_NOTICE("You have cleaned the microwave.") \
 				)
 				dirty = 0 // It's clean!
 				broken = 0 // just to be sure
@@ -109,15 +109,15 @@
 			new O.type (src)
 			S.use(1)
 			user.visible_message( \
-				"<span class='notice'>[user] has added one of [O] to \the [src].</span>", \
-				"<span class='notice'>You add one of [O] to \the [src].</span>")
+				SPAN_NOTICE("[user] has added one of [O] to \the [src]."), \
+				SPAN_NOTICE("You add one of [O] to \the [src]."))
 		else
 		//	user.before_take_item(O)	//This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message( \
-					"<span class='notice'>[user] has added \the [O] to \the [src].</span>", \
-					"<span class='notice'>You add \the [O] to \the [src].</span>")
+					SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
+					SPAN_NOTICE("You add \the [O] to \the [src]."))
 	else if(istype(O,/obj/item/reagent_container/glass) || \
 	        istype(O,/obj/item/reagent_container/food/drinks) || \
 	        istype(O,/obj/item/reagent_container/food/condiment) \
@@ -293,7 +293,7 @@
 	return 0
 
 /obj/machinery/microwave/proc/start()
-	src.visible_message("<span class='notice'>The microwave turns on.</span>", "<span class='notice'>You hear a microwave.</span>")
+	src.visible_message(SPAN_NOTICE("The microwave turns on."), SPAN_NOTICE("You hear a microwave."))
 	src.operating = 1
 	src.icon_state = "mw1"
 	src.updateUsrDialog()
@@ -315,7 +315,7 @@
 	if (src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()
-	to_chat(usr, "<span class='notice'> You dispose of the microwave contents.</span>")
+	to_chat(usr, SPAN_NOTICE(" You dispose of the microwave contents."))
 	src.updateUsrDialog()
 
 /obj/machinery/microwave/proc/muck_start()

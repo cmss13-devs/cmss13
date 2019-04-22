@@ -49,7 +49,7 @@
 	if(get_point_store() < text2num(cost))
 		to_chat(user, "<span class='warning'>You don't have enough points to build that.</span>")
 		return
-	visible_message("<span class='notice'>[src] starts printing something.</span>")
+	visible_message(SPAN_NOTICE("[src] starts printing something."))
 	spend_point_store(text2num(cost))
 	icon_state = "drone_fab_active"
 	busy = TRUE

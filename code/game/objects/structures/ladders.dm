@@ -84,16 +84,16 @@
 	else return //just in case
 
 	step(user, get_dir(user, src))
-	user.visible_message("<span class='notice'>[user] starts climbing [ladder_dir_name] [src].</span>",
-	"<span class='notice'>You start climbing [ladder_dir_name] [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
+	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
 	busy = 1
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, DA_DEFAULT_NUM_TICKS, src))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && !user.lying && !user.buckled && !user.anchored)
 			//TODO: Using forceMove is desirable here, but this breaks the pull. If you know how to preserve the pull, this would be nice!
 			user.loc = ladder_dest.loc //Cannot use forceMove method on pulls! Move manually //Make sure we move before we broadcast the message
-			visible_message("<span class='notice'>[user] climbs [ladder_dir_name] [src].</span>") //Hack to give a visible message to the people here without duplicating user message
-			user.visible_message("<span class='notice'>[user] climbs [ladder_dir_name] [src].</span>",
-			"<span class='notice'>You climb [ladder_dir_name] [src].</span>")
+			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
+			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
+			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
 			ladder_dest.add_fingerprint(user)
 			if(user.pulling && get_dist(src, user.pulling) <= 2)
 				user.pulling.loc = ladder_dest.loc //Cannot use forceMove method on pulls! Move manually
@@ -153,14 +153,14 @@
 		if(up && down)
 			switch( alert("Look up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
 				if("Up")
-					usr.visible_message("<span class='notice'>[usr] looks up [src]!</span>",
-					"<span class='notice'>You look up [src]!</span>")
+					usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
+					SPAN_NOTICE("You look up [src]!"))
 					is_watching = 2
 					usr.set_interaction(src)
 
 				if("Down")
-					usr.visible_message("<span class='notice'>[usr] looks down [src]!</span>",
-					"<span class='notice'>You look down [src]!</span>")
+					usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
+					SPAN_NOTICE("You look down [src]!"))
 					is_watching = 1
 					usr.set_interaction(src)
 
@@ -168,15 +168,15 @@
 					return
 
 		else if(up)
-			usr.visible_message("<span class='notice'>[usr] looks up [src]!</span>",
-			"<span class='notice'>You look up [src]!</span>")
+			usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
+			SPAN_NOTICE("You look up [src]!"))
 			is_watching = 2
 			usr.set_interaction(src)
 
 
 		else if(down)
-			usr.visible_message("<span class='notice'>[usr] looks down [src]!</span>",
-			"<span class='notice'>You look down [src]!</span>")
+			usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
+			SPAN_NOTICE("You look down [src]!"))
 			is_watching = 1
 			usr.set_interaction(src)
 

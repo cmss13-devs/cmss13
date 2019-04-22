@@ -123,7 +123,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		var/stacktype = stack.type
 		stack.use(amount)
 		if(do_after(usr, 15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			to_chat(user, "<span class='notice'> You add [amount] sheets to the [src.name].</span>")
+			to_chat(user, SPAN_NOTICE(" You add [amount] sheets to the [src.name]."))
 			switch(stacktype)
 				if(/obj/item/stack/sheet/glass)
 					g_amount += amount * 3750

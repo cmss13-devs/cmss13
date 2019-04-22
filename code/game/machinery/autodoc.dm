@@ -597,22 +597,22 @@
 	if(usr.stat != 0 || !ishuman(usr)) return
 
 	if(occupant)
-		to_chat(usr, "<span class='notice'>\The [src] is already occupied!</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
 		return
 
 	if(stat & (NOPOWER|BROKEN))
-		to_chat(usr, "<span class='notice'>\The [src] is non-functional!</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] is non-functional!"))
 		return
 
 	if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
 		to_chat(usr, "<span class='warning'>You're going to need someone trained in the use of \the [src] to help you get into it.</span>")
 		return
 
-	usr.visible_message("<span class='notice'>[usr] starts climbing into \the [src].</span>",
-	"<span class='notice'>You start climbing into \the [src].</span>")
+	usr.visible_message(SPAN_NOTICE("[usr] starts climbing into \the [src]."),
+	SPAN_NOTICE("You start climbing into \the [src]."))
 	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(occupant)
-			to_chat(usr, "<span class='notice'>\The [src] is already occupied!</span>")
+			to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
 		usr.stop_pulling()
 		if(usr.pulledby)
@@ -652,7 +652,7 @@
 		return // no
 	if(istype(W, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = W
-		to_chat(user, "<span class='notice'>\The [src] processes \the [W].</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] processes \the [W]."))
 		stored_metal += M.amount * 100
 		user.drop_held_item()
 		qdel(W)
@@ -663,11 +663,11 @@
 			return
 		var/mob/M = G.grabbed_thing
 		if(src.occupant)
-			to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
 
 		if(stat & (NOPOWER|BROKEN))
-			to_chat(user, "<span class='notice'>\The [src] is non-functional!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is non-functional!"))
 			return
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
@@ -678,7 +678,7 @@
 
 		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			if(src.occupant)
-				to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
+				to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
 				return
 			if(!G || !G.grabbed_thing) return
 			M.forceMove(src)

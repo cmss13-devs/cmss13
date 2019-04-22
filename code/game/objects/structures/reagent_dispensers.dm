@@ -25,12 +25,12 @@
 /obj/structure/reagent_dispensers/examine(mob/user)
 	..()
 	if (get_dist(user, src) > 2 && user != loc) return
-	to_chat(user, "<span class='notice'> It contains:</span>")
+	to_chat(user, SPAN_NOTICE(" It contains:"))
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
-			to_chat(user, "<span class='notice'> [R.volume] units of [R.name]</span>")
+			to_chat(user, SPAN_NOTICE(" [R.volume] units of [R.name]"))
 	else
-		to_chat(user, "<span class='notice'> Nothing.</span>")
+		to_chat(user, SPAN_NOTICE(" Nothing."))
 
 /obj/structure/reagent_dispensers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -106,7 +106,7 @@
 	if (rig)
 		usr.visible_message("[usr] begins to detach [rig] from \the [src].", "You begin to detach [rig] from \the [src]")
 		if(do_after(usr, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			usr.visible_message("<span class='notice'>[usr] detaches [rig] from \the [src].</span>", "<span class='notice'> You detach [rig] from \the [src]</span>")
+			usr.visible_message(SPAN_NOTICE("[usr] detaches [rig] from \the [src]."), SPAN_NOTICE(" You detach [rig] from \the [src]"))
 			rig.loc = get_turf(usr)
 			rig = null
 			overlays = new/list()
@@ -127,7 +127,7 @@
 			return ..()
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='notice'>[user] rigs [W] to \the [src].</span>", "<span class='notice'> You rig [W] to \the [src]</span>")
+			user.visible_message(SPAN_NOTICE("[user] rigs [W] to \the [src]."), SPAN_NOTICE(" You rig [W] to \the [src]"))
 
 			var/obj/item/device/assembly_holder/H = W
 			if (istype(H.a_left,/obj/item/device/assembly/igniter) || istype(H.a_right,/obj/item/device/assembly/igniter))

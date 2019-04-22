@@ -95,7 +95,7 @@
 					F.loc = get_turf(src)
 				qdel(src) //Delete da old knife
 			else
-				to_chat(user, "<span class='notice'>You don't have enough cable for that.</span>")
+				to_chat(user, SPAN_NOTICE("You don't have enough cable for that."))
 				return
 		else
 			..()

@@ -7,7 +7,7 @@
 	anchored = 0
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
-	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
+	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))
 	return
 
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
@@ -16,9 +16,9 @@
 		var/turf/T = get_turf(src)
 		for(var/obj/O in contents)
 			O.loc = T
-		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
-							 "<span class='notice'>You pry open \the [src].</span>", \
-							 "<span class='notice'>You hear splitting wood.</span>")
+		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
+							 SPAN_NOTICE("You pry open \the [src]."), \
+							 SPAN_NOTICE("You hear splitting wood."))
 		qdel(src)
 	else
 		return attack_hand(user)
@@ -170,14 +170,14 @@
 		return
 
 	if (!W.sharp)
-		to_chat(user, "<span class='notice'>You need something sharp to cut off the straps.</span>")
+		to_chat(user, SPAN_NOTICE("You need something sharp to cut off the straps."))
 		return
 
-	to_chat(user, "<span class='notice'>You begin to cut the straps off \the [src]...</span>")
+	to_chat(user, SPAN_NOTICE("You begin to cut the straps off \the [src]..."))
 
 	if (do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		to_chat(user, "<span class='notice'>You cut the straps away.</span>")
+		to_chat(user, SPAN_NOTICE("You cut the straps away."))
 		icon_state = "secure_crate"
 		strapped = 0
 

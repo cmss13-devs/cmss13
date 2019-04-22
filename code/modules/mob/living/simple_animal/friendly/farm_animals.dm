@@ -39,7 +39,7 @@
 		if(enemies.len && prob(10))
 			enemies = list()
 			LoseTarget()
-			src.visible_message("<span class='notice'>[src] calms down.</span>")
+			src.visible_message(SPAN_NOTICE("[src] calms down."))
 
 		if(stat == CONSCIOUS)
 			if(udder && prob(5))
@@ -74,7 +74,7 @@
 /mob/living/simple_animal/hostile/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
+		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, "<span class='danger'>The [O] is full.</span>")
@@ -114,7 +114,7 @@
 /mob/living/simple_animal/cow/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message("<span class='notice'>[user] milks [src] using \the [O].</span>")
+		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
 			to_chat(user, "<span class='danger'>The [O] is full.</span>")
@@ -131,7 +131,7 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == "disarm" && icon_state != icon_dead)
-		M.visible_message("<span class='warning'>[M] tips over [src].</span>","<span class='notice'>You tip over [src].</span>")
+		M.visible_message("<span class='warning'>[M] tips over [src].</span>",SPAN_NOTICE("You tip over [src]."))
 		KnockDown(30)
 		icon_state = icon_dead
 		spawn(rand(20,50))
@@ -229,13 +229,13 @@ var/global/chicken_count = 0
 /mob/living/simple_animal/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
-			user.visible_message("<span class='notice'>[user] feeds [O] to [name]! It clucks happily.</span>","<span class='notice'>You feed [O] to [name]! It clucks happily.</span>")
+			user.visible_message(SPAN_NOTICE("[user] feeds [O] to [name]! It clucks happily."),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))
 			user.drop_held_item()
 			qdel(O)
 			eggsleft += rand(1, 4)
 			//world << eggsleft
 		else
-			to_chat(user, "<span class='notice'> [name] doesn't seem hungry!</span>")
+			to_chat(user, SPAN_NOTICE(" [name] doesn't seem hungry!"))
 	else
 		..()
 

@@ -77,21 +77,21 @@
 			if(buckled_mob.buckled == src)
 				if(buckled_mob != user)
 					buckled_mob.visible_message(\
-						"<span class='notice'>[user.name] frees [buckled_mob.name] from [src].</span>",\
-						"<span class='notice'>[user.name] frees you from [src].</span>",\
+						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),\
+						SPAN_NOTICE("[user.name] frees you from [src]."),\
 						"<span class='warning'>You hear shredding and ripping.</span>")
 				else
 					buckled_mob.visible_message(\
-						"<span class='notice'>[buckled_mob.name] struggles free of [src].</span>",\
-						"<span class='notice'>You untangle [src] from around yourself.</span>",\
+						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),\
+						SPAN_NOTICE("You untangle [src] from around yourself."),\
 						"<span class='warning'>You hear shredding and ripping.</span>")
 			unbuckle()
 			return 1
 		else
 			var/text = pick("rips","tears","pulls")
 			user.visible_message(\
-				"<span class='notice'>[user.name] [text] at [src].</span>",\
-				"<span class='notice'>You [text] at [src].</span>",\
+				SPAN_NOTICE("[user.name] [text] at [src]."),\
+				SPAN_NOTICE("You [text] at [src]."),\
 				"<span class='warning'>You hear shredding and ripping.</span>")
 	return 0
 

@@ -86,32 +86,32 @@
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
+		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
 		return
 
 	if (istype(magazine, /obj/item/ammo_magazine/flamer_tank/large))
-		to_chat(user, "<span class='warning'>That tank is too large for this model!</span>")
+		to_chat(user, SPAN_WARNING("That tank is too large for this model!"))
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
+		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
-					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -129,8 +129,8 @@
 	else user.put_in_hands(current_mag)
 
 	playsound(user, unload_sound, 25, 1)
-	user.visible_message("<span class='notice'>[user] unloads [current_mag] from [src].</span>",
-	"<span class='notice'>You unload [current_mag] from [src].</span>")
+	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+	SPAN_NOTICE("You unload [current_mag] from [src]."))
 	current_mag.update_icon()
 	current_mag = null
 
@@ -278,28 +278,28 @@
 
 /obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, "<span class='warning'>That's not a magazine!</span>")
+		to_chat(user, SPAN_WARNING("That's not a magazine!"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, "<span class='warning'>That magazine doesn't fit in there!</span>")
+		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
 		return
 
 	if(!isnull(current_mag) && current_mag.loc == src)
-		to_chat(user, "<span class='warning'>It's still got something loaded!</span>")
+		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, "<span class='notice'>You begin reloading [src]. Hold still...</span>")
+				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
 				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
-					to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
+					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return
 			else replace_magazine(user, magazine)
 		else
@@ -317,7 +317,7 @@
 			return
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && user.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
 
@@ -544,7 +544,7 @@
 			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.
 			if(prob(firelevel)) I.IgniteMob()
 			//I.adjustFireLoss(rand(10 ,burnlevel)) //Including the fire should be way stronger.
-			I.show_message(text("<span class='warning'>You are burned!</span>"),1)
+			I.show_message(text(SPAN_WARNING("You are burned!")),1)
 			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
 				var/mob/living/carbon/Xenomorph/X = I
 				X.updatehealth()

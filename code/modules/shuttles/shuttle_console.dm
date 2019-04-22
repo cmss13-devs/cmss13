@@ -31,14 +31,14 @@
 			if(world.time < shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN)
 				to_chat(user, "<span class='warning'>You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [round((shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>")
 			else
-				to_chat(user, "<span class='notice'>You interact with the pilot's console and re-enable remote control.</span>")
+				to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
 				shuttle.last_locked = world.time
 				shuttle.queen_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN)
 				to_chat(user, "<span class='warning'>You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>")
 			else
-				to_chat(user, "<span class='notice'>You reverse the door override.</span>")
+				to_chat(user, SPAN_NOTICE("You reverse the door override."))
 				shuttle.last_door_override = world.time
 				shuttle.door_override = 0
 	ui_interact(user)
@@ -203,7 +203,7 @@
 		if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.pilot)
 			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
 		else
-			to_chat(usr, "<span class='notice'>You load in and review a custom flight plan you took time to prepare earlier. This should cut half of the transport flight time on its own!</span>")
+			to_chat(usr, SPAN_NOTICE("You load in and review a custom flight plan you took time to prepare earlier. This should cut half of the transport flight time on its own!"))
 			shuttle.transit_optimized = 1
 			return
 
@@ -217,9 +217,9 @@
 				to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
 				return
 			else
-				to_chat(usr, "<span class='notice'>You upload a flight plan for a low altitude flyby above the planet.</span>")
+				to_chat(usr, SPAN_NOTICE("You upload a flight plan for a low altitude flyby above the planet."))
 		else
-			to_chat(usr, "<span class='notice'>You reset the flight plan to a transport mission between the Almayer and the planet.</span>")
+			to_chat(usr, SPAN_NOTICE("You reset the flight plan to a transport mission between the Almayer and the planet."))
 
 	if(href_list["lockdown"])
 		if(shuttle.door_override || z == 3)

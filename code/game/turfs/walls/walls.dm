@@ -100,7 +100,7 @@
 		if (acided_hole)
 			to_chat(user, "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>")
 		else
-			to_chat(user, "<span class='notice'>It looks fully intact.</span>")
+			to_chat(user, SPAN_NOTICE("It looks fully intact."))
 	else
 		var/dam = damage / damage_cap
 		if(dam <= 0.3)
@@ -340,12 +340,12 @@
 	if(damage && istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			user.visible_message("<span class='notice'>[user] starts repairing the damage to [src].</span>",
-			"<span class='notice'>You start repairing the damage to [src].</span>")
+			user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
+			SPAN_NOTICE("You start repairing the damage to [src]."))
 			playsound(src, 'sound/items/Welder.ogg', 25, 1)
 			if(do_after(user, max(5, round(damage / 5)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
-				user.visible_message("<span class='notice'>[user] finishes repairing the damage to [src].</span>",
-				"<span class='notice'>You finish repairing the damage to [src].</span>")
+				user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
+				SPAN_NOTICE("You finish repairing the damage to [src]."))
 				take_damage(-damage)
 			return
 		else
@@ -359,23 +359,23 @@
 
 				var/obj/item/tool/weldingtool/WT = W
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
-				user.visible_message("<span class='notice'>[user] begins slicing through the outer plating.</span>",
-				"<span class='notice'>You begin slicing through the outer plating.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
+				SPAN_NOTICE("You begin slicing through the outer plating."))
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!istype(src, /turf/closed/wall) || !WT || !WT.isOn())	return
 
 					if(!d_state)
 						d_state++
-						user.visible_message("<span class='notice'>[user] slices through the outer plating.</span>",
-						"<span class='notice'>You slice through the outer plating.</span>")
+						user.visible_message(SPAN_NOTICE("[user] slices through the outer plating."),
+						SPAN_NOTICE("You slice through the outer plating."))
 				return
 
 		if(1)
 			if(istype(W, /obj/item/tool/screwdriver))
 
-				user.visible_message("<span class='notice'>[user] begins removing the support lines.</span>",
-				"<span class='notice'>You begin removing the support lines.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
+				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -383,16 +383,16 @@
 
 					if(d_state == 1)
 						d_state++
-						user.visible_message("<span class='notice'>[user] removes the support lines.</span>",
-						"<span class='notice'>You remove the support lines.</span>")
+						user.visible_message(SPAN_NOTICE("[user] removes the support lines."),
+						SPAN_NOTICE("You remove the support lines."))
 				return
 
 		if(2)
 			if(istype(W, /obj/item/tool/weldingtool))
 
 				var/obj/item/tool/weldingtool/WT = W
-				user.visible_message("<span class='notice'>[user] begins slicing through the metal cover.</span>",
-				"<span class='notice'>You begin slicing through the metal cover.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins slicing through the metal cover."),
+				SPAN_NOTICE("You begin slicing through the metal cover."))
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -400,15 +400,15 @@
 
 					if(d_state == 2)
 						d_state++
-						user.visible_message("<span class='notice'>[user] presses firmly on the cover, dislodging it.</span>",
-						"<span class='notice'>You press firmly on the cover, dislodging it.</span>")
+						user.visible_message(SPAN_NOTICE("[user] presses firmly on the cover, dislodging it."),
+						SPAN_NOTICE("You press firmly on the cover, dislodging it."))
 				return
 
 		if(3)
 			if(istype(W, /obj/item/tool/crowbar))
 
-				user.visible_message("<span class='notice'>[user] struggles to pry off the cover.</span>",
-				"<span class='notice'>You struggle to pry off the cover.</span>")
+				user.visible_message(SPAN_NOTICE("[user] struggles to pry off the cover."),
+				SPAN_NOTICE("You struggle to pry off the cover."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -416,15 +416,15 @@
 
 					if(d_state == 3)
 						d_state++
-						user.visible_message("<span class='notice'>[user] pries off the cover.</span>",
-						"<span class='notice'>You pry off the cover.</span>")
+						user.visible_message(SPAN_NOTICE("[user] pries off the cover."),
+						SPAN_NOTICE("You pry off the cover."))
 				return
 
 		if(4)
 			if(istype(W, /obj/item/tool/wrench))
 
-				user.visible_message("<span class='notice'>[user] starts loosening the anchoring bolts securing the support rods.</span>",
-				"<span class='notice'>You start loosening the anchoring bolts securing the support rods.</span>")
+				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
+				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -432,15 +432,15 @@
 
 					if(d_state == 4)
 						d_state++
-						user.visible_message("<span class='notice'>[user] removes the bolts anchoring the support rods.</span>",
-						"<span class='notice'>You remove the bolts anchoring the support rods.</span>")
+						user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."),
+						SPAN_NOTICE("You remove the bolts anchoring the support rods."))
 				return
 
 		if(5)
 			if(istype(W, /obj/item/tool/wirecutters))
 
-				user.visible_message("<span class='notice'>[user] begins uncrimping the hydraulic lines.</span>",
-				"<span class='notice'>You begin uncrimping the hydraulic lines.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
+				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -448,15 +448,15 @@
 
 					if(d_state == 5)
 						d_state++
-						user.visible_message("<span class='notice'>[user] finishes uncrimping the hydraulic lines.</span>",
-						"<span class='notice'>You finish uncrimping the hydraulic lines.</span>")
+						user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."),
+						SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
 				return
 
 		if(6)
 			if(istype(W, /obj/item/tool/crowbar))
 
-				user.visible_message("<span class='notice'>[user] struggles to pry off the inner sheath.</span>",
-				"<span class='notice'>You struggle to pry off the inner sheath.</span>")
+				user.visible_message(SPAN_NOTICE("[user] struggles to pry off the inner sheath."),
+				SPAN_NOTICE("You struggle to pry off the inner sheath."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -464,16 +464,16 @@
 
 					if(d_state == 6)
 						d_state++
-						user.visible_message("<span class='notice'>[user] pries off the inner sheath.</span>",
-						"<span class='notice'>You pry off the inner sheath.</span>")
+						user.visible_message(SPAN_NOTICE("[user] pries off the inner sheath."),
+						SPAN_NOTICE("You pry off the inner sheath."))
 				return
 
 		if(7)
 			if(istype(W, /obj/item/tool/weldingtool))
 
 				var/obj/item/tool/weldingtool/WT = W
-				user.visible_message("<span class='notice'>[user] begins slicing through the final layer.</span>",
-				"<span class='notice'>You begin slicing through the final layer.</span>")
+				user.visible_message(SPAN_NOTICE("[user] begins slicing through the final layer."),
+				SPAN_NOTICE("You begin slicing through the final layer."))
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 
 				if(do_after(user, 60, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -481,8 +481,8 @@
 
 					if(d_state == 7)
 						new /obj/item/stack/rods(src)
-						user.visible_message("<span class='notice'>The support rods drop out as [user] slices through the final layer.</span>",
-						"<span class='notice'>The support rods drop out as you slice through the final layer.</span>")
+						user.visible_message(SPAN_NOTICE("The support rods drop out as [user] slices through the final layer."),
+						SPAN_NOTICE("The support rods drop out as you slice through the final layer."))
 						dismantle_wall()
 				return
 

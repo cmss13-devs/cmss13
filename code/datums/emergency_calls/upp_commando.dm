@@ -33,9 +33,9 @@
 	to_chat(M, SPAN_WARNING("<font size='3'> Glory to the UPP.</font>"))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, "<span class='notice'> Use say :3 <text> to speak in your native tongue.</span>")
-	to_chat(M, "<span class='notice'> This allows you to speak privately with your fellow UPP allies.</span>")
-	to_chat(M, "<span class='notice'> Utilize it with your radio to prevent enemy radio interceptions.</span>")
+	to_chat(M, SPAN_NOTICE(" Use say :3 <text> to speak in your native tongue."))
+	to_chat(M, SPAN_NOTICE(" This allows you to speak privately with your fellow UPP allies."))
+	to_chat(M, SPAN_NOTICE(" Utilize it with your radio to prevent enemy radio interceptions."))
 
 /datum/emergency_call/upp_commando/create_member(datum/mind/M)
 	set waitfor = 0

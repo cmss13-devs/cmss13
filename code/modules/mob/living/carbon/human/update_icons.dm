@@ -610,7 +610,7 @@ var/global/list/damage_icon_parts = list()
 		else
 			standing = image("icon" = head.sprite_sheet_id?'icons/mob/head_1.dmi':'icons/mob/head_0.dmi', "icon_state" = "[head.icon_state]", "layer" =-HEAD_LAYER)
 
-		if(istype(head,/obj/item/clothing/head/helmet/marine))
+		if(istype(head,/obj/item/clothing/head/helmet/marine)|istype(head,/obj/item/clothing/head/cmcap))
 			var/obj/item/clothing/head/helmet/marine/marine_helmet = head
 			if(marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
 				if(assigned_squad)

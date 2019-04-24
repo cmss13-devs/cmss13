@@ -1308,7 +1308,7 @@
 		return
 
 	var/turf/current_turf = get_turf(A)
-	
+
 	if (get_dist(src, A) > src.caste.max_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
 		current_turf = get_turf(src)
 	else if (isXenoHivelord(src)) //hivelords can thicken existing resin structures.
@@ -1338,7 +1338,7 @@
 				to_chat(src, SPAN_XENOWARNING("[DR] can't be made thicker."))
 				return
 			thickened = TRUE
-		
+
 		if (thickened)
 			visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and thickens [A]."), \
 				SPAN_XENONOTICE("You regurgitate some resin and thicken [A]."), null, 5)
@@ -1748,3 +1748,14 @@
 		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
 	else
 		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
+
+/mob/living/carbon/Xenomorph/verb/directional_attacktoggle()
+	set name = "Toggle Directional Attacks"
+	set desc = "Toggles the use of directional assist attacks."
+	set category = "Alien"
+
+	directional_attack_toggle = !directional_attack_toggle
+	if(!directional_attack_toggle)
+		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
+	else
+		to_chat(src, SPAN_NOTICE("Attacks will now use directional assist."))

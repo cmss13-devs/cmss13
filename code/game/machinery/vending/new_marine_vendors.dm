@@ -1224,6 +1224,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("SUPPORT MODULE", 0, null, null, null),
 		list("Integrated Weapons Sensor Array", 0, /obj/item/hardpoint/support/weapons_sensor, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Smoke Launcher", 0, /obj/item/hardpoint/support/smoke_launcher, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Overdrive Enhancer", 0, /obj/item/hardpoint/support/overdrive_enhancer, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Artillery Module", 0, /obj/item/hardpoint/support/artillery_module, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("ARMOR", 0, null, null, null),
 		list("Ballistic Armor", 0, /obj/item/hardpoint/armor/ballistic, MARINE_CAN_BUY_ARMOR, "black"),

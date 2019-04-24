@@ -727,11 +727,13 @@
 /datum/ammo/bullet/tank/flak/New()
 	..()
 	accuracy = -config.low_hit_accuracy
-	max_range = config.norm_shell_range
 	scatter = config.low_scatter_value
 	damage = config.mhigh_hit_damage
 	damage_var_high = config.low_proj_variance
 	penetration	= config.med_armor_penetration
+	accurate_range = config.max_shell_range
+	max_range = config.max_shell_range
+	shell_speed = config.ultra_shell_speed
 
 /datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/item/projectile/P)
 	burst(get_turf(M),P,damage_type, 2 , 2)
@@ -1496,7 +1498,7 @@
 		var/obj/structure/barricade/B = O
 		B.health -= rand(2, 5)
 		B.update_health(1)
-		
+
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
@@ -1506,7 +1508,7 @@
 	..()
 	shell_speed = config.slow_shell_speed
 	damage = config.mlow_hit_damage
-	penetration = config.low_armor_penetration 
+	penetration = config.low_armor_penetration
 
 
 /*

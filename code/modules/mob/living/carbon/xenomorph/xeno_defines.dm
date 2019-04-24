@@ -59,7 +59,7 @@
 	var/punch_cooldown = 40
 	var/jab_cooldown = 40
 	var/toggle_agility_cooldown = 5
-	
+
 	// Resin building-related vars
 	var/build_time = 10 // Default build time and build distance
 	var/max_build_dist = 0
@@ -192,6 +192,7 @@
 	var/armor_bonus = 0 //Extra chance of deflecting projectiles due to temporary effects
 	var/has_screeched = 0
 	var/middle_mouse_toggle = TRUE //This toggles whether selected ability uses middle mouse clicking or shift clicking
+	var/directional_attack_toggle = TRUE //This toggles whether attacks use directional attacks
 
 	var/devour_timer = 0
 

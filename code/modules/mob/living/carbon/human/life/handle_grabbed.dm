@@ -4,10 +4,9 @@
 	if(pulledby.grab_level >= GRAB_AGGRESSIVE)
 		drop_held_items()
 
-	/*if(pulledby.grab_level >= GRAB_NECK)
-		Stun(5)
-		adjustOxyLoss(1)*/
+	if(pulledby.grab_level >= GRAB_NECK)
+		losebreath = min(losebreath + 2, 3)
 
 	if(pulledby.grab_level >= GRAB_KILL)
-		KnockDown(5)
-		losebreath = min(losebreath + 2, 3)
+		adjustOxyLoss(3)
+

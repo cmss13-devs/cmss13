@@ -57,3 +57,4 @@
 	icon_state = "diagonalWall"
 	name = "wall"
 	layer = ABOVE_TURF_LAYER
+	density = 1

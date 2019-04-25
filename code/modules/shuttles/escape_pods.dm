@@ -69,7 +69,7 @@ suffice.
 	var/turf/T = locate(ref.x + C.x_pos, ref.y + C.y_pos, ref.z) //Get a turf from the coordinates.
 	if(!istype(T))
 		log_debug("ERROR CODE EV0: unable to find the first turf of [shuttle_tag].")
-		to_world("<span class='debuginfo'>ERROR CODE EV0: unable to find the first turf of [shuttle_tag].</span>")
+		to_world(SPAN_DEBUG("ERROR CODE EV0: unable to find the first turf of [shuttle_tag]."))
 		r_FAL
 
 	staging_area = T.loc //Grab the area and store it on file.
@@ -78,7 +78,7 @@ suffice.
 	D = locate() in staging_area
 	if(!D)
 		log_debug("ERROR CODE EV1.5: could not find door in [shuttle_tag].")
-		to_world("<span class='debuginfo'>ERROR CODE EV1: could not find door in [shuttle_tag].</span>")
+		to_world(SPAN_DEBUG("ERROR CODE EV1: could not find door in [shuttle_tag]."))
 		r_FAL
 	D.id_tag = shuttle_tag //So that the door can be operated via controller later.
 
@@ -86,7 +86,7 @@ suffice.
 	var/obj/machinery/embedded_controller/radio/simple_docking_controller/escape_pod/R = locate() in staging_area //Grab the controller.
 	if(!R)
 		log_debug("ERROR CODE EV1.5: could not find controller in [shuttle_tag].")
-		to_world("<span class='debuginfo'>ERROR CODE EV1: could not find controller in [shuttle_tag].</span>")
+		to_world(SPAN_DEBUG("ERROR CODE EV1: could not find controller in [shuttle_tag]."))
 		r_FAL
 
 	//Set the tags.
@@ -103,7 +103,7 @@ suffice.
 		E.evacuation_program = evacuation_program
 	if(!cryo_cells.len)
 		log_debug("ERROR CODE EV2: could not find cryo pods in [shuttle_tag].")
-		to_world("<span class='debuginfo'>ERROR CODE EV2: could not find cryo pods in [shuttle_tag].</span>")
+		to_world(SPAN_DEBUG("ERROR CODE EV2: could not find cryo pods in [shuttle_tag]."))
 		r_FAL
 
 #define MOVE_MOB_OUTSIDE \
@@ -117,7 +117,6 @@ for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 				D.unlock()
 				D.open()
 				D.lock()
-			//evacuation_program.open_door()
 		if(STATE_READY)
 			evacuation_program.dock_state = STATE_IDLE
 			MOVE_MOB_OUTSIDE
@@ -127,37 +126,29 @@ for(var/obj/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 				D.lock()
 
 /datum/shuttle/ferry/marine/evacuation_pod/proc/prepare_for_launch()
-	var/passenger_check = check_passengers()
-	if (passengers > 0)
-		if(!can_launch()) r_FAL //Can't launch in some circumstances.
-		evacuation_program.dock_state = STATE_LAUNCHING
+	if(!can_launch()) r_FAL //Can't launch in some circumstances.
+	evacuation_program.dock_state = STATE_LAUNCHING
+	spawn()
+		D.unlock()
+		D.close()
+		D.lock()
+	evacuation_program.prepare_for_undocking()
+	sleep(31)
+	if(!check_passengers())
+		evacuation_program.dock_state = STATE_BROKEN
+		explosion(evacuation_program.master, -1, -1, 3, 4)
+		sleep(25)
+		staging_area.initialize_power_and_lighting(TRUE) //We want to reinitilize power usage and turn off everything.
+
+		MOVE_MOB_OUTSIDE
 		spawn()
 			D.unlock()
-			D.close()
+			D.open()
 			D.lock()
-		evacuation_program.prepare_for_undocking()
-		sleep(31)
-		if(!passenger_check)
-			evacuation_program.dock_state = STATE_BROKEN
-			explosion(evacuation_program.master, -1, -1, 3, 4)
-			sleep(25)
-			staging_area.initialize_power_and_lighting(TRUE) //We want to reinitilize power usage and turn off everything.
-
-			MOVE_MOB_OUTSIDE
-			//evacuation_program.open_door()
-			spawn()
-				D.unlock()
-				D.open()
-				D.lock()
-			evacuation_program.master.state("<span class='warning'>WARNING: Maximum weight limit reached, pod unable to launch. Warning: Thruster failure detected.</span>")
-			r_FAL
-		launch()
-		r_TRU
-	else
-		evacuation_program.dock_state = STATE_READY
-		D.unlock()
-		D.open()
-		D.lock()
+		evacuation_program.master.state(SPAN_WARNING("WARNING: Maximum weight limit reached, pod unable to launch. Warning: Thruster failure detected."))
+		r_FAL
+	launch()
+	r_TRU
 
 #undef MOVE_MOB_OUTSIDE
 
@@ -192,8 +183,8 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 			n++
 			if(X.stat != DEAD && msg) X << msg
 	if(n > cryo_cells.len)  . = FALSE //Default is 3 cryo cells and three people inside the pod.
-	passengers += n //Return the total number of occupants instead if it successfully launched.
 	if(msg)
+		passengers += n //Return the total number of occupants instead if it successfully launched.
 		r_TRU
 
 //=========================================================================================
@@ -296,21 +287,21 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	attackby(obj/item/grab/G, mob/user)
 		if(istype(G))
 			if(being_forced)
-				to_chat(user, "<span class='warning'>There's something forcing it open!</span>")
+				to_chat(user, SPAN_WARNING("There's something forcing it open!"))
 				r_FAL
 
 			if(occupant)
-				to_chat(user, "<span class='warning'>There is someone in there already!</span>")
+				to_chat(user, SPAN_WARNING("There is someone in there already!"))
 				r_FAL
 
 			if(evacuation_program.dock_state < STATE_READY)
-				to_chat(user, "<span class='warning'>The cryo pod is not responding to commands!</span>")
+				to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
 				r_FAL
 
 			var/mob/living/carbon/human/M = G.grabbed_thing
 			if(!istype(M)) r_FAL
 
-			visible_message("<span class='warning'>[user] starts putting [M.name] into the cryo pod.</span>", 3)
+			visible_message(SPAN_WARNING("[user] starts putting [M.name] into the cryo pod."), 3)
 
 			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				if(!M || !G || !G.grabbed_thing || !G.grabbed_thing.loc || G.grabbed_thing != M) r_FAL
@@ -325,7 +316,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 		if(occupant) //Once you're in, you cannot exit, and outside forces cannot eject you.
 			//The occupant is actually automatically ejected once the evac is canceled.
-			if(occupant != usr) to_chat(usr, "<span class='warning'>You are unable to eject the occupant unless the evacuation is canceled.</span>")
+			if(occupant != usr) to_chat(usr, SPAN_WARNING("You are unable to eject the occupant unless the evacuation is canceled."))
 
 		add_fingerprint(usr)
 
@@ -346,18 +337,18 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		if(!istype(user) || user.stat || user.is_mob_restrained()) r_FAL
 
 		if(being_forced)
-			to_chat(user, "<span class='warning'>You can't enter when it's being forced open!</span>")
+			to_chat(user, SPAN_WARNING("You can't enter when it's being forced open!"))
 			r_FAL
 
 		if(occupant)
-			to_chat(user, "<span class='warning'>The cryogenic pod is already in use! You will need to find another.</span>")
+			to_chat(user, SPAN_WARNING("The cryogenic pod is already in use! You will need to find another."))
 			r_FAL
 
 		if(evacuation_program.dock_state < STATE_READY)
-			to_chat(user, "<span class='warning'>The cryo pod is not responding to commands!</span>")
+			to_chat(user, SPAN_WARNING("The cryo pod is not responding to commands!"))
 			r_FAL
 
-		visible_message("<span class='warning'>[user] starts climbing into the cryo pod.</span>", 3)
+		visible_message(SPAN_WARNING("[user] starts climbing into the cryo pod."), 3)
 
 		if(do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			user.stop_pulling()
@@ -365,22 +356,22 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 	attack_alien(mob/living/carbon/Xenomorph/user)
 		if(being_forced)
-			to_chat(user, "<span class='xenowarning'>It's being forced open already!</span>")
+			to_chat(user, SPAN_XENOWARNING("It's being forced open already!"))
 			r_FAL
 
 		if(!occupant)
-			to_chat(user, "<span class='xenowarning'>There is nothing of interest in there.</span>")
+			to_chat(user, SPAN_XENOWARNING("There is nothing of interest in there."))
 			r_FAL
 
 		being_forced = !being_forced
-		visible_message("<span class='warning'>[user] begins to pry the [src]'s cover!</span>", 3)
+		visible_message(SPAN_WARNING("[user] begins to pry the [src]'s cover!"), 3)
 		playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
 		being_forced = !being_forced
 
 /obj/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)
-		to_chat(M, "<span class='warning'>The cryogenic pod is already in use. You will need to find another.</span>")
+		to_chat(M, SPAN_WARNING("The cryogenic pod is already in use. You will need to find another."))
 		r_FAL
 		return
 	M.forceMove(src)

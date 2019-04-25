@@ -9,7 +9,7 @@
 	throwforce = 0
 	w_class = 3.0
 	origin_tech = "materials=1"
-	var/breakouttime = 300	//Deciseconds = 30s = 0.5 minute
+	var/breakouttime = SECONDS_15
 
 /obj/item/legcuffs/beartrap
 	name = "bear trap"
@@ -68,7 +68,6 @@
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
 	var/armed = 0
-	breakouttime = 600 // 1 minute
 	layer = LOWER_ITEM_LAYER
 
 	dropped(var/mob/living/carbon/human/mob) //Changes to "camouflaged" icons based on where it was dropped.

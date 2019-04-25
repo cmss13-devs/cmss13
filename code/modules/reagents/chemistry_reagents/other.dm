@@ -125,28 +125,6 @@
 	description = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 	color = "#E0E8EF" // rgb: 224, 232, 239
 
-/datum/reagent/lube
-	name = "Space Lube"
-	id = "lube"
-	description = "Lubricant is a substance introduced between two moving surfaces to reduce the friction and wear between them. giggity."
-	reagent_state = LIQUID
-	spray_warning = TRUE
-	color = "#009CA8" // rgb: 0, 156, 168
-	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-
-	reaction_turf(var/turf/T, var/volume)
-		if(!istype(T)) return
-		src = null
-		if(volume >= 1)
-			T.wet_floor(FLOOR_WET_LUBE)
-
-	on_overdose(mob/living/M)
-		M.apply_damage(2, TOX)
-
-	on_overdose_critical(mob/living/M)
-		M.apply_damage(3, TOX)
-
 /datum/reagent/plasticide
 	name = "Plasticide"
 	id = "plasticide"

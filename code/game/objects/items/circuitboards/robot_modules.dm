@@ -254,8 +254,8 @@
 		src.modules += new /obj/item/robot/stun(src)
 		src.emag = new /obj/item/reagent_container/spray(src)
 
-		src.emag.reagents.add_reagent("lube", 250)
-		src.emag.name = "Lube spray"
+		src.emag.reagents.add_reagent("cleaner", 250)
+		src.emag.name = "space cleaner"
 		return
 
 	respawn_consumable(var/mob/living/silicon/robot/R)
@@ -263,7 +263,7 @@
 		LR.Charge(R)
 		if(src.emag)
 			var/obj/item/reagent_container/spray/S = src.emag
-			S.reagents.add_reagent("lube", 2)
+			S.reagents.add_reagent("cleaner", 2)
 
 /obj/item/circuitboard/robot_module/butler
 	name = "service robot module"

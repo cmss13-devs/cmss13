@@ -41,7 +41,7 @@
 	var/list/noblend_objects = list(/obj/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
 
 
-/turf/closed/wall/initialize()
+/turf/closed/wall/Initialize()
 	..()
 	update_connections(1)
 	update_icon()

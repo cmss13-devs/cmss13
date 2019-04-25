@@ -27,7 +27,7 @@ var/global/list/ghdel_profiling = list()
 // Temporary call in place for preparation of implementing SSatoms.
 /atom/New()
 	. = ..()
-	initialize()
+	Initialize()
 
 /*
 We actually care what this returns, since it can return different directives.
@@ -446,4 +446,7 @@ its easier to just keep the beam vertical.
 	return
 
 /atom/proc/initialize()
+	return
+
+/atom/proc/Initialize()
 	return

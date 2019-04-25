@@ -520,7 +520,7 @@
 
 /datum/ammo/bullet/shotgun/slug/New()
 	..()
-	max_range = config.short_shell_range
+	max_range = config.short_shell_range*1.4
 	damage = config.mhigh_hit_damage
 	penetration= config.high_armor_penetration
 
@@ -584,10 +584,10 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	max_range = config.short_shell_range
-	damage = config.med_hit_damage
+	damage = config.med_hit_damage*1.2
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.med_armor_penetration
+	penetration	= config.high_armor_penetration*1.2
 	bonus_projectiles_amount = config.med_proj_extra
 
 /datum/ammo/bullet/shotgun/flechette_spread
@@ -599,10 +599,10 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	max_range = config.short_shell_range
-	damage = config.mlow_hit_damage
+	damage = config.med_hit_damage*1.2
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.med_armor_penetration
+	penetration	= config.high_armor_penetration*1.2
 	scatter = config.hmed_scatter_value
 
 /datum/ammo/bullet/shotgun/buckshot
@@ -616,7 +616,7 @@
 	accuracy_var_high = config.high_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.hmed_hit_damage
+	damage = config.hmed_hit_damage*0.8
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
@@ -645,10 +645,11 @@
 	accuracy_var_high = config.med_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.hmed_hit_damage
+	damage = config.hmed_hit_damage*0.8
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
+	penetration = 0
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
 

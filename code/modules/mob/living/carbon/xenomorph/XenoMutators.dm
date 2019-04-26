@@ -17,6 +17,31 @@
 	var/keystone = FALSE //Xeno can only take one Keystone mutator
 	var/flaw = FALSE //Flaws give you points back, but you can only take one of them
 	var/list/caste_whitelist = list() //List of the only castes that can buy this mutator
+	
+	// Rework by Fourkhan - 4/26/19
+	// HOW TO ADD A NEW MUTATOR
+	// Step 0: Write an action
+	//			  the "handler" procs go in /code/modules/mob/living/Xenomorph/Abilities.dm
+	// 			  the actual ACTION procs go in /code/modules/mob/living/Xenomorph/Powers.dm
+	// 			  Any constants you need to access for your strain should be in the CASTE definiton and
+	//			  accessed using a cast to the caste datum from the base caste type
+	//		      vars that absolutely must be held on the xenos themselves can be added to the Xenomorph class itself.
+	// 
+	// Step 1: Copy/paste another datum definiton and edit it for your strain
+	// 		  	make sure to populate each of the variables listed above (at least as much as other strains)
+	// Step 2: Write the apply_mutator proc.
+	//			FIRST:   populate mutator_actions_to_add and mutator_actions_to_remove according to that documentation.
+	//			THEN:    write the body of the apply_mutator method according to your speficiations
+	// 			FINALLY: call mutator_update_actions on your xeno
+	//					 call recalculate actions on your mutator set (this should be auto populated)
+	//	You're done!
+
+	// mutator_actions_to_remove should be a list of STRINGS of the NAMES of actions that need to be removed
+	// when a xeno takes the mutator. 
+	// mutator_actions_to_add should be a list of PATHES of actions to be ADDED when the Xeno takes the mutator.
+	// Both should be set to null when their use is not necessary.
+	var/list/mutator_actions_to_remove = list()  //Actions to remove when the mutator is added (name)
+	var/list/mutator_actions_to_add = list()	 //Actions to add when the mutator is added (paths)
 
 /datum/xeno_mutator/New()
 	. = ..()
@@ -32,12 +57,26 @@
 	MS.purchased_mutators += name
 	return 1
 
+// Sets up actions for when a mutator is taken 
+// Must be called at the end of any mutator that changes available actions
+// (read: Strains) apply_mutator proc for the mutator to work correctly.
+/datum/xeno_mutator/proc/mutator_update_actions(mob/living/carbon/Xenomorph/X)
+	if (mutator_actions_to_add)
+		for (var/action_datum in mutator_actions_to_add)
+			var/datum/action/xeno_action/A = new action_datum()
+			A.give_action(X)
+	if (mutator_actions_to_remove) 
+		for (var/action_name in mutator_actions_to_remove)
+			X.remove_action(action_name)
+
 /datum/xeno_mutator/railgun
 	name = "STRAIN: Boiler - Railgun"
 	description = "In exchange for your gas and neurotoxin gas, you gain a new type of glob - the railgun glob. This will do a lot of damage to barricades and humans, with no scatter and perfect accuracy!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Boiler") //Only boiler.
+	mutator_actions_to_remove = list("Toggle Bombard Type")
+	mutator_actions_to_add = null
 	keystone = TRUE
 
 /datum/xeno_mutator/railgun/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -51,12 +90,13 @@
 	MS.bombard_cooldown = 0
 	MS.min_bombard_dist = 0
 	B.bomb_delay = 125
-	B.remove_action("Toggle Bombard Type")
 	B.ammo = ammo_list[new_ammo]
 	B.railgun = TRUE
 	B.caste.tileoffset = 9
 	B.caste.viewsize = 14
+	mutator_update_actions(B)
 	MS.recalculate_actions(description)
+	
 
 /datum/xeno_mutator/royal_guard
 	name = "STRAIN: Praetorian - Royal Guard"
@@ -64,6 +104,8 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Praetorian") //Only praetorian.
+	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/tail_sweep)
 	keystone = TRUE
 
 /datum/xeno_mutator/royal_guard/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -72,13 +114,9 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
-	P.remove_action("Xeno Spit")
-	P.remove_action("Toggle Spit Type")
-	for(var/path in P.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(P)
 	P.acid_spray_cooldown = 6
 	MS.pheromones_boost_level = 1
+	mutator_update_actions(P)
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/healer
@@ -87,6 +125,8 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Drone") //Only drone.
+	mutator_actions_to_remove = list("Secrete Resin (75)","Choose Resin Structure")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/transfer_health)
 	keystone = TRUE
 
 /datum/xeno_mutator/healer/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -95,12 +135,8 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
-	D.remove_action("Secrete Resin (75)")
-	D.remove_action("Choose Resin Structure")
 	MS.pheromones_boost_level = 1
-	for(var/path in D.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(D)
+	mutator_update_actions(D)
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/vomiter 
@@ -109,6 +145,8 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Spitter") 
+	mutator_actions_to_remove = list("Toggle Spit Type", "Xeno Spit")
+	mutator_actions_to_add = list (/datum/action/xeno_action/activable/spray_acid)
 	keystone = TRUE
 
 /datum/xeno_mutator/vomiter/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -117,11 +155,7 @@
 		return
 	
 	var/mob/living/carbon/Xenomorph/Spitter/S = MS.xeno
-	S.remove_action("Toggle Spit Type")
-	S.remove_action("Xeno Spit")
-	for(var/path in S.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(S)
+	mutator_update_actions(S)
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/steel_crest 
@@ -152,6 +186,8 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Carrier") 
+	mutator_actions_to_remove = list("Use/Throw Facehugger")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/lay_egg)
 	keystone = TRUE
 
 /datum/xeno_mutator/egg_sacs/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -160,13 +196,11 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
-	C.remove_action("Use/Throw Facehugger")
-	for(var/path in C.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(C)
-	MS.recalculate_actions(description)
 	C.huggers_cur = 0
 	C.huggers_max = 0
+	mutator_update_actions(C)
+	MS.recalculate_actions(description)
+	
 
 /datum/xeno_mutator/tremor 
 	name = "STRAIN: Burrower - Tremor"
@@ -174,6 +208,8 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Burrower")
+	mutator_actions_to_remove = list("Place resin hole (200)")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/tremor)
 	keystone = TRUE
 
 /datum/xeno_mutator/tremor/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -182,10 +218,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Burrower/B = MS.xeno
-	B.remove_action("Place resin hole (200)")
-	for(var/path in B.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(B)
+	mutator_update_actions(B)
 	MS.recalculate_actions(description)
 
 /datum/xeno_mutator/boxer
@@ -194,6 +227,8 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Warrior")
+	mutator_actions_to_remove = list("Fling","Lunge")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/jab)
 	keystone = TRUE
 
 /datum/xeno_mutator/boxer/apply_mutator(datum/mutator_set/individual_mutators/MS)
@@ -202,9 +237,26 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Warrior/W = MS.xeno
-	W.remove_action("Fling")
-	W.remove_action("Lunge")
-	for(var/path in W.new_actions)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(W)
+	mutator_update_actions(W)
+	MS.recalculate_actions(description)
+
+/datum/xeno_mutator/spin_slash
+	// I like to call this one... the decappucino!
+	name = "STRAIN: Ravager - Spin Slash"
+	description = "In exchange for your charge, you gain the ability to perform a deadly spinning slash attack that reaches targets all around you."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Ravager")  	// Only Ravager.
+	mutator_actions_to_remove = list("Charge (20)")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spin_slash)
+	keystone = TRUE
+
+/datum/xeno_mutator/spin_slash/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if (. == 0)
+		return	
+
+	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
+	R.used_lunge = 0
+	mutator_update_actions(R)
 	MS.recalculate_actions(description)

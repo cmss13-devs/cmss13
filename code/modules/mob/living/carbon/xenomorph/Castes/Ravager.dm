@@ -21,8 +21,13 @@
 	xeno_explosion_resistance = 60
 	attack_delay = -2
 	pounce_delay = 120
-
 	charge_distance = 4 //shorter than regular charges
+
+	// Strain variables
+	
+	// Spin slash variables  
+	var/spin_cooldown = 250;
+	var/spin_damage_offset = 20;
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
@@ -51,7 +56,7 @@
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
-	caste_desc = "As I walk through the valley of the shadow of death."
+	caste_desc = "As I walk through the valley of the shadow of death"
 	upgrade = 3
 	melee_damage_lower = 55
 	melee_damage_upper = 65

@@ -1258,6 +1258,16 @@
 	var/mob/living/carbon/Xenomorph/Ravager/X = owner
 	return !X.used_pounce
 
+// Ravager strain
+/datum/action/xeno_action/activable/spin_slash
+	name = "Spin Slash (60)"
+	action_icon_state = "spin_slash"
+	ability_name = "spin slash"
+
+/datum/action/xeno_action/activable/spin_slash/use_ability()
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.spin_slash()
+
 //Drone Abilities
 /datum/action/xeno_action/activable/transfer_health
 	name = "Transfer Health"

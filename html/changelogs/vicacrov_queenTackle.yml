@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "Queens can now tackle their own hive's xenomorphs. Tackling a sister floors them for a second, allowing passage. This is added as an anti-bodyblock mechanism - please be careful with it."

@@ -18,6 +18,8 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	max_rounds = 25 // Real shotgun boxes are usually 5 or 25 rounds. This works with the new system, five handfuls.
 	w_class = 4 // Can't throw it in your pocket, friend.
 
+/obj/item/ammo_magazine/shotgun/slugs//for distinction on weapons that can't take child objects but still take slugs.
+
 /obj/item/ammo_magazine/shotgun/incendiary
 	name = "box of incendiary slugs"
 	desc = "A box filled with self-detonating incendiary shotgun rounds. 12 Gauge."
@@ -69,6 +71,8 @@ also doesn't really matter. You can only reload them with handfuls.
 	max_rounds = 2
 	chamber_closed = 1 //Starts out with a closed tube.
 
+/obj/item/ammo_magazine/internal/shotgun/double/mou53
+	default_ammo = /datum/ammo/bullet/shotgun/slug
 
 /obj/item/ammo_magazine/internal/shotgun/combat
 

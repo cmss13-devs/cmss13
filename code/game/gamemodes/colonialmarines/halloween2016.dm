@@ -510,7 +510,7 @@
 				H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 
 				H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(H), WEAR_J_STORE)
-				H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun(H), WEAR_IN_BACK)
+				H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/slugs(H), WEAR_IN_BACK)
 				H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/buckshot(H), WEAR_IN_BACK)
 				H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/incendiary(H), WEAR_IN_BACK)
 				H.equip_to_slot_or_del(new /obj/item/weapon/baton(H.back), WEAR_IN_BACK)
@@ -858,10 +858,10 @@
 				if(12 to 15)
 					if(istype(H.back, /obj/item/storage/backpack/marine))
 						H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump(H), WEAR_J_STORE)
-						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun(H.back), WEAR_IN_BACK)
+						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/slugs(H.back), WEAR_IN_BACK)
 					else
 						H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m37/full(H), WEAR_BACK)
-						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun(H), WEAR_R_HAND)
+						H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/slugs(H), WEAR_R_HAND)
 				if(16 to 18)
 					H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(H), WEAR_J_STORE)
 					if(istype(H.belt, /obj/item/storage/belt/marine))
@@ -1370,7 +1370,7 @@
 	generate_supply_crate(supply_spawn,supply_manifest,"ammo crate (smg)", "A crate containing ammunition for SMGs. Quick and deadly.")
 
 	supply_manifest=list(
-		/obj/item/ammo_magazine/shotgun = 8,
+		/obj/item/ammo_magazine/shotgun/slugs = 8,
 		/obj/item/ammo_magazine/shotgun/buckshot = 8,
 		/obj/item/ammo_magazine/shotgun/incendiary = 2
 		)

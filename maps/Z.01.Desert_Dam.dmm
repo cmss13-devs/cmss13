@@ -12117,7 +12117,7 @@
 	pixel_x = 0
 	},
 /obj/structure/table/woodentable,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/interior/wood,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aDE" = (
@@ -27080,7 +27080,7 @@
 /area/desert_dam/exterior/valley/valley_telecoms)
 "bnC" = (
 /obj/structure/table,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
@@ -30570,7 +30570,7 @@
 /area/desert_dam/building/security/southern_hallway)
 "bvI" = (
 /obj/structure/table,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/document_objective/paper,
 /turf/open/asphalt{
 	icon_state = "tile"
@@ -44176,7 +44176,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "cbe" = (
-/obj/item/ammo_magazine/shotgun{
+/obj/item/ammo_magazine/shotgun/slugs{
 	pixel_x = 6;
 	pixel_y = -4
 	},
@@ -46343,7 +46343,7 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "cfN" = (
 /obj/structure/table,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/prison{
 	icon_state = "darkred2"
 	},
@@ -50391,7 +50391,7 @@
 /area/desert_dam/building/security/warden)
 "cqk" = (
 /obj/structure/table,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/prison{
 	icon_state = "darkred2"

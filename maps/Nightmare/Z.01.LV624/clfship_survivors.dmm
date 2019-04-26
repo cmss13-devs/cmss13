@@ -1118,7 +1118,7 @@
 /area/lv624/lazarus/crashed_ship)
 "cI" = (
 /obj/item/storage/belt/medical,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteblue"
@@ -1130,7 +1130,7 @@
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	tag = "icon-whitebluefull";
 	icon_state = "whitebluefull"

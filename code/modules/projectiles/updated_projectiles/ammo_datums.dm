@@ -380,6 +380,7 @@
 		..()
 		damage = config.hlow_hit_damage
 		accurate_range = config.near_shell_range
+		penetration = config.hlow_armor_penetration*0.2
 		damage_falloff = config.reg_damage_falloff
 
 /datum/ammo/bullet/smg/ap
@@ -389,7 +390,7 @@
 	..()
 	scatter = config.min_scatter_value
 	damage = config.low_hit_damage
-	penetration = config.hlow_armor_penetration
+	penetration = config.hmed_armor_penetration*0.5
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
 

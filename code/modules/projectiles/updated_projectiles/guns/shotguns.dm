@@ -95,28 +95,28 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()
 	return 1
 
-/obj/item/weapon/gun/shotgun
-	reload(mob/user, var/obj/item/ammo_magazine/magazine)
-		if(flags_gun_features & GUN_BURST_FIRING) return
 
-		if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
-			to_chat(user, "<span class='warning'>You can't use that to reload!</span>")
-			return
+/obj/item/weapon/gun/shotgun/reload(mob/user, var/obj/item/ammo_magazine/magazine)
+	if(flags_gun_features & GUN_BURST_FIRING) return
 
-		if(!check_chamber_position()) //For the double barrel.
-			to_chat(user, "<span class='warning'>[src] has to be open!</span>")
-			return
+	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
+		to_chat(user, "<span class='warning'>You can't use that to reload!</span>")
+		return
 
-		//From here we know they are using shotgun type ammo and reloading via handful.
-		//Makes some of this a lot easier to determine.
+	if(!check_chamber_position()) //For the double barrel.
+		to_chat(user, "<span class='warning'>[src] has to be open!</span>")
+		return
 
-		var/mag_caliber = magazine.default_ammo //Handfuls can get deleted, so we need to keep this on hand for later.
-		if(current_mag.transfer_ammo(magazine,user,1))
-			add_to_tube(user,mag_caliber) //This will check the other conditions.
+	//From here we know they are using shotgun type ammo and reloading via handful.
+	//Makes some of this a lot easier to determine.
 
-	unload(mob/user)
-		if(flags_gun_features & GUN_BURST_FIRING) return
-		empty_chamber(user)
+	var/mag_caliber = magazine.default_ammo //Handfuls can get deleted, so we need to keep this on hand for later.
+	if(current_mag.transfer_ammo(magazine,user,1))
+		add_to_tube(user,mag_caliber) //This will check the other conditions.
+
+/obj/item/weapon/gun/shotgun/unload(mob/user)
+	if(flags_gun_features & GUN_BURST_FIRING) return
+	empty_chamber(user)
 
 /obj/item/weapon/gun/shotgun/proc/ready_shotgun_tube()
 	if(current_mag.current_rounds > 0)
@@ -319,7 +319,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(current_mag.current_rounds) //We want to empty out the bullets.
 			var/i
 			//"i" is here to watch over potential fuckery with current rounds
-			while(current_mag.current_rounds>0 && i<50) 
+			while(current_mag.current_rounds>0 && i<50)
 				unload_shell(user)
 				i++
 		make_casing(type_of_casings)
@@ -380,6 +380,55 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil = config.med_recoil_value
 	recoil_unwielded = config.max_recoil_value
 
+//M-OU53 SHOTGUN | Marine mid-range slug/flechette only coach gun (except its an over-under). Support weapon for slug stuns / flechette DOTS (when implemented). Buckshot in this thing is just stupidly strong, hence the denial.
+
+/obj/item/weapon/gun/shotgun/double/mou53
+	name = "\improper MOU53 break action shotgun"
+	desc = "A limited production Kerchner MOU53 break action classic. Respectable damage output at medium ranges, while the ARMAT M37 is the king of CQC, the Kerchner MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
+	icon_state = "mou53"
+	item_state = "mou53"
+	var/max_rounds = 2
+	var/current_rounds = 0
+	fire_sound = 'sound/weapons/gun_mou53.ogg'
+	flags_equip_slot = SLOT_BACK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
+	burst_delay = 0.2 // Chance to throw off the second shot so its not stupid OP
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
+	attachable_allowed = list(
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/scope/mini, //What's the harm, right?
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
+						/obj/item/attachable/gyro,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/stock/mou53)
+
+/obj/item/weapon/gun/shotgun/double/mou53/New()
+	select_gamemode_skin(/obj/item/weapon/gun/shotgun/double/mou53)
+	..()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
+
+/obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
+	fire_delay = config.min_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult*1.2
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult
+	scatter = config.min_scatter_value
+	burst_scatter_mult = config.min_scatter_value
+	scatter_unwielded = config.max_scatter_value
+	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult*1.2
+	recoil = config.med_recoil_value + config.min_recoil_value
+	recoil_unwielded = config.high_recoil_value
+
+/obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
+	if(magazine.default_ammo == /datum/ammo/bullet/shotgun/buckshot) // No buckshot in this gun
+		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
+		return
+	..()
 
 //-------------------------------------------------------
 //PUMP SHOTGUN

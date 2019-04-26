@@ -898,7 +898,7 @@ var/global/spawn_next_wo_wave = 0
 							/obj/item/ammo_magazine/smg/m39,
 							/obj/item/ammo_magazine/smg/m39/ap,
 							/obj/item/ammo_magazine/smg/m39/ap,
-							/obj/item/ammo_magazine/shotgun,
+							/obj/item/ammo_magazine/shotgun/slugs,
 							/obj/item/ammo_magazine/shotgun/buckshot)
 		if(1) // Six rockets should be good. Tossed in two AP rockets for possible late round fighting.
 			spawnitems = list(/obj/item/ammo_magazine/rocket,

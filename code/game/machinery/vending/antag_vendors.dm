@@ -136,7 +136,7 @@
 		/obj/item/ammo_magazine/rifle/mar40 = 40,
 		/obj/item/ammo_magazine/shotgun/buckshot = 40,
 		/obj/item/ammo_magazine/shotgun/incendiary = 40,
-		/obj/item/ammo_magazine/shotgun = 40,
+		/obj/item/ammo_magazine/shotgun/slugs = 40,
 		/obj/item/ammo_magazine/smg/uzi/extended = 40,
 		/obj/item/ammo_magazine/smg/mp7 = 40,
 		/obj/item/ammo_magazine/smg/skorpion = 40,

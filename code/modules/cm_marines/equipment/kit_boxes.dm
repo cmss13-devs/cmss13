@@ -231,6 +231,22 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	foldable = null
 	desc = "Drag this sprite onto yourself to open it up!\nNOTE: You cannot put items back inside this case."
 
+/obj/item/storage/box/kit/mou53_sapper
+	name = "\improper M-OU53 Sapper Support Kit"
+
+/obj/item/storage/box/kit/mou53_sapper/New()
+	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+mou53")
+	spawn(1)
+		new /obj/item/weapon/gun/shotgun/double/mou53(src)
+		new /obj/item/attachable/stock/mou53(src)
+		new /obj/item/ammo_magazine/shotgun/slugs(src)
+		new /obj/item/ammo_magazine/shotgun/flechette(src)
+		new /obj/item/storage/belt/shotgun(src)
+		new /obj/item/storage/pouch/explosive(src)
+		new /obj/item/explosive/grenade/HE/m15(src)
+		new /obj/item/explosive/grenade/smokebomb(src)
+		new /obj/item/explosive/grenade/smokebomb(src)
 
 /obj/item/storage/box/kit/mini_pyro
 	name = "\improper M240 Pyrotechnician Support Kit"
@@ -342,6 +358,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_intel/New()
 	..()
+	overlays += image('icons/Marine/pro_case.dmi', "+intel")
 	spawn(1)
 		new /obj/item/stack/fulton(src)
 		new /obj/item/storage/pouch/document/small(src)

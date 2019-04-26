@@ -75,7 +75,7 @@
 	layer = 2.5
 	},
 /obj/item/weapon/gun/shotgun/pump,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/flechette,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor{

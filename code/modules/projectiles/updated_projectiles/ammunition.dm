@@ -354,7 +354,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	name = "shotgun shell box (slugs x 100)"
 	icon_state = "shell_box_closed"
 	icon_base_name = "shell_box"
-	magazine_type = /obj/item/ammo_magazine/shotgun
+	magazine_type = /obj/item/ammo_magazine/shotgun/slugs
 	num_of_magazines = 100
 	handfuls = 1
 

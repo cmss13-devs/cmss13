@@ -333,13 +333,13 @@
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/shotgun
-	name = "\improper shotgun shell load rig"
+	name = "\improper shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells or individual bullets."
 	icon_state = "shotgunbelt"
 	w_class = 4
-	storage_slots = 10
+	storage_slots = 14 // Make it FLUSH with the UI. *scream
 	max_w_class = 2
-	max_storage_space = 20
+	max_storage_space = 28 
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
 /obj/item/storage/belt/shotgun/New()

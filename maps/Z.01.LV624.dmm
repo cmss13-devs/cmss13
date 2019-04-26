@@ -14247,7 +14247,7 @@
 	layer = 2.5
 	},
 /obj/item/weapon/gun/shotgun/pump,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -19703,7 +19703,7 @@
 /area/lv624/lazarus/secure_storage)
 "XG" = (
 /obj/structure/rack,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "XH" = (

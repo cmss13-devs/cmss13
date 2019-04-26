@@ -324,7 +324,7 @@
 				WEAR_J_STORE = /obj/item/weapon/gun/shotgun/combat,
 				WEAR_IN_BACK = /obj/item/device/binoculars,
 				WEAR_R_STORE = /obj/item/storage/pouch/magazine/pistol/pmc_vp78,
-				WEAR_IN_BACK = /obj/item/ammo_magazine/shotgun,
+				WEAR_IN_BACK = /obj/item/ammo_magazine/shotgun/slugs,
 				WEAR_IN_BACK = /obj/item/ammo_magazine/shotgun/buckshot,
 				WEAR_IN_BACK = /obj/item/ammo_magazine/shotgun/incendiary,
 				WEAR_IN_BACK = /obj/item/weapon/baton,

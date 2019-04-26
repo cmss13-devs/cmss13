@@ -77,7 +77,6 @@
 		var/produce = text2path(href_list["produce"])
 		var/cost = href_list["cost"]
 		var/exploiting = TRUE
-		var/path_cost
 		
 		if (valid_parts || valid_ammo) 
 			if (valid_parts && istype(produce, valid_parts))

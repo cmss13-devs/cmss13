@@ -46556,6 +46556,8 @@
 /obj/effect/landmark{
 	name = "Distress_CryoItem"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -67898,6 +67900,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/operating_room_two)
+"xgz" = (
+/obj/effect/landmark{
+	name = "Distress_CryoItem"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/cryo_cells)
 "xmC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (NORTHWEST)";
@@ -114963,9 +114973,9 @@ bJf
 bJf
 bJf
 bJf
-bRc
+xgz
 bRg
-bRc
+xgz
 bJf
 bJf
 bJf

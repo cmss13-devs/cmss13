@@ -60110,6 +60110,10 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
+/obj/structure/flora/pottedplant{
+	tag = "icon-plant-10";
+	icon_state = "plant-21"
+	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
 	icon_state = "red";
@@ -61673,6 +61677,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig_cells)
+"kiu" = (
+/obj/structure/window/framed/almayer,
+/obj/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 4;
+	icon_state = "shutter0";
+	id = "holdinglockdownsouth";
+	name = "\improper Privacy Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/brig_cells)
 "kiz" = (
 /obj/structure/curtain/medical,
 /obj/structure/cable{
@@ -62194,6 +62210,7 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/combat,
 /obj/item/weapon/gun/shotgun/combat,
 /obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/plating/almayer,
@@ -62861,9 +62878,10 @@
 "mBj" = (
 /obj/machinery/flasher{
 	id = "Holding Flash";
+	layer = 2.1;
+	name = "Mounted Flash";
 	pixel_x = 0;
-	pixel_y = -24;
-	range = 5
+	pixel_y = -30
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red";
@@ -65880,9 +65898,26 @@
 	},
 /area/almayer/shipboard/brig_cells)
 "tio" = (
-/obj/structure/flora/pottedplant{
-	tag = "icon-plant-10";
-	icon_state = "plant-21"
+/obj/machinery/door_control{
+	id = "holdinglockdownsouth";
+	name = "Exterior Holding Cell Shutters";
+	pixel_x = -27;
+	pixel_y = -7;
+	req_one_access = list(2,3,12,19)
+	},
+/obj/machinery/door_control{
+	id = "holdinglockdown";
+	name = "Interior Holding Cell Shutters";
+	pixel_x = -27;
+	pixel_y = 8;
+	req_one_access = list(2,3,12,19)
+	},
+/obj/machinery/flasher_button{
+	id = "Holding Flash";
+	name = "Holding Cell Flasher";
+	pixel_x = -27;
+	pixel_y = 0;
+	req_access = list(19)
 	},
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
@@ -67749,6 +67784,7 @@
 	icon_state = "bulb1";
 	dir = 8
 	},
+/obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/brig)
 "wNT" = (
@@ -67987,6 +68023,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/chief_mp_office)
+"xBe" = (
+/obj/structure/window/framed/almayer,
+/obj/machinery/door/poddoor/shutters/almayer{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "holdinglockdownsouth";
+	name = "\improper Privacy Shutters";
+	opacity = 0
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/brig_cells)
 "xDn" = (
 /obj/machinery/vending/MarineMed/Blood,
 /obj/machinery/camera/autoname/almayer{
@@ -101122,7 +101170,7 @@ kyC
 iBm
 kyC
 hzD
-eGC
+xBe
 buH
 bHN
 bIE
@@ -101325,7 +101373,7 @@ dQs
 lRZ
 dQs
 cjq
-eGC
+xBe
 buH
 vdW
 tMa
@@ -101731,7 +101779,7 @@ akN
 xEz
 akN
 fKR
-eGC
+xBe
 buH
 bHN
 bIE
@@ -101934,7 +101982,7 @@ xra
 iBm
 tMW
 scR
-eGC
+xBe
 buH
 bHN
 bIJ
@@ -102133,8 +102181,8 @@ sYh
 fAy
 aXc
 aXc
-eGC
-eGC
+kiu
+kiu
 aXc
 aXc
 aXc

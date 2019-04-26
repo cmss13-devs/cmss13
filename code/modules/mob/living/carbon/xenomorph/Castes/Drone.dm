@@ -91,6 +91,3 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
 
-	new_actions = list(
-		/datum/action/xeno_action/activable/transfer_health,
-	)

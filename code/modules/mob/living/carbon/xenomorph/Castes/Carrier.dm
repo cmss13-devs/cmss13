@@ -107,9 +107,6 @@
 		/datum/action/xeno_action/place_trap
 		)
 
-	new_actions = list(
-		/datum/action/xeno_action/activable/lay_egg,
-	)
 
 	death(gibbed)
 		if(..(gibbed))

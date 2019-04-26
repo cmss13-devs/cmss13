@@ -1155,6 +1155,51 @@
 			var/datum/action/act = X
 			act.update_button_icon()
 
+// Ravager spin slash
+/mob/living/carbon/Xenomorph/proc/spin_slash()
+	var/datum/caste_datum/ravager/rCaste = src.caste
+
+	if (!check_state())
+		return
+
+	if (used_lunge)
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before using your spin slash again."))
+		return
+
+	if (!check_plasma(60))
+		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [60-src.plasma_stored] more.</span>"))
+		return
+	
+	visible_message(SPAN_XENOWARNING("The [src] lashes out with its sycthe-like claws!"), SPAN_XENOWARNING("You unleash a flurry of slashes around you!"))
+
+	spin_circle()
+
+	var/sweep_range = 1
+	var/list/L = orange(sweep_range)		
+
+	for (var/mob/living/carbon/human/H in L)
+		if(H != H.handle_barriers(src)) continue
+		if(H.stat == DEAD) continue
+		if(istype(H.buckled, /obj/structure/bed/nest)) continue
+		step_away(H, src, sweep_range, 3)
+		H.apply_damage(rand(rCaste.melee_damage_lower, rCaste.melee_damage_upper)+rCaste.spin_damage_offset)
+		shake_camera(H, 2, 1)
+		H.KnockDown(1, 1)
+
+		to_chat(H, SPAN_XENOWARNING("You are slashed by \the [src]'s claws!"))
+		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
+
+	used_lunge = 1
+	use_plasma(60)
+
+	spawn(rCaste.spin_cooldown)
+		used_lunge = 0
+		to_chat(src, SPAN_NOTICE("You gather enough strength to use your spin slash again."))
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+
+
 
 // Vent Crawl
 /mob/living/carbon/Xenomorph/proc/vent_crawl()

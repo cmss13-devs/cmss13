@@ -28,6 +28,7 @@
 #define SS_INIT_TICKER            -21
 #define SS_INIT_FINISH            -22
 #define SS_INIT_MINIMAP           -23
+#define SS_INIT_ADMIN             -24
 
 
 #define SS_PRIORITY_TICKER         200
@@ -54,9 +55,13 @@
 #define SS_PRIORITY_SUN            3
 #define SS_PRIORITY_GARBAGE        2
 #define SS_PRIORITY_INACTIVITY     1
+#define SS_PRIORITY_ADMIN          0
+
+
 #define SS_WAIT_MACHINERY           3.5 SECONDS //TODO move the rest of these to defines
 #define SS_WAIT_FAST_MACHINERY      0.7 SECONDS
 #define SS_WAIT_FAST_OBJECTS        0.5 SECONDS
+#define SS_WAIT_ADMIN               5 MINUTES
 
 #define SS_DISPLAY_GARBAGE        -100
 #define SS_DISPLAY_AIR            -90
@@ -75,3 +80,4 @@
 #define SS_DISPLAY_TICKER         -10
 #define SS_DISPLAY_UNSPECIFIED     0
 #define SS_DISPLAY_SUN             10
+#define SS_DISPLAY_ADMIN           20

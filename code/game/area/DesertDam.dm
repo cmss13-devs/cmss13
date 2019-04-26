@@ -642,18 +642,22 @@
 /area/desert_dam/exterior/landing_pad_one
 	name = "Airstrip Landing Pad"
 	icon_state = "landing_pad"
+	is_resin_allowed = FALSE
 /area/desert_dam/exterior/landing_pad_one_external
 	name = "Airstrip Landing Valley"
 	icon_state = "landing_pad_ext"
+	is_resin_allowed = FALSE
 
 
 //Landing Pad for the Normandy. THIS IS NOT THE SHUTTLE AREA
 /area/desert_dam/exterior/landing_pad_two
 	name = "Aerodrome Landing Pad"
 	icon_state = "landing_pad"
+	is_resin_allowed = FALSE
 /area/desert_dam/exterior/landing_pad_two_external
 	name = "Aerodrome Landing Valley"
 	icon_state = "landing_pad_ext"
+	is_resin_allowed = FALSE
 
 //Valleys
 //TODO: incorporate valleys and substrations for floodlight coverage
@@ -662,6 +666,7 @@
 /area/desert_dam/exterior/valley/valley_northwest
 	name = "Northwest Valley"
 	icon_state = "valley_north_west"
+	is_resin_allowed = FALSE
 /area/desert_dam/exterior/valley/valley_labs
 	name = "Lab Valley"
 	icon_state = "valley_north"

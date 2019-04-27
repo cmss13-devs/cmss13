@@ -270,8 +270,8 @@
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
 	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well civilian law enforcement. Fires .44 Magnum rounds."
-	icon_state = "m44"
-	item_state = "m44"
+	icon_state = "m44r"
+	item_state = "m44r"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	force = 8
 	attachable_allowed = list(

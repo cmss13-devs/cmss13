@@ -585,10 +585,10 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	max_range = config.short_shell_range
-	damage = config.med_hit_damage*1.2
+	damage = config.med_hit_damage
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.high_armor_penetration*1.2
+	penetration	= config.med_armor_penetration*1.2
 	bonus_projectiles_amount = config.med_proj_extra
 
 /datum/ammo/bullet/shotgun/flechette_spread
@@ -600,10 +600,10 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	max_range = config.short_shell_range
-	damage = config.med_hit_damage*1.2
+	damage = config.mlow_hit_damage
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.high_armor_penetration*1.2
+	penetration	= config.med_armor_penetration*1.2
 	scatter = config.hmed_scatter_value
 
 /datum/ammo/bullet/shotgun/buckshot
@@ -617,7 +617,7 @@
 	accuracy_var_high = config.high_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.hmed_hit_damage*0.8
+	damage = config.hmed_hit_damage
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff

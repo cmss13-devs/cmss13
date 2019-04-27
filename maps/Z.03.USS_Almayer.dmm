@@ -8310,7 +8310,10 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/medical/morgue)
 "apI" = (
 /obj/machinery/door/airlock/almayer/command{
@@ -59321,7 +59324,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/medical/morgue)
 "erS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,

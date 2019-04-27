@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	max_health = XENO_UNIVERSAL_HPMOD * 220
+	max_health = XENO_UNIVERSAL_HPMULT * 220
 	plasma_gain = 0.08
 	plasma_max = 100
 	caste_desc = "A sturdy front line combatant."
@@ -18,7 +18,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
 	upgrade = 1
-	max_health = XENO_UNIVERSAL_HPMOD * 230
+	max_health = XENO_UNIVERSAL_HPMULT * 230
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	speed = -0.3
@@ -30,7 +30,7 @@
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	max_health = XENO_UNIVERSAL_HPMOD * 245
+	max_health = XENO_UNIVERSAL_HPMULT * 245
 	speed = -0.4
 	armor_deflection = 30
 
@@ -40,7 +40,7 @@
 	upgrade = 3
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	max_health = XENO_UNIVERSAL_HPMOD * 250
+	max_health = XENO_UNIVERSAL_HPMULT * 250
 	speed = -0.5
 	armor_deflection = 35
 

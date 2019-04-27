@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	max_health = XENO_UNIVERSAL_HPMOD * 175
+	max_health = XENO_UNIVERSAL_HPMULT * 175
 	plasma_gain = 0.1
 	plasma_max = 100
 	deevolves_to = "Runner"
@@ -24,7 +24,7 @@
 	upgrade = 1
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	max_health = XENO_UNIVERSAL_HPMOD * 185
+	max_health = XENO_UNIVERSAL_HPMULT * 185
 	plasma_gain = 0.107
 	plasma_max = 150
 	speed = -1.7
@@ -40,7 +40,7 @@
 	upgrade = 2
 	melee_damage_lower = 35
 	melee_damage_upper = 45
-	max_health = XENO_UNIVERSAL_HPMOD * 195
+	max_health = XENO_UNIVERSAL_HPMULT * 195
 	plasma_gain = 0.114
 	plasma_max = 175
 	speed = -1.8
@@ -57,7 +57,7 @@
 	upgrade = 3
 	melee_damage_lower = 40
 	melee_damage_upper = 50
-	max_health = XENO_UNIVERSAL_HPMOD * 200
+	max_health = XENO_UNIVERSAL_HPMULT * 200
 	plasma_gain = 0.15
 	plasma_max = 190
 	speed = -1.9
@@ -74,7 +74,7 @@
 	upgrade = 4
 	melee_damage_lower = 50
 	melee_damage_upper = 55
-	max_health = XENO_UNIVERSAL_HPMOD * 250
+	max_health = XENO_UNIVERSAL_HPMULT * 250
 	plasma_gain = 0.2
 	armor_deflection = 30
 	melee_damage_lower = 60

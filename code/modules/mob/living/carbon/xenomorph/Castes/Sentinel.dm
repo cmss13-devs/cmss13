@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 30
-	max_health = XENO_UNIVERSAL_HPMOD * 175
+	max_health = XENO_UNIVERSAL_HPMULT * 175
 	plasma_gain = 0.034
 	plasma_max = 400
 	spit_delay = 25
@@ -22,7 +22,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A ranged combat alien. It looks a little more dangerous."
 	upgrade = 1
-	max_health = XENO_UNIVERSAL_HPMOD * 180
+	max_health = XENO_UNIVERSAL_HPMULT * 180
 	plasma_max = 450
 	plasma_gain = 0.038
 	armor_deflection = 20
@@ -35,7 +35,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A ranged combat alien. It looks pretty strong."
 	upgrade = 2
-	max_health = XENO_UNIVERSAL_HPMOD * 195
+	max_health = XENO_UNIVERSAL_HPMULT * 195
 	plasma_max = 500
 	plasma_gain = 0.04
 	armor_deflection = 22
@@ -51,7 +51,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "Neurotoxin Factory, don't let it get you."
 	upgrade = 3
-	max_health = XENO_UNIVERSAL_HPMOD * 200
+	max_health = XENO_UNIVERSAL_HPMULT * 200
 	plasma_max = 600
 	plasma_gain = 0.042
 	armor_deflection = 25

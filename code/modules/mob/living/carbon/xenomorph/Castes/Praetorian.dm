@@ -6,7 +6,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	tackle_chance = 45
-	max_health = XENO_UNIVERSAL_HPMOD * 260
+	max_health = XENO_UNIVERSAL_HPMULT * 260
 	plasma_gain = 0.032
 	plasma_max = 800
 	evolution_allowed = FALSE
@@ -26,7 +26,7 @@
 	upgrade = 1
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	max_health = XENO_UNIVERSAL_HPMOD * 270
+	max_health = XENO_UNIVERSAL_HPMULT * 270
 	plasma_gain = 0.034
 	plasma_max = 900
 	spit_delay = 15
@@ -41,7 +41,7 @@
 	upgrade = 2
 	melee_damage_lower = 30
 	melee_damage_upper = 40
-	max_health = XENO_UNIVERSAL_HPMOD * 285
+	max_health = XENO_UNIVERSAL_HPMULT * 285
 	plasma_gain = 0.04
 	plasma_max = 1000
 	spit_delay = 15
@@ -56,7 +56,7 @@
 	upgrade = 3
 	melee_damage_lower = 35
 	melee_damage_upper = 45
-	max_health = XENO_UNIVERSAL_HPMOD * 295
+	max_health = XENO_UNIVERSAL_HPMULT * 295
 	plasma_gain = 0.05
 	plasma_max = 1100
 	spit_delay = 12
@@ -78,7 +78,7 @@
 	tackle_chance = 60
 	speed = -0.9
 	aura_strength = 5
-	max_health = XENO_UNIVERSAL_HPMOD * 350
+	max_health = XENO_UNIVERSAL_HPMULT * 350
 
 /mob/living/carbon/Xenomorph/Praetorian
 	caste_name = "Praetorian"

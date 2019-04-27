@@ -12,7 +12,7 @@
 	plasma_max = 100
 	caste_desc = "A powerful front line combatant."
 	armor_deflection = 30
-	max_health = XENO_UNIVERSAL_HPMOD * 235
+	max_health = XENO_UNIVERSAL_HPMULT * 235
 	speed = -0.5
 	agility_speed_increase = -0.5
 	can_vent_crawl = 0
@@ -29,7 +29,7 @@
 	plasma_max = 100
 	armor_deflection = 35
 	agility_speed_increase = -0.6
-	max_health = XENO_UNIVERSAL_HPMOD * 250
+	max_health = XENO_UNIVERSAL_HPMULT * 250
 	speed = -0.6
 
 /datum/caste_datum/warrior/elder
@@ -42,7 +42,7 @@
 	plasma_gain = 0.09
 	plasma_max = 125
 	agility_speed_increase = -0.7
-	max_health = XENO_UNIVERSAL_HPMOD * 270
+	max_health = XENO_UNIVERSAL_HPMULT * 270
 	speed = -0.7
 	armor_deflection = 40
 
@@ -56,7 +56,7 @@
 	plasma_gain = 0.1
 	plasma_max = 150
 	agility_speed_increase = -0.8
-	max_health = XENO_UNIVERSAL_HPMOD * 280
+	max_health = XENO_UNIVERSAL_HPMULT * 280
 	speed = -0.8
 	armor_deflection = 45
 

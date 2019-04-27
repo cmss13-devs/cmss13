@@ -6,7 +6,7 @@
 	plasma_max = 10
 	melee_damage_lower = 0
 	melee_damage_upper = 0
-	max_health = 35
+	max_health = XENO_UNIVERSAL_HPMOD * 35
 	caste_desc = "D'awwwww, so cute!"
 	speed = -1.6 //Zoom!
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.

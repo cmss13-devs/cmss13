@@ -9,7 +9,7 @@
 	plasma_max = 150
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	armor_deflection = 5
-	max_health = 140
+	max_health = XENO_UNIVERSAL_HPMOD * 140
 	speed = -1.9
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
@@ -26,7 +26,7 @@
 	plasma_gain = 0.02
 	plasma_max = 160
 	armor_deflection = 5
-	max_health = 140
+	max_health = XENO_UNIVERSAL_HPMOD * 145
 	speed = -1.9
 
 /datum/caste_datum/runner/elder
@@ -38,7 +38,7 @@
 	plasma_gain = 0.02
 	plasma_max = 200
 	armor_deflection = 10
-	max_health = 160
+	max_health = XENO_UNIVERSAL_HPMOD * 155
 	speed = -2.0
 	tacklemin = 3
 	tacklemax = 4
@@ -54,7 +54,7 @@
 	plasma_gain = 0.02
 	plasma_max = 250
 	armor_deflection = 15
-	max_health = 160
+	max_health = XENO_UNIVERSAL_HPMOD * 160
 	speed = -2.1
 	tacklemin = 3
 	tacklemax = 4

@@ -1,7 +1,7 @@
 /datum/caste_datum/predalien
 	caste_name = "Predalien"
 	display_name = "Abomination"
-	max_health = 800 //A lot of health, but it doesn't regenerate.
+	max_health = XENO_UNIVERSAL_HPMOD * 800 //A lot of health, but it doesn't regenerate.
 	plasma_gain = 0.084
 	plasma_max = 300
 	evolution_allowed = FALSE
@@ -24,7 +24,7 @@
 	upgrade_name = "Primordial"
 	display_name = "Primordial Abomination"
 	caste_desc = "This is it. This is the final boss. There's nothing more powerful than this."
-	max_health = 1000
+	max_health = XENO_UNIVERSAL_HPMOD * 1000
 	plasma_gain = 0.084
 	plasma_max = 400
 	evolution_allowed = FALSE

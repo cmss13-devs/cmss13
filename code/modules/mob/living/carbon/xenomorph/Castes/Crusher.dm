@@ -12,7 +12,7 @@
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
 	armor_deflection = 50
-	max_health = 285
+	max_health = XENO_UNIVERSAL_HPMOD * 285
 	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
 	xeno_explosion_resistance = 180
@@ -27,7 +27,7 @@
 	plasma_gain = 0.05
 	plasma_max = 300
 	armor_deflection = 60
-	max_health = 310
+	max_health = XENO_UNIVERSAL_HPMOD * 310
 	speed = 0.05
 
 /datum/caste_datum/crusher/elder
@@ -40,7 +40,7 @@
 	plasma_gain = 0.075
 	plasma_max = 300
 	armor_deflection = 65
-	max_health = 335
+	max_health = XENO_UNIVERSAL_HPMOD * 335
 	speed = -0.05
 
 /datum/caste_datum/crusher/ancient
@@ -53,7 +53,7 @@
 	plasma_gain = 0.08
 	plasma_max = 400
 	armor_deflection = 68
-	max_health = 350
+	max_health = XENO_UNIVERSAL_HPMOD * 350
 	speed = -0.1
 
 /datum/caste_datum/crusher/primordial
@@ -66,7 +66,7 @@
 	plasma_gain = 0.080
 	plasma_max = 600
 	armor_deflection = 90
-	max_health = 400
+	max_health = XENO_UNIVERSAL_HPMOD * 400
 	speed = -0.5
 
 /mob/living/carbon/Xenomorph/Crusher

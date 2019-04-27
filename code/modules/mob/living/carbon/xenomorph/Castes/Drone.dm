@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 25
-	max_health = 160
+	max_health = XENO_UNIVERSAL_HPMOD * 160
 	armor_deflection = 5
 	plasma_gain = 0.027
 	plasma_max = 800
@@ -24,7 +24,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	upgrade = 1
-	max_health = 170
+	max_health = XENO_UNIVERSAL_HPMOD * 170
 	melee_damage_lower = 20
 	melee_damage_upper = 30
 	plasma_gain = 0.032
@@ -40,7 +40,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	upgrade = 2
-	max_health = 180
+	max_health = XENO_UNIVERSAL_HPMOD * 185
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	plasma_gain = 0.04
@@ -56,7 +56,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "A very mean architect."
 	upgrade = 3
-	max_health = 195
+	max_health = XENO_UNIVERSAL_HPMOD * 195
 	melee_damage_lower = 30
 	melee_damage_upper = 40
 	plasma_gain = 0.05

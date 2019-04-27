@@ -12,7 +12,7 @@
 	spit_delay = 40
 	caste_desc = "Gross!"
 	armor_deflection = 20
-	max_health = 180
+	max_health = XENO_UNIVERSAL_HPMOD * 180
 	speed = 0.7
 	bomb_strength = 1
 	xeno_explosion_resistance = 60
@@ -29,7 +29,7 @@
 	spit_delay = 35
 	caste_desc = "Some sort of abomination. It looks a little more dangerous."
 	armor_deflection = 25
-	max_health = 200
+	max_health = XENO_UNIVERSAL_HPMOD * 200
 	speed = 0.6
 	bomb_strength = 1.5
 
@@ -46,7 +46,7 @@
 	plasma_max = 900
 	armor_deflection = 30
 	spit_delay = 35
-	max_health = 220
+	max_health = XENO_UNIVERSAL_HPMOD * 220
 	speed = 0.6
 	bomb_strength = 2
 
@@ -63,7 +63,7 @@
 	plasma_max = 900
 	armor_deflection = 30
 	spit_delay = 35
-	max_health = 220
+	max_health = XENO_UNIVERSAL_HPMOD * 230
 	speed = 0.6
 	bomb_strength = 2
 

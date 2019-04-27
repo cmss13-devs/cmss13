@@ -79,10 +79,10 @@
 		var/exploiting = TRUE
 		
 		if (valid_parts || valid_ammo) 
-			if (valid_parts && istype(produce, valid_parts))
+			if (valid_parts && ispath(produce, valid_parts))
 				exploiting = FALSE
 				
-			else if (valid_ammo && istype(produce, valid_ammo))
+			else if (valid_ammo && ispath(produce, valid_ammo))
 				exploiting = FALSE
 
 		if (text2num(cost) < 0)

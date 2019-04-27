@@ -251,7 +251,7 @@
 				round_statistics.total_xenos_created-- // keep stats sane
 				qdel(L)
 
-		if((last_larva_time + 600) < world.time) // every minute
+		if((last_larva_time + 30 SECONDS) < world.time) // every minute
 			last_larva_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates()
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())

@@ -1887,7 +1887,8 @@
 "afS" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 4;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
@@ -2336,7 +2337,8 @@
 "aha" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 1;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -3696,7 +3698,8 @@
 "akw" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 4;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor{
 	tag = "icon-dark2";
@@ -3747,7 +3750,8 @@
 "akD" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 4;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -4405,7 +4409,8 @@
 "amn" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 1;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
@@ -4428,7 +4433,8 @@
 "amq" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 1;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -5547,7 +5553,8 @@
 "aoI" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 1;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2";
@@ -5813,7 +5820,8 @@
 "apr" = (
 /obj/machinery/door/poddoor/almayer/locked{
 	dir = 4;
-	name = "\improper Containment Lock"
+	name = "\improper Containment Lock";
+	unacidable = 0
 	},
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_biology)

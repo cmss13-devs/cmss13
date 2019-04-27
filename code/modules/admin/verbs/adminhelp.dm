@@ -122,7 +122,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 			for(var/client/X in admins) // Admins get the full monty
 				if(X.prefs.toggles_sound & SOUND_ADMINHELP)
 					sound_to(X, 'sound/effects/adminhelp_new.ogg')
-				to_chat(X, mentor_msg)
+				to_chat(X, msg)
 
 	//show it to the person adminhelping too
 	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]): <font color='#DA6200'>[original_msg]</b></font><br>")

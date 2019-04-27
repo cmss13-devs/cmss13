@@ -415,14 +415,14 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	fire_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult*1.2
+	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.min_scatter_value
 	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.med_hit_damage_mult*1.2
-	recoil = config.med_recoil_value + config.min_recoil_value
-	recoil_unwielded = config.high_recoil_value
+	damage_mult = config.base_hit_damage_mult*1.2
+	recoil = config.med_recoil_value*1.4
+	recoil_unwielded = config.high_recoil_value*1.2
 
 /obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(magazine.default_ammo == /datum/ammo/bullet/shotgun/buckshot) // No buckshot in this gun

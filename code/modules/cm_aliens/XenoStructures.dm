@@ -509,7 +509,7 @@
 	isSwitchingStates = 1
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]opening",src)
-	sleep(10)
+	sleep(5)
 	density = 0
 	opacity = 0
 	state = 1
@@ -531,7 +531,7 @@
 	isSwitchingStates = 1
 	playsound(loc, "alien_resin_move", 25)
 	flick("[mineralType]closing",src)
-	sleep(10)
+	sleep(5)
 	density = 1
 	opacity = 1
 	state = 0

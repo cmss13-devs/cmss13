@@ -2927,7 +2927,7 @@
 "agF" = (
 /obj/structure/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
@@ -3730,7 +3730,7 @@
 /area/bigredv2/outside/marshall_office)
 "aiF" = (
 /obj/structure/table,
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -3747,7 +3747,7 @@
 /obj/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/item/ammo_magazine/shotgun,
+/obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
 	icon_state = "dark"

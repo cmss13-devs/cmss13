@@ -78,7 +78,9 @@
 		if(distance <= 1) pressure_factor = max(pressure_factor, 0.15)	//hearing through contact
 		S.volume *= round(pressure_factor, 0.1)
 
-		if(S.volume <= 2*distance) r_FAL //no volume or too far away to hear such a volume level.
+		if(S.volume <= distance/2) r_FAL //no volume or too far away to hear such a volume level.
+
+		if(distance > 8) S.frequency -= S.frequency/(distance*2) //distant sounds have a decayed pitch
 
 		var/dx = turf_source.x - T.x // Hearing from the right/left
 		S.x = dx
@@ -87,7 +89,7 @@
 		//The y value is for above your head, but there is no ceiling in 2d spessmens.
 		S.y = 1
 		if(falloff) S.falloff = falloff
-		else S.falloff = FALLOFF_SOUNDS * max(round(S.volume * 0.05), 1) //louder sounds take a longer distance to fade.
+		else S.falloff = FALLOFF_SOUNDS * max(round(S.volume * 0.025), 1) //louder sounds take a longer distance to fade.
 
 		S.echo = list(
 			0, 0, \

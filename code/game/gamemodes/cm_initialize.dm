@@ -430,30 +430,38 @@ datum/game_mode/proc/initialize_special_clamps()
 	return 1
 
 /datum/game_mode/proc/transform_xeno(datum/mind/ghost_mind)
-	var/mob/original = ghost_mind.current
+	var/mob/living/original = ghost_mind.current
 	var/mob/living/carbon/Xenomorph/new_xeno
 	var/is_queen = FALSE
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	new_xeno = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
 	if(!hive.living_xeno_queen && original && original.client && original.client.prefs && (original.client.prefs.be_special & BE_QUEEN) && !jobban_isbanned(original, "Queen"))
-		new_xeno = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
 		is_queen = TRUE
+		ghost_mind.transfer_to(new_xeno) //The mind is fine, since we already labeled them as a xeno. Away they go.
+		ghost_mind.name = ghost_mind.current.name
 	else
-		new_xeno = new /mob/living/carbon/Xenomorph/Larva(pick(xeno_spawn))
-	ghost_mind.transfer_to(new_xeno) //The mind is fine, since we already labeled them as a xeno. Away they go.
-	ghost_mind.name = ghost_mind.current.name
+		original.first_xeno = TRUE
+		original.stat = 1
+		transform_survivor(ghost_mind) //Create a new host
+		original.adjustBruteLoss(50) //Do some damage to the host
+		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
+		original.buckled = start_nest
+		original.dir = start_nest.dir
+		original.update_canmove()
+		start_nest.buckled_mob = original
+		start_nest.afterbuckle(original)
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(original) //Put the initial larva in a host
+		embryo.stage = 5 //Give the embryo a head-start (make the larva burst instantly)
 
 	if(is_queen)
 		to_chat(new_xeno, "<B>You are now the alien queen!</B>")
 		to_chat(new_xeno, "<B>Your job is to spread the hive.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')")
-	else
-		to_chat(new_xeno, "<B>You are now an alien!</B>")
-		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>:a</strong> (e.g. ';My life for the queen!')")
+		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
 	new_xeno.update_icons()
 
-	if(original) qdel(original) //Just to be sure.
+	if(original && !original.first_xeno) qdel(original) //Just to be sure.
+	if(original.first_xeno) qdel(new_xeno)
 
 //===================================================\\
 
@@ -515,13 +523,20 @@ datum/game_mode/proc/initialize_special_clamps()
 //Start the Survivor players. This must go post-setup so we already have a body.
 //No need to transfer their mind as they begin as a human.
 /datum/game_mode/proc/transform_survivor(var/datum/mind/ghost, var/is_synth = FALSE)
-	var/picked_spawn = pick(surv_spawn)
+	var/picked_spawn = null
+	if(ghost.current.first_xeno)
+		picked_spawn = pick(xeno_spawn)
+	else
+		picked_spawn = pick(surv_spawn)
 	var/obj/effect/landmark/survivor_spawner/surv_datum
 	surv_datum = picked_spawn;
 	if(istype(surv_datum))
 		return survivor_event_transform(ghost.current, surv_datum, is_synth)
 		//deleting datum is on us
-		surv_spawn -= picked_spawn
+		if(ghost.current.first_xeno)
+			xeno_spawn -= picked_spawn
+		else
+			surv_spawn -= picked_spawn
 		qdel(picked_spawn)
 	else
 		return survivor_non_event_transform(ghost.current, picked_spawn, is_synth)
@@ -599,33 +614,35 @@ datum/game_mode/proc/initialize_special_clamps()
 			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
 			return
 	H.name = H.get_visible_name()
-	if(spawner.intro_text && spawner.intro_text.len)
-		spawn(4)
-			for(var/line in spawner.intro_text)
-				H << line
-	else
-		spawn(4)
-			to_chat(H, "<h2>You are a survivor!</h2>")
-			switch(map_tag)
-				if(MAP_PRISON_STATION)
-					to_chat(H, SPAN_NOTICE(" You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now."))
-				if(MAP_ICE_COLONY)
-					to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now."))
-				else
-					to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now."))
-			to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-			to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
-	if(spawner.story_text)
-		. = 1
-		spawn(6)
-			var/temp_story = "<b>Your story thus far</b>: " + spawner.story_text
-			H <<  temp_story
-			H.mind.memory += temp_story
-			//remove ourselves, so we don't get stuff generated for us
-			survivors -= H.mind
 
-	if(spawner.make_objective)
-		new /datum/cm_objective/move_mob/almayer/survivor(H)
+	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
+		if(spawner.intro_text && spawner.intro_text.len)
+			spawn(4)
+				for(var/line in spawner.intro_text)
+					H << line
+		else
+			spawn(4)
+				to_chat(H, "<h2>You are a survivor!</h2>")
+				switch(map_tag)
+					if(MAP_PRISON_STATION)
+						to_chat(H, "<span class='notice'> You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.</span>")
+					if(MAP_ICE_COLONY)
+						to_chat(H, "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now.</span>")
+					else
+						to_chat(H, "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now.</span>")
+				to_chat(H, "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>")
+				to_chat(H, "<span class='notice'>You are NOT aware of the marines or their intentions. </span>")
+		if(spawner.story_text)
+			. = 1
+			spawn(6)
+				var/temp_story = "<b>Your story thus far</b>: " + spawner.story_text
+				H <<  temp_story
+				H.mind.memory += temp_story
+				//remove ourselves, so we don't get stuff generated for us
+				survivors -= H.mind
+
+		if(spawner.make_objective)
+			new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 /datum/game_mode/proc/survivor_non_event_transform(var/mob/living/carbon/human/H, var/loc, var/is_synth = FALSE)
 	H.loc = loc
@@ -634,18 +651,19 @@ datum/game_mode/proc/initialize_special_clamps()
 	new /datum/cm_objective/move_mob/almayer/survivor(H)
 
 	//Give them some information
-	spawn(4)
-		to_chat(H, "<h2>You are a survivor!</h2>")
-		switch(map_tag)
-			if(MAP_PRISON_STATION)
-				to_chat(H, SPAN_NOTICE("You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now."))
-			if(MAP_ICE_COLONY)
-				to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now."))
-			else
-				to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now."))
-		to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
-	return 1
+	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
+		spawn(4)
+			to_chat(H, "<h2>You are a survivor!</h2>")
+			switch(map_tag)
+				if(MAP_PRISON_STATION)
+					to_chat(H, "<span class='notice'>You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks.. until now.</span>")
+				if(MAP_ICE_COLONY)
+					to_chat(H, "<span class='notice'>You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks.. until now.</span>")
+				else
+					to_chat(H, "<span class='notice'>You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks...until now.</span>")
+			to_chat(H, "<span class='notice'>You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit.</span>")
+			to_chat(H, "<span class='notice'>You are NOT aware of the marines or their intentions.</span>")
+		return 1
 
 /datum/game_mode/proc/tell_survivor_story()
 	var/list/survivor_story = list(
@@ -687,29 +705,30 @@ datum/game_mode/proc/initialize_special_clamps()
 
 		random_name = pick(random_name(FEMALE),random_name(MALE))
 
-		if(current_survivors.len > 1) //If we have another survivor to pick from.
-			if(survivor_multi_story.len) //Unlikely.
-				var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
-				current_survivors -= another_survivor
-				if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
-				story = pick(survivor_multi_story)
-				survivor_multi_story -= story
-				story = replacetext(story, "{name}", "[random_name]")
-				spawn(6)
-					var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[another_survivor.current.real_name]")
-					survivor.current <<  temp_story
-					survivor.memory += temp_story //Add it to their memories.
-					temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[survivor.current.real_name]")
-					another_survivor.current << temp_story
-					another_survivor.memory += temp_story
-		else
-			if(survivor_story.len) //Shouldn't happen, but technically possible.
-				story = pick(survivor_story)
-				survivor_story -= story
-				spawn(6)
-					var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{name}", "[random_name]")
-					survivor.current << temp_story
-					survivor.memory += temp_story
+		if(!survivor.current.first_xeno)
+			if(current_survivors.len > 1) //If we have another survivor to pick from.
+				if(survivor_multi_story.len) //Unlikely.
+					var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
+					current_survivors -= another_survivor
+					if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
+					story = pick(survivor_multi_story)
+					survivor_multi_story -= story
+					story = replacetext(story, "{name}", "[random_name]")
+					spawn(6)
+						var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[another_survivor.current.real_name]")
+						survivor.current <<  temp_story
+						survivor.memory += temp_story //Add it to their memories.
+						temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{surv}", "[survivor.current.real_name]")
+						another_survivor.current << temp_story
+						another_survivor.memory += temp_story
+			else
+				if(survivor_story.len) //Shouldn't happen, but technically possible.
+					story = pick(survivor_story)
+					survivor_story -= story
+					spawn(6)
+						var/temp_story = "<b>Your story thus far</b>: " + replacetext(story, "{name}", "[random_name]")
+						survivor.current << temp_story
+						survivor.memory += temp_story
 		current_survivors -= survivor
 	return 1
 

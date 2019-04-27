@@ -102,13 +102,61 @@
 	icon_state = "cap"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
+	var/helmet_overlays[]
 	var/flipped_cap = FALSE
 	var/base_cap_icon
+	var/flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_STORE_GARB
+	var/obj/item/storage/internal/pockets
+	var/list/allowed_hat_items = list(
+						/obj/item/clothing/glasses/mgoggles = "goggles",
+						/obj/item/clothing/glasses/mgoggles/prescription = "goggles")
 
 /obj/item/clothing/head/cmcap/New()
 	select_gamemode_skin(/obj/item/clothing/head/cmcap)
 	base_cap_icon = icon_state
 	..()
+	helmet_overlays = list("item") //To make things simple.
+	pockets = new/obj/item/storage/internal(src)
+	pockets.storage_slots = 1
+	pockets.bypass_w_limit = allowed_hat_items
+	pockets.max_storage_space = 1
+
+/obj/item/clothing/head/cmcap/attack_hand(mob/user)
+	if (pockets.handle_attack_hand(user))
+		..()
+
+/obj/item/clothing/head/cmcap/MouseDrop(over_object, src_location, over_location)
+	if(pockets.handle_mousedrop(usr, over_object))
+		..()
+
+/obj/item/clothing/head/cmcap/attackby(obj/item/W, mob/user)
+	..()
+	return pockets.attackby(W, user)
+
+/obj/item/clothing/head/cmcap/on_pocket_insertion()
+	update_icon()
+
+/obj/item/clothing/head/cmcap/on_pocket_removal()
+	update_icon()
+
+/obj/item/clothing/head/cmcap/update_icon()
+	if(pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+
+		if(!helmet_overlays["item"])
+			var/obj/O = pockets.contents[1]
+			if(O.type in allowed_hat_items)
+				var/image/I = image('icons/obj/clothing/cm_hats.dmi', src, "[allowed_hat_items[O.type]]")
+				helmet_overlays["item"] = I
+
+	else
+		if(helmet_overlays["item"])
+			var/image/RI = helmet_overlays["item"]
+			helmet_overlays["item"] = null
+			qdel(RI)
+
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_head()
 
 /obj/item/clothing/head/cmcap/verb/fliphat()
 	set name = "Flip hat"

@@ -106,48 +106,34 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	STUI.processing |= 3
 	msg = "<br><br><font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1)]:</b></font> <br><font color='#DA6200'><b>[msg]</font></b><br>"
 
-	var/admin_number_afk = 0
 
-	var/list/mentoradmin_holders = list()
-	var/list/debugadmin_holders = list()
-	var/list/adminadmin_holders = list()
-	for(var/client/X in admins)
-		if(R_MENTOR & X.admin_holder.rights && !(R_ADMIN & X.admin_holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
-			mentoradmin_holders += X
-			if(X.is_afk())
-				admin_number_afk++
-		if(R_DEBUG & X.admin_holder.rights) // Looking for anyone with +Debug which will be admins, developers, and developer mentors
-			debugadmin_holders += X
-			if(!(R_ADMIN & X.admin_holder.rights))
-				if(X.is_afk())
-					admin_number_afk++
-		if(R_ADMIN|R_MOD & X.admin_holder.rights) // just admins here please
-			adminadmin_holders += X
-			if(X.is_afk())
-				admin_number_afk++
+	var/list/current_staff = get_staff_by_category()
+	var/admin_number_afk = current_staff["afk"].len
+	var/list/mentors = current_staff["mentors"]
+	var/list/admins = current_staff["admins"]
 
 	if("Gameplay/Roleplay Issue")
-		if(mentoradmin_holders.len)
-			for(var/client/X in mentoradmin_holders) // Mentors get a message without buttons and no character name
+		if(mentors.len)
+			for(var/client/X in mentors) // Mentors get a message without buttons and no character name
 				if(X.prefs.toggles_sound & SOUND_ADMINHELP)
-					X << 'sound/effects/adminhelp_new.ogg'
-				X << mentor_msg
-		if(adminadmin_holders.len)
-			for(var/client/X in adminadmin_holders) // Admins get the full monty
+					sound_to(X, 'sound/effects/adminhelp_new.ogg')
+				to_chat(X, mentor_msg)
+		if(admins.len)
+			for(var/client/X in admins) // Admins get the full monty
 				if(X.prefs.toggles_sound & SOUND_ADMINHELP)
-					X << 'sound/effects/adminhelp_new.ogg'
-				X << msg
+					sound_to(X, 'sound/effects/adminhelp_new.ogg')
+				to_chat(X, mentor_msg)
 
 	//show it to the person adminhelping too
 	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]): <font color='#DA6200'>[original_msg]</b></font><br>")
 
 	// Adminhelp cooldown
 	verbs -= /client/verb/adminhelp
-	spawn(1200)
+	spawn(2 MINUTES)
 		verbs += /client/verb/adminhelp
 
-	var/admin_number_present = admins.len - admin_number_afk
-	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admin_number_present] non-AFK admins.")
+	var/admin_number_present = admins.len + mentors.len - admin_number_afk
+	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admin_number_present] non-AFK staff.")
 //	if(admin_number_present <= 0)
 //		if(!admin_number_afk)
 //			send2adminirc("[selected_upper] from [key_name(src)]: [html_decode(original_msg)] - !!No admins online!!")
@@ -160,6 +146,34 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	unansweredAhelps["[src.computer_id]"] = msg //We are gonna do it by CID, since any other way really gets fucked over by ghosting etc
 
 	return
+
+/proc/get_staff_by_category()
+	var/list/mentoradmin_holders = list()
+	var/list/debugadmin_holders = list()
+	var/list/adminadmin_holders = list()
+	var/list/afk_staff = list()
+	var/list/staff = list("mentors","devs","admins","afk")
+	for(var/client/X in admins)
+		if(R_MENTOR & X.admin_holder.rights && !(R_ADMIN & X.admin_holder.rights)) // we don't want to count admins twice. This list should be JUST mentors
+			mentoradmin_holders += X
+			if(X.is_afk())
+				afk_staff += X
+		if(R_DEBUG & X.admin_holder.rights) // Looking for anyone with +Debug which will be devs and host-tier permissions
+			debugadmin_holders += X
+			if(!(R_ADMIN & X.admin_holder.rights))
+				if(X.is_afk())
+					afk_staff += X
+		if(R_ADMIN|R_MOD & X.admin_holder.rights) // just admins+ here please
+			adminadmin_holders += X
+			if(X.is_afk())
+				afk_staff += X
+	staff["mentors"] = mentoradmin_holders
+	staff["devs"] = debugadmin_holders
+	staff["admins"] = adminadmin_holders
+	staff["afk"] = afk_staff
+
+	return staff
+	
 
 /proc/get_options_bar(whom, detail = 2, name = 0, link = 1, highlight_special = 1)
 	if(!whom)

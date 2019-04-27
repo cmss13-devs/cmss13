@@ -850,7 +850,7 @@ proc/populate_seed_list()
 	mutants = list("bluespacetomato")
 	packet_icon = "seed-bluetomato"
 	plant_icon = "bluetomato"
-	chems = list("nutriment" = list(1,20), "lube" = list(1,5))
+	chems = list("nutriment" = list(1,20))
 
 /datum/seed/tomato/blue/teleport
 	name = "bluespacetomato"

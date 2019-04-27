@@ -380,6 +380,7 @@
 		..()
 		damage = config.hlow_hit_damage
 		accurate_range = config.near_shell_range
+		penetration = config.hlow_armor_penetration*0.2
 		damage_falloff = config.reg_damage_falloff
 
 /datum/ammo/bullet/smg/ap
@@ -389,7 +390,7 @@
 	..()
 	scatter = config.min_scatter_value
 	damage = config.low_hit_damage
-	penetration = config.hlow_armor_penetration
+	penetration = config.hmed_armor_penetration*0.5
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
 
@@ -520,7 +521,7 @@
 
 /datum/ammo/bullet/shotgun/slug/New()
 	..()
-	max_range = config.short_shell_range
+	max_range = config.short_shell_range*1.4
 	damage = config.mhigh_hit_damage
 	penetration= config.high_armor_penetration
 
@@ -584,10 +585,10 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	max_range = config.short_shell_range
-	damage = config.med_hit_damage
+	damage = config.med_hit_damage*1.2
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.med_armor_penetration
+	penetration	= config.high_armor_penetration*1.2
 	bonus_projectiles_amount = config.med_proj_extra
 
 /datum/ammo/bullet/shotgun/flechette_spread
@@ -599,10 +600,10 @@
 	accuracy_var_low = config.med_proj_variance
 	accuracy_var_high = config.med_proj_variance
 	max_range = config.short_shell_range
-	damage = config.mlow_hit_damage
+	damage = config.med_hit_damage*1.2
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.med_armor_penetration
+	penetration	= config.high_armor_penetration*1.2
 	scatter = config.hmed_scatter_value
 
 /datum/ammo/bullet/shotgun/buckshot
@@ -616,7 +617,7 @@
 	accuracy_var_high = config.high_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.hmed_hit_damage
+	damage = config.hmed_hit_damage*0.8
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
@@ -645,10 +646,11 @@
 	accuracy_var_high = config.med_proj_variance
 	accurate_range = config.min_shell_range
 	max_range = config.close_shell_range
-	damage = config.hmed_hit_damage
+	damage = config.hmed_hit_damage*0.8
 	damage_var_low = -config.low_proj_variance
 	damage_var_high = config.med_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
+	penetration = 0
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
 
@@ -727,11 +729,13 @@
 /datum/ammo/bullet/tank/flak/New()
 	..()
 	accuracy = -config.low_hit_accuracy
-	max_range = config.norm_shell_range
 	scatter = config.low_scatter_value
 	damage = config.mhigh_hit_damage
 	damage_var_high = config.low_proj_variance
 	penetration	= config.med_armor_penetration
+	accurate_range = config.max_shell_range
+	max_range = config.max_shell_range
+	shell_speed = config.ultra_shell_speed
 
 /datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/item/projectile/P)
 	burst(get_turf(M),P,damage_type, 2 , 2)
@@ -1496,7 +1500,7 @@
 		var/obj/structure/barricade/B = O
 		B.health -= rand(2, 5)
 		B.update_health(1)
-		
+
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
@@ -1506,7 +1510,7 @@
 	..()
 	shell_speed = config.slow_shell_speed
 	damage = config.mlow_hit_damage
-	penetration = config.low_armor_penetration 
+	penetration = config.low_armor_penetration
 
 
 /*

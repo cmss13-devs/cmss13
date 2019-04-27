@@ -718,6 +718,20 @@ Defined in conflicts.dm of the #defines folder.
 
 	select_gamemode_skin(type)
 
+/obj/item/attachable/stock/mou53
+	name = "\improper MOU53 tactical stock"
+	desc = "A metal stock fitted specifically for the MOU53 break action shotgun."
+	icon_state = "ou_stock"
+
+/obj/item/attachable/stock/mou53/New()
+	..()
+	accuracy_mod = config.min_hit_accuracy_mult
+	recoil_mod = -config.min_recoil_value
+	scatter_mod = -config.min_scatter_value
+	accuracy_unwielded_mod = config.min_hit_accuracy_mult
+	recoil_unwielded_mod = -config.min_recoil_value
+	scatter_unwielded_mod = -config.min_scatter_value
+
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
 	desc = "A metal stock made for the MK221 tactical shotgun."
@@ -938,13 +952,13 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	//Makes stuff better when one handed by a LOT.
 	accuracy_unwielded_mod = config.high_hit_accuracy_mult
-	recoil_unwielded_mod = -config.max_recoil_value
-	delay_mod = config.mlow_fire_delay
-	burst_scatter_mod = -6
+	recoil_unwielded_mod = -config.high_recoil_value
+	delay_mod = config.med_fire_delay //slow firing rate
+	burst_scatter_mod = -4
 	//But... it makes wielding something really, really bad.
 	accuracy_mod = config.low_hit_accuracy_mult
 	recoil_mod = config.high_recoil_value
-	scatter_unwielded_mod = -7
+	scatter_unwielded_mod = -4
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"

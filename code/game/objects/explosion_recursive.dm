@@ -72,7 +72,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	message_admins("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 	log_game("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ")
 
-	playsound(epicenter, 'sound/effects/explosionfar.ogg', 75, 1, max(round(2*power,1),14) ) //haven't rweaked these values yet
+	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1), 1000)
 	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7) )
 
 	explosion_in_progress = 1

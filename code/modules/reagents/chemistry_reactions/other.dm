@@ -139,13 +139,6 @@
 	required_reagents = list("mercury" = 1, "sugar" = 1, "lithium" = 1)
 	result_amount = 3
 
-/datum/chemical_reaction/lube
-	name = "Space Lube"
-	id = "lube"
-	result = "lube"
-	required_reagents = list("water" = 1, "silicon" = 1, "oxygen" = 1)
-	result_amount = 4
-
 /datum/chemical_reaction/pacid
 	name = "Polytrinic acid"
 	id = "pacid"

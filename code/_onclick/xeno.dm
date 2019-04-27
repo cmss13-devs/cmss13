@@ -29,10 +29,11 @@
 
 /mob/living/carbon/Xenomorph/RangedAttack(var/atom/A)
 	..()
-	for(var/mob/M in get_turf(get_step(src, get_dir(src, A))))
-		if (M.Adjacent(src))
-			UnarmedAttack(M)
-			return
+	if(directional_attack_toggle)
+		for(var/mob/M in get_turf(get_step(src, get_dir(src, A))))
+			if (M.Adjacent(src))
+				UnarmedAttack(M)
+				return
 	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
 	return 1
 
@@ -53,7 +54,7 @@
 		if(selected_ability && !middle_mouse_toggle)
 			selected_ability.use_ability(A)
 		return 1
-	
+
 	return ..()
 
 /mob/living/carbon/Xenomorph/Boiler/click(var/atom/A, var/list/mods)
@@ -131,5 +132,5 @@
 		if(selected_ability && !middle_mouse_toggle)
 			selected_ability.use_ability(A)
 			return 1
-	
+
 	return ..()

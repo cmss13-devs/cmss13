@@ -166,9 +166,15 @@
 			if("disarm")
 				M.animation_attack_on(src)
 				M.flick_attack_overlay(src, "disarm")
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				M.visible_message("<span class='warning'>\The [M] shoves \the [src]!</span>", \
-				"<span class='warning'>You shove \the [src]!</span>", null, 5)
-				if(ismonkey(src))
-					KnockDown(8)
+				if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)
+					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
+					M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
+					SPAN_WARNING("You shove \the [src]!"), null, 5)
+					if(ismonkey(src))
+						KnockDown(8)
+				else
+					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+					M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
+					SPAN_WARNING("You shove \the [src] out of your way!"), null, 5)
+					src.KnockDown(1)
 		return 1

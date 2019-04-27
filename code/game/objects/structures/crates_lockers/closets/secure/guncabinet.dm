@@ -70,7 +70,7 @@
 	..()
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/weapon/gun/shotgun/combat(src)
-	new /obj/item/ammo_magazine/shotgun(src)
+	new /obj/item/ammo_magazine/shotgun/slugs(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)

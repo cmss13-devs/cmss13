@@ -131,11 +131,8 @@ var/global/list/damage_icon_parts = list()
 		var/brutestate = copytext(damage_state, 1, 2)
 		var/burnstate = copytext(damage_state, 2)
 		var/icon/DI
-		if(species.blood_color != "#A10808") //not human blood color
-			DI = new /icon('icons/mob/dam_human.dmi', "grayscale_[brutestate]")// the damage icon for whole human in grayscale
-			DI.Blend(species.blood_color, ICON_MULTIPLY) //coloring with species' blood color
-		else
-			DI = new /icon('icons/mob/dam_human.dmi', "human_[brutestate]")
+		DI = new /icon('icons/mob/dam_human.dmi', "grayscale_[brutestate]")// the damage icon for whole human in grayscale
+		DI.Blend(species.blood_color, ICON_MULTIPLY) //coloring with species' blood color
 		DI.Blend(new /icon('icons/mob/dam_human.dmi', "burn_[burnstate]"), ICON_OVERLAY)//adding burns
 		DI.Blend(new /icon('icons/mob/dam_mask.dmi', body_part), ICON_MULTIPLY)		// mask with this organ's pixels
 		damage_icon_parts["[damage_state]_[species.blood_color]_[body_part]"] = DI
@@ -610,7 +607,7 @@ var/global/list/damage_icon_parts = list()
 		else
 			standing = image("icon" = head.sprite_sheet_id?'icons/mob/head_1.dmi':'icons/mob/head_0.dmi', "icon_state" = "[head.icon_state]", "layer" =-HEAD_LAYER)
 
-		if(istype(head,/obj/item/clothing/head/helmet/marine))
+		if(istype(head,/obj/item/clothing/head/helmet/marine)|istype(head,/obj/item/clothing/head/cmcap))
 			var/obj/item/clothing/head/helmet/marine/marine_helmet = head
 			if(marine_helmet.flags_marine_helmet & HELMET_SQUAD_OVERLAY)
 				if(assigned_squad)

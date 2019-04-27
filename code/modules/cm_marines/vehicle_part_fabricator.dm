@@ -10,6 +10,8 @@
 	icon_state = "drone_fab_idle"
 	var/busy = FALSE
 	var/generate_points = TRUE
+	var/valid_parts = null
+	var/valid_ammo = null
 
 /obj/machinery/part_fabricator/New()
 	..()
@@ -71,15 +73,31 @@
 		to_chat(usr, "<span class='warning'>The autolathe is busy. Please wait for completion of previous operation.</span>")
 		return
 
-	if(href_list["produce"])
+	if(href_list["produce"]&&href_list["cost"])
 		var/produce = text2path(href_list["produce"])
 		var/cost = href_list["cost"]
-		var/printed = produce
-		if(!cost || !printed)
-			to_world("printed: [printed], cost: [cost]")
-			return //Someone's trying to href exploit most likely.
-		build_part(printed, cost, usr)
+		var/exploiting = TRUE
+		
+		if (valid_parts || valid_ammo) 
+			if (valid_parts && istype(produce, valid_parts))
+				exploiting = FALSE
+				
+			else if (valid_ammo && istype(produce, valid_ammo))
+				exploiting = FALSE
+
+		if (text2num(cost) < 0)
+			exploiting = TRUE
+
+		if (exploiting)
+			log_admin("Bad topic: [usr] may be trying to HREF exploit [src] with [produce], [cost]")
+			return
+
+		build_part(produce, cost, usr)
 		return
+	else 
+		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
+		return
+
 /obj/machinery/part_fabricator/attack_hand(mob/user)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
@@ -90,6 +108,8 @@
 	name = "dropship part fabricator"
 	desc = "A large automated 3D printer for producing dropship parts."
 	req_access = list(ACCESS_MARINE_DROPSHIP)
+	valid_parts = /obj/structure/dropship_equipment
+	valid_ammo = /obj/structure/ship_ammo
 
 /obj/machinery/part_fabricator/dropship/get_point_store()
     return supply_controller.dropship_points
@@ -132,6 +152,8 @@
 	desc = "A large automated 3D printer for producing tank parts."
 	req_access = list(ACCESS_MARINE_TANK)
 	generate_points = FALSE
+	valid_parts = /obj/item/hardpoint
+	valid_ammo = /obj/item/ammo_magazine/tank
 
 /obj/machinery/part_fabricator/tank/get_point_store()
     return supply_controller.tank_points

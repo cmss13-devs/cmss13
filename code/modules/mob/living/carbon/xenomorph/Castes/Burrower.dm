@@ -104,10 +104,6 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
-	
-	new_actions = list(
-		/datum/action/xeno_action/activable/tremor,
-	)
 
 /mob/living/carbon/Xenomorph/Burrower/New()
 	. = ..()

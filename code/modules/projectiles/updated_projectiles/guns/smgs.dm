@@ -71,7 +71,7 @@
 	scatter = config.high_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult * 0.825
 	recoil_unwielded = config.min_recoil_value
 
 

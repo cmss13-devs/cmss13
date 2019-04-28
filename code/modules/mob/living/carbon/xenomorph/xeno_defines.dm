@@ -1,3 +1,5 @@
+#define XENO_UNIVERSAL_HPMULT 1.2	//Stopgap usage only. Use to unilaterally buff every caste's total HP.
+
 /datum/caste_datum
 	var/caste_name = ""
 	var/display_name = ""
@@ -19,7 +21,7 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 
-	var/max_health = 100
+	var/max_health = XENO_UNIVERSAL_HPMULT * 100
 
 	var/evolution_allowed = 1 //Are they allowed to evolve (and have their evolution progress group)
 	var/evolution_threshold = 0 //Threshold to next evolution

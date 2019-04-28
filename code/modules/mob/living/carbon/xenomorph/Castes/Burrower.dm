@@ -10,7 +10,7 @@
 	plasma_max = 300
 	deevolves_to = "Drone"
 	caste_desc = "A digger and shaper."
-	max_health = 200
+	max_health = XENO_UNIVERSAL_HPMULT * 200
 	speed = -0.1
 	armor_deflection = 15
 	xeno_explosion_resistance = 60
@@ -34,7 +34,7 @@
 	plasma_max = 350
 	plasma_gain = 0.034
 	armor_deflection = 20
-	max_health = 210
+	max_health = XENO_UNIVERSAL_HPMULT * 210
 	speed = -0.2
 	burrow_cooldown = 40
 	tunnel_cooldown = 90
@@ -52,7 +52,7 @@
 	tackle_chance = 50
 	plasma_gain = 0.035
 	armor_deflection = 25
-	max_health = 225
+	max_health = XENO_UNIVERSAL_HPMULT * 220
 	speed = -0.3
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
@@ -71,7 +71,7 @@
 	tackle_chance = 50
 	plasma_gain = 0.035
 	armor_deflection = 25
-	max_health = 225
+	max_health = XENO_UNIVERSAL_HPMULT * 225
 	speed = -0.3
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
@@ -85,8 +85,6 @@
 	desc = "A beefy, alien with sharp claws."
 	icon = 'icons/Xeno/xenomorph_64x64.dmi'
 	icon_state = "Burrower Walking"
-	health = 175
-	maxHealth = 175
 	plasma_stored = 100
 	pixel_x = -12
 	old_x = -12

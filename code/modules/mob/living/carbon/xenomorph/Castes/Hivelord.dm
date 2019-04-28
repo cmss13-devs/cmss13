@@ -5,7 +5,7 @@
 	upgrade = 0
 	melee_damage_lower = 15
 	melee_damage_upper = 20
-	max_health = 220
+	max_health = XENO_UNIVERSAL_HPMULT * 220
 	plasma_gain = 0.044
 	plasma_max = 1000
 	evolution_allowed = FALSE
@@ -29,7 +29,7 @@
 	upgrade = 1
 	melee_damage_lower = 20
 	melee_damage_upper = 25
-	max_health = 230
+	max_health = XENO_UNIVERSAL_HPMULT * 240
 	plasma_gain = 0.045
 	plasma_max = 1100
 	armor_deflection = 10
@@ -44,7 +44,7 @@
 	upgrade = 2
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	max_health = 250
+	max_health = XENO_UNIVERSAL_HPMULT * 265
 	plasma_gain = 0.05
 	plasma_max = 1100
 	armor_deflection = 15
@@ -60,7 +60,7 @@
 	upgrade = 3
 	melee_damage_lower = 30
 	melee_damage_upper = 35
-	max_health = 280
+	max_health = XENO_UNIVERSAL_HPMULT * 280
 	plasma_gain = 0.08
 	plasma_max = 1200
 	armor_deflection = 18

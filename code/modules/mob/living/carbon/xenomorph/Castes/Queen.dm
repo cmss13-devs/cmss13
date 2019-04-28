@@ -8,7 +8,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 40
-	max_health = 300
+	max_health = XENO_UNIVERSAL_HPMULT * 300
 	plasma_gain = 0.043
 	plasma_max = 700
 	is_intelligent = 1
@@ -33,7 +33,7 @@
 	upgrade = 1
 	melee_damage_lower = 40
 	melee_damage_upper = 50
-	max_health = 325
+	max_health = XENO_UNIVERSAL_HPMULT * 325
 	plasma_gain = 0.05
 	plasma_max = 800
 	spit_delay = 20
@@ -48,7 +48,7 @@
 	upgrade = 2
 	melee_damage_lower = 50
 	melee_damage_upper = 60
-	max_health = 350
+	max_health = XENO_UNIVERSAL_HPMULT * 350
 	plasma_gain = 0.056
 	plasma_max = 900
 	spit_delay = 15
@@ -65,7 +65,7 @@
 	upgrade = 3
 	melee_damage_lower = 60
 	melee_damage_upper = 70
-	max_health = 375
+	max_health = XENO_UNIVERSAL_HPMULT * 375
 	plasma_gain = 0.06
 	plasma_max = 1000
 	spit_delay = 10
@@ -82,7 +82,7 @@
 	upgrade = 4
 	melee_damage_lower = 80
 	melee_damage_upper = 90
-	max_health = 450
+	max_health = XENO_UNIVERSAL_HPMULT * 450
 	plasma_gain = 0.07
 	plasma_max = 1200
 	spit_delay = 10
@@ -251,7 +251,7 @@
 				round_statistics.total_xenos_created-- // keep stats sane
 				qdel(L)
 
-		if((last_larva_time + 600) < world.time) // every minute
+		if((last_larva_time + 30 SECONDS) < world.time) // every minute
 			last_larva_time = world.time
 			var/list/players_with_xeno_pref = get_alien_candidates()
 			if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())

@@ -1,4 +1,4 @@
-#define XENO_UNIVERSAL_HPMULT 1.2	//Stopgap usage only. Use to unilaterally buff every caste's total HP.
+#define XENO_UNIVERSAL_HPMULT 1.1	//Stopgap usage only. Use to unilaterally buff every caste's total HP.
 
 /datum/caste_datum
 	var/caste_name = ""

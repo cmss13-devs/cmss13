@@ -434,8 +434,8 @@ datum/game_mode/proc/initialize_special_clamps()
 	var/mob/living/carbon/Xenomorph/new_xeno
 	var/is_queen = FALSE
 	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
-	new_xeno = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
 	if(!hive.living_xeno_queen && original && original.client && original.client.prefs && (original.client.prefs.be_special & BE_QUEEN) && !jobban_isbanned(original, "Queen"))
+		new_xeno = new /mob/living/carbon/Xenomorph/Queen (pick(xeno_spawn))
 		is_queen = TRUE
 		ghost_mind.transfer_to(new_xeno) //The mind is fine, since we already labeled them as a xeno. Away they go.
 		ghost_mind.name = ghost_mind.current.name

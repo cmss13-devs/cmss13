@@ -233,7 +233,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult * 0.8
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
 
@@ -385,8 +385,8 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/mou53
 	name = "\improper MOU53 break action shotgun"
 	desc = "A limited production Kerchner MOU53 break action classic. Respectable damage output at medium ranges, while the ARMAT M37 is the king of CQC, the Kerchner MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
-	icon_state = "mou53"
-	item_state = "mou53"
+	icon_state = "mou"
+	item_state = "mou"
 	var/max_rounds = 2
 	var/current_rounds = 0
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
@@ -416,11 +416,11 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	fire_delay = config.min_fire_delay
 	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
-	accuracy_mult_unwielded = config.base_hit_accuracy_mult
+	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.min_scatter_value
 	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult*1.2
+	damage_mult = config.base_hit_damage_mult*0.8
 	recoil = config.med_recoil_value*1.4
 	recoil_unwielded = config.high_recoil_value*1.2
 
@@ -471,13 +471,13 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 10, "rail_y" = 21, "under_x" = 20, "under_y" = 14, "stock_x" = 20, "stock_y" = 14)
 
 /obj/item/weapon/gun/shotgun/pump/set_gun_config_values()
-	fire_delay = config.med_fire_delay*5
+	fire_delay = config.med_fire_delay * 5
 	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult * 0.75
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
 

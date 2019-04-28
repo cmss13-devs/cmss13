@@ -11,7 +11,7 @@
 	plasma_max = 300
 	evolution_allowed = FALSE
 	deevolves_to = "Drone"
-	max_health = 210
+	max_health = XENO_UNIVERSAL_HPMULT * 210
 	speed = -0.1
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
 	huggers_max = 9
@@ -30,7 +30,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
 	upgrade = 1
-	max_health = 210
+	max_health = XENO_UNIVERSAL_HPMULT * 215
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	tacklemin = 3
@@ -56,7 +56,7 @@
 	tackle_chance = 50
 	plasma_gain = 0.035
 	armor_deflection = 20
-	max_health = 225
+	max_health = XENO_UNIVERSAL_HPMULT * 225
 	speed = -0.2
 	aura_strength = 2
 	huggers_max = 10
@@ -75,7 +75,7 @@
 	tackle_chance = 50
 	plasma_gain = 0.035
 	armor_deflection = 20
-	max_health = 225
+	max_health = XENO_UNIVERSAL_HPMULT * 235
 	speed = -0.2
 	aura_strength = 2
 	huggers_max = 10

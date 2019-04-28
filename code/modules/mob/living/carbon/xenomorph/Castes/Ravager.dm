@@ -8,7 +8,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	max_health = 240
+	max_health = XENO_UNIVERSAL_HPMULT * 230
 	plasma_gain = 0.08
 	plasma_max = 100
 	evolution_allowed = FALSE
@@ -35,6 +35,7 @@
 	upgrade = 1
 	melee_damage_lower = 45
 	melee_damage_upper = 55
+	max_health = XENO_UNIVERSAL_HPMULT * 245
 	plasma_gain = 0.067
 	plasma_max = 150
 	tacklemin = 4
@@ -47,6 +48,7 @@
 	upgrade = 2
 	melee_damage_lower = 50
 	melee_damage_upper = 60
+	max_health = XENO_UNIVERSAL_HPMULT * 265
 	plasma_gain = 0.068
 	plasma_max = 170
 	tacklemin = 5
@@ -60,6 +62,7 @@
 	upgrade = 3
 	melee_damage_lower = 55
 	melee_damage_upper = 65
+	max_health = XENO_UNIVERSAL_HPMULT * 275
 	plasma_gain = 0.07
 	plasma_max = 180
 	tacklemin = 6
@@ -75,7 +78,7 @@
 	melee_damage_upper = 110
 	plasma_gain = 0.1
 	plasma_max = 200
-	max_health = 300
+	max_health = XENO_UNIVERSAL_HPMULT * 320
 	speed = -1.3
 	armor_deflection = 60
 	tacklemin = 6

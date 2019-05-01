@@ -195,7 +195,7 @@
 
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"
-	desc = "Koorlander, Gold: 3% tobacco. 97% other. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
+	desc = "Lovingly machine-rolled for YOUR pleasure. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
 	icon_state = "kpacket"
 	item_state = "kpacket"
 
@@ -205,7 +205,6 @@
 	icon_state = "aapacket"
 	item_state = "aapacket"
 
-/*	NEEDS SPRITES*/
 /obj/item/storage/fancy/cigarettes/lady_finger
 	name = "\improper lady_fingers"
 	desc = "These intensely strong unfiltered menthol cigarettes don't seem very ladylike. They don't seem very fingerlike for that matter, either. Smoking may kill, but poor branding is almost as bad."

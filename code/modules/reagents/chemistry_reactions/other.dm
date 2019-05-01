@@ -1,6 +1,6 @@
 
 // Defines for water/potassium
-#define MAXEXPOWER 		325
+#define MAXEXPOWER 		300
 #define MAXEXSHARDS 	128
 
 // Defines for napalm
@@ -30,7 +30,6 @@
 
 	if(holder.my_atom && location) //It exists outside of null space.
 		expower = created_volume*2 //60u slightly better than HEDP, 120u worse than holy hand grenade
-		if(exfalloff < 15) exfalloff = 15
 
 		for(var/datum/reagent/R in holder.reagent_list) // if you want to do extra stuff when other chems are present, do it here
 			if(R.id == "iron")
@@ -46,6 +45,7 @@
 		if(expower > MAXEXPOWER)
 			expower = MAXEXPOWER
 		exfalloff = expower/6
+		if(exfalloff < 15) exfalloff = 15
 
 		create_shrapnel(location, shards, , ,shard_type)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel

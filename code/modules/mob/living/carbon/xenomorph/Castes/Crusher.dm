@@ -286,6 +286,18 @@
 
 	r_TRU
 
+/obj/machinery/door/airlock/charge_act(mob/living/carbon/Xenomorph/X)
+	if(unacidable)
+		X.stop_momentum(X.charge_dir)
+		r_FAL
+	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
+		X.stop_momentum(X.charge_dir)
+		r_FAL
+
+	destroy_airlock()
+	X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
+	r_TRU
+
 /obj/structure/grille/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir)

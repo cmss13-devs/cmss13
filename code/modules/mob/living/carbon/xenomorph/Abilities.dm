@@ -540,6 +540,10 @@
 		X.zoom_in()
 		..()
 
+/datum/action/xeno_action/toggle_long_range/runner // Runner has reduced plasma cost
+	name = "Toggle Long Range Sight (10)"
+	plasma_cost = 10
+
 /datum/action/xeno_action/toggle_bomb
 	name = "Toggle Bombard Type"
 	action_icon_state = "toggle_bomb0"

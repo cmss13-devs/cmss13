@@ -94,6 +94,9 @@
 	if(isliving(target_mob))
 		var/mob/living/L = target_mob
 		L.attack_animal(src)
+		src.animation_attack_on(L)
+		src.flick_attack_overlay(L, "slash")
+		playsound(src.loc, "alien_claw_flesh", 25, 1)
 		return L
 	if(istype(target_mob,/obj/mecha))
 		var/obj/mecha/M = target_mob

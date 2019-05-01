@@ -86,6 +86,7 @@
 #define EXPLOSION_THRESHOLD_GIB	200 //how much it takes to gib a mob
 
 //Explosion damage multipliers for different objects
+#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     2.5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 

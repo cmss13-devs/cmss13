@@ -53,8 +53,8 @@
 //hunters have the most poison and move the fastest, so they can find prey
 /mob/living/simple_animal/hostile/giant_spider/hunter
 	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
-	icon_state = "Lurker"
-	icon_living = "Lurker"
+	icon_state = "hunter"
+	icon_living = "hunter"
 	icon_dead = "hunter_dead"
 	maxHealth = 120
 	health = 120
@@ -105,7 +105,7 @@
 			if(!busy && prob(30))
 				//first, check for potential food nearby to cocoon
 				for(var/mob/living/C in can_see)
-					if(C.stat)
+					if(C.stat && !istype(C, /mob/living/simple_animal/hostile/giant_spider))
 						cocoon_target = C
 						busy = MOVING_TO_TARGET
 						walk_to(src, C, 1, move_to_delay)

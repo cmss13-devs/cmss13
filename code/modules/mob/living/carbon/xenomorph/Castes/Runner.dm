@@ -16,6 +16,8 @@
 	evolves_to = list("Lurker")
 	pounce_delay = 35
 	xeno_explosion_resistance = 20
+	viewsize = 8 // runner scouting, can look 3 tiles (2 offset + 1 increased size) ahead when stationary
+	tileoffset = 2
 
 /datum/caste_datum/runner/mature
 	upgrade_name = "Mature"
@@ -77,6 +79,7 @@
 		/datum/action/xeno_action/regurgitate,
 		/datum/action/xeno_action/xenohide,
 		/datum/action/xeno_action/activable/pounce,
+		/datum/action/xeno_action/toggle_long_range/runner,
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

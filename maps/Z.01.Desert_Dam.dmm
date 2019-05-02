@@ -2910,10 +2910,6 @@
 /obj/machinery/light,
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"aiC" = (
-/obj/structure/window/framed/chigusa,
-/turf/closed/wall/r_wall,
-/area/desert_dam/interior/lab_northeast/east_lab_containment)
 "aiD" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3546,10 +3542,6 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "akc" = (
 /turf/open/floor/prison,
-/area/desert_dam/interior/lab_northeast/east_lab_RND)
-"akd" = (
-/obj/structure/window/framed/chigusa,
-/turf/closed/wall/r_wall,
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "ake" = (
 /obj/machinery/chem_dispenser,
@@ -7435,12 +7427,6 @@
 	tag = "icon-darkyellow2 (EAST)"
 	},
 /area/desert_dam/building/substation/northeast)
-"asN" = (
-/obj/structure/window/framed/hangar/reinforced,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/building/water_treatment_two/floodgate_control)
 "asO" = (
 /obj/structure/table,
 /obj/machinery/computer/security{
@@ -11136,7 +11122,10 @@
 	name = "Strange Temple"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/mineral/sandstone,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
 /area/desert_dam/interior/caves/northern_caves)
 "aBr" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -47005,14 +46994,6 @@
 	icon_state = "cement15"
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
-"ciq" = (
-/obj/effect/decal/sand_overlay/sand2/corner2,
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	icon_state = "sand2_c";
-	dir = 8
-	},
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/south_tunnel)
 "cir" = (
 /obj/effect/decal/sand_overlay/sand2{
 	icon_state = "sand2_s";
@@ -50253,10 +50234,6 @@
 	icon_state = "white"
 	},
 /area/desert_dam/building/medical/chemistry)
-"cqs" = (
-/obj/structure/window/framed/colony,
-/turf/closed/wall,
-/area/desert_dam/building/medical/chemistry)
 "cqt" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -52824,10 +52801,6 @@
 	icon_state = "whitegreencorner"
 	},
 /area/desert_dam/building/medical/east_wing_hallway)
-"cwe" = (
-/obj/structure/window/framed/colony,
-/turf/closed/wall,
-/area/desert_dam/building/medical/CMO)
 "cwf" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -52840,15 +52813,6 @@
 	},
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/CMO)
-"cwh" = (
-/obj/effect/decal/sand_overlay/sand2/corner2{
-	icon_state = "sand2_c";
-	dir = 8
-	},
-/turf/open/asphalt/cement{
-	icon_state = "cement4"
-	},
-/area/desert_dam/interior/dam_interior/south_tunnel)
 "cwi" = (
 /obj/structure/flora/desert/bush{
 	icon_state = "tree_4"
@@ -58907,10 +58871,6 @@
 	icon_state = "whitegreen"
 	},
 /area/desert_dam/building/medical/virology_wing)
-"cIR" = (
-/obj/structure/window/framed/colony,
-/turf/closed/wall/r_wall,
-/area/desert_dam/building/medical/virology_wing)
 "cIS" = (
 /turf/open/floor/prison{
 	dir = 9;
@@ -60103,10 +60063,6 @@
 	dir = 10
 	},
 /area/desert_dam/building/medical/treatment_room)
-"cLW" = (
-/obj/structure/window/framed/colony,
-/turf/closed/wall/r_wall,
-/area/desert_dam/building/medical/virology_isolation)
 "cLX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -61231,10 +61187,6 @@
 	dir = 2;
 	icon_state = "whitegreen"
 	},
-/area/desert_dam/building/medical/virology_wing)
-"cON" = (
-/obj/structure/window/framed/colony,
-/turf/closed/wall,
 /area/desert_dam/building/medical/virology_wing)
 "cOO" = (
 /obj/structure/disposalpipe/segment,
@@ -82187,6 +82139,10 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
+"lOM" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/south_tunnel)
 "lUl" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/document_objective/folder,
@@ -102426,7 +102382,7 @@ bMI
 bJE
 che
 cvv
-bJC
+lOM
 ciN
 cir
 adt
@@ -102688,7 +102644,7 @@ bML
 cgB
 cgB
 bJC
-bJC
+chJ
 bcH
 bgx
 adt
@@ -102950,7 +102906,7 @@ cfQ
 cgB
 cgB
 bJC
-ciq
+chJ
 dTs
 dTs
 adt
@@ -103997,7 +103953,7 @@ cfj
 cfR
 bJE
 che
-cwh
+cvA
 dTs
 dTs
 dTs
@@ -104259,7 +104215,7 @@ cfj
 cfS
 cgz
 che
-cvv
+cvA
 dTs
 dTs
 dTs
@@ -122086,7 +122042,7 @@ cmv
 cnH
 coQ
 cpC
-cqs
+cjV
 crD
 crD
 dPT
@@ -126564,7 +126520,7 @@ cII
 cJG
 cKy
 cKx
-cLW
+cNa
 cMR
 cNF
 cNF
@@ -127350,7 +127306,7 @@ cIH
 cJG
 cKx
 cKy
-cLW
+cNa
 cMT
 cNH
 dTc
@@ -129021,10 +128977,10 @@ agy
 agu
 akL
 aCr
-akd
+aug
 akb
 aix
-aiC
+agH
 afG
 akL
 dTs
@@ -129427,9 +129383,9 @@ crM
 crM
 cue
 cue
-cwe
+cuf
 cwW
-cwe
+cuf
 cue
 czf
 czf
@@ -130498,7 +130454,7 @@ cHN
 cHO
 cNM
 dTi
-cON
+cHO
 cHN
 cLu
 cLu
@@ -130752,10 +130708,10 @@ dRy
 dRX
 cHj
 cHN
-cIR
-cIR
+cHO
+cHO
 cKF
-cIR
+cHO
 cHN
 cIP
 cNM
@@ -138836,8 +138792,8 @@ dib
 dMq
 aoi
 aoi
-asN
-asN
+aNU
+aNU
 aoi
 aoi
 bnA
@@ -139101,7 +139057,7 @@ asO
 avp
 aNS
 aNS
-asN
+aNU
 bnA
 aSH
 bvz
@@ -139358,7 +139314,7 @@ dib
 dib
 dib
 dMq
-asN
+aNU
 asQ
 avv
 aNy
@@ -139620,7 +139576,7 @@ dib
 dib
 dib
 dMq
-asN
+aNU
 asS
 avS
 aNY
@@ -139887,7 +139843,7 @@ atY
 aMF
 aNy
 aNS
-asN
+aNU
 bnA
 aSH
 bzY

@@ -22,6 +22,7 @@
 /obj/machinery/atmospherics/unary/cryo_cell/New()
 	..()
 	initialize_directions = dir
+	processable = 1
 	start_processing()
 
 /obj/machinery/atmospherics/unary/cryo_cell/initialize()
@@ -231,7 +232,7 @@
 			beaker.reagents.reaction(occupant)
 		if(occupant.health >= 100)
 			display_message("external wounds are")
-			sleep(300)	// spam prevention
+			go_out()
 
 /obj/machinery/atmospherics/unary/cryo_cell/proc/go_out()
 	if(!( occupant ))

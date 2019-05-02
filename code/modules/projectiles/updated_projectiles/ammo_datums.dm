@@ -1568,7 +1568,8 @@
 	name = "flare"
 	ping = null //no bounce off.
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_INCENDIARY
+	iff_signal = ACCESS_IFF_MARINE
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_SKIPS_HUMANS
 
 /datum/ammo/flare/New()
 	..()

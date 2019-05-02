@@ -126,7 +126,6 @@
 		/obj/item/storage/belt/shotgun = round(scale * 10),
 		/obj/item/clothing/tie/storage/webbing = round(scale * 5),
 		/obj/item/clothing/tie/storage/brown_vest = round(scale * 2),
-		//obj/item/clothing/tie/holster = 0,
 		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
 		/obj/item/storage/belt/gun/smartpistol = round(scale * 10),
 		/obj/item/storage/sparepouch = round(scale * 2),
@@ -150,23 +149,15 @@
 		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 10),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 15),
-		//obj/item/weapon/gun/smg/m39/elite = 0,
-		//obj/item/weapon/gun/rifle/m41aMK1 = 0,
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 20),
 		/obj/item/weapon/gun/rifle/l42mk1 = round(scale * 20),
-		//obj/item/weapon/gun/rifle/m41a/elite = 0,
-		//obj/item/weapon/gun/rifle/lmg = 0,
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 10),
-		//obj/item/weapon/gun/shotgun/combat = 0,
 		/obj/item/explosive/mine = round(scale * 2),
 		/obj/item/storage/box/nade_box = round(scale * 2),
 		/obj/item/storage/box/nade_box/frag = round(scale * 2),
-		//obj/item/explosive/grenade/HE = 0,
-		//obj/item/explosive/grenade/HE/frag = 0,
 		/obj/item/explosive/grenade/HE/m15 = round(scale * 2),
 		/obj/item/explosive/grenade/incendiary = round(scale * 2),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 5),
-		//obj/item/explosive/grenade/phosphorus = 0,
 		/obj/item/storage/box/m94 = round(scale * 10),
 		/obj/item/storage/box/m94/signal = round(scale * 2),
 		/obj/item/device/flashlight/combat = round(scale * 5),
@@ -180,28 +171,13 @@
 		/obj/item/tool/shovel/etool = round(scale * 4)
 	)
 
-	contraband = list(
-		/*
-		/obj/item/weapon/gun/pistol/holdout = 0,
-		/obj/item/weapon/gun/pistol/heavy = 0,
-		/obj/item/weapon/gun/pistol/highpower = 0,
-		/obj/item/weapon/gun/pistol/vp70 = 0,
-		/obj/item/weapon/gun/revolver/small = 0,
-		/obj/item/weapon/gun/revolver/cmb = 0,
-		/obj/item/weapon/gun/shotgun/merc = 0,
-		/obj/item/weapon/gun/shotgun/pump/cmb = 0,
-		/obj/item/weapon/gun/shotgun/double = 0,
-		/obj/item/weapon/gun/smg/mp7 = 0,
-		/obj/item/weapon/gun/smg/skorpion = 0,
-		/obj/item/weapon/gun/smg/uzi = 0,
-		/obj/item/weapon/gun/smg/p90 = 0
-		*/
-	)
+	contraband = list()
 
 	premium = list()
 
 	//Rebuild the vendor's inventory to make our changes apply
 	build_inventory(products)
+
 /obj/machinery/vending/marine/cargo_guns/wo
 
 /obj/machinery/vending/marine/cargo_guns/wo/populate_product_list(var/scale)
@@ -237,47 +213,21 @@
 		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
 		/obj/item/weapon/gun/revolver/m44 = round(scale * 5),
 		/obj/item/weapon/gun/smg/m39 = round(scale * 10),
-		//obj/item/weapon/gun/smg/m39/elite = round(0),
 		/obj/item/weapon/gun/rifle/m41aMK1 = round(scale * 5),
 		/obj/item/weapon/gun/rifle/m41a = round(scale * 10),
-		//obj/item/weapon/gun/rifle/m41a/elite = round(0),
-		//obj/item/weapon/gun/rifle/lmg = round(0),
 		/obj/item/weapon/gun/shotgun/pump = round(scale * 5),
 		/obj/item/weapon/gun/shotgun/combat = round(scale * 3),
 		/obj/item/explosive/mine = round(scale * 5),
-		//obj/item/storage/box/nade_box = round(0),
 		/obj/item/explosive/grenade/HE = round(scale * 1),
-		//obj/item/explosive/grenade/HE/m15 = round(0),
 		/obj/item/explosive/grenade/HE = round(scale * 1),
-		//obj/item/explosive/grenade/HE/m15 = round(0),
 		/obj/item/explosive/grenade/incendiary = round(scale * 1),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 1),
-		//obj/item/explosive/grenade/phosphorus = round(0),
 		/obj/item/storage/box/m94 = round(scale * 10),
-		//obj/item/storage/box/zipcuffs = round(0),
 		/obj/item/device/flashlight/combat = round(scale * 15),
 		/obj/item/clothing/mask/gas = round(scale * 10),
 	)
 
-
-
-	contraband = list(
-		/*
-		/obj/item/weapon/gun/pistol/holdout = 0,
-		/obj/item/weapon/gun/pistol/heavy = 0,
-		/obj/item/weapon/gun/pistol/highpower = 0,
-		/obj/item/weapon/gun/pistol/vp70 = 0,
-		/obj/item/weapon/gun/revolver/small = 0,
-		/obj/item/weapon/gun/revolver/cmb = 0,
-		/obj/item/weapon/gun/shotgun/merc = 0,
-		/obj/item/weapon/gun/shotgun/pump/cmb = 0,
-		/obj/item/weapon/gun/shotgun/double = 0,
-		/obj/item/weapon/gun/smg/mp7 = 0,
-		/obj/item/weapon/gun/smg/skorpion = 0,
-		/obj/item/weapon/gun/smg/uzi = 0,
-		/obj/item/weapon/gun/smg/p90 = 0
-		*/
-	)
+	contraband = list()
 
 	premium = list()
 
@@ -293,8 +243,69 @@
 	. = ..()
 	cargo_guns_vendors.Remove(src)
 
+/obj/machinery/vending/marine/cargo_guns/squad
+	name = "\improper ColMarTech automated armaments squad vendor"
+	req_access = list(ACCESS_MARINE_LEADER)
 
+/obj/machinery/vending/marine/cargo_guns/squad/populate_product_list(var/scale)
+	product_records = list()
 
+	products = list(
+		/obj/item/storage/backpack/marine = round(scale * 15),
+		/obj/item/storage/backpack/marine/engineerpack = round(scale * 2),
+		/obj/item/storage/belt/marine = round(scale * 15),
+		/obj/item/storage/belt/shotgun = round(scale * 10),
+		/obj/item/clothing/tie/storage/webbing = round(scale * 3),
+		/obj/item/clothing/tie/storage/brown_vest = round(scale * 2),
+		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
+		/obj/item/storage/belt/gun/smartpistol = round(scale * 10),
+		/obj/item/storage/sparepouch = round(scale * 2),
+		/obj/item/storage/belt/gun/m44 = round(scale * 5),
+		/obj/item/storage/large_holster/m39 = round(scale * 2),
+		/obj/item/storage/pouch/general/medium = round(scale * 2),
+		/obj/item/storage/pouch/construction = round(scale * 2),
+		/obj/item/storage/pouch/document/small = round(scale * 2),
+		/obj/item/storage/pouch/tools = round(scale * 2),
+		/obj/item/storage/pouch/explosive = round(scale * 2),
+		/obj/item/storage/pouch/syringe = round(scale * 2),
+		/obj/item/storage/pouch/medical = round(scale * 2),
+		/obj/item/storage/pouch/medkit = round(scale * 2),
+		/obj/item/storage/pouch/magazine = round(scale * 5),
+		/obj/item/storage/pouch/flare/full = round(scale * 5),
+		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
+		/obj/item/storage/pouch/pistol = round(scale * 15),
+		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 3),
+		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 10),
+		/obj/item/weapon/gun/pistol/m1911 = round(scale * 3),
+		/obj/item/weapon/gun/pistol/smart = round(scale * 3),
+		/obj/item/weapon/gun/revolver/m44 = round(scale * 5),
+		/obj/item/weapon/gun/smg/m39 = round(scale * 10),
+		/obj/item/weapon/gun/rifle/m41a = round(scale * 10),
+		/obj/item/weapon/gun/rifle/l42mk1 = round(scale * 10),
+		/obj/item/weapon/gun/shotgun/pump = round(scale * 10),
+		/obj/item/explosive/mine = round(scale * 1),
+		/obj/item/storage/box/nade_box = round(scale * 1),
+		/obj/item/storage/box/nade_box/frag = round(scale * 1),
+		/obj/item/explosive/grenade/HE/m15 = round(scale * 2),
+		/obj/item/explosive/grenade/incendiary = round(scale * 1),
+		/obj/item/explosive/grenade/smokebomb = round(scale * 2),
+		/obj/item/storage/box/m94 = round(scale * 10),
+		/obj/item/storage/box/m94/signal = round(scale * 1),
+		/obj/item/device/flashlight/combat = round(scale * 5),
+		/obj/item/clothing/mask/gas = round(scale * 10),
+		/obj/item/storage/box/kit/mini_jtac = round(scale * 1),
+		/obj/item/storage/box/kit/heavy_support = round(scale * 1),
+		/obj/item/storage/box/kit/mini_intel = round(scale * 1),
+		/obj/item/storage/box/kit/pursuit = round(scale * 1),
+		/obj/item/folding_barricade = round(scale * 2),
+		/obj/item/tool/shovel/etool = round(scale * 2)
+	)
+
+	contraband = list()
+
+	premium = list()
+
+	build_inventory(products)
 
 /obj/machinery/vending/marine/cargo_ammo
 	name = "\improper ColMarTech automated munition vendor"
@@ -313,9 +324,7 @@
 	products = list(
 		/obj/item/storage/large_holster/machete/full = round(scale * 10),
 		/obj/item/ammo_magazine/pistol = round(scale * 20),
-		//obj/item/ammo_magazine/pistol/hp = 0,
 		/obj/item/ammo_magazine/pistol/ap = round(scale * 5),
-		//obj/item/ammo_magazine/pistol/incendiary = 0,
 		/obj/item/ammo_magazine/pistol/extended = round(scale * 10),
 		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 12),
 		/obj/item/ammo_magazine/pistol/smart = round(scale * 12),
@@ -334,43 +343,23 @@
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 10) % 8,
 		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
 		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 4),
-		//obj/item/ammo_magazine/rifle/incendiary = 0,
 		/obj/item/magazine_box/rifle_ap = round(scale * 10 / 10),
 		/obj/item/ammo_magazine/rifle/ap = round(scale * 10) % 10,
 		/obj/item/magazine_box/rifle/l42mk1 = round(scale * 10) % 10,
 		/obj/item/magazine_box/rifle/l42mk1/ap = round(scale * 1),
 		/obj/item/magazine_box/rifle/l42mk1/ext = round(scale * 2),
-		//obj/item/ammo_magazine/rifle/m4ra = 0,
-		//obj/item/ammo_magazine/rifle/m41aMK1 = 0,
-		//obj/item/ammo_magazine/rifle/lmg = 0,
 		/obj/item/magazine_box/shotgun = round(scale * 15 / 3),
 		/obj/item/ammo_magazine/shotgun/slugs = round(scale * 15) % 3,
 		/obj/item/magazine_box/shotgun/buckshot = round(scale * 10 / 3),
 		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 10) % 3,
 		/obj/item/magazine_box/shotgun/flechette = round(scale * 5 / 12),
 		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 5) % 12,
-		//obj/item/ammo_magazine/sniper = 0,
-		//obj/item/ammo_magazine/sniper/incendiary = 0,
-		//obj/item/ammo_magazine/sniper/flak = 0,
 		/obj/item/smartgun_powerpack = round(scale * 2),
 		/obj/item/ammo_magazine/flamer_tank = round(scale * 2)
 	)
 
-	contraband = list(
-		/*
-		/obj/item/ammo_magazine/pistol/incendiary = 0,
-		/obj/item/ammo_magazine/pistol/heavy = 0,
-		/obj/item/ammo_magazine/pistol/holdout = 0,
-		/obj/item/ammo_magazine/pistol/highpower = 0,
-		/obj/item/ammo_magazine/pistol/vp70 = 0,
-		/obj/item/ammo_magazine/revolver/small = 0,
-		/obj/item/ammo_magazine/revolver/cmb = 0,
-		/obj/item/ammo_magazine/smg/mp7 = 0,
-		/obj/item/ammo_magazine/smg/skorpion = 0,
-		/obj/item/ammo_magazine/smg/uzi = 0,
-		/obj/item/ammo_magazine/smg/p90 = 0
-		*/
-	)
+	contraband = list()
+
 	premium = list()
 
 	//Rebuild the vendor's inventory to make our changes apply
@@ -423,7 +412,55 @@
 	. = ..()
 	cargo_ammo_vendors.Remove(src)
 
+/obj/machinery/vending/marine/cargo_ammo/squad
+	name = "\improper ColMarTech automated munition squad vendor"
+	req_access = list(ACCESS_MARINE_LEADER)
 
+/obj/machinery/vending/marine/cargo_ammo/squad/populate_product_list(var/scale)
+	product_records = list()
+
+	products = list(
+		/obj/item/storage/large_holster/machete/full = round(scale * 5),
+		/obj/item/ammo_magazine/pistol = round(scale * 10),
+		/obj/item/ammo_magazine/pistol/ap = round(scale * 3),
+		/obj/item/ammo_magazine/pistol/extended = round(scale * 5),
+		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 4),
+		/obj/item/ammo_magazine/pistol/smart = round(scale * 4),
+		/obj/item/ammo_magazine/revolver = round(scale * 10),
+		/obj/item/ammo_magazine/revolver/marksman = round(scale * 3),
+		/obj/item/ammo_magazine/revolver/heavy = round(scale * 5),
+		/obj/item/magazine_box/smg = round(scale * 20 / 12),
+		/obj/item/ammo_magazine/smg/m39 = round(scale * 20) % 12,
+		/obj/item/magazine_box/smg/ap = round(scale * 5 / 12),
+		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
+		/obj/item/magazine_box/smg/extended = round(scale * 10 / 10),
+		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
+		/obj/item/magazine_box = round(scale * 15 / 10),
+		/obj/item/ammo_magazine/rifle = round(scale * 15) % 10,
+		/obj/item/magazine_box/rifle_extended = round(scale * 10 / 8),
+		/obj/item/ammo_magazine/rifle/extended = round(scale * 5) % 8,
+		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
+		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 2),
+		/obj/item/magazine_box/rifle_ap = round(scale * 5 / 10),
+		/obj/item/ammo_magazine/rifle/ap = round(scale * 5) % 10,
+		/obj/item/magazine_box/rifle/l42mk1 = round(scale * 5) % 10,
+		/obj/item/magazine_box/rifle/l42mk1/ap = round(scale * 1),
+		/obj/item/magazine_box/rifle/l42mk1/ext = round(scale * 1),
+		/obj/item/magazine_box/shotgun = round(scale * 7 / 3),
+		/obj/item/ammo_magazine/shotgun = round(scale * 7) % 3,
+		/obj/item/magazine_box/shotgun/buckshot = round(scale * 5 / 3),
+		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 5) % 3,
+		/obj/item/magazine_box/shotgun/flechette = round(scale * 3 / 12),
+		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 3) % 12,
+		/obj/item/smartgun_powerpack = round(scale * 1),
+		/obj/item/ammo_magazine/flamer_tank = round(scale * 1)
+	)
+
+	contraband = list()
+
+	premium = list()
+
+	build_inventory(products)
 
 
 //MARINE FOOD VENDOR APOPHIS775 23DEC2017
@@ -702,40 +739,40 @@
 	product_records = list()
 
 	products = list(
-		/obj/item/attachable/heavy_barrel = round(scale * 4),
-		/obj/item/attachable/bayonet = round(scale * 14),
-		/obj/item/attachable/extended_barrel = round(scale * 10),
-		/obj/item/attachable/compensator = round(scale * 10),
-		/obj/item/attachable/suppressor = round(scale * 14),
+		/obj/item/attachable/heavy_barrel = round(scale * 2),
+		/obj/item/attachable/bayonet = round(scale * 10),
+		/obj/item/attachable/extended_barrel = round(scale * 6),
+		/obj/item/attachable/compensator = round(scale * 6),
+		/obj/item/attachable/suppressor = round(scale * 6),
 
 		/obj/item/attachable/scope/mini_iff = round(scale * 2)+1,
-		/obj/item/attachable/magnetic_harness = round(scale * 10),
+		/obj/item/attachable/magnetic_harness = round(scale * 6),
 		/obj/item/attachable/scope/mini = round(scale * 4),
-		/obj/item/attachable/quickfire = round(scale * 3),
+		/obj/item/attachable/quickfire = round(scale * 4),
 		/obj/item/attachable/scope = round(scale * 4),
-		/obj/item/attachable/flashlight = round(scale * 14),
-		/obj/item/attachable/reddot = round(scale * 14),
-		/obj/item/attachable/reflex = round(scale * 6),
+		/obj/item/attachable/flashlight = round(scale * 10),
+		/obj/item/attachable/reddot = round(scale * 9),
+		/obj/item/attachable/reflex = round(scale * 9),
 
-		/obj/item/attachable/angledgrip = round(scale * 14),
-		/obj/item/attachable/bipod = round(scale * 8),
-		/obj/item/attachable/burstfire_assembly = round(scale * 4),
+		/obj/item/attachable/angledgrip = round(scale * 6),
+		/obj/item/attachable/bipod = round(scale * 6),
+		/obj/item/attachable/burstfire_assembly = round(scale * 3),
 		/obj/item/attachable/gyro = round(scale * 4),
-		/obj/item/attachable/lasersight = round(scale * 14),
-		/obj/item/attachable/flashlight/grip = round(scale * 14),
-		/obj/item/attachable/verticalgrip = round(scale * 14),
+		/obj/item/attachable/lasersight = round(scale * 9),
+		/obj/item/attachable/flashlight/grip = round(scale * 9),
+		/obj/item/attachable/verticalgrip = round(scale * 9),
 
 		/obj/item/attachable/stock/carbine = round(scale * 4),
 		/obj/item/attachable/stock/shotgun = round(scale * 4),
 		/obj/item/attachable/stock/rifle = round(scale * 4),
 		/obj/item/attachable/stock/revolver = round(scale * 4),
-		/obj/item/attachable/stock/smg/collapsible = round(scale * 1) + 1,
-		/obj/item/attachable/stock/smg/brace = round(scale * 1) + 1,
+		/obj/item/attachable/stock/smg/collapsible = round(scale * 2) + 1,
+		/obj/item/attachable/stock/smg/brace = round(scale * 2) + 1,
 		/obj/item/attachable/stock/smg = round(scale * 4),
 
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),
 		/obj/item/attachable/attached_gun/flamer = round(scale * 4),
-		/obj/item/attachable/attached_gun/grenade = round(scale * 10)
+		/obj/item/attachable/attached_gun/grenade = round(scale * 5)
 	)
 
 	//Rebuild the vendor's inventory to make our changes apply
@@ -749,6 +786,25 @@
 /obj/machinery/vending/attachments/Dispose()
 	. = ..()
 	attachment_vendors.Remove(src)
+
+/obj/machinery/vending/attachments/squad
+	name = "\improper Armat Systems Squad Attachments Vendor"
+	desc = "An attachment vendor made specifically for squads. Can be opened by Squad Leaders."
+	req_access = list(ACCESS_MARINE_LEADER)
+	var/vend_dir = SOUTH
+
+	products = list()
+
+/obj/machinery/vending/attachments/squad/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
+	set waitfor = 0
+	if(delay_vending)
+		use_power(vend_power_usage)	//actuators and stuff
+		if(icon_vend) 
+			flick(icon_vend,src) //Show the vending animation if needed
+		sleep(delay_vending)
+	if(ispath(R.product_path,/obj/item/weapon/gun)) 
+		. = new R.product_path(get_turf(get_step(src, vend_dir)),1)
+	else . = new R.product_path(get_turf(get_step(src, vend_dir)))
 
 
 

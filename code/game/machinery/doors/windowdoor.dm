@@ -313,3 +313,6 @@
 	dir = SOUTH
 	icon_state = "right"
 	base_state = "right"
+
+/obj/machinery/door/window/tinted
+	opacity = 1

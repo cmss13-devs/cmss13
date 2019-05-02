@@ -427,8 +427,18 @@
 	icon_state = "alpha"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/squads/alpha/req
+	name = "\improper Squad Alpha Requisitions"
+	icon_state = "alpha"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/squads/bravo
 	name = "\improper Squad Bravo Preparation"
+	icon_state = "bravo"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/squads/bravo/req
+	name = "\improper Squad Bravo Requisitions"
 	icon_state = "bravo"
 	fake_zlevel = 2 // lowerdeck
 
@@ -436,9 +446,19 @@
 	name = "\improper Squad Charlie Preparation"
 	icon_state = "charlie"
 	fake_zlevel = 2 // lowerdeck
+	
+/area/almayer/squads/charlie/req
+	name = "\improper Squad Charlie Requisitions"
+	icon_state = "charlie"
+	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/squads/delta
 	name = "\improper Squad Delta Preparation"
+	icon_state = "delta"
+	fake_zlevel = 2 // lowerdeck
+	
+/area/almayer/squads/delta/req
+	name = "\improper Squad Delta Requisitions"
 	icon_state = "delta"
 	fake_zlevel = 2 // lowerdeck
 

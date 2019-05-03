@@ -30,6 +30,12 @@
 		if(adj_temp)
 			if(M.bodytemperature < 310)//310 is the normal bodytemp. 310.055
 				M.bodytemperature = min(310, M.bodytemperature + (25 * TEMPERATURE_DAMAGE_COEFFICIENT))
+/datum/reagent/drink/cold
+	name = "Cold drink"
+	adj_temp = -5
+
+
+//FRIUT JUICE//
 
 /datum/reagent/drink/orangejuice
 	name = "Orange juice"
@@ -96,55 +102,6 @@
 	description = "It's grrrrrape!"
 	color = "#863333" // rgb: 134, 51, 51
 
-/datum/reagent/drink/souto
-	name = "Souto Classic"
-	id = "souto_classic"
-	description = "A fruit flavored soda canned in Havana"
-	color = "#802b00"
-
-/datum/reagent/drink/souto/cherry
-	name = "Souto Cherry"
-	id = "souto_cherry"
-	description = "Now with more artificial flavors! Canned in Havanna"
-	color = "#800000"
-
-/datum/reagent/drink/souto/blueraspberry
-	name = "Blue Raspberry Souto"
-	id = "blueraspberry"
-	description = "A blue fruit flavored soda canned in Havana"
-	color = "#005B96"
-
-/datum/reagent/drink/souto/peach
-	name = "Peach Souto"
-	id = "peach"
-	description = "A pink fruit flavored soda with flecks of peach pit floating inside canned in Havana"
-	color = "#FFE5B4"
-
-/datum/reagent/drink/souto/cranberry
-	name = "Cranberry Souto"
-	id = "cranberry"
-	description = "A red fruit flavored soda canned in Havana"
-	color = "#950714"
-
-/datum/reagent/drink/davenport
-	name = "Davenport Rye"
-	id = "davenport"
-	description = "An expensive alcohol with a distinct flavor"
-	color = "#ffcc66"
-
-/datum/reagent/drink/wy_beer
-	name = "Aspen Beer"
-	id = "aspen"
-	description = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
-	color = "#ffcc66"
-
-/datum/reagent/drink/grapesoda
-	name = "Grape Soda"
-	id = "grapesoda"
-	description = "Grapes made into a fine drank."
-	color = "#421C52" // rgb: 98, 57, 53
-	adj_drowsy 	= 	-3
-
 /datum/reagent/drink/poisonberryjuice
 	name = "Poison Berry Juice"
 	id = "poisonberryjuice"
@@ -174,17 +131,22 @@
 	description = "The raw essence of a banana."
 	color = "#863333" // rgb: 175, 175, 0
 
-/datum/reagent/drink/nothing
-	name = "Nothing"
-	id = "nothing"
-	description = "Absolutely nothing."
-
 /datum/reagent/drink/potato_juice
 	name = "Potato Juice"
 	id = "potato"
 	description = "Juice of the potato. Bleh."
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
+
+/datum/reagent/drink/grenadine
+	name = "Grenadine Syrup"
+	id = "grenadine"
+	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
+	color = "#FF004F" // rgb: 255, 0, 79
+
+
+
+//MILK//
 
 /datum/reagent/drink/milk
 	name = "Milk"
@@ -210,19 +172,148 @@
 	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
 
-/datum/reagent/drink/grenadine
-	name = "Grenadine Syrup"
-	id = "grenadine"
-	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
-	color = "#FF004F" // rgb: 255, 0, 79
+/datum/reagent/drink/cold/milkshake
+	name = "Milkshake"
+	description = "Glorious brainfreezing mixture."
+	id = "milkshake"
+	color = "#AEE5E4" // rgb" 174, 229, 228
+	adj_temp = -9
 
-/datum/reagent/drink/hot_coco
-	name = "Hot Chocolate"
-	id = "hot_coco"
-	description = "Made with love! And cocoa beans."
-	nutriment_factor = 2 * FOOD_METABOLISM
-	color = "#403010" // rgb: 64, 48, 16
-	adj_temp = 5
+	on_mob_life(mob/living/M)
+		. = ..()
+		if(!.) return
+		if(!M)
+			M = holder.my_atom
+		if(prob(1))
+			M.emote("shiver")
+		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
+		holder.remove_reagent("capsaicin", 5)
+		holder.remove_reagent(src.id, FOOD_METABOLISM)
+
+
+
+//SOUTO//
+
+/datum/reagent/drink/souto
+	name = "Souto Classic"
+	id = "souto_classic"
+	description = "A tangerine flavored soda that's canned in Havana"
+	color = "#802b00"
+	adj_drowsy 	= 	-10
+
+/datum/reagent/drink/souto/cherry
+	name = "Cherry Souto"
+	id = "souto_cherry"
+	description = "A cherry flavored soda that's canned in Havanna"
+	color = "#800000"
+
+/datum/reagent/drink/souto/lime
+	name = "Lime Souto"
+	id = "souto_lime"
+	description = "A lime flavored soda that's canned in Havanna"
+	color = "#878F00"
+
+/datum/reagent/drink/souto/grape
+	name = "Grape Souto"
+	id = "souto_cherry"
+	description = "A grape flavored soda that's canned in Havanna"
+	color = "#421C52"
+
+/datum/reagent/drink/souto/blueraspberry
+	name = "Blue Raspberry Souto"
+	id = "blueraspberry"
+	description = "A blue fruit flavored soda that's canned in Havana"
+	color = "#005B96"
+
+/datum/reagent/drink/souto/peach
+	name = "Peach Souto"
+	id = "peach"
+	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana"
+	color = "#FFE5B4"
+
+/datum/reagent/drink/souto/cranberry
+	name = "Cranberry Souto"
+	id = "cranberry"
+	description = "A cranberry flavored soda that's canned in Havana"
+	color = "#950714"
+
+
+
+//OTHER SODA//
+
+/datum/reagent/drink/cold/sodawater
+	name = "Soda Water"
+	id = "sodawater"
+	description = "A can of club soda. Why not make a scotch and soda?"
+	color = "#619494" // rgb: 97, 148, 148
+	adj_dizzy = -5
+	adj_drowsy = -3
+
+/datum/reagent/drink/cold/grapesoda
+	name = "Grape Soda"
+	id = "grapesoda"
+	description = "Grapes made into a fine drank."
+	color = "#421C52" // rgb: 98, 57, 53
+	adj_drowsy 	= 	-3
+
+/datum/reagent/drink/cold/space_cola
+	name = "Space Cola"
+	id = "cola"
+	description = "A refreshing beverage."
+	reagent_state = LIQUID
+	color = "#100800" // rgb: 16, 8, 0
+	adj_drowsy 	= 	-3
+
+/datum/reagent/drink/cold/nuka_cola
+	name = "Nuka Cola"
+	id = "nuka_cola"
+	description = "Cola, cola never changes."
+	color = "#100800" // rgb: 16, 8, 0
+	adj_sleepy = -2
+
+	on_mob_life(mob/living/M)
+		. = ..()
+		if(!.) return
+		M.make_jittery(20)
+		M.druggy = max(M.druggy, 30)
+		M.dizziness +=5
+		M.drowsyness = 0
+
+/datum/reagent/drink/cold/spacemountainwind
+	name = "Mountain Wind"
+	id = "spacemountainwind"
+	description = "Blows right through you like a space wind."
+	color = "#102000" // rgb: 16, 32, 0
+	adj_drowsy = -7
+	adj_sleepy = -1
+
+/datum/reagent/drink/cold/dr_gibb
+	name = "Dr. Gibb"
+	id = "dr_gibb"
+	description = "A delicious blend of 42 different flavours"
+	color = "#102000" // rgb: 16, 32, 0
+	adj_drowsy = -6
+
+/datum/reagent/drink/cold/space_up
+	name = "Space-Up"
+	id = "space_up"
+	description = "Tastes like a hull breach in your mouth."
+	color = "#202800" // rgb: 32, 40, 0
+	adj_temp = -8
+
+
+
+//BEER//
+
+/datum/reagent/drink/wy_beer
+	name = "Aspen Beer"
+	id = "aspen"
+	description = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
+	color = "#ffcc66"
+
+
+
+//COFFEE/TEA//
 
 /datum/reagent/drink/coffee
 	name = "Coffee"
@@ -328,9 +419,67 @@
 	color = "#104038" // rgb: 16, 64, 56
 	adj_temp = -5
 
-/datum/reagent/drink/cold
-	name = "Cold drink"
-	adj_temp = -5
+
+
+//OTHER//
+
+/datum/reagent/drink/nothing
+	name = "Nothing"
+	id = "nothing"
+	description = "Absolutely nothing."
+
+/datum/reagent/drink/hot_coco
+	name = "Hot Chocolate"
+	id = "hot_coco"
+	description = "Made with love! And cocoa beans."
+	nutriment_factor = 2 * FOOD_METABOLISM
+	color = "#403010" // rgb: 64, 48, 16
+	adj_temp = 5
+
+/datum/reagent/machosauce
+	name = "Macho Sauce"
+	id = "machosauce"
+	description = "A backalley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
+	reagent_state = LIQUID
+	color = "#d1001c" // rgb: 209, 0, 28
+
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+
+/datum/reagent/machosauce/on_overdose(mob/living/M)
+	M.confused = max(M.confused, 20)
+	if(prob(10))
+		M.emote(pick("sigh","grumble","frown"))
+
+/datum/reagent/machosauce/on_overdose_critical(mob/living/M)
+	M.make_jittery(5)
+	M.knocked_out = max(M.knocked_out, 20)
+	if(prob(10))
+		M.emote(pick("cry","moan","pain"))
+
+/datum/reagent/machosauce/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.) return
+	if(!M)
+		M = holder.my_atom
+	if(!data)
+		data = 1
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
+			switch(data)
+				if(1)
+					to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
+					M.make_dizzy(10)
+				if(2 to INFINITY)
+					H.apply_effect(4,AGONY,0)
+					if(prob(5))
+						H.visible_message("<span class='warning'>[H] [pick("dry heaves!","coughs!","splutters!")]</span>")
+						to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
+						M.make_dizzy(20)
+	holder.remove_reagent("frostoil", 5)
+	holder.remove_reagent(src.id, RAPID_METABOLISM)
+	data++
 
 /datum/reagent/drink/cold/tonic
 	name = "Tonic Water"
@@ -341,14 +490,6 @@
 	adj_drowsy = -3
 	adj_sleepy = -2
 
-/datum/reagent/drink/cold/sodawater
-	name = "Soda Water"
-	id = "sodawater"
-	description = "A can of club soda. Why not make a scotch and soda?"
-	color = "#619494" // rgb: 97, 148, 148
-	adj_dizzy = -5
-	adj_drowsy = -3
-
 /datum/reagent/drink/cold/ice
 	name = "Ice"
 	id = "ice"
@@ -356,57 +497,12 @@
 	reagent_state = SOLID
 	color = "#619494" // rgb: 97, 148, 148
 
-/datum/reagent/drink/cold/space_cola
-	name = "Space Cola"
-	id = "cola"
-	description = "A refreshing beverage."
-	reagent_state = LIQUID
-	color = "#100800" // rgb: 16, 8, 0
-	adj_drowsy 	= 	-3
-
-/datum/reagent/drink/cold/nuka_cola
-	name = "Nuka Cola"
-	id = "nuka_cola"
-	description = "Cola, cola never changes."
-	color = "#100800" // rgb: 16, 8, 0
-	adj_sleepy = -2
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_jittery(20)
-		M.druggy = max(M.druggy, 30)
-		M.dizziness +=5
-		M.drowsyness = 0
-
-/datum/reagent/drink/cold/spacemountainwind
-	name = "Mountain Wind"
-	id = "spacemountainwind"
-	description = "Blows right through you like a space wind."
-	color = "#102000" // rgb: 16, 32, 0
-	adj_drowsy = -7
-	adj_sleepy = -1
-
-/datum/reagent/drink/cold/dr_gibb
-	name = "Dr. Gibb"
-	id = "dr_gibb"
-	description = "A delicious blend of 42 different flavours"
-	color = "#102000" // rgb: 16, 32, 0
-	adj_drowsy = -6
-
-/datum/reagent/drink/cold/space_up
-	name = "Space-Up"
-	id = "space_up"
-	description = "Tastes like a hull breach in your mouth."
-	color = "#202800" // rgb: 32, 40, 0
-	adj_temp = -8
-
 /datum/reagent/drink/cold/lemon_lime
 	name = "Lemon Lime"
 	description = "A tangy substance made of 0.5% natural citrus!"
 	id = "lemon_lime"
 	color = "#878F00" // rgb: 135, 40, 0
-	adj_temp = -8
+	adj_temp = -2
 
 /datum/reagent/drink/cold/lemonade
 	name = "Lemonade"
@@ -414,69 +510,9 @@
 	id = "lemonade"
 	color = "#FFFF00" // rgb: 255, 255, 0
 
-/datum/reagent/drink/cold/kiraspecial
-	name = "Kira Special"
-	description = "Long live the guy who everyone had mistaken for a girl. Baka!"
-	id = "kiraspecial"
-	color = "#CCCC99" // rgb: 204, 204, 153
 
-/datum/reagent/drink/cold/brownstar
-	name = "Brown Star"
-	description = "It's not what it sounds like..."
-	id = "brownstar"
-	color = "#9F3400" // rgb: 159, 052, 000
-	adj_temp = - 2
 
-/datum/reagent/drink/cold/milkshake
-	name = "Milkshake"
-	description = "Glorious brainfreezing mixture."
-	id = "milkshake"
-	color = "#AEE5E4" // rgb" 174, 229, 228
-	adj_temp = -9
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(!M)
-			M = holder.my_atom
-		if(prob(1))
-			M.emote("shiver")
-		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
-		holder.remove_reagent("capsaicin", 5)
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-
-/datum/reagent/drink/cold/rewriter
-	name = "Rewriter"
-	description = "The secret of the sanctuary of the Libarian..."
-	id = "rewriter"
-	color = "#485000" // rgb:72, 080, 0
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M.make_jittery(5)
-
-/datum/reagent/doctor_delight
-	name = "The Doctor's Delight"
-	id = "doctorsdelight"
-	description = "A gulp a day keeps the MediBot away. That's probably for the best."
-	reagent_state = LIQUID
-	color = "#FF8CFF" // rgb: 255, 140, 255
-	nutriment_factor = 1 * FOOD_METABOLISM
-
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		M:nutrition += nutriment_factor
-		holder.remove_reagent(src.id, FOOD_METABOLISM)
-		if(M:getOxyLoss() && prob(50)) M:adjustOxyLoss(-2)
-		if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
-		if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
-		if(M:getToxLoss() && prob(50)) M:adjustToxLoss(-2)
-		if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
-		if(M.confused !=0) M.confused = max(0,M.confused - 5)
-
-//////////////////////////////////////////////The ten friggen million reagents that get you drunk//////////////////////////////////////////////
+//////////////////////////////////////////////Remove When Safe//////////////////////////////////////////////
 
 /datum/reagent/atomicbomb
 	name = "Atomic Bomb"
@@ -588,48 +624,46 @@
 				if(prob(30)) M.adjustToxLoss(2)
 		holder.remove_reagent(src.id, 0.2)
 
-/datum/reagent/machosauce
-	name = "Macho Sauce"
-	id = "machosauce"
-	description = "A backalley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
+/datum/reagent/drink/cold/rewriter
+	name = "Rewriter"
+	description = "The secret of the sanctuary of the Libarian..."
+	id = "rewriter"
+	color = "#485000" // rgb:72, 080, 0
+
+	on_mob_life(mob/living/M)
+		. = ..()
+		if(!.) return
+		M.make_jittery(5)
+
+/datum/reagent/doctor_delight
+	name = "The Doctor's Delight"
+	id = "doctorsdelight"
+	description = "A gulp a day keeps the MediBot away. That's probably for the best."
 	reagent_state = LIQUID
-	color = "#d1001c" // rgb: 209, 0, 28
+	color = "#FF8CFF" // rgb: 255, 140, 255
+	nutriment_factor = 1 * FOOD_METABOLISM
 
-	overdose = REAGENTS_OVERDOSE
-	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	on_mob_life(mob/living/M)
+		. = ..()
+		if(!.) return
+		M:nutrition += nutriment_factor
+		holder.remove_reagent(src.id, FOOD_METABOLISM)
+		if(M:getOxyLoss() && prob(50)) M:adjustOxyLoss(-2)
+		if(M:getBruteLoss() && prob(60)) M:heal_limb_damage(2,0)
+		if(M:getFireLoss() && prob(50)) M:heal_limb_damage(0,2)
+		if(M:getToxLoss() && prob(50)) M:adjustToxLoss(-2)
+		if(M.dizziness !=0) M.dizziness = max(0,M.dizziness-15)
+		if(M.confused !=0) M.confused = max(0,M.confused - 5)
 
-/datum/reagent/machosauce/on_overdose(mob/living/M)
-	M.confused = max(M.confused, 20)
-	if(prob(10))
-		M.emote(pick("sigh","grumble","frown"))
+/datum/reagent/drink/cold/kiraspecial
+	name = "Kira Special"
+	description = "Long live the guy who everyone had mistaken for a girl. Baka!"
+	id = "kiraspecial"
+	color = "#CCCC99" // rgb: 204, 204, 153
 
-/datum/reagent/machosauce/on_overdose_critical(mob/living/M)
-	M.make_jittery(5)
-	M.knocked_out = max(M.knocked_out, 20)
-	if(prob(10))
-		M.emote(pick("cry","moan","pain"))
-
-/datum/reagent/machosauce/on_mob_life(mob/living/M)
-	. = ..()
-	if(!.) return
-	if(!M)
-		M = holder.my_atom
-	if(!data)
-		data = 1
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.species && !(H.species.flags & (NO_PAIN|IS_SYNTHETIC)) )
-			switch(data)
-				if(1)
-					to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
-					M.make_dizzy(10)
-				if(2 to INFINITY)
-					H.apply_effect(4,AGONY,0)
-					if(prob(5))
-						H.visible_message("<span class='warning'>[H] [pick("dry heaves!","coughs!","splutters!")]</span>")
-						to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
-						M.make_dizzy(20)
-	holder.remove_reagent("frostoil", 5)
-	holder.remove_reagent(src.id, RAPID_METABOLISM)
-	data++
-
+/datum/reagent/drink/cold/brownstar
+	name = "Brown Star"
+	description = "It's not what it sounds like..."
+	id = "brownstar"
+	color = "#9F3400" // rgb: 159, 052, 000
+	adj_temp = -2

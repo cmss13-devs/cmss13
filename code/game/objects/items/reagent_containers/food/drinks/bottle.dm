@@ -142,7 +142,7 @@
 	center_of_mass = list("x"=16, "y"=3)
 	New()
 		..()
-		reagents.add_reagent("davenport", 50)
+		reagents.add_reagent("specialwhiskey", 50)
 
 
 /obj/item/reagent_container/food/drinks/bottle/bottleofnothing

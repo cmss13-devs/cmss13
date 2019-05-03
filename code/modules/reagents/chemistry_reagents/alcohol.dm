@@ -130,7 +130,7 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 2
 	dizzy_adj = 4
-	slur_start = 90		//amount absorbed after which mob starts slurring
+	slur_start = 30		//amount absorbed after which mob starts slurring
 
 /datum/reagent/ethanol/sake
 	name = "Sake"
@@ -338,7 +338,7 @@
 /datum/reagent/ethanol/sake
 	name = "Sake"
 	id = "sake"
-	description = "Anime's favorite drink."
+	description = "Rice wine invented in the Orient."
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 2
 

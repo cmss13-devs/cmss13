@@ -64,33 +64,30 @@
 	if (statpanel("Stats"))
 		stat("Operation Time:","[worldtime2text()]")
 		stat("Security Level:","[uppertext(get_security_level())]")
+
+		if(ticker && ticker.mode && ticker.mode.active_lz)
+			stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
+
+		if(assigned_squad)
+			if(assigned_squad.overwatch_officer)
+				stat("Overwatch Officer: ", "[assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]") 
+			if(assigned_squad.primary_objective)
+				stat("Primary Objective: ", assigned_squad.primary_objective)
+			if(assigned_squad.secondary_objective)
+				stat("Secondary Objective: ", assigned_squad.secondary_objective)
+
+		if(mobility_aura)
+			stat("Active Order: ", "MOVE")
+		if(protection_aura)
+			stat("Active Order: ", "HOLD")
+		if(marskman_aura)
+			stat("Active Order: ", "FOCUS")
+
+		if(EvacuationAuthority)
+			var/eta_status = EvacuationAuthority.get_status_panel_eta()
+			if(eta_status)
+				stat(null, eta_status)
 		return 1
-
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
-		if(eta_status)
-			stat(null, eta_status)
-
-	if(internal)
-		stat("Internal Atmosphere Info", internal.name)
-		stat("Tank Pressure", internal.pressure)
-		stat("Distribution Pressure", internal.distribute_pressure)
-
-	if(ticker && ticker.mode && ticker.mode.active_lz)
-		stat("Primary LZ: ", ticker.mode.active_lz.loc.loc.name)
-
-	if(assigned_squad)
-		if(assigned_squad.primary_objective)
-			stat("Primary Objective: ", assigned_squad.primary_objective)
-		if(assigned_squad.secondary_objective)
-			stat("Secondary Objective: ", assigned_squad.secondary_objective)
-
-	if(mobility_aura)
-		stat(null, "You are affected by a MOVE order.")
-	if(protection_aura)
-		stat(null, "You are affected by a HOLD order.")
-	if(marskman_aura)
-		stat(null, "You are affected by a FOCUS order.")
 
 /mob/living/carbon/human/ex_act(severity, direction)
 

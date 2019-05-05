@@ -61,6 +61,7 @@
 	desc = "A small bottle. Contains inaprovaline - used to stabilize patients."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle19"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/inaprovaline/New()
 	..()
@@ -71,6 +72,7 @@
 	desc = "A small bottle. Contains kelotane - used to treat burned areas."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle16"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/kelotane/New()
 	..()
@@ -81,6 +83,7 @@
 	desc = "A small bottle. Contains dexalin - used to supply blood with oxygen."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle10"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/dexalin/New()
 	..()
@@ -91,6 +94,7 @@
 	desc = "A small bottle. Contains spaceacillin - used to treat infected wounds."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle8"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/spaceacillin/New()
 	..()
@@ -117,10 +121,11 @@
 	reagents.add_reagent("cyanide", 60)
 
 /obj/item/reagent_container/glass/bottle/stoxin
-	name = "soporific bottle"
+	name = "Soporific bottle"
 	desc = "A small bottle of soporific. Just the fumes make you sleepy."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle20"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/stoxin/New()
 	..()
@@ -141,6 +146,7 @@
 	desc = "A small bottle of dylovene. Counters poisons, and repairs damage. A wonder drug."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle7"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/antitoxin/New()
 	..()
@@ -371,6 +377,7 @@
 	desc = "A small bottle. Contains Bicaridine - Used to treat brute damage by doctors."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/bicaridine/New()
 	..()
@@ -382,6 +389,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle4"
 	volume = 20
+	amount_per_transfer_from_this = 20
 
 /obj/item/reagent_container/glass/bottle/peridaxon/New()
 	..()
@@ -393,6 +401,7 @@
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle1"
 	volume = 20
+	amount_per_transfer_from_this = 20
 
 /obj/item/reagent_container/glass/bottle/tramadol/New()
 	..()

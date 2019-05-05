@@ -2,6 +2,8 @@
 #define CAT_HIDDEN 1
 #define CAT_COIN   2
 
+#define	VEND_HAND	1
+
 /datum/data/vending_product
 	var/product_name = "generic"
 	var/product_path = null
@@ -66,6 +68,7 @@
 	var/tipped_level = 0
 	var/hacking_safety = 0 //1 = Will never shoot inventory or allow all access
 	var/wrenchable = TRUE
+	var/vending_dir
 
 /obj/machinery/vending/New()
 	..()
@@ -525,12 +528,17 @@
 
 /obj/machinery/vending/proc/release_item(datum/data/vending_product/R, delay_vending = 0, dump_product = 0)
 	set waitfor = 0
+	
 	if(delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
 		if (icon_vend) flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
-	if(ispath(R.product_path,/obj/item/weapon/gun)) . = new R.product_path(get_turf(src),1)
-	else . = new R.product_path(get_turf(src))
+	if(src.vending_dir == VEND_HAND)
+		usr.put_in_hands(new R.product_path)
+	else if(ispath(R.product_path,/obj/item/weapon/gun))
+		. = new R.product_path(get_turf(src),1)
+	else
+		. = new R.product_path(get_turf(src))
 
 /obj/machinery/vending/MouseDrop_T(var/atom/movable/A, mob/user)
 

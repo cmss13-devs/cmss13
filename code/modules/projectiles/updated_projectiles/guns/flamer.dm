@@ -109,7 +109,7 @@
 		if(user)
 			if(magazine.reload_delay > 1)
 				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
+				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
 					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return
@@ -297,7 +297,7 @@
 		if(user)
 			if(magazine.reload_delay > 1)
 				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
+				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 				else
 					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 					return

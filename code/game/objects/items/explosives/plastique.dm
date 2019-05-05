@@ -51,7 +51,7 @@
 	"<span class='warning'>You are trying to plant [name] on [target]!</span>")
 	bombers += "[key_name(user)] attached C4 to [target.name]."
 
-	if(do_mob(user, target, 50, BUSY_ICON_HOSTILE))
+	if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		user.drop_held_item()
 		loc = null
 

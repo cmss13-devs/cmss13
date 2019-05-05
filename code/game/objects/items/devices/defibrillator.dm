@@ -151,7 +151,7 @@
 	SPAN_NOTICE("You start setting up the paddles on [H]'s chest"))
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
-	if(do_mob(user, H, 70, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
+	if(do_after(user, 70, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 
 		//Do this now, order doesn't matter
 		sparks.start()
@@ -196,9 +196,9 @@
 
 
 		if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. No soul detected.</span>")
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Defibrillation failed. No soul detected."))
 			return
-
+			
 		//At this point, the defibrillator is ready to work
 		H.adjustBruteLoss(-defib_heal_amt)
 		H.adjustFireLoss(-defib_heal_amt)

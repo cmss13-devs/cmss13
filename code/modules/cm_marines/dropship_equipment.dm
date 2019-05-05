@@ -35,7 +35,8 @@
 				return TRUE
 			if(installed_equipment) return TRUE
 			playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-			if(!do_after(user, 70, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return TRUE
+			if(!do_after(user, 70, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) 
+				return TRUE
 			if(installed_equipment || PC.loaded != SE) return TRUE
 			to_chat(user, SPAN_NOTICE("You install [SE] on [src]."))
 			SE.forceMove(loc)

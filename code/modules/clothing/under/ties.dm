@@ -138,7 +138,7 @@
 					SPAN_NOTICE("You start pinning [src] on [H]'s [U.name]."))
 					if(user.action_busy)
 						return
-					if(!do_mob(user, H, 20, BUSY_ICON_FRIENDLY))
+					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
 						return
 				user.drop_held_item()
 				U.hastie = src

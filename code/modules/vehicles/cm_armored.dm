@@ -646,7 +646,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	user.visible_message(SPAN_NOTICE("[user] starts repairing the [slot] slot on [src]."),
 		SPAN_NOTICE("You start repairing the [slot] slot on [src]."))
 
-	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_NOTICE("[user] stops repairing the [slot] slot on [src]."),
 			SPAN_NOTICE("You stop repairing the [slot] slot on [src]."))
 		return
@@ -710,8 +710,8 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
-		user.visible_message("<span class='warning'>[user] stops installing \the [HP] on [src].</span>", "<span class='warning'>You stop installing \the [HP] on [src].</span>")
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on [src]."), SPAN_WARNING("You stop installing \the [HP] on [src]."))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] installs \the [HP] on [src]."), SPAN_NOTICE("You install \the [HP] on [src]."))
@@ -748,8 +748,8 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 		if(HDPT_ARMOR) num_delays = 10
 		if(HDPT_TREADS) num_delays = 7
 
-	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, num_delays))
-		user.visible_message("<span class='warning'>[user] stops removing \the [old] on [src].</span>", "<span class='warning'>You stop removing \the [old] on [src].</span>")
+	if(!do_after(user, 30*num_delays, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on [src]."), SPAN_WARNING("You stop removing \the [old] on [src]."))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] removes \the [old] on [src]."), SPAN_NOTICE("You remove \the [old] on [src]."))

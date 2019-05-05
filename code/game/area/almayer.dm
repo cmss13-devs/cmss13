@@ -412,6 +412,11 @@
 	icon_state = "chemistry"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/medical/lockerroom
+	name = "\improper Medical Locker Room"
+	icon_state = "science"
+	fake_zlevel = 2 // lowerdeck
+
 /area/almayer/medical/cryo_tubes
 	name = "\improper Medical Cryogenics Tubes"
 	icon_state = "medical"

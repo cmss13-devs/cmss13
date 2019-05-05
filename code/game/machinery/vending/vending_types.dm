@@ -225,7 +225,6 @@
 					/obj/item/reagent_container/glass/bottle/antitoxin = 4,
 					/obj/item/reagent_container/glass/bottle/bicaridine = 4,
 					/obj/item/reagent_container/glass/bottle/inaprovaline = 4,
-					/obj/item/reagent_container/glass/bottle/stoxin = 2,
 					/obj/item/reagent_container/glass/bottle/spaceacillin = 4,
 					/obj/item/reagent_container/glass/bottle/peridaxon = 2,
 					/obj/item/reagent_container/glass/bottle/kelotane = 4,
@@ -243,6 +242,21 @@
 	contraband = list()
 
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
+
+/obj/machinery/vending/medical/chemistry
+	name = "WeylandChem Plus"
+	desc = "Medical chemistry dispenser. Provided by Weyland-Yutani Pharmaceuticals Division(TM)."
+	vending_dir = VEND_HAND
+	products = list(/obj/item/reagent_container/glass/bottle/antitoxin = 8,
+					/obj/item/reagent_container/glass/bottle/bicaridine = 8,
+					/obj/item/reagent_container/glass/bottle/inaprovaline = 8,
+					/obj/item/reagent_container/glass/bottle/spaceacillin = 8,
+					/obj/item/reagent_container/glass/bottle/peridaxon = 4,
+					/obj/item/reagent_container/glass/bottle/kelotane = 8,
+					/obj/item/reagent_container/glass/bottle/dexalin = 8,
+					/obj/item/reagent_container/glass/bottle/tramadol = 8,
+					/obj/item/reagent_container/glass/bottle/oxycodone = 8
+					)
 
 /obj/machinery/vending/medical/antag
 	name = "Medical Equipment Vendor"

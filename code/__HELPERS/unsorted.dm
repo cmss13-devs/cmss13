@@ -1023,10 +1023,10 @@ var/global/image/busy_indicator_hostile
 
 	L.action_busy = TRUE // target is not tethered by action, the action is tethered by target though
 	L.resisting = FALSE
-	L.clicked_something = null
+	L.clicked_something = list("" = null)
 	if(has_target && target_is_mob)
 		T.resisting = FALSE
-		T.clicked_something = null
+		T.clicked_something = list("" = null)
 
 	var/cur_user_zone_sel = L.zone_selected
 	var/cur_target_zone_sel
@@ -1046,6 +1046,7 @@ var/global/image/busy_indicator_hostile
 		target_holding = T.get_active_hand()
 	var/expected_total_time = delayfraction*(numticks+1)
 	var/time_remaining = expected_total_time
+
 	. = TRUE
 	for(var/i = 0 to numticks)
 		sleep(delayfraction)

@@ -92,9 +92,8 @@
 	B.bomb_delay = 125
 	B.ammo = ammo_list[new_ammo]
 	B.railgun = TRUE
-	B.caste.tileoffset = 9
-	B.caste.viewsize = 14
-	mutator_update_actions(B)
+	B.tileoffset = 9
+	B.viewsize = 14
 	MS.recalculate_actions(description)
 	
 
@@ -194,10 +193,8 @@
 	. = ..()
 	if (. == 0)
 		return
-
 	var/mob/living/carbon/Xenomorph/Carrier/C = MS.xeno
-	C.huggers_cur = 0
-	C.huggers_max = 0
+	MS.egg_sac = TRUE
 	mutator_update_actions(C)
 	MS.recalculate_actions(description)
 	

@@ -1,4 +1,111 @@
-#define XENO_UNIVERSAL_HPMULT 1.1	//Stopgap usage only. Use to unilaterally buff every caste's total HP.
+#define XENO_UNIVERSAL_HPMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total HP.
+#define XENO_UNIVERSAL_PLASMAMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total PLASMA.
+#define XENO_UNIVERSAL_DAMAGEMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total PLASMA.
+#define XENO_NO_ARMOR 0
+#define XENO_LOW_ARMOR 10 // +21% health
+#define XENO_MEDIUM_ARMOR 20 // +46% health
+#define XENO_HEAVY_ARMOR 30 // +77% health
+#define XENO_ULTRA_ARMOR 40 // +114% health
+
+#define XENO_NO_EXPLOSIVE_ARMOR 0
+#define XENO_LOW_EXPLOSIVE_ARMOR 10
+#define XENO_MEDIUM_EXPLOSIVE_ARMOR 20
+#define XENO_HEAVY_EXPLOSIVE_ARMOR 40
+#define XENO_ULTRA_EXPLOSIVE_ARMOR 60
+#define XENO_GIGA_EXPLOSIVE_ARMOR 100
+
+#define XENO_HEALTH_LARVA 35 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_LOW 200 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_LOWMEDIUM 225 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_MEDIUM 250 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_HIGHMEDIUM 300 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_HIGH 400 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_VERYHIGH 500 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_ULTRAHIGH 700 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
+
+#define XENO_MULTIPLIER_HEALTH_YOUNG 1.0
+#define XENO_MULTIPLIER_HEALTH_MATURE 1.25
+#define XENO_MULTIPLIER_HEALTH_ELDER 1.4
+#define XENO_MULTIPLIER_HEALTH_ANCIENT 1.5
+
+#define XENO_PLASMA_LOW 100 * XENO_UNIVERSAL_PLASMAMULT
+#define XENO_PLASMA_LOWMEDIUM 150 * XENO_UNIVERSAL_PLASMAMULT
+#define XENO_PLASMA_MEDIUM 200 * XENO_UNIVERSAL_PLASMAMULT
+#define XENO_PLASMA_HIGHMEDIUM 300 * XENO_UNIVERSAL_PLASMAMULT
+#define XENO_PLASMA_HIGH 500 * XENO_UNIVERSAL_PLASMAMULT
+#define XENO_PLASMA_VERYHIGH 800 * XENO_UNIVERSAL_PLASMAMULT
+#define XENO_PLASMA_ULTRAHIGH 1000 * XENO_UNIVERSAL_PLASMAMULT
+
+#define XENO_MULTIPLIER_PLASMA_YOUNG 1.0
+#define XENO_MULTIPLIER_PLASMA_MATURE 1.25
+#define XENO_MULTIPLIER_PLASMA_ELDER 1.5
+#define XENO_MULTIPLIER_PLASMA_ANCIENT 2.0
+
+#define XENO_PLASMA_GAIN_LOW 0.02
+#define XENO_PLASMA_GAIN_LOWMED 0.03
+#define XENO_PLASMA_GAIN_MED 0.04
+#define XENO_PLASMA_GAIN_HIGHMED 0.05
+#define XENO_PLASMA_GAIN_HIGH 0.06
+#define XENO_PLASMA_GAIN_VERYHIGH 0.07
+#define XENO_PLASMA_GAIN_ULTRAHIGH 0.08
+
+#define XENO_MULTIPLIER_PLASMA_GAIN_YOUNG 1.0
+#define XENO_MULTIPLIER_PLASMA_GAIN_MATURE 1.1
+#define XENO_MULTIPLIER_PLASMA_GAIN_ELDER 1.2
+#define XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT 1.3
+
+#define XENO_MAX_SPEED -4
+#define XENO_SPEED_CONVERT(x) x + XENO_MAX_SPEED
+
+#define XENO_SPEED_SLOW 6
+#define XENO_SPEED_MEDSLOW 5
+#define XENO_SPEED_MEDIUM 4.5
+#define XENO_SPEED_MEDHIGH 4
+#define XENO_SPEED_HIGHMINUS 3.5
+#define XENO_SPEED_HIGH 3.25
+#define XENO_SPEED_FAST 3.0
+#define XENO_SPEED_SANICFAST 2.5
+
+#define XENO_MULTIPLIER_SPEED_YOUNG 1.0
+#define XENO_MULTIPLIER_SPEED_MATURE 0.95
+#define XENO_MULTIPLIER_SPEED_ELDER 0.9
+#define XENO_MULTIPLIER_SPEED_ANCIENT 0.85
+
+#define XENO_DAMAGE_WEAK 15 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_LOW 20 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_LOWPLUS 25 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_MEDIUMLOW 30 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_MEDIUM 35 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_MEDIUMHIGH 40 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_HIGH 50 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_VERYHIGH 70 * XENO_UNIVERSAL_DAMAGEMULT
+#define XENO_DAMAGE_ULTRAHIGH 100 * XENO_UNIVERSAL_DAMAGEMULT
+
+#define XENO_MULTIPLIER_DAMAGE_YOUNG 1.0
+#define XENO_MULTIPLIER_DAMAGE_MATURE 1.1
+#define XENO_MULTIPLIER_DAMAGE_ELDER 1.15
+#define XENO_MULTIPLIER_DAMAGE_ANCIENT 1.2
+
+#define XENO_ARMOR_FACTOR_LOW 25
+#define XENO_ARMOR_FACTOR_MEDIUM 30
+#define XENO_ARMOR_FACTOR_HIGH 35
+#define XENO_ARMOR_FACTOR_VERYHIGH 40
+
+#define XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG 1.0
+#define XENO_MULTIPLIER_ARMOR_FACTOR_MATURE 1.1
+#define XENO_MULTIPLIER_ARMOR_FACTOR_ELDER 1.15
+#define XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT 1.20
+
+#define XENO_EVASION_NONE 0
+#define XENO_EVASION_LOW 10
+#define XENO_EVASION_MEDIUM 15
+#define XENO_EVASION_HIGH 20
+
+#define XENO_MULTIPLIER_EVASION_YOUNG 1.0
+#define XENO_MULTIPLIER_EVASION_MATURE 1.10
+#define XENO_MULTIPLIER_EVASION_ELDER 1.15
+#define XENO_MULTIPLIER_EVASION_ANCIENT 1.20
 
 /datum/caste_datum
 	var/caste_name = ""
@@ -11,6 +118,7 @@
 
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
+	var/evasion = XENO_EVASION_NONE
 
 	var/bite_chance = 5 //Chance of doing a special bite attack in place of a claw. Set to 0 to disable.
 	var/tail_chance = 10 //Chance of doing a special tail attack in place of a claw. Set to 0 to disable.
@@ -38,6 +146,7 @@
 
 	var/charge_type = 0 //0: normal. 1: warrior/hunter style pounce. 2: ravager free attack.
 	var/armor_deflection = 0 //Chance of deflecting projectiles.
+	var/armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW //so our armor is stronger
 	var/fire_immune = 0 //Boolean
 
 	var/spit_delay = 60 //Delay timer for spitting
@@ -110,14 +219,9 @@
 	var/charge_distance = 6
 
 	//New variables for how charges work, max speed, speed buildup, all that jazz
-	var/charge_speed_max = 2.1 //Can only gain this much speed before capping
+	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
-
-	// Related to zooming out (primarily queen and boiler)
-	// TODO: reexamine this because kinda iffy about where this var is stored - TheDonkified
-	var/tileoffset = 5
-	var/viewsize = 12
 
 /datum/caste_datum/New()
 	. = ..()
@@ -168,11 +272,53 @@
 			if(2)
 				upgrade_threshold = 3200
 
+/datum/caste_datum/proc/young_multipliers()
+	melee_damage_lower = melee_damage_lower * XENO_MULTIPLIER_DAMAGE_YOUNG
+	melee_damage_upper = melee_damage_upper * XENO_MULTIPLIER_DAMAGE_YOUNG
+	plasma_gain = plasma_gain * XENO_MULTIPLIER_PLASMA_GAIN_YOUNG
+	plasma_max = plasma_max * XENO_MULTIPLIER_PLASMA_YOUNG
+	armor_deflection = armor_deflection
+	xeno_explosion_resistance = xeno_explosion_resistance
+	max_health = max_health * XENO_MULTIPLIER_HEALTH_YOUNG
+	armor_hardiness_mult = armor_hardiness_mult * XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG
+	evasion = evasion * XENO_MULTIPLIER_EVASION_YOUNG
+	speed = XENO_SPEED_CONVERT( (speed - XENO_MAX_SPEED) * XENO_MULTIPLIER_SPEED_YOUNG )
 
+/datum/caste_datum/proc/mature_multipliers()
+	melee_damage_lower = melee_damage_lower * XENO_MULTIPLIER_DAMAGE_MATURE
+	melee_damage_upper = melee_damage_upper * XENO_MULTIPLIER_DAMAGE_MATURE
+	plasma_gain = plasma_gain * XENO_MULTIPLIER_PLASMA_GAIN_MATURE
+	plasma_max = plasma_max * XENO_MULTIPLIER_PLASMA_MATURE
+	armor_deflection = armor_deflection
+	xeno_explosion_resistance = xeno_explosion_resistance
+	max_health = max_health * XENO_MULTIPLIER_HEALTH_MATURE
+	armor_hardiness_mult = armor_hardiness_mult * XENO_MULTIPLIER_ARMOR_FACTOR_MATURE
+	evasion = evasion * XENO_MULTIPLIER_EVASION_MATURE
+	speed = XENO_SPEED_CONVERT( (speed - XENO_MAX_SPEED) * XENO_MULTIPLIER_SPEED_MATURE )
 
+/datum/caste_datum/proc/elder_multipliers()
+	melee_damage_lower = melee_damage_lower * XENO_MULTIPLIER_DAMAGE_ELDER
+	melee_damage_upper = melee_damage_upper * XENO_MULTIPLIER_DAMAGE_ELDER
+	plasma_gain = plasma_gain * XENO_MULTIPLIER_PLASMA_GAIN_ELDER
+	plasma_max = plasma_max * XENO_MULTIPLIER_PLASMA_ELDER
+	armor_deflection = armor_deflection
+	xeno_explosion_resistance = xeno_explosion_resistance
+	max_health = max_health * XENO_MULTIPLIER_HEALTH_ELDER
+	armor_hardiness_mult = armor_hardiness_mult * XENO_MULTIPLIER_ARMOR_FACTOR_ELDER
+	evasion = evasion * XENO_MULTIPLIER_EVASION_ELDER
+	speed = XENO_SPEED_CONVERT( (speed - XENO_MAX_SPEED) * XENO_MULTIPLIER_SPEED_ELDER )
 
-
-
+/datum/caste_datum/proc/ancient_multipliers()
+	melee_damage_lower = melee_damage_lower * XENO_MULTIPLIER_DAMAGE_ANCIENT
+	melee_damage_upper = melee_damage_upper * XENO_MULTIPLIER_DAMAGE_ANCIENT
+	plasma_gain = plasma_gain * XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT
+	plasma_max = plasma_max * XENO_MULTIPLIER_PLASMA_ANCIENT
+	armor_deflection = armor_deflection
+	xeno_explosion_resistance = xeno_explosion_resistance
+	max_health = max_health * XENO_MULTIPLIER_HEALTH_ANCIENT
+	armor_hardiness_mult = armor_hardiness_mult * XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT
+	evasion = evasion * XENO_MULTIPLIER_EVASION_ANCIENT
+	speed = XENO_SPEED_CONVERT( (speed - XENO_MAX_SPEED) * XENO_MULTIPLIER_SPEED_ANCIENT )
 
 /mob/living/carbon/Xenomorph
 	var/datum/caste_datum/caste
@@ -304,6 +450,10 @@
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
 	var/leader_current_aura = "" //Pheromone type inherited from Queen
+
+	// Related to zooming out (primarily queen and boiler)
+	var/tileoffset = 0
+	var/viewsize = 0
 
 	gender = NEUTER
 

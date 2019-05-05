@@ -100,7 +100,7 @@
 			to_chat(user, "<span class='warning'>You don't know how to deconstruct [src]...</span>")
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		if(do_after(user, 20, TRUE, BUSY_ICON_BUILD))
+		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			var/obj/structure/computerframe/A = new /obj/structure/computerframe( src.loc )
 			var/obj/item/circuitboard/computer/M = new circuit( A )
 			A.circuit = M
@@ -130,3 +130,9 @@
 	if(!.) //not broken or unpowered
 		if(ishuman(usr))
 			pick(playsound(src, 'sound/machines/computer_typing1.ogg', 5, 1), playsound(src, 'sound/machines/computer_typing2.ogg', 5, 1), playsound(src, 'sound/machines/computer_typing3.ogg', 5, 1))
+
+/obj/machinery/computer/fixer
+	var/all_configs
+
+/obj/machinery/computer/fixer/New()
+	all_configs = config

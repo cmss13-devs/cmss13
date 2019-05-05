@@ -86,6 +86,7 @@
 #define EXPLOSION_THRESHOLD_GIB	200 //how much it takes to gib a mob
 
 //Explosion damage multipliers for different objects
+#define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     2.5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WALL		5
 #define EXPLOSION_DAMAGE_MULTIPLIER_WINDOW		10
 
@@ -97,3 +98,11 @@
 
 #define FALLOFF_PER_TILE 0.01 //1 % per 1 tile per 1 normalcy
 #define FALLOFF_DISTANCE_POWER 1.4
+
+#define ARMOR_MELEE 1
+#define ARMOR_BULLET 2
+#define ARMOR_LASER 4
+#define ARMOR_ENERGY 8
+#define ARMOR_BOMB 16
+#define ARMOR_BIO 32
+#define ARMOR_RAD 64

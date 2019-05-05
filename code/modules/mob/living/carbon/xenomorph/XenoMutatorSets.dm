@@ -210,9 +210,9 @@
 	var/mob/living/carbon/Xenomorph/xeno
 	var/gas_boost_level = 0
 	var/pull_multiplier = 1.0
-	var/carry_boost_level = 0
 	var/egg_laying_multiplier = 1.0
 	var/pounce_boost = 0
+	var/egg_sac = FALSE
 	var/acid_claws = FALSE
 	var/need_weeds = TRUE
 	var/charge_speed_buildup_multiplier = 1.0

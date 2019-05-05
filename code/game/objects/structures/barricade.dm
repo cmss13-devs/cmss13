@@ -1024,7 +1024,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts repairing damage to [src]."), \
 			SPAN_NOTICE("You start repairing damage to [src]."))
-		if(do_after(user, 50, TRUE, 5, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
 				SPAN_NOTICE("You repair [src]."))
 			var/amount = SB.amount

@@ -19,7 +19,13 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
 	)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 50
+	armor_rad = 0
 
 	verb/toggle()
 		set name = "Toggle Labcoat Buttons"
@@ -170,7 +176,13 @@
 	name = "Virologist labcoat"
 	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir_open"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 60
+	armor_rad = 0
 
 /obj/item/clothing/suit/storage/labcoat/science
 	name = "Scientist labcoat"
@@ -200,7 +212,13 @@
 	icon_state = "snowsuit_alpha"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 15, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 15
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
@@ -209,9 +227,21 @@
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"
 	icon_state = "snowsuit_doctor"
-	armor = list(melee = 25, bullet = 35, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 25
+	armor_bullet = 35
+	armor_laser = 35
+	armor_energy = 20
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 
 /obj/item/clothing/suit/storage/snow_suit/engineer
 	name = "engineer's snow suit"
 	icon_state = "snowsuit_engineer"
-	armor = list(melee = 25, bullet = 35, laser = 35, energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 25
+	armor_bullet = 35
+	armor_laser = 35
+	armor_energy = 20
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0

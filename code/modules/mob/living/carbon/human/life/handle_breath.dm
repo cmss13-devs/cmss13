@@ -19,7 +19,7 @@
 
 	if(losebreath > 0) //Suffocating so do not take a breath
 		losebreath--
-		if(prob(10)) //Gasp per 10 ticks? Sounds about right.
+		if(prob(20)) //Gasp per 5 ticks? Sounds about right.
 			spawn emote("gasp")
 		if(istype(loc, /atom/movable))
 			var/atom/movable/container = loc
@@ -101,5 +101,5 @@
 				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
-	adjustOxyLoss(-5)
+	adjustOxyLoss(-2)
 	return 1

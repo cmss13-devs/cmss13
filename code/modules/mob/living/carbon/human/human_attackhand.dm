@@ -1,3 +1,4 @@
+/mob/living/carbon/human/var/cpr_cooldown
 /mob/living/carbon/human/attack_hand(mob/living/carbon/human/M)
 	..()
 
@@ -37,15 +38,21 @@
 				return 1
 			M.visible_message("<span class='danger'><B>[M] is trying perform CPR on [src]!</B></span>", null, null, 4)
 
-			if(do_mob(M, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_MEDICAL))
+			if(do_after(M, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
-					var/suff = min(getOxyLoss(), 5) //Pre-merge level, less healing, more prevention of dieing.
+					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
 					adjustOxyLoss(-suff)
 					updatehealth()
 					visible_message("<span class='danger'>[M] performs CPR on [src]!</span>", null, null, 3)
 					to_chat(src, SPAN_NOTICE(" <b>You feel a breath of fresh air enter your lungs. It feels good.</b>"))
 					to_chat(M, "<span class='warning'>Repeat at least every 7 seconds.</span>")
-
+				if(is_revivable() && stat == DEAD)
+					if(cpr_cooldown < world.time)
+						revive_grace_period += SECONDS_7
+						visible_message("<span class='danger'>[M] performs CPR on [src]!</span>", null, null, 3)
+					else
+						visible_message("<span class='danger'>[M] fails to perform CPR on [src]! Incorrect rhythm.</span>", null, null, 3)
+					cpr_cooldown = world.time + SECONDS_7
 
 			return 1
 
@@ -82,7 +89,8 @@
 				return
 
 			var/datum/limb/affecting = get_limb(ran_zone(M.zone_selected))
-			var/armor_block = run_armor_check(affecting, "melee")
+			var/armor = getarmor(affecting, ARMOR_MELEE)
+			var/armor_block = run_armor_check(affecting, ARMOR_MELEE)
 
 			if(HULK in M.mutations) damage += 5
 			playsound(loc, attack.attack_sound, 25, 1)
@@ -93,7 +101,8 @@
 				apply_effect(3, WEAKEN, armor_block)
 
 			damage += attack.damage
-			apply_damage(damage, BRUTE, affecting, armor_block, sharp=attack.sharp, edge=attack.edge)
+			damage = armor_damage_reduction(config.marine_melee, damage, armor, 0) // no penetration frm punches
+			apply_damage(damage, BRUTE, affecting, 0, sharp=attack.sharp, edge=attack.edge)
 
 
 		if("disarm")
@@ -140,7 +149,7 @@
 
 
 			if (randn <= 25)
-				apply_effect(3, WEAKEN, run_armor_check(affecting, "melee"))
+				apply_effect(3, WEAKEN, run_armor_check(affecting, ARMOR_MELEE))
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				visible_message("<span class='danger'><B>[M] has pushed [src]!</B></span>", null, null, 5)
 				return

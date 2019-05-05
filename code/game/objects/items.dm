@@ -38,7 +38,13 @@
 	var/flags_armor_protection = NOFLAGS //see setup.dm for appropriate bit flags
 	var/flags_heat_protection = NOFLAGS //flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NOFLAGS //flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
-	var/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	var/armor_melee = 0
+	var/armor_bullet = 0
+	var/armor_laser = 0
+	var/armor_energy = 0
+	var/armor_bomb = 0
+	var/armor_bio = 0
+	var/armor_rad = 0
 	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags
 
@@ -66,6 +72,34 @@
 
 	var/datum/event/event_dropped = null
 	var/datum/event/event_unwield = null
+
+/obj/item/proc/get_armor(armortype)
+	var/armor_total = 0
+	var/armor_count = 0
+	if(armortype & ARMOR_MELEE)
+		armor_total += armor_melee
+		armor_count++
+	if(armortype & ARMOR_BULLET)
+		armor_total += armor_bullet
+		armor_count++
+	if(armortype & ARMOR_LASER)
+		armor_total += armor_laser
+		armor_count++
+	if(armortype & ARMOR_ENERGY)
+		armor_total += armor_energy
+		armor_count++
+	if(armortype & ARMOR_BOMB)
+		armor_total += armor_bomb
+		armor_count++
+	if(armortype & ARMOR_BIO)
+		armor_total += armor_bio
+		armor_count++
+	if(armortype & ARMOR_RAD)
+		armor_total += armor_melee
+		armor_count++
+	if(armor_count == 0)
+		return 0
+	return armor_total/armor_count
 
 /obj/item/proc/on_dropped()
 	if(event_dropped)

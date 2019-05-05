@@ -98,7 +98,7 @@
 		attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
-	damage_mult = config.base_hit_damage_mult * 0.825
+	damage_mult = config.base_hit_damage_mult
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.

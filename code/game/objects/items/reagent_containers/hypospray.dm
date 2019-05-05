@@ -26,8 +26,8 @@
 		return
 	if (reagents.total_volume)
 		if(skilllock && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_CHEM)
-			user.visible_message("<span class='warning'>[user] fumbles with [src]...</span>", "<span class='warning'>You fumble with [src]...</span>")
-			if(!do_mob(user, M, 30, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL))
+			user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				return
 		var/sleeptoxin = 0
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -35,7 +35,7 @@
 				sleeptoxin = 1
 				break
 		if(sleeptoxin)
-			if(!do_after(user, 20, INTERRUPT_ALL, TRUE, BUSY_ICON_GENERIC))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return 0
 			if(!M.Adjacent(user))
 				return 0

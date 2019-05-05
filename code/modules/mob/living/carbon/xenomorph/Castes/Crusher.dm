@@ -3,58 +3,41 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+
+	melee_damage_lower = XENO_DAMAGE_LOWPLUS
+	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
+	max_health = XENO_HEALTH_HIGH
+	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
+	plasma_max = XENO_PLASMA_MEDIUM
+	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_ULTRA_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDHIGH)
+	
 	tackle_chance = 15
-	plasma_gain = 0.05
-	plasma_max = 200
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	caste_desc = "A huge tanky xenomorph."
-	armor_deflection = 50
-	max_health = XENO_UNIVERSAL_HPMULT * 285
-	speed = 0.1
 	tail_chance = 0 //Inherited from old code. Tail's too big
-	xeno_explosion_resistance = 180
 
 /datum/caste_datum/crusher/mature
 	upgrade_name = "Mature"
 	caste_desc = "A huge tanky xenomorph. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 25
-	melee_damage_upper = 35
 	tackle_chance = 20
-	plasma_gain = 0.05
-	plasma_max = 300
-	armor_deflection = 60
-	max_health = XENO_UNIVERSAL_HPMULT * 310
-	speed = 0.05
 
 /datum/caste_datum/crusher/elder
 	upgrade_name = "Elder"
 	caste_desc = "A huge tanky xenomorph. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 30
-	melee_damage_upper = 40
 	tackle_chance = 25
-	plasma_gain = 0.075
-	plasma_max = 300
-	armor_deflection = 65
-	max_health = XENO_UNIVERSAL_HPMULT * 335
-	speed = -0.05
 
 /datum/caste_datum/crusher/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "It always has the right of way."
 	upgrade = 3
-	melee_damage_lower = 35
-	melee_damage_upper = 45
 	tackle_chance = 28
-	plasma_gain = 0.08
-	plasma_max = 400
-	armor_deflection = 68
-	max_health = XENO_UNIVERSAL_HPMULT * 350
-	speed = -0.1
 
 /datum/caste_datum/crusher/primordial
 	upgrade_name = "Primordial"
@@ -286,6 +269,18 @@
 
 	r_TRU
 
+/obj/machinery/door/airlock/charge_act(mob/living/carbon/Xenomorph/X)
+	if(unacidable)
+		X.stop_momentum(X.charge_dir)
+		r_FAL
+	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
+		X.stop_momentum(X.charge_dir)
+		r_FAL
+
+	destroy_airlock()
+	X.charge_speed -= X.charge_speed_buildup * 2 //Lose two turfs worth of speed
+	r_TRU
+
 /obj/structure/grille/charge_act(mob/living/carbon/Xenomorph/X)
 	if(unacidable)
 		X.stop_momentum(X.charge_dir)
@@ -467,3 +462,16 @@
 			icon_state = "Crusher Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+
+/datum/caste_datum/crusher/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/crusher/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/crusher/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/crusher/ancient/New()
+	..()
+	ancient_multipliers()

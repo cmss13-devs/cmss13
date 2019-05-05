@@ -154,7 +154,7 @@
 		else
 			return //something went wrong
 
-	to_chat(X, SPAN_NOTICE("You will now build <b>[X.selected_resin]\s</b> when secreting resin."))
+	to_chat(X, SPAN_NOTICE("You will now build <b>[X.resin2text(X.selected_resin)]\s</b> when secreting resin."))
 	//update the button's overlay with new choice
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/actions.dmi', button, X.resin2text(X.selected_resin))
@@ -540,6 +540,10 @@
 		X.zoom_in()
 		..()
 
+/datum/action/xeno_action/toggle_long_range/runner // Runner has reduced plasma cost
+	name = "Toggle Long Range Sight (10)"
+	plasma_cost = 10
+
 /datum/action/xeno_action/toggle_bomb
 	name = "Toggle Bombard Type"
 	action_icon_state = "toggle_bomb0"
@@ -552,7 +556,7 @@
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? ")corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
 	to_chat(X, SPAN_NOTICE("[activation_msg]"))
 	button.overlays.Cut()
 	if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
@@ -869,7 +873,7 @@
 	if(X.check_plasma(plasma_cost))
 		X.visible_message("<span class='xenowarning'>\The [X] starts to grow an ovipositor.</span>", \
 		"<span class='xenowarning'>You start to grow an ovipositor...(takes 20 seconds, hold still)</span>")
-		if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, 20) && X.check_plasma(plasma_cost))
+		if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && X.check_plasma(plasma_cost))
 			return
 		if(!X.check_state()) return
 		if(!locate(/obj/effect/alien/weeds) in current_turf)
@@ -899,7 +903,7 @@
 		return
 	X.visible_message("<span class='xenowarning'>\The [X] starts detaching itself from its ovipositor!</span>", \
 		"<span class='xenowarning'>You start detaching yourself from your ovipositor.</span>")
-	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, 10)) return
+	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10)) return
 	if(!X.check_state())
 		return
 	if(!X.ovipositor)
@@ -1061,7 +1065,7 @@
 			if(target.health < target.maxHealth)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)
-					target.adjustBruteLoss(-50)
+					target.adjustBruteLoss(-200)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, "<span class='xenonotice'>You channel your plasma to heal [target]'s wounds.</span>")
 			else
@@ -1091,7 +1095,7 @@
 			if(target.plasma_stored < target.plasma_max)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)
-					target.gain_plasma(100)
+					target.gain_plasma(400)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, "<span class='xenonotice'>You transfer some plasma to [target].</span>")
 
@@ -1267,6 +1271,10 @@
 /datum/action/xeno_action/activable/spin_slash/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.spin_slash()
+
+/datum/action/xeno_action/activable/spin_slash/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Ravager/X = owner
+	return !X.used_lunge
 
 //Drone Abilities
 /datum/action/xeno_action/activable/transfer_health

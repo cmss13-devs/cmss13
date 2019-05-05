@@ -80,7 +80,7 @@
 					O.show_message("<span class='danger'>[user] cannot force anymore of [src] down [M]'s throat.</span>", 1)
 					return 0
 
-			if(!do_mob(user, M, 30, BUSY_ICON_FRIENDLY)) return
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 
 			var/rgt_list_text = get_reagent_list_text()
 

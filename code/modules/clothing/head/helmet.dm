@@ -4,7 +4,13 @@
 	desc = "Standard Security gear. Protects the head from impacts."
 	icon_state = "helmet"
 	item_state = "helmet"
-	armor = list(melee = 50, bullet = 15, laser = 50,energy = 10, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 50
+	armor_bullet = 15
+	armor_laser = 50
+	armor_energy = 10
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 	flags_atom = FPRINT|CONDUCT
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
@@ -21,7 +27,13 @@
 	name = "riot helmet"
 	desc = "It's a helmet specifically designed to protect against close range attacks. It covers your ears."
 	icon_state = "riot"
-	armor = list(melee = 82, bullet = 15, laser = 5, energy = 5, bomb = 5, bio = 2, rad = 0)
+	armor_melee = 82
+	armor_bullet = 15
+	armor_laser = 5
+	armor_energy = 5
+	armor_bomb = 5
+	armor_bio = 2
+	armor_rad = 0
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
@@ -30,14 +42,26 @@
 	desc = "A helmet with optical and cranial augments coupled to it."
 	icon_state = "v62"
 	item_state = "v62"
-	armor = list(melee = 80, bullet = 60, laser = 50, energy = 25, bomb = 20, bio = 10, rad = 0)
+	armor_melee = 80
+	armor_bullet = 60
+	armor_laser = 50
+	armor_energy = 25
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 0
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/HoS
 	name = "Head of Security Hat"
 	desc = "The hat of the Head of Security. For showing the officers who's in charge."
 	icon_state = "hoscap"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 10, bomb = 10, bio = 10, rad = 0)
+	armor_melee = 80
+	armor_bullet = 60
+	armor_laser = 50
+	armor_energy = 10
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 0
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEARS
 	flags_armor_protection = 0
@@ -79,7 +103,13 @@
 	desc = "They're often used by highly trained Swat Members."
 	icon_state = "swat"
 	item_state = "swat"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 25, bomb = 20, bio = 10, rad = 0)
+	armor_melee = 80
+	armor_bullet = 60
+	armor_laser = 50
+	armor_energy = 25
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 0
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
 	flags_cold_protection = HEAD
@@ -94,7 +124,13 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
 	item_state = "thunderdome"
-	armor = list(melee = 80, bullet = 60, laser = 50,energy = 10, bomb = 10, bio = 10, rad = 0)
+	armor_melee = 80
+	armor_bullet = 60
+	armor_laser = 50
+	armor_energy = 10
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 0
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	siemens_coefficient = 1
@@ -116,7 +152,13 @@
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES
 	anti_hug = 1
-	armor = list(melee = 62, bullet = 50, laser = 50,energy = 35, bomb = 10, bio = 2, rad = 0)
+	armor_melee = 62
+	armor_bullet = 50
+	armor_laser = 50
+	armor_energy = 35
+	armor_bomb = 10
+	armor_bio = 2
+	armor_rad = 0
 	siemens_coefficient = 0.7
 
 //Non-hardsuit ERT helmets.
@@ -125,7 +167,13 @@
 	desc = "An in-atmosphere helmet worn by members of the Emergency Response Team. Protects the head from impacts."
 	icon_state = "erthelmet_cmd"
 	item_state = "syndicate-helm-green"
-	armor = list(melee = 62, bullet = 50, laser = 50,energy = 35, bomb = 10, bio = 2, rad = 0)
+	armor_melee = 62
+	armor_bullet = 50
+	armor_laser = 50
+	armor_energy = 35
+	armor_bomb = 10
+	armor_bio = 2
+	armor_rad = 0
 	anti_hug = 5
 
 //Commander
@@ -165,7 +213,13 @@
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
 	icon_state = "helmet"
-	armor = list(melee = 65, bullet = 35, laser = 30, energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 65
+	armor_bullet = 35
+	armor_laser = 30
+	armor_energy = 20
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 	health = 5
 	force = 15
 	throwforce = 15 // https://i.imgur.com/VW09I4B.gif
@@ -296,7 +350,13 @@
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern leader helmet"
 	desc = "A slightly fancier helmet for marine leaders. This one contains a small built-in camera and has cushioning to project your fragile brain."
-	armor = list(melee = 75, bullet = 45, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10)
+	armor_melee = 75
+	armor_bullet = 45
+	armor_laser = 40
+	armor_energy = 40
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 10
 	specialty = "M11 pattern leader"
 
 /obj/item/clothing/head/helmet/marine/intel
@@ -304,7 +364,13 @@
 	desc = "An experimental brain-bucket that works better as a brain-plate. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	icon_state = "io"
 	item_state = "io"
-	armor = list(melee = 80, bullet = 50, laser = 40, energy = 40, bomb = 20, bio = 10, rad = 10) //Just a touch beefier than an SL helmet, gotta keep our IO's alive.
+	armor_melee = 80
+	armor_bullet = 50
+	armor_laser = 40
+	armor_energy = 40
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 10 //Just a touch beefier than an SL helmet, gotta keep our IO's alive.
 	specialty = "XM12 pattern intel"
 
 /obj/item/clothing/head/helmet/marine/specialist
@@ -312,7 +378,13 @@
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
-	armor = list(melee = 95, bullet = 105, laser = 75, energy = 65, bomb = 40, bio = 15, rad = 15)
+	armor_melee = 95
+	armor_bullet = 105
+	armor_laser = 75
+	armor_energy = 65
+	armor_bomb = 40
+	armor_bio = 15
+	armor_rad = 15
 	unacidable = 1
 	anti_hug = 6
 	force = 20
@@ -323,7 +395,13 @@
 	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
-	armor = list(melee = 95, bullet = 105, laser = 75, energy = 65, bomb = 40, bio = 15, rad = 15)
+	armor_melee = 95
+	armor_bullet = 105
+	armor_laser = 75
+	armor_energy = 65
+	armor_bomb = 40
+	armor_bio = 15
+	armor_rad = 15
 	unacidable = 1
 	anti_hug = 6
 	specialty = "M3-G4 grenadier"
@@ -332,7 +410,13 @@
 	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
 	desc = "A custom helmet designed for USCM Scouts."
-	armor = list(melee = 75, bullet = 45, laser = 40, energy = 40, bomb = 10, bio = 10, rad = 10)
+	armor_melee = 75
+	armor_bullet = 45
+	armor_laser = 40
+	armor_energy = 40
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 10
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	specialty = "M3-S light"
 
@@ -340,7 +424,13 @@
 	name = "\improper M35 pyrotechnician helmet"
 	icon_state = "pyro_helmet"
 	desc = "A helmet designed for USCM Pyrotechnicians."
-	armor = list(melee = 85, bullet = 75, laser = 60, energy = 50, bomb = 10, bio = 10, rad = 10)
+	armor_melee = 85
+	armor_bullet = 75
+	armor_laser = 60
+	armor_energy = 50
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 10
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
 	specialty = "M35 pyrotechnician"
@@ -349,7 +439,13 @@
 	name = "\improper M30 tactical helmet"
 	desc = "The M30 tactical helmet has an left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
 	icon_state = "helmetp"
-	armor = list(melee = 65, bullet = 50, laser = 35, energy = 45, bomb = 10, bio = 15, rad = 15)
+	armor_melee = 65
+	armor_bullet = 50
+	armor_laser = 35
+	armor_energy = 45
+	armor_bomb = 10
+	armor_bio = 15
+	armor_rad = 15
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
@@ -360,7 +456,13 @@
 	name = "\improper M50 tanker helmet"
 	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle."
 	icon_state = "tanker_helmet"
-	armor = list(melee = 40, bullet = 40, laser = 35, energy = 45, bomb = 10, bio = 15, rad = 15)
+	armor_melee = 40
+	armor_bullet = 40
+	armor_laser = 35
+	armor_energy = 45
+	armor_bomb = 10
+	armor_bio = 15
+	armor_rad = 15
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
@@ -371,7 +473,13 @@
 	name = "\improper M45 ghillie coif"
 	desc = "A lightweight, armored ghillie coif used by USCM snipers on recon missions."
 	icon_state = "ghillie_coif"
-	armor = list(melee = 45, bullet = 45, laser = 40, energy = 25, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 45
+	armor_bullet = 45
+	armor_laser = 40
+	armor_energy = 25
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	flags_marine_helmet = NOFLAGS
@@ -387,7 +495,13 @@
 	name = "\improper PMC tactical cap"
 	desc = "A protective cap made from flexible kevlar. Standard issue for most security forms in the place of a helmet."
 	icon_state = "pmc_hat"
-	armor = list(melee = 38, bullet = 38, laser = 32, energy = 22, bomb = 10, bio = 5, rad = 5)
+	armor_melee = 38
+	armor_bullet = 38
+	armor_laser = 32
+	armor_energy = 22
+	armor_bomb = 10
+	armor_bio = 5
+	armor_rad = 5
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = NOFLAGS
@@ -403,7 +517,13 @@
 	desc = "A helmet worn by PMC Marksmen"
 	icon_state = "pmc_sniper_hat"
 	flags_armor_protection = HEAD|FACE|EYES
-	armor = list(melee = 55, bullet = 65, laser = 45, energy = 55, bomb = 10, bio = 10, rad = 10)
+	armor_melee = 55
+	armor_bullet = 65
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 10
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
@@ -413,7 +533,13 @@
 	desc = "A modification of the standard Armat Systems M3 armor."
 	icon_state = "heavy_helmet"
 	flags_armor_protection = HEAD|FACE|EYES
-	armor = list(melee = 80, bullet = 80, laser = 50, energy = 60, bomb = 20, bio = 10, rad = 10)
+	armor_melee = 80
+	armor_bullet = 80
+	armor_laser = 50
+	armor_energy = 60
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 10
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
@@ -423,7 +549,13 @@
 	desc = "A fully enclosed, armored helmet made for Weyland Yutani elite commandos."
 	icon_state = "commando_helmet"
 	flags_armor_protection = HEAD|FACE|EYES
-	armor = list(melee = 90, bullet = 120, laser = 90, energy = 90, bomb = 40, bio = 100, rad = 100)
+	armor_melee = 90
+	armor_bullet = 120
+	armor_laser = 90
+	armor_energy = 90
+	armor_bomb = 40
+	armor_bio = 100
+	armor_rad = 100
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
@@ -436,7 +568,13 @@
 	name = "\improper Dutch's Dozen helmet"
 	desc = "A protective helmet worn by some seriously experienced mercs."
 	icon_state = "dutch_helmet"
-	armor = list(melee = 80, bullet = 70, laser = 80, energy = 80, bomb = 80, bio = 0, rad = 0)
+	armor_melee = 80
+	armor_bullet = 70
+	armor_laser = 80
+	armor_energy = 80
+	armor_bomb = 80
+	armor_bio = 0
+	armor_rad = 0
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY|HELMET_STORE_GARB
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
@@ -459,7 +597,13 @@
 	name = "\improper Iron Bear helmet"
 	desc = "Is good for winter, because it has hole to put vodka through."
 	icon_state = "dutch_helmet"
-	armor = list(melee = 90, bullet = 65, laser = 40, energy = 35, bomb = 10, bio = 5, rad = 5)
+	armor_melee = 90
+	armor_bullet = 65
+	armor_laser = 40
+	armor_energy = 35
+	armor_bomb = 10
+	armor_bio = 5
+	armor_rad = 5
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY|HELMET_STORE_GARB
 
@@ -469,7 +613,13 @@
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
 	icon_state = "upp_helmet1"
-	armor = list(melee = 70, bullet = 55, laser = 40, energy = 35, bomb = 10, bio = 5, rad = 5)
+	armor_melee = 70
+	armor_bullet = 55
+	armor_laser = 40
+	armor_energy = 35
+	armor_bomb = 10
+	armor_bio = 5
+	armor_rad = 5
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
 /obj/item/clothing/head/helmet/UPP/heavy
@@ -477,7 +627,13 @@
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
 	icon_state = "upp_helmet_heavy"
-	armor = list(melee = 90, bullet = 85, laser = 60, energy = 65, bomb = 40, bio = 5, rad = 5)
+	armor_melee = 90
+	armor_bullet = 85
+	armor_laser = 60
+	armor_energy = 65
+	armor_bomb = 40
+	armor_bio = 5
+	armor_rad = 5
 	unacidable = 1
 	anti_hug = 3
 
@@ -491,7 +647,13 @@
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
 	icon_state = "spec"
-	armor = list(melee = 35, bullet = 35, laser = 35, energy = 15, bomb = 5, bio = 0, rad = 0)
+	armor_melee = 35
+	armor_bullet = 35
+	armor_laser = 35
+	armor_energy = 15
+	armor_bomb = 5
+	armor_bio = 0
+	armor_rad = 0
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
@@ -505,7 +667,13 @@
 	icon = 'icons/obj/clothing/cm_hats.dmi'
 	sprite_sheet_id = 1
 	icon_state = "durag"
-	armor = list(melee = 35, bullet = 35, laser = 35, energy = 15, bomb = 5, bio = 0, rad = 0)
+	armor_melee = 35
+	armor_bullet = 35
+	armor_laser = 35
+	armor_energy = 15
+	armor_bomb = 5
+	armor_bio = 0
+	armor_rad = 0
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
@@ -532,7 +700,13 @@
 	desc = "A sturdy helmet worn by an unknown mercenary group."
 	icon_state = "mercenary_heavy_helmet"
 	flags_armor_protection = HEAD|FACE|EYES
-	armor = list(melee = 80, bullet = 80, laser = 50, energy = 60, bomb = 10, bio = 10, rad = 10)
+	armor_melee = 80
+	armor_bullet = 80
+	armor_laser = 50
+	armor_energy = 60
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 10
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
@@ -542,7 +716,13 @@
 	desc = "A sturdy helmet worn by an unknown mercenary group."
 	icon_state = "mercenary_miner_helmet"
 	flags_armor_protection = HEAD|FACE|EYES
-	armor = list(melee = 55, bullet = 55, laser = 45, energy = 55, bomb = 20, bio = 10, rad = 10)
+	armor_melee = 55
+	armor_bullet = 55
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 10
 
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/engineer
@@ -550,4 +730,10 @@
 	desc = "A sturdy helmet worn by an unknown mercenary group."
 	icon_state = "mercenary_engineer_helmet"
 	flags_armor_protection = HEAD|FACE|EYES
-	armor = list(melee = 55, bullet = 60, laser = 45, energy = 55, bomb = 20, bio = 10, rad = 10)
+	armor_melee = 55
+	armor_bullet = 60
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 20
+	armor_bio = 10
+	armor_rad = 10

@@ -55,6 +55,7 @@
 #define INTERRUPT_MIDDLECLICK       (1<<14)
 #define INTERRUPT_ALL               (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_NEEDHAND|INTERRUPT_RESIST)
 #define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF))|INTERRUPT_OUT_OF_RANGE
+#define INTERRUPT_MOVED             (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF)
 #define INTERRUPT_NO_NEEDHAND       (INTERRUPT_ALL & (~INTERRUPT_NEEDHAND))
 #define INTERRUPT_INCAPACITATED     (INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED)
 #define INTERRUPT_CLICK             (INTERRUPT_LCLICK|INTERRUPT_RCLICK|INTERRUPT_SHIFTCLICK|INTERRUPT_ALTCLICK|INTERRUPT_CTRLCLICK|INTERRUPT_MIDDLECLICK)
@@ -62,7 +63,6 @@
 // BEHAVIOR FLAGS
 // These flags describe behaviors related to a given timed action.
 // These behaviors are either of the person performing the action or any targets.
-// For now, only for person performing the action until do_after merges with do_mob
 #define BEHAVIOR_IMMOBILE           (1<<15) // You cannot move the person while this action is being performed
 
 // *************************************** //

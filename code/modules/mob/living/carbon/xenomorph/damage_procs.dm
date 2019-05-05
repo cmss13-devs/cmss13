@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/ex_act(severity, direction)
+/mob/living/carbon/Xenomorph/ex_act(severity, direction, pierce=0)
 	if(severity >= 30)
 		flash_eyes()
 
@@ -10,10 +10,13 @@
 	var/f_loss = 0
 
 	var/damage = severity
+	
+	var/cfg = armor_deflection==0 ? config.xeno_explosive_small : config.xeno_explosive
 
-	damage -= caste.xeno_explosion_resistance
-	//to_world("damage: [damage]")
-
+	damage = armor_damage_reduction(cfg, damage, caste.xeno_explosion_resistance, pierce, 1, 0.5, armor_integrity)
+	var/armor_punch = armor_break_calculation(cfg, damage, caste.xeno_explosion_resistance, pierce, 1, 0.5, armor_integrity)
+	apply_armorbreak(armor_punch)
+	
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
 		gib()
 		return
@@ -24,9 +27,8 @@
 		apply_damage(f_loss, BURN)
 		updatehealth()
 
-		var/knock_value = min( round( damage * 0.1 ,1) ,10) //unlike in humans, damage is used instead of severity to prevent t3 stunlocking
-		//to_world("knock value: [knock_value]")
-		if(knock_value > 0)
+		var/knock_value = min( round( damage * 0.05 ,1) ,5) //unlike in humans, damage is used instead of severity to prevent t3 stunlocking
+		if(knock_value > 0 && caste.xeno_explosion_resistance < 60)
 			KnockDown(knock_value)
 			KnockOut(knock_value)
 			explosion_throw(severity, direction)
@@ -49,9 +51,6 @@
 
 	if(stat == DEAD) return
 
-	if(warding_aura && damage > 0) //Damage reduction. Every half point of warding decreases damage by 2.5 %. Maximum is 25 % at 5 pheromone strength.
-		damage = round(damage * ((100 - (warding_aura * 5)) / 100))
-
 	if(def_zone == "head" || def_zone == "eyes" || def_zone == "mouth") //Little more damage vs the head
 		damage = round(damage * 8 / 7)
 
@@ -61,6 +60,44 @@
 		if(BURN)
 			adjustFireLoss(damage)
 
+	updatehealth()
+	return 1
+
+#define XENO_ARMOR_BREAK_PASS_TIME 2
+#define XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME SECONDS_2
+
+/mob/living/carbon/Xenomorph/proc/apply_armorbreak(armorbreak = 0)
+	if(!armorbreak) return
+
+	if(stat == DEAD) return
+
+	if(caste.armor_hardiness_mult <= 0 || armor_deflection<=0)
+		return
+
+	//Immunity check
+	if(world.time < armor_integrity_immunity_time && world.time>armor_integrity_last_damage_time + XENO_ARMOR_BREAK_PASS_TIME)
+		visible_message(SPAN_XENOWARNING("[src]'s broken exoskeleton plate takes the force of the impact!"))		
+		return 1	
+
+	armor_integrity_last_damage_time = world.time
+
+	if(warding_aura && armorbreak > 0) //Damage to armor reduction
+		armorbreak = round(armorbreak * ((100 - (warding_aura * 15)) / 100))
+	var/old_integrity = armor_integrity
+	armor_integrity -= armorbreak / caste.armor_hardiness_mult
+	if(armor_integrity <= 0 && old_integrity > 10)
+		visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton falls apart!"))
+		armor_integrity = 0
+	else
+		if(old_integrity - armor_integrity > 25  && old_integrity > 0)
+			visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton starts cracking!"))
+	if(armor_integrity < 0)
+		armor_integrity = 0
+
+	var/delay = ((old_integrity - armor_integrity)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
+
+	if(delay>2)
+		armor_integrity_immunity_time = world.time + delay
 	updatehealth()
 	return 1
 

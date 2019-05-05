@@ -82,6 +82,13 @@
 	alien_plasma_display.screen_loc = ui_alienplasmadisplay
 	infodisplay += alien_plasma_display
 
+	alien_armor_display = new /obj/screen()
+	alien_armor_display.icon = 'icons/mob/screen1_alien.dmi'
+	alien_armor_display.icon_state = "armor_100"
+	alien_armor_display.name = "armor integrity"
+	alien_armor_display.screen_loc = ui_alienarmordisplay
+	infodisplay += alien_armor_display
+
 	locate_leader = new /obj/screen/queen_locator()
 	infodisplay += locate_leader
 

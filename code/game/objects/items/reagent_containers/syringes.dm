@@ -176,7 +176,7 @@
 					else
 						user.visible_message("<span class='danger'><B>[user] begins hunting for an injection port on [target]'s suit!</B></span>")
 
-					if(!do_mob(user, target, injection_time, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL)) return
+					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
 					user.visible_message("<span class='danger'>[user] injects [target] with the syringe!</span>")
 
@@ -255,7 +255,7 @@
 		if((user != target) && H.check_shields(7, "the [src.name]"))
 			return
 
-		if (target != user && target.getarmor(target_zone, "melee") > 5 && prob(50))
+		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<span class='danger'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></span>"), 1)
 			user.temp_drop_inv_item(src)
@@ -364,9 +364,9 @@
 					return
 
 				if(ismob(target) && target != user)
-					user.visible_message("<span class='danger'><B>[user] is trying to inject [target] with a giant syringe!</B></span>")
-					if(!do_mob(user, target, 300, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL)) return
-					user.visible_message("<span class='danger'>[user] injects [target] with a giant syringe!</span>")
+					user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target] with a giant syringe!</B>"))
+					if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+					user.visible_message(SPAN_DANGER("[user] injects [target] with a giant syringe!"))
 					src.reagents.reaction(target, INGEST)
 				if(ismob(target) && target == user)
 					src.reagents.reaction(target, INGEST)

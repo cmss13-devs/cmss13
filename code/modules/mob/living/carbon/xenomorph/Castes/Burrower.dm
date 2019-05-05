@@ -1,19 +1,23 @@
+//burrower is COMBAT support
 /datum/caste_datum/burrower
 	caste_name = "Burrower"
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	tackle_chance = 40
-	plasma_gain = 0.032
-	plasma_max = 300
+
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_LOWPLUS
+	max_health = XENO_HEALTH_HIGHMEDIUM
+	plasma_gain = XENO_PLASMA_GAIN_MED
+	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
+	
 	deevolves_to = "Drone"
-	caste_desc = "A digger and shaper."
-	max_health = XENO_UNIVERSAL_HPMULT * 200
-	speed = -0.1
-	armor_deflection = 15
-	xeno_explosion_resistance = 60
+	caste_desc = "A digger and trapper."
 	burrow_cooldown = 50
 	tunnel_cooldown = 100
 	widen_cooldown = 100
@@ -26,16 +30,10 @@
 	upgrade_name = "Mature"
 	caste_desc = "A digger and shaper. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_max = 350
-	plasma_gain = 0.034
-	armor_deflection = 20
-	max_health = XENO_UNIVERSAL_HPMULT * 210
-	speed = -0.2
 	burrow_cooldown = 40
 	tunnel_cooldown = 90
 	widen_cooldown = 90
@@ -45,38 +43,27 @@
 	upgrade_name = "Elder"
 	caste_desc = "A digger and shaper. It looks pretty strong."
 	upgrade = 2
+
 	tacklemin = 4
 	tacklemax = 5
-	melee_damage_lower = 35
-	melee_damage_upper = 45
 	tackle_chance = 50
-	plasma_gain = 0.035
-	armor_deflection = 25
-	max_health = XENO_UNIVERSAL_HPMULT * 220
-	speed = -0.3
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70
-	plasma_max = 350
 	tremor_cooldown = 450
 
 /datum/caste_datum/burrower/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "A digger and shaper. It looks extremely strong."
 	upgrade = 3
+
 	tacklemin = 4
 	tacklemax = 5
-	melee_damage_lower = 35
-	melee_damage_upper = 45
 	tackle_chance = 50
-	plasma_gain = 0.035
-	armor_deflection = 25
-	max_health = XENO_UNIVERSAL_HPMULT * 225
 	speed = -0.3
 	burrow_cooldown = 20
 	tunnel_cooldown = 70
 	widen_cooldown = 70
-	plasma_max = 350
 	tremor_cooldown = 420
 
 /mob/living/carbon/Xenomorph/Burrower
@@ -151,3 +138,16 @@
 			icon_state = "Burrower Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+
+/datum/caste_datum/burrower/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/burrower/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/burrower/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/burrower/ancient/New()
+	..()
+	ancient_multipliers()

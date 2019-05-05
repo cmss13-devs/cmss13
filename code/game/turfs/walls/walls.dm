@@ -226,7 +226,7 @@
 		sleep(20)
 		if(!istype(src, /turf/closed/wall)) // Extra check, needed against runtimes
 			break
-
+	melting = FALSE
 	if(O) 
 		qdel(O)
 	return

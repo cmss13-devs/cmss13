@@ -139,6 +139,29 @@
 	var/xeno_number_divider = 5
 	var/surv_number_divider = 20
 
+	var/datum/combat_configuration/marine_melee
+	var/datum/combat_configuration/marine_ranged
+	var/datum/combat_configuration/marine_explosive
+	var/datum/combat_configuration/marine_fire
+
+	var/datum/combat_configuration/xeno_melee
+	var/datum/combat_configuration/xeno_ranged
+	var/datum/combat_configuration/xeno_explosive
+	var/datum/combat_configuration/xeno_explosive_small
+	var/datum/combat_configuration/xeno_fire
+
+/datum/configuration/proc/load_combat_config()
+	marine_melee = new /datum/combat_configuration/marine/melee()
+	marine_ranged = new /datum/combat_configuration/marine/ranged()
+	marine_explosive = new /datum/combat_configuration/marine/explosive()
+	marine_fire = new /datum/combat_configuration/marine/fire()
+
+	xeno_melee = new /datum/combat_configuration/xeno/melee()
+	xeno_ranged = new /datum/combat_configuration/xeno/ranged()
+	xeno_explosive = new /datum/combat_configuration/xeno/explosive()
+	xeno_explosive_small = new /datum/combat_configuration/xeno/explosive/small()
+	xeno_fire = new /datum/combat_configuration/xeno/fire()
+
 /datum/configuration/proc/initialize_combat_defines(name,value)
 	value = text2num(value)
 	switch(name)

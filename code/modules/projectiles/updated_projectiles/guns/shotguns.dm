@@ -38,7 +38,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = config.high_recoil_value
 
 /obj/item/weapon/gun/shotgun/update_icon() //Shotguns do not currently have empty states, as they look exactly the same. Other than double barrel.
-		return
+	..()
+	return
 
 /obj/item/weapon/gun/shotgun/proc/replace_tube(number_to_replace)
 	current_mag.chamber_contents = list()
@@ -233,7 +234,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.8
+	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
 
@@ -295,7 +296,11 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //Turns out it has some attachments.
 /obj/item/weapon/gun/shotgun/double/update_icon()
-	icon_state = current_mag.chamber_closed ? copytext(icon_state,1,-2) : icon_state + "_o"
+	..()
+	if(current_mag.chamber_closed)
+		icon_state = base_gun_icon
+	else
+		icon_state = base_gun_icon + "_o"
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(current_mag.chamber_closed) return
@@ -420,7 +425,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.min_scatter_value
 	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult*0.8
+	damage_mult = config.base_hit_damage_mult
 	recoil = config.med_recoil_value*1.4
 	recoil_unwielded = config.high_recoil_value*1.2
 
@@ -477,7 +482,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.75
+	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
 

@@ -509,9 +509,9 @@
 	icon = 'icons/obj/doors/almayer/dropship1_side.dmi' //Tiles with is here FOR SAFETY PURPOSES
 	id = "sh_dropship1"
 	openspeed = 4 //shorter open animation.
-	unacidable = 1
 	no_panel = 1
 	not_weldable = 1
+	unacidable = 1
 
 /obj/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return

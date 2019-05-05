@@ -110,6 +110,9 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/no_panel = 0 //the airlock has no panel that can be screwdrivered open
 	var/not_weldable = 0 // stops people welding the door if true
 
+	var/damage = 0
+	var/damage_cap = 500 // Airlock gets destroyed
+
 /obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(!issilicon(usr))
 		if(src.isElectrified())
@@ -131,6 +134,62 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 /obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
 	..(user)
 
+/// DAMAGE CODE
+
+/obj/machinery/door/airlock/examine(mob/user)
+	. = ..()
+	var/dam = damage / damage_cap
+	if(dam <= 0.3)
+		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
+	else if(dam <= 0.6)
+		to_chat(user, SPAN_WARNING("It looks moderately damaged."))
+	else
+		to_chat(user, SPAN_DANGER("It looks heavily damaged."))
+
+/obj/machinery/door/airlock/proc/take_damage(dam)
+	if(!dam || unacidable)
+		return
+	
+	damage = max(0, damage + dam)
+
+	if(damage >= damage_cap)
+		destroy_airlock()
+
+/obj/machinery/door/airlock/proc/destroy_airlock()
+	if(!src || unacidable)
+		return
+	var/turf/T = get_turf(src)
+
+	to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+	if(width == 1)
+		new /obj/item/stack/rods(T)
+		new /obj/item/stack/cable_coil/cut(T)
+		new /obj/effect/spawner/gibspawner/robot(T)
+		new /obj/effect/decal/cleanable/blood/oil(T)
+	else // big airlock, big debris
+		for(var/turf/DT in locs) // locs = covered by airlock bounding box
+			new /obj/item/stack/rods(DT)
+			new /obj/item/stack/cable_coil/cut(DT)
+			new /obj/effect/spawner/gibspawner/robot(DT)
+			new /obj/effect/decal/cleanable/blood/oil(DT)
+
+	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
+	qdel(src)
+
+/obj/machinery/door/airlock/ex_act(severity)
+	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK
+	take_damage(exp_damage)
+	
+/obj/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
+	bullet_ping(Proj)
+	if(Proj.ammo.damage)
+		if(Proj.ammo.flags_ammo_behavior & AMMO_ROCKET)
+			take_damage(Proj.ammo.damage * 4) // rockets wreck airlocks
+			return TRUE
+		else
+			take_damage(Proj.ammo.damage)
+			return TRUE
+	return FALSE
 
 
 /*

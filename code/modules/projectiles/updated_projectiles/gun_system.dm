@@ -190,6 +190,11 @@
 
 /obj/item/weapon/gun/update_icon()
 	..()
+	if(overlays)
+		overlays.Cut()
+	else
+		overlays = list()
+	
 	if(!current_mag || current_mag.current_rounds <= 0)
 		icon_state = base_gun_icon + "_e"
 	else
@@ -341,7 +346,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(user)
 		if(magazine.reload_delay > 1)
 			to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-			if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, magazine, BUSY_ICON_FRIENDLY)) replace_magazine(user)
+			if(do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user)
 			else
 				to_chat(user, "<span class='warning'>Your reload was interrupted!</span>")
 				return

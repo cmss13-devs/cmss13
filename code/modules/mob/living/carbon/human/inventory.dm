@@ -438,7 +438,7 @@
 	M.visible_message("<span class='danger'>[src] tries to remove [M]'s [I.name].</span>", \
 					"<span class='userdanger'>[src] tries to remove [M]'s [I.name].</span>", null, 5)
 	I.add_fingerprint(src)
-	if(do_mob(src, M, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+	if(do_after(src, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		if(I && Adjacent(M) && I == M.get_item_by_slot(slot_to_process))
 			M.drop_inv_item_on_ground(I)
 
@@ -459,7 +459,7 @@
 			to_chat(src, "<span class='warning'>You can't put \the [I.name] on [M]!</span>")
 			return
 		visible_message(SPAN_NOTICE("[src] tries to put [I] on [M]."), null, 5)
-		if(do_mob(src, M, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+		if(do_after(src, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(I == get_active_hand() && !M.get_item_by_slot(slot_to_process) && Adjacent(M))
 				if(I.mob_can_equip(M, slot_to_process, TRUE))//Placing an item on the mob
 					drop_inv_item_on_ground(I)

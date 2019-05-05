@@ -6,14 +6,14 @@
 
 	var/mob/living/L = src
 
-	L.resisting = TRUE
-	
 	if(!isliving(L) || L.next_move > world.time)
 		return
 	if(L.is_mob_incapacitated(TRUE))
 		to_chat(L, "<span class='warning'>You can't resist in your current state.</span>")
 		return
-	
+
+	L.resisting = TRUE
+
 	L.next_move = world.time + 20
 	
 	//Getting out of someone's inventory.

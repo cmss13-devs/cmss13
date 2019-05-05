@@ -3,7 +3,13 @@
 	desc = "A helmet worn by members of the NanoTrasen Emergency Response Team. Armoured and space ready."
 	icon_state = "rig0-ert_commander"
 	item_state = "helm-command"
-	armor = list(melee = 50, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 60)
+	armor_melee = 50
+	armor_bullet = 50
+	armor_laser = 30
+	armor_energy = 15
+	armor_bomb = 30
+	armor_bio = 100
+	armor_rad = 60
 	siemens_coefficient = 0.6
 	var/obj/machinery/camera/camera
 
@@ -30,7 +36,13 @@
 	w_class = 3
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/weapon/energy/sword,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
 	slowdown = 1
-	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
+	armor_melee = 60
+	armor_bullet = 50
+	armor_laser = 30
+	armor_energy = 15
+	armor_bomb = 30
+	armor_bio = 100
+	armor_rad = 100
 	allowed = list(/obj/item/device/flashlight, /obj/item/tank, /obj/item/device/t_scanner, /obj/item/device/rcd, /obj/item/tool/crowbar, \
 	/obj/item/tool/screwdriver, /obj/item/tool/weldingtool, /obj/item/tool/wirecutters, /obj/item/tool/wrench, /obj/item/device/multitool, \
 	/obj/item/device/radio, /obj/item/device/analyzer,/obj/item/weapon/gun)

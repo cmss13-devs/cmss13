@@ -25,7 +25,13 @@
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "pred_mask1"
 	item_state = "helmet"
-	armor = list(melee = 80, bullet = 95, laser = 70, energy = 70, bomb = 40, bio = 100, rad = 100)
+	armor_melee = 80
+	armor_bullet = 95
+	armor_laser = 70
+	armor_energy = 70
+	armor_bomb = 40
+	armor_bio = 100
+	armor_rad = 100
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	flags_armor_protection = HEAD|FACE|EYES
 	flags_cold_protection = HEAD
@@ -136,7 +142,13 @@
 	item_state = "armor"
 	sprite_sheet_id = 1
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 75, bullet = 88, laser = 60, energy = 70, bomb = 40, bio = 20, rad = 20)
+	armor_melee = 75
+	armor_bullet = 88
+	armor_laser = 60
+	armor_energy = 70
+	armor_bomb = 40
+	armor_bio = 20
+	armor_rad = 20
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
@@ -157,7 +169,13 @@
 	loc = location
 
 	if(elder_restricted)
-		armor = list(melee = 75, bullet = 90, laser = 60, energy = 70, bomb = 40, bio = 25, rad = 25)
+		armor_melee = 75
+		armor_bullet = 90
+		armor_laser = 60
+		armor_energy = 70
+		armor_bomb = 40
+		armor_bio = 25
+		armor_rad = 25
 		switch(armor_number)
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
@@ -188,7 +206,13 @@
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
 	icon_state = "fullarmor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 90, bullet = 95, laser = 75, energy = 75, bomb = 40, bio = 25, rad = 25)
+	armor_melee = 90
+	armor_bullet = 95
+	armor_laser = 75
+	armor_energy = 75
+	armor_bomb = 40
+	armor_bio = 25
+	armor_rad = 25
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
@@ -216,7 +240,13 @@
 	icon_state = "cape_elder"
 	flags_equip_slot = SLOT_BACK
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 10, bullet = 0, laser = 5, energy = 15, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 5
+	armor_energy = 15
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	unacidable = 1
 
 /obj/item/clothing/cape/eldercape/New(location, cape_number)
@@ -256,7 +286,13 @@
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = FEET|LEGS|LOWER_TORSO
-	armor = list(melee = 75, bullet = 90, laser = 60, energy = 50, bomb = 40, bio = 20, rad = 20)
+	armor_melee = 75
+	armor_bullet = 90
+	armor_laser = 60
+	armor_energy = 50
+	armor_bomb = 40
+	armor_bio = 20
+	armor_rad = 20
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
@@ -293,7 +329,13 @@
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|FEET|HANDS //Does not cover the head though.
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|FEET|HANDS
 	has_sensor = 0
-	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 10, rad = 10)
+	armor_melee = 10
+	armor_bullet = 10
+	armor_laser = 10
+	armor_energy = 10
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 10
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
@@ -307,7 +349,13 @@
 	permeability_coefficient = 0.05
 	flags_item = 0
 	flags_armor_protection = HANDS
-	armor = list(melee = 80, bullet = 88, laser = 55, energy = 50, bomb = 40, bio = 10, rad = 10)
+	armor_melee = 80
+	armor_bullet = 88
+	armor_laser = 55
+	armor_energy = 50
+	armor_bomb = 40
+	armor_bio = 10
+	armor_rad = 10
 	flags_cold_protection = HANDS
 	flags_heat_protection = HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
@@ -477,7 +525,7 @@
 	to_chat(user, SPAN_NOTICE("You press a few buttons..."))
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
-	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 1))
+	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 1))
 		var/chance = rand(1, 100)
 		if(chance <= randomProbability)
 			return 1
@@ -774,9 +822,9 @@
 		victim.apply_damage(50,BRUTE,"chest")
 		if(victim) victim.gib() //Let's make sure they actually gib.
 		if(explosion_type == 0)
-			explosion(T, 2, 10, 15, 20) //Dramatically BIG explosion.
+			explosion_rec(T, 600, 50) //Dramatically BIG explosion.
 		else
-			explosion(T, 1, 1, 1, 1)
+			explosion_rec(T, 800, 550)
 
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
@@ -1246,6 +1294,7 @@
 	throwforce = 38
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	unacidable = 1
+	edge = 1
 	sharp = IS_SHARP_ITEM_BIG
 
 /obj/item/weapon/wristblades
@@ -1254,10 +1303,10 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
-	force = 30
+	force = 40
 	w_class = 5
 	edge = 1
-	sharp = 0
+	sharp = 1
 	flags_item = NOSHIELD|NODROP
 	flags_equip_slot = NOFLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
@@ -1322,7 +1371,7 @@
 	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = 35
+	force = 60
 	throwforce = 12
 	w_class = 3
 	unacidable = 1
@@ -1399,7 +1448,7 @@
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
-	sharp = IS_SHARP_ITEM_BIG
+	sharp = 1
 	edge = 1
 	force = 45 //More damage than other weapons like it. Considering how "strong" this sword is supposed to be, 38 damage was laughable.
 	w_class = 4.0
@@ -1448,8 +1497,8 @@
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	sharp = IS_SHARP_ITEM_BIG
-	force = 30
+	sharp = 1
+	force = 50
 	w_class = 4.0
 	throwforce = 24
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -1505,7 +1554,7 @@
 	flags_equip_slot = SLOT_BACK
 	flags_item = TWOHANDED
 	w_class = 4
-	force = 28
+	force = 35
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
 	throwforce = 38
 	throw_speed = 5 //We need the throw speed to be 5 so that it can do the full 70 damage upon hitting someone with a throw.
@@ -1533,12 +1582,12 @@
 
 /obj/item/weapon/combistick/wield(var/mob/user)
 	..()
-	force = 35
+	force = 42
 	update_icon()
 
 /obj/item/weapon/combistick/unwield(mob/user)
 	..()
-	force = 28
+	force = 35
 	update_icon()
 
 /obj/item/weapon/combistick/verb/use_unique_action()
@@ -1574,7 +1623,7 @@
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
 		w_class = 4
-		force = 28
+		force = 35
 		throwforce = initial(throwforce)
 		attack_verb = list("speared", "stabbed", "impaled")
 		timer = 1
@@ -1618,7 +1667,7 @@
 /obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!isYautja(user))
 		user.visible_message("<span class='notice'>You start to untangle the chain on \the [src]...")
-		if(do_mob(user, src, 30, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
 

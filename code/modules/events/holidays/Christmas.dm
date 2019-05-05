@@ -58,5 +58,11 @@
 	desc = "A crappy paper hat that you are REQUIRED to wear."
 	flags_inventory = 0
 	flags_armor_protection = 0
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 

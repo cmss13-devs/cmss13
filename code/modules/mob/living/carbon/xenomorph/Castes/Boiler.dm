@@ -3,19 +3,23 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 25
-	plasma_gain = 0.0375
-	plasma_max = 800
+
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_LOWPLUS
+	max_health = XENO_HEALTH_HIGH
+	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
+	plasma_max = XENO_PLASMA_HIGHMEDIUM	
+	xeno_explosion_resistance = XENO_MEDIUM_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_NO_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
+
 	evolution_allowed = FALSE
 	deevolves_to = "Spitter"
 	spit_delay = 40
 	caste_desc = "Gross!"
-	armor_deflection = 20
-	max_health = XENO_UNIVERSAL_HPMULT * 180
-	speed = 0.7
 	bomb_strength = 1
-	xeno_explosion_resistance = 60
 	acid_level = 3
 
 /datum/caste_datum/boiler/mature
@@ -24,47 +28,28 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	plasma_gain = 0.039
-	plasma_max = 900
 	spit_delay = 35
 	caste_desc = "Some sort of abomination. It looks a little more dangerous."
-	armor_deflection = 25
-	max_health = XENO_UNIVERSAL_HPMULT * 200
-	speed = 0.6
 	bomb_strength = 1.5
 
 /datum/caste_datum/boiler/elder
 	upgrade_name = "Elder"
 	caste_desc = "Some sort of abomination. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 25
-	melee_damage_upper = 30
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_gain = 0.040
-	plasma_max = 900
-	armor_deflection = 30
 	spit_delay = 35
-	max_health = XENO_UNIVERSAL_HPMULT * 220
-	speed = 0.6
 	bomb_strength = 2
 
 /datum/caste_datum/boiler/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "A devestating piece of alien artillery."
 	upgrade = 3
-	melee_damage_lower = 25
-	melee_damage_upper = 30
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_gain = 0.040
-	plasma_max = 900
-	armor_deflection = 30
 	spit_delay = 35
-	max_health = XENO_UNIVERSAL_HPMULT * 230
-	speed = 0.6
 	bomb_strength = 2
 
 /mob/living/carbon/Xenomorph/Boiler
@@ -87,6 +72,9 @@
 	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
 	var/bombard_speed = 50 //50 for normal boiler, 25 for Railgun boiler
 	var/railgun = FALSE //No proj spread for railgun boilers.
+
+	tileoffset = 5
+	viewsize = 12
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 	var/turf/bomb_turf = null
@@ -213,3 +201,16 @@
 			var/datum/action/A = X
 			A.update_button_icon()
 	return
+
+/datum/caste_datum/boiler/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/boiler/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/boiler/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/boiler/ancient/New()
+	..()
+	ancient_multipliers()

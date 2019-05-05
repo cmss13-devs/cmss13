@@ -307,9 +307,6 @@
 		return
 
 	last_rng_attack = world.time
-
-	damage += 20
-
 	if(mob_size == MOB_SIZE_BIG)
 		damage += 10
 
@@ -319,7 +316,6 @@
 		affecting = M.get_limb(ran_zone(null, 0))
 	if(!affecting) //Still nothing??
 		affecting = M.get_limb("chest") //Gotta have a torso?!
-	var/armor_block = M.run_armor_check(affecting, "melee")
 
 	flick_attack_overlay(M, "slash") //TODO: Special bite attack overlay ?
 	playsound(loc, "alien_bite", 25)
@@ -328,7 +324,9 @@
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>bit [src.name] ([src.ckey])</font>")
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was bitten by [M.name] ([M.ckey])</font>")
 
-	M.apply_damage(damage, BRUTE, affecting, armor_block, sharp = 1) //This should slicey dicey
+	var/armor_block = getarmor(affecting, ARMOR_MELEE)
+	var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block, 10)
+	M.apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1) //This should slicey dicey
 	M.updatehealth()
 
 //Tail stab. Checked during a slash, after the above.
@@ -341,8 +339,6 @@
 
 	last_rng_attack = world.time
 
-	damage += 20
-
 	if(mob_size == MOB_SIZE_BIG)
 		damage += 10
 
@@ -352,7 +348,6 @@
 		affecting = M.get_limb(ran_zone(null, 0))
 	if(!affecting) //Still nothing??
 		affecting = M.get_limb("chest") // Gotta have a torso?!
-	var/armor_block = M.run_armor_check(affecting, "melee")
 
 	flick_attack_overlay(M, "tail")
 	playsound(M.loc, 'sound/weapons/alien_tail_attack.ogg', 25, 1) //Stolen from Yautja! Owned!
@@ -361,7 +356,9 @@
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>tail-stabbed [M.name] ([M.ckey])</font>")
 	attack_log += text("\[[time_stamp()]\] <font color='orange'>was tail-stabbed by [src.name] ([src.ckey])</font>")
 
-	M.apply_damage(damage, BRUTE, affecting, armor_block, sharp = 1, edge = 1) //This should slicey dicey
+	var/armor_block = getarmor(affecting, ARMOR_MELEE)
+	var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block, 40)
+	M.apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
 	M.updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/regurgitate(mob/living/victim, var/stunned = 1)
@@ -394,8 +391,8 @@
 		return
 	zoom_turf = get_turf(src)
 	is_zoomed = 1
-	client.change_view(caste.viewsize)
-	var/viewoffset = 32 * caste.tileoffset
+	client.change_view(viewsize)
+	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)
 			client.pixel_x = 0

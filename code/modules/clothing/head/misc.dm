@@ -147,7 +147,13 @@
 	icon_state = "hgpiratecap"
 	item_state = "hgpiratecap"
 	flags_armor_protection = 0
-	armor = list(melee = 50, bullet = 80, laser = 50,energy = 10, bomb = 50, bio = 0, rad = 0)
+	armor_melee = 50
+	armor_bullet = 80
+	armor_laser = 50
+	armor_energy = 10
+	armor_bomb = 50
+	armor_bio = 0
+	armor_rad = 0
 
 /obj/item/clothing/head/bandana
 	name = "pirate bandana"

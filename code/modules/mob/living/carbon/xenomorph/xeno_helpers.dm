@@ -18,19 +18,26 @@
 /mob/living/carbon/Xenomorph/proc/get_plasma_percentage()
 	return round(plasma_stored * 100 / plasma_max)
 
+/mob/living/carbon/Xenomorph/proc/get_armor_integrity_percentage()
+	if(armor_deflection<=0)
+		return 100
+	return round(armor_integrity * 100 / armor_integrity_max)
 
 //These don't do much currently. Or anything? Only around for legacy code.
 /mob/living/carbon/Xenomorph/is_mob_restrained()
 	return 0
 
-/mob/living/carbon/Xenomorph/proc/resin2text(var/selected_resin)
+/mob/living/carbon/Xenomorph/proc/resin2text(var/selected_resin, var/is_Hivelord)
+	var/mod = ""
+	if (is_Hivelord)
+		mod = "thick "
 	switch (selected_resin)
 		if (RESIN_WALL)
-			return "resin wall"
+			return mod + "resin wall"
 		if (RESIN_DOOR)
-			return "resin door"
+			return mod + "resin door"
 		if (RESIN_MEMBRANE)
-			return "resin membrane"
+			return mod + "resin membrane"
 		if (RESIN_NEST)
 			return "resin nest"
 		if (RESIN_STICKY)

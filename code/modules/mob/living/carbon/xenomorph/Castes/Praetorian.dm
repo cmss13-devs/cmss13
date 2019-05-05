@@ -3,66 +3,51 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
+	max_health = XENO_HEALTH_HIGH
+	plasma_gain = XENO_PLASMA_GAIN_LOWMED
+	plasma_max = XENO_PLASMA_VERYHIGH
+	xeno_explosion_resistance = XENO_MEDIUM_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDHIGH)
+
 	tackle_chance = 45
-	max_health = XENO_UNIVERSAL_HPMULT * 260
-	plasma_gain = 0.032
-	plasma_max = 800
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
 	spit_delay = 20
-	speed = -0.5
 	caste_desc = "Ptui!"
-	armor_deflection = 35
 	aura_strength = 1.5 //Praetorian's aura starts strong. They are the Queen's right hand. Climbs by 1 to 4.5
 	spit_types = list(/datum/ammo/xeno/toxin/heavy, /datum/ammo/xeno/acid/heavy, /datum/ammo/xeno/sticky)
-	xeno_explosion_resistance = 60
 	acid_level = 2
 
 /datum/caste_datum/praetorian/mature
 	upgrade_name = "Mature"
 	caste_desc = "A giant ranged monster. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	max_health = XENO_UNIVERSAL_HPMULT * 270
-	plasma_gain = 0.034
-	plasma_max = 900
-	spit_delay = 15
-	armor_deflection = 40
+
 	tackle_chance = 50
-	speed = -0.6
 	aura_strength = 2.5
 
 /datum/caste_datum/praetorian/elder
 	upgrade_name = "Elder"
 	caste_desc = "A giant ranged monster. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-	max_health = XENO_UNIVERSAL_HPMULT * 285
-	plasma_gain = 0.04
-	plasma_max = 1000
+
 	spit_delay = 15
-	armor_deflection = 42
 	tackle_chance = 55
-	speed = -0.7
 	aura_strength = 3.5
 
 /datum/caste_datum/praetorian/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "Its mouth looks like a minigun."
 	upgrade = 3
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	max_health = XENO_UNIVERSAL_HPMULT * 295
-	plasma_gain = 0.05
-	plasma_max = 1100
+	
 	spit_delay = 12
-	armor_deflection = 45
 	tackle_chance = 55
-	speed = -0.8
 	aura_strength = 4
 
 /datum/caste_datum/praetorian/primordial
@@ -101,3 +86,16 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/spray_acid
 	)
+
+/datum/caste_datum/praetorian/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/praetorian/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/praetorian/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/praetorian/ancient/New()
+	..()
+	ancient_multipliers()

@@ -49,8 +49,8 @@
 	var/armor_duration = 0 //The more force the bottle has, the longer the duration.
 
 	//Calculating duration and calculating damage.
-	armor_block = target.run_armor_check(affecting, "melee")
-	armor_duration = duration + force - target.getarmor(affecting, "melee")
+	armor_block = target.run_armor_check(affecting, ARMOR_MELEE)
+	armor_duration = duration + force - target.getarmor(affecting, ARMOR_MELEE)
 
 	//Apply the damage!
 	target.apply_damage(force, BRUTE, affecting, armor_block, sharp=0)
@@ -142,7 +142,7 @@
 	center_of_mass = list("x"=16, "y"=3)
 	New()
 		..()
-		reagents.add_reagent("davenport", 50)
+		reagents.add_reagent("specialwhiskey", 50)
 
 
 /obj/item/reagent_container/food/drinks/bottle/bottleofnothing

@@ -13,6 +13,7 @@
 	icon_state = "warning"
 
 /obj/effect/decal/sand_overlay
+	name = "sandy edge"
 	mouse_opacity = 0
 	unacidable = 1
 	icon = 'icons/turf/overlays.dmi'
@@ -22,7 +23,7 @@
 /obj/effect/decal/sand_overlay/New()
 	. = ..()
 
-	loc.overlays += src
+	loc.overlays += image(icon, icon_state=icon_state, dir=dir)
 	qdel(src)
 
 /obj/effect/decal/sand_overlay/sand1

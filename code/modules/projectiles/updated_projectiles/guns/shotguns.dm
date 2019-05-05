@@ -38,7 +38,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = config.high_recoil_value
 
 /obj/item/weapon/gun/shotgun/update_icon() //Shotguns do not currently have empty states, as they look exactly the same. Other than double barrel.
-		return
+	..()
+	return
 
 /obj/item/weapon/gun/shotgun/proc/replace_tube(number_to_replace)
 	current_mag.chamber_contents = list()
@@ -295,7 +296,11 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //Turns out it has some attachments.
 /obj/item/weapon/gun/shotgun/double/update_icon()
-	icon_state = current_mag.chamber_closed ? copytext(icon_state,1,-2) : icon_state + "_o"
+	..()
+	if(current_mag.chamber_closed)
+		icon_state = base_gun_icon
+	else
+		icon_state = base_gun_icon + "_o"
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(current_mag.chamber_closed) return

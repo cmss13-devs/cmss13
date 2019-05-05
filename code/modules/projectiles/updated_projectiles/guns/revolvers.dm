@@ -43,7 +43,11 @@
 	to_chat(user, message)
 
 /obj/item/weapon/gun/revolver/update_icon() //Special snowflake update icon.
-	icon_state = current_mag.chamber_closed ? copytext(icon_state,1,-2) : icon_state + "_o"
+	..()
+	if(current_mag.chamber_closed)
+		icon_state = base_gun_icon
+	else
+		icon_state = base_gun_icon + "_o"
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	current_mag.chamber_position = current_mag.chamber_position == 1 ? current_mag.max_rounds : current_mag.chamber_position - 1

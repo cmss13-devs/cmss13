@@ -180,6 +180,13 @@
 			//world.log << "Start = [M] - [get_turf(M)] - ([M.x], [M.y], [M.z])"
 		else if(istype(A, /obj/item/device/radio))
 			hear += A
+		// Fix LOOC for our tank ungas - Fourk 5/2/19
+		else if (istype(A, /obj/vehicle/multitile/root/cm_armored/tank))
+			var/obj/vehicle/multitile/root/cm_armored/tank/tank = A
+			if (tank.driver && ishuman(tank.driver))
+				hear += tank.driver
+			if (tank.gunner && ishuman(tank.gunner))
+				hear += tank.gunner
 
 		// if(isobj(A) || ismob(A))
 		// 	hear |= recursive_mob_check(A, hear, 3, 1, 0, 1)

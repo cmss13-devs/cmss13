@@ -15,8 +15,8 @@
     name = "command tablet"
     desc = "A special device used by the Captain of the ship."
     suffix = "\[3\]"
-    icon_state = "telescreen"
-    item_state = "telescreen"
+    icon_state = "Cotablet"
+    item_state = "Cotablet"
     req_access = list(ACCESS_MARINE_BRIDGE)
     var/on = 1 // 0 for off
     var/mob/living/carbon/human/current_mapviewer
@@ -185,7 +185,7 @@
 
 
 /obj/item/device/cotablet/Topic(href, href_list)
-    if(..()) r_FAL 
+    if(..()) r_FAL
     usr.set_interaction(src)
 
     switch(href_list["operation"])
@@ -213,7 +213,7 @@
             var/mob/living/carbon/human/C = usr
             var/obj/item/card/id/I = C.get_active_hand()
             if(istype(I))
-                if(check_access(I)) 
+                if(check_access(I))
                     authenticated = 1
                     interact(usr)
                 if(ACCESS_MARINE_COMMANDER in I.access)
@@ -364,7 +364,7 @@
             if(give_medal_award(usr.loc))
                 visible_message(SPAN_NOTICE("[src] prints a medal."))
                 interact(usr)
-                
+
 
         if("messagelist")
             currmsg = 0
@@ -390,7 +390,7 @@
                     currmsg = 0
                 state = STATE_MESSAGELIST
                 interact(usr)
-            else 
+            else
                 state = STATE_VIEWMESSAGE
                 interact(usr)
 

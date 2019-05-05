@@ -113,6 +113,10 @@
 	var/mob/living/carbon/Xenomorph/observed_xeno //the Xenomorph the queen is currently overwatching
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/last_larva_time = 0
+
+	tileoffset = 0
+	viewsize = 12
+
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
@@ -507,8 +511,6 @@
 		var/datum/action/xeno_action/A = new path()
 		A.give_action(src)
 
-	caste.tileoffset = 5
-	caste.viewsize = 12
 	anchored = TRUE
 	resting = FALSE
 	update_canmove()
@@ -549,8 +551,6 @@
 			A.give_action(src)
 		recalculate_actions()
 
-		caste.tileoffset = 0
-		caste.viewsize = 12
 		egg_amount = 0
 		ovipositor_cooldown = world.time + MINUTES_5 //5 minutes
 		anchored = FALSE

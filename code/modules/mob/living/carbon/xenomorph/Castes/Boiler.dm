@@ -73,6 +73,9 @@
 	var/bombard_speed = 50 //50 for normal boiler, 25 for Railgun boiler
 	var/railgun = FALSE //No proj spread for railgun boilers.
 
+	tileoffset = 5
+	viewsize = 12
+
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 	var/turf/bomb_turf = null
 

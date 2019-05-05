@@ -60,28 +60,28 @@ Currently only has the tank hardpoints
 //If our cooldown has elapsed
 /obj/item/hardpoint/proc/is_ready()
 	if(owner.z == 2 || owner.z == 3)
-		to_chat(usr, "<span class='warning'>Don't fire here, you'll blow a hole in the ship!</span>")
+		to_chat(usr, SPAN_WARNING("Don't fire here, you'll blow a hole in the ship!"))
 		return 0
 	return 1
 
 /obj/item/hardpoint/proc/try_add_clip(var/obj/item/ammo_magazine/A, var/mob/user)
 	if(max_clips == 0)
-		to_chat(user, "<span class='warning'>This module does not have room for additional ammo.</span>")
+		to_chat(user, SPAN_WARNING("This module does not have room for additional ammo."))
 		return 0
 	else if(backup_clips.len >= max_clips)
-		to_chat(user, "<span class='warning'>The reloader is full.</span>")
+		to_chat(user, SPAN_WARNING("The reloader is full."))
 		return 0
 	else if(!ammo)
-		to_chat(user, "<span class='warning'>This module does not use ammo!</span>")
+		to_chat(user, SPAN_WARNING("This module does not use ammo!"))
 		return 0
 	else if(!istype(A, ammo.type))
-		to_chat(user, "<span class='warning'>That is the wrong ammo type.</span>")
+		to_chat(user, SPAN_WARNING("That is the wrong ammo type."))
 		return 0
 
 	to_chat(user, SPAN_NOTICE("Installing \the [A] in \the [owner]."))
 
 	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		to_chat(user, "<span class='warning'>Something interrupted you while reloading [owner].</span>")
+		to_chat(user, SPAN_WARNING("Something interrupted you while reloading [owner]."))
 		return 0
 
 	user.temp_drop_inv_item(A, 0)
@@ -127,16 +127,16 @@ Currently only has the tank hardpoints
 	if(iswelder(O) && health < initial(health))
 		var/obj/item/tool/weldingtool/WT = O
 		if(!WT.isOn())
-			to_chat(user, "<span class='warning'>You need to light \the [WT] first.</span>")
+			to_chat(user, SPAN_WARNING("You need to light \the [WT] first."))
 			return
 		if(WT.get_fuel() < 10)
-			to_chat(user, "<span class='warning'>You need to refill \the [WT] first.</span>")
+			to_chat(user, SPAN_WARNING("You need to refill \the [WT] first."))
 			return
 		if(do_after(user, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 			WT.remove_fuel(10, user)
-			health += 10
+			health += round(0.10 * initial(health))
 			health = Clamp(health, 0, initial(health))
-			to_chat(user, "<span class='warning'>You repair [src]. Integrity now at [(health / initial(health)) * 100]%.</span>")
+			to_chat(user, SPAN_WARNING("You repair [src]. Integrity now at [(health / initial(health)) * 100]%."))
 		return
 	..()
 
@@ -223,16 +223,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/primary/cannon/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/cannon/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
@@ -289,16 +289,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/primary/minigun/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/minigun/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
 		return
 
 	var/S = 'sound/weapons/tank_minigun_start.ogg'
@@ -345,16 +345,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/primary/flamer/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/flamer/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
@@ -418,16 +418,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/primary/autocannon/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/primary/autocannon/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("[name] does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["primary"] * owner.misc_ratios["prim_cool"]
@@ -469,16 +469,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/flamer/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/flamer/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -512,16 +512,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/towlauncher/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/towlauncher/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -560,16 +560,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/m56cupola/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/m56cupola/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -604,16 +604,16 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/secondary/grenade_launcher/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/secondary/grenade_launcher/active_effect(var/atom/A)
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["secondary"] * owner.misc_ratios["secd_cool"]
@@ -655,17 +655,17 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/support/smoke_launcher/is_ready()
 	if(world.time < next_use)
-		to_chat(usr, "<span class='warning'>This module is not ready to be used yet.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is not ready to be used yet."))
 		return 0
 	if(health <= 0)
-		to_chat(usr, "<span class='warning'>This module is too broken to be used.</span>")
+		to_chat(usr, SPAN_WARNING("[name] is too broken to be used."))
 		return 0
 	return 1
 
 /obj/item/hardpoint/support/smoke_launcher/active_effect(var/atom/A)
 
 	if(ammo.current_rounds <= 0)
-		to_chat(usr, "<span class='warning'>This module does not have any ammo.</span>")
+		to_chat(usr, SPAN_WARNING("This module does not have any ammo."))
 		return
 
 	next_use = world.time + owner.cooldowns["support"] * owner.misc_ratios["supp_cool"]

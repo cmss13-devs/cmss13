@@ -39,7 +39,13 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	hitbox_type = /obj/vehicle/multitile/hitbox/cm_armored //Used for emergencies and respawning hitboxes
 
 	//What slots the vehicle can have
-	var/list/hardpoints = list(HDPT_ARMOR, HDPT_TREADS, HDPT_SECDGUN, HDPT_SUPPORT, HDPT_PRIMARY)
+	var/list/hardpoints = list(
+		HDPT_ARMOR = null, 
+		HDPT_TREADS = null, 
+		HDPT_SECDGUN = null, 
+		HDPT_SUPPORT = null, 
+		HDPT_PRIMARY = null
+	)
 
 	//The next world.time when the tank can move
 	var/next_move = 0
@@ -130,24 +136,24 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	return 1
 
 /obj/vehicle/multitile/root/cm_armored/proc/get_next_hp(var/hardpoint_to_use)
-	if(!hardpoints.Find(hardpoint_to_use))
+	if(!hardpoints[hardpoint_to_use])
 		return
 	switch(hardpoint_to_use)
 		if(HDPT_PRIMARY)
-			if(hardpoints.Find(HDPT_SECDGUN))
-				return hardpoints.Find(HDPT_SECDGUN)
-			else if(hardpoints.Find(HDPT_SUPPORT))
-				return hardpoints.Find(HDPT_SUPPORT)
+			if(hardpoints[HDPT_SECDGUN])
+				return HDPT_SECDGUN
+			else if(hardpoints[HDPT_SUPPORT])
+				return HDPT_SUPPORT
 		if(HDPT_SECDGUN)
-			if(hardpoints.Find(HDPT_PRIMARY))
-				return hardpoints.Find(HDPT_PRIMARY)
-			else if(hardpoints.Find(HDPT_SUPPORT))
-				return hardpoints.Find(HDPT_SUPPORT)
+			if(hardpoints[HDPT_PRIMARY])
+				return HDPT_PRIMARY
+			else if(hardpoints[HDPT_SUPPORT])
+				return HDPT_SUPPORT
 		if(HDPT_SUPPORT)
-			if(hardpoints.Find(HDPT_PRIMARY))
-				return hardpoints.Find(HDPT_PRIMARY)
-			else if(hardpoints.Find(HDPT_SECDGUN))
-				return hardpoints.Find(HDPT_SECDGUN)
+			if(hardpoints[HDPT_PRIMARY])
+				return HDPT_PRIMARY
+			else if(hardpoints[HDPT_SECDGUN])
+				return HDPT_SECDGUN
 	return hardpoint_to_use
 
 //No one but the gunner can gun

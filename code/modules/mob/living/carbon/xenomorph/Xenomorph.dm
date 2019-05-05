@@ -110,7 +110,7 @@
 	//Pouncing Castes
 	var/pounce_slash = FALSE
 
-	
+
 
 /mob/living/carbon/Xenomorph/New(var/new_loc, var/mob/living/carbon/Xenomorph/oldXeno)
 	if(oldXeno)
@@ -501,8 +501,11 @@
 		//Xeno runners need a small nerf to dragging speed mutator
 		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
 	if(isXenoCarrier(src))
-		huggers_max = mutators.carry_boost_level + caste.huggers_max
-		eggs_max = mutators.carry_boost_level + caste.eggs_max
+		if(mutators.egg_sac)
+			huggers_max = 0
+		else
+			huggers_max = caste.huggers_max
+		eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
 	actions -= mutators.action_to_remove
 

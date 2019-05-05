@@ -27,14 +27,17 @@
 /mob/living/carbon/Xenomorph/is_mob_restrained()
 	return 0
 
-/mob/living/carbon/Xenomorph/proc/resin2text(var/selected_resin)
+/mob/living/carbon/Xenomorph/proc/resin2text(var/selected_resin, var/is_Hivelord)
+	var/mod = ""
+	if (is_Hivelord)
+		mod = "thick "
 	switch (selected_resin)
 		if (RESIN_WALL)
-			return "resin wall"
+			return mod + "resin wall"
 		if (RESIN_DOOR)
-			return "resin door"
+			return mod + "resin door"
 		if (RESIN_MEMBRANE)
-			return "resin membrane"
+			return mod + "resin membrane"
 		if (RESIN_NEST)
 			return "resin nest"
 		if (RESIN_STICKY)

@@ -17,8 +17,6 @@
 	attack_delay = -4
 	evolves_to = list("Lurker")
 	pounce_delay = 35
-	viewsize = 8 // runner scouting, can look 3 tiles (2 offset + 1 increased size) ahead when stationary
-	tileoffset = 2
 	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 
 /datum/caste_datum/runner/mature
@@ -55,6 +53,9 @@
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16
 	pull_speed = -1
+	viewsize = 8 // runner scouting, can look 3 tiles (2 offset + 1 increased size) ahead when stationary
+	tileoffset = 2
+
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,

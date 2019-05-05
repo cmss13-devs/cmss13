@@ -223,11 +223,6 @@
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
 
-	// Related to zooming out (primarily queen and boiler)
-	// TODO: reexamine this because kinda iffy about where this var is stored - TheDonkified
-	var/tileoffset = 5
-	var/viewsize = 12
-
 /datum/caste_datum/New()
 	. = ..()
 
@@ -455,6 +450,10 @@
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
 	var/leader_current_aura = "" //Pheromone type inherited from Queen
+
+	// Related to zooming out (primarily queen and boiler)
+	var/tileoffset = 0
+	var/viewsize = 0
 
 	gender = NEUTER
 

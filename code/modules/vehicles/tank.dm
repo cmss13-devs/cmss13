@@ -73,11 +73,11 @@
 	R.load_entrance_marker(entr_mark)
 
 	//Manually adding those hardpoints
-	R.add_hardpoint(new /obj/item/hardpoint/primary/cannon, R.hardpoints[HDPT_PRIMARY])
-	R.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola, R.hardpoints[HDPT_SECDGUN])
-	R.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer, R.hardpoints[HDPT_SUPPORT])
-	R.add_hardpoint(new /obj/item/hardpoint/armor/ballistic, R.hardpoints[HDPT_ARMOR])
-	R.add_hardpoint(new /obj/item/hardpoint/treads/standard, R.hardpoints[HDPT_TREADS])
+	R.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
+	R.add_hardpoint(new /obj/item/hardpoint/secondary/m56cupola)
+	R.add_hardpoint(new /obj/item/hardpoint/support/overdrive_enhancer)
+	R.add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
+	R.add_hardpoint(new /obj/item/hardpoint/treads/standard)
 	R.update_damage_distribs()
 
 	R.healthcheck()

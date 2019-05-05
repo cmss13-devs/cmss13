@@ -1482,7 +1482,7 @@
 
 	use_plasma(resin_plasma_cost)
 	visible_message(SPAN_XENONOTICE("\The [src] regurgitates a thick substance and shapes it into \a [resin2text(selected_resin, isXenoHivelord(src))]!"), \
-		SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin)]."), null, 5)
+		SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [resin2text(selected_resin, isXenoHivelord(src))]."), null, 5)
 	playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin

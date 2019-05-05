@@ -43,7 +43,7 @@
 	return t
 
 /proc/readd_quotes(var/t)
-	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "\"")
+	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
@@ -53,7 +53,8 @@
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t,var/list/repl_chars = null)
-	return html_encode(sanitize_simple(t,repl_chars))
+	var/msg = html_encode(sanitize_simple(t,repl_chars))
+	return readd_quotes(msg)
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()

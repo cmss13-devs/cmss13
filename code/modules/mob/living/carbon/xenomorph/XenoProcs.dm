@@ -391,8 +391,8 @@
 		return
 	zoom_turf = get_turf(src)
 	is_zoomed = 1
-	client.change_view(caste.viewsize)
-	var/viewoffset = 32 * caste.tileoffset
+	client.change_view(viewsize)
+	var/viewoffset = 32 * tileoffset
 	switch(dir)
 		if(NORTH)
 			client.pixel_x = 0

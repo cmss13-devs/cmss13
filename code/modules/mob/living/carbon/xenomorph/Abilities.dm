@@ -154,7 +154,7 @@
 		else
 			return //something went wrong
 
-	to_chat(X, SPAN_NOTICE("You will now build <b>[X.selected_resin]\s</b> when secreting resin."))
+	to_chat(X, SPAN_NOTICE("You will now build <b>[X.resin2text(X.selected_resin)]\s</b> when secreting resin."))
 	//update the button's overlay with new choice
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/actions.dmi', button, X.resin2text(X.selected_resin))

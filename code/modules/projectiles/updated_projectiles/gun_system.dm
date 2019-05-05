@@ -194,6 +194,7 @@
 		overlays.Cut()
 	else
 		overlays = list()
+	
 	if(!current_mag || current_mag.current_rounds <= 0)
 		icon_state = base_gun_icon + "_e"
 	else

@@ -556,7 +556,7 @@
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? ")corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
 	to_chat(X, SPAN_NOTICE("[activation_msg]"))
 	button.overlays.Cut()
 	if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
@@ -1065,7 +1065,7 @@
 			if(target.health < target.maxHealth)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)
-					target.adjustBruteLoss(-50)
+					target.adjustBruteLoss(-200)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, "<span class='xenonotice'>You channel your plasma to heal [target]'s wounds.</span>")
 			else
@@ -1095,7 +1095,7 @@
 			if(target.plasma_stored < target.plasma_max)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)
-					target.gain_plasma(100)
+					target.gain_plasma(400)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, "<span class='xenonotice'>You transfer some plasma to [target].</span>")
 
@@ -1271,6 +1271,10 @@
 /datum/action/xeno_action/activable/spin_slash/use_ability()
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.spin_slash()
+
+/datum/action/xeno_action/activable/spin_slash/action_cooldown_check()
+	var/mob/living/carbon/Xenomorph/Ravager/X = owner
+	return !X.used_lunge
 
 //Drone Abilities
 /datum/action/xeno_action/activable/transfer_health

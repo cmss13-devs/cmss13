@@ -112,7 +112,13 @@
 	desc = "Someone who wears this will look very smart."
 	icon_state = "detective"
 	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
-	armor = list(melee = 50, bullet = 5, laser = 25,energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 50
+	armor_bullet = 5
+	armor_laser = 25
+	armor_energy = 10
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
 

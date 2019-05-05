@@ -76,7 +76,13 @@
 		usr <<"This armor is already reinforced."
 		return
 	to_chat(usr, "You reinforce the armor with some Chitin Plating...")
-	A.armor = list(melee = 70, bullet = 90, laser = 7, energy = 40, bomb = 50, bio = 40, rad = 20)
+	A.armor_melee = 70
+	armor_bullet = 90
+	armor_laser = 7
+	armor_energy = 40
+	armor_bomb = 50
+	armor_bio = 40
+	armor_rad = 20
 	A.slowdown++
 	A.flags_marine_armor |= ARMOR_IS_REINFORCED
 	user.temp_drop_inv_item(src)

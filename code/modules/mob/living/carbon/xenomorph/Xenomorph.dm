@@ -34,6 +34,10 @@
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
 	var/armor_deflection_buff = 0
+	var/armor_integrity = 100
+	var/armor_integrity_max = 100
+	var/armor_integrity_last_damage_time = 0
+	var/armor_integrity_immunity_time = 0
 	attacktext = "claws"
 	attack_sound = null
 	friendly = "nuzzles"
@@ -45,7 +49,7 @@
 	see_in_dark = 8
 	see_infrared = 1
 	see_invisible = SEE_INVISIBLE_MINIMUM
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD,QUEEN_OVERWATCH_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO)
 	unacidable = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/mutator_set/individual_mutators/mutators = new
@@ -82,7 +86,7 @@
 	var/need_weeds = TRUE
 
 	//New variables for how charges work, max speed, speed buildup, all that jazz
-	var/charge_speed_max = 2.1 //Can only gain this much speed before capping
+	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
 	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
 	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
 	var/charge_speed = 0 //Modifier on base move delay as charge builds up
@@ -352,6 +356,7 @@
 	..()
 	//updating all the mob's hud images
 	med_hud_set_health()
+	med_hud_set_armor()
 	hud_set_plasma()
 	hud_set_pheromone()
 	//and display them
@@ -551,10 +556,10 @@
 		hive.totalXenos += src
 		if(caste_name == "Queen")
 			New()
+	armor_integrity = 100
 	..()
 	hud_update()
 	plasma_stored = plasma_max
-
 /mob/living/carbon/Xenomorph/proc/remove_action(var/action as text)
 	for(var/X in actions)
 		var/datum/action/A = X

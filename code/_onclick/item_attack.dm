@@ -69,7 +69,11 @@
 
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
-
+		if(isXeno(M))
+			var/mob/living/carbon/Xenomorph/XNO = M
+			power = armor_damage_reduction(config.xeno_melee, power, XNO.armor_deflection + XNO.armor_deflection_buff, 20, 0, 0, XNO.armor_integrity)
+			var/armor_punch = armor_break_calculation(config.xeno_melee, power, XNO.armor_deflection + XNO.armor_deflection_buff, 20, 0, 0, XNO.armor_integrity)
+			XNO.apply_armorbreak(armor_punch)
 		if(hitsound)
 			playsound(loc, hitsound, 25, 1)
 		switch(damtype)

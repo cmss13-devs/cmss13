@@ -472,7 +472,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 	if(ammo_flags & AMMO_XENO_ACID) 
 		dam_type = "acid"
 
-	take_damage_type(damage * (0.75 + penetration/100), dam_type, firer)
+	take_damage_type(damage * (0.25 + penetration/100), dam_type, firer)
 
 	healthcheck()
 

@@ -1,47 +1,35 @@
 /datum/caste_datum/runner
 	caste_name = "Runner"
-	upgrade_name = "Young"
+	upgrade_name = "Young"	
+	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 25
-	plasma_gain = 0.02
-	plasma_max = 150
-	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
-	armor_deflection = 5
-	max_health = XENO_UNIVERSAL_HPMULT * 140
-	speed = -1.9
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_LOWPLUS
+	plasma_gain = XENO_PLASMA_GAIN_LOW
+	plasma_max = XENO_PLASMA_LOWMEDIUM
+	armor_deflection = XENO_NO_ARMOR
+	max_health = XENO_HEALTH_LOWMEDIUM
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_HIGH
+	speed = XENO_SPEED_CONVERT( XENO_SPEED_SANICFAST )
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
 	pounce_delay = 35
-	xeno_explosion_resistance = 20
 	viewsize = 8 // runner scouting, can look 3 tiles (2 offset + 1 increased size) ahead when stationary
 	tileoffset = 2
+	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
 
 /datum/caste_datum/runner/mature
 	upgrade_name = "Mature"
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	plasma_gain = 0.02
-	plasma_max = 160
-	armor_deflection = 5
-	max_health = XENO_UNIVERSAL_HPMULT * 145
-	speed = -1.9
-
+	
 /datum/caste_datum/runner/elder
 	upgrade_name = "Elder"
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 25
-	melee_damage_upper = 30
-	plasma_gain = 0.02
-	plasma_max = 200
-	armor_deflection = 10
-	max_health = XENO_UNIVERSAL_HPMULT * 155
-	speed = -2.0
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
@@ -51,13 +39,6 @@
 	upgrade_name = "Ancient"
 	caste_desc = "Not what you want to run into in a dark alley. It looks fucking deadly."
 	upgrade = 3
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	plasma_gain = 0.02
-	plasma_max = 250
-	armor_deflection = 15
-	max_health = XENO_UNIVERSAL_HPMULT * 160
-	speed = -2.1
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
@@ -84,3 +65,16 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+
+/datum/caste_datum/runner/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/runner/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/runner/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/runner/ancient/New()
+	..()
+	ancient_multipliers()

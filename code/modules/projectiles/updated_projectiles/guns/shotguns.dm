@@ -234,7 +234,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.8
+	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
 
@@ -425,7 +425,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.min_scatter_value
 	burst_scatter_mult = config.min_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult*0.8
+	damage_mult = config.base_hit_damage_mult
 	recoil = config.med_recoil_value*1.4
 	recoil_unwielded = config.high_recoil_value*1.2
 
@@ -482,7 +482,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.75
+	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
 

@@ -104,7 +104,7 @@
 			if(!affecting) //Still nothing??
 				affecting = get_limb("chest") //Gotta have a torso?!
 
-			var/armor_block = run_armor_check(affecting, "melee")
+			var/armor_block = getarmor(affecting, ARMOR_MELEE)
 
 			if(isYautja(src) && check_zone(M.zone_selected) == "head")
 				if(istype(wear_mask, /obj/item/clothing/mask/gas/yautja))
@@ -146,10 +146,24 @@
 				if (R.delimb(src, affecting))
 					return 1
 
-			apply_damage(damage, BRUTE, affecting, armor_block, sharp = 1, edge = 1) //This should slicey dicey
+			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
+			//nice messages so people know that armor works
+			if (n_damage <= 0.34*damage)
+				show_message("<span class='warning'>Your armor absorbs the blow!</span>")
+			else if (n_damage <= 0.67*damage)
+				show_message("<span class='warning'>Your armor softens the blow!</span>")
+
+			apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_hit", 25, 1)
-				apply_damage(acid_damage, BURN, affecting, armor_block) //Burn damage
+				playsound(loc, "acid_hit", 25, 1)				
+				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
+				var/n_acid_damage = armor_damage_reduction(config.marine_melee, acid_damage, armor_block_acid)
+				//nice messages so people know that armor works
+				if (n_acid_damage <= 0.34*acid_damage)
+					show_message(SPAN_WARNING("Your armor protects your from acid!"))
+				else if (n_acid_damage <= 0.67*acid_damage)
+					show_message(SPAN_WARNING("Your armor reduces the effect of the acid!"))
+				apply_damage(n_acid_damage, BURN, affecting, 0) //Burn damage
 
 			updatehealth()
 

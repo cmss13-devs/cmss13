@@ -6,7 +6,13 @@
 	icon_state = "co_jacket"
 	blood_overlay_type = "coat"
 	flags_armor_protection = UPPER_TORSO|ARMS
-	armor = list(melee = 30, bullet = 50, laser = 20,energy = 20, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 30
+	armor_bullet = 50
+	armor_laser = 20
+	armor_energy = 20
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 	allowed = list(/obj/item/weapon/gun/,
 	/obj/item/tank/emergency_oxygen,
 	/obj/item/device/flashlight,

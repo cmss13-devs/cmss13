@@ -6,7 +6,13 @@
 	var/brightness_on = 4 //luminosity when on
 	var/on = 0
 	var/hardhat_color = "yellow" //Determines used sprites: hardhat[on]_[hardhat_color]
-	armor = list(melee = 30, bullet = 5, laser = 20,energy = 10, bomb = 10, bio = 10, rad = 20)
+	armor_melee = 30
+	armor_bullet = 5
+	armor_laser = 20
+	armor_energy = 10
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 20
 	actions_types = list(/datum/action/item_action/toggle)
 	siemens_coefficient = 0.9
 	flags_inventory = BLOCKSHARPOBJ

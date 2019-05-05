@@ -46,7 +46,13 @@
 	item_state = "hgpirate"
 	flags_inv_hide = HIDEJUMPSUIT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 60, bullet = 90, laser = 60, energy = 20, bomb = 25, bio = 10, rad = 10)
+	armor_melee = 60
+	armor_bullet = 90
+	armor_laser = 60
+	armor_energy = 20
+	armor_bomb = 25
+	armor_bio = 10
+	armor_rad = 10
 
 
 /obj/item/clothing/suit/cyborg_suit

@@ -35,6 +35,7 @@
 	..()
 	//updating all the mob's hud images
 	med_hud_set_health()
+	med_hud_set_armor()
 	med_hud_set_status()
 	sec_hud_set_ID()
 	sec_hud_set_implants()
@@ -99,7 +100,7 @@
 
 	var/damage = severity
 
-	damage -= getarmor(null, "bomb")
+	damage = armor_damage_reduction(config.marine_explosive, damage, getarmor(null, ARMOR_BOMB))
 
 	if (damage >= EXPLOSION_THRESHOLD_GIB)
 		gib()
@@ -180,7 +181,7 @@
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
 		var/datum/limb/affecting = get_limb(ran_zone(dam_zone))
-		var/armor = run_armor_check(affecting, "melee")
+		var/armor = run_armor_check(affecting, ARMOR_MELEE)
 		apply_damage(damage, BRUTE, affecting, armor)
 		if(armor >= 2)	return
 

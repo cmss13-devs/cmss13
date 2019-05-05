@@ -141,6 +141,7 @@
 					src.votable_modes += M.config_tag
 		qdel(M)
 	src.votable_modes += "secret"
+	load_combat_config()
 
 /datum/configuration/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
 	var/list/Lines = file2list(filename)

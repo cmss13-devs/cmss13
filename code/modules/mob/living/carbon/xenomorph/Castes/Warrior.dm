@@ -3,62 +3,48 @@
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 35
-	melee_damage_upper = 40
+
+	melee_damage_lower = XENO_DAMAGE_MEDIUMLOW
+	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
+	max_health = XENO_HEALTH_HIGHMEDIUM
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_LOW
+	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_LOW_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_LOW
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDIUM)
+
 	evolves_to = list("Praetorian", "Crusher")
 	deevolves_to = "Defender"
 	tackle_chance = 40
-	plasma_gain = 0.08
-	plasma_max = 100
 	caste_desc = "A powerful front line combatant."
-	armor_deflection = 30
-	max_health = XENO_UNIVERSAL_HPMULT * 235
-	speed = -0.5
-	agility_speed_increase = -0.5
+	agility_speed_increase = -0.7
 	can_vent_crawl = 0
-	xeno_explosion_resistance = 40
 
 /datum/caste_datum/warrior/mature
 	upgrade_name = "Mature"
 	caste_desc = "An alien with an armored carapace. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 35
-	melee_damage_upper = 40
+
 	tackle_chance = 40
-	plasma_gain = 0.08
-	plasma_max = 100
-	armor_deflection = 35
-	agility_speed_increase = -0.6
-	max_health = XENO_UNIVERSAL_HPMULT * 250
-	speed = -0.6
+	agility_speed_increase = -0.8
 
 /datum/caste_datum/warrior/elder
 	upgrade_name = "Elder"
 	caste_desc = "An alien with an armored carapace. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 40
-	melee_damage_upper = 45
+
 	tackle_chance = 45
-	plasma_gain = 0.09
-	plasma_max = 125
-	agility_speed_increase = -0.7
-	max_health = XENO_UNIVERSAL_HPMULT * 270
-	speed = -0.7
-	armor_deflection = 40
+	agility_speed_increase = -0.9
 
 /datum/caste_datum/warrior/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "An hulking beast capable of effortlessly breaking and tearing through its enemies."
 	upgrade = 3
-	melee_damage_lower = 45
-	melee_damage_upper = 50
+	
 	tackle_chance = 48
-	plasma_gain = 0.1
-	plasma_max = 150
-	agility_speed_increase = -0.8
-	max_health = XENO_UNIVERSAL_HPMULT * 280
-	speed = -0.8
-	armor_deflection = 45
+	agility_speed_increase = -0.9
 
 /datum/caste_datum/warrior/primordial
 	upgrade_name = "Primordial"
@@ -175,3 +161,16 @@
 	if(ishuman(AM))
 		return
 	..()
+
+/datum/caste_datum/warrior/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/warrior/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/warrior/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/warrior/ancient/New()
+	..()
+	ancient_multipliers()

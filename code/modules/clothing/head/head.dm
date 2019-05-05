@@ -215,7 +215,13 @@
 	name = "marine officer beret"
 	desc = "A beret with the USCM insignia emblazoned on it. It radiates respect and authority."
 	icon_state = "beret_badge"
-	armor = list(melee = 40, bullet = 40, laser = 40,energy = 20, bomb = 5, bio = 0, rad = 0)
+	armor_melee = 40
+	armor_bullet = 40
+	armor_laser = 40
+	armor_energy = 20
+	armor_bomb = 5
+	armor_bio = 25
+	armor_rad = 0
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/beret/marine/commander
@@ -262,7 +268,13 @@
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
 	item_state = "ushankadown"
-	armor = list(melee = 35, bullet = 35, laser = 20, energy = 10, bomb = 5, bio = 0, rad = 0)
+	armor_melee = 35
+	armor_bullet = 35
+	armor_laser = 20
+	armor_energy = 10
+	armor_bomb = 5
+	armor_bio = 25
+	armor_rad = 0
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
@@ -287,7 +299,13 @@
 	siemens_coefficient = 2.0
 	anti_hug = 4
 	flags_armor_protection = HEAD|UPPER_TORSO|ARMS
-	armor = list(melee = 90, bullet = 70, laser = 45, energy = 55, bomb = 5, bio = 10, rad = 10)
+	armor_melee = 90
+	armor_bullet = 70
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 5
+	armor_bio = 10
+	armor_rad = 10
 	flags_cold_protection = HEAD|UPPER_TORSO|ARMS
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
@@ -301,7 +319,13 @@
 	item_state = "ivan_beret"
 	siemens_coefficient = 2.0
 	flags_armor_protection = HEAD
-	armor = list(melee = 90, bullet = 120, laser = 80, energy = 70, bomb = 40, bio = 30, rad = 30)
+	armor_melee = 90
+	armor_bullet = 120
+	armor_laser = 80
+	armor_energy = 70
+	armor_bomb = 40
+	armor_bio = 30
+	armor_rad = 30
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
@@ -316,7 +340,13 @@
 	siemens_coefficient = 2.0
 	//anti_hug = 2
 	flags_armor_protection = HEAD
-	armor = list(melee = 50, bullet = 50, laser = 45, energy = 55, bomb = 5, bio = 10, rad = 10)
+	armor_melee = 50
+	armor_bullet = 50
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 5
+	armor_bio = 10
+	armor_rad = 10
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
@@ -334,7 +364,13 @@
 	icon_state = "freelancer_cap"
 	siemens_coefficient = 2.0
 	flags_armor_protection = HEAD
-	armor = list(melee = 50, bullet = 50, laser = 45, energy = 55, bomb = 5, bio = 10, rad = 10)
+	armor_melee = 50
+	armor_bullet = 50
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 5
+	armor_bio = 10
+	armor_rad = 10
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
@@ -352,7 +388,13 @@
 	icon_state = "rebel_hood"
 	siemens_coefficient = 2.0
 	flags_armor_protection = HEAD|UPPER_TORSO
-	armor = list(melee = 30, bullet = 30, laser = 45, energy = 35, bomb = 5, bio = 20, rad = 30)
+	armor_melee = 30
+	armor_bullet = 30
+	armor_laser = 45
+	armor_energy = 35
+	armor_bomb = 5
+	armor_bio = 20
+	armor_rad = 30
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
@@ -364,7 +406,13 @@
 	icon_state = "admiral_helmet"
 	siemens_coefficient = 2.0
 	flags_armor_protection = HEAD
-	armor = list(melee = 60, bullet = 60, laser = 45, energy = 55, bomb = 10, bio = 10, rad = 10)
+	armor_melee = 60
+	armor_bullet = 60
+	armor_laser = 45
+	armor_energy = 55
+	armor_bomb = 10
+	armor_bio = 10
+	armor_rad = 10
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ

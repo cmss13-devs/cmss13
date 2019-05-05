@@ -81,7 +81,7 @@
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.8
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
 
@@ -153,7 +153,7 @@
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.med_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.95
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.high_recoil_value
 
 //----------------------------------------------
@@ -471,7 +471,7 @@
 	scatter = config.hmed_scatter_value
 	burst_scatter_mult = config.hmed_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult * 0.9125
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.max_recoil_value
 
 
@@ -611,9 +611,9 @@
 	fire_delay = config.high_fire_delay
 	burst_amount = 0
 	burst_delay = 1
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.med_hit_accuracy_mult
-	damage_mult = config.base_hit_damage_mult * 0.825
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.low_recoil_value
 	damage_falloff_mult = 0
 

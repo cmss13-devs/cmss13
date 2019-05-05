@@ -4,25 +4,29 @@
 	caste_desc = "A carrier of huggies."
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+
+	melee_damage_lower = XENO_DAMAGE_LOWPLUS
+	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
+	max_health = XENO_HEALTH_HIGH
+	plasma_gain = XENO_PLASMA_GAIN_MED
+	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_LOW_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDHIGH)
+
 	tackle_chance = 40
-	plasma_gain = 0.032
-	plasma_max = 300
 	evolution_allowed = FALSE
 	deevolves_to = "Drone"
-	max_health = XENO_UNIVERSAL_HPMULT * 210
-	speed = -0.1
 	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
 	huggers_max = 9
 	eggs_max = 4
 	throwspeed = 1
 	hugger_delay = 30
 	can_hold_facehuggers = 1
-	armor_deflection = 10
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	can_denest_hosts = 1
-	xeno_explosion_resistance = 60
 	weed_level = 1
 	egg_cooldown = 300
 
@@ -30,16 +34,9 @@
 	upgrade_name = "Mature"
 	caste_desc = "A portable Love transport. It looks a little more dangerous."
 	upgrade = 1
-	max_health = XENO_UNIVERSAL_HPMULT * 215
-	melee_damage_lower = 25
-	melee_damage_upper = 35
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	plasma_gain = 0.034
-	plasma_max = 350
-	speed = -0.1
-	armor_deflection = 15
 	throwspeed = 1
 	hugger_delay = 30
 	aura_strength = 1.5
@@ -49,15 +46,9 @@
 	upgrade_name = "Elder"
 	caste_desc = "A portable Love transport. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 30
-	melee_damage_upper = 40
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	plasma_gain = 0.035
-	armor_deflection = 20
-	max_health = XENO_UNIVERSAL_HPMULT * 225
-	speed = -0.2
 	aura_strength = 2
 	huggers_max = 10
 	hugger_delay = 20
@@ -68,15 +59,9 @@
 	upgrade_name = "Ancient"
 	upgrade = 3
 	caste_desc = "It's literally crawling with 10 huggers."
-	melee_damage_lower = 30
-	melee_damage_upper = 40
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	plasma_gain = 0.035
-	armor_deflection = 20
-	max_health = XENO_UNIVERSAL_HPMULT * 235
-	speed = -0.2
 	aura_strength = 2
 	huggers_max = 10
 	hugger_delay = 20
@@ -274,3 +259,16 @@
 				A.update_button_icon()
 
 	return 1
+
+/datum/caste_datum/carrier/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/carrier/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/carrier/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/carrier/ancient/New()
+	..()
+	ancient_multipliers()

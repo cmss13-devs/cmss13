@@ -406,7 +406,7 @@
 	grenades += new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/weapon/gun/launcher/m92/set_gun_config_values()
-	fire_delay = config.max_fire_delay*3
+	fire_delay = config.max_fire_delay*4
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult
 	scatter = config.med_scatter_value

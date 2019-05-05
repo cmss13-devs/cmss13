@@ -3,22 +3,26 @@
 	upgrade_name = "Young"
 	tier = 3
 	upgrade = 0
-	melee_damage_lower = 40
-	melee_damage_upper = 50
+
+	melee_damage_lower = XENO_DAMAGE_MEDIUMHIGH
+	melee_damage_upper = XENO_DAMAGE_HIGH
+	max_health = XENO_HEALTH_HIGHMEDIUM
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_LOW
+	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_HIGHMINUS)
+
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	max_health = XENO_UNIVERSAL_HPMULT * 230
-	plasma_gain = 0.08
-	plasma_max = 100
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
-	speed = -0.8 //Not as fast as runners, but faster than other xenos.
 	charge_type = 3 //Claw at end of charge
 	fire_immune = 1
-	armor_deflection = 40
-	xeno_explosion_resistance = 60
 	attack_delay = -2
 	pounce_delay = 120
 	charge_distance = 4 //shorter than regular charges
@@ -27,17 +31,13 @@
 	
 	// Spin slash variables  
 	var/spin_cooldown = 250;
-	var/spin_damage_offset = 20;
+	var/spin_damage_offset = 15;
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 45
-	melee_damage_upper = 55
-	max_health = XENO_UNIVERSAL_HPMULT * 245
-	plasma_gain = 0.067
-	plasma_max = 150
+	
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
@@ -46,45 +46,28 @@
 	upgrade_name = "Elder"
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 50
-	melee_damage_upper = 60
-	max_health = XENO_UNIVERSAL_HPMULT * 265
-	plasma_gain = 0.068
-	plasma_max = 170
+	
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 58
-	speed = -0.9
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "As I walk through the valley of the shadow of death"
 	upgrade = 3
-	melee_damage_lower = 55
-	melee_damage_upper = 65
-	max_health = XENO_UNIVERSAL_HPMULT * 275
-	plasma_gain = 0.07
-	plasma_max = 180
+	
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 60
-	speed = -1
 
 /datum/caste_datum/ravager/primordial
 	upgrade_name = "Primordial"
 	caste_desc = "This thing's scythes are bigger than a fucking building!"
 	upgrade = 4
-	melee_damage_lower = 100
-	melee_damage_upper = 110
-	plasma_gain = 0.1
-	plasma_max = 200
-	max_health = XENO_UNIVERSAL_HPMULT * 320
-	speed = -1.3
-	armor_deflection = 60
+	
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 55
-	speed = -1.5
 
 /mob/living/carbon/Xenomorph/Ravager
 	caste_name = "Ravager"
@@ -253,3 +236,16 @@
 
 		M.adjustFireLoss(rand(20, 50)) //Fwoom!
 		to_chat(M, "[isXeno(M) ? ")<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!</span>")
+
+/datum/caste_datum/ravager/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/ravager/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/ravager/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/ravager/ancient/New()
+	..()
+	ancient_multipliers()

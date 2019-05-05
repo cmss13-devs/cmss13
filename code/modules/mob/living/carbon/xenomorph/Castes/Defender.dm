@@ -1,15 +1,21 @@
 /datum/caste_datum/defender
 	caste_name = "Defender"
-	upgrade_name = "Young"
+	upgrade_name = "Young"	
+	caste_desc = "A sturdy front line combatant."
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	max_health = XENO_UNIVERSAL_HPMULT * 220
-	plasma_gain = 0.08
-	plasma_max = 100
-	caste_desc = "A sturdy front line combatant."
-	speed = -0.2
+
+	melee_damage_lower = XENO_DAMAGE_LOWPLUS
+	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
+	max_health = XENO_HEALTH_MEDIUM
+	plasma_gain = XENO_PLASMA_GAIN_VERYHIGH
+	plasma_max = XENO_PLASMA_LOW
+	xeno_explosion_resistance = XENO_HEAVY_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_HEAVY_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDIUM)
+
 	charge_type = 2 //Pounce - Hunter
 	evolves_to = list("Warrior")
 	can_vent_crawl = 0
@@ -18,31 +24,16 @@
 	upgrade_name = "Mature"
 	caste_desc = "An alien with an armored head crest. It looks a little more dangerous."
 	upgrade = 1
-	max_health = XENO_UNIVERSAL_HPMULT * 230
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	speed = -0.3
-	armor_deflection = 25
 
 /datum/caste_datum/defender/elder
 	upgrade_name = "Elder"
 	caste_desc = "An alien with an armored head crest. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	max_health = XENO_UNIVERSAL_HPMULT * 245
-	speed = -0.4
-	armor_deflection = 30
 
 /datum/caste_datum/defender/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "An unstoppable force that remains when others would fall."
 	upgrade = 3
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-	max_health = XENO_UNIVERSAL_HPMULT * 250
-	speed = -0.5
-	armor_deflection = 35
 
 /mob/living/carbon/Xenomorph/Defender
 	caste_name = "Defender"
@@ -82,3 +73,16 @@
 			icon_state = "Defender Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+
+/datum/caste_datum/defender/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/defender/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/defender/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/defender/ancient/New()
+	..()
+	ancient_multipliers()

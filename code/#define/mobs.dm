@@ -370,6 +370,7 @@
 
 
 //defines for the busy icons when the mob does something that takes time using do_after proc
+#define NO_BUSY_ICON		0
 #define BUSY_ICON_GENERIC	1
 #define BUSY_ICON_MEDICAL	2
 #define BUSY_ICON_BUILD		3

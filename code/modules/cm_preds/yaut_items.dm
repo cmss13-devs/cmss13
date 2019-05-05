@@ -477,7 +477,7 @@
 	to_chat(user, SPAN_NOTICE("You press a few buttons..."))
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
-	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 1))
+	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 1))
 		var/chance = rand(1, 100)
 		if(chance <= randomProbability)
 			return 1
@@ -1618,7 +1618,7 @@
 /obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!isYautja(user))
 		user.visible_message("<span class='notice'>You start to untangle the chain on \the [src]...")
-		if(do_mob(user, src, 30, BUSY_ICON_HOSTILE, BUSY_ICON_HOSTILE))
+		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
 

@@ -294,7 +294,7 @@
 				to_chat(M, SPAN_NOTICE("That seat is already taken."))
 				return
 
-			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, TRUE))
+			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				to_chat(M, SPAN_NOTICE("Something interrupted you while getting in."))
 				return
 
@@ -325,7 +325,7 @@
 				to_chat(M, SPAN_NOTICE("That seat is already taken."))
 				return
 
-			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, TRUE))
+			if(!do_after(M, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				to_chat(M, SPAN_NOTICE("Something interrupted you while getting in."))
 				return
 

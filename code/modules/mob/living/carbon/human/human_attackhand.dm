@@ -37,7 +37,7 @@
 				return 1
 			M.visible_message("<span class='danger'><B>[M] is trying perform CPR on [src]!</B></span>", null, null, 4)
 
-			if(do_mob(M, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_MEDICAL))
+			if(do_after(M, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
 					var/suff = min(getOxyLoss(), 5) //Pre-merge level, less healing, more prevention of dieing.
 					adjustOxyLoss(-suff)

@@ -1273,7 +1273,7 @@
 		return
 
 	to_chat(src, SPAN_NOTICE("You start transfering some of your health towards [target]."))
-	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, 20))
+	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 10))
 		return
 
 	if(!check_state())

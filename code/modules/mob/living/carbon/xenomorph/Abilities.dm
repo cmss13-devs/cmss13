@@ -873,7 +873,7 @@
 	if(X.check_plasma(plasma_cost))
 		X.visible_message("<span class='xenowarning'>\The [X] starts to grow an ovipositor.</span>", \
 		"<span class='xenowarning'>You start to grow an ovipositor...(takes 20 seconds, hold still)</span>")
-		if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, 20) && X.check_plasma(plasma_cost))
+		if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && X.check_plasma(plasma_cost))
 			return
 		if(!X.check_state()) return
 		if(!locate(/obj/effect/alien/weeds) in current_turf)
@@ -903,7 +903,7 @@
 		return
 	X.visible_message("<span class='xenowarning'>\The [X] starts detaching itself from its ovipositor!</span>", \
 		"<span class='xenowarning'>You start detaching yourself from your ovipositor.</span>")
-	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, 10)) return
+	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10)) return
 	if(!X.check_state())
 		return
 	if(!X.ovipositor)

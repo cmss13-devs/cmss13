@@ -176,7 +176,7 @@
 					else
 						user.visible_message("<span class='danger'><B>[user] begins hunting for an injection port on [target]'s suit!</B></span>")
 
-					if(!do_mob(user, target, injection_time, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL)) return
+					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
 					user.visible_message("<span class='danger'>[user] injects [target] with the syringe!</span>")
 
@@ -364,9 +364,9 @@
 					return
 
 				if(ismob(target) && target != user)
-					user.visible_message("<span class='danger'><B>[user] is trying to inject [target] with a giant syringe!</B></span>")
-					if(!do_mob(user, target, 300, BUSY_ICON_FRIENDLY, BUSY_ICON_MEDICAL)) return
-					user.visible_message("<span class='danger'>[user] injects [target] with a giant syringe!</span>")
+					user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target] with a giant syringe!</B>"))
+					if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+					user.visible_message(SPAN_DANGER("[user] injects [target] with a giant syringe!"))
 					src.reagents.reaction(target, INGEST)
 				if(ismob(target) && target == user)
 					src.reagents.reaction(target, INGEST)

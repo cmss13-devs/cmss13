@@ -37,8 +37,8 @@
 
 		else if (canopened == 1)
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message("<span class='danger'>[user] attempts to feed [M] [src].</span>", 1)
-			if(!do_mob(user, M, 30, BUSY_ICON_FRIENDLY)) return
+				O.show_message(SPAN_DANGER("[user] attempts to feed [M] [src]."), 1)
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message("<span class='danger'>[user] feeds [M] [src].</span>", 1)
 

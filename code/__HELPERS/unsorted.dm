@@ -973,75 +973,38 @@ var/global/image/busy_indicator_hostile
 			busy_indicator_hostile.layer = FLY_LAYER
 		return busy_indicator_hostile
 
-
-
-/proc/do_mob(mob/user , mob/target, time = 30, show_busy_icon, show_target_icon, selected_zone_check)
-	if(!user || !target) return 0
-
-	var/image/busy_icon
-	if(show_busy_icon)
-		busy_icon = get_busy_icon(show_busy_icon)
-		if(busy_icon)
-			user.overlays += busy_icon
-
-	var/image/target_icon
-	if(show_target_icon) //putting a busy overlay on top of the target
-		target_icon = get_busy_icon(show_target_icon)
-		if(target_icon)
-			target.overlays += target_icon
-
-	user.action_busy = TRUE
-
-	var/cur_zone_sel
-	if(selected_zone_check)
-		cur_zone_sel = user.zone_selected
-
-	var/user_loc = user.loc
-	var/target_loc = target.loc
-	var/delayfraction = round(time/5)
-	var/holding = user.get_active_hand()
-
-	. = TRUE
-	for(var/i = 0 to 5)
-		sleep(delayfraction)
-		if(!user || !target)
-			. = FALSE
-			break
-		if(user.loc != user_loc || target.loc != target_loc)
-			. = FALSE
-			break
-		if(user.get_active_hand() != holding)
-			. = FALSE
-			break
-		if(user.is_mob_incapacitated(TRUE) || user.lying)
-			. = FALSE
-			break
-		if(selected_zone_check && cur_zone_sel != user.zone_selected)
-			. = FALSE
-			break
-
-	if(user && busy_icon)
-		user.overlays -= busy_icon
-	if(target && target_icon)
-		target.overlays -= target_icon
-
-	user.action_busy = FALSE
-
-//	Use do after flags now instead of very specific args
-//	target is for INTERRUPT_OUT_OF_RANGE (aka reference point from user) and for a future(?) merge with do_mob
-//	max_dist is the max dist between them
-//	Interrupt flags found in code/#define/misc.dm
-//	show_remaining_time will return the PERCENTAGE of time remaining in the action
-/proc/do_after(mob/user, delay, do_after_flags = INTERRUPT_ALL, show_busy_icon, numticks = DA_DEFAULT_NUM_TICKS, target, max_dist = 1, show_remaining_time = FALSE)
+/*
+ *	do_after handles timed actions
+ *	The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
+ *	This proc can handle timed actions with one person alone or one person and a target atom.
+ *
+ *	show_remaining_time: If TRUE, return the percentage of time remaining in the timed action.
+ *	numticks: 	If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
+ *				Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
+ */
+/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_ALL, show_target_icon, max_dist = 1, \
+		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
 
 	if(delay == 0) // Nothing to wait for, so action passes
 		return TRUE
 
+	// Check if there is even a target
+	var/has_target = FALSE
+	if(istype(target))
+		has_target = TRUE
+
+	// Only living mobs can perform timed actions.
 	var/mob/living/L = user
 	if(!istype(L))
 		return FALSE
+
+	// This var will only be used for checks that require target to be living.
+	var/mob/living/T = target
+	var/target_is_mob = FALSE
+	if(has_target && istype(T))
+		target_is_mob = TRUE
 
 	var/image/busy_icon
 	if(show_busy_icon)
@@ -1049,90 +1012,152 @@ var/global/image/busy_indicator_hostile
 		if(busy_icon)
 			L.overlays += busy_icon
 
-	if(do_after_flags & BEHAVIOR_IMMOBILE)
+	var/image/target_icon
+	if(show_target_icon) //putting a busy overlay on top of the target
+		target_icon = get_busy_icon(show_target_icon)
+		if(target_icon)
+			target.overlays += target_icon
+
+	if(user_flags & BEHAVIOR_IMMOBILE)
 		L.status_flags |= IMMOBILE_ACTION
 
-	L.action_busy = TRUE
+	L.action_busy = TRUE // target is not tethered by action, the action is tethered by target though
 	L.resisting = FALSE
-	for (var/mod in L.clicked_something)
-		L.clicked_something[mod] = FALSE
+	L.clicked_something = null
+	if(has_target && target_is_mob)
+		T.resisting = FALSE
+		T.clicked_something = null
 
-	var/cur_zone_sel = L.zone_selected
+	var/cur_user_zone_sel = L.zone_selected
+	var/cur_target_zone_sel
+	if(has_target && istype(T))
+		cur_target_zone_sel = T.zone_selected
 	var/delayfraction = round(delay/numticks)
-	var/original_loc = L.loc
-	var/original_turf = get_turf(L)
-	var/obj/holding = L.get_active_hand()
+	var/user_orig_loc = L.loc
+	var/user_orig_turf = get_turf(L)
+	var/target_orig_loc
+	var/target_orig_turf
+	if(has_target)
+		target_orig_loc = target.loc
+		target_orig_turf = get_turf(target)
+	var/obj/user_holding = L.get_active_hand()
+	var/obj/target_holding
+	if(has_target && istype(T))
+		target_holding = T.get_active_hand()
 	var/expected_total_time = delayfraction*(numticks+1)
 	var/time_remaining = expected_total_time
 	. = TRUE
 	for(var/i = 0 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(L)) // Checks for L exists and is not dead
+		if(!istype(L) || has_target && !istype(target)) // Checks if L exists and is not dead and if the target exists and is not destroyed
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_DIFF_LOC && L.loc != original_loc)
+		if(user_flags & INTERRUPT_DIFF_LOC && L.loc != user_orig_loc || \
+			has_target && target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_DIFF_TURF && get_turf(L) != original_turf)
+		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(L) != user_orig_turf || \
+			has_target && target_flags & INTERRUPT_DIFF_TURF && get_turf(target) != target_orig_turf
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_UNCONSCIOUS && L.stat)
+		if(user_flags & INTERRUPT_UNCONSCIOUS && L.stat || \
+			target_is_mob && target_flags & INTERRUPT_UNCONSCIOUS && T.stat
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_UNCONSCIOUS && L && L.health < config.health_threshold_crit)
+		if(user_flags & INTERRUPT_UNCONSCIOUS && L.health < config.health_threshold_crit || \
+			target_is_mob && target_flags & INTERRUPT_UNCONSCIOUS && T.health < config.health_threshold_crit
+		)
 			//health check for catching mobs below crit level but haven't had their stat var updated
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down)
+		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
+			target_is_mob && target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_STUNNED && L.stunned)
+		if(user_flags & INTERRUPT_STUNNED && L.stunned || \
+			target_is_mob && target_flags & INTERRUPT_STUNNED && T.stunned
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_NEEDHAND)
-			if(holding)
-				if(!holding.loc || L.get_active_hand() != holding) //no longer holding the required item
+		if(user_flags & INTERRUPT_NEEDHAND || \
+			target_is_mob && target_flags & INTERRUPT_NEEDHAND
+		)
+			if(user_holding)
+				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item
 					. = FALSE
 					break
 			else if(L.get_active_hand()) //something in active hand when we need it to stay empty
 				. = FALSE
 				break
-		if(do_after_flags & INTERRUPT_RESIST && L.resisting)
+
+			if(target_is_mob)
+				if(target_holding)
+					if(!target_holding.loc || T.get_active_hand() != target_holding)
+						. = FALSE
+						break
+				else if(T.get_active_hand())
+					. = FALSE
+					break
+		if(user_flags & INTERRUPT_RESIST && L.resisting || \
+			target_is_mob && target_flags & INTERRUPT_RESIST && T.resisting
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_zone_sel != L.zone_selected) //changed the selected zone
+		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != L.zone_selected || \
+			target_is_mob && target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
+		if(user_flags|target_flags & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_LCLICK && L.clicked_something["left"])
+		if(user_flags & INTERRUPT_LCLICK && L.clicked_something["left"] || \
+			target_is_mob && target_flags & INTERRUPT_LCLICK && T.clicked_something["left"]
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_RCLICK && L.clicked_something["right"])
+		if(user_flags & INTERRUPT_RCLICK && L.clicked_something["right"] || \
+			target_is_mob && target_flags & INTERRUPT_RCLICK && T.clicked_something["right"]
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"])
+		if(user_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"] || \
+			target_is_mob && target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"]
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"])
+		if(user_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"] || \
+			target_is_mob && target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"]
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"])
+		if(user_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"] || \
+			target_is_mob && target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"]
+		)
 			. = FALSE
 			break
-		if(do_after_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"])
+		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
+			target_is_mob && target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"]
+		)
 			. = FALSE
 			break
 
 	if(L && busy_icon)
 		L.overlays -= busy_icon
+	if(target && target_icon)
+		target.overlays -= target_icon
 
 	L.action_busy = FALSE
 	L.resisting = FALSE
-	for (var/mod in L.clicked_something)
-		L.clicked_something[mod] = FALSE
+	L.clicked_something = null
+	if(target_is_mob)
+		T.resisting = FALSE
+		T.clicked_something = null
 	L.status_flags &= ~IMMOBILE_ACTION
 
 	if (show_remaining_time)

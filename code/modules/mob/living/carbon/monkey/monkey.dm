@@ -104,7 +104,7 @@
 			else
 				usr.visible_message("<span class='danger'><B>[usr] is trying to enable [src]'s internals.</B></span>", null, 4)
 
-			if(do_mob(usr, src, 30, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+			if(do_after(usr, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				if (internal)
 					internal.add_fingerprint(usr)
 					internal = null

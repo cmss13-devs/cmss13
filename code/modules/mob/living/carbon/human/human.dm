@@ -408,7 +408,7 @@
 			else
 				to_chat(usr, SPAN_NOTICE("You try to empty [src]'s pockets."))
 
-			if(do_mob(usr, src, POCKET_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+			if(do_after(usr, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				if(placing)
 					if(place_item && place_item == usr.get_active_hand())
 						if(place_item.mob_can_equip(src, WEAR_R_STORE, TRUE))
@@ -443,7 +443,7 @@
 			else
 				usr.visible_message("<span class='danger'><B>[usr] is trying to enable [src]'s internals.</B></span>", null, null, 3)
 
-			if(do_mob(usr, src, POCKET_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+			if(do_after(usr, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				if (internal)
 					internal.add_fingerprint(usr)
 					internal = null
@@ -482,8 +482,8 @@
 					if(istype(U.hastie, /obj/item/clothing/tie/holobadge) || istype(U.hastie, /obj/item/clothing/tie/medal))
 						visible_message("<span class='danger'><B>[usr] tears off \the [U.hastie] from [src]'s [U]!</B></span>", null, null, 5)
 					else
-						visible_message("<span class='danger'><B>[usr] is trying to take off \a [U.hastie] from [src]'s [U]!</B></span>", null, null, 5)
-						if(do_mob(usr, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+						visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [U.hastie] from [src]'s [U]!</B>"), null, null, 5)
+						if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 							if(U == w_uniform && U.hastie)
 								U.remove_accessory(usr)
 
@@ -497,8 +497,8 @@
 				to_chat(usr, "The controls are locked.")
 			else
 				var/oldsens = U.has_sensor
-				visible_message("<span class='danger'><B>[usr] is trying to modify [src]'s sensors!</B></span>", null, null, 4)
-				if(do_mob(usr, src, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+				visible_message(SPAN_DANGER("<B>[usr] is trying to modify [src]'s sensors!</B>"), null, null, 4)
+				if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 					if(U == w_uniform)
 						if(U.has_sensor >= 2)
 							to_chat(usr, "The controls are locked.")
@@ -1549,7 +1549,7 @@
 		
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
 		if(to_splint.len)
-			if(do_mob(HS, HT, HUMAN_STRIP_DELAY, BUSY_ICON_GENERIC, BUSY_ICON_GENERIC))
+			if(do_after(HS, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, HT, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				var/can_reach_splints = TRUE
 				var/amount_removed = 0
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))

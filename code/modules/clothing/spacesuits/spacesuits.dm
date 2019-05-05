@@ -7,7 +7,13 @@
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	item_state = "space"
 	permeability_coefficient = 0.01
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 100
+	armor_rad = 50
 	flags_inventory = COVEREYES|COVERMOUTH|NOPRESSUREDMAGE|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = HEAD|FACE|EYES
@@ -27,7 +33,13 @@
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/device/flashlight,/obj/item/tank/emergency_oxygen,/obj/item/device/suit_cooling_unit)
 	slowdown = 3
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 100
+	armor_rad = 50
 	flags_inventory = BLOCKSHARPOBJ|NOPRESSUREDMAGE
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS

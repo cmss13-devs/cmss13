@@ -1,5 +1,5 @@
 //Xenomorph Life - Colonial Marines - Apophis775 - Last Edit: 03JAN2015
-
+#define XENO_ARMOR_REGEN_DELAY SECONDS_30
 /mob/living/carbon/Xenomorph/Life()
 
 	set invisibility = 0
@@ -74,7 +74,8 @@
 			G.Die()
 			drop_inv_item_on_ground(G)
 		if(!caste.fire_immune)
-			adjustFireLoss(fire_stacks + 4.5)
+			var/dmg = armor_damage_reduction(config.xeno_fire, fire_stacks * 2 + 4.5)
+			adjustFireLoss(dmg)
 
 	else
 		if(isXenoBoiler(src))
@@ -138,8 +139,8 @@
 
 	armor_bonus = 0
 
-	if(warding_aura > 0)
-		armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
+	// if(warding_aura > 0)
+	// 	armor_bonus = warding_aura * 3 //Bonus armor from pheromones, no matter what the armor was previously. Was 5
 
 /mob/living/carbon/Xenomorph/proc/handle_regular_status_updates()
 
@@ -149,11 +150,11 @@
 			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
 				adjustBruteLoss(2.5 - warding_aura*0.5) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
 			else
-				adjustBruteLoss(-warding_aura*0.5) //Warding pheromones provides 0.25 HP per second per step, up to 2.5 HP per tick.
+				adjustBruteLoss(-warding_aura * 1)
 
 	updatehealth()
 
-	if(health <= crit_health) //dead
+	if(health <= crit_health - warding_aura * 20) //dead
 		if(prob(gib_chance + 0.5*(crit_health - health)))
 			gib()
 		else
@@ -320,6 +321,34 @@
 		else
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
 
+	if(hud_used && hud_used.alien_armor_display)
+		if(stat != DEAD)
+			switch(get_armor_integrity_percentage())
+				if(100 to INFINITY)
+					hud_used.alien_armor_display.icon_state = "armor_100"
+				if(90 to 99)
+					hud_used.alien_armor_display.icon_state = "armor_90"
+				if(80 to 89)
+					hud_used.alien_armor_display.icon_state = "armor_80"
+				if(70 to 79)
+					hud_used.alien_armor_display.icon_state = "armor_70"
+				if(60 to 69)
+					hud_used.alien_armor_display.icon_state = "armor_60"
+				if(50 to 59)
+					hud_used.alien_armor_display.icon_state = "armor_50"
+				if(40 to 49)
+					hud_used.alien_armor_display.icon_state = "armor_40"
+				if(30 to 39)
+					hud_used.alien_armor_display.icon_state = "armor_30"
+				if(20 to 29)
+					hud_used.alien_armor_display.icon_state = "armor_20"
+				if(10 to 19)
+					hud_used.alien_armor_display.icon_state = "armor_10"
+				else
+					hud_used.alien_armor_display.icon_state = "armor_00"
+		else
+			hud_used.alien_armor_display.icon_state = "armor_00"
+
 
 	if(stat != DEAD)
 		if(blinded)
@@ -347,17 +376,17 @@ Xenos don't actually take oxyloss, oh well
 hmmmm, this is probably unnecessary
 Make sure their actual health updates immediately.*/
 
-#define XENO_HEAL_WOUNDS(m) \
-adjustBruteLoss(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recovery_aura/2)*(m)); \
-adjustFireLoss(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recovery_aura/2)*(m)); \
-adjustOxyLoss(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recovery_aura/2)*(m)); \
-adjustToxLoss(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recovery_aura/2)*(m)); \
+#define XENO_HEAL_WOUNDS(m, recov) \
+adjustBruteLoss(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recov/2)*(m)); \
+adjustFireLoss(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m)); \
+adjustOxyLoss(-(maxHealth * 0.1 + 0.5 + (maxHealth * 0.1) * recov/2)*(m)); \
+adjustToxLoss(-(maxHealth / 5 + 0.5 + (maxHealth / 5) * recov/2)*(m)); \
 updatehealth()
 
 
 /mob/living/carbon/Xenomorph/proc/handle_environment()
 	var/turf/T = loc
-
+	var/recoveryActual = (caste.fire_immune || fire_stacks == 0) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
 	if(!caste.fire_immune)
 		if(env_temperature > (T0C + 66))
@@ -389,16 +418,25 @@ updatehealth()
 				//if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
 				if(lying || resting)
 					if(health > -100 && health < 0) //Unconscious
-						XENO_HEAL_WOUNDS(0.33) //Healing is much slower. Warding pheromones make up for the rest if you're curious
+						XENO_HEAL_WOUNDS(0.33,recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						XENO_HEAL_WOUNDS(1)
+						XENO_HEAL_WOUNDS(1,recoveryActual)
 				else if(isXenoCrusher() || isXenoRavager())
-					XENO_HEAL_WOUNDS(0.66)
+					XENO_HEAL_WOUNDS(0.66,recoveryActual)
 				else
-					XENO_HEAL_WOUNDS(0.33) //Major healing nerf if standing
-
-
+					XENO_HEAL_WOUNDS(0.33,recoveryActual) //Major healing nerf if standing
 				updatehealth()
+
+			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)
+				var/curve_factor = armor_integrity/armor_integrity_max
+				curve_factor *= curve_factor
+				if(curve_factor < 0.36)
+					curve_factor = 0.36
+				var/factor = ((armor_deflection / 60) * MINUTES_6 / SECONDS_2) // 60 armor is restored in 10 minutes in 2 seconds intervals
+				armor_integrity += 100*curve_factor/factor
+
+			if(armor_integrity > armor_integrity_max)
+				armor_integrity = armor_integrity_max
 
 		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
 			if(prob(50) && !is_runner_hiding && !current_aura)
@@ -494,6 +532,7 @@ updatehealth()
 	else health = maxHealth - getFireLoss() - getBruteLoss() //Xenos can only take brute and fire damage.
 
 	med_hud_set_health()
+	med_hud_set_armor()
 
 
 

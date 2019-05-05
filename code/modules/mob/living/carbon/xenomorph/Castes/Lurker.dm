@@ -3,32 +3,30 @@
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	max_health = XENO_UNIVERSAL_HPMULT * 175
-	plasma_gain = 0.1
-	plasma_max = 100
+
+	melee_damage_lower = XENO_DAMAGE_LOWPLUS
+	melee_damage_upper = XENO_DAMAGE_MEDIUM
+	max_health = XENO_HEALTH_LOWMEDIUM
+	plasma_gain = XENO_PLASMA_GAIN_HIGH
+	plasma_max = XENO_PLASMA_LOW
+	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_NO_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_MEDIUM
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_FAST)
+
 	deevolves_to = "Runner"
 	caste_desc = "A fast, powerful backline combatant."
-	speed = -1.6 //Not as fast as runners, but faster than other xenos.
 	charge_type = 2 //Pounce - Hunter
-	armor_deflection = 15
 	attack_delay = -2
 	pounce_delay = 55
 	evolves_to = list("Ravager")
-	xeno_explosion_resistance = 40
 
 /datum/caste_datum/lurker/mature
 	upgrade_name = "Mature"
 	caste_desc = "A fast, powerful backline combatant. It looks a little more dangerous."
 	upgrade = 1
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-	max_health = XENO_UNIVERSAL_HPMULT * 185
-	plasma_gain = 0.107
-	plasma_max = 150
-	speed = -1.7
-	armor_deflection = 20
+
 	pounce_delay = 50
 	tacklemin = 3
 	tacklemax = 4
@@ -38,13 +36,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A fast, powerful backline combatant. It looks pretty strong."
 	upgrade = 2
-	melee_damage_lower = 35
-	melee_damage_upper = 45
-	max_health = XENO_UNIVERSAL_HPMULT * 195
-	plasma_gain = 0.114
-	plasma_max = 175
-	speed = -1.8
-	armor_deflection = 25
+
 	pounce_delay = 48
 	tacklemin = 3
 	tacklemax = 4
@@ -55,13 +47,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "A completely unmatched hunter. No, not even the Yautja can match you."
 	upgrade = 3
-	melee_damage_lower = 40
-	melee_damage_upper = 50
-	max_health = XENO_UNIVERSAL_HPMULT * 200
-	plasma_gain = 0.15
-	plasma_max = 190
-	speed = -1.9
-	armor_deflection = 28
+
 	pounce_delay = 45
 	tacklemin = 4
 	tacklemax = 5
@@ -101,3 +87,16 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+		
+/datum/caste_datum/lurker/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/lurker/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/lurker/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/lurker/ancient/New()
+	..()
+	ancient_multipliers()

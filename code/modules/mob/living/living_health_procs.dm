@@ -178,6 +178,7 @@
 	regenerate_icons()
 	med_hud_set_status()
 	med_hud_set_health()
+	med_hud_set_armor()
 	reload_fullscreens()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src

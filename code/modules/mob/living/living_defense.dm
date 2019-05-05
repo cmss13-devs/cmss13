@@ -10,7 +10,7 @@
 	1 - halfblock
 	2 - fullblock
 */
-/mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/absorb_text = null, var/soften_text = null)
+/mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = ARMOR_MELEE, var/absorb_text = null, var/soften_text = null)
 	var/armor = getarmor(def_zone, attack_flag)
 	var/absorb = 0
 	if(prob(armor))
@@ -80,7 +80,7 @@
 			return
 
 		src.visible_message("<span class='danger'>[src] has been hit by [O].</span>", null, null, 5)
-		var/armor = run_armor_check(null, "melee")
+		var/armor = run_armor_check(null, ARMOR_MELEE)
 
 		if(armor < 2)
 			apply_damage(throw_damage, dtype, null, armor, is_sharp(O), has_edge(O), O)

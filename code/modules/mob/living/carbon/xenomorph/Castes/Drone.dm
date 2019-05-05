@@ -3,13 +3,17 @@
 	upgrade_name = "Young"
 	tier = 1
 	upgrade = 0
-	melee_damage_lower = 15
-	melee_damage_upper = 25
-	max_health = XENO_UNIVERSAL_HPMULT * 160
-	armor_deflection = 5
-	plasma_gain = 0.027
-	plasma_max = 800
-	speed = -0.8
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_LOWPLUS
+	plasma_gain = XENO_PLASMA_GAIN_LOWMED
+	plasma_max = XENO_PLASMA_VERYHIGH
+	armor_deflection = XENO_NO_ARMOR
+	max_health = XENO_HEALTH_LOWMEDIUM
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_MEDIUM
+	speed = XENO_SPEED_CONVERT( XENO_SPEED_HIGH )
+	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
+
 	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list("Queen", "Burrower", "Carrier", "Hivelord") //Add more here seperated by commas
@@ -24,48 +28,27 @@
 	upgrade_name = "Mature"
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	upgrade = 1
-	max_health = XENO_UNIVERSAL_HPMULT * 170
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	plasma_gain = 0.032
-	plasma_max = 850
-	armor_deflection = 10
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	speed = -0.9
 	aura_strength = 1.5
 
 /datum/caste_datum/drone/elder
 	upgrade_name = "Elder"
 	caste_desc = "The workhorse of the hive. It looks a little more dangerous."
 	upgrade = 2
-	max_health = XENO_UNIVERSAL_HPMULT * 185
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	plasma_gain = 0.04
-	plasma_max = 900
-	armor_deflection = 12
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 45
-	speed = -1.0
 	aura_strength = 2
 
 /datum/caste_datum/drone/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "A very mean architect."
 	upgrade = 3
-	max_health = XENO_UNIVERSAL_HPMULT * 195
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-	plasma_gain = 0.05
-	plasma_max = 1000
-	armor_deflection = 15
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 50
-	speed = -1.0
 	aura_strength = 2.2
 
 /mob/living/carbon/Xenomorph/Drone
@@ -91,3 +74,15 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
 
+/datum/caste_datum/drone/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/drone/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/drone/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/drone/ancient/New()
+	..()
+	ancient_multipliers()

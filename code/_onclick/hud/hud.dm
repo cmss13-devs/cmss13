@@ -19,6 +19,7 @@
 	var/obj/screen/action_intent
 	var/obj/screen/move_intent
 	var/obj/screen/alien_plasma_display
+	var/obj/screen/alien_armor_display
 	var/obj/screen/locate_leader
 	var/obj/screen/locate_nuke
 	var/obj/screen/pred_power_icon
@@ -90,6 +91,7 @@
 	action_intent = null
 	move_intent = null
 	alien_plasma_display = null
+	alien_armor_display = null
 	locate_leader = null
 	pred_power_icon = null
 

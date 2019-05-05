@@ -880,7 +880,7 @@
 	if (crest_defense)
 		round_statistics.defender_crest_lowerings++
 		to_chat(src, "<span class='xenowarning'>You lower your crest.</span>")
-		armor_deflection_buff += 25 + (spiked)
+		armor_deflection_buff += 15
 		ability_speed_modifier += 0.7	// This is actually a slowdown but speed is dumb
 		update_icons()
 		do_crest_defense_cooldown()
@@ -888,7 +888,7 @@
 
 	round_statistics.defender_crest_raises++
 	to_chat(src, "<span class='xenowarning'>You raise your crest.</span>")
-	armor_deflection_buff -= 25
+	armor_deflection_buff -= 15
 	ability_speed_modifier = 0
 	update_icons()
 	do_crest_defense_cooldown()
@@ -925,7 +925,7 @@
 
 	if (fortify)
 		to_chat(src, "<span class='xenowarning'>You tuck yourself into a defensive stance.</span>")
-		armor_deflection_buff += 50
+		armor_deflection_buff += 40
 		//caste.xeno_explosion_resistance++ absolutely useless and prone to giving issues for entire caste
 		//come back when this is AT LEAST a multitude of 10
 		if(!spiked)
@@ -955,7 +955,7 @@
 
 /mob/living/carbon/Xenomorph/proc/fortify_off()
 	to_chat(src, "<span class='xenowarning'>You resume your normal stance.</span>")
-	armor_deflection_buff -= 50
+	armor_deflection_buff -= 40
 	//caste.xeno_explosion_resistance-- yeah... useless, and prone to create issues
 	frozen = 0
 	anchored = 0
@@ -1170,23 +1170,31 @@
 		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [60-src.plasma_stored] more.</span>"))
 		return
 	
-	visible_message(SPAN_XENOWARNING("The [src] lashes out with its sycthe-like claws!"), SPAN_XENOWARNING("You unleash a flurry of slashes around you!"))
+	visible_message(SPAN_XENOWARNING("[src] lashes out with its sycthe-like claws!"), SPAN_XENOWARNING("You unleash a flurry of slashes around you!"))
 
 	spin_circle()
 
 	var/sweep_range = 1
-	var/list/L = orange(sweep_range)		
+	var/list/L = orange(sweep_range)	
+	// Spook patrol 
+	src.emote("roar")	
 
 	for (var/mob/living/carbon/human/H in L)
 		if(H != H.handle_barriers(src)) continue
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, src, sweep_range, 3)
-		H.apply_damage(rand(rCaste.melee_damage_lower, rCaste.melee_damage_upper)+rCaste.spin_damage_offset)
+		
+		// MOST of the time, hit our target zone. 
+		var/target_zone = ran_zone("chest", 75)
+		var/armor = H.getarmor(target_zone, ARMOR_MELEE)
+		var/damage = armor_damage_reduction(config.marine_melee, rand(rCaste.melee_damage_lower, rCaste.melee_damage_upper)+rCaste.spin_damage_offset, armor, 10)
+		
+		H.apply_damage(damage, BRUTE, target_zone)
 		shake_camera(H, 2, 1)
-		H.KnockDown(1, 1)
+		H.KnockDown(2, 1)
 
-		to_chat(H, SPAN_XENOWARNING("You are slashed by \the [src]'s claws!"))
+		to_chat(H, SPAN_DANGER("You are slashed by \the [src]'s claws!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
 	used_lunge = 1

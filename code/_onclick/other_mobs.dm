@@ -47,7 +47,7 @@
 		return
 	var/mob/living/carbon/ML = A
 	var/dam_zone = ran_zone(pick("chest", "l_hand", "r_hand", "l_leg", "r_leg"))
-	var/armor = ML.run_armor_check(dam_zone, "melee")
+	var/armor = ML.run_armor_check(dam_zone, ARMOR_MELEE)
 	if(prob(75))
 		ML.apply_damage(rand(1,3), BRUTE, dam_zone, armor)
 		for(var/mob/O in viewers(ML, null))

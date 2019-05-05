@@ -1,23 +1,29 @@
 /datum/caste_datum/predalien
 	caste_name = "Predalien"
 	display_name = "Abomination"
-	max_health = XENO_UNIVERSAL_HPMULT * 800 //A lot of health, but it doesn't regenerate.
-	plasma_gain = 0.084
-	plasma_max = 300
+	
+	melee_damage_lower = XENO_DAMAGE_MEDIUM
+	melee_damage_upper = XENO_DAMAGE_HIGH
+	max_health = XENO_HEALTH_IMMORTAL
+	plasma_gain = XENO_PLASMA_GAIN_ULTRAHIGH
+	plasma_max = XENO_PLASMA_HIGHMEDIUM
+	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_SANICFAST)
+
 	evolution_allowed = FALSE
 	tacklemin = 6
 	tacklemax = 10
 	tackle_chance = 80
 	is_intelligent = TRUE
-	charge_type = 4
-	armor_deflection = 50
+	charge_type = 4	
 	bite_chance = 25
 	tail_chance = 25
 	tier = 1
-	attack_delay = -2
-	speed = -2.1
+	attack_delay = -2	
 	can_be_queen_healed = 0
-	xeno_explosion_resistance = 100
 	upgrade = -1
 
 /datum/caste_datum/predalien/primordial
@@ -166,7 +172,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			emote("growl")
 			var/to_heal = max(1, 5 - (0.2 * (health < maxHealth ? butchered_sum++ : butchered_sum)))//So we do not heal multiple times due to the inline proc below.
-			XENO_HEAL_WOUNDS(isYautja(H)? 15 : to_heal) //Predators give far better healing.
+			XENO_HEAL_WOUNDS(isYautja(H)? 15 : to_heal, recovery_aura) //Predators give far better healing.
 		else
 			visible_message("<span class='danger'>[src] slices and dices [H]'s body like a ragdoll!</span>",
 			"<span class='xenodanger'>You fly into a frenzy and butcher [H]'s body!</span>")

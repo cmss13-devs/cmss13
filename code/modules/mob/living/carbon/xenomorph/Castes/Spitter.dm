@@ -3,19 +3,23 @@
 	upgrade_name = "Young"
 	tier = 2
 	upgrade = 0
-	melee_damage_lower = 20
-	melee_damage_upper = 30
-	max_health = XENO_UNIVERSAL_HPMULT * 210
-	plasma_gain = 0.034
-	plasma_max = 600
+
+	melee_damage_lower = XENO_DAMAGE_LOW
+	melee_damage_upper = XENO_DAMAGE_MEDIUMLOW
+	max_health = XENO_HEALTH_HIGHMEDIUM
+	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
+	plasma_max = XENO_PLASMA_VERYHIGH
+	xeno_explosion_resistance = XENO_LOW_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_LOW_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
+	evasion = XENO_EVASION_MEDIUM
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_HIGHMINUS)
+
 	spit_delay = 20
-	speed = -0.6
 	caste_desc = "Ptui!"
-	armor_deflection = 15
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	evolves_to = list("Boiler")
 	deevolves_to = "Sentinel"
-	xeno_explosion_resistance = 40
 	acid_delay = 130
 	acid_level = 2
 
@@ -23,12 +27,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	upgrade = 1
-	max_health = XENO_UNIVERSAL_HPMULT * 225
-	melee_damage_lower = 25
-	melee_damage_upper = 35
-	plasma_gain = 0.036
-	plasma_max = 700
-	armor_deflection = 20
+	
 	spit_delay = 20
 	tacklemin = 3
 	tacklemax = 4
@@ -39,34 +38,22 @@
 	upgrade_name = "Elder"
 	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	upgrade = 2
-	max_health = XENO_UNIVERSAL_HPMULT * 240
-	melee_damage_lower = 28
-	melee_damage_upper = 38
-	plasma_gain = 0.038
-	plasma_max = 800
-	armor_deflection = 25
+	
 	spit_delay = 15
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
-	speed = -0.7
 	acid_delay = 100
 
 /datum/caste_datum/spitter/ancient
 	upgrade_name = "Ancient"
 	caste_desc = "A ranged destruction machine."
 	upgrade = 3
-	max_health = XENO_UNIVERSAL_HPMULT * 250
-	melee_damage_lower = 30
-	melee_damage_upper = 40
-	plasma_gain = 0.04
-	plasma_max = 850
-	armor_deflection = 28
+	
 	spit_delay = 12
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 48
-	speed = -0.8
 	acid_delay = 90
 
 /mob/living/carbon/Xenomorph/Spitter
@@ -89,3 +76,16 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
+
+/datum/caste_datum/spitter/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/spitter/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/spitter/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/spitter/ancient/New()
+	..()
+	ancient_multipliers()

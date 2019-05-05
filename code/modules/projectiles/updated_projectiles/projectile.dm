@@ -604,7 +604,8 @@
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
 			return 0
 		if(mob_size == MOB_SIZE_BIG)	. += 10
-		else							. -= 10
+		if(caste.evasion>0)
+			. -= caste.evasion
 
 
 /mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/item/projectile/P)
@@ -647,12 +648,7 @@
 			to_chat(src, "<span class='highdanger'>You burst into flames!! Stop drop and roll!</span>")
 	return 1
 
-/*
-Fixed and rewritten. For best results, the defender's combined armor for an area should not exceed 100.
-If it does, it's going to be really hard to damage them with anything less than an armor penetrating
-sniper rifle or something similar. I suppose that's to be expected though.
-Normal range for a defender's bullet resist should be something around 30-50. ~N
-*/
+#define DEBUG_HUMAN_DEFENSE 0
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
 	if(!P) return
 
@@ -662,9 +658,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 		round_statistics.total_bullet_hits_on_humans++
 
 	var/damage = max(0, P.damage - round(P.distance_travelled * P.ammo.damage_falloff))
-	#if DEBUG_HUMAN_DEFENSE
-	to_world("<span class='debuginfo'>Initial damage is: <b>[damage]</b></span>")
-	#endif
+	var/damage_result = damage
 
 	//Any projectile can decloak a predator. It does defeat one free bullet though.
 	if(gloves)
@@ -691,46 +685,19 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	if( damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR) )
 		var/armor //Damage types don't correspond to armor types. We are thus merging them.
 		switch(P.ammo.damage_type)
-			if(BRUTE) armor = ammo_flags & AMMO_ROCKET ? getarmor_organ(organ, "bomb") : getarmor_organ(organ, "bullet")
-			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, "energy") : getarmor_organ(organ, "laser")
-			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, "bio")
-			else armor = getarmor_organ(organ, "energy") //Won't be used, but just in case.
-		#if DEBUG_HUMAN_DEFENSE
-		to_world("<span class='debuginfo'>Initial armor is: <b>[armor]</b></span>")
-		#endif
-		var/penetration = P.ammo.penetration > 0 || armor > 0 ? P.ammo.penetration : 0
-		armor -= penetration//Minus armor penetration from the bullet. If the bullet has negative penetration, adding to their armor, but they don't have armor, they get nothing.
-		#if DEBUG_HUMAN_DEFENSE
-		to_world("<span class='debuginfo'>Adjusted armor after penetration is: <b>[armor]</b></span>")
-		#endif
+			if(BRUTE) armor = ammo_flags & AMMO_ROCKET ? getarmor_organ(organ, ARMOR_BOMB) : getarmor_organ(organ, ARMOR_BULLET)
+			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, ARMOR_ENERGY) : getarmor_organ(organ, ARMOR_LASER)
+			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, ARMOR_BIO)
+			else armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
+		
+		damage_result = armor_damage_reduction(config.marine_ranged, damage, armor, P.ammo.penetration)
 
-		if(armor > 0) //Armor check. We should have some to continue.
-			 /*Automatic damage soak due to armor. Greater difference between armor and damage, the more damage
-			 soaked. Small caliber firearms aren't really effective against combat armor.*/
-			var/armor_soak	 = round( ( armor / damage ) * 10 )//Setting up for next action.
-			var/critical_hit = rand(config.critical_chance_low,config.critical_chance_high)
-			damage 			-= prob(critical_hit) ? 0 : armor_soak //Chance that you won't soak the initial amount.
-			armor			-= round(armor_soak * config.base_armor_resist_low) //If you still have armor left over, you generally should, we subtract the soak.
-											  		   //This gives smaller calibers a chance to actually deal damage.
-			#if DEBUG_HUMAN_DEFENSE
-			to_world("<span class='debuginfo'>Adjusted damage is: <b>[damage]</b>. Adjusted armor is: <b>[armor]</b></span>")
-			#endif
-			var/i = 0
-			if(damage)
-				while(armor > 0 && i < 2) //Going twice. Armor has to exist to continue. Post increment.
-					if(prob(armor))
-						armor_soak 	 = round(damage * 0.5)  //Cut it in half.
-						armor 		-= armor_soak * config.base_armor_resist_high
-						damage 		-= armor_soak
-						#if DEBUG_HUMAN_DEFENSE
-						to_world("<span class='debuginfo'>Currently soaked: <b>[armor_soak]</b>. Adjusted damage is: <b>[damage]</b>. Adjusted armor is: <b>[armor]</b></span>")
-						#endif
-					else break //If we failed to block the damage, it's time to get out of the loop.
-					i++
-			if(i || damage <= 5) to_chat(src, SPAN_NOTICE("Your armor [ i == 2 ? "absorbs the force of [P]!" : "softens the impact of [P]!" ]"))
-			if(damage <= 0)
-				damage = 0
-				if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
+		if(damage_result <= 5) to_chat(src,"<span class='xenonotice'>Your armor absorbs the force of [P]!]</span>")
+		if(damage_result <= 3)
+			damage_result = 0
+			bullet_ping(P)
+			visible_message("<span class='avoidharm'>[src]'s armor deflects [P]!</span>")
+			if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
@@ -739,7 +706,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
 	if(damage)
-		apply_damage(damage, P.ammo.damage_type, P.def_zone)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone)
 		P.play_damage_effect(src)
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10) ) )
 			var/obj/item/shard/shrapnel/shrap = new()
@@ -776,9 +743,7 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 	flash_weak_pain()
 
 	var/damage = max(0, P.damage - round(P.distance_travelled * P.damage_falloff)) //Has to be at least zero, no negatives.
-	#if DEBUG_XENO_DEFENSE
-	to_world("<span class='debuginfo'>Initial damage is: <b>[damage]</b></span>")
-	#endif
+	var/damage_result = damage
 
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
@@ -788,54 +753,30 @@ Normal range for a defender's bullet resist should be something around 30-50. ~N
 			if(P.dir == charger.dir) armor = max(0, armor - (armor_deflection * config.xeno_armor_resist_low)) //Both facing same way -- ie. shooting from behind.
 			else if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * config.xeno_armor_resist_low) //We are facing the bullet.
 			//Otherwise use the standard armor deflection for crushers.
-			#if DEBUG_XENO_DEFENSE
-			to_world("<span class='debuginfo'>Adjusted crest armor is: <b>[armor]</b></span>")
-			#endif
-
-		var/penetration = P.ammo.penetration > 0 || armor > 0 ? P.ammo.penetration : 0
-		armor -= penetration
-		if(armor > 0) //Armor check. We should have some to continue.
-			 /*Automatic damage soak due to armor. Greater difference between armor and damage, the more damage
-			 soaked. Small caliber firearms aren't really effective against combat armor.*/
-			var/armor_soak	 = round( ( armor / damage ) * 10 )//Setting up for next action.
-			var/critical_hit = rand(config.critical_chance_low,config.critical_chance_high)
-			damage 			-= prob(critical_hit) ? 0 : armor_soak //Chance that you won't soak the initial amount.
-			armor			-= round(armor_soak * config.base_armor_resist_low) //If you still have armor left over, you generally should, we subtract the soak.
-											  		   //This gives smaller calibers a chance to actually deal damage.
-			#if DEBUG_XENO_DEFENSE
-			to_world("<span class='debuginfo'>Adjusted damage is: <b>[damage]</b>. Adjusted armor is: <b>[armor]</b></span>")
-			#endif
-			var/i = 0
-			if(damage)
-				while(armor > 0 && i < 2) //Going twice. Armor has to exist to continue. Post increment.
-					if(prob(armor))
-						armor_soak 	 = round(damage * 0.5)
-						armor 		-= armor_soak * config.base_armor_resist_high
-						damage 		-= armor_soak
-						#if DEBUG_XENO_DEFENSE
-						to_world("<span class='debuginfo'>Currently soaked: <b>[armor_soak]</b>. Adjusted damage is: <b>[damage]</b>. Adjusted armor is: <b>[armor]</b></span>")
-						#endif
-					else break //If we failed to block the damage, it's time to get out of the loop.
-					i++
-			if(i || damage <= 5) to_chat(src, "<span class='xenonotice'>Your exoskeleton [ i == 2 ? "absorbs the force of [P]!" : "softens the impact of [P]!" ]</span>")
-			if(damage <= 3)
-				damage = 0
-				bullet_ping(P)
-				visible_message("<span class='avoidharm'>[src]'s thick exoskeleton deflects [P]!</span>")
+		
+		damage_result = armor_damage_reduction(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
+		var/armor_punch = armor_break_calculation(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
+		apply_armorbreak(armor_punch)
+	
+		if(damage <= 5) to_chat(src,"<span class='xenonotice'>Your exoskeleton absorbs the force of [P]!]</span>")
+		if(damage <= 3)
+			damage = 0
+			bullet_ping(P)
+			visible_message("<span class='avoidharm'>[src]'s thick exoskeleton deflects [P]!</span>")
 
 	bullet_message(P) //Message us about the bullet, since damage was inflicted.
 
 	if(damage)
-		apply_damage(damage,P.ammo.damage_type, P.def_zone)	//Deal the damage.
+		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
 		P.play_damage_effect(src)
-		if(!stat && prob(5 + round(damage / 4)))
+		if(!stat && prob(5 + round(damage_result / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)
 		if(ammo_flags & AMMO_INCENDIARY)
 			if(caste.fire_immune)
 				if(!stat) to_chat(src, "<span class='avoidharm'>You shrug off some persistent flames.</span>")
 			else
-				adjust_fire_stacks(rand(2,6) + round(damage / 8))
+				adjust_fire_stacks(rand(2,6) + round(damage_result / 8))
 				IgniteMob()
 				visible_message("<span class='danger'>[src] bursts into flames!</span>", \
 				"<span class='xenodanger'>You burst into flames!! Auuugh! Resist to put out the flames!</span>")

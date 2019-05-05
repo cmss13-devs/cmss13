@@ -3,22 +3,26 @@
 	upgrade_name = "Young"
 	tier = 0
 	upgrade = 0
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+
+	melee_damage_lower = XENO_DAMAGE_MEDIUMLOW
+	melee_damage_upper = XENO_DAMAGE_MEDIUMHIGH
+	max_health = XENO_HEALTH_ULTRAHIGH
+	plasma_gain = XENO_PLASMA_GAIN_HIGH
+	plasma_max = XENO_PLASMA_VERYHIGH
+	xeno_explosion_resistance = XENO_GIGA_EXPLOSIVE_ARMOR
+	armor_deflection = XENO_MEDIUM_ARMOR
+	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
+
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 40
-	max_health = XENO_UNIVERSAL_HPMULT * 300
-	plasma_gain = 0.043
-	plasma_max = 700
 	is_intelligent = 1
-	speed = 0.6
 	evolution_allowed = FALSE
 	fire_immune = 1
-	armor_deflection = 45
 	aura_strength = 2 //The Queen's aura is strong and stays so, and gets devastating late game. Climbs by 1 to 5
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
-	xeno_explosion_resistance = 100 //some resistance against explosion stuns.
 	spit_delay = 25
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0
@@ -31,30 +35,18 @@
 	upgrade_name = "Mature"
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	upgrade = 1
-	melee_damage_lower = 40
-	melee_damage_upper = 50
-	max_health = XENO_UNIVERSAL_HPMULT * 325
-	plasma_gain = 0.05
-	plasma_max = 800
+	
 	spit_delay = 20
-	armor_deflection = 50
 	tackle_chance = 45
-	speed = 0.5
 	aura_strength = 3
 
 /datum/caste_datum/queen/elder
 	upgrade_name = "Elder"
 	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	upgrade = 2
-	melee_damage_lower = 50
-	melee_damage_upper = 60
-	max_health = XENO_UNIVERSAL_HPMULT * 350
-	plasma_gain = 0.056
-	plasma_max = 900
+	
 	spit_delay = 15
-	armor_deflection = 55
 	tackle_chance = 50
-	speed = 0.4
 	aura_strength = 4
 	tacklemin = 5
 	tacklemax = 6
@@ -63,15 +55,9 @@
 	upgrade_name = "Ancient"
 	caste_desc = "The most perfect Xeno form imaginable."
 	upgrade = 3
-	melee_damage_lower = 60
-	melee_damage_upper = 70
-	max_health = XENO_UNIVERSAL_HPMULT * 375
-	plasma_gain = 0.06
-	plasma_max = 1000
+	
 	spit_delay = 10
-	armor_deflection = 55
 	tackle_chance = 55
-	speed = 0.3
 	aura_strength = 5
 	tacklemin = 6
 	tacklemax = 7
@@ -80,15 +66,9 @@
 	upgrade_name = "Primordial"
 	caste_desc = "Natural selection's masterwork, each brush stroke of genetics, deadly, each trait, glorious, every detail, minutely crafted. The perfect being, the perfect queen."
 	upgrade = 4
-	melee_damage_lower = 80
-	melee_damage_upper = 90
-	max_health = XENO_UNIVERSAL_HPMULT * 450
-	plasma_gain = 0.07
-	plasma_max = 1200
+	
 	spit_delay = 10
-	armor_deflection = 70
 	tackle_chance = 65
-	speed = -0.1
 	aura_strength = 6
 	tacklemin = 6
 	tacklemax = 7
@@ -677,3 +657,16 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib()
 	death(1) //we need the body to show the queen's name at round end.
+
+/datum/caste_datum/queen/New()
+	..()
+	young_multipliers()
+/datum/caste_datum/queen/mature/New()
+	..()
+	mature_multipliers()
+/datum/caste_datum/queen/elder/New()
+	..()
+	elder_multipliers()
+/datum/caste_datum/queen/ancient/New()
+	..()
+	ancient_multipliers()

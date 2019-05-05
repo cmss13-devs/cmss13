@@ -12176,6 +12176,9 @@
 	icon_state = "sand1_s"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aEj" = (
@@ -20101,6 +20104,9 @@
 	icon_state = "sand1_c"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aYd" = (
@@ -43282,6 +43288,11 @@
 "bZB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (WEST)";
@@ -83837,6 +83848,14 @@
 	icon_state = "cement_sunbleached9"
 	},
 /area/desert_dam/exterior/landing_pad_one)
+"xOK" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/gm/river/desert/deep,
+/area/desert_dam/exterior/river/riverside_east)
 "xPA" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/effect/decal/cleanable/dirt,
@@ -126996,9 +127015,9 @@ aVS
 aVS
 beq
 beG
-dib
-dib
-dib
+xOK
+xOK
+xOK
 beG
 beG
 beq

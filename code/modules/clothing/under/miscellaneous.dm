@@ -91,7 +91,13 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	armor = list(melee = 100, bullet = 100, laser = 100,energy = 100, bomb = 100, bio = 100, rad = 100)
+	armor_melee = 100
+	armor_bullet = 100
+	armor_laser = 100
+	armor_energy = 100
+	armor_bomb = 100
+	armor_bio = 100
+	armor_rad = 100
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
 	siemens_coefficient = 0

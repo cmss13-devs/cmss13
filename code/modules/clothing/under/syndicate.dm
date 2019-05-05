@@ -4,7 +4,13 @@
 	icon_state = "syndicate"
 	item_state = "bl_suit"
 	has_sensor = 0
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/syndicate/combat

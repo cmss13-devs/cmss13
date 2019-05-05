@@ -78,6 +78,8 @@
 
 #define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
 
+#define SPAN_XENODANGER(X) "<span class='xenodanger'>[X]</span>"
+
 #define SPAN_WARNING(X) "<span class='warning'>[X]</span>"
 
 #define SPAN_XENOWARNING(X) "<span class='xenowarning'>[X]</span>"

@@ -15,7 +15,13 @@
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 	flags_armor_protection = HANDS
-	armor = list(melee = 60, bullet = 40, laser = 10,energy = 10, bomb = 10, bio = 10, rad = 0)
+	armor_melee = 60
+	armor_bullet = 20
+	armor_laser = 10
+	armor_energy = 10
+	armor_bomb = 10
+	armor_bio = 25
+	armor_rad = 0
 
 /obj/item/clothing/gloves/marine/alpha
 	name = "alpha squad gloves"
@@ -86,7 +92,13 @@
 	desc = "A pair of heavily armored gloves."
 	icon_state = "black"
 	item_state = "bgloves"
-	armor = list(melee = 90, bullet = 95, laser = 75, energy = 60, bomb = 40, bio = 15, rad = 15)
+	armor_melee = 90
+	armor_bullet = 60
+	armor_laser = 75
+	armor_energy = 60
+	armor_bomb = 40
+	armor_bio = 35
+	armor_rad = 15
 	unacidable = 1
 
 /obj/item/clothing/gloves/marine/M3G
@@ -94,7 +106,13 @@
 	desc = "A pair of plated, but nimble, gloves."
 	icon_state = "black"
 	item_state = "bgloves"
-	armor = list(melee = 90, bullet = 95, laser = 75, energy = 60, bomb = 40, bio = 15, rad = 15)
+	armor_melee = 90
+	armor_bullet = 60
+	armor_laser = 75
+	armor_energy = 60
+	armor_bomb = 40
+	armor_bio = 35
+	armor_rad = 15
 	unacidable = 1
 
 /obj/item/clothing/gloves/marine/veteran/PMC
@@ -103,12 +121,24 @@
 	icon_state = "black"
 	item_state = "bgloves"
 	siemens_coefficient = 0
-	armor = list(melee = 60, bullet = 60, laser = 35, energy = 20, bomb = 10, bio = 10, rad = 0)
+	armor_melee = 60
+	armor_bullet = 40
+	armor_laser = 35
+	armor_energy = 20
+	armor_bomb = 10
+	armor_bio = 25
+	armor_rad = 0
 
 /obj/item/clothing/gloves/marine/veteran/PMC/commando
 	name = "\improper PMC commando gloves"
 	desc = "A pair of heavily armored, insulated, acid-resistant gloves."
 	icon_state = "brown"
 	item_state = "browngloves"
-	armor = list(melee = 90, bullet = 120, laser = 100, energy = 90, bomb = 20, bio = 30, rad = 30)
+	armor_melee = 90
+	armor_bullet = 80
+	armor_laser = 100
+	armor_energy = 90
+	armor_bomb = 20
+	armor_bio = 30
+	armor_rad = 30
 	unacidable = 1

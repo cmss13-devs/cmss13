@@ -13,7 +13,13 @@
 	name = "warden's jumpsuit"
 	icon_state = "warden"
 	item_state = "r_suit"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/security
@@ -21,14 +27,26 @@
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "security"
 	item_state = "r_suit"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/dispatch
 	name = "dispatcher's uniform"
 	desc = "A dress shirt and khakis with a security patch sewn on."
 	icon_state = "dispatch"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS
 	siemens_coefficient = 0.9
 	rollable_sleeves = FALSE
@@ -38,7 +56,13 @@
 	desc = "It's made of a slightly sturdier material, to allow for robust protection."
 	icon_state = "redshirt2"
 	item_state = "r_suit"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 	rollable_sleeves = FALSE
 
@@ -54,7 +78,13 @@
 	name = "tactical jumpsuit"
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "swatunder"
-	armor = list(melee = 10, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 5
+	armor_laser = 5
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 
 /*
@@ -65,7 +95,13 @@
 	desc = "Someone who wears this means business."
 	icon_state = "detective"
 	item_state = "det"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/det/black
@@ -84,7 +120,13 @@
 	name = "head of security's jumpsuit"
 	icon_state = "hosred"
 	item_state = "r_suit"
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_melee = 10
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 0
+	armor_rad = 0
 	siemens_coefficient = 0.8
 
 /obj/item/clothing/under/rank/head_of_security/corp

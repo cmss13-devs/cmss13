@@ -6,19 +6,37 @@
 	name = "research director's jumpsuit"
 	icon_state = "director"
 	item_state = "g_suit"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/research_director/rdalt
 	desc = "A simple blue utilitarian jumpsuit that serves as the standard issue service uniform of support synthetics onboard USCM facilities. While commonly associated with the staple Bishop units, reduced funding to the Colonial Marines has led to a wide range of models filling these uniforms, especially in battalions operating in the edge frontier."
 	name = "synthetic service uniform"
 	icon_state = "rdalt"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/research_director/dress_rd
 	name = "research director dress uniform"
 	desc = "Feminine fashion for the style concious RD. Its fabric provides minor protection from biological contaminants."
 	icon_state = "dress_rd"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 
 /obj/item/clothing/under/rank/scientist
@@ -27,7 +45,13 @@
 	icon_state = "science"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/chemist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a chemist rank stripe on it."
@@ -35,7 +59,13 @@
 	icon_state = "chemistry"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /*
  * Medical
@@ -46,7 +76,13 @@
 	icon_state = "cmo"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/geneticist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a genetics rank stripe on it."
@@ -54,7 +90,13 @@
 	icon_state = "genetics"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/virologist
 	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
@@ -62,14 +104,26 @@
 	icon_state = "virology"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/nursesuit
 	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
 	name = "nurse's suit"
 	icon_state = "nursesuit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/rank/nurse
@@ -77,7 +131,13 @@
 	name = "nurse's dress"
 	icon_state = "nurse"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
 	rollable_sleeves = FALSE
 
@@ -86,7 +146,13 @@
 	name = "orderly's uniform"
 	icon_state = "orderly"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/medical
@@ -95,7 +161,13 @@
 	icon_state = "medical"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 
 /obj/item/clothing/under/rank/medical/blue
 	name = "medical scrubs"
@@ -139,7 +211,13 @@
 	icon_state = "genetics_new"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/chemist_new
@@ -148,7 +226,13 @@
 	icon_state = "chemist_new"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/scientist_new
@@ -157,7 +241,13 @@
 	icon_state = "scientist_new"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 10
+	armor_bio = 0
+	armor_rad = 0
 	rollable_sleeves = FALSE
 
 /obj/item/clothing/under/rank/virologist_new
@@ -166,5 +256,11 @@
 	icon_state = "virologist_new"
 	item_state = "w_suit"
 	permeability_coefficient = 0.50
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_melee = 0
+	armor_bullet = 0
+	armor_laser = 0
+	armor_energy = 0
+	armor_bomb = 0
+	armor_bio = 10
+	armor_rad = 0
 	rollable_sleeves = FALSE

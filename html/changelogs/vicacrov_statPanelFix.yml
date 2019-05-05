@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes:
-  - rscadd: "Assigned overwatch officers now show up on the stat panel for each squad."
-  - bugfix: "Fixed the stat panel not updating for marines."

@@ -90,6 +90,15 @@
 
 	return
 
+/obj/machinery/vending/update_icon()
+	overlays.Cut()
+	if(panel_open)
+		overlays += image(src.icon, "[initial(icon_state)]-panel")
+	if(stat & ~MAINT)
+		icon_state = "[initial(icon_state)]-broken"
+	else
+		icon_state = initial(icon_state)
+
 /obj/machinery/vending/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -149,22 +158,136 @@
 //		to_world("Added: [R.product_name]] - [R.amount] - [R.product_path]")
 	return
 
+/obj/machinery/vending/proc/get_repair_move_text()
+	if(stat & BROKEN)
+		return "[src]'s broken panel still needs to be <b>unscrewed</b> and removed."
+	else if(stat & REPAIR_STEP_ONE)
+		return "[src]'s broken wires still need to be <b>cut</b> and removed from the vendor."
+	else if(stat & REPAIR_STEP_TWO)
+		return "[src] needs to have <b>new wiring</b> installed."
+	else if(stat & REPAIR_STEP_THREE)
+		return "[src] needs to have a <b>metal panel</b> installed."
+	else if(stat & REPAIR_STEP_FOUR)
+		return "[src]'s new panel needs to be <b>fastened</b> to it."
+	else
+		return ""
+
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
 	if(tipped_level)
 		to_chat(user, "Tip it back upright first!")
-		return
+		return FALSE
 
 	if (istype(W, /obj/item/card/emag))
 		src.emagged = 1
 		to_chat(user, "You short out the product lock on [src]")
-		return
+		return TRUE
 	else if(istype(W, /obj/item/tool/screwdriver))
-		src.panel_open = !src.panel_open
-		to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
-		src.overlays.Cut()
-		if(src.panel_open)
-			src.overlays += image(src.icon, "[initial(icon_state)]-panel")
-		src.updateUsrDialog()
+		if(stat & WORKING)
+			src.panel_open = !src.panel_open
+			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
+			update_icon()
+			src.updateUsrDialog()
+			return TRUE
+		else if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		else if(stat & BROKEN)
+			to_chat(user, SPAN_NOTICE("You start to unscrew \the [src]'s broken panel."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop unscrewing \the [src]'s broken panel."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You unscrew \the [src]'s broken panel and remove it, exposing many broken wires."))
+			stat &= ~BROKEN
+			stat |= REPAIR_STEP_ONE
+			return TRUE
+		else if(stat & REPAIR_STEP_FOUR)
+			to_chat(user, SPAN_NOTICE("You start to fasten \the [src]'s new panel."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop fastening \the [src]'s new panel."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You fasten \the [src]'s new panel, fully repairing the vendor."))
+			stat &= ~REPAIR_STEP_FOUR
+			stat |= FULLY_REPAIRED
+			update_icon()
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return FALSE
+	else if(istype(W, /obj/item/tool/wirecutters))
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		else if(stat & REPAIR_STEP_ONE)
+			to_chat(user, SPAN_NOTICE("You start to remove \the [src]'s broken wires."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop removing \the [src]'s broken wires."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			stat &= ~REPAIR_STEP_ONE
+			stat |= REPAIR_STEP_TWO
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return FALSE
+	else if(istype(W, /obj/item/stack/cable_coil))
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		var/obj/item/stack/cable_coil/CC = W
+		if(stat & REPAIR_STEP_TWO)
+			if(CC.amount < 5)
+				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
+			to_chat(user, SPAN_NOTICE("You start to replace \the [src]'s removed wires."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop replacing \the [src]'s removed wires."))
+				return FALSE
+			if(!CC || !CC.use(5))
+				to_chat(user, SPAN_WARNING("You need more cable coil to replace the removed wires."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You remove \the [src]'s broken broken wires."))
+			stat &= ~REPAIR_STEP_TWO
+			stat |= REPAIR_STEP_THREE
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return
+	else if(istype(W, /obj/item/stack/sheet/metal))
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
+			return FALSE
+		var/obj/item/stack/sheet/metal/M = W
+		if(stat & REPAIR_STEP_THREE)
+			to_chat(user, SPAN_NOTICE("You start to construct a new panel for \the [src]."))
+			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))
+				to_chat(user, SPAN_WARNING("You stop constructing a new panel for \the [src]."))
+				return FALSE
+			if(!M || !M.use(1))
+				to_chat(user, SPAN_WARNING("You a sheet of metal to construct a new panel."))
+				return FALSE
+			to_chat(user, SPAN_NOTICE("You consrtuct a new panel for \the [src]."))
+			stat &= ~REPAIR_STEP_THREE
+			stat |= REPAIR_STEP_FOUR
+			return TRUE
+		else
+			var/msg = get_repair_move_text()
+			to_chat(user, SPAN_WARNING("[msg]"))
+			return
+	else if(istype(W, /obj/item/tool/wrench))
+		if(!wrenchable) return
+
+		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!src) return
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			switch (anchored)
+				if (0)
+					anchored = 1
+					user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
+				if (1)
+					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
+					anchored = 0
 		return
 	else if(istype(W, /obj/item/device/multitool)||istype(W, /obj/item/tool/wirecutters))
 		if(src.panel_open)
@@ -183,21 +306,6 @@
 		if(user.drop_inv_item_to_loc(W, src))
 			ewallet = W
 			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
-		return
-
-	else if(istype(W, /obj/item/tool/wrench))
-		if(!wrenchable) return
-
-		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src) return
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			switch (anchored)
-				if (0)
-					anchored = 1
-					user.visible_message("[user] tightens the bolts securing \the [src] to the floor.", "You tighten the bolts securing \the [src] to the floor.")
-				if (1)
-					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
-					anchored = 0
 		return
 
 	..()
@@ -625,14 +733,9 @@
 
 /obj/machinery/vending/power_change()
 	..()
-	if(stat & BROKEN)
-		icon_state = "[initial(icon_state)]-broken"
-	else
-		if( !(stat & NOPOWER) )
-			icon_state = initial(icon_state)
-		else
-			spawn(rand(0, 15))
-				src.icon_state = "[initial(icon_state)]-off"
+	if(stat & NOPOWER)
+		sleep(rand(0, 15))
+	update_icon()
 
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/machinery/vending/proc/malfunction()
@@ -643,13 +746,13 @@
 		if (!dump_path)
 			continue
 
-		while(R.amount>0)
+		while(R.amount > 0)
 			release_item(R, 0)
 			R.amount--
 		break
-
+	flick("door_spark", src)
 	stat |= BROKEN
-	src.icon_state = "[initial(icon_state)]-broken"
+	update_icon()
 	return
 
 //Somebody cut an important wire and now we're following a new definition of "pitch."

@@ -2,6 +2,13 @@
 
 /obj/item/circuitboard/computer
 
+/obj/item/circuitboard/computer/generic // To be used in machine refactor
+	name = "electronics"
+
+/obj/item/circuitboard/computer/generic/New(obj/machinery/M)
+	..()
+	name = "Circuit board ([M.name])"
+	build_path = M.type
 
 /obj/item/circuitboard/computer/message_monitor
 	name = "Circuit board (Message Monitor)"
@@ -40,16 +47,6 @@
 	name = "Circuit board (Cryogenic Oversight Console)"
 	build_path = "/obj/machinery/computer/cryopod"
 	origin_tech = "programming=3"
-
-/obj/item/circuitboard/computer/aiupload
-	name = "Circuit board (AI Upload)"
-	build_path = /obj/machinery/computer/aiupload
-	origin_tech = "programming=4"
-
-/obj/item/circuitboard/computer/borgupload
-	name = "Circuit board (Cyborg Upload)"
-	build_path = /obj/machinery/computer/borgupload
-	origin_tech = "programming=4"
 
 /obj/item/circuitboard/computer/med_data
 	name = "Circuit board (Medical Records)"
@@ -187,6 +184,10 @@
 	name = "Circuit board (Supply ordering console)"
 	build_path = /obj/machinery/computer/ordercomp
 	origin_tech = "programming=2"
+/obj/item/circuitboard/computer/supply_drop_console
+	name = "Circuit board (Supply Drop Console)"
+	build_path = /obj/machinery/computer/supply_drop_console
+	origin_tech = "programming=3"
 
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (Supply shuttle console)"

@@ -988,14 +988,6 @@ table tr:first-child th:first-child { border: none;}
 
 
 /obj/machinery/alarm/attackby(obj/item/W as obj, mob/user as mob)
-/*	if (istype(W, /obj/item/tool/wirecutters))
-		stat ^= BROKEN
-		add_fingerprint(user)
-		for(var/mob/O in viewers(user, null))
-			O.show_message(text("<span class='danger'>[] has []activated []!</span>", user, (stat&BROKEN) ? "de" : "re", src), 1)
-		update_icon()
-		return
-*/
 	src.add_fingerprint(user)
 
 	switch(buildstage)

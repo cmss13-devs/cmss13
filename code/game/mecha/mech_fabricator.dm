@@ -731,6 +731,9 @@
 
 /obj/machinery/mecha_part_fabricator/attackby(obj/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/screwdriver))
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
+			return
 		if (!opened)
 			opened = 1
 			icon_state = "fab-o"
@@ -742,6 +745,9 @@
 		return
 	if (opened)
 		if(istype(W, /obj/item/tool/crowbar))
+			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+				to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
+				return
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 			M.state = 2

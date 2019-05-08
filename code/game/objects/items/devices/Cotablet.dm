@@ -11,7 +11,7 @@
 #define COOLDOWN_COMM_CENTRAL SECONDS_30
 
 /obj/item/device/cotablet
-    icon = 'icons/obj/stationobjs.dmi'
+    icon = 'icons/obj/items/devices.dmi'
     name = "command tablet"
     desc = "A special device used by the Captain of the ship."
     suffix = "\[3\]"

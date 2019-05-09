@@ -75,7 +75,7 @@
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
-/datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M)
+/datum/squad/proc/put_marine_in_squad(var/mob/living/carbon/human/M, var/obj/item/card/id/ID)
 	
 	if(!M || !istype(M,/mob/living/carbon/human)) return 0//Logic
 	if(!src.usable) return 0
@@ -83,23 +83,35 @@
 	if(!M.mind.assigned_role) return 0 //Not yet
 	if(M.assigned_squad) return 0      //already in a squad
 
-	var/obj/item/card/id/C = null
-	C = M.wear_id
-	if(!C) C = M.get_active_hand()
-	if(!istype(C)) return 0//Abort, no ID found
+	var/obj/item/card/id/C = ID
+	if(!C)
+		C = M.wear_id
+	if(!C) 
+		C = M.get_active_hand()
+	if(!istype(C))
+		return 0 // No ID found
+
+	var/assignment = "Squad Marine"
 
 	switch(M.mind.assigned_role)
 		if("Squad Engineer")
+			assignment = "Squad Engineer"
 			num_engineers++
 			C.claimedgear = 0
 		if("Squad Medic")
+			assignment = "Squad Medic"
 			num_medics++
 			C.claimedgear = 0
-		if("Squad Specialist") num_specialists++
-		if("Squad Smartgunner") num_smartgun++
+		if("Squad Specialist")
+			assignment = "Squad Specialist"
+			num_specialists++
+		if("Squad Smartgunner") 
+			assignment = "Squad Smartgunner"
+			num_smartgun++
 		if("Squad Leader")
 			if(squad_leader && (!squad_leader.mind || squad_leader.mind.assigned_role != "Squad Leader")) //field promoted SL
 				demote_squad_leader() //replaced by the real one
+			assignment = "Squad Leader"
 			squad_leader = M
 			if(M.mind.assigned_role == "Squad Leader") //field promoted SL don't count as real ones
 				num_leaders++
@@ -112,9 +124,8 @@
 	marines_list += M
 	M.assigned_squad = src //Add them to the squad
 
-	var/c_oldass = C.assignment
 	C.access += src.access //Add their squad access to their ID
-	C.assignment = "[name] [c_oldass]"
+	C.assignment = "[name] [assignment]"
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 	return 1
 

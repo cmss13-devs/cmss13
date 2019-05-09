@@ -18,8 +18,9 @@
 #define MARINE_CAN_BUY_ESSENTIALS	4096
 #define MARINE_CAN_BUY_ATTACHMENT	8192
 #define MARINE_CAN_BUY_MRE			16384
+#define MARINE_CAN_BUY_ACCESSORY	32768
 
-#define MARINE_CAN_BUY_ALL			32767
+#define MARINE_CAN_BUY_ALL			65535
 
 #define MARINE_TOTAL_BUY_POINTS			45
 
@@ -423,7 +424,6 @@
 /obj/machinery/marine_selector/clothes/engi
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = "Squad Engineer"
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -463,6 +463,11 @@
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Tools pouch", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 
+		list("ACCESSORIES", 0, null, null, null),
+		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/tie/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
 	)
@@ -497,7 +502,6 @@
 /obj/machinery/marine_selector/clothes/medic
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = "Squad Medic"
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -536,6 +540,11 @@
 		list("Firstaid pouch", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Large pistol magazine pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/tie/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -661,6 +670,7 @@
 		list("M39 holster belt", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, "black"),
 		list("Pistol belt", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
 		list("Revolver belt", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, "black"),
+		list("G8-A general utility pouch", 0, /obj/item/storage/sparepouch, MARINE_CAN_BUY_BELT, "black"),
 		list("Shotgun ammo belt", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, "black"),
 		list("Standard ammo belt", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, "black"),
 
@@ -1404,6 +1414,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 #undef MARINE_CAN_BUY_MASK
 #undef MARINE_CAN_BUY_ESSENTIALS
 #undef MARINE_CAN_BUY_MRE
+#undef MARINE_CAN_BUY_ACCESSORY
 
 #undef MARINE_CAN_BUY_ALL
 #undef MARINE_TOTAL_BUY_POINTS

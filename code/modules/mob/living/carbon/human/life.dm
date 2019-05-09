@@ -74,7 +74,7 @@
 					undefibbable = TRUE
 					med_hud_set_status()
 
-	else
+	else if(stat != DEAD)
 		handle_stasis_bag()
 
 

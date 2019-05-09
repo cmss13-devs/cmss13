@@ -16,8 +16,10 @@
 
 	traumatic_shock += reagent_shock_modifier
 
-	if(slurring) 								traumatic_shock -= 20
-	if(analgesic) 								traumatic_shock = 0
+	if(slurring) 								
+		traumatic_shock -= 20
+	if(analgesic) 								
+		traumatic_shock = 0
 
 
 	//Broken or ripped off organs and limbs will add quite a bit of pain
@@ -36,8 +38,10 @@
 
 		//Internal organs hurt too
 		for(var/datum/internal_organ/O in M.internal_organs)
-			if(O.damage) 											traumatic_shock += O.damage * 1.5
-			if(O.germ_level >= INFECTION_LEVEL_ONE) 				traumatic_shock += O.germ_level * 0.05
+			if(O.damage) 											
+				traumatic_shock += O.damage * 1.5
+			if(O.germ_level >= INFECTION_LEVEL_ONE) 				
+				traumatic_shock += O.germ_level * 0.05
 
 		if(M.protection_aura)
 			traumatic_shock -= M.protection_aura * 10

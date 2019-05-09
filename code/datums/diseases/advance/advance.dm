@@ -106,7 +106,7 @@ var/list/advance_cures = 	list(
 /datum/disease/advance/cure(var/resistance=1)
 	if(affected_mob)
 		var/id = "[GetDiseaseID()]"
-		if(resistance && !(id in affected_mob.resistances))
+		if(resistance && !affected_mob.resistances[id])
 			affected_mob.resistances[id] = id
 		remove_virus()
 	qdel(src)	//delete the datum to stop it processing

@@ -101,8 +101,10 @@
 
 			var/wname = W.pretend_weapon
 
-			if(wname in weapon_chances) weapon_chances[wname] += W.damage
-			else weapon_chances[wname] = max(W.damage, 1)
+			if(weapon_chances[wname]) 
+				weapon_chances[wname] += W.damage
+			else 
+				weapon_chances[wname] = max(W.damage, 1)
 			total_score+=W.damage
 
 

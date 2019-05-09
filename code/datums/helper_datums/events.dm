@@ -11,7 +11,7 @@
 		events = new
 
 	proc/addEventType(event_type as text)
-		if(!(event_type in events) || !islist(events[event_type]))
+		if(!events[event_type] || !islist(events[event_type]))
 			events[event_type] = list()
 			return 1
 		return

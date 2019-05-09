@@ -20,6 +20,7 @@
 	gun_type = null
 
 
+
 // Now we need a box for this.
 /obj/item/storage/box/m56d_hmg
 	name = "\improper M56D crate"
@@ -40,6 +41,8 @@
 			new /obj/item/tool/screwdriver(src) //screw the gun onto the post.
 			new /obj/item/ammo_magazine/m56d(src)
 
+
+
 // The actual gun itself.
 /obj/item/device/m56d_gun
 	name = "\improper M56D heavy machine gun"
@@ -49,9 +52,10 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_gun_e"
 	var/rounds = 0 // How many rounds are in the weapon. This is useful if we break down our guns.
+	var/has_mount = FALSE // Indicates whether the M56D will come with its folding mount already attached
 
-	New()
-		update_icon()
+/obj/item/device/m56d_gun/New()
+	update_icon()
 
 /obj/item/device/m56d_gun/examine(mob/user as mob) //Let us see how much ammo we got in this thing.
 	..()
@@ -61,10 +65,12 @@
 		to_chat(usr, "It seems to be lacking a ammo drum.")
 
 /obj/item/device/m56d_gun/update_icon() //Lets generate the icon based on how much ammo it has.
+	var/icon_name = "M56D_gun"
+	if(has_mount)
+		icon_name += "_mount"
 	if(!rounds)
-		icon_state = "M56D_gun_e"
-	else
-		icon_state = "M56D_gun"
+		icon_name += "_e"
+	icon_state = icon_name
 	return
 
 /obj/item/device/m56d_gun/attackby(var/obj/item/O as obj, mob/user as mob)
@@ -84,6 +90,43 @@
 			to_chat(usr, "The M56D already has a ammo drum mounted on it!")
 		return
 
+/obj/item/device/m56d_gun/attack_self(mob/user)
+	if(!ishuman(user))
+		return FALSE
+	if(!has_mount)
+		return FALSE
+	if(do_after(user, 1 SECOND, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		var/obj/machinery/m56d_post/M = new /obj/machinery/m56d_post(user.loc)
+		M.dir = user.dir // Make sure we face the right direction
+		M.gun_rounds = src.rounds //Inherit the amount of ammo we had.
+		M.gun_mounted = TRUE
+		M.anchored = TRUE
+		M.update_icon()
+		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		qdel(src)
+
+
+
+/obj/item/device/m56d_post_frame 
+	name = "\improper M56D folded mount frame"
+	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
+	unacidable = 1
+	w_class = 3
+	icon = 'icons/turf/whiskeyoutpost.dmi'
+	icon_state = "folded_mount_frame"
+
+/obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/tool/weldingtool))
+		var/obj/item/tool/weldingtool/WT = W
+
+		if(WT.remove_fuel(1, user))
+			var/obj/item/device/m56d_post/P = new(user.loc)
+			to_chat(user, SPAN_NOTICE("You shape [src] into \a [P]."))
+			qdel(src)
+		return
+	return ..()
+
+
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
 	desc = "The folded, foldable tripod mount for the M56D.  (Place on ground and drag to you to unfold)."
@@ -99,7 +142,6 @@
 	qdel(src)
 
 
-
 //The mount for the weapon.
 /obj/machinery/m56d_post
 	name = "\improper M56D mount"
@@ -110,10 +152,9 @@
 	density = 1
 	layer = ABOVE_MOB_LAYER
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
-	var/gun_mounted = 0 //Has the gun been mounted?
+	var/gun_mounted = FALSE //Has the gun been mounted?
 	var/gun_rounds = 0 //Did the gun come with any ammo?
 	var/health = 100
-
 
 /obj/machinery/m56d_post/proc/update_health(damage)
 	health -= damage
@@ -122,7 +163,14 @@
 			new /obj/item/device/m56d_post (src)
 		qdel(src)
 
-
+/obj/machinery/m56d_post/update_icon()
+	var/icon_name = "M56D"
+	if(gun_mounted)
+		if(!gun_rounds)
+			icon_name += "_e"
+	else
+		icon_name += "_mount"
+	icon_state = icon_name
 
 /obj/machinery/m56d_post/examine(mob/user)
 	..()
@@ -142,7 +190,6 @@
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
 
-
 /obj/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
 	if(!ishuman(usr)) return
 	var/mob/living/carbon/human/user = usr //this is us
@@ -154,8 +201,6 @@
 		var/obj/item/device/m56d_post/P = new(loc)
 		user.put_in_hands(P)
 		qdel(src)
-
-
 
 /obj/machinery/m56d_post/attackby(obj/item/O, mob/user)
 	if(!ishuman(user)) //first make sure theres no funkiness
@@ -180,16 +225,13 @@
 		if(!anchored)
 			to_chat(user, "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>")
 			return
-		to_chat(user, "You begin mounting [MG]..")
+		to_chat(user, "You begin mounting [MG]...")
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] installs [MG] into place."),SPAN_NOTICE("You install [MG] into place."))
 			gun_mounted = 1
 			gun_rounds = MG.rounds
-			if(!gun_rounds)
-				icon_state = "M56D_e"
-			else
-				icon_state = "M56D" // otherwise we're a empty gun on a mount.
+			update_icon()
 			user.temp_drop_inv_item(MG)
 			qdel(MG)
 		return
@@ -198,19 +240,21 @@
 		if(!gun_mounted)
 			to_chat(user, "<span class='warning'>There is no gun mounted.</span>")
 			return
-		to_chat(user, "You begin dismounting [src]'s gun..")
+		to_chat(user, "You begin dismounting [src]'s gun...")
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] removes [src]'s gun."),SPAN_NOTICE("You remove [src]'s gun."))
-			new /obj/item/device/m56d_gun(loc)
-			gun_mounted = 0
+			var/obj/item/device/m56d_gun/G = new(loc)
+			G.rounds = gun_rounds
+			G.update_icon()
+			gun_mounted = FALSE
 			gun_rounds = 0
-			icon_state = "M56D_mount"
+			update_icon()
 		return
 
 	if(istype(O,/obj/item/tool/screwdriver))
 		if(gun_mounted)
-			to_chat(user, "You're securing the M56D into place")
+			to_chat(user, "You're securing the M56D into place...")
 			if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
@@ -218,9 +262,9 @@
 				G.visible_message("\icon[G] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
+				G.update_icon()
 				qdel(src)
 		else
-
 			if(!anchored)
 				var/turf/T = get_turf(src)
 				var/fail = 0
@@ -235,9 +279,9 @@
 					to_chat(user, "<span class='warning'>Can't install [src] here, something is in the way.</span>")
 					return
 			if(anchored)
-				to_chat(user, "You begin unscrewing [src] from the ground..")
+				to_chat(user, "You begin unscrewing [src] from the ground...")
 			else
-				to_chat(user, "You begin screwing [src] into place..")
+				to_chat(user, "You begin screwing [src] into place...")
 			var/old_anchored = anchored
 			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
@@ -249,6 +293,8 @@
 		return
 
 	return ..()
+
+
 
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/machinery/m56d_hmg
@@ -336,13 +382,14 @@
 		if(locked)
 			to_chat(user, "This one cannot be disassembled.")
 		else
-			to_chat(user, "You begin disassembling [src]")
+			to_chat(user, "You begin disassembling [src]...")
 			if(do_after(user,15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
-				new /obj/item/device/m56d_post(src.loc)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
+				HMG.has_mount = TRUE
+				HMG.update_icon()
 				qdel(src) //Now we clean up the constructed gun.
 				return
 
@@ -382,6 +429,21 @@
 	if(health > health_max)
 		health = health_max
 	update_icon()
+
+/obj/machinery/m56d_hmg/ex_act(severity)
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if (prob(5))
+				qdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if (prob(35))
+				qdel(src)
+				return
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			qdel(src)
+			return
+	return
 
 /obj/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/Proj) //Nope.
 	bullet_ping(Proj)

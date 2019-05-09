@@ -87,11 +87,12 @@ mob/living/carbon/human/proc/handle_pain()
 		Amputated, dead, or missing limbs don't cause pain messages.
 		Broken limbs that are also splinted do not cause pain messages either.
 		*/
-		if(E.status & (LIMB_NECROTIZED|LIMB_DESTROYED)) continue
+		if(E.status & (LIMB_NECROTIZED|LIMB_DESTROYED)) 
+			continue
 
 		dam = E.get_damage()
-		if(E.status & LIMB_BROKEN)
-			if(E.status & LIMB_SPLINTED) dam -= E.min_broken_damage //If they have a splinted body part, and it's broken, we want to subtract bone break damage.
+		if(E.status & LIMB_BROKEN & LIMB_SPLINTED)
+			dam -= E.min_broken_damage //If they have a splinted body part, and it's broken, we want to subtract bone break damage.
 		// make the choice of the organ depend on damage,
 		// but also sometimes use one of the less damaged ones
 		if(dam > maxdam && (maxdam == 0 || prob(70)) )
@@ -132,4 +133,5 @@ mob/living/carbon/human/proc/handle_pain()
 			toxMessageProb = 5
 			toxDamageMessage = "Your body aches all over, it's driving you mad!"
 
-	if(toxDamageMessage && prob(toxMessageProb)) custom_pain(toxDamageMessage, toxin_damage >= 35)
+	if(toxDamageMessage && prob(toxMessageProb)) 
+		custom_pain(toxDamageMessage, toxin_damage >= 35)

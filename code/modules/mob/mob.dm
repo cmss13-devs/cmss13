@@ -406,7 +406,7 @@
 
 		attack_log += "\[[time_stamp()]\]<font color='green'> Grabbed [M.name] ([M.ckey]) </font>"
 		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Grabbed by [name] ([ckey]) </font>"
-		msg_admin_attack("[key_name(src)] grabbed [key_name(M)]" )
+		msg_admin_attack("[key_name(src)] grabbed [key_name(M)]")
 
 		if(!no_msg)
 			visible_message("<span class='warning'>[src] has grabbed [M] passively!</span>", null, null, 5)

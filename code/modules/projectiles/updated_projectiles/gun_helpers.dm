@@ -206,7 +206,7 @@ should be alright.
 	if(loc && user)
 		if(isnull(user.s_store) && isturf(loc))
 			var/obj/item/I = user.wear_suit
-			user.equip_to_slot_if_possible(src,WEAR_J_STORE)
+			user.equip_to_slot_if_possible(src, WEAR_J_STORE)
 			if(user.s_store == src) to_chat(user, "<span class='warning'>[src] snaps into place on [I].</span>")
 			user.update_inv_s_store()
 

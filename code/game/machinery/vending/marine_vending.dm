@@ -823,6 +823,7 @@
 					/obj/item/storage/backpack/marine = 10,
 					/obj/item/storage/backpack/marine/satchel = 10,
 					/obj/item/storage/belt/marine = 10,
+					/obj/item/storage/belt/shotgun = 5,
 					/obj/item/clothing/shoes/marine = 20,
 					/obj/item/clothing/under/marine = 20,
 					/obj/item/clothing/suit/storage/marine/padded = 20,

@@ -28,9 +28,10 @@ datum/preferences
 	var/updating_icon = 0
 
 	//game-preferences
-	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change
+	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#b82e00"
-	var/be_special = 0					//Special role selection
+	var/be_special = FALSE				// Special role selection
+	var/ignore_self = FALSE				// Determines whether you will not hurt yourself when clicking yourself
 	var/UI_style = "Midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
@@ -109,7 +110,7 @@ datum/preferences
 	var/job_marines_low = 0
 
 	//Keeps track of preferrence for not getting any wanted jobs
-	var/alternate_option = 1 //Be a marine.
+	var/alternate_option = RETURN_TO_LOBBY //Be a marine.
 
 	var/used_skillpoints = 0
 	var/skill_specialization = null
@@ -408,6 +409,7 @@ datum/preferences
 	dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 	dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 	dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
+	dat += "<b>Toggle Being Able to Hurt Yourself:</b> <a href='?_src_=prefs;preference=ignore_self'><b>[ignore_self ? "Yes" : "No"]</b></a><br>"
 
 	if(config.allow_Metadata)
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
@@ -1319,6 +1321,9 @@ datum/preferences
 
 				if("ghost_hivemind")
 					toggles_chat ^= CHAT_GHOSTHIVEMIND
+
+				if("ignore_self")
+					ignore_self = !ignore_self
 
 				if("save")
 					save_preferences()

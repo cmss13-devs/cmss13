@@ -1,7 +1,7 @@
 #define to_chat(target, message)                            target << (message)
 #define to_world(message)                                   world << (message)
 #define to_world_log(message)                               world.log << (message)
-#define debug_msg(message)                                  world << (message)
+#define debug_msg(message)                                  world << (message) // Difference from to_world is that it is designed to be easily found and deleted
 #define sound_to(target, sound)                             target << (sound)
 #define to_file(file_entry, source_var)                     file_entry << (source_var)
 #define from_file(file_entry, target_var)                   file_entry >> (target_var)
@@ -9,7 +9,7 @@
 #define close_browser(target, browser_name)                 target << browse(null, browser_name)
 #define show_image(target, image)                           target << (image)
 #define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)
-#define open_link(target, url)             target << link(url)
+#define open_link(target, url)                              target << link(url)
 
 #define any2ref(x) "\ref[x]"
 

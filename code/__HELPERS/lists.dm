@@ -36,7 +36,7 @@ proc/listgetindex(var/list/list,index)
 		if(isnum(index))
 			if(InRange(index,1,list.len))
 				return list[index]
-		else if(index in list)
+		else if(list[index])
 			return list[index]
 	return
 

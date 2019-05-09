@@ -325,7 +325,7 @@
 //Be SURE to add any new equipment to this switch, but don't be suprised if it spits out children objects
 	if(part.vars.Find("construction_time") && part.vars.Find("construction_cost"))
 		for(var/resource in part:construction_cost)
-			if(resource in src.resources)
+			if(src.resources[resource])
 				src.resources[resource] -= get_resource_cost_w_coeff(part,resource)
 	else
 		return
@@ -335,7 +335,7 @@
 //Be SURE to add any new equipment to this switch, but don't be suprised if it spits out children objects
 	if(part.vars.Find("construction_time") && part.vars.Find("construction_cost"))
 		for(var/resource in part:construction_cost)
-			if(resource in src.resources)
+			if(src.resources[resource])
 				if(src.resources[resource] < get_resource_cost_w_coeff(part,resource))
 					return 0
 		return 1
@@ -371,7 +371,7 @@
 	return
 
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(set_name)
-	if(set_name in part_sets)
+	if(part_sets[set_name])
 		var/list/part_set = part_sets[set_name]
 		if(islist(part_set))
 			for(var/obj/item/part in part_set)

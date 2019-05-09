@@ -90,7 +90,7 @@
 	if(!signal.data["tag"] || (signal.data["tag"] != id) || (signal.data["sigtype"]!="command"))
 		return 0
 
-	if("power" in signal.data)
+	if(signal.data["power"])
 		on = text2num(signal.data["power"])
 
 	if("power_toggle" in signal.data)
@@ -103,13 +103,13 @@
 			max_pressure_setting
 		)
 
-	if("set_regulate_mode" in signal.data)
+	if(signal.data["set_regulate_mode"])
 		regulate_mode = text2num(signal.data["set_regulate_mode"])
 
-	if("set_flow_rate" in signal.data)
+	if(signal.data["set_flow_rate"])
 		regulate_mode = text2num(signal.data["set_flow_rate"])
 
-	if("status" in signal.data)
+	if(signal.data["status"])
 		spawn(2)
 			broadcast_status()
 		return //do not update_icon

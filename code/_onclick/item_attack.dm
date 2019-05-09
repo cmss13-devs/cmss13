@@ -21,19 +21,35 @@
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	return
+	return FALSE
 
 
 /obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
 	if(flags_item & NOBLUDGEON)
-		return
+		return FALSE
 
 	if (!istype(M)) // not sure if this is the right thing...
-		return 0
+		return FALSE
 
-	if (M.can_be_operated_on())        //Checks if mob is lying down on table for surgery
+	if (M.can_be_operated_on()) //Checks if mob is lying down on table for surgery
 		if (do_surgery(M,user,src))
-			return 0
+			return FALSE
+
+	var/showname = "."
+	if(user)
+		if(M == user)
+			showname = " by themselves."
+		else
+			showname = " by [user]."
+	if(!(user in viewers(M, null)))
+		showname = "."
+
+	if (user.a_intent == "help")
+		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
+		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
+			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
+
+		return FALSE
 
 	/////////////////////////
 	user.lastattacked = M
@@ -55,17 +71,11 @@
 		power = round(power * (1 + 0.3*user.mind.cm_skills.melee_weapons)) //30% bonus per melee level
 
 	if(!ishuman(M))
-		var/showname = "."
-		if(user)
-			showname = " by [user]."
-		if(!(user in viewers(M, null)))
-			showname = "."
-
 		var/used_verb = "attacked"
 		if(attack_verb && attack_verb.len)
 			used_verb = pick(attack_verb)
 		user.visible_message("<span class='danger'>[M] has been [used_verb] with [src][showname].</span>",\
-						"<span class='danger'>You [used_verb] [M] with [src].</span>", null, 5)
+			"<span class='danger'>You [used_verb] [M == user ? "yourself":M] with [src].</span>", null, 5)
 
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
@@ -90,4 +100,4 @@
 		if (hit && hitsound)
 			playsound(loc, hitsound, 25, 1)
 		return hit
-	return 1
+	return TRUE

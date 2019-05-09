@@ -88,7 +88,7 @@ datum/controller/vote
 					if(choices["Continue Playing"] >= greatest_votes)
 						greatest_votes = choices["Continue Playing"]
 				else if(mode == "gamemode")
-					if(master_mode in choices)
+					if(choices[master_mode])
 						choices[master_mode] += non_voters
 						if(choices[master_mode] >= greatest_votes)
 							greatest_votes = choices[master_mode]

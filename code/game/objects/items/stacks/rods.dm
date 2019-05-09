@@ -35,7 +35,6 @@
 			if (!R && replace)
 				user.put_in_hands(new_item)
 		return
-	..()
 
 
 /obj/item/stack/rods/attack_self(mob/user as mob)
@@ -69,3 +68,41 @@
 		F.add_fingerprint(usr)
 		use(4)
 	return
+
+
+
+/obj/item/stack/rods/plasteel
+	name = "plasteel rod"
+	desc = "Some plasteel rods. Can be used for building sturdier structures and objects."
+	singular_name = "plasteel rod"
+	icon_state = "rods_plasteel"
+	flags_atom = FPRINT
+	w_class = 3.0
+	force = 9.0
+	throwforce = 15.0
+	throw_speed = 5
+	throw_range = 20
+	matter = list("plasteel" = 3750)
+	max_amount = 60
+	attack_verb = list("hit", "bludgeoned", "whacked")
+	stack_id = "plasteel rod"
+
+/obj/item/stack/rods/plasteel/attackby(obj/item/W as obj, mob/user as mob)
+	..()
+	if (istype(W, /obj/item/stack/sheet/metal))
+		var/obj/item/stack/sheet/metal/M = W
+
+		if(amount < 5) // Placeholder until we get an elaborate crafting system created
+			to_chat(user, "<span class='danger'>You need at least five plasteel rods to do this.</span>")
+			return
+
+		if(M.amount >= 10 && do_after(user, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			if(!M.use(10))
+				return
+			var/obj/item/device/m56d_post_frame/PF = new(get_turf(user))
+			to_chat(user, SPAN_NOTICE("You create \a [PF]."))
+			qdel(src)
+		else
+			to_chat(user, SPAN_WARNING("You need at least ten metal sheets to do this."))
+		return
+	..()

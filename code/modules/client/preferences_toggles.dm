@@ -161,40 +161,13 @@
 	to_chat(src, "You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
 	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-
-// /client/verb/change_ui()
-// 	set name = "Change UI"
-// 	set category = "Preferences"
-// 	set desc = "Configure your user interface"
-//
-// 	if(!ishuman(usr))
-// 		to_chat(usr, "This only for human")
-// 		return
-//
-// 	var/UI_style_new = input(usr, "Select a style, we recommend White for customization") in list("White", "Midnight", "Orange", "old")
-// 	if(!UI_style_new) return
-//
-// 	var/UI_style_alpha_new = input(usr, "Select a new alpha(transparence) parametr for UI, between 50 and 255") as num
-// 	if(!UI_style_alpha_new|!(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50)) return
-//
-// 	var/UI_style_color_new = input(usr, "Choose your UI color, dark colors are not recommended!") as color|null
-// 	if(!UI_style_color_new) return
-//
-// 	//update UI
-// 	var/list/icons = usr.hud_used.adding + usr.hud_used.other +usr.hud_used.hotkeybuttons
-// 	icons.Add(usr.zone_sel)
-//
-// 	for(var/obj/screen/I in icons)
-// 		if(I.name in list("help", "harm", "disarm", "grab")) continue
-// 		I.icon = ui_style2icon(UI_style_new)
-// 		I.color = UI_style_color_new
-// 		I.alpha = UI_style_alpha_new
-//
-//
-//
-// 	if(alert("Like it? Save changes?",,"Yes", "No") == "Yes")
-// 		prefs.UI_style = UI_style_new
-// 		prefs.UI_style_alpha = UI_style_alpha_new
-// 		prefs.UI_style_color = UI_style_color_new
-// 		prefs.save_preferences()
-// 		to_chat(usr, "UI was saved")
+/client/verb/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
+	set name = "Toggle the Ability to Hurt Yourself"
+	set category = "Preferences"
+	set desc = "Toggles whether clicking on yourself in non-help intent will do anything"
+	prefs.ignore_self = !prefs.ignore_self
+	prefs.save_preferences()
+	if(prefs.ignore_self)
+		to_chat(src, "Clicking on yourself in non-help intent will no longer do anything.")
+	else
+		to_chat(src, "Clicking on yourself in non-help intent can harm you again.")

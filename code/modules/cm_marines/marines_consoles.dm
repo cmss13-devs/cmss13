@@ -7,7 +7,7 @@
 	req_access = list(ACCESS_MARINE_LOGISTICS)
 	circuit = "/obj/item/circuitboard/computer/card"
 	var/obj/item/card/id/scan = null
-	var/obj/item/card/id/modify = null
+	var/obj/item/card/id/ID_to_modify = null
 	var/authenticated = 0.0
 	var/mode = 0.0
 	var/printing = null
@@ -21,17 +21,17 @@
 				usr.drop_held_item()
 				idcard.loc = src
 				scan = idcard
-			else if(!modify)
+			else if(!ID_to_modify)
 				usr.drop_held_item()
 				idcard.loc = src
-				modify = idcard
+				ID_to_modify = idcard
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 		else
-			if(!modify)
+			if(!ID_to_modify)
 				usr.drop_held_item()
 				idcard.loc = src
-				modify = idcard
+				ID_to_modify = idcard
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
@@ -82,16 +82,16 @@
 		var/target_name
 		var/target_owner
 		var/target_rank
-		if(modify)
-			target_name = modify.name
+		if(ID_to_modify)
+			target_name = ID_to_modify.name
 		else
 			target_name = "--------"
-		if(modify && modify.registered_name)
-			target_owner = modify.registered_name
+		if(ID_to_modify && ID_to_modify.registered_name)
+			target_owner = ID_to_modify.registered_name
 		else
 			target_owner = "--------"
-		if(modify && modify.assignment)
-			target_rank = modify.assignment
+		if(ID_to_modify && ID_to_modify.assignment)
+			target_rank = ID_to_modify.assignment
 		else
 			target_rank = "Unassigned"
 
@@ -121,7 +121,7 @@
 
 
 		var/body
-		if (authenticated && modify)
+		if (authenticated && ID_to_modify)
 			var/carddesc = {"<script type="text/javascript">
 								function markRed(){
 									var nameField = document.getElementById('namefield');
@@ -158,15 +158,15 @@
 			carddesc += "<form name='accountnum' action='?src=\ref[src]' method='get'>"
 			carddesc += "<input type='hidden' name='src' value='\ref[src]'>"
 			carddesc += "<input type='hidden' name='choice' value='account'>"
-			carddesc += "<b>Stored account number:</b> <input type='text' id='accountfield' name='account' value='[modify.associated_account_number]' style='width:250px; background-color:white;' onchange='markAccountRed()'>"
+			carddesc += "<b>Stored account number:</b> <input type='text' id='accountfield' name='account' value='[ID_to_modify.associated_account_number]' style='width:250px; background-color:white;' onchange='markAccountRed()'>"
 			carddesc += "<input type='submit' value='Rename' onclick='markAccountGreen()'>"
 			carddesc += "</form>"
 
 			carddesc += "<b>Assignment:</b> "
 			var/jobs = "<span id='alljobsslot'><a href='#' onclick='showAll()'>[target_rank]</a></span><br>" //CHECK THIS
 			var/paygrade = ""
-			if(!(modify.paygrade in PAYGRADES_MARINE))
-				paygrade += "<b>Paygrade:<b> [get_paygrades(modify.paygrade)] -- UNABLE TO MODIFY"
+			if(!(ID_to_modify.paygrade in PAYGRADES_MARINE))
+				paygrade += "<b>Paygrade:<b> [get_paygrades(ID_to_modify.paygrade)] -- UNABLE TO MODIFY"
 			else
 				paygrade += "<form name='paygrade' action='?src=\ref[src]' method='get'>"
 				paygrade += "<input type='hidden' name='src' value='\ref[src]'>"
@@ -174,14 +174,14 @@
 				paygrade += "<b>Paygrade:</b> <select name='paygrade'>"
 				var/i
 				for(i in PAYGRADES_ENLISTED)
-					if(i == modify.paygrade) paygrade += "<option value='[i]' selected=selected>[get_paygrades(i)]</option>"
+					if(i == ID_to_modify.paygrade) paygrade += "<option value='[i]' selected=selected>[get_paygrades(i)]</option>"
 					else paygrade += "<option value='[i]'>[get_paygrades(i)]</option>"
 				if(copytext(scan.paygrade,1,2) == "O")
 					var/r = text2num(copytext(scan.paygrade,2))
 					r = r > 4 ? 4 : r
 					while(--r > 0)
 						i = "O[r]"
-						if(i == modify.paygrade) paygrade += "<option value='[i]' selected=selected>[get_paygrades(i)]</option>"
+						if(i == ID_to_modify.paygrade) paygrade += "<option value='[i]' selected=selected>[get_paygrades(i)]</option>"
 						else paygrade += "<option value='[i]'>[get_paygrades(i)]</option>"
 				paygrade += "</select>"
 				paygrade += "<input type='submit' value='Modify'>"
@@ -190,7 +190,7 @@
 			if(istype(src,/obj/machinery/computer/card/centcom))
 				accesses += "<h5>Central Command:</h5>"
 				for(var/A in get_all_centcom_access())
-					if(A in modify.access)
+					if(A in ID_to_modify.access)
 						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[oldreplacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font></a> "
 					else
 						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=1'>[oldreplacetext(get_centcom_access_desc(A), " ", "&nbsp")]</a> "
@@ -204,7 +204,7 @@
 				for(var/i = 1; i <= 6; i++)
 					accesses += "<td style='width:14%' valign='top'>"
 					for(var/A in get_region_accesses(i))
-						if(A in modify.access)
+						if(A in ID_to_modify.access)
 							accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[oldreplacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
 						else
 							accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=1'>[oldreplacetext(get_access_desc(A), " ", "&nbsp")]</a> "
@@ -226,23 +226,23 @@
 	usr.set_interaction(src)
 	switch(href_list["choice"])
 		if ("modify")
-			if (modify)
-				data_core.manifest_modify(modify.registered_name, modify.assignment)
-				modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
+			if (ID_to_modify)
+				data_core.manifest_modify(ID_to_modify.registered_name, ID_to_modify.assignment)
+				ID_to_modify.name = text("[ID_to_modify.registered_name]'s ID Card ([ID_to_modify.assignment])")
 				if(ishuman(usr))
-					modify.loc = usr.loc
+					ID_to_modify.loc = usr.loc
 					if(!usr.get_active_hand())
-						usr.put_in_hands(modify)
-					modify = null
+						usr.put_in_hands(ID_to_modify)
+					ID_to_modify = null
 				else
-					modify.loc = loc
-					modify = null
+					ID_to_modify.loc = loc
+					ID_to_modify = null
 			else
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card/id))
 					usr.drop_held_item()
 					I.loc = src
-					modify = I
+					ID_to_modify = I
 			authenticated = 0
 		if ("scan")
 			if (scan)
@@ -262,10 +262,10 @@
 					scan = I
 			authenticated = 0
 		if ("auth")
-			if ((!( authenticated ) && (scan || (ishighersilicon(usr))) && (modify || mode)))
+			if ((!( authenticated ) && (scan || (ishighersilicon(usr))) && (ID_to_modify || mode)))
 				if (check_access(scan))
 					authenticated = 1
-			else if ((!( authenticated ) && (ishighersilicon(usr))) && (!modify))
+			else if ((!( authenticated ) && (ishighersilicon(usr))) && (!ID_to_modify))
 				to_chat(usr, "You can't modify an ID without an ID inserted to modify. Once one is in the modify slot on the computer, you can log in.")
 		if ("logout")
 			authenticated = 0
@@ -275,17 +275,17 @@
 					var/access_type = text2num(href_list["access_target"])
 					var/access_allowed = text2num(href_list["allowed"])
 					if(access_type in get_all_marine_access())
-						modify.access -= access_type
+						ID_to_modify.access -= access_type
 						if(access_allowed == 1)
-							modify.access += access_type
+							ID_to_modify.access += access_type
 		if ("assign")
 			if (authenticated)
 				var/t1 = href_list["assign_target"]
 				if(t1 == "Custom")
 					var/temp_t = copytext(sanitize(input("Enter a custom job assignment.","Assignment")),1,MAX_MESSAGE_LEN)
 					//let custom jobs function as an impromptu alt title, mainly for sechuds
-					if(temp_t && modify)
-						modify.assignment = temp_t
+					if(temp_t && ID_to_modify)
+						ID_to_modify.assignment = temp_t
 				else
 					var/datum/job/jobdatum
 					for(var/jobtype in typesof(/datum/job))
@@ -298,36 +298,36 @@
 						to_chat(usr, "<span class='danger'>No log exists for this job.</span>")
 						return
 
-					if(!modify)
+					if(!ID_to_modify)
 						to_chat(usr, "<span class='danger'>No card to modify!</span>")
 						return
 
-					modify.access = jobdatum.get_access()
-					modify.paygrade = jobdatum.get_paygrade()
-					modify.assignment = t1
-					modify.rank = t1
+					ID_to_modify.access = jobdatum.get_access()
+					ID_to_modify.paygrade = jobdatum.get_paygrade()
+					ID_to_modify.assignment = t1
+					ID_to_modify.rank = t1
 		if ("reg")
 			if (authenticated)
-				var/t2 = modify
+				var/t2 = ID_to_modify
 				//var/t1 = input(usr, "What name?", "ID computer", null)  as text
-				if ((authenticated && modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
+				if ((authenticated && ID_to_modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
 					var/temp_name = reject_bad_name(href_list["reg"])
 					if(temp_name)
-						modify.registered_name = temp_name
+						ID_to_modify.registered_name = temp_name
 					else
 						src.visible_message(SPAN_NOTICE("[src] buzzes rudely."))
 		if ("account")
 			if (authenticated)
-				var/t2 = modify
+				var/t2 = ID_to_modify
 				//var/t1 = input(usr, "What name?", "ID computer", null)  as text
-				if ((authenticated && modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
+				if ((authenticated && ID_to_modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
 					var/account_num = text2num(href_list["account"])
-					modify.associated_account_number = account_num
+					ID_to_modify.associated_account_number = account_num
 		if ("paygrade")
 			if(authenticated)
-				var/t2 = modify
-				if ((authenticated && modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
-					modify.paygrade = href_list["paygrade"]
+				var/t2 = ID_to_modify
+				if ((authenticated && ID_to_modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
+					ID_to_modify.paygrade = href_list["paygrade"]
 		if ("mode")
 			mode = text2num(href_list["mode_target"])
 		if ("print")
@@ -351,8 +351,8 @@
 				P.info = t1
 				P.name = "paper- 'Crew Manifest'"
 				printing = null
-	if (modify)
-		modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
+	if (ID_to_modify)
+		ID_to_modify.name = text("[ID_to_modify.registered_name]'s ID Card ([ID_to_modify.assignment])")
 	updateUsrDialog()
 	return
 
@@ -367,19 +367,30 @@
 	desc = "You can use this to change someone's squad."
 	icon_state = "guest"
 	req_access = list(ACCESS_MARINE_LOGISTICS)
-	var/obj/item/card/id/modify = null
+	var/obj/item/card/id/ID_to_modify = null
+	var/mob/living/carbon/human/person_to_modify = null
 	var/screen = 0 //0: main, 1: squad menu
 
-/obj/machinery/computer/squad_changer/attackby(O as obj, user as mob)//TODO:SANITY
-	if(user) add_fingerprint(user)
-	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/idcard = O
-		if(!modify)
-			usr.drop_held_item()
-			idcard.loc = src
-			modify = idcard
-		else
-			to_chat(user, "Remove the inserted card first.")
+/obj/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
+	if(user)
+		add_fingerprint(user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(istype(O, /obj/item/card/id))
+			var/obj/item/card/id/idcard = O
+			if(!ID_to_modify)
+				H.drop_held_item()
+				idcard.loc = src
+				ID_to_modify = idcard
+				to_chat(usr, SPAN_NOTICE("You insert the ID card into [src]"))
+			else
+				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
+		else if(istype(O, /obj/item/grab))
+			var/obj/item/grab/G = O
+			if(ismob(G.grabbed_thing))
+				person_to_modify = G.grabbed_thing
+				H.visible_message(SPAN_NOTICE("You hear a beep as [person_to_modify]'s hand is scanned to \the [name]."))
+				playsound(H.loc, 'sound/machines/ping.ogg', 25, 1)
 	else
 		..()
 
@@ -406,14 +417,14 @@
 
 	var/target_name
 
-	if(modify)
-		target_name = modify.name
+	if(ID_to_modify)
+		target_name = ID_to_modify.name
 	else
 		target_name = "--------"
 
 	dat += "<CENTER>"
 
-	if(!modify)
+	if(!ID_to_modify)
 		dat += "<br><i>Please insert the card into the slot:</i><br>"
 		dat += "Target: <a href='?src=\ref[src];card=1'>[target_name]</a><br>"
 	else
@@ -436,20 +447,28 @@
 	if (get_dist(src, usr) <= 1 && istype(src.loc, /turf))
 		usr.set_interaction(src)
 		if(href_list["card"])
-			if(modify)
-				modify.loc = src.loc
+			if(ID_to_modify)
+				ID_to_modify.loc = src.loc
 				if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-					usr.put_in_hands(modify)
-				modify = null
+					usr.put_in_hands(ID_to_modify)
+				ID_to_modify = null
+				to_chat(usr, SPAN_NOTICE("You remove the ID card from \the [src]"))
 			else
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card/id))
 					usr.drop_held_item()
 					I.loc = src
-					modify = I
+					ID_to_modify = I
+					to_chat(usr, SPAN_NOTICE("You insert the ID card into \the [src]"))
 		else if(href_list["squad"])
 			if(allowed(usr))
-				if(modify && istype(modify))
+				// Second check is to make sure civilians aren't assigned into squads
+				if(
+					istype(ID_to_modify) && istype(person_to_modify) && \
+					person_to_modify.mind.cm_skills.firearms && \
+					person_to_modify.real_name == ID_to_modify.registered_name && \
+					person_to_modify.Adjacent(src)
+				)
 					var/list/squad_list = list()
 					for(var/datum/squad/S in RoleAuthority.squads)
 						if(S.usable)
@@ -458,29 +477,31 @@
 					var/name_sel = input("Which squad would you like to put the person in?") as null|anything in squad_list
 					if(!name_sel)
 						return
+
 					var/datum/squad/selected = get_squad_by_name(name_sel)
+					if(!selected)
+						return
 
 					//First, remove any existing squad access and clear the card.
 					for(var/datum/squad/Q in RoleAuthority.squads)
-						if(findtext(modify.assignment,Q.name)) //Found one!
-							modify.access -= Q.access //Remove any access found.
-							to_chat(usr, "Old squad access removed.")
-
-					modify.assignment = modify.rank //Use the original assignment name.
-					if(selected && selected.usable) //Now we have a proper squad. Change their ID to it.
-						var/card_ass = modify.assignment
-						modify.assignment = "[selected.name] [card_ass]" //Add squad name to assignment. "Alpha Squad Marine"
-						modify.access += selected.access //Add their new squad access (if anything) to their ID.
-						to_chat(usr, "[selected.name] Squad added to card.")
+						if(findtext(ID_to_modify.assignment, Q.name)) //Found one!
+							ID_to_modify.access -= Q.access //Remove any access found.
+							person_to_modify.assigned_squad = null
+					if(selected.put_marine_in_squad(person_to_modify, ID_to_modify))
+						to_chat(usr, SPAN_NOTICE("[person_to_modify] was assigned to [selected] Squad."))
 					else
-						to_chat(usr, "No squad selected.")
-					modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])" //Reset our ID name.
+						to_chat(usr, SPAN_WARNING("There was an error assigning [person_to_modify] to [selected] Squad."))
+				else if(!istype(ID_to_modify))
+					to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
+				else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
+					to_chat(usr, SPAN_WARNING("You need to keep the hand of the person to be assigned to \the [src] Squad."))
+				else if(!person_to_modify.mind.cm_skills.firearms)
+					to_chat(usr, SPAN_WARNING("You cannot assign untrained civilians to squads."))
 				else
-					to_chat(usr, "You need to insert a card to modify.")
+					to_chat(usr, SPAN_WARNING("The ID in the machine is not owned by the person whose hand is scanned."))
 			else
-				to_chat(usr, "You don't have sufficient access to use this console.")
+				to_chat(usr, SPAN_WARNING("You don't have sufficient access to use this console."))
 		src.add_fingerprint(usr)
-	src.attack_hand(usr)
 	return
 
 

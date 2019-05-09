@@ -10,6 +10,7 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = 3
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/weapon/claymore/mercsword
@@ -34,10 +35,6 @@
 	force = 35
 	w_class = 4.0
 
-/obj/item/weapon/claymore/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
-	return ..()
-
 /obj/item/weapon/katana
 	name = "katana"
 	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
@@ -48,6 +45,7 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 	w_class = 3
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 //To do: replace the toys.
@@ -56,10 +54,6 @@
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = 27
 	throwforce = 7
-
-/obj/item/weapon/katana/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
-	return ..()
 
 /obj/item/weapon/combat_knife
 	name = "\improper M5 'Night Raider' survival knife"
@@ -141,8 +135,5 @@
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	icon = 'icons/obj/items/weapons.dmi'
 	icon_state = "unathiknife"
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
-
-/obj/item/weapon/unathiknife/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
-	return ..()

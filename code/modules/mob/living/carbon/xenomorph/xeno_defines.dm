@@ -531,13 +531,13 @@
 
 	if (((tier_2_xenos.len + tier_3_xenos.len) / totalXenos.len * tier_slot_multiplier) > 0.5)
 		if(!isSlotOpen)//plus a check to stop message spam
-			xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
+			xeno_message(SPAN_XENONOTICE("The hive can support more second tier castes!"),2, hivenumber)
 			isSlotOpen = TRUE
 			return
 
 	if ((tier_3_xenos.len / totalXenos.len * tier_slot_multiplier) > 0.25)
 		if(!isSlotOpen)//plus a check to stop message spam
-			xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
+			xeno_message(SPAN_XENONOTICE("The hive can support more third tier castes!"),2, hivenumber)
 			isSlotOpen = TRUE
 			return
 

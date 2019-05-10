@@ -926,8 +926,7 @@
 	if (fortify)
 		to_chat(src, "<span class='xenowarning'>You tuck yourself into a defensive stance.</span>")
 		armor_deflection_buff += 40
-		//caste.xeno_explosion_resistance++ absolutely useless and prone to giving issues for entire caste
-		//come back when this is AT LEAST a multitude of 10
+		armor_explosive_buff += 60
 		if(!spiked)
 			frozen = 1
 			anchored = 1
@@ -956,7 +955,7 @@
 /mob/living/carbon/Xenomorph/proc/fortify_off()
 	to_chat(src, "<span class='xenowarning'>You resume your normal stance.</span>")
 	armor_deflection_buff -= 40
-	//caste.xeno_explosion_resistance-- yeah... useless, and prone to create issues
+	armor_explosive_buff -= 60
 	frozen = 0
 	anchored = 0
 	if(spiked)

@@ -1,0 +1,10 @@
+author: Neth Iafin
+
+delete-after: True
+
+changes: 
+  - bugfix: "Xenos 'Armor safe time' now extends if you receive damage in first 0.2 of a second (that damage still hurts armor)."
+  - tweak: "Increased armor by a small bit for every xeno but crusher that had armor beforehand."
+  - tweak: "Queens and Crushers are now stunnable for a small period by especially strong grenades. AT rockets still stun then for longer period."
+  - tweak: "Flak explosion now has Explosive Armor penetration."
+  - tweak: "Defenders in fortify mode have very strong explosive resistance."

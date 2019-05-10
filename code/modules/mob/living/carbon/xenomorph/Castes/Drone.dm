@@ -20,7 +20,6 @@
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
 	can_denest_hosts = 1
-	xeno_explosion_resistance = 20
 	acid_level = 1
 	weed_level = 1
 

@@ -132,8 +132,9 @@
 		var/damage = P.damage/damage_div
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/XNO = M
-			damage = armor_damage_reduction(config.xeno_explosive, damage, XNO.caste.xeno_explosion_resistance, 0, 0, 0.5, XNO.armor_integrity)
-			var/armor_punch = armor_break_calculation(config.xeno_explosive, damage, XNO.caste.xeno_explosion_resistance, 0, 0, 0.5, XNO.armor_integrity)
+			var/total_explosive_resistance = XNO.caste.xeno_explosion_resistance + XNO.armor_explosive_buff
+			damage = armor_damage_reduction(config.xeno_explosive, damage, total_explosive_resistance , 60, 0, 0.5, XNO.armor_integrity)
+			var/armor_punch = armor_break_calculation(config.xeno_explosive, damage, total_explosive_resistance, 60, 0, 0.5, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)
 		
 		M.apply_damage(damage,damage_type)

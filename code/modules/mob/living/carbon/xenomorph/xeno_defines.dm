@@ -2,9 +2,9 @@
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total PLASMA.
 #define XENO_UNIVERSAL_DAMAGEMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total PLASMA.
 #define XENO_NO_ARMOR 0
-#define XENO_LOW_ARMOR 10 // +21% health
-#define XENO_MEDIUM_ARMOR 20 // +46% health
-#define XENO_HEAVY_ARMOR 30 // +77% health
+#define XENO_LOW_ARMOR 15 // +21% health
+#define XENO_MEDIUM_ARMOR 25 // +46% health
+#define XENO_HEAVY_ARMOR 35 // +77% health
 #define XENO_ULTRA_ARMOR 40 // +114% health
 
 #define XENO_NO_EXPLOSIVE_ARMOR 0
@@ -185,7 +185,7 @@
 	var/eggs_max = 0
 	var/egg_cooldown = 30
 
-	var/xeno_explosion_resistance = 0 //0 to 3. how explosions affects the xeno, can it stun it, etc...
+	var/xeno_explosion_resistance = 0 //Armor but for explosions
 
 	//Queen vars
 	var/can_hold_facehuggers = 0

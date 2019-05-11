@@ -385,7 +385,7 @@
 
 
 /obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
-	if( istype(P.shot_from, /obj/item/hardpoint) ) //anything shot from a tank gets a bonus to bypassing cover
+	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
 
 	if(distance < 1)
@@ -466,7 +466,7 @@
 
 	//At this point, all that's left is window frames, tables, and barricades
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_IGNORE_COVER && get_turf(src) != P.target_turf)
+	if(ammo_flags & AMMO_IGNORE_COVER && src != P.original)
 		return FALSE
 
 	var/distance = P.distance_travelled
@@ -476,7 +476,7 @@
 			if(ammo_flags & AMMO_STOPPED_BY_COVER)
 				return TRUE
 			distance-- //no bias towards "inner" side
-		else if( !(P.dir & dir) )
+		else if(!(P.dir & dir))
 			return FALSE //no effect if bullet direction is perpendicular to barricade
 
 	else
@@ -821,7 +821,7 @@
 			if(ammo_flags & AMMO_ENERGY)
 				damage = round(damage * 7)
 			else if(ammo_flags & AMMO_ANTISTRUCT) // Railgun does extra damage to turfs
-				damage = round(damage * 2.5)
+				damage = round(damage * ANTISTRUCT_DMG_MULT_WALL)
 		else 
 			return
 	if(ammo_flags & AMMO_BALLISTIC) 

@@ -474,7 +474,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	if(ammo_flags & AMMO_ANTISTRUCT)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
-		damage = round(damage * 1.5)
+		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_XENO_ACID) 
 		dam_type = "acid"
 

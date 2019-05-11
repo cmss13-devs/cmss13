@@ -91,6 +91,8 @@
 	var/gun_skill_category //used to know which job knowledge this gun is linked to
 
 	var/base_gun_icon //the default gun icon_state. change to reskin the gun
+	var/has_empty_icon = TRUE // whether gun has icon state of (base_gun_icon)_e
+	var/has_open_icon = FALSE // whether gun has icon state of (base_gun_icon)_o
 
 
 //----------------------------------------------------------
@@ -195,10 +197,15 @@
 	else
 		overlays = list()
 	
-	if(!current_mag || current_mag.current_rounds <= 0)
-		icon_state = base_gun_icon + "_e"
-	else
-		icon_state = base_gun_icon
+	var/new_icon_state = base_gun_icon
+
+	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+		new_icon_state += "_e"
+
+	if(has_open_icon && !current_mag.chamber_closed)
+		new_icon_state += "_o"
+
+	icon_state = new_icon_state
 	update_mag_overlay()
 	update_attachables()
 

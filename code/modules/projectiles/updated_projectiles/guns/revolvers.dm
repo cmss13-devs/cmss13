@@ -21,6 +21,8 @@
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
 	gun_skill_category = GUN_SKILL_PISTOLS
 	movement_acc_penalty_mult = 3
+	has_empty_icon = FALSE
+	has_open_icon = TRUE
 
 /obj/item/weapon/gun/revolver/New()
 	..() //Do all that other stuff.
@@ -41,13 +43,6 @@
 	..()
 	var/message = "[current_mag.chamber_closed? "It's closed.": "It's open with [current_mag.current_rounds] round\s loaded."]"
 	to_chat(user, message)
-
-/obj/item/weapon/gun/revolver/update_icon() //Special snowflake update icon.
-	..()
-	if(current_mag.chamber_closed)
-		icon_state = base_gun_icon
-	else
-		icon_state = base_gun_icon + "_o"
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	current_mag.chamber_position = current_mag.chamber_position == 1 ? current_mag.max_rounds : current_mag.chamber_position - 1

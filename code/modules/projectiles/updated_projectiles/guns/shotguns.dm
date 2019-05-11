@@ -21,6 +21,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	aim_slowdown = SLOWDOWN_ADS_SHOTGUN
 	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky afterall
 	gun_skill_category = GUN_SKILL_SHOTGUNS
+	has_empty_icon = FALSE
+	has_open_icon = FALSE
 
 /obj/item/weapon/gun/shotgun/New()
 	..()
@@ -36,10 +38,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.low_recoil_value
 	recoil_unwielded = config.high_recoil_value
-
-/obj/item/weapon/gun/shotgun/update_icon() //Shotguns do not currently have empty states, as they look exactly the same. Other than double barrel.
-	..()
-	return
 
 /obj/item/weapon/gun/shotgun/proc/replace_tube(number_to_replace)
 	current_mag.chamber_contents = list()
@@ -270,6 +268,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
 	burst_amount = 2
 	burst_delay = 0 //So doubleshotty can doubleshot
+	has_open_icon = TRUE
 
 /obj/item/weapon/gun/shotgun/double/New()
 	..()
@@ -293,14 +292,6 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
 	empty_chamber(user)
-
-//Turns out it has some attachments.
-/obj/item/weapon/gun/shotgun/double/update_icon()
-	..()
-	if(current_mag.chamber_closed)
-		icon_state = base_gun_icon
-	else
-		icon_state = base_gun_icon + "_o"
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(current_mag.chamber_closed) return

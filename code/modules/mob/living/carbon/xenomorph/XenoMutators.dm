@@ -86,10 +86,13 @@
 	
 	var/datum/new_ammo = /datum/ammo/xeno/railgun_glob
 	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
+	if(B.is_zoomed)
+		B.zoom_out()
 	B.bombard_speed = 15 + round(MS.bombard_cooldown * 0.5)
 	MS.bombard_cooldown = 0
 	MS.min_bombard_dist = 0
-	B.bomb_delay = 125
+	B.bomb_delay = 5 SECONDS
+	B.remove_action("Toggle Bombard Type")
 	B.ammo = ammo_list[new_ammo]
 	B.railgun = TRUE
 	B.tileoffset = 9

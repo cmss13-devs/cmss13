@@ -369,12 +369,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/snow/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/2) ) //Not that durable.
-
+	
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+		take_damage(50)
 
-	return 1
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+
+	take_damage(round(P.damage/2)) //Not that durable.
+
+	return TRUE
 
 /*----------------------*/
 // WOOD
@@ -424,12 +428,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/wooden/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/2) ) //Not that durable.
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	return 1
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+
+	take_damage(round(P.damage/2)) //Not that durable.
+
+	return TRUE
 
 /*----------------------*/
 // METAL
@@ -578,12 +586,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/metal/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior * AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/2)) //Not that durable.
+
+	return TRUE
 
 /*----------------------*/
 // DEPLOYABLE
@@ -671,12 +683,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/10))
+
+	return TRUE
 
 //CADE IN HANDS
 /obj/item/folding_barricade
@@ -959,12 +975,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/10))
+
+	return TRUE
 
 /*----------------------*/
 // SANDBAGS
@@ -1039,12 +1059,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/sandbags/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/10))
+
+	return TRUE
 
 /obj/structure/barricade/sandbags/wired/New()
 	maxhealth += 50

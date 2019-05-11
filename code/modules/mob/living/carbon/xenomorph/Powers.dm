@@ -1118,6 +1118,22 @@
 			var/datum/action/act = X
 			act.update_button_icon()
 
+/mob/living/carbon/Xenomorph/proc/rename_tunnel(var/obj/structure/tunnel/T in oview(1))
+	set name = "Rename Tunnel"
+	set desc = "Rename the tunnel."
+	set category = null
+
+	if(!istype(T))
+		return
+
+	var/new_name = copytext(sanitize(input("Change the description of the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
+	if(new_name)
+		new_name = "[new_name] ([get_area_name(T)])"
+		log_admin("[key_name(src)] has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")
+		msg_admin_niche("[src]/([key_name(src)]) has renamed the tunnel \"[T.tunnel_desc]\" as \"[new_name]\".")
+		T.tunnel_desc = "[new_name]"
+	return
+
 /mob/living/carbon/Xenomorph/proc/tremor() //More support focused version of crusher earthquakes.
 	if(burrow)
 		to_chat(src, SPAN_NOTICE("You must be above ground to do this."))

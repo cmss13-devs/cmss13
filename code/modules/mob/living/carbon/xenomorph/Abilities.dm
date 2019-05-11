@@ -832,7 +832,10 @@
 		X.tunnel_delay = 0
 	var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
 	if(msg)
-		X.start_dig.tunnel_desc = msg
+		msg = "[msg] ([get_area_name(X.start_dig)])"
+		log_admin("[key_name(X)] has named a new tunnel \"[msg]\".")
+		msg_admin_niche("[X]/([key_name(X)]) has named a new tunnel \"[msg]\".")
+		X.start_dig.tunnel_desc = "[msg]"
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)

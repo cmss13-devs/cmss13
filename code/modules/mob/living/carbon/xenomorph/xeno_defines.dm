@@ -209,7 +209,7 @@
 	var/crest_defense_cooldown = 150
 	var/fortify_cooldown = 200
 
-	var/innate_healing = FALSE //whether the xeno slowly heals even outside weeds.
+	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
 
 	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
 	var/acid_level = 0

@@ -21,6 +21,8 @@
 	spawn(1)
 		new	/obj/item/clothing/suit/storage/marine/M3T(src)
 		new /obj/item/clothing/head/helmet/marine(src)
+		new /obj/item/storage/backpack/marine/rocketpack(src)
+		new /obj/item/storage/backpack/marine/rocketpack(src)
 		new /obj/item/weapon/gun/launcher/rocket(src)
 		new /obj/item/ammo_magazine/rocket(src)
 		new /obj/item/ammo_magazine/rocket(src)

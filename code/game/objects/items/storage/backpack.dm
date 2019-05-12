@@ -295,6 +295,12 @@
 	icon_state = "smock"
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/marine/rocketpack
+	name = "\improper M22 rocket bags"
+	desc = "Specially designed bags made to hold rockets."
+	icon_state = "rocketpack"
+	worn_accessible = TRUE
+
 #define SCOUT_CLOAK_COOLDOWN 100
 #define SCOUT_CLOAK_TIMER 50
 // Scout Cloak

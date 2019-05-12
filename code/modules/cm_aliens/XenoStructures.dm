@@ -476,7 +476,7 @@
 			new /obj/effect/alien/weeds(loc)
 
 		for(var/turf/closed/wall/W in orange(1))
-			W.update_connections(1)
+			W.update_connections()
 			W.update_icon()
 	..()
 

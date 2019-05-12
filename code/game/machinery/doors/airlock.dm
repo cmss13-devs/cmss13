@@ -149,7 +149,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 /obj/machinery/door/airlock/proc/take_damage(dam)
 	if(!dam || unacidable)
 		return
-	
+
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
@@ -179,7 +179,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 /obj/machinery/door/airlock/ex_act(severity)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK
 	take_damage(exp_damage)
-	
+
 /obj/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
 	bullet_ping(Proj)
 	if(Proj.ammo.damage)
@@ -1192,10 +1192,9 @@ About the new airlock wires panel:
 					src.closeOther = A
 					break
 	// fix smoothing
-	spawn(10)
-		for(var/turf/closed/wall/W in orange(1))
-			W.update_connections(1)
-			W.update_icon()
+	for(var/turf/closed/wall/W in orange(1))
+		W.update_connections()
+		W.update_icon()
 
 /obj/machinery/door/airlock/proc/randomize_wires()
 	var/wire_assignments = CreateRandomAirlockWires()

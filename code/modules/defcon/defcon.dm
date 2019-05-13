@@ -17,10 +17,11 @@ var/global/datum/defcon/defcon_controller
 	var/last_objectives_scored_points = 0
 	var/last_objectives_total_points = 0
 	var/last_objectives_completion_percentage = 0
+	var/lists_initialized = 0
 
 	//Percentage of objectives needed to reach the next DEFCON level
 	//(ordered by DEFCON number, so things will be going in the opposite order!)
-	var/list/defcon_level_triggers = list(0.5, 0.3, 0.2, 0.1, 0.0)
+	var/list/defcon_level_triggers
 
 	var/list/purchased_rewards = list()
 
@@ -37,7 +38,6 @@ var/global/datum/defcon/defcon_controller
 
 /datum/defcon/proc/check_defcon_level()
 	var/list/objectives_status = objectives_controller.get_objective_completion_stats()
-
 	last_objectives_scored_points = objectives_status["scored_points"]
 	last_objectives_total_points = objectives_status["total_points"]
 	last_objectives_completion_percentage = last_objectives_scored_points / last_objectives_total_points
@@ -72,7 +72,6 @@ var/global/datum/defcon/defcon_controller
 		to_chat(usr, "Asset granting failed!")
 	return
 
-
 //Lists rewards available for purchase
 /datum/defcon/proc/available_rewards()
 	var/list/can_purchase = list()
@@ -94,6 +93,33 @@ var/global/datum/defcon/defcon_controller
 		if(dr.name in purchased_rewards)
 			return FALSE //unique reward already purchased
 	return TRUE
+
+/datum/defcon/proc/initialize_level_triggers_by_map()
+	// Sometimes map_tag won't be populated 
+	if (!map_tag)
+		return FALSE 
+	
+	// Leaving debug messages here in case this code has bugs. 
+	// Without these, it is -literally- impossible to debug this 
+	// as this code can sometimes execute before world initialization.
+	//text2file("DEFCON lists began initialization","data/defcon_log.txt")
+	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
+	if (map_tag == MAP_BIG_RED || map_tag == MAP_PRISON_STATION)
+		// 0%, 10%, 20%, 30%, and 45%
+		defcon_level_triggers = list(0.45, 0.30, 0.2, 0.1, 0.0)
+	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM)
+		// 0%, 7.5%, 15%, 25%, and 40%
+		defcon_level_triggers = list(0.40, 0.25, 0.15, 0.075, 0.0)
+	else 
+		// Defaults 
+		// Currently just LV 
+		// 0%, 10%, 20%, 30%, and 50%
+		defcon_level_triggers = list(0.5, 0.3, 0.2, 0.1, 0.0)
+	//text2file("Listing level triggers:","data/defcon_log.txt")
+	for (var/i in defcon_level_triggers)
+		//text2file("Defcon level trigger: [i]","data/defcon_log.txt")
+	lists_initialized = 1
+	return TRUE 
 
 //A class for rewarding the next DEFCON level being reached
 /datum/defcon_reward

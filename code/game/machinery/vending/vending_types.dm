@@ -306,21 +306,13 @@
 	contraband = list(/obj/item/reagent_container/syringe/antitoxin = 2,
 						/obj/item/reagent_container/syringe/antiviral = 2)
 
-/obj/machinery/vending/wallmed2
-	name = "NanoMed"
-	desc = "Wall-mounted Medical Equipment dispenser."
-	icon_state = "wallmed"
-	icon_deny = "wallmed-deny"
-	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	wrenchable = FALSE
-	products = list(/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless = 1,
-					/obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless = 1,
-					/obj/item/reagent_container/syringe/antitoxin = 3,
-					/obj/item/stack/medical/bruise_pack = 3,
-					/obj/item/stack/medical/ointment =3,
-					/obj/item/device/healthanalyzer = 3,
-					/obj/item/stack/medical/splint = 1)
-	contraband = list(/obj/item/reagent_container/pill/tox = 3)
+/obj/machinery/vending/wallmed1/MouseDrop(over_object, src_location, over_location)
+	..()
+	if(over_object == usr && Adjacent(usr) && !usr.is_mob_incapacitated())
+		if(!ishuman(usr))	return
+		var/mob/living/carbon/human/H = usr
+		H.health_scan(H, TRUE)
+		src.add_fingerprint(H)
 
 /obj/machinery/vending/security
 	name = "SecTech"
@@ -419,9 +411,9 @@
 					/obj/item/tool/wrench = 20,
 					/obj/item/clothing/tie/storage/brown_vest = 20,
 					/obj/item/clothing/gloves/yellow = 20,
-					/obj/item/storage/belt/utility/full = 20)	
+					/obj/item/storage/belt/utility/full = 20)
 	contraband = list(/obj/item/tool/weldingtool/hugetank = 10)
-	
+
 /obj/machinery/vending/engivend
 	name = "Engi-Vend"
 	desc = "Spare tool vending. What? Did you expect some witty description?"

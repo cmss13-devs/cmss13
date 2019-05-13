@@ -299,7 +299,7 @@
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
-	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<br><span class='notice'> !!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
 	anchored = 1
@@ -326,25 +326,32 @@
 	var/icon_full = "M56D" // Put this system in for other MGs or just other mounted weapons in general, future proofing.
 	var/icon_empty = "M56D_e" //Empty
 	var/zoom = 0 // 0 is it doesn't zoom, 1 is that it zooms.
+	var/damage_state = M56D_DMG_NONE
 
-	New()
-		ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
-		burst_scatter_mult = config.lmed_scatter_value
-		update_icon()
+/obj/machinery/m56d_hmg/New()
+	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
+	burst_scatter_mult = config.lmed_scatter_value
+	update_icon()
 
-	Dispose() //Make sure we pick up our trash.
-		if(operator)
-			operator.unset_interaction()
-		SetLuminosity(0)
-		processing_objects.Remove(src)
-		. = ..()
+/obj/machinery/m56d_hmg/Dispose() //Make sure we pick up our trash.
+	if(operator)
+		operator.unset_interaction()
+	SetLuminosity(0)
+	processing_objects.Remove(src)
+	. = ..()
 
 /obj/machinery/m56d_hmg/examine(mob/user) //Let us see how much ammo we got in this thing.
 	..()
-	if(rounds)
-		to_chat(user, "It has [rounds] round\s out of [rounds_max].")
-	else
-		to_chat(user, "It seems to be lacking ammo")
+	if(ishuman(user))
+		if(rounds)
+			to_chat(user, SPAN_NOTICE("It has [rounds] round\s out of [rounds_max]."))
+		else
+			to_chat(user, SPAN_WARNING("It seems to be lacking ammo."))
+		switch(damage_state)
+			if(M56D_DMG_NONE) to_chat(user, "<span class='info'>It looks goods like its in good shape.</span>")
+			if(M56D_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It has sustained some damage, but still fires very steadily."))
+			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
+			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
 
 /obj/machinery/m56d_hmg/update_icon() //Lets generate the icon based on how much ammo it has.
 	if(!rounds)
@@ -378,7 +385,7 @@
 					dir = NORTH
 		return
 
-	if(istype(O, /obj/item/tool/screwdriver)) // Lets take it apart.
+	if(isscrewdriver(O)) // Lets take it apart.
 		if(locked)
 			to_chat(user, "This one cannot be disassembled.")
 		else
@@ -412,10 +419,33 @@
 		user.temp_drop_inv_item(O)
 		qdel(O)
 		return
+
+	if(iswelder(O))
+		if(user.action_busy)
+			return
+		
+		var/obj/item/tool/weldingtool/WT = O
+
+		if(health == health_max)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+			return
+
+		if(WT.remove_fuel(0, user))
+			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."), \
+				SPAN_NOTICE("You begin repairing the damage to [src]."))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			if(do_after(user, SECONDS_5, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
+					SPAN_NOTICE("You repair [src]."))
+				update_health(-round(health_max*0.2))
+				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+		else
+			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
+		return
 	return ..()
 
-/obj/machinery/m56d_hmg/proc/update_health(damage) //Negative damage restores health.
-	health -= damage
+/obj/machinery/m56d_hmg/proc/update_health(amount) //Negative values restores health.
+	health -= amount
 	if(health <= 0)
 		var/destroyed = rand(0,1) //Ammo cooks off or something. Who knows.
 		playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -428,27 +458,25 @@
 
 	if(health > health_max)
 		health = health_max
+	update_damage_state()
 	update_icon()
 
 /obj/machinery/m56d_hmg/ex_act(severity)
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if (prob(5))
-				qdel(src)
-				return
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if (prob(35))
-				qdel(src)
-				return
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
-			return
+	update_health(severity)
 	return
 
-/obj/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/Proj) //Nope.
-	bullet_ping(Proj)
-	visible_message("<span class='warning'>[src] is hit by the [Proj.name]!</span>")
-	update_health(round(Proj.damage / 10)) //Universal low damage to what amounts to a post with a gun.
+/obj/machinery/m56d_hmg/proc/update_damage_state()
+	var/health_percent = round(health/health_max * 100)
+	switch(health_percent)
+		if(0 to 25) damage_state = M56D_DMG_HEAVY
+		if(25 to 50) damage_state = M56D_DMG_MODERATE
+		if(50 to 75) damage_state = M56D_DMG_SLIGHT
+		if(75 to INFINITY) damage_state = M56D_DMG_NONE
+
+/obj/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/P) //Nope.
+	bullet_ping(P)
+	visible_message("<span class='warning'>[src] is hit by the [P.name]!</span>")
+	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
 /obj/machinery/m56d_hmg/attack_alien(mob/living/carbon/Xenomorph/M) // Those Ayy lmaos.
@@ -627,7 +655,6 @@
 				to_chat(user, SPAN_NOTICE("You man the gun!"))
 				user.set_interaction(src)
 
-
 /obj/machinery/m56d_hmg/on_set_interaction(mob/user)
 	flags_atom |= RELAY_CLICK
 	user.reset_view(src)
@@ -673,6 +700,15 @@
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		return 1
 	return ..()
+
+/obj/machinery/m56d_hmg/Bumped(atom/A)
+	..()
+
+	if(istype(A, /mob/living/carbon/Xenomorph/Crusher))
+		var/mob/living/carbon/Xenomorph/Crusher/C = A
+
+		update_health(C.charge_speed * 400)
+
 
 /obj/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"

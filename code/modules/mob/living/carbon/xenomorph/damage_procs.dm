@@ -134,7 +134,7 @@
 		var/distance = 0 //Distance, decreases splash chance.
 		var/i = 0 //Tally up our victims.
 
-		for(var/mob/living/carbon/human/victim in range(radius,src)) //Loop through all nearby victims, including the tile.
+		for(var/mob/living/carbon/human/victim in orange(radius,src)) //Loop through all nearby victims, including the tile.
 			distance = get_dist(src,victim)
 
 			splash_chance = 80 - (i * 5)

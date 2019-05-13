@@ -14,7 +14,7 @@
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDHIGH)
-	
+
 	tackle_chance = 15
 	evolution_allowed = FALSE
 	deevolves_to = "Warrior"
@@ -171,7 +171,6 @@
 		to_chat(H, "<span class='warning'>You are knocked down by the violent earthquake beneath your feet!</span>")
 		H.KnockDown(3)
 
-
 //The atom collided with is passed to this proc, all types of collisions are dealt with here.
 //The atom does not tell the Crusher how to handle a collision, the Crusher is an independant
 //Xeno who don't need no atom. ~Bmc777
@@ -194,7 +193,7 @@
 			stop_momentum(charge_dir)
 			r_FAL
 
-	if(istype(target, /obj/vehicle/multitile/hitbox))
+	else if(istype(target, /obj/vehicle/multitile/hitbox))
 		var/obj/vehicle/multitile/hitbox/H = target
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
 			visible_message("<span class='danger'>[src] rams into [H.root] and skids to a halt!</span>",
@@ -202,6 +201,20 @@
 			flags_pass = 0
 			update_icons()
 			H.root.Bumped(src)
+			stop_momentum(charge_dir)
+			r_TRU
+		else
+			stop_momentum(charge_dir)
+			r_FAL
+
+	else if(istype(target, /obj/machinery/m56d_hmg))
+		var/obj/machinery/m56d_hmg/HMG = target
+		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
+			visible_message(SPAN_DANGER("[src] rams [HMG]!"),
+				SPAN_XENODANGER("You ram [HMG]!"))
+			playsound(loc, "punch", 25, 1)
+			update_icons()
+			HMG.Bumped()
 			stop_momentum(charge_dir)
 			r_TRU
 		else

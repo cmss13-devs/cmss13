@@ -148,9 +148,14 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.spec_weapons == SKILL_SPEC_SCOUT)
-			to_chat(user, "<span class='warning'>Scout specialists can't use shotguns...</span>")
-			return 0
+		var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = user.back
+		if(istype(SC))
+			if(SC.camo_active)
+				to_chat(user, SPAN_WARNING("You cannot fire [src] while cloaked!"))
+				return FALSE
+			else if(!SC.camo_ready && (world.time - SC.camo_cooldown_start_time) < SECONDS_2)
+				return FALSE
+			
 
 
 //-------------------------------------------------------

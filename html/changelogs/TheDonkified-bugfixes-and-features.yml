@@ -1,0 +1,48 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TheDonkified
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscdel: "Removed scout specs' inability to use shotgun."
+  - tweak: "Scout specs cannot use shotgun while cloaked and have a ~2 second fire delay before they can shoot shotguns AFTER uncloaking."
+  - tweak: "People with the ability to build metal cades can repair plasteel cades now."
+  - rscadd: "Squad engis+ can wrench and then crowbar deployable cades to collapse them. This is faster than the normal method for collapsing."
+  - rscadd: "Xeno Stat tab shows plasma count."
+  - bugfix: "Sentries should no longer have issues shooting at targets. If issues persist, PM me on Discord and create a Gitlab."
+  - bugfix: "Sentries don't try to shoot past emergency shutters now."
+  - rscadd: "Can drag nanomed to yourself for an instant health scan."
+  - bugfix: "Should no longer receive acid splash damage when devoured."
+  - rscadd: "Added mini extinguisher and large gen pouch to medic prep vendors."
+  - bugfix: "Crusher charge should deal damage to M56Ds now."
+  - rscadd: "You can repair M56Ds using a welder as squad engineer+ now. Examining the M56D will tell you its damage state (similar to barricades)."
+  - rscadd: "Sentries can shoot at downed targets now. However they prioritize standing ones so you can still save people who have been knocked down by a sentry. If you get solo'd by a sentry though, your fault."

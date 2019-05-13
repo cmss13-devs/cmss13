@@ -53,7 +53,7 @@
 		var/obj/structure/barricade/deployable/cade = A
 		visible_message("<span class='danger'>[src] crushes [cade]!</span>")
 		playsound(cade, 'sound/effects/metal_crash.ogg', 35)
-		cade.fold()
+		cade.collapse()
 	else if(isobj(A) && !istype(A, /obj/vehicle))
 		var/obj/O = A
 		if(O.unacidable)

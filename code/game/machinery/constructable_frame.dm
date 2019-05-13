@@ -54,7 +54,7 @@
 						state = 2
 						icon_state = "box_1"
 			else if(iswrench(P))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -88,7 +88,7 @@
 					user << desc
 
 			else if(istype(P, /obj/item/tool/wirecutters))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -100,7 +100,7 @@
 
 		if(3)
 			if(istype(P, /obj/item/tool/crowbar))
-				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)

@@ -731,7 +731,7 @@
 
 /obj/machinery/mecha_part_fabricator/attackby(obj/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/screwdriver))
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
 		if (!opened)
@@ -745,7 +745,7 @@
 		return
 	if (opened)
 		if(istype(W, /obj/item/tool/crowbar))
-			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_ENGINEER_ENGI)
+			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 				to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 				return
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)

@@ -69,8 +69,8 @@
 
 // engineer skill
 #define SKILL_ENGINEER_DEFAULT	0
-#define SKILL_ENGINEER_METAL 	1	//metal barricade repair && c4 use
-#define SKILL_ENGINEER_PLASTEEL 2	//plasteel barricade repair
+#define SKILL_ENGINEER_METAL 	1	//barricade repair && c4 use
+#define SKILL_ENGINEER_PLASTEEL 2	//plasteel barricade deconstruction
 #define SKILL_ENGINEER_ENGI 	3	//hacking&&planet engine fixing&&apc building (combat engi)
 #define SKILL_ENGINEER_MT 		4	//Telecomms fixing, faster engine fixing (MT)
 //higher levels give faster Almayer engine repair.

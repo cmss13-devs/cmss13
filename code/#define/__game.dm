@@ -214,6 +214,12 @@ var/static/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons
 
 #define WEAPON_GUARANTEED_DELAY 0.1
 
+// Defines for M56D states
+#define M56D_DMG_NONE 0
+#define M56D_DMG_SLIGHT 1
+#define M56D_DMG_MODERATE 2
+#define M56D_DMG_HEAVY 3
+
 // Defines for barricade states
 #define BARRICADE_DMG_NONE 0
 #define BARRICADE_DMG_SLIGHT 1

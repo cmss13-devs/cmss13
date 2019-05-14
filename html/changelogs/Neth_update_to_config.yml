@@ -1,0 +1,7 @@
+author: Neth Iafin
+
+delete-after: True
+
+changes:
+  - tweak: "Crushers and Queens with charge now gain less armor when charging. This armor is only given to the front plate. Crusher no longer gain resistance at the sides."
+  - tweak: "Removed the critical miss chance that for some reason was still in the code outside of everything."

@@ -287,7 +287,7 @@ United States Colonial Marines
 
 /datum/skills/intel
 	name = "Intelligence Officer"
-	construction = SKILL_ENGINEER_ENGI
+	engineer = SKILL_ENGINEER_ENGI
 	leadership = SKILL_LEAD_TRAINED
 	cqc = SKILL_CQC_TRAINED
 	melee_weapons = SKILL_MELEE_TRAINED

@@ -245,7 +245,8 @@
 
 /obj/machinery/vending/marine/cargo_guns/squad
 	name = "\improper ColMarTech automated armaments squad vendor"
-	req_access = list(ACCESS_MARINE_LEADER)
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LEADER,ACCESS_MARINE_SPECPREP)
 
 /obj/machinery/vending/marine/cargo_guns/squad/populate_product_list(var/scale)
 	product_records = list()
@@ -414,7 +415,8 @@
 
 /obj/machinery/vending/marine/cargo_ammo/squad
 	name = "\improper ColMarTech automated munition squad vendor"
-	req_access = list(ACCESS_MARINE_LEADER)
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LEADER,ACCESS_MARINE_SPECPREP)
 
 /obj/machinery/vending/marine/cargo_ammo/squad/populate_product_list(var/scale)
 	product_records = list()
@@ -790,8 +792,9 @@
 /obj/machinery/vending/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
 	desc = "An attachment vendor made specifically for squads. Can be opened by Squad Leaders."
-	req_access = list(ACCESS_MARINE_LEADER)
-	var/vend_dir = SOUTH
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LEADER,ACCESS_MARINE_SPECPREP)
+	var/vend_dir = NORTH
 
 	products = list()
 
@@ -799,10 +802,10 @@
 	set waitfor = 0
 	if(delay_vending)
 		use_power(vend_power_usage)	//actuators and stuff
-		if(icon_vend) 
+		if(icon_vend)
 			flick(icon_vend,src) //Show the vending animation if needed
 		sleep(delay_vending)
-	if(ispath(R.product_path,/obj/item/weapon/gun)) 
+	if(ispath(R.product_path,/obj/item/weapon/gun))
 		. = new R.product_path(get_turf(get_step(src, vend_dir)),1)
 	else . = new R.product_path(get_turf(get_step(src, vend_dir)))
 

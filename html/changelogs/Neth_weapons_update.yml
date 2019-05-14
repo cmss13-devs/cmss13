@@ -1,0 +1,11 @@
+author: Neth Iafin
+
+delete-after: True
+
+changes: 
+  - tweak: "Reduced M41's and M39's AP ammo penetration. This only has effect on Crushers and Defenders... and marine FF. Maybe it will have a bit more issue with Praetorian and Queen, but that's fine."
+  - tweak: "Reduced M41's AP ammo damage a little bit (less than 5%)"
+  - tweak: "Reduced Buckshot damage variance (lowered max damage variance a bit (less than 2%)). This is mostly to make this weapon consistent."
+  - tweak: "Buckshot no longer deals damage to armor at all. Buckshot is pretty much no-armor hitting weapon. It still stops armor from regenerating even if 1 pellet hits. This might get changed in the future tho."
+  - tweak: "Reduced damage from Smartgun (less than 10%). Smartgun now breaks armor faster based on how much damage was absorbed (about twice as much)."
+  - tweak: "LTB cannon now generates secondary explosion that deals a lot of damage in small area. Damage in that area is about twice of the previous LTB power."

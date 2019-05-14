@@ -34,6 +34,7 @@
 	var/hlow_hit_damage = 31
 	var/hlmed_hit_damage = 34
 	var/lmed_hit_damage = 38
+	var/lmed_plus_hit_damage = 43
 	var/med_hit_damage = 47
 	var/hmed_hit_damage = 51
 	var/high_hit_damage = 68

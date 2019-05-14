@@ -402,7 +402,7 @@
 	..()
 	scatter = config.min_scatter_value
 	damage = config.low_hit_damage
-	penetration = config.med_armor_penetration
+	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
 
@@ -450,8 +450,8 @@
 
 /datum/ammo/bullet/rifle/ap/New()
 	..()
-	damage = config.hlmed_hit_damage
-	penetration = config.hmed_armor_penetration
+	damage = config.hlow_hit_damage
+	penetration = config.med_armor_penetration
 	shell_speed = config.super_shell_speed
 	damage_falloff = config.reg_damage_falloff
 
@@ -632,11 +632,12 @@
 	max_range = config.close_shell_range
 	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
-	damage_var_high = config.med_proj_variance
+	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	penetration	= 0
 	bonus_projectiles_amount = config.low_proj_extra
 	shell_speed = config.reg_shell_speed
+	damage_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
@@ -661,11 +662,12 @@
 	max_range = config.close_shell_range
 	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
-	damage_var_high = config.med_proj_variance
+	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	penetration = 0
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
+	damage_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/spread/masterkey/New()
 	..()
@@ -810,9 +812,9 @@
 		accurate_range = config.short_shell_range
 		accuracy = config.max_hit_accuracy
 		damage_falloff = config.tactical_damage_falloff
-		damage = config.med_hit_damage
+		damage = config.lmed_plus_hit_damage
 		penetration = config.low_armor_penetration
-		damage_armor_punch = 0.5
+		damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/lethal
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -820,7 +822,7 @@
 
 /datum/ammo/bullet/smartgun/lethal/New()
 	..()
-	damage = config.hmed_hit_damage
+	damage = config.lmed_plus_hit_damage
 	penetration= config.low_armor_penetration
 
 /datum/ammo/bullet/smartgun/dirty
@@ -853,7 +855,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.norm_shell_range
-	damage = config.med_hit_damage
+	damage = config.lmed_hit_damage
 	penetration = config.mlow_armor_penetration
 	accuracy = config.high_hit_accuracy
 
@@ -1034,15 +1036,19 @@
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
 	explosion_rec(get_turf(M), 220, 50)
+	explosion_rec(get_turf(M), 200, 100)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50)
+	explosion_rec(get_turf(O), 220, 50)
+	explosion_rec(get_turf(O), 200, 100)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50)
+	explosion_rec(get_turf(T), 220, 50)
+	explosion_rec(get_turf(T), 200, 100)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
 	explosion_rec(get_turf(P), 220, 50)
+	explosion_rec(get_turf(P), 200, 100)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"

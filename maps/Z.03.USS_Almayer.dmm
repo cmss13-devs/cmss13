@@ -8302,7 +8302,7 @@
 /obj/machinery/door/airlock/almayer/medical{
 	dir = 4;
 	name = "Morgue";
-	req_access = list(20);
+	req_access = list(25);
 	req_one_access = list()
 	},
 /obj/structure/cable{
@@ -10764,7 +10764,8 @@
 "avi" = (
 /obj/machinery/crema_switch{
 	pixel_x = 24;
-	pixel_y = 0
+	pixel_y = 0;
+	req_access = list(25)
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
@@ -13027,7 +13028,7 @@
 /obj/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Morgue";
-	req_access = list(20);
+	req_access = list(25);
 	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/border_only/almayer{
@@ -19014,7 +19015,7 @@
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(15);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -20880,7 +20881,7 @@
 /obj/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Morgue Processing";
-	req_access = list(20);
+	req_access = list(25);
 	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/border_only/almayer{
@@ -29136,7 +29137,7 @@
 	dir = 4;
 	name = "\improper Alpha Squad Leader Entrance";
 	req_access = list(15);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha/req)
@@ -30469,7 +30470,7 @@
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(16);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -43175,12 +43176,6 @@
 /area/almayer/squads/charlie/req)
 "bMo" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door/window/westright{
-	dir = 4;
-	health = 1e+006;
-	name = "Ultra-Reinforced Glass Door";
-	req_access = list(12,17)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -43197,6 +43192,13 @@
 	pixel_x = 0;
 	pixel_y = 42;
 	req_one_access = list(12,13)
+	},
+/obj/machinery/door/window/westright{
+	dir = 4;
+	health = 1e+006;
+	name = "Ultra-Reinforced Glass Door";
+	req_access = list(17);
+	req_one_access = list(3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
@@ -54526,7 +54528,7 @@
 	dir = 4;
 	name = "\improper Charlie Squad Leader Entrance";
 	req_access = list(17);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
@@ -54862,7 +54864,7 @@
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(18);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -56559,7 +56561,7 @@
 "cnX" = (
 /obj/machinery/door/airlock/almayer/medical{
 	name = "Autopsy";
-	req_access = list(20);
+	req_access = list(25);
 	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
@@ -56794,7 +56796,7 @@
 	dir = 4;
 	name = "\improper Delta Squad Leader Entrance";
 	req_access = list(18);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/delta/req)
@@ -58234,7 +58236,7 @@
 /obj/machinery/door/airlock/almayer/medical{
 	dir = 4;
 	name = "Morgue";
-	req_access = list(20);
+	req_access = list(25);
 	req_one_access = list()
 	},
 /obj/structure/disposalpipe/segment{
@@ -59931,7 +59933,8 @@
 "hSO" = (
 /obj/machinery/door/airlock/almayer/marine/charlie{
 	name = "\improper Charlie Squad Requisitions";
-	req_one_access = list(2,3,21,17)
+	req_access = list(17);
+	req_one_access = list(3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -60069,7 +60072,8 @@
 	},
 /obj/machinery/door/airlock/almayer/marine/charlie{
 	name = "\improper Charlie Squad Requisitions";
-	req_one_access = list(2,3,21,17)
+	req_access = list(17);
+	req_one_access = list(3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -60754,7 +60758,9 @@
 /area/almayer/hallways/vehiclehangar)
 "jgr" = (
 /obj/machinery/door/airlock/almayer/marine/delta{
-	name = "\improper Delta Squad Requisitions"
+	name = "\improper Delta Squad Requisitions";
+	req_access = list(18);
+	req_one_access = list(2,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -63103,7 +63109,8 @@
 "nsa" = (
 /obj/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper Alpha Squad Requisitions";
-	req_one_access = list(2,3,21,15)
+	req_access = list(15);
+	req_one_access = list(3,9)
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -63272,7 +63279,7 @@
 	dir = 4;
 	name = "\improper Bravo Squad Leader Entrance";
 	req_access = list(16);
-	req_one_access = list(12,13)
+	req_one_access = list(3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo/req)
@@ -64441,7 +64448,8 @@
 "pLT" = (
 /obj/machinery/door/airlock/almayer/marine/bravo{
 	name = "\improper Bravo Squad Requisitions";
-	req_one_access = list(2,3,21,16)
+	req_access = list(16);
+	req_one_access = list(3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -67441,7 +67449,8 @@
 	},
 /obj/machinery/door/airlock/almayer/marine/bravo{
 	name = "\improper Bravo Squad Requisitions";
-	req_one_access = list(2,3,21,16)
+	req_access = list(16);
+	req_one_access = list(3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -67804,7 +67813,8 @@
 "uXt" = (
 /obj/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper Alpha Squad Requisitions";
-	req_one_access = list(2,3,21,15)
+	req_access = list(15);
+	req_one_access = list(3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -68103,7 +68113,8 @@
 	},
 /obj/machinery/door/airlock/almayer/marine/delta{
 	name = "\improper Delta Squad Requisitions";
-	req_one_access = list(2,3,21,18)
+	req_access = list(18);
+	req_one_access = list(3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,

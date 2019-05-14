@@ -20,8 +20,6 @@
 
 	var/obj/machinery/autodoc_console/connected
 
-	//req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY) // limit to doc IDs
-
 	//It uses power
 	use_power = 1
 	idle_power_usage = 15

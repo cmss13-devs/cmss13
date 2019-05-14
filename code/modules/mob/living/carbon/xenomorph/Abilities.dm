@@ -556,15 +556,27 @@
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	var/activation_msg = "If you see this, something broke."
+	if(X.mutation_type == BOILER_SHATTER)
+		activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas/shatter ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	else
+		activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
 	to_chat(X, SPAN_NOTICE("[activation_msg]"))
 	button.overlays.Cut()
-	if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
-		X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
-		button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+	if(X.mutation_type == BOILER_SHATTER) // Shatter mutation special logic
+		if(X.ammo.type == /datum/ammo/xeno/boiler_gas/shatter)
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter/acid]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+		else
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
 	else
-		X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
-		button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
+		if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+		else
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
 
 /datum/action/xeno_action/bombard
 	name = "Bombard"

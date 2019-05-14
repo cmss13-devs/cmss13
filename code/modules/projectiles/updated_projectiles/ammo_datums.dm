@@ -1293,6 +1293,18 @@
 	max_range = config.min_shell_range
 	shell_speed = config.reg_shell_speed
 
+/datum/ammo/xeno/toxin/shatter // Used by boiler shatter glob strain
+	name = "neurotoxin spatter"
+
+/datum/ammo/xeno/toxin/shatter/New()
+	..()
+	accuracy = config.med_hit_accuracy
+	accurate_range = config.max_shell_range
+	point_blank_range = -1
+	max_range = config.close_shell_range
+	shell_speed = config.slow_shell_speed
+	scatter = config.med_scatter_value
+
 /datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
@@ -1388,6 +1400,21 @@
 	damage_var_high = config.high_proj_variance
 	shell_speed = config.reg_shell_speed
 
+/datum/ammo/xeno/acid/shatter // Used by boiler shatter glob strain
+	name = "acid spatter"
+
+/datum/ammo/xeno/acid/shatter/New()
+	..()
+	accuracy = config.med_hit_accuracy
+	accurate_range = config.max_shell_range
+	point_blank_range = -1
+	max_range = config.close_shell_range
+	damage = config.low_hit_damage
+	damage_falloff = config.reg_damage_falloff
+	shell_speed = config.slow_shell_speed
+	scatter = config.med_scatter_value
+	
+
 /datum/ammo/xeno/boiler_gas
 	name = "glob of gas"
 	icon_state = "boiler_gas2"
@@ -1472,6 +1499,38 @@
 	smoke_system.lifetime = 6 * lifetime_mult
 	smoke_system.start()
 	T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into corrosive bile!</span>")
+
+/datum/ammo/xeno/boiler_gas/shatter
+	name = "glob of neurotoxin"
+	icon_state = "boiler_shatter2"
+	ping = "ping_x"
+	sound_hit = "acid_hit"
+	sound_bounce = "acid_bounce"
+	debilitate = list(19,21,0,0,11,12,0,0)
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	var/shrapnel_type = /datum/ammo/xeno/toxin/shatter
+	var/shrapnel_amount = 32
+
+/datum/ammo/xeno/boiler_gas/shatter/drop_nade(turf/T, obj/item/projectile/P)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	T.visible_message(SPAN_DANGER("A huge ball of neurotoxin splashes down, sending drops and splashes in every direction!"))
+	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
+
+/datum/ammo/xeno/boiler_gas/shatter/acid
+	name = "glob of acid"
+	icon_state = "boiler_shatter"
+	ping = "ping_x"
+	sound_hit = "acid_hit"
+	sound_bounce = "acid_bounce"
+	debilitate = list(1,1,0,0,1,1,0,0)
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	shrapnel_type = /datum/ammo/xeno/acid/shatter
+	shrapnel_amount = 32
+
+/datum/ammo/xeno/boiler_gas/shatter/acid/drop_nade(turf/T, obj/item/projectile/P)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
+	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
 
 /datum/ammo/xeno/railgun_glob
 	name = "railgun glob of acid"

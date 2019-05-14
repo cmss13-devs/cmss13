@@ -425,3 +425,9 @@
 #define CANNOT_HOLD_EGGS 0
 #define CAN_HOLD_TWO_HANDS 1
 #define CAN_HOLD_ONE_HAND 2
+
+// boiler flags
+
+#define BOILER_NORMAL	1
+#define BOILER_RAILGUN	2
+#define BOILER_SHATTER	3

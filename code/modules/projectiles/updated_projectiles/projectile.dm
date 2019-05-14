@@ -291,7 +291,6 @@
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			var/mob_is_hit = FALSE
 			var/hit_roll
-			var/critical_miss = rand(config.critical_chance_low, config.critical_chance_high)
 			var/i = 0
 			while(++i <= 2 && hit_chance > 0) // This runs twice if necessary
 				hit_roll 					= rand(0, 99) //Our randomly generated roll
@@ -308,8 +307,6 @@
 						def_zone 	  = pick(base_miss_chance) //We're going to pick a new target and let this run one more time.
 						hit_chance   -= 10 //If you missed once, the next go around will be harder to hit.
 					if(2)
-						if(prob(critical_miss) )
-							break //Critical miss on the second go around.
 						if(hit_chance > hit_roll)
 							mob_is_hit = TRUE
 							break
@@ -748,10 +745,8 @@
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
 		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
-			var/mob/living/carbon/Xenomorph/charger = src
-			armor += round(charger.charge_speed * 7) //Some armor deflection when charging.
-			if(P.dir == charger.dir) armor = max(0, armor - (armor_deflection * config.xeno_armor_resist_low)) //Both facing same way -- ie. shooting from behind.
-			else if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * config.xeno_armor_resist_low) //We are facing the bullet.
+			var/mob/living/carbon/Xenomorph/charger = src			
+			if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * (charger.charge_speed/charger.charge_speed_max) / 2) //Some armor deflection when charging.
 			//Otherwise use the standard armor deflection for crushers.
 		
 		damage_result = armor_damage_reduction(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)

@@ -165,7 +165,6 @@
 		switch(type)
 			if("config") initilize_configuration(name,value)
 			if("game_options") initialize_game_options(name, value)
-			if("combat_defines") initialize_combat_defines(name, value)
 
 /datum/configuration/proc/initilize_configuration(name,value)
 	switch (name)

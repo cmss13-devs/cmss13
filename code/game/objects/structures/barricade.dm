@@ -736,6 +736,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(B != src && B.dir == dir)
 			to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
 			return
+	var/turf/open/OT = usr.loc
+	if(!OT.allow_construction)
+		to_chat(usr, SPAN_WARNING("The [src] must be constructed on a proper surface!"))
+		return
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
 			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

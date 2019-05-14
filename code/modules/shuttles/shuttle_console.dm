@@ -28,12 +28,27 @@
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
 	if(!isXeno(user) && (onboard || z == 1) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
-			if(world.time < shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN)
-				to_chat(user, "<span class='warning'>You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [round((shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>")
+			if(onboard && (isSynth(user) || user.mind.assigned_role == "Pilot Officer"))
+				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
+				SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
+				if(do_after(user, MINUTES_3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+					if(user.lying)
+						return 0
+					shuttle.last_locked = world.time
+					shuttle.queen_locked = 0
+					shuttle.last_door_override = world.time
+					shuttle.door_override = 0
+					user.visible_message(SPAN_NOTICE("The [src] blinks with blue lights."),
+					SPAN_NOTICE("You have successfully taken back the control over the dropship."))
+					ui_interact(user)
+				return
 			else
-				to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
-				shuttle.last_locked = world.time
-				shuttle.queen_locked = 0
+				if(world.time < shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN)
+					to_chat(user, SPAN_WARNING("You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [round((shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again."))
+				else
+					to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
+					shuttle.last_locked = world.time
+					shuttle.queen_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN)
 				to_chat(user, "<span class='warning'>You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>")

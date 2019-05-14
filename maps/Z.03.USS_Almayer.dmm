@@ -19344,10 +19344,7 @@
 /area/almayer/living/offices)
 "aOp" = (
 /obj/structure/rack,
-/obj/item/stack/sheet/metal{
-	amount = 20
-	},
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/effect/spawner/random/supply_kit,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
@@ -27393,10 +27390,7 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/tool/shovel/etool,
-/obj/item/tool/shovel/etool,
+/obj/effect/spawner/random/supply_kit,
 /turf/open/floor/almayer{
 	tag = "icon-red (WEST)";
 	icon_state = "red";
@@ -43880,10 +43874,7 @@
 /area/almayer/living/grunt_rnr)
 "bNw" = (
 /obj/structure/rack,
-/obj/item/stack/sheet/metal{
-	amount = 20
-	},
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/effect/spawner/random/supply_kit,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
@@ -44391,10 +44382,7 @@
 /area/almayer/shipboard/weapon_room)
 "bOr" = (
 /obj/structure/rack,
-/obj/item/stack/sheet/metal{
-	amount = 20
-	},
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/effect/spawner/random/supply_kit,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
@@ -53244,10 +53232,7 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/tool/shovel/etool,
-/obj/item/tool/shovel/etool,
+/obj/effect/spawner/random/supply_kit,
 /turf/open/floor/almayer{
 	tag = "icon-emerald (WEST)";
 	icon_state = "emerald";
@@ -64671,10 +64656,7 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/tool/shovel/etool,
-/obj/item/tool/shovel/etool,
+/obj/effect/spawner/random/supply_kit,
 /turf/open/floor/almayer{
 	tag = "icon-blue (WEST)";
 	icon_state = "blue";
@@ -65836,10 +65818,7 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/stack/sandbags_empty/half,
-/obj/item/tool/shovel/etool,
-/obj/item/tool/shovel/etool,
+/obj/effect/spawner/random/supply_kit,
 /turf/open/floor/almayer{
 	tag = "icon-orange (WEST)";
 	icon_state = "orange";
@@ -66527,10 +66506,7 @@
 /area/almayer/living/port_emb)
 "tbT" = (
 /obj/structure/rack,
-/obj/item/stack/sheet/metal{
-	amount = 20
-	},
-/obj/item/stack/sheet/plasteel/medium_stack,
+/obj/effect/spawner/random/supply_kit,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1

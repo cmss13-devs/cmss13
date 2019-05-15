@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - rscadd: "Pilot Officers and Synthetics can now regain control over the dropship by using the console - provided they can hack it for 3 minutes without dying."
-  - bugfix: "Folding barricades, just like any other type of barricades, cannot be deployed on the dropships anymore."

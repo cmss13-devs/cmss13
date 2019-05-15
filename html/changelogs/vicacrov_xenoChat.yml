@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Triggered trap messages in the hivemind now appear in a smaller, italicized font."
-  - tweak: "Upon evolving, the hive now gets an accurate message whether T2 or T3 slots are open, instead of a generalized alert."

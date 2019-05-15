@@ -1,7 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - tweak: "Quick Clot and Peridaxon pill dosages were lowered to 7 from 10, to avoid instant ODing when two people administer them simultaneously. (OD threshold is still 20.)"
-  - tweak: "Epinephrine is now made of Carbon, Nitrogen, Oxygen, and yields twice as much as before."

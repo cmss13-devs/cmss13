@@ -6,6 +6,12 @@
 */
 var/global/list/human_icon_cache = list()
 
+/*
+	Global associative list for caching uniform masks.
+	Each index is just 0 or 1 for not removed and removed (as in previously delimbed).
+*/
+var/global/list/uniform_mask_cache = list()
+
 	///////////////////////
 	//UPDATE_ICONS SYSTEM//
 	///////////////////////
@@ -60,20 +66,21 @@ There are several things that need to be remembered:
 */
 
 //Human Overlays Indexes/////////
-#define MUTANTRACE_LAYER		25
-#define MUTATIONS_LAYER			24
-#define DAMAGE_LAYER			23
-#define UNIFORM_LAYER			22
-#define TAIL_LAYER				21		//bs12 specific. this hack is probably gonna come back to haunt me
-#define ID_LAYER				20
-#define SHOES_LAYER				19
-#define GLOVES_LAYER			18
+#define MUTANTRACE_LAYER		26
+#define MUTATIONS_LAYER			25
+#define DAMAGE_LAYER			24
+#define UNIFORM_LAYER			23
+#define TAIL_LAYER				22	//bs12 specific. this hack is probably gonna come back to haunt me
+#define ID_LAYER				21
+#define SHOES_LAYER				20
+#define GLOVES_LAYER			19
+#define MEDICAL_LAYER			18	// For splint and gauze overlays
 #define SUIT_LAYER				17
 #define GLASSES_LAYER			16
-#define BELT_LAYER				15		//Possible make this an overlay of somethign required to wear a belt?
+#define BELT_LAYER				15
 #define SUIT_STORE_LAYER		14
 #define BACK_LAYER				13
-#define HAIR_LAYER				12		//TODO: make part of head layer?
+#define HAIR_LAYER				12
 #define EARS_LAYER				11
 #define FACEMASK_LAYER			10
 #define HEAD_LAYER				9
@@ -82,11 +89,11 @@ There are several things that need to be remembered:
 #define LEGCUFF_LAYER			6
 #define L_HAND_LAYER			5
 #define R_HAND_LAYER			4
-#define BURST_LAYER				3 	//Chestburst overlay
+#define BURST_LAYER				3	//Chestburst overlay
 #define TARGETED_LAYER			2	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				1		//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
 
-#define TOTAL_LAYERS			25
+#define TOTAL_LAYERS			26
 //////////////////////////////////
 
 /mob/living/carbon/human
@@ -126,19 +133,26 @@ There are several things that need to be remembered:
 			src.transform = M
 
 var/global/list/damage_icon_parts = list()
-/mob/living/carbon/human/proc/get_damage_icon_part(damage_state, body_part)
-	if(damage_icon_parts["[damage_state]_[species.blood_color]_[body_part]"] == null)
+/mob/living/carbon/human/proc/get_damage_icon_part(damage_state, datum/limb/limb)
+	var/icon/DI
+	var/L_name = limb.icon_name
+	if(!damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"])
 		var/brutestate = copytext(damage_state, 1, 2)
 		var/burnstate = copytext(damage_state, 2)
-		var/icon/DI
 		DI = new /icon('icons/mob/dam_human.dmi', "grayscale_[brutestate]")// the damage icon for whole human in grayscale
 		DI.Blend(species.blood_color, ICON_MULTIPLY) //coloring with species' blood color
 		DI.Blend(new /icon('icons/mob/dam_human.dmi', "burn_[burnstate]"), ICON_OVERLAY)//adding burns
-		DI.Blend(new /icon('icons/mob/dam_mask.dmi', body_part), ICON_MULTIPLY)		// mask with this organ's pixels
-		damage_icon_parts["[damage_state]_[species.blood_color]_[body_part]"] = DI
-		return DI
+		DI.Blend(new /icon('icons/mob/body_mask.dmi', L_name), ICON_MULTIPLY)		// mask with this organ's pixels
+		damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"] = DI
 	else
-		return damage_icon_parts["[damage_state]_[species.blood_color]_[body_part]"]
+		DI = damage_icon_parts["[damage_state]_[species.blood_color]_[L_name]"]
+	for(var/datum/wound/W in limb.wounds)
+		if(W.impact_icon)
+			DI.Blend(W.impact_icon, ICON_OVERLAY)
+	
+	return DI
+
+	
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
@@ -161,17 +175,24 @@ var/global/list/damage_icon_parts = list()
 
 	var/icon/standing = new /icon('icons/mob/dam_human.dmi', "00")
 
-	var/image/standing_image = new /image("icon" = standing, "layer" =-DAMAGE_LAYER)
+	var/image/standing_image = new /image(icon = standing, layer = -DAMAGE_LAYER)
 
 	// blend the individual damage states with our icons
 	for(var/datum/limb/O in limbs)
+		var/icon/DI
+		var/datum/limb/P = O.parent
 		if(!(O.status & LIMB_DESTROYED))
 			O.update_icon()
 			if(O.damage_state == "00") continue
 
-			var/icon/DI = get_damage_icon_part(O.damage_state, O.icon_name)
+			DI = get_damage_icon_part(O.damage_state, O)
 
 			standing_image.overlays += DI
+		else if(O.has_stump_icon && (!P || !(P.status & LIMB_DESTROYED)))
+			DI = new /icon('icons/mob/dam_human.dmi', "stump_[O.icon_name]")
+
+			standing_image.overlays += DI
+
 
 	overlays_standing[DAMAGE_LAYER]	= standing_image
 
@@ -337,7 +358,15 @@ var/global/list/damage_icon_parts = list()
 		//Underwear
 		if(underwear >0 && underwear < 3)
 			if(!fat && !skeleton)
-				stand_icon.Blend(new /icon('icons/mob/human.dmi', "cryo[underwear]_[g]_s"), ICON_OVERLAY)
+				var/icon/underwear_icon = new /icon('icons/mob/human.dmi', "cryo[underwear]_[g]_s")
+				var/icon/BM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "groin")
+				for(var/datum/limb/leg/L in limbs)
+					var/uniform_icon = "[L.icon_name]"
+					if(L.status & LIMB_DESTROYED && !(L.status & LIMB_AMPUTATED))
+						uniform_icon += "_removed"
+					BM.Blend(new /icon('icons/mob/body_mask.dmi', "[uniform_icon]"), ICON_OR)
+				underwear_icon.Blend(BM, ICON_MULTIPLY)
+				stand_icon.Blend(underwear_icon, ICON_OVERLAY)
 
 		if(job in ROLES_MARINES) //undoing override
 			if(undershirt>0 && undershirt < 5)
@@ -408,6 +437,40 @@ var/global/list/damage_icon_parts = list()
 	apply_overlay(TARGETED_LAYER)
 
 
+//Call when someone is gauzed or splinted, or when one of those items are removed
+/mob/living/carbon/human/update_med_icon()
+	remove_overlay(MEDICAL_LAYER)
+
+	var/icon/standing = new /icon('icons/mob/med_human.dmi', "blank")
+
+	var/image/standing_image = new /image(icon = standing, layer = -MEDICAL_LAYER)
+
+	// blend the individual damage states with our icons
+	for(var/datum/limb/L in limbs)
+		for(var/datum/wound/W in L.wounds)
+			if(!W.bandaged)
+				continue
+			if(!W.bandaged_icon)
+				var/bandaged_icon_name = "gauze_[L.icon_name]"
+				if(L.bandage_icon_amount > 1)
+					bandaged_icon_name += "_[rand(1, L.bandage_icon_amount)]"
+				W.bandaged_icon = new /icon('icons/mob/med_human.dmi', "[bandaged_icon_name]")
+			standing_image.overlays += W.bandaged_icon
+		if(L.status & LIMB_SPLINTED)
+			if(!L.splinted_icon)
+				var/splinted_icon_name = "splint_[L.icon_name]"
+				if(L.splint_icon_amount > 1)
+					splinted_icon_name += "_[rand(1, L.splint_icon_amount)]"
+				L.splinted_icon = new /icon('icons/mob/med_human.dmi', "[splinted_icon_name]")
+			standing_image.overlays += L.splinted_icon
+		else
+			L.splinted_icon = null
+
+	overlays_standing[MEDICAL_LAYER] = standing_image
+
+	apply_overlay(MEDICAL_LAYER)
+
+
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()
@@ -453,26 +516,55 @@ var/global/list/damage_icon_parts = list()
 		var/used_state = U.icon_state
 		if(U.rolled_sleeves)
 			used_state += "_d"
-		var/image/standing	= image("icon_state" = "[used_state]", "layer" =-UNIFORM_LAYER)
-
+		
+		var/used_icon
 		if(U.icon_override)
-			standing.icon = U.icon_override
+			used_icon = U.icon_override
 		else
-			standing.icon = U.sprite_sheet_id?'icons/mob/uniform_1.dmi':'icons/mob/uniform_0.dmi'
+			used_icon = U.sprite_sheet_id?'icons/mob/uniform_1.dmi':'icons/mob/uniform_0.dmi'
+
+		var/icon/standing = new /icon(used_icon, used_state)
 
 		if(U.blood_DNA)
-			var/image/bloodsies	= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "uniformblood")
-			bloodsies.color		= U.blood_color
-			standing.overlays	+= bloodsies
+			var/icon/bloodsies =  new /icon('icons/effects/blood.dmi', "uniformblood")
+			bloodsies.Blend(U.blood_color, ICON_MULTIPLY)
+			standing.Blend(bloodsies, ICON_OVERLAY)
 
 		if(U.hastie)
 			var/tie_state = U.hastie.item_state
 			if(!tie_state) tie_state = U.hastie.icon_state
-			standing.overlays	+= image("icon" = 'icons/mob/ties.dmi', "icon_state" = "[tie_state]")
+			standing.Blend(new /icon('icons/mob/ties.dmi', "[tie_state]"), ICON_OVERLAY)
 
-		overlays_standing[UNIFORM_LAYER]	= standing
+		var/uniform_mask_key = ""
+		for(var/datum/limb/L in limbs)
+			if(L.body_part & U.removed_parts)
+				uniform_mask_key = "[uniform_mask_key]1"
+			else
+				uniform_mask_key = "[uniform_mask_key]0"
+
+		var/icon/BM
+		if(uniform_mask_cache[uniform_mask_key])
+			BM = uniform_mask_cache[uniform_mask_key]
+		else
+			BM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "blank")
+			var/icon/RBM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "blank")
+			for(var/datum/limb/L in limbs)
+				var/uniform_icon = "[L.icon_name]"
+				if(L.body_part & U.removed_parts)
+					RBM.Blend(new /icon('icons/mob/body_mask.dmi', "[uniform_icon]_removed"), ICON_OR)
+					continue
+				BM.Blend(new /icon('icons/mob/body_mask.dmi', "[uniform_icon]"), ICON_OR)
+			BM.Blend(RBM, ICON_OVERLAY)
+			uniform_mask_cache[uniform_mask_key] = BM
+
+		standing.Blend(BM, ICON_MULTIPLY)
+
+		var/image/standing_image = image(icon = standing, layer = -UNIFORM_LAYER)
+
+		overlays_standing[UNIFORM_LAYER] = standing_image
 
 		apply_overlay(UNIFORM_LAYER)
+
 
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
@@ -484,11 +576,10 @@ var/global/list/damage_icon_parts = list()
 			var/id_state = wear_id.icon_state
 			if(wear_id.item_state)
 				id_state = wear_id.item_state
-			overlays_standing[ID_LAYER]	= image("icon" = 'icons/mob/mob.dmi', "icon_state" = "[id_state]", "layer" =-ID_LAYER)
+			overlays_standing[ID_LAYER]	= image(icon = 'icons/mob/mob.dmi', icon_state = "[id_state]", layer = -ID_LAYER)
 		else
 			overlays_standing[ID_LAYER]	= null
 		apply_overlay(ID_LAYER)
-
 
 
 /mob/living/carbon/human/update_inv_gloves()
@@ -502,23 +593,30 @@ var/global/list/damage_icon_parts = list()
 
 		var/image/standing
 		if(gloves.icon_override)
-			standing = image("icon" = gloves.icon_override, "icon_state" = "[t_state]", "layer" =-GLOVES_LAYER)
+			standing = image(icon = gloves.icon_override, icon_state = "[t_state]", layer = -GLOVES_LAYER)
 		else
-			standing = image("icon" = 'icons/mob/hands.dmi', "icon_state" = "[t_state]", "layer" =-GLOVES_LAYER)
+			standing = image(icon = 'icons/mob/hands.dmi', icon_state = "[t_state]", layer = -GLOVES_LAYER)
 
 		if(gloves.blood_DNA)
-			var/image/bloodsies	= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "bloodyhands")
+			var/image/bloodsies	= image(icon = 'icons/effects/blood.dmi', icon_state = "bloodyhands")
 			bloodsies.color = gloves.blood_color
 			standing.overlays	+= bloodsies
 		overlays_standing[GLOVES_LAYER]	= standing
 	else
 		if(blood_DNA)
-			var/image/bloodsies	= image("icon" = 'icons/effects/blood.dmi', "icon_state" = "bloodyhands")
-			bloodsies.color = blood_color
-			overlays_standing[GLOVES_LAYER]	= bloodsies
+			var/icon/bloodsies = new /icon(icon = 'icons/effects/blood.dmi', icon_state = "bloodyhands")
+			bloodsies.Blend(blood_color, ICON_MULTIPLY) //coloring with color of blood on hands
+			var/icon/BM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "blank")
+			for(var/datum/limb/hand/H in limbs)
+				var/mask_name = "[H.icon_name]"
+				if(H.status & LIMB_DESTROYED)
+					mask_name += "_removed"
+				BM.Blend(new /icon('icons/mob/body_mask.dmi', "[mask_name]"), ICON_OR)
+			bloodsies.Blend(BM, ICON_MULTIPLY)
+			var/image/bloodsies_image = image(icon = bloodsies)
+			overlays_standing[GLOVES_LAYER] = bloodsies_image
 
 	apply_overlay(GLOVES_LAYER)
-
 
 
 /mob/living/carbon/human/update_inv_glasses()
@@ -528,11 +626,12 @@ var/global/list/damage_icon_parts = list()
 			glasses.screen_loc = ui_glasses
 			client.screen += glasses
 		if(glasses.icon_override)
-			overlays_standing[GLASSES_LAYER] = image("icon" = glasses.icon_override, "icon_state" = "[glasses.icon_state]", "layer" =-GLASSES_LAYER)
+			overlays_standing[GLASSES_LAYER] = image(icon = glasses.icon_override, icon_state = "[glasses.icon_state]", layer = -GLASSES_LAYER)
 		else
-			overlays_standing[GLASSES_LAYER]= image("icon" = 'icons/mob/eyes.dmi', "icon_state" = "[glasses.icon_state]", "layer" =-GLASSES_LAYER)
+			overlays_standing[GLASSES_LAYER]= image(icon = 'icons/mob/eyes.dmi', icon_state = "[glasses.icon_state]", layer = -GLASSES_LAYER)
 
 		apply_overlay(GLASSES_LAYER)
+
 
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
@@ -552,6 +651,7 @@ var/global/list/damage_icon_parts = list()
 			overlays_standing[EARS_LAYER] = image("icon" = 'icons/mob/ears.dmi', "icon_state" = "[t_type]", "layer" =-EARS_LAYER)
 
 		apply_overlay(EARS_LAYER)
+
 
 /mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)
@@ -575,11 +675,20 @@ var/global/list/damage_icon_parts = list()
 		overlays_standing[SHOES_LAYER] = standing
 	else
 		if(feet_blood_DNA)
-			var/image/bloodsies = image("icon" = 'icons/effects/blood.dmi', "icon_state" = "shoeblood")
-			bloodsies.color = feet_blood_color
-			overlays_standing[SHOES_LAYER] = bloodsies
+			var/icon/bloodsies = new /icon(icon = 'icons/effects/blood.dmi', icon_state = "shoeblood")
+			bloodsies.Blend(feet_blood_color, ICON_MULTIPLY) //coloring with color of blood on feet
+			var/icon/BM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "blank")
+			for(var/datum/limb/foot/F in limbs)
+				var/mask_name = "[F.icon_name]"
+				if(F.status & LIMB_DESTROYED)
+					mask_name += "_removed"
+				BM.Blend(new /icon('icons/mob/body_mask.dmi', "[mask_name]"), ICON_OR)
+			bloodsies.Blend(BM, ICON_MULTIPLY)
+			var/image/bloodsies_image = image(icon = bloodsies)
+			overlays_standing[SHOES_LAYER] = bloodsies_image
 
 	apply_overlay(SHOES_LAYER)
+
 
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)
@@ -591,7 +700,6 @@ var/global/list/damage_icon_parts = list()
 		if(!t_state)	t_state = s_store.icon_state
 		overlays_standing[SUIT_STORE_LAYER]	= image("icon" = 'icons/mob/suit_slot.dmi', "icon_state" = "[t_state]", "layer" =-SUIT_STORE_LAYER)
 		apply_overlay(SUIT_STORE_LAYER)
-
 
 
 /mob/living/carbon/human/update_inv_head()
@@ -631,6 +739,7 @@ var/global/list/damage_icon_parts = list()
 		overlays_standing[HEAD_LAYER] = standing
 
 		apply_overlay(HEAD_LAYER)
+
 
 /mob/living/carbon/human/update_inv_belt()
 	remove_overlay(BELT_LAYER)

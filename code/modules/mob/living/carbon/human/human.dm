@@ -471,7 +471,7 @@
 
 
 	if(href_list["splints"])
-		remove_splints(src, usr)
+		remove_splints(usr)
 
 	if(href_list["tie"])
 		if(!usr.action_busy)
@@ -1513,16 +1513,16 @@
 	set name = "Remove Your Splints"
 	set category = "Object"
 
-	remove_splints(src)
+	remove_splints()
 
 // target = person whose splints are being removed
 // source = person removing the splints
-/mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/target, mob/living/carbon/human/source)
-	var/mob/living/carbon/human/HT = target
+/mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/source)
+	var/mob/living/carbon/human/HT = src
 	var/mob/living/carbon/human/HS = source
 
-	if (!istype(HS))
-		HS = target
+	if(!istype(HS))
+		HS = src
 	if(!istype(HS) || !istype(HT))
 		return
 
@@ -1574,6 +1574,7 @@
 					msg = "[HS == HT ? "their own":"\proper [HT]'s"]"
 					HT.visible_message(SPAN_NOTICE("[HS] removes [msg] [amount_removed>1 ? "splints":"splint"]."), \
 						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
+					HT.update_med_icon()
 			else
 				msg = "[HS == HT ? "your":"\proper [HT]'s"]"
 				to_chat(HS, SPAN_NOTICE("You stop trying to remove [msg] splints."))

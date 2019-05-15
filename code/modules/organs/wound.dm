@@ -45,6 +45,9 @@
 	// the maximum amount of damage that this wound can have and still autoheal
 	var/autoheal_cutoff = 15
 
+	var/icon/bandaged_icon = null // Icon for gauze over a wound
+
+	var/icon/impact_icon = null // Icon for special impact icons from projectiles or melee weapons
 
 
 
@@ -117,6 +120,8 @@
 		src.bleed_timer += other.bleed_timer
 		src.germ_level = max(src.germ_level, other.germ_level)
 		src.created = max(src.created, other.created)	//take the newer created time
+		if(other.impact_icon)
+			impact_icon.Blend(other.impact_icon, ICON_OVERLAY)
 
 	// checks if wound is considered open for external infections
 	// untreated cuts (and bleeding bruises) and burns are possibly infectable, chance higher if wound is bigger
@@ -244,6 +249,15 @@
 				if(0 to 15)
 					return /datum/wound/burn/moderate
 	return null //no wound
+
+/datum/wound/proc/add_impact_icon(var/impact_name, var/limb_name)
+	if(!impact_name)
+		return
+	if(!impact_icon)
+		impact_icon = new /icon(icon = 'icons/mob/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
+	else
+		var/icon/temp_impact_icon = new /icon(icon = 'icons/mob/dam_human.dmi', icon_state = "[impact_name]_[limb_name]")
+		impact_icon.Blend(temp_impact_icon, ICON_OVERLAY)
 
 /** CUTS **/
 /datum/wound/cut/small

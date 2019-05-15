@@ -267,13 +267,13 @@
 		return 0
 
 	var/hit_chance = 0
-	
+
 	for(var/obj/O in T) //check objects before checking mobs, so that barricades protect
 		// If we've already handled this atom, don't do it again
 		if(O in permutated)
 			continue
 		permutated += O
-		
+
 		hit_chance = O.get_projectile_hit_boolean(src)
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			ammo.on_hit_obj(O,src)
@@ -703,7 +703,7 @@
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
 	if(damage)
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs)
 		P.play_damage_effect(src)
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10) ) )
 			var/obj/item/shard/shrapnel/shrap = new()
@@ -804,7 +804,7 @@
 	if(!..())
 		return
 	var/damage = P.damage
-	if(damage < 1) 
+	if(damage < 1)
 		return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
@@ -819,7 +819,7 @@
 				damage = round(damage * ANTISTRUCT_DMG_MULT_WALL)
 		else 
 			return
-	if(ammo_flags & AMMO_BALLISTIC) 
+	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
 	take_damage(damage)
 	return 1
@@ -866,7 +866,7 @@
 
 //This is where the bullet bounces off.
 /atom/proc/bullet_ping(obj/item/projectile/P)
-	if(!P || !P.ammo.ping) 
+	if(!P || !P.ammo.ping)
 		return
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)

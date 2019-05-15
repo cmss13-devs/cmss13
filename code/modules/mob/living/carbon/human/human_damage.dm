@@ -341,8 +341,17 @@ This function restores all limbs.
 		if(EO.name == zone)
 			return EO
 
-/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/blocked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null)
-
+/*
+	Describes how human mobs get damage applied.
+	Less clear vars:
+	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
+	*	impact_limbs: the flags for which limbs (body parts) have an impact icon associated with impact_name.
+*/
+/mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
+	var/blocked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
+	var/impact_name = null, \
+	var/impact_limbs = null
+)
 	//visible_message("Hit debug. [damage]|[damagetype]|[def_zone]|[blocked]|[sharp]|[used_weapon]")
 
 	if(protection_aura)
@@ -360,13 +369,15 @@ This function restores all limbs.
 	//Handle BRUTE and BURN damage
 	handle_suit_punctures(damagetype, damage)
 
-	if(blocked >= 2)	return 0
+	if(blocked >= 2)	
+		return 0
 
 	var/datum/limb/organ = null
 	if(isorgan(def_zone))
 		organ = def_zone
 	else
-		if(!def_zone)	def_zone = ran_zone(def_zone)
+		if(!def_zone)	
+			def_zone = ran_zone(def_zone)
 		organ = get_limb(check_zone(def_zone))
 	if(!organ)	return 0
 
@@ -378,13 +389,19 @@ This function restores all limbs.
 			damageoverlaytemp = 20
 			if(species && species.brute_mod)
 				damage = damage*species.brute_mod
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon))
+			var/temp_impact_name = null
+			if(organ.body_part & impact_limbs)
+				temp_impact_name = impact_name
+			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name))
 				UpdateDamageIcon()
 		if(BURN)
 			damageoverlaytemp = 20
 			if(species && species.burn_mod)
 				damage = damage*species.burn_mod
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon))
+			var/temp_impact_name = null
+			if(organ.body_part & impact_limbs)
+				temp_impact_name = impact_name
+			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name))
 				UpdateDamageIcon()
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().

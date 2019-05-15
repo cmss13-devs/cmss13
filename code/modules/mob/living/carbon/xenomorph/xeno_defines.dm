@@ -2,9 +2,9 @@
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total PLASMA.
 #define XENO_UNIVERSAL_DAMAGEMULT 1.0	//Stopgap usage only. Use to unilaterally buff every caste's total PLASMA.
 #define XENO_NO_ARMOR 0
-#define XENO_LOW_ARMOR 10 // +21% health
-#define XENO_MEDIUM_ARMOR 20 // +46% health
-#define XENO_HEAVY_ARMOR 30 // +77% health
+#define XENO_LOW_ARMOR 15 // +21% health
+#define XENO_MEDIUM_ARMOR 25 // +46% health
+#define XENO_HEAVY_ARMOR 35 // +77% health
 #define XENO_ULTRA_ARMOR 40 // +114% health
 
 #define XENO_NO_EXPLOSIVE_ARMOR 0
@@ -185,7 +185,7 @@
 	var/eggs_max = 0
 	var/egg_cooldown = 30
 
-	var/xeno_explosion_resistance = 0 //0 to 3. how explosions affects the xeno, can it stun it, etc...
+	var/xeno_explosion_resistance = 0 //Armor but for explosions
 
 	//Queen vars
 	var/can_hold_facehuggers = 0
@@ -209,7 +209,7 @@
 	var/crest_defense_cooldown = 150
 	var/fortify_cooldown = 200
 
-	var/innate_healing = FALSE //whether the xeno slowly heals even outside weeds.
+	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
 
 	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
 	var/acid_level = 0
@@ -531,13 +531,13 @@
 
 	if (((tier_2_xenos.len + tier_3_xenos.len) / totalXenos.len * tier_slot_multiplier) > 0.5)
 		if(!isSlotOpen)//plus a check to stop message spam
-			xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
+			xeno_message(SPAN_XENONOTICE("The hive can support more second tier castes!"),2, hivenumber)
 			isSlotOpen = TRUE
 			return
 
 	if ((tier_3_xenos.len / totalXenos.len * tier_slot_multiplier) > 0.25)
 		if(!isSlotOpen)//plus a check to stop message spam
-			xeno_message("<span class='xenonotice'>The hive can support more mature castes!</span>",2, hivenumber)
+			xeno_message(SPAN_XENONOTICE("The hive can support more third tier castes!"),2, hivenumber)
 			isSlotOpen = TRUE
 			return
 

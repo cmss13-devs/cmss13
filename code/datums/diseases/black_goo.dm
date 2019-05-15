@@ -110,9 +110,10 @@
 
 /obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user, def_zone)
 	if(user.species == "Human")
-		return 0
+		return FALSE
 	. = ..()
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
+	if(.)
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")

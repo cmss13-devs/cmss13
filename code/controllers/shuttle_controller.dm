@@ -303,7 +303,7 @@
 	if(dock_controller_map.len)
 		for(var/obj/machinery/embedded_controller/radio/C in machines)	//only radio controllers are supported at the moment
 			if (istype(C.program, /datum/computer/file/embedded_program/docking))
-				if(C.id_tag in dock_controller_map)
+				if(dock_controller_map[C.id_tag])
 					shuttle = dock_controller_map[C.id_tag]
 					shuttle.docking_controller = C.program
 					dock_controller_map -= C.id_tag

@@ -20,8 +20,6 @@
 
 	var/obj/machinery/autodoc_console/connected
 
-	//req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY) // limit to doc IDs
-
 	//It uses power
 	use_power = 1
 	idle_power_usage = 15
@@ -590,7 +588,7 @@
 		add_fingerprint(usr)
 
 /obj/machinery/autodoc/verb/move_inside()
-	set name = "Enter Med-Pod"
+	set name = "Enter Autodoc"
 	set category = "Object"
 	set src in oview(1)
 
@@ -636,6 +634,7 @@
 /obj/machinery/autodoc/proc/go_out()
 	if(!occupant) return
 	occupant.forceMove(loc)
+	occupant.update_med_icon()
 	occupant = null
 	surgery_todo_list = list()
 	update_use_power(1)

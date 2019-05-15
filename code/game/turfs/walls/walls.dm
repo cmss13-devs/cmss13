@@ -41,8 +41,9 @@
 	var/list/noblend_objects = list(/obj/machinery/door/window, /turf/closed/wall/resin, /turf/closed/wall/mineral) //Objects to avoid blending with (such as children of listed blend objects.
 
 
-/turf/closed/wall/Initialize()
+/turf/closed/wall/New()
 	..()
+	sleep(5)
 	update_connections(1)
 	update_icon()
 
@@ -200,8 +201,9 @@
 		return
 	melting = TRUE
 	
+	var/destroyed = FALSE // whether the wall was destroyed in the process
 	var/obj/effect/overlay/O = new/obj/effect/overlay(src)
-	O.name = "Thermite"
+	O.name = "thermite"
 	O.desc = "Looks hot."
 	O.icon = 'icons/effects/fire.dmi'
 	O.icon_state = "red_3"
@@ -220,13 +222,15 @@
 		W.damage = W.damage + 100 // 100 damage per unit of thermite so 10u kills wall, 30u kills reinforced wall
 		update_icon()
 		if(damage >= damage_cap)
-			dismantle_wall(1)
+			destroyed = TRUE
 			break
 
 		sleep(20)
 		if(!istype(src, /turf/closed/wall)) // Extra check, needed against runtimes
 			break
 	melting = FALSE
+	if(destroyed)
+		dismantle_wall(1)
 	if(O) 
 		qdel(O)
 	return

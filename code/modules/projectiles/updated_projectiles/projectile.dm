@@ -267,13 +267,13 @@
 		return 0
 
 	var/hit_chance = 0
-	
+
 	for(var/obj/O in T) //check objects before checking mobs, so that barricades protect
 		// If we've already handled this atom, don't do it again
 		if(O in permutated)
 			continue
 		permutated += O
-		
+
 		hit_chance = O.get_projectile_hit_boolean(src)
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			ammo.on_hit_obj(O,src)
@@ -291,7 +291,6 @@
 		if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
 			var/mob_is_hit = FALSE
 			var/hit_roll
-			var/critical_miss = rand(config.critical_chance_low, config.critical_chance_high)
 			var/i = 0
 			while(++i <= 2 && hit_chance > 0) // This runs twice if necessary
 				hit_roll 					= rand(0, 99) //Our randomly generated roll
@@ -308,8 +307,6 @@
 						def_zone 	  = pick(base_miss_chance) //We're going to pick a new target and let this run one more time.
 						hit_chance   -= 10 //If you missed once, the next go around will be harder to hit.
 					if(2)
-						if(prob(critical_miss) )
-							break //Critical miss on the second go around.
 						if(hit_chance > hit_roll)
 							mob_is_hit = TRUE
 							break
@@ -385,7 +382,7 @@
 
 
 /obj/proc/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0) //Used by machines and structures to calculate shooting past cover
-	if( istype(P.shot_from, /obj/item/hardpoint) ) //anything shot from a tank gets a bonus to bypassing cover
+	if(istype(P.shot_from, /obj/item/hardpoint)) //anything shot from a tank gets a bonus to bypassing cover
 		distance -= 3
 
 	if(distance < 1)
@@ -466,7 +463,7 @@
 
 	//At this point, all that's left is window frames, tables, and barricades
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ammo_flags & AMMO_IGNORE_COVER && get_turf(src) != P.target_turf)
+	if(ammo_flags & AMMO_IGNORE_COVER && src != P.original)
 		return FALSE
 
 	var/distance = P.distance_travelled
@@ -476,7 +473,7 @@
 			if(ammo_flags & AMMO_STOPPED_BY_COVER)
 				return TRUE
 			distance-- //no bias towards "inner" side
-		else if( !(P.dir & dir) )
+		else if(!(P.dir & dir))
 			return FALSE //no effect if bullet direction is perpendicular to barricade
 
 	else
@@ -706,7 +703,7 @@
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
 	if(damage)
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs)
 		P.play_damage_effect(src)
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10) ) )
 			var/obj/item/shard/shrapnel/shrap = new()
@@ -748,10 +745,8 @@
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
 		if(isXenoQueen(src) || isXenoCrusher(src)) //Charging and crest resistances. Charging Xenos get a lot of extra armor, currently Crushers and Queens
-			var/mob/living/carbon/Xenomorph/charger = src
-			armor += round(charger.charge_speed * 7) //Some armor deflection when charging.
-			if(P.dir == charger.dir) armor = max(0, armor - (armor_deflection * config.xeno_armor_resist_low)) //Both facing same way -- ie. shooting from behind.
-			else if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * config.xeno_armor_resist_low) //We are facing the bullet.
+			var/mob/living/carbon/Xenomorph/charger = src			
+			if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * (charger.charge_speed/charger.charge_speed_max) / 2) //Some armor deflection when charging.
 			//Otherwise use the standard armor deflection for crushers.
 		
 		damage_result = armor_damage_reduction(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
@@ -809,7 +804,7 @@
 	if(!..())
 		return
 	var/damage = P.damage
-	if(damage < 1) 
+	if(damage < 1)
 		return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
@@ -821,10 +816,10 @@
 			if(ammo_flags & AMMO_ENERGY)
 				damage = round(damage * 7)
 			else if(ammo_flags & AMMO_ANTISTRUCT) // Railgun does extra damage to turfs
-				damage = round(damage * 2.5)
+				damage = round(damage * ANTISTRUCT_DMG_MULT_WALL)
 		else 
 			return
-	if(ammo_flags & AMMO_BALLISTIC) 
+	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
 	take_damage(damage)
 	return 1
@@ -871,7 +866,7 @@
 
 //This is where the bullet bounces off.
 /atom/proc/bullet_ping(obj/item/projectile/P)
-	if(!P || !P.ammo.ping) 
+	if(!P || !P.ammo.ping)
 		return
 
 	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)

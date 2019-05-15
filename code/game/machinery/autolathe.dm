@@ -103,15 +103,14 @@
 	onclose(user, "autolathe")
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
-
-	if (stat)
-		return
-
 	if (busy)
 		to_chat(user, "<span class='danger'>\The [src] is busy. Please wait for completion of previous operation.</span>")
 		return
 
 	if(istype(O, /obj/item/tool/screwdriver))
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
+			return
 		opened = !opened
 		icon_state = (opened ? "autolathe_t": "autolathe")
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
@@ -128,6 +127,9 @@
 		if(istype(O, /obj/item/tool/crowbar))
 			dismantle()
 			return
+
+	if (stat)
+		return
 
 	//Resources are being loaded.
 	var/obj/item/eating = O
@@ -188,6 +190,9 @@
 	return attack_hand(user)
 
 /obj/machinery/autolathe/attack_hand(mob/user as mob)
+	if (stat)
+		return
+
 	user.set_interaction(src)
 	interact(user)
 

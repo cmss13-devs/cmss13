@@ -28,6 +28,7 @@
 	var/rollable_sleeves = FALSE //can we roll the sleeves on this uniform?
 	var/rolled_sleeves = FALSE //are the sleeves currently rolled?
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
+	var/removed_parts = 0
 
 
 

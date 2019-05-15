@@ -135,7 +135,7 @@
 		if(can_wire)
 			user.visible_message(SPAN_NOTICE("[user] starts setting up [W.name] on [src]."),
 			SPAN_NOTICE("You start setting up [W.name] on [src]."))
-			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && can_wire)
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
 				SPAN_NOTICE("You set up [W.name] on [src]."))
@@ -153,7 +153,7 @@
 		if(is_wired)
 			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
 			SPAN_NOTICE("You begin removing the barbed wire on [src]."))
-			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] removes the barbed wire on [src]."),
 				SPAN_NOTICE("You remove the barbed wire on [src]."))
@@ -349,7 +349,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			to_chat(user, "<span class='warning'>You are already shoveling!</span>")
 			return
 		user.visible_message("[user.name] starts clearing out \the [src].","You start removing \the [src].")
-		if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("\The [user] removes \the [src]."))
@@ -369,12 +369,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/snow/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/2) ) //Not that durable.
-
+	
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+		take_damage(50)
 
-	return 1
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+
+	take_damage(round(P.damage/2)) //Not that durable.
+
+	return TRUE
 
 /*----------------------*/
 // WOOD
@@ -408,7 +412,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				to_chat(user, "<span class='warning'>You need one plank of wood to repair [src].</span>")
 				return
 			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
-			if(do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && health < maxhealth)
+			if(do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src) && health < maxhealth)
 				if (D.use(1))
 					health = maxhealth
 					visible_message(SPAN_NOTICE("[user] repairs [src]."))
@@ -424,12 +428,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/wooden/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/2) ) //Not that durable.
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	return 1
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
+
+	take_damage(round(P.damage/2)) //Not that durable.
+
+	return TRUE
 
 /*----------------------*/
 // METAL
@@ -484,13 +492,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
 			return
 
-		var/old_loc = loc
-
 		if(WT.remove_fuel(0, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
+			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				health += 150
@@ -507,7 +513,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					to_chat(user, "<span class='warning'>You are not trained to disassemble [src]...</span>")
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -520,7 +526,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				build_state = BARRICADE_BSTATE_SECURED
@@ -532,7 +538,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					to_chat(user, "<span class='warning'>You are not trained to disassemble [src]...</span>")
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
@@ -551,7 +557,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 						to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
 						return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -567,7 +573,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -578,12 +584,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/metal/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior * AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/2)) //Not that durable.
+
+	return TRUE
 
 /*----------------------*/
 // DEPLOYABLE
@@ -604,6 +614,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	climbable = FALSE
 	unacidable = 1
 	anchored = TRUE
+	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 
 /obj/structure/barricade/deployable/examine(mob/user)
 	..()
@@ -618,14 +629,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(health == maxhealth)
 			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
 			return
-
-		var/old_loc = loc
-
+		
 		if(WT.remove_fuel(0, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
+			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
 				health += maxhealth*0.4
@@ -636,7 +645,38 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				update_health()
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
-
+	else if(iswrench(W))
+		if(user.action_busy)
+			return
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+			to_chat(user, SPAN_WARNING("You do not know where the loosening bolts are on [src]..."))
+			return
+		else
+			if(build_state == BARRICADE_BSTATE_UNSECURED)
+				to_chat(user, SPAN_NOTICE("You tighten the bolts on [src]."))
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				build_state = BARRICADE_BSTATE_SECURED
+			else
+				to_chat(user, SPAN_NOTICE("You loosen the bolts on [src]."))
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+				build_state = BARRICADE_BSTATE_UNSECURED
+			
+	else if(iscrowbar(W))
+		if(build_state != BARRICADE_BSTATE_UNSECURED)
+			return
+		if(user.action_busy)
+			return
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+			to_chat(user, SPAN_WARNING("You do not know how to collapse [src] using a crowbar..."))
+			return
+		else
+			user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
+				SPAN_NOTICE("You begin collapsing [src]..."))
+			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+			if(do_after(user, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+				collapse(usr)
+			else
+				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
 	. = ..()
 
 /obj/structure/barricade/deployable/MouseDrop(obj/over_object as obj)
@@ -647,36 +687,38 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return
 
 	if(over_object == usr && Adjacent(usr))
-		collapse(usr)
+		usr.visible_message(SPAN_NOTICE("[usr] starts collapsing [src]."),
+			SPAN_NOTICE("You begin collapsing [src]."))
+		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
+		if(do_after(usr, SECONDS_8, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			collapse(usr)
+		else
+			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
 
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."),
-			SPAN_NOTICE("You begin collapsing [src]."))
-	playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-	var/old_loc = loc
-	if(do_after(user, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && old_loc == loc)
-		fold(user)
-
-/obj/structure/barricade/deployable/proc/fold(mob/living/carbon/human/user)
-	var/obj/item/folding_barricade/f = new(loc)
-	f.health = health
-	f.maxhealth = maxhealth
-	if (user)
-		f.health = health
-		f.maxhealth = maxhealth
-		user.put_in_active_hand(f)
+	user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
+		SPAN_NOTICE("You collapse [src]."))
+	var/obj/item/folding_barricade/FB = new(loc)
+	FB.health = health
+	FB.maxhealth = maxhealth
+	if(user)
+		user.put_in_active_hand(FB)
 	qdel(src)
 
 /obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/10))
+
+	return TRUE
 
 //CADE IN HANDS
 /obj/item/folding_barricade
@@ -694,6 +736,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(B != src && B.dir == dir)
 			to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
 			return
+	var/turf/open/OT = usr.loc
+	if(!OT.allow_construction)
+		to_chat(usr, SPAN_WARNING("The [src] must be constructed on a proper surface!"))
+		return
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
 			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -775,7 +821,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(busy || tool_cooldown > world.time)
 			return
 		tool_cooldown = world.time + 10
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
 			to_chat(user, "<span class='warning'>You're not trained to repair [src]...</span>")
 			return
 		var/obj/item/tool/weldingtool/WT = W
@@ -792,7 +838,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			busy = 1
-			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				busy = 0
 				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
 				SPAN_NOTICE("You repair [src]."))
@@ -892,7 +938,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				busy = 1
-				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					busy = 0
 					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
 					SPAN_NOTICE("You take [src]'s panels apart."))
@@ -959,12 +1005,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/10))
+
+	return TRUE
 
 /*----------------------*/
 // SANDBAGS
@@ -1006,7 +1056,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(!ET.folded)
 			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."), \
 			SPAN_NOTICE("You start disassembling [src]."))
-			if(do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
 				SPAN_NOTICE("You disassemble [src]."))
 				destroy(TRUE)
@@ -1024,7 +1074,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts repairing damage to [src]."), \
 			SPAN_NOTICE("You start repairing damage to [src]."))
-		if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."), \
 				SPAN_NOTICE("You repair [src]."))
 			var/amount = SB.amount
@@ -1039,12 +1089,16 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/sandbags/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	take_damage( round(P.damage/10) )
+	
+	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(50)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage( 50 )
+	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	return 1
+	take_damage(round(P.damage/10))
+
+	return TRUE
 
 /obj/structure/barricade/sandbags/wired/New()
 	maxhealth += 50

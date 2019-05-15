@@ -1380,15 +1380,15 @@
 	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
-	if(user.zone_selected == "r_leg" || user.zone_selected == "l_leg" || user.zone_selected == "l_foot" || user.zone_selected == "r_foot")
+	. = ..()
+	if(. && user.zone_selected == "r_leg" || user.zone_selected == "l_leg" || user.zone_selected == "l_foot" || user.zone_selected == "r_foot")
 		if(prob(35) && !target.lying)
 			if(isXeno(target))
 				if(target.mob_size == MOB_SIZE_BIG) //Can't trip the big ones.
-					return ..()
+					return
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
 			user.visible_message("<span class = 'danger'>[src] lashes out and [target] goes down!</span>","<span class='danger'><b>You trip [target]!</b></span>")
 			target.KnockDown(5)
-	return ..()
 
 /obj/item/weapon/yautja_knife
 	name = "ceremonial dagger"
@@ -1467,6 +1467,9 @@
 	..()
 
 /obj/item/weapon/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
 	if(isYautja(user))
 		force = initial(force)
 		if(prob(22) && !target.lying)
@@ -1478,8 +1481,6 @@
 		to_chat(user, "<span class='warning'>You aren't strong enough to swing the sword properly!</span>")
 		force = round(initial(force)/2)
 		if(prob(50)) user.make_dizzy(80)
-
-	return ..()
 
 /obj/item/weapon/yautja_sword/pickup(mob/living/user as mob)
 	if(!isYautja(user))

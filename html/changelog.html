@@ -62,6 +62,69 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">14 May 2019</h2>
+			<h3 class="author">TheDonkified updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Reworked the squad distribution computer so that almost anyone can be assigned to a squad. The only people who cannot be assigned to a marine squad are untrained civilians such as doctors. You must grab the person and click on the squad distribution computer to "scan" them in, and make sure they're standing next to the computer during the squad change/assignment.</li>
+				<li class="tweak">Self-examine is slightly more descriptive in very niche situations.</li>
+				<li class="tweak">You gain your original speed back much faster after being healed/getting surgery.</li>
+				<li class="tweak">Made 'Go to Lobby' the default option when you do not get your job. Make sure your prefs are set to the correct option.</li>
+				<li class="tweak">Made the M56D mount more resistant to explosions. Damage to melee will remain the same.</li>
+				<li class="tweak">The clunkiness when setting up the M56D has been reduced. You still need to place the mount and setup the M56D as you normally would before. However, once the M56D has been fully built, you don't have to keep placing the mount and then the M56D. Instead, mount remains attached to the M56D and you only have to setup it up and screwdriver M56D to set it up again at a different position. Sprites by Frans.</li>
+				<li class="rscadd">M56D mount can be constructed. First you need 5 plasteel (this is excuse for resistance to explosions). Then 10 metal and weld. Placeholder sprites for now.</li>
+				<li class="tweak">Motion detector can fit in armor slot now.</li>
+				<li class="rscadd">Humanoid mobs can no longer hurt others when on HELP intent. This includes shooting and melee. If there are any situations that I missed, report on Gitlab.</li>
+				<li class="rscadd">There is now a preference to disable NON-HELP intent actions on YOURSELF from going through. For example, if you keep PBing and you accidentally hit yourself during screenshake.</li>
+				<li class="tweak">Medic and engi vendors allow you to pick a vest instead of being constrained to webbing. Other specialized roles will still only get default webbing.</li>
+				<li class="rscadd">Can repair broken vendors as squad engi+. Steps are screwdriver -> wirecutter -> 5 cable coil -> 1 metal -> screwdriver.</li>
+				<li class="rscadd">Engineers can deconstruct all deconstructable machines now. However, they can't rebuild them (MTs+ can do that though).</li>
+				<li class="bugfix">Supply console in req can be repaired.</li>
+				<li class="rscadd">Burrowers can rename tunnels.</li>
+				<li class="tweak">Railgun has lower delay between shots (10 seconds instead of 15).</li>
+				<li class="tweak">Railgun always hits barricades.</li>
+				<li class="tweak">Railgun does more damage to barricades.</li>
+			</ul>
+			<h3 class="author">TobiNerd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Added a rollerbed to medic's essential kit #6417.</li>
+				<li class="tweak">Replaced the rollerbeds in medic prep with a box of sterile masks.</li>
+				<li class="tweak">Added a few more training nades to firing range. #6488</li>
+				<li class="tweak">Added two more weapon racks to each prep and moved the surplus uniform vendor. #6378</li>
+				<li class="tweak">Adjusted the CIC lobby and MP desk for better visibility. #6369</li>
+				<li class="tweak">Added a box of donk-pockets to the research lobby.</li>
+				<li class="tweak">Researchers now have access to containment lockdown.</li>
+			</ul>
+			<h3 class="author">TobiNerd, Vicacrov updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Replaced the extra building material in SL requisitions with random kits.</li>
+			</ul>
+			<h3 class="author">Triiodine updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">The MOU and M44 should now draw properly.</li>
+				<li class="bugfix">The M44 belt should no longer be honked.</li>
+				<li class="tweak">All pistol belts now hold a maximum of 7 objects instead of 8 now.</li>
+				<li class="imageadd">Re-sprited the stun-baton.</li>
+			</ul>
+			<h3 class="author">Vicacrov updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed the Normandy missing a NanoMed and an intercom.</li>
+				<li class="bugfix">Fixed a broken disposal pipe at east delta preparations.</li>
+				<li class="tweak">Made the hangar autolathe public again.</li>
+				<li class="tweak">SL reqs were given a queue and were a bit remodelled.</li>
+				<li class="rscadd">Specialists now have access to SL req.</li>
+				<li class="rscadd">Intelligence Officers now have vendors instead of lockers.</li>
+				<li class="tweak">Intelligence Officers now can hack APCs and airlocks instead of being able to build barricades.</li>
+				<li class="tweak">Quick Clot and Peridaxon pill dosages were lowered to 7 from 10, to avoid instant ODing when two people administer them simultaneously. (OD threshold is still 20.)</li>
+				<li class="tweak">Epinephrine is now made of Carbon, Nitrogen, Oxygen, and yields twice as much as before.</li>
+				<li class="rscadd">Pilot Officers and Synthetics can now regain control over the dropship by using the console - provided they can hack it for 3 minutes without dying.</li>
+				<li class="bugfix">Folding barricades, just like any other type of barricades, cannot be deployed on the dropships anymore.</li>
+				<li class="bugfix">Intelligence officers now spawn with a pair of insulated gloves.</li>
+				<li class="tweak">MPs were given morgue, SL req, and engineering accesses.</li>
+				<li class="tweak">Predator Young Bloods were renamed to Bloodeds.</li>
+				<li class="tweak">Triggered trap messages in the hivemind now appear in a smaller, italicized font.</li>
+				<li class="tweak">Upon evolving, the hive now gets an accurate message whether T2 or T3 slots are open, instead of a generalized alert.</li>
+			</ul>
+
 			<h2 class="date">05 May 2019</h2>
 			<h3 class="author">Cakey updated:</h3>
 			<ul class="changes bgimages16">
@@ -848,152 +911,6 @@
 				<li class="bugfix">Cleaned up the IV icon tree.</li>
 				<li class="rscdel">Gutted botany bees.</li>
 				<li class="rscdel">Gutted telekinetics.</li>
-			</ul>
-
-			<h2 class="date">11 March 2019</h2>
-			<h3 class="author">MattAtlas updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Reduced Jab stun. Predators should no longer get stunned by Jab.</li>
-				<li class="tweak">Boxer now removes Lunge as well.</li>
-				<li class="tweak">Increased Transfer Health healing.</li>
-				<li class="tweak">Increased Light Armor protection, both ballistic and melee.</li>
-				<li class="tweak">Slightly decreased Vomiter Acid Spray damage.</li>
-				<li class="tweak">Increased the acid spray cooldown on Vomiter.</li>
-				<li class="tweak">Decreased the time it takes for weak acid spray (the Vomiter's) to self-delete.</li>
-				<li class="tweak">Vomiter Acid Spray now knocks you down for a split second so that you don't run through 6 tiles of it immediately.</li>
-				<li class="tweak">Increased the Lower Crest slowdown.</li>
-				<li class="tweak">Decreased Steel Crested Lower Crest defense bonus.</li>
-				<li class="tweak">Increased the Fortify slowdown for Steel Crest defenders.</li>
-				<li class="tweak">The Praetorian Tail Sweep is now a 100% knockdown chance. Defender tail sweep is unaltered.</li>
-				<li class="rscdel">Removed the Crusher's Earthquake strain. It was a decent idea on paper but didn't work so well in game. They'll get something new, so don't lose your hopes yet.</li>
-				<li class="rscdel">Runner Harasser strain has been removed as well. It was too much of a direct upgrade regardless of what could've been done to balance it.</li>
-				<li class="bugfix">Fixed Jab going through walls.</li>
-				<li class="bugfix">Fixed Tremor not telling you what it does.</li>
-			</ul>
-			<h3 class="author">Miraviel updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Big Red. Changed far East and Southeast Caves a bit to make them less of boring, straight corridors.</li>
-				<li class="maptweak">Big Red. Lambda and Eta labs were split up into four areas (area-wise, the building is unchanged).</li>
-				<li class="bugfix">Big Red. Fixed a floating APC (#5709).</li>
-				<li class="bugfix">Made the OB and the Anti-Air cannon parts unacidable.</li>
-				<li class="bugfix">Closed curtains can now be slashed by xenos (#5428).</li>
-				<li class="bugfix">Increased the nutriment values of MREs.</li>
-				<li class="bugfix">Donuts are now tiny items (#5891).</li>
-				<li class="rscadd">Areas close to the LZs on all four maps are now unable to be weeded, trapped, or be built on by xenomorphs during the first bit of the round (30-45 minutes).</li>
-			</ul>
-			<h3 class="author">Slywater updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Empty pods will no longer leave automatically. Instead, they will stay behind until activated manually.</li>
-			</ul>
-
-			<h2 class="date">09 March 2019</h2>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The Self Destruct no longer automatically starts on ship crash.</li>
-				<li class="bugfix">Fixed the containment windows being black voids.</li>
-				<li class="bugfix">Fixed dropship and tank point stores not referencing correctly.</li>
-			</ul>
-			<h3 class="author">MattAtlas updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Increased HEDP stun falloff.</li>
-				<li class="tweak">Locking the dropship via the lockdown button under the cockpit now takes five seconds.</li>
-				<li class="rscdel">Removed ancient and incorrect text about survivors getting survivorbanned if they stick around landing zones.</li>
-				<li class="experiment">Xenomorph Strains have been added to all Xenomorphs excluding Ravager, Sentinel and Lurker (for now)! These new mutators are intended to be 'sidegrade castes', where picking one would change your playstyle. As for what they do? Well... find out yourself!</li>
-				<li class="experiment">Adjustments will be made as time goes on, and others will be added too. They can be bought as you would buy a normal mutator. Keep in mind that they count as Keystones, so you will not be able to buy another Keystone if you have a Strain bought, and viceversa.</li>
-			</ul>
-			<h3 class="author">Miraviel updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Larvae now get a notification once they are ready to evolve.</li>
-				<li class="tweak">The Stats panel for Xenomorphs was tweaked to give more important information in a less cluttered way.</li>
-				<li class="tweak">The Stats panel now notifies the Queen of available leader slots and the number of leftover larvae.</li>
-			</ul>
-			<h3 class="author">RavingManiac updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">If a sentry turret hasn't fired in a while, it will beep before firing.</li>
-				<li class="bugfix">Bullets will no longer pass straight through tanks without hitting anything.</li>
-			</ul>
-			<h3 class="author">ReDikAl.ZiP updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Remade old Riot Suit and Riot Helmet, enjoy!</li>
-			</ul>
-			<h3 class="author">Slywater updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added "Follow ERT", "Follow Survivor", and "Follow Synth" verbs.</li>
-				<li class="rscadd">Added fancier cigarette vendors to the brig and CIC.</li>
-			</ul>
-			<h3 class="author">ThePiachu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">ERTs should work on a proper timer now.</li>
-				<li class="bugfix">Individual Flechette box numbers in Requisitions have been tweaked.</li>
-				<li class="bugfix">Synths should not be able to spam-heal themselves anymore.</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed population scaling issues with the L42-MK1 magazine boxes.</li>
-			</ul>
-
-			<h2 class="date">06 March 2019</h2>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed the UNHOLY LAG caused by nukes. Hopefully.</li>
-				<li class="rscadd">Fridges are now nuke-proof.</li>
-			</ul>
-			<h3 class="author">MattAtlas updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The non-primary dropship may no longer be called down by the Queen.</li>
-				<li class="tweak">Sentry crates now contain high cap cells. When a sentry is built, it automatically spawns with an highcap inside.</li>
-				<li class="tweak">Hivelord plasma storage has been increased.</li>
-				<li class="bugfix">The mateba should now always decapitate. Always. Don't get BE'd...</li>
-			</ul>
-			<h3 class="author">Miraviel updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">The last xenomorph now gets a warning that they are the last one.</li>
-				<li class="rscadd">Larvae get the last hive order in the chat upon bursting.</li>
-				<li class="rscadd">The hive order now displays in the chat.</li>
-				<li class="rscadd">Added entrenching tools to Requisitions and an orderable crate that comes with empty sandbags and two etools (#5580).</li>
-				<li class="tweak">Raised the Pilot Officers' medical skill by one (#5575).</li>
-				<li class="tweak">Added a roller bed to the mini medic PFC kit (#5830).</li>
-				<li class="tweak">Organs from the bioprinter were temporarily removed (#5896).</li>
-				<li class="tweak">Xenomorphs can now slash and destroy resin doors instead of slowly ripping them down.</li>
-				<li class="bugfix">Xenomorphs can no longer destroy resin structures with help intent (#5930).</li>
-				<li class="bugfix">Requisition's Echo supply pad now takes 5 minutes to recharge (#5864).</li>
-				<li class="rscadd">Cryotubes now rapidly heal (and fix!) internal bleeding over time as long as they have cryoxadone or clonexadone in them.</li>
-				<li class="rscadd">Cryotubes now notify bystanders when their patient's internal bleeding is or their external wounds are healed.</li>
-				<li class="maptweak">Almayer. Deck 1's ventillation system, from the OB cannon to the R&R area, was vastly expanded. Not final yet, working on the rest.</li>
-				<li class="maptweak">Almayer. Moved the crew monitoring console to the public area.</li>
-				<li class="maptweak">Almayer. Added a disposal bin and two MarineMeds to the Treatment Center.</li>
-				<li class="maptweak">Almayer. Removed medical masks from the surgery tables and added a status display to the main area.</li>
-				<li class="maptweak">Almayer. The Dropship Fabricator and the public Autolathe were swapped (#5752).</li>
-				<li class="maptweak">Almayer. The Brig Armoury was given two more tactical shotguns and more ammo. Its airlock's access was fixed.</li>
-				<li class="bugfix">Almayer. A dropship crash site was changed so the cockpit won't be in space anymore.</li>
-				<li class="bugfix">Almayer. Removed a camera, very much lost in space; moved overlapping fire alarms elsewhere.</li>
-				<li class="bugfix">Almayer. CIC Armoury and various corridors were given lights; disposals were fixed south of the Pilot Workshop.</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Re-did the L41A visuals. The inhands & mob sprites are unchanged.</li>
-				<li class="spellcheck">Renamed the L41A Battle Rifle to the L42-MK1 Pulse Carbine.</li>
-				<li class="tweak">Moved the Mini-Sniper kit back to the PFC vendors.</li>
-				<li class="spellcheck">Renamed the IFTS Rifleman Kit to the L42-MK1 Sniper kit.</li>
-				<li class="tweak">The L42-MK1 Sniper Kit kit no longer contains an IFTS Mini-scope.</li>
-				<li class="spellcheck">Renamed the First Defense Combat kit to the Forward HPR Shield kit.</li>
-				<li class="spellcheck">Removed all name references to miniature roles.</li>
-				<li class="rscadd">Added L42-MK1 Magazine boxes to ASRS, requisitions vendors.</li>
-				<li class="rscadd">Added M44 PW-MX speed loaders to requisitions vendors.</li>
-				<li class="imageadd">Tweaked the IFTS Mini-Scope visuals.</li>
-				<li class="bugfix">Added empty Smart Pistol belt states.</li>
-			</ul>
-
-			<h2 class="date">04 March 2019</h2>
-			<h3 class="author">MattAtlas updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Heavy armor should now slow you down a little more.</li>
-				<li class="bugfix">Light/Heavy armor should now spawn with randomized icons like normal marine armor.</li>
-				<li class="bugfix">PMC SG armor icons should now work properly on ice colony.</li>
-			</ul>
-			<h3 class="author">NGGJamie updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed the ability to call in DEFCON assets.</li>
 			</ul>
 </div>
 </body>

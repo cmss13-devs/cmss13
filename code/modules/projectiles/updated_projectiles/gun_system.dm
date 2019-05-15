@@ -91,6 +91,8 @@
 	var/gun_skill_category //used to know which job knowledge this gun is linked to
 
 	var/base_gun_icon //the default gun icon_state. change to reskin the gun
+	var/has_empty_icon = TRUE // whether gun has icon state of (base_gun_icon)_e
+	var/has_open_icon = FALSE // whether gun has icon state of (base_gun_icon)_o
 
 
 //----------------------------------------------------------
@@ -195,10 +197,15 @@
 	else
 		overlays = list()
 	
-	if(!current_mag || current_mag.current_rounds <= 0)
-		icon_state = base_gun_icon + "_e"
-	else
-		icon_state = base_gun_icon
+	var/new_icon_state = base_gun_icon
+
+	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
+		new_icon_state += "_e"
+
+	if(has_open_icon && !current_mag.chamber_closed)
+		new_icon_state += "_o"
+
+	icon_state = new_icon_state
 	update_mag_overlay()
 	update_attachables()
 
@@ -451,15 +458,25 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
-	if(flag)	return ..() //It's adjacent, is the user, or is on the user's person
-	if(!istype(A)) return
+	if(flag)	
+		return ..() //It's adjacent, is the user, or is on the user's person
+	if(!istype(A)) 
+		return FALSE
 	if(flags_gun_features & GUN_BURST_FIRING)
 		if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_BURST_FIRING
-		return
-
-	if(user && user.client && user.gun_mode && !(A in target)) PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
-	else															  Fire(A,user,params) //Otherwise, fire normally.
+		return FALSE
+	if(!user && !user.client)
+		return FALSE
+	else if(user.a_intent == "help")
+		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
+			to_chat(user, SPAN_NOTICE("You consider shooting at [A], but do not follow through."))
+		return FALSE
+	else if(user.gun_mode && !(A in target)) 
+		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
+	else															  
+		Fire(A,user,params) //Otherwise, fire normally.
+	return TRUE
 
 /*
 load_into_chamber(), reload_into_chamber(), and clear_jam() do all of the heavy lifting.
@@ -834,7 +851,8 @@ and you're good to go.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3) to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>") //to prevent spam
+			if (world.time % 3) 
+				to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>") //to prevent spam
 			return
 	return 1
 

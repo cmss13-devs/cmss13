@@ -199,6 +199,7 @@
 //=================================================
 
 // bitflags for clothing parts
+#define NO_BODY			0
 #define HEAD			1
 #define FACE			2
 #define EYES			4

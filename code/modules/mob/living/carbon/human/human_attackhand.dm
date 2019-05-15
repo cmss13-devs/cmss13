@@ -192,32 +192,40 @@
 				var/status = ""
 				var/brutedamage = org.brute_dam
 				var/burndamage = org.burn_dam
-				if(halloss > 0)
-					status = "tingling"
-
-				if(brutedamage > 0)
-					status = "bruised"
-				if(brutedamage > 20)
-					status = "battered"
-				if(brutedamage > 40)
-					status = "mangled"
-				if(brutedamage > 0 && burndamage > 0)
-					status += " and "
-				if(burndamage > 40)
-					status += "peeling away"
-
-				else if(burndamage > 10)
-					status += "blistered"
-				else if(burndamage > 0)
-					status += "numb"
-
-				if(!status) status = "OK"
-
-				if(org.status & LIMB_SPLINTED) status += " <b>(SPLINTED)</b>"
-				if(org.status & LIMB_MUTATED)
-					status = "weirdly shapen."
 				if(org.status & LIMB_DESTROYED)
 					status = "MISSING!"
+				else
+					if(org.status & LIMB_MUTATED)
+						if(status)
+							status += " and "
+						status += "weirdly shapen"
+					if(halloss > 0)
+						if(status)
+							status += " and "
+						status += "tingling"
+					if(brutedamage > 0)
+						if(status)
+							status += " and "
+						if(brutedamage > 40)
+							status += "mangled"
+						else if(brutedamage > 20)
+							status += "battered"
+						else
+							status += "bruised"
+					if(burndamage > 0)
+						if(status)
+							status += " and "
+						if(burndamage > 40)
+							status += "peeling away"
+						else if(burndamage > 10)
+							status += "blistered"
+						else
+							status += "numb"
+
+				if(!status)
+					status = "OK"
+				if(org.status & LIMB_SPLINTED) 
+					status += " <b>(SPLINTED)</b>"
 
 				to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
 			if((SKELETON in mutations) && !w_uniform && !wear_suit)
@@ -239,7 +247,7 @@
 					resting = 0
 					update_canmove()
 				M.visible_message("<span class='notice'>[M] shakes [src] trying to wake [t_him] up!", \
-									"<span class='notice'>You shake [src] trying to wake [t_him] up!", null, 4)
+					"<span class='notice'>You shake [src] trying to wake [t_him] up!", null, 4)
 			else
 				var/mob/living/carbon/human/H = M
 				if(istype(H))

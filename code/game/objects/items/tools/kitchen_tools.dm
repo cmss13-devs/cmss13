@@ -92,7 +92,6 @@
 	throwforce = 10.0
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
-
 	suicide_act(mob/user)
 		viewers(user) << pick("<span class='danger'><b>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</b></span>", \
 							"<span class='danger'><b>[user] is slitting \his throat with the [src.name]! It looks like \he's trying to commit suicide.</b></span>", \
@@ -103,9 +102,10 @@
 	if ((CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='danger'>You accidentally cut yourself with the [src].</span>")
 		user.take_limb_damage(20)
-		return
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
-	return ..()
+		return FALSE
+	. = ..()
+	if(.)
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 /obj/item/tool/kitchen/utensil/pknife
 	name = "plastic knife"
@@ -119,8 +119,9 @@
 		to_chat(user, "<span class='danger'>You somehow managed to cut yourself with the [src].</span>")
 		user.take_limb_damage(20)
 		return
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
-	return ..()
+	. = ..()
+	if(.)
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 /*
  * Kitchen knives
@@ -173,8 +174,9 @@
 	edge = 1
 
 /obj/item/tool/kitchen/knife/butcher/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
-	return ..()
+	. = ..()
+	if(.)
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 /*
  * Rolling Pins

@@ -103,3 +103,36 @@
 					prob(2);/obj/effect/spawner/random/toolbox,\
 					prob(2);/obj/item/storage/belt/utility,\
 					prob(5);/obj/effect/spawner/random/tool)
+
+
+/obj/effect/spawner/random/attachment
+	name = "Random Attachment"
+	desc = "This is a random attachment"
+	icon = 'icons/Marine/marine-weapons.dmi'
+	icon_state = "hbarrel"
+	item_to_spawn()
+		return pick(prob(3);/obj/item/attachable/flashlight,\
+					prob(3);/obj/item/attachable/reddot,\
+					prob(3);/obj/item/attachable/quickfire,\
+					prob(3);/obj/item/attachable/extended_barrel,\
+					prob(3);/obj/item/attachable/magnetic_harness,\
+					prob(2);/obj/item/attachable/flashlight/grip,\
+					prob(2);/obj/item/attachable/suppressor,\
+					prob(2);/obj/item/attachable/burstfire_assembly,\
+					prob(2);/obj/item/attachable/compensator,\
+					prob(1);/obj/item/attachable/scope/mini_iff,\
+					prob(1);/obj/item/attachable/heavy_barrel,\
+					prob(1);/obj/item/attachable/scope/mini)
+
+
+/obj/effect/spawner/random/supply_kit
+	name = "Random Supply Kit"
+	desc = "This is a random kit."
+	icon = 'icons/Marine/pro_case.dmi'
+	icon_state = "pro_case_mini"
+	item_to_spawn()
+		return pick(prob(3);/obj/item/storage/box/kit/pursuit,\
+					prob(3);/obj/item/storage/box/kit/mini_intel,\
+					prob(3);/obj/item/storage/box/kit/mini_jtac,\
+					prob(2);/obj/item/storage/box/kit/mou53_sapper,\
+					prob(1);/obj/item/storage/box/kit/heavy_support)

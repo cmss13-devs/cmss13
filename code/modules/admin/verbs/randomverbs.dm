@@ -682,8 +682,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 	if (M.client)
 		M.ghostize()
-	log_admin("[key_name(usr)] modified [M.name]/(M.ckey)'s ckey to [new_ckey]")
-	message_admins("[key_name_admin(usr)] modified [M.name]/(M.ckey)'s ckey to [new_ckey]", 1)
+	log_admin("[key_name(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]")
+	message_admins("[key_name_admin(usr)] modified [M.name]/([M.ckey])'s ckey to [new_ckey]", 1)
 	feedback_add_details("admin_verb","CHANGEKEY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	M.ckey = new_ckey
 

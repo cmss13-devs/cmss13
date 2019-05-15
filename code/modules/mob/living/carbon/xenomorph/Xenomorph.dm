@@ -34,6 +34,7 @@
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
 	var/armor_deflection_buff = 0
+	var/armor_explosive_buff = 0
 	var/armor_integrity = 100
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0

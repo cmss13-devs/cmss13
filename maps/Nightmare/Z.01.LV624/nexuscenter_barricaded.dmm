@@ -142,7 +142,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "as" = (
-/obj/item/limb/l_arm,
+/obj/item/limb/arm/l_arm,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
@@ -252,7 +252,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aF" = (
-/obj/item/limb/r_foot,
+/obj/item/limb/foot/r_foot,
 /obj/structure/table{
 	dir = 8;
 	flipped = 1
@@ -265,7 +265,7 @@
 /area/lv624/lazarus/main_hall)
 "aG" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/item/limb/l_arm,
+/obj/item/limb/arm/l_arm,
 /obj/item/frame/table,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
@@ -292,7 +292,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aJ" = (
-/obj/item/limb/r_hand,
+/obj/item/limb/hand/r_hand,
 /obj/structure/table{
 	dir = 4;
 	flipped = 1
@@ -359,7 +359,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aR" = (
-/obj/item/limb/r_foot,
+/obj/item/limb/foot/r_foot,
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -415,7 +415,7 @@
 /area/lv624/lazarus/main_hall)
 "aY" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/item/limb/l_arm,
+/obj/item/limb/arm/l_arm,
 /obj/structure/table{
 	dir = 4;
 	flipped = 1
@@ -551,7 +551,7 @@
 /area/lv624/lazarus/main_hall)
 "bp" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/item/limb/l_foot,
+/obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -659,7 +659,7 @@
 /area/lv624/lazarus/main_hall)
 "bB" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/item/limb/l_foot,
+/obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -671,7 +671,7 @@
 	pixel_y = 12
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/item/limb/l_hand,
+/obj/item/limb/hand/l_hand,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -769,7 +769,7 @@
 /area/lv624/lazarus/main_hall)
 "bM" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/item/limb/r_leg,
+/obj/item/limb/leg/r_leg,
 /obj/structure/table{
 	dir = 2;
 	flipped = 1

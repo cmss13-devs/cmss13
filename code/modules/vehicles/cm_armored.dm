@@ -317,7 +317,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 				msg += " It's busted!"
 			else if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
 				msg += " It's at [round(P, 1)]% integrity!"
-			user << msg
+			to_chat(user, msg)
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/root/cm_armored/healthcheck()
@@ -474,7 +474,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 
 	if(ammo_flags & AMMO_ANTISTRUCT)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
-		damage = round(damage * 1.5)
+		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_XENO_ACID) 
 		dam_type = "acid"
 

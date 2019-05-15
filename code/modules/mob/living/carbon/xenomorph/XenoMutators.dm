@@ -86,16 +86,40 @@
 	
 	var/datum/new_ammo = /datum/ammo/xeno/railgun_glob
 	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
+	if(B.is_zoomed)
+		B.zoom_out()
 	B.bombard_speed = 15 + round(MS.bombard_cooldown * 0.5)
 	MS.bombard_cooldown = 0
 	MS.min_bombard_dist = 0
-	B.bomb_delay = 125
+	B.bomb_delay = 5 SECONDS
+	B.remove_action("Toggle Bombard Type")
 	B.ammo = ammo_list[new_ammo]
-	B.railgun = TRUE
+	B.mutation_type = BOILER_RAILGUN
 	B.tileoffset = 9
 	B.viewsize = 14
+	mutator_update_actions(B)
 	MS.recalculate_actions(description)
-	
+
+/datum/xeno_mutator/shatterglob
+	name = "STRAIN: Boiler - Shatter Glob"
+	description = "Instead of leaving a lasting cloud of gas, your two bombard types will now detonate upon hitting the ground, spraying the area with splashes and drops of acid or neurotoxin."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Boiler")
+	mutator_actions_to_remove = null
+	mutator_actions_to_add = null
+	keystone = TRUE
+
+/datum/xeno_mutator/shatterglob/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if(. == 0)
+		return
+
+	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
+	B.bomb_delay = 250 // 25s flat, doesn't decrease with maturity anymore
+	B.mutation_type = BOILER_SHATTER
+	MS.recalculate_actions(description)
+
 
 /datum/xeno_mutator/royal_guard
 	name = "STRAIN: Praetorian - Royal Guard"

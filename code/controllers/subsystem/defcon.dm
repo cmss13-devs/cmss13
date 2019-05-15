@@ -13,11 +13,19 @@ var/datum/subsystem/defcon/SSdefcon
 	if(!defcon_controller)
 		defcon_controller = new /datum/defcon()
 
-/datum/subsystem/defcon/Initialize()
+/datum/subsystem/defcon/Initialize(start_timeofday)
+	//text2file("DEFCON initialization started","data/defcon_log.txt")
 	if(!defcon_controller)
 		defcon_controller = new /datum/defcon()
+	var/time = (world.timeofday - start_timeofday) / 10
+	var/msg = "Initialized [name] subsystem within [time] seconds!"
+	to_world("[SPAN_DANGER(msg)]")
 
 /datum/subsystem/defcon/fire()
+
+	// If our lists aren't initialized AND we can't initialize them, return 
+	if (!defcon_controller.lists_initialized && !defcon_controller.initialize_level_triggers_by_map())
+		return 
 
 	defcon_controller.check_defcon_level()
 

@@ -21,6 +21,8 @@
 
 	stat("Time:","[worldtime2text()]")
 
+	stat("Plasma:", "[round(plasma_stored)]/[round(plasma_max)]")
+
 	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
 		stat("Evolve Progress:", "[round(amount_grown)]/[max_grown]")
 	else if(!hive.living_xeno_queen)
@@ -462,7 +464,7 @@
 
 
 //This is depricated. Use handle_collision() for all future speed changes. ~Bmc777
-/mob/living/carbon/Xenomorph/proc/stop_momentum(direction, stunned)
+/mob/living/carbon/Xenomorph/proc/stop_momentum(direction)
 	if(!lastturf) r_FAL //Not charging.
 	if(charge_speed > charge_speed_buildup * charge_turfs_to_charge) //Message now happens without a stun condition
 		visible_message("<span class='danger'>[src] skids to a halt!</span>",

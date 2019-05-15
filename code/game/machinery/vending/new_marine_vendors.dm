@@ -18,8 +18,9 @@
 #define MARINE_CAN_BUY_ESSENTIALS	4096
 #define MARINE_CAN_BUY_ATTACHMENT	8192
 #define MARINE_CAN_BUY_MRE			16384
+#define MARINE_CAN_BUY_ACCESSORY	32768
 
-#define MARINE_CAN_BUY_ALL			32767
+#define MARINE_CAN_BUY_ALL			65535
 
 #define MARINE_TOTAL_BUY_POINTS			45
 
@@ -312,7 +313,7 @@
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-		
+
 
 		list("ARMOR (choose 1)", 0, null, null, null),
 		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
@@ -423,7 +424,6 @@
 /obj/machinery/marine_selector/clothes/engi
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = "Squad Engineer"
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -434,7 +434,7 @@
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("Welding glasses", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-		
+
 
 		list("ARMOR (choose 1)", 0, null, null, null),
 		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
@@ -462,6 +462,11 @@
 		list("Medium general pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Tools pouch", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/tie/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -497,7 +502,6 @@
 /obj/machinery/marine_selector/clothes/medic
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = "Squad Medic"
-	gives_webbing = TRUE
 
 	listed_products = list(
 		list("STANDARD EQUIPMENT (take all)", 0, null, null, null),
@@ -507,7 +511,7 @@
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-		
+
 
 		list("ARMOR (choose 1)", 0, null, null, null),
 		list("Light armor", 0, /obj/item/clothing/suit/storage/marine/class/light, MARINE_CAN_BUY_ARMOR, "white"),
@@ -531,11 +535,16 @@
 		list("Medkit pouch", 0, /obj/item/storage/pouch/medkit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "orange"),
 		list("Autoinjector pouch", 0, /obj/item/storage/pouch/autoinjector, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Magazine pouch", 0, /obj/item/storage/pouch/magazine, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
-		list("Medium general pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+		list("Large general pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Flare pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Firstaid pouch", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Large pistol magazine pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("ACCESSORIES", 0, null, null, null),
+		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/tie/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -587,7 +596,7 @@
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-		
+
 
 		list("BELT (choose 1)", 0, null, null, null),
 		list("M39 holster belt", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, "orange"),
@@ -649,7 +658,7 @@
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-		
+
 
 		list("BACKPACK (choose 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
@@ -661,6 +670,7 @@
 		list("M39 holster belt", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, "black"),
 		list("Pistol belt", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
 		list("Revolver belt", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, "black"),
+		list("G8-A general utility pouch", 0, /obj/item/storage/sparepouch, MARINE_CAN_BUY_BELT, "black"),
 		list("Shotgun ammo belt", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, "black"),
 		list("Standard ammo belt", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, "black"),
 
@@ -721,7 +731,7 @@
 		list("Gloves", 0, /obj/item/clothing/gloves/marine, MARINE_CAN_BUY_GLOVES, "white"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, "white"),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, "white"),
-		
+
 
 		list("BACKPACK (choose 1)", 0, null, null, null),
 		list("Backpack", 0, /obj/item/storage/backpack/marine, MARINE_CAN_BUY_BACKPACK, "black"),
@@ -846,6 +856,33 @@
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, "black"),
 	)
 
+/obj/machinery/marine_selector/clothes/intelligence_officer
+	name = "Intelligence Officer Equipment Rack"
+	req_access = list(ACCESS_MARINE_BRIDGE)
+	vendor_role = "Intelligence Officer"
+
+	listed_products = list(
+		list("INTELLIGENCE SET (Mandatory)", 0, null, null, null),
+		list("Essential Intelligence Set", 0, /obj/effect/essentials_set/intelligence_officer, MARINE_CAN_BUY_ESSENTIALS, "white"),
+
+		list("STANDARD EQUIPMENT", 0, null, null, null),
+		list("Uniform", 0, /obj/item/clothing/under/marine/officer/intel, MARINE_CAN_BUY_UNIFORM, "black"),
+		list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "black"),
+		list("Gloves", 0, /obj/item/clothing/gloves/yellow, MARINE_CAN_BUY_GLOVES, "black"),
+		list("Armor", 0, /obj/item/clothing/suit/storage/marine/intel, MARINE_CAN_BUY_ARMOR, "black"),
+		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "black"),
+		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, "black"),
+		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("M4A3 holster rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
+		list("Document pouch", 0, /obj/item/storage/pouch/document, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
+
+		list("HELMET (choose 1)", 0, null, null, null),
+		list("XM12 pattern intelligence helmet", 0, /obj/item/clothing/head/helmet/marine/intel, MARINE_CAN_BUY_HELMET, "black"),
+		list("Beret, standard", 0, /obj/item/clothing/head/beret/cm, MARINE_CAN_BUY_HELMET, "black"),
+		list("Beret, tan", 0, /obj/item/clothing/head/beret/cm/tan, MARINE_CAN_BUY_HELMET, "black"),
+		list("USCM officer cap", 0, /obj/item/clothing/head/cmcap/ro, MARINE_CAN_BUY_HELMET, "black"),
+	)
+
 
 ////////////////////// Gear ///////////////////////////////////////////////////////
 
@@ -925,6 +962,9 @@
 		list("Submachinegun stock", 10, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 10, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 10, /obj/item/attachable/verticalgrip, null, "black"),
+
+		list("MISCELLANEOUS", 0, null, null, null),
+		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 	)
 
 
@@ -1270,6 +1310,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/storage/firstaid/adv,
 		/obj/item/device/healthanalyzer,
 		/obj/item/roller/medevac,
+		/obj/item/roller,
 	)
 
 /obj/effect/essentials_set/engi
@@ -1389,6 +1430,12 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/explosive/grenade/incendiary,
 	)
 
+/obj/effect/essentials_set/intelligence_officer
+	spawned_gear_list = list(
+		/obj/item/tool/crowbar,
+		/obj/item/stack/fulton
+	)
+
 #undef MARINE_CAN_BUY_UNIFORM
 #undef MARINE_CAN_BUY_SHOES
 #undef MARINE_CAN_BUY_HELMET
@@ -1403,6 +1450,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 #undef MARINE_CAN_BUY_MASK
 #undef MARINE_CAN_BUY_ESSENTIALS
 #undef MARINE_CAN_BUY_MRE
+#undef MARINE_CAN_BUY_ACCESSORY
 
 #undef MARINE_CAN_BUY_ALL
 #undef MARINE_TOTAL_BUY_POINTS

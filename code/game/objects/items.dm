@@ -707,10 +707,14 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 			to_chat(user, "<span class='warning'>You are already looking through \the [zoom_device].</span>")
 			return //Return in the interest of not unzooming the other item. Check first in the interest of not fucking with the other clauses
 
-	if(user.eye_blind) 												to_chat(user, "<span class='warning'>You are too blind to see anything.</span>")
-	else if(user.stat || !ishuman(user)) 							to_chat(user, "<span class='warning'>You are unable to focus through \the [zoom_device].</span>")
-	else if(!zoom && user.client && user.update_tint()) 			to_chat(user, "<span class='warning'>Your welding equipment gets in the way of you looking through \the [zoom_device].</span>")
-	else if(!zoom && user.get_active_hand() != src)					to_chat(user, "<span class='warning'>You need to hold \the [zoom_device] to look through it.</span>")
+	if(user.eye_blind) 												
+		to_chat(user, "<span class='warning'>You are too blind to see anything.</span>")
+	else if(user.stat || !ishuman(user)) 							
+		to_chat(user, "<span class='warning'>You are unable to focus through \the [zoom_device].</span>")
+	else if(!zoom && user.client && user.update_tint()) 			
+		to_chat(user, "<span class='warning'>Your welding equipment gets in the way of you looking through \the [zoom_device].</span>")
+	else if(!zoom && user.get_active_hand() != src)					
+		to_chat(user, "<span class='warning'>You need to hold \the [zoom_device] to look through it.</span>")
 	else if(zoom) //If we are zoomed out, reset that parameter.
 		user.visible_message(SPAN_NOTICE("[user] looks up from [zoom_device]."),
 		SPAN_NOTICE("You look up from [zoom_device]."))

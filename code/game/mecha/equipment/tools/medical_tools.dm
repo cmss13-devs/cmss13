@@ -490,7 +490,7 @@
 				if(m>=synth_speed)
 					break
 				var/reagent = filterhref.get("reagent_[i]")
-				if(reagent && (reagent in known_reagents))
+				if(reagent && known_reagents[reagent])
 					message = "[m ? ", " : null][known_reagents[reagent]]"
 					processed_reagents += reagent
 					m++

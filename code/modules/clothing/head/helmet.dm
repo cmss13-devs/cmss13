@@ -301,7 +301,7 @@
 
 		if(!helmet_overlays["item"])
 			var/obj/O = pockets.contents[1]
-			if(O.type in allowed_helmet_items)
+			if(allowed_helmet_items[O.type])
 				var/image/I = image('icons/obj/clothing/cm_hats.dmi', src, "[allowed_helmet_items[O.type]][O.type == /obj/item/tool/lighter/random ? O:clr : ""]")
 				helmet_overlays["item"] = I
 

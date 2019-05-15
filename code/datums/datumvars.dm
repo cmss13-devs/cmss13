@@ -196,6 +196,7 @@ client
 			body += "<option value='?_src_=vars;addorgan=\ref[D]'>Add Organ</option>"
 			body += "<option value='?_src_=vars;remorgan=\ref[D]'>Remove Organ</option>"
 			body += "<option value='?_src_=vars;addlimb=\ref[D]'>Add Limb</option>"
+			body += "<option value='?_src_=vars;amplimb=\ref[D]'>Amputate Limb</option>"
 			body += "<option value='?_src_=vars;remlimb=\ref[D]'>Remove Limb</option>"
 
 			body += "<option value='?_src_=vars;fix_nano=\ref[D]'>Fix NanoUI</option>"
@@ -960,6 +961,28 @@ client
 		M.updatehealth()
 		M.UpdateDamageIcon()
 
+	else if(href_list["amplimb"])
+		if(!check_rights(R_SPAWN))	return
+
+		var/mob/living/carbon/human/M = locate(href_list["amplimb"])
+		if(!istype(M))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
+			return
+
+		var/rem_limb = input("Please choose a limb to remove.","Organ",null) as null|anything in M.limbs
+
+		if(!M)
+			to_chat(usr, "Mob doesn't exist anymore")
+			return
+
+		var/datum/limb/EO = locate(rem_limb) in M.limbs
+		if(!EO)
+			return
+		if(EO.status & LIMB_DESTROYED)
+			to_chat(usr, "Mob doesn't have that limb.")
+			return
+		EO.droplimb(1)
+
 	else if(href_list["remlimb"])
 		if(!check_rights(R_SPAWN))	return
 
@@ -980,8 +1003,7 @@ client
 		if(EO.status & LIMB_DESTROYED)
 			to_chat(usr, "Mob doesn't have that limb.")
 			return
-		EO.droplimb(1)
-
+		EO.droplimb()
 
 	else if(href_list["fix_nano"])
 		if(!check_rights(R_DEBUG)) return

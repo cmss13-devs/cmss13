@@ -88,6 +88,7 @@
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
 
 /mob/living/carbon/Xenomorph/Burrower/New()

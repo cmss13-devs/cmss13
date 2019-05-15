@@ -248,7 +248,7 @@
 	clear_tripwires()
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if((istype(X, /mob/living/carbon/Xenomorph)) && (X.hivenumber == hivenumber))
-			to_chat(X, "<span class='xenoannounce'>You sense one of your Hive's hugger traps at [A.name] has been burnt!</span>")
+			to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's hugger traps at [A.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/trigger_trap(var/destroyed = FALSE)
 	set waitfor = 0
@@ -271,9 +271,9 @@
 		for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 			if(X.hivenumber == hivenumber)
 				if(destroyed)
-					to_chat(X, "<span class='xenoannounce'>You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!</span>")
+					to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
 				else
-					to_chat(X, "<span class='xenoannounce'>You sense one of your Hive's [trap_type_name] traps at [A.name] has been triggered!</span>")
+					to_chat(X, SPAN_XENOMINORWARNING("You sense one of your Hive's [trap_type_name] traps at [A.name] has been triggered!"))
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
@@ -476,7 +476,7 @@
 			new /obj/effect/alien/weeds(loc)
 
 		for(var/turf/closed/wall/W in orange(1))
-			W.update_connections(1)
+			W.update_connections()
 			W.update_icon()
 	..()
 

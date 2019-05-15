@@ -556,15 +556,27 @@
 
 /datum/action/xeno_action/toggle_bomb/action_activate()
 	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-	var/activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	var/activation_msg = "If you see this, something broke."
+	if(X.mutation_type == BOILER_SHATTER)
+		activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas/shatter ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
+	else
+		activation_msg = "You will now fire [X.ammo.type == /datum/ammo/xeno/boiler_gas ? "corrosive acid. This is lethal!" : "neurotoxic gas. This is nonlethal."]"
 	to_chat(X, SPAN_NOTICE("[activation_msg]"))
 	button.overlays.Cut()
-	if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
-		X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
-		button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+	if(X.mutation_type == BOILER_SHATTER) // Shatter mutation special logic
+		if(X.ammo.type == /datum/ammo/xeno/boiler_gas/shatter)
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter/acid]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+		else
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/shatter]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
 	else
-		X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
-		button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
+		if(X.ammo.type == /datum/ammo/xeno/boiler_gas)
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas/corrosive]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb1")
+		else
+			X.ammo = ammo_list[/datum/ammo/xeno/boiler_gas]
+			button.overlays += image('icons/mob/actions.dmi', button, "toggle_bomb0")
 
 /datum/action/xeno_action/bombard
 	name = "Bombard"
@@ -832,7 +844,10 @@
 		X.tunnel_delay = 0
 	var/msg = copytext(sanitize(input("Add a description to the tunnel:", "Tunnel Description") as text|null), 1, MAX_MESSAGE_LEN)
 	if(msg)
-		X.start_dig.tunnel_desc = msg
+		msg = "[msg] ([get_area_name(X.start_dig)])"
+		log_admin("[key_name(X)] has named a new tunnel \"[msg]\".")
+		msg_admin_niche("[X]/([key_name(X)]) has named a new tunnel \"[msg]\".")
+		X.start_dig.tunnel_desc = "[msg]"
 
 	X.use_plasma(plasma_cost)
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)

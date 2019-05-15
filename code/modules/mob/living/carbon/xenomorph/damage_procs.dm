@@ -12,9 +12,9 @@
 	var/damage = severity
 	
 	var/cfg = armor_deflection==0 ? config.xeno_explosive_small : config.xeno_explosive
-
-	damage = armor_damage_reduction(cfg, damage, caste.xeno_explosion_resistance, pierce, 1, 0.5, armor_integrity)
-	var/armor_punch = armor_break_calculation(cfg, damage, caste.xeno_explosion_resistance, pierce, 1, 0.5, armor_integrity)
+	var/total_explosive_resistance = caste.xeno_explosion_resistance + armor_explosive_buff
+	damage = armor_damage_reduction(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
+	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 	
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
@@ -28,10 +28,14 @@
 		updatehealth()
 
 		var/knock_value = min( round( damage * 0.05 ,1) ,5) //unlike in humans, damage is used instead of severity to prevent t3 stunlocking
-		if(knock_value > 0 && caste.xeno_explosion_resistance < 60)
+		if(knock_value > 0 && total_explosive_resistance < 60)
 			KnockDown(knock_value)
 			KnockOut(knock_value)
 			explosion_throw(severity, direction)
+		else if(knock_value == 5)
+			KnockDown(1)
+			KnockOut(1)
+
 
 
 /mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, blocked = 0, used_weapon = null, sharp = 0, edge = 0)
@@ -77,7 +81,10 @@
 	//Immunity check
 	if(world.time < armor_integrity_immunity_time && world.time>armor_integrity_last_damage_time + XENO_ARMOR_BREAK_PASS_TIME)
 		visible_message(SPAN_XENOWARNING("[src]'s broken exoskeleton plate takes the force of the impact!"))		
-		return 1	
+		return 1
+	
+	if(world.time>armor_integrity_immunity_time)
+		armor_integrity_immunity_time = world.time
 
 	armor_integrity_last_damage_time = world.time
 
@@ -97,7 +104,7 @@
 	var/delay = ((old_integrity - armor_integrity)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
 
 	if(delay>2)
-		armor_integrity_immunity_time = world.time + delay
+		armor_integrity_immunity_time += delay
 	updatehealth()
 	return 1
 
@@ -127,7 +134,7 @@
 		var/distance = 0 //Distance, decreases splash chance.
 		var/i = 0 //Tally up our victims.
 
-		for(var/mob/living/carbon/human/victim in range(radius,src)) //Loop through all nearby victims, including the tile.
+		for(var/mob/living/carbon/human/victim in orange(radius,src)) //Loop through all nearby victims, including the tile.
 			distance = get_dist(src,victim)
 
 			splash_chance = 80 - (i * 5)

@@ -106,3 +106,8 @@
 #define ARMOR_BOMB 16
 #define ARMOR_BIO 32
 #define ARMOR_RAD 64
+
+// Related to damage that ANTISTRUCT ammo types deal to structures
+#define ANTISTRUCT_DMG_MULT_BARRICADES 1.45
+#define ANTISTRUCT_DMG_MULT_WALL 2.5
+#define ANTISTRUCT_DMG_MULT_TANK 1.5

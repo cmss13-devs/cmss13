@@ -295,6 +295,12 @@
 	icon_state = "smock"
 	worn_accessible = TRUE
 
+/obj/item/storage/backpack/marine/rocketpack
+	name = "\improper M22 rocket bags"
+	desc = "Specially designed bags made to hold rockets."
+	icon_state = "rocketpack"
+	worn_accessible = TRUE
+
 #define SCOUT_CLOAK_COOLDOWN 100
 #define SCOUT_CLOAK_TIMER 50
 // Scout Cloak
@@ -307,6 +313,7 @@
 	var/camo_active = 0
 	var/camo_active_timer = 0
 	var/camo_cooldown_timer = 0
+	var/camo_cooldown_start_time = 0
 	var/camo_ready = 1
 	actions_types = list(/datum/action/item_action)
 
@@ -359,7 +366,7 @@
 	spawn(1)
 		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
-	camo_active_timer = world.timeofday + SCOUT_CLOAK_TIMER
+	camo_active_timer = world.time + SCOUT_CLOAK_TIMER
 	process_active_camo(usr)
 	return 1
 
@@ -383,14 +390,15 @@
 	spawn(1)
 		anim(user.loc,user,'icons/mob/mob.dmi',,"uncloak",,user.dir)
 
-	camo_cooldown_timer = world.timeofday + SCOUT_CLOAK_COOLDOWN
+	camo_cooldown_timer = world.time + SCOUT_CLOAK_COOLDOWN
+	camo_cooldown_start_time = world.time
 	process_camo_cooldown(user)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/process_camo_cooldown(var/mob/user)
 	set background = 1
 
 	spawn while (!camo_ready && !camo_active)
-		if (world.timeofday > camo_cooldown_timer)
+		if (world.time > camo_cooldown_timer)
 			to_chat(user, "<span class='notice'>Your cloak's thermal dampeners have recharged!")
 			camo_ready = 1
 
@@ -400,7 +408,7 @@
 	set background = 1
 
 	spawn while (camo_active)
-		if (world.timeofday > camo_active_timer)
+		if (world.time > camo_active_timer)
 			camo_active = 0
 			camo_off(user)
 

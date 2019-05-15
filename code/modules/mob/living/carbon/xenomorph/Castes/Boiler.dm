@@ -71,7 +71,7 @@
 	var/bomb_cooldown = 0
 	var/bomb_delay = 200 //20 seconds per glob at Young, -2.5 per upgrade down to 10 seconds
 	var/bombard_speed = 50 //50 for normal boiler, 25 for Railgun boiler
-	var/railgun = FALSE //No proj spread for railgun boilers.
+	var/mutation_type = BOILER_NORMAL
 
 	tileoffset = 5
 	viewsize = 12
@@ -141,7 +141,7 @@
 	var/offset_x = 0
 	var/offset_y = 0
 
-	if(!railgun)
+	if(mutation_type != BOILER_RAILGUN)
 		offset_x = rand(-1, 1)
 		offset_y = rand(-1, 1)
 
@@ -164,7 +164,7 @@
 	var/time_remaining = do_after(src, bombard_speed, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE)
 	var/temp_damage = ammo.damage // stores the damage so that it can be reverted
 
-	if(time_remaining && !railgun)
+	if(time_remaining && (mutation_type != BOILER_RAILGUN))
 		bomb_cooldown = 0
 		to_chat(src, SPAN_WARNING("You decide not to launch any acid."))
 		return
@@ -184,9 +184,14 @@
 	P.fire_at(target, src, null, ammo.max_range, ammo.shell_speed)
 	playsound(src, 'sound/effects/blobattack.ogg', 25, 1)
 
-	if(railgun)
+	if(mutation_type == BOILER_RAILGUN)
 		round_statistics.boiler_railgun_shots++
-	else
+	if(mutation_type == BOILER_SHATTER)
+		if(ammo.type == /datum/ammo/xeno/boiler_gas/shatter/acid)
+			round_statistics.boiler_shatter_acid_shots++
+		else
+			round_statistics.boiler_shatter_neuro_shots++
+	if(mutation_type == BOILER_NORMAL)
 		if(ammo.type == /datum/ammo/xeno/boiler_gas/corrosive)
 			round_statistics.boiler_acid_smokes++
 		else

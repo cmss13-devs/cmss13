@@ -325,7 +325,7 @@
 //Be SURE to add any new equipment to this switch, but don't be suprised if it spits out children objects
 	if(part.vars.Find("construction_time") && part.vars.Find("construction_cost"))
 		for(var/resource in part:construction_cost)
-			if(resource in src.resources)
+			if(src.resources[resource])
 				src.resources[resource] -= get_resource_cost_w_coeff(part,resource)
 	else
 		return
@@ -335,7 +335,7 @@
 //Be SURE to add any new equipment to this switch, but don't be suprised if it spits out children objects
 	if(part.vars.Find("construction_time") && part.vars.Find("construction_cost"))
 		for(var/resource in part:construction_cost)
-			if(resource in src.resources)
+			if(src.resources[resource])
 				if(src.resources[resource] < get_resource_cost_w_coeff(part,resource))
 					return 0
 		return 1
@@ -371,7 +371,7 @@
 	return
 
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(set_name)
-	if(set_name in part_sets)
+	if(part_sets[set_name])
 		var/list/part_set = part_sets[set_name]
 		if(islist(part_set))
 			for(var/obj/item/part in part_set)
@@ -731,6 +731,9 @@
 
 /obj/machinery/mecha_part_fabricator/attackby(obj/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/screwdriver))
+		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
+			return
 		if (!opened)
 			opened = 1
 			icon_state = "fab-o"
@@ -742,6 +745,9 @@
 		return
 	if (opened)
 		if(istype(W, /obj/item/tool/crowbar))
+			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
+				to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
+				return
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			var/obj/machinery/constructable_frame/machine_frame/M = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 			M.state = 2

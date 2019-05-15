@@ -17,8 +17,9 @@
 	var/shardsize
 
 /obj/item/shard/attack(mob/living/carbon/M, mob/living/carbon/user)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 6)
-	return ..()
+	. = ..()
+	if(.)
+		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 6)
 
 
 /obj/item/shard/New()

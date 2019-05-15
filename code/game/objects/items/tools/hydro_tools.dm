@@ -115,11 +115,8 @@
 	edge = 1
 	matter = list("metal" = 15000)
 	origin_tech = "materials=2;combat=1"
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("chopped", "torn", "cut")
-
-/obj/item/tool/hatchet/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
-	return ..()
 
 
 /obj/item/tool/scythe

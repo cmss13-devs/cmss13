@@ -17,6 +17,8 @@
 
 /datum/ammo
 	var/name 		= "generic bullet"
+	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
+	var/impact_limbs = NO_BODY // The body parts that have an impact icon
 	var/icon 		= 'icons/obj/items/projectiles.dmi'
 	var/icon_state 	= "bullet"
 	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
@@ -132,8 +134,9 @@
 		var/damage = P.damage/damage_div
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/XNO = M
-			damage = armor_damage_reduction(config.xeno_explosive, damage, XNO.caste.xeno_explosion_resistance, 0, 0, 0.5, XNO.armor_integrity)
-			var/armor_punch = armor_break_calculation(config.xeno_explosive, damage, XNO.caste.xeno_explosion_resistance, 0, 0, 0.5, XNO.armor_integrity)
+			var/total_explosive_resistance = XNO.caste.xeno_explosion_resistance + XNO.armor_explosive_buff
+			damage = armor_damage_reduction(config.xeno_explosive, damage, total_explosive_resistance , 60, 0, 0.5, XNO.armor_integrity)
+			var/armor_punch = armor_break_calculation(config.xeno_explosive, damage, total_explosive_resistance, 60, 0, 0.5, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)
 		
 		M.apply_damage(damage,damage_type)
@@ -354,6 +357,8 @@
 
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"
+	impact_name = "mateba"
+	impact_limbs = HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
 /datum/ammo/bullet/revolver/highimpact/New()
@@ -369,10 +374,7 @@
 		user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(user.Adjacent(H))
-				H.apply_damage(500,BRUTE,"head") //not coming back
-				for(var/datum/limb/L in H.limbs)
-					if(L.name == "head")
-						L.droplimb()
+				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs) //not coming back
 				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
 		else
 			return -1
@@ -401,7 +403,7 @@
 	..()
 	scatter = config.min_scatter_value
 	damage = config.low_hit_damage
-	penetration = config.med_armor_penetration
+	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
 
@@ -449,8 +451,8 @@
 
 /datum/ammo/bullet/rifle/ap/New()
 	..()
-	damage = config.hlmed_hit_damage
-	penetration = config.hmed_armor_penetration
+	damage = config.hlow_hit_damage
+	penetration = config.med_armor_penetration
 	shell_speed = config.super_shell_speed
 	damage_falloff = config.reg_damage_falloff
 
@@ -529,6 +531,8 @@
 
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
+	impact_name = "slug"
+	impact_limbs = HEAD
 
 /datum/ammo/bullet/shotgun/slug/New()
 	..()
@@ -631,11 +635,12 @@
 	max_range = config.close_shell_range
 	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
-	damage_var_high = config.med_proj_variance
+	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	penetration	= 0
 	bonus_projectiles_amount = config.low_proj_extra
 	shell_speed = config.reg_shell_speed
+	damage_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
@@ -660,11 +665,12 @@
 	max_range = config.close_shell_range
 	damage = config.mhigh_hit_damage
 	damage_var_low = config.low_proj_variance
-	damage_var_high = config.med_proj_variance
+	damage_var_high = config.low_proj_variance
 	damage_falloff = config.buckshot_v2_damage_falloff
 	penetration = 0
 	shell_speed = config.reg_shell_speed
 	scatter = config.ultra_scatter_value
+	damage_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/spread/masterkey/New()
 	..()
@@ -809,9 +815,9 @@
 		accurate_range = config.short_shell_range
 		accuracy = config.max_hit_accuracy
 		damage_falloff = config.tactical_damage_falloff
-		damage = config.med_hit_damage
+		damage = config.lmed_plus_hit_damage
 		penetration = config.low_armor_penetration
-		damage_armor_punch = 0.5
+		damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/lethal
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -819,7 +825,7 @@
 
 /datum/ammo/bullet/smartgun/lethal/New()
 	..()
-	damage = config.hmed_hit_damage
+	damage = config.lmed_plus_hit_damage
 	penetration= config.low_armor_penetration
 
 /datum/ammo/bullet/smartgun/dirty
@@ -852,7 +858,7 @@
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.norm_shell_range
-	damage = config.med_hit_damage
+	damage = config.lmed_hit_damage
 	penetration = config.mlow_armor_penetration
 	accuracy = config.high_hit_accuracy
 
@@ -1033,15 +1039,19 @@
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
 	explosion_rec(get_turf(M), 220, 50)
+	explosion_rec(get_turf(M), 200, 100)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50)
+	explosion_rec(get_turf(O), 220, 50)
+	explosion_rec(get_turf(O), 200, 100)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	explosion_rec(get_turf(P), 220, 50)
+	explosion_rec(get_turf(T), 220, 50)
+	explosion_rec(get_turf(T), 200, 100)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
 	explosion_rec(get_turf(P), 220, 50)
+	explosion_rec(get_turf(P), 200, 100)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
@@ -1286,6 +1296,18 @@
 	max_range = config.min_shell_range
 	shell_speed = config.reg_shell_speed
 
+/datum/ammo/xeno/toxin/shatter // Used by boiler shatter glob strain
+	name = "neurotoxin spatter"
+
+/datum/ammo/xeno/toxin/shatter/New()
+	..()
+	accuracy = config.med_hit_accuracy
+	accurate_range = config.max_shell_range
+	point_blank_range = -1
+	max_range = config.close_shell_range
+	shell_speed = config.slow_shell_speed
+	scatter = config.med_scatter_value
+
 /datum/ammo/xeno/sticky
 	name = "sticky resin spit"
 	icon_state = "sticky"
@@ -1381,6 +1403,21 @@
 	damage_var_high = config.high_proj_variance
 	shell_speed = config.reg_shell_speed
 
+/datum/ammo/xeno/acid/shatter // Used by boiler shatter glob strain
+	name = "acid spatter"
+
+/datum/ammo/xeno/acid/shatter/New()
+	..()
+	accuracy = config.med_hit_accuracy
+	accurate_range = config.max_shell_range
+	point_blank_range = -1
+	max_range = config.close_shell_range
+	damage = config.low_hit_damage
+	damage_falloff = config.reg_damage_falloff
+	shell_speed = config.slow_shell_speed
+	scatter = config.med_scatter_value
+	
+
 /datum/ammo/xeno/boiler_gas
 	name = "glob of gas"
 	icon_state = "boiler_gas2"
@@ -1466,6 +1503,38 @@
 	smoke_system.start()
 	T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into corrosive bile!</span>")
 
+/datum/ammo/xeno/boiler_gas/shatter
+	name = "glob of neurotoxin"
+	icon_state = "boiler_shatter2"
+	ping = "ping_x"
+	sound_hit = "acid_hit"
+	sound_bounce = "acid_bounce"
+	debilitate = list(19,21,0,0,11,12,0,0)
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	var/shrapnel_type = /datum/ammo/xeno/toxin/shatter
+	var/shrapnel_amount = 32
+
+/datum/ammo/xeno/boiler_gas/shatter/drop_nade(turf/T, obj/item/projectile/P)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	T.visible_message(SPAN_DANGER("A huge ball of neurotoxin splashes down, sending drops and splashes in every direction!"))
+	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
+
+/datum/ammo/xeno/boiler_gas/shatter/acid
+	name = "glob of acid"
+	icon_state = "boiler_shatter"
+	ping = "ping_x"
+	sound_hit = "acid_hit"
+	sound_bounce = "acid_bounce"
+	debilitate = list(1,1,0,0,1,1,0,0)
+	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_SKIPS_ALIENS|AMMO_EXPLOSIVE|AMMO_IGNORE_RESIST
+	shrapnel_type = /datum/ammo/xeno/acid/shatter
+	shrapnel_amount = 32
+
+/datum/ammo/xeno/boiler_gas/shatter/acid/drop_nade(turf/T, obj/item/projectile/P)
+	create_shrapnel(T, shrapnel_amount, , ,shrapnel_type)
+	T.visible_message(SPAN_DANGER("A huge ball of acid splashes down, sending drops and splashes in every direction!"))
+	playsound(T, 'sound/effects/squelch1.ogg', 25, 1)
+
 /datum/ammo/xeno/railgun_glob
 	name = "railgun glob of acid"
 	icon_state = "boiler_railgun"
@@ -1473,7 +1542,7 @@
 	sound_hit = "acid_hit"
 	sound_bounce = "acid_bounce"
 	debilitate = list(1,1,0,0,1,1,0,0)
-	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER|AMMO_ANTISTRUCT
+	flags_ammo_behavior = AMMO_XENO_ACID|AMMO_SKIPS_ALIENS|AMMO_IGNORE_ARMOR|AMMO_ANTISTRUCT|AMMO_STOPPED_BY_COVER
 
 /datum/ammo/xeno/railgun_glob/New()
 	..()

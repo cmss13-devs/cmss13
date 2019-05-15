@@ -34,6 +34,8 @@ Currently only has the tank hardpoints
 	var/muzzle_flash_x_NS = 0
 	var/muzzle_flash_y_NS = 0
 
+	var/being_repaired = FALSE // to prevent welder click spam
+
 //Called on attaching, for weapons sets the actual cooldowns
 /obj/item/hardpoint/proc/apply_buff()
 	return
@@ -125,6 +127,9 @@ Currently only has the tank hardpoints
 
 /obj/item/hardpoint/attackby(var/obj/item/O, var/mob/user)
 	if(iswelder(O) && health < initial(health))
+		if(being_repaired)
+			to_chat(user, SPAN_WARNING("You are already repairing the tank!"))
+			return
 		var/obj/item/tool/weldingtool/WT = O
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("You need to light \the [WT] first."))
@@ -132,13 +137,20 @@ Currently only has the tank hardpoints
 		if(WT.get_fuel() < 10)
 			to_chat(user, SPAN_WARNING("You need to refill \the [WT] first."))
 			return
-		if(do_after(user, 100, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		being_repaired = TRUE
+		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			WT.remove_fuel(10, user)
 			health += round(0.10 * initial(health))
 			health = Clamp(health, 0, initial(health))
-			to_chat(user, SPAN_WARNING("You repair [src]. Integrity now at [(health / initial(health)) * 100]%."))
+			to_chat(user, SPAN_WARNING("You repair [src]. Integrity now at [round(get_integrity_percent())]%."))
+		being_repaired = FALSE
 		return
 	..()
+
+/obj/item/hardpoint/examine(mob/user)
+	..()
+	if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
+		to_chat(user, "It's at [round(get_integrity_percent(), 1)]% integrity!")
 
 /obj/item/hardpoint/proc/muzzle_flash(var/angle)
 	if(isnull(angle)) return

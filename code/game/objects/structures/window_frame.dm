@@ -47,7 +47,7 @@
 		relativewall()
 		relativewall_neighbours()
 		for(var/turf/closed/wall/W in orange(1))
-			W.update_connections(1)
+			W.update_connections()
 			W.update_icon()
 		if(weed_found)
 			new /obj/effect/alien/weeds/weedwall/frame(loc) //after smoothing to get the correct junction value
@@ -106,7 +106,7 @@
 					user.visible_message(SPAN_NOTICE("[user] starts pulling [M] onto [src]."),
 					SPAN_NOTICE("You start pulling [M] onto [src]!"))
 					var/oldloc = loc
-					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc) 
+					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc)
 						return
 					M.KnockDown(2)
 					user.visible_message("<span class='warning'>[user] pulls [M] onto [src].</span>",

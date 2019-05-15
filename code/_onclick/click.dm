@@ -30,13 +30,16 @@
 				do_click(TU, location, params)
 		return
 
+	if (A == src && client.prefs.ignore_self && src.a_intent != "help")
+		if(world.time % 3)
+			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
+		return
+
 	if (world.time <= next_click)
-		//DEBUG: to_world("FAIL! TIME:[world.time]   NEXT_CLICK:[next_click]    NEXT_MOVE: [next_move]")
 		return
 
 	next_click = world.time + 1
-	//DEBUG: to_world("SUCCESS! TIME:[world.time]   NEXT_CLICK:[next_click]     NEXT_MOVE: [next_move]")
-
+	
 	var/list/mods = params2list(params)
 
 	if(!clicked_something)
@@ -98,7 +101,6 @@
 		return
 
 	if (world.time <= next_move)	// Attack click cooldown check
-		//DEBUG: to_world("FAIL! TIME:[world.time]   NEXT_CLICK:[next_click]    NEXT_MOVE: [next_move]")
 		return
 
 	next_move = world.time

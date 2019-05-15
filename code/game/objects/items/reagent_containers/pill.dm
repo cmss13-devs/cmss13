@@ -240,7 +240,7 @@ var/global/list/randomized_pill_icons
 	New()
 		..()
 		icon_state = randomized_pill_icons[16]
-		reagents.add_reagent("peridaxon", 10)
+		reagents.add_reagent("peridaxon", 7)
 
 
 /obj/item/reagent_container/pill/imidazoline
@@ -271,7 +271,7 @@ var/global/list/randomized_pill_icons
 	New()
 		..()
 		icon_state = randomized_pill_icons[20]
-		reagents.add_reagent("quickclot", 10)
+		reagents.add_reagent("quickclot", 7)
 
 /obj/item/reagent_container/pill/ultrazine
 	//pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."

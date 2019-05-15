@@ -207,10 +207,10 @@ datum/game_mode/proc/initialize_special_clamps()
 	var/wants_elder = 0
 	var/wants_leader = 0
 	if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_ELDER)
-		if(alert(pred_candidate,"Would you like to play as an Elder, or a Youngblood?","Predator Type","Elder","Youngblood") == "Elder")
+		if(alert(pred_candidate,"Would you like to play as an Elder or a Blooded?","Predator Type","Elder","Blooded") == "Elder")
 			wants_elder = 1
 	else if(RoleAuthority.roles_whitelist[pred_candidate.ckey] & WHITELIST_YAUTJA_COUNCIL)
-		if(alert(pred_candidate,"Would you like to play as a Councillor, or a Youngblood?","Predator Type","Councillor","Youngblood") == "Councillor")
+		if(alert(pred_candidate,"Would you like to play as a Councillor or a Blooded?","Predator Type","Councillor","Blooded") == "Councillor")
 			wants_leader = 1
 			wants_elder = 0
 

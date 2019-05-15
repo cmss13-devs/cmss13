@@ -67,7 +67,7 @@
 	assignment = "Colonial Doctor"
 
 	//Marine access is required to use chem dispensers...
-	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
+	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	skills = /datum/skills/doctor
 
 /datum/equipment_preset/colonist/doctor/load_gear(mob/living/carbon/human/H)

@@ -231,6 +231,8 @@
 	<BR><B>Back:</B> <A href='?src=\ref[src];item=back'>[(back ? back : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(back, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
 	<BR><B>ID:</B> <A href='?src=\ref[src];item=id'>[(wear_id ? wear_id : "Nothing")]</A>
 	<BR><B>Suit Storage:</B> <A href='?src=\ref[src];item=j_store'>[(s_store ? s_store : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(s_store, /obj/item/tank) && !( internal )) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
+	<BR><B>Left Pocket:</B> <A href='?src=\ref[src];item=l_store'>[(l_store ? l_store : "Nothing")]</A>
+	<BR><B>Right Pocket:</B> <A href='?src=\ref[src];item=r_store'>[(r_store ? r_store : "Nothing")]</A>
 	<BR>
 	[handcuffed ? "<BR><A href='?src=\ref[src];item=handcuffs'>Handcuffed</A>" : ""]
 	[legcuffed ? "<BR><A href='?src=\ref[src];item=legcuffs'>Legcuffed</A>" : ""]
@@ -238,7 +240,6 @@
 	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
 	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
 	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
-	<BR><A href='?src=\ref[src];pockets=1'>Empty Pockets</A>
 	<BR>
 	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
@@ -302,7 +303,6 @@
 			if(istype(id)) . = get_paygrades(id.paygrade, size, gender)
 			else return ""
 		else return ""
-
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
@@ -395,44 +395,6 @@
 				else
 					what = usr.get_active_hand()
 					usr.stripPanelEquip(what,src,slot)
-
-	if(href_list["pockets"])
-
-		if(!usr.action_busy)
-			var/obj/item/place_item = usr.get_active_hand() // Item to place in the pocket, if it's empty
-
-			var/placing = FALSE
-
-			if(place_item && !(place_item.flags_item & ITEM_ABSTRACT) && (place_item.mob_can_equip(src, WEAR_L_STORE, TRUE) || place_item.mob_can_equip(src, WEAR_R_STORE, TRUE)))
-				to_chat(usr, SPAN_NOTICE("You try to place [place_item] into [src]'s pocket."))
-				placing = TRUE
-			else
-				to_chat(usr, SPAN_NOTICE("You try to empty [src]'s pockets."))
-
-			if(do_after(usr, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				if(placing)
-					if(place_item && place_item == usr.get_active_hand())
-						if(place_item.mob_can_equip(src, WEAR_R_STORE, TRUE))
-							drop_inv_item_on_ground(place_item)
-							equip_to_slot_if_possible(place_item, WEAR_R_STORE, 1, 0, 1)
-						if(place_item.mob_can_equip(src, WEAR_L_STORE, TRUE))
-							drop_inv_item_on_ground(place_item)
-							equip_to_slot_if_possible(place_item, WEAR_L_STORE, 1, 0, 1)
-
-				else
-					if(r_store || l_store)
-						if(r_store && !(r_store.flags_item & NODROP) && !(r_store.flags_inventory & CANTSTRIP))
-							drop_inv_item_on_ground(r_store)
-						if(l_store && !(l_store.flags_item & NODROP) && !(l_store.flags_inventory & CANTSTRIP))
-							drop_inv_item_on_ground(l_store)
-					else
-						to_chat(usr, SPAN_NOTICE("[src]'s pockets are empty."))
-
-
-				// Update strip window
-				if(usr.interactee == src && Adjacent(usr))
-					show_inv(usr)
-
 
 	if(href_list["internal"])
 

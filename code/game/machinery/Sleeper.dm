@@ -126,7 +126,7 @@
 				if (connected.occupant)
 					if (connected.occupant.stat == DEAD)
 						to_chat(user, "<span class='warning'>This person has no life for to preserve anymore. Take them to a department capable of reanimating them.</span>")
-					else if(href_list["chemical"] in connected.available_chemicals && (connected.occupant.health > 0 || href_list["chemical"] == "inaprovaline"))
+					else if(href_list["chemical"] in connected.available_chemicals)
 						var/amount = text2num(href_list["amount"])
 						if(amount == 5 || amount == 10)
 							connected.inject_chemical(user,href_list["chemical"],amount)

@@ -1494,7 +1494,7 @@ proc/DuplicateObject(obj/original, var/perfectcopy = 0 , var/sameloc = 0)
 proc/get_cardinal_dir(atom/A, atom/B)
 	var/dx = abs(B.x - A.x)
 	var/dy = abs(B.y - A.y)
-	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
+	return get_dir(A, B) & (dy > dx ? 3 : 12)
 
 //I dont understand the above proc so I'm writing my own shittier one
 proc/get_cardinal_dir2(var/atom/A, var/atom/B)

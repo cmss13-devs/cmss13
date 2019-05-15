@@ -178,7 +178,7 @@
 	if(!W.mob_can_equip(src, slot, disable_warning))
 		if(del_on_fail) qdel(W)
 		else
-			if(!disable_warning) to_chat(src, "<span class='warning'>You are unable to equip that.</span>") //Only print if del_on_fail is false
+			if(!disable_warning) to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
 		return
 	var/start_loc = W.loc
 	if(W.time_to_equip && !ignore_delay)

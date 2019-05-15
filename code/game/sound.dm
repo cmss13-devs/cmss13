@@ -80,7 +80,8 @@
 
 		if(S.volume <= distance/2) r_FAL //no volume or too far away to hear such a volume level.
 
-		if(distance > 8) S.frequency -= (distance/S.frequency)*S.frequency*100 //distant sounds have a decayed pitch
+		if(distance > 8 && S.frequency)
+			S.frequency -= (distance/S.frequency)*S.frequency*100 //distant sounds have a decayed pitch
 		//world << S.frequency
 
 		var/dx = turf_source.x - T.x // Hearing from the right/left
@@ -101,7 +102,7 @@
 			0, 1.0, 1.0, 1.0, 1.0, 7)
 
 	if(!is_global) S.environment = 2
-	src << S
+	sound_to(src, S)
 
 /client/proc/playtitlemusic()
 	if(!ticker || !ticker.login_music)	r_FAL

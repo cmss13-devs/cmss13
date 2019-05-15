@@ -588,7 +588,7 @@
 		add_fingerprint(usr)
 
 /obj/machinery/autodoc/verb/move_inside()
-	set name = "Enter Med-Pod"
+	set name = "Enter Autodoc"
 	set category = "Object"
 	set src in oview(1)
 

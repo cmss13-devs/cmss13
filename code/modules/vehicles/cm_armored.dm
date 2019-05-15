@@ -317,7 +317,7 @@ var/list/TANK_HARDPOINT_OFFSETS = list(
 				msg += " It's busted!"
 			else if(isobserver(user) || (user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI))
 				msg += " It's at [round(P, 1)]% integrity!"
-			user << msg
+			to_chat(user, msg)
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/root/cm_armored/healthcheck()

@@ -43,28 +43,28 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 
 
 
-/obj/item/limb/l_arm
+/obj/item/limb/arm/l_arm
 	name = "left arm"
 	icon_state = "l_arm"
-/obj/item/limb/l_foot
+/obj/item/limb/foot/l_foot
 	name = "left foot"
 	icon_state = "l_foot"
-/obj/item/limb/l_hand
+/obj/item/limb/hand/l_hand
 	name = "left hand"
 	icon_state = "l_hand"
-/obj/item/limb/l_leg
+/obj/item/limb/leg/l_leg
 	name = "left leg"
 	icon_state = "l_leg"
-/obj/item/limb/r_arm
+/obj/item/limb/arm/r_arm
 	name = "right arm"
 	icon_state = "r_arm"
-/obj/item/limb/r_foot
+/obj/item/limb/foot/r_foot
 	name = "right foot"
 	icon_state = "r_foot"
-/obj/item/limb/r_hand
+/obj/item/limb/hand/r_hand
 	name = "right hand"
 	icon_state = "r_hand"
-/obj/item/limb/r_leg
+/obj/item/limb/leg/r_leg
 	name = "right leg"
 	icon_state = "r_leg"
 

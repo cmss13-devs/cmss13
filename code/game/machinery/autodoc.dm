@@ -634,6 +634,7 @@
 /obj/machinery/autodoc/proc/go_out()
 	if(!occupant) return
 	occupant.forceMove(loc)
+	occupant.update_med_icon()
 	occupant = null
 	surgery_todo_list = list()
 	update_use_power(1)

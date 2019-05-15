@@ -17,6 +17,8 @@
 
 /datum/ammo
 	var/name 		= "generic bullet"
+	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
+	var/impact_limbs = NO_BODY // The body parts that have an impact icon
 	var/icon 		= 'icons/obj/items/projectiles.dmi'
 	var/icon_state 	= "bullet"
 	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
@@ -355,6 +357,8 @@
 
 /datum/ammo/bullet/revolver/highimpact
 	name = "high-impact revolver bullet"
+	impact_name = "mateba"
+	impact_limbs = HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
 /datum/ammo/bullet/revolver/highimpact/New()
@@ -370,10 +374,7 @@
 		user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(user.Adjacent(H))
-				H.apply_damage(500,BRUTE,"head") //not coming back
-				for(var/datum/limb/L in H.limbs)
-					if(L.name == "head")
-						L.droplimb()
+				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs) //not coming back
 				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
 		else
 			return -1
@@ -530,6 +531,8 @@
 
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
+	impact_name = "slug"
+	impact_limbs = HEAD
 
 /datum/ammo/bullet/shotgun/slug/New()
 	..()

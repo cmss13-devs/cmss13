@@ -1412,8 +1412,8 @@
 	accurate_range = config.max_shell_range
 	point_blank_range = -1
 	max_range = config.close_shell_range
-	damage = config.low_hit_damage
-	damage_falloff = config.reg_damage_falloff
+	damage = config.mlow_hit_damage
+	damage_falloff = config.buckshot_damage_falloff
 	shell_speed = config.slow_shell_speed
 	scatter = config.med_scatter_value
 	

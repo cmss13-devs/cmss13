@@ -66,16 +66,3 @@
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 		)
-
-/datum/caste_datum/runner/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/runner/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/runner/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/runner/ancient/New()
-	..()
-	ancient_multipliers()

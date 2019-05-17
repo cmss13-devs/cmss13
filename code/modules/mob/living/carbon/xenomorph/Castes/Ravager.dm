@@ -42,6 +42,8 @@
 	tacklemax = 5
 	tackle_chance = 45
 
+	max_health_scalar = XENO_SCALAR_HEALTH_MED
+
 /datum/caste_datum/ravager/elder
 	upgrade_name = "Elder"
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
@@ -50,6 +52,8 @@
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 58
+	
+	max_health_scalar = XENO_SCALAR_HEALTH_HIGH
 
 /datum/caste_datum/ravager/ancient
 	upgrade_name = "Ancient"
@@ -59,6 +63,7 @@
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 60
+	max_health_scalar = XENO_SCALAR_HEALTH_ULTRAHIGH
 
 /datum/caste_datum/ravager/primordial
 	upgrade_name = "Primordial"
@@ -235,17 +240,5 @@
 				continue
 
 		M.adjustFireLoss(rand(20, 50)) //Fwoom!
-		to_chat(M, "[isXeno(M) ? ")<span class='xenodanger'>":"<span class='highdanger'>"]Augh! You are roasted by the flames!</span>")
-
-/datum/caste_datum/ravager/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/ravager/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/ravager/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/ravager/ancient/New()
-	..()
-	ancient_multipliers()
+		var/msg = "Augh! You are roasted by the flames!"
+		to_chat(M, "[isXeno(M) ? SPAN_XENODANGER(msg) : SPAN_DANGER(msg)]")

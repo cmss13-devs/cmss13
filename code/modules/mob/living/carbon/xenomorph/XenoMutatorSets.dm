@@ -7,22 +7,9 @@
 	var/remaining_points = 0 //How many points the xeno / hive still has to spend on mutators
 	var/list/purchased_mutators = list() //List of purchased mutators
 	var/user_level = -1 //Level of the Queen for Hive or the individual xeno. Starting at -1 so at tier 0 you'd get some mutators to play with
-	//Variables that affect the xeno / all xenos of the hive:
-	var/health_multiplier = 1.0
-	var/plasma_multiplier = 1.0
-	var/plasma_gain_multiplier = 1.0
-	var/speed_multiplier = 1.0
-	var/damage_multiplier = 1.0
-	var/armor_multiplier = 1.0
-	var/acid_boost_level = 0
-	var/pheromones_boost_level = 0
-	var/weed_boost_level = 0
 
 	var/tackle_chance_multiplier = 1.0
 	var/tackle_strength_bonus = 0
-
-	//Strain Variables
-	//Boiler
 
 //Functions to be overloaded to call for when something gets updated on the xenos
 /datum/mutator_set/proc/recalculate_everything(var/description)
@@ -123,6 +110,8 @@
 	return TRUE
 
 //Called when the Queen dies
+// This isn't currently used, but if anyone wants to, expect it to be broken because
+// I haven't made any effort to integrate it into the new system (Fourkhan, 5/11/19)
 /datum/mutator_set/hive_mutators/proc/reset_mutators()
 	if(purchased_mutators.len == 0)
 		//No mutators purchased, nothing to reset!
@@ -136,19 +125,6 @@
 
 	if(!depowered)
 		return //We haven't lost anything
-
-	//Resetting variables
-	remaining_points = 0
-	user_level = -1
-	health_multiplier = 1.0
-	plasma_multiplier = 1.0
-	plasma_gain_multiplier = 1.0
-	speed_multiplier = 1.0
-	damage_multiplier = 1.0
-	armor_multiplier = 1.0
-	acid_boost_level = 0
-	pheromones_boost_level = 0
-	weed_boost_level = 0
 
 	tackle_chance_multiplier = 1.0
 	tackle_strength_bonus = 0

@@ -475,16 +475,3 @@
 			icon_state = "Crusher Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-
-/datum/caste_datum/crusher/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/crusher/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/crusher/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/crusher/ancient/New()
-	..()
-	ancient_multipliers()

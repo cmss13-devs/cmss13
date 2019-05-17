@@ -149,10 +149,10 @@ var/global/list/damage_icon_parts = list()
 	for(var/datum/wound/W in limb.wounds)
 		if(W.impact_icon)
 			DI.Blend(W.impact_icon, ICON_OVERLAY)
-	
+
 	return DI
 
-	
+
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
@@ -360,6 +360,7 @@ var/global/list/damage_icon_parts = list()
 			if(!fat && !skeleton)
 				var/icon/underwear_icon = new /icon('icons/mob/human.dmi', "cryo[underwear]_[g]_s")
 				var/icon/BM = new /icon(icon = 'icons/mob/body_mask.dmi', icon_state = "groin")
+				BM.Blend(new /icon('icons/mob/body_mask.dmi', "torso"), ICON_OR)
 				for(var/datum/limb/leg/L in limbs)
 					var/uniform_icon = "[L.icon_name]"
 					if(L.status & LIMB_DESTROYED && !(L.status & LIMB_AMPUTATED))
@@ -516,7 +517,7 @@ var/global/list/damage_icon_parts = list()
 		var/used_state = U.icon_state
 		if(U.rolled_sleeves)
 			used_state += "_d"
-		
+
 		var/used_icon
 		if(U.icon_override)
 			used_icon = U.icon_override

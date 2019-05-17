@@ -73,13 +73,13 @@
 						continue
 					if (W.current_stage <= W.max_bleeding_stage)
 						user.visible_message(SPAN_NOTICE("[user] bandages [W.desc] on [M]'s [affecting.display_name]."),
-						SPAN_NOTICE("You bandage [W.desc] on [M]'s [affecting.display_name].") )
+							SPAN_NOTICE("You bandage [W.desc] on [M]'s [affecting.display_name].") )
 					else if (istype(W,/datum/wound/bruise))
 						user.visible_message(SPAN_NOTICE("[user] places bruise patch over [W.desc] on [M]'s [affecting.display_name]."),
-						SPAN_NOTICE("You place bruise patch over [W.desc] on [M]'s [affecting.display_name].") )
+							SPAN_NOTICE("You place bruise patch over [W.desc] on [M]'s [affecting.display_name].") )
 					else
 						user.visible_message(SPAN_NOTICE("[user] places bandaid over [W.desc] on [M]'s [affecting.display_name]."),
-						SPAN_NOTICE("You place bandaid over [W.desc] on [M]'s [affecting.display_name].") )
+							SPAN_NOTICE("You place bandaid over [W.desc] on [M]'s [affecting.display_name].") )
 				use(1)
 		else
 			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery

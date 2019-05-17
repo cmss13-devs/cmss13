@@ -139,16 +139,3 @@
 			icon_state = "Burrower Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-
-/datum/caste_datum/burrower/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/burrower/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/burrower/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/burrower/ancient/New()
-	..()
-	ancient_multipliers()

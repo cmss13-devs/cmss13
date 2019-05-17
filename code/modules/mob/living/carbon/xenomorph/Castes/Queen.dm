@@ -657,16 +657,3 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib()
 	death(1) //we need the body to show the queen's name at round end.
-
-/datum/caste_datum/queen/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/queen/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/queen/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/queen/ancient/New()
-	..()
-	ancient_multipliers()

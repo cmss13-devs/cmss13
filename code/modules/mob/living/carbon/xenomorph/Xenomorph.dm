@@ -66,6 +66,7 @@
 	var/burn_damage_lower = 0
 	var/burn_damage_upper = 0
 	var/armor_deflection = 10
+	var/evasion = 0
 
 	var/plasma_stored = 10
 	var/plasma_max = 10
@@ -81,26 +82,170 @@
 	var/evolution_threshold = 200
 	var/pull_multiplier = 1.0
 
+	var/datum/caste_datum/caste
+	var/datum/hive_status/hive
+
+	var/obj/item/clothing/suit/wear_suit = null
+	var/obj/item/clothing/head/head = null
+	var/obj/item/r_store = null
+	var/obj/item/l_store = null
+	var/amount_grown = 0
+	var/time_of_birth
+	var/max_grown = 200
+	var/evolution_stored = 0 //How much evolution they have stored
+
+	var/upgrade_stored = 0 //How much upgrade points they have stored.
+	var/upgrade = -1  //This will track their upgrade level. -1 means cannot upgrade
+
+	var/has_spat = 0
+	var/armor_bonus = 0 //Extra chance of deflecting projectiles due to temporary effects
+	var/has_screeched = 0
+	var/middle_mouse_toggle = TRUE //This toggles whether selected ability uses middle mouse clicking or shift clicking
+	var/directional_attack_toggle = TRUE //This toggles whether attacks use directional attacks
+
+	var/devour_timer = 0
+
+	var/last_rng_attack = 0
+
+	var/obj/structure/tunnel/start_dig = null
+	var/tunnel_delay = 0
+	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
+	var/pslash_delay = 0
+
+	var/current_aura = null //"claw", "armor", "regen", "speed"
+	var/frenzy_aura = 0 //Strength of aura we are affected by. NOT THE ONE WE ARE EMITTING
+	var/warding_aura = 0
+	var/recovery_aura = 0
+
+	var/is_zoomed = 0
+	var/zoom_turf = null
+	var/autopsied = 0
+
+	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
+	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution
+	var/crit_health = -100 // What negative healthy they die in.
+	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
+
+	var/fortify_timer = 60
+	var/burrow_timer = 200
+	var/tunnel_timer = 20
+
+	var/emotedown = 0
+
+	var/datum/action/xeno_action/activable/selected_ability
+	var/selected_resin = RESIN_WALL //which resin structure to build when we secrete resin
+
+	//Naming variables
+	var/caste_name = ""
+	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
+
+	//This list of inherent verbs lets us take any proc basically anywhere and add them.
+	//If they're not a xeno subtype it might crash or do weird things, like using human verb procs
+	//It should add them properly on New() and should reset/readd them on evolves
+	var/list/inherent_verbs = list()
+
+	//Lord forgive me for this horror, but Life code is awful
+	//These are tally vars, yep. Because resetting the aura value directly leads to fuckups
+	var/frenzy_new = 0
+	var/warding_new = 0
+	var/recovery_new = 0
+
+	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
+
+	var/queen_chosen_lead //whether the xeno has been selected by the queen as a leader.
+
+	//Old crusher specific vars, moved here so the Queen can use charge, and potential future Xenos
+	var/charge_dir = 0 //Stores initial charge dir to immediately cut out any direction change shenanigans
+	var/charge_timer = 0 //Has a small charge window. has to keep moving to build speed.
+	var/turf/lastturf = null
+	var/noise_timer = 0 // Makes a mech footstep, but only every 3 turfs.
+	var/has_moved = 0
+	var/is_charging = 0 //Will the mob charge when moving ? You need the charge verb to change this
+	var/weedwalking_activated = 0 //Hivelord's weedwalking
+	var/last_charge_move = 0 //Time of the last time the Crusher moved while charging. If it's too far apart, the charge is broken
+
+	//Burrower Vars
+	var/used_tremor = 0
+
+	//Pounce vars
+	var/used_pounce = 0
+
+	// Warrior vars
+	var/agility = 0		// 0 - upright, 1 - all fours
+	var/ripping_limb = 0
+
+	var/used_lunge = 0
+	var/used_fling = 0
+	var/used_punch = 0
+	var/used_toggle_agility = 0
+
+	var/used_jab = 0
+
+	// Defender vars
+	var/fortify = 0
+	var/crest_defense = 0
+
+	var/used_headbutt = 0
+	var/used_tail_sweep = 0
+	var/used_crest_defense = 0
+	var/used_fortify = 0
+
+	var/used_burrow = 0
+	var/used_tunnel = 0
+	var/used_widen = 0
+
+	var/tunnel = 0
+	var/burrow = 0
+
+	//Praetorian vars
+	var/used_acid_spray = 0
+
+	//Carrier vars
+	var/threw_a_hugger = 0
+	var/huggers_cur = 0
+	var/eggs_cur = 0
+	var/huggers_max = 0
+	var/eggs_max = 0
+	var/laid_egg = 0
+
+	//Leader vars
+	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
+	var/leader_current_aura = "" //Pheromone type inherited from Queen
+
+	// Related to zooming out (primarily queen and boiler)
+	var/tileoffset = 0
+	var/viewsize = 0
+
+	gender = NEUTER
+
+	//////////////////////////////////////////////////////////////////
+	//
+	//		Modifiers 
+	//
+	// 		These are used by strains/mutators to buff/debuff a xeno's
+	//      stats. They can be mutated and are persistent between 
+	// 		upgrades, but not evolutions (which are just a new Xeno)
+	// 		Strains that wish to change these should use the defines
+	// 		in xeno_defines.dm, NOT snowflake values 
+	//	
+	//////////////////////////////////////////////////////////////////
+	var/damage_modifier = 0
+	var/health_modifier = 0
+	var/armor_modifier = 0
+	var/explosivearmor_modifier = 0
+	var/plasmapool_modifier = 0
+	var/plasmagain_modifier = 0
+	var/speed_modifier = 0
+	var/phero_modifier = 0
+	var/acid_modifier = 0
+	var/weed_modifier = 0
+	var/evasion_modifier = 0
+
+	// TODO: move this to caste-specific 
 	var/tacklemin = 2
 	var/tacklemax = 3
 	var/tackle_chance = 35
 	var/need_weeds = TRUE
-
-	//New variables for how charges work, max speed, speed buildup, all that jazz
-	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
-	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
-	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
-	var/charge_speed = 0 //Modifier on base move delay as charge builds up
-	var/charge_roar = 0 //Did we roar in our charge yet?
-
-	//Strain Variables
-	//Boiler
-	var/bombard_cooldown = 30
-	var/min_bombard_dist = 5
-	var/acid_cooldown = 0 //Spitter too.
-
-	//Praetorian
-	var/acid_spray_cooldown = 12
 
 	//Defender
 	var/spiked = FALSE
@@ -110,6 +255,25 @@
 
 	//Pouncing Castes
 	var/pounce_slash = FALSE
+ 
+	//Strain Variables
+	//Boiler
+	// TODO: move this to caste-specific 
+	var/bombard_cooldown = 30
+	var/min_bombard_dist = 5
+	var/acid_cooldown = 0 //Spitter too.
+
+	//Praetorian
+	// TODO: move this to caste-specific 
+	var/acid_spray_cooldown = 12
+
+	//New variables for how charges work, max speed, speed buildup, all that jazz
+	// TODO: move this to caste-specific if possible (this one's tricky)
+	var/charge_speed_max = 1.5 //Can only gain this much speed before capping
+	var/charge_speed_buildup = 0.15 //POSITIVE amount of speed built up during a charge each step
+	var/charge_turfs_to_charge = 5 //Amount of turfs to build up before a charge begins
+	var/charge_speed = 0 //Modifier on base move delay as charge builds up
+	var/charge_roar = 0 //Did we roar in our charge yet?
 
 
 
@@ -436,6 +600,7 @@
 	recalculate_armor()
 	recalculate_damage()
 	recalculate_charge()
+	recalculate_evasion()
 
 /mob/living/carbon/Xenomorph/proc/recalculate_tackle()
 	tacklemin = caste.tacklemin + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
@@ -449,7 +614,7 @@
 	charge_turfs_to_charge = caste.charge_turfs_to_charge + mutators.charge_turfs_to_charge_delta
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
-	var/new_max_health = round(caste.max_health * mutators.health_multiplier * hive.mutators.health_multiplier + 0.5)
+	var/new_max_health = health_modifier + caste.max_health
 	if (new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1
@@ -461,37 +626,29 @@
 		health = maxHealth
 
 /mob/living/carbon/Xenomorph/proc/recalculate_plasma()
-	var/new_plasma_max = round(caste.plasma_max * mutators.plasma_multiplier * hive.mutators.plasma_multiplier + 0.5)
-	plasma_gain = round(new_plasma_max * caste.plasma_gain * mutators.plasma_gain_multiplier * hive.mutators.plasma_gain_multiplier + 0.5)
+	var/new_plasma_max = plasmapool_modifier + caste.plasma_max
+	plasma_gain = plasmagain_modifier + caste.plasma_gain
 	if (new_plasma_max == plasma_max)
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
-	plasma_stored = round(plasma_max * plasma_ratio + 0.5)//Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 
 /mob/living/carbon/Xenomorph/proc/recalculate_speed()
-	speed = caste.speed
-	speed_multiplier = mutators.speed_multiplier * hive.mutators.speed_multiplier
+	speed = caste.speed + speed_modifier
 
 /mob/living/carbon/Xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
-	armor_deflection = round(100 - ((100 - caste.armor_deflection) * mutators.armor_multiplier * hive.mutators.armor_multiplier) + 0.5)
+	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
 
 /mob/living/carbon/Xenomorph/proc/recalculate_damage()
-	melee_damage_lower = round(caste.melee_damage_lower * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)
-	melee_damage_upper = round(caste.melee_damage_upper * mutators.damage_multiplier * hive.mutators.damage_multiplier + 0.5)
+	melee_damage_lower = damage_modifier + caste.melee_damage_lower
+	melee_damage_upper = damage_modifier + caste.melee_damage_upper
 
-	if(mutators.acid_claws)
-		//Burn damage is equal to 12.5% of brute damage, multiplied by acid level (1-3)
-		burn_damage_lower = round(melee_damage_lower * acid_level * 0.125 + 0.5)
-		burn_damage_upper = round(melee_damage_upper * acid_level * 0.125 + 0.5)
-
-		//Brute damage is lowered by 12.5%. Overall damage will be greater than before if acid level is above 1
-		melee_damage_lower = round(melee_damage_lower * 0.875 + 0.5)
-		melee_damage_upper = round(melee_damage_upper * 0.875 + 0.5)
-
+/mob/living/carbon/Xenomorph/proc/recalculate_evasion()
+	evasion = evasion_modifier + caste.evasion
 
 /mob/living/carbon/Xenomorph/proc/recalculate_actions()
 	recalculate_acid()
@@ -502,10 +659,7 @@
 		//Xeno runners need a small nerf to dragging speed mutator
 		pull_multiplier = 1.0 - (1.0 - mutators.pull_multiplier) * 0.85
 	if(isXenoCarrier(src))
-		if(mutators.egg_sac)
-			huggers_max = 0
-		else
-			huggers_max = caste.huggers_max
+		huggers_max = caste.huggers_max
 		eggs_max = caste.eggs_max
 	need_weeds = mutators.need_weeds
 	actions -= mutators.action_to_remove
@@ -516,7 +670,7 @@
 		return //Caste does not use acid
 	for(var/datum/action/xeno_action/activable/corrosive_acid/acid in actions)
 		if(istype(acid))
-			acid_level = caste.acid_level + mutators.acid_boost_level + hive.mutators.acid_boost_level
+			acid_level = caste.acid_level + acid_modifier
 			if(acid_level > 3)
 				acid_level = 3
 			if(acid.level == acid_level)
@@ -529,13 +683,13 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_weeds()
 	if(caste.weed_level == 0)
 		return //Caste does not use weeds
-	weed_level = caste.weed_level + mutators.weed_boost_level + hive.mutators.weed_boost_level
+	weed_level = caste.weed_level + weed_modifier
 	if(weed_level < 1)
 		weed_level = 1//need to maintain the minimum in case something goes really wrong
 
 /mob/living/carbon/Xenomorph/proc/recalculate_pheromones()
 	if(caste.aura_strength > 0)
-		aura_strength = caste.aura_strength + mutators.pheromones_boost_level + hive.mutators.pheromones_boost_level
+		aura_strength = caste.aura_strength + phero_modifier
 	else
 		caste.aura_strength = 0
 
@@ -546,8 +700,8 @@
 	min_bombard_dist = mutators.min_bombard_dist
 
 /mob/living/carbon/Xenomorph/proc/recalculate_maturation()
-	upgrade_threshold =  round(caste.upgrade_threshold * hive.mutators.maturation_multiplier)
-	evolution_threshold =  round(caste.evolution_threshold * hive.mutators.maturation_multiplier)
+	upgrade_threshold =  caste.upgrade_threshold
+	evolution_threshold =  caste.evolution_threshold
 
 /mob/living/carbon/Xenomorph/rejuvenate()
 	if(stat == DEAD)
@@ -564,8 +718,10 @@
 	..()
 	hud_update()
 	plasma_stored = plasma_max
+
 /mob/living/carbon/Xenomorph/proc/remove_action(var/action as text)
 	for(var/X in actions)
 		var/datum/action/A = X
 		if(A.name == action)
 			A.remove_action(src)
+

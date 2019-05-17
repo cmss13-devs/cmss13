@@ -161,16 +161,3 @@
 	if(ishuman(AM))
 		return
 	..()
-
-/datum/caste_datum/warrior/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/warrior/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/warrior/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/warrior/ancient/New()
-	..()
-	ancient_multipliers()

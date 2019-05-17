@@ -259,16 +259,3 @@
 				A.update_button_icon()
 
 	return 1
-
-/datum/caste_datum/carrier/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/carrier/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/carrier/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/carrier/ancient/New()
-	..()
-	ancient_multipliers()

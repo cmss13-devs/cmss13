@@ -138,9 +138,10 @@
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.acid_spray_cooldown = 6
-	MS.pheromones_boost_level = 1
+	P.phero_modifier += XENO_PHERO_MOD_LARGE
 	mutator_update_actions(P)
 	MS.recalculate_actions(description)
+	P.recalculate_pheromones()
 
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
@@ -158,9 +159,10 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Drone/D = MS.xeno
-	MS.pheromones_boost_level = 1
+	D.phero_modifier += XENO_PHERO_MOD_LARGE
 	mutator_update_actions(D)
 	MS.recalculate_actions(description)
+	D.recalculate_pheromones()
 
 /datum/xeno_mutator/vomiter 
 	name = "STRAIN: Spitter - Vomiter"
@@ -196,12 +198,13 @@
 
 	var/mob/living/carbon/Xenomorph/Defender/D = MS.xeno
 	D.remove_action("Tail Sweep")
-	MS.speed_multiplier *= 0.8
-	MS.damage_multiplier *= 0.8
+	D.speed_modifier += XENO_SPEED_MOD_SMALL
+	D.damage_modifier -= XENO_DAMAGE_MOD_VERYSMALL
 	D.spiked = TRUE
 	if(D.fortify)
 		D.ability_speed_modifier += 2.5
 	MS.recalculate_actions(description)
+	D.recalculate_stats()
 
 /datum/xeno_mutator/egg_sacs 
 	name = "STRAIN: Carrier - Egg Sacs"

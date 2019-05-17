@@ -80,16 +80,3 @@
 		/datum/action/xeno_action/emit_pheromones,
 		/datum/action/xeno_action/toggle_speed,
 		)
-
-/datum/caste_datum/hivelord/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/hivelord/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/hivelord/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/hivelord/ancient/New()
-	..()
-	ancient_multipliers()

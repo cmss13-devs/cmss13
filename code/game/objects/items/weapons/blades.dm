@@ -137,3 +137,13 @@
 	icon_state = "unathiknife"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
+
+/obj/item/weapon/pizza_cutter
+	name = "\improper PIZZA TIME"
+	icon = 'icons/obj/items/weapons.dmi'
+	icon_state = "pizza_cutter"
+	item_state = "pizza_cutter"
+	desc = "Before you is holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
+	sharp = IS_SHARP_ITEM_ACCURATE
+	force = 50
+	edge = 1

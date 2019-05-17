@@ -39781,7 +39781,6 @@
 	tag = "icon-N";
 	icon_state = "N"
 	},
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	tag = "icon-orangecorner (WEST)";
 	icon_state = "orangecorner";
@@ -41268,10 +41267,6 @@
 	icon_state = "redfull"
 	},
 /area/almayer/hallways/port_hallway)
-"bIO" = (
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/closed/wall/almayer,
-/area/almayer/hallways/repair_bay)
 "bIR" = (
 /obj/machinery/light,
 /turf/open/floor/almayer,
@@ -50046,7 +50041,6 @@
 	},
 /area/almayer/engineering/lower_engine_monitoring)
 "bZG" = (
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
 	on = 1
@@ -57397,6 +57391,10 @@
 	dir = 1
 	},
 /area/almayer/medical/upper_medical)
+"ddn" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/vehiclehangar)
 "ddX" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -58562,6 +58560,13 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig_cells)
+"fdZ" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lockerroom)
 "feC" = (
 /obj/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open";
@@ -61687,6 +61692,10 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/surgery_hallway)
+"lct" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/closed/wall/almayer,
+/area/almayer/living/tankerbunks)
 "lcT" = (
 /obj/structure/cable{
 	icon_state = "0-4";
@@ -62712,18 +62721,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_umbilical)
-"mPI" = (
-/obj/machinery/landinglight/ds1/delayone{
-	tag = "icon-landingstripe (EAST)";
-	icon_state = "landingstripe";
-	dir = 4
-	},
-/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hallways/hangar)
 "mPO" = (
 /obj/structure/table/almayer,
 /obj/item/paper_bin,
@@ -63551,6 +63548,10 @@
 	dir = 9
 	},
 /area/almayer/shipboard/brig)
+"oht" = (
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull)
 "ohA" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-W";
@@ -64300,6 +64301,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
 	icon_state = "test_floor4"
@@ -65335,6 +65337,30 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"rpA" = (
+/obj/effect/decal/medical_decals{
+	tag = "icon-docdecal2";
+	icon_state = "docdecal2"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	tag = "icon-intact-supply (EAST)";
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	tag = "icon-intact-scrubbers (EAST)";
+	icon_state = "intact-scrubbers";
+	dir = 4
+	},
+/obj/effect/landmark/shuttle_loc/marine_crs/dropship,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/lower_medical)
 "rrV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -84739,7 +84765,7 @@ bBB
 bLt
 bzA
 bKh
-bBB
+ddn
 bXZ
 bzy
 bAg
@@ -84753,7 +84779,7 @@ bzA
 bRU
 aSm
 aSm
-aLf
+oht
 aSm
 aXd
 aSm
@@ -89427,7 +89453,7 @@ cRr
 bTL
 tpp
 rdb
-bSv
+lct
 bRE
 aKW
 aaa
@@ -91444,7 +91470,7 @@ bea
 bfZ
 baS
 bkh
-mPI
+bea
 bEK
 baS
 bGL
@@ -91863,7 +91889,7 @@ jMK
 rDG
 ssP
 ciG
-bIO
+bJo
 puR
 aKW
 aaa
@@ -92060,7 +92086,7 @@ bGO
 btC
 bIz
 cde
-bIO
+bJo
 cdf
 ceW
 bZG
@@ -95301,7 +95327,7 @@ gRY
 xgJ
 bzg
 uRE
-bzg
+fdZ
 tzx
 gfW
 bLT
@@ -96710,7 +96736,7 @@ pvg
 bgr
 biu
 bkz
-bmb
+rpA
 fXD
 nHb
 bqN

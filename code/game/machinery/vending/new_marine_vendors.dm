@@ -1433,7 +1433,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 /obj/effect/essentials_set/intelligence_officer
 	spawned_gear_list = list(
 		/obj/item/tool/crowbar,
-		/obj/item/stack/fulton
+		/obj/item/stack/fulton,
+		/obj/item/device/motiondetector/intel
 	)
 
 #undef MARINE_CAN_BUY_UNIFORM

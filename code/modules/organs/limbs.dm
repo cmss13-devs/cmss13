@@ -630,7 +630,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		else if(W.damage_type == BURN)
 			burn_dam += W.damage
 
-		if(!(status & LIMB_ROBOT) && W.bleeding() && (H && !(H.species.flags & NO_BLOOD)))
+		if(!(status & LIMB_ROBOT) && W.bleeding() && !(H?.species.flags & NO_BLOOD))
 			W.bleed_timer--
 			status |= LIMB_BLEEDING
 
@@ -639,10 +639,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		number_wounds += W.amount
 
 	// Open surgery wounds or amputated limbs that have not been surgically treated will still bleed
-	if ((surgery_open_stage || (status & LIMB_DESTROYED) && !(status & LIMB_AMPUTATED)) \
-		&& !clamped \
-		&& (H && !(H.species.flags & NO_BLOOD))
-	)
+	if (surgery_open_stage && !clamped && !(H?.species.flags & NO_BLOOD))
 		status |= LIMB_BLEEDING
 
 
@@ -863,8 +860,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /datum/limb/proc/bandage()
 	var/rval = 0
-	if(!(status & LIMB_DESTROYED) || status & LIMB_AMPUTATED) // prevents you from stopping a ripped off limb from bleeding as a non-doctor
-		status &= ~LIMB_BLEEDING
+	status &= ~LIMB_BLEEDING
 	for(var/datum/wound/W in wounds)
 		if(W.internal) continue
 		rval |= !W.bandaged

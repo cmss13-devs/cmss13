@@ -182,7 +182,7 @@
 		to_chat(user, "You short out the product lock on [src]")
 		return TRUE
 	else if(istype(W, /obj/item/tool/screwdriver))
-		if(stat & WORKING)
+		if(stat == WORKING)
 			src.panel_open = !src.panel_open
 			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()

@@ -206,16 +206,3 @@
 			var/datum/action/A = X
 			A.update_button_icon()
 	return
-
-/datum/caste_datum/boiler/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/boiler/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/boiler/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/boiler/ancient/New()
-	..()
-	ancient_multipliers()

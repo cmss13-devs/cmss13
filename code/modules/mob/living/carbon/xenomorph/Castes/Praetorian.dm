@@ -86,16 +86,3 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/spray_acid
 	)
-
-/datum/caste_datum/praetorian/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/praetorian/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/praetorian/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/praetorian/ancient/New()
-	..()
-	ancient_multipliers()

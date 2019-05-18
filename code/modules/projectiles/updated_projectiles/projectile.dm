@@ -601,8 +601,8 @@
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
 			return 0
 		if(mob_size == MOB_SIZE_BIG)	. += 10
-		if(caste.evasion>0)
-			. -= caste.evasion
+		if(evasion > 0)
+			. -= evasion
 
 
 /mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/item/projectile/P)

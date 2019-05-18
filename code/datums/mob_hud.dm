@@ -458,7 +458,7 @@ var/datum/mob_hud/huds = list(
 
 	if(!data_core)
 		return
-		
+
 	for(var/datum/data/record/E in data_core.general)
 		if(E.fields["name"] == perpname)
 			for(var/datum/data/record/R in data_core.security)
@@ -538,7 +538,7 @@ var/datum/mob_hud/huds = list(
 			if("Squad Medic") marine_rk = "med"
 			if("Squad Smartgunner") marine_rk = "gun"
 			if("Executive Officer") marine_rk = "xo"
-			if("Commanding Officer") marine_rk = "co"
+			if("Commander") marine_rk = "co"
 			if("Pilot Officer") marine_rk = "po"
 			if("Intelligence Officer") marine_rk = "io"
 			if("Tank Crewman") marine_rk = "tc"
@@ -556,4 +556,33 @@ var/datum/mob_hud/huds = list(
 			var/image/IMG2 = image('icons/mob/hud.dmi',src, "hudmarinesquadft[I.assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
+	else
+		var/marine_rk
+		var/border_rk
+		var/obj/item/card/id/ID = get_idcard()
+		var/_role
+		if(mind)
+			_role = mind.assigned_role
+		else if(ID)
+			_role = ID.rank
+		switch(_role)
+			if("Executive Officer")
+				marine_rk = "xo"
+				border_rk = "command"
+			if("Commander")
+				marine_rk = "co"
+				border_rk = "command"
+			if("Staff Officer")
+				marine_rk = "so"
+				border_rk = "command"
+			if("Pilot Officer") marine_rk = "po"
+			if("Intelligence Officer") marine_rk = "io"
+			if("Tank Crewman") marine_rk = "tc"
+		if(marine_rk)
+			var/image/I = image('icons/mob/hud.dmi',src, "hudmarinesquad")
+			I.color = "#5A934A"
+			holder.overlays += I
+			holder.overlays += image('icons/mob/hud.dmi',src, "hudmarinesquad[marine_rk]")
+			if(border_rk)
+				holder.overlays += image('icons/mob/hud.dmi',src, "hudmarineborder[border_rk]")
 	hud_list[SQUAD_HUD] = holder

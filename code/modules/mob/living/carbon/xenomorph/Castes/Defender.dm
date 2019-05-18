@@ -73,16 +73,3 @@
 			icon_state = "Defender Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-
-/datum/caste_datum/defender/New()
-	..()
-	young_multipliers()
-/datum/caste_datum/defender/mature/New()
-	..()
-	mature_multipliers()
-/datum/caste_datum/defender/elder/New()
-	..()
-	elder_multipliers()
-/datum/caste_datum/defender/ancient/New()
-	..()
-	ancient_multipliers()

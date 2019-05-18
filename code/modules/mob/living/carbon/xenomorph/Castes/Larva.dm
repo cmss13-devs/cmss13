@@ -7,6 +7,7 @@
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	max_health = XENO_HEALTH_LARVA
+	max_health_scalar = 1.0
 	caste_desc = "D'awwwww, so cute!"
 	speed = -1.6 //Zoom!
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.

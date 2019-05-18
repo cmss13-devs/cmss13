@@ -410,9 +410,9 @@ updatehealth()
 
 	if(!caste.is_robotic && !hardcore) //Robot no heal
 		if(caste.innate_healing || check_weeds_for_healing())
-			plasma_stored += plasma_gain
+			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
-				plasma_stored += round(plasma_gain * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
+				plasma_stored += round(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
 			if(health < maxHealth)
 				//var/datum/hive_status/hive = hive_datum[hivenumber]
 				//if(caste.innate_healing || !hive.living_xeno_queen || hive.living_xeno_queen.loc.z == loc.z)
@@ -440,7 +440,7 @@ updatehealth()
 
 		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
 			if(prob(50) && !is_runner_hiding && !current_aura)
-				plasma_stored++
+				plasma_stored += 0.1 * plasma_max / 100
 
 		if(isXenoHivelord(src))
 			var/mob/living/carbon/Xenomorph/Hivelord/H = src
@@ -457,7 +457,7 @@ updatehealth()
 	else if(!caste.is_robotic && hardcore)//Robot no heal
 		if(check_weeds_for_healing())
 			if(health > 0)
-				plasma_stored += plasma_gain
+				plasma_stored += plasma_gain * plasma_max / 100
 				if(recovery_aura)
 					plasma_stored += (recovery_aura * 2)
 			if(health < 35) //Barely enough to stay near critical if saved
@@ -471,7 +471,7 @@ updatehealth()
 
 		else //Xenos restore plasma VERY slowly off weeds, regardless of health, as long as they are not using special abilities
 			if(prob(50) && !is_runner_hiding && !current_aura)
-				plasma_stored++
+				plasma_stored += 0.1 * plasma_max / 100
 			if(recovery_aura)
 				adjustBruteLoss(-(maxHealth / 80) - 1 - recovery_aura)
 				plasma_stored += round(recovery_aura + 1)

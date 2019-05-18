@@ -16,6 +16,8 @@
 	return FALSE
 
 /mob/living/carbon/Xenomorph/proc/get_plasma_percentage()
+	if(plasma_max<=0)
+		return 100
 	return round(plasma_stored * 100 / plasma_max)
 
 /mob/living/carbon/Xenomorph/proc/get_armor_integrity_percentage()

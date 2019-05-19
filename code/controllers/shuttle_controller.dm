@@ -8,7 +8,8 @@
 	for (var/datum/shuttle/ferry/shuttle in process_shuttles)
 
 		// Hacky bullshit that should only apply for shuttle/marine's for now.
-		if (shuttle.move_scheduled)
+		if (shuttle.move_scheduled && shuttle.already_moving == 0)
+			shuttle.already_moving = 1
 			spawn(-1)
 				move_shuttle_to(shuttle.target_turf, 0, shuttle.shuttle_turfs, 0, shuttle.target_rotation, shuttle)
 

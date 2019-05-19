@@ -479,7 +479,7 @@ qdel(src)
 			T.ChangeTurf(/turf/open/floor/plating)
 
 	shuttle.move_scheduled = 0
-
+	shuttle.already_moving = 0
 	// Do this after because it's expensive.
 	for (var/mob/living/L in knocked_down_mobs)
 		L.KnockDown(3)

@@ -1201,6 +1201,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Power control module", 2, /obj/item/circuitboard/apc, null, "black"),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, "black"),
 		list("Welding glasses", 4, /obj/item/clothing/glasses/welding, null, "black"),
+		list("Industrial blowtorch", 4, /obj/item/tool/weldingtool/largetank, null, "black"),
 
 		list("MEDICAL SUPPLIES", 0, null, null, null),
 		list("Adv burn kit", 2, /obj/item/stack/medical/advanced/ointment, null, "black"),

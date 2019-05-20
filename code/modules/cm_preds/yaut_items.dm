@@ -1096,9 +1096,9 @@
 
 //Yautja channel. Has to delete stock encryption key so we don't receive sulaco channel.
 /obj/item/device/radio/headset/yautja
-	name = "vox caster"
+	name = "\improper Communicator"
 	desc = "A strange Yautja device used for projecting the Yautja's voice to the others in its pack. Similar in function to a standard human radio."
-	icon_state = "cargo_headset"
+	icon_state = "communicator"
 	item_state = "headset"
 	frequency = CIV_GEN_FREQ
 	unacidable = 1

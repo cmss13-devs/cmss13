@@ -523,7 +523,8 @@ var/toggled_sec_HUD = 0
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pred_buy,
-		/mob/living/carbon/human/proc/butcher
+		/mob/living/carbon/human/proc/butcher,
+		/mob/living/carbon/human/proc/mark_for_hunt
 		)
 
 	knock_down_reduction = 2

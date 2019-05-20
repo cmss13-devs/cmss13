@@ -221,6 +221,39 @@
 	icon_state = "teleporter"
 	music = "signal"
 
+/mob/living/carbon/human/proc/mark_for_hunt()
+	set category = "Yautja"
+	set name = "Mark for Hunt"
+	set desc = "Mark your next prey. They will be aware of them being hunted but not about you."
+
+	if(is_mob_incapacitated())
+		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
+		return
+
+	if(!isYautja(src))
+		to_chat(src, "How did you get this verb?")
+		return
+	
+	var/list/target_list = list()
+	for(var/mob/living/prey in view(7, src))
+		if(prey == src || !prey.client) continue
+		target_list += prey
+
+	var/mob/living/M = input("Target", "Choose a prey.") as null|anything in target_list
+	if(!M) return
+
+	var/msg = "Panic washes over you.\nYou feel you are being hunted."
+	if(isYautja(M))
+		msg = "Your muscles tense with thrill.\nYou realize you are being hunted."
+	if(isSynth(M))
+		msg = "Your self-preservation law echoes in your circuits.\nYou detect something hunting you."
+	if(isXeno(M))
+		msg = "The acid boils in your veins.\nYou sense you are being hunted."
+	to_chat(M, SPAN_YAUTJABOLDBIG("[msg]"))
+	to_chat(src, SPAN_YAUTJABOLD("You have chosen [M] as your next prey."))
+	message_staff("[key_name(src)] has marked [key_name(M)] for the Hunt. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).", 1)
+	log_admin("[key_name(src)] has marked [key_name(M)] for the Hunt.")
+	
 /mob/living/carbon/human/proc/pred_buy()
 	set category = "Yautja"
 	set name = "Claim Equipment"

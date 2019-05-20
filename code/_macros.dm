@@ -89,4 +89,8 @@
 
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
 
+#define SPAN_YAUTJABOLD(X) "<span class='yautjabold'>[X]</span>"
+
+#define SPAN_YAUTJABOLDBIG(X) "<span class='yautjaboldbig'>[X]</span>"
+
 #define SPAN_DEBUG(X) "<span class='debuginfo'>[X]</span>"

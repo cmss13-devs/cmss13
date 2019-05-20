@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "Predators were given a new skill called Mark for Hunt. Marking a mob will notify both parties - and the staff - that the hunt is on. Predators, please use this to avoid unnecessary ahelps and player reports."

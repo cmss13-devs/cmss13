@@ -1,5 +1,4 @@
 
-
 /obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
@@ -734,4 +733,24 @@
 	can_hold = list(
 		/obj/item/weapon/gun/flare,
 		/obj/item/device/flashlight/flare
+	)
+
+/obj/item/storage/belt/tank
+	name = "\improper M103 pattern Tank-Ammo rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	desc = "The M103 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. Made specially for Tank Crewmen for store their ammunition."
+	icon_state = "tankbelt"
+	item_state = "tankbelt"
+	storage_slots = 2 //can hold 2 only two large items such as Tank Ammo.
+	max_w_class = 15
+	max_storage_space = 2
+	can_hold = list(
+		/obj/item/ammo_magazine/tank/ltb_cannon,
+		/obj/item/ammo_magazine/tank/ltaaap_minigun,
+		/obj/item/ammo_magazine/tank/flamer,
+		/obj/item/ammo_magazine/tank/drgn_flamer,
+		/obj/item/ammo_magazine/tank/ace_autocannon,
+		/obj/item/ammo_magazine/tank/towlauncher,
+		/obj/item/ammo_magazine/tank/m56_cupola,
+		/obj/item/ammo_magazine/tank/tank_glauncher,
+		/obj/item/ammo_magazine/tank/tank_slauncher
 	)

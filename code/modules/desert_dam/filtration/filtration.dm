@@ -124,34 +124,35 @@ var/global/east_riverstart = 0
 
 
 /obj/effect/blocker/toxic_water/proc/update_turf()
-
-	if( istype(src.loc, /turf/open/gm/river/desert) )
+	if(istype(src.loc, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/R = src.loc
 		R.toxic = src.toxic
 		R.update_icon()
 
-	else if( istype(src.loc, /turf/open/desert/desert_shore) )
+	else if(istype(src.loc, /turf/open/desert/desert_shore))
 		var/turf/open/desert/desert_shore/S = src.loc
 		S.toxic = src.toxic
 		S.update_icon()
 
-	else if( istype(src.loc, /turf/open/desert/cave/cave_shore) )
+	else if(istype(src.loc, /turf/open/desert/cave/cave_shore))
 		var/turf/open/desert/cave/cave_shore/C = src.loc
 		C.toxic = src.toxic
 		C.update_icon()
 
 
 
-
 /obj/effect/blocker/toxic_water/Crossed(mob/living/M as mob)
-
 	if(toxic == 0)
 		return
 
-	if( !istype(M, /mob) )
+	if(!istype(M))
 		return
 
-	if( istype(src.loc, /turf/open/gm/river/desert) )
+	// Inside a xeno for example
+	if(!istype(M.loc, /turf))
+		return
+
+	if(istype(src.loc, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/R = src.loc
 		if(R.covered)
 			return
@@ -161,7 +162,7 @@ var/global/east_riverstart = 0
 	for(var/turf/open/floor/F in range(0, src))
 		return
 
-	if( isXeno(M) )
+	if(isXeno(M))
 		if(M.pulling)
 			to_chat(M, "<span class='warning'>The current forces you to release [M.pulling]!</span>")
 			M.stop_pulling()
@@ -176,7 +177,7 @@ var/global/east_riverstart = 0
 		processing_objects.Remove(src)
 		return
 
-	if( istype(src.loc, /turf/open/gm/river/desert) )
+	if(istype(src.loc, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/R = src.loc
 		if(R.covered)
 			return
@@ -194,9 +195,9 @@ var/global/east_riverstart = 0
 /obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
-	if( isXeno(M) )
+	if(isXeno(M))
 		M.apply_damage(2,BURN)
-	else if( isYautja(M) )
+	else if(isYautja(M))
 		M.apply_damage(0.5,BURN)
 	else
 		var/dam_amount = 4

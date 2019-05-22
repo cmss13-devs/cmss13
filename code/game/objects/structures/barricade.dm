@@ -696,14 +696,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
 
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
-		SPAN_NOTICE("You collapse [src]."))
 	var/obj/item/folding_barricade/FB = new(loc)
 	FB.health = health
 	FB.maxhealth = maxhealth
-	if(user)
+	if(istype(user))
+		user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
+			SPAN_NOTICE("You collapse [src]."))
 		user.put_in_active_hand(FB)
 	qdel(src)
 

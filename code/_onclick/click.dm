@@ -43,7 +43,7 @@
 	var/list/mods = params2list(params)
 
 	if(!clicked_something)
-		clicked_something = list()
+		clicked_something = list("" = null)
 
 	for (var/mod in mods)
 		clicked_something[mod] = TRUE

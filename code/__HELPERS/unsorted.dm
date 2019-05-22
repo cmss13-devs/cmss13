@@ -982,7 +982,7 @@ var/global/image/busy_indicator_hostile
  *	numticks: 	If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
  *				Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
-/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_ALL, show_target_icon, max_dist = 1, \
+/proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
 	if(!istype(user) || delay < 0)
 		return FALSE
@@ -1055,38 +1055,38 @@ var/global/image/busy_indicator_hostile
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_LOC && L.loc != user_orig_loc || \
-			has_target && target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc
+			has_target && (target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(L) != user_orig_turf || \
-			has_target && target_flags & INTERRUPT_DIFF_TURF && get_turf(target) != target_orig_turf
+			has_target && (target_flags & INTERRUPT_DIFF_TURF && get_turf(target) != target_orig_turf)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_UNCONSCIOUS && L.stat || \
-			target_is_mob && target_flags & INTERRUPT_UNCONSCIOUS && T.stat
+			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.stat)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_UNCONSCIOUS && L.health < config.health_threshold_crit || \
-			target_is_mob && target_flags & INTERRUPT_UNCONSCIOUS && T.health < config.health_threshold_crit
+			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.health < config.health_threshold_crit)
 		)
 			//health check for catching mobs below crit level but haven't had their stat var updated
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
-			target_is_mob && target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down
+			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_STUNNED && L.stunned || \
-			target_is_mob && target_flags & INTERRUPT_STUNNED && T.stunned
+			target_is_mob && (target_flags & INTERRUPT_STUNNED && T.stunned)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_NEEDHAND || \
-			target_is_mob && target_flags & INTERRUPT_NEEDHAND
+			target_is_mob && (target_flags & INTERRUPT_NEEDHAND)
 		)
 			if(user_holding)
 				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item
@@ -1105,45 +1105,45 @@ var/global/image/busy_indicator_hostile
 					. = FALSE
 					break
 		if(user_flags & INTERRUPT_RESIST && L.resisting || \
-			target_is_mob && target_flags & INTERRUPT_RESIST && T.resisting
+			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != L.zone_selected || \
-			target_is_mob && target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected
+			target_is_mob && (target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected)
 		)
 			. = FALSE
 			break
-		if(user_flags|target_flags & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
+		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_LCLICK && L.clicked_something["left"] || \
-			target_is_mob && target_flags & INTERRUPT_LCLICK && T.clicked_something["left"]
+			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_RCLICK && L.clicked_something["right"] || \
-			target_is_mob && target_flags & INTERRUPT_RCLICK && T.clicked_something["right"]
+			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"] || \
-			target_is_mob && target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"]
+			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"] || \
-			target_is_mob && target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"]
+			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"] || \
-			target_is_mob && target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"]
+			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
 		)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
-			target_is_mob && target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"]
+			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
 		)
 			. = FALSE
 			break

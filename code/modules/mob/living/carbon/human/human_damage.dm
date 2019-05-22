@@ -346,14 +346,12 @@ This function restores all limbs.
 	Less clear vars:
 	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 	*	impact_limbs: the flags for which limbs (body parts) have an impact icon associated with impact_name.
+	*	permanent_kill: whether this attack causes human to become irrevivable
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
 	var/blocked = 0, var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
-	var/impact_name = null, \
-	var/impact_limbs = null
+	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE
 )
-	//visible_message("Hit debug. [damage]|[damagetype]|[def_zone]|[blocked]|[sharp]|[used_weapon]")
-
 	if(protection_aura)
 		damage = round(damage * ((15 - protection_aura) / 15))
 
@@ -403,6 +401,9 @@ This function restores all limbs.
 				temp_impact_name = impact_name
 			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name))
 				UpdateDamageIcon()
+
+	if(permanent_kill)
+		status_flags |= PERMANENTLY_DEAD
 
 	// Will set our damageoverlay icon to the next level, which will then be set back to the normal level the next mob.Life().
 	updatehealth()

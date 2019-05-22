@@ -218,6 +218,9 @@
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
+		else if(stat == WORKING && panel_open)
+			attack_hand(user)
+			return
 		else if(stat & REPAIR_STEP_ONE)
 			to_chat(user, SPAN_NOTICE("You start to remove \the [src]'s broken wires."))
 			if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 3))

@@ -25,8 +25,8 @@
 
 /mob/living/carbon/human/proc/check_tod()
 	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/device/defibrillator/New()
 	sparks.set_up(5, 0, src)
@@ -84,14 +84,14 @@
 				var/mob/dead/observer/ghost = G
 				if(ghost && ghost.client && ghost.can_reenter_corpse)
 					return ghost
-	return 0
+	return null
 
 /mob/living/carbon/human/proc/is_revivable()
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 
-	if(!get_limb("head") || !heart || heart.is_broken() || !has_brain() || chestburst || (HUSK in mutations))
-		return 0
-	return 1
+	if(!get_limb("head") || !heart || heart.is_broken() || !has_brain() || chestburst || (HUSK in mutations) || status_flags & PERMANENTLY_DEAD)
+		return FALSE
+	return TRUE
 
 /obj/item/device/defibrillator/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
 
@@ -113,7 +113,7 @@
 			defib_heal_amt *= user.mind.cm_skills.medical*0.5 //more healing power when used by a doctor
 
 	if(!ishuman(H) || isYautja(H))
-		to_chat(user, "<span class='warning'>You can't defibrilate [H]. You don't even know where to put the paddles!</span>")
+		to_chat(user, "<span class='warning'>You can't defibrillate [H]. You don't even know where to put the paddles!</span>")
 		return
 	if(!ready)
 		to_chat(user, "<span class='warning'>Take [src]'s paddles out first.</span>")

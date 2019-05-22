@@ -374,7 +374,7 @@
 		user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(user.Adjacent(H))
-				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs) //not coming back
+				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
 				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
 		else
 			return -1

@@ -201,36 +201,43 @@
 #define XENO_MULTIPLIER_HEALTH_MATURE 1.25
 #define XENO_MULTIPLIER_HEALTH_ELDER 1.4
 #define XENO_MULTIPLIER_HEALTH_ANCIENT 1.5
+#define XENO_MULTIPLIER_HEALTH_PRIMORDIAL 1.75
 
 #define XENO_MULTIPLIER_DAMAGE_YOUNG 1.0
 #define XENO_MULTIPLIER_DAMAGE_MATURE 1.2
 #define XENO_MULTIPLIER_DAMAGE_ELDER 1.3
 #define XENO_MULTIPLIER_DAMAGE_ANCIENT 1.35
+#define XENO_MULTIPLIER_DAMAGE_PRIMORDIAL 1.45
 
 #define XENO_MULTIPLIER_SPEED_YOUNG 1.0
 #define XENO_MULTIPLIER_SPEED_MATURE 0.9
 #define XENO_MULTIPLIER_SPEED_ELDER 0.85
 #define XENO_MULTIPLIER_SPEED_ANCIENT 0.8
+#define XENO_MULTIPLIER_SPEED_PRIMORDIAL 0.75
 
 #define XENO_MULTIPLIER_PLASMA_YOUNG 1.0
 #define XENO_MULTIPLIER_PLASMA_MATURE 1.25
 #define XENO_MULTIPLIER_PLASMA_ELDER 1.5
 #define XENO_MULTIPLIER_PLASMA_ANCIENT 2.0
+#define XENO_MULTIPLIER_PLASMA_PRIMORDIAL 2.25
 
 #define XENO_MULTIPLIER_PLASMA_GAIN_YOUNG 1.0
-#define XENO_MULTIPLIER_PLASMA_GAIN_MATURE 1.1
-#define XENO_MULTIPLIER_PLASMA_GAIN_ELDER 1.2
-#define XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT 1.25
+#define XENO_MULTIPLIER_PLASMA_GAIN_MATURE 1.2
+#define XENO_MULTIPLIER_PLASMA_GAIN_ELDER 1.4
+#define XENO_MULTIPLIER_PLASMA_GAIN_ANCIENT 1.6
+#define XENO_MULTIPLIER_PLASMA_GAIN_PRIMORDIAL 1.8
 
 #define XENO_MULTIPLIER_ARMOR_FACTOR_YOUNG 1.0
 #define XENO_MULTIPLIER_ARMOR_FACTOR_MATURE 1.1
 #define XENO_MULTIPLIER_ARMOR_FACTOR_ELDER 1.15
 #define XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT 1.20
+#define XENO_MULTIPLIER_ARMOR_FACTOR_PRIMORDIAL 1.30
 
 #define XENO_MULTIPLIER_EVASION_YOUNG 1.0
 #define XENO_MULTIPLIER_EVASION_MATURE 1.10
 #define XENO_MULTIPLIER_EVASION_ELDER 1.15
 #define XENO_MULTIPLIER_EVASION_ANCIENT 1.20
+#define XENO_MULTIPLIER_EVASION_PRIMORDIAL 1.3
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -572,6 +579,30 @@
 				evasion_scalar = XENO_MULTIPLIER_EVASION_ANCIENT
 			if (!armorfactor_scalar)
 				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_ANCIENT
+		
+		if (4) // Primordial
+			if (!melee_damage_scalar)
+				melee_damage_scalar = XENO_MULTIPLIER_DAMAGE_PRIMORDIAL
+			if (!max_health_scalar)
+				max_health_scalar = XENO_MULTIPLIER_HEALTH_PRIMORDIAL
+			if (!plasma_gain_scalar)
+				plasma_gain_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
+			if (!plasma_max_scalar)
+				plasma_max_scalar = XENO_MULTIPLIER_PLASMA_PRIMORDIAL
+			if (!speed_scalar)
+				speed_scalar = XENO_MULTIPLIER_SPEED_PRIMORDIAL
+			if (!evasion_scalar)
+				evasion_scalar = XENO_MULTIPLIER_EVASION_PRIMORDIAL
+			if (!armorfactor_scalar)
+				armorfactor_scalar = XENO_MULTIPLIER_ARMOR_FACTOR_PRIMORDIAL
+		else 
+			melee_damage_scalar = 1
+			max_health_scalar = 1
+			plasma_gain_scalar = 1
+			plasma_max_scalar = 1
+			speed_scalar = 1
+			evasion_scalar = 1
+			armorfactor_scalar = 1
 
 	melee_damage_lower = melee_damage_lower * melee_damage_scalar
 	melee_damage_upper = melee_damage_upper * melee_damage_scalar

@@ -8,7 +8,7 @@
 	var/state = 0
 	var/dismantlectr = 0
 	var/buildctr = 0
-	var/health = 125
+	health = 125
 	var/repair_state = 0
 	// To store what type of wall it used to be
 	var/original
@@ -19,16 +19,16 @@
 	//Tasers and the like should not damage girders.
 	if(Proj.ammo.damage_type == HALLOSS || Proj.ammo.damage_type == TOX || Proj.ammo.damage_type == CLONE || Proj.damage == 0)
 		return 0
-
+	var/dmg = 0
 	if(Proj.ammo.damage_type == BURN)
-		health -= Proj.damage
-		if(health <= 0)
-			update_state()
-	else
-		if(prob(50))
-			health -= round(Proj.ammo.damage / 2)
-			if(health <= 0)
-				update_state()
+		dmg = Proj.damage
+	else 
+		dmg = round(Proj.ammo.damage / 2)
+	if(dmg)
+		health -= dmg
+		bullet_ping(Proj)
+	if(health <= 0)
+		update_state()
 	return 1
 
 
@@ -238,7 +238,7 @@
 	update_state()
 
 /obj/structure/girder/proc/repair()
-	health = 200
+	health = initial(health)
 	update_state()
 
 /obj/structure/girder/proc/update_state()

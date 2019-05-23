@@ -56,7 +56,7 @@
 		// 4 = change (HONK)
 		// 5 = bluetag
 		// 6 = redtag
-	var/health = 80
+	health = 80
 	var/obj/machinery/turretcover/cover = null
 	var/popping = 0
 	var/wasvalid = 0
@@ -505,7 +505,7 @@
 	var/list/exclude = list()
 	var/atom/cur_target
 	var/scan_range = 7
-	var/health = 40
+	health = 40
 	var/list/scan_for = list("human"=0,"cyborg"=0,"mecha"=0,"alien"=1)
 	var/on = 0
 	icon = 'icons/obj/turrets.dmi'

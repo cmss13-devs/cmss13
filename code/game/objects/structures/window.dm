@@ -7,7 +7,7 @@
 	anchored = 1
 	layer = WINDOW_LAYER
 	flags_atom = ON_BORDER|FPRINT
-	var/health = 15
+	health = 15
 	var/state = 2
 	var/reinf = 0
 	var/basestate = "window"

@@ -6,7 +6,7 @@
 	desc = "theres something alien about this"
 	icon = 'icons/Xeno/Effects.dmi'
 	unacidable = 1
-	var/health = 1
+	health = 1
 
 /obj/effect/alien/flamer_fire_act()
 	health -= 50
@@ -463,7 +463,7 @@
 	mineralType = "resin"
 	icon = 'icons/Xeno/Effects.dmi'
 	hardness = 1.5
-	var/health = 80
+	health = 80
 	var/close_delay = 100
 
 	tiles_with = list(/obj/structure/mineral_door/resin)
@@ -861,7 +861,7 @@ TUNNEL
 
 	var/tunnel_desc = "" //description added by the hivelord.
 
-	var/health = 140
+	health = 140
 	var/id = null //For mapping
 
 var/list/obj/structure/tunnel/global_tunnel_list = list()

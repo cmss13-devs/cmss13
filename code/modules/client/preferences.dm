@@ -32,6 +32,7 @@ datum/preferences
 	var/ooccolor = "#b82e00"
 	var/be_special = FALSE				// Special role selection
 	var/ignore_self = FALSE				// Determines whether you will not hurt yourself when clicking yourself
+	var/help_intent_safety = FALSE		// Determines whether help intent will be completely harmless
 	var/UI_style = "Midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
@@ -409,7 +410,8 @@ datum/preferences
 	dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 	dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 	dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
-	dat += "<b>Toggle Being Able to Hurt Yourself:</b> <a href='?_src_=prefs;preference=ignore_self'><b>[ignore_self ? "Yes" : "No"]</b></a><br>"
+	dat += "<b>Toggle Being Able to Hurt Yourself:</b> <a href='?_src_=prefs;preference=ignore_self'><b>[ignore_self ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Help Intent Safety:</b> <a href='?_src_=prefs;preference=help_intent_safety'><b>[help_intent_safety ? "On" : "Off"]</b></a><br>"
 
 	if(config.allow_Metadata)
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"
@@ -1324,6 +1326,9 @@ datum/preferences
 
 				if("ignore_self")
 					ignore_self = !ignore_self
+
+				if("help_intent_safety")
+					help_intent_safety = !help_intent_safety
 
 				if("save")
 					save_preferences()

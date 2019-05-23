@@ -68,7 +68,7 @@
 
 /obj/item/clothing/tie/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
 	if(ishuman(M) && isliving(user))
-		if(user.a_intent == "help")
+		if(user.a_intent == HELP_INTENT)
 			var/body_part = parse_zone(user.zone_selected)
 			if(body_part)
 				var/their = "their"
@@ -123,7 +123,7 @@
 				return TRUE
 
 /obj/item/clothing/tie/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(istype(H) && istype(user) && user.a_intent == "help")
+	if(istype(H) && istype(user) && user.a_intent == HELP_INTENT)
 		if(H.w_uniform)
 			var/obj/item/clothing/under/U = H.w_uniform
 			if(U.hastie)

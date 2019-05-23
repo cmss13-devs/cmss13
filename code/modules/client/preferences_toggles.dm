@@ -171,3 +171,14 @@
 		to_chat(src, "Clicking on yourself in non-help intent will no longer do anything.")
 	else
 		to_chat(src, "Clicking on yourself in non-help intent can harm you again.")
+
+/client/verb/toggle_help_intent_safety() // Toggle whether anything will happen when you click yourself in non-help intent
+	set name = "Toggle Help Intent Safety"
+	set category = "Preferences"
+	set desc = "Toggles whether help intent will be harmless"
+	prefs.help_intent_safety = !prefs.help_intent_safety
+	prefs.save_preferences()
+	if(prefs.help_intent_safety)
+		to_chat(src, "Help intent will now be completely harmless.")
+	else
+		to_chat(src, "Help intent can perform harmful actions again.")

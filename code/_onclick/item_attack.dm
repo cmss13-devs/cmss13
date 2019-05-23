@@ -44,7 +44,7 @@
 	if(!(user in viewers(M, null)))
 		showname = "."
 
-	if (user.a_intent == "help")
+	if (user?.client?.prefs.help_intent_safety && user.a_intent == HELP_INTENT)
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)

@@ -375,7 +375,7 @@
 	if(!density)
 		return FALSE
 
-	if(!anchored) //unanchored objects offer no protection.
+	if(!anchored && !health) //unanchored objects offer no protection. Unless they can be destroyed.
 		return FALSE
 
 	return TRUE
@@ -416,7 +416,7 @@
 	if(!density)
 		return FALSE
 
-	if(!anchored) //unanchored objects offer no protection.
+	if(!anchored && !health) //unanchored objects offer no protection. Unless they can be destroyed.
 		return FALSE
 
 	if(!throwpass)
@@ -455,7 +455,7 @@
 	if(!density)
 		return FALSE
 
-	if(!anchored) //unanchored objects offer no protection.
+	if(!anchored && !health) //unanchored objects offer no protection. Unless they can be destroyed.
 		return FALSE
 
 	if(!throwpass)
@@ -511,7 +511,7 @@
 	if(!density)
 		return FALSE
 
-	if(!anchored) //unanchored objects offer no protection.
+	if(!anchored && !health) //unanchored objects offer no protection. Unless they can be destroyed.
 		return FALSE
 
 	return TRUE
@@ -532,7 +532,7 @@
 	if(!density)
 		return FALSE
 
-	if(!anchored) //unanchored objects offer no protection.
+	if(!anchored && !health) //unanchored objects offer no protection. 
 		return FALSE
 
 	return TRUE

@@ -14,7 +14,7 @@
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
 	var/list/attack_verb = list() //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
 
-	var/health = null
+	health = null
 
 	var/sharp = 0		// whether this item cuts
 	var/edge = 0		// whether this item is more likely to dismember

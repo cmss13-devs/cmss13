@@ -8,7 +8,7 @@
 	anchored = 1
 
 	var/strength = 0.8
-	var/health = 100
+	health = 100
 	var/property = ""
 
 

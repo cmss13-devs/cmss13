@@ -26,7 +26,7 @@
 	var/lasercolor = ""		// Something to do with lasertag turrets, blame Sieve for not adding a comment.
 	var/raised = 0			// if the turret cover is "open" and the turret is raised
 	var/raising= 0			// if the turret is currently opening or closing its cover
-	var/health = 80			// the turret's health
+	health = 80			// the turret's health
 	var/locked = 1			// if the turret's behaviour control access is locked
 
 	var/installation		// the type of weapon installed

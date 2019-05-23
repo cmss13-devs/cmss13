@@ -33,7 +33,7 @@
 	density = 1
 	anchored = 0
 	flags = ON_BORDER
-	var/health = 500
+	health = 500
 
 /obj/structure/machinegun/process()
 	var/mob/living/carbon/human/U

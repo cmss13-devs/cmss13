@@ -126,7 +126,7 @@
 /mob/living/carbon/monkey/attack_paw(mob/M as mob)
 	..()
 
-	if (M.a_intent == "help")
+	if (M.a_intent == HELP_INTENT)
 		help_shake_act(M)
 	else
 		if ((M.a_intent == "hurt" && !( istype(wear_mask, /obj/item/clothing/mask/muzzle) )))
@@ -173,7 +173,7 @@
 					to_chat(M, "<span class='warning'>Not enough charge! </span>")
 					return
 
-	if (M.a_intent == "help")
+	if (M.a_intent == HELP_INTENT)
 		help_shake_act(M)
 	else
 		if (M.a_intent == "hurt")
@@ -200,7 +200,7 @@
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
 				visible_message("<span class='danger'><B>[M] tried to [pick(attack.attack_verb)] [src]!</B></span>")
 		else
-			if (M.a_intent == "grab")
+			if (M.a_intent == GRAB_INTENT)
 				if(M == src || anchored)
 					return 0
 

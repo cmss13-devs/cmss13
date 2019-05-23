@@ -50,13 +50,13 @@
 	if(!istype(H))
 		return
 
-	if(a_intent == "help")
+	if(a_intent == HELP_INTENT)
 		if(isYautja(H))
 			visible_message("[src] licks [H].", "You slobber on [H].")
 		else
 			visible_message("[src] sniffs at [H].", "You sniff at [H].")
 		return
-	else if(a_intent == "disarm")
+	else if(a_intent == DISARM_INTENT)
 		if(isYautja(H))
 			visible_message("[src] shoves [H].", "You shove [H].")
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
@@ -68,7 +68,7 @@
 					if ((O.client && !( O.blinded )))
 						O.show_message(text("<span class='danger'><B>[] knocks down [H]!</B></span>", src), 1)
 		return
-	else if(a_intent == "grab")
+	else if(a_intent == GRAB_INTENT)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(text("<span class='danger'>[] has grabbed [H] in their jaws!</span>", src), 1)
@@ -88,10 +88,10 @@
 	if(!istype(X))
 		return
 
-	if(a_intent == "help")
+	if(a_intent == HELP_INTENT)
 		visible_message("[src] growls at [X].", "You growl at [X].")
 		return
-	else if(a_intent == "disarm")
+	else if(a_intent == DISARM_INTENT)
 		if (!(X.knocked_out ) && X.mob_size != MOB_SIZE_BIG)
 			if(prob(40))
 				X.KnockOut(4)
@@ -100,7 +100,7 @@
 				return
 		visible_message("<span class='danger'>[src] shoves at [X]!</span>","<span class='danger'>You shove at [X]!</span>")
 		return
-	else if(a_intent == "grab")
+	else if(a_intent == GRAB_INTENT)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 		visible_message("<span class='danger'><B>[src] grabs [X] in their jaws!</B></span>","<span class='danger'><B>You grab [X] in your jaws!</b></span>")
 		src.start_pulling(X)
@@ -115,10 +115,10 @@
 	if(!istype(H))
 		return
 
-	if(a_intent == "help")
+	if(a_intent == HELP_INTENT)
 		visible_message("[src] growls at [H].", "You growl at [H].")
 		return
-	else if(a_intent == "disarm")
+	else if(a_intent == DISARM_INTENT)
 		if(istype(H,/mob/living/carbon/hellhound))
 			return
 		if(istype(H,/mob/living/carbon/monkey))
@@ -129,7 +129,7 @@
 				return
 		visible_message("<span class='danger'>[src] shoves at [H]!</span>","<span class='danger'>You shove at [H]!</span>")
 		return
-	else if(a_intent == "grab")
+	else if(a_intent == GRAB_INTENT)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 		visible_message("<span class='danger'><B>[src] grabs [H] in their jaws!</B></span>","<span class='danger'><B>You grab [H] in your jaws!</b></span>")
 		src.start_pulling(H)
@@ -149,7 +149,7 @@
 /mob/living/carbon/hellhound/attack_paw(mob/M as mob)
 	..()
 
-	if (M.a_intent == "help")
+	if (M.a_intent == HELP_INTENT)
 		help_shake_act(M)
 	else
 		if (M.a_intent == "hurt")
@@ -170,7 +170,7 @@
 		to_chat(M, "You cannot attack people before the game has started.")
 		return
 
-	if (M.a_intent == "help")
+	if (M.a_intent == HELP_INTENT)
 		help_shake_act(M)
 	else
 		if (M.a_intent == "hurt")
@@ -192,7 +192,7 @@
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1)
 				visible_message("<span class='danger'><B>[M] tried to [pick(attack.attack_verb)] [src]!</B></span>")
 		else
-			if (M.a_intent == "grab")
+			if (M.a_intent == GRAB_INTENT)
 
 				if(M == src || anchored)
 					return 0

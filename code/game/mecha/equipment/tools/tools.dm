@@ -985,7 +985,7 @@
 			if(chassis.occupant.a_intent == "hurt")
 				chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
 				chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
-			if(chassis.occupant.a_intent == "disarm")
+			if(chassis.occupant.a_intent == DISARM_INTENT)
 				chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
 				chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
 			else

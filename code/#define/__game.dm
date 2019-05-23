@@ -106,6 +106,13 @@ These are used with qdel (clean delete). For example, qdel(atom, TA_REVIVE_ME) w
 #define TOGGLES_SOUND_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY)
 
 
+// Game Intents
+#define HELP_INTENT		"help"
+#define HARM_INTENT		"harm"
+#define GRAB_INTENT		"grab"
+#define DISARM_INTENT	"disarm"
+
+
 /*
 	Shuttles
 */

@@ -414,7 +414,7 @@
 
 //Smashing windows
 /obj/structure/window/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == "help")
+	if(M.a_intent == HELP_INTENT)
 		playsound(src.loc, 'sound/effects/glassknock.ogg', 25, 1)
 		M.visible_message("<span class='warning'>\The [M] creepily taps on [src] with its huge claw.</span>", \
 		"<span class='warning'>You creepily tap on [src].</span>", \
@@ -510,7 +510,7 @@
 		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		return 1
 
-	if(M.a_intent == "help")
+	if(M.a_intent == HELP_INTENT)
 		M.visible_message("<span class='warning'>\The [M] oogles its own reflection in [src].</span>", \
 		"<span class='warning'>You oogle your own reflection in [src].</span>", null, 5)
 	else
@@ -777,7 +777,7 @@
 
 //Digging up snow
 /turf/open/snow/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == "help")
+	if(M.a_intent == HELP_INTENT)
 		return 0
 
 	if(!slayer)

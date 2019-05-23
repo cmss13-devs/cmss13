@@ -73,7 +73,7 @@
 
 /obj/item/weapon/gun/m60/toggle_burst()
 	to_chat(usr, "<span class='warning'>This weapon can only fire in bursts!</span>")
-	
+
 //Spike launcher
 
 /obj/item/weapon/gun/launcher/spike
@@ -81,6 +81,7 @@
 	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "spikelauncher"
+	item_state = "spikelauncher"
 	muzzle_flash = null // TO DO, add a decent one.
 	origin_tech = "combat=7;materials=7"
 	unacidable = 1

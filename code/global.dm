@@ -169,6 +169,7 @@ var/list/pred_spawn = list()//Predators spawn at these
 var/list/pred_elder_spawn = list() //For elder preds.
 var/list/yautja_teleport_loc = list() //Yautja teleporter target location.
 var/list/yautja_almayer_loc = list()
+var/list/fallen_list = list()
 //	list/mazewarp = list()
 var/list/tdome1 = list()
 var/list/tdome2 = list()

@@ -37,7 +37,6 @@
 
 	round_statistics.log_round_statistics()
 
-	declare_completion_announce_individual()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	return 1

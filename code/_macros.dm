@@ -94,3 +94,7 @@
 #define SPAN_YAUTJABOLDBIG(X) "<span class='yautjaboldbig'>[X]</span>"
 
 #define SPAN_DEBUG(X) "<span class='debuginfo'>[X]</span>"
+
+#define SPAN_ROUNDBODY(X) "<span class='round_body'>[X]</span>"
+
+#define SPAN_CENTERBOLD(X) "<span class='centerbold'>[X]</span>"

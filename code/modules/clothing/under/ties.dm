@@ -111,14 +111,14 @@
 
 /obj/item/clothing/tie/medal/tie_check(obj/item/clothing/under/U, mob/user)
 	if(!ishuman(U.loc))
-		to_chat(user, "<span class='warning'>[U] must be worn to apply [src].</span>")
+		to_chat(user, SPAN_WARNING("[U] must be worn to apply [src]."))
 	else
 		var/mob/living/carbon/human/H = U.loc
 		if(H.w_uniform != U)
-			to_chat(user, "<span class='warning'>[U] must be worn to apply [src].</span>")
+			to_chat(user, SPAN_WARNING("[U] must be worn to apply [src]."))
 		else
 			if(recipient_name != H.real_name)
-				to_chat(user, "<span class='warning'>[src] isn't awarded to [H].</span>")
+				to_chat(user, SPAN_WARNING("[src] isn't awarded to [H]."))
 			else
 				return TRUE
 
@@ -127,11 +127,11 @@
 		if(H.w_uniform)
 			var/obj/item/clothing/under/U = H.w_uniform
 			if(U.hastie)
-				to_chat(user, "<span class='warning'>There's already something attached to [H]'s [U.name].</span>")
+				to_chat(user, SPAN_WARNING("There's already something attached to [H]'s [U.name]."))
 				return
 			else
 				if(recipient_name != H.real_name)
-					to_chat(user, "<span class='warning'>[src] isn't awarded to [H].</span>")
+					to_chat(user, SPAN_WARNING("[src] isn't awarded to [H]."))
 					return
 				if(user != H)
 					user.visible_message("[user] starts pinning [src] on [H]'s [U.name].", \
@@ -151,7 +151,7 @@
 					user.visible_message("[user] pins [src] on [H]'s [U.name].", \
 					SPAN_NOTICE("You pin [src] on [H]'s [U.name]."))
 		else
-			to_chat(user, "<span class='warning'>[src] needs a uniform to be pinned to.</span>")
+			to_chat(user, SPAN_WARNING("[src] needs a uniform to be pinned to."))
 	else
 		return ..()
 
@@ -260,16 +260,16 @@
 
 /obj/item/clothing/tie/holster/proc/holster(obj/item/I, mob/user as mob)
 	if(holstered)
-		to_chat(user, "<span class='danger'>There is already a [holstered] holstered here!</span>")
+		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
 		return
 
 	if (!istype(I, /obj/item/weapon/gun))
-		to_chat(user, "<span class='danger'>Only guns can be holstered!</span>")
+		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
 		return
 
 	var/obj/item/weapon/gun/W = I
 	if (!can_holster(W))
-		to_chat(user, "<span class='danger'>This [W] won't fit in the [src]!</span>")
+		to_chat(user, SPAN_DANGER("This [W] won't fit in the [src]!"))
 		return
 
 	holstered = W
@@ -282,11 +282,11 @@
 		return
 
 	if(user.get_active_hand() && user.get_inactive_hand())
-		to_chat(user, "<span class='warning'>You need an empty hand to draw the [holstered]!</span>")
+		to_chat(user, SPAN_WARNING("You need an empty hand to draw the [holstered]!"))
 	else
 		if(user.a_intent == "hurt")
-			usr.visible_message("<span class='danger'>[user] draws the [holstered], ready to shoot!</span>", \
-			"<span class='danger'>You draw [holstered], ready to shoot!</span>")
+			usr.visible_message(SPAN_DANGER("[user] draws the [holstered], ready to shoot!"), \
+			SPAN_DANGER("You draw [holstered], ready to shoot!"))
 		else
 			user.visible_message(SPAN_NOTICE("[user] draws the [holstered], pointing it at the ground."), \
 			SPAN_NOTICE("You draw the [holstered], pointing it at the ground."))
@@ -465,17 +465,17 @@
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security.</span>","<span class='danger'>You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security.</span>")
+		user.visible_message(SPAN_DANGER("[user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."),SPAN_DANGER("You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."))
 
 /obj/item/clothing/tie/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
 
 	if (istype(O, /obj/item/card/emag))
 		if (emagged)
-			to_chat(user, "<span class='danger'>[src] is already cracked.</span>")
+			to_chat(user, SPAN_DANGER("[src] is already cracked."))
 			return
 		else
 			emagged = 1
-			to_chat(user, "<span class='danger'>You swipe [O] and crack the holobadge security checks.</span>")
+			to_chat(user, SPAN_DANGER("You swipe [O] and crack the holobadge security checks."))
 			return
 
 	else if(istype(O, /obj/item/card/id) || istype(O, /obj/item/device/pda))
@@ -500,7 +500,7 @@
 
 /obj/item/clothing/tie/holobadge/attack(mob/living/carbon/human/M, mob/living/user)
 	if(isliving(user))
-		user.visible_message("<span class='danger'>[user] invades [M]'s personal space, thrusting [src] into their face insistently.</span>","<span class='danger'>You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law.</span>")
+		user.visible_message(SPAN_DANGER("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law."))
 
 /obj/item/storage/box/holobadge
 	name = "holobadge box"

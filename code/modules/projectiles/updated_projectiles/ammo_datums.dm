@@ -98,12 +98,12 @@
 				var/mob/living/carbon/Xenomorph/target = M
 				if(target.mob_size == MOB_SIZE_BIG) return //Big xenos are not affected.
 				target.apply_effects(0,1) //Smaller ones just get shaken.
-				to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
+				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			else
 				if(!isYautja(M)) //Not predators.
 					var/mob/living/target = M
 					target.apply_effects(1,2) //Humans get stunned a bit.
-					to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
+					to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
 		step_away(M,P)
 
 /datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 2) //crazier version of knockback, for PB use
@@ -112,7 +112,7 @@
 	if(isliving(M)) //This is pretty ugly, but what can you do.
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			to_chat(target, "<span class='xenodanger'>You are shaken by the sudden impact!</span>")
+			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			if(target.mob_size == MOB_SIZE_BIG)
 				target.apply_effects(0,0.1)
 				return
@@ -121,7 +121,7 @@
 			if(!isYautja(M)) //Not predators.
 				var/mob/living/target = M
 				target.apply_effects(4,6) //Humans get heavily.
-				to_chat(target, "<span class='highdanger'>The blast knocks you off your feet!</span>")
+				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
 	step_away(M,P)
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
@@ -130,7 +130,8 @@
 		if(P.firer == M)
 			continue
 		if(show_message)
-			M.visible_message("<span class='danger'>[M] is hit by backlash from \a [P.name]!</span>","[isXeno(M)?"<span class='xenodanger'>":"<span class='highdanger'>"]You are hit by backlash from \a </b>[P.name]</b>!</span>")
+			var/msg = "You are hit by backlash from \a </b>[P.name]</b>!"
+			M.visible_message(SPAN_DANGER("[M] is hit by backlash from \a [P.name]!"),isXeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
 		var/damage = P.damage/damage_div
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/XNO = M
@@ -138,7 +139,7 @@
 			damage = armor_damage_reduction(config.xeno_explosive, damage, total_explosive_resistance , 60, 0, 0.5, XNO.armor_integrity)
 			var/armor_punch = armor_break_calculation(config.xeno_explosive, damage, total_explosive_resistance, 60, 0, 0.5, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)
-		
+
 		M.apply_damage(damage,damage_type)
 		P.play_damage_effect(M)
 
@@ -298,7 +299,7 @@
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/monkey))
-		P.visible_message("<span class='danger'>The [src] chimpers furiously!</span>")
+		P.visible_message(SPAN_DANGER("The [src] chimpers furiously!"))
 		new /mob/living/carbon/monkey(P.loc)
 
 /datum/ammo/bullet/pistol/smart
@@ -371,11 +372,12 @@
 /datum/ammo/bullet/revolver/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
-		user.visible_message("<span class='danger'>[user] aims at [M]'s head!</span>","<span class='highdanger'>You aim at [M]'s head!</span>")
+		user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(user.Adjacent(H))
 				H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
-				H.visible_message("<span class='danger'>[M] WAS EXECUTED!</span>","<span class='highdanger'>You were Executed!</span>")
+				H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+					SPAN_HIGHDANGER("You were Executed!"))
 		else
 			return -1
 /*
@@ -392,7 +394,7 @@
 	damage = config.lmed_hit_damage
 	accurate_range = config.near_shell_range
 	penetration = 0
-	damage_falloff = config.reg_damage_falloff	
+	damage_falloff = config.reg_damage_falloff
 	scatter = config.min_scatter_value
 	accuracy = config.med_hit_accuracy
 
@@ -1469,7 +1471,7 @@
 	smoke_system.set_up(amount, 0, T)
 	smoke_system.lifetime = 6 * lifetime_mult
 	smoke_system.start()
-	T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into noxious fumes!</span>")
+	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
 
 /datum/ammo/xeno/boiler_gas/corrosive
 	name = "glob of acid"
@@ -1501,7 +1503,7 @@
 	smoke_system.set_up(amount, 0, T)
 	smoke_system.lifetime = 6 * lifetime_mult
 	smoke_system.start()
-	T.visible_message("<span class='danger'>A glob of acid lands with a splat and explodes into corrosive bile!</span>")
+	T.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into corrosive bile!"))
 
 /datum/ammo/xeno/boiler_gas/shatter
 	name = "glob of neurotoxin"
@@ -1684,7 +1686,7 @@
 
 /datum/ammo/flare/proc/drop_nade(var/turf/T)
 	var/obj/item/device/flashlight/flare/G = new (T)
-	G.visible_message("<span class='warning'>\A [G] bursts into brilliant light nearby!</span>")
+	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	G.on = 1
 	processing_objects += G
 	G.icon_state = "flare-on"
@@ -1718,7 +1720,7 @@
 
 /datum/ammo/grenade_container/proc/drop_nade(var/turf/T)
 	var/obj/item/explosive/grenade/G = new nade_type(T)
-	G.visible_message("<span class='warning'>\A [G] lands on [T]!</span>")
+	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
 	G.det_time = 10
 	G.activate()
 

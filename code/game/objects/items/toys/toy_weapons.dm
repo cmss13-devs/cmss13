@@ -33,14 +33,14 @@
 				to_chat(user, SPAN_NOTICE(" It's already fully loaded!"))
 				return 1
 			if (A.amount_left <= 0)
-				to_chat(user, "<span class='danger'>There is no more caps!</span>")
+				to_chat(user, SPAN_DANGER("There is no more caps!"))
 				return 1
 			if (A.amount_left < (7 - bullets))
 				src.bullets += A.amount_left
-				to_chat(user, "<span class='danger'>You reload [A.amount_left] caps\s!</span>")
+				to_chat(user, SPAN_DANGER("You reload [A.amount_left] caps\s!"))
 				A.amount_left = 0
 			else
-				to_chat(user, "<span class='danger'>You reload [7 - bullets] caps\s!</span>")
+				to_chat(user, SPAN_DANGER("You reload [7 - bullets] caps\s!"))
 				A.amount_left -= 7 - bullets
 				bullets = 7
 			A.update_icon()
@@ -52,17 +52,17 @@
 		if (flag)
 			return
 		if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-			to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 		src.add_fingerprint(user)
 		if (src.bullets < 1)
-			user.show_message("<span class='danger'>*click* *click*</span>", 2)
+			user.show_message(SPAN_DANGER("*click* *click*"), 2)
 			playsound(user, 'sound/weapons/gun_empty.ogg', 15, 1)
 			return
 		playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
 		src.bullets--
 		for(var/mob/O in viewers(user, null))
-			O.show_message(text("<span class='danger'><B>[] fires a cap gun at []!</B></span>", user, target), 1, "<span class='danger'>You hear a gunshot</span>", 2)
+			O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), 1, SPAN_DANGER("You hear a gunshot"), 2)
 
 /obj/item/toy/gun_ammo
 	name = "ammo-caps"
@@ -107,7 +107,7 @@
 					bullets++
 					to_chat(user, SPAN_NOTICE(" You load the foam dart into the crossbow."))
 			else
-				to_chat(usr, "<span class='danger'>It's already fully loaded.</span>")
+				to_chat(usr, SPAN_DANGER("It's already fully loaded."))
 
 
 	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
@@ -133,7 +133,7 @@
 						if(!istype(M,/mob/living)) continue
 						if(M == user) continue
 						for(var/mob/O in viewers(world.view, D))
-							O.show_message(text("<span class='danger'>[] was hit by the foam dart!</span>", M), 1)
+							O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), 1)
 						new /obj/item/toy/crossbow_ammo(M.loc)
 						qdel(D)
 						return
@@ -155,7 +155,7 @@
 		else if (bullets == 0)
 			user.KnockDown(5)
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<span class='danger'>[] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
+				O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), 1)
 
 
 	attack(mob/M as mob, mob/user as mob)
@@ -167,15 +167,16 @@
 
 			for(var/mob/O in viewers(M, null))
 				if(O.client)
-					O.show_message(text("<span class='danger'><B>[] casually lines up a shot with []'s head and pulls the trigger!</B></span>", user, M), 1, "<span class='danger'>You hear the sound of foam against skull</span>", 2)
-					O.show_message(text("<span class='danger'>[] was hit in the head by the foam dart!</span>", M), 1)
+					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head and pulls the trigger!</B>"), 1, SPAN_DANGER("You hear the sound of foam against skull"), 2)
+					O.show_message(SPAN_DANGER("[M] was hit in the head by the foam dart!"), 1)
 
 			playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 			new /obj/item/toy/crossbow_ammo(M.loc)
 			src.bullets--
 		else if (M.lying && src.bullets == 0)
 			for(var/mob/O in viewers(M, null))
-				if (O.client)	O.show_message(text("<span class='danger'><B>[] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B></span>", user, M), 1, "<span class='danger'>You hear someone fall</span>", 2)
+				if (O.client)
+					O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
 			user.KnockDown(5)
 		return
 

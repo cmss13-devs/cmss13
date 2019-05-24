@@ -15,9 +15,9 @@
 				coins++
 				qdel(W)
 			else
-				to_chat(user, "<span class='danger'>\the [W] does not fit anymore.</span>")
+				to_chat(user, SPAN_DANGER("\the [W] does not fit anymore."))
 		else
-			to_chat(user, "<span class='danger'>\the [W] does not fit inside that rectangular hole.</span>")
+			to_chat(user, SPAN_DANGER("\the [W] does not fit inside that rectangular hole."))
 
 	examine(mob/user)
 		desc = state?"<font size='4' color='red'>NO BUGS</font>":"A strange small metal object with a button in the middle and rectangular hole on the side..."
@@ -61,6 +61,6 @@
 						layer = 2
 						coins = 0
 			else
-				to_chat(usr, "<span class='danger'>Nothing happened...</span>")
+				to_chat(usr, SPAN_DANGER("Nothing happened..."))
 		else
-			to_chat(usr, "<span class='danger'>Nothing happened...</span>")
+			to_chat(usr, SPAN_DANGER("Nothing happened..."))

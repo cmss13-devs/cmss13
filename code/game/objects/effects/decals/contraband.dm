@@ -68,7 +68,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 		if("Yes")
 			if(user.loc != temp_loc)
 				return
-			visible_message("<span class='warning'>[user] rips [src] in a single, decisive motion!</span>" )
+			visible_message(SPAN_WARNING("[user] rips [src] in a single, decisive motion!") )
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 25, 1)
 			ruined = 1
 			icon_state = "poster_ripped"
@@ -89,7 +89,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 /turf/closed/wall/proc/place_poster(var/obj/item/contraband/poster/P, var/mob/user)
 
 	if(!istype(src,/turf/closed/wall))
-		to_chat(user, "<span class='danger'>You can't place this here!</span>")
+		to_chat(user, SPAN_DANGER("You can't place this here!"))
 		return
 
 	var/stuff_on_wall = 0

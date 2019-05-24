@@ -708,9 +708,9 @@
 		return
 
 	if(timing)
-		xeno_message("<span class='xenoannounce'>The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!</span>",2, hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The tallhosts have deployed a hive killer at [loc.name]! Stop it at all costs!"),2, hivenumber)
 	else
-		xeno_message("<span class='xenoannounce'>The hive killer has been disabled! Rejoice!</span>",2, hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The hive killer has been disabled! Rejoice!"),2, hivenumber)
 
 /datum/hive_status/corrupted
 	hivenumber = XENO_HIVE_CORRUPTED

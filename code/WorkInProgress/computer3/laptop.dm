@@ -35,7 +35,7 @@
 		set src in view(1)
 
 		if(usr.stat || usr.is_mob_restrained() || usr.lying || !istype(usr, /mob/living))
-			to_chat(usr, "<span class='danger'>You can't do that.</span>")
+			to_chat(usr, SPAN_DANGER("You can't do that."))
 			return
 
 		if(!Adjacent(usr))
@@ -67,7 +67,7 @@
 				stored_computer.manipulating = 0
 				qdel(src)
 		else
-			to_chat(usr, "<span class='danger'>You are already opening the computer!</span>")
+			to_chat(usr, SPAN_DANGER("You are already opening the computer!"))
 
 
 /obj/item/device/laptop/clicked(var/mob/user, var/list/mods)
@@ -138,7 +138,7 @@
 		set src in view(1)
 
 		if(usr.stat || usr.is_mob_restrained() || usr.lying || !istype(usr, /mob/living))
-			to_chat(usr, "<span class='danger'>You can't do that.</span>")
+			to_chat(usr, SPAN_DANGER("You can't do that."))
 			return
 
 		if(!Adjacent(usr))

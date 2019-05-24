@@ -51,13 +51,13 @@
 		return
 
 	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_PERMISSIONS))
-		to_chat(usr, "<span class='danger'>You do not have permission to do this!</span>")
+		to_chat(usr, SPAN_DANGER("You do not have permission to do this!"))
 		return
 
 	establish_db_connection()
 
 	if(!dbcon.IsConnected())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection</span>")
+		to_chat(usr, SPAN_DANGER("Failed to establish database connection"))
 		return
 
 	if(!adm_ckey || !new_rank)
@@ -101,12 +101,12 @@
 		return
 
 	if(!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_PERMISSIONS))
-		to_chat(usr, "<span class='danger'>You do not have permission to do this!</span>")
+		to_chat(usr, SPAN_DANGER("You do not have permission to do this!"))
 		return
 
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection</span>")
+		to_chat(usr, SPAN_DANGER("Failed to establish database connection"))
 		return
 
 	if(!adm_ckey || !new_permission)

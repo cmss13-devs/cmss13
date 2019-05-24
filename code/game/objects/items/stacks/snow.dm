@@ -73,14 +73,14 @@
 /obj/item/stack/snow/attack_self(mob/user)
 	var/turf/T = get_turf(user)
 	if(T.get_dirt_type() != DIRT_TYPE_SNOW)
-		to_chat(user, "<span class='warning'>You can't build a snow barricade at this location!</span>")
+		to_chat(user, SPAN_WARNING("You can't build a snow barricade at this location!"))
 		return
 
 	if(user.action_busy)
 		return
 
 	if(amount < 3)
-		to_chat(user, "<span class='warning'>You need 3 layers of snow to build a barricade.</span>")
+		to_chat(user, SPAN_WARNING("You need 3 layers of snow to build a barricade."))
 		return
 
 	//Using same safeties as other constructions
@@ -88,10 +88,10 @@
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				if(O.dir == user.dir)
-					to_chat(user, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
+					to_chat(user, SPAN_WARNING("There is already \a [O.name] in this direction!"))
 					return
 			else
-				to_chat(user, "<span class='warning'>You need a clear, open area to build the sandbag barricade!</span>")
+				to_chat(user, SPAN_WARNING("You need a clear, open area to build the sandbag barricade!"))
 				return
 
 	user.visible_message(SPAN_NOTICE("[user] starts assembling a snow barricade."), \

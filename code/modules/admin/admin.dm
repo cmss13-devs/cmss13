@@ -580,9 +580,6 @@ var/global/floorIsLava = 0
 			"}
 		else
 			dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
-
-	//to_world("Channelname: [src.admincaster_feed_channel.channel_name] [src.admincaster_feed_channel.author]")
-	//to_world("Msg: [src.admincaster_feed_message.author] [src.admincaster_feed_message.body]")
 	usr << browse(dat, "window=admincaster_main;size=400x600")
 	onclose(usr, "admincaster_main")
 
@@ -716,7 +713,7 @@ var/global/floorIsLava = 0
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")
-		to_world("<span class='danger'><b>Restarting world!</b></span> <span class='notice'>Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!</span>")
+		to_world(SPAN_DANGER("<b>Restarting world!</b></span> <span class='notice'>Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"))
 		log_admin("[key_name(usr)] initiated a reboot.")
 
 		feedback_set_details("end_error","admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")
@@ -966,7 +963,7 @@ var/global/floorIsLava = 0
 	if(!usr.client.admin_holder)	return
 	if( alert("Reboot server?",,"Yes","No") == "No")
 		return
-	to_world("<span class='danger'><b>Rebooting world!</b> \blue Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!</span>")
+	to_world(SPAN_DANGER("<b>Rebooting world!</b> \blue Initiated by [usr.client.admin_holder.fakekey ? "Admin" : usr.key]!"))
 	log_admin("[key_name(usr)] initiated an immediate reboot.")
 
 	feedback_set_details("end_error","immediate admin reboot - by [usr.key] [usr.client.admin_holder.fakekey ? "(stealth)" : ""]")

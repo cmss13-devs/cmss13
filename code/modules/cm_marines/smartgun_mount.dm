@@ -183,8 +183,8 @@
 
 /obj/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) return //Larvae can't do shit
-	M.visible_message("<span class='danger'>[M] has slashed [src]!</span>",
-	"<span class='danger'>You slash [src]!</span>")
+	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")
 	playsound(loc, "alien_claw_metal", 25)
@@ -195,7 +195,7 @@
 	var/mob/living/carbon/human/user = usr //this is us
 	if(over_object == user && in_range(src, user))
 		if(anchored)
-			to_chat(user, "<span class='warning'>[src] can't be folded while screwed to the floor. Unscrew it first.</span>")
+			to_chat(user, SPAN_WARNING("[src] can't be folded while screwed to the floor. Unscrew it first."))
 			return
 		to_chat(user, SPAN_NOTICE("You fold [src]."))
 		var/obj/item/device/m56d_post/P = new(loc)
@@ -223,7 +223,7 @@
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
 		var/obj/item/device/m56d_gun/MG = O
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] must be anchored! Use a screwdriver!</span>")
+			to_chat(user, SPAN_WARNING("[src] must be anchored! Use a screwdriver!"))
 			return
 		to_chat(user, "You begin mounting [MG]...")
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
@@ -238,7 +238,7 @@
 
 	if(istype(O,/obj/item/tool/crowbar))
 		if(!gun_mounted)
-			to_chat(user, "<span class='warning'>There is no gun mounted.</span>")
+			to_chat(user, SPAN_WARNING("There is no gun mounted."))
 			return
 		to_chat(user, "You begin dismounting [src]'s gun...")
 		if(do_after(user,30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
@@ -276,7 +276,7 @@
 							fail = 1
 							break
 				if(fail)
-					to_chat(user, "<span class='warning'>Can't install [src] here, something is in the way.</span>")
+					to_chat(user, SPAN_WARNING("Can't install [src] here, something is in the way."))
 					return
 			if(anchored)
 				to_chat(user, "You begin unscrewing [src] from the ground...")
@@ -348,7 +348,7 @@
 		else
 			to_chat(user, SPAN_WARNING("It seems to be lacking ammo."))
 		switch(damage_state)
-			if(M56D_DMG_NONE) to_chat(user, "<span class='info'>It looks goods like its in good shape.</span>")
+			if(M56D_DMG_NONE) to_chat(user, SPAN_INFO("It looks goods like its in good shape."))
 			if(M56D_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It has sustained some damage, but still fires very steadily."))
 			if(M56D_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's damaged, but holding, rattling with each shot fired."))
 			if(M56D_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's falling apart, barely able to handle the force of its own shots."))
@@ -404,7 +404,7 @@
 		var/obj/item/ammo_magazine/m56d/M = O
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.heavy_weapons < SKILL_HEAVY_WEAPONS_TRAINED)
 			if(rounds)
-				to_chat(user, "<span class='warning'>You only know how to swap the ammo drum when it's empty.</span>")
+				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
 				return
 			if(user.action_busy) return
 			if(!do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -475,14 +475,14 @@
 
 /obj/machinery/m56d_hmg/bullet_act(var/obj/item/projectile/P) //Nope.
 	bullet_ping(P)
-	visible_message("<span class='warning'>[src] is hit by the [P.name]!</span>")
+	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
 	update_health(round(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
 /obj/machinery/m56d_hmg/attack_alien(mob/living/carbon/Xenomorph/M) // Those Ayy lmaos.
 	if(isXenoLarva(M)) return //Larvae can't do shit
-	M.visible_message("<span class='danger'>[M] has slashed [src]!</span>",
-	"<span class='danger'>You slash [src]!</span>")
+	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")
 	playsound(loc, "alien_claw_metal", 25)
@@ -581,7 +581,7 @@
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
 	if(user.get_active_hand())
-		to_chat(usr, "<span class='warning'>You need a free hand to shoot the [src].</span>")
+		to_chat(usr, SPAN_WARNING("You need a free hand to shoot the [src]."))
 		return HANDLE_CLICK_UNHANDLED
 
 	target = A
@@ -602,7 +602,7 @@
 	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
 
 		if(!rounds)
-			to_chat(user, "<span class='warning'><b>*click*</b></span>")
+			to_chat(user, SPAN_WARNING("<b>*click*</b>"))
 			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		else
 			process_shot()
@@ -649,7 +649,7 @@
 				to_chat(user, "You're already manning something!")
 				return
 			if(user.get_active_hand() != null)
-				to_chat(user, "<span class='warning'>You need a free hand to man the [src].</span>")
+				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
 			else
 				visible_message("\icon[src] <span class='notice'>[user] mans the M56D!</span>")
 				to_chat(user, SPAN_NOTICE("You man the gun!"))

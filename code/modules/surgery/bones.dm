@@ -34,8 +34,8 @@
 	affected.bone_repair_stage = 1
 
 /datum/surgery_step/bone/glue_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!</span>" , \
-	"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!") , \
+	SPAN_WARNING("Your hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!"))
 
 
 /datum/surgery_step/bone/set_bone
@@ -74,15 +74,15 @@
 
 /datum/surgery_step/bone/set_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(affected.body_part == HEAD)
-		user.visible_message("<span class='warning'>[user]'s hand slips, damaging [target]'s face with \the [tool]!</span>"  , \
-		"<span class='warning'>Your hand slips, damaging [target]'s face with \the [tool]!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging [target]'s face with \the [tool]!")  , \
+		SPAN_WARNING("Your hand slips, damaging [target]'s face with \the [tool]!"))
 		var/datum/limb/head/h = affected
 		h.createwound(BRUISE, 10)
 		h.disfigured = 1
 		h.owner.name = h.owner.get_visible_name()
 		h.update_wounds()
 	else
-		user.visible_message("<span class='warning'>[user]'s hand slips, damaging the bone in [target]'s [affected.display_name] with \the [tool]!</span>" , \
-		"<span class='warning'>Your hand slips, damaging the bone in [target]'s [affected.display_name] with \the [tool]!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the bone in [target]'s [affected.display_name] with \the [tool]!") , \
+		SPAN_WARNING("Your hand slips, damaging the bone in [target]'s [affected.display_name] with \the [tool]!"))
 		affected.createwound(BRUISE, 5)
 		affected.update_wounds()

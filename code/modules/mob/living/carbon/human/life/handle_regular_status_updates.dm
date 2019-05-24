@@ -43,8 +43,8 @@
 				qdel(a)
 
 			if(halloss > 100)
-				visible_message("<span class='warning'>\The [src] slumps to the ground, too weak to continue fighting.</span>", \
-				"<span class='warning'>You slump to the ground, you're in too much pain to keep going.</span>")
+				visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
+				SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
 				KnockOut(10)
 				setHalLoss(99)
 

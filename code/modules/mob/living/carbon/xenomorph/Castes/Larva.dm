@@ -72,7 +72,7 @@
 			amount_grown++ //Double growth on weeds.
 	if(amount_grown >= max_grown)	// to avoid spam
 		if(upgrade < 0)
-			to_chat(src, "<span class='xenodanger'>Strength ripples through your small form. You are ready to be shaped to the Queen's will.</span>")
+			to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will."))
 			src << sound('sound/effects/xeno_evolveready.ogg')
 			upgrade++
 

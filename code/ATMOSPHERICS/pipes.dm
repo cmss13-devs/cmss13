@@ -92,7 +92,7 @@
 		return ..()
 	var/turf/T = src.loc
 	if(level == 1 && isturf(T) && T.intact_tile)
-		to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
+		to_chat(user, SPAN_WARNING("You must remove the plating first."))
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -207,7 +207,7 @@
 	return 1
 
 /obj/machinery/atmospherics/pipe/simple/proc/burst()
-	src.visible_message("<span class='danger'>\bold [src] bursts!</span>");
+	src.visible_message(SPAN_DANGER("\bold [src] bursts!"));
 	playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
 	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(0,0, src.loc, 0)
@@ -1106,7 +1106,7 @@
 
 	if(istype(W, /obj/item/device/analyzer) && in_range(user, src))
 		for (var/mob/O in viewers(user, null))
-			to_chat(O, "<span class='danger'>[user] has used the analyzer on \icon[icon]</span>")
+			to_chat(O, SPAN_DANGER("[user] has used the analyzer on \icon[icon]"))
 
 		to_chat(user, SPAN_NOTICE(" Results of analysis of \icon[icon]"))
 		if (pressure>0)

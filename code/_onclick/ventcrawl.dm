@@ -6,7 +6,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 /mob/living/proc/ventcrawl_carry()
 	for(var/atom/A in src.contents)
 		if(!(is_type_in_list(A, canEnterVentWith)))
-			to_chat(src, "<span class='warning'>You can't be carrying items or have items equipped when vent crawling!</span>")
+			to_chat(src, SPAN_WARNING("You can't be carrying items or have items equipped when vent crawling!"))
 			return 0
 	return 1
 
@@ -30,7 +30,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 		if(is_type_in_list(U,ventcrawl_machinery) && Adjacent(U))
 			pipes |= U
 	if(!pipes || !pipes.len)
-		to_chat(src, "<span class='warning'>There are no pipes that you can ventcrawl into within range!</span>")
+		to_chat(src, SPAN_WARNING("There are no pipes that you can ventcrawl into within range!"))
 		return
 	if(pipes.len == 1)
 		pipe = pipes[1]
@@ -76,15 +76,15 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 
 						switch(vent_found.temperature)
 							if(0 to BODYTEMP_COLD_DAMAGE_LIMIT)
-								to_chat(src, "<span class='danger'>You feel a painful freeze coming from the vent!</span>")
+								to_chat(src, SPAN_DANGER("You feel a painful freeze coming from the vent!"))
 							if(BODYTEMP_COLD_DAMAGE_LIMIT to T0C)
-								to_chat(src, "<span class='warning'>You feel an icy chill coming from the vent.</span>")
+								to_chat(src, SPAN_WARNING("You feel an icy chill coming from the vent."))
 							if(T0C + 40 to BODYTEMP_HEAT_DAMAGE_LIMIT)
-								to_chat(src, "<span class='warning'>You feel a hot wash coming from the vent.</span>")
+								to_chat(src, SPAN_WARNING("You feel a hot wash coming from the vent."))
 							if(BODYTEMP_HEAT_DAMAGE_LIMIT to INFINITY)
-								to_chat(src, "<span class='danger'>You feel a searing heat coming from the vent!</span>")
+								to_chat(src, SPAN_DANGER("You feel a searing heat coming from the vent!"))
 					if(src.action_busy)
-						to_chat(src, "<span class='warning'>You are already busy with something.</span>")
+						to_chat(src, SPAN_WARNING("You are already busy with something."))
 						return
 					visible_message(SPAN_NOTICE("[src] begins climbing into [vent_found]."), \
 						SPAN_NOTICE("You begin climbing into [vent_found]."))
@@ -102,8 +102,8 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 					if(!ventcrawl_carry())
 						return
 
-					visible_message("<span class='danger'>[src] scrambles into [vent_found]!</span>", \
-					"<span class='warning'>You climb into [vent_found].</span>")
+					visible_message(SPAN_DANGER("[src] scrambles into [vent_found]!"), \
+					SPAN_WARNING("You climb into [vent_found]."))
 					pick(playsound(src, 'sound/effects/alien_ventpass1.ogg', 35, 1), playsound(src, 'sound/effects/alien_ventpass2.ogg', 35, 1))
 
 					forceMove(vent_found)
@@ -111,16 +111,16 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/unary/vent_pump,
 
 				else
 					vent_found.start_processing()
-					to_chat(src, "<span class='warning'>This vent is not connected to anything.</span>")
+					to_chat(src, SPAN_WARNING("This vent is not connected to anything."))
 
 			else
-				to_chat(src, "<span class='warning'>You must be standing on or beside an air vent to enter it.</span>")
+				to_chat(src, SPAN_WARNING("You must be standing on or beside an air vent to enter it."))
 
 		else
-			to_chat(src, "<span class='warning'>You can't vent crawl while you're stunned!</span>")
+			to_chat(src, SPAN_WARNING("You can't vent crawl while you're stunned!"))
 
 	else
-		to_chat(src, "<span class='warning'>You must be conscious to do this!</span>")
+		to_chat(src, SPAN_WARNING("You must be conscious to do this!"))
 	return
 
 /mob/living/proc/add_ventcrawl(obj/machinery/atmospherics/starting_machine)

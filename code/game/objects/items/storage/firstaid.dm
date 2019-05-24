@@ -238,7 +238,7 @@
 		to_chat(user, SPAN_NOTICE("It must have some kind of ID lock..."))
 		return
 	if(user.get_inactive_hand())
-		to_chat(user, "<span class='warning'>You need an empty hand to take out a pill.</span>")
+		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
 		return
 	if(contents.len)
 		var/obj/item/I = contents[1]
@@ -250,7 +250,7 @@
 				C.swap_hand()
 			return
 	else
-		to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is empty."))
 		return
 
 
@@ -288,7 +288,7 @@
 						to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
 						return 1
 				else
-					to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
+					to_chat(user, SPAN_WARNING("\The [src] is empty."))
 					return 0
 			else
 				return 0
@@ -414,7 +414,7 @@
 		return 0
 
 	if(I.registered_name != H.real_name)
-		to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
 		return 0
 
 	if(req_role && I.rank != req_role)

@@ -80,7 +80,7 @@
 				dirty = 0 // just to be sure
 				flags_atom = OPENCONTAINER
 		else
-			to_chat(user, "<span class='danger'>It's broken!</span>")
+			to_chat(user, SPAN_DANGER("It's broken!"))
 			return 1
 	else if(src.dirty==100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
@@ -98,11 +98,11 @@
 				icon_state = "mw"
 				flags_atom = OPENCONTAINER
 		else //Otherwise bad luck!!
-			to_chat(user, "<span class='danger'>It's dirty!</span>")
+			to_chat(user, SPAN_DANGER("It's dirty!"))
 			return 1
 	else if(is_type_in_list(O,acceptable_items))
 		if (contents.len>=max_n_of_items)
-			to_chat(user, "<span class='danger'>This [src] is full of ingredients, you cannot put more.</span>")
+			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = O
@@ -126,13 +126,13 @@
 			return 1
 		for (var/datum/reagent/R in O.reagents.reagent_list)
 			if (!(R.id in acceptable_reagents))
-				to_chat(user, "<span class='danger'>Your [O] contains components unsuitable for cookery.</span>")
+				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
 				return 1
 		//G.reagents.trans_to(src,G.amount_per_transfer_from_this)
 	else if(istype(O,/obj/item/grab))
 		return 1
 	else
-		to_chat(user, "<span class='danger'>You have no idea what you can cook with this [O].</span>")
+		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [O]."))
 		return 1
 	src.updateUsrDialog()
 
@@ -324,7 +324,7 @@
 
 /obj/machinery/microwave/proc/muck_finish()
 	playsound(src.loc, 'sound/machines/ding.ogg', 25, 1)
-	visible_message("<span class='danger'>The microwave gets covered in muck!</span>")
+	visible_message(SPAN_DANGER("The microwave gets covered in muck!"))
 	dirty = 100 // Make it dirty so it can't be used util cleaned
 	flags_atom = null //So you can't add condiments
 	icon_state = "mwbloody" // Make it look dirty too
@@ -336,7 +336,7 @@
 	s.set_up(2, 1, src)
 	s.start()
 	icon_state = "mwb" // Make it look all busted up and shit
-	visible_message("<span class='danger'>The microwave breaks!</span>") //Let them know they're stupid
+	visible_message(SPAN_DANGER("The microwave breaks!")) //Let them know they're stupid
 	broken = 2 // Make it broken so it can't be used util fixed
 	flags_atom = null //So you can't add condiments
 	operating = 0 // Turn it off again aferwards

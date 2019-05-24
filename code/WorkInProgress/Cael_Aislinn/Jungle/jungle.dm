@@ -63,7 +63,6 @@
 	//loop over the walls in the temple and make them a random pre-chosen mineral (null is a stand in for phoron, which the walls already are)
 	//treat phoron slightly differently because it's the default wall type
 	var/mineral = pick("uranium","sandstone","gold","iron","silver","diamond","clown","phoron")
-	//to_world("init [mineral]")
 	var/area/my_area = get_area(src)
 	var/list/temple_turfs = get_area_turfs(my_area.type)
 
@@ -90,13 +89,11 @@
 			T.icon_state = oldreplacetext(T.icon_state, "phoron", mineral)
 
 		/*for(var/obj/effect/landmark/falsewall_spawner/F in T.contents)
-			//to_world("falsewall_spawner found in wall")
 			var/obj/structure/temple_falsewall/fwall = new(F.loc)
 			fwall.mineral = mineral
 			qdel(F)
 
 		for(var/obj/effect/landmark/door_spawner/D in T.contents)
-			//to_world("door_spawner found in wall")
 			T = new /turf/open/floor(T.loc)
 			T.icon_state = "dark"
 			var/spawn_type = text2path("/obj/machinery/door/airlock/[door_mineral]")
@@ -135,7 +132,7 @@
 
 
 /obj/machinery/jungle_controller/initialize()
-	to_world("<span class='danger'>\b Setting up jungle, this may take a bleeding eternity...</span>")
+	to_world(SPAN_DANGER("\b Setting up jungle, this may take a bleeding eternity..."))
 
 	//crash dat shuttle
 	var/area/start_location = locate(/area/jungle/crash_ship_source)

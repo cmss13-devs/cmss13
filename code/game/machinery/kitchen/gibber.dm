@@ -74,41 +74,41 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
-		to_chat(user, "<span class='danger'>It's locked and running</span>")
+		to_chat(user, SPAN_DANGER("It's locked and running"))
 		return
 	else
 		src.startgibbing(user)
 
 /obj/machinery/gibber/attackby(obj/item/grab/G as obj, mob/user as mob)
 	if(src.occupant)
-		to_chat(user, "<span class='warning'>The gibber is full, empty it first!</span>")
+		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return
 
 	if( !(istype(G, /obj/item/grab)) )
-		to_chat(user, "<span class='warning'>This item is not suitable for the gibber!</span>")
+		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
 	if( !iscarbon(G.grabbed_thing) && !istype(G.grabbed_thing, /mob/living/simple_animal) )
-		to_chat(user, "<span class='warning'>This item is not suitable for the gibber!</span>")
+		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 	if(istype(G.grabbed_thing, /mob/living/simple_animal/scp))
 		var/mob/living/simple_animal/scp/scp = G.grabbed_thing
 		scp.lash_out()
-		to_chat(user, "<span class='warning'>This item is not suitable for the gibber!</span>")
+		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 	var/mob/living/M = G.grabbed_thing
 	if(user.grab_level < GRAB_AGGRESSIVE)
-		to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return
 
 	if(M.abiotic(1))
-		to_chat(user, "<span class='warning'>Subject may not have abiotic items on.</span>")
+		to_chat(user, SPAN_WARNING("Subject may not have abiotic items on."))
 		return
 
-	user.visible_message("<span class='danger'>[user] starts to put [M] into the gibber!</span>")
+	user.visible_message(SPAN_DANGER("[user] starts to put [M] into the gibber!"))
 	src.add_fingerprint(user)
 	if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && G && G.grabbed_thing && !occupant)
-		user.visible_message("<span class='danger'>[user] stuffs [M] into the gibber!</span>")
+		user.visible_message(SPAN_DANGER("[user] stuffs [M] into the gibber!"))
 		M.forceMove(src)
 		occupant = M
 		update_icon()
@@ -142,10 +142,10 @@
 	if(src.operating)
 		return
 	if(!src.occupant)
-		visible_message("<span class='danger'>You hear a loud metallic grinding sound.</span>")
+		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
 		return
 	use_power(1000)
-	visible_message("<span class='danger'>You hear a loud squelchy grinding sound.</span>")
+	visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
 	src.operating = 1
 	update_icon()
 

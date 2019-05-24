@@ -17,7 +17,7 @@
 
 /obj/item/explosive/plastique/attack_self(mob/user)
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
 	if(newtime < 10)
@@ -30,7 +30,7 @@
 /obj/item/explosive/plastique/afterattack(atom/target, mob/user, flag)
 	if(!flag) r_FAL
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(istype(target, /obj/structure/ladder) || istype(target, /obj/item) || istype(target, /turf/open))
 		r_FAL
@@ -47,8 +47,8 @@
 			to_chat(user, "<span class='warning'>[W] is much too tough for you to do anything to it with [src]</span>.") //On purpose to mimic wall message
 			r_FAL
 
-	user.visible_message("<span class='warning'>[user] is trying to plant [name] on [target]!</span>",
-	"<span class='warning'>You are trying to plant [name] on [target]!</span>")
+	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),
+	SPAN_WARNING("You are trying to plant [name] on [target]!"))
 	bombers += "[key_name(user)] attached C4 to [target.name]."
 
 	if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
@@ -64,8 +64,8 @@
 			log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
 		target.overlays += image('icons/obj/items/assemblies.dmi', "plastic-explosive2")
-		user.visible_message("<span class='warning'>[user] plants [name] on [target]!</span>",
-		"<span class='warning'>You plant [name] on [target]! Timer counting down from [timer].</span>")
+		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
+		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		spawn(timer*10)
 			if(target && !target.disposed)
 				explosion_rec(get_turf(target), 120, 30)

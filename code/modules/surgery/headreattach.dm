@@ -41,8 +41,8 @@
 /datum/surgery_step/head/peel/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
-		user.visible_message("<span class='warning'>[user]'s hand slips, ripping [target]'s [affected.display_name] open!</span>", \
-		"<span class='warning'>Your hand slips,  ripping [target]'s [affected.display_name] open!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, ripping [target]'s [affected.display_name] open!"), \
+		SPAN_WARNING("Your hand slips,  ripping [target]'s [affected.display_name] open!"))
 		affected.createwound(CUT, 10)
 		affected.update_wounds()
 
@@ -71,8 +71,8 @@
 /datum/surgery_step/head/shape/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
-		user.visible_message("<span class='warning'>[user]'s hand slips, further rending flesh on [target]'s neck!</span>", \
-		"<span class='warning'>Your hand slips, further rending flesh on [target]'s neck!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, further rending flesh on [target]'s neck!"), \
+		SPAN_WARNING("Your hand slips, further rending flesh on [target]'s neck!"))
 		target.apply_damage(10, BRUTE, affected)
 		target.updatehealth()
 
@@ -102,8 +102,8 @@
 /datum/surgery_step/head/suture/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
-		user.visible_message("<span class='warning'>[user]'s hand slips, ripping apart flesh on [target]'s neck!</span>", \
-		"<span class='warning'>Your hand slips, ripping apart flesh on [target]'s neck!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, ripping apart flesh on [target]'s neck!"), \
+		SPAN_WARNING("Your hand slips, ripping apart flesh on [target]'s neck!"))
 		target.apply_damage(10, BRUTE, affected)
 		target.updatehealth()
 
@@ -136,8 +136,8 @@
 /datum/surgery_step/head/prepare/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(affected.parent)
 		affected = affected.parent
-		user.visible_message("<span class='warning'>[user]'s hand slips, searing [target]'s neck!</span>", \
-		"<span class='warning'>Your hand slips, searing [target]'s [affected.display_name]!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"), \
+		SPAN_WARNING("Your hand slips, searing [target]'s [affected.display_name]!"))
 		target.apply_damage(10, BURN, affected)
 		target.updatehealth()
 
@@ -182,7 +182,7 @@
 	qdel(B)
 
 /datum/surgery_step/head/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, damaging connectors on [target]'s neck!</span>", \
-	"<span class='warning'>Your hand slips, damaging connectors on [target]'s neck!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging connectors on [target]'s neck!"), \
+	SPAN_WARNING("Your hand slips, damaging connectors on [target]'s neck!"))
 	target.apply_damage(10, BRUTE, affected, sharp = 1)
 	target.updatehealth()

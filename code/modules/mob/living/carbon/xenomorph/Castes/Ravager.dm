@@ -28,8 +28,8 @@
 	charge_distance = 4 //shorter than regular charges
 
 	// Strain variables
-	
-	// Spin slash variables  
+
+	// Spin slash variables
 	var/spin_cooldown = 250;
 	var/spin_damage_offset = 15;
 
@@ -37,7 +37,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A brutal, devastating front-line attacker. It looks a little more dangerous."
 	upgrade = 1
-	
+
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
@@ -48,7 +48,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A brutal, devastating front-line attacker. It looks pretty strong."
 	upgrade = 2
-	
+
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 58
@@ -59,7 +59,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "As I walk through the valley of the shadow of death"
 	upgrade = 3
-	
+
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 60
@@ -69,7 +69,7 @@
 	upgrade_name = "Primordial"
 	caste_desc = "This thing's scythes are bigger than a fucking building!"
 	upgrade = 4
-	
+
 	tacklemin = 6
 	tacklemax = 7
 	tackle_chance = 55
@@ -107,11 +107,11 @@
 		return
 
 	if(legcuffed)
-		to_chat(src, "<span class='xenodanger'>You can't charge with that thing on your leg!</span>")
+		to_chat(src, SPAN_XENODANGER("You can't charge with that thing on your leg!"))
 		return
 
-	visible_message("<span class='danger'>[src] charges towards \the [T]!</span>", \
-	"<span class='danger'>You charge towards \the [T]!</span>" )
+	visible_message(SPAN_DANGER("[src] charges towards \the [T]!"), \
+	SPAN_DANGER("You charge towards \the [T]!") )
 	emote("roar") //heheh
 	used_pounce = 1 //This has to come before throw_at, which checks impact. So we don't do end-charge specials when thrown
 	use_plasma(20)
@@ -129,7 +129,7 @@
 	if (!iszombie(H) && prob(isYautja(H)?20:40)) // lets halve this for preds
 		O = H.get_limb(check_zone(zone_selected))
 		if (O.body_part != UPPER_TORSO && O.body_part != LOWER_TORSO && O.body_part != HEAD && O.brute_dam >= 5) //Only limbs.
-			visible_message("<span class='danger'>The limb is sliced clean off!</span>","<span class='danger'>You slice off a limb!</span>")
+			visible_message(SPAN_DANGER("The limb is sliced clean off!"),SPAN_DANGER("You slice off a limb!"))
 			O.droplimb()
 			return 1
 
@@ -195,8 +195,8 @@
 	var/obj/structure/window/W
 	var/turf/T
 	playsound(src, 'sound/weapons/gun_flamethrower2.ogg', 50, 1)
-	visible_message("<span class='xenowarning'>\The [src] sprays out a stream of flame from its mouth!</span>", \
-	"<span class='xenowarning'>You unleash a spray of fire on your enemies!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] sprays out a stream of flame from its mouth!"), \
+	SPAN_XENOWARNING("You unleash a spray of fire on your enemies!"))
 	used_fire_breath = world.time
 	for(T in turfs)
 		if(T == loc)

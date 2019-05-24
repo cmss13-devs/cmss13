@@ -47,7 +47,7 @@
 	var/color
 
 /datum/cm_objective/document/folder/get_clue()
-	return "<span class='danger'>A [color] folder in [initial_area], labelled [document.label]</span>"
+	return SPAN_DANGER("A [color] folder in [initial_area], labelled [document.label]")
 
 /datum/cm_objective/document/technical_manual
 	priority = OBJECTIVE_MEDIUM_VALUE
@@ -90,7 +90,7 @@
 /obj/item/document_objective/proc/display_fail_message(mob/living/user)
 	for(var/datum/cm_objective/C in objective.required_objectives)
 		if(C.is_complete())
-			to_chat(user, "<span class='warning'>You aren't entirely sure what you're meant to be looking for in this document.</span>")
+			to_chat(user, SPAN_WARNING("You aren't entirely sure what you're meant to be looking for in this document."))
 			return
 	if(objective)
 		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
@@ -101,19 +101,19 @@
 	switch(skill_required)
 		if(DOCUMENT_SKILL_SURGERY)
 			if(!user.mind || !user.mind.cm_skills || !user.mind.cm_skills.surgery)
-				to_chat(user, "<span class='warning'>You can't understand this.</span>")
+				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 		if(DOCUMENT_SKILL_ENGINEERING)
 			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-				to_chat(user, "<span class='warning'>You can't understand this.</span>")
+				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 		if(DOCUMENT_SKILL_WEAPONS)
 			if(!user.mind || !user.mind.cm_skills || !user.mind.cm_skills.spec_weapons)
-				to_chat(user, "<span class='warning'>You can't understand this.</span>")
+				to_chat(user, SPAN_WARNING("You can't understand this."))
 				return 0
 	to_chat(user, "<span class='notice'>You start reading \the [src].")
 	if(!do_after(user, reading_time, INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
-		to_chat(user, "<span class='warning'>You get distracted and lose your train of thought, you'll have to start over reading this.</span>")
+		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
 		return 0
 	if(!objective.is_active())
 		var/fail = TRUE

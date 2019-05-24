@@ -36,11 +36,11 @@
 
 /obj/item/xeno_egg/proc/plant_egg_in_containment(mob/living/carbon/human/user, turf/T)
 	if(!istype(T, /turf/open/floor/almayer/research/containment))
-		to_chat(user, "<span class='warning'>Best not to plant this thing outside of a containment cell.</span>")
+		to_chat(user, SPAN_WARNING("Best not to plant this thing outside of a containment cell."))
 		return
 	for (var/obj/O in T)
 		if (!istype(O,/obj/machinery/light/small))
-			to_chat(user, "<span class='warning'>The floor needs to be clear to plant this!</span>")
+			to_chat(user, SPAN_WARNING("The floor needs to be clear to plant this!"))
 			return
 	user.visible_message(SPAN_NOTICE("[user] starts planting [src]."), \
 					SPAN_NOTICE("You start planting [src]."), null, 5)
@@ -61,10 +61,10 @@
 	if(!user.check_plasma(30))
 		return
 	if(!(locate(/obj/effect/alien/weeds) in T))
-		to_chat(user, "<span class='xenowarning'>[src] can only be planted on weeds.</span>")
+		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on weeds."))
 		return
-	user.visible_message("<span class='xenonotice'>[user] starts planting [src].</span>", \
-					"<span class='xenonotice'>You start planting [src].</span>", null, 5)
+	user.visible_message(SPAN_XENONOTICE("[user] starts planting [src]."), \
+					SPAN_XENONOTICE("You start planting [src]."), null, 5)
 	var/plant_time = 35
 	if(isXenoDrone(user))
 		plant_time = 25
@@ -103,7 +103,7 @@
 		attack_hand(user)
 	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS)
 		if(user.r_hand || user.l_hand)
-			to_chat(user, "<span class='xenowarning'>You need two hands to hold [src].</span>")
+			to_chat(user, SPAN_XENOWARNING("You need two hands to hold [src]."))
 		else
 			attack_hand(user)
 

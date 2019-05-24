@@ -30,7 +30,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, "<span class='danger'>Access denied.</span>")
+		to_chat(user, SPAN_DANGER("Access denied."))
 		return
 
 	user.set_interaction(src)

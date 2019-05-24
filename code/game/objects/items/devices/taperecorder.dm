@@ -32,16 +32,16 @@
 		if(emagged == 0)
 			emagged = 1
 			recording = 0
-			to_chat(user, "<span class='warning'>PZZTTPFFFT</span>")
+			to_chat(user, SPAN_WARNING("PZZTTPFFFT"))
 			icon_state = "taperecorderidle"
 		else
-			to_chat(user, "<span class='warning'>It is already emagged!</span>")
+			to_chat(user, SPAN_WARNING("It is already emagged!"))
 
 /obj/item/device/taperecorder/proc/explode()
 	var/turf/T = get_turf(loc)
 	if(ismob(loc))
 		var/mob/M = loc
-		to_chat(M, "<span class='danger'>[src] explodes!</span>")
+		to_chat(M, SPAN_DANGER("[src] explodes!"))
 	if(T)
 		explosion(T, -1, -1, 0, 4)
 	qdel(src)
@@ -54,7 +54,7 @@
 	if(usr.stat)
 		return
 	if(emagged == 1)
-		to_chat(usr, "<span class='danger'>[src] makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	icon_state = "taperecorderrecording"
 	if(timerecorded < 3600 && playing == 0)
@@ -81,7 +81,7 @@
 	if(usr.stat)
 		return
 	if(emagged == 1)
-		to_chat(usr, "<span class='danger'>[src] makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	if(recording == 1)
 		recording = 0
@@ -105,7 +105,7 @@
 	if(usr.stat)
 		return
 	if(emagged == 1)
-		to_chat(usr, "<span class='warning'>[src] makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_WARNING("[src] makes a scratchy noise."))
 		return
 	if(recording == 1 || playing == 1)
 		to_chat(usr, SPAN_NOTICE("You can't clear the memory while playing or recording!"))
@@ -125,7 +125,7 @@
 	if(usr.stat)
 		return
 	if(emagged == 1)
-		to_chat(usr, "<span class='danger'>[src] makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	if(recording == 1)
 		to_chat(usr, SPAN_NOTICE("You can't playback when recording!"))
@@ -184,7 +184,7 @@
 	if(usr.stat)
 		return
 	if(emagged == 1)
-		to_chat(usr, "<span class='danger'>[src] makes a scratchy noise.</span>")
+		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	if(!canprint)
 		to_chat(usr, SPAN_NOTICE("The recorder can't print that fast!"))
@@ -209,7 +209,7 @@
 		if(usr.stat)
 			return
 		if(emagged == 1)
-			to_chat(usr, "<span class='danger'>[src] makes a scratchy noise.</span>")
+			to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 			return
 		icon_state = "taperecorderrecording"
 		if(timerecorded < 3600 && playing == 0)
@@ -226,7 +226,7 @@
 			icon_state = "taperecorderidle"
 			return
 		else
-			to_chat(usr, "<span class='danger'>Either [src]'s memory is full, or it is currently playing back its memory.</span>")
+			to_chat(usr, SPAN_DANGER("Either [src]'s memory is full, or it is currently playing back its memory."))
 	else
 		if(usr.stat)
 			to_chat(usr, "Not when you're incapacitated.")
@@ -246,5 +246,5 @@
 			icon_state = "taperecorderidle"
 			return
 		else
-			to_chat(usr, "<span class='danger'>Stop what?</span>")
+			to_chat(usr, SPAN_DANGER("Stop what?"))
 			return

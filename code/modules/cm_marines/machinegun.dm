@@ -205,10 +205,10 @@
 		if(prob(chance))
 			health -= P.damage/2
 			if (health > 0)
-				visible_message("<span class='warning'>[P] hits \the [src]!</span>")
+				visible_message(SPAN_WARNING("[P] hits \the [src]!"))
 				return 0
 			else
-				visible_message("<span class='warning'>[src] breaks down!</span>")
+				visible_message(SPAN_WARNING("[src] breaks down!"))
 				del(src)
 				return 1
 	return 1

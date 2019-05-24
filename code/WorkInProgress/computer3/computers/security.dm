@@ -58,7 +58,7 @@
 			return
 
 		if (computer.z > 6)
-			to_chat(usr, "<span class='danger'><b>Unable to establish a connection</b>: \black You're too far away from the station!</span>")
+			to_chat(usr, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
 			return
 		var/dat
 

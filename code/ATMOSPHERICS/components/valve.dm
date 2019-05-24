@@ -242,7 +242,7 @@
 	if(!powered())
 		return
 	if(!src.allowed(user))
-		to_chat(user, "<span class='danger'>Access denied.</span>")
+		to_chat(user, SPAN_DANGER("Access denied."))
 		return
 	..()
 
@@ -295,7 +295,7 @@
 	if(!iswrench(W))
 		return ..()
 	if(istype(src, /obj/machinery/atmospherics/valve/digital))
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], it's too complicated.</span>")
+		to_chat(user, SPAN_WARNING("You cannot unwrench [src], it's too complicated."))
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

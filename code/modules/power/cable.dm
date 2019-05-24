@@ -113,7 +113,7 @@
 
 ///// Z-Level Stuff
 		if(src.d1 == 12 || src.d2 == 12)
-			to_chat(user, "<span class='warning'>You must cut this cable from above.</span>")
+			to_chat(user, SPAN_WARNING("You must cut this cable from above."))
 			return
 
 		if(src.d1 == 11 || src.d2 == 11)
@@ -125,7 +125,7 @@
 ///// Z-Level Stuff
 
 		if(breaker_box)
-			to_chat(user, "<span class='danger'>This cable is connected to nearby breaker box. Use breaker box to interact with it.</span>")
+			to_chat(user, SPAN_DANGER("This cable is connected to nearby breaker box. Use breaker box to interact with it."))
 			return
 
 		if (shock(user, 50))
@@ -137,7 +137,7 @@
 			new/obj/item/stack/cable_coil(T, 1, color)
 
 		for(var/mob/O in viewers(src, null))
-			O.show_message("<span class='warning'>[user] cuts the cable.</span>", 1)
+			O.show_message(SPAN_WARNING("[user] cuts the cable."), 1)
 		log_admin("[key_name(user)] cut a wire at ([x],[y],[z])")
 		message_admins("[key_name(user)](<A HREF='?_src_=admin_holder;adminmoreinfo=\ref[user]'>?</A>) cut a wire at ([x],[y],[z]) - <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>")
 
@@ -155,10 +155,10 @@
 		var/datum/powernet/PN = get_powernet()		// find the powernet
 
 		if(PN && (PN.avail > 0))		// is it powered?
-			to_chat(user, "<span class='warning'>[PN.avail]W in power network.</span>")
+			to_chat(user, SPAN_WARNING("[PN.avail]W in power network."))
 
 		else
-			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
+			to_chat(user, SPAN_WARNING("The cable is not powered."))
 
 		shock(user, 5, 0.2)
 

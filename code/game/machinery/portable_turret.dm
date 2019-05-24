@@ -242,7 +242,7 @@ Status: []<BR>"},
 		if(anchored) // you can't turn a turret on/off if it's not anchored/secured
 			on = !on // toggle on/off
 		else
-			to_chat(usr, "<span class='danger'>It has to be secured first!</span>")
+			to_chat(usr, SPAN_DANGER("It has to be secured first!"))
 
 		updateUsrDialog()
 		return
@@ -313,10 +313,10 @@ Status: []<BR>"},
 		// Emagging the turret makes it go bonkers and stun everyone. It also makes
 		// the turret shoot much, much faster.
 
-		to_chat(user, "<span class='danger'>You short out [src]'s threat assessment circuits.</span>")
+		to_chat(user, SPAN_DANGER("You short out [src]'s threat assessment circuits."))
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
-				O.show_message("<span class='danger'>[src] hums oddly...</span>", 1)
+				O.show_message(SPAN_DANGER("[src] hums oddly..."), 1)
 		emagged = 1
 		src.on = 0 // turns off the turret temporarily
 		sleep(60) // 6 seconds for the traitor to gtfo of the area before the turret decides to ruin his shit
@@ -346,7 +346,7 @@ Status: []<BR>"},
 			locked = !src.locked
 			to_chat(user, "Controls are now [locked ? "locked." : "unlocked."]"
 		else
-			to_chat(user, "<span class='danger'>Access denied.</span>")
+			to_chat(user, SPAN_DANGER("Access denied."))
 
 	else
 		// if the turret was attacked with the intention of harming it:
@@ -707,7 +707,7 @@ Status: []<BR>"},
 					build_step = 2
 					icon_state = "turret_frame2"
 				else
-					to_chat(user, "<span class='warning'>You need two sheets of metal to add armor ot the frame.</span>")
+					to_chat(user, SPAN_WARNING("You need two sheets of metal to add armor ot the frame."))
 				return
 
 			else if(istype(W, /obj/item/weapon/wrench))
@@ -729,7 +729,7 @@ Status: []<BR>"},
 				var/obj/item/weapon/weldingtool/WT = W
 				if(!WT.isOn()) return
 				if (WT.get_fuel() < 5) // uses up 5 fuel.
-					to_chat(user, "<span class='danger'>You need more fuel to complete this task.</span>")
+					to_chat(user, SPAN_DANGER("You need more fuel to complete this task."))
 					return
 
 				playsound(src.loc, pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
@@ -783,7 +783,7 @@ Status: []<BR>"},
 					to_chat(user, SPAN_NOTICE("You add some metal armor to the exterior frame."))
 					build_step = 7
 				else
-					to_chat(user, "<span class='warning'>You need two sheets of metal to add armor to the frame.</span>")
+					to_chat(user, SPAN_WARNING("You need two sheets of metal to add armor to the frame."))
 				return
 
 			else if(istype(W, /obj/item/weapon/screwdriver))
@@ -797,7 +797,7 @@ Status: []<BR>"},
 				var/obj/item/weapon/weldingtool/WT = W
 				if(!WT.isOn()) return
 				if (WT.get_fuel() < 5)
-					to_chat(user, "<span class='danger'>You need more fuel to complete this task.</span>")
+					to_chat(user, SPAN_DANGER("You need more fuel to complete this task."))
 
 				playsound(src.loc, pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
 				if(do_after(user, 30))
@@ -974,7 +974,7 @@ Status: []<BR>"},
 			else
 				Parent_Turret.on=1
 		else
-			to_chat(usr, "<span class='danger'>It has to be secured first!</span>")
+			to_chat(usr, SPAN_DANGER("It has to be secured first!"))
 
 		updateUsrDialog()
 		return
@@ -998,10 +998,10 @@ Status: []<BR>"},
 /obj/machinery/porta_turret_cover/attackby(obj/item/W as obj, mob/user as mob)
 
 	if ((istype(W, /obj/item/weapon/card/emag)) && (!Parent_Turret.emagged))
-		to_chat(user, "<span class='danger'>You short out [Parent_Turret]'s threat assessment circuits.</span>")
+		to_chat(user, SPAN_DANGER("You short out [Parent_Turret]'s threat assessment circuits."))
 		spawn(0)
 			for(var/mob/O in hearers(Parent_Turret, null))
-				O.show_message("<span class='danger'>[Parent_Turret] hums oddly...</span>", 1)
+				O.show_message(SPAN_DANGER("[Parent_Turret] hums oddly..."), 1)
 		Parent_Turret.emagged = 1
 		Parent_Turret.on = 0
 		sleep(40)
@@ -1028,7 +1028,7 @@ Status: []<BR>"},
 			to_chat(user, "Controls are now [Parent_Turret.locked ? ")locked." : "unlocked."]"
 			updateUsrDialog()
 		else
-			to_chat(user, "<span class='danger'>Access denied.</span>")
+			to_chat(user, SPAN_DANGER("Access denied."))
 
 	else
 		Parent_Turret.health -= W.force * 0.5

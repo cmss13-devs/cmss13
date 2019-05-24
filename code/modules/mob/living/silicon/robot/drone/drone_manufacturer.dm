@@ -87,11 +87,11 @@
 
 
 	if(ticker.current_state < GAME_STATE_PLAYING)
-		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
+		to_chat(src, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
 	if(!(config.allow_drone_spawn))
-		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
+		to_chat(src, SPAN_DANGER("That verb is not currently permitted."))
 		return
 
 	if (!src.stat)
@@ -101,7 +101,7 @@
 		return 0 //something is terribly wrong
 
 	if(jobban_isbanned(src,"Cyborg"))
-		to_chat(usr, "<span class='danger'>You are banned from playing synthetics and cannot spawn as a drone.</span>")
+		to_chat(usr, SPAN_DANGER("You are banned from playing synthetics and cannot spawn as a drone."))
 		return
 
 	var/deathtime = world.time - src.timeofdeath
@@ -131,7 +131,7 @@
 			continue
 
 		if(DF.count_drones() >= config.max_maint_drones)
-			to_chat(src, "<span class='danger'>There are too many active drones in the world for you to spawn.</span>")
+			to_chat(src, SPAN_DANGER("There are too many active drones in the world for you to spawn."))
 			return
 
 		if(DF.drone_progress >= 100)

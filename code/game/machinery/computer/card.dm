@@ -214,7 +214,7 @@
 								jobdatum = J
 								break
 						if(!jobdatum)
-							to_chat(usr, "<span class='danger'>No log exists for this job: [t1]</span>")
+							to_chat(usr, SPAN_DANGER("No log exists for this job: [t1]"))
 							return
 
 						access = jobdatum.get_access()

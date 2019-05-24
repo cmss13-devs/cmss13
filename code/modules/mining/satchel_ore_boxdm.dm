@@ -64,7 +64,7 @@
 	set src in view(1)
 
 	if(!istype(usr, /mob/living/carbon/human)) //Only living, intelligent creatures with hands can empty ore boxes.
-		to_chat(usr, "<span class='danger'>You are physically incapable of emptying the ore box.</span>")
+		to_chat(usr, SPAN_DANGER("You are physically incapable of emptying the ore box."))
 		return
 
 	if( usr.stat || usr.is_mob_restrained() )
@@ -77,7 +77,7 @@
 	add_fingerprint(usr)
 
 	if(contents.len < 1)
-		to_chat(usr, "<span class='danger'>The ore box is empty</span>")
+		to_chat(usr, SPAN_DANGER("The ore box is empty"))
 		return
 
 	for (var/obj/item/ore/O in contents)

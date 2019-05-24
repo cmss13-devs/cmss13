@@ -6,14 +6,14 @@ var/global/normal_ooc_colour = "#002eb8"
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
 		return
 	if(usr.talked == 2)
-		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
+		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
-		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
+		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >10)
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
@@ -36,18 +36,18 @@ var/global/normal_ooc_colour = "#002eb8"
 	if(!msg)	return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
-		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
+		to_chat(src, SPAN_DANGER("You have OOC muted."))
 		return
 
 	if(!admin_holder)
 		if(!ooc_allowed)
-			to_chat(src, "<span class='danger'>OOC is globally muted</span>")
+			to_chat(src, SPAN_DANGER("OOC is globally muted"))
 			return
 		if(!dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>OOC for dead mobs has been turned off.</span>")
+			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot use OOC (muted)."))
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -121,14 +121,14 @@ var/global/normal_ooc_colour = "#002eb8"
 	set category = "OOC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
 		return
 	if(usr.talked == 2)
-		to_chat(usr, "<span class='danger'>Your spam has been consumed for it's nutritional value.</span>")
+		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2
-		to_chat(usr, "<span class='danger'>You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming</span>")
+		to_chat(usr, SPAN_DANGER("You have been flagged for spam.  You may not speak for at least [usr.chatWarn] seconds (if you spammed alot this might break and never unmute you).  This number will increase each time you are flagged for spamming"))
 		if(usr.chatWarn >10)
 			message_admins("[key_name(usr, usr.client)] is spamming like a dirty bitch, their current chatwarn is [usr.chatWarn]. ")
 		spawn(usr.chatWarn*10)
@@ -151,18 +151,18 @@ var/global/normal_ooc_colour = "#002eb8"
 	if(!msg)	return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
-		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
+		to_chat(src, SPAN_DANGER("You have LOOC muted."))
 		return
 
 	if(!admin_holder)
 		if(!looc_allowed)
-			to_chat(src, "<span class='danger'>LOOC is globally muted</span>")
+			to_chat(src, SPAN_DANGER("LOOC is globally muted"))
 			return
 		if(!dlooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>LOOC for dead mobs has been turned off.</span>")
+			to_chat(usr, SPAN_DANGER("LOOC for dead mobs has been turned off."))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot use LOOC (muted)."))
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return

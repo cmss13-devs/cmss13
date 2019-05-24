@@ -29,7 +29,7 @@
 	if(..())
 		return
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 
 	user.set_interaction(src)
@@ -233,7 +233,7 @@
 		var/targ_id = text2num(href_list["open_fire"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		
 		if(!faction)
@@ -248,23 +248,23 @@
 			var/datum/cas_signal/LT = X
 			if(LT.target_id == targ_id && LT.valid_signal())
 				if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-					to_chat(usr, "<span class='warning'>Dropship can only fire while in flight.</span>")
+					to_chat(usr, SPAN_WARNING("Dropship can only fire while in flight."))
 					return
 				if(shuttle.queen_locked) return
 
 				if(!selected_equipment || !selected_equipment.is_weapon)
-					to_chat(usr, "<span class='warning'>No weapon selected.</span>")
+					to_chat(usr, SPAN_WARNING("No weapon selected."))
 					return
 				var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
 				if(!shuttle.transit_gun_mission && DEW.fire_mission_only)
-					to_chat(usr, "<span class='warning'>[DEW] requires a fire mission flight type to be fired.</span>")
+					to_chat(usr, SPAN_WARNING("[DEW] requires a fire mission flight type to be fired."))
 					return
 
 				if(!DEW.ammo_equipped || DEW.ammo_equipped.ammo_count <= 0)
-					to_chat(usr, "<span class='warning'>[DEW] has no ammo.</span>")
+					to_chat(usr, SPAN_WARNING("[DEW] has no ammo."))
 					return
 				if(DEW.last_fired > world.time - DEW.firing_delay)
-					to_chat(usr, "<span class='warning'>[DEW] just fired, wait for it to cool down.</span>")
+					to_chat(usr, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
 					return
 				if(!LT.loc) return
 				var/turf/TU = get_turf(LT.loc)
@@ -277,7 +277,7 @@
 						if(CEILING_GLASS)
 							is_outside = TRUE
 				if(!is_outside && !cavebreaker) //cavebreaker doesn't care
-					to_chat(usr, "<span class='warning'>INVALID TARGET: target must be visible from high altitude.</span>")
+					to_chat(usr, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 					return
 				DEW.open_fire(LT.loc)
 				break
@@ -285,32 +285,32 @@
 	if(href_list["deselect"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		selected_equipment = null
 
 	if(href_list["create_mission"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.max_mission_len <= firemission_envelope.missions.len)
-			to_chat(usr, "<span class='warning'>Cannot store more than [firemission_envelope.max_mission_len] Fire Missions.</span>")
+			to_chat(usr, SPAN_WARNING("Cannot store more than [firemission_envelope.max_mission_len] Fire Missions."))
 			return
 		var/fm_name = stripped_input(usr, "", "Enter Fire Mission Name", "Fire Mission [firemission_envelope.missions.len+1]", 50)
 		if(!fm_name || lentext(fm_name) < 5)
-			to_chat(usr, "<span class='warning'>Name too short (at least 5 symbols).</span>")
+			to_chat(usr, SPAN_WARNING("Name too short (at least 5 symbols)."))
 			return
 		var/fm_length = stripped_input(usr, "Enter length of the Fire Mission. Has to be less than [firemission_envelope.fire_length]. Use something that divides [firemission_envelope.fire_length] for optimal performance.", "Fire Mission Length (in tiles)", "[firemission_envelope.fire_length]", 5)
 		var/fm_length_n = text2num(fm_length)
 		if(!fm_length_n)
-			to_chat(usr, "<span class='warning'>Incorrect input format.</span>")
+			to_chat(usr, SPAN_WARNING("Incorrect input format."))
 			return
 		if(fm_length_n > firemission_envelope.fire_length)
-			to_chat(usr, "<span class='warning'>Fire Mission is longer than allowed by this vehicle.</span>")
+			to_chat(usr, SPAN_WARNING("Fire Mission is longer than allowed by this vehicle."))
 			return
 		if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
-			to_chat(usr, "<span class='warning'>Vehicle has to be idle to allow Fire Mission editing and creation.</span>")
+			to_chat(usr, SPAN_WARNING("Vehicle has to be idle to allow Fire Mission editing and creation."))
 			return
 		//everything seems to be fine now
 		firemission_envelope.generate_mission(fm_name, fm_length_n)
@@ -319,30 +319,30 @@
 		var/ref = text2num(href_list["mission_tag_delete"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
-			to_chat(usr, "<span class='warning'>Fire Mission ID corrupted or already deleted.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))			
 			return
 		if(selected_firemission == firemission_envelope.missions[ref])
-			to_chat(usr, "<span class='warning'>Can't delete selected Fire Mission.</span>")
+			to_chat(usr, SPAN_WARNING("Can't delete selected Fire Mission."))
 			return
 		var/result = firemission_envelope.delete_firemission(ref)
 		if(result != 1)
-			to_chat(usr, "<span class='warning'>Unable to delete Fire Mission while in combat.</span>")			
+			to_chat(usr, SPAN_WARNING("Unable to delete Fire Mission while in combat."))			
 			return
 
 	if(href_list["mission_tag"])
 		var/ref = text2num(href_list["mission_tag"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
-			to_chat(usr, "<span class='warning'>Fire Mission ID corrupted or deleted.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or deleted."))			
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, "<span class='warning'>Fire Mission already underway.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
 			return
 		if(selected_firemission == firemission_envelope.missions[ref])
 			selected_firemission = null
@@ -353,16 +353,16 @@
 		var/ref = text2num(href_list["mission_tag_edit"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
-			to_chat(usr, "<span class='warning'>Fire Mission ID corrupted or deleted.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission ID corrupted or deleted."))			
 			return
 		if(selected_firemission == firemission_envelope.missions[ref])
-			to_chat(usr, "<span class='warning'>Can't edit selected Fire Mission.</span>")
+			to_chat(usr, SPAN_WARNING("Can't edit selected Fire Mission."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, "<span class='warning'>Fire Mission already underway.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
 			return
 		editing_firemission = firemission_envelope.missions[ref]
 
@@ -372,28 +372,28 @@
 	if(href_list["switch_to_firemission"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = TRUE
 	
 	if(href_list["leave_firemission_execution"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = FALSE
 
 	if(href_list["change_direction"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		var/list/directions = list(dir2text(NORTH), dir2text(SOUTH), dir2text(EAST), dir2text(WEST))
 		var/chosen = input("Select new Direction for the strafing run", "Select Direction", dir2text(firemission_envelope.recorded_dir)) as null|anything in directions
 		
 		var/chosen_dir = text2dir(chosen)
 		if(!chosen_dir)
-			to_chat(usr, "<span class='warning'>Error with direction detected.</span>")
+			to_chat(usr, SPAN_WARNING("Error with direction detected."))
 			return
 		
 		update_direction(chosen_dir)
@@ -401,14 +401,14 @@
 	if(href_list["change_offset"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		
 		var/chosen = stripped_input(usr, "Select Fire Mission length, from 0 to [firemission_envelope.max_offset]", "Select Offset", "[firemission_envelope.recorded_offset]", 2)
 		var/chosen_offset = text2num(chosen)
 		
 		if(chosen_offset == null)
-			to_chat(usr, "<span class='warning'>Error with offset detected.</span>")
+			to_chat(usr, SPAN_WARNING("Error with offset detected."))
 			return
 		
 		update_offset(chosen_offset)
@@ -417,16 +417,16 @@
 		var/mob/M = usr
 		var/targ_id = text2num(href_list["select_laser_firemission"])
 		if(!targ_id)
-			to_chat(usr, "<span class='warning'>Bad Target.</span>")
+			to_chat(usr, SPAN_WARNING("Bad Target."))
 			return
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, "<span class='warning'>Fire Mission already underway.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
 			return
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-			to_chat(usr, "<span class='warning'>Shuttle has to be in orbit.</span>")			
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))			
 			return
 		var/datum/cas_iff_group/cas_group = cas_groups[faction]
 		var/datum/cas_signal/cas_sig
@@ -435,7 +435,7 @@
 			if(LT.target_id == targ_id  && LT.valid_signal())
 				cas_sig = LT
 		if(!cas_sig)
-			to_chat(usr, "<span class='warning'>Target lost or obstructed.</span>")
+			to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
 			return
 		
 		update_location(cas_sig)
@@ -443,17 +443,17 @@
 	if(href_list["execute_firemission"])
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
-			to_chat(usr, "<span class='warning'>Fire Mission already underway.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
 			return
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-			to_chat(usr, "<span class='warning'>Shuttle has to be in orbit.</span>")			
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))			
 			return
 
 		if(!firemission_envelope.recorded_loc)
-			to_chat(usr, "<span class='warning'>Target is not selected or lost.</span>")			
+			to_chat(usr, SPAN_WARNING("Target is not selected or lost."))			
 			return
 
 		initiate_firemission()
@@ -463,20 +463,20 @@
 		var/offset_ref = text2num(href_list["fm_offset_id"])+1
 		var/mob/M = usr
 		if(M.mind.assigned_role != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(!editing_firemission)
-			to_chat(usr, "<span class='warning'>You are no longer editing Fire Mission.</span>")			
+			to_chat(usr, SPAN_WARNING("You are no longer editing Fire Mission."))			
 			return
 		if(!editing_firemission.records || editing_firemission.records.len<weap_ref)
-			to_chat(usr, "<span class='warning'>Weapon not found.</span>")			
+			to_chat(usr, SPAN_WARNING("Weapon not found."))			
 			return
 		var/datum/cas_fire_mission_record/record = editing_firemission.records[weap_ref]
 		if(record.offsets.len < offset_ref)
-			to_chat(usr, "<span class='warning'>Issues with offsets. You have to re-create this mission.</span>")
+			to_chat(usr, SPAN_WARNING("Issues with offsets. You have to re-create this mission."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
-			to_chat(usr, "<span class='warning'>Fire Mission already underway.</span>")			
+			to_chat(usr, SPAN_WARNING("Fire Mission already underway."))			
 			return
 		var/list/gimb = record.get_offsets()
 		var/min = gimb["min"]
@@ -489,21 +489,21 @@
 		else
 			offset_value = text2num(offset_value)
 			if(offset_value == null)
-				to_chat(usr, "<span class='warning'>Incorrect offset value.</span>")
+				to_chat(usr, SPAN_WARNING("Incorrect offset value."))
 				return
 		var/result = firemission_envelope.update_mission(firemission_envelope.missions.Find(editing_firemission), weap_ref, offset_ref, offset_value, TRUE)
 		if(result == 0)
-			to_chat(usr, "<span class='warning'>Update caused an error: [firemission_envelope.mission_error]</span>")
+			to_chat(usr, SPAN_WARNING("Update caused an error: [firemission_envelope.mission_error]"))
 		if(result == -1)
-			to_chat(usr, "<span class='warning'>System Error. Delete this Fire Mission.</span>")
+			to_chat(usr, SPAN_WARNING("System Error. Delete this Fire Mission."))
 	
 	if(href_list["firemission_camera"])
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
-			to_chat(usr, "<span class='warning'>Shuttle has to be in orbit.</span>")			
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))			
 			return
 
 		if(!firemission_envelope.guidance)
-			to_chat(usr, "<span class='warning'>Guidance is not selected or lost.</span>")			
+			to_chat(usr, SPAN_WARNING("Guidance is not selected or lost."))			
 			return
 		
 		firemission_envelope.add_user_to_tracking(usr)
@@ -570,7 +570,7 @@
 		return
 	if(firemission_envelope.recorded_loc.obstructed_signal())
 		if(firemission_envelope.user_is_guided(usr))
-			to_chat(usr, "<span class='warning'>Signal Obstructed. You have to go in blind.</span>")
+			to_chat(usr, SPAN_WARNING("Signal Obstructed. You have to go in blind."))
 		return
 	var/sx = 0
 	var/sy = 0
@@ -596,7 +596,7 @@
 	var/area/laser_area = get_area(shootloc)
 	if(!istype(laser_area) || laser_area.ceiling > CEILING_GLASS)
 		if(firemission_envelope.user_is_guided(usr))
-			to_chat(usr, "<span class='warning'>Vision Obstructed. You have to go in blind.</span>")
+			to_chat(usr, SPAN_WARNING("Vision Obstructed. You have to go in blind."))
 		firemission_envelope.change_current_loc()
 	else
 		firemission_envelope.change_current_loc(shootloc)

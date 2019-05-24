@@ -15,7 +15,7 @@
 	. = ..()
 	if (.)
 		if(isSynth(M) && M.allow_gun_usage == FALSE)
-			M.visible_message("<span class ='danger'>Your programming prevents you from wearing this!</span>")
+			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
 
 //armored vest
@@ -348,7 +348,7 @@
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()
 		if (W.w_class > 3)
-			to_chat(usr, "<span class='danger'>This gun won't fit in \the belt!</span>")
+			to_chat(usr, SPAN_DANGER("This gun won't fit in \the belt!"))
 			return
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()
@@ -356,11 +356,11 @@
 		usr.visible_message(SPAN_NOTICE("\The [usr] holsters \the [holstered]."), "You holster \the [holstered].")
 	else
 		if(istype(usr.get_active_hand(),/obj) && istype(usr.get_inactive_hand(),/obj))
-			to_chat(usr, "<span class='danger'>You need an empty hand to draw the gun!</span>")
+			to_chat(usr, SPAN_DANGER("You need an empty hand to draw the gun!"))
 		else
 			if(usr.a_intent == "hurt")
-				usr.visible_message("<span class='danger'>\The [usr] draws \the [holstered], ready to shoot!</span>", \
-				"<span class='danger'>You draw \the [holstered], ready to shoot!</span>")
+				usr.visible_message(SPAN_DANGER("\The [usr] draws \the [holstered], ready to shoot!"), \
+				SPAN_DANGER("You draw \the [holstered], ready to shoot!"))
 			else
 				usr.visible_message(SPAN_NOTICE("\The [usr] draws \the [holstered], pointing it at the ground."), \
 				SPAN_NOTICE("You draw \the [holstered], pointing it at the ground."))

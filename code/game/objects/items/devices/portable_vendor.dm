@@ -46,20 +46,20 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
-		to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
+		to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 		return
 
 	if(I.registered_name != H.real_name)
-		to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
 		return
 
 	if(req_role && I.rank != req_role)
-		to_chat(H, "<span class='warning'>This device isn't for you.</span>")
+		to_chat(H, SPAN_WARNING("This device isn't for you."))
 		return
 
 
@@ -118,21 +118,21 @@
 		if (href_list["vend"])
 
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>Access denied.</span>")
+				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 
 			var/mob/living/carbon/human/H = usr
 			var/obj/item/card/id/I = H.wear_id
 			if(!istype(I)) //not wearing an ID
-				to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
+				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 				return
 
 			if(I.registered_name != H.real_name)
-				to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
 				return
 
 			if(req_role && I.rank != req_role)
-				to_chat(H, "<span class='warning'>This device isn't for you.</span>")
+				to_chat(H, SPAN_WARNING("This device isn't for you."))
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -141,12 +141,12 @@
 			var/cost = L[2]
 
 			if(use_points && points < cost)
-				to_chat(H, "<span class='warning'>Not enough points.</span>")
+				to_chat(H, SPAN_WARNING("Not enough points."))
 
 
 			var/turf/T = loc
 			if(T.contents.len > 25)
-				to_chat(H, "<span class='warning'>The floor is too cluttered, make some space.</span>")
+				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
 				return
 
 
@@ -196,7 +196,7 @@
 
 /obj/item/device/portable_vendor/proc/malfunction()
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='warning'>[src] shudders as its internal components break apart!</span>")
+	T.visible_message(SPAN_WARNING("[src] shudders as its internal components break apart!"))
 	broken = 1
 	processing_objects.Remove(src)
 	update_overlays()

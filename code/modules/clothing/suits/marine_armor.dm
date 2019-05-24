@@ -179,7 +179,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot turn the light on while in [user.loc].</span>") //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
 		return
 
 	if(flashlight_cooldown > world.time)
@@ -219,7 +219,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if (.)
 		if(isSynth(M) && M.allow_gun_usage == FALSE)
-			M.visible_message("<span class ='danger'>Your programming prevents you from wearing this!</span>")
+			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
 			return 0
 
 /obj/item/clothing/suit/storage/marine/padded
@@ -517,7 +517,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_GRENADIER)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
 
@@ -556,7 +556,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_SCOUT)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
 /obj/item/clothing/suit/storage/marine/M35
@@ -581,7 +581,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_PYRO)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
 /obj/item/clothing/suit/storage/marine/sniper
@@ -623,7 +623,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	. = ..()
 	if(.)
 		if(M.mind && M.mind.cm_skills && M.mind.cm_skills.spec_weapons < SKILL_SPEC_TRAINED && M.mind.cm_skills.spec_weapons != SKILL_SPEC_SNIPER)
-			to_chat(M, "<span class='warning'>You are not trained to use [src]!</span>")
+			to_chat(M, SPAN_WARNING("You are not trained to use [src]!"))
 			return 0
 
 //=============================//PMCS\\==================================\\
@@ -824,7 +824,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/faction/attack_self(mob/user)
 	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot turn the light on while in [user.loc].</span>") //To prevent some lighting anomalities.
+		to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
 		return
 
 	if(flashlight_cooldown > world.time)

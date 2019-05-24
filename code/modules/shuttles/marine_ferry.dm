@@ -77,7 +77,7 @@
 
 /datum/shuttle/ferry/marine/proc/load_datums()
 	if(!(info_tag in s_info))
-		message_admins("<span class=warning>Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL</span>")
+		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
 		log_admin("Error with shuttles: Shuttle tag does not exist. Code: MSD10.")
 
 	var/list/L = s_info[info_tag]
@@ -103,8 +103,6 @@
 				process_state = IDLE_STATE
 				return .
 			if (skip_docking_checks() || docking_controller.can_launch())
-
-				//to_world("shuttle/ferry/process: area_transition=[area_transition], travel_time=[travel_time]")
 				if (move_time) long_jump()
 				else short_jump()
 
@@ -163,7 +161,7 @@
 		trg_rot = src_rot
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins("<span class=warning>Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font></span>")
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.\n <font size=10>WARNING: DROPSHIP LAUNCH WILL FAIL</font>"))
 		log_admin("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD02.")
 
 	//Switch the landmarks, to swap docking and landing locs, so we can move back and forth.
@@ -331,7 +329,7 @@
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
-		message_admins("<span class=warning>Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL</span>")
+		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 		log_admin("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.")
 
 	shuttle_controller.locs_crash -= T_trg
@@ -398,7 +396,7 @@
 		if(with_queen.len > left_behind.len) // to stop solo-suiciding by queens
 			hive.stored_larva = 0
 			for(var/mob/living/carbon/Xenomorph/about_to_die in left_behind)
-				to_chat(about_to_die, "<span class='xenoannounce'>The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind.</span>")
+				to_chat(about_to_die, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
 				qdel(about_to_die) // just delete them
 		for(var/mob/living/carbon/potential_host in living_mob_list)
 			if(potential_host.z != 1) continue // ground level
@@ -455,10 +453,10 @@
 	for(var/mob/living/carbon/M in living_human_list) //knock down mobs
 		if(M.z != T_trg.z) continue
 		if(M.buckled)
-			to_chat(M, "<span class='warning'>You are jolted against [M.buckled]!</span>")
+			to_chat(M, SPAN_WARNING("You are jolted against [M.buckled]!"))
 			shake_camera(M, 3, 1)
 		else
-			to_chat(M, "<span class='warning'>The floor jolts under your feet!</span>")
+			to_chat(M, SPAN_WARNING("The floor jolts under your feet!"))
 			shake_camera(M, 10, 1)
 			M.KnockDown(3)
 
@@ -517,7 +515,7 @@
 
 	//Switch the landmarks so we can do this again
 	if(!istype(T_src) || !istype(T_trg))
-		message_admins("<span class=warning>Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE</span>")
+		message_admins(SPAN_WARNING("Error with shuttles: Ref turfs are null. Code: MSD15.\n WARNING: DROPSHIPS MAY NO LONGER BE OPERABLE"))
 		log_admin("Error with shuttles: Ref turfs are null. Code: MSD15.")
 		r_FAL
 
@@ -695,7 +693,7 @@
 
 	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles[MAIN_SHIP_NAME + " " + tag]
 	if(!dropship)
-		to_chat(src, "<span class='danger'>Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN</span>")
+		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN"))
 		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
@@ -705,7 +703,7 @@
 				dropship.process_state = WAIT_LAUNCH
 				log_admin("[usr] ([usr.key]) forced a [dropship.iselevator? "elevator" : "shuttle"] using the Force Dropship verb")
 			if("No")
-				to_chat(src, "<span class='warning'>Aborting shuttle launch.</span>")
+				to_chat(src, SPAN_WARNING("Aborting shuttle launch."))
 				return
 	else if(crash)
 		dropship.process_state = FORCE_CRASH

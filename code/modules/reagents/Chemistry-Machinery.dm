@@ -172,7 +172,7 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(!check_access(H.wear_id))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 	ui_interact(user)
 
@@ -272,7 +272,7 @@
 	if(istype(B, /obj/item/reagent_container/glass))
 
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
 		beaker = B
 		user.drop_inv_item_to_loc(B, src)
@@ -283,7 +283,7 @@
 	else if(istype(B, /obj/item/storage/pill_bottle))
 
 		if(loaded_pill_bottle)
-			to_chat(user, "<span class='warning'>A pill bottle is already loaded into the machine.</span>")
+			to_chat(user, SPAN_WARNING("A pill bottle is already loaded into the machine."))
 			return
 
 		loaded_pill_bottle = B
@@ -792,7 +792,7 @@
 	if(istype(I, /obj/item/reagent_container/glass))
 		if(stat & (NOPOWER|BROKEN)) return
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
 
 		beaker =  I
@@ -890,14 +890,14 @@
 			return 0
 
 	if(holdingitems && holdingitems.len >= limit)
-		to_chat(user, "<span class='warning'>The machine cannot hold anymore items.</span>")
+		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return 1
 
 		updateUsrDialog()
 		return 0
 
 	if (!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
-		to_chat(user, "<span class='warning'>Cannot refine into a reagent.</span>")
+		to_chat(user, SPAN_WARNING("Cannot refine into a reagent."))
 		return 1
 
 	user.drop_inv_item_to_loc(O, src)

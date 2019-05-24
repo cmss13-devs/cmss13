@@ -32,7 +32,7 @@
 	recoil = config.med_recoil_value
 
 /obj/item/weapon/gun/minigun/toggle_burst()
-	to_chat(usr, "<span class='warning'>This weapon can only fire in bursts!</span>")
+	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
 
 //M60
 /obj/item/weapon/gun/m60
@@ -72,8 +72,8 @@
 	empty_sound = 'sound/weapons/gun_empty.ogg'
 
 /obj/item/weapon/gun/m60/toggle_burst()
-	to_chat(usr, "<span class='warning'>This weapon can only fire in bursts!</span>")
-
+	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
+	
 //Spike launcher
 
 /obj/item/weapon/gun/launcher/spike
@@ -146,7 +146,7 @@
 
 /obj/item/weapon/gun/launcher/spike/able_to_fire(mob/user)
 	if(!isYautja(user))
-		to_chat(user, "<span class='warning'>You have no idea how this thing works!</span>")
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 
 	return ..()
@@ -202,9 +202,9 @@
 				to_chat(user, SPAN_NOTICE(" You put the syringe in [src]."))
 				to_chat(user, SPAN_NOTICE(" [syringes.len] / [max_syringes] syringes."))
 			else
-				to_chat(usr, "<span class='danger'>[src] cannot hold more syringes.</span>")
+				to_chat(usr, SPAN_DANGER("[src] cannot hold more syringes."))
 		else
-			to_chat(usr, "<span class='danger'>This syringe is broken!</span>")
+			to_chat(usr, SPAN_DANGER("This syringe is broken!"))
 
 
 /obj/item/weapon/gun/syringe/afterattack(obj/target, mob/user , flag)
@@ -223,7 +223,7 @@
 	if(syringes.len)
 		spawn(0) fire_syringe(target,user)
 	else
-		to_chat(usr, "<span class='danger'>[src] is empty.</span>")
+		to_chat(usr, SPAN_DANGER("[src] is empty."))
 
 /obj/item/weapon/gun/syringe/proc/fire_syringe(atom/target, mob/user)
 	if (locate (/obj/structure/table, src.loc))
@@ -265,13 +265,13 @@
 						M.attack_log += "\[[time_stamp()]\] <b>UNKNOWN SUBJECT (No longer exists)</b> shot <b>[M]/[M.ckey]</b> with a <b>syringegun</b> ([R])"
 						msg_admin_attack("UNKNOWN shot [M] ([M.ckey]) with a <b>syringegun</b> ([R]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
-					M.visible_message("<span class='danger'>[M] is hit by the syringe!</span>")
+					M.visible_message(SPAN_DANGER("[M] is hit by the syringe!"))
 
 					if(M.can_inject())
 						if(D.reagents)
 							D.reagents.trans_to(M, 15)
 					else
-						M.visible_message("<span class='danger'>The syringe bounces off [M]!</span>")
+						M.visible_message(SPAN_DANGER("The syringe bounces off [M]!"))
 
 					qdel(D)
 					break

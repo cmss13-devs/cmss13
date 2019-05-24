@@ -92,7 +92,7 @@
 	if(istype(L))
 		if(prob(15))
 			L.KnockDown(3)
-			L.visible_message("<span class='danger'>\the [src] knocks down \the [L]!</span>")
+			L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))
 
 /mob/living/simple_animal/hostile/panther/AttackTarget()
 	..()

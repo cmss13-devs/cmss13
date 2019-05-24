@@ -36,7 +36,7 @@
 			if(prob(75))
 				to_chat(user, "You fiddle with the disc, but nothing happens. Try again maybe?")
 				return
-		to_chat(user, "<span class='warning'>You activate the smart-disc and it whirrs to life!</span>")
+		to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
 		activate(user)
 		add_fingerprint(user)
 		if(iscarbon(user))
@@ -246,5 +246,5 @@
 		L.attack_animal(src)
 		if(prob(5))
 			L.KnockDown(3)
-			L.visible_message("<span class='danger'>\The [src] viciously slashes at \the [L]!</span>")
+			L.visible_message(SPAN_DANGER("\The [src] viciously slashes at \the [L]!"))
 		return L

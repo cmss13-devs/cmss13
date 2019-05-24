@@ -22,12 +22,12 @@ obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 
 	if(allowed)
 		if(charging)
-			to_chat(user, "<span class='danger'>\A [charging] is already charging here.</span>")
+			to_chat(user, SPAN_DANGER("\A [charging] is already charging here."))
 			return
 		// Checks to make sure he's not in space doing it, and that the area got proper power.
 		var/area/a = get_area(src)
 		if(!isarea(a) || (a.power_equip == 0 && !a.unlimited_power))
-			to_chat(user, "<span class='danger'>The [name] blinks red as you try to insert the item!</span>")
+			to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the item!"))
 			return
 		if(istype(G, /obj/item/device/laptop))
 			var/obj/item/device/laptop/L = G
@@ -37,7 +37,7 @@ obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 		if(istype(G, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = G
 			if(D.ready)
-				to_chat(user, "<span class='warning'>It won't fit, put the paddles back into [D] first!</span>")
+				to_chat(user, SPAN_WARNING("It won't fit, put the paddles back into [D] first!"))
 				return
 		if(user.drop_inv_item_to_loc(G, src))
 			charging = G
@@ -45,7 +45,7 @@ obj/machinery/recharger/attackby(obj/item/G as obj, mob/user as mob)
 			update_icon()
 	else if(istype(G, /obj/item/tool/wrench))
 		if(charging)
-			to_chat(user, "<span class='danger'>Remove [charging] first!</span>")
+			to_chat(user, SPAN_DANGER("Remove [charging] first!"))
 			return
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")

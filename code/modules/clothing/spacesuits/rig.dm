@@ -207,7 +207,7 @@
 		to_chat(H, SPAN_NOTICE(" You retract your hardsuit helmet."))
 	else
 		if(H.head)
-			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing another helmet.</span>")
+			to_chat(H, SPAN_DANGER("You cannot deploy your helmet while wearing another helmet."))
 			return
 		//TODO: Species check, skull damage for forcing an unfitting helmet on?
 		helmet.loc = H

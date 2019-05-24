@@ -96,7 +96,7 @@
 			if( istype(I) && I.imp_in)
 				var/mob/living/carbon/R = I.imp_in
 				log_say("PrisonComputer3 message: [key_name(usr)]->[key_name(R)] : [warning]")
-				to_chat(R, "<span class='xenowarning'> You hear a voice in your head saying: '[warning]'</span>")
+				to_chat(R, SPAN_XENOWARNING(" You hear a voice in your head saying: '[warning]'"))
 
 		interact()
 		return

@@ -155,7 +155,7 @@ node2, network2 correspond to output
 		return
 	src.add_fingerprint(usr)
 	if(!src.allowed(user))
-		to_chat(user, "<span class='danger'>Access denied.</span>")
+		to_chat(user, SPAN_DANGER("Access denied."))
 		return
 	usr.set_interaction(src)
 	ui_interact(user)
@@ -191,7 +191,7 @@ node2, network2 correspond to output
 	if(!iswrench(W))
 		return ..()
 	if(!(stat & NOPOWER) && on)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first.</span>")
+		to_chat(user, SPAN_WARNING("You cannot unwrench [src], turn it off first."))
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

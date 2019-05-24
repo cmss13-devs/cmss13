@@ -95,32 +95,30 @@ move an amendment</a> to the drawing.</p>
 	return AREA_STATION
 
 /obj/item/blueprints/proc/create_area()
-	//to_world("DEBUG: create_area")
 	var/res = detect_room(get_turf(usr))
 	if(!istype(res,/list))
 		switch(res)
 			if(ROOM_ERR_SPACE)
-				to_chat(usr, "<span class='danger'>The new area must be completely airtight!</span>")
+				to_chat(usr, SPAN_DANGER("The new area must be completely airtight!"))
 				return
 			if(ROOM_ERR_TOOLARGE)
-				to_chat(usr, "<span class='danger'>The new area too large!</span>")
+				to_chat(usr, SPAN_DANGER("The new area too large!"))
 				return
 			else
-				to_chat(usr, "<span class='danger'>Error! Please notify administration!</span>")
+				to_chat(usr, SPAN_DANGER("Error! Please notify administration!"))
 				return
 	var/list/turf/turfs = res
 	var/str = trim(stripped_input(usr,"New area name:","Blueprint Editing", "", MAX_NAME_LEN))
 	if(!str || !length(str)) //cancel
 		return
 	if(length(str) > 50)
-		to_chat(usr, "<span class='danger'>Name too long.</span>")
+		to_chat(usr, SPAN_DANGER("Name too long."))
 		return
 	var/area/A = new
 	A.name = str
 	A.tagbase = "[A.type]_[md5(str)]" // without this dynamic light system ruin everithing
 	//var/ma
 	//ma = A.master ? "[A.master]" : "(null)"
-	//to_world("DEBUG: create_area: <br>A.name=[A.name]<br>A.tag=[A.tag]<br>A.master=[ma]")
 	A.power_equip = 0
 	A.power_light = 0
 	A.power_environ = 0
@@ -134,7 +132,6 @@ move an amendment</a> to the drawing.</p>
 
 	spawn(5)
 		//ma = A.master ? "[A.master]" : "(null)"
-		//to_world("DEBUG: create_area(5): <br>A.name=[A.name]<br>A.tag=[A.tag]<br>A.master=[ma]")
 		interact()
 	return
 
@@ -147,13 +144,12 @@ move an amendment</a> to the drawing.</p>
 
 /obj/item/blueprints/proc/edit_area()
 	var/area/A = get_area()
-	//to_world("DEBUG: edit_area")
 	var/prevname = "[A.name]"
 	var/str = trim(stripped_input(usr,"New area name:","Blueprint Editing", prevname, MAX_NAME_LEN))
 	if(!str || !length(str) || str==prevname) //cancel
 		return
 	if(length(str) > 50)
-		to_chat(usr, "<span class='danger'>Text too long.</span>")
+		to_chat(usr, SPAN_DANGER("Text too long."))
 		return
 	set_area_machinery_title(A,str,prevname)
 	for(var/area/RA in A.related)

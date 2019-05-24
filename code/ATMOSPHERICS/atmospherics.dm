@@ -168,12 +168,12 @@ obj/machinery/atmospherics/proc/check_connect_types_construction(obj/machinery/a
 			if(ventcrawl_message_busy > world.time)
 				return
 			ventcrawl_message_busy = world.time + 20
-			target_move.visible_message("<span class='warning'>You hear something squeezing through the ducts.</span>")
+			target_move.visible_message(SPAN_WARNING("You hear something squeezing through the ducts."))
 			to_chat(user, SPAN_NOTICE("You begin to climb out of [target_move]"))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND))
 				user.remove_ventcrawl()
 				user.forceMove(target_move.loc) //handles entering and so on
-				user.visible_message("<span class='warning'>[user] climbs out of [target_move].</span>", \
+				user.visible_message(SPAN_WARNING("[user] climbs out of [target_move]."), \
 				SPAN_NOTICE("You climb out of [target_move]."))
 				pick(playsound(user, 'sound/effects/alien_ventpass1.ogg', 35, 1), playsound(user, 'sound/effects/alien_ventpass2.ogg', 35, 1))
 		else if(target_move.can_crawl_through())
@@ -187,12 +187,12 @@ obj/machinery/atmospherics/proc/check_connect_types_construction(obj/machinery/a
 			if(ventcrawl_message_busy > world.time)
 				return
 			ventcrawl_message_busy = world.time + 20
-			visible_message("<span class='warning'>You hear something squeezing through the ducts.</span>")
+			visible_message(SPAN_WARNING("You hear something squeezing through the ducts."))
 			to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND))
 				user.remove_ventcrawl()
 				user.forceMove(src.loc)
-				user.visible_message("<span class='warning'>[user] climbs out of [src].</span>", \
+				user.visible_message(SPAN_WARNING("[user] climbs out of [src]."), \
 				SPAN_NOTICE("You climb out of [src]."))
 				pick(playsound(user, 'sound/effects/alien_ventpass1.ogg', 35, 1), playsound(user, 'sound/effects/alien_ventpass2.ogg', 35, 1))
 	user.canmove = 0

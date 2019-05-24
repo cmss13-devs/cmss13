@@ -50,7 +50,7 @@
 	if(mode <= 0) //It's off
 		if(istype(I, /obj/item/tool/screwdriver))
 			if(contents.len > 0)
-				to_chat(user, "<span class='warning'>Eject the contents first!</span>")
+				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
 			if(mode == 0) //It's off but still not unscrewed
 				mode = -1 //Set it to doubleoff
@@ -64,7 +64,7 @@
 				return
 		else if(istype(I, /obj/item/tool/weldingtool) && mode == -1)
 			if(contents.len > 0)
-				to_chat(user, "<span class='warning'>Eject the contents first!</span>")
+				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
 			var/obj/item/tool/weldingtool/W = I
 			if(W.remove_fuel(0, user))
@@ -81,7 +81,7 @@
 					C.update()
 					qdel(src)
 			else
-				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
 	if(istype(I, /obj/item/storage/bag/trash))
@@ -96,16 +96,16 @@
 	var/obj/item/grab/G = I
 	if(istype(G)) //Handle grabbed mob
 		if(ismob(G.grabbed_thing))
-			to_chat(user, "<span class='warning'>You can't fit that in there!</span>")
+			to_chat(user, SPAN_WARNING("You can't fit that in there!"))
 			return
 			/*&& user.grab_level >= GRAB_AGGRESSIVE)
 			var/mob/GM = G.grabbed_thing
-			user.visible_message("<span class='warning'>[user] starts putting [GM] into [src].</span>",
-			"<span class='warning'>You start putting [GM] into [src].</span>")
+			user.visible_message(SPAN_WARNING("[user] starts putting [GM] into [src]."),
+			SPAN_WARNING("You start putting [GM] into [src]."))
 			if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				GM.forceMove(src)
-				user.visible_message("<span class='warning'>[user] puts [GM] into [src].</span>",
-				"<span class='warning'>[user] puts [GM] into [src].</span>")
+				user.visible_message(SPAN_WARNING("[user] puts [GM] into [src]."),
+				SPAN_WARNING("[user] puts [GM] into [src]."))
 				user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [GM] ([GM.ckey]) in disposals.</font>")
 				GM.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user] ([user.ckey])</font>")
 				msg_admin_attack("[user] ([user.ckey]) placed [GM] ([GM.ckey]) in a disposals unit. (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
@@ -137,7 +137,7 @@
 		visible_message(SPAN_NOTICE("[user] starts climbing into the disposal."))
 	else
 		if(user.is_mob_restrained()) return //can't stuff someone other than you if restrained.
-		visible_message("<span class ='warning'>[user] starts stuffing [target] into the disposal.</span>")
+		visible_message(SPAN_WARNING("[user] starts stuffing [target] into the disposal."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 	if(target_loc != target.loc)
@@ -148,8 +148,8 @@
 		SPAN_NOTICE("You climb into [src]."))
 	else
 		if(user.is_mob_incapacitated()) return
-		user.visible_message("<span class ='danger'>[user] stuffs [target] into [src]!</span>",
-		"<span class ='warning'>You stuff [target] into [src]!</span>")
+		user.visible_message(SPAN_DANGER("[user] stuffs [target] into [src]!"),
+		SPAN_WARNING("You stuff [target] into [src]!"))
 
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has placed [target.name] ([target.ckey]) in disposals.</font>")
 		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been placed in disposals by [user.name] ([user.ckey])</font>")
@@ -195,7 +195,7 @@
 //Human interact with machine
 /obj/machinery/disposal/attack_hand(mob/user as mob)
 	if(user && user.loc == src)
-		to_chat(usr, "<span class='danger'>You cannot reach the controls from inside.</span>")
+		to_chat(usr, SPAN_DANGER("You cannot reach the controls from inside."))
 		return
 
 	interact(user, 0)
@@ -234,11 +234,11 @@
 //Handle machine interaction
 /obj/machinery/disposal/Topic(href, href_list)
 	if(usr.loc == src)
-		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
+		to_chat(usr, SPAN_WARNING("You cannot reach the controls from inside."))
 		return
 
 	if(mode == -1 && !href_list["eject"]) // only allow ejecting if mode is -1
-		to_chat(usr, "<span class='warning'>The disposal units power is disabled.</span>")
+		to_chat(usr, SPAN_WARNING("The disposal units power is disabled."))
 		return
 	..()
 	add_fingerprint(usr)
@@ -434,7 +434,7 @@
 			I.loc = src
 			visible_message(SPAN_NOTICE("[I] lands into [src]."))
 		else
-			visible_message("<span class='warning'>[I] bounces off of [src]'s rim!</span>")
+			visible_message(SPAN_WARNING("[I] bounces off of [src]'s rim!"))
 		return 0
 	else
 		return ..()
@@ -803,9 +803,9 @@
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
-				to_chat(user, "<span class='warning'>You must stay still while welding [src].</span>")
+				to_chat(user, SPAN_WARNING("You must stay still while welding [src]."))
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to cut [src].</span>")
+			to_chat(user, SPAN_WARNING("You need more welding fuel to cut [src]."))
 
 //Called when pipe is cut with blowtorch
 /obj/structure/disposalpipe/proc/welded()
@@ -1264,9 +1264,9 @@
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
-				to_chat(user, "<span class='warning'>You must stay still while welding the pipe.</span>")
+				to_chat(user, SPAN_WARNING("You must stay still while welding the pipe."))
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to cut the pipe.</span>")
+			to_chat(user, SPAN_WARNING("You need more welding fuel to cut the pipe."))
 
 //Would transfer to next pipe segment, but we are in a trunk. If not entering from disposal bin, transfer to linked object (outlet or bin)
 /obj/structure/disposalpipe/trunk/transfer(var/obj/structure/disposalholder/H)
@@ -1374,7 +1374,7 @@
 				C.density = 1
 				qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 
 /obj/structure/disposaloutlet/retrieval
 	name = "retrieval outlet"

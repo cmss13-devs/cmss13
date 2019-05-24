@@ -71,12 +71,12 @@
 				pr_open = 1
 				switch(alert(user, "What would you like to do?", "Lighter", "Press the button.", "Close the lighter."))
 					if("Press the button.")
-						to_chat(user, "<span class='danger'>You press the button.</span>")
+						to_chat(user, SPAN_DANGER("You press the button."))
 						flick("c-4detonator_click", src)
 						if(src.bomb)
 							src.bomb.detonate()
 							log_admin("[user.real_name]([user.ckey]) has triggered [src.bomb] with [src].")
-							message_admins("<span class='danger'>[user.real_name]([user.ckey]) has triggered [src.bomb] with [src].</span>")
+							message_admins(SPAN_DANGER("[user.real_name]([user.ckey]) has triggered [src.bomb] with [src]."))
 
 					if("Close the lighter.")
 						src.icon_state = "c-4detonator_0"

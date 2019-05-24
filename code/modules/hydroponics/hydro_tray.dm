@@ -517,7 +517,7 @@
 	weedlevel = 0
 
 	update_icon()
-	visible_message("<span class='danger'>The \blue [previous_plant] \red has suddenly mutated into \blue [seed.display_name]!</span>")
+	visible_message(SPAN_DANGER("The \blue [previous_plant] \red has suddenly mutated into \blue [seed.display_name]!"))
 
 	return
 
@@ -611,16 +611,16 @@
 			update_icon()
 
 		else
-			to_chat(user, "<span class='danger'>\The [src] already has seeds in it!</span>")
+			to_chat(user, SPAN_DANGER("\The [src] already has seeds in it!"))
 
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message("<span class='danger'>[user] starts uprooting the weeds.</span>", "<span class='danger'>You remove the weeds from the [src].</span>")
+			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
 			weedlevel = 0
 			update_icon()
 		else
-			to_chat(user, "<span class='danger'>This plot is completely devoid of weeds. It doesn't need uprooting.</span>")
+			to_chat(user, SPAN_DANGER("This plot is completely devoid of weeds. It doesn't need uprooting."))
 
 	else if (istype(O, /obj/item/storage/bag/plants))
 

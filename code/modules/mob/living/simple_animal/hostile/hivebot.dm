@@ -77,12 +77,12 @@
 		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 		smoke.set_up(2, 0, src.loc)
 		smoke.start()
-		visible_message("<span class='danger'><B>The [src] warps in!</B></span>")
+		visible_message(SPAN_DANGER("<B>The [src] warps in!</B>"))
 		playsound(src.loc, 'sound/effects/EMPulse.ogg', 25, 1)
 
 	warpbots()
 		icon_state = "def_radar"
-		visible_message("<span class='danger'>The [src] turns on!</span>")
+		visible_message(SPAN_DANGER("The [src] turns on!"))
 		while(bot_amt > 0)
 			bot_amt--
 			switch(bot_type)

@@ -388,7 +388,7 @@
 		AM.add_fingerprint(src)
 
 	if(AM.pulledby && M)
-		visible_message("<span class='warning'>[src] has broken [AM.pulledby]'s grip on [M]!</span>", null, null, 5)
+		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
 		AM.pulledby.stop_pulling()
 
 	pulling = AM
@@ -409,7 +409,7 @@
 		msg_admin_attack("[key_name(src)] grabbed [key_name(M)]")
 
 		if(!no_msg)
-			visible_message("<span class='warning'>[src] has grabbed [M] passively!</span>", null, null, 5)
+			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
 
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
@@ -657,14 +657,14 @@ mob/proc/yank_out_object()
 
 	if(self)
 		if(get_active_hand())
-			to_chat(src, "<span class='warning'>You need an empty hand for this!</span>")
+			to_chat(src, SPAN_WARNING("You need an empty hand for this!"))
 			r_FAL
-		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
+		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
 	else
 		if(get_active_hand())
-			to_chat(U, "<span class='warning'>You need an empty hand for this!</span>")
+			to_chat(U, SPAN_WARNING("You need an empty hand for this!"))
 			r_FAL
-		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
+		to_chat(U, SPAN_WARNING("You attempt to get a good grip on [selection] in [S]'s body."))
 
 	if(!do_after(U, 80, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
@@ -672,9 +672,9 @@ mob/proc/yank_out_object()
 		return
 
 	if(self)
-		visible_message("<span class='warning'><b>[src] rips [selection] out of their body.</b></span>","<span class='warning'><b>You rip [selection] out of your body.</b></span>", null, 5)
+		visible_message(SPAN_WARNING("<b>[src] rips [selection] out of their body.</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"), null, 5)
 	else
-		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>", null, 5)
+		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 	valid_objects = get_visible_implants(0)
 	if(valid_objects.len == 1) //Yanking out last object - removing verb.
 		src.verbs -= /mob/proc/yank_out_object

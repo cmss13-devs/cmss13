@@ -133,7 +133,6 @@ proc/dmp2swapmap(filename)
 			txt=i?copytext(txt,i+1):null
 	to_world("Map size: [X],[Y],[Z]")
 	//for(var/code in codes)
-	//	to_world("Code \")[code]\":\n[codes[code]]"
 	fdel("map_[mapname].txt")
 	var/F = file("map_[mapname].txt")
 	to_chat(F, ". = object(\").0\")\n.0\n\ttype = /swapmap\n\tid = \"[mapname]\"\n\tz = [Z]\n\ty = [Y]\n\tx = [X]"

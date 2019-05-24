@@ -47,10 +47,10 @@
 	if(istype(O, /obj/item/device/mmi))
 		var/obj/item/device/mmi/B = O
 		if(src.mmi) //There's already a brain in it.
-			to_chat(user, "<span class='danger'>There's already a brain in [src]!</span>")
+			to_chat(user, SPAN_DANGER("There's already a brain in [src]!"))
 			return
 		if(!B.brainmob)
-			to_chat(user, "<span class='danger'>Sticking an empty MMI into the frame would sort of defeat the purpose.</span>")
+			to_chat(user, SPAN_DANGER("Sticking an empty MMI into the frame would sort of defeat the purpose."))
 			return
 		if(!B.brainmob.key)
 			var/ghost_can_reenter = 0
@@ -64,11 +64,11 @@
 				return
 
 		if(B.brainmob.stat == DEAD)
-			to_chat(user, "<span class='danger'>[O] is dead. Sticking it into the frame would sort of defeat the purpose.</span>")
+			to_chat(user, SPAN_DANGER("[O] is dead. Sticking it into the frame would sort of defeat the purpose."))
 			return
 
 		if(jobban_isbanned(B.brainmob, "Cyborg"))
-			to_chat(user, "<span class='danger'>[O] does not seem to fit.</span>")
+			to_chat(user, SPAN_DANGER("[O] does not seem to fit."))
 			return
 
 
@@ -89,7 +89,7 @@
 					health = maxHealth
 				add_fingerprint(user)
 				for(var/mob/W in viewers(user, null))
-					W.show_message(text("<span class='danger'>[user] has spot-welded some of the damage to [src]!</span>"), 1)
+					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), 1)
 			else
 				to_chat(user, SPAN_NOTICE(" [src] is undamaged!"))
 		else
@@ -97,7 +97,7 @@
 			return
 	else if(istype(O, /obj/item/card/id)||istype(O, /obj/item/device/pda))
 		if (!mmi)
-			to_chat(user, "<span class='danger'>There's no reason to swipe your ID - the spiderbot has no brain to remove.</span>")
+			to_chat(user, SPAN_DANGER("There's no reason to swipe your ID - the spiderbot has no brain to remove."))
 			return 0
 
 		var/obj/item/card/id/id_card
@@ -118,19 +118,19 @@
 
 			return 1
 		else
-			to_chat(user, "<span class='danger'>You swipe your card, with no effect.</span>")
+			to_chat(user, SPAN_DANGER("You swipe your card, with no effect."))
 			return 0
 	else if (istype(O, /obj/item/card/emag))
 		if (emagged)
-			to_chat(user, "<span class='danger'>[src] is already overloaded - better run.</span>")
+			to_chat(user, SPAN_DANGER("[src] is already overloaded - better run."))
 			return 0
 		else
 			var/obj/item/card/emag/emag = O
 			emag.uses--
 			emagged = 1
 			to_chat(user, SPAN_NOTICE(" You short out the security protocols and overload [src]'s cell, priming it to explode in a short time."))
-			spawn(100)	to_chat(src, "<span class='danger'>Your cell seems to be outputting a lot of power...</span>")
-			spawn(200)	to_chat(src, "<span class='danger'>Internal heat sensors are spiking! Something is badly wrong with your cell!</span>")
+			spawn(100)	to_chat(src, SPAN_DANGER("Your cell seems to be outputting a lot of power..."))
+			spawn(200)	to_chat(src, SPAN_DANGER("Internal heat sensors are spiking! Something is badly wrong with your cell!"))
 			spawn(SECONDS_30)	src.explode()
 
 	else
@@ -141,12 +141,12 @@
 			adjustBruteLoss(damage)
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<span class='danger'>\b [src] has been attacked with the [O] by [user]. </span>")
+					M.show_message(SPAN_DANGER("\b [src] has been attacked with the [O] by [user]. "))
 		else
-			to_chat(usr, "<span class='danger'>This weapon is ineffective, it does no damage.</span>")
+			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
 			for(var/mob/M in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<span class='danger'>[user] gently taps [src] with the [O]. </span>")
+					M.show_message(SPAN_DANGER("[user] gently taps [src] with the [O]. "))
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
 
@@ -159,7 +159,7 @@
 /mob/living/simple_animal/spiderbot/proc/explode() //When emagged.
 	for(var/mob/M in viewers(src, null))
 		if ((M.client && !( M.blinded )))
-			M.show_message("<span class='danger'>[src] makes an odd warbling noise, fizzles, and explodes.</span>")
+			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."))
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	eject_brain()
 	death()
@@ -220,11 +220,11 @@
 		return
 
 	if(!held_item)
-		to_chat(usr, "<span class='danger'>You have nothing to drop!</span>")
+		to_chat(usr, SPAN_DANGER("You have nothing to drop!"))
 		return 0
 
 	if(istype(held_item, /obj/item/explosive/grenade))
-		visible_message("<span class='danger'>[src] launches \the [held_item]!</span>", "<span class='danger'>You launch \the [held_item]!</span>", "You hear a skittering noise and a thump!")
+		visible_message(SPAN_DANGER("[src] launches \the [held_item]!"), SPAN_DANGER("You launch \the [held_item]!"), "You hear a skittering noise and a thump!")
 		var/obj/item/explosive/grenade/G = held_item
 		G.forceMove(loc)
 		G.prime()
@@ -247,7 +247,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, "<span class='danger'>You are already holding \the [held_item]</span>")
+		to_chat(src, SPAN_DANGER("You are already holding \the [held_item]"))
 		return 1
 
 	var/list/items = list()
@@ -264,10 +264,10 @@
 				selection.loc = src
 				visible_message(SPAN_NOTICE("[src] scoops up \the [held_item]!"), SPAN_NOTICE("You grab \the [held_item]!"), "You hear a skittering noise and a clink.")
 				return held_item
-		to_chat(src, "<span class='danger'>\The [selection] is too far away.</span>")
+		to_chat(src, SPAN_DANGER("\The [selection] is too far away."))
 		return 0
 
-	to_chat(src, "<span class='danger'>There is nothing of interest to take.</span>")
+	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
 	return 0
 
 /mob/living/simple_animal/spiderbot/examine(mob/user)

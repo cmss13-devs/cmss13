@@ -21,7 +21,7 @@
 
 /obj/item/weapon/stunprod/attack_self(mob/user as mob)
 	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You grab the [src] on the wrong side.</span>")
+		to_chat(user, SPAN_DANGER("You grab the [src] on the wrong side."))
 		user.KnockDown(30)
 		charges--
 		if(charges < 1)
@@ -35,12 +35,12 @@
 		update_icon()
 	else
 		status = 0
-		to_chat(user, "<span class='warning'>\The [src] is out of charge.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is out of charge."))
 	add_fingerprint(user)
 
 /obj/item/weapon/stunprod/attack(mob/M, mob/user)
 	if(status && (CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You accidentally hit yourself with the [src]!</span>")
+		to_chat(user, SPAN_DANGER("You accidentally hit yourself with the [src]!"))
 		user.KnockDown(30)
 		charges--
 		if(charges < 1)
@@ -55,7 +55,7 @@
 	if(user.a_intent == "hurt")
 		return
 	else if(!status)
-		M.visible_message("<span class='warning'>[M] has been poked with [src] whilst it's turned off by [user].</span>")
+		M.visible_message(SPAN_WARNING("[M] has been poked with [src] whilst it's turned off by [user]."))
 		return
 
 	if(status)
@@ -63,7 +63,7 @@
 		user.lastattacked = M
 		M.lastattacker = user
 		charges -= 2
-		M.visible_message("<span class='danger'>[M] has been prodded with the [src] by [user]!</span>")
+		M.visible_message(SPAN_DANGER("[M] has been prodded with the [src] by [user]!"))
 
 		user.attack_log += "\[[time_stamp()]\]<font color='red'> Stunned [M.name] ([M.ckey]) with [src.name]</font>"
 		M.attack_log += "\[[time_stamp()]\]<font color='orange'> Stunned by [user.name] ([user.ckey]) with [src.name]</font>"

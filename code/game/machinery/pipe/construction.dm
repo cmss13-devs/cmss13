@@ -407,11 +407,11 @@ Buildable meters
 
 	for(var/obj/machinery/atmospherics/M in src.loc)
 		if((M.initialize_directions & pipe_dir) && M.check_connect_types_construction(M,src))	// matches at least one direction on either type of pipe & same connection type
-			to_chat(user, "<span class='danger'>There is already a pipe of the same type at this location.</span>")
+			to_chat(user, SPAN_DANGER("There is already a pipe of the same type at this location."))
 			return 1
 	// no conflicts found
 
-	var/pipefailtext = "<span class='danger'>There's nothing to connect this pipe section to!</span>" //(with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
+	var/pipefailtext = SPAN_DANGER("There's nothing to connect this pipe section to!") //(with how the pipe code works, at least one end needs to be connected to something, otherwise the game deletes the segment)"
 
 	//TODO: Move all of this stuff into the various pipe constructors.
 	switch(pipe_type)
@@ -705,11 +705,9 @@ Buildable meters
 			V.initialize()
 			V.build_network()
 			if (V.node1)
-//					to_world("[V.node1.name] is connected to valve, forcing it to update its nodes.")
 				V.node1.initialize()
 				V.node1.build_network()
 			if (V.node2)
-//					to_world("[V.node2.name] is connected to valve, forcing it to update its nodes.")
 				V.node2.initialize()
 				V.node2.build_network()
 
@@ -989,7 +987,7 @@ Buildable meters
 	if (!istype(W, /obj/item/tool/wrench))
 		return ..()
 	if(!locate(/obj/machinery/atmospherics/pipe, src.loc))
-		to_chat(user, "<span class='danger'>You need to fasten it to a pipe</span>")
+		to_chat(user, SPAN_DANGER("You need to fasten it to a pipe"))
 		return 1
 	new/obj/machinery/meter( src.loc )
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

@@ -71,13 +71,13 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 			damage_dealt = 5
-			user.visible_message("<span class='warning'>[user] mangles [src].</span>", \
-					 "<span class='warning'>You mangle [src].</span>", \
+			user.visible_message(SPAN_WARNING("[user] mangles [src]."), \
+					 SPAN_WARNING("You mangle [src]."), \
 					 "You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message("<span class='warning'>[user] kicks [src].</span>", \
-						 "<span class='warning'>You kick [src].</span>", \
+		user.visible_message(SPAN_WARNING("[user] kicks [src]."), \
+						 SPAN_WARNING("You kick [src]."), \
 						 "You hear twisting metal.")
 
 	if(shock(user, 70))
@@ -96,8 +96,8 @@
 	if(M.melee_damage_upper == 0)	return
 
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
-	M.visible_message("<span class='warning'>[M] smashes against [src].</span>", \
-					  "<span class='warning'>You smash against [src].</span>", \
+	M.visible_message(SPAN_WARNING("[M] smashes against [src]."), \
+					  SPAN_WARNING("You smash against [src]."), \
 					  "You hear twisting metal.")
 
 	health -= M.melee_damage_upper

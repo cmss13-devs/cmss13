@@ -233,11 +233,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
 		H.remove_hud_from(src)
-		to_chat(src, "<span class='info'><B>[hud_choice] Disabled</B></span>")
+		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
 	else
 		HUD_toggled[HUD_nbr] = 1
 		H.add_hud_to(src)
-		to_chat(src, "<span class='info'><B>[hud_choice] Enabled</B></span>")
+		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))
 
 
 
@@ -453,7 +453,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/env_temperature = T.return_temperature()
 	var/env_gas = T.return_gas()
 
-	to_chat(src, "<span class='info'><B>Results:</B></span>")
+	to_chat(src, SPAN_INFO("<B>Results:</B>"))
 	if(abs(pressure - ONE_ATMOSPHERE) < 10)
 		to_chat(src, "<span style='color: blue;'>Pressure: [round(pressure,0.1)] kPa</span>")
 	else
@@ -509,7 +509,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		to_chat(src, "<span class='warning'>The game hasn't started yet!</span>")
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
 	if(ticker.mode.check_xeno_late_join(src))
@@ -524,7 +524,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		to_chat(src, "<span class='warning'>The game hasn't started yet!</span>")
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
 	var/list/zombie_list = list()
@@ -563,10 +563,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(Z.disposed) //should never occur,just to be sure.
 				return
 			if(!Z.regenZ)
-				to_chat(src, "<span class='warning'>That zombie has been cured!</span>")
+				to_chat(src, SPAN_WARNING("That zombie has been cured!"))
 				return
 			if(Z.client)
-				to_chat(src, "<span class='warning'>That player is still connected.</span>")
+				to_chat(src, SPAN_WARNING("That player is still connected."))
 				return
 
 			var/datum/limb/head/h = Z.get_limb("head")
@@ -575,7 +575,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					if(HD.brainmob)
 						if(HD.brainmob.real_name == Z.real_name)
 							if(HD.brainmob.client)
-								to_chat(src, "<span class='warning'>That player is still connected!</span>")
+								to_chat(src, SPAN_WARNING("That player is still connected!"))
 								return
 
 			var/mob/ghostmob = client.mob
@@ -604,7 +604,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/mob/L = src
 
 	if(ticker.current_state < GAME_STATE_PLAYING)
-		to_chat(usr, "<span class='warning'>The game hasn't started yet!</span>")
+		to_chat(usr, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
 	if (!usr.stat) // Make sure we're an observer
@@ -616,7 +616,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return 0 // Something is terribly wrong
 
 	if(jobban_isbanned(usr,"Alien")) // User is jobbanned
-		to_chat(usr, "<span class='warning'>You are banned from playing aliens and cannot spawn as a Hellhound.</span>")
+		to_chat(usr, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a Hellhound."))
 		return
 
 	var/list/hellhound_list = list()
@@ -687,7 +687,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		to_chat(src, "<span class='warning'>The game hasn't started yet!</span>")
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
 	if(ticker.mode.check_predator_late_join(src))
@@ -699,19 +699,19 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "If it's on Hunter Games gamemode, vote on who gets a supply drop!"
 
 	if(!ticker || ticker.current_state < GAME_STATE_PLAYING || !ticker.mode)
-		to_chat(src, "<span class='warning'>The game hasn't started yet!</span>")
+		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
 	if(!istype(ticker.mode,/datum/game_mode/huntergames))
-		to_chat(src, "<span class='info'>Wrong game mode. You have to be observing a Hunter Games round.</span>")
+		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
 		return
 
 	if(!waiting_for_drop_votes)
-		to_chat(src, "<span class='info'>There's no drop vote currently in progress. Wait for a supply drop to be announced!</span>")
+		to_chat(src, SPAN_INFO("There's no drop vote currently in progress. Wait for a supply drop to be announced!"))
 		return
 
 	if(voted_this_drop)
-		to_chat(src, "<span class='info'>You voted for this one already. Only one please!</span>")
+		to_chat(src, SPAN_INFO("You voted for this one already. Only one please!"))
 		return
 
 	var/list/mobs = living_mob_list
@@ -726,7 +726,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if (!target)//Make sure we actually have a target
 		return
 	else
-		to_chat(src, "<span class='info'>Your vote for [target] has been counted!</span>")
+		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))
 		ticker.mode:supply_votes += target
 		voted_this_drop = 1
 		spawn(200)

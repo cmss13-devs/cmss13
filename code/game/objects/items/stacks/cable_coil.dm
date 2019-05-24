@@ -21,7 +21,7 @@
 	stack_id = "cable coil"
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='warning'><b>[user] is strangling \himself with the [src.name]! It looks like \he's trying to commit suicide.</b></span>"
+		viewers(user) << SPAN_WARNING("<b>[user] is strangling \himself with the [src.name]! It looks like \he's trying to commit suicide.</b>")
 		return(OXYLOSS)
 
 
@@ -70,7 +70,7 @@
 	if(ishuman(M) && !M.is_mob_incapacitated())
 		if(!istype(usr.loc,/turf)) return
 		if(src.amount <= 14)
-			to_chat(usr, "<span class='warning'>You need at least 15 lengths to make restraints!</span>")
+			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
 			return
 		var/obj/item/handcuffs/cable/B = new /obj/item/handcuffs/cable(usr.loc)
 		B.color = color
@@ -140,11 +140,11 @@
 		return
 
 	if(get_dist(F,user) > 1)
-		to_chat(user, "<span class='warning'>You can't lay cable at a place that far away.</span>")
+		to_chat(user, SPAN_WARNING("You can't lay cable at a place that far away."))
 		return
 
 	if(F.intact_tile)		// if floor is intact, complain
-		to_chat(user, "<span class='warning'>You can't lay cable there unless the floor tiles are removed.</span>")
+		to_chat(user, SPAN_WARNING("You can't lay cable there unless the floor tiles are removed."))
 		return
 
 	else
@@ -157,7 +157,7 @@
 
 		for(var/obj/structure/cable/LC in F)
 			if((LC.d1 == dirn && LC.d2 == 0 ) || ( LC.d2 == dirn && LC.d1 == 0))
-				to_chat(user, "<span class='warning'>There's already a cable at that position.</span>")
+				to_chat(user, SPAN_WARNING("There's already a cable at that position."))
 				return
 
 		for(var/obj/structure/cable/LC in F)
@@ -205,7 +205,7 @@
 		return
 
 	if(get_dist(C, user) > 1)		// make sure it's close enough
-		to_chat(user, "<span class='warning'>You can't lay cable at a place that far away.</span>")
+		to_chat(user, SPAN_WARNING("You can't lay cable at a place that far away."))
 		return
 
 
@@ -216,7 +216,7 @@
 
 	if(C.d1 == dirn || C.d2 == dirn)		// one end of the clicked cable is pointing towards us
 		if(U.intact_tile)						// can't place a cable if the floor is complete
-			to_chat(user, "<span class='warning'>You can't lay cable there unless the floor tiles are removed.</span>")
+			to_chat(user, SPAN_WARNING("You can't lay cable there unless the floor tiles are removed."))
 			return
 		else
 			// cable is pointing at us, we're standing on an open tile
@@ -226,7 +226,7 @@
 
 			for(var/obj/structure/cable/LC in U)		// check to make sure there's not a cable there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
-					to_chat(user, "<span class='warning'>There's already a cable at that position.</span>")
+					to_chat(user, SPAN_WARNING("There's already a cable at that position."))
 					return
 
 			var/obj/structure/cable/NC = new(U)
@@ -264,7 +264,7 @@
 			if(LC == C)			// skip the cable we're interacting with
 				continue
 			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) )	// make sure no cable matches either direction
-				to_chat(user, "<span class='warning'>There's already a cable at that position.</span>")
+				to_chat(user, SPAN_WARNING("There's already a cable at that position."))
 				return
 
 
@@ -342,13 +342,13 @@
 
 		if(S.burn_dam > 0 && use(1))
 			if(self_fixing)
-				user.visible_message("<span class='warning'>\The [user] begins fixing some burn damage on their [S.display_name].</span>", \
-					"<span class='warning'>You begin to carefully patch some burn damage on your [S.display_name] so as not to void your warranty.</span>")
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burn damage on their [S.display_name]."), \
+					SPAN_WARNING("You begin to carefully patch some burn damage on your [S.display_name] so as not to void your warranty."))
 				if(!do_after(user,60, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
 			S.heal_damage(0,15,0,1)
-			user.visible_message("<span class='danger'>\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src].</span>")
+			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
 			return
 		else
 			to_chat(user, "Nothing to fix!")

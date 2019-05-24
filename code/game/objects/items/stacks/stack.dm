@@ -115,31 +115,31 @@
 			return
 		if(R.skill_req)
 			if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.construction < R.skill_req)
-				to_chat(usr, "<span class='warning'>You are not trained to build this...</span>")
+				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 				return
 		if(amount < R.req_amount * multiplier)
 			if(R.req_amount * multiplier > 1)
-				to_chat(usr, "<span class='warning'>You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
+				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!"))
 			else
-				to_chat(usr, "<span class='warning'>You need more [name] to build \the [R.title]!</span>")
+				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.title]!"))
 			return
 
 		//1 is absolute one per tile, 2 is directional one per tile. Hacky way to get around it without adding more vars
 		if(R.one_per_turf)
 			if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
-				to_chat(usr, "<span class='warning'>There is already another [R.title] here!</span>")
+				to_chat(usr, SPAN_WARNING("There is already another [R.title] here!"))
 				return
 			for(var/obj/O in usr.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 				if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER) && R.one_per_turf == 2)) //Note: If no dense items, or if dense item, both it and result must be border tiles
-					to_chat(usr, "<span class='warning'>You need a clear, open area to build \a [R.title]!</span>")
+					to_chat(usr, SPAN_WARNING("You need a clear, open area to build \a [R.title]!"))
 					return
 				if(R.one_per_turf == 2 && (O.flags_atom & ON_BORDER) && O.dir == usr.dir) //We check overlapping dir here. Doesn't have to be the same type
-					to_chat(usr, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
+					to_chat(usr, SPAN_WARNING("There is already \a [O.name] in this direction!"))
 					return
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			if(!OT.allow_construction)
-				to_chat(usr, "<span class='warning'>\The [R.title] must be constructed on a proper surface!</span>")
+				to_chat(usr, SPAN_WARNING("\The [R.title] must be constructed on a proper surface!"))
 				return
 		if(R.time)
 			if(usr.action_busy) return
@@ -149,14 +149,14 @@
 				return
 		//We want to check this again for girder stacking
 		if(R.one_per_turf == 1 && (locate(R.result_type) in usr.loc))
-			to_chat(usr, "<span class='warning'>There is already another [R.title] here!</span>")
+			to_chat(usr, SPAN_WARNING("There is already another [R.title] here!"))
 			return
 		for(var/obj/O in usr.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 			if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER) && R.one_per_turf == 2))
-				to_chat(usr, "<span class='warning'>You need a clear, open area to build \a [R.title]!</span>")
+				to_chat(usr, SPAN_WARNING("You need a clear, open area to build \a [R.title]!"))
 				return
 			if(R.one_per_turf == 2 && (O.flags_atom & ON_BORDER) && O.dir == usr.dir)
-				to_chat(usr, "<span class='warning'>There is already \a [O.name] in this direction!</span>")
+				to_chat(usr, SPAN_WARNING("There is already \a [O.name] in this direction!"))
 				return
 		if(amount < R.req_amount * multiplier)
 			return

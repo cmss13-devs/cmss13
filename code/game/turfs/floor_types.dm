@@ -136,7 +136,7 @@
 	..()
 	spawn(2)
 		if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
-			AM.visible_message("<span class='warning'>[AM] falls into the depths!</span>", "<span class='warning'>You fall into the depths!</span>")
+			AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
 			if(get_area(src) == get_area(get_turf(HangarUpperElevator)))
 				var/list/droppoints = list()
 				for(var/turf/TL in get_area(get_turf(HangarLowerElevator)))

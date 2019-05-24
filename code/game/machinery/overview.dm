@@ -30,8 +30,6 @@
 		imap += icon('icons/misc/imap.dmi', "blank")
 		imap += icon('icons/misc/imap.dmi', "blank")
 
-	//to_world("[icount] images in list")
-
 
 	for(var/wx = 1 ; wx <= world.maxx; wx++)
 
@@ -127,13 +125,8 @@
 
 			var/rx = ((wx*2+xoff)%32) + 1
 			var/ry = ((wy*2+yoff)%32) + 1
-
-			//to_world("trying [ix],[iy] : [ix+icx*iy]")
 			var/icon/I = imap[1+(ix + icx*iy)*2]
 			var/icon/I2 = imap[2+(ix + icx*iy)*2]
-
-
-			//to_world("icon: \icon[I]")
 
 			I.DrawBox(colour, rx, ry, rx+1, ry+1)
 
@@ -250,12 +243,7 @@
 
 			var/rx = ((wx*2+xoff)%32) + 1
 			var/ry = ((wy*2+yoff)%32) + 1
-
-			//to_world("trying [ix],[iy] : [ix+icx*iy]")
 			var/icon/I = imap[1+(ix + icx*iy)]
-
-
-			//to_world("icon: \icon[I]")
 
 			I.DrawBox(colour, rx, ry, rx, ry)
 

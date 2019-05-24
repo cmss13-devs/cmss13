@@ -962,7 +962,7 @@
 	if(!.) return
 	if(src.volume <= 0.1) if(data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>You lose focus.</span>")
+		to_chat(M, SPAN_WARNING("You lose focus."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
@@ -982,7 +982,7 @@
 	if(!.) return
 	if(volume <= 0.1) if(data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
+		to_chat(M, SPAN_WARNING("Your mind feels a little less stable..."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
@@ -1003,14 +1003,14 @@
 	if(!.) return
 	if(volume <= 0.1) if(data != -1)
 		data = -1
-		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
+		to_chat(M, SPAN_WARNING("Your mind feels much less stable..."))
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			data = world.time
 			if(prob(90))
 				to_chat(M, SPAN_NOTICE("Your mind feels much more stable."))
 			else
-				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
+				to_chat(M, SPAN_WARNING("Your mind breaks apart..."))
 				M.hallucination += 200
 
 /datum/reagent/antized

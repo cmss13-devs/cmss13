@@ -23,7 +23,7 @@
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(istype(W, /obj/item/weapon/baton))
 			if(cooldown < world.time - 25)
-				user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
+				user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 				playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 				cooldown = world.time
 		else

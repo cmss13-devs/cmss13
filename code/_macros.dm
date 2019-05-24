@@ -75,7 +75,13 @@
 
 #define JOINTEXT(X) jointext(X, null)
 
+// Style class macros
+
+#define SPAN_BOLDANNOUNCE(X) "<span class='boldannounce'>[X]</span>"
+
 #define SPAN_NOTICE(X) "<span class='notice'>[X]</span>"
+
+#define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
 
 #define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"
 
@@ -89,6 +95,8 @@
 
 #define SPAN_DANGER(X) "<span class='danger'>[X]</span>"
 
+#define SPAN_HIGHDANGER(X) "<span class='highdanger'>[X]</span>"
+
 #define SPAN_YAUTJABOLD(X) "<span class='yautjabold'>[X]</span>"
 
 #define SPAN_YAUTJABOLDBIG(X) "<span class='yautjaboldbig'>[X]</span>"
@@ -98,3 +106,5 @@
 #define SPAN_ROUNDBODY(X) "<span class='round_body'>[X]</span>"
 
 #define SPAN_CENTERBOLD(X) "<span class='centerbold'>[X]</span>"
+
+#define SPAN_INFO(X) "<span class='info'>[X]</span>"

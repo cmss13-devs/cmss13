@@ -152,7 +152,7 @@
 
 /mob/living/simple_animal/hostile/proc/OpenFire(target_mob)
 	var/target = target_mob
-	visible_message("<span class='danger'><b>[src]</b> fires at [target]!</span>", 1)
+	visible_message(SPAN_DANGER("<b>[src]</b> fires at [target]!"), 1)
 
 	var/tturf = get_turf(target)
 	if(rapid)

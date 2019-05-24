@@ -326,7 +326,7 @@
 	health = 500
 
 	attack_hand(mob/M)
-		to_chat(M, "<span class='warning'>You don't know what this thing could do if you mess with it. Better to leave it alone.</span>")
+		to_chat(M, SPAN_WARNING("You don't know what this thing could do if you mess with it. Better to leave it alone."))
 
 	bullet_act(obj/item/projectile/P)
 		bullet_ping(P)
@@ -341,7 +341,7 @@
 
 /obj/item/device/omega_array/proc/update_health()
 	if(health <= 0)
-		visible_message("<span class='warning'>[src] sparks and begins to violently shake!</span>")
+		visible_message(SPAN_WARNING("[src] sparks and begins to violently shake!"))
 		destroy()
 
 /obj/item/device/omega_array/proc/destroy()
@@ -409,11 +409,11 @@
 
 		switch(rand(1,3))
 			if(1)
-				visible_message("<span class='danger'>[M] is torn limb from limb by an unseen force!</span>","<span class='userdanger'>YOU ARE TORN LIMB FROM LIMB!</span>")
+				visible_message(SPAN_DANGER("[M] is torn limb from limb by an unseen force!"),"<span class='userdanger'>YOU ARE TORN LIMB FROM LIMB!</span>")
 				if(!M.stat) M.emote("scream")
 				M.gib()
 			if(2)
-				visible_message("<span class='danger'>[M] is burned alive by some unseen flame!</span>","<span class='userdanger'>YOU ARE ROASTED ALIVE!</span>")
+				visible_message(SPAN_DANGER("[M] is burned alive by some unseen flame!"),"<span class='userdanger'>YOU ARE ROASTED ALIVE!</span>")
 				M.adjust_fire_stacks(rand(6,11))
 				M.IgniteMob()
 				if(!M.stat) M.emote("scream")
@@ -463,7 +463,7 @@
 			spawn(40)
 				if(H)
 					to_chat(H, "________________________")
-					to_chat(H, "<span class='danger'><b>You are the [H.mind.assigned_role]!<b></span>")
+					to_chat(H, SPAN_DANGER("<b>You are the [H.mind.assigned_role]!<b>"))
 					to_chat(H, "It was just a regular day in the office when the higher up decided to send you in to this hot mess. If only you called in sick that day...")
 					to_chat(H, "The W-Y mercs were hired to protect some important science experiment, and W-Y expects you to keep them in line.")
 					to_chat(H, "These are hardened killers, and you write on paper for a living. It won't be easy, that's for damn sure.")
@@ -475,7 +475,7 @@
 			spawn(40)
 				if(H)
 					to_chat(H, "________________________")
-					to_chat(H, "<span class='danger'><b>You are the [H.mind.assigned_role]!<b></span>")
+					to_chat(H, SPAN_DANGER("<b>You are the [H.mind.assigned_role]!<b>"))
 					to_chat(H, "What the hell did you do to get assigned on this mission? Maybe someone is looking to bump you off for a promotion. Regardless...")
 					to_chat(H, "The marines need a leader to inspire them and lead them to victory. You'll settle for telling them which side of the gun the bullets come from.")
 					to_chat(H, "You are a vet, a real badass in your day, but now you're in the thick of it with the grunts. You're plenty sure they are going to die in droves.")
@@ -658,7 +658,7 @@
 		spawn(40)
 			if(H)
 				to_chat(H, "________________________")
-				to_chat(H, "<span class='danger'><b>You are the [H.mind.assigned_role]!<b></span>")
+				to_chat(H, SPAN_DANGER("<b>You are the [H.mind.assigned_role]!<b>"))
 				to_chat(H, "We have a new mission for you. The USCM is coming to investigate one of our blacksites, and we require your services.")
 				to_chat(H, "Make sure you keep the Colonial Marines from tampering with our equipment. It is very, very expensive, and will be hard to replace.")
 				to_chat(H, "As usual, you will be handsomely rewarded upon completion of this mission. Should you fail, we will deny our involvement.")
@@ -893,7 +893,7 @@
 		spawn(40)
 			if(H)
 				to_chat(H, "________________________")
-				to_chat(H, "<span class='danger'><b>You are the [H.mind.assigned_role]!<b></span>")
+				to_chat(H, SPAN_DANGER("<b>You are the [H.mind.assigned_role]!<b>"))
 				to_chat(H, "Gear up, maggot! You have been dropped off in this God-forsaken place to complete some wetworks for Uncle Sam! Not even your mother knows that you're here!")
 				to_chat(H, "Some W-Y mercs are camping out north of the colony, and they got some doo-hickie doomsday device they are planning to use. Make sure they don't!")
 				to_chat(H, "Wipe them out and destroy their tech! The [MAIN_SHIP_NAME] will maintain radio silence for the duration of the mission!")
@@ -1476,7 +1476,7 @@
 		processing_objects -= src
 
 	attack_hand(mob/M) //You dun goofed now, goofy.
-		to_chat(M, "<span class='danger'>The strange thing in your hand begins to move around! You suddenly get a very bad feeling about this!</span>")
+		to_chat(M, SPAN_DANGER("The strange thing in your hand begins to move around! You suddenly get a very bad feeling about this!"))
 		icon_state = "statuette2"
 		mouse_opacity = 0 //Can't be interacted with again.
 		shadow_wights = new
@@ -1533,7 +1533,7 @@
 				stored_blood -= 0.1
 		if(0.1 to 0.9)
 			if(prob(5))
-				visible_message("<span class='warning'>\icon[src] [src]'s eyes glow ruby red for a moment!</span>")
+				visible_message(SPAN_WARNING("\icon[src] [src]'s eyes glow ruby red for a moment!"))
 				stored_blood -= 0.1
 
 	//Check the shadow wights and auto-remove them if they get too far.
@@ -1570,7 +1570,7 @@
 
 		var/target = pick("chest","groin","head","l_arm","r_arm","r_leg","l_leg","l_hand","r_hand","l_foot","r_foot")
 		H.apply_damage(rand(5, 10), BRUTE, target)
-		H.visible_message("<span class='danger'>A stream of blood flies out of [H]!</span>","<span class='danger'>The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out!</span>")
+		H.visible_message(SPAN_DANGER("A stream of blood flies out of [H]!"),SPAN_DANGER("The skin on your [parse_zone(target)] feels like it's ripping apart, and a stream of blood flies out!"))
 		var/obj/effect/decal/cleanable/blood/splatter/animated/B = new(get_turf(H))
 		B.target_turf = pick(range(1, src))
 		B.blood_DNA = new
@@ -1650,4 +1650,4 @@
 			qdel(src,,animation_destruction_fade(src))
 
 /obj/effect/shadow_wight/Bump(atom/A)
-	to_chat(A, "<span class='warning'>You feel a chill run down your spine!</span>")
+	to_chat(A, SPAN_WARNING("You feel a chill run down your spine!"))

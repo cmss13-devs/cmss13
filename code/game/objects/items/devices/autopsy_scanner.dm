@@ -151,7 +151,7 @@
 			scan_data += "<br>"
 
 	for(var/mob/O in viewers(usr))
-		O.show_message("<span class='danger'>\the [src] rattles and prints out a sheet of paper.</span>", 1)
+		O.show_message(SPAN_DANGER("\the [src] rattles and prints out a sheet of paper."), 1)
 
 	sleep(10)
 
@@ -180,7 +180,7 @@
 		src.wdata = list()
 		src.chemtraces = list()
 		src.timeofdeath = null
-		to_chat(user, "<span class='danger'>A new patient has been registered.. Purging data for previous patient.</span>")
+		to_chat(user, SPAN_DANGER("A new patient has been registered.. Purging data for previous patient."))
 
 	src.timeofdeath = M.timeofdeath
 
@@ -192,7 +192,7 @@
 		to_chat(usr, "<b>You have to cut the limb open first!</b>")
 		return
 	for(var/mob/O in viewers(M))
-		O.show_message("<span class='danger'>[user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]</span>", 1)
+		O.show_message(SPAN_DANGER("[user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]"), 1)
 
 	src.add_data(S)
 

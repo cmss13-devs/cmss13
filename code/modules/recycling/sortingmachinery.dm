@@ -35,16 +35,16 @@
 						src.sortTag = O.currTag
 					playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 				else
-					to_chat(user, "<span class='warning'>The package is already labeled for [O.currTag].</span>")
+					to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
 			else
-				to_chat(user, "<span class='warning'>You need to set a destination first!</span>")
+				to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
 		else if(istype(W, /obj/item/tool/pen))
 			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 				if("Title")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_NAME_LEN))
 					if(!str || !length(str))
-						to_chat(usr, "<span class='warning'> Invalid text.</span>")
+						to_chat(usr, SPAN_WARNING(" Invalid text."))
 						return
 					user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
 					SPAN_NOTICE("You title \the [src]: \"[str]\""),\
@@ -58,7 +58,7 @@
 				if("Description")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_MESSAGE_LEN))
 					if(!str || !length(str))
-						to_chat(usr, "<span class='danger'>Invalid text.</span>")
+						to_chat(usr, SPAN_DANGER("Invalid text."))
 						return
 					if(!examtext && !nameset)
 						examtext = str
@@ -143,16 +143,16 @@
 						src.sortTag = O.currTag
 					playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 				else
-					to_chat(user, "<span class='warning'>The package is already labeled for [O.currTag].</span>")
+					to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
 			else
-				to_chat(user, "<span class='warning'>You need to set a destination first!</span>")
+				to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
 		else if(istype(W, /obj/item/tool/pen))
 			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
 				if("Title")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_NAME_LEN))
 					if(!str || !length(str))
-						to_chat(usr, "<span class='warning'> Invalid text.</span>")
+						to_chat(usr, SPAN_WARNING(" Invalid text."))
 						return
 					user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
 					SPAN_NOTICE("You title \the [src]: \"[str]\""),\
@@ -167,7 +167,7 @@
 				if("Description")
 					var/str = trim(copytext(sanitize(input(usr,"Label text?","Set label","")),1,MAX_MESSAGE_LEN))
 					if(!str || !length(str))
-						to_chat(usr, "<span class='danger'>Invalid text.</span>")
+						to_chat(usr, SPAN_DANGER("Invalid text."))
 						return
 					if(!examtext && !nameset)
 						examtext = str
@@ -279,7 +279,7 @@
 				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
 				"You hear someone taping paper around a large object.")
 			else if(src.amount < 3)
-				to_chat(user, "<span class='warning'>You need more paper.</span>")
+				to_chat(user, SPAN_WARNING("You need more paper."))
 		else if (istype (target, /obj/structure/closet))
 			var/obj/structure/closet/O = target
 			if (src.amount > 3 && !O.opened)
@@ -292,7 +292,7 @@
 				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
 				"You hear someone taping paper around a large object.")
 			else if(src.amount < 3)
-				to_chat(user, "<span class='warning'>You need more paper.</span>")
+				to_chat(user, SPAN_WARNING("You need more paper."))
 		else
 			to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
 		if (src.amount <= 0)

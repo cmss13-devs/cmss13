@@ -122,36 +122,36 @@
 				update_icon()
 				return 1
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return 0
 	..()
 	return 0
 
 /obj/machinery/hydro_floodlight/attack_hand(mob/user as mob)
 	if(ishuman(user))
-		to_chat(user, "<span class='warning'>Nothing happens. Looks like it's powered elsewhere.</span>")
+		to_chat(user, SPAN_WARNING("Nothing happens. Looks like it's powered elsewhere."))
 		return 0
 	else if(!is_lit)
-		to_chat(user, "<span class='warning'>Why bother? It's just some weird metal thing.</span>")
+		to_chat(user, SPAN_WARNING("Why bother? It's just some weird metal thing."))
 		return 0
 	else
 		if(damaged)
-			to_chat(user, "<span class='warning'>It's already damaged.</span>")
+			to_chat(user, SPAN_WARNING("It's already damaged."))
 			return 0
 		else
 			if(isXenoLarva(user))
 				return //Larvae can't do shit
 			if(user.get_active_hand())
-				to_chat(user, "<span class='warning'>You need your claws empty for this!</span>")
+				to_chat(user, SPAN_WARNING("You need your claws empty for this!"))
 				r_FAL
-			user.visible_message("<span class='danger'>[user] starts to slash and claw away at [src]!</span>",
-			"<span class='danger'>You start slashing and clawing at [src]!</span>")
+			user.visible_message(SPAN_DANGER("[user] starts to slash and claw away at [src]!"),
+			SPAN_DANGER("You start slashing and clawing at [src]!"))
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !damaged) //Not when it's already damaged.
 				if(!src) return 0
 				damaged = 1
 				SetLuminosity(0)
-				user.visible_message("<span class='danger'>[user] slashes up [src]!</span>",
-				"<span class='danger'>You slash up [src]!</span>")
+				user.visible_message(SPAN_DANGER("[user] slashes up [src]!"),
+				SPAN_DANGER("You slash up [src]!"))
 				playsound(src, 'sound/weapons/blade1.ogg', 25, 1)
 				update_icon()
 				return 0

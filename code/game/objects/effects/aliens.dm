@@ -79,7 +79,7 @@
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(!H.lying)
-			to_chat(H, "<span class='danger'>Your feet scald and burn! Argh!</span>")
+			to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 			H.emote("pain")
 			H.KnockDown(3)
 			var/datum/limb/affecting = H.get_limb("l_foot")
@@ -91,7 +91,7 @@
 			H.updatehealth()
 		else
 			H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
-			to_chat(H, "<span class='danger'>You are scalded by the burning acid!</span>")
+			to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
 /obj/effect/xenomorph/spray/process()
 	var/turf/T = loc
@@ -144,7 +144,7 @@
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
 		if(!H.lying)
-			to_chat(H, "<span class='danger'>Your feet scald and burn!</span>")
+			to_chat(H, SPAN_DANGER("Your feet scald and burn!"))
 			H.emote("pain")
 			H.KnockDown(0.1)
 			var/datum/limb/affecting = H.get_limb("l_foot")
@@ -156,7 +156,7 @@
 			H.updatehealth()
 		else
 			H.adjustFireLoss(acid_strength*rand(2, 5)) //This is ticking damage!
-			to_chat(H, "<span class='danger'>You are scalded by the hot acid!</span>")
+			to_chat(H, SPAN_DANGER("You are scalded by the hot acid!"))
 
 //Medium-strength acid
 /obj/effect/xenomorph/acid
@@ -199,7 +199,7 @@
 		qdel(src)
 		return
 	if(++ticks >= strength_t)
-		visible_message("<span class='xenodanger'>[acid_t] collapses under its own weight into a puddle of goop and undigested debris!</span>")
+		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		playsound(src, "acid_hit", 25)
 
 		if(istype(acid_t, /turf))
@@ -227,10 +227,10 @@
 		return
 
 	switch(strength_t - ticks)
-		if(6) visible_message("<span class='xenowarning'>\The [acid_t] is barely holding up against the acid!</span>")
-		if(4) visible_message("<span class='xenowarning'>\The [acid_t]\s structure is being melted by the acid!</span>")
-		if(2) visible_message("<span class='xenowarning'>\The [acid_t] is struggling to withstand the acid!</span>")
-		if(0 to 1) visible_message("<span class='xenowarning'>\The [acid_t] begins to crumble under the acid!</span>")
+		if(6) visible_message(SPAN_XENOWARNING("\The [acid_t] is barely holding up against the acid!"))
+		if(4) visible_message(SPAN_XENOWARNING("\The [acid_t]\s structure is being melted by the acid!"))
+		if(2) visible_message(SPAN_XENOWARNING("\The [acid_t] is struggling to withstand the acid!"))
+		if(0 to 1) visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
 
 	sleep(rand(200,300) * (acid_strength))
 	.()

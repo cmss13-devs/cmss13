@@ -56,7 +56,7 @@
 //			if(user:wear_suit:s_control)
 //				user:wear_suit.transfer_ai("AIFIXER","NINJASUIT",src,user)
 //			else
-//				to_chat(user, "<span class='danger'><b>ERROR</b>: \black Remote access channel disabled.</span>")
+//				to_chat(user, SPAN_DANGER("<b>ERROR</b>: \black Remote access channel disabled."))
 //			return
 		..()
 

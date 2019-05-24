@@ -38,7 +38,7 @@
 		var/mob/living/carbon/C = usr
 		C.toggle_throw_mode()
 	else
-		to_chat(usr, "<span class='danger'>This mob type cannot throw items.</span>")
+		to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
 
 
@@ -46,11 +46,11 @@
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(!C.get_active_hand())
-			to_chat(usr, "<span class='danger'>You have nothing to drop in your hand.</span>")
+			to_chat(usr, SPAN_DANGER("You have nothing to drop in your hand."))
 			return
 		C.drop_held_item()
 	else
-		to_chat(usr, "<span class='danger'>This mob type cannot drop items.</span>")
+		to_chat(usr, SPAN_DANGER("This mob type cannot drop items."))
 	return
 
 //This gets called when you press the delete button.
@@ -149,7 +149,7 @@
 			return
 		else if(mob.is_mob_restrained(0))
 			next_movement = world.time + 20 //to reduce the spam
-			to_chat(src, "<span class='warning'>You're restrained! You can't move!</span>")
+			to_chat(src, SPAN_WARNING("You're restrained! You can't move!"))
 			return
 		else if(!mob.resist_grab(TRUE))
 			return

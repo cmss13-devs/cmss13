@@ -33,7 +33,6 @@
 //sort of a legacy burn method for /electrocute, /shock, and the e_chair
 /mob/living/proc/burn_skin(burn_amount)
 	if(istype(src, /mob/living/carbon/human))
-		//to_world("DEBUG: burn_skin(), mutations=[mutations]")
 		if(mShock in src.mutations) //shockproof
 			return 0
 		if (COLD_RESISTANCE in src.mutations) //fireproof
@@ -74,7 +73,6 @@
 		if(actual < desired)
 			temperature = desired
 //	if(istype(src, /mob/living/carbon/human))
-//		to_world("[src] ~ [src.bodytemperature] ~ [temperature]")
 	return temperature
 
 
@@ -200,11 +198,11 @@
 	if(pulledby.grab_level)
 		if(prob(30/pulledby.grab_level))
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message("<span class='danger'>[src] has broken free of [pulledby]'s grip!</span>", null, null, 5)
+			visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 			pulledby.stop_pulling()
 			return 1
 		if(moving_resist && client) //we resisted by trying to move
-			visible_message("<span class='danger'>[src] struggles to break free of [pulledby]'s grip!</span>", null, null, 5)
+			visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), null, null, 5)
 			client.next_movement = world.time + (10*pulledby.grab_level) + client.move_delay
 	else
 		pulledby.stop_pulling()
@@ -273,7 +271,7 @@
 
 		if(L.pulledby && L.pulledby != src && L.is_mob_restrained())
 			if(!(world.time % 5))
-				to_chat(src, "<span class='warning'>[L] is restrained, you cannot push past.</span>")
+				to_chat(src, SPAN_WARNING("[L] is restrained, you cannot push past."))
 			now_pushing = 0
 			return
 
@@ -288,7 +286,7 @@
  				var/mob/P = L.pulling
  				if(P.is_mob_restrained())
  					if(!(world.time % 5))
- 						to_chat(src, "<span class='warning'>[L] is restraining [P], you cannot push past.</span>")
+ 						to_chat(src, SPAN_WARNING("[L] is restraining [P], you cannot push past."))
 					now_pushing = 0
 					return
 
@@ -296,7 +294,7 @@
 
 			if(HULK in L.mutations)
 				if(prob(70))
-					to_chat(usr, "<span class='danger'><B>You fail to push [L]'s fat ass out of the way.</B></span>")
+					to_chat(usr, SPAN_DANGER("<B>You fail to push [L]'s fat ass out of the way.</B>"))
 					now_pushing = 0
 					return
 			if(!(L.status_flags & CANPUSH))
@@ -439,26 +437,26 @@
 /mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1)
 	var/dat = ""
 	if(((CLUMSY in user.mutations) || user.getBrainLoss() >= 60) && prob(50))
-		to_chat(user, "<span class='warning'>You try to analyze the floor's vitals!</span>")
+		to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
 		for(var/mob/O in viewers(src, null))
-			O.show_message("<span class='warning'>[user] has analyzed the floor's vitals!</span>", 1)
+			O.show_message(SPAN_WARNING("[user] has analyzed the floor's vitals!"), 1)
 		user.show_message(SPAN_NOTICE("Health Analyzer results for The floor:\n\t Overall Status: Healthy"), 1)
 		user.show_message(SPAN_NOTICE("\t Damage Specifics: [0]-[0]-[0]-[0]"), 1)
 		user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
 		user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
 		return
 	if(!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 	if(!ignore_delay && user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-		to_chat(user, "<span class='warning'>You start fumbling around with [src]...</span>")
+		to_chat(user, SPAN_WARNING("You start fumbling around with [src]..."))
 		var/fduration = 60
 		if(user.mind.cm_skills.medical > 0)
 			fduration = 30
 		if(!do_after(user, fduration, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
 			return
 	if(isXeno(src))
-		to_chat(user, "<span class='warning'>[src] can't make sense of this creature.</span>")
+		to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
 		return
 	to_chat(user, "<span class='notice'>[user] has analyzed [src]'s vitals.")
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
@@ -469,7 +467,7 @@
 		user.show_message("\tType: <font color='blue'>Oxygen</font>-<font color='green'>Toxin</font>-<font color='#FFA500'>Burns</font>-<font color='red'>Brute</font>", 1)
 		user.show_message("\tDamage: <font color='blue'>?</font> - <font color='green'>?</font> - <font color='#FFA500'>?</font> - <font color='red'>?</font>")
 		user.show_message(SPAN_NOTICE("Body Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)"), 1)
-		user.show_message("<span class='danger'><b>Warning: Blood Level ERROR: --% --cl.\blue Type: ERROR</span>")
+		user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.\blue Type: ERROR"))
 		user.show_message(SPAN_NOTICE("Subject's pulse: <font color='red'>-- bpm.</font>"))
 		return
 
@@ -621,7 +619,7 @@
 				var/datum/reagent/R = A
 				reagents_in_body["[R.id]"] = R.volume
 				if(R.scannable)
-					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume >= R.overdose ? "<span class='warning'><b>OD: </b></span>" : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
+					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume >= R.overdose ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
 				else
 					unknown++
 			if(reagentdata.len)

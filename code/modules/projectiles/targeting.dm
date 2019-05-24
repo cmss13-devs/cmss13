@@ -40,9 +40,9 @@
 					L.NotTargeted(src)
 			qdel(target)
 			target = null
-			usr.visible_message("<span class='danger'><b>[usr] turns \the [src] on [M]!</b></span>")
+			usr.visible_message(SPAN_DANGER("<b>[usr] turns \the [src] on [M]!</b>"))
 		else
-			usr.visible_message("<span class='danger'><b>[usr] aims \a [src] at [M]!</b></span>")
+			usr.visible_message(SPAN_DANGER("<b>[usr] aims \a [src] at [M]!</b>"))
 		M.Targeted(src)
 
 //HE MOVED, SHOOT HIM!
@@ -132,7 +132,7 @@
 	if(!targeted_by) targeted_by = list()
 	targeted_by += I
 	I.lock_time = world.time + 20 //Target has 2 second to realize they're targeted and stop (or target the opponent).
-	to_chat(src, "<span class='highdanger'>You are being targeted! You have 2 seconds to stop any click or move actions.</span>")
+	to_chat(src, SPAN_HIGHDANGER("You are being targeted! You have 2 seconds to stop any click or move actions."))
 
 	if(targeted_by.len == 1)
 		spawn(0)
@@ -159,7 +159,7 @@
 			I.lower_aim()
 			return
 //		if(m_intent == MOVE_INTENT_RUN && T.client.target_can_move == 1 && T.client.target_can_run == 0)
-//			to_chat(src, "<span class='danger'>Your move intent is now set to walk, as your targeter permits it.</span>")  //Self explanitory.
+//			to_chat(src, SPAN_DANGER("Your move intent is now set to walk, as your targeter permits it."))  //Self explanitory.
 //			set_m_intent(MOVE_INTENT_WALK)
 
 		//Processing the aiming. Should be probably in separate object with process() but lasy.
@@ -266,10 +266,10 @@
 				if(target_can_move)
 					to_chat(M, "Your character may now <b>walk</b> at the discretion of their targeter.")
 					if(!target_can_run)
-						to_chat(M, "<span class='warning'>Your move intent is now set to walk, as your targeter permits it.</span>")
+						to_chat(M, SPAN_WARNING("Your move intent is now set to walk, as your targeter permits it."))
 						M.set_m_intent(MOVE_INTENT_WALK)
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they move.</span>")
+					to_chat(M, SPAN_DANGER("Your character will now be shot if they move."))
 
 /mob/proc/set_m_intent(var/intent)
 	if (intent != MOVE_INTENT_WALK && intent != MOVE_INTENT_RUN)
@@ -300,7 +300,7 @@
 				if(target_can_run)
 					to_chat(M, "Your character may now <b>run</b> at the discretion of their targeter.")
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they run.</span>")
+					to_chat(M, SPAN_DANGER("Your character will now be shot if they run."))
 
 /mob/proc/AllowTargetClick()
 
@@ -322,4 +322,4 @@
 				if(target_can_click)
 					to_chat(M, "Your character may now <b>use items</b> at the discretion of their targeter.")
 				else
-					to_chat(M, "<span class='danger'>Your character will now be shot if they use items.</span>")
+					to_chat(M, SPAN_DANGER("Your character will now be shot if they use items."))

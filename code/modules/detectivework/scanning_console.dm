@@ -76,7 +76,7 @@
 			to_chat(usr, SPAN_NOTICE("No match found."))
 		return 1
 	else
-		to_chat(usr, "<span class='warning'>No fingerprints detected on [card].</span>")
+		to_chat(usr, SPAN_WARNING("No fingerprints detected on [card]."))
 		return 0
 
 //Takes a list of forensic records, with key being reference to object, and updates internal database.

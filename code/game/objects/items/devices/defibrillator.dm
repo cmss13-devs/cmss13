@@ -20,7 +20,7 @@
 	origin_tech = "biotech=3"
 
 	suicide_act(mob/user)
-		viewers(user) << "<span class='danger'>[user] is putting the live paddles on \his chest! It looks like \he's trying to commit suicide.</span>"
+		viewers(user) << SPAN_DANGER("[user] is putting the live paddles on \his chest! It looks like \he's trying to commit suicide.")
 		return (FIRELOSS)
 
 /mob/living/carbon/human/proc/check_tod()
@@ -107,34 +107,34 @@
 	//job knowledge requirement
 	if(user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 		else
 			defib_heal_amt *= user.mind.cm_skills.medical*0.5 //more healing power when used by a doctor
 
 	if(!ishuman(H) || isYautja(H))
-		to_chat(user, "<span class='warning'>You can't defibrillate [H]. You don't even know where to put the paddles!</span>")
+		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
 		return
 	if(!ready)
-		to_chat(user, "<span class='warning'>Take [src]'s paddles out first.</span>")
+		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
 		return
 	if(dcell.charge <= charge_cost)
-		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Internal battery depleted. Cannot analyze nor administer shock.</span>")
+		user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Internal battery depleted. Cannot analyze nor administer shock."))
 		return
 	if(H.stat != DEAD)
-		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Vital signs detected. Aborting.</span>")
+		user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Vital signs detected. Aborting."))
 		return
 
 	if(!H.is_revivable())
-		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient's general condition does not allow reviving.</span>")
+		user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Patient's general condition does not allow reviving."))
 		return
 
 	if(H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring.</span>")
+		user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring."))
 		return
 
 	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
-		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient is braindead.</span>")
+		user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Patient is braindead."))
 		return
 
 	var/mob/dead/observer/G = H.get_ghost()
@@ -144,7 +144,7 @@
 		(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)</font></span>"
 	else if(!H.client)
 		//We couldn't find a suitable ghost, this means the person is not returning
-		user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient has a DNR.</span>")
+		user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Patient has a DNR."))
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
@@ -160,11 +160,11 @@
 		playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] shocks [H] with the paddles."),
 		SPAN_NOTICE("You shock [H] with the paddles."))
-		H.visible_message("<span class='danger'>[H]'s body convulses a bit.</span>")
+		H.visible_message(SPAN_DANGER("[H]'s body convulses a bit."))
 		defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 		if(H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring.</span>")
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Defibrillation failed: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring."))
 			return
 
 		var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
@@ -173,25 +173,25 @@
 
 		if(!H.is_revivable())
 			if(heart.is_broken())
-				user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised.</span>")
+				user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
 				return
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving.</span>")
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
 			return
 
 		if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient's brain has decayed too much.</span>")
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Patient's brain has decayed too much."))
 			return
 
 		if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: No soul detected, Attempting to revive...</span>")
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: No soul detected, Attempting to revive..."))
 
 		if(H.mind && !H.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
 			G = H.get_ghost()
 			if(istype(G))
-				user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Patient's soul has almost departed, please try again.</span>")
+				user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Defibrillation failed. Patient's soul has almost departed, please try again."))
 				return
 			//We couldn't find a suitable ghost, this means the person is not returning
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Patient has a DNR.</span>")
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Patient has a DNR."))
 			return
 
 
@@ -235,7 +235,7 @@
 			H.updatehealth() //One more time, so it doesn't show the target as dead on HUDs
 			to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		else
-			user.visible_message("<span class='warning'>\icon[src] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.</span>") //Freak case
+			user.visible_message(SPAN_WARNING("\icon[src] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
 	else
-		user.visible_message("<span class='warning'>[user] stops setting up the paddles on [H]'s chest</span>", \
-		"<span class='warning'>You stop setting up the paddles on [H]'s chest</span>")
+		user.visible_message(SPAN_WARNING("[user] stops setting up the paddles on [H]'s chest"), \
+		SPAN_WARNING("You stop setting up the paddles on [H]'s chest"))

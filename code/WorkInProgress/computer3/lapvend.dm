@@ -201,10 +201,10 @@
 /obj/machinery/lapvend/proc/scan_card(var/obj/item/card/I)
 	if (istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
-		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		var/datum/money_account/CH = get_account(C.associated_account_number)
 		if(!CH || isnull(CH) || !istype(CH))
-			to_chat(usr, "<span class='danger'>This card has no account data!</span>")
+			to_chat(usr, SPAN_DANGER("This card has no account data!"))
 			return
 		if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 			if(vendor_account)
@@ -348,7 +348,7 @@
 /obj/machinery/lapvend/proc/reimburse(var/obj/item/card/I)
 	if (istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
-		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		var/datum/money_account/CH = get_account(C.associated_account_number)
 		if(CH.security_level != 0) //If card requires pin authentication (ie seclevel 1 or 2)
 			if(vendor_account)

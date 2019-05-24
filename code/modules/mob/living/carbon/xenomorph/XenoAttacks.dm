@@ -12,7 +12,7 @@
 		else
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "punch")
-			visible_message("<span class='danger'>[S] [S.attacktext] [src]!</span>", null, null, 5)
+			visible_message(SPAN_DANGER("[S] [S.attacktext] [src]!"), null, null, 5)
 			var/damage = rand(S.melee_damage_lower, S.melee_damage_upper)
 			apply_damage(damage, BRUTE)
 			S.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
@@ -36,8 +36,8 @@
 				M.animation_attack_on(src)
 				M.flick_attack_overlay(src, "punch")
 				playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
-				visible_message("<span class='danger'>\The [M] bites \the [src].</span>", \
-				"<span class='danger'>You are bit by \the [M].</span>", null, 5)
+				visible_message(SPAN_DANGER("\The [M] bites \the [src]."), \
+				SPAN_DANGER("You are bit by \the [M]."), null, 5)
 				apply_damage(rand(1, 3), BRUTE)
 				updatehealth()
 
@@ -50,11 +50,11 @@
 
 		if("help")
 			if(stat == DEAD)
-				M.visible_message("<span class='warning'>\The [M] pokes \the [src], but nothing happens.</span>", \
-				"<span class='warning'>You poke \the [src], but nothing happens.</span>", null, 5)
+				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
+				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5)
 			else
-				M.visible_message("<span class='warning'>\The [M] pokes \the [src].</span>", \
-				"<span class='warning'>You poke \the [src].</span>", null, 5)
+				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."), \
+				SPAN_WARNING("You poke \the [src]."), null, 5)
 
 		if("grab")
 			if(M == src || anchored)
@@ -82,12 +82,12 @@
 				damage += attack.damage > 5 ? attack.damage : 0
 
 				playsound(loc, attack.attack_sound, 25, 1)
-				visible_message("<span class='danger'>[M] [pick(attack.attack_verb)]ed [src]!</span>", null, null, 5)
+				visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
 				apply_damage(damage, BRUTE)
 				updatehealth()
 			else
 				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message("<span class='danger'>[M] tried to [pick(attack.attack_verb)] [src]!</span>", null, null, 5)
+				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
 
 	return
 
@@ -99,8 +99,8 @@
 
 	if(src != M)
 		if(isXenoLarva(M)) //Larvas can't eat people
-			M.visible_message("<span class='danger'>[M] nudges its head against \the [src].</span>", \
-			"<span class='danger'>You nudge your head against \the [src].</span>")
+			M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
+			SPAN_DANGER("You nudge your head against \the [src]."))
 			return 0
 
 		switch(M.a_intent)
@@ -109,10 +109,10 @@
 				if(on_fire)
 					fire_stacks = max(fire_stacks - 1, 0)
 					playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-					M.visible_message("<span class='danger'>[M] tries to put out the fire on [src]!</span>", \
-						"<span class='warning'>You try to put out the fire on [src]!</span>", null, 5)
+					M.visible_message(SPAN_DANGER("[M] tries to put out the fire on [src]!"), \
+						SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 					if(fire_stacks <= 0)
-						M.visible_message("<span class='danger'>[M] has successfully extinguished the fire on [src]!</span>", \
+						M.visible_message(SPAN_DANGER("[M] has successfully extinguished the fire on [src]!"), \
 							SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 						ExtinguishMob()
 					return 1
@@ -127,15 +127,15 @@
 				if(Adjacent(M)) //Logic!
 					M.start_pulling(src)
 
-					M.visible_message("<span class='warning'>[M] grabs \the [src]!</span>", \
-					"<span class='warning'>You grab \the [src]!</span>", null, 5)
+					M.visible_message(SPAN_WARNING("[M] grabs \the [src]!"), \
+					SPAN_WARNING("You grab \the [src]!"), null, 5)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 			if("hurt")//Can't slash other xenos for now. SORRY  // You can now! --spookydonut
 				M.animation_attack_on(src)
 				if(hivenumber == M.hivenumber)
-					M.visible_message("<span class='warning'>\The [M] nibbles \the [src].</span>", \
-					"<span class='warning'>You nibble \the [src].</span>", null, 5)
+					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \
+					SPAN_WARNING("You nibble \the [src]."), null, 5)
 					return 1
 				else
 					// copypasted from attack_alien.dm
@@ -149,12 +149,12 @@
 					//Somehow we will deal no damage on this attack
 					if(!damage)
 						playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-						M.visible_message("<span class='danger'>\The [M] lunges at [src]!</span>", \
-						"<span class='danger'>You lunge at [src]!</span>", null, 5)
+						M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+						SPAN_DANGER("You lunge at [src]!"), null, 5)
 						return 0
 
-					M.visible_message("<span class='danger'>\The [M] slashes [src]!</span>", \
-					"<span class='danger'>You slash [src]!</span>", null, 5)
+					M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
+					SPAN_DANGER("You slash [src]!"), null, 5)
 					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [M.name] ([M.ckey])</font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [src.name] ([src.ckey])</font>")
 					log_attack("[M.name] ([M.ckey]) slashed [src.name] ([src.ckey])")

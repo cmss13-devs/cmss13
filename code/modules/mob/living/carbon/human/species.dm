@@ -331,11 +331,11 @@ var/toggled_sec_HUD = 0
 	if(!toggled_med_HUD)
 		toggled_med_HUD = 1
 		H.add_hud_to(src)
-		to_chat(src, "<span class='info'><B>Enabled</B></span>")
+		to_chat(src, SPAN_INFO("<B>Enabled</B>"))
 	else
 		toggled_med_HUD = 0
 		H.remove_hud_from(src)
-		to_chat(src, "<span class='info'><B>Disabled</B></span>")
+		to_chat(src, SPAN_INFO("<B>Disabled</B>"))
 
 /datum/species/synthetic/verb/toggle_synthHUD2()
 	set category = "Synthetic"
@@ -347,11 +347,11 @@ var/toggled_sec_HUD = 0
 	if(!toggled_sec_HUD)
 		toggled_sec_HUD = 1
 		H.add_hud_to(src)
-		to_chat(src, "<span class='info'><B>Enabled</B></span>")
+		to_chat(src, SPAN_INFO("<B>Enabled</B>"))
 	else
 		toggled_sec_HUD = 0
 		H.remove_hud_from(src)
-		to_chat(src, "<span class='info'><B>Disabled</B></span>")
+		to_chat(src, SPAN_INFO("<B>Disabled</B>"))
 
 /datum/species/synthetic/second_gen_synthetic
 	name = "Second Generation Synthetic"
@@ -458,10 +458,10 @@ var/toggled_sec_HUD = 0
 	if(!H.regenZ) return  //Also in each check, in case they are hit with the stuff to stop the regenerating during timers.
 	sleep(5)
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		to_chat(H, "<span class='xenowarning'> You fall... but your body is slowly regenerating itself.</span>")
+		to_chat(H, SPAN_XENOWARNING(" You fall... but your body is slowly regenerating itself."))
 	sleep(1200)
 	if(H && H.loc && H.stat == DEAD && H.regenZ)
-		to_chat(H, "<span class='xenowarning'> Your body is half regenerated...</span>")
+		to_chat(H, SPAN_XENOWARNING(" Your body is half regenerated..."))
 	sleep(1200)
 
 	if(H && H.loc && H.stat == DEAD && H.regenZ)

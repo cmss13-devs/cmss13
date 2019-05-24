@@ -211,7 +211,7 @@
 			if(applicant)
 				candidates += applicant
 				drafted.Remove(applicant)
-				to_world("<span class='danger'>[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.</span>")
+				to_world(SPAN_DANGER("[applicant.key] was force-drafted as [roletext], because there aren't enough candidates."))
 				log_debug("[applicant.key] was force-drafted as [roletext], because there aren't enough candidates.")
 
 		else //Not enough scrubs, ABORT ABORT ABORT

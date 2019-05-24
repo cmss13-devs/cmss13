@@ -152,7 +152,7 @@
 		switch(sensor_mode)
 			if(0)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("<span class='danger'>[user] disables [src.loc]'s remote sensing equipment.</span>", 1)
+					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), 1)
 			if(1)
 				for(var/mob/V in viewers(usr, 1))
 					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", 1)
@@ -195,7 +195,7 @@
 		flags_heat_protection = flags_armor_protection
 		update_clothing_icon()
 
-	else to_chat(usr, "<span class='warning'>You cannot roll down the uniform!</span>")
+	else to_chat(usr, SPAN_WARNING("You cannot roll down the uniform!"))
 
 //proper proc to remove the uniform's tie (user optional)
 /obj/item/clothing/under/proc/remove_accessory(mob/user)

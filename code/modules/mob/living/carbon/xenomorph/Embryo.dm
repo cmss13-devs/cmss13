@@ -100,14 +100,14 @@
 	switch(stage)
 		if(2)
 			if(prob(2))
-				var/message = "<span class='warning'>[pick("Your chest hurts a little bit", "Your stomach hurts")].</span>"
+				var/message = SPAN_WARNING("[pick("Your chest hurts a little bit", "Your stomach hurts")].")
 				to_chat(affected_mob, message)
 		if(3)
 			if(prob(2))
-				var/message = "<span class='warning'>[pick("Your throat feels sore", "Mucous runs down the back of your throat")].</span>"
+				var/message = SPAN_WARNING("[pick("Your throat feels sore", "Mucous runs down the back of your throat")].")
 				to_chat(affected_mob, message)
 			else if(prob(1))
-				to_chat(affected_mob, "<span class='warning'>Your muscles ache.</span>")
+				to_chat(affected_mob, SPAN_WARNING("Your muscles ache."))
 				if(prob(20))
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
@@ -115,13 +115,14 @@
 		if(4)
 			if(prob(1))
 				if(affected_mob.knocked_out < 1)
-					affected_mob.visible_message("<span class='danger'>\The [affected_mob] starts shaking uncontrollably!</span>", \
-												 "<span class='danger'>You start shaking uncontrollably!</span>")
+					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
+												 SPAN_DANGER("You start shaking uncontrollably!"))
 					affected_mob.KnockOut(10)
 					affected_mob.make_jittery(105)
 					affected_mob.take_limb_damage(1)
 			if(prob(2))
-				var/message = "<span class='warning'>[pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")].</span>"
+				var/message = pick("Your chest hurts badly", "It becomes difficult to breathe", "Your heart starts beating rapidly, and each beat is painful")
+				message = SPAN_WARNING("[message].")
 				to_chat(affected_mob, message)
 		if(5)
 			become_larva()
@@ -173,7 +174,7 @@
 		if(new_xeno.client)
 			new_xeno.client.change_view(world.view)
 
-		to_chat(new_xeno, "<span class='xenoannounce'>You are a xenomorph larva inside a host! Move to burst out of it!</span>")
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
 		new_xeno << sound('sound/effects/xeno_newlarva.ogg')
@@ -184,11 +185,11 @@
 	set waitfor = 0
 	if(victim.chestburst || loc != victim) return
 	victim.chestburst = 1
-	to_chat(src, "<span class='danger'>You start bursting out of [victim]'s chest!</span>")
+	to_chat(src, SPAN_DANGER("You start bursting out of [victim]'s chest!"))
 	if(victim.knocked_out < 1)
 		victim.KnockOut(20)
-	victim.visible_message("<span class='danger'>\The [victim] starts shaking uncontrollably!</span>", \
-								 "<span class='danger'>You feel something ripping up your insides!</span>")
+	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
+								 SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
 	sleep(30)
 	if(!victim || !victim.loc) return//host could've been deleted, or we could've been removed from host.
@@ -220,7 +221,7 @@
 		burstcount++
 
 		if((!L.key || !L.client) && loc && loc.z == 1 && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
-			L.visible_message("<span class='xenodanger'>[L] quickly burrows into the ground.</span>")
+			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 			round_statistics.total_xenos_created-- // keep stats sane
 			hive.stored_larva++
 			qdel(L)

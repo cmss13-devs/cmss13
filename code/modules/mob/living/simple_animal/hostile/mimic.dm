@@ -108,11 +108,11 @@
 		if(istype(L))
 			if(prob(15))
 				L.KnockDown(2)
-				L.visible_message("<span class='danger'>[src] knocks down [L]!</span>")
+				L.visible_message(SPAN_DANGER("[src] knocks down [L]!"))
 
 /mob/living/simple_animal/hostile/mimic/crate/proc/trigger()
 	if(!attempt_open)
-		visible_message("<span class='warning'>\icon[src] [src] starts to move!</span>")
+		visible_message(SPAN_WARNING("\icon[src] [src] starts to move!"))
 		attempt_open = 1
 
 //
@@ -187,4 +187,4 @@ var/global/list/protected_objects = list(/obj/structure/table, /obj/structure/ca
 		if(istype(L))
 			if(prob(15))
 				L.KnockDown(1)
-				L.visible_message("<span class='danger'>\the [src] knocks down \the [L]!</span>")
+				L.visible_message(SPAN_DANGER("\the [src] knocks down \the [L]!"))

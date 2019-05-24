@@ -85,7 +85,7 @@
 
 	//repair a bit of damage
 	if(prob(1))
-		src.visible_message("<span class='danger'>\icon[src] [src] shudders and shakes as some of it's damaged systems come back online.</span>")
+		src.visible_message(SPAN_DANGER("\icon[src] [src] shudders and shakes as some of it's damaged systems come back online."))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()
@@ -103,7 +103,7 @@
 			src.visible_message(SPAN_NOTICE("\icon[src] [src] retracts several targetting vanes, and dulls it's running lights."))
 			hostile_drone = 0
 		else
-			src.visible_message("<span class='danger'>\icon[src] [src] suddenly lights up, and additional targetting vanes slide into place.</span>")
+			src.visible_message(SPAN_DANGER("\icon[src] [src] suddenly lights up, and additional targetting vanes slide into place."))
 			hostile_drone = 1
 
 	if(health / maxHealth > 0.9)
@@ -132,9 +132,9 @@
 
 	if(exploding && prob(20))
 		if(prob(50))
-			src.visible_message("<span class='danger'>\icon[src] [src] begins to spark and shake violenty!</span>")
+			src.visible_message(SPAN_DANGER("\icon[src] [src] begins to spark and shake violenty!"))
 		else
-			src.visible_message("<span class='danger'>\icon[src] [src] sparks and shakes like it's about to explode!</span>")
+			src.visible_message(SPAN_DANGER("\icon[src] [src] sparks and shakes like it's about to explode!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, src)
 		s.start()

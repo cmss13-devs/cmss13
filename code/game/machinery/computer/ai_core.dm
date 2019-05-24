@@ -65,7 +65,7 @@
 			if(istype(P, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = P
 				if (C.get_amount() < 5)
-					to_chat(user, "<span class='warning'>You need five coils of wire to add them to the frame.</span>")
+					to_chat(user, SPAN_WARNING("You need five coils of wire to add them to the frame."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to add cables to the frame."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -90,7 +90,7 @@
 			if(istype(P, /obj/item/stack/sheet/glass/reinforced))
 				var/obj/item/stack/sheet/glass/reinforced/RG = P
 				if (RG.get_amount() < 2)
-					to_chat(user, "<span class='warning'>You need two sheets of glass to put in the glass panel.</span>")
+					to_chat(user, SPAN_WARNING("You need two sheets of glass to put in the glass panel."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to put in the glass panel."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -102,14 +102,14 @@
 
 			if(istype(P, /obj/item/device/mmi))
 				if(!P:brainmob)
-					to_chat(user, "<span class='danger'>Sticking an empty [P] into the frame would sort of defeat the purpose.</span>")
+					to_chat(user, SPAN_DANGER("Sticking an empty [P] into the frame would sort of defeat the purpose."))
 					return
 				if(P:brainmob.stat == 2)
-					to_chat(user, "<span class='danger'>Sticking a dead [P] into the frame would sort of defeat the purpose.</span>")
+					to_chat(user, SPAN_DANGER("Sticking a dead [P] into the frame would sort of defeat the purpose."))
 					return
 
 				if(jobban_isbanned(P:brainmob, "AI"))
-					to_chat(user, "<span class='danger'>This [P] does not seem to fit.</span>")
+					to_chat(user, SPAN_DANGER("This [P] does not seem to fit."))
 					return
 
 				if(user.drop_held_item())
@@ -173,7 +173,7 @@ That prevents a few funky behaviors.
 					if("AICARD")
 						var/obj/item/device/aicard/C = src
 						if(C.contents.len)//If there is an AI on card.
-							to_chat(U, "<span class='warning'><b>Transfer failed</b>: \black Existing AI found on this terminal. Remove existing AI to install a new one.</span>")
+							to_chat(U, SPAN_WARNING("<b>Transfer failed</b>: \black Existing AI found on this terminal. Remove existing AI to install a new one."))
 						else
 							new /obj/structure/AIcore/deactivated(T.loc)//Spawns a deactivated terminal at AI location.
 							T.aiRestorePowerRoutine = 0//So the AI initially has power.
@@ -244,11 +244,11 @@ That prevents a few funky behaviors.
 								T.occupant.cancel_camera()
 								T.occupant = null
 							else if (C.contents.len)
-								to_chat(U, "<span class='warning'><b>ERROR</b>: \black Artificial intelligence detected on terminal.</span>")
+								to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black Artificial intelligence detected on terminal."))
 							else if (T.active)
-								to_chat(U, "<span class='warning'><b>ERROR</b>: \black Reconstruction in progress.</span>")
+								to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black Reconstruction in progress."))
 							else if (!T.occupant)
-								to_chat(U, "<span class='warning'><b>ERROR</b>: \black Unable to locate artificial intelligence.</span>")
+								to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black Unable to locate artificial intelligence."))
 	else
-		to_chat(U, "<span class='warning'><b>ERROR</b>: \black AI flush is in progress, cannot execute transfer protocol.</span>")
+		to_chat(U, SPAN_WARNING("<b>ERROR</b>: \black AI flush is in progress, cannot execute transfer protocol."))
 	return

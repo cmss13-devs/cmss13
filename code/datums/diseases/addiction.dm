@@ -22,8 +22,6 @@
 /datum/disease/ultrazine_addiction/stage_act()
 	..()
 
-	//to_world("stage: [stage], addiction_progression: [addiction_progression]")
-
 	//withdrawal process
 	if(affected_mob.reagents.has_reagent("ultrazine"))
 		withdrawal_progression = 0

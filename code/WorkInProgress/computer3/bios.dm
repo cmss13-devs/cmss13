@@ -29,10 +29,10 @@
 		else
 			if(program.human_controls)
 				if(!ishuman(user))
-					to_chat(user, "<span class='danger'>Your body can't work the controls!</span>")
+					to_chat(user, SPAN_DANGER("Your body can't work the controls!"))
 					return 0
 				if(user.is_mob_restrained())
-					to_chat(user, "<span class='danger'>You need a free hand!</span>")
+					to_chat(user, SPAN_DANGER("You need a free hand!"))
 					return 0
 
 		add_fingerprint(user)
@@ -104,7 +104,7 @@
 		switch(errorcode)
 			if(PROG_CRASH)
 				if(usr)
-					to_chat(usr, "<span class='danger'>The program crashed!</span>")
+					to_chat(usr, SPAN_DANGER("The program crashed!"))
 					usr << browse(null,"\ref[src]")
 					Reset()
 
@@ -137,7 +137,7 @@
 
 			else
 				if(usr)
-					to_chat(usr, "<span class='danger'>The program crashed!</span>")
+					to_chat(usr, SPAN_DANGER("The program crashed!"))
 					usr << browse(null,"\ref[src]")
 					testing("computer/Crash() - unknown error code [errorcode]")
 					Reset()

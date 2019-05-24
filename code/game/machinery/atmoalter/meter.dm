@@ -72,7 +72,7 @@
 		t += SPAN_NOTICE("<B>You are too far away to read it.</B>")
 
 	else if(stat & (NOPOWER|BROKEN))
-		t += "<span class='danger'><B>The display is off.</B></span>"
+		t += SPAN_DANGER("<B>The display is off.</B>")
 
 	else if(target)
 		if(target.return_pressure())

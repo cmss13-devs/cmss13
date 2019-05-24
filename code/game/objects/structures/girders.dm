@@ -43,10 +43,10 @@
 		if(istype(W, /obj/item/tool/wrench))
 			if(!anchored)
 				if(istype(get_area(src.loc),/area/shuttle))
-					to_chat(user, "<span class='warning'>No. This area is needed for the dropships and personnel.</span>")
+					to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
 					return
 				if(!istype(loc, /turf/open/floor))
-					to_chat(user, "<span class='warning'>You can't secure that here, it needs sufficiently solid ground beneath it!</span>")
+					to_chat(user, SPAN_WARNING("You can't secure that here, it needs sufficiently solid ground beneath it!"))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" Now securing the girder"))
@@ -101,7 +101,7 @@
 
 		else if(istype(W, /obj/item/stack/sheet) && buildctr %2 == 0)
 			if(istype(get_area(src.loc),/area/shuttle))
-				to_chat(user, "<span class='warning'>No. This area is needed for the dropships and personnel.</span>")
+				to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
 				return
 
 			var/old_buildctr = buildctr
@@ -258,14 +258,14 @@
 
 /obj/structure/girder/attack_hand(mob/user as mob)
 	if (HULK in user.mutations)
-		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
+		visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
 		dismantle()
 		return
 	return ..()
 
 /obj/structure/girder/attack_animal(mob/living/simple_animal/user)
 	if(user.wall_smash)
-		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
+		visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
 		dismantle()
 		return
 	return ..()

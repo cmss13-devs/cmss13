@@ -437,9 +437,7 @@ var/const/INGEST = 2
 		SetViruses(R, data) // Includes setting data
 
 		//debug
-		//to_world("Adding data")
 		//for(var/D in R.data)
-		//	to_world("Container data: [D] = [R.data[D]]")
 		//debug
 		update_total()
 		my_atom.on_reagent_change()
@@ -529,13 +527,11 @@ var/const/INGEST = 2
 /datum/reagents/proc/get_data(var/reagent_id)
 	for(var/datum/reagent/D in reagent_list)
 		if(D.id == reagent_id)
-			//to_world("proffering a data-carrying reagent ([reagent_id])")
 			return D.data
 
 /datum/reagents/proc/set_data(var/reagent_id, var/new_data)
 	for(var/datum/reagent/D in reagent_list)
 		if(D.id == reagent_id)
-			//to_world("reagent data set ([reagent_id])")
 			D.data = new_data
 
 

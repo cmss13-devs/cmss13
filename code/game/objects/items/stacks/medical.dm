@@ -12,31 +12,31 @@
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(!istype(M))
-		to_chat(user, "<span class='danger'>\The [src] cannot be applied to [M]!</span>")
+		to_chat(user, SPAN_DANGER("\The [src] cannot be applied to [M]!"))
 		return 1
 
 	if(!ishuman(user) && !isrobot(user))
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return 1
 
 	var/mob/living/carbon/human/H = M
 	var/datum/limb/affecting = H.get_limb(user.zone_selected)
 
 	if(!affecting)
-		to_chat(user, "<span class='warning'>[H] has no [parse_zone(user.zone_selected)]!</span>")
+		to_chat(user, SPAN_WARNING("[H] has no [parse_zone(user.zone_selected)]!"))
 		return 1
 
 	if(affecting.display_name == "head")
 		if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
-			to_chat(user, "<span class='warning'>You can't apply [src] through [H.head]!</span>")
+			to_chat(user, SPAN_WARNING("You can't apply [src] through [H.head]!"))
 			return 1
 	else
 		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
-			to_chat(user, "<span class='warning'>You can't apply [src] through [H.wear_suit]!</span>")
+			to_chat(user, SPAN_WARNING("You can't apply [src] through [H.wear_suit]!"))
 			return 1
 
 	if(affecting.status & LIMB_ROBOT)
-		to_chat(user, "<span class='warning'>This isn't useful at all on a robotic limb.</span>")
+		to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
 		return 1
 
 	H.UpdateDamageIcon()
@@ -65,7 +65,7 @@
 
 		if(affecting.surgery_open_stage == 0)
 			if(!affecting.bandage())
-				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been bandaged.</span>")
+				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been bandaged."))
 				return 1
 			else
 				for (var/datum/wound/W in affecting.wounds)
@@ -114,7 +114,7 @@
 
 		if(affecting.surgery_open_stage == 0)
 			if(!affecting.salve())
-				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been salved.</span>")
+				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
 				return 1
 			else
 				user.visible_message(SPAN_NOTICE("[user] salves wounds on [M]'s [affecting.display_name]."),
@@ -161,7 +161,7 @@
 			var/disinfected = affecting.disinfect()
 
 			if(!(bandaged || disinfected))
-				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been treated.</span>")
+				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been treated."))
 				return 1
 			else
 				for(var/datum/wound/W in affecting.wounds)
@@ -267,28 +267,28 @@
 		var/limb = affecting.display_name
 
 		if(!(affecting.name in list("l_arm", "r_arm", "l_leg", "r_leg", "r_hand", "l_hand", "r_foot", "l_foot", "chest", "groin", "head")))
-			to_chat(user, "<span class='warning'>You can't apply a splint there!</span>")
+			to_chat(user, SPAN_WARNING("You can't apply a splint there!"))
 			return
 
 		if(affecting.status & LIMB_DESTROYED)
-			var/message = "<span class='warning'>[user == M ? "You don't" : "[M] doesn't"] have \a [limb]!</span>"
+			var/message = SPAN_WARNING("[user == M ? "You don't" : "[M] doesn't"] have \a [limb]!")
 			to_chat(user, message)
 			return
 
 		if(affecting.status & LIMB_SPLINTED)
 			var/message = "[user == M ? "Your" : "[M]'s"]"
-			to_chat(user, "<span class='warning'>[message] [limb] is already splinted!</span>")
+			to_chat(user, SPAN_WARNING("[message] [limb] is already splinted!"))
 			return
 
 		if(M != user)
-			user.visible_message("<span class='warning'>[user] starts to apply [src] to [M]'s [limb].</span>",
+			user.visible_message(SPAN_WARNING("[user] starts to apply [src] to [M]'s [limb]."),
 			SPAN_NOTICE("You start to apply [src] to [M]'s [limb], hold still."))
 		else
 			if((!user.hand && affecting.name in list("r_arm", "r_hand")) || (user.hand && affecting.name in list("l_arm", "l_hand")))
 				to_chat(user, "<span class='warning'>You can't apply a splint to the \
 					[affecting.name == "r_hand"||affecting.name == "l_hand" ? "hand":"arm"] you're using!</span>")
 				return
-			user.visible_message("<span class='warning'>[user] starts to apply [src] to their [limb].</span>",
+			user.visible_message(SPAN_WARNING("[user] starts to apply [src] to their [limb]."),
 			SPAN_NOTICE("You start to apply [src] to your [limb], hold still."))
 
 		if(affecting.apply_splints(src, user, M)) // Referenced in external organ helpers.

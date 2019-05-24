@@ -429,16 +429,13 @@
 
 		var/location = get_turf(holder.my_atom)
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution violently bubbles!</span>")
+			to_chat(M, SPAN_WARNING("The solution violently bubbles!"))
 
 		location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution spews out foam!</span>")
-
-		//to_world("Holder volume is [holder.total_volume]")
+			to_chat(M, SPAN_WARNING("The solution spews out foam!"))
 		//for(var/datum/reagent/R in holder.reagent_list)
-		//	to_world("[R.name] = [R.volume]")
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 0)
@@ -458,7 +455,7 @@
 		var/location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
+			to_chat(M, SPAN_WARNING("The solution spews out a metalic foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 1)
@@ -477,7 +474,7 @@
 		var/location = get_turf(holder.my_atom)
 
 		for(var/mob/M in viewers(5, location))
-			to_chat(M, "<span class='warning'>The solution spews out a metalic foam!</span>")
+			to_chat(M, SPAN_WARNING("The solution spews out a metalic foam!"))
 
 		var/datum/effect_system/foam_spread/s = new()
 		s.set_up(created_volume, location, holder, 2)

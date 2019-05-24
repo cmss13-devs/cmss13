@@ -67,7 +67,7 @@
 		if (W) W.loc = src.loc
 	else if(istype(W, /obj/item/card/id))
 		if(src.broken)
-			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
+			to_chat(user, SPAN_DANGER("It appears to be broken."))
 			return
 		var/obj/item/card/id/I = W
 		if(!I || !I.registered_name)	return
@@ -81,7 +81,7 @@
 				src.registered_name = I.registered_name
 				src.desc = "Owned by [I.registered_name]."
 		else
-			to_chat(user, "<span class='danger'>Access Denied</span>")
+			to_chat(user, SPAN_DANGER("Access Denied"))
 	else if(istype(W, /obj/item/card/emag))
 		if(broken) return
 		broken = 1
@@ -89,7 +89,7 @@
 		desc = "It appears to be broken."
 		icon_state = src.icon_broken
 	else
-		to_chat(user, "<span class='danger'>Access Denied</span>")
+		to_chat(user, SPAN_DANGER("Access Denied"))
 	return
 
 /obj/structure/closet/secure_closet/personal/verb/reset()
@@ -101,9 +101,9 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		if (src.locked || !src.registered_name)
-			to_chat(usr, "<span class='danger'>You need to unlock it first.</span>")
+			to_chat(usr, SPAN_DANGER("You need to unlock it first."))
 		else if (src.broken)
-			to_chat(usr, "<span class='danger'>It appears to be broken.</span>")
+			to_chat(usr, SPAN_DANGER("It appears to be broken."))
 		else
 			if (src.opened)
 				if(!src.close())

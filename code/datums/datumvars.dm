@@ -7,7 +7,7 @@ client
 		set name = "View Variables"
 
 		if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
-			to_chat(usr, "<span class='danger'>You need to be a moderator or higher to access this.</span>")
+			to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
 			return
 
 		if(!D)	return
@@ -17,11 +17,11 @@ client
 
 		//Sort of a temporary solution for right now.
 		if(istype(D,/datum/admins) && !(ishost(usr))) //Prevents non-hosts from changing their own permissions.
-			to_chat(usr, "<span class='warning'>You need host permission to access this.</span>")
+			to_chat(usr, SPAN_WARNING("You need host permission to access this."))
 			return
 
 		if((istype(D,/datum/ammo) || istype(D,/datum/caste_datum) || istype(D,/mob/living/carbon/Xenomorph/Predalien)) && !(usr.client.admin_holder.rights & R_DEBUG))
-			to_chat(usr, "<span class='warning'>You need debugging permission to access this.</span>")
+			to_chat(usr, SPAN_WARNING("You need debugging permission to access this."))
 			return
 
 		if(istype(D, /atom))

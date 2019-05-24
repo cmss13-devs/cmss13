@@ -46,8 +46,8 @@
 
 /obj/machinery/optable/attack_paw(mob/user as mob)
 	if ((HULK in usr.mutations))
-		usr << text(SPAN_NOTICE("You destroy the operating table."))
-		visible_message("<span class='danger'>[usr] destroys the operating table!</span>")
+		to_chat(user, SPAN_NOTICE("You destroy the operating table."))
+		visible_message(SPAN_DANGER("[usr] destroys the operating table!"))
 		src.density = 0
 		qdel(src)
 	if (!( locate(/obj/machinery/optable, user.loc) ))
@@ -66,8 +66,8 @@
 
 /obj/machinery/optable/attack_hand(mob/living/user)
 	if (HULK in usr.mutations)
-		usr << text(SPAN_NOTICE("You destroy the table."))
-		visible_message("<span class='danger'>[usr] destroys the operating table!</span>")
+		to_chat(user, SPAN_NOTICE("You destroy the table."))
+		visible_message(SPAN_DANGER("[usr] destroys the operating table!"))
 		src.density = 0
 		qdel(src)
 		return
@@ -86,28 +86,28 @@
 	if(H.buckled) return
 	if(user.stat) return
 	if(H != victim)
-		to_chat(user, "<span class='warning'>Lay the patient on the table first!</span>")
+		to_chat(user, SPAN_WARNING("Lay the patient on the table first!"))
 		return
 	if(!anes_tank)
-		to_chat(user, "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>")
+		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
 	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
 	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 		if(H.buckled) return
 		if(H != victim)
-			to_chat(user, "<span class='warning'>The patient must remain on the table!</span>")
+			to_chat(user, SPAN_WARNING("The patient must remain on the table!"))
 			return
 		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
 		return
 	if(!anes_tank)
-		to_chat(user, "<span class='warning'>There is no anesthetic tank connected to the table, load one first.</span>")
+		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
 	if(H.wear_mask && !H.drop_inv_item_on_ground(H.wear_mask))
-		to_chat(user, "<span class='danger'>You can't remove their mask!</span>")
+		to_chat(user, SPAN_DANGER("You can't remove their mask!"))
 		return
 	var/obj/item/clothing/mask/breath/medical/B = new()
 	if(!H.equip_if_possible(B, WEAR_FACE))
-		to_chat(user, "<span class='danger'>You can't fit the gas mask over their face!</span>")
+		to_chat(user, SPAN_DANGER("You can't fit the gas mask over their face!"))
 		qdel(B)
 		return
 	H.internal = anes_tank
@@ -201,13 +201,13 @@
 	if (istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(victim && victim != G.grabbed_thing)
-			to_chat(user, "<span class='warning'>The table is already occupied!</span>")
+			to_chat(user, SPAN_WARNING("The table is already occupied!"))
 			return
 		var/mob/living/carbon/M
 		if(iscarbon(G.grabbed_thing))
 			M = G.grabbed_thing
 			if(M.buckled)
-				to_chat(user, "<span class='warning'>Unbuckle first!</span>")
+				to_chat(user, SPAN_WARNING("Unbuckle first!"))
 				return
 		else if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
 			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing

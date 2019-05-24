@@ -403,12 +403,12 @@ var/list/wood_icons = list("wood", "wood-broken")
 
 	if(istype(C, /obj/item/tool/crowbar) && (!(is_plating())))
 		if(broken || burnt)
-			to_chat(user, "<span class='warning'>You remove the broken plating.</span>")
+			to_chat(user, SPAN_WARNING("You remove the broken plating."))
 		else
 			if(is_wood_floor())
-				to_chat(user, "<span class='warning'>You forcefully pry off the planks, destroying them in the process.</span>")
+				to_chat(user, SPAN_WARNING("You forcefully pry off the planks, destroying them in the process."))
 			else
-				to_chat(user, "<span class='warning'>You remove the [floor_tile.name].</span>")
+				to_chat(user, SPAN_WARNING("You remove the [floor_tile.name]."))
 				new floor_tile.type(src)
 
 		make_plating()
@@ -420,7 +420,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 			return
 		else
 			if(is_wood_floor())
-				to_chat(user, "<span class='warning'>You unscrew the planks.</span>")
+				to_chat(user, SPAN_WARNING("You unscrew the planks."))
 				new floor_tile.type(src)
 
 		make_plating()
@@ -431,7 +431,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		var/obj/item/stack/rods/R = C
 		if(is_plating())
 			if(R.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need more rods.</span>")
+				to_chat(user, SPAN_WARNING("You need more rods."))
 				return
 			to_chat(user, SPAN_NOTICE("Reinforcing the floor."))
 			if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && is_plating())
@@ -442,7 +442,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 				return
 			else
 		else
-			to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
+			to_chat(user, SPAN_WARNING("You must remove the plating first."))
 		return
 
 	if(istype(C, /obj/item/stack/tile))
@@ -481,7 +481,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 			var/obj/item/stack/cable_coil/coil = C
 			coil.turf_place(src, user)
 		else
-			to_chat(user, "<span class='warning'>You must remove the plating first.</span>")
+			to_chat(user, SPAN_WARNING("You must remove the plating first."))
 
 	if(istype(C, /obj/item/tool/shovel))
 		if(is_grass_floor())
@@ -490,20 +490,20 @@ var/list/wood_icons = list("wood", "wood-broken")
 			to_chat(user, SPAN_NOTICE("You shovel the grass."))
 			make_plating()
 		else
-			to_chat(user, "<span class='warning'>You cannot shovel this.</span>")
+			to_chat(user, SPAN_WARNING("You cannot shovel this."))
 
 	if(istype(C, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/welder = C
 		if(welder.isOn() && (is_plating()))
 			if(broken || burnt)
 				if(welder.remove_fuel(0, user))
-					to_chat(user, "<span class='warning'>You fix some dents on the broken plating.</span>")
+					to_chat(user, SPAN_WARNING("You fix some dents on the broken plating."))
 					playsound(src, 'sound/items/Welder.ogg', 25, 1)
 					icon_state = "plating"
 					burnt = 0
 					broken = 0
 				else
-					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 
 
 
@@ -533,9 +533,9 @@ var/list/wood_icons = list("wood", "wood-broken")
 	if(is_light_floor())
 		M.animation_attack_on(src)
 		playsound(src, 'sound/effects/glasshit.ogg', 25, 1)
-		M.visible_message("<span class='danger'>\The [M] smashes \the [src]!</span>", \
-		"<span class='danger'>You smash \the [src]!</span>", \
-		"<span class='danger'>You hear broken glass!</span>", 5)
+		M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
+		SPAN_DANGER("You smash \the [src]!"), \
+		SPAN_DANGER("You hear broken glass!"), 5)
 		icon_state = "light_off"
 		SetLuminosity(0)
 

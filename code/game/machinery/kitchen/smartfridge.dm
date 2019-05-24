@@ -137,7 +137,7 @@
 
 /obj/machinery/smartfridge/attack_hand(mob/user)
 	if(!ispowered)
-		to_chat(user, "<span class='warning'>[src] has no power.</span>")
+		to_chat(user, SPAN_WARNING("[src] has no power."))
 		return
 	if(seconds_electrified != 0)
 		if(shock(user, 100))
@@ -218,7 +218,7 @@
 			return 0
 		if(is_secure_fridge)
 			if(!allowed(usr) && !emagged && locked != -1)
-				to_chat(usr, "<span class='danger'>Access denied.</span>")
+				to_chat(usr, SPAN_DANGER("Access denied."))
 				return 0
 		var/index = text2num(href_list["vend"])
 		var/amount = text2num(href_list["amount"])
@@ -335,7 +335,7 @@
 		return 0
 	spawn(0)
 		throw_item.throw_at(target,16,3,src)
-	src.visible_message("<span class='danger'><b>[src] launches [throw_item.name] at [target.name]!</b></span>")
+	src.visible_message(SPAN_DANGER("<b>[src] launches [throw_item.name] at [target.name]!</b>"))
 	return 1
 
 

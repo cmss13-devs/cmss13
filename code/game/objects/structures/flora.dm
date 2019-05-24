@@ -365,7 +365,7 @@
 
 /obj/structure/jungle/vines/attackby(obj/item/W, mob/living/user)
 	if(W.sharp == IS_SHARP_ITEM_BIG)
-		to_chat(user, "<span class='warning'>You cut \the [src] away with \the [W].</span>")
+		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [W]."))
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 		qdel(src)

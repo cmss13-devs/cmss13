@@ -39,7 +39,7 @@
 		return
 
 	if(!ishighersilicon(usr) && user.mind.cm_skills && user.mind.cm_skills.leadership < SKILL_LEAD_EXPERT && !Check_WO())
-		to_chat(user, "<span class='warning'>You don't have the training to use [src].</span>")
+		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 
 
@@ -376,7 +376,7 @@
 		if("pick_squad")
 			if(operator == usr)
 				if(current_squad)
-					to_chat(usr, "<span class='warning'>\icon[src] You are already selecting a squad.</span>")
+					to_chat(usr, SPAN_WARNING("\icon[src] You are already selecting a squad."))
 				else
 					var/list/squad_list = list()
 					for(var/datum/squad/S in RoleAuthority.squads)
@@ -388,7 +388,7 @@
 					if(operator != usr)
 						return
 					if(current_squad)
-						to_chat(usr, "<span class='warning'>\icon[src] You are already selecting a squad.</span>")
+						to_chat(usr, SPAN_WARNING("\icon[src] You are already selecting a squad."))
 						return
 					var/datum/squad/selected = get_squad_by_name(name_sel)
 					if(selected)
@@ -513,7 +513,7 @@
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world.view)
-					to_chat(usr, "<span class='warning'>You're too busy peering through binoculars.</span>")
+					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					cam = new_cam
 					usr.reset_view(cam)
@@ -765,7 +765,7 @@
 	sleep(20)
 	for(var/mob/living/carbon/H in living_mob_list)
 		if(H.z == MAIN_SHIP_Z_LEVEL && !H.stat) //USS Almayer decks.
-			to_chat(H, "<span class='warning'>The deck of the USS Almayer shudders as the orbital cannons open fire on the colony.</span>")
+			to_chat(H, SPAN_WARNING("The deck of the USS Almayer shudders as the orbital cannons open fire on the colony."))
 			if(H.client)
 				shake_camera(H, 10, 1)
 	visible_message("\icon[src] <span class='boldnotice'>Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!</span>")
@@ -813,7 +813,7 @@
 	busy = 1
 
 	visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop is now loading into the launch tube! Stand by!</span>")
-	C.visible_message("<span class='warning'>\The [C] begins to load into a launch tube. Stand clear!</span>")
+	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
@@ -892,15 +892,15 @@
 	set category = "IC"
 
 	if(!mind.cm_skills || (mind.cm_skills && mind.cm_skills.leadership < SKILL_LEAD_TRAINED))
-		to_chat(src, "<span class='warning'>You are not competent enough in leadership to issue an order.</span>")
+		to_chat(src, SPAN_WARNING("You are not competent enough in leadership to issue an order."))
 		return
 
 	if(stat)
-		to_chat(src, "<span class='warning'>You cannot give an order in your current state.</span>")
+		to_chat(src, SPAN_WARNING("You cannot give an order in your current state."))
 		return
 
 	if(command_aura_cooldown > 0)
-		to_chat(src, "<span class='warning'>You have recently given an order. Calm down.</span>")
+		to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
 		return
 
 	var/choice = input(src, "Choose an order") in command_aura_allowed + "help" + "cancel"
@@ -910,7 +910,7 @@
 	if(choice == "cancel") return
 
 	if(command_aura_cooldown > 0)
-		to_chat(src, "<span class='warning'>You have recently given an order. Calm down.</span>")
+		to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
 		return
 
 	command_aura = choice

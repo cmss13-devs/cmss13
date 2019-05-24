@@ -141,7 +141,7 @@ var/savefile/Banlistjob
 
 	Banlistjob.cd = "/base"
 	if ( Banlistjob.dir.Find("[ckey][computerid][rank]") )
-		usr << text("<span class='danger'>Banjob already exists.</span>")
+		usr << text(SPAN_DANGER("Banjob already exists."))
 		return 0
 	else
 		Banlistjob.dir.Add("[ckey][computerid][rank]")
@@ -219,22 +219,22 @@ var/savefile/Banlistjob
 
 /*/datum/admins/proc/permjobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
 	if(AddBanjob(ckey, computerid, reason, usr.ckey, 0, 0, job))
-		to_chat(M, "<span class='warning'><BIG><B>You have been banned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
-		to_chat(M, "<span class='warning'>This is a permanent ban.</span>")
+		to_chat(M, SPAN_WARNING("<BIG><B>You have been banned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
+		to_chat(M, SPAN_WARNING("This is a permanent ban."))
 		if(config.banappeals)
-			to_chat(M, "<span class='warning'>To try to resolve this matter head to [config.banappeals]</span>")
+			to_chat(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
 		else
-			to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
+			to_chat(M, SPAN_WARNING("No ban appeals URL has been set."))
 		log_admin("[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.")
 		message_admins("\blue[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis is a permanent ban.")
 /datum/admins/proc/timejobban(ckey, computerid, reason, bannedby, temp, minutes, rank)
 	if(AddBanjob(ckey, computerid, reason, usr.ckey, 1, mins, job))
-		to_chat(M, "<span class='warning'><BIG><B>You have been jobbanned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
-		to_chat(M, "<span class='warning'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
+		to_chat(M, SPAN_WARNING("<BIG><B>You have been jobbanned from [job] by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
+		to_chat(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
 		if(config.banappeals)
-			to_chat(M, "<span class='warning'>To try to resolve this matter head to [config.banappeals]</span>")
+			to_chat(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
 		else
-			to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
+			to_chat(M, SPAN_WARNING("No ban appeals URL has been set."))
 		log_admin("[usr.client.ckey] has jobbanned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
 		message_admins("\blue[usr.client.ckey] has banned from [job] [ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")*/
 //////////////////////////////////// DEBUG ////////////////////////////////////

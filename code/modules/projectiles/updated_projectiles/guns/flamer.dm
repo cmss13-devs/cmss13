@@ -482,7 +482,7 @@
 			M.IgniteMob()
 
 		M.adjustFireLoss(round(burnlevel*0.5)) //This makes fire stronk.
-		to_chat(M, "<span class='danger'>You are burned!</span>")
+		to_chat(M, SPAN_DANGER("You are burned!"))
 		if(isXeno(M)) M.updatehealth()
 
 
@@ -538,7 +538,7 @@
 					var/mob/living/carbon/Xenomorph/Ravager/X = I
 					X.plasma_stored = X.plasma_max
 					X.used_charge = 0 //Reset charge cooldown
-					X.show_message(text("<span class='danger'>The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!</span>"),1)
+					X.show_message(text(SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!")),1)
 					if(rand(1,100) < 70) X.emote("roar")
 				continue
 			I.adjust_fire_stacks(burnlevel) //If i stand in the fire i deserve all of this. Also Napalm stacks quickly.

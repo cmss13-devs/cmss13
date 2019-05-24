@@ -130,7 +130,7 @@ DEFINES in setup.dm, referenced here.
 	else ..()
 
 /obj/item/weapon/gun/throw_at(atom/target, range, speed, thrower)
-	if( harness_check(thrower) ) to_chat(usr, "<span class='warning'>\The [src] clanks on the ground.</span>")
+	if( harness_check(thrower) ) to_chat(usr, SPAN_WARNING("\The [src] clanks on the ground."))
 	else ..()
 
 /*
@@ -183,7 +183,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				"MERCENARIES",
 				"FREELANCERS",
 			) return 1
-	to_chat(user, "<span class='warning'>[src] flashes a warning sign indicating unauthorized use!</span>")
+	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 /*
 Here we have throwing and dropping related procs.
@@ -207,7 +207,8 @@ should be alright.
 		if(isnull(user.s_store) && isturf(loc))
 			var/obj/item/I = user.wear_suit
 			user.equip_to_slot_if_possible(src, WEAR_J_STORE)
-			if(user.s_store == src) to_chat(user, "<span class='warning'>[src] snaps into place on [I].</span>")
+			if(user.s_store == src) 
+				to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
 			user.update_inv_s_store()
 
 /obj/item/weapon/gun/attack_self(mob/user)
@@ -255,14 +256,14 @@ should be alright.
 		if(!istype(user) || user.is_mob_incapacitated(TRUE))
 			return
 		if(src != user.r_hand && src != user.l_hand)
-			to_chat(user, "<span class='warning'>[src] must be in your hand to do that.</span>")
+			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return
 		if(flags_gun_features & GUN_INTERNAL_MAG)
-			to_chat(user, "<span class='warning'>Can't do tactical reloads with [src].</span>")
+			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
 			return
 		//no tactical reload for the untrained.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.firearms == 0)
-			to_chat(user, "<span class='warning'>You don't know how to do tactical reloads.</span>")
+			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
 		if(istype(src, AM.gun_type))
 			if(current_mag)
@@ -299,7 +300,7 @@ should be alright.
 	if(user)
 		var/obj/item/weapon/gun/in_hand = user.get_inactive_hand()
 		if( in_hand != src ) //It has to be held.
-			to_chat(user, "<span class='warning'>You have to hold [src] to do that!</span>")
+			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
 			return
 	return 1
 
@@ -308,7 +309,7 @@ should be alright.
 		var/obj/item/weapon/gun/in_handL = user.l_hand
 		var/obj/item/weapon/gun/in_handR = user.r_hand
 		if( in_handL != src && in_handR != src ) //It has to be held.
-			to_chat(user, "<span class='warning'>You have to hold [src] to do that!</span>")
+			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
 			return
 	return 1
 
@@ -335,7 +336,7 @@ should be alright.
 
 /obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(attachable_allowed && !(attachment.type in attachable_allowed) )
-		to_chat(user, "<span class='warning'>[attachment] doesn't fit on [src]!</span>")
+		to_chat(user, SPAN_WARNING("[attachment] doesn't fit on [src]!"))
 		return 0
 
 	//Checks if they can attach the thing in the first place, like with fixed attachments.
@@ -351,7 +352,7 @@ should be alright.
 			if(stock && !(stock.flags_attach_features & ATTACH_REMOVABLE)) can_attach = 0
 
 	if(!can_attach)
-		to_chat(user, "<span class='warning'>The attachment on [src]'s [attachment.slot] cannot be removed!</span>")
+		to_chat(user, SPAN_WARNING("The attachment on [src]'s [attachment.slot] cannot be removed!"))
 		return 0
 	return 1
 
@@ -428,13 +429,13 @@ should be alright.
 	if(!ishuman(usr)) return
 
 	if(!user.canmove || user.stat || user.is_mob_restrained() || !user.loc || !isturf(usr.loc))
-		to_chat(user, "<span class='warning'>Not right now.</span>")
+		to_chat(user, SPAN_WARNING("Not right now."))
 		return
 
 	var/obj/item/weapon/gun/G = user.get_held_item()
 
 	if(!istype(G))
-		to_chat(user, "<span class='warning'>You need a gun in your active hand to do that!</span>")
+		to_chat(user, SPAN_WARNING("You need a gun in your active hand to do that!"))
 		return
 
 	if(G.flags_gun_features & GUN_BURST_FIRING) return
@@ -458,7 +459,7 @@ should be alright.
 	set name = "holster"
 	set hidden = 1
 	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained())
-		to_chat(src, "<span class='warning'>You can't draw a weapon in your current state.</span>")
+		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return
 
 	var/obj/item/weapon/W = src.get_active_hand()
@@ -620,11 +621,11 @@ should be alright.
 		return
 
 	if(zoom)
-		to_chat(usr, "<span class='warning'>You cannot conceviably do that while looking down \the [src]'s scope!</span>")
+		to_chat(usr, SPAN_WARNING("You cannot conceviably do that while looking down \the [src]'s scope!"))
 		return
 
 	if(!rail && !muzzle && !under && !stock)
-		to_chat(usr, "<span class='warning'>This weapon has no attachables. You can only field strip enhanced weapons!</span>")
+		to_chat(usr, SPAN_WARNING("This weapon has no attachables. You can only field strip enhanced weapons!"))
 		return
 
 	var/list/possible_attachments = list()
@@ -639,7 +640,7 @@ should be alright.
 		possible_attachments += stock
 
 	if(!possible_attachments.len)
-		to_chat(usr, "<span class='warning'>[src] has no removable attachments.</span>")
+		to_chat(usr, SPAN_WARNING("[src] has no removable attachments."))
 		return
 
 	var/obj/item/attachable/A
@@ -685,7 +686,7 @@ should be alright.
 	//Burst of 1 doesn't mean anything. The weapon will only fire once regardless.
 	//Just a good safety to have all weapons that can equip a scope with 1 burst_amount.
 	if(burst_amount < 2)
-		to_chat(usr, "<span class='warning'>This weapon does not have a burst fire mode!</span>")
+		to_chat(usr, SPAN_WARNING("This weapon does not have a burst fire mode!"))
 		return
 
 	if(flags_gun_features & GUN_BURST_FIRING)//can't toggle mid burst
@@ -788,7 +789,7 @@ should be alright.
 		usable_attachments += muzzle
 
 	if(!usable_attachments.len) //No usable attachments.
-		to_chat(usr, "<span class='warning'>[src] does not have any usable attachments!</span>")
+		to_chat(usr, SPAN_WARNING("[src] does not have any usable attachments!"))
 		return
 
 	if(usable_attachments.len == 1) //Activates the only attachment if there is only one.
@@ -815,7 +816,7 @@ should be alright.
 	if (rail && (rail.flags_attach_features & ATTACH_ACTIVATION) )
 		A = rail
 	else
-		to_chat(usr, "<span class='warning'>[src] does not have any usable rail attachments!</span>")
+		to_chat(usr, SPAN_WARNING("[src] does not have any usable rail attachments!"))
 		return
 	if(A)
 		A.activate_attachment(src, usr)

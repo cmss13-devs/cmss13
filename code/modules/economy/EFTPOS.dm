@@ -227,7 +227,7 @@
 /obj/item/device/eftpos/proc/scan_card(var/obj/item/card/I)
 	if (istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
-		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		if(transaction_locked && !transaction_paid)
 			if(linked_account)
 				if(!linked_account.suspended)
@@ -286,7 +286,7 @@
 				transaction_locked = 0
 				transaction_paid = 0
 			else
-				visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+				visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 				playsound(src, 'sound/machines/chime.ogg', 25, 1)
 				src.visible_message("\icon[src] The [src] chimes.")
 				transaction_paid = 1

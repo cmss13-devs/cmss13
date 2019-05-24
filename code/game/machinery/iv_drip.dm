@@ -62,11 +62,11 @@
 /obj/machinery/iv_drip/attackby(obj/item/W, mob/living/user)
 	if (istype(W, /obj/item/reagent_container))
 		if(beaker)
-			to_chat(user, "<span class='warning'>There is already a reagent container loaded!</span>")
+			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
 			return
 
 		if((!istype(W, /obj/item/reagent_container/blood) && !istype(W, /obj/item/reagent_container/glass)) || istype(W, /obj/item/reagent_container/glass/bucket))
-			to_chat(user, "<span class='warning'>That won't fit!</span>")
+			to_chat(user, SPAN_WARNING("That won't fit!"))
 			return
 
 		if(user.drop_inv_item_to_loc(W, src))

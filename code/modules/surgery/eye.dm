@@ -46,8 +46,8 @@
 
 /datum/surgery_step/eye/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	user.visible_message("<span class='warning'>[user]'s hand slips, slicing [target]'s eyes with \the [tool]!</span>" , \
-	"<span class='warning'>Your hand slips, slicing [target]'s eyes with \the [tool]!</span>" )
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with \the [tool]!") , \
+	SPAN_WARNING("Your hand slips, slicing [target]'s eyes with \the [tool]!") )
 	affected.createwound(CUT, 10)
 	E.take_damage(5, 0)
 	target.updatehealth()
@@ -77,8 +77,8 @@
 
 /datum/surgery_step/eye/lift_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	var/datum/internal_organ/eyes/eyes = target.internal_organs_by_name["eyes"]
-	user.visible_message("<span class='warning'>[user]'s hand slips, damaging [target]'s eyes with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, damaging [target]'s eyes with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, damaging [target]'s eyes with \the [tool]!"))
 	target.apply_damage(10, BRUTE, affected)
 	eyes.take_damage(5, 0)
 	target.updatehealth()
@@ -107,8 +107,8 @@
 
 /datum/surgery_step/eye/mend_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	user.visible_message("<span class='warning'>[user]'s hand slips, stabbing \the [tool] into [target]'s eye!</span>", \
-	"<span class='warning'>Your hand slips, stabbing \the [tool] into [target]'s eye!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, stabbing \the [tool] into [target]'s eye!"), \
+	SPAN_WARNING("Your hand slips, stabbing \the [tool] into [target]'s eye!"))
 	target.apply_damage(10, BRUTE, affected, sharp = 1)
 	E.take_damage(5, 0)
 	target.updatehealth()
@@ -142,8 +142,8 @@
 
 /datum/surgery_step/eye/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	user.visible_message("<span class='warning'>[user]'s hand slips, searing [target]'s eyes with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, searing [target]'s eyes with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s eyes with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, searing [target]'s eyes with \the [tool]!"))
 	target.apply_damage(5, BURN, affected)
 	E.take_damage(5, 0)
 	target.updatehealth()

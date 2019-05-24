@@ -154,8 +154,6 @@
 			sleep(5) //sleep(1) did not seem to cut it, so here we are.
 
 		R.product_name = initial(temp_path.name)
-
-//		to_world("Added: [R.product_name]] - [R.amount] - [R.product_path]")
 	return
 
 /obj/machinery/vending/proc/get_repair_move_text()
@@ -317,7 +315,7 @@
 	if(!currently_vending) return
 	if (istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
-		visible_message("<span class='info'>[usr] swipes a card through [src].</span>")
+		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		var/datum/money_account/CH = get_account(C.associated_account_number)
 		if (CH) // Only proceed if card contains proper account number.
 			if(!CH.suspended)
@@ -534,7 +532,7 @@
 		if ((href_list["vend"]) && vend_ready && !currently_vending)
 
 			if(!allowed(usr) && !emagged && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
-				to_chat(usr, "<span class='warning'>Access denied.</span>") //Unless emagged of course
+				to_chat(usr, SPAN_WARNING("Access denied.")) //Unless emagged of course
 				flick(src.icon_deny,src)
 				return
 
@@ -553,7 +551,7 @@
 						ewallet.worth -= R.price
 						src.vend(R, usr)
 					else
-						to_chat(usr, "<span class='danger'>The ewallet doesn't have enough money to pay for that.</span>")
+						to_chat(usr, SPAN_DANGER("The ewallet doesn't have enough money to pay for that."))
 						src.currently_vending = R
 						src.updateUsrDialog()
 				else
@@ -569,7 +567,7 @@
 		else if ((href_list["cutwire"]) && (src.panel_open))
 			var/twire = text2num(href_list["cutwire"])
 			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(usr, "<span class='warning'>You don't understand anything about this wiring...</span>")
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
 			if (!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
 				to_chat(usr, "You need wirecutters!")
@@ -582,7 +580,7 @@
 		else if ((href_list["pulsewire"]) && (src.panel_open))
 			var/twire = text2num(href_list["pulsewire"])
 			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(usr, "<span class='warning'>You don't understand anything about this wiring...</span>")
+				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
 			if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
 				to_chat(usr, "You need a multitool!")
@@ -605,7 +603,7 @@
 
 /obj/machinery/vending/proc/vend(datum/data/vending_product/R, mob/user)
 	if(!allowed(user) && !emagged && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH
-		to_chat(user, "<span class='warning'>Access denied.</span>") //Unless emagged of course
+		to_chat(user, SPAN_WARNING("Access denied.")) //Unless emagged of course
 		flick(src.icon_deny,src)
 		return
 
@@ -674,17 +672,17 @@
 			if(istype(item_to_stock, /obj/item/weapon/gun))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
-					to_chat(user, "<span class='warning'>[G] is still loaded. Unload it before you can restock it.</span>")
+					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
 					return
 				for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
 					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
-						to_chat(user, "<span class='warning'>[G] has non-standard attachments equipped. Detach them before you can restock it.</span>")
+						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
 						return
 
 			if(istype(item_to_stock, /obj/item/ammo_magazine))
 				var/obj/item/ammo_magazine/A = item_to_stock
 				if(A.current_rounds < A.max_rounds)
-					to_chat(user, "<span class='warning'>[A] isn't full. Fill it before you can restock it.</span>")
+					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
 					return
 			if(item_to_stock.loc == user) //Inside the mob's inventory
 				if(item_to_stock.flags_item & WIELDED)
@@ -779,7 +777,7 @@
 		return 0
 	spawn(0)
 		throw_item.throw_at(target, 16, 3, src)
-	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target]!</span>")
+	src.visible_message(SPAN_WARNING("[src] launches [throw_item.name] at [target]!"))
 	return 1
 
 /obj/machinery/vending/proc/isWireColorCut(var/wireColor)

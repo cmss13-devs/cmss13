@@ -38,7 +38,7 @@
 		return 0
 
 	proc/meltdown()	//breaks it down, making implant unrecongizible
-		to_chat(imp_in, "<span class='warning'>You feel something melting inside [part ? "your [part.display_name]" : "you"]!</span>")
+		to_chat(imp_in, SPAN_WARNING("You feel something melting inside [part ? "your [part.display_name]" : "you"]!"))
 		if (part)
 			part.take_damage(burn = 15, used_weapon = "Electronics meltdown")
 		else
@@ -174,7 +174,8 @@ Implant Specifics:<BR>"}
 			if(ishuman(imp_in))
 				if (elevel == "Localized Limb")
 					if(part) //For some reason, small_boom() didn't work. So have this bit of working copypaste.
-						imp_in.visible_message("<span class='danger'>Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]!</span>")
+						var/malf_msg = "Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]!"
+						imp_in.visible_message(SPAN_DANGER(malf_msg))
 						playsound(loc, 'sound/items/countdown.ogg', 25, 1, 6)
 						sleep(25)
 						if (istype(part,/datum/limb/chest) ||	\
@@ -235,7 +236,8 @@ Implant Specifics:<BR>"}
 
 	proc/small_boom()
 		if (ishuman(imp_in) && part)
-			imp_in.visible_message("<span class='danger'>Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]!</span>")
+			var/malf_msg = "Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]!"
+			imp_in.visible_message(SPAN_DANGER(malf_msg))
 			playsound(loc, 'sound/items/countdown.ogg', 25, 1, 6)
 			spawn(25)
 				if (ishuman(imp_in) && part)

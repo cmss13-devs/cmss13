@@ -642,7 +642,7 @@
 			adjust_fire_stacks(rand(6,10))
 			IgniteMob()
 			emote("scream")
-			to_chat(src, "<span class='highdanger'>You burst into flames!! Stop drop and roll!</span>")
+			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 	return 1
 
 #define DEBUG_HUMAN_DEFENSE 0
@@ -686,10 +686,11 @@
 			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, ARMOR_ENERGY) : getarmor_organ(organ, ARMOR_LASER)
 			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, ARMOR_BIO)
 			else armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
-		
+
 		damage_result = armor_damage_reduction(config.marine_ranged, damage, armor, P.ammo.penetration)
 
-		if(damage_result <= 5) to_chat(src,"<span class='xenonotice'>Your armor absorbs the force of [P]!]</span>")
+		if(damage_result <= 5)
+			to_chat(src,SPAN_XENONOTICE("Your armor absorbs the force of [P]!"))
 		if(damage_result <= 3)
 			damage_result = 0
 			bullet_ping(P)
@@ -716,14 +717,14 @@
 			organ.embed(shrap)
 			if(!stat && !(species && species.flags & NO_PAIN))
 				emote("scream")
-				to_chat(src, "<span class='highdanger'>You scream in pain as the impact sends <B>shrapnel</b> into the wound!</span>")
+				to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
 
 		if(ammo_flags & AMMO_INCENDIARY)
 			adjust_fire_stacks(rand(6,11))
 			IgniteMob()
 			if(!stat && !(species.flags & NO_PAIN))
 				emote("scream")
-				to_chat(src, "<span class='highdanger'>You burst into flames!! Stop drop and roll!</span>")
+				to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 		return 1
 
 //Deal with xeno bullets.
@@ -748,12 +749,13 @@
 			var/mob/living/carbon/Xenomorph/charger = src			
 			if(P.dir == reverse_direction(charger.dir)) armor += round(armor_deflection * (charger.charge_speed/charger.charge_speed_max) / 2) //Some armor deflection when charging.
 			//Otherwise use the standard armor deflection for crushers.
-		
+
 		damage_result = armor_damage_reduction(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
 		var/armor_punch = armor_break_calculation(config.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
 		apply_armorbreak(armor_punch)
-	
-		if(damage <= 5) to_chat(src,"<span class='xenonotice'>Your exoskeleton absorbs the force of [P]!]</span>")
+
+		if(damage <= 5)
+			to_chat(src,SPAN_XENONOTICE("Your exoskeleton absorbs the force of [P]!"))
 		if(damage <= 3)
 			damage = 0
 			bullet_ping(P)
@@ -773,8 +775,8 @@
 			else
 				adjust_fire_stacks(rand(2,6) + round(damage_result / 8))
 				IgniteMob()
-				visible_message("<span class='danger'>[src] bursts into flames!</span>", \
-				"<span class='xenodanger'>You burst into flames!! Auuugh! Resist to put out the flames!</span>")
+				visible_message(SPAN_DANGER("[src] bursts into flames!"), \
+				SPAN_XENODANGER("You burst into flames!! Auuugh! Resist to put out the flames!"))
 		updatehealth()
 
 	return 1
@@ -851,7 +853,7 @@
 	src.bullet_ping(P)
 	health -= round(P.damage/2)
 	if (health < 0)
-		visible_message("<span class='warning'>[src] breaks down!</span>")
+		visible_message(SPAN_WARNING("[src] breaks down!"))
 		destroy()
 	return 1
 
@@ -885,10 +887,11 @@
 	if(!P) return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_IS_SILENCED)
-		to_chat(src, "[isXeno(src) ? "<span class='xenodanger'>" : "<span class='highdanger'>" ]You've been shot in the [parse_zone(P.def_zone)] by [P.name]!</span>")
+		var/hit_msg = "You've been shot in the [parse_zone(P.def_zone)] by [P.name]!"
+		to_chat(src, isXeno(src) ? SPAN_XENODANGER("[hit_msg]"):SPAN_HIGHDANGER("[hit_msg]"))
 	else
-		visible_message("<span class='danger'>[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!</span>", \
-						"<span class='highdanger'>You are hit by the [P.name] in the [parse_zone(P.def_zone)]!</span>", null, 4)
+		visible_message(SPAN_DANGER("[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4)
 
 	if(ismob(P.firer))
 		var/mob/firingMob = P.firer

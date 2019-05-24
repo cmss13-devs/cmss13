@@ -387,9 +387,9 @@
 						break
 				playsound(user.loc, "rustle", 15, 1, 6)
 			else
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
+				to_chat(user, SPAN_WARNING("[src] is full."))
 		else
-			to_chat(user, "<span class='warning'>[M] is empty.</span>")
+			to_chat(user, SPAN_WARNING("[M] is empty."))
 		return TRUE
 	else
 		return ..()

@@ -32,7 +32,7 @@
 			user.temp_drop_inv_item(src)
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need at least four rods to reinforce [src].</span>")
+			to_chat(user, SPAN_WARNING("You need at least four rods to reinforce [src]."))
 
 	if(istype(W, /obj/item/stack/sheet/wood))
 		var/obj/item/stack/sheet/wood/S = W
@@ -43,14 +43,14 @@
 			user.temp_drop_inv_item(src)
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need at least two wood sheets to swap the metal parts of [src].</span>")
+			to_chat(user, SPAN_WARNING("You need at least two wood sheets to swap the metal parts of [src]."))
 
 /obj/item/frame/table/attack_self(mob/user)
 
 
 
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
-		to_chat(user, "<span class='warning'>No. This area is needed for the dropship.</span>")
+		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
 
 	var/obj/structure/table/T = new table_type(user.loc)
@@ -170,15 +170,15 @@
 /obj/item/frame/rack/attack_self(mob/user as mob)
 
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
-		to_chat(user, "<span class='warning'>No. This area is needed for the dropship.</span>")
+		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
 
 	if(locate(/obj/structure/table) in user.loc || locate(/obj/structure/barricade) in user.loc)
-		to_chat(user, "<span class='warning'>There is already a structure here.</span>")
+		to_chat(user, SPAN_WARNING("There is already a structure here."))
 		return
 
 	if(locate(/obj/structure/rack) in user.loc)
-		to_chat(user, "<span class='warning'>There already is a rack here.</span>")
+		to_chat(user, SPAN_WARNING("There already is a rack here."))
 		return
 
 	var/obj/structure/rack/R = new /obj/structure/rack(user.loc)

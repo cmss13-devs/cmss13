@@ -34,7 +34,7 @@
 		if(!src.imp)	return
 		if(!src.imp.allow_reagents)	return
 		if(src.imp.reagents.total_volume >= src.imp.reagents.maximum_volume)
-			to_chat(user, "<span class='danger'>[src] is full.</span>")
+			to_chat(user, SPAN_DANGER("[src] is full."))
 		else
 			spawn(5)
 				I.reagents.trans_to(src.imp, 5)

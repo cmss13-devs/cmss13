@@ -685,10 +685,10 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 			if(istype(cartridge, /obj/item/cartridge/syndicate))
 				if(!(useMS && useTC))
-					U.show_message("<span class='danger'>An error flashes on your [src]: Connection unavailable</span>", 1)
+					U.show_message(SPAN_DANGER("An error flashes on your [src]: Connection unavailable"), 1)
 					return
 				if(useTC != 2) // Does our recepient have a broadcaster on their level?
-					U.show_message("<span class='danger'>An error flashes on your [src]: Recipient unavailable</span>", 1)
+					U.show_message(SPAN_DANGER("An error flashes on your [src]: Recipient unavailable"), 1)
 					return
 				var/obj/item/device/pda/P = locate(href_list["target"])
 				if(!isnull(P))
@@ -705,9 +705,9 @@ var/global/list/obj/item/device/pda/PDAs = list()
 							difficulty += P.cartridge.access_janitor
 
 						if(prob(difficulty))
-							U.show_message("<span class='danger'>An error flashes on your [src].</span>", 1)
+							U.show_message(SPAN_DANGER("An error flashes on your [src]."), 1)
 						else if (prob(difficulty * 7))
-							U.show_message("<span class='danger'>Energy feeds back into your [src]!</span>", 1)
+							U.show_message(SPAN_DANGER("Energy feeds back into your [src]!"), 1)
 							ui.close()
 							detonate_act(src)
 							log_admin("[key_name(U)] just attempted to blow up [P] with the Detomatix cartridge but failed, blowing themselves up")
@@ -1015,7 +1015,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if(1)
 
 				for (var/mob/O in viewers(C, null))
-					O.show_message("<span class='danger'>[user] has analyzed [C]'s vitals!</span>", 1)
+					O.show_message(SPAN_DANGER("[user] has analyzed [C]'s vitals!"), 1)
 
 				var/msg_analyzer_one = "\t Damage Specifics: [C.getOxyLoss() > 50 ? "\red" : "\blue"][C.getOxyLoss()]-[C.getToxLoss() > 50 ? "\red" : "\blue"][C.getToxLoss()]-[C.getFireLoss() > 50 ? "\red" : "\blue"][C.getFireLoss()]-[C.getBruteLoss() > 50 ? "\red" : "\blue"][C.getBruteLoss()]"
 				user.show_message(SPAN_NOTICE("Analyzing Results for [C]:"))
@@ -1032,15 +1032,15 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					if(length(damaged)>0)
 						for(var/datum/limb/org in damaged)
 							var/msg_display_name = "[capitalize(org.display_name)]"
-							var/msg_robotic_brute_dmg = "[(org.brute_dam > 0)?"<span class='danger'>[org.brute_dam]</span>":"0"]"
-							var/msg_robotic_burn_dmg = "[(org.burn_dam > 0)?"<span class='danger'>[org.burn_dam]</span>":"0"]"
+							var/msg_robotic_brute_dmg = "[(org.brute_dam > 0)?SPAN_DANGER("[org.brute_dam]"):"0"]"
+							var/msg_robotic_burn_dmg = "[(org.burn_dam > 0)?SPAN_DANGER("[org.burn_dam]"):"0"]"
 							user.show_message(SPAN_NOTICE("\t [msg_display_name]: [msg_robotic_brute_dmg]\blue-[msg_robotic_burn_dmg]"),1)
 					else
 						user.show_message(SPAN_NOTICE("\t Limbs are OK."),1)
 
 				for(var/datum/disease/D in C.viruses)
 					if(!D.hidden[SCANNER])
-						user.show_message(text("<span class='danger'><b>Warning: [D.form] Detected</b>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]</span>"))
+						user.show_message(text(SPAN_DANGER("<b>Warning: [D.form] Detected</b>\nName: [D.name].\nType: [D.spread].\nStage: [D.stage]/[D.max_stages].\nPossible Cure: [D.cure]")))
 
 			if(2)
 				if(!istype(C, /mob/living/carbon/monkey))
@@ -1061,11 +1061,11 @@ var/global/list/obj/item/device/pda/PDAs = list()
 
 			if(4)
 				for (var/mob/O in viewers(C, null))
-					O.show_message("<span class='danger'>[user] has analyzed [C]'s radiation levels!</span>", 1)
+					O.show_message(SPAN_DANGER("[user] has analyzed [C]'s radiation levels!"), 1)
 
 				user.show_message(SPAN_NOTICE("Analyzing Results for [C]:"))
 				if(C.radiation)
-					user.show_message("<span class='xenowarning'> Radiation Level: \black [C.radiation]</span>")
+					user.show_message(SPAN_XENOWARNING(" Radiation Level: \black [C.radiation]"))
 				else
 					user.show_message(SPAN_NOTICE("No radiation detected."))
 
@@ -1092,7 +1092,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 			if(istype(A, /obj/item/tank) || istype(A, /obj/machinery/portable_atmospherics) || istype(A, /obj/machinery/atmospherics/pipe/tank))
 				var/obj/icon = A
 				for (var/mob/O in viewers(user, null))
-					to_chat(O, "<span class='danger'>[user] has used [src] on \icon[icon] [A]</span>")
+					to_chat(O, SPAN_DANGER("[user] has used [src] on \icon[icon] [A]"))
 				var/pressure = A.return_pressure()
 				var/temperature = A.return_temperature()
 				var/gas = A.return_gas()

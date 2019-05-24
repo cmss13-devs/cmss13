@@ -109,7 +109,7 @@
 /mob/living/silicon/robot/drone/attackby(obj/item/W, mob/living/user)
 
 	if(istype(W, /obj/item/robot/upgrade/))
-		to_chat(user, "<span class='danger'>The maintenance drone chassis not compatible with \the [W].</span>")
+		to_chat(user, SPAN_DANGER("The maintenance drone chassis not compatible with \the [W]."))
 		return
 
 	else if (istype(W, /obj/item/tool/crowbar))
@@ -149,13 +149,13 @@
 //CONSOLE PROCS
 /mob/living/silicon/robot/drone/proc/law_resync()
 	if(stat != 2)
-		to_chat(src, "<span class='danger'>A reset-to-factory directive packet filters through your data connection, and you obediently modify your programming to suit it.</span>")
+		to_chat(src, SPAN_DANGER("A reset-to-factory directive packet filters through your data connection, and you obediently modify your programming to suit it."))
 		full_law_reset()
 		show_laws()
 
 /mob/living/silicon/robot/drone/proc/shut_down()
 	if(stat != 2)
-		to_chat(src, "<span class='danger'>You feel a system kill order percolate through your tiny brain, and you obediently destroy yourself.</span>")
+		to_chat(src, SPAN_DANGER("You feel a system kill order percolate through your tiny brain, and you obediently destroy yourself."))
 		death()
 
 /mob/living/silicon/robot/drone/proc/full_law_reset()
@@ -220,12 +220,12 @@
 	else if(istype(AM,/obj/item))
 		var/obj/item/O = AM
 		if(O.w_class > 2)
-			to_chat(src, "<span class='warning'>You are too small to pull that.</span>")
+			to_chat(src, SPAN_WARNING("You are too small to pull that."))
 			return
 		else
 			..()
 	else
-		to_chat(src, "<span class='warning'>You are too small to pull that.</span>")
+		to_chat(src, SPAN_WARNING("You are too small to pull that."))
 		return
 
 /mob/living/silicon/robot/drone/add_robot_verbs()
@@ -246,7 +246,7 @@
 
 		for (var/mob/living/silicon/robot/drone/A in mob_list)
 			if(newname == A.nicknumber)
-				to_chat(src, "<span class='warning'>That identifier is taken, pick again.</span>")
+				to_chat(src, SPAN_WARNING("That identifier is taken, pick again."))
 				return 0
 
 		custom_name = newname

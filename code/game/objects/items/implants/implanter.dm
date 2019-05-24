@@ -25,13 +25,13 @@
 	if(isYautja(M))
 		return
 	if (user && src.imp)
-		user.visible_message("<span class='warning'>[user] is attemping to implant [M].</span>", SPAN_NOTICE("You're attemping to implant [M]."))
+		user.visible_message(SPAN_WARNING("[user] is attemping to implant [M]."), SPAN_NOTICE("You're attemping to implant [M]."))
 
 		var/turf/T1 = get_turf(M)
 		if (T1 && ((M == user) || do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC)))
 			if(user && M && (get_turf(M) == T1) && src && src.imp)
 				if(src.imp.implanted(M, user))
-					M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+					M.visible_message(SPAN_WARNING("[M] has been implanted by [user]."))
 
 					M.attack_log += text("\[[time_stamp()]\] <font color='orange'> Implanted with [src.name] ([src.imp.name])  by [user.name] ([user.ckey])</font>")
 					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] ([src.imp.name]) to implant [M.name] ([M.ckey])</font>")
@@ -119,7 +119,7 @@
 	if(istype(A,/obj/item) && imp)
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
-			to_chat(user, "<span class='danger'>Something is already scanned inside the implant!</span>")
+			to_chat(user, SPAN_DANGER("Something is already scanned inside the implant!"))
 			return
 		c.scanned = A
 		if(istype(A.loc,/mob/living/carbon/human))

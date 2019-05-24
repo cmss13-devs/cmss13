@@ -834,6 +834,9 @@
 		if(F.on)
 			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
 			return
+		if(!F.fuel)
+			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
+			return
 		if(istype(F, /obj/item/device/flashlight/flare/signal))
 			to_chat(user, SPAN_WARNING("You can't load a signal flare in [src]!"))
 			return

@@ -161,29 +161,29 @@
 			precision = max(rand(1,100)*bagholding.len,100)
 			if(istype(teleatom, /mob/living))
 				var/mob/living/MM = teleatom
-				to_chat(MM, "<span class='warning'>The Bluespace interface on your Bag of Holding interferes with the teleport!</span>")
+				to_chat(MM, SPAN_WARNING("The Bluespace interface on your Bag of Holding interferes with the teleport!"))
 		return 1
 
 	teleportChecks()
 		if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
-			teleatom.visible_message("<span class='danger'><B>The [teleatom] bounces off of the portal!</B></span>")
+			teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
 			return 0
 
 		if(!isemptylist(teleatom.search_contents_for(/obj/item/disk/nuclear)))
 			if(istype(teleatom, /mob/living))
 				var/mob/living/MM = teleatom
-				MM.visible_message("<span class='danger'><B>The [MM] bounces off of the portal!</B></span>","<span class='danger'>Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through.</span>")
+				MM.visible_message(SPAN_DANGER("<B>The [MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
 			else
-				teleatom.visible_message("<span class='danger'><B>The [teleatom] bounces off of the portal!</B></span>")
+				teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
 			return 0
 
 		if(destination.z == 2) //centcomm z-level
 			if(istype(teleatom, /obj/mecha))
 				var/obj/mecha/MM = teleatom
-				to_chat(MM.occupant, "<span class='warning'><B>The mech would not survive the jump to a location so far away!</B></span>")
+				to_chat(MM.occupant, SPAN_WARNING("<B>The mech would not survive the jump to a location so far away!</B>"))
 				return 0
 			if(!isemptylist(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
-				teleatom.visible_message("<span class='danger'><B>The Bag of Holding bounces off of the portal!</B></span>")
+				teleatom.visible_message(SPAN_DANGER("<B>The Bag of Holding bounces off of the portal!</B>"))
 				return 0
 
 

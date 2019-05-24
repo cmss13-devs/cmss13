@@ -32,8 +32,8 @@
 		var/aforce = W.force
 		health = max(0, health - aforce)
 		playsound(loc, "alien_resin_break", 25)
-		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W]!</span>", \
-		"<span class='warning'>You hit \the [src] with \the [W]!</span>")
+		user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"), \
+		SPAN_WARNING("You hit \the [src] with \the [W]!"))
 		healthcheck()
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
@@ -45,7 +45,7 @@
 				if(isXeno(user))
 					var/mob/living/carbon/Xenomorph/X = user
 					if(!X.caste.can_denest_hosts)
-						to_chat(X, "<span class='xenowarning'>You shouldn't interfere with the nest, leave that to the drones.</span>")
+						to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 						return
 				buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 				SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
@@ -58,20 +58,20 @@
 				unbuckle()
 			else
 				if(buckled_mob.stat)
-					to_chat(buckled_mob, "<span class='warning'>You're a little too unconscious to try that.</span>")
+					to_chat(buckled_mob, SPAN_WARNING("You're a little too unconscious to try that."))
 					return
 				if(resisting_ready && buckled_mob == user && buckled_mob.stat != DEAD)
-					buckled_mob.visible_message("<span class='danger'>\The [buckled_mob] breaks free from \the [src]!</span>",\
-					"<span class='danger'>You pull yourself free from \the [src]!</span>",\
+					buckled_mob.visible_message(SPAN_DANGER("\The [buckled_mob] breaks free from \the [src]!"),\
+					SPAN_DANGER("You pull yourself free from \the [src]!"),\
 					SPAN_NOTICE("You hear squelching."))
 					unbuckle()
 					return
 				if(resisting)
-					to_chat(buckled_mob, "<span class='warning'>You're already trying to free yourself. Give it some time.</span>")
+					to_chat(buckled_mob, SPAN_WARNING("You're already trying to free yourself. Give it some time."))
 					return
 				if(buckled_mob && buckled_mob.name)
-					buckled_mob.visible_message("<span class='warning'>\The [buckled_mob] struggles to break free of \the [src].</span>",\
-					"<span class='warning'>You struggle to break free from \the [src].</span>",\
+					buckled_mob.visible_message(SPAN_WARNING("\The [buckled_mob] struggles to break free of \the [src]."),\
+					SPAN_WARNING("You struggle to break free from \the [src]."),\
 					SPAN_NOTICE("You hear squelching."))
 				resisting = 1
 				var/mob/oldbuckled = buckled_mob
@@ -82,9 +82,9 @@
 						if(ishuman(usr))
 							var/mob/living/carbon/human/H = usr
 							if(H.handcuffed)
-								to_chat(buckled_mob, "<span class='danger'>You are ready to break free of the nest, but your limbs are still secured. Resist once more to pop up, then resist again to break your limbs free!</span>")
+								to_chat(buckled_mob, SPAN_DANGER("You are ready to break free of the nest, but your limbs are still secured. Resist once more to pop up, then resist again to break your limbs free!"))
 							else
-								to_chat(buckled_mob, "<span class='danger'>You are ready to break free! Resist once more to free yourself!</span>")
+								to_chat(buckled_mob, SPAN_DANGER("You are ready to break free! Resist once more to free yourself!"))
 			add_fingerprint(user)
 
 /mob/living/carbon/human/proc/start_nesting_cooldown()
@@ -99,29 +99,29 @@
 		return
 
 	if(isXeno(M))
-		to_chat(user, "<span class='warning'>You can't buckle your sisters.</span>")
+		to_chat(user, SPAN_WARNING("You can't buckle your sisters."))
 		return
 
 	if(buckled_mob)
-		to_chat(user, "<span class='warning'>There's already someone in [src].</span>")
+		to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 		return
 
 	if(M.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, "<span class='warning'>\The [M] is too big to fit in [src].</span>")
+		to_chat(user, SPAN_WARNING("\The [M] is too big to fit in [src]."))
 		return
 
 	if(!isXeno(user))
-		to_chat(user, "<span class='warning'>Gross! You're not touching that stuff.</span>")
+		to_chat(user, SPAN_WARNING("Gross! You're not touching that stuff."))
 		return
 
 	if(isYautja(M))
-		to_chat(user, "<span class='warning'>\The [M] seems to be wearing some kind of resin-resistant armor!</span>")
+		to_chat(user, SPAN_WARNING("\The [M] seems to be wearing some kind of resin-resistant armor!"))
 		return
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.recently_unbuckled)
-			to_chat(user, "<span class='warning'>[M] was recently unbuckled. Wait a bit.</span>")
+			to_chat(user, SPAN_WARNING("[M] was recently unbuckled. Wait a bit."))
 			return
 
 	if(M == user)
@@ -130,27 +130,27 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.lying) //Don't ask me why is has to be
-			to_chat(user, "<span class='warning'>[M] is resisting, ground them.</span>")
+			to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
 			return
 
-	user.visible_message("<span class='warning'>[user] pins [M] into [src], preparing the securing resin.</span>",
-	"<span class='warning'>[user] pins [M] into [src], preparing the securing resin.</span>")
+	user.visible_message(SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."),
+	SPAN_WARNING("[user] pins [M] into [src], preparing the securing resin."))
 	var/M_loc = M.loc
 	if(do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != M_loc) return
 		if(buckled_mob) //Just in case
-			to_chat(user, "<span class='warning'>There's already someone in [src].</span>")
+			to_chat(user, SPAN_WARNING("There's already someone in [src]."))
 			return
 		if(ishuman(M)) //Improperly stunned Marines won't be nested
 			var/mob/living/carbon/human/H = M
 			if(!H.lying) //Don't ask me why is has to be
-				to_chat(user, "<span class='warning'>[M] is resisting, ground them.</span>")
+				to_chat(user, SPAN_WARNING("[M] is resisting, ground them."))
 				return
 		do_buckle(M, user)
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
-	M.visible_message("<span class='xenonotice'>[user] secretes a thick, vile resin, securing [M] into [src]!</span>", \
-	"<span class='xenonotice'>[user] drenches you in a foul-smelling resin, trapping you in [src]!</span>", \
+	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \
+	SPAN_XENONOTICE("[user] drenches you in a foul-smelling resin, trapping you in [src]!"), \
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 
@@ -197,8 +197,8 @@
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return
 	if(M.a_intent == "hurt")
-		M.visible_message("<span class='danger'>\The [M] claws at \the [src]!</span>", \
-		"<span class='danger'>You claw at \the [src].</span>")
+		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"), \
+		SPAN_DANGER("You claw at \the [src]."))
 		playsound(loc, "alien_resin_break", 25)
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit
 		healthcheck()

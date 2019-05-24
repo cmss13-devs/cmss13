@@ -158,10 +158,10 @@
 		return
 
 	if (M.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, "<span class='warning'>[M] is too big to buckle in.</span>")
+		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
 		return
 	if (isXeno(user))
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do that, try a nest.</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
 		return
 	if (iszombie(user))
 		return

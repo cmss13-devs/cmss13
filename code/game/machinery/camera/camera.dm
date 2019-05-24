@@ -97,7 +97,7 @@
 		return
 
 	if(user.species.can_shred(user))
-		visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
+		visible_message(SPAN_WARNING("\The [user] slashes at [src]!"))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
 		wires = 0 //wires all cut
 		light_disabled = 0
@@ -110,7 +110,7 @@
 		//to_chat(user, SPAN_NOTICE("You start to [panel_open ? ")close" : "open"] the camera's panel.")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
-		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
+		user.visible_message(SPAN_WARNING("[user] screws the camera's panel [panel_open ? "open" : "closed"]!"),
 		SPAN_NOTICE("You screw the camera's panel [panel_open ? "open" : "closed"]."))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
@@ -173,9 +173,9 @@
 	if(!silent)
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(status)
-			visible_message("<span class='warning'>[user] has reactivated [src]!</span>")
+			visible_message(SPAN_WARNING("[user] has reactivated [src]!"))
 		else
-			visible_message("<span class='warning'>[user] has deactivated [src]!</span>")
+			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
 	if(status)
 		icon_state = initial(icon_state)
 	else

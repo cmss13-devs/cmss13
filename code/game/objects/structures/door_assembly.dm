@@ -191,7 +191,7 @@ obj/structure/door_assembly
 	else if(istype(W, /obj/item/stack/cable_coil) && state == 0 && anchored)
 		var/obj/item/stack/cable_coil/C = W
 		if (C.get_amount() < 1)
-			to_chat(user, "<span class='warning'>You need one length of coil to wire the airlock assembly.</span>")
+			to_chat(user, SPAN_WARNING("You need one length of coil to wire the airlock assembly."))
 			return
 		user.visible_message("[user] wires the airlock assembly.", "You start to wire the airlock assembly.")
 		if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && state == 0 && anchored)

@@ -515,7 +515,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				to_chat(user, SPAN_NOTICE("You put a [W] in to \the [src]"))
 				update_icon()
 			else
-				to_chat(user, "<span class='warning'>\The [src] is full.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] is full."))
 	else
 		if(istype(W,/obj/item/ammo_magazine/handful))
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
@@ -550,17 +550,17 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = I
 		if(!isturf(loc))
-			to_chat(user, "<span class='warning'>[src] must be on the ground to be used.</span>")
+			to_chat(user, SPAN_WARNING("[src] must be on the ground to be used."))
 			return
 		if(AM.flags_magazine & AMMUNITION_REFILLABLE)
 			if(default_ammo != AM.default_ammo)
-				to_chat(user, "<span class='warning'>Those aren't the same rounds. Better not mix them up.</span>")
+				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))
 				return
 			if(caliber != AM.caliber)
-				to_chat(user, "<span class='warning'>The rounds don't match up. Better not mix them up.</span>")
+				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
 			if(AM.current_rounds == AM.max_rounds)
-				to_chat(user, "<span class='warning'>[AM] is already full.</span>")
+				to_chat(user, SPAN_WARNING("[AM] is already full."))
 				return
 			if(!do_after(user,15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
@@ -576,10 +576,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				to_chat(user, SPAN_NOTICE("You put [S] rounds in [AM]."))
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
 			if(caliber != AM.caliber)
-				to_chat(user, "<span class='warning'>The rounds don't match up. Better not mix them up.</span>")
+				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
 			if(bullet_amount == max_bullet_amount)
-				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				to_chat(user, SPAN_WARNING("[src] is full!"))
 				return
 			playsound(loc, 'sound/weapons/gun_revolver_load3.ogg', 25, 1)
 			var/S = min(AM.current_rounds, max_bullet_amount - bullet_amount)

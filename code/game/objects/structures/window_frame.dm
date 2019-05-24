@@ -70,7 +70,7 @@
 	if(istype(W, sheet_type))
 		var/obj/item/stack/sheet/sheet = W
 		if(sheet.get_amount() < 2)
-			to_chat(user, "<span class='warning'>You need more [W.name] to install a new window.</span>")
+			to_chat(user, SPAN_WARNING("You need more [W.name] to install a new window."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."), \
 		SPAN_NOTICE("You start installing a new window on the frame."))
@@ -99,7 +99,7 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level >= GRAB_AGGRESSIVE)
 				if(get_dist(src, M) > 1)
-					to_chat(user, "<span class='warning'>[M] needs to be next to [src].</span>")
+					to_chat(user, SPAN_WARNING("[M] needs to be next to [src]."))
 				else
 					if(user.action_busy)
 						return
@@ -109,11 +109,11 @@
 					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc)
 						return
 					M.KnockDown(2)
-					user.visible_message("<span class='warning'>[user] pulls [M] onto [src].</span>",
+					user.visible_message(SPAN_WARNING("[user] pulls [M] onto [src]."),
 					SPAN_NOTICE("You pull [M] onto [src]."))
 					M.forceMove(loc)
 			else
-				to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 	else
 		. = ..()
 
@@ -130,7 +130,7 @@
 
 /obj/structure/window_frame/almayer/requisitions/attackby(obj/item/W, mob/living/user)
 	if(istype(W, sheet_type))
-		to_chat(user, "<span class='warning'>You can't repair this window.</span>")
+		to_chat(user, SPAN_WARNING("You can't repair this window."))
 		return
 	..()
 

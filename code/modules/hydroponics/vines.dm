@@ -79,12 +79,12 @@
 					buckled_mob.visible_message(\
 						SPAN_NOTICE("[user.name] frees [buckled_mob.name] from [src]."),\
 						SPAN_NOTICE("[user.name] frees you from [src]."),\
-						"<span class='warning'>You hear shredding and ripping.</span>")
+						SPAN_WARNING("You hear shredding and ripping."))
 				else
 					buckled_mob.visible_message(\
 						SPAN_NOTICE("[buckled_mob.name] struggles free of [src]."),\
 						SPAN_NOTICE("You untangle [src] from around yourself."),\
-						"<span class='warning'>You hear shredding and ripping.</span>")
+						SPAN_WARNING("You hear shredding and ripping."))
 			unbuckle()
 			return 1
 		else
@@ -92,7 +92,7 @@
 			user.visible_message(\
 				SPAN_NOTICE("[user.name] [text] at [src]."),\
 				SPAN_NOTICE("You [text] at [src]."),\
-				"<span class='warning'>You hear shredding and ripping.</span>")
+				SPAN_WARNING("You hear shredding and ripping."))
 	return 0
 
 /obj/effect/plantsegment/proc/grow()
@@ -126,7 +126,7 @@
 				V.loc = src.loc
 				V.update_canmove()
 				src.buckled_mob = V
-				to_chat(V, "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around you!</span>")
+				to_chat(V, SPAN_DANGER("The vines [pick("wind", "tangle", "tighten")] around you!"))
 
 		// FEED ME, SEYMOUR.
 		if(buckled_mob && seed && (buckled_mob.stat != DEAD)) //Don't bother with a dead mob.
@@ -137,7 +137,7 @@
 
 			// Drink some blood/cause some brute.
 			if(seed.carnivorous == 2)
-				to_chat(buckled_mob, "<span class='danger'>\The [src] pierces your flesh greedily!</span>")
+				to_chat(buckled_mob, SPAN_DANGER("\The [src] pierces your flesh greedily!"))
 
 				var/damage = rand(round(seed.potency/2),seed.potency)
 				if(!istype(H))
@@ -158,7 +158,7 @@
 
 			// Inject some chems.
 			if(seed.chems && seed.chems.len && istype(H))
-				to_chat(H, "<span class='danger'>You feel something seeping into your skin!</span>")
+				to_chat(H, SPAN_DANGER("You feel something seeping into your skin!"))
 				for(var/rid in seed.chems)
 					var/injecting = min(5,max(1,seed.potency/5))
 					H.reagents.add_reagent(rid,injecting)

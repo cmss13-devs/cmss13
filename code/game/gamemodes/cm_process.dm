@@ -138,14 +138,13 @@ of predators), but can be added to include variant game modes (like humans vs. h
 //Spawns a larva in an appropriate location
 /datum/game_mode/proc/spawn_latejoin_larva()
 	var/mob/living/carbon/Xenomorph/Larva/new_xeno = new /mob/living/carbon/Xenomorph/Larva(pick(xeno_spawn))
-	new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
-	"<span class='xenodanger'>You burrow out of the ground and awaken from your slumber. For the Hive!</span>")
+	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
+	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 //Disperses fog, doing so gradually.
 /datum/game_mode/proc/disperse_fog()
 	set waitfor = 0
-	//to_world("<span class='boldnotice'>The fog north of the colony is starting to recede.</span>") //Let's try it without an announcement.
 	flags_round_type &= ~MODE_FOG_ACTIVATED
 	var/i
 	for(i in round_fog)
@@ -280,13 +279,13 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 		for(var/mob/M in player_list)
 			if(isXeno(M))
 				M << sound(get_sfx("queen"), wait = 0, volume = 50)
-				to_chat(M, "<span class='xenoannounce'>The Queen Mother reaches into your mind from worlds away.</span>")
+				to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 				var/metalhive_hosts = "[numHostsShip ? "approximately [numHostsShip]":"no"]"
 				var/plural = "[!numHostsShip || numHostsShip > 1 ? "s":""]"
 				var/metalhive_location = "[numHostsShip&&RandomHostsShipLocation?", including one in [RandomHostsShipLocation],":""]"
 				var/planet_hosts = "[numHostsPlanet ? "[numHostsPlanet]":"none"]"
 				var/planet_location = "[numHostsPlanet&&RandomHostsPlanetLocation?", including one in [RandomHostsPlanetLocation]":""]"
-				to_chat(M, "<span class='xenoannounce'>To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].</span>")
+				to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense [metalhive_hosts] host[plural] in the metal hive [metalhive_location] and [planet_hosts] scattered elsewhere[planet_location]."))
 
 
 	if(world.time > nextHumanBioscan)

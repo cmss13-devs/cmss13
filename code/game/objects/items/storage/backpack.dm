@@ -93,10 +93,10 @@
 
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(crit_fail)
-			to_chat(user, "<span class='danger'>The Bluespace generator isn't working.</span>")
+			to_chat(user, SPAN_DANGER("The Bluespace generator isn't working."))
 			return
 		if(istype(W, /obj/item/storage/backpack/holding) && !W.crit_fail)
-			to_chat(user, "<span class='danger'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
+			to_chat(user, SPAN_DANGER("The Bluespace interfaces of the two devices conflict and malfunction."))
 			qdel(W)
 			return
 		..()
@@ -104,9 +104,9 @@
 	proc/failcheck(mob/user as mob)
 		if (prob(src.reliability)) return 1 //No failure
 		if (prob(src.reliability))
-			to_chat(user, "<span class='danger'>The Bluespace portal resists your attempt to add another item.</span>") //light failure
+			to_chat(user, SPAN_DANGER("The Bluespace portal resists your attempt to add another item.")) //light failure
 		else
-			to_chat(user, "<span class='danger'>The Bluespace generator malfunctions!</span>")
+			to_chat(user, SPAN_DANGER("The Bluespace generator malfunctions!"))
 			for (var/obj/O in src.contents) //it broke, delete what was in it
 				qdel(O)
 			crit_fail = 1
@@ -374,7 +374,7 @@
 	if (!user)
 		return 0
 
-	to_chat(user, "<span class='warning'>Your cloak's camouflage has deactivated!</span>")
+	to_chat(user, SPAN_WARNING("Your cloak's camouflage has deactivated!"))
 	camo_active = 0
 
 	for (var/mob/O in oviewers(user))
@@ -440,7 +440,7 @@
 		if(istype(W, /obj/item/tool/weldingtool))
 			var/obj/item/tool/weldingtool/T = W
 			if(T.welding)
-				to_chat(user, "<span class='warning'>That was close! However you realized you had the welder on and prevented disaster.</span>")
+				to_chat(user, SPAN_WARNING("That was close! However you realized you had the welder on and prevented disaster."))
 				return
 			if(!(T.get_fuel()==T.max_fuel) && reagents.total_volume)
 				reagents.trans_to(W, T.max_fuel)
@@ -471,9 +471,9 @@
 					playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 					to_chat(user, SPAN_NOTICE("You refill [F] with Fuel."))
 				else
-					to_chat(user, "<span class='warning'>[F] is full.</span>")
+					to_chat(user, SPAN_WARNING("[F] is full."))
 			else
-				to_chat(user, "<span class='warning'>Nothing to refill.</span>")
+				to_chat(user, SPAN_WARNING("Nothing to refill."))
 	. = ..()
 
 /obj/item/storage/backpack/marine/engineerpack/afterattack(obj/O as obj, mob/user as mob, proximity)

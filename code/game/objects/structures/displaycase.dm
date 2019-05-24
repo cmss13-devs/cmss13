@@ -70,10 +70,10 @@
 		update_icon()
 		return
 	else
-		usr << text(SPAN_NOTICE("You kick the display case."))
+		to_chat(user, SPAN_NOTICE("You kick the display case."))
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
-				O << text("<span class='danger'>[] kicks the display case.</span>", usr)
+				to_chat(O, SPAN_DANGER("[user] kicks the display case."))
 		src.health -= 2
 		healthcheck()
 		return

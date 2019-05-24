@@ -49,7 +49,7 @@
 		to_chat(user, SPAN_NOTICE("Close the locker first."))
 		return
 	if(src.broken)
-		to_chat(user, "<span class='warning'>The locker appears to be broken.</span>")
+		to_chat(user, SPAN_WARNING("The locker appears to be broken."))
 		return
 	if(user.loc == src)
 		to_chat(user, SPAN_NOTICE("You can't reach the lock from inside."))
@@ -101,7 +101,7 @@
 		icon_state = icon_off
 		flick(icon_broken, src)
 		for(var/mob/O in viewers(user, 3))
-			O.show_message("<span class='warning'>The locker has been broken by [user] with an electromagnetic card!</span>", 1, "You hear a faint electrical spark.", 2)
+			O.show_message(SPAN_WARNING("The locker has been broken by [user] with an electromagnetic card!"), 1, "You hear a faint electrical spark.", 2)
 	else if(istype(W,/obj/item/packageWrap) || istype(W,/obj/item/tool/weldingtool))
 		return ..(W,user)
 	else
@@ -131,7 +131,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/secure_closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()

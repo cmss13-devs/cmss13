@@ -43,7 +43,7 @@
 /obj/structure/mopbucket/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop))
 		if(reagents.total_volume < 1)
-			to_chat(user, "<span class='warning'>[src] is out of water!</span>")
+			to_chat(user, SPAN_WARNING("[src] is out of water!"))
 		else
 			reagents.trans_to(I, 5)
 			to_chat(user, SPAN_NOTICE("You wet [I] in [src]."))

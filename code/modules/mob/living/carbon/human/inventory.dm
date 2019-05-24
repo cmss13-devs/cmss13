@@ -14,7 +14,7 @@
 			else
 				update_inv_r_hand(0)
 		else
-			to_chat(H, "<span class='danger'>You are unable to equip that.</span>")
+			to_chat(H, SPAN_DANGER("You are unable to equip that."))
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
@@ -190,7 +190,7 @@
 	if(!equipping && istype(I,/obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/F = I
 		if(F.stat != DEAD && !F.sterile && !(status_flags & XENO_HOST)) //Huggered but not impregnated, deal damage.
-			visible_message("<span class='danger'>[F] frantically claws at [src]'s face!</span>","<span class='danger'>[F] frantically claws at your face! Auugh!</span>")
+			visible_message(SPAN_DANGER("[F] frantically claws at [src]'s face!"),SPAN_DANGER("[F] frantically claws at your face! Auugh!"))
 			adjustBruteLossByPart(25,"head")
 	name = get_visible_name() // doing this without a check, still cheaper than doing it every Life() tick -spookydonut
 	if(I.flags_inv_hide & (HIDEALLHAIR|HIDETOPHAIR|HIDELOWHAIR))
@@ -372,7 +372,7 @@
 			r_store.update_icon()
 
 		else
-			to_chat(src, "<span class='danger'>You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it...</span>")
+			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
 
 	return 1
@@ -427,15 +427,15 @@
 	if(I.flags_item & ITEM_ABSTRACT)
 		return
 	if(I.flags_item & NODROP)
-		to_chat(src, "<span class='warning'>You can't remove \the [I.name], it appears to be stuck!</span>")
+		to_chat(src, SPAN_WARNING("You can't remove \the [I.name], it appears to be stuck!"))
 		return
 	if(I.flags_inventory & CANTSTRIP)
-		to_chat(src, "<span class='warning'>You're having difficulty removing \the [I.name].</span>")
+		to_chat(src, SPAN_WARNING("You're having difficulty removing \the [I.name]."))
 		return
 	M.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their [I.name] ([slot_to_process]) attempted to be removed by [name] ([ckey])</font>"
 	attack_log += "\[[time_stamp()]\] <font color='red'>Attempted to remove [M.name]'s ([M.ckey]) [I.name] ([slot_to_process])</font>"
 
-	M.visible_message("<span class='danger'>[src] tries to remove [M]'s [I.name].</span>", \
+	M.visible_message(SPAN_DANGER("[src] tries to remove [M]'s [I.name]."), \
 					"<span class='userdanger'>[src] tries to remove [M]'s [I.name].</span>", null, 5)
 	I.add_fingerprint(src)
 	if(do_after(src, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -450,13 +450,13 @@
 /mob/living/carbon/human/stripPanelEquip(obj/item/I, mob/M, slot_to_process)
 	if(I && !(I.flags_item & ITEM_ABSTRACT))
 		if(I.flags_item & NODROP)
-			to_chat(src, "<span class='warning'>You can't put \the [I.name] on [M], it's stuck to your hand!</span>")
+			to_chat(src, SPAN_WARNING("You can't put \the [I.name] on [M], it's stuck to your hand!"))
 			return
 		if(I.flags_inventory & CANTSTRIP)
-			to_chat(src, "<span class='warning'>You're having difficulty putting \the [I.name] on [M].</span>")
+			to_chat(src, SPAN_WARNING("You're having difficulty putting \the [I.name] on [M]."))
 			return
 		if(!I.mob_can_equip(M, slot_to_process, TRUE))
-			to_chat(src, "<span class='warning'>You can't put \the [I.name] on [M]!</span>")
+			to_chat(src, SPAN_WARNING("You can't put \the [I.name] on [M]!"))
 			return
 		visible_message(SPAN_NOTICE("[src] tries to put [I] on [M]."), null, 5)
 		if(do_after(src, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, M, INTERRUPT_MOVED, BUSY_ICON_GENERIC))

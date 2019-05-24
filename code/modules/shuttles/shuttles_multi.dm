@@ -84,22 +84,18 @@
 	src.add_fingerprint(usr)
 
 	var/datum/shuttle/multi_shuttle/MS = shuttle_controller.shuttles[shuttle_tag]
-	if(!istype(MS)) return
-
-	//to_world("multi_shuttle: last_departed=[MS.last_departed], origin=[MS.origin], interim=[MS.interim], travel_time=[MS.move_time]")
-
-	if (MS.moving_status != SHUTTLE_IDLE)
+	if(!istype(MS))
 		to_chat(usr, SPAN_NOTICE(" [shuttle_tag] vessel is moving."))
 		return
 
 	if(href_list["start"])
 
 		if(MS.at_origin)
-			to_chat(usr, "<span class='danger'>You are already at your home base.</span>")
+			to_chat(usr, SPAN_DANGER("You are already at your home base."))
 			return
 
 		if(!MS.return_warning)
-			to_chat(usr, "<span class='danger'>Returning to your home base will end your mission. If you are sure, press the button again.</span>")
+			to_chat(usr, SPAN_DANGER("Returning to your home base will end your mission. If you are sure, press the button again."))
 			//TODO: Actually end the mission.
 			MS.return_warning = 1
 			return
@@ -111,11 +107,11 @@
 	if(href_list["toggle_cloak"])
 
 		MS.cloaked = !MS.cloaked
-		to_chat(usr, "<span class='danger'>Ship stealth systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be warned of our arrival.</span>")
+		to_chat(usr, SPAN_DANGER("Ship stealth systems have been [(MS.cloaked ? "activated. The station will not" : "deactivated. The station will")] be warned of our arrival."))
 
 	if(href_list["move_multi"])
 		if((MS.last_move + MS.cooldown*10) > world.time)
-			to_chat(usr, "<span class='danger'>The ship's drive is inoperable while the engines are charging.</span>")
+			to_chat(usr, SPAN_DANGER("The ship's drive is inoperable while the engines are charging."))
 			return
 
 		var/choice = input("Select a destination.") as null|anything in MS.destinations

@@ -48,8 +48,8 @@
 	attack_verb = list("stabbed")
 
 	suicide_act(mob/user)
-		viewers(user) << pick("<span class='danger'><b>[user] is stabbing the [src.name] into \his temple! It looks like \he's trying to commit suicide.</b></span>", \
-							"<span class='danger'><b>[user] is stabbing the [src.name] into \his heart! It looks like \he's trying to commit suicide.</b></span>")
+		viewers(user) << pick(SPAN_DANGER("<b>[user] is stabbing the [src.name] into \his temple! It looks like \he's trying to commit suicide.</b>"), \
+							SPAN_DANGER("<b>[user] is stabbing the [src.name] into \his heart! It looks like \he's trying to commit suicide.</b>"))
 		return(BRUTELOSS)
 
 /obj/item/tool/screwdriver/New()
@@ -208,18 +208,18 @@
 		if(S.brute_dam && welding)
 			remove_fuel(1,user)
 			if(self_fixing)
-				user.visible_message("<span class='warning'>\The [user] begins fixing some dents on their [S.display_name].</span>", \
-					"<span class='warning'>You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty.</span>")
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [S.display_name]."), \
+					SPAN_WARNING("You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty."))
 				if(!do_after(user,60, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
 			S.heal_damage(15,0,0,1)
 			H.UpdateDamageIcon()
-			user.visible_message("<span class='warning'>\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src].</span>", \
-								"<span class='warning'>You patch some dents on \the [H]'s [S.display_name] with \the [src].</span>")
+			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
+								SPAN_WARNING("You patch some dents on \the [H]'s [S.display_name] with \the [src]."))
 			return
 		else
-			to_chat(user, "<span class='warning'>Nothing to fix!</span>")
+			to_chat(user, SPAN_WARNING("Nothing to fix!"))
 
 	else
 		return ..()
@@ -236,7 +236,7 @@
 		else
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
-			to_chat(user, "<span class='danger'>You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done.</span>")
+			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
 			var/obj/structure/reagent_dispensers/fueltank/tank = O
 			tank.explode()
 		return
@@ -308,7 +308,7 @@
 			processing_objects.Add(src)
 		else
 			if(M)
-				to_chat(M, "<span class='warning'>[src] needs more fuel!</span>")
+				to_chat(M, SPAN_WARNING("[src] needs more fuel!"))
 			return
 	else
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
@@ -322,7 +322,7 @@
 			if(!message)
 				to_chat(M, SPAN_NOTICE("You switch [src] off."))
 			else
-				to_chat(M, "<span class='warning'>[src] shuts off!</span>")
+				to_chat(M, SPAN_WARNING("[src] shuts off!"))
 			M.SetLuminosity(-2)
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
@@ -346,31 +346,31 @@
 			return
 		switch(safety)
 			if(1)
-				to_chat(user, "<span class='danger'>Your eyes sting a little.</span>")
+				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.damage += rand(1, 2)
 				if(E.damage > 12)
 					H.eye_blurry += rand(3,6)
 			if(0)
-				to_chat(user, "<span class='warning'>Your eyes burn.</span>")
+				to_chat(user, SPAN_WARNING("Your eyes burn."))
 				E.damage += rand(2, 4)
 				if(E.damage > 10)
 					E.damage += rand(4,10)
 			if(-1)
-				to_chat(user, "<span class='warning'>Your thermals intensify [src]'s glow. Your eyes itch and burn severely.</span>")
+				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
 				H.eye_blurry += rand(12,20)
 				E.damage += rand(12, 16)
 		if(safety<2)
 
 			if (E.damage >= E.min_broken_damage)
-				to_chat(H, "<span class='warning'>You go blind! Maybe welding without protection wasn't such a great idea...</span>")
+				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
 				return
 
 			if (E.damage >= E.min_bruised_damage)
-				to_chat(H, "<span class='warning'>Your vision starts blurring and your eyes hurt terribly!</span>")
+				to_chat(H, SPAN_WARNING("Your vision starts blurring and your eyes hurt terribly!"))
 				return
 
 			if(E.damage > 5)
-				to_chat(H, "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>")
+				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return
 
 
@@ -472,14 +472,14 @@
 		if(T.welding & prob(50))
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion.")
 			log_game("[key_name(user)] triggered a fueltank explosion.")
-			to_chat(user, "<span class='danger'>That was stupid of you.</span>")
+			to_chat(user, SPAN_DANGER("That was stupid of you."))
 			explosion(get_turf(src),-1,0,2)
 			if(src)
 				qdel(src)
 			return
 		else
 			if(T.welding)
-				to_chat(user, "<span class='danger'>That was close!</span>")
+				to_chat(user, SPAN_DANGER("That was close!"))
 			src.reagents.trans_to(W, T.max_fuel)
 			to_chat(user, SPAN_NOTICE(" Welder refilled!"))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)

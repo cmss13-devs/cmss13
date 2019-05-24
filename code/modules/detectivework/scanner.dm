@@ -11,7 +11,7 @@
 
 /obj/item/device/detective_scanner/attack(mob/living/carbon/human/M as mob, mob/user as mob)
 	if (!ishuman(M))
-		to_chat(user, "<span class='warning'>[M] is not human and cannot have the fingerprints.</span>")
+		to_chat(user, SPAN_WARNING("[M] is not human and cannot have the fingerprints."))
 		flick("forensic0",src)
 		return 0
 	if (M.gloves)
@@ -67,7 +67,7 @@
 				return
 	if ((!A.fingerprints || !A.fingerprints.len) && !A.suit_fibers && !A.blood_DNA)
 		user.visible_message("\The [user] scans \the [A] with \a [src], the air around [user.gender == MALE ? "him" : "her"] humming[prob(70) ? " gently." : "."]" ,\
-		"<span class='warning'>Unable to locate any fingerprints, materials, fibers, or blood on [A]!</span>",\
+		SPAN_WARNING("Unable to locate any fingerprints, materials, fibers, or blood on [A]!"),\
 		"You hear a faint hum of electrical equipment.")
 		flick("forensic0",src)
 		return 0

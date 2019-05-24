@@ -26,7 +26,7 @@
 	var/mob/living/carbon/human/H = A
 
 	if (last_chew + 75 > world.time)
-		to_chat(H, "<span class='danger'>You can't bite your hand again yet...</span>")
+		to_chat(H, SPAN_DANGER("You can't bite your hand again yet..."))
 		return
 
 
@@ -39,8 +39,8 @@
 	var/datum/limb/O = H.get_limb(H.hand?"l_hand":"r_hand")
 	if (!O) return
 
-	var/s = "<span class='danger'>[H.name] chews on \his [O.display_name]!</span>"
-	H.visible_message(s, "<span class='danger'>You chew on your [O.display_name]!</span>")
+	var/s = SPAN_DANGER("[H.name] chews on \his [O.display_name]!")
+	H.visible_message(s, SPAN_DANGER("You chew on your [O.display_name]!"))
 	H.attack_log += text("\[[time_stamp()]\] <font color='red'>[s] ([H.ckey])</font>")
 	log_attack("[s] ([H.ckey])")
 

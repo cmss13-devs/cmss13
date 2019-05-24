@@ -46,11 +46,11 @@
 	..()
 	if(get_dist(user, src) > 2 && user != loc) return
 	if(reagents && reagents.reagent_list.len)
-		to_chat(user, "<span class='info'>It contains [reagents.total_volume] units of liquid.</span>")
+		to_chat(user, SPAN_INFO("It contains [reagents.total_volume] units of liquid."))
 	else
-		to_chat(user, "<span class='info'>It is empty.</span>")
+		to_chat(user, SPAN_INFO("It is empty."))
 	if(!is_open_container())
-		to_chat(user, "<span class='info'>An airtight lid seals it completely.</span>")
+		to_chat(user, SPAN_INFO("An airtight lid seals it completely."))
 
 /obj/item/reagent_container/glass/attack_self()
 	..()
@@ -84,7 +84,7 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [M.name] ([M.key]). Reagents: [contained]</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) splashed [M.name] ([M.key]) with [src.name]. Reagents: [contained] (INTENT: [uppertext(user.a_intent)]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
 
-		visible_message("<span class='warning'>[target] has been splashed with something by [user]!</span>")
+		visible_message(SPAN_WARNING("[target] has been splashed with something by [user]!"))
 		reagents.reaction(target, TOUCH)
 		spawn(5) reagents.clear_reagents()
 		return
@@ -92,11 +92,11 @@
 		target.add_fingerprint(user)
 
 		if(!target.reagents.total_volume && target.reagents)
-			to_chat(user, "<span class='warning'>[target] is empty.</span>")
+			to_chat(user, SPAN_WARNING("[target] is empty."))
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
 
 		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
@@ -105,11 +105,11 @@
 	else if(target.is_open_container() && target.reagents) //Something like a glass. Player probably wants to transfer TO it.
 
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>[src] is empty.</span>")
+			to_chat(user, SPAN_WARNING("[src] is empty."))
 			return
 
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>[target] is full.</span>")
+			to_chat(user, SPAN_WARNING("[target] is full."))
 			return
 
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
@@ -129,7 +129,7 @@
 	if(istype(W, /obj/item/tool/pen) || istype(W, /obj/item/device/flashlight/pen))
 		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", label_text))
 		if(length(tmp_label) > MAX_NAME_LEN)
-			to_chat(user, "<span class='warning'>The label can be at most [MAX_NAME_LEN] characters long.</span>")
+			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
 			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
 								 SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))

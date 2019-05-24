@@ -15,7 +15,6 @@
 	var/max_lines = 50
 
 /obj/item/device/violin/proc/playnote(var/note as text)
-	//to_world("Note: [note]")
 	var/soundfile
 	/*BYOND loads resource files at compile time if they are ''. This means you can't really manipulate them dynamically.
 	Tried doing it dynamically at first but its more trouble than its worth. Would have saved many lines tho.*/
@@ -204,16 +203,13 @@
 		for(var/line in song.lines)
 			//world << line
 			for(var/beat in text2list(lowertext(line), ","))
-				//to_world("beat: [beat]")
 				var/list/notes = text2list(beat, "/")
 				for(var/note in text2list(notes[1], "-"))
-					//to_world("note: [note]")
 					if(!playing || !isliving(loc))//If the violin is playing, or isn't held by a person
 						playing = 0
 						return
 					if(lentext(note) == 0)
 						continue
-					//to_world("Parse: [copytext(note,1,2)]")
 					var/cur_note = text2ascii(note) - 96
 					if(cur_note < 1 || cur_note > 7)
 						continue

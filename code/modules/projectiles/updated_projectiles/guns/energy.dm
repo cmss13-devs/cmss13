@@ -51,7 +51,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_MP)
-			to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
 /obj/item/weapon/gun/energy/taser/load_into_chamber()
@@ -138,14 +138,14 @@
 
 /obj/item/weapon/gun/energy/plasmarifle/unique_action(mob/user)
 	if(!isYautja(user))
-		to_chat(user, "<span class='warning'>You have no idea how this thing works!</span>")
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 	..()
 	zoom(user)
 
 /obj/item/weapon/gun/energy/plasmarifle/able_to_fire(mob/user)
 	if(!isYautja(user))
-		to_chat(user, "<span class='warning'>You have no idea how this thing works!</span>")
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 
 	return ..()
@@ -180,7 +180,7 @@
 			charge_time = 0
 			to_chat(user, SPAN_NOTICE("Your bracers absorb some of the released energy."))
 			update_icon()
-	else to_chat(user, "<span class='warning'>The weapon's not charged enough with ambient energy!</span>")
+	else to_chat(user, SPAN_WARNING("The weapon's not charged enough with ambient energy!"))
 
 
 
@@ -245,7 +245,7 @@
 
 /obj/item/weapon/gun/energy/plasmapistol/able_to_fire(mob/user)
 	if(!isYautja(user))
-		to_chat(user, "<span class='warning'>You have no idea how this thing works!</span>")
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 	else
 		return ..()
@@ -350,7 +350,7 @@
 /obj/item/weapon/gun/energy/plasma_caster/able_to_fire(mob/user)
 	if(!source)	return
 	if(!isYautja(user))
-		to_chat(user, "<span class='warning'>You have no idea how this thing works!</span>")
+		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 
 	return ..()

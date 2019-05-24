@@ -604,7 +604,6 @@
 	var/list/datum/game_mode/runnable_modes = new
 	for (var/T in (typesof(/datum/game_mode) - /datum/game_mode))
 		var/datum/game_mode/M = new T()
-		//to_world("DEBUG: [T], tag=[M.config_tag], prob=[probabilities[M.config_tag]]")
 		if (!(M.config_tag in modes))
 			qdel(M)
 			continue
@@ -613,5 +612,4 @@
 			continue
 		if (M.can_start())
 			runnable_modes[M] = probabilities[M.config_tag]
-			//to_world("DEBUG: runnable_mode\[[runnable_modes.len]\] = [M.config_tag]")
 	return runnable_modes

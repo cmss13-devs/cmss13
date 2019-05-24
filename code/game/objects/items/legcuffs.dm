@@ -42,12 +42,12 @@
 							armed = 0
 							icon_state = "beartrap0"
 							playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-							to_chat(H, "<span class='danger'><B>You step on \the [src]!</B></span>")
+							to_chat(H, SPAN_DANGER("<B>You step on \the [src]!</B>"))
 							feedback_add_details("handcuffs","B") //Yes, I know they're legcuffs. Don't change this, no need for an extra variable. The "B" is used to tell them apart.
 							for(var/mob/O in viewers(H, null))
 								if(O == H)
 									continue
-								O.show_message("<span class='danger'><B>[H] steps on \the [src].</B></span>", 1)
+								O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade) && !istype(AM, /mob/living/simple_animal/hostile/viscerator))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
@@ -136,7 +136,7 @@
 							for(var/mob/O in viewers(H, null))
 								if(O == H)
 									continue
-								O.show_message("<span class='warning'>\icon[src] <B>[H] gets caught in \the [src].</B></span>", 1)
+								O.show_message(SPAN_WARNING("\icon[src] <B>[H] gets caught in \the [src].</B>"), 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade) && !istype(AM, /mob/living/simple_animal/hostile/viscerator))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM

@@ -36,7 +36,7 @@
 		var/mob/living/carbon/human/wielder = user
 		var/datum/limb/hand = wielder.get_limb(check_hand)
 		if( !istype(hand) || !hand.is_usable() )
-			to_chat(user, "<span class='warning'>Your other hand can't hold [src]!</span>")
+			to_chat(user, SPAN_WARNING("Your other hand can't hold [src]!"))
 			return
 
 	flags_item 	   ^= WIELDED
@@ -86,7 +86,7 @@
 /obj/item/weapon/twohanded/attack_self(mob/user)
 	..()
 	if(ismonkey(user))
-		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully!</span>")
+		to_chat(user, SPAN_WARNING("It's too heavy for you to wield fully!"))
 		return
 
 	if(flags_item & WIELDED) unwield(user)
@@ -207,7 +207,7 @@
 /obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
 	if((CLUMSY in user.mutations) && (flags_item & WIELDED) &&prob(40))
-		to_chat(user, "<span class='highdanger'>You twirl around a bit before losing your balance and impaling yourself on [src].</span>")
+		to_chat(user, SPAN_HIGHDANGER("You twirl around a bit before losing your balance and impaling yourself on [src]."))
 		user.take_limb_damage(20,25)
 		return
 	if((flags_item & WIELDED) && prob(50))

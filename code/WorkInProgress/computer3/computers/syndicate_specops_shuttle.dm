@@ -58,7 +58,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 	if (syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return
 
 	if (!syndicate_elite_can_move())
-		to_chat(usr, "<span class='danger'>The Syndicate Elite shuttle is unable to leave.</span>")
+		to_chat(usr, SPAN_DANGER("The Syndicate Elite shuttle is unable to leave."))
 		return
 
 		sleep(600)
@@ -166,7 +166,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 
 	for(var/turf/T in get_area_turfs(end_location) )
 		var/mob/M = locate(/mob) in T
-		to_chat(M, "<span class='warning'>You have arrived to [station_name]. Commence operation!</span>")
+		to_chat(M, SPAN_WARNING("You have arrived to [station_name]. Commence operation!"))
 
 /proc/syndicate_elite_can_move()
 	if(syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return 0
@@ -189,11 +189,11 @@ var/syndicate_elite_shuttle_timeleft = 0
 
 /obj/machinery/computer3/syndicate_elite_shuttle/attack_hand(var/mob/user as mob)
 	if(!allowed(user))
-		to_chat(user, "<span class='danger'>Access Denied.</span>")
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
 
 //	if (sent_syndicate_strike_team == 0)
-//		to_chat(usr, "<span class='danger'>The strike team has not yet deployed.</span>")
+//		to_chat(usr, SPAN_DANGER("The strike team has not yet deployed."))
 //		return
 
 	if(..())
@@ -233,7 +233,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 		if(syndicate_elite_shuttle_at_station || syndicate_elite_shuttle_moving_to_station || syndicate_elite_shuttle_moving_to_mothership) return
 
 		if (!specops_can_move())
-			to_chat(usr, "<span class='danger'>The Syndicate Elite shuttle is unable to leave.</span>")
+			to_chat(usr, SPAN_DANGER("The Syndicate Elite shuttle is unable to leave."))
 			return
 
 		to_chat(usr, SPAN_NOTICE(" The Syndicate Elite shuttle will arrive on [station_name] in [(SYNDICATE_ELITE_MOVETIME/10)] seconds."))

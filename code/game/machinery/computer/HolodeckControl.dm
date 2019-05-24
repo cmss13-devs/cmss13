@@ -68,11 +68,11 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
-				to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
 			M.forceMove(loc)
 			M.KnockDown(5)
-			user.visible_message("<span class='danger'>[user] puts [M] on the table.</span>")
+			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
 		return
 
 	if (istype(W, /obj/item/tool/wrench))
@@ -144,7 +144,7 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
-				to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 				return
 			M.forceMove(loc)
 			M.KnockDown(5)
@@ -152,7 +152,7 @@
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message("<span class='danger'>[user] dunks [M] into the [src]!</span>")
+			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
@@ -176,7 +176,7 @@
 					// no break, to update multiple scoreboards
 			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message("<span class='danger'>\the [I] bounces off of \the [src]'s rim!</span>", 3)
+			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), 3)
 		return 0
 	else
 		return ..()

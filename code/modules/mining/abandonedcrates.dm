@@ -75,11 +75,11 @@
 			else if (input == null || input > max || input < min)
 				to_chat(user, SPAN_NOTICE("You leave the crate alone."))
 			else
-				to_chat(user, "<span class='warning'>A red light flashes.</span>")
+				to_chat(user, SPAN_WARNING("A red light flashes."))
 				lastattempt = input
 				attempts--
 				if (attempts == 0)
-					to_chat(user, "<span class='danger'>The crate's anti-tamper system activates!</span>")
+					to_chat(user, SPAN_DANGER("The crate's anti-tamper system activates!"))
 					var/turf/T = get_turf(src.loc)
 					explosion(T, 0, 0, 0, 1)
 					qdel(src)
@@ -98,7 +98,7 @@
 		if (istype(W, /obj/item/device/multitool))
 			to_chat(user, SPAN_NOTICE("DECA-CODE LOCK REPORT:"))
 			if (attempts == 1)
-				to_chat(user, "<span class='warning'>* Anti-Tamper Bomb will activate on next failed access attempt.</span>")
+				to_chat(user, SPAN_WARNING("* Anti-Tamper Bomb will activate on next failed access attempt."))
 			else
 				to_chat(user, SPAN_NOTICE("* Anti-Tamper Bomb will activate after [src.attempts] failed access attempts."))
 			if (lastattempt == null)

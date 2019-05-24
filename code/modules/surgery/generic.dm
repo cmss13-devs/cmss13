@@ -55,8 +55,8 @@
 	target.updatehealth()
 
 /datum/surgery_step/generic/incision_manager/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.display_name] with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.display_name] with \the [tool]!"), \
+	SPAN_WARNING("Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.display_name] with \the [tool]!"))
 	affected.createwound(CUT, 20)
 	affected.createwound(BURN, 15)
 	affected.update_wounds()
@@ -97,8 +97,8 @@
 	affected.update_wounds()
 
 /datum/surgery_step/generic/cut_with_laser/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.display_name] with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.display_name] with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.display_name] with \the [tool]!"))
 	affected.createwound(CUT, 7.5)
 	affected.createwound(BURN, 12.5)
 	affected.update_wounds()
@@ -137,8 +137,8 @@
 	target.updatehealth()
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, slicing open [target]'s [affected.display_name] in the wrong place with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, slicing open [target]'s [affected.display_name] in the wrong place with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing open [target]'s [affected.display_name] in the wrong place with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, slicing open [target]'s [affected.display_name] in the wrong place with \the [tool]!"))
 	affected.createwound(CUT, 10)
 	affected.update_wounds()
 
@@ -171,8 +171,8 @@
 	spread_germs_to_organ(affected, user)
 
 /datum/surgery_step/generic/clamp_bleeders/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!</span>",	\
-	"<span class='warning'>Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!</span>",)
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!"),	\
+	SPAN_WARNING("Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.display_name] with \the [tool]!"),)
 	affected.createwound(CUT, 10)
 	affected.update_wounds()
 
@@ -213,14 +213,14 @@
 
 /datum/surgery_step/generic/retract_skin/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
 	if(target_zone == "chest")
-		user.visible_message("<span class='warning'>[user]'s hand slips, damaging several organs in [target]'s torso with \the [tool]!</span>", \
-		"<span class='warning'>Your hand slips, damaging several organs in [target]'s torso with \the [tool]!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging several organs in [target]'s torso with \the [tool]!"), \
+		SPAN_WARNING("Your hand slips, damaging several organs in [target]'s torso with \the [tool]!"))
 	if(target_zone == "groin")
-		user.visible_message("<span class='warning'>[user]'s hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!</span>", \
-		"<span class='warning'>Your hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!"), \
+		SPAN_WARNING("Your hand slips, damaging several organs in [target]'s lower abdomen with \the [tool]!"))
 	else
-		user.visible_message("<span class='warning'>[user]'s hand slips, tearing the edges of the incision on [target]'s [affected.display_name] with \the [tool]!</span>", \
-		"<span class='warning'>Your hand slips, tearing the edges of the incision on [target]'s [affected.display_name] with \the [tool]!</span>")
+		user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing the edges of the incision on [target]'s [affected.display_name] with \the [tool]!"), \
+		SPAN_WARNING("Your hand slips, tearing the edges of the incision on [target]'s [affected.display_name] with \the [tool]!"))
 	target.apply_damage(12, BRUTE, affected, sharp = 1)
 	affected.update_wounds()
 
@@ -254,7 +254,7 @@
 	affected.status &= ~LIMB_BLEEDING
 
 /datum/surgery_step/generic/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, leaving a small burn on [target]'s [affected.display_name] with \the [tool]!"))
 	target.apply_damage(3, BURN, affected)
 	target.updatehealth()

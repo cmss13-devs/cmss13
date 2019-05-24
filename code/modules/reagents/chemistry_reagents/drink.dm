@@ -474,7 +474,7 @@
 				if(2 to INFINITY)
 					H.apply_effect(4,AGONY,0)
 					if(prob(5))
-						H.visible_message("<span class='warning'>[H] [pick("dry heaves!","coughs!","splutters!")]</span>")
+						H.visible_message(SPAN_WARNING("[H] [pick("dry heaves!","coughs!","splutters!")]"))
 						to_chat(H, "SPAN_WARNING(You feel like your insides are burning!)")
 						M.make_dizzy(20)
 	holder.remove_reagent("frostoil", 5)

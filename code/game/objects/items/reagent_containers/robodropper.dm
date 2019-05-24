@@ -15,11 +15,11 @@
 		if(filled)
 
 			if(target.reagents.total_volume >= target.reagents.maximum_volume)
-				to_chat(user, "<span class='danger'>[target] is full.</span>")
+				to_chat(user, SPAN_DANGER("[target] is full."))
 				return
 
 			if(!target.is_open_container() && !ismob(target) && !istype(target,/obj/item/reagent_container/food)) //You can inject humans and food but you cant remove the shit.
-				to_chat(user, "<span class='danger'>You cannot directly fill this object.</span>")
+				to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
 				return
 
 
@@ -46,7 +46,7 @@
 						trans = src.reagents.trans_to(safe_thing, amount_per_transfer_from_this)
 
 						for(var/mob/O in viewers(world.view, user))
-							O.show_message(text("<span class='danger'><B>[] tries to squirt something into []'s eyes, but fails!</B></span>", user, target), 1)
+							O.show_message(SPAN_DANGER("<B>[user] tries to squirt something into [target]'s eyes, but fails!</B>"), 1)
 						spawn(5)
 							src.reagents.reaction(safe_thing, TOUCH)
 
@@ -59,7 +59,7 @@
 
 
 				for(var/mob/O in viewers(world.view, user))
-					O.show_message(text("<span class='danger'><B>[] squirts something into []'s eyes!</B></span>", user, target), 1)
+					O.show_message(SPAN_DANGER("<B>[user] squirts something into [target]'s eyes!</B>"), 1)
 				src.reagents.reaction(target, TOUCH)
 
 				var/mob/M = target
@@ -81,11 +81,11 @@
 		else
 
 			if(!target.is_open_container() && !istype(target,/obj/structure/reagent_dispensers))
-				to_chat(user, "<span class='danger'>You cannot directly remove reagents from [target].</span>")
+				to_chat(user, SPAN_DANGER("You cannot directly remove reagents from [target]."))
 				return
 
 			if(!target.reagents.total_volume)
-				to_chat(user, "<span class='danger'>[target] is empty.</span>")
+				to_chat(user, SPAN_DANGER("[target] is empty."))
 				return
 
 			var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)

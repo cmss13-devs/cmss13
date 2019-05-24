@@ -48,7 +48,7 @@
 	if(alert != req_level && alert < req_level)
 		for(var/mob/living/L in contents)
 			L.loc = src.loc
-			to_chat(L, "<span class='warning'>You are forced out of [src]!</span>")
+			to_chat(L, SPAN_WARNING("You are forced out of [src]!"))
 		if(!locked)
 			locked = 1
 			state_change = 1

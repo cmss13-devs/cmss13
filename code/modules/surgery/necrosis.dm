@@ -39,8 +39,8 @@
 	affected.necro_surgery_stage = 1
 
 /datum/surgery_step/necro/fix_dead_tissue/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!"))
 	affected.createwound(CUT, 20, 1)
 	affected.update_wounds()
 
@@ -73,5 +73,5 @@
 	affected.necro_surgery_stage = 0
 
 /datum/surgery_step/treat_necrosis/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, applying \the [tool] to the wrong place in [target]'s [affected.display_name]!</span>" , \
-	"<span class='warning'>Your hand slips, applying \the [tool] to the wrong place in [target]'s [affected.display_name]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, applying \the [tool] to the wrong place in [target]'s [affected.display_name]!") , \
+	SPAN_WARNING("Your hand slips, applying \the [tool] to the wrong place in [target]'s [affected.display_name]!"))

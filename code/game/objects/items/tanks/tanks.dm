@@ -52,7 +52,7 @@
 
 	if ((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
 		for (var/mob/O in viewers(user, null))
-			to_chat(O, "<span class='danger'>[user] has used [W] on \icon[src] [src]</span>")
+			to_chat(O, SPAN_DANGER("[user] has used [W] on \icon[src] [src]"))
 
 		manipulated_by = user.real_name			//This person is aware of the contents of the tank.
 

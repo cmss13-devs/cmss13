@@ -19,9 +19,9 @@
 
 	//Messages - Saves me time if I want to change something.
 	var/noserver = "<span class='alert'>ALERT: No server detected.</span>"
-	var/incorrectkey = "<span class='warning'>ALERT: Incorrect decryption key!</span>"
+	var/incorrectkey = SPAN_WARNING("ALERT: Incorrect decryption key!")
 	var/defaultmsg = SPAN_NOTICE("Welcome. Please select an option.")
-	var/rebootmsg = "<span class='warning'>%$&(�: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!</span>"
+	var/rebootmsg = SPAN_WARNING("%$&(�: Critical %$$@ Error // !RestArting! <lOadiNg backUp iNput ouTput> - ?pLeaSe wAit!")
 
 	//Computer properties
 	var/screen = 0 		// 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
@@ -220,10 +220,10 @@
 
 	proc/BruteForce(mob/usr as mob)
 		if(isnull(linkedServer))
-			to_chat(usr, "<span class='warning'>Could not complete brute-force: Linked Server Disconnected!</span>")
+			to_chat(usr, SPAN_WARNING("Could not complete brute-force: Linked Server Disconnected!"))
 		else
 			var/currentKey = src.linkedServer.decryptkey
-			to_chat(usr, "<span class='warning'>Brute-force completed! The key is '[currentKey]'.</span>")
+			to_chat(usr, SPAN_WARNING("Brute-force completed! The key is '[currentKey]'."))
 		src.hacking = 0
 		src.active_state = normal_icon
 		src.screen = 0 // Return the screen back to normal

@@ -99,36 +99,36 @@
 
 	if(!damage)
 		if (acided_hole)
-			to_chat(user, "<span class='warning'>It looks fully intact, except there's a large hole that could've been caused by some sort of acid.</span>")
+			to_chat(user, SPAN_WARNING("It looks fully intact, except there's a large hole that could've been caused by some sort of acid."))
 		else
 			to_chat(user, SPAN_NOTICE("It looks fully intact."))
 	else
 		var/dam = damage / damage_cap
 		if(dam <= 0.3)
-			to_chat(user, "<span class='warning'>It looks slightly damaged.</span>")
+			to_chat(user, SPAN_WARNING("It looks slightly damaged."))
 		else if(dam <= 0.6)
-			to_chat(user, "<span class='warning'>It looks moderately damaged.</span>")
+			to_chat(user, SPAN_WARNING("It looks moderately damaged."))
 		else
-			to_chat(user, "<span class='danger'>It looks heavily damaged.</span>")
+			to_chat(user, SPAN_DANGER("It looks heavily damaged."))
 
 		if (acided_hole)
-			to_chat(user, "<span class='warning'>There's a large hole in the wall that could've been caused by some sort of acid.</span>")
+			to_chat(user, SPAN_WARNING("There's a large hole in the wall that could've been caused by some sort of acid."))
 
 	switch(d_state)
 		if(1)
-			to_chat(user, "<span class='info'>The outer plating has been sliced open. A screwdriver should remove the support lines.</span>")
+			to_chat(user, SPAN_INFO("The outer plating has been sliced open. A screwdriver should remove the support lines."))
 		if(2)
-			to_chat(user, "<span class='info'>The support lines have been removed. A blowtorch should slice through the metal cover.</span>")
+			to_chat(user, SPAN_INFO("The support lines have been removed. A blowtorch should slice through the metal cover."))
 		if(3)
-			to_chat(user, "<span class='info'>The metal cover has been sliced through. A crowbar should pry it off.</span>")
+			to_chat(user, SPAN_INFO("The metal cover has been sliced through. A crowbar should pry it off."))
 		if(4)
-			to_chat(user, "<span class='info'>The metal cover has been removed. A wrench will remove the anchor bolts.</span>")
+			to_chat(user, SPAN_INFO("The metal cover has been removed. A wrench will remove the anchor bolts."))
 		if(5)
-			to_chat(user, "<span class='info'>The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines.</span>")
+			to_chat(user, SPAN_INFO("The anchor bolts have been removed. Wirecutters will take care of the hydraulic lines."))
 		if(6)
-			to_chat(user, "<span class='info'>Hydraulic lines are gone. A crowbar will pry off the inner sheath.</span>")
+			to_chat(user, SPAN_INFO("Hydraulic lines are gone. A crowbar will pry off the inner sheath."))
 		if(7)
-			to_chat(user, "<span class='info'>The inner sheath is gone. A blowtorch should finish off this wall.</span>")
+			to_chat(user, SPAN_INFO("The inner sheath is gone. A blowtorch should finish off this wall."))
 
 //Damage
 /turf/closed/wall/proc/take_damage(dam)
@@ -240,14 +240,14 @@
 /turf/closed/wall/attack_paw(mob/user as mob)
 	if((HULK in user.mutations))
 		if(prob(40))
-			user.visible_message("<span class='danger'>[user] smashes through [src].</span>",
-			"<span class='danger'>You smash through the wall.</span>")
+			user.visible_message(SPAN_DANGER("[user] smashes through [src]."),
+			SPAN_DANGER("You smash through the wall."))
 			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 			dismantle_wall(1)
 			return
 		else
-			user.visible_message("<span class='warning'>[user] punches [src].</span>",
-			"<span class='warning'>You punch the wall.</span>")
+			user.visible_message(SPAN_WARNING("[user] punches [src]."),
+			SPAN_WARNING("You punch the wall."))
 			take_damage(rand(25, 75))
 			return
 
@@ -257,31 +257,31 @@
 /turf/closed/wall/attack_animal(mob/living/M as mob)
 	if(M.wall_smash)
 		if((istype(src, /turf/closed/wall/r_wall)) || hull)
-			to_chat(M, "<span class='warning'>This [name] is far too strong for you to destroy.</span>")
+			to_chat(M, SPAN_WARNING("This [name] is far too strong for you to destroy."))
 			return
 		else
 			if((prob(40)))
-				M.visible_message("<span class='danger'>[M] smashes through [src].</span>",
-				"<span class='danger'>You smash through the wall.</span>")
+				M.visible_message(SPAN_DANGER("[M] smashes through [src]."),
+				SPAN_DANGER("You smash through the wall."))
 				dismantle_wall(1)
 				return
 			else
-				M.visible_message("<span class='warning'>[M] smashes against [src].</span>",
-				"<span class='warning'>You smash against the wall.</span>")
+				M.visible_message(SPAN_WARNING("[M] smashes against [src]."),
+				SPAN_WARNING("You smash against the wall."))
 				take_damage(rand(25, 75))
 				return
 
 /turf/closed/wall/attack_hand(mob/user as mob)
 	if(HULK in user.mutations)
 		if((prob(40)) && !hull)
-			user.visible_message("<span class='danger'>[user] smashes through [src].</span>",
-			"<span class='danger'>You smash through [src].</span>")
+			user.visible_message(SPAN_DANGER("[user] smashes through [src]."),
+			SPAN_DANGER("You smash through [src]."))
 			usr.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 			dismantle_wall(1)
 			return
 		else
-			user.visible_message("<span class='warning'>[user] punches [src].</span>",
-			"<span class='warning'>You punch [src].</span>")
+			user.visible_message(SPAN_WARNING("[user] punches [src]."),
+			SPAN_WARNING("You punch [src]."))
 			take_damage(rand(25, 75))
 			return
 
@@ -292,7 +292,7 @@
 /turf/closed/wall/attackby(obj/item/W, mob/user)
 
 	if(!ishuman(user) && !isrobot(user))
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting simulated walls and the relevant effects
@@ -353,7 +353,7 @@
 				take_damage(-damage)
 			return
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
 	//DECONSTRUCTION

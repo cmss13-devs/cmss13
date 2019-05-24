@@ -149,7 +149,7 @@
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
-				"<span class='danger'>[user] repairs [src]!</span>",
+				SPAN_DANGER("[user] repairs [src]!"),
 				SPAN_NOTICE("You repair [src]!")
 			)
 		else
@@ -157,7 +157,7 @@
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
-			user.visible_message("<span class='danger'>[user] knocks [load] off [src] with \the [I]!</span>", "<span class='danger'>You knock [load] off [src] with \the [I]!</span>")
+			user.visible_message(SPAN_DANGER("[user] knocks [load] off [src] with \the [I]!"), SPAN_DANGER("You knock [load] off [src] with \the [I]!"))
 		else
 			to_chat(user, "You hit [src] with \the [I] but to no effect.")
 	else
@@ -181,7 +181,7 @@
 	if(prob(50) && !isnull(load))
 		unload(0)
 	if(prob(25))
-		src.visible_message("<span class='danger'>Something shorts out inside [src]!</span>")
+		src.visible_message(SPAN_DANGER("Something shorts out inside [src]!"))
 		var/index = 1<< (rand(0,9))
 		if(wires & index)
 			wires &= ~index
@@ -298,14 +298,14 @@
 					locked = !locked
 					updateDialog()
 				else
-					to_chat(usr, "<span class='danger'>Access denied.</span>")
+					to_chat(usr, SPAN_DANGER("Access denied."))
 					return
 			if("power")
 				if (src.on)
 					turn_off()
 				else if (cell && !open)
 					if (!turn_on())
-						to_chat(usr, "<span class='danger'>You can't switch on [src].</span>")
+						to_chat(usr, SPAN_DANGER("You can't switch on [src]."))
 						return
 				else
 					return
@@ -556,7 +556,6 @@
 		return
 	if(on)
 		var/speed = ((wires & wire_motor1) ? 1:0) + ((wires & wire_motor2) ? 2:0)
-		//to_world("speed: [speed]")
 		switch(speed)
 			if(0)
 				// do nothing
@@ -580,7 +579,6 @@
 	if(refresh) updateDialog()
 
 /obj/machinery/bot/mulebot/proc/process_bot()
-	//if(mode) to_world("Mode: [mode]")
 	switch(mode)
 		if(0)		// idle
 			icon_state = "mulebot0"
@@ -603,7 +601,6 @@
 
 
 				if(istype( next, /turf))
-					//to_world("at ([x],[y]) moving to ([next.x],[next.y])")
 
 
 					if(bloodiness)
@@ -625,7 +622,6 @@
 					var/moved = step_towards(src, next)	// attempt to move
 					if(cell) cell.use(1)
 					if(moved)	// successful move
-						//to_world("Successful move.")
 						blockcount = 0
 						path -= loc
 
@@ -640,8 +636,6 @@
 							mode = 2
 
 					else		// failed to move
-
-						//to_world("Unable to move.")
 
 
 
@@ -668,16 +662,13 @@
 				else
 					src.visible_message("[src] makes an annoyed buzzing sound", "You hear an electronic buzzing sound.")
 					playsound(src.loc, 'sound/machines/buzz-two.ogg', 25, 0)
-					//to_world("Bad turf.")
 					mode = 5
 					return
 			else
-				//to_world("No path.")
 				mode = 5
 				return
 
 		if(5)		// calculate new path
-			//to_world("Calc new path.")
 			mode = 6
 			spawn(0)
 
@@ -695,9 +686,7 @@
 
 					mode = 7
 		//if(6)
-			//to_world("Pending path calc.")
 		//if(7)
-			//to_world("No dest / no route.")
 	return
 
 
@@ -775,9 +764,9 @@
 		var/mob/M = obs
 		if(ismob(M))
 			if(isborg(M))
-				src.visible_message("<span class='danger'>[src] bumps into [M]!</span>")
+				src.visible_message(SPAN_DANGER("[src] bumps into [M]!"))
 			else
-				src.visible_message("<span class='danger'>[src] knocks over [M]!</span>")
+				src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
 				M.stop_pulling()
 				M.Stun(8)
 				M.KnockDown(5)
@@ -791,7 +780,7 @@
 // called from mob/living/carbon/human/Crossed()
 // when mulebot is in the same loc
 /obj/machinery/bot/mulebot/proc/RunOver(var/mob/living/carbon/human/H)
-	src.visible_message("<span class='danger'>[src] drives over [H]!</span>")
+	src.visible_message(SPAN_DANGER("[src] drives over [H]!"))
 	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
 
 	var/damage = rand(5,15)
@@ -910,7 +899,6 @@
 	//for(var/key in keyval)
 	//	signal.data[key] = keyval[key]
 	signal.data = keyval
-		//to_world("sent [key],[keyval[key]] on [freq]")
 	if (signal.data["findbeacon"])
 		frequency.post_signal(src, signal, filter = RADIO_NAVBEACONS)
 	else if (signal.data["type"] == "mulebot")
@@ -943,7 +931,7 @@
 
 
 /obj/machinery/bot/mulebot/explode()
-	src.visible_message("<span class='danger'><B>[src] blows apart!</B></span>", 1)
+	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/device/assembly/prox_sensor(Tsec)

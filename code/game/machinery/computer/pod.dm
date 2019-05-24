@@ -154,7 +154,7 @@
 
 /obj/machinery/computer/pod/old/syndicate/attack_hand(var/mob/user as mob)
 	if(!allowed(user))
-		to_chat(user, "<span class='danger'>Access Denied</span>")
+		to_chat(user, SPAN_DANGER("Access Denied"))
 		return
 	else
 		..()

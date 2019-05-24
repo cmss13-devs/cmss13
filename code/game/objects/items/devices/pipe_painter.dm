@@ -23,7 +23,7 @@
 
 	var/turf/T = P.loc
 	if (P.level < 2 && T.level==1 && isturf(T) && T.intact_tile)
-		to_chat(user, "<span class='danger'>You must remove the plating first.</span>")
+		to_chat(user, SPAN_DANGER("You must remove the plating first."))
 		return
 
 	P.change_color(pipe_colors[mode])

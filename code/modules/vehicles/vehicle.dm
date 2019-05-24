@@ -38,7 +38,7 @@
 		if(on && powered && cell && cell.charge < charge_use)
 			turn_off()
 		else if(!on && powered)
-			to_chat(user, "<span class='warning'>Turn on the engine first.</span>")
+			to_chat(user, SPAN_WARNING("Turn on the engine first."))
 		else
 			. = step(src, direction)
 
@@ -74,7 +74,7 @@
 			if("brute")
 				health -= W.force * brute_dam_coeff
 		playsound(src.loc, "smash.ogg", 25, 1)
-		user.visible_message("<span class='danger'>[user] hits [src] with [W].</span>","<span class='danger'>You hit [src] with [W].</span>")
+		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else
 		..()
@@ -82,7 +82,7 @@
 /obj/vehicle/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
-	src.visible_message("<span class='danger'><B>[M] has [M.attacktext] [src]!</B></span>")
+	src.visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
@@ -138,10 +138,10 @@
 
 	if(locked)
 		locked = 0
-		to_chat(user, "<span class='warning'>You bypass [src]'s controls.</span>")
+		to_chat(user, SPAN_WARNING("You bypass [src]'s controls."))
 
 /obj/vehicle/proc/explode()
-	src.visible_message("<span class='danger'><B>[src] blows apart!</B></span>", 1)
+	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/stack/rods(Tsec)

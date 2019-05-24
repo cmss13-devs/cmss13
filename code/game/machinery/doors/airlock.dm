@@ -125,7 +125,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 			else /*if(src.justzap)*/
 				return
 		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
-			to_chat(user, "<span class='danger'><B>You feel a powerful shock course through your body!</B></span>")
+			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 			user.halloss += 10
 			user.stunned += 10
 			return
@@ -706,16 +706,16 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/proc/check_synth_access(mob/user as mob)
 	if(operating < 0) //emagged
-		to_chat(user, "<span class='warning'>Unable to interface: Internal error.</span>")
+		to_chat(user, SPAN_WARNING("Unable to interface: Internal error."))
 		return 0
 	if(!src.canAIControl())
 		if(src.canAIHack(user))
 			src.hack(user)
 		else
 			if (src.isAllPowerLoss()) //don't really like how this gets checked a second time, but not sure how else to do it.
-				to_chat(user, "<span class='warning'>Unable to interface: Connection timed out.</span>")
+				to_chat(user, SPAN_WARNING("Unable to interface: Connection timed out."))
 			else
-				to_chat(user, "<span class='warning'>Unable to interface: Connection refused.</span>")
+				to_chat(user, SPAN_WARNING("Unable to interface: Connection refused."))
 		return 0
 	return 1
 
@@ -734,7 +734,7 @@ About the new airlock wires panel:
 	if((in_range(src, usr) && istype(src.loc, /turf)) && src.p_open)
 		usr.set_interaction(src)
 		if(ishuman(usr) && usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			to_chat(usr, "<span class='warning'>You don't understand anything about [src]'s wiring...</span>")
+			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring..."))
 			return 0
 		if(href_list["wires"])
 			var/t1 = text2num(href_list["wires"])
@@ -994,7 +994,7 @@ About the new airlock wires panel:
 		var/obj/item/tool/weldingtool/W = C
 
 		if(not_weldable)
-			to_chat(user, "<span class='warning'>\The [src] would require something a lot stronger than [W] to weld!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] would require something a lot stronger than [W] to weld!"))
 			return
 
 		if(W.remove_fuel(0,user))
@@ -1011,7 +1011,7 @@ About the new airlock wires panel:
 		return
 	else if(istype(C, /obj/item/tool/screwdriver))
 		if(no_panel)
-			to_chat(user, "<span class='warning'>\The [src] has no panel to open!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
 			return
 
 		p_open = !p_open
@@ -1026,10 +1026,10 @@ About the new airlock wires panel:
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && src.p_open && (operating == -1 || (density && welded && operating != 1 && !src.arePowerSystemsOn() && !src.locked)) )
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You don't seem to know how to deconstruct machines.</span>")
+				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
 				return
 			if(width > 1)
-				to_chat(user, "<span class='warning'>Large doors seem impossible to disassemble.</span>")
+				to_chat(user, SPAN_WARNING("Large doors seem impossible to disassemble."))
 				return
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
@@ -1072,11 +1072,11 @@ About the new airlock wires panel:
 				return
 
 		else if(arePowerSystemsOn() && C.pry_capable != IS_PRY_CAPABLE_FORCE)
-			to_chat(user, "<span class='warning'>The airlock's motors resist your efforts to force it.</span>")
+			to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
 		else if(locked)
-			to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced.</span>")
+			to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
 		else if(welded)
-			to_chat(user, "<span class='warning'>The airlock is welded shut.</span>")
+			to_chat(user, SPAN_WARNING("The airlock is welded shut."))
 		else if(C.pry_capable == IS_PRY_CAPABLE_FORCE)
 			return FALSE //handled by the item's afterattack
 		else if(!operating )

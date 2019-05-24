@@ -84,7 +84,7 @@
 
 	if(user.species.can_shred(user) && !(stat & BROKEN))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1, -1)
-		visible_message("<span class='danger'><B>[user] has slashed at [src]!</B></span>")
+		visible_message(SPAN_DANGER("<B>[user] has slashed at [src]!</B>"))
 		src.take_damage(15)
 	return
 
@@ -209,7 +209,6 @@
 		cur_target = get_new_target() //get new target
 
 	if(cur_target) //if it's found, proceed
-//		to_world("[cur_target]")
 		if(!isPopping())
 			if(isDown())
 				popUp()
@@ -380,7 +379,7 @@
 		return src.attack_hand(user)
 
 	if (istype(W, /obj/item/weapon/card/emag) && !emagged)
-		to_chat(user, "<span class='danger'>You short out the turret controls' access analysis module.</span>")
+		to_chat(user, SPAN_DANGER("You short out the turret controls' access analysis module."))
 		emagged = 1
 		locked = 0
 		if(user.machine==src)
@@ -404,7 +403,7 @@
 				if (user.machine==src)
 					src.attack_hand(user)
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, SPAN_WARNING("Access denied."))
 
 /obj/machinery/turretid/attack_ai(mob/user as mob)
 	if(!ailock)
@@ -443,14 +442,14 @@
 /obj/machinery/turret/attack_animal(mob/living/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	if(!(stat & BROKEN))
-		visible_message("<span class='danger'><B>[M] [M.attacktext] [src]!</B></span>")
+		visible_message(SPAN_DANGER("<B>[M] [M.attacktext] [src]!</B>"))
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 		//src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		src.health -= M.melee_damage_upper
 		if (src.health <= 0)
 			src.die()
 	else
-		to_chat(M, "<span class='warning'>That object is useless to you.</span>")
+		to_chat(M, SPAN_WARNING("That object is useless to you."))
 	return
 
 /obj/machinery/turretid/Topic(href, href_list, var/nowindow = 0)

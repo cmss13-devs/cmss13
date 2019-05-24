@@ -8,22 +8,17 @@
 
 // This proc has some procs that should be extracted from it. I believe we can develop some helper procs from it - Rockdtben
 /mob/proc/contract_disease(var/datum/disease/virus, var/skip_this = 0, var/force_species_check=1, var/spread_type = -5)
-	//to_world("Contract_disease called by [src] with virus [virus]")
 	if(stat == DEAD)
-		//to_world("He's dead jim.")
 		return
 	if(istype(virus, /datum/disease/advance))
-		//to_world("It's an advance virus.")
 		var/datum/disease/advance/A = virus
 		if(A.GetDiseaseID() in resistances)
-			//to_world("It resisted us!")
 			return
 		if(count_by_type(viruses, /datum/disease/advance) >= 3)
 			return
 
 	else
 		if(src.resistances.Find(virus.type))
-			//to_world("Normal virus and resisted")
 			return
 
 	if(has_disease(virus))
@@ -40,7 +35,6 @@
 		if(fail) return
 
 	if(skip_this == 1)
-		//to_world("infectin")
 		//if(src.virus)				< -- this used to replace the current disease. Not anymore!
 			//src.virus.cure(0)
 		var/datum/disease/v = new virus.type(1, virus, 0)
@@ -53,7 +47,6 @@
 		return
 
 	if(prob(15/virus.permeability_mod)) return //the power of immunity compels this disease! but then you forgot resistances
-	//to_world("past prob()")
 	var/passed = 1
 
 	//chances to target this zone
@@ -91,7 +84,6 @@
 		passed = (prob((50*virus.permeability_mod) - 1))
 
 	if(passed)
-		//to_world("Infection in the mob [src]. YAY")
 		AddDisease(virus)
 
 

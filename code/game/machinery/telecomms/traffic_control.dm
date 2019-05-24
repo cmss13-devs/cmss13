@@ -125,7 +125,7 @@
 		add_fingerprint(usr)
 		usr.set_interaction(src)
 		if(!src.allowed(usr) && !emagged)
-			to_chat(usr, "<span class='danger'>ACCESS DENIED.</span>")
+			to_chat(usr, SPAN_DANGER("ACCESS DENIED."))
 			return
 
 		if(href_list["viewserver"])

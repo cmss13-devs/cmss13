@@ -120,7 +120,7 @@ var/list/mechtoys = list(
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 	user.set_interaction(src)
 	var/dat = "<head><title>Supply Drop Console Console</title></head><body>"
@@ -228,7 +228,7 @@ var/list/mechtoys = list(
 	busy = 1
 
 	visible_message("\icon[src] <span class='boldnotice'>'[C.name]' supply drop is now loading into the launch tube! Stand by!</span>")
-	C.visible_message("<span class='warning'>\The [C] begins to load into a launch tube. Stand clear!</span>")
+	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
 	var/datum/squad/S = current_squad //in case the operator changes the overwatched squad mid-drop
@@ -684,7 +684,7 @@ var/list/mechtoys = list(
 /obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
 	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!allowed(user))
-		to_chat(user, "<span class='danger'>Access Denied.</span>")
+		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
 
 	if(..())
@@ -707,8 +707,8 @@ var/list/mechtoys = list(
 						switch(shuttle.docking_controller.get_docking_status())
 							if ("docked") dat += "Raised<BR>"
 							if ("undocked") dat += "Lowered<BR>"
-							if ("docking") dat += "Raising [shuttle.can_force()? "<span class='warning'><A href='?src=\ref[src];force_send=1'>Force</A></span>" : ""]<BR>"
-							if ("undocking") dat += "Lowering [shuttle.can_force()? "<span class='warning'><A href='?src=\ref[src];force_send=1'>Force</A></span>" : ""]<BR>"
+							if ("docking") dat += "Raising [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
+							if ("undocking") dat += "Lowering [shuttle.can_force()? SPAN_WARNING("<A href='?src=\ref[src];force_send=1'>Force</A>") : ""]<BR>"
 					else
 						dat += "Raised<BR>"
 
@@ -879,7 +879,7 @@ var/list/mechtoys = list(
 		temp += "<BR><A href='?src=\ref[src];order=[last_viewed_group]'>Back</A>|<A href='?src=\ref[src];mainmenu=1'>Main Menu</A>"
 
 		if(supply_controller.shoppinglist.len > 20)
-			to_chat(usr, "<span class='danger'>Current retrieval load has reached maximum capacity.</span>")
+			to_chat(usr, SPAN_DANGER("Current retrieval load has reached maximum capacity."))
 			return
 
 		for(var/i=1, i<=supply_controller.requestlist.len, i++)

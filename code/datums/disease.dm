@@ -49,7 +49,6 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	var/cure_present = has_cure()
 
 	if(carrier && !cure_present)
-		//to_world("[affected_mob] is carrier")
 		return
 
 	spread = (cure_present?"Remissive":initial_spread)
@@ -98,7 +97,6 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	return 0
 
 /datum/disease/proc/spread(var/atom/source=null, var/airborne_range = 2,  var/force_spread)
-	//to_world("Disease [src] proc spread was called from holder [source]")
 
 	// If we're overriding how we spread, say so here
 	var/how_spread = spread_type
@@ -156,7 +154,6 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 			if(spread_type!=SPECIAL)
 				spread_type = CONTACT_GENERAL
 	if(!affected_mob || affected_mob.stat == DEAD) //the virus is in inanimate obj
-//		to_world("[src] longevity = [longevity]")
 
 		if(prob(70))
 			if(--longevity<=0)

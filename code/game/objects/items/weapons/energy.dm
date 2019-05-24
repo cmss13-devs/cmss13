@@ -3,8 +3,8 @@
 	flags_atom = FPRINT|NOBLOODY
 
 	suicide_act(mob/user)
-		viewers(user) << pick("<span class='danger'><b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b></span>", \
-							"<span class='danger'><b>[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.</b></span>")
+		viewers(user) << pick(SPAN_DANGER("<b>[user] is slitting \his stomach open with the [src.name]! It looks like \he's trying to commit seppuku.</b>"), \
+							SPAN_DANGER("<b>[user] is falling on the [src.name]! It looks like \he's trying to commit suicide.</b>"))
 		return (BRUTELOSS|FIRELOSS)
 
 
@@ -72,7 +72,7 @@
 
 /obj/item/weapon/energy/sword/attack_self(mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You accidentally cut yourself with [src].</span>")
+		to_chat(user, SPAN_DANGER("You accidentally cut yourself with [src]."))
 		user.take_limb_damage(5,5)
 	active = !active
 	if (active)

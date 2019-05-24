@@ -147,7 +147,7 @@ var/global/datum/controller/gameticker/ticker = new()
 	//new random event system is handled from the MC.
 
 	if(config.autooocmute)
-		to_world("<span class='danger'><B>The OOC channel has been globally disabled due to round start!</B></span>")
+		to_world(SPAN_DANGER("<B>The OOC channel has been globally disabled due to round start!</B>"))
 		ooc_allowed = !( ooc_allowed )
 
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
@@ -236,7 +236,7 @@ var/global/datum/controller/gameticker/ticker = new()
 					feedback_set_details("end_proper","proper completion")
 
 				if(config.autooocmute && !ooc_allowed)
-					to_world("<span class='danger'><B>The OOC channel has been globally enabled due to round end!</B></span>")
+					to_world(SPAN_DANGER("<B>The OOC channel has been globally enabled due to round end!</B>"))
 					ooc_allowed = 1
 
 				if(blackbox)
@@ -263,7 +263,7 @@ var/global/datum/controller/gameticker/ticker = new()
 			//call a transfer shuttle vote
 			spawn(50)
 				if(!round_end_announced) // Spam Prevention. Now it should announce only once.
-					to_world("<span class='warning'>The round has ended!</span>")
+					to_world(SPAN_WARNING("The round has ended!"))
 					round_end_announced = TRUE
 
 		return 1

@@ -30,9 +30,9 @@
 		if(H.opened_gift == 4)
 			to_chat(H, SPAN_NOTICE(" You're ruining the Christmas magic, I hope you're happy."))
 		if(H.opened_gift == 5)
-			to_chat(H, "<span class='danger'>Ok, Congratulations, you've ruined Christmas for 5 marines now.</span>")
+			to_chat(H, SPAN_DANGER("Ok, Congratulations, you've ruined Christmas for 5 marines now."))
 		if(H.opened_gift > 5)
-			to_chat(H, "<span class='danger'>You've ruined Christmas for [H.opened_gift] marines now...</span>")
+			to_chat(H, SPAN_DANGER("You've ruined Christmas for [H.opened_gift] marines now..."))
 		
 		H.opened_gift++
 	var fancy = rand(1,100) //Check if it has the possibility of being a FANCY present

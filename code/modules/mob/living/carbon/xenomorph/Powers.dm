@@ -8,21 +8,21 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='xenowarning'>You can't pounce from here!</span>")
+		to_chat(src, SPAN_XENOWARNING("You can't pounce from here!"))
 		return
 
 	if(!check_state())
 		return
 
 	if(used_pounce)
-		to_chat(src, "<span class='xenowarning'>You must wait before pouncing.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must wait before pouncing."))
 		return
 
 	if(!check_plasma(10))
 		return
 
 	if(legcuffed)
-		to_chat(src, "<span class='xenodanger'>You can't pounce with that thing on your leg!</span>")
+		to_chat(src, SPAN_XENODANGER("You can't pounce with that thing on your leg!"))
 		return
 
 	if(layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
@@ -31,8 +31,8 @@
 	if(m_intent == MOVE_INTENT_WALK && isXenoLurker(src)) //Hunter that is currently using its stealth ability, need to unstealth him
 		toggle_mov_intent()
 
-	visible_message("<span class='xenowarning'>\The [src] pounces at [T]!</span>", \
-	"<span class='xenowarning'>You pounce at [T]!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] pounces at [T]!"), \
+	SPAN_XENOWARNING("You pounce at [T]!"))
 	used_pounce = 1
 	flags_pass = PASSTABLE
 	use_plasma(10)
@@ -60,11 +60,11 @@
 		return
 
 	if (used_acid_spray)
-		to_chat(src, "<span class='xenowarning'>You must wait to produce enough acid to spray.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must wait to produce enough acid to spray."))
 		return
 
 	if (!check_plasma(200))
-		to_chat(src, "<span class='xenowarning'>You must produce more plasma before doing this.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 		return
 
 	var/turf/target
@@ -97,8 +97,8 @@
 	used_acid_spray = 1
 	use_plasma(200)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-	visible_message("<span class='xenowarning'>\The [src] spews forth a wide cone of acid!</span>", \
-	"<span class='xenowarning'>You spew forth a cone of acid!</span>", null, 5)
+	visible_message(SPAN_XENOWARNING("\The [src] spews forth a wide cone of acid!"), \
+	SPAN_XENOWARNING("You spew forth a cone of acid!"), null, 5)
 
 	ability_speed_modifier += 2
 	do_acid_spray_cone(target)
@@ -174,7 +174,7 @@
 			return
 
 		if(target == loc)
-			to_chat(src, "<span class='warning'>That's far too close!</span>")
+			to_chat(src, SPAN_WARNING("That's far too close!"))
 			return
 
 		if(!target)
@@ -183,18 +183,18 @@
 		acid_cooldown = 1
 		use_plasma(10)
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1)
-		visible_message("<span class='xenowarning'>\The [src] spews forth a virulent spray of acid!</span>", \
-		"<span class='xenowarning'>You spew forth a spray of acid!</span>", null, 5)
+		visible_message(SPAN_XENOWARNING("\The [src] spews forth a virulent spray of acid!"), \
+		SPAN_XENOWARNING("You spew forth a spray of acid!"), null, 5)
 		var/turflist = getline(src, target)
 		spray_turfs(turflist)
 		spawn(caste.acid_delay) //12 second cooldown.
 			acid_cooldown = 0
-			to_chat(src, "<span class='warning'>You feel your acid glands refill. You can spray <B>acid</b> again.</span>")
+			to_chat(src, SPAN_WARNING("You feel your acid glands refill. You can spray <B>acid</b> again."))
 			for(var/X in actions)
 				var/datum/action/A = X
 				A.update_button_icon()
 	else
-		to_chat(src, "<span class='warning'>You see nothing to spit at!</span>")
+		to_chat(src, SPAN_WARNING("You see nothing to spit at!"))
 
 
 /mob/living/carbon/Xenomorph/proc/spray_turfs(list/turflist)
@@ -259,7 +259,7 @@
 				if((M.status_flags & XENO_HOST) && istype(M.buckled, /obj/structure/bed/nest))
 					continue //nested infected hosts are not hurt by acid spray
 				M.adjustFireLoss(rand(20 + 5 * upgrade, 30 + 5 * upgrade))
-				to_chat(M, "<span class='xenodanger'>\The [src] showers you in corrosive acid!</span>")
+				to_chat(M, SPAN_XENODANGER("\The [src] showers you in corrosive acid!"))
 				if(!isYautja(M))
 					M.emote("scream")
 					if(!isXenoSpitter(src))
@@ -369,7 +369,7 @@
 
 			round_statistics.praetorian_spray_direct_hits++
 			C.adjustFireLoss(rand(20,30) + 5 * upgrade)
-			to_chat(C, "<span class='xenodanger'>\The [src] showers you in corrosive acid!</span>")
+			to_chat(C, SPAN_XENODANGER("\The [src] showers you in corrosive acid!"))
 
 			if (!isYautja(C))
 				C.emote("scream")
@@ -386,7 +386,7 @@
 		return
 
 	if (used_fling)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before flinging something.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before flinging something."))
 		return
 
 	if (!check_plasma(10))
@@ -400,8 +400,8 @@
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
 	round_statistics.warrior_flings++
 
-	visible_message("<span class='xenowarning'>\The [src] effortlessly flings [H] to the side!</span>", \
-	"<span class='xenowarning'>You effortlessly fling [H] to the side!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] effortlessly flings [H] to the side!"), \
+	SPAN_XENOWARNING("You effortlessly fling [H] to the side!"))
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	used_fling = 1
 	use_plasma(10)
@@ -437,7 +437,7 @@
 		return
 
 	if (used_punch)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before punching.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before punching."))
 		return
 
 	if (!check_plasma(10))
@@ -450,7 +450,7 @@
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
 	if(H.status_flags & XENO_HOST)
-		to_chat(src, "<span class='xenowarning'>This would harm the embryo!</span>")
+		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 		return
 	round_statistics.warrior_punches++
 	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
@@ -458,8 +458,8 @@
 	if (!L || (L.status & LIMB_DESTROYED))
 		return
 
-	visible_message("<span class='xenowarning'>\The [src] hits [H] in the [L.display_name] with a devastatingly powerful punch!</span>", \
-	"<span class='xenowarning'>You hit [H] in the [L.display_name] with a devastatingly powerful punch!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] hits [H] in the [L.display_name] with a devastatingly powerful punch!"), \
+	SPAN_XENOWARNING("You hit [H] in the [L.display_name] with a devastatingly powerful punch!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 	used_punch = 1
@@ -469,7 +469,7 @@
 
 		if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
 			L.status &= ~LIMB_SPLINTED
-			to_chat(H, "<span class='danger'>The splint on your [L.display_name] comes apart!</span>")
+			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
 
 		if(isYautja(H))
 			L.take_damage(rand(8,12))
@@ -528,7 +528,7 @@
 		return
 
 	if (used_jab)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before jabbing.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before jabbing."))
 		return
 
 	if (!check_plasma(10))
@@ -543,7 +543,7 @@
 	if(H.stat == DEAD) return
 	if(istype(H.buckled, /obj/structure/bed/nest)) return
 	if(H.status_flags & XENO_HOST)
-		to_chat(src, "<span class='xenowarning'>This would harm the embryo!</span>")
+		to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 		return
 
 	if (distance > 1)
@@ -554,8 +554,8 @@
 
 	round_statistics.warrior_punches++
 
-	visible_message("<span class='xenowarning'>\The [src] hits [H] with a powerful jab!</span>", \
-	"<span class='xenowarning'>You hit [H] with a powerful jab!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] hits [H] with a powerful jab!"), \
+	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
 	playsound(H,S, 50, 1)
 	used_jab = 1
@@ -586,14 +586,14 @@
 		return
 
 	if (!isturf(loc))
-		to_chat(src, "<span class='xenowarning'>You can't lunge from here!</span>")
+		to_chat(src, SPAN_XENOWARNING("You can't lunge from here!"))
 		return
 
 	if (!check_state() || agility)
 		return
 
 	if (used_lunge)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before lunging.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before lunging."))
 		return
 
 	if (!check_plasma(10))
@@ -608,8 +608,8 @@
 	var/mob/living/carbon/human/H = A
 	if(H.stat == DEAD) return
 	round_statistics.warrior_lunges++
-	visible_message("<span class='xenowarning'>\The [src] lunges towards [H]!</span>", \
-	"<span class='xenowarning'>You lunge at [H]!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] lunges towards [H]!"), \
+	SPAN_XENOWARNING("You lunge at [H]!"))
 
 	used_lunge = 1 // triggered by start_pulling
 	use_plasma(10)
@@ -632,7 +632,7 @@
 /mob/living/carbon/Xenomorph/proc/pull_power(var/mob/M)
 	if (isXenoWarrior(src) && !ripping_limb && M.stat != DEAD)
 		if(M.status_flags & XENO_HOST)
-			to_chat(src, "<span class='xenowarning'>This would harm the embryo!</span>")
+			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
 			return
 		ripping_limb = 1
 		if(rip_limb(M))
@@ -652,7 +652,7 @@
 	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
 
 	if (!L || L.body_part == UPPER_TORSO || L.body_part == LOWER_TORSO || (L.status & LIMB_DESTROYED)) //Only limbs and head.
-		to_chat(src, "<span class='xenowarning'>You can't rip off that limb.</span>")
+		to_chat(src, SPAN_XENOWARNING("You can't rip off that limb."))
 		return 0
 	round_statistics.warrior_limb_rips++
 	var/limb_time = rand(40,60)
@@ -660,8 +660,8 @@
 	if (L.body_part == HEAD)
 		limb_time = rand(90,110)
 
-	visible_message("<span class='xenowarning'>\The [src] begins pulling on [M]'s [L.display_name] with incredible strength!</span>", \
-	"<span class='xenowarning'>You begin to pull on [M]'s [L.display_name] with incredible strength!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] begins pulling on [M]'s [L.display_name] with incredible strength!"), \
+	SPAN_XENOWARNING("You begin to pull on [M]'s [L.display_name] with incredible strength!"))
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || M.stat == DEAD)
 		to_chat(src, SPAN_NOTICE("You stop ripping off the limb."))
@@ -672,11 +672,11 @@
 
 	if(L.status & LIMB_ROBOT)
 		L.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message("<span class='xenowarning'>You hear [M]'s [L.display_name] being pulled beyond its load limits!</span>", \
-		"<span class='xenowarning'>\The [M]'s [L.display_name] begins to tear apart!</span>")
+		visible_message(SPAN_XENOWARNING("You hear [M]'s [L.display_name] being pulled beyond its load limits!"), \
+		SPAN_XENOWARNING("\The [M]'s [L.display_name] begins to tear apart!"))
 	else
-		visible_message("<span class='xenowarning'>You hear the bones in [M]'s [L.display_name] snap with a sickening crunch!</span>", \
-		"<span class='xenowarning'>\The [M]'s [L.display_name] bones snap with a satisfying crunch!</span>")
+		visible_message(SPAN_XENOWARNING("You hear the bones in [M]'s [L.display_name] snap with a sickening crunch!"), \
+		SPAN_XENOWARNING("\The [M]'s [L.display_name] bones snap with a satisfying crunch!"))
 		L.take_damage(rand(15,25), 0, 0)
 		L.fracture()
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
@@ -690,8 +690,8 @@
 	if(L.status & LIMB_DESTROYED)
 		return 0
 
-	visible_message("<span class='xenowarning'>\The [src] rips [M]'s [L.display_name] away from \his body!</span>", \
-	"<span class='xenowarning'>\The [M]'s [L.display_name] rips away from \his body!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] rips [M]'s [L.display_name] away from \his body!"), \
+	SPAN_XENOWARNING("\The [M]'s [L.display_name] rips away from \his body!"))
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress</font>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 2/2 progress")
@@ -713,9 +713,9 @@
 
 	round_statistics.warrior_agility_toggles++
 	if (agility)
-		to_chat(src, "<span class='xenowarning'>You lower yourself to all fours.</span>")
+		to_chat(src, SPAN_XENOWARNING("You lower yourself to all fours."))
 	else
-		to_chat(src, "<span class='xenowarning'>You raise yourself to stand on two feet.</span>")
+		to_chat(src, SPAN_XENOWARNING("You raise yourself to stand on two feet."))
 	recalculate_speed()
 	update_icons()
 	do_agility_cooldown()
@@ -735,18 +735,18 @@
 		return
 
 	if (fortify)
-		to_chat(src, "<span class='xenowarning'>You cannot use abilities while fortified.</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities while fortified."))
 		return
 
 	if (crest_defense && !spiked)
-		to_chat(src, "<span class='xenowarning'>You cannot use abilities with your crest lowered.</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
 		return
 
 	if (!check_state())
 		return
 
 	if (used_headbutt)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before headbutting.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before headbutting."))
 		return
 
 	if (!check_plasma(10))
@@ -771,8 +771,8 @@
 
 	round_statistics.defender_headbutts++
 
-	visible_message("<span class='xenowarning'>\The [src] rams [H] with it's armored crest!</span>", \
-	"<span class='xenowarning'>You ram [H] with your armored crest!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] rams [H] with it's armored crest!"), \
+	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
 	used_headbutt = 1
 	use_plasma(10)
@@ -806,26 +806,26 @@
 // Defender Tail Sweep
 /mob/living/carbon/Xenomorph/proc/tail_sweep()
 	if (fortify)
-		to_chat(src, "<span class='xenowarning'>You cannot use abilities while fortified.</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities while fortified."))
 		return
 
 	if (crest_defense)
-		to_chat(src, "<span class='xenowarning'>You cannot use abilities with your crest lowered.</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
 		return
 
 	if (!check_state())
 		return
 
 	if (used_tail_sweep)
-		to_chat(src, "<span class='xenowarning'>You must gather your strength before tail sweeping.</span>")
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before tail sweeping."))
 		return
 
 	if (!check_plasma(10))
 		return
 
 	round_statistics.defender_tail_sweeps++
-	visible_message("<span class='xenowarning'>\The [src] sweeps it's tail in a wide circle!</span>", \
-	"<span class='xenowarning'>You sweep your tail in a wide circle!</span>")
+	visible_message(SPAN_XENOWARNING("\The [src] sweeps it's tail in a wide circle!"), \
+	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
 	spin_circle()
 
@@ -848,7 +848,7 @@
 		if(isXenoPraetorian(src))
 			H.KnockDown(2, 1)
 
-		to_chat(H, "<span class='xenowarning'>You are struck by \the [src]'s tail sweep!</span>")
+		to_chat(H, SPAN_XENOWARNING("You are struck by \the [src]'s tail sweep!"))
 		playsound(H,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	used_tail_sweep = 1
 	use_plasma(10)
@@ -865,7 +865,7 @@
 /mob/living/carbon/Xenomorph/proc/toggle_crest_defense()
 
 	if (fortify)
-		to_chat(src, "<span class='xenowarning'>You cannot use abilities while fortified.</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities while fortified."))
 		return
 
 	if (!check_state())
@@ -879,7 +879,7 @@
 
 	if (crest_defense)
 		round_statistics.defender_crest_lowerings++
-		to_chat(src, "<span class='xenowarning'>You lower your crest.</span>")
+		to_chat(src, SPAN_XENOWARNING("You lower your crest."))
 		armor_deflection_buff += 15
 		ability_speed_modifier += 0.7	// This is actually a slowdown but speed is dumb
 		update_icons()
@@ -887,7 +887,7 @@
 		return
 
 	round_statistics.defender_crest_raises++
-	to_chat(src, "<span class='xenowarning'>You raise your crest.</span>")
+	to_chat(src, SPAN_XENOWARNING("You raise your crest."))
 	armor_deflection_buff -= 15
 	ability_speed_modifier = 0
 	update_icons()
@@ -905,11 +905,11 @@
 // Defender Fortify
 /mob/living/carbon/Xenomorph/proc/fortify()
 	if(crest_defense && spiked)
-		to_chat(src, "<span class='xenowarning'>You cannot fortify while your crest is already down!</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot fortify while your crest is already down!"))
 		return
 
 	if (crest_defense)
-		to_chat(src, "<span class='xenowarning'>You cannot use abilities with your crest lowered.</span>")
+		to_chat(src, SPAN_XENOWARNING("You cannot use abilities with your crest lowered."))
 		return
 
 	if (!check_state())
@@ -924,7 +924,7 @@
 	used_fortify = 1
 
 	if (fortify)
-		to_chat(src, "<span class='xenowarning'>You tuck yourself into a defensive stance.</span>")
+		to_chat(src, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
 		armor_deflection_buff += 40
 		armor_explosive_buff += 60
 		if(!spiked)
@@ -953,7 +953,7 @@
 		sleep(10)	// Process every second.
 
 /mob/living/carbon/Xenomorph/proc/fortify_off()
-	to_chat(src, "<span class='xenowarning'>You resume your normal stance.</span>")
+	to_chat(src, SPAN_XENOWARNING("You resume your normal stance."))
 	armor_deflection_buff -= 40
 	armor_explosive_buff -= 60
 	frozen = 0
@@ -986,18 +986,18 @@
 		return
 
 	if(istype(T, /turf/open/floor/almayer/research/containment))
-		to_chat(src, "<span class='xenowarning'>You can't escape this cell!</span>")
+		to_chat(src, SPAN_XENOWARNING("You can't escape this cell!"))
 		return
 
 	used_burrow = 1
 
 	if (!burrow)
-		to_chat(src, "<span class='xenowarning'>You begin burrowing yourself into the ground.</span>")
+		to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
 		if(!do_after(src, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			do_burrow_cooldown()
 			return
 		// TODO Make immune to all damage here.
-		to_chat(src, "<span class='xenowarning'>You burrow yourself into the ground.</span>")
+		to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
 		burrow = 1
 		frozen = 1
 		invisibility = 101
@@ -1057,22 +1057,22 @@
 		return
 
 	if(!(T.z in SURFACE_Z_LEVELS)) //Can't burrow on Almayer or in the dropships, also not in the admin level. Pretty much only surface!
-		to_chat(src, "<span class='xenowarning'>The decking is too hard to tunnel through!</span>")
+		to_chat(src, SPAN_XENOWARNING("The decking is too hard to tunnel through!"))
 		return
 
 	if(T.density)
-		to_chat(src, "<span class='xenowarning'>You can't tunnel into a solid wall!</span>")
+		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
 		return
 
 	if(istype(T, /turf/open/space))
-		to_chat(src, "<span class='xenowarning'>You can't tunnel there!</span>")
+		to_chat(src, SPAN_XENOWARNING("You can't tunnel there!"))
 		return
 
 	for(var/obj/O in T.contents)
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				continue
-			to_chat(src, "<span class='warning'>There's something solid there to stop you emerging.</span>")
+			to_chat(src, SPAN_WARNING("There's something solid there to stop you emerging."))
 			return
 
 	if (tunnel)
@@ -1084,7 +1084,6 @@
 
 	if (!T || T.density)
 		to_chat(src, SPAN_NOTICE("You cannot tunnel to there!"))
-	//to_world("process_tunnel")
 	tunnel = 1
 	to_chat(src, SPAN_NOTICE("You start tunneling!"))
 	tunnel_timer = (get_dist(src, T)*10) + world.timeofday
@@ -1105,7 +1104,6 @@
 	anchored = 0
 	frozen = 0
 	update_canmove()
-	//to_world("do_tunnel from [loc.x],[loc.y],[loc.z] to [T.x],[T.y],[T.z]")
 	forceMove(T)
 	burrow = 0
 	burrow_off()
@@ -1143,24 +1141,24 @@
 		return
 
 	if(used_tremor)
-		to_chat(src, "<span class='xenowarning'>Your aren't ready to cause more tremors yet!</span>")
+		to_chat(src, SPAN_XENOWARNING("Your aren't ready to cause more tremors yet!"))
 		return
 
 	if(!check_plasma(100)) return
 
 	use_plasma(100)
 	playsound(loc, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	visible_message("<span class='xenodanger'>[src] digs itself into the ground and shakes the earth itself, causing violent tremors!</span>", \
-	"<span class='xenodanger'>You dig into the ground and shake it around, causing violent tremors!</span>")
+	visible_message(SPAN_XENODANGER("[src] digs itself into the ground and shakes the earth itself, causing violent tremors!"), \
+	SPAN_XENODANGER("You dig into the ground and shake it around, causing violent tremors!"))
 	create_stomp() //Adds the visual effect. Wom wom wom
 	used_tremor = 1
 
 	for(var/mob/living/carbon/M in range(7, loc))
-		to_chat(M, "<span class='warning'>You struggle to remain on your feet as the ground shakes beneath your feet!</span>")
+		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
 		shake_camera(M, 2, 3)
 
 	for(var/mob/living/carbon/human/H in range(3, loc))
-		to_chat(H, "<span class='warning'>The violent tremors make you lose your footing!</span>")
+		to_chat(H, SPAN_WARNING("The violent tremors make you lose your footing!"))
 		H.KnockDown(1)
 
 	spawn(caste.tremor_cooldown)
@@ -1245,11 +1243,11 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>You can't transfer plasma from here!</span>")
+		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return
 
 	if(get_dist(src, target) > max_range)
-		to_chat(src, "<span class='warning'>You need to be closer to [target].</span>")
+		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
 		return
 
 	to_chat(src, SPAN_NOTICE("You start focusing your plasma towards [target]."))
@@ -1260,19 +1258,19 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>You can't transfer plasma from here!</span>")
+		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return
 
 	if(get_dist(src, target) > max_range)
-		to_chat(src, "<span class='warning'>You need to be closer to [target].</span>")
+		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
 		return
 
 	if(plasma_stored < amount)
 		amount = plasma_stored //Just use all of it
 	use_plasma(amount)
 	target.gain_plasma(amount)
-	to_chat(target, "<span class='xenowarning'>\The [src] has transfered [amount] plasma to you. You now have [target.plasma_stored].</span>")
-	to_chat(src, "<span class='xenowarning'>You have transferred [amount] plasma to \the [target]. You now have [plasma_stored].</span>")
+	to_chat(target, SPAN_XENOWARNING("\The [src] has transfered [amount] plasma to you. You now have [target.plasma_stored]."))
+	to_chat(src, SPAN_XENOWARNING("You have transferred [amount] plasma to \the [target]. You now have [plasma_stored]."))
 	playsound(src, "alien_drool", 25)
 
 /mob/living/carbon/Xenomorph/proc/xeno_transfer_health(atom/A, amount = 40, transfer_delay = 50, max_range = 1)
@@ -1288,11 +1286,11 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>You can't transfer health from here!</span>")
+		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return
 
 	if(get_dist(src, target) > max_range)
-		to_chat(src, "<span class='warning'>You need to be closer to [target].</span>")
+		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
 		return
 
 	to_chat(src, SPAN_NOTICE("You start transfering some of your health towards [target]."))
@@ -1303,17 +1301,17 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>You can't transfer health from here!</span>")
+		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return
 
 	if(get_dist(src, target) > max_range)
-		to_chat(src, "<span class='warning'>You need to be closer to [target].</span>")
+		to_chat(src, SPAN_WARNING("You need to be closer to [target]."))
 		return
 
 	bruteloss += amount * 1.5
 	target.gain_health(amount)
-	to_chat(target, "<span class='xenowarning'>\The [src] has transfered some of their health to you. You feel reinvigorated!</span>")
-	to_chat(src, "<span class='xenowarning'>You have transferred some of your health to \the [target]. You feel weakened...</span>")
+	to_chat(target, SPAN_XENOWARNING("\The [src] has transfered some of their health to you. You feel reinvigorated!"))
+	to_chat(src, SPAN_XENOWARNING("You have transferred some of your health to \the [target]. You feel weakened..."))
 	playsound(src, "alien_drool", 25)
 
 
@@ -1324,11 +1322,11 @@
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>You can't spit from here!</span>")
+		to_chat(src, SPAN_WARNING("You can't spit from here!"))
 		return
 
 	if(has_spat > world.time)
-		to_chat(src, "<span class='warning'>You must wait for your spit glands to refill.</span>")
+		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
 		return
 
 	if(!check_plasma(ammo.spit_cost))
@@ -1339,8 +1337,8 @@
 	if(!current_turf)
 		return
 
-	visible_message("<span class='xenowarning'>\The [src] spits at \the [T]!</span>", \
-	"<span class='xenowarning'>You spit at \the [T]!</span>" )
+	visible_message(SPAN_XENOWARNING("\The [src] spits at \the [T]!"), \
+	SPAN_XENOWARNING("You spit at \the [T]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(src.loc, sound_to_play, 25, 1)
 
@@ -1533,11 +1531,11 @@
 /mob/living/carbon/Xenomorph/proc/corrosive_acid(atom/O, acid_type, plasma_cost)
 
 	if(!O.Adjacent(src))
-		to_chat(src, "<span class='warning'>\The [O] is too far away.</span>")
+		to_chat(src, SPAN_WARNING("\The [O] is too far away."))
 		return
 
 	if(!isturf(loc))
-		to_chat(src, "<span class='warning'>You can't melt [O] from here!</span>")
+		to_chat(src, SPAN_WARNING("You can't melt [O] from here!"))
 		return
 
 	face_atom(O)
@@ -1549,12 +1547,12 @@
 		var/obj/I = O
 
 		if(I.unacidable || istype(I, /obj/machinery/computer) || istype(I, /obj/effect)) //So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
-			to_chat(src, "<span class='warning'>You cannot dissolve \the [I].</span>") // ^^ Note for obj/effect.. this might check for unwanted stuff. Oh well
+			to_chat(src, SPAN_WARNING("You cannot dissolve \the [I].")) // ^^ Note for obj/effect.. this might check for unwanted stuff. Oh well
 			return
 		if(istype(O, /obj/structure/window_frame))
 			var/obj/structure/window_frame/WF = O
 			if(WF.reinforced && acid_type != /obj/effect/xenomorph/acid/strong)
-				to_chat(src, "<span class='warning'>This [O.name] is too tough to be melted by your weak acid.</span>")
+				to_chat(src, SPAN_WARNING("This [O.name] is too tough to be melted by your weak acid."))
 				return
 
 		if(O.density || istype(O, /obj/structure))
@@ -1567,26 +1565,26 @@
 		if(istype(O, /turf/closed/wall))
 			var/turf/closed/wall/wall_target = O
 			if (wall_target.acided_hole)
-				to_chat(src, "<span class='warning'>[O] is already weakened.</span>")
+				to_chat(src, SPAN_WARNING("[O] is already weakened."))
 				return
 
 		var/dissolvability = T.can_be_dissolved()
 		switch(dissolvability)
 			if(0)
-				to_chat(src, "<span class='warning'>You cannot dissolve \the [T].</span>")
+				to_chat(src, SPAN_WARNING("You cannot dissolve \the [T]."))
 				return
 			if(1)
 				wait_time = 50
 			if(2)
 				if(acid_type != /obj/effect/xenomorph/acid/strong)
-					to_chat(src, "<span class='warning'>This [T.name] is too tough to be melted by your weak acid.</span>")
+					to_chat(src, SPAN_WARNING("This [T.name] is too tough to be melted by your weak acid."))
 					return
 				wait_time = 100
 			else
 				return
-		to_chat(src, "<span class='xenowarning'>You begin generating enough acid to melt through \the [T].</span>")
+		to_chat(src, SPAN_XENOWARNING("You begin generating enough acid to melt through \the [T]."))
 	else
-		to_chat(src, "<span class='warning'>You cannot dissolve \the [O].</span>")
+		to_chat(src, SPAN_WARNING("You cannot dissolve \the [O]."))
 		return
 
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -1611,8 +1609,8 @@
 	if(istype(O, /obj/vehicle/multitile/root/cm_armored))
 		var/obj/vehicle/multitile/root/cm_armored/R = O
 		R.take_damage_type( (1 / A.acid_strength) * 20, "acid", src)
-		visible_message("<span class='xenowarning'>\The [src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!</span>", \
-			"<span class='xenowarning'>You vomit globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!</span>", null, 5)
+		visible_message(SPAN_XENOWARNING("\The [src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), \
+			SPAN_XENOWARNING("You vomit globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		sleep(20)
 		qdel(A)
@@ -1631,8 +1629,8 @@
 	if(!isturf(O))
 		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O].")
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
-	visible_message("<span class='xenowarning'>\The [src] vomits globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!</span>", \
-	"<span class='xenowarning'>You vomit globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!</span>", null, 5)
+	visible_message(SPAN_XENOWARNING("\The [src] vomits globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
+	SPAN_XENOWARNING("You vomit globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
 /mob/living/carbon/Xenomorph/verb/hive_status()
@@ -1641,7 +1639,7 @@
 	set category = "Alien"
 
 	if(!hive.living_xeno_queen)
-		to_chat(src, "<span class='warning'>There is no Queen. You are alone.</span>")
+		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
 	if(isXenoQueen(src) && anchored)

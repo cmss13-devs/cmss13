@@ -188,11 +188,11 @@
 			src.updateUsrDialog()
 		else
 			if(emagged)
-				to_chat(user, "<span class='warning'>ERROR</span>")
+				to_chat(user, SPAN_WARNING("ERROR"))
 			if(open)
-				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
+				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, "<span class='warning'>Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Access denied."))
 
 	else if (istype(W, /obj/item/reagent_container/glass))
 		if(src.locked)
@@ -216,10 +216,10 @@
 /obj/machinery/bot/medbot/Emag(mob/user as mob)
 	..()
 	if(open && !locked)
-		if(user) to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesis circuits.</span>")
+		if(user) to_chat(user, SPAN_WARNING("You short out [src]'s reagent synthesis circuits."))
 		spawn(0)
 			for(var/mob/O in hearers(src, null))
-				O.show_message("<span class='danger'><B>[src] buzzes oddly!</B></span>", 1)
+				O.show_message(SPAN_DANGER("<B>[src] buzzes oddly!</B>"), 1)
 		flick("medibot_spark", src)
 		src.patient = null
 		if(user) src.oldpatient = user
@@ -435,7 +435,7 @@
 		return
 	else
 		src.icon_state = "medibots"
-		visible_message("<span class='danger'><B>[src] is trying to inject [src.patient]!</B></span>")
+		visible_message(SPAN_DANGER("<B>[src] is trying to inject [src.patient]!</B>"))
 		spawn(30)
 			if ((get_dist(src, src.patient) <= 1) && (src.on))
 				if(reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
@@ -443,7 +443,7 @@
 					src.reagent_glass.reagents.reaction(src.patient, 2)
 				else
 					src.patient.reagents.add_reagent(reagent_id,src.injection_amount)
-				visible_message("<span class='danger'><B>[src] injects [src.patient] with the syringe!</B></span>")
+				visible_message(SPAN_DANGER("<B>[src] injects [src.patient] with the syringe!</B>"))
 
 			src.icon_state = "medibot[src.on]"
 			src.currently_healing = 0
@@ -462,7 +462,7 @@
 
 /obj/machinery/bot/medbot/explode()
 	src.on = 0
-	visible_message("<span class='danger'><B>[src] blows apart!</B></span>", 1)
+	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/storage/firstaid(Tsec)

@@ -8,10 +8,10 @@
 		return
 	var/obj/item/I
 	if(!usr.hand && usr.r_hand == null)
-		to_chat(usr, "<span class='warning'>You don't have anything in your right hand to give to [name].</span>")
+		to_chat(usr, SPAN_WARNING("You don't have anything in your right hand to give to [name]."))
 		return
 	if(usr.hand && usr.l_hand == null)
-		to_chat(usr, "<span class='warning'>You don't have anything in your left hand to give to [name].</span>")
+		to_chat(usr, SPAN_WARNING("You don't have anything in your left hand to give to [name]."))
 		return
 	if(!ishuman(src) || !ishuman(usr))
 		return
@@ -27,16 +27,16 @@
 				if(!I || !usr || !istype(I))
 					return
 				if(!Adjacent(usr))
-					to_chat(usr, "<span class='warning'>You need to stay in reaching distance while giving an object.</span>")
-					to_chat(src, "<span class='warning'>[usr] moved too far away.</span>")
+					to_chat(usr, SPAN_WARNING("You need to stay in reaching distance while giving an object."))
+					to_chat(src, SPAN_WARNING("[usr] moved too far away."))
 					return
 				if((usr.hand && usr.l_hand != I) || (!usr.hand && usr.r_hand != I))
-					to_chat(usr, "<span class='warning'>You need to keep the item in your active hand.</span>")
-					to_chat(src, "<span class='warning'>[usr] seem to have given up on giving [I] to you.</span>")
+					to_chat(usr, SPAN_WARNING("You need to keep the item in your active hand."))
+					to_chat(src, SPAN_WARNING("[usr] seem to have given up on giving [I] to you."))
 					return
 				if(r_hand != null && l_hand != null)
-					to_chat(src, "<span class='warning'>Your hands are full.</span>")
-					to_chat(usr, "<span class='warning'>[src]'s hands are full.</span>")
+					to_chat(src, SPAN_WARNING("Your hands are full."))
+					to_chat(usr, SPAN_WARNING("[src]'s hands are full."))
 					return
 				else
 					if(usr.drop_held_item())
@@ -46,4 +46,4 @@
 			if("No")
 				return
 	else
-		to_chat(usr, "<span class='warning'>[src]'s hands are full.</span>")
+		to_chat(usr, SPAN_WARNING("[src]'s hands are full."))

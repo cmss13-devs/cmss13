@@ -39,19 +39,19 @@
 	..()
 
 	if(is_wired)
-		to_chat(user, "<span class='info'>There is a length of wire strewn across the top of this barricade.</span>")
+		to_chat(user, SPAN_INFO("There is a length of wire strewn across the top of this barricade."))
 	switch(damage_state)
-		if(BARRICADE_DMG_NONE) to_chat(user, "<span class='info'>It appears to be in good shape.</span>")
-		if(BARRICADE_DMG_SLIGHT) to_chat(user, "<span class='warning'>It's slightly damaged, but still very functional.</span>")
-		if(BARRICADE_DMG_MODERATE) to_chat(user, "<span class='warning'>It's quite beat up, but it's holding together.</span>")
-		if(BARRICADE_DMG_HEAVY) to_chat(user, "<span class='warning'>It's crumbling apart, just a few more blows will tear it apart.</span>")
+		if(BARRICADE_DMG_NONE) to_chat(user, SPAN_INFO("It appears to be in good shape."))
+		if(BARRICADE_DMG_SLIGHT) to_chat(user, SPAN_WARNING("It's slightly damaged, but still very functional."))
+		if(BARRICADE_DMG_MODERATE) to_chat(user, SPAN_WARNING("It's quite beat up, but it's holding together."))
+		if(BARRICADE_DMG_HEAVY) to_chat(user, SPAN_WARNING("It's crumbling apart, just a few more blows will tear it apart."))
 
 /obj/structure/barricade/hitby(atom/movable/AM)
 	if(AM.throwing && is_wired)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
-			C.visible_message("<span class='danger'>The barbed wire slices into [C]!</span>",
-			"<span class='danger'>The barbed wire slices into you!</span>")
+			C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
+			SPAN_DANGER("The barbed wire slices into you!"))
 			C.apply_damage(10)
 			C.KnockDown(2) //Leaping into barbed wire is VERY bad
 	..()
@@ -72,7 +72,7 @@
 			take_damage( 100 )
 
 		else if(!C.stat)
-			visible_message("<span class='danger'>[C] smashes through [src]!</span>")
+			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
 			destroy()
 
 /obj/structure/barricade/CheckExit(atom/movable/O, turf/target)
@@ -118,8 +118,8 @@
 
 /obj/structure/barricade/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/weapon/zombie_claws))
-		user.visible_message("<span class='danger'>The zombie smashed at the [src.barricade_type] barricade!</span>",
-		"<span class='danger'>You smack the [src.barricade_type] barricade!</span>")
+		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
+		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 25, 1)
 		hit_barricade(W)
@@ -264,7 +264,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	if(!health)
 		if(!nomessage)
-			visible_message("<span class='danger'>[src] falls apart!</span>")
+			visible_message(SPAN_DANGER("[src] falls apart!"))
 		destroy()
 		return
 
@@ -289,7 +289,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	set src in oview(1)
 
 	if(anchored)
-		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
+		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
 
 	dir = turn(dir, 90)
@@ -302,7 +302,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	set src in oview(1)
 
 	if(anchored)
-		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
+		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
 
 	dir = turn(dir, 270)
@@ -346,7 +346,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(ET.folded)
 			return
 		if(user.action_busy)
-			to_chat(user, "<span class='warning'>You are already shoveling!</span>")
+			to_chat(user, SPAN_WARNING("You are already shoveling!"))
 			return
 		user.visible_message("[user.name] starts clearing out \the [src].","You start removing \the [src].")
 		if(!do_after(user, ET.shovelspeed, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
@@ -409,7 +409,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		var/obj/item/stack/sheet/wood/D = W
 		if(health < maxhealth)
 			if(D.get_amount() < 1)
-				to_chat(user, "<span class='warning'>You need one plank of wood to repair [src].</span>")
+				to_chat(user, SPAN_WARNING("You need one plank of wood to repair [src]."))
 				return
 			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
 			if(do_after(user,20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src) && health < maxhealth)
@@ -464,11 +464,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	..()
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, "<span class='info'>The protection panel is still tighly screwed in place.</span>")
+			to_chat(user, SPAN_INFO("The protection panel is still tighly screwed in place."))
 		if(BARRICADE_BSTATE_UNSECURED)
-			to_chat(user, "<span class='info'>The protection panel has been removed, you can see the anchor bolts.</span>")
+			to_chat(user, SPAN_INFO("The protection panel has been removed, you can see the anchor bolts."))
 		if(BARRICADE_BSTATE_MOVABLE)
-			to_chat(user, "<span class='info'>The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.</span>")
+			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
 
 /obj/structure/barricade/metal/attackby(obj/item/W, mob/user)
 
@@ -481,15 +481,15 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(user.action_busy)
 			return
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
-			to_chat(user, "<span class='warning'>You're not trained to repair [src]...</span>")
+			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(health <= maxhealth * 0.3)
-			to_chat(user, "<span class='warning'>[src] has sustained too much structural damage to be repaired.</span>")
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 			return
 
 		if(health == maxhealth)
-			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
 		if(WT.remove_fuel(0, user))
@@ -510,7 +510,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.action_busy)
 					return
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
-					to_chat(user, "<span class='warning'>You are not trained to disassemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -523,7 +523,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.action_busy)
 					return
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -535,7 +535,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.action_busy)
 					return
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
-					to_chat(user, "<span class='warning'>You are not trained to disassemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -550,11 +550,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.action_busy)
 					return
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				for(var/obj/structure/barricade/B in loc)
 					if(B != src && B.dir == dir)
-						to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
+						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
@@ -568,7 +568,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.action_busy)
 					return
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_METAL)
-					to_chat(user, "<span class='warning'>You are not trained to disassemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
@@ -618,7 +618,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/deployable/examine(mob/user)
 	..()
-	to_chat(user, "<span class='info'>Drag its sprite onto yourself to undeploy.</span>")
+	to_chat(user, SPAN_INFO("Drag its sprite onto yourself to undeploy."))
 
 /obj/structure/barricade/deployable/attackby(obj/item/W, mob/user)
 
@@ -627,7 +627,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(health == maxhealth)
-			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 		
 		if(WT.remove_fuel(0, user))
@@ -732,7 +732,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 /obj/item/folding_barricade/attack_self(mob/user as mob)
 	for(var/obj/structure/barricade/B in loc)
 		if(B != src && B.dir == dir)
-			to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
+			to_chat(user, SPAN_WARNING("There's already a barricade here."))
 			return
 	var/turf/open/OT = usr.loc
 	if(!OT.allow_construction)
@@ -803,11 +803,11 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED)
-			to_chat(user, "<span class='info'>The protection panel is still tighly screwed in place.</span>")
+			to_chat(user, SPAN_INFO("The protection panel is still tighly screwed in place."))
 		if(BARRICADE_BSTATE_UNSECURED)
-			to_chat(user, "<span class='info'>The protection panel has been removed, you can see the anchor bolts.</span>")
+			to_chat(user, SPAN_INFO("The protection panel has been removed, you can see the anchor bolts."))
 		if(BARRICADE_BSTATE_MOVABLE)
-			to_chat(user, "<span class='info'>The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart.</span>")
+			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
 
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
@@ -820,15 +820,15 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			return
 		tool_cooldown = world.time + 10
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_METAL)
-			to_chat(user, "<span class='warning'>You're not trained to repair [src]...</span>")
+			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(health <= maxhealth * 0.3)
-			to_chat(user, "<span class='warning'>[src] has sustained too much structural damage to be repaired.</span>")
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 			return
 
 		if(health == maxhealth)
-			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
 		if(WT.remove_fuel(0, user))
@@ -853,12 +853,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				tool_cooldown = world.time + 10
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 
 				for(var/obj/structure/barricade/B in loc)
 					if(B != src && B.dir == dir)
-						to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
+						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
 				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
 
@@ -868,7 +868,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				return
 			if(iscrowbar(W))
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
-					to_chat(user, "<span class='warning'>You are not trained to modify [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(linked)
@@ -888,7 +888,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				tool_cooldown = world.time + 10
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
@@ -900,7 +900,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				tool_cooldown = world.time + 10
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
@@ -916,7 +916,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				tool_cooldown = world.time + 10
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
@@ -930,7 +930,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					return
 				tool_cooldown = world.time + 10
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
-					to_chat(user, "<span class='warning'>You are not trained to assemble [src]...</span>")
+					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
@@ -1065,10 +1065,10 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(user.action_busy)
 			return
 		if(health <= maxhealth * 0.3)
-			to_chat(user, "<span class='warning'>[src] has sustained too much structural damage to be repaired.</span>")
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
 			return
 		if(health == maxhealth)
-			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts repairing damage to [src]."), \
 			SPAN_NOTICE("You start repairing damage to [src]."))

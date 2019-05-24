@@ -91,11 +91,11 @@
 			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
 		else
 			if(emagged)
-				to_chat(user, "<span class='warning'>ERROR</span>")
+				to_chat(user, SPAN_WARNING("ERROR"))
 			if(open)
-				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
+				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
-				to_chat(user, "<span class='warning'>Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Access denied."))
 		src.updateUsrDialog()
 	else
 		..()
@@ -248,7 +248,7 @@
 				F.break_tile_to_plating()
 			else
 				F.ReplaceWithLattice()
-			visible_message("<span class='danger'>[src] makes an excited booping sound.</span>")
+			visible_message(SPAN_DANGER("[src] makes an excited booping sound."))
 			spawn(50)
 				src.amount ++
 				src.anchored = 0
@@ -271,7 +271,7 @@
 	src.anchored = 1
 	src.icon_state = "floorbot-c"
 	if(istype(target, /turf/open/space/))
-		visible_message("<span class='danger'>[src] begins to repair the hole</span>")
+		visible_message(SPAN_DANGER("[src] begins to repair the hole"))
 		var/obj/item/stack/tile/plasteel/T = new /obj/item/stack/tile/plasteel
 		src.repairing = 1
 		spawn(50)
@@ -282,7 +282,7 @@
 			src.anchored = 0
 			src.target = null
 	else
-		visible_message("<span class='danger'>[src] begins to improve the floor.</span>")
+		visible_message(SPAN_DANGER("[src] begins to improve the floor."))
 		src.repairing = 1
 		spawn(50)
 			src.loc.icon_state = "floor"
@@ -295,7 +295,7 @@
 /obj/machinery/bot/floorbot/proc/eattile(var/obj/item/stack/tile/plasteel/T)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		return
-	visible_message("<span class='danger'>[src] begins to collect tiles.</span>")
+	visible_message(SPAN_DANGER("[src] begins to collect tiles."))
 	src.repairing = 1
 	spawn(20)
 		if(isnull(T))
@@ -318,7 +318,7 @@
 		return
 	if(M.get_amount() > 1)
 		return
-	visible_message("<span class='danger'>[src] begins to create tiles.</span>")
+	visible_message(SPAN_DANGER("[src] begins to create tiles."))
 	src.repairing = 1
 	spawn(20)
 		if(isnull(M))
@@ -340,7 +340,7 @@
 
 /obj/machinery/bot/floorbot/explode()
 	src.on = 0
-	src.visible_message("<span class='danger'><B>[src] blows apart!</B></span>", 1)
+	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)
@@ -384,5 +384,5 @@
 		user.temp_drop_inv_item(src)
 		qdel(src)
 	else
-		to_chat(user, "<span class='warning'>You need 10 floortiles for a floorbot.</span>")
+		to_chat(user, SPAN_WARNING("You need 10 floortiles for a floorbot."))
 	return

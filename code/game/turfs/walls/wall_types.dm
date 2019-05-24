@@ -446,8 +446,8 @@
 	..()
 	if(istype(AM,/mob/living/carbon/Xenomorph))
 		return
-	visible_message("<span class='danger'>\The [src] was hit by \the [AM].</span>", \
-	"<span class='danger'>You hit \the [src].</span>")
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
@@ -464,22 +464,22 @@
 		return 0
 	else
 		M.animation_attack_on(src)
-		M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
-		"<span class='xenonotice'>You claw \the [src].</span>")
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+		SPAN_XENONOTICE("You claw \the [src]."))
 		playsound(src, "alien_resin_break", 25)
 		take_damage((M.melee_damage_upper + 50)) //Beef up the damage a bit
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
-	M.visible_message("<span class='danger'>[M] tears \the [src]!</span>", \
-	"<span class='danger'>You tear \the [name].</span>")
+	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
+	SPAN_DANGER("You tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
 	take_damage(40)
 
 
 /turf/closed/wall/resin/attack_hand(mob/user)
-	to_chat(user, "<span class='warning'>You scrape ineffectively at \the [src].</span>")
+	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 
 /turf/closed/wall/resin/attack_paw(mob/user)

@@ -42,7 +42,7 @@
 	if(locked)
 		locked = 0
 		emagged = 1
-		to_chat(user, "<span class='warning'>You short out [src]'s maintenance hatch lock.</span>")
+		to_chat(user, SPAN_WARNING("You short out [src]'s maintenance hatch lock."))
 		log_and_message_admins("emagged [src]'s maintenance hatch lock")
 	if(!locked && open)
 		emagged = 2
@@ -52,14 +52,14 @@
 	..()
 	if(health < maxhealth)
 		if(health > maxhealth/3)
-			to_chat(user, "<span class='warning'>[src]'s parts look loose.</span>")
+			to_chat(user, SPAN_WARNING("[src]'s parts look loose."))
 		else
-			to_chat(user, "<span class='danger'>[src]'s parts look very loose!</span>")
+			to_chat(user, SPAN_DANGER("[src]'s parts look very loose!"))
 
 /obj/machinery/bot/attack_animal(var/mob/living/simple_animal/M as mob)
 	if(M.melee_damage_upper == 0)	return
 	health -= M.melee_damage_upper
-	visible_message("<span class='danger'><B>[M] has [M.attacktext] [src]!</B></span>")
+	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
@@ -74,7 +74,7 @@
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)
-				user.visible_message("<span class='danger'>[user] repairs [src]!</span>",SPAN_NOTICE("You repair [src]!"))
+				user.visible_message(SPAN_DANGER("[user] repairs [src]!"),SPAN_NOTICE("You repair [src]!"))
 			else
 				to_chat(user, SPAN_NOTICE("Unable to repair with the maintenance panel closed."))
 		else
@@ -135,7 +135,7 @@
 
 	if(user.species.can_shred(user))
 		src.health -= rand(15,30)*brute_dam_coeff
-		src.visible_message("<span class ='danger'>[user] has slashed [src]!</span>")
+		src.visible_message(SPAN_DANGER("[user] has slashed [src]!"))
 		playsound(src.loc, 'sound/weapons/slice.ogg', 25, 1)
 		if(prob(10))
 			new /obj/effect/decal/cleanable/blood/oil(src.loc)

@@ -33,7 +33,7 @@ effective or pretty fucking useless.
 /obj/item/device/batterer/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
 	if(!user) 	return
 	if(times_used >= max_uses)
-		to_chat(user, "<span class='danger'>The mind batterer has been burnt out!</span>")
+		to_chat(user, SPAN_DANGER("The mind batterer has been burnt out!"))
 		return
 
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used [src] to knock down people in the area.</font>")
@@ -45,10 +45,10 @@ effective or pretty fucking useless.
 				M.KnockDown(rand(10,20))
 				if(prob(25))
 					M.Stun(rand(5,10))
-				to_chat(M, "<span class='warning'><b>You feel a tremendous, paralyzing wave flood your mind.</b></span>")
+				to_chat(M, SPAN_WARNING("<b>You feel a tremendous, paralyzing wave flood your mind.</b>"))
 
 			else
-				to_chat(M, "<span class='warning'><b>You feel a sudden, electric jolt travel through your head.</b></span>")
+				to_chat(M, SPAN_WARNING("<b>You feel a sudden, electric jolt travel through your head.</b>"))
 
 	playsound(src.loc, 'sound/misc/interference.ogg', 25, 1)
 	to_chat(user, SPAN_NOTICE(" You trigger [src]."))

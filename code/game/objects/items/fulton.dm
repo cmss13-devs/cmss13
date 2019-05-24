@@ -58,7 +58,7 @@ var/global/list/deployed_fultons = list()
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
-		to_chat(user, "<span class='warning'>It's firmly secured to [attached_atom], and there's no way to remove it now!</span>")
+		to_chat(user, SPAN_WARNING("It's firmly secured to [attached_atom], and there's no way to remove it now!"))
 		return
 	else
 		..()
@@ -68,16 +68,16 @@ var/global/list/deployed_fultons = list()
 		return
 
 	if(get_dist(target_atom,user) > 1)
-		to_chat(user, "<span class='warning'>You can't attach [src] to something that far away.</span>")
+		to_chat(user, SPAN_WARNING("You can't attach [src] to something that far away."))
 		return
 
 	if(target_atom.z != 1)
-		to_chat(user, "<span class='warning'>You can't attach [src] to something here.</span>")
+		to_chat(user, SPAN_WARNING("You can't attach [src] to something here."))
 		return
 
 	var/area/A = get_area(target_atom)
 	if(A && A.ceiling >= CEILING_UNDERGROUND)
-		to_chat(usr, "<span class='warning'>You can't attach [src] to something when underground!</span>")
+		to_chat(usr, SPAN_WARNING("You can't attach [src] to something when underground!"))
 		return
 
 	var/can_attach = FALSE
@@ -88,14 +88,14 @@ var/global/list/deployed_fultons = list()
 			if(isYautja(H) && H.stat == DEAD)
 				can_attach = TRUE
 			else if((H.mind && H.check_tod() && H.is_revivable()) || H.stat != DEAD)
-				to_chat(user, "<span class='warning'>You can't attach [src] to [target_atom], they still have a chance!</span>")
+				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
 				can_attach = TRUE
 		else if(isXeno(target_atom))
 			var/mob/living/carbon/Xenomorph/X = target_atom
 			if(X.stat != DEAD)
-				to_chat(user, "<span class='warning'>You can't attach [src] to [target_atom], kill it first!</span>")
+				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
 				return
 			else
 				can_attach = TRUE
@@ -110,8 +110,8 @@ var/global/list/deployed_fultons = list()
 				break
 
 	if(can_attach)
-		user.visible_message("<span class='warning'>[user] begins attaching [src] onto [target_atom].</span>", \
-					"<span class='warning'>You begin to attach [src] onto [target_atom].</span>")
+		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."), \
+					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
 		if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
 				return
@@ -124,7 +124,7 @@ var/global/list/deployed_fultons = list()
 			use(1)
 			F.deploy_fulton()
 	else
-		to_chat(user, "<span class='warning'>You can't attach [src] to [target_atom].</span>")
+		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))
 
 /obj/item/stack/fulton/proc/deploy_fulton()
 	if(!attached_atom)
@@ -139,7 +139,7 @@ var/global/list/deployed_fultons = list()
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
 	var/turf/space_tile = pick(get_area_turfs(/area/space/highalt))
 	if(!space_tile)
-		visible_message("<span class='warning'>[src] begins beeping like crazy. Something is wrong!.</span>")
+		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!."))
 		return
 
 	icon_state = ""

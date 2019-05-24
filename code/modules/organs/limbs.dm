@@ -324,7 +324,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
-		to_chat(owner, "<span class='danger'>The splint on your [display_name] comes apart!</span>")
+		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.update_med_icon()
 
 	// first check whether we can widen an existing wound
@@ -343,9 +343,9 @@ This function completely restores a damaged organ to perfect condition.
 					W.add_impact_icon(impact_name, icon_name)
 				if(prob(25))
 					//maybe have a separate message for BRUISE type damage?
-					owner.visible_message("<span class='warning'>The wound on [owner.name]'s [display_name] widens with a nasty ripping noise.</span>",
-					"<span class='warning'>The wound on your [display_name] widens with a nasty ripping noise.</span>",
-					"<span class='warning'>You hear a nasty ripping noise, as if flesh is being torn apart.</span>")
+					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
+					SPAN_WARNING("The wound on your [display_name] widens with a nasty ripping noise."),
+					SPAN_WARNING("You hear a nasty ripping noise, as if flesh is being torn apart."))
 				return
 
 	//Creating wound
@@ -411,7 +411,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(!(status & LIMB_SPLINTED))
 			knitting_time = -1 // stop knitting
 		if(knitting_time > world.time)
-			to_chat(owner, "<span class='warning'>The bones in your [display_name] feel fully knitted, you discard the splint.</span>")
+			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted, you discard the splint."))
 			status &= ~LIMB_SPLINTED
 			knitting_time = -1
 
@@ -576,7 +576,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 					if(istype(owner.loc, /obj/machinery/atmospherics/unary/cryo_cell))	// check in case they cheesed the location
 						var/obj/machinery/atmospherics/unary/cryo_cell/cell = owner.loc
 						cell.display_message("internal bleeding is")
-					
+
 		if(owner.reagents.get_reagent_amount("thwei") >= 0.05) //Note: This used to turn internal wounds into external wounds, for QC's effect
 			W.internal = 0
 
@@ -822,9 +822,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(delete_limb)
 			qdel(organ)
 		else
-			owner.visible_message("<span class='warning'>[owner.name]'s [display_name] flies off in an arc!</span>",
-			"<span class='highdanger'><b>Your [display_name] goes flying off!</b></span>",
-			"<span class='warning'>You hear a terrible sound of ripping tendons and flesh!</span>", 3)
+			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
+			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
+			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
 			if(organ)
 				//Throw organs around
@@ -925,8 +925,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return
 
 	owner.visible_message(\
-		"<span class='warning'>You hear a loud cracking sound coming from [owner]!</span>",
-		"<span class='highdanger'>Something feels like it shattered in your [display_name]!</span>",
+		SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
+		SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
 		"<span class='warning'>You hear a sickening crack!<span>")
 	var/F = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 	playsound(owner,F, 45, 1)
@@ -1062,7 +1062,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if(!W || W.disposed || (W.flags_item & (NODROP|DELONDROP)) || W.embeddable == FALSE)
 		return
 	if(!silent)
-		owner.visible_message("<span class='danger'>\The [W] sticks in the wound!</span>")
+		owner.visible_message(SPAN_DANGER("\The [W] sticks in the wound!"))
 	implants += W
 	start_processing()
 	owner.embedded_flag = 1
@@ -1079,7 +1079,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if (target != user)
 			if(do_after(user, 50, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				user.visible_message(
-				"<span class='warning'>[user] finishes applying [S] to [target]'s [display_name].</span>",
+				SPAN_WARNING("[user] finishes applying [S] to [target]'s [display_name]."),
 				SPAN_NOTICE("You finish applying [S] to [target]'s [display_name]."))
 				status |= LIMB_SPLINTED
 				. = 1
@@ -1087,7 +1087,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
 			if(do_after(user, 150, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				user.visible_message(
-				"<span class='warning'>[user] successfully applies [S] to their [display_name].</span>",
+				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
 				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))
 				status |= LIMB_SPLINTED
 				. = 1
@@ -1259,13 +1259,13 @@ Note that amputating the affected organ does in fact remove the infection from t
 	if (disfigured)
 		return
 	if(type == "brute")
-		owner.visible_message("<span class='danger'>You hear a sickening cracking sound coming from \the [owner]'s face.</span>",	\
-		"<span class='danger'><b>Your face becomes unrecognizible mangled mess!</b></span>",	\
-		"<span class='danger'>You hear a sickening crack.</span>")
+		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."),	\
+		SPAN_DANGER("<b>Your face becomes unrecognizible mangled mess!</b>"),	\
+		SPAN_DANGER("You hear a sickening crack."))
 	else
-		owner.visible_message("<span class='danger'>[owner]'s face melts away, turning into mangled mess!</span>",	\
-		"<span class='danger'><b>Your face melts off!</b></span>",	\
-		"<span class='danger'>You hear a sickening sizzle.</span>")
+		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into mangled mess!"),	\
+		SPAN_DANGER("<b>Your face melts off!</b>"),	\
+		SPAN_DANGER("You hear a sickening sizzle."))
 	disfigured = 1
 	owner.name = owner.get_visible_name()
 

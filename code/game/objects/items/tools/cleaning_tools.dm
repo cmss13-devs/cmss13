@@ -34,7 +34,7 @@
 			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
 			return
 
-		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(A)].</span>")
+		user.visible_message(SPAN_WARNING("[user] begins to clean \the [get_turf(A)]."))
 
 		if(do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			var/turf/T = get_turf(A)
@@ -115,7 +115,7 @@
 
 /obj/item/tool/soap/attack(mob/target, mob/user)
 	if(target && user && ishuman(target) && ishuman(user) && !target.stat && !user.stat && user.zone_selected == "mouth" )
-		user.visible_message("<span class='danger'>\the [user] washes \the [target]'s mouth out with soap!</span>")
+		user.visible_message(SPAN_DANGER("\the [user] washes \the [target]'s mouth out with soap!"))
 		return
 	..()
 

@@ -40,8 +40,8 @@
 	affected.face_surgery_stage = 1
 
 /datum/surgery_step/face/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, slicing [target]'s throat wth \the [tool]!</span>" , \
-	"<span class='warning'>Your hand slips, slicing [target]'s throat wth \the [tool]!</span>" )
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!") , \
+	SPAN_WARNING("Your hand slips, slicing [target]'s throat wth \the [tool]!") )
 	affected.createwound(CUT, 60)
 	target.losebreath += 10
 	target.updatehealth()
@@ -70,8 +70,8 @@
 	affected.face_surgery_stage = 2
 
 /datum/surgery_step/face/mend_vocal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, clamping [target]'s trachea shut for a moment with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, clamping [user]'s trachea shut for a moment with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, clamping [target]'s trachea shut for a moment with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, clamping [user]'s trachea shut for a moment with \the [tool]!"))
 	target.losebreath += 10
 	target.updatehealth()
 
@@ -98,8 +98,8 @@
 	affected.face_surgery_stage = 3
 
 /datum/surgery_step/face/fix_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, tearing skin on [target]'s face with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, tearing skin on [target]'s face with \the [tool]!"))
 	target.apply_damage(10, BRUTE, affected, sharp = 1)
 	target.updatehealth()
 
@@ -131,7 +131,7 @@
 	affected.face_surgery_stage = 0
 
 /datum/surgery_step/face/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/head/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, leaving a small burn on [target]'s face with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, leaving a small burn on [target]'s face with \the [tool]!"))
 	target.apply_damage(4, BURN, affected)
 	target.updatehealth()

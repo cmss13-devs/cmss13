@@ -42,7 +42,7 @@ var/global/list/randomized_pill_icons
 			if(istype(M, /mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, "<span class='danger'>You can't eat pills.</span>")
+					to_chat(H, SPAN_DANGER("You can't eat pills."))
 					return
 
 			to_chat(M, SPAN_NOTICE(" You swallow [src]."))
@@ -57,10 +57,10 @@ var/global/list/randomized_pill_icons
 
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, "<span class='danger'>They have a monitor for a head, where do you think you're going to put that?</span>")
+				to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 				return
 
-			user.visible_message("<span class='warning'>[user] attempts to force [M] to swallow [src].</span>")
+			user.visible_message(SPAN_WARNING("[user] attempts to force [M] to swallow [src]."))
 
 			var/ingestion_time = 30
 			if(user.mind && user.mind.cm_skills)
@@ -70,7 +70,7 @@ var/global/list/randomized_pill_icons
 
 			user.drop_inv_item_on_ground(src) //icon update
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message("<span class='danger'>[user] forces [M] to swallow [src].</span>", 1)
+				O.show_message(SPAN_DANGER("[user] forces [M] to swallow [src]."), 1)
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -93,7 +93,7 @@ var/global/list/randomized_pill_icons
 
 		if(target.is_open_container() != 0 && target.reagents)
 			if(!target.reagents.total_volume)
-				to_chat(user, "<span class='danger'>[target] is empty. Cant dissolve pill.</span>")
+				to_chat(user, SPAN_DANGER("[target] is empty. Cant dissolve pill."))
 				return
 			to_chat(user, SPAN_NOTICE(" You dissolve the pill in [target]"))
 
@@ -104,7 +104,7 @@ var/global/list/randomized_pill_icons
 
 			reagents.trans_to(target, reagents.total_volume)
 			for(var/mob/O in viewers(2, user))
-				O.show_message("<span class='danger'>[user] puts something in \the [target].</span>", 1)
+				O.show_message(SPAN_DANGER("[user] puts something in \the [target]."), 1)
 
 			spawn(5)
 				qdel(src)

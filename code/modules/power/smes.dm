@@ -161,7 +161,7 @@
 //Will return 1 on failure
 /obj/machinery/power/smes/proc/make_terminal(const/mob/user)
 	if (user.loc == loc)
-		to_chat(user, "<span class='warning'>You must not be on the same tile as the [src].</span>")
+		to_chat(user, SPAN_WARNING("You must not be on the same tile as the [src]."))
 		return 1
 
 	//Direction the terminal will face to
@@ -173,11 +173,11 @@
 			tempDir = WEST
 	var/turf/tempLoc = get_step(src, reverse_direction(tempDir))
 	if (istype(tempLoc, /turf/open/space))
-		to_chat(user, "<span class='warning'>You can't build a terminal on space.</span>")
+		to_chat(user, SPAN_WARNING("You can't build a terminal on space."))
 		return 1
 	else if (istype(tempLoc))
 		if(tempLoc.intact_tile)
-			to_chat(user, "<span class='warning'>You must remove the floor plating first.</span>")
+			to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
 			return 1
 	to_chat(user, SPAN_NOTICE("You start adding cable to the [src]."))
 	if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -225,7 +225,7 @@
 		building_terminal = 1
 		var/obj/item/stack/cable_coil/CC = W
 		if (CC.get_amount() <= 10)
-			to_chat(user, "<span class='warning'>You need more cables.</span>")
+			to_chat(user, SPAN_WARNING("You need more cables."))
 			building_terminal = 0
 			return 0
 		if (make_terminal(user))
@@ -245,7 +245,7 @@
 		var/turf/tempTDir = terminal.loc
 		if (istype(tempTDir))
 			if(tempTDir.intact_tile)
-				to_chat(user, "<span class='warning'>You must remove the floor plating first.</span>")
+				to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
 			else
 				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
@@ -305,10 +305,8 @@
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		if(!isAI(usr))
-			to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
-
-//to_world("[href] ; [href_list[href]]")
 
 	if (!istype(src.loc, /turf) && !istype(usr, /mob/living/silicon/))
 		return 0 // Do not update ui
@@ -355,7 +353,7 @@
 	if(src.z == 1)
 		if(prob(1)) //explosion
 			for(var/mob/M in viewers(src))
-				M.show_message("<span class='danger'>The [src.name] is making strange noises!</span>", 3, "<span class='danger'>You hear sizzling electronics.</span>", 2)
+				M.show_message(SPAN_DANGER("The [src.name] is making strange noises!"), 3, SPAN_DANGER("You hear sizzling electronics."), 2)
 			sleep(10*pick(4,5,6,7,10,14))
 			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 			smoke.set_up(1, 0, src.loc)

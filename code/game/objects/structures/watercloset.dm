@@ -19,7 +19,7 @@
 
 /obj/structure/toilet/attack_hand(mob/living/user as mob)
 	if(swirlie)
-		user.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie.name]'s head!</span>", SPAN_NOTICE("You slam the toilet seat onto [swirlie.name]'s head!"), "You hear reverberating porcelain.")
+		user.visible_message(SPAN_DANGER("[user] slams the toilet seat onto [swirlie.name]'s head!"), SPAN_NOTICE("You slam the toilet seat onto [swirlie.name]'s head!"), "You hear reverberating porcelain.")
 		swirlie.apply_damage(8, BRUTE)
 		return
 
@@ -65,15 +65,15 @@
 					to_chat(user, SPAN_NOTICE("[GM.name] needs to be on the toilet."))
 					return
 				if(open && !swirlie)
-					user.visible_message("<span class='danger'>[user] starts to give [GM.name] a swirlie!</span>", SPAN_NOTICE("You start to give [GM.name] a swirlie!"))
+					user.visible_message(SPAN_DANGER("[user] starts to give [GM.name] a swirlie!"), SPAN_NOTICE("You start to give [GM.name] a swirlie!"))
 					swirlie = GM
 					if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-						user.visible_message("<span class='danger'>[user] gives [GM.name] a swirlie!</span>", SPAN_NOTICE("You give [GM.name] a swirlie!"), "You hear a toilet flushing.")
+						user.visible_message(SPAN_DANGER("[user] gives [GM.name] a swirlie!"), SPAN_NOTICE("You give [GM.name] a swirlie!"), "You hear a toilet flushing.")
 						if(!GM.internal)
 							GM.adjustOxyLoss(5)
 					swirlie = null
 				else
-					user.visible_message("<span class='danger'>[user] slams [GM.name] into the [src]!</span>", SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
 					GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
@@ -111,7 +111,7 @@
 				if(!GM.loc == get_turf(src))
 					to_chat(user, SPAN_NOTICE("[GM.name] needs to be on the urinal."))
 					return
-				user.visible_message("<span class='danger'>[user] slams [GM.name] into the [src]!</span>", SPAN_NOTICE("You slam [GM.name] into the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] slams [GM.name] into the [src]!"), SPAN_NOTICE("You slam [GM.name] into the [src]!"))
 				GM.apply_damage(8, BRUTE)
 			else
 				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
@@ -224,7 +224,7 @@
 		var/mob/living/L = O
 		L.ExtinguishMob()
 		L.fire_stacks = -20 //Douse ourselves with water to avoid fire more easily
-		to_chat(L, "<span class='warning'>You've been drenched in water!</span>")
+		to_chat(L, SPAN_WARNING("You've been drenched in water!"))
 		if(iscarbon(O))
 			var/mob/living/carbon/M = O
 			if(M.r_hand)
@@ -324,12 +324,12 @@
 
 		if(watertemp == "freezing")
 			C.bodytemperature = max(80, C.bodytemperature - 80)
-			to_chat(C, "<span class='warning'>The water is freezing!</span>")
+			to_chat(C, SPAN_WARNING("The water is freezing!"))
 			return
 		if(watertemp == "boiling")
 			C.bodytemperature = min(500, C.bodytemperature + 35)
 			C.adjustFireLoss(5)
-			to_chat(C, "<span class='danger'>The water is searing!</span>")
+			to_chat(C, SPAN_DANGER("The water is searing!"))
 			return
 
 
@@ -359,7 +359,7 @@
 		return
 
 	if(busy)
-		to_chat(user, "<span class='danger'>Someone's already washing here.</span>")
+		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
 	to_chat(usr, SPAN_NOTICE(" You start washing your hands."))
@@ -379,7 +379,7 @@
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
 	if(busy)
-		to_chat(user, "<span class='danger'>Someone's already washing here.</span>")
+		to_chat(user, SPAN_DANGER("Someone's already washing here."))
 		return
 
 	var/obj/item/reagent_container/RG = O
@@ -402,7 +402,7 @@
 				else
 					B.deductcharge(B.hitcost)
 				user.visible_message( \
-					"<span class='danger'>[user] was stunned by \his wet [O]!</span>", \
+					SPAN_DANGER("[user] was stunned by \his wet [O]!"), \
 					"<span class='userdanger'>[user] was stunned by \his wet [O]!</span>")
 				return
 

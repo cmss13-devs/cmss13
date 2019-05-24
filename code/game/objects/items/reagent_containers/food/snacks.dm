@@ -36,13 +36,13 @@
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user, def_zone)
 	if(!reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
-		to_chat(user, "<span class='danger'>None of [src] left, oh no!</span>")
+		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
 		M.drop_inv_item_on_ground(src)	//so icons update :[
 		qdel(src)
 		return 0
 
 	if(package)
-		to_chat(M, "<span class='warning'>How do you expect to eat this with the package still on?</span>")
+		to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
 		return 0
 
 	if(istype(M, /mob/living/carbon))
@@ -51,10 +51,10 @@
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, "<span class='danger'>You have a monitor for a head, where do you think you're going to put that?</span>")
+					to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
 					return
 			if (fullness <= 50)
-				to_chat(M, "<span class='warning'>You hungrily chew out a piece of [src] and gobble it!</span>")
+				to_chat(M, SPAN_WARNING("You hungrily chew out a piece of [src] and gobble it!"))
 			if (fullness > 50 && fullness <= 150)
 				to_chat(M, SPAN_NOTICE(" You hungrily begin to eat [src]."))
 			if (fullness > 150 && fullness <= 350)
@@ -62,22 +62,22 @@
 			if (fullness > 350 && fullness <= 550)
 				to_chat(M, SPAN_NOTICE(" You unwillingly chew a bit of [src]."))
 			if (fullness > (550 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
-				to_chat(M, "<span class='warning'>You cannot force any more of [src] to go down your throat.</span>")
+				to_chat(M, SPAN_WARNING("You cannot force any more of [src] to go down your throat."))
 				return 0
 		else
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, "<span class='danger'>They have a monitor for a head, where do you think you're going to put that?</span>")
+					to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 					return
 
 
 			if (fullness <= (550 * (1 + M.overeatduration / 1000)))
 				for(var/mob/O in viewers(world.view, user))
-					O.show_message("<span class='danger'>[user] attempts to feed [M] [src].</span>", 1)
+					O.show_message(SPAN_DANGER("[user] attempts to feed [M] [src]."), 1)
 			else
 				for(var/mob/O in viewers(world.view, user))
-					O.show_message("<span class='danger'>[user] cannot force anymore of [src] down [M]'s throat.</span>", 1)
+					O.show_message(SPAN_DANGER("[user] cannot force anymore of [src] down [M]'s throat."), 1)
 					return 0
 
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
@@ -89,7 +89,7 @@
 			msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)])")
 
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message("<span class='danger'>[user] feeds [M] [src].</span>", 1)
+				O.show_message(SPAN_DANGER("[user] feeds [M] [src]."), 1)
 
 
 		if(reagents)								//Handle ingestion of the reagent.
@@ -140,7 +140,7 @@
 			U.create_reagents(5)
 
 		if (U.reagents.total_volume > 0)
-			to_chat(user, "<span class='danger'>You already have something on your [U].</span>")
+			to_chat(user, SPAN_DANGER("You already have something on your [U]."))
 			return
 
 		user.visible_message( \
@@ -173,7 +173,7 @@
 			return 1
 
 		if(user.drop_inv_item_to_loc(W, src))
-			to_chat(user, "<span class='danger'>You slip [W] inside [src].</span>")
+			to_chat(user, SPAN_DANGER("You slip [W] inside [src]."))
 			add_fingerprint(user)
 		return
 	else
@@ -184,7 +184,7 @@
 			!(locate(/obj/machinery/optable) in src.loc) && \
 			!(locate(/obj/item/tool/kitchen/tray) in src.loc) \
 		)
-		to_chat(user, "<span class='danger'>You cannot slice [src] here! You need a table or at least a tray to do it.</span>")
+		to_chat(user, SPAN_DANGER("You cannot slice [src] here! You need a table or at least a tray to do it."))
 		return 1
 	var/slices_lost = 0
 	if (!inaccurate)
@@ -487,7 +487,7 @@
 	new/obj/effect/decal/cleanable/egg_smudge(loc)
 	if(reagents)
 		reagents.reaction(hit_atom, TOUCH)
-	visible_message("<span class='warning'>[name] has been squashed.</span>","<span class='warning'>You hear a smack.</span>")
+	visible_message(SPAN_WARNING("[name] has been squashed."),SPAN_WARNING("You hear a smack."))
 	qdel(src)
 
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
@@ -911,7 +911,7 @@
 /obj/item/reagent_container/food/snacks/pie/throw_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
-	src.visible_message("<span class='danger'>[src.name] splats.</span>","<span class='danger'>You hear a splat.</span>")
+	src.visible_message(SPAN_DANGER("[src.name] splats."),SPAN_DANGER("You hear a splat."))
 	qdel(src)
 
 /obj/item/reagent_container/food/snacks/berryclafoutis
@@ -1119,7 +1119,7 @@
 		bitesize = 0.1 //this snack is supposed to be eating during looooong time. And this it not dinner food! --rastaf0
 	On_Consume()
 		if(prob(unpopped))	//lol ...what's the point?
-			to_chat(usr, "<span class='danger'>You bite down on an un-popped kernel!</span>")
+			to_chat(usr, SPAN_DANGER("You bite down on an un-popped kernel!"))
 			unpopped = max(0, unpopped-1)
 		..()
 
@@ -1542,7 +1542,7 @@
 				E.createwound(CUT, 30)
 				E.embed(surprise)
 		else if (ismonkey(M))
-			M.visible_message("<span class='danger'>[M] suddenly tears in half!</span>")
+			M.visible_message(SPAN_DANGER("[M] suddenly tears in half!"))
 			var/mob/living/carbon/monkey/ook = new monkey_type(M.loc)
 			ook.name = "malformed [ook.name]"
 			ook.transform *= 0.6
@@ -1552,7 +1552,7 @@
 
 	proc/Expand()
 		for(var/mob/M in viewers(src,7))
-			to_chat(M, "<span class='warning'>\The [src] expands!</span>")
+			to_chat(M, SPAN_WARNING("\The [src] expands!"))
 		var/turf/T = get_turf(src)
 		if(T)
 			new monkey_type(T)
@@ -2615,7 +2615,7 @@
 	if( open && pizza )
 		user.put_in_hands( pizza )
 
-		to_chat(user, "<span class='danger'>You take the [src.pizza] out of the [src].</span>")
+		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of the [src]."))
 		src.pizza = null
 		update_icon()
 		return
@@ -2629,7 +2629,7 @@
 		boxes -= box
 
 		user.put_in_hands( box )
-		to_chat(user, "<span class='danger'>You remove the topmost [src] from your hand.</span>")
+		to_chat(user, SPAN_DANGER("You remove the topmost [src] from your hand."))
 		box.update_icon()
 		update_icon()
 		return
@@ -2666,11 +2666,11 @@
 				box.update_icon()
 				update_icon()
 
-				to_chat(user, "<span class='danger'>You put the [box] ontop of the [src]!</span>")
+				to_chat(user, SPAN_DANGER("You put the [box] ontop of the [src]!"))
 			else
-				to_chat(user, "<span class='danger'>The stack is too high!</span>")
+				to_chat(user, SPAN_DANGER("The stack is too high!"))
 		else
-			to_chat(user, "<span class='danger'>Close the [box] first!</span>")
+			to_chat(user, SPAN_DANGER("Close the [box] first!"))
 
 		return
 
@@ -2682,9 +2682,9 @@
 
 			update_icon()
 
-			to_chat(user, "<span class='danger'>You put the [I] in the [src]!</span>")
+			to_chat(user, SPAN_DANGER("You put the [I] in the [src]!"))
 		else
-			to_chat(user, "<span class='danger'>You try to push the [I] through the lid but it doesn't work!</span>")
+			to_chat(user, SPAN_DANGER("You try to push the [I] through the lid but it doesn't work!"))
 		return
 
 	if( istype(I, /obj/item/tool/pen/) )

@@ -59,7 +59,7 @@
 	else
 		to_chat(user, "This power cell has an exciting chrome finish, as it is an uber-capacity cell type! It has a power rating of [maxcharge]!\nThe charge meter reads [round(src.percent() )]%.")
 	if(crit_fail)
-		to_chat(user, "<span class='danger'>This power cell seems to be faulty.</span>")
+		to_chat(user, SPAN_DANGER("This power cell seems to be faulty."))
 
 /*
 /obj/item/cell/attack_self(mob/user as mob)

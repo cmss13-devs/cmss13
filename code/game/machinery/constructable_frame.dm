@@ -32,7 +32,7 @@
 
 /obj/machinery/constructable_frame/attackby(obj/item/P as obj, mob/user as mob)
 	if(P.crit_fail)
-		to_chat(user, "<span class='danger'>This part is faulty, you cannot add this to the machine!</span>")
+		to_chat(user, SPAN_DANGER("This part is faulty, you cannot add this to the machine!"))
 		return
 	switch(state)
 		if(1)
@@ -42,7 +42,7 @@
 					return
 				var/obj/item/stack/cable_coil/C = P
 				if(C.get_amount() < 5)
-					to_chat(user, "<span class='warning'>You need five lengths of cable to add them to the frame.</span>")
+					to_chat(user, SPAN_WARNING("You need five lengths of cable to add them to the frame."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts adding cables to [src]."),
@@ -85,7 +85,7 @@
 						desc = circuit.frame_desc
 					else
 						update_desc()
-					user << desc
+					to_chat(user, desc)
 
 			else if(istype(P, /obj/item/tool/wirecutters))
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
@@ -163,5 +163,5 @@
 						break
 				to_chat(user, desc)
 				if(P && P.loc != src && !istype(P, /obj/item/stack/cable_coil))
-					to_chat(user, "<span class='danger'>You cannot add that component to the machine!</span>")
+					to_chat(user, SPAN_DANGER("You cannot add that component to the machine!"))
 

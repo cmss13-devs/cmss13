@@ -41,7 +41,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.lip_style)	//if they already have lipstick on
-			to_chat(user, "<span class='warning'>You need to wipe the old paint off with paper first!</span>")
+			to_chat(user, SPAN_WARNING("You need to wipe the old paint off with paper first!"))
 			return
 		if(H == user)
 			paint_face(H, user)
@@ -54,7 +54,7 @@
 					paint_face(H, user)
 					return 1
 
-	to_chat(user, "<span class='warning'>Foiled!</span>")
+	to_chat(user, SPAN_WARNING("Foiled!"))
 
 
 /obj/item/facepaint/proc/paint_face(var/mob/living/carbon/human/H, var/mob/user)

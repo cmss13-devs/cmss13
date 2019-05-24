@@ -28,7 +28,7 @@
 		return
 
 	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return
 
 	//get the user's location
@@ -56,7 +56,7 @@
 				take_damage(-damage)
 			return
 		else
-			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
 

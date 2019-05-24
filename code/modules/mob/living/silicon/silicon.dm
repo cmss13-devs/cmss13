@@ -46,8 +46,8 @@
 			Stun(rand(1,5))
 	flash_eyes(1, TRUE, type = /obj/screen/fullscreen/flash/noise)
 
-	to_chat(src, "<span class='danger'><B>*BZZZT*</B></span>")
-	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
+	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
+	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
 	..()
 
 /mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)

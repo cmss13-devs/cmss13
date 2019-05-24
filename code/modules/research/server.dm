@@ -180,7 +180,7 @@
 	add_fingerprint(usr)
 	usr.set_interaction(src)
 	if(!src.allowed(usr) && !emagged)
-		to_chat(usr, "<span class='danger'>You do not have the required access level</span>")
+		to_chat(usr, SPAN_DANGER("You do not have the required access level"))
 		return
 
 	if(href_list["main"])

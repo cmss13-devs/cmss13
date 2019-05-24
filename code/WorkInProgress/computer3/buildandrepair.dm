@@ -137,7 +137,7 @@
 						to_chat(user, SPAN_NOTICE(" You remove [battery]."))
 						battery = null
 				else
-					to_chat(user, "<span class='danger'>There's no battery to remove!</span>")
+					to_chat(user, SPAN_DANGER("There's no battery to remove!"))
 
 			if(istype(P, /obj/item/cell))
 				if(!battery)
@@ -147,7 +147,7 @@
 						P.loc = src
 						to_chat(user, SPAN_NOTICE(" You insert [battery]."))
 				else
-					to_chat(user, "<span class='danger'>There's already \an [battery] in [src]!</span>")
+					to_chat(user, SPAN_DANGER("There's already \an [battery] in [src]!"))
 
 
 			if(istype(P, /obj/item/stack/cable_coil))
@@ -216,7 +216,7 @@
 */
 /obj/structure/computer3frame/proc/remove_peripheral(var/obj/item/I = null)
 	if(!components || !components.len)
-		to_chat(usr, "<span class='danger'>There are no components in [src] to take out!</span>")
+		to_chat(usr, SPAN_DANGER("There are no components in [src] to take out!"))
 		return 0
 	if(!I)
 		I = input(usr, "Remove which component?","Remove component", null) as null|obj in components

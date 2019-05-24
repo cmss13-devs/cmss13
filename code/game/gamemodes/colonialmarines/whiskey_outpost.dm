@@ -737,23 +737,23 @@ var/global/spawn_next_wo_wave = 0
 		if(ismaintdrone(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey))
-			to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 		if(working)
-			to_chat(user, "<span class='danger'>Wait for it to recharge first.</span>")
+			to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
 			return
 
 		var/remove_max = 10
 		var/turf/T = src.loc
 		if(T)
-			to_chat(user, "<span class='danger'>You turn on the recycler.</span>")
+			to_chat(user, SPAN_DANGER("You turn on the recycler."))
 			var/removed = 0
 			for(var/i, i < remove_max, i++)
 				for(var/obj/O in T)
 					if(istype(O,/obj/structure/closet/crate))
 						var/obj/structure/closet/crate/C = O
 						if(C.contents.len)
-							to_chat(user, "<span class='danger'>[O] must be emptied before it can be recycled</span>")
+							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
 							continue
 						new /obj/item/stack/sheet/metal(get_step(src,dir))
 						O.loc = get_turf(locate(84,237,2)) //z.2

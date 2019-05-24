@@ -207,7 +207,7 @@ Class Procs:
 			issilicon(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey)) )
-		to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 
 	src.add_fingerprint(usr)
@@ -238,7 +238,7 @@ Class Procs:
 			issilicon(usr) || \
 			istype(usr, /mob/living/carbon/Xenomorph) || \
 			istype(usr, /mob/living/carbon/monkey)) )
-		to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return 1
 /*
 	//distance checks are made by atom/proc/clicked()
@@ -248,10 +248,10 @@ Class Procs:
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
-			visible_message("<span class='danger'>[H] stares cluelessly at [src] and drools.</span>")
+			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
 			return 1
 		else if(prob(H.getBrainLoss()))
-			to_chat(user, "<span class='danger'>You momentarily forget how to use [src].</span>")
+			to_chat(user, SPAN_DANGER("You momentarily forget how to use [src]."))
 			return 1
 
 	src.add_fingerprint(user)

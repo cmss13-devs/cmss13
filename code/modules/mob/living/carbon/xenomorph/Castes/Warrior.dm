@@ -123,12 +123,12 @@
 	var/should_neckgrab = isHumanStrict(L)
 
 	if(L.pulledby && L) //override pull of other mobs
-		visible_message("<span class='warning'>[src] has broken [L.pulledby]'s grip on [L]!</span>", null, null, 5)
+		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
 		L.pulledby.stop_pulling()
 
 	if(!isXeno(L))
 		if (used_lunge && !lunge)
-			to_chat(src, "<span class='xenowarning'>You must gather your strength before neckgrabbing again.</span>")
+			to_chat(src, SPAN_XENOWARNING("You must gather your strength before neckgrabbing again."))
 			return FALSE
 
 		if (!check_plasma(10))
@@ -145,8 +145,8 @@
 			L.drop_held_items()
 			L.Stun(5)
 			L.pulledby = src
-			visible_message("<span class='xenowarning'>\The [src] grabs [L] by the throat!</span>", \
-			"<span class='xenowarning'>You grab [L] by the throat!</span>")
+			visible_message(SPAN_XENOWARNING("\The [src] grabs [L] by the throat!"), \
+			SPAN_XENOWARNING("You grab [L] by the throat!"))
 
 	if(used_lunge)
 		used_lunge = 2 // sanity checking

@@ -156,6 +156,6 @@
 			if(istype(A, /obj/effect)) return
 			qdel(A)
 		else if(isliving(A)) //Hacked it up so it just deletes it
-			to_chat(A, "<span class='danger'>You get lost into the depths of space, never to be seen again.</span>")
+			to_chat(A, SPAN_DANGER("You get lost into the depths of space, never to be seen again."))
 			qdel(A)
 

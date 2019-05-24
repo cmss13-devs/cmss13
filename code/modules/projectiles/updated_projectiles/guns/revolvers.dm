@@ -87,19 +87,19 @@
 		if(flags_gun_features & GUN_BURST_FIRING) return
 
 		if(!magazine || !istype(magazine))
-			to_chat(user, "<span class='warning'>That's not gonna work!</span>")
+			to_chat(user, SPAN_WARNING("That's not gonna work!"))
 			return
 
 		if(magazine.current_rounds <= 0)
-			to_chat(user, "<span class='warning'>That [magazine.name] is empty!</span>")
+			to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
 			return
 
 		if(current_mag.chamber_closed)
-			to_chat(user, "<span class='warning'>You can't load anything when the cylinder is closed!</span>")
+			to_chat(user, SPAN_WARNING("You can't load anything when the cylinder is closed!"))
 			return
 
 		if(current_mag.current_rounds == current_mag.max_rounds)
-			to_chat(user, "<span class='warning'>It's already full!</span>")
+			to_chat(user, SPAN_WARNING("It's already full!"))
 			return
 
 		if(istype(magazine, /obj/item/ammo_magazine/handful)) //Looks like we're loading via handful.
@@ -123,9 +123,9 @@
 						replace_cylinder(current_mag.current_rounds)
 						playsound(user, reload_sound, 25, 1) // Reloading via speedloader.
 				else
-					to_chat(user, "<span class='warning'>That [magazine] doesn't fit!</span>")
+					to_chat(user, SPAN_WARNING("That [magazine] doesn't fit!"))
 			else
-				to_chat(user, "<span class='warning'>You can't load a speedloader when there's something in the cylinder!</span>")
+				to_chat(user, SPAN_WARNING("You can't load a speedloader when there's something in the cylinder!"))
 
 	unload(mob/user)
 		if(flags_gun_features & GUN_BURST_FIRING) return
@@ -152,7 +152,7 @@
 		. = ..()
 		if(. && istype(user))
 			if(!current_mag.chamber_closed)
-				to_chat(user, "<span class='warning'>Close the cylinder!</span>")
+				to_chat(user, SPAN_WARNING("Close the cylinder!"))
 				return 0
 
 	ready_in_chamber()
@@ -258,8 +258,8 @@
 				else
 					revolver_throw_catch(user)
 	else
-		if(prob(10)) to_chat(user, "<span class='warning'>You fumble with [src] like an idiot... Uncool.</span>")
-		else user.visible_message("<span class='info'><b>[user]</b> fumbles with [src] like a huge idiot!</span>")
+		if(prob(10)) to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
+		else user.visible_message(SPAN_INFO("<b>[user]</b> fumbles with [src] like a huge idiot!"))
 
 	recent_trick = world.time //Turn on the delay for the next trick.
 

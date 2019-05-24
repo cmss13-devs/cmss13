@@ -5,7 +5,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
+			to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
 			return
 
 	message =  trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -89,7 +89,7 @@
 		return
 
 	if(!hive.living_xeno_queen && !Check_WO())
-		to_chat(src, "<span class='warning'>There is no Queen. You are alone.</span>")
+		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
 	var/rendered

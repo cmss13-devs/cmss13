@@ -64,7 +64,7 @@
 	if(!target.reagents) return
 
 	if(mode == SYRINGE_BROKEN)
-		to_chat(user, "<span class='danger'>This syringe is broken!</span>")
+		to_chat(user, SPAN_DANGER("This syringe is broken!"))
 		return
 
 	if (user.a_intent == "hurt" && ismob(target))
@@ -76,8 +76,8 @@
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used cqc skill to stop [user.name] ([user.ckey]) injecting them.</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [M] ([M.ckey]) by their cqc skill.</font>")
 			msg_admin_attack("[user.name] ([user.ckey]) got robusted by the cqc of [M.name] ([M.key]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-			M.visible_message("<span class='danger'>[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!</span>", \
-				"<span class='warning'>You knock [user] to the ground before they inject you!</span>", null, 5)
+			M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"), \
+				SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 			playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			return
 
@@ -87,7 +87,7 @@
 	var/injection_time = 30
 	if(user.mind && user.mind.cm_skills)
 		if(user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			to_chat(user, "<span class='warning'>You aren't trained to use syringes...</span>")
+			to_chat(user, SPAN_WARNING("You aren't trained to use syringes..."))
 			return
 		else
 			injection_time = max(5, 50 - 10*user.mind.cm_skills.medical)
@@ -97,7 +97,7 @@
 		if(SYRINGE_DRAW)
 
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, "<span class='danger'>The syringe is full.</span>")
+				to_chat(user, SPAN_DANGER("The syringe is full."))
 				return
 
 			if(ismob(target))//Blood!
@@ -105,13 +105,13 @@
 					var/amount = src.reagents.maximum_volume - src.reagents.total_volume
 					var/mob/living/carbon/T = target
 					if(T.get_blood_id() && reagents.has_reagent(T.get_blood_id()))
-						to_chat(user, "<span class='danger'>There is already a blood sample in this syringe</span>")
+						to_chat(user, SPAN_DANGER("There is already a blood sample in this syringe"))
 						return
 
 					if(ishuman(T))
 						var/mob/living/carbon/human/H = T
 						if(H.species.flags & NO_BLOOD)
-							to_chat(user, "<span class='danger'>You are unable to locate any blood.</span>")
+							to_chat(user, SPAN_DANGER("You are unable to locate any blood."))
 							return
 						else
 							T.take_blood(src,amount)
@@ -125,11 +125,11 @@
 
 			else //if not mob
 				if(!target.reagents.total_volume)
-					to_chat(user, "<span class='danger'>[target] is empty.</span>")
+					to_chat(user, SPAN_DANGER("[target] is empty."))
 					return
 
 				if(!target.is_open_container() && !istype(target,/obj/structure/reagent_dispensers))
-					to_chat(user, "<span class='danger'>You cannot directly remove reagents from this object.</span>")
+					to_chat(user, SPAN_DANGER("You cannot directly remove reagents from this object."))
 					return
 
 				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
@@ -141,16 +141,16 @@
 
 		if(SYRINGE_INJECT)
 			if(!reagents.total_volume)
-				to_chat(user, "<span class='danger'>The syringe is empty.</span>")
+				to_chat(user, SPAN_DANGER("The syringe is empty."))
 				return
 			if(istype(target, /obj/item/implantcase/chem))
 				return
 
 			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_container/food) && !istype(target, /obj/item/clothing/mask/cigarette) && !istype(target, /obj/item/storage/fancy/cigarettes))
-				to_chat(user, "<span class='danger'>You cannot directly fill this object.</span>")
+				to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
 				return
 			if(target.reagents.total_volume >= target.reagents.maximum_volume)
-				to_chat(user, "<span class='danger'>[target] is full.</span>")
+				to_chat(user, SPAN_DANGER("[target] is full."))
 				return
 
 			if(ismob(target))
@@ -172,13 +172,13 @@
 							return
 
 					if(injection_time != 60)
-						user.visible_message("<span class='danger'><B>[user] is trying to inject [target]!</B></span>")
+						user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target]!</B>"))
 					else
-						user.visible_message("<span class='danger'><B>[user] begins hunting for an injection port on [target]'s suit!</B></span>")
+						user.visible_message(SPAN_DANGER("<B>[user] begins hunting for an injection port on [target]'s suit!</B>"))
 
 					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
-					user.visible_message("<span class='danger'>[user] injects [target] with the syringe!</span>")
+					user.visible_message(SPAN_DANGER("[user] injects [target] with the syringe!"))
 
 					if(istype(target,/mob/living))
 						var/mob/living/M = target
@@ -257,20 +257,20 @@
 
 		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<span class='danger'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></span>"), 1)
+				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), 1)
 			user.temp_drop_inv_item(src)
 			qdel(src)
 			return
 
 		for(var/mob/O in viewers(world.view, user))
-			O.show_message(text("<span class='danger'><B>[user] stabs [target] in \the [hit_area] with [src.name]!</B></span>"), 1)
+			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] in \the [hit_area] with [src.name]!</B>")), 1)
 
 		if(affecting.take_damage(3))
 			target:UpdateDamageIcon()
 
 	else
 		for(var/mob/O in viewers(world.view, user))
-			O.show_message(text("<span class='danger'><B>[user] stabs [target] with [src.name]!</B></span>"), 1)
+			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] with [src.name]!</B>")), 1)
 		target.take_limb_damage(3)// 7 is the same as crowbar punch
 
 	src.reagents.reaction(target, INGEST)
@@ -327,7 +327,7 @@
 			if(SYRINGE_DRAW)
 
 				if(reagents.total_volume >= reagents.maximum_volume)
-					to_chat(user, "<span class='danger'>The syringe is full.</span>")
+					to_chat(user, SPAN_DANGER("The syringe is full."))
 					return
 
 				if(ismob(target))
@@ -336,11 +336,11 @@
 						return
 				else //if not mob
 					if(!target.reagents.total_volume)
-						to_chat(user, "<span class='danger'>[target] is empty.</span>")
+						to_chat(user, SPAN_DANGER("[target] is empty."))
 						return
 
 					if(!target.is_open_container() && !istype(target,/obj/structure/reagent_dispensers))
-						to_chat(user, "<span class='danger'>You cannot directly remove reagents from this object.</span>")
+						to_chat(user, SPAN_DANGER("You cannot directly remove reagents from this object."))
 						return
 
 					var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
@@ -352,15 +352,15 @@
 
 			if(SYRINGE_INJECT)
 				if(!reagents.total_volume)
-					to_chat(user, "<span class='danger'>The Syringe is empty.</span>")
+					to_chat(user, SPAN_DANGER("The Syringe is empty."))
 					return
 				if(istype(target, /obj/item/implantcase/chem))
 					return
 				if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_container/food))
-					to_chat(user, "<span class='danger'>You cannot directly fill this object.</span>")
+					to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
 					return
 				if(target.reagents.total_volume >= target.reagents.maximum_volume)
-					to_chat(user, "<span class='danger'>[target] is full.</span>")
+					to_chat(user, SPAN_DANGER("[target] is full."))
 					return
 
 				if(ismob(target) && target != user)

@@ -112,7 +112,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		spawn (10)
 			StartProcessing()
 	else
-		to_world("<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+		to_world(SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
 		spawn (20)
 			init_subtypes(/datum/subsystem, subsystems)
 			Setup()
@@ -123,7 +123,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 /datum/controller/master/proc/Setup()
 	set waitfor = FALSE
 	sleep(1 SECONDS)
-	to_world("<span class='boldannounce'>Initializing subsystems...</span>")
+	to_world(SPAN_BOLDANNOUNCE("Initializing subsystems..."))
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
@@ -137,7 +137,7 @@ var/CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 		CHECK_TICK
 	CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 
-	to_world("<span class='boldannounce'>Initializations complete!</span>")
+	to_world(SPAN_BOLDANNOUNCE("Initializations complete!"))
 	world.log << "Initializations complete."
 
 	// Sort subsystems by display setting for easy access.

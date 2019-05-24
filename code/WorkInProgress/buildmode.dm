@@ -253,13 +253,13 @@
 					log_admin("[key_name(usr)] modified [object.name]'s [holder.buildmode.varholder] to [holder.buildmode.valueholder]")
 					object.vars[holder.buildmode.varholder] = holder.buildmode.valueholder
 				else
-					to_chat(usr, "<span class='danger'>[initial(object.name)] does not have a var called '[holder.buildmode.varholder]'</span>")
+					to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[holder.buildmode.varholder]'"))
 			if(mods["right"])
 				if(object.vars.Find(holder.buildmode.varholder))
 					log_admin("[key_name(usr)] modified [object.name]'s [holder.buildmode.varholder] to [holder.buildmode.valueholder]")
 					object.vars[holder.buildmode.varholder] = initial(object.vars[holder.buildmode.varholder])
 				else
-					to_chat(usr, "<span class='danger'>[initial(object.name)] does not have a var called '[holder.buildmode.varholder]'</span>")
+					to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[holder.buildmode.varholder]'"))
 
 		if(4)
 			if(mods["left"])

@@ -20,7 +20,7 @@
 		return
 	//src.add_fingerprint(user)	//shouldn't need fingerprints just for looking at it.
 	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
 
 	user.set_interaction(src)
@@ -51,7 +51,7 @@
 					shuttle.queen_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN)
-				to_chat(user, "<span class='warning'>You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again.</span>")
+				to_chat(user, SPAN_WARNING("You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again."))
 			else
 				to_chat(user, SPAN_NOTICE("You reverse the door override."))
 				shuttle.last_door_override = world.time
@@ -160,19 +160,19 @@
 	if(href_list["move"])
 		if(shuttle.recharging) //Prevent the shuttle from moving again until it finishes recharging. This could be made to look better by using the shuttle computer's visual UI.
 			if(shuttle.iselevator)
-				to_chat(usr, "<span class='warning'>The elevator is loading and unloading. Please hold.</span>")
+				to_chat(usr, SPAN_WARNING("The elevator is loading and unloading. Please hold."))
 			else
-				to_chat(usr, "<span class='warning'>The shuttle's engines are still recharging and cooling down.</span>")
+				to_chat(usr, SPAN_WARNING("The shuttle's engines are still recharging and cooling down."))
 			return
 		if(shuttle.queen_locked && !isXenoQueen(usr))
-			to_chat(usr, "<span class='warning'>The shuttle isn't responding to prompts, it looks like remote control was disabled.</span>")
+			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
 			return
 		//Comment to test
 		if(!skip_time_lock && world.time < SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
-			to_chat(usr, "<span class='warning'>The shuttle is still undergoing pre-flight fuelling and cannot depart yet. Please wait another [round((SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again.</span>")
+			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fuelling and cannot depart yet. Please wait another [round((SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
 		if(ticker.mode.active_lz != src && !onboard && isXenoQueen(usr))
-			to_chat(usr, "<span class='warning'>The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle.</span>")
+			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
 		spawn(0)
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
@@ -191,9 +191,9 @@
 					command_announcement.Announce("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", \
 					"Dropship Alert", new_sound = 'sound/AI/hijack.ogg')
 					shuttle.alerts_allowed--
-					to_chat(usr, "<span class='danger'>A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!</span>")
+					to_chat(usr, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
 					var/mob/living/carbon/Xenomorph/Queen/Q = usr // typechecked above
-					xeno_message("<span class='xenoannounce'>The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!</span>",3,Q.hivenumber)
+					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 					playsound(src, 'sound/misc/queen_alarm.ogg')
 					if(bomb_set)
 						for(var/obj/machinery/nuclearbomb/bomb in world)
@@ -216,7 +216,7 @@
 		if(shuttle.transit_optimized) return
 		var/mob/M = usr
 		if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.pilot)
-			to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		else
 			to_chat(usr, SPAN_NOTICE("You load in and review a custom flight plan you took time to prepare earlier. This should cut half of the transport flight time on its own!"))
 			shuttle.transit_optimized = 1
@@ -229,7 +229,7 @@
 		if(shuttle.transit_gun_mission)
 			var/mob/M = usr
 			if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.pilot) //only pilots can activate the fire mission mode, but everyone can reset it back to transport..
-				to_chat(usr, "<span class='warning'>A screen with graphics and walls of physics and engineering values open, you immediately force it closed.</span>")
+				to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 				return
 			else
 				to_chat(usr, SPAN_NOTICE("You upload a flight plan for a low altitude flyby above the planet."))
@@ -319,12 +319,12 @@
 				var/sidename = is_right_side ? "right" : "left"
 				if(M.locked)
 					M.unlock()
-					to_chat(usr, "<span class='warning'>You hear a [sidename] door unlock.</span>") // yes this will give two messages but is important for when the two doors are out of sync
+					to_chat(usr, SPAN_WARNING("You hear a [sidename] door unlock.")) // yes this will give two messages but is important for when the two doors are out of sync
 				else
 					if(!M.density)
 						M.close()
 					M.lock()
-					to_chat(usr, "<span class='warning'>You hear a [sidename] door lock.</span>")
+					to_chat(usr, SPAN_WARNING("You hear a [sidename] door lock."))
 
 	if(href_list["rear door"])
 		if(shuttle.door_override || z == 3)
@@ -344,19 +344,19 @@
 		if(reardoor)
 			if(reardoor.locked)
 				reardoor.unlock()
-				to_chat(usr, "<span class='warning'>You hear the rear door unlock.</span>")
+				to_chat(usr, SPAN_WARNING("You hear the rear door unlock."))
 			else
 				if (!reardoor.density)
 					reardoor.close()
 				reardoor.lock()
-				to_chat(usr, "<span class='warning'>You hear the rear door lock.</span>")
+				to_chat(usr, SPAN_WARNING("You hear the rear door lock."))
 		else
-			to_chat(usr, "<span class='warning'>The console flashes a warning about the rear door not being present.</span>")
+			to_chat(usr, SPAN_WARNING("The console flashes a warning about the rear door not being present."))
 
 	if(href_list["cancel_flyby"])
 		var/mob/M = usr
 		if(M.mind && M.mind.cm_skills && !M.mind.cm_skills.pilot)
-			to_chat(usr, "<span class='warning'>Need Pilot level access to return the Dropship.</span>")
+			to_chat(usr, SPAN_WARNING("Need Pilot level access to return the Dropship."))
 			return
 		if(shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer)
 			shuttle.in_transit_time_left = abort_timer

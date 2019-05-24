@@ -98,13 +98,13 @@
 	if(!anchored) return 0 //Shouldn't actually be possible
 	if(user.is_mob_incapacitated()) return 0
 	if(!ishuman(user))
-		to_chat(user, "<span class='danger'>You have no idea how to use that.</span>") //No xenos or mankeys
+		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
 		return 0
 
 	add_fingerprint(user)
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		to_chat(user, "<span class='warning'>You have no clue how this thing works...</span>")
+		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return 0
 
 	if(buildstate == 1)
@@ -135,7 +135,7 @@
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
@@ -152,12 +152,12 @@
 					update_icon()
 					r_TRU
 			else
-				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return
 	else if(iswirecutter(O))
 		if(buildstate == 2 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
@@ -173,7 +173,7 @@
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
@@ -310,7 +310,7 @@
 	if(damaged)
 		if(isscrewdriver(I))
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_UNSCREW)
@@ -345,7 +345,7 @@
 
 		else if(iscrowbar(I))
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_CROWBAR)
@@ -365,7 +365,7 @@
 			var/obj/item/tool/weldingtool/WT = I
 
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_WELD)
@@ -382,18 +382,18 @@
 						SPAN_NOTICE("You weld [src]'s damage."))
 						return 1
 				else
-					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+					to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return TRUE
 
 		else if(iscoil(I))
 			var/obj/item/stack/cable_coil/C = I
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair [src].</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair [src]."))
 				return 0
 
 			if(repair_state == FLOODLIGHT_REPAIR_CABLE)
 				if(C.get_amount() < 2)
-					to_chat(user, "<span class='warning'>You need two coils of wire to replace the damaged cables.</span>")
+					to_chat(user, SPAN_WARNING("You need two coils of wire to replace the damaged cables."))
 					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] starts replacing [src]'s damaged cables."),\
@@ -415,9 +415,9 @@
 /obj/machinery/colony_floodlight/attack_hand(mob/user)
 	if(ishuman(user))
 		if(damaged)
-			to_chat(user, "<span class='warning'>[src] is damaged.</span>")
+			to_chat(user, SPAN_WARNING("[src] is damaged."))
 		else if(!is_lit)
-			to_chat(user, "<span class='warning'>Nothing happens. Looks like it's powered elsewhere.</span>")
+			to_chat(user, SPAN_WARNING("Nothing happens. Looks like it's powered elsewhere."))
 		return 0
 	..()
 
@@ -425,16 +425,16 @@
 	..()
 	if(ishuman(user))
 		if(damaged)
-			to_chat(user, "<span class='warning'>It is damaged.</span>")
+			to_chat(user, SPAN_WARNING("It is damaged."))
 			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_ENGI)
 				switch(repair_state)
-					if(FLOODLIGHT_REPAIR_UNSCREW) to_chat(user, "<span class='info'>You must first unscrew its maintenance hatch.</span>")
-					if(FLOODLIGHT_REPAIR_CROWBAR) to_chat(user, "<span class='info'>You must crowbar its maintenance hatch open.</span>")
-					if(FLOODLIGHT_REPAIR_WELD) to_chat(user, "<span class='info'>You must weld the damage to it.</span>")
-					if(FLOODLIGHT_REPAIR_CABLE) to_chat(user, "<span class='info'>You must replace its damaged cables.</span>")
-					if(FLOODLIGHT_REPAIR_SCREW) to_chat(user, "<span class='info'>You must screw its maintenance hatch closed.</span>")
+					if(FLOODLIGHT_REPAIR_UNSCREW) to_chat(user, SPAN_INFO("You must first unscrew its maintenance hatch."))
+					if(FLOODLIGHT_REPAIR_CROWBAR) to_chat(user, SPAN_INFO("You must crowbar its maintenance hatch open."))
+					if(FLOODLIGHT_REPAIR_WELD) to_chat(user, SPAN_INFO("You must weld the damage to it."))
+					if(FLOODLIGHT_REPAIR_CABLE) to_chat(user, SPAN_INFO("You must replace its damaged cables."))
+					if(FLOODLIGHT_REPAIR_SCREW) to_chat(user, SPAN_INFO("You must screw its maintenance hatch closed."))
 		else if(!is_lit)
-			to_chat(user, "<span class='info'>It doesn't seem powered.</span>")
+			to_chat(user, SPAN_INFO("It doesn't seem powered."))
 
 #undef FLOODLIGHT_REPAIR_UNSCREW
 #undef FLOODLIGHT_REPAIR_CROWBAR

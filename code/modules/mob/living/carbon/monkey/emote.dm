@@ -25,7 +25,7 @@
 			if(player_caused)
 				if (src.client)
 					if (client.prefs.muted & MUTE_IC)
-						to_chat(src, "<span class='danger'>You cannot send IC messages (muted).</span>")
+						to_chat(src, SPAN_DANGER("You cannot send IC messages (muted)."))
 						return
 					if (src.client.handle_spam_prevention(message,MUTE_IC))
 						return

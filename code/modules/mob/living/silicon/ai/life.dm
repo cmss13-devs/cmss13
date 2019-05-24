@@ -14,7 +14,7 @@
 
 		if (src.malfhack)
 			if (src.malfhack.aidisabled)
-				to_chat(src, "<span class='danger'>ERROR: APC access disabled, hack attempt canceled.</span>")
+				to_chat(src, SPAN_DANGER("ERROR: APC access disabled, hack attempt canceled."))
 				src.malfhacking = 0
 				src.malfhack = null
 
@@ -100,7 +100,6 @@
 					src:aiRestorePowerRoutine = 1
 
 					to_chat(src, "You've lost power!")
-//							to_world("DEBUG CODE TIME! [loc] is the area the AI is sucking power from")
 					if (!is_special_character(src))
 						src.set_zeroth_law("")
 					//src.clear_supplied_laws() // Don't reset our laws.

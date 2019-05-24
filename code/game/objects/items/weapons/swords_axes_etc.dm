@@ -27,7 +27,7 @@
 
 /obj/item/weapon/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You club yourself over the head.</span>")
+		to_chat(user, SPAN_DANGER("You club yourself over the head."))
 		user.KnockDown(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -48,7 +48,7 @@
 	if (M.stuttering < 8 && (!(HULK in M.mutations))  /*&& (!istype(H:wear_suit, /obj/item/clothing/suit/judgerobe))*/)
 		M.stuttering = 8
 	for(var/mob/O in viewers(M))
-		if (O.client)	O.show_message("<span class='danger'><B>[M] has been beaten with \the [src] by [user]!</B></span>", 1, "<span class='danger'>You hear someone fall</span>", 2)
+		if (O.client)	O.show_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), 1, SPAN_DANGER("You hear someone fall"), 2)
 
 //Telescopic baton
 /obj/item/weapon/telebaton
@@ -66,8 +66,8 @@
 /obj/item/weapon/telebaton/attack_self(mob/user as mob)
 	on = !on
 	if(on)
-		user.visible_message("<span class='danger'>With a flick of their wrist, [user] extends their telescopic baton.</span>",\
-		"<span class='danger'>You extend the baton.</span>",\
+		user.visible_message(SPAN_DANGER("With a flick of their wrist, [user] extends their telescopic baton."),\
+		SPAN_DANGER("You extend the baton."),\
 		"You hear an ominous click.")
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
@@ -107,7 +107,7 @@
 /obj/item/weapon/telebaton/attack(mob/target as mob, mob/living/user as mob)
 	if(on)
 		if ((CLUMSY in user.mutations) && prob(50))
-			to_chat(user, "<span class='danger'>You club yourself over the head.</span>")
+			to_chat(user, SPAN_DANGER("You club yourself over the head."))
 			user.KnockDown(3 * force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
@@ -134,7 +134,7 @@
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>You beat yourself in the head with [src].</span>")
+		to_chat(user, SPAN_DANGER("You beat yourself in the head with [src]."))
 		user.take_limb_damage(5)
 	active = !active
 	if (active)

@@ -427,7 +427,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach this [name]."))
 					return 0
 				if(!(flags_equip_slot & SLOT_WAIST))
 					return
@@ -467,7 +467,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach this [name]."))
 					return 0
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return 0
@@ -478,7 +478,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [name].</span>")
+						to_chat(H, SPAN_WARNING("You need a jumpsuit before you can attach this [name]."))
 					return 0
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return 0
@@ -490,7 +490,7 @@ cases. Override_icon_state should be a list.*/
 					return 0
 				if(!H.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
-						to_chat(H, "<span class='warning'>You need a suit before you can attach this [name].</span>")
+						to_chat(H, SPAN_WARNING("You need a suit before you can attach this [name]."))
 					return 0
 				if(!H.wear_suit.allowed)
 					if(!disable_warning)
@@ -614,22 +614,22 @@ cases. Override_icon_state should be a list.*/
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/brain)))//Is humanoid, and is not a brain
-		to_chat(usr, "<span class='danger'>You can't pick things up!</span>")
+		to_chat(usr, SPAN_DANGER("You can't pick things up!"))
 		return
 	if( usr.stat || usr.is_mob_restrained() )//Is not asleep/dead and is not restrained
-		to_chat(usr, "<span class='danger'>You can't pick things up!</span>")
+		to_chat(usr, SPAN_DANGER("You can't pick things up!"))
 		return
 	if(src.anchored) //Object isn't anchored
-		to_chat(usr, "<span class='danger'>You can't pick that up!</span>")
+		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
 		return
 	if(!usr.hand && usr.r_hand) //Right hand is not full
-		to_chat(usr, "<span class='danger'>Your right hand is full.</span>")
+		to_chat(usr, SPAN_DANGER("Your right hand is full."))
 		return
 	if(usr.hand && usr.l_hand) //Left hand is not full
-		to_chat(usr, "<span class='danger'>Your left hand is full.</span>")
+		to_chat(usr, SPAN_DANGER("Your left hand is full."))
 		return
 	if(!istype(src.loc, /turf)) //Object is on a turf
-		to_chat(usr, "<span class='danger'>You can't pick that up!</span>")
+		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
 		return
 	//All checks are done, time to pick it up!
 	if (world.time <= usr.next_move)
@@ -704,17 +704,17 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 
 	for(var/obj/item/I in user.contents)
 		if(I.zoom && I != src)
-			to_chat(user, "<span class='warning'>You are already looking through \the [zoom_device].</span>")
+			to_chat(user, SPAN_WARNING("You are already looking through \the [zoom_device]."))
 			return //Return in the interest of not unzooming the other item. Check first in the interest of not fucking with the other clauses
 
 	if(user.eye_blind) 												
-		to_chat(user, "<span class='warning'>You are too blind to see anything.</span>")
+		to_chat(user, SPAN_WARNING("You are too blind to see anything."))
 	else if(user.stat || !ishuman(user)) 							
-		to_chat(user, "<span class='warning'>You are unable to focus through \the [zoom_device].</span>")
+		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
 	else if(!zoom && user.client && user.update_tint()) 			
-		to_chat(user, "<span class='warning'>Your welding equipment gets in the way of you looking through \the [zoom_device].</span>")
+		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
 	else if(!zoom && user.get_active_hand() != src)					
-		to_chat(user, "<span class='warning'>You need to hold \the [zoom_device] to look through it.</span>")
+		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(zoom) //If we are zoomed out, reset that parameter.
 		user.visible_message(SPAN_NOTICE("[user] looks up from [zoom_device]."),
 		SPAN_NOTICE("You look up from [zoom_device]."))

@@ -509,7 +509,7 @@
 
 
 /obj/item/weapon/gun/rifle/type71/toggle_burst()
-	to_chat(usr, "<span class='warning'>This weapon can only fire in bursts!</span>")
+	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
 
 
 /obj/item/weapon/gun/rifle/type71/flamer

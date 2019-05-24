@@ -69,13 +69,13 @@
 	if(!anchored) return 0 //Shouldn't actually be possible
 	if(user.is_mob_incapacitated()) return 0
 	if(!ishuman(user))
-		to_chat(user, "<span class='danger'>You have no idea how to use that.</span>") //No xenos or mankeys
+		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
 		return 0
 
 	add_fingerprint(user)
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		to_chat(user, "<span class='warning'>You have no clue how this thing works...</span>")
+		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return 0
 
 	if(buildstate == 1)
@@ -105,7 +105,7 @@
 	if(iswelder(O))
 		if(buildstate == 1 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
@@ -122,12 +122,12 @@
 					update_icon()
 					r_TRU
 			else
-				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return
 	else if(iswirecutter(O))
 		if(buildstate == 2 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
@@ -143,7 +143,7 @@
 	else if(iswrench(O))
 		if(buildstate == 3 && !is_on)
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				to_chat(user, "<span class='warning'>You have no clue how to repair this thing.</span>")
+				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return 0
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),

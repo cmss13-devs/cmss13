@@ -107,8 +107,8 @@
 /obj/item/tool/pen/attack(mob/M as mob, mob/user as mob)
 	if(!ismob(M))
 		return
-	to_chat(user, "<span class='warning'>You stab [M] with the pen.</span>")
-//	to_chat(M, "<span class='warning'>You feel a tiny prick!</span>") //That's a whole lot of meta!
+	to_chat(user, SPAN_WARNING("You stab [M] with the pen."))
+//	to_chat(M, SPAN_WARNING("You feel a tiny prick!")) //That's a whole lot of meta!
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been stabbed with [name]  by [user.name] ([user.ckey])</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [name] to stab [M.name] ([M.ckey])</font>")
 	msg_admin_attack("[user.name] ([user.ckey]) Used the [name] to stab [M.name] ([M.ckey]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")

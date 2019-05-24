@@ -19,7 +19,7 @@
 	var/turf/location = get_turf(src) // For admin logs
 	if(istype(item, /obj/item/tank))
 		if(tank_one && tank_two)
-			to_chat(user, "<span class='warning'>There are already two tanks attached, remove one first.</span>")
+			to_chat(user, SPAN_WARNING("There are already two tanks attached, remove one first."))
 			return
 
 		if(!tank_one)
@@ -44,7 +44,7 @@
 			to_chat(user, SPAN_NOTICE("The device is secured."))
 			return
 		if(attached_device)
-			to_chat(user, "<span class='warning'>There is already an device attached to the valve, remove it first.</span>")
+			to_chat(user, SPAN_WARNING("There is already an device attached to the valve, remove it first."))
 			return
 		user.temp_drop_inv_item(A)
 		attached_device = A

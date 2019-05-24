@@ -3,7 +3,7 @@
 	set name = "Pray"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, SPAN_DANGER("Speech is currently admin-disabled."))
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
@@ -11,7 +11,7 @@
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
-			to_chat(usr, "<span class='danger'>You cannot pray (muted).</span>")
+			to_chat(usr, SPAN_DANGER("You cannot pray (muted)."))
 			return
 		if(src.client.handle_spam_prevention(msg,MUTE_PRAY))
 			return

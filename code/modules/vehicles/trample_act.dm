@@ -32,15 +32,15 @@
 				if (X.fortify)
 					blocked = 1
 			if(blocked)
-				X.visible_message("<span class='danger'>[X] digs it's claws into the ground, standing it's ground, halting [src] in it's tracks!</span>",
-				"<span class='danger'>You dig your claws into the ground, stopping [src] in it's tracks!</span>")
+				X.visible_message(SPAN_DANGER("[X] digs it's claws into the ground, standing it's ground, halting [src] in it's tracks!"),
+				SPAN_DANGER("You dig your claws into the ground, stopping [src] in it's tracks!"))
 				return FALSE
 		if(!L.is_mob_incapacitated())
 			step_away(L,src)
 		if(is_knocked_down) L.KnockDown(3, 1)
 		if(takes_damage) L.apply_damage(7 + rand(0, 5), BRUTE)
 		playsound(loc, "punch", 25, 1)
-		L.visible_message("<span class='danger'>[src] rams [L]!</span>", "<span class='danger'>[src] rams you! Get out of the way!</span>")
+		L.visible_message(SPAN_DANGER("[src] rams [L]!"), SPAN_DANGER("[src] rams you! Get out of the way!"))
 		var/list/slots = CA.get_activatable_hardpoints()
 		for(var/slot in slots)
 			var/obj/item/hardpoint/H = CA.hardpoints[slot]
@@ -51,7 +51,7 @@
 		cade.close(cade)
 	else if(istype(A, /obj/structure/barricade/deployable))
 		var/obj/structure/barricade/deployable/cade = A
-		visible_message("<span class='danger'>[src] crushes [cade]!</span>")
+		visible_message(SPAN_DANGER("[src] crushes [cade]!"))
 		playsound(cade, 'sound/effects/metal_crash.ogg', 35)
 		cade.collapse()
 	else if(isobj(A) && !istype(A, /obj/vehicle))
@@ -59,7 +59,7 @@
 		if(O.unacidable)
 			return
 		CA.take_damage_type(5, "blunt", O)
-		visible_message("<span class='danger'>[src] crushes [O]!</span>")
+		visible_message(SPAN_DANGER("[src] crushes [O]!"))
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
 		qdel(O)
 		return

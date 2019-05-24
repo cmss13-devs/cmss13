@@ -177,7 +177,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(i in EvacuationAuthority.dest_rods)
 			I = i
 			if(I.active_state == SELF_DESTRUCT_MACHINE_ARMED && !override)
-				dest_master.state("<span class='warning'>WARNING: Unable to cancel detonation. Please disarm all control rods.</span>")
+				dest_master.state(SPAN_WARNING("WARNING: Unable to cancel detonation. Please disarm all control rods."))
 				r_FAL
 
 		dest_status = NUKE_EXPLOSION_INACTIVE
@@ -200,7 +200,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		for(i in dest_rods)
 			I = i
 			if(I.active_state != SELF_DESTRUCT_MACHINE_ARMED && !override)
-				dest_master.state("<span class='warning'>WARNING: Unable to trigger detonation. Please arm all control rods.</span>")
+				dest_master.state(SPAN_WARNING("WARNING: Unable to trigger detonation. Please arm all control rods."))
 				r_FAL
 		dest_master.in_progress = !dest_master.in_progress
 		for(i in EvacuationAuthority.dest_rods)
@@ -417,4 +417,4 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 					playsound(src, 'sound/machines/switch.ogg', 25, 1)
 					icon_state = "rod_3"
 					active_state = SELF_DESTRUCT_MACHINE_ACTIVE
-				else to_chat(user, "<span class='warning'>The control rod is not ready.</span>")
+				else to_chat(user, SPAN_WARNING("The control rod is not ready."))

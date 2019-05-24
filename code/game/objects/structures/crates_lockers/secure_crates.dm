@@ -36,7 +36,7 @@
 		to_chat(user, SPAN_NOTICE("Close the crate first."))
 		return
 	if(src.broken)
-		to_chat(user, "<span class='warning'>The crate appears to be broken.</span>")
+		to_chat(user, SPAN_WARNING("The crate appears to be broken."))
 		return
 	if(src.allowed(user))
 		src.locked = !src.locked
@@ -59,7 +59,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)

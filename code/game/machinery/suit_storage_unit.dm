@@ -244,7 +244,7 @@
 			if( istype(I,/obj/item/clothing/suit/space) )
 				var/obj/item/clothing/suit/space/S = I
 				if(inserted_suit)
-					to_chat(user, "<span class='warning'>The unit already contains a suit.</span>")
+					to_chat(user, SPAN_WARNING("The unit already contains a suit."))
 					return
 				if(user.drop_inv_item_to_loc(S, src))
 					to_chat(user, SPAN_NOTICE("You load the [S.name] into the storage compartment."))
@@ -256,7 +256,7 @@
 			if( istype(I,/obj/item/clothing/head/helmet) )
 				var/obj/item/clothing/head/helmet/H = I
 				if(inserted_helmet)
-					to_chat(user, "<span class='warning'>The unit already contains a helmet.</span>")
+					to_chat(user, SPAN_WARNING("The unit already contains a helmet."))
 					return
 				to_chat(user, SPAN_NOTICE("You load the [H.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(H, src))
@@ -268,7 +268,7 @@
 			if( istype(I,/obj/item/clothing/mask) )
 				var/obj/item/clothing/mask/M = I
 				if(inserted_mask)
-					to_chat(user, "<span class='warning'>The unit already contains a mask.</span>")
+					to_chat(user, SPAN_WARNING("The unit already contains a mask."))
 					return
 				to_chat(user, SPAN_NOTICE("You load the [M.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(M, src))
@@ -280,7 +280,7 @@
 			if( istype(I,/obj/item/tank) )
 				var/obj/item/tank/T = I
 				if(inserted_tank)
-					to_chat(user, "<span class='warning'>The unit already contains a tank.</span>")
+					to_chat(user, SPAN_WARNING("The unit already contains a tank."))
 					return
 				to_chat(user, SPAN_NOTICE("You load the [T.name] into the storage compartment."))
 				if(user.drop_inv_item_to_loc(T, src))

@@ -29,5 +29,5 @@
 			use(1)
 			to_chat(user, SPAN_NOTICE("You make a light tile."))
 		else
-			to_chat(user, "<span class='warning'>You need one metal sheet to finish the light tile.</span>")
+			to_chat(user, SPAN_WARNING("You need one metal sheet to finish the light tile."))
 		return

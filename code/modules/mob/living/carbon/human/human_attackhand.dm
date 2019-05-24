@@ -3,7 +3,7 @@
 	..()
 
 	if((M != src) && check_shields(0, M.name))
-		visible_message("<span class='danger'><B>[M] attempted to touch [src]!</B></span>", null, null, 5)
+		visible_message(SPAN_DANGER("<B>[M] attempted to touch [src]!</B>"), null, null, 5)
 		return 0
 
 	M.next_move += 7 //Adds some lag to the 'attack'. This will add up to 10
@@ -13,10 +13,10 @@
 			if(on_fire && M != src)
 				fire_stacks = max(fire_stacks - 1, 0)
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				M.visible_message("<span class='danger'>[M] tries to put out the fire on [src]!</span>", \
-					"<span class='warning'>You try to put out the fire on [src]!</span>", null, 5)
+				M.visible_message(SPAN_DANGER("[M] tries to put out the fire on [src]!"), \
+					SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 				if(fire_stacks <= 0)
-					M.visible_message("<span class='danger'>[M] has successfully extinguished the fire on [src]!</span>", \
+					M.visible_message(SPAN_DANGER("[M] has successfully extinguished the fire on [src]!"), \
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 					ExtinguishMob()
 				return 1
@@ -36,22 +36,22 @@
 			//CPR
 			if(M.action_busy)
 				return 1
-			M.visible_message("<span class='danger'><B>[M] is trying perform CPR on [src]!</B></span>", null, null, 4)
+			M.visible_message(SPAN_DANGER("<B>[M] is trying perform CPR on [src]!</B>"), null, null, 4)
 
 			if(do_after(M, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
 					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
 					adjustOxyLoss(-suff)
 					updatehealth()
-					visible_message("<span class='danger'>[M] performs CPR on [src]!</span>", null, null, 3)
+					visible_message(SPAN_DANGER("[M] performs CPR on [src]!"), null, null, 3)
 					to_chat(src, SPAN_NOTICE(" <b>You feel a breath of fresh air enter your lungs. It feels good.</b>"))
-					to_chat(M, "<span class='warning'>Repeat at least every 7 seconds.</span>")
+					to_chat(M, SPAN_WARNING("Repeat at least every 7 seconds."))
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += SECONDS_7
-						visible_message("<span class='danger'>[M] performs CPR on [src]!</span>", null, null, 3)
+						visible_message(SPAN_DANGER("[M] performs CPR on [src]!"), null, null, 3)
 					else
-						visible_message("<span class='danger'>[M] fails to perform CPR on [src]! Incorrect rhythm.</span>", null, null, 3)
+						visible_message(SPAN_DANGER("[M] fails to perform CPR on [src]! Incorrect rhythm."), null, null, 3)
 					cpr_cooldown = world.time + SECONDS_7
 
 			return 1
@@ -85,7 +85,7 @@
 			var/damage = rand(0, max_dmg)
 			if(!damage)
 				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message("<span class='danger'>[M] tried to [pick(attack.attack_verb)] [src]!</span>", null, null, 5)
+				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
 				return
 
 			var/datum/limb/affecting = get_limb(ran_zone(M.zone_selected))
@@ -95,9 +95,9 @@
 			if(HULK in M.mutations) damage += 5
 			playsound(loc, attack.attack_sound, 25, 1)
 
-			visible_message("<span class='danger'>[M] [pick(attack.attack_verb)]ed [src]!</span>", null, null, 5)
+			visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
 			if(damage >= 5 && prob(50))
-				visible_message("<span class='danger'>[M] has weakened [src]!</span>", null, null, 5)
+				visible_message(SPAN_DANGER("[M] has weakened [src]!"), null, null, 5)
 				apply_effect(3, WEAKEN, armor_block)
 
 			damage += attack.damage
@@ -151,23 +151,23 @@
 			if (randn <= 25)
 				apply_effect(3, WEAKEN, run_armor_check(affecting, ARMOR_MELEE))
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				visible_message("<span class='danger'><B>[M] has pushed [src]!</B></span>", null, null, 5)
+				visible_message(SPAN_DANGER("<B>[M] has pushed [src]!</B>"), null, null, 5)
 				return
 
 			if(randn <= 60)
 				//BubbleWrap: Disarming breaks a pull
 				if(pulling)
-					visible_message("<span class='danger'><b>[M] has broken [src]'s grip on [pulling]!</B></span>", null, null, 5)
+					visible_message(SPAN_DANGER("<b>[M] has broken [src]'s grip on [pulling]!</B>"), null, null, 5)
 					stop_pulling()
 				else
 					drop_held_item()
-					visible_message("<span class='danger'><B>[M] has disarmed [src]!</B></span>", null, null, 5)
+					visible_message(SPAN_DANGER("<B>[M] has disarmed [src]!</B>"), null, null, 5)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				return
 
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
-			visible_message("<span class='danger'><B>[M] attempted to disarm [src]!</B></span>", null, null, 5)
+			visible_message(SPAN_DANGER("<B>[M] attempted to disarm [src]!</B>"), null, null, 5)
 	return
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)

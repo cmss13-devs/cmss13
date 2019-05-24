@@ -67,7 +67,7 @@ log transactions
 	if(istype(I, /obj/item/card))
 		if(emagged > 0)
 			//prevent inserting id into an emagged ATM
-			to_chat(user, "<span class='danger'>\icon[src] CARD READER ERROR. This system has been compromised!</span>")
+			to_chat(user, SPAN_DANGER("\icon[src] CARD READER ERROR. This system has been compromised!"))
 			return
 		else if(istype(I,/obj/item/card/emag))
 			//short out the machine, shoot sparks, spew money!
@@ -79,7 +79,7 @@ log transactions
 
 			//display a message to the user
 			var/response = pick("Initiating withdraw. Have a nice day!", "CRITICAL ERROR: Activating cash chamber panic siphon.","PIN Code accepted! Emptying account balance.", "Jackpot!")
-			to_chat(user, "<span class='danger'>\icon[src] The [src] beeps: \"[response]\"</span>")
+			to_chat(user, SPAN_DANGER("\icon[src] The [src] beeps: \"[response]\""))
 			return
 
 		var/obj/item/card/id/idcard = I
@@ -108,7 +108,7 @@ log transactions
 			T.time = worldtime2text()
 			authenticated_account.transaction_log.Add(T)
 
-			to_chat(user, "<span class='info'>You insert [I] into [src].</span>")
+			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
 			src.attack_hand(user)
 			qdel(I)
 	else
@@ -116,7 +116,7 @@ log transactions
 
 /obj/machinery/atm/attack_hand(mob/user as mob)
 	if(issilicon(user))
-		to_chat(user, "<span class='danger'>\icon[src] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland Yutani regulation #1005.</span>")
+		to_chat(user, SPAN_DANGER("\icon[src] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland Yutani regulation #1005."))
 		return
 	if(get_dist(src,user) <= 1)
 
@@ -134,7 +134,7 @@ log transactions
 				dat += "<span class='alert'>Maximum number of pin attempts exceeded! Access to this ATM has been temporarily disabled.</span>"
 			else if(authenticated_account)
 				if(authenticated_account.suspended)
-					dat += "<span class='warning'><b>Access to this account has been suspended, and the funds within frozen.</b></span>"
+					dat += SPAN_WARNING("<b>Access to this account has been suspended, and the funds within frozen.</b>")
 				else
 					switch(view_screen)
 						if(CHANGE_SECURITY_LEVEL)
@@ -279,11 +279,11 @@ log transactions
 									T.time = worldtime2text()
 									failed_account.transaction_log.Add(T)
 							else
-								to_chat(usr, "<span class='danger'>\icon[src] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining.</span>")
+								to_chat(usr, SPAN_DANGER("\icon[src] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining."))
 								previous_account_number = tried_account_num
 								playsound(src, 'sound/machines/buzz-sigh.ogg', 25, 1)
 						else
-							to_chat(usr, "<span class='danger'>\icon[src] incorrect pin/account combination entered.</span>")
+							to_chat(usr, SPAN_DANGER("\icon[src] incorrect pin/account combination entered."))
 							number_incorrect_tries = 0
 					else
 						playsound(src, 'sound/machines/twobeep.ogg', 25, 1)
@@ -424,7 +424,7 @@ log transactions
 				if(!held_card)
 					//this might happen if the user had the browser window open when somebody emagged it
 					if(emagged > 0)
-						to_chat(usr, "<span class='danger'>\icon[src] The ATM card reader rejected your ID because this machine has been sabotaged!</span>")
+						to_chat(usr, SPAN_DANGER("\icon[src] The ATM card reader rejected your ID because this machine has been sabotaged!"))
 					else
 						var/obj/item/I = usr.get_active_hand()
 						if (istype(I, /obj/item/card/id))

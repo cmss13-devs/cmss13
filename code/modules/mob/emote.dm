@@ -72,16 +72,16 @@
 /mob/proc/emote_dead(var/message)
 
 	if(client.prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, "<span class='danger'>You cannot send deadchat emotes (muted).</span>")
+		to_chat(src, SPAN_DANGER("You cannot send deadchat emotes (muted)."))
 		return
 
 	if(!(client.prefs.toggles_chat & CHAT_DEAD))
-		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(src, SPAN_DANGER("You have deadchat muted."))
 		return
 
 	if(!src.client.admin_holder)
 		if(!dsay_allowed)
-			to_chat(src, "<span class='danger'>Deadchat is globally muted</span>")
+			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
 			return
 
 

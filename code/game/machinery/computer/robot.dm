@@ -29,7 +29,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, "<span class='danger'><b>Unable to establish a connection</b>: \black You're too far away from the station!</span>")
+		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
 		return
 	user.set_interaction(src)
 	var/dat
@@ -128,7 +128,7 @@
 						src.temp = null
 
 				else
-					to_chat(usr, "<span class='danger'>Access Denied.</span>")
+					to_chat(usr, SPAN_DANGER("Access Denied."))
 
 		else if (href_list["stop"])
 			src.temp = {"
@@ -170,7 +170,7 @@
 								log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
 								R.self_destruct()
 			else
-				to_chat(usr, "<span class='danger'>Access Denied.</span>")
+				to_chat(usr, SPAN_DANGER("Access Denied."))
 
 		else if (href_list["stopbot"])
 			if(src.allowed(usr))
@@ -192,7 +192,7 @@
 								to_chat(R, "You have been locked down!")
 
 			else
-				to_chat(usr, "<span class='danger'>Access Denied.</span>")
+				to_chat(usr, SPAN_DANGER("Access Denied."))
 
 		else if (href_list["magbot"])
 			if(src.allowed(usr))

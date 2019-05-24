@@ -81,7 +81,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attackby(obj/item/I, mob/user)
 	if(flags_attach_features & ATTACH_RELOADABLE)
 		if(user.get_inactive_hand() != src)
-			to_chat(user, "<span class='warning'>You have to hold [src] to do that!</span>")
+			to_chat(user, SPAN_WARNING("You have to hold [src] to do that!"))
 		else
 			reload_attachment(I, user)
 		return TRUE
@@ -211,7 +211,7 @@ Defined in conflicts.dm of the #defines folder.
 		if(activate_attachment(G, user)) //success
 			return
 	else
-		to_chat(user, "<span class='warning'>[G] must be in our active hand to do this.</span>")
+		to_chat(user, SPAN_WARNING("[G] must be in our active hand to do this."))
 
 
 
@@ -587,7 +587,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	if(!G.zoom && !(G.flags_item & WIELDED))
 		if(user)
-			to_chat(user, "<span class='warning'>You must hold [G] with two hands to use [src].</span>")
+			to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))
 		return 0
 	else
 		G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
@@ -1073,14 +1073,14 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/reload_attachment(obj/item/explosive/grenade/G, mob/user)
 	if(!istype(G) || istype(G, /obj/item/explosive/grenade/spawnergrenade/))
-		to_chat(user, "<span class='warning'>[src] doesn't accept that type of grenade.</span>")
+		to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
 		return
 	if(!G.active) //can't load live grenades
 		if(!G.underslug_launchable)
-			to_chat(user, "<span class='warning'>[src] doesn't accept that type of grenade.</span>")
+			to_chat(user, SPAN_WARNING("[src] doesn't accept that type of grenade."))
 			return
 		if(current_rounds >= max_rounds)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, SPAN_WARNING("[src] is full."))
 		else
 			playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 25, 1)
 			current_rounds++
@@ -1091,7 +1091,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/attached_gun/grenade/fire_attachment(atom/target,obj/item/weapon/gun/gun,mob/living/user)
 	if(get_dist(user,target) > max_range)
-		to_chat(user, "<span class='warning'>Too far to fire the attachment!</span>")
+		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
 	if(current_rounds > 0) prime_grenade(target,gun,user)
 
@@ -1141,9 +1141,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/flamer/reload_attachment(obj/item/ammo_magazine/flamer_tank/FT, mob/user)
 	if(istype(FT))
 		if(current_rounds >= max_rounds)
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, SPAN_WARNING("[src] is full."))
 		else if(FT.current_rounds <= 0)
-			to_chat(user, "<span class='warning'>[FT] is empty!</span>")
+			to_chat(user, SPAN_WARNING("[FT] is empty!"))
 		else
 			playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 			to_chat(user, SPAN_NOTICE("You refill [src] with [FT]."))
@@ -1151,11 +1151,11 @@ Defined in conflicts.dm of the #defines folder.
 			current_rounds += transfered_rounds
 			FT.current_rounds -= transfered_rounds
 	else
-		to_chat(user, "<span class='warning'>[src] can only be refilled with an incinerator tank.</span>")
+		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 
 /obj/item/attachable/attached_gun/flamer/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
 	if(get_dist(user,target) > max_range+4)
-		to_chat(user, "<span class='warning'>Too far to fire the attachment!</span>")
+		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
 		return
 	if(current_rounds) unleash_flame(target, user)
 
@@ -1221,7 +1221,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)
 		if(mag.default_ammo == /datum/ammo/bullet/shotgun/buckshot)
 			if(current_rounds >= max_rounds)
-				to_chat(user, "<span class='warning'>[src] is full.</span>")
+				to_chat(user, SPAN_WARNING("[src] is full."))
 			else
 				current_rounds++
 				mag.current_rounds--
@@ -1232,7 +1232,7 @@ Defined in conflicts.dm of the #defines folder.
 					user.temp_drop_inv_item(mag)
 					qdel(mag)
 			return
-	to_chat(user, "<span class='warning'>[src] only accepts shotgun buckshot.</span>")
+	to_chat(user, SPAN_WARNING("[src] only accepts shotgun buckshot."))
 
 
 

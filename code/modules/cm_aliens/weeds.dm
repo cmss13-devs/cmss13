@@ -147,9 +147,9 @@
 		return 0
 
 	if(istype(src, /obj/effect/alien/weeds/node)) //The pain is real
-		to_chat(user, "<span class='warning'>You hit \the [src] with \the [W].</span>")
+		to_chat(user, SPAN_WARNING("You hit \the [src] with \the [W]."))
 	else
-		to_chat(user, "<span class='warning'>You cut \the [src] away with \the [W].</span>")
+		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [W]."))
 
 	var/damage = W.force
 	if(W.w_class < 4 || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate

@@ -19,7 +19,7 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		to_chat(usr, "<span class='warning'>Not right now!</span>")
+		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You [flags_marine_armor & ARMOR_SQUAD_OVERLAY? "hide" : "show"] the squad markings."))
@@ -30,7 +30,7 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		to_chat(usr, "<span class='warning'>Not right now!</span>")
+		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You [flags_marine_armor & ARMOR_LAMP_OVERLAY? "hide" : "show"] the shoulder lamp."))
@@ -445,7 +445,7 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		to_chat(usr, "<span class='warning'>Not right now!</span>")
+		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You [flags_marine_helmet & HELMET_SQUAD_OVERLAY? "hide" : "show"] the squad markings."))
@@ -456,7 +456,7 @@
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
-		to_chat(usr, "<span class='warning'>Not right now!</span>")
+		to_chat(usr, SPAN_WARNING("Not right now!"))
 		return
 
 	to_chat(usr, SPAN_NOTICE("You [flags_marine_helmet & HELMET_GARB_OVERLAY? "hide" : "show"] the helmet garb."))

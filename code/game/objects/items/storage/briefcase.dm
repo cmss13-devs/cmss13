@@ -18,7 +18,7 @@
 	//..()
 
 	if ((CLUMSY in user.mutations) && prob(50))
-		to_chat(user, "<span class='danger'>The [src] slips out of your hand and hits your head.</span>")
+		to_chat(user, SPAN_DANGER("The [src] slips out of your hand and hits your head."))
 		user.take_limb_damage(10)
 		user.KnockOut(2)
 		return
@@ -33,7 +33,7 @@
 			var/mob/living/carbon/human/H = M
 			var/obj/item/P = H.head
 			if(istype(P) && P.flags_inventory & BLOCKSHARPOBJ && prob(80))
-				to_chat(M, "<span class='warning'>The helmet protects you from being hit hard in the head!</span>")
+				to_chat(M, SPAN_WARNING("The helmet protects you from being hit hard in the head!"))
 				return
 		var/time = rand(2, 6)
 		if (prob(75))
@@ -42,9 +42,9 @@
 			M.Stun(time)
 		if(M.stat != 2)	M.stat = 1
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'><B>[] has been knocked unconscious!</B></span>", M), 1, "<span class='danger'>You hear someone fall.</span>", 2)
+			O.show_message(SPAN_DANGER("<B>[M] has been knocked unconscious!</B>"), 1, SPAN_DANGER("You hear someone fall."), 2)
 	else
-		M << text("<span class='danger'>[] tried to knock you unconcious!</span>",user)
+		to_chat(M, SPAN_DANGER("[user] tried to knock you unconcious!"))
 		M.eye_blurry += 3
 
 	return

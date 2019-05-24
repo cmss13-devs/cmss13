@@ -54,17 +54,17 @@
 					if(0 to 4)
 						H.next_move_slowdown += rand(2,3)
 						if(prob(2))
-							to_chat(H, "<span class='warning'>Moving through [src] slows you down.</span>")
+							to_chat(H, SPAN_WARNING("Moving through [src] slows you down."))
 					if(5 to 7)
 						H.next_move_slowdown += rand(4,7)
 						if(prob(10))
-							to_chat(H, "<span class='warning'>It is very hard to move trough this [src]...</span>")
+							to_chat(H, SPAN_WARNING("It is very hard to move trough this [src]..."))
 					if(8 to 9)
 						H.next_move_slowdown += rand(8,11)
-						to_chat(H, "<span class='warning'>You got tangeled in [src]!</span>")
+						to_chat(H, SPAN_WARNING("You got tangeled in [src]!"))
 					if(10)
 						H.next_move_slowdown += rand(12,20)
-						to_chat(H, "<span class='warning'>You got completely tangeled in [src]! Oh boy...</span>")
+						to_chat(H, SPAN_WARNING("You got completely tangeled in [src]! Oh boy..."))
 
 /obj/structure/bush/attackby(var/obj/I as obj, var/mob/user as mob)
 	//hatchets and shiet can clear away undergrowth
@@ -74,9 +74,9 @@
 			damage = rand(8,18)
 		if(indestructable)
 			//this bush marks the edge of the map, you can't destroy it
-			to_chat(user, "<span class='danger'>You flail away at the undergrowth, but it's too thick here.</span>")
+			to_chat(user, SPAN_DANGER("You flail away at the undergrowth, but it's too thick here."))
 		else
-			user.visible_message("<span class='danger'>[user] flails away at the  [src] with [I].</span>","<span class='danger'>You flail away at the [src] with [I].</span>")
+			user.visible_message(SPAN_DANGER("[user] flails away at the  [src] with [I]."),SPAN_DANGER("You flail away at the [src] with [I]."))
 			playsound(src.loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			health -= damage
 			if(health < 0)
@@ -186,4 +186,4 @@ var/jungle_plants_init = 0
 		fruit_overlay.Blend(rgb(fruit_r, fruit_g, fruit_b), ICON_ADD)
 		overlays += fruit_overlay
 	else
-		to_chat(user, "<span class='danger'>There are no fruit left on [src].</span>")
+		to_chat(user, SPAN_DANGER("There are no fruit left on [src]."))

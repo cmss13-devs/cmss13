@@ -81,7 +81,7 @@
 	if(hive.living_xeno_queen.is_dead())
 		return //Dead xenos can't mutate!
 	if(hive.living_xeno_queen.hardcore)
-		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
+		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
 	if(!hive.living_xeno_queen.ovipositor)
 		to_chat(usr, "You must be in Ovipositor to purchase Hive Mutators.")
@@ -138,7 +138,7 @@
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
-			to_chat(X, "<span class='xenoannounce'>Queen's influence wanes. You feel weak!</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen's influence wanes. You feel weak!"))
 			playsound(X.loc, "alien_help", 25)
 			X.xeno_jitter(15)
 
@@ -146,31 +146,31 @@
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_everything()
-			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_stats(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_stats()
-			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_actions(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_actions()
-			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/recalculate_pheromones(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_pheromones()
-			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/proc/recalculate_maturation(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
 			X.recalculate_maturation()
-			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 /datum/mutator_set/hive_mutators/proc/recalculate_hive(var/description)
 	hive.recalculate_hive()
@@ -178,7 +178,7 @@
 /datum/mutator_set/hive_mutators/give_feedback(var/description)
 	for(var/mob/living/carbon/Xenomorph/X in living_xeno_list)
 		if(X.hivenumber == hive.hivenumber)
-			to_chat(X, "<span class='xenoannounce'>Queen has granted the Hive a boon! [description]</span>")
+			to_chat(X, SPAN_XENOANNOUNCE("Queen has granted the Hive a boon! [description]"))
 			X.xeno_jitter(15)
 
 //Mutators applying to an individual xeno
@@ -233,22 +233,22 @@
 
 /datum/mutator_set/individual_mutators/recalculate_everything(var/description)
 	xeno.recalculate_everything()
-	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
+	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_stats(var/description)
 	xeno.recalculate_stats()
-	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
+	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_actions(var/description)
 	xeno.recalculate_actions()
-	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
+	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/recalculate_pheromones(var/description)
 	xeno.recalculate_pheromones()
-	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
+	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
 	xeno.xeno_jitter(15)
 /datum/mutator_set/individual_mutators/give_feedback(var/description)
-	to_chat(xeno, "<span class='xenoannounce'>[description]</span>")
+	to_chat(xeno, SPAN_XENOANNOUNCE("[description]"))
 	xeno.xeno_jitter(15)
 
 /mob/living/carbon/Xenomorph/Queen/verb/purchase_hive_mutators()
@@ -256,7 +256,7 @@
 	set desc = "Purchase Mutators affecting the entire Hive."
 	set category = "Alien"
 	if(hardcore)
-		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
+		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
 	src.hive.mutators.list_and_purchase_mutators()
 
@@ -265,7 +265,7 @@
 	set desc = "Purchase Mutators for yourself."
 	set category = "Alien"
 	if(hardcore)
-		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
+		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
 	if(is_dead())
 		return //Dead xenos can't mutate!
@@ -276,9 +276,9 @@
 	set desc = "List Mutators that apply to you."
 	set category = "Alien"
 	if(hardcore)
-		to_chat(usr, "<span class='warning'>No time for that, must KILL!</span>")
+		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
-	to_chat(src, "<span class='xenoannounce'>Mutators</span>")
+	to_chat(src, SPAN_XENOANNOUNCE("Mutators"))
 	to_chat(src, "Personal mutators:")
 	if(!src.mutators.purchased_mutators || !src.mutators.purchased_mutators.len)
 		to_chat(src, "-")

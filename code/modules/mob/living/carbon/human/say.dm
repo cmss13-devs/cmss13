@@ -7,7 +7,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='danger'>You cannot speak in IC (Muted).</span>")
+			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
 			return
 
 	message =  trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))

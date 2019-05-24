@@ -119,7 +119,7 @@
 		add_fingerprint(M)
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
 			if(ishuman(M))
-				to_chat(M, "<span class='warning'>You are not supposed to go past [src]...</span>")
+				to_chat(M, SPAN_WARNING("You are not supposed to go past [src]..."))
 			crumple()
 
 /obj/item/tape/attackby(obj/item/W as obj, mob/user as mob)

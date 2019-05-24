@@ -133,17 +133,17 @@ datum/admins/proc/DB_ban_unban(var/ckey, var/bantype, var/job = "")
 		ban_number++;
 
 	if(ban_number == 0)
-		to_chat(usr, "<span class='danger'>Database update failed due to no bans fitting the search criteria. If this is not a legacy ban you should contact the database admin.</span>")
+		to_chat(usr, SPAN_DANGER("Database update failed due to no bans fitting the search criteria. If this is not a legacy ban you should contact the database admin."))
 		return
 
 	if(ban_number > 1)
-		to_chat(usr, "<span class='danger'>Database update failed due to multiple bans fitting the search criteria. Note down the ckey, job and current time and contact the database admin.</span>")
+		to_chat(usr, SPAN_DANGER("Database update failed due to multiple bans fitting the search criteria. Note down the ckey, job and current time and contact the database admin."))
 		return
 
 	if(istext(ban_id))
 		ban_id = text2num(ban_id)
 	if(!isnum(ban_id))
-		to_chat(usr, "<span class='danger'>Database update failed due to a ban ID mismatch. Contact the database admin.</span>")
+		to_chat(usr, SPAN_DANGER("Database update failed due to a ban ID mismatch. Contact the database admin."))
 		return
 
 	DB_ban_unban_by_id(ban_id)
@@ -228,11 +228,11 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 		ban_number++;
 
 	if(ban_number == 0)
-		to_chat(usr, "<span class='danger'>Database update failed due to a ban id not being present in the database.</span>")
+		to_chat(usr, SPAN_DANGER("Database update failed due to a ban id not being present in the database."))
 		return
 
 	if(ban_number > 1)
-		to_chat(usr, "<span class='danger'>Database update failed due to multiple bans having the same ID. Contact the database admin.</span>")
+		to_chat(usr, SPAN_DANGER("Database update failed due to multiple bans having the same ID. Contact the database admin."))
 		return
 
 	if(!src.owner || !istype(src.owner, /client))
@@ -268,7 +268,7 @@ datum/admins/proc/DB_ban_unban_by_id(var/id)
 
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection</span>")
+		to_chat(usr, SPAN_DANGER("Failed to establish database connection"))
 		return
 
 	var/output = "<div align='center'><table width='90%'><tr>"

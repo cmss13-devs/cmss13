@@ -405,12 +405,12 @@
 				src.take_damage(15)
 				src.check_for_internal_damage(list(MECHA_INT_CONTROL_LOST))
 				playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-				to_chat(user, "<span class='danger'>You slash at the armored suit!</span>")
-				visible_message("<span class='danger'>[user] slashes at [name]'s armor!</span>")
+				to_chat(user, SPAN_DANGER("You slash at the armored suit!"))
+				visible_message(SPAN_DANGER("[user] slashes at [name]'s armor!"))
 			else
 				src.log_append_to_last("Armor saved.")
 				playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-				to_chat(user, "<span class='xenowarning'> Your claws had no effect!</span>")
+				to_chat(user, SPAN_XENOWARNING(" Your claws had no effect!"))
 				src.occupant_message(SPAN_NOTICE("The [user]'s claws are stopped by the armor."))
 				visible_message(SPAN_NOTICE("[user] rebounds off [name]'s armor!"))
 		else
@@ -438,7 +438,7 @@
 			var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
 			src.take_damage(damage)
 			src.check_for_internal_damage(list(MECHA_INT_CONTROL_LOST))
-			visible_message("<span class='danger'><B>[user]</B> [user.attacktext] [src]!</span>")
+			visible_message(SPAN_DANGER("<B>[user]</B> [user.attacktext] [src]!"))
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 		else
 			src.log_append_to_last("Armor saved.")
@@ -584,7 +584,7 @@
 /obj/mecha/proc/dynattackby(obj/item/W as obj, mob/user as mob)
 	src.log_message("Attacked by [W]. Attacker - [user]")
 	if(prob(src.deflect_chance))
-		to_chat(user, "<span class='danger'>\The [W] bounces off [src.name].</span>")
+		to_chat(user, SPAN_DANGER("\The [W] bounces off [src.name]."))
 		src.log_append_to_last("Armor saved.")
 
 	else
@@ -630,9 +630,9 @@
 				output_maintenance_dialog(id_card, user)
 				return
 			else
-				to_chat(user, "<span class='danger'>Invalid ID: Access denied.</span>")
+				to_chat(user, SPAN_DANGER("Invalid ID: Access denied."))
 		else
-			to_chat(user, "<span class='danger'>Maintenance protocols disabled by operator.</span>")
+			to_chat(user, SPAN_DANGER("Maintenance protocols disabled by operator."))
 	else if(istype(W, /obj/item/tool/wrench))
 		if(state==1)
 			state = 2
@@ -803,7 +803,7 @@
 			src.verbs -= /obj/mecha/verb/connect_to_port
 			return
 		else
-			src.occupant_message("<span class='danger'>[name] failed to connect to the port.</span>")
+			src.occupant_message(SPAN_DANGER("[name] failed to connect to the port."))
 			return
 	else
 		src.occupant_message("Nothing happens")
@@ -822,7 +822,7 @@
 		src.verbs -= /obj/mecha/verb/disconnect_from_port
 		src.verbs += /obj/mecha/verb/connect_to_port
 	else
-		src.occupant_message("<span class='danger'>[name] is not connected to the port at the moment.</span>")
+		src.occupant_message(SPAN_DANGER("[name] is not connected to the port at the moment."))
 
 /obj/mecha/verb/toggle_lights()
 	set name = "Toggle Lights"
@@ -898,7 +898,7 @@
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C.handcuffed)
-			to_chat(usr, "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>")
+			to_chat(usr, SPAN_DANGER("Kinda hard to climb in while handcuffed don't you think?"))
 			return
 	if (src.occupant)
 		to_chat(usr, SPAN_NOTICE(" <B>The [src.name] is already occupied!</B>"))
@@ -909,7 +909,7 @@
 	if(src.operation_allowed(usr))
 		passed = 1
 	if(!passed)
-		to_chat(usr, "<span class='danger'>Access denied</span>")
+		to_chat(usr, SPAN_DANGER("Access denied"))
 		src.log_append_to_last("Permission denied.")
 		return
 //	to_chat(usr, "You start climbing into [src.name]")
@@ -1458,7 +1458,7 @@
 				passengers["[P.occupant]"] = P
 
 		if (!passengers)
-			to_chat(user, "<span class='danger'>There are no passengers to remove.</span>")
+			to_chat(user, SPAN_DANGER("There are no passengers to remove."))
 			return
 
 		var/pname = input(user, "Choose a passenger to forcibly remove.", "Forcibly Remove Passenger") as null|anything in passengers
@@ -1469,11 +1469,11 @@
 		var/obj/item/mecha_parts/mecha_equipment/tool/passenger/P = passengers[pname]
 		var/mob/occupant = P.occupant
 
-		user.visible_message("<span class='danger'>[user] begins opening the hatch on \the [P]...</span>", "<span class='danger'>You begin opening the hatch on \the [P]...</span>")
+		user.visible_message(SPAN_DANGER("[user] begins opening the hatch on \the [P]..."), SPAN_DANGER("You begin opening the hatch on \the [P]..."))
 		if (!do_after(user, 40, FALSE, BUSY_ICON_GENERIC))
 			return
 
-		user.visible_message("<span class='danger'>[user] opens the hatch on \the [P] and removes [occupant]!</span>", "<span class='danger'>You open the hatch on \the [P] and remove [occupant]!</span>")
+		user.visible_message(SPAN_DANGER("[user] opens the hatch on \the [P] and removes [occupant]!"), SPAN_DANGER("You open the hatch on \the [P] and remove [occupant]!"))
 		P.go_out()
 		P.log_message("[occupant] was removed.")
 		return

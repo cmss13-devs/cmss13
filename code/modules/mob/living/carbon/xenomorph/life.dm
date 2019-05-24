@@ -59,7 +59,7 @@
 	if(caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
-			to_chat(src, "<span class='xenodanger'>Your carapace crackles and your tendons strengthen. You are ready to evolve!</span>") //Makes this bold so the Xeno doesn't miss it
+			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
 /mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
@@ -218,7 +218,7 @@
 		for(var/atom/movable/M in stomach_contents)
 			if(ishuman(M))
 				if(world.time == (devour_timer - 30))
-					to_chat(usr, "<span class='warning'>You're about to regurgitate [M]...</span>")
+					to_chat(usr, SPAN_WARNING("You're about to regurgitate [M]..."))
 					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
 				var/mob/living/carbon/human/H = M
 				if(world.time > devour_timer || H.stat == DEAD)
@@ -226,7 +226,7 @@
 
 			M.acid_damage++
 			if(M.acid_damage > 300)
-				to_chat(src, "<span class='xenodanger'>\The [M] is dissolved in your gut with a gurgle.</span>")
+				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in your gut with a gurgle."))
 				stomach_contents.Remove(M)
 				qdel(M)
 
@@ -395,7 +395,7 @@ updatehealth()
 			if(hud_used && hud_used.fire_icon)
 				hud_used.fire_icon.icon_state = "fire2"
 			if(prob(20))
-				to_chat(src, "<span class='warning'>You feel a searing heat!</span>")
+				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
 		else
 			if(hud_used && hud_used.fire_icon)
 				hud_used.fire_icon.icon_state = "fire0"
@@ -448,7 +448,7 @@ updatehealth()
 				plasma_stored -= 30
 				if(plasma_stored < 0)
 					H.weedwalking_activated = 0
-					to_chat(src, "<span class='warning'>You feel dizzy as the world slows down.</span>")
+					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
 
 		if(current_aura)
 			plasma_stored -= 5
@@ -483,7 +483,7 @@ updatehealth()
 				plasma_stored -= 30
 				if(plasma_stored < 0)
 					H.weedwalking_activated = 0
-					to_chat(src, "<span class='warning'>You feel dizzy as the world slows down.</span>")
+					to_chat(src, SPAN_WARNING("You feel dizzy as the world slows down."))
 
 		if(current_aura)
 			plasma_stored -= 5
@@ -495,7 +495,7 @@ updatehealth()
 		plasma_stored = 0
 		if(current_aura)
 			current_aura = null
-			to_chat(src, "<span class='warning'>You have run out of pheromones and stopped emitting pheromones.</span>")
+			to_chat(src, SPAN_WARNING("You have run out of pheromones and stopped emitting pheromones."))
 
 	for(var/X in actions)
 		var/datum/action/A = X

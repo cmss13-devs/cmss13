@@ -158,12 +158,12 @@
 	deactivate_all_hardpoints()
 
 	if(driver)
-		to_chat(driver, "<span class='danger'>You dismount to as the smoke and flames start to choke you!</span>")
+		to_chat(driver, SPAN_DANGER("You dismount to as the smoke and flames start to choke you!"))
 		driver.Move(entrance.loc)
 		driver.unset_interaction()
 		driver = null
 	else if(gunner)
-		to_chat(gunner, "<span class='danger'>You dismount to as the smoke and flames start to choke you!</span>")
+		to_chat(gunner, SPAN_DANGER("You dismount to as the smoke and flames start to choke you!"))
 		gunner.Move(entrance.loc)
 		gunner.unset_interaction()
 		gunner = null
@@ -235,22 +235,22 @@
 	if(M.loc != entrance.loc)	return
 
 	if(!gunner && !driver)
-		to_chat(M, "<span class='warning'>There is no one in the vehicle.</span>")
+		to_chat(M, SPAN_WARNING("There is no one in the vehicle."))
 		return
 
 	to_chat(M, SPAN_NOTICE("You start pulling [driver ? driver : gunner] out of their seat."))
 
 	if(!do_after(M, 200, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(M, "<span class='warning'>You stop pulling [driver ? driver : gunner] out of their seat.</span>")
+		to_chat(M, SPAN_WARNING("You stop pulling [driver ? driver : gunner] out of their seat."))
 		return
 
 	if(M.loc != entrance.loc) return
 
 	if(!gunner && !driver)
-		to_chat(M, "<span class='warning'>There is no longer anyone in the vehicle.</span>")
+		to_chat(M, SPAN_WARNING("There is no longer anyone in the vehicle."))
 		return
 
-	M.visible_message("<span class='warning'>[M] pulls [driver ? driver : gunner] out of their seat in [src].</span>",
+	M.visible_message(SPAN_WARNING("[M] pulls [driver ? driver : gunner] out of their seat in [src]."),
 		SPAN_NOTICE("You pull [driver ? driver : gunner] out of their seat."))
 
 	var/mob/targ
@@ -260,7 +260,7 @@
 	else
 		targ = gunner
 		gunner = null
-	to_chat(targ, "<span class='danger'>[M] forcibly drags you out of your seat and dumps you on the ground!</span>")
+	to_chat(targ, SPAN_DANGER("[M] forcibly drags you out of your seat and dumps you on the ground!"))
 	targ.forceMove(entrance.loc)
 	targ.unset_interaction()
 	targ.KnockDown(7, 1)
@@ -280,7 +280,7 @@
 
 	for(var/obj/item/clothing/glasses/night/goggle in M.contents)
 		if(goggle)
-			to_chat(M, "<span class='warning'>You can't use the tank with nightvision goggles.</span>")
+			to_chat(M, SPAN_WARNING("You can't use the tank with nightvision goggles."))
 			return
 
 	to_chat(M, SPAN_NOTICE("You start climbing into [src]."))
@@ -300,7 +300,7 @@
 
 			for(var/obj/item/clothing/glasses/night/goggle in M.contents)
 				if(goggle)
-					to_chat(M, "<span class='warning'>You can't use the tank with nightvision goggles.</span>")
+					to_chat(M, SPAN_WARNING("You can't use the tank with nightvision goggles."))
 					return
 
 			if(M.loc != entrance.loc)
@@ -331,7 +331,7 @@
 
 			for(var/obj/item/clothing/glasses/night/goggle in M.contents)
 				if(goggle)
-					to_chat(M, "<span class='warning'>You can't use the tank with nightvision goggles.</span>")
+					to_chat(M, SPAN_WARNING("You can't use the tank with nightvision goggles."))
 					return
 
 			if(M.loc != entrance.loc)

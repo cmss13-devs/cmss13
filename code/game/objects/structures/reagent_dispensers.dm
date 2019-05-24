@@ -98,7 +98,7 @@
 	..()
 	if(user != loc) return
 	if(modded)
-		to_chat(user, "<span class='danger'>Fuel faucet is wrenched open, leaking the fuel!</span>")
+		to_chat(user, SPAN_DANGER("Fuel faucet is wrenched open, leaking the fuel!"))
 	if(rig)
 		to_chat(user, "<span class='notice'>There is some kind of device rigged to the tank.")
 
@@ -123,7 +123,7 @@
 			leak_fuel(amount_per_transfer_from_this)*/
 	if (istype(W,/obj/item/device/assembly_holder))
 		if (rig)
-			to_chat(user, "<span class='danger'>There is another device in the way.</span>")
+			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

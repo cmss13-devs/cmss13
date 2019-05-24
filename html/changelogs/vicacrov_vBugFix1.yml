@@ -1,9 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - bugfix: "Fixed the M82-F flare gun accepting dead flares."
-  - bugfix: "Fixes synthetics getting permament pain damage from yanking out embedded objects from themselves."
-  - bugfix: "Fixed the nanopaste not being stackable."
-  - bugfix: "Fixed books having broken links."

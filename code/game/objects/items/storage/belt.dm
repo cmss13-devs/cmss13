@@ -1,5 +1,4 @@
 
-
 /obj/item/storage/belt
 	name = "belt"
 	desc = "Can hold various things."
@@ -538,8 +537,8 @@
 			gun_belt.update_gun_icon()
 
 /obj/item/storage/belt/gun/m4a3
-	name = "\improper M276 pattern M4A3 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the M4A3 comfortably secure. It also contains side pouches that can store 9mm or .45 magazines."
+	name = "\improper M276 pattern M4A3-1911 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the M4A3 or the M1911 comfortably secure. It also contains side pouches that can store 9mm or .45 magazines."
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
@@ -734,4 +733,24 @@
 	can_hold = list(
 		/obj/item/weapon/gun/flare,
 		/obj/item/device/flashlight/flare
+	)
+
+/obj/item/storage/belt/tank
+	name = "\improper M103 pattern Tank-Ammo rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	desc = "The M103 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. Made specially for Tank Crewmen for store their ammunition."
+	icon_state = "tankbelt"
+	item_state = "tankbelt"
+	storage_slots = 2 //can hold 2 only two large items such as Tank Ammo.
+	max_w_class = 15
+	max_storage_space = 2
+	can_hold = list(
+		/obj/item/ammo_magazine/tank/ltb_cannon,
+		/obj/item/ammo_magazine/tank/ltaaap_minigun,
+		/obj/item/ammo_magazine/tank/flamer,
+		/obj/item/ammo_magazine/tank/drgn_flamer,
+		/obj/item/ammo_magazine/tank/ace_autocannon,
+		/obj/item/ammo_magazine/tank/towlauncher,
+		/obj/item/ammo_magazine/tank/m56_cupola,
+		/obj/item/ammo_magazine/tank/tank_glauncher,
+		/obj/item/ammo_magazine/tank/tank_slauncher
 	)

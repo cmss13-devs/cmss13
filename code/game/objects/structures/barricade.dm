@@ -12,7 +12,7 @@
 	var/stack_type //The type of stack the barricade dropped when disassembled if any.
 	var/stack_amount = 5 //The amount of stack dropped when disassembled at full health
 	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
-	var/health = 100 //Pretty tough. Changes sprites at 300 and 150
+	health = 100 //Pretty tough. Changes sprites at 300 and 150
 	var/maxhealth = 100 //Basic code functions
 	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
 	var/barricade_resistance = 5 //How much force an item needs to even damage it at all.
@@ -696,14 +696,12 @@ obj/structure/barricade/proc/take_damage(var/damage)
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
 
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
-		SPAN_NOTICE("You collapse [src]."))
 	var/obj/item/folding_barricade/FB = new(loc)
 	FB.health = health
 	FB.maxhealth = maxhealth
-	if(user)
+	if(istype(user))
+		user.visible_message(SPAN_NOTICE("[user] collapses [src]."),
+			SPAN_NOTICE("You collapse [src]."))
 		user.put_in_active_hand(FB)
 	qdel(src)
 

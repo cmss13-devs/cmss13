@@ -10,7 +10,7 @@
 
 	var/attack_log = null
 	var/on = 0
-	var/health = 100
+	health = 100
 	var/maxhealth = 100
 	var/fire_dam_coeff = 1.0
 	var/brute_dam_coeff = 1.0

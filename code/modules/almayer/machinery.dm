@@ -319,7 +319,6 @@
 	bound_width = 64
 	bound_height = 32
 	unacidable = 1
-	var/list/fallen_list
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
 	name = "slab of remembrance"
@@ -335,8 +334,6 @@
 		var/obj/item/dogtag/D = I
 		if(D.fallen_names)
 			to_chat(user, SPAN_NOTICE("You add [D] to [src]."))
-			if(!fallen_list)
-				fallen_list = list()
 			fallen_list += D.fallen_names
 			qdel(D)
 		return TRUE

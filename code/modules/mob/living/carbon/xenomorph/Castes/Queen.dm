@@ -471,7 +471,7 @@
 
 	visible_message("<span class='xenowarning'>\The [src] begins slowly lifting \the [victim] into the air.</span>", \
 	"<span class='xenowarning'>You begin focusing your anger as you slowly lift \the [victim] into the air.</span>")
-	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim, INTERRUPT_MOVED))
+	if(do_after(src, 80, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 		if(!victim)
 			return
 		if(victim.loc != cur_loc)

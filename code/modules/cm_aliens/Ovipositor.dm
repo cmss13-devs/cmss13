@@ -6,7 +6,7 @@
 	icon_state = "ovipositor"
 	unacidable = 1
 	var/begin_decay_time = 0
-	var/health = 50
+	health = 50
 	var/decay_ready = 0
 	var/decayed = 0		// This is here so later on we can use the ovpositor molt for research. ~BMC777
 	var/destroyed = 0

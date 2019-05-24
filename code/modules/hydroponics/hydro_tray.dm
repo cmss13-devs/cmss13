@@ -32,7 +32,7 @@
 	var/mutation_level = 0     // When it hits 100, the plant mutates.
 
 	// Mechanical concerns.
-	var/health = 0             // Plant health.
+	health = 0             // Plant health.
 	var/lastproduce = 0        // Last time tray was harvested
 	var/lastcycle = 0          // Cycle timing/tracking var.
 	var/cycledelay = 150       // Delay per cycle.

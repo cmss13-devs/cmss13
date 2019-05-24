@@ -181,18 +181,16 @@
 
 
 /mob/living/carbon/human/has_brain()
-	if(internal_organs_by_name["brain"])
-		var/datum/internal_organ/brain = internal_organs_by_name["brain"]
-		if(brain && istype(brain))
-			return 1
-	return 0
+	var/datum/internal_organ/brain = internal_organs_by_name["brain"]
+	if(istype(brain))
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/human/has_eyes()
-	if(internal_organs_by_name["eyes"])
-		var/datum/internal_organ/eyes = internal_organs_by_name["eyes"]
-		if(eyes && istype(eyes) && !eyes.cut_away)
-			return 1
-	return 0
+	var/datum/internal_organ/eyes = internal_organs_by_name["eyes"]
+	if(istype(eyes) && !eyes.cut_away)
+		return TRUE
+	return FALSE
 
 
 /mob/living/carbon/human/is_mob_restrained(var/check_grab = 1)

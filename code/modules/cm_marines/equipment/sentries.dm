@@ -280,7 +280,7 @@
 	var/atom/target = null
 	var/manual_override = 0
 	var/on = FALSE
-	var/health = 200
+	health = 200
 	var/health_max = 200
 	stat = SENTRY_FUNCTIONAL
 	var/datum/effect_system/spark_spread/spark_system //The spark system, used for generating... sparks?

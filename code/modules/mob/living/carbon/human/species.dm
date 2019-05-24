@@ -312,10 +312,50 @@
 	knock_down_reduction = 5
 	stun_reduction = 5
 
+	inherent_verbs = list(
+		/datum/species/synthetic/verb/toggle_synthHUD1,
+		/datum/species/synthetic/verb/toggle_synthHUD2,
+		)
+
+/datum/species/synthetic
+var/toggled_med_HUD = 0
+var/toggled_sec_HUD = 0
+
+/datum/species/synthetic/verb/toggle_synthHUD1()
+	set category = "Synthetic"//future-proofing for later things
+	set name = "Toggle Medical HUD"
+	set desc = "Toggles the advanced medical HUD integrated into your optical systems."
+	var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
+	if(usr.stat)
+		return
+	if(!toggled_med_HUD)
+		toggled_med_HUD = 1
+		H.add_hud_to(src)
+		to_chat(src, "<span class='info'><B>Enabled</B></span>")
+	else
+		toggled_med_HUD = 0
+		H.remove_hud_from(src)
+		to_chat(src, "<span class='info'><B>Disabled</B></span>")
+
+/datum/species/synthetic/verb/toggle_synthHUD2()
+	set category = "Synthetic"
+	set name = "Toggle Security HUD"
+	set desc = "Toggles the advanced security HUD integrated into your optical systems."
+	var/datum/mob_hud/H = huds[MOB_HUD_SECURITY_ADVANCED]
+	if(usr.stat)
+		return
+	if(!toggled_sec_HUD)
+		toggled_sec_HUD = 1
+		H.add_hud_to(src)
+		to_chat(src, "<span class='info'><B>Enabled</B></span>")
+	else
+		toggled_sec_HUD = 0
+		H.remove_hud_from(src)
+		to_chat(src, "<span class='info'><B>Disabled</B></span>")
+
 /datum/species/synthetic/second_gen_synthetic
 	name = "Second Generation Synthetic"
 	uses_ethnicity = FALSE //2nd gen uses generic human look
-
 
 /datum/species/early_synthetic
 	name = "Early Synthetic"
@@ -483,7 +523,8 @@
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/pred_buy,
-		/mob/living/carbon/human/proc/butcher
+		/mob/living/carbon/human/proc/butcher,
+		/mob/living/carbon/human/proc/mark_for_hunt
 		)
 
 	knock_down_reduction = 2

@@ -1,7 +1,7 @@
 /obj
 	//Used to store information about the contents of the object.
 	var/list/matter
-
+	var/health = null
 	var/origin_tech = null	//Used by R&D to determine what research bonuses it grants.
 	var/reliability = 100	//Used by SOME devices to determine how reliable they are.
 	var/crit_fail = 0
@@ -232,3 +232,14 @@
 				var/turf/closed/wall/W = T
 				if(!W.hull)
 					W.ChangeTurf(/turf/open/floor/plating, TRUE)
+
+/obj/bullet_act(obj/item/projectile/P)
+	//Tasers and the like should not damage objects.
+	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
+		return 0
+	bullet_ping(P)
+	if(P.ammo.damage)
+		src.health -= round(P.ammo.damage / 2)
+	if(src.health <= 0)
+		qdel(src)
+	return 1

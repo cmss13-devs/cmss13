@@ -9,7 +9,7 @@
 	flags_atom = FPRINT|CONDUCT
 	layer = OBJ_LAYER
 	explosion_resistance = 5
-	var/health = 10
+	health = 10
 	var/destroyed = 0
 
 

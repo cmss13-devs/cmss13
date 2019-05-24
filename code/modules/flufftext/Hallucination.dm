@@ -235,7 +235,7 @@ proc/check_panel(mob/M)
 	var/collapse
 	var/image/down
 
-	var/health = 100
+	health = 100
 
 	attackby(var/obj/item/P as obj, mob/user as mob)
 		step_away(src,my_target,2)

@@ -43,7 +43,7 @@
 	var/list/mods = params2list(params)
 
 	if(!clicked_something)
-		clicked_something = list()
+		clicked_something = list("" = null)
 
 	for (var/mod in mods)
 		clicked_something[mod] = TRUE
@@ -201,7 +201,7 @@
 */
 /mob/proc/RangedAttack(var/atom/A, var/params)
 	if(!mutations.len) return
-	if((LASER in mutations) && a_intent == "harm")
+	if((LASER in mutations) && a_intent == HARM_INTENT)
 		LaserEyes(A) // moved into a proc below
 
 /*

@@ -66643,6 +66643,8 @@
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
+/obj/item/storage/belt/tank,
+/obj/item/storage/belt/tank,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/tankerbunks)
 "tqd" = (

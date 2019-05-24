@@ -63,7 +63,6 @@
 
 	round_statistics.log_round_statistics()
 
-	declare_completion_announce_individual()
 	declare_completion_announce_predators()
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_survivors()

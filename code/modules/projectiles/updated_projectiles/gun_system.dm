@@ -466,9 +466,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_BURST_FIRING
 		return FALSE
-	if(!user && !user.client)
+	if(!user || !user.client)
 		return FALSE
-	else if(user.a_intent == "help")
+	else if(user.client.prefs.help_intent_safety && user.a_intent == HELP_INTENT)
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			to_chat(user, SPAN_NOTICE("You consider shooting at [A], but do not follow through."))
 		return FALSE

@@ -154,7 +154,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/gun_mounted = FALSE //Has the gun been mounted?
 	var/gun_rounds = 0 //Did the gun come with any ammo?
-	var/health = 100
+	health = 100
 
 /obj/machinery/m56d_post/proc/update_health(damage)
 	health -= damage
@@ -315,7 +315,7 @@
 	var/burst_fire = 0 //0 is non-burst mode, 1 is burst.
 	var/burst_scatter_mult = 4
 	var/safety = 0 //Weapon safety, 0 is weapons hot, 1 is safe.
-	var/health = 200
+	health = 200
 	var/health_max = 200 //Why not just give it sentry-tier health for now.
 	var/atom/target = null // required for shooting at things.
 	var/datum/ammo/bullet/machinegun/ammo = /datum/ammo/bullet/machinegun

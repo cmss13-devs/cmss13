@@ -693,7 +693,7 @@ mob/proc/yank_out_object()
 			return
 
 		affected.implants -= selection
-		if(!isYautja(H))
+		if(!isYautja(H) && !isSynth(H))
 			H.shock_stage+=20
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
 

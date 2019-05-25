@@ -107,7 +107,7 @@
 
 /obj/item/grown/nettle/pickup(mob/living/carbon/human/user as mob)
 	if(istype(user) && !user.gloves)
-		to_chat(user, "<span class='danger'>The nettle burns your bare hand!</span>")
+		to_chat(user, SPAN_DANGER("The nettle burns your bare hand!"))
 		if(istype(user, /mob/living/carbon/human))
 			var/organ = ((user.hand ? "l_":"r_") + "arm")
 			var/datum/limb/affecting = user.get_limb(organ)
@@ -143,7 +143,7 @@
 
 	if(..() && prob(50))
 		user.KnockOut(5)
-		to_chat(user, "<span class='danger'>You are stunned by the deathnettle when you try picking it up!</span>")
+		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle when you try picking it up!"))
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 
@@ -156,7 +156,7 @@
 	if(!..()) return
 
 	if(istype(M, /mob/living))
-		to_chat(M, "<span class='warning'>You are stunned by the powerful acid of the deathnettle!</span>")
+		to_chat(M, SPAN_WARNING("You are stunned by the powerful acid of the deathnettle!"))
 
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Had the [src.name] used on them by [user.name] ([user.ckey])</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] on [M.name] ([M.ckey])</font>")

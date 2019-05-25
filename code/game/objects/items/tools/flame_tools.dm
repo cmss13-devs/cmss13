@@ -222,7 +222,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/weapon/energy/sword))
 		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
-			light("<span class='warning'>[user] swings their [W], barely missing their nose. They light their [name] in the process.</span>")
+			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
 		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name]."))
@@ -235,7 +235,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(F.lit)
 			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F]."))
 		else
-			to_chat(user, "<span class='warning'>Turn on the pilot light first!</span>")
+			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
@@ -441,7 +441,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	else if(istype(W, /obj/item/weapon/energy/sword))
 		var/obj/item/weapon/energy/sword/S = W
 		if(S.active)
-			light("<span class='warning'>[user] swings their [W], barely missing their nose. They light their [name] in the process.</span>")
+			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
 
 	else if(istype(W, /obj/item/device/assembly/igniter))
 		light(SPAN_NOTICE("[user] fiddles with [W], and manages to light their [name] with the power of science."))
@@ -454,7 +454,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(F.lit)
 			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F], the glint of pyromania in their eye."))
 		else
-			to_chat(user, "<span class='warning'>Turn on the pilot light first!</span>")
+			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
 	else if(istype(W, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = W
@@ -606,7 +606,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				if(prob(95))
 					user.visible_message(SPAN_NOTICE("After a few attempts, [user] manages to light the [src]."))
 				else
-					to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
+					to_chat(user, SPAN_WARNING("You burn yourself while lighting the lighter."))
 					if (user.l_hand == src)
 						user.apply_damage(2,BURN,"l_hand")
 					else

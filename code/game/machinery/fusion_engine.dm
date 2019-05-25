@@ -86,12 +86,12 @@
 
 /obj/machinery/power/fusion_engine/attack_hand(mob/user)
 	if(!ishuman(user))
-		to_chat(user, "<span class='warning'>You have no idea how to use that.</span>") //No ayylamos
+		to_chat(user, SPAN_WARNING("You have no idea how to use that.")) //No ayylamos
 		r_FAL
 	add_fingerprint(user)
 	switch(buildstate)
 		if(1)
-			to_chat(user, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>")
+			to_chat(user, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 			r_FAL
 		if(2)
 			to_chat(user, SPAN_NOTICE("Use a wirecutters, then wrench to repair it."))
@@ -114,7 +114,7 @@
 
 	if(!powernet)
 		if(!connect_to_network())
-			to_chat(user, "<span class='warning'>Power network not found, make sure the engine is connected to a cable.</span>")
+			to_chat(user, SPAN_WARNING("Power network not found, make sure the engine is connected to a cable."))
 			r_FAL
 
 	if(fusion_cell.fuel_amount <= 10)
@@ -131,7 +131,7 @@
 /obj/machinery/power/fusion_engine/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/fuelCell))
 		if(is_on)
-			to_chat(user, "<span class='warning'>The [src] needs to be turned off first.</span>")
+			to_chat(user, SPAN_WARNING("The [src] needs to be turned off first."))
 			r_TRU
 		if(!fusion_cell)
 			if(user.drop_inv_item_to_loc(O, src))
@@ -140,7 +140,7 @@
 				to_chat(user, SPAN_NOTICE("You load the [src] with the [O]."))
 			r_TRU
 		else
-			to_chat(user, "<span class='warning'>You need to remove the fuel cell from [src] first.</span>")
+			to_chat(user, SPAN_WARNING("You need to remove the fuel cell from [src] first."))
 			r_TRU
 		r_TRU
 	else if(iswelder(O))
@@ -164,7 +164,7 @@
 					update_icon()
 					r_TRU
 			else
-				to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				r_FAL
 	else if(istype(O,/obj/item/tool/wirecutters))
 		if(buildstate == 2 && !is_on)
@@ -204,17 +204,17 @@
 				r_TRU
 	else if(iscrowbar(O))
 		if(buildstate)
-			to_chat(user, "<span class='warning'>You must repair the generator before working with its fuel cell.</span>")
+			to_chat(user, SPAN_WARNING("You must repair the generator before working with its fuel cell."))
 			return
 		if(is_on)
-			to_chat(user, "<span class='warning'>You must turn off the generator before working with its fuel cell.</span>")
+			to_chat(user, SPAN_WARNING("You must turn off the generator before working with its fuel cell."))
 			return
 		if(!fusion_cell)
-			to_chat(user, "<span class='warning'>There is no cell to remove.</span>")
+			to_chat(user, SPAN_WARNING("There is no cell to remove."))
 		else
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-				user.visible_message("<span class='warning'>[user] fumbles around figuring out [src]'s fuel receptacle.</span>",
-				"<span class='warning'>You fumble around figuring out [src]'s fuel receptacle.</span>")
+				user.visible_message(SPAN_WARNING("[user] fumbles around figuring out [src]'s fuel receptacle."),
+				SPAN_WARNING("You fumble around figuring out [src]'s fuel receptacle."))
 				var/fumbling_time = 100 - 20 * user.mind.cm_skills.engineer
 				if(!do_after(user, fumbling_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) return
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -236,36 +236,36 @@
 	..()
 	if(ishuman(user))
 		if(buildstate)
-			to_chat(user, "<span class='info'>It's broken.</span>")
+			to_chat(user, SPAN_INFO("It's broken."))
 			switch(buildstate)
 				if(1)
-					to_chat(user, "<span class='info'>Use a blowtorch, then wirecutters, then wrench to repair it.</span>")
+					to_chat(user, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
 				if(2)
-					to_chat(user, "<span class='info'>Use a wirecutters, then wrench to repair it.</span>")
+					to_chat(user, SPAN_INFO("Use a wirecutters, then wrench to repair it."))
 				if(3)
-					to_chat(user, "<span class='info'>Use a wrench to repair it.</span>")
+					to_chat(user, SPAN_INFO("Use a wrench to repair it."))
 			r_FAL
 
 		if(!is_on)
-			to_chat(user, "<span class='info'>It looks offline.</span>")
+			to_chat(user, SPAN_INFO("It looks offline."))
 		else
-			to_chat(user, "<span class='info'>The power gauge reads: [power_gen_percent]%</span>")
+			to_chat(user, SPAN_INFO("The power gauge reads: [power_gen_percent]%"))
 		if(fusion_cell)
-			to_chat(user, "<span class='info'>You can see a fuel cell in the receptacle.</span>")
+			to_chat(user, SPAN_INFO("You can see a fuel cell in the receptacle."))
 			if(!user.mind || !user.mind.cm_skills || user.mind.cm_skills.engineer >= SKILL_ENGINEER_MT)
 				switch(fusion_cell.fuel_amount)
 					if(0 to 10)
-						to_chat(user, "<span class='danger'>The fuel cell is critically low.</span>")
+						to_chat(user, SPAN_DANGER("The fuel cell is critically low."))
 					if(11 to 25)
-						to_chat(user, "<span class='warning'>The fuel cell is running low.</span>")
+						to_chat(user, SPAN_WARNING("The fuel cell is running low."))
 					if(26 to 50)
-						to_chat(user, "<span class='info'>The fuel cell is a little under halfway.</span>")
+						to_chat(user, SPAN_INFO("The fuel cell is a little under halfway."))
 					if(51 to 75)
-						to_chat(user, "<span class='info'>The fuel cell is a little above halfway.</span>")
+						to_chat(user, SPAN_INFO("The fuel cell is a little above halfway."))
 					if(76 to INFINITY)
-						to_chat(user, "<span class='info'>The fuel cell is nearly full.</span>")
+						to_chat(user, SPAN_INFO("The fuel cell is nearly full."))
 		else
-			to_chat(user, "<span class='info'>There is no fuel cell in the receptacle.</span>")
+			to_chat(user, SPAN_INFO("There is no fuel cell in the receptacle."))
 
 /obj/machinery/power/fusion_engine/update_icon()
 	switch(buildstate)

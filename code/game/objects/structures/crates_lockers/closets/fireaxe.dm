@@ -23,7 +23,7 @@
 
 		if (isrobot(usr) || src.locked)
 			if(istype(O, /obj/item/device/multitool))
-				to_chat(user, "<span class='danger'>Resetting circuitry...</span>")
+				to_chat(user, SPAN_DANGER("Resetting circuitry..."))
 				playsound(user, 'sound/machines/lockreset.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					src.locked = 0
@@ -54,7 +54,7 @@
 		if (istype(O, /obj/item/weapon/twohanded/fireaxe) && src.localopened)
 			if(!fireaxe)
 				if(O.flags_item & WIELDED)
-					to_chat(user, "<span class='danger'>Unwield the axe first.</span>")
+					to_chat(user, SPAN_DANGER("Unwield the axe first."))
 					return
 				fireaxe = O
 				user.drop_held_item()
@@ -82,7 +82,7 @@
 					spawn(10) update_icon()
 					return
 				else
-					to_chat(user, "<span class='danger'>Resetting circuitry...</span>")
+					to_chat(user, SPAN_DANGER("Resetting circuitry..."))
 					sleep(50)
 					src.locked = 1
 					to_chat(user, SPAN_NOTICE(" You re-enable the locking modules."))
@@ -110,7 +110,7 @@
 			hasaxe = 1
 		if(!ishuman(user)) return
 		if(src.locked)
-			user <<"<span class='danger'>The cabinet won't budge!</span>"
+			user <<SPAN_DANGER("The cabinet won't budge!")
 			return
 		if(localopened)
 			if(fireaxe)
@@ -146,7 +146,7 @@
 
 		if (isrobot(usr) || src.locked || src.smashed)
 			if(src.locked)
-				to_chat(usr, "<span class='danger'>The cabinet won't budge!</span>")
+				to_chat(usr, SPAN_DANGER("The cabinet won't budge!"))
 			else if(src.smashed)
 				to_chat(usr, SPAN_NOTICE(" The protective glass is broken!"))
 			return
@@ -181,12 +181,12 @@
 
 	attack_ai(mob/user as mob)
 		if(src.smashed)
-			to_chat(user, "<span class='danger'>The security of the cabinet is compromised.</span>")
+			to_chat(user, SPAN_DANGER("The security of the cabinet is compromised."))
 			return
 		else
 			locked = !locked
 			if(locked)
-				to_chat(user, "<span class='danger'>Cabinet locked.</span>")
+				to_chat(user, SPAN_DANGER("Cabinet locked."))
 			else
 				to_chat(user, SPAN_NOTICE(" Cabinet unlocked."))
 			return

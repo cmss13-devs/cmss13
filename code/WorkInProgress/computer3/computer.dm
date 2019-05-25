@@ -78,7 +78,7 @@
 		set src in view(1)
 
 		if(usr.stat || usr.is_mob_restrained() || usr.lying || !istype(usr, /mob/living))
-			to_chat(usr, "<span class='danger'>You can't do that.</span>")
+			to_chat(usr, SPAN_DANGER("You can't do that."))
 			return
 
 		if(!Adjacent(usr))

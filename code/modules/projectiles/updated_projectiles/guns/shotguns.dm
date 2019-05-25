@@ -63,7 +63,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			playsound(user, reload_sound, 25, 1)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) to_chat(user, "<span class='warning'>[src] is already empty.</span>")
+			if(user) to_chat(user, SPAN_WARNING("[src] is already empty."))
 		return
 
 	unload_shell(user)
@@ -97,11 +97,11 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(flags_gun_features & GUN_BURST_FIRING) return
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
-		to_chat(user, "<span class='warning'>You can't use that to reload!</span>")
+		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
 		return
 
 	if(!check_chamber_position()) //For the double barrel.
-		to_chat(user, "<span class='warning'>[src] has to be open!</span>")
+		to_chat(user, SPAN_WARNING("[src] has to be open!"))
 		return
 
 	//From here we know they are using shotgun type ammo and reloading via handful.
@@ -310,7 +310,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	. = ..()
 	if(. && istype(user))
 		if(!current_mag.chamber_closed)
-			to_chat(user, "<span class='danger'>Close the chamber!</span>")
+			to_chat(user, SPAN_DANGER("Close the chamber!"))
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
@@ -504,7 +504,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(world.time < (recent_pump + pump_delay) ) return //Don't spam it.
 	if(pumped)
 		if (world.time > (message + pump_delay))
-			to_chat(usr, "<span class='warning'><i>[src] already has a shell in the chamber!<i></span>")
+			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
 			message = world.time
 		return
 	if(in_chamber) //eject the chambered round
@@ -539,7 +539,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/unload(mob/user) //We can't pump it to get rid of the shells, so we'll make it work via the unloading mechanism.
 	if(pumped)
-		user.visible_message("<span class='warning'><i>You release the locking mechanism on [src]. </i></span>")
+		user.visible_message(SPAN_WARNING("<i>You release the locking mechanism on [src]. </i>"))
 		pumped = FALSE
 	return ..()
 

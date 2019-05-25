@@ -47,7 +47,7 @@
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
-			O.show_message(text("<span class='danger'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</B></span>", src, T), 1)
+			O.show_message(SPAN_DANGER("<B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</B>"), 1)
 
 /mob/living/carbon/human/proc/leap()
 	set category = "Abilities"
@@ -83,7 +83,7 @@
 	last_special = world.time + 75
 	status_flags |= LEAPING
 
-	src.visible_message("<span class='warning'><b>\The [src]</b> leaps at [T]!</span>")
+	src.visible_message(SPAN_WARNING("<b>\The [src]</b> leaps at [T]!"))
 	src.throw_at(get_step(get_turf(T),get_turf(src)), 5, 1, src)
 	playsound(src.loc, 'sound/voice/shriek1.ogg', 25, 1)
 
@@ -92,7 +92,7 @@
 	if(status_flags & LEAPING) status_flags &= ~LEAPING
 
 	if(!src.Adjacent(T))
-		to_chat(src, "<span class='danger'>You miss!</span>")
+		to_chat(src, SPAN_DANGER("You miss!"))
 		return
 
 	T.KnockDown(5)
@@ -116,21 +116,21 @@
 		return
 
 	if(is_mob_incapacitated(TRUE) || lying)
-		to_chat(src, "<span class='danger'>You cannot do that in your current state.</span>")
+		to_chat(src, SPAN_DANGER("You cannot do that in your current state."))
 		return
 
 	var/obj/item/grab/G = locate() in src
 	if(!G || !istype(G))
-		to_chat(src, "<span class='danger'>You are not grabbing anyone.</span>")
+		to_chat(src, SPAN_DANGER("You are not grabbing anyone."))
 		return
 
 	if(usr.grab_level < GRAB_AGGRESSIVE)
-		to_chat(src, "<span class='danger'>You must have an aggressive grab to gut your prey!</span>")
+		to_chat(src, SPAN_DANGER("You must have an aggressive grab to gut your prey!"))
 		return
 
 	last_special = world.time + 50
 
-	visible_message("<span class='warning'><b>\The [src]</b> rips viciously at \the [G.grabbed_thing]'s body with its claws!</span>")
+	visible_message(SPAN_WARNING("<b>\The [src]</b> rips viciously at \the [G.grabbed_thing]'s body with its claws!"))
 
 	if(istype(G.grabbed_thing,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = G.grabbed_thing
@@ -177,7 +177,7 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == src.species.name)
 			return
-		to_chat(H, "<span class='danger'>Your nose begins to bleed...</span>")
+		to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
 		H.drip(1)
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/M as mob in oview())
@@ -188,6 +188,6 @@
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
 		log_say("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
-		to_chat(M, "<span class='xenowarning'> You hear a strange, alien voice in your head... \italic [msg]</span>")
-		to_chat(src, "<span class='xenowarning'> You said: \"[msg]\" to [M]</span>")
+		to_chat(M, SPAN_XENOWARNING(" You hear a strange, alien voice in your head... \italic [msg]"))
+		to_chat(src, SPAN_XENOWARNING(" You said: \"[msg]\" to [M]"))
 	return

@@ -17,7 +17,6 @@
 	if(charging && !(stat & (BROKEN|NOPOWER)) )
 
 		var/newlevel = 	round(charging.percent() * 4.0 / 99)
-		//to_world("nl: [newlevel]")
 
 		if(chargelevel != newlevel)
 
@@ -40,14 +39,14 @@
 
 	if(istype(W, /obj/item/cell) && anchored)
 		if(charging)
-			to_chat(user, "<span class='danger'>There is already a cell in the charger.</span>")
+			to_chat(user, SPAN_DANGER("There is already a cell in the charger."))
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, "<span class='danger'>The [name] blinks red as you try to insert the cell!</span>")
+				to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the cell!"))
 				return
 
 			if(user.drop_inv_item_to_loc(W, src))
@@ -58,7 +57,7 @@
 		updateicon()
 	else if(istype(W, /obj/item/tool/wrench))
 		if(charging)
-			to_chat(user, "<span class='danger'>Remove the cell first!</span>")
+			to_chat(user, SPAN_DANGER("Remove the cell first!"))
 			return
 
 		anchored = !anchored
@@ -89,7 +88,6 @@
 
 
 /obj/machinery/cell_charger/process()
-	//to_world("ccpt [charging] [stat]")
 	if((stat & (BROKEN|NOPOWER)) || !anchored)
 		update_use_power(0)
 		return

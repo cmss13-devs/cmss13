@@ -29,7 +29,6 @@ obj/effect/landmark/desertdam/river_blocker
 //Disperses river, doing so gradually.
 /datum/game_mode/proc/disperse_river()
 	set waitfor = 0
-	//to_world("<span class='boldnotice'>The fog north of the colony is starting to recede.</span>") //Let's try it without an announcement.
 	flags_round_type &= ~MODE_FOG_ACTIVATED
 	var/i
 	for(i in round_toxic_river)
@@ -77,7 +76,7 @@ var/global/east_riverstart = 0
 	mouse_opacity = 0
 
 /obj/effect/blocker/invisible_wall/Bumped(AM as mob|obj)
-	to_chat(AM, "<span class='warning'>You cannot go this way.</span>")
+	to_chat(AM, SPAN_WARNING("You cannot go this way."))
 
 /obj/effect/blocker/invisible_wall/New()
 	..()
@@ -164,7 +163,7 @@ var/global/east_riverstart = 0
 
 	if(isXeno(M))
 		if(M.pulling)
-			to_chat(M, "<span class='warning'>The current forces you to release [M.pulling]!</span>")
+			to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 			M.stop_pulling()
 
 	cause_damage(M)
@@ -216,7 +215,7 @@ var/global/east_riverstart = 0
 			M.apply_damage(dam_amount,BURN,"r_foot")
 			M.apply_damage(dam_amount,BURN,"groin")
 		M.apply_effect(20,IRRADIATE,0)
-		if( !isSynth(M) ) to_chat(M, "<span class='danger'>The water burns!</span>")
+		if( !isSynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 

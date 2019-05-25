@@ -28,32 +28,32 @@
 /obj/machinery/power/breakerbox/examine(mob/user)
 	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
 	if(on)
-		to_chat(user, "<span class='xenowarning'> It seems to be online.</span>")
+		to_chat(user, SPAN_XENOWARNING(" It seems to be online."))
 	else
-		to_chat(user, "<span class='danger'>It seems to be offline</span>")
+		to_chat(user, SPAN_DANGER("It seems to be offline"))
 
 /obj/machinery/power/breakerbox/attack_ai(mob/user)
 	if(busy)
-		to_chat(user, "<span class='danger'>System is busy. Please wait until current operation is finished before changing power settings.</span>")
+		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
 		return
 
 	busy = 1
-	to_chat(user, "<span class='xenowarning'> Updating power settings..</span>")
+	to_chat(user, SPAN_XENOWARNING(" Updating power settings.."))
 	if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
 		set_state(!on)
-		to_chat(user, "<span class='xenowarning'> Update Completed. New setting:[on ? "on": "off"]</span>")
+		to_chat(user, SPAN_XENOWARNING(" Update Completed. New setting:[on ? "on": "off"]"))
 	busy = 0
 
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user)
 
 	if(busy)
-		to_chat(user, "<span class='danger'>System is busy. Please wait until current operation is finished before changing power settings.</span>")
+		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
 		return
 
 	busy = 1
 	for(var/mob/O in viewers(user))
-		O.show_message(text("<span class='danger'>[user] started reprogramming [src]!</span>"), 1)
+		O.show_message(text(SPAN_DANGER("[user] started reprogramming [src]!")), 1)
 
 	if(do_after(user, 300, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // 30s for non-AIs as humans have to manually reprogram it and rapid switching may cause some lag / powernet updates flood. If AIs spam it they can be easily traced.
 		set_state(!on)

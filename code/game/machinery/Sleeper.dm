@@ -125,13 +125,13 @@
 			if (connected)
 				if (connected.occupant)
 					if (connected.occupant.stat == DEAD)
-						to_chat(user, "<span class='warning'>This person has no life for to preserve anymore. Take them to a department capable of reanimating them.</span>")
+						to_chat(user, SPAN_WARNING("This person has no life for to preserve anymore. Take them to a department capable of reanimating them."))
 					else if(href_list["chemical"] in connected.available_chemicals)
 						var/amount = text2num(href_list["amount"])
 						if(amount == 5 || amount == 10)
 							connected.inject_chemical(user,href_list["chemical"],amount)
 					else
-						to_chat(user, "<span class='warning'>This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!</span>")
+						to_chat(user, SPAN_WARNING("This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!"))
 					updateUsrDialog()
 		if (href_list["refresh"])
 			updateUsrDialog()
@@ -220,7 +220,7 @@
 				updateUsrDialog()
 			return
 		else
-			to_chat(user, "<span class='warning'>The sleeper has a beaker already.</span>")
+			to_chat(user, SPAN_WARNING("The sleeper has a beaker already."))
 			return
 
 	else if(istype(W, /obj/item/grab))
@@ -308,7 +308,7 @@
 			occupant.reagents.add_reagent(chemical, amount)
 			to_chat(user, SPAN_NOTICE("Occupant now has [occupant.reagents.get_reagent_amount(chemical)] units of [available_chemicals[chemical]] in his/her bloodstream."))
 			return
-	to_chat(user, "<span class='warning'>There's no occupant in the sleeper or the subject has too many chemicals!</span>")
+	to_chat(user, SPAN_WARNING("There's no occupant in the sleeper or the subject has too many chemicals!"))
 	return
 
 
@@ -325,12 +325,12 @@
 			if(2)
 				t1 = "*dead*"
 			else
-		user << text("[]\t Health %: [] ([])", (occupant.health > 50 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.health, t1)
+		user << text("[]\t Health %: [] ([])", (occupant.health > 50 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.health, t1)
 		user << text("[]\t -Core Temperature: []&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
-		user << text("[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getBruteLoss())
-		user << text("[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getOxyLoss())
-		user << text("[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getToxLoss())
-		user << text("[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : "<span class='danger'></span>"), occupant.getFireLoss())
+		user << text("[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getBruteLoss())
+		user << text("[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getOxyLoss())
+		user << text("[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
+		user << text("[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
 		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)"))
 		to_chat(user, SPAN_NOTICE(" \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 		if(beaker)

@@ -69,7 +69,7 @@
 	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
 		var/mob/living/carbon/Xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
-			visible_message("<span class='danger'>[O] plows straight through [src]!</span>")
+			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			destroy()
 
 /obj/structure/table/Dispose()
@@ -285,17 +285,17 @@
 				if(user.grab_level > GRAB_AGGRESSIVE)
 					if (prob(15))	M.KnockDown(5)
 					M.apply_damage(8, def_zone = "head")
-					user.visible_message("<span class='danger'>[user] slams [M]'s face against [src]!</span>",
-					"<span class='danger'>You slam [M]'s face against [src]!</span>")
+					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
+					SPAN_DANGER("You slam [M]'s face against [src]!"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
 				else
-					to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 					return
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
 				M.KnockDown(5)
-				user.visible_message("<span class='danger'>[user] throws [M] on [src].</span>",
-				"<span class='danger'>You throw [M] on [src].</span>")
+				user.visible_message(SPAN_DANGER("[user] throws [M] on [src]."),
+				SPAN_DANGER("You throw [M] on [src]."))
 		return
 
 	if(istype(W, /obj/item/tool/wrench))
@@ -318,7 +318,7 @@
 			"<span class='danger'>You slice [src] apart!")
 			destroy()
 		else
-			to_chat(user, "<span class='warning'>You slice at the table, but only claw it up a little.</span>")
+			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
 		return
 
 	user.drop_inv_item_to_loc(W, loc)
@@ -349,11 +349,11 @@
 		return
 
 	if(!flip(get_cardinal_dir(usr, src)))
-		to_chat(usr, "<span class='warning'>[src] won't budge.</span>")
+		to_chat(usr, SPAN_WARNING("[src] won't budge."))
 		return
 
-	usr.visible_message("<span class='warning'>[usr] flips [src]!</span>",
-	"<span class='warning'>You flip [src]!</span>")
+	usr.visible_message(SPAN_WARNING("[usr] flips [src]!"),
+	SPAN_WARNING("You flip [src]!"))
 
 	if(climbable)
 		structure_shaken()
@@ -394,7 +394,7 @@
 		return
 
 	if(!unflipping_check())
-		to_chat(usr, "<span class='warning'>[src] won't budge.</span>")
+		to_chat(usr, SPAN_WARNING("[src] won't budge."))
 		return
 
 	unflip()
@@ -607,7 +607,7 @@
 	if(istype(O,/mob/living/carbon/Xenomorph/Ravager) || istype(O,/mob/living/carbon/Xenomorph/Crusher))
 		var/mob/living/carbon/Xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
-			visible_message("<span class='danger'>[O] plows straight through [src]!</span>")
+			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
 			destroy()
 
 /obj/structure/rack/destroy(deconstruct)

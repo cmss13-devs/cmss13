@@ -33,12 +33,12 @@
 			survive_mob_death = TRUE //changed because infection rate was REALLY horrible.
 			if(goo_message_cooldown < world.time )
 				if(prob(3))
-					to_chat(affected_mob, "<span class='danger'>You feel really warm...</span>")
+					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
 					goo_message_cooldown = world.time + 100
 		if(2)
 			if(goo_message_cooldown < world.time)
-				if (prob(3)) to_chat(affected_mob, "<span class='danger'>Your throat is really dry...</span>")
-				else if (prob(6)) to_chat(affected_mob, "<span class='danger'>You feel really warm...</span>")
+				if (prob(3)) to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
+				else if (prob(6)) to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
 				else if (prob(2)) H.vomit_on_floor()
 				goo_message_cooldown = world.time + 100
 		if(3)
@@ -47,13 +47,13 @@
 			H.next_move_slowdown = max(H.next_move_slowdown, 1)
 			if(goo_message_cooldown < world.time)
 				if (prob(3))
-					to_chat(affected_mob, "<span class='danger'>You cough up some black fluid...</span>")
+					to_chat(affected_mob, SPAN_DANGER("You cough up some black fluid..."))
 					goo_message_cooldown = world.time + 100
 				else if (prob(6))
-					to_chat(affected_mob, "<span class='danger'>Your throat is really dry...</span>")
+					to_chat(affected_mob, SPAN_DANGER("Your throat is really dry..."))
 					goo_message_cooldown = world.time + 100
 				else if (prob(9))
-					to_chat(affected_mob, "<span class='danger'>You feel really warm...</span>")
+					to_chat(affected_mob, SPAN_DANGER("You feel really warm..."))
 					goo_message_cooldown = world.time + 100
 				else if(prob(5))
 					goo_message_cooldown = world.time + 100
@@ -77,7 +77,7 @@
 				H.nutrition = 450 //never hungry
 				if(goo_message_cooldown < world.time)
 					goo_message_cooldown = world.time + 100
-					to_chat(affected_mob, "<span class='xenowarning'> Spread... Consume... Infect...</span>")
+					to_chat(affected_mob, SPAN_XENOWARNING(" Spread... Consume... Infect..."))
 
 
 /datum/disease/black_goo/proc/zombie_transform(mob/living/carbon/human/H)
@@ -118,11 +118,11 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
 			for(var/datum/disease/black_goo/BG in H.viruses)
-				user.show_message(text("<span class='xenowarning'> <B>You sense your target is infected</B></span>"))
+				user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
 				return
 			if(prob(75))
 				M.contract_disease(new /datum/disease/black_goo)
-				user.show_message(text("<span class='xenowarning'> <B>You sense your target is now infected</B></span>"))
+				user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is now infected</B>")))
 
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
@@ -131,12 +131,12 @@
 		if(!D.density)
 			return
 
-		user.visible_message("<span class='danger'>[user] jams \his [name] into [O] and strains to rip it open.</span>",
-		"<span class='danger'>You jam your [name] into [O] and strain to rip it open.</span>")
+		user.visible_message(SPAN_DANGER("[user] jams \his [name] into [O] and strains to rip it open."),
+		SPAN_DANGER("You jam your [name] into [O] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, 1)
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='danger'>[user] forces [O] open with \his [name].</span>",
-			"<span class='danger'>You force [O] open with your [name].</span>")
+			user.visible_message(SPAN_DANGER("[user] forces [O] open with \his [name]."),
+			SPAN_DANGER("You force [O] open with your [name]."))
 			D.open(1)
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo

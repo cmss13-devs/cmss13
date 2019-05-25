@@ -83,7 +83,7 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 			qdel(src)
 			return 1
 		else
-			to_chat(user, "<span class='danger'>You can't load the [src.name] while it's opened.</span>")
+			to_chat(user, SPAN_DANGER("You can't load the [src.name] while it's opened."))
 			return 1
 	if (disabled)
 		return
@@ -91,10 +91,10 @@ Basically a cheap knock-off of the Protolathe that I wrote in the middle of the 
 		to_chat(user, "\The Weyland Yutani Brand Bioprinter(TM) must be linked to an R&D console first!")
 		return 1
 	if (busy)
-		to_chat(user, "<span class='danger'>The Weyland Yutani Brand Bioprinter(TM) is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_DANGER("The Weyland Yutani Brand Bioprinter(TM) is busy. Please wait for completion of previous operation."))
 		return 1
 	if (!istype(O, /obj/item/XenoBio))
-		to_chat(user, "<span class='danger'>You cannot insert this item into the protolathe!</span>")
+		to_chat(user, SPAN_DANGER("You cannot insert this item into the protolathe!"))
 		return 1
 	if (stat)
 		return 1

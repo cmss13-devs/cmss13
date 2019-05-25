@@ -1012,7 +1012,7 @@ table tr:first-child th:first-child { border: none;}
 						to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the Air Alarm interface."))
 						updateUsrDialog()
 					else
-						to_chat(user, "<span class='danger'>Access denied.</span>")
+						to_chat(user, SPAN_DANGER("Access denied."))
 			return
 
 		if(1)
@@ -1025,7 +1025,7 @@ table tr:first-child th:first-child { border: none;}
 					first_run()
 					return
 				else
-					to_chat(user, "<span class='warning'>You need 5 pieces of cable to do wire \the [src].</span>")
+					to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
 					return
 
 			else if(iscrowbar(W))

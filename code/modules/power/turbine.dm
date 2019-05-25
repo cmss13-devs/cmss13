@@ -172,7 +172,7 @@
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
 		if(!isAI(usr))
-			to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 			return
 
 	if (( usr.interactee==src && ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))) || (isAI(usr)))
@@ -293,7 +293,7 @@
 		\n<BR>
 		\n"}
 	else
-		dat += "<span class='warning'><B>No compatible attached compressor found.</span>"
+		dat += SPAN_WARNING("<B>No compatible attached compressor found.")
 
 	user << browse(dat, "window=computer;size=400x500")
 	onclose(user, "computer")

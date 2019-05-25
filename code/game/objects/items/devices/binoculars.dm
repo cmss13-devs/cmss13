@@ -97,11 +97,11 @@
 	set waitfor = 0
 
 	if(laser || coord)
-		to_chat(user, "<span class='warning'>You're already targeting something.</span>")
+		to_chat(user, SPAN_WARNING("You're already targeting something."))
 		return
 
 	if(world.time < laser_cooldown)
-		to_chat(user, "<span class='warning'>[src]'s laser battery is recharging.</span>")
+		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
 		return
 
 	if(!user.mind)
@@ -127,7 +127,7 @@
 			if(CEILING_GLASS)
 				is_outside = TRUE
 	if(!is_outside && !mode) //rangefinding works regardless of ceiling
-		to_chat(user, "<span class='warning'>INVALID TARGET: target must be visible from high altitude.</span>")
+		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
 		return
 	if(user.action_busy)
 		return
@@ -215,17 +215,17 @@
 	switch(laz_mode)
 		if(0) //Actually adding descriptions so you can tell what the hell you've selected now.
 			laz_mode = 1
-			to_chat(usr, "<span class='warning'>IR Laser enabled! You will now designate airstrikes!</span>")
+			to_chat(usr, SPAN_WARNING("IR Laser enabled! You will now designate airstrikes!"))
 			update_icon()
 			return
 		if(1)
 			laz_mode = 2
-			to_chat(usr, "<span class='warning'>UV Laser enabled! You will now designate mortars!</span>")
+			to_chat(usr, SPAN_WARNING("UV Laser enabled! You will now designate mortars!"))
 			update_icon()
 			return
 		if(2)
 			laz_mode = 0
-			to_chat(usr, "<span class='warning'> System offline, now this is just a pair of binoculars but heavier.</span>")
+			to_chat(usr, SPAN_WARNING(" System offline, now this is just a pair of binoculars but heavier."))
 			update_icon()
 			return
 	return
@@ -241,11 +241,11 @@
 	switch(plane_toggle)
 		if(0)
 			plane_toggle = 1
-			to_chat(usr, "<span class='warning'> Airstrike plane is now N-S! If using mortars its now HE rounds!</span>")
+			to_chat(usr, SPAN_WARNING(" Airstrike plane is now N-S! If using mortars its now HE rounds!"))
 			return
 		if(1)
 			plane_toggle = 0
-			to_chat(usr, "<span class='warning'> Airstrike plane is now E-W! If using mortars its now concussion rounds!</span>")
+			to_chat(usr, SPAN_WARNING(" Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
 			return
 	return
 
@@ -286,11 +286,11 @@
 	var/turf/T = get_turf(A)
 
 	if(!laz_mode)
-		to_chat(user, "<span class='warning'>The Laser Designator is currently off!</span>")
+		to_chat(user, SPAN_WARNING("The Laser Designator is currently off!"))
 		return 0
 
 	if(laz_r || laz_b) //Make sure we don't spam strikes
-		to_chat(user, "<span class='warning'>The laser is currently cooling down. Please wait roughly 10 minutes from lasing the target.</span>")
+		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 10 minutes from lasing the target."))
 		return 0
 
 	to_chat(user, "<span class='boldnotice'> You start lasing the target area.</span>")

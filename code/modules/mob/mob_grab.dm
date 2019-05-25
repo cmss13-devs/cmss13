@@ -61,18 +61,18 @@
 		switch(user.grab_level)
 			if(GRAB_KILL)
 				icon_state = "disarm/kill1"
-				user.visible_message("<span class='danger'>[user] has tightened \his grip on [victim]'s neck!</span>", null, null, 5)
+				user.visible_message(SPAN_DANGER("[user] has tightened \his grip on [victim]'s neck!"), null, null, 5)
 				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has been strangled (kill intent) by [user] ([user.ckey])</font>"
 				user.attack_log += "\[[time_stamp()]\] <font color='red'>Strangled (kill intent) [victim] ([victim.ckey])</font>"
 				msg_admin_attack("[key_name(user)] strangled (kill intent) [key_name(victim)]")
 			if(GRAB_NECK)
 				icon_state = "disarm/kill"
-				user.visible_message("<span class='warning'>[user] has reinforced \his grip on [victim] (now neck)!</span>", null, null, 5)
+				user.visible_message(SPAN_WARNING("[user] has reinforced \his grip on [victim] (now neck)!"), null, null, 5)
 				victim.attack_log += "\[[time_stamp()]\] <font color='orange'>Has had their neck grabbed by [user] ([user.ckey])</font>"
 				user.attack_log += "\[[time_stamp()]\] <font color='red'>Grabbed the neck of [victim] ([victim.ckey])</font>"
 				msg_admin_attack("[key_name(user)] grabbed the neck of [key_name(victim)]")
 			if(GRAB_AGGRESSIVE)
-				user.visible_message("<span class='warning'>[user] has grabbed [victim] aggressively (now hands)!</span>", null, null, 5)
+				user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively (now hands)!"), null, null, 5)
 		victim.update_canmove()
 
 /obj/item/grab/attack(mob/living/M, mob/living/user, def_zone)
@@ -82,16 +82,16 @@
 		if(!istype(pulled))
 			return
 		if(isXeno(pulled) || isSynth(pulled))
-			to_chat(X, "<span class='warning'>That wouldn't taste very good.</span>")
+			to_chat(X, SPAN_WARNING("That wouldn't taste very good."))
 			return 0
 		if(pulled.buckled)
-			to_chat(X, "<span class='warning'>[pulled] is buckled to something.</span>")
+			to_chat(X, SPAN_WARNING("[pulled] is buckled to something."))
 			return 0
 		if(pulled.stat == DEAD)
-			to_chat(X, "<span class='warning'>Ew, [pulled] is already starting to rot.</span>")
+			to_chat(X, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
 		if(X.stomach_contents.len) //Only one thing in the stomach at a time, please
-			to_chat(X, "<span class='warning'>You already have something in your belly, there's no way that will fit.</span>")
+			to_chat(X, SPAN_WARNING("You already have something in your belly, there's no way that will fit."))
 			return 0
 			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
@@ -101,17 +101,17 @@
 						to_chat(src, "You start to devour [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
-			to_chat(X, "<span class='warning'>You are already busy with something.</span>")
+			to_chat(X, SPAN_WARNING("You are already busy with something."))
 			return
-		X.visible_message("<span class='danger'>[X] starts to devour [pulled]!</span>", \
-		"<span class='danger'>You start to devour [pulled]!</span>", null, 5)
+		X.visible_message(SPAN_DANGER("[X] starts to devour [pulled]!"), \
+		SPAN_DANGER("You start to devour [pulled]!"), null, 5)
 		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(isXeno(pulled.loc) && !X.stomach_contents.len)
-				to_chat(X, "<span class='warning'>Someone already ate \the [pulled].</span>")
+				to_chat(X, SPAN_WARNING("Someone already ate \the [pulled]."))
 				return 0
 			if(X.pulling == pulled && !pulled.buckled && pulled.stat != DEAD && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
-				X.visible_message("<span class='warning'>[X] devours [pulled]!</span>", \
-					"<span class='warning'>You devour [pulled]!</span>", null, 5)
+				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
+					SPAN_WARNING("You devour [pulled]!"), null, 5)
 				
 				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
 				//So we're just going to get the lights out of here by forceMoving them to a far-away place
@@ -127,5 +127,5 @@
 				pulled.forceMove(X)
 				return 1
 		if(!(pulled in X.stomach_contents))
-			to_chat(X, "<span class='warning'>You stop devouring \the [pulled]. \He probably tasted gross anyways.</span>")
+			to_chat(X, SPAN_WARNING("You stop devouring \the [pulled]. \He probably tasted gross anyways."))
 		return 0

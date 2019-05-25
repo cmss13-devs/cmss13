@@ -43,10 +43,12 @@
 		var/mob/living/M = imp_in
 		if(accidental) //was triggered by random chance or EMP
 			playsound(M, 'sound/machines/buzz-two.ogg', 60, 1)
-			imp_in.visible_message("<span class='warning'>Something buzzes inside [imp_in][part ? "'s [part.display_name]" : ""].</span>")
+			var/malf_msg = "Something buzzes inside [imp_in][part ? "'s [part.display_name]" : ""]."
+			imp_in.visible_message(SPAN_WARNING(malf_msg))
 		else
 			playsound(M, 'sound/machines/twobeep.ogg', 60, 1)
-			imp_in.visible_message("<span class='warning'>Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""].</span>")
+			var/malf_msg = "Something beeps inside [imp_in][part ? "'s [part.display_name]" : ""]."
+			imp_in.visible_message(SPAN_WARNING(malf_msg))
 		sleep(10)
 		playsound(M, 'sound/effects/sparks2.ogg', 60, 1)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -54,7 +56,8 @@
 		s.start()
 		sleep(5)
 
-		M.visible_message("<span class='danger'>[M] convulses in pain!</span>", "<span class='danger'>Excruciating pain shoots through [part ? "your [part.display_name]" : "you"]!</span>")
+		var/mob_pain_msg = "Excruciating pain shoots through [part ? "your [part.display_name]" : "you"]!"
+		M.visible_message(SPAN_DANGER("[M] convulses in pain!"), SPAN_DANGER(mob_pain_msg))
 		M.flash_eyes(1, TRUE)
 		M.stunned += 10
 		M.KnockDown(10)

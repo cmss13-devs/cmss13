@@ -43,15 +43,15 @@
 						if(!ticker.mode.transfer_xeno(xeno_candidate.key, new_xeno))
 							qdel(new_xeno)
 							return
-						new_xeno.visible_message("<span class='xenodanger'>A larva suddenly burrows out of the ground!</span>",
-						"<span class='xenodanger'>You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence...</span>")
+						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
+						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
 						new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
 					hive_datum[hivenumber].stored_larva--
 
 			if(hive.living_xeno_queen == src)
-				xeno_message("<span class='xenoannounce'>A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!</span>",3, hivenumber)
-				xeno_message("<span class='xenoannounce'>The slashing of hosts is now permitted.</span>",2)
+				xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the hive... the Queen has been slain! Vengeance!"),3, hivenumber)
+				xeno_message(SPAN_XENOANNOUNCE("The slashing of hosts is now permitted."),2)
 				hive.slashing_allowed = 1
 				hive.set_living_xeno_queen(null)
 				//on the off chance there was somehow two queen alive
@@ -72,7 +72,7 @@
 	if(src in hive.xeno_leader_list)	//Strip them from the Xeno leader list, if they are indexed in here
 		hive.xeno_leader_list -= src
 		if(hive.living_xeno_queen)
-			to_chat(hive.living_xeno_queen, "<span class='xenonotice'>A leader has fallen!</span>") //alert queens so they can choose another leader
+			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
 
 	hud_set_queen_overwatch() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 
@@ -95,7 +95,7 @@
 	hive.handle_evolution_alert()
 	
 	if(hive.totalXenos.len == 1)
-		xeno_message("<span class='xenoannounce'>Your carapace rattles with dread. You are all that remains of the hive!</span>",3, hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)
 		
 	callHook("death", list(src, gibbed))
 
@@ -108,7 +108,7 @@
 	switch(caste.caste_name) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
 		if("Boiler")
 			var/mob/living/carbon/Xenomorph/Boiler/B = src
-			visible_message("<span class='danger'>[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!</span>")
+			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
 			B.smoke.set_up(2, 0, get_turf(src))
 			B.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"

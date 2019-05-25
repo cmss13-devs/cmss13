@@ -72,19 +72,19 @@
 
 		if("hurt")
 			var/damage = (rand(M.melee_damage_lower, M.melee_damage_upper) + 3)
-			M.visible_message("<span class='danger'>\The [M] bites [src]!</span>", \
-			"<span class='danger'>You bite [src]!</span>")
+			M.visible_message(SPAN_DANGER("\The [M] bites [src]!"), \
+			SPAN_DANGER("You bite [src]!"))
 			health -= damage
 			return 1
 
 		if("disarm")
-			to_chat(M, "<span class='warning'>There's nothing to disarm!</span>")
+			to_chat(M, SPAN_WARNING("There's nothing to disarm!"))
 
 	return 0
 
 /obj/ovipositor/attack_larva(mob/living/carbon/Xenomorph/Larva/M)
-	M.visible_message("<span class='danger'>[M] nudges its head against [src].</span>", \
-	"<span class='danger'>You nudge your head against [src].</span>")
+	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."), \
+	SPAN_DANGER("You nudge your head against [src]."))
 
 // Density override
 /obj/ovipositor/get_projectile_hit_boolean(obj/item/projectile/P)

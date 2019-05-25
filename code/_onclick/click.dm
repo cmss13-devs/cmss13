@@ -39,7 +39,6 @@
 		return
 
 	next_click = world.time + 1
-	
 	var/list/mods = params2list(params)
 
 	if(!clicked_something)
@@ -247,7 +246,7 @@
 		nutrition = max(nutrition - rand(1,5),0)
 		handle_regular_hud_updates()
 	else
-		to_chat(src, "<span class='danger'>You're out of energy!  You need food!</span>")
+		to_chat(src, SPAN_DANGER("You're out of energy!  You need food!"))
 
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)

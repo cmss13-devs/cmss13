@@ -87,7 +87,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 				qdel(src)
 				return 1
 			else
-				to_chat(user, "<span class='danger'>You can't load the [src.name] while it's opened.</span>")
+				to_chat(user, SPAN_DANGER("You can't load the [src.name] while it's opened."))
 				return 1
 		if (disabled)
 			to_chat(user, "\The [name] appears to not be working!")
@@ -98,16 +98,16 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		if (O.is_open_container())
 			return 0
 		if (!istype(O, /obj/item/stack/sheet/glass) && !istype(O, /obj/item/stack/sheet/mineral/gold) && !istype(O, /obj/item/stack/sheet/mineral/diamond) && !istype(O, /obj/item/stack/sheet/mineral/uranium))
-			to_chat(user, "<span class='danger'>You cannot insert this item into the [name]!</span>")
+			to_chat(user, SPAN_DANGER("You cannot insert this item into the [name]!"))
 			return 1
 		if (stat)
 			return 1
 		if (busy)
-			to_chat(user, "<span class='danger'>The [name] is busy. Please wait for completion of previous operation.</span>")
+			to_chat(user, SPAN_DANGER("The [name] is busy. Please wait for completion of previous operation."))
 			return 1
 		var/obj/item/stack/sheet/stack = O
 		if ((TotalMaterials() + stack.perunit) > max_material_amount)
-			to_chat(user, "<span class='danger'>The [name] is full. Please remove glass from the protolathe in order to insert more.</span>")
+			to_chat(user, SPAN_DANGER("The [name] is full. Please remove glass from the protolathe in order to insert more."))
 			return 1
 
 		var/amount = round(input("How many sheets do you want to add?") as num)

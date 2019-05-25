@@ -57,7 +57,7 @@
 	if(bcell)
 		user <<SPAN_NOTICE("The baton is [round(bcell.percent())]% charged.")
 	else
-		user <<"<span class='warning'>The baton does not have a power source installed.</span>"
+		user <<SPAN_WARNING("The baton does not have a power source installed.")
 
 /obj/item/weapon/baton/attack_hand(mob/user)
 	if(check_user_auth(user))
@@ -77,9 +77,9 @@
 	if(istype(H))
 		var/obj/item/card/id/I = H.wear_id
 		if(!istype(I) || !check_access(I))
-			H.visible_message(SPAN_NOTICE("[src] beeeps as [H] picks it up"), "<span class='danger'>WARNING: Unauthorized user detected. Denying access...</span>")
+			H.visible_message(SPAN_NOTICE("[src] beeeps as [H] picks it up"), SPAN_DANGER("WARNING: Unauthorized user detected. Denying access..."))
 			H.KnockDown(20)
-			H.visible_message("<span class='warning'>[src] beeps and sends a shock through [H]'s body!</span>")
+			H.visible_message(SPAN_WARNING("[src] beeps and sends a shock through [H]'s body!"))
 			deductcharge(hitcost)
 			add_fingerprint(user)
 			return FALSE
@@ -113,7 +113,7 @@
 
 /obj/item/weapon/baton/attack_self(mob/user)
 	if(has_user_lock && user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_MP)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(bcell && bcell.charge > hitcost)
 		status = !status
@@ -123,15 +123,15 @@
 	else
 		status = 0
 		if(!bcell)
-			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
+			to_chat(user, SPAN_WARNING("[src] does not have a power source!"))
 		else
-			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
+			to_chat(user, SPAN_WARNING("[src] is out of charge."))
 	add_fingerprint(user)
 
 
 /obj/item/weapon/baton/attack(mob/M, mob/user)
 	if(has_user_lock && user.mind && user.mind.cm_skills && user.mind.cm_skills.police < SKILL_POLICE_MP)
-		to_chat(user, "<span class='warning'>You don't seem to know how to use [src]...</span>")
+		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(status && (CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "span class='danger'>You accidentally hit yourself with the [src]!</span>")
@@ -164,23 +164,23 @@
 				target_zone = get_zone_with_miss_chance(user.zone_selected, L)
 
 			if(!target_zone)
-				L.visible_message("<span class='danger'><B>[user] misses [L] with \the [src]!</span>")
+				L.visible_message(SPAN_DANGER("<B>[user] misses [L] with \the [src]!"))
 				return 0
 
 			var/mob/living/carbon/human/H = L
 			var/datum/limb/affecting = H.get_limb(target_zone)
 			if (affecting)
 				if(!status)
-					L.visible_message("<span class='warning'>[L] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off.</span>")
+					L.visible_message(SPAN_WARNING("[L] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
 					return 1
 				else
-					H.visible_message("<span class='danger'>[L] has been prodded in the [affecting.display_name] with [src] by [user]!</span>")
+					H.visible_message(SPAN_DANGER("[L] has been prodded in the [affecting.display_name] with [src] by [user]!"))
 		else
 			if(!status)
-				L.visible_message("<span class='warning'>[L] has been prodded with [src] by [user]. Luckily it was off.</span>")
+				L.visible_message(SPAN_WARNING("[L] has been prodded with [src] by [user]. Luckily it was off."))
 				return 1
 			else
-				L.visible_message("<span class='danger'>[L] has been prodded with [src] by [user]!</span>")
+				L.visible_message(SPAN_DANGER("[L] has been prodded with [src] by [user]!"))
 
 	//stun effects
 

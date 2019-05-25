@@ -44,8 +44,8 @@
 	..()
 	if(istype(AM,/mob/living/carbon/Xenomorph))
 		return
-	visible_message("<span class='danger'>\The [src] was hit by \the [AM].</span>", \
-	"<span class='danger'>You hit \the [src].</span>")
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
@@ -62,11 +62,11 @@
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return 0
 	if(M.a_intent == HELP_INTENT)
-		M.visible_message("<span class='warning'>\The [M] creepily taps on [src] with its huge claw.</span>", \
-		"<span class='warning'>You creepily tap on [src].</span>",5)
+		M.visible_message(SPAN_WARNING("\The [M] creepily taps on [src] with its huge claw."), \
+			SPAN_WARNING("You creepily tap on [src]."), 5)
 	else
-		M.visible_message("<span class='xenonotice'>\The [M] claws \the [src]!</span>", \
-		"<span class='xenonotice'>You claw \the [src].</span>")
+		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+		SPAN_XENONOTICE("You claw \the [src]."))
 		if(istype(src, /obj/effect/alien/resin/sticky))
 			playsound(loc, "alien_resin_move", 25)
 		else
@@ -75,8 +75,8 @@
 		healthcheck()
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
-	M.visible_message("<span class='danger'>[M] tears \the [src]!</span>", \
-	"<span class='danger'>You tear \the [name].</span>")
+	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
+	SPAN_DANGER("You tear \the [name]."))
 	if(istype(src, /obj/effect/alien/resin/sticky))
 		playsound(loc, "alien_resin_move", 25)
 	else
@@ -85,7 +85,7 @@
 	healthcheck()
 
 /obj/effect/alien/resin/attack_hand()
-	to_chat(usr, "<span class='warning'>You scrape ineffectively at \the [src].</span>")
+	to_chat(usr, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /obj/effect/alien/resin/attack_paw()
 	return attack_hand()
@@ -208,8 +208,8 @@
 		if(RESIN_TRAP_HUGGER)
 			if(CanHug(AM) && !isYautja(AM) && !isSynth(AM))
 				var/mob/living/L = AM
-				L.visible_message("<span class='warning'>[L] trips on [src]!</span>",\
-								"<span class='danger'>You trip on [src]!</span>")
+				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
+								SPAN_DANGER("You trip on [src]!"))
 				L.KnockDown(1)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
@@ -279,7 +279,7 @@
 			var/obj/item/clothing/mask/facehugger/FH = new (loc)
 			FH.hivenumber = hivenumber
 			set_state()
-			visible_message("<span class='warning'>[FH] gets out of [src]!</span>")
+			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
 			sleep(15)
 			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
 				FH.leap_at_nearest_target()
@@ -310,31 +310,31 @@
 				var/obj/item/clothing/mask/facehugger/F = new ()
 				F.hivenumber = hivenumber
 				X.put_in_active_hand(F)
-				to_chat(X, "<span class='xenonotice'>You remove the facehugger from [src].</span>")
+				to_chat(X, SPAN_XENONOTICE("You remove the facehugger from [src]."))
 			else
-				to_chat(X, "<span class='xenonotice'>This one is occupied with a child.</span>")
+				to_chat(X, SPAN_XENONOTICE("This one is occupied with a child."))
 				return
 
 		if(!X.acid_level || trap_type == RESIN_TRAP_GAS)
 			if(trap_type != RESIN_TRAP_EMPTY)
-				to_chat(X, "<span class='xenonotice'>Better not risk setting this off.</span>")
+				to_chat(X, SPAN_XENONOTICE("Better not risk setting this off."))
 				return
 		if(trap_acid_level >= X.acid_level)
-			to_chat(X, "<span class='xenonotice'>It already has good acid in.</span>")
+			to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
 			return
 
 		if(isXenoBoiler(X))
 			var/mob/living/carbon/Xenomorph/Boiler/B = X
 
 			if (B.bomb_cooldown)
-				to_chat(B, "<span class='xenowarning'>You must wait to produce enough acid to pressurise this trap.</span>")
+				to_chat(B, SPAN_XENOWARNING("You must wait to produce enough acid to pressurise this trap."))
 				return
 
 			if (!B.check_plasma(200))
-				to_chat(B, "<span class='xenowarning'>You must produce more plasma before doing this.</span>")
+				to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 				return
 
-			to_chat(X, "<span class='xenonotice'>You begin charging the resin hole with acid gas.</span>")
+			to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid gas."))
 			if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				return
 
@@ -355,8 +355,8 @@
 			B.use_plasma(200)
 			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 			set_state(RESIN_TRAP_GAS)
-			B.visible_message("<span class='xenowarning'>\The [B] pressurises the resin hole with acid gas!</span>", \
-			"<span class='xenowarning'>You pressurise the resin hole with acid gas!</span>", null, 5)
+			B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin hole with acid gas!"), \
+			SPAN_XENOWARNING("You pressurise the resin hole with acid gas!"), null, 5)
 
 			spawn(B.bomb_delay)
 				B.bomb_cooldown = 0
@@ -372,10 +372,10 @@
 				acid_cost = 200
 
 			if (!X.check_plasma(acid_cost))
-				to_chat(X, "<span class='xenowarning'>You must produce more plasma before doing this.</span>")
+				to_chat(X, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 				return
 
-			to_chat(X, "<span class='xenonotice'>You begin charging the resin hole with acid.</span>")
+			to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid."))
 			if(!do_after(X, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				return
 
@@ -386,8 +386,8 @@
 			setup_tripwires()
 			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
-			X.visible_message("<span class='xenowarning'>\The [X] pressurises the resin hole with acid!</span>", \
-			"<span class='xenowarning'>You pressurise the resin hole with acid!</span>", null, 5)
+			X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin hole with acid!"), \
+			SPAN_XENOWARNING("You pressurise the resin hole with acid!"), null, 5)
 			hivenumber = X.hivenumber //Taking over the hole
 			return
 	else
@@ -406,15 +406,15 @@
 /obj/effect/alien/resin/trap/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/clothing/mask/facehugger) && isXeno(user))
 		if(trap_type != RESIN_TRAP_EMPTY)
-			to_chat(user, "<span class='xenowarning'>You can't put a hugger in this hole!</span>")
+			to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this hole!"))
 			return
 		var/obj/item/clothing/mask/facehugger/FH = W
 		if(FH.stat == DEAD)
-			to_chat(user, "<span class='xenowarning'>You can't put a dead facehugger in [src].</span>")
+			to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
 		else
 			hivenumber = FH.hivenumber //Taking over the hole
 			set_state(RESIN_TRAP_HUGGER)
-			to_chat(user, "<span class='xenonotice'>You place a facehugger in [src].</span>")
+			to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
 			qdel(FH)
 	else
 		. = ..()
@@ -482,13 +482,13 @@
 
 /obj/structure/mineral_door/resin/attack_paw(mob/user as mob)
 	if(user.a_intent == "hurt")
-		user.visible_message("<span class='xenowarning'>\The [user] claws at \the [src].</span>", \
-		"<span class='xenowarning'>You claw at \the [src].</span>")
+		user.visible_message(SPAN_XENOWARNING("\The [user] claws at \the [src]."), \
+		SPAN_XENOWARNING("You claw at \the [src]."))
 		playsound(loc, "alien_resin_break", 25)
 		health -= rand(40, 60)
 		if(health <= 0)
-			user.visible_message("<span class='xenodanger'>\The [user] slices \the [src] apart.</span>", \
-			"<span class='xenodanger'>You slice \the [src] apart.</span>")
+			user.visible_message(SPAN_XENODANGER("\The [user] slices \the [src] apart."), \
+			SPAN_XENODANGER("You slice \the [src] apart."))
 		healthcheck()
 		return
 	else
@@ -662,18 +662,18 @@
 	switch(status)
 		if(BURST, DESTROYED)
 			if(M.caste.can_hold_eggs)
-				M.visible_message("<span class='xenonotice'>\The [M] clears the hatched egg.</span>", \
-				"<span class='xenonotice'>You clear the hatched egg.</span>")
+				M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
+				SPAN_XENONOTICE("You clear the hatched egg."))
 				playsound(src.loc, "alien_resin_break", 25)
 				M.plasma_stored++
 				qdel(src)
 		if(GROWING)
-			to_chat(M, "<span class='xenowarning'>The child is not developed yet.</span>")
+			to_chat(M, SPAN_XENOWARNING("The child is not developed yet."))
 		if(GROWN)
 			if(isXenoLarva(M))
-				to_chat(M, "<span class='xenowarning'>You nudge the egg, but nothing happens.</span>")
+				to_chat(M, SPAN_XENOWARNING("You nudge the egg, but nothing happens."))
 				return
-			to_chat(M, "<span class='xenonotice'>You retrieve the child.</span>")
+			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
 			Burst(0)
 
 /obj/effect/alien/egg/proc/Grow()
@@ -765,16 +765,17 @@
 			switch(status)
 				if(BURST)
 					if(user)
-						visible_message("<span class='xenowarning'>[user] slides [F] back into [src].</span>","<span class='xenonotice'>You place the child back in to [src].</span>")
+						visible_message(SPAN_XENOWARNING("[user] slides [F] back into [src]."), \
+							SPAN_XENONOTICE("You place the child back in to [src]."))
 						user.temp_drop_inv_item(F)
 					else
-						visible_message("<span class='xenowarning'>[F] crawls back into [src]!</span>") //Not sure how, but let's roll with it for now.
+						visible_message(SPAN_XENOWARNING("[F] crawls back into [src]!")) //Not sure how, but let's roll with it for now.
 					status = GROWN
 					icon_state = "Egg"
 					qdel(F)
-				if(DESTROYED) to_chat(user, "<span class='xenowarning'>This egg is no longer usable.</span>")
-				if(GROWING,GROWN) to_chat(user, "<span class='xenowarning'>This one is occupied with a child.</span>")
-		else to_chat(user, "<span class='xenowarning'>This child is dead.</span>")
+				if(DESTROYED) to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
+				if(GROWING,GROWN) to_chat(user, SPAN_XENOWARNING("This one is occupied with a child."))
+		else to_chat(user, SPAN_XENOWARNING("This child is dead."))
 		return
 
 	if(W.flags_item & NOBLUDGEON)
@@ -782,9 +783,9 @@
 
 	user.animation_attack_on(src)
 	if(W.attack_verb.len)
-		visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
+		visible_message(SPAN_DANGER("\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]"))
 	else
-		visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+		visible_message(SPAN_DANGER("\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]"))
 	var/damage = W.force
 	if(W.w_class < 4 || !W.sharp || W.force < 20) //only big strong sharp weapon are adequate
 		damage /= 4
@@ -876,7 +877,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	global_tunnel_list -= src
 	for(var/mob/living/carbon/Xenomorph/X in contents)
 		X.forceMove(loc)
-		to_chat(X, "<span class='danger'>[src] suddenly collapses, forcing you out!</span>")
+		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
 	. = ..()
 
 /obj/structure/tunnel/examine(mob/user)
@@ -885,11 +886,11 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		return
 
 	if(tunnel_desc)
-		to_chat(user, "<span class='info'>The pheromone scent reads: \'[tunnel_desc]\'</span>")
+		to_chat(user, SPAN_INFO("The pheromone scent reads: \'[tunnel_desc]\'"))
 
 /obj/structure/tunnel/proc/healthcheck()
 	if(health <= 0)
-		visible_message("<span class='danger'>[src] suddenly collapses!</span>")
+		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
 		qdel(src)
 
 /obj/structure/tunnel/bullet_act(var/obj/item/projectile/Proj)
@@ -940,7 +941,7 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 			//No teleporting!
 			return 0
 
-		to_chat(X, "<span class='xenonotice'>You begin moving to your destination.</span>")
+		to_chat(X, SPAN_XENONOTICE("You begin moving to your destination."))
 
 		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
@@ -953,11 +954,11 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 			for(var/obj/structure/tunnel/T in global_tunnel_list)
 				if(T.tunnel_desc == pick)
 					if(T.contents.len > 2)// max 3 xenos in a tunnel
-						to_chat(X, "<span class='warning'>The tunnel is too crowded, wait for others to exit!</span>")
+						to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 						return 0
 					else
 						X.forceMove(T)
-						to_chat(X, "<span class='xenonotice'>You have reached your destination.</span>")
+						to_chat(X, SPAN_XENONOTICE("You have reached your destination."))
 						return 1
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/Xenomorph/X)
@@ -965,8 +966,8 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	if(X in contents)
 		X.forceMove(loc)
 
-		visible_message("<span class='xenonotice'>\The [X] pops out of the tunnel!</span>", \
-		"<span class='xenonotice'>You pop out through the other side!</span>")
+		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"), \
+		SPAN_XENONOTICE("You pop out through the other side!"))
 
 		return 1
 
@@ -993,19 +994,19 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 	//Prevents using tunnels by the queen to bypass the fog.
 	if(ticker && ticker.mode && ticker.mode.flags_round_type & MODE_FOG_ACTIVATED)
 		if(isXenoQueen(M))
-			to_chat(M, "<span class='xenowarning'>There is no reason to leave the safety of the caves yet.</span>")
+			to_chat(M, SPAN_XENOWARNING("There is no reason to leave the safety of the caves yet."))
 			return FALSE
 
 	if(M.anchored)
-		to_chat(M, "<span class='xenowarning'>You can't climb through a tunnel while immobile.</span>")
+		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
 		return FALSE
 
 	if(!global_tunnel_list.len)
-		to_chat(M, "<span class='warning'>\The [src] doesn't seem to lead anywhere.</span>")
+		to_chat(M, SPAN_WARNING("\The [src] doesn't seem to lead anywhere."))
 		return FALSE
 
 	if(contents.len > 2)
-		to_chat(M, "<span class='warning'>The tunnel is too crowded, wait for others to exit!</span>")
+		to_chat(M, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 		return FALSE
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
@@ -1016,18 +1017,18 @@ var/list/obj/structure/tunnel/global_tunnel_list = list()
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(M.mob_size == MOB_SIZE_BIG)
-		M.visible_message("<span class='xenonotice'>[M] begins heaving their huge bulk down into \the [src].</span>", \
-		"<span class='xenonotice'>You begin heaving your monstrous bulk into \the [src]</b>.</span>")
+		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into \the [src]."), \
+		SPAN_XENONOTICE("You begin heaving your monstrous bulk into \the [src]</b>."))
 	else
-		M.visible_message("<span class='xenonotice'>\The [M] begins crawling down into \the [src].</span>", \
-		"<span class='xenonotice'>You begin crawling down into \the [src]</b>.</span>")
+		M.visible_message(SPAN_XENONOTICE("\The [M] begins crawling down into \the [src]."), \
+		SPAN_XENONOTICE("You begin crawling down into \the [src]</b>."))
 
 	if(do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		if(global_tunnel_list.len) //Make sure other tunnels exist
 			M.forceMove(src) //become one with the tunnel
-			to_chat(M, "<span class='xenonotice'>Alt click the tunnel to exit, ctrl click to choose a destination.</span>")
+			to_chat(M, SPAN_XENONOTICE("Alt click the tunnel to exit, ctrl click to choose a destination."))
 			pick_tunnel(M)
 		else
-			to_chat(M, "<span class='warning'>\The [src] ended unexpectedly, so you return back up.</span>")
+			to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
 	else
-		to_chat(M, "<span class='warning'>Your crawling was interrupted!</span>")
+		to_chat(M, SPAN_WARNING("Your crawling was interrupted!"))

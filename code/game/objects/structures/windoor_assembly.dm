@@ -114,7 +114,7 @@ obj/structure/windoor_assembly/Dispose()
 			else if(istype(W, /obj/item/stack/rods) && !secure)
 				var/obj/item/stack/rods/R = W
 				if(R.get_amount() < 4)
-					to_chat(user, "<span class='warning'>You need more rods to do this.</span>")
+					to_chat(user, SPAN_WARNING("You need more rods to do this."))
 					return
 				to_chat(user, SPAN_NOTICE("You start to reinforce the windoor with rods."))
 
@@ -196,7 +196,7 @@ obj/structure/windoor_assembly/Dispose()
 			//Crowbar to complete the assembly, Step 7 complete.
 			else if(istype(W, /obj/item/tool/crowbar))
 				if(!src.electronics)
-					to_chat(usr, "<span class='danger'>The assembly is missing electronics.</span>")
+					to_chat(usr, SPAN_DANGER("The assembly is missing electronics."))
 					return
 				usr << browse(null, "window=windoor_access")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)

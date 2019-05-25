@@ -104,7 +104,7 @@
 
 /obj/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if (busy)
-		to_chat(user, "<span class='danger'>\The [src] is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_DANGER("\The [src] is busy. Please wait for completion of previous operation."))
 		return
 
 	if(istype(O, /obj/item/tool/screwdriver))
@@ -167,7 +167,7 @@
 		mass_per_sheet += eating.matter[material]
 
 	if(!filltype)
-		to_chat(user, "<span class='danger'>\The [src] is full. Please remove material from the autolathe in order to insert more.</span>")
+		to_chat(user, SPAN_DANGER("\The [src] is full. Please remove material from the autolathe in order to insert more."))
 		return
 	else if(filltype == 1)
 		to_chat(user, "You fill \the [src] to capacity with \the [eating].")
@@ -205,7 +205,7 @@
 	add_fingerprint(usr)
 
 	if(busy)
-		to_chat(usr, "<span class='danger'>The autolathe is busy. Please wait for completion of previous operation.</span>")
+		to_chat(usr, SPAN_DANGER("The autolathe is busy. Please wait for completion of previous operation."))
 		return
 
 	if(href_list["change_category"])

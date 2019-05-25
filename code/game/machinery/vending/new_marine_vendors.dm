@@ -71,20 +71,20 @@
 	var/mob/living/carbon/human/H = user
 
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
 	var/obj/item/card/id/I = H.wear_id
 	if(!istype(I)) //not wearing an ID
-		to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
+		to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 		return
 
 	if(I.registered_name != H.real_name)
-		to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+		to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
 		return
 
 	if(vendor_role && I.rank != vendor_role)
-		to_chat(H, "<span class='warning'>This machine isn't for you.</span>")
+		to_chat(H, SPAN_WARNING("This machine isn't for you."))
 		return
 
 
@@ -155,7 +155,7 @@
 		if (href_list["vend"])
 
 			if(!allowed(usr))
-				to_chat(usr, "<span class='warning'>Access denied.</span>")
+				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
 
 			var/idx=text2num(href_list["vend"])
@@ -166,52 +166,52 @@
 
 			var/obj/item/card/id/I = H.wear_id
 			if(!istype(I)) //not wearing an ID
-				to_chat(H, "<span class='warning'>Access denied. No ID card detected</span>")
+				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 				return
 
 			if(I.registered_name != H.real_name)
-				to_chat(H, "<span class='warning'>Wrong ID card owner detected.</span>")
+				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
 				return
 
 			if(vendor_role && I.rank != vendor_role)
-				to_chat(H, "<span class='warning'>This machine isn't for you.</span>")
+				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
 			if(use_points)
 				if((!use_snowflake_points && I.marine_points < cost) && (use_snowflake_points && I.marine_snowflake_points < cost))
-					to_chat(H, "<span class='warning'>Not enough points.</span>")
+					to_chat(H, SPAN_WARNING("Not enough points."))
 					return
 
 
 			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
-				to_chat(H, "<span class='warning'>This machine isn't for you.</span>")
+				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
 
 			var/turf/T = loc
 			if(T.contents.len > 25)
-				to_chat(H, "<span class='warning'>The floor is too cluttered, make some space.</span>")
+				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
 				return
 
 			var/bitf = L[4]
 			if(bitf)
 				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role == "Squad Specialist")
 					if(!H.mind || H.mind.assigned_role != "Squad Specialist")
-						to_chat(H, "<span class='warning'>Only specialists can take specialist sets.</span>")
+						to_chat(H, SPAN_WARNING("Only specialists can take specialist sets."))
 						return
 					else if(!H.mind.cm_skills || H.mind.cm_skills.spec_weapons != SKILL_SPEC_TRAINED)
-						to_chat(H, "<span class='warning'>You already have a specialist specialization.</span>")
+						to_chat(H, SPAN_WARNING("You already have a specialist specialization."))
 						return
 					var/p_name = L[1]
 					if(!available_specialist_sets.Find(p_name))
-						to_chat(H, "<span class='warning'>That set is already taken.</span>")
+						to_chat(H, SPAN_WARNING("That set is already taken."))
 						return
 
 				if(vendor_role == "Tank Crewman")
 					var/p_name = L[1]
 					var/obj/machinery/marine_selector/tank/t = src
 					if(!t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
-						to_chat(H, "<span class='warning'>That equipment is already taken.</span>")
+						to_chat(H, SPAN_WARNING("That equipment is already taken."))
 						return
 
 				if(I.marine_buy_flags & bitf)
@@ -223,7 +223,7 @@
 					else
 						I.marine_buy_flags &= ~bitf
 				else
-					to_chat(H, "<span class='warning'>You can't buy things from this category anymore.</span>")
+					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 					return
 
 
@@ -266,7 +266,7 @@
 						if("Pyro Set")
 							H.mind.cm_skills.spec_weapons = SKILL_SPEC_PYRO
 						else
-							to_chat(H, "<span class='warning'><b>Something bad occured with [src], tell a Dev.</b></span>")
+							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							return
 					available_specialist_sets -= p_name
 			if(vendor_role == "Tank Crewman")
@@ -275,7 +275,7 @@
 						var/obj/machinery/marine_selector/tank/t = src
 						var/t_name = L[1]
 						if(!t.primary_list.Find(t_name) && !t.secondary_list.Find(t_name) && !t.support_list.Find(t_name) && !t.armor_list.Find(t_name) &&!t.treads_list.Find(t_name))
-							to_chat(H, "<span class='warning'>That equipment is already taken.</span>")
+							to_chat(H, SPAN_WARNING("That equipment is already taken."))
 							return
 						if(t.primary_list.Find(t_name))
 							t.primary_list.Cut()

@@ -79,12 +79,12 @@
 
 	if(entrance_dir)
 		if(!step(user, entrance_dir))
-			to_chat(user, "<span class='warning'>You can't reach the hole's entrance.</span>")
+			to_chat(user, SPAN_WARNING("You can't reach the hole's entrance."))
 			return
 
 	for(var/obj/O in T)
 		if(!O.CanPass(user, user.loc))
-			to_chat(user, "<span class='warning'>The hole's exit is blocked by something!</span>")
+			to_chat(user, SPAN_WARNING("The hole's exit is blocked by something!"))
 			return
 
 	if(user.action_busy)
@@ -101,7 +101,7 @@
 					return
 			if(user.pulling)
 				user.stop_pulling()
-				to_chat(user, "<span class='warning'>You release what you're pulling to fit into the tunnel!</span>")
+				to_chat(user, SPAN_WARNING("You release what you're pulling to fit into the tunnel!"))
 			user.forceMove(T)
 
 
@@ -123,15 +123,15 @@
 		var/obj/item/explosive/grenade/G = W
 
 		if(!Target ||Target.density)
-			to_chat(user, "<span class='warning'>This hole leads nowhere!</span>")
+			to_chat(user, SPAN_WARNING("This hole leads nowhere!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You take the position to throw [G]."))
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
-			user.visible_message("<span class='warning'>[user] throws [G] through [src]!</span>", \
-								 "<span class='warning'>You throw [G] through [src]</span>")
+			user.visible_message(SPAN_WARNING("[user] throws [G] through [src]!"), \
+								 SPAN_WARNING("You throw [G] through [src]"))
 			user.drop_held_item()
 			G.forceMove(Target)
 			G.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
@@ -145,15 +145,15 @@
 		var/obj/item/device/flashlight/F = W
 
 		if(!Target ||Target.density)
-			to_chat(user, "<span class='warning'>This hole leads nowhere!</span>")
+			to_chat(user, SPAN_WARNING("This hole leads nowhere!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You take the position to throw [F]."))
 		if(do_after(user,10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(Target.density)
 				return
-			user.visible_message("<span class='warning'>[user] throws [F] through [src]!</span>", \
-								 "<span class='warning'>You throw [F] through [src]</span>")
+			user.visible_message(SPAN_WARNING("[user] throws [F] through [src]!"), \
+								 SPAN_WARNING("You throw [F] through [src]"))
 			user.drop_held_item()
 			F.forceMove(Target)
 			F.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

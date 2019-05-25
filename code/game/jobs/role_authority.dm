@@ -332,7 +332,6 @@ roles willy nilly.
 			M.mind.role_alt_title 		= J.get_alternative_title(M)
 			M.mind.role_comm_title 		= J.get_comm_title()
 			J.current_positions++
-			//to_world("[J.title]: [J.current_positions] current positions filled.") //TODO DEBUG
 			return 1
 
 /datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin=0)

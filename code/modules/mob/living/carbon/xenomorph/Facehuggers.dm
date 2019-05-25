@@ -51,7 +51,7 @@
 	for(F in get_turf(src))
 		if(F.stat == CONSCIOUS) count++
 		if(count > 2) //Was 5, our rules got much tighter
-			visible_message("<span class='xenowarning'>The facehugger is furiously cannibalized by the nearby horde of other ones!</span>")
+			visible_message(SPAN_XENOWARNING("The facehugger is furiously cannibalized by the nearby horde of other ones!"))
 			qdel(src)
 			return
 	if(stat == CONSCIOUS && loc) //Make sure we're conscious and not idle or dead.
@@ -89,7 +89,7 @@
 		Attach(M)
 		user.update_icons()
 	else
-		to_chat(user, "<span class='warning'>The facehugger refuses to attach.</span>")
+		to_chat(user, SPAN_WARNING("The facehugger refuses to attach."))
 		..()
 
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
@@ -100,10 +100,10 @@
 /obj/item/clothing/mask/facehugger/examine(mob/user)
 	..()
 	switch(stat)
-		if(DEAD, UNCONSCIOUS) to_chat(user, "<span class='danger'>[src] is not moving.</span>")
-		if(CONSCIOUS) to_chat(user, "<span class='danger'>[src] seems to be active.</span>")
+		if(DEAD, UNCONSCIOUS) to_chat(user, SPAN_DANGER("[src] is not moving."))
+		if(CONSCIOUS) to_chat(user, SPAN_DANGER("[src] seems to be active."))
 	if(sterile)
-		to_chat(user, "<span class='danger'>It looks like the proboscis has been removed.</span>")
+		to_chat(user, SPAN_DANGER("It looks like the proboscis has been removed."))
 
 /obj/item/clothing/mask/facehugger/attackby(obj/item/W, mob/user)
 	if(W.flags_item & NOBLUDGEON) return
@@ -189,8 +189,8 @@
 		for(M in view(4,src))
 			if(!i) break
 			if(CanHug(M))
-				M.visible_message("<span class='warning'>\The scuttling [src] leaps at [M]!</span>", \
-				"<span class='warning'>The scuttling [src] leaps at [M]!</span>")
+				M.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [M]!"), \
+				SPAN_WARNING("The scuttling [src] leaps at [M]!"))
 				leaping = 1
 				throw_at(M, 4, 1)
 				break
@@ -213,7 +213,7 @@
 
 	reset_attach_status()
 
-	M.visible_message("<span class='danger'>[src] leaps at [M]'s face!</span>")
+	M.visible_message(SPAN_DANGER("[src] leaps at [M]'s face!"))
 	if(throwing) throwing = 0
 
 	if(isXeno(loc)) //Being carried? Drop it
@@ -228,7 +228,7 @@
 		var/mob/living/carbon/human/H = M
 
 		if(!H.has_limb("head"))
-			visible_message("<span class='warning'>[src] looks for a face to hug on [H], but finds none!</span>")
+			visible_message(SPAN_WARNING("[src] looks for a face to hug on [H], but finds none!"))
 			GoIdle()
 			return
 
@@ -279,10 +279,10 @@
 					if(hugger.stat != DEAD) return
 
 				if(W.anti_hug > 1)
-					target.visible_message("<span class='danger'>[src] smashes against [target]'s [W.name]!</span>")
+					target.visible_message(SPAN_DANGER("[src] smashes against [target]'s [W.name]!"))
 					cannot_infect = 1
 				else
-					target.visible_message("<span class='danger'>[src] smashes against [target]'s [W.name] and rips it off!</span>")
+					target.visible_message(SPAN_DANGER("[src] smashes against [target]'s [W.name] and rips it off!"))
 					target.drop_inv_item_on_ground(W)
 				if(W.anti_hug && prob(15)) //15% chance the hugger will go idle after ripping off a helmet. Otherwise it will keep going.
 					W.anti_hug = max(0, --W.anti_hug)
@@ -337,11 +337,11 @@
 
 			icon_state = "[initial(icon_state)]_impregnated"
 
-		target.visible_message("<span class='danger'>[src] falls limp after violating [target]'s face!</span>")
+		target.visible_message(SPAN_DANGER("[src] falls limp after violating [target]'s face!"))
 		Die()
 
 	else
-		target.visible_message("<span class='danger'>[src] violates [target]'s face!</span>")
+		target.visible_message(SPAN_DANGER("[src] violates [target]'s face!"))
 
 	if(ishuman(target))
 		round_statistics.total_huggers_applied++
@@ -382,7 +382,7 @@
 		if(isturf(loc))
 			var/obj/effect/alien/egg/E = locate() in loc
 			if(E && E.status == BURST)
-				visible_message("<span class='xenowarning'>[src] crawls back into [E]!</span>")
+				visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
 				E.status = GROWN
 				E.icon_state = "Egg"
 				E.deploy_egg_triggers()
@@ -390,7 +390,7 @@
 				return
 			var/obj/effect/alien/resin/trap/T = locate() in loc
 			if(T && T.trap_type == RESIN_TRAP_EMPTY)
-				visible_message("<span class='xenowarning'>[src] crawls into [T]!</span>")
+				visible_message(SPAN_XENOWARNING("[src] crawls into [T]!"))
 				T.hivenumber = hivenumber
 				T.set_state(RESIN_TRAP_HUGGER)
 				qdel(src)

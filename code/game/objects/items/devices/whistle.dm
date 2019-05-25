@@ -31,7 +31,7 @@
 	if (spamcheck)
 		return
 
-	user.visible_message("<span class='warning'>[user] blows into [src]!</span>")
+	user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
 	playsound(get_turf(src), 'sound/items/whistle.ogg', volume, 1, vary = 0)
 
 	spamcheck = 1
@@ -71,13 +71,13 @@
 	if(emagged)
 		if(insults >= 1)
 			playsound(get_turf(src), 'sound/voice/binsult.ogg', 25, 1, vary = 0)//hueheuheuheuheuheuhe
-			user.show_message("<span class='warning'>[user]'s [name] gurgles, \"FUCK YOUR CUNT YOU SHIT EATING CUNT TILL YOU ARE A MASS EATING SHIT CUNT. EAT PENISES IN YOUR FUCK FACE AND SHIT OUT ABORTIONS TO FUCK UP SHIT IN YOUR ASS YOU COCK FUCK SHIT MONKEY FROM THE DEPTHS OF SHIT\"</span>",2) //It's a hearable message silly!
+			user.show_message(SPAN_WARNING("[user]'s [name] gurgles, \"FUCK YOUR CUNT YOU SHIT EATING CUNT TILL YOU ARE A MASS EATING SHIT CUNT. EAT PENISES IN YOUR FUCK FACE AND SHIT OUT ABORTIONS TO FUCK UP SHIT IN YOUR ASS YOU COCK FUCK SHIT MONKEY FROM THE DEPTHS OF SHIT\""),2) //It's a hearable message silly!
 			insults--
 		else
-			to_chat(user, "<span class='danger'>*BZZZZcuntZZZZT*</span>")
+			to_chat(user, SPAN_DANGER("*BZZZZcuntZZZZT*"))
 	else
 		playsound(get_turf(src), 'sound/voice/halt.ogg', 25, 1, vary = 0)
-		user.show_message("<span class='warning'>[user]'s [name] rasps, \"Halt! Security!\"</span>",1)
+		user.show_message(SPAN_WARNING("[user]'s [name] rasps, \"Halt! Security!\""),1)
 
 	spamcheck = 1
 	spawn(20)
@@ -85,7 +85,7 @@
 
 /obj/item/device/hailer/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/card/emag) && !emagged)
-		to_chat(user, "<span class='danger'>You overload \the [src]'s voice synthesizer.</span>")
+		to_chat(user, SPAN_DANGER("You overload \the [src]'s voice synthesizer."))
 		emagged = 1
 		insults = rand(1, 3)//to prevent dickflooding
 		return

@@ -219,9 +219,9 @@
 	if( ( istype(M.get_active_hand(), /obj/item/weapon/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/katana) ) && M != user )
 
 		if(prob(50))
-			user.visible_message("<span class='danger'>[M] and [user] cross blades!</span>")
+			user.visible_message(SPAN_DANGER("[M] and [user] cross blades!"))
 		else
-			M.visible_message("<span class='danger'>[user] and [M] cross blades!</span>")
+			M.visible_message(SPAN_DANGER("[user] and [M] cross blades!"))
 		playsound(user, 'sound/weapons/bladeslice.ogg', 25, 1)
 		playsound(M, 'sound/weapons/bladeslice.ogg', 25, 1)
 		user.animation_attack_on(M)
@@ -243,8 +243,8 @@
 		var/used_verb = "attacked"
 		if(attack_verb && attack_verb.len)
 			used_verb = pick(attack_verb)
-		user.visible_message("<span class='danger'>[M] has been [used_verb] with [src][showname].</span>",\
-						"<span class='danger'>You [used_verb] [M] with [src].</span>", null, 5)
+		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),\
+						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)
 
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)
 		user.animation_attack_on(M)

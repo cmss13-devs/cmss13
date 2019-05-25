@@ -175,7 +175,7 @@
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
-			O.show_message("<span class='danger'><B>[M]</B> [M.attacktext] [src]!</span>", 1)
+			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name] ([src.ckey])</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [M.name] ([M.ckey])</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
@@ -382,9 +382,9 @@
 							D.fallen_blood_types = list(DT.blood_type)
 							usr.put_in_hands(D)
 						else
-							to_chat(usr, "<span class='warning'>You can't take a dogtag's information tag while its owner is alive.</span>")
+							to_chat(usr, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
 					else
-						to_chat(usr, "<span class='warning'>Someone's already taken [src]'s information tag.</span>")
+						to_chat(usr, SPAN_WARNING("Someone's already taken [src]'s information tag."))
 					return
 			//police skill lets you strip multiple items from someone at once.
 			if(!usr.action_busy || (!usr.mind || !usr.mind.cm_skills || usr.mind.cm_skills.police >= SKILL_POLICE_MP))
@@ -402,9 +402,9 @@
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [usr.name] ([usr.ckey])</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [name]'s ([ckey]) internals</font>")
 			if(internal)
-				usr.visible_message("<span class='danger'><B>[usr] is trying to disable [src]'s internals</B></span>", null, null, 3)
+				usr.visible_message(SPAN_DANGER("<B>[usr] is trying to disable [src]'s internals</B>"), null, null, 3)
 			else
-				usr.visible_message("<span class='danger'><B>[usr] is trying to enable [src]'s internals.</B></span>", null, null, 3)
+				usr.visible_message(SPAN_DANGER("<B>[usr] is trying to enable [src]'s internals.</B>"), null, null, 3)
 
 			if(do_after(usr, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				if (internal)
@@ -443,7 +443,7 @@
 					attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([U.hastie.name]) removed by [usr.name] ([usr.ckey])</font>")
 					usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [name]'s ([ckey]) accessory ([U.hastie])</font>")
 					if(istype(U.hastie, /obj/item/clothing/tie/holobadge) || istype(U.hastie, /obj/item/clothing/tie/medal))
-						visible_message("<span class='danger'><B>[usr] tears off \the [U.hastie] from [src]'s [U]!</B></span>", null, null, 5)
+						visible_message(SPAN_DANGER("<B>[usr] tears off \the [U.hastie] from [src]'s [U]!</B>"), null, null, 5)
 					else
 						visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [U.hastie] from [src]'s [U]!</B>"), null, null, 5)
 						if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
@@ -520,7 +520,7 @@
 
 
 			if(!modified)
-				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if (href_list["secrecord"])
 		if(hasHUD(usr,"security"))
@@ -550,7 +550,7 @@
 								read = 1
 
 			if(!read)
-				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if (href_list["secrecordComment"])
 		if(hasHUD(usr,"security"))
@@ -580,7 +580,7 @@
 								to_chat(usr, "<a href='?src=\ref[src];secrecordadd=`'>\[Add comment\]</a>")
 
 			if(!read)
-				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if (href_list["secrecordadd"])
 		if(hasHUD(usr,"security"))
@@ -648,7 +648,7 @@
 											U.handle_regular_hud_updates()
 
 			if(!modified)
-				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if (href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
@@ -679,7 +679,7 @@
 								read = 1
 
 			if(!read)
-				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if (href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
@@ -709,7 +709,7 @@
 								to_chat(usr, "<a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>")
 
 			if(!read)
-				to_chat(usr, "<span class='danger'>Unable to locate a data core entry for this person.</span>")
+				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if (href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
@@ -742,15 +742,15 @@
 
 	if (href_list["medholocard"])
 		if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-			to_chat(usr, "<span class='warning'>You're not trained to use this.</span>")
+			to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 			return
 		if(!has_species(src, "Human"))
-			to_chat(usr, "<span class='warning'>Triage holocards only works on humans.</span>")
+			to_chat(usr, SPAN_WARNING("Triage holocards only works on humans."))
 			return
 		var/newcolor = input("Choose a triage holo card to add to the patient:", "Triage holo card", null, null) in list("black", "red", "orange", "none")
 		if(!newcolor) return
 		if(get_dist(usr, src) > 7)
-			to_chat(usr, "<span class='warning'>[src] is too far away.</span>")
+			to_chat(usr, SPAN_WARNING("[src] is too far away."))
 			return
 		if(newcolor == "none")
 			if(!holo_card_color) return
@@ -764,13 +764,13 @@
 	if (href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
 			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-				to_chat(usr, "<span class='warning'>You're not trained to use this.</span>")
+				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 				return
 			if(!has_species(src, "Human"))
-				to_chat(usr, "<span class='warning'>This only works on humans.</span>")
+				to_chat(usr, SPAN_WARNING("This only works on humans."))
 				return
 			if(get_dist(usr, src) > 7)
-				to_chat(usr, "<span class='warning'>[src] is too far away.</span>")
+				to_chat(usr, SPAN_WARNING("[src] is too far away."))
 				return
 
 			for(var/datum/data/record/R in data_core.medical)
@@ -850,7 +850,7 @@
 
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
-		visible_message("<span class='danger'>[src] begins playing his ribcage like a xylophone. It's quite spooky.</span>",SPAN_NOTICE("You begin to play a spooky refrain on your ribcage."),"<span class='danger'>You hear a spooky xylophone melody.</span>")
+		visible_message(SPAN_DANGER("[src] begins playing his ribcage like a xylophone. It's quite spooky."),SPAN_NOTICE("You begin to play a spooky refrain on your ribcage."),SPAN_DANGER("You hear a spooky xylophone melody."))
 		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 		playsound(loc, song, 25, 1)
 		xylophone = 1
@@ -961,7 +961,7 @@
 
 	visible_message(SPAN_NOTICE("\The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!"), \
 		SPAN_NOTICE("You change your appearance!"), \
-		"<span class='danger'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
+		SPAN_DANGER("Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!"))
 
 /mob/living/carbon/human/proc/remotesay()
 	set name = "Project mind"
@@ -1115,11 +1115,11 @@
 				var/msg = null
 				switch(rand(1,3))
 					if(1)
-						msg ="<span class='warning'>A spike of pain jolts your [organ.display_name] as you bump [O] inside.</span>"
+						msg =SPAN_WARNING("A spike of pain jolts your [organ.display_name] as you bump [O] inside.")
 					if(2)
-						msg ="<span class='warning'>Your movement jostles [O] in your [organ.display_name] painfully.</span>"
+						msg =SPAN_WARNING("Your movement jostles [O] in your [organ.display_name] painfully.")
 					if(3)
-						msg ="<span class='warning'>[O] in your [organ.display_name] twists painfully as you move.</span>"
+						msg =SPAN_WARNING("[O] in your [organ.display_name] twists painfully as you move.")
 				src << msg
 
 				organ.take_damage(rand(1,2), 0, 0)
@@ -1148,7 +1148,7 @@
 	if(src.pulse)
 		to_chat(usr, SPAN_NOTICE(" [self ? "You have a" : "[src] has a"] pulse! Counting..."))
 	else
-		to_chat(usr, "<span class='danger'>[src] has no pulse!</span>")	//it is REALLY UNLIKELY that a dead person would check his own pulse
+		to_chat(usr, SPAN_DANGER("[src] has no pulse!"))	//it is REALLY UNLIKELY that a dead person would check his own pulse
 		return
 
 	to_chat(usr, "Don't move until counting is finished.")
@@ -1235,26 +1235,26 @@
 		verbs -= /mob/living/carbon/human/proc/bloody_doodle
 
 	if (src.gloves)
-		to_chat(src, "<span class='warning'>Your [src.gloves] are getting in the way.</span>")
+		to_chat(src, SPAN_WARNING("Your [src.gloves] are getting in the way."))
 		return
 
 	var/turf/T = src.loc
 	if (!istype(T)) //to prevent doodling out of mechs and lockers
-		to_chat(src, "<span class='warning'>You cannot reach the floor.</span>")
+		to_chat(src, SPAN_WARNING("You cannot reach the floor."))
 		return
 
 	var/direction = input(src,"Which way?","Tile selection") as anything in list("Here","North","South","East","West")
 	if (direction != "Here")
 		T = get_step(T,text2dir(direction))
 	if (!istype(T))
-		to_chat(src, "<span class='warning'>You cannot doodle there.</span>")
+		to_chat(src, SPAN_WARNING("You cannot doodle there."))
 		return
 
 	var/num_doodles = 0
 	for (var/obj/effect/decal/cleanable/blood/writing/W in T)
 		num_doodles++
 	if (num_doodles > 4)
-		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
+		to_chat(src, SPAN_WARNING("There is no space to write on!"))
 		return
 
 	var/max_length = bloody_hands * 30 //tweeter style
@@ -1267,7 +1267,7 @@
 
 		if (length(message) > max_length)
 			message += "-"
-			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
+			to_chat(src, SPAN_WARNING("You ran out of blood to write with!"))
 
 		var/obj/effect/decal/cleanable/blood/writing/W = new(T)
 		W.basecolor = (blood_color) ? blood_color : "#A10808"
@@ -1317,7 +1317,7 @@
 
 /mob/living/carbon/human/proc/vomit_on_floor()
 	var/turf/T = get_turf(src)
-	visible_message("<span class = 'danger'>[src] vomits on the floor!</span>", null, null, 5)
+	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
 	nutrition -= 20
 	adjustToxLoss(-3)
 	playsound(T, 'sound/effects/splat.ogg', 25, 1, 7)

@@ -82,10 +82,10 @@
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
-		user.visible_message("<span class='danger'>[user] tears open [src]!</span>")
+		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
 		deflate(1)
 	else	//for nicer text~
-		user.visible_message("<span class='danger'>[user] tears at [src]!</span>")
+		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
 	if(!isanimal(user)) return
@@ -98,7 +98,7 @@
 	if(!istype(W)) return
 
 	if (can_puncture(W))
-		visible_message("<span class='danger'><b>[user] pierces [src] with [W]!</b></span>")
+		visible_message(SPAN_DANGER("<b>[user] pierces [src] with [W]!</b>"))
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)

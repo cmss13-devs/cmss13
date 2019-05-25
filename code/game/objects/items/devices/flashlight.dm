@@ -70,7 +70,7 @@
 		if(!raillight_compatible) //No fancy messages, just no
 			return
 		if(on)
-			to_chat(user, "<span class='warning'>Turn off [src] first.</span>")
+			to_chat(user, SPAN_WARNING("Turn off [src] first."))
 			return
 		if(istype(loc, /obj/item/storage))
 			var/obj/item/storage/S = loc
@@ -354,7 +354,7 @@
 		signal.target_id = target_id
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
-		visible_message("<span class='danger'>[src]'s flame reaches full strength. It's fully active now.</span>", null, 5)
+		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 
 /obj/item/attack_hand(mob/user)
 	if (!user) return

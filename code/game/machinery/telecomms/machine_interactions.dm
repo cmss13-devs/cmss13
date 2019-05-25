@@ -24,7 +24,7 @@
 
 	else
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-			to_chat(user, "<span class='warning'>You stare at [src] cluelessly...</span>")
+			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return 0
 
 	// REPAIRING: Use Nanopaste to repair 10-20 integrity points.
@@ -74,7 +74,7 @@
 					construct_op--
 					stat &= ~BROKEN // the machine's not borked anymore!
 				else
-					to_chat(user, "<span class='warning'>You need five coils of wire for this.</span>")
+					to_chat(user, SPAN_WARNING("You need five coils of wire for this."))
 			if(istype(P, /obj/item/tool/crowbar))
 				to_chat(user, "You begin prying out the circuit board other components...")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -117,7 +117,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!ishighersilicon(user))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_MT)
-			to_chat(user, "<span class='warning'>You stare at [src] cluelessly...</span>")
+			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return
 		// istype returns false if the value is null
 		if(!istype(user.get_active_hand(), /obj/item/device/multitool))

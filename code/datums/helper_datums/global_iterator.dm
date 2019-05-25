@@ -139,7 +139,6 @@ Data storage vars:
 			arg_list = arguments
 			return 1
 		else
-//			to_world("<span class='danger'>Invalid arguments supplied for [src.type], ref = \ref[src]</span>")
 			return 0
 
 	proc/toggle_null_checks()

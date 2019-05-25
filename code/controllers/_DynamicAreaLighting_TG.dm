@@ -317,7 +317,6 @@ datum/light_source
 	if (l_color != A.l_color)
 		A.l_color = l_color
 		//color_light = min(max(round(color_lighting_lumcount, 1), 0), lighting_controller.lighting_states)
-		//to_world("[color_light] [color_lighting_lumcount]")
 
 	A.SetLightLevel(level, color_light)
 	Area.related += A

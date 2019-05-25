@@ -96,10 +96,10 @@
 
 /obj/machinery/processor/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(src.processing)
-		to_chat(user, "<span class='danger'>The processor is in the process of processing.</span>")
+		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
 	if(src.contents.len > 0) //TODO: several items at once? several different items?
-		to_chat(user, "<span class='danger'>Something is already in the processing chamber.</span>")
+		to_chat(user, SPAN_DANGER("Something is already in the processing chamber."))
 		return 1
 	var/obj/what = O
 	if (istype(O, /obj/item/grab))
@@ -108,7 +108,7 @@
 
 	var/datum/food_processor_process/P = select_recipe(what)
 	if (!P)
-		to_chat(user, "<span class='danger'>That probably won't blend.</span>")
+		to_chat(user, SPAN_DANGER("That probably won't blend."))
 		return 1
 	user.visible_message("[user] put [what] into [src].", \
 		"You put the [what] into [src].")
@@ -119,10 +119,10 @@
 	if (src.stat != 0) //NOPOWER etc
 		return
 	if(src.processing)
-		to_chat(user, "<span class='danger'>The processor is in the process of processing.</span>")
+		to_chat(user, SPAN_DANGER("The processor is in the process of processing."))
 		return 1
 	if(src.contents.len == 0)
-		to_chat(user, "<span class='danger'>The processor is empty.</span>")
+		to_chat(user, SPAN_DANGER("The processor is empty."))
 		return 1
 	for(var/O in src.contents)
 		var/datum/food_processor_process/P = select_recipe(O)

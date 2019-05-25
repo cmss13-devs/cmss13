@@ -59,7 +59,7 @@
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Blood filtering complete.")
 				else if(prob(10))
 					visible_message("\icon[src] \The <b>[src]</b> whirrs and gurgles as the dialysis module operates.")
-					to_chat(occupant, "<span class='info'>You feel slightly better.</span>")
+					to_chat(occupant, SPAN_INFO("You feel slightly better."))
 			if(blood_transfer)
 				if(occupant.blood_volume < BLOOD_VOLUME_NORMAL)
 					if(blood_pack.reagents.get_reagent_amount("blood") < 4)
@@ -68,7 +68,7 @@
 					occupant.inject_blood(blood_pack, 8) // double iv stand rate
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it tranfuses blood.")
-						to_chat(occupant, "<span class='info'>You feel slightly less faint.</span>")
+						to_chat(occupant, SPAN_INFO("You feel slightly less faint."))
 				else
 					blood_transfer = 0
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Blood transfer complete.")
@@ -77,7 +77,7 @@
 					occupant.heal_limb_damage(3,0)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it stitches flesh together.")
-						to_chat(occupant, "<span class='info'>You feel your wounds being stitched and sealed shut.</span>")
+						to_chat(occupant, SPAN_INFO("You feel your wounds being stitched and sealed shut."))
 				else
 					heal_brute = 0
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
@@ -86,7 +86,7 @@
 					occupant.heal_limb_damage(0,3)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it grafts synthetic skin.")
-						to_chat(occupant, "<span class='info'>You feel your burned flesh being sliced away and replaced.</span>")
+						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))
 				else
 					heal_burn = 0
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Skin grafts complete.")
@@ -95,7 +95,7 @@
 					occupant.adjustToxLoss(-3)
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it kelates the occupant.")
-						to_chat(occupant, "<span class='info'>You feel slighly less ill.</span>")
+						to_chat(occupant, SPAN_INFO("You feel slighly less ill."))
 				else
 					heal_toxin = 0
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Chelation complete.")
@@ -253,7 +253,7 @@
 						var/datum/reagent/R = chemical_reagents_list["spaceacillin"]
 						var/amount = R.overdose - H.reagents.get_reagent_amount("spaceacillin")
 						var/inject_per_second = 3
-						to_chat(occupant, "<span class='info'>You feel a soft prick from a needle.</span>")
+						to_chat(occupant, SPAN_INFO("You feel a soft prick from a needle."))
 						while(amount > 0)
 							if(!surgery) break
 							if(amount < inject_per_second)
@@ -454,7 +454,7 @@
 						var/datum/reagent/R = chemical_reagents_list["spaceacillin"]
 						var/amount = (R.overdose/2) - H.reagents.get_reagent_amount("spaceacillin")
 						var/inject_per_second = 3
-						to_chat(occupant, "<span class='info'>You feel a soft prick from a needle.</span>")
+						to_chat(occupant, SPAN_INFO("You feel a soft prick from a needle."))
 						while(amount > 0)
 							if(!surgery) break
 							if(amount < inject_per_second)
@@ -570,12 +570,12 @@
 			return
 		if(usr == occupant)
 			if(surgery)
-				to_chat(usr, "<span class='warning'>There's no way you're getting out while this thing is operating on you!</span>")
+				to_chat(usr, SPAN_WARNING("There's no way you're getting out while this thing is operating on you!"))
 			else
 				visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
 			return
 		if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
-			to_chat(usr, "<span class='warning'>You don't have the training to use this.</span>")
+			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
 			return
 		if(surgery)
 			visible_message("\icon[src] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
@@ -603,7 +603,7 @@
 		return
 
 	if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
-		to_chat(usr, "<span class='warning'>You're going to need someone trained in the use of \the [src] to help you get into it.</span>")
+		to_chat(usr, SPAN_WARNING("You're going to need someone trained in the use of \the [src] to help you get into it."))
 		return
 
 	usr.visible_message(SPAN_NOTICE("[usr] starts climbing into \the [src]."),
@@ -670,7 +670,7 @@
 			return
 
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !event)
-			to_chat(user, "<span class='warning'>You have no idea how to put someone into \the [src]!</span>")
+			to_chat(user, SPAN_WARNING("You have no idea how to put someone into \the [src]!"))
 			return
 
 		visible_message("[user] starts putting [M] into [src].", 3)
@@ -740,7 +740,7 @@
 		to_chat(user, "This console seems to be powered down.")
 	else
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.surgery < SKILL_SURGERY_TRAINED && !connected.event)
-			to_chat(user, "<span class='warning'>You have no idea how to use this.</span>")
+			to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 			return
 		var/mob/living/occupant = connected.occupant
 		dat += "<B>Overall Status:</B><BR>"
@@ -774,9 +774,7 @@
 				N = create_medical_record(connected.occupant)
 
 			if(!isnull(N.fields["autodoc_manual"]))
-				//to_world("AUTODOC DEBUG: non null autodoc data")
 				for(var/datum/autodoc_surgery/A in N.fields["autodoc_manual"])
-					//to_world("AUTODOC DEBUG: found a surgery")
 					switch(A.type_of_surgery)
 						if(EXTERNAL_SURGERY)
 							switch(A.surgery_procedure)

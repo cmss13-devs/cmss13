@@ -524,6 +524,4 @@
 		R.product_name = initial(temp_path.name)
 
 		i++;
-
-//		to_world("Added: [R.product_name]] - [R.amount] - [R.product_path]")
 	return

@@ -22,7 +22,7 @@
 		return	//it shouldn't be null, okay?
 
 	if(!parts)
-		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
+		to_chat(user, SPAN_WARNING("This kit has no parts for this modification left."))
 		user.temp_drop_inv_item(src)
 		qdel(src)
 		return
@@ -38,12 +38,12 @@
 		return
 
 	if(!isturf(O.loc))
-		to_chat(user, "<span class='warning'>[O] must be safely placed on the ground for modification.</span>")
+		to_chat(user, SPAN_WARNING("[O] must be safely placed on the ground for modification."))
 		return
 
 	playsound(user.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
-	user.visible_message("<span class='danger'>[user] opens \the [src] and modifies \the [O].</span>","<span class='danger'>You open \the [src] and modify \the [O].</span>")
+	user.visible_message(SPAN_DANGER("[user] opens \the [src] and modifies \the [O]."),SPAN_DANGER("You open \the [src] and modify \the [O]."))
 
 	if (istype(I, /obj/item/clothing/head/helmet))
 		parts &= ~MODKIT_HELMET

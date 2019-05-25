@@ -35,8 +35,8 @@
 	affected.surgery_open_stage = 2.5
 
 /datum/surgery_step/open_encased/saw/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" , \
-	"<span class='warning'>Your hand slips, cracking [target]'s [affected.encased] with \the [tool]!</span>" )
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, cracking [target]'s [affected.encased] with \the [tool]!") , \
+	SPAN_WARNING("Your hand slips, cracking [target]'s [affected.encased] with \the [tool]!") )
 
 	affected.createwound(CUT, 20)
 	affected.fracture()
@@ -69,8 +69,8 @@
 		affected.fracture()
 
 /datum/surgery_step/open_encased/retract/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, cracking [target]'s [affected.encased]!</span>", \
-	"<span class='warning'>Your hand slips, cracking [target]'s  [affected.encased]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, cracking [target]'s [affected.encased]!"), \
+	SPAN_WARNING("Your hand slips, cracking [target]'s  [affected.encased]!"))
 
 	affected.createwound(BRUISE, 20)
 	affected.fracture()
@@ -99,8 +99,8 @@
 	affected.surgery_open_stage = 2.5
 
 /datum/surgery_step/open_encased/close/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, bending [target]'s [affected.encased] the wrong way!</span>", \
-	"<span class='warning'>Your hand slips, bending [target]'s [affected.encased] the wrong way!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, bending [target]'s [affected.encased] the wrong way!"), \
+	SPAN_WARNING("Your hand slips, bending [target]'s [affected.encased] the wrong way!"))
 
 	affected.createwound(BRUISE, 20)
 	affected.fracture()

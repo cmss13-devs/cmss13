@@ -164,11 +164,11 @@
 /obj/machinery/atmospherics/unary/cryo_cell/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/reagent_container/glass))
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into the machine.</span>")
+			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return
 
 		if(istype(W, /obj/item/reagent_container/glass/bucket))
-			to_chat(user, "<span class='warning'>That's too big to fit!</span>")
+			to_chat(user, SPAN_WARNING("That's too big to fit!"))
 			return
 
 		beaker =  W
@@ -258,19 +258,19 @@
 	
 /obj/machinery/atmospherics/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if (stat & (NOPOWER|BROKEN))
-		to_chat(usr, "<span class='danger'>The cryo cell is not functioning.</span>")
+		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
 		return
 	if (!istype(M))
-		to_chat(usr, "<span class='danger'><B>The cryo cell cannot handle such a lifeform!</B></span>")
+		to_chat(usr, SPAN_DANGER("<B>The cryo cell cannot handle such a lifeform!</B>"))
 		return
 	if (occupant)
-		to_chat(usr, "<span class='danger'><B>The cryo cell is already occupied!</B></span>")
+		to_chat(usr, SPAN_DANGER("<B>The cryo cell is already occupied!</B>"))
 		return
 	if (M.abiotic())
-		to_chat(usr, "<span class='danger'>Subject may not have abiotic items on.</span>")
+		to_chat(usr, SPAN_DANGER("Subject may not have abiotic items on."))
 		return
 	if(!node)
-		to_chat(usr, "<span class='danger'>The cell is not correctly connected to its pipe network!</span>")
+		to_chat(usr, SPAN_DANGER("The cell is not correctly connected to its pipe network!"))
 		return
 	M.forceMove(src)
 	if(M.health > -100 && (M.health < 0 || M.sleeping))

@@ -21,10 +21,10 @@
 				playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 				return
 			if(prob(30) || H.species.can_shred(H))
-				user.visible_message("<span class='danger'>[user] smashes [src]!</span>")
+				user.visible_message(SPAN_DANGER("[user] smashes [src]!"))
 				shatter()
 			else
-				user.visible_message("<span class='danger'>[user] hits [src] and bounces off!</span>")
+				user.visible_message(SPAN_DANGER("[user] hits [src] and bounces off!"))
 			return
 
 		var/userloc = H.loc
@@ -92,10 +92,10 @@
 		return
 
 	if(prob(I.force * 2))
-		visible_message("<span class='warning'>[user] smashes [src] with [I]!</span>")
+		visible_message(SPAN_WARNING("[user] smashes [src] with [I]!"))
 		shatter()
 	else
-		visible_message("<span class='warning'>[user] hits [src] with [I]!</span>")
+		visible_message(SPAN_WARNING("[user] hits [src] with [I]!"))
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
 /obj/structure/mirror/attack_animal(mob/user as mob)
@@ -105,5 +105,5 @@
 	if(shattered)
 		playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 25, 1)
 		return
-	user.visible_message("<span class='danger'>[user] smashes [src]!</span>")
+	user.visible_message(SPAN_DANGER("[user] smashes [src]!"))
 	shatter()

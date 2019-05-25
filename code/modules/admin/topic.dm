@@ -171,14 +171,14 @@
 		switch(href_list["evac_authority"])
 			if("init_evac")
 				if(!EvacuationAuthority.initiate_evacuation())
-					to_chat(usr, "<span class='warning'>You are unable to initiate an evacuation right now!</span>")
+					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation right now!"))
 				else
 					log_admin("[key_name(usr)] called an evacuation.")
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] called an evacuation."), 1)
 
 			if("cancel_evac")
 				if(!EvacuationAuthority.cancel_evacuation())
-					to_chat(usr, "<span class='warning'>You are unable to cancel an evacuation right now!</span>")
+					to_chat(usr, SPAN_WARNING("You are unable to cancel an evacuation right now!"))
 				else
 					log_admin("[key_name(usr)] canceled an evacuation.")
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] canceled an evacuation."), 1)
@@ -190,21 +190,21 @@
 
 			if("force_evac")
 				if(!EvacuationAuthority.begin_launch())
-					to_chat(usr, "<span class='warning'>You are unable to launch the pods directly right now!</span>")
+					to_chat(usr, SPAN_WARNING("You are unable to launch the pods directly right now!"))
 				else
 					log_admin("[key_name(usr)] force-launched the escape pods.")
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] force-launched the escape pods."), 1)
 
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
-					to_chat(usr, "<span class='warning'>You are unable to authorize the self-destruct right now!</span>")
+					to_chat(usr, SPAN_WARNING("You are unable to authorize the self-destruct right now!"))
 				else
 					log_admin("[key_name(usr)] force-enabled the self-destruct system.")
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] force-enabled the self-destruct system."), 1)
 
 			if("cancel_dest")
 				if(!EvacuationAuthority.cancel_self_destruct(1))
-					to_chat(usr, "<span class='warning'>You are unable to cancel the self-destruct right now!</span>")
+					to_chat(usr, SPAN_WARNING("You are unable to cancel the self-destruct right now!"))
 				else
 					log_admin("[key_name(usr)] canceled the self-destruct system.")
 					message_admins(SPAN_NOTICE("[key_name_admin(usr)] canceled the self-destruct system."), 1)
@@ -216,7 +216,7 @@
 					return
 
 				if(!EvacuationAuthority.initiate_self_destruct(1))
-					to_chat(usr, "<span class='warning'>You are unable to trigger the self-destruct right now!</span>")
+					to_chat(usr, SPAN_WARNING("You are unable to trigger the self-destruct right now!"))
 					return
 				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
 
@@ -677,7 +677,7 @@
 			// 	if("Yes")
 			// 		if(!check_rights(R_MOD,0) && !check_rights(R_BAN))  return
 			// 		if(config.ban_legacy_system)
-			// 			to_chat(usr, "<span class='danger'>Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban.</span>")
+			// 			to_chat(usr, SPAN_DANGER("Your server is using the legacy banning system, which does not support temporary job bans. Consider upgrading. Aborting ban."))
 			// 			return
 			// 		var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num|null
 			// 		if(!mins)
@@ -700,9 +700,9 @@
 			// 				msg += ", [job]"
 			// 		notes_add(M.ckey, "Banned  from [msg] - [reason]")
 			// 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes"), 1)
-			// 		to_chat(M, "<span class='warning'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></span>")
-			// 		to_chat(M, "<span class='warning'><B>The reason is: [reason]</B></span>")
-			// 		to_chat(M, "<span class='warning'>This jobban will be lifted in [mins] minutes.</span>")
+			// 		to_chat(M, SPAN_WARNING("<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>"))
+			// 		to_chat(M, SPAN_WARNING("<B>The reason is: [reason]</B>"))
+			// 		to_chat(M, SPAN_WARNING("This jobban will be lifted in [mins] minutes."))
 			// 		jobban_savebanfile()
 			// 		href_list["jobban2"] = 1 // lets it fall through and refresh
 			// 		return 1
@@ -722,9 +722,9 @@
 					else		msg += ", [job]"
 				notes_add(M.ckey, "Banned  from [msg] - [reason]")
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]"), 1)
-				to_chat(M, "<span class='warning'><BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG></span>")
-				to_chat(M, "<span class='warning'><B>The reason is: [reason]</B></span>")
-				to_chat(M, "<span class='warning'>Jobban can be lifted only upon request.</span>")
+				to_chat(M, SPAN_WARNING("<BIG><B>You have been jobbanned by [usr.client.ckey] from: [msg].</B></BIG>"))
+				to_chat(M, SPAN_WARNING("<B>The reason is: [reason]</B>"))
+				to_chat(M, SPAN_WARNING("Jobban can be lifted only upon request."))
 				jobban_savebanfile()
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 				return 1
@@ -756,7 +756,7 @@
 						continue
 			if(msg)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]"), 1)
-				to_chat(M, "<span class='warning'><BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG></span>")
+				to_chat(M, SPAN_WARNING("<BIG><B>You have been un-jobbanned by [usr.client.ckey] from [msg].</B></BIG>"))
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 			jobban_savebanfile()
 			return 1
@@ -769,9 +769,9 @@
 				return
 			var/reason = input("Please enter reason")
 			if(!reason)
-				to_chat(M, "<span class='warning'>You have been kicked from the server</span>")
+				to_chat(M, SPAN_WARNING("You have been kicked from the server"))
 			else
-				to_chat(M, "<span class='warning'>You have been kicked from the server: [reason]</span>")
+				to_chat(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
 			log_admin("[key_name(usr)] booted [key_name(M)].")
 			message_admins(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
 			//M.client = null
@@ -820,7 +820,7 @@
 		if(M.client && M.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
-			to_chat(usr, "<span class='danger'><B>Warning: Mob ckey for [M.name] not found.</b></span>")
+			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 			return
 		var/mob_key = M.ckey
 		var/mob_id = M.computer_id
@@ -835,15 +835,15 @@
 			return
 		if (AddBan(mob_key, mob_id, reason, usr.ckey, 1, mins, mob_ip))
 			ban_unban_log_save("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
-			to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG></span>")
-			to_chat(M, "<span class='warning'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
+			to_chat(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [sanitize(reason)].</B></BIG>"))
+			to_chat(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
 			feedback_inc("ban_tmp",1)
 			DB_ban_record(BANTYPE_TEMP, M, mins, reason)
 			feedback_inc("ban_tmp_mins",mins)
 			if(config.banappeals)
-				to_chat(M, "<span class='warning'>To try to resolve this matter head to [config.banappeals]</span>")
+				to_chat(M, SPAN_WARNING("To try to resolve this matter head to [config.banappeals]"))
 			else
-				to_chat(M, "<span class='warning'>No ban appeals URL has been set.</span>")
+				to_chat(M, SPAN_WARNING("No ban appeals URL has been set."))
 			log_admin("[usr.client.ckey] has banned [mob_key]|Duration: [mins] minutes|Reason: [sanitize(reason)]")
 			message_admins("\blue[usr.client.ckey] has banned [mob_key].\nReason: [sanitize(reason)]\nThis will be removed in [mins] minutes.")
 			notes_add(mob_key, "Banned by [usr.client.ckey]|Duration: [mins] minutes|Reason: [sanitize(reason)]", usr)
@@ -858,7 +858,7 @@
 		if(M.client && M.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
-			to_chat(usr, "<span class='danger'><B>Warning: Mob ckey for [M.name] not found.</b></span>")
+			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
 			return
 
 		var/mins = 0
@@ -882,8 +882,8 @@
 				return
 		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
 		ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]|Duration: [mins] minutes|Reason: [reason]")
-		to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
-		to_chat(M, "<span class='warning'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
+		to_chat(M, SPAN_WARNING("<BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG>"))
+		to_chat(M, SPAN_WARNING("This is a temporary ban, it will be removed in [mins] minutes."))
 		to_chat(M, SPAN_NOTICE(" This ban was made using a one-click ban system. If you think an error has been made, please visit our forums' ban appeal section."))
 		to_chat(M, SPAN_NOTICE(" If you make sure to mention that this was a one-click ban, MadSnailDisease will personally double-check this code for you."))
 		if(config.banappeals)
@@ -1108,7 +1108,7 @@
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(prisoner), WEAR_BODY)
 			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), WEAR_FEET)
 
-		to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
+		to_chat(M, SPAN_WARNING("You have been sent to the prison station!"))
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station."), 1)
 
@@ -1123,7 +1123,7 @@
 			return
 
 		if(!M.client)
-			to_chat(usr, "<span class='warning'>[M] doesn't seem to have an active client.</span>")
+			to_chat(usr, SPAN_WARNING("[M] doesn't seem to have an active client."))
 			return
 
 		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
@@ -1248,7 +1248,7 @@
 
 		if(config.allow_admin_rev)
 			L.revive()
-			message_admins("<span class='danger'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!</span>", 1)
+			message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!"), 1)
 			log_admin("[key_name(usr)] healed / revived [key_name(L)]")
 		else
 			to_chat(usr, "Admin Rejuvinates have been disabled")
@@ -1261,7 +1261,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_admins("<span class='danger'>Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!</span>", 1)
+		message_admins(SPAN_DANGER("Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!"), 1)
 		log_admin("[key_name(usr)] AIized [key_name(H)]")
 		H.AIize()
 
@@ -1574,7 +1574,7 @@
 		for(var/client/X in admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
 				to_chat(X, "<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>")
-		to_chat(H, "<span class='danger'>You hear something crackle in your headset before a voice speaks, please stand by for a message from USCM:\" \blue <b>\"[input]\"</b></span>")
+		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message from USCM:\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])

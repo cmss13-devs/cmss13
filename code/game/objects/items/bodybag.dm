@@ -204,7 +204,7 @@
 	if(!istype(I, /obj/item/device/healthanalyzer))
 		return
 	if(!stasis_mob)
-		to_chat(user, "<span class='warning'>The stasis bag is empty!</span>")
+		to_chat(user, SPAN_WARNING("The stasis bag is empty!"))
 		return
 	var/obj/item/device/healthanalyzer/J = I
 	J.attack(stasis_mob, user) // yes this is awful -spookydonut
@@ -294,10 +294,10 @@
 	if (href_list["scanreport"])
 		if(hasHUD(usr,"medical"))
 			if(usr.mind && usr.mind.cm_skills && usr.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-				to_chat(usr, "<span class='warning'>You're not trained to use this.</span>")
+				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 				return
 			if(get_dist(usr, src) > 7)
-				to_chat(usr, "<span class='warning'>[src] is too far away.</span>")
+				to_chat(usr, SPAN_WARNING("[src] is too far away."))
 				return
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob

@@ -54,20 +54,20 @@
 
 	loc = copytext(sanitize(loc), 1, MAX_MESSAGE_LEN)
 	if(!loc)
-		to_chat(src, "<span class='danger'>Must supply a location name</span>")
+		to_chat(src, SPAN_DANGER("Must supply a location name"))
 		return
 
 	if(stored_locations.len >= max_locations)
-		to_chat(src, "<span class='danger'>Cannot store additional locations. Remove one first</span>")
+		to_chat(src, SPAN_DANGER("Cannot store additional locations. Remove one first"))
 		return
 
 	if(loc in stored_locations)
-		to_chat(src, "<span class='danger'>There is already a stored location by this name</span>")
+		to_chat(src, SPAN_DANGER("There is already a stored location by this name"))
 		return
 
 	var/L = src.eyeobj.getLoc()
 	if (InvalidTurf(get_turf(L)))
-		to_chat(src, "<span class='danger'>Unable to store this location</span>")
+		to_chat(src, SPAN_DANGER("Unable to store this location"))
 		return
 
 	stored_locations[loc] = L
@@ -82,7 +82,7 @@
 	set desc = "Returns to the selected camera location"
 
 	if (!(loc in stored_locations))
-		to_chat(src, "<span class='danger'>Location [loc] not found</span>")
+		to_chat(src, SPAN_DANGER("Location [loc] not found"))
 		return
 
 	var/L = stored_locations[loc]
@@ -94,7 +94,7 @@
 	set desc = "Deletes the selected camera location"
 
 	if (!(loc in stored_locations))
-		to_chat(src, "<span class='danger'>Location [loc] not found</span>")
+		to_chat(src, SPAN_DANGER("Location [loc] not found"))
 		return
 
 	stored_locations.Remove(loc)

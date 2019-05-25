@@ -36,8 +36,8 @@
 	target.updatehealth()
 
 /datum/surgery_step/generic/cut_limb/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/limb/affected)
-	user.visible_message("<span class='warning'>[user]'s hand slips, sawing through the bone in [target]'s [affected.display_name] with \the [tool]!</span>", \
-	"<span class='warning'>Your hand slips, sawing through the bone in [target]'s [affected.display_name] with \the [tool]!</span>")
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, sawing through the bone in [target]'s [affected.display_name] with \the [tool]!"), \
+	SPAN_WARNING("Your hand slips, sawing through the bone in [target]'s [affected.display_name] with \the [tool]!"))
 	affected.createwound(CUT, 30)
 	affected.fracture()
 	affected.update_wounds()

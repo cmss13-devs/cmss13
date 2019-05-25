@@ -13,16 +13,16 @@ var/can_call_ert
 	set desc = "Send an emergency response team to the station"
 
 	if(!admin_holder)
-		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
+		to_chat(usr, SPAN_DANGER("Only administrators may use this command."))
 		return
 	if(!ticker)
-		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
+		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 	if(ticker.current_state == GAME_STATE_PREGAME)
-		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
+		to_chat(usr, SPAN_DANGER("The round hasn't started yet!"))
 		return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='danger'>Central Command has already dispatched an emergency response team!</span>")
+		to_chat(usr, SPAN_DANGER("Central Command has already dispatched an emergency response team!"))
 		return
 	if(alert("Do you want to dispatch an Emergency Response Team?",,"Yes","No") != "Yes")
 		return
@@ -31,7 +31,7 @@ var/can_call_ert
 			if("No")
 				return
 	if(send_emergency_team)
-		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
+		to_chat(usr, SPAN_DANGER("Looks like somebody beat you to it!"))
 		return
 
 	message_admins("[key_name_admin(usr)] is dispatching an Emergency Response Team.", 1)
@@ -147,7 +147,7 @@ proc/trigger_armed_response_team(var/force = 0)
 
 /client/proc/create_response_team(obj/spawn_location, leader_selected = 0, commando_name)
 
-	//to_chat(usr, "<span class='danger'>ERT has been temporarily disabled. Talk to a coder.</span>")
+	//to_chat(usr, SPAN_DANGER("ERT has been temporarily disabled. Talk to a coder."))
 	//return
 
 	var/mob/living/carbon/human/M = new(null)

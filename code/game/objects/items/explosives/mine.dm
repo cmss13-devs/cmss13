@@ -45,15 +45,15 @@
 //Arming
 /obj/item/explosive/mine/attack_self(mob/living/user)
 	if(locate(/obj/item/explosive/mine) in get_turf(src))
-		to_chat(user, "<span class='warning'>There already is a mine at this position!</span>")
+		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
 		return
 
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
-		to_chat(user, "<span class='warning'>You can't plant a mine here.</span>")
+		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return
 
 	/*if(user.z == MAIN_SHIP_Z_LEVEL || user.z == LOW_ORBIT_Z_LEVEL) // Almayer or dropship transit level
-		to_chat(user, "<span class='warning'>You can't plant a mine on a spaceship!</span>")
+		to_chat(user, SPAN_WARNING("You can't plant a mine on a spaceship!"))
 		return*/
 
 	if(!armed)
@@ -109,9 +109,9 @@
 
 	if((istype(H) && H.get_target_lock(iff_signal)) || isrobot(H) || isobserver(H)) return
 
-	H.visible_message("<span class='danger'>\icon[src] The [name] clicks as [H] moves in front of it.</span>", \
-	"<span class='danger'>\icon[src] The [name] clicks as you move in front of it.</span>", \
-	"<span class='danger'>You hear a click.</span>")
+	H.visible_message(SPAN_DANGER("\icon[src] The [name] clicks as [H] moves in front of it."), \
+	SPAN_DANGER("\icon[src] The [name] clicks as you move in front of it."), \
+	SPAN_DANGER("You hear a click."))
 
 	triggered = 1
 	playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)

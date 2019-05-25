@@ -20,14 +20,14 @@
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(amount < 4)
-			to_chat(user, "<span class='danger'>You need at least four rods to do this.</span>")
+			to_chat(user, SPAN_DANGER("You need at least four rods to do this."))
 			return
 
 		if(WT.remove_fuel(0,user))
 			var/obj/item/stack/sheet/metal/new_item = new(usr.loc)
 			new_item.add_to_stacks(usr)
 			for (var/mob/M in viewers(src))
-				M.show_message("<span class='danger'>[src] is shaped into metal by [user.name] with the weldingtool.</span>", 3, "<span class='danger'>You hear welding.</span>", 2)
+				M.show_message(SPAN_DANGER("[src] is shaped into metal by [user.name] with the weldingtool."), 3, SPAN_DANGER("You hear welding."), 2)
 			var/obj/item/stack/rods/R = src
 			src = null
 			var/replace = (user.get_inactive_hand()==R)
@@ -93,7 +93,7 @@
 		var/obj/item/stack/sheet/metal/M = W
 
 		if(amount < 5) // Placeholder until we get an elaborate crafting system created
-			to_chat(user, "<span class='danger'>You need at least five plasteel rods to do this.</span>")
+			to_chat(user, SPAN_DANGER("You need at least five plasteel rods to do this."))
 			return
 
 		if(M.amount >= 10 && do_after(user, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_BUILD))

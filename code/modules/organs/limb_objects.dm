@@ -132,16 +132,16 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	if(istype(W,/obj/item/tool/surgery/scalpel))
 		switch(brain_op_stage)
 			if(0)
-				user.visible_message("<span class='warning'>[brainmob] is beginning to have \his head cut open with [W] by [user].</span>", \
-									"<span class='warning'>You cut [brainmob]'s head open with [W]!</span>")
-				to_chat(brainmob, "<span class='warning'>[user] begins to cut open your head with [W]!</span>")
+				user.visible_message(SPAN_WARNING("[brainmob] is beginning to have \his head cut open with [W] by [user]."), \
+									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
 				brain_op_stage = 1
 
 			if(2)
-				user.visible_message("<span class='warning'>[brainmob] is having \his connections to the brain delicately severed with [W] by [user].</span>", \
-									"<span class='warning'>You cut [brainmob]'s head open with [W]!</span>")
-				to_chat(brainmob, "<span class='warning'>[user] begins to cut open your head with [W]!</span>")
+				user.visible_message(SPAN_WARNING("[brainmob] is having \his connections to the brain delicately severed with [W] by [user]."), \
+									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
 
 				brain_op_stage = 3.0
 			else
@@ -149,14 +149,14 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
 		switch(brain_op_stage)
 			if(1)
-				user.visible_message("<span class='warning'>[brainmob] has \his head sawed open with [W] by [user].</span>", \
-							"<span class='warning'>You saw [brainmob]'s head open with [W]!</span>")
-				to_chat(brainmob, "<span class='warning'>[user] saw open your head with [W]!</span>")
+				user.visible_message(SPAN_WARNING("[brainmob] has \his head sawed open with [W] by [user]."), \
+							SPAN_WARNING("You saw [brainmob]'s head open with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user] saw open your head with [W]!"))
 				brain_op_stage = 2
 			if(3)
-				user.visible_message("<span class='warning'>[brainmob] has \his spine's connection to the brain severed with [W] by [user].</span>", \
-									"<span class='warning'>You sever [brainmob]'s brain's connection to the spine with [W]!</span>")
-				to_chat(brainmob, "<span class='warning'>[user] severs your brain's connection to the spine with [W]!</span>")
+				user.visible_message(SPAN_WARNING("[brainmob] has \his spine's connection to the brain severed with [W] by [user]."), \
+									SPAN_WARNING("You sever [brainmob]'s brain's connection to the spine with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user] severs your brain's connection to the spine with [W]!"))
 
 				user.attack_log += "\[[time_stamp()]\]<font color='red'> Debrained [brainmob.name] ([brainmob.ckey]) with [W.name] (INTENT: [uppertext(user.a_intent)])</font>"
 				brainmob.attack_log += "\[[time_stamp()]\]<font color='orange'> Debrained by [user.name] ([user.ckey]) with [W.name] (INTENT: [uppertext(user.a_intent)])</font>"

@@ -151,10 +151,10 @@
 		var/obj/item/device/mmi/M = W
 		if(check_completion())
 			if(!istype(loc,/turf))
-				to_chat(user, "<span class='danger'>You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise.</span>")
+				to_chat(user, SPAN_DANGER("You can't put \the [W] in, the frame has to be standing on the ground to be perfectly precise."))
 				return
 			if(!M.brainmob)
-				to_chat(user, "<span class='danger'>Sticking an empty [W] into the frame would sort of defeat the purpose.</span>")
+				to_chat(user, SPAN_DANGER("Sticking an empty [W] into the frame would sort of defeat the purpose."))
 				return
 			if(!M.brainmob.key)
 				var/ghost_can_reenter = 0
@@ -168,11 +168,11 @@
 					return
 
 			if(M.brainmob.stat == DEAD)
-				to_chat(user, "<span class='danger'>Sticking a dead [W] into the frame would sort of defeat the purpose.</span>")
+				to_chat(user, SPAN_DANGER("Sticking a dead [W] into the frame would sort of defeat the purpose."))
 				return
 
 			if(jobban_isbanned(M.brainmob, "Cyborg"))
-				to_chat(user, "<span class='danger'>This [W] does not seem to fit.</span>")
+				to_chat(user, SPAN_DANGER("This [W] does not seem to fit."))
 				return
 
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot(get_turf(loc), unfinished = 1)
@@ -246,7 +246,7 @@
 	..()
 	if(istype(W, /obj/item/device/flash))
 		if(istype(user,/mob/living/silicon/robot))
-			to_chat(user, "<span class='danger'>How do you propose to do that?</span>")
+			to_chat(user, SPAN_DANGER("How do you propose to do that?"))
 			return
 		else if(src.flash1 && src.flash2)
 			to_chat(user, SPAN_NOTICE(" You have already inserted the eyes!"))

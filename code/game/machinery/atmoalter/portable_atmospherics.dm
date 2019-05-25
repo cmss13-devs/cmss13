@@ -85,7 +85,7 @@
 				return
 
 	else if ((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
-		visible_message("<span class='danger'>[user] has used [W] on \icon[icon]</span>")
+		visible_message(SPAN_DANGER("[user] has used [W] on \icon[icon]"))
 		to_chat(user, SPAN_NOTICE(" Results of analysis of \icon[icon]"))
 		if (pressure>0)
 			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
@@ -119,7 +119,7 @@
 
 	if(istype(I, /obj/item/tool/screwdriver))
 		if(!cell)
-			to_chat(user, "<span class='danger'>There is no power cell installed.</span>")
+			to_chat(user, SPAN_DANGER("There is no power cell installed."))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and removes [cell]."), SPAN_NOTICE("You open the panel on [src] and remove [cell]."))

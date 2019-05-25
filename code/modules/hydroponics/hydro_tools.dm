@@ -43,7 +43,7 @@
 		grown_reagents = H.reagents
 
 	if(!grown_seed)
-		to_chat(user, "<span class='danger'>[src] can tell you nothing about [target].</span>")
+		to_chat(user, SPAN_DANGER("[src] can tell you nothing about [target]."))
 		return
 
 	var/dat = "<h3>Plant data for [target]</h3>"

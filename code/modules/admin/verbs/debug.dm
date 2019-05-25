@@ -233,8 +233,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/list/air_info = T.return_air()
 
 	var/t = SPAN_NOTICE("Coordinates: [T.x],[T.y],[T.z]\n")
-	t += "<span class='danger'>Temperature: [air_info[2]]\n</span>"
-	t += "<span class='danger'>Pressure: [air_info[3]]kPa\n</span>"
+	t += SPAN_DANGER("Temperature: [air_info[2]]\n")
+	t += SPAN_DANGER("Pressure: [air_info[3]]kPa\n")
 	t += SPAN_NOTICE("Gas Type: [air_info[1]]\n")
 
 	usr.show_message(t, 1)

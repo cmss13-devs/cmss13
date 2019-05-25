@@ -22,9 +22,9 @@
 
 /obj/effect/spider/attackby(var/obj/item/W, var/mob/user)
 	if(W.attack_verb.len)
-		visible_message("<span class='danger'><B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]</span>")
+		visible_message(SPAN_DANGER("<B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
 	else
-		visible_message("<span class='danger'><B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]</span>")
+		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
 
 	var/damage = W.force / 4.0
 
@@ -64,7 +64,7 @@
 		return 1
 	else if(istype(mover, /mob/living))
 		if(prob(50))
-			to_chat(mover, "<span class='warning'>You get stuck in [src] for a moment.</span>")
+			to_chat(mover, SPAN_WARNING("You get stuck in [src] for a moment."))
 			return 0
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)
@@ -206,7 +206,7 @@
 		icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Dispose()
-	visible_message("<span class='danger'>[src] splits open.</span>")
+	visible_message(SPAN_DANGER("[src] splits open."))
 	for(var/atom/movable/A in contents)
 		A.forceMove(loc)
 	. = ..()

@@ -73,7 +73,7 @@
 				qdel(src)
 
 			else
-				to_chat(user, "<span class='danger'>You must hold \the [P] steady to burn \the [src].</span>")
+				to_chat(user, SPAN_DANGER("You must hold \the [P] steady to burn \the [src]."))
 
 /obj/item/paper_bundle/examine(mob/user)
 	user << desc

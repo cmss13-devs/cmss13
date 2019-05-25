@@ -60,7 +60,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/goat/Retaliate()
 	..()
-	src.visible_message("<span class='danger'>[src] gets an evil-looking gleam in their eye.</span>")
+	src.visible_message(SPAN_DANGER("[src] gets an evil-looking gleam in their eye."))
 
 /mob/living/simple_animal/hostile/retaliate/goat/Move()
 	..()
@@ -77,9 +77,9 @@
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, "<span class='danger'>The [O] is full.</span>")
+			to_chat(user, SPAN_DANGER("The [O] is full."))
 		if(!transfered)
-			to_chat(user, "<span class='danger'>The udder is dry. Wait a bit longer...</span>")
+			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
 		..()
 //cow
@@ -117,9 +117,9 @@
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, "<span class='danger'>The [O] is full.</span>")
+			to_chat(user, SPAN_DANGER("The [O] is full."))
 		if(!transfered)
-			to_chat(user, "<span class='danger'>The udder is dry. Wait a bit longer...</span>")
+			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
 		..()
 
@@ -131,7 +131,8 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == DISARM_INTENT && icon_state != icon_dead)
-		M.visible_message("<span class='warning'>[M] tips over [src].</span>",SPAN_NOTICE("You tip over [src]."))
+		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
+			SPAN_NOTICE("You tip over [src]."))
 		KnockDown(30)
 		icon_state = icon_dead
 		spawn(rand(20,50))

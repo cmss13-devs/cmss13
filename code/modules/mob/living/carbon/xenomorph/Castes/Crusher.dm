@@ -86,11 +86,11 @@
 	if(!check_state()) return
 
 	if(world.time < has_screeched + CRUSHER_STOMP_COOLDOWN) //Sure, let's use this.
-		to_chat(src, "<span class='xenowarning'>You are not ready to stomp again.</span>")
+		to_chat(src, SPAN_XENOWARNING("You are not ready to stomp again."))
 		r_FAL
 
 	if(legcuffed)
-		to_chat(src, "<span class='xenodanger'>You can't rear up to stomp with that thing on your leg!</span>")
+		to_chat(src, SPAN_XENODANGER("You can't rear up to stomp with that thing on your leg!"))
 		return
 
 	if(!check_plasma(50)) return
@@ -100,8 +100,8 @@
 	round_statistics.crusher_stomps++
 
 	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
-	visible_message("<span class='xenodanger'>[src] smashes into the ground!</span>", \
-	"<span class='xenodanger'>You smash into the ground!</span>")
+	visible_message(SPAN_XENODANGER("[src] smashes into the ground!"), \
+	SPAN_XENODANGER("You smash into the ground!"))
 	create_stomp() //Adds the visual effect. Wom wom wom
 
 	var/i = 5
@@ -118,7 +118,7 @@
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
 				M.KnockDown(rand(2, 3))
-				to_chat(M, "<span class='highdanger'>You are stomped on by [src]!</span>")
+				to_chat(M, SPAN_HIGHDANGER("You are stomped on by [src]!"))
 			shake_camera(M, 2, 2)
 		i--
 
@@ -127,11 +127,11 @@
 	if(!check_state()) return
 
 	if(world.time < has_screeched + CRUSHER_EARTHQUAKE_COOLDOWN) //Sure, let's use this.
-		to_chat(src, "<span class='xenowarning'>You are not ready to cause an earthquake yet.</span>")
+		to_chat(src, SPAN_XENOWARNING("You are not ready to cause an earthquake yet."))
 		r_FAL
 
 	if(legcuffed)
-		to_chat(src, "<span class='xenodanger'>You can't rear up to stomp the ground with that thing on your leg!</span>")
+		to_chat(src, SPAN_XENODANGER("You can't rear up to stomp the ground with that thing on your leg!"))
 		return
 
 	if(!check_plasma(100)) return
@@ -141,8 +141,8 @@
 	round_statistics.crusher_stomps++
 
 	playsound(loc, 'sound/effects/bang.ogg', 25, 0)
-	visible_message("<span class='xenodanger'>[src] smashes into the ground, causing a violent earthquake!</span>", \
-	"<span class='xenodanger'>You smash into the ground, causing a violent earthquake!</span>")
+	visible_message(SPAN_XENODANGER("[src] smashes into the ground, causing a violent earthquake!"), \
+	SPAN_XENODANGER("You smash into the ground, causing a violent earthquake!"))
 	create_stomp() //Adds the visual effect. Wom wom wom
 
 	var/i = 5
@@ -159,16 +159,16 @@
 					attack_log += text("\[[time_stamp()]\] <font color='red'>xeno stomped [M.name] ([M.ckey])</font>")
 					log_attack("[src] ([ckey]) xeno stomped [M.name] ([M.ckey])")
 				M.KnockDown(rand(2, 3))
-				to_chat(M, "<span class='highdanger'>You are stomped on by [src]!</span>")
+				to_chat(M, SPAN_HIGHDANGER("You are stomped on by [src]!"))
 			shake_camera(M, 2, 2)
 		i--
 
 	for(var/mob/living/carbon/human/M in range(5, loc))
-		to_chat(M, "<span class='warning'>You struggle to remain on your feet as the ground shakes beneath your feet!</span>")
+		to_chat(M, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
 		shake_camera(M, 3, 3)
 
 	for(var/mob/living/carbon/human/H in range(2, loc))
-		to_chat(H, "<span class='warning'>You are knocked down by the violent earthquake beneath your feet!</span>")
+		to_chat(H, SPAN_WARNING("You are knocked down by the violent earthquake beneath your feet!"))
 		H.KnockDown(3)
 
 //The atom collided with is passed to this proc, all types of collisions are dealt with here.
@@ -182,8 +182,8 @@
 	if(istype(target, /obj/structure/barricade))
 		var/obj/structure/barricade/B = target
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
-			visible_message("<span class='danger'>[src] rams into [B] and skids to a halt!</span>",
-			"<span class='xenowarning'>You ram into [B] and skid to a halt!</span>")
+			visible_message(SPAN_DANGER("[src] rams into [B] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [B] and skid to a halt!"))
 			flags_pass = 0
 			update_icons()
 			B.Bumped(src)
@@ -196,8 +196,8 @@
 	else if(istype(target, /obj/vehicle/multitile/hitbox))
 		var/obj/vehicle/multitile/hitbox/H = target
 		if(charge_speed > charge_speed_buildup * charge_turfs_to_charge)
-			visible_message("<span class='danger'>[src] rams into [H.root] and skids to a halt!</span>",
-			"<span class='xenowarning'>You ram into [H.root] and skid to a halt!</span>")
+			visible_message(SPAN_DANGER("[src] rams into [H.root] and skids to a halt!"),
+			SPAN_XENOWARNING("You ram into [H.root] and skid to a halt!"))
 			flags_pass = 0
 			update_icons()
 			H.root.Bumped(src)
@@ -237,8 +237,8 @@
 				X.stop_momentum(X.charge_dir)
 				r_FAL
 			else
-				X.visible_message("<span class='danger'>[X] crushes [src]!</span>",
-				"<span class='xenodanger'>You crush [src]!</span>")
+				X.visible_message(SPAN_DANGER("[X] crushes [src]!"),
+				SPAN_XENODANGER("You crush [src]!"))
 				if(contents.len) //Hopefully won't auto-delete things inside crushed stuff.
 					var/turf/T = get_turf(src)
 					for(var/atom/movable/S in contents) S.loc = T
@@ -249,7 +249,7 @@
 				if(buckled_mob)
 					unbuckle()
 				X.visible_message("<span class='warning'>[X] knocks [src] aside.</span>!",
-				"<span class='xenowarning'>You knock [src] aside.</span>") //Canisters, crates etc. go flying.
+				SPAN_XENOWARNING("You knock [src] aside.")) //Canisters, crates etc. go flying.
 				playsound(loc, "punch", 25, 1)
 				X.diagonal_step(src, X.dir) //Occasionally fling it diagonally.
 				step_away(src, X, min(round(X.charge_speed) + 1, 3))
@@ -313,8 +313,8 @@
 		if(unacidable)
 			X.stop_momentum(X.charge_dir, TRUE)
 			r_FAL
-		X.visible_message("<span class='danger'>[X] smashes straight into [src]!</span>",
-		"<span class='xenodanger'>You smash straight into [src]!</span>")
+		X.visible_message(SPAN_DANGER("[X] smashes straight into [src]!"),
+		SPAN_XENODANGER("You smash straight into [src]!"))
 		playsound(loc, "punch", 25, 1)
 		tip_over()
 		X.diagonal_step(src, X.dir, 50) //Occasionally fling it diagonally.
@@ -334,8 +334,8 @@
 		X.stop_momentum(X.charge_dir)
 		r_FAL
 	take_damage(X.charge_speed * 80)
-	X.visible_message("<span class='danger'>[X] rams [src]!</span>",
-	"<span class='xenodanger'>You ram [src]!</span>")
+	X.visible_message(SPAN_DANGER("[X] rams [src]!"),
+	SPAN_XENODANGER("You ram [src]!"))
 	playsound(loc, "punch", 25, 1)
 	if(X.charge_speed > X.charge_speed_max/2) //Halfway to full speed or more
 		X.diagonal_step(src, X.dir, 50) //Occasionally fling it diagonally.
@@ -350,8 +350,8 @@
 	if(X.charge_speed < X.charge_speed_buildup * X.charge_turfs_to_charge)
 		X.stop_momentum(X.charge_dir)
 		r_FAL
-	X.visible_message("<span class='danger'>[X] rams [src]!</span>",
-	"<span class='xenodanger'>You ram [src]!</span>")
+	X.visible_message(SPAN_DANGER("[X] rams [src]!"),
+	SPAN_XENODANGER("You ram [src]!"))
 	playsound(loc, "punch", 25, 1)
 	stat = 1
 	on = 0
@@ -391,8 +391,8 @@
 			X.attack_log += text("\[[time_stamp()]\] <font color='red'>xeno charged [src.name] ([src.ckey])</font>")
 			log_attack("[X.name] ([X.ckey]) xeno charged [src.name] ([src.ckey])")
 			apply_damage(X.charge_speed * 40, BRUTE)
-			X.visible_message("<span class='danger'>[X] rams [src]!</span>",
-			"<span class='xenodanger'>You ram [src]!</span>")
+			X.visible_message(SPAN_DANGER("[X] rams [src]!"),
+			SPAN_XENODANGER("You ram [src]!"))
 		KnockDown(X.charge_speed * 4)
 		animation_flash_color(src)
 		X.diagonal_step(src, X.dir) //Occasionally fling it diagonally.

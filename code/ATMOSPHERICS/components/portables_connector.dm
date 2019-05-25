@@ -126,7 +126,7 @@
 	if(!iswrench(W))
 		return ..()
 	if(connected_device)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], dettach [connected_device] first.</span>")
+		to_chat(user, SPAN_WARNING("You cannot unwrench [src], dettach [connected_device] first."))
 		return 1
 	if(locate(/obj/machinery/portable_atmospherics, loc))
 		return 1

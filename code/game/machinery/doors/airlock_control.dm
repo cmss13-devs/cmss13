@@ -264,7 +264,7 @@ obj/machinery/access_button/attackby(obj/item/I as obj, mob/user as mob)
 obj/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)
 	if(!allowed(user))
-		to_chat(user, "<span class='danger'>Access Denied</span>")
+		to_chat(user, SPAN_DANGER("Access Denied"))
 
 	else if(radio_connection)
 		var/datum/signal/signal = new

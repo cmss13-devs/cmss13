@@ -79,11 +79,11 @@ FIRE ALARM
 				if (istype(W, /obj/item/device/multitool))
 					src.detecting = !( src.detecting )
 					if (src.detecting)
-						user.visible_message("<span class='danger'>[user] has reconnected [src]'s detecting unit!</span>", "You have reconnected [src]'s detecting unit.")
+						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
 					else
-						user.visible_message("<span class='danger'>[user] has disconnected [src]'s detecting unit!</span>", "You have disconnected [src]'s detecting unit.")
+						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
 				else if (istype(W, /obj/item/tool/wirecutters))
-					user.visible_message("<span class='danger'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
+					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
 					update_icon()
@@ -95,7 +95,7 @@ FIRE ALARM
 						buildstage = 2
 						return
 					else
-						to_chat(user, "<span class='warning'>You need 5 pieces of cable to do wire \the [src].</span>")
+						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
 						return
 				else if(istype(W, /obj/item/tool/crowbar))
 					to_chat(user, "You pry out the circuit!")

@@ -76,13 +76,13 @@
 	var/mob/M
 	if (istype(I, /obj/item/grab))
 		if (occupant)
-			to_chat(user, "<span class='warning'>The scanner is already occupied!</span>")
+			to_chat(user, SPAN_WARNING("The scanner is already occupied!"))
 			return
 		var/obj/item/grab/G = I
 		if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
 			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing
 			if(!C.stasis_mob)
-				to_chat(user, "<span class='warning'>The stasis bag is empty!</span>")
+				to_chat(user, SPAN_WARNING("The stasis bag is empty!"))
 				return
 			M = C.stasis_mob
 			C.open()
@@ -94,7 +94,7 @@
 	else
 		return
 	if (M.abiotic())
-		to_chat(user, "<span class='warning'>Subject cannot have abiotic items on.</span>")
+		to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
 		return
 	M.forceMove(src)
 	occupant = M
@@ -208,10 +208,10 @@
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(!connected || (connected.stat & (NOPOWER|BROKEN)))
-		to_chat(user, "<span class='warning'>This console is not connected to a functioning body scanner.</span>")
+		to_chat(user, SPAN_WARNING("This console is not connected to a functioning body scanner."))
 		return
 	if(!ishuman(connected.occupant))
-		to_chat(user, "<span class='warning'>This device can only scan compatible lifeforms.</span>")
+		to_chat(user, SPAN_WARNING("This device can only scan compatible lifeforms."))
 		return
 
 	var/dat

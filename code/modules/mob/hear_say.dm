@@ -40,7 +40,7 @@
 
 	if(sdisabilities & DEAF || ear_deaf)
 		if(speaker == src)
-			to_chat(src, "<span class='warning'>You cannot hear yourself speak!</span>")
+			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
 		else
 			to_chat(src, "<span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear \him.")
 	else
@@ -154,7 +154,7 @@
 
 	if(sdisabilities & DEAF || ear_deaf)
 		if(prob(20))
-			to_chat(src, "<span class='warning'>You feel your headset vibrate but can hear nothing from it!</span>")
+			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"))
 	else if(track)
 		if(!command)
 			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>")

@@ -67,28 +67,28 @@ Note: Must be placed within 3 tiles of the R&D Console
 			qdel(src)
 			return 1
 		else
-			to_chat(user, "<span class='danger'>You can't load the [src.name] while it's opened.</span>")
+			to_chat(user, SPAN_DANGER("You can't load the [src.name] while it's opened."))
 			return 1
 	if (disabled)
 		return
 	if (!linked_console)
-		to_chat(user, "<span class='danger'>The destructive analyzer must be linked to an R&D console first!</span>")
+		to_chat(user, SPAN_DANGER("The destructive analyzer must be linked to an R&D console first!"))
 		return
 	if (busy)
-		to_chat(user, "<span class='danger'>The destructive analyzer is busy right now.</span>")
+		to_chat(user, SPAN_DANGER("The destructive analyzer is busy right now."))
 		return
 	if (istype(O, /obj/item) && !loaded_item)
 		if(isrobot(user)) //Don't put your module items in there!
 			return
 		if(!O.origin_tech)
-			to_chat(user, "<span class='danger'>This doesn't seem to have a tech origin!</span>")
+			to_chat(user, SPAN_DANGER("This doesn't seem to have a tech origin!"))
 			return
 		var/list/temp_tech = ConvertReqString2List(O.origin_tech)
 		if (temp_tech.len == 0)
-			to_chat(user, "<span class='danger'>You cannot deconstruct this item!</span>")
+			to_chat(user, SPAN_DANGER("You cannot deconstruct this item!"))
 			return
 		if(O.reliability < 90 && O.crit_fail == 0)
-			to_chat(usr, "<span class='danger'>Item is neither reliable enough nor broken enough to learn from.</span>")
+			to_chat(usr, SPAN_DANGER("Item is neither reliable enough nor broken enough to learn from."))
 			return
 		busy = 1
 		loaded_item = O

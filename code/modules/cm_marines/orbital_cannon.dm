@@ -148,23 +148,23 @@ var/list/ob_type_fuel_requirements
 		return
 	if(!loaded_tray)
 		if(user)
-			to_chat(user, "<span class='warning'>You need to load the tray before firing the payload.</span>")
+			to_chat(user, SPAN_WARNING("You need to load the tray before firing the payload."))
 		return
 	if(!tray.warhead)
 		if(user)
-			to_chat(user, "<span class='warning'>no warhead in the tray, cancelling chambering operation.</span>")
+			to_chat(user, SPAN_WARNING("no warhead in the tray, cancelling chambering operation."))
 		return
 
 	if(tray.fuel_amt < 1)
 		if(user)
-			to_chat(user, "<span class='warning'>no solid fuel in the tray, cancelling chambering operation.</span>")
+			to_chat(user, SPAN_WARNING("no solid fuel in the tray, cancelling chambering operation."))
 		return
 
 	if(last_orbital_firing) //fired at least once
 		var/cooldown_left = (last_orbital_firing + 2500) - world.time
 		if(cooldown_left > 0)
 			if(user)
-				to_chat(user, "<span class='warning'>[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds.</span>")
+				to_chat(user, SPAN_WARNING("[src]'s barrel is still too hot, let it cool down for [round(cooldown_left/10)] more seconds."))
 			return
 
 	flick("OBC_chambering",src)
@@ -290,9 +290,9 @@ var/list/ob_type_fuel_requirements
 					var/obj/structure/ob_ammo/OA = PC.loaded
 					if(OA.is_solid_fuel)
 						if(fuel_amt >= 6)
-							to_chat(user, "<span class='warning'>[src] can't accept more solid fuel.</span>")
+							to_chat(user, SPAN_WARNING("[src] can't accept more solid fuel."))
 						else if(!warhead)
-							to_chat(user, "<span class='warning'>A warhead must be placed in [src] first.</span>")
+							to_chat(user, SPAN_WARNING("A warhead must be placed in [src] first."))
 						else
 							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
 							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -303,7 +303,7 @@ var/list/ob_type_fuel_requirements
 							update_icon()
 					else
 						if(warhead)
-							to_chat(user, "<span class='warning'>[src] already has a warhead.</span>")
+							to_chat(user, SPAN_WARNING("[src] already has a warhead."))
 						else
 							to_chat(user, SPAN_NOTICE("You load [OA] into [src]."))
 							playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -452,7 +452,7 @@ var/list/ob_type_fuel_requirements
 		return
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-		to_chat(user, "<span class='warning'>You have no idea how to use that console.</span>")
+		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
 		return 1
 
 	user.set_interaction(src)

@@ -13,7 +13,7 @@
 	Crossed(var/mob/living/O)
 		if(anchored && prob(20))
 			if(!istype(O,/mob/living/carbon/Xenomorph/Larva))
-				visible_message("<span class='danger'>[O] tramples the [src]!</span>")
+				visible_message(SPAN_DANGER("[O] tramples the [src]!"))
 				playsound(src, 'sound/weapons/Genhit.ogg', 25, 1)
 				if(istype(O,/mob/living/carbon/Xenomorph))
 					if(prob(40))

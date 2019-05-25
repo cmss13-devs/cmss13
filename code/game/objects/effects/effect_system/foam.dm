@@ -190,7 +190,7 @@
 			to_chat(user, SPAN_NOTICE(" You smash through the metal foam wall."))
 			for(var/mob/O in oviewers(user))
 				if ((O.client && !( O.blinded )))
-					to_chat(O, "<span class='danger'>[user] smashes through the foamed metal.</span>")
+					to_chat(O, SPAN_DANGER("[user] smashes through the foamed metal."))
 
 			qdel(src)
 		else
@@ -204,7 +204,7 @@
 			to_chat(user, SPAN_NOTICE(" You smash through the foamed metal with \the [I]."))
 			for(var/mob/O in oviewers(user))
 				if ((O.client && !( O.blinded )))
-					to_chat(O, "<span class='danger'>[user] smashes through the foamed metal.</span>")
+					to_chat(O, SPAN_DANGER("[user] smashes through the foamed metal."))
 			qdel(src)
 		else
 			to_chat(user, SPAN_NOTICE(" You hit the metal foam to no effect."))

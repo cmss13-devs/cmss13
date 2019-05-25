@@ -156,7 +156,7 @@
 	for(entry_vent in view(1, src))
 		if(prob(90)) //10 % chance to consider a vent, to try and avoid constant vent switching
 			return
-		visible_message("<span class='danger'>\The [src] starts trying to slide itself into the vent!</span>")
+		visible_message(SPAN_DANGER("\The [src] starts trying to slide itself into the vent!"))
 		sleep(50) //Let's stop SCP-173 for five seconds to do his parking job
 		..()
 		if(entry_vent.network && entry_vent.network.normal_members.len)
@@ -170,19 +170,19 @@
 				return
 			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
 			spawn()
-				visible_message("<span class='danger'>\The [src] suddenly disappears into the vent!</span>")
+				visible_message(SPAN_DANGER("\The [src] suddenly disappears into the vent!"))
 				loc = exit_vent
 				var/travel_time = round(get_dist(loc, exit_vent.loc)/2)
 				spawn(travel_time)
 					if(!exit_vent || exit_vent.welded)
 						forceMove(get_turf(entry_vent))
 						entry_vent = null
-						visible_message("<span class='danger'>\The [src] suddenly appears from the vent!</span>")
+						visible_message(SPAN_DANGER("\The [src] suddenly appears from the vent!"))
 						return
 
 					forceMove(get_turf(exit_vent))
 					entry_vent = null
-					visible_message("<span class='danger'>\The [src] suddenly appears from the vent!</span>")
+					visible_message(SPAN_DANGER("\The [src] suddenly appears from the vent!"))
 		else
 			entry_vent = null
 
@@ -218,7 +218,7 @@
 		playsound(target.loc, pick(snap_sound), 50, 1)
 
 		//Warn everyone
-		visible_message("<span class='danger'>[src] [response_snap] [target]!</span>")
+		visible_message(SPAN_DANGER("[src] [response_snap] [target]!"))
 		to_chat(target, "<span class='alert'><b>[response_snap_target]</b> Your vision fades away...</span>")
 
 		target.death() //Immediately trigger death to avoid doublesnap during lag

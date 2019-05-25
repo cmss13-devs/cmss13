@@ -4,8 +4,8 @@
 
 	if(disabilities & EPILEPSY)
 		if((prob(1) && knocked_out < 1))
-			visible_message("<span class='danger'>\The [src] starts having a seizure!</span>", \
-			"<span class='danger'>You start having a seizure!</span>", null, 5)
+			visible_message(SPAN_DANGER("\The [src] starts having a seizure!"), \
+			SPAN_DANGER("You start having a seizure!"), null, 5)
 			KnockOut(10)
 			make_jittery(1000)
 			return
@@ -50,13 +50,13 @@
 					custom_pain("Your head feels numb and painful.")
 			if(4 to 6)
 				if(getBrainLoss() >= 15 && eye_blurry <= 0)
-					to_chat(src, "<span class='danger'>It becomes hard to see for some reason.</span>")
+					to_chat(src, SPAN_DANGER("It becomes hard to see for some reason."))
 					eye_blurry = 10
 			if(7 to 9)
 				if(getBrainLoss() >= 35 && (hand && get_held_item()))
-					to_chat(src, "<span class='danger'>Your hand won't respond properly, you drop what you're holding.</span>")
+					to_chat(src, SPAN_DANGER("Your hand won't respond properly, you drop what you're holding."))
 					drop_held_item()
 			if(10 to 12)
 				if(getBrainLoss() >= 50 && !lying)
-					to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down.</span>")
+					to_chat(src, SPAN_DANGER("Your legs won't respond properly, you fall down."))
 					resting = 1

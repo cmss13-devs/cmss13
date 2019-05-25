@@ -118,7 +118,7 @@ var/list/alldepartments = list()
 	if(href_list["remove"])
 		if(tofax)
 			if(!ishuman(usr))
-				to_chat(usr, "<span class='warning'>You can't do it.</span>")
+				to_chat(usr, SPAN_WARNING("You can't do it."))
 			else
 				tofax.loc = usr.loc
 				usr.put_in_hands(tofax)

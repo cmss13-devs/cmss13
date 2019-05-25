@@ -17,7 +17,7 @@
 		var/fillevel = gulp_size
 
 		if(!R.total_volume || !R)
-			to_chat(user, "<span class='danger'>The [src.name] is empty!</span>")
+			to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 			return 0
 
 		if(M == user)
@@ -40,7 +40,7 @@
 				O.show_message(SPAN_DANGER("[user] attempts to feed [M] [src]."), 1)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message("<span class='danger'>[user] feeds [M] [src].</span>", 1)
+				O.show_message(SPAN_DANGER("[user] feeds [M] [src]."), 1)
 
 			var/rgt_list_text = get_reagent_list_text()
 

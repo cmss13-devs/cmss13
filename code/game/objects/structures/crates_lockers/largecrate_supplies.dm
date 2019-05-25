@@ -320,11 +320,11 @@
 	if(istype(W, /obj/item/tool/crowbar) && dir_needed)
 		var/turf/next_turf = get_step(src, dir_needed)
 		if(next_turf.density)
-			to_chat(user, "<span class='warning'>You can't open the crate here, there's not enough room!</span>")
+			to_chat(user, SPAN_WARNING("You can't open the crate here, there's not enough room!"))
 			return
 		for(var/atom/movable/AM in next_turf.contents)
 			if(AM.density)
-				to_chat(user, "<span class='warning'>You can't open the crate here, [AM] blocks the way.</span>")
+				to_chat(user, SPAN_WARNING("You can't open the crate here, [AM] blocks the way."))
 				return
 	..()
 

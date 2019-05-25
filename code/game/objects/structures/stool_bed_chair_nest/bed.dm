@@ -125,8 +125,8 @@ obj/structure/bed/Dispose()
 			if (H==usr && !H.is_mob_incapacitated() && Adjacent(H) && in_range(src, over_object))
 				var/obj/item/I = new foldabletype(get_turf(src))
 				H.put_in_hands(I)
-				H.visible_message("<span class='warning'>[H] grabs [src] from the floor!</span>",
-				"<span class='warning'>You grab [src] from the floor!</span>")
+				H.visible_message(SPAN_WARNING("[H] grabs [src] from the floor!"),
+				SPAN_WARNING("You grab [src] from the floor!"))
 				qdel(src)
 
 
@@ -186,7 +186,7 @@ obj/structure/bed/Dispose()
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.handcuffed)
-			to_chat(user, "<span class='danger'>You cannot buckle someone who is handcuffed onto this bed.</span>")
+			to_chat(user, SPAN_DANGER("You cannot buckle someone who is handcuffed onto this bed."))
 			return
 	..()
 
@@ -239,7 +239,7 @@ obj/structure/bed/Dispose()
 /obj/item/roller_holder/attack_self(mob/user as mob)
 
 	if(!held)
-		to_chat(user, "<span class='warning'>The rack is empty.</span>")
+		to_chat(user, SPAN_WARNING("The rack is empty."))
 		return
 
 	var/obj/structure/bed/roller/R = new(user.loc)
@@ -300,11 +300,11 @@ var/global/list/activated_medevac_stretchers = list()
 		return
 
 	if(user.mind && user.mind.cm_skills && user.mind.cm_skills.medical < SKILL_MEDICAL_MEDIC)
-		to_chat(user, "<span class='warning'>You don't know how to use [src].</span>")
+		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
 		return
 
 	if(user == buckled_mob)
-		to_chat(user, "<span class='warning'>You can't reach the beacon activation button while buckled to [src].</span>")
+		to_chat(user, SPAN_WARNING("You can't reach the beacon activation button while buckled to [src]."))
 		return
 
 	if(stretcher_activated)
@@ -318,12 +318,12 @@ var/global/list/activated_medevac_stretchers = list()
 
 	else
 		if(z != 1)
-			to_chat(user, "<span class='warning'>You can't activate [src]'s beacon here.</span>")
+			to_chat(user, SPAN_WARNING("You can't activate [src]'s beacon here."))
 			return
 
 		var/area/AR = get_area(src)
 		if(AR.ceiling >= CEILING_METAL)
-			to_chat(user, "<span class='warning'>[src] must be in the open or under a glass roof.</span>")
+			to_chat(user, SPAN_WARNING("[src] must be in the open or under a glass roof."))
 			return
 
 		if(buckled_mob || buckled_bodybag)
@@ -332,7 +332,7 @@ var/global/list/activated_medevac_stretchers = list()
 			to_chat(user, SPAN_NOTICE("You activate [src]'s beacon."))
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>You need to attach something to [src] before you can activate its beacon yet.</span>")
+			to_chat(user, SPAN_WARNING("You need to attach something to [src] before you can activate its beacon yet."))
 
 /obj/item/roller/medevac
 	name = "medevac stretcher"

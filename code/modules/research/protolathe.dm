@@ -106,7 +106,7 @@ Note: Must be placed west/left of and R&D console to function.
 			qdel(src)
 			return 1
 		else
-			to_chat(user, "<span class='danger'>You can't load the [src.name] while it's opened.</span>")
+			to_chat(user, SPAN_DANGER("You can't load the [src.name] while it's opened."))
 			return 1
 	if (disabled)
 		return
@@ -114,17 +114,17 @@ Note: Must be placed west/left of and R&D console to function.
 		to_chat(user, "\The protolathe must be linked to an R&D console first!")
 		return 1
 	if (busy)
-		to_chat(user, "<span class='danger'>The protolathe is busy. Please wait for completion of previous operation.</span>")
+		to_chat(user, SPAN_DANGER("The protolathe is busy. Please wait for completion of previous operation."))
 		return 1
 	if (!istype(O, /obj/item/stack/sheet))
-		to_chat(user, "<span class='danger'>You cannot insert this item into the protolathe!</span>")
+		to_chat(user, SPAN_DANGER("You cannot insert this item into the protolathe!"))
 		return 1
 	if (stat)
 		return 1
 	if(istype(O,/obj/item/stack/sheet))
 		var/obj/item/stack/sheet/S = O
 		if (TotalMaterials() + S.perunit > max_material_storage)
-			to_chat(user, "<span class='danger'>The protolathe's material bin is full. Please remove material before adding more.</span>")
+			to_chat(user, SPAN_DANGER("The protolathe's material bin is full. Please remove material before adding more."))
 			return 1
 
 	var/obj/item/stack/sheet/stack = O

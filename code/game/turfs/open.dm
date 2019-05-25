@@ -282,7 +282,7 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja))
 					var/obj/item/clothing/gloves/yautja/Y = H.gloves
 					if(Y && istype(Y) && Y.cloaked)
-						to_chat(H, "<span class='warning'> Your bracers hiss and spark as they short out!</span>")
+						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
 						Y.decloak(H)
 
 		else if(isXeno(C))
@@ -440,8 +440,6 @@
 /turf/open/jungle/proc/Spread(var/probability, var/prob_loss = 50)
 	if(probability <= 0)
 		return
-
-	//to_world(SPAN_NOTICE(" Spread([probability])"))
 	for(var/turf/open/jungle/J in orange(1, src))
 		if(!J.bushes_spawn)
 			continue
@@ -540,25 +538,25 @@
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
+						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
+						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
+						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
 					if(istype(T, /turf/open/jungle/water))
-						M << pick("<span class='danger'>Something sharp bites you!</span>","<span class='danger'>Sharp teeth grab hold of you!</span>","<span class='danger'>You feel something take a chunk out of your leg!</span>")
+						M << pick(SPAN_DANGER("Something sharp bites you!"),SPAN_DANGER("Sharp teeth grab hold of you!"),SPAN_DANGER("You feel something take a chunk out of your leg!"))
 						M.apply_damage(rand(0,1), BRUTE, sharp=1)
 
 /turf/open/jungle/water/deep

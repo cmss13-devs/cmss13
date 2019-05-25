@@ -55,7 +55,7 @@
 		return
 
 	if(!gun_on)
-		to_chat(src, "<span class='warning'>Your autocannon is currently retracted.</span>")
+		to_chat(src, SPAN_WARNING("Your autocannon is currently retracted."))
 		return
 
 	if(used_pounce)
@@ -71,8 +71,8 @@
 		return
 	face_atom(T)
 
-	visible_message("<span class='xenowarning'>\The [src] fires its autocannon!</span>", \
-	"<span class='xenowarning'>You fire your autocannon!</span>" )
+	visible_message(SPAN_XENOWARNING("\The [src] fires its autocannon!"), \
+	SPAN_XENOWARNING("You fire your autocannon!") )
 	playsound(src.loc,'sound/weapons/gun_smg.ogg', 75, 1)
 	used_pounce = 1
 	spawn(1)
@@ -80,8 +80,8 @@
 
 
 /mob/living/carbon/Xenomorph/Xenoborg/emp_act(severity)
-	visible_message("<span class='danger'>\The [src] sparks and shudders!</span>", \
-	"<span class='xenodanger'>WARN__--d-sEIE)(*##&&$*@#*&#</span>")
+	visible_message(SPAN_DANGER("\The [src] sparks and shudders!"), \
+	SPAN_XENODANGER("WARN__--d-sEIE)(*##&&$*@#*&#"))
 	adjustBruteLoss(50 * severity)
 	adjustFireLoss(50 * severity)
 	KnockDown(10)
@@ -94,7 +94,7 @@
 			updatehealth()
 			if(health < maxHealth)
 				if(!WT.remove_fuel(10))
-					to_chat(user, "<span class='warning'>You need more welding fuel to repair \the [src].</span>")
+					to_chat(user, SPAN_WARNING("You need more welding fuel to repair \the [src]."))
 					return
 				adjustBruteLoss(-20)
 				adjustFireLoss(-20)
@@ -103,12 +103,12 @@
 				visible_message(SPAN_NOTICE("\The [user] repairs some of the damage to \the [src]."))
 				return
 			else
-				to_chat(user, "<span class='warning'>\The [src] is not damaged.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] is not damaged."))
 				return
 		if(istype(O, /obj/item/cell))
 			var/obj/item/cell/C = O
 			if(plasma_stored >= plasma_max)
-				to_chat(user, "<span class='warning'>\The [src] does not need a new cell right now.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] does not need a new cell right now."))
 				return
 			src.visible_message("<span class='notice'>\The [user] carefully inserts \the [C] into \the [src]'s power supply port.")
 			plasma_stored += C.charge
@@ -126,10 +126,10 @@
 	set category = "Alien"
 
 	if(!gun_on)
-		visible_message("<span class='xenowarning'>\The [src] extends and starts dry-spinning his arm-embedded autocannon.</span>", \
-		"<span class='xenowarning'>You secure your stance as you extend and start dry-spinning your autocannon.</span>")
+		visible_message(SPAN_XENOWARNING("\The [src] extends and starts dry-spinning his arm-embedded autocannon."), \
+		SPAN_XENOWARNING("You secure your stance as you extend and start dry-spinning your autocannon."))
 		gun_on = 1
 	else
-		visible_message("<span class='xenowarning'>\The [src] suddenly retracts his arm-embedded autocannon.</span>", \
-		"<span class='xenowarning'>You retract your autocannon and switch back to your advanced mobility module.</span>")
+		visible_message(SPAN_XENOWARNING("\The [src] suddenly retracts his arm-embedded autocannon."), \
+		SPAN_XENOWARNING("You retract your autocannon and switch back to your advanced mobility module."))
 		gun_on = 0

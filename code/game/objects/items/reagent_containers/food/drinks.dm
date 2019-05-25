@@ -23,7 +23,7 @@
 		var/fillevel = gulp_size
 
 		if(!R.total_volume || !R)
-			to_chat(user, "<span class='danger'>The [src.name] is empty!</span>")
+			to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 			return 0
 
 		if(M == user)
@@ -31,7 +31,7 @@
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/H = M
 				if(H.species.flags & IS_SYNTHETIC)
-					to_chat(H, "<span class='danger'>You have a monitor for a head, where do you think you're going to put that?</span>")
+					to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
 					return
 
 			to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
@@ -44,14 +44,14 @@
 
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, "<span class='danger'>They have a monitor for a head, where do you think you're going to put that?</span>")
+				to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 				return
 
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(SPAN_DANGER("[user] attempts to feed [M] [src]."), 1)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message("<span class='danger'>[user] feeds [M] [src].</span>", 1)
+				O.show_message(SPAN_DANGER("[user] feeds [M] [src]."), 1)
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -81,11 +81,11 @@
 		if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 
 			if(!target.reagents.total_volume)
-				to_chat(user, "<span class='danger'>[target] is empty.</span>")
+				to_chat(user, SPAN_DANGER("[target] is empty."))
 				return
 
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, "<span class='danger'>[src] is full.</span>")
+				to_chat(user, SPAN_DANGER("[src] is full."))
 				return
 
 			var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
@@ -93,11 +93,11 @@
 
 		else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
 			if(!reagents.total_volume)
-				to_chat(user, "<span class='danger'>[src] is empty.</span>")
+				to_chat(user, SPAN_DANGER("[src] is empty."))
 				return
 
 			if(target.reagents.total_volume >= target.reagents.maximum_volume)
-				to_chat(user, "<span class='danger'>[target] is full.</span>")
+				to_chat(user, SPAN_DANGER("[target] is full."))
 				return
 
 

@@ -105,7 +105,7 @@
 					X.emote("roar")
 			for(var/mob/living/carbon/human/H in living_mob_list)
 				if(z == H.z)
-					to_chat(H, "<span class='xenoannounce'>The ground shakes beneath your feet... Echoes of imminent doom tickle your conscious like ripples on a pond...</span>")
+					to_chat(H, SPAN_XENOANNOUNCE("The ground shakes beneath your feet... Echoes of imminent doom tickle your conscious like ripples on a pond..."))
 					playsound(H, 'sound/voice/predalien_roar.ogg', 100, 75)
 					if(H.client)
 						shake_camera(H, 25, 5)
@@ -131,7 +131,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	set desc = "Butcher a corpse to attain a trophy from your kill."
 
 	if(is_mob_incapacitated()|| lying || buckled)
-		to_chat(src, "<span class='xenowarning'>You're not able to do that right now.</span>")
+		to_chat(src, SPAN_XENOWARNING("You're not able to do that right now."))
 		r_FAL
 
 	var/choices[] = new
@@ -147,35 +147,35 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 		r_FAL
 
 	if(!H.stat)
-		to_chat(src, "<span class='xenowarning'>Your prey must be dead.</span>")
+		to_chat(src, SPAN_XENOWARNING("Your prey must be dead."))
 		r_FAL
 
 	if(!Adjacent(H))
-		to_chat(src, "<span class='xenowarning'>You have to be next to your target.</span>")
+		to_chat(src, SPAN_XENOWARNING("You have to be next to your target."))
 		r_FAL
 
 	if(world.time <= butchered_last + PREDALIEN_BUTCHER_COOLDOWN)
-		to_chat(src, "<span class='xenowarning'>You have recently attempted to butcher a carcass. Wait.</span>")
+		to_chat(src, SPAN_XENOWARNING("You have recently attempted to butcher a carcass. Wait."))
 		r_FAL
 
 	butchered_last = world.time
 
-	visible_message("<span class='danger'>[src] reaches down, angling its body toward [H], claws outstretched.</span>",
-	"<span class='xenonotice'>You stoop near the host's body, savoring the moment before you claim a trophy for your kill. You must stand still...</span>")
+	visible_message(SPAN_DANGER("[src] reaches down, angling its body toward [H], claws outstretched."),
+	SPAN_XENONOTICE("You stoop near the host's body, savoring the moment before you claim a trophy for your kill. You must stand still..."))
 	if(do_after(src, PREDALIEN_BUTCHER_WAIT_TIME, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && Adjacent(H))
 		var/datum/limb/head/O = H.get_limb("head")
 		if(!(O.status & LIMB_DESTROYED))
 			H.apply_damage(150, BRUTE, "head", FALSE, TRUE, TRUE)
 			if(!(O.status & LIMB_DESTROYED)) O.droplimb() //Still not actually detached?
-			visible_message("<span class='danger'>[src] reaches down and rips off [H]'s spinal cord and skull!</span>",
-			"<span class='xenodanger'>You slice and pull on [H]'s head until it comes off in a bloody arc!</span>")
+			visible_message(SPAN_DANGER("[src] reaches down and rips off [H]'s spinal cord and skull!"),
+			SPAN_XENODANGER("You slice and pull on [H]'s head until it comes off in a bloody arc!"))
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			emote("growl")
 			var/to_heal = max(1, 5 - (0.2 * (health < maxHealth ? butchered_sum++ : butchered_sum)))//So we do not heal multiple times due to the inline proc below.
 			XENO_HEAL_WOUNDS(isYautja(H)? 15 : to_heal, recovery_aura) //Predators give far better healing.
 		else
-			visible_message("<span class='danger'>[src] slices and dices [H]'s body like a ragdoll!</span>",
-			"<span class='xenodanger'>You fly into a frenzy and butcher [H]'s body!</span>")
+			visible_message(SPAN_DANGER("[src] slices and dices [H]'s body like a ragdoll!"),
+			SPAN_XENODANGER("You fly into a frenzy and butcher [H]'s body!"))
 			playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 			emote("growl")
 			var/i = 4

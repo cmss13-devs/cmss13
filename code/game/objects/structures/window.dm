@@ -44,7 +44,7 @@
 		return
 	if(health <= 0)
 		if(user)
-			user.visible_message("<span class='danger'>[user] smashes through [src][AM ? " with [AM]":""]!</span>")
+			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
 		if(make_shatter_sound)
 			playsound(src, "shatter", 50, 1)
 		shatter_window(create_debris)
@@ -118,7 +118,7 @@
 
 /obj/structure/window/hitby(AM as mob|obj)
 	..()
-	visible_message("<span class='danger'>[src] was hit by [AM].</span>")
+	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
@@ -138,7 +138,7 @@
 	if(HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 		if(!not_damageable) //Impossible to destroy
-			user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
+			user.visible_message(SPAN_DANGER("[user] smashes through [src]!"))
 			health -= 500
 		healthcheck(1, 1, 1, user)
 
@@ -153,9 +153,9 @@
 		if(windowknock_cooldown > world.time)
 			return
 		playsound(loc, 'sound/effects/glassknock.ogg', 25, 1)
-		user.visible_message("<span class='warning'>[user] bangs against [src]!</span>",
-		"<span class='warning'>You bang against [src]!</span>",
-		"<span class='warning'>You hear a banging sound.</span>")
+		user.visible_message(SPAN_WARNING("[user] bangs against [src]!"),
+		SPAN_WARNING("You bang against [src]!"),
+		SPAN_WARNING("You hear a banging sound."))
 		windowknock_cooldown = world.time + 100
 	else
 		if(windowknock_cooldown > world.time)
@@ -174,7 +174,7 @@
 	if(!not_damageable) //Impossible to destroy
 		health -= damage
 	user.animation_attack_on(src)
-	user.visible_message("<span class='danger'>[user] smashes into [src]!</span>")
+	user.visible_message(SPAN_DANGER("[user] smashes into [src]!"))
 	healthcheck(1, 1, 1, user)
 
 /obj/structure/window/attack_animal(mob/user as mob)
@@ -193,19 +193,19 @@
 			user.drop_held_item()
 			switch(state)
 				if(GRAB_PASSIVE)
-					M.visible_message("<span class='warning'>[user] slams [M] against \the [src]!</span>")
+					M.visible_message(SPAN_WARNING("[user] slams [M] against \the [src]!"))
 					M.apply_damage(7)
 					if(!not_damageable) //Impossible to destroy
 						health -= 10
 				if(GRAB_AGGRESSIVE)
-					M.visible_message("<span class='danger'>[user] bashes [M] against \the [src]!</span>")
+					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
 					if(prob(50))
 						M.KnockDown(1)
 					M.apply_damage(10)
 					if(!not_damageable) //Impossible to destroy
 						health -= 25
 				if(GRAB_NECK)
-					M.visible_message("<span class='danger'><big>[user] crushes [M] against \the [src]!</big></span>")
+					M.visible_message(SPAN_DANGER("<big>[user] crushes [M] against \the [src]!</big>"))
 					M.KnockDown(5)
 					M.apply_damage(20)
 					if(!not_damageable) //Impossible to destroy
@@ -272,7 +272,7 @@
 	if(not_deconstructable)
 		return 0
 	if(anchored)
-		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
+		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
 
 	dir = turn(dir, 90)
@@ -289,7 +289,7 @@
 	if(not_deconstructable)
 		return 0
 	if(anchored)
-		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
+		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
 
 	dir = turn(dir, 270)

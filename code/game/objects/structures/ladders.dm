@@ -64,7 +64,7 @@
 /obj/structure/ladder/attack_hand(mob/user)
 	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying || user.buckled || user.anchored) return
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone else is currently using [src].</span>")
+		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
@@ -210,11 +210,11 @@
 			ladder_dest = down
 		else return //just in case
 
-		user.visible_message("<span class='warning'>[user] takes position to throw [G] [ladder_dir_name] [src].</span>",
-		"<span class='warning'>You take position to throw [G] [ladder_dir_name] [src].</span>")
+		user.visible_message(SPAN_WARNING("[user] takes position to throw [G] [ladder_dir_name] [src]."),
+		SPAN_WARNING("You take position to throw [G] [ladder_dir_name] [src]."))
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='warning'>[user] throws [G] [ladder_dir_name] [src]!</span>",
-			"<span class='warning'>You throw [G] [ladder_dir_name] [src]</span>")
+			user.visible_message(SPAN_WARNING("[user] throws [G] [ladder_dir_name] [src]!"),
+			SPAN_WARNING("You throw [G] [ladder_dir_name] [src]"))
 			user.drop_held_item()
 			G.forceMove(ladder_dest.loc)
 			G.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
@@ -242,11 +242,11 @@
 			ladder_dest = down
 		else return //just in case
 
-		user.visible_message("<span class='warning'>[user] takes position to throw [F] [ladder_dir_name] [src].</span>",
-		"<span class='warning'>You take position to throw [F] [ladder_dir_name] [src].</span>")
+		user.visible_message(SPAN_WARNING("[user] takes position to throw [F] [ladder_dir_name] [src]."),
+		SPAN_WARNING("You take position to throw [F] [ladder_dir_name] [src]."))
 		if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message("<span class='warning'>[user] throws [F] [ladder_dir_name] [src]!</span>",
-			"<span class='warning'>You throw [F] [ladder_dir_name] [src]</span>")
+			user.visible_message(SPAN_WARNING("[user] throws [F] [ladder_dir_name] [src]!"),
+			SPAN_WARNING("You throw [F] [ladder_dir_name] [src]"))
 			user.drop_held_item()
 			F.forceMove(ladder_dest.loc)
 			F.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)

@@ -145,7 +145,7 @@
 //pupplies cannot wear anything.
 /mob/living/simple_animal/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<span class='danger'>You can't fit this on [src]</span>")
+		to_chat(usr, SPAN_DANGER("You can't fit this on [src]"))
 		return
 	..()
 
@@ -168,7 +168,7 @@
 //Lisa already has a cute bow!
 /mob/living/simple_animal/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, "<span class='danger'>[src] already has a cute bow!</span>")
+		to_chat(usr, SPAN_DANGER("[src] already has a cute bow!"))
 		return
 	..()
 

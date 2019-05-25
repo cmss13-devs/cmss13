@@ -32,8 +32,6 @@
 	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/zed = living_player_list[2]
-//	to_world("ZED: [zed]")
-//	to_world("Humie: [num_humans]")
 
 	if(num_humans <=0 && zed >= 1)
 		round_finished = MODE_INFECTION_ZOMBIE_WIN

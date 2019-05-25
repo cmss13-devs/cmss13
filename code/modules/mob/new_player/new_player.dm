@@ -117,7 +117,7 @@
 					to_chat(src, SPAN_NOTICE("Now teleporting."))
 					observer.loc = O.loc
 				else
-					to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 				client.prefs.update_preview_icon()
 				observer.icon = client.prefs.preview_icon
 				observer.alpha = 127
@@ -136,11 +136,11 @@
 		if("late_join")
 
 			if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-				to_chat(src, "<span class='warning'>The round is either not ready, or has already finished...</span>")
+				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
 			if(ticker.mode.flags_round_type	& MODE_NO_LATEJOIN)
-				to_chat(src, "<span class='warning'>Sorry, you cannot late join during [ticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible.</span>")
+				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [ticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
 				return
 
 			if(client.prefs.species != "Human")
@@ -157,7 +157,7 @@
 
 		if("late_join_xeno")
 			if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-				to_chat(src, "<span class='warning'>The round is either not ready, or has already finished...</span>")
+				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
 			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
@@ -169,7 +169,7 @@
 
 		if("late_join_pred")
 			if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-				to_chat(src, "<span class='warning'>The round is either not ready, or has already finished...</span>")
+				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
 				return
 
 			if(alert(src,"Are you sure you want to attempt joining as a predator?","Confirmation","Yes","No") == "Yes" )
@@ -177,7 +177,7 @@
 					close_spawn_windows()
 					ticker.mode.attempt_to_join_as_predator(src)
 				else
-					to_chat(src, "<span class='warning'>You are no longer able to join as predator.</span>")
+					to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
 					new_player_panel()
 
 		if("manifest")
@@ -186,7 +186,7 @@
 		if("SelectedJob")
 
 			if(!enter_allowed)
-				to_chat(usr, "<span class='warning'>There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)</span>")
+				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
 
 			if(client.prefs.species != "Human")

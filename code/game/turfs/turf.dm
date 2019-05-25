@@ -48,12 +48,9 @@
 
 /turf/Dispose()
 	stop_processing()
-	//to_world("Disposing [src.type]")
 	if(old_turf != "")
-		//to_world("Old turf : [old_turf]")
 		ChangeTurf(text2path(old_turf), TRUE)
 	else
-		//to_world("Defaulting to Plating")
 		ChangeTurf(/turf/open/floor/plating, TRUE)
 	//..()
 	return TA_PURGE_ME_NOW
@@ -99,7 +96,7 @@ spookydonut august 2018
 
 /turf/Enter(atom/movable/mover as mob|obj, atom/forget as mob|obj|turf|area)
 	if(movement_disabled && usr.ckey != movement_disabled_exception)
-		to_chat(usr, "<span class='danger'>Movement is admin-disabled.</span>") //This is to identify lag problems
+		to_chat(usr, SPAN_DANGER("Movement is admin-disabled.")) //This is to identify lag problems
 		return
 	if (!mover || !isturf(mover.loc))
 		return 1

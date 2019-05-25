@@ -92,7 +92,7 @@
 		return
 	src.add_fingerprint(usr)
 	if(!src.allowed(user))
-		to_chat(user, "<span class='danger'>Access denied.</span>")
+		to_chat(user, SPAN_DANGER("Access denied."))
 		return
 	usr.set_interaction(src)
 	var/dat = {"<b>Power: </b><a href='?src=\ref[src];power=1'>[on?"On":"Off"]</a><br>

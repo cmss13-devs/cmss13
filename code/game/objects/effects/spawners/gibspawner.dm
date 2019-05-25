@@ -31,7 +31,7 @@
 
 	proc/Gib(atom/location, var/list/viruses = list(), var/mob/living/ml = null)
 		if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
-			to_world("<span class='danger'>Gib list length mismatch!</span>")
+			to_world(SPAN_DANGER("Gib list length mismatch!"))
 			return
 
 		var/obj/effect/decal/cleanable/blood/gibs/gib = null

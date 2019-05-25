@@ -298,7 +298,7 @@
 
 	switch(trap_type)
 		if("sawburst")
-			to_chat(M, "<span class='warning'><b>A sawblade shoots out of the ground and strikes you!</b></span>")
+			to_chat(M, SPAN_WARNING("<b>A sawblade shoots out of the ground and strikes you!</b>"))
 			M.apply_damage(rand(5,10), BRUTE, sharp=1, edge=1)
 
 			var/atom/myloc = src.loc
@@ -309,7 +309,7 @@
 				qdel(flicker)
 			//flick("sawblade",src)
 		if("poison_dart")
-			to_chat(M, "<span class='warning'><b>You feel something small and sharp strike you!</b></span>")
+			to_chat(M, SPAN_WARNING("<b>You feel something small and sharp strike you!</b>"))
 			M.apply_damage(rand(5,10), TOX)
 
 			var/atom/myloc = src.loc
@@ -320,7 +320,7 @@
 				qdel(flicker)
 			//flick("dart[rand(1,3)]",src)
 		if("flame_burst")
-			to_chat(M, "<span class='warning'><b>A jet of fire comes out of nowhere!</b></span>")
+			to_chat(M, SPAN_WARNING("<b>A jet of fire comes out of nowhere!</b>"))
 			M.apply_damage(rand(5,10), BURN)
 
 			var/atom/myloc = src.loc
@@ -337,7 +337,7 @@
 		if("thrower")
 			//edited version of obj/effect/step_trigger/thrower
 			var/throw_dir = pick(1,2,4,8)
-			M.visible_message("<span class='danger'><b>The floor under [M] suddenly tips upward!</b></span>","<span class='danger'><b>The floor tips upward under you!</b></span>")
+			M.visible_message(SPAN_DANGER("<b>The floor under [M] suddenly tips upward!</b>"),SPAN_DANGER("<b>The floor tips upward under you!</b>"))
 
 			var/atom/myloc = src.loc
 			var/image/flicker = image('code/WorkInProgress/Cael_Aislinn/Jungle/jungle.dmi',"throw[throw_dir]")

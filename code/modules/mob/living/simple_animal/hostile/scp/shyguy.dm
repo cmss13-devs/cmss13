@@ -3,7 +3,7 @@
 	name = "???"
 	desc = "No, no, you know not to look closely at it" //for non-targets
 	var/target_desc_1 = "A pale, emanciated figure. It looks almost human, but its limbs are long and skinny, and its face is......<span class='danger'>no. NO. NO</span>" //for targets
-	var/target_desc_2 = "<span class='danger'>NO</span>" //on second examine
+	var/target_desc_2 = "<span class='danger'>NO!</span>" //on second examine
 	icon_state = "shyguy_dam0"
 	icon_living = "shyguy_dam0"
 	icon_dead = "shyguy_dam0"
@@ -153,24 +153,24 @@
 					to_chat(userguy, "<span class='alert'>Run</span>")
 			spawn(30)
 				if(userguy)
-					to_chat(userguy, "<span class='danger'>RUN</span>")
+					to_chat(userguy, SPAN_DANGER("RUN"))
 		else
 			userguy << target_desc_2
 		if(will_scream)
 			if(!buckled) dir = 2
-			visible_message("<span class='danger'>[src] SCREAMS!</span>")
+			visible_message(SPAN_DANGER("[src] SCREAMS!"))
 			playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 			screaming = 1
 			will_scream = 0
 			for(var/mob/M in viewers(src, null))
 				shake_camera(M, 19, 2)
 			spawn(100)
-				visible_message("<span class='danger'>[src] SCREAMS!</span>")
+				visible_message(SPAN_DANGER("[src] SCREAMS!"))
 				playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 				for(var/mob/M in viewers(src, null))
 					shake_camera(M, 19, 2)
 			spawn(200)
-				visible_message("<span class='danger'>[src] SCREAMS!</span>")
+				visible_message(SPAN_DANGER("[src] SCREAMS!"))
 				playsound(src, 'sound/voice/scream_horror1.ogg', 50, 1)
 				for(var/mob/M in viewers(src, null))
 					shake_camera(M, 19, 2)
@@ -193,7 +193,7 @@
 		return
 
 	if(buckled)
-		visible_message("<span class='danger'>[src] breaks out of its restraints!</span>")
+		visible_message(SPAN_DANGER("[src] breaks out of its restraints!"))
 		buckled.unbuckle()
 
 	var/turf/target_turf
@@ -202,7 +202,7 @@
 	target_turf = get_turf(target)
 
 	if(!chasing_message_played)
-		to_chat(target, "<span class='danger'>You saw its face</span>")
+		to_chat(target, SPAN_DANGER("You saw its face"))
 		chasing_message_played = 1
 
 	if(!scare_played) //Let's minimize the spam
@@ -257,14 +257,14 @@
 					sleep(10)
 
 				if(doom_message_played == 0 && get_dist(src,target) < 7)
-					to_chat(target, "<span class='danger'>YOU SAW ITS FACE</span>")
+					to_chat(target, SPAN_DANGER("YOU SAW ITS FACE"))
 					doom_message_played = 1
 
 				forceMove(next_turf)
 
 				if(!is_same_level(target_turf))
 					next_turf = target_turf
-					to_chat(target, "<span class='danger'>DID YOU THINK YOU COULD HIDE?</span>")
+					to_chat(target, SPAN_DANGER("DID YOU THINK YOU COULD HIDE?"))
 				else
 					dir = get_dir(src, target)
 					next_turf = get_step(src, get_dir(next_turf,target))
@@ -334,7 +334,7 @@
 			continue
 		playsound(loc, "punch", 25, 1)
 		M.apply_damage(50, BRUTE)
-		visible_message("<span class='danger'>[src] knocks [M] aside!</span>")
+		visible_message(SPAN_DANGER("[src] knocks [M] aside!"))
 		M.KnockDown(4)
 		animation_flash_color(M)
 		diagonal_step(M, dir) //Occasionally fling it diagonally.
@@ -351,7 +351,7 @@
 
 	if(T)
 		T.loc = src.loc
-		visible_message("<span class='danger'>[src] grabs [T]!</span>")
+		visible_message(SPAN_DANGER("[src] grabs [T]!"))
 		animation_flash_color(T)
 		dir = 2
 		T.buckled = null
@@ -384,7 +384,7 @@
 		shitlist -= T
 
 		//Warn everyone
-		visible_message("<span class='danger'>[src] tears [T] apart!</span>")
+		visible_message(SPAN_DANGER("[src] tears [T] apart!"))
 
 		T.gib()
 
@@ -443,7 +443,7 @@
 	for(entry_vent in view(1, src))
 		if(prob(90)) //10 % chance to consider a vent, to try and avoid constant vent switching
 			return
-		visible_message("<span class='danger'>\The [src] starts trying to slide itself into the vent!</span>")
+		visible_message(SPAN_DANGER("\The [src] starts trying to slide itself into the vent!"))
 		sleep(50) //Let's stop for five seconds to do our parking job
 		..()
 		if(entry_vent.network && entry_vent.network.normal_members.len)
@@ -455,19 +455,19 @@
 				return
 			var/obj/machinery/atmospherics/unary/vent_pump/exit_vent = pick(vents)
 			spawn()
-				visible_message("<span class='danger'>\The [src] suddenly disappears into the vent!</span>")
+				visible_message(SPAN_DANGER("\The [src] suddenly disappears into the vent!"))
 				loc = exit_vent
 				var/travel_time = round(get_dist(loc, exit_vent.loc)/2)
 				spawn(travel_time)
 					if(!exit_vent || exit_vent.welded)
 						forceMove(get_turf(entry_vent))
 						entry_vent = null
-						visible_message("<span class='danger'>\The [src] suddenly appears from the vent!</span>")
+						visible_message(SPAN_DANGER("\The [src] suddenly appears from the vent!"))
 						return
 
 					forceMove(get_turf(exit_vent))
 					entry_vent = null
-					visible_message("<span class='danger'>\The [src] suddenly appears from the vent!</span>")
+					visible_message(SPAN_DANGER("\The [src] suddenly appears from the vent!"))
 		else
 			entry_vent = null
 
@@ -478,7 +478,7 @@
 	if(damage > 0)
 		staggered += damage
 		if(damage >= config.low_hit_damage)
-			visible_message("<span class='danger'>[src] is staggered!</span>")
+			visible_message(SPAN_DANGER("[src] is staggered!"))
 
 	var/old_damage_state = damage_state
 	damage_state = round( (1-health/maxHealth) * 3.99 )
@@ -487,9 +487,9 @@
 	if(old_damage_state < damage_state)
 		var/damaged_sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 		playsound(src, damaged_sound, 100, 1)
-		visible_message("<span class='danger'>Chunks of flesh and bone are torn out of [src]!</span>")
+		visible_message(SPAN_DANGER("Chunks of flesh and bone are torn out of [src]!"))
 	else if(old_damage_state > damage_state)
-		visible_message("<span class='danger'>[src] regenerates some of its missing pieces!</span>")
+		visible_message(SPAN_DANGER("[src] regenerates some of its missing pieces!"))
 
 
 
@@ -500,6 +500,6 @@
 	..()
 
 /mob/living/simple_animal/scp/shyguy/ex_act(var/severity)
-	visible_message("<span class='danger'>[src] is caught in the explosion!</span>")
+	visible_message(SPAN_DANGER("[src] is caught in the explosion!"))
 	adjustBruteLoss(severity)
 	return 1

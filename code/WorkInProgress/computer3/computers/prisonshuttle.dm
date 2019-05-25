@@ -65,10 +65,10 @@ var/prison_shuttle_timeleft = 0
 
 	attack_hand(var/mob/user as mob)
 		if(!src.allowed(user) && (!hacked))
-			to_chat(user, "<span class='danger'>Access Denied.</span>")
+			to_chat(user, SPAN_DANGER("Access Denied."))
 			return
 		if(prison_break)
-			to_chat(user, "<span class='danger'>Unable to locate shuttle.</span>")
+			to_chat(user, SPAN_DANGER("Unable to locate shuttle."))
 			return
 		if(..())
 			return
@@ -100,7 +100,7 @@ var/prison_shuttle_timeleft = 0
 
 		if (href_list["sendtodock"])
 			if (!prison_can_move())
-				to_chat(usr, "<span class='danger'>The prison shuttle is unable to leave.</span>")
+				to_chat(usr, SPAN_DANGER("The prison shuttle is unable to leave."))
 				return
 			if(!prison_shuttle_at_station|| prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 			post_signal("prison")
@@ -114,7 +114,7 @@ var/prison_shuttle_timeleft = 0
 
 		else if (href_list["sendtostation"])
 			if (!prison_can_move())
-				to_chat(usr, "<span class='danger'>The prison shuttle is unable to leave.</span>")
+				to_chat(usr, SPAN_DANGER("The prison shuttle is unable to leave."))
 				return
 			if(prison_shuttle_at_station || prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 			post_signal("prison")
@@ -186,7 +186,7 @@ var/prison_shuttle_timeleft = 0
 				if (prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 
 				if (!prison_can_move())
-					to_chat(usr, "<span class='danger'>The prison shuttle is unable to leave.</span>")
+					to_chat(usr, SPAN_DANGER("The prison shuttle is unable to leave."))
 					return
 
 				var/area/start_location = locate(/area/shuttle/prison/prison)
@@ -215,7 +215,7 @@ var/prison_shuttle_timeleft = 0
 				if (prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return
 
 				if (!prison_can_move())
-					to_chat(usr, "<span class='danger'>The prison shuttle is unable to leave.</span>")
+					to_chat(usr, SPAN_DANGER("The prison shuttle is unable to leave."))
 					return
 
 				var/area/start_location = locate(/area/shuttle/prison/station)

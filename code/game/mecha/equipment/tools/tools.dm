@@ -52,8 +52,8 @@
 				M.take_overall_damage(dam_force)
 				M.adjustOxyLoss(round(dam_force/2))
 				M.updatehealth()
-				occupant_message("<span class='danger'>You squeeze [target] with the [src.name]!</span>")
-				chassis.visible_message("<span class='danger'>[chassis] squeezes [target]!</span>")
+				occupant_message(SPAN_DANGER("You squeeze [target] with the [src.name]!"))
+				chassis.visible_message(SPAN_DANGER("[chassis] squeezes [target]!"))
 				chassis.occupant.attack_log += text("\[[time_stamp()]\] <font color='red'>squeezed [M.name] with the [src.name]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was squeezed by [chassis.occupant.name] with the [src.name]</font>")
 				playsound(chassis.loc, 'sound/mecha/powerloader_attack.ogg', 25, 1)
@@ -156,7 +156,7 @@
 				return
 
 			if (src.reagents.total_volume < 1)
-				occupant_message("<span class='danger'>\The [src] is empty.</span>")
+				occupant_message(SPAN_DANGER("\The [src] is empty."))
 				return
 
 			playsound(chassis, 'sound/effects/extinguish.ogg', 25, 1, 10)
@@ -489,7 +489,7 @@
 			return chassis.dynattackby(W,user)
 		chassis.log_message("Attacked by [W]. Attacker - [user]")
 		if(prob(chassis.deflect_chance*deflect_coeff))
-			to_chat(user, "<span class='danger'>The [W] bounces off [chassis] armor.</span>")
+			to_chat(user, SPAN_DANGER("The [W] bounces off [chassis] armor."))
 			chassis.log_append_to_last("Armor saved.")
 		else
 			chassis.occupant_message("<font color='red'><b>[user] hits [chassis] with [W].</b></font>")
@@ -983,11 +983,11 @@
 			var/mob/living/M = target
 			if(M.stat>1) return
 			if(chassis.occupant.a_intent == "hurt")
-				chassis.occupant_message("<span class='danger'>You obliterate [target] with [src.name], leaving blood and guts everywhere.</span>")
-				chassis.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>")
+				chassis.occupant_message(SPAN_DANGER("You obliterate [target] with [src.name], leaving blood and guts everywhere."))
+				chassis.visible_message(SPAN_DANGER("[chassis] destroys [target] in an unholy fury."))
 			if(chassis.occupant.a_intent == DISARM_INTENT)
-				chassis.occupant_message("<span class='danger'>You tear [target]'s limbs off with [src.name].</span>")
-				chassis.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>")
+				chassis.occupant_message(SPAN_DANGER("You tear [target]'s limbs off with [src.name]."))
+				chassis.visible_message(SPAN_DANGER("[chassis] rips [target]'s arms off."))
 			else
 				step_away(M,chassis)
 				chassis.occupant_message("You smash into [target], sending them flying.")
@@ -1033,7 +1033,7 @@
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
 		else if(src.occupant != user)
-			to_chat(user, "<span class='danger'>[src.occupant] was faster. Try better next time, loser.</span>")
+			to_chat(user, SPAN_DANGER("[src.occupant] was faster. Try better next time, loser."))
 	else
 		to_chat(user, "You stop entering the exosuit.")
 
@@ -1107,13 +1107,13 @@
 		return
 
 	if (!isturf(usr.loc))
-		to_chat(usr, "<span class='danger'>You can't reach the passenger compartment from here.</span>")
+		to_chat(usr, SPAN_DANGER("You can't reach the passenger compartment from here."))
 		return
 
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		if(C.handcuffed)
-			to_chat(usr, "<span class='danger'>Kinda hard to climb in while handcuffed don't you think?</span>")
+			to_chat(usr, SPAN_DANGER("Kinda hard to climb in while handcuffed don't you think?"))
 			return
 
 	//search for a valid passenger compartment
@@ -1133,10 +1133,10 @@
 	//didn't find anything
 	switch (feedback)
 		if (OCCUPIED)
-			to_chat(usr, "<span class='danger'>The passenger compartment is already occupied!</span>")
+			to_chat(usr, SPAN_DANGER("The passenger compartment is already occupied!"))
 		if (LOCKED)
-			to_chat(usr, "<span class='danger'>The passenger compartment hatch is locked!</span>")
+			to_chat(usr, SPAN_DANGER("The passenger compartment hatch is locked!"))
 		if (OCCUPIED|LOCKED)
-			to_chat(usr, "<span class='danger'>All of the passenger compartments are already occupied or locked!</span>")
+			to_chat(usr, SPAN_DANGER("All of the passenger compartments are already occupied or locked!"))
 		if (0)
-			to_chat(usr, "<span class='danger'>\The [src] doesn't have a passenger compartment.</span>")
+			to_chat(usr, SPAN_DANGER("\The [src] doesn't have a passenger compartment."))

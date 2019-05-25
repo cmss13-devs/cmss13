@@ -8,7 +8,7 @@
 			return
 		src << link(config.wikiurl)
 	else
-		to_chat(src, "<span class='danger'>The wiki URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_DANGER("The wiki URL is not set in the server configuration."))
 	return
 
 /client/verb/forum()
@@ -20,7 +20,7 @@
 			return
 		src << link(config.forumurl)
 	else
-		to_chat(src, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_DANGER("The forum URL is not set in the server configuration."))
 	return
 
 /client/verb/rules()
@@ -32,7 +32,7 @@
 			return
 		src << link(config.rulesurl)
 	else
-		to_chat(src, "<span class='danger'>The rules URL is not set in the server configuration.</span>")
+		to_chat(src, SPAN_DANGER("The rules URL is not set in the server configuration."))
 	return
 
 /client/verb/discord()

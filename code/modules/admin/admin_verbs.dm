@@ -423,7 +423,7 @@ var/list/admin_verbs_mentor = list(
 	if(admin_holder && mob)
 		if(mob.invisibility == INVISIBILITY_OBSERVER)
 			mob.invisibility = initial(mob.invisibility)
-			to_chat(mob, "<span class='warning'><b>Invisimin off. Invisibility reset.</b></span>")
+			to_chat(mob, SPAN_WARNING("<b>Invisimin off. Invisibility reset.</b>"))
 			mob.alpha = max(mob.alpha + 100, 255)
 			mob.add_to_all_mob_huds()
 		else
@@ -724,7 +724,7 @@ var/list/admin_verbs_mentor = list(
 	if(!check_rights(R_FUN))	return
 
 	if(!istype(M, /mob/living/carbon/human))
-		to_chat(usr, "<span class='danger'>You can only do this to humans!</span>")
+		to_chat(usr, SPAN_DANGER("You can only do this to humans!"))
 		return
 	switch(alert("Are you sure you wish to edit this mob's appearance?",,"Yes","No"))
 		if("No")
@@ -816,12 +816,12 @@ var/list/admin_verbs_mentor = list(
 	set desc = "Adjust the number of predators present in a predator round."
 	if(admin_holder)
 		if(!ticker || !ticker.mode)
-			to_chat(src, "<span class='warning'>The game hasn't started yet!</span>")
+			to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 			return
 		src << ticker.mode.pred_current_num
 		var/value = input(src,"What is the new maximum number of predators?","Input:", ticker.mode.pred_maximum_num) as num|null
 		if(value < ticker.mode.pred_current_num)
-			to_chat(src, "<span class='warning'>Can't have max number of predators than there already are.</span>")
+			to_chat(src, SPAN_WARNING("Can't have max number of predators than there already are."))
 			return
 		if(value)
 			ticker.mode.pred_maximum_num = value

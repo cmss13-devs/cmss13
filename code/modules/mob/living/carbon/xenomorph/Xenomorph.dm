@@ -16,7 +16,7 @@
 	set desc = "Shows whether or not a mine is contained within the xenomorph list."
 
 	if(!ticker || ticker.current_state != GAME_STATE_PLAYING || !ticker.mode)
-		to_chat(src, "<span class='warning'>The round is either not ready, or has already finished.</span>")
+		to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished."))
 		return
 	if(mind in ticker.mode.xenomorphs)
 		to_chat(src, "<span class='debuginfo'>[src] mind is in the xenomorph list. Mind key is [mind.key].</span>")
@@ -504,14 +504,14 @@
 	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		puller.KnockDown(rand(caste.tacklemin,caste.tacklemax))
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
-		puller.visible_message("<span class='warning'>[puller] tried to pull [src] but instead gets a tail swipe to the head!</span>")
+		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
 		puller.stop_pulling()
 		return FALSE
 	return TRUE
 
 /mob/living/carbon/Xenomorph/resist_grab(moving_resist)
 	if(pulledby.grab_level)
-		visible_message("<span class='danger'>[src] has broken free of [pulledby]'s grip!</span>", null, null, 5)
+		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
 	pulledby.stop_pulling()
 	. = 1
 

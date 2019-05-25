@@ -126,7 +126,7 @@ REAGENT SCANNER
 	if (user.stat)
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(usr, "<span class='danger'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 
 	var/turf/location = user.loc
@@ -141,7 +141,7 @@ REAGENT SCANNER
 	if(abs(env_pressure - ONE_ATMOSPHERE) < 10)
 		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa"), 1)
 	else
-		user.show_message("<span class='danger'>Pressure: [round(env_pressure,0.1)] kPa</span>", 1)
+		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa"), 1)
 	if(env_pressure > 0)
 		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
 		user.show_message(SPAN_NOTICE("Temperature: [round(env_temp-T0C)]&deg;C"), 1)
@@ -183,17 +183,17 @@ REAGENT SCANNER
 	if (user.stat)
 		return
 	if (crit_fail)
-		to_chat(user, "<span class='danger'>This device has critically failed and is no longer functional!</span>")
+		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
 	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='danger'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(reagents.total_volume)
 		var/list/blood_traces = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
 			if(R.id != "blood")
 				reagents.clear_reagents()
-				to_chat(user, "<span class='danger'>The sample was contaminated! Please insert another sample</span>")
+				to_chat(user, SPAN_DANGER("The sample was contaminated! Please insert another sample"))
 				return
 			else
 				blood_traces = params2list(R.data["trace_chem"])
@@ -247,12 +247,12 @@ REAGENT SCANNER
 	if (user.stat)
 		return
 	if (!(istype(user, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(user, "<span class='danger'>You don't have the dexterity to do this!</span>")
+		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
 	if(!istype(O))
 		return
 	if (crit_fail)
-		to_chat(user, "<span class='danger'>This device has critically failed and is no longer functional!</span>")
+		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
 		return
 
 	if(!isnull(O.reagents))

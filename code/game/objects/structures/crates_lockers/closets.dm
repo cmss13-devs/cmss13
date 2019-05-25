@@ -173,7 +173,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message("<span class='danger'>[user] destroys the [src]. </span>")
+		visible_message(SPAN_DANGER("[user] destroys the [src]. "))
 		for(var/atom/movable/A as mob|obj in src)
 			A.loc = src.loc
 		qdel(src)
@@ -212,7 +212,7 @@
 		welded = !welded
 		update_icon()
 		for(var/mob/M in viewers(src))
-			M.show_message("<span class='warning'>[src] has been [welded?"welded shut":"unwelded"] by [user.name].</span>", 3, "You hear welding.", 2)
+			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), 3, "You hear welding.", 2)
 	else
 		src.attack_hand(user)
 	return
@@ -242,7 +242,7 @@
 		return
 	else
 		step_towards(O, loc)
-		user.visible_message("<span class='danger'>[user] stuffs [O] into [src]!</span>")
+		user.visible_message(SPAN_DANGER("[user] stuffs [O] into [src]!"))
 
 
 
@@ -282,7 +282,7 @@
 		src.add_fingerprint(usr)
 		src.toggle(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()

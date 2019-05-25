@@ -69,7 +69,7 @@ var/global/datum/global_init/init = new ()
 
 	if(!RoleAuthority)
 		RoleAuthority = new /datum/authority/branch/role()
-		to_world("<span class='danger'>\b Job setup complete</span>")
+		to_world(SPAN_DANGER("\b Job setup complete"))
 
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
@@ -96,14 +96,9 @@ var/global/datum/global_init/init = new ()
 	return
 
 //world/Topic(href, href_list[])
-//		to_world("Received a Topic() call!")
-//		to_world("[href]")
 //		for(var/a in href_list)
-//			to_world("[a]")
 //		if(href_list["hello"])
-//			to_world("Hello world!")
 //			return "Hello world!"
-//		to_world("End of Topic() call.")
 //		..()
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
@@ -479,7 +474,7 @@ proc/establish_old_db_connection()
 
 	if(ticker.delay_end) return
 
-	to_world("<span class='danger'><b>Restarting world!</b> \blue Initiated by MapDaemon.exe!</span>")
+	to_world(SPAN_DANGER("<b>Restarting world!</b> \blue Initiated by MapDaemon.exe!"))
 	log_admin("World/Topic() call (likely MapDaemon.exe) initiated a reboot.")
 
 	if(blackbox)

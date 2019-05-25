@@ -91,7 +91,7 @@
 		return
 
 	if(message_mode && bot_type == IS_ROBOT && !R.is_component_functioning("radio"))
-		to_chat(src, "<span class='danger'>Your radio isn't functional at this time.</span>")
+		to_chat(src, SPAN_DANGER("Your radio isn't functional at this time."))
 		return
 
 	switch(message_mode)
@@ -109,7 +109,7 @@
 			switch(bot_type)
 				if(IS_AI)
 					if (AI.aiRadio.disabledAi)
-						to_chat(src, "<span class='danger'>System Error - Transceiver Disabled</span>")
+						to_chat(src, SPAN_DANGER("System Error - Transceiver Disabled"))
 						return
 					else
 						log_say("[key_name(src)] : [message]")
@@ -124,7 +124,7 @@
 				switch(bot_type)
 					if(IS_AI)
 						if (AI.aiRadio.disabledAi)
-							to_chat(src, "<span class='danger'>System Error - Transceiver Disabled</span>")
+							to_chat(src, SPAN_DANGER("System Error - Transceiver Disabled"))
 							return
 						else
 							log_say("[key_name(src)] : [message]")

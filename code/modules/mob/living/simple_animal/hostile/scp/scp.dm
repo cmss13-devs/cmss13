@@ -102,7 +102,7 @@
 
 /mob/living/simple_animal/scp/proc/contain()
 	//SCP has been contained!
-	visible_message("<span class='danger'>[name] has been contained!</span>")
+	visible_message(SPAN_DANGER("[name] has been contained!"))
 	log_admin("[name] has been contained!.")
 	message_admins("ALERT: <A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>[name] has been contained!.")
 	qdel(src)

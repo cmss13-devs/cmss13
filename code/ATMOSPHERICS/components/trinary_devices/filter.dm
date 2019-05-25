@@ -124,7 +124,7 @@
 		return
 
 	if(!src.allowed(user))
-		to_chat(user, "<span class='danger'>Access denied.</span>")
+		to_chat(user, SPAN_DANGER("Access denied."))
 		return
 
 	var/dat

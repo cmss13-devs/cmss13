@@ -51,7 +51,7 @@
 		return
 
 	if(!reagent_volumes[reagent_ids[mode]])
-		to_chat(user, "<span class='warning'>The injector is empty.</span>")
+		to_chat(user, SPAN_WARNING("The injector is empty."))
 		return
 
 	to_chat(user, SPAN_NOTICE(" You inject [M] with the injector."))

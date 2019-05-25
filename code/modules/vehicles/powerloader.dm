@@ -37,8 +37,8 @@
 
 /obj/vehicle/powerloader/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
-		buckled_mob.visible_message("<span class='warning'>[user] tries to move [buckled_mob] out of [src].</span>",\
-		"<span class='danger'>[user] tries to move you out of [src]!</span>")
+		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),\
+		SPAN_DANGER("[user] tries to move you out of [src]!"))
 		var/oldloc = loc
 		var/olddir = dir
 		var/old_buckled_mob = buckled_mob
@@ -79,10 +79,10 @@
 	if(!ishuman(M))	return
 	var/mob/living/carbon/human/H = M
 	if(H.mind && user.mind.cm_skills && !user.mind.cm_skills.powerloader)
-		to_chat(H, "<span class='warning'>You don't seem to know how to operate [src].</span>")
+		to_chat(H, SPAN_WARNING("You don't seem to know how to operate [src]."))
 		return
 	if(H.r_hand || H.l_hand)
-		to_chat(H, "<span class='warning'>You need your two hands to use [src].</span>")
+		to_chat(H, SPAN_WARNING("You need your two hands to use [src]."))
 		return
 	. = ..()
 
@@ -142,25 +142,25 @@
 			if(!T.density)
 				for(var/atom/movable/AM in T.contents)
 					if(AM.density)
-						to_chat(user, "<span class='warning'>You can't drop [loaded] here, [AM] blocks the way.</span>")
+						to_chat(user, SPAN_WARNING("You can't drop [loaded] here, [AM] blocks the way."))
 						return
 				if(loaded.bound_height > 32)
 					var/turf/next_turf = get_step(T, NORTH)
 					if(next_turf.density)
-						to_chat(user, "<span class='warning'>You can't drop [loaded] here, something blocks the way.</span>")
+						to_chat(user, SPAN_WARNING("You can't drop [loaded] here, something blocks the way."))
 						return
 					for(var/atom/movable/AM in next_turf.contents)
 						if(AM.density)
-							to_chat(user, "<span class='warning'>You can't drop [loaded] here, [AM] blocks the way.</span>")
+							to_chat(user, SPAN_WARNING("You can't drop [loaded] here, [AM] blocks the way."))
 							return
 				if(loaded.bound_width > 32)
 					var/turf/next_turf = get_step(T, EAST)
 					if(next_turf.density)
-						to_chat(user, "<span class='warning'>You can't drop [loaded] here, something blocks the way.</span>")
+						to_chat(user, SPAN_WARNING("You can't drop [loaded] here, something blocks the way."))
 						return
 					for(var/atom/movable/AM in next_turf.contents)
 						if(AM.density)
-							to_chat(user, "<span class='warning'>You can't drop [loaded] here, [AM] blocks the way.</span>")
+							to_chat(user, SPAN_WARNING("You can't drop [loaded] here, [AM] blocks the way."))
 							return
 				user.visible_message(SPAN_NOTICE("[user] drops [loaded] on [T] with [src]."),
 				SPAN_NOTICE("You drop [loaded] on [T] with [src]."))
@@ -174,7 +174,7 @@
 		if(!C.anchored && !C.store_mobs)
 			for(var/X in C)
 				if(ismob(X)) //just in case.
-					to_chat(user, "<span class='warning'>Can't grab [loaded], it has a creature inside!</span>")
+					to_chat(user, SPAN_WARNING("Can't grab [loaded], it has a creature inside!"))
 					return
 			if(linked_powerloader)
 				C.forceMove(linked_powerloader)
@@ -184,7 +184,7 @@
 				user.visible_message(SPAN_NOTICE("[user] grabs [loaded] with [src]."),
 				SPAN_NOTICE("You grab [loaded] with [src]."))
 		else
-			to_chat(user, "<span class='warning'>Can't grab [loaded].</span>")
+			to_chat(user, SPAN_WARNING("Can't grab [loaded]."))
 
 	else if(istype(target, /obj/structure/largecrate))
 		var/obj/structure/largecrate/LC = target
@@ -197,7 +197,7 @@
 				user.visible_message(SPAN_NOTICE("[user] grabs [loaded] with [src]."),
 				SPAN_NOTICE("You grab [loaded] with [src]."))
 		else
-			to_chat(user, "<span class='warning'>Can't grab [loaded].</span>")
+			to_chat(user, SPAN_WARNING("Can't grab [loaded]."))
 
 /obj/item/powerloader_clamp/update_icon()
 	if(loaded) icon_state = "loader_clamp_full"

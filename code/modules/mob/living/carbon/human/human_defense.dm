@@ -94,7 +94,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				return 1
 		var/obj/item/weapon/I = l_hand
 		if(I.IsShield() && (prob(50 - round(damage / 3))))
-			visible_message("<span class='danger'><B>[src] blocks [attack_text] with the [l_hand.name]!</B></span>", null, null, 5)
+			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
 			return 1
 	if(r_hand && istype(r_hand, /obj/item/weapon))
 		if(combistick && istype(r_hand,/obj/item/weapon/combistick))
@@ -103,7 +103,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				return 1
 		var/obj/item/weapon/I = r_hand
 		if(I.IsShield() && (prob(50 - round(damage / 3))))
-			visible_message("<span class='danger'><B>[src] blocks [attack_text] with the [r_hand.name]!</B></span>", null, null, 5)
+			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
 			return 1
 	return 0
 
@@ -130,7 +130,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if(user == src) // Attacking yourself can't miss
 		target_zone = user.zone_selected
 	if(!target_zone)
-		visible_message("<span class='danger'><B>[user] misses [src] with \the [I]!</span>", null, null, 5)
+		visible_message(SPAN_DANGER("<B>[user] misses [src] with \the [I]!"), null, null, 5)
 		return 0
 
 	var/datum/limb/affecting = get_limb(target_zone)
@@ -145,9 +145,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		return 0
 
 	if(I.attack_verb && I.attack_verb.len)
-		visible_message("<span class='danger'><B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B></span>", null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
 	else
-		visible_message("<span class='danger'><B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B></span>", null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 	var/armor_block = run_armor_check(affecting, ARMOR_MELEE, "Your armor has protected your [hit_area].", "Your armor has softened hit to your [hit_area].")
@@ -199,7 +199,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			if("chest")//Easier to score a stun but lasts less time
 				if(prob((I.force + 10)))
 					apply_effect(6, WEAKEN, armor_block)
-					visible_message("<span class='danger'><B>[src] has been knocked down!</B></span>", null, null, 5)
+					visible_message(SPAN_DANGER("<B>[src] has been knocked down!</B>"), null, null, 5)
 
 				if(bloody)
 					bloody_body(src)
@@ -223,7 +223,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				if(isturf(O.loc))
 					if(put_in_active_hand(O))
 						if((O.flags_atom & ITEM_UNCATCHABLE) && !isYautja(src)) return
-						visible_message("<span class='warning'>[src] catches [O]!</span>", null, null, 5)
+						visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
 						throw_mode_off()
 						return
 
@@ -259,7 +259,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/datum/limb/affecting = get_limb(zone)
 		var/hit_area = affecting.display_name
 
-		src.visible_message("<span class='danger'>[src] has been hit in the [hit_area] by [O].</span>", null, null, 5)
+		src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [O]."), null, null, 5)
 
 		var/armor = getarmor(affecting, ARMOR_MELEE)
 
@@ -297,7 +297,7 @@ Contains most of the procs that are called when a mob is attacked by something
 			var/momentum = speed/2
 			var/dir = get_dir(O.throw_source, src)
 
-			visible_message("<span class='danger'>[src] staggers under the impact!</span>","<span class='danger'>You stagger under the impact!</span>", null, null, 5)
+			visible_message(SPAN_DANGER("[src] staggers under the impact!"),SPAN_DANGER("You stagger under the impact!"), null, null, 5)
 			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
 
 

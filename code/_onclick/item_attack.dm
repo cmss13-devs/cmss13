@@ -9,7 +9,7 @@
 /atom/movable/attackby(obj/item/W, mob/living/user)
 	if(W)
 		if(!(W.flags_item & NOBLUDGEON))
-			visible_message("<span class='danger'>[src] has been hit by [user] with [W].</span>", null, 5)
+			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, 5)
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
 
@@ -74,8 +74,8 @@
 		var/used_verb = "attacked"
 		if(attack_verb && attack_verb.len)
 			used_verb = pick(attack_verb)
-		user.visible_message("<span class='danger'>[M] has been [used_verb] with [src][showname].</span>",\
-			"<span class='danger'>You [used_verb] [M == user ? "yourself":M] with [src].</span>", null, 5)
+		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."), \
+			SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."), null, 5)
 
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
@@ -92,7 +92,7 @@
 			if("fire")
 				if (!(COLD_RESISTANCE in M.mutations))
 					M.apply_damage(power,BURN)
-					to_chat(M, "<span class='warning'>It burns!</span>")
+					to_chat(M, SPAN_WARNING("It burns!"))
 		M.updatehealth()
 	else
 		var/mob/living/carbon/human/H = M

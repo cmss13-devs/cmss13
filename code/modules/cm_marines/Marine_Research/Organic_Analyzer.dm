@@ -64,21 +64,21 @@ Note: Must be placed within 3 tiles of the WY Research Console
 			qdel(src)
 			return 1
 		else
-			to_chat(user, "<span class='danger'>You can't load the [src.name] while it's opened.</span>")
+			to_chat(user, SPAN_DANGER("You can't load the [src.name] while it's opened."))
 			return 1
 	if (disabled)
 		return
 	if (!linked_console)
-		to_chat(user, "<span class='danger'>The Weyland Brand Organic Analyzer must be linked to an R&D console first!</span>")
+		to_chat(user, SPAN_DANGER("The Weyland Brand Organic Analyzer must be linked to an R&D console first!"))
 		return
 	if (busy)
-		to_chat(user, "<span class='danger'>The Weyland Brand Organic Analyzer is busy right now.</span>")
+		to_chat(user, SPAN_DANGER("The Weyland Brand Organic Analyzer is busy right now."))
 		return
 	if (istype(O, /obj/item/XenoBio) && !loaded_item)
 		if(isrobot(user)) //Don't put your module items in there!
 			return
 		if(!O.origin_tech)
-			to_chat(user, "<span class='danger'>Can't do anything with that, maybe something organic...!</span>")
+			to_chat(user, SPAN_DANGER("Can't do anything with that, maybe something organic...!"))
 			return
 		//var/list/temp_tech = ConvertReqString2List(O.origin_tech) //This warning might just be Byond being silly.
 		busy = 1

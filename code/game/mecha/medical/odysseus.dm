@@ -16,7 +16,7 @@
 	moved_inside(var/mob/living/carbon/human/H as mob)
 		if(..())
 			if(H.glasses && istype(H.glasses, /obj/item/clothing/glasses/hud))
-				occupant_message("<span class='warning'>Your [H.glasses] prevent you from using the built-in medical hud.</span>")
+				occupant_message(SPAN_WARNING("Your [H.glasses] prevent you from using the built-in medical hud."))
 			else
 				var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 				A.add_hud_to(H)

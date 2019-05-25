@@ -12,7 +12,7 @@
 	armor_deflection = XENO_NO_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_FAST)
+	speed = XENO_SPEED_CONVERT(XENO_SPEED_HIGH)
 	spit_delay = 25
 	caste_desc = "A weak ranged combat alien."
 	tackle_chance = 40

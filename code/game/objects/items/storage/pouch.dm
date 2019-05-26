@@ -367,7 +367,8 @@
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with a M94 flare pack."
 	max_w_class = 2
-	storage_slots = 5
+	storage_slots = 8
+	max_storage_space = 8
 	draw_mode = 1
 	icon_state = "flare"
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
@@ -393,16 +394,13 @@
 		return TRUE
 	else
 		return ..()
+
 /obj/item/storage/pouch/flare/full/New()
 	..()
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-
-
-
+	contents = list()
+	var/i = 0
+	while(i++ < storage_slots)
+		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/pouch/radio
 	name = "radio pouch"

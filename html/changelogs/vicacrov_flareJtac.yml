@@ -1,0 +1,7 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - tweak: "Flare pouches and M94 marking flare packs now contain 8 flares."
+  - tweak: "The JTAC radio encryption key now has access to req frequency."

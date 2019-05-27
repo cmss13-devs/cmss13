@@ -345,6 +345,9 @@
 	
 	if(new_flameshape)
 		flameshape = new_flameshape
+	
+	if(!flame_color)
+		flame_color = "red"
 
 	icon_state = "[flame_color]_2"
 	if(fire_lvl) firelevel = fire_lvl
@@ -402,7 +405,7 @@
 					for(var/obj/O in T) // certain object block the spread
 						if(!O.CanPass(src, loc))
 							break
-					if(prob(15) && flameshape != "substar") // chance to branch a little
+					if(prob(15) && flameshape != FLAMESHAPE_MINORSTAR) // chance to branch a little
 						new_spread_amt = 1.5
 					spawn(0)
 						new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, FLAMESHAPE_MINORSTAR)

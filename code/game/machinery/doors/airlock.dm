@@ -148,12 +148,15 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 
 /obj/machinery/door/airlock/proc/take_damage(dam)
 	if(!dam || unacidable)
-		return
+		return FALSE
 
 	damage = max(0, damage + dam)
 
 	if(damage >= damage_cap)
 		destroy_airlock()
+		return TRUE
+
+	return FALSE
 
 /obj/machinery/door/airlock/proc/destroy_airlock()
 	if(!src || unacidable)
@@ -176,9 +179,12 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 	qdel(src)
 
-/obj/machinery/door/airlock/ex_act(severity)
+/obj/machinery/door/airlock/ex_act(severity, explosion_direction)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK
-	take_damage(exp_damage)
+	var/location = get_turf(src)
+	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
+		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+	
 
 /obj/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
 	bullet_ping(Proj)

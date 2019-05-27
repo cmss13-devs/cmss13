@@ -1598,7 +1598,7 @@
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
-	flags_ammo_behavior = AMMO_INCENDIARY
+	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_STOPPED_BY_COVER
 
 /datum/ammo/bullet/shrapnel/incendiary/New()
 	..()
@@ -1606,6 +1606,33 @@
 	damage = config.mlow_hit_damage
 	penetration = config.low_armor_penetration
 
+/datum/ammo/bullet/shrapnel/light // weak shrapnel
+	name = "light shrapnel"
+	icon_state = "shrapnel_light"
+
+/datum/ammo/bullet/shrapnel/light/New()
+	..()
+	damage = config.base_hit_damage
+	penetration = config.min_armor_penetration
+	shell_speed = config.slow_shell_speed
+	shrapnel_chance = 0
+
+/datum/ammo/bullet/shrapnel/light/glass
+	name = "glass shrapnel"
+	icon_state = "shrapnel_glass"
+
+/datum/ammo/bullet/shrapnel/light/effect/ // no damage, but looks bright and neat
+	name = "bright shrapnel"
+
+/datum/ammo/bullet/shrapnel/light/effect/ver1
+	icon_state = "shrapnel_bright1"
+
+/datum/ammo/bullet/shrapnel/light/effect/ver2
+	icon_state = "shrapnel_bright2"
+
+/datum/ammo/bullet/shrapnel/light/effect/New()
+	..()
+	damage = 1 // Tickle tickle
 
 /*
 //================================================

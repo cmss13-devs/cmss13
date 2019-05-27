@@ -193,8 +193,12 @@
 				B.ex_act(severity, direction)
 	health -= severity
 	if(health <= 0)
+		var/location = get_turf(src)
 		handle_debris(severity, direction)
+		if(prob(50)) // no message spam pls
+			src.visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
 		qdel(src)
+		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light)
 	else
 		update_health()
 

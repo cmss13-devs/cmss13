@@ -74,9 +74,11 @@
 		if(0 to INFINITY)
 			healthcheck(0, 1)
 		if(-2000 to 0)
+			var/location = get_turf(src)
 			playsound(src, "shatter", 50, 1)
 			handle_debris(severity,explosion_direction)
 			qdel(src)
+			create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
 		else
 			handle_debris(severity,explosion_direction)
 			qdel(src)
@@ -461,9 +463,11 @@
 		if(0 to INFINITY)
 			healthcheck(0, 1)
 		if(-3000 to 0)
+			var/location = get_turf(src)
 			playsound(src, "shatter", 50, 1)
 			handle_debris(severity,explosion_direction)
 			shatter_window(0)
+			create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
 		else
 			qdel(src)
 	return

@@ -123,6 +123,12 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		spawn(0) //spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot
 			T.explosion_spread(src, epicenter, spread_power - resistance, direction, falloff)
 
+	if(power >= 100) // powerful explosions send out some special effects
+		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
+		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1)
+		sleep(1)
+		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2)
+
 	spawn(2) //just in case something goes wrong
 		if(explosion_in_progress)
 			explosion_damage()
@@ -237,7 +243,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		var/x = T.x
 		var/y = T.y
 		var/z = T.z
-		T.ex_act(severity)
+		T.ex_act(severity, direction)
 		if(!T)
 			T = locate(x,y,z)
 		for(var/atom/A in T)

@@ -930,6 +930,7 @@
 		list("Injector (Oxycodone)", 2, /obj/item/reagent_container/hypospray/autoinjector/Oxycodone, null, "black"),
 		list("Injector (QuickClot)", 1, /obj/item/reagent_container/hypospray/autoinjector/quickclot, null, "black"),
 		list("Injector (Tricord)", 1, /obj/item/reagent_container/hypospray/autoinjector/tricord, null, "black"),
+		list("Injector (Epinephrine)", 2, /obj/item/reagent_container/hypospray/autoinjector/adrenaline, null, "black"),
 
 		list("Health analyzer", 4, /obj/item/device/healthanalyzer, null, "black"),
 		list("Medical HUD glasses", 4, /obj/item/clothing/glasses/hud/health, null, "black"),

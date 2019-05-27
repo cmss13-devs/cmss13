@@ -20727,6 +20727,8 @@
 	pixel_x = 24;
 	pixel_y = 0
 	},
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/box/autoinjectors,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (EAST)";
 	icon_state = "sterile_green_side";
@@ -61593,6 +61595,9 @@
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
 /obj/item/storage/box/pillbottles,
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/box/autoinjectors,
+/obj/item/storage/box/autoinjectors,
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (WEST)";
 	icon_state = "sterile_green_side";
@@ -67448,11 +67453,10 @@
 /area/almayer/evacuation/pod18)
 "uyJ" = (
 /obj/structure/table/almayer,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/pillbottles,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"

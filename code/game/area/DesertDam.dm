@@ -683,7 +683,7 @@
 	name = "Shipping Valley"
 	icon_state = "valley_south_west"
 /area/desert_dam/exterior/valley/valley_telecoms
-	name = "Telecmms Valley"
+	name = "Telecomms Valley"
 	icon_state = "valley_west"
 /area/desert_dam/exterior/valley/valley_crashsite
 	name = "Crash Site Valley"

@@ -1068,6 +1068,10 @@
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel there!"))
 		return
 
+	if(get_area(T).flags_atom & AREA_NOTUNNEL)
+		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
+		return
+
 	for(var/obj/O in T.contents)
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)

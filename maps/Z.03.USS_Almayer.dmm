@@ -43649,7 +43649,7 @@
 /obj/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "pilotentrance";
-	name = "\improper Pilot Workshop Shutters"
+	name = "\improper Workshop Shutters"
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -44181,7 +44181,7 @@
 /obj/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "pilotentrance";
-	name = "\improper Pilot Workshop Shutters"
+	name = "\improper Workshop Shutters"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-test_floor4";
@@ -49443,7 +49443,10 @@
 	icon_state = "tube1";
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/engineering_welding,
+/obj/structure/closet/secure_closet/engineering_welding{
+	req_access = null;
+	req_one_access = list(7,23,27)
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -51600,10 +51603,10 @@
 	},
 /obj/machinery/door_control{
 	id = "pilotentrance";
-	name = "Pilot Workshop Shutters";
+	name = "Workshop Shutters";
 	pixel_x = 0;
 	pixel_y = 30;
-	req_one_access = list(2,3,12,19,22);
+	req_one_access = list(2,3,7,12,19,22,27);
 	throw_range = 15
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -52156,7 +52159,9 @@
 	},
 /area/almayer/hallways/repair_bay)
 "cdE" = (
-/obj/machinery/vending/engivend,
+/obj/machinery/vending/engivend{
+	req_access = list(7,23,27)
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -52199,7 +52204,9 @@
 	},
 /area/almayer/hallways/port_hallway)
 "cdJ" = (
-/obj/machinery/vending/engineering,
+/obj/machinery/vending/engineering{
+	req_access = list(7,23,27)
+	},
 /obj/effect/decal/warning_stripes{
 	tag = "icon-E";
 	icon_state = "E"
@@ -53024,10 +53031,10 @@
 	},
 /obj/machinery/door_control{
 	id = "pilotentrance";
-	name = "Pilot Workshop Shutters";
+	name = "Workshop Shutters";
 	pixel_x = 0;
 	pixel_y = 30;
-	req_one_access = list(2,3,12,19,22);
+	req_one_access = list(2,3,7,12,19,22,27);
 	throw_range = 15
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -68193,6 +68200,13 @@
 	dir = 4
 	},
 /area/almayer/hallways/port_hallway)
+"vBj" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/tool/soap,
+/turf/open/floor/almayer,
+/area/almayer/living/port_emb)
 "vCO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -118857,7 +118871,7 @@ bmt
 lqr
 nsY
 vyA
-bmt
+vBj
 bvN
 nsY
 aLd
@@ -118889,7 +118903,7 @@ bvS
 aLd
 nsY
 vyA
-bmt
+vBj
 bvN
 nsY
 jjw

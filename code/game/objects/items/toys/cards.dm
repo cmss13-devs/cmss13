@@ -156,6 +156,9 @@
 	var/concealed = 0
 	var/list/cards = list()
 
+/obj/item/toy/handcard/aceofspades
+	icon_state = "spades_ace"
+	desc = "An Ace of Spades"
 
 /obj/item/toy/handcard/attackby(obj/item/O, mob/user)
 	if(istype(O,/obj/item/toy/handcard))

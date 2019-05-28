@@ -166,3 +166,33 @@ var/global/list/gear_datums = list()
 	path = /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green
 	slot = WEAR_FACE
 	cost = 2
+
+/datum/gear/aceofspades
+	display_name = "Ace of Spades"
+	path = /obj/item/toy/handcard/aceofspades
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/candy
+	display_name = "Bar of candy"
+	path = /obj/item/reagent_container/food/snacks/candy
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/lime
+	display_name = "Lucky Lime"
+	path = /obj/item/reagent_container/food/snacks/grown/lime
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/pen
+	display_name = "Pen"
+	path = /obj/item/tool/pen
+	slot = WEAR_IN_BACK
+	cost = 2
+
+/datum/gear/lighter
+	display_name = "Random Lighter"
+	path = /obj/item/tool/lighter/random
+	slot = WEAR_IN_BACK
+	cost = 2

@@ -259,6 +259,18 @@
 	name = "\improper Central Ring"
 	icon_state = "hallC1"
 
+/area/prison/hallway/central/east
+	name = "\improper East Central Ring"
+
+/area/prison/hallway/central/north
+	name = "\improper North Central Ring"
+
+/area/prison/hallway/central/south
+	name = "\improper South Central Ring"
+
+/area/prison/hallway/central/west
+	name = "\improper West Central Ring"
+
 /area/prison/hallway/east
 	name = "\improper East Hallway"
 	icon_state = "east"

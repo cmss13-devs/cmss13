@@ -13,7 +13,8 @@
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_VERYHIGH
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
+	speed = XENO_SPEED_SLOW
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	tacklemin = 4
 	tacklemax = 5
@@ -35,7 +36,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs."
 	upgrade = 1
-	
+
 	spit_delay = 20
 	tackle_chance = 45
 	aura_strength = 3
@@ -44,7 +45,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "The biggest and baddest xeno. The Empress controls multiple hives and planets."
 	upgrade = 2
-	
+
 	spit_delay = 15
 	tackle_chance = 50
 	aura_strength = 4
@@ -55,7 +56,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "The most perfect Xeno form imaginable."
 	upgrade = 3
-	
+
 	spit_delay = 10
 	tackle_chance = 55
 	aura_strength = 5
@@ -66,7 +67,7 @@
 	upgrade_name = "Primordial"
 	caste_desc = "Natural selection's masterwork, each brush stroke of genetics, deadly, each trait, glorious, every detail, minutely crafted. The perfect being, the perfect queen."
 	upgrade = 4
-	
+
 	spit_delay = 10
 	tackle_chance = 65
 	aura_strength = 6
@@ -244,7 +245,7 @@
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()
 	var/stored_larvae = hive_datum[hivenumber].stored_larva
-	
+
 	stat("Burrowed Larvae:", "[stored_larvae]")
 	stat("Leaders:", "[hive.xeno_leader_list.len] / [hive.queen_leader_limit]")
 	return 1

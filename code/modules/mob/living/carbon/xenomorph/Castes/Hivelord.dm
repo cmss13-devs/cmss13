@@ -13,7 +13,8 @@
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
+	speed = XENO_SPEED_MEDIUM
+	speed_mod = XENO_SPEED_MOD_SMALL
 
 	evolution_allowed = FALSE
 	caste_desc = "A builder of really big hives."
@@ -32,7 +33,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A builder of really big hives hives. It looks a little more dangerous."
 	upgrade = 1
-	
+
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
@@ -42,7 +43,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A builder of really big hives. It looks pretty strong."
 	upgrade = 2
-	
+
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
@@ -52,7 +53,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "An extreme construction machine. It seems to be building walls..."
 	upgrade = 3
-	
+
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 50

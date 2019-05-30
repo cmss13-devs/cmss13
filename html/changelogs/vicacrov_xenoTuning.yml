@@ -1,0 +1,8 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - bugfix: "Xeno speed has skyrocketed since the armour update. With this update, all xeno speed values were toned down AS THEY WERE A MONTH AGO. This is not a nerf, it is a long pending bugfix."
+  - tweak: "Some castes gained some extra speed than they had a month ago."
+  - bugfix: "Sentinels no longer drag as quickly as runners, they drag just like drones, lurkers, etc."

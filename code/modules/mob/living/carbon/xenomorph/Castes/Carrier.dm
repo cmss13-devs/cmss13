@@ -14,7 +14,8 @@
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDHIGH)
+	speed = XENO_SPEED_MEDHIGH
+	speed_mod = XENO_SPEED_MOD_SMALL
 
 	tackle_chance = 40
 	evolution_allowed = FALSE

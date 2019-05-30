@@ -14,8 +14,9 @@
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_HIGH
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
-	
+	speed = XENO_SPEED_MEDHIGH
+	speed_mod = XENO_SPEED_MOD_MED
+
 	deevolves_to = "Drone"
 	caste_desc = "A digger and trapper."
 	burrow_cooldown = 50

@@ -13,7 +13,8 @@
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDIUM)
+	speed = XENO_SPEED_HIGH
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	evolves_to = list("Praetorian", "Crusher")
 	deevolves_to = "Defender"
@@ -42,7 +43,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "An hulking beast capable of effortlessly breaking and tearing through its enemies."
 	upgrade = 3
-	
+
 	tackle_chance = 48
 	agility_speed_increase = -0.9
 

@@ -13,7 +13,8 @@
 	armor_deflection = XENO_NO_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_FAST)
+	speed = XENO_SPEED_FAST
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	deevolves_to = "Runner"
 	caste_desc = "A fast, powerful backline combatant."

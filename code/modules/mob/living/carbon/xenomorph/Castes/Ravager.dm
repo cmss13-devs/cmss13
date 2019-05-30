@@ -13,7 +13,8 @@
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_HIGHMINUS)
+	speed = XENO_SPEED_HIGHFAST
+	speed_mod = XENO_SPEED_MOD_MED
 
 	tacklemin = 3
 	tacklemax = 4
@@ -52,7 +53,7 @@
 	tacklemin = 5
 	tacklemax = 6
 	tackle_chance = 58
-	
+
 	max_health_scalar = XENO_SCALAR_HEALTH_HIGH
 
 /datum/caste_datum/ravager/ancient

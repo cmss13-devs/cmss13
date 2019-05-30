@@ -3224,7 +3224,8 @@
 	dir = 1;
 	id = "nexus_blast";
 	name = "Nexus Lockdown";
-	pixel_x = 25
+	pixel_x = 25;
+	unacidable = 1
 	},
 /obj/machinery/power/apc{
 	dir = 1;
@@ -7365,7 +7366,8 @@
 /obj/machinery/door_control{
 	id = "science_blast";
 	name = "Science Wing Lockdown";
-	pixel_x = 25
+	pixel_x = 25;
+	unacidable = 1
 	},
 /obj/effect/landmark{
 	name = "crap_item"
@@ -14598,7 +14600,8 @@
 /obj/machinery/door_control{
 	id = "corporate_blast";
 	name = "Dome Lockdown";
-	pixel_y = -25
+	pixel_y = -25;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-whiteblue (NORTH)";
@@ -18329,7 +18332,8 @@
 	},
 /obj/machinery/door_control{
 	id = "nexus_blast";
-	name = "Nexus Lockdown"
+	name = "Nexus Lockdown";
+	unacidable = 1
 	},
 /obj/item/document_objective/report,
 /turf/open/floor{
@@ -19091,7 +19095,7 @@
 	name = "Dome Access";
 	pixel_x = 25;
 	pixel_y = 0;
-	req_access = newlist()
+	unacidable = 1
 	},
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)

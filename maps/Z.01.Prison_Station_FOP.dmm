@@ -209,7 +209,8 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door_control{
 	id = "biological_testing_1";
-	name = "Containment Shutter Control"
+	name = "Containment Shutter Control";
+	unacidable = 1
 	},
 /obj/structure/window/reinforced{
 	dir = 8
@@ -297,7 +298,8 @@
 	},
 /obj/machinery/door_control{
 	id = "biological_testing_2";
-	name = "Containment Shutter Control"
+	name = "Containment Shutter Control";
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -20733,10 +20735,6 @@
 	dir = 10
 	},
 /area/prison/residential/north)
-"aLc" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/prison/residential/north)
 "aLd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -23996,7 +23994,8 @@
 	id = "central";
 	name = "Station Lockdown Shutter Control";
 	pixel_x = 0;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor/carpet,
 /area/prison/command/secretary_office)
@@ -62050,7 +62049,8 @@
 /obj/machinery/door_control{
 	id = "riot_armory";
 	name = "Riot Armory Access";
-	pixel_x = -24
+	pixel_x = -24;
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -62070,7 +62070,8 @@
 /obj/machinery/door_control{
 	id = "lethal_armory";
 	name = "Lethal Armory Access";
-	pixel_x = 24
+	pixel_x = 24;
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -67101,8 +67102,10 @@
 "cpe" = (
 /obj/machinery/door_control{
 	id = "execution";
+	name = "Remote Door Control";
 	pixel_x = 24;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -67246,7 +67249,8 @@
 /obj/machinery/door_control{
 	id = "disposals";
 	name = "Disposals Shutter";
-	pixel_x = -24
+	pixel_x = -24;
+	unacidable = 1
 	},
 /turf/open/floor/plating,
 /area/prison/disposal)
@@ -68504,7 +68508,8 @@
 	id = "pirate_cargo";
 	name = "Cargo Door Control";
 	pixel_x = 24;
-	pixel_y = 5
+	pixel_y = 5;
+	unacidable = 1
 	},
 /turf/open/shuttle,
 /area/prison/pirate)
@@ -84186,7 +84191,7 @@ aIn
 aIL
 aIL
 aKk
-aLc
+avm
 aab
 aab
 aab

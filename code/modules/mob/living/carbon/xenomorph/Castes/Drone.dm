@@ -11,7 +11,8 @@
 	max_health = XENO_HEALTH_LOWMEDIUM
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_CONVERT( XENO_SPEED_HIGH )
+	speed = XENO_SPEED_HIGHFAST
+	speed_mod = XENO_SPEED_MOD_MED
 	xeno_explosion_resistance = XENO_NO_EXPLOSIVE_ARMOR
 
 	aura_strength = 0.5 //Drone's aura is the weakest. At the top of their evolution, it's equivalent to a Young Queen Climbs by 0.5 to 2

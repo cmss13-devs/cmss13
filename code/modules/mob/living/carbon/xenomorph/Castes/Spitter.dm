@@ -13,7 +13,8 @@
 	armor_deflection = XENO_LOW_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_MEDIUM
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_HIGHMINUS)
+	speed = XENO_SPEED_HIGH
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	spit_delay = 20
 	caste_desc = "Ptui!"
@@ -27,7 +28,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A ranged damage dealer. It looks a little more dangerous."
 	upgrade = 1
-	
+
 	spit_delay = 20
 	tacklemin = 3
 	tacklemax = 4
@@ -38,7 +39,7 @@
 	upgrade_name = "Elder"
 	caste_desc = "A ranged damage dealer. It looks pretty strong."
 	upgrade = 2
-	
+
 	spit_delay = 15
 	tacklemin = 4
 	tacklemax = 5
@@ -49,7 +50,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "A ranged destruction machine."
 	upgrade = 3
-	
+
 	spit_delay = 12
 	tacklemin = 4
 	tacklemax = 5

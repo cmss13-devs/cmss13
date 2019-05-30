@@ -1,6 +1,6 @@
 /datum/caste_datum/defender
 	caste_name = "Defender"
-	upgrade_name = "Young"	
+	upgrade_name = "Young"
 	caste_desc = "A sturdy front line combatant."
 	tier = 1
 	upgrade = 0
@@ -14,7 +14,8 @@
 	armor_deflection = XENO_HEAVY_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDIUM)
+	speed = XENO_SPEED_HIGH
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	charge_type = 2 //Pounce - Hunter
 	evolves_to = list("Warrior")

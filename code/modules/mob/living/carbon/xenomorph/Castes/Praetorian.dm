@@ -13,7 +13,8 @@
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_MEDIUM
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDHIGH)
+	speed = XENO_SPEED_HIGH
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	tackle_chance = 45
 	evolution_allowed = FALSE
@@ -45,7 +46,7 @@
 	upgrade_name = "Ancient"
 	caste_desc = "Its mouth looks like a minigun."
 	upgrade = 3
-	
+
 	spit_delay = 12
 	tackle_chance = 55
 	aura_strength = 4

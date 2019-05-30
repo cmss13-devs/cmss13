@@ -8,12 +8,13 @@
 	melee_damage_upper = XENO_DAMAGE_LOWPLUS
 	max_health = XENO_HEALTH_HIGH
 	plasma_gain = XENO_PLASMA_GAIN_HIGHMED
-	plasma_max = XENO_PLASMA_HIGHMEDIUM	
+	plasma_max = XENO_PLASMA_HIGHMEDIUM
 	xeno_explosion_resistance = XENO_MEDIUM_EXPLOSIVE_ARMOR
 	armor_deflection = XENO_NO_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_MEDSLOW)
+	speed = XENO_SPEED_SLOW
+	speed_mod = XENO_SPEED_MOD_SMALL
 
 	evolution_allowed = FALSE
 	deevolves_to = "Spitter"

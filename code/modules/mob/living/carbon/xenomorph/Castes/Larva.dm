@@ -10,8 +10,8 @@
 	plasma_max_scalar = 1.0
 	max_health_scalar = 1.0
 	caste_desc = "D'awwwww, so cute!"
-	speed = -1.6 //Zoom!
-	speed_scalar = 1.0
+	speed = XENO_SPEED_SANICFAST
+	speed_mod = XENO_SPEED_MOD_SMALL
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
 	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
 

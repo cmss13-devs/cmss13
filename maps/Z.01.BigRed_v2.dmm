@@ -508,7 +508,8 @@
 /obj/machinery/door_control{
 	id = "Spaceport";
 	name = "Storm Shutters";
-	pixel_x = 32
+	pixel_x = 32;
+	unacidable = 1
 	},
 /obj/item/tool/pen,
 /turf/open/floor{
@@ -2467,7 +2468,8 @@
 /obj/machinery/door_control{
 	id = "tcomms";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -2586,7 +2588,8 @@
 /obj/machinery/door_control{
 	id = "Marshall Offices";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -3491,7 +3494,8 @@
 /obj/machinery/door_control{
 	id = "Marshall Offices";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	dir = 2;
@@ -4720,7 +4724,8 @@
 /obj/machinery/door_control{
 	id = "Marshall Offices";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -5861,7 +5866,8 @@
 /obj/machinery/door_control{
 	id = "Office Complex 2";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -6304,7 +6310,8 @@
 /obj/machinery/door_control{
 	id = "Marshall Offices";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "redfull";
@@ -7397,7 +7404,8 @@
 	id = "Medical";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = 32
+	pixel_y = 32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -8623,8 +8631,9 @@
 "ate" = (
 /obj/machinery/door_control{
 	id = "safe_blast";
-	name = "Blast-Door";
-	pixel_y = -25
+	name = "Blast Door";
+	pixel_y = -25;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-elevatorshaft (NORTH)";
@@ -8919,7 +8928,8 @@
 	pixel_x = 0;
 	pixel_y = -5;
 	req_access = list(7);
-	specialfunctions = 4
+	specialfunctions = 4;
+	unacidable = 1
 	},
 /turf/closed/wall/r_wall,
 /area/bigredv2/caves/lambda/breakroom)
@@ -9373,7 +9383,8 @@
 /obj/machinery/door_control{
 	id = "sci_br";
 	name = "Observation Shutters";
-	pixel_y = 28
+	pixel_y = 28;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-darkpurplecorners2";
@@ -9412,7 +9423,8 @@
 /obj/machinery/door_control{
 	id = "sci_br";
 	name = "Observation Shutters";
-	pixel_y = 28
+	pixel_y = 28;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-darkpurplecorners2";
@@ -10590,7 +10602,8 @@
 	id = "Medical";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen";
@@ -12163,7 +12176,8 @@
 	id = "Dormitories";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /obj/machinery/camera/autoname{
 	dir = 2;
@@ -12780,7 +12794,8 @@
 	id = "Medical";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /obj/machinery/iv_drip,
 /turf/open/floor{
@@ -13684,7 +13699,8 @@
 	id = "Greenhouse";
 	name = "Storm Shutters";
 	pixel_x = 32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
@@ -14139,7 +14155,8 @@
 	id = "Dormitories";
 	name = "Storm Shutters";
 	pixel_x = -32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -15210,7 +15227,8 @@
 	id = "Dormitories";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -15339,7 +15357,8 @@
 	id = "Library";
 	name = "Storm Shutters";
 	pixel_x = 32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -17857,7 +17876,8 @@
 	id = "Kitchen Greenhouse";
 	name = "Storm Shutters";
 	pixel_x = 32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
@@ -18783,7 +18803,8 @@
 	pixel_x = -25;
 	pixel_y = 0;
 	req_access = list(7);
-	specialfunctions = 4
+	specialfunctions = 4;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen (SOUTHWEST)";
@@ -18920,7 +18941,8 @@
 	id = "Bar Complex";
 	name = "Storm Shutters";
 	pixel_x = 32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /obj/machinery/camera/autoname{
 	dir = 8
@@ -21048,7 +21070,8 @@
 	id = "Operations";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -21165,7 +21188,8 @@
 	id = "Kitchen";
 	name = "Storm Shutters";
 	pixel_x = 32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-yellowfull";
@@ -23088,7 +23112,8 @@
 /obj/machinery/door_control{
 	id = "General Store";
 	name = "Storm Shutters";
-	pixel_x = 32
+	pixel_x = 32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	tag = "icon-yellowfull";
@@ -25296,7 +25321,8 @@
 	id = "Operations";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /obj/effect/landmark{
 	name = "good_item"
@@ -26365,7 +26391,8 @@
 /obj/machinery/door_control{
 	id = "Cargonia";
 	name = "Storm Shutters";
-	pixel_x = 32
+	pixel_x = 32;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -26401,7 +26428,8 @@
 /obj/machinery/door_control{
 	id = "Cargonia";
 	name = "Storm Shutters";
-	pixel_x = 32
+	pixel_x = 32;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -26873,7 +26901,8 @@
 /obj/machinery/door_control{
 	id = "Chapel";
 	name = "Storm Shutters";
-	pixel_x = -32
+	pixel_x = -32;
+	unacidable = 1
 	},
 /turf/open/floor{
 	icon_state = "cult";
@@ -26996,7 +27025,8 @@
 	id = "Office Complex 1";
 	name = "Storm Shutters";
 	pixel_x = -32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -28305,7 +28335,8 @@
 	id = "Office Complex 1";
 	name = "Storm Shutters";
 	pixel_x = -32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor{
 	dir = 8;
@@ -31141,7 +31172,8 @@
 	id = "Filtration Plant";
 	name = "Storm Shutters";
 	pixel_x = -32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -32524,7 +32556,8 @@
 	id = "Engineering";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -32928,7 +32961,8 @@
 	id = "Filtration Plant";
 	name = "Storm Shutters";
 	pixel_x = -32;
-	pixel_y = 0
+	pixel_y = 0;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -33533,7 +33567,8 @@
 	name = "Reactor Radiation Shielding control";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list(7)
+	req_access = list(7);
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -33663,7 +33698,8 @@
 	id = "Engineering";
 	name = "Storm Shutters";
 	pixel_x = 0;
-	pixel_y = -32
+	pixel_y = -32;
+	unacidable = 1
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)

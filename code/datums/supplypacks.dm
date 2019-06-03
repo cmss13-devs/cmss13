@@ -1419,7 +1419,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_m1911
-	name = "M4A3 .45 magazines crate (x12)"
+	name = "M1911 .45 magazines crate (x12)"
 	contains = list(
 					/obj/item/ammo_magazine/pistol/m1911,
 					/obj/item/ammo_magazine/pistol/m1911,
@@ -1436,7 +1436,7 @@ AMMO
 					)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo
-	containername = "M4A3 .45 ammo crate"
+	containername = "M1911 .45 ammo crate"
 	group = "Ammo"
 
 

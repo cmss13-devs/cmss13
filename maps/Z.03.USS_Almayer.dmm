@@ -56749,7 +56749,6 @@
 "cok" = (
 /obj/structure/table/almayer,
 /obj/item/clipboard,
-/obj/item/device/binoculars,
 /obj/machinery/light{
 	tag = "icon-tube1 (NORTH)";
 	icon_state = "tube1";

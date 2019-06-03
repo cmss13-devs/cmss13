@@ -649,25 +649,6 @@
 	for(var/mob/living/carbon/Xenomorph/L in xeno_leader_list)
 		L.handle_xeno_leader_pheromones()
 
-/datum/hive_status/proc/handle_evolution_alert()
-	if (!totalXenos.len) //sanity check!
-		isSlotOpen = FALSE
-		return
-
-	if (((tier_2_xenos.len + tier_3_xenos.len) / totalXenos.len * tier_slot_multiplier) > 0.5)
-		if(!isSlotOpen)//plus a check to stop message spam
-			xeno_message(SPAN_XENONOTICE("The hive can support more second tier castes!"),2, hivenumber)
-			isSlotOpen = TRUE
-			return
-
-	if ((tier_3_xenos.len / totalXenos.len * tier_slot_multiplier) > 0.25)
-		if(!isSlotOpen)//plus a check to stop message spam
-			xeno_message(SPAN_XENONOTICE("The hive can support more third tier castes!"),2, hivenumber)
-			isSlotOpen = TRUE
-			return
-
-	isSlotOpen = FALSE
-
 /datum/hive_status/proc/handle_nuke_alert(var/timing, var/area/loc)
 	if (!totalXenos.len) //sanity check!
 		return

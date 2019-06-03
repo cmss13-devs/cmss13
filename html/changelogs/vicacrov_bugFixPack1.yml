@@ -1,0 +1,11 @@
+author: Vicacrov
+
+delete-after: True
+
+changes:
+  - bugfix: "Melting containers now makes containers spit out the intel items (reports, folders) in them, instead of having them deleted."
+  - bugfix: "Fixes a supply crate being named M4A3 ammo, when it is, in fact, an M1911 one."
+  - bugfix: "Increased the volume of the dropship's engines."
+  - bugfix: "Fixed some of the plasteel barricade's building steps being instant, as opposed to the metal barricade ones."
+  - bugfix: "Removed the binoculars from the TC quarters."
+  - rscdel: "Removed the incorrect the hive can support a new tier X spam, until a better system is written for it."

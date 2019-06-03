@@ -92,7 +92,6 @@
 			hive.tier_3_xenos -= src
 
 	hive.totalXenos -= src
-	hive.handle_evolution_alert()
 	
 	if(hive.totalXenos.len == 1)
 		xeno_message(SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"),3, hivenumber)

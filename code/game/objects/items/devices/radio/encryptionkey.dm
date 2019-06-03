@@ -103,7 +103,7 @@
 /obj/item/device/encryptionkey/jtac
 	name = "\improper JTAC radio encryption key"
 	icon_state = "jtac_key"
-	channels = list("JTAC" = 1)
+	channels = list("JTAC" = 1, "Req" = 1)
 
 /obj/item/device/encryptionkey/intel
 	name = "\improper Intel radio encryption key"

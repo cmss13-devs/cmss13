@@ -103,6 +103,7 @@ var/list/ghostteleportlocs = list()
 	ambience = list('sound/ambience/ambispace.ogg')
 	temperature = TCMB
 	pressure = 0
+	flags_atom = AREA_NOTUNNEL
 
 /area/engine/
 	ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
@@ -189,6 +190,7 @@ var/list/ghostteleportlocs = list()
 	name = "\improper abandoned  Thunderdome"
 	icon_state = "thunder"
 	requires_power = 0
+	flags_atom = AREA_NOTUNNEL
 
 /area/tdome/tdome1
 	name = "\improper abandoned  Thunderdome (Team 1)"

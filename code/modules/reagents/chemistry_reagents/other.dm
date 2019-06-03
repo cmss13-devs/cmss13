@@ -468,6 +468,7 @@
 	description = "Pure iron is a metal."
 	reagent_state = SOLID
 	color = "#C8A5DC" // rgb: 200, 165, 220
+	scannable = 1
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 

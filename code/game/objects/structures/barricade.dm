@@ -193,8 +193,12 @@
 				B.ex_act(severity, direction)
 	health -= severity
 	if(health <= 0)
+		var/location = get_turf(src)
 		handle_debris(severity, direction)
+		if(prob(50)) // no message spam pls
+			src.visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
 		qdel(src)
+		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light)
 	else
 		update_health()
 
@@ -860,8 +864,8 @@ obj/structure/barricade/proc/take_damage(var/damage)
 					if(B != src && B.dir == dir)
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
-
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -890,6 +894,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -902,6 +907,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -918,6 +924,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_PLASTEEL)
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
+				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

@@ -1085,9 +1085,7 @@ var/global/image/busy_indicator_hostile
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_NEEDHAND || \
-			target_is_mob && (target_flags & INTERRUPT_NEEDHAND)
-		)
+		if(user_flags & INTERRUPT_NEEDHAND)
 			if(user_holding)
 				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item
 					. = FALSE
@@ -1095,15 +1093,14 @@ var/global/image/busy_indicator_hostile
 			else if(L.get_active_hand()) //something in active hand when we need it to stay empty
 				. = FALSE
 				break
-
-			if(target_is_mob)
-				if(target_holding)
-					if(!target_holding.loc || T.get_active_hand() != target_holding)
-						. = FALSE
-						break
-				else if(T.get_active_hand())
+		if(target_is_mob && target_flags & INTERRUPT_NEEDHAND)
+			if(target_holding)
+				if(!target_holding.loc || T.get_active_hand() != target_holding)
 					. = FALSE
 					break
+			else if(T.get_active_hand())
+				. = FALSE
+				break
 		if(user_flags & INTERRUPT_RESIST && L.resisting || \
 			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
 		)

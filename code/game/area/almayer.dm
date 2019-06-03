@@ -481,6 +481,7 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "shuttle2"
 	requires_power = 0
+	flags_atom = AREA_NOTUNNEL
 
 //Placeholder.
 /area/almayer/evacuation/pod1

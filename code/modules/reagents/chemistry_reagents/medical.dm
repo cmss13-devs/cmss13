@@ -130,6 +130,7 @@
 	description = "An effective and very addictive painkiller."
 	reagent_state = LIQUID
 	color = "#C805DC"
+	scannable = 1
 	custom_metabolism = 0.2 // Lasts 5 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE * 0.66
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL * 0.66

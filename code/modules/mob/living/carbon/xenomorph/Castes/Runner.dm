@@ -1,6 +1,6 @@
 /datum/caste_datum/runner
 	caste_name = "Runner"
-	upgrade_name = "Young"	
+	upgrade_name = "Young"
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 1
 	upgrade = 0
@@ -12,7 +12,8 @@
 	max_health = XENO_HEALTH_LOWMEDIUM
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_HIGH
-	speed = XENO_SPEED_CONVERT( XENO_SPEED_SANICFAST )
+	speed = XENO_SPEED_SANICFAST
+	speed_mod = XENO_SPEED_MOD_LARGE
 	charge_type = 1 //Pounce - Runner
 	attack_delay = -4
 	evolves_to = list("Lurker")
@@ -23,7 +24,7 @@
 	upgrade_name = "Mature"
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks a little more dangerous."
 	upgrade = 1
-	
+
 /datum/caste_datum/runner/elder
 	upgrade_name = "Elder"
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat. It looks pretty strong."

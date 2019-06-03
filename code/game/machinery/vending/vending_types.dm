@@ -219,7 +219,7 @@
 					/obj/item/reagent_container/hypospray/autoinjector/dexP = 5,
 					/obj/item/reagent_container/hypospray/autoinjector/chloralhydrate =3,
 					/obj/item/reagent_container/hypospray/autoinjector/Inaprovaline = 5,
-					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 0,
+					/obj/item/reagent_container/hypospray/autoinjector/adrenaline = 2,
 					/obj/item/reagent_container/hypospray/tricordrazine = 2,
 					/obj/item/reagent_container/syringe = 20,
 					/obj/item/reagent_container/glass/bottle/antitoxin = 4,
@@ -255,7 +255,8 @@
 					/obj/item/reagent_container/glass/bottle/kelotane = 8,
 					/obj/item/reagent_container/glass/bottle/dexalin = 8,
 					/obj/item/reagent_container/glass/bottle/tramadol = 8,
-					/obj/item/reagent_container/glass/bottle/oxycodone = 8
+					/obj/item/reagent_container/glass/bottle/oxycodone = 8,
+					/obj/item/reagent_container/syringe = 20
 					)
 
 /obj/machinery/vending/medical/antag

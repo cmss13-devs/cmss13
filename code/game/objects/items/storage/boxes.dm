@@ -100,13 +100,30 @@
 
 	New()
 		..()
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/syringe( src )
-		new /obj/item/reagent_container/syringe( src )
+		new /obj/item/reagent_container/syringe(src)
+		new /obj/item/reagent_container/syringe(src)
+		new /obj/item/reagent_container/syringe(src)
+		new /obj/item/reagent_container/syringe(src)
+		new /obj/item/reagent_container/syringe(src)
+		new /obj/item/reagent_container/syringe(src)
+		new /obj/item/reagent_container/syringe(src)
+
+/obj/item/storage/box/autoinjectors
+	name = "box of empty autoinjectors"
+	desc = "A box full of autoinjectors."
+	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/custom)
+	icon_state = "syringe"
+	w_class = 2
+
+/obj/item/storage/box/autoinjectors/New()
+	..()
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/custom(src) // 7 empty injectors
 
 /obj/item/storage/box/beakers
 	name = "box of beakers"
@@ -116,13 +133,13 @@
 
 	New()
 		..()
-		new /obj/item/reagent_container/glass/beaker( src )
-		new /obj/item/reagent_container/glass/beaker( src )
-		new /obj/item/reagent_container/glass/beaker( src )
-		new /obj/item/reagent_container/glass/beaker( src )
-		new /obj/item/reagent_container/glass/beaker( src )
-		new /obj/item/reagent_container/glass/beaker( src )
-		new /obj/item/reagent_container/glass/beaker( src )
+		new /obj/item/reagent_container/glass/beaker(src)
+		new /obj/item/reagent_container/glass/beaker(src)
+		new /obj/item/reagent_container/glass/beaker(src)
+		new /obj/item/reagent_container/glass/beaker(src)
+		new /obj/item/reagent_container/glass/beaker(src)
+		new /obj/item/reagent_container/glass/beaker(src)
+		new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/box/flashbangs
 	name = "box of flashbangs (WARNING)"
@@ -442,14 +459,6 @@
 		if(istype(W) && !W.heat_source && !W.burnt)
 			W.light_match()
 
-/obj/item/storage/box/autoinjectors
-	name = "box of injectors"
-	desc = "Contains autoinjectors."
-	icon_state = "syringe"
-	New()
-		..()
-		for (var/i; i < 7; i++)
-			new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
 
 /obj/item/storage/box/quickclot
 	name = "box of quickclot injectors"
@@ -532,18 +541,16 @@
 	desc = "A packet of five M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
 	icon_state = "m94"
 	w_class = 3
-	max_storage_space = 10
+	storage_slots = 8
+	max_storage_space = 8
 	can_hold = list(/obj/item/device/flashlight/flare,/obj/item/device/flashlight/flare/signal)
 
 /obj/item/storage/box/m94/New()
 	..()
 	contents = list()
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-	new /obj/item/device/flashlight/flare(src)
-
+	var/i = 0
+	while(i++ < max_storage_space)
+		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/box/m94/update_icon()
 	if(!contents.len)

@@ -162,12 +162,15 @@
 	explode()
 
 /obj/structure/reagent_dispensers/fueltank/proc/explode()
-	if (reagents.total_volume > 500)
-		explosion(src.loc,0,0,3, flame_range = 4)
-	else if (reagents.total_volume > 100)
-		explosion(src.loc,0,0,2, flame_range = 3)
-	else
-		explosion(src.loc,0,0,1, flame_range = 2)
+	var/shrapneltype = /datum/ammo/bullet/shrapnel/incendiary
+	var/shrapnel = round(reagents.total_volume / 90)
+	var/expower = reagents.total_volume / 8 // full tank is thousand units, ~120 ex power
+	var/flamesize = round(reagents.total_volume / 500) // 2 at full, 1 at half etc
+	if(expower > 40)
+		create_shrapnel(src.loc, shrapnel, , ,shrapneltype)
+		sleep(2)
+	explosion_rec(src.loc, expower, 24)
+	new /obj/flamer_fire(src.loc, 12, 10, , flamesize, FALSE, FLAMESHAPE_STAR)
 	if(src)
 		qdel(src)
 

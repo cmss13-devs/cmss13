@@ -80,8 +80,11 @@
 /obj/structure/table/ex_act(severity, direction)
 	health -= severity
 	if(health <= 0)
+		var/location = get_turf(src)
 		handle_debris(severity, direction)
 		qdel(src)
+		if(prob(66))
+			create_shrapnel(location, rand(1,4), direction, , /datum/ammo/bullet/shrapnel/light)
 
 /obj/structure/table/get_explosion_resistance(direction)
 	if(flags_atom & ON_BORDER)

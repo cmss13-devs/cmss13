@@ -8315,7 +8315,8 @@
 	name = "Checkpoint Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -9610,7 +9611,8 @@
 	name = "Checkpoint Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -21924,7 +21926,8 @@
 	name = "Hangar Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -29854,7 +29857,8 @@
 	name = "Hangar Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -31478,7 +31482,8 @@
 	name = "Hangar Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -32813,7 +32818,8 @@
 	name = "Checkpoint Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/open/floor/prison{
 	dir = 9;
@@ -37952,7 +37958,8 @@
 	name = "Storm Shutter Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -39731,7 +39738,8 @@
 	name = "Storm Shutter Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -58024,7 +58032,8 @@
 	name = "Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -58652,7 +58661,8 @@
 	name = "Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -58930,7 +58940,8 @@
 	name = "Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -62713,7 +62724,8 @@
 	name = "Checkpoint Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/prison,
@@ -67913,7 +67925,8 @@
 	name = "Storm Shutter Lockdown";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -77999,7 +78012,8 @@
 	name = "Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -80830,7 +80844,8 @@
 	name = "Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall,
 /area/desert_dam/building/cafeteria/loading)
@@ -80955,7 +80970,8 @@
 	name = "Warehouse Shutters";
 	pixel_x = 0;
 	pixel_y = 0;
-	req_access = list()
+	req_access = list();
+	unacidable = 1
 	},
 /turf/closed/wall,
 /area/desert_dam/building/hydroponics/hydroponics_loading)
@@ -82141,6 +82157,10 @@
 /area/desert_dam/exterior/valley/valley_cargo{
 	is_resin_allowed = 0
 	})
+"lOM" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/south_tunnel)
 "lQM" = (
 /obj/structure/stairs{
 	dir = 4
@@ -82150,10 +82170,6 @@
 	icon_state = "tile"
 	},
 /area/desert_dam/exterior/valley/valley_labs)
-"lOM" = (
-/obj/effect/decal/sand_overlay/sand2/corner2,
-/turf/open/asphalt/cement,
-/area/desert_dam/interior/dam_interior/south_tunnel)
 "lUl" = (
 /obj/structure/table/woodentable/fancy,
 /obj/item/document_objective/folder,

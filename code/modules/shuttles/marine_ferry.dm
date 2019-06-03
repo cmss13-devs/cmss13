@@ -201,7 +201,7 @@
 
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
 
-	playsound(turfs_src[sound_target], sound_takeoff, 60, 0)
+	playsound(turfs_src[sound_target], sound_takeoff, 100, 0)
 
 	sleep(warmup_time) //Warming up
 
@@ -243,8 +243,8 @@
 
 	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS) r_FAL //If a nuke is in progress, don't attempt a landing.
 
-	playsound(turfs_int[sound_target], sound_landing, 60, 0)
-	playsound(turfs_trg[sound_target], sound_landing, 60, 0)
+	playsound(turfs_int[sound_target], sound_landing, 100, 0)
+	playsound(turfs_trg[sound_target], sound_landing, 100, 0)
 
 	var/list/lightsdest = get_landing_lights(T_trg)
 	for(var/obj/machinery/landinglight/F in lightsdest)
@@ -346,7 +346,7 @@
 	//START: Heavy lifting backend
 
 	var/list/turfs_src = get_shuttle_turfs(T_src, info_datums) //Which turfs are we moving?
-	playsound(turfs_src[sound_target], sound_takeoff, 60, 0)
+	playsound(turfs_src[sound_target], sound_takeoff, 100, 0)
 
 	sleep(warmup_time) //Warming up
 
@@ -423,7 +423,7 @@
 
 	command_announcement.Announce("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", new_sound='sound/AI/dropship_emergency.ogg')
 
-	playsound(turfs_int[sound_target], sound_landing, 60, 0)
+	playsound(turfs_int[sound_target], sound_landing, 100, 0)
 
 	sleep(85)
 

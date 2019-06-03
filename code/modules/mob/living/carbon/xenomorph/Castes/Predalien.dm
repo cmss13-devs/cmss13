@@ -1,7 +1,7 @@
 /datum/caste_datum/predalien
 	caste_name = "Predalien"
 	display_name = "Abomination"
-	
+
 	melee_damage_lower = XENO_DAMAGE_MEDIUM
 	melee_damage_upper = XENO_DAMAGE_HIGH
 	max_health = XENO_HEALTH_IMMORTAL
@@ -11,18 +11,19 @@
 	armor_deflection = XENO_MEDIUM_ARMOR
 	armor_hardiness_mult = XENO_ARMOR_FACTOR_LOW
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_CONVERT(XENO_SPEED_SANICFAST)
+	speed = XENO_SPEED_SANICFAST
+	speed_mod = XENO_SPEED_MOD_LARGE
 
 	evolution_allowed = FALSE
 	tacklemin = 6
 	tacklemax = 10
 	tackle_chance = 80
 	is_intelligent = TRUE
-	charge_type = 4	
+	charge_type = 4
 	bite_chance = 25
 	tail_chance = 25
 	tier = 1
-	attack_delay = -2	
+	attack_delay = -2
 	can_be_queen_healed = 0
 	upgrade = -1
 
@@ -121,7 +122,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 "}
 
 	emote("roar")
-	
+
 	round_statistics.total_predaliens++
 
 

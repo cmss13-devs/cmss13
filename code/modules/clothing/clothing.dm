@@ -1,6 +1,46 @@
 /obj/item/clothing
 	name = "clothing"
 	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
+	var/armor_melee = 0
+	var/armor_bullet = 0
+	var/armor_laser = 0
+	var/armor_energy = 0
+	var/armor_bomb = 0
+	var/armor_bio = 0
+	var/armor_rad = 0
+	var/armor_internaldamage = 0
+	var/movement_compensation = 0
+
+/obj/item/clothing/proc/get_armor(armortype)
+	var/armor_total = 0
+	var/armor_count = 0
+	if(armortype & ARMOR_MELEE)
+		armor_total += armor_melee
+		armor_count++
+	if(armortype & ARMOR_BULLET)
+		armor_total += armor_bullet
+		armor_count++
+	if(armortype & ARMOR_LASER)
+		armor_total += armor_laser
+		armor_count++
+	if(armortype & ARMOR_ENERGY)
+		armor_total += armor_energy
+		armor_count++
+	if(armortype & ARMOR_BOMB)
+		armor_total += armor_bomb
+		armor_count++
+	if(armortype & ARMOR_BIO)
+		armor_total += armor_bio
+		armor_count++
+	if(armortype & ARMOR_RAD)
+		armor_total += armor_rad
+		armor_count++
+	if(armortype & ARMOR_INTERNALDAMAGE)
+		armor_total += armor_internaldamage
+		armor_count++
+	if(armor_count == 0)
+		return 0
+	return armor_total/armor_count
 
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()

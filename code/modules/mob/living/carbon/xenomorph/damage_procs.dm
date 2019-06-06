@@ -70,6 +70,7 @@
 #define XENO_ARMOR_BREAK_PASS_TIME 2
 #define XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME SECONDS_2
 
+/mob/living/carbon/Xenomorph/var/armor_break_to_apply = 0
 /mob/living/carbon/Xenomorph/proc/apply_armorbreak(armorbreak = 0)
 	if(!armorbreak) return
 
@@ -84,14 +85,27 @@
 		return 1
 	
 	if(world.time>armor_integrity_immunity_time)
-		armor_integrity_immunity_time = world.time
+		armor_integrity_immunity_time = world.time		
+		armor_integrity_last_damage_time = world.time
+		armor_break_to_apply = 0			
+		post_apply_armorbreak()
 
-	armor_integrity_last_damage_time = world.time
+	var/delay = ((armor_integrity - armorbreak / caste.armor_hardiness_mult)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
+	armor_break_to_apply += armorbreak
+	armor_integrity_immunity_time += delay
+	
+	if(armor_integrity_immunity_time - world.time > XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME * 4)
+		armor_integrity_immunity_time = world.time + XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME * 4
 
-	if(warding_aura && armorbreak > 0) //Damage to armor reduction
-		armorbreak = round(armorbreak * ((100 - (warding_aura * 15)) / 100))
+	return 1
+
+/mob/living/carbon/Xenomorph/proc/post_apply_armorbreak()
+	set waitfor = 0
+	sleep(2)
+	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
+		armor_break_to_apply = round(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
 	var/old_integrity = armor_integrity
-	armor_integrity -= armorbreak / caste.armor_hardiness_mult
+	armor_integrity -= armor_break_to_apply / caste.armor_hardiness_mult
 	if(armor_integrity <= 0 && old_integrity > 10)
 		visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton falls apart!"))
 		armor_integrity = 0
@@ -100,13 +114,9 @@
 			visible_message(SPAN_XENODANGER("[src]'s thick exoskeleton starts cracking!"))
 	if(armor_integrity < 0)
 		armor_integrity = 0
-
-	var/delay = ((old_integrity - armor_integrity)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
-
-	if(delay>2)
-		armor_integrity_immunity_time += delay
+	armor_break_to_apply = 0
 	updatehealth()
-	return 1
+
 
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
 	if(!damage)

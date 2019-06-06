@@ -13,7 +13,7 @@
 	var/smartgun = SKILL_SMART_DEFAULT
 	var/spec_weapons = SKILL_SPEC_DEFAULT
 
-	var/endurance = 0
+	var/endurance = SKILL_ENDURANCE_WEAK
 	var/engineer = SKILL_ENGINEER_DEFAULT
 	var/construction = SKILL_CONSTRUCTION_DEFAULT
 	var/leadership = SKILL_LEAD_NOVICE
@@ -36,12 +36,14 @@ CIVILIAN
 	cqc = SKILL_CQC_WEAK
 	firearms = SKILL_FIREARMS_UNTRAINED
 	melee_weapons = SKILL_MELEE_WEAK
+	endurance = SKILL_ENDURANCE_NONE
 
 /datum/skills/civilian/survivor
 	name = "Survivor"
 	engineer = SKILL_ENGINEER_ENGI //to hack airlocks so they're never stuck in a room.
 	construction = SKILL_CONSTRUCTION_METAL
 	medical = SKILL_MEDICAL_CHEM
+	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/civilian/survivor/doctor
 	name = "Survivor Doctor"
@@ -93,6 +95,7 @@ COMMAND STAFF
 	medical = SKILL_MEDICAL_MEDIC
 	police = SKILL_POLICE_FLASH
 	powerloader = SKILL_POWERLOADER_TRAINED
+	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/commander
 	name = "Commander"
@@ -103,6 +106,7 @@ COMMAND STAFF
 	medical = SKILL_MEDICAL_MEDIC
 	police = SKILL_POLICE_FLASH
 	powerloader = SKILL_POWERLOADER_TRAINED
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/XO
 	name = "Executive Officer"
@@ -112,6 +116,7 @@ COMMAND STAFF
 	medical = SKILL_MEDICAL_MEDIC
 	police = SKILL_POLICE_FLASH
 	powerloader = SKILL_POWERLOADER_TRAINED
+	endurance = SKILL_ENDURANCE_TRAINED
 
 /datum/skills/SO
 	name = "Staff Officer"
@@ -135,6 +140,7 @@ COMMAND STAFF
 	cqc = SKILL_CQC_MP
 	police = SKILL_POLICE_MP
 	leadership = SKILL_LEAD_EXPERT
+	endurance = SKILL_ENDURANCE_TRAINED
 
 /datum/skills/CE
 	name = "Chief Engineer"
@@ -175,6 +181,7 @@ MILITARY NONCOMBATANT
 	name = "Military Police"
 	cqc = SKILL_CQC_MP
 	police = SKILL_POLICE_MP
+	endurance = SKILL_ENDURANCE_TRAINED
 
 /datum/skills/MT
 	name = "Maintenance Technician"
@@ -276,6 +283,7 @@ United States Colonial Marines
 	leadership = SKILL_LEAD_BEGINNER
 	spec_weapons = SKILL_SPEC_TRAINED
 	melee_weapons = SKILL_MELEE_TRAINED
+	endurance = SKILL_ENDURANCE_TRAINED
 
 /datum/skills/SL
 	name = "Squad Leader"
@@ -284,6 +292,7 @@ United States Colonial Marines
 	engineer = SKILL_ENGINEER_PLASTEEL
 	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_CHEM
+	endurance = SKILL_ENDURANCE_TRAINED
 
 /datum/skills/intel
 	name = "Intelligence Officer"
@@ -361,11 +370,13 @@ UNITED PROGRESSIVE PEOPLES
 	name = "UPP Private"
 	construction = SKILL_CONSTRUCTION_PLASTEEL
 	engineer = SKILL_ENGINEER_ENGI
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/upp/combat_medic
 	name = "UPP Medic"
 	leadership = SKILL_LEAD_BEGINNER
 	medical = SKILL_MEDICAL_MEDIC
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/upp/specialist
 	name = "UPP Specialist"
@@ -374,12 +385,14 @@ UNITED PROGRESSIVE PEOPLES
 	leadership = SKILL_LEAD_BEGINNER
 	spec_weapons = SKILL_SPEC_TRAINED
 	melee_weapons = SKILL_MELEE_TRAINED
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/upp/SL
 	name = "UPP Leader"
 	cqc = SKILL_CQC_TRAINED
 	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_CHEM
+	endurance = SKILL_ENDURANCE_MASTER
 
 /*
 ----------------------------
@@ -395,11 +408,13 @@ Private Military Contractors
 	police = SKILL_POLICE_MP
 	construction = SKILL_CONSTRUCTION_PLASTEEL
 	engineer = SKILL_ENGINEER_ENGI
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/pmc/smartgunner
 	name = "PMC Smartgunner"
 	smartgun = SKILL_SMART_TRAINED
 	leadership = SKILL_LEAD_BEGINNER
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/pmc/specialist
 	name = "PMC Specialist"
@@ -408,12 +423,14 @@ Private Military Contractors
 	leadership = SKILL_LEAD_BEGINNER
 	spec_weapons = SKILL_SPEC_TRAINED
 	melee_weapons = SKILL_MELEE_TRAINED
+	endurance = SKILL_ENDURANCE_MASTER
 
 /datum/skills/pmc/SL
 	name = "PMC Leader"
 	cqc = SKILL_CQC_TRAINED
 	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_CHEM
+	endurance = SKILL_ENDURANCE_MASTER
 
 /*
 ---------------------
@@ -435,6 +452,7 @@ SPEC-OPS
 	rifles = SKILL_RIFLES_TRAINED
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
+	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/commando/medic
 	name = "Commando Medic"
@@ -511,6 +529,7 @@ MISCELLANEOUS
 	firearms = SKILL_FIREARMS_UNTRAINED
 	leadership = SKILL_LEAD_NOVICE
 	medical = SKILL_MEDICAL_CHEM
+	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/gladiator/champion
 	name = "Gladiator Champion"
@@ -518,10 +537,12 @@ MISCELLANEOUS
 	melee_weapons = SKILL_MELEE_SUPER
 	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_MEDIC
+	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/gladiator/champion/leader
 	name = "Gladiator Leader"
 	leadership = SKILL_LEAD_MASTER //Spartacus!
+	endurance = SKILL_ENDURANCE_SURVIVOR
 
 /datum/skills/yautja/warrior
 	name = "Yautja Warrior"
@@ -550,3 +571,4 @@ MISCELLANEOUS
 	shotguns = SKILL_SHOTGUNS_TRAINED
 	heavy_weapons = SKILL_HEAVY_WEAPONS_TRAINED
 	spec_weapons = SKILL_SPEC_TRAINED
+	endurance = SKILL_ENDURANCE_SURVIVOR

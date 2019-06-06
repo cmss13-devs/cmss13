@@ -19842,7 +19842,6 @@
 /obj/structure/foamedmetal{
 	layer = 3.1
 	},
-/obj/item/clothing/suit/space/rig/engineering/chief,
 /turf/open/floor{
 	icon_state = "dark"
 	},

@@ -114,53 +114,6 @@
 
 // I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
 
-
-/obj/effect/landmark/corpsespawner/syndicatesoldier
-	name = "Syndicate Operative"
-	corpseuniform = /obj/item/clothing/under/syndicate
-	corpsesuit = /obj/item/clothing/suit/armor/vest
-	corpseshoes = /obj/item/clothing/shoes/swat
-	corpsegloves = /obj/item/clothing/gloves/swat
-	corpseradio = /obj/item/device/radio/headset
-	corpsemask = /obj/item/clothing/mask/gas
-	corpsehelmet = /obj/item/clothing/head/helmet/swat
-	corpseback = /obj/item/storage/backpack
-	corpseid = 1
-	corpseidjob = "Operative"
-	corpseidaccess = "Syndicate"
-
-
-
-/obj/effect/landmark/corpsespawner/syndicatecommando
-	name = "Syndicate Commando"
-	corpseuniform = /obj/item/clothing/under/syndicate
-	corpsesuit = /obj/item/clothing/suit/space/rig/syndi
-	corpseshoes = /obj/item/clothing/shoes/swat
-	corpsegloves = /obj/item/clothing/gloves/swat
-	corpseradio = /obj/item/device/radio/headset
-	corpsemask = /obj/item/clothing/mask/gas/syndicate
-	corpsehelmet = /obj/item/clothing/head/helmet/space/rig/syndi
-	corpseback = /obj/item/tank/jetpack/oxygen
-	corpsepocket1 = /obj/item/tank/emergency_oxygen
-	corpseid = 1
-	corpseidjob = "Operative"
-	corpseidaccess = "Syndicate"
-
-
-
-/obj/effect/landmark/corpsespawner/pirate
-	name = "Pirate"
-	corpseuniform = /obj/item/clothing/under/syndicate
-	corpsesuit = /obj/item/clothing/suit/armor/vest
-	corpseshoes = /obj/item/clothing/shoes/swat
-	corpsegloves = /obj/item/clothing/gloves/swat
-	corpseradio = /obj/item/device/radio/headset
-	corpsemask = /obj/item/clothing/mask/gas
-	corpsehelmet = /obj/item/clothing/head/helmet/swat
-	corpseback = /obj/item/storage/backpack
-
-
-
 /obj/effect/landmark/corpsespawner/realpirate
 	name = "Pirate"
 	corpseuniform = /obj/item/clothing/under/pirate
@@ -234,11 +187,6 @@
 //	corpseidaccess = "Station Engineer"
 	xenovictim = TRUE
 
-/obj/effect/landmark/corpsespawner/engineer/rig
-	corpsesuit = /obj/item/clothing/suit/space/rig/engineering
-	corpsemask = /obj/item/clothing/mask/breath
-	corpsehelmet = /obj/item/clothing/head/helmet/space/rig/engineering
-
 /obj/effect/landmark/corpsespawner/clown
 	name = "Clown"
 	corpseuniform = /obj/item/clothing/under/rank/clown
@@ -270,11 +218,6 @@
 	corpseidjob = "Shaft Miner"
 //	corpseidaccess = "Shaft Miner"
 	xenovictim = TRUE
-
-/obj/effect/landmark/corpsespawner/miner/rig
-	corpsesuit = /obj/item/clothing/suit/space/rig/mining
-	corpsemask = /obj/item/clothing/mask/breath
-	corpsehelmet = /obj/item/clothing/head/helmet/space/rig/mining
 
 /obj/effect/landmark/corpsespawner/security
 	corpseuniform = /obj/item/clothing/under/marine/veteran/PMC

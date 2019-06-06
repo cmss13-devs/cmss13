@@ -6,13 +6,14 @@
 	icon_state = "co_jacket"
 	blood_overlay_type = "coat"
 	flags_armor_protection = UPPER_TORSO|ARMS
-	armor_melee = 30
-	armor_bullet = 50
-	armor_laser = 20
-	armor_energy = 20
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	allowed = list(/obj/item/weapon/gun/,
 	/obj/item/tank/emergency_oxygen,
 	/obj/item/device/flashlight,

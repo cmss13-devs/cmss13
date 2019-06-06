@@ -11,6 +11,7 @@
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply hyperzine effects
+	var/wear_slowdown_reduction = 0
 
 	var/health_deficiency = (100 - health)
 	if(health_deficiency >= 40)
@@ -27,9 +28,11 @@
 	//Equipment slowdowns
 	if(w_uniform)
 		reducible_tally += w_uniform.slowdown
+		wear_slowdown_reduction += w_uniform.movement_compensation
 
 	if(wear_suit)
 		reducible_tally += wear_suit.slowdown
+		wear_slowdown_reduction += wear_suit.movement_compensation
 
 	reducible_tally += reagent_move_delay_modifier //hyperzine and ultrazine
 
@@ -48,7 +51,7 @@
 
 	if(istype(get_active_hand(), /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = get_active_hand() //If wielding, it will ALWAYS be on the active hand
-		. += G.slowdown
+		. += max(0, G.slowdown - wear_slowdown_reduction)
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list("l_hand","r_hand","l_arm","r_arm","chest","groin","head"))

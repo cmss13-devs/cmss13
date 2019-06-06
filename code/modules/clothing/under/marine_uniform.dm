@@ -8,13 +8,14 @@
 	desc = "A standard-issue Marine uniform. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	siemens_coefficient = 0.9
 	icon_state = "marine_jumpsuit"
-	armor_melee = 5
-	armor_bullet = 5
-	armor_laser = 5
-	armor_energy = 5
-	armor_bomb = 0
-	armor_bio = 5
-	armor_rad = 5
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine)
 	rollable_sleeves = TRUE
 	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
@@ -162,13 +163,14 @@
 /obj/item/clothing/under/marine/officer/ce
 	name = "chief engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
-	armor_melee = 5
-	armor_bullet = 5
-	armor_laser = 25
-	armor_energy = 5
-	armor_bomb = 0
-	armor_bio = 5
-	armor_rad = 25
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "EC_jumpsuit"
 	specialty = "chief engineer"
 	flags_atom = NO_SNOW_TYPE
@@ -176,13 +178,14 @@
 /obj/item/clothing/under/marine/officer/engi
 	name = "engineer uniform"
 	desc = "A uniform for a military engineer. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
-	armor_melee = 5
-	armor_bullet = 5
-	armor_laser = 15
-	armor_energy = 5
-	armor_bomb = 0
-	armor_bio = 5
-	armor_rad = 10
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "E_jumpsuit"
 	specialty = "engineer"
 	flags_atom = NO_SNOW_TYPE
@@ -190,13 +193,14 @@
 /obj/item/clothing/under/marine/officer/researcher
 	name = "researcher clothes"
 	desc = "A simple set of civilian clothes worn by researchers. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
-	armor_melee = 5
-	armor_bullet = 5
-	armor_laser = 5
-	armor_energy = 10
-	armor_bomb = 0
-	armor_bio = 10
-	armor_rad = 5
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	icon_state = "research_jumpsuit"
 	specialty = "researcher"
 	flags_atom = NO_SNOW_TYPE
@@ -213,13 +217,14 @@
 	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit."
 	icon_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = 10
-	armor_bullet = 10
-	armor_laser = 5
-	armor_energy = 5
-	armor_bomb = 0
-	armor_bio = 1
-	armor_rad = 1
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC, /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC)
 
 /obj/item/clothing/under/marine/veteran/PMC/leader
@@ -231,14 +236,14 @@
 	name = "\improper PMC commando uniform"
 	desc = "An armored uniform worn by Weyland Yutani elite commandos. It is well protected while remaining light and comfortable."
 	icon_state = "commando_jumpsuit"
-	armor_melee = 10
-	armor_bullet = 10
-	armor_laser = 10
-	armor_energy = 20
-	armor_bomb = 0
-	armor_bio = 10
-	armor_rad = 10
-	has_sensor = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/marine/veteran/bear
 	name = "\improper Iron Bear uniform"
@@ -291,13 +296,14 @@
 	desc = "A thick, beige suit with a red armband. There is an unknown symbol is emblazed on the suit."
 	icon_state = "mercenary_heavy_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	armor_melee = 10
-	armor_bullet = 10
-	armor_laser = 5
-	armor_energy = 5
-	armor_bomb = 0
-	armor_bio = 1
-	armor_rad = 1
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/mercenary)
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner
@@ -331,14 +337,14 @@
 	name = "colonial marshal uniform"
 	desc = "A blue shirt and tan trousers - the official uniform for a Colonial Marshal."
 	icon_state = "marshal"
-	armor_melee = 15
-	armor_bullet = 15
-	armor_laser = 15
-	armor_energy = 5
-	armor_bomb = 0
-	armor_bio = 5
-	armor_rad = 5
-	has_sensor = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 
 /obj/item/clothing/under/liaison_suit

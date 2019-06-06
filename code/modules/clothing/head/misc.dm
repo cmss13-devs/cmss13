@@ -147,13 +147,14 @@
 	icon_state = "hgpiratecap"
 	item_state = "hgpiratecap"
 	flags_armor_protection = 0
-	armor_melee = 50
-	armor_bullet = 80
-	armor_laser = 50
-	armor_energy = 10
-	armor_bomb = 50
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/head/bandana
 	name = "pirate bandana"

@@ -103,13 +103,14 @@
 	desc = "It's a soft cap made from advanced ballistic-resistant fibres. Fails to prevent lumps in the head."
 	icon_state = "greysoft"
 	cap_color = "grey"
-	armor_melee = 35
-	armor_bullet = 35
-	armor_laser = 35
-	armor_energy = 15
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/soft/marine/alpha

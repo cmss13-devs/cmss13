@@ -309,8 +309,6 @@
 		return
 
 	last_rng_attack = world.time
-	if(mob_size == MOB_SIZE_BIG)
-		damage += 10
 
 	var/datum/limb/affecting
 	affecting = M.get_limb(ran_zone("head", 50))
@@ -340,9 +338,6 @@
 		return
 
 	last_rng_attack = world.time
-
-	if(mob_size == MOB_SIZE_BIG)
-		damage += 10
 
 	var/datum/limb/affecting
 	affecting = M.get_limb(ran_zone(zone_selected, 75))

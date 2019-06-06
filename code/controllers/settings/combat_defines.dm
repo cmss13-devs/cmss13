@@ -137,6 +137,7 @@
 	var/datum/combat_configuration/marine_ranged
 	var/datum/combat_configuration/marine_explosive
 	var/datum/combat_configuration/marine_fire
+	var/datum/combat_configuration/marine_organ_damage
 
 	var/datum/combat_configuration/xeno_melee
 	var/datum/combat_configuration/xeno_ranged
@@ -149,6 +150,7 @@
 	marine_ranged = new /datum/combat_configuration/marine/ranged()
 	marine_explosive = new /datum/combat_configuration/marine/explosive()
 	marine_fire = new /datum/combat_configuration/marine/fire()
+	marine_organ_damage = new /datum/combat_configuration/marine/organ_damage()
 
 	xeno_melee = new /datum/combat_configuration/xeno/melee()
 	xeno_ranged = new /datum/combat_configuration/xeno/ranged()

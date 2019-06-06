@@ -137,7 +137,6 @@
 				else if(prob(50))
 					new /obj/item/clothing/under/psyche(C)
 				else
-					new /obj/item/clothing/under/syndicate/combat(C)
 					new /obj/item/clothing/shoes/swat(C)
 					new /obj/item/clothing/gloves/swat(C)
 					new /obj/item/clothing/mask/balaclava(C)
@@ -160,27 +159,7 @@
 				)
 				new new_type(C)
 			if("spacesuit")
-				var/obj/structure/closet/syndicate/C = new(src.loc)
-				if(prob(25))
-					new /obj/item/clothing/suit/space/syndicate/black(C)
-					new /obj/item/clothing/head/helmet/space/syndicate/black(C)
-					new /obj/item/tank/oxygen/red(C)
-					new /obj/item/clothing/mask/breath(C)
-				else if(prob(33))
-					new /obj/item/clothing/suit/space/syndicate/blue(C)
-					new /obj/item/clothing/head/helmet/space/syndicate/blue(C)
-					new /obj/item/tank/oxygen/red(C)
-					new /obj/item/clothing/mask/breath(C)
-				else if(prob(50))
-					new /obj/item/clothing/suit/space/syndicate/green(C)
-					new /obj/item/clothing/head/helmet/space/syndicate/green(C)
-					new /obj/item/tank/oxygen/red(C)
-					new /obj/item/clothing/mask/breath(C)
-				else
-					new /obj/item/clothing/suit/space/syndicate/orange(C)
-					new /obj/item/clothing/head/helmet/space/syndicate/orange(C)
-					new /obj/item/tank/oxygen/red(C)
-					new /obj/item/clothing/mask/breath(C)
+				//NOTHING, ADD SOMETHING
 			if("health")
 				//hopefully won't be necessary, but there were an awful lot of traps to get through...
 				var/obj/structure/closet/crate/medical/C = new(src.loc)
@@ -256,12 +235,9 @@
 			/*if("mimic")
 				//a guardian of the tomb!
 				new /mob/living/simple_animal/hostile/mimic/crate(src.loc)*/
-			if("viscerator")
+			//if("viscerator")
 				//more tomb guardians!
-				var/num = rand(1,3)
-				var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
-				for(var/i=0,i<num,i++)
-					new /mob/living/simple_animal/hostile/viscerator(C)
+				//TO DO SOMETHING NON-SYNDICATE
 
 		qdel(src)
 

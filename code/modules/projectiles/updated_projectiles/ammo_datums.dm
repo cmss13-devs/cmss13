@@ -606,8 +606,8 @@
 	damage = config.lmed_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.hlow_armor_penetration
-	bonus_projectiles_amount = config.med_proj_extra
+	penetration	= config.hmed_armor_penetration
+	bonus_projectiles_amount = config.low_proj_extra
 
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
@@ -1367,8 +1367,8 @@
 
 /datum/ammo/xeno/acid/New()
 	..()
-	damage = config.hlow_hit_damage
-	penetration = config.med_armor_penetration
+	damage = config.low_hit_damage
+	penetration = config.mlow_armor_penetration
 	shell_speed = config.reg_shell_speed
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
@@ -1386,9 +1386,7 @@
 
 /datum/ammo/xeno/acid/medium/New()
 	..()
-	damage = config.lmed_hit_damage
-	damage_var_low = config.low_proj_variance
-	damage_var_high = config.med_proj_variance
+	damage = config.hlow_hit_damage
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/xeno/acid/heavy

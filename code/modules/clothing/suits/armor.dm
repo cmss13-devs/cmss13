@@ -27,13 +27,14 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO
-	armor_melee = 20
-	armor_bullet = 30
-	armor_laser = 25
-	armor_energy = 10
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
 /obj/item/clothing/suit/armor/vest/pilot
 	name = "\improper M70 flak jacket"
@@ -45,13 +46,14 @@
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO
-	armor_melee = 50
-	armor_bullet = 60
-	armor_laser = 35
-	armor_energy = 20
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	allowed = list(/obj/item/weapon/gun/,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -108,13 +110,14 @@
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 	blood_overlay_type = "armor"
-	armor_melee = 10
-	armor_bullet = 10
-	armor_laser = 80
-	armor_energy = 50
-	armor_bomb = 0
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_VERYHIGH
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/armor/bulletproof
@@ -124,13 +127,14 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor_melee = 20
-	armor_bullet = 50
-	armor_laser = 25
-	armor_energy = 10
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
 	time_to_unequip = 20
 	time_to_equip = 20
@@ -142,13 +146,14 @@
 	item_state = "swat_suit"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	slowdown = 1
-	armor_melee = 80
-	armor_bullet = 10
-	armor_laser = 10
-	armor_energy = 10
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEJUMPSUIT
 	siemens_coefficient = 0.5
@@ -161,13 +166,14 @@
 	icon_state = "riot"
 	item_state = "swat_suit"
 	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
-	armor_melee = 70
-	armor_bullet = 70
-	armor_laser = 35
-	armor_energy = 20
-	armor_bomb = 20
-	armor_bio = 10
-	armor_rad = 10
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	time_to_unequip = 20
 	time_to_equip = 20
 
@@ -182,13 +188,14 @@
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/handcuffs,/obj/item/tank/emergency_oxygen)
 	slowdown = 1
-	armor_melee = 80
-	armor_bullet = 60
-	armor_laser = 50
-	armor_energy = 25
-	armor_bomb = 30
-	armor_bio = 100
-	armor_rad = 100
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_inventory = BLOCKSHARPOBJ|NOPRESSUREDMAGE
 	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -214,13 +221,14 @@
 	item_state = "armor"
 	blood_overlay_type = "armor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO
-	armor_melee = 50
-	armor_bullet = 15
-	armor_laser = 50
-	armor_energy = 10
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
 
 //Reactive armor
@@ -234,13 +242,14 @@
 	blood_overlay_type = "armor"
 	slowdown = 1
 	flags_atom = FPRINT|CONDUCT
-	armor_melee = 0
-	armor_bullet = 0
-	armor_laser = 0
-	armor_energy = 0
-	armor_bomb = 0
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
 
 /obj/item/clothing/suit/armor/reactive/IsShield()
 	if(active)
@@ -326,13 +335,14 @@
 	var/obj/item/weapon/gun/holstered = null
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	slowdown = 1
-	armor_melee = 60
-	armor_bullet = 60
-	armor_laser = 60
-	armor_energy = 40
-	armor_bomb = 20
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/tactical/verb/holster()
@@ -373,13 +383,14 @@
 	desc = "A set of armor worn by members of the NanoTrasen Emergency Response Team."
 	icon_state = "ertarmor_cmd"
 	item_state = "armor"
-	armor_melee = 60
-	armor_bullet = 60
-	armor_laser = 60
-	armor_energy = 40
-	armor_bomb = 20
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
 //Commander
 /obj/item/clothing/suit/armor/vest/ert/command
@@ -415,13 +426,14 @@
 	icon_state = "hos"
 	item_state = "hos"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor_melee = 65
-	armor_bullet = 30
-	armor_laser = 50
-	armor_energy = 10
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	flags_inventory = NOFLAGS
 	flags_inv_hide = HIDEJUMPSUIT
 	siemens_coefficient = 0.6

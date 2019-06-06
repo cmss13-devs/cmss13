@@ -595,7 +595,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	else if (P.ammo.flags_ammo_behavior * AMMO_ANTISTRUCT)
 		take_damage(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	take_damage(round(P.damage/2)) //Not that durable.
+	take_damage(round(P.damage/5))
 
 	return TRUE
 

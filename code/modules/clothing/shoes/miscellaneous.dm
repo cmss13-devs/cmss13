@@ -17,13 +17,14 @@
 	name = "\improper SWAT shoes"
 	desc = "When you want to turn up the heat."
 	icon_state = "swat"
-	armor_melee = 80
-	armor_bullet = 60
-	armor_laser = 50
-	armor_energy = 25
-	armor_bomb = 50
-	armor_bio = 10
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = NOSLIPPING
 	siemens_coefficient = 0.6
 
@@ -31,13 +32,14 @@
 	name = "combat boots"
 	desc = "When you REALLY want to turn up the heat"
 	icon_state = "swat"
-	armor_melee = 80
-	armor_bullet = 60
-	armor_laser = 50
-	armor_energy = 25
-	armor_bomb = 50
-	armor_bio = 10
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = NOSLIPPING
 	siemens_coefficient = 0.6
 
@@ -52,13 +54,14 @@
 	icon_state = "s-ninja"
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
-	armor_melee = 60
-	armor_bullet = 50
-	armor_laser = 30
-	armor_energy = 15
-	armor_bomb = 30
-	armor_bio = 30
-	armor_rad = 30
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	siemens_coefficient = 0.2
 
 	flags_cold_protection = FEET

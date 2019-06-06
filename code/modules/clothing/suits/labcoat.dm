@@ -19,13 +19,14 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
 	)
-	armor_melee = 0
-	armor_bullet = 0
-	armor_laser = 0
-	armor_energy = 0
-	armor_bomb = 0
-	armor_bio = 50
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 	verb/toggle()
 		set name = "Toggle Labcoat Buttons"
@@ -176,13 +177,14 @@
 	name = "Virologist labcoat"
 	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir_open"
-	armor_melee = 0
-	armor_bullet = 0
-	armor_laser = 0
-	armor_energy = 0
-	armor_bomb = 0
-	armor_bio = 60
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/science
 	name = "Scientist labcoat"
@@ -212,13 +214,14 @@
 	icon_state = "snowsuit_alpha"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor_melee = 15
-	armor_bullet = 0
-	armor_laser = 0
-	armor_energy = 0
-	armor_bomb = 0
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
@@ -227,21 +230,23 @@
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"
 	icon_state = "snowsuit_doctor"
-	armor_melee = 25
-	armor_bullet = 35
-	armor_laser = 35
-	armor_energy = 20
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/snow_suit/engineer
 	name = "engineer's snow suit"
 	icon_state = "snowsuit_engineer"
-	armor_melee = 25
-	armor_bullet = 35
-	armor_laser = 35
-	armor_energy = 20
-	armor_bomb = 10
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW

@@ -112,13 +112,14 @@
 	desc = "Someone who wears this will look very smart."
 	icon_state = "detective"
 	allowed = list(/obj/item/reagent_container/food/snacks/candy_corn, /obj/item/tool/pen)
-	armor_melee = 50
-	armor_bullet = 5
-	armor_laser = 25
-	armor_energy = 10
-	armor_bomb = 0
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
 

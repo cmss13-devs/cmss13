@@ -8,13 +8,14 @@
 	permeability_coefficient = 0.90
 	flags_pass = PASSTABLE
 	flags_equip_slot = SLOT_ICLOTHING
-	armor_melee = 0
-	armor_bullet = 0
-	armor_laser = 0
-	armor_energy = 0
-	armor_bomb = 0
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_NONE
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
 	w_class = 3
 	var/has_sensor = 1//For the crew computer 2 = unable to change mode
 	var/sensor_mode = 3

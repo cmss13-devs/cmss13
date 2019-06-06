@@ -16,6 +16,7 @@
 	//c_config.armor_max_full_destruction_mult - how strong can be the full armor overwhelming
 	//c_config.armor_integrity_damage_mult - multiplier over final damage to armor calc
 	//c_config.armor_ignore_integrity - armor doesn't break at all
+	//c_config.armor_random_range - how random our armor can be
 
 	if(damage == 0)
 		return 0 //why bother. Also saves a lot of checks down the line
@@ -30,13 +31,18 @@
 	if(is_crit_hit)
 		armor_effect = minimal_efficiency
 	var/armor_deflection_total = 1
+	var/effective_deflection = 1
+
 	if(armor>0)
+		armor = armor * rand(100-c_config.armor_random_range,100) / 100
 		armor_deflection_total = (1+armor_effect) ** (armor/c_config.armor_steps) //basically a concept of "Effective Health"
-	
+		effective_deflection = c_config.armor_ignore_integrity? 1 : armor_integrity/100
+
+
 	damage /= armor_deflection_total
 
-	if(damage < armor * c_config.armor_full_deflection_mult)
-		var/damage_with_armor = damage*c_config.non_null_damage_mult - armor
+	if(damage < armor * c_config.armor_full_deflection_mult * effective_deflection)
+		var/damage_with_armor = damage*c_config.non_null_damage_mult - armor * effective_deflection
 		if(damage_with_armor <= 0) //PING
 			damage = 0
 		else
@@ -76,13 +82,16 @@
 	if(is_crit_hit)
 		armor_effect = minimal_efficiency
 	var/armor_deflection_total = 1
+	var/effective_deflection = 1
 	if(armor>0)
+		armor = armor * rand(100-c_config.armor_random_range,100) / 100
 		armor_deflection_total = (1+armor_effect) ** (armor/c_config.armor_steps) //basically a concept of "Effective Health"
+		effective_deflection = c_config.armor_ignore_integrity? 1 : armor_integrity/100
 	
 	damage /= armor_deflection_total
 
-	if(damage < armor * c_config.armor_full_deflection_mult)
-		var/damage_with_armor = damage*c_config.non_null_damage_mult - armor
+	if(damage < armor * c_config.armor_full_deflection_mult * effective_deflection)
+		var/damage_with_armor = damage*c_config.non_null_damage_mult - armor * effective_deflection
 		if(damage_with_armor <= 0) //PING
 			damage = 0
 		else
@@ -91,10 +100,10 @@
 
 	var/armor_punch = pen_armor_punch * penetration + damage_armor_punch * (dam_initial - damage)
 
-	if(damage + penetration > armor * c_config.armor_full_destruction_mult)
+	if(damage + penetration > armor * c_config.armor_full_destruction_mult * effective_deflection)
 		var/armor_punch_bonus = 1
 		if(armor>0)
-			armor_punch_bonus = (damage + penetration) / (armor * c_config.armor_full_destruction_mult)
+			armor_punch_bonus = (damage + penetration) / (armor * c_config.armor_full_destruction_mult  * effective_deflection)
 			if(c_config.armor_max_full_destruction_mult<armor_punch_bonus)
 				armor_punch_bonus = c_config.armor_max_full_destruction_mult
 		else

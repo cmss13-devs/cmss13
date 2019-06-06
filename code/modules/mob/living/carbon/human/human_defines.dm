@@ -45,7 +45,7 @@
 	var/religion = ""
 
 	//Equipment slots
-	var/obj/item/wear_suit = null
+	var/obj/item/clothing/suit/wear_suit = null
 	var/obj/item/clothing/under/w_uniform = null
 	var/obj/item/clothing/shoes/shoes = null
 	var/obj/item/belt = null

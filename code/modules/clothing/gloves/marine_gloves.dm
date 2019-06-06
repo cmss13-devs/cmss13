@@ -15,13 +15,14 @@
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 	flags_armor_protection = HANDS
-	armor_melee = 60
-	armor_bullet = 20
-	armor_laser = 10
-	armor_energy = 10
-	armor_bomb = 10
-	armor_bio = 25
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/gloves/marine/alpha
 	name = "alpha squad gloves"
@@ -92,13 +93,14 @@
 	desc = "A pair of heavily armored gloves."
 	icon_state = "black"
 	item_state = "bgloves"
-	armor_melee = 90
-	armor_bullet = 60
-	armor_laser = 75
-	armor_energy = 60
-	armor_bomb = 40
-	armor_bio = 35
-	armor_rad = 15
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_ULTRAHIGH
+	armor_internaldamage = CLOTHING_ARMOR_ULTRAHIGH
 	unacidable = 1
 
 /obj/item/clothing/gloves/marine/M3G
@@ -106,13 +108,14 @@
 	desc = "A pair of plated, but nimble, gloves."
 	icon_state = "black"
 	item_state = "bgloves"
-	armor_melee = 90
-	armor_bullet = 60
-	armor_laser = 75
-	armor_energy = 60
-	armor_bomb = 40
-	armor_bio = 35
-	armor_rad = 15
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_VERYHIGH
+	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	unacidable = 1
 
 /obj/item/clothing/gloves/marine/veteran/PMC
@@ -121,24 +124,26 @@
 	icon_state = "black"
 	item_state = "bgloves"
 	siemens_coefficient = 0
-	armor_melee = 60
-	armor_bullet = 40
-	armor_laser = 35
-	armor_energy = 20
-	armor_bomb = 10
-	armor_bio = 25
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/gloves/marine/veteran/PMC/commando
 	name = "\improper PMC commando gloves"
 	desc = "A pair of heavily armored, insulated, acid-resistant gloves."
 	icon_state = "brown"
 	item_state = "browngloves"
-	armor_melee = 90
-	armor_bullet = 80
-	armor_laser = 100
-	armor_energy = 90
-	armor_bomb = 20
-	armor_bio = 30
-	armor_rad = 30
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	unacidable = 1

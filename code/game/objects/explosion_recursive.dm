@@ -69,8 +69,7 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 	falloff = max(falloff, power/100) //prevent explosions with a range larger than 100 tiles
 	minimum_spread_power = -power * reflection_amplification_limit
 
-	message_admins("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-	log_game("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ")
+	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff] in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 
 	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1), 1000)
 	playsound(epicenter, "explosion", 75, 1, max(round(power,1),7) )
@@ -249,6 +248,9 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 		for(var/atom/A in T)
 			spawn(0)
 				A.ex_act(severity, direction)
+				if(ismob(A))
+					var/mob/M = A
+					log_attack("Mob [M.name] ([M.ckey]) harmed by explosion in [T.loc.name] at ([M.loc.x],[M.loc.y],[M.loc.z])")
 
 	spawn(8)  //resume lighting and powernet processing
 		if(!lighting_controller.processing)

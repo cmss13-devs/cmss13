@@ -1631,7 +1631,7 @@
 	A.add_hiddenprint(src)
 
 	if(!isturf(O))
-		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O].")
+		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>).")
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
 	visible_message(SPAN_XENOWARNING("\The [src] vomits globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!"), \
 	SPAN_XENOWARNING("You vomit globs of vile stuff all over \the [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)

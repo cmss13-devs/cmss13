@@ -46,7 +46,7 @@
 
 		H.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been handcuffed (attempt) by [user.name] ([user.ckey])</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to handcuff [H.name] ([H.ckey])</font>")
-		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(H)]")
+		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(H)] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 
 		feedback_add_details("handcuffs","H")
 

@@ -113,9 +113,6 @@
 		icon_state = initial(icon_state) + "_active"
 		playsound(loc, arm_sound, 25, 1, 6)
 
-		if(user)
-			msg_admin_attack("[user.name] ([user.ckey]) primed \a [src] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>)")
-
 	return
 
 /obj/item/explosive/grenade/chem_grenade/proc/primed(var/primed = 1)
@@ -145,7 +142,7 @@
 		for(var/reagent in O.reagents.reagent_list)
 			reagent_list_text += " [reagent], "
 	
-	msg_admin_attack("[src] detonated with contents[reagent_list_text]in [det_area] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
+	msg_admin_attack("[src] detonated with contents[reagent_list_text]in [det_area] at ([src.loc.x],[src.loc.y],[src.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 
 	for(var/obj/item/reagent_container/glass/G in beakers)
 		G.reagents.trans_to(src, G.reagents.total_volume)

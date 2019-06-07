@@ -1149,7 +1149,7 @@ var/global/floorIsLava = 0
 		M.sleeping = 9999999
 
 	log_admin("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
-	message_admins("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
+	message_mods("[key_name(usr)] used Toggle Sleeping on [key_name(M)].")
 
 	return
 

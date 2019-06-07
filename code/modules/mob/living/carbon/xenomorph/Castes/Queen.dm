@@ -114,6 +114,7 @@
 	var/mob/living/carbon/Xenomorph/observed_xeno //the Xenomorph the queen is currently overwatching
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/last_larva_time = 0
+	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
 
 	tileoffset = 0
 	viewsize = 12
@@ -395,7 +396,7 @@
 		for(var/Z in actions)
 			var/datum/action/A = Z
 			A.update_button_icon()
-	playsound(loc, 'sound/voice/alien_queen_screech.ogg', 75, 0)
+	playsound(loc, screech_sound_effect, 75, 0)
 	visible_message("<span class='xenohighdanger'>\The [src] emits an ear-splitting guttural roar!</span>")
 	create_shriekwave() //Adds the visual effect. Wom wom wom
 	//stop_momentum(charge_dir) //Screech kills a charge

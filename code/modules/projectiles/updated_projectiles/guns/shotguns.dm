@@ -418,7 +418,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.min_scatter_value
-	burst_scatter_mult = config.min_scatter_value
+	burst_scatter_mult = config.lmed_scatter_value
 	scatter_unwielded = config.max_scatter_value
 	damage_mult = config.base_hit_damage_mult
 	recoil = config.med_recoil_value*1.4
@@ -429,6 +429,17 @@ can cause issues with ammo types getting mixed up during the burst.
 		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
 		return
 	..()
+
+/obj/item/weapon/gun/shotgun/double/mou53/toggle_burst()
+	var/old_flags = flags_gun_features & GUN_BURST_ON
+	..()
+	var/new_flags = flags_gun_features & GUN_BURST_ON
+	if(old_flags == new_flags)
+		return
+	if(flags_gun_features & GUN_BURST_ON)
+		damage_mult = damage_mult - config.med_hit_damage_mult
+	else
+		damage_mult = damage_mult + config.med_hit_damage_mult
 
 //-------------------------------------------------------
 //PUMP SHOTGUN

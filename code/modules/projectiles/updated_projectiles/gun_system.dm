@@ -233,7 +233,7 @@
 		overlays.Cut()
 	else
 		overlays = list()
-	
+
 	var/new_icon_state = base_gun_icon
 
 	if(has_empty_icon && (!current_mag || current_mag.current_rounds <= 0))
@@ -495,9 +495,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
-	if(flag)	
+	if(flag)
 		return ..() //It's adjacent, is the user, or is on the user's person
-	if(!istype(A)) 
+	if(!istype(A))
 		return FALSE
 	if(flags_gun_features & GUN_BURST_FIRING)
 		if(flags_gun_features & GUN_FULL_AUTO_ON)
@@ -509,9 +509,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			to_chat(user, SPAN_NOTICE("You consider shooting at [A], but do not follow through."))
 		return FALSE
-	else if(user.gun_mode && !(A in target)) 
+	else if(user.gun_mode && !(A in target))
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
-	else															  
+	else
 		Fire(A,user,params) //Otherwise, fire normally.
 	return TRUE
 

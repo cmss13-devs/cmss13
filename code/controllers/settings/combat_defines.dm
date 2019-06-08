@@ -1,10 +1,81 @@
+/* THE SOOPER SEKRIT WEAPON CONFIG.
+
+////PART 1: UNDERSTANDING HOW TO READ THE VARIABLES.////
+
+//MULT VARIABLES//
+On variables with (mult) in the name, a high value is better, a low value is worse. The base config on all multiplication variables SHOULD BE 1.
+
+1 = 100%
+
+We add or subtract the other defined values from that base value in the WEAPON config (Not ammo, but also ammo, context dependent. Welcome to Hell.)
+The actual multiplication happens further down the line through Byond magicks. In short, don't actually multiply values by the multiplier values. Only add or subtract.
+EX:
+
+config.base_example_mult (1) + config.min_example_mult (0.05) = 1.05 => 105%
+
+
+//SHRAPNEL CHANCE & ARMOR PENETRATION//
+These are % variables. Its out of 100. Real braindead.
+
+//NAMING CONVENTIONS//
+There are none, but going forward, you should follow this example:
+
+min_example_var = 1
+mlow_example_var = 2
+low_example_var = 3
+hlow_example_var = 4
+etc..
+
+Append (m) or (h) for small numeric variations off of a new value.
+Always define a new value unless you want to tweak things globally (probably a bad idea)
+
+Sometimes there's a huge variance between high_example_var and ultra_example_var.
+There's no theory to this, sorry if you thought there was. Most of the super values are unused anyway.
+However, should you need a value that's inbetween them, define a newone following the just described naming conventions.
+
+//EVERYTHING ELSE//
+If it wasn't mentioned, it is probably self evident.
+A good rule of thumb would be High = Bad, Low = Good.
+Except for accuracy. Otherway around.
+Take a peak at the actual weapons to see how things work if you're confused.
+
+Happy developing future codermans.
+*/
+
+////PART TWO, BREAKING DOWN HOW EACH VARIABLE GETS USED & DEFINING THEM////
+
+/*
+////SETUP///
+These variables are multipliers established for the projectile system itself.
+DON'T TOUCH 'EM.
+*/
+
 /datum/configuration
 	var/proj_base_accuracy_mult = 0.01
 	var/proj_base_damage_mult = 0.01
 
 	var/proj_variance_high = 105
 	var/proj_variance_low = 98
+/*
+////ACCURACY////
+Scale of 0 to 40. Used in ammunition datum, gun & attachment defines.
+Why 0 - 40 you might ask? Who knows, we don't.
+Accuracy determines if your bullets will hit whatever you're shooting at. Think of it as your chance to hit.
+It DOES NOT control where your bullets go, that's scatter and projectile variance.
 
+.../update_projectiles/guns/code.dm
+var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
+var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
+
+.../updated_projectiles/ammo_datums.dm
+var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
+var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
+var/accuracy_var_high
+
+.../updated_projectiles/gun_attachables.dm
+var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
+var/accuracy_mult_unwielded
+*/
 	var/min_hit_accuracy = 2
 	var/low_hit_accuracy = 7
 	var/med_hit_accuracy = 13
@@ -12,15 +83,27 @@
 	var/high_hit_accuracy = 27
 	var/max_hit_accuracy = 40
 
-	var/base_hit_accuracy_mult = 1
+	var/base_hit_accuracy_mult = 1 //Multiplication settings for accuracy. Only ever add or subtract from the base value.
 	var/min_hit_accuracy_mult = 0.05
 	var/low_hit_accuracy_mult = 0.13
 	var/med_hit_accuracy_mult = 0.19
 	var/hmed_hit_accuracy_mult = 0.24
 	var/high_hit_accuracy_mult = 0.37
 	var/max_hit_accuracy_mult = 0.50
+/*
+////DAMAGE////
+For humans, scale of 100 to -100 (200 to 0), Aliens, well that's variable. You'll need to check the caste datums.
+Damage is the amount of points and object / mob will take from a firearm or projectile before armor reduction is applied.
+Only Aliens and Humans have armor reduction at this time.
 
-	var/base_hit_damage = 10
+Weapons are generally balanced around Aliens. So far, it's been eye-balled for about 4 years.
+Be the change you want to see, go make a spread sheet with all this data enterprising coder!
+As such, don't expect any values assigned to common firearms to even consider how it might run in an HvH event.
+
+.../update_projectiles/guns/code.dm
+
+*/
+	var/base_hit_damage = 10 //Self evident.
 	var/min_hit_damage = 16
 	var/mlow_hit_damage = 22
 	var/low_hit_damage = 29
@@ -28,7 +111,7 @@
 	var/hlmed_hit_damage = 34
 	var/lmed_hit_damage = 38
 	var/lmed_plus_hit_damage = 43
-	var/med_hit_damage = 47
+	var/med_hit_damage = 47 //M41A-MK2 (Stock Pulse Rifle) for reference.
 	var/hmed_hit_damage = 51
 	var/high_hit_damage = 68
 	var/mhigh_hit_damage = 76
@@ -36,7 +119,7 @@
 	var/super_hit_damage = 121
 	var/ultra_hit_damage = 153
 
-	var/base_hit_damage_mult = 1
+	var/base_hit_damage_mult = 1 //Multiplication settings for damage. Only ever add or subtract from the base value.
 	var/min_hit_damage_mult = 0.06
 	var/low_hit_damage_mult = 0.12
 	var/med_hit_damage_mult = 0.21
@@ -44,20 +127,40 @@
 	var/high_hit_damage_mult = 0.35
 	var/max_hit_damage_mult = 0.45
 
-	var/tactical_damage_falloff = 0.8
+/*
+////FLAMER STUFF////
+Burn level = How much damage do we want to deal? Simple
+Burn time = How long do we want our flames to last?
+*/
+
+
+	var/min_burnlevel = 10
+	var/low_burnlevel = 16
+	var/med_burnlevel = 24 //This tickles aliens, really hurts humans.
+	var/high_burnlevel = 48
+	var/max_burnlevel = 60
+
+	var/instant_burntime = 1 //For gel fuel.
+	var/min_burntime = 10
+	var/low_burntime = 20
+	var/med_burntime = 30
+	var/high_burntime = 40
+	var/max_burntime = 50
+
+	var/tactical_damage_falloff = 0.8 //MK221 Tactical, auto-shotty.
 	var/reg_damage_falloff = 1 //in config it was 0.89 but referenced wrong var
 	var/buckshot_v2_damage_falloff = 3
 	var/buckshot_damage_falloff = 5 //ditto but 18.3 (!!!)
 	var/extra_damage_falloff = 10 //ditto but 9.75
 
-	var/min_burst_value = 1
+	var/min_burst_value = 1 //How many boolets exit your gun when you burst fire.
 	var/low_burst_value = 2
 	var/med_burst_value = 3
 	var/high_burst_value = 4
 	var/mhigh_burst_value = 5
 	var/max_burst_value = 6
 
-	var/min_fire_delay = 1
+	var/min_fire_delay = 1 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 	var/mlow_fire_delay = 2
 	var/low_fire_delay = 3
 	var/med_fire_delay = 4
@@ -68,42 +171,53 @@
 	var/min_scatter_value = 1
 	var/mlow_scatter_value = 2
 	var/low_scatter_value = 3
-	var/lmed_scatter_value = 4
+	var/lmed_scatter_value = 4 //SMG 2-hand, for reference.
 	var/med_scatter_value = 5
 	var/hmed_scatter_value = 6
 	var/high_scatter_value = 7
 	var/mhigh_scatter_value = 8
-	var/max_scatter_value = 10
+	var/max_scatter_value = 10 //Buckshot, for reference.
 	var/super_scatter_value = 15
 	var/ultra_scatter_value = 20
 
-	var/min_recoil_value = 1
+	var/min_recoil_value = 1 //Sliding scale of recoil 1-5. You can go higher, but it just gets silly.
 	var/low_recoil_value = 2
 	var/med_recoil_value = 3
 	var/high_recoil_value = 4
 	var/max_recoil_value = 5
 
-	var/min_shrapnel_chance = 3
+	var/min_shrapnel_chance = 3 // % chance for shrapnel generation when getting hit by something.
 	var/low_shrapnel_chance = 9
 	var/med_shrapnel_chance = 24
 	var/high_shrapnel_chance = 45
 	var/max_shrapnel_chance = 75
-
-	var/min_shell_range = 4
+/*
+////SHELL RANGES////
+Shell ranges = tiles.
+A range of 7 is screen max.
+~12 is miniscope/IFF
+~18 is railscope.
+We don't really use the higher values, but they're there.
+*/
+	var/min_shell_range = 4 //How many tiles should our gun/bullet stay accurate? Maps are generally 256x256, so keep that in mind. Player screen width is 7x7 tiles.
 	var/close_shell_range = 5
 	var/near_shell_range = 7
+	var/lshort_shell_range = 9
 	var/short_shell_range = 11
+	var/hshort_shell_range = 13
+	var/lnorm_shell_range = 19
 	var/norm_shell_range = 22
+	var/hnorm_shell_range = 25
 	var/long_shell_range = 33
 	var/max_shell_range = 44
 
-	var/slow_shell_speed = 1
+	var/slow_shell_speed = 1 //How many tiles it travels per tick.
 	var/reg_shell_speed = 2
 	var/fast_shell_speed = 3
 	var/super_shell_speed = 4
 	var/ultra_shell_speed = 6
 
-	var/min_armor_penetration = 5
+	var/min_armor_penetration = 5 //See Neth's armor comments for how this works. Higher is better.
 	var/mlow_armor_penetration = 12
 	var/low_armor_penetration = 23
 	var/hlow_armor_penetration = 26
@@ -113,27 +227,27 @@
 	var/mhigh_armor_penetration = 66
 	var/max_armor_penetration = 87
 
-	var/min_proj_extra = 1
+	var/min_proj_extra = 1 //Extra bullets to shoot when you shoot. Mostly for shotguns.
 	var/low_proj_extra = 2
 	var/med_proj_extra = 3
 	var/high_proj_extra = 5
 	var/max_proj_extra = 8
 
-	var/min_proj_variance = 1
+	var/min_proj_variance = 1 //How much do we want to make a value variable? Used for accuracy, damage variance. Used in ammo_datums.dm
 	var/low_proj_variance = 3
 	var/med_proj_variance = 7
 	var/high_proj_variance = 9
 	var/max_proj_variance = 12
-	
+
 	//weapon settling multiplier
-	var/weapon_settle_accuracy_multiplier = 4
-	var/weapon_settle_scatter_multiplier = 2
+	var/weapon_settle_accuracy_multiplier = 4 //How quickly we reset our accuracy after firing.
+	var/weapon_settle_scatter_multiplier = 2 //How quickly scatter settles after firing.
 
 	//roundstart stuff
-	var/xeno_number_divider = 5
+	var/xeno_number_divider = 5 //What weight do we want to give towards considering roundstart survivors & xenos from readied players.
 	var/surv_number_divider = 20
 
-	var/datum/combat_configuration/marine_melee
+	var/datum/combat_configuration/marine_melee //This is all used in the new fancy xeno & marine armor code. See Neth's documentation on what these do.
 	var/datum/combat_configuration/marine_ranged
 	var/datum/combat_configuration/marine_explosive
 	var/datum/combat_configuration/marine_fire
@@ -145,7 +259,7 @@
 	var/datum/combat_configuration/xeno_explosive_small
 	var/datum/combat_configuration/xeno_fire
 
-/datum/configuration/proc/load_combat_config()
+/datum/configuration/proc/load_combat_config() //Translate of our config vars into datums for ease of usage within the armor equations.
 	marine_melee = new /datum/combat_configuration/marine/melee()
 	marine_ranged = new /datum/combat_configuration/marine/ranged()
 	marine_explosive = new /datum/combat_configuration/marine/explosive()

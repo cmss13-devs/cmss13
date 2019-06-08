@@ -1,0 +1,68 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Triiodine
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - imageadd: "The M240 and M240T and associated components have been redrawn."
+  - spellcheck: "The USCM Pyrotechnician fueltank (specialist variant) has been renamed to USCM Pyrotechnician G6-2 fueltank."
+  - rscadd: "The USCM Pyrotechnician G4-1 fueltank has been added. It can be found in Requisitions or the Pyrotechnician Support Kit. It can hold 3 fuel tanks of choice, and refills standard tanks with UT-Napthal standard fuel."
+  - tweak: "The Pyrotechnician Support Kit has had its welderpack removed. Instead, it now contains the USCM Pyrotechnician G4-1 fueltank"
+  - tweak: "The Pyrotechnician Support Kit no longer contains an attachable mini-flamer."
+  - tweak: "The Pyrotechnician Support Kit no longer contains a large fire extinguisher."
+  - tweak: "The Pyrotechnician Support Kit now has an extra fuel tank and a gellied fuel tank."
+  - rscadd: "Gellied Napthal has been added as a fuel type. It can be ordered in Requisitions. Gellied Napthal reaches up to 7 tiles, but doesn't burn longer than 1-3 seconds. It deals moderately low damage."
+  - rscadd: "Gellied Napthal Type A has been added. It performs identically, just at higher damage. Available to specialists only."
+  - rscadd: "The USCM Pyrotechnician Specialist kit now contains a flame tank strap pouch and a tank of Gellied Napalm A."
+  - tweak: "Every fuel type and flame thrower has had their stats adjusted. Generally, flames should be more dangerous to both sides."
+  - rscadd: "Fuel tank strap pouchs have been added. They can be found in requisitions, PFC vendors (15 points), and SL vendors. They can store 2 fuel tanks of choice."
+  - imageadd: "The M39 SMG and associated components have been redrawn."
+  - tweak: "The M39 SMG now deals slightly more damage."
+  - tweak: "The M39 SMG has had its single shot firerate increased."
+  - tweak: "The M39 SMG now fires at a greater muzzle velocity. Bullets fired will move over tiles faster."
+  - tweak: "The M39 SMG now has slightly less damage falloff."
+  - tweak: "The M39 SMG now spawns with a folding stock."
+  - tweak: "AP M39 Ammunition now has slightly higher armor penetration."
+  - tweak: "The M39 SMG burst is reduced to 3 from 4."
+  - tweak: "The M39 arm brace no longer has single shot delay."
+  - tweak: "The M39 standard stock better improves accuracy, recoil reduction, and scatter greatly. It is much rarer distributed now."
+  - tweak: "The M39 can now attach the bayonet, and angled grip."
+  - spellcheck: "The M-OU53 Sapper Support kit has been renamed to: M-OU53 Field Test Kit"
+  - tweak: "The M-OU53 Field Test Kit no longer contains an explosives pouch."
+  - tweak: "The M-OU53 Field Test Kit no longer contains any grenades."
+  - tweak: "The bayonet deals more damage now."
+  - bugfix: "Adjusted some numbers so your weapon attachments don't Gandhi your weapon stats."
+  - bugfix: "Fixed the M39, M240, M240T, M92 suit slot states."
+  - bugfix: "Fixed the SmartGun wield states."
+  - imageadd: "The M41AE2 one hand states have been slightly adjusted."
+  - imageadd: "The First Aid, Large Pistol Magazine, and auto-injector pouches have been slightly adjusted."
+  - spellcheck: "Cleaned up some grammar in the M37 stock description."

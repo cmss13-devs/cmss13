@@ -495,7 +495,7 @@
 
 // Pyrotechnician Spec backpack fuel tank
 /obj/item/storage/backpack/marine/engineerpack/flamethrower
-	name = "\improper USCM Pyrotechnician fueltank"
+	name = "\improper USCM Pyrotechnician G6-2 fueltank"
 	desc = "A specialized fueltank worn by USCM Pyrotechnicians for use with the M240-T incinerator unit. A small general storage compartment is installed."
 	icon_state = "flamethrower_tank"
 	max_fuel = 500
@@ -516,6 +516,18 @@
 			to_chat(user, SPAN_NOTICE("You refill [FTL] with [FTL.caliber]."))
 			FTL.update_icon()
 	. = ..()
+
+/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit
+	name = "\improper USCM Pyrotechnician G4-1 fueltank"
+	desc = "A much older generation back rig that holds fuel in two tanks. A small regulator sits between the two. Has a few straps for holding up to three of the actual flamer tanks you'll be refilling."
+	icon_state = "flamethrower_backpack"
+	item_state = "flamethrower_backpack"
+	max_fuel = 350
+	has_gamemode_skin = FALSE
+	max_storage_space = 15
+	storage_slots = 3
+	worn_accessible = TRUE
+	can_hold = list(/obj/item/ammo_magazine/flamer_tank)
 
 /obj/item/storage/backpack/lightpack
 	name = "\improper lightweight combat pack"

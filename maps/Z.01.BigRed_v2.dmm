@@ -1773,7 +1773,7 @@
 /area/bigredv2/outside/marshall_office)
 "adY" = (
 /obj/structure/closet/secure_closet/detective,
-/obj/item/weapon/gun/smg/p90,
+/obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor{
 	icon_state = "wood"
 	},

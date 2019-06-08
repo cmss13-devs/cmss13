@@ -68,7 +68,7 @@
 	var/turf/drop_spawn
 	var/choice
 
-	for(var/i = 0 to 0) //Spawns up to 3 random things.
+	for(var/i = 0 to 2) //Spawns up to 3 random things.
 		if(prob(20)) continue
 		choice = (rand(1,8) - round(i/2)) //Decreasing values, rarer stuff goes at the end.
 		if(choice < 0) choice = 0
@@ -86,6 +86,7 @@
 					new /obj/item/weapon/gun/smg/m39/elite(drop_spawn)
 					new /obj/item/ammo_magazine/smg/m39/ap
 					new /obj/item/ammo_magazine/smg/m39/ap
+					new /obj/item/ammo_magazine/smg/m39/le
 					continue
 				if(2)
 					new /obj/item/weapon/gun/flamer(drop_spawn)

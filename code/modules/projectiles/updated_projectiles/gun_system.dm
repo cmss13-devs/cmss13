@@ -79,6 +79,11 @@
 	var/attachable_overlays[] 		= null		//List of overlays so we can switch them in an out, instead of using Cut() on overlays.
 	var/attachable_offset[] 		= null		//Is a list, see examples of from the other files. Initiated on New() because lists don't initial() properly.
 	var/list/attachable_allowed = list()		//Must be the exact path to the attachment present in the list. Empty list for a default.
+	var/list/random_spawn_rail = list() 		//Used when a gun will have a chance to spawn with attachments.
+	var/list/random_spawn_muzzle = list()  		//Used when a gun will have a chance to spawn with attachments.
+	var/list/random_spawn_underbarrel = list()  //Used when a gun will have a chance to spawn with attachments.
+	var/list/random_spawn_stock = list()  		//Used when a gun will have a chance to spawn with attachments.
+	var/random_spawn_chance = 50				//Chance for an attachment to spawn in each slot.
 	var/obj/item/attachable/muzzle 	= null		//Attachable slots. Only one item per slot.
 	var/obj/item/attachable/rail 	= null
 	var/obj/item/attachable/under 	= null
@@ -116,7 +121,7 @@
 	else ammo = ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
 	set_gun_config_values()
 	update_force_list() //This gives the gun some unique verbs for attacking.
-
+	handle_random_attachments(random_spawn_chance)
 	handle_starting_attachment()
 
 
@@ -133,7 +138,39 @@
 	scatter_unwielded = config.med_scatter_value
 	damage_mult = config.base_hit_damage_mult
 
+/obj/item/weapon/gun/proc/handle_random_attachments(var/randchance)
+	var/attachmentchoice
 
+	if(prob(randchance)) // Rail
+		attachmentchoice = safepick(random_spawn_rail)
+		if(attachmentchoice)
+			var/obj/item/attachable/R = new attachmentchoice(src)
+			R.Attach(src)
+			attachmentchoice = FALSE
+
+	if(prob(randchance)) // Muzzle
+		attachmentchoice = safepick(random_spawn_muzzle)
+		if(attachmentchoice)
+			var/obj/item/attachable/M = new attachmentchoice(src)
+			M.Attach(src)
+			attachmentchoice = FALSE
+
+	if(prob(randchance)) // Underbarrel
+		attachmentchoice = safepick(random_spawn_underbarrel)
+		if(attachmentchoice)
+			var/obj/item/attachable/U = new attachmentchoice(src)
+			U.Attach(src)
+			attachmentchoice = FALSE
+
+	if(prob(randchance)) // Stock
+		attachmentchoice = safepick(random_spawn_stock)
+		if(attachmentchoice)
+			var/obj/item/attachable/S = new attachmentchoice(src)
+			S.Attach(src)	
+			attachmentchoice = FALSE
+
+	spawn(5) // necessary because attachment locations are defined later
+		update_icon()
 
 
 

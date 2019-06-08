@@ -46,7 +46,7 @@
 
 /datum/equipment_preset/wy/pmc_standard/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	var/choice = rand(1,4)
+	var/choice = rand(1,6)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC(H), WEAR_JACKET)
@@ -70,6 +70,7 @@
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_R_STORE)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap(H.back), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/le(H.back), WEAR_IN_BACK)
 		if(4)
 			H.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer(H), WEAR_J_STORE)
 			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_vp70(H), WEAR_L_STORE)
@@ -78,6 +79,12 @@
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(H.back), WEAR_IN_BACK)
+		if(5,6)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/fp9000/pmc(H), WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_p90(H), WEAR_L_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_p90(H), WEAR_R_STORE)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000(H.back), WEAR_IN_BACK)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000(H.back), WEAR_IN_BACK)
 
 /*****************************************************************************************************/
 

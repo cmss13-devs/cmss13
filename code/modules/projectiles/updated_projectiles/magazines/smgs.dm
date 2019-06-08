@@ -21,6 +21,12 @@
 	icon_state = "m39_AP"
 	default_ammo = /datum/ammo/bullet/smg/ap
 
+/obj/item/ammo_magazine/smg/m39/le
+	name = "\improper M39 LE magazine (10x20mm)"
+	desc = "A 10x20mm caseless submachinegun magazine made for the special light explosive rounds, designed to rapidly shred armor."
+	icon_state = "m39_le"
+	default_ammo = /datum/ammo/bullet/smg/le
+
 /obj/item/ammo_magazine/smg/m39/extended
 	name = "\improper M39 extended magazine (10x20mm)"
 	max_rounds = 72
@@ -62,7 +68,7 @@
 	caliber = ".32ACP"
 	icon_state = "skorpion" //PLACEHOLDER
 	gun_type = /obj/item/weapon/gun/smg/skorpion
-	max_rounds = 20 //Can also be 10.
+	max_rounds = 30 //Can also be 10.
 
 
 //-------------------------------------------------------
@@ -100,11 +106,11 @@
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90
 
-/obj/item/ammo_magazine/smg/p90
+/obj/item/ammo_magazine/smg/fp9000
 	name = "FN FP9000 magazine (5.7x28mm)"
 	desc = "A magazine for the FN FP9000 SMG."
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = "5.7x28mm"
-	icon_state = "FP9000"
+	icon_state = "fp9000"
 	max_rounds = 50
-	gun_type = /obj/item/weapon/gun/smg/p90
+	gun_type = /obj/item/weapon/gun/smg/fp9000

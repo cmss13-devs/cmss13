@@ -1194,14 +1194,14 @@
 /area/lv624/lazarus/crashed_ship)
 "cS" = (
 /obj/structure/table/woodentable,
-/obj/item/weapon/gun/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "cT" = (
 /obj/structure/table/woodentable,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "cU" = (

@@ -236,9 +236,9 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_p90/New()
 	..()
-	new /obj/item/ammo_magazine/smg/p90 (src)
-	new /obj/item/ammo_magazine/smg/p90 (src)
-	new /obj/item/ammo_magazine/smg/p90 (src)
+	new /obj/item/ammo_magazine/smg/fp9000 (src)
+	new /obj/item/ammo_magazine/smg/fp9000 (src)
+	new /obj/item/ammo_magazine/smg/fp9000 (src)
 
 /obj/item/storage/pouch/magazine/large/pmc_lmg/New()
 	..()

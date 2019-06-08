@@ -47,8 +47,8 @@
 	var/bonus_projectiles_type 					// Type path of the extra projectiles
 	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
 	var/debilitate[]				= null 		// Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	var/pen_armor_punch				= 1
-	var/damage_armor_punch			= 0.5
+	var/pen_armor_punch				= 1			// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
+	var/damage_armor_punch			= 0.5		// how much armor breaking is done by sheer weapon force. This is for big blunt weapons
 
 	New()
 		accuracy 			= config.min_hit_accuracy 	// This is added to the bullet's base accuracy.
@@ -408,6 +408,18 @@
 	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
+
+/datum/ammo/bullet/smg/le
+	name = "armor-shredding submachinegun bullet"
+
+/datum/ammo/bullet/smg/le/New()
+	..()
+	scatter = config.min_scatter_value
+	damage = config.base_hit_damage
+	penetration = config.low_armor_penetration
+	shell_speed = config.fast_shell_speed
+	damage_falloff = config.reg_damage_falloff
+	pen_armor_punch = 2.5
 
 /*
 //================================================

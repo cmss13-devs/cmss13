@@ -335,7 +335,7 @@ Defined in conflicts.dm of the #defines folder.
 	damage_mod = -config.low_hit_damage_mult
 	recoil_mod = -config.med_recoil_value
 
-	damage_falloff_mod = 0.4
+	damage_falloff_mod = 0.1
 	accuracy_unwielded_mod = config.med_hit_accuracy_mult
 	recoil_unwielded_mod = -config.low_recoil_value
 
@@ -1295,7 +1295,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/lasersight
 	name = "laser sight"
-	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy, and decreases scatter when firing one-handed."
+	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy and decreases scatter, especially while one-handed."
 	icon_state = "lasersight"
 	attach_icon = "lasersight_a"
 	slot = "under"
@@ -1306,6 +1306,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_mod = config.min_hit_accuracy_mult
 	movement_acc_penalty_mod = -1
+	scatter_mod = -config.min_scatter_value
 	scatter_unwielded_mod = -config.mlow_scatter_value
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
 

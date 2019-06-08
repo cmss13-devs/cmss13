@@ -1,0 +1,55 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Ranged66	
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscadd: "Added L42 incendiary mags. They are as rare as incendiary rifle mags."
+  - rscadd: "Added M39 Light Explosive (LE) ammo. Does very little actual damage, but shreds armor quickly (even when it deflects). Magazines can generally be found alongside normal M39 AP ammo sources, but in smaller quantity."
+  - tweak: "The laser sight attachment now decreases wielded scatter too, and can be attached to the L42."
+  - tweak: "Severely reduced the damage falloff debuff of the recoil compensator, making it a more viable option."
+  - imageadd: "Changed the miniscope sprite a little bit."
+  - tweak: "Added the FP9000 as a PMC weapon. Removed the desert eagle from CLF, replaced it with a beretta."
+  - tweak: "--Whole bunch of rare/event/faction gun tweaks!--"
+  - tweak: "Increased FN FP9000 SMG fire rate, allowed the attachment of extended barrels, compensators, barrel chargers and laser sights, gave it a built in miniscope, and Triiodine changed the sprite."
+  - tweak: "Slightly increased MAC-15 SMG fire rate to be more SMG-like, allowed attachment of laser sights, suppressors and reflex sights."
+  - tweak: "Increased the PPSh fire rate to be more SMG-like. It was slower than an M41..."
+  - tweak: "The CZ-81 Skorpion can now fit the reflex sight, laser sight and supressor attachments. The fire rate was increased and damage lowered, magazine size increased slightly."
+  - tweak: "Slightly increased MP27 fire rate, and additionally allowed attachment of laser sights, reflex sights and mini scopes (was big scopes). Damage slightly lowered."
+  - tweak: "The MP5 can now additionally fit laser sights, extended barrels, angled grips and miniscopes instead of normal scopes."
+  - tweak: "The UPP Type 71 and 71c can now fit reflex sights, red dot sights, laser sights, vertical & angled grips, supressors, extended barrels and bayonets. The commando variant can fit grips and laser sights."
+  - tweak: "The M16 can additionally fit a miniscope."
+  - rscadd: "Many of the above mentioned guns will have a chance to spawn with some random attachments. The M46C CO rifle will always spawn with some random kit."
+  - bugfix: "Fixed the bug where the M46C had a weird stock. Fixed some attachment locations on guns."
+
+
+

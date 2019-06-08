@@ -1457,7 +1457,7 @@ AMMO
 
 
 /datum/supply_packs/ammo_ap
-	name = "armor piercing magazines crate (M41A x2, M4A3 x2, M39 x2, L42 x2)"
+	name = "armor piercing magazines crate (M41A x2, M4A3 x2, M39 x2, M39 LE x1, L42 x2)"
 	contains = list(
 					/obj/item/ammo_magazine/rifle/ap,
 					/obj/item/ammo_magazine/rifle/ap,
@@ -1465,6 +1465,7 @@ AMMO
 					/obj/item/ammo_magazine/pistol/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
+					/obj/item/ammo_magazine/smg/m39/le,
 					/obj/item/ammo_magazine/rifle/l42mk1/ap,
 					/obj/item/ammo_magazine/rifle/l42mk1/ap
 					)
@@ -1504,14 +1505,16 @@ AMMO
 
 
 /datum/supply_packs/ammo_ap_m39
-	name = "armor piercing M39 magazines crate (x6)"
+	name = "armor piercing M39 magazines crate (AP x6, LE x2)"
 	contains = list(
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
 					/obj/item/ammo_magazine/smg/m39/ap,
-					/obj/item/ammo_magazine/smg/m39/ap
+					/obj/item/ammo_magazine/smg/m39/ap,
+					/obj/item/ammo_magazine/smg/m39/le,
+					/obj/item/ammo_magazine/smg/m39/le
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/ammo
@@ -1704,7 +1707,7 @@ AMMO
 					/obj/item/ammo_magazine/smg/ppsh,
 					/obj/item/ammo_magazine/smg/ppsh/extended,
 					/obj/item/ammo_magazine/smg/uzi,
-					/obj/item/ammo_magazine/smg/p90,
+					/obj/item/ammo_magazine/smg/fp9000,
 					/obj/item/ammo_magazine/sniper/svd,
 					/obj/item/ammo_magazine/rifle/m41aMK1,
 					/obj/item/ammo_magazine/rifle/mar40,
@@ -1727,6 +1730,7 @@ AMMO
 					/obj/item/ammo_magazine/rifle/extended,
 					/obj/item/ammo_magazine/rifle/ap,
 					/obj/item/ammo_magazine/rifle/incendiary,
+					/obj/item/ammo_magazine/rifle/l42mk1/incendiary,
 					/obj/item/ammo_magazine/rifle/m41aMK1,
 					/obj/item/ammo_magazine/rifle/m4ra,
 					/obj/item/ammo_magazine/rifle/lmg,
@@ -1743,6 +1747,7 @@ AMMO
 					/obj/item/ammo_magazine/smg/m39,
 					/obj/item/ammo_magazine/smg/m39/extended,
 					/obj/item/ammo_magazine/smg/m39/ap,
+					/obj/item/ammo_magazine/smg/m39/le,
 					/obj/item/ammo_magazine/revolver,
 					/obj/item/ammo_magazine/revolver,
 					/obj/item/ammo_magazine/revolver,

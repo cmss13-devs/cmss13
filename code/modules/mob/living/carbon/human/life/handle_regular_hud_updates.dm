@@ -98,18 +98,19 @@
 						if(1)	hud_used.healths.icon_state = "health6"
 						if(2)	hud_used.healths.icon_state = "health7"
 						else
-							var/perceived_health = health - traumatic_shock
+							
+							var/percieved_shock = traumatic_shock
 							if(species && species.flags & NO_PAIN)
-								perceived_health = health
+								percieved_shock = 0
 
-							switch(perceived_health)
-								if(100 to INFINITY)		hud_used.healths.icon_state = "health0"
-								if(80 to 100)			hud_used.healths.icon_state = "health1"
-								if(60 to 80)			hud_used.healths.icon_state = "health2"
-								if(40 to 60)			hud_used.healths.icon_state = "health3"
-								if(20 to 40)			hud_used.healths.icon_state = "health4"
-								if(0 to 20)				hud_used.healths.icon_state = "health5"
-								else					hud_used.healths.icon_state = "health6"
+							switch(percieved_shock)
+								if(160 to INFINITY)		hud_used.healths.icon_state = "health6"
+								if(140 to 159)			hud_used.healths.icon_state = "health5"
+								if(100 to 139)			hud_used.healths.icon_state = "health4"
+								if(60 to 99)			hud_used.healths.icon_state = "health3"
+								if(20 to 59)			hud_used.healths.icon_state = "health2"
+								if(1 to 19)				hud_used.healths.icon_state = "health1"
+								else					hud_used.healths.icon_state = "health0"
 
 			if(hud_used.nutrition_icon)
 				switch(nutrition)

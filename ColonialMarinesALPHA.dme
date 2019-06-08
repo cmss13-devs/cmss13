@@ -30,6 +30,7 @@
 #include "code\#define\mobs.dm"
 #include "code\#define\mode.dm"
 #include "code\#define\objects.dm"
+#include "code\#define\pain.dm"
 #include "code\#define\skills.dm"
 #include "code\#define\subsystem.dm"
 #include "code\#define\tick.dm"

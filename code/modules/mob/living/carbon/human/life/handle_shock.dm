@@ -1,22 +1,52 @@
 //Refer to life.dm for caller
 
 /mob/living/carbon/human/handle_shock()
-	..()
-	if(status_flags & GODMODE || analgesic || (species && species.flags & NO_PAIN)) 
-		return //Godmode or some other pain reducers. //Analgesic avoids all traumatic shock temporarily
 
-	if(health < config.health_threshold_softcrit) 		
-		shock_stage = max(shock_stage, 60)//If they took too much damage, they immediately enter shock.
+	// Post-hoc documentation by Fourkhan
+	// This gets called on every human on every life() proc
+	// Determines how human pain works 
+	// Important vars:
+	// Human.health => 200 - damage 
+	// Human.shock_stage => total shock stage (what decides the negative effects)
+	// Human.traumatic_shock => whether or not your shock stage increases every tick
 
-	if(traumatic_shock >= 80) 							
-		shock_stage++ //If they shock exceeds 80, add more to their shock stage, regardless of health.
-	else if(health < config.health_threshold_softcrit) 	
-		shock_stage = max(shock_stage, 60)
-	/*If their health is lower than threshold, but they don't have enough shock, they will never go below 60.
-	Otherwise they slowly lose shock stage.*/
-	else
-		shock_stage = max(0, min(shock_stage - 20, 160)) //No greater than 160 and no smaller than 0, reduced by 1 each time.
-		return
+	var/max_shock
+	if (HEALTH_THRESHOLD_VERYHIGHSHOCK >= health)
+		max_shock = MAXSHOCK_VERYHIGH
+	else if (HEALTH_THRESHOLD_HIGHSHOCK >= health)
+		// One below the super bad effects 
+		max_shock = MAXSHOCK_HIGH
+	else if (HEALTH_THRESHOLD_MEDSHOCK >= health)
+		max_shock = MAXSHOCK_MED
+	else if (HEALTH_THRESHOLD_LOWSHOCK >= health)
+		max_shock = MAXSHOCK_LOW
+	else 
+		max_shock = MAXSHOCK_VERYLOW
+
+	
+	..() // This is where traumatic_shock gets updated 
+
+	if(status_flags & GODMODE || analgesic || (species && species.flags & NO_PAIN)) return //Godmode or some other pain reducers. //Analgesic avoids all traumatic shock temporarily
+
+	// Scale very very quickly at super-high damage totals 
+	if(traumatic_shock >= TRAUMA_HIGH) 
+		shock_stage += SHOCK_GAIN_RATE_HIGH
+	else if (traumatic_shock >= TRAUMA_MED)
+		shock_stage += SHOCK_GAIN_RATE_MED
+	else if (traumatic_shock >= TRAUMA_LOW)
+		shock_stage += SHOCK_GAIN_RATE_LOW
+	else if (traumatic_shock >= TRAUMA_VERYLOW)
+		shock_stage += SHOCK_GAIN_RATE_VLOW
+
+	// Introduce some notion of levels of damage - we shouldn't die from 50 brute, which is what the system currently does
+	if (shock_stage > max_shock)
+		shock_stage = max_shock
+	
+	if (traumatic_shock <= TRAUMA_VERYLOW) // IF we have essentially healed, or been painkiller'd, reduce our effects quickly
+		if (shock_stage < 10)
+			shock_stage = 0
+		else
+			shock_stage -= 10
 
 	//This just adds up effects together at each step, with a few small exceptions. Preferable to copy and paste rather than have a billion if statements.
 	var/message = pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")
@@ -26,6 +56,8 @@
 	var/message_dying = pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")
 	message_dying = SPAN_DANGER("[message_dying]!")
 	switch(shock_stage)
+		
+		// Low pain/damage
 		if(10 to 29) to_chat(src, message)
 		if(30 to 39)
 			if(shock_stage == 30)
@@ -39,26 +71,30 @@
 				to_chat(src, message_numb)
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
+		
+		// Below here lie BAD EFFECTS
 		if(60 to 79)
-			if(shock_stage == 60 && !lying)
-				emote("me", 1, " is having trouble standing.")
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
-			if(prob(2))
+			if(prob(1))
 				to_chat(src, message_numb)
-				KnockDown(20)
+				emote("me", 1, " is having trouble standing.")
+				KnockDown(2)
+
 		if(80 to 119)
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
 			if(prob(7))
 				to_chat(src, message_numb)
-				KnockDown(20)
+				KnockDown(5)
+		
+		// death tier 
 		if(120 to 149)
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
-			if(prob(7))
+			if(prob(9))
 				to_chat(src, message_numb)
-				KnockDown(20)
+				KnockDown(10)
 			if(prob(2))
 				to_chat(src, message_dying)
 				KnockOut(5)

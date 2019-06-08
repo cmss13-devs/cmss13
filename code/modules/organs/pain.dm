@@ -19,7 +19,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 
 		var/datum/limb/right_hand = H.get_limb("r_hand")
 		var/datum/limb/left_hand = H.get_limb("l_hand")
-		if(!H.stat && amount > 50 && prob(amount * 0.1))
+		if(!H.stat && amount > 50 && prob(amount * 0.05))
 			msg = "You [pick("wince","shiver","grimace")] in pain"
 			var/i
 			for(var/datum/limb/O in list(right_hand, left_hand))

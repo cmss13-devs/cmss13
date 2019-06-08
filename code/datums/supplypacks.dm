@@ -1805,6 +1805,32 @@ AMMO
 	containername = "napthal fuel crate"
 	group = "Ammo"
 
+/datum/supply_packs/napalm_gel
+	name = "Napalm Gel (x4)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/gellied,
+					/obj/item/ammo_magazine/flamer_tank/gellied,
+					/obj/item/ammo_magazine/flamer_tank/gellied,
+					/obj/item/ammo_magazine/flamer_tank/gellied,
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "napalm gel crate"
+	group = "Ammo"
+
+/datum/supply_packs/napalm_gel_a
+	name = "Napalm A Gel (x4)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/large/gellied,
+					/obj/item/ammo_magazine/flamer_tank/large/gellied,
+					/obj/item/ammo_magazine/flamer_tank/large/gellied,
+					/obj/item/ammo_magazine/flamer_tank/large/gellied,
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "napalm gel a crate"
+	group = "Ammo"
+
 
 /datum/supply_packs/mortar_ammo_he
 	name = "M402 mortar ammo crate (x8 HE)"

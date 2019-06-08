@@ -119,6 +119,8 @@
 		new /obj/item/ammo_magazine/flamer_tank/large(src)
 		new /obj/item/ammo_magazine/flamer_tank/large/B(src)
 		new /obj/item/ammo_magazine/flamer_tank/large/X(src)
+		new /obj/item/ammo_magazine/flamer_tank/large/gellied(src)
+		new /obj/item/storage/pouch/flamertank(src)
 		new /obj/item/tool/extinguisher(src)
 		new /obj/item/tool/extinguisher/mini(src)
 
@@ -234,7 +236,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	desc = "Drag this sprite onto yourself to open it up!\nNOTE: You cannot put items back inside this case."
 
 /obj/item/storage/box/kit/mou53_sapper
-	name = "\improper M-OU53 Sapper Support Kit"
+	name = "\improper M-OU53 Field Test Kit"
 
 /obj/item/storage/box/kit/mou53_sapper/New()
 	..()
@@ -245,10 +247,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		new /obj/item/ammo_magazine/shotgun/slugs(src)
 		new /obj/item/ammo_magazine/shotgun/flechette(src)
 		new /obj/item/storage/belt/shotgun(src)
-		new /obj/item/storage/pouch/explosive(src)
-		new /obj/item/explosive/grenade/HE/m15(src)
-		new /obj/item/explosive/grenade/smokebomb(src)
-		new /obj/item/explosive/grenade/smokebomb(src)
 
 /obj/item/storage/box/kit/mini_pyro
 	name = "\improper M240 Pyrotechnician Support Kit"
@@ -257,12 +255,12 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	..()
 	overlays += image('icons/Marine/pro_case.dmi', "+flamer")
 	spawn(1)
-		new /obj/item/storage/backpack/marine/engineerpack(src)
-		new /obj/item/attachable/attached_gun/flamer(src)
-		new /obj/item/tool/extinguisher(src)
-		new /obj/item/tool/extinguisher/mini(src)
+		new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
 		new /obj/item/weapon/gun/flamer(src)
 		new /obj/item/ammo_magazine/flamer_tank(src)
+		new /obj/item/ammo_magazine/flamer_tank(src)
+		new /obj/item/ammo_magazine/flamer_tank/gellied(src)
+		new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/box/kit/mini_sniper
 	name = "\improper L42-MK1 Sniper Kit"

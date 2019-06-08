@@ -391,11 +391,12 @@
 
 /datum/ammo/bullet/smg/New()
 	..()
-	damage = config.lmed_hit_damage
-	accurate_range = config.near_shell_range
+	damage = config.lmed_plus_hit_damage
+	accurate_range = config.lshort_shell_range
 	penetration = 0
+	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
-	scatter = config.min_scatter_value
+	scatter = config.med_scatter_value
 	accuracy = config.med_hit_accuracy
 
 /datum/ammo/bullet/smg/ap
@@ -405,8 +406,7 @@
 	..()
 	scatter = config.min_scatter_value
 	damage = config.low_hit_damage
-	penetration = config.low_armor_penetration
-	shell_speed = config.fast_shell_speed
+	penetration = config.hlow_armor_penetration
 	damage_falloff = config.reg_damage_falloff
 
 /datum/ammo/bullet/smg/le
@@ -1428,7 +1428,7 @@
 	damage_falloff = config.buckshot_damage_falloff
 	shell_speed = config.slow_shell_speed
 	scatter = config.med_scatter_value
-	
+
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of gas"

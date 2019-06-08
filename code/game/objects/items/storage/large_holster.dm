@@ -104,7 +104,12 @@
 	icon = 'icons/obj/clothing/belts.dmi'
 	base_icon = "m39_holster"
 	flags_equip_slot = SLOT_WAIST
-	can_hold = list(/obj/item/weapon/gun/smg/m39)
+	can_hold = list(
+		/obj/item/weapon/gun/smg/m39
+		)
+	bypass_w_limit = list(
+		/obj/item/weapon/gun/smg/m39
+		)
 
 /obj/item/storage/large_holster/m39/update_icon()
 	var/mob/user = loc

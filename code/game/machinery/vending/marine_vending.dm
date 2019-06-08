@@ -122,6 +122,7 @@
 	products = list(
 		/obj/item/storage/backpack/marine = round(scale * 15),
 		/obj/item/storage/backpack/marine/engineerpack = round(scale * 2),
+		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = round(scale * 2),
 		/obj/item/storage/belt/marine = round(scale * 15),
 		/obj/item/storage/belt/shotgun = round(scale * 10),
 		/obj/item/clothing/tie/storage/webbing = round(scale * 5),
@@ -144,6 +145,7 @@
 		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
 		/obj/item/storage/pouch/pistol = round(scale * 15),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 5),
+		/obj/item/storage/pouch/flamertank = round(scale * 4),
 		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 20),
 		/obj/item/weapon/gun/pistol/m1911 = round(scale * 6),
 		/obj/item/weapon/gun/pistol/smart = round(scale * 6),
@@ -702,6 +704,7 @@
 						/obj/item/storage/backpack/marine/satchel = 2,
 						/obj/item/weapon/gun/flamer = 2,
 						/obj/item/ammo_magazine/flamer_tank = 8,
+						/obj/item/storage/pouch/flamertank = 2,
 						/obj/item/storage/pouch/magazine/large = 1,
 						/obj/item/storage/pouch/general/large = 1,
 						/obj/item/storage/pouch/pistol = 1,
@@ -774,7 +777,7 @@
 		/obj/item/attachable/stock/revolver = round(scale * 4),
 		/obj/item/attachable/stock/smg/collapsible = round(scale * 2) + 1,
 		/obj/item/attachable/stock/smg/brace = round(scale * 2) + 1,
-		/obj/item/attachable/stock/smg = round(scale * 4),
+		/obj/item/attachable/stock/smg = round(scale * 2) + 1,
 
 		/obj/item/attachable/attached_gun/shotgun = round(scale * 4),
 		/obj/item/attachable/attached_gun/flamer = round(scale * 4),

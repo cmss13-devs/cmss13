@@ -144,28 +144,42 @@
 	var/fire_color = "red"
 	switch(current_mag.caliber)
 		if("UT-Napthal Fuel") //This isn't actually Napalm actually
-			burnlevel = 24
-			burntime = 17
-			max_range = 5
+			burnlevel = config.med_burnlevel
+			burntime = config.low_burntime
+			max_range = config.close_shell_range
 
 		// Area denial, light damage, large AOE, long burntime
 		if("Napalm B")
-			burnlevel = 10
-			burntime = 50
-			max_range = 4
+			burnlevel = config.min_burnlevel
+			burntime = config.max_burntime
+			max_range = config.min_shell_range
 			playsound(user, src.get_fire_sound(), 50, 1)
 			triangular_flame(target, user, burntime, burnlevel)
 			return
 
+		if("Napalm Gel") //Long range, low damage
+			burnlevel = config.low_burnlevel
+			burntime = config.instant_burntime
+			max_range = config.near_shell_range
+			playsound(user, src.get_fire_sound(), 50, 1)
+
+		if("Napalm A Gel") //long range, higher damage, cuz spec.
+			burnlevel = config.high_burnlevel
+			burntime = config.instant_burntime
+			max_range = config.near_shell_range
+			playsound(user, src.get_fire_sound(), 50, 1)
+
 		if("Napalm X") //Probably can end up as a spec fuel or DS flamer fuel. Also this was the original fueltype, the madman i am.
-			burnlevel = 50
-			burntime = 40
-			max_range = 7
+			burnlevel = config.high_burnlevel
+			burntime = config.high_burntime
+			max_range = config.near_shell_range
 			fire_color = "blue"
+
 		if("Fuel") //This is welding fuel and thus pretty weak. Not ment to be exactly used for flamers either.
-			burnlevel = 10
-			burntime = 10
-			max_range = 4
+			burnlevel = config.min_burnlevel
+			burntime = config.min_burntime
+			max_range = config.min_shell_range
+
 		else return
 
 	var/list/turf/turfs = getline2(user,target)
@@ -342,7 +356,7 @@
 	..()
 	if(f_color)
 		flame_color = f_color
-	
+
 	if(new_flameshape)
 		flameshape = new_flameshape
 	
@@ -374,7 +388,7 @@
 							break
 				if(flameshape == FLAMESHAPE_IRREGULAR && prob(33))
 					continue
-				spawn(0) 
+				spawn(0)
 					new /obj/flamer_fire(T, fire_lvl, burn_lvl, f_color, new_spread_amt, user, flameshape)
 
 		if(flameshape == FLAMESHAPE_STAR || flameshape == FLAMESHAPE_MINORSTAR) // spread in a star-like pattern

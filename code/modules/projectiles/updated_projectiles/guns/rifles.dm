@@ -191,7 +191,24 @@
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun)
-
+	// CO rifle is guaranteed kitted out
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex/,
+							/obj/item/attachable/magnetic_harness
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/angledgrip,
+							/obj/item/attachable/verticalgrip,
+							/obj/item/attachable/attached_gun/shotgun,
+									)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/suppressor,
+							/obj/item/attachable/bayonet,
+							/obj/item/attachable/extended_barrel,
+							/obj/item/attachable/heavy_barrel,	
+								)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 	toggle_burst()
@@ -227,7 +244,6 @@
 	S.icon_state = ""
 	S.Attach(src)
 	update_attachable(S.slot)
-	S.icon_state = initial(S.icon_state)
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]"
@@ -274,13 +290,40 @@
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/shotgun,
-						/obj/item/attachable/scope/slavic)
+						/obj/item/attachable/scope/slavic
+						)
+	random_spawn_chance = 38
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex/,
+							/obj/item/attachable/scope/slavic,
+							/obj/item/attachable/magnetic_harness
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/angledgrip,
+							/obj/item/attachable/verticalgrip,
+							/obj/item/attachable/gyro,
+							/obj/item/attachable/bipod,
+							/obj/item/attachable/attached_gun/flamer,
+							/obj/item/attachable/attached_gun/shotgun,
+							/obj/item/attachable/lasersight,
+							/obj/item/attachable/burstfire_assembly,
+									)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/suppressor,
+							/obj/item/attachable/bayonet,
+							/obj/item/attachable/extended_barrel,
+							/obj/item/attachable/compensator,	
+								)
+	random_spawn_stock = list(
+							/obj/item/attachable/stock/slavic
+								)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/rifle/mar40/New()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 13, "rail_y" = 19, "under_x" = 24, "under_y" = 15, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/mar40/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay
@@ -318,7 +361,28 @@
 					/obj/item/attachable/attached_gun/flamer,
 					/obj/item/attachable/attached_gun/shotgun,
 					/obj/item/attachable/scope,
-					/obj/item/attachable/scope/mini)
+					/obj/item/attachable/scope/mini
+					)
+	random_spawn_chance = 35
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex/,
+							/obj/item/attachable/scope/mini,
+							/obj/item/attachable/magnetic_harness
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/angledgrip,
+							/obj/item/attachable/verticalgrip,
+							/obj/item/attachable/gyro,
+							/obj/item/attachable/bipod,
+							/obj/item/attachable/attached_gun/shotgun,
+							/obj/item/attachable/lasersight,
+									)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/suppressor,
+							/obj/item/attachable/bayonet,
+							/obj/item/attachable/extended_barrel	
+								)
 
 /obj/item/weapon/gun/rifle/mar40/carbine/set_gun_config_values()
 	fire_delay = config.low_fire_delay
@@ -347,6 +411,7 @@
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
+						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/flashlight/grip,
@@ -358,15 +423,35 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/attached_gun/grenade,
 						/obj/item/attachable/attached_gun/flamer,
-						/obj/item/attachable/attached_gun/shotgun
+						/obj/item/attachable/attached_gun/shotgun,
 						)
+	random_spawn_chance = 42
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex/,
+							/obj/item/attachable/scope/mini,
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/angledgrip,
+							/obj/item/attachable/verticalgrip,
+							/obj/item/attachable/gyro,
+							/obj/item/attachable/burstfire_assembly,
+							/obj/item/attachable/bipod,
+							/obj/item/attachable/attached_gun/shotgun,
+							/obj/item/attachable/flashlight/grip
+									)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/suppressor,
+							/obj/item/attachable/bayonet,
+							/obj/item/attachable/compensator,
+							/obj/item/attachable/extended_barrel	
+								)
 
 	flags_gun_features = GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/rifle/m16/New()
 	..()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
-
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 27, "stock_y" = 12)
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()
 	fire_delay = config.mhigh_fire_delay
@@ -493,7 +578,33 @@
 	wield_delay = 4
 	//type_of_casings = "cartridge"
 
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip
+						)
+
+	random_spawn_chance = 45
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex/,
+							)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/suppressor,
+							/obj/item/attachable/bayonet,
+							/obj/item/attachable/extended_barrel	
+								)
+
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_BURST_ON
+
+/obj/item/weapon/gun/rifle/type71/New()
+	..()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 18, "rail_y" = 23, "under_x" = 20, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/type71/set_gun_config_values()
 	fire_delay = config.high_fire_delay
@@ -515,6 +626,13 @@
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71 pulse rifle"
 	desc = " This appears to be a less common variant of the usual Type 71, with an undermounted flamethrower and improved iron sights."
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/extended_barrel,
+						)
+
 	New()
 		..()
 		var/obj/item/attachable/attached_gun/flamer/S = new(src)
@@ -532,12 +650,22 @@
 	wield_delay = 2 //Carbine is more lightweight
 
 
+/obj/item/weapon/gun/rifle/type71/carbine/New()
+	..()
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18,"rail_x" = 19, "rail_y" = 22, "under_x" = 21, "under_y" = 14, "stock_x" = 24, "stock_y" = 13)
+
+
 /obj/item/weapon/gun/rifle/type71/carbine/commando
 	name = "\improper Type 71 'Commando' pulse carbine"
 	desc = "A much rarer variant of the standard Type 71, this version contains an integrated supressor, a scope, and lots of fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen issued outside of commando units and officer cadres."
 	icon_state = "type73"
 	item_state = "type73"
 	wield_delay = 0 //Ends up being .5 seconds due to scope
+	attachable_allowed = list(
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
+						)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando/New()//Making the gun have an invisible silencer since it's supposed to have one.
 	..()
@@ -594,9 +722,11 @@
 						/obj/item/attachable/quickfire,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/carbine,
+						/obj/item/attachable/lasersight,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff)
+						/obj/item/attachable/scope/mini_iff,
+						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	wield_delay = WIELD_DELAY_VERY_FAST

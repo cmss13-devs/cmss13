@@ -237,7 +237,7 @@
 				continue
 		else if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_suit, /obj/item/clothing/suit/fire) || istype(H.wear_suit, /obj/item/clothing/suit/space/rig/atmos))
+			if(istype(H.wear_suit, /obj/item/clothing/suit/fire))
 				continue
 
 		M.adjustFireLoss(rand(20, 50)) //Fwoom!

@@ -25,13 +25,14 @@
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "pred_mask1"
 	item_state = "helmet"
-	armor_melee = 80
-	armor_bullet = 95
-	armor_laser = 70
-	armor_energy = 70
-	armor_bomb = 40
-	armor_bio = 100
-	armor_rad = 100
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	flags_armor_protection = HEAD|FACE|EYES
 	flags_cold_protection = HEAD
@@ -142,13 +143,14 @@
 	item_state = "armor"
 	sprite_sheet_id = 1
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor_melee = 75
-	armor_bullet = 88
-	armor_laser = 60
-	armor_energy = 70
-	armor_bomb = 40
-	armor_bio = 20
-	armor_rad = 20
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
 	siemens_coefficient = 0.1
@@ -169,13 +171,14 @@
 	loc = location
 
 	if(elder_restricted)
-		armor_melee = 75
-		armor_bullet = 90
-		armor_laser = 60
-		armor_energy = 70
-		armor_bomb = 40
-		armor_bio = 25
-		armor_rad = 25
+		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_bomb = CLOTHING_ARMOR_HIGH
+		armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 		switch(armor_number)
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
@@ -206,13 +209,14 @@
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
 	icon_state = "fullarmor"
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor_melee = 90
-	armor_bullet = 95
-	armor_laser = 75
-	armor_energy = 75
-	armor_bomb = 40
-	armor_bio = 25
-	armor_rad = 25
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
@@ -240,13 +244,14 @@
 	icon_state = "cape_elder"
 	flags_equip_slot = SLOT_BACK
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor_melee = 10
-	armor_bullet = 0
-	armor_laser = 5
-	armor_energy = 15
-	armor_bomb = 0
-	armor_bio = 0
-	armor_rad = 0
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
 	unacidable = 1
 
 /obj/item/clothing/cape/eldercape/New(location, cape_number)
@@ -286,13 +291,14 @@
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = FEET|LEGS|LOWER_TORSO
-	armor_melee = 75
-	armor_bullet = 90
-	armor_laser = 60
-	armor_energy = 50
-	armor_bomb = 40
-	armor_bio = 20
-	armor_rad = 20
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
@@ -329,13 +335,14 @@
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|FEET|HANDS //Does not cover the head though.
 	flags_heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|FEET|HANDS
 	has_sensor = 0
-	armor_melee = 10
-	armor_bullet = 10
-	armor_laser = 10
-	armor_energy = 10
-	armor_bomb = 0
-	armor_bio = 10
-	armor_rad = 10
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
@@ -349,13 +356,14 @@
 	permeability_coefficient = 0.05
 	flags_item = 0
 	flags_armor_protection = HANDS
-	armor_melee = 80
-	armor_bullet = 88
-	armor_laser = 55
-	armor_energy = 50
-	armor_bomb = 40
-	armor_bio = 10
-	armor_rad = 10
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	flags_cold_protection = HANDS
 	flags_heat_protection = HANDS
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature

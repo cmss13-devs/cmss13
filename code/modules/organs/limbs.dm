@@ -147,6 +147,35 @@
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
 
 
+/datum/limb/proc/take_damage_organ_damage(brute, sharp)	
+	if(!owner)
+		return
+
+	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
+	if(owner.mind && owner.mind.cm_skills)
+		armor += owner.mind.cm_skills.endurance*5
+
+	var/damage = armor_damage_reduction(config.marine_organ_damage, brute, armor, sharp ? ARMOR_SHARP_INTERNAL_PENETRATION : 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+
+	if(internal_organs && prob(damage))
+		//Damage an internal organ
+		var/datum/internal_organ/I = pick(internal_organs)
+		I.take_damage(brute / 2)
+		return TRUE
+	return FALSE
+
+/datum/limb/proc/take_damage_bone_break(brute)
+	if(!owner)
+		return
+
+	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
+	if(owner.mind && owner.mind.cm_skills)
+		armor += owner.mind.cm_skills.endurance*5
+
+	var/damage = armor_damage_reduction(config.marine_organ_damage, brute*2, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+
+	if(brute_dam > min_broken_damage * config.organ_health_multiplier && prob(damage*2))
+		fracture()
 /*
 	Describes how limbs (body parts) of human mobs get damage applied.
 	Less clear vars:
@@ -174,11 +203,11 @@
 
 	//High brute damage or sharp objects may damage internal organs
 	if(istype(owner,/mob/living/carbon/human))
-		if(internal_organs && ((sharp && brute >= 10) || brute >= 20) && prob(5) && brute_dam > 15)
-			//Damage an internal organ
-			var/datum/internal_organ/I = pick(internal_organs)
-			I.take_damage(brute / 2)
-			brute -= brute / 2
+		if(take_damage_organ_damage(brute, sharp))
+			brute /= 2
+
+	if(config.bones_can_break && !(status & LIMB_ROBOT))
+		take_damage_bone_break(brute)
 
 	if(status & LIMB_BROKEN && prob(40) && brute)
 		if(!(owner.species && (owner.species.flags & NO_PAIN)))
@@ -311,16 +340,27 @@ This function completely restores a damaged organ to perfect condition.
 	owner.updatehealth()
 
 
+/datum/limb/proc/take_damage_internal_bleeding(damage)
+	if(!owner)
+		return
+	
+	var/armor = owner.getarmor_organ(src, ARMOR_INTERNALDAMAGE)
+	if(owner.mind && owner.mind.cm_skills)
+		armor += owner.mind.cm_skills.endurance*5
+	
+	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, damage, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
+	if(prob(damage_ratio) && damage > 10)
+		var/datum/wound/internal_bleeding/I = new (min(damage - 10, 15))
+		wounds += I
+		owner.custom_pain("You feel something rip in your [display_name]!", 1)
+
 /datum/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name)
 	if(!damage) return
 
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
-	var/local_damage = brute_dam + burn_dam + damage
-	if(damage > 15 && type != BURN && local_damage > 40 && prob(damage*0.5) && !(status & LIMB_ROBOT) && brute_dam > 15)
-		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
-		wounds += I
-		owner.custom_pain("You feel something rip in your [display_name]!", 1)
+	if(type != BURN && !(status & LIMB_ROBOT))
+		take_damage_internal_bleeding(damage)
 
 	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
@@ -402,9 +442,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(trace_chemicals[chemID] <= 0)
 				trace_chemicals.Remove(chemID)
 
-	//Bone fracurtes
-	if(config.bones_can_break && brute_dam > min_broken_damage * config.organ_health_multiplier && !(status & LIMB_ROBOT))
-		fracture()
+	//Bone fracurtes	
 	if(!(status & LIMB_BROKEN))
 		perma_injury = 0
 	if(knitting_time > 0)
@@ -1114,7 +1152,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	icon_name = "torso"
 	display_name = "chest"
 	max_damage = 200
-	min_broken_damage = 40
+	min_broken_damage = 30
 	body_part = UPPER_TORSO
 	vital = 1
 	encased = "ribcage"
@@ -1126,7 +1164,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	icon_name = "groin"
 	display_name = "groin"
 	max_damage = 200
-	min_broken_damage = 40
+	min_broken_damage = 30
 	body_part = LOWER_TORSO
 	vital = 1
 	splint_icon_amount = 1
@@ -1136,25 +1174,25 @@ Note that amputating the affected organ does in fact remove the infection from t
 	name = "leg"
 	display_name = "leg"
 	max_damage = 35
-	min_broken_damage = 30
+	min_broken_damage = 20
 
 /datum/limb/foot
 	name = "foot"
 	display_name = "foot"
 	max_damage = 30
-	min_broken_damage = 25
+	min_broken_damage = 20
 
 /datum/limb/arm
 	name = "arm"
 	display_name = "arm"
 	max_damage = 35
-	min_broken_damage = 30
+	min_broken_damage = 20
 
 /datum/limb/hand
 	name = "hand"
 	display_name = "hand"
 	max_damage = 30
-	min_broken_damage = 25
+	min_broken_damage = 20
 
 /datum/limb/arm/l_arm
 	name = "l_arm"
@@ -1237,7 +1275,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	icon_name = "head"
 	display_name = "head"
 	max_damage = 60
-	min_broken_damage = 40
+	min_broken_damage = 30
 	body_part = HEAD
 	vital = 1
 	encased = "skull"

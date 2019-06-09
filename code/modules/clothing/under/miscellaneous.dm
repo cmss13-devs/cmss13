@@ -83,25 +83,6 @@
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
 
-/obj/item/clothing/under/acj
-	name = "administrative cybernetic jumpsuit"
-	icon_state = "syndicate"
-	item_state = "bl_suit"
-	desc = "it's a cybernetically enhanced jumpsuit used for administrative duties."
-	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.01
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	armor_melee = 100
-	armor_bullet = 100
-	armor_laser = 100
-	armor_energy = 100
-	armor_bomb = 100
-	armor_bio = 100
-	armor_rad = 100
-	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
-	siemens_coefficient = 0
-
 /obj/item/clothing/under/owl
 	name = "owl uniform"
 	desc = "A jumpsuit with owl wings. Photorealistic owl feathers! Twooooo!"

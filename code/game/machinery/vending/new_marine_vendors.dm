@@ -371,6 +371,7 @@
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M39 AP magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
+		list("M39 LE magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("M39 extended magazine (10x20mm)", 15, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
 		list("M40 HEDP grenade", 10, /obj/item/explosive/grenade/HE, null, "black"),
 		list("M40 HEFA grenade", 10, /obj/item/explosive/grenade/HE/frag , null, "black"),
@@ -385,6 +386,7 @@
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
 		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
+		list("Fuel tank strap pouch", 15, /obj/item/storage/pouch/flamertank, null, "black"),
 		list("Motion detector", 15, /obj/item/device/motiondetector, null, "black")
 
 	)
@@ -937,6 +939,7 @@
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M39 AP magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
+		list("M39 LE magazine (10x20mm)", 9, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("M39 extended magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
 		list("M40 HEDP grenade", 9, /obj/item/explosive/grenade/HE, null, "black"),
 		list("M40 HEFA grenade", 9, /obj/item/explosive/grenade/HE/frag , null, "black"),
@@ -995,6 +998,7 @@
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M39 AP magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, "black"),
+		list("M39 LE magazine (10x20mm)", 9, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("M39 extended magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, "black"),
 		list("M40 HEDP grenade", 9, /obj/item/explosive/grenade/HE, null, "black"),
 		list("M40 HEFA grenade", 9, /obj/item/explosive/grenade/HE/frag , null, "black"),
@@ -1044,13 +1048,14 @@
 		list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
 		list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("LE M39 magazine", 15, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Red-dot sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("Rifle stock", 0, /obj/item/attachable/stock/rifle, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Paratrooper's submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Folding submachinegun stock", 0, /obj/item/attachable/stock/smg/collapsible, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
@@ -1110,6 +1115,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
 		list("Extended M41A magazine", 15, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("LE M39 magazine", 15, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
 
 		list("ATTACHMENTS", 0, null, null, null),
@@ -1122,13 +1128,12 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Magnetic Harness", 6, /obj/item/attachable/magnetic_harness, null, "black"),
 		list("Masterkey shotgun", 6, /obj/item/attachable/attached_gun/shotgun, null, "black"),
 		list("M41A skeleton stock", 6, /obj/item/attachable/stock/rifle, null, "black"),
-		list("Paratrooper's submachinegun stock", 6, /obj/item/attachable/stock/smg/collapsible, null, "black"),
+		list("Folding submachinegun stock", 6, /obj/item/attachable/stock/smg/collapsible, null, "black"),
 		list("Quickfire adapter", 6, /obj/item/attachable/quickfire, null, "black"),
 		list("Recoil compensator", 6, /obj/item/attachable/compensator, null, "black"),
 		list("Red-dot sight", 6, /obj/item/attachable/reddot, null, "black"),
 		list("S4 telescoping sight", 6, /obj/item/attachable/scope/mini, null, "black"),
 		list("M37 wooden stock", 6, /obj/item/attachable/stock/shotgun, null, "black"),
-		list("Submachinegun stock", 6, /obj/item/attachable/stock/smg, null, "black"),
 		list("Suppressor", 6, /obj/item/attachable/suppressor, null, "black"),
 		list("Vertical grip", 6, /obj/item/attachable/verticalgrip, null, "black"),
 	)
@@ -1162,6 +1167,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("AP M41A magazine", 6, /obj/item/ammo_magazine/rifle/ap, null, "black"),
 		list("Extended M41A magazine", 6, /obj/item/ammo_magazine/rifle/extended, null, "black"),
 		list("AP M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
+		list("LE M39 magazine", 9, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("Extended L42-MK1 Magazine (10x24mm)", 4, /obj/item/ammo_magazine/rifle/l42mk1/extended, null, "black"),
 		list("AP L42-MK1 Magazine (10x24mm)", 4, /obj/item/ammo_magazine/rifle/l42mk1/ap, null, "black"),
 		list("Extended M39 magazine", 5, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),

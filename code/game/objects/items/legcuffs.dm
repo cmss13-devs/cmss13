@@ -48,7 +48,7 @@
 								if(O == H)
 									continue
 								O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), 1)
-				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade) && !istype(AM, /mob/living/simple_animal/hostile/viscerator))
+				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
 					SA.health -= 20
@@ -137,7 +137,7 @@
 								if(O == H)
 									continue
 								O.show_message(SPAN_WARNING("\icon[src] <B>[H] gets caught in \the [src].</B>"), 1)
-				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade) && !istype(AM, /mob/living/simple_animal/hostile/viscerator))
+				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot) && !istype(AM, /mob/living/simple_animal/construct) && !istype(AM, /mob/living/simple_animal/shade))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
 					SA.health -= 20

@@ -7,12 +7,15 @@
 		traumatic_shock = 0
 		return
 
-	traumatic_shock = 			\
-	1	* getOxyLoss() + 		\
-	0.7	* getToxLoss() + 		\
-	1.5	* getFireLoss() + 		\
-	1.5	* getBruteLoss() + 		\
-	1.5	* getCloneLoss()
+	// Each damagetype has a unique multiplier that gets rolled into traumatic_shock
+	// TODO: Purge shock_stage altogether, JUST use traumatic_shock 
+	// or do a more comprehensive code rework that includes effects rather than just scaling changes
+	traumatic_shock = 	  					    \
+	OXY_TRAUMA_MULTIPLIER	 * getOxyLoss()   + \
+	TOX_TRAUMA_MULTIPLIER	 * getToxLoss()   + \
+	BRUTE_TRAUMA_MULTILPLIER * getBruteLoss() + \
+	FIRE_TRAUMA_MULTIPLIER   * getFireLoss()  + \
+	CLONE_TRAUMA_MULTIPLIER  * getCloneLoss()
 
 	traumatic_shock += reagent_shock_modifier
 
@@ -29,10 +32,10 @@
 			if((O.status & LIMB_DESTROYED) && !(O.status & LIMB_AMPUTATED))
 				traumatic_shock += 40
 			else if(O.status & LIMB_BROKEN || O.surgery_open_stage)
-				if(O.status & LIMB_SPLINTED)
-					traumatic_shock += 15
-				else
+				if (O.status & !LIMB_SPLINTED)
 					traumatic_shock += 30
+				else
+					traumatic_shock += 10
 			if(O.germ_level >= INFECTION_LEVEL_ONE)
 				traumatic_shock += O.germ_level * 0.05
 

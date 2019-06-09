@@ -47,6 +47,7 @@
 		exfalloff = expower/6
 		if(exfalloff < 15) exfalloff = 15
 
+		msg_admin_niche("Potassium + Water explosion in [sourceturf.loc.name] at ([sourceturf.x],[sourceturf.y],[sourceturf.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[sourceturf.x];Y=[sourceturf.y];Z=[sourceturf.z]'>JMP</a>)")
 		create_shrapnel(location, shards, , ,shard_type)
 		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
 		explosion_rec(location, expower, exfalloff)

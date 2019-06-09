@@ -11,14 +11,49 @@
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
 	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply hyperzine effects
+	var/wear_slowdown_reduction = 0
 
-	var/health_deficiency = (100 - health)
-	if(health_deficiency >= 40)
-		reducible_tally += round(health_deficiency / 25)
-
+	// All pain is now handled based off of traumatic_shock and scales based off it instead of being a flat effect.
+	// There are levels here just like the levels used to scale pain effects:
+	// Keep in mind 1 damage = 1.2 traumatic_shock
+	// After trauma_highmed, scaling picks up real quick and you fall over
 	if(!(species && (species.flags & NO_PAIN)))
-		if(traumatic_shock >= 10)
-			reducible_tally += round(traumatic_shock / 15)
+		if (traumatic_shock >= TRAUMA_HIGH) 
+			reducible_tally += PAIN_SPEED_VERYSLOW
+		else if (traumatic_shock >= TRAUMA_HIGHMED)
+			reducible_tally += PAIN_SPEED_SLOW
+		else if (traumatic_shock >= TRAUMA_MED) 
+			reducible_tally += PAIN_SPEED_MED
+		else if (traumatic_shock >= TRAUMA_LOWMED)
+			reducible_tally += PAIN_SPEED_LOWMED
+		else if (traumatic_shock >= TRAUMA_LOW) 
+			reducible_tally += PAIN_SPEED_LOW
+
+	// Limb break/loss slowdown
+	// Wheelchairs depend on different limbs than walking, which is...cute
+	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
+		for(var/organ_name in list("l_hand","r_hand","l_arm","r_arm","chest","groin","head"))
+			var/datum/limb/E = get_limb(organ_name)
+			if(!E || (E.status & LIMB_DESTROYED))
+				. += MOVE_REDUCTION_LIMB_DESTROYED
+			if(E.status & LIMB_SPLINTED)
+				. += MOVE_REDUCTION_LIMB_SPLINTED
+			else if(E.status & LIMB_BROKEN)
+				. += MOVE_REDUCTION_LIMB_BROKEN
+	else
+		if(shoes)
+			. += shoes.slowdown
+
+		for(var/organ_name in list("l_foot","r_foot","l_leg","r_leg","chest","groin","head"))
+			var/datum/limb/E = get_limb(organ_name)
+			if(!E || (E.status & LIMB_DESTROYED))
+				. += MOVE_REDUCTION_LIMB_DESTROYED
+			// Splinted limbs are not as punishing 
+			if(E.status & LIMB_SPLINTED)
+				. += MOVE_REDUCTION_LIMB_SPLINTED
+			else if(E.status & LIMB_BROKEN)
+				. += MOVE_REDUCTION_LIMB_BROKEN
+
 
 	var/hungry = (500 - nutrition)/5 // So overeat would be 100 and default level would be 80
 	if(hungry >= 50) //Level where a yellow food pip shows up, aka hunger level 3 at 250 nutrition and under
@@ -27,14 +62,13 @@
 	//Equipment slowdowns
 	if(w_uniform)
 		reducible_tally += w_uniform.slowdown
+		wear_slowdown_reduction += w_uniform.movement_compensation
 
 	if(wear_suit)
 		reducible_tally += wear_suit.slowdown
+		wear_slowdown_reduction += wear_suit.movement_compensation
 
 	reducible_tally += reagent_move_delay_modifier //hyperzine and ultrazine
-
-	if(shock_stage >= 10 && !isYautja(src))
-		reducible_tally += 3
 
 	if(bodytemperature < species.cold_level_1 && !isYautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
@@ -48,29 +82,7 @@
 
 	if(istype(get_active_hand(), /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/G = get_active_hand() //If wielding, it will ALWAYS be on the active hand
-		. += G.slowdown
-
-	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
-		for(var/organ_name in list("l_hand","r_hand","l_arm","r_arm","chest","groin","head"))
-			var/datum/limb/E = get_limb(organ_name)
-			if(!E || (E.status & LIMB_DESTROYED))
-				. += 4
-			if(E.status & LIMB_SPLINTED)
-				. += 0.65
-			else if(E.status & LIMB_BROKEN)
-				. += 1.5
-	else
-		if(shoes)
-			. += shoes.slowdown
-
-		for(var/organ_name in list("l_foot","r_foot","l_leg","r_leg","chest","groin","head"))
-			var/datum/limb/E = get_limb(organ_name)
-			if(!E || (E.status & LIMB_DESTROYED))
-				. += 4
-			if(E.status & LIMB_SPLINTED)
-				. += 0.75
-			else if(E.status & LIMB_BROKEN)
-				. += 1.5
+		. += max(0, G.slowdown - wear_slowdown_reduction)
 
 	if(mobility_aura)
 		. -= 0.1 + 0.1 * mobility_aura

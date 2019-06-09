@@ -153,3 +153,13 @@
 	max_rounds = 35
 	gun_type = /obj/item/weapon/gun/rifle/l42mk1
 	w_class = 3
+
+/obj/item/ammo_magazine/rifle/l42mk1/incendiary
+	name = "\improper L42-MK1 incendiary magazine (10x24mm)"
+	desc = "A 10mm pulse carbine incendiary magazine."
+	caliber = "10x24mm"
+	icon_state = "l42mk1_incendiary"
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+	max_rounds = 20
+	gun_type = /obj/item/weapon/gun/rifle/l42mk1
+	w_class = 3

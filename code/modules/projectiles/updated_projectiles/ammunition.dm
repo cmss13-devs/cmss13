@@ -436,6 +436,13 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/extended
 
+/obj/item/magazine_box/rifle/l42mk1/incendiary
+	name = "magazine box (Incendiary L42-MK1 x 16)"
+	icon_state = "mag_box_l42_incendiary_closed"
+	icon_base_name = "mag_box_l42_incendiary"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/incendiary
+
 
 /obj/structure/magazine_box
 	name = "magazine_box"

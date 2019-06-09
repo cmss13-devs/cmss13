@@ -257,7 +257,7 @@ Defined in conflicts.dm of the #defines folder.
 	force = 20
 	throwforce = 10
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	melee_mod = 20 //35 for a rifle, comparable to 37 before. 40 with the stock, comparable to 42.
+	melee_mod = 26 //35 for a rifle, comparable to 37 before. 40 with the stock, comparable to 42.
 	slot = "muzzle"
 	pixel_shift_x = 14 //Below the muzzle.
 	pixel_shift_y = 18
@@ -335,7 +335,7 @@ Defined in conflicts.dm of the #defines folder.
 	damage_mod = -config.low_hit_damage_mult
 	recoil_mod = -config.med_recoil_value
 
-	damage_falloff_mod = 0.4
+	damage_falloff_mod = 0.1
 	accuracy_unwielded_mod = config.med_hit_accuracy_mult
 	recoil_unwielded_mod = -config.low_recoil_value
 
@@ -694,7 +694,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/shotgun
 	name = "\improper M37 wooden stock"
-	desc = "A non-standard heavy wooden stock for the M37 Shotgun. Less quick and more cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
+	desc = "A non-standard heavy wooden stock for the M37 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too.."
 	slot = "stock"
 	icon_state = "stock"
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -826,9 +826,9 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
-	desc = "A rare stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
+	desc = "A rare ARMAT stock distributed in small numbers to USCM forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl"
 	slot = "stock"
-	melee_mod = 5
+	melee_mod = 15
 	size_mod = 1
 	icon_state = "smgstock"
 	attach_icon = "smgstock_a"
@@ -838,25 +838,19 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/New()
 	..()
-	//it makes stuff much better when two-handed
-	accuracy_mod = config.low_hit_accuracy_mult
-	recoil_mod = -config.low_recoil_value
-	scatter_mod = -config.low_scatter_value
+	accuracy_mod = config.high_hit_accuracy_mult
+	recoil_mod = -config.med_recoil_value
+	scatter_mod = -config.med_scatter_value
 	delay_mod = 0
 	movement_acc_penalty_mod = -1
-	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -config.low_hit_accuracy_mult
-	recoil_unwielded_mod = config.low_recoil_value
-	scatter_unwielded_mod = config.low_scatter_value
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = 0.25
+	aim_speed_mod = 0.10
 
 
 /obj/item/attachable/stock/smg/collapsible
-	name = "submachinegun paratrooper's stock"
-	desc = "Even rarer stock distributed in small numbers to USCM specialists forces. Compatible with the M39, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
+	name = "submachinegun folding stock"
+	desc = "A Kirchner brand K2 M39 folding stock, standard issue in the USCM. The stock, when extended, reduces recoil and improves accuracy, but at a reduction to handling and agility. Seemingly a bit more effective in a brawl. This stock can collapse in, removing almost all positive and negative effects, however it slightly increases spread due to weapon being off-balanced by the collapsed stock."
 	slot = "stock"
-	melee_mod = 5
+	melee_mod = 10
 	size_mod = 1
 	icon_state = "smgstockc"
 	attach_icon = "smgstockc_a"
@@ -909,12 +903,10 @@ Defined in conflicts.dm of the #defines folder.
 	//additionally increases scatter when collapsed
 	if(new_active)
 		G.scatter_unwielded -= collapsed_stock_scatter
-		G.w_class += size_mod
 		icon_state = "smgstockc"
 		attach_icon = "smgstockc_a"
 	else
 		G.scatter_unwielded += collapsed_stock_scatter
-		G.w_class -= size_mod
 		icon_state = "smgstockcc"
 		attach_icon = "smgstockcc_a"
 
@@ -940,7 +932,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/brace
 	name = "\improper  submachinegun arm brace"
-	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing perfectly accurate at the expense of fire rate. Wielding guns with this stock is very uncomfortable and inaccurate."
+	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of fire rate. Wielding guns with this stock is very uncomfortable and inaccurate."
 	size_mod = 1
 	icon_state = "smg_brace"
 	attach_icon = "smg_brace_a"
@@ -951,14 +943,14 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/brace/New()
 	..()
 	//Makes stuff better when one handed by a LOT.
-	accuracy_unwielded_mod = config.high_hit_accuracy_mult
+	accuracy_unwielded_mod = config.med_hit_accuracy_mult
 	recoil_unwielded_mod = -config.high_recoil_value
-	delay_mod = config.med_fire_delay //slow firing rate
-	burst_scatter_mod = -4
+	delay_mod = config.mlow_fire_delay
+	burst_scatter_mod = -1 //Don't ghandi this, aka don't make the value push the stat bonus into the negative, which wraps around into a debuff.
 	//But... it makes wielding something really, really bad.
 	accuracy_mod = config.low_hit_accuracy_mult
 	recoil_mod = config.high_recoil_value
-	scatter_unwielded_mod = -4
+	scatter_unwielded_mod = -1
 
 /obj/item/attachable/stock/revolver
 	name = "\improper M44 magnum sharpshooter stock"
@@ -1295,7 +1287,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/lasersight
 	name = "laser sight"
-	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy, and decreases scatter when firing one-handed."
+	desc = "A laser sight that attaches to the underside of most weapons. Increases accuracy and decreases scatter, especially while one-handed."
 	icon_state = "lasersight"
 	attach_icon = "lasersight_a"
 	slot = "under"
@@ -1306,6 +1298,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_mod = config.min_hit_accuracy_mult
 	movement_acc_penalty_mod = -1
+	scatter_mod = -config.min_scatter_value
 	scatter_unwielded_mod = -config.mlow_scatter_value
 	accuracy_unwielded_mod = config.min_hit_accuracy_mult
 

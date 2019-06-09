@@ -1,5 +1,6 @@
 /obj/item/storage/pouch
 	name = "abstract pouch"
+	desc = "The physical manifestation of a concept of a pouch. Woah."
 	icon = 'icons/Marine/marine-pouches.dmi'
 	icon_state = "small_drop"
 	w_class = 4 //does not fit in backpack
@@ -52,6 +53,19 @@
 	storage_slots = 3
 	icon_state = "large_drop"
 	draw_mode = 0
+
+/obj/item/storage/pouch/flamertank
+	name = "fuel tank strap pouch"
+	desc = "Two rings straps that loop around M240 variety napalm tanks. Handle with care."
+	storage_slots = 2
+	icon_state = "fueltank_pouch"
+	draw_mode = 0
+	can_hold = list(
+					/obj/item/ammo_magazine/flamer_tank,
+					)
+	bypass_w_limit = list(
+					/obj/item/ammo_magazine/flamer_tank,
+					)
 
 /obj/item/storage/pouch/general/large/m39ap/New()
 	..()
@@ -236,9 +250,9 @@
 
 /obj/item/storage/pouch/magazine/large/pmc_p90/New()
 	..()
-	new /obj/item/ammo_magazine/smg/p90 (src)
-	new /obj/item/ammo_magazine/smg/p90 (src)
-	new /obj/item/ammo_magazine/smg/p90 (src)
+	new /obj/item/ammo_magazine/smg/fp9000 (src)
+	new /obj/item/ammo_magazine/smg/fp9000 (src)
+	new /obj/item/ammo_magazine/smg/fp9000 (src)
 
 /obj/item/storage/pouch/magazine/large/pmc_lmg/New()
 	..()

@@ -142,8 +142,12 @@
 #define SKILL_PILOT_TRAINED		1 //Pilot
 
 
-//endurance skill TBD
-
+//endurance skill
+#define SKILL_ENDURANCE_NONE		0
+#define SKILL_ENDURANCE_WEAK		1
+#define SKILL_ENDURANCE_TRAINED		2
+#define SKILL_ENDURANCE_MASTER		3
+#define SKILL_ENDURANCE_SURVIVOR	5
 
 
 ////////////////////////////////////////////////

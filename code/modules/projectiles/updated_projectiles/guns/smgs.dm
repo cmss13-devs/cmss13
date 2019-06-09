@@ -42,12 +42,14 @@
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/stock/smg,
 						/obj/item/attachable/stock/smg/collapsible,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/bayonet,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/burstfire_assembly,
@@ -56,6 +58,7 @@
 						/obj/item/attachable/stock/smg/brace)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
 
 /obj/item/weapon/gun/smg/m39/New()
 	select_gamemode_skin(/obj/item/weapon/gun/smg/m39)
@@ -63,7 +66,7 @@
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 14, "rail_y" = 22, "under_x" = 24, "under_y" = 16, "stock_x" = 24, "stock_y" = 16)
 
 /obj/item/weapon/gun/smg/m39/set_gun_config_values()
-	fire_delay = config.med_fire_delay
+	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
 	accuracy_mult = config.base_hit_accuracy_mult
@@ -89,10 +92,35 @@
 	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WY_RESTRICTED
 
+	random_spawn_chance = 40
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/flashlight,
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight,
+							/obj/item/attachable/angledgrip,
+							/obj/item/attachable/verticalgrip,
+							/obj/item/attachable/gyro,
+							/obj/item/attachable/burstfire_assembly,
+							)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/extended_barrel,
+							/obj/item/attachable/suppressor,
+							/obj/item/attachable/compensator,
+								)
+	random_spawn_stock = list(
+							/obj/item/attachable/stock/smg,
+							/obj/item/attachable/stock/smg/collapsible,
+							/obj/item/attachable/stock/smg/brace
+							)
+
 /obj/item/weapon/gun/smg/m39/elite/set_gun_config_values()
-	fire_delay = config.mlow_fire_delay
+	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
-	burst_amount = config.high_burst_value
+	burst_amount = config.med_burst_value // 3 round burst.
 	accuracy_mult = config.base_hit_accuracy_mult + config.med_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.min_hit_accuracy_mult
 	scatter = config.high_scatter_value
@@ -120,7 +148,24 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope)
+						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/scope/mini)
+	random_spawn_chance = 40
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/flashlight,
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight,
+							/obj/item/attachable/angledgrip,
+							)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/extended_barrel
+								)
 
 	flags_gun_features = GUN_CAN_POINTBLANK
 
@@ -160,17 +205,28 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
-						/obj/item/attachable/scope)
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/scope/mini)
+	random_spawn_chance = 40
+	random_spawn_rail = list(
+							/obj/item/attachable/reddot,
+							/obj/item/attachable/reflex,
+							/obj/item/attachable/flashlight,
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight
+							)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 	New()
 		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 21, "under_x" = 28, "under_y" = 17, "stock_x" = 28, "stock_y" = 17)
+		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 16, "stock_x" = 28, "stock_y" = 17)
 
 
 /obj/item/weapon/gun/smg/mp7/set_gun_config_values()
-	fire_delay = config.med_fire_delay
+	fire_delay = config.low_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.high_burst_value
 
@@ -179,7 +235,7 @@
 	scatter = config.med_scatter_value + config.low_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.med_scatter_value + config.med_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.high_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
 //-------------------------------------------------------
@@ -195,12 +251,25 @@
 	current_mag = /obj/item/ammo_magazine/smg/skorpion
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 22, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
+	attachable_allowed = list(
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/suppressor,
+						)
+	random_spawn_chance = 33
+	random_spawn_rail = list(
+							/obj/item/attachable/reflex/
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight
+							)
+
+/obj/item/weapon/gun/smg/skorpion/New()
+	..()
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/skorpion/set_gun_config_values()
-	fire_delay = config.low_fire_delay
+	fire_delay = config.mlow_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.med_burst_value
 
@@ -209,7 +278,7 @@
 	scatter = config.med_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.hmed_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
 
@@ -236,7 +305,7 @@
 
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_config_values()
-	fire_delay = config.mhigh_fire_delay
+	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.med_burst_value
 
@@ -263,60 +332,99 @@
 	current_mag = /obj/item/ammo_magazine/smg/uzi
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
+	attachable_allowed = list(
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/suppressor,
+						)
+	random_spawn_chance = 33
+	random_spawn_rail = list(
+							/obj/item/attachable/reflex/
+							)
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight
+							)
+
+/obj/item/weapon/gun/smg/uzi/New()
+	..()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20,"rail_x" = 16, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
 
 
 /obj/item/weapon/gun/smg/uzi/set_gun_config_values()
-	fire_delay = config.med_fire_delay
+	fire_delay = config.low_fire_delay
 	burst_delay = config.min_fire_delay
 	burst_amount = config.high_burst_value
 
 	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value + config.med_scatter_value
+	scatter = config.max_scatter_value
 	burst_scatter_mult = config.low_scatter_value
 	scatter_unwielded = config.med_scatter_value + config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult - config.min_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult - config.low_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
 
 
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90
 
-/obj/item/weapon/gun/smg/p90
+/obj/item/weapon/gun/smg/fp9000
 	name = "\improper FN FP9000 Submachinegun"
-	desc = "An archaic design, but one that's stood the test of time. Fires fast armor piercing rounds."
-	icon_state = "FP9000"
-	item_state = "FP9000"
+	desc = "An older design, but one that's stood the test of time and still sees common use today. Fires fast armor piercing rounds at a high rate."
+	icon_state = "fp9000"
+	item_state = "fp9000"
 	origin_tech = "combat=5;materials=4"
 	fire_sound = 'sound/weapons/gun_p90.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/p90
+	current_mag = /obj/item/ammo_magazine/smg/fp9000
 
 	attachable_allowed = list(
-						/obj/item/attachable/suppressor,
+						/obj/item/attachable/compensator,
 						/obj/item/attachable/lasersight,
-						/obj/item/attachable/scope)
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						)
+	random_spawn_chance = 65
+	random_spawn_underbarrel = list(
+							/obj/item/attachable/lasersight,
+							)
+	random_spawn_muzzle = list(
+							/obj/item/attachable/compensator,
+							/obj/item/attachable/extended_barrel	
+								)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
-	New()
-		..()
-		attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 18, "rail_y" = 20, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
+/obj/item/weapon/gun/smg/fp9000/New()
+	..()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 21, "under_x" = 26, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
+	var/obj/item/attachable/scope/mini/S = new(src)
+	S.icon_state = "miniscope_fp9000"
+	S.attach_icon = "miniscope_fp9000_a" // Custom
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_icon()
 
-
-/obj/item/weapon/gun/smg/p90/set_gun_config_values()
-	fire_delay = config.high_fire_delay
+/obj/item/weapon/gun/smg/fp9000/set_gun_config_values()
+	fire_delay = config.min_fire_delay
 	burst_delay = config.mlow_fire_delay
 	burst_amount = config.med_burst_value
 
-	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
+	accuracy_mult = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult - config.hmed_hit_accuracy_mult
-	scatter = config.med_scatter_value
+	scatter = config.hmed_scatter_value
 	burst_scatter_mult = config.mlow_scatter_value
 	scatter_unwielded = config.high_scatter_value
-	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	damage_mult = config.base_hit_damage_mult
 	recoil_unwielded = config.min_recoil_value
+
+/obj/item/weapon/gun/smg/fp9000/pmc
+	name = "\improper FN FP9000 Submachinegun"
+	desc = "A variant of the FP9000 SMG that appears to feature some special modifications for elite forces."
+	icon_state = "fp9000_pmc"
+
+/obj/item/weapon/gun/smg/fp9000/pmc/set_gun_config_values()
+	..()
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	scatter = config.med_scatter_value
+	accuracy_mult = config.base_hit_accuracy_mult + config.high_hit_accuracy_mult
 
 //-------------------------------------------------------

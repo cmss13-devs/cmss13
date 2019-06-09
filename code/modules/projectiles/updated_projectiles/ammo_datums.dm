@@ -47,8 +47,8 @@
 	var/bonus_projectiles_type 					// Type path of the extra projectiles
 	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
 	var/debilitate[]				= null 		// Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	var/pen_armor_punch				= 1
-	var/damage_armor_punch			= 0.5
+	var/pen_armor_punch				= 1			// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
+	var/damage_armor_punch			= 0.5		// how much armor breaking is done by sheer weapon force. This is for big blunt weapons
 
 	New()
 		accuracy 			= config.min_hit_accuracy 	// This is added to the bullet's base accuracy.
@@ -391,11 +391,12 @@
 
 /datum/ammo/bullet/smg/New()
 	..()
-	damage = config.lmed_hit_damage
-	accurate_range = config.near_shell_range
+	damage = config.lmed_plus_hit_damage
+	accurate_range = config.lshort_shell_range
 	penetration = 0
+	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
-	scatter = config.min_scatter_value
+	scatter = config.med_scatter_value
 	accuracy = config.med_hit_accuracy
 
 /datum/ammo/bullet/smg/ap
@@ -405,9 +406,20 @@
 	..()
 	scatter = config.min_scatter_value
 	damage = config.low_hit_damage
+	penetration = config.hlow_armor_penetration
+	damage_falloff = config.reg_damage_falloff
+
+/datum/ammo/bullet/smg/le
+	name = "armor-shredding submachinegun bullet"
+
+/datum/ammo/bullet/smg/le/New()
+	..()
+	scatter = config.min_scatter_value
+	damage = config.base_hit_damage
 	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
+	pen_armor_punch = 2.5
 
 /*
 //================================================
@@ -606,8 +618,8 @@
 	damage = config.lmed_hit_damage
 	damage_var_low = config.low_proj_variance
 	damage_var_high = config.low_proj_variance
-	penetration	= config.hlow_armor_penetration
-	bonus_projectiles_amount = config.med_proj_extra
+	penetration	= config.hmed_armor_penetration
+	bonus_projectiles_amount = config.low_proj_extra
 
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
@@ -1367,8 +1379,8 @@
 
 /datum/ammo/xeno/acid/New()
 	..()
-	damage = config.hlow_hit_damage
-	penetration = config.med_armor_penetration
+	damage = config.low_hit_damage
+	penetration = config.mlow_armor_penetration
 	shell_speed = config.reg_shell_speed
 
 /datum/ammo/xeno/acid/on_shield_block(mob/M, obj/item/projectile/P)
@@ -1386,9 +1398,7 @@
 
 /datum/ammo/xeno/acid/medium/New()
 	..()
-	damage = config.lmed_hit_damage
-	damage_var_low = config.low_proj_variance
-	damage_var_high = config.med_proj_variance
+	damage = config.hlow_hit_damage
 	shell_speed = config.fast_shell_speed
 
 /datum/ammo/xeno/acid/heavy
@@ -1418,7 +1428,7 @@
 	damage_falloff = config.buckshot_damage_falloff
 	shell_speed = config.slow_shell_speed
 	scatter = config.med_scatter_value
-	
+
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of gas"

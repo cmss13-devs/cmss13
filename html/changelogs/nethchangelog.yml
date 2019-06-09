@@ -1,0 +1,53 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: Neth Iafins
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - rscdel: "Removed a ton of Syndicate items. We are not affiliated with NanoTrasen in any shape or form."
+  - tweak: "Armor has now random range from hit to hit. It's not big but this is added so no damage is the same from hit to hit"
+  - tweak: "Marine Armor values are completely changed."
+  - rscadd: "Endurance is a useful skill now. Survivors have it super trained. Endurance helps you in avoiding IB and Organ Damage. It will help with bone breaks in future but not right now."
+  - rscadd: "Some rarer armors protect you immensly from certain elements (like biohazzard against xeno spit) but are terrible at everything else. Experiment but remember that MPs can arrest you for bad uniform."
+  - rscadd: "Light armor protects you against spit and gives you more speed "compensation" for gun weight"
+  - rscadd: "Medium armor now has 3 pockets inside and has middle armor between Light and Heavy"
+  - rscadd: "Heavy armor protects against explosions, melee and bullets. It also holds your intestines together so you get IB and Organ Damage less often"
+  - tweak: "Masks defend your face against spit"
+  - tweak: "Damage to armor only works after 0.2 of a second pass, so if you shoot flechette or something at xeno, armor only changes after all bullets connect"
+  - tweak: "There is a mechanic with armor that if person is dealt damage much less than the armor, the armor has MORE effect on that attack. Now this mechanic also takes into account current armor integrity"
+  - rscadd: "IB and Organ Damage uses new "armor-damage system". "Armor Integrity" for IB and Organ Damage is your leftover health on the limb, which means that the more limb is damaged the bigger chance you have to get IB or Organ Damage."
+  - rscadd: "IO Suit now has 4 pockets"
+  - tweak: "Acid Spit armor penetration reduced. Acid Spit elder+ damage reduced."
+  - tweak: "Tank now gets a bit more damage."
+  - tweak: "Ranged attacks deal less damage vs Metal Barricades."  
+  - tweak: "Reduced damage required for bone break"
+  - tweak: "Bone break is no longer guaranteed but controlled by armor and endurance"

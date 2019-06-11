@@ -5,7 +5,6 @@
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "0"
 	var/state = 0
-	var/datum/ai_laws/laws = new /datum/ai_laws/nanotrasen
 	var/obj/item/circuitboard/aicore/circuit = null
 	var/obj/item/device/mmi/brain = null
 
@@ -140,7 +139,7 @@
 			if(istype(P, /obj/item/tool/screwdriver))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You connect the monitor."))
-				var/mob/living/silicon/ai/A = new /mob/living/silicon/ai ( loc, laws, brain )
+				var/mob/living/silicon/ai/A = new /mob/living/silicon/ai (loc, brain)
 				if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created
 					A.rename_self("ai", 1)
 				feedback_inc("cyborg_ais_created",1)

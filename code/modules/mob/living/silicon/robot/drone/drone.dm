@@ -80,7 +80,6 @@
 	update_icons()
 
 /mob/living/silicon/robot/drone/init()
-	laws = new /datum/ai_laws/drone()
 	connected_ai = null
 
 	aiCamera = new/obj/item/device/camera/siliconcam/drone_camera(src)
@@ -147,22 +146,10 @@
 	return 0
 
 //CONSOLE PROCS
-/mob/living/silicon/robot/drone/proc/law_resync()
-	if(stat != 2)
-		to_chat(src, SPAN_DANGER("A reset-to-factory directive packet filters through your data connection, and you obediently modify your programming to suit it."))
-		full_law_reset()
-		show_laws()
-
 /mob/living/silicon/robot/drone/proc/shut_down()
 	if(stat != 2)
 		to_chat(src, SPAN_DANGER("You feel a system kill order percolate through your tiny brain, and you obediently destroy yourself."))
 		death()
-
-/mob/living/silicon/robot/drone/proc/full_law_reset()
-	clear_supplied_laws()
-	clear_inherent_laws()
-	clear_ion_laws()
-	laws = new /datum/ai_laws/drone
 
 //Reboot procs.
 
@@ -191,7 +178,6 @@
 
 	lawupdate = 0
 	to_chat(src, "<b>Systems rebooted</b>. Loading base pattern maintenance protocol... <b>loaded</b>.")
-	full_law_reset()
 	to_chat(src, "<br><b>You are a maintenance drone, a tiny-brained robotic repair machine</b>.")
 	to_chat(src, "You have no individual will, no personality, and no drives or urges other than your laws.")
 	to_chat(src, "Use <b>:d</b> to talk to other drones and <b>say</b> to speak silently to your nearby fellows.")

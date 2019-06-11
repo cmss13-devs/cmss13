@@ -2,7 +2,6 @@
 	gender = NEUTER
 	voice_name = "synthesized voice"
 	var/syndicate = 0
-	var/datum/ai_laws/laws = null//Now... THEY ALL CAN ALL HAVE LAWS
 	immune_to_ssd = 1
 	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
 

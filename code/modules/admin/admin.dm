@@ -638,7 +638,6 @@ var/global/floorIsLava = 0
 			<A href='?src=\ref[src];secretsadmin=check_antagonist'>Check Antagonists</A><BR>
 			<A href='?src=\ref[src];secretsadmin=list_signalers'>Show last [length(lastsignalers)] signalers</A><BR>
 			<A href='?src=\ref[src];secretsadmin=list_lawchanges'>Show last [length(lawchanges)] law changes</A><BR>
-			<A href='?src=\ref[src];secretsadmin=showailaws'>Show AI Laws</A><BR>
 			<A href='?src=\ref[src];secretsadmin=showgm'>Show Game Mode</A><BR>
 			<A href='?src=\ref[src];secretsadmin=manifest'>Show Crew Manifest</A><BR>
 			<A href='?src=\ref[src];secretsadmin=DNA'>List DNA (Blood)</A><BR>
@@ -1082,25 +1081,6 @@ var/global/floorIsLava = 0
 	log_admin("[key_name(usr)] toggled guests game entering [guests_allowed?"":"dis"]allowed.")
 	message_admins(SPAN_NOTICE("[key_name_admin(usr)] toggled guests game entering [guests_allowed ? "":"dis"]allowed."), 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/output_ai_laws()
-	var/ai_number = 0
-	for(var/mob/living/silicon/S in mob_list)
-		ai_number++
-		if(isAI(S))
-			to_chat(usr, "<b>AI [key_name(S, usr)]'s laws:</b>")
-		else if(isrobot(S))
-			var/mob/living/silicon/robot/R = S
-			to_chat(usr, "<b>CYBORG [key_name(S, usr)] [R.connected_ai?"(Slaved to: [R.connected_ai])":"(Independant)"]: laws:</b>")
-		else
-			to_chat(usr, "<b>SOMETHING SILICON [key_name(S, usr)]'s laws:</b>")
-
-		if (S.laws == null)
-			to_chat(usr, "[key_name(S, usr)]'s laws are null?? Contact a coder.")
-		else
-			S.laws.show_laws(usr)
-	if(!ai_number)
-		to_chat(usr, "<b>No AIs located</b>") //Just so you know the thing is actually working and not just ignoring you.
 
 /datum/admins/proc/show_skills(var/mob/living/carbon/human/M as mob in player_list)
 	set category = "Admin"

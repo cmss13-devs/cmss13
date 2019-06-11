@@ -1440,9 +1440,6 @@
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
-	else if(href_list["adminchecklaws"])
-		output_ai_laws()
-
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"])
 		if(!ismob(M))
@@ -2090,8 +2087,6 @@
 				for(var/sig in lawchanges)
 					dat += "[sig]<BR>"
 				usr << browse(dat, "window=lawchanges;size=800x500")
-			if("showailaws")
-				output_ai_laws()
 			if("showgm")
 				if(!ticker)
 					alert("The game hasn't started yet!")

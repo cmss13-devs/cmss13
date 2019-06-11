@@ -61612,10 +61612,6 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
-"cei" = (
-/obj/effect/landmark/corpsespawner/pirate,
-/turf/open/floor/plating,
-/area/prison/cellblock/highsec/south/south)
 "cej" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -62630,7 +62626,6 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "cgg" = (
-/obj/effect/landmark/corpsespawner/pirate,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/prison{
 	dir = 1;
@@ -64088,7 +64083,6 @@
 /area/prison/cellblock/highsec/south/south)
 "cjq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber,
-/obj/effect/landmark/corpsespawner/pirate,
 /obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/prison{
 	dir = 9;
@@ -91046,7 +91040,7 @@ cge
 cbc
 cbc
 cjs
-cei
+cbc
 clh
 cbc
 cbc
@@ -93160,7 +93154,7 @@ bYO
 caw
 cbc
 cdc
-cei
+cbc
 chm
 cir
 cjw

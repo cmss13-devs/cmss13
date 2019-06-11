@@ -10,6 +10,7 @@ var/global/datum/objectives_controller/objectives_controller
 	var/datum/cm_objective/establish_power/power
 	var/datum/cm_objective/recover_corpses/marines/marines
 	var/datum/cm_objective/recover_corpses/xenos/xenos
+	var/bonus_admin_points = 0 //bonus points given by admins, doesn't increase the point cap, but does increase points for easier rewards
 
 	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
 
@@ -210,7 +211,7 @@ var/global/datum/objectives_controller/objectives_controller
 
 /datum/objectives_controller/proc/get_objective_completion_stats()
 	var/total_points = 0
-	var/scored_points = 0
+	var/scored_points = 0 + bonus_admin_points//bonus points only apply to scored points, not to total, to make admin lives easier
 
 	for(var/datum/cm_objective/L in objectives)
 		total_points += L.total_point_value()
@@ -234,3 +235,7 @@ var/global/datum/objectives_controller/objectives_controller
 		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].", 1)
 
 	return answer
+
+/datum/objectives_controller/proc/add_admin_points(var/amount)
+	bonus_admin_points += amount
+	defcon_controller.check_defcon_level()

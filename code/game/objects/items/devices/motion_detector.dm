@@ -14,7 +14,7 @@
 
 /obj/item/device/motiondetector
 	name = "motion detector"
-	desc = "A device that detects movement, but ignores marines. It has a mode selection button on the side."
+	desc = "A device that detects movement, but ignores marines. The screen will show the amount of unidentified movement detected (up to 9). You can switch modes with Alt+Click."
 	icon = 'icons/Marine/marine-items.dmi'
 	icon_state = "detector"
 	item_state = "electronic"
@@ -23,6 +23,7 @@
 	var/list/blip_pool = list()
 	var/detector_range = 14
 	var/detector_mode = MOTION_DETECTOR_LONG
+	var/ping_count = 0
 	w_class = 3
 	var/active = 0
 	var/recycletime = 120
@@ -30,31 +31,57 @@
 	var/blip_type = "detector"
 	actions_types = list(/datum/action/item_action)
 
+/obj/item/device/motiondetector/update_icon()
+	if(ping_count > 8)
+		icon_state = "detector_on_9_b"
+		spawn(10)
+			if(active)
+				icon_state = "detector_on_9"
+	else
+		icon_state = "detector_on_[ping_count]_b"
+		spawn(10)
+			if(active)
+				icon_state = "detector_on_[ping_count]"
+
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"
 	set category = "Object"
+
+	toggle_mode(usr)
+
+/obj/item/device/motiondetector/proc/toggle_mode(mob/user)
 	detector_mode = !detector_mode
 	if(detector_mode)
-		to_chat(usr, SPAN_NOTICE("You switch [src] to short range mode."))
+		to_chat(user, SPAN_NOTICE("You switch [src] to short range mode."))
 		detector_range = 7
 	else
-		to_chat(usr, SPAN_NOTICE("You switch [src] to long range mode."))
+		to_chat(user, SPAN_NOTICE("You switch [src] to long range mode."))
 		detector_range = 14
 	if(active)
-		icon_state = "[initial(icon_state)]_on_[detector_mode]"
+		update_icon()
 
+/obj/item/device/motiondetector/clicked(mob/user, list/mods)
+	if (isobserver(user) || isXeno(user)) return
+
+	if (mods["alt"])
+		toggle_mode(user)
+		return 1
+
+	return ..()
 
 /obj/item/device/motiondetector/attack_self(mob/user)
 	if(ishuman(user))
 		active = !active
 		if(active)
-			icon_state = "[initial(icon_state)]_on_[detector_mode]"
+			update_icon()
 			to_chat(user, SPAN_NOTICE("You activate [src]."))
+			playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
 			processing_objects.Add(src)
 
 		else
 			icon_state = "[initial(icon_state)]"
 			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+			playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
 			processing_objects.Remove(src)
 
 /obj/item/device/motiondetector/Dispose()
@@ -81,7 +108,6 @@
 		if(long_range_cooldown) return
 		else long_range_cooldown = initial(long_range_cooldown)
 
-	playsound(loc, 'sound/items/detector.ogg', 60, 0, 7, 2)
 	scan()
 
 /obj/item/device/motiondetector/proc/scan()
@@ -89,8 +115,8 @@
 	if(ishuman(loc))
 		human_user = loc
 
+	ping_count = 0
 	for(var/mob/M in living_mob_list)
-		var/detected
 
 		if(loc == null || M == null) continue
 		if(loc.z != M.z) continue
@@ -103,13 +129,18 @@
 			var/mob/living/carbon/human/H = M
 			if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer))
 				continue //device detects marine headset and ignores the wearer.
-		detected = TRUE
+		ping_count++
 
 		if(human_user)
 			show_blip(human_user, M)
 
-		if(detected)
-			playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
+	if(ping_count > 0)
+		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
+	else
+		playsound(loc, 'sound/items/detector.ogg', 60, 0, 7, 2)
+
+	update_icon()
+
 
 /obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target)
 	set waitfor = 0
@@ -149,15 +180,43 @@
 
 /obj/item/device/motiondetector/intel
 	name = "data detector"
-	desc = "A device that detects objects that may be useful for intel gathering. It has a mode selection button on the side."
+	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
 	icon_state = "datadetector"
 	blip_type = "data"
 	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective)
+
+/obj/item/device/motiondetector/intel/toggle_mode(mob/user)
+	detector_mode = !detector_mode
+	if(detector_mode)
+		to_chat(user, SPAN_NOTICE("You switch [src] to short range mode."))
+		detector_range = 7
+	else
+		to_chat(user, SPAN_NOTICE("You switch [src] to long range mode."))
+		detector_range = 14
+	if(active)
+		icon_state = "[initial(icon_state)]_on_[detector_mode]"
+
+/obj/item/device/motiondetector/intel/attack_self(mob/user)
+	if(ishuman(user))
+		active = !active
+		if(active)
+			icon_state = "[initial(icon_state)]_on_[detector_mode]"
+			to_chat(user, SPAN_NOTICE("You activate [src]."))
+			playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
+			processing_objects.Add(src)
+
+		else
+			icon_state = "[initial(icon_state)]"
+			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+			playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
+			processing_objects.Remove(src)
 
 /obj/item/device/motiondetector/intel/scan()
 	var/mob/living/carbon/human/human_user
 	if(ishuman(loc))
 		human_user = loc
+
+	var/detected_sound = FALSE
 
 	for(var/obj/I in orange(detector_range, loc))
 		var/detected
@@ -175,7 +234,7 @@
 				break
 
 		if(detected)
-			playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
+			detected_sound = TRUE
 
 	for(var/mob/M in orange(detector_range, loc))
 		var/detected
@@ -200,5 +259,11 @@
 								break
 			if(detected)
 				show_blip(human_user, M)
+
 		if(detected)
-			playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
+			detected_sound = TRUE
+
+	if(detected_sound)
+		playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
+	else
+		playsound(loc, 'sound/items/detector.ogg', 50, 0, 7, 2)

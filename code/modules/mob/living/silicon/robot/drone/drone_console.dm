@@ -75,14 +75,6 @@
 			if(D.client && D.stat == 0)
 				to_chat(D, "-- Maintenance drone presence requested in: [drone_call_area].")
 
-	else if (href_list["resync"])
-
-		var/mob/living/silicon/robot/drone/D = locate(href_list["resync"])
-
-		if(D.stat != 2)
-			to_chat(usr, SPAN_DANGER("You issue a law synchronization directive for the drone."))
-			D.law_resync()
-
 	else if (href_list["shutdown"])
 
 		var/mob/living/silicon/robot/drone/D = locate(href_list["shutdown"])

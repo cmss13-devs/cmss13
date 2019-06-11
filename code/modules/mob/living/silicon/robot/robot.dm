@@ -89,7 +89,6 @@ var/list/robot_verbs_default = list(
 		if(!cell)
 			cell = new /obj/item/cell(src)
 
-		laws = new /datum/ai_laws/antimov()
 		lawupdate = 0
 		scrambledcodes = 1
 		cell.maxcharge = 25000
@@ -132,11 +131,9 @@ var/list/robot_verbs_default = list(
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/device/camera/siliconcam/robot_camera(src)
-	laws = new /datum/ai_laws/nanotrasen()
 	connected_ai = select_active_ai_with_fewest_borgs()
 	if(connected_ai)
 		connected_ai.connected_robots += src
-		lawsync()
 		photosync()
 		lawupdate = 1
 	else
@@ -636,12 +633,6 @@ var/list/robot_verbs_default = list(
 					to_chat(user, "You emag [src]'s interface.")
 					message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
 					log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
-					clear_supplied_laws()
-					clear_inherent_laws()
-					laws = new /datum/ai_laws/syndicate_override
-					var/time = time2text(world.realtime,"hh:mm:ss")
-					lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-					set_zeroth_law("Only [user.real_name] and people he designates as being such are Syndicate Agents.")
 					to_chat(src, SPAN_DANGER("ALERT: Foreign software detected."))
 					sleep(5)
 					to_chat(src, SPAN_DANGER("Initiating diagnostics..."))
@@ -656,7 +647,6 @@ var/list/robot_verbs_default = list(
 					sleep(20)
 					to_chat(src, SPAN_DANGER("ERRORERRORERROR"))
 					to_chat(src, "<b>Obey these laws:</b>")
-					laws.show_laws(src)
 					to_chat(src, SPAN_DANGER("\b ALERT: [user.real_name] is your new master. Obey your new laws and his commands."))
 					update_icons()
 				else
@@ -898,24 +888,6 @@ var/list/robot_verbs_default = list(
 			to_chat(src, "Module isn't activated")
 		installed_modules()
 
-	if (href_list["lawc"]) // Toggling whether or not a law gets stated by the State Laws verb --NeoFite
-		var/L = text2num(href_list["lawc"])
-		switch(lawcheck[L+1])
-			if ("Yes") lawcheck[L+1] = "No"
-			if ("No") lawcheck[L+1] = "Yes"
-//		src << text ("Switching Law [L]'s report status to []", lawcheck[L+1])
-		checklaws()
-
-	if (href_list["lawi"]) // Toggling whether or not a law gets stated by the State Laws verb --NeoFite
-		var/L = text2num(href_list["lawi"])
-		switch(ioncheck[L])
-			if ("Yes") ioncheck[L] = "No"
-			if ("No") ioncheck[L] = "Yes"
-//		src << text ("Switching Law [L]'s report status to []", lawcheck[L+1])
-		checklaws()
-
-	if (href_list["laws"]) // With how my law selection code works, I changed statelaws from a verb to a proc, and call it through my law selection panel. --NeoFite
-		statelaws()
 	return
 
 /mob/living/silicon/robot/proc/radio_menu()

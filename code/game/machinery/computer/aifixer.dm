@@ -35,30 +35,7 @@
 	var/dat = "<h3>AI System Integrity Restorer</h3><br><br>"
 
 	if (src.occupant)
-		var/laws
 		dat += "Stored AI: [src.occupant.name]<br>System integrity: [(src.occupant.health+100)/2]%<br>"
-
-		for (var/law in occupant.laws.ion)
-			if(law)
-				laws += "[ionnum()]: [law]<BR>"
-
-		if (src.occupant.laws.zeroth)
-			laws += "0: [occupant.laws.zeroth]<BR>"
-
-		var/number = 1
-		for (var/index = 1, index <= occupant.laws.inherent.len, index++)
-			var/law = occupant.laws.inherent[index]
-			if (length(law) > 0)
-				laws += "[number]: [law]<BR>"
-				number++
-
-		for (var/index = 1, index <= occupant.laws.supplied.len, index++)
-			var/law = occupant.laws.supplied[index]
-			if (length(law) > 0)
-				laws += "[number]: [law]<BR>"
-				number++
-
-		dat += "Laws:<br>[laws]<br>"
 
 		if (src.occupant.stat == 2)
 			dat += "<b>AI nonfunctional</b>"

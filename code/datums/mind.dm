@@ -338,10 +338,6 @@
 					current.hud_set_special_role()
 					to_chat(current, SPAN_WARNING("<FONT size = 3><B>You have been brainwashed! You are no longer a traitor!</B></FONT>"))
 					log_admin("[key_name_admin(usr)] has de-traitor'ed [current].")
-					if(isAI(current))
-						var/mob/living/silicon/ai/A = current
-						A.set_zeroth_law("")
-						A.show_laws()
 
 			if("traitor")
 				if(!(src in ticker.mode.traitors))

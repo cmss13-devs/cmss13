@@ -650,6 +650,18 @@ var/global/floorIsLava = 0
 
 	if(check_rights(R_FUN,0))
 		dat += {"
+
+			<B>Game master section</B><BR>
+			<BR>
+			<A href='?src=\ref[src];secretsfun=decrease_defcon'>Decrease DEFCON level</A><BR>
+			<A href='?src=\ref[src];secretsfun=give_defcon_points'>Give DEFCON points</A><BR>
+			<A href='?src=\ref[src];secretsfun=unpower'>Unpower ship SMESs and APCs</A><BR>
+			<A href='?src=\ref[src];secretsfun=power'>Power ship SMESs and APCs</A><BR>
+			<A href='?src=\ref[src];secretsfun=quickpower'>Power ship SMESs</A><BR>
+			<A href='?src=\ref[src];secretsfun=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+			<A href='?src=\ref[src];secretsfun=blackout'>Break all lights</A><BR>
+			<A href='?src=\ref[src];secretsfun=whiteout'>Fix all lights</A><BR>
+			<BR>
 			<B>'Random' Events</B><BR>
 			<BR>
 			<A href='?src=\ref[src];secretsfun=gravity'>Toggle station artificial gravity</A> (inop)<BR> <!--Needs to not affect planets-->
@@ -666,14 +678,8 @@ var/global/floorIsLava = 0
 			<B>Fun Secrets</B><BR>
 			<BR>
 			<A href='?src=\ref[src];secretsfun=striketeam'>Send in a strike team</A> (inop)<BR> <!--Not working. Maybe a 2nd Death Squad if needed in the future -->
-			<A href='?src=\ref[src];secretsfun=unpower'>Unpower ship SMESs and APCs</A><BR>
-			<A href='?src=\ref[src];secretsfun=power'>Power ship SMESs and APCs</A><BR>
-			<A href='?src=\ref[src];secretsfun=quickpower'>Power ship SMESs</A><BR>
-			<A href='?src=\ref[src];secretsfun=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
 			<A href='?src=\ref[src];secretsfun=traitor_all'>Make everyone a traitor and give them one objective</A><BR>
 			<A href='?src=\ref[src];secretsfun=onlyone'>There can only be one!</A> (inop)<BR> <!--Not working -->
-			<A href='?src=\ref[src];secretsfun=blackout'>Break all lights</A><BR>
-			<A href='?src=\ref[src];secretsfun=whiteout'>Fix all lights</A><BR>
 			<A href='?src=\ref[src];secretsfun=Booniehats'>Make all hats boonie hats. (inop)</A><BR>
 			<BR>
 			<B>Mass-Teleportation</B><BR>

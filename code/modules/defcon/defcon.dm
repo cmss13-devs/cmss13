@@ -36,6 +36,13 @@ var/global/datum/defcon/defcon_controller
 		var/percentage = ((last_objectives_completion_percentage - defcon_level_triggers[current_defcon_level - 1]) / (defcon_level_triggers[current_defcon_level] - defcon_level_triggers[current_defcon_level - 1]) * 100)
 		return percentage
 
+
+/datum/defcon/proc/decrease_defcon_level()
+	if(current_defcon_level > 1)
+		current_defcon_level--
+		remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL + (DEFCON_POINT_GAIN_PER_LEVEL * (DEFCON_MAX_LEVEL - current_defcon_level))
+		announce_defcon_level()
+
 /datum/defcon/proc/check_defcon_level()
 	var/list/objectives_status = objectives_controller.get_objective_completion_stats()
 	last_objectives_scored_points = objectives_status["scored_points"]
@@ -44,9 +51,7 @@ var/global/datum/defcon/defcon_controller
 
 	if(current_defcon_level > 1)
 		if(last_objectives_completion_percentage > defcon_level_triggers[current_defcon_level - 1])
-			current_defcon_level--
-			remaining_reward_points += DEFCON_POINT_GAIN_PER_LEVEL + (DEFCON_POINT_GAIN_PER_LEVEL * (DEFCON_MAX_LEVEL - current_defcon_level))
-			announce_defcon_level()
+			decrease_defcon_level()
 
 	round_statistics.defcon_level = current_defcon_level
 	round_statistics.objective_points = last_objectives_scored_points

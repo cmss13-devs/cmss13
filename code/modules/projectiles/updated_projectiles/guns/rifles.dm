@@ -40,6 +40,8 @@
 	icon_state = "m41a"
 	item_state = "m41a"
 	fire_sound = "gun_pulse"
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -128,6 +130,8 @@
 	icon_state = "m41amk1" //Placeholder.
 	item_state = "m41amk1" //Placeholder.
 	fire_sound = "gun_pulse"
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -166,6 +170,8 @@
 	icon_state = "m46c"
 	item_state = "m46c"
 	fire_sound = "gun_pulse"
+	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
+	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
@@ -522,6 +528,8 @@
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
 	origin_tech = "combat=5;materials=4"
+	reload_sound = 'sound/weapons/handling/hpr_reload.ogg'
+	unload_sound = 'sound/weapons/handling/hpr_unload.ogg'
 	fire_sound = 'sound/weapons/gun_m41ae2.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
@@ -710,6 +718,8 @@
 	desc = "A L42 pulse carbine MK1. A non-standard alternative to the standard issue M41A-MK2 available to the jarheads of the USCM. Renowned for its high accuracy, but usually overlooked in favor of firearms with better stopping power. Chambered in 10x24mm caseless."
 	icon_state = "l42mk1"
 	item_state = "l42mk1"
+	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
+	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	fire_sound = 'sound/weapons/gun_carbine.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/l42mk1
 	attachable_allowed = list(

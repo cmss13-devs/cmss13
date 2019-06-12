@@ -325,7 +325,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	current_mag.chamber_closed = !current_mag.chamber_closed
 	update_icon()
-	playsound(user, reload_sound, 25, 1)
+	playsound(user, reload_sound, 25, 1) //replace me with unique break open sound!
 
 /obj/item/weapon/gun/shotgun/double/load_into_chamber()
 	//Trimming down the unnecessary stuff.

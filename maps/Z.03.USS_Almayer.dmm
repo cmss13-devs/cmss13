@@ -1869,7 +1869,7 @@
 /turf/closed/wall/almayer/outer{
 	name = "reinforced hull"
 	},
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "aeq" = (
 /obj/machinery/light/small,
 /turf/open/floor/almayer{
@@ -2299,14 +2299,14 @@
 "afi" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "afj" = (
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/engine,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "afk" = (
 /turf/open/floor/engine,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "afl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -2646,14 +2646,14 @@
 	tag = "icon-map_vent_in (EAST)"
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "afY" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "afZ" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 8;
@@ -2663,7 +2663,7 @@
 	on = 1
 	},
 /turf/open/floor/almayer_hull,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "aga" = (
 /turf/open/floor/almayer_hull,
 /area/almayer/hull/upper_hull)
@@ -2997,10 +2997,7 @@
 	on = 1
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/starboard_atmos)
-"agN" = (
-/turf/open/floor/almayer_hull,
-/area/almayer/engineering/starboard_atmos)
+/area/almayer/engineering/airmix)
 "agO" = (
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer{
@@ -16127,13 +16124,6 @@
 	dir = 5
 	},
 /area/almayer/engineering/port_atmos)
-"aGF" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/structure/window/framed/almayer/hull,
-/turf/open/floor/plating,
-/area/almayer/engineering/port_atmos)
 "aGH" = (
 /obj/machinery/computer/med_data,
 /turf/open/floor/almayer{
@@ -16144,9 +16134,6 @@
 "aGI" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
-/area/almayer/engineering/port_atmos)
-"aGJ" = (
-/turf/open/floor/almayer_hull,
 /area/almayer/engineering/port_atmos)
 "aGK" = (
 /obj/effect/decal/warning_stripes{
@@ -16387,7 +16374,7 @@
 "aHl" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/engine,
-/area/almayer/engineering/port_atmos)
+/area/almayer/engineering/airmix)
 "aHm" = (
 /turf/open/floor/plating/almayer,
 /area/almayer/medical/medical_science)
@@ -16619,7 +16606,7 @@
 	on = 1
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/port_atmos)
+/area/almayer/engineering/airmix)
 "aHT" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -22740,7 +22727,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "aVp" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower_engineering)
@@ -23137,14 +23124,14 @@
 	on = 1
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "aWp" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	frequency = 1443;
 	id_tag = "waste_lower_out"
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "aWq" = (
 /obj/structure/table/almayer,
 /obj/item/reagent_container/spray/cleaner,
@@ -23168,7 +23155,7 @@
 	on = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/engineering/lower_engineering)
+/area/space)
 "aWt" = (
 /obj/machinery/vending/coffee,
 /turf/open/floor/prison{
@@ -23429,12 +23416,12 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "aWZ" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/open/floor/plating,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "aXa" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -42730,10 +42717,10 @@
 	id_tag = "oxygen_lower_out"
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bLy" = (
 /turf/open/floor/engine/nitrogen,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bLz" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
@@ -42743,7 +42730,7 @@
 	id_tag = "nit_lower_out"
 	},
 /turf/open/floor/engine/nitrogen,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bLA" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
@@ -42752,10 +42739,7 @@
 	on = 1
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
-"bLB" = (
-/turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bLC" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
@@ -42765,7 +42749,7 @@
 	id_tag = "mixed_lower_out"
 	},
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bLD" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer{
@@ -43498,17 +43482,17 @@
 /obj/machinery/light,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bMK" = (
 /obj/machinery/light,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine/nitrogen,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bML" = (
 /obj/machinery/light,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/engine,
-/area/almayer/engineering/lower_engineering)
+/area/almayer/engineering/airmix)
 "bMM" = (
 /turf/open/floor/almayer{
 	tag = "icon-plating_striped (WEST)";
@@ -57935,6 +57919,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/port_hallway)
+"dKL" = (
+/turf/closed/wall/almayer/outer,
+/area/almayer/engineering/airmix)
 "dNZ" = (
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1,
 /obj/machinery/light{
@@ -58752,11 +58739,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/surgery_hallway)
-"fnJ" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/almayer/engineering/lower_engineering)
 "fpV" = (
 /turf/open/floor/almayer{
 	tag = "icon-orange (SOUTHEAST)";
@@ -60814,11 +60796,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_umbilical)
-"jdC" = (
-/turf/closed/wall/almayer/outer{
-	name = "reinforced hull"
-	},
-/area/almayer/hull/upper_hull)
 "jdG" = (
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_side (NORTH)";
@@ -63412,6 +63389,9 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
+"nGc" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/space)
 "nHb" = (
 /obj/effect/decal/medical_decals{
 	tag = "icon-triagedecaltopright";
@@ -68394,6 +68374,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/containment)
+"vIu" = (
+/turf/open/floor/almayer_hull,
+/area/almayer/engineering/airmix)
 "vJo" = (
 /obj/machinery/computer/security/almayer_network{
 	dir = 1
@@ -111580,11 +111563,11 @@ alL
 aDz
 aWf
 aiB
-jdC
-aGF
-aGI
-aGF
-aHh
+aep
+afY
+afi
+afY
+aep
 aal
 aai
 aag
@@ -111783,11 +111766,11 @@ alL
 aSA
 aYj
 apd
-jdC
+aep
 aHS
-aHL
+afk
 aHS
-aHh
+aep
 aal
 aai
 aag
@@ -111986,11 +111969,11 @@ alL
 aSA
 aYj
 apd
-jdC
-aHL
+aep
+afk
 aHl
-aHL
-aHh
+afk
+aep
 aal
 aai
 aag
@@ -112189,11 +112172,11 @@ alL
 aSA
 aYj
 apd
-jdC
-aGI
-aGI
-aHh
-aHh
+aep
+afi
+afi
+aep
+aep
 aal
 aai
 aag
@@ -112367,10 +112350,10 @@ aag
 aai
 aap
 aao
-aai
+dKL
 afZ
-agN
-aai
+vIu
+dKL
 alG
 ajO
 aoD
@@ -112392,10 +112375,10 @@ alL
 aSA
 aYj
 apf
-aai
-aGJ
-aGJ
-aai
+dKL
+vIu
+vIu
+dKL
 aaj
 bYp
 aai
@@ -112570,10 +112553,10 @@ aag
 aai
 aai
 aeq
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 alG
 ajO
 aoD
@@ -112595,10 +112578,10 @@ alL
 aSA
 aYj
 apd
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 aal
 aai
 aai
@@ -112773,10 +112756,10 @@ aag
 aag
 aai
 aao
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 alK
 ajP
 aoD
@@ -112798,10 +112781,10 @@ alL
 aSA
 aYD
 aTT
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 aam
 aai
 aga
@@ -112976,10 +112959,10 @@ aag
 aag
 aai
 aap
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 alG
 ajO
 aoD
@@ -113001,10 +112984,10 @@ alL
 aSA
 aYj
 apd
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 bVw
 aai
 aga
@@ -113179,10 +113162,10 @@ aag
 aag
 aai
 aap
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 alM
 ajQ
 aoE
@@ -113204,10 +113187,10 @@ aFk
 aSB
 aYj
 apd
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 aam
 aai
 aga
@@ -113382,10 +113365,10 @@ aag
 aag
 aai
 aap
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 alG
 ajR
 aoG
@@ -113407,10 +113390,10 @@ aRj
 aSC
 aZH
 apd
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 aal
 aai
 aga
@@ -113585,10 +113568,10 @@ aag
 aag
 aai
 aao
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 alG
 anI
 aoQ
@@ -113610,10 +113593,10 @@ alO
 aSD
 apd
 apd
-aai
-aga
-aga
-aai
+dKL
+vIu
+vIu
+dKL
 aal
 aai
 aga
@@ -113788,10 +113771,10 @@ aag
 aag
 aai
 ado
-aai
-aai
-aai
-aai
+dKL
+dKL
+dKL
+dKL
 aar
 ajM
 aoR
@@ -113813,10 +113796,10 @@ alO
 ajM
 aEp
 aar
-aai
-aai
-aai
-aai
+dKL
+dKL
+dKL
+dKL
 aal
 aai
 aga
@@ -119601,10 +119584,10 @@ aKY
 aLd
 aVl
 bxE
-fnJ
-fnJ
-fnJ
-aUx
+aep
+aep
+aep
+dKL
 aKW
 aKW
 aKW
@@ -119804,10 +119787,10 @@ aKY
 aVl
 ccx
 bBm
-aXa
-bLB
-bLB
-aUx
+afi
+afk
+afk
+dKL
 aaa
 aaa
 aaa
@@ -120010,7 +119993,7 @@ ccR
 aWY
 bLx
 bMJ
-aUx
+dKL
 aaa
 aaa
 aaa
@@ -120210,10 +120193,10 @@ bBo
 aVl
 ccy
 ccS
-fnJ
-fnJ
-fnJ
-aUx
+aep
+aep
+aep
+dKL
 aaa
 aaa
 aaa
@@ -120413,10 +120396,10 @@ cbG
 aVl
 byQ
 ccS
-aXa
+afi
 bLy
 bLy
-aUx
+dKL
 aaa
 aaa
 aaa
@@ -120619,7 +120602,7 @@ ccT
 aWY
 bLz
 bMK
-aUx
+dKL
 aaa
 aaa
 aaa
@@ -120788,10 +120771,10 @@ aaa
 aaa
 aaa
 aaa
-aUx
-fnJ
-fnJ
-fnJ
+dKL
+aep
+aep
+aep
 bkt
 btm
 aVl
@@ -120819,10 +120802,10 @@ cbG
 aVl
 ccA
 bZE
-fnJ
-fnJ
-fnJ
-aUx
+aep
+aep
+aep
+dKL
 aaa
 aaa
 aaa
@@ -120991,8 +120974,8 @@ aaa
 aaa
 aaa
 aaa
-aUx
-bLB
+dKL
+afk
 aWo
 aWY
 byg
@@ -121024,8 +121007,8 @@ ccB
 ccV
 aWY
 bLA
-bLB
-aUx
+afk
+dKL
 aaa
 aaa
 aaa
@@ -121194,7 +121177,7 @@ aaa
 aaa
 aaa
 aaa
-aUx
+dKL
 aVo
 aWp
 aWZ
@@ -121225,10 +121208,10 @@ aKZ
 aVl
 ccC
 ccW
-aXa
-bLB
+afi
+afk
 bML
-aUx
+dKL
 aaa
 aaa
 aaa
@@ -121397,10 +121380,10 @@ aaa
 aaa
 aaa
 aaa
-aUx
-bLB
-bLB
-aXa
+dKL
+afk
+afk
+afi
 bxI
 byR
 aVl
@@ -121430,8 +121413,8 @@ ccD
 ccX
 aWY
 bLC
-bLB
-aUx
+afk
+dKL
 aaa
 aaa
 aaa
@@ -121600,10 +121583,10 @@ aaa
 aaa
 aaa
 aaa
-aUx
-aUx
-fnJ
-fnJ
+dKL
+dKL
+aep
+aep
 byk
 byQ
 aVl
@@ -121631,10 +121614,10 @@ aKY
 aVl
 ccE
 bjd
-fnJ
-fnJ
-aUx
-aUx
+aep
+aep
+dKL
+dKL
 aaa
 aaa
 aaa
@@ -122210,9 +122193,9 @@ aaa
 aaa
 aaa
 aaa
-aVp
+nGc
 aWs
-aVp
+nGc
 aaa
 aaa
 aaa
@@ -122240,9 +122223,9 @@ aKW
 aaa
 aaa
 aaa
-aVp
-aVp
-aVp
+nGc
+nGc
+nGc
 aaa
 aaa
 aaa

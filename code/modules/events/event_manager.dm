@@ -1,6 +1,6 @@
 var/list/allEvents = typesof(/datum/event) - /datum/event
 var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event
-//var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event - /datum/event/spider_infestation - /datum/event/alien_infestation
+//var/list/potentialRandomEvents = typesof(/datum/event) - /datum/event - /datum/event/spider_infestation
 
 var/eventTimeLower = MINUTES_20	//20 minutes
 var/eventTimeUpper = MINUTES_40	//40 minutes

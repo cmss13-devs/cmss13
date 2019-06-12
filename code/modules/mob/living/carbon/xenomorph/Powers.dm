@@ -1056,10 +1056,6 @@
 		to_chat(src, SPAN_NOTICE("You can't tunnel there!"))
 		return
 
-	if(!(T.z in SURFACE_Z_LEVELS)) //Can't burrow on Almayer or in the dropships, also not in the admin level. Pretty much only surface!
-		to_chat(src, SPAN_XENOWARNING("The decking is too hard to tunnel through!"))
-		return
-
 	if(T.density)
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
 		return

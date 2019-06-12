@@ -74,7 +74,6 @@
 			continue
 		to_chat(target, SPAN_WARNING("<b>You have detected a change in your laws information:</b>"))
 		target << law
-		target.add_ion_law(law)
 		target.show_laws()
 
 	if(message_servers)

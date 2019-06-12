@@ -30,7 +30,7 @@
 		var/mob/living/carbon/human/M = src
 		for(var/datum/limb/O in M.limbs)
 			if((O.status & LIMB_DESTROYED) && !(O.status & LIMB_AMPUTATED))
-				traumatic_shock += 40
+				traumatic_shock += 80
 			else if(O.status & LIMB_BROKEN || O.surgery_open_stage)
 				if (O.status & !LIMB_SPLINTED)
 					traumatic_shock += 30

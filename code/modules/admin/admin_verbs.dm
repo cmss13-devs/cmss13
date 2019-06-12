@@ -43,7 +43,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/show_hive_status,
 	/client/proc/show_objectives_status,
 	/client/proc/show_objectives_status_to_all,
-	// /client/proc/check_ai_laws,			/*shows AI and borg laws*/
 	/client/proc/check_antagonists,
 	/client/proc/admin_memo,			/*admin memo system. show/delete/write. +SERVER needed to delete admin memos of others*/
 	/client/proc/dsay,					/*talk in deadchat using our ckey/fakekey*/
@@ -699,12 +698,6 @@ var/list/admin_verbs_mentor = list(
 		else
 			config.log_hrefs = 1
 			to_chat(src, "<b>Started logging hrefs</b>")
-
-/client/proc/check_ai_laws()
-	set name = "Check AI Laws"
-	set category = "Admin"
-	if(admin_holder)
-		src.admin_holder.output_ai_laws()
 
 
 //---- bs12 verbs ----

@@ -33,31 +33,8 @@
 			return
 		user.set_interaction(src)
 		var/dat = "<TT><B>Intelicard</B><BR>"
-		var/laws
 		for(var/mob/living/silicon/ai/A in src)
 			dat += "Stored AI: [A.name]<br>System integrity: [(A.health+100)/2]%<br>"
-
-			for (var/law in A.laws.ion)
-				if(law)
-					laws += "[ionnum()]: [law]<BR>"
-
-			if (A.laws.zeroth)
-				laws += "0: [A.laws.zeroth]<BR>"
-
-			var/number = 1
-			for (var/index = 1, index <= A.laws.inherent.len, index++)
-				var/law = A.laws.inherent[index]
-				if (length(law) > 0)
-					laws += "[number]: [law]<BR>"
-					number++
-
-			for (var/index = 1, index <= A.laws.supplied.len, index++)
-				var/law = A.laws.supplied[index]
-				if (length(law) > 0)
-					laws += "[number]: [law]<BR>"
-					number++
-
-			dat += "Laws:<br>[laws]<br>"
 
 			if (A.stat == 2)
 				dat += "<b>AI nonfunctional</b>"

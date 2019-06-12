@@ -1440,9 +1440,6 @@
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
-	else if(href_list["adminchecklaws"])
-		output_ai_laws()
-
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"])
 		if(!ismob(M))
@@ -2052,6 +2049,20 @@
 				log_admin("[key_name(usr)] mass-rejuvenated everyone.", 1)
 				message_admins(SPAN_NOTICE("[key_name_admin(usr)] mass-rejuvenated everyone."), 1)
 				rejuv_all()
+			if("decrease_defcon")
+				feedback_inc("admin_secrets_fun_used",1)
+				feedback_add_details("admin_secrets_fun_used","DD")
+				log_admin("[key_name(usr)] decreased DEFCON level.", 1)
+				message_admins(SPAN_NOTICE("[key_name_admin(usr)] decreased DEFCON level."), 1)
+				defcon_controller.decrease_defcon_level()
+			if("give_defcon_points")
+				var/amount = input(usr, "How many points to add?") as num
+				if(amount != 0) //can add negative numbers too!
+					feedback_inc("admin_secrets_fun_used",1)
+					feedback_add_details("admin_secrets_fun_used","GDP")
+					log_admin("[key_name(usr)] added [amount] DEFCON points.", 1)
+					message_admins(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
+					objectives_controller.add_admin_points(amount)
 		if(usr)
 			log_admin("[key_name(usr)] used secret [href_list["secretsfun"]]")
 
@@ -2076,8 +2087,6 @@
 				for(var/sig in lawchanges)
 					dat += "[sig]<BR>"
 				usr << browse(dat, "window=lawchanges;size=800x500")
-			if("showailaws")
-				output_ai_laws()
 			if("showgm")
 				if(!ticker)
 					alert("The game hasn't started yet!")

@@ -271,12 +271,6 @@ var/global/datum/controller/gameticker/ticker = new()
 
 /datum/controller/gameticker/proc/declare_completion()
 	for (var/mob/living/silicon/ai/aiPlayer in mob_list)
-		if (aiPlayer.stat != 2)
-			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
-		else
-			to_world("<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws when it was deactivated were:</b>")
-		aiPlayer.show_laws(1)
-
 		if (aiPlayer.connected_robots.len)
 			var/robolist = "<b>The AI's loyal minions were:</b> "
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
@@ -296,9 +290,6 @@ var/global/datum/controller/gameticker/ticker = new()
 				to_world("<b>[robo.name] (Played by: [robo.key]) survived as an AI-less borg! Its laws were:</b>")
 			else
 				to_world("<b>[robo.name] (Played by: [robo.key]) was unable to survive the rigors of being a cyborg without an AI. Its laws were:</b>")
-
-			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
-				robo.laws.show_laws(world)
 
 	if(dronecount)
 		to_world("<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.")

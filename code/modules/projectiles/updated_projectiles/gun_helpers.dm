@@ -207,7 +207,7 @@ should be alright.
 		if(isnull(user.s_store) && isturf(loc))
 			var/obj/item/I = user.wear_suit
 			user.equip_to_slot_if_possible(src, WEAR_J_STORE)
-			if(user.s_store == src) 
+			if(user.s_store == src)
 				to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
 			user.update_inv_s_store()
 
@@ -369,7 +369,7 @@ should be alright.
 			user.temp_drop_inv_item(attachment)
 			attachment.Attach(src)
 			update_attachable(attachment.slot)
-			playsound(user, 'sound/machines/click.ogg', 15, 1, 4)
+			playsound(user, 'sound/handling/attachment_add.ogg', 15, 1, 4)
 
 /obj/item/weapon/gun/proc/update_attachables() //Updates everything. You generally don't need to use this.
 	//overlays.Cut()
@@ -670,7 +670,7 @@ should be alright.
 	SPAN_NOTICE("You strip [A] from [src]."), null, 4)
 	A.Detach(src)
 
-	playsound(src, 'sound/machines/click.ogg', 15, 1, 4)
+	playsound(src, 'sound/handling/attachment_remove.ogg', 15, 1, 4)
 	update_icon()
 
 /obj/item/weapon/gun/verb/toggle_burst()
@@ -760,7 +760,7 @@ should be alright.
 		return
 
 	to_chat(usr, SPAN_NOTICE("You toggle the safety [flags_gun_features & GUN_TRIGGER_SAFETY ? "<b>off</b>" : "<b>on</b>"]."))
-	playsound(usr, 'sound/machines/click.ogg', 15, 1)
+	playsound(usr, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
 
 

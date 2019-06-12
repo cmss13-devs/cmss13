@@ -292,6 +292,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	set category = "Object"
 	set src in oview(1)
 
+	if(isobserver(usr))
+		return
+
 	if(anchored)
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
@@ -304,6 +307,9 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	set name = "Rotate Barricade Clockwise"
 	set category = "Object"
 	set src in oview(1)
+
+	if(isobserver(usr))
+		return
 
 	if(anchored)
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
@@ -373,7 +379,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/snow/bullet_act(var/obj/item/projectile/P)
 	bullet_ping(P)
-	
+
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(50)
 
@@ -588,7 +594,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/metal/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	
+
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(50)
 
@@ -633,7 +639,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(health == maxhealth)
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
-		
+
 		if(WT.remove_fuel(0, user))
 			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
@@ -664,7 +670,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 				to_chat(user, SPAN_NOTICE("You loosen the bolts on [src]."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
-			
+
 	else if(iscrowbar(W))
 		if(build_state != BARRICADE_BSTATE_UNSECURED)
 			return
@@ -711,7 +717,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/deployable/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	
+
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(50)
 
@@ -1010,7 +1016,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/plasteel/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	
+
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(50)
 
@@ -1094,7 +1100,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 
 /obj/structure/barricade/sandbags/bullet_act(obj/item/projectile/P)
 	bullet_ping(P)
-	
+
 	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(50)
 

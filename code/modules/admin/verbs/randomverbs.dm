@@ -221,7 +221,6 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(show_log == "Yes")
 		command_announcement.Announce("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
 
-	IonStorm(0)
 	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /*

@@ -27,8 +27,10 @@
 			var/datum/mob_hud/MH = huds[hud_type]
 			if(active)
 				MH.add_hud_to(user)
+				playsound(user, 'sound/handling/hud_on.ogg', 25, 1)
 			else
 				MH.remove_hud_from(user)
+				playsound(user, 'sound/handling/hud_off.ogg', 25, 1)
 
 
 /obj/item/clothing/glasses/hud/health

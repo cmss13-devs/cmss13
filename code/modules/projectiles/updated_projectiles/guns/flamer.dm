@@ -13,9 +13,11 @@
 	w_class = 4
 	force = 15
 	fire_sound = ""
+	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
-	var/max_range = 5
+	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
 	var/lit = 0 //Turn the flamer on/off
 
 	attachable_allowed = list( //give it some flexibility.
@@ -55,7 +57,7 @@
 			return
 
 /obj/item/weapon/gun/flamer/proc/toggle_flame(mob/user)
-	playsound(user,'sound/weapons/flipblade.ogg', 25, 1)
+	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
 	lit = !lit
 
 	update_icon()
@@ -359,7 +361,7 @@
 
 	if(new_flameshape)
 		flameshape = new_flameshape
-	
+
 	if(!flame_color)
 		flame_color = "red"
 

@@ -205,13 +205,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	if(is_light_on()) //Turn it off.
 		if(user) user.SetLuminosity(-brightness_on)
 		else SetLuminosity(0)
+		playsound(src,'sound/handling/click_2.ogg', 50, 1)
 	else //Turn it on.
 		if(user) user.SetLuminosity(brightness_on)
 		else SetLuminosity(brightness_on)
 
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
-	playsound(src,'sound/machines/click.ogg', 15, 1)
+	playsound(src,'sound/handling/light_on_1.ogg', 50, 1)
 	update_icon(user)
 
 	for(var/X in actions)
@@ -897,13 +898,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	if(flags_faction_armor & ARMOR_LAMP_ON) //Turn it off.
 		if(user) user.SetLuminosity(-brightness_on)
 		else SetLuminosity(0)
+		playsound(src,'sound/handling/click_2.ogg', 50, 1)
 	else //Turn it on.
 		if(user) user.SetLuminosity(brightness_on)
 		else SetLuminosity(brightness_on)
 
 	flags_faction_armor ^= ARMOR_LAMP_ON
 
-	playsound(src,'sound/machines/click.ogg', 15, 1)
+	playsound(src,'sound/handling/light_on_1.ogg', 50, 1)
 	update_icon(user)
 
 	for(var/X in actions)

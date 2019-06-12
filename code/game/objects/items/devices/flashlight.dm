@@ -252,6 +252,7 @@
 	// All good, turn it on.
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
+		playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1) //cool guy sound
 		force = on_damage
 		heat_source = 1500
 		damtype = "fire"

@@ -17,10 +17,10 @@
 
 // Movespeed levels
 #define PAIN_SPEED_VERYSLOW  5.75
-#define PAIN_SPEED_SLOW      4.25
-#define PAIN_SPEED_MED       2.5
-#define PAIN_SPEED_LOWMED    1.5
-#define PAIN_SPEED_LOW      1.0
+#define PAIN_SPEED_SLOW      4.5
+#define PAIN_SPEED_MED       3.25
+#define PAIN_SPEED_LOWMED    2.25
+#define PAIN_SPEED_LOW       1.25
 
 // Shock gain rates - effectively, how quickly pain nasty effects apply
 #define SHOCK_GAIN_RATE_HIGH 9
@@ -48,3 +48,11 @@
 #define MOVE_REDUCTION_LIMB_DESTROYED 4.0
 #define MOVE_REDUCTION_LIMB_BROKEN    1.5
 #define MOVE_REDUCTION_LIMB_SPLINTED  0.5
+
+// Traumatic shock reduction for different reagents
+#define PAIN_REDUCTION_VERY_LIGHT	-15  //alkysine
+#define PAIN_REDUCTION_LIGHT		-20  //inaprovaline
+#define PAIN_REDUCTION_MEDIUM		-30  //synaptizine
+#define PAIN_REDUCTION_HEAVY		-40  //paracetamol
+#define PAIN_REDUCTION_VERY_HEAVY	-60  //tramadol
+#define PAIN_REDUCTION_FULL			-200 //oxycodone, neuraline

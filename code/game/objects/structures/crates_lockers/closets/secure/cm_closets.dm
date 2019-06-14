@@ -513,7 +513,31 @@
 			new /obj/item/clothing/suit/storage/snow_suit/doctor(src)
 			new /obj/item/clothing/mask/rebreather/scarf(src)
 
+/obj/structure/closet/secure_closet/hydroresearch
+	name = "Hydroponics Research Locker"
+	req_access = list(ACCESS_MARINE_RESEARCH)
+	icon_state = "secure_locked_medical_white"
+	icon_closed = "secure_unlocked_medical_white"
+	icon_locked = "secure_locked_medical_white"
+	icon_opened = "secure_open_medical_white"
+	icon_broken = "secure_closed_medical_white"
+	icon_off = "secure_closed_medical_white"
 
+/obj/structure/closet/secure_closet/hydroresearch/New()
+	..()
+	new /obj/item/reagent_container/spray/hydro(src)
+	new /obj/item/reagent_container/spray/hydro(src)
+	new /obj/item/reagent_container/spray/hydro(src)
+	new /obj/item/storage/box/botanydisk(src)
+	new /obj/item/storage/box/botanydisk(src)
+	new /obj/item/storage/bag/plants(src)
+	new /obj/item/storage/bag/plants(src)
+	new /obj/item/device/analyzer/plant_analyzer(src)
+	new /obj/item/tool/minihoe(src)
+	new /obj/item/tool/wirecutters/clippers(src)
+	new /obj/item/tool/hatchet(src)
+	new /obj/item/tool/shovel/spade(src)
+	new /obj/item/reagent_container/glass/bucket(src)
 
 //ALAMAYER CARGO CLOSET
 /obj/structure/closet/secure_closet/req_officer

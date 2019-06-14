@@ -29,7 +29,7 @@
 
 /obj/item/storage/box/botanydisk/New()
 	..()
-	for(var/i = 0;i<7;i++)
+	for(var/i = 0;i<14;i++)
 		new /obj/item/disk/botany(src)
 
 /obj/machinery/botany

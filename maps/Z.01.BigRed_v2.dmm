@@ -40482,6 +40482,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
+"odn" = (
+/obj/structure/window/framed/colony,
+/obj/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Dormitories";
+	name = "\improper Dormitories Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/general_offices)
 "oea" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -73094,9 +73103,9 @@ ata
 ata
 ata
 auX
-anJ
-anJ
-anJ
+odn
+odn
+odn
 anI
 avL
 avL

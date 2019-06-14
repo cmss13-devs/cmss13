@@ -93,7 +93,7 @@ proc/populate_seed_list()
 	var/lifespan = 0                // Time before the plant dies.
 	var/maturation = 0              // Time taken before the plant is mature.
 	var/production = 0              // Time before harvesting can be undertaken again.
-	var/growth_stages = 6           // Number of stages the plant passes through before it is mature.
+	var/growth_stages = 10          // Number of stages the plant passes through before it is mature.
 	var/harvest_repeat = 0          // If 1, this plant will fruit repeatedly..
 	var/potency = 1                 // General purpose plant strength value.
 	var/spread = 0                  // 0 limits plant to tray, 1 = creepers, 2 = vines.
@@ -785,7 +785,7 @@ proc/populate_seed_list()
 	production = 6
 	yield = 4
 	potency = 10
-	growth_stages = 5
+	growth_stages = 8
 
 /datum/seed/nettle/death
 	name = "deathnettle"
@@ -823,7 +823,7 @@ proc/populate_seed_list()
 	seed_name = "blood tomato"
 	display_name = "blood tomato plant"
 	products = list(/obj/item/reagent_container/food/snacks/grown/bloodtomato)
-	mutants = list("killer")
+	mutants = list("bluetomato")
 	packet_icon = "seed-bloodtomato"
 	plant_icon = "bloodtomato"
 	chems = list("nutriment" = list(1,10), "blood" = list(1,5))
@@ -840,14 +840,14 @@ proc/populate_seed_list()
 	plant_icon = "killertomato"
 
 	yield = 2
-	growth_stages = 2
+	growth_stages = 4
 
 /datum/seed/tomato/blue
 	name = "bluetomato"
 	seed_name = "blue tomato"
 	display_name = "blue tomato plant"
 	products = list(/obj/item/reagent_container/food/snacks/grown/bluetomato)
-	mutants = list("bluespacetomato")
+	mutants = list("bloodtomato")
 	packet_icon = "seed-bluetomato"
 	plant_icon = "bluetomato"
 	chems = list("nutriment" = list(1,20))
@@ -976,7 +976,7 @@ proc/populate_seed_list()
 	production = 1
 	yield = 5
 	potency = 1
-	growth_stages = 3
+	growth_stages = 7
 
 /datum/seed/mushroom/mold
 	name = "mold"
@@ -996,7 +996,7 @@ proc/populate_seed_list()
 	seed_name = "plump helmet"
 	display_name = "plump helmet mushrooms"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet)
-	mutants = list("walkingmushroom","towercap")
+	mutants = list("towercap")
 	packet_icon = "mycelium-plump"
 	plant_icon = "plump"
 	chems = list("nutriment" = list(2,10))
@@ -1011,7 +1011,7 @@ proc/populate_seed_list()
 	seed_name = "reishi"
 	display_name = "reishi"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/reishi)
-	mutants = list("libertycap","glowshroom")
+	mutants = list("libertycap")
 	packet_icon = "mycelium-reishi"
 	plant_icon = "reishi"
 	chems = list("nutriment" = list(1,50), "psilocybin" = list(3,5))
@@ -1020,7 +1020,7 @@ proc/populate_seed_list()
 	production = 5
 	yield = 4
 	potency = 15
-	growth_stages = 4
+	growth_stages = 6
 
 /datum/seed/mushroom/hallucinogenic/strong
 	name = "libertycap"
@@ -1035,14 +1035,14 @@ proc/populate_seed_list()
 	lifespan = 25
 	production = 1
 	potency = 15
-	growth_stages = 3
+	growth_stages = 6
 
 /datum/seed/mushroom/poison
 	name = "amanita"
 	seed_name = "fly amanita"
 	display_name = "fly amanita mushrooms"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/amanita)
-	mutants = list("destroyingangel","plastic")
+	mutants = list("destroyingangel")
 	packet_icon = "mycelium-amanita"
 	plant_icon = "amanita"
 	chems = list("nutriment" = list(1), "amatoxin" = list(3,3), "psilocybin" = list(1,25))
@@ -1093,7 +1093,7 @@ proc/populate_seed_list()
 	maturation = 15
 	yield = 3
 	potency = 30
-	growth_stages = 4
+	growth_stages = 7
 	biolum = 1
 	biolum_colour = "#006622"
 
@@ -1111,7 +1111,7 @@ proc/populate_seed_list()
 	maturation = 5
 	yield = 1
 	potency = 0
-	growth_stages = 3
+	growth_stages = 6
 
 /datum/seed/mushroom/plastic
 	name = "plastic"
@@ -1143,7 +1143,7 @@ proc/populate_seed_list()
 	maturation = 7
 	production = 1
 	yield = 2
-	growth_stages = 4
+	growth_stages = 6
 
 /datum/seed/flower/poppy
 	name = "poppies"
@@ -1159,7 +1159,7 @@ proc/populate_seed_list()
 	maturation = 8
 	production = 6
 	yield = 6
-	growth_stages = 3
+	growth_stages = 6
 
 /datum/seed/flower/sunflower
 	name = "sunflowers"
@@ -1171,7 +1171,7 @@ proc/populate_seed_list()
 
 	lifespan = 25
 	maturation = 6
-	growth_stages = 3
+	growth_stages = 8
 
 //Grapes/varieties
 /datum/seed/grapes
@@ -1233,7 +1233,7 @@ proc/populate_seed_list()
 	production = 5
 	yield = 4
 	potency = 10
-	growth_stages = 1
+	growth_stages = 6
 
 /datum/seed/shand
 	name = "shand"
@@ -1249,7 +1249,7 @@ proc/populate_seed_list()
 	production = 5
 	yield = 4
 	potency = 10
-	growth_stages = 3
+	growth_stages = 6
 
 /datum/seed/mtear
 	name = "mtear"
@@ -1265,7 +1265,7 @@ proc/populate_seed_list()
 	production = 5
 	yield = 4
 	potency = 10
-	growth_stages = 3
+	growth_stages = 6
 
 /datum/seed/banana
 	name = "banana"
@@ -1296,7 +1296,6 @@ proc/populate_seed_list()
 	production = 6
 	yield = 3
 	potency = 20
-	growth_stages = 3
 
 /datum/seed/potato
 	name = "potato"
@@ -1312,7 +1311,7 @@ proc/populate_seed_list()
 	production = 1
 	yield = 4
 	potency = 10
-	growth_stages = 4
+	growth_stages = 8
 
 /datum/seed/soybean
 	name = "soybean"
@@ -1375,7 +1374,7 @@ proc/populate_seed_list()
 	production = 1
 	yield = 5
 	potency = 10
-	growth_stages = 3
+	growth_stages = 7
 
 /datum/seed/weeds
 	name = "weeds"
@@ -1389,7 +1388,7 @@ proc/populate_seed_list()
 	production = 1
 	yield = -1
 	potency = -1
-	growth_stages = 4
+	growth_stages = 6
 	immutable = -1
 
 /datum/seed/whitebeets
@@ -1422,7 +1421,7 @@ proc/populate_seed_list()
 	production = 6
 	yield = 4
 	potency = 10
-	growth_stages = 3
+	growth_stages = 6
 
 /datum/seed/watermelon
 	name = "watermelon"
@@ -1455,7 +1454,6 @@ proc/populate_seed_list()
 	production = 6
 	yield = 3
 	potency = 10
-	growth_stages = 3
 
 /datum/seed/lime
 	name = "lime"
@@ -1518,7 +1516,7 @@ proc/populate_seed_list()
 	maturation = 2
 	production = 5
 	yield = 5
-	growth_stages = 2
+	growth_stages = 4
 
 /datum/seed/cocoa
 	name = "cocoa"
@@ -1535,7 +1533,7 @@ proc/populate_seed_list()
 	production = 5
 	yield = 2
 	potency = 10
-	growth_stages = 5
+	growth_stages = 8
 
 /datum/seed/cherries
 	name = "cherry"
@@ -1548,12 +1546,12 @@ proc/populate_seed_list()
 	harvest_repeat = 1
 	chems = list("nutriment" = list(1,15), "sugar" = list(1,15))
 
-	lifespan = 35
+	lifespan = 50
 	maturation = 5
 	production = 5
 	yield = 3
 	potency = 10
-	growth_stages = 5
+	growth_stages = 14
 
 /datum/seed/kudzu
 	name = "kudzu"
@@ -1570,7 +1568,7 @@ proc/populate_seed_list()
 	production = 6
 	yield = 4
 	potency = 10
-	growth_stages = 4
+	growth_stages = 5
 	spread = 2
 
 /datum/seed/test

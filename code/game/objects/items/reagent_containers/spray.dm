@@ -75,6 +75,8 @@
 			D.reagents.reaction(get_turf(D))
 			for(var/atom/T in get_turf(D))
 				D.reagents.reaction(T)
+				if(istype(T,/obj/machinery/portable_atmospherics/hydroponics) || istype(T, /obj/item/reagent_container/glass))
+					reagents.trans_to(T)
 
 				// When spraying against the wall, also react with the wall, but
 				// not its contents. BS12
@@ -230,3 +232,13 @@
 /obj/item/reagent_container/spray/plantbgone/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
 	..()
+
+//ammonia spray
+/obj/item/reagent_container/spray/hydro
+	name = "hydroponics spray"
+	desc = "A spray used in hydroponics initially containing ammonia."
+	icon_state = "hydrospray"
+
+/obj/item/reagent_container/spray/hydro/New()
+	..()
+	reagents.add_reagent("ammonia", src.volume)

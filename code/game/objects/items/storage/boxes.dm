@@ -538,7 +538,7 @@
 
 /obj/item/storage/box/m94
 	name = "\improper M94 marking flare pack"
-	desc = "A packet of five M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
+	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
 	icon_state = "m94"
 	w_class = 3
 	storage_slots = 8
@@ -561,7 +561,7 @@
 
 /obj/item/storage/box/m94/signal
 	name = "\improper M89-S signal flare pack"
-	desc = "A packet of five M89-S Signal Marking Flares."
+	desc = "A packet of eight M89-S Signal Marking Flares."
 	icon_state = "m89"
 	w_class = 3
 	max_storage_space = 10
@@ -570,6 +570,9 @@
 /obj/item/storage/box/m94/signal/New()
 	..()
 	contents = list()
+	new /obj/item/device/flashlight/flare/signal(src)
+	new /obj/item/device/flashlight/flare/signal(src)
+	new /obj/item/device/flashlight/flare/signal(src)
 	new /obj/item/device/flashlight/flare/signal(src)
 	new /obj/item/device/flashlight/flare/signal(src)
 	new /obj/item/device/flashlight/flare/signal(src)

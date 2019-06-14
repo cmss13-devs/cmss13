@@ -1,0 +1,53 @@
+################################
+# Example Changelog File
+#
+# Note: This file, and files beginning with ".", and files that don't end in ".yml" will not be read. If you change this file, you will look really dumb.
+#
+# Your changelog will be merged with a master changelog. (New stuff added only, and only on the date entry for the day it was merged.)
+# When it is, any changes listed below will disappear.
+#
+# Valid Prefixes: 
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+#################################
+
+# Your name.  
+author: TobiNerd
+
+# Optional: Remove this file after generating master changelog.  Useful for PR changelogs that won't get used again.
+delete-after: True
+
+# Any changes you've made.  See valid prefix list above.
+# INDENT WITH TWO SPACES.  NOT TABS.  SPACES.
+# SCREW THIS UP AND IT WON'T WORK.
+# Also, all entries are changed into a single [] after a master changelog generation. Just remove the brackets when you add new entries.
+# Please surround your changes in  double quotes ("), as certain characters otherwise screws up compiling. The quotes will not show up in the changelog.
+changes: 
+  - bugfix: "Fixed shutters on Big Red and Almayer research being the wrong orientation."
+  - bugfix: "Fixed the M94 marking flare packs not containing 8 signal flares. #6797"
+  - spellcheck: "Fixed the description of flare packs having the wrong count of flares. #6816"
+  - bugfix: "Fixed the seed vendor not showing the name of seed packets."
+  - experiment: "Research now has a hydroponics laboratory. This will be the starting point for a series of research updates."
+  - experiment: "NOTE Much of the hydroponics system is due to change as the old system is adapted into today's CM. It currently doesn't serve much purpose, but this will let you practice for the future."
+  - rscadd: "Added a Hydroponics Research Locker that contains the necessary items, including three spray bottles of ammonia. (That you can empty and fill with better mixes)."
+  - rscadd: "Added a disk and a seed cabinet to store disks and seed packets. Thank Cakey for making the cabinets smarter to allow this."
+  - rscadd: "Added Dinitroaniline, a herbicide and pesticide mixture for use in hydroponics. Can be made by reacting ammonia, nitrogen and sulfuric acid."
+  - tweak: "Flora disk boxes now contain 14 disks instead of 7."
+  - tweak: "Harmful plants will no longer randomly appear in hydroponics trays."
+  - tweak: "Hydroponics trays now have a flush function, you can use this to reset the tray."
+  - tweak: "Tweaked how reagents react with hydroponics."
+  - tweak: "Different chemicals can be added to hydroponics trays. They can act as nutrient, toxin, anti-toxin, weedkiller, pestkiller, mutator or as a yield modifier."
+  - tweak: "Buffed nutrient values of ammonia and diethylamine."
+  - tweak: "Sprays can now add reagents to glass containers and hydroponics trays. Make your own custom weedkiller or plant nutrient spray!"
+  - tweak: "Plants now go through more stages of growth, meaning that it will take longer time to grow plants than usual."
+  - tweak: "Plants can no longer mutate into killer tomatoes, bluespace tomatoes, walking mushrooms, glowshrooms and plasticshrooms."

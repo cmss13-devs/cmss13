@@ -405,6 +405,11 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical/hydroponics
+	name = "\improper Medical Research hydroponics"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"

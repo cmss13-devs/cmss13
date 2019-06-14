@@ -510,6 +510,13 @@
 	required_reagents = list("ammonia" = 1, "water" = 1)
 	result_amount = 2
 
+/datum/chemical_reaction/dinitroaniline
+	name = "Dinitroaniline"
+	id = "dinitroaniline"
+	result = "dinitroaniline"
+	required_reagents = list("ammonia" = 1, "sacid" = 1, "nitrogen" = 1)
+	result_amount = 3
+
 /datum/chemical_reaction/plantbgone
 	name = "Plant-B-Gone"
 	id = "plantbgone"

@@ -215,7 +215,7 @@
 
 /datum/reagent/drink/souto/grape
 	name = "Grape Souto"
-	id = "souto_cherry"
+	id = "souto_grape"
 	description = "A grape flavored soda that's canned in Havanna"
 	color = "#421C52"
 

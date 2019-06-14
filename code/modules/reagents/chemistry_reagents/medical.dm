@@ -708,16 +708,18 @@
 	M.reagent_shock_modifier += PAIN_REDUCTION_MEDIUM // half of tramadol
 
 /datum/reagent/adrenaline/on_overdose(mob/living/M)
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-	if(E)
-		E.damage += 0.25
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
+		if(E)
+			E.damage += 0.25
 
 /datum/reagent/adrenaline/on_overdose_critical(mob/living/M, alien)
-	var/mob/living/carbon/human/H = M
-	var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
-	if(E)
-		E.damage += 1
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/datum/internal_organ/heart/E = H.internal_organs_by_name["heart"]
+		if(E)
+			E.damage += 1
 		
 /datum/reagent/hyperzine
 	name = "Hyperzine"

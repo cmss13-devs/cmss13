@@ -144,7 +144,7 @@
 
 /obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target)
 	set waitfor = 0
-	if(user.client)
+	if(user && user.client)
 
 		if(!blip_pool[target])
 			blip_pool[target] = new /obj/effect/detector_blip

@@ -47,43 +47,51 @@
 	// with cycle information under 'mechanical concerns' at some point.
 	var/global/list/toxic_reagents = list(
 		"anti_toxin" =     -2,
-		"toxin" =           2,
-		"fluorine" =        2.5,
+		"arithrazine" =    -1.5,
+		"carbon" =         -1,
+		"silicon" =        -0.5,
 		"chlorine" =        1.5,
 		"sacid" =           1.5,
+		"fuel" =            2,
+		"toxin" =           2,
+		"radium" =          2,
+		"dinitroaniline" =  2,
+		"mutagen" =         2.5,
+		"fluorine" =        2.5,
 		"pacid" =           3,
 		"plantbgone" =      3,
-		"cryoxadone" =     -3,
-		"radium" =          2
+		"chlorine trifluoride" = 8
 		)
 	var/global/list/nutrient_reagents = list(
 		"milk" =            0.1,
-		"beer" =            0.25,
 		"phosphorus" =      0.1,
 		"sugar" =           0.1,
 		"sodawater" =       0.1,
-		"ammonia" =         1,
-		"diethylamine" =    2,
+		"beer" =            0.25,
 		"nutriment" =       1,
 		"adminordrazine" =  1,
 		"eznutrient" =      1,
 		"robustharvest" =   1,
-		"left4zed" =        1
+		"left4zed" =        1,
+		"ammonia" =         2,
+		"diethylamine" =    3
 		)
 	var/global/list/weedkiller_reagents = list(
+		"plantbgone" =     -8,
+		"dinitroaniline" = -6,
+		"adminordrazine" = -5,
+		"pacid" =          -4,
 		"fluorine" =       -4,
 		"chlorine" =       -3,
-		"phosphorus" =     -2,
-		"sugar" =           2,
 		"sacid" =          -2,
-		"pacid" =          -4,
-		"plantbgone" =     -8,
-		"adminordrazine" = -5
+		"phosphorus" =     -2,
+		"sugar" =           2
 		)
 	var/global/list/pestkiller_reagents = list(
-		"sugar" =           2,
+		"adminordrazine" = -5,
+		"dinitroaniline" = -3,
 		"diethylamine" =   -2,
-		"adminordrazine" = -5
+		"sugar" =           2
 		)
 	var/global/list/water_reagents = list(
 		"water" =           1,
@@ -107,9 +115,9 @@
 		"sacid" =          list( -1,    0,   0   ),
 		"pacid" =          list( -2,    0,   0   ),
 		"plantbgone" =     list( -2,    0,   0.2 ),
-		"cryoxadone" =     list(  3,    0,   0   ),
+		"dinitroaniline" = list( -0.5,  0,   0.1 ),
 		"ammonia" =        list(  0.5,  0,   0   ),
-		"diethylamine" =   list(  1,    0,   0   ),
+		"diethylamine" =   list(  2,    0,   0   ),
 		"nutriment" =      list(  0.5,  0.1,   0 ),
 		"radium" =         list( -1.5,  0,   0.2 ),
 		"adminordrazine" = list(  1,    1,   1   ),
@@ -120,6 +128,9 @@
 	// Mutagen list specifies minimum value for the mutation to take place, rather
 	// than a bound as the lists above specify.
 	var/global/list/mutagenic_reagents = list(
+		"ryetalyn" =  -8,
+		"arithrazine" = -6,
+		"hyronalin" = -4,
 		"radium" =  8,
 		"mutagen" = 15
 		)
@@ -448,7 +459,7 @@
 
 	//Remove the seed if something is already planted.
 	if(seed) seed = null
-	seed = seed_types[pick(list("reishi","nettles","amanita","mushrooms","plumphelmet","towercap","harebells","weeds"))]
+	seed = seed_types[pick(list("mushrooms","plumphelmet","harebells","poppies","grass","weeds"))]
 	if(!seed) return //Weed does not exist, someone fucked up.
 
 	dead = 0
@@ -526,7 +537,7 @@
 	if (O.is_open_container())
 		return 0
 
-	if(istype(O, /obj/item/tool/wirecutters) || istype(O, /obj/item/tool/surgery/scalpel))
+	if(istype(O, /obj/item/tool/wirecutters) || istype(O, /obj/item/tool/surgery/scalpel) || istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/weapon/combat_knife))
 
 		if(!seed)
 			to_chat(user, "There is nothing to take a sample from in \the [src].")
@@ -703,6 +714,34 @@
 
 	closed_system = !closed_system
 	to_chat(usr, "You [closed_system ? "close" : "open"] the tray's lid.")
+	update_icon()
+
+/obj/machinery/portable_atmospherics/hydroponics/verb/flush() //used to reset the tray
+	set name = "Flush Tray"
+	set category = "Object"
+	set src in view(1)
+
+	if(!usr || usr.stat || usr.is_mob_restrained())
+		return
+	if (alert(usr, "Are you sure you want to flush the hydroponics tray?", "Flush tray:", "Yes", "No") != "Yes")
+		return
+
+	seed = null
+	dead = 0
+	sampled = 0
+	age = 0
+	harvest = 0
+	toxins = 0
+	yield_mod = 0
+	mutation_mod = 0
+	waterlevel = 100
+	nutrilevel = 0
+	pestlevel = 0
+	weedlevel = 0
+	mutation_level = 0
+
+	to_chat(usr, "You flush away everything in the tray.")
+	check_level_sanity()
 	update_icon()
 
 /obj/machinery/portable_atmospherics/hydroponics/soil

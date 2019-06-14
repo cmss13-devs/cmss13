@@ -114,15 +114,12 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/damage_cap = 500 // Airlock gets destroyed
 
 /obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
-	if(!issilicon(usr))
+	if(istype(user) && !issilicon(user))
 		if(src.isElectrified())
-			if(!src.justzap)
-				if(src.shock(user, 100))
-					src.justzap = 1
-					spawn (openspeed)
-						src.justzap = 0
-					return
-			else /*if(src.justzap)*/
+			if(!src.justzap && src.shock(user, 100))
+				src.justzap = 1
+				spawn (openspeed)
+					src.justzap = 0
 				return
 		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
 			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))

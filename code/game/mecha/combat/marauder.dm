@@ -93,7 +93,7 @@
 			src.occupant_message("Unable to move while connected to the air system port")
 			last_message = world.time
 		return 0
-	if(!thrusters && src.pr_inertial_movement.active())
+	if(!thrusters && src.pr_inertial_movement && src.pr_inertial_movement.active())
 		return 0
 	if(state || !has_charge(step_energy_drain))
 		return 0

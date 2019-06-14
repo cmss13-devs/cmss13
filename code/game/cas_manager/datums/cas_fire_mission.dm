@@ -114,7 +114,7 @@
 	return "Unknown Error"
 
 /datum/cas_fire_mission/proc/execute_firemission(obj/machinery/computer/dropship_weapons/linked_console, turf/initial_turf, direction = NORTH, steps = 12, step_delay = 3, datum/cas_fire_envelope/envelope = null)
-	if(check(linked_console) != FIRE_MISSION_ALL_GOOD)
+	if(initial_turf == null || check(linked_console) != FIRE_MISSION_ALL_GOOD)
 		return -1
 	var/turf/current_turf = initial_turf
 	var/tally_step = steps / mission_length //how much shots we need before moving to next turf
@@ -147,6 +147,8 @@
 			if(item.offsets.len < step || item.offsets[step] == null || item.offsets[step]=="-")
 				continue
 			var/offset = item.offsets[step]
+			if (current_turf == null)
+				return -1
 			var/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			if(shootloc && get_area(shootloc).ceiling<CEILING_DEEP_UNDERGROUND)
 				item.weapon.open_fire_firemission(shootloc)

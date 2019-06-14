@@ -12,6 +12,9 @@
 
 	..()
 
+	if(undefibbable && stat == DEAD)
+		return
+
 	blinded = null
 	fire_alert = 0 //Reset this here, because both breathe() and handle_environment() have a chance to set it.
 

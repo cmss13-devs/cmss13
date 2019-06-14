@@ -248,7 +248,7 @@
 /obj/machinery/vending/marine/cargo_guns/squad
 	name = "\improper ColMarTech automated armaments squad vendor"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LEADER,ACCESS_MARINE_SPECPREP)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 
 /obj/machinery/vending/marine/cargo_guns/squad/populate_product_list(var/scale)
 	product_records = list()
@@ -256,8 +256,6 @@
 	products = list(
 		/obj/item/storage/backpack/marine = round(scale * 15),
 		/obj/item/storage/backpack/marine/engineerpack = round(scale * 2),
-		/obj/item/storage/belt/marine = round(scale * 15),
-		/obj/item/storage/belt/shotgun = round(scale * 10),
 		/obj/item/clothing/tie/storage/webbing = round(scale * 3),
 		/obj/item/clothing/tie/storage/brown_vest = round(scale * 2),
 		/obj/item/storage/belt/gun/m4a3 = round(scale * 10),
@@ -278,28 +276,19 @@
 		/obj/item/storage/pouch/firstaid/full = round(scale * 5),
 		/obj/item/storage/pouch/pistol = round(scale * 15),
 		/obj/item/storage/pouch/magazine/pistol/large = round(scale * 3),
-		/obj/item/weapon/gun/pistol/m4a3 = round(scale * 10),
 		/obj/item/weapon/gun/pistol/m1911 = round(scale * 3),
 		/obj/item/weapon/gun/pistol/smart = round(scale * 3),
-		/obj/item/weapon/gun/revolver/m44 = round(scale * 5),
-		/obj/item/weapon/gun/smg/m39 = round(scale * 10),
-		/obj/item/weapon/gun/rifle/m41a = round(scale * 10),
-		/obj/item/weapon/gun/rifle/l42mk1 = round(scale * 10),
-		/obj/item/weapon/gun/shotgun/pump = round(scale * 10),
 		/obj/item/explosive/mine = round(scale * 1),
-		/obj/item/storage/box/nade_box = round(scale * 1),
-		/obj/item/storage/box/nade_box/frag = round(scale * 1),
 		/obj/item/explosive/grenade/HE/m15 = round(scale * 2),
 		/obj/item/explosive/grenade/incendiary = round(scale * 1),
 		/obj/item/explosive/grenade/smokebomb = round(scale * 2),
-		/obj/item/storage/box/m94 = round(scale * 10),
 		/obj/item/storage/box/m94/signal = round(scale * 1),
 		/obj/item/device/flashlight/combat = round(scale * 5),
-		/obj/item/clothing/mask/gas = round(scale * 10),
 		/obj/item/storage/box/kit/mini_jtac = round(scale * 1),
 		/obj/item/storage/box/kit/heavy_support = round(scale * 1),
 		/obj/item/storage/box/kit/mini_intel = round(scale * 1),
 		/obj/item/storage/box/kit/pursuit = round(scale * 1),
+		/obj/item/storage/box/kit/mou53_sapper = round(scale / 3),
 		/obj/item/folding_barricade = round(scale * 2),
 		/obj/item/tool/shovel/etool = round(scale * 2)
 	)
@@ -421,14 +410,13 @@
 /obj/machinery/vending/marine/cargo_ammo/squad
 	name = "\improper ColMarTech automated munition squad vendor"
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LEADER,ACCESS_MARINE_SPECPREP)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 
 /obj/machinery/vending/marine/cargo_ammo/squad/populate_product_list(var/scale)
 	product_records = list()
 
 	products = list(
 		/obj/item/storage/large_holster/machete/full = round(scale * 5),
-		/obj/item/ammo_magazine/pistol = round(scale * 10),
 		/obj/item/ammo_magazine/pistol/ap = round(scale * 3),
 		/obj/item/ammo_magazine/pistol/extended = round(scale * 5),
 		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 4),
@@ -436,30 +424,13 @@
 		/obj/item/ammo_magazine/revolver = round(scale * 10),
 		/obj/item/ammo_magazine/revolver/marksman = round(scale * 3),
 		/obj/item/ammo_magazine/revolver/heavy = round(scale * 5),
-		/obj/item/magazine_box/smg = round(scale * 20 / 12),
-		/obj/item/ammo_magazine/smg/m39 = round(scale * 20) % 12,
-		/obj/item/magazine_box/smg/ap = round(scale * 5 / 12),
 		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
 		/obj/item/ammo_magazine/smg/m39/le = round(scale * 2) % 12, 
-		/obj/item/magazine_box/smg/extended = round(scale * 10 / 10),
 		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
-		/obj/item/magazine_box = round(scale * 15 / 10),
-		/obj/item/ammo_magazine/rifle = round(scale * 15) % 10,
-		/obj/item/magazine_box/rifle_extended = round(scale * 10 / 8),
 		/obj/item/ammo_magazine/rifle/extended = round(scale * 5) % 8,
+		/obj/item/ammo_magazine/rifle/ap = round(scale * 5) % 10,
 		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
 		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 2),
-		/obj/item/magazine_box/rifle_ap = round(scale * 5 / 10),
-		/obj/item/ammo_magazine/rifle/ap = round(scale * 5) % 10,
-		/obj/item/magazine_box/rifle/l42mk1 = round(scale * 5) % 10,
-		/obj/item/magazine_box/rifle/l42mk1/ap = round(scale * 1),
-		/obj/item/magazine_box/rifle/l42mk1/ext = round(scale * 1),
-		/obj/item/magazine_box/shotgun = round(scale * 7 / 3),
-		/obj/item/ammo_magazine/shotgun = round(scale * 7) % 3,
-		/obj/item/magazine_box/shotgun/buckshot = round(scale * 5 / 3),
-		/obj/item/ammo_magazine/shotgun/buckshot = round(scale * 5) % 3,
-		/obj/item/magazine_box/shotgun/flechette = round(scale * 3 / 12),
-		/obj/item/ammo_magazine/shotgun/flechette = round(scale * 3) % 12,
 		/obj/item/smartgun_powerpack = round(scale * 1),
 		/obj/item/ammo_magazine/flamer_tank = round(scale * 1)
 	)
@@ -800,7 +771,7 @@
 	name = "\improper Armat Systems Squad Attachments Vendor"
 	desc = "An attachment vendor made specifically for squads. Can be opened by Squad Leaders."
 	req_access = list()
-	req_one_access = list(ACCESS_MARINE_LEADER,ACCESS_MARINE_SPECPREP)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	var/vend_dir = NORTH
 
 	products = list()

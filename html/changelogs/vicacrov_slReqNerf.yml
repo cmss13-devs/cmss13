@@ -1,0 +1,11 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "Requisition Officers now have access to squad requisitions."
+  - rscadd: "Added the MOU53 kit to the squad requisition equipment vendor. It is very rare."
+  - maptweak: "Removed some barricades from squad requisitions to give more breathing room."
+  - maptweak: "Moved the next button in squad requisitions."
+  - rscdel: "Removed some redundant stuff from squad requisitions that can be found in squad preps, like M39s or buckshot shells."
+  - rscdel: "Removed the grenade and ammo boxes from squad requisitions."

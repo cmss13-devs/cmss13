@@ -19029,6 +19029,13 @@
 	icon_state = "intact-scrubbers";
 	dir = 6
 	},
+/obj/machinery/line_nexter_control{
+	anchored = 1;
+	id = "linea";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_one_access = list(12,13)
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha/req)
 "aNC" = (
@@ -19038,7 +19045,7 @@
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(15);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -19049,13 +19056,6 @@
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
-	},
-/obj/machinery/line_nexter_control{
-	anchored = 1;
-	id = "linea";
-	pixel_x = 0;
-	pixel_y = 42;
-	req_one_access = list(12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha/req)
@@ -19104,7 +19104,6 @@
 	icon_state = "intact-scrubbers";
 	dir = 10
 	},
-/obj/structure/barricade/metal,
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTH)";
 	icon_state = "red";
@@ -29152,7 +29151,7 @@
 	dir = 4;
 	name = "\improper Alpha Squad Leader Entrance";
 	req_access = list(15);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha/req)
@@ -30479,6 +30478,13 @@
 	icon_state = "intact-scrubbers";
 	dir = 6
 	},
+/obj/machinery/line_nexter_control{
+	anchored = 1;
+	id = "lineb";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_one_access = list(12,13)
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo/req)
 "blz" = (
@@ -30488,7 +30494,7 @@
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(16);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -30499,13 +30505,6 @@
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
-	},
-/obj/machinery/line_nexter_control{
-	anchored = 1;
-	id = "lineb";
-	pixel_x = 0;
-	pixel_y = 42;
-	req_one_access = list(12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo/req)
@@ -43183,6 +43182,13 @@
 	icon_state = "intact-scrubbers";
 	dir = 6
 	},
+/obj/machinery/line_nexter_control{
+	anchored = 1;
+	id = "linec";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_one_access = list(12,13)
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
 "bMo" = (
@@ -43197,19 +43203,12 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/obj/machinery/line_nexter_control{
-	anchored = 1;
-	id = "linec";
-	pixel_x = 0;
-	pixel_y = 42;
-	req_one_access = list(12,13)
-	},
 /obj/machinery/door/window/westright{
 	dir = 4;
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(17);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
@@ -43233,7 +43232,6 @@
 	icon_state = "intact-scrubbers";
 	dir = 10
 	},
-/obj/structure/barricade/metal,
 /turf/open/floor/almayer{
 	tag = "icon-emerald (NORTH)";
 	icon_state = "emerald";
@@ -53309,15 +53307,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
-"cgn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/barricade/metal{
-	icon_state = "metal_0";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/charlie/req)
 "cgo" = (
 /turf/open/floor/almayer{
 	tag = "icon-emerald (EAST)";
@@ -54567,7 +54556,7 @@
 	dir = 4;
 	name = "\improper Charlie Squad Leader Entrance";
 	req_access = list(17);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie/req)
@@ -54894,6 +54883,13 @@
 	icon_state = "intact-scrubbers";
 	dir = 6
 	},
+/obj/machinery/line_nexter_control{
+	anchored = 1;
+	id = "lined";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_one_access = list(12,13)
+	},
 /turf/open/floor/almayer,
 /area/almayer/squads/delta/req)
 "ckb" = (
@@ -54903,7 +54899,7 @@
 	health = 1e+006;
 	name = "Ultra-Reinforced Glass Door";
 	req_access = list(18);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -54914,13 +54910,6 @@
 	tag = "icon-intact-scrubbers (EAST)";
 	icon_state = "intact-scrubbers";
 	dir = 4
-	},
-/obj/machinery/line_nexter_control{
-	anchored = 1;
-	id = "lined";
-	pixel_x = 0;
-	pixel_y = 42;
-	req_one_access = list(12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/delta/req)
@@ -56842,7 +56831,7 @@
 	dir = 4;
 	name = "\improper Delta Squad Leader Entrance";
 	req_access = list(18);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/delta/req)
@@ -57390,15 +57379,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_umbilical)
-"cYX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/barricade/metal{
-	icon_state = "metal_0";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/alpha/req)
 "cZY" = (
 /obj/effect/decal/warning_stripes{
 	tag = "icon-S";
@@ -58970,15 +58950,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/command/cic)
-"fIa" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/barricade/metal{
-	icon_state = "metal_0";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/delta/req)
 "fKo" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -60155,7 +60126,7 @@
 /obj/machinery/door/airlock/almayer/marine/charlie{
 	name = "\improper Charlie Squad Requisitions";
 	req_access = list(17);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -60294,7 +60265,7 @@
 /obj/machinery/door/airlock/almayer/marine/charlie{
 	name = "\improper Charlie Squad Requisitions";
 	req_access = list(17);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -60771,7 +60742,6 @@
 	icon_state = "intact-scrubbers";
 	dir = 10
 	},
-/obj/structure/barricade/metal,
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTH)";
 	icon_state = "orange";
@@ -60970,7 +60940,7 @@
 /obj/machinery/door/airlock/almayer/marine/delta{
 	name = "\improper Delta Squad Requisitions";
 	req_access = list(18);
-	req_one_access = list(2,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -63417,7 +63387,7 @@
 /obj/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper Alpha Squad Requisitions";
 	req_access = list(15);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -63616,7 +63586,7 @@
 	dir = 4;
 	name = "\improper Bravo Squad Leader Entrance";
 	req_access = list(16);
-	req_one_access = list(3,12,13)
+	req_one_access = list(2,3,12,13)
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/bravo/req)
@@ -64812,7 +64782,7 @@
 /obj/machinery/door/airlock/almayer/marine/bravo{
 	name = "\improper Bravo Squad Requisitions";
 	req_access = list(16);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -64873,7 +64843,6 @@
 	icon_state = "intact-scrubbers";
 	dir = 10
 	},
-/obj/structure/barricade/metal,
 /turf/open/floor/almayer{
 	tag = "icon-blue (NORTH)";
 	icon_state = "blue";
@@ -67966,7 +67935,7 @@
 /obj/machinery/door/airlock/almayer/marine/bravo{
 	name = "\improper Bravo Squad Requisitions";
 	req_access = list(16);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -68330,7 +68299,7 @@
 /obj/machinery/door/airlock/almayer/marine/alpha{
 	name = "\improper Alpha Squad Requisitions";
 	req_access = list(15);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -68639,7 +68608,7 @@
 /obj/machinery/door/airlock/almayer/marine/delta{
 	name = "\improper Delta Squad Requisitions";
 	req_access = list(18);
-	req_one_access = list(3,9)
+	req_one_access = list(2,3,9)
 	},
 /obj/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer,
@@ -68693,15 +68662,6 @@
 /obj/item/tool/soap,
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
-"vCO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/barricade/metal{
-	icon_state = "metal_0";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/bravo/req)
 "vEI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -108003,14 +107963,14 @@ jJs
 aLB
 aNx
 aNF
-cYX
-cYX
+pbA
+pbA
 pbA
 nTz
 aNx
 iSU
-vCO
-vCO
+xwl
+xwl
 xwl
 qPb
 iwK
@@ -108045,14 +108005,14 @@ bIf
 buH
 bKR
 bMq
-cgn
-cgn
+sxR
+sxR
 sxR
 mRD
 bKR
 pNU
-fIa
-fIa
+wIH
+wIH
 wIH
 siB
 cWO

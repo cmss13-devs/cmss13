@@ -174,7 +174,7 @@ MILITARY NONCOMBATANT
 	name = "Pilot Officer"
 	pilot = SKILL_PILOT_TRAINED
 	powerloader = SKILL_POWERLOADER_TRAINED
-	leadership = SKILL_LEAD_NOVICE
+	leadership = SKILL_LEAD_TRAINED
 	medical = SKILL_MEDICAL_MEDIC
 
 /datum/skills/MP

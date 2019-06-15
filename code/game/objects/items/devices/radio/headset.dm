@@ -333,18 +333,18 @@
 
 /obj/item/device/radio/headset/almayer/intel
 	name = "marine intel radio headset"
-	desc = "Used by Intelligence Officers.. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :z - intelligence"
+	desc = "Used by Intelligence Officers.. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :z - intelligence"
 	keyslot1 = new /obj/item/device/encryptionkey/po
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"
-	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence"
 	icon_state = "wy_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/mcom
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine commanding officer headset"
-	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC"
+	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :q - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :z - intelligence"
 	icon_state = "mco_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/cmpcom/cdrcom
 

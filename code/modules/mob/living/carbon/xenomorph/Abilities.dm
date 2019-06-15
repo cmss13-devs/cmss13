@@ -1080,7 +1080,7 @@
 			if(target.health < target.maxHealth)
 				if(X.check_plasma(plasma_cost))
 					X.use_plasma(plasma_cost)
-					target.adjustBruteLoss(-200)
+					target.gain_health(200)
 					X.queen_ability_cooldown = world.time + 150 //15 seconds
 					to_chat(X, SPAN_XENONOTICE("You channel your plasma to heal [target]'s wounds."))
 			else

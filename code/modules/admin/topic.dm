@@ -2290,7 +2290,7 @@
 			to_chat(usr, "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>")
 			return
 
-		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law","Whitelist Player", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "D: Joining disabled", "M: Macros", "C: Changelog")
+		var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law","Whitelist Player", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "J: Job bans", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "M: Macros", "C: Changelog")
 
 		var/msgplayer
 		switch(choice)
@@ -2320,6 +2320,8 @@
 				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member.</b>")
 			if("R: Radios")
 				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Radios have been changed, the prefix for all squad marines is now ; to access your squad radio. Squad Medics have access to the medical channel using :m, Engineers have :e and the (acting) Squad Leader has :v for command.  Examine your radio headset to get a listing of the channels you have access to.</b>")
+			if("B: Binoculars")
+				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. To use your binoculars, take them into your hand and activate them by using Z (Hotkey Mode). Ctrl + Click on any open tile to set a laser. To switch between the lasers, Right Click the Binoculars in hand and press toggle mode or Alt + Click them. The Red laser is a CAS marker for pilots to fire upon, it must be held for the Pilot to drop ordinance on it. The green laser is a coordinate marker that will give you a longitude and a latitude to give to your Staff Officer and Requisitions Staff. They will give you access to a devastating Orbital Bombardment or to drop supplies for you and your squad. Your squad engineers can also use the coordinates to drop mortar shells on top of your enemies.</b>")
 			if("D: Joining disabled")
 				msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. A staff member has disabled joining for new players as the current round is coming to an end, you can observe while it ends and wait for a new round to start.</b>")
 			if("M: Macros")

@@ -25,7 +25,7 @@
 
 /obj/item/device/binoculars/tactical
 	name = "tactical binoculars"
-	desc = "A pair of binoculars, with a laser targeting function. Ctrl+Click to target something."
+	desc = "A pair of binoculars, with a laser targeting function. Ctrl+Click to target something. Alt + Click to switch modes."
 	var/laser_cooldown = 0
 	var/cooldown_duration = 200 //20 seconds
 	var/obj/effect/overlay/temp/laser_target/laser
@@ -33,6 +33,15 @@
 	var/target_acquisition_delay = 100 //10 seconds
 	var/mode = 0 //Able to be switched between modes, 0 for cas laser, 1 for finding coordinates.
 	var/changable = 1 //If set to 0, you can't toggle the mode between CAS and coordinate finding
+
+/obj/item/device/binoculars/tactical/clicked(mob/user, list/mods)
+	if (isobserver(user) || isXeno(user)) return
+
+	if (mods["alt"])
+		toggle_bino_mode(user)
+		return 1
+
+	return ..()
 
 /obj/item/device/binoculars/tactical/New()
 	..()
@@ -77,11 +86,12 @@
 /obj/item/device/binoculars/tactical/verb/toggle_mode()
 	set category = "Object"
 	set name = "Toggle Laser Mode"
-	var/mob/living/user
-	if(isliving(loc))
-		user = loc
-	else
+
+	if(isobserver(usr) || isXeno(usr))
 		return
+	toggle_bino_mode(usr)
+
+/obj/item/device/binoculars/tactical/proc/toggle_bino_mode(mob/user)
 
 	if(!changable)
 		to_chat(user, "These binoculars only have one mode.")
@@ -161,7 +171,7 @@
 
 /obj/item/device/binoculars/tactical/scout
 	name = "scout tactical binoculars"
-	desc = "A modified version of tactical binoculars with an advanced laser targeting function. Ctrl+Click to target something."
+	desc = "A modified version of tactical binoculars with an advanced laser targeting function. Ctrl+Click to target something. Alt + Click to switch modes."
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 

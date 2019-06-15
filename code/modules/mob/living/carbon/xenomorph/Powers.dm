@@ -1182,27 +1182,27 @@
 	if (!check_plasma(60))
 		to_chat(src, SPAN_XENOWARNING("You don't have enough plasma! You need [60-src.plasma_stored] more.</span>"))
 		return
-	
+
 	visible_message(SPAN_XENOWARNING("[src] lashes out with its sycthe-like claws!"), SPAN_XENOWARNING("You unleash a flurry of slashes around you!"))
 
 	spin_circle()
 
 	var/sweep_range = 1
-	var/list/L = orange(sweep_range)	
-	// Spook patrol 
-	src.emote("roar")	
+	var/list/L = orange(sweep_range)
+	// Spook patrol
+	src.emote("roar")
 
 	for (var/mob/living/carbon/human/H in L)
 		if(H != H.handle_barriers(src)) continue
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, src, sweep_range, 3)
-		
-		// MOST of the time, hit our target zone. 
+
+		// MOST of the time, hit our target zone.
 		var/target_zone = ran_zone("chest", 75)
 		var/armor = H.getarmor(target_zone, ARMOR_MELEE)
 		var/damage = armor_damage_reduction(config.marine_melee, rand(rCaste.melee_damage_lower, rCaste.melee_damage_upper)+rCaste.spin_damage_offset, armor, 10)
-		
+
 		H.apply_damage(damage, BRUTE, target_zone)
 		shake_camera(H, 2, 1)
 		H.KnockDown(2, 1)
@@ -1251,6 +1251,7 @@
 		return
 
 	to_chat(src, SPAN_NOTICE("You start focusing your plasma towards [target]."))
+	to_chat(target, SPAN_NOTICE("You feel that [src] starts transferring some of their plasma to you."))
 	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 
@@ -1294,7 +1295,8 @@
 		return
 
 	to_chat(src, SPAN_NOTICE("You start transfering some of your health towards [target]."))
-	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 10))
+	to_chat(target, SPAN_NOTICE("You feel that [src] starts transferring some of their health to you."))
+	if(!do_after(src, transfer_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL, numticks = 10))
 		return
 
 	if(!check_state())

@@ -135,9 +135,19 @@
 		A.update_button_icon()
 
 /mob/living/carbon/Xenomorph/proc/gain_health(value)
-	if(bruteloss == 0) return
-	if(bruteloss < value) value = bruteloss
-	bruteloss -= value
+	if(bruteloss == 0 && fireloss == 0)
+		return
+
+	if(bruteloss < value)
+		value -= bruteloss
+		bruteloss = 0
+		if(fireloss < value)
+			fireloss = 0
+		else
+			fireloss -= value
+	else
+		bruteloss -= value
+
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()

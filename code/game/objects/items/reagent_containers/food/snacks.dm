@@ -296,6 +296,7 @@
 	icon_state = "candy"
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
+	w_class = 1
 
 	New()
 		..()

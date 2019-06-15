@@ -421,7 +421,8 @@
 /area/almayer/evacuation/pod8)
 "aba" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock SU-3"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod8)
@@ -438,13 +439,15 @@
 	},
 /area/almayer/evacuation/pod7)
 "abd" = (
-/obj/machinery/door/airlock/evacuation,
+/obj/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock SU-2"
+	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod7)
 "abe" = (
 /obj/machinery/door/airlock/almayer/secure{
 	dir = 4;
-	name = "\improper Evacuation Airlock";
+	name = "\improper Evacuation Airlock SU-2";
 	req_access = list()
 	},
 /turf/open/floor/plating,
@@ -1232,7 +1235,8 @@
 /area/almayer/evacuation/pod10)
 "acS" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-5"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod6)
@@ -1615,7 +1619,9 @@
 	},
 /area/almayer/evacuation/pod6)
 "adM" = (
-/obj/machinery/door/airlock/evacuation,
+/obj/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock SU-1"
+	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod10)
 "adN" = (
@@ -16775,6 +16781,14 @@
 	icon_state = "blue"
 	},
 /area/almayer/hallways/aft_hallway)
+"aIr" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-3";
+	req_access = list()
+	},
+/turf/open/floor/almayer,
+/area/almayer/powered)
 "aIs" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -17628,7 +17642,9 @@
 	},
 /area/almayer/evacuation/pod1)
 "aKt" = (
-/obj/machinery/door/airlock/evacuation,
+/obj/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock PU-2"
+	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod1)
 "aKu" = (
@@ -18100,7 +18116,7 @@
 "aLC" = (
 /obj/machinery/door/airlock/almayer/secure{
 	dir = 2;
-	name = "\improper Evacuation Airlock";
+	name = "\improper Evacuation Airlock SU-3";
 	req_access = list()
 	},
 /turf/open/floor/plating,
@@ -46791,7 +46807,7 @@
 "bTq" = (
 /obj/machinery/door/airlock/almayer/secure{
 	dir = 4;
-	name = "\improper Evacuation Airlock";
+	name = "\improper Evacuation Airlock PL-3";
 	req_access = list()
 	},
 /turf/open/floor/almayer,
@@ -48184,7 +48200,8 @@
 /area/almayer/evacuation/pod9)
 "bWh" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock SU-4"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod9)
@@ -50782,7 +50799,9 @@
 	},
 /area/almayer/hull/lower_hull)
 "cbp" = (
-/obj/machinery/door/airlock/evacuation,
+/obj/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock PU-1"
+	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod4)
 "cbq" = (
@@ -50996,7 +51015,9 @@
 	},
 /area/almayer/evacuation/pod6)
 "cbM" = (
-/obj/machinery/door/airlock/evacuation,
+/obj/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock CL-1"
+	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod13)
 "cbN" = (
@@ -51279,7 +51300,8 @@
 /area/almayer/evacuation/pod5)
 "cci" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-6"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod5)
@@ -52584,7 +52606,8 @@
 /area/almayer/evacuation/pod2)
 "ceD" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-3"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod2)
@@ -54326,7 +54349,8 @@
 /area/almayer/evacuation/pod3)
 "cix" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-4"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod3)
@@ -55099,6 +55123,13 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = -28;
+	pixel_y = 0
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
 "ckJ" = (
@@ -55945,7 +55976,8 @@
 /area/almayer/evacuation/pod14)
 "cmC" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock SL-1"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod14)
@@ -56109,7 +56141,9 @@
 	},
 /area/almayer/evacuation/pod16)
 "cmT" = (
-/obj/machinery/door/airlock/evacuation,
+/obj/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock PL-3"
+	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod16)
 "cmU" = (
@@ -56159,7 +56193,8 @@
 /area/almayer/evacuation/pod15)
 "cnd" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock PL-1"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod15)
@@ -57323,6 +57358,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/chief_mp_office)
+"cVh" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	tag = "icon-green";
+	icon_state = "green";
+	dir = 2
+	},
+/area/almayer/hallways/starboard_hallway)
 "cVX" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -60336,6 +60385,13 @@
 /obj/machinery/vending/hydroseeds{
 	req_access = list(14)
 	},
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 28;
+	pixel_y = 0
+	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (EAST)";
 	icon_state = "sterile_green_corner";
@@ -60726,6 +60782,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"iRy" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock SL-2";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "iSU" = (
 /obj/machinery/light{
 	tag = "icon-tube1 (NORTH)";
@@ -60926,6 +60990,14 @@
 	icon_state = "bluecorner"
 	},
 /area/almayer/hallways/port_hallway)
+"jfZ" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 4;
+	name = "\improper Evacuation Airlock PU-2";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "jgl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -61399,7 +61471,8 @@
 /area/almayer/shipboard/brig)
 "jUx" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock SL-2"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod17)
@@ -61610,6 +61683,14 @@
 	dir = 8
 	},
 /area/almayer/shipboard/brig_cells)
+"kqK" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock PL-1";
+	req_access = list()
+	},
+/turf/open/floor/almayer,
+/area/almayer/powered)
 "krq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -61876,6 +61957,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig_cells)
+"kQQ" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = -28;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/medical/morgue)
 "kRd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -62041,6 +62135,14 @@
 	icon_state = "kitchen"
 	},
 /area/almayer/living/grunt_rnr)
+"ljf" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock PL-2";
+	req_access = list()
+	},
+/turf/open/floor/almayer,
+/area/almayer/powered)
 "lmi" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
@@ -62252,6 +62354,24 @@
 	dir = 9
 	},
 /area/almayer/shipboard/brig_cells)
+"lCz" = (
+/obj/effect/decal/warning_stripes{
+	tag = "icon-S";
+	icon_state = "S"
+	},
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer{
+	tag = "icon-red (NORTH)";
+	icon_state = "red";
+	dir = 1
+	},
+/area/almayer/hallways/aft_hallway)
 "lDD" = (
 /turf/open/floor/almayer{
 	tag = "icon-red (NORTHWEST)";
@@ -63442,6 +63562,14 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/hydroponics)
+"nuY" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-6";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "nvM" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
@@ -63683,6 +63811,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/port_hallway)
+"nLg" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock SL-1";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "nLN" = (
 /obj/machinery/light,
 /turf/open/floor/almayer{
@@ -63705,6 +63841,14 @@
 	dir = 1
 	},
 /area/almayer/hallways/port_hallway)
+"nNX" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 4;
+	name = "\improper Evacuation Airlock PU-1";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "nNZ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -63811,6 +63955,14 @@
 /obj/item/bedsheet/blue,
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
+"nYh" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-4";
+	req_access = list()
+	},
+/turf/open/floor/almayer,
+/area/almayer/powered)
 "nYr" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -65176,7 +65328,7 @@
 	},
 /area/almayer/medical/lower_medical)
 "qnN" = (
-/obj/structure/largecrate/random/case/small,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer{
 	tag = "icon-bluecorner (NORTH)";
 	icon_state = "cargo";
@@ -65267,6 +65419,14 @@
 	dir = 9
 	},
 /area/almayer/medical/hydroponics)
+"qtS" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock SU-4";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "quv" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -67153,6 +67313,20 @@
 	dir = 6
 	},
 /area/almayer/squads/bravo/req)
+"ttM" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	tag = "icon-green (NORTH)";
+	icon_state = "green";
+	dir = 1
+	},
+/area/almayer/hallways/port_hallway)
 "tuM" = (
 /obj/structure/window/framed/almayer,
 /obj/machinery/door/firedoor/border_only/almayer,
@@ -67887,6 +68061,14 @@
 	icon_state = "emerald"
 	},
 /area/almayer/squads/charlie/req)
+"uux" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 4;
+	name = "\improper Evacuation Airlock SU-1";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "uuW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -68390,7 +68572,8 @@
 /area/almayer/shipboard/brig_cells)
 "vfo" = (
 /obj/machinery/door/airlock/evacuation{
-	dir = 2
+	dir = 2;
+	name = "\improper Evacuation Airlock PL-2"
 	},
 /turf/open/floor/plating,
 /area/almayer/evacuation/pod18)
@@ -69644,6 +69827,14 @@
 	icon_state = "wall10"
 	},
 /area/almayer/evacuation/pod17)
+"xfh" = (
+/obj/machinery/door/airlock/almayer/secure{
+	dir = 2;
+	name = "\improper Evacuation Airlock PU-5";
+	req_access = list()
+	},
+/turf/open/floor/plating,
+/area/almayer/powered)
 "xfJ" = (
 /turf/open/floor/almayer,
 /area/almayer/living/port_emb)
@@ -70265,6 +70456,20 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"yjb" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer{
+	tag = "icon-sterile_green_side (NORTH)";
+	icon_state = "sterile_green_side";
+	dir = 1
+	},
+/area/almayer/medical/morgue)
 "yll" = (
 /obj/machinery/door/poddoor/shutters/almayer{
 	density = 0;
@@ -96723,7 +96928,7 @@ awh
 arb
 aoq
 aoq
-aoq
+kQQ
 aoq
 aoq
 aor
@@ -98347,7 +98552,7 @@ arc
 arb
 aoq
 aoe
-aBd
+yjb
 aEN
 aGX
 aoe
@@ -106651,7 +106856,7 @@ aau
 aau
 aau
 aau
-abe
+uux
 aau
 aau
 aej
@@ -106687,13 +106892,13 @@ aau
 aau
 aau
 aau
-abe
+nNX
 aau
 aau
 aau
 aau
 aau
-abe
+jfZ
 aau
 aau
 aar
@@ -107550,7 +107755,7 @@ sMN
 vzn
 mKQ
 jUx
-aLC
+iRy
 aLG
 pUO
 jJs
@@ -107614,7 +107819,7 @@ bGb
 pJJ
 irU
 buH
-bWd
+ljf
 vfo
 jIY
 fjB
@@ -107756,7 +107961,7 @@ xLO
 aLB
 enx
 pUO
-jJs
+cVh
 aLB
 aNx
 aNE
@@ -107814,7 +108019,7 @@ gll
 lpt
 cWO
 bGb
-pJJ
+ttM
 irU
 wcN
 bGb
@@ -108110,10 +108315,10 @@ abW
 acw
 cbs
 cci
-aLC
+nuY
 abx
 abx
-bWd
+aIr
 ceD
 ceH
 aKp
@@ -108678,7 +108883,7 @@ aar
 aar
 aJW
 acG
-caF
+lCz
 aau
 aar
 aar
@@ -108721,7 +108926,7 @@ aar
 aar
 cec
 acG
-caF
+lCz
 aau
 aar
 aar
@@ -108768,7 +108973,7 @@ cms
 cmv
 cmy
 cmC
-aLC
+nLg
 aLG
 bbM
 oBq
@@ -108832,7 +109037,7 @@ feC
 sPJ
 eMz
 buH
-bWd
+kqK
 cnd
 cni
 cnl
@@ -109285,7 +109490,7 @@ bWg
 bWz
 acb
 bWh
-aLC
+qtS
 abx
 abx
 bWd
@@ -109328,10 +109533,10 @@ aca
 acB
 cbJ
 acS
-aLC
+xfh
 abx
 abx
-bWd
+nYh
 cix
 ciB
 aIJ

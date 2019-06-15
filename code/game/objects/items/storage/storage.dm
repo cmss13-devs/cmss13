@@ -510,8 +510,6 @@
 	else
 		to_chat(usr, "Clicking [src] with an empty hand now opens the pouch storage menu.")
 
-
-
 /obj/item/storage/proc/quick_empty()
 
 	if((!ishuman(usr) && loc != usr) || usr.is_mob_restrained())
@@ -521,6 +519,53 @@
 	hide_from(usr)
 	for(var/obj/item/I in contents)
 		remove_from_storage(I, T)
+
+/obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
+	if(istype(M,/obj/item/ammo_magazine/shotgun)) //for inserting handfuls of shotgun shells
+		var/obj/item/ammo_magazine/shotgun/B = M
+		var/handfuls = round(B.current_rounds / 5,1) //The number of handfuls, we round up because we still want the last one that isn't full
+		if(B.current_rounds != 0)
+			if(contents.len < storage_slots)
+				to_chat(user, SPAN_NOTICE("You start refilling [src] with [B]."))
+				if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				for(var/i = 1 to handfuls)
+					if(contents.len < storage_slots)
+						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
+						//All this because shell types are instances and not their own objects
+						var/R
+						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+						var/MR = B.caliber == "12g" ? 5 : 8
+						R = 5 ? min(B.current_rounds, 5) : min(B.current_rounds, MR)
+						new_handful.generate_handful(B.default_ammo, B.caliber, MR, R, B.gun_type)
+						B.current_rounds -= R
+						handle_item_insertion(new_handful,1,user)
+						update_icon(-R)
+					else
+						break
+				playsound(user.loc, "rustle", 15, 1, 6)
+				B.update_icon()
+			else
+				to_chat(user, SPAN_WARNING("[src] is full."))
+		else
+			to_chat(user, SPAN_WARNING("[B] is empty."))
+
+	else if(istype(M,/obj/item/storage)) //for transfering from storage containers
+		if(M.contents.len)
+			if(contents.len < storage_slots)
+				to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
+				if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				for(var/obj/item/I in M)
+					if(contents.len < storage_slots)
+						M.remove_from_storage(I)
+						handle_item_insertion(I, 1, user) //quiet insertion
+					else
+						break
+				playsound(user.loc, "rustle", 15, 1, 6)
+			else
+				to_chat(user, SPAN_WARNING("[src] is full."))
+		else
+			to_chat(user, SPAN_WARNING("[M] is empty."))
+	return TRUE
 
 /obj/item/storage/New()
 	..()

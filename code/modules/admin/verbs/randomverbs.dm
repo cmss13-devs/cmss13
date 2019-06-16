@@ -1004,9 +1004,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 
 /client/proc/check_round_statistics()
-	set category = "Special Verbs"
+	set category = "Debug"
 	set name = "Round Statistics"
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_ADMIN|R_DEBUG))	return
 
 	debug_variables(round_statistics)
 

@@ -1,0 +1,149 @@
+"aa" = (/turf/closed/wall/r_wall/unmeltable,/area/bigredv2/outside/e)
+"ab" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor,/area/bigredv2/outside/hydroponics)
+"ac" = (/obj/structure/bed/chair{dir = 4},/turf/open/floor{tag = "icon-yellowfull"; icon_state = "yellowfull"},/area/bigredv2/outside/hydroponics)
+"ad" = (/obj/structure/table,/obj/item/trash/plate,/turf/open/floor,/area/bigredv2/outside/hydroponics)
+"ae" = (/obj/structure/table,/turf/open/floor{tag = "icon-yellowfull"; icon_state = "yellowfull"},/area/bigredv2/outside/hydroponics)
+"af" = (/obj/structure/bed/chair{dir = 8},/turf/open/floor,/area/bigredv2/outside/hydroponics)
+"ag" = (/turf/closed/wall,/area/bigredv2/outside/library)
+"ah" = (/obj/machinery/camera/autoname{dir = 4},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ai" = (/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"aj" = (/obj/machinery/light,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"ak" = (/obj/machinery/atmospherics/pipe/simple/hidden/green,/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"al" = (/turf/open/mars,/area/bigredv2/outside/e)
+"am" = (/turf/open/mars{tag = "icon-mars_dirt_13"; icon_state = "mars_dirt_13"},/area/bigredv2/outside/e)
+"an" = (/turf/open/mars_cave{tag = "icon-mars_dirt_4"; icon_state = "mars_dirt_4"},/area/bigredv2/outside/e)
+"ao" = (/obj/effect/decal/cleanable/blood{dir = 4; icon_state = "gib6"; tag = "icon-gib6"},/turf/open/mars_cave{tag = "icon-mars_cave_10"; icon_state = "mars_cave_10"},/area/bigredv2/outside/e)
+"ap" = (/turf/closed/wall/rock/red,/area/bigredv2/caves)
+"aq" = (/turf/open/mars_cave{tag = "icon-mars_cave_6"; icon_state = "mars_cave_6"},/area/bigredv2/caves_lambda)
+"ar" = (/turf/open/mars_cave{tag = "icon-mars_cave_2"; icon_state = "mars_cave_2"},/area/bigredv2/caves_lambda)
+"as" = (/turf/open/floor{tag = "icon-yellowfull"; icon_state = "yellowfull"},/area/bigredv2/outside/hydroponics)
+"at" = (/turf/open/floor,/area/bigredv2/outside/hydroponics)
+"au" = (/obj/structure/bed/chair{dir = 1},/turf/open/floor{tag = "icon-yellowfull"; icon_state = "yellowfull"},/area/bigredv2/outside/hydroponics)
+"av" = (/obj/structure/bed/chair{dir = 1},/turf/open/floor,/area/bigredv2/outside/hydroponics)
+"aw" = (/obj/machinery/light,/obj/machinery/door_control{id = "Kitchen"; name = "Storm Shutters"; pixel_x = 32; pixel_y = 0; unacidable = 1},/turf/open/floor{tag = "icon-yellowfull"; icon_state = "yellowfull"},/area/bigredv2/outside/hydroponics)
+"ax" = (/obj/structure/window/framed/colony,/obj/machinery/door/poddoor/shutters/almayer{id = "Library"; name = "\improper Library Shutters"},/turf/open/floor/plating,/area/bigredv2/outside/library)
+"ay" = (/obj/machinery/atmospherics/pipe/simple/hidden/green,/obj/machinery/door/airlock/multi_tile/almayer/generic{dir = 4; name = "\improper Library"},/turf/open/floor{icon_state = "wood"},/area/bigredv2/outside/library)
+"az" = (/obj/item/tool/pickaxe,/turf/open/mars_cave{tag = "icon-mars_cave_18"; icon_state = "mars_cave_18"},/area/bigredv2/outside/e)
+"aA" = (/obj/effect/decal/remains/human,/turf/open/mars_cave{tag = "icon-mars_cave_5"; icon_state = "mars_cave_5"},/area/bigredv2/outside/e)
+"aB" = (/turf/closed/wall/rock/orange,/area/bigredv2/caves)
+"aC" = (/obj/effect/landmark{name = "crap_item"},/obj/effect/alien/weeds/node,/turf/open/mars_cave{tag = "icon-mars_cave_6"; icon_state = "mars_cave_6"},/area/bigredv2/caves_lambda)
+"aD" = (/turf/closed/wall,/area/bigredv2/outside/hydroponics)
+"aE" = (/obj/structure/window/framed/colony,/obj/machinery/door/poddoor/shutters/almayer{id = "Kitchen"; name = "\improper Kitchen Shutters"},/turf/open/floor/plating,/area/bigredv2/outside/hydroponics)
+"aF" = (/obj/machinery/atmospherics/pipe/simple/hidden/green,/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/e)
+"aG" = (/turf/open/floor{tag = "icon-asteroidwarning (EAST)"; icon_state = "asteroidwarning"; dir = 4},/area/bigredv2/outside/e)
+"aH" = (/turf/open/mars{tag = "icon-mars_dirt_10"; icon_state = "mars_dirt_10"},/area/bigredv2/outside/e)
+"aI" = (/turf/open/floor{tag = "icon-asteroidwarning (NORTHWEST)"; icon_state = "asteroidwarning"; dir = 9},/area/bigredv2/outside/e)
+"aJ" = (/obj/effect/decal/cleanable/blood{dir = 4; icon_state = "gib6"; tag = "icon-gib6"},/turf/open/mars_cave{tag = "icon-mars_cave_8"; icon_state = "mars_cave_8"},/area/bigredv2/outside/e)
+"aK" = (/turf/open/mars_cave{tag = "icon-mars_cave_8"; icon_state = "mars_cave_8"},/area/bigredv2/outside/e)
+"aL" = (/turf/open/mars_cave{tag = "icon-mars_cave_8"; icon_state = "mars_cave_8"},/area/bigredv2/caves_lambda)
+"aM" = (/turf/closed/wall/r_wall,/area/bigredv2/outside/e)
+"aN" = (/turf/open/mars_cave{tag = "icon-mars_cave_5"; icon_state = "mars_cave_5"},/area/bigredv2/caves_lambda)
+"aO" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"aP" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 10},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"aQ" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"aR" = (/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"aS" = (/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"aT" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"aU" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/green,/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"aV" = (/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/e)
+"aW" = (/obj/structure/barricade/wooden{icon_state = "wooden"; dir = 8},/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"aX" = (/obj/item/tool/pickaxe,/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"aY" = (/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/caves_lambda)
+"aZ" = (/obj/effect/decal/remains/human,/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"ba" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"bb" = (/obj/machinery/light,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidfloor (NORTH)"; icon_state = "asteroidfloor"; dir = 1},/area/bigredv2/outside/e)
+"bc" = (/obj/effect/decal/cleanable/dirt,/turf/closed/wall/rock/orange,/area/bigredv2/caves)
+"bd" = (/obj/effect/decal/cleanable/blood/gibs/limb,/turf/open/mars_cave{tag = "icon-mars_dirt_4"; icon_state = "mars_dirt_4"},/area/bigredv2/outside/e)
+"be" = (/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 5},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor{tag = "icon-asteroidwarning (SOUTHWEST)"; icon_state = "asteroidwarning"; dir = 10},/area/bigredv2/outside/e)
+"bf" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/effect/decal/cleanable/dirt,/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bg" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/manifold/hidden/green,/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bh" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bi" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/manifold/hidden/green{dir = 1},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bj" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/effect/decal/cleanable/dirt,/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/e)
+"bk" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/barricade/wooden{icon_state = "wooden"; dir = 8},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bl" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bm" = (/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bn" = (/obj/item/tool/pickaxe,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"bo" = (/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/caves_lambda)
+"bp" = (/obj/machinery/light,/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/outside/e)
+"br" = (/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/closed/wall/rock/orange,/area/bigredv2/caves)
+"bs" = (/turf/open/mars{tag = "icon-mars_dirt_8"; icon_state = "mars_dirt_8"},/area/bigredv2/outside/e)
+"bt" = (/turf/open/mars{tag = "icon-mars_dirt_3"; icon_state = "mars_dirt_3"},/area/bigredv2/outside/e)
+"bu" = (/obj/machinery/atmospherics/pipe/simple/hidden/green,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/e)
+"bv" = (/turf/open/floor{tag = "icon-asteroidwarning (SOUTHWEST)"; icon_state = "asteroidwarning"; dir = 10},/area/bigredv2/outside/e)
+"bw" = (/turf/open/mars{tag = "icon-mars_dirt_12"; icon_state = "mars_dirt_12"},/area/bigredv2/outside/e)
+"bx" = (/obj/effect/landmark{name = "hunter_secondary"},/turf/open/mars,/area/bigredv2/outside/e)
+"by" = (/turf/open/mars{tag = "icon-mars_dirt_11"; icon_state = "mars_dirt_11"},/area/bigredv2/outside/e)
+"bz" = (/obj/machinery/atmospherics/pipe/simple/hidden/green,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/effect/landmark{name = "crap_item"},/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/e)
+"bA" = (/turf/open/mars{tag = "icon-mars_dirt_14"; icon_state = "mars_dirt_14"},/area/bigredv2/outside/e)
+"bB" = (/turf/open/mars_cave{tag = "icon-mars_dirt_6"; icon_state = "mars_dirt_6"},/area/bigredv2/outside/e)
+"bC" = (/turf/open/mars_cave{tag = "icon-mars_dirt_5"; icon_state = "mars_dirt_5"},/area/bigredv2/outside/e)
+"bD" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"; tag = "90Curve"},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 5},/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"bE" = (/obj/effect/decal/cleanable/dirt,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"bF" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 4; layer = 2.4},/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"bG" = (/obj/effect/decal/cleanable/dirt,/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/machinery/atmospherics/pipe/simple/hidden/green{dir = 10},/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/outside/e)
+"bH" = (/turf/open/mars_cave{tag = "icon-mars_cave_10"; icon_state = "mars_cave_10"},/area/bigredv2/caves_east)
+"bI" = (/turf/open/mars_cave{tag = "icon-mars_cave_7"; icon_state = "mars_cave_7"},/area/bigredv2/caves_east)
+"bJ" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/e)
+"bK" = (/turf/open/space,/area/space)
+"bO" = (/turf/open/mars_cave{tag = "icon-mars_cave_2"; icon_state = "mars_cave_2"},/area/bigredv2/caves_east)
+"bP" = (/obj/effect/landmark{name = "crap_item"},/turf/open/mars,/area/bigredv2/outside/e)
+"cf" = (/turf/open/mars_cave{tag = "icon-mars_cave_23"; icon_state = "mars_cave_23"},/area/bigredv2/caves_east)
+"cm" = (/turf/open/mars_cave{tag = "icon-mars_cave_6"; icon_state = "mars_cave_6"},/area/bigredv2/caves_east)
+"cn" = (/turf/open/mars_cave,/area/bigredv2/caves_east)
+"cy" = (/obj/effect/alien/weeds/node,/turf/open/mars_cave{tag = "icon-mars_cave_2"; icon_state = "mars_cave_2"},/area/bigredv2/caves_east)
+"cB" = (/turf/open/mars_cave{tag = "icon-mars_cave_5"; icon_state = "mars_cave_5"},/area/bigredv2/caves_east)
+"cH" = (/turf/open/mars,/area/bigredv2/outside/se)
+"cI" = (/obj/effect/decal/cleanable/blood{tag = "icon-gib6"; icon_state = "gib6"},/turf/open/mars,/area/bigredv2/outside/se)
+"cJ" = (/obj/structure/barricade/wooden{icon_state = "wooden"; dir = 8},/turf/open/mars,/area/bigredv2/outside/se)
+"cK" = (/obj/effect/decal/cleanable/blood{dir = 4; icon_state = "gib6"; tag = "icon-gib6"},/turf/open/mars,/area/bigredv2/outside/se)
+"cL" = (/turf/open/mars{tag = "icon-mars_dirt_13"; icon_state = "mars_dirt_13"},/area/bigredv2/outside/se)
+"cM" = (/turf/open/mars{tag = "icon-mars_dirt_10"; icon_state = "mars_dirt_10"},/area/bigredv2/outside/se)
+"cN" = (/turf/open/mars{tag = "icon-mars_dirt_14"; icon_state = "mars_dirt_14"},/area/bigredv2/outside/se)
+"cO" = (/turf/open/mars{tag = "icon-mars_dirt_8"; icon_state = "mars_dirt_8"},/area/bigredv2/outside/se)
+"cP" = (/turf/open/mars{tag = "icon-mars_dirt_3"; icon_state = "mars_dirt_3"},/area/bigredv2/outside/se)
+"cQ" = (/turf/open/mars_cave{tag = "icon-mars_dirt_4"; icon_state = "mars_dirt_4"},/area/bigredv2/outside/se)
+"cR" = (/turf/closed/wall/rock/red,/area/bigredv2/outside/se)
+"cS" = (/turf/open/mars{tag = "icon-mars_dirt_11"; icon_state = "mars_dirt_11"},/area/bigredv2/outside/se)
+"cT" = (/turf/open/mars{tag = "icon-mars_dirt_12"; icon_state = "mars_dirt_12"},/area/bigredv2/outside/se)
+"cU" = (/turf/open/mars_cave{tag = "icon-mars_cave_18"; icon_state = "mars_cave_18"},/area/bigredv2/caves_east)
+"cV" = (/turf/closed/wall/r_wall/unmeltable,/area/bigredv2/outside/se)
+"cW" = (/obj/effect/decal/remains/human,/turf/open/mars_cave{tag = "icon-mars_cave_2"; icon_state = "mars_cave_2"},/area/bigredv2/caves_east)
+"cX" = (/obj/machinery/light{dir = 1},/turf/open/mars{tag = "icon-mars_dirt_10"; icon_state = "mars_dirt_10"},/area/bigredv2/outside/se)
+"cY" = (/turf/open/floor{tag = "icon-asteroidwarning (NORTHWEST)"; icon_state = "asteroidwarning"; dir = 9},/area/bigredv2/outside/se)
+"cZ" = (/turf/open/floor{tag = "icon-asteroidwarning (NORTH)"; icon_state = "asteroidwarning"; dir = 1},/area/bigredv2/caves_east)
+"da" = (/turf/open/floor{tag = "icon-asteroidwarning (WEST)"; icon_state = "asteroidwarning"; dir = 8},/area/bigredv2/outside/se)
+"db" = (/turf/open/floor{tag = "icon-asteroidwarning"; icon_state = "asteroidwarning"},/area/bigredv2/caves_east)
+"dc" = (/obj/effect/landmark{name = "crap_item"},/turf/open/mars,/area/bigredv2/outside/se)
+"dd" = (/turf/open/floor{tag = "icon-asteroidwarning (SOUTHWEST)"; icon_state = "asteroidwarning"; dir = 10},/area/bigredv2/outside/se)
+
+(1,1,1) = {"
+abacadaeafagahaiaiajakaiajaiaiagalalamanaaapapapapapapapapapapaqar
+asatauavawagagaxaxagayaiagaxaxagalamananaaaoazapapapapaBapapapaCar
+aDaEaEaEaDagananananaFaGananananaHanaIaaaaaaaAaJaKaKaMaBaLaLaLaNaN
+aOaOaPaQaQaRaSaSaSaTaUaQaSaSaSaTaTaSaVaWaRaSaTaXaZbcaBaBaBaBaBaYaY
+anbdbeaObfbfaObfbfbfbgbhbibfbfbfbfbfbjbabbbkblbmbmbnbpbrbrbrbobobo
+bsbtbtbtbtbtbtbtananananbuaGanbtbtanbvaaaaaaapapaKaJaMapapapapapaL
+alalalalalalalalbsbtbtanbuaGbwalalbsanananaaapapapapapapapapapapap
+alalalalalalbxalalalalbybzaGbwalalalbyananaaapapapapapapapapapapap
+alalalalalalalalalalalbybuaGanbAalalbyananbBbBapapapapapapapapapap
+alalalalalalalalalalamanbuaGananaHaHananbCbCbBapapapapapapapapapap
+alalalalalaIaSaSaSaSaSaSbDbEbFbFbFbFbEbEbGaSaSaSapapapapapapbHbIbI
+alalalalalbJbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapbHbIbObObO
+alalbPalalaVbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapbHbObObObObO
+alalalalalbJbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapcfbObObObObO
+alalalalalbJbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapcmbObObOcn
+alalalalalbJbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapcmbObObOcn
+alalalalalaVbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapcfcybObObO
+alalalalalbJbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapapcfcBcBbO
+alalalalalbJbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapapapapapcm
+alalalalalbvbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKbKapapapapapapapapcm
+cHcHcHcHcHcIcHcHcHcHcJcHcHcHcHcHcHcHcHcHcHcHcHcHapapapapapapapapcf
+cHcHcHcHcHcHcHcHcKcHcHcHcHcLcMcMcMcMcNcHcHdccHcHapapapapapapapapap
+cHcHcHcHcHcHcHcHcHcHcJcHcHcOcPcPcPcQcQcNcHcHcHcHapapapapapapapapap
+cHcHcHcHcHcHcHcHcHcHcRcRcHcHcHcHcHcScQcTcHcHcHcRapapapapbHbIcUapap
+cHcHcHcHcHcHcHcHcHcHcRcRcRcHcHcHdccOcQcQcNcVcRcRapcWapbObObOcnapap
+cHcHcHcHcHcHcHcHcHcHcRcRcRcHcHcHcHcHcOcPcQcXcMcYcZcZcZcmbObObOcUap
+cHcHcHcHcHcHcHcHcHcHcRcRcRcHcHcHcHcHcHcHcOcPcPdadbdbdbcmbObObOcnap
+dccHcHcHcHcHcHcHcHcHcHcRcRcHcHcHcHcHcHcHcHcHcHddapapapapapbObObObO
+"}

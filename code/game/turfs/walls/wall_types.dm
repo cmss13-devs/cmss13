@@ -279,6 +279,12 @@
 			return
 	return
 
+/turf/closed/wall/mineral/uranium/leaking
+	name = "broken uranium wall"
+	damage = 666
+	desc = "A uranium plated wall that's leaking something. Just looking at it makes you dizzy."
+	color = "#660202"
+
 /turf/closed/wall/mineral/uranium/attack_hand(mob/user as mob)
 	radiate()
 	..()

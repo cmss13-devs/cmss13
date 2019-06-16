@@ -1,0 +1,172 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_18";
+	icon_state = "mars_cave_18"
+	},
+/area/bigredv2/caves_north)
+"b" = (
+/turf/closed/wall/rock/red,
+/area/bigredv2/caves)
+"c" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
+"d" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves_north)
+"e" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_north)
+"f" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_7";
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_north)
+"g" = (
+/obj/structure/mineral_door/resin,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
+"h" = (
+/obj/effect/alien/weeds/node,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_2";
+	icon_state = "mars_cave_2"
+	},
+/area/bigredv2/caves_lambda)
+"S" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_7";
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_lambda)
+
+(1,1,1) = {"
+a
+d
+e
+e
+e
+e
+e
+e
+e
+e
+"}
+(2,1,1) = {"
+b
+f
+f
+e
+e
+e
+e
+e
+e
+e
+"}
+(3,1,1) = {"
+b
+b
+a
+d
+e
+d
+d
+b
+b
+b
+"}
+(4,1,1) = {"
+b
+b
+g
+g
+g
+b
+b
+b
+b
+b
+"}
+(5,1,1) = {"
+b
+c
+c
+c
+c
+c
+b
+b
+b
+b
+"}
+(6,1,1) = {"
+b
+c
+c
+c
+c
+c
+c
+b
+b
+b
+"}
+(7,1,1) = {"
+S
+c
+c
+c
+c
+c
+c
+b
+c
+c
+"}
+(8,1,1) = {"
+c
+c
+c
+c
+c
+c
+c
+g
+c
+c
+"}
+(9,1,1) = {"
+c
+c
+c
+c
+c
+c
+c
+g
+c
+c
+"}
+(10,1,1) = {"
+c
+c
+c
+c
+c
+c
+c
+g
+c
+h
+"}

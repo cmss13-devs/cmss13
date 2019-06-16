@@ -1,0 +1,956 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/rock/red,
+/area/bigredv2/caves)
+"ab" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/bigredv2/outside/virology)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (SOUTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 10
+	},
+/area/bigredv2/outside/nw)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
+"ae" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
+"af" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/body,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/machinery/door/poddoor/two_tile_ver{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "\improper Virology Lockdown";
+	opacity = 0
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"ag" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/virology)
+"ah" = (
+/turf/open/mars{
+	tag = "icon-mars_dirt_12";
+	icon_state = "mars_dirt_12"
+	},
+/area/bigredv2/outside/virology)
+"ai" = (
+/turf/open/mars,
+/area/bigredv2/outside/virology)
+"ak" = (
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/nw)
+"al" = (
+/obj/structure/fence,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_7";
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_virology)
+"am" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_14";
+	icon_state = "mars_cave_14"
+	},
+/area/bigredv2/outside/virology)
+"an" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_6";
+	icon_state = "mars_dirt_6"
+	},
+/area/bigredv2/outside/virology)
+"ao" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/mars{
+	tag = "icon-mars_dirt_12";
+	icon_state = "mars_dirt_12"
+	},
+/area/bigredv2/outside/virology)
+"aq" = (
+/obj/structure/inflatable,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_5";
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/virology)
+"ar" = (
+/obj/structure/fence,
+/turf/open/mars_cave{
+	tag = "icon-mars_cave_13";
+	icon_state = "mars_cave_13"
+	},
+/area/bigredv2/caves_virology)
+"as" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 9
+	},
+/area/bigredv2/outside/virology)
+"at" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"au" = (
+/obj/structure/inflatable,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/virology)
+"av" = (
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"aw" = (
+/obj/machinery/light{
+	tag = "icon-tube1 (EAST)";
+	icon_state = "tube1";
+	dir = 4
+	},
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 9
+	},
+/area/bigredv2/outside/virology)
+"ax" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
+/area/bigredv2/outside/nw)
+"ay" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_5";
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/virology)
+"az" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
+	},
+/area/bigredv2/outside/virology)
+"aA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"aB" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"aC" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/virology)
+"aD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/virology)
+"aE" = (
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHEAST)";
+	icon_state = "asteroidwarning";
+	dir = 5
+	},
+/area/bigredv2/outside/nw)
+"aF" = (
+/obj/structure/inflatable/door,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/virology)
+"aG" = (
+/obj/structure/inflatable/door,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
+	},
+/area/bigredv2/outside/virology)
+"aH" = (
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"aI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 6
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/inflatable/door,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
+/area/bigredv2/outside/nw)
+"aJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
+	},
+/area/bigredv2/outside/virology)
+"aK" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
+/area/bigredv2/outside/virology)
+"aM" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/inflatable/popped/door,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
+	},
+/area/bigredv2/outside/virology)
+"aN" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_5";
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/virology)
+"aO" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"aP" = (
+/turf/open/mars{
+	tag = "icon-mars_dirt_9";
+	icon_state = "mars_dirt_9"
+	},
+/area/bigredv2/outside/virology)
+"aQ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"aR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/machinery/door/poddoor/two_tile_ver{
+	density = 0;
+	icon_state = "pdoor0";
+	name = "\improper Virology Lockdown";
+	opacity = 0
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"aS" = (
+/turf/open/mars{
+	tag = "icon-mars_dirt_3";
+	icon_state = "mars_dirt_3"
+	},
+/area/bigredv2/outside/nw)
+"aT" = (
+/turf/open/mars{
+	tag = "icon-mars_dirt_9";
+	icon_state = "mars_dirt_9"
+	},
+/area/bigredv2/outside/nw)
+"aU" = (
+/turf/open/mars,
+/area/bigredv2/outside/nw)
+"aV" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars,
+/area/bigredv2/outside/nw)
+"aW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 9
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/inflatable/popped/door,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
+/area/bigredv2/outside/nw)
+"aX" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"aY" = (
+/obj/structure/sign/biohazard{
+	pixel_y = -32
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"aZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"ba" = (
+/obj/machinery/light,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"bb" = (
+/turf/open/mars{
+	tag = "icon-mars_dirt_14";
+	icon_state = "mars_dirt_14"
+	},
+/area/bigredv2/outside/virology)
+"bc" = (
+/turf/closed/wall/rock/red,
+/area/bigredv2/outside)
+"bd" = (
+/turf/closed/wall/r_wall,
+/area/bigredv2/outside/virology)
+"be" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/machinery/door/airlock/almayer/research{
+	dir = 1;
+	name = "\improper Virology Lab Decontamination";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "warnwhite";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"bf" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning";
+	icon_state = "asteroidwarning"
+	},
+/area/bigredv2/outside/nw)
+"bg" = (
+/obj/structure/inflatable,
+/turf/open/mars{
+	tag = "icon-mars_dirt_11";
+	icon_state = "mars_dirt_11"
+	},
+/area/bigredv2/outside/virology)
+"bh" = (
+/obj/structure/inflatable,
+/turf/open/mars{
+	tag = "icon-mars_dirt_3";
+	icon_state = "mars_dirt_3"
+	},
+/area/bigredv2/outside/virology)
+"bi" = (
+/obj/machinery/light{
+	tag = "icon-tube1 (EAST)";
+	icon_state = "tube1";
+	dir = 4
+	},
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (SOUTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 10
+	},
+/area/bigredv2/outside/virology)
+"bj" = (
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (SOUTHEAST)";
+	icon_state = "asteroidwarning";
+	dir = 6
+	},
+/area/bigredv2/outside/nw)
+"bk" = (
+/obj/structure/inflatable/door,
+/turf/open/mars,
+/area/bigredv2/outside/virology)
+"bl" = (
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTHWEST)";
+	icon_state = "asteroidwarning";
+	dir = 9
+	},
+/area/bigredv2/outside/virology)
+"bm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/inflatable,
+/turf/open/floor{
+	tag = "icon-asteroidwarning (NORTH)";
+	icon_state = "asteroidwarning";
+	dir = 1
+	},
+/area/bigredv2/outside/virology)
+"bn" = (
+/obj/structure/inflatable,
+/turf/open/mars,
+/area/bigredv2/outside/virology)
+"bo" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/virology)
+"bp" = (
+/obj/item/weapon/gun/flamer,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_5";
+	icon_state = "mars_dirt_5"
+	},
+/area/bigredv2/outside/virology)
+"bq" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/mars{
+	tag = "icon-mars_dirt_3";
+	icon_state = "mars_dirt_3"
+	},
+/area/bigredv2/outside/virology)
+"br" = (
+/obj/structure/inflatable/popped,
+/turf/open/mars,
+/area/bigredv2/outside/virology)
+"bs" = (
+/obj/structure/table/almayer,
+/obj/item/tool/surgery/scalpel,
+/obj/item/device/autopsy_scanner,
+/turf/open/mars_cave{
+	tag = "icon-mars_dirt_4";
+	icon_state = "mars_dirt_4"
+	},
+/area/bigredv2/outside/virology)
+"bt" = (
+/obj/structure/bed/roller,
+/turf/open/mars{
+	tag = "icon-mars_dirt_10";
+	icon_state = "mars_dirt_10"
+	},
+/area/bigredv2/outside/virology)
+"bu" = (
+/obj/structure/bed/roller,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bv" = (
+/obj/structure/inflatable/popped,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bw" = (
+/obj/structure/bed/roller,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bx" = (
+/obj/structure/inflatable/popped,
+/turf/open/mars{
+	tag = "icon-mars_dirt_10";
+	icon_state = "mars_dirt_10"
+	},
+/area/bigredv2/outside/virology)
+"by" = (
+/obj/structure/inflatable/popped/door,
+/obj/effect/decal/cleanable/blood{
+	tag = "icon-gib6";
+	icon_state = "gib6"
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bz" = (
+/obj/structure/inflatable,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bA" = (
+/obj/structure/inflatable/door,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bC" = (
+/obj/structure/closet/l3closet/general,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bD" = (
+/obj/machinery/smartfridge/chemistry,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bE" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	icon_state = "officechair_white";
+	tag = ""
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bF" = (
+/obj/structure/table/almayer,
+/obj/machinery/computer/med_data/laptop{
+	dir = 8
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bG" = (
+/obj/structure/table/almayer,
+/obj/item/ashtray/glass,
+/obj/item/storage/syringe_case/regular{
+	pixel_y = 10
+	},
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+"bH" = (
+/obj/structure/table/almayer,
+/obj/item/handcuffs,
+/turf/open/floor/interior/plastic,
+/area/bigredv2/outside/virology)
+
+(1,1,1) = {"
+aa
+aa
+al
+ar
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+am
+an
+bp
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+an
+aN
+ag
+ah
+ah
+bs
+au
+bd
+"}
+(4,1,1) = {"
+aa
+aq
+ay
+bo
+bq
+ai
+ai
+bt
+bl
+bd
+"}
+(5,1,1) = {"
+aa
+au
+aq
+aF
+aF
+bg
+bg
+au
+bm
+bd
+"}
+(6,1,1) = {"
+aa
+bo
+bo
+as
+az
+aJ
+aJ
+aJ
+aX
+be
+"}
+(7,1,1) = {"
+ab
+ao
+bo
+at
+aA
+av
+av
+av
+aY
+bd
+"}
+(8,1,1) = {"
+ab
+br
+bx
+at
+aA
+av
+aO
+av
+aZ
+bd
+"}
+(9,1,1) = {"
+ab
+bu
+by
+at
+aA
+av
+av
+av
+ba
+bd
+"}
+(10,1,1) = {"
+ab
+bv
+bz
+at
+aB
+aK
+aK
+aK
+aK
+bd
+"}
+(11,1,1) = {"
+ab
+bw
+bA
+at
+aC
+ag
+ag
+ag
+ag
+bd
+"}
+(12,1,1) = {"
+ab
+bv
+bv
+at
+aD
+ag
+ag
+ah
+ag
+bd
+"}
+(13,1,1) = {"
+ab
+bw
+bA
+at
+aC
+ag
+aP
+ai
+bb
+bd
+"}
+(14,1,1) = {"
+ab
+au
+au
+at
+aC
+bh
+bn
+bk
+bk
+bd
+"}
+(15,1,1) = {"
+ab
+ag
+ag
+at
+aC
+bh
+bC
+aH
+aH
+bd
+"}
+(16,1,1) = {"
+ab
+ag
+ag
+at
+aC
+au
+bC
+aH
+aH
+bd
+"}
+(17,1,1) = {"
+ab
+ag
+aw
+aG
+aM
+bi
+aH
+bE
+bG
+bd
+"}
+(18,1,1) = {"
+ab
+ag
+ab
+aH
+af
+ab
+bD
+bF
+bH
+bd
+"}
+(19,1,1) = {"
+ab
+ab
+ab
+aH
+aQ
+ab
+ab
+ab
+ab
+bd
+"}
+(20,1,1) = {"
+ac
+ak
+ab
+aH
+aR
+ab
+aS
+aU
+ab
+bc
+"}
+(21,1,1) = {"
+ad
+ak
+aE
+aI
+aW
+bj
+aS
+aU
+bc
+bc
+"}
+(22,1,1) = {"
+ae
+ak
+ak
+ax
+bf
+ak
+aT
+aV
+aU
+bc
+"}

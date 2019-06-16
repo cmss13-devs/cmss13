@@ -1,0 +1,2074 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ab" = (
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ac" = (
+/obj/structure/table,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ad" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ae" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"af" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/document_objective/paper,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ag" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	tag = "icon-whitegreen (EAST)";
+	icon_state = "whitegreen";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"ah" = (
+/turf/closed/wall/r_wall,
+/area/bigredv2/outside/marshall_office)
+"ai" = (
+/turf/closed/wall/rock/red,
+/area/bigredv2/caves)
+"aj" = (
+/turf/open/mars,
+/area/bigredv2/outside/n)
+"ak" = (
+/obj/machinery/atmospherics/unary/vent_pump,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-whitegreen (EAST)";
+	icon_state = "whitegreen";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"am" = (
+/obj/structure/sink{
+	pixel_y = 32
+	},
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"an" = (
+/obj/structure/mirror{
+	icon_state = "mirror_broke";
+	pixel_x = 30
+	},
+/obj/item/tool/soap/deluxe,
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"ao" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ap" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"aq" = (
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"ar" = (
+/obj/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"as" = (
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Marshall Office Prison";
+	req_one_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-whitegreenfull (NORTHEAST)";
+	icon_state = "whitegreenfull";
+	dir = 5
+	},
+/area/bigredv2/outside/marshall_office)
+"at" = (
+/turf/closed/wall,
+/area/bigredv2/outside/marshall_office)
+"au" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Marshall Office Prison";
+	req_one_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-whitegreenfull (NORTHEAST)";
+	icon_state = "whitegreenfull";
+	dir = 5
+	},
+/area/bigredv2/outside/marshall_office)
+"av" = (
+/obj/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Marshall Office Prison Toilet"
+	},
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"aw" = (
+/obj/structure/bed,
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ax" = (
+/obj/structure/table,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ay" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"az" = (
+/obj/structure/table,
+/obj/machinery/camera/autoname{
+	dir = 2
+	},
+/turf/open/floor{
+	tag = "icon-white";
+	icon_state = "white";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"aA" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/effect/landmark{
+	name = "monkey_spawn"
+	},
+/turf/open/floor{
+	tag = "icon-freezerfloor";
+	icon_state = "freezerfloor"
+	},
+/area/bigredv2/outside/marshall_office)
+"aB" = (
+/obj/machinery/flasher/portable,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aC" = (
+/obj/structure/closet/l3closet/security,
+/obj/machinery/light{
+	tag = "icon-tube1 (NORTH)";
+	icon_state = "tube1";
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aD" = (
+/obj/structure/closet/l3closet/security,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aE" = (
+/obj/structure/rack,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aF" = (
+/obj/structure/rack,
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aG" = (
+/obj/structure/rack,
+/obj/item/weapon/gun/revolver/cmb,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aH" = (
+/obj/structure/rack,
+/obj/machinery/light{
+	tag = "icon-tube1 (NORTH)";
+	icon_state = "tube1";
+	dir = 1
+	},
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aI" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Marshall Office Prison";
+	req_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-whitegreenfull (NORTHEAST)";
+	icon_state = "whitegreenfull";
+	dir = 5
+	},
+/area/bigredv2/outside/marshall_office)
+"aJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Marshall Office Prison";
+	req_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-whitegreenfull (NORTHEAST)";
+	icon_state = "whitegreenfull";
+	dir = 5
+	},
+/area/bigredv2/outside/marshall_office)
+"aK" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Marshall Office Prison";
+	req_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-whitegreenfull (NORTHEAST)";
+	icon_state = "whitegreenfull";
+	dir = 5
+	},
+/area/bigredv2/outside/marshall_office)
+"aL" = (
+/obj/machinery/deployable/barrier,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aM" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aO" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"aP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"aQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"aR" = (
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"aS" = (
+/obj/structure/rack,
+/obj/item/clothing/tie/storage/black_vest,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aT" = (
+/obj/structure/rack,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aU" = (
+/obj/structure/rack,
+/obj/item/ammo_magazine/shotgun,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aV" = (
+/obj/structure/rack,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aW" = (
+/obj/machinery/atmospherics/unary/vent_pump,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"aX" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/eastleft,
+/obj/item/weapon/shield/riot,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"aY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"aZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"ba" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"bb" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"bc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"bd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"be" = (
+/obj/machinery/camera/autoname{
+	dir = 2
+	},
+/obj/machinery/power/apc,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bf" = (
+/obj/machinery/light,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bh" = (
+/obj/machinery/light,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bi" = (
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bj" = (
+/obj/machinery/camera/autoname{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark{
+	name = "good_item"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bm" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bn" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bo" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/closed/wall/r_wall,
+/area/bigredv2/outside/marshall_office)
+"bp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/machinery/door/airlock/almayer/security/glass{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Marshall Office Armory";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bq" = (
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 4;
+	name = "\improper Marshall Office Brig"
+	},
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/marshall_office)
+"br" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	icon_state = "delivery"
+	},
+/area/bigredv2/outside/marshall_office)
+"bs" = (
+/obj/structure/closet/secure_closet/marshal,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bt" = (
+/obj/structure/table,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bu" = (
+/obj/structure/table,
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bv" = (
+/obj/structure/table,
+/obj/item/clothing/head/beret/sec/warden,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bw" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/ammo_casing/shell,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bx" = (
+/obj/machinery/computer/secure_data,
+/obj/structure/table,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"by" = (
+/obj/machinery/computer/forensic_scanning,
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bz" = (
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bA" = (
+/obj/machinery/computer/security,
+/obj/structure/table,
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bB" = (
+/obj/structure/table,
+/obj/item/ore/diamond,
+/obj/item/ore/uranium,
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bC" = (
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bD" = (
+/obj/structure/bed/chair,
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bE" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bG" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/outside/marshall_office)
+"bH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/obj/item/ammo_casing/shell,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/screwdriver,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bK" = (
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bL" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/bigredv2/outside/marshall_office)
+"bM" = (
+/obj/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bN" = (
+/obj/structure/table,
+/obj/item/device/radio,
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bO" = (
+/obj/structure/table,
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"bQ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/westright,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"bR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bU" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+	dir = 8
+	},
+/obj/item/ammo_casing/shell,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 4;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Marshall Office Armory";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"bX" = (
+/obj/structure/table,
+/obj/item/ore/uranium,
+/turf/open/floor{
+	tag = "icon-bcircuit";
+	icon_state = "bcircuit";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bY" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"bZ" = (
+/obj/structure/table,
+/obj/item/device/taperecorder,
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ca" = (
+/obj/item/document_objective/paper,
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"cb" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 4;
+	name = "\improper Marshall Office Interrogation";
+	req_access = list()
+	},
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"cc" = (
+/obj/structure/table,
+/obj/item/clothing/mask/gas,
+/obj/item/clothing/mask/gas,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cd" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"ce" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/structure/rack,
+/obj/item/clothing/suit/armor/riot,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cf" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"ch" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/prisoner,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"ci" = (
+/obj/machinery/light,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cj" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"ck" = (
+/obj/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-darkish";
+	icon_state = "darkish";
+	dir = 2
+	},
+/area/bigredv2/outside/marshall_office)
+"cl" = (
+/obj/machinery/door_control{
+	id = "Marshall Offices";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/prison_security,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/shell,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/shell,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cn" = (
+/obj/structure/table/reinforced,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/window/brigdoor/southright,
+/turf/open/floor{
+	icon_state = "vault";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"co" = (
+/obj/structure/window_frame/colony,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/bigredv2/outside/marshall_office)
+"cp" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/bigredv2/outside/marshall_office)
+"cq" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	name = "\improper Marshall Office Evidence Room";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cr" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/obj/item/ammo_casing/shell,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cs" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"ct" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cu" = (
+/obj/effect/landmark{
+	name = "surv_spawn";
+	pixel_x = -1
+	},
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cv" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cx" = (
+/obj/item/shard,
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cy" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cz" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	icon_state = "red";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"cA" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cB" = (
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cC" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "redcorner";
+	dir = 4
+	},
+/area/bigredv2/outside/marshall_office)
+"cD" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cE" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/green,
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cF" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cG" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cH" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cK" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/shoes/black,
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cN" = (
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Marshall Office"
+	},
+/turf/open/floor{
+	icon_state = "red";
+	dir = 8
+	},
+/area/bigredv2/outside/marshall_office)
+"cO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/kitchen/knife,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cR" = (
+/obj/machinery/atmospherics/unary/vent_pump{
+	dir = 1;
+	on = 1
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cS" = (
+/obj/machinery/alarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -30;
+	tag = "icon-alarm0 (NORTH)"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/frame/table,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "redcorner"
+	},
+/area/bigredv2/outside/marshall_office)
+"cU" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Marshall Office Holding Cell";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cV" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Marshall Office Holding Cell";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"cW" = (
+/obj/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	name = "\improper Marshall Office Checkpoint";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "redfull";
+	dir = 9
+	},
+/area/bigredv2/outside/marshall_office)
+"cX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 4;
+	name = "\improper Marshall Office"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cY" = (
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"cZ" = (
+/obj/item/document_objective/paper,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"da" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"db" = (
+/obj/machinery/door_control{
+	id = "Marshall Offices";
+	name = "Storm Shutters";
+	pixel_x = -32
+	},
+/turf/open/floor{
+	icon_state = "redfull";
+	dir = 9
+	},
+/area/bigredv2/outside/marshall_office)
+"dc" = (
+/obj/structure/table,
+/turf/open/floor{
+	icon_state = "redfull";
+	dir = 9
+	},
+/area/bigredv2/outside/marshall_office)
+"dd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"de" = (
+/obj/structure/closet/secure_closet/brig,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"df" = (
+/obj/structure/bed,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/marshall_office)
+"dg" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "redfull";
+	dir = 9
+	},
+/area/bigredv2/outside/marshall_office)
+"dh" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "redfull";
+	dir = 9
+	},
+/area/bigredv2/outside/marshall_office)
+"di" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark{
+	name = "surv_spawn";
+	pixel_x = -1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+"dj" = (
+/turf/closed/wall/r_wall,
+/area/bigredv2/outside/medical)
+"dk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 4;
+	name = "\improper Marshall Office"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/marshall_office)
+
+(1,1,1) = {"
+aa
+ab
+ab
+as
+ab
+ab
+aI
+aO
+aY
+bh
+ah
+by
+bM
+by
+bz
+at
+cz
+cN
+ah
+ah
+ah
+dj
+"}
+(2,1,1) = {"
+ab
+aa
+aa
+at
+aw
+aw
+ah
+aP
+aY
+bi
+ah
+bz
+aM
+aM
+aM
+cq
+cA
+bi
+bG
+aM
+de
+dj
+"}
+(3,1,1) = {"
+ac
+aa
+ao
+at
+at
+at
+ah
+aP
+aY
+bi
+ah
+bA
+aM
+aM
+ci
+at
+cA
+cO
+cU
+aM
+ci
+dj
+"}
+(4,1,1) = {"
+ac
+aa
+aa
+at
+ax
+az
+ah
+aP
+aZ
+bi
+ah
+bB
+bN
+bX
+bz
+at
+cA
+cP
+bG
+cZ
+df
+dj
+"}
+(5,1,1) = {"
+ad
+ak
+ap
+au
+ap
+ap
+aJ
+aQ
+ba
+bj
+ah
+at
+at
+at
+at
+at
+cA
+bk
+ah
+ah
+ah
+dj
+"}
+(6,1,1) = {"
+ae
+ab
+ab
+at
+aw
+aw
+ah
+aR
+bb
+bk
+ah
+bC
+bC
+bY
+bC
+at
+cA
+bk
+bG
+aM
+de
+dj
+"}
+(7,1,1) = {"
+ac
+ab
+aa
+at
+at
+at
+ah
+aR
+bb
+bl
+ah
+bD
+bO
+bZ
+cj
+at
+cB
+bk
+cV
+aM
+ci
+dj
+"}
+(8,1,1) = {"
+af
+ab
+ab
+at
+ax
+az
+ah
+aR
+bc
+bk
+ah
+bC
+bC
+ca
+bC
+at
+cC
+cQ
+bL
+aM
+df
+dj
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+as
+ab
+ab
+aK
+aR
+bc
+bm
+ah
+bC
+bC
+bC
+ck
+at
+cC
+bi
+ah
+ah
+ah
+dj
+"}
+(10,1,1) = {"
+ag
+al
+al
+at
+aw
+aw
+ah
+aR
+bb
+bh
+ah
+at
+at
+cb
+at
+at
+cC
+bi
+bG
+aM
+de
+dj
+"}
+(11,1,1) = {"
+ah
+am
+aq
+at
+at
+at
+ah
+aR
+bb
+bk
+bq
+bE
+bP
+bP
+cl
+cr
+cD
+bi
+cU
+aM
+ci
+dj
+"}
+(12,1,1) = {"
+ah
+an
+ar
+av
+ay
+aA
+ah
+aR
+bd
+bn
+br
+bF
+bn
+bn
+cm
+cs
+cE
+cR
+bG
+da
+df
+dj
+"}
+(13,1,1) = {"
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+bG
+bQ
+bG
+ah
+ct
+cF
+cS
+ah
+ah
+ah
+dj
+"}
+(14,1,1) = {"
+ai
+ai
+aj
+aj
+ah
+aB
+aL
+aL
+aL
+ah
+bs
+aM
+aM
+cc
+bG
+aP
+cG
+bi
+bL
+aM
+de
+dj
+"}
+(15,1,1) = {"
+ai
+ai
+aj
+aj
+ah
+aC
+aM
+aM
+aM
+ah
+bt
+aM
+aM
+cc
+bG
+cu
+cG
+cQ
+cV
+aM
+ci
+dj
+"}
+(16,1,1) = {"
+ai
+ai
+aj
+aj
+ah
+aD
+aM
+aS
+aM
+ah
+bt
+aM
+aN
+cd
+cn
+cv
+cH
+bk
+bG
+aM
+df
+dj
+"}
+(17,1,1) = {"
+ai
+aj
+aj
+aj
+ah
+aD
+aN
+aT
+aM
+ah
+bu
+bH
+bR
+ce
+co
+cw
+cD
+bk
+ah
+ah
+ah
+dj
+"}
+(18,1,1) = {"
+aj
+aj
+aj
+aj
+ah
+aE
+aN
+aU
+be
+ah
+bv
+bI
+bS
+ce
+cp
+cx
+cI
+bk
+cW
+db
+dg
+dj
+"}
+(19,1,1) = {"
+aj
+aj
+aj
+aj
+ah
+aF
+aN
+aV
+bf
+bo
+bw
+bJ
+bT
+cf
+bL
+aR
+cJ
+bk
+bG
+dc
+dh
+dj
+"}
+(20,1,1) = {"
+aj
+aj
+aj
+aj
+ah
+aG
+aN
+aW
+bg
+bp
+bg
+bg
+bU
+cg
+bp
+aQ
+cK
+bk
+ah
+bG
+bG
+dj
+"}
+(21,1,1) = {"
+aj
+aj
+aj
+aj
+ah
+aH
+aM
+aN
+aM
+ah
+bx
+bK
+bV
+ch
+ah
+aR
+cL
+cT
+cX
+dd
+dd
+dk
+"}
+(22,1,1) = {"
+aj
+ah
+ah
+ah
+ah
+ah
+ah
+aX
+ah
+ah
+ah
+bL
+bW
+bG
+ah
+cy
+cM
+bk
+cY
+cY
+di
+cY
+"}

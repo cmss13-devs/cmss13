@@ -104,6 +104,7 @@
 /datum/action/xeno_action
 	var/action_icon_state
 	var/plasma_cost = 0
+	var/macro_path
 
 /datum/action/xeno_action/New(Target)
 	..()
@@ -114,7 +115,11 @@
 	if(X && !X.is_mob_incapacitated() && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
-
+/datum/action/xeno_action/give_action(mob/living/L)
+	..()
+	if(macro_path)
+		L.verbs += macro_path
+	
 //checks if the linked ability is on some cooldown.
 //The action can still be activated by clicking the button
 /datum/action/xeno_action/proc/action_cooldown_check()
@@ -160,6 +165,8 @@
 	..()
 	if(X.selected_ability == src)
 		X.selected_ability = null
+	if(macro_path)
+		X.verbs -= macro_path
 
 //the thing to do when the selected action ability is selected and triggered by middle_click
 /datum/action/xeno_action/activable/proc/use_ability(atom/A)

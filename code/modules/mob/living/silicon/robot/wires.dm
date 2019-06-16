@@ -57,7 +57,7 @@
 	borgwires |= wireFlag
 	switch(wireIndex)
 		if(BORG_WIRE_LAWCHECK) //turns law updates back on assuming the borg hasn't been emagged
-			if (src.lawupdate == 0 && !src.emagged)
+			if (src.lawupdate == 0)
 				src.lawupdate = 1
 		if(BORG_WIRE_CAMERA)
 			if(camera && !camera.status && !scrambledcodes)
@@ -74,8 +74,7 @@
 				src.photosync()
 
 		if (BORG_WIRE_AI_CONTROL) //pulse the AI wire to make the borg reselect an AI
-			if(!src.emagged)
-				src.connected_ai = select_active_ai()
+			src.connected_ai = select_active_ai()
 
 		if (BORG_WIRE_CAMERA)
 			if(camera && camera.status && !scrambledcodes)

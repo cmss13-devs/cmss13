@@ -50,7 +50,6 @@
 	var/slogan_delay = 600 //How long until we can pitch again?
 	var/icon_vend //Icon_state when vending!
 	var/icon_deny //Icon_state when vending!
-	//var/emagged = 0 //Ignores if somebody doesn't have card access to that machine.
 	var/seconds_electrified = 0 //Shock customers like an airlock.
 	var/shoot_inventory = 0 //Fire items at customers! We're broken!
 	var/shut_up = 0 //Stop spouting those godawful pitches!
@@ -175,11 +174,7 @@
 		to_chat(user, "Tip it back upright first!")
 		return FALSE
 
-	if (istype(W, /obj/item/card/emag))
-		src.emagged = 1
-		to_chat(user, "You short out the product lock on [src]")
-		return TRUE
-	else if(istype(W, /obj/item/tool/screwdriver))
+	if(istype(W, /obj/item/tool/screwdriver))
 		if(stat == WORKING)
 			src.panel_open = !src.panel_open
 			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
@@ -531,7 +526,7 @@
 		usr.set_interaction(src)
 		if ((href_list["vend"]) && vend_ready && !currently_vending)
 
-			if(!allowed(usr) && !emagged && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
+			if(!allowed(usr) && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH. Hacking safety always prevents bypassing emag or access
 				to_chat(usr, SPAN_WARNING("Access denied.")) //Unless emagged of course
 				flick(src.icon_deny,src)
 				return
@@ -602,7 +597,7 @@
 
 
 /obj/machinery/vending/proc/vend(datum/data/vending_product/R, mob/user)
-	if(!allowed(user) && !emagged && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH
+	if(!allowed(user) && (wires & WIRE_SCANID || hacking_safety)) //For SECURE VENDING MACHINES YEAH
 		to_chat(user, SPAN_WARNING("Access denied.")) //Unless emagged of course
 		flick(src.icon_deny,src)
 		return

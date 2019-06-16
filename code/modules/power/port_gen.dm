@@ -219,9 +219,6 @@ display round(lastgen) and phorontank amount
 		addstack.use(amount)
 		updateUsrDialog()
 		return
-	else if (istype(O, /obj/item/card/emag))
-		emagged = 1
-		emp_act(1)
 	else if(!active)
 
 		if(istype(O, /obj/item/tool/wrench))
@@ -327,7 +324,7 @@ display round(lastgen) and phorontank amount
 				power_output--
 				src.updateUsrDialog()
 		if (href_list["action"] == "higher_power")
-			if (power_output < 4 || emagged)
+			if (power_output < 4)
 				power_output++
 				src.updateUsrDialog()
 		if (href_list["action"] == "close")

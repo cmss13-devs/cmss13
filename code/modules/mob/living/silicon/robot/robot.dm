@@ -47,7 +47,6 @@ var/list/robot_verbs_default = list(
 	//var/obj/item/device/pda/ai/rbPDA = null
 
 	var/opened = 0
-	var/emagged = 0
 	var/wiresexposed = 0
 	var/locked = 1
 	var/has_power = 1
@@ -592,8 +591,6 @@ var/list/robot_verbs_default = list(
 			to_chat(user, "Unable to locate a radio.")
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))			// trying to unlock the interface with an ID card
-		if(emagged)//still allow them to open the cover
-			to_chat(user, "The interface seems slightly damaged")
 		if(opened)
 			to_chat(user, "You must close the cover to swipe an ID card.")
 		else
@@ -603,56 +600,6 @@ var/list/robot_verbs_default = list(
 				update_icons()
 			else
 				to_chat(user, SPAN_DANGER("Access denied."))
-
-	else if(istype(W, /obj/item/card/emag))		// trying to unlock with an emag card
-		if(!opened)//Cover is closed
-			if(locked)
-				if(prob(90))
-					var/obj/item/card/emag/emag = W
-					emag.uses--
-					to_chat(user, "You emag the cover lock.")
-					locked = 0
-				else
-					to_chat(user, "You fail to emag the cover lock.")
-					to_chat(src, "Hack attempt detected.")
-			else
-				to_chat(user, "The cover is already unlocked.")
-			return
-
-		if(opened)//Cover is open
-			if(emagged)	return//Prevents the X has hit Y with Z message also you cant emag them twice
-			if(wiresexposed)
-				to_chat(user, "You must close the panel first")
-				return
-			else
-				sleep(6)
-				if(prob(50))
-					emagged = 1
-					lawupdate = 0
-					connected_ai = null
-					to_chat(user, "You emag [src]'s interface.")
-					message_admins("[key_name_admin(user)] emagged cyborg [key_name_admin(src)].  Laws overridden.")
-					log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
-					to_chat(src, SPAN_DANGER("ALERT: Foreign software detected."))
-					sleep(5)
-					to_chat(src, SPAN_DANGER("Initiating diagnostics..."))
-					sleep(20)
-					to_chat(src, SPAN_DANGER("SynBorg v1.7.1 loaded."))
-					sleep(5)
-					to_chat(src, SPAN_DANGER("LAW SYNCHRONISATION ERROR"))
-					sleep(5)
-					to_chat(src, SPAN_DANGER("Would you like to send a report to NanoTraSoft? Y/N"))
-					sleep(10)
-					to_chat(src, SPAN_DANGER("> N"))
-					sleep(20)
-					to_chat(src, SPAN_DANGER("ERRORERRORERROR"))
-					to_chat(src, "<b>Obey these laws:</b>")
-					to_chat(src, SPAN_DANGER("\b ALERT: [user.real_name] is your new master. Obey your new laws and his commands."))
-					update_icons()
-				else
-					to_chat(user, "You fail to hack [src]'s interface.")
-					to_chat(src, "Hack attempt detected.")
-			return
 
 	else if(istype(W, /obj/item/robot/upgrade/))
 		var/obj/item/robot/upgrade/U = W
@@ -808,11 +755,6 @@ var/list/robot_verbs_default = list(
 			dat += text("[obj]: <B>Activated</B><BR>")
 		else
 			dat += text("[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>")
-	if (emagged)
-		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
-		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
 /*
 		if(activated(obj))
 			dat += text("[obj]: \[<B>Activated</B>|<A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>")

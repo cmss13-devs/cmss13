@@ -60,16 +60,4 @@
 					to_world(SPAN_NOTICE(" <B>All authorizations to shorting time for shuttle launch have been revoked!</B>"))
 					src.authorized.len = 0
 					src.authorized = list(  )
-
-		else if (istype(W, /obj/item/card/emag) && !emagged)
-			var/choice = alert(user, "Would you like to launch the shuttle?","Shuttle control", "Launch", "Cancel")
-
-			if(!emagged && emergency_shuttle.location == 1 && user.get_active_hand() == W)
-				switch(choice)
-					if("Launch")
-						to_world(SPAN_NOTICE(" <B>Alert: Shuttle launch time shortened to 10 seconds!</B>"))
-						emergency_shuttle.settimeleft( 10 )
-						emagged = 1
-					if("Cancel")
-						return
 		return

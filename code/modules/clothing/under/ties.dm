@@ -453,7 +453,6 @@
 	icon_state = "holobadge"
 	flags_equip_slot = SLOT_WAIST
 
-	var/emagged = 0 //Emagging removes Sec check.
 	var/stored_name = null
 
 /obj/item/clothing/tie/holobadge/cord
@@ -468,17 +467,7 @@
 		user.visible_message(SPAN_DANGER("[user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."),SPAN_DANGER("You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."))
 
 /obj/item/clothing/tie/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
-
-	if (istype(O, /obj/item/card/emag))
-		if (emagged)
-			to_chat(user, SPAN_DANGER("[src] is already cracked."))
-			return
-		else
-			emagged = 1
-			to_chat(user, SPAN_DANGER("You swipe [O] and crack the holobadge security checks."))
-			return
-
-	else if(istype(O, /obj/item/card/id) || istype(O, /obj/item/device/pda))
+	if(istype(O, /obj/item/card/id) || istype(O, /obj/item/device/pda))
 
 		var/obj/item/card/id/id_card = null
 
@@ -488,7 +477,7 @@
 			var/obj/item/device/pda/pda = O
 			id_card = pda.id
 
-		if(ACCESS_MARINE_BRIG in id_card.access || emagged)
+		if(ACCESS_MARINE_BRIG in id_card.access)
 			to_chat(user, "You imprint your ID details onto the badge.")
 			stored_name = id_card.registered_name
 			name = "holobadge ([stored_name])"

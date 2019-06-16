@@ -131,10 +131,6 @@
 		gameover = 0
 		turtle = 0
 
-		if(emagged)
-			src.New()
-			emagged = 0
-
 	src.add_fingerprint(usr)
 	src.updateUsrDialog()
 	return
@@ -145,15 +141,7 @@
 			src.gameover = 1
 			src.temp = "[src.enemy_name] has fallen! Rejoice!"
 
-			if(emagged)
-				feedback_inc("arcade_win_emagged")
-				new /obj/effect/spawner/newbomb/timer/syndicate(src.loc)
-				new /obj/item/clothing/head/collectable/petehat(src.loc)
-				message_admins("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
-				log_game("[key_name_admin(usr)] has outbombed Cuban Pete and been awarded a bomb.")
-				src.New()
-				emagged = 0
-			else if(!contents.len)
+			if(!contents.len)
 				feedback_inc("arcade_win_normal")
 				var/prizeselect = pickweight(prizes)
 				new prizeselect(src.loc)
@@ -169,11 +157,6 @@
 				var/atom/movable/prize = pick(contents)
 				prize.loc = src.loc
 
-	else if (emagged && (turtle >= 4))
-		var/boomamt = rand(5,10)
-		src.temp = "[src.enemy_name] throws a bomb, exploding you for [boomamt] damage!"
-		src.player_hp -= boomamt
-
 	else if ((src.enemy_mp <= 5) && (prob(70)))
 		var/stealamt = rand(2,3)
 		src.temp = "[src.enemy_name] steals [stealamt] of your power!"
@@ -184,11 +167,7 @@
 			src.gameover = 1
 			sleep(10)
 			src.temp = "You have been drained! GAME OVER"
-			if(emagged)
-				feedback_inc("arcade_loss_mana_emagged")
-				usr.gib()
-			else
-				feedback_inc("arcade_loss_mana_normal")
+			feedback_inc("arcade_loss_mana_normal")
 
 	else if ((src.enemy_hp <= 10) && (src.enemy_mp > 4))
 		src.temp = "[src.enemy_name] heals for 4 health!"
@@ -203,36 +182,10 @@
 	if ((src.player_mp <= 0) || (src.player_hp <= 0))
 		src.gameover = 1
 		src.temp = "GAME OVER"
-		if(emagged)
-			feedback_inc("arcade_loss_hp_emagged")
-			usr.gib()
-		else
-			feedback_inc("arcade_loss_hp_normal")
+		feedback_inc("arcade_loss_hp_normal")
 
 	src.blocked = 0
 	return
-
-
-/obj/machinery/computer/arcade/attackby(I as obj, user as mob)
-	if(istype(I, /obj/item/card/emag) && !emagged)
-		temp = "If you die in the game, you die for real!"
-		player_hp = 30
-		player_mp = 10
-		enemy_hp = 45
-		enemy_mp = 20
-		gameover = 0
-		blocked = 0
-
-		emagged = 1
-
-		enemy_name = "Cuban Pete"
-		name = "Outbomb Cuban Pete"
-
-
-		src.updateUsrDialog()
-	else
-		..()
-
 
 /obj/machinery/computer/arcade/emp_act(severity)
 	if(stat & (NOPOWER|BROKEN))

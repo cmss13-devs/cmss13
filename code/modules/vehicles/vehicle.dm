@@ -17,7 +17,6 @@
 	var/open = 0	//Maint panel
 	var/locked = 1
 	var/stat = 0
-	var/emagged = 0
 	var/powered = 0		//set if vehicle is powered and should use fuel when moving
 	var/move_delay = 1	//set this to limit the speed of the vehicle
 	var/buckling_y = 0
@@ -132,13 +131,6 @@
 	on = 0
 	SetLuminosity(0)
 	update_icon()
-
-/obj/vehicle/proc/Emag(mob/user as mob)
-	emagged = 1
-
-	if(locked)
-		locked = 0
-		to_chat(user, SPAN_WARNING("You bypass [src]'s controls."))
 
 /obj/vehicle/proc/explode()
 	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)

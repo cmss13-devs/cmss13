@@ -363,17 +363,6 @@
 
 	ui_interact(usr)
 
-
-/obj/machinery/computer/shuttle_control/attackby(obj/item/W as obj, mob/user as mob)
-
-	if (istype(W, /obj/item/card/emag))
-		src.req_access = list()
-		src.req_one_access = list()
-		hacked = 1
-		to_chat(usr, "You short out the console's ID checking system. It's now available to everyone!")
-	else
-		..()
-
 /obj/machinery/computer/shuttle_control/bullet_act(var/obj/item/projectile/Proj)
 	visible_message("[Proj] ricochets off [src]!")
 	return 0

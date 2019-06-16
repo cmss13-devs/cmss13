@@ -150,9 +150,5 @@
 					A.icon_state = "4"
 					A.anchored = 1
 					qdel(src)
-		else if(istype(D, /obj/item/card/emag) && !emagged)
-			playsound(src.loc, 'sound/effects/sparks4.ogg', 25, 1)
-			emagged = 1
-			to_chat(user, SPAN_NOTICE(" You you disable the security protocols"))
 		src.updateUsrDialog()
 		return

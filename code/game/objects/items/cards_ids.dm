@@ -55,66 +55,6 @@
  * ID CARDS
  */
 
-/obj/item/card/emag_broken
-	desc = "It's a card with a magnetic strip attached to some circuitry. It looks too busted to be used for anything but salvage."
-	name = "broken cryptographic sequencer"
-	icon_state = "emag"
-	item_state = "card-id"
-	origin_tech = "magnets=2;syndicate=2"
-
-/obj/item/card/emag
-	desc = "It's a card with a magnetic strip attached to some circuitry."
-	name = "cryptographic sequencer"
-	icon_state = "emag"
-	item_state = "card-id"
-	flags_item = NOBLUDGEON
-	origin_tech = "magnets=2;syndicate=2"
-	var/uses = 10
-	// List of devices that cost a use to emag.
-	var/list/devices = list(
-		/obj/item/robot_parts,
-		/obj/item/storage/lockbox,
-		/obj/item/storage/secure,
-		/obj/item/circuitboard,
-		/obj/item/device/eftpos,
-		/obj/item/device/lightreplacer,
-		/obj/item/device/taperecorder,
-		/obj/item/device/hailer,
-		/obj/item/device/megaphone,
-		/obj/item/clothing/tie/holobadge,
-		/obj/structure/closet/crate/secure,
-		/obj/structure/closet/secure_closet,
-		/obj/machinery/computer,
-		/obj/machinery/power,
-		/obj/machinery/deployable,
-		/obj/machinery/door_control,
-		/obj/machinery/turretid,
-		/obj/machinery/vending,
-		/obj/machinery/bot,
-		/obj/machinery/door,
-		/obj/machinery/telecomms,
-		/obj/machinery/mecha_part_fabricator,
-		/obj/vehicle
-		)
-
-
-/obj/item/card/emag/afterattack(var/obj/item/O as obj, mob/user as mob)
-
-	for(var/type in devices)
-		if(istype(O,type))
-			uses--
-			break
-
-	if(uses<1)
-		user.visible_message("[src] fizzles and sparks - it seems it's been used once too often, and is now broken.")
-		user.drop_held_item()
-		var/obj/item/card/emag_broken/junk = new(user.loc)
-		junk.add_fingerprint(user)
-		qdel(src)
-		return
-
-	..()
-
 /obj/item/card/id
 	name = "identification holo-badge"
 	desc = "A slice of encoded compressed fiber glass. Used for identification and access control."

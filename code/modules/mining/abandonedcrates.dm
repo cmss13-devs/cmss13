@@ -92,9 +92,6 @@
 
 /obj/structure/closet/crate/secure/loot/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
-		if (istype(W, /obj/item/card/emag))
-			to_chat(user, SPAN_NOTICE("The crate unlocks!"))
-			locked = 0
 		if (istype(W, /obj/item/device/multitool))
 			to_chat(user, SPAN_NOTICE("DECA-CODE LOCK REPORT:"))
 			if (attempts == 1)

@@ -7,7 +7,6 @@
 
 	matter = list("metal" = 60,"glass" = 30)
 
-	var/emagged = 0.0
 	var/recording = 0.0
 	var/playing = 0.0
 	var/timerecorded = 0.0
@@ -26,17 +25,6 @@
 		storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [M.name] [verb], \"[italics ? "<i>" : null][msg][italics ? "</i>" : null]\""
 		return
 
-/obj/item/device/taperecorder/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if(istype(W, /obj/item/card/emag))
-		if(emagged == 0)
-			emagged = 1
-			recording = 0
-			to_chat(user, SPAN_WARNING("PZZTTPFFFT"))
-			icon_state = "taperecorderidle"
-		else
-			to_chat(user, SPAN_WARNING("It is already emagged!"))
-
 /obj/item/device/taperecorder/proc/explode()
 	var/turf/T = get_turf(loc)
 	if(ismob(loc))
@@ -52,9 +40,6 @@
 	set category = "Object"
 
 	if(usr.stat)
-		return
-	if(emagged == 1)
-		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	icon_state = "taperecorderrecording"
 	if(timerecorded < 3600 && playing == 0)
@@ -80,9 +65,6 @@
 
 	if(usr.stat)
 		return
-	if(emagged == 1)
-		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
-		return
 	if(recording == 1)
 		recording = 0
 		timestamp+= timerecorded
@@ -104,9 +86,6 @@
 
 	if(usr.stat)
 		return
-	if(emagged == 1)
-		to_chat(usr, SPAN_WARNING("[src] makes a scratchy noise."))
-		return
 	if(recording == 1 || playing == 1)
 		to_chat(usr, SPAN_NOTICE("You can't clear the memory while playing or recording!"))
 		return
@@ -123,9 +102,6 @@
 	set category = "Object"
 
 	if(usr.stat)
-		return
-	if(emagged == 1)
-		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	if(recording == 1)
 		to_chat(usr, SPAN_NOTICE("You can't playback when recording!"))
@@ -158,23 +134,6 @@
 		i++
 	icon_state = "taperecorderidle"
 	playing = 0
-	if(emagged == 1.0)
-		var/turf/T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>[src]</B>: Device will self-destruct in... Five.</font>")
-		sleep(10)
-		T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>[src]</B>: Four.</font>")
-		sleep(10)
-		T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>[src]</B>: Three.</font>")
-		sleep(10)
-		T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>[src]</B>: Two.</font>")
-		sleep(10)
-		T = get_turf(src)
-		T.visible_message("<font color=Maroon><B>[src]</B>: One.</font>")
-		sleep(10)
-		explode()
 
 
 /obj/item/device/taperecorder/verb/print_transcript()
@@ -182,9 +141,6 @@
 	set category = "Object"
 
 	if(usr.stat)
-		return
-	if(emagged == 1)
-		to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 		return
 	if(!canprint)
 		to_chat(usr, SPAN_NOTICE("The recorder can't print that fast!"))
@@ -207,9 +163,6 @@
 /obj/item/device/taperecorder/attack_self(mob/user)
 	if(recording == 0 && playing == 0)
 		if(usr.stat)
-			return
-		if(emagged == 1)
-			to_chat(usr, SPAN_DANGER("[src] makes a scratchy noise."))
 			return
 		icon_state = "taperecorderrecording"
 		if(timerecorded < 3600 && playing == 0)

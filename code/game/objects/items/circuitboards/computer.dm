@@ -144,10 +144,6 @@
 /obj/item/circuitboard/computer/turbine_control
 	name = "Circuit board (Turbine control)"
 	build_path = /obj/machinery/computer/turbine_computer
-/obj/item/circuitboard/computer/solar_control
-	name = "Circuit board (Solar Control)"
-	build_path = /obj/machinery/power/solar_control
-	origin_tech = "programming=2;powerstorage=2"
 /obj/item/circuitboard/computer/powermonitor
 	name = "Circuit board (Power Monitor)"
 	build_path = /obj/machinery/power/monitor

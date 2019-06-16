@@ -186,14 +186,6 @@
 	if (src.operating == 1)
 		return
 
-	//Emags and ninja swords? You may pass.
-	if (density && istype(I, /obj/item/card/emag))
-		operating = -1
-		flick("[src.base_state]spark", src)
-		sleep(6)
-		open()
-		return 1
-
 	//If it's emagged, crowbar can pry electronics out.
 	if (src.operating == -1 && istype(I, /obj/item/tool/crowbar))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)

@@ -27,8 +27,7 @@
 	proc/copy(var/obj/item/computer3_part/storage/dest)
 		if(!computer || computer.crit_fail) return null
 		if(drm)
-			if(!computer.emagged)
-				return null
+			return null
 		var/datum/file/F = new type()
 		if(!dest.addfile(F))
 			return null // todo: arf here even though the player can't do a damn thing due to concurrency
@@ -41,8 +40,7 @@
 	proc/move(var/obj/item/computer3_part/storage/dest)
 		if(!computer || computer.crit_fail) return null
 		if(drm)
-			if(!computer.emagged)
-				return null
+			return null
 		var/obj/item/computer3_part/storage/current = device
 		if(!dest.addfile(src))
 			return null
@@ -57,7 +55,7 @@
 	proc/edit()
 		if(!computer || computer.crit_fail)
 			return 0
-		if(readonly && !computer.emagged)
+		if(readonly)
 			return 0 //
 		return 1
 

@@ -8,7 +8,6 @@
 	power_gen = 4500
 	var/obj/item/weapon/tank/phoron/P = null
 	var/board_path = "/obj/item/weapon/circuitboard/pacman2"
-	var/emagged = 0
 	var/heat = 0
 /*
 	process()
@@ -81,14 +80,6 @@
 			user.drop_item()
 			O.loc = src
 			to_chat(user, SPAN_NOTICE(" You add the phoron tank to the generator."))
-		else if (istype(O, /obj/item/weapon/card/emag))
-			var/obj/item/weapon/card/emag/E = O
-			if(E.uses)
-				E.uses--
-			else
-				return
-			emagged = 1
-			emp_act(1)
 		else if(!active)
 			if(istype(O, /obj/item/weapon/wrench))
 				anchored = !anchored
@@ -173,7 +164,7 @@
 					power_output--
 					src.updateUsrDialog()
 			if (href_list["action"] == "higher_power")
-				if (power_output < 4 || emagged)
+				if (power_output < 4)
 					power_output++
 					src.updateUsrDialog()
 			if (href_list["action"] == "close")

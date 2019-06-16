@@ -741,15 +741,6 @@ var/list/mechtoys = list(
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/supplycomp/attackby(I as obj, user as mob)
-	if(istype(I,/obj/item/card/emag) && !hacked)
-		to_chat(user, SPAN_NOTICE(" Special supplies unlocked."))
-		hacked = 1
-		return
-	else
-		..()
-	return
-
 /obj/machinery/computer/supplycomp/Topic(href, href_list)
 	if(z != MAIN_SHIP_Z_LEVEL) return
 	if(!supply_controller)

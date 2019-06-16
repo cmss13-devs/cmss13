@@ -53,7 +53,6 @@
 
 	var/max_uses = 50
 	var/uses = 0
-	var/emagged = 0
 	var/failmsg = ""
 	var/charge = 1
 
@@ -67,10 +66,6 @@
 	to_chat(user, "It has [uses] lights remaining.")
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
-	if(istype(W,  /obj/item/card/emag) && emagged == 0)
-		Emag()
-		return
-
 	if(istype(W, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = W
 		if(uses >= max_uses)
@@ -98,18 +93,10 @@
 
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
-	/* // This would probably be a bit OP. If you want it though, uncomment the code.
-	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.emagged)
-			src.Emag()
-			to_chat(usr, "You shortcircuit the [src].")
-			return
-	*/
 	to_chat(usr, "It has [uses] lights remaining.")
 
 /obj/item/device/lightreplacer/update_icon()
-	icon_state = "lightreplacer[emagged]"
+	icon_state = "lightreplacer0"
 
 
 /obj/item/device/lightreplacer/proc/Use(var/mob/user)
@@ -152,7 +139,7 @@
 
 			target.status = L2.status
 			target.switchcount = L2.switchcount
-			target.rigged = emagged
+			target.rigged = FALSE
 			target.brightness = L2.brightness
 			target.on = target.has_power()
 			target.update()
@@ -168,15 +155,6 @@
 	else
 		to_chat(U, "There is a working [target.fitting] already inserted.")
 		return
-
-/obj/item/device/lightreplacer/proc/Emag()
-	emagged = !emagged
-	playsound(src.loc, "sparks", 25, 1)
-	if(emagged)
-		name = "Shortcircuited [initial(name)]"
-	else
-		name = initial(name)
-	update_icon()
 
 //Can you use it?
 

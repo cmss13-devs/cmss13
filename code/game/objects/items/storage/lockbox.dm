@@ -34,14 +34,6 @@
 					return
 			else
 				to_chat(user, SPAN_DANGER("Access Denied"))
-		else if(istype(W, /obj/item/card/emag) && !broken)
-			broken = 1
-			locked = 0
-			desc = "It appears to be broken."
-			icon_state = src.icon_broken
-			for(var/mob/O in viewers(user, 3))
-				O.show_message(SPAN_NOTICE("The locker has been broken by [user] with an electromagnetic card!"), 1, "You hear a faint electrical spark.", 2)
-
 		if(!locked)
 			..()
 		else

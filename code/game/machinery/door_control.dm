@@ -65,10 +65,6 @@
 	*/
 	if(istype(W, /obj/item/device/detective_scanner))
 		return
-	if(istype(W, /obj/item/card/emag))
-		req_access = list()
-		req_one_access = list()
-		playsound(src.loc, "sparks", 25, 1)
 	return src.attack_hand(user)
 
 /obj/machinery/door_control/proc/handle_dropship(var/ship_id)

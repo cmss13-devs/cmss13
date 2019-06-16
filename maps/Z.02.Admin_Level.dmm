@@ -9779,7 +9779,6 @@
 /area/centcom/living)
 "tF" = (
 /obj/structure/table/reinforced,
-/obj/item/card/emag_broken,
 /turf/open/floor/almayer,
 /area/centcom/living)
 "tG" = (

@@ -22,7 +22,6 @@
 	var/network = list("military")
 	req_access = list(ACCESS_MARINE_BRIG)
 	var/locked = 1
-	var/emagged = 0
 
 /obj/item/circuitboard/computer/security/construct(var/obj/machinery/computer/security/C)
 	if (..(C))
@@ -261,17 +260,7 @@
 	return
 
 /obj/item/circuitboard/computer/security/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I,/obj/item/card/emag))
-		if(emagged)
-			to_chat(user, "Circuit lock is already removed.")
-			return
-		to_chat(user, SPAN_NOTICE(" You override the circuit lock and open controls."))
-		emagged = 1
-		locked = 0
-	else if(istype(I,/obj/item/card/id))
-		if(emagged)
-			to_chat(user, SPAN_DANGER("Circuit lock does not respond."))
-			return
+	if(istype(I,/obj/item/card/id))
 		if(check_access(I))
 			locked = !locked
 			to_chat(user, SPAN_NOTICE(" You [locked ? "" : "un"]lock the circuit controls."))

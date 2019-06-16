@@ -97,7 +97,6 @@ Class Procs:
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
 	var/stat = 0
-	var/emagged = 0
 	var/use_power = 1
 	var/processable = 1
 		//0 = dont run the auto

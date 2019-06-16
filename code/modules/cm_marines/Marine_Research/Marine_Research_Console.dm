@@ -149,10 +149,6 @@
 		user.drop_held_item()
 		D.loc = src
 		to_chat(user, SPAN_NOTICE(" You add the disk to the machine!"))
-	else if(istype(D, /obj/item/card/emag) && !emagged)
-		playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
-		emagged = 1
-		to_chat(user, SPAN_NOTICE(" You you disable the security protocols"))
 	else
 		//The construction/deconstruction of the console code.
 		..()
@@ -171,7 +167,7 @@
 	usr.set_interaction(src)
 	if(href_list["menu"]) //Switches menu screens. Converts a sent text string into a number. Saves a LOT of code.
 		var/temp_screen = text2num(href_list["menu"])
-		if(temp_screen <= 1.1 || (3 <= temp_screen && 4.9 >= temp_screen) || src.allowed(usr) || emagged) //Unless you are making something, you need access.
+		if(temp_screen <= 1.1 || (3 <= temp_screen && 4.9 >= temp_screen) || src.allowed(usr)) //Unless you are making something, you need access.
 			screen = temp_screen
 		else
 			to_chat(usr, "Unauthorized Access.")

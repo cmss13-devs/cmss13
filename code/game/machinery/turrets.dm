@@ -378,21 +378,8 @@
 	if (issilicon(user))
 		return src.attack_hand(user)
 
-	if (istype(W, /obj/item/weapon/card/emag) && !emagged)
-		to_chat(user, SPAN_DANGER("You short out the turret controls' access analysis module."))
-		emagged = 1
-		locked = 0
-		if(user.machine==src)
-			src.attack_hand(user)
-
-		return
-
-	else if( get_dist(src, user) == 0 )		// trying to unlock the interface
+	if( get_dist(src, user) == 0 )		// trying to unlock the interface
 		if (src.allowed(usr))
-			if(emagged)
-				to_chat(user, SPAN_NOTICE("The turret control is unresponsive."))
-				return
-
 			locked = !locked
 			to_chat(user, SPAN_NOTICE("You [ locked ? "lock" : "unlock"] the panel.")
 			if (locked)

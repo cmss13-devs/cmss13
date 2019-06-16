@@ -15,8 +15,6 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "hdd1"
 	w_class = 2.0
-
-	var/emagged = 0
 	crit_fail = 0
 
 	// the computer that this device is attached to
@@ -101,14 +99,6 @@
 		if(slot == 2 && !dualslot)
 			to_chat(usr, "This device has only one card slot")
 			return 0
-
-		if(istype(card,/obj/item/card/emag)) // emag reader slot
-			if(!writer)
-				to_chat(usr, "You insert \the [card], and the computer grinds, sparks, and beeps.  After a moment, the card ejects itself.")
-				computer.emagged = 1
-				return 1
-			else
-				to_chat(usr, "You are unable to insert \the [card], as the reader slot is occupied")
 
 		var/mob/living/L = usr
 		switch(slot)
@@ -242,11 +232,6 @@
 	insert(var/obj/item/card/card,var/slot = 0)
 		if(!computer)
 			return 0
-
-		if(istype(card,/obj/item/card/emag) && !reader) // emag reader slot
-			usr.visible_message("[computer]'s screen flickers for a moment.","You insert \the [card].  After a moment, the card ejects itself, and [computer] beeps.","[computer] beeps.")
-			computer.emagged = 1
-			return 1
 
 		if(slot == 1)				// 1: writer
 			if(writer != null)

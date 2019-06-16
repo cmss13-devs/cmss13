@@ -19,8 +19,6 @@
 	var/list/holographic_items = list()
 	var/damaged = 0
 	var/last_change = 0
-	var/emagged = 0
-
 
 	interact()
 		if(!interactable())
@@ -35,21 +33,10 @@
 
 		dat += "<span class='notice'>Please ensure that only holographic weapons are used in the holodeck if a combat simulation has been loaded.</span><BR>"
 
-		if(emagged)
-			dat += "<A href='?src=\ref[src];burntest'>(<font color=red>Begin Atmospheric Burn Simulation</font>)</A><BR>"
-			dat += "Ensure the holodeck is empty before testing.<BR>"
-			dat += "<BR>"
-			dat += "<A href='?src=\ref[src];wildlifecarp'>(<font color=red>Begin Wildlife Simulation</font>)</A><BR>"
-			dat += "Ensure the holodeck is empty before testing.<BR>"
-			dat += "<BR>"
-			if(issilicon(usr))
-				dat += "<A href='?src=\ref[src];AIoverride'>(<font color=green>Re-Enable Safety Protocols?</font>)</A><BR>"
-			dat += "Safety Protocols are <font class='bad'>DISABLED</font><BR>"
-		else
-			if(issilicon(usr))
-				dat += "<A href='?src=\ref[src];AIoverride'>(<font color=red>Override Safety Protocols?</font>)</A><BR>"
-			dat += "<BR>"
-			dat += "Safety Protocols are <font class='good'>ENABLED</font><BR>"
+		if(issilicon(usr))
+			dat += "<A href='?src=\ref[src];AIoverride'>(<font color=red>Override Safety Protocols?</font>)</A><BR>"
+		dat += "<BR>"
+		dat += "Safety Protocols are <font class='good'>ENABLED</font><BR>"
 
 		popup.set_content(dat)
 		popup.open()
@@ -91,26 +78,15 @@
 				loadProgram(target)
 
 		else if("burntest" in href_list)
-			if(!emagged)	return
-			target = locate(/area/holodeck/source_burntest)
-			if(target)
-				loadProgram(target)
+			return
 
 		else if("wildlifecarp" in href_list)
-			if(!emagged)	return
-			target = locate(/area/holodeck/source_wildlife)
-			if(target)
-				loadProgram(target)
+			return
 
 		else if("AIoverride" in href_list)
 			if(!issilicon(usr))	return
-			emagged = !emagged
-			if(emagged)
-				message_admins("[key_name_admin(usr)] overrode the holodeck's safeties")
-				log_game("[key_name(usr)] overrided the holodeck's safeties")
-			else
-				message_admins("[key_name_admin(usr)] restored the holodeck's safeties")
-				log_game("[key_name(usr)] restored the holodeck's safeties")
+			message_admins("[key_name_admin(usr)] restored the holodeck's safeties")
+			log_game("[key_name(usr)] restored the holodeck's safeties")
 
 		interact()
 		return
@@ -214,10 +190,6 @@
 			qdel(C)
 
 		holographic_items = A.copy_contents_to(linkedholodeck , 1)
-
-		if(emagged)
-			for(var/obj/item/weapon/holo/esword/H in linkedholodeck)
-				H.damtype = BRUTE
 
 		spawn(30)
 			for(var/obj/effect/landmark/L in linkedholodeck)

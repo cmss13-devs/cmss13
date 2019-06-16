@@ -73,7 +73,7 @@
 					else
 						dat += " Independent from AI |"
 					if (issilicon(usr))
-						if(issilicon(usr) && is_special_character(usr) && !R.emagged)
+						if(issilicon(usr) && is_special_character(usr))
 							dat += "<A href='?src=\ref[src];magbot=\ref[R]'>(<i>Hack</i>)</A> "
 					dat += "<A href='?src=\ref[src];stopbot=\ref[R]'>(<i>[R.canmove ? "Lockdown" : "Release"]</i>)</A> "
 					dat += "<A href='?src=\ref[src];killbot=\ref[R]'>(<i>Destroy</i>)</A>"
@@ -158,14 +158,9 @@
 					var/choice = input("Are you certain you wish to detonate [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")
 						if(R && istype(R))
-							if(R.mind && R.mind.special_role && R.emagged)
-								to_chat(R, "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered.")
-								R.ResetSecurityCodes()
-
-							else
-								message_admins(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
-								log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
-								R.self_destruct()
+							message_admins(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
+							log_game(SPAN_NOTICE("[key_name_admin(usr)] detonated [R.name]!"))
+							R.self_destruct()
 			else
 				to_chat(usr, SPAN_DANGER("Access Denied."))
 
@@ -198,9 +193,7 @@
 					var/choice = input("Are you certain you wish to hack [R.name]?") in list("Confirm", "Abort")
 					if(choice == "Confirm")
 						if(R && istype(R))
-//							message_admins(SPAN_NOTICE("[key_name_admin(usr)] emagged [R.name] using robotic console!"))
 							log_game("[key_name(usr)] emagged [R.name] using robotic console!")
-							R.emagged = 1
 							if(R.mind.special_role)
 								R.verbs += /mob/living/silicon/robot/proc/ResetSecurityCodes
 

@@ -27,50 +27,19 @@
 	attackby(obj/item/W as obj, mob/user as mob)
 		if (istype(W, /obj/item/card/id/))
 			if (src.allowed(user))
-				if	(src.emagged < 2.0)
-					src.locked = !src.locked
-					src.anchored = !src.anchored
-					src.icon_state = "barrier[src.locked]"
-					if ((src.locked == 1.0) && (src.emagged < 2.0))
-						to_chat(user, "Barrier lock toggled on.")
-						return
-					else if ((src.locked == 0.0) && (src.emagged < 2.0))
-						to_chat(user, "Barrier lock toggled off.")
-						return
-				else
-					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-					s.set_up(2, 1, src)
-					s.start()
-					visible_message(SPAN_DANGER("BZZzZZzZZzZT"))
+				src.locked = !src.locked
+				src.anchored = !src.anchored
+				src.icon_state = "barrier[src.locked]"
+				if (src.locked == 1.0)
+					to_chat(user, "Barrier lock toggled on.")
+					return
+				else if (src.locked == 0.0)
+					to_chat(user, "Barrier lock toggled off.")
 					return
 			return
-		else if (istype(W, /obj/item/card/emag))
-			if (src.emagged == 0)
-				src.emagged = 1
-				src.req_access = null
-				to_chat(user, "You break the ID authentication lock on \the [src].")
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(2, 1, src)
-				s.start()
-				visible_message(SPAN_DANGER("BZZzZZzZZzZT"))
-				return
-			else if (src.emagged == 1)
-				src.emagged = 2
-				to_chat(user, "You short out the anchoring mechanism on \the [src].")
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(2, 1, src)
-				s.start()
-				visible_message(SPAN_DANGER("BZZzZZzZZzZT"))
-				return
 		else if (istype(W, /obj/item/tool/wrench))
 			if (src.health < src.maxhealth)
 				src.health = src.maxhealth
-				src.emagged = 0
-				src.req_access = list(ACCESS_MARINE_PREP)
-				visible_message(SPAN_DANGER("[user] repairs \the [src]!"))
-				return
-			else if (src.emagged > 0)
-				src.emagged = 0
 				src.req_access = list(ACCESS_MARINE_PREP)
 				visible_message(SPAN_DANGER("[user] repairs \the [src]!"))
 				return

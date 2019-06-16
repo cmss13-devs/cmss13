@@ -55,9 +55,6 @@ var/prison_shuttle_timeleft = 0
 					A.icon_state = "4"
 
 				qdel(src)
-		else if(istype(I,/obj/item/card/emag) && (!hacked))
-			hacked = 1
-			to_chat(user, SPAN_NOTICE(" You disable the lock."))
 		else
 			return src.attack_hand(user)
 

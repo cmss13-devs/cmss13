@@ -125,7 +125,7 @@
 
 /obj/machinery/door/proc/try_to_activate_door(mob/user)
 	add_fingerprint(user)
-	if(operating || emagged)
+	if(operating)
 		return
 	if(!Adjacent(user))
 		user = null //so allowed(user) always succeeds
@@ -142,14 +142,7 @@
 
 
 /obj/machinery/door/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/card/emag))
-		if(!operating && density && operable())
-			flick("door_spark", src)
-			sleep(6)
-			open()
-			operating = -1
-		return 1
-	else if(!(I.flags_item & NOBLUDGEON))
+	if(!(I.flags_item & NOBLUDGEON))
 		try_to_activate_door(user)
 		return 1
 

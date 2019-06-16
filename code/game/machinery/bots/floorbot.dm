@@ -86,12 +86,10 @@
 		to_chat(user, SPAN_NOTICE("You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles."))
 		src.updateicon()
 	else if(istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
-		if(src.allowed(usr) && !open && !emagged)
+		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
 		else
-			if(emagged)
-				to_chat(user, SPAN_WARNING("ERROR"))
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
@@ -99,11 +97,6 @@
 		src.updateUsrDialog()
 	else
 		..()
-
-/obj/machinery/bot/floorbot/Emag(mob/user as mob)
-	..()
-	if(open && !locked)
-		if(user) to_chat(user, SPAN_NOTICE("The [src] buzzes and beeps."))
 
 /obj/machinery/bot/floorbot/Topic(href, href_list)
 	if(..())
@@ -169,7 +162,7 @@
 	if(prob(5))
 		visible_message("[src] makes an excited booping beeping sound!")
 
-	if((!src.target || src.target == null) && emagged < 2)
+	if(!src.target || src.target == null)
 		if(targetdirection != null)
 			/*
 			for (var/turf/open/space/D in view(7,src))
@@ -202,14 +195,6 @@
 					src.target = T
 					break
 
-	if((!src.target || src.target == null) && emagged == 2)
-		if(!src.target || src.target == null)
-			for (var/turf/open/floor/D in view(7,src))
-				if(!(D in floorbottargets) && D != src.oldtarget && D.floor_tile)
-					src.oldtarget = D
-					src.target = D
-					break
-
 	if(!src.target || src.target == null)
 		if(src.loc != src.oldloc)
 			src.oldtarget = null
@@ -238,22 +223,8 @@
 			src.eattile(src.target)
 		else if(istype(src.target, /obj/item/stack/sheet/metal))
 			src.maketile(src.target)
-		else if(istype(src.target, /turf/) && emagged < 2)
+		else if(istype(src.target, /turf/))
 			repair(src.target)
-		else if(emagged == 2 && istype(src.target,/turf/open/floor))
-			var/turf/open/floor/F = src.target
-			src.anchored = 1
-			src.repairing = 1
-			if(prob(90))
-				F.break_tile_to_plating()
-			else
-				F.ReplaceWithLattice()
-			visible_message(SPAN_DANGER("[src] makes an excited booping sound."))
-			spawn(50)
-				src.amount ++
-				src.anchored = 0
-				src.repairing = 0
-				src.target = null
 		src.path = new()
 		return
 

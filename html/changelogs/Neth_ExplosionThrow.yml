@@ -1,0 +1,6 @@
+author: Neth Iafin
+
+delete-after: True
+
+changes: 
+  - experiment: "Grenades now send living beings flying into random direction even if they are on the same tile."

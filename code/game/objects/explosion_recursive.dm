@@ -331,7 +331,8 @@ proc/explosion_rec(turf/epicenter, power, falloff = 20)
 			weight = 4
 	var/range = round( severity/weight * 0.02 ,1)
 	if(!direction)
-		range = round( range/2 ,1)
+		range = round( 2*range/3 ,1)
+		direction = pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST)
 
 	if(range <= 0)
 		return

@@ -438,8 +438,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/magazine_box/rifle/l42mk1/incendiary
 	name = "magazine box (Incendiary L42-MK1 x 16)"
-	icon_state = "mag_box_l42_incendiary_closed"
-	icon_base_name = "mag_box_l42_incendiary"
+	icon_state = "mag_box_l42_incen_closed"
+	icon_base_name = "mag_box_l42_incen"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/incendiary
 
@@ -486,14 +486,27 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/structure/magazine_box/update_icon()
 	if(!handfuls)
-		if(contents.len)
+		if(contents.len == num_of_magazines)
 			icon_state = "[icon_base_name]"
+		else if(contents.len > (num_of_magazines/2))
+			icon_state = "[icon_base_name]_3"
+		else if(contents.len > (num_of_magazines/4))
+			icon_state = "[icon_base_name]_2"
+		else if(contents.len > 0)
+			icon_state = "[icon_base_name]_1"
 		else
 			icon_state = "[icon_base_name]_empty"
 	else
 		var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
-		if(AM.current_rounds)
+
+		if(AM.current_rounds == num_of_magazines)
 			icon_state = "[icon_base_name]"
+		else if(AM.current_rounds > (num_of_magazines/2))
+			icon_state = "[icon_base_name]_3"
+		else if(AM.current_rounds > (num_of_magazines/4))
+			icon_state = "[icon_base_name]_2"
+		else if(AM.current_rounds > 0)
+			icon_state = "[icon_base_name]_1"
 		else
 			icon_state = "[icon_base_name]_empty"
 
@@ -543,8 +556,16 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/caliber = "10x24mm"
 
 /obj/item/big_ammo_box/update_icon()
-	if(bullet_amount) icon_state = base_icon_state
-	else icon_state = "[base_icon_state]_e"
+	if(bullet_amount == max_bullet_amount)
+		icon_state = base_icon_state
+	else if(bullet_amount > (max_bullet_amount/2))
+		icon_state = "[base_icon_state]_3"
+	else if(bullet_amount > (max_bullet_amount/4))
+		icon_state = "[base_icon_state]_2"
+	else if(bullet_amount > 0)
+		icon_state = "[base_icon_state]_1"
+	else
+		icon_state = "[base_icon_state]_e"
 
 /obj/item/big_ammo_box/examine(mob/user)
 	..()

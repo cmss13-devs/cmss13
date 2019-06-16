@@ -42,6 +42,19 @@
 		/obj/item/ammo_magazine/sniper,
 	)
 
+/obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_into(M,user)
+	else if(istype(W, /obj/item/storage/box/nade_box))
+		var/obj/item/storage/box/nade_box/M = W
+		dump_into(M,user)
+	else if(istype(W, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/M = W
+		dump_into(M,user)
+	else
+		return ..()
+
 /obj/item/storage/pouch/general/medium
 	name = "medium general pouch"
 	storage_slots = 2
@@ -173,6 +186,12 @@
 		/obj/item/ammo_magazine/handful
 	)
 
+/obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_into(M,user)
+	else
+		return ..()
 
 /obj/item/storage/pouch/magazine/large
 	name = "large magazine pouch"
@@ -287,6 +306,13 @@
 		/obj/item/storage/box/explosive_mines
 	)
 
+/obj/item/storage/pouch/explosive/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/box/nade_box))
+		var/obj/item/storage/box/nade_box/M = W
+		dump_into(M,user)
+	else
+		return ..()
+
 /obj/item/storage/pouch/explosive/full/New()
 	..()
 	new /obj/item/explosive/grenade/HE/frag (src)
@@ -390,22 +416,7 @@
 /obj/item/storage/pouch/flare/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/storage/box/m94))
 		var/obj/item/storage/box/m94/M = W
-		if(M.contents.len)
-			if(contents.len < storage_slots)
-				to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
-				if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-				for(var/obj/item/I in M)
-					if(contents.len < storage_slots)
-						M.remove_from_storage(I)
-						handle_item_insertion(I, 1, user) //quiet insertion
-					else
-						break
-				playsound(user.loc, "rustle", 15, 1, 6)
-			else
-				to_chat(user, SPAN_WARNING("[src] is full."))
-		else
-			to_chat(user, SPAN_WARNING("[M] is empty."))
-		return TRUE
+		dump_into(M,user)
 	else
 		return ..()
 

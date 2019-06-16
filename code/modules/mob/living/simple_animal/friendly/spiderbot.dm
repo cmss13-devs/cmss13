@@ -35,7 +35,6 @@
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
 
-	var/emagged = 0
 	var/obj/item/held_item = null //Storage for single item they can hold.
 	speed = -1                    //Spiderbots gotta go fast.
 	//flags_pass = PASSTABLE      //Maybe griefy?
@@ -120,19 +119,6 @@
 		else
 			to_chat(user, SPAN_DANGER("You swipe your card, with no effect."))
 			return 0
-	else if (istype(O, /obj/item/card/emag))
-		if (emagged)
-			to_chat(user, SPAN_DANGER("[src] is already overloaded - better run."))
-			return 0
-		else
-			var/obj/item/card/emag/emag = O
-			emag.uses--
-			emagged = 1
-			to_chat(user, SPAN_NOTICE(" You short out the security protocols and overload [src]'s cell, priming it to explode in a short time."))
-			spawn(100)	to_chat(src, SPAN_DANGER("Your cell seems to be outputting a lot of power..."))
-			spawn(200)	to_chat(src, SPAN_DANGER("Internal heat sensors are spiking! Something is badly wrong with your cell!"))
-			spawn(SECONDS_30)	src.explode()
-
 	else
 		if(O.force)
 			var/damage = O.force

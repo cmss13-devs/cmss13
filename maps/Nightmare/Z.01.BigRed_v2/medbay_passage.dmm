@@ -1,0 +1,150 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aE" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aG" = (
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aK" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aL" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aR" = (
+/turf/closed/wall/r_wall,
+/area/bigredv2/outside/admin_building)
+"aS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/multi_tile/almayer/comdoor{
+	name = "\improper Operations";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/bigredv2/outside/admin_building)
+"aT" = (
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/bigredv2/outside/admin_building)
+"aV" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"aZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+"ba" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/admin_building)
+
+(1,1,1) = {"
+aK
+aY
+aG
+aR
+"}
+(2,1,1) = {"
+aF
+aZ
+aF
+aS
+"}
+(3,1,1) = {"
+aV
+aL
+aG
+aT
+"}
+(4,1,1) = {"
+aE
+aL
+ba
+aR
+"}

@@ -93,15 +93,6 @@
 		if(isrobot(user) || iszombie(user))
 			return
 		user.drop_inv_item_to_loc(W, loc)
-	else if(istype(W, /obj/item/card/emag))
-		if(broken) return
-		broken = 1
-		locked = 0
-		desc = "It appears to be broken."
-		icon_state = icon_off
-		flick(icon_broken, src)
-		for(var/mob/O in viewers(user, 3))
-			O.show_message(SPAN_WARNING("The locker has been broken by [user] with an electromagnetic card!"), 1, "You hear a faint electrical spark.", 2)
 	else if(istype(W,/obj/item/packageWrap) || istype(W,/obj/item/tool/weldingtool))
 		return ..(W,user)
 	else

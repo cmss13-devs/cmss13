@@ -57,8 +57,6 @@
 				user.show_message(SPAN_NOTICE("\t [organ_name]: [organ_destroyed_msg][organ_elec_dmg_msg] - [organ_brute_dmg_msg] - [organ_toggled_msg] - [organ_powered_msg]"), 1)
 		else
 			user.show_message(SPAN_NOTICE("\t Components are OK."),1)
-		if(H.emagged && prob(5))
-			user.show_message(SPAN_DANGER("\t ERROR: INTERNAL SYSTEMS COMPROMISED"),1)
 
 	if (ishuman(M) && (M:species.flags & IS_SYNTHETIC))
 		var/mob/living/carbon/human/H = M

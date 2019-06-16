@@ -80,8 +80,6 @@
 	return
 
 /obj/machinery/door/airlock/AICtrlShiftClick()
-	if(emagged)
-		return
 	return
 
 /atom/proc/AIShiftClick()

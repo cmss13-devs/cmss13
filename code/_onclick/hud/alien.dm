@@ -74,6 +74,7 @@
 
 	using = new /obj/screen/xenonightvision()
 	infodisplay += using
+	owner.verbs += /datum/action/xeno_action/verb/verb_night_vision
 
 	alien_plasma_display = new /obj/screen()
 	alien_plasma_display.icon = 'icons/mob/screen1_alien.dmi'

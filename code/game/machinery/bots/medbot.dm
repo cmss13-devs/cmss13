@@ -14,7 +14,6 @@
 	maxhealth = 20
 	req_access =list(ACCESS_MARINE_MEDBAY)
 	var/stunned = 0 //It can be stunned by tasers. Delicate circuits.
-//var/emagged = 0
 	var/list/botcard_access = list(ACCESS_MARINE_MEDBAY)
 	var/obj/item/reagent_container/glass/reagent_glass = null //Can be set to draw from this for reagents.
 	var/skin = null //Set to "tox", "ointment" or "o2" for the other two firstaid kits.
@@ -182,13 +181,11 @@
 
 /obj/machinery/bot/medbot/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id)||istype(W, /obj/item/device/pda))
-		if (src.allowed(user) && !open && !emagged)
+		if (src.allowed(user) && !open)
 			src.locked = !src.locked
 			to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked." : "unlocked."]"))
 			src.updateUsrDialog()
 		else
-			if(emagged)
-				to_chat(user, SPAN_WARNING("ERROR"))
 			if(open)
 				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
 			else
@@ -212,24 +209,6 @@
 		..()
 		if (health < maxhealth && !istype(W, /obj/item/tool/screwdriver) && W.force)
 			step_to(src, (get_step_away(src,user)))
-
-/obj/machinery/bot/medbot/Emag(mob/user as mob)
-	..()
-	if(open && !locked)
-		if(user) to_chat(user, SPAN_WARNING("You short out [src]'s reagent synthesis circuits."))
-		spawn(0)
-			for(var/mob/O in hearers(src, null))
-				O.show_message(SPAN_DANGER("<B>[src] buzzes oddly!</B>"), 1)
-		flick("medibot_spark", src)
-		src.patient = null
-		if(user) src.oldpatient = user
-		src.currently_healing = 0
-		src.last_found = world.time
-		src.anchored = 0
-		src.emagged = 2
-		src.safety_checks = 0
-		src.on = 1
-		src.icon_state = "medibot[src.on]"
 
 /obj/machinery/bot/medbot/process()
 	set background = 1
@@ -328,9 +307,6 @@
 	if(C.stat == 2)
 		return 0 //welp too late for them!
 
-	if(src.emagged == 2) //Everyone needs our medicine. (Our medicine is toxins)
-		return 1
-
 	if(safety_checks)
 		if(C.reagents.total_volume > 0)
 			for(var/datum/reagent/R in C.reagents.reagent_list)
@@ -397,9 +373,6 @@
 				break
 		if(!safety_fail)
 			reagent_id = "internal_beaker"
-
-	if(emagged == 2) //Emagged! Time to poison everybody.
-		reagent_id = "toxin"
 
 	var/virus = 0
 	for(var/datum/disease/D in C.viruses)

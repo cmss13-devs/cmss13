@@ -32,7 +32,7 @@
 	var/installation		// the type of weapon installed
 	var/gun_charge = 0		// the charge of the gun inserted
 	var/projectile = null	//holder for bullettype
-	var/eprojectile = null//holder for the shot when emagged
+	var/eprojectile = null	//holder for the shot when emagged
 	var/reqpower = 0 //holder for power needed
 	var/sound = null//So the taser can have sound
 	var/iconholder = null//holder for the icon_state
@@ -51,7 +51,6 @@
 
 	var/attacked = 0		// if set to 1, the turret gets pissed off and shoots at people nearby (unless they have sec access!)
 
-	//var/emagged = 0			// 1: emagged, 0: not emagged
 	var/on = 1				// determines if the turret is on
 	var/disabled = 0
 
@@ -308,20 +307,6 @@ Status: []<BR>"},
 				to_chat(user, "You remove the turret but did not manage to salvage anything.")
 			del(src)
 
-
-	if ((istype(W, /obj/item/weapon/card/emag)) && (!src.emagged))
-		// Emagging the turret makes it go bonkers and stun everyone. It also makes
-		// the turret shoot much, much faster.
-
-		to_chat(user, SPAN_DANGER("You short out [src]'s threat assessment circuits."))
-		spawn(0)
-			for(var/mob/O in hearers(src, null))
-				O.show_message(SPAN_DANGER("[src] hums oddly..."), 1)
-		emagged = 1
-		src.on = 0 // turns off the turret temporarily
-		sleep(60) // 6 seconds for the traitor to gtfo of the area before the turret decides to ruin his shit
-		on = 1 // turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
-
 	else if((istype(W, /obj/item/weapon/wrench)) && (!on))
 		if(raised) return
 		// This code handles moving the turret around. After all, it's a portable turret!
@@ -354,7 +339,7 @@ Status: []<BR>"},
 		if (src.health <= 0)
 			src.die()
 		if ((W.force * 0.5) > 1) // if the force of impact dealt at least 1 damage, the turret gets pissed off
-			if(!attacked && !emagged)
+			if(!attacked)
 				attacked = 1
 				spawn()
 					sleep(60)
@@ -369,7 +354,7 @@ Status: []<BR>"},
 		return
 
 	if(on)
-		if(!attacked && !emagged)
+		if(!attacked)
 			attacked = 1
 			spawn()
 				sleep(60)
@@ -390,7 +375,6 @@ Status: []<BR>"},
 		criminals=pick(0,1)
 		auth_weapons=pick(0,1)
 		stun_all=pick(0,0,0,0,1) // stun_all is a pretty big deal, so it's least likely to get turned on
-		if(prob(5)) emagged=1
 		on=0
 		sleep(rand(60,600))
 		if(!on)
@@ -453,39 +437,36 @@ Status: []<BR>"},
 				targets += C
 
 		else
-			if(emagged) // if emagged, HOLY SHIT EVERYONE IS DANGEROUS beep boop beep
-				targets += C
-			else
-				if (C.stat || C.handcuffed) // if the perp is handcuffed or dead/dying, no need to bother really
-					continue // move onto next potential victim!
+			if (C.stat || C.handcuffed) // if the perp is handcuffed or dead/dying, no need to bother really
+				continue // move onto next potential victim!
 
-				var/dst = get_dist(src, C) // if it's too far away, why bother?
-				if (dst > 7)
-					continue
+			var/dst = get_dist(src, C) // if it's too far away, why bother?
+			if (dst > 7)
+				continue
 
-				if(ai) // If it's set to attack all nonsilicons, target them!
-					if(C.lying)
-						if(lasercolor)
-							continue
-						else
-							secondarytargets += C
-							continue
-					else
-						targets += C
+			if(ai) // If it's set to attack all nonsilicons, target them!
+				if(C.lying)
+					if(lasercolor)
 						continue
-
-				if (istype(C, /mob/living/carbon/human)) // if the target is a human, analyze threat level
-					if(src.assess_perp(C)<4)
-						continue // if threat level < 4, keep going
-
-				else if (istype(C, /mob/living/carbon/monkey))
-					continue // Don't target monkeys or borgs/AIs you dumb shit
-
-				if (C.lying) // if the perp is lying down, it's still a target but a less-important target
-					secondarytargets += C
+					else
+						secondarytargets += C
+						continue
+				else
+					targets += C
 					continue
 
-				targets += C // if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
+			if (istype(C, /mob/living/carbon/human)) // if the target is a human, analyze threat level
+				if(src.assess_perp(C)<4)
+					continue // if threat level < 4, keep going
+
+			else if (istype(C, /mob/living/carbon/monkey))
+				continue // Don't target monkeys or borgs/AIs you dumb shit
+
+			if (C.lying) // if the perp is lying down, it's still a target but a less-important target
+				secondarytargets += C
+				continue
+
+			targets += C // if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
 
 	if (targets.len>0) // if there are targets to shoot
 
@@ -544,8 +525,6 @@ Status: []<BR>"},
 /obj/machinery/porta_turret/proc/assess_perp(mob/living/carbon/human/perp as mob)
 	var/threatcount = 0 // the integer returned
 /*
-	if(src.emagged) return 10 // if emagged, always return 10.
-
 	if((stun_all && !src.allowed(perp)) || attacked && !src.allowed(perp))
 		// if the turret has been attacked or is angry, target all non-sec people
 		if(!src.allowed(perp))
@@ -616,12 +595,11 @@ Status: []<BR>"},
 		if(H.lying)
 			return
 
-	if(!emagged) // if it hasn't been emagged, it has to obey a cooldown rate
-		if(last_fired || !raised) return // prevents rapid-fire shooting, unless it's been emagged
-		last_fired = 1
-		spawn()
-			sleep(shot_delay)
-			last_fired = 0
+	if(last_fired || !raised) return // prevents rapid-fire shooting, unless it's been emagged
+	last_fired = 1
+	spawn()
+		sleep(shot_delay)
+		last_fired = 0
 
 	var/turf/T = get_turf(src)
 	var/turf/U = get_turf(target)
@@ -632,8 +610,6 @@ Status: []<BR>"},
 		return
 
 
-	// any emagged turrets will shoot extremely fast! This not only is deadly, but drains a lot power!
-
 	if(iconholder)
 		icon_state = "[lasercolor]target_prism"
 	else
@@ -641,16 +617,11 @@ Status: []<BR>"},
 	if(sound)
 		playsound(src.loc, 'sound/weapons/Taser.ogg', 75, 1)
 	var/obj/item/projectile/A
-	if(emagged)
-		A = new eprojectile( loc )
-	else
-		A = new projectile( loc )
+	A = new projectile( loc )
 	A.original = target.loc
-	if(!emagged)
-		use_power(reqpower)
-	else
-		use_power((reqpower*2))
-		// Shooting Code:
+	use_power(reqpower)
+	
+	// Shooting Code:
 	A.current = T
 	A.yo = U.y - T.y
 	A.xo = U.x - T.x
@@ -996,18 +967,7 @@ Status: []<BR>"},
 
 
 /obj/machinery/porta_turret_cover/attackby(obj/item/W as obj, mob/user as mob)
-
-	if ((istype(W, /obj/item/weapon/card/emag)) && (!Parent_Turret.emagged))
-		to_chat(user, SPAN_DANGER("You short out [Parent_Turret]'s threat assessment circuits."))
-		spawn(0)
-			for(var/mob/O in hearers(Parent_Turret, null))
-				O.show_message(SPAN_DANGER("[Parent_Turret] hums oddly..."), 1)
-		Parent_Turret.emagged = 1
-		Parent_Turret.on = 0
-		sleep(40)
-		Parent_Turret.on = 1
-
-	else if((istype(W, /obj/item/weapon/wrench)) && (!Parent_Turret.on))
+	if((istype(W, /obj/item/weapon/wrench)) && (!Parent_Turret.on))
 		if(Parent_Turret.raised) return
 
 		if(!Parent_Turret.anchored)
@@ -1046,8 +1006,6 @@ Status: []<BR>"},
 
 
 /obj/machinery/porta_turret/stationary
-	emagged = 1
-
 	New()
 		installation = new/obj/item/weapon/gun/energy/laser(src.loc)
 		..()

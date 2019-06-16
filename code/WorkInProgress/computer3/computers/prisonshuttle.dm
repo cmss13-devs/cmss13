@@ -19,7 +19,6 @@ var/prison_shuttle_timeleft = 0
 	var/temp = null
 	var/hacked = 0
 	var/allowedtocall = 0
-	var/prison_break = 0
 
 
 	attackby(I as obj, user as mob)
@@ -56,9 +55,6 @@ var/prison_shuttle_timeleft = 0
 					A.icon_state = "4"
 
 				qdel(src)
-		else if(istype(I,/obj/item/card/emag) && (!hacked))
-			hacked = 1
-			to_chat(user, SPAN_NOTICE(" You disable the lock."))
 		else
 			return src.attack_hand(user)
 
@@ -66,9 +62,6 @@ var/prison_shuttle_timeleft = 0
 	attack_hand(var/mob/user as mob)
 		if(!src.allowed(user) && (!hacked))
 			to_chat(user, SPAN_DANGER("Access Denied."))
-			return
-		if(prison_break)
-			to_chat(user, SPAN_DANGER("Unable to locate shuttle."))
 			return
 		if(..())
 			return
@@ -137,24 +130,6 @@ var/prison_shuttle_timeleft = 0
 	proc/prison_can_move()
 		if(prison_shuttle_moving_to_station || prison_shuttle_moving_to_prison) return 0
 		else return 1
-
-/*
-	proc/prison_break()
-		switch(prison_break)
-			if (0)
-				if(!prison_shuttle_at_station || prison_shuttle_moving_to_prison) return
-
-				prison_shuttle_moving_to_prison = 1
-				prison_shuttle_at_station = prison_shuttle_at_station
-
-				if (!prison_shuttle_moving_to_prison || !prison_shuttle_moving_to_station)
-					prison_shuttle_time = world.timeofday + PRISON_MOVETIME
-				spawn(0)
-					prison_process()
-				prison_break = 1
-			if(1)
-				prison_break = 0
-*/
 
 	proc/post_signal(var/command)
 		var/datum/radio_frequency/frequency = radio_controller.return_frequency(1311)

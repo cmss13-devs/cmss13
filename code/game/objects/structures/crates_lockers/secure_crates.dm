@@ -71,17 +71,6 @@
 /obj/structure/closet/crate/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(is_type_in_list(W, list(/obj/item/packageWrap, /obj/item/stack/cable_coil, /obj/item/device/radio/electropack, /obj/item/tool/wirecutters, /obj/item/tool/weldingtool)))
 		return ..()
-	if(locked && istype(W, /obj/item/card/emag))
-		overlays.Cut()
-		overlays += emag
-		overlays += sparks
-		spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
-		playsound(src.loc, "sparks", 25, 1)
-		locked = 0
-		broken = 1
-		update_icon()
-		to_chat(user, SPAN_NOTICE("You unlock \the [src]."))
-		return
 	if(!opened)
 		src.togglelock(user)
 		return

@@ -725,7 +725,6 @@
 /datum/ammo/bullet/sniper/incendiary/New()
 	..()
 	accuracy_var_high = config.med_proj_variance
-	max_range = config.norm_shell_range
 	scatter = 0
 	damage = config.mhigh_hit_damage
 	penetration = config.low_armor_penetration
@@ -738,7 +737,6 @@
 /datum/ammo/bullet/sniper/flak/New()
 	..()
 	accuracy = config.max_hit_accuracy
-	max_range = config.norm_shell_range
 	scatter = config.low_scatter_value
 	damage = config.max_hit_damage
 	damage_var_high = config.low_proj_variance

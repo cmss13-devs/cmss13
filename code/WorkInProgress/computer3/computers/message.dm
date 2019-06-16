@@ -26,7 +26,6 @@
 	//Computer properties
 	var/screen = 0 		// 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
 	var/hacking = 0		// Is it being hacked into by the AI/Cyborg
-	var/emag = 0		// When it is emagged.
 	var/message = SPAN_NOTICE("System bootup complete. Please select an option.")	// The message that shows on the main menu.
 	var/auth = 0 // Are they authenticated?
 	var/optioncount = 7
@@ -46,7 +45,7 @@
 
 
 	update_icon()
-		if(emag || hacking)
+		if(hacking)
 			overlay.icon_state = hack_icon
 		else
 			overlay.icon_state = normal_icon
@@ -56,7 +55,7 @@
 		if(!interactable())
 			return
 		//If the computer is being hacked or is emagged, display the reboot message.
-		if(hacking || emag)
+		if(hacking)
 			message = rebootmsg
 		var/dat = "<head><title>Message Monitor Console</title></head><body>"
 		dat += "<center><h2>Message Monitor Console</h2></center><hr>"
@@ -69,7 +68,7 @@
 			dat += "<h4><dd><A href='?src=\ref[src];auth=1'>&#09;<font color='red'>\[Unauthenticated\]</font></a>&#09;/"
 			dat += " Server Power: <u>[src.linkedServer && src.linkedServer.active ? "<font color='green'>\[On\]</font>":"<font color='red'>\[Off\]</font>"]</u></h4>"
 
-		if(hacking || emag)
+		if(hacking)
 			screen = 2
 		else if(!auth || !linkedServer || (linkedServer.stat & (NOPOWER|BROKEN)))
 			if(!linkedServer || (linkedServer.stat & (NOPOWER|BROKEN))) message = noserver
@@ -230,7 +229,6 @@
 
 	proc/UnmagConsole()
 		src.active_state = normal_icon
-		src.emag = 0
 
 	proc/ResetMessage()
 		customsender 	= "System Administrator"

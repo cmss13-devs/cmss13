@@ -221,7 +221,6 @@ proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(show_log == "Yes")
 		command_announcement.Announce("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
 
-	IonStorm(0)
 	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /*
@@ -1005,9 +1004,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 
 /client/proc/check_round_statistics()
-	set category = "Special Verbs"
+	set category = "Debug"
 	set name = "Round Statistics"
-	if(!check_rights(R_ADMIN))	return
+	if(!check_rights(R_ADMIN|R_DEBUG))	return
 
 	debug_variables(round_statistics)
 

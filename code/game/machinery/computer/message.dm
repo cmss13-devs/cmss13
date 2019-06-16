@@ -23,7 +23,6 @@
 	//Computer properties
 	var/screen = 0 		// 0 = Main menu, 1 = Message Logs, 2 = Hacked screen, 3 = Custom Message
 	var/hacking = 0		// Is it being hacked into by the AI/Cyborg
-	var/emag = 0		// When it is emagged.
 	var/message = "<span class='notice'>System bootup complete. Please select an option.</span>"	// The message that shows on the main menu.
 	var/auth = 0 // Are they authenticated?
 	var/optioncount = 8
@@ -40,29 +39,6 @@
 		return
 	if(!istype(user))
 		return
-	if(istype(O,/obj/item/card/emag/))
-		// Will create sparks and print out the console's password. You will then have to wait a while for the console to be back online.
-		// It'll take more time if there's more characters in the password..
-		if(!emag)
-			if(!isnull(src.linkedServer))
-				icon_state = hack_icon // An error screen I made in the computers.dmi
-				emag = 1
-				screen = 2
-				spark_system.set_up(5, 0, src)
-				src.spark_system.start()
-				var/obj/item/paper/monitorkey/MK = new/obj/item/paper/monitorkey
-				MK.loc = src.loc
-				// Will help make emagging the console not so easy to get away with.
-				MK.info += "<br><br><font color='red'>£%@%(*$%&(£&?*(%&£/{}</font>"
-				spawn(100*length(src.linkedServer.decryptkey)) UnmagConsole()
-				message = rebootmsg
-			else
-				to_chat(user, SPAN_NOTICE("A no server error appears on the screen."))
-	if(isscrewdriver(O) && emag)
-		//Stops people from just unscrewing the monitor and putting it back to get the console working again.
-		to_chat(user, SPAN_WARNING("It is too hot to mess with!"))
-		return
-
 	..()
 	return
 
@@ -70,7 +46,7 @@
 	..()
 	if(stat & (NOPOWER|BROKEN))
 		return
-	if(emag || hacking)
+	if(hacking)
 		icon_state = hack_icon
 	else
 		icon_state = normal_icon
@@ -87,8 +63,8 @@
 		return
 	if(!istype(user))
 		return
-	//If the computer is being hacked or is emagged, display the reboot message.
-	if(hacking || emag)
+	//If the computer is being hacked, display the reboot message.
+	if(hacking)
 		message = rebootmsg
 	var/dat = "<head><title>Message Monitor Console</title></head><body>"
 	dat += "<center><h2>Message Monitor Console</h2></center><hr>"
@@ -101,7 +77,7 @@
 		dat += "<h4><dd><A href='?src=\ref[src];auth=1'>&#09;<font color='red'>\[Unauthenticated\]</font></a>&#09;/"
 		dat += " Server Power: <u>[src.linkedServer && src.linkedServer.active ? "<font color='green'>\[On\]</font>":"<font color='red'>\[Off\]</font>"]</u></h4>"
 
-	if(hacking || emag)
+	if(hacking)
 		screen = 2
 	else if(!auth || !linkedServer || (linkedServer.stat & (NOPOWER|BROKEN)))
 		if(!linkedServer || (linkedServer.stat & (NOPOWER|BROKEN))) message = noserver
@@ -277,7 +253,6 @@
 
 /obj/machinery/computer/message_monitor/proc/UnmagConsole()
 	src.icon_state = normal_icon
-	src.emag = 0
 
 /obj/machinery/computer/message_monitor/proc/ResetMessage()
 	customsender 	= "System Administrator"

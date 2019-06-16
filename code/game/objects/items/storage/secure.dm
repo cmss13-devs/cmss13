@@ -21,7 +21,6 @@
 	var/l_set = 0
 	var/l_setshort = 0
 	var/l_hacking = 0
-	var/emagged = 0
 	var/open = 0
 	w_class = 3.0
 	max_w_class = 2
@@ -36,16 +35,6 @@
 
 	attackby(obj/item/W as obj, mob/user as mob)
 		if(locked)
-			if(istype(W, /obj/item/card/emag) && !emagged)
-				emagged = 1
-				src.overlays += image('icons/obj/items/storage/storage.dmi', icon_sparking)
-				sleep(6)
-				src.overlays = null
-				overlays += image('icons/obj/items/storage/storage.dmi', icon_locking)
-				locked = 0
-				to_chat(user, "You short out the lock on [src].")
-				return
-
 			if (istype(W, /obj/item/tool/screwdriver))
 				if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					src.open =! src.open
@@ -87,10 +76,8 @@
 		user.set_interaction(src)
 		var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
 		var/message = "Code"
-		if ((src.l_set == 0) && (!src.emagged) && (!src.l_setshort))
+		if ((src.l_set == 0) && (!src.l_setshort))
 			dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW PASSCODE.</b>")
-		if (src.emagged)
-			dat += text("<p>\n<font color=red><b>LOCKING SYSTEM ERROR - 1701</b></font>")
 		if (src.l_setshort)
 			dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
 		message = text("[]", src.code)
@@ -108,7 +95,7 @@
 				if ((src.l_set == 0) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
 					src.l_code = src.code
 					src.l_set = 1
-				else if ((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
+				else if ((src.code == src.l_code) && (src.l_set == 1))
 					src.locked = 0
 					src.overlays = null
 					overlays += image('icons/obj/items/storage/storage.dmi', icon_opened)
@@ -116,7 +103,7 @@
 				else
 					src.code = "ERROR"
 			else
-				if ((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
+				if ((href_list["type"] == "R") && (!src.l_setshort))
 					src.locked = 1
 					src.overlays = null
 					src.code = null

@@ -459,7 +459,8 @@ datum/game_mode/proc/initialize_special_clamps()
 		to_chat(new_xeno, "<B>Your job is to spread the hive.</B>")
 		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 
-	new_xeno.update_icons()
+	if(new_xeno)
+		new_xeno.update_icons()
 
 	if(original && !original.first_xeno) qdel(original) //Just to be sure.
 	if(original.first_xeno) qdel(new_xeno)

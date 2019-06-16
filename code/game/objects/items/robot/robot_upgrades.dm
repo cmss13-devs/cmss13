@@ -156,12 +156,3 @@
 	construction_cost = list("metal"=10000,"glass"=15000,"diamond" = 10000)
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-
-/obj/item/robot/upgrade/syndicate/action(var/mob/living/silicon/robot/R)
-	if(..()) return 0
-
-	if(R.emagged == 1)
-		return 0
-
-	R.emagged = 1
-	return 1

@@ -59,12 +59,6 @@
 ********************/
 
 /obj/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if (istype(O, /obj/item/card/emag))
-		if(is_secure_fridge && !emagged)
-			emagged = 1
-			locked = -1
-			to_chat(user, "You short out the product lock on [src].")
-		return
 	if(istype(O, /obj/item/tool/screwdriver))
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
@@ -217,7 +211,7 @@
 		if (!in_range(src, usr))
 			return 0
 		if(is_secure_fridge)
-			if(!allowed(usr) && !emagged && locked != -1)
+			if(!allowed(usr) && locked != -1)
 				to_chat(usr, SPAN_DANGER("Access denied."))
 				return 0
 		var/index = text2num(href_list["vend"])

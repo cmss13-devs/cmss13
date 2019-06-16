@@ -7,6 +7,7 @@
 /area/shuttle/drop1
 	ambience = list('sound/ambience/ambigen10.ogg','sound/ambience/ambispace.ogg','sound/ambience/ambisin4.ogg','sound/ambience/signal.ogg')
 	is_resin_allowed = FALSE
+	flags_atom = AREA_NOTUNNEL
 	
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
@@ -56,6 +57,7 @@
 
 /area/shuttle/drop2
 	is_resin_allowed = FALSE
+	flags_atom = AREA_NOTUNNEL
 
 /area/shuttle/drop2/sulaco
 	name = "\improper Dropship Normandy"

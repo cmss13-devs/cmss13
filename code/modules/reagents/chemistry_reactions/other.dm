@@ -25,6 +25,13 @@
 	var/expower
 	var/shards = 4 // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
+
+	if(ishuman(holder.my_atom))
+		var/mob/living/carbon/human/H = holder.my_atom
+		msg_admin_niche("WARNING: Pill-based potassium-water explosion attempted in containing mob [H.name] ([H.ckey]) in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		holder.exploded = TRUE
+		return
+
 	if(sourceturf.chemexploded)
 		return // Has recently exploded, so no explosion this time. Prevents instagib satchel charges.
 
@@ -509,6 +516,13 @@
 	result = "cleaner"
 	required_reagents = list("ammonia" = 1, "water" = 1)
 	result_amount = 2
+
+/datum/chemical_reaction/dinitroaniline
+	name = "Dinitroaniline"
+	id = "dinitroaniline"
+	result = "dinitroaniline"
+	required_reagents = list("ammonia" = 1, "sacid" = 1, "nitrogen" = 1)
+	result_amount = 3
 
 /datum/chemical_reaction/plantbgone
 	name = "Plant-B-Gone"

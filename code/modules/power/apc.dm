@@ -322,8 +322,6 @@
 			update_state |= UPSTATE_OPENED1
 		if(opened == 2)
 			update_state |= UPSTATE_OPENED2
-	else if(emagged)
-		update_state |= UPSTATE_BLUESCREEN
 	else if(wiresexposed)
 		update_state |= UPSTATE_WIREEXP
 	if(update_state <= 1)
@@ -461,8 +459,6 @@
 					to_chat(user, SPAN_WARNING("There is nothing to secure."))
 					return
 				update_icon()
-		else if(emagged)
-			to_chat(user, SPAN_WARNING("The interface is broken."))
 		else
 			wiresexposed = !wiresexposed
 			user.visible_message(SPAN_NOTICE("[user] [wiresexposed ? "exposes" : "unexposes"] [src]'s wiring."),
@@ -473,9 +469,7 @@
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You're not sure where to swipe [W] on [src]."))
 			return
-		if(emagged)
-			to_chat(user, SPAN_WARNING("The interface is broken."))
-		else if(opened)
+		if(opened)
 			to_chat(user, SPAN_WARNING("You must close the cover to swipe an ID card."))
 		else if(wiresexposed)
 			to_chat(user, SPAN_WARNING("You must close the panel."))
@@ -489,23 +483,6 @@
 				update_icon()
 			else
 				to_chat(user, SPAN_WARNING("Access denied."))
-	else if(istype(W, /obj/item/card/emag) && !(emagged)) // trying to unlock with an emag card
-		if(opened)
-			to_chat(user, SPAN_WARNING("You must close the cover to swipe an ID card."))
-		else if(wiresexposed)
-			to_chat(user, SPAN_WARNING("You must close the panel first"))
-		else if(stat & (BROKEN|MAINT))
-			to_chat(user, SPAN_WARNING("Nothing happens."))
-		else
-			flick("apc-spark", src)
-			if(do_after(user, 6, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				if(prob(50))
-					emagged = 1
-					locked = 0
-					to_chat(user, SPAN_WARNING("You emag [src]'s interface."))
-					update_icon()
-				else
-					to_chat(user, SPAN_WARNING("You fail to [ locked ? "unlock" : "lock"] [src]'s interface."))
 	else if(iswire(W) && !terminal && opened && has_electronics != 2)
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [src]."))
@@ -585,7 +562,7 @@
 		playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(!src || !WT.remove_fuel(3, user)) return
-			if(emagged || (stat & BROKEN) || opened == 2)
+			if((stat & BROKEN) || opened == 2)
 				new /obj/item/stack/sheet/metal(loc)
 				user.visible_message(SPAN_NOTICE("[user] welds [src]'s frame apart."),
 				SPAN_NOTICE("You weld [src]'s frame apart."))
@@ -595,17 +572,6 @@
 				SPAN_NOTICE("You weld [src]'s frame off the wall."))
 			qdel(src)
 			return
-	else if(istype(W, /obj/item/frame/apc) && opened && emagged)
-		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
-			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
-			return
-		emagged = 0
-		if(opened == 2)
-			opened = 1
-		user.visible_message(SPAN_NOTICE("[user] replaces [src]'s damaged frontal panel with a new one."),
-		SPAN_NOTICE("You replace [src]'s damaged frontal panel with a new one."))
-		qdel(W)
-		update_icon()
 	else if(istype(W, /obj/item/frame/apc) && opened && (stat & BROKEN))
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
 			to_chat(user, SPAN_WARNING("You have no idea what to do with [W]."))
@@ -650,7 +616,7 @@
 		var/mob/living/carbon/human/H = user
 
 		if(H.species.flags & IS_SYNTHETIC && H.a_intent == GRAB_INTENT)
-			if(emagged || stat & BROKEN)
+			if(stat & BROKEN)
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(3, 1, src)
 				s.start()
@@ -1024,22 +990,20 @@
 
 /obj/machinery/power/apc/proc/ion_act()
 	//intended to be a bit like an emag
-	if(!emagged)
-		if(prob(3))
-			locked = 0
-			if(cell.charge > 0)
-				cell.charge = 0
-				cell.corrupt()
-				emagged = 1
-				update_icon()
-				var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
-				smoke.set_up(1, 0, loc)
-				smoke.attach(src)
-				smoke.start()
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(1, 1, src)
-				s.start()
-				visible_message("<span class='warning'>[src] suddenly lets out a blast of smoke and some sparks!")
+	if(prob(3))
+		locked = 0
+		if(cell.charge > 0)
+			cell.charge = 0
+			cell.corrupt()
+			update_icon()
+			var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
+			smoke.set_up(1, 0, loc)
+			smoke.attach(src)
+			smoke.start()
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(1, 1, src)
+			s.start()
+			visible_message("<span class='warning'>[src] suddenly lets out a blast of smoke and some sparks!")
 
 /obj/machinery/power/apc/surplus()
 	if(terminal)

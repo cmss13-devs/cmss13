@@ -51,6 +51,7 @@
 	name = "\improper Combat Information Center"
 	icon_state = "cic"
 	fake_zlevel = 1 // upperdeck
+	flags_atom = AREA_NOTUNNEL
 
 /area/almayer/command/cichallway
 	name = "\improper Secure Command Hallway"
@@ -61,6 +62,7 @@
 	name = "\improper AI Core"
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
+	flags_atom = AREA_NOTUNNEL
 
 /area/almayer/command/securestorage
 	name = "\improper Secure Storage"
@@ -76,11 +78,13 @@
 	name = "\improper Telecommunications"
 	icon_state = "tcomms"
 	fake_zlevel = 1 // upperdeck
+	flags_atom = AREA_NOTUNNEL
 
 /area/almayer/command/self_destruct
 	name = "\improper Self-Destruct Core Room"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
+	flags_atom = AREA_NOTUNNEL
 
 /area/almayer/command/corporateliason
 	name = "\improper Corporate Liason Office"
@@ -401,11 +405,17 @@
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/medical/hydroponics
+	name = "\improper Medical Research hydroponics"
+	icon_state = "science"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/medical/containment
 	name = "\improper Medical Research containment"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_AVOID_BIOSCAN
+	flags_atom = AREA_NOTUNNEL
 
 /area/almayer/medical/chemistry
 	name = "\improper Medical Chemical laboratory"
@@ -476,6 +486,11 @@
 	name = "\improper Powered"
 	icon_state = "selfdestruct"
 	requires_power = 0
+
+/area/almayer/engineering/airmix
+	icon_state = "selfdestruct"
+	requires_power = 0
+	flags_atom = AREA_NOTUNNEL
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'

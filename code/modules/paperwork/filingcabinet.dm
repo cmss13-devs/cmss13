@@ -35,24 +35,27 @@
 
 /obj/structure/filingcabinet/initialize()
 	for(var/obj/item/I in loc)
-		if(I.type in allowed_types)
-			I.forceMove(src)
+		for(var/allowed_type in allowed_types)    
+			if(istype(I, allowed_type))
+				I.forceMove(src)
 
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
-	if(P.type in allowed_types)
-		to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
-		if(user.drop_inv_item_to_loc(P, src))
-			icon_state = "[initial(icon_state)]-open"
-			sleep(5)
-			icon_state = initial(icon_state)
-			updateUsrDialog()
-	else if(istype(P, /obj/item/tool/wrench))
-		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
-	else
-		to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
+	for(var/allowed_type in allowed_types)    
+		if(istype(P, allowed_type))
+			to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
+			if(user.drop_inv_item_to_loc(P, src))
+				icon_state = "[initial(icon_state)]-open"
+				sleep(5)
+				icon_state = initial(icon_state)
+				updateUsrDialog()
+				break
+		else if(istype(P, /obj/item/tool/wrench))
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+			anchored = !anchored
+			to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+		else
+			to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
@@ -151,3 +154,17 @@
 /obj/structure/filingcabinet/medical/attack_hand()
 	populate()
 	..()
+
+/*
+ * Hydroponics Cabinets
+ */
+
+/obj/structure/filingcabinet/seeds
+	name = "seeds cabinet"
+	desc = "A large cabinet with drawers. This one is meant for storing seed packets"
+	allowed_types = list(/obj/item/seeds)
+
+/obj/structure/filingcabinet/disk
+	name = "disk cabinet"
+	desc = "A large cabinet with drawers. This one is meant for storing floral data disks"
+	allowed_types = list(/obj/item/disk)

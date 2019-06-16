@@ -435,7 +435,9 @@ WEAPONS
 					/obj/item/explosive/grenade/incendiary,
 					/obj/item/explosive/grenade/incendiary,
 					/obj/item/explosive/grenade/HE/m15,
-					/obj/item/explosive/grenade/HE/m15
+					/obj/item/explosive/grenade/HE/m15,
+					/obj/item/explosive/grenade/HE/PMC,
+					/obj/item/explosive/grenade/HE/PMC
 					)
 	cost = RO_PRICE_NORMAL
 	containertype = /obj/structure/closet/crate/explosives

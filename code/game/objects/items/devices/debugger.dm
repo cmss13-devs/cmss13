@@ -23,11 +23,7 @@
 
 /obj/item/device/debugger/is_used_on(obj/O, mob/user)
 	if(istype(O, /obj/machinery/power/apc))
-		var/obj/machinery/power/apc/A = O
-		if(A.emagged)
-			to_chat(user, SPAN_DANGER("There is a software error with the device."))
-		else
-			to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))
+		to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))
 		return 1
 	if(istype(O, /obj/machinery/door))
 		var/obj/machinery/door/D = O
@@ -37,9 +33,5 @@
 			to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))
 		return 1
 	else if(istype(O, /obj/machinery))
-		var/obj/machinery/A = O
-		if(A.emagged)
-			to_chat(user, SPAN_DANGER("There is a software error with the device."))
-		else
-			to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))
+		to_chat(user, SPAN_NOTICE(" The device's software appears to be fine."))
 		return 1

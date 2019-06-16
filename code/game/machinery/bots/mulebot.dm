@@ -115,17 +115,11 @@
 
 
 // attack by item
-// emag : lock/unlock,
 // screwdriver: open/close hatch
 // cell: insert it
 // other: chance to knock rider off bot
 /obj/machinery/bot/mulebot/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I,/obj/item/card/emag))
-		locked = !locked
-		to_chat(user, SPAN_NOTICE(" You [locked ? "lock" : "unlock"] the mulebot's controls!"))
-		flick("mulebot-emagged", src)
-		playsound(src.loc, 'sound/effects/sparks1.ogg', 25, 0)
-	else if(istype(I,/obj/item/cell) && open && !cell)
+	if(istype(I,/obj/item/cell) && open && !cell)
 		var/obj/item/cell/C = I
 		if(user.drop_inv_item_to_loc(C, src))
 			cell = C
@@ -439,19 +433,14 @@
 	return !open && cell && cell.charge>0 && (wires & wire_power1) && (wires & wire_power2)
 
 // mousedrop a crate to load the bot
-// can load anything if emagged
 
 /obj/machinery/bot/mulebot/MouseDrop_T(var/atom/movable/C, mob/user)
-
 	if(user.stat)
 		return
-
 	if (!on || !istype(C)|| C.anchored || get_dist(user, src) > 1 || get_dist(src,C) > 1 )
 		return
-
 	if(load)
 		return
-
 	load(C)
 
 

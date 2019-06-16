@@ -13,7 +13,6 @@
 	var/brute_dam_coeff = 1.0
 	var/open = 0//Maint panel
 	var/locked = 1
-	//var/emagged = 0 //Urist: Moving that var to the general /bot tree as it's used by most bots
 
 
 /obj/machinery/bot/proc/turn_on()
@@ -37,16 +36,6 @@
 /obj/machinery/bot/Dispose()
 	SetLuminosity(0)
 	. = ..()
-
-/obj/machinery/bot/proc/Emag(mob/user as mob)
-	if(locked)
-		locked = 0
-		emagged = 1
-		to_chat(user, SPAN_WARNING("You short out [src]'s maintenance hatch lock."))
-		log_and_message_admins("emagged [src]'s maintenance hatch lock")
-	if(!locked && open)
-		emagged = 2
-		log_and_message_admins("emagged [src]'s inner circuits")
 
 /obj/machinery/bot/examine(mob/user)
 	..()
@@ -79,8 +68,6 @@
 				to_chat(user, SPAN_NOTICE("Unable to repair with the maintenance panel closed."))
 		else
 			to_chat(user, SPAN_NOTICE("[src] does not need a repair."))
-	else if (istype(W, /obj/item/card/emag) && emagged < 2)
-		Emag(user)
 	else
 		if(hasvar(W,"force") && hasvar(W,"damtype"))
 			switch(W.damtype)

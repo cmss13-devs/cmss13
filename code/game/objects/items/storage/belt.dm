@@ -10,8 +10,6 @@
 	w_class = 4
 	allow_drawing_method = TRUE
 
-
-
 /obj/item/storage/belt/equipped(mob/user, slot)
 	if(slot == WEAR_WAIST)
 		mouse_opacity = 2 //so it's easier to click when properly equipped.
@@ -305,6 +303,13 @@
 	new /obj/item/ammo_magazine/smg/m39 (src)
 	new /obj/item/ammo_magazine/smg/m39 (src)
 
+/obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_into(M,user)
+	else
+		return ..()
+
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
 	desc = "The Type 41 load rig is the standard-issue LBE of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
@@ -352,6 +357,12 @@
 		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
 	return
 
+/obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_into(M,user)
+	else
+		return ..()
 
 /obj/item/storage/belt/knifepouch
 	name="\improper M276 pattern knife rig"
@@ -398,6 +409,13 @@
 		new /obj/item/explosive/grenade/HE/frag(src)
 		new /obj/item/explosive/grenade/HE/frag(src)
 		new /obj/item/explosive/grenade/HE/frag(src)
+
+/obj/item/storage/belt/grenade/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/box/nade_box))
+		var/obj/item/storage/box/nade_box/M = W
+		dump_into(M,user)
+	else
+		return ..()
 
 /obj/item/storage/belt/grenade/large
 	name="\improper M276 pattern M40 HEDP rig Mk. II"
@@ -726,7 +744,7 @@
 /obj/item/storage/belt/gun/flaregun
 	name = "\improper M276 pattern M82F flare gun holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the M82F flare gun."
-	storage_slots = 15
+	storage_slots = 17
 	max_storage_space = 20
 	icon_state = "m82f_holster"
 	item_state = "m82f_holster"
@@ -734,6 +752,13 @@
 		/obj/item/weapon/gun/flare,
 		/obj/item/device/flashlight/flare
 	)
+
+/obj/item/storage/belt/gun/flaregun/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/storage/box/m94))
+		var/obj/item/storage/box/m94/M = W
+		dump_into(M,user)
+	else
+		return ..()
 
 /obj/item/storage/belt/tank
 	name = "\improper M103 pattern Tank-Ammo rig" //Carn: utility belt is nicer, but it bamboozles the text parsing.

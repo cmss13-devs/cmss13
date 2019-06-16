@@ -216,6 +216,11 @@
 	name = "Robust Harvest"
 	id = "robustharvest"
 
+/datum/reagent/toxin/dinitroaniline
+	name = "Dinitroaniline"
+	id = "dinitroaniline"
+	description = "A mild toxic mixture to kill pests and weeds."
+
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
 	id = "plantbgone"

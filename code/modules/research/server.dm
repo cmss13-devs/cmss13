@@ -179,7 +179,7 @@
 
 	add_fingerprint(usr)
 	usr.set_interaction(src)
-	if(!src.allowed(usr) && !emagged)
+	if(!src.allowed(usr))
 		to_chat(usr, SPAN_DANGER("You do not have the required access level"))
 		return
 
@@ -306,10 +306,6 @@
 	return
 
 /obj/machinery/computer/rdservercontrol/attackby(var/obj/item/D as obj, var/mob/user as mob)
-	if(istype(D, /obj/item/card/emag) && !emagged)
-		playsound(src.loc, 'sound/effects/sparks4.ogg', 25, 1)
-		emagged = 1
-		to_chat(user, SPAN_NOTICE(" You you disable the security protocols"))
 	src.updateUsrDialog()
 	return ..()
 

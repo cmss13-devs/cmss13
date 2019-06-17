@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
-	matter = list("metal" = 5000)
+	matter = null
 	origin_tech = "combat=1"					//Guns generally have their own unique levels.
 	w_class 	= 3
 	throwforce 	= 5

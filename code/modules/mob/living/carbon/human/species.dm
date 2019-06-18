@@ -331,11 +331,11 @@ var/toggled_sec_HUD = 0
 	if(!toggled_med_HUD)
 		toggled_med_HUD = 1
 		H.add_hud_to(src)
-		to_chat(src, SPAN_INFO("<B>Enabled</B>"))
+		to_chat(src, SPAN_INFO("<B>Medical HUD Enabled</B>"))
 	else
 		toggled_med_HUD = 0
 		H.remove_hud_from(src)
-		to_chat(src, SPAN_INFO("<B>Disabled</B>"))
+		to_chat(src, SPAN_INFO("<B>Medical HUD Disabled</B>"))
 
 /datum/species/synthetic/verb/toggle_synthHUD2()
 	set category = "Synthetic"
@@ -347,11 +347,11 @@ var/toggled_sec_HUD = 0
 	if(!toggled_sec_HUD)
 		toggled_sec_HUD = 1
 		H.add_hud_to(src)
-		to_chat(src, SPAN_INFO("<B>Enabled</B>"))
+		to_chat(src, SPAN_INFO("<B>Security HUD Enabled</B>"))
 	else
 		toggled_sec_HUD = 0
 		H.remove_hud_from(src)
-		to_chat(src, SPAN_INFO("<B>Disabled</B>"))
+		to_chat(src, SPAN_INFO("<B>Security HUD Disabled</B>"))
 
 /datum/species/synthetic/second_gen_synthetic
 	name = "Second Generation Synthetic"

@@ -560,6 +560,8 @@
 /proc/hasHUD(mob/M, hudtype)
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
+		if (isSynth(H))
+			return 1
 		switch(hudtype)
 			if("security")
 				//only MPs can use the security HUD glasses's functionalities

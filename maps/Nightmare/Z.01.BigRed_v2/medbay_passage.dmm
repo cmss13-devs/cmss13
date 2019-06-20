@@ -1,36 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aE" = (
-/obj/structure/sign/safety/medical{
-	pixel_x = 0;
-	pixel_y = 32
-	},
+"a" = (
+/turf/open/space,
+/area/space)
+"b" = (
 /turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
+	tag = "icon-asteroidwarning (WEST)";
+	icon_state = "asteroidwarning";
+	dir = 8
 	},
-/area/bigredv2/outside/admin_building)
-"aF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigredv2/outside/admin_building)
-"aG" = (
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigredv2/outside/admin_building)
-"aK" = (
+/area/bigredv2/outside/c)
+"c" = (
 /obj/structure/sign/safety/medical{
 	pixel_x = 0;
 	pixel_y = 32
@@ -41,60 +20,55 @@
 	icon_state = "asteroidfloor";
 	dir = 1
 	},
-/area/bigredv2/outside/admin_building)
-"aL" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigredv2/outside/admin_building)
-"aR" = (
-/turf/closed/wall/r_wall,
-/area/bigredv2/outside/admin_building)
-"aS" = (
+/area/bigredv2/outside/c)
+"d" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/multi_tile/almayer/comdoor{
-	name = "\improper Operations";
-	req_access = list()
-	},
 /turf/open/floor{
-	icon_state = "white"
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
 	},
-/area/bigredv2/outside/admin_building)
-"aT" = (
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/bigredv2/outside/admin_building)
-"aV" = (
+/area/bigredv2/outside/c)
+"e" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
 	dir = 1
 	},
-/area/bigredv2/outside/admin_building)
-"aY" = (
+/area/bigredv2/outside/c)
+"f" = (
+/obj/structure/sign/safety/medical{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/c)
+"g" = (
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
+/area/bigredv2/outside/c)
+"h" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
 	dir = 1
 	},
-/area/bigredv2/outside/admin_building)
-"aZ" = (
+/area/bigredv2/outside/c)
+"i" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/structure/cable{
 	d1 = 1;
@@ -113,8 +87,41 @@
 	icon_state = "asteroidfloor";
 	dir = 1
 	},
-/area/bigredv2/outside/admin_building)
-"ba" = (
+/area/bigredv2/outside/c)
+"j" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/c)
+"k" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor{
+	tag = "icon-asteroidwarning (EAST)";
+	icon_state = "asteroidwarning";
+	dir = 4
+	},
+/area/bigredv2/outside/c)
+"l" = (
+/turf/open/floor{
+	tag = "icon-asteroidfloor (NORTH)";
+	icon_state = "asteroidfloor";
+	dir = 1
+	},
+/area/bigredv2/outside/c)
+"m" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
@@ -122,29 +129,76 @@
 	icon_state = "asteroidfloor";
 	dir = 1
 	},
+/area/bigredv2/outside/c)
+"R" = (
+/turf/closed/wall/r_wall,
+/area/bigredv2/outside/admin_building)
+"S" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/green,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/multi_tile/almayer/comdoor{
+	name = "\improper Operations";
+	req_access = list()
+	},
+/turf/open/floor{
+	icon_state = "white"
+	},
+/area/bigredv2/outside/admin_building)
+"T" = (
+/turf/open/floor{
+	icon_state = "white"
+	},
 /area/bigredv2/outside/admin_building)
 
 (1,1,1) = {"
-aK
-aY
-aG
-aR
+a
+a
+b
+b
+b
+R
 "}
 (2,1,1) = {"
-aF
-aZ
-aF
-aS
+a
+a
+c
+h
+l
+R
 "}
 (3,1,1) = {"
-aV
-aL
-aG
-aT
+a
+a
+d
+i
+d
+S
 "}
 (4,1,1) = {"
-aE
-aL
-ba
-aR
+a
+a
+e
+j
+l
+T
+"}
+(5,1,1) = {"
+a
+a
+f
+j
+m
+R
+"}
+(6,1,1) = {"
+a
+a
+g
+k
+g
+R
 "}

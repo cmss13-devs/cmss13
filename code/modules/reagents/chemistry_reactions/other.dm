@@ -514,7 +514,7 @@
 	name = "Space cleaner"
 	id = "cleaner"
 	result = "cleaner"
-	required_reagents = list("ammonia" = 1, "water" = 1)
+	required_reagents = list("ammonia" = 1, "water" = 1, "sodiumchloride" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/dinitroaniline

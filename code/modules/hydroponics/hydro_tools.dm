@@ -47,7 +47,6 @@
 		return
 
 	var/dat = "<h3>Plant data for [target]</h3>"
-	user.visible_message(SPAN_NOTICE("[user] runs the scanner over [target]."))
 
 	dat += "<h2>General Data</h2>"
 

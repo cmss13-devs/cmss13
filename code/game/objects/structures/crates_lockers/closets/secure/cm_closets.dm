@@ -533,6 +533,7 @@
 	new /obj/item/storage/bag/plants(src)
 	new /obj/item/storage/bag/plants(src)
 	new /obj/item/device/analyzer/plant_analyzer(src)
+	new /obj/item/device/analyzer/plant_analyzer(src)
 	new /obj/item/tool/minihoe(src)
 	new /obj/item/tool/wirecutters/clippers(src)
 	new /obj/item/tool/hatchet(src)

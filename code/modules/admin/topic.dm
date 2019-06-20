@@ -1440,6 +1440,15 @@
 		sleep(2)
 		C.jumptocoord(x,y,z)
 
+	else if(href_list["admincancelob"])
+		if(!check_rights(R_MOD))	return
+		var/cancel_token = href_list["cancellation"]
+		if(!cancel_token)
+			return
+		orbital_cannon_cancellation["[cancel_token]"] = null
+		log_admin("[src.owner] has cancelled the orbital strike.")
+		message_admins("[src.owner] has cancelled the orbital strike.")
+
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"])
 		if(!ismob(M))

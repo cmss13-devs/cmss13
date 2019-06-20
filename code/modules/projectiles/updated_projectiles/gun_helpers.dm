@@ -321,15 +321,17 @@ should be alright.
 	if(istype(stock,A)) return 1
 
 /obj/item/weapon/gun/proc/check_iff()
-	iff_enabled = FALSE
+	iff_enabled_current = FALSE
 	if(muzzle && muzzle.has_marine_iff)
-		iff_enabled = TRUE
+		iff_enabled_current = TRUE
 	if(under && under.has_marine_iff)
-		iff_enabled = TRUE
+		iff_enabled_current = TRUE
 	if(rail && rail.has_marine_iff)
-		iff_enabled = TRUE
+		iff_enabled_current = TRUE
 	if(stock && stock.has_marine_iff)
-		iff_enabled = TRUE
+		iff_enabled_current = TRUE
+	if(iff_enabled)
+		iff_enabled_current = TRUE
 	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
 		qdel(in_chamber)
 		in_chamber = create_bullet(ammo) //OK

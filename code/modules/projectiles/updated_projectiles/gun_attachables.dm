@@ -1341,7 +1341,7 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(G,/obj/item/weapon/gun/rifle/lmg))
 		G.fire_delay += config.min_fire_delay
 	if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-		G.fire_delay += config.high_fire_delay*1.5
+		G.fire_delay += config.high_fire_delay
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)
@@ -1367,7 +1367,7 @@ Defined in conflicts.dm of the #defines folder.
 				if(istype(G,/obj/item/weapon/gun/rifle/lmg))
 					G.fire_delay -= config.min_fire_delay
 				if(istype(G,/obj/item/weapon/gun/rifle/sniper/M42A))
-					G.fire_delay -= config.high_fire_delay*1.5
+					G.fire_delay -= config.high_fire_delay
 				if(!bipod_movement)
 					bipod_movement = new /datum/event_handler/bipod_movement()
 					bipod_movement.attachment = src

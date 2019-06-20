@@ -8147,14 +8147,12 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "aum" = (
-/obj/structure/closet/crate/solar,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 9
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "aun" = (
-/obj/structure/closet/crate/solar,
 /turf/open/floor/prison{
 	icon_state = "darkpurple2";
 	dir = 1

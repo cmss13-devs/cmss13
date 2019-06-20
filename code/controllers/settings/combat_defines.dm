@@ -59,7 +59,8 @@ DON'T TOUCH 'EM.
 /*
 ////ACCURACY////
 Scale of 0 to 40. Used in ammunition datum, gun & attachment defines.
-Why 0 - 40 you might ask? Who knows, we don't.
+Adds a flat % chance assuming your initial chance to hit was 100% (which it is usually not). If you make it more than 40, you just have an insane chance to hit
+So more than 40 is usually an overkill.
 Accuracy determines if your bullets will hit whatever you're shooting at. Think of it as your chance to hit.
 It DOES NOT control where your bullets go, that's scatter and projectile variance.
 

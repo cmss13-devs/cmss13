@@ -430,8 +430,11 @@ updatehealth()
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)
 				var/curve_factor = armor_integrity/armor_integrity_max
 				curve_factor *= curve_factor
-				if(curve_factor < 0.36)
-					curve_factor = 0.36
+				if(curve_factor < 0.5)
+					curve_factor = 0.5
+				if(armor_integrity/armor_integrity_max < 0.3)
+					curve_factor /= 2
+					
 				var/factor = ((armor_deflection / 60) * MINUTES_6 / SECONDS_2) // 60 armor is restored in 10 minutes in 2 seconds intervals
 				armor_integrity += 100*curve_factor/factor
 

@@ -62,6 +62,43 @@
 		</td>
 	</tr>
 </table>
+			<h2 class="date">22 June 2019</h2>
+			<h3 class="author">Neth Iafin updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Fixed armor being accounted two times during armor penetration calculation. The effect is 2x damage to armor on Crushers, less for less armored xenos. Damage to xeno armor will be bigger but...</li>
+				<li class="tweak">Halved all damage to armor from armor piercing source. The armor reduction due to blocking actual damage is unchanged.</li>
+				<li class="tweak">If you are below 30% armor, you will regen armor 2 times slower until you reach 30%+</li>
+				<li class="tweak">Increased speed of regen of xeno armor in general.</li>
+				<li class="tweak">Reduced flak AOE damage by about 30%.</li>
+				<li class="tweak">Bipod on M42A nerfed a bit.</li>
+				<li class="imageadd">Smartgunners now have two modes of fire. One that fires high Armor Breaking rounds with low damage and low accuracy, and second that fires no-AP high damage rounds that have 100% accuracy (most of the time). This is bound to unique-action.</li>
+				<li class="tweak">Smartgunners can toggle IFF by rightclicking on gun and toggling IFF. So please... don't shoot at others with IFF disabled. You literally can't do this on accident anymore.</li>
+				<li class="tweak">Increased OB travel time.</li>
+				<li class="tweak">Increased OB inaccuracy per missed fuel.</li>
+				<li class="tweak">Increased HE OB damage in the area.</li>
+				<li class="tweak">Increased incendiary OB area. Increased fire strength.</li>
+				<li class="tweak">Increased amount of Cluster Rockets per Cluster OB. Cluster rockets cover bigger area. Reduced their damage and increased delay between cluster rocket landing.</li>
+				<li class="bugfix">Squad Leader's armor now has 3 internal slots AS IT SHOULD'VE BEEN FROM THE START.</li>
+			</ul>
+			<h3 class="author">Retrokinesis updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Synthetics now have access to medical/security records and triage tags at all times, making HUD glasses fully obsolete.</li>
+				<li class="tweak">Synth HUD verbs will now tell you which HUD is being enabled or disabled.</li>
+			</ul>
+			<h3 class="author">TobiNerd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed some mapping errors with the Big Red Inserts.</li>
+				<li class="spellcheck">Fixed two escape pods on Almayer not being labelled.</li>
+				<li class="tweak">Added another plant analyzer to the research hydroponics closet.</li>
+				<li class="tweak">The plant analyzer will no longer spam the chatbox with messages.</li>
+				<li class="tweak">Changed the recipe for space cleaner, so you don't fill hydroponics trays with cleaner when using ammonia on the plants. New recipe is water+ammonia+sodiumchloride.</li>
+				<li class="rscdel">You can no longer farm grass tiles.</li>
+			</ul>
+			<h3 class="author">Vicacrov updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">Weapons cannot be deconstructed anymore in the autolathe.</li>
+			</ul>
+
 			<h2 class="date">16 June 2019</h2>
 			<h3 class="author">Fourkhan updated:</h3>
 			<ul class="changes bgimages16">
@@ -760,188 +797,6 @@
 			<h3 class="author">monkeysfist101 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Swapped the colors of buckshot and slugs.</li>
-			</ul>
-
-			<h2 class="date">19 April 2019</h2>
-			<h3 class="author">Awan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Co Tablet is in. They somehow forgot it on the toilet. It still needs a new sprite.</li>
-				<li class="rscadd">Changed up the admin z-level a bit.</li>
-				<li class="rscadd">Fixed flamers sprites being wrong.</li>
-			</ul>
-			<h3 class="author">Cakey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes flamer icon updating.</li>
-				<li class="bugfix">Fixes using ; for hivemind.</li>
-				<li class="bugfix">Fixes Trijent dam dirt being draggable.</li>
-				<li class="bugfix">Fixes tank trampling messages.</li>
-				<li class="bugfix">Tanks will now consider shift/ctrl/middle/alt clicking before firing.</li>
-				<li class="rscadd">You can now fire secondary/support weapons in the tank using middle/ctrl click. Middle clicking will get the next module in line, while ctrl clicking will get the next-next module in line.</li>
-				<li class="bugfix">Fixed empty gun cabinets in certain Almayer armories.</li>
-			</ul>
-			<h3 class="author">Deanthelis updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added an option for admins to play midis at individual mobs, rather than only what they can see or the entire server.</li>
-			</ul>
-			<h3 class="author">Fourkhan updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added two new fully equipped marine ERTs for the Almayer</li>
-				<li class="bugfix">Cryo reinforcements should now have full access to appropriate areas on the Almayer</li>
-				<li class="bugfix">Cryo reinforcements should now have correct comms access</li>
-				<li class="bugfix">DEFCON now calls fully-equipped cryo reinforcements instead of Whiskey Outpost reinforcements</li>
-				<li class="bugfix">Colors now directly display when checking yourself for injuries</li>
-				<li class="bugfix">Xenomorph hivemind no longer cuts off the first character of messages sent using ;</li>
-				<li class="rscadd">Marine holocards will now be visible in the medevac UI</li>
-			</ul>
-			<h3 class="author">MattAtlas updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Admins and those with the Debug tab can now drag their ghost to a mob to ckey into said mob.</li>
-				<li class="tweak">Removed damage penalty from IFF scopes.</li>
-				<li class="bugfix">Overwatch orders now show up in the stats panel once again.</li>
-				<li class="bugfix">Fixed predator scimitars not working.</li>
-				<li class="bugfix">Fixed a few wrong chat messages.</li>
-				<li class="bugfix">Freelancers now spawn with first aid pouches.</li>
-				<li class="bugfix">The flashgrip should now work properly.</li>
-				<li class="experimental">Cleanable decals will now autodelete after 35 minutes.</li>
-				<li class="experimental">The lighting controller should now cause less lag. Report any lighting errors, etc.</li>
-				<li class="rscdel">All legacy mutators (faster weeds, off weeds regen, larva infusion, resilient larva, etc) have been removed.</li>
-				<li class="remove">Opioid addiction has been reverted for the time being.</li>
-				<li class="rscadd">A flare gun has been added to the JTAC kit. This flare gun can only fire normal flares for now. It also comes with a miniscope pre-attached: that's the only attachment it can take.</li>
-				<li class="rscadd">A flare gun holster belt that can hold a flare gun and a whole bunch of flares has also been added to the JTAC kit.</li>
-				<li class="tweak">The technician PFC kit now holds a welder pack and a deployable barricade.</li>
-				<li class="tweak">Tier 2s and above can now all slash displaced girders.</li>
-				<li class="tweak">The M37 no longer needs a scabbard to be holstered.</li>
-				<li class="tweak">The surplus uniform vendor now has light/heavy armour.</li>
-				<li class="bugfix">Fixed the combistick wielded sprite.</li>
-				<li class="bugfix">The chainwhip now has a sprite when you hold it.</li>
-				<li class="bugfix">SOs now spawn with the custom pistol.</li>
-				<li class="experimental">Huge backend chat refactor. Please submit a gitlab issue if any text messages look weird, out of place, etc.</li>
-			</ul>
-			<h3 class="author">Ranged66 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Smoke spreading onto tiles will now override the old smoke located there, with some limitations. (No clearing boiler gas with smoke grenades.)</li>
-				<li class="tweak">New flames will now override old flames on a tile.</li>
-				<li class="rscadd">Added a new chemical, Epinephrine (AKA Adrenaline). Functions as a medium short-term stimulant. Its main use is greatly increasing the effectiveness of defibrillators.</li>
-				<li class="tweak">Potassium-water reaction in a chem grenade will no longer prevent other chemical reactions.</li>
-				<li class="tweak">Made the potassium-water reaction considerably stronger.</li>
-				<li class="rscadd">Aluminum and Iron present in a potassium-water reaction creates shrapnel.</li>
-				<li class="rscadd">Adding sufficient phoron to that turns the shrapnel incendiary...</li>
-				<li class="rscadd">Napalm has been renamed to Chemical fire.</li>
-				<li class="rscadd">Added chemicals Methane (1 part Carbon, 4 parts Hydrogen) and Chlorine Trifluoride (1 part Chlorine, 3 parts Fluoride).</li>
-				<li class="rscadd">Thermite recipe re-enabled, but it now takes more units to burn through walls.</li>
-				<li class="rscadd">Methane, Chlorine Trifluoride, Thermite, Oxygen, Hydrogen, Phosphorus, and welding fuel all affect the burn properties of chemical fire in various different ways.</li>
-				<li class="rscadd">Added the large chem grenade recipe to the autolathe.</li>
-				<li class="rscadd">All autolathes now spawn half-full.</li>
-				<li class="rscadd">Added bipods as chance to WO attachment packages.</li>
-				<li class="rscadd">Added motion detectors to the smartgunner vendor.</li>
-				<li class="rscadd">Clicking on/pressing Z on a medkit in your active hand will swap hands and open the inventory of the medkit.</li>
-				<li class="rscadd">Added a small delay between flipping of plasteel barricades.</li>
-				<li class="rscadd">The smartgun can now fit the rail flashlight attachment.</li>
-				<li class="rscadd">You can now examine defibs to see how many uses it has left.</li>
-				<li class="rscadd">Added a health HUD icon for when the patient's heart is too damaged and preventing defib.</li>
-				<li class="bugfix">Fixes mortar smoke shells.</li>
-			</ul>
-			<h3 class="author">RavingManiac updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Airlocks and windows will now check for overlapping walls at roundstart, and remove them while simultaneously reporting and logging their locations for mappers to fix.</li>
-				<li class="rscadd">Muzzle flash overlays readded. Tank weapons will also have muzzle flash.</li>
-				<li class="tweak">M56D heavy machine gun description now contains instructions for usage and toggling burst-fire.</li>
-				<li class="tweak">When targeting, guns will no longer stop targeting after reflex-firing. The option to "toggle firerate" has been removed due to serving no practical purpose.</li>
-				<li class="rscdel">Messages for projectiles hitting walls removed to reduce spam.</li>
-				<li class="bugfix">Windoors now have proper sound and bullet ping when being hit by bullets.</li>
-			</ul>
-			<h3 class="author">Retrokinesis updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Removed double turfs from under catwalks on Big Red</li>
-				<li class="bugfix">Removed a window from underneath a door on Trijent Dam</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Barricade sprites will update after you apply barbed wire to them now.</li>
-				<li class="bugfix">Ultrazine addiction is fixed by aheal now.</li>
-				<li class="bugfix">Fixed dropped object being stored in xeno/tank instead of going on the ground when devoured/TC.</li>
-				<li class="bugfix">Deployable cades will now be properly trampled by tank.</li>
-				<li class="rscadd">Moved tank verbs to a separate tab.</li>
-				<li class="rscadd">Admins have another verb to take control of mobs.</li>
-				<li class="bugfix">Almayer tables will be deconstructed to their appropriate table parts now.</li>
-				<li class="tweak">Put S4 scope in spec closet.</li>
-				<li class="tweak">Put MD in PFC closet.</li>
-				<li class="tweak">Can now PB with M4RA.</li>
-				<li class="tweak">DS individual lockdown now closes all doors prior to bolting them.</li>
-				<li class="tweak">Predators will have a progress icon when they are SDing.</li>
-				<li class="tweak">You can climb up a ladder if you are moved as long as you are 1 tile away from the ladder</li>
-				<li class="tweak">Can read paper intel while moving</li>
-				<li class="tweak">Resisting will now cancel any timed actions. This does not apply for timed actions where you might spam resisting, such as breaking out of your handcuffs.</li>
-				<li class="tweak">An engineer can no longer be pushed while building. Other actions may have this behavior implemented in the future.</li>
-				<li class="tweak">You still evolve while you're moving (hit resist instead).</li>
-				<li class="bugfix">DEFCON should recognize corpses again.</li>
-				<li class="tweak">Discord button replaces donation button. No longer blueballed :smiling_imp:.</li>
-				<li class="bugfix">Railgun Boilers will actually hit barricades now</li>
-				<li class="tweak">Railgun Boilers have the same view range as the sniper (does not apply to vanilla boilers)</li>
-				<li class="tweak">Railgun Boilers deal more damage to walls</li>
-				<li class="tweak">Railgun Boilers deal more damage to the tank</li>
-				<li class="bugfix">Plasteel barricades will block boiler gas and bullets again</li>
-				<li class="rscadd">You can repair sandbag barricades using sandbags. Note repairing a sandbag barricade will try to fully heal it, so there is potential for wasting sandbags.</li>
-				<li class="rscadd">ID tag 'stacks' will now display the amount and the information of each marine whose ID tag is in the 'stack'.</li>
-				<li class="rscadd">You can now remove your own splints. For splints on arms/hands, you need the other hand to be attached in order to remove splints.</li>
-				<li class="bugfix">You can no longer use other abilities while melting stuff as a xeno.</li>
-				<li class="bugfix">Barricades can no longer cover two directions simultaneously and can be rotated properly again when diagonally moved.</li>
-				<li class="bugfix">Fixed bug with throwing not untoggling after clicking.</li>
-				<li class="bugfix">Fixed bug with actions being improperly interrupted.</li>
-				<li class="rscadd">There is now an option to completely randomize your appearance in edit character.</li>
-				<li class="tweak">You can no longer splint your own hand with the currently used hand.</li>
-				<li class="tweak">Mods can use Change CKey and Take Over Mob. Admins can drag ghosts to mobs to give the ghost control.</li>
-			</ul>
-			<h3 class="author">TobiNerd updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Contained xenos and zombies will no longer count towards round end.</li>
-				<li class="tweak">ARES bioscan no longer counts contained xenos.</li>
-				<li class="maptweak">Added a photocopier to the security office (#6161).</li>
-				<li class="bugfix">Fixed various broken pipes on the almayer.</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">The M41A MK1 has been redrawn and reshaded onto a universal palette. It no longer shares a sprite with the Trijent/WO variant of the M41A MK2. The back, suit, and hand states remain unchanged (for now).</li>
-				<li class="imageadd">The M41A MK1 magazine has been given a new lore accurate sprite. It still shares 10x24mm despite the visual difference.</li>
-				<li class="imageadd">M39 and M4A3 incendiary, AP, and extended ammunition have had their stripe standardized at the base of the magazine.</li>
-				<li class="imageadd">The M41A MK2 extended magazine stripes have been reshaded to better reflect the magazine shape.</li>
-				<li class="tweak">The M39 burst delay has been increased to compensate the new burst speed.</li>
-				<li class="tweak">The M41A MK1 can, at long last, proudly attach a rail light.</li>
-				<li class="spellcheck">Renamed the S4 and S8 so they're more distinct.</li>
-				<li class="rscadd">Snowflakes rejoice! All loadout glasses types may now equip to the mask slot.</li>
-				<li class="rscadd">Synthetic snowflakes rejoice! You may now requisite purple, olive, and tan berets from your vendors.</li>
-				<li class="bugfix">Jones will now appear on your head when you put him there.</li>
-				<li class="spellcheck">Changed a bunch of glasses descriptions and names.</li>
-				<li class="bugfix">The M240 should now use all firing SFX properly.</li>
-				<li class="bugfix">Fixed the L42 stock offset issues.</li>
-				<li class="bugfix">Corrected dmi meta data for flamer ammunition. Overlays are now properly named.</li>
-				<li class="spellcheck">Fixed some inconsistent grammar in pistol descriptions.</li>
-				<li class="spellcheck">Fixed some inconsistent grammar in revolver descriptions.</li>
-				<li class="spellcheck">Renamed the M4A3 .45 ACP to the M1911, as was intended ages ago.</li>
-				<li class="experiment">Restored the M39 burst fire and delay to its original values.</li>
-				<li class="imageadd">Redrew the M41AE2 sprites.</li>
-				<li class="soundadd">Gave the M41AE2 a unique firing sound.</li>
-				<li class="soundadd">Remastered the L42 firing sound (again).</li>
-				<li class="sounddel">Rolled back the M37 shotgun firing sound.</li>
-				<li class="bugfix">Fixed the Mateba belt on Trijent and WO.</li>
-				<li class="bugfix">Fixed the SU-6 belt on Trijent and WO.</li>
-				<li class="bugfix">Fixed M42A back states.</li>
-				<li class="bugfix">Fixed shuttle seat repair states.</li>
-				<li class="bugfix">Fixed the alignment test icon appearing where it shouldn't. (Curse ye' ancient Bay12 sprite tree).</li>
-				<li class="spellcheck">Corrected the M1911 magazine name.</li>
-			</ul>
-			<h3 class="author">Vicacrov updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a second autodoc to the Almayer.</li>
-				<li class="tweak">The autodoc's interface has changed for better readability. Its functionality is the same. Its lines in the chat are more visible.</li>
-				<li class="rscdel">Removed the autodoc's automatic mode.</li>
-				<li class="rscdel">Removed some medical beds.</li>
-				<li class="maptweak">Removed the east LZ1 flank on Big Red.</li>
-				<li class="bugfix">Fixed various Trijent Dam typos.</li>
-			</ul>
-			<h3 class="author">monkeysfist101 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added Macho Sauce to the game. Carbonated Cuban cough-syrup now ferments when exposed to capsaicin.</li>
 			</ul>
 </div>
 </body>

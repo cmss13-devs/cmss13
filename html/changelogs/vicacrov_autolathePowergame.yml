@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - rscdel: "Weapons cannot be deconstructed anymore in the autolathe."

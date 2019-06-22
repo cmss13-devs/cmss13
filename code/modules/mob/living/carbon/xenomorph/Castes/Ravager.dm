@@ -32,7 +32,8 @@
 
 	// Spin slash variables
 	var/spin_cooldown = 250;
-	var/spin_damage_offset = 15;
+	var/spin_damage_offset = 15;	   // Bonus damage considered by armor
+	var/spin_damage_ignore_armor = 10; // Bonus damage that ignores armor 
 
 /datum/caste_datum/ravager/mature
 	upgrade_name = "Mature"

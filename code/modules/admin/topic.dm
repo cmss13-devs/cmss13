@@ -1445,6 +1445,8 @@
 		var/cancel_token = href_list["cancellation"]
 		if(!cancel_token)
 			return
+		if(alert("Are you sure you want to cancel this OB?",,"Yes","No") != "Yes")
+			return
 		orbital_cannon_cancellation["[cancel_token]"] = null
 		log_admin("[src.owner] has cancelled the orbital strike.")
 		message_admins("[src.owner] has cancelled the orbital strike.")

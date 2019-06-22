@@ -1202,6 +1202,9 @@
 		var/target_zone = ran_zone("chest", 75)
 		var/armor = H.getarmor(target_zone, ARMOR_MELEE)
 		var/damage = armor_damage_reduction(config.marine_melee, rand(rCaste.melee_damage_lower, rCaste.melee_damage_upper)+rCaste.spin_damage_offset, armor, 10)
+		
+		// Flat bonus damage that ignores armor
+		damage += rCaste.spin_damage_ignore_armor
 
 		H.apply_damage(damage, BRUTE, target_zone)
 		shake_camera(H, 2, 1)

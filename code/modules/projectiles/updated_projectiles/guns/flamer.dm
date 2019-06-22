@@ -577,7 +577,9 @@
 
 /proc/fire_spread_recur(var/turf/target, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
 	var/direction_angle = dir2angle(direction)
-	new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)
+	var/obj/flamer_fire/foundflame = locate() in target
+	if(!foundflame)
+		new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)
 
 	for(var/spread_direction in alldirs)
 

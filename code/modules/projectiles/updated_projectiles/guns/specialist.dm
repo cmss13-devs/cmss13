@@ -256,10 +256,13 @@
 	force = 20
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/lethal//Toggled ammo type
+	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun//Toggled ammo type
+	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
 	var/shells_fired_max = 20 //Smartgun only; once you fire # of shells, it will attempt to reload automatically. If you start the reload, the counter resets.
 	var/shells_fired_now = 0 //The actual counter used. shells_fired_max is what it is compared to.
-	var/restriction_toggled = 1 //Begin with the safety on.
+	iff_enabled = TRUE //Begin with the safety on.
+	iff_enabled_current = TRUE
+	var/secondary_toggled = 0 //which ammo we use
 	gun_skill_category = GUN_SKILL_SMARTGUN
 	attachable_allowed = list(
 						/obj/item/attachable/heavy_barrel,
@@ -271,6 +274,7 @@
 
 /obj/item/weapon/gun/smartgun/New()
 	..()
+	ammo_primary = ammo_list[ammo_primary]
 	ammo_secondary = ammo_list[ammo_secondary]
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
@@ -288,10 +292,18 @@
 	..()
 	var/message = "[current_mag.current_rounds ? "Ammo counter shows [current_mag.current_rounds] round\s remaining." : "It's dry."]"
 	to_chat(user, message)
-	to_chat(user, "The restriction system is [restriction_toggled ? "<B>on</b>" : "<B>off</b>"].")
+	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
+
+/obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
+	set category = "Object"
+	set name = "Toggle Lethal Mode"
+
+	if(isobserver(usr) || isXeno(usr))
+		return
+	toggle_lethal_mode(usr)
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
-	toggle_restriction(user)
+	toggle_ammo_type(user)
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()
@@ -325,13 +337,21 @@
 	if(refund) current_mag.current_rounds++
 	return 1
 
-/obj/item/weapon/gun/smartgun/proc/toggle_restriction(mob/user)
-	to_chat(user, "\icon[src] You [restriction_toggled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [restriction_toggled ? "harm anyone in your way" : "target through IFF"].")
+/obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
+	if(!iff_enabled)
+		to_chat(user, "\icon[src] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
+		return
+	secondary_toggled = !secondary_toggled
+	to_chat(user, "\icon[src] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
-	var/A = ammo
-	ammo = ammo_secondary
-	ammo_secondary = A
-	restriction_toggled = !restriction_toggled
+	ammo = secondary_toggled ? ammo_secondary : ammo_primary	
+
+/obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
+	to_chat(user, "\icon[src] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
+	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	iff_enabled = !iff_enabled
+	ammo = ammo_primary
+	check_iff()
 
 /obj/item/weapon/gun/smartgun/proc/auto_reload(mob/smart_gunner, obj/item/smartgun_powerpack/power_pack)
 	set waitfor = 0
@@ -344,7 +364,8 @@
 	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 	origin_tech = "combat=7;materials=5"
 	current_mag = /obj/item/ammo_magazine/internal/smartgun/dirty
-	ammo_secondary = /datum/ammo/bullet/smartgun/lethal
+	ammo_primary = /obj/item/ammo_magazine/internal/smartgun/dirty//Toggled ammo type
+	ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing//Toggled ammo type
 	flags_gun_features = GUN_INTERNAL_MAG|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/smartgun/dirty/set_gun_config_values()

@@ -182,7 +182,7 @@ var/list/ob_type_fuel_requirements
 	update_icon()
 
 
-
+/var/global/list/orbital_cannon_cancellation = new
 
 /obj/structure/orbital_cannon/proc/fire_ob_cannon(turf/T, mob/user, x_offset, y_offset)
 	set waitfor = 0
@@ -209,17 +209,19 @@ var/list/ob_type_fuel_requirements
 		if("cluster")
 			inaccurate_fuel = abs(ob_type_fuel_requirements[3] - tray.fuel_amt)
 
-	var/turf/target = locate(T.x + inaccurate_fuel * pick(-1,1),T.y + inaccurate_fuel * pick(-1,1),T.z)
+	var/turf/target = locate(T.x + inaccurate_fuel * round(rand(-3,3), 1), T.y + inaccurate_fuel * round(rand(-3,3), 1), T.z)
 
 	playsound(target, 'sound/weapons/gun_orbital_travel.ogg', 100, 1)
+	var/cancellation_token = rand(0,32000)
+	message_mods("<font size=3><A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a></font>")
+	orbital_cannon_cancellation["[cancellation_token]"] = src
+	sleep(OB_TRAVEL_TIMING)
+	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic		
+		target.ceiling_debris_check(5)
+		tray.warhead.warhead_impact(target, inaccurate_fuel)
+		orbital_cannon_cancellation["[cancellation_token]"] = null
 
-	sleep(84)
-
-	target.ceiling_debris_check(5)
-
-	tray.warhead.warhead_impact(target, inaccurate_fuel)
-
-	sleep(11)
+	sleep(OB_CRASHING_DOWN)
 
 	ob_cannon_busy = FALSE
 
@@ -379,7 +381,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_1"
 
 /obj/structure/ob_ammo/warhead/explosive/warhead_impact(turf/target, inaccuracy_amt = 0)
-	explosion_rec(target, 300, 20) //massive boom
+	explosion_rec(target, 500, 30) //massive boom
 
 
 
@@ -389,10 +391,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_2"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
-	var/range_num = max(8 - inaccuracy_amt*2, 3)
-	for(var/turf/TU in range(range_num,target))
-		if(!locate(/obj/flamer_fire) in TU)
-			new/obj/flamer_fire(TU, 10, 50) //super hot flames
+	fire_spread(target, 16, 45, 75, "blue")
 
 
 /obj/structure/ob_ammo/warhead/cluster
@@ -403,16 +402,16 @@ var/list/ob_type_fuel_requirements
 /obj/structure/ob_ammo/warhead/cluster/warhead_impact(turf/target, inaccuracy_amt = 0)
 	set waitfor = 0
 
-	var/range_num = max(8 - inaccuracy_amt*2, 3)
+	var/range_num = 12
 	var/list/turf_list = list()
 	for(var/turf/T in range(range_num,target))
 		turf_list += T
-	var/total_amt = 8
+	var/total_amt = 30
 	for(var/i = 1 to total_amt)
 		var/turf/U = pick_n_take(turf_list)
-		explosion_rec(U,200, 30) //rocket barrage
-		sleep(1)
-
+		playsound(U, 'sound/weapons/gun_flare.ogg', 50, 1)
+		sleep(pick(1,2,3))
+		explosion_rec(U,150, 30) //rocket barrage
 
 
 

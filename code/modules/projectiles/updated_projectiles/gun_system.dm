@@ -4,7 +4,7 @@
 	icon = 'icons/obj/items/gun.dmi'
 	icon_state = ""
 	item_state = "gun"
-	matter = list("metal" = 5000)
+	matter = null
 	origin_tech = "combat=1"					//Guns generally have their own unique levels.
 	w_class 	= 3
 	throwforce 	= 5
@@ -15,6 +15,7 @@
 	sprite_sheet_id = 1
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
+	var/iff_enabled_current = FALSE
 	var/iff_enabled = FALSE
 	var/accepted_ammo = list()
 	var/muzzle_flash 	= "muzzle_flash"
@@ -553,7 +554,7 @@ and you're good to go.
 		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/obj/item/projectile/P = new /obj/item/projectile(src)
-	P.generate_bullet(chambered, 0, iff_enabled?AMMO_SKIPS_HUMANS:0)
+	P.generate_bullet(chambered, 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
 
 	return P
 
@@ -805,7 +806,7 @@ and you're good to go.
 						for(i = 0; i<=projectile_to_fire.ammo.bonus_projectiles_amount; i++)
 							if(accuracy_debuff==0 || prob(hitchance))
 								BP = new /obj/item/projectile(M.loc)
-								BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled?AMMO_SKIPS_HUMANS:0)
+								BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, iff_enabled_current?AMMO_SKIPS_HUMANS:0)
 								BP.damage *= damage_buff
 								BP.ammo.on_hit_mob(M, BP)
 								M.bullet_act(BP)

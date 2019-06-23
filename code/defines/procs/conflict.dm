@@ -111,7 +111,7 @@
 		armor_punch *= armor_punch_bonus
 	if(initial_armor == 0)
 		return 0
-	var/armor_damage = c_config.armor_integrity_damage_mult * armor_punch/armor_deflection_total
+	var/armor_damage = c_config.armor_integrity_damage_mult * armor_punch
 	if(armor_damage < 0)
 		armor_damage = 0
 	return armor_damage

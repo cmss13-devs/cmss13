@@ -574,3 +574,57 @@
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
+
+/proc/fire_spread_recur(var/turf/target, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
+	var/direction_angle = dir2angle(direction)
+	var/obj/flamer_fire/foundflame = locate() in target
+	if(!foundflame)
+		new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)
+
+	for(var/spread_direction in alldirs)
+
+		var/spread_power = remaining_distance
+
+		var/spread_direction_angle = dir2angle(spread_direction)
+
+		var/angle = 180 - abs( abs( direction_angle - spread_direction_angle ) - 180 ) // the angle difference between the spread direction and initial direction
+
+		switch(angle) //this reduces power when the explosion is going around corners
+			if (0)
+				//no change
+			if (45)
+				spread_power *= 0.75
+			else //turns out angles greater than 90 degrees almost never happen. This bit also prevents trying to spread backwards
+				continue
+
+		switch(spread_direction)
+			if(NORTH,SOUTH,EAST,WEST)
+				spread_power -= 1
+			else
+				spread_power -= 1.414 //diagonal spreading
+
+		if (spread_power < 1)
+			continue
+
+		var/turf/T = get_step(target, spread_direction)
+
+		if(!T) //prevents trying to spread into "null" (edge of the map?)
+			continue
+
+		if(T.density)
+			continue
+
+		spawn(0) //spawn(0) is important because it paces the explosion in an expanding circle, rather than a series of squiggly lines constantly checking overlap. Reduces lag by a lot
+			fire_spread_recur(T, spread_power, spread_direction, fire_lvl, burn_lvl, f_color) //spread further
+
+/proc/fire_spread(var/turf/target, range, fire_lvl, burn_lvl, f_color)
+	new/obj/flamer_fire(target, fire_lvl, burn_lvl, f_color)
+	for(var/direction in alldirs)
+		var/spread_power = range
+		switch(direction)
+			if(NORTH,SOUTH,EAST,WEST)
+				spread_power -= 1
+			else
+				spread_power -= 1.414 //diagonal spreading
+		var/turf/T = get_step(target, direction)
+		fire_spread_recur(T, spread_power, direction, fire_lvl, burn_lvl, f_color)

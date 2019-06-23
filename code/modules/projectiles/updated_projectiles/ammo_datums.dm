@@ -47,7 +47,7 @@
 	var/bonus_projectiles_type 					// Type path of the extra projectiles
 	var/bonus_projectiles_amount 	= 0 		// How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together
 	var/debilitate[]				= null 		// Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
-	var/pen_armor_punch				= 1			// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
+	var/pen_armor_punch				= 0.5			// how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)
 	var/damage_armor_punch			= 0.5		// how much armor breaking is done by sheer weapon force. This is for big blunt weapons
 
 	New()
@@ -419,7 +419,7 @@
 	penetration = config.low_armor_penetration
 	shell_speed = config.fast_shell_speed
 	damage_falloff = config.reg_damage_falloff
-	pen_armor_punch = 2.5
+	pen_armor_punch = 1.25
 
 /*
 //================================================
@@ -770,21 +770,21 @@
 	shell_speed = config.ultra_shell_speed
 
 /datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/item/projectile/P)
-	burst(get_turf(M),P,damage_type, 2 , 2)
-	burst(get_turf(M),P,damage_type, 1 , 2 , 0)
+	burst(get_turf(M),P,damage_type, 2 , 3)
+	burst(get_turf(M),P,damage_type, 1 , 3 , 0)
 
 /datum/ammo/bullet/tank/flak/on_near_target(turf/T, obj/item/projectile/P)
-	burst(get_turf(T),P,damage_type, 2 , 2)
-	burst(get_turf(T),P,damage_type, 1 , 2, 0)
+	burst(get_turf(T),P,damage_type, 2 , 3)
+	burst(get_turf(T),P,damage_type, 1 , 3, 0)
 	return 1
 
 /datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/item/projectile/P)
-	burst(get_turf(P),P,damage_type, 2 , 2)
-	burst(get_turf(P),P,damage_type, 1 , 2 , 0)
+	burst(get_turf(P),P,damage_type, 2 , 3)
+	burst(get_turf(P),P,damage_type, 1 , 3 , 0)
 
 /datum/ammo/bullet/tank/flak/on_hit_turf(turf/T,obj/item/projectile/P)
-	burst(get_turf(T),P,damage_type, 2 , 2)
-	burst(get_turf(T),P,damage_type, 1 , 2 , 0)
+	burst(get_turf(T),P,damage_type, 2 , 3)
+	burst(get_turf(T),P,damage_type, 1 , 3 , 0)
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
@@ -821,24 +821,28 @@
 	name = "smartgun bullet"
 	icon_state = "redbullet" //Red bullets to indicate friendly fire restriction
 	iff_signal = ACCESS_IFF_MARINE
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SKIPS_HUMANS
-	New()
-		..()
-		accurate_range = config.short_shell_range
-		accuracy = config.max_hit_accuracy
-		damage_falloff = config.tactical_damage_falloff
-		damage = config.lmed_plus_hit_damage
-		penetration = config.low_armor_penetration
-		damage_armor_punch = 1
-
-/datum/ammo/bullet/smartgun/lethal
 	flags_ammo_behavior = AMMO_BALLISTIC
-	icon_state 	= "bullet"
 
-/datum/ammo/bullet/smartgun/lethal/New()
+/datum/ammo/bullet/smartgun/New()
 	..()
+	accurate_range = config.short_shell_range
+	accuracy = config.max_hit_accuracy
+	damage_falloff = config.tactical_damage_falloff
 	damage = config.lmed_plus_hit_damage
-	penetration= config.low_armor_penetration
+	penetration = 0
+
+/datum/ammo/bullet/smartgun/armor_piercing
+	flags_ammo_behavior = AMMO_BALLISTIC
+	icon_state = "bullet"
+
+/datum/ammo/bullet/smartgun/armor_piercing/New()
+	..()
+	accurate_range = config.short_shell_range
+	accuracy = config.min_hit_accuracy
+	damage_falloff = config.tactical_damage_falloff
+	damage = config.mlow_hit_damage
+	penetration = config.hmed_armor_penetration
+	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/dirty
 	name = "irradiated smartgun bullet"
@@ -848,15 +852,6 @@
 /datum/ammo/bullet/smartgun/dirty/New()
 	..()
 	shrapnel_chance = config.max_shrapnel_chance
-
-/datum/ammo/bullet/smartgun/dirty/lethal
-	flags_ammo_behavior = AMMO_BALLISTIC
-	icon_state 	= "bullet"
-
-/datum/ammo/bullet/smartgun/dirty/lethal/New()
-	..()
-	damage = config.lmed_hit_damage
-	penetration= config.med_armor_penetration
 
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"

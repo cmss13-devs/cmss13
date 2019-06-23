@@ -1508,7 +1508,7 @@ proc/populate_seed_list()
 	seed_name = "grass"
 	display_name = "grass"
 	packet_icon = "seed-grass"
-	products = list(/obj/item/stack/tile/grass)
+	products = list()
 	plant_icon = "grass"
 	harvest_repeat = 1
 

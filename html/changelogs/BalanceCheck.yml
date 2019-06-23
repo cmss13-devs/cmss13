@@ -1,0 +1,10 @@
+author: Neth Iafin
+delete-after: True
+changes: 
+  - tweak: "Reduced size of Incendiary OB."
+  - tweak: "Warning is displayed for everyone in radius 30 (so you won't be able to determine if you are in direct danger) about incoming OB."
+  - tweak: "Armor un-safe time increased to 0.5 of a second."
+  - tweak: "Small armor increased for all xenos."
+  - tweak: "Bones will break more often now."
+  - tweak: "Organ damage and IB chance reduced."
+  - tweak: "Basic neuro and basic acid spit got their accuracy increased."

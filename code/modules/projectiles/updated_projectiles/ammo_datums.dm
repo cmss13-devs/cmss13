@@ -1267,7 +1267,7 @@
 
 /datum/ammo/xeno/New()
 	..()
-	accuracy = config.med_hit_accuracy
+	accuracy = config.high_hit_accuracy
 	accuracy_var_low = config.low_proj_variance
 	accuracy_var_high = config.low_proj_variance
 	max_range = config.short_shell_range
@@ -1291,8 +1291,8 @@
 /datum/ammo/xeno/toxin/medium/New()
 	..()
 	shell_speed = config.fast_shell_speed
-	accuracy_var_low = config.high_proj_variance
-	accuracy_var_high = config.high_proj_variance
+	accuracy_var_low = config.low_proj_variance
+	accuracy_var_high = config.low_proj_variance
 
 /datum/ammo/xeno/toxin/heavy //Praetorian
 	name = "neurotoxic splash"
@@ -1372,6 +1372,7 @@
 
 /datum/ammo/xeno/acid/New()
 	..()
+	accuracy = config.med_hit_accuracy
 	damage = config.low_hit_damage
 	penetration = config.mlow_armor_penetration
 	shell_speed = config.reg_shell_speed

@@ -215,6 +215,7 @@ var/list/ob_type_fuel_requirements
 	var/cancellation_token = rand(0,32000)
 	message_mods("<font size=3><A HREF='?_src_=admin_holder;admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a></font>")
 	orbital_cannon_cancellation["[cancellation_token]"] = src
+	target.visible_message(SPAN_HIGHDANGER("The sky erupts into flames!"), SPAN_HIGHDANGER("You hear a very loud sound coming from above!"), 30)
 	sleep(OB_TRAVEL_TIMING)
 	if(orbital_cannon_cancellation["[cancellation_token]"]) // the cancelling notification is in the topic		
 		target.ceiling_debris_check(5)
@@ -391,7 +392,7 @@ var/list/ob_type_fuel_requirements
 	icon_state = "ob_warhead_2"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target, inaccuracy_amt = 0)
-	fire_spread(target, 16, 45, 75, "blue")
+	fire_spread(target, 12, 45, 75, "blue")
 
 
 /obj/structure/ob_ammo/warhead/cluster

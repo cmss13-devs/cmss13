@@ -16,11 +16,11 @@
 #define TRAUMA_HIGH 	200	// ~ 160+ damage 
 
 // Movespeed levels
-#define PAIN_SPEED_VERYSLOW  5.75
-#define PAIN_SPEED_SLOW      4.5
-#define PAIN_SPEED_MED       3.25
-#define PAIN_SPEED_LOWMED    2.25
-#define PAIN_SPEED_LOW       1.25
+#define PAIN_SPEED_VERYSLOW  8.50
+#define PAIN_SPEED_SLOW      6.75
+#define PAIN_SPEED_MED       5.25
+#define PAIN_SPEED_LOWMED    3.25
+#define PAIN_SPEED_LOW       1.50 // SLIGHTLY less punishing than the rest because we don't want acid spatter slowing marines
 
 // Shock gain rates - effectively, how quickly pain nasty effects apply
 #define SHOCK_GAIN_RATE_HIGH 9

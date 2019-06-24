@@ -76,7 +76,7 @@
 		if(60 to 79)
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
-			if(prob(1))
+			if(prob(4))
 				to_chat(src, message_numb)
 				emote("me", 1, " is having trouble standing.")
 				KnockDown(2)

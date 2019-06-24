@@ -1,0 +1,40 @@
+"a" = (/turf/closed/wall/rock/brown,/area/lv624/ground/caves/west1)
+"b" = (/turf/open/gm/dirt,/area/lv624/ground/caves/west1)
+"c" = (/obj/effect/alien/weeds/node,/turf/open/gm/dirt,/area/lv624/ground/caves/west1)
+"d" = (/turf/closed/wall/cult,/area/lv624/ground/caves/west1)
+"e" = (/turf/open/gm/river,/area/lv624/ground/caves/west1)
+"f" = (/turf/open/floor{icon_state = "cult"; dir = 2},/area/lv624/ground/caves/west1)
+"g" = (/turf/closed/wall/resin/ondirt,/area/lv624/ground/caves/west1)
+
+(1,1,1) = {"
+aaaaaaaaaabbaaabbbbbbb
+aaaaaaaaaaaaaaabbbbbbb
+aaaaaaaaaaaaabbbbbbaaa
+aaaaaaaaaabbbbbbbbaaab
+aaaaaaaabbbbbbbbbaaaab
+aaaaaabbbbbbbbbbaaaaab
+aaaabbbbbbbbbbbaaaaabb
+aaabbbbbbbbbbbbaaaaabb
+aaabbbbbbbbbbbaaaaabbb
+aabbbbbbbbbbbaaaaaabbb
+aabbbbbbabbbbaaaaaaabb
+abbbbbbaaabbbbaaaaaabb
+abbbbbaaaabbbbaaaaaabb
+abbbbaaaaabbbbbaaaabbb
+abbbbaaaaabbbbbaaaabbc
+abbbbaaaabbbbbbaaadbbb
+bbbbbaaabbbbbbbaaaadbb
+bbbbbbbbbbbbbbaaaaaaad
+bbbbbbbbbbbbbaaaaaaadd
+abbbbbbbbbbaaaaaaaaade
+abbbbbbbbbaaaaaaaaaade
+abbbbbaaaaaaaaaaaaaadd
+abbbbaaaaaaaaaaaaaaaad
+abbbbbaaaaaaaaaaaaaaaa
+aabbbbbaaaaaaaaaaaaaaa
+aabbbbbbaaaaaaaaaaaaaa
+aabbbbbbaaaaaaaaaaaaaa
+aaabbbbaaaaaaaaaaaaaaa
+aaaabbbaaaaaaaaaaaaaaa
+aaaadfdggaaaaaaaaaaaaa
+"}

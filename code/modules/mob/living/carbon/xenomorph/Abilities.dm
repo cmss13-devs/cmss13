@@ -892,6 +892,7 @@
 		X.start_dig.tunnel_desc = "[msg]"
 
 	X.use_plasma(plasma_cost)
+	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)
 
 

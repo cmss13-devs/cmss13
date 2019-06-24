@@ -160,7 +160,6 @@
 		client.mouse_pointer_icon = initial(client.mouse_pointer_icon) //Reset the mouse pointer.
 	bomb_cooldown = 1
 	is_bombarding = 0
-	use_plasma(200)
 
 	var/time_remaining = do_after(src, bombard_speed, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE)
 	var/temp_damage = ammo.damage // stores the damage so that it can be reverted
@@ -176,6 +175,7 @@
 		bomb_cooldown = 0
 		return
 
+	use_plasma(200)
 	bomb_turf = null
 	visible_message(SPAN_WARNING("\The [src] launches a huge glob of acid hurling into the distance!"), \
 	SPAN_WARNING("You launch a huge glob of acid hurling into the distance!"), null, 5)

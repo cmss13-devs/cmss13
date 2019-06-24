@@ -202,7 +202,13 @@
 		if(locate(/obj/effect/alien/weeds) in loc)
 			. -= 1.5
 
+	if(locate(/obj/effect/alien/weeds) in loc)
+		. *= 0.95
+	if(locate(/obj/effect/alien/resin/sticky/fast) in loc)
+		. *= 0.8
+
 	. *= speed_multiplier
+
 
 /mob/living/carbon/Xenomorph/show_inv(mob/user)
 	return

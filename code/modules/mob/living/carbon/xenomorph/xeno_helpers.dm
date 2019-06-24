@@ -44,4 +44,6 @@
 			return "resin nest"
 		if (RESIN_STICKY)
 			return "sticky resin"
+		if (RESIN_FAST)
+			return "fast resin"
 		

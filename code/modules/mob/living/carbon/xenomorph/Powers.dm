@@ -1527,6 +1527,8 @@
 			new_resin = new /obj/structure/bed/nest(current_turf)
 		if(RESIN_STICKY)
 			new_resin = new /obj/effect/alien/resin/sticky(current_turf)
+		if(RESIN_FAST)
+			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 

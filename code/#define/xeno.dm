@@ -11,3 +11,4 @@
 #define RESIN_MEMBRANE 4
 #define RESIN_NEST 8
 #define RESIN_STICKY 16
+#define RESIN_FAST 32

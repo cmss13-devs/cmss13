@@ -129,6 +129,14 @@
 	health = 7
 	slow_amt = 4
 
+/obj/effect/alien/resin/sticky/fast
+	name = "fast resin"
+	desc = "A layer of disgusting sleek slime."
+	icon_state = "fast"
+	var/speed_amt = 0.5
+
+	Crossed(atom/movable/AM)
+		return
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1

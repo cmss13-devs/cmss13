@@ -159,6 +159,8 @@
 		if(RESIN_NEST)
 			X.selected_resin = RESIN_STICKY
 		if(RESIN_STICKY)
+			X.selected_resin = RESIN_FAST
+		if(RESIN_FAST)
 			X.selected_resin = RESIN_DOOR
 		else
 			return //something went wrong

@@ -251,7 +251,7 @@
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(var/atom/A)
 
-	if( stat || (buckled && buckled.anchored) || !A || !x || !y || !A.x || !A.y ) return
+	if( !A || !x || !y || !A.x || !A.y ) return
 	var/dx = A.x - x
 	var/dy = A.y - y
 	if(!dx && !dy) return
@@ -264,14 +264,7 @@
 		if(dx > 0)	direction = EAST
 		else		direction = WEST
 
-	var/mob/living/mliv = src
-	if(istype(mliv) && usr.dir != direction)
-		mliv.on_movement(1)
-
-	usr.dir = direction
-	if(buckled)
-		buckled.dir = direction
-		buckled.handle_rotation()
+	facedir(direction)
 
 
 

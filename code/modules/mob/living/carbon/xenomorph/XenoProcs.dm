@@ -39,11 +39,11 @@
 		stat("Mutator Points:", "[mutators.remaining_points]")
 	if(isXenoQueenLeadingHive(src) && hive.mutators.remaining_points > 0)
 		stat("Hive Mutator Points:", "[hive.mutators.remaining_points]")
-		
+
 	stat("")
 	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
 	var/msg_holder = "-"
-	
+
 	if(frenzy_aura)
 		switch(frenzy_aura)
 			if(-INFINITY to 1.0) msg_holder = "Very Weak"
@@ -53,7 +53,7 @@
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Frenzy:", "[msg_holder]")
 	msg_holder = "-"
-	
+
 	if(warding_aura)
 		switch(warding_aura)
 			if(-INFINITY to 1.0) msg_holder = "Very Weak"
@@ -63,7 +63,7 @@
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Warding:", "[msg_holder]")
 	msg_holder = "-"
-	
+
 	if(recovery_aura)
 		switch(recovery_aura)
 			if(-INFINITY to 1.0) msg_holder = "Very Weak"
@@ -193,7 +193,7 @@
 				charge_dir = dir
 				handle_momentum()
 			else
-				if(charge_dir != dir) //Have we changed direction?
+				if(last_move_dir != dir) //Have we changed direction?
 					stop_momentum() //This should disallow rapid turn bumps
 				else
 					handle_momentum()

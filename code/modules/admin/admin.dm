@@ -416,6 +416,7 @@ var/global/floorIsLava = 0
 			<A href='?src=\ref[src];secretsfun=power'>Power ship SMESs and APCs</A><BR>
 			<A href='?src=\ref[src];secretsfun=quickpower'>Power ship SMESs</A><BR>
 			<A href='?src=\ref[src];secretsfun=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+			<A href='?src=\ref[src];secretsfun=powershipreactors'>Power all ship reactors</A><BR>
 			<A href='?src=\ref[src];secretsfun=blackout'>Break all lights</A><BR>
 			<A href='?src=\ref[src];secretsfun=whiteout'>Fix all lights</A><BR>
 			<BR>
@@ -435,6 +436,7 @@ var/global/floorIsLava = 0
 			<A href='?src=\ref[src];secretsfun=power'>Power ship SMESs and APCs</A><BR>
 			<A href='?src=\ref[src];secretsfun=quickpower'>Power ship SMESs</A><BR>
 			<A href='?src=\ref[src];secretsfun=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+			<A href='?src=\ref[src];secretsfun=powershipreactors'>Power all ship reactors</A><BR>
 			<A href='?src=\ref[src];secretsfun=blackout'>Break all lights</A><BR>
 			<A href='?src=\ref[src];secretsfun=whiteout'>Fix all lights</A><BR>
 			<BR>

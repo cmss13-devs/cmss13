@@ -31,6 +31,11 @@ Pipelines + Other Objects -> Pipe network
 
 	var/ventcrawl_message_busy = 0 //Prevent spamming
 
+	var/last_flow_rate = 0
+	var/debug = 0
+	use_power = 0
+	processable = 0
+
 /obj/machinery/atmospherics/New()
 	if(!icon_manager)
 		icon_manager = new()

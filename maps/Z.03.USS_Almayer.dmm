@@ -2290,11 +2290,7 @@
 /area/almayer/engineering/starboard_atmos)
 "afh" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1443;
-	input_tag = "waste_upper";
 	name = "Waste Tank Control";
-	output_tag = "waste_upper_out";
-	sensors = list("waste_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (NORTHEAST)";
@@ -2663,7 +2659,6 @@
 "afZ" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 8;
-	frequency = 1443;
 	id = "space";
 	name = "Harmful Gas Ejector";
 	on = 1
@@ -2997,7 +2992,6 @@
 "agM" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 8;
-	frequency = 1443;
 	id = "waste_upper";
 	name = "Waste Air Injector";
 	on = 1
@@ -16067,10 +16061,7 @@
 	dir = 4;
 	icon_state = "map";
 	name = "Gas mixer N2/O2";
-	node1_concentration = 0.2;
-	node2_concentration = 0.8;
 	on = 1;
-	set_flow_rate = 100;
 	tag = "icon-map (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -16566,9 +16557,6 @@
 "aHM" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = 1444;
 	id_tag = "oxygen_upper_out"
 	},
 /turf/open/floor/engine,
@@ -16579,9 +16567,6 @@
 "aHO" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = 1444;
 	id_tag = "nit_upper_out"
 	},
 /turf/open/floor/engine/nitrogen,
@@ -16610,7 +16595,6 @@
 "aHS" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 8;
-	frequency = 1444;
 	id = "mixed_upper_in";
 	name = "Mixed Air Injector";
 	on = 1
@@ -22772,10 +22756,7 @@
 /area/almayer/engineering/port_atmos)
 "aVB" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1444;
 	name = "Oxygen Supply Console";
-	output_tag = "oxygen_upper_out";
-	sensors = list("oxy_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -22787,10 +22768,7 @@
 	dir = 4
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1444;
 	name = "Nitrogen Control Console";
-	output_tag = "nit_upper_out";
-	sensors = list("nit_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -22994,11 +22972,7 @@
 /area/almayer/engineering/port_atmos)
 "aWd" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1444;
-	input_tag = "mix_upper_in";
 	name = "Mixed Air Control";
-	output_tag = "mix_upper_out";
-	sensors = list("mix_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -23116,7 +23090,6 @@
 /area/almayer/hull/upper_hull)
 "aWo" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
-	frequency = 1443;
 	id = "waste_lower_in";
 	on = 1
 	},
@@ -23124,7 +23097,6 @@
 /area/almayer/engineering/airmix)
 "aWp" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
-	frequency = 1443;
 	id_tag = "waste_lower_out"
 	},
 /turf/open/floor/engine,
@@ -23146,7 +23118,6 @@
 "aWs" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 8;
-	frequency = 1443;
 	id = "space";
 	name = "Harmful Gas Ejector";
 	on = 1
@@ -27786,7 +27757,6 @@
 "bfQ" = (
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	layer = 3.5;
 	name = "dropship intercom";
 	pixel_x = 21;
@@ -28081,7 +28051,6 @@
 "bgv" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -28122,7 +28091,6 @@
 "bgz" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -29761,7 +29729,6 @@
 "bjW" = (
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -29795,7 +29762,6 @@
 "bjZ" = (
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -33438,7 +33404,6 @@
 "brZ" = (
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = -10;
@@ -33456,7 +33421,6 @@
 "bsb" = (
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = 10;
@@ -34176,7 +34140,6 @@
 "btJ" = (
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	name = "dropship intercom";
 	pixel_y = 24
 	},
@@ -34922,7 +34885,6 @@
 "bvt" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -36576,11 +36538,7 @@
 /area/almayer/engineering/lower_engineering)
 "byO" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1443;
-	input_tag = "waste_lower_in";
 	name = "Lower Deck Waste Tank Control";
-	output_tag = "waste_lower_out";
-	sensors = list("waste_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -37931,7 +37889,6 @@
 "bCh" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -38001,7 +37958,6 @@
 "bCm" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -41023,7 +40979,6 @@
 	},
 /obj/item/device/radio/intercom{
 	canhear_range = 7;
-	frequency = 1443;
 	layer = 3.5;
 	name = "normandy dropship intercom";
 	pixel_x = -26;
@@ -42708,9 +42663,6 @@
 "bLx" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = 1443;
 	id_tag = "oxygen_lower_out"
 	},
 /turf/open/floor/engine,
@@ -42721,9 +42673,6 @@
 "bLz" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = 1443;
 	id_tag = "nit_lower_out"
 	},
 /turf/open/floor/engine/nitrogen,
@@ -42731,7 +42680,6 @@
 "bLA" = (
 /obj/machinery/atmospherics/unary/outlet_injector{
 	dir = 1;
-	frequency = 1443;
 	id = "mix_lower_in";
 	on = 1
 	},
@@ -42740,9 +42688,6 @@
 "bLC" = (
 /obj/machinery/atmospherics/unary/vent_pump/siphon/on{
 	dir = 1;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = 1443;
 	id_tag = "mixed_lower_out"
 	},
 /turf/open/floor/engine,
@@ -51524,10 +51469,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1443;
 	name = "Lower Oxygen Supply Console";
-	output_tag = "oxygen_lower_out";
-	sensors = list("oxy_sensor" = "Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	tag = "icon-map_universal (EAST)";
@@ -51546,10 +51488,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1443;
 	name = "Lower Nitrogen Control Console";
-	output_tag = "nit_lower_out";
-	sensors = list("nit_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -51570,11 +51509,7 @@
 /area/almayer/engineering/lower_engineering)
 "ccE" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1443;
-	input_tag = "mix_lower_in";
 	name = "Lower Mixed Air Control";
-	output_tag = "mix_lower_out";
-	sensors = list("mix_sensor" = "Tank")
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -51812,10 +51747,7 @@
 	dir = 4;
 	icon_state = "map";
 	name = "Gas mixer N2/O2";
-	node1_concentration = 0.2;
-	node2_concentration = 0.8;
 	on = 1;
-	set_flow_rate = 100;
 	tag = "icon-map (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -51839,7 +51771,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -59513,7 +59444,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -66254,7 +66184,6 @@
 "rJC" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -67678,7 +67607,6 @@
 "tOy" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -67891,7 +67819,6 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -69646,7 +69573,6 @@
 "wJf" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},

@@ -8,14 +8,9 @@
 */
 
 
-/obj/machinery/atmospherics/var/last_flow_rate = 0
 /obj/machinery/portable_atmospherics/var/last_flow_rate = 0
 
 
-/obj/machinery/atmospherics/var/debug = 0
-
-/obj/machinery/atmospherics/use_power = 0
-/obj/machinery/atmospherics/processable = 0
 
 /client/proc/atmos_toggle_debug(var/obj/machinery/atmospherics/M in view())
 	set name = "Toggle Debug Messages"

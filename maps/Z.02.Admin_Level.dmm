@@ -6685,7 +6685,6 @@
 /obj/machinery/microwave,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -7771,7 +7770,6 @@
 /obj/item/trash/cigbutt,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -7891,7 +7889,6 @@
 /obj/effect/spawner/random/toolbox,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -8851,7 +8848,6 @@
 /obj/structure/bed,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -9527,7 +9523,6 @@
 "tg" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},

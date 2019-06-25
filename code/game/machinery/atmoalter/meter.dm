@@ -6,10 +6,7 @@
 	var/obj/machinery/atmospherics/pipe/target = null
 	anchored = 1.0
 	power_channel = ENVIRON
-	var/frequency = 0
-	var/id
-	use_power = 1
-	idle_power_usage = 15
+	use_power = 0
 
 /obj/machinery/meter/New()
 	..()
@@ -23,47 +20,6 @@
 /obj/machinery/meter/initialize()
 	if (!target)
 		src.target = locate(/obj/machinery/atmospherics/pipe) in loc
-
-/obj/machinery/meter/process()
-	if(!target)
-		icon_state = "meterX"
-		return 0
-
-	if(stat & (BROKEN|NOPOWER))
-		icon_state = "meter0"
-		return 0
-
-
-	var/env_pressure = target.return_pressure()
-	if(env_pressure <= 0.15*ONE_ATMOSPHERE)
-		icon_state = "meter0"
-	else if(env_pressure <= 1.8*ONE_ATMOSPHERE)
-		var/val = round(env_pressure/(ONE_ATMOSPHERE*0.3) + 0.5)
-		icon_state = "meter1_[val]"
-	else if(env_pressure <= 30*ONE_ATMOSPHERE)
-		var/val = round(env_pressure/(ONE_ATMOSPHERE*5)-0.35) + 1
-		icon_state = "meter2_[val]"
-	else if(env_pressure <= 59*ONE_ATMOSPHERE)
-		var/val = round(env_pressure/(ONE_ATMOSPHERE*5) - 6) + 1
-		icon_state = "meter3_[val]"
-	else
-		icon_state = "meter4"
-
-	if(frequency)
-		var/datum/radio_frequency/radio_connection = radio_controller.return_frequency(frequency)
-
-		if(!radio_connection) return
-
-		var/datum/signal/signal = new
-		signal.source = src
-		signal.transmission_method = 1
-		signal.data = list(
-			"tag" = id,
-			"device" = "AM",
-			"pressure" = round(env_pressure),
-			"sigtype" = "status"
-		)
-		radio_connection.post_signal(src, signal)
 
 /obj/machinery/meter/examine(mob/user)
 	var/t = "A gas flow meter. "

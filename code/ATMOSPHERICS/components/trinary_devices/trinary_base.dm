@@ -1,13 +1,9 @@
 /obj/machinery/atmospherics/trinary
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH|WEST
-	use_power = 1
+	use_power = 0
 
 	var/on = 0
-
-	var/pressure = 101.3
-	var/temperature = T20C
-	var/gas_type = GAS_TYPE_AIR
 
 	var/obj/machinery/atmospherics/node1
 	var/obj/machinery/atmospherics/node2
@@ -161,16 +157,3 @@
 	update_underlays()
 	start_processing()
 	return null
-
-
-/obj/machinery/atmospherics/trinary/return_air()
-	return list(gas_type, temperature, pressure)
-
-/obj/machinery/atmospherics/trinary/return_pressure()
-	return pressure
-
-/obj/machinery/atmospherics/trinary/return_temperature()
-	return temperature
-
-/obj/machinery/atmospherics/trinary/return_gas()
-	return gas_type

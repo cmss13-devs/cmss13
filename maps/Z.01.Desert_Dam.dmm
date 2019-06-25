@@ -2053,7 +2053,6 @@
 	dir = 2;
 	icon_state = "freezer_1";
 	on = 1;
-	set_temperature = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull";
@@ -2065,7 +2064,6 @@
 	dir = 2;
 	icon_state = "freezer_1";
 	on = 1;
-	set_temperature = 1
 	},
 /obj/machinery/light{
 	dir = 1
@@ -56153,7 +56151,6 @@
 	dir = 2;
 	icon_state = "freezer_1";
 	on = 1;
-	set_temperature = 1
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -77791,7 +77788,6 @@
 "dUI" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -78556,7 +78552,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},
@@ -80569,7 +80564,6 @@
 "ecO" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
-	frequency = 1379;
 	id_tag = "mining_outpost_pump";
 	on = 1
 	},

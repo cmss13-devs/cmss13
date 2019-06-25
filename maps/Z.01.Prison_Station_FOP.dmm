@@ -10049,7 +10049,6 @@
 	dir = 2;
 	icon_state = "freezer_1";
 	on = 1;
-	set_temperature = 1
 	},
 /turf/open/floor/prison,
 /area/prison/medbay)
@@ -54460,7 +54459,6 @@
 "bRF" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
 	dir = 1;
-	target_pressure = 4500
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -55177,8 +55175,6 @@
 "bTc" = (
 /obj/machinery/atmospherics/trinary/mixer/m_mixer{
 	dir = 4;
-	node1_concentration = 0.2;
-	node2_concentration = 0.8;
 	on = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -55897,14 +55893,12 @@
 "bUv" = (
 /obj/machinery/atmospherics/trinary/filter{
 	dir = 8;
-	filter_type = 1
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bUw" = (
 /obj/machinery/atmospherics/trinary/filter{
 	dir = 8;
-	filter_type = 2
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -55945,7 +55939,6 @@
 "bUD" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
 	on = 1;
-	target_pressure = 200
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -56734,7 +56727,6 @@
 /obj/machinery/atmospherics/binary/pump/high_power{
 	dir = 8;
 	on = 1;
-	target_pressure = 15000
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
@@ -57474,7 +57466,6 @@
 "bXn" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
 	on = 1;
-	target_pressure = 15000
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -57530,7 +57521,6 @@
 "bXt" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
 	dir = 8;
-	target_pressure = 15000
 	},
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)

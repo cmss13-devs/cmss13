@@ -96,29 +96,14 @@
 /obj/item/circuitboard/computer/air_management
 	name = "Circuit board (Atmospheric Monitor)"
 	build_path = /obj/machinery/computer/general_air_control
-	var/frequency = 1439
 
 /obj/item/circuitboard/computer/air_management/tank_control
 	name = "Circuit board (Tank Control)"
 	build_path = /obj/machinery/computer/general_air_control/large_tank_control
-	frequency = 1441
-
-/obj/item/circuitboard/computer/air_management/supermatter_core
-	name = "Circuit board (Core Control)"
-	build_path = /obj/machinery/computer/general_air_control/supermatter_core
-	frequency = 1438
 
 /obj/item/circuitboard/computer/air_management/injector_control
 	name = "Circuit board (Injector Control)"
 	build_path = /obj/machinery/computer/general_air_control/fuel_injection
-
-/obj/item/circuitboard/computer/air_management/construct(var/obj/machinery/computer/general_air_control/C)
-	if (..(C))
-		C.frequency = frequency
-
-/obj/item/circuitboard/computer/air_management/deconstruct(var/obj/machinery/computer/general_air_control/C)
-	if (..(C))
-		frequency = C.frequency
 
 
 

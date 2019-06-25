@@ -34910,9 +34910,7 @@
 /obj/machinery/atmospherics/unary/freezer{
 	dir = 8;
 	icon_state = "freezer_1";
-	idle_power_usage = 5;
 	on = 0;
-	set_temperature = 1
 	},
 /turf/open/floor{
 	tag = "icon-whitered (EAST)";

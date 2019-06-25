@@ -76,13 +76,6 @@
 					<tr>
 						<td>
 							[scrubber.name]<br>
-							Pressure: [round(scrubber.pressure, 0.01)] kPa<br>
-							Flow Rate: [round(scrubber.last_flow_rate,0.1)] L/s<br>
-						</td>
-						<td width="150">
-							<a class="green" href="?src=\ref[src];scrub=\ref[scrubber];toggle=1">Turn On</a>
-							<a class="red" href="?src=\ref[src];scrub=\ref[scrubber];toggle=0">Turn Off</a><br>
-							Load: [round(scrubber.last_power_draw)] W
 						</td>
 					</tr>"}
 

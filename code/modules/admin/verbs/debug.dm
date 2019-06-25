@@ -634,25 +634,27 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	set desc = "For scheduler debugging"
 
 	var/list/individual_counts = list()
-	for(var/obj/machinery/M in processing_machines)
-		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in processing_objects)
-		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in machines)
-		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in active_diseases)
+		individual_counts["[M.type]"]++
+	for(var/datum/event/M in events)
 		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in human_mob_list)
 		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in processing_turfs)
+	for(var/obj/machinery/M in processing_machines)
 		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in xeno_mob_list)
-		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in objectives_controller.active_objectives)
-		individual_counts["[M.type]"]++
-	for(var/obj/machinery/M in objectives_controller.inactive_objectives)
+	for(var/datum/powernet/M in powernets)
 		individual_counts["[M.type]"]++
 	for(var/obj/machinery/M in living_misc_mobs)
+		individual_counts["[M.type]"]++
+	for(var/datum/nanoui/M in nanomanager.processing_uis)
+		individual_counts["[M.type]"]++
+	for(var/obj/structure/cable/M in cable_list)
+		individual_counts["[M.type]"]++
+	for(var/datum/powernet/M in powernets)
+		individual_counts["[M.type]"]++
+	for(var/datum/M in power_machines)
+		individual_counts["[M.type]"]++
+	for(var/obj/machinery/M in xeno_mob_list)
 		individual_counts["[M.type]"]++
 
 	for(var/area/A in active_areas)

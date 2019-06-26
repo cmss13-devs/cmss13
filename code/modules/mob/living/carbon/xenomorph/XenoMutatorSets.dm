@@ -25,8 +25,8 @@
 /datum/mutator_set/proc/list_and_purchase_mutators()
 	var/list/mutators_for_purchase = available_mutators()
 	if(mutators_for_purchase.len == 0)
-		to_chat(usr, "You can't afford any more mutators.")
-	var/pick = input("Which mutator would you like to purchase?") as null|anything in mutators_for_purchase
+		to_chat(usr, "You can't take another strain.")
+	var/pick = input("Which strain would you like to purchase?") as null|anything in mutators_for_purchase
 	if(!pick)
 		return FALSE
 	if(xeno_mutator_list[pick].apply_mutator(src))
@@ -260,9 +260,9 @@
 		return
 	src.hive.mutators.list_and_purchase_mutators()
 
-/mob/living/carbon/Xenomorph/verb/purchase_mutators()
-	set name = "Purchase Mutators"
-	set desc = "Purchase Mutators for yourself."
+/mob/living/carbon/Xenomorph/verb/purchase_strains()
+	set name = "Purchase Strains"
+	set desc = "Purchase Strains for yourself."
 	set category = "Alien"
 	if(hardcore)
 		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
@@ -272,23 +272,15 @@
 	src.mutators.list_and_purchase_mutators()
 
 /mob/living/carbon/Xenomorph/verb/list_mutators()
-	set name = "List Mutators"
-	set desc = "List Mutators that apply to you."
+	set name = "List Strains"
+	set desc = "List your current Strain, if any."
 	set category = "Alien"
 	if(hardcore)
 		to_chat(usr, SPAN_WARNING("No time for that, must KILL!"))
 		return
-	to_chat(src, SPAN_XENOANNOUNCE("Mutators"))
-	to_chat(src, "Personal mutators:")
+	to_chat(src, SPAN_XENOANNOUNCE("Strain:"))
 	if(!src.mutators.purchased_mutators || !src.mutators.purchased_mutators.len)
 		to_chat(src, "-")
 	else
 		for(var/m in src.mutators.purchased_mutators)
-			src << m
-	to_chat(src, "")
-	to_chat(src, "Hive mutators:")
-	if(!src.hive.mutators.purchased_mutators || !src.hive.mutators.purchased_mutators.len)
-		to_chat(src, "-")
-	else
-		for(var/m in src.hive.mutators.purchased_mutators)
 			src << m

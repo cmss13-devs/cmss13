@@ -114,3 +114,11 @@
 	if(!mutator_logs)
 		return
 	mutator_logs << text + "[log_end]"
+
+/proc/log_hiveorder(text)
+	diary << html_decode("\[[time_stamp()]]HIVE ORDER: [text][log_end]")
+	STUI.debug.Add("\[[time_stamp()]]HIVE ORDER: [text]<br>")
+
+/proc/log_announcement(text)
+	diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][log_end]")
+	STUI.debug.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]<br>")

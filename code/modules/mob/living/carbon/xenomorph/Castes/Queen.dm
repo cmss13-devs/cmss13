@@ -294,6 +294,7 @@
 		xeno_message("<B>The Queen's will overwhelms your instincts...</B>",3,hivenumber)
 		xeno_message("<B>\""+txt+"\"</B>",3,hivenumber)
 		hive.hive_orders = txt
+		log_hiveorder("[usr.name] ([usr.ckey]) has set the Hive Order to: [txt]")
 	else
 		hive.hive_orders = ""
 

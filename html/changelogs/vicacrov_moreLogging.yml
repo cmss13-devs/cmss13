@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "Added logging for hive orders and announcements for the staff."

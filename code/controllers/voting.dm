@@ -343,7 +343,13 @@ var/force_mapdaemon_vote = 0
 
 	var/list/L = list()
 	L += "Don't care"
-	L += NEXT_MAP_CANDIDATES.Copy()
+
+	// For future modularity and maybe more subtle solutions here?
+	switch(clients.len)
+		if (0 to PLAYERCOUNT_LOWPOP_MAP_LIMIT)
+			L += LOWPOP_NEXT_MAP_CANDIDATES.Copy()
+		else
+			L += NEXT_MAP_CANDIDATES.Copy()
 	L -= map_tag
 	var/selection = input("Vote for the next map to play on", "Vote:", "Don't care") as null|anything in L
 
@@ -407,7 +413,7 @@ var/enable_map_vote = 1
 	set name = "Map Vote - List Maps"
 	set category = "Server"
 
-	to_chat(src, "Next map candidates:")
+	to_chat(src, "Possible maps irrespective of pop:")
 	var/i
 	for(i in NEXT_MAP_CANDIDATES)
 		src << i

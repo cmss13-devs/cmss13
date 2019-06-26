@@ -591,16 +591,19 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/facedir(var/ndir)
 	if(!canface())	return 0
+	var/newdir = FALSE
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
 		dir = ndir
+		newdir = TRUE
 		next_move_slowdown = max(next_move_slowdown, 3)
 	if(buckled && !buckled.anchored)
 		buckled.dir = ndir
 		buckled.handle_rotation()
 	var/mob/living/mliv = src
 	if(istype(mliv))
-		mliv.on_movement(1)
+		if(newdir)
+			mliv.on_movement(0)
 		if(light)
 			light.changed()
 	return 1

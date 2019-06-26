@@ -135,7 +135,7 @@
 		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-
+	fps = prefs.fps
 	. = ..()	//calls mob.Login()
 
 	// Version check below if we ever need to start checking against BYOND versions again.

@@ -1060,11 +1060,8 @@
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
 		return
 
-	if(istype(T, /turf/open/space))
-		to_chat(src, SPAN_XENOWARNING("You can't tunnel there!"))
-		return
-
-	if(get_area(T).flags_atom & AREA_NOTUNNEL)
+	var/area/A = get_area(T)
+	if (A.flags_atom & AREA_NOTUNNEL)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 

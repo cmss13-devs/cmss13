@@ -267,6 +267,7 @@
                 if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE) r_FAL
 
                 crew_announcement.Announce(input, to_xenos = 0)
+                log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")
                 cooldown_message = world.time
 
         if("evacuation_start")

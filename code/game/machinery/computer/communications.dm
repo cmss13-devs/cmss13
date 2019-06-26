@@ -143,6 +143,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 				if(!input || !(usr in view(1,src)) || authenticated != 2 || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE) r_FAL
 
 				crew_announcement.Announce(input, to_xenos = 0)
+				log_announcement("[usr.name] ([usr.ckey]) has announced the following: [input]")
 				cooldown_message = world.time
 
 		if("award")
@@ -332,7 +333,7 @@ var/global/cooldown_message = 0 //Based on world.time.
 
 				Centcomm_announce(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
-				log_say("[key_name(usr)] has made an USCM announcement: [input]")
+				log_announcement("[key_name(usr)] has made an USCM announcement: [input]")
 				cooldown_central = world.time
 
 		if("securitylevel")

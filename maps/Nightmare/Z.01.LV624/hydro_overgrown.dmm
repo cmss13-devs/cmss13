@@ -432,25 +432,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/lazarus/hydroponics)
-"api" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	layer = 2.44
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
-"apj" = (
-/obj/structure/sign/botany,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/hydroponics)
 "apk" = (
 /obj/structure/jungle/vines/heavy{
 	icon_state = "Hvy3";
@@ -1032,10 +1013,6 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -1175,7 +1152,7 @@ aab
 alG
 alG
 alG
-api
+anI
 apG
 apG
 anI
@@ -1194,7 +1171,7 @@ alG
 aab
 alG
 anG
-apj
+anH
 anT
 aqa
 anH

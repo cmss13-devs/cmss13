@@ -1,125 +1,1329 @@
-"aa" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ab" = (/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ac" = (/obj/machinery/portable_atmospherics/hydroponics,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ad" = (/obj/effect/landmark{name = "crap_item"},/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ae" = (/obj/structure/table,/obj/item/reagent_container/spray/plantbgone{pixel_x = 12},/obj/item/reagent_container/spray/plantbgone,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"af" = (/obj/structure/window/framed/colony,/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"ag" = (/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"ah" = (/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"ai" = (/obj/structure/jungle/vines{icon_state = "Light3"},/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aj" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"ak" = (/obj/structure/jungle/vines,/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"al" = (/obj/structure/jungle/vines{icon_state = "Light3"},/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"am" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"an" = (/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"ao" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle8)
-"ap" = (/obj/structure/jungle/plantbot1,/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"aq" = (/turf/open/floor{dir = 1; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ar" = (/obj/structure/table,/obj/item/clothing/suit/apron,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"as" = (/obj/structure/jungle/vines,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"at" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle8)
-"au" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner"},/area/lv624/lazarus/quartstorage/outdoors)
-"av" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder,/area/lv624/lazarus/quartstorage/outdoors)
-"aw" = (/obj/structure/table,/obj/item/tool/crowbar,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ax" = (/obj/structure/table,/obj/machinery/light,/obj/item/disk/objective,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"ay" = (/obj/structure/table,/obj/item/tool/shovel/spade,/obj/item/document_objective/technical_manual,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"az" = (/obj/structure/table,/obj/item/tool/extinguisher,/turf/open/floor{dir = 5; icon_state = "green"},/area/lv624/lazarus/hydroponics)
-"aA" = (/obj/machinery/colony_floodlight,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aB" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aC" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"aD" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy2"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"aE" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder{dir = 4},/area/lv624/lazarus/quartstorage/outdoors)
-"aF" = (/turf/open/gm/dirt,/area/lv624/lazarus/quartstorage/outdoors)
-"aG" = (/turf/closed/wall,/area/lv624/lazarus/hydroponics)
-"aH" = (/obj/structure/window_frame/colony,/turf/open/floor/plating,/area/lv624/lazarus/hydroponics)
-"aI" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy3"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aJ" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy3"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"aK" = (/obj/effect/landmark{name = "surv_spawn"; pixel_x = -1},/turf/open/gm/dirt,/area/lv624/lazarus/quartstorage/outdoors)
-"aL" = (/obj/structure/sign/botany,/turf/closed/wall,/area/lv624/lazarus/hydroponics)
-"aM" = (/obj/structure/jungle/vines/heavy{icon_state = "Med1"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aN" = (/obj/structure/jungle/vines/heavy{icon_state = "Med1"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"aO" = (/obj/effect/landmark{name = "hunter_secondary"},/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"aP" = (/turf/open/gm/dirt,/area/lv624/ground/compound/n)
-"aQ" = (/turf/open/gm/dirtgrassborder{dir = 8},/area/lv624/ground/compound/n)
-"aR" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/compound/n)
-"aS" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/compound/n)
-"aT" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy2"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aU" = (/obj/structure/jungle/vines/heavy{icon_state = "Med1"; pixel_x = 0},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"aV" = (/obj/structure/jungle/vines/heavy{icon_state = "Med2"; pixel_x = 0; pixel_y = 0},/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"aW" = (/obj/item/tool/warning_cone,/turf/open/gm/grass,/area/lv624/ground/jungle8)
-"aX" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy2"; pixel_x = 0},/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"aY" = (/obj/structure/jungle/vines{icon_state = "Light3"},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"aZ" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy2"; pixel_x = 0},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle8)
-"ba" = (/obj/structure/jungle/vines{icon_state = "Light3"},/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"bb" = (/turf/open/gm/grass{dir = 2; icon_state = "gbcorner"},/area/lv624/ground/jungle7)
-"bc" = (/turf/open/gm/grass{dir = 2; icon_state = "grassbeach"},/area/lv624/ground/jungle7)
-"bd" = (/turf/open/gm/grass{dir = 8; icon_state = "gbcorner"},/area/lv624/ground/jungle7)
-"be" = (/obj/structure/jungle/vines{icon_state = "Light3"},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle8)
-"bf" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder{icon_state = "grassdirt_corner2"},/area/lv624/lazarus/quartstorage/outdoors)
-"bg" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/compound/n)
-"bh" = (/turf/open/gm/dirtgrassborder{dir = 4; icon_state = "grassdirt_corner"},/area/lv624/ground/compound/n)
-"bi" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"bj" = (/turf/open/gm/grass{dir = 4; icon_state = "grassbeach"},/area/lv624/ground/jungle7)
-"bk" = (/turf/open/gm/river,/area/lv624/ground/jungle7)
-"bl" = (/turf/open/gm/grass{dir = 8; icon_state = "grassbeach"},/area/lv624/ground/jungle7)
-"bm" = (/obj/structure/girder/displaced,/turf/open/gm/dirt,/area/lv624/lazarus/quartstorage/outdoors)
-"bn" = (/obj/structure/window/framed/colony/reinforced,/turf/open/floor/plating,/area/lv624/lazarus/fitness)
-"bo" = (/turf/closed/wall,/area/lv624/lazarus/fitness)
-"bp" = (/turf/open/gm/grass{dir = 4; icon_state = "gbcorner"},/area/lv624/ground/jungle7)
-"bq" = (/turf/open/gm/grass{dir = 1; icon_state = "grassbeach"},/area/lv624/ground/jungle7)
-"br" = (/turf/open/gm/grass{icon_state = "gbcorner"; dir = 1},/area/lv624/ground/jungle7)
-"bs" = (/obj/structure/closet/crate/secure/hydrosec,/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bt" = (/obj/structure/window_frame/colony,/turf/open/floor/plating,/area/lv624/lazarus/fitness)
-"bu" = (/obj/structure/girder,/turf/open/floor{icon_state = "dark"},/area/lv624/lazarus/quartstorage/outdoors)
-"bv" = (/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bw" = (/obj/structure/window/framed/colony,/turf/open/floor/plating,/area/lv624/lazarus/fitness)
-"bx" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy2"; pixel_x = 0},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"by" = (/turf/open/floor/plating{icon_state = "platebotc"},/area/lv624/lazarus/quartstorage/outdoors)
-"bz" = (/turf/closed/wall,/area/lv624/lazarus/quartstorage/outdoors)
-"bA" = (/turf/open/gm/grass,/area/lv624/ground/jungle9)
-"bB" = (/obj/structure/jungle/vines,/turf/open/gm/grass,/area/lv624/ground/compound/n)
-"bC" = (/obj/structure/fence,/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner2"},/area/lv624/lazarus/quartstorage/outdoors)
-"bD" = (/obj/structure/fence,/turf/open/gm/dirt,/area/lv624/lazarus/quartstorage/outdoors)
-"bE" = (/obj/item/device/radio/intercom{anyai = 1; freerange = 1; frequency = 1469; name = "General Listening Channel"; pixel_x = 0; pixel_y = 30},/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bF" = (/obj/structure/jungle/vines/heavy{icon_state = "Hvy3"; pixel_x = 0},/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle7)
-"bG" = (/turf/open/gm/dirtgrassborder{dir = 8; icon_state = "grassdirt_corner"},/area/lv624/ground/jungle7)
-"bH" = (/turf/open/gm/dirtgrassborder{dir = 1},/area/lv624/ground/jungle7)
-"bI" = (/obj/item/clothing/under/shorts/blue,/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bJ" = (/obj/structure/window/framed/colony,/turf/open/floor{dir = 5; icon_state = "whitepurple"},/area/lv624/lazarus/fitness)
-"bK" = (/obj/structure/jungle/vines{icon_state = "Light3"},/turf/open/gm/grass,/area/lv624/ground/jungle9)
-"bL" = (/turf/closed/gm/dense{icon_state = "wall2"},/area/lv624/ground/jungle9)
-"bM" = (/obj/structure/jungle/vines{icon_state = "Light2"},/turf/open/gm/grass,/area/lv624/ground/jungle9)
-"bN" = (/obj/structure/jungle/planttop1,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"bO" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/vending/wallmed1{pixel_x = 29},/obj/structure/reagent_dispensers/watertank,/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bP" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/closed/wall,/area/lv624/lazarus/fitness)
-"bQ" = (/obj/structure/cable/yellow{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/closed/wall,/area/lv624/lazarus/fitness)
-"bR" = (/obj/structure/jungle/plantbot1,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"bS" = (/obj/item/tool/mop,/obj/structure/rack{layer = 2.5},/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bT" = (/obj/structure/cable/yellow{d1 = 1; d2 = 2; icon_state = "1-2"; layer = 2.44},/turf/open/gm/grass,/area/lv624/ground/jungle9)
-"bU" = (/obj/item/weapon/baseballbat/metal,/obj/item/weapon/baseballbat/metal{pixel_x = 5},/obj/structure/rack{layer = 2.5},/turf/open/floor{dir = 4; icon_state = "whitepurplecorner"},/area/lv624/lazarus/fitness)
-"bV" = (/turf/closed/wall/r_wall,/area/lv624/lazarus/main_hall)
-"bW" = (/obj/effect/landmark{name = "crap_item"},/obj/structure/barricade/wooden,/turf/open/gm/grass,/area/lv624/ground/jungle7)
-"bX" = (/obj/effect/landmark{name = "hunter_secondary"},/turf/open/gm/grass,/area/lv624/ground/jungle7)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ab" = (
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ac" = (
+/obj/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ad" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ae" = (
+/obj/structure/table,
+/obj/item/reagent_container/spray/plantbgone{
+	pixel_x = 12
+	},
+/obj/item/reagent_container/spray/plantbgone,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"af" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"ag" = (
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"ah" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"ai" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aj" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"ak" = (
+/obj/structure/jungle/vines,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"al" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"am" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"an" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"ao" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle8)
+"ap" = (
+/obj/structure/jungle/plantbot1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"aq" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ar" = (
+/obj/structure/table,
+/obj/item/clothing/suit/apron,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"as" = (
+/obj/structure/jungle/vines,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"at" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle8)
+"au" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"av" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area/lv624/lazarus/quartstorage/outdoors)
+"aw" = (
+/obj/structure/table,
+/obj/item/tool/crowbar,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ax" = (
+/obj/structure/table,
+/obj/machinery/light,
+/obj/item/disk/objective,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"ay" = (
+/obj/structure/table,
+/obj/item/tool/shovel/spade,
+/obj/item/document_objective/technical_manual,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"az" = (
+/obj/structure/table,
+/obj/item/tool/extinguisher,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"aA" = (
+/obj/machinery/colony_floodlight,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aB" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aC" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"aD" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy2";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"aE" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"aF" = (
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"aG" = (
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
+"aH" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/hydroponics)
+"aI" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy3";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aJ" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy3";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"aK" = (
+/obj/effect/landmark{
+	name = "surv_spawn";
+	pixel_x = -1
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"aL" = (
+/obj/structure/sign/botany,
+/turf/closed/wall,
+/area/lv624/lazarus/hydroponics)
+"aM" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Med1";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aN" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Med1";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"aO" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"aP" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/compound/n)
+"aQ" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/compound/n)
+"aR" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/compound/n)
+"aS" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/compound/n)
+"aT" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy2";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aU" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Med1";
+	pixel_x = 0
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"aV" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Med2";
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"aW" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle8)
+"aX" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy2";
+	pixel_x = 0
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"aY" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light3"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"aZ" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy2";
+	pixel_x = 0
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle8)
+"ba" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"bb" = (
+/turf/open/gm/grass{
+	dir = 2;
+	icon_state = "gbcorner"
+	},
+/area/lv624/ground/jungle7)
+"bc" = (
+/turf/open/gm/grass{
+	dir = 2;
+	icon_state = "grassbeach"
+	},
+/area/lv624/ground/jungle7)
+"bd" = (
+/turf/open/gm/grass{
+	dir = 8;
+	icon_state = "gbcorner"
+	},
+/area/lv624/ground/jungle7)
+"be" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light3"
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle8)
+"bf" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"bg" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/compound/n)
+"bh" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/compound/n)
+"bi" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"bj" = (
+/turf/open/gm/grass{
+	dir = 4;
+	icon_state = "grassbeach"
+	},
+/area/lv624/ground/jungle7)
+"bk" = (
+/turf/open/gm/river,
+/area/lv624/ground/jungle7)
+"bl" = (
+/turf/open/gm/grass{
+	dir = 8;
+	icon_state = "grassbeach"
+	},
+/area/lv624/ground/jungle7)
+"bm" = (
+/obj/structure/girder/displaced,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"bn" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
+"bo" = (
+/turf/closed/wall,
+/area/lv624/lazarus/fitness)
+"bp" = (
+/turf/open/gm/grass{
+	dir = 4;
+	icon_state = "gbcorner"
+	},
+/area/lv624/ground/jungle7)
+"bq" = (
+/turf/open/gm/grass{
+	dir = 1;
+	icon_state = "grassbeach"
+	},
+/area/lv624/ground/jungle7)
+"br" = (
+/turf/open/gm/grass{
+	icon_state = "gbcorner";
+	dir = 1
+	},
+/area/lv624/ground/jungle7)
+"bs" = (
+/obj/structure/closet/crate/secure/hydrosec,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bt" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
+"bu" = (
+/obj/structure/girder,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"bv" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bw" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/fitness)
+"bx" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy2";
+	pixel_x = 0
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"by" = (
+/turf/open/floor/plating{
+	icon_state = "platebotc"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"bz" = (
+/turf/closed/wall,
+/area/lv624/lazarus/quartstorage/outdoors)
+"bA" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"bB" = (
+/obj/structure/jungle/vines,
+/turf/open/gm/grass,
+/area/lv624/ground/compound/n)
+"bC" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/lazarus/quartstorage/outdoors)
+"bD" = (
+/obj/structure/fence,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/quartstorage/outdoors)
+"bE" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 0;
+	pixel_y = 30
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bF" = (
+/obj/structure/jungle/vines/heavy{
+	icon_state = "Hvy3";
+	pixel_x = 0
+	},
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle7)
+"bG" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle7)
+"bH" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle7)
+"bI" = (
+/obj/item/clothing/under/shorts/blue,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bJ" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "whitepurple"
+	},
+/area/lv624/lazarus/fitness)
+"bK" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light3"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"bL" = (
+/turf/closed/gm/dense{
+	icon_state = "wall2"
+	},
+/area/lv624/ground/jungle9)
+"bM" = (
+/obj/structure/jungle/vines{
+	icon_state = "Light2"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle9)
+"bN" = (
+/obj/structure/jungle/planttop1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"bO" = (
+/obj/machinery/vending/wallmed1{
+	pixel_x = 29
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bR" = (
+/obj/structure/jungle/plantbot1,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"bS" = (
+/obj/item/tool/mop,
+/obj/structure/rack{
+	layer = 2.5
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bU" = (
+/obj/item/weapon/baseballbat/metal,
+/obj/item/weapon/baseballbat/metal{
+	pixel_x = 5
+	},
+/obj/structure/rack{
+	layer = 2.5
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whitepurplecorner"
+	},
+/area/lv624/lazarus/fitness)
+"bV" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/main_hall)
+"bW" = (
+/obj/effect/landmark{
+	name = "crap_item"
+	},
+/obj/structure/barricade/wooden,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
+"bX" = (
+/obj/effect/landmark{
+	name = "hunter_secondary"
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle7)
 
 (1,1,1) = {"
-aaabacadaeafagagahahaiahajajakalakamakakamalananananaoananapananan
-aqabababarafagagajaiahahaiaiajasakamakakaoalanalanataoaoanananauav
-aqawaxayazafagagajahahaAaiaBaCaiajaiaoaoataDaoalaDaoaoaoanananaEaF
-aqaGaGafaHaGagagahaiahaBaiaiaiaIaBaBaIalalamaJamalataoananananaEaK
-afaLagagagagagagaBaBaBaiaCaBaiaiaMaiaiaMalalaNamalaDamanananaOaEaF
-aPaQagaRagagaSaRaTaBaCajajaIaUaBaVajaCajaTaNamalaJamananananaWaEaF
-aPaQagaRagagagaXaiaiaiaiaMasajaVahaiaTaYaYaialalaZatanananananaEaF
-aPaQagagagagbabaajaiaMaiaBasaiahaTaiahbbbcbdaBaNbeaoanananananbfaF
-bgbhagagagbiaRaRaCaBaMaVaYahahahaYaYahbjbkblahalamaZamananananaEbm
-bnboagagaRagbiaSahaMaiaTahbbbcbdahahahbpbqbraBahaJamanananananaEaF
-bsbtagaRaRbiaRaRaBaVaCajaibjbkblajajahahajaBaCaTajananananananaEbu
-bvbwagagagbaaXaSaiaMaUbxahbjbkblahajajaiajaiajaMaiananaoanananaEby
-bvbwagagagagbiaRaiahaiahahbpbqbrahaiaiaTaiaYajaiahanataoanananaEbz
-bvbobobAbAbAbAagbBasaMaiaiaIaiajajaYaMaIahaiaMaBaBalaoaoanananbCbD
-bvbEbwbAbAbAbAbAaRaSaiaBaMaiaCbFaCajaYaiaiaBaiajbxaiahahahahahbGbH
-bIbvbJbAbAbAbAbAbKajaYaCaTaBaBaiaMaMaCaCahaiaCajaBahahahahahahahah
-bvbvbwbAbAbAbLbAbAbMaiaTaiaBaTaiaiaBaiaTaiahahahahahahaBaTaCahbNah
-bObPbQbAbAbAbLbLbAbAbMaiajajaCaBahahahaBahahahahahajbxaBaCajajbRah
-bSbwbTbAbAbAbLbAbAbAbAbKaTajajahahahahajajahahahahahahahajajahahah
-bUbwbTbAbAbAbAbAbAbLbAbAagagagagbVbVbVbVbVbVbVbVbVahbWahahahahbXah
+aa
+aq
+aq
+aq
+af
+aP
+aP
+aP
+bg
+bn
+bs
+bv
+bv
+bv
+bv
+bI
+bv
+bO
+bS
+bU
+"}
+(2,1,1) = {"
+ab
+ab
+aw
+aG
+aL
+aQ
+aQ
+aQ
+bh
+bo
+bt
+bw
+bw
+bo
+bE
+bv
+bv
+bo
+bw
+bw
+"}
+(3,1,1) = {"
+ac
+ab
+ax
+aG
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+bo
+bw
+bJ
+bw
+bo
+bA
+bA
+"}
+(4,1,1) = {"
+ad
+ab
+ay
+af
+ag
+aR
+aR
+ag
+ag
+ag
+aR
+ag
+ag
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+"}
+(5,1,1) = {"
+ae
+ar
+az
+aH
+ag
+ag
+ag
+ag
+ag
+aR
+aR
+ag
+ag
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+"}
+(6,1,1) = {"
+af
+af
+af
+aG
+ag
+ag
+ag
+ag
+bi
+ag
+bi
+ba
+ag
+bA
+bA
+bA
+bA
+bA
+bA
+bA
+"}
+(7,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+aS
+ag
+ba
+aR
+bi
+aR
+aX
+bi
+bA
+bA
+bA
+bL
+bL
+bL
+bA
+"}
+(8,1,1) = {"
+ag
+ag
+ag
+ag
+ag
+aR
+aX
+ba
+aR
+aS
+aR
+aS
+aR
+ag
+bA
+bA
+bA
+bL
+bA
+bA
+"}
+(9,1,1) = {"
+ah
+aj
+aj
+ah
+aB
+aT
+ai
+aj
+aC
+ah
+aB
+ai
+ai
+bB
+aR
+bK
+bA
+bA
+bA
+bA
+"}
+(10,1,1) = {"
+ah
+ai
+ah
+ai
+aB
+aB
+ai
+ai
+aB
+aM
+aV
+aM
+ah
+as
+aS
+aj
+bM
+bA
+bA
+bL
+"}
+(11,1,1) = {"
+ai
+ah
+ah
+ah
+aB
+aC
+ai
+aM
+aM
+ai
+aC
+aU
+ai
+aM
+ai
+aY
+ai
+bM
+bA
+bA
+"}
+(12,1,1) = {"
+ah
+ah
+aA
+aB
+ai
+aj
+ai
+ai
+aV
+aT
+aj
+bx
+ah
+ai
+aB
+aC
+aT
+ai
+bK
+bA
+"}
+(13,1,1) = {"
+aj
+ai
+ai
+ai
+aC
+aj
+aM
+aB
+aY
+ah
+ai
+ah
+ah
+ai
+aM
+aT
+ai
+aj
+aT
+ag
+"}
+(14,1,1) = {"
+aj
+ai
+aB
+ai
+aB
+aI
+as
+as
+ah
+bb
+bj
+bj
+bp
+aI
+ai
+aB
+aB
+aj
+aj
+ag
+"}
+(15,1,1) = {"
+ak
+aj
+aC
+ai
+ai
+aU
+aj
+ai
+ah
+bc
+bk
+bk
+bq
+ai
+aC
+aB
+aT
+aC
+aj
+ag
+"}
+(16,1,1) = {"
+al
+as
+ai
+aI
+ai
+aB
+aV
+ah
+ah
+bd
+bl
+bl
+br
+aj
+bF
+ai
+ai
+aB
+ah
+ag
+"}
+(17,1,1) = {"
+ak
+ak
+aj
+aB
+aM
+aV
+ah
+aT
+aY
+ah
+aj
+ah
+ah
+aj
+aC
+aM
+ai
+ah
+ah
+bV
+"}
+(18,1,1) = {"
+am
+am
+ai
+aB
+ai
+aj
+ai
+ai
+aY
+ah
+aj
+aj
+ai
+aY
+aj
+aM
+aB
+ah
+ah
+bV
+"}
+(19,1,1) = {"
+ak
+ak
+ao
+aI
+ai
+aC
+aT
+ah
+ah
+ah
+ah
+aj
+ai
+aM
+aY
+aC
+ai
+ah
+ah
+bV
+"}
+(20,1,1) = {"
+ak
+ak
+ao
+al
+aM
+aj
+aY
+bb
+bj
+bp
+ah
+ai
+aT
+aI
+ai
+aC
+aT
+aB
+aj
+bV
+"}
+(21,1,1) = {"
+am
+ao
+at
+al
+al
+aT
+aY
+bc
+bk
+bq
+aj
+aj
+ai
+ah
+ai
+ah
+ai
+ah
+aj
+bV
+"}
+(22,1,1) = {"
+al
+al
+aD
+am
+al
+aN
+ai
+bd
+bl
+br
+aB
+ai
+aY
+ai
+aB
+ai
+ah
+ah
+ah
+bV
+"}
+(23,1,1) = {"
+an
+an
+ao
+aJ
+aN
+am
+al
+aB
+ah
+aB
+aC
+aj
+aj
+aM
+ai
+aC
+ah
+ah
+ah
+bV
+"}
+(24,1,1) = {"
+an
+al
+al
+am
+am
+al
+al
+aN
+al
+ah
+aT
+aM
+ai
+aB
+aj
+aj
+ah
+ah
+ah
+bV
+"}
+(25,1,1) = {"
+an
+an
+aD
+al
+al
+aJ
+aZ
+be
+am
+aJ
+aj
+ai
+ah
+aB
+bx
+aB
+ah
+ah
+ah
+bV
+"}
+(26,1,1) = {"
+an
+at
+ao
+at
+aD
+am
+at
+ao
+aZ
+am
+an
+an
+an
+al
+ai
+ah
+ah
+aj
+ah
+ah
+"}
+(27,1,1) = {"
+ao
+ao
+ao
+ao
+am
+an
+an
+an
+am
+an
+an
+an
+at
+ao
+ah
+ah
+ah
+bx
+ah
+bW
+"}
+(28,1,1) = {"
+an
+ao
+ao
+an
+an
+an
+an
+an
+an
+an
+an
+ao
+ao
+ao
+ah
+ah
+aB
+aB
+ah
+ah
+"}
+(29,1,1) = {"
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+ah
+ah
+aT
+aC
+aj
+ah
+"}
+(30,1,1) = {"
+ap
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+ah
+ah
+aC
+aj
+aj
+ah
+"}
+(31,1,1) = {"
+an
+an
+an
+an
+aO
+aW
+an
+an
+an
+an
+an
+an
+an
+an
+ah
+ah
+ah
+aj
+ah
+ah
+"}
+(32,1,1) = {"
+an
+au
+aE
+aE
+aE
+aE
+aE
+bf
+aE
+aE
+aE
+aE
+aE
+bC
+bG
+ah
+bN
+bR
+ah
+bX
+"}
+(33,1,1) = {"
+an
+av
+aF
+aK
+aF
+aF
+aF
+aF
+bm
+aF
+bu
+by
+bz
+bD
+bH
+ah
+ah
+ah
+ah
+ah
 "}

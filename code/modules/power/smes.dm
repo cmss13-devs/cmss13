@@ -54,10 +54,7 @@
 		if(!terminal.powernet)
 			terminal.connect_to_network()
 		updateicon()
-		start_processing()
-
-
-
+		start_processing_power()
 
 		if(!should_be_mapped)
 			warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
@@ -129,8 +126,6 @@
 
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
-
-
 /obj/machinery/power/smes/proc/restore()
 	if(stat & BROKEN)
 		return

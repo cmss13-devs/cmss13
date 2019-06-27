@@ -879,42 +879,6 @@
 	icon_state = "floor4"
 	},
 /area/yautja)
-"cr" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"cs" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
-"ct" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/closed/wall/indestructible/other{
-	color = "#686245"
-	},
-/area/yautja)
 "cu" = (
 /obj/machinery/door/airlock/secure{
 	name = "Storage Chamber"
@@ -931,7 +895,6 @@
 	dir = 4;
 	name = "plasma power generator"
 	},
-/obj/structure/cable,
 /turf/open/floor{
 	tag = "icon-floor4";
 	icon_state = "floor4"
@@ -944,11 +907,6 @@
 /obj/structure/table/reinforced{
 	layer = 2.69
 	},
-/obj/structure/cable{
-	tag = "icon-0-2";
-	icon_state = "0-2"
-	},
-/obj/structure/cable,
 /turf/open/floor{
 	tag = "icon-floor4";
 	icon_state = "floor4"
@@ -5073,29 +5031,10 @@
 	cell_type = /obj/item/cell/hyper;
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
 	icon_state = "tcomms"
 	},
-/area/shuttle/distress/start_big)
-"lK" = (
-/obj/effect/decal/warning_stripes{
-	tag = "icon-SW-out";
-	icon_state = "SW-out"
-	},
-/obj/effect/decal/warning_stripes{
-	tag = "icon-NW-out";
-	icon_state = "NW-out"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating/almayer,
 /area/shuttle/distress/start_big)
 "lL" = (
 /turf/open/floor/plating/almayer,
@@ -5960,18 +5899,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/command)
 "ni" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
@@ -5986,11 +5916,6 @@
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/power/apc/antag{
@@ -6042,11 +5967,6 @@
 /area/adminlevel/bunker01/command)
 "np" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/command)
 "nq" = (
@@ -6057,11 +5977,6 @@
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -6092,11 +6007,6 @@
 	req_access = list(201)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
@@ -6111,11 +6021,6 @@
 	name = "\improper Bathroom"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -6139,11 +6044,6 @@
 /area/adminlevel/bunker01/bedroom)
 "nz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/carpet{
 	tag = "icon-carpetside (NORTH)";
 	icon_state = "carpetside";
@@ -6174,11 +6074,6 @@
 /area/adminlevel/bunker01/bedroom)
 "nD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
@@ -6280,12 +6175,6 @@
 	icon_state = "map-supply";
 	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
 /turf/open/floor/carpet,
 /area/adminlevel/bunker01/bedroom)
 "nQ" = (
@@ -6293,12 +6182,6 @@
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /turf/open/floor/carpet{
 	tag = "icon-carpetside (EAST)";
@@ -6316,12 +6199,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/firedoor/border_only/almayer/antag,
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 4
@@ -6334,12 +6211,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/bedroom)
 "nT" = (
@@ -6347,16 +6218,6 @@
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
@@ -6389,11 +6250,6 @@
 /area/adminlevel/bunker01/kitchen)
 "nY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -6404,26 +6260,9 @@
 	dir = 2
 	},
 /area/adminlevel/bunker01/kitchen)
-"nZ" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/prison{
-	tag = "icon-sterile_white";
-	icon_state = "sterile_white";
-	dir = 2
-	},
-/area/adminlevel/bunker01/kitchen)
 "oa" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
@@ -6478,27 +6317,6 @@
 	dir = 6
 	},
 /area/adminlevel/bunker01/bedroom)
-"og" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/bedroom)
-"oh" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/bedroom)
 "oi" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -6506,17 +6324,6 @@
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -6532,12 +6339,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -6551,12 +6352,6 @@
 	icon_state = "map-supply";
 	dir = 1
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -6568,12 +6363,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -6584,17 +6373,6 @@
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/plating/plating_catwalk,
@@ -6608,12 +6386,6 @@
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/prison{
@@ -6630,37 +6402,9 @@
 	dir = 4
 	},
 /area/adminlevel/bunker01/hydroponics)
-"op" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/prison{
-	tag = "icon-sterile_white";
-	icon_state = "sterile_white";
-	dir = 2
-	},
-/area/adminlevel/bunker01/kitchen)
 "oq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -6708,7 +6452,6 @@
 /turf/closed/wall,
 /area/adminlevel/bunker01/storage)
 "ow" = (
-/obj/structure/cable,
 /obj/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
@@ -6740,11 +6483,6 @@
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -6850,16 +6588,6 @@
 	icon_state = "map-supply";
 	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-sterile_white";
@@ -6877,12 +6605,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/kitchen)
@@ -6892,12 +6614,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
 "oQ" = (
@@ -6905,10 +6621,6 @@
 	tag = "icon-intact-supply (NORTHWEST)";
 	icon_state = "intact-supply";
 	dir = 9
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/antag{
 	pixel_y = -24
@@ -7006,11 +6718,6 @@
 	req_access = list(201)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -7032,11 +6739,6 @@
 /obj/structure/table/reinforced,
 /obj/item/tool/kitchen/tray,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -7048,10 +6750,6 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "pa" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /obj/structure/rack,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
@@ -7072,12 +6770,6 @@
 	},
 /area/adminlevel/bunker01/storage)
 "pb" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pc" = (
@@ -7086,16 +6778,6 @@
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /obj/item/stack/sheet/metal{
 	amount = 50;
@@ -7149,12 +6831,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -7182,12 +6858,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -7207,11 +6877,6 @@
 	tag = "icon-intact-supply (SOUTHWEST)";
 	icon_state = "intact-supply";
 	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7250,11 +6915,6 @@
 /area/adminlevel/bunker01/mainroom)
 "pn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/junction,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -7290,11 +6950,6 @@
 "ps" = (
 /obj/structure/rack,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/item/stack/sheet/plasteel{
 	amount = 30
 	},
@@ -7330,11 +6985,6 @@
 /area/adminlevel/bunker01/storage)
 "pu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
@@ -7352,29 +7002,13 @@
 	icon_state = "intact-supply";
 	dir = 5
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "py" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/junction{
 	dir = 2;
@@ -7384,18 +7018,6 @@
 /area/adminlevel/bunker01/mainroom)
 "pz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
 /obj/structure/disposalpipe/junction{
 	tag = "icon-pipe-j1 (WEST)";
 	icon_state = "pipe-j1";
@@ -7409,12 +7031,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -7425,17 +7041,6 @@
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -7452,14 +7057,6 @@
 "pD" = (
 /turf/closed/wall/r_wall,
 /area/adminlevel/bunker01/mainroom)
-"pE" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/storage)
 "pF" = (
 /obj/structure/rack,
 /obj/item/tool/shovel/etool,
@@ -7487,60 +7084,14 @@
 	icon_state = "map-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
-"pI" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/engineering)
-"pJ" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/engineering)
-"pK" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/engineering)
 "pL" = (
 /obj/machinery/vending/antag/gear,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "pN" = (
@@ -7549,22 +7100,9 @@
 /area/adminlevel/bunker01/mainroom)
 "pO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
-"pP" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall,
-/area/adminlevel/bunker01/storage)
 "pQ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
@@ -7583,11 +7121,6 @@
 /area/adminlevel/bunker01/storage)
 "pS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/storage)
 "pT" = (
@@ -7598,21 +7131,12 @@
 	dir = 6
 	},
 /area/adminlevel/bunker01/storage)
-"pU" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall/r_wall,
-/area/adminlevel/bunker01/engineering)
 "pV" = (
 /obj/machinery/power/smes/buildable/charged{
 	charge = 4e+006;
 	chargelevel = 50000;
 	charging = 1
 	},
-/obj/structure/cable,
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
@@ -7627,7 +7151,6 @@
 	chargelevel = 50000;
 	charging = 1
 	},
-/obj/structure/cable,
 /obj/machinery/light/small{
 	dir = 1;
 	pixel_y = 20
@@ -7650,11 +7173,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
@@ -7683,16 +7201,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "qd" = (
@@ -7706,21 +7214,12 @@
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/storage)
 "qf" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/antag{
 	dir = 4;
 	pixel_x = 24
@@ -7745,10 +7244,6 @@
 /obj/machinery/power/terminal{
 	icon_state = "term";
 	dir = 1
-	},
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
 	},
 /turf/open/floor/almayer{
 	tag = "icon-orange (EAST)";
@@ -7795,20 +7290,10 @@
 	icon_state = "map-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "qn" = (
 /obj/structure/closet/firecloset,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -7821,45 +7306,13 @@
 "qo" = (
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/engineering)
-"qp" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.1
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/engineering)
-"qq" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/engineering)
 "qr" = (
 /obj/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
 	req_access = list(201);
 	req_one_access = null
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/firedoor/border_only/almayer/antag,
-/turf/open/floor/almayer,
-/area/adminlevel/bunker01/engineering)
-"qs" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/engineering)
 "qt" = (
@@ -7867,17 +7320,6 @@
 	tag = "icon-map-supply (WEST)";
 	icon_state = "map-supply";
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
@@ -7902,20 +7344,6 @@
 /obj/item/ashtray/plastic,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
-"qx" = (
-/obj/structure/bed/chair{
-	tag = "icon-chair (WEST)";
-	icon_state = "chair";
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/bunker01/mainroom)
 "qy" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/yellow,
@@ -7923,7 +7351,6 @@
 	dir = 4;
 	on = 1
 	},
-/obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -7937,67 +7364,6 @@
 	icon_state = "orange";
 	dir = 8
 	},
-/area/adminlevel/bunker01/engineering)
-"qz" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/bunker01/engineering)
-"qA" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	layer = 2.44
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/bunker01/engineering)
-"qB" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	layer = 2.1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/engineering)
 "qC" = (
 /obj/machinery/door/airlock/almayer/engineering{
@@ -8032,11 +7398,6 @@
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -8077,7 +7438,6 @@
 	icon_state = "on100";
 	is_on = 1
 	},
-/obj/structure/cable/yellow,
 /turf/open/floor/almayer{
 	tag = "icon-orangefull";
 	icon_state = "orangefull"
@@ -8092,7 +7452,6 @@
 	icon_state = "on100";
 	is_on = 1
 	},
-/obj/structure/cable/yellow,
 /turf/open/floor/almayer{
 	tag = "icon-orangefull";
 	icon_state = "orangefull"
@@ -8112,11 +7471,6 @@
 	req_access = list(201)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -8154,11 +7508,6 @@
 /area/adminlevel/bunker01/security)
 "qT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
@@ -8184,47 +7533,14 @@
 	icon_state = "map-supply";
 	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/disposalpipe/junction{
 	dir = 2;
 	icon_state = "pipe-j2"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
-"qX" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/bunker01/mainroom)
 "qY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8232,16 +7548,6 @@
 /area/adminlevel/bunker01/mainroom)
 "qZ" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
@@ -8316,16 +7622,6 @@
 	icon_state = "map-supply";
 	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -8337,12 +7633,6 @@
 	tag = "icon-map-supply (NORTH)";
 	icon_state = "map-supply";
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/structure/disposalpipe/junction{
 	tag = "icon-pipe-j1 (WEST)";
@@ -8356,12 +7646,6 @@
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8378,12 +7662,6 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8395,12 +7673,6 @@
 	tag = "icon-intact-supply (NORTHWEST)";
 	icon_state = "intact-supply";
 	dir = 9
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -8420,11 +7692,6 @@
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer,
@@ -8485,11 +7752,6 @@
 	tag = "icon-map-supply (EAST)";
 	icon_state = "map-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
@@ -8649,11 +7911,6 @@
 	icon_state = "intact-supply";
 	dir = 1
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -8680,10 +7937,6 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "rI" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /obj/machinery/power/apc/antag{
 	dir = 8;
 	pixel_x = -24
@@ -8694,12 +7947,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/light{
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/security)
@@ -8759,11 +8006,6 @@
 	tag = "icon-intact-supply (NORTH)";
 	icon_state = "intact-supply";
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -8929,62 +8171,7 @@
 /area/adminlevel/bunker01/security)
 "sf" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/bunker01/medbay)
-"sg" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	tag = "icon-map-supply (NORTH)";
-	icon_state = "map-supply";
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/bunker01/medbay)
-"sh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/bunker01/medbay)
-"si" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -9148,50 +8335,7 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/bunker01/medbay)
-"sy" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/bunker01/medbay)
-"sz" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 1;
-	on = 1
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/bunker01/medbay)
-"sA" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/almayer{
-	icon_state = "dark_sterile";
-	tag = "icon-sterile"
-	},
-/area/adminlevel/bunker01/medbay)
 "sB" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/power/apc/antag{
 	dir = 4;
@@ -9772,10 +8916,6 @@
 /obj/item/reagent_container/pill/happy,
 /turf/open/floor/almayer,
 /area/centcom/living)
-"tF" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/almayer,
-/area/centcom/living)
 "tG" = (
 /obj/structure/table/reinforced,
 /obj/item/xenos_claw,
@@ -9866,11 +9006,6 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	tag = "icon-map-supply (WEST)";
@@ -9943,29 +9078,11 @@
 /obj/machinery/door/firedoor/border_only/almayer/antag,
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/mainroom)
-"EA" = (
-/obj/structure/cable/yellow,
-/obj/machinery/power/geothermal{
-	buildstate = 4;
-	icon_state = "on100";
-	is_on = 1
-	},
-/turf/open/floor/almayer{
-	tag = "icon-orangefull";
-	icon_state = "orangefull"
-	},
-/area/adminlevel/bunker01/engineering)
 "FD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12829,7 +11946,7 @@ fG
 fF
 ty
 tC
-tF
+fF
 tI
 tC
 dv
@@ -20749,7 +19866,7 @@ du
 iW
 lg
 lv
-lK
+lz
 lX
 mh
 iW
@@ -27773,9 +26890,9 @@ gc
 gc
 gc
 gc
-pI
-pU
-pU
+qg
+qg
+qg
 qn
 qy
 qI
@@ -27925,11 +27042,11 @@ gc
 gc
 gc
 gc
-pJ
+qg
 pV
 qh
 qo
-qz
+qD
 qJ
 qg
 qM
@@ -28077,11 +27194,11 @@ gc
 gc
 gc
 gc
-pK
+qg
 pW
 qi
-qp
-qA
+qo
+qD
 qK
 qg
 qM
@@ -28229,12 +27346,12 @@ ou
 ou
 ou
 ou
-pE
-pP
-pP
-qq
-qB
-EA
+ou
+ov
+ov
+qo
+qD
+qJ
 qg
 re
 rs
@@ -28536,7 +27653,7 @@ pr
 pG
 pR
 ov
-qs
+qo
 qD
 qM
 qS
@@ -28607,7 +27724,7 @@ cg
 cl
 cn
 co
-cr
+cf
 cv
 cD
 co
@@ -28759,7 +27876,7 @@ cg
 cl
 co
 co
-cs
+cf
 cv
 cE
 co
@@ -28911,7 +28028,7 @@ cg
 cl
 co
 co
-cs
+cf
 cv
 cE
 co
@@ -29063,7 +28180,7 @@ cg
 cl
 co
 cq
-ct
+cf
 cw
 co
 co
@@ -29287,7 +28404,7 @@ na
 nu
 nB
 nS
-og
+oJ
 ow
 oJ
 nu
@@ -29439,7 +28556,7 @@ nb
 nu
 nC
 nS
-oh
+oJ
 nU
 oK
 nu
@@ -29755,7 +28872,7 @@ qk
 qw
 pZ
 qP
-qX
+pA
 pp
 rA
 rL
@@ -30655,7 +29772,7 @@ gc
 nx
 nH
 nX
-op
+or
 FS
 oz
 oY
@@ -30816,8 +29933,8 @@ pB
 pM
 qc
 qm
-qx
-qx
+qc
+qc
 pM
 qZ
 rn
@@ -30958,10 +30075,10 @@ gc
 gc
 nx
 nJ
-nZ
+oz
 or
 oz
-op
+or
 pe
 Al
 pC
@@ -30975,7 +30092,7 @@ ra
 pp
 rH
 rL
-sg
+sc
 sx
 sI
 sE
@@ -31113,7 +30230,7 @@ nK
 oa
 os
 oB
-op
+or
 nx
 pv
 pD
@@ -31127,7 +30244,7 @@ ra
 pp
 rF
 rR
-sh
+sd
 rL
 sJ
 sT
@@ -31279,7 +30396,7 @@ Wu
 Dt
 rF
 rP
-sg
+sc
 sv
 sv
 tu
@@ -31431,8 +30548,8 @@ ra
 ro
 rE
 rS
-si
-sy
+sd
+rL
 sK
 sT
 ta
@@ -31584,7 +30701,7 @@ rp
 rE
 rT
 sc
-sz
+sx
 sL
 sE
 sE
@@ -31736,7 +30853,7 @@ rq
 rE
 rU
 sd
-sA
+rL
 sK
 sE
 tc

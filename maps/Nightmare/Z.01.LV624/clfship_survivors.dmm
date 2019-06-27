@@ -265,11 +265,6 @@
 	},
 /area/lv624/lazarus/crashed_ship)
 "aH" = (
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Crashed Ship APC";
@@ -338,19 +333,6 @@
 /area/lv624/lazarus/crashed_ship)
 "aP" = (
 /obj/machinery/power/smes/buildable/charged,
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/crashed_ship)
-"aQ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship)
 "aR" = (
@@ -2096,7 +2078,7 @@ aa
 aa
 aa
 aH
-aQ
+aF
 aa
 ar
 ba

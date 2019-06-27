@@ -2,6 +2,7 @@
 /area/lv624
 	icon_state = "lv-626"
 	can_nuke_area = TRUE
+	powernet_name = "ground"
 
 /area/lv624/ground
 	name = "Ground"

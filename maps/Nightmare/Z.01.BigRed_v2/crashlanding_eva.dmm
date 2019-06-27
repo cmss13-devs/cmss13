@@ -1237,12 +1237,6 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "dH" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1254,12 +1248,6 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dI" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1269,11 +1257,6 @@
 "dJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
@@ -1292,19 +1275,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "dN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
@@ -1313,21 +1285,9 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "dP" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1339,12 +1299,6 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "dQ" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1357,12 +1311,6 @@
 	},
 /area/bigredv2/outside/ne)
 "dR" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1374,12 +1322,6 @@
 	},
 /area/bigredv2/outside/ne)
 "dS" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1390,12 +1332,6 @@
 	},
 /area/bigredv2/outside/ne)
 "dT" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1405,11 +1341,6 @@
 	},
 /area/bigredv2/outside/ne)
 "dU" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 10
 	},
@@ -1435,11 +1366,6 @@
 /turf/open/mars,
 /area/bigredv2/outside/ne)
 "dY" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
@@ -1468,11 +1394,6 @@
 /area/bigredv2/outside/hydroponics)
 "ed" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1502,11 +1423,6 @@
 /area/bigredv2/outside/hydroponics)
 "ei" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ej" = (
@@ -1530,11 +1446,6 @@
 /area/bigredv2/outside/ne)
 "em" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1588,11 +1499,6 @@
 /area/bigredv2/outside/hydroponics)
 "ew" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Bar Maintenance";
@@ -1623,11 +1529,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -1636,11 +1537,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"

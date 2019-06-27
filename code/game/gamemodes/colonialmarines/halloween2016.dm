@@ -197,8 +197,6 @@
 		temp_player_list -= M
 		spawn_battlefield_player(M)
 
-	defer_powernet_rebuild = 2
-
 	sleep (100)
 	command_announcement.Announce("An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. Beginning playback.", "[MAIN_SHIP_NAME]")
 	world << 'sound/misc/eventhorizon_shiplog.ogg'

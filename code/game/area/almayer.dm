@@ -6,6 +6,7 @@
 	ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
 	ceiling = CEILING_METAL
+	powernet_name = "almayer"
 
 /area/shuttle/almayer/elevator_maintenance/upperdeck
 	name = "\improper Maintenance Elevator"

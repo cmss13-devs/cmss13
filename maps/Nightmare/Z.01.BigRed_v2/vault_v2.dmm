@@ -88,11 +88,6 @@
 /obj/machinery/power/apc{
 	dir = 1
 	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
 /obj/effect/spawner/random/powercell,
 /turf/open/floor,
 /area/bigredv2/outside/storage)
@@ -132,30 +127,7 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor,
 /area/bigredv2/outside/storage)
-"ay" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/storage)
-"az" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/storage)
 "aA" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
@@ -166,24 +138,12 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor,
 /area/bigredv2/outside/storage)
 "aC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/machinery/door/airlock/almayer/secure{
 	icon_state = "door_locked";
@@ -241,12 +201,6 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"
@@ -257,12 +211,6 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -272,17 +220,6 @@
 "aO" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -311,11 +248,6 @@
 /area/bigredv2/outside/s)
 "aS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (EAST)";
 	icon_state = "asteroidwarning";
@@ -473,7 +405,7 @@ aj
 ak
 al
 aq
-ay
+ao
 ao
 ap
 al
@@ -489,7 +421,7 @@ aa
 ak
 al
 ar
-az
+ao
 ao
 as
 al

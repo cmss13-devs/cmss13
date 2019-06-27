@@ -14,6 +14,7 @@
 	var/pressure = ONE_ATMOSPHERE
 	var/can_nuke_area = FALSE
 	var/is_resin_allowed = TRUE	// can xenos weed, place resin holes or dig tunnels at said areas
+	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
 
 
 /area/New()

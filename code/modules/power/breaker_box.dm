@@ -80,14 +80,6 @@
 			C.icon_state = "[C.d1]-[C.d2]"
 			C.breaker_box = src
 
-			var/datum/powernet/PN = new()
-			PN.number = powernets.len + 1
-			powernets += PN
-			PN.cables += C
-
-			C.mergeConnectedNetworks(C.d2)
-			C.mergeConnectedNetworksOnTurf()
-
 	else
 		icon_state = icon_state_off
 		for(var/obj/structure/cable/C in src.loc)

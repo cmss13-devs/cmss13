@@ -648,8 +648,6 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		individual_counts["[M.type]"]++
 	for(var/datum/nanoui/M in nanomanager.processing_uis)
 		individual_counts["[M.type]"]++
-	for(var/obj/structure/cable/M in cable_list)
-		individual_counts["[M.type]"]++
 	for(var/datum/powernet/M in powernets)
 		individual_counts["[M.type]"]++
 	for(var/datum/M in power_machines)

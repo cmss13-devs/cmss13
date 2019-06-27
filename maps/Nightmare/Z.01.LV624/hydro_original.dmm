@@ -1,29 +1,41 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"alG" = (
+"aa" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Hydroponics APC";
+	pixel_y = 30;
+	start_charge = 0
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lv624/lazarus/hydroponics)
+"lG" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle7)
-"alI" = (
+"lI" = (
 /turf/open/gm/grass{
 	icon_state = "grass2"
 	},
 /area/lv624/ground/jungle7)
-"alP" = (
+"lP" = (
 /turf/closed/gm/dense{
 	icon_state = "wall2"
 	},
 /area/lv624/ground/jungle7)
-"anG" = (
+"nG" = (
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
-"anH" = (
+"nH" = (
 /obj/structure/sign/botany,
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
-"anI" = (
+"nI" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
-"anJ" = (
+"nJ" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
@@ -33,25 +45,25 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"anT" = (
+"nT" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"anU" = (
+"nU" = (
 /obj/item/tool/shovel,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"anV" = (
+"nV" = (
 /obj/structure/window_frame/colony,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
-"aof" = (
+"of" = (
 /obj/structure/table,
 /obj/item/clothing/suit/apron/overalls,
 /obj/item/clothing/under/colonist,
@@ -60,7 +72,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aog" = (
+"og" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor{
@@ -68,7 +80,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoh" = (
+"oh" = (
 /obj/structure/table,
 /obj/machinery/light{
 	dir = 1
@@ -78,7 +90,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoi" = (
+"oi" = (
 /obj/machinery/smartfridge/seeds,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
@@ -88,14 +100,14 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoj" = (
+"oj" = (
 /obj/machinery/biogenerator,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aok" = (
+"ok" = (
 /obj/machinery/seed_extractor,
 /obj/machinery/light{
 	dir = 1
@@ -105,14 +117,14 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aol" = (
+"ol" = (
 /obj/machinery/smartfridge,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aom" = (
+"om" = (
 /obj/structure/table,
 /obj/item/device/analyzer/plant_analyzer{
 	pixel_x = 2;
@@ -124,33 +136,33 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoy" = (
+"oy" = (
 /obj/structure/table,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoz" = (
+"oz" = (
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoA" = (
+"oA" = (
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoB" = (
+"oB" = (
 /obj/item/tool/minihoe,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoC" = (
+"oC" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor{
@@ -158,7 +170,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoM" = (
+"oM" = (
 /obj/structure/table,
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 6;
@@ -170,28 +182,28 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoN" = (
+"oN" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoO" = (
+"oO" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoP" = (
+"oP" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoR" = (
+"oR" = (
 /obj/structure/table,
 /obj/item/storage/box/donkpockets,
 /turf/open/floor{
@@ -199,7 +211,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aoW" = (
+"oW" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -208,52 +220,17 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"api" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	layer = 2.44
-	},
+"pG" = (
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
-"apj" = (
-/obj/structure/sign/botany,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/hydroponics)
-"apk" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "Hydroponics APC";
-	pixel_y = 30;
-	start_charge = 0
-	},
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "green"
-	},
-/area/lv624/lazarus/hydroponics)
-"apG" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/hydroponics)
-"apH" = (
+"pH" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"apI" = (
+"pI" = (
 /obj/effect/landmark{
 	name = "good_item"
 	},
@@ -262,7 +239,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"apJ" = (
+"pJ" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Hydroponics Dome"
@@ -272,7 +249,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqa" = (
+"qa" = (
 /obj/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Hydroponics Dome"
@@ -282,17 +259,17 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqb" = (
+"qb" = (
 /obj/structure/largecrate/cow,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqi" = (
+"qi" = (
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
-"aqp" = (
+"qp" = (
 /obj/item/device/radio/intercom{
 	anyai = 1;
 	freerange = 1;
@@ -306,14 +283,14 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqB" = (
+"qB" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqC" = (
+"qC" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
@@ -322,7 +299,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqD" = (
+"qD" = (
 /obj/structure/table,
 /obj/item/reagent_container/spray/plantbgone{
 	pixel_x = 12
@@ -333,14 +310,14 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqT" = (
+"qT" = (
 /obj/structure/largecrate/random,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aqU" = (
+"qU" = (
 /obj/structure/table,
 /obj/item/clothing/suit/apron,
 /turf/open/floor{
@@ -348,7 +325,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"arp" = (
+"rp" = (
 /obj/structure/table,
 /obj/item/tool/hatchet{
 	pixel_x = 6;
@@ -359,7 +336,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"arq" = (
+"rq" = (
 /obj/structure/table,
 /obj/item/clothing/shoes/sandal,
 /turf/open/floor{
@@ -367,7 +344,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"arr" = (
+"rr" = (
 /obj/structure/table,
 /obj/item/reagent_container/food/drinks/flask/vacuumflask,
 /obj/machinery/light,
@@ -376,7 +353,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"ars" = (
+"rs" = (
 /obj/structure/table,
 /obj/item/tool/crowbar,
 /turf/open/floor{
@@ -384,7 +361,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"art" = (
+"rt" = (
 /obj/structure/table,
 /obj/machinery/light,
 /turf/open/floor{
@@ -392,7 +369,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"aru" = (
+"ru" = (
 /obj/structure/table,
 /obj/item/tool/shovel/spade,
 /turf/open/floor{
@@ -400,7 +377,7 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"arv" = (
+"rv" = (
 /obj/structure/table,
 /obj/item/tool/extinguisher,
 /turf/open/floor{
@@ -408,362 +385,362 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"arE" = (
+"rE" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/compound/n)
-"arF" = (
+"rF" = (
 /obj/structure/window_frame/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/hydroponics)
-"arP" = (
+"rP" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
-"asa" = (
+"sa" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/compound/n)
-"asb" = (
+"sb" = (
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/compound/n)
-"asc" = (
+"sc" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/compound/n)
-"asd" = (
+"sd" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
 	},
 /area/lv624/ground/compound/n)
-"ase" = (
+"se" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/compound/ne)
 
 (1,1,1) = {"
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-api
-apG
-apG
-anI
-aqi
-aqi
-aqi
-arE
-asa
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+nI
+pG
+pG
+nI
+qi
+qi
+qi
+rE
+sa
 "}
 (2,1,1) = {"
-alG
-alI
-alG
-alG
-alG
-alG
-alG
-anG
-apj
-anT
-aqa
-anH
-aqi
-aqi
-aqi
-aqi
-asa
+lG
+lI
+lG
+lG
+lG
+lG
+lG
+nG
+nH
+nT
+qa
+nH
+qi
+qi
+qi
+qi
+sa
 "}
 (3,1,1) = {"
-alG
-alG
-alG
-anG
-anI
-anI
-anI
-anG
-apk
-anT
-anT
-anG
-anI
-anI
-anI
-anG
-asa
+lG
+lG
+lG
+nG
+nI
+nI
+nI
+nG
+aa
+nT
+nT
+nG
+nI
+nI
+nI
+nG
+sa
 "}
 (4,1,1) = {"
-alG
-alG
-alG
-anI
-aof
-aoy
-aoM
-aoz
-anT
-apH
-anT
-aqp
-aqB
-aqT
-aqB
-anI
-asb
+lG
+lG
+lG
+nI
+of
+oy
+oM
+oz
+nT
+pH
+nT
+qp
+qB
+qT
+qB
+nI
+sb
 "}
 (5,1,1) = {"
-alP
-alG
-alG
-anI
-aog
-aoz
-aoz
-aoz
-anT
-apI
-anT
-aoA
-aoA
-aoA
-arp
-anI
-asc
+lP
+lG
+lG
+nI
+og
+oz
+oz
+oz
+nT
+pI
+nT
+oA
+oA
+oA
+rp
+nI
+sc
 "}
 (6,1,1) = {"
-alG
-alG
-alG
-anG
-aoh
-aoz
-aoN
-aoz
-aoO
-anT
-aoO
-aoA
-aoP
-aoA
-arq
-anG
-arP
+lG
+lG
+lG
+nG
+oh
+oz
+oN
+oz
+oO
+nT
+oO
+oA
+oP
+oA
+rq
+nG
+rP
 "}
 (7,1,1) = {"
-alG
-alG
-anH
-anG
-aoi
-aoz
-aoz
-aoz
-anT
-anT
-anT
-aoA
-aoA
-aoA
-arr
-anG
-anH
+lG
+lG
+nH
+nG
+oi
+oz
+oz
+oz
+nT
+nT
+nT
+oA
+oA
+oA
+rr
+nG
+nH
 "}
 (8,1,1) = {"
-alG
-alG
-anI
-anT
-anT
-anT
-aoO
-anT
-aoO
-anT
-aoO
-anT
-aoO
-anT
-anT
-anT
-anI
+lG
+lG
+nI
+nT
+nT
+nT
+oO
+nT
+oO
+nT
+oO
+nT
+oO
+nT
+nT
+nT
+nI
 "}
 (9,1,1) = {"
-alG
-alG
-anJ
-anT
-anT
-anT
-anT
-aoW
-anT
-anT
-anT
-anT
-anT
-anT
-aoW
-anT
-anJ
+lG
+lG
+nJ
+nT
+nT
+nT
+nT
+oW
+nT
+nT
+nT
+nT
+nT
+nT
+oW
+nT
+nJ
 "}
 (10,1,1) = {"
-alP
-alG
-anI
-anU
-anT
-anT
-aoO
-anT
-aoO
-anT
-aoO
-anT
-aoO
-anT
-anT
-anT
-anI
+lP
+lG
+nI
+nU
+nT
+nT
+oO
+nT
+oO
+nT
+oO
+nT
+oO
+nT
+nT
+nT
+nI
 "}
 (11,1,1) = {"
-alG
-alG
-anH
-anG
-aoj
-aoA
-aoA
-aoA
-anT
-anT
-anT
-aoz
-aoz
-aoz
-ars
-anG
-anH
+lG
+lG
+nH
+nG
+oj
+oA
+oA
+oA
+nT
+nT
+nT
+oz
+oz
+oz
+rs
+nG
+nH
 "}
 (12,1,1) = {"
-alG
-alG
-alG
-anG
-aok
-aoB
-aoP
-aoA
-aoO
-anT
-aoO
-aoz
-aoN
-aoz
-art
-anG
-arP
+lG
+lG
+lG
+nG
+ok
+oB
+oP
+oA
+oO
+nT
+oO
+oz
+oN
+oz
+rt
+nG
+rP
 "}
 (13,1,1) = {"
-alG
-alG
-alG
-anI
-aol
-aoA
-aoA
-aoA
-aoW
-anT
-anT
-aoz
-aqC
-aoz
-aru
-anI
-asd
+lG
+lG
+lG
+nI
+ol
+oA
+oA
+oA
+oW
+nT
+nT
+oz
+qC
+oz
+ru
+nI
+sd
 "}
 (14,1,1) = {"
-alG
-alP
-alG
-anV
-aom
-aoC
-aoR
-aoA
-anT
-anT
-anT
-aoz
-aqD
-aqU
-arv
-arF
-asb
+lG
+lP
+lG
+nV
+om
+oC
+oR
+oA
+nT
+nT
+nT
+oz
+qD
+qU
+rv
+rF
+sb
 "}
 (15,1,1) = {"
-alG
-alG
-alG
-anG
-anI
-anI
-anI
-anG
-anT
-anT
-aqb
-anG
-anI
-anI
-anI
-anG
-asa
+lG
+lG
+lG
+nG
+nI
+nI
+nI
+nG
+nT
+nT
+qb
+nG
+nI
+nI
+nI
+nG
+sa
 "}
 (16,1,1) = {"
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-anH
-anI
-apJ
-anI
-anH
-alG
-alG
-alG
-alG
-asa
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+nH
+nI
+pJ
+nI
+nH
+lG
+lG
+lG
+lG
+sa
 "}
 (17,1,1) = {"
-alG
-alG
-alG
-alP
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-alG
-ase
+lG
+lG
+lG
+lP
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+lG
+se
 "}

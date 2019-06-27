@@ -23,11 +23,6 @@
 /area/bigredv2/outside/c)
 "d" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -70,48 +65,11 @@
 /area/bigredv2/outside/c)
 "i" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
 	dir = 1
-	},
-/area/bigredv2/outside/c)
-"j" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigredv2/outside/c)
-"k" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	tag = "icon-asteroidwarning (EAST)";
-	icon_state = "asteroidwarning";
-	dir = 4
 	},
 /area/bigredv2/outside/c)
 "l" = (
@@ -135,11 +93,6 @@
 /area/bigredv2/outside/admin_building)
 "S" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "\improper Operations";
 	req_access = list()
@@ -182,7 +135,7 @@ S
 a
 a
 e
-j
+l
 l
 T
 "}
@@ -190,7 +143,7 @@ T
 a
 a
 f
-j
+l
 m
 R
 "}
@@ -198,7 +151,7 @@ R
 a
 a
 g
-k
+g
 g
 R
 "}

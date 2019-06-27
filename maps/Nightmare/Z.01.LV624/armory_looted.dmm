@@ -149,21 +149,6 @@
 	pixel_x = -28;
 	start_charge = 0
 	},
-/obj/structure/cable/yellow{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/open/floor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/lv624/lazarus/armory)
-"v" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -176,24 +161,11 @@
 	dir = 2
 	},
 /area/lv624/lazarus/armory)
-"x" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/closed/wall/r_wall,
-/area/lv624/lazarus/armory)
 "y" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/table,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/item/weapon/gun/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
@@ -223,18 +195,6 @@
 	locked = 1;
 	name = "\improper Nexus Dome Armory"
 	},
-/turf/open/floor{
-	icon_state = "cult";
-	dir = 2
-	},
-/area/lv624/lazarus/armory)
-"C" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "cult";
 	dir = 2
@@ -285,7 +245,7 @@ q
 w
 p
 p
-v
+p
 p
 i
 "}
@@ -297,7 +257,7 @@ i
 w
 w
 w
-C
+w
 p
 i
 "}
@@ -309,7 +269,7 @@ i
 i
 i
 i
-x
+i
 B
 i
 "}

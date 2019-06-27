@@ -3,6 +3,7 @@
 	name = "Desert Dam"
 	icon_state = "cliff_blocked"
 	can_nuke_area = TRUE
+	powernet_name = "ground"
 
 //INTERIOR
 // areas under rock

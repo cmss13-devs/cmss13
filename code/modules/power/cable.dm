@@ -64,29 +64,13 @@
 
 /obj/structure/cable/New()
 	..()
-
-
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
-
 	var/dash = findtext(icon_state, "-")
-
 	d1 = text2num( copytext( icon_state, 1, dash ) )
-
 	d2 = text2num( copytext( icon_state, dash+1 ) )
-
 	var/turf/T = src.loc			// hide if turf is not intact
-
 	if(level==1) hide(T.intact_tile)
-	cable_list += src
 	update_icon()
-
-
-/obj/structure/cable/Dispose()					// called when a cable is deleted
-	if(!defer_powernet_rebuild)					// set if network will be rebuilt manually
-		if(powernet)
-			powernet.cut_cable(src)				// update the powernets
-	cable_list -= src
-	. = ..()									// then go ahead and delete the cable
 
 /obj/structure/cable/hide(var/i)
 
@@ -98,10 +82,6 @@
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 
-
-// returns the powernet this cable belongs to
-/obj/structure/cable/proc/get_powernet()			//TODO: remove this as it is obsolete
-	return powernet
 
 /obj/structure/cable/attackby(obj/item/W, mob/user)
 
@@ -150,18 +130,6 @@
 		var/obj/item/stack/cable_coil/coil = W
 		coil.cable_join(src, user)
 
-	else if(istype(W, /obj/item/device/multitool))
-
-		var/datum/powernet/PN = get_powernet()		// find the powernet
-
-		if(PN && (PN.avail > 0))		// is it powered?
-			to_chat(user, SPAN_WARNING("[PN.avail]W in power network."))
-
-		else
-			to_chat(user, SPAN_WARNING("The cable is not powered."))
-
-		shock(user, 5, 0.2)
-
 	else
 		if (W.flags_atom & CONDUCT)
 			shock(user, 50, 0.7)
@@ -206,78 +174,8 @@
 			qdel(src)
 	return
 
-
-/obj/structure/cable/proc/mergeConnectedNetworks(var/direction)
-	var/turf/TB
-	if(!(d1 == direction || d2 == direction))
-		return
-	TB = get_step(src, direction)
-
-	for(var/obj/structure/cable/TC in TB)
-
-		if(!TC)
-			continue
-
-		if(src == TC)
-			continue
-
-		var/fdir = (!direction)? 0 : turn(direction, 180)
-
-		if(TC.d1 == fdir || TC.d2 == fdir)
-
-			if(!TC.powernet)
-				TC.powernet = new()
-				powernets += TC.powernet
-				TC.powernet.cables += TC
-
-			if(powernet)
-				merge_powernets(powernet,TC.powernet)
-			else
-				powernet = TC.powernet
-				powernet.cables += src
-
-
-
-
-/obj/structure/cable/proc/mergeConnectedNetworksOnTurf()
-	if(!powernet)
-		powernet = new()
-		powernets += powernet
-		powernet.cables += src
-
-	for(var/AM in loc)
-		if(istype(AM,/obj/structure/cable))
-			var/obj/structure/cable/C = AM
-			if(C.powernet == powernet)	continue
-			if(C.d2 != d1 && C.d2 != d2 && C.d1 != d1 && C.d1 != d2) //not connected if they have no common direction
-				continue
-			if(C.powernet)
-				merge_powernets(powernet, C.powernet)
-			else
-				C.powernet = powernet
-				powernet.cables += C
-
-		else if(istype(AM,/obj/machinery/power/apc))
-			var/obj/machinery/power/apc/N = AM
-			if(!N.terminal)	continue
-			if(N.terminal.powernet)
-				merge_powernets(powernet, N.terminal.powernet)
-			else
-				N.terminal.powernet = powernet
-				powernet.nodes[N.terminal] = N.terminal
-
-		else if(istype(AM,/obj/machinery/power))
-			var/obj/machinery/power/M = AM
-			if(M.powernet == powernet)	continue
-			if(M.powernet)
-				merge_powernets(powernet, M.powernet)
-			else
-				M.powernet = powernet
-				powernet.nodes[M] = M
-
-
 obj/structure/cable/proc/cableColor(var/colorC)
-	var/color_n = "#DD0000"
 	if(colorC)
-		color_n = colorC
-	color = color_n
+		color = colorC
+	else
+		color = "#DD0000"

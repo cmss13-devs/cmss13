@@ -18,7 +18,7 @@
 /obj/machinery/power/fractal_reactor/New()
 	..()
 	to_world("<b>\red WARNING: \black Map testing power source activated at: X:[src.loc.x] Y:[src.loc.y] Z:[src.loc.z]</b>")
-	start_processing()
+	start_processing_power()
 
 /obj/machinery/power/fractal_reactor/power_change()
 	return

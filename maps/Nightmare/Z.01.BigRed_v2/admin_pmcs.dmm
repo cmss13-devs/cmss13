@@ -20,11 +20,6 @@
 	icon_state = "tube1";
 	pixel_y = 0
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
@@ -96,11 +91,6 @@
 /area/bigredv2/outside/admin_building)
 "an" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	tag = "icon-darkred2 (WEST)";
 	icon_state = "darkred2";
@@ -238,48 +228,10 @@
 	dir = 8
 	},
 /area/bigredv2/outside/admin_building)
-"aE" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor{
-	tag = "icon-darkred2 (WEST)";
-	icon_state = "darkred2";
-	dir = 8
-	},
-/area/bigredv2/outside/admin_building)
-"aF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
-	},
-/area/bigredv2/outside/admin_building)
 "aG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /turf/open/floor{
 	tag = "icon-darkredcorners2";
@@ -290,12 +242,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor{
@@ -733,7 +679,7 @@ ae
 af
 an
 an
-aE
+be
 aM
 aS
 aX
@@ -745,7 +691,7 @@ bq
 ag
 ao
 aw
-aF
+bf
 ay
 aT
 ay

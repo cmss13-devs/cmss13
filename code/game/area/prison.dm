@@ -2,6 +2,7 @@
 
 /area/prison
 	can_nuke_area = TRUE
+	powernet_name = "ground"
 
 //SECURITY
 /area/prison/security

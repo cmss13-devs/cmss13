@@ -32,15 +32,6 @@
 "ae" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
-"af" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.44
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/compound/n)
 "ag" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/gm/dirt,
@@ -78,21 +69,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
-"am" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.44
-	},
-/obj/machinery/door/poddoor/almayer{
-	id = "science_blast";
-	layer = 3.3;
-	name = "\improper Science Wing Blast Door"
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/research)
 "an" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -127,12 +103,6 @@
 	},
 /area/lv624/lazarus/research)
 "ar" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.44
-	},
 /obj/machinery/chem_master,
 /turf/open/floor{
 	dir = 5;
@@ -232,17 +202,6 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
-"aE" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	dir = 5;
-	icon_state = "whitepurple"
-	},
-/area/lv624/lazarus/research)
 "aF" = (
 /obj/structure/table,
 /obj/item/tool/surgery/scalpel{
@@ -284,11 +243,6 @@
 	},
 /area/lv624/lazarus/research)
 "aK" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/chem_dispenser,
 /turf/open/floor{
 	dir = 5;
@@ -314,14 +268,6 @@
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv624/lazarus/research)
-"aN" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall/r_wall,
 /area/lv624/lazarus/research)
 "aO" = (
 /obj/machinery/shower{
@@ -379,11 +325,6 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable/yellow,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -427,31 +368,10 @@
 	},
 /area/lv624/lazarus/research)
 "bb" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/item/clothing/glasses/regular,
 /turf/open/floor{
 	icon_state = "white"
 	},
-/area/lv624/lazarus/research)
-"bk" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/closed/wall/r_wall,
-/area/lv624/lazarus/research)
-"bl" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/closed/wall/r_wall,
 /area/lv624/lazarus/research)
 "bm" = (
 /obj/structure/table,
@@ -715,16 +635,16 @@ ac
 bE
 "}
 (13,1,1) = {"
-af
-am
+ae
+ac
 ar
-aE
+ay
 aK
-aN
+ab
 aS
 bb
-aE
-bk
+ay
+ab
 aj
 aj
 aj
@@ -741,7 +661,7 @@ ab
 aT
 ak
 aJ
-bl
+ab
 ao
 ao
 ao
@@ -758,7 +678,7 @@ ab
 ab
 aI
 aI
-bl
+ab
 bt
 bt
 bt

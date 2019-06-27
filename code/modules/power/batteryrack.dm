@@ -44,7 +44,7 @@
 	..()
 	add_parts()
 	RefreshParts()
-	start_processing()
+	start_processing_power()
 	return
 
 

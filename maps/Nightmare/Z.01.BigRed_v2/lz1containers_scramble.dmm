@@ -13,31 +13,10 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"ae" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "af" = (
 /obj/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Spaceport"
-	},
-/turf/open/floor{
-	tag = "icon-dark";
-	icon_state = "dark";
-	dir = 2
-	},
-/area/bigredv2/outside/space_port)
-"ag" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor{
 	tag = "icon-dark";
@@ -94,7 +73,6 @@
 	pixel_x = -32;
 	start_charge = 0
 	},
-/obj/structure/cable,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -387,42 +365,6 @@
 	icon_state = "warnplate"
 	},
 /area/bigredv2/outside/space_port)
-"aZ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating{
-	dir = 2;
-	icon_state = "warnplate"
-	},
-/area/bigredv2/outside/space_port)
-"ba" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"bb" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"bc" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
 "bd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
@@ -628,16 +570,16 @@ ac
 ac
 "}
 (8,1,1) = {"
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-ae
-aZ
-ba
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aV
+ac
 ac
 ac
 ac
@@ -656,7 +598,7 @@ am
 ac
 ac
 aV
-bb
+ac
 bg
 ac
 ac
@@ -675,7 +617,7 @@ an
 an
 ac
 aV
-bb
+ac
 ac
 ac
 ac
@@ -685,7 +627,7 @@ ac
 ac
 "}
 (11,1,1) = {"
-ag
+ai
 ao
 at
 ay
@@ -694,14 +636,14 @@ aH
 an
 aT
 aV
-bc
-ae
-ae
-ae
-ae
-ae
-ae
-ae
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 "}
 (12,1,1) = {"
 ah

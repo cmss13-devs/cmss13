@@ -322,33 +322,6 @@
 	tag = "icon-whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"aK" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/medbay)
-"aL" = (
-/obj/structure/sign/redcross,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/medbay)
-"aM" = (
-/obj/structure/window/framed/colony/reinforced,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	layer = 2.44
-	},
-/turf/open/floor/plating,
-/area/lv624/lazarus/medbay)
 "aN" = (
 /obj/machinery/vending/medical,
 /obj/machinery/light{
@@ -471,36 +444,6 @@
 	tag = "icon-whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"aZ" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.1
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"ba" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor{
-	dir = 2;
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
 "bb" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -531,18 +474,6 @@
 /area/lv624/lazarus/medbay)
 "be" = (
 /obj/machinery/body_scanconsole,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"bf" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -605,10 +536,6 @@
 	pixel_y = 30;
 	start_charge = 0
 	},
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/structure/table,
 /obj/item/ammo_magazine/pistol/b92fs,
 /turf/open/floor{
@@ -618,12 +545,6 @@
 	},
 /area/lv624/lazarus/medbay)
 "bm" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.1
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -665,11 +586,6 @@
 	},
 /area/lv624/lazarus/medbay)
 "br" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/structure/barricade/metal{
 	dir = 4
 	},
@@ -689,19 +605,6 @@
 	current_rounds = 0
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "whitebluecorner";
-	tag = "icon-whitebluecorner"
-	},
-/area/lv624/lazarus/medbay)
-"bt" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/light,
 /turf/open/floor{
 	dir = 2;
 	icon_state = "whitebluecorner";
@@ -751,14 +654,6 @@
 	icon_state = "whitebluecorner";
 	tag = "icon-whitebluecorner"
 	},
-/area/lv624/lazarus/medbay)
-"bz" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall,
 /area/lv624/lazarus/medbay)
 "bA" = (
 /obj/structure/table/reinforced{
@@ -814,26 +709,8 @@
 	tag = "icon-whitebluecorner"
 	},
 /area/lv624/lazarus/medbay)
-"bH" = (
-/obj/structure/sign/redcross,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/medbay)
 "bI" = (
 /obj/item/trash/cigbutt,
-/turf/open/gm/dirt,
-/area/lv624/ground/compound/n)
-"bJ" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.44
-	},
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
 "bK" = (
@@ -1095,15 +972,15 @@ az
 af
 af
 bl
-aZ
-bf
-bf
-bf
-bt
-bz
-bz
-bH
-bJ
+aq
+aq
+aq
+aq
+bp
+af
+af
+ae
+bF
 "}
 (12,1,1) = {"
 ab
@@ -1114,7 +991,7 @@ aA
 aq
 aW
 aq
-ba
+aq
 aq
 aY
 aq
@@ -1133,7 +1010,7 @@ aB
 aq
 af
 aU
-ba
+aq
 aq
 aq
 aq
@@ -1152,7 +1029,7 @@ aC
 aE
 af
 aV
-ba
+aq
 bg
 af
 bA
@@ -1169,7 +1046,7 @@ af
 ag
 ag
 ag
-aK
+af
 bm
 br
 bh
@@ -1188,7 +1065,7 @@ ab
 ab
 ab
 aF
-aL
+ae
 aq
 bc
 ae
@@ -1207,7 +1084,7 @@ al
 au
 ab
 ab
-aM
+ag
 aX
 aX
 ag

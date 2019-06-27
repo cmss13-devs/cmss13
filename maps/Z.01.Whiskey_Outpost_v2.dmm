@@ -4,10 +4,6 @@
 /area/space)
 "ab" = (
 /obj/machinery/power/smes/buildable,
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -199,29 +195,6 @@
 /obj/machinery/washing_machine,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"aB" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "aC" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/whiskey{
@@ -260,12 +233,6 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "aG" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -304,14 +271,6 @@
 	},
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
-"aK" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/bunker)
 "aL" = (
 /obj/structure/safe,
 /obj/item/moneybag,
@@ -324,11 +283,6 @@
 	},
 /area/whiskey_outpost/inside/cic)
 "aM" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -366,10 +320,6 @@
 	},
 /area/whiskey_outpost)
 "aQ" = (
-/obj/structure/cable{
-	tag = "icon-0-2";
-	icon_state = "0-2"
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -443,10 +393,6 @@
 /obj/machinery/power/apc/almayer{
 	dir = 4
 	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /turf/open/floor{
 	tag = "icon-whitegreen (EAST)";
 	icon_state = "whitegreen";
@@ -490,20 +436,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/hospital)
-"bc" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/cic)
 "bd" = (
 /obj/machinery/prop/almayer/CICmap,
 /obj/structure/table/reinforced/prison,
@@ -542,22 +474,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/cic)
-"bj" = (
-/obj/effect/decal/medical_decals{
-	tag = "icon-triagedecalbottom";
-	icon_state = "triagedecalbottom"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "bk" = (
 /obj/machinery/smartfridge/chemistry,
 /obj/structure/disposalpipe/segment{
@@ -569,18 +485,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/hospital)
-"bl" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "bm" = (
 /obj/structure/prop/almayer/sensor_computer3,
 /obj/structure/table/reinforced/prison,
@@ -636,33 +540,9 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/engineering)
 "br" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
-"bs" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -671,16 +551,6 @@
 	},
 /area/whiskey_outpost)
 "bt" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -691,22 +561,6 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/engineering)
-"bu" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/bunker)
 "bv" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -741,23 +595,7 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/living)
-"bA" = (
-/obj/machinery/power/smes/buildable,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/engineering)
 "bB" = (
-/obj/structure/cable{
-	tag = "icon-0-2";
-	icon_state = "0-2"
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -781,19 +619,6 @@
 /obj/item/facepaint/sniper,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"bE" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	tag = "icon-whitegreencorner";
-	icon_state = "whitegreen";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/hospital)
 "bF" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
@@ -815,11 +640,6 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "bI" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/sortjunction/flipped{
 	sortType = "Mortar Pit"
 	},
@@ -872,11 +692,6 @@
 "bN" = (
 /obj/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
@@ -991,11 +806,6 @@
 /obj/machinery/telecomms/relay/preset/ice_colony{
 	idle_power_usage = 100
 	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -1006,27 +816,6 @@
 /obj/structure/curtain/black,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"cf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "cg" = (
 /obj/structure/disposalpipe/trunk{
 	tag = "icon-pipe-t (EAST)";
@@ -1164,31 +953,6 @@
 	icon_state = "white"
 	},
 /area/whiskey_outpost/inside/hospital)
-"cw" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/turf/open/floor/prison{
-	tag = "icon-cell_stripe (NORTH)";
-	icon_state = "cell_stripe";
-	dir = 1
-	},
-/area/whiskey_outpost/inside/cic)
-"cx" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "cy" = (
 /obj/machinery/iv_drip,
 /obj/structure/disposalpipe/segment,
@@ -1265,33 +1029,6 @@
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
-"cL" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
-"cM" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	tag = "icon-cell_stripe (WEST)";
-	icon_state = "cell_stripe";
-	dir = 8
-	},
-/area/whiskey_outpost/inside/bunker)
 "cN" = (
 /obj/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
@@ -1314,17 +1051,6 @@
 "cQ" = (
 /obj/structure/sign/prop1,
 /turf/closed/wall/r_wall,
-/area/whiskey_outpost/inside/cic)
-"cR" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "cS" = (
 /obj/structure/table,
@@ -1362,28 +1088,7 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"cW" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "cX" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
 /obj/structure/disposalpipe/sortjunction/flipped{
 	dir = 1;
 	icon_state = "pipe-j2s";
@@ -1477,15 +1182,6 @@
 /obj/structure/sign/ROsign,
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/supply)
-"dh" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "di" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Honor Guard Squad Leader"
@@ -1550,12 +1246,6 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "dn" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
 /obj/structure/closet/hydrant{
 	pixel_x = -32;
 	pixel_y = 0
@@ -1753,17 +1443,8 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker)
 "dG" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1801,12 +1482,6 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost)
 "dK" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/junction{
 	icon_state = "pipe-j2";
 	dir = 4
@@ -1817,18 +1492,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost)
-"dL" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/bunker)
 "dM" = (
 /obj/machinery/light/small,
 /turf/open/floor/prison{
@@ -1860,14 +1523,6 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "dQ" = (
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
-"dR" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "dS" = (
@@ -2032,12 +1687,6 @@
 	},
 /area/whiskey_outpost/outside/north/platform)
 "ee" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = ""
-	},
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -2045,45 +1694,7 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/engineering)
-"ef" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/engineering)
-"eg" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/engineering)
 "eh" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/airlock/almayer/maint{
 	name = "\improper Generator Hatch"
 	},
@@ -2149,12 +1760,6 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker)
 "en" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/table/reinforced/prison,
 /obj/machinery/cell_charger,
 /obj/item/tool/screwdriver,
@@ -2165,11 +1770,6 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "eo" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2191,63 +1791,6 @@
 	dir = 8
 	},
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
-"er" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/prison{
-	tag = "icon-cell_stripe (NORTH)";
-	icon_state = "cell_stripe";
-	dir = 1
-	},
-/area/whiskey_outpost/inside/bunker)
-"es" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
-"et" = (
-/obj/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Bunker"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
 /area/whiskey_outpost/inside/living)
 "eu" = (
 /obj/structure/bed/chair/office/dark{
@@ -2298,23 +1841,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/living)
-"ez" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "eA" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
@@ -2465,10 +1991,6 @@
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
-/obj/structure/cable{
-	tag = "icon-0-2";
-	icon_state = "0-2"
-	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "eO" = (
@@ -2555,21 +2077,6 @@
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
-"eV" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/cic)
 "eW" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
@@ -2632,23 +2139,7 @@
 	dir = 1
 	},
 /area/whiskey_outpost/inside/hospital)
-"fd" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/bunker)
 "fe" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2656,21 +2147,6 @@
 	tag = "icon-cell_stripe (EAST)";
 	icon_state = "cell_stripe";
 	dir = 4
-	},
-/area/whiskey_outpost/inside/bunker)
-"ff" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
 	},
 /area/whiskey_outpost/inside/bunker)
 "fg" = (
@@ -2744,12 +2220,6 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "fq" = (
@@ -2821,12 +2291,6 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "fx" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2836,12 +2300,6 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "fz" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
 /obj/structure/flora/pottedplant/random,
 /obj/machinery/light/small{
 	dir = 4
@@ -2857,11 +2315,6 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "fB" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -2878,12 +2331,6 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "fE" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3038,11 +2485,6 @@
 	},
 /area/whiskey_outpost/inside/engineering)
 "fZ" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir";
 	tag = "icon-triagedecalleft"
@@ -3059,21 +2501,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"gb" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Bunker Crew"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/engineering)
 "gc" = (
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/river)
@@ -3157,12 +2584,6 @@
 	},
 /area/whiskey_outpost/inside/engineering)
 "gl" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Bunker Crew Master"
 	},
@@ -3180,11 +2601,6 @@
 	},
 /area/whiskey_outpost/outside/river/east)
 "gn" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/sortjunction/flipped{
 	sortType = "South-Eastern Platform"
 	},
@@ -3206,12 +2622,6 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
 "gq" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -3236,11 +2646,6 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -3261,10 +2666,6 @@
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/structure/table/reinforced/prison,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -3272,15 +2673,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/supply)
-"gw" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "gx" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -3316,7 +2708,6 @@
 /area/whiskey_outpost/inside/caves)
 "gB" = (
 /obj/machinery/power/geothermal,
-/obj/structure/cable,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -3325,7 +2716,6 @@
 /area/whiskey_outpost/inside/engineering)
 "gC" = (
 /obj/machinery/power/geothermal,
-/obj/structure/cable,
 /obj/machinery/light/small,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -3402,12 +2792,6 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "gM" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -4011,11 +3395,6 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "io" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/decal/medical_decals{
 	tag = "icon-triagedecalleft";
 	icon_state = "triagedecaldir";
@@ -4032,15 +3411,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost/inside/hospital)
-"ip" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "iq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -4553,11 +3923,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
 	icon_state = "asteroidfloor";
@@ -4582,14 +3947,6 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
-"jN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "jO" = (
@@ -4638,25 +3995,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "jV" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/structure/disposalpipe/sortjunction/flipped{
 	dir = 1;
 	icon_state = "pipe-j2s";
@@ -4717,11 +4058,6 @@
 "kc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -4789,15 +4125,6 @@
 	icon_state = "term";
 	dir = 1
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	tag = "icon-0-2";
-	icon_state = "0-2"
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/engineering)
 "kk" = (
@@ -4817,18 +4144,6 @@
 /turf/open/floor{
 	icon_state = "cafeteria";
 	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/engineering)
@@ -4874,21 +4189,6 @@
 	dir = 4
 	},
 /area/whiskey_outpost/outside/lane/two_south)
-"kt" = (
-/turf/open/floor{
-	icon_state = "cafeteria";
-	dir = 2
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/terminal{
-	icon_state = "term";
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/engineering)
 "ku" = (
 /obj/structure/largecrate/supply/ammo/pistol,
 /obj/machinery/light/small{
@@ -5037,19 +4337,6 @@
 	icon_state = "beachcorner"
 	},
 /area/whiskey_outpost/outside/lane/four_south)
-"kQ" = (
-/turf/open/floor{
-	icon_state = "cafeteria";
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/engineering)
 "kR" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -5066,12 +4353,6 @@
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
 	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/item/storage/box/lightstick,
 /obj/item/storage/box/lightstick,
@@ -5105,12 +4386,6 @@
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
 	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
@@ -5186,30 +4461,12 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/engineering)
 "ld" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
 /obj/structure/disposalpipe/sortjunction/untagged/flipped{
 	icon_state = "pipe-j2s";
 	dir = 1
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
-"le" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate";
-	icon_state = "floor_plate";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/bunker)
 "lf" = (
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
@@ -5238,11 +4495,6 @@
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/north/northeast)
 "lk" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/vending/snack,
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -5278,10 +4530,6 @@
 "lq" = (
 /obj/machinery/power/apc/almayer{
 	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
 	},
 /obj/machinery/light/small,
 /obj/machinery/vending/cola,
@@ -5335,12 +4583,6 @@
 	icon_state = "floor_plate";
 	dir = 10
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/item/storage/box/lights,
 /obj/item/storage/box/lights,
 /obj/item/storage/box/lights,
@@ -5349,12 +4591,6 @@
 /obj/structure/table,
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/glasses/welding,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
 /obj/item/stack/barbed_wire{
 	amount = 60
 	},
@@ -5401,24 +4637,6 @@
 /obj/structure/platform,
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
-"lA" = (
-/turf/open/floor{
-	icon_state = "cafeteria";
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = ""
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/engineering)
 "lB" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -5569,24 +4787,6 @@
 	},
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
-"lV" = (
-/turf/open/floor{
-	icon_state = "cafeteria";
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/engineering)
 "lW" = (
 /obj/effect/decal/cleanable/blood/writing,
 /obj/item/shard,
@@ -5665,14 +4865,6 @@
 /obj/machinery/colony_floodlight,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/four_south)
-"mi" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_north)
 "mj" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
@@ -5817,14 +5009,6 @@
 "mD" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_north)
-"mE" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_north)
 "mF" = (
 /turf/open/floor/plating{
 	icon_state = "warnplate";
@@ -5835,11 +5019,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -5878,18 +5057,6 @@
 	dir = 4
 	},
 /area/whiskey_outpost/inside/supply)
-"mL" = (
-/turf/open/floor{
-	icon_state = "cafeteria";
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/engineering)
 "mM" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -5931,11 +5098,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
 	icon_state = "grassdirt_corner2"
@@ -5949,11 +5111,6 @@
 "mS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
@@ -6106,11 +5263,6 @@
 /area/whiskey_outpost/inside/bunker)
 "nl" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
 "nm" = (
@@ -6251,11 +5403,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -6395,14 +5542,6 @@
 "nX" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/whiskey_outpost/outside/mortar_pit)
-"nY" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "nZ" = (
 /turf/open/floor{
 	icon_state = "cafeteria";
@@ -6458,11 +5597,6 @@
 	req_access = list()
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -6641,24 +5775,6 @@
 "ow" = (
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north/northwest)
-"ox" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/platform)
 "oy" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment{
@@ -6835,11 +5951,6 @@
 	luminosity = 2
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
 "oH" = (
@@ -7030,10 +6141,6 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "pa" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -7043,25 +6150,8 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/four)
-"pb" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/four)
 "pc" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/jungle{
 	bushes_spawn = 0;
 	icon_state = "grass_impenetrable"
@@ -7088,18 +6178,6 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/four)
-"pf" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor{
-	tag = "icon-whitegreen (SOUTHEAST)";
-	icon_state = "whitegreen";
-	dir = 6
-	},
-/area/whiskey_outpost/inside/hospital)
 "pg" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
@@ -7107,49 +6185,10 @@
 	req_access = list(20);
 	req_one_access = list()
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
 	dir = 2
-	},
-/area/whiskey_outpost/inside/hospital)
-"ph" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor{
-	tag = "icon-whitegreen (SOUTHWEST)";
-	icon_state = "whitegreen";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/hospital)
-"pi" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor{
-	tag = "icon-whitegreencorner (WEST)";
-	icon_state = "whitegreencorner";
-	dir = 8
-	},
-/area/whiskey_outpost/inside/hospital)
-"pj" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor{
-	icon_state = "white"
 	},
 /area/whiskey_outpost/inside/hospital)
 "pk" = (
@@ -7201,11 +6240,6 @@
 	},
 /area/whiskey_outpost/inside/supply)
 "pp" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -7269,11 +6303,6 @@
 /area/whiskey_outpost/inside/bunker)
 "pw" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north/northwest)
 "px" = (
@@ -7323,18 +6352,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost/inside/hospital)
-"pB" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-whitegreencorner (WEST)";
-	icon_state = "whitegreencorner";
-	dir = 8
-	},
-/area/whiskey_outpost/inside/hospital)
 "pC" = (
 /turf/open/floor{
 	tag = "icon-whitegreencorner";
@@ -7375,11 +6392,6 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "pG" = (
@@ -7395,18 +6407,6 @@
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
-"pI" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-whitegreen (WEST)";
-	icon_state = "whitegreen";
-	dir = 8
-	},
-/area/whiskey_outpost/inside/hospital)
 "pJ" = (
 /obj/effect/decal/medical_decals{
 	tag = "icon-triagedecalleft";
@@ -7514,18 +6514,6 @@
 	dir = 8
 	},
 /area/whiskey_outpost/inside/supply)
-"pT" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-whitegreencorner";
-	icon_state = "whitegreencorner";
-	dir = 1
-	},
-/area/whiskey_outpost/inside/hospital)
 "pU" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -7545,22 +6533,6 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/engineering)
-"pX" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/medical_decals{
-	icon_state = "triagedecaldir";
-	tag = "icon-triagedecalleft"
-	},
-/turf/open/floor{
-	tag = "icon-whitegreencorner";
-	icon_state = "whitegreen";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/hospital)
 "pY" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/floor{
@@ -7571,11 +6543,6 @@
 /area/whiskey_outpost/outside/north/platform)
 "pZ" = (
 /obj/machinery/light/small,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
 	icon_state = "floor_plate";
@@ -7806,22 +6773,9 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"qA" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
 "qB" = (
 /obj/machinery/power/apc/almayer{
 	dir = 1
-	},
-/obj/structure/cable{
-	tag = "icon-0-2";
-	icon_state = "0-2"
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
@@ -7871,11 +6825,6 @@
 	req_access = list()
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -8007,14 +6956,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/whiskey_outpost/outside/north/northwest)
-"qW" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall/r_wall,
-/area/whiskey_outpost/inside/bunker)
 "qX" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -8035,23 +6976,6 @@
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
 	dir = 8
-	},
-/area/whiskey_outpost)
-"qZ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	tag = ""
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
 	},
 /area/whiskey_outpost)
 "ra" = (
@@ -8106,18 +7030,6 @@
 /obj/machinery/colony_floodlight,
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/northwest)
-"ri" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/one)
 "rj" = (
 /obj/structure/platform{
 	icon_state = "platform";
@@ -8125,38 +7037,14 @@
 	},
 /turf/open/gm/coast,
 /area/whiskey_outpost/outside/lane/four_north)
-"rk" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/platform)
 "rl" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
 	},
 /area/whiskey_outpost/outside/north/beach)
 "rm" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -8241,12 +7129,6 @@
 	},
 /area/whiskey_outpost/outside/lane/two_south)
 "rx" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/airlock/almayer/engineering{
 	name = "Engineering";
 	req_one_access = list(2,7)
@@ -8292,11 +7174,6 @@
 "rB" = (
 /obj/machinery/light/small{
 	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
@@ -8428,12 +7305,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "rP" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -8503,25 +7374,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/bunker)
-"rX" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost)
 "rY" = (
 /obj/machinery/door/airlock/almayer/research/glass{
 	dir = 1;
@@ -8552,24 +7404,11 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/bunker)
-"sb" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/bunker)
 "sc" = (
 /obj/machinery/door/airlock/almayer/research/glass{
 	dir = 1;
 	name = "\improper Pillbox";
 	req_access = list()
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -8597,22 +7436,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/bunker)
-"se" = (
-/obj/structure/barricade/sandbags/wired,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/platform)
 "sf" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -8661,11 +7484,6 @@
 	name = "\improper Supply Depo";
 	no_panel = 1;
 	not_weldable = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -8799,11 +7617,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/beach)
 "sy" = (
@@ -8830,14 +7643,6 @@
 	dir = 4
 	},
 /area/whiskey_outpost/outside/north/platform)
-"sA" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north)
 "sB" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -8994,11 +7799,6 @@
 	name = "\improper Pillbox";
 	req_access = list()
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -9031,11 +7831,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "sW" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/sortjunction{
 	sortType = "Pillbox Burbon"
 	},
@@ -9068,11 +7863,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -9082,24 +7872,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/north/platform)
-"ta" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
 "tb" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -9167,17 +7939,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/outside/north/northeast)
-"ti" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/bunker)
 "tj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9251,30 +8012,12 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
 	dir = 10
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/four)
-"tr" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/two)
 "ts" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -9282,11 +8025,6 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north/northwest)
@@ -9301,10 +8039,6 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "tu" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -9355,10 +8089,6 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "tA" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /obj/machinery/power/apc/almayer{
 	dir = 1
 	},
@@ -9368,26 +8098,6 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/three)
-"tB" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/three)
-"tC" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north/beach)
 "tD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9434,11 +8144,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -9450,11 +8155,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -9465,17 +8165,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -9554,18 +8243,6 @@
 	dir = 2
 	},
 /area/whiskey_outpost/inside/bunker)
-"tU" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/two)
 "tV" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/open/gm/dirt,
@@ -9579,18 +8256,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "tX" = (
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/three)
-"tY" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -9621,17 +8286,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -9679,11 +8333,6 @@
 	},
 /area/whiskey_outpost/inside/bunker)
 "uh" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/sortjunction{
 	dir = 1;
 	icon_state = "pipe-j1s";
@@ -9713,12 +8362,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -9937,11 +8580,6 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/gm/dirtgrassborder,
 /area/whiskey_outpost/outside/north)
 "uI" = (
@@ -9997,37 +8635,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/north/platform)
-"uO" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/platform)
-"uP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/gm/dirtgrassborder{
-	icon_state = "grassdirt_corner2"
-	},
-/area/whiskey_outpost/outside/north)
 "uQ" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -10080,11 +8687,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -10093,11 +8695,6 @@
 "uW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
@@ -10118,23 +8715,6 @@
 	dir = 5
 	},
 /area/whiskey_outpost/outside/north/beach)
-"uY" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_north)
 "uZ" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -10202,15 +8782,6 @@
 	icon_state = "rasputin15"
 	},
 /area/whiskey_outpost/outside/lane/four_south)
-"ve" = (
-/obj/structure/barricade/metal/wired,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_north)
 "vf" = (
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hospital/triage)
@@ -10285,11 +8856,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/jungle,
 /area/whiskey_outpost/outside/north)
 "vo" = (
@@ -10346,20 +8912,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost/inside/hospital/triage)
-"vt" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/gm/dirtgrassborder{
-	dir = 8;
-	icon_state = "grassdirt_corner"
-	},
-/area/whiskey_outpost/outside/north)
 "vu" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -10368,11 +8920,6 @@
 "vv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 1
@@ -10422,11 +8969,6 @@
 	},
 /area/whiskey_outpost/outside/north/beach)
 "vA" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
@@ -10443,11 +8985,6 @@
 	},
 /area/whiskey_outpost/outside/lane/three_north)
 "vC" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-c (NORTH)";
 	icon_state = "pipe-c";
@@ -10465,18 +9002,6 @@
 	},
 /area/whiskey_outpost/outside/lane/two_south)
 "vE" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
 	icon_state = "pipe-j1s";
@@ -10498,34 +9023,7 @@
 	icon_state = "rasputin15"
 	},
 /area/whiskey_outpost/outside/lane/four_north)
-"vG" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north)
-"vH" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north)
 "vI" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
 	icon_state = "pipe-j1s";
@@ -10542,24 +9040,7 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/river)
-"vK" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/north)
 "vL" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-c (NORTH)";
 	icon_state = "pipe-c";
@@ -10569,18 +9050,6 @@
 	dir = 1;
 	icon_state = "grassdirt_corner2"
 	},
-/area/whiskey_outpost/outside/north)
-"vM" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "vN" = (
 /turf/closed/shuttle/dropship{
@@ -10597,11 +9066,6 @@
 "vP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/gm/dirtgrassborder{
 	dir = 8;
@@ -10720,11 +9184,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -10780,11 +9239,6 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -10796,11 +9250,6 @@
 /area/whiskey_outpost/outside/north/northeast)
 "wl" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -10841,18 +9290,6 @@
 /obj/item/storage/box/m94,
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/lane/four_north)
-"wr" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_south)
 "ws" = (
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/one_south)
@@ -11092,23 +9529,6 @@
 	name = "\improper Pillbox";
 	req_access = list()
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/bunker/front)
-"xd" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -11120,11 +9540,6 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -11134,31 +9549,6 @@
 "xf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/bunker/front)
-"xg" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -11279,11 +9669,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -11340,11 +9725,6 @@
 /obj/structure/sign/safety/medical{
 	name = "\improper Triage Center"
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hospital/triage)
 "xz" = (
@@ -11360,26 +9740,7 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_north)
-"xB" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/turf/closed/wall/r_wall,
-/area/whiskey_outpost/inside/hospital/triage)
 "xC" = (
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_north)
-"xD" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -11396,33 +9757,12 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /turf/open/floor{
 	icon_state = "white"
 	},
 /area/whiskey_outpost/inside/hospital/triage)
-"xG" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_north)
 "xH" = (
 /obj/machinery/body_scanconsole,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -11434,11 +9774,6 @@
 /area/whiskey_outpost/inside/hospital/triage)
 "xI" = (
 /obj/structure/bed/roller,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -11460,11 +9795,6 @@
 /area/whiskey_outpost/outside/lane/four_north)
 "xK" = (
 /obj/structure/bed/roller,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -11478,11 +9808,6 @@
 	},
 /obj/machinery/light/small{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -11520,18 +9845,6 @@
 "xQ" = (
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/one_south)
-"xR" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidwarning (WEST)";
-	icon_state = "asteroidwarning";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/platform)
 "xS" = (
 /obj/structure/flora/ausbushes/reedbush,
 /obj/effect/landmark/start/whiskey{
@@ -11654,27 +9967,6 @@
 	dir = 10
 	},
 /area/whiskey_outpost/outside/north/beach)
-"yf" = (
-/obj/structure/bed/roller,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-whitegreenfull";
-	icon_state = "whitegreenfull";
-	dir = 2
-	},
-/area/whiskey_outpost/inside/hospital/triage)
 "yg" = (
 /turf/open/gm/grass{
 	icon_state = "gbcorner";
@@ -11699,12 +9991,6 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -11713,11 +9999,6 @@
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "yl" = (
 /obj/structure/stairs,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor,
 /area/whiskey_outpost/outside/north/platform)
 "ym" = (
@@ -11816,11 +10097,6 @@
 /obj/machinery/body_scanconsole{
 	dir = 1
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -11847,18 +10123,6 @@
 	dir = 6
 	},
 /area/whiskey_outpost/inside/hospital/triage)
-"yB" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_north)
 "yC" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/gm/dirt,
@@ -11925,7 +10189,6 @@
 	},
 /area/whiskey_outpost/outside/lane/two_north)
 "yK" = (
-/obj/structure/cable,
 /obj/machinery/power/apc/almayer{
 	dir = 2
 	},
@@ -11948,18 +10211,6 @@
 	dir = 10
 	},
 /area/whiskey_outpost/inside/bunker/bunker/front)
-"yM" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/platform)
 "yN" = (
 /turf/open/jungle,
 /area/whiskey_outpost/outside/lane/three_north)
@@ -12010,18 +10261,6 @@
 "yT" = (
 /turf/open/gm/grass,
 /area/whiskey_outpost/outside/north/beach)
-"yU" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-rampbottom";
-	icon_state = "rampbottom";
-	dir = 2
-	},
-/area/whiskey_outpost/outside/north/platform)
 "yV" = (
 /turf/open/gm/coast{
 	dir = 8;
@@ -12071,18 +10310,6 @@
 	dir = 1
 	},
 /area/whiskey_outpost/outside/north/beach)
-"zb" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north)
 "zc" = (
 /obj/item/storage/box/m94,
 /turf/open/shuttle/dropship{
@@ -12090,17 +10317,6 @@
 	icon_state = "rasputin5"
 	},
 /area/whiskey_outpost/outside/lane/four_north)
-"zd" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_south)
 "ze" = (
 /obj/structure/barricade/sandbags/wired,
 /obj/structure/barricade/sandbags/wired{
@@ -12181,33 +10397,11 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/whiskey_outpost/outside/north/beach)
-"zl" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_north)
 "zm" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
 /area/whiskey_outpost/outside/lane/three_north)
-"zn" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_south)
 "zo" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner"
@@ -12316,18 +10510,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_north)
-"zB" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_north)
 "zC" = (
 /obj/machinery/sleeper,
 /turf/open/floor{
@@ -12392,7 +10574,6 @@
 /obj/structure/table/reinforced/prison,
 /obj/item/reagent_container/hypospray,
 /obj/item/reagent_container/hypospray,
-/obj/structure/cable,
 /obj/machinery/power/apc/almayer{
 	dir = 2
 	},
@@ -13232,17 +11413,6 @@
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_north)
-"BR" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_north)
 "BS" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -13285,23 +11455,6 @@
 	icon_state = "floor7"
 	},
 /area/whiskey_outpost/outside/lane/four_north)
-"BZ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_north)
 "Ca" = (
 /turf/closed/shuttle/dropship{
 	tag = "icon-rasputin6";
@@ -13966,17 +12119,6 @@
 	},
 /turf/open/jungle/clear,
 /area/whiskey_outpost/outside/south/very_far)
-"DU" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_south)
 "DV" = (
 /obj/structure/barricade/metal/wired,
 /obj/effect/landmark/start/whiskey{
@@ -13985,17 +12127,6 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_south)
 "DW" = (
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_south)
-"DX" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -14018,21 +12149,6 @@
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
 	dir = 8
-	},
-/area/whiskey_outpost/outside/north/beach)
-"Ea" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
 	},
 /area/whiskey_outpost/outside/north/beach)
 "Eb" = (
@@ -14072,21 +12188,6 @@
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
 	dir = 8
-	},
-/area/whiskey_outpost/outside/north)
-"Ef" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
 	},
 /area/whiskey_outpost/outside/north)
 "Eg" = (
@@ -14434,18 +12535,6 @@
 /obj/effect/decal/cleanable/blood/writing,
 /turf/open/jungle/clear,
 /area/whiskey_outpost/outside/south/very_far)
-"ER" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_south)
 "ES" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -14464,19 +12553,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/whiskey_outpost/outside/lane/three_south)
-"EU" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/whiskey_outpost/inside/hospital/triage)
 "EV" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -14529,11 +12605,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -14543,11 +12614,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -14631,34 +12697,8 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/whiskey_outpost/outside/south)
-"Fm" = (
-/obj/structure/barricade/plasteel/wired,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/two)
 "Fn" = (
 /obj/structure/barricade/plasteel/wired,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/three)
-"Fo" = (
-/obj/structure/barricade/plasteel/wired,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";
@@ -14676,18 +12716,6 @@
 /obj/structure/barricade/plasteel/wired,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_north)
-"Fr" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/obj/structure/barricade/plasteel/wired,
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_north)
 "Fs" = (
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
@@ -14695,31 +12723,7 @@
 /obj/structure/barricade/plasteel/wired,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/two_south)
-"Ft" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/obj/structure/barricade/plasteel/wired,
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/two_south)
 "Fu" = (
-/obj/effect/landmark/start/whiskey{
-	name = "Marine"
-	},
-/obj/structure/barricade/plasteel/wired,
-/turf/open/gm/dirt,
-/area/whiskey_outpost/outside/lane/three_south)
-"Fv" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/landmark/start/whiskey{
 	name = "Marine"
 	},
@@ -14747,11 +12751,6 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/inside/caves/caverns/east)
 "Fz" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -14788,11 +12787,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/one)
 "FC" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -14816,11 +12810,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "FE" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -14831,11 +12820,6 @@
 	},
 /area/whiskey_outpost/inside/bunker/pillbox/two)
 "FF" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -14959,11 +12943,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/marine_turret/premade{
 	icon_state = "sentry_on";
 	dir = 4
@@ -14977,11 +12956,6 @@
 "FT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
 	},
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -15066,20 +13040,6 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/whiskey_outpost/outside/north/beach)
-"Ge" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/marine_turret/premade,
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/whiskey_outpost/outside/north/beach)
 "Gf" = (
 /obj/machinery/marine_turret/premade,
 /obj/structure/barricade/sandbags/wired,
@@ -15096,32 +13056,6 @@
 	icon_state = "grassdirt_corner2"
 	},
 /area/whiskey_outpost/outside/north/beach)
-"Gh" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/marine_turret/premade,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/two)
-"Gi" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/marine_turret/premade,
-/turf/open/floor/prison{
-	tag = "icon-floor_plate (SOUTHWEST)";
-	icon_state = "floor_plate";
-	dir = 10
-	},
-/area/whiskey_outpost/inside/bunker/pillbox/three)
 "Gj" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/gm/dirt,
@@ -15373,16 +13307,6 @@
 "GU" = (
 /turf/open/floor/plating,
 /obj/structure/barricade/plasteel/wired,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/whiskey_outpost/inside/bunker)
-"GV" = (
-/turf/open/floor/plating,
-/obj/structure/barricade/plasteel/wired,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
 "GW" = (
@@ -25201,7 +23125,7 @@ nf
 ow
 ow
 qE
-ri
+rO
 rO
 rO
 tN
@@ -27984,7 +25908,7 @@ bq
 ab
 kj
 dn
-lA
+km
 gB
 bq
 gO
@@ -28186,7 +26110,7 @@ bq
 bt
 km
 ee
-lV
+km
 gC
 bq
 gO
@@ -28385,10 +26309,10 @@ ar
 ar
 ar
 bq
-bA
-kt
-ef
-lV
+ab
+kj
+cr
+km
 gB
 bq
 gO
@@ -28588,9 +26512,9 @@ af
 fA
 bq
 bB
-kQ
-eg
-mL
+km
+cr
+km
 gC
 bq
 gO
@@ -29382,18 +27306,18 @@ fl
 qs
 ar
 qB
-dR
-eV
-dR
-gw
-gw
-gw
-gw
-gw
+dQ
+fF
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
 fz
-bc
-cw
-cL
+bi
+af
+cJ
 bq
 bM
 fY
@@ -29598,7 +27522,7 @@ af
 fB
 bq
 bN
-gb
+fY
 lw
 fY
 jf
@@ -29797,7 +27721,7 @@ gi
 ar
 ar
 dQ
-cR
+cJ
 bq
 eE
 pW
@@ -30403,12 +28327,12 @@ li
 li
 dA
 an
-bl
+an
 br
 cX
-qZ
+aG
 jV
-rX
+eA
 si
 ld
 td
@@ -30605,8 +28529,8 @@ li
 li
 li
 cd
-cx
-cf
+an
+iK
 an
 iK
 an
@@ -30808,7 +28732,7 @@ li
 li
 an
 an
-cW
+iK
 an
 iK
 an
@@ -31212,7 +29136,7 @@ am
 am
 ac
 dd
-es
+iK
 an
 iK
 an
@@ -31414,7 +29338,7 @@ py
 am
 am
 aP
-es
+iK
 an
 iK
 iF
@@ -31616,7 +29540,7 @@ dZ
 am
 am
 dH
-es
+iK
 an
 iK
 iG
@@ -31818,7 +29742,7 @@ ot
 pt
 am
 aP
-es
+iK
 an
 iK
 iG
@@ -32222,7 +30146,7 @@ cl
 da
 bH
 dU
-ez
+iM
 an
 iK
 iG
@@ -32274,46 +30198,46 @@ fX
 uH
 sc
 tK
-tU
-tU
-Gh
-Fm
-mi
-ve
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-uY
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-DU
-Ft
-DU
-DU
-DU
-DU
-DU
-DU
-DU
-DU
-DU
-DU
-DU
-DU
-wr
+tP
+tP
+uy
+CR
+mg
+uT
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+zj
+DS
+Fs
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
+DS
 DS
 DS
 Eh
@@ -32424,7 +30348,7 @@ pC
 as
 bb
 aR
-bs
+an
 an
 iK
 iG
@@ -32473,7 +30397,7 @@ bW
 bW
 bW
 fT
-uP
+vW
 rU
 FE
 tP
@@ -32492,7 +30416,7 @@ zj
 zj
 zj
 zj
-xG
+zj
 zj
 zj
 zj
@@ -32515,7 +30439,7 @@ DS
 DS
 DS
 DS
-zd
+DS
 DS
 DS
 Eh
@@ -32618,15 +30542,15 @@ fJ
 fZ
 gn
 io
-pB
-pI
+ot
+oA
 pp
-pI
-pT
-pX
+oA
+pA
+as
 pp
-bj
-aB
+aR
+br
 eA
 iM
 iG
@@ -32675,9 +30599,9 @@ bW
 bW
 bW
 bW
-vG
+vO
 rY
-tr
+tP
 tP
 tP
 uy
@@ -32694,7 +30618,7 @@ Ap
 Ap
 Cl
 zj
-xG
+zj
 zj
 wc
 wW
@@ -32717,7 +30641,7 @@ rw
 rw
 vD
 DS
-zd
+DS
 DS
 ES
 Ek
@@ -32817,7 +30741,7 @@ or
 oh
 oJ
 bo
-bE
+by
 dI
 ir
 cl
@@ -32877,7 +30801,7 @@ bW
 bW
 bW
 bW
-vG
+vO
 rU
 tu
 tP
@@ -32896,7 +30820,7 @@ yJ
 Ae
 Cm
 zj
-xG
+zj
 zj
 tb
 me
@@ -32919,7 +30843,7 @@ kq
 kq
 xv
 DS
-zd
+DS
 DS
 Fd
 kV
@@ -33019,7 +30943,7 @@ dE
 am
 am
 bp
-pf
+or
 jz
 do
 oo
@@ -33079,7 +31003,7 @@ bW
 bW
 hM
 bW
-vG
+vO
 An
 zS
 AD
@@ -33098,7 +31022,7 @@ At
 At
 CV
 zu
-yB
+zu
 BP
 tb
 me
@@ -33121,7 +31045,7 @@ kq
 lp
 xv
 DS
-zd
+DS
 DS
 Fd
 lf
@@ -33232,7 +31156,7 @@ ov
 px
 am
 aj
-bu
+ug
 oM
 bZ
 gF
@@ -33281,7 +31205,7 @@ bW
 cK
 bW
 bW
-vG
+vO
 vO
 rU
 rU
@@ -33300,7 +31224,7 @@ li
 li
 Cm
 zj
-xG
+zj
 BQ
 tb
 me
@@ -33323,7 +31247,7 @@ kq
 kq
 li
 DS
-zd
+DS
 DS
 Fd
 lf
@@ -33423,7 +31347,7 @@ am
 oC
 bK
 oA
-ph
+oq
 am
 am
 ds
@@ -33434,7 +31358,7 @@ ec
 am
 am
 aj
-cM
+oO
 oO
 bZ
 cO
@@ -33502,7 +31426,7 @@ li
 li
 li
 zj
-xG
+zj
 BQ
 li
 li
@@ -33525,7 +31449,7 @@ kq
 li
 li
 li
-zd
+DS
 DS
 Fd
 li
@@ -33625,7 +31549,7 @@ am
 cT
 oo
 oo
-pi
+ot
 pq
 am
 pE
@@ -33827,7 +31751,7 @@ am
 dV
 oo
 oo
-pj
+oo
 pr
 am
 am
@@ -33838,7 +31762,7 @@ am
 am
 li
 aj
-fd
+oS
 oS
 bZ
 gK
@@ -33906,7 +31830,7 @@ li
 vf
 xl
 xq
-xB
+vf
 xx
 yu
 vf
@@ -33929,7 +31853,7 @@ li
 li
 wI
 wI
-xd
+wJ
 wI
 wI
 wI
@@ -34040,7 +31964,7 @@ li
 li
 li
 aj
-fd
+oS
 oS
 bZ
 bZ
@@ -34089,7 +32013,7 @@ bW
 AL
 AT
 fT
-vt
+wg
 vR
 bW
 bW
@@ -34131,7 +32055,7 @@ wI
 wI
 wI
 FL
-xd
+wJ
 yH
 wI
 wJ
@@ -34242,7 +32166,7 @@ li
 li
 li
 aj
-fd
+oS
 gr
 bS
 bZ
@@ -34333,7 +32257,7 @@ wM
 wN
 wI
 wK
-xd
+wJ
 wJ
 xO
 wJ
@@ -34444,7 +32368,7 @@ ad
 ad
 ad
 ad
-dL
+tQ
 oW
 ue
 ig
@@ -34535,7 +32459,7 @@ wM
 wN
 wI
 wL
-xd
+wJ
 wJ
 wI
 wJ
@@ -34640,13 +32564,13 @@ ad
 ad
 eN
 fp
-ip
-ip
-ip
+aO
+aO
+aO
 fp
-nY
+aO
 ad
-aK
+fj
 jm
 el
 el
@@ -34737,7 +32661,7 @@ wJ
 wJ
 wI
 FL
-xd
+wJ
 CK
 wI
 wI
@@ -34846,57 +32770,57 @@ cz
 bF
 bF
 bF
-dh
-et
-er
+bF
+ck
+uA
 gs
-le
-le
-le
-le
-le
-le
-le
-le
-le
+qS
+qS
+qS
+qS
+qS
+qS
+qS
+qS
+qS
 pZ
-qW
+aj
 rB
-sb
-ti
-GV
-xR
+fj
+oS
+GU
+rQ
 yl
-yM
-ox
-ox
-rk
-rk
-rk
+ed
+oz
+oz
+oc
+oc
+oc
 sZ
-uO
-se
-yU
-jN
-jN
-jN
-jN
-ta
-jN
-jN
-jN
-jN
-jN
-Ge
-Ea
-Ea
-Ea
-Ef
-Ef
-Ef
-Ef
-zb
-sA
+oz
+qN
+un
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+fy
+Gf
+Eb
+Eb
+Eb
+Ei
+Ei
+Ei
+Ei
+sL
+bW
 vE
 vX
 bW
@@ -34939,7 +32863,7 @@ FL
 wJ
 wI
 wJ
-xd
+wJ
 wJ
 zV
 wI
@@ -35083,7 +33007,7 @@ fy
 fy
 fy
 fy
-tC
+fy
 fy
 fy
 fy
@@ -35099,7 +33023,7 @@ Ei
 Ei
 sL
 bW
-vH
+vO
 bW
 bW
 bW
@@ -35141,7 +33065,7 @@ wJ
 wJ
 xO
 wJ
-xd
+wJ
 wJ
 wI
 FL
@@ -35252,7 +33176,7 @@ aO
 fq
 aO
 rb
-fd
+oS
 tQ
 ue
 zI
@@ -35285,7 +33209,7 @@ fy
 fy
 fy
 fy
-tC
+fy
 fy
 fy
 fy
@@ -35454,7 +33378,7 @@ ad
 ad
 ad
 ad
-fd
+oS
 ct
 dF
 aj
@@ -35503,7 +33427,7 @@ Ej
 Ej
 sq
 sE
-vK
+vX
 vO
 bW
 bW
@@ -35656,7 +33580,7 @@ fm
 fn
 ad
 ad
-fd
+oS
 fj
 aj
 aj
@@ -35724,9 +33648,9 @@ vf
 vs
 uq
 uq
-yf
-EU
-EU
+xI
+uq
+uq
 zJ
 vf
 li
@@ -35747,7 +33671,7 @@ wJ
 wJ
 wI
 FL
-xg
+xf
 wJ
 zV
 wI
@@ -35858,7 +33782,7 @@ aO
 aO
 qo
 ad
-fd
+oS
 fj
 aj
 iE
@@ -35949,7 +33873,7 @@ wJ
 wJ
 wI
 wL
-xg
+xf
 CK
 wI
 wI
@@ -36060,7 +33984,7 @@ cP
 aO
 qU
 ad
-fd
+oS
 ct
 aj
 iI
@@ -36151,7 +34075,7 @@ wN
 wP
 wI
 wK
-xg
+xf
 wJ
 wI
 wJ
@@ -36262,7 +34186,7 @@ bx
 nQ
 ad
 ad
-fd
+oS
 fj
 aj
 qS
@@ -36353,7 +34277,7 @@ wI
 wI
 wI
 wJ
-xg
+xf
 wJ
 xO
 wJ
@@ -36464,7 +34388,7 @@ bD
 aO
 ad
 ax
-fd
+oS
 fj
 aj
 iE
@@ -36532,7 +34456,7 @@ li
 vf
 xo
 xu
-xB
+vf
 xu
 yA
 vf
@@ -36555,7 +34479,7 @@ li
 li
 wI
 wI
-xg
+xf
 yL
 wI
 wJ
@@ -36757,7 +34681,7 @@ li
 li
 li
 wI
-xg
+xf
 wI
 wI
 wI
@@ -36868,7 +34792,7 @@ aO
 nQ
 jW
 aj
-ff
+ug
 cu
 dF
 aj
@@ -36936,7 +34860,7 @@ li
 li
 li
 xC
-BR
+xC
 xC
 li
 li
@@ -37119,7 +35043,7 @@ eY
 hj
 bW
 hM
-vG
+vO
 sO
 tz
 tz
@@ -37138,7 +35062,7 @@ vB
 vB
 Co
 xC
-BR
+xC
 xC
 vj
 yN
@@ -37321,7 +35245,7 @@ eY
 hy
 bW
 bW
-vG
+vO
 sn
 zT
 AE
@@ -37340,7 +35264,7 @@ zo
 yx
 zm
 xC
-BR
+xC
 xC
 vj
 yN
@@ -37523,7 +35447,7 @@ eK
 hy
 bW
 bW
-vG
+vO
 sn
 tA
 tX
@@ -37542,7 +35466,7 @@ BC
 BD
 BD
 xA
-zB
+xA
 xA
 zP
 CT
@@ -37725,9 +35649,9 @@ eK
 hy
 bW
 cK
-vG
+vO
 sF
-tB
+tX
 tX
 tX
 uz
@@ -37744,7 +35668,7 @@ mD
 mD
 mD
 xC
-BR
+xC
 xC
 zW
 yx
@@ -37767,7 +35691,7 @@ En
 En
 Em
 DW
-zn
+DW
 DW
 ET
 Em
@@ -37927,7 +35851,7 @@ eK
 hy
 bW
 bW
-vG
+vO
 sn
 FF
 tX
@@ -37946,7 +35870,7 @@ xC
 xC
 xC
 xC
-BR
+xC
 xC
 xC
 xC
@@ -37969,7 +35893,7 @@ DW
 DW
 DW
 DW
-zn
+DW
 DW
 DW
 DW
@@ -38129,49 +36053,49 @@ eK
 DP
 DJ
 bW
-vM
+sO
 sR
 ub
-tY
-tY
-Gi
-Fo
-xD
-Fr
-xD
-xD
-mE
-xD
-xD
-xD
-xD
-xD
-xD
-xD
-BZ
-xD
-xD
-xD
-xD
-xD
-xD
-xD
-xD
-xD
-DX
-Fv
-DX
-DX
-DX
-DX
-DX
-DX
-DX
-DX
-DX
-DX
-DX
-ER
+tX
+tX
+uz
+Fn
+xC
+Fq
+xC
+xC
+mD
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+xC
+DW
+Fu
+DW
+DW
+DW
+DW
+DW
+DW
+DW
+DW
+DW
+DW
+DW
+DW
 DW
 DW
 DW
@@ -39524,8 +37448,8 @@ fy
 fy
 fy
 pF
-qA
-qA
+ky
+ky
 rl
 uk
 fy
@@ -42368,7 +40292,7 @@ oH
 oH
 oH
 nN
-pb
+qd
 qd
 qd
 rG

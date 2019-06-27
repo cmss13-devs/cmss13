@@ -6,6 +6,7 @@
 	name = "\improper Cursed Forest"
 	icon = 'icons/turf/area_chigusashipyard.dmi'
 	icon_state = "chigusashipyard"
+	powernet_name = "ground"
 
 //Guard or Secure Buildings-----------------------------------------//
 /area/shipyard/guard/barracks

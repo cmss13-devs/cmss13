@@ -126,6 +126,7 @@ Class Procs:
 /obj/machinery/Dispose()
 	machines -= src
 	processing_machines -= src
+	power_machines -= src
 	var/area/A = get_area(src)
 	if(A)
 		A.master.area_machines -= src
@@ -140,6 +141,16 @@ Class Procs:
 	if(machine_processing)
 		machine_processing = 0
 		processing_machines -= src
+
+/obj/machinery/proc/start_processing_power()
+	if(!machine_processing)
+		machine_processing = 1
+		power_machines += src
+
+/obj/machinery/proc/stop_processing_power()
+	if(machine_processing)
+		machine_processing = 0
+		power_machines -= src
 
 /obj/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL

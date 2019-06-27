@@ -108,17 +108,6 @@
 	icon_state = "damaged5"
 	},
 /area/lv624/lazarus/main_hall)
-"ao" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/table,
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
 "ap" = (
 /obj/item/weapon/twohanded/fireaxe,
 /obj/item/ammo_casing,
@@ -317,11 +306,6 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aM" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
@@ -917,11 +901,6 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/chapel)
 "Fp" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "chapel"
@@ -959,11 +938,6 @@
 	},
 /area/lv624/lazarus/chapel)
 "FS" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "chapel"
@@ -1044,14 +1018,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
-"GM" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall,
-/area/lv624/lazarus/chapel)
 "GO" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1143,22 +1109,7 @@
 	icon_state = "white"
 	},
 /area/lv624/lazarus/main_hall)
-"IT" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor{
-	icon_state = "white"
-	},
-/area/lv624/lazarus/main_hall)
 "IY" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "whiteyellowcorner"
@@ -1294,23 +1245,12 @@
 /area/lv624/lazarus/canteen)
 "NP" = (
 /obj/item/folder/red,
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	layer = 2.1
-	},
 /turf/open/floor{
 	icon_state = "redfull";
 	dir = 9
 	},
 /area/lv624/lazarus/security)
 "NQ" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/open/floor{
 	icon_state = "red";
 	dir = 10
@@ -1320,10 +1260,6 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Security Office APC"
-	},
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
 	},
 /turf/open/floor{
 	icon_state = "red"
@@ -1403,17 +1339,6 @@
 	},
 /area/lv624/lazarus/kitchen)
 "OH" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	layer = 2.44
-	},
 /turf/open/floor{
 	icon_state = "redfull";
 	dir = 9
@@ -1479,7 +1404,7 @@ Fo
 Fo
 HI
 zt
-IT
+zt
 aa
 ac
 zt
@@ -1492,10 +1417,10 @@ OI
 (3,1,1) = {"
 FS
 Fp
-GM
-GM
-GM
-ao
+Gs
+Gs
+Gs
+aV
 aM
 bb
 aK

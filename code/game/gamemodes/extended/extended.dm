@@ -17,7 +17,6 @@
 	initialize_post_marine_gear_list()
 
 	round_time_lobby = world.time
-	defer_powernet_rebuild = 2 //Build powernets a little bit later, it lags pretty hard.
 
 /datum/game_mode/extended/check_finished()
 	if(round_finished) return 1

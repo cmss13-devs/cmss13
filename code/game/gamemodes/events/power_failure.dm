@@ -79,7 +79,7 @@
 		FE.fusion_cell = new
 		FE.power_gen_percent = 98
 		FE.update_icon()
-		FE.start_processing()
+		FE.start_processing_power()
 		FE.power_change()
 
 	sleep(100)

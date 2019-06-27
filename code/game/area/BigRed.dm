@@ -1,6 +1,7 @@
 //Areas for BigRed - Minijar
 /area/bigred
 	can_nuke_area = TRUE
+	powernet_name = "ground"
 
 /area/bigred/ground
 	name = "ground"

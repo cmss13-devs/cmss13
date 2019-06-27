@@ -81,7 +81,7 @@
 
 	if(has_power)
 		if(machine_processing)
-			if(stat & NOPOWER) 
+			if(stat & NOPOWER)
 				processing_machines += src // power interupted us, start processing again
 		stat &= ~NOPOWER
 
@@ -104,18 +104,13 @@
 		del(PN) //not qdel on purpose, powernet is still using del.
 	powernets.Cut()
 
-	for(var/obj/structure/cable/PC in cable_list)
-		if(!PC.powernet)
-			PC.powernet = new()
-			powernets += PC.powernet
-//			if(Debug)	world.log << "Starting mpn at [PC.x],[PC.y] ([PC.d1]/[PC.d2])"
-			powernet_nextlink(PC,PC.powernet)
-
-//	if(Debug) world.log << "[powernets.len] powernets found"
-
-	for(var/obj/structure/cable/C in cable_list)
-		if(!C.powernet)	continue
-		C.powernet.cables += C
+	for(var/area/A in all_areas)
+		if(powernets_by_name[A.powernet_name])
+			continue
+		var/datum/powernet/PN = new()
+		PN.powernet_name = A.powernet_name
+		powernets += PN
+		powernets_by_name[A.powernet_name] = PN
 
 	for(var/obj/machinery/power/M in machines)
 		M.connect_to_network()
@@ -252,11 +247,14 @@
 		powernet.nodes -= src
 		powernet = null
 	// Then find any cables on our location
-	var/turf/T = src.loc
-	var/obj/structure/cable/C = T.get_cable_node()
-	if(!C || !C.powernet)	return 0
-	// And connect us to their powernet
-	powernet = C.powernet
+
+	var/area/A = get_area(src)
+	if(!A)
+		return 0
+	var/datum/powernet/PN = powernets_by_name[A.powernet_name]
+	if(!PN)
+		return 0
+	powernet = PN
 	powernet.nodes += src
 	return 1
 

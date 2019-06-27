@@ -64,12 +64,6 @@
 	},
 /area/bigred/ground/security)
 "i" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor{
 	tag = "icon-asteroidwarning (WEST)";
 	icon_state = "asteroidwarning";
@@ -112,55 +106,11 @@
 	dir = 4
 	},
 /area/bigredv2/caves_east)
-"n" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigred/ground/security)
-"o" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigred/ground/security)
-"p" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor{
-	tag = "icon-asteroidfloor (NORTH)";
-	icon_state = "asteroidfloor";
-	dir = 1
-	},
-/area/bigred/ground/security)
 "q" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/bigred/ground/security)
 "r" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Checkpoint Office";
@@ -199,27 +149,11 @@
 	},
 /area/bigred/ground/security)
 "x" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
 /obj/machinery/power/apc{
 	dir = 1;
 	pixel_y = 28;
 	start_charge = 0
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"y" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -434,7 +368,7 @@ b
 (2,1,1) = {"
 b
 e
-n
+h
 b
 s
 B
@@ -448,7 +382,7 @@ b
 (3,1,1) = {"
 b
 f
-o
+j
 q
 t
 z
@@ -462,7 +396,7 @@ b
 (4,1,1) = {"
 b
 g
-o
+j
 q
 u
 C
@@ -476,7 +410,7 @@ b
 (5,1,1) = {"
 b
 h
-o
+j
 b
 v
 D
@@ -490,7 +424,7 @@ b
 (6,1,1) = {"
 b
 j
-n
+h
 b
 b
 b
@@ -504,7 +438,7 @@ b
 (7,1,1) = {"
 b
 k
-o
+j
 b
 w
 w
@@ -518,7 +452,7 @@ b
 (8,1,1) = {"
 b
 h
-o
+j
 b
 x
 z
@@ -532,9 +466,9 @@ b
 (9,1,1) = {"
 b
 j
-p
+h
 r
-y
+E
 E
 z
 z

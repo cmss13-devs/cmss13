@@ -386,13 +386,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "A limited production Kerchner MOU53 triple break action classic. Respectable damage output at medium ranges, while the ARMAT M37 is the king of CQC, the Kerchner MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
 	icon_state = "mou"
 	item_state = "mou"
-	burst_amount = 3
+	burst_amount = 1
 	var/max_rounds = 3
 	var/current_rounds = 0
 	fire_sound = 'sound/weapons/gun_mou53.ogg'
 	flags_equip_slot = SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
-	burst_delay = 0.2 // Chance to throw off the second shot so its not stupid OP
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/double/mou53 //Take care, she comes loaded!
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
@@ -414,32 +413,20 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 11, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 10, "stock_y" = 9) //Weird stock values, make sure any new stock matches the old sprite placement in the .dmi
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
-	fire_delay = config.min_fire_delay
-	accuracy_mult = config.base_hit_accuracy_mult - config.low_hit_accuracy_mult
+	fire_delay = config.low_fire_delay
+	accuracy_mult = config.base_hit_accuracy_mult
 	accuracy_mult_unwielded = config.base_hit_accuracy_mult + config.low_hit_accuracy_mult - config.hmed_hit_accuracy_mult
 	scatter = config.min_scatter_value
-	burst_scatter_mult = config.lmed_scatter_value
 	scatter_unwielded = config.max_scatter_value
-	damage_mult = config.base_hit_damage_mult
-	recoil = config.med_recoil_value*1.4
-	recoil_unwielded = config.high_recoil_value*1.2
+	damage_mult = config.base_hit_damage_mult + config.low_hit_damage_mult
+	recoil = config.med_recoil_value
+	recoil_unwielded = config.high_recoil_value
 
 /obj/item/weapon/gun/shotgun/double/mou53/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(magazine.default_ammo == /datum/ammo/bullet/shotgun/buckshot) // No buckshot in this gun
 		to_chat(user, SPAN_WARNING("\the [src] cannot safely fire this type of shell!"))
 		return
 	..()
-
-/obj/item/weapon/gun/shotgun/double/mou53/toggle_burst()
-	var/old_flags = flags_gun_features & GUN_BURST_ON
-	..()
-	var/new_flags = flags_gun_features & GUN_BURST_ON
-	if(old_flags == new_flags)
-		return
-	if(flags_gun_features & GUN_BURST_ON)
-		damage_mult = damage_mult - config.med_hit_damage_mult
-	else
-		damage_mult = damage_mult + config.med_hit_damage_mult
 
 //-------------------------------------------------------
 //PUMP SHOTGUN

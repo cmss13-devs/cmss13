@@ -1,0 +1,5 @@
+author: Neth Iafin
+delete-after: True
+
+changes: 
+  - tweak: "MOU53 loses its burstfire mode, fire delay between shots increased, accuracy increased, spray and recoil reduced, damage improved (it comes with internal Barrel-Charger like component)."

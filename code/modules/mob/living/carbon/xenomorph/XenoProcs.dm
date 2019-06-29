@@ -595,3 +595,5 @@
 			maxHealth = maxHealth+abs(crit_health) // From round 15 and on we give them only a slight boost
 			health = health+abs(crit_health) // From round 15 and on we give them only a slight boost
 	crit_health = -1 // Do not put this at 0 or xeno's will just vanish on WO due to how the garbage collector works.
+
+

@@ -1,4 +1,5 @@
 //Xenomorph Life - Colonial Marines - Apophis775 - Last Edit: 03JAN2015
+
 #define XENO_ARMOR_REGEN_DELAY SECONDS_30
 /mob/living/carbon/Xenomorph/Life()
 
@@ -27,6 +28,7 @@
 		handle_pheromones()
 		handle_regular_status_updates()
 		handle_stomach_contents()
+		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
 		update_canmove()
 		update_icons()
 		if(loc)
@@ -229,6 +231,7 @@
 				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in your gut with a gurgle."))
 				stomach_contents.Remove(M)
 				qdel(M)
+
 
 /mob/living/carbon/Xenomorph/proc/handle_regular_hud_updates()
 	if(!mind) return

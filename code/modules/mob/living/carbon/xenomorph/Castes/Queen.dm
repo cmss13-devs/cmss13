@@ -111,7 +111,6 @@
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/ovipositor_cooldown = 0
 	var/queen_ability_cooldown = 0
-	var/mob/living/carbon/Xenomorph/observed_xeno //the Xenomorph the queen is currently overwatching
 	var/egg_amount = 0 //amount of eggs inside the queen
 	var/last_larva_time = 0
 	var/screech_sound_effect = 'sound/voice/alien_queen_screech.ogg' //the noise the Queen makes when she screeches. Done this way for VV purposes.
@@ -122,6 +121,7 @@
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
@@ -144,6 +144,7 @@
 	var/list/mobile_abilities = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/plant_weeds,
 		/datum/action/xeno_action/choose_resin,
 		/datum/action/xeno_action/activable/secrete_resin,
@@ -573,22 +574,6 @@
 		canmove = FALSE
 		return canmove
 
-/mob/living/carbon/Xenomorph/Queen/reset_view(atom/A)
-	if (client)
-		if(ovipositor && observed_xeno && !stat)
-			client.perspective = EYE_PERSPECTIVE
-			client.eye = observed_xeno
-		else
-			if (istype(A, /atom/movable))
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = A
-			else
-				if (isturf(loc))
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-				else
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = loc
 
 /mob/living/carbon/Xenomorph/Queen/update_icons()
 	icon = initial(icon)
@@ -612,37 +597,6 @@
 			icon_state = "Queen Walking"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
-
-/mob/living/carbon/Xenomorph/Queen/Topic(href, href_list)
-
-	if(href_list["queentrack"])
-		if(!check_state())
-			return
-		if(!ovipositor)
-			return
-		var/mob/living/carbon/Xenomorph/target = locate(href_list["queentrack"]) in living_mob_list
-		if(!istype(target))
-			return
-		if(target.stat == DEAD || target.z == ADMIN_Z_LEVEL)
-			return
-		if(target == observed_xeno)
-			set_queen_overwatch(target, TRUE)
-		else
-			set_queen_overwatch(target)
-
-	if (href_list["watch_xeno_number"])
-		if(!check_state())
-			return
-		var/xeno_num = text2num(href_list["watch_xeno_number"])
-		for(var/mob/living/carbon/Xenomorph/X in living_mob_list)
-			if(X.z != ADMIN_Z_LEVEL && X.nicknumber == xeno_num)
-				if(observed_xeno == X)
-					set_queen_overwatch(X, TRUE)
-				else
-					set_queen_overwatch(X)
-				break
-		return
-	..()
 
 //proc to modify which xeno, if any, the queen is observing.
 /mob/living/carbon/Xenomorph/Queen/proc/set_queen_overwatch(mob/living/carbon/Xenomorph/target, stop_overwatch)

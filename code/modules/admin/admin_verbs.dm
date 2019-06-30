@@ -65,6 +65,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/adjust_predator_round,
 	/client/proc/cmd_admin_change_custom_event,
 	/client/proc/cmd_admin_rejuvenate,
+	/client/proc/cmd_admin_addhud,
 	/client/proc/toggleattacklogs,
 	/client/proc/toggledebuglogs,
 	/client/proc/togglenichelogs,

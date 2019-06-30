@@ -108,6 +108,13 @@
 	var/flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_STORE_GARB
 	var/obj/item/storage/internal/pockets
 	var/list/allowed_hat_items = list(
+						/obj/item/storage/fancy/cigarettes,
+						/obj/item/storage/fancy/cigarettes/kpack,
+						/obj/item/storage/fancy/cigarettes/lucky_strikes,
+						/obj/item/storage/fancy/cigarettes/dromedaryco,
+						/obj/item/storage/fancy/cigarettes/lady_finger,
+						/obj/item/storage/fancy/cigarettes/blackpack,
+						/obj/item/storage/fancy/cigarettes/arcturian_ace,
 						/obj/item/clothing/glasses/mgoggles = "goggles",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles")
 
@@ -118,6 +125,7 @@
 	helmet_overlays = list("item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 1
+	pockets.max_w_class = 0
 	pockets.bypass_w_limit = allowed_hat_items
 	pockets.max_storage_space = 1
 

@@ -110,6 +110,8 @@
 /datum/combat_configuration/xeno/ranged
 
 /datum/combat_configuration/xeno/melee
+	damage_initial_multiplier = 1.5
+
 
 /datum/combat_configuration/xeno/explosive
 	armor_steps = 10

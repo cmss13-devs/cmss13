@@ -100,12 +100,14 @@
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
 
-
+/obj/item/weapon/gun/energy/plasmarifle/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
 
 /obj/item/weapon/gun/energy/plasmarifle/Dispose()
+	remove_from_missing_pred_gear(src)
 	. = ..()
 	processing_objects.Remove(src)
-
 
 /obj/item/weapon/gun/energy/plasmarifle/process()
 	if(charge_time < 100)
@@ -295,6 +297,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
+	has_empty_icon = FALSE
 
 /obj/item/weapon/gun/energy/plasma_caster/New()
 	..()

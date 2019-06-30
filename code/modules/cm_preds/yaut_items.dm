@@ -111,6 +111,8 @@
 	if(slot == WEAR_FACE)
 		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
 		H.add_hud_to(user)
+		H = huds[MOB_HUD_XENO_STATUS]
+		H.add_hud_to(user)
 	..()
 
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/mob) //Clear the gogglors if the helmet is removed.
@@ -122,6 +124,8 @@
 				qdel(G)
 				mob.update_inv_glasses()
 		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_ADVANCED]
+		H.remove_hud_from(mob)
+		H = huds[MOB_HUD_XENO_STATUS]
 		H.remove_hud_from(mob)
 	add_to_missing_pred_gear(src)
 	..()
@@ -1311,7 +1315,7 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
-	force = 40
+	force = 30
 	w_class = 5
 	edge = 1
 	sharp = 1

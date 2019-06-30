@@ -30,7 +30,7 @@ var/global/datum/controller/gameticker/ticker = new()
 //	'sound/music/ColonialHalloween.ogg'
 //	'sound/music/Suspense_Explore.ogg',
 	'sound/music/Aliens_Main_Theme.ogg',
-	'sound/music/DeadSpace_Twinkle_Twinkle_Little_Star.ogg',
+	'sound/music/Boys_Are_Back_In_Town.ogg',
 	'sound/music/fortunate_son.ogg',
 	'sound/music/buffalo_springfield.ogg',
 	'sound/music/warrior_song.ogg')//The Warrior Song

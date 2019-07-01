@@ -596,7 +596,6 @@ note dizziness decrements automatically in the mob's Life() proc.
 		flags_atom &= ~DIRLOCK
 		dir = ndir
 		newdir = TRUE
-		next_move_slowdown = max(next_move_slowdown, 3)
 	if(buckled && !buckled.anchored)
 		buckled.dir = ndir
 		buckled.handle_rotation()

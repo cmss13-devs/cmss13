@@ -1709,14 +1709,15 @@
 			leader = "<b>(-L-)</b>"
 
 		var/xenoinfo
-		if(user && X != user)
+		if (user && isobserver(user))
+			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];track=\ref[X]>[X.name]</a> "
+		else if(user && X != user)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
 			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];[overwatch_target]=\ref[X];[overwatch_src]=\ref[user]>[X.name]</a> "
-		else if(user && isobserver(user))
-			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];track=\ref[X]>[X.name]</a> "
 		else
 			xenoinfo = "<tr><td>[leader]<b> You: </b>[X.name] "
+		
 		if(!X.client) xenoinfo += " <i>(SSD)</i>"
 
 		count++ //Dead players shouldn't be on this list

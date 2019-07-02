@@ -6,19 +6,28 @@
     plasma_cost = 0
     macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
 
+/datum/action/xeno_action/watch_xeno/can_use_action()
+    var/mob/living/carbon/Xenomorph/X = owner
+    if (!X.check_state(1))
+        return FALSE
+    else
+        return TRUE
+
 /datum/action/xeno_action/watch_xeno/action_activate()
     var/mob/living/carbon/Xenomorph/X = owner
-    if (!X.check_state())
+    if (!X.check_state(1))
         return FALSE
 
     var/isQueen = FALSE
     if (X.caste_name == "Queen")
         isQueen = TRUE
 
+    if(!X.hive.living_xeno_queen)
+        to_chat(X, SPAN_WARNING("There is no Queen. You are alone."))
+        return
+
     // We are already overwatching something
     if (X.observed_xeno)
-
-        to_chat(X, SPAN_XENOWARNING("You stop watching [X.observed_xeno]"))
         
         if (isQueen)
             var/mob/living/carbon/Xenomorph/oldXeno = X.observed_xeno
@@ -36,7 +45,7 @@
 
     var/mob/living/carbon/Xenomorph/selected_xeno = input(X, "Target", "Watch which xenomorph?") as null|anything in possible_xenos
 
-    if (!selected_xeno || selected_xeno.disposed || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z == ADMIN_Z_LEVEL || !X.check_state())
+    if (!selected_xeno || selected_xeno.disposed || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z == ADMIN_Z_LEVEL || !X.check_state(1))
         X.overwatch(X.observed_xeno, TRUE) // Cancel OW
     
     else if (!isQueen) // Regular Xeno OW vs Queen
@@ -50,16 +59,30 @@
         if (!selected_xeno.disposed)
             selected_xeno.hud_set_queen_overwatch()
 
-
 // Generic Xeno overwatch proc, very simple for now. If you want it to cancel the overwatch, hand in TRUE in the second var.
 // Third var is only for custom event handlers for OW hud indicators, currently only used for the Queen icon
 // If you use it, be sure to manually specify the second var, even if its the default value.
 /mob/living/carbon/Xenomorph/proc/overwatch(mob/living/carbon/Xenomorph/targetXeno, stop_overwatch = FALSE, movement_event_handler = /datum/event_handler/xeno_overwatch_onmovement)
 
     if (stop_overwatch)
+        if (observed_xeno)
+            to_chat(src, SPAN_XENOWARNING("You stop watching [observed_xeno]."))
         observed_xeno = null
     
     else
+        
+        if(!hive.living_xeno_queen)
+            to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+            return
+
+        if (targetXeno == src)
+            to_chat(src, SPAN_XENOWARNING("You can't watch yourself!"))
+            return
+
+        if (observed_xeno && targetXeno && observed_xeno == targetXeno)
+            to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
+            return
+
         observed_xeno = targetXeno 
         src.add_movement_handler(new movement_event_handler(src))
 
@@ -88,7 +111,7 @@
 // Handle HREF clicks through hive status and hivemind
 /mob/living/carbon/Xenomorph/Topic(href, href_list)
     if (XENO_OVERWATCH_TARGET_HREF)
-        if(!check_state())
+        if(!check_state(1))
             return
 
         var/isQueen = (src.caste_name == "Queen")
@@ -100,13 +123,6 @@
             return
         
         if(!istype(xenoSrc) || xenoSrc.stat == DEAD)
-            return
-
-        if (src == xenoTarget)
-            to_chat(xenoSrc, SPAN_XENOWARNING("You can't watch yourself!"))
-
-        if (xenoSrc.observed_xeno == xenoTarget)
-            to_chat(xenoSrc, SPAN_XENOWARNING("You are already watching that sister!"))
             return
 
         if (!isQueen)

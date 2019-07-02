@@ -21,7 +21,7 @@
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
 #define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
 
-#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 100 // number of players before we switch to lowpop maps only (LV, BR, Prison)
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
 /*
 Trash Authority Directives

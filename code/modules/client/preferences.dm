@@ -424,7 +424,7 @@ datum/preferences
 	dat += "</div></body></html>"
 	user << browse(dat, "window=preferences;size=670x830")
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 22, list/splitJobs = list(), width = 450, height = 650)
+/datum/preferences/proc/SetChoices(mob/user, limit = 23, list/splitJobs = list(), width = 450, height = 650)
 	if(!RoleAuthority) return
 
 	//limit 	 - The amount of jobs allowed per column. Defaults to 17 to make it look nice.
@@ -506,26 +506,7 @@ datum/preferences
 
 	user << browse(null, "window=preferences")
 	user << browse(HTML, "window=mob_occupation;size=[width]x[height]")
-	return
 
-/datum/preferences/proc/SetDisabilities(mob/user)
-	var/HTML = "<body>"
-	HTML += "<tt><center>"
-	HTML += "<b>Choose disabilities</b><br>"
-
-	HTML += "Need Glasses? <a href=\"byond://?src=\ref[user];preferences=1;disabilities=0\">[disabilities & (1<<0) ? "Yes" : "No"]</a><br>"
-	HTML += "Seizures? <a href=\"byond://?src=\ref[user];preferences=1;disabilities=1\">[disabilities & (1<<1) ? "Yes" : "No"]</a><br>"
-	HTML += "Coughing? <a href=\"byond://?src=\ref[user];preferences=1;disabilities=2\">[disabilities & (1<<2) ? "Yes" : "No"]</a><br>"
-	HTML += "Tourettes/Twitching? <a href=\"byond://?src=\ref[user];preferences=1;disabilities=3\">[disabilities & (1<<3) ? "Yes" : "No"]</a><br>"
-	HTML += "Nervousness? <a href=\"byond://?src=\ref[user];preferences=1;disabilities=4\">[disabilities & (1<<4) ? "Yes" : "No"]</a><br>"
-	HTML += "Deafness? <a href=\"byond://?src=\ref[user];preferences=1;disabilities=5\">[disabilities & (1<<5) ? "Yes" : "No"]</a><br>"
-
-	HTML += "<br>"
-	HTML += "<a href=\"byond://?src=\ref[user];preferences=1;disabilities=-2\">\[Done\]</a>"
-	HTML += "</center></tt>"
-
-	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=disabil;size=350x300")
 	return
 
 /datum/preferences/proc/SetRecords(mob/user)
@@ -551,31 +532,6 @@ datum/preferences
 
 	user << browse(null, "window=preferences")
 	user << browse(HTML, "window=records;size=350x300")
-	return
-
-/datum/preferences/proc/SetAntagoptions(mob/user)
-	if(uplinklocation == "" || !uplinklocation)
-		uplinklocation = "PDA"
-	var/HTML = "<body>"
-	HTML += "<tt><center>"
-	HTML += "<b>Antagonist Options</b> <hr />"
-	HTML += "<br>"
-	HTML +="Uplink Type : <b><a href='?src=\ref[user];preference=antagoptions;antagtask=uplinktype;active=1'>[uplinklocation]</a></b>"
-	HTML +="<br>"
-	HTML +="Exploitable information about you : "
-	HTML += "<br>"
-	if(jobban_isbanned(user, "Records"))
-		HTML += "<b>You are banned from using character records.</b><br>"
-	else
-		HTML +="<b><a href=\"byond://?src=\ref[user];preference=records;task=exploitable_record\">[TextPreview(exploit_record,40)]</a></b>"
-	HTML +="<br>"
-	HTML +="<hr />"
-	HTML +="<a href='?src=\ref[user];preference=antagoptions;antagtask=done;active=1'>\[Done\]</a>"
-
-	HTML += "</center></tt>"
-
-	user << browse(null, "window=preferences")
-	user << browse(HTML, "window=antagoptions")
 	return
 
 /datum/preferences/proc/SetFlavorText(mob/user)
@@ -906,32 +862,6 @@ datum/preferences
 						gen_record = genmsg
 						SetRecords(user)
 
-				if("exploitable_record")
-					var/exploitmsg = input(usr,"Set exploitable information about you here.","Exploitable Information",html_decode(exploit_record)) as message
-
-					if(exploitmsg != null)
-						exploitmsg = copytext(exploitmsg, 1, MAX_PAPER_MESSAGE_LEN)
-						exploitmsg = html_encode(exploitmsg)
-
-						exploit_record = exploitmsg
-						SetAntagoptions(user)
-
-		if("antagoptions")
-			if(text2num(href_list["active"]) == 0)
-				SetAntagoptions(user)
-				return
-			switch(href_list["antagtask"])
-				if ("uplinktype")
-					switch(uplinklocation)
-						if("PDA") uplinklocation = "Headset"
-						if("Headset") uplinklocation = "None"
-						else uplinklocation = "PDA"
-					SetAntagoptions(user)
-				if ("done")
-					user << browse(null, "window=antagoptions")
-					ShowChoices(user)
-			return 1
-
 	switch (href_list["task"])
 		if ("random")
 			switch (href_list["preference"])
@@ -1144,15 +1074,6 @@ datum/preferences
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
-
-				if("disabilities")
-					if(text2num(href_list["disabilities"]) >= -1)
-						if(text2num(href_list["disabilities"]) >= 0)
-							disabilities ^= (1<<text2num(href_list["disabilities"])) //MAGIC
-						SetDisabilities(user)
-						return
-					else
-						user << browse(null, "window=disabil")
 
 				if("limbs")
 					var/limb_name = input(user, "Which limb do you want to change?") as null|anything in list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand")
@@ -1518,13 +1439,13 @@ datum/preferences
 	if(backbag > 2 || backbag < 1)
 		backbag = 2 //Same as above
 	character.backbag = backbag
-	
+
 	//Debugging report to track down a bug, which randomly assigned the plural gender to people.
 	if(character.gender in list(PLURAL, NEUTER))
 		if(isliving(src)) //Ghosts get neuter by default
 			message_admins("[character] ([character.ckey]) has spawned with their gender as plural or neuter. Please notify coders.")
 			character.gender = MALE
-	
+
 
 // Transfers the character's information (name, flavor text, records, roundstart clothes, etc.) to the mob
 /datum/preferences/proc/copy_information_to(mob/living/carbon/human/character, safety = 0)

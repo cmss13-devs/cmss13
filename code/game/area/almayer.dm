@@ -6,6 +6,7 @@
 	ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
 	ceiling = CEILING_METAL
+	powernet_name = "almayer"
 
 /area/shuttle/almayer/elevator_maintenance/upperdeck
 	name = "\improper Maintenance Elevator"
@@ -414,8 +415,7 @@
 	name = "\improper Medical Research containment"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_AVOID_BIOSCAN
-	flags_atom = AREA_NOTUNNEL
+	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
 
 /area/almayer/medical/chemistry
 	name = "\improper Medical Chemical laboratory"

@@ -520,6 +520,40 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		alert("Admin revive disabled")
 	feedback_add_details("admin_verb","REJU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+
+/client/proc/cmd_admin_addhud(mob/M as mob in mob_list)
+	set category = null
+	set name = "Add HUD To"
+	if(!admin_holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	if(!mob)
+		return
+	if(!istype(M))
+		alert("Why do you need to add a HUD to a ghost?")
+		return
+
+	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
+	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in listed_huds
+	var/datum/mob_hud/H
+	switch(hud_choice)
+		if("Medical HUD")
+			H = huds[MOB_HUD_MEDICAL_ADVANCED]
+		if("Security HUD")
+			H = huds[MOB_HUD_SECURITY_ADVANCED]
+		if("Squad HUD")
+			H = huds[MOB_HUD_SQUAD]
+		if("Xeno Status HUD")
+			H = huds[MOB_HUD_XENO_STATUS]
+		else return
+
+	H.add_hud_to(M)
+	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
+	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
+	log_admin("[key_name(usr)] has given a [hud_choice] to [M].")
+
+	feedback_add_details("admin_verb","HUDT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
 	set name = "Create Command Report"

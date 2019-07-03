@@ -21,8 +21,8 @@
 #define R_MOD			16384
 #define R_MENTOR		32768
 #define R_HOST			65536
+#define R_PROFILER		131072
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
-// #define R_PERMISSION	131072
 // #define R_PERMISSION	262144
 // #define R_PERMISSION	524288
 // #define R_PERMISSION	1048576
@@ -34,8 +34,6 @@
 var/global/obj/effect/datacore/data_core = null
 
 		//items that ask to be called every cycle
-
-var/global/defer_powernet_rebuild = 0		// true if net rebuild will be called manually after an event
 
 var/global/list/global_map = null
 	//list/global_map = list(list(1,5),list(4,3))//an array of map Z levels.

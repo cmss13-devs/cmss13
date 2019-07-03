@@ -557,11 +557,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 	if(laid_down)
 		lying = 1
+		flags_atom &= ~DIRLOCK
 	else
 		lying = 0
 	if(buckled)
 		if(buckled.buckle_lying)
 			lying = 1
+			flags_atom &= ~DIRLOCK
 		else
 			lying = 0
 
@@ -589,16 +591,28 @@ note dizziness decrements automatically in the mob's Life() proc.
 
 /mob/proc/facedir(var/ndir)
 	if(!canface())	return 0
-	dir = ndir
+	var/newdir = FALSE
+	if(dir != ndir)
+		flags_atom &= ~DIRLOCK
+		dir = ndir
+		newdir = TRUE
 	if(buckled && !buckled.anchored)
 		buckled.dir = ndir
 		buckled.handle_rotation()
 	var/mob/living/mliv = src
 	if(istype(mliv))
-		mliv.on_movement(1)
+		if(newdir)
+			mliv.on_movement(0)
+		if(light)
+			light.changed()
 	return 1
 
 
+/mob/proc/set_face_dir(var/newdir)
+	if(newdir == dir && flags_atom & DIRLOCK)
+		flags_atom &= ~DIRLOCK
+	else if ( facedir(newdir) )
+		flags_atom |= DIRLOCK
 
 
 /mob/proc/IsAdvancedToolUser()//This might need a rename but it should replace the can this mob use things check

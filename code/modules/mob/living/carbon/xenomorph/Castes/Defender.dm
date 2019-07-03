@@ -48,6 +48,7 @@
 	actions = list(
 		/datum/action/xeno_action/xeno_resting,
 		/datum/action/xeno_action/regurgitate,
+		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/toggle_crest_defense,
 		/datum/action/xeno_action/activable/fortify,
 		/datum/action/xeno_action/activable/headbutt,

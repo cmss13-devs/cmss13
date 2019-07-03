@@ -33,8 +33,13 @@
 #define LIGHTING_LAYER 10									//Drawing layer for lighting overlays
 #define LIGHTING_ICON 'icons/effects/ss13_dark_alpha6.dmi'	//Icon used for lighting shading effects
 #define LIGHTING_STATES 6
+
+#define DIRECTIONAL_LUM_OFFSET		2					//Used to tweak direcitonal luminosity
+#define DIRECTIONAL_LUM_GRADIENT 	0.2					//Used to tweak direcitonal luminosity
+#define DIRECTIONAL_LUM_MULT		1.5					//how much brighter directional luminosity is in the right direction
+
 var/global/list/global_changed_lights = list()
-datum/light_source
+/datum/light_source
 	var/atom/owner
 	var/changed = 1
 	var/list/effect = list()
@@ -48,105 +53,145 @@ datum/light_source
 	var/col_b
 
 
-	New(atom/A)
-		if(!istype(A))
-			CRASH("The first argument to the light object's constructor must be the atom that is the light source. Expected atom, received '[A]' instead.")
-		..()
-		owner = A
-		readrgb(owner.l_color)
-		__x = owner.x
-		__y = owner.y
-		__z = owner.z
-		// the lighting object maintains a list of all light sources
-		global_changed_lights.Add(src)
+/datum/light_source/New(atom/A)
+	if(!istype(A))
+		CRASH("The first argument to the light object's constructor must be the atom that is the light source. Expected atom, received '[A]' instead.")
+	..()
+	owner = A
+	readrgb(owner.l_color)
+	__x = owner.x
+	__y = owner.y
+	__z = owner.z
+	// the lighting object maintains a list of all light sources
+	global_changed_lights.Add(src)
 
 
 	//Check a light to see if its effect needs reprocessing. If it does, remove any old effect and create a new one
-	proc/check()
-		if(!owner)
-			remove_effect()
-			return 1	//causes it to be removed from our list of lights. The garbage collector will then destroy it.
+/datum/light_source/proc/check()
+	if(!owner)
+		remove_effect()
+		return 1	//causes it to be removed from our list of lights. The garbage collector will then destroy it.
 /*
-		// check to see if we've moved since last update
+	// check to see if we've moved since last update
 // This is in atom/movable/Moved now so we don't check all the time
-		if(owner.x != __x || owner.y != __y || owner.z != __z)
-			__x = owner.x
-			__y = owner.y
-			__z = owner.z
-			changed = 1
+	if(owner.x != __x || owner.y != __y || owner.z != __z)
+		__x = owner.x
+		__y = owner.y
+		__z = owner.z
+		changed = 1
 */
 
 
-		if (owner.l_color != _l_color)
-			readrgb(owner.l_color)
-			changed = 1
+	if (owner.l_color != _l_color)
+		readrgb(owner.l_color)
+		changed = 1
 
-		if(changed)
-			changed = 0
-			remove_effect()
-			return add_effect()
-		return 0
+	if(changed)
+		changed = 0
+		remove_effect()
+		return add_effect()
+	return 0
 
-	proc/changed()
-		if(owner)
-			__x = owner.x
-			__y = owner.y
+/datum/light_source/proc/changed()
+	if(owner)
+		__x = owner.x
+		__y = owner.y
 
-		if(!changed)
-			changed = 1
-			global_changed_lights.Add(src)
+	if(!changed)
+		changed = 1
+		global_changed_lights.Add(src)
 
-	proc/remove_effect()
-		// before we apply the effect we remove the light's current effect.
-		for(var/turf/T in effect)	// negate the effect of this light source
-			T.update_lumcount(-effect[T], col_r, col_g, col_b, 1)
-		effect.Cut()					// clear the effect list
+/datum/light_source/proc/remove_effect()
+	// before we apply the effect we remove the light's current effect.
+	for(var/turf/T in effect)	// negate the effect of this light source
+		T.update_lumcount(-effect[T], col_r, col_g, col_b, 1)
+	effect.Cut()					// clear the effect list
 
-	proc/add_effect()
-		// only do this if the light is turned on and is on the map
-		if(owner.loc && owner.luminosity > 0)
-			readrgb(owner.l_color)
-			effect = list()
+/datum/light_source/proc/add_effect()
+	// only do this if the light is turned on and is on the map
+	if(owner.loc && owner.luminosity > 0)
+		readrgb(owner.l_color)
+		effect = list()
+
+		if(owner.directional_lum) //Directional luminosity for humans. Implemented for CM-SS13
+			var/gradient = DIRECTIONAL_LUM_GRADIENT * owner.luminosity
+			switch(owner.dir)
+				if(NORTH)
+					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
+						lum_directional(T, T.y-owner.y, gradient)
+				if(SOUTH)
+					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
+						lum_directional(T, owner.y-T.y, gradient)
+				if(EAST)
+					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
+						lum_directional(T, T.x-owner.x, gradient)
+				if(WEST)
+					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
+						lum_directional(T, owner.x-T.x, gradient)
+				else
+					for(var/turf/T in view(owner.get_light_range(),owner))
+						lum(T)
+		else
 			for(var/turf/T in view(owner.get_light_range(),owner))
-				var/delta_lumen = lum(T)
-				if(delta_lumen > 0)
-					effect[T] = delta_lumen
-					T.update_lumcount(delta_lumen, col_r, col_g, col_b, 0)
+				lum(T)
+		return 0
+	else
+		owner.light = null
+		return 1	//cause the light to be removed from the lights list and garbage collected once it's no
+					//longer referenced by the queue
 
-			return 0
-		else
-			owner.light = null
-			return 1	//cause the light to be removed from the lights list and garbage collected once it's no
-						//longer referenced by the queue
 
-	proc/lum(turf/A)
-		if (owner.trueLuminosity < 1)
-			return 0
-		var/dist
-		if(!A)
-			dist = 0
-		else
+/datum/light_source/proc/lum(var/turf/T)
+	var/dist
+	if(!T)
+		dist = 0
+	else
 #ifdef LIGHTING_CIRCULAR
-			dist = cheap_hypotenuse(A.x, A.y, __x, __y)
+		dist = cheap_hypotenuse(T.x, T.y, __x, __y)
 #else
-			dist = max(abs(A.x - __x), abs(A.y - __y))
+		dist = max(abs(T.x - __x), abs(T.y - __y))
 #endif
-		return (owner.luminosity - dist)
+	var/delta_lumen = owner.luminosity - dist
+	if(delta_lumen > 0)
+		effect[T] = delta_lumen
+		T.update_lumcount(delta_lumen, col_r, col_g, col_b, 0)
 
-	proc/readrgb(col)
-		_l_color = col
-		if(col)
-			col_r = GetRedPart(col)
-			col_g = GetGreenPart(col)
-			col_b = GetBluePart(col)
-		else
-			col_r = null
+
+/datum/light_source/proc/lum_directional(var/turf/T, var/modifier, var/gradient)
+	if(modifier < -1) //more than one tile behind the light source. Would likely not be lit up even if calculated
+		return
+	modifier = min(0, modifier-DIRECTIONAL_LUM_OFFSET) * gradient
+	var/dist
+	if(!T)
+		dist = 0
+	else
+#ifdef LIGHTING_CIRCULAR
+		dist = cheap_hypotenuse(T.x, T.y, __x, __y)
+#else
+		dist = max(abs(T.x - __x), abs(T.y - __y))
+#endif
+	var/delta_lumen = (owner.luminosity - dist + modifier) * DIRECTIONAL_LUM_MULT
+	if(delta_lumen > 0)
+		effect[T] = delta_lumen
+		T.update_lumcount(delta_lumen, col_r, col_g, col_b, 0)
+
+
+
+/datum/light_source/proc/readrgb(col)
+	_l_color = col
+	if(col)
+		col_r = GetRedPart(col)
+		col_g = GetGreenPart(col)
+		col_b = GetBluePart(col)
+	else
+		col_r = null
 
 /atom
 	var/datum/light_source/light
 	var/trueLuminosity = 0  // Typically 'luminosity' squared.  The builtin luminosity must remain linear.
 	                        // We may read it, but NEVER set it directly.
 	var/l_color
+	var/directional_lum = 0
 
 //Turfs with opacity when they are constructed will trigger nearby lights to update
 //Turfs and atoms with luminosity when they are constructed will create a light_source automatically
@@ -491,3 +536,5 @@ datum/light_source
 #undef LIGHTING_MAX_LUMINOSITY_STATIC
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
+#undef DIRECTIONAL_LUM_OFFSET
+#undef DIRECTIONAL_LUM_MULT

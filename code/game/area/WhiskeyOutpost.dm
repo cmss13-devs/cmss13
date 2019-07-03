@@ -3,6 +3,7 @@
 	icon = 'icons/turf/area_whiskey.dmi'
 	icon_state = "outside"
 	ceiling = CEILING_METAL
+	powernet_name = "ground"
 
 /*
 |***INSIDE AREAS***|

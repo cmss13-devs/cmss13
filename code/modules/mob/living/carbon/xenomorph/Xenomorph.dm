@@ -33,12 +33,6 @@
 	icon_state = "Drone Walking"
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
-	var/armor_deflection_buff = 0
-	var/armor_explosive_buff = 0
-	var/armor_integrity = 100
-	var/armor_integrity_max = 100
-	var/armor_integrity_last_damage_time = 0
-	var/armor_integrity_immunity_time = 0
 	attacktext = "claws"
 	attack_sound = null
 	friendly = "nuzzles"
@@ -54,6 +48,18 @@
 	unacidable = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/datum/mutator_set/individual_mutators/mutators = new
+
+		
+	// Armor
+	var/armor_deflection_buff = 0
+	var/armor_explosive_buff = 0
+	var/armor_integrity = 100
+	var/armor_integrity_max = 100
+	var/armor_integrity_last_damage_time = 0
+	var/armor_integrity_immunity_time = 0
+
+	// Overwatched xeno for xeno hivemind vision
+	var/mob/living/carbon/Xenomorph/observed_xeno
 
 	//Variables that can be mutated
 	health = 5
@@ -463,7 +469,7 @@
 	hive.totalXenos -= src
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
-		hive.living_xeno_queen.set_queen_overwatch(src, TRUE)
+		hive.living_xeno_queen.set_queen_overwatch(src, TRUE) // This is actually totally extraneous as this is handled in the life proc anyways.
 	if(src in hive.xeno_leader_list)
 		hive.xeno_leader_list -= src
 	. = ..()

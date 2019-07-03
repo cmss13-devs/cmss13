@@ -7,7 +7,6 @@
 	density = 1
 	anchored = 1
 	flags_atom = OPENCONTAINER
-	volume = 100
 	throwpass = 1
 	layer = BELOW_OBJ_LAYER
 
@@ -223,13 +222,6 @@
 	// First, handle an open system or an unconnected closed system.
 
 	var/turf/T = loc
-
-	// Process it.
-	if(pressure < seed.lowkpa_tolerance || pressure > seed.highkpa_tolerance)
-		health -= healthmod
-
-	if(abs(temperature - seed.ideal_heat) > seed.heat_tolerance)
-		health -= healthmod
 
 	// If we're attached to a pipenet, then we should let the pipenet know we might have modified some gasses
 	if (closed_system && connected_port)
@@ -702,7 +694,7 @@
 				else
 					light_available =  5
 
-			to_chat(usr, "The tray's sensor suite is reporting a light level of [light_available] lumens and a temperature of [temperature]K.")
+			to_chat(usr, "The tray's sensor suite is reporting a light level of [light_available] lumens.")
 
 /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid()
 	set name = "Toggle Tray Lid"

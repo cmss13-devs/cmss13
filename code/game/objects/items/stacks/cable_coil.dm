@@ -174,13 +174,6 @@
 		C.add_fingerprint(user)
 		C.updateicon()
 
-		C.powernet = new()
-		powernets += C.powernet
-		C.powernet.cables += C
-
-		C.mergeConnectedNetworks(C.d2)
-		C.mergeConnectedNetworksOnTurf()
-
 
 		use(1)
 		if (C.shock(user, 50))
@@ -237,11 +230,6 @@
 			NC.add_fingerprint()
 			NC.updateicon()
 
-			if(C.powernet)
-				NC.powernet = C.powernet
-				NC.powernet.cables += NC
-				NC.mergeConnectedNetworks(NC.d2)
-				NC.mergeConnectedNetworksOnTurf()
 			use(1)
 			if (NC.shock(user, 50))
 				if (prob(50)) //fail
@@ -275,11 +263,6 @@
 
 		C.add_fingerprint()
 		C.updateicon()
-
-
-		C.mergeConnectedNetworks(C.d1)
-		C.mergeConnectedNetworks(C.d2)
-		C.mergeConnectedNetworksOnTurf()
 
 		use(1)
 		if (C.shock(user, 50))

@@ -54,7 +54,6 @@
 	if(do_newscast)
 		NewsCast(message, message_title)
 	Sound(message_sound, to_xenos)
-	Log(message, message_title)
 
 /datum/announcement/proc/Message(message as text, message_title as text, var/to_xenos = 0)
 	for(var/mob/M in player_list)
@@ -138,11 +137,6 @@
 
 /datum/announcement/priority/command/Sound(var/message_sound, var/to_xenos = 0)
 	PlaySound(message_sound, to_xenos)
-
-/datum/announcement/proc/Log(message as text, message_title as text)
-	if(log)
-		log_say("[key_name(usr)] has made \a [announcement_type]: [message_title] - [message] - [announcer]")
-		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)
 
 /proc/GetNameAndAssignmentFromId(var/obj/item/card/id/I)
 	// Format currently matches that of newscaster feeds: Registered Name (Assigned Rank)

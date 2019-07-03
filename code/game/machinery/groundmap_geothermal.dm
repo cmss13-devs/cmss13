@@ -58,7 +58,7 @@
 		if(!connect_to_network())
 			powernet_connection_failed = 1 //God damn it, where'd our network go
 			is_on = 0
-			stop_processing()
+			stop_processing_power()
 			spawn(150) // Error! Check again in 15 seconds. Someone could have blown/acided or snipped a cable
 				powernet_connection_failed = 0
 	else if(powernet) //All good! Let's fire it up!
@@ -90,7 +90,7 @@
 		power_gen_percent = 0
 		update_icon()
 		cur_tick = 0
-		stop_processing()
+		stop_processing_power()
 		return 1
 	return 0 //Nope, all fine
 
@@ -122,13 +122,13 @@
 		power_gen_percent = 0
 		cur_tick = 0
 		icon_state = "off"
-		stop_processing()
+		stop_processing_power()
 		return 1
 	visible_message("\icon[src] <span class='warning'><b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")
 	icon_state = "on10"
 	is_on = 1
 	cur_tick = 0
-	start_processing()
+	start_processing_power()
 	return 1
 
 /obj/machinery/power/geothermal/attackby(var/obj/item/O as obj, var/mob/user as mob)
@@ -209,7 +209,7 @@
 		floodlist += F
 		F.fswitch = src
 	..()
-	start_processing()
+	start_processing_power()
 
 /obj/machinery/colony_floodlight_switch/update_icon()
 	if(!ispowered)

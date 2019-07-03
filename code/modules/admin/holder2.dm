@@ -29,6 +29,9 @@ var/list/admin_datums = list()
 		owner.admin_holder = src
 		owner.add_admin_verbs()	//TODO
 		admins |= C
+		if(owner.admin_holder.rights & R_PROFILER)
+			if(!world.GetConfig("admin", C.ckey))
+				world.SetConfig("APP/admin", C.ckey, "role = coder")
 
 /datum/admins/proc/disassociate()
 	if(owner)

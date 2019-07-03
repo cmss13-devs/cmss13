@@ -128,7 +128,6 @@
 	if(admin_holder)
 		admins += src
 		admin_holder.owner = src
-
 	//preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum)
 	prefs = preferences_datums[ckey]
 	if(!prefs || isnull(prefs) || !istype(prefs))
@@ -136,7 +135,7 @@
 		preferences_datums[ckey] = prefs
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-
+	fps = prefs.fps
 	. = ..()	//calls mob.Login()
 
 	// Version check below if we ever need to start checking against BYOND versions again.

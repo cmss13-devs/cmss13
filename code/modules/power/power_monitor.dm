@@ -16,12 +16,12 @@
 
 /obj/machinery/power/monitor/New()
 	..()
-	var/obj/structure/cable/attached = null
-	var/turf/T = loc
-	if(isturf(T))
-		attached = locate() in T
-	if(attached)
-		powernet = attached.get_powernet()
+	//var/obj/structure/cable/attached = null
+	//var/turf/T = loc
+	//if(isturf(T))
+		//attached = locate() in T
+	//if(attached)
+	//	powernet = attached.get_powernet()
 
 /obj/machinery/power/monitor/attack_ai(mob/user)
 	add_fingerprint(user)

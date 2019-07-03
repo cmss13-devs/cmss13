@@ -55,7 +55,7 @@
 	if(speaking && !forced) 
 		if (copytext(message,1,2) == ";")
 			message = trim(copytext(message,2))
-		else if (copytext(message,1,3) == ":a")
+		else if (copytext(message,1,3) == ":a" || copytext(message,1,3) == ":A")
 			message = trim(copytext(message,3))
 
 	message = capitalize(trim_left(message))
@@ -92,20 +92,15 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
-	var/rendered
-	if(isXenoQueen(src))
-		rendered = "<font size='3' font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> <span class='message'> hisses, '[message]'</span></span></i></font>"
-	else if(src in hive.xeno_leader_list)
-		rendered = "<font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> <span class='message'> hisses, '[message]'</span></span></i></font>"
-	else if(caste.is_robotic)
-		var/message_b = pick("high-pitched blast of static","series of pings","long string of numbers","loud, mechanical squeal", "series of beeps")
-		rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> emits a [message_b]!</span></i>"
-	else
-		rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> <span class='message'> hisses, '[message]'</span></span></i>"
-	log_hivemind("[key_name(src)] : [message]")
+
+	log_hivemind("[key_name(src)] : [message]")	
 
 	var/track = ""
+	var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
+	var/overwatch_src = XENO_OVERWATCH_SRC_HREF
+	var/overwatch_insert = ""
 	var/ghostrend
+	var/rendered
 
 	for (var/mob/S in player_list)
 		if(!isnull(S) && (isXeno(S) || S.stat == DEAD) && !istype(S,/mob/new_player))
@@ -119,8 +114,19 @@
 					else
 						ghostrend = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [track]<span class='message'> hisses, '[message]'</span></span></i>"
 					S.show_message(ghostrend, 2)
-			else if(S != src && S == hive.living_xeno_queen && hive.living_xeno_queen.ovipositor)
-				var/queenrend = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> (<a href='byond://?src=\ref[S];queentrack=\ref[src]'>watch</a>)<span class='message'> hisses, '[message]'</span></span></i>"
-				S.show_message(queenrend, 2)
+
 			else if(hivenumber == xeno_hivenumber(S))
+				overwatch_insert = "(<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
+
+				if(isXenoQueen(src))
+					rendered = "<font size='3' font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]<span class='message'> hisses, '[message]'</span></span></i></font>"
+				else if(src in hive.xeno_leader_list)
+					rendered = "<font color='purple'><i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]<span class='message'> hisses, '[message]'</span></span></i></font>"
+				else if(caste.is_robotic)
+					var/message_b = pick("high-pitched blast of static","series of pings","long string of numbers","loud, mechanical squeal", "series of beeps")
+					rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]emits a [message_b]!</span></i>"
+				else
+					rendered = "<i><span class='game say'>Hivemind, <span class='name'>[name]</span> [overwatch_insert]<span class='message'> hisses, '[message]'</span></span></i>"
+				
 				S.show_message(rendered, 2)
+				

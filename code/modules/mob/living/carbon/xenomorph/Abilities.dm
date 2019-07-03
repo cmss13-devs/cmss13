@@ -159,6 +159,8 @@
 		if(RESIN_NEST)
 			X.selected_resin = RESIN_STICKY
 		if(RESIN_STICKY)
+			X.selected_resin = RESIN_FAST
+		if(RESIN_FAST)
 			X.selected_resin = RESIN_DOOR
 		else
 			return //something went wrong
@@ -890,6 +892,7 @@
 		X.start_dig.tunnel_desc = "[msg]"
 
 	X.use_plasma(plasma_cost)
+	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))
 	playsound(X.loc, 'sound/weapons/pierce.ogg', 25, 1)
 
 
@@ -1014,28 +1017,6 @@
 		log_say("PsychicWhisper: [key_name(X)]->[M.key] : [msg]")
 		to_chat(M, "<span class='alien'>You hear a strange, alien voice in your head. \italic \")[msg]\"</span>")
 		to_chat(X, SPAN_XENONOTICE("You said: \")[msg]\" to [M]"))
-
-/datum/action/xeno_action/watch_xeno
-	name = "Watch Xenomorph"
-	action_icon_state = "watch_xeno"
-	plasma_cost = 0
-	macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
-
-/datum/action/xeno_action/watch_xeno/action_activate()
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	if(!X.check_state())
-		return
-	var/list/possible_xenos = list()
-	for(var/mob/living/carbon/Xenomorph/T in living_mob_list)
-		if(T.z != ADMIN_Z_LEVEL && T.caste != "Queen" && X.hivenumber == T.hivenumber)
-			possible_xenos += T
-
-	var/mob/living/carbon/Xenomorph/selected_xeno = input(X, "Target", "Watch which xenomorph?") as null|anything in possible_xenos
-	if(!selected_xeno || selected_xeno.disposed || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z == ADMIN_Z_LEVEL || !X.check_state())
-		if(X.observed_xeno)
-			X.set_queen_overwatch(X.observed_xeno, TRUE)
-	else
-		X.set_queen_overwatch(selected_xeno)
 
 /datum/action/xeno_action/toggle_queen_zoom
 	name = "Toggle Queen Zoom"

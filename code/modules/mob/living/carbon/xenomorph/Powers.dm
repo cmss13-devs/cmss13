@@ -1060,11 +1060,8 @@
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
 		return
 
-	if(istype(T, /turf/open/space))
-		to_chat(src, SPAN_XENOWARNING("You can't tunnel there!"))
-		return
-
-	if(get_area(T).flags_atom & AREA_NOTUNNEL)
+	var/area/A = get_area(T)
+	if (A.flags_atom & AREA_NOTUNNEL)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 
@@ -1527,6 +1524,8 @@
 			new_resin = new /obj/structure/bed/nest(current_turf)
 		if(RESIN_STICKY)
 			new_resin = new /obj/effect/alien/resin/sticky(current_turf)
+		if(RESIN_FAST)
+			new_resin = new /obj/effect/alien/resin/sticky/fast(current_turf)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 
@@ -1710,12 +1709,15 @@
 			leader = "<b>(-L-)</b>"
 
 		var/xenoinfo
-		if(user && anchored && X != user)
-			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];watch_xeno_number=[X.nicknumber]>[X.name]</a> "
-		else if(user && isobserver(user))
+		if (user && isobserver(user))
 			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];track=\ref[X]>[X.name]</a> "
+		else if(user && X != user)
+			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
+			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
+			xenoinfo = "<tr><td>[leader]<a href=?src=\ref[user];[overwatch_target]=\ref[X];[overwatch_src]=\ref[user]>[X.name]</a> "
 		else
-			xenoinfo = "<tr><td>[leader][X.name] "
+			xenoinfo = "<tr><td>[leader]<b> You: </b>[X.name] "
+		
 		if(!X.client) xenoinfo += " <i>(SSD)</i>"
 
 		count++ //Dead players shouldn't be on this list

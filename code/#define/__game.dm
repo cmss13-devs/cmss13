@@ -14,12 +14,14 @@
 #define MAIN_AI_SYSTEM "ARES v3.2"
 #define MAIN_SHIP_ESCAPE_POD_NUMBER 18
 
-#define MAP_ICE_COLONY "Ice Colony"
+#define MAP_ICE_COLONY "Ice Colony" // Highpop only
 #define MAP_LV_624 "LV-624"
 #define MAP_BIG_RED "Solaris Ridge"
 #define MAP_PRISON_STATION "Prison Station"
-#define MAP_WHISKEY_OUTPOST "Whiskey Outpost"
-#define MAP_DESERT_DAM "Trijent Dam"
+#define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
+#define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
+
+#define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
 /*
 Trash Authority Directives

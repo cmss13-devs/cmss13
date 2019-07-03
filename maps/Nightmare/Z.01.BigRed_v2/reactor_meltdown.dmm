@@ -16,59 +16,12 @@
 "ac" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"ad" = (
-/obj/effect/landmark{
-	name = "crap_item"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"ae" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "af" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/airlock/almayer/secure{
 	name = "\improper Engineering Secure Storage";
 	req_access = list()
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"ag" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -136,11 +89,6 @@
 /area/bigredv2/outside/engineering)
 "au" = (
 /obj/structure/largecrate/random,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "av" = (
@@ -162,31 +110,6 @@
 /area/bigredv2/outside/engineering)
 "ay" = (
 /obj/structure/closet/firecloset/full,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"az" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"aA" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aB" = (
@@ -241,27 +164,11 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"aJ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "aK" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -271,11 +178,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aM" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -315,11 +217,6 @@
 /area/bigredv2/outside/engineering)
 "aR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Lockers";
@@ -331,7 +228,6 @@
 /obj/machinery/power/apc{
 	start_charge = 0
 	},
-/obj/structure/cable,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aT" = (
@@ -352,38 +248,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 6
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"aX" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aY" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/green,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "aZ" = (
@@ -449,26 +317,12 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"bh" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "bi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/mask/breath,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bj" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /obj/item/stack/sheet/metal,
 /turf/open/floor,
@@ -517,19 +371,8 @@
 /area/bigredv2/outside/engineering)
 "bp" = (
 /obj/item/folder/yellow,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -537,12 +380,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/machinery/door/airlock/almayer/engineering{
 	dir = 4;
@@ -557,12 +394,6 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bs" = (
@@ -570,23 +401,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
-/area/bigredv2/outside/engineering)
-"bt" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bu" = (
 /obj/machinery/door/airlock/almayer/engineering{
@@ -612,11 +429,6 @@
 /area/bigredv2/outside/engineering)
 "by" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -755,31 +567,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"bW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
 	},
@@ -808,34 +599,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"cb" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"cc" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"cd" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/item/stack/sheet/glass,
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "ce" = (
 /obj/item/tool/lighter/random,
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -852,11 +615,6 @@
 	},
 /area/bigredv2/outside/engineering)
 "cg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -865,36 +623,6 @@
 "ch" = (
 /obj/effect/landmark{
 	name = "crap_item"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"ci" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/engineering)
-"cj" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -914,11 +642,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cn" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/almayer/secure{
 	dir = 1;
 	name = "\improper Engine Reactor";
@@ -948,12 +671,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cs" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -978,23 +695,7 @@
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/engineering)
-"cu" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/engineering)
 "cv" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engine Reactor Control";
@@ -1003,11 +704,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cw" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
@@ -1048,20 +744,9 @@
 /obj/structure/sign/safety/high_radiation{
 	pixel_x = 32
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "cC" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1081,11 +766,6 @@
 	},
 /obj/structure/sign/safety/high_radiation{
 	pixel_x = -32
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -1116,43 +796,10 @@
 /obj/item/tool/extinguisher,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
-"cJ" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 9
-	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/engineering)
 "cK" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor,
-/area/bigredv2/outside/engineering)
-"cL" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
 /area/bigredv2/outside/engineering)
 "cM" = (
 /turf/open/mars,
@@ -1172,14 +819,6 @@
 "cP" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"cQ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "cR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -1193,44 +832,7 @@
 	icon_state = "mars_dirt_13"
 	},
 /area/bigredv2/outside/sw)
-"cU" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"cV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 5
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
-"cW" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/engineering)
 "cX" = (
-/obj/structure/cable{
-	tag = "icon-4-8";
-	icon_state = "4-8";
-	d2 = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -1247,16 +849,6 @@
 	icon_state = "mars_dirt_5"
 	},
 /area/bigredv2/outside/sw)
-"cZ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/engineering)
 "da" = (
 /turf/closed/wall/mineral/uranium,
 /area/bigredv2/outside/engineering)
@@ -1282,25 +874,6 @@
 /area/bigredv2/outside/sw)
 "df" = (
 /obj/machinery/power/port_gen/pacman,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"dg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"dh" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "di" = (
@@ -1370,20 +943,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"ds" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/dirt{
-	acid_damage = 1;
-	icon_state = "greenglow";
-	luminosity = 1;
-	name = "glowing goo"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "dt" = (
 /turf/open/mars{
 	tag = "icon-mars_dirt_13";
@@ -1399,17 +958,6 @@
 "dv" = (
 /obj/machinery/power/turbine,
 /turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
-"dw" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
 /area/bigredv2/outside/engineering)
 "dx" = (
 /obj/effect/decal/cleanable/dirt{
@@ -1427,7 +975,6 @@
 	name = "Reactor Turbine";
 	power_generation_max = 1e+006
 	},
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "dz" = (
@@ -1440,31 +987,12 @@
 	icon_state = "mars_dirt_4"
 	},
 /area/bigredv2/outside/s)
-"dB" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/molten_item,
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "dC" = (
 /turf/open/mars{
 	tag = "icon-mars_dirt_10";
 	icon_state = "mars_dirt_10"
 	},
 /area/bigredv2/outside/s)
-"dD" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/catwalk/bigred,
-/turf/open/gm/river/desert/shallow/covered,
-/area/bigredv2/outside/engineering)
 "dE" = (
 /obj/structure/window_frame/colony/reinforced,
 /turf/open/floor/plating,
@@ -1598,21 +1126,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"ea" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt{
-	acid_damage = 1;
-	icon_state = "greenglow";
-	luminosity = 1;
-	name = "glowing goo"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "eb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt{
@@ -1629,21 +1142,6 @@
 /obj/structure/catwalk/bigred,
 /turf/open/gm/river/desert/shallow/covered,
 /area/bigredv2/outside/engineering)
-"ed" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/effect/decal/cleanable/dirt{
-	acid_damage = 1;
-	icon_state = "greenglow";
-	luminosity = 1;
-	name = "glowing goo"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/engineering)
 "ee" = (
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating,
@@ -1654,15 +1152,6 @@
 	dir = 4
 	},
 /turf/open/gm/river,
-/area/bigredv2/outside/engineering)
-"eg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
 "eh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1747,34 +1236,8 @@
 /obj/effect/decal/cleanable/molten_item,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering)
-"es" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/engineering)
 "et" = (
 /obj/structure/bed/chair/office/light,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/bigredv2/outside/engineering)
-"eu" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -1934,12 +1397,12 @@
 (1,1,1) = {"
 aa
 at
-aJ
+bg
 aR
-bh
+ai
 bp
 by
-bt
+ai
 bX
 ah
 cx
@@ -1969,7 +1432,7 @@ ab
 ab
 ab
 ab
-aX
+an
 bz
 aj
 bY
@@ -2001,7 +1464,7 @@ au
 aK
 aS
 ab
-aX
+an
 aj
 bO
 aj
@@ -2028,12 +1491,12 @@ dR
 dR
 "}
 (4,1,1) = {"
-ad
+ch
 av
 aj
 ah
 ab
-aX
+an
 bA
 bP
 bZ
@@ -2060,7 +1523,7 @@ dR
 dR
 "}
 (5,1,1) = {"
-ae
+ah
 aw
 aL
 aT
@@ -2097,7 +1560,7 @@ ab
 ab
 ab
 ab
-aX
+an
 aj
 ah
 ca
@@ -2124,7 +1587,7 @@ dV
 dR
 "}
 (7,1,1) = {"
-ae
+ah
 ax
 ab
 aU
@@ -2132,15 +1595,15 @@ aj
 br
 bB
 aj
-cb
+ah
 cn
 cB
 cn
-cQ
-dw
-dw
-cU
-dg
+cP
+ez
+ez
+cR
+cR
 cP
 eh
 eh
@@ -2156,15 +1619,15 @@ dS
 dR
 "}
 (8,1,1) = {"
-ag
+ah
 ay
 ab
 aV
 aj
-aX
+an
 aj
 aj
-cc
+aj
 aq
 aq
 aq
@@ -2172,7 +1635,7 @@ db
 cR
 cR
 eH
-es
+ew
 cR
 eh
 eh
@@ -2189,14 +1652,14 @@ dR
 "}
 (9,1,1) = {"
 ah
-az
+ah
 aF
 aW
-bh
+ai
 bs
 aj
 ew
-cd
+bB
 co
 co
 dk
@@ -2204,7 +1667,7 @@ cS
 dj
 dj
 cS
-dD
+ec
 dj
 dj
 dj
@@ -2221,14 +1684,14 @@ dR
 "}
 (10,1,1) = {"
 bC
-az
+ah
 aF
-aX
+an
 bi
 ez
 ez
 cf
-es
+ew
 cp
 ew
 dr
@@ -2236,7 +1699,7 @@ dj
 dj
 eO
 cS
-dD
+ec
 cS
 eO
 dj
@@ -2253,14 +1716,14 @@ dR
 "}
 (11,1,1) = {"
 ai
-aA
+ap
 aM
 aY
 bj
-bt
-bt
+ai
+ai
 cg
-ci
+cg
 cw
 ew
 dE
@@ -2268,7 +1731,7 @@ dj
 dj
 dj
 dj
-dD
+ec
 cS
 dj
 dj
@@ -2300,7 +1763,7 @@ dj
 dj
 da
 cS
-dD
+ec
 cS
 da
 dj
@@ -2332,7 +1795,7 @@ aq
 cS
 cS
 cS
-dD
+ec
 cS
 ef
 cS
@@ -2364,7 +1827,7 @@ dE
 cS
 da
 cS
-dD
+ec
 ev
 aq
 em
@@ -2389,14 +1852,14 @@ aq
 bF
 bS
 ai
-cJ
+bs
 et
 eD
 bD
 cS
 cS
 cS
-dh
+cP
 ew
 ek
 eq
@@ -2421,15 +1884,15 @@ bu
 aj
 bT
 aj
-az
+ah
 ew
 eE
 dr
 cS
 da
 cS
-eu
-dB
+ew
+ee
 dy
 ez
 er
@@ -2460,7 +1923,7 @@ dr
 cS
 cS
 cS
-es
+ew
 ew
 ey
 ez
@@ -2485,14 +1948,14 @@ aq
 bG
 bU
 ct
-es
+ew
 ew
 cq
 dE
 dj
 da
 cS
-dD
+ec
 dz
 aq
 eA
@@ -2524,7 +1987,7 @@ aq
 dj
 dj
 cS
-dD
+ec
 cS
 el
 cS
@@ -2549,14 +2012,14 @@ aj
 aj
 di
 aj
-az
+ah
 ew
 dr
 cS
 dj
 eO
 dj
-dD
+ec
 cS
 da
 cS
@@ -2581,14 +2044,14 @@ bv
 bv
 ah
 aj
-cL
+ez
 ew
 dr
 dj
 dj
 dj
 dj
-dD
+ec
 cS
 cS
 cS
@@ -2613,14 +2076,14 @@ aE
 bH
 ah
 ch
-es
+ew
 ew
 dE
 cS
 dj
 eO
 cS
-dD
+ec
 cS
 da
 cS
@@ -2644,15 +2107,15 @@ aD
 bI
 ce
 aj
-cu
-cZ
+ew
+ew
 cD
 aq
 cS
 dj
 dj
 dj
-dD
+ec
 cS
 cS
 cS
@@ -2676,7 +2139,7 @@ bo
 bo
 bJ
 ah
-az
+ah
 aq
 aq
 aq
@@ -2684,7 +2147,7 @@ dq
 dZ
 dZ
 dZ
-ed
+dZ
 dZ
 ew
 ez
@@ -2708,15 +2171,15 @@ ai
 ai
 bg
 bV
-cj
+ah
 cn
 cE
 cn
-ds
-ea
-ea
-cU
-eg
+dZ
+eh
+eh
+cR
+cR
 eh
 eb
 ep
@@ -2803,13 +2266,13 @@ as
 as
 aq
 bM
-bW
-bh
-bh
-bh
-bh
-bh
-cV
+ao
+ai
+ai
+ai
+ai
+ai
+am
 aq
 as
 as
@@ -2841,7 +2304,7 @@ bR
 cF
 aT
 aj
-cW
+an
 aq
 as
 as

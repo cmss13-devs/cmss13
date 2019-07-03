@@ -4,6 +4,7 @@
 	voice_name = "unknown"
 	icon = 'icons/mob/human.dmi'
 	icon_state = "body_m_s"
+	directional_lum = 1 //humans carrying light sources only illuminate the area in front of themselves
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPCHEM_HUD,IMPTRACK_HUD, SPECIALROLE_HUD, SQUAD_HUD)
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/regenZ = 1 //Temp zombie thing until I write a better method ~Apop
@@ -71,7 +72,7 @@
 
 		if(assigned_squad)
 			if(assigned_squad.overwatch_officer)
-				stat("Overwatch Officer: ", "[assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]") 
+				stat("Overwatch Officer: ", "[assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]")
 			if(assigned_squad.primary_objective)
 				stat("Primary Objective: ", assigned_squad.primary_objective)
 			if(assigned_squad.secondary_objective)
@@ -1071,7 +1072,7 @@
 
 	for(var/datum/internal_organ/I in internal_organs)
 		I.damage = 0
-		
+
 	if (!keep_viruses)
 		for (var/datum/disease/virus in viruses)
 			if (istype(virus, /datum/disease/black_goo))
@@ -1509,7 +1510,7 @@
 						same_arm_side = TRUE
 						continue
 				to_splint.Add(l)
-		
+
 		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
 		if(to_splint.len)
 			if(do_after(HS, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, HT, INTERRUPT_MOVED, BUSY_ICON_GENERIC))

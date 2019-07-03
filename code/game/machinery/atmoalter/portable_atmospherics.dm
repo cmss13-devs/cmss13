@@ -2,16 +2,8 @@
 	name = "atmoalter"
 	use_power = 0
 
-	var/gas_type = GAS_TYPE_AIR
-	var/pressure = ONE_ATMOSPHERE
-	var/temperature = T20C
-
 	var/obj/machinery/atmospherics/portables_connector/connected_port
-
-	var/volume = 0
 	var/destroyed = 0
-
-	var/maximum_pressure = 90*ONE_ATMOSPHERE
 
 
 /obj/machinery/portable_atmospherics/initialize()
@@ -87,12 +79,7 @@
 	else if ((istype(W, /obj/item/device/analyzer)) && Adjacent(user))
 		visible_message(SPAN_DANGER("[user] has used [W] on \icon[icon]"))
 		to_chat(user, SPAN_NOTICE(" Results of analysis of \icon[icon]"))
-		if (pressure>0)
-			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
-			to_chat(user, SPAN_NOTICE(" [gas_type]: [100]%"))
-			to_chat(user, SPAN_NOTICE(" Temperature: [round(temperature-T0C)]&deg;C"))
-		else
-			to_chat(user, SPAN_NOTICE(" Tank is empty!"))
+		to_chat(user, SPAN_NOTICE(" Tank is empty!"))
 
 
 

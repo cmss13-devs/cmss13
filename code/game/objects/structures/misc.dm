@@ -5,6 +5,30 @@
 	desc = "A stand with the empty body of a cyborg bolted to it."
 	density = 1
 	anchored = 1
+	health = 250
+
+/obj/structure/showcase/bullet_act(var/obj/item/projectile/P)
+	var/damage = P.damage
+	health -= damage
+	..()
+	healthcheck()
+	return 1
+
+/obj/structure/showcase/proc/explode()
+	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), 1)
+	var/turf/Tsec = get_turf(src)
+
+	new /obj/item/stack/sheet/metal(Tsec)
+	new /obj/item/stack/rods(Tsec)
+	new /obj/item/stack/rods(Tsec)
+
+	new /obj/effect/spawner/gibspawner/robot(Tsec)
+
+	qdel(src)
+
+/obj/structure/showcase/proc/healthcheck()
+	if(health <= 0)
+		explode()
 
 /obj/structure/showcase/ex_act(severity)
 	switch(severity)

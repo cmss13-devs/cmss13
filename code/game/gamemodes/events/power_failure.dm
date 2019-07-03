@@ -71,3 +71,17 @@
 	sleep(100)
 	if(announce)
 		command_announcement.Announce("Power has been restored. Reason: Unknown.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')
+
+/proc/power_restore_ship_reactors(var/announce = 1)
+	for(var/obj/machinery/power/fusion_engine/FE in machines)
+		FE.buildstate = 0
+		FE.is_on = 1
+		FE.fusion_cell = new
+		FE.power_gen_percent = 98
+		FE.update_icon()
+		FE.start_processing_power()
+		FE.power_change()
+
+	sleep(100)
+	if(announce)
+		command_announcement.Announce("Power has been restored. Reason: Unknown.", "Power Systems Nominal", new_sound = 'sound/AI/poweron.ogg')

@@ -26,15 +26,6 @@ var/list/datum/pipe_network/pipe_networks = list()
 /datum/subsystem/pipenet/Initialize()
 	for (var/obj/machinery/atmospherics/machine in atmos_machines)
 		machine.build_network()
-
-		if (istype(machine, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/T = machine
-			T.broadcast_status()
-
-		else if (istype(machine, /obj/machinery/atmospherics/unary/vent_scrubber))
-			var/obj/machinery/atmospherics/unary/vent_scrubber/T = machine
-			T.broadcast_status()
-
 	..()
 
 /datum/subsystem/pipenet/fire(resumed = FALSE)

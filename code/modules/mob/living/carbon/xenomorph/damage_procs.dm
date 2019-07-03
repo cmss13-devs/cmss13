@@ -67,7 +67,7 @@
 	updatehealth()
 	return 1
 
-#define XENO_ARMOR_BREAK_PASS_TIME 2
+#define XENO_ARMOR_BREAK_PASS_TIME SECONDS_1 / 2
 #define XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME SECONDS_2
 
 /mob/living/carbon/Xenomorph/var/armor_break_to_apply = 0
@@ -101,7 +101,7 @@
 
 /mob/living/carbon/Xenomorph/proc/post_apply_armorbreak()
 	set waitfor = 0
-	sleep(2)
+	sleep(XENO_ARMOR_BREAK_PASS_TIME)
 	if(warding_aura && armor_break_to_apply > 0) //Damage to armor reduction
 		armor_break_to_apply = round(armor_break_to_apply * ((100 - (warding_aura * 15)) / 100))
 	var/old_integrity = armor_integrity

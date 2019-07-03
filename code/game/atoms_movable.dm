@@ -82,6 +82,8 @@
 		last_move_dir = get_dir(oldloc, loc)
 	if(.)
 		Moved(oldloc,direct)
+	else if(directional_lum && light && dir != old_dir) //for objects with directional light that were blocked from moving, but still rotated
+		light.changed()
 
 
 
@@ -265,7 +267,7 @@
 				hit_check(speed,hit_living)
 				error += dist_y
 				stepx++
-				if(stepy) 
+				if(stepy)
 					stepx--
 					stepy--
 					stepdiag++

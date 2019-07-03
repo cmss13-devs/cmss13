@@ -10,11 +10,6 @@
 /area/bigredv2/outside/nw)
 "d" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "warnplate"
@@ -54,11 +49,6 @@
 /area/bigredv2/outside/nw)
 "k" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "l" = (
@@ -76,12 +66,6 @@
 	},
 /area/bigredv2/outside/nw)
 "p" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -92,12 +76,6 @@
 	},
 /area/bigredv2/outside/nw)
 "q" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -108,12 +86,6 @@
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -121,31 +93,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "s" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/bigredv2/outside/nw)
-"t" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "u" = (
@@ -333,7 +281,7 @@ b
 l
 j
 j
-t
+q
 j
 j
 j
@@ -345,7 +293,7 @@ b
 f
 j
 j
-t
+q
 j
 j
 x
@@ -357,7 +305,7 @@ b
 l
 j
 j
-t
+q
 j
 j
 j
@@ -369,7 +317,7 @@ b
 j
 j
 j
-t
+q
 j
 v
 w
@@ -381,7 +329,7 @@ b
 j
 j
 j
-t
+q
 j
 j
 j

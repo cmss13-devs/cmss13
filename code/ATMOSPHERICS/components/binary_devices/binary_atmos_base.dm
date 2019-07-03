@@ -1,3 +1,13 @@
+#define DEFAULT_PRESSURE_DELTA 10000
+
+#define EXTERNAL_PRESSURE_BOUND ONE_ATMOSPHERE
+#define INTERNAL_PRESSURE_BOUND 0
+#define PRESSURE_CHECKS 1
+
+#define PRESSURE_CHECK_EXTERNAL 1
+#define PRESSURE_CHECK_INPUT 2
+#define PRESSURE_CHECK_OUTPUT 4
+
 /obj/machinery/atmospherics/binary
 	dir = SOUTH
 	initialize_directions = SOUTH|NORTH

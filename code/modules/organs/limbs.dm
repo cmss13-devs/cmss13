@@ -157,7 +157,7 @@
 
 	var/damage = armor_damage_reduction(config.marine_organ_damage, brute, armor, sharp ? ARMOR_SHARP_INTERNAL_PENETRATION : 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
-	if(internal_organs && prob(damage))
+	if(internal_organs && prob(2*damage/3))
 		//Damage an internal organ
 		var/datum/internal_organ/I = pick(internal_organs)
 		I.take_damage(brute / 2)
@@ -172,7 +172,7 @@
 	if(owner.mind && owner.mind.cm_skills)
 		armor += owner.mind.cm_skills.endurance*5
 
-	var/damage = armor_damage_reduction(config.marine_organ_damage, brute*2, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+	var/damage = armor_damage_reduction(config.marine_organ_damage, brute*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
 	if(brute_dam > min_broken_damage * config.organ_health_multiplier && prob(damage*2))
 		fracture()
@@ -275,7 +275,7 @@
 		if(!(body_part == HEAD && istype(H) && !isSynth(owner)) \
 			&& config.limbs_can_break && brute_dam >= max_damage * config.organ_health_multiplier
 		)
-			var/cut_prob = brute/max_damage * 10
+			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				droplimb()
 				return
@@ -348,7 +348,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(owner.mind && owner.mind.cm_skills)
 		armor += owner.mind.cm_skills.endurance*5
 	
-	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, damage, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
+	var/damage_ratio = armor_damage_reduction(config.marine_organ_damage, 2*damage/3, armor, 0, 0, 0, max_damage ? (100*(max_damage - brute_dam) / max_damage) : 100)
 	if(prob(damage_ratio) && damage > 10)
 		var/datum/wound/internal_bleeding/I = new (min(damage - 10, 15))
 		wounds += I

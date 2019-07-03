@@ -462,19 +462,6 @@
 /obj/machinery/power/apc{
 	dir = 1
 	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bl" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bm" = (
@@ -482,39 +469,8 @@
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"bn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bo" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "bp" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/green,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bq" = (
@@ -522,24 +478,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/light,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"br" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bs" = (
@@ -558,50 +497,9 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"bu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "bv" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/green{
 	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bx" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -638,38 +536,9 @@
 /obj/item/device/megaphone,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"bC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "bD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bG" = (
@@ -708,28 +577,8 @@
 	dir = 4
 	},
 /area/bigredv2/outside/cargo)
-"bL" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cargo_container{
-	tag = "icon-WY 0,0";
-	icon_state = "gorg 0,0"
-	},
-/turf/open/floor{
-	icon_state = "bot";
-	dir = 1
-	},
-/area/bigredv2/outside/cargo)
 "bM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/largecrate/random/barrel,
 /turf/open/floor{
 	icon_state = "bot";
@@ -773,37 +622,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 5
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
-"bT" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/green{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bU" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
@@ -817,12 +638,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 4;
 	layer = 2.4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
 	},
 /obj/structure/cargo_container{
 	tag = "icon-WY 0,0";
@@ -839,18 +654,6 @@
 	layer = 2.4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/cargo_container{
 	tag = "icon-WY 0,0";
 	icon_state = "gorg 2,0"
@@ -866,12 +669,6 @@
 	layer = 2.4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
-	},
 /obj/structure/cargo_container{
 	tag = "icon-WY 0,0";
 	icon_state = "gorg 0,0"
@@ -884,11 +681,6 @@
 "bY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green{
 	dir = 9
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /obj/structure/cargo_container{
 	tag = "icon-WY 0,0";
@@ -978,11 +770,6 @@
 /area/bigredv2/outside/cargo)
 "cm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
 	health = 25000
@@ -1026,11 +813,6 @@
 /obj/structure/table,
 /obj/effect/spawner/random/bomb_supply,
 /obj/effect/spawner/random/bomb_supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ct" = (
@@ -1064,22 +846,9 @@
 /area/bigredv2/outside/engineering)
 "cx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/green,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/engineering)
-"cy" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/closed/wall/r_wall,
 /area/bigredv2/outside/engineering)
 
 (1,1,1) = {"
@@ -1093,7 +862,7 @@ aE
 ai
 ai
 ai
-bn
+ax
 by
 ai
 ai
@@ -1114,7 +883,7 @@ ac
 ac
 ac
 ac
-bn
+ax
 ac
 bH
 aB
@@ -1135,7 +904,7 @@ ac
 aY
 bf
 ac
-bn
+ax
 ac
 ac
 ac
@@ -1156,7 +925,7 @@ ac
 aZ
 bg
 ac
-bo
+aI
 bb
 bI
 ad
@@ -1177,7 +946,7 @@ ac
 ba
 bh
 ac
-bn
+ax
 ac
 af
 bP
@@ -1240,7 +1009,7 @@ ac
 af
 ac
 ac
-bn
+ax
 bA
 ac
 ae
@@ -1261,7 +1030,7 @@ ac
 bc
 aX
 ac
-bn
+ax
 bB
 ac
 ac
@@ -1282,10 +1051,10 @@ ac
 bd
 aO
 ac
-br
-bC
-bC
-bC
+aI
+ad
+ad
+ad
 bS
 af
 ac
@@ -1307,9 +1076,9 @@ ax
 ac
 ac
 ac
-bT
-bC
-bC
+aI
+ad
+ad
 cm
 cx
 "}
@@ -1365,11 +1134,11 @@ ac
 ac
 ai
 bk
-bl
-bu
-bE
-bL
-bl
+ac
+af
+bD
+bf
+ac
 bW
 af
 ac
@@ -1409,9 +1178,9 @@ aD
 ad
 au
 bv
-bF
+au
 bM
-bC
+ad
 bY
 ac
 ac
@@ -1429,7 +1198,7 @@ ac
 ac
 ac
 af
-bw
+bs
 ac
 bN
 am
@@ -1450,7 +1219,7 @@ ac
 ai
 ac
 bm
-bx
+ax
 ac
 ac
 ac
@@ -1471,7 +1240,7 @@ ak
 ai
 ac
 ac
-bx
+ax
 bG
 bO
 ac
@@ -1479,5 +1248,5 @@ bZ
 cd
 cd
 ct
-cy
+cv
 "}

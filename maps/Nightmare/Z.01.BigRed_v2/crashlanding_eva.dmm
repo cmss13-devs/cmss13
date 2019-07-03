@@ -415,6 +415,7 @@
 /area/bigredv2/outside/general_offices)
 "bt" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
 	icon_state = "rasputin3"
@@ -1638,6 +1639,14 @@
 	icon_state = "panelscorched"
 	},
 /area/bigredv2/outside/general_offices)
+"Zt" = (
+/obj/structure/bed/chair/dropship/passenger,
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/general_offices)
 
 (1,1,1) = {"
 aa
@@ -2148,7 +2157,7 @@ cm
 bj
 bj
 bj
-bj
+Zt
 bj
 aS
 bk

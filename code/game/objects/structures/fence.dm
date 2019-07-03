@@ -91,21 +91,21 @@
 
 /obj/structure/fence/attackby(obj/item/W, mob/user)
 
-	if(istype(W, /obj/item/stack/rods) && health < health_max)
+	if(istype(W, /obj/item/stack/barbed_wire) && health < health_max)
 		if(user.mind && user.mind.cm_skills && user.mind.cm_skills.construction < SKILL_CONSTRUCTION_PLASTEEL)
-			to_chat(user, "<span class='warning'>You don't have the skill needed to fix [src]'s wiring.")
+			to_chat(user, SPAN_WARNING("You don't have the skill needed to fix [src]'s wiring."))
 			return
-		var/obj/item/stack/rods/R = W
+		var/obj/item/stack/barbed_wire/R = W
 		var/amount_needed = 2
 		if(health)
 			amount_needed = 1
 		if(R.amount >= amount_needed)
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src] with [R]."),
-			"<span class='notice'>You start repairing [src] with [R]")
+			SPAN_NOTICE("You start repairing [src] with [R]."))
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				if(R.amount < amount_needed)
-					to_chat(user, "<span class='warning'>You need more metal rods to repair [src].")
+					to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
 					return
 				R.use(amount_needed)
 				health = health_max
@@ -114,10 +114,22 @@
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [R]."),
-				"<span class='notice'>You repair [src] with [R]")
+				SPAN_NOTICE("You repair [src] with [R]."))
 				return
 		else
-			to_chat(user, "<span class='warning'>You need more metal rods to repair [src].")
+			to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
+			return
+
+	if(istype(W, /obj/item/tool/wirecutters) && cut)
+		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
+		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
+		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			new /obj/item/stack/rods(loc)
+			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
+			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
+			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
+			qdel(src)
 			return
 
 	if(cut) //Cut/brokn grilles can't be messed with further than this
@@ -152,12 +164,12 @@
 
 	if(istype(W, /obj/item/tool/wirecutters))
 		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
-		"<span class='notice'>You start cutting through [src] with [W]")
+		SPAN_NOTICE("You start cutting through [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
-			"<span class='notice'>You cut through [src] with [W]")
+			SPAN_NOTICE("You cut through [src] with [W]."))
 			cut_grille()
 		return
 	else
@@ -169,9 +181,10 @@
 		healthcheck(1, 1, user, W)
 		..()
 
-/obj/structure/fence/proc/cut_grille(var/create_debris = 1)
-	if(create_debris)
-		new /obj/item/stack/rods(loc)
+/obj/structure/fence/proc/cut_grille()
+	if(prob(75))
+		new /obj/item/stack/barbed_wire(loc)
+	health = 0
 	cut = 1
 	density = 0
 	update_icon() //Make it appear cut through!

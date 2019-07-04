@@ -115,6 +115,7 @@
 						/obj/item/storage/fancy/cigarettes/lady_finger,
 						/obj/item/storage/fancy/cigarettes/blackpack,
 						/obj/item/storage/fancy/cigarettes/arcturian_ace,
+						/obj/item/clothing/glasses/welding ="welding-c",
 						/obj/item/clothing/glasses/mgoggles = "goggles",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles")
 

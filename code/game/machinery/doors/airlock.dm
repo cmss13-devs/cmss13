@@ -111,7 +111,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/not_weldable = 0 // stops people welding the door if true
 
 	var/damage = 0
-	var/damage_cap = 500 // Airlock gets destroyed
+	var/damage_cap = 800 // Airlock gets destroyed
 
 /obj/machinery/door/airlock/bumpopen(mob/living/user as mob) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(istype(user) && !issilicon(user))
@@ -1026,6 +1026,31 @@ About the new airlock wires panel:
 		return src.attack_hand(user)
 	else if(istype(C, /obj/item/device/assembly/signaler))
 		return src.attack_hand(user)
+	else if(istype(C, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/G = C
+		if(istype(G.muzzle, /obj/item/attachable/bayonet))
+			if(arePowerSystemsOn())
+				to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+			else if(locked)
+				to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
+			else if(welded)
+				to_chat(user, SPAN_WARNING("The airlock is welded shut."))
+			else if(!operating)
+				spawn(0)
+					if(density)
+						to_chat(user, SPAN_NOTICE("You start forcing the airlock open with the bayonet."))
+						if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+							open(1)
+					else
+						to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with the bayonet."))
+						if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+							close(1)
+					if(rand(0,9) < 1)
+						G.muzzle = null
+						G.update_attachable("muzzle")
+						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
+						to_chat(user, SPAN_DANGER("Your bayonet breaks!"))
+					
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && src.p_open && (operating == -1 || (density && welded && operating != 1 && !src.arePowerSystemsOn() && !src.locked)) )
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)
@@ -1082,7 +1107,7 @@ About the new airlock wires panel:
 			to_chat(user, SPAN_WARNING("The airlock is welded shut."))
 		else if(C.pry_capable == IS_PRY_CAPABLE_FORCE)
 			return FALSE //handled by the item's afterattack
-		else if(!operating )
+		else if(!operating)
 			spawn(0)
 				if(density)
 					open(1)

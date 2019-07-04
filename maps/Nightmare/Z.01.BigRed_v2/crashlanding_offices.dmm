@@ -1260,6 +1260,7 @@
 /area/bigredv2/outside/office_complex)
 "dH" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/PMC,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -1502,6 +1503,44 @@
 /obj/item/tool/lighter/random,
 /turf/open/floor{
 	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/office_complex)
+"qX" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/PMC,
+/obj/item/disk/objective,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"rF" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/PMC,
+/obj/item/document_objective/folder,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin3";
+	icon_state = "rasputin3"
+	},
+/area/bigredv2/outside/office_complex)
+"yS" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
+	},
+/area/bigredv2/outside/office_complex)
+"Qc" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_cl,
+/turf/open/shuttle/dropship{
+	tag = "icon-rasputin15";
+	icon_state = "rasputin15"
 	},
 /area/bigredv2/outside/office_complex)
 
@@ -1819,7 +1858,7 @@ bc
 bc
 bc
 bc
-dB
+rF
 dF
 bk
 cu
@@ -1844,7 +1883,7 @@ bp
 bp
 bp
 bp
-bp
+Qc
 bp
 bp
 dG
@@ -1867,7 +1906,7 @@ aV
 bm
 bk
 bk
-bk
+yS
 bk
 cu
 bk
@@ -1892,7 +1931,7 @@ aP
 aW
 bc
 bn
-dB
+qX
 dE
 dE
 dE

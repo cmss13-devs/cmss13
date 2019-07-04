@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - maptweak: "Added more food vendors to the canteens, rearranged it a bit."

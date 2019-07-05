@@ -1019,6 +1019,8 @@
 		if (world.timeofday > burrow_timer && !tunnel)
 			burrow = 0
 			burrow_off()
+		if (observed_xeno)
+			overwatch(observed_xeno, TRUE)
 		sleep(10)	// Process every second.
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()

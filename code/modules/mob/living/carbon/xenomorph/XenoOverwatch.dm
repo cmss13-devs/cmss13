@@ -83,6 +83,11 @@
             to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
             return
 
+        if (caste_name != "Queen" && is_zoomed)
+            zoom_out()
+            visible_message(SPAN_NOTICE("[src] stops looking off into the distance."), \
+            SPAN_NOTICE("You stop looking off into the distance."), null, 5)
+
         observed_xeno = targetXeno 
         src.add_movement_handler(new movement_event_handler(src))
 

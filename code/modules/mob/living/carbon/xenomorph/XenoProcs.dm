@@ -96,15 +96,18 @@
 	return 1
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/Xenomorph/proc/check_state(var/whilelying = 0)
-	if(!whilelying)
+/mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
+	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return 0
+		else if (!(caste_name == "Queen") && observed_xeno)
+			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 	else
 		if(is_mob_incapacitated() || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return 0
+		
 	return 1
 
 //Checks your plasma levels and gives a handy message.

@@ -10159,7 +10159,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/cichallway)
 "azV" = (
-/obj/structure/table/almayer,
+/obj/structure/table/reinforced,
 /obj/machinery/computer/shuttle_control/dropship2{
 	dir = 4
 	},
@@ -10169,16 +10169,22 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "azW" = (
 /obj/machinery/door/window/westright{
 	dir = 1
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "azX" = (
-/obj/structure/table/almayer,
+/obj/structure/table/reinforced,
 /obj/machinery/computer/shuttle_control/dropship1{
 	dir = 8
 	},
@@ -10188,7 +10194,10 @@
 /obj/structure/window/reinforced/toughened{
 	dir = 1
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "azZ" = (
 /obj/machinery/keycard_auth,
@@ -10361,7 +10370,7 @@
 /obj/machinery/computer/communications{
 	dir = 4
 	},
-/obj/structure/table/almayer,
+/obj/structure/table/reinforced,
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
@@ -10370,7 +10379,10 @@
 	icon_state = "intact-supply";
 	dir = 4
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aAC" = (
 /obj/structure/bed/chair/office/dark{
@@ -10387,10 +10399,13 @@
 	icon_state = "intact-scrubbers";
 	dir = 6
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aAD" = (
-/obj/structure/table/almayer,
+/obj/structure/table/reinforced,
 /obj/machinery/door_control{
 	id = "Hangar Lockdown";
 	name = "Hangar Lockdown";
@@ -10429,7 +10444,10 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aAE" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -11013,12 +11031,15 @@
 /obj/machinery/computer/station_alert{
 	dir = 4
 	},
-/obj/structure/table/almayer,
+/obj/structure/table/reinforced,
 /obj/structure/window/reinforced/toughened{
 	dir = 8
 	},
 /obj/structure/window/reinforced/toughened,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aCa" = (
 /obj/machinery/door/window/westright{
@@ -11030,18 +11051,24 @@
 	icon_state = "intact-scrubbers";
 	dir = 1
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aCb" = (
 /obj/machinery/computer/security/almayer_network{
 	dir = 8
 	},
-/obj/structure/table/almayer,
+/obj/structure/table/reinforced,
 /obj/structure/window/reinforced/toughened{
 	dir = 4
 	},
 /obj/structure/window/reinforced/toughened,
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/command/cic)
 "aCd" = (
 /obj/structure/disposalpipe/segment{

@@ -105,17 +105,8 @@
 
 		switch(M.a_intent)
 			if("help")
-
 				if(on_fire)
-					fire_stacks = max(fire_stacks - 1, 0)
-					playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-					M.visible_message(SPAN_DANGER("[M] tries to put out the fire on [src]!"), \
-						SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
-					if(fire_stacks <= 0)
-						M.visible_message(SPAN_DANGER("[M] has successfully extinguished the fire on [src]!"), \
-							SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
-						ExtinguishMob()
-					return 1
+					extinguish_mob(M)
 				else
 					M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
 					SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5)

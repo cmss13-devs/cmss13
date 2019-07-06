@@ -440,7 +440,7 @@
 	name = "electronics pouch"
 	desc = "It is designed to hold most electronics, power cells and circuitboards."
 	icon_state = "electronics"
-	storage_slots = 5
+	storage_slots = 6
 	can_hold = list(
 		/obj/item/circuitboard,
 		/obj/item/cell
@@ -448,7 +448,6 @@
 
 /obj/item/storage/pouch/electronics/full/New()
 	..()
-	new /obj/item/circuitboard/airlock (src)
 	new /obj/item/circuitboard/apc (src)
 	new /obj/item/cell/high (src)
 

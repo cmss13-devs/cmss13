@@ -16,8 +16,11 @@
 	switch(M.a_intent)
 
 		if("help")
-			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
-			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5)
+			if(on_fire)
+				extinguish_mob(M)
+			else
+				M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+				SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5)
 
 		if("grab")
 			if(M == src || anchored || buckled)
@@ -155,7 +158,7 @@
 
 			apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_hit", 25, 1)				
+				playsound(loc, "acid_hit", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(config.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works

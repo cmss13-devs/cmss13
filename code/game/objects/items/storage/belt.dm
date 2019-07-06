@@ -168,7 +168,6 @@
 	..()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/quickclot(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexP(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/Oxycodone(src)

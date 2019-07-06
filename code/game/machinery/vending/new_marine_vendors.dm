@@ -121,7 +121,7 @@
 
 		var/prod_available = FALSE
 		var/avail_flag = myprod[4]
-		if((!avail_flag && m_points >= p_cost) || (buy_flags & avail_flag))
+		if(m_points >= p_cost && (!avail_flag || buy_flags & avail_flag))
 			prod_available = TRUE
 
 								//place in main list, name, cost, available or not, color.
@@ -1059,7 +1059,7 @@
 
 		list("MISCELLANEOUS AND SPECIAL", 0, null, null, null),
 		list("Motion Detector", 15, /obj/item/device/motiondetector, null, "black"),
-		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, null, "black"),
+		list("Barrel Charger", 45, /obj/item/attachable/heavy_barrel, MARINE_CAN_BUY_ATTACHMENT, "black"),
 	)
 
 

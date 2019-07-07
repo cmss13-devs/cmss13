@@ -191,7 +191,7 @@
 
 /turf/closed/wall/indestructible/splashscreen
 	name = "Lobby Art"
-	desc = "Assorted artworks by NicBoone & Triiodine. Holiday artwork by Monkeyfist."
+	desc = "Assorted artworks by NicBoone & Triiodine. Holiday artwork by Monkeysfist."
 	icon = 'icons/misc/title.dmi'
 	icon_state = "title_painting1"
 //	icon_state = "title_holiday"

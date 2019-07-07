@@ -215,37 +215,15 @@ datum/game_mode/proc/initialize_special_clamps()
 			wants_elder = 0
 
 	new_predator = new(wants_elder|wants_leader ? pick(pred_elder_spawn) : pick(pred_spawn))
-	new_predator.set_species("Yautja")
-
 	new_predator.mind_initialize()
-	new_predator.mind.assigned_role = "MODE"
-	new_predator.mind.special_role = "Predator"
 	new_predator.key = pred_candidate.key
 	new_predator.mind.key = new_predator.key
 	if(new_predator.client) new_predator.client.change_view(world.view)
 
 	if(!new_predator.client.prefs) new_predator.client.prefs = new /datum/preferences(new_predator.client) //Let's give them one.
-	//They should have these set, but it's possible they don't have them.
-	new_predator.real_name = new_predator.client.prefs.predator_name
-	new_predator.gender = new_predator.client.prefs.predator_gender
-	new_predator.age = new_predator.client.prefs.predator_age
 
-	if(!new_predator.real_name || new_predator.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
-		new_predator.real_name = "Le'pro"
-		spawn(9)
-			to_chat(new_predator, SPAN_WARNING("You forgot to set your name in your preferences. Please do so next time."))
-
-	var/armor_number = new_predator.client.prefs.predator_armor_type
-	var/boot_number = new_predator.client.prefs.predator_boot_type
-	var/mask_number = new_predator.client.prefs.predator_mask_type
-
-	new_predator.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(new_predator, boot_number), WEAR_FEET)
 	if(wants_elder)
-		new_predator.real_name = "Elder [new_predator.real_name]"
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number, 1), WEAR_JACKET)
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number, 1), WEAR_FACE)
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(new_predator, armor_number), WEAR_BACK)
-		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
+		arm_equipment(new_predator, "Yautja Elder")
 
 		spawn(10)
 			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Elder!</B>"))
@@ -254,19 +232,14 @@ datum/game_mode/proc/initialize_special_clamps()
 			to_chat(new_predator, SPAN_NOTICE("You come equipped as an Elder should, with a bonus glaive and heavy armor."))
 
 	else if(wants_leader)
-		new_predator.real_name = "Councillor [new_predator.real_name]"
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
-		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
+		arm_equipment(new_predator, "Yautja Councillor")
 
 		spawn(10)
 			to_chat(new_predator, SPAN_NOTICE("<B> Welcome Councillor!</B>"))
 			to_chat(new_predator, SPAN_NOTICE("You are responsible for the well-being of your pupils. Hunting is secondary in priority."))
 			to_chat(new_predator, SPAN_NOTICE("That does not mean you can't go out and show the youngsters how it's done."))
 	else
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(new_predator, armor_number), WEAR_JACKET)
-		new_predator.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(new_predator, mask_number), WEAR_FACE)
-		new_predator.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(new_predator), WEAR_WAIST)
+		arm_equipment(new_predator, "Yautja Blooded")
 
 		spawn(12)
 			to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))

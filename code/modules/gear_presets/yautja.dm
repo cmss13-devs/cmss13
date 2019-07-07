@@ -5,6 +5,10 @@
 	idtype = null //No IDs for Yautja!
 	languages = list("Sainja")
 	faction = "Yautja"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/yautja/load_race(mob/living/carbon/human/H)
+	H.set_species("Yautja")
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/H)
 	//No ID for preds!
@@ -14,6 +18,125 @@
 
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/H)
 	return //No vanity items for Yautja!
+
+/datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
+	H.real_name = "Le'pro"
+	H.gender = MALE
+	H.age = 100
+
+	if(H.client && H.client.prefs)
+		H.gender = H.client.prefs.predator_gender
+		H.age = H.client.prefs.predator_age
+		H.real_name = H.client.prefs.predator_name
+		if(!H.real_name || H.real_name == "Undefined") //In case they don't have a name set or no prefs, there's a name.
+			H.real_name = "Le'pro"
+	if(H.mind)
+		H.mind.name = H.real_name
+
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/blooded
+	name = "Yautja Blooded"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/yautja/blooded/load_gear(mob/living/carbon/human/H)
+	var/armor_number = 1
+	var/boot_number = 1
+	var/mask_number = 1
+	if(H.client && H.client.prefs)
+		armor_number = H.client.prefs.predator_armor_type
+		boot_number = H.client.prefs.predator_boot_type
+		mask_number = H.client.prefs.predator_mask_type
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(H, boot_number), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(H, armor_number), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H, mask_number), WEAR_FACE)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/blooded/councillor
+	name = "Yautja Councillor"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/yautja/blooded/councillor/load_name(mob/living/carbon/human/H, var/randomise)
+	. = ..()
+	H.real_name = "Councillor " + H.real_name
+	if(H.mind)
+		H.mind.name = H.real_name
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/elder
+	name = "Yautja Elder"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+	var/elder_number = 0 //overwriting elder gear
+
+/datum/equipment_preset/yautja/elder/load_name(mob/living/carbon/human/H, var/randomise)
+	. = ..()
+	H.real_name = "Elder " + H.real_name
+	if(H.mind)
+		H.mind.name = H.real_name
+
+/datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/H)
+	var/armor_number = 1
+	var/boot_number = 1
+	var/mask_number = 1
+	if(H.client && H.client.prefs)
+		armor_number = H.client.prefs.predator_armor_type
+		boot_number = H.client.prefs.predator_boot_type
+		mask_number = H.client.prefs.predator_mask_type
+	if(elder_number)
+		armor_number = elder_number
+		mask_number = elder_number
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/weapon/yautja_knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(H, boot_number), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(H, armor_number, 1), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H, mask_number, 1), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H, armor_number), WEAR_BACK)
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/elder/dragon
+	name = "Yautja Elder, Dragon"
+	flags = EQUIPMENT_PRESET_EXTRA
+	elder_number = 1341 //overwriting elder gear
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/elder/horror
+	name = "Yautja Elder, Swamp Horror"
+	flags = EQUIPMENT_PRESET_EXTRA
+	elder_number = 7128 //overwriting elder gear
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/elder/enforcer
+	name = "Yautja Elder, Enforcer"
+	flags = EQUIPMENT_PRESET_EXTRA
+	elder_number = 9867 //overwriting elder gear
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/yautja/elder/collector
+	name = "Yautja Elder, Ambivalent Collector"
+	flags = EQUIPMENT_PRESET_EXTRA
+	elder_number = 4879 //overwriting elder gear
 
 /*****************************************************************************************************/
 
@@ -43,11 +166,11 @@
 
 /*****************************************************************************************************/
 
-/datum/equipment_preset/yautja/elder
-	name = "Yautja Elder"
+/datum/equipment_preset/yautja/elder_geared
+	name = "Yautja Elder, geared up"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-/datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/yautja/elder_geared/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
 	var/obj/item/clothing/gloves/yautja/bracer = new(H)

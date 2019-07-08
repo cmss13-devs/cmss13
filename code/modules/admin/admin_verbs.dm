@@ -46,6 +46,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/check_antagonists,
 	/client/proc/admin_memo,			/*admin memo system. show/delete/write. +SERVER needed to delete admin memos of others*/
 	/client/proc/dsay,					/*talk in deadchat using our ckey/fakekey*/
+	/client/proc/xooc,					// Xeno OOC
+	/client/proc/mooc,					// Marine OOC
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	// /client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/

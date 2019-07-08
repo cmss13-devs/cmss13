@@ -108,3 +108,7 @@
 #define SPAN_CENTERBOLD(X) "<span class='centerbold'>[X]</span>"
 
 #define SPAN_INFO(X) "<span class='info'>[X]</span>"
+
+#define SPAN_XOOC(X) "<span class='xooc'>[X]</span>"
+
+#define SPAN_MOOC(X) "<span class='mooc'>[X]</span>"

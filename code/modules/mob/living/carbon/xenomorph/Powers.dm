@@ -1648,6 +1648,10 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+
 	if(isXenoQueen(src) && anchored)
 		check_hive_status(src, anchored)
 	else

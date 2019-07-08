@@ -546,6 +546,8 @@ updatehealth()
 /mob/living/carbon/Xenomorph/handle_stunned()
 	if(stunned)
 		AdjustStunned(-2)
+	if(interference)
+		interference -= 2
 	return stunned
 
 /mob/living/carbon/Xenomorph/handle_knocked_down()

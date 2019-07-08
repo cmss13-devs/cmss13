@@ -26,7 +26,7 @@
 	icon_state = "pred_mask1"
 	item_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -63,6 +63,16 @@
 			if(4879)
 				name = "\improper 'Mask of the Ambivalent Collector'"
 				icon_state = "pred_mask_elder_n"
+
+/obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
+	set name = "Toggle Mask Zoom"
+	set desc = "Toggle your mask's zoom function."
+	set category = "Yautja"
+
+	if(!usr || usr.stat) 
+		return
+	
+	zoom(usr, 11, 12)
 
 /obj/item/clothing/mask/gas/yautja/verb/togglesight()
 	set name = "Toggle Mask Visors"
@@ -148,7 +158,7 @@
 	sprite_sheet_id = 1
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_HIGH
@@ -176,7 +186,7 @@
 
 	if(elder_restricted)
 		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+		armor_bullet = CLOTHING_ARMOR_HIGH
 		armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 		armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 		armor_bomb = CLOTHING_ARMOR_HIGH
@@ -212,15 +222,15 @@
 	name = "heavy clan armor"
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
 	icon_state = "fullarmor"
-	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|HEAD|LEGS
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_HIGH
+	armor_energy = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
@@ -374,15 +384,15 @@
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 	unacidable = 1
 	var/obj/item/weapon/gun/energy/plasma_caster/caster
-	var/charge = 2000
-	var/charge_max = 2000
+	var/charge = 3000
+	var/charge_max = 3000
 	var/cloaked = 0
 	var/blades_active = 0
 	var/caster_active = 0
 	var/exploding = 0
 	var/inject_timer = 0
 	var/cloak_timer = 0
-	var/upgrades = 0
+	var/upgrades = 2 //Set to two, so admins can give preds shittier ones for young blood events or whatever.
 	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
 
@@ -601,14 +611,10 @@
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("You can't hold that!"))
 			return
-		var/obj/item/weapon/wristblades/scimitar/W
 		var/obj/item/weapon/wristblades/N
-		W = new /obj/item/weapon/wristblades/scimitar
 		N = new /obj/item/weapon/wristblades
 
-		if(upgrades > 2)
-			user.put_in_active_hand(W)
-		else user.put_in_active_hand(N)
+		user.put_in_active_hand(N)
 		blades_active = 1
 		to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
@@ -751,7 +757,7 @@
 		O.show_message("[user.name] shimmers into existence!",1)
 	playsound(user.loc,'sound/effects/pred_cloakoff.ogg', 15, 1)
 	user.alpha = initial(user.alpha)
-	cloak_timer = 10
+	cloak_timer = 5
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(user)
@@ -1089,11 +1095,7 @@
 
 	spawn(10)
 		if(!drain_power(usr,50)) return //At this point they've upgraded.
-		var/mob/Q
-		for(Q in hearers(usr))
-			if(Q.stat == 1) continue //Unconscious
-			if(isXeno(Q) && upgrades != 2) continue
-			to_chat(Q, SPAN_INFO("A strange voice says,</span> <span class='rough'>'[msg]'."))
+		visible_message("A strange voice says, <span class='rough'>'[msg]'.</span>")
 	return 1
 
 //=================//\\=================\\
@@ -1315,11 +1317,11 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
-	force = 30
+	force = 33
 	w_class = 5
 	edge = 1
 	sharp = 1
-	flags_item = NOSHIELD|NODROP
+	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
 	flags_equip_slot = NOFLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
@@ -1364,16 +1366,6 @@
 	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
 		Y.wristblades()
 
-/obj/item/weapon/wristblades/scimitar
-	name = "wrist scimitar"
-	desc = "An enormous serrated blade that extends from the gauntlet."
-	icon = 'icons/obj/items/predator.dmi'
-	icon_state = "scim"
-	item_state = "scim"
-	force = 35
-	attack_speed = 18 //Will have the same speed as the glaive if there are two.
-	hitsound = 'sound/weapons/pierce.ogg'
-
 //I need to go over these weapons and balance them out later. Right now they're pretty all over the place.
 /obj/item/weapon/yautja_chain
 	name = "chainwhip"
@@ -1382,6 +1374,7 @@
 	icon_state = "whip"
 	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	force = 60
 	throwforce = 12
@@ -1393,6 +1386,9 @@
 
 /obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
 	. = ..()
+	if(isYautja(user) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
 	if(. && user.zone_selected == "r_leg" || user.zone_selected == "l_leg" || user.zone_selected == "l_foot" || user.zone_selected == "r_foot")
 		if(prob(35) && !target.lying)
 			if(isXeno(target))
@@ -1409,6 +1405,7 @@
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|CONDUCT
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = 24
@@ -1459,6 +1456,7 @@
 	icon = 'icons/obj/items/predator.dmi'
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 	sharp = 1
 	edge = 1
@@ -1483,6 +1481,9 @@
 	if(!.)
 		return
 	if(isYautja(user))
+		if(isXeno(target))
+			var/mob/living/carbon/Xenomorph/X = target
+			X.interference = 30
 		force = initial(force)
 		if(prob(22) && !target.lying)
 			user.visible_message(SPAN_DANGER("[user] slashes [target] so hard, they go flying!"))
@@ -1509,6 +1510,7 @@
 	icon_state = "predscythe"
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT
+	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_WAIST
 	sharp = 1
 	force = 50
@@ -1541,6 +1543,9 @@
 			user.drop_inv_item_on_ground(src)
 			return
 	..()
+	if(isYautja(user) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
 	if(ishuman(target)) //Slicey dicey!
 		if(prob(14))
 			var/datum/limb/affecting
@@ -1565,7 +1570,7 @@
 	icon_state = "combistick"
 	flags_atom = FPRINT|CONDUCT|ITEM_UNCATCHABLE
 	flags_equip_slot = SLOT_BACK
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|ITEM_PREDATOR
 	w_class = 4
 	force = 35
 	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.

@@ -1201,21 +1201,27 @@
 /datum/ammo/energy/yautja/caster/sphere
 	name = "plasma eradication sphere"
 	icon_state = "bluespace"
-	flags_ammo_behavior = AMMO_ENERGY|AMMO_EXPLOSIVE
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ENERGY
 
 /datum/ammo/energy/yautja/caster/sphere/New()
 	..()
 	damage = config.lmed_hit_damage
 	shell_speed = config.super_shell_speed
+	accuracy = config.max_hit_accuracy
+	accurate_range = config.max_shell_range
+	max_range = config.long_shell_range
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	explosion(get_turf(P.loc), -1, -1, 2, 2)
+	explosion_rec(get_turf(M), 170, 50)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion(T, -1, -1, 2, 2)
+	explosion_rec(T, 170, 40)
 
 /datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion(get_turf(P.loc), -1, -1, 2, 2)
+	explosion_rec(get_turf(O), 170, 50)
+
+/datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
+	explosion_rec(get_turf(P), 170, 50)
 
 /datum/ammo/energy/yautja/rifle/New()
 	..()

@@ -448,9 +448,10 @@ This function completely restores a damaged organ to perfect condition.
 	if(knitting_time > 0)
 		if(!(status & LIMB_SPLINTED))
 			knitting_time = -1 // stop knitting
-		if(knitting_time > world.time)
+		if(world.time > knitting_time)
 			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted, you discard the splint."))
 			status &= ~LIMB_SPLINTED
+			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
 
 	//Infections

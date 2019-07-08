@@ -354,6 +354,7 @@
 #define IS_PLANT 2048
 #define IS_WHITELISTED 4096
 #define IS_SYNTHETIC 8192
+
 //=================================================
 
 //Some on_mob_life() procs check for alien races.

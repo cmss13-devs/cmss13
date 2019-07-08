@@ -92,6 +92,10 @@
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+
 
 	log_hivemind("[key_name(src)] : [message]")	
 

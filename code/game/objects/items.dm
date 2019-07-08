@@ -679,7 +679,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
 	else if(!zoom && user.client && user.update_tint()) 			
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
-	else if(!zoom && user.get_active_hand() != src)					
+	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))					
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(zoom) //If we are zoomed out, reset that parameter.
 		user.visible_message(SPAN_NOTICE("[user] looks up from [zoom_device]."),

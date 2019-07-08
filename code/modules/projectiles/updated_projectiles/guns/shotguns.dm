@@ -537,7 +537,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/unload(mob/user) //We can't pump it to get rid of the shells, so we'll make it work via the unloading mechanism.
 	if(pumped)
-		user.visible_message(SPAN_WARNING("<i>You release the locking mechanism on [src]. </i>"))
+		to_chat(user, SPAN_WARNING("You release the locking mechanism on [src]."))
 		pumped = FALSE
 	return ..()
 

@@ -62,6 +62,7 @@
 
 	var/brute_mod = null    // Physical damage reduction/malus.
 	var/burn_mod = null     // Burn damage reduction/malus.
+	var/pain_mod = 1 // Pain resistance. Pain mods lower than 1 avoid pain consequences like pain messages and etc, but still have slowdown.
 
 	var/flags = 0       // Various specific features.
 
@@ -504,6 +505,7 @@ var/toggled_sec_HUD = 0
 	deform = 'icons/mob/human_races/r_predator.dmi'
 	brute_mod = 0.33 //Beefy!
 	burn_mod = 0.65
+	pain_mod = 0.3
 	reagent_tag = IS_YAUTJA
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_SCAN|NO_POISON
 	unarmed_type = /datum/unarmed_attack/punch/strong

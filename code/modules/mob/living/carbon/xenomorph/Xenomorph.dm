@@ -58,6 +58,9 @@
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
 
+	//Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
+	var/interference = 0
+
 	// Overwatched xeno for xeno hivemind vision
 	var/mob/living/carbon/Xenomorph/observed_xeno
 

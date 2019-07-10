@@ -1,0 +1,6 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - tweak: "Brought the roundstart CMO, doctor, and researcher equipment presets up-to-date. Now they start with lifesaver bags, but without penlights."

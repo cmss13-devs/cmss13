@@ -371,6 +371,8 @@
 				hive.tier_3_xenos |= src
 
 		hive.totalXenos |= src
+	//second time to get stuff in
+	generate_name()
 
 
 /mob/living/carbon/Xenomorph/proc/update_caste()

@@ -35,6 +35,17 @@
 		go_out()
 		return
 
+/obj/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
+	var/list/datum/limb/parts = human.get_damaged_limbs(brute,burn)
+	if(!parts.len)	return
+	var/datum/limb/picked = pick(parts)
+	if(LIMB_ROBOT)
+		picked.heal_damage(brute, burn, 0, 1)
+	else 
+		picked.heal_damage(brute,burn)
+		human.UpdateDamageIcon()
+	human.updatehealth()
+
 /obj/machinery/autodoc/process()
 	set background = 1
 
@@ -74,7 +85,7 @@
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Blood transfer complete.")
 			if(heal_brute)
 				if(occupant.getBruteLoss() > 0)
-					occupant.heal_limb_damage(3,0)
+					heal_limb(occupant, 3, 0)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it stitches flesh together.")
 						to_chat(occupant, SPAN_INFO("You feel your wounds being stitched and sealed shut."))
@@ -83,7 +94,7 @@
 					visible_message("\icon[src] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
 			if(heal_burn)
 				if(occupant.getFireLoss() > 0)
-					occupant.heal_limb_damage(0,3)
+					heal_limb(occupant, 0, 3)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it grafts synthetic skin.")
 						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))

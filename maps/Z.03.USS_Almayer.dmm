@@ -51522,7 +51522,7 @@
 /area/almayer/medical/operating_room_four)
 "kUu" = (
 /obj/structure/rack,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/open/floor/almayer{
 	tag = "icon-bluecorner (NORTH)";
 	icon_state = "cargo";

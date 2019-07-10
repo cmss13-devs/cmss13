@@ -482,7 +482,7 @@
 /turf/open/floor/bluegrid,
 /area/lv624/lazarus/internal_affairs)
 "bn" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /obj/machinery/light/small{
 	dir = 8
 	},

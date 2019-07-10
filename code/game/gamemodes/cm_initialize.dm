@@ -400,6 +400,7 @@ datum/game_mode/proc/initialize_special_clamps()
 	log_admin("[new_xeno.key] has joined as [new_xeno].")
 	if(isXeno(new_xeno)) //Dear lord
 		var/mob/living/carbon/Xenomorph/X = new_xeno
+		X.generate_name()
 		if(X.is_ventcrawling) X.add_ventcrawl(X.loc) //If we are in a vent, fetch a fresh vent map
 	return 1
 

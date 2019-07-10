@@ -413,6 +413,11 @@
 		return
 
 	var/name_prefix = hive.prefix
+	var/name_client_prefix = ""
+	var/name_client_postfix = ""
+	if(client)
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	color = hive.color
 
 	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
@@ -423,8 +428,8 @@
 			if(2) name = "\improper [name_prefix]Elder Empress"	 //Elite
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
 			if(4) name = "\improper [name_prefix]Primordial Empress" //Primordial
-	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([nicknumber])"
-	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([nicknumber])"
+	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	real_name = name

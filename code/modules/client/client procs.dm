@@ -136,6 +136,12 @@
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.fps
+	xeno_prefix = prefs.xeno_prefix	
+	xeno_postfix = prefs.xeno_postfix
+	if(!xeno_prefix)	
+		xeno_prefix = "XX"
+	if(!xeno_postfix)
+		xeno_postfix = ""
 	. = ..()	//calls mob.Login()
 
 	// Version check below if we ever need to start checking against BYOND versions again.

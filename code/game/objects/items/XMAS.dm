@@ -89,7 +89,7 @@
 		/obj/item/storage/belt/champion,
 		/obj/item/tool/soap/deluxe,
 		/obj/item/explosive/grenade/smokebomb,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/toy/bikehorn,
 		/obj/item/toy/beach_ball,
 		/obj/item/weapon/banhammer,

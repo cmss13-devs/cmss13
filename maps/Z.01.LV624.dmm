@@ -11466,7 +11466,7 @@
 /area/lv624/ground/compound/c)
 "GZ" = (
 /obj/structure/table,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /obj/item/clothing/glasses/regular/hipster,
 /obj/item/document_objective/paper,
 /turf/open/floor{
@@ -14521,7 +14521,7 @@
 	},
 /area/lv624/ground/jungle3)
 "OY" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /obj/machinery/light/small{
 	dir = 8
 	},

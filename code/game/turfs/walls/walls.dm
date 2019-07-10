@@ -339,7 +339,7 @@
 		return
 
 	//Poster stuff
-	if(istype(W,/obj/item/contraband/poster))
+	if(istype(W,/obj/item/poster))
 		place_poster(W,user)
 		return
 

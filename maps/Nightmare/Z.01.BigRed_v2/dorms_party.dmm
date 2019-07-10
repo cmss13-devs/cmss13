@@ -195,7 +195,7 @@
 /area/bigredv2/outside/dorms)
 "aH" = (
 /obj/structure/table,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aI" = (

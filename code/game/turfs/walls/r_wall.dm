@@ -243,7 +243,7 @@
 		return
 
 	//Poster stuff
-	else if(istype(W,/obj/item/contraband/poster))
+	else if(istype(W,/obj/item/poster))
 		place_poster(W,user)
 		return
 

@@ -1,0 +1,9 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "An ERT station was added, accessible if you successfully return from the Almayer."
+  - maptweak: "The thunderdome was updated."
+  - maptweak: "Replaced the Bunker's outdated cave wall tiles with the newer ones."
+  - maptweak: "The admin z-level was reorganized, some superfluous parts were removed."

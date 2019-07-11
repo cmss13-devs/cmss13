@@ -67,3 +67,10 @@
 	ceiling = CEILING_UNDERGROUND
 	always_unpowered = 1
 	requires_power = 1
+
+// ERT Station
+/area/adminlevel/ert_station
+	name = "ERT Station"
+	icon_state = "green"
+	requires_power = 0
+	flags_atom = AREA_NOTUNNEL

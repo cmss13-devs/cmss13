@@ -336,7 +336,7 @@
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/shotgun
-	name = "\improper shotgun shell loading rig"
+	name = "\improper M276 pattern shotgun shell loading rig"
 	desc = "An ammunition belt designed to hold shotgun shells or individual bullets."
 	icon_state = "shotgunbelt"
 	w_class = 4

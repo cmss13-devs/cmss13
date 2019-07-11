@@ -737,6 +737,9 @@ datum/game_mode/proc/initialize_special_clamps()
 	for(var/obj/machinery/vending/marine/cargo_guns/CG in cargo_guns_vendors)
 		CG.populate_product_list(scale)
 
+	for(var/obj/machinery/cm_vending/sorted/CVS in cm_vending_vendors)
+		CVS.populate_product_list(scale)
+
 
 	for(var/obj/machinery/vending/marine/M in marine_vendors)
 		M.populate_product_list(scale)

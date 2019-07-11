@@ -931,7 +931,7 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_NOTICE("You collapse [src]."))
 
 /obj/item/attachable/stock/smg/brace
-	name = "\improper  submachinegun arm brace"
+	name = "\improper submachinegun arm brace"
 	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of fire rate. Wielding guns with this stock is very uncomfortable and inaccurate."
 	size_mod = 1
 	icon_state = "smg_brace"

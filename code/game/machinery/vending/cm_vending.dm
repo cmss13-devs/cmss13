@@ -38,7 +38,7 @@
 
 
 
-/obj/machinery/marine_selector
+/obj/machinery/cm_vending
 	name = "\improper Theoretical Marine selector"
 	desc = ""
 	icon = 'icons/obj/machines/vending.dmi'
@@ -52,7 +52,7 @@
 	var/headset_type
 	var/gives_webbing = FALSE
 	var/vendor_role = "" //to be compared with assigned_role to only allow those to use that machine.
-	var/squad_tag = ""
+	var/squad_tag = ""	//same to restrict vendor to specified squad
 	var/use_points = FALSE
 	var/use_snowflake_points = FALSE
 
@@ -60,7 +60,7 @@
 
 
 
-/obj/machinery/marine_selector/attack_hand(mob/user)
+/obj/machinery/cm_vending/attack_hand(mob/user)
 
 	if(stat & (BROKEN|NOPOWER))
 		return
@@ -94,7 +94,7 @@
 
 
 
-/obj/machinery/marine_selector/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+/obj/machinery/cm_vending/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 
 	if(!ishuman(user)) return
 	var/mob/living/carbon/human/H = user
@@ -138,13 +138,13 @@
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 
 	if (!ui)
-		ui = new(user, src, ui_key, "marine_selector.tmpl", name , 600, 700)
+		ui = new(user, src, ui_key, "cm_vending.tmpl", name , 600, 700)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
 
 
-/obj/machinery/marine_selector/Topic(href, href_list)
+/obj/machinery/cm_vending/Topic(href, href_list)
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -209,7 +209,7 @@
 
 				if(vendor_role == "Tank Crewman")
 					var/p_name = L[1]
-					var/obj/machinery/marine_selector/tank/t = src
+					var/obj/machinery/cm_vending/tank/t = src
 					if(!t.primary_list.Find(p_name) && !t.secondary_list.Find(p_name) && !t.support_list.Find(p_name) && !t.armor_list.Find(p_name) &&!t.treads_list.Find(p_name))
 						to_chat(H, SPAN_WARNING("That equipment is already taken."))
 						return
@@ -271,8 +271,8 @@
 					available_specialist_sets -= p_name
 			if(vendor_role == "Tank Crewman")
 				if(H.mind && H.mind.assigned_role == "Tank Crewman")
-					if(istype(src, /obj/machinery/marine_selector/tank))
-						var/obj/machinery/marine_selector/tank/t = src
+					if(istype(src, /obj/machinery/cm_vending/tank))
+						var/obj/machinery/cm_vending/tank/t = src
 						var/t_name = L[1]
 						if(!t.primary_list.Find(t_name) && !t.secondary_list.Find(t_name) && !t.support_list.Find(t_name) && !t.armor_list.Find(t_name) &&!t.treads_list.Find(t_name))
 							to_chat(H, SPAN_WARNING("That equipment is already taken."))
@@ -293,11 +293,11 @@
 				else
 					I.marine_points -= cost
 
-		src.add_fingerprint(usr)
+		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
 
 
-/obj/machinery/marine_selector/clothes
+/obj/machinery/cm_vending/clothes
 	name = "ColMarTech Automated Closet"
 	desc = "An automated closet hooked up to a colossal storage of standard-issue uniform and armor."
 	icon_state = "uniform_marine"
@@ -397,25 +397,25 @@
 
 
 
-/obj/machinery/marine_selector/clothes/alpha
+/obj/machinery/cm_vending/clothes/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/marine_selector/clothes/bravo
+/obj/machinery/cm_vending/clothes/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/marine_selector/clothes/charlie
+/obj/machinery/cm_vending/clothes/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/marine_selector/clothes/delta
+/obj/machinery/cm_vending/clothes/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -423,7 +423,7 @@
 
 
 
-/obj/machinery/marine_selector/clothes/engi
+/obj/machinery/cm_vending/clothes/engi
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = "Squad Engineer"
 
@@ -475,25 +475,25 @@
 	)
 
 
-/obj/machinery/marine_selector/clothes/engi/alpha
+/obj/machinery/cm_vending/clothes/engi/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/engi
 
-/obj/machinery/marine_selector/clothes/engi/bravo
+/obj/machinery/cm_vending/clothes/engi/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/engi
 
-/obj/machinery/marine_selector/clothes/engi/charlie
+/obj/machinery/cm_vending/clothes/engi/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/engi
 
-/obj/machinery/marine_selector/clothes/engi/delta
+/obj/machinery/cm_vending/clothes/engi/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta/insulated
@@ -501,7 +501,7 @@
 
 
 
-/obj/machinery/marine_selector/clothes/medic
+/obj/machinery/cm_vending/clothes/medic
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = "Squad Medic"
 
@@ -555,25 +555,25 @@
 
 
 
-/obj/machinery/marine_selector/clothes/medic/alpha
+/obj/machinery/cm_vending/clothes/medic/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/med
 
-/obj/machinery/marine_selector/clothes/medic/bravo
+/obj/machinery/cm_vending/clothes/medic/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/med
 
-/obj/machinery/marine_selector/clothes/medic/charlie
+/obj/machinery/cm_vending/clothes/medic/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/med
 
-/obj/machinery/marine_selector/clothes/medic/delta
+/obj/machinery/cm_vending/clothes/medic/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -585,7 +585,7 @@
 
 
 
-/obj/machinery/marine_selector/clothes/smartgun
+/obj/machinery/cm_vending/clothes/smartgun
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 	vendor_role = "Squad Smartgunner"
 	gives_webbing = TRUE
@@ -622,25 +622,25 @@
 
 
 
-/obj/machinery/marine_selector/clothes/smartgun/alpha
+/obj/machinery/cm_vending/clothes/smartgun/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/marine_selector/clothes/smartgun/bravo
+/obj/machinery/cm_vending/clothes/smartgun/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/marine_selector/clothes/smartgun/charlie
+/obj/machinery/cm_vending/clothes/smartgun/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/marine_selector/clothes/smartgun/delta
+/obj/machinery/cm_vending/clothes/smartgun/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -648,7 +648,7 @@
 
 
 
-/obj/machinery/marine_selector/clothes/specialist
+/obj/machinery/cm_vending/clothes/specialist
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = "Squad Specialist"
 	gives_webbing = TRUE
@@ -690,25 +690,25 @@
 
 
 
-/obj/machinery/marine_selector/clothes/specialist/alpha
+/obj/machinery/cm_vending/clothes/specialist/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
-/obj/machinery/marine_selector/clothes/specialist/bravo
+/obj/machinery/cm_vending/clothes/specialist/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
-/obj/machinery/marine_selector/clothes/specialist/charlie
+/obj/machinery/cm_vending/clothes/specialist/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
-/obj/machinery/marine_selector/clothes/specialist/delta
+/obj/machinery/cm_vending/clothes/specialist/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
@@ -719,7 +719,7 @@
 
 
 
-/obj/machinery/marine_selector/clothes/leader
+/obj/machinery/cm_vending/clothes/leader
 	req_access = list(ACCESS_MARINE_LEADER)
 	vendor_role = "Squad Leader"
 	gives_webbing = TRUE
@@ -763,32 +763,32 @@
 
 
 
-/obj/machinery/marine_selector/clothes/leader/alpha
+/obj/machinery/cm_vending/clothes/leader/alpha
 	squad_tag = "Alpha"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
-/obj/machinery/marine_selector/clothes/leader/bravo
+/obj/machinery/cm_vending/clothes/leader/bravo
 	squad_tag = "Bravo"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
-/obj/machinery/marine_selector/clothes/leader/charlie
+/obj/machinery/cm_vending/clothes/leader/charlie
 	squad_tag = "Charlie"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
-/obj/machinery/marine_selector/clothes/leader/delta
+/obj/machinery/cm_vending/clothes/leader/delta
 	squad_tag = "Delta"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
 
-/obj/machinery/marine_selector/clothes/synth
+/obj/machinery/cm_vending/clothes/synth
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = "Synthetic"
 
@@ -858,7 +858,7 @@
 		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, "black"),
 	)
 
-/obj/machinery/marine_selector/clothes/intelligence_officer
+/obj/machinery/cm_vending/clothes/intelligence_officer
 	name = "Intelligence Officer Equipment Rack"
 	req_access = list(ACCESS_MARINE_BRIDGE)
 	vendor_role = "Intelligence Officer"
@@ -890,14 +890,14 @@
 
 
 
-/obj/machinery/marine_selector/gear
+/obj/machinery/cm_vending/gear
 	name = "ColMarTech Automated Equipment Rack"
 	desc = "An automated equipment rack hooked up to a colossal storage of standard-issue equipments."
 	icon_state = "sec"
 	use_points = TRUE
 
 
-/obj/machinery/marine_selector/gear/medic
+/obj/machinery/cm_vending/gear/medic
 	vendor_role = "Squad Medic"
 	req_access = list(ACCESS_MARINE_MEDPREP)
 
@@ -973,7 +973,7 @@
 
 
 
-/obj/machinery/marine_selector/gear/engi
+/obj/machinery/cm_vending/gear/engi
 	vendor_role = "Squad Engineer"
 	req_access = list(ACCESS_MARINE_ENGPREP)
 
@@ -1032,7 +1032,7 @@
 
 
 
-/obj/machinery/marine_selector/gear/smartgun
+/obj/machinery/cm_vending/gear/smartgun
 	vendor_role = "Squad Smartgunner"
 	req_access = list(ACCESS_MARINE_SMARTPREP)
 
@@ -1070,7 +1070,7 @@
 var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolitionist Set", "Heavy Grenadier Set", "Pyro Set")
 
 
-/obj/machinery/marine_selector/gear/spec
+/obj/machinery/cm_vending/gear/spec
 	vendor_role = "Squad Specialist"
 	req_access = list(ACCESS_MARINE_SPECPREP)
 
@@ -1140,7 +1140,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 
 
-/obj/machinery/marine_selector/gear/leader
+/obj/machinery/cm_vending/gear/leader
 	vendor_role = "Squad Leader"
 	req_access = list(ACCESS_MARINE_LEADER)
 
@@ -1192,7 +1192,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 
 
-/obj/machinery/marine_selector/gear/synth
+/obj/machinery/cm_vending/gear/synth
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = "Synthetic"
 
@@ -1252,7 +1252,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 
 //Five global lists - one for each slot - so that two tankers can't each get five items
 
-/obj/machinery/marine_selector/tank
+/obj/machinery/cm_vending/tank
 	name = "ColMarTech Tank Equipment storage"
 	desc = "An automated weapons storage unit hooked up to the underbelly of the ship, allowing the tank crew to choose one set of free equipment for their tank. "
 	icon_state = "armory"
@@ -1292,7 +1292,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("Treads", 0, /obj/item/hardpoint/treads/standard, MARINE_CAN_BUY_SHOES, "black"),
 	)
 
-/obj/machinery/marine_selector/tank/New()
+/obj/machinery/cm_vending/tank/New()
 	..()
 	if(map_tag == MAP_ICE_COLONY)
 		armor_list += "Snowplow"
@@ -1444,6 +1444,695 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		/obj/item/stack/fulton,
 		/obj/item/device/motiondetector/intel
 	)
+
+
+
+//22.06.2019 Modified ex-"marine_selector" system that doesn't use points by Jeser. In theory, should replace all vendors.
+//Hacking can be added if we need it. Do we need it, tho?
+
+
+/obj/machinery/cm_vending/sorted
+	name = "\improper ColMarTech generic sorted vendor"
+	desc = "This is pure vendor without points system."
+	icon_state = "armory"
+
+/obj/machinery/cm_vending/sorted/proc/populate_product_list(var/scale)
+	return
+
+/obj/machinery/cm_vending/sorted/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
+
+	if(!ishuman(user)) return
+
+	var/list/display_list = list()
+
+	for(var/i in 1 to listed_products.len)
+		var/list/myprod = listed_products[i]	//we take one list from listed_products
+
+		var/p_name = myprod[1]					//taking it's name
+		var/p_amount = myprod[2]				//amount left
+		var/prod_available = FALSE				//checking if it's available
+		if(p_amount > 0)						//checking availability
+			p_name += ": [p_amount]"			//and adding amount to product name so it will appear in "button" in UI
+			prod_available = TRUE
+		else if(p_amount == 0)
+			p_name += ": SOLD OUT"				//Negative  numbers (-1) used for categories.
+
+								//forming new list with index, name, amount, available or not, color and add it to display_list
+		display_list += list(list("prod_index" = i, "prod_name" = p_name, "prod_amount" = p_amount, "prod_available" = prod_available, "prod_color" = myprod[4]))
+
+
+	var/list/data = list(
+		"vendor_name" = name,
+		"displayed_records" = display_list,
+	)
+
+	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
+
+	if (!ui)
+		ui = new(user, src, ui_key, "cm_vending_sorted.tmpl", name , 600, 700)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
+
+
+/obj/machinery/cm_vending/sorted/Topic(href, href_list)
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+
+	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
+		usr.set_interaction(src)
+		if (href_list["vend"])
+
+			if(!allowed(usr))
+				to_chat(usr, SPAN_WARNING("Access denied."))
+				return
+
+			var/idx=text2num(href_list["vend"])
+
+			var/list/L = listed_products[idx]
+			var/mob/living/carbon/human/H = usr
+
+			var/obj/item/card/id/I = H.wear_id
+			if(!istype(I)) //not wearing an ID
+				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+				return
+
+			if(I.registered_name != H.real_name)
+				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+				return
+
+			if(vendor_role && I.rank != vendor_role)
+				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				return
+
+			var/turf/T = loc
+			if(T.contents.len > 25)
+				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+				return
+
+			var/type_p = L[3]
+
+			var/obj/item/IT = new type_p(loc)
+			L[2]--								//taking 1 from amount of products in vendor
+			IT.add_fingerprint(usr)
+
+		add_fingerprint(usr)
+		ui_interact(usr) //updates the nanoUI window
+
+
+/obj/machinery/cm_vending/sorted/MouseDrop_T(var/atom/movable/A, mob/user)
+
+	if(stat & (BROKEN|NOPOWER))
+		return
+
+	if(user.stat || user.is_mob_restrained() || user.lying)
+		return
+
+	if(get_dist(user, src) > 1 || get_dist(src, A) > 1)
+		return
+
+	if(istype(A, /obj/item))
+		var/obj/item/I = A
+		stock(I, user)
+
+/obj/machinery/cm_vending/sorted/proc/stock(obj/item/item_to_stock, mob/user)
+	var/list/R
+	for(R in (listed_products))
+		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
+			if(istype(item_to_stock, /obj/item/weapon/gun))
+				var/obj/item/weapon/gun/G = item_to_stock
+				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
+					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
+					return
+				for(var/obj/item/attachable/A in G.contents) //Search for attachments on the gun. This is the easier method
+					if((A.flags_attach_features & ATTACH_REMOVABLE) && !(is_type_in_list(A, G.starting_attachment_types))) //There are attachments that are default and others that can't be removed
+						to_chat(user, SPAN_WARNING("[G] has non-standard attachments equipped. Detach them before you can restock it."))
+						return
+
+			if(istype(item_to_stock, /obj/item/ammo_magazine))
+				var/obj/item/ammo_magazine/A = item_to_stock
+				if(A.current_rounds < A.max_rounds)
+					to_chat(user, SPAN_WARNING("[A] isn't full. Fill it before you can restock it."))
+					return
+			if(item_to_stock.loc == user) //Inside the mob's inventory
+				if(item_to_stock.flags_item & WIELDED)
+					item_to_stock.unwield(user)
+				user.temp_drop_inv_item(item_to_stock)
+
+			if(istype(item_to_stock.loc, /obj/item/storage)) //inside a storage item
+				var/obj/item/storage/S = item_to_stock.loc
+				S.remove_from_storage(item_to_stock, user.loc)
+
+			qdel(item_to_stock)
+			user.visible_message(SPAN_NOTICE("[user] stocks [src] with \a [R[1]]."),
+			SPAN_NOTICE("You stock [src] with \a [R[1]]."))
+			R[2]++
+			updateUsrDialog()
+			return //We found our item, no reason to go on.
+
+//--------------------------REQ VENDORS AND THEIR SQUAD VARIANTS------------------
+
+//ARMAMENTS VENDOR
+/obj/machinery/cm_vending/sorted/cargo_guns
+	name = "\improper ColMarTech Automated Armaments Vendor"
+	desc = "An automated rack hooked up to a small supply of various firearms and explosives."
+	req_access = list(ACCESS_MARINE_CARGO)
+
+/obj/machinery/cm_vending/sorted/cargo_guns/New()
+	..()
+	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
+
+/obj/machinery/cm_vending/sorted/cargo_guns/populate_product_list(var/scale)
+	listed_products = list(
+		list("Backpacks", -1, null, null),
+		list("Lightweight IMP Backpack", round(scale * 15), /obj/item/storage/backpack/marine, "black"),
+		list("USCM Pyrotechnician G4-1 Fueltank", round(scale * 2), /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit, "black"),
+		list("USCM Technician Welderpack", round(scale * 2), /obj/item/storage/backpack/marine/engineerpack, "black"),
+
+		list("Belts", -1, null, null),
+		list("G8-A General Utility Pouch", round(scale * 2), /obj/item/storage/sparepouch, "black"),
+		list("M276 Pattern Ammo Load Rig", round(scale * 15), /obj/item/storage/belt/marine, "black"),
+		list("M276 Pattern M39 Holster Rig", round(scale * 5), /obj/item/storage/large_holster/m39, "black"),
+		list("M276 Pattern M44 Holster Rig", round(scale * 5), /obj/item/storage/belt/gun/m44, "black"),
+		list("M276 Pattern M4A3-1911 Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/m4a3, "black"),
+		list("M276 Pattern Shotgun Shell Loading Rig", round(scale * 10), /obj/item/storage/belt/shotgun, "black"),
+		list("M276 Pattern SU-6 Smartpistol Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/smartpistol, "black"),
+
+		list("Webbings", -1, null, null),
+		list("Black Webbing Vest", round(scale * 2), /obj/item/clothing/tie/storage/black_vest, "black"),
+		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/tie/storage/brown_vest, "black"),
+		list("Webbing", round(scale * 5), /obj/item/clothing/tie/storage/webbing, "black"),
+
+		list("Pouches", -1, null, null),
+		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, "black"),
+		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, "black"),
+		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, "black"),
+		list("First-Aid Pouch", round(scale * 5), /obj/item/storage/pouch/firstaid/full, "black"),
+		list("Flare Pouch", round(scale * 5), /obj/item/storage/pouch/flare/full, "black"),
+		list("Fuel Tank Strap Pouch", round(scale * 4), /obj/item/storage/pouch/flamertank, "black"),
+		list("Large Pistol Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine/pistol/large, "black"),
+		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, "black"),
+		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, "black"),
+		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, "black"),
+		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, "black"),
+		list("Sidearm Pouch", round(scale * 15), /obj/item/storage/pouch/pistol, "black"),
+		list("Syringe Pouch", round(scale * 2), /obj/item/storage/pouch/syringe, "black"),
+		list("Tools Pouch", round(scale * 2), /obj/item/storage/pouch/tools, "black"),
+
+		list("Firearms", -1, null, null),
+		list("M1911 Service Pistol", round(scale * 6), /obj/item/weapon/gun/pistol/m1911, "black"),
+		list("M4A3 Service Pistol", round(scale * 20), /obj/item/weapon/gun/pistol/m4a3, "black"),
+		list("M44 Combat Revolver", round(scale * 10), /obj/item/weapon/gun/revolver/m44, "black"),
+		list("SU-6 Smartpistol", round(scale * 6), /obj/item/weapon/gun/pistol/smart, "black"),
+		list("L42 Pulse Carbine MK1", round(scale * 20), /obj/item/weapon/gun/rifle/l42mk1, "black"),
+		list("M37A2 Pump Shotgun", round(scale * 10), /obj/item/weapon/gun/shotgun/pump, "black"),
+		list("M39 Submachinegun", round(scale * 15), /obj/item/weapon/gun/smg/m39, "black"),
+		list("M41A Pulse Rifle MK2", round(scale * 20), /obj/item/weapon/gun/smg/m39, "black"),
+
+		list("Kits", -1, null, null),
+		list("JTAC Radio Kit", round(scale * 4), /obj/item/storage/box/kit/mini_jtac, "black"),
+		list("Forward HPR Shield Kit", round(scale * 4), /obj/item/storage/box/kit/heavy_support, "black"),
+		list("Field Intelligence Support Kit", round(scale * 4), /obj/item/storage/box/kit/mini_intel, "black"),
+		list("M39 Point Man Kit", round(scale * 4), /obj/item/storage/box/kit/pursuit, "black"),
+		list("M-OU53 Field Test Kit", round(scale * 3), /obj/item/storage/box/kit/mou53_sapper, "black"),
+
+		list("Explosives", -1, null, null),
+		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, "black"),
+		list("M20 Claymore Anti-Personnel Mine", round(scale * 2), /obj/item/explosive/mine, "black"),
+		list("M40 HEDP Grenade Box", round(scale * 2), /obj/item/storage/box/nade_box, "black"),
+		list("M40 HEFA Grenade Box", round(scale * 2), /obj/item/storage/box/nade_box/frag, "black"),
+		list("M40 HIDP Incendiary Grenade", round(scale * 2), /obj/item/explosive/grenade/incendiary, "black"),
+		list("M40 HSDP Smoke Grenade", round(scale * 5), /obj/item/explosive/grenade/smokebomb, "black"),
+
+		list("Miscellaneous", -1, null, null),
+		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, "black"),
+		list("Entrenching Tool", round(scale * 4), /obj/item/tool/shovel/etool, "black"),
+		list("Gas Mask", round(scale * 10), /obj/item/clothing/mask/gas, "black"),
+		list("H5 Pattern M2132 Machete Scabbard", round(scale * 10), /obj/item/storage/large_holster/machete/full, "black"),
+		list("M89-S Signal Flare Pack", round(scale * 2), /obj/item/storage/box/m94/signal, "black"),
+		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, "black"),
+		list("MB-6 Folding Barricade", round(scale * 4), /obj/item/folding_barricade, "black"),
+		)
+
+
+/obj/machinery/cm_vending/sorted/cargo_guns/squad
+	name = "\improper ColMarTech Automated Armaments Squad Vendor"
+	desc = "An automated rack hooked up to a small supply of various firearms and explosives."
+	req_access = list(ACCESS_MARINE_ALPHA)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
+
+/obj/machinery/cm_vending/sorted/cargo_guns/squad/populate_product_list(var/scale)
+	listed_products = list(
+		list("Backpacks", -1, null, null),
+		list("Lightweight IMP Backpack", round(scale * 15), /obj/item/storage/backpack/marine, "black"),
+		list("USCM Technician Welderpack", round(scale * 2), /obj/item/storage/backpack/marine/engineerpack, "black"),
+
+		list("Belts", -1, null, null),
+		list("G8-A General Utility Pouch", round(scale * 2), /obj/item/storage/sparepouch, "black"),
+		list("M276 Pattern M39 Holster Rig", round(scale * 2), /obj/item/storage/large_holster/m39, "black"),
+		list("M276 Pattern M44 Holster Rig", round(scale * 5), /obj/item/storage/belt/gun/m44, "black"),
+		list("M276 Pattern M4A3-1911 Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/m4a3, "black"),
+		list("M276 Pattern SU-6 Smartpistol Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/smartpistol, "black"),
+
+		list("Webbings", -1, null, null),
+		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/tie/storage/brown_vest, "black"),
+		list("Webbing", round(scale * 3), /obj/item/clothing/tie/storage/webbing, "black"),
+
+		list("Pouches", -1, null, null),
+		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, "black"),
+		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, "black"),
+		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, "black"),
+		list("First-Aid Pouch", round(scale * 5), /obj/item/storage/pouch/firstaid/full, "black"),
+		list("Flare Pouch", round(scale * 5), /obj/item/storage/pouch/flare/full, "black"),
+		list("Large Pistol Magazine Pouch", round(scale * 3), /obj/item/storage/pouch/magazine/pistol/large, "black"),
+		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, "black"),
+		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, "black"),
+		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, "black"),
+		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, "black"),
+		list("Sidearm Pouch", round(scale * 15), /obj/item/storage/pouch/pistol, "black"),
+		list("Syringe Pouch", round(scale * 2), /obj/item/storage/pouch/syringe, "black"),
+		list("Tools Pouch", round(scale * 2), /obj/item/storage/pouch/tools, "black"),
+
+		list("Sidearms", -1, null, null),
+		list("M1911 Service Pistol", round(scale * 3), /obj/item/weapon/gun/pistol/m1911, "black"),
+		list("SU-6 Smartpistol", round(scale * 3), /obj/item/weapon/gun/pistol/smart, "black"),
+
+		list("Kits", -1, null, null),
+		list("JTAC Radio Kit", round(scale * 1), /obj/item/storage/box/kit/mini_jtac, "black"),
+		list("Forward HPR Shield Kit", round(scale * 1), /obj/item/storage/box/kit/heavy_support, "black"),
+		list("Field Intelligence Support Kit", round(scale * 1), /obj/item/storage/box/kit/mini_intel, "black"),
+		list("M39 Point Man Kit", round(scale * 1), /obj/item/storage/box/kit/pursuit, "black"),
+		list("M-OU53 Field Test Kit", round(scale / 3), /obj/item/storage/box/kit/mou53_sapper, "black"),
+
+		list("Explosives", -1, null, null),
+		list("M15 Fragmentation Grenade", round(scale * 2), /obj/item/explosive/grenade/HE/m15, "black"),
+		list("M20 Claymore Anti-Personnel Mine", round(scale * 1), /obj/item/explosive/mine, "black"),
+		list("M40 HIDP Incendiary Grenade", round(scale * 1), /obj/item/explosive/grenade/incendiary, "black"),
+		list("M40 HSDP Smoke Grenade", round(scale * 2), /obj/item/explosive/grenade/smokebomb, "black"),
+
+		list("Miscellaneous", -1, null, null),
+		list("Combat Flashlight", round(scale * 5), /obj/item/device/flashlight/combat, "black"),
+		list("Entrenching Tool", round(scale * 2), /obj/item/tool/shovel/etool, "black"),
+		list("H5 Pattern M2132 Machete Scabbard", round(scale * 5), /obj/item/storage/large_holster/machete/full, "black"),
+		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, "black"),
+		list("MB-6 Folding Barricade", round(scale * 2), /obj/item/folding_barricade, "black"),
+		)
+
+//AMMUNITION VENDOR
+/obj/machinery/cm_vending/sorted/cargo_ammo
+	name = "\improper ColMarTech Automated Munition Vendor"
+	desc = "An automated rack hooked up to a small supply of ammo magazines."
+	req_access = list(ACCESS_MARINE_CARGO)
+
+/obj/machinery/cm_vending/sorted/cargo_ammo/New()
+	..()
+	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
+
+/obj/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
+	listed_products = list(
+		list("Regular Ammunition", -1, null, null),
+		list("Box Of Buckshot Shells", round(scale * 10) % 3, /obj/item/ammo_magazine/shotgun/buckshot, "black"),
+		list("Box Of Flechette Shells", round(scale * 5) % 12, /obj/item/ammo_magazine/shotgun/flechette, "black"),
+		list("Box Of Shotgun Slugs", round(scale * 15) % 3, /obj/item/ammo_magazine/shotgun/slugs, "black"),
+		list("M4A3 Magazine (9mm)", round(scale * 20), /obj/item/ammo_magazine/pistol, "black"),
+		list("M44 Magnum Speed Loader (.44)", round(scale * 20), /obj/item/ammo_magazine/revolver, "black"),
+		list("M39 Magazine (10x20mm)", round(scale * 20) % 12, /obj/item/ammo_magazine/smg/m39, "black"),
+		list("M41A Magazine (10x24mm)", round(scale * 30) % 10, /obj/item/ammo_magazine/rifle, "black"),
+
+		list("Armor-Piercing Ammunition", -1, null, null),
+		list("L42-MK1 AP Magazine (10x24mm)", round(scale * 1), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
+		list("M4A3 AP Magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/ap, "black"),
+		list("M44 Marksman Speed Loader (.44)", round(scale * 5) % 12, /obj/item/ammo_magazine/revolver/marksman, "black"),
+		list("M39 AP Magazine (10x20mm)", round(scale * 10) % 3, /obj/item/ammo_magazine/smg/m39/ap, "black"),
+		list("M41A AP Magazine (10x24mm)", round(scale * 10) % 10, /obj/item/ammo_magazine/rifle/ap, "black"),
+
+		list("Extended Ammunition", -1, null, null),
+		list("L42-MK1 Extended Magazine (10x24mm)", round(scale * 4), /obj/item/ammo_magazine/rifle/l42mk1/extended, "black"),
+		list("M4A3 Extended Magazine (9mm)", round(scale * 10), /obj/item/ammo_magazine/pistol/extended, "black"),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 10) % 10, /obj/item/ammo_magazine/smg/m39/extended, "black"),
+		list("M41A Extended Magazine (10x24mm)", round(scale * 10) % 8, /obj/item/ammo_magazine/rifle/extended, "black"),
+
+		list("Special Ammunition", -1, null, null),
+		list("M1911 Magazine (.45)", round(scale * 12), /obj/item/ammo_magazine/pistol/m1911, "black"),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 12), /obj/item/ammo_magazine/pistol/smart, "black"),
+		list("M44 PW-MX Speed Loader (.44)", round(scale * 10), /obj/item/ammo_magazine/revolver/heavy, "black"),
+		list("M39 LE Magazine (10x20mm)", round(scale * 2) % 12, /obj/item/ammo_magazine/smg/m39/le, "black"),
+
+		list("Ammunition Boxes", -1, null, null),
+		list("Magazine Box (L42-MK1 x 16)", round(scale * 10) % 10, /obj/item/magazine_box/rifle/l42mk1, "black"),
+		list("Magazine Box (AP L42-MK1 x 16)", round(scale * 1), /obj/item/magazine_box/rifle/l42mk1/ap, "black"),
+		list("Magazine Box (Ext L42-MK1 x 16)", round(scale * 2), /obj/item/magazine_box/rifle/l42mk1/ext, "black"),
+		list("Magazine Box (M39 x 12)", round(scale * 20 / 12), /obj/item/magazine_box/smg, "black"),
+		list("Magazine Box (AP M39 x 12)", round(scale * 5 / 12), /obj/item/magazine_box/smg/ap, "black"),
+		list("Magazine Box (Ext m39 x 10)", round(scale * 10 / 10), /obj/item/magazine_box/smg/extended, "black"),
+		list("Magazine Box (M41A x 10)", round(scale * 30 / 10), /obj/item/magazine_box, "black"),
+		list("Magazine Box (AP M41A x 10)", round(scale * 10 / 10), /obj/item/magazine_box/rifle_ap, "black"),
+		list("Magazine Box (Ext M41A x 8)", round(scale * 10 / 8), /obj/item/magazine_box/rifle_extended, "black"),
+		list("Shotgun Shell Box (Buckshot x 100)", round(scale * 10 / 3), /obj/item/magazine_box/shotgun/buckshot, "black"),
+		list("Shotgun Shell Box (Slugs x 100)", round(scale * 15 / 3), /obj/item/magazine_box/shotgun, "black"),
+		list("Shotgun Shell Box (Flechette x 100)", round(scale * 5 / 12), /obj/item/magazine_box/shotgun/flechette, "black"),
+
+		list("Miscellaneous", -1, null, null),
+		list("Incinerator Tank", round(scale * 2), /obj/item/ammo_magazine/flamer_tank, "black"),
+		list("M56 Powerpack", round(scale * 2), /obj/item/smartgun_powerpack, "black")
+		)
+
+
+/obj/machinery/cm_vending/sorted/cargo_ammo/squad
+	name = "\improper ColMarTech Automated Munition Squad Vendor"
+	desc = "An automated rack hooked up to a small supply of ammo magazines."
+	req_access = list(ACCESS_MARINE_ALPHA)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
+
+/obj/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
+	listed_products = list(
+
+		list("Armor-Piercing Ammunition", -1, null, null),
+		list("L42-MK1 AP Magazine (10x24mm)", round(scale * 1), /obj/item/ammo_magazine/rifle/l42mk1/ap, "black"),
+		list("M4A3 AP Magazine (9mm)", round(scale * 3), /obj/item/ammo_magazine/pistol/ap, "black"),
+		list("M44 Marksman Speed Loader (.44)", round(scale * 3), /obj/item/ammo_magazine/revolver/marksman, "black"),
+		list("M39 AP Magazine (10x20mm)", round(scale * 5) % 12, /obj/item/ammo_magazine/smg/m39/ap, "black"),
+		list("M41A AP Magazine (10x24mm)", round(scale * 5) % 10, /obj/item/ammo_magazine/rifle/ap, "black"),
+
+		list("Extended Ammunition", -1, null, null),
+		list("L42-MK1 Extended Magazine (10x24mm)", round(scale * 2), /obj/item/ammo_magazine/rifle/l42mk1/extended, "black"),
+		list("M4A3 Extended Magazine (9mm)", round(scale * 5), /obj/item/ammo_magazine/pistol/extended, "black"),
+		list("M39 Extended Magazine (10x20mm)", round(scale * 10) % 10, /obj/item/ammo_magazine/smg/m39/extended, "black"),
+		list("M41A Extended Magazine (10x24mm)", round(scale * 5) % 8, /obj/item/ammo_magazine/rifle/extended, "black"),
+
+		list("Special Ammunition", -1, null, null),
+		list("M1911 Magazine (.45)", round(scale * 4), /obj/item/ammo_magazine/pistol/m1911, "black"),
+		list("SU-6 Smartpistol Magazine (.45)", round(scale * 4), /obj/item/ammo_magazine/pistol/smart, "black"),
+		list("M44 PW-MX Speed Loader (.44)", round(scale * 5), /obj/item/ammo_magazine/revolver/heavy, "black"),
+		list("M39 LE Magazine (10x20mm)", round(scale * 2) % 12, /obj/item/ammo_magazine/smg/m39/le, "black"),
+
+		list("Miscellaneous", -1, null, null),
+		list("Incinerator Tank", round(scale * 1), /obj/item/ammo_magazine/flamer_tank, "black"),
+		list("M56 Powerpack", round(scale * 1), /obj/item/smartgun_powerpack, "black")
+		)
+
+//ATTACHMENTS VENDOR
+/obj/machinery/cm_vending/sorted/attachments
+	name = "\improper Armat Systems Attachments Vendor"
+	desc = "A subsidiary-owned vendor of weapon attachments. This can only be accessed by the Requisitions Officer and Cargo Techs."
+	req_access = list(ACCESS_MARINE_CARGO)
+	icon_state = "attach_vend"
+
+/obj/machinery/cm_vending/sorted/attachments/New()
+	..()
+	cm_vending_vendors.Add(src)						//this is needed for cm_initialize and needs changing
+
+/obj/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
+	listed_products = list(
+		list("Muzzle", -1, null, null),
+		list("Barrel Charger", round(scale * 2), /obj/item/attachable/heavy_barrel, "black"),
+		list("Bayonet", round(scale * 10), /obj/item/attachable/bayonet, "black"),
+		list("Extended Barrel", round(scale * 6), /obj/item/attachable/extended_barrel, "black"),
+		list("Recoil Compensator", round(scale * 6), /obj/item/attachable/compensator, "black"),
+		list("Suppressor", round(scale * 6), /obj/item/attachable/suppressor, "black"),
+
+		list("Rail", -1, null, null),
+		list("B8 Smart-Scope", round(scale * 2)+1, /obj/item/attachable/scope/mini_iff, "black"),
+		list("Magnetic Harness", round(scale * 6), /obj/item/attachable/magnetic_harness, "black"),
+		list("Quickfire Adapter", round(scale * 4), /obj/item/attachable/quickfire, "black"),
+		list("Rail Flashlight", round(scale * 10), /obj/item/attachable/flashlight, "black"),
+		list("S4 2x Telescopic Mini-Scope", round(scale * 4), /obj/item/attachable/scope/mini, "black"),
+		list("S5 Red-Dot Sight", round(scale * 9), /obj/item/attachable/reddot, "black"),
+		list("S6 Reflex Sight", round(scale * 9), /obj/item/attachable/reflex, "black"),
+		list("S8 4x Telescopic Scope", round(scale * 4), /obj/item/attachable/scope, "black"),
+
+		list("Underbarrel", -1, null, null),
+		list("Angled Grip", round(scale * 6), /obj/item/attachable/angledgrip, "black"),
+		list("Bipod", round(scale * 6), /obj/item/attachable/bipod, "black"),
+		list("Burst Fire Assembly", round(scale * 3), /obj/item/attachable/burstfire_assembly, "black"),
+		list("Gyroscopic Stabilizer", round(scale * 4), /obj/item/attachable/gyro, "black"),
+		list("Laser Sight", round(scale * 9), /obj/item/attachable/lasersight, "black"),
+		list("Mini Flamethrower", round(scale * 4), /obj/item/attachable/attached_gun/flamer, "black"),
+		list("U7 Underbarrel Shotgun", round(scale * 4), /obj/item/attachable/attached_gun/shotgun, "black"),
+		list("Underslung Grenade Launcher", round(scale * 5), /obj/item/attachable/attached_gun/grenade, "black"),
+		list("Underbarrel Flashlight Grip", round(scale * 9), /obj/item/attachable/flashlight/grip, "black"),
+		list("Vertical Grip", round(scale * 9), /obj/item/attachable/verticalgrip, "black"),
+
+		list("Stock", -1, null, null),
+		list("L42 Synthetic Stock", round(scale * 4), /obj/item/attachable/stock/carbine, "black"),
+		list("M37 Wooden Stock", round(scale * 4), /obj/item/attachable/stock/shotgun, "black"),
+		list("M41A Skeleton Stock", round(scale * 4), /obj/item/attachable/stock/rifle, "black"),
+		list("M44 Magnum Sharpshooter Stock", round(scale * 4), /obj/item/attachable/stock/revolver, "black"),
+		list("Submachinegun Arm Brace", round(scale * 2) + 1, /obj/item/attachable/stock/smg/brace, "black"),
+		list("Submachinegun Folding Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg/collapsible, "black"),
+		list("Submachinegun Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg, "black"),
+		)
+
+/obj/machinery/cm_vending/sorted/attachments/Topic(href, href_list)
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+
+	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
+		usr.set_interaction(src)
+		if (href_list["vend"])
+
+			if(!allowed(usr))
+				to_chat(usr, SPAN_WARNING("Access denied."))
+				return
+
+			var/idx=text2num(href_list["vend"])
+
+			var/list/L = listed_products[idx]
+			var/mob/living/carbon/human/H = usr
+
+			var/obj/item/card/id/I = H.wear_id
+			if(!istype(I)) //not wearing an ID
+				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+				return
+
+			if(I.registered_name != H.real_name)
+				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+				return
+
+			if(vendor_role && I.rank != vendor_role)
+				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				return
+
+			var/turf/T = get_turf(get_step(src, NORTHEAST))
+			if(H.loc == T)
+				T = get_turf(get_step(src, NORTH))
+			else
+				T = get_turf(get_step(src, SOUTHEAST))
+				if(H.loc == T)
+					T = get_turf(get_step(src, SOUTH))
+				else
+					T = get_turf(src)
+
+			if(T.contents.len > 25)
+				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+				return
+
+			var/type_p = L[3]
+
+			var/obj/item/IT = new type_p(T)
+			L[2]--								//taking 1 from amount of products in vendor
+			IT.add_fingerprint(usr)
+
+		add_fingerprint(usr)
+		ui_interact(usr) //updates the nanoUI window
+
+
+/obj/machinery/cm_vending/sorted/attachments/squad
+	name = "\improper Armat Systems Squad Attachments Vendor"
+	desc = "An attachment vendor made specifically for squads. Can be accessed by Squad Leaders and Squad Specialists."
+	req_access = list(ACCESS_MARINE_ALPHA)
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
+	icon_state = "attach_vend"
+
+/obj/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
+	listed_products = list(
+		list("Muzzle", -1, null, null),
+		list("Barrel Charger", round(scale * 2), /obj/item/attachable/heavy_barrel, "black"),
+		list("Bayonet", round(scale * 10), /obj/item/attachable/bayonet, "black"),
+		list("Extended Barrel", round(scale * 6), /obj/item/attachable/extended_barrel, "black"),
+		list("Recoil Compensator", round(scale * 6), /obj/item/attachable/compensator, "black"),
+		list("Suppressor", round(scale * 6), /obj/item/attachable/suppressor, "black"),
+
+		list("Rail", -1, null, null),
+		list("B8 Smart-Scope", round(scale * 2) + 1, /obj/item/attachable/scope/mini_iff, "black"),
+		list("Magnetic Harness", round(scale * 6), /obj/item/attachable/magnetic_harness, "black"),
+		list("Quickfire Adapter", round(scale * 4), /obj/item/attachable/quickfire, "black"),
+		list("Rail Flashlight", round(scale * 10), /obj/item/attachable/flashlight, "black"),
+		list("S4 2x Telescopic Mini-Scope", round(scale * 4), /obj/item/attachable/scope/mini, "black"),
+		list("S5 Red-Dot Sight", round(scale * 9), /obj/item/attachable/reddot, "black"),
+		list("S6 Reflex Sight", round(scale * 9), /obj/item/attachable/reflex, "black"),
+		list("S8 4x Telescopic Scope", round(scale * 4), /obj/item/attachable/scope, "black"),
+
+		list("Underbarrel", -1, null, null),
+		list("Angled Grip", round(scale * 6), /obj/item/attachable/angledgrip, "black"),
+		list("Bipod", round(scale * 6), /obj/item/attachable/bipod, "black"),
+		list("Burst Fire Assembly", round(scale * 3), /obj/item/attachable/burstfire_assembly, "black"),
+		list("Gyroscopic Stabilizer", round(scale * 4), /obj/item/attachable/gyro, "black"),
+		list("Laser Sight", round(scale * 9), /obj/item/attachable/lasersight, "black"),
+		list("Mini Flamethrower", round(scale * 4), /obj/item/attachable/attached_gun/flamer, "black"),
+		list("U7 Underbarrel Shotgun", round(scale * 4), /obj/item/attachable/attached_gun/shotgun, "black"),
+		list("Underslung Grenade Launcher", round(scale * 5), /obj/item/attachable/attached_gun/grenade, "black"),
+		list("Underbarrel Flashlight Grip", round(scale * 9), /obj/item/attachable/flashlight/grip, "black"),
+		list("Vertical Grip", round(scale * 9), /obj/item/attachable/verticalgrip, "black"),
+
+		list("Stock", -1, null, null),
+		list("L42 Synthetic Stock", round(scale * 4), /obj/item/attachable/stock/carbine, "black"),
+		list("M37 Wooden Stock", round(scale * 4), /obj/item/attachable/stock/shotgun, "black"),
+		list("M41A Skeleton Stock", round(scale * 4), /obj/item/attachable/stock/rifle, "black"),
+		list("M44 Magnum Sharpshooter Stock", round(scale * 4), /obj/item/attachable/stock/revolver, "black"),
+		list("Submachinegun Arm Brace", round(scale * 2) + 1, /obj/item/attachable/stock/smg/brace, "black"),
+		list("Submachinegun Folding Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg/collapsible, "black"),
+		list("Submachinegun Stock", round(scale * 2) + 1, /obj/item/attachable/stock/smg, "black"),
+		)
+
+/obj/machinery/cm_vending/sorted/attachments/squad/Topic(href, href_list)
+	if(stat & (BROKEN|NOPOWER))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+
+	if (in_range(src, usr) && isturf(loc) && ishuman(usr))
+		usr.set_interaction(src)
+		if (href_list["vend"])
+
+			if(!allowed(usr))
+				to_chat(usr, SPAN_WARNING("Access denied."))
+				return
+
+			var/idx=text2num(href_list["vend"])
+
+			var/list/L = listed_products[idx]
+			var/mob/living/carbon/human/H = usr
+
+			var/obj/item/card/id/I = H.wear_id
+			if(!istype(I)) //not wearing an ID
+				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
+				return
+
+			if(I.registered_name != H.real_name)
+				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+				return
+
+			if(vendor_role && I.rank != vendor_role)
+				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				return
+
+			var/turf/T = get_turf(get_step(src, NORTH))
+
+			if(T.contents.len > 25)
+				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
+				return
+
+			var/type_p = L[3]
+
+			var/obj/item/IT = new type_p(T)
+			L[2]--								//taking 1 from amount of products in vendor
+			IT.add_fingerprint(usr)
+
+		add_fingerprint(usr)
+		ui_interact(usr) //updates the nanoUI window
+
+//UNIFORM VENDOR
+obj/machinery/cm_vending/sorted/uniform_supply
+	name = "\improper ColMarTech Surplus Uniform Vendor"
+	desc = "An automated supply rack hooked up to a colossal storage of uniforms. This can only be accessed by the Requisitions Officer and Cargo Techs."
+	icon_state = "uniform_marine"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_CARGO)
+
+	listed_products = list(
+		list("Miscellaneous", -1, null, null),
+		list("USCM Uniform", 20, /obj/item/clothing/under/marine, "black"),
+		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, "black"),
+		list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, "black"),
+		list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, "black"),
+		list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, "black"),
+		list("Lightweight IMP Backpack", 20, /obj/item/storage/backpack/marine, "black"),
+		list("USCM Satchel", 20, /obj/item/storage/backpack/marine/satchel, "black"),
+		list("Armor", -1, null, null),
+		list("M3 Pattern Padded Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padded, "black"),
+		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless, "black"),
+		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, "black"),
+		list("M3 Pattern Carrier Marine Armor", 20, /obj/item/clothing/suit/storage/marine/carrier, "black"),
+		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, "black"),
+		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/class/heavy, "black"),
+		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/class/light, "black"),
+		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, "black"),
+		list("Gloves", -1, null, null),
+		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, "black"),
+		list("Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, "black"),
+		list("Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, "black"),
+		list("Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, "black"),
+		list("Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, "black"),
+		list("Radio", -1, null, null),
+		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, "black"),
+		list("Alpha Squad radio encryption key", 5, /obj/item/device/encryptionkey/alpha, "black"),
+		list("Bravo Squad radio encryption key", 5, /obj/item/device/encryptionkey/bravo, "black"),
+		list("Charlie Squad radio encryption key", 5, /obj/item/device/encryptionkey/delta, "black"),
+		list("Delta Squad radio encryption key", 5, /obj/item/device/encryptionkey/charlie, "black"),
+		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, "black"),
+		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, "black")
+		)
+
+/obj/machinery/cm_vending/sorted/uniform_supply/populate_product_list(var/scale)
+	return
+
+
+/obj/machinery/cm_vending/sorted/uniform_supply/squad
+	name = "\improper ColMarTech Surplus Uniform Vendor"
+	desc = "An automated supply rack hooked up to a colossal storage of uniforms."
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_CARGO)
+
+	listed_products = list()
+
+/obj/machinery/cm_vending/sorted/uniform_supply/squad/New()
+	..()
+	listed_products = list(
+		list("Uniform", -1, null, null),
+		list("USCM Uniform", 20, /obj/item/clothing/under/marine, "black"),
+		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, "black")
+	)
+
+	if(req_access.len)
+		switch(req_access.[1])
+			if(ACCESS_MARINE_ALPHA)
+				listed_products += list(list("Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, "black"),
+										list("Marine Alpha Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/alpha, "black"))
+			if(ACCESS_MARINE_BRAVO)
+				listed_products += list(list("Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, "black"),
+										list("Marine Bravo Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/bravo, "black"))
+			if(ACCESS_MARINE_CHARLIE)
+				listed_products += list(list("Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, "black"),
+										list("Marine Charlie Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/charlie, "black"))
+			if(ACCESS_MARINE_DELTA)
+				listed_products += list(list("Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, "black"),
+										list("Marine Delta Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/delta, "black"))
+	else
+		listed_products += list(list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, "black"),
+								list("Marine Radio Headset", 10, /obj/item/device/radio/headset/almayer, "black"))
+
+
+	listed_products += list(list("Heat Absorbent Coif", 10, /obj/item/clothing/mask/rebreather/scarf, "black"),
+							list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, "black"),
+							list("M276 Pattern Shotgun Shell Loading Rig", 5, /obj/item/storage/belt/shotgun, "black"),
+							list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, "black"),
+							list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, "black"),
+							list("Armor", -1, null, null),
+							list("M3 Pattern Padded Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padded, "black"),
+							list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless, "black"),
+							list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, "black"),
+							list("M3 Pattern Carrier Marine Armor", 20, /obj/item/clothing/suit/storage/marine/carrier, "black"),
+							list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, "black"),
+							list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/class/heavy, "black"),
+							list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/class/light, "black"),
+							list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, "black")
+							)
+
 
 #undef MARINE_CAN_BUY_UNIFORM
 #undef MARINE_CAN_BUY_SHOES

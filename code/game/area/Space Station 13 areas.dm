@@ -79,7 +79,7 @@ var/list/ghostteleportlocs = list()
 /hook/startup/proc/setupGhostTeleportLocs()
 	for(var/area/AR in all_areas)
 		if(ghostteleportlocs.Find(AR.name)) continue
-		if(istype(AR, /area/tdome) || istype(AR, /area/adminlevel/bunker01/mainroom))
+		if(istype(AR, /area/tdome) || istype(AR, /area/adminlevel/bunker01/mainroom) || istype(AR, /area/adminlevel/ert_station))
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
@@ -239,5 +239,3 @@ var/list/centcom_areas = list (
 
 //SPACE STATION 13
 var/list/the_station_areas = list ()
-
-

@@ -36,22 +36,27 @@
 			//CPR
 			if(M.action_busy)
 				return 1
-			M.visible_message(SPAN_DANGER("<B>[M] is trying perform CPR on [src]!</B>"), null, null, 4)
+
+			M.visible_message(SPAN_NOTICE("<b>[M]</b> starts performing <b>CPR</b> on <b>[src]</b>."),
+				SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
 
 			if(do_after(M, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 				if(health > config.health_threshold_dead && health < config.health_threshold_crit)
 					var/suff = min(getOxyLoss(), 10) //Pre-merge level, less healing, more prevention of dieing.
 					adjustOxyLoss(-suff)
 					updatehealth()
-					visible_message(SPAN_DANGER("[M] performs CPR on [src]!"), null, null, 3)
-					to_chat(src, SPAN_NOTICE(" <b>You feel a breath of fresh air enter your lungs. It feels good.</b>"))
-					to_chat(M, SPAN_WARNING("Repeat at least every 7 seconds."))
+					src.affected_message(M,
+						SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
+						SPAN_HELPFUL("You <b>perform CPR</b> on <b>[src]</b>. Repeat at least every <b>7 seconds</b>."),
+						SPAN_NOTICE("<b>[M]</b> performs <b>CPR</b> on <b>[src]</b>."))
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += SECONDS_7
-						visible_message(SPAN_DANGER("[M] performs CPR on [src]!"), null, null, 3)
+						M.visible_message(SPAN_NOTICE("<b>[M]</b> performs <b>CPR</b> on <b>[src]</b>."),
+							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
 					else
-						visible_message(SPAN_DANGER("[M] fails to perform CPR on [src]! Incorrect rhythm."), null, null, 3)
+						M.visible_message(SPAN_NOTICE("<b>[M]</b> fails to perform CPR on <b>[src]</b>."),
+							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
 					cpr_cooldown = world.time + SECONDS_7
 
 			return 1

@@ -1,0 +1,7 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "Chat cleanup part one. Any (hopefully) beneficial action taken by you or against you now appears in green. The important parts are highlighted with bold text. So far it concerns bandaging/using ointments, splinting, CPRing, feeding food/drinks/pills, defibbing someone. Things not concerning you remain in blue for now."
+  - rscdel: "The spam caused by trauma/burn kits being repeatedly applied has been removed."

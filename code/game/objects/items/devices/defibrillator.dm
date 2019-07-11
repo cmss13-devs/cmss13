@@ -148,7 +148,7 @@
 		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
-	SPAN_NOTICE("You start setting up the paddles on [H]'s chest"))
+		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[H]</b>'s chest."))
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	if(do_after(user, 70, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
@@ -159,7 +159,7 @@
 		update_icon()
 		playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] shocks [H] with the paddles."),
-		SPAN_NOTICE("You shock [H] with the paddles."))
+			SPAN_HELPFUL("You shock <b>[H]</b> with the paddles."))
 		H.visible_message(SPAN_DANGER("[H]'s body convulses a bit."))
 		defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
 

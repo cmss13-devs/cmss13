@@ -58,6 +58,8 @@ h1.alert, h2.alert		{color: #000000;}
 .disarm					{color: #990000;}
 .passive				{color: #660000;}
 
+.helpful				{color: #368f31;}
+
 .scanner			{color: #ff0000;}
 .scannerb			{color: #ff0000;	font-weight: bold;}
 .scannerburn	{color: #ffa500;}

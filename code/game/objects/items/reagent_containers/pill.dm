@@ -45,7 +45,8 @@ var/global/list/randomized_pill_icons
 					to_chat(H, SPAN_DANGER("You can't eat pills."))
 					return
 
-			to_chat(M, SPAN_NOTICE(" You swallow [src]."))
+			M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
+				SPAN_HELPFUL("You swallow [src]."))
 			M.drop_inv_item_on_ground(src) //icon update
 			if(reagents.total_volume)
 				reagents.trans_to_ingest(M, reagents.total_volume)
@@ -60,7 +61,10 @@ var/global/list/randomized_pill_icons
 				to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
 				return
 
-			user.visible_message(SPAN_WARNING("[user] attempts to force [M] to swallow [src]."))
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] a pill."),
+				SPAN_HELPFUL("[user] <b>starts feeding</b> you a pill."),
+				SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] a pill."))
 
 			var/ingestion_time = 30
 			if(user.mind && user.mind.cm_skills)
@@ -69,8 +73,11 @@ var/global/list/randomized_pill_icons
 			if(!do_after(user, ingestion_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
 			user.drop_inv_item_on_ground(src) //icon update
-			for(var/mob/O in viewers(world.view, user))
-				O.show_message(SPAN_DANGER("[user] forces [M] to swallow [src]."), 1)
+			
+			user.affected_message(M,
+				SPAN_HELPFUL("You [user == M ? "<b>swallowed</b>" : "<b>fed</b> [M]"] a pill."),
+				SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
+				SPAN_NOTICE("[user] [user == M ? "swallowed" : "fed [M]"] a pill."))
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -95,7 +102,7 @@ var/global/list/randomized_pill_icons
 			if(!target.reagents.total_volume)
 				to_chat(user, SPAN_DANGER("[target] is empty. Cant dissolve pill."))
 				return
-			to_chat(user, SPAN_NOTICE(" You dissolve the pill in [target]"))
+			to_chat(user, SPAN_NOTICE("You dissolve the pill in [target]"))
 
 			var/rgt_list_text = get_reagent_list_text()
 

@@ -100,7 +100,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/device/motiondetector
 	)
 
-	var/brightness_on = 5 //Average attachable pocket light
+	var/brightness_on = 6 //Average attachable pocket light
 	var/flashlight_cooldown = 0 //Cooldown for toggling the light
 	var/locate_cooldown = 0 //Cooldown for SL locator
 	var/armor_overlays[]

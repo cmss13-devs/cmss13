@@ -73,12 +73,16 @@
 
 
 			if (fullness <= (550 * (1 + M.overeatduration / 1000)))
-				for(var/mob/O in viewers(world.view, user))
-					O.show_message(SPAN_DANGER("[user] attempts to feed [M] [src]."), 1)
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
+					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 			else
-				for(var/mob/O in viewers(world.view, user))
-					O.show_message(SPAN_DANGER("[user] cannot force anymore of [src] down [M]'s throat."), 1)
-					return 0
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>try to feed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b> but they are full."),
+					SPAN_HELPFUL("[user] <b>tries feeding</b> you <b>[src]</b> but you are full."),
+					SPAN_NOTICE("[user] tries feeding [user == M ? "themselves" : "[M]"] [src] but they are full."))
+				return 0
 
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
 
@@ -88,9 +92,10 @@
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
 			msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] Reagents: [rgt_list_text] (INTENT: [uppertext(user.a_intent)])")
 
-			for(var/mob/O in viewers(world.view, user))
-				O.show_message(SPAN_DANGER("[user] feeds [M] [src]."), 1)
-
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
+				SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
+				SPAN_NOTICE("[user] fed [user == M ? "themselves" : "[M]"] [src]."))
 
 		if(reagents)								//Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)

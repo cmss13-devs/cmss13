@@ -112,3 +112,5 @@
 #define SPAN_XOOC(X) "<span class='xooc'>[X]</span>"
 
 #define SPAN_MOOC(X) "<span class='mooc'>[X]</span>"
+
+#define SPAN_HELPFUL(X) "<span class='helpful'>[X]</span>"

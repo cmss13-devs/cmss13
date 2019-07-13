@@ -392,7 +392,7 @@
 	var/exploding = 0
 	var/inject_timer = 0
 	var/cloak_timer = 0
-	var/upgrades = 2 //Set to two, so admins can give preds shittier ones for young blood events or whatever.
+	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 0 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
 
@@ -1095,8 +1095,11 @@
 
 	spawn(10)
 		if(!drain_power(usr,50)) return //At this point they've upgraded.
-		visible_message("A strange voice says, <span class='rough'>'[msg]'.</span>")
-	return 1
+		for(var/mob/Q in hearers(usr))
+			if(Q.stat) continue //Unconscious
+			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='rough'>'[msg]'</span>.")
+
+	
 
 //=================//\\=================\\
 //======================================\\
@@ -1682,6 +1685,12 @@
 
 	return
 
+/obj/item/weapon/combistick/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
+	if(isYautja(user) && isXeno(target))
+		var/mob/living/carbon/Xenomorph/X = target
+		X.interference = 30
+	..()
+
 /obj/item/weapon/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
 	if(!isYautja(user))
 		user.visible_message("<span class='notice'>You start to untangle the chain on \the [src]...")
@@ -1690,7 +1699,7 @@
 	else ..()
 
 /obj/item/weapon/combistick/throw_impact(atom/hit_atom)
-	if(isYautja(hit_atom) && istype(hit_atom,/mob/living/carbon/human))
+	if(isYautja(hit_atom) && ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(H.put_in_hands(src))
 			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "),SPAN_NOTICE(" You easily catch [src]. "))

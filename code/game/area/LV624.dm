@@ -183,6 +183,21 @@
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
+/area/lv624/lazarus/landing_zones
+	ceiling = CEILING_NONE
+	is_resin_allowed = FALSE
+
+/area/lv624/lazarus/landing_zones/lz1
+	name = "\improper Alamo Landing Zone"
+
+/area/lv624/lazarus/landing_zones/lz2
+	name = "\improper Normandy Landing Zone"
+
+/area/lv624/lazarus
+	name = "\improper Lazarus"
+	icon_state = "green"
+	ceiling = CEILING_METAL
+
 /area/lv624/lazarus/atmos
 	name = "\improper Atmospherics"
 	icon_state = "atmos"

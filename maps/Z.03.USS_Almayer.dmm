@@ -28178,7 +28178,7 @@
 /area/almayer/hallways/aft_hallway)
 "byo" = (
 /obj/machinery/computer/security/almayer{
-	dir = 8;
+	dir = 4;
 	name = "Ship Security Cameras";
 	network = list("almayer");
 	pixel_x = -17

@@ -714,7 +714,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	feedback_add_details("admin_verb","CHANGEKEY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	M.ckey = new_ckey
 	var/mob/living/carbon/Xenomorph/XNO = M
-	if(XNO)
+	if(istype(XNO))
 		XNO.generate_name()
 
 /client/proc/cmd_admin_ghostchange(var/mob/living/M, var/mob/dead/observer/O)

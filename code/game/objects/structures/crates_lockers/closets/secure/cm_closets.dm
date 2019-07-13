@@ -330,6 +330,8 @@
 	new /obj/item/clothing/suit/storage/marine/MP/RO(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
+	new /obj/item/clothing/gloves/marine(src)
+	new /obj/item/clothing/gloves/marine(src)
 
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1/New()
 	..()

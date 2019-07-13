@@ -72,7 +72,32 @@
 			new /obj/item/storage/fancy/egg_box(src)
 		return
 
+/obj/structure/closet/secure_closet/freezer/fridge/groceries
+	name = "Groceries"
 
+/obj/structure/closet/secure_closet/freezer/fridge/groceries/New()
+	sleep(2)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/apple(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/cabbage(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/carrot(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/chili(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/corn(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/eggplant(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/potato(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/tomato(src)
+	for(var/i = 0, i < 2, i++)
+		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)
+	return
 
 /obj/structure/closet/secure_closet/freezer/money
 	name = "Freezer"
@@ -101,7 +126,8 @@
 		..()
 		sleep(2)
 		for(var/i = 0, i < 2, i++)
-			new /obj/item/reagent_container/food/condiment/sugar(src)		
+			new /obj/item/reagent_container/food/condiment/sugar(src)
 		for(var/i = 0, i < 6, i++)
 			new /obj/item/reagent_container/food/snacks/flour(src)
+		new /obj/item/reagent_container/food/condiment/enzyme(src)
 		return

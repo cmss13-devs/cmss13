@@ -1,0 +1,9 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - rscadd: "Updated the Almayer kitchen, giving wannabe-chefs more to work with."
+  - tweak: "A MarineMed was swapped with a WeylandMed Plus in the Almayer medical treatment center."
+  - bugfix: "Added armoured gloves to CIC armoury, SO lockers."
+  - rscdel: "Removed the access requirement on the medical cryogenics storage airlock."

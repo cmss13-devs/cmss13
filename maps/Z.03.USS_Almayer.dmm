@@ -23466,14 +23466,6 @@
 /area/almayer/medical/cryo_tubes)
 "bkI" = (
 /obj/machinery/cryopod,
-/obj/machinery/door_control{
-	id = "medcryobeds";
-	name = "Door Release";
-	normaldoorcontrol = 1;
-	pixel_x = -23;
-	pixel_y = 0;
-	unacidable = 1
-	},
 /turf/open/floor/almayer{
 	tag = "icon-sterile_green_corner (NORTH)";
 	icon_state = "sterile_green_corner";
@@ -29736,8 +29728,8 @@
 	id = "medcryobeds";
 	id_tag = "medcryobeds";
 	name = "Medical Hypersleep Access";
-	req_access = list(20);
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -41387,14 +41379,8 @@
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cfg" = (
-/obj/structure/table/almayer,
-/obj/machinery/juicer{
-	pixel_y = 5
-	},
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
-	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -41411,11 +41397,17 @@
 "cfi" = (
 /obj/structure/table/almayer,
 /obj/item/toy/deck,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cfj" = (
 /obj/structure/table/almayer,
 /obj/item/spacecash/c10,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cfk" = (
@@ -41427,9 +41419,12 @@
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cfl" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "cfm" = (
@@ -41711,18 +41706,6 @@
 	dir = 2
 	},
 /area/almayer/hull/lower_hull)
-"cfZ" = (
-/obj/structure/table/almayer,
-/obj/item/storage/box/donkpockets{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/donkpockets,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/grunt_rnr)
 "cga" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/almayer{
@@ -41731,8 +41714,7 @@
 	},
 /area/almayer/living/grunt_rnr)
 "cgb" = (
-/obj/structure/table/almayer,
-/obj/machinery/microwave,
+/obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43074,40 +43056,26 @@
 	},
 /area/almayer/squads/delta)
 "cjG" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/table/almayer,
+/obj/machinery/juicer{
+	pixel_y = 3
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
 /area/almayer/living/grunt_rnr)
 "cjH" = (
-/obj/structure/table/almayer,
-/obj/item/clothing/suit/chef/classic,
-/obj/item/tool/kitchen/rollingpin,
-/obj/item/clothing/head/chefhat,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
 	dir = 4
 	},
+/obj/structure/table/almayer,
+/obj/machinery/microwave,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
-/area/almayer/living/grunt_rnr)
-"cjI" = (
-/obj/structure/table/almayer,
-/obj/item/storage/donut_box,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	tag = "icon-intact-scrubbers (EAST)";
-	icon_state = "intact-scrubbers";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	tag = "icon-intact-supply (EAST)";
-	icon_state = "intact-supply";
-	dir = 4
-	},
-/turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "cjK" = (
 /obj/machinery/door/airlock/almayer/maint,
@@ -43350,10 +43318,7 @@
 	},
 /area/almayer/hull/lower_hull)
 "ckL" = (
-/obj/structure/table/almayer,
-/obj/machinery/processor{
-	pixel_y = 5
-	},
+/obj/machinery/processor,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -43361,7 +43326,8 @@
 /area/almayer/living/grunt_rnr)
 "ckM" = (
 /obj/structure/table/almayer,
-/obj/item/tool/kitchen/tray,
+/obj/item/tool/kitchen/knife,
+/obj/item/tool/kitchen/rollingpin,
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -43649,9 +43615,8 @@
 /area/almayer/living/grunt_rnr)
 "clC" = (
 /obj/structure/rack,
-/obj/item/clothing/gloves/latex,
-/obj/item/tool/kitchen/knife,
-/obj/item/reagent_container/spray/cleaner,
+/obj/item/clothing/head/chefhat,
+/obj/item/book/manual/chef_recipes,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -44846,9 +44811,12 @@
 /area/almayer/squads/req)
 "cpY" = (
 /obj/structure/table/almayer,
-/obj/item/storage/box/uscm_mre,
-/obj/item/storage/box/uscm_mre,
-/obj/item/book/manual/chef_recipes,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -4
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 4
+	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
 	},
@@ -44865,7 +44833,8 @@
 	},
 /area/almayer/living/grunt_rnr)
 "cqa" = (
-/obj/machinery/vending/coffee,
+/obj/structure/rack,
+/obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -45498,6 +45467,17 @@
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/vehiclehangar)
+"ddN" = (
+/obj/structure/bed/chair/wood/normal{
+	tag = "icon-wooden_chair (EAST)";
+	icon_state = "wooden_chair";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "deD" = (
 /obj/machinery/prop/almayer/CICmap,
 /obj/structure/table/almayer,
@@ -46731,6 +46711,12 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lockerroom)
+"feo" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "feC" = (
 /obj/machinery/door/firedoor/border_only/almayer{
 	tag = "icon-door_open";
@@ -50064,6 +50050,17 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
+"kvr" = (
+/obj/structure/bed/chair/wood/normal{
+	tag = "icon-wooden_chair (WEST)";
+	icon_state = "wooden_chair";
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/almayer/living/grunt_rnr)
 "kvN" = (
 /obj/item/tool/wet_sign,
 /turf/open/floor/almayer{
@@ -50071,6 +50068,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull)
+"kyf" = (
+/obj/structure/bed/stool,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/grunt_rnr)
 "kyC" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -50422,6 +50429,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/navigation)
+"lfs" = (
+/obj/machinery/vending/medical,
+/turf/open/floor/almayer{
+	tag = "icon-sterile_green_side (WEST)";
+	icon_state = "sterile_green_side";
+	dir = 8
+	},
+/area/almayer/medical/surgery_hallway)
 "lgN" = (
 /obj/structure/table/almayer,
 /obj/item/storage/box/cups{
@@ -53290,6 +53305,13 @@
 	dir = 4
 	},
 /area/almayer/medical/lower_medical)
+"pvo" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/grunt_rnr)
 "pvr" = (
 /obj/machinery/power/apc/almayer{
 	dir = 2
@@ -53760,7 +53782,7 @@
 /area/almayer/squads/delta/req)
 "qff" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen"
@@ -55070,7 +55092,6 @@
 /area/almayer/command/cic)
 "rPi" = (
 /obj/structure/table/almayer,
-/obj/item/spacecash/c10,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
 	icon_state = "intact-supply";
@@ -55081,6 +55102,7 @@
 	icon_state = "intact-scrubbers";
 	dir = 4
 	},
+/obj/item/storage/donut_box,
 /turf/open/floor/wood,
 /area/almayer/living/grunt_rnr)
 "rPE" = (
@@ -55346,6 +55368,13 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/hallways/repair_bay)
+"skC" = (
+/obj/structure/table/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/living/grunt_rnr)
 "sld" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -55964,6 +55993,14 @@
 	dir = 8
 	},
 /area/almayer/squads/bravo/req)
+"tcU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	icon_state = "kitchen"
+	},
+/area/almayer/living/grunt_rnr)
 "tdt" = (
 /obj/structure/table/almayer,
 /obj/item/tool/stamp/denied,
@@ -57831,6 +57868,22 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/shipboard/brig_cells)
+"vFK" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/obj/structure/table/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/chem_dispenser/soda,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/living/grunt_rnr)
 "vFV" = (
 /obj/machinery/iv_drip,
 /obj/item/device/radio/intercom{
@@ -87037,7 +87090,7 @@ bnT
 oNF
 tQY
 bJa
-tQY
+lfs
 bvs
 btY
 cXj
@@ -90300,7 +90353,7 @@ lAO
 buH
 bJt
 cfg
-cgZ
+vFK
 cjG
 ckL
 chG
@@ -90502,8 +90555,8 @@ buH
 bHN
 buH
 bJw
-cfZ
-chG
+cgZ
+tcU
 nki
 liG
 chG
@@ -90705,8 +90758,8 @@ buH
 bHN
 buH
 bJw
-cga
-chG
+pvo
+tcU
 cjH
 ckM
 cpY
@@ -90909,7 +90962,7 @@ bHN
 buH
 bJw
 cgb
-chG
+tcU
 tqo
 ckN
 qff
@@ -91111,8 +91164,8 @@ buH
 bHN
 buH
 bJt
-cgb
-chG
+cga
+tcU
 sNP
 chG
 cpZ
@@ -91315,8 +91368,8 @@ bHN
 vMx
 bJt
 bJt
+skC
 ciV
-cjI
 clB
 bJt
 cqb
@@ -91518,7 +91571,7 @@ bHL
 buH
 bJw
 bKG
-ciX
+kyf
 bok
 ciX
 cqw
@@ -91721,7 +91774,7 @@ bHN
 buH
 bJu
 bKG
-cff
+feo
 vQl
 cff
 cff
@@ -91924,7 +91977,7 @@ bHN
 buH
 cfe
 bKG
-cfh
+ddN
 sJV
 cjV
 cff
@@ -92533,7 +92586,7 @@ bHN
 buH
 bJt
 bKK
-cfk
+kvr
 wRH
 cfk
 cff

@@ -319,11 +319,8 @@
 					new /obj/item/clothing/suit/armor/yautja/full(src.loc)
 			choice = mother_1
 
-		if(Y.upgrades > 1)
-			to_chat(src, SPAN_NOTICE("Your [Y] hums as it receives a battery and translator upgrade."))
+		if(Y.upgrades > 0)
+			to_chat(src, SPAN_NOTICE("[Y] hum as their support systems come online."))
 			var/newverb = /obj/item/clothing/gloves/yautja/proc/translate
 			Y.verbs |= newverb
-		if(Y.upgrades > 2)
-			to_chat(src, SPAN_NOTICE("Your [Y] can now translate to xenomorph hives as well."))
-			to_chat(src, SPAN_NOTICE("Your [Y] has been upgraded to carry a scimitar instead of blades."))
 		verbs -= /mob/living/carbon/human/proc/pred_buy

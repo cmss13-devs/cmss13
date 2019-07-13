@@ -87,6 +87,7 @@
 #define ALLOWINTERNALS	16	//mask allows internals
 #define ALLOWREBREATH	32 //Mask allows to breath in really hot or really cold air.
 #define BLOCKGASEFFECT	64 // blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets
+#define ALLOWCPR		512 // Allows CPR even though the face is covered by a mask
 //HELMET AND MASK======================================================================================
 
 //SUITS AND HELMETS====================================================================================

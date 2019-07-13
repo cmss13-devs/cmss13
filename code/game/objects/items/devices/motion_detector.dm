@@ -71,18 +71,21 @@
 
 /obj/item/device/motiondetector/attack_self(mob/user)
 	if(ishuman(user))
-		active = !active
-		if(active)
-			update_icon()
-			to_chat(user, SPAN_NOTICE("You activate [src]."))
-			playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
-			processing_objects.Add(src)
+		toggle_active(user, active)
 
-		else
-			icon_state = "[initial(icon_state)]"
-			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
-			playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
-			processing_objects.Remove(src)
+// var/active is used to forcefully toggle it to a specific state
+/obj/item/device/motiondetector/proc/toggle_active(mob/user, var/old_active)
+	active = !old_active
+	if(active)
+		update_icon()
+		to_chat(user, SPAN_NOTICE("You activate [src]."))
+		playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
+		processing_objects.Add(src)
+	else
+		icon_state = "[initial(icon_state)]"
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
+		processing_objects.Remove(src)
 
 /obj/item/device/motiondetector/Dispose()
 	processing_objects.Remove(src)
@@ -185,31 +188,11 @@
 	blip_type = "data"
 	var/objects_to_detect = list(/obj/item/document_objective, /obj/item/disk/objective, /obj/item/device/mass_spectrometer/adv/objective, /obj/item/device/reagent_scanner/adv/objective, /obj/item/device/healthanalyzer/objective, /obj/item/device/autopsy_scanner/objective, /obj/item/device/autopsy_scanner/objective)
 
-/obj/item/device/motiondetector/intel/toggle_mode(mob/user)
-	detector_mode = !detector_mode
-	if(detector_mode)
-		to_chat(user, SPAN_NOTICE("You switch [src] to short range mode."))
-		detector_range = 7
-	else
-		to_chat(user, SPAN_NOTICE("You switch [src] to long range mode."))
-		detector_range = 14
-	if(active)
+/obj/item/device/motiondetector/intel/update_icon()
+	if (active)
 		icon_state = "[initial(icon_state)]_on_[detector_mode]"
-
-/obj/item/device/motiondetector/intel/attack_self(mob/user)
-	if(ishuman(user))
-		active = !active
-		if(active)
-			icon_state = "[initial(icon_state)]_on_[detector_mode]"
-			to_chat(user, SPAN_NOTICE("You activate [src]."))
-			playsound(loc, 'sound/items/detector_turn_on.ogg', 30, 0, 5, 2)
-			processing_objects.Add(src)
-
-		else
-			icon_state = "[initial(icon_state)]"
-			to_chat(user, SPAN_NOTICE("You deactivate [src]."))
-			playsound(loc, 'sound/items/detector_turn_off.ogg', 30, 0, 5, 2)
-			processing_objects.Remove(src)
+	else
+		icon_state = "[initial(icon_state)]"
 
 /obj/item/device/motiondetector/intel/scan()
 	var/mob/living/carbon/human/human_user

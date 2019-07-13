@@ -56,7 +56,7 @@
 		X.overwatch(selected_xeno, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
 		if (oldXeno)
 			oldXeno.hud_set_queen_overwatch()
-	if (!selected_xeno.disposed)
+	if (selected_xeno && !selected_xeno.disposed)
 		selected_xeno.hud_set_queen_overwatch()
 
 // Generic Xeno overwatch proc, very simple for now. If you want it to cancel the overwatch, hand in TRUE in the second var.
@@ -141,7 +141,7 @@
 			xenoSrc.overwatch(xenoTarget, FALSE, /datum/event_handler/xeno_overwatch_onmovement/queen)
 			if (oldXeno)
 				oldXeno.hud_set_queen_overwatch()
-			if (!xenoTarget.disposed)
+			if (xenoTarget && !xenoTarget.disposed)
 				xenoTarget.hud_set_queen_overwatch()
 
 	..()

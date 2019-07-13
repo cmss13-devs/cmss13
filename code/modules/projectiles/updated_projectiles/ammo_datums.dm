@@ -461,7 +461,7 @@
 /datum/ammo/bullet/rifle/New()
 	..()
 	accurate_range = config.norm_shell_range
-	damage = config.med_hit_damage
+	damage = config.lhigh_hit_damage
 	accuracy = config.hmed_hit_accuracy
 	scatter = config.min_scatter_value
 	shell_speed = config.ultra_shell_speed

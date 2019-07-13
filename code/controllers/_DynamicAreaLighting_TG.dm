@@ -119,17 +119,37 @@ var/global/list/global_changed_lights = list()
 				var/dx = T.x - owner.x
 				switch(owner.dir)
 					if(NORTH)
-						if(dy >= 0)
-							lum(T, 0, 1, dy==0?2:1)
+						if(dy >= -1)
+							var/mul = 1
+							if(dy==0)
+								mul = 2
+							if(dy==-1)
+								mul = 2.5
+							lum(T, 0, 1, mul)
 					if(SOUTH)
-						if(dy <= 0)
-							lum(T, 0, -1, dy==0?2:1)
+						if(dy <= 1)
+							var/mul = 1
+							if(dy==0)
+								mul = 2
+							if(dy==1)
+								mul = 2.5
+							lum(T, 0, -1, mul)
 					if(EAST)
-						if(dx >= 0)
-							lum(T, 1, 0, dx==0?2:1)
+						if(dx >= -1)
+							var/mul = 1
+							if(dx==0)
+								mul = 2
+							if(dx==-1)
+								mul = 2.5
+							lum(T, 1, 0, mul)
 					if(WEST)
-						if(dx <= 0)
-							lum(T, -1, 0, dx==0?2:1)
+						if(dx <= 1)
+							var/mul = 1
+							if(dx==0)
+								mul = 2
+							if(dx==1)
+								mul = 2.5
+							lum(T, -1, 0, mul)
 					else
 						lum(T)
 			

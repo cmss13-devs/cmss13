@@ -58,7 +58,7 @@
 	desc = "A close-fitting cap that covers the top, back, and sides of the head. Can also be adjusted to cover the lower part of the face so it keeps the user warm in harsh conditions."
 	icon_state = "coif"
 	item_state = "coif"
-	flags_inventory = COVERMOUTH|ALLOWREBREATH
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEALLHAIR|HIDEEARS
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
@@ -68,7 +68,7 @@
 	desc = "A tactical bandana used by soldiers to conceal their face."
 	icon_state = "scarf_gray"
 	item_state = "scarf_gray"
-	flags_inventory = COVERMOUTH|ALLOWREBREATH
+	flags_inventory = COVERMOUTH|ALLOWREBREATH|ALLOWCPR
 	flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	flags_cold_protection = HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature

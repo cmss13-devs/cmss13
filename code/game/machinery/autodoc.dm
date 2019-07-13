@@ -43,7 +43,7 @@
 		picked.heal_damage(brute, burn, 0, 1)
 	else 
 		picked.heal_damage(brute,burn)
-		human.UpdateDamageIcon()
+	human.UpdateDamageIcon()
 	human.updatehealth()
 
 /obj/machinery/autodoc/process()

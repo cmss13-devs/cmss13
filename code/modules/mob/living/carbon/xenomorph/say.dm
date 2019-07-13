@@ -16,6 +16,10 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
+	if(dazed > 0)
+		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
+		return
+
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 

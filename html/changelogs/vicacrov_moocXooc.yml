@@ -1,6 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes: 
-  - rscadd: "Added MOOC (marine OOC) and XOOC (xeno OOC). These OOC channels will be visible thorough the game, but only staff members will be able to post to it."

@@ -80,6 +80,11 @@
 		else
 			clear_fullscreen("blurry")
 
+		if(dazed)
+			overlay_fullscreen("dazed", /obj/screen/fullscreen/blurry)
+		else
+			clear_fullscreen("dazed")
+
 		if(druggy)
 			overlay_fullscreen("high", /obj/screen/fullscreen/high)
 		else

@@ -1,0 +1,15 @@
+
+author: Neth Iafin
+delete-after: True
+
+changes: 
+  - tweak: "Increased explosive damage to xenos."
+  - tweak: "Massively reduced stun from grenades to xenos."
+  - tweak: "Grenades now induce Shell Shock (can't pull and fire weapons fast, can't speak properly) to humans, and Slow to Xenos."
+  - tweak: "Slugs now sever connection with hivemind for small period of time along with disabling abilities. For humans it induces Shell Shock."
+  - tweak: "Buckshot stuns less, slowdowns for more time instead."
+  - tweak: "Neurotoxin has perfect accuracy now."
+  - tweak: "Neurotoxin slows on first hit, slows even more on second, shell shocks on third and Knocks Down on 4th. Hits after that keep targets down as long as they are shell shocked."
+  - tweak: "If neurotoxin hits human enough times it will force sleep on them for half a minute. Every time neurotoxin hits human after that, it resets sleep back to half a minute."
+  - rscadd: "Acid (except boiler) can hit xenos of a different hive. Neuro included, however it can't Stun or KO."
+  - rscadd: "Stun and Shell Shock time is affected by endurance skill. This should help survivors get an upper hand."

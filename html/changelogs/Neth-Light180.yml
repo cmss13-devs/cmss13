@@ -1,5 +1,0 @@
-author: Neth Iafin
-delete-after: True
-
-changes: 
-  - tweak: "Made directional lighting work in 180 degree infront of you. Behind you, even more darkness. Infront of you - more light than before."

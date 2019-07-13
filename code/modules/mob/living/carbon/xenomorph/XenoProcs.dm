@@ -115,6 +115,10 @@
 	if(stat)
 		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 		return 0
+	
+	if(dazed)
+		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+		return 0
 
 	if(value)
 		if(plasma_stored < value)
@@ -209,6 +213,12 @@
 		. *= 0.95
 	if(locate(/obj/effect/alien/resin/sticky/fast) in loc)
 		. *= 0.8
+
+	if(superslowed)
+		. += XENO_SUPERSLOWED_AMOUNT
+
+	if(slowed && !superslowed)
+		. += XENO_SLOWED_AMOUNT
 
 	. *= speed_multiplier
 

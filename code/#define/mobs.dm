@@ -171,6 +171,9 @@
 #define EYE_BLUR	"eye_blur"
 #define DROWSY		"drowsy"
 #define SLUR 		"slur"
+#define DAZE 		"daze"
+#define SLOW		"slow"
+#define SUPERSLOW	"superslow"
 //=================================================
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
@@ -193,6 +196,8 @@
 #define XENO_HOST			32768	//Tracks whether we're gonna be a baby alien's mummy.
 #define IMMOBILE_ACTION		65536 	// If you are performing an action that prevents you from being pushed by your own people.
 #define PERMANENTLY_DEAD	131072
+#define CANDAZE				262144
+#define CANSLOW				262144*2
 
 // =============================
 // hive types
@@ -202,6 +207,16 @@
 #define XENO_HIVE_ALPHA 3
 #define XENO_HIVE_BETA 4
 #define XENO_HIVE_ZETA 5
+
+//=================================================
+
+// =============================
+// slowdowns
+
+#define XENO_SLOWED_AMOUNT 1.5
+#define XENO_SUPERSLOWED_AMOUNT 3.5
+#define HUMAN_SLOWED_AMOUNT 2
+#define HUMAN_SUPERSLOWED_AMOUNT 4.5
 
 //=================================================
 

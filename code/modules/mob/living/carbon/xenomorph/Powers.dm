@@ -405,7 +405,8 @@
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	used_fling = 1
 	use_plasma(10)
-	H.apply_effects(1,2) 	// Stun
+	H.apply_effect(1, STUN)
+	H.apply_effect(2, WEAKEN)
 	shake_camera(H, 2, 1)
 
 	var/facing = get_dir(src, H)

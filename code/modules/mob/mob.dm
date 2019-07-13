@@ -742,11 +742,30 @@ mob/proc/yank_out_object()
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
+	handle_dazed()
+	handle_slowed()
+	handle_superslowed()
 
 /mob/living/proc/handle_stunned()
 	if(stunned)
 		AdjustStunned(-1)
 	return stunned
+
+/mob/living/proc/handle_dazed()
+	if(dazed)
+		AdjustDazed(-1)
+	return dazed
+
+/mob/living/proc/handle_slowed()
+	if(slowed)
+		AdjustSlowed(-1)
+	return stunned
+
+/mob/living/proc/handle_superslowed()
+	if(superslowed)
+		AdjustSuperslowed(-1)
+	return dazed
+
 
 /mob/living/proc/handle_knocked_down()
 	if(knocked_down && client)

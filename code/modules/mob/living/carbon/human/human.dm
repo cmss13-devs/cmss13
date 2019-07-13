@@ -118,6 +118,7 @@
 		KnockDown(knockdown_value)
 		var/knockout_value = min( round( damage*0.1  ,1) ,10)
 		KnockOut( knockout_value )
+		Daze( knockout_value*2 )
 		explosion_throw(severity, direction)
 
 		if(Item1 && isturf(Item1.loc))

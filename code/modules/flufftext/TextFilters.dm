@@ -59,6 +59,23 @@ proc/NewStutter(phrase,stunned)
 
 	return sanitize(list2text(split_phrase," "))
 
+proc/DazedText(phrase)
+	phrase = html_decode(phrase)
+	var/result = ""	
+	var/i = rand(5,10)
+	if(lentext(phrase)<2)
+		for(,i > 0,i--)
+			result += pick("E","A","O","U")
+			if(i > 1)
+				result += "-"
+		return result
+	var/firstletter = copytext(phrase,1,2)
+	var/secondletter = copytext(phrase,2,3)
+	result = firstletter
+	for(,i > 0,i--)
+		result += "-"+secondletter
+	return result
+
 proc/Stagger(mob/M,d) //Technically not a filter, but it relates to drunkenness.
 	step(M, pick(d,turn(d,90),turn(d,-90)))
 

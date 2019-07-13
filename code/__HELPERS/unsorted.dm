@@ -1085,6 +1085,9 @@ var/global/image/busy_indicator_hostile
 		)
 			. = FALSE
 			break
+		if(user_flags & INTERRUPT_DAZED && L.dazed)
+			. = FALSE
+			break
 		if(user_flags & INTERRUPT_NEEDHAND)
 			if(user_holding)
 				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item

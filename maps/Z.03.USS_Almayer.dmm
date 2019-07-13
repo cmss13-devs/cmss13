@@ -55500,11 +55500,11 @@
 /area/almayer/shipboard/brig_cells)
 "spF" = (
 /obj/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 1;
 	icon_state = "camera";
 	name = "ship-grade camera";
 	network = list("almayer");
-	tag = "icon-camera (WEST)"
+	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
@@ -56898,7 +56898,10 @@
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/closed/wall/almayer,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
 /area/almayer/shipboard/starboard_point_defense)
 "upx" = (
 /obj/structure/table/almayer,

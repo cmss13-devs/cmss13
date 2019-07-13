@@ -732,8 +732,11 @@
 	if(!P || !istype(P)) return
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & (AMMO_XENO_ACID|AMMO_XENO_TOX) ) //Aliens won't be harming aliens.
-		bullet_ping(P)
-		return
+		//separate if to improve readability
+		var/mob/living/carbon/Xenomorph/XNO = P.firer
+		if(!istype(XNO) || XNO.hivenumber == hivenumber)
+			bullet_ping(P)
+			return
 
 	if(ammo_flags & AMMO_BALLISTIC)
 		round_statistics.total_bullet_hits_on_xenos++

@@ -96,31 +96,49 @@
 		if(isliving(M)) //This is pretty ugly, but what can you do.
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size == MOB_SIZE_BIG) return //Big xenos are not affected.
-				target.apply_effects(0,1) //Smaller ones just get shaken.
+				if(target.mob_size == MOB_SIZE_BIG) 
+					target.apply_effect(2, SLOW)
+					return //Big xenos are not affected.
+				target.apply_effect(0.1, WEAKEN)
+				target.apply_effect(2, SUPERSLOW)
+				target.apply_effect(4, SLOW)
 				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			else
 				if(!isYautja(M)) //Not predators.
 					var/mob/living/target = M
-					target.apply_effects(1,2) //Humans get stunned a bit.
+					target.apply_effect(1, STUN)
+					target.apply_effect(1, WEAKEN)
+					target.apply_effect(2, SUPERSLOW)
+					target.apply_effect(4, SLOW)
 					to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
 		step_away(M,P)
 
-/datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 2) //crazier version of knockback, for PB use
+/datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
 	if(!M || M == P.firer) return
+	if(P.distance_travelled > max_range || M.lying) shake_camera(M, 3, 2)
 	shake_camera(M, 3, 4)
 	if(isliving(M)) //This is pretty ugly, but what can you do.
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
 			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			if(target.mob_size == MOB_SIZE_BIG)
-				target.apply_effects(0,0.1)
+				target.apply_effect(0.3, DAZE)
+				target.apply_effect(2, SUPERSLOW)
+				target.apply_effect(4, SLOW)
 				return
-			target.apply_effects(1,3)
+			target.apply_effect(1, STUN)
+			target.apply_effect(2, WEAKEN)
+			target.apply_effect(4, DAZE)
+			target.apply_effect(4, SUPERSLOW)
+			target.apply_effect(10, SLOW)
 		else
 			if(!isYautja(M)) //Not predators.
 				var/mob/living/target = M
-				target.apply_effects(4,6) //Humans get heavily.
+				target.apply_effect(2, STUN)
+				target.apply_effect(4, WEAKEN)
+				target.apply_effect(10, DAZE)
+				target.apply_effect(5, SUPERSLOW)
+				target.apply_effect(10, SLOW)
 				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
 	step_away(M,P)
 
@@ -171,17 +189,27 @@
 		if(target.mind && target.mind.special_role)
 			switch(target.mind.special_role) //Switches are still better than evaluating this twice.
 				if("IRON BEARS") //These antags can shrug off tasers so they are not shut down.
-					target.apply_effects(1,1) //Barely affected.
+					target.apply_effect(1, STUN)
+					target.apply_effect(1, WEAKEN) //Barely affected.
+					target.apply_effect(2, SUPERSLOW)
+					target.apply_effect(4, SLOW)
 					return
 				if("UPP") //These antags can shrug off tasers so they are not shut down.
-					target.apply_effects(1,1) //Barely affected.
+					target.apply_effect(1, STUN)
+					target.apply_effect(1, WEAKEN) //Barely affected.
+					target.apply_effect(2, SUPERSLOW)
+					target.apply_effect(4, SLOW)
 					return
 				if("DEATH SQUAD")
-					target.apply_effects(0,1) //Almost unaffacted.
+					target.apply_effect(1, WEAKEN) //Almost unaffacted.					
+					target.apply_effect(2, SLOW)
 					return
 				if("ANTAGONIST") //Completely unaffected.
 					return
-		target.apply_effects(12,20)
+		target.apply_effect(6, STUN)
+		target.apply_effect(12, WEAKEN)
+		target.apply_effect(20, SUPERSLOW)
+		target.apply_effect(30, SLOW)
 
 /datum/ammo/proc/drop_flame(turf/T) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
@@ -525,6 +553,7 @@
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, config.max_shell_range)	// Can knockback basically at max range
+	M.Daze(3)
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
@@ -556,7 +585,7 @@
 	damage_armor_punch = 10
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
-	knockback(M, P, 5)
+	heavy_knockback(M, P, 5)
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
@@ -576,9 +605,12 @@
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human") //no effect on synths or preds.
 			if(H.mind && H.mind.special_role)
-				H.apply_effects(0,1) //ineffective against antags.
+				H.apply_effect(1, WEAKEN) //ineffective against antags.
 			else
-				H.apply_effects(6,8)
+				H.apply_effect(6, STUN)
+				H.apply_effect(8, WEAKEN)
+				H.apply_effect(15, DAZE)
+				H.apply_effect(15, SLOW)
 		shake_camera(H, 2, 1)
 
 
@@ -1273,17 +1305,53 @@
 
 /datum/ammo/xeno/New()
 	..()
-	accuracy = config.high_hit_accuracy
-	accuracy_var_low = config.low_proj_variance
-	accuracy_var_high = config.low_proj_variance
+	accuracy = config.max_hit_accuracy*2
 	max_range = config.short_shell_range
 
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
 	damage_falloff = 0
-	debilitate = list(1,2,0,0,0,0,0,0)
 	flags_ammo_behavior = AMMO_XENO_TOX|AMMO_IGNORE_RESIST
 	spit_cost = 50
+	var/effect_power = 1
+
+/datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
+	var/pass_down_the_line = FALSE
+	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
+		pass_down_the_line = TRUE
+	if(!isXeno(M))
+		if(M.knocked_down>4*effect_power || pass_down_the_line)
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
+			M.KnockOut(30) //KO them. They already got rekt too much
+
+			pass_down_the_line = TRUE
+
+		if(M.dazed || pass_down_the_line)
+			if(M.knocked_down < 5*effect_power)
+				M.AdjustKnockeddown(1.5 * effect_power) // KD them a bit more
+				if(!pass_down_the_line)
+					M.visible_message(SPAN_DANGER("[M] falls prone."))
+			pass_down_the_line = TRUE
+
+	if(M.superslowed || pass_down_the_line)
+		if(M.dazed < 5*effect_power)
+			M.AdjustDazed(3 * effect_power) // Daze them a bit more
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
+		pass_down_the_line = TRUE
+
+	if(M.slowed || pass_down_the_line)
+		if(M.superslowed < 6*effect_power)
+			M.AdjustSuperslowed(5 * effect_power) // Superslow them a bit more
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+		pass_down_the_line = TRUE
+
+	if(M.slowed < 10*effect_power || pass_down_the_line)
+		M.AdjustSlowed(4 * effect_power)
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
 
 /datum/ammo/xeno/toxin/New()
 	..()
@@ -1292,22 +1360,20 @@
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
-	debilitate = list(2,3,0,0,1,2,0,0)
 
 /datum/ammo/xeno/toxin/medium/New()
 	..()
 	shell_speed = config.fast_shell_speed
-	accuracy_var_low = config.low_proj_variance
-	accuracy_var_high = config.low_proj_variance
+	effect_power = 1.1
 
 /datum/ammo/xeno/toxin/heavy //Praetorian
 	name = "neurotoxic splash"
-	debilitate = list(3,4,0,0,3,5,0,0)
 
 /datum/ammo/xeno/toxin/heavy/New()
 	..()
 	max_range = config.min_shell_range
 	shell_speed = config.reg_shell_speed
+	effect_power = 1.5
 
 /datum/ammo/xeno/toxin/shatter // Used by boiler shatter glob strain
 	name = "neurotoxin spatter"

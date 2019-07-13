@@ -69,6 +69,7 @@
 		if(knocked_down) knocked_down -= 2
 		if(knocked_down < 0) knocked_down = 0 //Just to be sure.
 		if(stunned) stunned = 0
+		if(dazed) dazed = 0
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(health < 0)

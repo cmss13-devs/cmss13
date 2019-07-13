@@ -220,10 +220,14 @@
 	unwield(user)
 	if(fast_pulled)
 		pull_time = world.time + wield_delay
+		if(user.dazed)
+			pull_time += 3
 		guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 		fast_pulled = 0
 	else
 		pull_time = world.time + wield_delay
+		if(user.dazed)
+			pull_time += 3
 		guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 
 	return ..()
@@ -299,6 +303,8 @@
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
 	wield_time = world.time + wield_delay
+	if(user.dazed)
+		wield_time += 5
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
 	if(user.mind && user.mind.cm_skills)
@@ -844,7 +850,7 @@ and you're good to go.
 	*/
 	if(flags_gun_features & GUN_BURST_FIRING) return
 	if(world.time < guaranteed_delay_time) return
-	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0)) return //We just put the gun up. Can't do it that fast
+	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0 || user.dazed)) return //We just put the gun up. Can't do it that fast
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))

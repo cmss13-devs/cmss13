@@ -93,6 +93,12 @@
 	if(mRun in mutations)
 		. = 0
 
+	if(superslowed)
+		. += HUMAN_SUPERSLOWED_AMOUNT
+
+	if(slowed && !superslowed)
+		. += HUMAN_SLOWED_AMOUNT
+
 	. += config.human_delay
 
 

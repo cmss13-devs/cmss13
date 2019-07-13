@@ -27,14 +27,20 @@
 		apply_damage(f_loss, BURN)
 		updatehealth()
 
-		var/knock_value = min( round( damage * 0.05 ,1) ,5) //unlike in humans, damage is used instead of severity to prevent t3 stunlocking
-		if(knock_value > 0 && total_explosive_resistance < 60)
-			KnockDown(knock_value)
-			KnockOut(knock_value)
+		var/powerfactor_value = round( damage * 0.05 ,1)
+		powerfactor_value = min(powerfactor_value,20)
+		if(powerfactor_value > 0 && total_explosive_resistance < 60)
+			KnockDown(powerfactor_value/5)
+			KnockOut(powerfactor_value/5)
+			Slow(powerfactor_value)
+			Superslow(powerfactor_value/2)
 			explosion_throw(severity, direction)
-		else if(knock_value == 5)
-			KnockDown(1)
-			KnockOut(1)
+		else if(powerfactor_value > 10)
+			powerfactor_value /= 5
+			KnockDown(powerfactor_value/5)
+			KnockOut(powerfactor_value/5)
+			Slow(powerfactor_value)
+			Superslow(powerfactor_value/2)
 
 
 

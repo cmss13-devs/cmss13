@@ -1806,7 +1806,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 
-/obj/machinery/cm_vending/sorted/cargo_ammo/populate_product_list(var/scale)
+/obj/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(var/scale)
 	listed_products = list(
 
 		list("Armor-Piercing Ammunition", -1, null, null),
@@ -1948,7 +1948,7 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	icon_state = "attach_vend"
 
-/obj/machinery/cm_vending/sorted/attachments/populate_product_list(var/scale)
+/obj/machinery/cm_vending/sorted/attachments/squad/populate_product_list(var/scale)
 	listed_products = list(
 		list("Muzzle", -1, null, null),
 		list("Barrel Charger", round(scale * 2), /obj/item/attachable/heavy_barrel, "black"),

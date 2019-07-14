@@ -189,6 +189,21 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 		new/datum/stack_recipe("red folder", /obj/item/folder/red), \
 		new/datum/stack_recipe("white folder", /obj/item/folder/white), \
 		new/datum/stack_recipe("yellow folder", /obj/item/folder/yellow), \
+		)), \
+	null, \
+	new/datum/stack_recipe_list("empty ammo boxes",list( \
+		new/datum/stack_recipe("shotgun shell box (slugs)", /obj/item/magazine_box/shotgun/empty), \
+		new/datum/stack_recipe("shotgun shell box (buckshot)", /obj/item/magazine_box/shotgun/buckshot/empty), \
+		new/datum/stack_recipe("shotgun shell box (flechette)", /obj/item/magazine_box/shotgun/flechette/empty), \
+		new/datum/stack_recipe("magazine box (M41A)", /obj/item/magazine_box/empty), \
+		new/datum/stack_recipe("magazine box (AP M41A)", /obj/item/magazine_box/rifle_ap/empty), \
+		new/datum/stack_recipe("magazine box (Ext M41A)", /obj/item/magazine_box/rifle_extended/empty), \
+		new/datum/stack_recipe("magazine box (M39)", /obj/item/magazine_box/smg/empty), \
+		new/datum/stack_recipe("magazine box (AP M39)", /obj/item/magazine_box/smg/ap/empty), \
+		new/datum/stack_recipe("magazine box (Ext M39)", /obj/item/magazine_box/smg/extended/empty), \
+		new/datum/stack_recipe("magazine box (L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/empty), \
+		new/datum/stack_recipe("magazine box (AP L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/ap/empty), \
+		new/datum/stack_recipe("magazine box (Ext L42-MK1)", /obj/item/magazine_box/rifle/l42mk1/ext/empty), \
 		)) \
 )
 
@@ -203,3 +218,12 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 /obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
 		recipes = cardboard_recipes
 		return ..()
+
+/obj/item/stack/sheet/cardboard/small_stack
+	amount = 10
+
+/obj/item/stack/sheet/cardboard/medium_stack
+	amount = 30
+
+/obj/item/stack/sheet/cardboard/full_stack
+	amount = 50

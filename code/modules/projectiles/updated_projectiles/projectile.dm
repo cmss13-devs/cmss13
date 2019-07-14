@@ -310,10 +310,10 @@
 						if(hit_chance > hit_roll)
 							mob_is_hit = TRUE
 							break
-			if(mob_is_hit)
-				ammo.on_hit_mob(L,src)
+			if(mob_is_hit)				
 				if(L && L.loc)
-					L.bullet_act(src)
+					if(L.bullet_act(src) != -1)
+						ammo.on_hit_mob(L,src)
 				return 1
 			else if (!L.lying)
 				animatation_displace_reset(L)
@@ -735,7 +735,7 @@
 		var/mob/living/carbon/Xenomorph/XNO = P.firer
 		if(!istype(XNO) || XNO.hivenumber == hivenumber)
 			bullet_ping(P)
-			return
+			return -1
 
 	if(ammo_flags & AMMO_BALLISTIC)
 		round_statistics.total_bullet_hits_on_xenos++

@@ -213,10 +213,10 @@
 // =============================
 // slowdowns
 
-#define XENO_SLOWED_AMOUNT 1.5
-#define XENO_SUPERSLOWED_AMOUNT 3.5
-#define HUMAN_SLOWED_AMOUNT 2
-#define HUMAN_SUPERSLOWED_AMOUNT 4.5
+#define XENO_SLOWED_AMOUNT 0.7
+#define XENO_SUPERSLOWED_AMOUNT 1.5
+#define HUMAN_SLOWED_AMOUNT 1.5
+#define HUMAN_SUPERSLOWED_AMOUNT 4.0
 
 //=================================================
 

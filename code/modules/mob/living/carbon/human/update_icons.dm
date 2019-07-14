@@ -530,7 +530,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_w_uniform(var/update_icons=1)
 	if(istype(w_uniform, /obj/item/clothing/under) && !(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT))
-		overlays_standing[UNIFORM_LAYER] = w_uniform.get_mob_overlay(src, WEAR_UNIFORM)
+		overlays_standing[UNIFORM_LAYER] = w_uniform.get_mob_overlay(src, WEAR_BODY)
 	else
 		overlays_standing[UNIFORM_LAYER] = null
 
@@ -552,7 +552,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_gloves(var/update_icons=1)
 	if(gloves && !(wear_suit && wear_suit.flags_inv_hide & HIDEGLOVES))
-		overlays_standing[GLOVES_LAYER]	= gloves.get_mob_overlay(src, WEAR_GLOVES)
+		overlays_standing[GLOVES_LAYER]	= gloves.get_mob_overlay(src, WEAR_HANDS)
 	else
 		if(blood_DNA && species.blood_mask)
 			var/image/bloodsies	= overlay_image(species.blood_mask, "bloodyhands", blood_color, RESET_COLOR)
@@ -565,7 +565,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_glasses(var/update_icons=1)
 	if(glasses)
-		overlays_standing[GLASSES_LAYER] = glasses.get_mob_overlay(src, WEAR_GLASSES)
+		overlays_standing[GLASSES_LAYER] = glasses.get_mob_overlay(src, WEAR_EYES)
 	else
 		overlays_standing[GLASSES_LAYER] = null
 	if(update_icons)
@@ -586,7 +586,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_shoes(var/update_icons=1)
 	if(shoes && !((wear_suit && wear_suit.flags_inv_hide & HIDESHOES) || (w_uniform && w_uniform.flags_inv_hide & HIDESHOES)))
-		overlays_standing[SHOES_LAYER] = shoes.get_mob_overlay(src, WEAR_SHOES)
+		overlays_standing[SHOES_LAYER] = shoes.get_mob_overlay(src, WEAR_FEET)
 	else
 		if(feet_blood_DNA && species.blood_mask)
 			var/image/bloodsies = overlay_image(species.blood_mask, "shoeblood", feet_blood_color, RESET_COLOR)
@@ -599,7 +599,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_s_store(var/update_icons=1)
 	if(s_store)
-		overlays_standing[SUIT_STORE_LAYER]	= s_store.get_mob_overlay(src, WEAR_S_STORE)
+		overlays_standing[SUIT_STORE_LAYER]	= s_store.get_mob_overlay(src, WEAR_J_STORE)
 	else
 		overlays_standing[SUIT_STORE_LAYER]	= null
 	if(update_icons)
@@ -633,7 +633,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_belt(var/update_icons=1)
 	if(belt)
-		overlays_standing[BELT_LAYER] = belt.get_mob_overlay(src, WEAR_BELT)
+		overlays_standing[BELT_LAYER] = belt.get_mob_overlay(src, WEAR_WAIST)
 	else
 		overlays_standing[BELT_LAYER] = null
 	if(update_icons)
@@ -642,7 +642,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_wear_suit(var/update_icons=1)
 	if(wear_suit)
-		overlays_standing[SUIT_LAYER] = wear_suit.get_mob_overlay(src, WEAR_SUIT)
+		overlays_standing[SUIT_LAYER] = wear_suit.get_mob_overlay(src, WEAR_JACKET)
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
 			var/obj/item/clothing/suit/storage/marine/marine_armor = wear_suit
 			if(marine_armor.flags_marine_armor & ARMOR_SQUAD_OVERLAY)
@@ -679,7 +679,7 @@ var/global/list/damage_icon_parts = list()
 
 /mob/living/carbon/human/update_inv_wear_mask(var/update_icons=1)
 	if(wear_mask && ( istype(wear_mask, /obj/item/clothing/mask) || istype(wear_mask, /obj/item/clothing/accessory) ) && !(head && head.flags_inv_hide & HIDEMASK))
-		overlays_standing[FACEMASK_LAYER] = wear_mask.get_mob_overlay(src, WEAR_MASK)
+		overlays_standing[FACEMASK_LAYER] = wear_mask.get_mob_overlay(src, WEAR_FACE)
 	else
 		overlays_standing[FACEMASK_LAYER] = null
 	if(update_icons)

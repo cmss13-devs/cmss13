@@ -254,7 +254,7 @@
 		if(WEAR_IN_SHOES)
 			if(src.shoes && istype(src.shoes, /obj/item/clothing/shoes))
 				var/obj/item/clothing/shoes/S = src.shoes
-				if(!S.stored_item)	
+				if(!S.stored_item)
 					S.stored_item = W
 					W.loc = S
 					equipped = 1
@@ -301,7 +301,7 @@
 				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
 					W.loc = P
 					equipped = 1
-		
+
 
 	if(equipped)
 		W.layer = ABOVE_HUD_LAYER

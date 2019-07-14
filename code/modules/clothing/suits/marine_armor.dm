@@ -63,7 +63,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon_state = "1"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/suit_1.dmi'
 	)
 	flags_atom = FPRINT|CONDUCT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -307,7 +307,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/commander)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
-	item_state_slots = list(WEAR_SUIT = "mp")
+	item_state_slots = list(WEAR_JACKET = "mp")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
@@ -324,7 +324,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
-	item_state_slots = list(WEAR_SUIT = "warrant_officer")
+	item_state_slots = list(WEAR_JACKET = "warrant_officer")
 
 /obj/item/clothing/suit/storage/marine/MP/admiral
 	icon_state = "admiral"
@@ -342,7 +342,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/admiral)
 	specialty = "M3 pattern admiral"
-	item_state_slots = list(WEAR_SUIT = "admiral")
+	item_state_slots = list(WEAR_JACKET = "admiral")
 
 /obj/item/clothing/suit/storage/marine/MP/RO
 	icon_state = "officer"
@@ -351,7 +351,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 	specialty = "M2 pattern officer"
-	item_state_slots = list(WEAR_SUIT = "officer")
+	item_state_slots = list(WEAR_JACKET = "officer")
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
@@ -706,14 +706,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC)
-	item_state_slots = list(WEAR_SUIT = "pmc_armor")
+	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/leader
 	name = "\improper M4 pattern PMC leader armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/leader)
-	item_state_slots = list(WEAR_SUIT = "officer_armor")
+	item_state_slots = list(WEAR_JACKET = "officer_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/sniper
 	name = "\improper M4 pattern PMC sniper armor"
@@ -729,7 +729,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDELOWHAIR
-	item_state_slots = list(WEAR_SUIT = "pmc_sniper")
+	item_state_slots = list(WEAR_JACKET = "pmc_sniper")
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC
 	name = "\improper PMC gunner armor"
@@ -746,7 +746,24 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
-	item_state_slots = list(WEAR_SUIT = "heavy_armor")
+	item_state_slots = list(WEAR_JACKET = "heavy_armor")
+
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator
+	name = "\improper PMC commando armor"
+	desc = "A heavily armored suit built by who-knows-what for elite operations. It is a fully self-contained system and is heavily corrosion resistant."
+	icon_state = "commando_armor"
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	storage_slots = 2
+	unacidable = 1
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator
 	name = "\improper PMC commando armor"
@@ -781,7 +798,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	unacidable = 1
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
-	item_state_slots = list(WEAR_SUIT = "commando_armor")
+	item_state_slots = list(WEAR_JACKET = "commando_armor")
 
 //===========================//DISTRESS\\================================\\
 //=======================================================================\\
@@ -829,7 +846,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 /obj/item/clothing/suit/storage/faction
 	icon = 'icons/obj/clothing/cm_suits.dmi'
 	item_icons = list(
-		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/suit_1.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
@@ -1049,7 +1066,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon = 'icons/obj/clothing/cm_suits.dmi'
 	icon_state = "rebel_armor"
 	item_icons = list(
-		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/suit_1.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
@@ -1122,7 +1139,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
-	item_state_slots = list(WEAR_SUIT = "mercenary_heavy_armor")
+	item_state_slots = list(WEAR_JACKET = "mercenary_heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner
 	name = "\improper Y8 armored miner vest"
@@ -1151,7 +1168,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
-	item_state_slots = list(WEAR_SUIT = "mercenary_miner_armor")
+	item_state_slots = list(WEAR_JACKET = "mercenary_miner_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer
 	name = "\improper Z7 armored engineer vest"
@@ -1180,4 +1197,4 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
-	item_state_slots = list(WEAR_SUIT = "mercenary_engineer_armor")
+	item_state_slots = list(WEAR_JACKET = "mercenary_engineer_armor")

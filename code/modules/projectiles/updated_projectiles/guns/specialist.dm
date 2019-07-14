@@ -573,9 +573,7 @@
 		if(ishuman(loc) && (flags_item & WIELDED))
 			var/human_user = loc
 			target = get_target(human_user)
-			fire_delay = config.no_fire_delay
 			process_shot(human_user)
-			fire_delay = config.low_fire_delay
 		else
 			auto_fire = 0
 			auto_fire()
@@ -745,7 +743,6 @@
 			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 			sleep(3)
 
-		last_fired = world.time
 		Fire(target,user)
 
 	target = null

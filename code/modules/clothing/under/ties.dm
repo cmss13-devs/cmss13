@@ -9,11 +9,11 @@
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
-	var/list/accessory_icons = list(WEAR_UNIFORM = 'icons/mob/ties.dmi', WEAR_SUIT = 'icons/mob/ties.dmi')
+	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/ties.dmi', WEAR_JACKET = 'icons/mob/ties.dmi')
 	var/list/on_rolled = list()	//used when uniform sleevels are rolled ("rolled" entry). Set to "none" to hide in this state.
 	var/high_visibility	//if it should appear on examine without detailed view
 	var/removable = TRUE
-	flags_equip_slot = WEAR_ACCESSORY
+	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/ties_monkey.dmi')
 
 /obj/item/clothing/accessory/New()

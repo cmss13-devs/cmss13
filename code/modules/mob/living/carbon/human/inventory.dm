@@ -354,10 +354,13 @@
 				wear_suit.update_icon()
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/accessory/A = W
-			for(var/obj/item/clothing/C in contents)
-				if(C.can_attach_accessory(A))
-					C.attach_accessory(src, A)
-					break
+			if(istype(A))
+				for(var/obj/item/clothing/C in contents)
+					if(C.can_attach_accessory(A))
+						C.attach_accessory(src, A)
+						break
+			else
+				w_uniform.attackby(W,src)
 			update_inv_w_uniform()
 		if(WEAR_IN_BELT)
 			belt.attackby(W,src)

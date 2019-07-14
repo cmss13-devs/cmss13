@@ -38,12 +38,12 @@
 	if(worn_state)
 		if(!item_state_slots)
 			item_state_slots = list()
-		item_state_slots[WEAR_UNIFORM] = worn_state
+		item_state_slots[WEAR_BODY] = worn_state
 	else
 		worn_state = icon_state
 
 	//autodetect rollability
-	if((worn_state + "_d") in icon_states(default_onmob_icons[WEAR_UNIFORM]))
+	if((worn_state + "_d") in icon_states(default_onmob_icons[WEAR_BODY]))
 		rollable_sleeves = TRUE
 	..()
 
@@ -163,10 +163,10 @@
 		under_icon = icon_override
 	else if(H && sprite_sheets && sprite_sheets[H.species.get_bodytype(H)])
 		under_icon = sprite_sheets[H.species.get_bodytype(H)]
-	else if(item_icons && item_icons[WEAR_UNIFORM])
-		under_icon = item_icons[WEAR_UNIFORM]
+	else if(item_icons && item_icons[WEAR_BODY])
+		under_icon = item_icons[WEAR_BODY]
 	else
-		under_icon = default_onmob_icons[WEAR_UNIFORM]
+		under_icon = default_onmob_icons[WEAR_BODY]
 	if(("[worn_state]_d") in icon_states(under_icon))
 		if(rolled_sleeves != TRUE)
 			rolled_sleeves = FALSE
@@ -187,7 +187,7 @@
 		update_clothing_icon()
 
 		if(rolled_sleeves)
-			item_state_slots[WEAR_UNIFORM] = "[worn_state]_d"
+			item_state_slots[WEAR_BODY] = "[worn_state]_d"
 		else
-			item_state_slots[WEAR_UNIFORM] = "[worn_state]"
+			item_state_slots[WEAR_BODY] = "[worn_state]"
 	else to_chat(usr, SPAN_WARNING("You cannot roll down the uniform!"))

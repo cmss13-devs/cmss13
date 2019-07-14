@@ -468,20 +468,20 @@
 var/list/default_onmob_icons = list(
 		WEAR_L_HAND = 'icons/mob/items_lefthand_0.dmi',
 		WEAR_R_HAND = 'icons/mob/items_righthand_0.dmi',
-		WEAR_BELT = 'icons/mob/belt.dmi',
+		WEAR_WAIST = 'icons/mob/belt.dmi',
 		WEAR_BACK = 'icons/mob/back.dmi',
 		WEAR_EAR = 'icons/mob/ears.dmi',
-		WEAR_GLASSES = 'icons/mob/eyes.dmi',
+		WEAR_EYES = 'icons/mob/eyes.dmi',
 		WEAR_ID = 'icons/mob/mob.dmi',
-		WEAR_UNIFORM = 'icons/mob/uniform_0.dmi',
-		WEAR_SUIT = 'icons/mob/suit_0.dmi',
+		WEAR_BODY = 'icons/mob/uniform_0.dmi',
+		WEAR_JACKET = 'icons/mob/suit_0.dmi',
 		WEAR_HEAD = 'icons/mob/head_0.dmi',
-		WEAR_SHOES = 'icons/mob/feet.dmi',
-		WEAR_MASK = 'icons/mob/mask.dmi',
+		WEAR_FEET = 'icons/mob/feet.dmi',
+		WEAR_FACE = 'icons/mob/mask.dmi',
 		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
 		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
-		WEAR_GLOVES = 'icons/mob/hands.dmi',
-		WEAR_S_STORE = 'icons/mob/suit_slot.dmi',
+		WEAR_HANDS = 'icons/mob/hands.dmi',
+		WEAR_J_STORE = 'icons/mob/suit_slot.dmi',
 		WEAR_ACCESSORIES = 'icons/mob/ties.dmi'
 		)
 

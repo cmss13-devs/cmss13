@@ -162,7 +162,6 @@ Burn time = How long do we want our flames to last?
 	var/mhigh_burst_value = 5
 	var/max_burst_value = 6
 
-	var/no_fire_delay = 0
 	var/min_fire_delay = 1 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 	var/mlow_fire_delay = 2
 	var/low_fire_delay = 3

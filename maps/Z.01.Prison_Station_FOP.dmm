@@ -56600,9 +56600,6 @@
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "css" = (
-/mob/living/carbon/monkey{
-	name = "First Mate Barbarossa"
-	},
 /turf/open/floor/carpet,
 /area/prison/pirate)
 "cst" = (

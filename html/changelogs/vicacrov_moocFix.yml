@@ -1,0 +1,9 @@
+author: Vicacrov
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed monkeys multibursting."
+  - bugfix: "Fixed monkeys increasing each other's the burst speed."
+  - bugfix: "Fixed moderators not having MOOC/XOOC."
+  - bugfix: "Fixed Prison not compiling."

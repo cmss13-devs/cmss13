@@ -580,7 +580,7 @@
 	max_range = config.short_shell_range*1.4
 	damage = config.high_hit_damage
 	penetration = config.mlow_armor_penetration
-	damage_armor_punch = 10
+	damage_armor_punch = 2
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
 	heavy_knockback(M, P, 5)
@@ -849,8 +849,7 @@
 
 /datum/ammo/bullet/smartgun
 	name = "smartgun bullet"
-	icon_state = "redbullet" //Red bullets to indicate friendly fire restriction
-	iff_signal = ACCESS_IFF_MARINE
+	icon_state = "redbullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/smartgun/New()
@@ -858,20 +857,19 @@
 	accurate_range = config.norm_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.med_hit_damage
+	damage = config.lmed_plus_hit_damage
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
 	flags_ammo_behavior = AMMO_BALLISTIC
 	icon_state = "bullet"
-	iff_signal = ACCESS_IFF_MARINE
 
 /datum/ammo/bullet/smartgun/armor_piercing/New()
 	..()
 	accurate_range = config.short_shell_range
 	accuracy = config.min_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.hmed_hit_damage
+	damage = config.mlow_hit_damage
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 1
 
@@ -886,7 +884,7 @@
 	accurate_range = config.long_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.high_hit_damage
+	damage = config.hmed_hit_damage
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
@@ -898,7 +896,7 @@
 	accurate_range = config.norm_shell_range
 	accuracy = config.med_hit_accuracy
 	damage_falloff = config.tactical_damage_falloff
-	damage = config.mhigh_hit_damage
+	damage = config.med_hit_damage
 	penetration = config.hmed_armor_penetration
 	damage_armor_punch = 1	
 	
@@ -1335,6 +1333,8 @@
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/item/projectile/P)
 	var/pass_down_the_line = FALSE
+	if(isSynth(M))
+		return // unaffected
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
 	if(!isXeno(M))
@@ -1347,7 +1347,7 @@
 
 		if(M.dazed || pass_down_the_line)
 			if(M.knocked_down < 5*effect_power)
-				M.AdjustKnockeddown(1.5 * effect_power) // KD them a bit more
+				M.AdjustKnockeddown(0.75 * effect_power) // KD them a bit more
 				if(!pass_down_the_line)
 					M.visible_message(SPAN_DANGER("[M] falls prone."))
 			pass_down_the_line = TRUE
@@ -1378,6 +1378,49 @@
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
+
+/datum/ammo/xeno/toxin/queen
+	name = "neurotoxic spit"
+
+/datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/item/projectile/P)
+	var/pass_down_the_line = FALSE
+	if(isSynth(M))
+		return // unaffected
+	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
+		pass_down_the_line = TRUE
+	if(!isXeno(M))
+		if(M.knocked_down>4*effect_power || pass_down_the_line)
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
+			M.KnockOut(30) //KO them. They already got rekt too much
+
+			pass_down_the_line = TRUE
+
+		if(M.knocked_down < 5*effect_power)
+			M.AdjustKnockeddown(1.0 * effect_power) // KD them a bit more
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] falls prone."))
+		pass_down_the_line = TRUE
+
+	if(M.superslowed || pass_down_the_line)
+		if(M.dazed < 5*effect_power)
+			M.AdjustDazed(3 * effect_power) // Daze them a bit more
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] is visibly confused."))
+		pass_down_the_line = TRUE
+
+	if(M.slowed || pass_down_the_line)
+		if(M.superslowed < 6*effect_power)
+			M.AdjustSuperslowed(5 * effect_power) // Superslow them a bit more
+			if(!pass_down_the_line)
+				M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+		pass_down_the_line = TRUE
+
+	if(M.slowed < 10*effect_power || pass_down_the_line)
+		M.AdjustSlowed(4 * effect_power)
+		if(!pass_down_the_line)
+			M.visible_message(SPAN_DANGER("[M] movements are slowed."))
+
 
 /datum/ammo/xeno/toxin/medium/New()
 	..()

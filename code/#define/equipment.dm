@@ -152,7 +152,7 @@
 #define WEAR_L_STORE		"l_store"
 #define WEAR_R_STORE		"r_store"
 #define WEAR_ACCESSORY		"accessory"
-#define WEAR_J_STORE		"s_store"
+#define WEAR_J_STORE		"j_store"
 #define WEAR_L_HAND			"l_hand"
 #define WEAR_R_HAND			"r_hand"
 #define WEAR_HANDCUFFS		"handcuffs"

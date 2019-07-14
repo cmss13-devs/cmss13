@@ -39,7 +39,7 @@
 
 //The parent proc, will default to UnarmedAttack behaviour unless overriden
 /atom/proc/attack_alien(mob/user as mob)
-	return user.UnarmedAttack(src)
+	return
 
 /mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
 	if(next_move >= world.time)

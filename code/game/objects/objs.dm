@@ -283,4 +283,4 @@
 	if(icon_state in icon_states(sprite_sheets[bodytype]))
 		return 1
 
-	return (slot != WEAR_SUIT && slot != WEAR_HEAD)
+	return (slot != WEAR_JACKET && slot != WEAR_HEAD)

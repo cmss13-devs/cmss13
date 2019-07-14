@@ -8,7 +8,7 @@
 	icon_broken = "capsecurebroken"
 	icon_off = "capsecureoff"
 
-/obj/structure/closet/secure_closet/New()
+/obj/structure/closet/secure_closet/captains/New()
 	..()
 	sleep(2)
 	new /obj/item/storage/backpack/satchel(src)

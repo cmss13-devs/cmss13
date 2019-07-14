@@ -132,34 +132,27 @@
 #define SLOT_STORE 			2048	//this is to allow items with a w_class of 3 or 4 to fit in pockets.
 #define SLOT_NO_STORE		4096	//this is to deny items with a w_class of 2 or 1 to fit in pockets.
 #define SLOT_LEGS 			16384
+#define SLOT_ACCESSORY		32768
 //=================================================
 
 //slots
 //Text strings so that the slots can be associated when doing inventory lists.
 #define WEAR_ID				"id"
 #define WEAR_EAR			"wear_ear"
-#define WEAR_MASK			"wear_mask"
-#define WEAR_GLASSES 		"glasses"
-#define WEAR_BODY			"body"
-#define WEAR_UNIFORM		"w_uniform"
-#define WEAR_GLOVES 		"gloves"
+#define WEAR_BODY			"w_uniform"
 #define WEAR_LEGS			"legs"
-#define WEAR_FEET			"feet"
-#define WEAR_SHOES			"shoes"
-#define WEAR_HANDS			"hands"
-#define WEAR_WAIST			"waist"
-#define WEAR_JACKET			"jacket"
-#define WEAR_SUIT			"wear_suit"
-#define WEAR_BELT           "belt"
-#define WEAR_EYES			"eyes"
-#define WEAR_FACE			"face"
+#define WEAR_FEET			"shoes"
+#define WEAR_HANDS			"gloves"
+#define WEAR_WAIST			"belt"
+#define WEAR_JACKET			"wear_suit"
+#define WEAR_EYES			"glasses"
+#define WEAR_FACE			"wear_mask"
 #define WEAR_HEAD			"head"
 #define WEAR_BACK			"back"
 #define WEAR_L_STORE		"l_store"
 #define WEAR_R_STORE		"r_store"
 #define WEAR_ACCESSORY		"accessory"
-#define WEAR_J_STORE		"j_store"
-#define WEAR_S_STORE		"S_store"
+#define WEAR_J_STORE		"s_store"
 #define WEAR_L_HAND			"l_hand"
 #define WEAR_R_HAND			"r_hand"
 #define WEAR_HANDCUFFS		"handcuffs"

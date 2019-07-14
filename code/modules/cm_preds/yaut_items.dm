@@ -45,6 +45,7 @@
 	vision_impair = 0
 	unacidable = 1
 	anti_hug = 100
+	item_state_slots = list(WEAR_FACE = "pred_mask1")
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,11), elder_restricted = 0)
 	..()
@@ -52,17 +53,21 @@
 
 	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11)
 	if(mask_number in mask_input) icon_state = "pred_mask[mask_number]"
+		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)
 			if(1341)
 				name = "\improper 'Mask of the Dragon'"
 				icon_state = "pred_mask_elder_tr"
+				item_state_slots = list(WEAR_FACE = "pred_mask_elder_tr")
 			if(7128)
 				name = "\improper 'Mask of the Swamp Horror'"
 				icon_state = "pred_mask_elder_joshuu"
+				item_state_slots = list(WEAR_FACE = "pred_mask_elder_joshuu")
 			if(4879)
 				name = "\improper 'Mask of the Ambivalent Collector'"
 				icon_state = "pred_mask_elder_n"
+				item_state_slots = list(WEAR_FACE = "pred_mask_elder_n")
 
 /obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
 	set name = "Toggle Mask Zoom"
@@ -156,7 +161,7 @@
 	icon_state = "halfarmor1"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/suit_1.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -182,7 +187,7 @@
 			/obj/item/weapon/combistick,
 			/obj/item/weapon/twohanded/glaive)
 	unacidable = 1
-	item_state_slots = list(WEAR_SUIT = "halfarmor1")
+	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 
 /obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
 	..()
@@ -201,23 +206,29 @@
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
+				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_tr")
 			if(7128)
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
+				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_joshuu")
 			if(9867)
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
+				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_feweh")
 			if(4879)
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
+				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_n")
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
+				item_state_slots = list(WEAR_JACKET = "halfarmor_elder")
 	else
 		if(armor_number > 6)
 			armor_number = 1
 		if(armor_number) //Don't change full armor number
 			icon_state = "halfarmor[armor_number]"
+			item_state_slots = list(WEAR_JACKET = "halfarmor[armor_number]")
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -236,7 +247,7 @@
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	slowdown = 1
-	item_state_slots = list(WEAR_SUIT = "fullarmor")
+	item_state_slots = list(WEAR_JACKET = "fullarmor")
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
 	. = ..(location, 0)
@@ -279,15 +290,19 @@
 		if(1341)
 			name = "\improper 'Mantle of the Dragon'"
 			icon_state = "cape_elder_tr"
+			item_state_slots = list(WEAR_JACKET = "cape_elder_tr")
 		if(7128)
 			name = "\improper 'Mantle of the Swamp Horror'"
 			icon_state = "cape_elder_joshuu"
+			item_state_slots = list(WEAR_JACKET = "cape_elder_joshuu")
 		if(9867)
 			name = "\improper 'Mantle of the Enforcer'"
 			icon_state = "cape_elder_feweh"
+			item_state_slots = list(WEAR_JACKET = "cape_elder_feweh")
 		if(4879)
 			name = "\improper 'Mantle of the Ambivalent Collector'"
 			icon_state = "cape_elder_n"
+			item_state_slots = list(WEAR_JACKET = "cape_elder_n")
 
 /obj/item/clothing/cape/eldercape/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

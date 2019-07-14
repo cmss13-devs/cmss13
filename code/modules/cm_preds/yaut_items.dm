@@ -79,16 +79,6 @@
 
 	zoom(usr, 11, 12)
 
-/obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
-	set name = "Toggle Mask Zoom"
-	set desc = "Toggle your mask's zoom function."
-	set category = "Yautja"
-
-	if(!usr || usr.stat)
-		return
-
-	zoom(usr, 11, 12)
-
 /obj/item/clothing/mask/gas/yautja/verb/togglesight()
 	set name = "Toggle Mask Visors"
 	set desc = "Toggle your mask visor sights. You must only be wearing a type of Yautja visor for this to work."
@@ -171,7 +161,11 @@
 	icon_state = "halfarmor1"
 	item_state = "armor"
 	item_icons = list(
+		WEAR_JACKET = 'icons/mob/suit_1.dmi'
+	)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH

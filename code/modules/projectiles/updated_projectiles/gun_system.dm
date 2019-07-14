@@ -899,7 +899,7 @@ and you're good to go.
 		else
 			if (world.time % 3)
 				to_chat(user, SPAN_WARNING("[src] is not ready to fire again!")) //to prevent spam
-				return
+			return
 	return 1
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)

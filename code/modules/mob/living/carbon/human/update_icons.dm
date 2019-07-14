@@ -678,7 +678,8 @@ var/global/list/damage_icon_parts = list()
 		update_icons()
 
 /mob/living/carbon/human/update_inv_wear_mask(var/update_icons=1)
-	if(wear_mask && ( istype(wear_mask, /obj/item/clothing/mask) || istype(wear_mask, /obj/item/clothing/accessory) ) && !(head && head.flags_inv_hide & HIDEMASK))
+	// Really long if check
+	if(wear_mask && (istype(wear_mask, /obj/item/clothing/mask) || istype(wear_mask, /obj/item/clothing/accessory) || istype(wear_mask, /obj/item/clothing/glasses)) && !(head && head.flags_inv_hide & HIDEMASK))
 		overlays_standing[FACEMASK_LAYER] = wear_mask.get_mob_overlay(src, WEAR_FACE)
 	else
 		overlays_standing[FACEMASK_LAYER] = null

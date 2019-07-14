@@ -877,7 +877,7 @@
 		return 0
 	if(!user.client)
 		return 0
-	if(!(ishuman(user) || issilicon(user) || ismonkey(user)))
+	if(!(ishuman(user) || issilicon(user)))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to use [src]!"))
 		nanomanager.close_user_uis(user, src)
 		return 0

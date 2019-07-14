@@ -502,7 +502,7 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 	set category = "Object"
 	set src in oview(1)
 
-	if(usr.stat != 0 || !(ishuman(usr) || ismonkey(usr)))
+	if(usr.stat != 0 || !(ishuman(usr)))
 		return
 
 	if(occupant)

@@ -1,0 +1,8 @@
+author: Vampmare
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed cosmetic eye items not showing up in the mask slot."
+  - bugfix: "Fixed xenos being unable to ventcrawl with a devoured monkey."
+  - bugfix: "Fixed latex gloves being in the Squad Medic prep vendor."

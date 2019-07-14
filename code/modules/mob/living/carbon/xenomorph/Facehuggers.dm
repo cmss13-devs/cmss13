@@ -350,19 +350,14 @@
 
 	if(isYautja(target))
 		return 1 //Only one Abomination larva per burst
-	if(!ishuman(target))
+	if(!isHumanStrict(target))
 		impregnation_amount = 1
 	else
 		impregnation_amount = pick(
 			prob(50); 1,
 			prob(25); 2,
 			prob(12.5); 3,
-			prob(6.25); 4,
-			/*
-			prob(3.125); 5,
-			prob(1.5625); 6,
-			prob(0.78125); 7
-			*/
+			prob(6.25); 4
 		)
 
 	var/bonus_larva_spawn_chance = hive_datum[hivenumber].bonus_larva_spawn_chance

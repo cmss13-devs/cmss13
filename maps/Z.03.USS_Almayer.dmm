@@ -48100,11 +48100,6 @@
 /obj/item/device/whistle,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
-"hxx" = (
-/obj/structure/window/framed/almayer,
-/obj/machinery/door/firedoor/border_only/almayer,
-/turf/open/space,
-/area/almayer/squads/req)
 "hyk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	tag = "icon-intact-supply (EAST)";
@@ -51968,6 +51963,17 @@
 	dir = 1
 	},
 /area/almayer/hallways/port_hallway)
+"nmK" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/cardboard{
+	amount = 50
+	},
+/turf/open/floor/almayer{
+	tag = "icon-bluecorner (NORTH)";
+	icon_state = "cargo";
+	dir = 2
+	},
+/area/almayer/squads/req)
 "nne" = (
 /obj/structure/ladder{
 	height = 2;
@@ -100088,7 +100094,7 @@ bNB
 mCo
 xGo
 bYu
-bNP
+nmK
 caf
 bdl
 bGj
@@ -103130,7 +103136,7 @@ tiE
 tiE
 bdl
 bdl
-hxx
+tiE
 tiE
 bMe
 tiE

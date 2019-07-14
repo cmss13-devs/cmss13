@@ -105,7 +105,7 @@
 /obj/effect/landmark/wo_supplies/storage/webbing
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "webbing"
-	stuff = list(/obj/item/clothing/tie/storage/webbing)
+	stuff = list(/obj/item/clothing/accessory/storage/webbing)
 
 /obj/effect/landmark/wo_supplies/storage/machete
 	icon_state = "machete_holster_full"

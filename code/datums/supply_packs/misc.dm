@@ -220,11 +220,11 @@ SUPPLIES
 /datum/supply_packs/poster
 	name = "posters"
 	contains = list(
-					/obj/item/contraband/poster,
-					/obj/item/contraband/poster,
-					/obj/item/contraband/poster,
-					/obj/item/contraband/poster,
-					/obj/item/contraband/poster
+					/obj/item/poster,
+					/obj/item/poster,
+					/obj/item/poster,
+					/obj/item/poster,
+					/obj/item/poster
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/supply

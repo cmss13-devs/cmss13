@@ -22,9 +22,6 @@
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 	..()
 
-/turf/open/space/attack_paw(mob/user)
-	return src.attack_hand(user)
-
 /turf/open/space/attack_hand(mob/user)
 	if ((user.is_mob_restrained() || !( user.pulling )))
 		return

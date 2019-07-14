@@ -129,8 +129,8 @@ Contains most of the procs that are called when a mob is attacked by something
 	user.animation_attack_on(src)
 	if(user == src) // Attacking yourself can't miss
 		target_zone = user.zone_selected
-	if(!target_zone)
-		visible_message(SPAN_DANGER("<B>[user] misses [src] with \the [I]!"), null, null, 5)
+	if(!target_zone && !(I.flags_item & ITEM_PREDATOR))
+		visible_message(SPAN_DANGER("[user] misses [src] with \the [I]!"), null, null, 5)
 		return 0
 
 	var/datum/limb/affecting = get_limb(target_zone)

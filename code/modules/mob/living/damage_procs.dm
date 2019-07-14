@@ -49,6 +49,12 @@
 			KnockDown(effect/(blocked+1))
 		if(PARALYZE)
 			KnockOut(effect/(blocked+1))
+		if(DAZE)
+			Daze(effect/(blocked+1))
+		if(SLOW)
+			Slow(effect/(blocked+1))
+		if(SUPERSLOW)
+			Superslow(effect/(blocked+1))
 		if(AGONY)
 			halloss += effect // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)

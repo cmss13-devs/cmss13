@@ -44,9 +44,6 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 /obj/machinery/computer/cryopod/delta
 	cryotype = "Delta"
 
-/obj/machinery/computer/cryopod/attack_paw()
-	src.attack_hand()
-
 /obj/machinery/computer/cryopod/attack_ai()
 	src.attack_hand()
 
@@ -267,11 +264,10 @@ var/global/list/frozen_items = list("Alpha"=list(),"Bravo"=list(),"Charlie"=list
 
 					if(istype(W, /obj/item/clothing/under))
 						var/obj/item/clothing/under/UN = W
-						if(UN.hastie)
-							var/obj/item/TIE = UN.hastie
-							UN.remove_accessory()
-							strippeditems += TIE
-							TIE.loc = null
+						for(var/obj/item/I in UN.accessories)
+							UN.remove_accessory(occupant, I)
+							strippeditems += I
+							I.loc = null
 
 					if(istype(W, /obj/item/clothing/shoes/marine))
 						var/obj/item/clothing/shoes/marine/MS = W

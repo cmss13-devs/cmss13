@@ -231,6 +231,24 @@
 		speech_problem_flag = 1
 	return stunned
 
+/mob/living/carbon/human/handle_dazed()
+	if(dazed)
+		var/skill = 1
+		if(mind && mind.cm_skills)
+			skill += (mind.cm_skills.endurance-1)*0.2
+		AdjustDazed(-skill)
+	if(dazed)
+		speech_problem_flag = 1
+	return dazed
+
+/mob/living/carbon/human/handle_knocked_down()
+	if(knocked_down && client)
+		var/skill = 1
+		if(mind && mind.cm_skills)
+			skill += (mind.cm_skills.endurance-1)*0.1
+		knocked_down = max(knocked_down - skill, 0)
+	return knocked_down
+
 /mob/living/carbon/human/handle_stuttering()
 	if(..())
 		speech_problem_flag = 1

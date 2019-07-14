@@ -46,9 +46,9 @@
 
 	if(frenzy_aura)
 		switch(frenzy_aura)
-			if(-INFINITY to 1.0) msg_holder = "Very Weak"
-			if(1.1 to 2.0) msg_holder = "Weak"
-			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(-INFINITY to 0.9) msg_holder = "Very Weak"
+			if(1.0 to 1.9) msg_holder = "Weak"
+			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Frenzy:", "[msg_holder]")
@@ -56,9 +56,9 @@
 
 	if(warding_aura)
 		switch(warding_aura)
-			if(-INFINITY to 1.0) msg_holder = "Very Weak"
-			if(1.1 to 2.0) msg_holder = "Weak"
-			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(-INFINITY to 0.9) msg_holder = "Very Weak"
+			if(1.0 to 1.9) msg_holder = "Weak"
+			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Warding:", "[msg_holder]")
@@ -66,9 +66,9 @@
 
 	if(recovery_aura)
 		switch(recovery_aura)
-			if(-INFINITY to 1.0) msg_holder = "Very Weak"
-			if(1.1 to 2.0) msg_holder = "Weak"
-			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(-INFINITY to 0.9) msg_holder = "Very Weak"
+			if(1.0 to 1.9) msg_holder = "Weak"
+			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Recovery:", "[msg_holder]")
@@ -96,20 +96,27 @@
 	return 1
 
 //A simple handler for checking your state. Used in pretty much all the procs.
-/mob/living/carbon/Xenomorph/proc/check_state(var/whilelying = 0)
-	if(!whilelying)
+/mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)
+	if(!permissive)
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return 0
+		else if (!(caste_name == "Queen") && observed_xeno)
+			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 	else
 		if(is_mob_incapacitated() || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return 0
+		
 	return 1
 
 //Checks your plasma levels and gives a handy message.
 /mob/living/carbon/Xenomorph/proc/check_plasma(value)
 	if(stat)
+		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+		return 0
+	
+	if(dazed)
 		to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 		return 0
 
@@ -206,6 +213,12 @@
 		. *= 0.95
 	if(locate(/obj/effect/alien/resin/sticky/fast) in loc)
 		. *= 0.8
+
+	if(superslowed)
+		. += XENO_SUPERSLOWED_AMOUNT
+
+	if(slowed && !superslowed)
+		. += XENO_SLOWED_AMOUNT
 
 	. *= speed_multiplier
 

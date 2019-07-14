@@ -16,6 +16,8 @@ em						{font-style: normal;	font-weight: bold;}
 .ooc					{					font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #b82e00;	font-weight: bold;}
+.xooc					{color: #6C0094;	font-weight: bold;}
+.mooc					{color: #009900;	font-weight: bold;}
 
 .adminobserver			{color: #996600;	font-weight: bold;}
 .admin					{color: #386aff;	font-weight: bold;}
@@ -55,6 +57,8 @@ h1.alert, h2.alert		{color: #000000;}
 .moderate				{color: #CC0000;}
 .disarm					{color: #990000;}
 .passive				{color: #660000;}
+
+.helpful				{color: #368f31;}
 
 .scanner			{color: #ff0000;}
 .scannerb			{color: #ff0000;	font-weight: bold;}
@@ -106,6 +110,7 @@ h1.alert, h2.alert		{color: #000000;}
 .soghun					{color: #228B22;}
 .changeling				{color: #800080;}
 .vox					{color: #AA00AA;}
+.monkey					{color: #966C47;}
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
 

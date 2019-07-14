@@ -15,9 +15,6 @@
 	flags_equip_slot = SLOT_WAIST
 	var/skilllock = 1
 
-/obj/item/reagent_container/hypospray/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/item/reagent_container/hypospray/attack(mob/M, mob/living/user)
 	if(!reagents.total_volume)
 		to_chat(user, SPAN_DANGER("[src] is empty."))

@@ -10,6 +10,42 @@
 	var/armor_rad = 0
 	var/armor_internaldamage = 0
 	var/movement_compensation = 0
+	var/list/accessories = list()
+	var/list/valid_accessory_slots = list()
+	var/list/restricted_accessory_slots = list()
+	var/drag_unequip = FALSE
+
+/obj/item/clothing/get_examine_line()
+	. = ..()
+	var/list/ties = list()
+	for(var/obj/item/clothing/accessory/accessory in accessories)
+		if(accessory.high_visibility)
+			ties += "\a [accessory.get_examine_line()]"
+	if(ties.len)
+		.+= " with [english_list(ties)] attached"
+	if(accessories && accessories.len > ties.len)
+		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
+
+/obj/item/clothing/attackby(var/obj/item/I, var/mob/living/M)
+	..()
+	if(accessories.len && is_sharp(I))
+		for(var/obj/item/clothing/accessory/ranks/R in accessories)
+			M.visible_message(SPAN_WARNING("You rip off \the [R] from [src]!"), SPAN_WARNING("[M] rips off \the [R] from [src]!"))
+
+/obj/item/clothing/Topic(href, href_list)
+	if(href_list["list_acc"])
+		if(accessories && accessories.len)
+			var/list/ties = list()
+			for(var/accessory in accessories)
+				ties += "\icon[accessory] \a [accessory]"
+			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
+		return
+
+/obj/item/clothing/attack_hand(mob/user as mob)
+	if (drag_unequip && (ishuman(usr) || ismonkey(usr)) && src.loc == user)	//make it harder to accidentally undress yourself
+		return
+
+	..()
 
 /obj/item/clothing/proc/get_armor(armortype)
 	var/armor_total = 0
@@ -45,6 +81,22 @@
 //Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/clothing/proc/update_clothing_icon()
 	return
+
+/obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
+	var/image/ret = ..()
+
+	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
+		return ret
+
+	if(blood_DNA)
+		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "uniformblood", blood_color, RESET_COLOR)
+		bloodsies.appearance_flags |= NO_CLIENT_COLOR
+		ret.overlays += bloodsies
+
+	if(accessories.len)
+		for(var/obj/item/clothing/accessory/A in accessories)
+			ret.overlays |= A.get_mob_overlay(user_mob, slot)
+	return ret
 
 //BS12: Species-restricted clothing check.
 //CM Update : Restricting armor to specific uniform
@@ -105,6 +157,7 @@
 	var/blood_overlay_type = "suit"
 	siemens_coefficient = 0.9
 	w_class = 3
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_0.dmi')
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -125,6 +178,12 @@
 			return 0
 	return 1
 
+/obj/item/clothing/suit/proc/get_collar()
+	var/icon/C = new('icons/mob/collar.dmi')
+	if(icon_state in C.IconStates())
+		var/image/I = image(C, icon_state)
+		I.color = color
+		return I
 
 /////////////////////////////////////////////////////////
 //Gloves
@@ -139,6 +198,7 @@
 	flags_armor_protection = HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/hands_monkey.dmi')
 
 
 /obj/item/clothing/gloves/update_clothing_icon()

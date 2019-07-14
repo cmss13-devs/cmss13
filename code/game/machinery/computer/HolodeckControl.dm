@@ -51,10 +51,6 @@
 	anchored = 1.0
 	throwpass = 1	//You can throw objects over this, despite it's density.
 
-
-/obj/structure/table/holotable/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
 	return attack_hand(user)
 
@@ -199,10 +195,6 @@
 
 /obj/machinery/readybutton/attack_ai(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices!")
-	return
-
-/obj/machinery/readybutton/attack_paw(mob/user as mob)
-	to_chat(user, "You are too primitive to use this device.")
 	return
 
 /obj/machinery/readybutton/New()

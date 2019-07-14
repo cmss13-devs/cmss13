@@ -285,7 +285,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/spawn_full = 1
 	var/handfuls = 0
 
-/obj/item/magazine_box/pickup
+/obj/item/magazine_box/empty
 	spawn_full = 0
 
 /obj/item/magazine_box/New()
@@ -299,6 +299,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			while(i < num_of_magazines)
 				contents += new magazine_type(src)
 				i++
+	else
+		if(handfuls)
+			var/obj/item/ammo_magazine/AM = new magazine_type(src)
+			AM.max_rounds = num_of_magazines
+			AM.current_rounds = 0
 
 /obj/item/magazine_box/update_icon()
 	icon_state = "[icon_base_name]_closed"
@@ -358,11 +363,17 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 100
 	handfuls = 1
 
+/obj/item/magazine_box/shotgun/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/shotgun/buckshot
 	name = "shotgun shell box (buckshot x 100)"
 	icon_state = "shell_box_buck_closed"
 	icon_base_name = "shell_box_buck"
 	magazine_type = /obj/item/ammo_magazine/shotgun/buckshot
+
+/obj/item/magazine_box/shotgun/buckshot/empty
+	spawn_full = 0
 
 /obj/item/magazine_box/shotgun/flechette
 	name = "shotgun shell box (flechette x 100)"
@@ -370,17 +381,26 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	icon_base_name = "shell_box_flech"
 	magazine_type = /obj/item/ammo_magazine/shotgun/flechette
 
+/obj/item/magazine_box/shotgun/flechette/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/rifle_ap
 	name = "magazine box (AP M41A x 10)"
 	icon_state = "mag_box_m41_ap_closed"
 	icon_base_name = "mag_box_m41_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/ap
 
+/obj/item/magazine_box/rifle_ap/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/rifle_incen
 	name = "magazine box (Incen M41A x 10)"
 	icon_state = "mag_box_m41_incen_closed"
 	icon_base_name = "mag_box_m41_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
+
+/obj/item/magazine_box/rifle_incen/empty
+	spawn_full = 0
 
 /obj/item/magazine_box/rifle_extended
 	name = "magazine box (Ext M41A x 8)"
@@ -389,6 +409,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/extended
 
+/obj/item/magazine_box/rifle_extended/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/smg
 	name = "magazine box (M39 x 12)"
 	icon_state = "mag_box_m39_closed"
@@ -396,17 +419,27 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/smg/m39
 
+/obj/item/magazine_box/smg/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/smg/ap
 	name = "magazine box (AP M39 x 12)"
 	icon_state = "mag_box_m39_ap_closed"
 	icon_base_name = "mag_box_m39_ap"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/ap
 
+/obj/item/magazine_box/smg/ap/empty
+	spawn_full = 0
+
 /*/obj/item/magazine_box/smg/incen
 	name = "magazine box (Incen m39 x 12)"
 	icon_state = "mag_box_m39_incen_closed"
 	icon_base_name = "mag_box_m39_incen"
-	magazine_type = /obj/item/ammo_magazine/rifle/incendiary*/
+	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
+
+/obj/item/magazine_box/smg/incen/empty
+	spawn_full = 0
+*/
 
 /obj/item/magazine_box/smg/extended
 	name = "magazine box (Ext m39 x 10)"
@@ -415,12 +448,18 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 10
 	magazine_type = /obj/item/ammo_magazine/smg/m39/extended
 
+/obj/item/magazine_box/smg/extended/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/rifle/l42mk1
 	name = "magazine box (L42-MK1 x 16)"
 	icon_state = "mag_box_l42_closed"
 	icon_base_name = "mag_box_l42"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1
+
+/obj/item/magazine_box/rifle/l42mk1/empty
+	spawn_full = 0
 
 /obj/item/magazine_box/rifle/l42mk1/ap
 	name = "magazine box (AP L42-MK1 x 16)"
@@ -429,20 +468,28 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	num_of_magazines = 16 //less ammo per mag, a smart RO will buy M41 AP.
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/ap
 
+/obj/item/magazine_box/rifle/l42mk1/ap/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/rifle/l42mk1/ext
-	name = "magazine box (Extended L42-MK1 x 16)"
+	name = "magazine box (Ext L42-MK1 x 16)"
 	icon_state = "mag_box_l42_ext_closed"
 	icon_base_name = "mag_box_l42_ext"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/extended
 
+/obj/item/magazine_box/rifle/l42mk1/ext/empty
+	spawn_full = 0
+
 /obj/item/magazine_box/rifle/l42mk1/incendiary
-	name = "magazine box (Incendiary L42-MK1 x 16)"
+	name = "magazine box (Incen L42-MK1 x 16)"
 	icon_state = "mag_box_l42_incen_closed"
 	icon_base_name = "mag_box_l42_incen"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42mk1/incendiary
 
+/obj/item/magazine_box/rifle/l42mk1/incendiary/empty
+	spawn_full = 0
 
 /obj/structure/magazine_box
 	name = "magazine_box"
@@ -459,7 +506,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(over_object == usr && Adjacent(usr))
 		if(!ishuman(usr))	return
 		visible_message(SPAN_NOTICE("[usr] picks up [name]."))
-		var/obj/item/magazine_box/MB = new /obj/item/magazine_box/pickup
+		var/obj/item/magazine_box/MB = new /obj/item/magazine_box/empty
 		MB.icon_base_name = icon_base_name
 		MB.magazine_type = magazine_type
 		MB.num_of_magazines = num_of_magazines
@@ -540,6 +587,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		if(istype(W,/obj/item/ammo_magazine/handful))
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in contents
 			AM.attackby(W, user, 1)
+			update_icon()
 
 /obj/item/big_ammo_box
 	name = "big ammo box (10x24mm)"
@@ -614,6 +662,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			AM.current_rounds -= S
 			bullet_amount += S
 			AM.update_icon()
+			update_icon()
 			to_chat(user, SPAN_NOTICE("You put [S] rounds in [src]."))
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)

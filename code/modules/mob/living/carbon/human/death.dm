@@ -56,7 +56,9 @@
 	if(stat == DEAD) 
 		return
 	living_human_list -= src
-	if(!gibbed) disable_lights()
+	if(!gibbed) 
+		disable_detectors()
+		disable_lights()
 	if(pulledby && isXeno(pulledby)) // Xenos lose grab on dead humans
 		pulledby.stop_pulling()
 	//Handle species-specific deaths.

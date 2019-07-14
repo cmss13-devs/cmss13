@@ -73,9 +73,6 @@
 		if(H.species.can_shred(H))
 			attack_generic(H, 25)
 
-/obj/structure/fence/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 //Used by attack_animal
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
 	health -= damage

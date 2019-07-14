@@ -328,12 +328,12 @@
 			W.equipped(src, slot)
 			update_inv_pockets()
 		if(WEAR_ACCESSORY)
-			var/obj/item/clothing/under/U = w_uniform
-			if(U && !U.hastie)
-				var/obj/item/clothing/tie/T = W
-				T.on_attached(U, src)
-				U.hastie = T
-				update_inv_w_uniform()
+			var/obj/item/clothing/accessory/A = W
+			for(var/obj/item/clothing/C in contents)
+				if(C.can_attach_accessory(A))
+					C.attach_accessory(src, A)
+					break
+			update_inv_w_uniform()
 		if(WEAR_J_STORE)
 			s_store = W
 			W.equipped(src, slot)
@@ -353,11 +353,12 @@
 				wear_suit.attackby(W, src)
 				wear_suit.update_icon()
 		if(WEAR_IN_ACCESSORY)
-			var/obj/item/clothing/under/U = w_uniform
-			if(U && U.hastie)
-				var/obj/item/clothing/tie/storage/T = U.hastie
-				if(T && istype(T) && T.hold.storage_slots)
-					w_uniform.attackby(W,src)
+			var/obj/item/clothing/accessory/A = W
+			for(var/obj/item/clothing/C in contents)
+				if(C.can_attach_accessory(A))
+					C.attach_accessory(src, A)
+					break
+			update_inv_w_uniform()
 		if(WEAR_IN_BELT)
 			belt.attackby(W,src)
 			belt.update_icon()

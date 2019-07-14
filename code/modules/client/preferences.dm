@@ -12,6 +12,8 @@ var/global/list/special_roles = list(
 )
 
 var/const/MAX_SAVE_SLOTS = 10
+#define XENO_PREFIX_LIMIT 2
+#define XENO_POSTFIX_LIMIT 2
 
 datum/preferences
 	//doohickeys for savefiles
@@ -137,6 +139,10 @@ datum/preferences
 		// OOC Metadata:
 	var/metadata = ""
 	var/slot_name = ""
+
+	//XENO NAMES
+	var/xeno_prefix = "XX"
+	var/xeno_postfix = ""
 
 /datum/preferences/New(client/C)
 	if(istype(C))
@@ -272,6 +278,7 @@ datum/preferences
 		dat += "<br><b>Synthetic name:</b> <a href='?_src_=prefs;preference=synth_name;task=input'>[synthetic_name]</a><br>"
 		dat += "<br><b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
 
+
 	dat += "<div id='wrapper'>"
 	dat += "<big><big><b>Name:</b> "
 	dat += "<a href='?_src_=prefs;preference=name;task=input'><b>[real_name]</b></a>"
@@ -329,6 +336,20 @@ datum/preferences
 			dat += "<b>Be [i]:</b> <font color=red><b> \[BANNED]</b></font><br>"
 		else
 			dat += "<b>Be [i]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[src.be_special&(1<<n) ? "Yes" : "No"]</b></a><br>"
+			if(i == "Xenomorph")
+				var/display_prefix = xeno_prefix ? xeno_prefix : "------"
+				var/display_postfix = xeno_postfix ? xeno_postfix : "------"
+
+				dat += "<b>Xeno prefix:</b> <a href='?_src_=prefs;preference=xeno_prefix;task=input'>[display_prefix]</a><br>"
+				dat += "<b>Xeno postfix:</b> <a href='?_src_=prefs;preference=xeno_postfix;task=input'>[display_postfix]</a><br>"
+
+				var/tempnumber = rand(1, 999)
+				var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
+				var/prefix_text = xeno_prefix ? xeno_prefix : "XX"
+				var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
+
+				dat += "<b>Xeno sample name:</b> [xeno_text]<br>"
+
 		n++
 
 	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Marine Role Preferences</b></a><br>"
@@ -945,6 +966,56 @@ datum/preferences
 				if("pred_boot_type")
 					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-3)", "Greave Selection") as num|null
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
+
+				if("xeno_prefix")
+					var/new_xeno_prefix = input(user, "Choose your xenomorph prefix. One or two letters capitalized. Put empty text if you want to default it to 'XX'", "Xenomorph Prefix") as text|null
+					new_xeno_prefix = uppertext(new_xeno_prefix)
+					if(lentext(new_xeno_prefix) > XENO_PREFIX_LIMIT)
+						to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can only be up to [XENO_PREFIX_LIMIT] letters long.</font>")
+					else if(lentext(new_xeno_prefix)==0)
+						xeno_prefix = "XX"
+					else
+						var/all_ok = TRUE
+						for(var/i=1, i<=length(new_xeno_prefix), i++)
+							var/ascii_char = text2ascii(new_xeno_prefix,i)
+							switch(ascii_char)
+								// A  .. Z
+								if(65 to 90)			//Uppercase Letters will work
+								else
+									all_ok = FALSE		//everything else - won't
+						if(all_ok)
+							xeno_prefix = new_xeno_prefix
+						else
+							to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can contain either single letter or two letters.</font>")
+
+				if("xeno_postfix")
+					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
+					new_xeno_postfix = uppertext(new_xeno_postfix)
+					if(lentext(new_xeno_postfix)>XENO_POSTFIX_LIMIT)
+						to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can only be up to [XENO_POSTFIX_LIMIT] letters long.</font>")
+					else if(lentext(new_xeno_postfix)==0)
+						xeno_postfix = ""
+					else
+						var/all_ok = TRUE
+						var/first_char = TRUE
+						for(var/i=1, i<=length(new_xeno_postfix), i++)
+							var/ascii_char = text2ascii(new_xeno_postfix,i)
+							switch(ascii_char)
+								// A  .. Z
+								if(65 to 90)			//Uppercase Letters will work on first char
+									if(!first_char)
+										all_ok = FALSE
+								// 0  .. 9
+								if(48 to 57)			//Numbers will work if not the first char
+									if(first_char)
+										all_ok = FALSE
+								else
+									all_ok = FALSE		//everything else - won't
+							first_char = FALSE
+						if(all_ok)
+							xeno_postfix = new_xeno_postfix
+						else
+							to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can contain single letter and an optional digit after it.</font>")
 
 				if("age")
 					var/new_age = input(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null

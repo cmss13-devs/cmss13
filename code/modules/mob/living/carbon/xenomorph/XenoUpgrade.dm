@@ -36,7 +36,7 @@
 				if("Boiler")
 					to_chat(src, SPAN_XENOANNOUNCE("You are the master of ranged artillery. Bring death from above."))
 				if("Praetorian")
-					to_chat(src, SPAN_XENOANNOUNCE("You are the strongest ranged fighter around. Your spit is devestating and you can fire nearly a constant stream."))
+					to_chat(src, SPAN_XENOANNOUNCE("You are the most fearsome of warleaders. You are inevitable. Bring death to the opponents of the hive!"))
 				if("Drone")
 					src <<SPAN_XENOANNOUNCE("You are the ultimate worker of the Hive. Time to clock in, and clock the tallhosts out.")
 				if("Hivelord")

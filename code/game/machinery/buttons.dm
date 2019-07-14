@@ -45,6 +45,3 @@
 	var/area/area = null
 	var/otherarea = null
 	var/id = 1
-
-	attack_paw(mob/user as mob)
-		return

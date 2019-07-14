@@ -16,8 +16,11 @@
 	switch(M.a_intent)
 
 		if("help")
-			M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
-			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5)
+			if(on_fire)
+				extinguish_mob(M)
+			else
+				M.visible_message(SPAN_NOTICE("\The [M] caresses [src] with its scythe-like arm."), \
+				SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5)
 
 		if("grab")
 			if(M == src || anchored || buckled)
@@ -145,6 +148,20 @@
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
 				if (R.delimb(src, affecting))
 					return 1
+			
+			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
+			if (isXenoPraetorian(M))
+				var/mob/living/carbon/Xenomorph/Praetorian/P = M
+				var/datum/caste_datum/praetorian/pCaste = P.caste
+				if (P.prae_status_flags & PRAE_DANCER_STATSBUFFED && P.mutation_type == PRAETORIAN_DANCER)
+					damage += 15 // Only slightly stronger than a normal attack, Praes should be using impale here
+					to_chat(P, SPAN_WARNING("You expend your dance to empower your attack!"))
+					P.speed_modifier += pCaste.dance_speed_buff
+					P.evasion_modifier -= pCaste.dance_evasion_buff
+					P.recalculate_speed()
+					P.recalculate_evasion()
+					P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
+
 
 			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
 			//nice messages so people know that armor works
@@ -155,7 +172,7 @@
 
 			apply_damage(n_damage, BRUTE, affecting, 0, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
-				playsound(loc, "acid_hit", 25, 1)				
+				playsound(loc, "acid_hit", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(config.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
@@ -827,7 +844,7 @@
 			M.visible_message(SPAN_DANGER("\The [M] smashes \the [src]!"), \
 			SPAN_DANGER("You smash \the [src]!"), null, 5)
 	else
-		return attack_paw(M)
+		return M.UnarmedAttack(src)
 
 /obj/structure/girder/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.caste.tier < 2 || unacidable)

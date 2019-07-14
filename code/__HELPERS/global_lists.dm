@@ -66,6 +66,7 @@ var/global/list/attachment_vendors = list() //Used by our gamemode code
 var/global/list/marine_vendors = list() //Used by our gamemode code
 var/global/list/cargo_ammo_vendors = list() //Used by our gamemode code
 var/global/list/cargo_guns_vendors = list() //Used by our gamemode code
+var/global/list/cm_vending_vendors = list() //Used by our gamemode code
 
 var/global/list/yautja_gear = list() // list of loose pred gear
 

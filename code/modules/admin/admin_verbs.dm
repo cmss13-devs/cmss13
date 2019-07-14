@@ -46,6 +46,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/check_antagonists,
 	/client/proc/admin_memo,			/*admin memo system. show/delete/write. +SERVER needed to delete admin memos of others*/
 	/client/proc/dsay,					/*talk in deadchat using our ckey/fakekey*/
+	/client/proc/xooc,					// Xeno OOC
+	/client/proc/mooc,					// Marine OOC
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	// /client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/
@@ -111,6 +113,7 @@ var/list/admin_verbs_fun = list(
 	// /client/proc/cmd_admin_add_freeform_ai_law,
 	// /client/proc/cmd_admin_add_random_ai_law,
 	// /client/proc/make_sound,
+	/client/proc/turn_everyone_into_primitives,
 	/client/proc/set_ooc_color_global,
 	/datum/admins/proc/hostile_lure,
 	/client/proc/set_away_timer,

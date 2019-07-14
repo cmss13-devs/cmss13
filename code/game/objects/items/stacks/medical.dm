@@ -68,18 +68,12 @@
 				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been bandaged."))
 				return 1
 			else
-				for (var/datum/wound/W in affecting.wounds)
-					if (W.internal)
-						continue
-					if (W.current_stage <= W.max_bleeding_stage)
-						user.visible_message(SPAN_NOTICE("[user] bandages [W.desc] on [M]'s [affecting.display_name]."),
-							SPAN_NOTICE("You bandage [W.desc] on [M]'s [affecting.display_name].") )
-					else if (istype(W,/datum/wound/bruise))
-						user.visible_message(SPAN_NOTICE("[user] places bruise patch over [W.desc] on [M]'s [affecting.display_name]."),
-							SPAN_NOTICE("You place bruise patch over [W.desc] on [M]'s [affecting.display_name].") )
-					else
-						user.visible_message(SPAN_NOTICE("[user] places bandaid over [W.desc] on [M]'s [affecting.display_name]."),
-							SPAN_NOTICE("You place bandaid over [W.desc] on [M]'s [affecting.display_name].") )
+				var/possessive = "[user == M ? "your" : "[M]'s"]"
+				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
+					SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
+					SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
 				use(1)
 		else
 			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery
@@ -117,8 +111,12 @@
 				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
 				return 1
 			else
-				user.visible_message(SPAN_NOTICE("[user] salves wounds on [M]'s [affecting.display_name]."),
-				SPAN_NOTICE("You salve wounds on [M]'s [affecting.display_name]."))
+				var/possessive = "[user == M ? "your" : "[M]'s"]"
+				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>salve the wounds</b> on [possessive] <b>[affecting.display_name]</b>."),
+					SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
+					SPAN_NOTICE("[user] salves the wounds [possessive_their] [affecting.display_name]."))
 				use(1)
 		else
 			if (H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
@@ -164,20 +162,14 @@
 				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been treated."))
 				return 1
 			else
-				for(var/datum/wound/W in affecting.wounds)
-					if(W.internal)
-						continue
-					if(W.current_stage <= W.max_bleeding_stage)
-						user.visible_message(SPAN_NOTICE("[user] cleans [W.desc] on [M]'s [affecting.display_name] and seals edges with bioglue."),
-						SPAN_NOTICE("You clean and seal [W.desc] on [M]'s [affecting.display_name]."))
-					else if (istype(W,/datum/wound/bruise))
-						user.visible_message(SPAN_NOTICE("[user] places medicine patch over [W.desc] on [M]'s [affecting.display_name]."),
-						SPAN_NOTICE("You place medicine patch over [W.desc] on [M]'s [affecting.display_name]."))
-					else
-						user.visible_message(SPAN_NOTICE("[user] smears some bioglue over [W.desc] on [M]'s [affecting.display_name]."),
-						SPAN_NOTICE("You smear some bioglue over [W.desc] on [M]'s [affecting.display_name]."))
-				if(bandaged)
-					affecting.heal_damage(heal_amt, 0)
+				var/possessive = "[user == M ? "your" : "[M]'s"]"
+				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>clean and seal</b> the wounds on [possessive] <b>[affecting.display_name]</b> with bioglue."),
+					SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
+					SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
+			if(bandaged)
+				affecting.heal_damage(heal_amt, 0)
 				use(1)
 		else
 			if(H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
@@ -235,8 +227,12 @@
 				to_chat(user, "<span class='warning'>The wounds on [M]'s [affecting.display_name] have already been salved.")
 				return 1
 			else
-				user.visible_message(SPAN_NOTICE("[user] covers wounds on [M]'s [affecting.display_name] with regenerative membrane."),
-				SPAN_NOTICE("You cover wounds on [M]'s [affecting.display_name] with regenerative membrane."))
+				var/possessive = "[user == M ? "your" : "[M]'s"]"
+				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+				user.affected_message(M,
+					SPAN_HELPFUL("You <b>cover the wounds</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
+					SPAN_HELPFUL("[user] <b>covers the wounds</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
+					SPAN_NOTICE("[user] covers the wounds on [possessive_their] [affecting.display_name] with regenerative membrane."))
 				affecting.heal_damage(0, heal_amt)
 				use(1)
 		else
@@ -281,15 +277,22 @@
 			return
 
 		if(M != user)
-			user.visible_message(SPAN_WARNING("[user] starts to apply [src] to [M]'s [limb]."),
-			SPAN_NOTICE("You start to apply [src] to [M]'s [limb], hold still."))
+			var/possessive = "[user == M ? "your" : "[M]'s"]"
+			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>start splinting</b> [possessive] <b>[affecting.display_name]</b>."),
+				SPAN_HELPFUL("[user] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[user] starts splinting [possessive_their] [affecting.display_name]."))
 		else
 			if((!user.hand && affecting.name in list("r_arm", "r_hand")) || (user.hand && affecting.name in list("l_arm", "l_hand")))
 				to_chat(user, "<span class='warning'>You can't apply a splint to the \
 					[affecting.name == "r_hand"||affecting.name == "l_hand" ? "hand":"arm"] you're using!</span>")
 				return
-			user.visible_message(SPAN_WARNING("[user] starts to apply [src] to their [limb]."),
-			SPAN_NOTICE("You start to apply [src] to your [limb], hold still."))
+			// Self-splinting
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>start splinting</b> your <b>[affecting.display_name]</b>."),
+				,
+				SPAN_NOTICE("[user] starts splinting their [affecting.display_name]."))
 
 		if(affecting.apply_splints(src, user, M)) // Referenced in external organ helpers.
 			use(1)

@@ -52,7 +52,7 @@ mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0
 				msg = SPAN_HIGHDANGER("OH GOD! Your [partname] is hurting terribly!")
 	if(msg && (msg != last_pain_message || prob(10)))
 		last_pain_message = msg
-		src << msg
+		to_chat(src, msg)
 	next_pain_time = world.time + (100 - amount)
 
 

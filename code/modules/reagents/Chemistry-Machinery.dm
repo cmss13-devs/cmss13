@@ -164,9 +164,6 @@
 /obj/machinery/chem_dispenser/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/chem_dispenser/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/machinery/chem_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
 		return
@@ -401,7 +398,7 @@
 
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
-			
+
 			for(var/datum/reagent/R in reagents.reagent_list)
 				if(!R.ingestible)
 					to_chat(user, SPAN_WARNING("[R.name] must be administered intravenously and cannot be made into a pill."))

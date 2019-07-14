@@ -218,7 +218,6 @@
 	name = "\improper M10 pattern marine helmet"
 	desc = "A standard M10 Pattern Helmet. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. Contains a small built-in camera."
 	icon = 'icons/obj/clothing/cm_hats.dmi'
-	sprite_sheet_id = 1
 	icon_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -255,6 +254,9 @@
 						/obj/item/reagent_container/food/drinks/flask/marine = "helmet_flask",
 						/obj/item/reagent_container/food/snacks/eat_bar = "helmet_snack_eat",
 						/obj/item/reagent_container/food/snacks/packaged_burrito = "helmet_snack_burrito",
+						/obj/item/tool/pen = "helmet_pen_black",
+						/obj/item/tool/pen/blue = "helmet_pen_blue",
+						/obj/item/tool/pen/red = "helmet_pen_red",
 						/obj/item/clothing/glasses/mgoggles = "goggles",
 						/obj/item/clothing/glasses/mgoggles/prescription = "goggles",
 						/obj/item/clothing/glasses/welding ="welding-h",
@@ -262,6 +264,11 @@
 						/obj/item/clothing/head/headband/red = "headbandred",
 						/obj/item/reagent_container/hypospray/autoinjector = "helmet_injector")
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors.
+	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/head_1.dmi'
+	)
 
 
 /obj/item/clothing/head/helmet/marine/New(loc,
@@ -635,7 +642,6 @@
 	name = "\improper UM4 helmet"
 	desc = "A skirted helmet designed for use with the UM/UH system."
 	icon = 'icons/obj/clothing/cm_hats.dmi'
-	sprite_sheet_id = 1
 	icon_state = "upp_helmet1"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -646,11 +652,13 @@
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/head_1.dmi'
+	)
 
 /obj/item/clothing/head/helmet/UPP/heavy
 	name = "\improper UH7 helmet"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
-	sprite_sheet_id = 1
 	icon_state = "upp_helmet_heavy"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -662,6 +670,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	unacidable = 1
 	anti_hug = 3
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/head_1.dmi'
+	)
 
 
 
@@ -671,7 +682,6 @@
 	name = "specialist head-rag"
 	desc = "A hat worn by heavy-weapons operators to block sweat."
 	icon = 'icons/obj/clothing/cm_hats.dmi'
-	sprite_sheet_id = 1
 	icon_state = "spec"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -683,6 +693,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/head_1.dmi'
+	)
 
 /obj/item/clothing/head/helmet/specrag/New()
 	select_gamemode_skin(type)
@@ -692,7 +705,6 @@
 	name = "durag"
 	desc = "Good for keeping sweat out of your eyes"
 	icon = 'icons/obj/clothing/cm_hats.dmi'
-	sprite_sheet_id = 1
 	icon_state = "durag"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -704,6 +716,9 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/head_1.dmi'
+	)
 
 /obj/item/clothing/head/helmet/durag/jungle
 	name = "\improper M8 marksman cowl"

@@ -53,39 +53,6 @@
 		process(loc, what)
 			..()
 
-
-		monkey
-			process(loc, what)
-				var/mob/living/carbon/monkey/O = what
-				if (O.client) //grief-proof
-					O.loc = loc
-					O.visible_message(SPAN_NOTICE("Suddenly [O] jumps out from the processor!"), \
-							"You jump out from the processor", \
-							"You hear chimp")
-					return
-				var/obj/item/reagent_container/glass/bucket/bucket_of_blood = new(loc)
-				var/datum/reagent/blood/B = new()
-				B.holder = bucket_of_blood
-				B.volume = 70
-				//set reagent data
-				B.data["donor"] = O
-
-				for(var/datum/disease/D in O.viruses)
-					if(D.spread_type != SPECIAL)
-						B.data["viruses"] += D.Copy()
-
-				B.data["blood_DNA"] = copytext(O.dna_sequence,1,0)
-				if(O.resistances&&O.resistances.len)
-					B.data["resistances"] = O.resistances.Copy()
-				bucket_of_blood.reagents.reagent_list += B
-				bucket_of_blood.reagents.update_total()
-				bucket_of_blood.on_reagent_change()
-				//bucket_of_blood.reagents.handle_reactions() //blood doesn't react
-				..()
-
-			input = /mob/living/carbon/monkey
-			output = null
-
 /obj/machinery/processor/proc/select_recipe(var/X)
 	for (var/Type in typesof(/datum/food_processor_process) - /datum/food_processor_process - /datum/food_processor_process/mob)
 		var/datum/food_processor_process/P = new Type()

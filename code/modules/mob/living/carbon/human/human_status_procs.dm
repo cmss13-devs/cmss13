@@ -5,10 +5,7 @@
 		amount *= 0.5
 		if(round(amount) && src.contents && src.contents.len)
 			for(var/obj/item/weapon/wristblades/W in src.contents)
-				if(istype(W,/obj/item/weapon/wristblades/scimitar))
-					W = new /obj/item/weapon/wristblades/scimitar
-				else
-					W = new /obj/item/weapon/wristblades
+				W = new /obj/item/weapon/wristblades
 
 	..()
 
@@ -18,10 +15,7 @@
 		amount *= 0.5
 		if(round(amount) && src.contents && src.contents.len)
 			for(var/obj/item/weapon/wristblades/W in src.contents)
-				if(istype(W, /obj/item/weapon/wristblades/scimitar))
-					W = new /obj/item/weapon/wristblades/scimitar
-				else
-					W = new /obj/item/weapon/wristblades
+				W = new /obj/item/weapon/wristblades
 	..()
 
 /mob/living/carbon/human/KnockOut(amount)

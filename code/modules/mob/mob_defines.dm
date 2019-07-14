@@ -92,6 +92,9 @@
 	var/frozen = 0.0
 	var/knocked_down = 0.0
 	var/losebreath = 0.0//Carbon
+	var/dazed = 0.0
+	var/slowed = 0.0 // X_SLOW_AMOUNT
+	var/superslowed = 0.0 // X_SUPERSLOW_AMOUNT
 	var/shakecamera = 0
 	var/a_intent = "help"//Living
 	var/m_intent = MOVE_INTENT_RUN//Living
@@ -145,7 +148,7 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	var/status_flags = CANSTUN|CANKNOCKDOWN|CANKNOCKOUT|CANPUSH	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
+	var/status_flags = CANSTUN|CANKNOCKDOWN|CANKNOCKOUT|CANPUSH|CANDAZE|CANSLOW	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
 

@@ -82,9 +82,9 @@
 
 /obj/item/storage/pouch/general/large/m39ap/New()
 	..()
-	new /obj/item/ammo_magazine/smg/m39/ap (src)
-	new /obj/item/ammo_magazine/smg/m39/ap (src)
-	new /obj/item/ammo_magazine/smg/m39/ap (src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
@@ -105,7 +105,7 @@
 
 /obj/item/storage/pouch/bayonet/upp/New()
 	..()
-	new /obj/item/weapon/combat_knife/upp (src)
+	new /obj/item/weapon/combat_knife/upp(src)
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
@@ -123,9 +123,9 @@
 
 /obj/item/storage/pouch/survival/full/New()
 	..()
-	new /obj/item/device/flashlight (src)
-	new /obj/item/tool/crowbar/red (src)
-	new /obj/item/reagent_container/pill/tramadol (src)
+	new /obj/item/device/flashlight(src)
+	new /obj/item/tool/crowbar/red(src)
+	new /obj/item/reagent_container/pill/tramadol(src)
 	new /obj/item/stack/medical/bruise_pack (src, 3)
 	new /obj/item/stack/sheet/metal(src, 20)
 
@@ -149,10 +149,10 @@
 
 /obj/item/storage/pouch/firstaid/full/New()
 	..()
-	new /obj/item/stack/medical/ointment (src)
-	new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless (src)
-	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless (src)
-	new /obj/item/stack/medical/bruise_pack (src)
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/Tramadol/skillless(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless(src)
+	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
@@ -228,70 +228,74 @@
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/New()
 	..()
-	new /obj/item/ammo_magazine/revolver/mateba (src)
-	new /obj/item/ammo_magazine/revolver/mateba (src)
-	new /obj/item/ammo_magazine/revolver/mateba (src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_vp70/New()
 	..()
-	new /obj/item/ammo_magazine/pistol/vp70 (src)
-	new /obj/item/ammo_magazine/pistol/vp70 (src)
-	new /obj/item/ammo_magazine/pistol/vp70 (src)
+	new /obj/item/ammo_magazine/pistol/vp70(src)
+	new /obj/item/ammo_magazine/pistol/vp70(src)
+	new /obj/item/ammo_magazine/pistol/vp70(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_vp78/New()
 	..()
-	new /obj/item/ammo_magazine/pistol/vp78 (src)
-	new /obj/item/ammo_magazine/pistol/vp78 (src)
-	new /obj/item/ammo_magazine/pistol/vp78 (src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
 
 
 /obj/item/storage/pouch/magazine/upp/New()
 	..()
-	new /obj/item/ammo_magazine/rifle/type71 (src)
-	new /obj/item/ammo_magazine/rifle/type71 (src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/large/upp/New()
 	..()
-	new /obj/item/ammo_magazine/rifle/type71 (src)
-	new /obj/item/ammo_magazine/rifle/type71 (src)
-	new /obj/item/ammo_magazine/rifle/type71 (src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/upp_smg/New()
 	..()
-	new /obj/item/ammo_magazine/smg/skorpion (src)
-	new /obj/item/ammo_magazine/smg/skorpion (src)
+	new /obj/item/ammo_magazine/smg/skorpion(src)
+	new /obj/item/ammo_magazine/smg/skorpion(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_m39/New()
 	..()
-	new /obj/item/ammo_magazine/smg/m39/ap (src)
-	new /obj/item/ammo_magazine/smg/m39/ap (src)
-	new /obj/item/ammo_magazine/smg/m39/ap (src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_p90/New()
 	..()
-	new /obj/item/ammo_magazine/smg/fp9000 (src)
-	new /obj/item/ammo_magazine/smg/fp9000 (src)
-	new /obj/item/ammo_magazine/smg/fp9000 (src)
+	new /obj/item/ammo_magazine/smg/fp9000(src)
+	new /obj/item/ammo_magazine/smg/fp9000(src)
+	new /obj/item/ammo_magazine/smg/fp9000(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_lmg/New()
 	..()
-	new /obj/item/ammo_magazine/rifle/lmg (src)
-	new /obj/item/ammo_magazine/rifle/lmg (src)
-	new /obj/item/ammo_magazine/rifle/lmg (src)
+	new /obj/item/ammo_magazine/rifle/lmg(src)
+	new /obj/item/ammo_magazine/rifle/lmg(src)
+	new /obj/item/ammo_magazine/rifle/lmg(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sniper/New()
 	..()
-	new /obj/item/ammo_magazine/sniper/elite (src)
-	new /obj/item/ammo_magazine/sniper/elite (src)
-	new /obj/item/ammo_magazine/sniper/elite (src)
+	new /obj/item/ammo_magazine/sniper/elite(src)
+	new /obj/item/ammo_magazine/sniper/elite(src)
+	new /obj/item/ammo_magazine/sniper/elite(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_rifle/New()
 	..()
-	new /obj/item/ammo_magazine/rifle/ap (src)
-	new /obj/item/ammo_magazine/rifle/ap (src)
-	new /obj/item/ammo_magazine/rifle/ap (src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
+	new /obj/item/ammo_magazine/rifle/ap(src)
 
-
+/obj/item/storage/pouch/magazine/large/pmc_sg/New()
+	..()
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -315,9 +319,9 @@
 
 /obj/item/storage/pouch/explosive/full/New()
 	..()
-	new /obj/item/explosive/grenade/HE/frag (src)
-	new /obj/item/explosive/grenade/HE (src)
-	new /obj/item/explosive/grenade/HE (src)
+	new /obj/item/explosive/grenade/HE/frag(src)
+	new /obj/item/explosive/grenade/HE(src)
+	new /obj/item/explosive/grenade/HE(src)
 
 
 /obj/item/storage/pouch/explosive/upp/New()
@@ -440,7 +444,7 @@
 	name = "electronics pouch"
 	desc = "It is designed to hold most electronics, power cells and circuitboards."
 	icon_state = "electronics"
-	storage_slots = 5
+	storage_slots = 6
 	can_hold = list(
 		/obj/item/circuitboard,
 		/obj/item/cell
@@ -448,9 +452,8 @@
 
 /obj/item/storage/pouch/electronics/full/New()
 	..()
-	new /obj/item/circuitboard/airlock (src)
-	new /obj/item/circuitboard/apc (src)
-	new /obj/item/cell/high (src)
+	new /obj/item/circuitboard/apc(src)
+	new /obj/item/cell/high(src)
 
 
 /obj/item/storage/pouch/construction

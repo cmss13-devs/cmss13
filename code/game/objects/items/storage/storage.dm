@@ -334,6 +334,13 @@
 
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
+
+	//specific labeler check
+	if(istype(W, /obj/item/tool/hand_labeler))
+		var/obj/item/tool/hand_labeler/L = W
+		if(L.mode)
+			return 0
+
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))

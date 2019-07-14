@@ -143,52 +143,64 @@ macro "macro"
 
 macro "hotkeymode"
 	elem 
-		name = "TAB"
+		name = "Tab"
 		command = ".winset \"mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true\""
 	elem 
-		name = "CENTER+REP"
+		name = "Center+REP"
 		command = ".center"
 	elem 
-		name = "NORTHEAST"
+		name = "Northeast"
 		command = ".northeast"
 	elem 
-		name = "SOUTHEAST"
+		name = "Southeast"
 		command = ".southeast"
 	elem 
-		name = "SOUTHWEST"
+		name = "Southwest"
 		command = ".southwest"
 	elem 
-		name = "NORTHWEST"
+		name = "Northwest"
 		command = ".northwest"
 	elem 
-		name = "CTRL+WEST"
+		name = "ALT+West"
+		command = "westfaceperm"
+	elem 
+		name = "CTRL+West"
 		command = "westface"
 	elem 
-		name = "WEST+REP"
+		name = "West+REP"
 		command = ".west"
 	elem 
-		name = "CTRL+NORTH"
+		name = "ALT+North"
+		command = "northfaceperm"
+	elem 
+		name = "CTRL+North"
 		command = "northface"
 	elem 
-		name = "NORTH+REP"
+		name = "North+REP"
 		command = ".north"
 	elem 
-		name = "CTRL+EAST"
+		name = "ALT+East"
+		command = "eastfaceperm"
+	elem 
+		name = "CTRL+East"
 		command = "eastface"
 	elem 
-		name = "EAST+REP"
+		name = "East+REP"
 		command = ".east"
 	elem 
-		name = "CTRL+SOUTH"
+		name = "ALT+South"
+		command = "southfaceperm"
+	elem 
+		name = "CTRL+South"
 		command = "southface"
 	elem 
-		name = "SOUTH+REP"
+		name = "South+REP"
 		command = ".south"
 	elem 
-		name = "INSERT"
+		name = "Insert"
 		command = "a-intent right"
 	elem 
-		name = "DELETE"
+		name = "Delete"
 		command = "delete-key-pressed"
 	elem 
 		name = "1"
@@ -284,6 +296,27 @@ macro "hotkeymode"
 		name = "CTRL+Z"
 		command = "Activate-Held-Object"
 	elem 
+		name = "Numpad1"
+		command = "a-select-zone rleg"
+	elem 
+		name = "Numpad2"
+		command = "a-select-zone groin"
+	elem 
+		name = "Numpad3"
+		command = "a-select-zone lleg"
+	elem 
+		name = "Numpad4"
+		command = "a-select-zone rarm"
+	elem 
+		name = "Numpad5"
+		command = "a-select-zone chest"
+	elem 
+		name = "Numpad6"
+		command = "a-select-zone larm"
+	elem 
+		name = "Numpad8"
+		command = "a-select-zone head"
+	elem 
 		name = "F1"
 		command = "adminhelp"
 	elem 
@@ -319,27 +352,6 @@ macro "hotkeymode"
 	elem 
 		name = "F12"
 		command = "F12"
-	elem 
-		name = "Numpad8"
-		command = "a-select-zone head"
-	elem 
-		name = "Numpad5"
-		command = "a-select-zone chest"
-	elem 
-		name = "Numpad2"
-		command = "a-select-zone groin"
-	elem 
-		name = "Numpad4"
-		command = "a-select-zone rarm"
-	elem 
-		name = "Numpad6"
-		command = "a-select-zone larm"
-	elem 
-		name = "Numpad1"
-		command = "a-select-zone rleg"
-	elem 
-		name = "Numpad3"
-		command = "a-select-zone lleg"
 
 
 menu "menu"

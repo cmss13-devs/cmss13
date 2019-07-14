@@ -72,7 +72,7 @@
 		/obj/item/tool/pen/invisible,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/book/manual/barman_recipes,
 		/obj/item/book/manual/chef_recipes,
 		/obj/item/toy/bikehorn,
@@ -99,7 +99,7 @@
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/device/violin,
-		/obj/item/clothing/tie/horrible)
+		/obj/item/clothing/accessory/horrible)
 
 	if(!ispath(gift_type,/obj/item))	return
 

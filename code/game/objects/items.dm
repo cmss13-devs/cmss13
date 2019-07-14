@@ -62,10 +62,15 @@
 	var/time_to_unequip = 0 // set to ticks it takes to unequip a worn suit.
 
 	var/icon_override = null  //Used to override hardcoded ON-MOB clothing dmis in human clothing proc (i.e. not the icon_state sprites).
-	var/sprite_sheet_id = 0 //Select which sprite sheet ID to use due to the sprite limit per .dmi. 0 is default, 1 is the new one.
 
 	var/datum/event/event_dropped = null
 	var/datum/event/event_unwield = null
+
+	var/list/sprite_sheets = list()
+	var/list/item_icons = list()
+
+
+	var/list/item_state_slots = list() //overrides the default
 
 /obj/item/proc/on_dropped()
 	if(event_dropped)
@@ -223,28 +228,6 @@ cases. Override_icon_state should be a list.*/
 	if(!disposed) //item may have been qdel'd by the drop above.
 		pickup(user)
 		add_fingerprint(user)
-		if(!user.put_in_active_hand(src))
-			dropped(user)
-
-
-/obj/item/attack_paw(mob/user as mob)
-
-	if(anchored)
-		to_chat(user, "[src] is anchored to the ground.")
-		return
-
-	if (istype(src.loc, /obj/item/storage))
-		var/obj/item/storage/S = src.loc
-		S.remove_from_storage(src, user.loc)
-
-	src.throwing = 0
-	if (loc == user)
-		if(!user.drop_inv_item_on_ground(src))
-			return
-	else
-		user.next_move = max(user.next_move+2,world.time + 2)
-	if(!disposed) //item may have been qdel'd by the drop above.
-		pickup(user)
 		if(!user.put_in_active_hand(src))
 			dropped(user)
 
@@ -479,12 +462,10 @@ cases. Override_icon_state should be a list.*/
 				return 1
 			if(WEAR_IN_ACCESSORY)
 				if(H.w_uniform)
-					if(H.w_uniform.hastie)
-						var/obj/item/clothing/tie/storage/T = H.w_uniform.hastie
-						if(T && istype(T) && T.hold)//it's possible to delete this from an existing storage tie, somehow, so istype() doesn't work here
-							var/obj/item/storage/internal/I = T.hold
-							if(I.can_be_inserted(src, 1))
-								return 1
+					for(var/obj/item/clothing/accessory/storage/T in H.w_uniform.accessories)
+						var/obj/item/storage/internal/I = T.hold
+						if(I.can_be_inserted(src, 1))
+							return 1
 				return 0
 			if(WEAR_IN_JACKET)
 				if(H.wear_suit)
@@ -540,35 +521,6 @@ cases. Override_icon_state should be a list.*/
 				return 0
 		return 0 //Unsupported slot
 		//END HUMAN
-
-	else if(ismonkey(M))
-		//START MONKEY
-		var/mob/living/carbon/monkey/MO = M
-		switch(slot)
-			if(WEAR_L_HAND)
-				if(MO.l_hand)
-					return 0
-				return 1
-			if(WEAR_R_HAND)
-				if(MO.r_hand)
-					return 0
-				return 1
-			if(WEAR_FACE)
-				if(MO.wear_mask)
-					return 0
-				if( !(flags_equip_slot & SLOT_FACE) )
-					return 0
-				return 1
-			if(WEAR_BACK)
-				if(MO.back)
-					return 0
-				if( !(flags_equip_slot & SLOT_BACK) )
-					return 0
-				return 1
-		return 0 //Unsupported slot
-
-		//END MONKEY
-
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
@@ -673,13 +625,13 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 			to_chat(user, SPAN_WARNING("You are already looking through \the [zoom_device]."))
 			return //Return in the interest of not unzooming the other item. Check first in the interest of not fucking with the other clauses
 
-	if(user.eye_blind) 												
+	if(user.eye_blind)
 		to_chat(user, SPAN_WARNING("You are too blind to see anything."))
-	else if(user.stat || !ishuman(user)) 							
+	else if(user.stat || !ishuman(user))
 		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
-	else if(!zoom && user.client && user.update_tint()) 			
+	else if(!zoom && user.client && user.update_tint())
 		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
-	else if(!zoom && user.get_active_hand() != src)					
+	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
 		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
 	else if(zoom) //If we are zoomed out, reset that parameter.
 		user.visible_message(SPAN_NOTICE("[user] looks up from [zoom_device]."),
@@ -738,3 +690,14 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		user.client.change_view(world.view)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
+
+/obj/item/proc/get_icon_state(mob/user_mob, slot)
+	var/mob_state
+	if(item_state_slots && item_state_slots[slot])
+		mob_state = item_state_slots[slot]
+	else if (item_state)
+		mob_state = item_state
+	else
+		mob_state = icon_state
+	return mob_state
+

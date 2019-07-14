@@ -5446,13 +5446,6 @@
 	icon_state = "green"
 	},
 /area/lv624/lazarus/hydroponics)
-"qE" = (
-/obj/machinery/computer/objective,
-/obj/structure/table,
-/turf/open/shuttle{
-	icon_state = "floor4"
-	},
-/area/lv624/ground/sand6)
 "qF" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -6117,6 +6110,12 @@
 /obj/item/trash/cigbutt,
 /turf/open/gm/dirt,
 /area/lv624/ground/compound/n)
+"sJ" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle4)
 "sK" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -6349,10 +6348,6 @@
 /area/lv624/ground/caves/central2)
 "tw" = (
 /turf/closed/wall,
-/area/lv624/lazarus/fitness)
-"tx" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "ty" = (
 /obj/machinery/door/airlock/almayer/medical/glass{
@@ -7574,6 +7569,12 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/research)
+"wL" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/jungle3)
 "wM" = (
 /obj/item/clothing/mask/facehugger{
 	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
@@ -7620,6 +7621,10 @@
 	icon_state = "whitepurple"
 	},
 /area/lv624/lazarus/fitness)
+"wQ" = (
+/obj/structure/fence,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle1)
 "wR" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
 /turf/open/floor{
@@ -7749,12 +7754,6 @@
 "xk" = (
 /obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/plating{
-	icon_state = "platebot"
-	},
-/area/lv624/lazarus/robotics)
-"xl" = (
-/obj/structure/girder,
 /turf/open/floor/plating{
 	icon_state = "platebot"
 	},
@@ -8699,14 +8698,14 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 4
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle6)
 "zZ" = (
 /obj/machinery/floodlight/landing,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidfloor"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Aa" = (
 /obj/machinery/landinglight/ds2/delaytwo{
 	tag = "icon-landingstripe";
@@ -8716,7 +8715,7 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ab" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -8729,7 +8728,7 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ac" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -8742,7 +8741,7 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ad" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -8755,7 +8754,7 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ae" = (
 /obj/structure/barricade/wooden{
 	dir = 1
@@ -8768,7 +8767,7 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Af" = (
 /obj/machinery/landinglight/ds2{
 	tag = "icon-landingstripe";
@@ -8778,13 +8777,13 @@
 	dir = 2;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ag" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
 	dir = 8
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Ah" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating{
@@ -9006,7 +9005,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "AI" = (
 /turf/open/floor/plating,
 /area/shuttle/drop2/lz2)
@@ -9023,7 +9022,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "AK" = (
 /turf/closed/gm/dense{
 	icon_state = "wall2"
@@ -9474,7 +9473,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "BQ" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -9488,7 +9487,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "BR" = (
 /obj/structure/largecrate,
 /obj/item/mecha_parts/part/gygax_armour{
@@ -9638,7 +9637,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ci" = (
 /obj/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
@@ -9656,7 +9655,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ck" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating{
@@ -9825,7 +9824,7 @@
 "CH" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/ground/jungle5)
 "CI" = (
 /obj/structure/barricade/wooden{
 	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
@@ -9841,7 +9840,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "CJ" = (
 /obj/structure/barricade/wooden{
 	dir = 4
@@ -9855,7 +9854,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "CK" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating{
@@ -10029,20 +10028,20 @@
 	luminosity = 0;
 	name = "Shuttle Landing Lights"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Dh" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Di" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Dj" = (
 /obj/structure/jungle/planttop1,
 /turf/open/gm/river,
@@ -10066,7 +10065,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Dm" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -10137,7 +10136,7 @@
 /area/lv624/lazarus/main_hall)
 "Dv" = (
 /turf/open/gm/dirt,
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Dw" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
@@ -10215,45 +10214,45 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DH" = (
 /obj/effect/decal/warning_stripes,
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DI" = (
 /obj/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DJ" = (
 /obj/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DK" = (
 /obj/machinery/landinglight/ds1{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DL" = (
 /obj/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe";
 	icon_state = "landingstripe"
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DM" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "DN" = (
 /obj/structure/jungle/plantbot1,
 /turf/open/gm/river,
@@ -10268,7 +10267,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "DQ" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -10291,6 +10290,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/closed/wall,
 /area/lv624/lazarus/toilet)
+"DV" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle3)
 "DW" = (
 /obj/machinery/light{
 	icon_state = "tube1";
@@ -10324,7 +10329,7 @@
 "DZ" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Ea" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/closed/wall,
@@ -10375,7 +10380,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Ek" = (
 /turf/open/floor/plating,
 /area/shuttle/drop1/lz1)
@@ -10386,7 +10391,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Em" = (
 /obj/structure/flora/ausbushes/fernybush,
 /turf/open/gm/river,
@@ -10420,7 +10425,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Eq" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -10439,33 +10444,33 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Es" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner2"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Et" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "grassdirt_corner2"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Eu" = (
 /obj/effect/landmark{
 	name = "crap_item"
 	},
 /turf/open/gm/dirt,
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Ex" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
 	dir = 1;
 	icon_state = "grassdirt_corner"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "EA" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -10783,7 +10788,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Fg" = (
 /obj/effect/landmark{
 	name = "monkey_spawn"
@@ -10797,7 +10802,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Fh" = (
 /obj/structure/window/reinforced/tinted,
 /obj/machinery/door/window,
@@ -11016,14 +11021,14 @@
 /area/lv624/lazarus/quartstorage)
 "FI" = (
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "FJ" = (
 /obj/structure/cargo_container/horizontal{
 	tag = "icon-0,2";
 	icon_state = "0,2"
 	},
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "FK" = (
 /obj/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (EAST)";
@@ -11031,7 +11036,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "FL" = (
 /obj/machinery/camera/autoname/lz_camera,
 /turf/open/floor/plating,
@@ -11043,7 +11048,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "FN" = (
 /obj/machinery/landinglight/ds2/delayone{
 	tag = "icon-landingstripe (WEST)";
@@ -11054,7 +11059,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "FO" = (
 /obj/machinery/shower{
 	dir = 4
@@ -11118,6 +11123,13 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/lazarus/quart)
+"FX" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle3)
 "FY" = (
 /turf/open/floor{
 	dir = 4;
@@ -11133,27 +11145,27 @@
 	dir = 9;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Gb" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Gc" = (
 /turf/open/floor{
 	dir = 5;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Gd" = (
 /obj/structure/cargo_container/horizontal{
 	tag = "icon-0,1";
 	icon_state = "0,1"
 	},
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Ge" = (
 /obj/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (EAST)";
@@ -11161,7 +11173,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Gf" = (
 /obj/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (WEST)";
@@ -11169,7 +11181,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Gg" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/gm/river,
@@ -11180,13 +11192,13 @@
 	dir = 1;
 	icon_state = "grassdirt_corner2"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Gi" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Gj" = (
 /turf/open/gm/coast{
 	dir = 8;
@@ -11205,7 +11217,7 @@
 	dir = 8;
 	icon_state = "grassdirt_corner2"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "Gm" = (
 /obj/effect/glowshroom,
 /turf/open/floor{
@@ -11301,14 +11313,14 @@
 /area/lv624/lazarus/quartstorage)
 "Gz" = (
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GA" = (
 /obj/structure/cargo_container/horizontal{
 	tag = "icon-0,0";
 	icon_state = "0,0"
 	},
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GB" = (
 /obj/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe (EAST)";
@@ -11316,7 +11328,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GC" = (
 /obj/effect/landmark{
 	name = "hunter_secondary"
@@ -11337,7 +11349,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GF" = (
 /obj/structure/flora/ausbushes,
 /turf/open/gm/river,
@@ -11348,7 +11360,7 @@
 	dir = 8;
 	icon_state = "grassdirt_corner"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle9)
 "GH" = (
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -11419,21 +11431,21 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GR" = (
 /turf/open/floor{
 	icon_state = "warningcorner";
 	dir = 1
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GS" = (
 /obj/machinery/colony_floodlight,
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GT" = (
 /obj/structure/lazarus_sign,
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "GU" = (
 /obj/effect/landmark{
 	name = "crap_item"
@@ -11459,14 +11471,14 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "GY" = (
 /obj/structure/fence,
 /turf/open/gm/grass,
 /area/lv624/ground/compound/c)
 "GZ" = (
 /obj/structure/table,
-/obj/item/contraband/poster,
+/obj/item/poster,
 /obj/item/clothing/glasses/regular/hipster,
 /obj/item/document_objective/paper,
 /turf/open/floor{
@@ -11625,7 +11637,7 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Hs" = (
 /obj/item/tool/crowbar/red,
 /turf/open/floor{
@@ -11633,7 +11645,7 @@
 	icon_state = "warningcorner";
 	dir = 8
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Ht" = (
 /obj/machinery/computer/shuttle_control/dropship1{
 	onboard = 0
@@ -11652,7 +11664,7 @@
 	icon_state = "warningcorner";
 	dir = 4
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Hv" = (
 /obj/item/bananapeel,
 /turf/open/gm/grass,
@@ -11746,7 +11758,7 @@
 	icon_state = "bot";
 	dir = 1
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "HN" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/gm/coast{
@@ -11800,6 +11812,12 @@
 	dir = 4
 	},
 /area/lv624/lazarus/internal_affairs)
+"HV" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle3)
 "HW" = (
 /obj/structure/jungle/vines/heavy{
 	icon_state = "Med1";
@@ -11997,7 +12015,7 @@
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Ix" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/dirtgrassborder{
@@ -12232,7 +12250,7 @@
 	icon_state = "loadingarea";
 	tag = "loading"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Jm" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -12493,13 +12511,13 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "JS" = (
 /obj/effect/landmark{
 	name = "hunter_primary"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "JT" = (
 /obj/effect/decal/warning_stripes,
 /obj/machinery/landinglight/ds1{
@@ -12508,7 +12526,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "JU" = (
 /obj/effect/decal/warning_stripes,
 /obj/machinery/landinglight/ds1{
@@ -12517,7 +12535,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "JV" = (
 /obj/item/bedsheet/rd,
 /obj/item/toy/bikehorn/rubberducky,
@@ -13115,7 +13133,7 @@
 	dir = 4;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Lz" = (
 /obj/effect/landmark/shuttle_loc/marine_trg/landing{
 	name = "2"
@@ -13456,12 +13474,12 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Mq" = (
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Mr" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /turf/open/gm/grass,
@@ -13504,7 +13522,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "My" = (
 /obj/structure/barricade/wooden,
 /obj/machinery/landinglight/ds2{
@@ -13516,7 +13534,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "Mz" = (
 /obj/structure/barricade/wooden,
 /obj/machinery/landinglight/ds2/delayone{
@@ -13528,7 +13546,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "MA" = (
 /obj/structure/barricade/wooden,
 /obj/machinery/landinglight/ds2/delaytwo{
@@ -13540,7 +13558,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "MB" = (
 /obj/machinery/landinglight/ds2/delayone{
 	tag = "icon-landingstripe (NORTH)";
@@ -13551,7 +13569,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "MC" = (
 /obj/machinery/landinglight/ds2/delaytwo{
 	tag = "icon-landingstripe (NORTH)";
@@ -13562,7 +13580,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "MD" = (
 /obj/machinery/landinglight/ds2/delaythree{
 	tag = "icon-landingstripe (NORTH)";
@@ -13573,7 +13591,7 @@
 	dir = 1;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "ME" = (
 /obj/machinery/light/small,
 /turf/open/floor{
@@ -13858,7 +13876,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Nq" = (
 /obj/structure/jungle/vines/heavy,
 /turf/open/gm/grass,
@@ -13902,7 +13920,7 @@
 	dir = 4;
 	icon_state = "grassdirt_corner"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/ground/jungle3)
 "Nw" = (
 /obj/item/spacecash/c500{
 	pixel_x = 5;
@@ -14104,7 +14122,7 @@
 	dir = 8;
 	icon_state = "asteroidwarning"
 	},
-/area/shuttle/drop2/lz2)
+/area/lv624/lazarus/landing_zones/lz2)
 "NV" = (
 /obj/structure/table,
 /obj/machinery/chem_dispenser/soda{
@@ -14196,21 +14214,21 @@
 	icon_state = "blue 0,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Og" = (
 /obj/structure/cargo_container{
 	tag = "icon-blue 1,0";
 	icon_state = "blue 1,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Oh" = (
 /obj/structure/cargo_container{
 	tag = "icon-blue 2,0";
 	icon_state = "blue 2,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Oi" = (
 /obj/structure/jungle/vines/heavy{
 	icon_state = "Hvy2";
@@ -14482,21 +14500,21 @@
 	icon_state = "WY 0,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "OT" = (
 /obj/structure/cargo_container{
 	tag = "icon-WY 1,0";
 	icon_state = "WY 1,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "OU" = (
 /obj/structure/cargo_container{
 	tag = "icon-WY 2,0";
 	icon_state = "WY 2,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "OV" = (
 /obj/structure/jungle/vines/heavy{
 	icon_state = "Hvy2";
@@ -14521,7 +14539,7 @@
 	},
 /area/lv624/ground/jungle3)
 "OY" = (
-/obj/item/contraband/poster,
+/obj/item/poster,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -15248,21 +15266,21 @@
 	icon_state = "green 0,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "QS" = (
 /obj/structure/cargo_container{
 	tag = "icon-green 1,0";
 	icon_state = "green 1,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "QT" = (
 /obj/structure/cargo_container{
 	tag = "icon-green 2,0";
 	icon_state = "green 2,0"
 	},
 /turf/open/floor,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "QU" = (
 /obj/effect/landmark/shuttle_loc/marine_trg/landing{
 	name = "1"
@@ -15493,6 +15511,12 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/cyan,
 /turf/open/floor/grass,
 /area/lv624/lazarus/main_hall)
+"RO" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle9)
 "RP" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -15552,7 +15576,7 @@
 "RY" = (
 /obj/structure/barricade/wooden,
 /turf/open/gm/grass,
-/area/shuttle/drop1/lz1)
+/area/lv624/ground/jungle1)
 "RZ" = (
 /obj/machinery/landinglight/ds1/delaythree{
 	tag = "icon-landingstripe (NORTH)";
@@ -15560,7 +15584,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Sa" = (
 /obj/machinery/landinglight/ds1{
 	tag = "icon-landingstripe (NORTH)";
@@ -15568,7 +15592,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Sb" = (
 /obj/machinery/landinglight/ds1/delayone{
 	tag = "icon-landingstripe (NORTH)";
@@ -15576,7 +15600,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Sc" = (
 /obj/machinery/landinglight/ds1/delaytwo{
 	tag = "icon-landingstripe (NORTH)";
@@ -15584,7 +15608,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/shuttle/drop1/lz1)
+/area/lv624/lazarus/landing_zones/lz1)
 "Sd" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -24848,28 +24872,28 @@ mN
 zB
 zY
 zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-zY
-GG
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+sJ
+HV
+HV
+FX
 KX
 KY
 Ms
@@ -25097,7 +25121,7 @@ BP
 Ch
 Ly
 zZ
-Gi
+DV
 KX
 KX
 KX
@@ -25325,7 +25349,7 @@ AI
 AI
 Lz
 Mx
-Gi
+DV
 KX
 KY
 KY
@@ -25553,7 +25577,7 @@ Ci
 KO
 Bo
 My
-Gi
+DV
 KX
 KY
 KY
@@ -25781,7 +25805,7 @@ Bo
 AI
 Bo
 Mz
-Gi
+DV
 KY
 KY
 KY
@@ -26009,7 +26033,7 @@ Bo
 Bo
 Bo
 MA
-Gi
+DV
 KY
 KX
 KX
@@ -26237,7 +26261,7 @@ Bo
 AI
 AI
 Mx
-Gi
+DV
 KY
 KY
 KY
@@ -26465,7 +26489,7 @@ Bo
 AI
 AI
 My
-Gi
+DV
 KY
 KY
 KY
@@ -26693,7 +26717,7 @@ Bo
 AI
 AI
 MB
-Gi
+DV
 KY
 KY
 KY
@@ -26921,7 +26945,7 @@ Bo
 Bo
 Bo
 MC
-Gi
+DV
 KX
 KY
 KY
@@ -27149,7 +27173,7 @@ Bo
 AI
 Bo
 MD
-Gi
+DV
 KX
 KY
 KY
@@ -27377,7 +27401,7 @@ Ci
 AI
 Bo
 My
-Gi
+DV
 KY
 KY
 KY
@@ -27605,7 +27629,7 @@ AI
 AI
 AI
 Mz
-Gi
+DV
 KY
 KY
 La
@@ -27833,7 +27857,7 @@ BQ
 Cj
 CJ
 zZ
-Gi
+DV
 KX
 KY
 KY
@@ -28059,8 +28083,8 @@ Ag
 Ag
 Ag
 Ag
-Ag
-Ag
+wL
+wL
 Nv
 KY
 KY
@@ -29641,7 +29665,7 @@ xB
 vH
 vH
 vH
-zY
+RO
 Et
 Dv
 Dv
@@ -29875,7 +29899,7 @@ Dv
 Dv
 Dv
 Gl
-zY
+RO
 Hy
 Hy
 If
@@ -31224,7 +31248,7 @@ mN
 mN
 mN
 do
-xl
+xe
 xf
 Dr
 vH
@@ -40793,7 +40817,7 @@ rP
 rP
 sY
 tA
-tx
+dp
 uH
 tX
 tX
@@ -46410,7 +46434,7 @@ bm
 cF
 bT
 bT
-qE
+cJ
 cJ
 cV
 cJ
@@ -49271,8 +49295,8 @@ PE
 No
 No
 No
-CH
-CH
+wQ
+wQ
 LV
 LV
 LV
@@ -49497,10 +49521,10 @@ Od
 No
 No
 No
-FI
-FI
-FI
-CH
+LV
+LV
+LV
+wQ
 LV
 LV
 LV
@@ -49723,12 +49747,12 @@ yP
 No
 Oe
 No
-FI
-FI
-FI
-FI
+LV
+LV
+LV
+LV
 RY
-CH
+wQ
 LV
 LV
 LV
@@ -49948,15 +49972,15 @@ zt
 Jk
 yu
 yP
-FI
-FI
-FI
-FI
-FI
-FI
+LV
+LV
+LV
+LV
+LV
+LV
 RY
 RY
-CH
+wQ
 LV
 LV
 LV
@@ -50184,7 +50208,7 @@ DG
 DG
 GQ
 GQ
-CH
+wQ
 LV
 LW
 LV
@@ -50412,7 +50436,7 @@ Gz
 Gz
 Mq
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -50640,7 +50664,7 @@ Gz
 QR
 Mq
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -50868,7 +50892,7 @@ Gz
 QS
 Mq
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -51096,7 +51120,7 @@ Gz
 QT
 Mq
 Mq
-CH
+wQ
 LV
 Qz
 LU
@@ -51324,7 +51348,7 @@ Gz
 Gz
 Mq
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -51552,7 +51576,7 @@ DG
 DG
 DG
 Dg
-CH
+wQ
 LV
 LV
 LV
@@ -51780,7 +51804,7 @@ Ge
 GB
 DH
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -52008,7 +52032,7 @@ FL
 QU
 RZ
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -52236,7 +52260,7 @@ Ek
 Fc
 Sa
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -52464,7 +52488,7 @@ Ek
 Fc
 Sb
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -52692,7 +52716,7 @@ Fc
 Fc
 Sc
 Mq
-FI
+LV
 LV
 LV
 LV
@@ -52920,7 +52944,7 @@ Ek
 Ek
 RZ
 Mq
-FI
+LV
 LV
 LV
 LV
@@ -53148,7 +53172,7 @@ Ek
 Ek
 Sa
 Mq
-FI
+LV
 LV
 LV
 LV
@@ -53376,7 +53400,7 @@ Ek
 Ek
 Sb
 Mq
-FI
+LV
 LV
 LV
 LV
@@ -53604,7 +53628,7 @@ Fc
 Fc
 Sc
 Mq
-FI
+LV
 LV
 LV
 LV
@@ -53832,7 +53856,7 @@ Ek
 Fc
 RZ
 Mq
-FI
+LV
 LV
 LV
 LV
@@ -54060,7 +54084,7 @@ Ek
 Fc
 Sa
 Mq
-CH
+wQ
 LV
 LV
 LV
@@ -54288,7 +54312,7 @@ FL
 Ek
 Sb
 Mq
-CH
+wQ
 LV
 LV
 LW
@@ -54516,7 +54540,7 @@ Gf
 GE
 DH
 Mq
-CH
+wQ
 LW
 LV
 LV
@@ -54744,7 +54768,7 @@ DM
 DM
 DM
 Dg
-CH
+wQ
 LV
 LV
 LV
@@ -54963,16 +54987,16 @@ CH
 CH
 CH
 CH
-CH
-CH
-CH
-CH
-CH
-CH
-CH
-CH
-CH
-CH
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
+wQ
 LV
 LV
 LV

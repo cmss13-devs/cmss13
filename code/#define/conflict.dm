@@ -83,7 +83,8 @@
 #define EXPLOSION_THRESHOLD_MEDIUM	200
 #define EXPLOSION_THRESHOLD_HIGH	300
 
-#define EXPLOSION_THRESHOLD_GIB	200 //how much it takes to gib a mob
+#define EXPLOSION_THRESHOLD_GIB		200 //how much it takes to gib a mob
+#define EXPLOSION_PRONE_MULTIPLIER	0.5 //prone mobs recieve less damage from explosions
 
 //Explosion damage multipliers for different objects
 #define EXPLOSION_DAMAGE_MULTIPLIER_AIRLOCK     2.5

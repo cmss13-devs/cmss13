@@ -58,6 +58,9 @@
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
 
+	//Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
+	var/interference = 0
+
 	// Overwatched xeno for xeno hivemind vision
 	var/mob/living/carbon/Xenomorph/observed_xeno
 
@@ -73,6 +76,9 @@
 	var/burn_damage_upper = 0
 	var/armor_deflection = 10
 	var/evasion = 0
+
+	// Temporary HP.
+	var/temp_health = 0 // As dumb as it sounds, literally just an HP buffer. Should be reset to 0 by whatever adds it to begin with.
 
 	var/plasma_stored = 10
 	var/plasma_max = 10
@@ -196,6 +202,7 @@
 	var/used_crest_defense = 0
 	var/used_fortify = 0
 
+	// Burrowers 
 	var/used_burrow = 0
 	var/used_tunnel = 0
 	var/used_widen = 0
@@ -205,6 +212,7 @@
 
 	//Praetorian vars
 	var/used_acid_spray = 0
+	var/prae_status_flags = 0 // Used to store praetorian status flags so we don't stack screech buffs 
 
 	//Carrier vars
 	var/threw_a_hugger = 0
@@ -267,11 +275,8 @@
 	// TODO: move this to caste-specific 
 	var/bombard_cooldown = 30
 	var/min_bombard_dist = 5
-	var/acid_cooldown = 0 //Spitter too.
 
-	//Praetorian
-	// TODO: move this to caste-specific 
-	var/acid_spray_cooldown = 12
+	var/acid_spray_activation_time = 12
 
 	//New variables for how charges work, max speed, speed buildup, all that jazz
 	// TODO: move this to caste-specific if possible (this one's tricky)
@@ -368,7 +373,7 @@
 				hive.tier_3_xenos |= src
 
 		hive.totalXenos |= src
-
+	generate_name()
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
 	if(caste_name && xeno_datum_list[caste_name] && xeno_datum_list[caste_name][max(1,upgrade+1)])
@@ -410,6 +415,11 @@
 		return
 
 	var/name_prefix = hive.prefix
+	var/name_client_prefix = ""
+	var/name_client_postfix = ""
+	if(client)
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
 	color = hive.color
 
 	//Queens have weird, hardcoded naming conventions based on upgrade levels. They also never get nicknumbers
@@ -420,8 +430,8 @@
 			if(2) name = "\improper [name_prefix]Elder Empress"	 //Elite
 			if(3) name = "\improper [name_prefix]Ancient Empress" //Ancient
 			if(4) name = "\improper [name_prefix]Primordial Empress" //Primordial
-	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([nicknumber])"
-	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([nicknumber])"
+	else if(isXenoPredalien(src)) name = "\improper [name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else name = "\improper [name_prefix][caste.upgrade_name] [caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	real_name = name

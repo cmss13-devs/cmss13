@@ -252,9 +252,6 @@
 /obj/machinery/computer/turbine_computer/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/turbine_computer/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/machinery/computer/turbine_computer/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 	var/dat

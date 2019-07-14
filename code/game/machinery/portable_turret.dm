@@ -459,9 +459,6 @@ Status: []<BR>"},
 				if(src.assess_perp(C)<4)
 					continue // if threat level < 4, keep going
 
-			else if (istype(C, /mob/living/carbon/monkey))
-				continue // Don't target monkeys or borgs/AIs you dumb shit
-
 			if (C.lying) // if the perp is lying down, it's still a target but a less-important target
 				secondarytargets += C
 				continue
@@ -620,7 +617,7 @@ Status: []<BR>"},
 	A = new projectile( loc )
 	A.original = target.loc
 	use_power(reqpower)
-	
+
 	// Shooting Code:
 	A.current = T
 	A.yo = U.y - T.y

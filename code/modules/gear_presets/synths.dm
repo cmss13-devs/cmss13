@@ -1,4 +1,3 @@
-
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
@@ -12,7 +11,8 @@
 /datum/equipment_preset/synth/load_race(mob/living/carbon/human/H)
 	if(!H.client || !H.client.prefs || !H.client.prefs.synthetic_type)
 		H.set_species("Early Synthetic")
-	H.set_species(H.client.prefs.synthetic_type)
+	else
+		H.set_species(H.client.prefs.synthetic_type)
 
 /datum/equipment_preset/synth/load_name(mob/living/carbon/human/H, var/randomise)
 	H.real_name = "David"
@@ -71,7 +71,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/brown_vest(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/brown_vest(H), WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
@@ -108,7 +108,7 @@
 
 	H.equip_to_slot_or_del(L, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)

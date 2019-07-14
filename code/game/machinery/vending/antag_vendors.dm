@@ -1,4 +1,3 @@
-
 /obj/machinery/vending/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 	req_one_access = list()
@@ -56,7 +55,7 @@
 		/obj/item/storage/pouch/general/medium = 40,
 		/obj/item/storage/pouch/survival/full = 40,
 		/obj/item/storage/pouch/tools/full = 40,
-		/obj/item/clothing/tie/storage/webbing = 40
+		/obj/item/clothing/accessory/storage/webbing = 40
 	)
 
 	upp_products = list(
@@ -79,7 +78,7 @@
 		/obj/item/storage/pouch/magazine/upp_smg = 40,
 		/obj/item/storage/pouch/survival/full = 40,
 		/obj/item/storage/pouch/tools/full = 40,
-		/obj/item/clothing/tie/storage/webbing = 40
+		/obj/item/clothing/accessory/storage/webbing = 40
 	)
 
 /obj/machinery/vending/antag/weapons

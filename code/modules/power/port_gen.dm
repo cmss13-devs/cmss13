@@ -270,9 +270,6 @@ display round(lastgen) and phorontank amount
 /obj/machinery/power/port_gen/pacman/attack_ai(mob/user as mob)
 	interact(user)
 
-/obj/machinery/power/port_gen/pacman/attack_paw(mob/user as mob)
-	interact(user)
-
 /obj/machinery/power/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
 		if (!isAI(user))

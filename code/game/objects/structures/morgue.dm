@@ -47,9 +47,6 @@
 		ex_act(severity)
 	qdel(src)
 
-/obj/structure/morgue/attack_paw(mob/user)
-	toggle_morgue(user)
-
 /obj/structure/morgue/attack_hand(mob/user)
 	toggle_morgue(user)
 
@@ -137,14 +134,6 @@
 /obj/structure/morgue_tray/Dispose()
 	. = ..()
 	linked_morgue = null
-
-/obj/structure/morgue_tray/attack_paw(mob/user)
-	return src.attack_hand(user)
-
-/obj/structure/morgue_tray/attack_hand(mob/user)
-	if(linked_morgue)
-		linked_morgue.toggle_morgue(user)
-
 
 /obj/structure/morgue_tray/MouseDrop_T(atom/movable/O, mob/user)
 	if (!istype(O) || O.anchored || !isturf(O.loc))

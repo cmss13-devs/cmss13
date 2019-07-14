@@ -112,8 +112,9 @@ As such, don't expect any values assigned to common firearms to even consider ho
 	var/hlmed_hit_damage = 34
 	var/lmed_hit_damage = 38
 	var/lmed_plus_hit_damage = 43
-	var/med_hit_damage = 47 //M41A-MK2 (Stock Pulse Rifle) for reference.
+	var/med_hit_damage = 47 // Old M41 damage
 	var/hmed_hit_damage = 51
+	var/lhigh_hit_damage = 55  //M41A-MK2 (Stock Pulse Rifle) for reference.
 	var/high_hit_damage = 68
 	var/mhigh_hit_damage = 76
 	var/max_hit_damage = 88
@@ -161,6 +162,7 @@ Burn time = How long do we want our flames to last?
 	var/mhigh_burst_value = 5
 	var/max_burst_value = 6
 
+	var/no_fire_delay = 0
 	var/min_fire_delay = 1 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 	var/mlow_fire_delay = 2
 	var/low_fire_delay = 3
@@ -181,6 +183,7 @@ Burn time = How long do we want our flames to last?
 	var/super_scatter_value = 15
 	var/ultra_scatter_value = 20
 
+	var/no_recoil_value = 0
 	var/min_recoil_value = 1 //Sliding scale of recoil 1-5. You can go higher, but it just gets silly.
 	var/low_recoil_value = 2
 	var/med_recoil_value = 3

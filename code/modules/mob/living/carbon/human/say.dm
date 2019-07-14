@@ -234,6 +234,10 @@
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
 		handled = 1
+	if(dazed)
+		message = DazedText(message)
+		verb = pick("mumbles", "babbles")
+		handled = 1
 	var/braindam = getBrainLoss()
 	if(braindam >= 60)
 		handled = 1

@@ -111,7 +111,7 @@
 		user.visible_message(SPAN_NOTICE("[user] directs [src] to [M]'s eyes."), \
 							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
-		if(istype(M, /mob/living/carbon/human) || istype(M, /mob/living/carbon/monkey))	//robots and aliens are unaffected
+		if(istype(M, /mob/living/carbon/human))	//robots and aliens are unaffected
 			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
 				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
 			else if(XRAY in M.mutations)	//mob has X-RAY vision

@@ -13,8 +13,8 @@ OPERATIONS
 					/obj/item/explosive/grenade/smokebomb,
 					/obj/item/clothing/mask/gas/swat,
 					/obj/item/clothing/mask/gas/swat,
-					/obj/item/clothing/tie/storage/webbing,
-					/obj/item/clothing/tie/storage/webbing
+					/obj/item/clothing/accessory/storage/webbing,
+					/obj/item/clothing/accessory/storage/webbing
 					)
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate

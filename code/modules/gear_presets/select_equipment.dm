@@ -1,4 +1,3 @@
-
 /datum/equipment_preset
 	var/name = "Preset"
 	var/flags = EQUIPMENT_PRESET_STUB
@@ -81,6 +80,13 @@
 			if(!H.equip_to_slot_or_del(new G.path(H), G.slot))
 				H.equip_to_slot_or_del(new G.path(H), WEAR_IN_BACK)
 
+    //Gives ranks to the ranked
+	if(H.w_uniform && paygrade)
+		var/rankpath = get_rank_pins(paygrade)
+		if(rankpath)
+			var/obj/item/clothing/accessory/ranks/R = new rankpath()
+			H.w_uniform.attach_accessory(H, R)
+
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)
 		var/obj/item/clothing/glasses/regular/P = new (H)
@@ -135,8 +141,8 @@
 		/obj/item/weapon/combat_knife/upp = null,
 		/obj/item/reagent_container/spray/pepper = null,
 		/obj/item/reagent_container/spray/pepper = null,
-		/obj/item/clothing/tie/storage/webbing = null,
-		/obj/item/clothing/tie/storage/webbing = null,
+		/obj/item/clothing/accessory/storage/webbing = null,
+		/obj/item/clothing/accessory/storage/webbing = null,
 		/obj/item/storage/belt/marine = null,
 		/obj/item/storage/pill_bottle/tramadol/skillless = null,
 		/obj/item/explosive/grenade/phosphorus = null,

@@ -729,11 +729,6 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 /obj/machinery/newscaster/attack_ai(mob/user as mob)
 	return src.attack_hand(user) //or maybe it'll have some special functions? No idea.
 
-
-/obj/machinery/newscaster/attack_paw(mob/user as mob)
-	to_chat(user, "<font color='blue'>The newscaster controls are far too complicated for your tiny brain!</font>")
-	return
-
 /obj/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
 	if(photo)
 		if(!issilicon(user))

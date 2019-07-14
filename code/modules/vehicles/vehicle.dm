@@ -146,7 +146,8 @@
 		cell = null
 
 	if(buckled_mob)
-		buckled_mob.apply_effects(5, 5)
+		buckled_mob.apply_effect(5, STUN)
+		buckled_mob.apply_effect(5, WEAKEN)
 		unbuckle()
 
 	new /obj/effect/spawner/gibspawner/robot(Tsec)

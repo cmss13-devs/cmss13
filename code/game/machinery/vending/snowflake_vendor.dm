@@ -1,17 +1,16 @@
-
-/obj/machinery/marine_selector/snowflake
+/obj/machinery/cm_vending/snowflake
 	name = "Snowflake Vendor"
 	desc = "A vendor with a large snowflake on it."
 	icon_state = "snowflakemachine"
 	use_points = TRUE
 	use_snowflake_points = TRUE
 
-/obj/machinery/marine_selector/snowflake/New()
+/obj/machinery/cm_vending/snowflake/New()
 	..()
 	spawn(4)
 		power_change()
 
-/obj/machinery/marine_selector/snowflake/power_change()
+/obj/machinery/cm_vending/snowflake/power_change()
 	..()
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]-broken"
@@ -22,7 +21,7 @@
 			spawn(rand(0, 15))
 				src.icon_state = "[initial(icon_state)]-off"
 
-/obj/machinery/marine_selector/snowflake/synth
+/obj/machinery/cm_vending/snowflake/synth
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = "Synthetic"
 
@@ -43,7 +42,7 @@
 		list("Security uniform, white", 12, /obj/item/clothing/under/rank/security, null, "black"),
 
 		list("WEBBING", 0, null, null, null),
-		list("Black webbing vest", 12, /obj/item/clothing/tie/storage/black_vest, null, "black"),
+		list("Black webbing vest", 12, /obj/item/clothing/accessory/storage/black_vest, null, "black"),
 
 		list("SHOES", 0, null, null, null),
 		list("Boots", 12, /obj/item/clothing/shoes/marine, null, "black"),

@@ -33,7 +33,7 @@
 			to_chat(H, SPAN_DANGER("Ok, Congratulations, you've ruined Christmas for 5 marines now."))
 		if(H.opened_gift > 5)
 			to_chat(H, SPAN_DANGER("You've ruined Christmas for [H.opened_gift] marines now..."))
-		
+
 		H.opened_gift++
 	var fancy = rand(1,100) //Check if it has the possibility of being a FANCY present
 	var exFancy = rand(1,20) // Checks if it might be one of the ULTRA fancy presents.
@@ -89,7 +89,7 @@
 		/obj/item/storage/belt/champion,
 		/obj/item/tool/soap/deluxe,
 		/obj/item/explosive/grenade/smokebomb,
-		/obj/item/contraband/poster,
+		/obj/item/poster,
 		/obj/item/toy/bikehorn,
 		/obj/item/toy/beach_ball,
 		/obj/item/weapon/banhammer,
@@ -108,7 +108,7 @@
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
-		/obj/item/clothing/tie/horrible,
+		/obj/item/clothing/accessory/horrible,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/reddot,

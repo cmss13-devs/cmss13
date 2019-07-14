@@ -26,14 +26,19 @@
 	// 			  Any constants you need to access for your strain should be in the CASTE definiton and
 	//			  accessed using a cast to the caste datum from the base caste type
 	//		      vars that absolutely must be held on the xenos themselves can be added to the Xenomorph class itself.
+	//  	      When you write something in Abiltities.dm make sure to have a cooldown check proc as well or else the 
+	//            icon will NOT correctly update when the ability is on cooldown. 
 	// 
 	// Step 1: Copy/paste another datum definiton and edit it for your strain
 	// 		  	make sure to populate each of the variables listed above (at least as much as other strains)
+	// 
 	// Step 2: Write the apply_mutator proc.
 	//			FIRST:   populate mutator_actions_to_add and mutator_actions_to_remove according to that documentation.
 	//			THEN:    write the body of the apply_mutator method according to your speficiations
 	// 			FINALLY: call mutator_update_actions on your xeno
 	//					 call recalculate actions on your mutator set (this should be auto populated)
+	//                   You should probably also call recalculate_everything() on the host Xeno to make sure you don't end up with any 
+	//  				 strange transient values. 
 	//	You're done!
 
 	// mutator_actions_to_remove should be a list of STRINGS of the NAMES of actions that need to be removed
@@ -61,13 +66,14 @@
 // Must be called at the end of any mutator that changes available actions
 // (read: Strains) apply_mutator proc for the mutator to work correctly.
 /datum/xeno_mutator/proc/mutator_update_actions(mob/living/carbon/Xenomorph/X)
+	if (mutator_actions_to_remove) 
+		for (var/action_name in mutator_actions_to_remove)
+			X.remove_action(action_name)
 	if (mutator_actions_to_add)
 		for (var/action_datum in mutator_actions_to_add)
 			var/datum/action/xeno_action/A = new action_datum()
 			A.give_action(X)
-	if (mutator_actions_to_remove) 
-		for (var/action_name in mutator_actions_to_remove)
-			X.remove_action(action_name)
+
 
 /datum/xeno_mutator/railgun
 	name = "STRAIN: Boiler - Railgun"
@@ -120,28 +126,6 @@
 	B.mutation_type = BOILER_SHATTER
 	MS.recalculate_actions(description)
 
-
-/datum/xeno_mutator/royal_guard
-	name = "STRAIN: Praetorian - Royal Guard"
-	description = "In exchange for your ability to spit, you gain better pheromones, a lower activation time on acid spray and tail sweep."
-	cost = MUTATOR_COST_EXPENSIVE
-	individual_only = TRUE
-	caste_whitelist = list("Praetorian") //Only praetorian.
-	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/tail_sweep)
-	keystone = TRUE
-
-/datum/xeno_mutator/royal_guard/apply_mutator(datum/mutator_set/individual_mutators/MS)
-	. = ..()
-	if (. == 0)
-		return
-
-	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
-	P.acid_spray_cooldown = 6
-	P.phero_modifier += XENO_PHERO_MOD_LARGE
-	mutator_update_actions(P)
-	MS.recalculate_actions(description)
-	P.recalculate_pheromones()
 
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
@@ -284,3 +268,80 @@
 	R.used_lunge = 0
 	mutator_update_actions(R)
 	MS.recalculate_actions(description)
+
+/datum/xeno_mutator/royal_guard
+	name = "STRAIN: Praetorian - Royal Guard"
+	description = "You gain better pheromones, more damage, tail sweep, and another way to acid spray together with a lower activation time. Your screech now increases your sister's strength in combat."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Praetorian") //Only praetorian.
+	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type", "Spray Acid")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/tail_sweep, /datum/action/xeno_action/activable/prae_spray_acid, /datum/action/xeno_action/prae_switch_spray_type)
+	keystone = TRUE
+
+/datum/xeno_mutator/royal_guard/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if (. == 0)
+		return
+
+	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
+	P.mutation_type = PRAETORIAN_ROYALGUARD
+	P.acid_spray_activation_time = 6
+	P.phero_modifier += XENO_PHERO_MOD_LARGE
+	P.damage_modifier += XENO_DAMAGE_MOD_SMALL
+	mutator_update_actions(P)
+	MS.recalculate_actions(description)
+	P.recalculate_everything()
+
+/datum/xeno_mutator/praetorian_dancer
+	// My name is Cuban Pete, I'm the King of the Rumba Beat
+	name = "STRAIN: Praetorian - Dancer"
+	description = "You are now a paragon of agility. You lose the ability to spit and shed some armor and pheromones. Your screech now makes you move faster and you gain a dance ability along with the power to perform various attacks with your tail."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Praetorian")  	// Only bae
+	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type", "Spray Acid")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/prae_dance, /datum/action/xeno_action/activable/prae_tailattack, /datum/action/xeno_action/prae_shift_tailattack)
+	keystone = TRUE
+
+/datum/xeno_mutator/praetorian_dancer/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if (. == 0)
+		return
+	
+	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
+	P.armor_modifier -= XENO_ARMOR_MOD_SMALL
+	P.speed_modifier -= XENO_SPEED_MOD_VERYLARGE
+	P.evasion_modifier += XENO_EVASION_MOD_ULTRA + XENO_EVASION_MOD_VERYLARGE // Best in game evasion.
+	P.phero_modifier -= XENO_PHERO_MOD_LARGE;
+	mutator_update_actions(P)
+	MS.recalculate_actions(description)
+	P.recalculate_everything()
+	P.mutation_type = PRAETORIAN_DANCER
+
+/datum/xeno_mutator/praetorian_oppressor
+	// Dread it, run from it, destiny still arrives.. or should I say, I do
+	name = "STRAIN: Praetorian - Oppressor"
+	description = "You abandon your speed and some of your pheromones to become a nigh-indestructible bulwark of the Queen and gain a powerful neurotoxin bomb you can lob at your foes. Your screech now makes your sisters and yourself even harder to kill."
+	cost = MUTATOR_COST_EXPENSIVE
+	individual_only = TRUE
+	caste_whitelist = list("Praetorian")  
+	mutator_actions_to_remove = list("Xeno Spit","Toggle Spit Type", "Spray Acid")
+	mutator_actions_to_add = list(/datum/action/xeno_action/activable/prae_punch, /datum/action/xeno_action/activable/prae_bomb)
+	keystone = TRUE
+
+/datum/xeno_mutator/praetorian_oppressor/apply_mutator(datum/mutator_set/individual_mutators/MS)
+	. = ..()
+	if (. == 0)
+		return
+	
+	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
+	P.armor_modifier += XENO_ARMOR_MOD_SMALL;
+	P.explosivearmor_modifier += XENO_EXPOSIVEARMOR_MOD_MED;
+	P.speed_modifier += XENO_SPEED_MOD_ULTRA + XENO_SPEED_MOD_VERYLARGE;
+	P.phero_modifier -= XENO_PHERO_MOD_LARGE;
+	mutator_update_actions(P);
+	MS.recalculate_actions(description)
+	P.recalculate_everything()
+	P.has_spat = FALSE
+	P.mutation_type = PRAETORIAN_OPPRESSOR

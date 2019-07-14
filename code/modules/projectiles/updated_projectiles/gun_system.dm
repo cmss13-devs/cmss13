@@ -12,7 +12,10 @@
 	throw_range = 5
 	force 		= 5
 	attack_verb = null
-	sprite_sheet_id = 1
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/items_lefthand_1.dmi',
+		WEAR_R_HAND = 'icons/mob/items_righthand_1.dmi'
+		)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
 	var/iff_enabled_current = FALSE
@@ -167,7 +170,7 @@
 		attachmentchoice = safepick(random_spawn_stock)
 		if(attachmentchoice)
 			var/obj/item/attachable/S = new attachmentchoice(src)
-			S.Attach(src)	
+			S.Attach(src)
 			attachmentchoice = FALSE
 
 	spawn(5) // necessary because attachment locations are defined later
@@ -220,10 +223,14 @@
 	unwield(user)
 	if(fast_pulled)
 		pull_time = world.time + wield_delay
+		if(user.dazed)
+			pull_time += 3
 		guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 		fast_pulled = 0
 	else
 		pull_time = world.time + wield_delay
+		if(user.dazed)
+			pull_time += 3
 		guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 
 	return ..()
@@ -299,6 +306,8 @@
 	slowdown = initial(slowdown) + aim_slowdown
 	place_offhand(user, initial(name))
 	wield_time = world.time + wield_delay
+	if(user.dazed)
+		wield_time += 5
 	guaranteed_delay_time = world.time + WEAPON_GUARANTEED_DELAY
 	//slower or faster wield delay depending on skill.
 	if(user.mind && user.mind.cm_skills)
@@ -419,10 +428,10 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
 //This can be passed with a null user, so we need to check for that as well.
-/obj/item/weapon/gun/proc/unload(mob/user, reload_override = 0, drop_override = 0) //Override for reloading mags after shooting, so it doesn't interrupt burst. Drop is for dropping the magazine on the ground.
+/obj/item/weapon/gun/proc/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0) //Override for reloading mags after shooting, so it doesn't interrupt burst. Drop is for dropping the magazine on the ground.
 	if(!reload_override && (flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))) return
 
-	if(!current_mag || isnull(current_mag) || current_mag.loc != src)
+	if(!current_mag || isnull(current_mag) || (current_mag.loc != src && !loc_override))
 		cock(user)
 		return
 
@@ -844,7 +853,7 @@ and you're good to go.
 	*/
 	if(flags_gun_features & GUN_BURST_FIRING) return
 	if(world.time < guaranteed_delay_time) return
-	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0)) return //We just put the gun up. Can't do it that fast
+	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0 || user.dazed)) return //We just put the gun up. Can't do it that fast
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
@@ -885,13 +894,12 @@ and you're good to go.
 						if(GUN_SKILL_SMARTGUN)
 							if(user.mind.cm_skills.smartgun < 0)
 								added_delay += 2*user.mind.cm_skills.smartgun
-
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3) 
+			if (world.time % 3 && !istype(src,/obj/item/weapon/gun/smartgun/))
 				to_chat(user, SPAN_WARNING("[src] is not ready to fire again!")) //to prevent spam
-			return
+				return
 	return 1
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)

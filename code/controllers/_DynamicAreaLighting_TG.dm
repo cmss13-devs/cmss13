@@ -114,23 +114,45 @@ var/global/list/global_changed_lights = list()
 		effect = list()
 
 		if(owner.directional_lum) //Directional luminosity for humans. Implemented for CM-SS13
-			var/gradient = DIRECTIONAL_LUM_GRADIENT * owner.luminosity
-			switch(owner.dir)
-				if(NORTH)
-					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
-						lum_directional(T, T.y-owner.y, gradient)
-				if(SOUTH)
-					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
-						lum_directional(T, owner.y-T.y, gradient)
-				if(EAST)
-					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
-						lum_directional(T, T.x-owner.x, gradient)
-				if(WEST)
-					for(var/turf/T in view(owner.get_light_range()*DIRECTIONAL_LUM_MULT,owner))
-						lum_directional(T, owner.x-T.x, gradient)
-				else
-					for(var/turf/T in view(owner.get_light_range(),owner))
+			for(var/turf/T in view(owner.get_light_range(),owner))
+				var/dy = T.y - owner.y
+				var/dx = T.x - owner.x
+				switch(owner.dir)
+					if(NORTH)
+						if(dy >= -1)
+							var/mul = 1
+							if(dy==0)
+								mul = 2
+							if(dy==-1)
+								mul = 2.5
+							lum(T, 0, 1, mul)
+					if(SOUTH)
+						if(dy <= 1)
+							var/mul = 1
+							if(dy==0)
+								mul = 2
+							if(dy==1)
+								mul = 2.5
+							lum(T, 0, -1, mul)
+					if(EAST)
+						if(dx >= -1)
+							var/mul = 1
+							if(dx==0)
+								mul = 2
+							if(dx==-1)
+								mul = 2.5
+							lum(T, 1, 0, mul)
+					if(WEST)
+						if(dx <= 1)
+							var/mul = 1
+							if(dx==0)
+								mul = 2
+							if(dx==1)
+								mul = 2.5
+							lum(T, -1, 0, mul)
+					else
 						lum(T)
+			
 		else
 			for(var/turf/T in view(owner.get_light_range(),owner))
 				lum(T)
@@ -141,40 +163,20 @@ var/global/list/global_changed_lights = list()
 					//longer referenced by the queue
 
 
-/datum/light_source/proc/lum(var/turf/T)
+/datum/light_source/proc/lum(var/turf/T, offset_x = 0, offset_y = 0, factor = 1)
 	var/dist
 	if(!T)
 		dist = 0
 	else
 #ifdef LIGHTING_CIRCULAR
-		dist = cheap_hypotenuse(T.x, T.y, __x, __y)
+		dist = cheap_hypotenuse(T.x, T.y, __x + offset_x, __y + offset_y)
 #else
-		dist = max(abs(T.x - __x), abs(T.y - __y))
+		dist = max(abs(T.x - __x - offset_x), abs(T.y - __y - offset_y))
 #endif
-	var/delta_lumen = owner.luminosity - dist
+	var/delta_lumen = owner.luminosity - dist*factor
 	if(delta_lumen > 0)
 		effect[T] = delta_lumen
 		T.update_lumcount(delta_lumen, col_r, col_g, col_b, 0)
-
-
-/datum/light_source/proc/lum_directional(var/turf/T, var/modifier, var/gradient)
-	if(modifier < -1) //more than one tile behind the light source. Would likely not be lit up even if calculated
-		return
-	modifier = min(0, modifier-DIRECTIONAL_LUM_OFFSET) * gradient
-	var/dist
-	if(!T)
-		dist = 0
-	else
-#ifdef LIGHTING_CIRCULAR
-		dist = cheap_hypotenuse(T.x, T.y, __x, __y)
-#else
-		dist = max(abs(T.x - __x), abs(T.y - __y))
-#endif
-	var/delta_lumen = (owner.luminosity - dist + modifier) * DIRECTIONAL_LUM_MULT
-	if(delta_lumen > 0)
-		effect[T] = delta_lumen
-		T.update_lumcount(delta_lumen, col_r, col_g, col_b, 0)
-
 
 
 /datum/light_source/proc/readrgb(col)
@@ -500,7 +502,7 @@ var/global/list/global_changed_lights = list()
 //#undef LIGHTING_ICON
 
 #define LIGHTING_MAX_LUMINOSITY_STATIC	8	//Maximum luminosity to reduce lag.
-#define LIGHTING_MAX_LUMINOSITY_MOBILE	5	//Moving objects have a lower max luminosity since these update more often. (lag reduction)
+#define LIGHTING_MAX_LUMINOSITY_MOBILE	6	//Moving objects have a lower max luminosity since these update more often. (lag reduction)
 #define LIGHTING_MAX_LUMINOSITY_TURF	1	//turfs have a severely shortened range to protect from inevitable floor-lighttile spam.
 
 //set the changed status of all lights which could have possibly lit this atom.

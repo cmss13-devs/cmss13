@@ -1802,7 +1802,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "aeu" = (
-/obj/item/clothing/tie/holster/armpit,
+/obj/item/clothing/accessory/holster/armpit,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -2640,9 +2640,9 @@
 "agD" = (
 /obj/structure/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
-/obj/item/clothing/tie/storage/black_vest,
-/obj/item/clothing/tie/storage/black_vest,
-/obj/item/clothing/tie/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -31638,7 +31638,7 @@
 	dir = 1
 	},
 /obj/structure/closet/cabinet,
-/obj/item/clothing/tie/armband,
+/obj/item/clothing/accessory/armband,
 /obj/machinery/atmospherics/unary/vent_pump{
 	on = 1
 	},

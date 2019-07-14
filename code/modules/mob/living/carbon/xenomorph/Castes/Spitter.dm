@@ -21,7 +21,7 @@
 	spit_types = list(/datum/ammo/xeno/toxin/medium, /datum/ammo/xeno/acid/medium)
 	evolves_to = list("Boiler")
 	deevolves_to = "Sentinel"
-	acid_delay = 130
+	acid_spray_cooldown = 130
 	acid_level = 2
 
 /datum/caste_datum/spitter/mature
@@ -33,7 +33,7 @@
 	tacklemin = 3
 	tacklemax = 4
 	tackle_chance = 40
-	acid_delay = 120
+	acid_spray_cooldown = 120
 
 /datum/caste_datum/spitter/elder
 	upgrade_name = "Elder"
@@ -44,7 +44,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 45
-	acid_delay = 100
+	acid_spray_cooldown = 100
 
 /datum/caste_datum/spitter/ancient
 	upgrade_name = "Ancient"
@@ -55,7 +55,7 @@
 	tacklemin = 4
 	tacklemax = 5
 	tackle_chance = 48
-	acid_delay = 90
+	acid_spray_cooldown = 90
 
 /mob/living/carbon/Xenomorph/Spitter
 	caste_name = "Spitter"

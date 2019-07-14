@@ -41,9 +41,6 @@ var/list/alldepartments = list()
 /obj/machinery/faxmachine/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/faxmachine/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 /obj/machinery/faxmachine/attack_hand(mob/user as mob)
 	user.set_interaction(src)
 

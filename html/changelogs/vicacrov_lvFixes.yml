@@ -1,8 +1,0 @@
-author: Vicacrov
-
-delete-after: True
-
-changes:
-  - bugfix: "Various small LV fixes: replaced a reinforced window in fitness, deleted a stray fog patch in a medbay insert and a glitching girder from robotics."
-  - bugfix: "On LV, the crash site data terminal was removed."
-  - bugfix: "On LV, the areas around the landing zones are not metal roofed anymore."

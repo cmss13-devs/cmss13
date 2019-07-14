@@ -607,6 +607,7 @@
 		list("Revolver belt", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, "black"),
 		list("Shotgun ammo belt", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, "black"),
 		list("Standard ammo belt", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, "black"),
+		list("Smartgunner ammo belt", 0, /obj/item/storage/belt/gun/smartgunner/full, MARINE_CAN_BUY_BELT, "black"),
 
 		list("POUCHES (choose 2)", 0, null, null, null),
 		list("Flare pouch", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "orange"),
@@ -1042,7 +1043,8 @@
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 
-		list("M56 powerpack", 45, /obj/item/smartgun_powerpack, null, "black"),
+		list("M56 powerpack", 15, /obj/item/smartgun_powerpack, null, "black"),
+		list("M56 ammo", 15, /obj/item/ammo_magazine/smartgun, null, "black"),
 		list("AP M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/ap, null, "black"),
 		list("Extended M4A3 magazine", 10, /obj/item/ammo_magazine/pistol/extended, null, "black"),
 		list("AP M41A magazine", 15, /obj/item/ammo_magazine/rifle/ap, null, "black"),
@@ -1050,6 +1052,7 @@
 		list("AP M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/ap, null, "black"),
 		list("LE M39 magazine", 15, /obj/item/ammo_magazine/smg/m39/le , null, "black"),
 		list("Extended M39 magazine", 13, /obj/item/ammo_magazine/smg/m39/extended, null, "black"),
+
 
 		list("GUN ATTACHMENTS (Choose 1)", 0, null, null, null),
 		list("Quickfire adapter", 0, /obj/item/attachable/quickfire, MARINE_CAN_BUY_ATTACHMENT, "black"),

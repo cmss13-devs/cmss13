@@ -715,6 +715,8 @@ AMMO
 	contains = list(
 					/obj/item/smartgun_powerpack,
 					/obj/item/smartgun_powerpack,
+					/obj/item/ammo_magazine/smartgun/,
+					/obj/item/ammo_magazine/smartgun/
 					)
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate/ammo

@@ -189,7 +189,7 @@
 
 	generate_stored_equipment()
 		. = list(
-				SLOW_WAIST = /obj/item/weapon/gun/pistol/vp70,
+				SLOW_WAIST = /obj/item/storage/belt/gun/smartgunner/full,
 				WEAR_J_STORE = /obj/item/weapon/gun/smartgun/dirty,
 				WEAR_L_STORE = /obj/item/storage/pouch/magazine/pistol/pmc_vp70,
 				WEAR_IN_BACK = /obj/item/explosive/plastique,

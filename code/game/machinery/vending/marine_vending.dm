@@ -272,7 +272,7 @@
 		/obj/item/ammo_magazine/revolver = round(scale * 20),
 		/obj/item/ammo_magazine/smg/m39 = round(scale * 20) % 12,
 		/obj/item/ammo_magazine/rifle = round(scale * 30) % 10,
-
+		/obj/item/ammo_magazine/smartgun = round(scale * 2),
 		// AP AMMO
 		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
 		/obj/item/ammo_magazine/pistol/ap = round(scale * 5),
@@ -309,7 +309,8 @@
 		// MISCELLANEOUS
 		/obj/item/storage/large_holster/machete/full = round(scale * 10),
 		/obj/item/ammo_magazine/flamer_tank = round(scale * 2),
-		/obj/item/smartgun_powerpack = round(scale * 2)
+		/obj/item/smartgun_powerpack = round(scale * 2),
+		/obj/item/ammo_magazine/smartgun = round(scale * 2)
 	)
 
 	contraband = list()
@@ -354,6 +355,7 @@
 		/obj/item/ammo_magazine/sniper/incendiary = round(scale * 1),
 		/obj/item/ammo_magazine/sniper/flak = round(scale * 1),
 		/obj/item/smartgun_powerpack = round(scale * 5),
+		/obj/item/ammo_magazine/smartgun = round(scale * 5)
 	)
 
 /obj/machinery/vending/marine/cargo_ammo/select_gamemode_equipment(gamemode)
@@ -367,6 +369,41 @@
 /obj/machinery/vending/marine/cargo_ammo/Dispose()
 	. = ..()
 	cargo_ammo_vendors.Remove(src)
+
+/obj/machinery/vending/marine/cargo_ammo/squad
+	name = "\improper ColMarTech automated munition squad vendor"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
+
+/obj/machinery/vending/marine/cargo_ammo/squad/populate_product_list(var/scale)
+	product_records = list()
+
+	products = list(
+		/obj/item/storage/large_holster/machete/full = round(scale * 5),
+		/obj/item/ammo_magazine/pistol/ap = round(scale * 3),
+		/obj/item/ammo_magazine/pistol/extended = round(scale * 5),
+		/obj/item/ammo_magazine/pistol/m1911 = round(scale * 4),
+		/obj/item/ammo_magazine/pistol/smart = round(scale * 4),
+		/obj/item/ammo_magazine/revolver = round(scale * 10),
+		/obj/item/ammo_magazine/revolver/marksman = round(scale * 3),
+		/obj/item/ammo_magazine/revolver/heavy = round(scale * 5),
+		/obj/item/ammo_magazine/smg/m39/ap = round(scale * 5) % 12,
+		/obj/item/ammo_magazine/smg/m39/le = round(scale * 2) % 12, 
+		/obj/item/ammo_magazine/smg/m39/extended = round(scale * 10) % 10,
+		/obj/item/ammo_magazine/rifle/extended = round(scale * 5) % 8,
+		/obj/item/ammo_magazine/rifle/ap = round(scale * 5) % 10,
+		/obj/item/ammo_magazine/rifle/l42mk1/ap = round(scale * 1),
+		/obj/item/ammo_magazine/rifle/l42mk1/extended = round(scale * 2),
+		/obj/item/smartgun_powerpack = round(scale * 1),
+		/obj/item/ammo_magazine/flamer_tank = round(scale * 1)
+	)
+
+	contraband = list()
+
+	premium = list()
+
+	build_inventory(products)
+
 
 //MARINE FOOD VENDOR APOPHIS775 23DEC2017
 /obj/machinery/vending/marineFood
@@ -572,7 +609,8 @@
 						/obj/item/storage/box/m56_system = 1,
 						/obj/item/smartgun_powerpack = 1,
 						/obj/item/storage/pouch/magazine = 1,
-						/obj/item/clothing/mask/gas = 1
+						/obj/item/clothing/mask/gas = 1,
+						/obj/item/storage/belt/gun/smartgunner/full = 1
 			)
 	contraband = list()
 	premium = list()

@@ -93,6 +93,9 @@
 
 /mob/living/carbon/human/ex_act(severity, direction)
 
+	if(lying)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
+
 	if(severity >= 30)
 		flash_eyes()
 

@@ -57,6 +57,9 @@
 
 /mob/living/carbon/ex_act(severity, direction)
 
+	if(lying)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
+
 	if(severity >= 30)
 		flash_eyes()
 
@@ -269,7 +272,7 @@
 	var/atom/movable/thrown_thing
 	var/obj/item/I = get_active_hand()
 
-	if(!I || (I.flags_item & NODROP)) 
+	if(!I || (I.flags_item & NODROP))
 		return
 
 	var/spin_throw = TRUE

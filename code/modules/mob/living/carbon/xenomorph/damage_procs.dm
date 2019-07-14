@@ -1,4 +1,8 @@
 /mob/living/carbon/Xenomorph/ex_act(severity, direction, pierce=0)
+
+	if(lying)
+		severity *= EXPLOSION_PRONE_MULTIPLIER
+
 	if(severity >= 30)
 		flash_eyes()
 
@@ -10,13 +14,13 @@
 	var/f_loss = 0
 
 	var/damage = severity
-	
+
 	var/cfg = armor_deflection==0 ? config.xeno_explosive_small : config.xeno_explosive
 	var/total_explosive_resistance = caste.xeno_explosion_resistance + armor_explosive_buff
 	damage = armor_damage_reduction(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
-	
+
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
 		gib()
 		return
@@ -95,19 +99,19 @@
 
 	//Immunity check
 	if(world.time < armor_integrity_immunity_time && world.time>armor_integrity_last_damage_time + XENO_ARMOR_BREAK_PASS_TIME)
-		visible_message(SPAN_XENOWARNING("[src]'s broken exoskeleton plate takes the force of the impact!"))		
+		visible_message(SPAN_XENOWARNING("[src]'s broken exoskeleton plate takes the force of the impact!"))
 		return 1
-	
+
 	if(world.time>armor_integrity_immunity_time)
-		armor_integrity_immunity_time = world.time		
+		armor_integrity_immunity_time = world.time
 		armor_integrity_last_damage_time = world.time
-		armor_break_to_apply = 0			
+		armor_break_to_apply = 0
 		post_apply_armorbreak()
 
 	var/delay = ((armor_integrity - armorbreak / caste.armor_hardiness_mult)/25)*XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME
 	armor_break_to_apply += armorbreak
 	armor_integrity_immunity_time += delay
-	
+
 	if(armor_integrity_immunity_time - world.time > XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME * 4)
 		armor_integrity_immunity_time = world.time + XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME * 4
 

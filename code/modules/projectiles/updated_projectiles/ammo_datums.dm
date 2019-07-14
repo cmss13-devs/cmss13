@@ -100,8 +100,8 @@
 					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
 				target.apply_effect(0.1, WEAKEN)
-				target.apply_effect(2, SUPERSLOW)
-				target.apply_effect(4, SLOW)
+				target.apply_effect(1, SUPERSLOW)
+				target.apply_effect(2, SLOW)
 				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			else
 				if(!isYautja(M)) //Not predators.
@@ -123,22 +123,20 @@
 			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			if(target.mob_size == MOB_SIZE_BIG)
 				target.apply_effect(0.3, DAZE)
-				target.apply_effect(2, SUPERSLOW)
-				target.apply_effect(4, SLOW)
+				target.apply_effect(2, SLOW)
 				return
-			target.apply_effect(1, STUN)
-			target.apply_effect(2, WEAKEN)
+			target.apply_effect(1, WEAKEN)
 			target.apply_effect(4, DAZE)
-			target.apply_effect(4, SUPERSLOW)
-			target.apply_effect(10, SLOW)
+			target.apply_effect(2, SUPERSLOW)
+			target.apply_effect(5, SLOW)
 		else
 			if(!isYautja(M)) //Not predators.
 				var/mob/living/target = M
 				target.apply_effect(2, STUN)
 				target.apply_effect(4, WEAKEN)
-				target.apply_effect(10, DAZE)
+				target.apply_effect(5, DAZE)
 				target.apply_effect(5, SUPERSLOW)
-				target.apply_effect(10, SLOW)
+				target.apply_effect(8, SLOW)
 				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
 	step_away(M,P)
 

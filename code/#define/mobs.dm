@@ -451,4 +451,16 @@
 
 #define BOILER_NORMAL	1
 #define BOILER_RAILGUN	2
-#define BOILER_SHATTER	3
+#define BOILER_SHATTER  3
+
+// Praetorian strain flags
+#define PRAETORIAN_NORMAL	  1
+#define PRAETORIAN_ROYALGUARD 2
+#define PRAETORIAN_DANCER	  3
+#define PRAETORIAN_OPPRESSOR  4
+
+// Praetorian strain flags
+#define PRAE_SCREECH_BUFFED  	1
+#define PRAE_DANCER_STATSBUFFED 2
+#define PRAE_DANCER_TAILATTACK_TYPE	4 // 0 = damage, 1 = pull/abduct
+#define PRAE_ROYALGUARD_ACIDSPRAY_TYPE 4 // 0 = cone, 1 = line

@@ -83,7 +83,7 @@
 	if(action_busy)
 		return
 
-	if(!do_after(src, acid_spray_cooldown, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+	if(!do_after(src, acid_spray_activation_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 
 	if (used_acid_spray)
@@ -100,6 +100,7 @@
 	visible_message(SPAN_XENOWARNING("\The [src] spews forth a wide cone of acid!"), \
 	SPAN_XENOWARNING("You spew forth a cone of acid!"), null, 5)
 
+	to_chat(src, SPAN_XENOWARNING("Unleashing your acid spray temporarily slows you down!"))
 	ability_speed_modifier += 2
 	do_acid_spray_cone(target)
 	spawn(rand(20,30))
@@ -152,7 +153,7 @@
 	if(!check_state())
 		return
 
-	if(acid_cooldown)
+	if(used_acid_spray)
 		return
 
 	if(!isturf(loc) || istype(loc, /turf/open/space))
@@ -180,16 +181,16 @@
 		if(!target)
 			return
 
-		acid_cooldown = 1
+		used_acid_spray = 1
 		use_plasma(10)
 		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1)
 		visible_message(SPAN_XENOWARNING("\The [src] spews forth a virulent spray of acid!"), \
 		SPAN_XENOWARNING("You spew forth a spray of acid!"), null, 5)
 		var/turflist = getline(src, target)
 		spray_turfs(turflist)
-		spawn(caste.acid_delay) //12 second cooldown.
-			acid_cooldown = 0
-			to_chat(src, SPAN_WARNING("You feel your acid glands refill. You can spray <B>acid</b> again."))
+		spawn(caste.acid_spray_cooldown) //12 second cooldown.
+			used_acid_spray = 0
+			to_chat(src, SPAN_WARNING("You feel your acid glands refill. You can spray acid again."))
 			for(var/X in actions)
 				var/datum/action/A = X
 				A.update_button_icon()
@@ -208,6 +209,8 @@
 
 	if(isXenoBoiler(src))
 		distance_max = 7
+	else if (isXenoPraetorian(src))
+		distance_max = 6
 
 	turf_loop:
 		for(var/turf/T in turflist)
@@ -252,8 +255,11 @@
 		return
 
 	if(!locate(/obj/effect/xenomorph/spray) in target) //No stacking flames!
-		if(isXenoBoiler(src)) new /obj/effect/xenomorph/spray(target)
-		if(isXenoSpitter(src)) new /obj/effect/xenomorph/spray/weak(target)
+		
+		// Spray type
+		if (isXenoSpitter(src)) new /obj/effect/xenomorph/spray/weak(target)
+		else new /obj/effect/xenomorph/spray(target)
+
 		for(var/mob/living/carbon/M in target)
 			if(ishuman(M) || ismonkey(M))
 				if((M.status_flags & XENO_HOST) && istype(M.buckled, /obj/structure/bed/nest))
@@ -772,7 +778,7 @@
 
 	round_statistics.defender_headbutts++
 
-	visible_message(SPAN_XENOWARNING("\The [src] rams [H] with it's armored crest!"), \
+	visible_message(SPAN_XENOWARNING("\The [src] rams [H] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
 	used_headbutt = 1
@@ -825,7 +831,7 @@
 		return
 
 	round_statistics.defender_tail_sweeps++
-	visible_message(SPAN_XENOWARNING("\The [src] sweeps it's tail in a wide circle!"), \
+	visible_message(SPAN_XENOWARNING("\The [src] sweeps its tail in a wide circle!"), \
 	SPAN_XENOWARNING("You sweep your tail in a wide circle!"))
 
 	spin_circle()
@@ -1163,7 +1169,7 @@
 
 	spawn(caste.tremor_cooldown)
 		used_tremor = 0
-		to_chat(src, SPAN_NOTICE("You gather enough strength to cause more tremors again."))
+		to_chat(src, SPAN_NOTICE("You gather enough strength to cause tremors again."))
 		for(var/X in actions)
 			var/datum/action/act = X
 			act.update_button_icon()
@@ -1223,6 +1229,486 @@
 			var/datum/action/act = X
 			act.update_button_icon()
 
+// Utility ability for dancer praes
+/mob/living/carbon/Xenomorph/proc/praetorian_dance()
+	var/mob/living/carbon/Xenomorph/Praetorian/P = src
+	var/datum/caste_datum/praetorian/pCaste = src.caste
+	
+	if(!check_state())
+		return
+
+	if(P.used_pounce)
+		to_chat(src, SPAN_XENOWARNING("You are not ready to dance again."))
+		return
+	
+	if(!check_plasma(200))
+		return
+
+	// Dance time
+	P.used_pounce = TRUE
+
+	to_chat(src, SPAN_XENOWARNING("You begin to move at a fever pace!"))
+
+	P.speed_modifier -= pCaste.dance_speed_buff
+	P.evasion_modifier += pCaste.dance_evasion_buff
+	P.recalculate_speed()
+	P.recalculate_evasion()
+	P.prae_status_flags |= PRAE_DANCER_STATSBUFFED
+
+	spawn(pCaste.dance_duration)
+		
+		// Reset our stats just in case they haven't been reset already somewhere else.
+		if (prae_status_flags & PRAE_DANCER_STATSBUFFED)
+			to_chat(src, SPAN_XENOWARNING("You feel the effects of your dance wane!"))
+			P.speed_modifier += pCaste.dance_speed_buff
+			P.evasion_modifier -= pCaste.dance_evasion_buff
+			P.recalculate_speed()
+			P.recalculate_evasion()
+			P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
+	
+	spawn (pCaste.dance_cooldown)
+		to_chat(src, SPAN_XENOWARNING("You gather enough strength to dance again."))
+		used_pounce = FALSE
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+
+// Praetorian dancer impale
+/mob/living/carbon/Xenomorph/proc/praetorian_tailattack(atom/A)
+	var/mob/living/carbon/Xenomorph/Praetorian/P = src
+	var/datum/caste_datum/praetorian/pCaste = src.caste
+	var/mob/living/carbon/human/T
+	
+	if(!check_state())
+		return
+
+	if(P.used_punch)
+		to_chat(src, SPAN_XENOWARNING("You are not ready to use your tail attack again."))
+		return
+
+	if (!A || !ishuman(A))
+		return
+	else
+		T = A // Target
+
+	if (T.stat == DEAD)
+		to_chat(src, SPAN_XENOWARNING("[T] is dead, why would you want to attack it?"))
+		return
+	
+	if(!check_plasma(150))
+		return
+	
+	var/dist = get_dist(src, T)
+	var/buffed = prae_status_flags & PRAE_DANCER_STATSBUFFED
+
+	if (dist > pCaste.tailattack_max_range)
+		to_chat(src, SPAN_WARNING("[T] is too far away!"))
+		return 
+
+	used_punch = TRUE
+	use_plasma(150)
+
+	if (buffed) // Now we've exhausted our dance, time to go slow again
+		to_chat(src, SPAN_WARNING("You expend your dance to empower your tail attack!"))
+		P.speed_modifier += pCaste.dance_speed_buff
+		P.evasion_modifier -= pCaste.dance_evasion_buff
+		P.recalculate_speed()
+		P.recalculate_evasion()
+		P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
+
+	var/damage = rand(melee_damage_lower, melee_damage_upper) + pCaste.tailattack_damagebuff
+	var/target_zone = T.get_limb("chest")
+	var/armor_block = getarmor(target_zone, ARMOR_MELEE)
+
+	// Hmm today I will kill a marine while looking away from them
+	face_atom(T)
+
+	switch(!!(prae_status_flags & PRAE_DANCER_TAILATTACK_TYPE)) // Bit fuckery to simpify 0,4 to 0,1
+		
+		if (0) // Direct damage impale
+			
+			visible_message(SPAN_DANGER("\The [src] violently impales [T] with its tail[buffed?" twice":""]!"), \
+			SPAN_DANGER("You impale [T] with your tail[buffed?" twice":""]!"))
+			
+			if (buffed)
+				
+				// Do two attacks instead of one 
+				animation_attack_on(T, 15) // Slightly further than standard animation, because we want to clearly indicate a double-tile attack 
+				flick_attack_overlay(T, "slash")
+				emote("roar") // Feedback for the player that we got the magic double impale
+				
+				var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
+				if (n_damage <= 0.34*damage)
+					show_message(SPAN_WARNING("Your armor absorbs the blow!"))
+				else if (n_damage <= 0.67*damage)
+					show_message(SPAN_WARNING("Your armor softens the blow!"))
+				T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1) // Stolen from attack_alien. thanks Neth
+				playsound(T.loc, "alien_claw_flesh", 30, 1)
+				
+				// Reroll damage
+				damage = rand(melee_damage_lower, melee_damage_upper) + pCaste.tailattack_damagebuff
+				sleep(4) // Short sleep so the animation and sounds will be distinct, but this creates some strange effects if the prae runs away 
+						 // not entirely happy with this, but I think its benefits outweigh its drawbacks
+
+			animation_attack_on(T, 15) // Slightly further than standard animation, because we want to clearly indicate a double-tile attack 
+			flick_attack_overlay(T, "slash")
+				
+			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
+			if (n_damage <= 0.34*damage)
+				show_message(SPAN_WARNING("Your armor absorbs the blow!"))
+			else if (n_damage <= 0.67*damage)
+				show_message(SPAN_WARNING("Your armor softens the blow!"))
+			T.apply_damage(n_damage, BRUTE, target_zone, 0, sharp = 1, edge = 1)
+			
+			playsound(T.loc, "alien_claw_flesh", 30, 1) 
+
+		if (1) // 'Abduct' tail attack
+
+			var/leap_range = pCaste.tailattack_abduct_range
+			var/delay = pCaste.tailattack_abduct_usetime_long // Delay before we jump back
+			if (buffed)
+				delay = pCaste.tailattack_abduct_usetime_short
+				emote("roar") // Same as before, give player feedback for hitting the combo
+
+			var/leap_dir = turn(get_dir(src, T), 180) // Leap the opposite direction of the vector between us and our target
+			
+			var/turf/target_turf = get_turf(src)
+			var/turf/temp = get_turf(src)
+			for (var/x = 0, x < leap_range, x++)
+				temp = get_step(target_turf, leap_dir)
+				if (!temp || temp.density) // Stop if we run into a dense turf
+					break
+				target_turf = temp
+
+			// Warrior grab but with less stun
+			if (!Adjacent(T))
+				T.throw_at(get_step_towards(T, src), 6, 2, src)
+
+			// Just making sure..
+			if (Adjacent(T) && start_pulling(T, 0, TRUE))
+				
+				T.drop_held_items()
+				T.KnockDown(1) // So ungas can blast the Praetorian
+				T.Stun(1)
+				grab_level = GRAB_NECK
+				T.pulledby = src
+				visible_message(SPAN_WARNING("\The [src] grabs [T] by the neck with its tail!"), \
+				SPAN_XENOWARNING("You grab [T] by the neck with your tail!"))
+		
+			if (do_after(src, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, show_remaining_time = TRUE) || T.pulledby != src || !src.Adjacent(T))
+				to_chat(src, SPAN_XENOWARNING("You stop abducting [T]!"))
+				T.pulledby.stop_pulling()
+			else
+				throw_at(target_turf, leap_range, 2, src)
+				T.throw_at(target_turf, leap_range, 2, src)
+				T.Stun(2)
+				visible_message(SPAN_WARNING("\The [src] leaps backwards with [T]!"), \
+				SPAN_XENOWARNING("You leap backwards with [T]!"))
+
+		else 
+			log_debug("[src] tried to impale with an invalid flag. Error code: PRAE_IMP_1")
+			log_admin("[src] tried to impale with an invalid flag. Tell the devs. Error code: PRAE_IMP_1")
+
+	spawn (pCaste.tailattack_cooldown)
+		used_punch = FALSE
+		to_chat(src, SPAN_XENOWARNING("You regain enough strength to use your tail attack again."))
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+
+// Praetorian Oppressor neuro 'grenade'
+/mob/living/carbon/Xenomorph/proc/praetorian_neuro_grenade(atom/T)
+	var/datum/caste_datum/praetorian/pCaste = src.caste
+	if (!check_state())
+		return
+
+	if (has_spat)
+		to_chat(src, SPAN_XENOWARNING("You must gather your strength before launching another toxin bomb."))
+		return
+
+	if (!check_plasma(300))
+		return
+
+	var/turf/current_turf = get_turf(src)
+
+	if (!current_turf)
+		return
+
+	if (do_after(src, pCaste.oppressor_grenade_setup, INTERRUPT_NO_NEEDHAND|INTERRUPT_LCLICK, BUSY_ICON_HOSTILE, show_remaining_time = TRUE))
+		to_chat(src, SPAN_XENOWARNING("You decide not to use your toxin bomb."))
+		return 
+	
+	to_chat(src, SPAN_XENOWARNING("You lob a compressed ball of neurotoxin into the air!"))
+	
+	var/obj/item/explosive/grenade/xeno_neuro_grenade/grenade = new /obj/item/explosive/grenade/xeno_neuro_grenade
+	grenade.loc = loc
+	grenade.throw_at(T, 4, 3, src, TRUE)
+
+	spawn (pCaste.oppressor_grenade_fuse)
+		grenade.prime()
+
+	spawn (pCaste.oppressor_grenade_cooldown)
+		has_spat = FALSE
+		to_chat(src, SPAN_XENOWARNING("You gather enough strength to use your toxin bomb again."))
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+
+	has_spat = TRUE
+	plasma_stored -= 300
+
+// Superbuffed warrior punch
+/mob/living/carbon/Xenomorph/proc/praetorian_punch(atom/A)
+
+	var/datum/caste_datum/praetorian/pCaste = src.caste
+
+	if (!A || !ishuman(A))
+		return
+
+	if (!check_state())
+		return
+
+	if (used_punch)
+		to_chat(src, "<span class='xenowarning'>You must gather your strength before punching again.</span>")
+		return
+
+	if (!check_plasma(75))
+		return
+
+	if (!Adjacent(A))
+		return
+
+	use_plasma(75)
+	var/mob/living/carbon/human/H = A
+	if(H.stat == DEAD) return
+	if(istype(H.buckled, /obj/structure/bed/nest)) return
+	
+	var/datum/limb/L = H.get_limb(check_zone(zone_selected))
+
+	if (!L || (L.status & LIMB_DESTROYED))
+		return
+
+	visible_message("<span class='xenowarning'>\The [src] hits [H] in the [L.display_name] with a devastatingly powerful punch!</span>", \
+	"<span class='xenowarning'>You hit [H] in the [L.display_name] with a devastatingly powerful punch!</span>")
+	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	playsound(H,S, 50, 1)
+	used_punch = 1
+	
+	if(L.status & LIMB_SPLINTED) //If they have it splinted, the splint won't hold.
+		L.status &= ~LIMB_SPLINTED
+		to_chat(H, "<span class='danger'>The splint on your [L.display_name] comes apart!</span>")
+
+	if(isYautja(H))
+		L.take_damage(rand(8,12))
+	else
+		var/fracture_chance = 50
+		switch(L.body_part)
+			if(HEAD)
+				fracture_chance = 20
+			if(UPPER_TORSO)
+				fracture_chance = 30
+			if(LOWER_TORSO)
+				fracture_chance = 40
+
+		L.take_damage(rand(40,50), 0, 0)
+		if(prob(fracture_chance))
+			L.fracture()
+
+	shake_camera(H, 2, 1)
+
+	var/facing = get_dir(src, H)
+	var/fling_distance = pCaste.oppressor_punch_fling_dist
+	var/turf/T = loc
+	var/turf/temp = loc
+
+	for (var/x = 0, x < fling_distance, x++)
+		temp = get_step(T, facing)
+		if (!temp)
+			break
+		T = temp
+
+	H.throw_at(T, fling_distance, 1, src, 1)
+
+	spawn(pCaste.oppressor_punch_cooldown)
+		used_punch = 0
+		to_chat(src, SPAN_NOTICE("You gather enough strength to punch again."))
+		for(var/X in actions)
+			var/datum/action/act = X
+			act.update_button_icon()
+
+// Praetorain screech ability. Varies based on the strain of the Praetorian
+/mob/living/carbon/Xenomorph/proc/praetorian_screech()
+	set waitfor = 0
+
+	var/mob/living/carbon/Xenomorph/Praetorian/P = src
+	
+	if(!check_state())
+		return
+
+	if(has_screeched)
+		to_chat(src, SPAN_WARNING("You are not ready to screech again."))
+		return
+	
+	if(!check_plasma(300))
+		return
+
+	var/datum/caste_datum/praetorian/pCaste = src.caste
+	var/screechwave_color = null
+
+	// Time to screech
+	has_screeched = 1
+	use_plasma(300)
+	var/screech_cooldown = 600 // Initialized later on but just making sure we get a solid default
+		
+	playsound(loc, P.screech_sound_effect, 45, 0)
+	visible_message("<span class='xenohighdanger'>\The [src] roars loudly!</span>")
+
+	for(var/mob/M in view())
+		if(M && M.client)
+			if(!isXeno(M))
+				shake_camera(M, 10, 1) 
+
+	switch(P.mutation_type)
+		if (PRAETORIAN_NORMAL)
+
+			screechwave_color =  "#b7d728" // "Acid" green
+			
+			gain_health(pCaste.xenoheal_screech_healamount)
+			to_chat(src, SPAN_XENOWARNING("Your screech reinvigorates you!"))
+			var/range = 7
+			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
+				X.gain_health(pCaste.xenoheal_screech_healamount)
+				to_chat(X, SPAN_XENOWARNING("You feel reinvigorated after hearing the screech of [src]!"))
+
+			screech_cooldown = pCaste.xenoheal_screech_cooldown
+			
+		if (PRAETORIAN_ROYALGUARD)
+
+			screechwave_color =  "#c2242e" // Ravager red
+
+			if (!(prae_status_flags & PRAE_SCREECH_BUFFED))
+				damage_modifier += pCaste.xenodamage_screech_damagebuff
+				recalculate_damage()
+				prae_status_flags |= PRAE_SCREECH_BUFFED
+				to_chat(src, SPAN_XENOWARNING("Your screech empowers you to strike harder!"))
+
+				spawn (pCaste.screech_duration) 
+					damage_modifier -= pCaste.xenodamage_screech_damagebuff
+					recalculate_damage()
+					prae_status_flags &= ~PRAE_SCREECH_BUFFED
+					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane."))
+
+			else
+				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+				
+			var/range = 7
+			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
+				if (!(X.prae_status_flags & PRAE_SCREECH_BUFFED))
+					X.damage_modifier += pCaste.xenodamage_screech_damagebuff
+					X.recalculate_damage()
+					X.prae_status_flags |= PRAE_SCREECH_BUFFED
+					to_chat(X, SPAN_XENOWARNING("You feel empowered to strike harder after hearing the screech of [src]!"))
+
+					spawn (pCaste.screech_duration) 
+						X.damage_modifier -= pCaste.xenodamage_screech_damagebuff
+						X.recalculate_damage()
+						X.prae_status_flags &= ~PRAE_SCREECH_BUFFED
+						to_chat(X, SPAN_XENOWARNING("You feel the power of the screech of [src] wane."))
+
+				else 
+					to_chat(X, SPAN_XENOWARNING("You can only be empowered by one Praetorian at once!"))
+
+			screech_cooldown = pCaste.xenodamage_screech_cooldown
+		
+		if (PRAETORIAN_OPPRESSOR)
+
+			screechwave_color = "#9539c6" // Purple
+			
+			if (!(prae_status_flags & PRAE_SCREECH_BUFFED))
+				armor_deflection_buff += pCaste.xenoarmor_screech_armorbuff
+				armor_explosive_buff += pCaste.xenoarmor_screech_explosivebuff
+				prae_status_flags |= PRAE_SCREECH_BUFFED
+
+				to_chat(src, SPAN_XENOWARNING("Your screech makes you feel even harder to kill than before!"))
+			
+				spawn (pCaste.screech_duration)
+					// TODO: Test with sleep to see it it works 
+					armor_deflection_buff -= pCaste.xenoarmor_screech_armorbuff
+					armor_explosive_buff -= pCaste.xenoarmor_screech_explosivebuff
+					prae_status_flags &= ~PRAE_SCREECH_BUFFED
+					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane!"))
+			
+			else
+				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+			
+			var/range = 7
+			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
+				if (!(X.prae_status_flags & PRAE_SCREECH_BUFFED))
+					X.armor_deflection_buff += pCaste.xenoarmor_screech_armorbuff
+					X.armor_explosive_buff += pCaste.xenoarmor_screech_explosivebuff
+					X.prae_status_flags |= PRAE_SCREECH_BUFFED
+					to_chat(X, SPAN_XENOWARNING("You feel indestructible after heearing the screech of [src]!"))
+					
+					spawn (pCaste.screech_duration)
+						X.armor_deflection_buff -= pCaste.xenoarmor_screech_armorbuff
+						X.armor_explosive_buff -= pCaste.xenoarmor_screech_explosivebuff
+						X.prae_status_flags &= ~PRAE_SCREECH_BUFFED
+						to_chat(X, SPAN_XENOWARNING("You feel the power of the screech of [src] wane!"))
+				else
+					to_chat(X, SPAN_XENOWARNING("You can only be empowered by one Praetorian at once!"))
+
+			screech_cooldown = pCaste.xenoarmor_screech_cooldown
+
+		if (PRAETORIAN_DANCER)
+
+			screechwave_color = "#6baeae" // Xeno teal color made brighter
+
+			if (!(prae_status_flags & PRAE_SCREECH_BUFFED))
+				speed_modifier -= pCaste.xenomovement_screech_speedbuff
+				recalculate_speed()
+				prae_status_flags |= PRAE_SCREECH_BUFFED
+				to_chat(src, SPAN_XENOWARNING("You feel even more agile as you screech!"))
+
+				spawn (pCaste.screech_duration)
+					speed_modifier += pCaste.xenomovement_screech_speedbuff
+					recalculate_speed()
+					prae_status_flags &= ~PRAE_SCREECH_BUFFED
+					to_chat(src, SPAN_XENOWARNING("You feel the power of your screech wane!"))
+			
+			else
+				to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+			
+			var/range = 7
+			for(var/mob/living/carbon/Xenomorph/X in oview(range, src))
+				if (!(X.prae_status_flags & PRAE_SCREECH_BUFFED))
+					X.speed_modifier -= pCaste.xenomovement_screech_speedbuff
+					X.recalculate_speed()
+					to_chat(X, SPAN_XENOWARNING("You feel very agile after hearing the screech of [src]!"))
+
+					spawn (pCaste.screech_duration)
+						X.speed_modifier += pCaste.xenomovement_screech_speedbuff
+						X.recalculate_speed()
+						X.prae_status_flags &= ~PRAE_SCREECH_BUFFED
+						to_chat(X, SPAN_XENOWARNING("You feel the power of the screech of [src] wane!"))
+				
+				else
+					to_chat(src, "<span class='xenohighdanger'>Your screech's effects do NOT stack with those of your sisters!</span>")
+
+			screech_cooldown = pCaste.xenomovement_screech_cooldown
+
+		else
+			log_debug("Error: [src] tried to screech with an invalid screech identifier. Error code: PRAE_SCREECH_01")
+			log_admin("Error: bugged Praetorian screech. Tell the devs. Error code: PRAE_SCREECH_01")
+			return
+	
+	create_shriekwave(screechwave_color)
+
+	spawn(screech_cooldown)
+		has_screeched = 0
+		to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+		for(var/Z in actions)
+			var/datum/action/A = Z
+			A.update_button_icon()
 
 
 // Vent Crawl

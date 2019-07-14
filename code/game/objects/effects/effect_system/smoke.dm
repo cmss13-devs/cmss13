@@ -328,6 +328,8 @@
 				M.emote("gasp")
 			spawn(15)
 				M.coughedtime = 0
+		if (prob(10))
+			M.KnockDown(5)
 
 	//Topical damage (neurotoxin on exposed skin)
 	to_chat(M, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
@@ -336,8 +338,6 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.temporary_slowdown = max(H.temporary_slowdown, round(effect_amt*1.5)) //One tick every two second
-
-
 
 /////////////////////////////////////////////
 // Smoke spread

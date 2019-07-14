@@ -102,8 +102,16 @@
 		overlays_standing[X_LEGCUFF_LAYER]	= image("icon" = 'icons/Xeno/Effects.dmi', "icon_state" = "legcuff", "layer" =-X_LEGCUFF_LAYER)
 		apply_overlay(X_LEGCUFF_LAYER)
 
-/mob/living/carbon/Xenomorph/proc/create_shriekwave()
-	overlays_standing[X_SUIT_LAYER] = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+/mob/living/carbon/Xenomorph/proc/create_shriekwave(var/color = null)
+	var/image/screech_image
+
+	if (color)
+		screech_image = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
+		screech_image.color = color
+	else
+		screech_image = image("icon"='icons/Xeno/2x2_Xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+	
+	overlays_standing[X_SUIT_LAYER] = screech_image
 	apply_overlay(X_SUIT_LAYER)
 	spawn(30)
 		remove_overlay(X_SUIT_LAYER)

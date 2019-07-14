@@ -592,6 +592,7 @@
 #include "code\game\objects\items\explosives\grenades\grenade.dm"
 #include "code\game\objects\items\explosives\grenades\marines.dm"
 #include "code\game\objects\items\explosives\grenades\spawnergrenade.dm"
+#include "code\game\objects\items\explosives\grenades\xeno_nades.dm"
 #include "code\game\objects\items\frames\alarms.dm"
 #include "code\game\objects\items\frames\bot_assembly.dm"
 #include "code\game\objects\items\frames\camera.dm"

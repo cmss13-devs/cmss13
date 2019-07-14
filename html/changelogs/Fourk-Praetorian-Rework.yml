@@ -1,0 +1,47 @@
+#   bugfix
+#   wip (For works in progress)
+#   tweak
+#   soundadd
+#   sounddel
+#   rscadd (general adding of nice things)
+#   rscdel (general deleting of nice things)
+#   imageadd
+#   imagedel
+#   maptweak
+#   spellcheck (typo fixes)
+#   experiment
+ 
+author: Fourkhan
+
+delete-after: True
+
+changes: 
+  - tweak: "Xeno neurotoxic gas now has a chance to slip marines that stand in it."
+  - tweak: "Pheromone readouts should more accurately represent the behind-the-scenes pheromone value."
+  - rscadd: "All Xenos can now purchase strains at all age levels."
+  - rscadd: "Reworked Praetorian."
+  - tweak: "Nerfed base Praetorian armor slightly."
+  - tweak: "Nerfed base Praetorian pheromones."
+  - experiment: "Added a toggle and boiler's acid line spray to Royal Guard only. This may be reverted if it proves to be too strong."
+  - tweak: "Royal Guard Praetorians now deal more melee damage than other Praetorian variants."
+  - rscadd: "Added 2 strains for Praetorian."
+  - rscadd: "Dancer - movement and combo-focused."
+  - rscadd: "Stats changes: Heavy speed increase in exchange for heavy armor and pheromone decrease."
+  - rscadd: "Utility ability: Dance. (increase evasion and speed temporarily). Making an attack in dance cancels the stat buffs but empowers the attack."
+  - rscadd: "Damage ability: Tail attack. Has two variants, both of which can be used from one tile further away than a slash: impale and abduct. Impale does direct damage and abduct applies a stun."
+  - rscadd: "Both variants of tail attack are empowered like a slash when used while Dance is active. Impale deals double damage and abduct activates much faster."
+  - rscadd: "Oppressor - Tank and AoE-oriented."
+  - rscadd: "Stats changes: Heavy armor increase in exchange for heavy movespeed and pheromone decrease."
+  - rscadd: "Damage ability: Punch. This is much like warrior's punch except that it deals significantly more damage."
+  - rscadd: "Utility ability: Gas Grenade. This launches a grenade like glob of acid that explodes into Neurotoxin. It bypasses barricades but has extremely limited range (5 tiles)."
+  - rscadd: "All Praetorian strains/archetypes now have a unique screech ability that fits their design: Base Praetorian heals nearby Xenos; Royal Guard buffs the damage of nearby Xenos; Dancer debuffs the accuracy of nearby marines; Oppressor buffs the armor of nearby Xenos."
+  - rscadd: "Macro list for the new abilities: https://pastebin.com/GHkQgKTX"
+  - imageadd: "All screeches have unique colors to distinguish them for allied Xenos. Base Prae = Green; Oppressor = Purple; Royal Guard = Red; Dancer = Blue."
+  - rscadd: "Dev test-based changes:"
+  - imageadd: "Courtesy of Triiodine, enjoy a new sprite for the Oppressor nade that isn't the marine training nade."
+  - tweak: "Nerfed activation time, cooldown, throw range, and spread distance of the Oppressor Praetorian gas grenade as well as the explosives protection of its screech."
+  - tweak: "Nerfed movespeed of Dancer praetorians, increased the cooldown of Dance, nerfed its duration."
+  - tweak: "Nerfed the caste's pheromones further."
+  - tweak: "Increased cooldown of Praetorian screeches accross the board."
+  - tweak: "Eliminated screenshake for Xeno players from Praetorian screech and reduced it for Marine players."
+  - bugfix: "Fixed the issue where Praes would be spammed with messages after the effects of their screech wore off."

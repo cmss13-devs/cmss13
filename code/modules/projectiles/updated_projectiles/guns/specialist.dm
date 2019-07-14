@@ -573,9 +573,7 @@
 		if(ishuman(loc) && (flags_item & WIELDED))
 			var/human_user = loc
 			target = get_target(human_user)
-			fire_delay = config.no_fire_delay
 			process_shot(human_user)
-			fire_delay = config.low_fire_delay
 		else
 			auto_fire = 0
 			auto_fire()

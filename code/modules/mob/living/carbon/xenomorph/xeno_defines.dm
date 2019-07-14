@@ -8,7 +8,7 @@
 // WARNING: These can fuck the entire game
 #define XENO_UNIVERSAL_HPMULT 1.0		// Use to unilaterally buff every caste's total HP.
 #define XENO_UNIVERSAL_PLASMAMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
-#define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's total PLASMA.
+#define XENO_UNIVERSAL_DAMAGEMULT 1.0	// Use to unilaterally buff every caste's DAMAGE.
 
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -22,6 +22,7 @@
 // Armor levels
 #define XENO_NO_ARMOR 0
 #define XENO_LOW_ARMOR 20
+#define XENO_LOWMED_ARMOR 25
 #define XENO_MEDIUM_ARMOR 30
 #define XENO_HEAVY_ARMOR 40
 #define XENO_ULTRA_ARMOR 50
@@ -34,6 +35,7 @@
 #define XENO_ULTRA_EXPLOSIVE_ARMOR 60
 #define XENO_GIGA_EXPLOSIVE_ARMOR 100
 
+// Health bands
 #define XENO_HEALTH_LARVA 35 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_LOW 225 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_LOWMEDIUM 250 * XENO_UNIVERSAL_HPMULT
@@ -44,6 +46,7 @@
 #define XENO_HEALTH_ULTRAHIGH 750 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL 1200 * XENO_UNIVERSAL_HPMULT
 
+// Plasma bands
 #define XENO_PLASMA_LOW 100 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_LOWMEDIUM 150 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_MEDIUM 200 * XENO_UNIVERSAL_PLASMAMULT
@@ -52,6 +55,7 @@
 #define XENO_PLASMA_VERYHIGH 800 * XENO_UNIVERSAL_PLASMAMULT
 #define XENO_PLASMA_ULTRAHIGH 1000 * XENO_UNIVERSAL_PLASMAMULT
 
+// Plasma gain bands
 #define XENO_PLASMA_GAIN_LOW 1
 #define XENO_PLASMA_GAIN_LOWMED 2
 #define XENO_PLASMA_GAIN_MED 2.5
@@ -82,7 +86,6 @@
 #define XENO_SPEED_SANICFAST -1.9
 
 // Xeno damage categories
-// generated at COMPILE TIME from the universal multipliers.
 #define XENO_DAMAGE_WEAK 10 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_LOW 20 * XENO_UNIVERSAL_DAMAGEMULT
 #define XENO_DAMAGE_LOWPLUS 25 * XENO_UNIVERSAL_DAMAGEMULT
@@ -149,6 +152,9 @@
 #define XENO_SPEED_MOD_SMALL      0.05
 #define XENO_SPEED_MOD_MED        0.09
 #define XENO_SPEED_MOD_LARGE      0.1
+#define XENO_SPEED_MOD_VERYLARGE  0.25
+#define XENO_SPEED_MOD_LOWULTRA	  0.375
+#define XENO_SPEED_MOD_ULTRA	  0.5
 
 // Pheremone strength modifiers
 #define XENO_PHERO_MOD_VERYSMALL  0.25
@@ -163,6 +169,7 @@
 #define XENO_EVASION_MOD_MED  	   	9
 #define XENO_EVASION_MOD_LARGE   	12
 #define XENO_EVASION_MOD_VERYLARGE	15
+#define XENO_EVASION_MOD_ULTRA		25
 
 // Armor factor modifiers
 #define XENO_ARMORFACTOR_MOD_VERYSMALL	5
@@ -279,7 +286,7 @@
 #define XENO_SCALAR_EVASION_VERYHIGH		1.20
 #define XENO_SCALAR_EVASION_ULTRAHIGH		1.25
 
-// Actual caste datum
+// Actual caste datum basedef 
 /datum/caste_datum
 	var/caste_name = ""
 	var/display_name = ""
@@ -375,8 +382,6 @@
 	var/widen_cooldown = 100
 	var/tremor_cooldown = 450 //Big strong ability, big cooldown.
 
-	var/acid_spray_range = 3
-	var/acid_spray_cooldown = 150
 
 	var/headbutt_cooldown = 40
 	var/tail_sweep_cooldown = 120
@@ -385,7 +390,8 @@
 
 	var/innate_healing = FALSE //whether the xeno heals even outside weeds.
 
-	var/acid_delay = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
+	var/acid_spray_range = 3
+	var/acid_spray_cooldown = 90 //9 seconds delay on acid. Reduced by -1 per upgrade down to 5 seconds
 	var/acid_level = 0
 	var/weed_level = 0
 
@@ -579,7 +585,6 @@
 	max_health = max_health * max_health_scalar
 	evasion = evasion * evasion_scalar
 	armor_hardiness_mult = armor_hardiness_mult * armorfactor_scalar
-
 
 /datum/hive_status
 	var/hivenumber = XENO_HIVE_NORMAL

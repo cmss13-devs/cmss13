@@ -342,3 +342,67 @@
 		B.clicked(src)
 
 // Appreciate the fact for a moment, future coder, that if you're adding a new macro for a new ability, you're only adding one. Not 45.
+
+
+// Praetorian stuff
+// Praetorian macro list:
+//  Screech: Praetorian-Screech
+//  Dance: Praetorian-Dance
+//  Tail Attack: Praetorian-Tail-Attack
+//  Shift Tail Attack: Praetorian-Shift-Tail-Attack
+//  Shift Spray types: Praetorian-Switch-Spray-Types
+//  Punch: Praetorian-Punch
+//  Oppressor bomb: Praetorian-Bomb
+
+/datum/action/xeno_action/verb/verb_prae_screech()
+	set category = "Alien"
+	set name = "Praetorian Dance"
+	set hidden = 1
+	var/action_name = "Screech (300)"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_prae_switch_spit_types()
+	set category = "Alien"
+	set name = "Praetorian Switch Spray Types"
+	set hidden = 1
+	var/action_name = "Toggle acid spray type"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_prae_tailattack()
+	set category = "Alien"
+	set name = "Praetorian Tail Attack"
+	set hidden = 1
+	var/action_name = "Dance (200)"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_prae_shift_tailattack()
+	set category = "Alien"
+	set name = "Praetorian Shift Tail Attack"
+	set hidden = 1
+	var/action_name = "Toggle tail attack type"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_prae_dance()
+	set category = "Alien"
+	set name = "Praetorian Tail Attack"
+	set hidden = 1
+	var/action_name = "Tail Attack (150)"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_prae_punch()
+	set category = "Alien"
+	set name = "Praetorian Punch"
+	set hidden = 1
+	var/action_name = "Punch (75)"
+	handle_xeno_macro(src, action_name) 
+
+/datum/action/xeno_action/verb/verb_prae_bomb()
+	set category = "Alien"
+	set name = "Praetorian Bomb"
+	set hidden = 1
+	var/action_name = "Punch (75)"
+	handle_xeno_macro(src, action_name) 
+
+
+
+

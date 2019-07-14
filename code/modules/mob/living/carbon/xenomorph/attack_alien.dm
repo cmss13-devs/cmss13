@@ -148,6 +148,20 @@
 				var/mob/living/carbon/Xenomorph/Ravager/R = M
 				if (R.delimb(src, affecting))
 					return 1
+			
+			// Snowflake code for Praetorian, unfortunately there's no place to put this other than here. Fortunately its very cheap
+			if (isXenoPraetorian(M))
+				var/mob/living/carbon/Xenomorph/Praetorian/P = M
+				var/datum/caste_datum/praetorian/pCaste = P.caste
+				if (P.prae_status_flags & PRAE_DANCER_STATSBUFFED && P.mutation_type == PRAETORIAN_DANCER)
+					damage += 15 // Only slightly stronger than a normal attack, Praes should be using impale here
+					to_chat(P, SPAN_WARNING("You expend your dance to empower your attack!"))
+					P.speed_modifier += pCaste.dance_speed_buff
+					P.evasion_modifier -= pCaste.dance_evasion_buff
+					P.recalculate_speed()
+					P.recalculate_evasion()
+					P.prae_status_flags &= ~PRAE_DANCER_STATSBUFFED
+
 
 			var/n_damage = armor_damage_reduction(config.marine_melee, damage, armor_block)
 			//nice messages so people know that armor works

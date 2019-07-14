@@ -604,7 +604,6 @@
 		if(evasion > 0)
 			. -= evasion
 
-
 /mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/item/projectile/P)
 	return 0 // just stop them getting hit by projectiles completely
 

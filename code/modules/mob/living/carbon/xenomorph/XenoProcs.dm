@@ -46,9 +46,9 @@
 
 	if(frenzy_aura)
 		switch(frenzy_aura)
-			if(-INFINITY to 1.0) msg_holder = "Very Weak"
-			if(1.1 to 2.0) msg_holder = "Weak"
-			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(-INFINITY to 0.9) msg_holder = "Very Weak"
+			if(1.0 to 1.9) msg_holder = "Weak"
+			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Frenzy:", "[msg_holder]")
@@ -56,9 +56,9 @@
 
 	if(warding_aura)
 		switch(warding_aura)
-			if(-INFINITY to 1.0) msg_holder = "Very Weak"
-			if(1.1 to 2.0) msg_holder = "Weak"
-			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(-INFINITY to 0.9) msg_holder = "Very Weak"
+			if(1.0 to 1.9) msg_holder = "Weak"
+			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Warding:", "[msg_holder]")
@@ -66,9 +66,9 @@
 
 	if(recovery_aura)
 		switch(recovery_aura)
-			if(-INFINITY to 1.0) msg_holder = "Very Weak"
-			if(1.1 to 2.0) msg_holder = "Weak"
-			if(2.1 to 2.9) msg_holder = "Moderate"
+			if(-INFINITY to 0.9) msg_holder = "Very Weak"
+			if(1.0 to 1.9) msg_holder = "Weak"
+			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
 	stat("Recovery:", "[msg_holder]")

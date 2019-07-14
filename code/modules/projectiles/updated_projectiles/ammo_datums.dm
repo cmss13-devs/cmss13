@@ -1337,7 +1337,7 @@
 		return // unaffected
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
-	if(!isXeno(M))
+	if(!isXeno(M) && !isYautja(M))
 		if(M.knocked_down>4*effect_power || pass_down_the_line)
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))
@@ -1388,7 +1388,7 @@
 		return // unaffected
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
-	if(!isXeno(M))
+	if(!isXeno(M) && !isYautja(M))
 		if(M.knocked_down>4*effect_power || pass_down_the_line)
 			if(!pass_down_the_line)
 				M.visible_message(SPAN_DANGER("[M] falls limp on the ground."))

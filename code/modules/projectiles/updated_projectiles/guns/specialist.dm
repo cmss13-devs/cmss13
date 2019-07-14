@@ -743,7 +743,6 @@
 			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
 			sleep(3)
 
-		last_fired = world.time
 		Fire(target,user)
 
 	target = null

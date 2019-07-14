@@ -897,7 +897,7 @@ and you're good to go.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else
-			if (world.time % 3 && !istype(src,/obj/item/weapon/gun/smartgun/))
+			if (world.time % 3)
 				to_chat(user, SPAN_WARNING("[src] is not ready to fire again!")) //to prevent spam
 			return
 	return 1

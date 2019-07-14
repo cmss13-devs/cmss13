@@ -276,6 +276,8 @@ var/list/admin_verbs_mod = list(
 	// /client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/
 	/client/proc/toggleattacklogs,
 	/client/proc/toggleffattacklogs,
+	/client/proc/xooc,					// Xeno OOC
+	/client/proc/mooc,					// Marine OOC
 	/datum/admins/proc/view_txt_log,
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggleoocdead,	/*toggles ooc on/off for everyone who is dead*/

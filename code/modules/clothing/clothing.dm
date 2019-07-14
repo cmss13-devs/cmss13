@@ -42,7 +42,7 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && (ishuman(usr) || ismonkey(usr)) && src.loc == user)	//make it harder to accidentally undress yourself
+	if (drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
 		return
 
 	..()

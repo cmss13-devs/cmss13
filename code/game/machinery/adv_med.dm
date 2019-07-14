@@ -38,7 +38,7 @@
 	set category = "Object"
 	set name = "Enter Body Scanner"
 
-	if (usr.stat || !(ishuman(usr) || ismonkey(usr)))
+	if (usr.stat || !(ishuman(usr)))
 		return
 	if (src.occupant)
 		to_chat(usr, SPAN_NOTICE(" <B>The scanner is already occupied!</B>"))

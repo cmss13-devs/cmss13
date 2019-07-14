@@ -3820,7 +3820,7 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/backpack/marine/satchel/tech,
 /obj/item/storage/toolbox/electrical,
-/obj/item/clothing/tie/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
 /obj/item/cell/infinite,
 /obj/item/cell/infinite,
 /turf/open/floor/almayer{
@@ -4396,7 +4396,7 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/backpack/marine/engineerpack,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/clothing/tie/storage/webbing,
+/obj/item/clothing/accessory/storage/webbing,
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/glasses/welding,
 /turf/open/floor/almayer{

@@ -60,9 +60,6 @@
 			F.update_icon()
 	return 0
 
-/obj/machinery/hydro_floodlight_switch/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/machinery/hydro_floodlight_switch/attack_hand(mob/user as mob)
 	if(!ishuman(user))
 		to_chat(user, "Nice try.")

@@ -446,17 +446,6 @@
 						qdel(H.glasses)
 						H.update_inv_glasses(0)
 
-			else if(ismonkey(M))
-				var/mob/living/carbon/monkey/MK = M
-				if(MK.wear_mask)
-					if(!MK.wear_mask.unacidable)
-						to_chat(MK, SPAN_DANGER("Your mask melts away but protects you from the acid!"))
-						qdel(MK.wear_mask)
-						MK.update_inv_wear_mask(0)
-					else
-						to_chat(MK, SPAN_WARNING("Your mask protects you from the acid."))
-					return
-
 			if(!M.unacidable)
 				if(istype(M, /mob/living/carbon/human) && volume >= 10)
 					var/mob/living/carbon/human/H = M

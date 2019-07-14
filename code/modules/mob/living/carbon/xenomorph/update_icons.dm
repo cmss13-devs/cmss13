@@ -68,7 +68,7 @@
 		var/t_state = r_hand.item_state
 		if(!t_state)
 			t_state = r_hand.icon_state
-		overlays_standing[X_R_HAND_LAYER]	= image("icon" = r_hand.sprite_sheet_id?'icons/mob/items_righthand_0.dmi':'icons/mob/items_righthand_0.dmi', "icon_state" = t_state, "layer" =-X_R_HAND_LAYER)
+		overlays_standing[X_R_HAND_LAYER] = r_hand.get_mob_overlay(src, WEAR_R_HAND)
 		apply_overlay(X_R_HAND_LAYER)
 
 /mob/living/carbon/Xenomorph/update_inv_l_hand()
@@ -80,8 +80,7 @@
 		var/t_state = l_hand.item_state
 		if(!t_state)
 			t_state = l_hand.icon_state
-		var/spritesheet_used = "icons/mob/items_lefthand_[l_hand.sprite_sheet_id]"
-		overlays_standing[X_L_HAND_LAYER]	= image("icon" = spritesheet_used, "icon_state" = t_state, "layer" =-X_L_HAND_LAYER)
+		overlays_standing[X_L_HAND_LAYER] = l_hand.get_mob_overlay(src, WEAR_L_HAND)
 		apply_overlay(X_L_HAND_LAYER)
 
 //Call when target overlay should be added/removed

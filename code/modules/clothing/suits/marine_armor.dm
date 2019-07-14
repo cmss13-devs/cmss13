@@ -23,17 +23,18 @@
 #define BRAVO		2
 #define CHARLIE		3
 #define DELTA		4
-#define NONE 		5
+#define ECHO		5
+#define NONE 		6
 
 var/list/armormarkings = list()
 var/list/armormarkings_sql = list()
 var/list/helmetmarkings = list()
 var/list/helmetmarkings_sql = list()
-var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200))
+var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), rgb(65,72,200), rgb(103,214,146))
 
 /proc/initialize_marine_armor()
 	var/i
-	for(i=1, i<5, i++)
+	for(i=1, i<6, i++)
 		var/image/armor
 		var/image/helmet
 		armor = image('icons/mob/suit_1.dmi',icon_state = "std-armor")
@@ -61,7 +62,9 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	icon = 'icons/obj/clothing/cm_suits.dmi'
 	icon_state = "1"
 	item_state = "armor"
-	sprite_sheet_id = 1
+	item_icons = list(
+		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+	)
 	flags_atom = FPRINT|CONDUCT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -304,6 +307,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/commander)
 	uniform_restricted = list(/obj/item/clothing/under/marine/mp)
 	specialty = "M2 pattern MP"
+	item_state_slots = list(WEAR_SUIT = "mp")
 
 /obj/item/clothing/suit/storage/marine/MP/WO
 	icon_state = "warrant_officer"
@@ -320,6 +324,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
 	specialty = "M3 pattern chief MP"
+	item_state_slots = list(WEAR_SUIT = "warrant_officer")
 
 /obj/item/clothing/suit/storage/marine/MP/admiral
 	icon_state = "admiral"
@@ -337,6 +342,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/admiral)
 	specialty = "M3 pattern admiral"
+	item_state_slots = list(WEAR_SUIT = "admiral")
 
 /obj/item/clothing/suit/storage/marine/MP/RO
 	icon_state = "officer"
@@ -345,6 +351,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 	specialty = "M2 pattern officer"
+	item_state_slots = list(WEAR_SUIT = "officer")
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
@@ -699,12 +706,14 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC)
+	item_state_slots = list(WEAR_SUIT = "pmc_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/leader
 	name = "\improper M4 pattern PMC leader armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/leader)
+	item_state_slots = list(WEAR_SUIT = "officer_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC/sniper
 	name = "\improper M4 pattern PMC sniper armor"
@@ -720,6 +729,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDELOWHAIR
+	item_state_slots = list(WEAR_SUIT = "pmc_sniper")
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC
 	name = "\improper PMC gunner armor"
@@ -736,6 +746,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
+	item_state_slots = list(WEAR_SUIT = "heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC/terminator
 	name = "\improper PMC commando armor"
@@ -770,6 +781,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	storage_slots = 2
 	unacidable = 1
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/PMC/commando)
+	item_state_slots = list(WEAR_SUIT = "commando_armor")
 
 //===========================//DISTRESS\\================================\\
 //=======================================================================\\
@@ -816,7 +828,12 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 
 /obj/item/clothing/suit/storage/faction
 	icon = 'icons/obj/clothing/cm_suits.dmi'
-	sprite_sheet_id = 1
+	item_icons = list(
+		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+	)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	flags_atom = FPRINT|CONDUCT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags_cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -1031,7 +1048,10 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops."
 	icon = 'icons/obj/clothing/cm_suits.dmi'
 	icon_state = "rebel_armor"
-	sprite_sheet_id = 1
+	item_icons = list(
+		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+	)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -1102,6 +1122,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
+	item_state_slots = list(WEAR_SUIT = "mercenary_heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner
 	name = "\improper Y8 armored miner vest"
@@ -1130,6 +1151,7 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
+	item_state_slots = list(WEAR_SUIT = "mercenary_miner_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer
 	name = "\improper Z7 armored engineer vest"
@@ -1158,3 +1180,4 @@ var/list/squad_colors = list(rgb(230,25,25), rgb(255,195,45), rgb(200,100,200), 
 		/obj/item/weapon/claymore/mercsword/machete,
 		/obj/item/weapon/combat_knife)
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/mercenary)
+	item_state_slots = list(WEAR_SUIT = "mercenary_engineer_armor")

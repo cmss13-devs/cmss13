@@ -19,11 +19,6 @@
 
 	return
 
-
-/obj/item/paper_bin/attack_paw(mob/user)
-	return attack_hand(user)
-
-
 /obj/item/paper_bin/attack_hand(mob/user)
 	var/response = ""
 	if(!papers.len > 0)

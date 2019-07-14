@@ -241,7 +241,7 @@
 	<BR>
 	[handcuffed ? "<BR><A href='?src=\ref[src];item=handcuffs'>Handcuffed</A>" : ""]
 	[legcuffed ? "<BR><A href='?src=\ref[src];item=legcuffs'>Legcuffed</A>" : ""]
-	[suit && suit.hastie ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
+	[suit && suit.accessories.len ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
 	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
 	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
 	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
@@ -442,18 +442,24 @@
 
 	if(href_list["tie"])
 		if(!usr.action_busy)
-			if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
+			if(w_uniform && istype(w_uniform, /obj/item/clothing))
 				var/obj/item/clothing/under/U = w_uniform
-				if(U.hastie)
-					attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([U.hastie.name]) removed by [usr.name] ([usr.ckey])</font>")
-					usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [name]'s ([ckey]) accessory ([U.hastie])</font>")
-					if(istype(U.hastie, /obj/item/clothing/tie/holobadge) || istype(U.hastie, /obj/item/clothing/tie/medal))
-						visible_message(SPAN_DANGER("<B>[usr] tears off \the [U.hastie] from [src]'s [U]!</B>"), null, null, 5)
-					else
-						visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [U.hastie] from [src]'s [U]!</B>"), null, null, 5)
-						if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-							if(U == w_uniform && U.hastie)
-								U.remove_accessory(usr)
+				var/obj/item/clothing/accessory/A = U.accessories[1]
+				if(U.accessories.len > 1)
+					A = input("Select an accessory to remove from [U]") as null|anything in U.accessories
+				if(!istype(A))
+					return
+				attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([A]) removed by [usr.name] ([usr.ckey])</font>")
+				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [name]'s ([ckey]) accessory ([A])</font>")
+				if(istype(A, /obj/item/clothing/accessory/holobadge) || istype(A, /obj/item/clothing/accessory/medal))
+					visible_message(SPAN_DANGER("<B>[usr] tears off \the [A] from [src]'s [U]!</B>"), null, null, 5)
+					if(U == w_uniform)
+						U.remove_accessory(usr, A)
+				else
+					visible_message(SPAN_DANGER("<B>[usr] is trying to take off \a [A] from [src]'s [U]!</B>"), null, null, 5)
+					if(do_after(usr, HUMAN_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+						if(U == w_uniform)
+							U.remove_accessory(usr, A)
 
 	if(href_list["sensor"])
 		if(!usr.action_busy)
@@ -1550,3 +1556,27 @@
 				to_chat(HS, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
 			else
 				to_chat(HS, SPAN_WARNING("There are no splints to remove."))
+
+/mob/living/carbon/human/yautja/New()
+	..()
+	set_species("Yautja")
+
+/mob/living/carbon/human/monkey/New()
+	..()
+	set_species("Monkey")
+
+/mob/living/carbon/human/farwa/New()
+	..()
+	set_species("Farwa")
+
+/mob/living/carbon/human/neaera/New()
+	..()
+	set_species("Neaera")
+
+/mob/living/carbon/human/stok/New()
+	..()
+	set_species("Stok")
+
+/mob/living/carbon/human/yiren/New()
+	..()
+	set_species("Yiren")

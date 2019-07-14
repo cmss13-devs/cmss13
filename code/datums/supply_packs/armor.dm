@@ -77,12 +77,12 @@ CLOTHING
 /datum/supply_packs/webbing
 	name = "webbings and holsters crate"
 	contains = list(
-					/obj/item/clothing/tie/holster,
-					/obj/item/clothing/tie/storage/brown_vest,
-					/obj/item/clothing/tie/storage/webbing,
-					/obj/item/clothing/tie/storage/webbing,
-					/obj/item/clothing/tie/storage/webbing,
-					/obj/item/clothing/tie/storage/webbing,
+					/obj/item/clothing/accessory/holster,
+					/obj/item/clothing/accessory/storage/brown_vest,
+					/obj/item/clothing/accessory/storage/webbing,
+					/obj/item/clothing/accessory/storage/webbing,
+					/obj/item/clothing/accessory/storage/webbing,
+					/obj/item/clothing/accessory/storage/webbing,
 					/obj/item/storage/belt/gun/m4a3,
 					/obj/item/storage/belt/gun/m44,
 					/obj/item/storage/large_holster/m39

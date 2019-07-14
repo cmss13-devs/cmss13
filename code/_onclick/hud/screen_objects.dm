@@ -330,7 +330,6 @@
 	if(!user)	return 1
 
 	switch(name)
-
 		if("equip")
 			if (istype(user.loc,/obj/mecha)) // stops inventory actions in a mech
 				return 1
@@ -405,7 +404,6 @@
 			var/obj/item/weapon/gun/G = user.get_held_item()
 			if(istype(G)) G.use_unique_action()
 			return 1
-
 	return 0
 
 

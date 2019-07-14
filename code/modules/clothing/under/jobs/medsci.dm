@@ -165,6 +165,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	rollable_sleeves = FALSE
+	item_state_slots = list(WEAR_UNIFORM = "orderly")
 
 /obj/item/clothing/under/rank/medical
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
@@ -180,24 +181,28 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	item_state_slots = list(WEAR_UNIFORM = "medical")
 
 /obj/item/clothing/under/rank/medical/blue
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."
 	icon_state = "scrubsblue"
 	rollable_sleeves = FALSE
+	item_state_slots = list(WEAR_UNIFORM = "scrubsblue")
 
 /obj/item/clothing/under/rank/medical/green
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
 	icon_state = "scrubsgreen"
 	rollable_sleeves = FALSE
+	item_state_slots = list(WEAR_UNIFORM = "scrubsgreen")
 
 /obj/item/clothing/under/rank/medical/purple
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in deep purple."
 	icon_state = "scrubspurple"
 	rollable_sleeves = FALSE
+	item_state_slots = list(WEAR_UNIFORM = "scrubspurple")
 
 /obj/item/clothing/under/rank/psych
 	desc = "A basic white jumpsuit. It has turqouise markings that denote the wearer as a psychiatrist."

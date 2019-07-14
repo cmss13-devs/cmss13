@@ -1,5 +1,3 @@
-
-
 /////////////////////////////////////////////////////////////
 
 
@@ -241,11 +239,16 @@
 			IT.add_fingerprint(usr)
 
 			if(bitf == MARINE_CAN_BUY_UNIFORM)
+				var/obj/item/clothing/under/U = IT
+				//Gives ranks to the ranked
+				if(H.wear_id && H.wear_id.paygrade)
+					var/rankpath = get_rank_pins(H.wear_id.paygrade)
+					if(rankpath)
+						var/obj/item/clothing/accessory/ranks/R = new rankpath()
+						U.attach_accessory(H, R)
 				if(gives_webbing)
-					var/obj/item/clothing/under/U = IT
-					var/obj/item/clothing/tie/storage/webbing/W = new()
-					U.hastie = W
-					W.on_attached(U)
+					var/obj/item/clothing/accessory/storage/webbing/W = new()
+					U.attach_accessory(usr, W)
 				//if(istype(ticker.mode, /datum/game_mode/ice_colony))//drop a coif with the uniform on ice colony
 				if(map_tag == MAP_ICE_COLONY)
 					new /obj/item/clothing/mask/rebreather/scarf(loc)
@@ -382,7 +385,7 @@
 		list("SU-6 smartpistol magazine", 15, /obj/item/ammo_magazine/pistol/smart, null, "black"),
 
 		list("EXTRAS", 0, null, null, null),
-		list("Webbing", 15, /obj/item/clothing/tie/storage/webbing, null, "black"),
+		list("Webbing", 15, /obj/item/clothing/accessory/storage/webbing, null, "black"),
 		list("Machete scabbard", 15, /obj/item/storage/large_holster/machete/full, null, "black"),
 		list("Fire extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, null, "black"),
 		list("Large general pouch", 15, /obj/item/storage/pouch/general/large, null, "black"),
@@ -466,9 +469,9 @@
 		list("Tools pouch", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 
 		list("ACCESSORIES", 0, null, null, null),
-		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Black webbing vest", 0, /obj/item/clothing/tie/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -544,9 +547,9 @@
 		list("Pistol pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 
 		list("ACCESSORIES", 0, null, null, null),
-		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
-		list("Black webbing vest", 0, /obj/item/clothing/tie/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
+		list("Black webbing vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, "black"),
 
 		list("MASKS", 0, null, null, null),
 		list("Gas mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, "black"),
@@ -804,8 +807,8 @@
 		list("Working Joe uniform", 0, /obj/item/clothing/under/rank/synthetic/joe, MARINE_CAN_BUY_UNIFORM, "black"),
 
 		list("WEBBING (choose 1)", 0, null, null, null),
-		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
-		list("Brown webbing vest", 0, /obj/item/clothing/tie/storage/brown_vest, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Brown webbing vest", 0, /obj/item/clothing/accessory/storage/brown_vest, MARINE_CAN_BUY_ATTACHMENT, "black"),
 
 		list("SHOES (choose 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine, MARINE_CAN_BUY_SHOES, "black"),
@@ -875,7 +878,7 @@
 		list("Armor", 0, /obj/item/clothing/suit/storage/marine/intel, MARINE_CAN_BUY_ARMOR, "black"),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom, MARINE_CAN_BUY_EAR, "black"),
 		list("Satchel", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, "black"),
-		list("Webbing", 0, /obj/item/clothing/tie/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
+		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ATTACHMENT, "black"),
 		list("M4A3 holster rig", 0, /obj/item/storage/belt/gun/m4a3, MARINE_CAN_BUY_BELT, "black"),
 		list("Document pouch", 0, /obj/item/storage/pouch/document, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), "black"),
 
@@ -1624,9 +1627,9 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("M276 Pattern SU-6 Smartpistol Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/smartpistol, "black"),
 
 		list("Webbings", -1, null, null),
-		list("Black Webbing Vest", round(scale * 2), /obj/item/clothing/tie/storage/black_vest, "black"),
-		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/tie/storage/brown_vest, "black"),
-		list("Webbing", round(scale * 5), /obj/item/clothing/tie/storage/webbing, "black"),
+		list("Black Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/black_vest, "black"),
+		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/brown_vest, "black"),
+		list("Webbing", round(scale * 5), /obj/item/clothing/accessory/storage/webbing, "black"),
 
 		list("Pouches", -1, null, null),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, "black"),
@@ -1700,8 +1703,8 @@ var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolition
 		list("M276 Pattern SU-6 Smartpistol Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/smartpistol, "black"),
 
 		list("Webbings", -1, null, null),
-		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/tie/storage/brown_vest, "black"),
-		list("Webbing", round(scale * 3), /obj/item/clothing/tie/storage/webbing, "black"),
+		list("Brown Webbing Vest", round(scale * 2), /obj/item/clothing/accessory/storage/brown_vest, "black"),
+		list("Webbing", round(scale * 3), /obj/item/clothing/accessory/storage/webbing, "black"),
 
 		list("Pouches", -1, null, null),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, "black"),

@@ -1,4 +1,3 @@
-
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
@@ -72,7 +71,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/brown_vest(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/brown_vest(H), WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)

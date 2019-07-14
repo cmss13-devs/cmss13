@@ -29,8 +29,10 @@
 	return FALSE
 
 /proc/ismonkey(A)
-	if(A && istype(A, /mob/living/carbon/monkey))
-		return TRUE
+	if(ishuman(A))
+		var/mob/living/carbon/human/H = A
+		if(H.species.name == "Monkey" || H.species.name == "Stok" || H.species.name == "Yiren" || H.species.name == "Neaera" || H.species.name == "Farwa")
+			return TRUE
 	return FALSE
 
 /proc/isbrain(A)
@@ -651,7 +653,7 @@ var/list/intents = list("help","disarm","grab","hurt")
 
 /mob/proc/get_eye_protection()
 	return FALSE
-	
+
 /mob/verb/a_select_zone(input as text)
 	set name = "a-select-zone"
 	set hidden = 1
@@ -661,7 +663,7 @@ var/list/intents = list("help","disarm","grab","hurt")
 	for(var/A in usr.client.screen)
 		if(istype(A, /obj/screen/zone_sel))
 			zone = A
-	
+
 	switch(input)
 		if("head")
 			switch(usr.zone_selected)

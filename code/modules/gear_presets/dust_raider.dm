@@ -1,4 +1,3 @@
-
 /datum/equipment_preset/dust_raider
 	name = "Dust Raider"
 	idtype = /obj/item/card/id/dogtag
@@ -168,7 +167,7 @@
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/webbing(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)

@@ -103,7 +103,7 @@
 						if(1)	hud_used.healths.icon_state = "health6"
 						if(2)	hud_used.healths.icon_state = "health7"
 						else
-							
+
 							var/percieved_shock = traumatic_shock
 							if(species && species.flags & NO_PAIN)
 								percieved_shock = 0
@@ -179,7 +179,6 @@
 							hud_used.bodytemp_icon.icon_state = "temp-1"
 						else
 							hud_used.bodytemp_icon.icon_state = "temp0"
-
 
 		if(interactee)
 			interactee.check_eye(src)

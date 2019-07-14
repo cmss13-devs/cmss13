@@ -610,7 +610,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 		moblist.Add(M)
 	for(var/mob/new_player/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/monkey/M in sortmob)
+	for(var/mob/living/carbon/human/monkey/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/carbon/hellhound/M in sortmob)
 		moblist.Add(M)
@@ -1914,3 +1914,14 @@ var/list/WALLITEMS = list(
 	while (world.tick_usage > min(TICK_LIMIT_TO_RUN, CURRENT_TICKLIMIT))
 
 #undef DELTA_CALC
+
+/proc/get_random_turf_in_range(var/atom/origin, var/outer_range, var/inner_range)
+	origin = get_turf(origin)
+	if(!origin)
+		return
+	var/list/turfs = list()
+	for(var/turf/T in orange(origin, outer_range))
+		if(!inner_range || get_dist(origin, T) >= inner_range)
+			turfs += T
+	if(turfs.len)
+		return pick(turfs)

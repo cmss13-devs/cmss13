@@ -123,9 +123,6 @@
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
 		return 1
 
-/obj/machinery/smartfridge/attack_paw(mob/user)
-	return attack_hand(user)
-
 /obj/machinery/smartfridge/attack_ai(mob/user)
 	return 0
 

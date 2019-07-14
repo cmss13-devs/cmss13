@@ -196,3 +196,15 @@ var/global/list/gear_datums = list()
 	path = /obj/item/tool/lighter/random
 	slot = WEAR_IN_BACK
 	cost = 2
+
+/datum/gear/uscmpatch
+	display_name = "USCM shoulder patch"
+	path = /obj/item/clothing/accessory/patch
+	cost = 1
+	slot = WEAR_IN_ACCESSORY
+
+/datum/gear/falconpatch
+	display_name = "Falling Falcons shoulder patch"
+	path = /obj/item/clothing/accessory/patch/falcon
+	cost = 1
+	slot = WEAR_IN_ACCESSORY

@@ -69,10 +69,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)
 
-
-/obj/structure/inflatable/attack_paw(mob/user as mob)
-	return attack_generic(user, 15)
-
 /obj/structure/inflatable/attack_hand(mob/user as mob)
 	add_fingerprint(user)
 	return
@@ -200,12 +196,6 @@
 	else if(isrobot(user)) //but cyborgs can
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
-
-/obj/structure/inflatable/door/attack_paw(mob/user as mob)
-	return TryToSwitchState(user)
-
-/obj/structure/inflatable/door/attack_hand(mob/user as mob)
-	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanPass(atom/movable/mover, turf/target, height = 0, air_group = 0)
 	if(air_group)

@@ -29,14 +29,6 @@
 					H.apply_effect((rand(15,35)),IRRADIATE,0)
 					if(prob(5))
 						H.apply_effect((rand(40,70)),IRRADIATE,0)
-
-			for(var/mob/living/carbon/monkey/M in living_mob_list)
-				var/turf/T = get_turf(M)
-				if(!T)
-					continue
-				if(T.z != 3 || T.z != 4)
-					continue
-				M.apply_effect((rand(5,25)),IRRADIATE,0)
 			sleep(100)
 
 

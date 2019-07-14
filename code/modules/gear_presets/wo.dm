@@ -1,4 +1,3 @@
-
 /datum/equipment_preset/wo
 	name = "WO"
 
@@ -150,7 +149,7 @@
 	access = list(ACCESS_IFF_MARINE, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = "Honor Guard Specialist"
 	rank = "Honor Guard Specialist"
-	paygrade = "E8E"
+	paygrade = "E8"
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
@@ -551,7 +550,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/tie/storage/webbing(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing(H), WEAR_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/device/whiskey_supply_beacon(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39(H), WEAR_IN_BACK)

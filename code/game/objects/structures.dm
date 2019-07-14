@@ -40,9 +40,6 @@
 			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
 			destroy()
 
-/obj/structure/attack_paw(mob/user)
-	if(breakable) attack_hand(user)
-
 /obj/structure/ex_act(severity, direction)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)

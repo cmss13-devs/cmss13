@@ -20,7 +20,7 @@
 
 
 /obj/item/implanter/attack(mob/M as mob, mob/user as mob)
-	if (!istype(M, /mob/living/carbon/human) && !istype(M, /mob/living/carbon/monkey))
+	if (!istype(M, /mob/living/carbon/human))
 		return
 	if(isYautja(M))
 		return

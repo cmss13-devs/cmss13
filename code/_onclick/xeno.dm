@@ -37,9 +37,9 @@
 	next_move = world.time + (10 + caste.attack_delay) //Adds some lag to the 'attack'
 	return 1
 
-//The parent proc, will default to attack_paw behaviour unless overriden
+//The parent proc, will default to UnarmedAttack behaviour unless overriden
 /atom/proc/attack_alien(mob/user as mob)
-	return attack_paw(user)
+	return user.UnarmedAttack(src)
 
 /mob/living/carbon/Xenomorph/click(var/atom/A, var/list/mods)
 	if(next_move >= world.time)

@@ -181,7 +181,7 @@ Airlock index -> wire color are { 9, 4, 6, 7, 5, 8, 1, 2, 3 }.
 	var/location = get_turf(src)
 	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
 		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
-	
+
 
 /obj/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
 	bullet_ping(Proj)
@@ -653,10 +653,6 @@ About the new airlock wires panel:
 			if (user)
 				src.attack_ai(user)
 
-
-/obj/machinery/door/airlock/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/machinery/door/airlock/attack_hand(mob/user as mob)
 	if(!issilicon(usr))
 		if(src.isElectrified())
@@ -1050,7 +1046,7 @@ About the new airlock wires panel:
 						G.update_attachable("muzzle")
 						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
 						to_chat(user, SPAN_DANGER("Your bayonet breaks!"))
-					
+
 	else if(C.pry_capable)
 		if(C.pry_capable == IS_PRY_CAPABLE_CROWBAR && src.p_open && (operating == -1 || (density && welded && operating != 1 && !src.arePowerSystemsOn() && !src.locked)) )
 			if(user.mind && user.mind.cm_skills && user.mind.cm_skills.engineer < SKILL_ENGINEER_ENGI)

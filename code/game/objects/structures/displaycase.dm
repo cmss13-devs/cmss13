@@ -59,9 +59,6 @@
 	..()
 	return
 
-/obj/structure/displaycase/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
-
 /obj/structure/displaycase/attack_hand(mob/user as mob)
 	if (src.destroyed && src.occupied)
 		to_chat(user, "\b You deactivate the hover field built into the case.")

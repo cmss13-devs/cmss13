@@ -147,7 +147,7 @@
 	)
 	var/text = ""
 	var/mob/living/carbon/human/H = current
-	if (istype(current, /mob/living/carbon/human) || istype(current, /mob/living/carbon/monkey))
+	if (istype(current, /mob/living/carbon/human))
 		/** Impanted**/
 		if(istype(current, /mob/living/carbon/human))
 			if(H.is_loyalty_implanted(H))
@@ -409,10 +409,6 @@
 		if(mind.cm_skills)
 			qdel(mind.cm_skills)
 		mind.cm_skills = null //no restriction on what we can do.
-
-//MONKEY
-/mob/living/carbon/monkey/mind_initialize()
-	..()
 
 //XENO
 /mob/living/carbon/Xenomorph/mind_initialize()

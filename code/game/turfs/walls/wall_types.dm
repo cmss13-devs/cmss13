@@ -487,11 +487,6 @@
 /turf/closed/wall/resin/attack_hand(mob/user)
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
-
-/turf/closed/wall/resin/attack_paw(mob/user)
-	return attack_hand(user)
-
-
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)

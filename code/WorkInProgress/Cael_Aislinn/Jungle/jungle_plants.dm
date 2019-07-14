@@ -30,8 +30,8 @@
 	if (istype(M, /mob/living/simple_animal))
 		var/mob/living/simple_animal/A = M
 		A.loc = get_turf(src)
-	else if (istype(M, /mob/living/carbon/monkey))
-		var/mob/living/carbon/monkey/A = M
+	else if (ismonkey(M))
+		var/mob/A = M
 		A.loc = get_turf(src)
 
 

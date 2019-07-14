@@ -1,4 +1,3 @@
-
 /obj/machinery/cm_vending/snowflake
 	name = "Snowflake Vendor"
 	desc = "A vendor with a large snowflake on it."
@@ -43,7 +42,7 @@
 		list("Security uniform, white", 12, /obj/item/clothing/under/rank/security, null, "black"),
 
 		list("WEBBING", 0, null, null, null),
-		list("Black webbing vest", 12, /obj/item/clothing/tie/storage/black_vest, null, "black"),
+		list("Black webbing vest", 12, /obj/item/clothing/accessory/storage/black_vest, null, "black"),
 
 		list("SHOES", 0, null, null, null),
 		list("Boots", 12, /obj/item/clothing/shoes/marine, null, "black"),

@@ -99,7 +99,7 @@
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/device/violin,
-		/obj/item/clothing/tie/horrible)
+		/obj/item/clothing/accessory/horrible)
 
 	if(!ispath(gift_type,/obj/item))	return
 

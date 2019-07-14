@@ -113,6 +113,7 @@ var/list/admin_verbs_fun = list(
 	// /client/proc/cmd_admin_add_freeform_ai_law,
 	// /client/proc/cmd_admin_add_random_ai_law,
 	// /client/proc/make_sound,
+	/client/proc/turn_everyone_into_primitives,
 	/client/proc/set_ooc_color_global,
 	/datum/admins/proc/hostile_lure,
 	/client/proc/set_away_timer,

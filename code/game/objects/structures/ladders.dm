@@ -104,9 +104,6 @@
 	busy = 0
 	add_fingerprint(user)
 
-/obj/structure/ladder/attack_paw(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/ladder/check_eye(mob/user)
 	//Are we capable of looking?
 	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.lying || !user.client)

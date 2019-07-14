@@ -138,12 +138,19 @@
 //Text strings so that the slots can be associated when doing inventory lists.
 #define WEAR_ID				"id"
 #define WEAR_EAR			"wear_ear"
+#define WEAR_MASK			"wear_mask"
+#define WEAR_GLASSES 		"glasses"
 #define WEAR_BODY			"body"
+#define WEAR_UNIFORM		"w_uniform"
+#define WEAR_GLOVES 		"gloves"
 #define WEAR_LEGS			"legs"
 #define WEAR_FEET			"feet"
+#define WEAR_SHOES			"shoes"
 #define WEAR_HANDS			"hands"
 #define WEAR_WAIST			"waist"
 #define WEAR_JACKET			"jacket"
+#define WEAR_SUIT			"wear_suit"
+#define WEAR_BELT           "belt"
 #define WEAR_EYES			"eyes"
 #define WEAR_FACE			"face"
 #define WEAR_HEAD			"head"
@@ -152,6 +159,7 @@
 #define WEAR_R_STORE		"r_store"
 #define WEAR_ACCESSORY		"accessory"
 #define WEAR_J_STORE		"j_store"
+#define WEAR_S_STORE		"S_store"
 #define WEAR_L_HAND			"l_hand"
 #define WEAR_R_HAND			"r_hand"
 #define WEAR_HANDCUFFS		"handcuffs"
@@ -259,4 +267,18 @@
 #define SHOE_max_heat_protection_temperature 			650	//For gloves
 
 #define ICE_PLANET_min_cold_protection_temperature 		200 //For the ice planet map protection from the elements.
+//=================================================
+
+//=================================================
+#define ACCESSORY_SLOT_UTILITY  "Utility"
+#define ACCESSORY_SLOT_ARMBAND  "Armband"
+#define ACCESSORY_SLOT_RANK     "Rank"
+#define ACCESSORY_SLOT_DECOR    "Decor"
+#define ACCESSORY_SLOT_MEDAL    "Medal"
+#define ACCESSORY_SLOT_ARMOR_C  "Chest armor"
+#define ACCESSORY_SLOT_ARMOR_A  "Arm armor"
+#define ACCESSORY_SLOT_ARMOR_L  "Leg armor"
+#define ACCESSORY_SLOT_ARMOR_S  "Armor storage"
+#define ACCESSORY_SLOT_ARMOR_M  "Misc armor"
+#define ACCESSORY_SLOT_HELM_C	"Helmet cover"
 //=================================================

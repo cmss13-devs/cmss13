@@ -69,9 +69,9 @@
 	set desc = "Toggle your mask's zoom function."
 	set category = "Yautja"
 
-	if(!usr || usr.stat) 
+	if(!usr || usr.stat)
 		return
-	
+
 	zoom(usr, 11, 12)
 
 /obj/item/clothing/mask/gas/yautja/verb/togglesight()
@@ -155,7 +155,10 @@
 	icon = 'icons/obj/clothing/cm_suits.dmi'
 	icon_state = "halfarmor1"
 	item_state = "armor"
-	sprite_sheet_id = 1
+	item_icons = list(
+		WEAR_SUIT = 'icons/mob/suit_1.dmi'
+	)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/suit_monkey_1.dmi')
 	flags_armor_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -179,6 +182,7 @@
 			/obj/item/weapon/combistick,
 			/obj/item/weapon/twohanded/glaive)
 	unacidable = 1
+	item_state_slots = list(WEAR_SUIT = "halfarmor1")
 
 /obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
 	..()
@@ -232,6 +236,7 @@
 	armor_rad = CLOTHING_ARMOR_HIGH
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	slowdown = 1
+	item_state_slots = list(WEAR_SUIT = "fullarmor")
 
 /obj/item/clothing/suit/armor/yautja/full/New(location)
 	. = ..(location, 0)
@@ -1099,7 +1104,7 @@
 			if(Q.stat) continue //Unconscious
 			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='rough'>'[msg]'</span>.")
 
-	
+
 
 //=================//\\=================\\
 //======================================\\

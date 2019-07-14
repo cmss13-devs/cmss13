@@ -87,9 +87,6 @@
 /obj/effect/alien/resin/attack_hand()
 	to_chat(usr, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
-/obj/effect/alien/resin/attack_paw()
-	return attack_hand()
-
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
 	if(!(W.flags_item & NOBLUDGEON))
 		var/damage = W.force
@@ -487,20 +484,6 @@
 			W.update_connections()
 			W.update_icon()
 	..()
-
-/obj/structure/mineral_door/resin/attack_paw(mob/user as mob)
-	if(user.a_intent == "hurt")
-		user.visible_message(SPAN_XENOWARNING("\The [user] claws at \the [src]."), \
-		SPAN_XENOWARNING("You claw at \the [src]."))
-		playsound(loc, "alien_resin_break", 25)
-		health -= rand(40, 60)
-		if(health <= 0)
-			user.visible_message(SPAN_XENODANGER("\The [user] slices \the [src] apart."), \
-			SPAN_XENODANGER("You slice \the [src] apart."))
-		healthcheck()
-		return
-	else
-		return TryToSwitchState(user)
 
 /obj/structure/mineral_door/resin/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage/2

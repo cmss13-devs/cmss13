@@ -375,7 +375,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		//check if they were a monkey
 		if(findtext(G_found.real_name,"monkey"))
 			if(alert("This character appears to have been a monkey. Would you like to respawn them as such?",,"Yes","No")=="Yes")
-				var/mob/living/carbon/monkey/new_monkey = new(pick(latejoin))
+				var/mob/living/carbon/human/monkey/new_monkey = new(pick(latejoin))
 				G_found.mind.transfer_to(new_monkey)	//be careful when doing stuff like this! I've already checked the mind isn't in use
 				new_monkey.key = G_found.key
 				if(new_monkey.client) new_monkey.client.change_view(world.view)
@@ -499,6 +499,31 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(show_log == "Yes")
 		command_announcement.Announce("Ion storm detected in proximity. Recommendation: Check all AI-controlled equipment for data corruption.", "Anomaly Alert", new_sound = 'sound/AI/ionstorm.ogg')
 	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/turn_everyone_into_primitives()
+	set category = "Fun"
+	set name = "Turn everyone into primitives"
+	var/random_names = FALSE
+	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
+		random_names = TRUE
+	if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
+		return
+	for(var/mob/living/carbon/human/H in mob_list)
+		if(ismonkey(H))
+			continue
+		H.set_species(pick("Monkey", "Yiren", "Stok", "Farwa", "Neaera"))
+		if(random_names)
+			H.real_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
+			H.name = H.real_name
+			H.voice_name = H.real_name
+			if(H.wear_id)
+				var/obj/item/card/id/card = H.wear_id
+				card.registered_name = H.real_name
+				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
+	log_admin("Admin [key_name(usr)] has turned everyone into a primitive")
+	message_admins("Admin [key_name(usr)] has turned everyone into a primitive", 1)
+
+	feedback_add_details("admin_verb","PRMT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_rejuvenate(mob/living/M as mob in mob_list)
 	set category = null
